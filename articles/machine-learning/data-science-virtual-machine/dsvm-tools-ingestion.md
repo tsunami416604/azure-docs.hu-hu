@@ -1,7 +1,7 @@
 ---
 title: Adatfeldolgozási eszközök
 titleSuffix: Azure Data Science Virtual Machine
-description: Ismerje meg az adatelemzési virtuális gépen előtelepített adatbetöltési eszközöket és segédprogramokat.
+description: Ismerje meg a Data Science Virtual Machine előtelepített adatfeldolgozási eszközöket és segédprogramokat.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 ms.service: machine-learning
@@ -11,63 +11,63 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270055"
 ---
-# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatelemzési virtuálisgép-adatbetöltési eszközök
+# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatfeldolgozási eszközök Data Science Virtual Machine
 
-Az adatelemzési vagy AI-projekt első technikai lépései közé tartozik, hogy azonosítania kell a használandó adatkészleteket, és be kell vonnia őket az elemzési környezetbe. Az adatelemzési virtuális gép (DSVM) eszközöket és kódtárakat biztosít a különböző forrásokból származó adatok nak a DSVM-en helyileg, vagy egy adatplatformba történő helyi elemzési adattárolásba való behozására a felhőben vagy a helyszínen.
+Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoznia a használni kívánt adatkészleteket, és azokat be kell állítani az elemzési környezetbe. A Data Science Virtual Machine (DSVM) eszközöket és könyvtárakat biztosít a különböző forrásokból származó adatoknak az analitikus adattárolóba helyileg történő, vagy a felhőben vagy a helyszínen lévő adatplatformba való DSVM.
 
-Íme néhány adatmozgatási eszköz, amely elérhető a DSVM-ben.
+Íme néhány, a DSVM elérhető adatáthelyezési eszköz.
 
 ## <a name="adlcopy"></a>AdlCopy
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Az Azure Blob storage-ból az Azure Data Lake Store-ba történő adatok másolására szolgáló eszköz. Két Azure Data Lake Store-fiók között is másolhat adatokat.      |
+| Mi ez?   | Eszköz az adatok Azure Blob Storage-ból Azure Data Lake Storeba való másolásához. Az Adatmásolás két Azure Data Lake Store fiók között is elvégezhető.      |
 | Támogatott DSVM-verziók      | Windows      |
-| Tipikus felhasználások      | Több blob importálása az Azure Blob storage-ból az Azure Data Lake Store-ba.      |
-|  Hogyan kell használni / futtatni?    |   Nyisson meg egy `adlcopy` parancssort, és írja be a súgót.    |
-| A mintákra mutató hivatkozások      | [Az AdlCopy használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
-| Kapcsolódó eszközök a DSVM      | AzCopy, Azure CLI     |
+| Jellemző felhasználások      | Több blob importálása az Azure Blob Storage-ból Azure Data Lake Storeba.      |
+|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, `adlcopy` és írja be, hogy segítséget kapjon.    |
+| Mintákra mutató hivatkozások      | [Az AdlCopy használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| A DSVM kapcsolódó eszközök      | AzCopy, Azure CLI     |
 
 ## <a name="azure-cli"></a>Azure CLI
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Az Azure felügyeleti eszköze. Parancsműveleteket is tartalmaz az Azure-adatplatformokról, például az Azure Blob storage-ból és az Azure Data Lake Store-ból történő átmozgatáshoz.     |
+| Mi ez?   | Egy felügyeleti eszköz az Azure-hoz. Emellett parancssori műveleteket is tartalmaz az Azure-beli adatplatformok, például az Azure Blob Storage és a Azure Data Lake Store adatainak áthelyezéséhez.     |
 | Támogatott DSVM-verziók      | Windows, Linux     |
-| Tipikus felhasználások      | Adatok importálása és exportálása az Azure Storage és az Azure Data Lake Store áruházba és onnan.      |
-|  Hogyan kell használni / futtatni?    |   Nyisson meg egy `az` parancssort, és írja be a súgót.    |
-| A mintákra mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure)     |
-| Kapcsolódó eszközök a DSVM      | AzCopy, AdlCopy      |
+| Jellemző felhasználások      | Adatok importálása és exportálása az Azure Storage-ba és a Azure Data Lake Storeba.      |
+|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, `az` és írja be, hogy segítséget kapjon.    |
+| Mintákra mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure)     |
+| A DSVM kapcsolódó eszközök      | AzCopy, AdlCopy      |
 
 
 ## <a name="azcopy"></a>AzCopy
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Helyi fájlokba, Azure Blob-tárolóba, fájlokba és táblákba másolhat adatokat és fájlokat.      |
+| Mi ez?   | Eszköz helyi fájlokba, Azure Blob Storage-ba, fájlokba és táblákba másolt adatok másolására.      |
 | Támogatott DSVM-verziók      | Windows      |
-| Tipikus felhasználások      | Fájlok másolása az Azure Blob storage és blobok másolása fiókok között.      |
-|  Hogyan kell használni / futtatni?    |   Nyisson meg egy `azcopy` parancssort, és írja be a súgót.    |
-| A mintákra mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
-| Kapcsolódó eszközök a DSVM      | AdlCopy     |
+| Jellemző felhasználások      | Fájlok másolása az Azure Blob Storage-ba és a Blobok másolása a fiókok között.      |
+|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, `azcopy` és írja be, hogy segítséget kapjon.    |
+| Mintákra mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| A DSVM kapcsolódó eszközök      | AdlCopy     |
 
 
-## <a name="azure-cosmos-db-data-migration-tool"></a>Az Azure Cosmos DB adatáttelepítési eszköze
+## <a name="azure-cosmos-db-data-migration-tool"></a>Adatáttelepítési eszköz Azure Cosmos DB
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Különböző forrásokból származó adatok importálására szolgál az Azure Cosmos DB-be, amely egy NoSQL-adatbázis a felhőben. Ezek a források közé tartoznak a JSON-fájlok, a CSV-fájlok, az SQL, a MongoDB, az Azure Table storage, az Amazon DynamoDB és az Azure Cosmos DB SQL API-gyűjtemények.      |
+| Mi ez?   | Eszköz különböző forrásokból származó adatok importálásához a felhőben lévő NoSQL-adatbázisba Azure Cosmos DBba. Ezek a források közé tartoznak a JSON-fájlok, a CSV-fájlok, az SQL, a MongoDB, az Azure Table Storage, az Amazon DynamoDB és a Azure Cosmos DB SQL API-gyűjtemények.      |
 | Támogatott DSVM-verziók      | Windows      |
-| Tipikus felhasználások      | Fájlok importálása a virtuális gépről a CosmosDB-be, adatok importálása az Azure table storage-ból a CosmosDB-be, és adatok importálása egy Microsoft SQL Server adatbázisból a CosmosDB-be.     |
-|  Hogyan kell használni / futtatni?    |   A parancssori verzió használatához nyisson meg `dt`egy parancssort, és írja be a parancsot. A GRAFIKUS ESZKÖZ használatához nyisson meg `dtui`egy parancssort, és írja be a parancsot.    |
-| A mintákra mutató hivatkozások      | [CosmosDB Adatok importálása](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
-| Kapcsolódó eszközök a DSVM      | AzCopy, AdlCopy      |
+| Jellemző felhasználások      | Fájlok importálása egy virtuális gépről a CosmosDB, adatok importálása az Azure Table Storage-ból a CosmosDB, és adatok importálása egy Microsoft SQL Server adatbázisból a CosmosDB-be.     |
+|  Hogyan használhatja/futtatja?    |   A parancssori verzió használatához nyisson meg egy parancssort, és írja be a `dt`következőt:. A grafikus felhasználói felület eszköz használatához nyisson meg egy parancssort, `dtui`és írja be a következőt:.    |
+| Mintákra mutató hivatkozások      | [CosmosDB importálása](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| A DSVM kapcsolódó eszközök      | AzCopy, AdlCopy      |
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
@@ -75,29 +75,29 @@ Az adatelemzési vagy AI-projekt első technikai lépései közé tartozik, hogy
 | ------------- | ------------- |
 | Mi ez?   | Grafikus felhasználói felület az Azure-felhőben tárolt fájlokkal való interakcióhoz. |
 | Támogatott DSVM-verziók      | Windows      |
-| Tipikus felhasználások      | Adatok importálása és exportálása a DSVM-ből.    |
-|  Hogyan kell használni / futtatni?    | Keressen rá az "Azure Storage Explorer" kifejezésre a Start menüben. |
-| A mintákra mutató hivatkozások      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| Jellemző felhasználások      | Adatok importálása és exportálása a DSVM.    |
+|  Hogyan használhatja/futtatja?    | A Start menüben keressen rá a "Azure Storage Explorer" kifejezésre. |
+| Mintákra mutató hivatkozások      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | SQL Server eszköz az SQL Server és egy adatfájl közötti másoláshoz.      |
+| Mi ez?   | SQL Server eszköz az Adatmásolás SQL Server és az adatfájl között.      |
 | Támogatott DSVM-verziók      | Windows      |
-| Tipikus felhasználások      | CSV-fájl importálása SQL Server táblába, és SQL Server tábla exportálása fájlba.      |
-|  Hogyan kell használni / futtatni?    |   Nyisson meg egy `bcp` parancssort, és írja be a súgót.    |
-| A mintákra mutató hivatkozások      | [bcp segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| Kapcsolódó eszközök a DSVM      | SQL Server, sqlcmd      |
+| Jellemző felhasználások      | CSV-fájl importálása SQL Server táblába, és SQL Server táblázat exportálása fájlba.      |
+|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, `bcp` és írja be, hogy segítséget kapjon.    |
+| Mintákra mutató hivatkozások      | [BCP segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| A DSVM kapcsolódó eszközök      | SQL Server, Sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Egy Eszköz egy Azure Blob storage-tároló csatlakoztatására a Linux fájlrendszerben.      |
+| Mi ez?   | Egy eszköz, amely egy Azure Blob Storage-tárolót csatlakoztat a Linux-fájlrendszerben.      |
 | Támogatott DSVM-verziók      | Linux      |
-| Tipikus felhasználások      | Olvasás és írás blobok egy tárolóban.      |
-|  Hogyan kell használni és futtatni?    |   _Blobfuse futtatása_ egy terminálon.    |
-| A mintákra mutató hivatkozások      | [blobfuse a GitHubon](https://github.com/Azure/azure-storage-fuse)      |
-| Kapcsolódó eszközök a DSVM      | Azure CLI      |
+| Jellemző felhasználások      | Egy tárolóban lévő Blobok olvasása és írása.      |
+|  Hogyan kell használni és futtatni?    |   Futtassa a _blobfuse_ -t egy terminálon.    |
+| Mintákra mutató hivatkozások      | [blobfuse a GitHubon](https://github.com/Azure/azure-storage-fuse)      |
+| A DSVM kapcsolódó eszközök      | Azure CLI      |

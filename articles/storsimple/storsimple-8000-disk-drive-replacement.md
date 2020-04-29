@@ -1,6 +1,6 @@
 ---
-title: Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközön | Microsoft dokumentumok
-description: Bemutatja, hogyan cserélhető le egy lemezmeghajtó egy StorSimple elsődleges ház vagy egy EBOD ház.
+title: Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközön | Microsoft Docs
+description: A cikk azt ismerteti, hogyan lehet lemezmeghajtót cserélni egy elsődleges StorSimple vagy egy EBOD-bekerítésen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267910"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközökön
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja, hogyan távolíthat el és cserélhet le egy hibásan működő vagy meghibásodott merevlemez-meghajtót egy Microsoft Azure StorSimple-eszközön. A lemezmeghajtó cseréjéhez a következőket kell tenni:
+Ez az oktatóanyag azt ismerteti, hogy miként távolítható el és cserélhető le egy Microsoft Azure StorSimple eszközön található hibás vagy sikertelen merevlemez-meghajtó. Lemezmeghajtó cseréjéhez a következőket kell tennie:
 
-* Oldja ki az antitamper zárat
-* A lemezmeghajtó eltávolítása
-* A cserelemez-meghajtó telepítése
+* A módosítás feloldása
+* Lemezmeghajtó eltávolítása
+* A kicserélt lemezmeghajtó telepítése
 
 > [!IMPORTANT]
-> A lemezmeghajtó eltávolítása és cseréje előtt tekintse át a [StorSimple hardverösszetevő-csere](storsimple-8000-hardware-component-replacement.md)biztonsági tudnivalóit.
+> A lemezmeghajtó eltávolítása és cseréje előtt tekintse át a [StorSimple hardver-összetevő cseréje](storsimple-8000-hardware-component-replacement.md)biztonsági információit.
  
 
-## <a name="disengage-the-antitamper-lock"></a>Oldja ki az antitamper zárat
-Ez az eljárás bemutatja, hogy a StorSimple-eszközön lévő antitamper zárolások hogyan kapcsolhatók be vagy kapcsolhatók ki a lemezmeghajtók cseréjekor. Az antitamper zárak vannak felszerelve a meghajtó hordozó fogantyúk, és ezek keresztül érhető el egy kis nyílás a zár részben a fogantyú. A meghajtókat a reteszelt reteszelésű zárakkal szállítjuk.
+## <a name="disengage-the-antitamper-lock"></a>A módosítás feloldása
+Ez az eljárás azt mutatja be, hogy a StorSimple-eszközön a lemezmeghajtók cseréjekor hogyan lehet kapcsolni vagy leválasztani a nem módosítható zárolásokat. A nem módosítható zárolások a meghajtó szolgáltatójánál vannak ellátva, és a fogantyú egy kis nyíláson keresztül érhetők el. A meghajtók a zárolt pozícióra beállított zárolásokkal vannak ellátva.
 
-#### <a name="to-unlock-the-antitamper-lock"></a>Az antitamper zár feloldása
-1. Óvatosan helyezze be a zárkulcsot (a Microsoft által biztosított "szabotázsbiztos" T10 csavarhúzót) a fogantyúnyílásba és a foglalatba. 
+#### <a name="to-unlock-the-antitamper-lock"></a>Az antimanipulálás zárolásának feloldása
+1. Óvatosan illessze be a zárolási kulcsot (a Microsoft által biztosított "tamperproof" T10 csavarhúzót) a fogantyúba és a foglalatba. 
    
-   Ha az antitamper zár aktiválva van, a piros kijelző látható a rekeszben.
+   Ha az antimanipulálás zárolása aktiválva van, a piros kijelző látható a rekeszben.
   
     ![Zárolt lemezmeghajtó](./media/storsimple-disk-drive-replacement/IC741056.png)
    
-    **1. ábra** Szabotázselleni zár bekapcsolva
+    **1. ábra** Illetéktelen módosítások zárolása elvégezve
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Kijelző rekesznyílása |
-   | 2 |Antitamper zár |
-2. Forgassa el a kulcsot az óramutató járásával ellentétes irányban, amíg a piros jelzőfény nem látható a kulcs feletti nyílásban.
-3. Vedd le a kulcsot.
+   | 1 |Kijelző rekesze |
+   | 2 |Antimanipulálás zárolása |
+2. Forgassa el a kulcsot egy megegyező irányba, amíg a piros mutató nem látható a kulcs feletti rekeszben.
+3. Távolítsa el a kulcsot.
    
-    ![Feloldott lemezmeghajtó](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Zárolt lemezmeghajtó](./media/storsimple-disk-drive-replacement/IC741057.png)
    
-    **2. ábra** Feloldott lemezmeghajtó
-4. A lemezmeghajtó most már eltávolítható.
+    **2. ábra** Zárolt lemezmeghajtó
+4. A lemezmeghajtót most már el lehet távolítani.
 
-A zár bekapcsolásához kövesse a hátrameneti lépéseket.
+A zárolás végrehajtásához kövesse a fordított lépéseket.
 
-## <a name="remove-the-disk-drive"></a>A lemezmeghajtó eltávolítása
-A StorSimple eszköz támogatja a RAID 10-szerű tárolóhelyek konfigurációját. Ez azt jelenti, hogy egy meghibásodott lemezzel, SSD-meghajtóval vagy merevlemez-meghajtóval (HDD) képes normálisan működni.
+## <a name="remove-the-disk-drive"></a>Lemezmeghajtó eltávolítása
+A StorSimple-eszköz támogatja a RAID 10-hez hasonló tárolóhelyek konfigurációját. Ez azt jelenti, hogy a szokásos módon működhet egy meghibásodott lemezzel, SSD-meghajtóval vagy merevlemez-meghajtóval (HDD).
 
 > [!IMPORTANT]
-> * Ha a rendszer egynél több meghibásodott lemezzel rendelkezik, ne távolítson el egynél több SSD-t vagy HDD-t a rendszerből. Ez adatvesztéshez vezethet.
-> * Győződjön meg arról, hogy egy csere SSD-t helyezett el egy olyan foglalatban, amely korábban SSD-t tartalmazott. Hasonlóképpen helyezzen egy csere HDD-t egy olyan foglalatba, amely korábban hdd-t tartalmazott.
-> * Az Azure Portalon a tárolóhelyek 0 és 11 közötti számmal vannak számozva. Ezért ha a portál azt mutatja, hogy a 2-es tárolóhely egy lemeze meghibásodott, az eszközön keresse meg a meghibásodott lemezt a harmadik tárolóhelyen a bal felső sarokból.
+> * Ha a rendszer egynél több meghibásodott lemezt tartalmaz, ne távolítson el egynél több SSD-t vagy HDD-t a rendszerből egy adott időpontban. Ez adatvesztést eredményezhet.
+> * Győződjön meg arról, hogy egy helyettesítő SSD-t helyez el egy olyan tárolóhelyen, amely korábban egy SSD-t foglalt. Hasonlóképpen helyezzen egy helyettesítő HDD-t egy olyan tárolóhelyre, amely korábban egy HDD-t foglalt.
+> * A Azure Portal a bővítőhelyek számozása 0 – 11. Ezért ha a portálon a 2. bővítőhely egyik lemeze nem sikerült, akkor az eszközön keresse meg a meghibásodott lemezt a bal felső sarokban található harmadik tárolóhelyen.
 > 
 > 
 
-A meghajtók eltávolíthatók és cserélhetők a rendszer működése közben.
+A meghajtók eltávolíthatók és lecserélhetők, amíg a rendszer működik.
 
 #### <a name="to-remove-a-drive"></a>Meghajtó eltávolítása
-1. A meghibásodott lemez azonosításához az Azure Portalon nyissa meg az eszköz **beállításai > hardver állapota**. Mivel egy lemez meghibásodhat az elsődleges ház és/vagy egy EBOD ház (ha egy 8600-as modellt használ), nézd meg a lemezek állapotát a **Megosztott összetevők** és az **EBOD megosztott összetevők**. A rendszer mindkét ház meghibásodott lemeze piros állapotú lesz.
-2. Keresse meg a meghajtók az elsődleges ház vagy az EBOD ház. 
-3. Ha a lemez zárolása nincs feloldva, folytassa a következő lépéssel. Ha a lemez zárolva van, oldja fel a zárolást a [Szabotázselleni zár kioldása](#disengage-the-antitamper-lock)című részben található eljárás sal.
-4. Nyomja meg a fekete reteszt a meghajtóhordozó modulon, és húzza ki a meghajtóhordozó fogantyúját, és távolodjon el az alváz elejétől.
+1. A meghibásodott lemez azonosításához a Azure Portal válassza az eszközbeállítások **> hardver állapota lehetőséget**. Mivel egy lemez meghibásodhat az elsődleges bekerítésben és/vagy egy EBOD-házban (ha 8600 modellt használ), tekintse meg a lemezek állapotát a **megosztott összetevők** alatt, valamint a **megosztott összetevők EBOD**. A bekerítésben egy hibás lemez piros állapottal jelenik meg.
+2. Keresse meg az elsődleges ház vagy a EBOD-ház elején található meghajtókat. 
+3. Ha a lemez fel van oldva, folytassa a következő lépéssel. Ha a lemez zárolva van, a zárolás feloldásához [kövesse a következő eljárást:.](#disengage-the-antitamper-lock)
+4. Nyomja meg a meghajtó szállítói modulján a fekete kilincset, és a meghajtó szolgáltatójánál húzza ki a meghajtót, és távolítsa el azt a ház elejéről.
    
-    ![Lemezmeghajtó-leíró felengedése](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Lemezmeghajtó-leíró felszabadítása](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **3. ábra** A meghajtó fogantyújának felengedése
-5. Ha a meghajtótartó fogantyúja teljesen ki van nyújtva, csúsztassa ki a meghajtótartót a házból. 
+    **3. ábra** A meghajtó leírójának felszabadítása
+5. Ha a meghajtó-kezelő leírója teljes mértékben ki van terjesztve, csúsztassa a meghajtót az alvázból. 
    
-    ![Csúszó lemez a lemezmeghajtóból](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Lemez kicsúsztatása lemezmeghajtóból](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **4.** A lemezmeghajtó kicsúsztatása a hordozóból
+    **4. ábra** A lemezmeghajtó kihúzása a hordozóról
 
-## <a name="install-the-replacement-disk-drive"></a>A cserelemez-meghajtó telepítése
-Miután egy meghajtó meghibásodott a StorSimple-eszközben, és eltávolította, kövesse az alábbi eljárást, ha új meghajtóra cserélheti.
+## <a name="install-the-replacement-disk-drive"></a>A kicserélt lemezmeghajtó telepítése
+Ha egy meghajtó meghiúsult a StorSimple-eszközön, és eltávolította azt, kövesse az alábbi eljárást egy új meghajtóra való lecseréléséhez.
 
-#### <a name="to-insert-a-drive"></a>Meghajtó beszúrása
-1. Győződjön meg arról, hogy a meghajtóhordozó fogantyúja teljesen ki van nyújtva, ahogy az az alábbi képen látható.
+#### <a name="to-insert-a-drive"></a>Meghajtó behelyezése
+1. Győződjön meg arról, hogy a meghajtó hordozófrekvencia-leírója teljes mértékben ki van terjesztve, ahogy az alábbi képen is látható.
    
-    ![Lemezmeghajtó kiterjesztett fogantyúval](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Lemezmeghajtó kibővített leíróval](./media/storsimple-disk-drive-replacement/IC741044.png)
    
-    **5. ábra** Meghajtó fogantyúval bővített
-2. Csúsztassa a meghajtótartót egészen az alvázba.
+    **5. ábra** Meghajtó kibővített leíróval
+2. A meghajtó szállítóját csúsztassa végig az alvázon.
    
-    ![Lemez csúsztatása a lemezmeghajtó-hordozóba](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Lemez lemezre helyezése a lemezmeghajtó hordozóján](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **6. ábra**  A meghajtóhordozó becsúszása az alvázba
-3. A meghajtótartó behelyezése után csukja le a meghajtóhordozó fogantyúját, miközben továbbra is benyomja a meghajtótartót az alvázba, amíg a meghajtótartó fogantyúja zárt helyzetbe nem pattan.
-4. Használja a Microsoft által biztosított zárkulcsot (szabotázsbiztos Torx csavarhúzó) a hordozófogantyú rögzítéséhez úgy, hogy a zárcsavart negyedfordulattal elfordítja az óramutató járásával megegyező irányban.
-5. Ellenőrizze, hogy a csere sikeres volt-e, és hogy a meghajtó működőképes-e. Nyissa meg az Azure Portalt, és keresse meg az **Eszközbeállítások** > **hardverállapota**lapot. A **Megosztott összetevők** vagy az **EBOD megosztott összetevői**alatt a meghajtó állapotának zöldnek kell lennie, jelezve, hogy kifogástalan állapotú.
+    **6. ábra**  A meghajtó szállítójának elcsúsztatása a váz számára
+3. Ha beszúrta a meghajtót, zárja be a lemezmeghajtó-kezelőt, miközben továbbra is leküldi a meghajtó szállítóját az alvázra, amíg a meghajtó szolgáltatója nem kattan be egy zárolt pozícióba.
+4. Használja a Microsoft által biztosított zárolási kulcsot (tamperproof TORX csavarhúzó) a hordozófrekvencia a helyükre való biztonságossá tételéhez úgy, hogy a zárolási csavar egy negyedévre van bekapcsolva.
+5. Ellenőrizze, hogy a csere sikeres volt-e, és hogy a meghajtó működőképes-e. Nyissa meg a Azure Portal, és navigáljon az eszközbeállítások**hardver állapota** **menüponthoz** > . A **megosztott összetevők** vagy a **megosztott összetevők EBOD**a meghajtó állapota legyen zöld, ami azt jelzi, hogy kifogástalan.
 
    
    > [!NOTE]
-   > A csere után több órába is beletelhet, amíg a lemez állapota zöldre vált.
+   > Több órát is igénybe vehet, amíg a lemez állapota a csere után zöldre vált.
   
 ## <a name="next-steps"></a>További lépések
-További információ a [StorSimple hardverösszetevő-cseréjéről.](storsimple-8000-hardware-component-replacement.md)
+További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

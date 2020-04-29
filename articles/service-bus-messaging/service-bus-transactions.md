@@ -1,6 +1,6 @@
 ---
-title: Tranzakciófeldolgozás áttekintése az Azure Service Busban
-description: Ez a cikk áttekintést nyújt a tranzakciófeldolgozásról és a küldési funkcióról az Azure Service Busban.
+title: A tranzakciók feldolgozásának áttekintése Azure Service Bus
+description: Ez a cikk áttekintést nyújt a tranzakciók feldolgozásáról és a Azure Service Buson keresztüli küldés szolgáltatásról.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,44 +14,44 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260903"
 ---
-# <a name="overview-of-service-bus-transaction-processing"></a>A Service Bus tranzakciófeldolgozásának áttekintése
+# <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
-Ez a cikk a Microsoft Azure Service Bus tranzakciós képességeit ismerteti. A vita nagy részét a [Service Bus-mintával rendelkező AMQP-tranzakciók illusztrálják.](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia) Ez a cikk a tranzakciófeldolgozás és a *send via* funkció áttekintésére korlátozódik a Service Busban, míg az Atomic transactions minta szélesebb és összetettebb hatókörű.
+Ez a cikk a Microsoft Azure Service Bus tranzakciós képességeit ismerteti. A vitafórumok nagy részét [Service Bus mintával rendelkező AMQP-tranzakciók](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)szemléltetik. Ez a cikk a tranzakciók feldolgozásának és a Service Buson *keresztüli küldés* funkciójának áttekintésére korlátozódik, míg az Atomic Transactions minta szélesebb és összetettebb a hatókörben.
 
-## <a name="transactions-in-service-bus"></a>Tranzakciók a Service Bus-ban
+## <a name="transactions-in-service-bus"></a>Service Bus tranzakciói
 
-Egy *tranzakció* két vagy több műveletet csoportosít egy *végrehajtási hatókörbe*. Az ilyen ügyletnek természeténél fogva biztosítania kell, hogy egy adott műveletcsoporthoz tartozó valamennyi művelet sikeres legyen, vagy együttesen sikertelen legyen. E tekintetben a tranzakciók egy egységként működnek, amelyet gyakran *atomiságnak*neveznek.
+Egy *tranzakció* két vagy több műveletet egyesít egy *végrehajtási hatókörbe*. Természeténél fogva az ilyen tranzakciónak biztosítania kell, hogy az adott műveleti csoportba tartozó összes művelet a sikeres vagy a sikertelen műveletekkel együtt járjon el. Ebben a tekintetben a tranzakciók egy egységként működnek, amelyet gyakran *atominak*nevezünk.
 
-A Service Bus egy tranzakciós üzenetközvetítő, és biztosítja a tranzakciós integritást az üzenettárolókkal szembeni összes belső művelethez. A Service Bus-on belüli üzenetek minden átvitele, például az üzenetek [kézbesítetlen levelek várólistába](service-bus-dead-letter-queues.md) való áthelyezése vagy az üzenetek entitások közötti [automatikus továbbítása](service-bus-auto-forwarding.md) tranzakciós. Mint ilyen, ha a Service Bus elfogadja az üzenetet, azt már tárolták, és egy sorszám címkével van ellátva. Ettől kezdve a Service Bus-on belüli üzenetátvitelek koordinált műveletek entitások között, és nem vezetnek az üzenet elvesztéséhez (a forrás sikeres és a cél sikertelen), sem az üzenet duplikálásához (a forrás sikertelen és a cél sikeres).
+A Service Bus egy tranzakciós üzenetküldési ügynök, és biztosítja az összes belső művelet tranzakciós integritását az üzenet-tárolókban. A Service Buson belüli összes üzenet átvitele, például üzenetek áthelyezése egy [kézbesítetlen levelek várólistájába](service-bus-dead-letter-queues.md) vagy az üzenetek entitások közötti [automatikus továbbítása](service-bus-auto-forwarding.md) , tranzakciós. Ilyen esetben, ha Service Bus fogad egy üzenetet, azt már tárolták, és sorszámmal címkézték. Ettől kezdve a Service Buson belüli összes üzenet a különböző entitások között koordinált műveleteket hajt végre, és nem fog elveszíteni (a forrás sikeres és a cél sikertelen lesz), vagy a Duplikálás (a forrás meghibásodása és a cél sikeressége).
 
-A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, témakör, előfizetés) irányuló csoportosítási műveleteket egy tranzakció hatáskörén belül. Például több üzenetet is küldhet egy várólistába egy tranzakcióhatókörből, és az üzenetek csak akkor lesznek véglegesítve a várólista naplójában, amikor a tranzakció sikeresen befejeződik.
+A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, témakör, előfizetés) irányuló csoportosítási műveleteket egy tranzakció hatáskörén belül. Küldhet például több üzenetet egy várólistába egy tranzakció hatókörén belül, és az üzenetek csak a várólista naplójába lesznek véglegesítve, amikor a tranzakció sikeresen befejeződik.
 
-## <a name="operations-within-a-transaction-scope"></a>Tranzakcióhatókörön belüli műveletek
+## <a name="operations-within-a-transaction-scope"></a>Tranzakciók hatókörén belüli műveletek
 
-A tranzakcióhatókörön belül végrehajtható műveletek a következők:
+A tranzakciók hatókörén belül elvégezhető műveletek a következők:
 
-* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Küldés, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
+* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send, SendAsync, SendBatch, SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: teljes, CompleteAsync, lemondás, AbandonAsync, kézbesítetlen levelek, DeadletterAsync, késleltetés, DeferAsync, RenewLock, RenewLockAsync 
 
-A fogadási műveletek nem szerepelnek, mert feltételezhető, hogy az alkalmazás üzeneteket szerez be a [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) módban, néhány fogadási cikluson belül vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) visszahívással, és csak ezután nyit meg egy tranzakcióhatókört az üzenet feldolgozásához.
+A fogadási műveletek nem szerepelnek, mert feltételezhető, hogy az alkalmazás a [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód használatával, egy fogadási hurokban vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -visszahívással szerzi be az üzeneteket, és csak ezután nyit meg egy tranzakció-hatókört az üzenet feldolgozásához.
 
-Az üzenet elhelyezése (teljes, elhagyás, kézbesítés, halasztás), majd a tranzakció általános kimenetelének hatókörén belül történik, és attól függ.
+Az üzenet (teljes, lemondás, kézbesítetlen levél, elhalasztás) a (z) és a (z) hatókörén belül, a tranzakció általános eredményének függvényében történik.
 
-## <a name="transfers-and-send-via"></a>Átutalások és "küldés keresztül"
+## <a name="transfers-and-send-via"></a>Átvitel és "Küldés"
 
-Az adatok tranzakciós átadásának engedélyezéséhez egy várólistából egy processzornak, majd egy másik várólistának, a Service Bus támogatja az *átvitelt.* Az átviteli műveletben a feladó először üzenetet küld az *átviteli várólistának,* és az átviteli várólista azonnal áthelyezi az üzenetet a kívánt célvárólistába ugyanazzal a robusztus átviteli implementációval, amelyen az automatikus továbbítási képesség támaszkodik. Az üzenet soha nem lesz véglegesítve az átviteli várólista naplójában oly módon, hogy az láthatóvá váljon az átviteli várólista fogyasztói számára.
+Ha engedélyezni szeretné az adatok tranzakciós *átadását*egy várólistáról a processzorra, majd egy másik várólistára, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába*, és az átviteli várólista azonnal áthelyezi az üzenetet a kívánt cél várólistára ugyanazzal a robusztus átvitelsel, amelyet az automatikus továbbítási funkció használ. Az üzenet soha nem lesz véglegesítve az átviteli várólista naplójába úgy, hogy láthatóvá válik az átviteli várólista felhasználói számára.
 
-Ennek a tranzakciós képességnek a teljesítménye akkor válik nyilvánvalóvá, amikor maga az átviteli várólista a feladó bemeneti üzeneteinek forrása. Más szóval a Service Bus átviheti az üzenetet a célvárólistába "keresztül" az átviteli várólistába, miközben teljes (vagy elhalasztása vagy holtponti) műveletet hajt végre a bemeneti üzeneten, mindezt egy atomi műveletben. 
+A tranzakciós képesség ereje nyilvánvalóvá válik, ha maga az átviteli várólista a küldő bemeneti üzeneteinek forrása. Más szóval, Service Bus átviheti az üzenetet a célhelyre az átviteli várólistán keresztül, miközben egy teljes (vagy késleltetett) műveletet végez a bemeneti üzenetben, mindezt egyetlen atomi műveletben. 
 
-### <a name="see-it-in-code"></a>Lásd kódolva
+### <a name="see-it-in-code"></a>Megtekintés a kódban
 
-Az ilyen átvitelek beállításához hozzon létre egy üzenetküldőt, amely az átviteli várólistán keresztül célozza meg a célvárólistát. Van egy fogadója is, amely ugyanabból a várólistából kéri le az üzeneteket. Példa:
+Az ilyen átvitelek beállításához létre kell hoznia egy üzenetet küldőt, amely az átviteli várólistán keresztül célozza meg a célhelyet. Olyan fogadóval is rendelkezik, amely ugyanazon a várólistán lévő üzeneteket kéri le. Például:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);
@@ -60,7 +60,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Egy egyszerű tranzakció ezután ezeket az elemeket használja, mint a következő példában. A teljes példa hivatkozásához olvassa el a [Forráskódot a GitHubon:](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)
+Az egyszerű tranzakciók ezután ezeket az elemeket használják, ahogy az alábbi példában is látható. A teljes példa áttekinthető a [githubon a forráskódban](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();
@@ -99,12 +99,12 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 
 ## <a name="next-steps"></a>További lépések
 
-A Service Bus-várólistákról az alábbi cikkekben talál további információt:
+Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [A Service Bus-várólisták használata](service-bus-dotnet-get-started-with-queues.md)
-* [A Service Bus entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
-* [Automatikus továbbítási minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-* [Atomi tranzakciók a Service Bus mintával](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
-* [Az Azure-várólisták és a Service Bus-várólisták összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
+* [Service Bus entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
+* [Automatikus továbbítás mintája](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Atomi tranzakciók Service Bus mintával](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
+* [Az Azure Queues és a Service Bus-várólisták összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
 

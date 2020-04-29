@@ -1,6 +1,6 @@
 ---
-title: Tervezze meg a VMware vész-helyreállítási kapacitását az Azure Site Recovery segítségével
-description: Ez a cikk segítséget nyújt a kapacitás és a méretezés megtervezésében, amikor az Azure Site Recovery használatával beállítja a VMware virtuális gépek vészhelyreállítását az Azure-ba.
+title: Kapacitás megtervezése a VMware vész-helyreállításhoz Azure Site Recovery
+description: Ez a cikk segít megtervezni a kapacitást és a skálázást a VMware virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery használatával történő beállításakor.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
@@ -8,89 +8,89 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257614"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás és méretezés tervezése a VMware vész-helyreállítási azure-ba
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
-Ebben a cikkben megtervezheti a kapacitást és a méretezést, amikor az Azure Site Recovery használatával replikálja a helyszíni VMware virtuális gépeket és fizikai kiszolgálókat az [Azure-ba.](site-recovery-overview.md)
+Ebből a cikkből megtervezheti a kapacitást és a skálázást, amikor a helyszíni VMware virtuális gépeket és fizikai kiszolgálókat az Azure-ba replikálja [Azure site Recovery](site-recovery-overview.md)használatával.
 
-## <a name="how-do-i-start-capacity-planning"></a>Hogyan kezdhetem el a kapacitástervezést?
+## <a name="how-do-i-start-capacity-planning"></a>Hogyan megkezdi a kapacitás megtervezését?
 
-Ha többet szeretne megtudni az Azure Site Recovery infrastruktúra követelményeiről, gyűjtsön információkat a replikációs környezetről az [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) vmware-replikációs futtatásával. További információ: [A Site Recovery Deployment Planner for VMware for Azure](site-recovery-deployment-planner.md)című témakörben talál további információt. 
+A Azure Site Recovery infrastrukturális követelmények megismeréséhez a [Azure site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) a VMware-replikációhoz való futtatásával gyűjtsön információkat a replikációs környezetről. További információ: [tudnivalók Site Recovery Deployment Planner VMware-ről Azure-](site-recovery-deployment-planner.md)ra. 
 
-A Site Recovery Deployment Planner egy jelentést tartalmaz, amely teljes körű információt tartalmaz a kompatibilis és nem kompatibilis virtuális gépekről, a virtuális gépenkénti lemezekről és a lemezenkénti adatforgalomról. Az eszköz a hálózati sávszélesség-követelményeket is összegzi a cél RPO és az Azure-infrastruktúra teljesítéséhez, amely a sikeres replikációhoz és a tesztelési feladatátvételhez szükséges.
+A Site Recovery Deployment Planner egy olyan jelentést biztosít, amely teljes körű információkkal szolgál a kompatibilis és nem kompatibilis virtuális gépekről, a virtuális gépekről és a lemezeken tárolt adatokról. Az eszköz a hálózati sávszélességre vonatkozó követelményeket is összegzi, hogy megfeleljen a RPO és a sikeres replikáláshoz és feladatátvételi teszthez szükséges Azure-infrastruktúrának.
 
 ## <a name="capacity-considerations"></a>Kapacitással kapcsolatos szempontok
 
 Összetevő | Részletek
 --- | ---
-**Replikációs** | **Maximális napi változási sebesség**: A védett gépek csak egy folyamatkiszolgálót használhatnak. Egy folyamatkiszolgáló legfeljebb 2 TB napi változást tud kezelni. Tehát a 2 TB a maximális napi adatváltozási sebesség, amely támogatott egy védett gép esetében.<br /><br /> **Maximális átviteli teljesítmény:** A replikált gép egy tárfiókhoz is tartozhat az Azure-ban. Egy szabványos Azure Storage-fiók másodpercenként legfeljebb 20 000 kérést képes kezelni. Azt javasoljuk, hogy korlátozza a bemeneti/kimeneti műveletek másodpercenkénti száma (IOPS) a forrásgép 20 000.Tjavasoljuk, hogy a bemeneti/kimeneti műveletek száma másodpercenként a forrásgépen 20 000. Például ha egy forrásgép, amely öt lemezt, és minden lemez generál 120 IOPS (8 K méretű) a forrásgépen, a forrásgép az Azure lemezenkénti IOPS-korlát 500. (A szükséges tárfiókok száma megegyezik a teljes forrásgép IOPS osztva 20 000.)
-**Konfigurációs kiszolgáló** | A konfigurációs kiszolgálónak képesnek kell lennie a napi változási sebesség kapacitásának kezelésére a védett gépeken futó összes számítási feladatban. A konfigurációs gépnek elegendő sávszélességgel kell rendelkeznie az adatok Azure Storage-ba történő folyamatos replikálásához.<br /><br /> Ajánlott eljárás, hogy a konfigurációs kiszolgálót ugyanarra a hálózatra és LAN-szegmensre helyezi, mint a védeni kívánt gépeket. A konfigurációs kiszolgálót másik hálózatra helyezheti, de a védeni kívánt gépeknek 3.<br /><br /> A konfigurációs kiszolgáló méretre vonatkozó javaslatait a következő szakaszban található táblázat foglalja össze.
-**Folyamatkiszolgáló** | Az első folyamatkiszolgáló alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. A környezet méretezéséhez további folyamatkiszolgálókat is telepíthet. <br /><br /> A folyamatkiszolgáló replikációs adatokat fogad a védett gépekről. A folyamatkiszolgáló gyorsítótárazás, tömörítés és titkosítás használatával optimalizálja az adatokat. Ezután a folyamatkiszolgáló elküldi az adatokat az Azure-ba. A folyamatkiszolgáló gépének elegendő erőforrással kell rendelkeznie a feladatok végrehajtásához.<br /><br /> A folyamatkiszolgáló lemezalapú gyorsítótárat használ. A hálózati szűk keresztmetszet vagy kimaradás esetén tárolt adatváltozások kezeléséhez használjon legalább 600 GB-os vagy annál nagyobb különálló gyorsítótárlemezt.
+**Replikáció** | **Maximális napi változási arány**: egy védett gép csak egy folyamat-kiszolgálót tud használni. Egy folyamatkiszolgáló legfeljebb 2 TB napi változást tud kezelni. Így a 2 TB a védett gépek által támogatott maximális napi adatváltozási sebesség.<br /><br /> **Maximális átviteli sebesség**: a replikált gép egy Azure-beli Storage-fiókhoz tartozhat. Egy standard Azure Storage-fiók másodpercenként legfeljebb 20 000 kérelmet képes kezelni. Azt javasoljuk, hogy a másodpercenkénti bemeneti/kimeneti műveletek másodpercenkénti számát (IOPS) korlátozza 20 000-re. Ha például van egy olyan forrásoldali számítógépe, amely öt lemezzel rendelkezik, és mindegyik lemez 120 IOPS (8 K méretű) hoz létre a forrásoldali gépen, akkor a forrásszámítógép a 500-es Azure-lemezes IOPS-korláton belül van. (A szükséges Storage-fiókok száma a 20 000-as számú teljes forrásoldali gépi IOPS egyenlő.)
+**Konfigurációs kiszolgáló** | A konfigurációs kiszolgálónak képesnek kell lennie kezelni a napi változási arányt a védett gépeken futó összes munkaterhelésen. A konfigurációs gépnek elegendő sávszélességgel kell rendelkeznie ahhoz, hogy folyamatosan replikálja az Azure Storage-ba.<br /><br /> Az ajánlott eljárás az, hogy a konfigurációs kiszolgálót ugyanarra a hálózati és LAN-szegmensre helyezze, mint a védelemmel ellátni kívánt gépeket. A konfigurációs kiszolgálót egy másik hálózaton helyezheti el, de a védelemmel ellátni kívánt gépeknek 3. rétegbeli hálózati láthatósággal kell rendelkezniük.<br /><br /> A konfigurációs kiszolgáló méretére vonatkozó javaslatokat a következő szakaszban található táblázat foglalja össze.
+**Folyamatkiszolgáló** | Alapértelmezés szerint az első folyamat-kiszolgáló települ a konfigurációs kiszolgálón. A környezet skálázásához további folyamat-kiszolgálókat is telepíthet. <br /><br /> A Process kiszolgáló fogadja a replikációs adatok védelmét a védett gépekről. A Process Server gyorsítótárazással, tömörítéssel és titkosítással optimalizálja az adatátvitelt. Ezután a Process Server elküldi az adatokat az Azure-nak. A folyamat-kiszolgáló számítógépnek elegendő erőforrással kell rendelkeznie a feladatok végrehajtásához.<br /><br /> A Process Server lemezes gyorsítótárat használ. Egy különálló, 600 GB-os gyorsítótár-lemez használatával kezelheti az adatváltozásokat, amelyeket a hálózati torlódás vagy leállás esetén tárol.
 
-## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Méretezési javaslatok a konfigurációs kiszolgálóhoz és a beépített folyamatkiszolgálóhoz
+## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>A konfigurációs kiszolgáló és a beépített folyamat-kiszolgáló méretével kapcsolatos javaslatok
 
-A számítási feladatok védelmére beépített folyamatkiszolgálót használó konfigurációs kiszolgáló legfeljebb 200 virtuális gépet képes kezelni a következő konfigurációk alapján:
+Egy olyan konfigurációs kiszolgáló, amely egy beépített folyamat-kiszolgálót használ a munkaterhelések elleni védelemhez, az alábbi konfigurációk alapján akár 200 virtuális gépet is kezelhet:
 
-CPU | Memory (Memória) | A lemez méretének gyorsítótára | Adatváltozási sebesség | Védett gépek
+CPU | Memory (Memória) | Gyorsítótárazott lemez mérete | Adatváltozási arány | Védett gépek
 --- | --- | --- | --- | ---
-8 vCPU (2 foglalat * \@ 4 mag 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | 100-nál kevesebb gépet replikál.
-12 vCPU (2 foglalat * \@ 6 mag 2,5 GHz) | 18 GB | 600 GB | 501 GB–1 TB | 100 és 150 között 100 gépet replikál.
-16 vCPU (2 foglalat * \@ 8 mag 2,5 GHz) | 32 GB | 1 TB | >1 TB és 2 TB között | 151-200 gépet replikál.
-Telepítsen egy másik konfigurációs kiszolgálót [OVF sablon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)használatával. | | | | Telepítsen egy új konfigurációs kiszolgálót, ha több mint 200 gépet replikál.
-Másik [folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#download-installation-file)telepítése . | | | >2 TB| Ha a teljes napi adatváltozási sebesség meghaladja a 2 TB-ot, telepítsen egy új horizontális felskálázási folyamatkiszolgálót.
+8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | Kevesebb mint 100 gép replikálására használható.
+12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100 és 150 gép közötti replikálásra használható.
+16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB >2 TB | 151 és 200 gép közötti replikálásra használható.
+Helyezzen üzembe egy másik konfigurációs kiszolgálót egy [OVF-sablon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)használatával. | | | | Ha több mint 200 gépet replikál, helyezzen üzembe egy új konfigurációs kiszolgálót.
+Helyezzen üzembe egy másik [Process Servert](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | 2 TB >| Ha a teljes napi adatváltozási arány meghaladja a 2 TB-ot, helyezzen üzembe egy új kibővíthető folyamat-kiszolgálót.
 
 Ezekben a konfigurációkban:
 
-* Minden forrásgép három, egyenként 100 GB-os lemezzel rendelkezik.
-* Nyolc 10 K RPM és RAID 10-es megosztott hozzáférésű aláírás-meghajtó teljesítményértékelésének összehasonlító tárolóját használtuk a gyorsítótár lemezének mérésére.
+* Mindegyik forrásoldali gépen három lemez 100 GB.
+* 8 közös hozzáférésű, 10 K/s/s fordulatszámú, a gyorsítótár-mérési lemezek mérésére szolgáló RAID 10-es adatátviteli meghajtók teljesítményére használták.
 
-## <a name="size-recommendations-for-the-process-server"></a>A folyamatkiszolgáló méretre vonatkozó javaslatai
+## <a name="size-recommendations-for-the-process-server"></a>A folyamat-kiszolgáló méretével kapcsolatos javaslatok
 
-A folyamatkiszolgáló az az összetevő, amely kezeli az adatok replikációját az Azure Site Recovery szolgáltatásban. Ha a napi változási sebesség nagyobb, mint 2 TB, a replikációs terhelés kezeléséhez kibővített folyamatkiszolgálókat kell hozzáadnia. A horizontális felskálázáshoz a következőket teheti:
+A Process Server a Azure Site Recovery adatreplikálását kezelő összetevő. Ha a napi változási arány meghaladja a 2 TB-ot, fel kell vennie a kibővített folyamat-kiszolgálókat a replikálási terhelés kezelésére. A vertikális felskálázáshoz a következőket teheti:
 
-* Növelje a konfigurációs kiszolgálók számát [ovf sablon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)használatával történő telepítéssel. Például két konfigurációs kiszolgáló használatával legfeljebb 400 gépet védhet meg.
-* [Kibővített folyamatkiszolgálók](vmware-azure-set-up-process-server-scale.md#download-installation-file)hozzáadása . A kibővített folyamatkiszolgálók segítségével a konfigurációs kiszolgáló helyett (vagy mellett) a replikációs forgalmat is kezelni tudja.
+* Növelje a konfigurációs kiszolgálók számát egy [OVF-sablon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)használatával történő telepítéssel. Például két konfigurációs kiszolgáló használatával akár 400 gépet is védetté tehet.
+* Bővítő [folyamat-kiszolgálók](vmware-azure-set-up-process-server-scale.md#download-installation-file)hozzáadása. A kibővített folyamat-kiszolgálók használatával kezelheti a replikációs forgalmat a konfigurációs kiszolgáló (vagy azon kívül) helyett.
 
-Az alábbi táblázat ezt a forgatókönyvet ismerteti:
+A következő táblázat ismerteti ezt a forgatókönyvet:
 
-* Kibővített folyamatkiszolgálót állít be.
-* A védett virtuális gépeket a kibővített folyamatkiszolgáló használatára konfigurálta.
-* Minden védett forrásgép három, egyenként 100 GB-os lemezzel rendelkezik.
+* Kibővíthető folyamat-kiszolgálót állíthat be.
+* A védett virtuális gépeket a kibővíthető folyamat kiszolgálójának használatára konfigurálta.
+* Mindegyik védett forrásoldali gépen három lemez 100 GB.
 
-További folyamatkiszolgáló | A lemez méretének gyorsítótára | Adatváltozási sebesség | Védett gépek
+További folyamat-kiszolgáló | Gyorsítótárazott lemez mérete | Adatváltozási arány | Védett gépek
 --- | --- | --- | ---
-4 vCPU (2 foglalat * \@ 2 mag 2,5 GHz), 8 GB memória | 300 GB | 250 GB vagy kevesebb | 85 vagy kevesebb gép replikálására használható.
-8 vCPU (2 foglalat * \@ 4 mag 2,5 GHz), 12 GB memória | 600 GB | 251 GB–1 TB | 86-150 gépet replikálhat.
-12 vCPU (2 foglalat * \@ 6 mag 2,5 GHz) 24 GB memória | 1 TB | >1 TB és 2 TB között | 151-225 gép replikálására használható.
+4 vCPU (2 szoftvercsatorna * 2 mag \@ 2,5 GHz), 8 GB memória | 300 GB | 250 GB vagy kevesebb | 85 vagy kevesebb gép replikálására használható.
+8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz), 12 GB memória | 600 GB | 251 GB – 1 TB | 86 és 150 gép közötti replikálásra használható.
+12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) 24 GB memória | 1 TB | 1 TB >2 TB | 151 és 225 gép közötti replikálásra használható.
 
-A kiszolgálók méretezése attól függ, hogy előnyben részesíti-e a horizontális felskálázási vagy horizontális felskálázási modellt. A méretezéshez telepítsen néhány csúcskategóriás konfigurációs kiszolgálót és dolgozza fel a kiszolgálókat. A horizontális felskálázáshoz telepítsen több kevesebb erőforrással rendelkező kiszolgálót. Ha például 200 gépet szeretne védeni 1,5 TB-os összesített napi adatváltozási sebességgel, az alábbi műveletek egyikét teheti meg:
+A kiszolgálók méretezésének módja a vertikális Felskálázási vagy kibővíthető modell igényeitől függ. A vertikális felskálázáshoz helyezzen üzembe néhány magas szintű konfigurációs kiszolgálót és feldolgozó kiszolgálót. A felskálázáshoz több, kevesebb erőforrással rendelkező kiszolgálót helyezzen üzembe. Ha például a 200-es gépet a 1,5 TB teljes napi adatváltozási arányával szeretné védetté tenni, a következő műveletek egyikét végezheti el:
 
-* Egyetlen folyamatkiszolgáló beállítása (16 vCPU, 24 GB RAM).
-* Két folyamatkiszolgáló beállítása (2 x 8 vCPU, 2* 12 GB RAM).
+* Egyetlen folyamat kiszolgálójának beállítása (16 vCPU, 24 GB RAM).
+* Két folyamat kiszolgáló beállítása (2 x 8 vCPU, 2 * 12 GB RAM).
 
-## <a name="control-network-bandwidth"></a>A hálózati sávszélesség szabályozása
+## <a name="control-network-bandwidth"></a>Hálózati sávszélesség szabályozása
 
-Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) segítségével kiszámította a replikációhoz szükséges sávszélességet (kezdeti replikációt, majd a különbözetet), néhány lehetősége van a replikációhoz használt sávszélesség szabályozására:
+Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) használatával kiszámítja a replikációhoz szükséges sávszélességet (a kezdeti replikálást, majd a különbözetet), több lehetőség közül választhat a replikációhoz használt sávszélesség mennyiségének szabályozásához:
 
-* **Sávszélesség szabályozása:** Az Azure-ba replikáló VMware-forgalom egy adott folyamatkiszolgálón keresztül történik. A folyamatkiszolgálóként futó gépeksávszélessége szabályozható.
-* **Sávszélesség befolyásolása**: Néhány beállításkulcs használatával befolyásolhatja a replikációhoz használt sávszélességet:
-  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** beállításjegyzék-érték a lemez adatátviteléhez (kezdeti vagy különbözeti replikációhoz) használt szálak számát adja meg. A nagyobb érték növeli a replikációhoz használt hálózati sávszélességet.
-  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** beállításjegyzék-érték a feladat-visszavétel során az adatátvitelhez használt szálak számát adja meg.
+* **Sávszélesség szabályozása**: az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A sávszélesség szabályozása a folyamat-kiszolgálóként futó gépeken végezhető el.
+* A **sávszélesség befolyásolása**: befolyásolhatja a replikációhoz használt sávszélességet néhány beállításkulcs használatával:
+  * A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM** beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet.
+  * A **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat használ a rendszer az adatátvitelhez a feladat-visszavétel során.
 
 ### <a name="throttle-bandwidth"></a>Sávszélesség szabályozása
 
-1. Nyissa meg az Azure Backup MMC beépülő modult a folyamatkiszolgálóként használt gépen. Alapértelmezés szerint a biztonsági mentés parancsikonja elérhető az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
+1. Nyissa meg a Azure Backup MMC beépülő modult a folyamat-kiszolgálóként használt gépen. Alapértelmezés szerint a biztonsági mentés parancsikonja az asztalon vagy a következő mappában érhető el: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
 2. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
 
-    ![Képernyőkép az Azure Backup MMC beépülő modul beállításáról a tulajdonságok módosításához](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. A **Szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget. Állítsa be a munkaidő és a nem munkaidő korlátait. Az érvényes tartományok 512 Kb/s és 1023 Mb/s között mozognak.
+    ![Képernyőkép a Azure Backup MMC beépülő modul lehetőségről a tulajdonságok módosításához](./media/site-recovery-vmware-to-azure/throttle1.png)
+3. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
-    ![Képernyőkép az Azure Biztonsági másolat tulajdonságai párbeszédpanelről](./media/site-recovery-vmware-to-azure/throttle2.png)
+    ![A Azure Backup tulajdonságai párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/throttle2.png)
 
 A szabályozáshoz a [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) parancsmag is használható. Például:
 
@@ -102,72 +102,72 @@ A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szü
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>A virtuális gép hálózati sávszélességének módosítása
 
-1. A virtuális gép beállításjegyzékében nyissa meg **a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication mappát.**
-   * A replikálólemez sávszélesség-forgalmának módosításához módosítsa az **UploadThreadsPerVM**értékét. Hozza létre a kulcsot, ha nem létezik.
-   * Az Azure-ból érkező feladat-visszavételi forgalom sávszélességének módosításához módosítsa a **DownloadThreadsPerVM**értékét.
-2. Az alapértelmezett érték az egyes **kulcsok**4 . A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximális érték **32**. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
+1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
+   * A replikálási lemez sávszélesség-forgalmának megváltoztatásához módosítsa a **UploadThreadsPerVM**értékét. Ha nem létezik, hozza létre a kulcsot.
+   * Ha módosítani szeretné az Azure-beli feladat-visszavételi forgalom sávszélességét, módosítsa a **DownloadThreadsPerVM**értékét.
+2. Az egyes kulcsok alapértelmezett értéke **4**. A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximálisan használható érték **32**. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
 
-## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>A Site Recovery infrastruktúra beállítása több mint 500 virtuális gép védelmére
+## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>A Site Recovery infrastruktúra beállítása több mint 500 virtuális gép elleni védelemhez
 
-A Site Recovery infrastruktúra beállítása előtt a következő tényezők mérésére használja a környezetet: kompatibilis virtuális gépek, a napi adatváltozási sebesség, az elérni kívánt RPO szükséges hálózati sávszélessége, a Site Recovery száma szükséges összetevőket, valamint a kezdeti replikáció befejezéséhez szükséges időt. Hajtsa végre a következő lépéseket a szükséges információk összegyűjtéséhez:
+A Site Recovery-infrastruktúra beállítása előtt a környezettel a következő tényezőket mérhetővé teheti: kompatibilis virtuális gépek, a napi adatváltozási arány, az elérni kívánt RPO szükséges hálózati sávszélesség, a szükséges Site Recovery-összetevők száma, valamint a kezdeti replikálás befejezésének ideje. A szükséges információk összegyűjtéséhez hajtsa végre a következő lépéseket:
 
-1. A paraméterek méréséhez futtassa a Site Recovery Deployment Planner programot a környezetén. Hasznos irányelveket a [VMware webhely-helyreállítási telepítéstervezője az Azure-ba című témakörben talál.](site-recovery-deployment-planner.md)
-2. Olyan konfigurációs kiszolgáló telepítése, amely megfelel [a konfigurációs kiszolgáló méretre vonatkozó ajánlásainak.](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) Ha az éles munkaterhelés meghaladja a 650 virtuális gépet, telepítsen egy másik konfigurációs kiszolgálót.
-3. A mért napi adatváltozási sebesség alapján telepítsen [kibővített folyamatkiszolgálókat](vmware-azure-set-up-process-server-scale.md#download-installation-file) a [méretre vonatkozó irányelvek](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)segítségével.
-4. Ha a lemez esési sebessége várhatóan meghaladja a 2 Mb/s-ot, győződjön meg arról, hogy prémium szintű felügyelt lemezeket használ. A Webhely-helyreállítási központi telepítés tervezője egy adott időszakra fut. Előfordulhat, hogy máskor az adatváltozási sebesség csúcsai nem lesznek rögzítve a jelentésben.
-5. [Állítsa be a hálózati sávszélességet](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) az elérni kívánt RPO alapján.
-6. Az infrastruktúra beállítása után engedélyezze a vészhelyreállítást a számítási feladatokhoz. További információ: [A VMware forráskörnyezetének beállítása az Azure replikációhoz](vmware-azure-set-up-source.md)című témakörben olvashat.
+1. A paraméterek méréséhez futtassa Site Recovery Deployment Plannert a környezetében. A hasznos útmutatást lásd: [Tudnivalók a VMware – Azure-hoz készült Site Recovery Deployment Plannerról](site-recovery-deployment-planner.md).
+2. Helyezzen üzembe olyan konfigurációs kiszolgálót, amely megfelel a [konfigurációs kiszolgáló méretére vonatkozó javaslatoknak](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Ha az üzemi munkaterhelés meghaladja a 650-es virtuális gépeket, helyezzen üzembe egy másik konfigurációs kiszolgálót.
+3. A mért napi adatváltozási arány alapján a [méretre vonatkozó irányelvek](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)segítségével telepítse a [kibővíthető folyamat-kiszolgálókat](vmware-azure-set-up-process-server-scale.md#download-installation-file) .
+4. Ha várhatóan egy lemezes virtuális gép adatváltozási sebessége meghaladja a 2 MBps-ot, győződjön meg arról, hogy prémium szintű felügyelt lemezeket használ. Site Recovery Deployment Planner egy adott időszakban fut. Előfordulhat, hogy a jelentés nem rögzíti az adatváltozási arányban lévő csúcsokat más időpontokban.
+5. [Állítsa be a hálózati sávszélességet](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) a elérni kívánt RPO alapján.
+6. Ha az infrastruktúra be van állítva, engedélyezze a vész-helyreállítást a munkaterhelés számára. További információ: [a forrás-környezet beállítása VMware-ről Azure-ba történő replikálásra](vmware-azure-set-up-source.md).
 
-## <a name="deploy-additional-process-servers"></a>További folyamatkiszolgálók telepítése
+## <a name="deploy-additional-process-servers"></a>További folyamat-kiszolgálók üzembe helyezése
 
-Ha a központi telepítést 200-nál több forrásgépnél bővíti, vagy ha a napi lemorzsolódási arány meghaladja a 2 TB-ot, folyamatkiszolgálókat kell hozzáadnia a forgalom mennyiségének kezeléséhez. A terméket 9.24-es verzióban bővítettük, hogy [a folyamatkiszolgáló figyelmeztetéseket](vmware-physical-azure-monitor-process-server.md#process-server-alerts) biztosítson a kibővített folyamatkiszolgáló beállításáról. [Állítsa be a folyamatkiszolgálót az](vmware-azure-set-up-process-server-scale.md) új forrásgépek védelmére vagy [a terhelés kiegyenlítésére](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+Ha az üzembe helyezést az 200-as számú forrásoldali gépen túlra bővíti, vagy ha a teljes napi adatváltozási arány meghaladja a 2 TB-ot, fel kell vennie a folyamat-kiszolgálókat a forgalmi mennyiség kezelésére. Bővítettük a terméket a 9,24-es verzióban, hogy a [Process Server-riasztások](vmware-physical-azure-monitor-process-server.md#process-server-alerts) biztosítva legyenek a kibővíthető folyamat kiszolgálójának beállításakor. [Állítsa be úgy a folyamatot](vmware-azure-set-up-process-server-scale.md) , hogy megvédje az új forrásokkal rendelkező gépeket, vagy [kiegyenlítse a terhelést](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
-### <a name="migrate-machines-to-use-the-new-process-server"></a>Gépek áttelepítése az új folyamatkiszolgáló használatához
+### <a name="migrate-machines-to-use-the-new-process-server"></a>Gépek migrálása az új Process Server használatára
 
-1. Válassza a **Beállítások** > **hely-helyreállítási kiszolgálók lehetőséget.** Jelölje ki a konfigurációs kiszolgálót, majd bontsa ki **a Folyamatkiszolgálók csomópontot.**
+1. Válassza a **Beállítások** > **site Recovery kiszolgálók**lehetőséget. Válassza ki a konfigurációs kiszolgálót, majd bontsa ki a **folyamat-kiszolgálók**elemet.
 
-    ![Képernyőkép a Folyamatkiszolgáló párbeszédpanelről](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Kattintson a jobb gombbal a jelenleg használt folyamatkiszolgálóra, majd válassza a **Váltás parancsot.**
+    ![A folyamat-kiszolgáló párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
+2. Kattintson a jobb gombbal a jelenleg használt Process Server elemre, majd válassza a **váltás**lehetőséget.
 
-    ![Képernyőkép a Konfigurációs kiszolgáló párbeszédpanelről](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. A **Célfolyamat-kiszolgáló kiválasztása**csoportban válassza ki a használni kívánt új folyamatkiszolgálót. Ezután válassza ki a kiszolgáló által kezelt virtuális gépeket. A kiszolgálóval kapcsolatos információk kijelölését válassza az információs ikonra. A betöltési döntések meghozatalához megjelenik az egyes kiválasztott virtuális gépek nek az új folyamatkiszolgálóra replikálásához szükséges átlagos terület. Jelölje be a pipát az új folyamatkiszolgálóra való replikálás megkezdéséhez.
+    ![A konfigurációs kiszolgáló párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
+3. A **cél-feldolgozási kiszolgáló kiválasztása**lapon válassza ki a használni kívánt új folyamatot. Ezután válassza ki azokat a virtuális gépeket, amelyeket a kiszolgáló kezelni fog. Ha információt szeretne kapni a kiszolgálóról, válassza ki az információs ikont. A betöltési döntések elvégzéséhez az egyes kiválasztott virtuális gépeknek az új folyamat-kiszolgálóra való replikálásához szükséges átlagos terület jelenik meg. Jelölje be a jelölőnégyzetet, ha meg szeretné kezdeni az új folyamat-kiszolgálóra való replikálást.
 
-## <a name="deploy-additional-master-target-servers"></a>További főcélkiszolgálók telepítése
+## <a name="deploy-additional-master-target-servers"></a>További fő célkiszolgáló üzembe helyezése
 
-A következő esetekben egynél több fő célkiszolgálóra van szükség:
+A következő esetekben több fő célkiszolgáló szükséges:
 
-*   Egy Linux-alapú virtuális gépet szeretne védeni.
+*   Egy Linux-alapú virtuális gépet szeretne védelemmel ellátni.
 *   A konfigurációs kiszolgálón elérhető fő célkiszolgáló nem fér hozzá a virtuális gép adattárához.
-*   A fő célkiszolgálón lévő lemezek száma (a kiszolgálón lévő helyi lemezek száma és a védendő lemezek száma) meghaladja a 60 lemezt.
+*   A fő célkiszolgálón lévő lemezek teljes száma (a kiszolgálón található helyi lemezek száma és a védendő lemezek száma) nagyobb, mint 60 lemez.
 
-Ha meg szeretné tudni, hogyan adhat hozzá fő célkiszolgálót egy Linux-alapú virtuális géphez, olvassa el [A Linux fő célkiszolgáló telepítése feladat-visszavételhez](vmware-azure-install-linux-master-target.md)című témakört.
+A Linux-alapú virtuális gépek fő célkiszolgáló hozzáadásával kapcsolatos további információkért lásd: [Linux fő célkiszolgáló telepítése feladat-visszavételhez](vmware-azure-install-linux-master-target.md).
 
 Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
 
-1. Nyissa meg a **Recovery Services Vault** > **helyhelyreállítási infrastruktúra** > **konfigurációs kiszolgálóinak webhelykonfigurációs kiszolgálóit.**
-2. Válassza ki a szükséges konfigurációs kiszolgálót, majd válassza **a Fő célkiszolgáló**lehetőséget.
+1. Nyissa meg **Recovery Services** > tároló**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**lehetőséget.
+2. Válassza ki a szükséges konfigurációs kiszolgálót, majd válassza a **fő célkiszolgáló**elemet.
 
-    ![Képernyőkép a Fő célkiszolgáló hozzáadása gombról](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
-3. Töltse le az egyesített telepítőfájlt, majd futtassa a fájlt a virtuális gépen a fő célkiszolgáló beállításához.
-4. Válassza **a Főcél** > telepítése**Tovább lehetőséget.**
+    ![A fő célkiszolgáló hozzáadása gombot megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. Töltse le az egyesített telepítő fájlt, majd futtassa a fájlt a virtuális gépen a fő célkiszolgáló beállításához.
+4. Válassza a **fő cél** > telepítése**tovább**lehetőséget.
 
-    ![Képernyőkép, amelyen a Fő cél telepítése beállítás látható](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. Válassza ki az alapértelmezett telepítési helyet, majd kattintson a **Telepítés gombra.**
+    ![A fő cél telepítése lehetőség kiválasztását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+5. Válassza ki az alapértelmezett telepítési helyet, majd válassza a **telepítés**lehetőséget.
 
-     ![Képernyőkép az alapértelmezett telepítési helyet megjelenítő képernyőképről](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. Ha regisztrálni szeretné a fő célt a konfigurációs kiszolgálóval, válassza a **Folytatás a konfigurációba**lehetőséget.
+     ![Az alapértelmezett telepítési helyet megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
+6. Ha a fő célt a konfigurációs kiszolgálóval szeretné regisztrálni, válassza a **Folytatás a konfigurációhoz**lehetőséget.
 
-    ![Képernyőkép, amelyen a Folytatás a konfigurációhoz gomb látható](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. Adja meg a konfigurációs kiszolgáló IP-címét, majd írja be a jelszót. A jelszó létrehozásáról a [Konfigurációs kiszolgáló jelmondatának létrehozása .Ok a konfigurációs kiszolgáló jelmondatának létrehozása](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
+    ![A folytatás a konfigurációhoz gombot megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. Adja meg a konfigurációs kiszolgáló IP-címét, majd írja be a jelszót. A hozzáférési kód létrehozásával kapcsolatos további információkért lásd: [konfigurációs kiszolgáló jelszavainak](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)létrehozása. 
 
-    ![Képernyőkép, amely megmutatja, hogy hol adja meg a konfigurációs kiszolgáló IP-címét és jelmondatát](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Kattintson a **Register** (Regisztrálás) elemre. A regisztráció befejezése után válassza a **Befejezés**gombot.
+    ![A konfigurációs kiszolgáló IP-címének és jelszavának megadását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+8. Kattintson a **Register** (Regisztrálás) elemre. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
 
-Ha a regisztráció sikeresen befejeződik, a kiszolgáló megjelenik az Azure Portalon a **Recovery Services Vault** > **site recovery infrastruktúra** > **konfigurációs kiszolgálói ,** a fő célkiszolgálók a konfigurációs kiszolgáló.
+A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services** > tárolóban**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
 
  > [!NOTE]
- > Töltse le a [fő célkiszolgáló windowsos egyesített telepítőfájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
+ > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
 ## <a name="next-steps"></a>További lépések
 
-A [Webhely-helyreállítási telepítéstervező](https://aka.ms/asr-deployment-planner)letöltése és futtatása.
+[Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

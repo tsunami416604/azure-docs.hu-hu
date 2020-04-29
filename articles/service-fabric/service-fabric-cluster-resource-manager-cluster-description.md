@@ -1,253 +1,253 @@
 ---
-title: Fürt leírása a Fürterőforrás-kezelő használatával
-description: Írja le a Service Fabric-fürtöt tartalék tartományok, frissítési tartományok, csomóponttulajdonságok és csomópontkapacitások megadásával a fürterőforrás-kezelőhöz.
+title: Fürt leírása a fürterőforrás-kezelő használatával
+description: Service Fabric fürt leírása a tartalék tartományok, a tartományok, a csomópont-tulajdonságok és a fürterőforrás-kezelő csomópont-kapacitásainak megadásával.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258771"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
-Az Azure Service Fabric fürterőforrás-kezelő szolgáltatása számos mechanizmust biztosít a fürt leírásához:
+Az Azure Service Fabric fürterőforrás-kezelő funkciója számos módszert kínál a fürtök leírására:
 
 * Tartalék tartományok
-* Tartományok frissítése
+* Frissítési tartományok
 * Csomópont tulajdonságai
-* Csomópontkapacitások
+* Csomópont kapacitása
 
-Futásidőben a fürterőforrás-kezelő ezt az információt a fürtben futó szolgáltatások magas rendelkezésre állásának biztosítására használja. E fontos szabályok érvényesítése közben megpróbálja optimalizálni a fürtön belüli erőforrás-felhasználást is.
+A Futtatás során a fürterőforrás-kezelő ezeket az információkat használja a fürtben futó szolgáltatások magas rendelkezésre állásának biztosításához. A fontos szabályok betartatása közben a fürtön belüli erőforrás-használat optimalizálására is törekszik.
 
 ## <a name="fault-domains"></a>Tartalék tartományok
-A tartalék tartomány a koordinált hibák bármely területe. Egyetlen gép egy tartalék tartomány. Ez nem a saját különböző okok miatt, a tápegység hibák meghajtó hibák rossz NIC firmware. 
+A tartalék tartomány bármely koordinált meghibásodási terület. Egyetlen gép a tartalék tartomány. A meghibásodások különböző okok miatt sikertelenek lehetnek a hálózati ADAPTERek hibáinak elhárítása érdekében. 
 
-Az ugyanahhoz az Ethernet-kapcsolóhoz csatlakozó gépek ugyanabban a tartalék tartományban vannak. Ahogy azok a gépek is, amelyek egyetlen energiaforrással vagy egyetlen helyen osztoznak. 
+Az ugyanahhoz az Ethernet-kapcsolóhoz csatlakozó gépek ugyanabban a tartalék tartományban találhatók. Tehát olyan gépek, amelyek egyetlen áramforrással vagy egyetlen helyen osztoznak. 
 
-Mivel a hardverhibák természetes átfedése, a tartalék tartományok eredendően hierarchikusak. Uri-kként jelennek meg a Service Fabricben.
+Mivel a hardveres hibák esetében természetes, hogy átfedésben vannak, a tartalék tartományok eredendően hierarchikusak. Service Fabric URI-ként jelennek meg.
 
-Fontos, hogy a tartalék tartományok megfelelően vannak beállítva, mert a Service Fabric ezeket az információkat használja a szolgáltatások biztonságos helyéhez. A Service Fabric nem szeretné olyan szolgáltatásokat elhelyezni, hogy a tartalék tartomány (egyes összetevők meghibásodása által okozott) elvesztése miatt a szolgáltatás leáll. 
+Fontos, hogy a tartalék tartományok megfelelően legyenek beállítva, mivel Service Fabric ezt az információt használja a szolgáltatások biztonságos elhelyezéséhez. Service Fabric nem kíván olyan szolgáltatásokat elhelyezni, amelyek miatt a tartalék tartomány elvesztése (bizonyos összetevők meghibásodása okozta) miatt a szolgáltatás leáll. 
 
-Az Azure-környezetben a Service Fabric a környezet által biztosított tartalék tartomány adatait használja a fürt csomópontjainak megfelelő konfigurálásához az Ön nevében. A Service Fabric önálló példányai hozlétre a tartalék tartományok a fürt beállításakor vannak definiálva. 
+Az Azure-környezetben a Service Fabric a környezete által biztosított tartalék tartományi információk használatával helyesen konfigurálja a fürt csomópontjait az Ön nevében. Service Fabric önálló példányai esetén a tartalék tartományok a fürt beállításának időpontjában vannak meghatározva. 
 
 > [!WARNING]
-> Fontos, hogy a service fabric nek megadott tartalék tartomány adatai pontosak legyenek. Tegyük fel például, hogy a Service Fabric-fürt csomópontjai 10 virtuális gépen belül futnak, és 5 fizikai gazdagépen futnak. Ebben az esetben annak ellenére, hogy 10 virtuális gép van, csak 5 különböző (legfelső szintű) tartalék tartomány van. Ugyanazt a fizikai gazdagépet megosztja, a virtuális gépek ugyanazt a legfelső szintű tartaléktartományt osztják meg, mivel a virtuális gépek koordinált hibát tapasztalnak, ha fizikai állomásuk meghibásodik.  
+> Fontos, hogy a Service Fabrichoz megadott tartalék tartományi információk pontosak legyenek. Tegyük fel például, hogy az Service Fabric-fürt csomópontjai 10 virtuális gépen futnak, és 5 fizikai gazdagépen futnak. Ebben az esetben annak ellenére, hogy 10 virtuális gép van, csak 5 különböző (legfelső szintű) tartalék tartomány létezik. Ugyanannak a fizikai gazdagépnek a megosztása azt eredményezi, hogy a virtuális gépek ugyanazt a legfelső szintű tartalék tartományt használják, mivel a virtuális gépek a fizikai gazdagép meghibásodása esetén koordinált hibával  
 >
-> A Service Fabric elvárja, hogy egy csomópont tartalék tartománya ne változzon. A virtuális gépek magas rendelkezésre állásának biztosításához szükséges egyéb mechanizmusok, például a [HA-virtuális gépek](https://technet.microsoft.com/library/cc967323.aspx)ütközéseket okozhatnak a Service Fabric szolgáltatással. Ezek a mechanizmusok a virtuális gépek transzparens áttelepítését használják egyik állomásról a másikra. Nem konfigurálják újra, és nem értesítik a futó kódot a virtuális gépen belül. Mint ilyen, *nem támogatottak* a Service Fabric-fürtök futtatásához. 
+> Service Fabric elvárja, hogy a csomópontok tartalék tartománya ne változzon meg. A virtuális gépek magas rendelkezésre állásának biztosítására szolgáló egyéb mechanizmusok, például [Ha a virtuális gépek](https://technet.microsoft.com/library/cc967323.aspx), ütközést okozhatnak a Service Fabric. Ezek a mechanizmusok a virtuális gépek transzparens áttelepítését használják az egyik gazdagépről a másikra. Nem konfigurálja újra vagy értesíti a futó kódot a virtuális gépen. Ezért *nem támogatottak* környezetként Service Fabric fürtök futtatásához. 
 >
-> A Service Fabric legyen az egyetlen magas rendelkezésre állású technológia. Mechanizmusok, például az élő virtuális gép áttelepítése és a sans nem szükséges. Ha ezeket a mechanizmusokat a Service Fabric-tel együtt használják, _csökkentik_ az alkalmazások rendelkezésre állását és megbízhatóságát. Ennek az az oka, hogy további összetettséget vezetnek be, központi hibaforrásokat adnak hozzá, és olyan megbízhatósági és rendelkezésre állási stratégiákat használnak, amelyek ütköznek a Service Fabric-ben lévőkkel. 
+> A Service Fabric csak magas rendelkezésre állású technológia lehet. Nem szükségesek olyan mechanizmusok, mint az élő VM-Migrálás és a SANs. Ha ezeket a mechanizmusokat a Service Fabric együtt használja, az alkalmazás rendelkezésre állását és megbízhatóságát is _csökkenti_ . Ennek az az oka, hogy további bonyolultságot jelentenek, központosított meghibásodási forrásokat biztosítanak, és olyan megbízhatósági és rendelkezésre állási stratégiákat használnak, amelyek ütköznek a Service Fabric. 
 >
 >
 
-A következő ábrán színezünk ki minden olyan entitást, amely hozzájárul a tartalék tartományokhoz, és felsoroljuk az összes különböző tartalék tartományt, amely ez az eredmény. Ebben a példában adatközpontokkal ("DC"), állványokkal ("R") és blades ("B") rendelkezünk. Ha minden panel egynél több virtuális gépet tartalmaz, előfordulhat, hogy egy másik réteg a tartalék tartomány hierarchiájában.
+Az alábbi ábrán az összes olyan entitást színezjük, amely hozzájárul a tartalék tartományokhoz, és felsorolja az összes olyan különböző tartalék tartományt, amely az eredmény. Ebben a példában az adatközpontok ("DC"), az állványok ("R") és a pengék ("B") szerepelnek. Ha minden egyes panel több virtuális gépet tartalmaz, lehet, hogy a tartalék tartomány hierarchiájában egy másik réteg található.
 
 <center>
 
-![Tartalék tartományokon keresztül szervezett csomópontok][Image1]
+![Tartalék tartományokon keresztül rendezett csomópontok][Image1]
 </center>
 
-Futásidőben a Service Fabric fürterőforrás-kezelő figyelembe veszi a fürt és a tervek elrendezésében lévő tartalék tartományokat. Az állapotalapú replikák vagy állapotmentes példányok egy szolgáltatás elosztott, így azok külön tartalék tartományokban. A szolgáltatás tartalék tartományok közötti terjesztése biztosítja, hogy a szolgáltatás rendelkezésre állása ne sérüljön, ha egy tartalék tartomány a hierarchia bármely szintjén meghibásodik.
+A futtatókörnyezet során Service Fabric fürterőforrás-kezelő figyelembe veszi a fürtben található tartalék tartományokat, és megtervezi az elrendezéseket. A szolgáltatás állapot-nyilvántartó replikái vagy állapot nélküli példányai szétoszthatók, hogy külön tartalék tartományokban legyenek. A szolgáltatás a tartalék tartományok között történő terjesztése biztosítja, hogy a szolgáltatás rendelkezésre állása ne veszélyeztesse, ha egy tartalék tartomány a hierarchia bármelyik szintjén meghibásodik.
 
-A fürterőforrás-kezelőt nem érdekli, hogy hány réteg van a tartalék tartományhierarchiában. Megpróbálja biztosítani, hogy a hierarchia bármely részének elvesztése ne befolyásolja a benne futó szolgáltatásokat. 
+A fürterőforrás-kezelő nem gondoskodik arról, hogy hány réteg van a tartalék tartományi hierarchiában. Megpróbálja biztosítani, hogy a hierarchia egy részének elvesztése ne befolyásolja a rajta futó szolgáltatásokat. 
 
-A legjobb, ha a csomópontok száma a hibatartomány-hierarchia minden mélységi szintjén van. Ha a tartalék tartományok "fája" kiegyensúlyozatlan a fürtben, a fürterőforrás-kezelő nehezebben találja ki a szolgáltatások legjobb elosztását. A kiegyensúlyozatlan tartaléktartomány-elrendezések azt jelentik, hogy egyes tartományok elvesztése nagyobb hatással van a szolgáltatások rendelkezésre állására, mint más tartományok. Ennek eredményeképpen a fürterőforrás-kezelő két cél között szakad meg: 
+A legjobb, ha azonos számú csomópont van a tartalék tartományi hierarchia minden szintjén. Ha a tartalék tartományok "Tree" értéke kiegyensúlyozatlan a fürtben, akkor nehezebb a fürterőforrás-kezelő számára a szolgáltatások legjobb kiosztását kideríteni. A kiegyensúlyozatlan tartalék tartományok elrendezése azt jelenti, hogy egyes tartományok elvesztése a többi tartománynál több szolgáltatás elérhetőségét is befolyásolja. Ennek eredményeképpen a fürterőforrás-kezelő két cél között szakad meg: 
 
-* Azt akarja, hogy használja a gépeket, hogy a "nehéz" domain azáltal, hogy szolgáltatásokat rájuk. 
-* Azt akarja, hogy a szolgáltatások más tartományokban, hogy a veszteség a domain nem okoz problémát. 
+* Ezt a "nehéz" tartományhoz tartozó gépeket szeretné használni a szolgáltatások elhelyezésével. 
+* A szolgáltatásokat más tartományokban kívánja elhelyezni, így a tartományok elvesztése nem okoz problémát. 
 
-Hogyan néznek ki a kiegyensúlyozatlan tartományok? Az alábbi ábrán két különböző fürtelrendezés látható. Az első példában a csomópontok egyenletesen oszlanak el a tartalék tartományok között. A második példában egy tartalék tartomány sokkal több csomópontot, mint a többi tartalék tartományok. 
+Hogyan néznek ki a kiegyensúlyozatlan tartományok? Az alábbi ábrán két különböző fürtkonfiguráció látható. Az első példában a csomópontok egyenletesen oszlanak el a tartalék tartományok között. A második példában az egyik tartalék tartomány sokkal több csomóponttal rendelkezik, mint a többi tartalék tartomány. 
 
 <center>
 
-![Két különböző fürtelrendezés][Image2]
+![Két különböző fürtkonfiguráció][Image2]
 </center>
 
-Az Azure-ban a választás, amely tartalék tartomány tartalmaz egy csomópontot az Ön számára. De attól függően, hogy hány csomópontok, amelyek kiépítése, továbbra is a végén a tartalék tartományok, amelyek több csomópont ot, mint másokban. 
+Az Azure-ban a kiválasztható, hogy melyik tartalék tartomány tartalmaz egy csomópontot, a rendszer felügyeli. Azonban a kiépített csomópontok számától függően továbbra is előfordulhat, hogy a tartalék tartományok több csomóponttal rendelkeznek, mint másokban. 
 
-Tegyük fel például, hogy öt tartalék tartomány van a fürtben, de hét csomópontot létesít egy csomóponttípushoz (**NodeType**). Ebben az esetben az első két tartalék tartomány több csomót ad. Ha továbbra is több **NodeType** példányt telepít néhány példánnyal, a probléma rosszabbodik. Ezért azt javasoljuk, hogy az egyes csomóponttípusokcsomópont-típusokban lévő csomópontok száma a tartalék tartományok többszöröse.
+Tegyük fel például, hogy öt tartalék tartomány van a fürtben, de hét csomópontot helyez üzembe a csomópont típusa (**NodeType**) számára. Ebben az esetben az első két tartalék tartomány több csomóponttal fejeződik be. Ha továbbra is több **NodeType** -példányt telepít, és csak néhány példánya van, a probléma rosszabb lesz. Ezért azt javasoljuk, hogy a csomópontok száma az egyes csomópont-típusokban a tartalék tartományok számának többszöröse legyen.
 
-## <a name="upgrade-domains"></a>Tartományok frissítése
-A frissítési tartományok egy másik szolgáltatás, amely segít a Service Fabric-fürterőforrás-kezelőnek megérteni a fürt elrendezését. A frissítési tartományok olyan csomópontkészleteket határoznak meg, amelyek egyidejűleg vannak frissítve. A frissítési tartományok segítségével a fürterőforrás-kezelő megérti és vezényli a felügyeleti műveleteket, például a frissítéseket.
+## <a name="upgrade-domains"></a>Frissítési tartományok
+A frissítési tartományok egy másik funkció, amely segít Service Fabric fürterőforrás-kezelőnek megérteni a fürt elrendezését. A frissítési tartományok olyan csomópont-készleteket határoznak meg, amelyek egy időben frissülnek. A frissítési tartományok segítséget nyújtanak a fürterőforrás-kezelőnek a felügyeleti műveletek, például a frissítések megismerésében és összehangolásában.
 
-Upgrade tartományok sok, mint a tartalék tartományok, de egy pár kulcsfontosságú különbségeket. Először is az összehangolt hardverhibák területei határozzák meg a tartalék tartományokat. A frissítési tartományokat viszont a házirend határozza meg. Te döntöd el, hogy hányat akarsz, ahelyett, hogy hagynád, hogy a környezet diktálja a számot. Annyi frissítési tartománya lehet, mint ahány csomópontnak van. Egy másik különbség a tartalék tartományok és a frissítési tartományok között az, hogy a frissítési tartományok nem hierarchikusak. Ehelyett, ők több, mint egy egyszerű tag. 
+A frissítési tartományok nagyon hasonlóak a tartalék tartományokhoz, de néhány fő különbséggel. Először is, a koordinált hardveres hibák területei határozzák meg a tartalék tartományokat. A frissítési tartományokat a házirend határozza meg. Eldöntheti, hogy hányat szeretne, ahelyett, hogy a környezet diktálja a számot. Több frissítési tartományt is használhat a csomópontok végrehajtásához. A tartalék tartományok és a frissítési tartományok között egy másik különbség, hogy a frissítési tartományok nem hierarchikusak. Ehelyett inkább egy egyszerű címkéhez hasonlítanak. 
 
-Az alábbi ábrán három, három tartalék tartományban csíkozott frissítési tartomány látható. Azt is mutatja, egy lehetséges elhelyezése három különböző replikák egy állapotalapú szolgáltatás, ahol minden végződik különböző hiba-és frissítési tartományok. Ez az elhelyezés lehetővé teszi a hibatartomány elvesztését a szolgáltatásfrissítés közben, és továbbra is rendelkezik a kód és az adatok egy példányával.  
+A következő ábra három tartalék tartományba tartozó frissítési tartományt mutat be. Emellett az állapot-nyilvántartó szolgáltatás három különböző replikájának egyik lehetséges elhelyezését is megjeleníti, ahol mindegyik a különböző hibák és frissítési tartományokba végződik. Ez az elhelyezés lehetővé teszi a tartalék tartomány elvesztését egy szolgáltatás frissítése közben, és továbbra is rendelkezik a kód és az adatmennyiség egy másolatával.  
 
 <center>
 
-![Elhelyezés hibás és frissítési tartományokkal][Image3]
+![Elhelyezés a hibák és a frissítési tartományok között][Image3]
 </center>
 
-Vannak előnyei és hátrányai, hogy miután nagy számú frissítési tartományok. Több frissítési tartományok azt jelenti, hogy a frissítés minden egyes lépése részletesebb, és kisebb számú csomópontot vagy szolgáltatást érint. Kevesebb szolgáltatásnak kell egyszerre mozognia, így kevesebb lemorzsolódás torka kerül a rendszerbe. Ez általában javítja a megbízhatóságot, mivel a frissítés során bevezetett bármely probléma kevesebb szolgáltatást érint. A további frissítési tartományok azt is jelentik, hogy a frissítés hatásának kezeléséhez kevesebb rendelkezésre álló pufferre van szükség más csomópontokon. 
+Vannak olyan előnyök és hátrányok, amelyek nagy számú frissítési tartománnyal rendelkeznek. A további frissítési tartományok a frissítés minden egyes lépése részletesebbek, és kisebb számú csomópontot vagy szolgáltatást érint. A rendszernek kevesebb szolgáltatást kell áthelyeznie. Ez általában növeli a megbízhatóságot, mivel a frissítés során bevezetett egyik probléma nem érinti a szolgáltatás kisebb részét. A további frissítési tartományok azt is jelenti, hogy a frissítés hatásának kezeléséhez kevesebb rendelkezésre állású pufferre van szükség más csomópontokon. 
 
-Ha például öt frissítési tartománnyal rendelkezik, az egyes csomópontok a forgalom nagyjából 20 százalékát kezelik. Ha egy frissítéshez le kell vennie a frissítési tartományt, akkor a terhelésnek általában el kell mennie valahova. Mivel még négy frissítési tartománnyal rendelkezik, mindegyiknek a teljes forgalom körülbelül 5 százalékának kell helyet vásárolnia. A további frissítési tartományok azt jelentik, hogy kevesebb pufferre van szükség a fürt csomópontjain. 
+Ha például öt frissítési tartománnyal rendelkezik, az egyes csomópontok nagyjából 20%-át kezelik a forgalmat. Ha le kell állítania a frissítési tartományt a frissítéshez, a terhelésnek általában valahova kell mennie. Mivel négy további frissítési tartománnyal rendelkezik, mindegyiknek a teljes forgalom 5%-ának megfelelő helyet kell tartalmaznia. A további frissítési tartományok azt jelentik, hogy a fürt csomópontjain kevesebb pufferre van szükség. 
 
-Fontolja meg, ha 10 frissítési tartománya volt helyette. Ebben az esetben minden frissítési tartomány a teljes forgalomnak csak mintegy 10 százalékát kezelné. Amikor egy frissítés lép a fürtön, minden tartománynak a teljes forgalomnak csak körülbelül 1,1 százalékának kell helyet adnia. Több frissítési tartományok általában lehetővé teszi, hogy futtassa a csomópontokat a magasabb kihasználtság, mert kevesebb fenntartott kapacitásra van szüksége. Ugyanez igaz a tartalék tartományokra is.  
+Vegye figyelembe, hogy ehelyett 10 frissítési tartománnyal rendelkezett. Ebben az esetben minden frissítési tartomány csak a teljes forgalom 10 százalékát fogja kezelni. A fürtön keresztüli frissítési lépések esetén minden tartománynak a teljes forgalom 1,1%-ának megfelelő helyet kell biztosítania. A további frissítési tartományok általában lehetővé teszik, hogy magasabb kihasználtságú csomópontokat futtasson, mert kevesebb fenntartott kapacitásra van szüksége. Ugyanez érvényes a tartalék tartományokra is.  
 
-A hátránya, hogy sok frissítési tartományok, hogy a frissítések általában hosszabb időt vesz igénybe. A Service Fabric egy frissítési tartomány befejezése után rövid ideig vár, és ellenőrzéseket hajt végre a következő frissítés megkezdése előtt. Ezek a késések lehetővé teszik a frissítés által a frissítés megkezdése előtt bevezetett problémák észlelését. A kompromisszum elfogadható, mert megakadályozza, hogy a rossz változások egyszerre túl nagy hatással legyenek a szolgáltatásra.
+Számos frissítési tartomány hátránya, hogy a frissítések általában hosszabb ideig tarthatnak. Service Fabric egy rövid időszakot vár a frissítési tartomány befejezése után, és ellenőrzi a következő frissítés megkezdése előtt. Ezek a késések lehetővé teszik a frissítés által bevezetett problémák észlelését a frissítés előtt. A kompromisszum elfogadható, mert megakadályozza, hogy a helytelen változások a szolgáltatás egyszerre túl nagy részét befolyásolják.
 
-A jelenléte túl kevés frissítési tartományok sok negatív mellékhatása. Amíg minden frissítési tartomány nem működik, és a frissítés alatt áll, a teljes kapacitás nagy része nem érhető el. Ha például csak három frissítési tartománnyal rendelkezik, egyszerre a teljes szolgáltatás vagy fürtkapacitás körülbelül egyharmadát veszi le. Miután a szolgáltatás egyszerre annyi nem kívánatos, mert szüksége van elegendő kapacitása a fürt többi részében a számítási feladatok kezeléséhez. A puffer karbantartása azt jelenti, hogy a normál működés során ezek a csomópontok kevésbé töltődnek be, mint egyébként lennének. Ez növeli a szolgáltatás futtatásának költségét.
+A túl kevés frissítési tartomány jelenléte sok negatív mellékhatással rendelkezik. Az egyes frissítési tartományok nem állnak le és nem frissülnek, a teljes kapacitás nagy része nem érhető el. Ha például csak három frissítési tartománnyal rendelkezik, a teljes szolgáltatás vagy a fürt kapacitásának egyharmadát veszi igénybe. Ha nem szeretné, hogy a szolgáltatás egyáltalán ne legyen elérhető, mert a fürt többi részén elegendő kapacitásra van szüksége a munkaterhelés kezeléséhez. A puffer fenntartása azt jelenti, hogy a normál működés során ezek a csomópontok kevésbé töltődnek be, mint egyébként. Ez növeli a szolgáltatás futtatásának költségeit.
 
-A környezetben található hiba- vagy frissítési tartományok teljes száma nincs valós korlátja, illetve az átfedések korlátai. De vannak közös minták:
+Nincs valós korlátja egy adott környezetben a hibák vagy frissítési tartományok teljes számának, illetve az átfedések megkötésének. Vannak azonban gyakori minták:
 
-- 1:1 arányban leképezett tartalék tartományok és frissítési tartományok
-- Csomópontonként egy frissítési tartomány (fizikai vagy virtuális operációsrendszer-példány)
-- Egy "csíkos" vagy "mátrix" modell, ahol a tartalék tartományok és a frissítési tartományok mátrixot alkotnak, ahol a gépek általában futnak le az átlókon
+- A tartalék tartományok és a frissítési tartományok leképezve 1:1
+- Egy frissítési tartomány/csomópont (fizikai vagy virtuális operációsrendszer-példány)
+- Egy "szalagos" vagy "Matrix" modell, ahol a tartalék tartományok és a frissítési tartományok olyan mátrixot alkotnak, amelyben a gépek általában az átlókat futtatják
 
 <center>
 
-![A hiba- és frissítési tartományok elrendezése][Image4]
+![A hibák és a frissítési tartományok elrendezése][Image4]
 </center>
 
-Nincs a legjobb válasz, amely elrendezést választani. Mindegyiknek vannak előnyei és hátrányai. Az 1FD:1UD modell például egyszerűen beállítható. A csomópontmodellenként egy frissítési tartomány modellje leginkább olyan, mint amit az emberek használnak. A frissítések során minden csomópont egymástól függetlenül frissül. Ez hasonló ahhoz, ahogyan a kis gépkészleteket manuálisan frissítették a múltban.
+Nincs legjobb válasz a választott elrendezéshez. Mindegyiknek vannak előnyei és hátrányai. Például a 1FD: 1UD Model egyszerűen beállítható. A Node-modellekben egy frissítési tartomány modellje a legtöbbet a leggyakrabban használt felhasználókhoz hasonlít. A frissítések során az egyes csomópontok egymástól függetlenül frissülnek. Ez hasonló ahhoz, ahogyan a gépek kis készleteit korábban manuálisan frissítették.
 
-A leggyakoribb modell az FD/UD mátrix, ahol a tartalék tartományok és a frissítési tartományok egy táblázatot alkotnak, és a csomópontok az átlós mentén helyezkednek el. Ez a modell alapértelmezés szerint az Azure-beli Service Fabric-fürtökben használatos. A sok csomócsomót kiszolgáló fürtök esetében minden úgy néz ki, mint egy sűrű mátrixminta.
+A leggyakoribb modell az FD/UD mátrix, ahol a tartalék tartományok és a frissítési tartományok alkotnak egy táblát, és a csomópontok az átlós vonalon kezdődnek. Ez az Azure-beli Service Fabric-fürtökben alapértelmezés szerint használt modell. A sok csomóponttal rendelkező fürtök esetében minden véget ér, mint egy sűrű mátrixos minta.
 
 > [!NOTE]
-> Az Azure-ban üzemeltetett Service Fabric-fürtök nem támogatják az alapértelmezett stratégia módosítását. Csak az önálló fürtök kínálják ezt a testreszabást.
+> Service Fabric az Azure-ban üzemeltetett fürtök nem támogatják az alapértelmezett stratégia módosítását. Csak az önálló fürtök nyújtanak ilyen testreszabást.
 >
 
-## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Hiba- és frissítési tartománymegkötések és az ebből eredő viselkedés
+## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>A hibák és a frissítési tartományok korlátai és az eredményül kapott viselkedés
 ### <a name="default-approach"></a>Alapértelmezett megközelítés
-Alapértelmezés szerint a Fürterőforrás-kezelő a szolgáltatásokat a hiba- és frissítési tartományok között egyensúlyban tartja. Ez kényszerként van [modellezve.](service-fabric-cluster-resource-manager-management-integration.md) A tartalék- és frissítési tartományok megkötése a következőket mondja: "Egy adott szolgáltatáspartíció esetében soha nem lehet egynél nagyobb különbség a szolgáltatásobjektumok száma (állapotnélküli szolgáltatáspéldányok vagy állapotalapú szolgáltatásreplikálások) között az ugyanazon a két tartomány között. hierarchia szintjét."
+Alapértelmezés szerint a fürterőforrás-kezelő a hibák és a frissítési tartományok között egyensúlyban tartja a szolgáltatásokat. Ez [megkötésként](service-fabric-cluster-resource-manager-management-integration.md)van modellezve. A hiba és a frissítési tartományok állapotának korlátozásai: "az adott szolgáltatás partíciója esetében soha nem lehet nagyobb a különbség, mint a szolgáltatási objektumok (állapot nélküli szolgáltatási példányok vagy állapot-nyilvántartó szolgáltatások replikái) száma az azonos szintű hierarchia két tartománya között."
 
-Tegyük fel, hogy ez a korlátozás "maximális különbség" garanciát nyújt. A hiba- és frissítési tartományok ravonatkozó korlátozása megakadályozza, hogy bizonyos áthelyezések vagy elrendezések megsértsék a szabályt.
+Tegyük fel, hogy ez a korlátozás "maximális különbség" garanciát biztosít. A hiba-és frissítési tartományok megkötése megakadályozza a szabályt sértő bizonyos lépéseket vagy intézkedéseket.
 
-Tegyük fel például, hogy van egy hat csomópontos fürtünk, amely öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva.
+Tegyük fel például, hogy van egy hat csomóponttal rendelkező fürt, amely öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 között |N2 | | | |
-| **UD2 (UD2)** | | |N3 között | | |
-| **Ud3** | | | |N4 | |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | | |N3 | | |
+| **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-Most tegyük fel, hogy hozzon létre egy szolgáltatást a **TargetReplicaSetSize** (vagy egy állapotnélküli szolgáltatás, **InstanceCount)** értéke öt. A replikák az N1-N5-ön landolnak. Valójában, N6 soha nem használt nem anyag mennyi szolgáltatás mint ez ön teremt. De miért? Nézzük meg a különbséget a jelenlegi elrendezés és mi történne, ha N6 választják.
+Most tegyük fel, hogy létrehozunk egy szolgáltatást egy **TargetReplicaSetSize** (vagy egy állapot nélküli szolgáltatáshoz, **InstanceCount**), öt értékkel. A replikák az N1-N5. Valójában az N6-ot soha nem használták, hogy hány szolgáltatást hoz létre. De miért? Nézzük meg, mi a különbség az aktuális elrendezés és a mi történne, ha az N6-ot választja.
 
-Itt van az elrendezés van, és a replikák száma egy hiba és frissítési tartomány:
+Itt látható az elrendezés, valamint a replikák száma a hibák és a frissítési tartományok esetében:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDÖsszes |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** | |R2 | | | |1 |
-| **UD2 (UD2)** | | |R3 | | |1 |
-| **Ud3** | | | |R4 | |1 |
+| **UD2** | | |R3 | | |1 |
+| **UD3** | | | |R4 | |1 |
 | **UD4** | | | | |R5 |1 |
-| **FDÖsszes** |1 |1 |1 |1 |1 |- |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Ez az elrendezés a tartalék tartományonkénti és frissítési tartományonkénti csomópontok tekintetében kiegyensúlyozott. Ez is kiegyensúlyozott a hiba- és frissítési tartományonkénti replikák száma tekintetében. Minden tartomány azonos számú csomópontos és azonos számú replikával rendelkezik.
+Ez az elrendezés a csomópontok és a frissítési tartomány csomópontjainak esetében is egyensúlyban van. A hibák és a frissítési tartományok replikáinak száma is egyensúlyban van. Mindegyik tartomány azonos számú csomóponttal és azonos számú replikával rendelkezik.
 
-Most nézzük meg, mi történne, ha n6-ot használnánk az N2 helyett. Hogyan terjesztenék a replikákat?
+Most nézzük meg, mi történne, ha az N2 helyett az N6-ot használta. Hogyan történik a replikák terjesztése?
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDÖsszes |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
-| **UD2 (UD2)** | | |R2 | | |1 |
-| **Ud3** | | | |R3 | |1 |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
-| **FDÖsszes** |2 |0 |1 |1 |1 |- |
+| **FDTotal** |2 |0 |1 |1 |1 |- |
 
-Ez az elrendezés sérti a "maximális különbség" garancia definícióját a tartalék tartomány megkötésére. Az FD0 két replikával rendelkezik, míg az FD1-nek nulla. Az FD0 és az FD1 közötti különbség összesen kettő, ami nagyobb, mint egy maximális különbség. Mivel a megkötés sérül, a fürterőforrás-kezelő nem engedélyezi ezt az elrendezést. Hasonlóképpen, ha az N2-t és az N6-ot (n1 és N2 helyett) választanánk ki, akkor:
+Ez az elrendezés sérti a "maximális különbség" garanciát a tartalék tartományi korlátozásra vonatkozóan. A FD0 két replikával rendelkezik, míg a FD1 értéke nulla. A FD0 és a FD1 közötti különbség összesen kettő, ami nagyobb, mint a maximális különbség. Mivel a korlátozást megsértették, a fürterőforrás-kezelő nem engedélyezi ezt a megállapodást. Hasonlóképpen, ha az N2-t és az N6-ot (N1 és N2 helyett) választottuk, a következőt fogjuk kapni:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDÖsszes |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2 (UD2)** | | |R2 | | |1 |
-| **Ud3** | | | |R3 | |1 |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
-| **FDÖsszes** |1 |1 |1 |1 |1 |- |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Ez az elrendezés a tartalék tartományok szempontjából kiegyensúlyozott. De most ez megsérti a frissítési tartomány megszorítás, mert UD0 nulla replikák és UD1 két. Ez az elrendezés is érvénytelen, és a Fürterőforrás-kezelő nem veszi ki.
+Ez az elrendezés a tartalék tartományok szempontjából egyensúlyban van. Most azonban megsértjük a frissítési tartomány korlátozását, mivel a UD0 nulla replikával rendelkezik, és a UD1 két van. Ez az elrendezés szintén érvénytelen, és a fürterőforrás-kezelő nem fogja kiválasztani.
 
-Ez a megközelítés az állapotalapú replikák vagy állapotmentes példányok terjesztésére a lehető legjobb hibatűrést biztosítja. Ha egy tartomány leáll, a replikák/példányok minimális száma elvész. 
+Az állapot-nyilvántartó replikák vagy állapot nélküli példányok eloszlásának megközelítése a lehető legjobb hibatűrést biztosítja. Ha egy tartomány leáll, a replikák/példányok minimális száma elvész. 
 
-Másrészt ez a megközelítés lehet túl szigorú, és nem teszi lehetővé a fürt számára, hogy kihasználja az összes erőforrást. Bizonyos fürtkonfigurációk esetében bizonyos csomópontok nem használhatók. Ez azt eredményezheti, hogy a Service Fabric nem helyezi el a szolgáltatásokat, ami figyelmeztető üzeneteket eredményez. Az előző példában néhány fürtcsomópontok nem használhatók (N6 a példában). Még akkor is, ha csomópontokat adott hozzá a fürthöz (N7-N10), a replikák/példányok csak az N1–N5-re kerülnek a hiba- és frissítési tartományok ra vonatkozó korlátozások miatt. 
+Másfelől ez a megközelítés túl szigorú lehet, és nem teszi lehetővé, hogy a fürt az összes erőforrást kihasználja. Bizonyos fürtcsomópontok esetében bizonyos csomópontok nem használhatók. Ennek hatására előfordulhat, hogy Service Fabric a szolgáltatások nem helyezhetők el, ami figyelmeztető üzeneteket eredményez. Az előző példában az egyes fürtcsomópontok nem használhatók (a példában N6). Még akkor is, ha csomópontokat adott hozzá a fürthöz (N7-N10), a replikák/példányok csak az N1-N5 lesznek elhelyezve a hibák és a frissítési tartományok korlátozásai miatt. 
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | |N10 |
-| **UD1** |N6 között |N2 | | | |
-| **UD2 (UD2)** | |N7 |N3 között | | |
-| **Ud3** | | |N8 |N4 | |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
 | **UD4** | | | |N9 |N5 |
 
 
 
 ### <a name="alternative-approach"></a>Alternatív megközelítés
 
-A fürterőforrás-kezelő a tartalék- és frissítési tartományok megkötésének egy másik verzióját támogatja. Lehetővé teszi az elhelyezést, miközben garantálja a minimális biztonsági szintet. Az alternatív megkötés a következőképpen adható meg: "Egy adott szolgáltatáspartíció esetében a replikák tartományok közötti elosztása biztosítja, hogy a partíció ne szenvedjen kvórumveszteséget." Tegyük fel, hogy ez a korlátozás "kvórumszéf" garanciát nyújt. 
+A fürterőforrás-kezelő a hiba-és frissítési tartományok korlátozásának egy másik verzióját támogatja. Lehetővé teszi az elhelyezést, miközben továbbra is garantálja a minimális biztonsági szintet. Az alternatív megkötést a következőképpen lehet megállapítani: "egy adott szolgáltatás partíciója esetében a replika eloszlása tartományokon belül biztosítania kell, hogy a partíció ne érje el a kvórum elvesztését." Tegyük fel, hogy ez a korlátozás "kvórum biztonságos" garanciát biztosít. 
 
 > [!NOTE]
-> Állapotalapú szolgáltatás esetén *kvórumvesztést* határozunk meg olyan helyzetben, amikor a partícióreplikák többsége egy időben nem működik. Ha például **a TargetReplicaSetSize** öt, akkor a kvórumot három kópia készlete jelöli. Hasonlóképpen, ha **a TargetReplicaSetSize** hat, négy kópia szükséges a kvórumhoz. Mindkét esetben legfeljebb két replikák lehet le egy időben, ha a partíció továbbra is normálisan működik. 
+> Állapot-nyilvántartó szolgáltatás esetén a *kvórum elvesztését* olyan helyzetben adjuk meg, amikor a partíció replikáinak többsége nem áll le egyszerre. Ha például a **TargetReplicaSetSize** értéke öt, a három replika egy halmaza a kvórumot jelöli. Hasonlóképpen, ha a **TargetReplicaSetSize** hat, négy replikára van szükség a kvórumhoz. Mindkét esetben nem lehet kettőnél több replikát leállítani, ha a partíció szokásos módon kívánja folytatni a működést. 
 >
-> Egy állapotnélküli szolgáltatáshoz nincs olyan, hogy *kvórumveszteség.* Az állapotnélküli szolgáltatások továbbra is normálisan működnek, még akkor is, ha az esetek többsége egyszerre csökken. Tehát, mi fog összpontosítani állapotalapú szolgáltatások a többi ezt a cikket.
+> Állapot nélküli szolgáltatás esetén nincs olyan dolog, mint a *kvórum elvesztése*. Az állapot nélküli szolgáltatások általában akkor is működnek, ha a példányok többsége egy időben leáll. Ezért az állapot-nyilvántartó szolgáltatásokra koncentrálunk a cikk további részében.
 >
 
-Térjünk vissza az előző példához. A megkötés "kvórumbiztos" verziójával mindhárom elrendezés érvényes lenne. Még akkor is, ha az FD0 nem sikerült a második elrendezésben, vagy ud1 nem sikerült a harmadik elrendezésben, a partíció továbbra is kvórum. (A replikák többsége még mindig fent lenne.) A megkötés ezen verziójával az N6 szinte mindig használható.
+Térjünk vissza az előző példához. A megkötés "kvórum biztonságos" verziójában mindhárom elrendezés érvényes lesz. Még ha a FD0 sikertelen volt a második elrendezésben, vagy a UD1 nem sikerült a harmadik elrendezésben, a partíció továbbra is kvórumot eredményezne. (A replikák többsége továbbra is fennáll.) A megkötés ezen verziójában az N6-ot szinte mindig ki lehet használni.
 
-A "kvórumbiztos" megközelítés nagyobb rugalmasságot biztosít, mint a "maximális különbség" megközelítés. Ennek az az oka, hogy könnyebb megtalálni a replika disztribúciók, amelyek szinte minden fürt topológiában érvényes. Ez a megközelítés azonban nem garantálja a legjobb hibatűrési jellemzőket, mert egyes hibák rosszabbak, mint mások. 
+A "kvórum biztonságos" megközelítés nagyobb rugalmasságot biztosít, mint a "maximális különbség" megközelítés. Ennek az az oka, hogy egyszerűbb olyan replika-eloszlásokat találni, amelyek szinte bármilyen fürtbeli topológiában érvényesek. Ez a megközelítés azonban nem garantálja a legjobb hibatűrési jellemzőket, mert néhány hiba rosszabb, mint a többi. 
 
-A legrosszabb esetben a replikák többsége elveszhet egy tartomány és egy további replika meghibásodása miatt. Például ahelyett, hogy három hiba van szükség, hogy elveszíti kvórumöt öt replikák vagy példányok, most már elveszítheti a többséget mindössze két hiba. 
+A legrosszabb esetben a replikák többsége elvész egy tartomány és egy további replika meghibásodásával. Például, ha a kvórumot öt replikával vagy példánnyal szeretné elveszíteni, akkor már csak két hibával veszítheti el a legtöbb hibát. 
 
 ### <a name="adaptive-approach"></a>Adaptív megközelítés
-Mivel mindkét megközelítésnek vannak erősségei és gyengeségei, olyan adaptív megközelítést vezettünk be, amely egyesíti ezt a két stratégiát.
+Mivel mindkét megközelítés rendelkezik erősségekkel és gyengeségekkel, egy adaptív megközelítést vezettünk be, amely kombinálja ezt a két stratégiát.
 
 > [!NOTE]
-> Ez az alapértelmezett viselkedés a Service Fabric 6.2-es verziójával kezdődően. 
+> Ez az alapértelmezett viselkedés a Service Fabric 6,2-es verziótól kezdődően. 
 > 
-> Az adaptív megközelítés alapértelmezés szerint a "maximális különbség" logikát használja, és csak szükség esetén vált a "kvórumbiztonságos" logikára. A fürterőforrás-kezelő automatikusan kitalálja, hogy melyik stratégia szükséges a fürt és a szolgáltatások konfigurálásának módjáról.
+> Az adaptív módszer alapértelmezés szerint a "maximális különbség" logikát használja, és a "kvórum biztonságos" logikára vált, ha szükséges. A fürterőforrás-kezelő automatikusan kiértékeli, hogy milyen stratégiát kell megkeresni a fürt és a szolgáltatások konfigurálásának módjával.
 > 
-> A fürterőforrás-kezelőnek a "kvórumalapú" logikát kell használnia egy szolgáltatáshoz, mindkét feltétel teljesül:
+> A fürterőforrás-kezelőnek a "kvórum alapú" logikát kell használnia egy szolgáltatáshoz, mindkét feltétel igaz:
 >
-> * A szolgáltatás **TargetReplicaSetSize** mérete egyenletesen osztható a tartalék tartományok és a frissítési tartományok száma szerint.
-> * A csomópontok száma kisebb vagy egyenlő a tartalék tartományok számának szorzatával és a frissítési tartományok számával.
+> * A szolgáltatás **TargetReplicaSetSize** a tartalék tartományok számával és a frissítési tartományok számával egyenlően osztható.
+> * A csomópontok száma kisebb vagy egyenlő, mint a tartalék tartományok száma, szorozva a frissítési tartományok számával.
 >
-> Ne feledje, hogy a fürterőforrás-kezelő fogja használni ezt a módszert mind állapotnélküli, mind állapotalapú szolgáltatások, annak ellenére, hogy kvórumveszteség nem releváns az állapotmentes szolgáltatások.
+> Vegye figyelembe, hogy a fürterőforrás-kezelő ezt a megközelítést fogja használni az állapot nélküli és az állapot-nyilvántartó szolgáltatásokhoz is, bár a kvórum elvesztése nem vonatkozik az állapot nélküli szolgáltatások esetében.
 
-Térjünk vissza az előző példához, és tegyük fel, hogy egy fürt most már nyolc csomóponttal rendelkezik. A fürt továbbra is öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva, és az adott fürtön üzemeltetett szolgáltatás **TargetReplicaSetSize** értéke továbbra is öt. 
+Térjünk vissza az előző példához, és tegyük fel, hogy egy fürt most már nyolc csomóponttal rendelkezik. A fürt továbbra is öt tartalék tartománnyal és öt frissítési tartománnyal van konfigurálva, és a fürtben üzemeltetett szolgáltatás **TargetReplicaSetSize** értéke öt marad. 
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 között |N2 | | | |
-| **UD2 (UD2)** | |N7 |N3 között | | |
-| **Ud3** | | |N8 |N4 | |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
 | **UD4** | | | | |N5 |
 
-Mivel minden szükséges feltétel teljesül, a fürterőforrás-kezelő a "kvórumalapú" logikát fogja használni a szolgáltatás elosztásakor. Ez lehetővé teszi az N6-N8 használatát. Az egyik lehetséges szolgáltatáselosztás ebben az esetben így nézhet ki:
+Mivel az összes szükséges feltétel teljesül, a fürterőforrás-kezelő a "kvórum-alapú" logikát fogja használni a szolgáltatás terjesztésekor. Ez az N6-N8 használatát teszi lehetővé. Ebben az esetben az egyik lehetséges szolgáltatás a következőhöz hasonló lehet:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDÖsszes |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R2 | | | | |1 |
-| **UD2 (UD2)** | |R3 |R4 | | |2 |
-| **Ud3** | | | | | |0 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | | | |0 |
 | **UD4** | | | | |R5 |1 |
-| **FDÖsszes** |2 |1 |1 |0 |1 |- |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
 
-Ha a szolgáltatás **TargetReplicaSetSize** értéke négyre csökken (például), a fürterőforrás-kezelő észre fogja venni, hogy a változás. A "maximális különbség" logikát használja, mivel a **TargetReplicaSetSize** már nem osztható a tartalék tartományok és a frissítési tartományok számával. Ennek eredményeképpen bizonyos replikamozgások a fennmaradó négy replika elosztására kerülnek az N1-N5 csomópontokon. Így a tartalék tartomány és a frissítési tartomány logikájának "maximális különbség" verziója nem sérül. 
+Ha a szolgáltatás **TargetReplicaSetSize** értéke négyre van csökkentve (például), a fürterőforrás-kezelő ezt a változást fogja megfigyelni. A "maximális különbség" logikát fogja használni, mivel a **TargetReplicaSetSize** nem osztható meg a tartalék tartományok és a frissítési tartományok számával. Ennek eredményeképpen bizonyos replika-mozgások történnek a fennmaradó négy replikának az N1-N5 csomópontokon való elosztása során. Így a tartalék tartomány és a frissítési tartomány logikájának "maximális különbség" verziója nem sérül. 
 
-Az előző elrendezésben, ha a **TargetReplicaSetSize** érték öt, és n1 törlődik a fürtből, a frissítési tartományok száma négylesz. A fürterőforrás-kezelő ismét a "maximális különbség" logikát használja, mivel a frissítési tartományok száma nem osztja el egyenletesen a szolgáltatás **TargetReplicaSetSize** értékét. Ennek eredményeképpen az R1 replikának, amikor újra felvan építve, az N4-en kell leszállnia, hogy a hiba- és frissítési tartomány ra vonatkozó korlátozás ne sérüljen.
+Az előző elrendezésben, ha a **TargetReplicaSetSize** értéke öt, és a rendszer eltávolítja az N1-t a fürtből, a frissítési tartományok száma négy értékkel egyenlő lesz. A fürterőforrás-kezelő a "maximális különbség" logikát használja, mivel a frissítési tartományok száma többé nem osztja el a szolgáltatás **TargetReplicaSetSize** értékét. Ennek eredményeképpen a (z)-replika R1-es verziójának újraépítése az N4-es porton keresztül történik, hogy a hiba-és frissítési tartományra vonatkozó megkötés ne legyen megsértve.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDÖsszes |
+|  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N/A |N/A |N/A |N/A |N/A |N/A |
 | **UD1** |R2 | | | | |1 |
-| **UD2 (UD2)** | |R3 |R4 | | |2 |
-| **Ud3** | | | |R1 | |1 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | |R1 | |1 |
 | **UD4** | | | | |R5 |1 |
-| **FDÖsszes** |1 |1 |1 |1 |1 |- |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-## <a name="configuring-fault-and-upgrade-domains"></a>Hiba- és frissítési tartományok konfigurálása
-Az Azure-üzemeltetett Service Fabric-telepítések, tartalék tartományok és frissítési tartományok automatikusan definiálva vannak. A Service Fabric felveszi és felhasználja az Azure-ból származó környezeti információkat.
+## <a name="configuring-fault-and-upgrade-domains"></a>A hibák és a frissítési tartományok konfigurálása
+Az Azure által üzemeltetett Service Fabric üzemelő példányok esetében a tartalék tartományok és a frissítési tartományok automatikusan definiálva vannak. Service Fabric felveszi és felhasználja a környezeti információkat az Azure-ból.
 
-Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a fejlesztés során), megadhatja a tartalék tartományt, és saját maga is frissítheti a tartományadatait. Ebben a példában egy kilenc csomópontos helyi fejlesztési fürtöt határozunk meg, amely három adatközpontra (mindegyik három állványra) terjed ki. Ez a fürt is rendelkezik három frissítési tartományok csíkozott a három adatközpontok között. Íme egy példa a ClusterManifest.xml fájl konfigurációjára:
+Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a fejlesztésben), megadhatja a tartalék tartományt, és saját kezűleg is frissítheti a tartományi adatokat. Ebben a példában egy kilenc csomópontos helyi fejlesztési fürtöt adunk meg, amely három adatközpontra terjed ki (mindkettő három racktel). Ezen a fürtön három frissítési tartomány is szerepel a három adatközpontban. Íme egy példa a ClusterManifest. XML konfigurációjában:
 
 ```xml
   <Infrastructure>
@@ -268,7 +268,7 @@ Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a f
   </Infrastructure>
 ```
 
-Ez a példa a ClusterConfig.json t használja az önálló telepítésekhez:
+Ez a példa az ClusterConfig. JSON fájlt használja az önálló telepítésekhez:
 
 ```json
 "nodes": [
@@ -339,41 +339,41 @@ Ez a példa a ClusterConfig.json t használja az önálló telepítésekhez:
 ```
 
 > [!NOTE]
-> Amikor fürtöket definiál az Azure Resource Manageren keresztül, az Azure tartalék tartományokat rendel hozzá, és frissíti a tartományokat. Így a csomóponttípusok és a virtuálisgép-méretezési készletek meghatározása az Azure Resource Manager sablonban nem tartalmaz információt a tartalék tartományról vagy a frissítési tartományról.
+> Ha Azure Resource Manageron keresztül definiál fürtöket, az Azure a tartalék tartományokat és a frissítési tartományokat rendeli hozzá. Így az Azure Resource Manager-sablonban szereplő csomópontok és virtuálisgép-méretezési csoportok definíciója nem tartalmaz információkat a tartalék tartományról vagy a frissítési tartományról.
 >
 
-## <a name="node-properties-and-placement-constraints"></a>Csomóponttulajdonságok és elhelyezési megkötések
-Néha (valójában az idő nagy részében) érdemes biztosítani, hogy bizonyos számítási feladatok csak bizonyos típusú csomópontok on a fürtben. Előfordulhat például, hogy egyes számítási feladatokhoz GPU-kat vagy SSD-ket kell igényelni, míg másoknem. 
+## <a name="node-properties-and-placement-constraints"></a>Csomópont tulajdonságai és elhelyezési megkötések
+Néha (valójában az idő nagy részében) érdemes biztosítani, hogy bizonyos munkaterhelések csak bizonyos típusú csomópontokon fussanak a fürtben. Előfordulhat például, hogy egyes munkaterhelésekhez GPU vagy SSD szükséges, mások pedig nem. 
 
-Egy nagyszerű példa a hardver adott számítási feladatokra történő célzására szinte minden n szintű architektúra. Bizonyos gépek szolgálnak az alkalmazás előtér- vagy API-kiszolgáló oldalán, és ki vannak téve az ügyfelek vagy az internet. Különböző gépek, gyakran különböző hardvererőforrásokkal, kezelik a számítási vagy tárolási rétegek munkáját. Ezek általában _nem_ közvetlenül ki vannak téve az ügyfelek vagy az interneten. 
+Nagyszerű példa arra, hogy a hardverek konkrét számítási feladatokhoz való célzása szinte minden n szintű architektúra. Bizonyos gépek az alkalmazás előtér-vagy API-kiszolgálóként szolgálnak, és elérhetők az ügyfelek vagy az Internet számára. A különböző gépek – gyakran különböző hardveres erőforrásokkal – kezelik a számítási vagy tárolási rétegek munkáját. Ezeket általában _nem_ közvetlenül az ügyfelek vagy az Internet teszi elérhetővé. 
 
-A Service Fabric arra számít, hogy bizonyos esetekben bizonyos számítási feladatok nak bizonyos hardverkonfigurációkon kell futniuk. Példa:
+Service Fabric bizonyos esetekben várhatóan bizonyos számítási feladatoknak bizonyos hardveres konfigurációkon is futniuk kell. Például:
 
-* Egy meglévő n-szintű alkalmazás "lett "lifted and shifted" egy Service Fabric környezetbe.
-* A számítási feladatokat teljesítmény, méretezés vagy biztonsági elkülönítés idáig adott hardveren kell futtatni.
-* A számítási feladatokat el kell különíteni a többi számítási feladatoktól házirend- vagy erőforrás-felhasználási okokból.
+* Egy meglévő n szintű alkalmazás "felemelve és áthelyezve" lett egy Service Fabric környezetbe.
+* A munkaterhelést meghatározott hardveren kell futtatni teljesítmény-, méretezési vagy biztonsági elkülönítési okokból.
+* A munkaterhelést más számítási feladatokból is el kell különíteni a házirend-vagy erőforrás-felhasználási okokból.
 
-Az ilyen típusú konfigurációk támogatása érdekében a Service Fabric olyan címkéket tartalmaz, amelyek et a csomópontokra alkalmazhat. Ezeket a címkéket *csomóponttulajdonságoknak*nevezzük. *Az elhelyezési megkötések* az egyes szolgáltatásokhoz csatolt utasítások, amelyeket egy vagy több csomóponttulajdonsághoz választ. Az elhelyezési megkötések határozzák meg, hogy a szolgáltatások nak hol kell futniuk. A kényszerek készlete bővíthető. Bármely kulcs/érték pár működhet. 
-
-<center>
-
-![Különböző munkaterhelések a fürtelrendezéshez][Image5]
-</center>
-
-### <a name="built-in-node-properties"></a>Beépített csomóponttulajdonságok
-A Service Fabric néhány alapértelmezett csomóponttulajdonságot határoz meg, amelyek automatikusan használhatók, így nem kell definiálnia őket. Az egyes csomópontokon definiált alapértelmezett tulajdonságok a **Következők: NodeType** és **NodeName**. 
-
-Írhatunk például elhelyezési megkötést `"(NodeType == NodeType03)"`a néven. **A NodeType** egy általánosan használt tulajdonság. Ez azért hasznos, mert 1:1 arányban felel meg egy géptípusnak. Minden géptípus egy hagyományos n-szintű alkalmazásban egy számítási feladattípusnak felel meg.
+Az ilyen típusú konfigurációk támogatásához Service Fabric tartalmaz olyan címkéket, amelyek a csomópontokra alkalmazhatók. Ezeket a címkéket *csomópont-tulajdonságokat*nevezzük. Az *elhelyezési megkötések* az egyes szolgáltatásokhoz csatolt utasítások, amelyek egy vagy több csomópont-tulajdonsághoz vannak kiválasztva. Az elhelyezési megkötések határozzák meg a szolgáltatások futtatásának helyét. A megkötések halmaza bővíthető. Bármely kulcs/érték pár működhet. 
 
 <center>
 
-![Elhelyezési megkötések és csomóponttulajdonságok][Image6]
+![Különböző számítási feladatok a fürt elrendezéséhez][Image5]
 </center>
 
-## <a name="placement-constraints-and-node-property-syntax"></a>Elhelyezési megkötések és csomóponttulajdonság szintaxisa 
-A csomópont tulajdonságban megadott érték lehet karakterlánc, logikai vagy aláírt hosszú. A szolgáltatásban a kimutatást elhelyezési *megkötésnek nevezzük,* mert korlátozza, hogy a szolgáltatás hol futtatható a fürtben. A megkötés bármely logikai utasítás lehet, amely a fürt csomóponttulajdonságain működik. Az érvényes választók ezekben a logikai utasításokban a következők:
+### <a name="built-in-node-properties"></a>Beépített csomópont tulajdonságai
+Service Fabric definiál néhány alapértelmezett csomópont-tulajdonságot, amelyet automatikusan használhat, így nem kell megadnia azokat. Az egyes csomópontokon definiált alapértelmezett tulajdonságok a **NodeType** és a **csomópontnév**. 
 
-* Feltételes ellenőrzések adott kimutatások létrehozásához:
+Például megadhat egy elhelyezési korlátozást a következőként: `"(NodeType == NodeType03)"`. A **NodeType** egy általánosan használt tulajdonság. Ez azért hasznos, mert megfelel a 1:1-nek a gép egy típusával. Minden típusú gép egy hagyományos n szintű alkalmazásban a számítási feladatok típusának felel meg.
+
+<center>
+
+![Elhelyezési megkötések és csomópont tulajdonságai][Image6]
+</center>
+
+## <a name="placement-constraints-and-node-property-syntax"></a>Elhelyezési korlátozások és Node tulajdonság szintaxisa 
+A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehet. A szolgáltatás utasításait elhelyezési *korlátozásnak* nevezzük, mert korlátozza, hogy a szolgáltatás hogyan futhat a fürtben. A korlátozás bármely olyan logikai utasítás lehet, amely a fürt csomópont-tulajdonságain működik. A logikai utasítások érvényes választói a következők:
+
+* Feltételes ellenőrzések adott utasítások létrehozásához:
 
   | Nyilatkozat | Szintaxis |
   | --- |:---:|
@@ -381,27 +381,27 @@ A csomópont tulajdonságban megadott érték lehet karakterlánc, logikai vagy 
   | "nem egyenlő" | "!=" |
   | "nagyobb, mint" | ">" |
   | "nagyobb vagy egyenlő" | ">=" |
-  | "kevesebb, mint" | "<" |
-  | "kisebb vagy azzal egyenlő" | "<=" |
+  | "kisebb, mint" | "<" |
+  | "kisebb vagy egyenlő" | "<=" |
 
 * Logikai utasítások csoportosításhoz és logikai műveletekhez:
 
   | Nyilatkozat | Szintaxis |
   | --- |:---:|
-  | "és" | "&&" |
-  | "vagy" | "&#124;&#124;" |
-  | "Nem" | "!" |
-  | "csoport, mint egyetlen utasítás" | "()" |
+  | és | "&&" |
+  | vagy | "&#124;&#124;" |
+  | nem | "!" |
+  | "csoport mint egyetlen utasítás" | "()" |
 
-Íme néhány példa az alapvető megkötési utasításokra:
+Íme néhány példa az alapszintű korlátozási utasításokra:
 
   * `"Value >= 5"`
   * `"NodeColor != green"`
   * `"((OneProperty < 100) || ((AnotherProperty == false) && (OneProperty >= 100)))"`
 
-Csak azok a csomópontok, ahol a teljes elhelyezési megkötési utasítás kiértékeli a "True" lehet a szolgáltatás helyezett rajta. Azok a csomópontok, amelyek nem rendelkeznek definiált tulajdonsággal, nem egyeznek meg a tulajdonságot tartalmazó elhelyezési megkötéssel.
+Csak azok a csomópontok kerülhetnek rá a szolgáltatásba, ahol az általános elhelyezési megkötés utasítása az "igaz" értékre van kiértékelve. A tulajdonsággal nem rendelkező csomópontok nem egyeznek meg a tulajdonságot tartalmazó elhelyezési korlátozásokkal.
 
-Tegyük fel, hogy a következő csomóponttulajdonságok vannak definiálva egy csomóponttípushoz a ClusterManifest.xml fájlban:
+Tegyük fel, hogy a következő csomópont-tulajdonságokat definiálták egy csomópont-típushoz a ClusterManifest. xml fájlban:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,10 +413,10 @@ Tegyük fel, hogy a következő csomóponttulajdonságok vannak definiálva egy 
     </NodeType>
 ```
 
-A következő példa a ClusterConfig.json által önálló telepítésekhez vagy template.json az Azure által üzemeltetett fürtök sablon.json az Azure által üzemeltetett fürtök csomóponttulajdonságain keresztül definiálva. 
+Az alábbi példa a ClusterConfig. JSON fájlon keresztül meghatározott csomópont-tulajdonságokat jeleníti meg az Azure által üzemeltetett fürtök önálló telepítései vagy template. JSON fájljában. 
 
 > [!NOTE]
-> Az Azure Resource Manager-sablonban a csomópont típusa általában paraméterezett. Úgy néz `"[parameters('vmNodeType1Name')]"` ki, mint NodeType01.
+> A Azure Resource Manager-sablonban a csomópont típusa általában paraméteres. A NodeType01 `"[parameters('vmNodeType1Name')]"` helyett a következőképpen fog kinézni.
 >
 
 ```json
@@ -432,7 +432,7 @@ A következő példa a ClusterConfig.json által önálló telepítésekhez vagy
 ],
 ```
 
-A szolgáltatáshoz a következőképpen hozhat létre szolgáltatáselhelyezési *korlátozásokat:*
+A szolgáltatáshoz a következő módon hozhat létre szolgáltatási elhelyezési *korlátozásokat* :
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -447,9 +447,9 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Ha a NodeType01 összes csomópontja érvényes, kiválaszthatja azt a csomóponttípust is, amely nek van megkötése. `"(NodeType == NodeType01)"`
+Ha a NodeType01 összes csomópontja érvényes, akkor a csomópont típusát is kiválaszthatja a megkötéssel `"(NodeType == NodeType01)"`.
 
-A szolgáltatás elhelyezési kényszerei futásidőben dinamikusan frissíthetők. Szükség esetén áthelyezhet egy szolgáltatást a fürtben, hozzáadhat és eltávolíthat követelményeket, és így tovább. A Service Fabric biztosítja, hogy a szolgáltatás akkor is rendelkezésre áll, ha ilyen típusú módosítások történnek.
+A szolgáltatás elhelyezési korlátozásai dinamikusan frissíthetők a futtatókörnyezet során. Ha szükséges, áthelyezheti a szolgáltatást a fürtön, a követelmények hozzáadásával és eltávolításával stb. Service Fabric biztosítja, hogy a szolgáltatás az ilyen típusú változások után is rendelkezésre álljon.
 
 ```csharp
 StatefulServiceUpdateDescription updateDescription = new StatefulServiceUpdateDescription();
@@ -461,29 +461,29 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/servic
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
 ```
 
-Az elhelyezési megkötések minden elnevezett szolgáltatáspéldányhoz meg vannak adva. A frissítések mindig a korábban megadott (felülírási) helyet veszik át.
+Az elhelyezési megkötések minden elnevezett Service-példányhoz meg vannak adva. A frissítések mindig a korábban megadott helyen (felülírva) lépnek.
 
-A fürtdefiníció határozza meg a csomópontok tulajdonságait. A csomópont tulajdonságainak módosítása a fürtkonfiguráció frissítését igényli. Egy csomópont tulajdonságainak frissítése szükséges minden érintett csomópont újraindítása az új tulajdonságok jelentéséhez. A Service Fabric kezeli ezeket a működés közbeni frissítéseket.
+A fürt definíciója a csomópont tulajdonságait határozza meg. A csomópont tulajdonságainak módosítása a fürtkonfiguráció frissítését igényli. A csomópont tulajdonságainak frissítéséhez minden érintett csomópontnak újra kell indítania az új tulajdonságainak jelentését. A Service Fabric kezeli ezeket a működés közbeni frissítéseket.
 
-## <a name="describing-and-managing-cluster-resources"></a>Fürterőforrások leírása és kezelése
-Az orchestrator egyik legfontosabb feladata, hogy segítsen kezelni a fürt erőforrás-felhasználását. A fürterőforrások kezelése számos különböző dolgot jelenthet. 
+## <a name="describing-and-managing-cluster-resources"></a>A fürterőforrások leírása és kezelése
+Bármelyik Orchestrator egyik legfontosabb feladata, hogy segítsen kezelni a fürt erőforrás-felhasználását. A fürt erőforrásainak kezelése több különböző dolgot is jelenthet. 
 
-Először is, van annak biztosítása, hogy a gépek nem túlterhelt. Ez azt jelenti, hogy győződjön meg arról, hogy a gépek nem fut nak több szolgáltatást, mint amennyit kezelni tudnak. 
+Először is gondoskodni kell arról, hogy a gépek ne legyenek túlterhelve. Ez azt jelenti, hogy a gépek nem futnak több szolgáltatással, mint amennyit képesek kezelni. 
 
-Másodszor, van kiegyensúlyozás és optimalizálás, amelyek kritikus fontosságúak a szolgáltatások hatékony futtatásához. A költséghatékony vagy teljesítményérzékeny szolgáltatásajánlatok nem engedhetik meg, hogy egyes csomópontok forróak legyenek, míg mások hidegek. A forró csomópontok erőforrás-versengéshez és gyenge teljesítményhez vezetnek. A hideg csomópontok elpazarolt erőforrásokat és megnövekedett költségeket jelentenek. 
+Másodszor, a szolgáltatások hatékony futtatásához elengedhetetlen a kiegyensúlyozás és az optimalizálás. A költséghatékony vagy a teljesítményre érzékeny szolgáltatási ajánlatok nem teszik lehetővé, hogy egyes csomópontok ne legyenek melegek, míg mások is hidegek. A gyors csomópontok erőforrás-tartalomhoz és gyenge teljesítményhez vezetnek. A hideg csomópontok az elpazarolt erőforrásokat és a megnövekedett költségeket jelentik. 
 
-A Service Fabric az erőforrásokat *metrikaként*jelöli. Metrikák bármely logikai vagy fizikai erőforrás, amely szeretné leírni a Service Fabric. Metrikák például a "WorkQueueDepth" vagy a "MemoryInMb." A Service Fabric által a csomópontokon szabályozható fizikai erőforrásokról az [Erőforrás-szabályozás](service-fabric-resource-governance.md)című témakörben talál további információt. A fürterőforrás-kezelő által használt alapértelmezett metrikákról és az egyéni metrikák konfigurálásáról ebben a [cikkben](service-fabric-cluster-resource-manager-metrics.md)olvashat.
+Service Fabric az erőforrásokat *metrikaként*jeleníti meg. A metrikák bármilyen logikai vagy fizikai erőforrás, amelyet le szeretne írni a Service Fabric. Mérőszámok például a következők: "WorkQueueDepth" vagy "MemoryInMb". További információ a csomópontokon Service Fabric által szabályozható fizikai erőforrásokról: [erőforrás-szabályozás](service-fabric-resource-governance.md). A fürterőforrás-kezelő által használt alapértelmezett metrikákkal és az egyéni metrikák konfigurálásával kapcsolatos információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
 
-A metrikák eltérnek az elhelyezési megkötésektől és a csomóponttulajdonságoktól. A csomóponttulajdonságok maguk a csomópontok statikus leírói. Metrikák ismertetik a csomópontok erőforrásait, és hogy a szolgáltatások felhasználják, amikor futnak egy csomóponton. Egy csomópont tulajdonság lehet **HasSSD,** és lehet, hogy igaz vagy hamis. Az ssd-n rendelkezésre álló terület és a szolgáltatások által felhasznált terület olyan mérőszám lenne, mint a "DriveSpaceInMb". 
+A metrikák eltérnek az elhelyezési megkötések és a csomópont tulajdonságaitól. A csomópont tulajdonságai maguk a csomópontok statikus leírói. A metrikák leírják, hogy a csomópontok milyen erőforrásokat használnak, és hogy a szolgáltatások mikor futnak a csomópontokon. Lehetséges, hogy a Node tulajdonság **HasSSD** , és igaz vagy hamis értékre van állítva. Az SSD-lemezen rendelkezésre álló szabad terület nagysága és a szolgáltatások által felhasznált mennyiség (például "DriveSpaceInMb") mérőszáma. 
 
-Csakúgy, mint az elhelyezési megkötések és a csomópont tulajdonságai, Service Fabric Cluster Resource Manager nem érti, mit jelentenek a metrikák nevét. A metrikanevek csak karakterláncok. Célszerű az egységekdeklarálása a metrikanevek részeként, amelyeket akkor hoz létre, amikor azok kétértelműek lehetnek.
+Az elhelyezési korlátozásokhoz és a csomópontok tulajdonságaihoz hasonlóan a Service Fabric fürterőforrás-kezelő nem érti, hogy mit jelent a metrikák neve. A metrikák nevei csak karakterláncok. Érdemes bejelenteni az egységeket a létrehozott metrikai nevek részeként, ha azok nem egyértelműek.
 
 ## <a name="capacity"></a>Kapacitás
-Ha kivan kapcsolva az összes *erőforrás-kiegyensúlyozás*, Service Fabric fürterőforrás-kezelő továbbra is biztosítaná, hogy egyetlen csomópont sem megy át a kapacitását. A kapacitástúllépések kezelése csak akkor lehetséges, ha a fürt túl tele van, vagy a munkaterhelés nagyobb, mint bármely csomópont. A kapacitás egy másik *olyan korlátozás,* amelyet a fürterőforrás-kezelő a csomópont erőforrásának megértéséhez használ. A fennmaradó kapacitás tavatot is nyomon követ a fürt egésze. 
+Ha kikapcsolta az összes erőforrás- *kiegyenlítést*, Service Fabric a fürterőforrás-kezelő továbbra is gondoskodik arról, hogy egyetlen csomópont sem haladja meg a kapacitását. A kapacitás-túllépések kezelése csak akkor lehetséges, ha a fürt túl teljes, vagy a munkaterhelés nagyobb, mint bármely csomópont. A kapacitás egy másik *korlátozás* , amelyet a fürterőforrás-kezelő használ annak megértéséhez, hogy egy adott erőforrás mekkora része a csomópontnak. A fennmaradó kapacitást is nyomon követheti a fürt teljes egészében. 
 
-Mind a kapacitás, mind a szolgáltatásszintű felhasználás metrikákban van kifejezve. A metrika lehet például "Ügyfélkapcsolat", és egy csomópont kapacitása 32 768 "ClientConnections". Más csomópontok nak más korlátai is lehetnek. Az adott csomóponton futó szolgáltatás azt mondhatja, hogy jelenleg 32 256 "Ügyfélkapcsolat" metrikát fogyaszt.
+A szolgáltatás szintjén a kapacitás és a felhasználás is mérőszámok alapján van kifejezve. Előfordulhat például, hogy a metrika "ClientConnections", és egy csomópont 32 768-as "ClientConnections" képességgel rendelkezik. Más csomópontok rendelkezhetnek más korlátozásokkal. A csomóponton futó szolgáltatás azt is megteheti, hogy jelenleg a (z) "ClientConnections" metrika 32 256.
 
-Futásközben a fürterőforrás-kezelő nyomon követi a fürtben és a csomópontokon fennmaradó kapacitást. A kapacitás nyomon követéséhez a fürterőforrás-kezelő kivonja az egyes szolgáltatások használatát egy csomópont kapacitásából, ahol a szolgáltatás fut. Ezzel az információval a fürterőforrás-kezelő kitudja találni, hogy hová helyezze vagy helyezze át a replikákat, hogy a csomópontok ne menjenek túl a kapacitáson.
+A Futtatás során a fürterőforrás-kezelő nyomon követi a fürt és a csomópontok fennmaradó kapacitását. A kapacitás nyomon követéséhez a fürterőforrás-kezelő kivonja az egyes szolgáltatások használatát egy csomópont azon kapacitása alapján, ahol a szolgáltatás fut. Ezen információk alapján a fürterőforrás-kezelő kiderítheti, hogy hová helyezheti vagy helyezheti át a replikákat, hogy a csomópontok ne lépjék túl a kapacitást.
 
 <center>
 
@@ -505,7 +505,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-A fürtjegyzékben definiált kapacitások láthatók. Íme egy példa a ClusterManifest.xml fájlhoz:
+Láthatja a fürt jegyzékfájljában definiált kapacitásokat. Íme egy példa a ClusterManifest. XML fájlra:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +515,7 @@ A fürtjegyzékben definiált kapacitások láthatók. Íme egy példa a Cluster
     </NodeType>
 ```
 
-Íme egy példa a ClusterConfig.json által önálló telepítésekhez vagy Template.json az Azure által üzemeltetett fürtökhöz definiált kapacitásokra: 
+Íme egy példa a ClusterConfig. JSON-n keresztül meghatározott kapacitásokra a különálló központi telepítések vagy a template. JSON esetében az Azure által üzemeltetett fürtök esetében: 
 
 ```json
 "nodeTypes": [
@@ -528,27 +528,27 @@ A fürtjegyzékben definiált kapacitások láthatók. Íme egy példa a Cluster
 ],
 ```
 
-A szolgáltatás terhelése gyakran dinamikusan változik. Tegyük fel, hogy a replika "ClientConnections" terhelése 1024-ről 2048-ra változott. A csomópont, amelyen futott, majd kapacitása csak 512 maradt a metrika. Most, hogy a replika vagy példány elhelyezése érvénytelen, mert nincs elég hely a csomóponton. A fürterőforrás-kezelőnek vissza kell szereznie a csomópontot a kapacitás alá. Csökkenti a terhelést a csomóponton, amely kapacitás feletti azáltal, hogy egy vagy több replikák vagy példányok, hogy a csomópont más csomópontok. 
+A szolgáltatás terhelése gyakran dinamikusan változik. Tegyük fel, hogy a replika "ClientConnections" terhelése 1 024 – 2 048 értékre változott. A csomóponton, amelyen a fut, csak 512 maradt a metrikához. Most, hogy a replika vagy a példány elhelyezése érvénytelen, mert nincs elég hely a csomóponton. A fürterőforrás-kezelőnek vissza kell kérnie a csomópontot a kapacitás alatt. Ez csökkenti a terhelést a kapacitás feletti csomóponton, ha egy vagy több replikát vagy példányt helyez át a csomópontról más csomópontokra. 
 
-A fürterőforrás-kezelő megpróbálja minimalizálni a replikák áthelyezésének költségeit. A [mozgásköltségről,](service-fabric-cluster-resource-manager-movement-cost.md) valamint a [stratégiák és szabályok kiegyensúlyozásáról](service-fabric-cluster-resource-manager-metrics.md)többet is megtudhat.
+A fürterőforrás-kezelő megpróbálja csökkenteni a replikák áthelyezésének költségeit. További információ a [mozgási díjakról](service-fabric-cluster-resource-manager-movement-cost.md) és a [stratégiák és szabályok újraelosztásáról](service-fabric-cluster-resource-manager-metrics.md).
 
 ## <a name="cluster-capacity"></a>Fürt kapacitása
-Hogyan akadályozza meg a Service Fabric fürterőforrás-kezelő a teljes fürt túl teljes? A dinamikus terhelés, nincs sok, amit tehetünk. A szolgáltatások terhelési csúcsa a fürterőforrás-kezelő által végrehajtott műveletektől függetlenül is megemelkedhet. Ennek eredményeként, a klaszter rengeteg belmagasság ma lehet, hogy underpowered, ha van egy tüske holnap. 
+Hogyan működik a Service Fabric fürterőforrás-kezelője, hogy a teljes fürt túl teljes legyen? Dinamikus betöltéssel nem sokat tehet. A szolgáltatások a fürt erőforrás-kezelője által végrehajtott műveletektől függetlenül is rendelkezhetnek a terheléssel. Ennek eredményeképpen a fürt sok belmagassággal rendelkezik, ha holnap van egy tüske. 
 
-A Fürterőforrás-kezelő vezérlői segítenek megelőzni a problémákat. Az első dolog, amit tehetünk, hogy megakadályozzák az új számítási feladatok, amelyek hatására a fürt teljes.
+A fürterőforrás-kezelőben a vezérlők segítenek a problémák megelőzésében. Az első dolog, ami meggátolja az új munkaterhelések létrehozását, amelyek miatt a fürt megtelik lesznek.
 
-Tegyük fel, hogy hozzon létre egy állapotmentes szolgáltatást, és van hozzá egy kis terhelés. A szolgáltatás törődik a "DiskSpaceInMb" metrika. A szolgáltatás a szolgáltatás minden példányához öt egység "DiskSpaceInMb"-ot használ fel. A szolgáltatás három példányát szeretné létrehozni. Ez azt jelenti, hogy 15 egység "DiskSpaceInMb"-ra van szükség ahhoz, hogy a fürtben jelen legyen, hogy még ezeket a szolgáltatáspéldányokat is létrehozhatja.
+Tegyük fel, hogy létrehoz egy állapot nélküli szolgáltatást, és a hozzá tartozó terheléssel rendelkezik. A szolgáltatás a "DiskSpaceInMb" metrikával foglalkozik. A szolgáltatás a szolgáltatás minden példánya esetében a "DiskSpaceInMb" öt egységét fogja használni. A szolgáltatás három példányát kívánja létrehozni. Ez azt jelenti, hogy a fürtben a "DiskSpaceInMb" 15 egységnek kell lennie ahhoz, hogy még létre lehessen hozni ezeket a szolgáltatási példányokat.
 
-A fürterőforrás-kezelő folyamatosan kiszámítja az egyes metrikák kapacitását és felhasználását, így meghatározhatja a fürt ben fennmaradó kapacitást. Ha nincs elég hely, a Fürterőforrás-kezelő elutasítja a szolgáltatás létrehozásához való hívást.
+A fürterőforrás-kezelő folyamatosan kiszámítja az egyes mérőszámok kapacitását és felhasználását, hogy az képes legyen a fürt fennmaradó kapacitásának meghatározására. Ha nincs elég hely, a fürterőforrás-kezelő elutasítja a szolgáltatás létrehozásának hívását.
 
-Mivel a követelmény csak az, hogy 15 egység lesz elérhető, akkor osztja ezt a helyet számos különböző módon. Például előfordulhat, hogy 15 különböző csomóponton egy fennmaradó kapacitásegység, vagy három fennmaradó kapacitásegység öt különböző csomóponton. Ha a fürterőforrás-kezelő át tudja rendezni a dolgokat, így három csomóponton öt egység áll rendelkezésre, akkor elhelyezi a szolgáltatást. A fürt átrendezése általában akkor lehetséges, ha a fürt majdnem megtelt, vagy a meglévő szolgáltatások valamilyen okból nem konszolidálhatók.
+Mivel a követelmény csak a 15 egység lesz elérhető, számos különböző módon lefoglalhatja ezt a területet. Lehet például, hogy egy fennmaradó egység kapacitása 15 különböző csomóponton, vagy három további, öt különböző csomóponton fennmaradó egység kapacitása. Ha a fürterőforrás-kezelő átrendezi a dolgokat, hogy a három csomóponton öt egység legyen elérhető, akkor a szolgáltatás elhelyezi a szolgáltatást. A fürt átrendezése általában csak akkor lehetséges, ha a fürt csaknem megtelt, vagy a meglévő szolgáltatásokat valamilyen okból nem lehet összevonni.
 
 ## <a name="buffered-capacity"></a>Pufferelt kapacitás
-A pufferelt kapacitás a fürterőforrás-kezelő egy másik szolgáltatása. Lehetővé teszi a teljes csomópontkapacitás egy részének lefoglalását. Ez a kapacitáspuffer csak a frissítések és a csomóponthibák során szolgál szolgáltatások elhelyezésére. 
+A pufferelt kapacitás a fürterőforrás-kezelő egy másik funkciója. Lehetővé teszi a teljes csomópont-kapacitás egy részének lefoglalását. Ezt a kapacitási puffert csak a szolgáltatások a verziófrissítések és a csomópont meghibásodása során történő elhelyezésére használják. 
 
-Pufferelt kapacitás globálisan van megadva metrika szerint az összes csomóponthoz. A lefoglalt kapacitáshoz választott érték a fürtben található hiba- és frissítési tartományok számától függ. A további hiba- és frissítési tartományok azt jelentik, hogy a pufferelt kapacitáshoz alacsonyabb számot is választhat. Ha több tartománnyal rendelkezik, a frissítések és a hibák során a fürt kisebb mennyiségére számíthat. Pufferelt kapacitás megadása csak akkor van értelme, ha egy metrika csomópontkapacitását is megadta.
+A pufferelt kapacitás globálisan van megadva az összes csomóponthoz. A fenntartott kapacitáshoz választott érték a fürtben található hibák és frissítési tartományok függvénye. A további hibatűrési és frissítési tartományok azt jelentik, hogy alacsonyabb számot választhat a pufferelt kapacitáshoz. Ha több tartománya van, előfordulhat, hogy a fürt kisebb mennyisége nem érhető el a frissítések és a hibák során. A pufferelt kapacitás megadása csak akkor hasznos, ha egy metrika csomópont-kapacitását is megadja.
 
-Íme egy példa arra, hogyan adhatók meg pufferelt kapacitás a ClusterManifest.xml fájlban:
+Íme egy példa arra, hogyan lehet pufferelt kapacitást megadni a ClusterManifest. xml fájlban:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +557,7 @@ Pufferelt kapacitás globálisan van megadva metrika szerint az összes csomópo
         </Section>
 ```
 
-Íme egy példa arra, hogyan adhatja meg a pufferelt kapacitást a ClusterConfig.json on keresztül az önálló telepítésekhez vagy a Template.json t az Azure által üzemeltetett fürtökhöz:
+Íme egy példa arra, hogyan lehet pufferelt kapacitást megadni a ClusterConfig. JSON használatával a különálló központi telepítések vagy a template. JSON esetében az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -577,17 +577,17 @@ Pufferelt kapacitás globálisan van megadva metrika szerint az összes csomópo
 ]
 ```
 
-Az új szolgáltatások létrehozása sikertelen, ha a fürt nem rendelkezik pufferelt kapacitással egy metrika számára. A puffer megőrzését szolgáló új szolgáltatások létrehozásának megakadályozása biztosítja, hogy a frissítések és a hibák ne eredményezzék a csomópontok kapacitástúlterhelését. Pufferelt kapacitás nem kötelező, de azt javasoljuk, hogy minden olyan fürtben, amely meghatározza a kapacitás tanusított a metrika.
+Az új szolgáltatások létrehozása meghiúsul, ha a fürt kifogyott a metrika pufferének kapacitásával. A puffer megőrzése érdekében új szolgáltatások létrehozásának megakadályozása biztosítja, hogy a frissítések és a hibák ne okozzák a csomópontok kapacitását. A pufferelt kapacitás nem kötelező, de azt javasoljuk, hogy bármely olyan fürtben, amely egy metrika kapacitását határozza meg.
 
-A fürterőforrás-kezelő megjeleníti ezt a terhelési információt. Az egyes mutatók esetében ezek az adatok a következőket tartalmazzák: 
+A fürterőforrás-kezelő elérhetővé teszi ezt a betöltési információt. Minden metrika esetében ez az információ az alábbiakat tartalmazza: 
 - A pufferelt kapacitás beállításai.
 - A teljes kapacitás.
-- Az aktuális fogyasztás.
-- Azt jelzi, hogy az egyes mutatók kiegyensúlyozottnak minősülnek-e vagy sem.
-- A szórásra vonatkozó statisztikák.
-- Azok a csomópontok, amelyek a legnagyobb és legkevésbé terhelést rendelkeznek.  
+- Az aktuális felhasználás.
+- Azt határozza meg, hogy az egyes mérőszámok kiegyensúlyozottnak minősülnek-e.
+- A szórás statisztikája.
+- A legtöbb és legkisebb terhelésű csomópontok.  
   
-A következő kód egy példát mutat be erre a kimenetre:
+A következő kód a kimenet példáját mutatja be:
 
 ```PowerShell
 PS C:\Users\user> Get-ServiceFabricClusterLoadInformation
@@ -616,10 +616,10 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A fürterőforrás-kezelőarchitektúrájáról és információáramlásáról a [Fürterőforrás-kezelő architektúrájának áttekintése című témakörben olvashat.](service-fabric-cluster-resource-manager-architecture.md)
-* A töredezettségmentesítési metrikák definiálása az egyik módja a csomópontok terhelésének konszolidálásának, ahelyett, hogy szétosztana azt. A töredezettségmentesítés konfigurálásáról a [metrikák töredezettségmentesítése és a Service Fabric terhelése](service-fabric-cluster-resource-manager-defragmentation-metrics.md)című témakörben olvashat.
-* Kezdje az elejétől, és [vezesse be a Service Fabric fürterőforrás-kezelőjét.](service-fabric-cluster-resource-manager-introduction.md)
-* A fürterőforrás-kezelő kezeléséről és a fürt terhelésének kiegyensúlyozásáról [a Service Fabric-fürt kiegyensúlyozása](service-fabric-cluster-resource-manager-balancing.md)című témakörben olvashat.
+* A fürterőforrás-kezelő architektúrájának és információinak folyamatáról további információt a [fürterőforrás-kezelő architektúrájának áttekintése](service-fabric-cluster-resource-manager-architecture.md)című témakörben talál.
+* A Lemeztöredezettség-mentesítő mérőszámok meghatározása az egyik módszer a csomópontok terhelésének konszolidálására a kiterjedésük helyett. A töredezettségmentesítés konfigurálásával kapcsolatos további információkért lásd: [a metrikák és a betöltések töredezettségmentesítése Service Fabric](service-fabric-cluster-resource-manager-defragmentation-metrics.md).
+* Kezdje a kezdetektől, és [Ismerkedjen meg Service Fabric fürterőforrás-kezelővel](service-fabric-cluster-resource-manager-introduction.md).
+* Annak megismeréséhez, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [Service Fabric-fürt kiegyensúlyozását](service-fabric-cluster-resource-manager-balancing.md)ismertető témakört.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
 [Image2]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png

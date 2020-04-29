@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67179784"
 ---
-1. Jelentkezzen be a Data Box eszközbe. Győződjön meg róla, hogy fel van oldva.
+1. Jelentkezzen be a Data Box eszközre. Győződjön meg róla, hogy fel van oldva.
 
-    ![Adatdoboz irányítópultja](media/data-box-add-device-ip/data-box-connect-via-rest-1.png)
+    ![Data Box irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-1.png)
 
-2. Nyissa meg a **Hálózati adapterek beállítása (Set network interfaces) (Hálózati adapterek beállítása) (Hálózati adapterek** Jegyezze fel az ügyfélhez való csatlakozáshoz használt hálózati adapter eszköz IP-címét.
+2. Válassza a **hálózati adapterek beállítása**lehetőséget. Jegyezze fel az eszköz IP-címét az ügyfélhez való kapcsolódáshoz használt hálózati adapterhez.
 
-    ![Adatdoboz irányítópultja](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
+    ![Data Box irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. Nyissa meg a **Csatlakozás és másolás,** majd **a Többi (Tovább)** menülap .go to Connect and copy and click Rest .
+3. Lépjen a **Kapcsolódás és másolás** lehetőségre, és kattintson a **Rest**elemre.
 
-    ![Adatdoboz irányítópultja](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
+    ![Data Box irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 
-4. Másolja a **blobszolgáltatás végpontját**az **Access Storage-fiók és a feltöltési adatok** párbeszédpanelről.
+4. A **hozzáférési Storage-fiók és az adatok feltöltése** párbeszédpanelen másolja a **blob Service-végpontot**.
 
-    ![Adatdoboz irányítópultja](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
+    ![Data Box irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. Indítsa el **a Jegyzettömböt** rendszergazdaként, majd `C:\Windows\System32\Drivers\etc`nyissa meg **a** hosts fájlt a helyen.
-6. Adja hozzá a következő bejegyzést a **hosts** fájlhoz:`<device IP address> <Blob service endpoint>`
-7. Referenciaként használja az alábbi képet. Mentse a **hosts** fájlt.
+5. Indítsa el a **jegyzettömböt** rendszergazdaként, majd nyissa meg a következő `C:\Windows\System32\Drivers\etc`helyen található **hosts** fájlt:.
+6. Adja hozzá a következő bejegyzést a **gazdagépek** fájljához:`<device IP address> <Blob service endpoint>`
+7. A hivatkozáshoz használja az alábbi képet. Mentse a **hosts** fájlt.
 
-    ![Adatdoboz irányítópultja](media/data-box-add-device-ip/data-box-connect-via-rest-5.png)
+    ![Data Box irányítópult](media/data-box-add-device-ip/data-box-connect-via-rest-5.png)

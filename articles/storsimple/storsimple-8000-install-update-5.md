@@ -1,6 +1,6 @@
 ---
-title: Az 5. Microsoft dokumentumok
-description: A cikk a StorSimple 8000 Series 5 sorozat5-ös sorozatának telepítését ismerteti a StorSimple 8000 sorozatú eszközön.
+title: Telepítse az 5. frissítést a StorSimple 8000 Series eszközön | Microsoft Docs
+description: A cikk azt ismerteti, hogyan telepítheti a StorSimple 8000 Series Update 5-öt a StorSimple 8000 Series eszközön.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,104 +15,104 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267884"
 ---
-# <a name="install-update-5-on-your-storsimple-device"></a>Az 5.
+# <a name="install-update-5-on-your-storsimple-device"></a>Telepítse az 5. frissítést a StorSimple-eszközön
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag bemutatja, hogyan telepítheti az 5. A gyorsjavítási módszert akkor használja a rendszer, ha az 5. A gyorsjavítási módszert akkor is használja a rendszer, ha az átjáró a StorSimple eszköz DATA 0 szolgáltatásától eltérő hálózati illesztőn van konfigurálva, és az 1.
+Ez az oktatóanyag azt ismerteti, hogyan telepítheti az 5. frissítést egy korábbi verziót futtató StorSimple-eszközön a Azure Portal és a gyorsjavítási módszer használatával. A gyorsjavítási módszer akkor használatos, ha az 5. frissítést a 3. előzetes verziót futtató eszközön kísérli meg telepíteni. A gyorsjavítási módszert akkor is használja a rendszer, ha egy átjáró a StorSimple-eszköztől eltérő hálózati adapteren van konfigurálva, és az 1. frissítés előtti verzióról próbál frissíteni.
 
-Az 5- ös frissítés tartalmazza az eszközszoftvereket, a Storport és a Spaceport, az operációs rendszer biztonsági frissítéseit és az operációs rendszer frissítéseit, valamint a lemez belső vezérlőprogramjának frissítéseit.  Az eszköz szoftver, Spaceport, Storport, biztonság, és egyéb operációs rendszer frissítések nem zavaró frissítéseket. A nem zavaró vagy rendszeres frissítések et az Azure Portalon vagy a gyorsjavítási módszeren keresztül lehet alkalmazni. A lemez belső vezérlőprogramjának frissítései zavaró frissítések, és akkor kerülnek alkalmazásra, ha az eszköz karbantartási üzemmódban van az eszköz Windows PowerShell felületét használó gyorsjavítási módszerrel.
+Az 5. frissítés tartalmazza az eszköz szoftverét, a Storport és a ûrkikötõt, az operációs rendszer biztonsági frissítéseit és az operációs rendszer frissítéseit, valamint a lemez belső  Az eszköz szoftver-, ûrkikötõt-, Storport-, biztonsági és egyéb operációsrendszer-frissítései nem zavaró frissítések. A nem zavaró vagy rendszeres frissítések a Azure Portal vagy a gyorsjavítási módszer használatával alkalmazhatók. A lemez belső vezérlőprogram-frissítései zavaró frissítések, amelyek akkor lépnek életbe, ha az eszköz karbantartási üzemmódban van, és az eszköz Windows PowerShell felületét használja.
 
 > [!IMPORTANT]
-> * Az 5-ös frissítés kötelező frissítés, amelyet azonnal telepíteni kell. További információt az [5.](storsimple-update5-release-notes.md)
-> * A telepítés előtt manuális és automatikus előzetes ellenőrzéseket végeznek az eszköz állapotának meghatározására a hardverállapot és a hálózati kapcsolat szempontjából. Ezek az előzetes ellenőrzések csak akkor hajtják végre, ha alkalmazza a frissítéseket az Azure Portalon.
-> * Javasoljuk, hogy a 3. Ha bármilyen problémát tapasztal, [jelentkezzen be egy támogatási jegyet.](storsimple-8000-contact-microsoft-support.md)
-> * Javasoljuk, hogy telepítse a szoftvert és más rendszeres frissítéseket az Azure Portalon keresztül. Csak akkor lépjen az eszköz Windows PowerShell-felületére (a frissítések telepítéséhez), ha a frissítés előtti átjáró ellenőrzése sikertelen a portálon. Attól függően, hogy melyik verzióról frissít, a frissítések telepítése (vagy nagyobb) 4 órát (vagy annál hosszabb) is igénybe vehet. A karbantartási mód frissítéseit az eszköz Windows PowerShell felületén keresztül kell telepíteni. Mivel a karbantartási mód frissítései zavaró frissítések, ezek az eszköz leállási idejét eredményezik.
-> * Ha fut a választható StorSimple Snapshot Manager, győződjön meg arról, hogy frissítette a Snapshot Manager verziója 5-ös frissítésre az eszköz frissítése előtt.
+> * Az 5. frissítés egy kötelező frissítés, amelyet azonnal telepíteni kell. További információ: 5. [frissítéshez tartozó kibocsátási megjegyzések](storsimple-update5-release-notes.md).
+> * A telepítés előtt manuális és automatikus ellenőrzéseket végeznek az eszközök állapotának meghatározásához a hardver állapota és a hálózati kapcsolat alapján. Ezeket az előzetes ellenőrzéseket csak akkor hajtja végre, ha a Azure Portalről alkalmazza a frissítéseket.
+> * Azt javasoljuk, hogy a 3. frissítés előtti verziót futtató eszközök frissítésekor telepítse a frissítéseket a gyorsjavítási módszer használatával. Ha bármilyen problémába ütközik, [Jelentkezzen be egy támogatási jegyet](storsimple-8000-contact-microsoft-support.md).
+> * Javasoljuk, hogy telepítse a szoftvert és az egyéb rendszeres frissítéseket a Azure Portal használatával. Az eszköz Windows PowerShell-felületén (a frissítések telepítéséhez) csak akkor kell megjelennie, ha a portálon nem sikerül a frissítés előtti átjáró-ellenőrzés. Attól függően, hogy melyik verziót szeretné frissíteni, a frissítések telepítése 4 órát is igénybe vehet (vagy nagyobb). A karbantartási mód frissítéseit az eszköz Windows PowerShell-felületén keresztül kell telepíteni. Mivel a karbantartási mód frissítései nem zavaró frissítések, ezek az eszközök leállási idejét eredményezik.
+> * Ha a választható StorSimple Snapshot Manager futtatja, győződjön meg arról, hogy az eszköz frissítése előtt frissítette a Snapshot Manager verzióját az 5. frissítésre.
 
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-5-via-the-azure-portal"></a>Az 5.
-Az alábbi lépésekkel frissítheti az eszközt az [5-ös frissítésre.](storsimple-update5-release-notes.md)
+## <a name="install-update-5-via-the-azure-portal"></a>Telepítse az 5. frissítést a Azure Portal használatával
+A következő lépések végrehajtásával frissítheti az eszközt az [5. frissítéssel](storsimple-update5-release-notes.md).
 
 > [!NOTE]
-> A Microsoft további diagnosztikai információkat vesz fel az eszközről. Ennek eredményeképpen, amikor műveleti csapatunk azonosítja a problémákat okozó eszközöket, jobban fel vagyunk szerelve az eszközről származó adatok gyűjtésére és a problémák diagnosztizálására.
+> A Microsoft további diagnosztikai adatokat kér le az eszközről. Ennek eredményeképpen, amikor az operatív csapatunk olyan eszközöket azonosít, amelyekkel problémák léptek fel, jobban felkészültünk az adatok gyűjtésére az eszközről és a problémák diagnosztizálására.
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update5-via-portal.md)]
 
-Ellenőrizze, hogy az eszközön fut-e a **StorSimple 8000 Series 5-ös frissítése (6.3.9600.17845)**. Az **utolsó frissítés dátumát** módosítani kell.
+Ellenőrizze, hogy az eszközön fut-e az **StorSimple 8000 Series Update 5 (6.3.9600.17845)**. A **legutóbbi frissítés dátumát** módosítani kell.
 
-Most látni fogja, hogy a Karbantartási mód frissítései elérhetők (ez az üzenet a frissítések telepítése után is megjelenhet). A karbantartási mód frissítésének telepítésének lépéseit a következő szakasz részletezi.
+Ekkor láthatja, hogy a karbantartási mód frissítései elérhetők (ez az üzenet akár 24 óráig is megjelenhet a frissítések telepítése után). A karbantartási mód frissítésének telepítésének lépései részletesen olvashatók a következő szakaszban.
 
 [!INCLUDE [storsimple-8000-install-maintenance-mode-updates](../../includes/storsimple-8000-install-maintenance-mode-updates.md)]
 
-## <a name="install-update-5-as-a-hotfix"></a>Az 5.
+## <a name="install-update-5-as-a-hotfix"></a>Az 5-ös frissítés telepítése gyorsjavításként
 
-A gyorsjavítási módszerrel frissíthető szoftververziók a következők:
+A gyorsjavítási módszer használatával frissíthető szoftverek a következők:
 
-* Frissítés 0.1, 0.2, 0.3
-* Frissítés 1, 1.1, 1.2
-* Frissítés 2, 2.1, 2.2
-* 3.1. frissítés
+* Frissítés 0,1, 0,2, 0,3
+* 1. frissítés, 1,1, 1,2
+* 2. frissítés, 2,1, 2,2
+* 3. frissítés, 3,1
 * 4-es frissítés
 
 > [!NOTE] 
-> Az 5- ös frissítés telepítésének ajánlott módszere az Azure Portalon keresztül történik, amikor 3. A 3. Ezt az eljárást akkor is használhatja, ha nem sikerül az átjáró ellenőrzése, amikor megpróbálja telepíteni a frissítéseket az Azure Portalon keresztül. Az ellenőrzés sikertelen, ha egy átjáró t rendelt egy nem DATA 0 hálózati adapterhez, és az eszköz az 1.
+> Az 5. frissítés telepítésének ajánlott módja a Azure Portal, amikor a 3. vagy újabb verzióról próbál frissíteni. Ha a 3. frissítés előtt verziót futtató eszközt frissít, használja ezt az eljárást. Ezt az eljárást akkor is használhatja, ha nem sikerül az átjáró ellenőrzése, amikor a Azure Portalon keresztül kísérli meg telepíteni a frissítéseket. Az ellenőrzés sikertelen, ha olyan átjáróval rendelkezik, amely nem adat 0 hálózati adapterhez van rendelve, és az eszközön az 1. frissítésnél korábbi szoftververzió fut.
 
 A gyorsjavítási módszer a következő három lépést foglalja magában:
 
-1. Töltse le a gyorsjavításokat a Microsoft Update katalógusból.
+1. Töltse le a gyorsjavításokat a Microsoft Update-katalógusból.
 2. Telepítse és ellenőrizze a normál módú gyorsjavításokat.
 3. Telepítse és ellenőrizze a karbantartási mód gyorsjavítását.
 
-#### <a name="download-updates-for-your-device"></a>Frissítések letöltése az eszközre
+#### <a name="download-updates-for-your-device"></a>Az eszköz frissítéseinek letöltése
 
-Az előírt sorrendben és a javasolt mappákban le kell töltenie és telepítenie kell a következő gyorsjavításokat:
+A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappában|
+| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Szoftverfrissítés<br> A _HcsSoftwareUpdate.exe_ és a _CisMSDAgent.exe fájl letöltése_ |Hagyományos <br></br>Nem zavaró |~ 25 mins |FirstOrderUpdate|
+| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le a _HcsSoftwareUpdate. exe_ és a _CisMSDAgent. exe fájlt_ is |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 
-Ha a 4.
+Ha a 4. frissítést futtató eszközről frissít, csak az operációs rendszer összegző frissítéseit kell második sorrendi frissítésként telepíteni.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappában|
+| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| (2A) Az (1) bekezdés ben s |KB4025336 |Az operációs rendszer összesítő frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
+| 2a. |KB4025336 |Operációs rendszer összegző frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
-Ha a 3.
+Ha a telepítést a 3-as vagy korábbi frissítést futtató eszközről végzi, a kumulatív frissítések mellett telepítse a következőt is.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappában|
+| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |LSI-illesztőprogram- és belső vezérlőprogram-frissítések <br> AZ USM firmware frissítése (3.38-as verzió) |Hagyományos <br></br>Nem zavaró |~ 3 óra <br> (beleértve a 2A-t. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Operációs rendszer biztonsági frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
-| 2d. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Operációs rendszer frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
+| 2b. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Hagyományos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Operációs rendszer biztonsági frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Operációs rendszer frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
 
-Előfordulhat, hogy az előző táblázatokban látható összes frissítésen felül lemezbelső-vezérlőprogramokat is telepítenie kell. A `Get-HcsFirmwareVersion` parancsmag futtatásával ellenőrizheti, hogy szükség van-e a lemez belső vezérlőprogramjának frissítésére. Ha a következő belső `XMGJ`vezérlőprogram-verziókat `0107`futtatja: , , `XGEG` `KZ50`, `F6C2`, `VR08`, `N003`, akkor nem kell telepítenie ezeket a frissítéseket.
+Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A `Get-HcsFirmwareVersion` parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire. Ha a következő belső vezérlőprogram-verziókat `XMGJ`futtatja `KZ50`: `F6C2` `VR08` `N003` `0107` `XGEG`,,,,,, akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappában|
+| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 mins | ThirdOrderUpdate |
+| 3. |KB4037263 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 
 <br></br>
 
 > [!IMPORTANT]
-> * Ha a 4-es frissítésről frissít, a teljes telepítési idő megközelíti a 4 órát.
-> * Mielőtt ezzel az eljárással alkalmaznák a frissítést, győződjön meg arról, hogy mind az eszközvezérlők online állapotban vannak, mind az összes hardverösszetevő kifogástalan.
+> * Ha a 4. frissítésből frissíti a frissítést, a teljes telepítési idő 4 óra.
+> * Mielőtt alkalmazza ezt az eljárást a frissítés alkalmazásához, győződjön meg arról, hogy mind az Eszközkezelő online, mind a hardver-összetevők kifogástalan állapotban vannak.
 
-A gyorsjavítások letöltéséhez és telepítéséhez hajtsa végre az alábbi lépéseket.
+A gyorsjavítások letöltéséhez és telepítéséhez hajtsa végre a következő lépéseket.
 
 [!INCLUDE [storsimple-install-update5-hotfix](../../includes/storsimple-install-update5-hotfix.md)]
 
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 
 ## <a name="next-steps"></a>További lépések
-További információ az [5.](storsimple-update5-release-notes.md)
+További információ az [5. frissítés kiadásáról](storsimple-update5-release-notes.md).
 

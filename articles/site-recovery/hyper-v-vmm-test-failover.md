@@ -1,6 +1,6 @@
 ---
-title: NHyper-V vész-helyreállítási gyakorlat futtatása egy másodlagos helyre az Azure Site Recovery szolgáltatással
-description: Megtudhatja, hogyan futtathat VÉSZ-fúrót a VMM-felhőkben lévő Hyper-V virtuális gépekre az Azure Site Recovery használatával egy másodlagos helyszíni adatközpontba.
+title: NHyper-V vész-helyreállítási gyakorlat futtatása másodlagos helyre Azure Site Recovery
+description: Ismerje meg, hogyan futtathat VMM-felhőkben futó Hyper-V virtuális gépekre vonatkozó DR-részletezést egy másodlagos helyszíni adatközpontban Azure Site Recovery használatával.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,100 +8,100 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257965"
 ---
-# <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Dr-fúró futtatása hyper-V virtuális gépekhez egy másodlagos helyre
+# <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
 
-Ez a cikk ismerteti, hogyan kell csinálni egy vész-helyreállítási (DR) fúró a System Center Virtual Machine Manager V(MM) felhők, egy másodlagos helyszíni helyen, az [Azure Site Recovery](site-recovery-overview.md)használatával.
+Ez a cikk a (z) System Center Virtual Machine Manager V (PP) felhőkben felügyelt Hyper-V virtuális gépek vész-helyreállítási (DR) gyakorlatát ismerteti, [Azure site Recovery](site-recovery-overview.md)használatával.
 
-Futtategy tesztfeladat-átvételt a replikációs stratégia érvényesítéséhez, és a VÉSZ-gyakorlat ot adatvesztés vagy állásidő nélkül hajthatja végre. A tesztfeladat-átvétel nincs hatással a folyamatban lévő replikációra vagy az éles környezetre. 
+A replikációs stratégia ellenőrzéséhez futtasson feladatátvételi tesztet, és végezzen el egy DR-részletezést adatvesztés vagy állásidő nélkül. A feladatátvételi teszt nem befolyásolja a folyamatos replikálást, vagy az éles környezetben. 
 
-## <a name="how-do-test-failovers-work"></a>Hogyan működnek a tesztfeladat-átvételek?
+## <a name="how-do-test-failovers-work"></a>Hogyan működnek a feladatátvételi teszt?
 
-Futtat egy teszt feladatátvételt az elsődleges ről a másodlagos helyre. Ha egyszerűen csak azt szeretné ellenőrizni, hogy a virtuális gép feladatátvétel, futtathat egy teszt feladatátvételt anélkül, hogy bármit a másodlagos helyen állítana be. Ha ellenőrizni szeretné, hogy az alkalmazás feladatátvétele a várt módon működik-e, be kell állítania a hálózatot és az infrastruktúrát a másodlagos helyen.
-- Futtathat egy tesztfeladat-átvételt egyetlen virtuális számítógépen vagy egy [helyreállítási terven.](site-recovery-create-recovery-plans.md)
-- A tesztfeladat-átvétel hálózaton kívül, meglévő hálózattal vagy automatikusan létrehozott hálózattal is futtatható. Ezekről a lehetőségekről az alábbi táblázatban olvashat bővebben.
-    - A tesztfeladat-átvétel hálózaton kívül is futtatható. Ez a beállítás akkor hasznos, ha egyszerűen csak ellenőrizni szeretné, hogy a virtuális gép képes volt-e feladatátvételre, de nem fogja tudni ellenőrizni a hálózati konfigurációt.
-    - Futtassa a feladatátvételt egy meglévő hálózattal. Azt javasoljuk, hogy ne használjon éles hálózatot.
-    - Futtassa a feladatátvételt, és hagyja, hogy a Site Recovery automatikusan hozzon létre egy teszthálózatot. Ebben az esetben a Site Recovery automatikusan létrehozza a hálózatot, és a tesztfeladat-átvétel befejezésekor törli azt.
-- Ki kell választania egy helyreállítási pontot a teszt feladatátvételhez: 
-    - **Legutóbbi feldolgozott:** Ez a beállítás nem felel meg a virtuális gép nek a Site Recovery által feldolgozott legújabb helyreállítási pont. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
-    - **Legújabb alkalmazás-konzisztens:** Ez a beállítás feladatátvételegy virtuális gép a site recovery által feldolgozott legújabb alkalmazáskonzisztens helyreállítási pont. 
-    - **Legújabb**: Ez a beállítás először feldolgozza az összes adatot, amely et elküldött site recovery szolgáltatás, hozzon létre egy helyreállítási pontot minden virtuális gép, mielőtt átadott neki. Ez a beállítás biztosítja a legalacsonyabb RPO (helyreállításipont), mert a feladatátvétel után létrehozott virtuális gép az összes adatot replikálja a Site Recovery, amikor a feladatátvétel t.
-    - **Legújabb több virtuális gép feldolgozása:** Elérhető helyreállítási tervek, amelyek egy vagy több virtuális gép, amely több virtuális gép konzisztenciája engedélyezve van. Virtuális gépek a beállítás engedélyezve van feladatátvétel a legújabb közös multi-vm konzisztens helyreállítási pont. Más virtuális gépek feladatátvétela a legújabb feldolgozott helyreállítási pont.
-    - **Legújabb többvm-es alkalmazáskonzisztens:** Ez a beállítás egy vagy több virtuális gép, amelyek több virtuális gép konzisztenciája engedélyezve van. Virtuális gépek, amelyek egy replikációs csoport részét képezik, feladatátvétela a legújabb közös többvirtuális gép alkalmazás-konzisztens helyreállítási pont. Más virtuális gépek feladatátvétela a legújabb alkalmazáskonzisztens helyreállítási pont.
-    - **Egyéni:** Ezzel a beállítással egy adott virtuális gép egy adott helyreállítási pont.
+A feladatátvételi tesztet az elsődleges helyről a másodlagos helyre futtathatja. Ha egyszerűen szeretné ellenőrizni, hogy a virtuális gép feladatátvételt végez-e, futtathatja a feladatátvételi tesztet anélkül, hogy bármit kellene beállítania a másodlagos helyen. Ha ellenőrizni szeretné, hogy az alkalmazás feladatátvétele a várt módon működik-e, a másodlagos helyen kell beállítania a hálózatkezelést és az infrastruktúrát.
+- Feladatátvételi tesztet futtathat egyetlen virtuális gépen vagy egy [helyreállítási tervben](site-recovery-create-recovery-plans.md)is.
+- A feladatátvételi tesztet hálózat nélkül, meglévő hálózattal vagy automatikusan létrehozott hálózattal is futtathatja. Ezekről a lehetőségekről további részleteket az alábbi táblázatban talál.
+    - A feladatátvételi tesztet hálózat nélkül is futtathatja. Ez a beállítás akkor hasznos, ha egyszerűen ellenőrizni szeretné, hogy a virtuális gép képes-e átvenni a feladatátvételt, de nem fogja tudni ellenőrizni a hálózati konfigurációt.
+    - Futtassa a feladatátvételt egy meglévő hálózattal. Javasoljuk, hogy ne használjon éles hálózatot.
+    - Futtassa a feladatátvételt, és Site Recovery automatikusan hozzon létre egy tesztelési hálózatot. Ebben az esetben a Site Recovery automatikusan létrehozza a hálózatot, és törli a feladatátvételi teszt befejezésekor.
+- Ki kell választania egy helyreállítási pontot a feladatátvételi teszthez: 
+    - **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gép feladatátvételét a site Recovery által feldolgozott legutóbbi helyreállítási pontra hajtja végre. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
+    - **Legújabb alkalmazás-konzisztens**: Ez a beállítás a virtuális gép feladatátvételét a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. 
+    - **Legújabb**: Ez a lehetőség először feldolgozza a site Recovery szolgáltatásnak elküldett összes adatát, hogy minden virtuális gép számára létrehozzon egy helyreállítási pontot, mielőtt a művelet elvégezte a feladatátvételt. Ez a beállítás a legalacsonyabb RPO (helyreállítási pont célkitűzés) adja meg, mert a feladatátvételt követően létrehozott virtuális gép minden olyan adattal rendelkezik, amelyet a rendszer a feladatátvétel elindításakor Site Recovery replikál.
+    - **Legújabb több virtuális gépre feldolgozva**: olyan helyreállítási tervekhez érhető el, amelyek egy vagy több, több virtuális gépre kiterjedő konzisztenciát használó virtuális gépet tartalmaznak. Azok a virtuális gépek, amelyeken engedélyezve van a feladatátvétel, a legújabb közös, több virtuális gépre kiterjedő konzisztens helyreállítási pontot adják át. Más virtuális gépek feladatátvétele a legutóbb feldolgozott helyreállítási pontra történik.
+    - **Legújabb több virtuális gépre kiterjedő alkalmazás – konzisztens**: Ez a beállítás olyan helyreállítási tervekhez érhető el, amelyeken engedélyezve van egy vagy több virtuális gépre kiterjedő konzisztencia. A replikációs csoport részét képező virtuális gépek a legújabb közös, több virtuális gépre kiterjedő, alkalmazás-konzisztens helyreállítási pontot adják át. Más virtuális gépek feladatátvétele a legújabb, alkalmazás-konzisztens helyreállítási ponttal történik.
+    - **Egyéni**: Ha ezt a lehetőséget választja, az adott virtuális gép egy adott helyreállítási pontra történő feladatátvételét hajthatja végre.
 
 
 
 ## <a name="prepare-networking"></a>Hálózatkezelés előkészítése
 
-Teszt feladatátvétel futtatásakor a rendszer kéri, hogy válassza ki a teszt replikagépek hálózati beállításait, a mint a táblázatban összefoglalva.
+A feladatátvételi teszt futtatásakor a rendszer arra kéri, hogy válassza ki a hálózati beállításokat a tesztelési replika-gépek számára a táblázatban foglaltak szerint.
 
 | **Beállítás** | **Részletek** | |
 | --- | --- | --- |
-| **Nincs** | A teszt virtuális gép jön létre az állomáson, amelyen a replika virtuális gép található. Nem kerül a felhőbe, és nem csatlakozik semmilyen hálózathoz.<br/><br/> A számítógép létrehozása után csatlakozhat a virtuális gép hálózatához.| |
-| **Meglévő kontissza** | A teszt virtuális gép jön létre az állomáson, amelyen a replika virtuális gép található. Nem kerül a felhőbe.<br/><br/>Hozzon létre egy virtuális gép hálózat, amely el van különítve az éles hálózattól.<br/><br/>Ha VLAN-alapú hálózatot használ, azt javasoljuk, hogy hozzon létre egy külön logikai hálózatot (nem használt éles környezetben) a VMM erre a célra. Ez a logikai hálózat virtuálisgép-hálózatok létrehozására szolgál a sikertelen feladatátvételhez.<br/><br/>A logikai hálózatot a virtuális gépeket üzemeltető összes Hyper-V kiszolgáló legalább egyik hálózati adapteréhez kell társítani.<br/><br/>VlAN logikai hálózatok esetén a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windows hálózati virtualizáción alapuló logikai hálózatot használ, az Azure Site Recovery automatikusan létrehozza az elkülönített virtuálisgép-hálózatokat. | |
-| **Hálózat létrehozása** | Az ideiglenes teszthálózat automatikusan létrejön a **Logikai hálózat** ban és a kapcsolódó hálózati helyeken megadott beállítás alapján.<br/><br/> Feladatátvételi ellenőrzi, hogy a virtuális gépek jönnek létre.<br/><br/> Ezt a beállítást akkor használja, ha egy helyreállítási terv egynél több virtuálisgép-hálózatot használ.<br/><br/> Ha Windows hálózati virtualizációs hálózatokat használ, ez a beállítás automatikusan létrehozhat virtuálisgép-hálózatokat ugyanazzal a beállítással (alhálózatok és IP-címkészletek) a replika virtuális gép hálózatában. Ezek a virtuálisgép-hálózatok automatikusan törlődnek a teszt feladatátvétel befejezése után.<br/><br/> A teszt virtuális gép jön létre az állomáson, amelyen a replika virtuális gép létezik. Nem kerül a felhőbe.|
+| **Nincs** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
+| **Meglévő használata** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz.<br/><br/>Hozzon létre egy, az éles hálózattól elkülönített virtuálisgép-hálózatot.<br/><br/>Ha VLAN-alapú hálózatot használ, javasoljuk, hogy hozzon létre egy külön logikai hálózatot (éles környezetben nem használt) a VMM erre a célra. Ezzel a logikai hálózattal virtuálisgép-hálózatokat lehet létrehozni a feladatátvételi tesztekhez.<br/><br/>A logikai hálózatot társítani kell legalább egy, a virtuális gépeket üzemeltető Hyper-V-kiszolgáló hálózati adapteréhez.<br/><br/>A VLAN logikai hálózatok esetében a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windowsos hálózati virtualizálási alapú logikai hálózatot használ, a Azure Site Recovery automatikusan elkülönített virtuálisgép-hálózatokat hoz létre. | |
+| **Hálózat létrehozása** | A rendszer automatikusan létrehoz egy ideiglenes tesztelési hálózatot a **logikai hálózatban** és a kapcsolódó hálózati telephelyeken megadott beállítás alapján.<br/><br/> A feladatátvétel ellenőrzi, hogy a virtuális gépek létrejöttek-e.<br/><br/> Akkor használja ezt a beállítást, ha a helyreállítási terv egynél több virtuálisgép-hálózatot használ.<br/><br/> Ha Windows-alapú hálózati virtualizálási hálózatokat használ, ez a beállítás automatikusan képes virtuális gépeket létrehozni ugyanazokkal a beállításokkal (alhálózatokkal és IP-címkészlet) a replika virtuális gép hálózatában. Ezek a virtuálisgép-hálózatok a feladatátvételi teszt befejeződése után automatikusan törlődnek.<br/><br/> A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép létezik. Nincs hozzáadva a felhőhöz.|
 
 ### <a name="best-practices"></a>Ajánlott eljárások
 
-- Az éles hálózat tesztelése állásidőt okoz az éles számítási feladatokhoz. Kérje meg a felhasználókat, hogy ne használják a kapcsolódó alkalmazásokat, amikor a vész-helyreállítási gyakorlat folyamatban van.
+- Az üzemi hálózat tesztelése az üzemi számítási feladatokhoz való állásidőt okoz. Kérje meg a felhasználókat, hogy ne használják a kapcsolódó alkalmazásokat, amikor a vész-helyreállítási gyakorlat folyamatban van.
 
-- A teszthálózatnak nem kell megfelelnie a tesztfeladat-átvételhez használt VMM logikai hálózattípusnak. De, néhány kombináció nem működik:
+- A tesztelési hálózatnak nem kell megegyeznie a feladatátvételi teszthez használt VMM logikai hálózat típusával. Néhány kombináció azonban nem működik:
 
-     - Ha a replika DHCP- és VLAN-alapú elkülönítést használ, a replika virtuális géphálózatának nincs szüksége statikus IP-címkészletre. Így a Windows Hálózati virtualizáció használata a teszt feladatátvételhez nem fog működni, mert nincs elérhető címkészlet. 
+     - Ha a replika DHCP-és VLAN-alapú elkülönítést használ, a replikához tartozó virtuálisgép-hálózatnak nincs szüksége statikus IP-címkészlet használatára. A feladatátvételi teszthez használt Windows-hálózati virtualizálás nem fog működni, mert nem érhetők el címkészlet. 
         
-     - A tesztfeladat-átvétel nem fog működni, ha a replikahálózat nem használ elkülönítést, és a teszthálózat a Windows hálózati virtualizációt használja. Ennek az az oka, hogy az elkülönítés nélküli hálózat nem rendelkezik a Windows hálózati virtualizációs hálózat létrehozásához szükséges alhálózatokkal.
+     - A feladatátvételi teszt nem fog működni, ha a replika hálózat nem használ elkülönítést, és a teszt hálózat Windowsos hálózati virtualizálás használatával működik. Ennek az az oka, hogy a nem izolált hálózat nem rendelkezik a Windows hálózati virtualizálási hálózat létrehozásához szükséges alhálózatokkal.
         
-- Azt javasoljuk, hogy ne használja a hálózati leképezéshez, a tesztfeladat-átvételhez kiválasztott hálózatot.
+- Azt javasoljuk, hogy ne használja a hálózati leképezéshez kiválasztott hálózatot a feladatátvételi teszthez.
 
-- A replika virtuális gépei leképezett virtuálisgép-hálózatokhoz való csatlakozása a feladatátvétel után attól függ, hogy a VMM-hálózat hogyan van konfigurálva a VMM-konzolon.
+- A replika virtuális gépek csatlakoztatása a leképezett virtuálisgép-hálózatokhoz a feladatátvételt követően, attól függ, hogy a VM-hálózat hogyan van konfigurálva a VMM-konzolon.
 
 
-### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Elkülönítés és VLAN-elkülönítés nélkül konfigurált virtuálisgép-hálózat
+### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Elkülönítés vagy VLAN elkülönítés nélkül konfigurált virtuálisgép-hálózat
 
-Ha a vm-hálózat vmm-ben van konfigurálva elkülönítés vagy VLAN-elkülönítés nélkül, vegye figyelembe a következőket:
+Ha a virtuálisgép-hálózat elkülönítés vagy VLAN-elkülönítés nélkül van konfigurálva a VMM, vegye figyelembe a következőket:
 
-- Ha a virtuális gép hálózatához DHCP van megadva, a replika virtuális gép a társított logikai hálózat hálózati helyéhez megadott beállításokon keresztül csatlakozik a VLAN-azonosítóhoz. A virtuális gép az elérhető DHCP-kiszolgálótól kapja az IP-címét.
-- Nem kell statikus IP-címkészletet definiálnia a célvirtuális gép hálózatához. Ha a virtuális gép hálózatához statikus IP-címkészletet használ, a replika virtuális gép a társított logikai hálózat hálózati helyéhez megadott beállításokon keresztül csatlakozik a VLAN-azonosítóhoz.
-- A virtuális gép megkapja az IP-címét a virtuális gép hálózatához definiált készletből. Ha egy statikus IP-címkészlet nincs definiálva a cél virtuálisgép-hálózaton, az IP-címfoglalás sikertelen lesz. Hozza létre az IP-címkészletet a védelemhez és helyreállításhoz használt forrás- és célVMM-kiszolgálókon is.
+- Ha a virtuálisgép-hálózathoz a DHCP van meghatározva, a replika virtuális gép a társított logikai hálózat hálózati helyén megadott beállításokon keresztül csatlakozik a VLAN-AZONOSÍTÓhoz. A virtuális gép megkapja az IP-címét az elérhető DHCP-kiszolgálóról.
+- Nem kell statikus IP-címkészletet definiálnia a cél virtuálisgép-hálózathoz. Ha a virtuálisgép-hálózathoz statikus IP-címkészlet van használatban, a replika virtuális gép a társított logikai hálózat hálózati helyén megadott beállításokon keresztül csatlakozik a VLAN-AZONOSÍTÓhoz.
+- A virtuális gép megkapja az IP-címét a virtuálisgép-hálózathoz meghatározott készletből. Ha nincs definiálva statikus IP-címkészlet a cél virtuálisgép-hálózaton, az IP-címek lefoglalása sikertelen lesz. Hozza létre az IP-címkészletet mind a forrás-, mind a cél VMM-kiszolgálón, amelyet a védelemhez és a helyreállításhoz fog használni.
 
-### <a name="vm-network-with-windows-network-virtualization"></a>Virtuálisgép-hálózat Windows hálózati virtualizációval
+### <a name="vm-network-with-windows-network-virtualization"></a>Virtuálisgép-hálózat Windows hálózati virtualizálási szolgáltatással
 
-Ha a VM-hálózat a VMM-ben van konfigurálva a Windows hálózati virtualizációval, vegye figyelembe a következőket:
+Ha egy virtuálisgép-hálózat a VMM-ben van konfigurálva a Windows-alapú hálózati virtualizálási szolgáltatással, vegye figyelembe a következőket:
 
-- Meg kell határoznia egy statikus készleta a cél virtuálisgép-hálózat, függetlenül attól, hogy a forrás virtuálisgép-hálózat dhcp vagy statikus IP-címkészlet használatára van konfigurálva. 
-- Ha dhcp-t határoz meg, a cél VMM-kiszolgáló DHCP-kiszolgálóként működik, és a célvirtuális gép hálózatához definiált készletből biztosít IP-címet.
-- Ha a forráskiszolgálóhoz statikus IP-címkészlet et használ, a cél VMM-kiszolgáló ip-címet foglal le a készletből. Az IP-cím kiosztása mindkét esetben sikertelen lesz, ha nincs definiálva statikus IP-címkészlet.
+- Statikus készletet kell definiálni a cél virtuálisgép-hálózathoz, függetlenül attól, hogy a forrásoldali virtuálisgép-hálózat DHCP vagy statikus IP-címkészlet használatára van-e konfigurálva. 
+- Ha DHCP-t határoz meg, a célként megadott VMM-kiszolgáló DHCP-kiszolgálóként működik, és a célként megadott virtuálisgép-hálózathoz definiált készletből IP-címet biztosít.
+- Ha a forráskiszolgáló statikus IP-címkészletet használ, a célként megadott VMM-kiszolgáló IP-címet foglal le a készletből. Az IP-címek kiosztása mindkét esetben sikertelen lesz, ha nincs definiálva statikus IP-címkészlet.
 
 
 
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 
-Ha egyszerűen csak azt szeretné ellenőrizni, hogy egy virtuális gép feladatátvételt, futtathat egy teszt feladatátvétel infrastruktúra nélkül. Ha teljes VÉSZ-gyakorlatot szeretne végezni az alkalmazás feladatátvételének teszteléséhez, elő kell készítenie az infrastruktúrát a másodlagos helyen:
+Ha egyszerűen ellenőrizni szeretné, hogy a virtuális gép feladatátvételt hajt végre, infrastruktúra nélkül is futtathat feladatátvételi tesztet. Ha teljes körű DR-részletezést szeretne végezni az alkalmazások feladatátvételének teszteléséhez, elő kell készítenie az infrastruktúrát a másodlagos helyen:
 
-- Ha egy tesztfeladat-átvételt egy meglévő hálózaton keresztül futtat, készítse elő az Active Directoryt, a DHCP-t és a DNS-t a hálózatban.
-- Ha egy teszt feladatátvételt futtat azzal a lehetőséggel, hogy automatikusan hozzon létre egy virtuálisgép-hálózatot, a teszt feladatátvétel futtatása előtt hozzá kell adnia az automatikusan létrehozott hálózathoz infrastruktúra-erőforrásokat. A helyreállítási tervben ezt megkönnyítheti, ha manuális lépést ad hozzá az 1- es csoport előtti manuális lépéshez a tesztfeladat-átvételhez használni kívánt helyreállítási tervben. Ezután adja hozzá az infrastruktúra-erőforrásokat az automatikusan létrehozott hálózathoz a teszt feladatátvétel futtatása előtt.
+- Ha egy meglévő hálózat használatával futtatja a feladatátvételi tesztet, Active Directory, DHCP-t és DNS-t kell előkészítenie a hálózaton.
+- Ha feladatátvételi tesztet futtat egy virtuálisgép-hálózat automatikus létrehozásával, akkor a feladatátvételi teszt futtatása előtt infrastruktúra-erőforrásokat kell hozzáadnia az automatikusan létrehozott hálózathoz. Egy helyreállítási tervben ezt úgy teheti meg, ha egy manuális lépést ad hozzá a helyreállítási tervben szereplő 1. csoporthoz, amelyet a feladatátvételi teszthez használni fog. Ezután adja hozzá az infrastruktúra-erőforrásokat az automatikusan létrehozott hálózathoz a feladatátvételi teszt futtatása előtt.
 
 
 ### <a name="prepare-dhcp"></a>DHCP előkészítése
-Ha a tesztfeladat-átvételben részt vevő virtuális gépek DHCP-t használnak, hozzon létre egy teszt DHCP-kiszolgálót az elkülönített hálózaton belül a tesztfeladat-átvétel céljából.
+Ha a feladatátvételi tesztben részt vevő virtuális gépek DHCP-t használnak, hozzon létre egy teszt DHCP-kiszolgálót az elkülönített hálózaton belül a feladatátvételi teszt érdekében.
 
 
-### <a name="prepare-active-directory"></a>Az Active Directory előkészítése
-Az alkalmazásteszteléshez tesztfeladat-átvétel futtatásához szüksége van az éles Active Directory-környezet egy példányára a tesztkörnyezetben. További információt az [Active Directory tesztfeladat-átvételi szempontjaiból](site-recovery-active-directory.md#test-failover-considerations)talál.
+### <a name="prepare-active-directory"></a>Active Directory előkészítése
+Ha feladatátvételi tesztet szeretne futtatni az alkalmazás teszteléséhez, szüksége lesz az üzemi Active Directory környezet egy példányára a tesztkörnyezetben. További információkért tekintse át a [Active Directory feladatátvételi teszttel kapcsolatos](site-recovery-active-directory.md#test-failover-considerations)tudnivalókat.
 
-### <a name="prepare-dns"></a>A DNS előkészítése
-Dns-kiszolgáló előkészítése a tesztfeladat-átvételre az alábbiak szerint:
+### <a name="prepare-dns"></a>DNS előkészítése
+Készítse elő a DNS-kiszolgálót a feladatátvételi teszthez a következőképpen:
 
-* **DHCP**: Ha a virtuális gépek DHCP-t használnak, a teszt DNS IP-címét frissíteni kell a teszt DHCP-kiszolgálón. Ha a Windows hálózati virtualizáció hálózati típusát használja, a VMM-kiszolgáló DHCP-kiszolgálóként működik. Ezért a DNS IP-címét frissíteni kell a teszt feladatátvételi hálózatban. Ebben az esetben a virtuális gépek regisztrálják magukat a megfelelő DNS-kiszolgálóra.
-* **Statikus cím**: Ha a virtuális gépek statikus IP-címet használnak, a teszt DNS-kiszolgáló IP-címét frissíteni kell a teszt feladatátvételi hálózatban. Előfordulhat, hogy frissítenie kell a DNS-t a teszt virtuális gépek IP-címével. Erre a célra a következő mintaparancsfájlt használhatja:
+* **DHCP**: Ha a virtuális gépek DHCP-t használnak, a teszt DNS IP-címét frissíteni kell a teszt DHCP-kiszolgálón. Ha a Windows hálózati virtualizálás hálózati típusát használja, a VMM-kiszolgáló DHCP-kiszolgálóként működik. Ezért a DNS IP-címét frissíteni kell a feladatátvételi teszt hálózaton. Ebben az esetben a virtuális gépek regisztrálják magukat a megfelelő DNS-kiszolgálón.
+* **Statikus cím**: Ha a virtuális gépek statikus IP-címet használnak, a teszt DNS-kiszolgáló IP-címét frissíteni kell a feladatátvételi teszt hálózatban. Előfordulhat, hogy frissítenie kell a DNS-t a teszt virtuális gépek IP-címével. Erre a célra a következő minta parancsfájlt használhatja:
 
         Param(
         [string]$Zone,
@@ -117,34 +117,34 @@ Dns-kiszolgáló előkészítése a tesztfeladat-átvételre az alábbiak szerin
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-Ez az eljárás azt ismerteti, hogyan futtathatok tesztfeladat-átvételt a helyreállítási tervhez. Azt is megteheti, hogy egyetlen virtuális gép feladatátvételt hajt stathat a **Virtuális gépek** lapon.
+Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyreállítási tervhez. Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez futtatja a **Virtual Machines** lapon.
 
-1. Válassza a **helyreállítási tervek** > *recoveryplan_name*lehetőséget. Kattintson **a Feladatátvételi** > **teszt feladatátvételi lehetőségre.**
-2. A **teszt feladatátvételi** panelen adja meg, hogyan replika virtuális gépek kell csatlakozni a hálózatokhoz a teszt feladatátvétel után.
-3. A **feladatátvétel** folyamatának nyomon követése a Feladatok lapon.
-4. A feladatátvétel befejezése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.
-5. Ha elkészült, kattintson **a karbantartás teszt feladatátvétel** a helyreállítási terv. A **Megjegyzések alkalmazásban**rögzítse és mentse a tesztfeladat-átvételhez kapcsolódó megfigyeléseket. Ez a lépés törli a Site Recovery által a teszt feladatátvétel során létrehozott virtuális gépeket és hálózatokat. 
+1. Válassza a **helyreállítási tervek** > *recoveryplan_name*elemet. Kattintson a **feladatátvételi** > **teszt feladatátvétele**lehetőségre.
+2. A **feladatátvételi teszt** panelen határozza meg, hogy a replika virtuális gépek hogyan kapcsolódjanak a hálózatokhoz a feladatátvételi teszt után.
+3. A **feladatok** lapon nyomon követheti a feladatátvétel folyamatát.
+4. A feladatátvétel befejeződése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.
+5. Ha elkészült, kattintson a helyreállítási terv **feladatátvételi teszt törlése** elemére. A **jegyzetek**területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket. Ez a lépés törli azokat a virtuális gépeket és hálózatokat, amelyeket Site Recovery hozott létre a feladatátvételi teszt során. 
 
 ![Feladatátvétel tesztelése](./media/hyper-v-vmm-test-failover/TestFailover.png)
  
 
 
 > [!TIP]
-> A virtuális gépnek a teszt feladatátvétel során megadott IP-cím ugyanaz az IP-cím, amelyet a virtuális gép kapna egy tervezett vagy nem tervezett feladatátvételhez (feltételezve, hogy az IP-cím elérhető a teszt feladatátvételi hálózatban). Ha ugyanaz az IP-cím nem érhető el a teszt feladatátvételi hálózatban, a virtuális gép kap egy másik IP-címet, amely elérhető a teszt feladatátvételi hálózatban.
+> A feladatátvételi teszt során egy virtuális géphez megadott IP-cím ugyanaz az IP-cím, amelyet a virtuális gép a tervezett vagy nem tervezett feladatátvételhez is kap (feltételezve, hogy az IP-cím elérhető a feladatátvételi teszt hálózaton). Ha ugyanaz az IP-cím nem érhető el a feladatátvételi teszt hálózaton, a virtuális gép egy másik, a feladatátvételi tesztben elérhető IP-címet kap.
 
 
 
-### <a name="run-a-test-failover-to-a-production-network"></a>Tesztfeladat-átvétel futtatása éles hálózaton
+### <a name="run-a-test-failover-to-a-production-network"></a>Feladatátvételi teszt futtatása üzemi hálózatra
 
-Azt javasoljuk, hogy ne futtasson tesztfeladat-átvételt az éles helyreállítási hely hálózatán, amelyet a hálózati leképezés során megadott. Ha azonban egy feladatátvevő virtuális gépen végpontok közötti hálózati kapcsolatot kell érvényesítenie, vegye figyelembe a következő pontokat:
+Azt javasoljuk, hogy ne futtasson feladatátvételi tesztet a hálózati leképezés során megadott üzemi helyreállítási hely hálózatán. Ha azonban szükség van a végpontok közötti hálózati kapcsolat érvényesítésére egy feladatátvételi virtuális gépen, vegye figyelembe a következő szempontokat:
 
-* Győződjön meg arról, hogy az elsődleges virtuális gép le van állítva, amikor a teszt feladatátvételt végzi. Ellenkező esetben két azonos identitással rendelkező virtuális gép ugyanabban a hálózatban fog futni. Ez a helyzet nem kívánt következményekhez vezethet.
-* A tesztfeladat-átvételi virtuális gépeken végrehajtott módosítások elvesznek a tesztfeladat-átvételi virtuális gépek karbantartásakor. Ezek a változások nem replikálódik vissza az elsődleges virtuális gépekre.
-* Az ilyen tesztelés az éles alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a VÉSZ-fúró folyamatban van.  
+* Ellenőrizze, hogy az elsődleges virtuális gép le van-e állítva a feladatátvételi teszt végrehajtásakor. Ha nem, két azonos identitású virtuális gép fog futni ugyanabban a hálózatban egyszerre. Ez a helyzet nem kívánt következményekhez vezethet.
+* A feladatátvételi teszt virtuális gépeken végrehajtott módosítások elvesznek, amikor törli a feladatátvételi tesztet futtató virtuális gépeket. Ezek a módosítások nem replikálódnak vissza az elsődleges virtuális gépekre.
+* A teszteléshez hasonlóan az éles környezetbeli alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a DR-részletezés folyamatban van.  
 
 
 ## <a name="next-steps"></a>További lépések
-Miután sikeresen futtatott egy VÉSZ-fúrót, [futtathat egy teljes feladatátvételt.](site-recovery-failover.md)
+A DR-részletezés sikeres futtatása után [futtathatja a teljes feladatátvételt](site-recovery-failover.md).
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Media Services 3-as v3 API-hoz – .NET
-description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services v3 API-hoz a .NET.This article this article this that to connect to Media Services v3 API with .NET.
+title: Kapcsolódás Azure Media Services V3 API-hoz – .NET
+description: Ez a cikk bemutatja, hogyan csatlakozhat Media Services V3 API-hoz a .NET-tel.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,63 +14,63 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269808"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>Csatlakozás a Media Services 3-as v3 API-jához – .NET
+# <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
 
-Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3.NET SDK szolgáltatásegyszerű bejelentkezési módszer használatával.
+Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 .NET SDK-hoz az egyszerű szolgáltatás bejelentkezési módszerének használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Az erőforráscsoport nevének és a Media Services-fiók nevének megjegyzése
-- Telepítse a .NET fejlesztéshez használni kívánt eszközt. A cikkben ismertetett lépések a [Visual Studio 2019 Community Edition használatát mutatják be.](https://www.visualstudio.com/downloads/) Használhatja a Visual Studio-kódot, lásd: [A C# használata.](https://code.visualstudio.com/docs/languages/csharp) Másik lehetőségként használhat másik kódszerkesztőt is.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét
+- Telepítsen egy olyan eszközt, amelyet a .NET-fejlesztéshez szeretne használni. A cikkben ismertetett lépések bemutatják, hogyan használható a [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). A Visual Studio Code-ot használhatja [a C#](https://code.visualstudio.com/docs/languages/csharp)használata című témakörben. Másik lehetőségként más Kódszerkesztő is használható.
 
 > [!IMPORTANT]
-> Tekintse át [az elnevezési konvenciókat.](media-services-apis-overview.md#naming-conventions)
+> Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
 1. Indítsa el a Visual Studiót. 
-1. Kattintson a **Fájl** menü **Új** > **projekt parancsára.** 
-1. Hozzon létre egy **.NET Core** konzolalkalmazást.
+1. A **fájl** menüben kattintson az **új** > **projekt**elemre. 
+1. Hozzon létre egy **.net Core** Console-alkalmazást.
 
-A témakörben szereplő mintaalkalmazás a célokat célozza `netcoreapp2.0`meg. A kód az "async main"-t használja, amely a C# 7.1-től kezdve érhető el. Lásd ezt a [blogot](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) további részletekért.
+Az ebben a témakörben található minta alkalmazás `netcoreapp2.0`a célokat célozza meg. A kód az "aszinkron Main" protokollt használja, amely a C# 7,1-től kezdődően érhető el. További részletekért tekintse meg ezt a [blogot](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
 
-## <a name="add-required-nuget-packages"></a>A szükséges NuGet csomagok hozzáadása
+## <a name="add-required-nuget-packages"></a>Szükséges NuGet-csomagok hozzáadása
 
-1. A Visual Studio alkalmazásban válassza az **Eszközök** > **NuGet csomagkezelő** > **NuGet Kezelő konzollehetőséget.**
-2. A **Csomagkezelő konzol** ablakában a következő NuGet csomagok hozzáadásához használja `Install-Package` a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
+1. A Visual Studióban válassza az **eszközök** > **NuGet csomagkezelő** > **NuGet-kezelő konzolt**.
+2. A **Package Manager Console (csomagkezelő konzol** ) `Install-Package` ablakban a következő NuGet-csomagok hozzáadásához használja a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
 
 |Csomag|Leírás|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Az Azure Media Services SDK-t. <br/>Ha meg szeretne győződni arról, hogy a legújabb Azure Media Services csomagot használja, ellenőrizze a [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)webhelyen.|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL hitelesítési könyvtár az Azure SDK for NET-hez|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Konfigurációs értékek olvasása környezeti változókból és helyi JSON-fájlokból|
-|`Microsoft.Extensions.Configuration.Json`|Konfigurációs értékek olvasása környezeti változókból és helyi JSON-fájlokból
-|`WindowsAzure.Storage`|Tároló SDK|
+|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és ellenőrizze a [Microsoft. Azure. Management. Media eszközt](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-hitelesítési kódtár a NET-hez készült Azure SDK-hoz|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Konfigurációs értékek olvasása környezeti változók és helyi JSON-fájlok alapján|
+|`Microsoft.Extensions.Configuration.Json`|Konfigurációs értékek olvasása környezeti változók és helyi JSON-fájlok alapján
+|`WindowsAzure.Storage`|Storage SDK|
 
-## <a name="create-and-configure-the-app-settings-file"></a>Az alkalmazásbeállítási fájl létrehozása és konfigurálása
+## <a name="create-and-configure-the-app-settings-file"></a>Az Alkalmazásbeállítások fájl létrehozása és konfigurálása
 
-### <a name="create-appsettingsjson"></a>Appsettings.json létrehozása
+### <a name="create-appsettingsjson"></a>AppSettings. JSON létrehozása
 
-1. Go go **Általános** > **szöveg fájl**.
-1. Nevezd el "appsettings.json"-nak.
-1. Állítsa a .json fájl "Másolás kimeneti könyvtárba" tulajdonságát "Másolás, ha újabb" értékre (hogy az alkalmazás közzétételkor hozzáférhessen).
+1. Ugrás az **általános** > **szövegfájlba**.
+1. Nevezze el "appSettings. JSON" néven.
+1. Állítsa a. JSON fájl "másolás a kimeneti könyvtárba" tulajdonságát a "Copy if újabb" értékre (hogy az alkalmazás elérhető legyen a közzétételkor).
 
-### <a name="set-values-in-appsettingsjson"></a>Értékek beállítása az appsettings.json ban
+### <a name="set-values-in-appsettingsjson"></a>Értékek beállítása a appSettings. JSON fájlban
 
-Futtassa a parancsot az `az ams account sp create` access [API-kban leírtak szerint.](access-api-cli-how-to.md) A parancs visszaadja a json t, amelyet az "appsettings.json" programba kell másolnia.
+Futtassa a `az ams account sp create` parancsot a következő témakörben leírtak szerint: [Access API](access-api-cli-how-to.md)-k. A parancs visszaadja a JSON-t, amelyet a "appSettings. JSON" fájlba kell másolni.
  
 ## <a name="add-configuration-file"></a>Konfigurációs fájl hozzáadása
 
-A kényelem érdekében adjon hozzá egy konfigurációs fájlt, amely az "appsettings.json" értékeinek olvasásáért felelős.
+A kényelem érdekében adjon hozzá egy olyan konfigurációs fájlt, amely felelős az értékek "appSettings. JSON"-ból való olvasásához.
 
-1. Adjon hozzá egy új .cs osztályt a projekthez. Nevezze el a következőképpen: `ConfigWrapper`. 
-1. Illessze be a következő kódot ebbe a fájlba `ConsoleApp1`(ez a példa feltételezi, hogy a névtér a).
+1. Adjon hozzá egy új. cs osztályt a projekthez. Nevezze el a következőképpen: `ConfigWrapper`. 
+1. Illessze be a következő kódot a fájlba (ez a példa feltételezi, hogy rendelkezik a `ConsoleApp1`névtérrel).
 
 ```csharp
 using System;
@@ -141,7 +141,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="connect-to-the-net-client"></a>Csatlakozás a .NET ügyfélhez
+## <a name="connect-to-the-net-client"></a>Kapcsolódás a .NET-ügyfélhez
 
 Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. Az alábbi kódban a GetCredentialsAsync függvény a helyi konfigurációs fájlban megadott hitelesítő adatok alapján hozza létre a ServiceClientCredentials objektumot.
 
@@ -228,19 +228,19 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Videók feltöltése, kódolása és streamelése - .NET](stream-files-tutorial-with-api.md) 
-- [Oktatóanyag: Élő közvetítés a Media Services v3 - .NET segítségével](stream-live-tutorial-with-api.md)
-- [Oktatóanyag: Videók elemzése a Media Services v3 - .NET segítségével](analyze-videos-tutorial-with-api.md)
-- [Feladatbevitel létrehozása helyi fájlból – .NET](job-input-from-local-file-how-to.md)
-- [Feladatbevitel létrehozása HTTPS URL-címről – .NET](job-input-from-http-how-to.md)
-- [Kódolás egyéni átalakítással - .NET](customize-encoder-presets-how-to.md)
-- [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata - .NET](protect-with-aes128.md)
-- [Drm dinamikus titkosítás és licenckézbesítési szolgáltatás használata – .NET](protect-with-drm.md)
-- [Aláírási kulcs beszereznie a meglévő házirendből - .NET](get-content-key-policy-dotnet-howto.md)
-- [Szűrők létrehozása a Media Services szolgáltatással - .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Speciális, igény szerinti videós példák az Azure Functions v2 v2-re a Media Services v3-as ával](https://aka.ms/ams3functions)
+- [Oktatóanyag: videók feltöltése, kódolása és továbbítása – .NET](stream-files-tutorial-with-api.md) 
+- [Oktatóanyag: élő stream a Media Services v3-.NET-tel](stream-live-tutorial-with-api.md)
+- [Oktatóanyag: videók elemzése Media Services v3-.NET használatával](analyze-videos-tutorial-with-api.md)
+- [Feladathoz tartozó bemenet létrehozása helyi fájlból – .NET](job-input-from-local-file-how-to.md)
+- [Feladathoz tartozó bemenet létrehozása egy HTTPS URL-címről – .NET](job-input-from-http-how-to.md)
+- [Kódolás egyéni átalakítással – .NET](customize-encoder-presets-how-to.md)
+- [AES-128 dinamikus titkosítás és a Key Delivery Service használata – .NET](protect-with-aes128.md)
+- [A DRM dinamikus titkosítása és a licenc kézbesítése szolgáltatás használata – .NET](protect-with-drm.md)
+- [Aláíró kulcs beszerzése a meglévő házirendből – .NET](get-content-key-policy-dotnet-howto.md)
+- [Szűrők létrehozása Media Services-.NET-tel](filters-dynamic-manifest-dotnet-howto.md)
+- [Speciális video igény szerinti példák a Azure Functions v2-re Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Lásd még
 
 * [.NET-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
-* További kódpéldákat a [.NET SDK-minták](https://github.com/Azure-Samples/media-services-v3-dotnet) tártárában talál.
+* További példákat a [.net SDK-minták](https://github.com/Azure-Samples/media-services-v3-dotnet) tárházában talál.

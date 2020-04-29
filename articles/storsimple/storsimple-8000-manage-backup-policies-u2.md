@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 sorozatú biztonsági mentési házirendek kezelése | Microsoft dokumentumok
-description: Bemutatja, hogyan használhatja a StorSimple Eszközkezelő szolgáltatást manuális biztonsági mentések, biztonsági mentési ütemezések és biztonsági mentési megőrzések létrehozásához és kezeléséhez egy StorSimple 8000 sorozatú eszközön.
+title: StorSimple 8000 sorozatú biztonsági mentési szabályzatok kezelése | Microsoft Docs
+description: A cikk azt ismerteti, hogyan használható a StorSimple Eszközkezelő szolgáltatás manuális biztonsági mentések, biztonsági mentési ütemezések és a biztonsági másolatok megőrzésének a StorSimple 8000 sorozatú eszközön való létrehozásához és kezeléséhez.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,88 +15,88 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267793"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>A StorSimple Eszközkezelő szolgáltatás használata az Azure Portalon a biztonsági mentési szabályzatok kezeléséhez
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>A StorSimple Eszközkezelő szolgáltatás használata Azure Portal a biztonsági mentési házirendek kezeléséhez
 
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a StorSimple Eszközkezelő szolgáltatás **biztonsági mentési házirend** paneljének biztonsági mentési folyamatainak és a StorSimple-kötetek biztonsági mentési megtartásának szabályozásához. Azt is leírja, hogyan kell elvégezni a manuális biztonsági mentést.
+Ez az oktatóanyag azt ismerteti, hogyan használható a StorSimple Eszközkezelő szolgáltatás **biztonsági mentési házirendjének** paneljén a biztonsági mentési folyamatok és a biztonsági másolatok megőrzésének vezérléséhez a StorSimple kötetek esetében. Azt is leírja, hogyan lehet elvégezni a manuális biztonsági mentést.
 
-Kötet biztonsági felvételekor helyi pillanatképet vagy felhőbeli pillanatképet hozhat létre. Ha helyileg rögzített kötetről készít biztonsági másolatot, javasoljuk, hogy adjon meg egy felhőbeli pillanatképet. A helyileg rögzített kötet helyi rögzített kötetek nagyszámú helyi pillanatképek egy adathalmaz, amely sok lemorzsolódás eredményez olyan helyzetet, amelyben gyorsan elfogy a helyi terület. Ha úgy dönt, hogy a helyi pillanatképek, azt javasoljuk, hogy kevesebb napi pillanatképek biztonsági másolatot készítsen a legutóbbi állapot, megtartva őket egy napra, majd törölje őket.
+A kötetek biztonsági mentésekor dönthet úgy, hogy létrehoz egy helyi pillanatképet vagy egy Felhőbeli pillanatképet. Ha helyileg rögzített kötetről készít biztonsági mentést, javasoljuk, hogy egy Felhőbeli pillanatképet határozzon meg. Ha nagy számú helyi pillanatképet készít egy helyileg rögzített kötetről, és egy olyan adatkészlettel párosul, amely sok időt vesz igénybe, akkor olyan helyzetet eredményezhet, amelyben gyorsan elfogyott a helyi terület. Ha úgy dönt, hogy helyi pillanatképeket szeretne készíteni, javasoljuk, hogy készítsen kevesebb napi pillanatképet a legutóbbi állapot biztonsági mentésére, és őrizze meg őket egy napig, majd törölje őket.
 
-Amikor egy helyileg rögzített kötet felhőbeli pillanatképét készíti, csak a módosított adatokat másolja a felhőbe, ahol a deduplikált és tömörített.
+Amikor Felhőbeli pillanatképet készít egy helyileg rögzített kötetről, a rendszer csak a módosított adatokról másolja a felhőbe, és deduplikálja és tömöríti.
 
-## <a name="the-backup-policy-blade"></a>A Biztonsági mentési házirend panel
+## <a name="the-backup-policy-blade"></a>A biztonsági mentési szabályzat panel
 
-A StorSimple-eszköz **biztonsági mentési házirend** panelje lehetővé teszi a biztonsági mentési szabályzatok kezelését és a helyi és felhőbeli pillanatképek ütemezését. A biztonsági mentési házirendek a biztonsági mentési ütemezések és a kötetek gyűjteményének biztonsági mentési megtartásának konfigurálására szolgálnak. A biztonsági mentési házirendek lehetővé teszik, hogy egyszerre több kötetről készítsen pillanatképet. Ez azt jelenti, hogy a biztonsági mentési házirend által létrehozott biztonsági mentések összeomlás-konzisztens másolatok lesznek.
+A StorSimple-eszköz **biztonsági mentési** szabályzatának panelje lehetővé teszi a biztonsági mentési házirendek kezelését, valamint a helyi és a Felhőbeli Pillanatképek ütemtervét. A biztonsági mentési házirendek a biztonsági mentési ütemtervek és a biztonsági másolatok megőrzésének konfigurálására szolgálnak a kötetek gyűjteménye számára. A biztonsági mentési házirendek lehetővé teszik, hogy egyszerre több kötetről készítsen pillanatképet. Ez azt jelenti, hogy a biztonsági mentési szabályzat által létrehozott biztonsági másolatok összeomlás-konzisztens másolatok lesznek.
 
-A biztonsági mentési házirendek táblázatos listázása lehetővé teszi a meglévő biztonsági mentési házirendek szűrését a következő mezők közül egy vagy több:
+A biztonsági mentési szabályzatok táblázatos listája lehetővé teszi a meglévő biztonsági mentési házirendek szűrését is a következő mezők valamelyikével:
 
 * **Házirend neve** – a házirendhez társított név. A különböző típusú házirendek a következők:
 
-  * Ütemezett házirendek, amelyeket a felhasználó kifejezetten létrehoz.
-  * Importált házirendek, amelyek eredetileg a StorSimple Snapshot Manager. Ezek egy címkével rendelkeznek, amely leírja a StorSimple Snapshot Manager gazdagép, amely a házirendek importálták.
+  * A felhasználó által explicit módon létrehozott ütemezett szabályzatok.
+  * Az importált házirendek, amelyek eredetileg a StorSimple Snapshot Manager lettek létrehozva. Ezek rendelkeznek egy címkével, amely leírja azt a StorSimple Snapshot Manager gazdagépet, amelyen a házirendek importálása megtörtént.
 
   > [!NOTE]
-  > Az automatikus vagy alapértelmezett biztonsági mentési házirendek már nincsenek engedélyezve a kötetlétrehozásakor.
+  > Az automatikus vagy az alapértelmezett biztonsági mentési házirendek a kötetek létrehozásakor már nem engedélyezettek.
 
-* **Utolsó sikeres biztonsági mentés** – A házirenddel készített utolsó sikeres biztonsági mentés dátuma és időpontja.
+* **Utolsó sikeres biztonsági mentés** – a szabályzattal végrehajtott utolsó sikeres biztonsági mentés dátuma és időpontja.
 
-* **Következő biztonsági mentés** – A házirend által kezdeményezett következő ütemezett biztonsági mentés dátuma és időpontja.
+* **Következő biztonsági mentés** – a szabályzat által kezdeményezett következő ütemezett biztonsági mentés dátuma és időpontja.
 
-* **Kötetek** – a házirendhez társított kötetek. A biztonsági mentési házirendhez társított kötetek a biztonsági mentések létrehozásakor egy csoportba vannak csoportosítva.
+* **Kötetek** – a Szabályzathoz társított kötetek. A biztonsági mentési szabályzathoz társított kötetek a biztonsági másolatok létrehozásakor vannak csoportosítva.
 
-* **Ütemezések** – A biztonsági mentési házirendhez társított ütemezések száma.
+* **Ütemtervek** – a biztonsági mentési szabályzathoz társított ütemtervek száma.
 
-A biztonsági mentési házirendekhez gyakran használt műveletek a következők:
+A biztonsági mentési szabályzatok által elvégezhető gyakran használt műveletek a következők:
 
 * Biztonsági mentési szabályzat hozzáadása
-* Ütemezés hozzáadása vagy módosítása
+* Ütemterv hozzáadása vagy módosítása
 * Kötet hozzáadása vagy eltávolítása
-* Biztonságimentési házirend törlése
-* Kézi biztonsági mentés készítése
+* Biztonsági mentési szabályzat törlése
+* Manuális biztonsági mentés készítése
 
 ## <a name="add-a-backup-policy"></a>Biztonsági mentési szabályzat hozzáadása
 
-Adjon hozzá egy biztonsági mentési házirendet a biztonsági mentések automatikus ütemezéséhez. Amikor először hoz létre kötetet, nincs alapértelmezett biztonsági mentési házirend társítva a kötethez. A kötetadatok védelme érdekében biztonsági mentési házirendet kell hozzáadnia és hozzárendelnie.
+Biztonsági mentési szabályzat hozzáadásával automatikusan ütemezheti a biztonsági mentéseket. Amikor először hoz létre kötetet, a kötethez nem tartozik alapértelmezett biztonsági mentési szabályzat. A kötetek adatainak védelme érdekében hozzá kell adnia és hozzá kell rendelnie egy biztonsági mentési szabályzatot.
 
-Hajtsa végre az alábbi lépéseket az Azure Portalon a StorSimple-eszköz biztonsági mentési szabályzatának hozzáadásához. A házirend hozzáadása után megadhat ütemezést [(lásd: Ütemezés hozzáadása vagy módosítása).](#add-or-modify-a-schedule)
+A StorSimple-eszközhöz tartozó biztonsági mentési szabályzat hozzáadásához hajtsa végre az alábbi lépéseket a Azure Portalban. A szabályzat hozzáadása után megadhat egy ütemtervet (lásd: [ütemterv hozzáadása vagy módosítása](#add-or-modify-a-schedule)).
 
 [!INCLUDE [storsimple-8000-add-backup-policy-u2](../../includes/storsimple-8000-add-backup-policy-u2.md)]
 
-## <a name="add-or-modify-a-schedule"></a>Ütemezés hozzáadása vagy módosítása
+## <a name="add-or-modify-a-schedule"></a>Ütemterv hozzáadása vagy módosítása
 
-Hozzáadhat vagy módosíthat egy ütemezést, amely a StorSimple-eszközön meglévő biztonsági mentési szabályzathoz van csatolva. Az alábbi lépéseket az Azure Portalon ütemezés hozzáadásához vagy módosításához hajtsa végre.
+Hozzáadhat vagy módosíthat egy olyan ütemtervet, amely egy meglévő biztonsági mentési szabályzathoz van csatolva a StorSimple-eszközön. Az ütemterv hozzáadásához vagy módosításához hajtsa végre a következő lépéseket a Azure Portalban.
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
 
 ## <a name="add-or-remove-a-volume"></a>Kötet hozzáadása vagy eltávolítása
 
-Hozzáadhat vagy eltávolíthat egy biztonsági mentési házirendhez rendelt kötetet a StorSimple-eszközön. A kötet hozzáadásához vagy eltávolításához hajtsa végre az alábbi lépéseket az Azure Portalon.
+Hozzáadhat vagy eltávolíthat egy biztonsági mentési szabályzathoz rendelt kötetet a StorSimple-eszközön. Kötet hozzáadásához vagy eltávolításához hajtsa végre a következő lépéseket a Azure Portalban.
 
 [!INCLUDE [storsimple-8000-add-volume-backup-policy-u2](../../includes/storsimple-8000-add-remove-volume-backup-policy-u2.md)]
 
 
-## <a name="delete-a-backup-policy"></a>Biztonságimentési házirend törlése
+## <a name="delete-a-backup-policy"></a>Biztonsági mentési szabályzat törlése
 
-Hajtsa végre az alábbi lépéseket az Azure Portalon a StorSimple-eszközön lévő biztonsági mentési szabályzat törléséhez.
+A StorSimple-eszközre vonatkozó biztonsági mentési szabályzat törléséhez hajtsa végre a következő lépéseket a Azure Portal.
 
 [!INCLUDE [storsimple-8000-delete-backup-policy](../../includes/storsimple-8000-delete-backup-policy.md)]
 
-## <a name="take-a-manual-backup"></a>Kézi biztonsági mentés készítése
+## <a name="take-a-manual-backup"></a>Manuális biztonsági mentés készítése
 
-Hajtsa végre az alábbi lépéseket az Azure Portalon egy igény szerinti (manuális) biztonsági mentés létrehozásához egyetlen kötethez.
+Hajtsa végre az alábbi lépéseket a Azure Portal az igény szerinti (manuális) biztonsági másolat létrehozásához egyetlen köteten.
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [a StorSimple Eszközkezelő szolgáltatás használatáról a StorSimple-eszköz felügyeletéhez.](storsimple-8000-manager-service-administration.md)
+További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

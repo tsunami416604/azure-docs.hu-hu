@@ -1,6 +1,6 @@
 ---
-title: Hitelesítési munkamenet-kezelés konfigurálása – Azure Active Directory
-description: Az Azure AD hitelesítési munkamenet-konfigurációjának testreszabása, beleértve a felhasználói bejelentkezési gyakoriságot és a böngészőmunkamenet-megőrzést.
+title: A hitelesítési munkamenetek kezelésének konfigurálása – Azure Active Directory
+description: Az Azure AD-alapú hitelesítési munkamenet konfigurációjának testreszabása, beleértve a felhasználói bejelentkezés gyakoriságát és a böngésző munkamenetének megőrzését.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,123 +12,123 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263282"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel
+# <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
 
-Összetett telepítések esetén előfordulhat, hogy a szervezeteknek korlátozniuk kell a hitelesítési munkameneteket. Egyes forgatókönyvek a következők lehetnek:
+Összetett központi telepítések esetén a szervezeteknek szükségük lehet a hitelesítési munkamenetek korlátozására. Egyes forgatókönyvek például a következők lehetnek:
 
 * Erőforrás-hozzáférés nem felügyelt vagy megosztott eszközről
-* Bizalmas információk elérése külső hálózatról
+* Bizalmas adatokhoz való hozzáférés külső hálózatról
 * Nagy hatású felhasználók
-* Kritikus üzleti alkalmazások
+* Kritikus fontosságú üzleti alkalmazások
 
-A feltételes hozzáférés-vezérlők lehetővé teszik olyan házirendek létrehozását, amelyek a szervezeten belüli konkrét használati eseteket célozzák meg anélkül, hogy az összes felhasználót érintené.
+A feltételes hozzáférés vezérlőkkel olyan házirendeket hozhat létre, amelyek konkrét használati eseteket céloznak meg a szervezeten belül anélkül, hogy ez befolyásolná az összes felhasználót.
 
-Mielőtt belemerülne a házirend konfigurálásának részleteibe, vizsgáljuk meg az alapértelmezett konfigurációt.
+Mielőtt megkezdené a szabályzat konfigurálásának részleteit, vizsgáljuk meg az alapértelmezett konfigurációt.
 
-## <a name="user-sign-in-frequency"></a>A felhasználó bejelentkezési gyakorisága
+## <a name="user-sign-in-frequency"></a>Felhasználói bejelentkezés gyakorisága
 
-A bejelentkezési gyakoriság határozza meg azt az időszakot, amely alatt a felhasználónak újra be kell jelentkeznie egy erőforrás elérésekor.
+A bejelentkezési gyakoriság határozza meg azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, amikor egy erőforráshoz próbál hozzáférni.
 
-Az Azure Active Directory (Azure AD) alapértelmezett konfigurációja a felhasználói bejelentkezési gyakoriság egy 90 napos gördülő ablak. A felhasználók hitelesítő adatok kérése gyakran ésszerű dolognak tűnik, de visszafelé sülhet el: azok a felhasználók, akik gondolkodás nélkül adják meg hitelesítő adataikat, véletlenül rosszindulatú hitelesítő adatokat adhatnak meg.
+A felhasználói bejelentkezési gyakorisághoz tartozó Azure Active Directory (Azure AD) alapértelmezett konfigurációja a 90 napos gördülő ablak. A felhasználók a hitelesítő adatokkal való megkérdezése gyakran úgy tűnik, mint egy értelmes dolog, de nem sül el: a hitelesítő adatok megadására betanított felhasználók szándékosan nem tudják megadni őket rosszindulatú hitelesítő adatok megadásához.
 
-Riasztóan hangzik, ha nem kéri a felhasználót, hogy jelentkezzen be újra, a valóságban az informatikai házirendek megsértése visszavonja a munkamenetet. Néhány példa (de nem kizárólagosan) a jelszó módosítása, egy nem megfelelő eszköz, vagy a fiók letiltása. A PowerShell használatával is visszavonhatja a [felhasználói munkameneteket.](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) Az Azure AD alapértelmezett konfiguráció jön le, hogy "ne kérje meg a felhasználókat, hogy a hitelesítő adatokat, ha a biztonsági állapotát a munkamenetek nem változott".
+Előfordulhat, hogy a felhasználók nem kérik vissza a felhasználót, hogy a valóságban az IT-szabályzatok megszegése visszavonja a munkamenetet. Néhány példa a jelszó módosítására, a nem megfelelő eszközre vagy a fiók letiltására vonatkozik. Explicit módon [visszavonhatja a felhasználói munkameneteket a PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Az Azure AD alapértelmezett konfigurációja a "ne kérdezze meg a felhasználókat, hogy adja meg a hitelesítő adataikat, ha a munkamenetek biztonsági helyzete nem változott".
 
-A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, amelyek a szabványoknak megfelelően implementálták az OAUTH2 vagy OIDC protokollokat. A legtöbb Microsoft natív Windows, Mac és Mobile alkalmazás, beleértve a következő webalkalmazásokat is, megfelel a beállításnak.
+A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, amelyek a szabványok alapján OAUTH2 vagy OIDC protokollokat implementáltak. A Microsoft natív alkalmazásai a Windows, Mac és Mobile rendszerekhez, beleértve a következő webalkalmazásokat is, amelyek megfelelnek a beállításnak.
 
-- Word, Excel, PowerPoint Online
-- OneNote Online
+- Word, Excel, PowerPoint online
+- OneNote online
 - Office.com
-- O365 Felügyeleti portál
+- O365 felügyeleti portál
 - Exchange Online
 - SharePoint és OneDrive
-- Teams webes ügyfél
+- Csapat webes ügyfele
 - Dynamics CRM Online
-- Azure portál
+- Azure Portal
 
-### <a name="user-sign-in-frequency-and-device-identities"></a>A felhasználó bejelentkezési gyakorisága és az eszközidentitások
+### <a name="user-sign-in-frequency-and-device-identities"></a>Felhasználói bejelentkezés gyakorisága és az eszközök identitása
 
-Ha az Azure AD-hez csatlakozott, hibrid Azure AD-hez csatlakozott, vagy az Azure AD regisztrált eszközök, amikor a felhasználó feloldja az eszköz vagy jelek interaktívan, ez az esemény megfelel a bejelentkezési gyakorisági szabályzat is. A következő 2 példában a felhasználói bejelentkezési gyakoriság 1 órára van beállítva:
+Ha van csatlakoztatva az Azure AD-hez, a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökhöz, amikor a felhasználó feloldja az eszközt, vagy interaktív módon jelentkezik be, akkor ez az esemény is megfelel a bejelentkezési gyakoriságra vonatkozó házirendnek. A következő 2 példában a felhasználói bejelentkezés gyakorisága 1 órára van beállítva:
 
 1. példa:
 
-- 00:00-kor egy felhasználó bejelentkezik a Windows 10 Azure AD-hez csatlakozott eszközére, és megkezdi a munkát a SharePoint Online-on tárolt dokumentumon.
-- A felhasználó egy órán keresztül folytatja a munkát ugyanazon a dokumentumon az eszközén.
-- 01:00-kor a rendszer kéri, hogy a rendszergazda által konfigurált feltételes hozzáférési házirendben a bejelentkezési gyakoriságkövetelmény alapján jelentkezzen be újra.
+- 00:00-kor a felhasználók bejelentkeznek a Windows 10 Azure AD-hez csatlakoztatott eszközre, és megkezdik a munkát a SharePoint Online-on tárolt dokumentumon.
+- A felhasználó egy órán keresztül folytatja az eszközön való munkát ugyanazon a dokumentumon.
+- A (z) 01:00-es időpontban a felhasználónak újra be kell jelentkeznie a bejelentkezési gyakoriság követelménye alapján a rendszergazda által konfigurált feltételes hozzáférési házirendben.
 
 2. példa
 
-- 00:00-kor egy felhasználó bejelentkezik a Windows 10 Azure AD-hez csatlakozott eszközére, és megkezdi a munkát a SharePoint Online-on tárolt dokumentumon.
-- 00:30-kor a felhasználó felkel, és szünetet tart, és zárolja az eszközt.
-- 00:45-kor a felhasználó visszatér a szünetből, és feloldja a készülékzárolást.
-- 01:45-kor a rendszer kéri a felhasználót, hogy jelentkezzen be újra a feltételes hozzáférési házirendben a rendszergazda által a 00:45-kor történt utolsó bejelentkezés óta konfigurált feltételes hozzáférési házirend bejelentkezési gyakorisági követelménye alapján.
+- 00:00-kor a felhasználók bejelentkeznek a Windows 10 Azure AD-hez csatlakoztatott eszközre, és megkezdik a munkát a SharePoint Online-on tárolt dokumentumon.
+- A 00:30-es időpontban a felhasználó felveszi a felhasználót, és az eszköz zárolását megszakítja.
+- A (z) 00:45-es verzióban a felhasználó visszatér a helyükről, és feloldja az eszköz zárolását.
+- A (z) 01:45-es időpontban a felhasználónak a bejelentkezés gyakorisága alapján újra be kell jelentkeznie a rendszergazda által az utolsó bejelentkezés óta konfigurált feltételes hozzáférési szabályzatban, a 00:45-es verziónál.
 
-## <a name="persistence-of-browsing-sessions"></a>A böngészési munkamenetek megőrzése
+## <a name="persistence-of-browsing-sessions"></a>Böngészési munkamenetek megőrzése
 
-Az állandó böngészőmunkamenet lehetővé teszi a felhasználók számára, hogy a böngészőablak bezárása és újbóli megnyitása után is bejelentkezve maradjanak.
+Az állandó böngésző-munkamenet lehetővé teszi a felhasználók számára, hogy a böngészőablak bezárása és újbóli megnyitása után is bejelentkezve maradjanak.
 
-A böngészőmunkamenet-megőrzés azure AD alapértelmezett alapértelmezett szolgáltatása lehetővé teszi a személyes eszközökön lévő felhasználók számára, hogy a "Maradjon bejelentkezve?" a sikeres hitelesítés után. Ha a böngésző adatmegőrzése van konfigurálva az AD FS az [AD FS egyszeri bejelentkezési beállítások](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)című cikkben található útmutatás t, akkor betartjuk ezt a szabályzatot, és megmarad az Azure AD-munkamenet is. Azt is beállíthatja, hogy a bérlőfelhasználói lássák-e a "Maradjon bejelentkezve?" a megfelelő beállítás módosításával az Azure Portal vállalati márkajelzési ablaktáblájában az [Azure AD bejelentkezési oldal testreszabása című cikkben](../fundamentals/customize-branding.md)található útmutatás használatával.
+Az Azure AD alapértelmezett böngésző-munkamenetének megőrzése lehetővé teszi, hogy a személyes eszközökön lévő felhasználók kiválaszthatják, hogy a "Stay bejelentkezett?" kifejezéssel megmaradnak-e a munkamenetek. sikeres hitelesítés után Rákérdezés. Ha a böngésző adatmegőrzési funkciója be van állítva AD FS az [egyszeri bejelentkezési beállítások AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)cikk útmutatása alapján, akkor a szabályzatnak meg kell felelnie, és az Azure ad-munkamenetet is meg kell őriznie. Azt is beállíthatja, hogy a bérlő felhasználói lássák-e a "Stay bejelentkezve?" című részt. az [Azure ad bejelentkezési oldal testreszabása](../fundamentals/customize-branding.md)című cikk útmutatását követve megváltoztathatja a megfelelő beállítást a vállalati védjegyezés panelen Azure Portal.
 
-## <a name="configuring-authentication-session-controls"></a>Hitelesítési munkamenet-vezérlők konfigurálása
+## <a name="configuring-authentication-session-controls"></a>A hitelesítési munkamenet vezérlőinek konfigurálása
 
-Feltételes hozzáférés egy Azure AD Premium-képesség, és prémium szintű licencet igényel. Ha szeretne többet megtudni a feltételes hozzáférés, olvassa el [a Mi a feltételes hozzáférés az Azure Active Directoryban?](overview.md#license-requirements)
+A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium szintű licencre van szükség. Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](overview.md#license-requirements) című témakört.
 
 > [!WARNING]
-> Ha a jelenleg nyilvános előzetes verzióban [elérhető, konfigurálható jogkivonat-élettartam](../develop/active-directory-configurable-token-lifetimes.md) funkciót használja, kérjük, vegye figyelembe, hogy nem támogatjuk két különböző szabályzat létrehozását ugyanahhoz a felhasználóhoz vagy alkalmazáskombinációhoz: az egyik ezzel a funkcióval, a másik pedig konfigurálható jogkivonat-élettartam-funkcióval rendelkezik. A Microsoft azt tervezi, hogy 2020.  
+> Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másik, konfigurálható jogkivonat-élettartam funkciót. A Microsoft azt tervezi, hogy a konfigurálható jogkivonat élettartama funkciót a 2020-as és a feltételes hozzáférési hitelesítési munkamenet-kezelési szolgáltatással helyettesíti.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>1. házirend: Bejelentkezési gyakoriság-szabályozás
+### <a name="policy-1-sign-in-frequency-control"></a>1. szabályzat: a bejelentkezés gyakoriságának szabályozása
 
-1. Új házirend létrehozása
-1. Válassza ki az ügyfél környezetéhez szükséges összes feltételt, beleértve a célfelhőalkalmazásokat is.
+1. Új szabályzat létrehozása
+1. Válassza ki az ügyfél környezetének összes kötelező feltételét, beleértve a felhőalapú alkalmazásokat is.
 
    > [!NOTE]
-   > A legjobb felhasználói élmény érdekében ajánlott a legfontosabb Microsoft Office-alkalmazások, például az Exchange Online és a SharePoint Online azonos hitelesítési gyorsgyakoriságának beállítása.
+   > A legjobb felhasználói élmény érdekében javasoljuk, hogy a kulcs Microsoft Office alkalmazások, például az Exchange Online és a SharePoint Online esetében az egyenlő hitelesítési kérések gyakoriságát adja meg.
 
-1. Nyissa meg a **Hozzáférés-vezérlési** > **munkamenetet,** és kattintson **a Bejelentkezési gyakoriság ra**
-1. Adja meg a napok és órák kötelező értékét az első szövegmezőbe
-1. **Legördülő** menü Óra vagy **Napok** értékének kiválasztása
-1. A házirend mentése
+1. Nyissa meg a **hozzáférés-vezérlési** > **munkamenetet** , és kattintson a **bejelentkezési gyakoriság** lehetőségre.
+1. Adja meg az első szövegmezőben a napok és órák szükséges értékét
+1. Válassza ki az **órák** vagy **napok** értékét a legördülő listából
+1. Szabályzat mentése
 
-![A bejelentkezési gyakoriságra konfigurált feltételes hozzáférési házirend](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+![Bejelentkezési gyakoriságra konfigurált feltételes hozzáférési szabályzat](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Az Azure AD regisztrált Windows-eszközök jelentkezzen be az eszközre egy kérdés. Ha például a Bejelentkezési gyakoriságot 24 órára állította be az Office-alkalmazások hoz, az Azure AD-ben regisztrált Windows-eszközök felhasználói az eszközre való bejelentkezéskor megfelelnek a Bejelentkezésgyakoriságra vonatkozó szabályzatnak, és az Office-alkalmazások megnyitásakor nem jelennek meg újra.
+Az Azure AD-ben regisztrált Windows-eszközökön jelentkezzen be az eszközre. Ha például az Office-alkalmazások esetében 24 órán keresztül konfigurálta a bejelentkezés gyakoriságát, akkor az Azure AD-ben regisztrált Windows-eszközökön lévő felhasználók a bejelentkezési gyakoriságra vonatkozó szabályzatot az eszközre való bejelentkezéssel fogják kielégíteni, és az Office-alkalmazások megnyitásakor nem fognak megjelenni.
 
-Ha különböző bejelentkezési gyakoriságot konfigurált az ugyanabban a böngészőmunkamenetben futó különböző webalkalmazásokhoz, a legszigorúbb házirend mindkét alkalmazásra vonatkozik, mivel az ugyanabban a böngészőmunkamenetben futó összes alkalmazás egyetlen munkamenet-tokenen osztozik.
+Ha az azonos böngésző-munkamenetben futó különböző webalkalmazásokhoz eltérő bejelentkezési gyakoriságot állított be, a rendszer mindkét alkalmazásra alkalmazza a legszigorúbb szabályzatot, mivel az azonos böngésző-munkamenetben futó összes alkalmazás egyetlen munkamenet-tokent használ.
 
-### <a name="policy-2-persistent-browser-session"></a>2. házirend: Állandó böngészőmunkamenet
+### <a name="policy-2-persistent-browser-session"></a>2. szabályzat: állandó böngésző-munkamenet
 
-1. Új házirend létrehozása
+1. Új szabályzat létrehozása
 1. Válassza ki az összes szükséges feltételt.
 
    > [!NOTE]
-   > Kérjük, vegye figyelembe, hogy ez a vezérlő feltételként az "Összes felhőalkalmazás" lehetőséget kell választania. A böngészőmunkamenet-megőrzést hitelesítési munkamenet-jogkivonat szabályozza. A böngészőmunkamenet ben lévő összes lap egyetlen munkamenet-jogkivonatot oszt meg, ezért mindegyiknek meg kell osztania a perzisztencia-állapotot.
+   > Vegye figyelembe, hogy ehhez a vezérlőhöz a "minden felhőalapú alkalmazás" lehetőséget kell választania feltételként. A böngésző-munkamenet megőrzését a hitelesítési munkamenet tokenje vezérli. A böngésző-munkamenet összes lapja egyetlen munkamenet-jogkivonattal rendelkezik, ezért mindegyiknek meg kell egyeznie az adatmegőrzési állapottal.
 
-1. Nyissa meg az **Access Controls** > **munkamenetet,** és kattintson **az Állandó böngészőmunkamenet** re
-1. Érték kiválasztása a legördülő menüből
-1. A házirend mentése
+1. Nyissa meg a **hozzáférés-vezérlési** > **munkamenetet** , és kattintson az **állandó böngésző munkamenet**
+1. Válasszon ki egy értéket a legördülő listából
+1. Szabályzat mentése
 
-![Állandó böngészőhöz konfigurált feltételes hozzáférési házirend](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![Állandó böngészőre konfigurált feltételes hozzáférési szabályzat](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Az Azure AD feltételes hozzáférésének állandó böngészőmunkamenet-konfigurációja felülírja a "Maradjon bejelentkezve?" beállítást az Azure Portalon a vállalati márkajelzési ablaktáblában ugyanahhoz a felhasználóhoz, ha mindkét szabályzatot konfigurálta.
+> Az Azure AD feltételes hozzáférés állandó böngésző-munkamenet-konfigurációja felülírja a "Stay bejelentkezve?" Ha mindkét szabályzatot konfigurálta, akkor a Azure Portal vállalati védjegyezése ablaktáblán állítsa be ugyanezt a felhasználót.
 
 ## <a name="validation"></a>Ellenőrzés
 
-A Teendő eszközzel szimulálhatja a felhasználó bejelentkezését a célalkalmazásba, valamint egyéb feltételeket a házirend konfigurálásának módjától függően. A hitelesítési munkamenet-kezelési vezérlők megjelennek az eszköz eredményében.
+A What-if eszköz használatával szimulálhatja a felhasználót a célalkalmazás és más feltételek alapján, hogy a szabályzatot hogyan konfigurálta. A hitelesítési munkamenetek felügyeleti vezérlői az eszköz eredményében jelennek meg.
 
-![Feltételes hozzáférés mi után az eszköz eredményei](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Feltételes hozzáférés What If eszköz eredményei](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>Szabályzat érvénybe léptetése
 
-Annak érdekében, hogy a szabályzat a várt módon működjön, ajánlott eljárás, hogy tesztelje, mielőtt éles környezetben. Ideális esetben egy tesztbérlő segítségével ellenőrizze, hogy az új szabályzat megfelelően működik-e. További információt az Azure Active Directory feltételes hozzáféréssel kapcsolatos gyakorlati tanácsok című [témakörben talál.](best-practices.md)
+Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információkért tekintse meg a [Azure Active Directory a feltételes hozzáférésre vonatkozó ajánlott eljárásokat](best-practices.md)ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha tudni szeretné, hogyan konfigurálhat feltételes hozzáférési szabályzatot, olvassa el az [Azure Active Directory feltételes hozzáféréssel rendelkező alkalmazásokhoz az MFA megkövetelése című cikket.](app-based-mfa.md)
-* Ha készen áll a feltételes hozzáférési házirendek konfigurálására a környezetéhez, olvassa el a feltételes hozzáférés ajánlott eljárásai az Azure Active Directoryban című [témakört.](best-practices.md)
+* Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című cikket.
+* Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

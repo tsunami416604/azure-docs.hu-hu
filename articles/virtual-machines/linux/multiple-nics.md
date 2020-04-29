@@ -1,6 +1,6 @@
 ---
 title: Linuxos virtuális gép létrehozása az Azure-ban több hálózati adapterrel
-description: Ismerje meg, hogyan hozhat létre egy Linux virtuális gép több hálózati adapterek csatolták az Azure CLI vagy resource manager sablonok használatával.
+description: Megtudhatja, hogyan hozhat létre egy több hálózati adapterrel rendelkező linuxos virtuális gépet az Azure CLI vagy Resource Manager-sablonok használatával.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.subservice: networking
@@ -9,29 +9,29 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267182"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Linuxos virtuális gép létrehozása az Azure-ban több hálózati csatolókártyával
+# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártya használatával
 
 
-Ez a cikk ismerteti, hogyan hozhat létre egy virtuális gép több hálózati adapterek az Azure CLI használatával.
+Ez a cikk részletesen ismerteti, hogyan hozhat létre több hálózati adapterrel rendelkező virtuális gépet az Azure CLI-vel.
 
 ## <a name="create-supporting-resources"></a>Támogató erőforrások létrehozása
-Telepítse a legújabb [Azure CLI-t,](/cli/azure/install-az-cli2) és jelentkezzen be egy Azure-fiókba [az az login](/cli/azure/reference-index)használatával.
+Telepítse a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-A következő példákban cserélje le a példaparaméterneveket a saját értékeire. Példa paraméter nevek közé *myResourceGroup*, *mystorageaccount*, és *myVM*.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *mystorageaccount*és *myVM*.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozza létre a virtuális hálózatot az [hálózati virtuális hálózat létrehozása.](/cli/azure/network/vnet) A következő példa létrehoz egy *myVnet* és alhálózat nevű virtuális hálózat *ot, a mySubnetFrontEnd*nevet:
+Hozza létre a virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. A következő példában létrehozunk egy *myVnet* nevű virtuális hálózatot és egy *mySubnetFrontEnd*nevű alhálózatot:
 
 ```azurecli
 az network vnet create \
@@ -42,7 +42,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-Hozzon létre egy alhálózatot a háttérforgalomhoz az [az hálózati virtuális hálózat alhálózatának létrehozása segítségével.](/cli/azure/network/vnet/subnet) A következő példa létrehoz egy *nASubnetBackEnd*nevű alhálózatot:
+Hozzon létre egy alhálózatot a háttér-forgalomhoz az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet)paranccsal. A következő példa egy *mySubnetBackEnd*nevű alhálózatot hoz létre:
 
 ```azurecli
 az network vnet subnet create \
@@ -52,7 +52,7 @@ az network vnet subnet create \
     --address-prefix 10.0.2.0/24
 ```
 
-Hozzon létre egy hálózati biztonsági csoportot [az az network nsg create](/cli/azure/network/nsg)segítségével. A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
+Hozzon létre egy hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
 
 ```azurecli
 az network nsg create \
@@ -61,7 +61,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Több hálózati adapter létrehozása és konfigurálása
-Hozzon létre két hálózati adaptert [az az network nic create](/cli/azure/network/nic)segítségével. A következő példa két hálózati adaptert hoz létre, *a myNic1* és a *myNic2*nevet, amelyek a hálózati biztonsági csoportot csatlakoztatják, és minden alhálózathoz egy hálózati adapter csatlakozik:
+Hozzon létre két hálózati adaptert az [az Network NIC Create](/cli/azure/network/nic)paranccsal. Az alábbi példa két hálózati adaptert hoz létre, amelyek neve *myNic1* és *myNic2*, a hálózati biztonsági csoporthoz csatlakoztatva, és egy hálózati adapter csatlakozik az egyes alhálózatokhoz:
 
 ```azurecli
 az network nic create \
@@ -78,10 +78,10 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nics"></a>Virtuális gép létrehozása és hálózati adapterek csatolása
-A virtuális gép létrehozásakor adja meg a. `--nics` Emellett a virtuális gép méretének kiválasztásakor is óvatosnak kell lennie. A virtuális gépekhez hozzáadható hálózati adapterek teljes száma korlátokat állapít meg. További információ a [Linux virtuális gép méreteiről.](sizes.md)
+## <a name="create-a-vm-and-attach-the-nics"></a>Virtuális gép létrehozása és a hálózati adapterek csatlakoztatása
+A virtuális gép létrehozásakor határozza meg a által létrehozott hálózati adaptereket `--nics`. A virtuális gép méretének kiválasztásakor is ügyelnie kell rá. A virtuális gépekhez adható hálózati adapterek teljes száma korlátozott. További információ a [Linux rendszerű virtuális gépek méreteiről](sizes.md).
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példa létrehoz egy *myVM*nevű virtuális gép:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példa egy *myVM*nevű virtuális gépet hoz létre:
 
 ```azurecli
 az vm create \
@@ -94,12 +94,12 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-Útválasztási táblák hozzáadása a vendég operációs rendszerhez a [Vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című lépés lépéseinek végrehajtásával.
+Adja hozzá az útválasztási táblázatokat a vendég operációs rendszerhez a [vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című témakörben leírt lépések végrehajtásával.
 
-## <a name="add-a-nic-to-a-vm"></a>Hálózati adapter hozzáadása virtuális géphez
-Az előző lépések létrehozott egy virtuális gép több hálózati adapterek. Hálózati adapterek is hozzáadhategy meglévő virtuális gép az Azure CLI. A különböző [virtuálisgép-méretek](sizes.md) különböző számú hálózati adaptert támogatnak, így a virtuális gép ennek megfelelően méretezze. Szükség esetén [átméretezheti a virtuális gépeket.](change-vm-size.md)
+## <a name="add-a-nic-to-a-vm"></a>Hálózati adapter hozzáadása egy virtuális géphez
+Az előző lépések több hálózati adapterrel rendelkező virtuális gépet hoztak létre. A meglévő virtuális gépekhez az Azure CLI-vel is hozzáadhat hálózati adaptereket. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, [átméretezheti a virtuális gépet](change-vm-size.md).
 
-Hozzon létre egy másik hálózati adaptert [az az network nic create](/cli/azure/network/nic)segítségével. A következő példa létrehoz egy *myNic3* nevű hálózati adaptert, amely az előző lépésekben létrehozott háttér-alhálózathoz és hálózati biztonsági csoporthoz csatlakozik:
+Hozzon létre egy másik hálózati adaptert az [az Network NIC Create](/cli/azure/network/nic)paranccsal. A következő példában létrehozunk egy *myNic3* nevű hálózati adaptert az előző lépésekben létrehozott háttérbeli alhálózathoz és hálózati biztonsági csoporthoz:
 
 ```azurecli
 az network nic create \
@@ -110,14 +110,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Ha hálózati adaptert szeretne hozzáadni egy meglévő virtuális géphez, először szabadítsa fel a virtuális gép az [virtuális gép felszabadításával.](/cli/azure/vm) A következő példa felszabadítja a *myVM*nevű virtuális gép:
+Egy hálózati adapter meglévő virtuális géphez való hozzáadásához először szabadítsa fel a virtuális gépet az [az VM felszabadításával](/cli/azure/vm). A következő példa felszabadítja a *myVM*nevű virtuális gépet:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Adja hozzá a hálózati [adaptert az az vm nic add .](/cli/azure/vm/nic) A következő példa hozzáadja *a myNic3-ot* a *myVM-hez:*
+Adja hozzá a hálózati adaptert az [az VM NIC Add](/cli/azure/vm/nic)paranccsal. A következő példa a *myNic3* -t adja hozzá a *myVM*-hoz:
 
 ```azurecli
 az vm nic add \
@@ -126,22 +126,22 @@ az vm nic add \
     --nics myNic3
 ```
 
-Indítsa el a virtuális gép [az vm start:](/cli/azure/vm)
+Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm)paranccsal:
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
-Útválasztási táblák hozzáadása a vendég operációs rendszerhez a [Vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című lépés lépéseinek végrehajtásával.
+Adja hozzá az útválasztási táblázatokat a vendég operációs rendszerhez a [vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című témakörben leírt lépések végrehajtásával.
 
-## <a name="remove-a-nic-from-a-vm"></a>Hálózati adapter eltávolítása a virtuális gépről
-Ha el szeretne távolítani egy hálózati adaptert egy meglévő virtuális gépről, először szabadítsa fel a virtuális gép az [virtuális gép felszabadításával.](/cli/azure/vm) A következő példa felszabadítja a *myVM*nevű virtuális gép:
+## <a name="remove-a-nic-from-a-vm"></a>Hálózati adapter eltávolítása egy virtuális gépről
+Egy hálózati adapter meglévő virtuális gépről való eltávolításához először szabadítsa fel a virtuális gépet az [az VM](/cli/azure/vm)felszabadításával. A következő példa felszabadítja a *myVM*nevű virtuális gépet:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Távolítsa el a hálózati [adaptert az az vm nic eltávolításával.](/cli/azure/vm/nic) A következő példa eltávolítja *a myNic3-ot* a *myVM-ből:*
+Távolítsa el a hálózati adaptert az [az VM NIC Remove](/cli/azure/vm/nic)paranccsal. Az alábbi példa eltávolítja a *myNic3* -t a *myVM*-ből:
 
 ```azurecli
 az vm nic remove \
@@ -150,15 +150,15 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Indítsa el a virtuális gép [az vm start:](/cli/azure/vm)
+Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm)paranccsal:
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
 
-## <a name="create-multiple-nics-using-resource-manager-templates"></a>Több hálózati adapter létrehozása erőforrás-kezelősablonok használatával
-Az Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. Elolvashatja [az Azure Resource Manager áttekintését.](../../azure-resource-manager/management/overview.md) Az Erőforrás-kezelő sablonjai lehetővé teszik egy erőforrás több példányának létrehozását a telepítés során, például több hálózati adapter ek létrehozását. A *másolás* segítségével adhatja meg a létrehozandó példányok számát:
+## <a name="create-multiple-nics-using-resource-manager-templates"></a>Több hálózati adapter létrehozása Resource Manager-sablonok használatával
+Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. [A Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)olvasható. A Resource Manager-sablonok lehetővé teszik az erőforrások több példányának létrehozását az üzembe helyezés során, például több hálózati adapter létrehozását. A *Másolás* használatával megadhatja a létrehozandó példányok számát:
 
 ```json
 "copy": {
@@ -167,23 +167,23 @@ Az Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a kör
 }
 ```
 
-További információ a [több példány *másolással*történő létrehozásáról.](../../resource-group-create-multiple.md) 
+További információ a [ *Másolás*használatával létrehozott több példány létrehozásáról](../../resource-group-create-multiple.md). 
 
-Az a segítségével `copyIndex()` is hozzáfűzhet egy számot egy erőforrásnévhez, amely lehetővé teszi `myNic1`a , `myNic2`, stb. Az alábbi példa az indexérték hozzáfűzése:
+Az a `copyIndex()` használatával is hozzáfűzheti a számot egy erőforrás nevéhez, amely lehetővé teszi `myNic1`, `myNic2`hogy az, stb. Az alábbi példa az index értékének hozzáfűzését mutatja be:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-Elolvashatja a teljes példát [arra, hogy több hálózati adaptert hozzon létre az Erőforrás-kezelő sablonjaival.](../../virtual-network/template-samples.md)
+A [Resource Manager-sablonok használatával több hálózati adaptert](../../virtual-network/template-samples.md)is létrehozhat.
 
-Útválasztási táblák hozzáadása a vendég operációs rendszerhez a [Vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című lépés lépéseinek végrehajtásával.
+Adja hozzá az útválasztási táblázatokat a vendég operációs rendszerhez a [vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című témakörben leírt lépések végrehajtásával.
 
-## <a name="configure-guest-os-for-multiple-nics"></a>Vendég operációs rendszer konfigurálása több hálózati adapterhez
+## <a name="configure-guest-os-for-multiple-nics"></a>A vendég operációs rendszer konfigurálása több hálózati adapterhez
 
-Az előző lépések létrehozott egy virtuális hálózat ot és alhálózatot, csatolt hálózati adaptereket, majd létrehozott egy virtuális gépet. Nem hoztak létre nyilvános IP-címet és hálózati biztonsági csoportszabályokat, amelyek engedélyezik az SSH-forgalmat. A vendég operációs rendszer több hálózati adapterek konfigurálásához engedélyeznie kell a távoli kapcsolatokat, és helyileg kell futtatnia a parancsokat a virtuális számítógépen.
+Az előző lépések létrehozott egy virtuális hálózatot és alhálózatot, csatolt hálózati adaptereket, majd létrehozott egy virtuális GÉPET. Nem jött létre olyan nyilvános IP-cím és hálózati biztonsági csoportra vonatkozó szabály, amely engedélyezi az SSH-forgalmat. Ha több hálózati adapterhez szeretné konfigurálni a vendég operációs rendszert, engedélyeznie kell a távoli kapcsolatokat, és helyileg kell futtatnia a parancsokat a virtuális gépen.
 
-Az SSH-forgalom engedélyezéséhez hozzon létre egy hálózati biztonsági csoportszabályt [az az hálózati nsg szabállyal](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) az alábbiak szerint:
+Az SSH-forgalom engedélyezéséhez hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) paranccsal a következőképpen:
 
 ```azurecli
 az network nsg rule create \
@@ -194,7 +194,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-Hozzon létre egy nyilvános [IP-címet az az hálózati nyilvános ip létrehozása](/cli/azure/network/public-ip#az-network-public-ip-create) és hozzárendeli az első NIC az hálózati nic [ip-config frissítés](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
+Hozzon létre egy nyilvános IP-címet az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal, és rendelje hozzá az első hálózati adapterhez az [az Network NIC IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -206,23 +206,23 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-A virtuális gép nyilvános IP-címének megtekintéséhez használja az [vm show-t](/cli/azure/vm#az-vm-show) az alábbiak szerint::
+A virtuális gép nyilvános IP-címének megtekintéséhez használja az [az VM show](/cli/azure/vm#az-vm-show) a következőt:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Most SSH a virtuális gép nyilvános IP-címét. Az előző lépésben megadott alapértelmezett felhasználónév *az azureuser*volt. Adja meg saját felhasználónevét és nyilvános IP-címét:
+Most SSH-t a virtuális gép nyilvános IP-címére. Az előző lépésben megadott alapértelmezett Felhasználónév az *azureuser*volt. Adja meg saját felhasználónevét és nyilvános IP-címét:
 
 ```bash
 ssh azureuser@137.117.58.232
 ```
 
-A másodlagos hálózati adapterre vagy onnan történő küldéshez manuálisan kell állandó útvonalakat hozzáadnia az operációs rendszerhez minden másodlagos hálózati adapterhez. Ebben a cikkben az *eth1* a másodlagos felület. Az állandó útvonalak operációs rendszerhez való hozzáadására vonatkozó utasítások a kivezetéstől függően változnak. Az utasításokat a distro dokumentációjában találja.
+Másodlagos hálózati adapterről történő küldéshez manuálisan kell állandó útvonalakat hozzáadni az operációs rendszerhez az egyes másodlagos hálózati adapterekhez. Ebben a cikkben a *eth1* a másodlagos felület. Az állandó útvonalak az operációs rendszerhez való hozzáadására vonatkozó utasítások a disztribúción keresztül változnak. Útmutatásért tekintse meg a disztribúció dokumentációját.
 
-Amikor hozzáadja az útvonalat az operációs rendszerhez, az átjáró címe *.1* lesz a hálózati adapter bármelyik alhálózatához. Ha például a hálózati adapterhez a *10.0.2.4*cím van rendelve, az útvonalhoz megadott átjáró *10.0.2.1*. Megadhat egy adott hálózatot az útvonal céljához, vagy megadhat egy *0.0.0.0-s*célt, ha azt szeretné, hogy az összeköttetés összes forgalma a megadott átjárón keresztül haladjon. Az egyes alhálózatok átjáróját a virtuális hálózat kezeli.
+Amikor az útvonalat hozzáadja az operációs rendszerhez, az átjáró címe *1* , hogy a hálózati adapter melyik alhálózathoz tartozik. Ha például a hálózati adapter hozzá van rendelve a *10.0.2.4*, az útvonalhoz megadott átjáró *10.0.2.1*. Megadhat egy adott hálózatot az útvonal céljához, vagy megadhatja a *0.0.0.0*célhelyét, ha azt szeretné, hogy a csatoló összes forgalma áthaladjon a megadott átjárón. Az egyes alhálózatok átjáróját a virtuális hálózat kezeli.
 
-Miután hozzáadta az útvonalat egy másodlagos kapcsolathoz, ellenőrizze, `route -n`hogy az útvonal szerepel-e az útvonaltáblában a segítségével. A következő példa kimenete az útvonaltáblához, amely a két hálózati adaptert hozzá adta a virtuális géphez ebben a cikkben:
+Miután hozzáadta az útvonalat egy másodlagos csatolóhoz, ellenőrizze, hogy az útvonal az útválasztási táblában van-e `route -n`a következővel:. A következő példa kimenete az útválasztási tábla, amelyben a virtuális gép két hálózati adaptere lett hozzáadva ebben a cikkben:
 
 ```bash
 Kernel IP routing table
@@ -235,13 +235,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
 ```
 
-Ellenőrizze, hogy a hozzáadott útvonal továbbra is fennáll-e az újraindítások során, ha újraindítás után újra ellenőrzi az útvonaltáblát. A kapcsolat teszteléséhez adja meg a következő parancsot, például ahol az *eth1* egy másodlagos hálózati adapter neve:
+Ellenőrizze, hogy a hozzáadott útvonal megmarad-e az újraindítások között az útválasztási táblázat újraindítást követően történő ellenőrzésével. A kapcsolat teszteléséhez megadhatja a következő parancsot, például a *eth1* a másodlagos hálózati adapter neve:
 
 ```bash
 ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át [a Linux virtuális gép méreteit,](sizes.md) amikor több hálózati adapterrel próbál létrehozni egy virtuális gép. Ügyeljen arra, hogy az egyes virtuális gép méretetámogatja a hálózati adapterek maximális számát.
+Tekintse át a Linux rendszerű [virtuális gépek méretét](sizes.md) , amikor több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni. Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak.
 
-A virtuális gépek további védelme érdekében, just in time vm access. Ez a szolgáltatás megnyitja a hálózati biztonsági csoport szabályait az SSH-forgalomhoz, ha szükséges, és egy meghatározott ideig. További információk: [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén).
+A virtuális gépek további biztonságossá tételéhez használja az igény szerinti virtuálisgép-hozzáférést. Ez a szolgáltatás a hálózati biztonsági csoportra vonatkozó szabályokat nyitja meg az SSH-forgalomhoz, ha szükséges, és egy meghatározott ideig. További információk: [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén).

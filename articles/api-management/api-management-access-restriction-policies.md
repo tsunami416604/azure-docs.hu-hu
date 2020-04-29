@@ -1,6 +1,6 @@
 ---
-title: Azure API-hozzáférés-korlátozási házirendek | Microsoft dokumentumok
-description: Ismerje meg az Azure API Managementben használható hozzáférés-korlátozási szabályzatokat.
+title: Azure API Management hozzáférési korlátozási szabályzatok | Microsoft Docs
+description: Ismerje meg az Azure API Management használható hozzáférés-korlátozási szabályzatokat.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266116"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management hozzáférés-korlátozási szabályzatok
 
-Ez a témakör a következő API Management-házirendek hivatkozási alapként szolgál. A házirendek hozzáadásáról és konfigurálásáról az [API-kezelés házirendjei](https://go.microsoft.com/fwlink/?LinkID=398186)című témakörben talál további információt.
+Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>Hozzáférés-korlátozási házirendek
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>Hozzáférés-korlátozási szabályzatok
 
--   [Http-fejléc ellenőrzése](api-management-access-restriction-policies.md#CheckHTTPHeader) – A HTTP-fejléc létezésének és/vagy értékének kényszerítése.
--   [Hívási sebesség korlátozása előfizetésenként](api-management-access-restriction-policies.md#LimitCallRate) – Megakadályozza az API-használat kiugrásait a hívási sebesség korlátozásával, előfizetésenként.
--   [Hívási sebesség korlátozása kulcs](#LimitCallRateByKey) szerint – Megakadályozza az API-használat kiugrásait a hívási sebesség korlátozásával, kulcsalapon.
--   [Hívó IP-címének korlátozása](api-management-access-restriction-policies.md#RestrictCallerIPs) – szűrők (lehetővé teszi/lehetővé teszi) a hívásokat adott IP-címekről és/vagy címtartományokból.
--   [Használati kvóta beállítása előfizetés enként](api-management-access-restriction-policies.md#SetUsageQuota) – Lehetővé teszi a megújuló vagy élettartamra szóló hívás mennyiségének és/vagy sávszélesség-kvótájának kényszerítése előfizetésenként.
--   [Használati kvóta kulcs szerint történő beállítása](#SetUsageQuotaByKey) – Lehetővé teszi a megújuló vagy élettartamra szóló hívás mennyiségének és/vagy sávszélesség-kvótájának kulcsonkénti kényszerítése.
--   [JWT érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) – Egy adott HTTP-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT meglétének és érvényességének kényszerítése.
+-   [Http](api-management-access-restriction-policies.md#CheckHTTPHeader) -fejléc keresése – egy HTTP-fejléc létezésének és/vagy értékének betartatása.
+-   A [hívások sebességének korlátozása előfizetéssel](api-management-access-restriction-policies.md#LimitCallRate) – MEGAKADÁLYOZZA az API-használat csúcsait a hívások sebességének korlátozásával, előfizetések alapján.
+-   A [hívások gyakoriságának korlátozása kulcs szerint](#LimitCallRateByKey) – MEGAKADÁLYOZZA az API-használat csúcsait a hívások sebességének korlátozásával, kulcs alapján.
+-   A [hívó IP](api-management-access-restriction-policies.md#RestrictCallerIPs) -címeinek korlátozása (engedélyezi vagy megtagadja) a HÍVÁSOKAT adott IP-címekről és/vagy címtartományból.
+-   [Használati kvóta beállítása előfizetéssel](api-management-access-restriction-policies.md#SetUsageQuota) – lehetővé teszi, hogy előfizetések alapján kikényszerítse a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélesség-kvótáját.
+-   [Használati kvóta beállítása kulccsal](#SetUsageQuotaByKey) – lehetővé teszi a megújítható vagy élettartamos hívások mennyiségi és/vagy sávszélesség-kvótájának kikényszeríthető kulcs alapján.
+-   [JWT ellenőrzése](api-management-access-restriction-policies.md#ValidateJWT) – egy adott http-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.
 
 > [!TIP]
-> A hozzáférés-korlátozási házirendek különböző hatókörökben különböző célokra használhatók. Például biztonságossá teheti a teljes API-t AAD-hitelesítéssel az `validate-jwt` API-szintű házirend alkalmazásával, `claims` vagy alkalmazhatja azt az API-művelet szintjén, és használhatja a részletesebb vezérléshez.
+> A hozzáférési korlátozási házirendeket különböző hatókörökben használhatja különböző célokra. A teljes API-t biztonságossá teheti a HRE-hitelesítéssel, ha `validate-jwt` a szabályzatot az API szintjén alkalmazza, vagy az API-műveleti szinten alkalmazhatja, `claims` és részletesebb szabályozást is használhat.
 
-## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a>HTTP-fejléc ellenőrzése
+## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a>HTTP-fejléc keresése
 
-A `check-header` házirend segítségével kényszerítheti, hogy egy kérelem nek van egy megadott HTTP-fejléce. Tetszés szerint ellenőrizheti, hogy a fejlécrendelkezik-e adott értékkel, vagy ellenőrizheti az engedélyezett értékek tartományát. Ha az ellenőrzés sikertelen, a házirend leállítja a kérelmek feldolgozását, és visszaadja a házirendben megadott HTTP-állapotkódot és hibaüzenetet.
+A `check-header` szabályzat használatával kényszerítheti ki, hogy egy kérelemnek van egy megadott http-fejléce. Ha szeretné, megtekintheti, hogy a fejléc adott értékkel rendelkezik-e, vagy hogy engedélyezett-e az értékek tartománya. Ha az ellenőrzés sikertelen, a házirend leállítja a kérelmek feldolgozását, és visszaadja a szabályzat által megadott HTTP-állapotkódot és hibaüzenetet.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">
@@ -60,41 +60,41 @@ A `check-header` házirend segítségével kényszerítheti, hogy egy kérelem n
 
 ### <a name="elements"></a>Elemek
 
-| Név         | Leírás                                                                                                                                   | Kötelező |
+| Name (Név)         | Leírás                                                                                                                                   | Kötelező |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ellenőrző fejléc | Gyökérelem.                                                                                                                                 | Igen      |
-| érték        | Engedélyezett HTTP fejlécérték. Ha több értékelem van megadva, az ellenőrzés sikeresnek minősül, ha az értékek bármelyike egyezik. | Nem       |
+| fejléc bejelölése | Gyökérelem.                                                                                                                                 | Igen      |
+| érték        | Engedélyezett HTTP-fejléc értéke. Ha több Value elem van megadva, az ellenőrzése sikeresnek tekintendő, ha az értékek bármelyike egyezés. | Nem       |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
+| Name (Név)                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| nem sikerült-check-error-message | Hibaüzenet et a HTTP-válasz törzsében kell visszaadni, ha a fejléc nem létezik, vagy érvénytelen az értéke. Ennek az üzenetnek megfelelően meg kell szabadulnia a speciális karakterektől. | Igen      | N/A     |
-| sikertelen-check-httpcode      | HTTP-állapotkód, amelyet vissza kell adni, ha a fejléc nem létezik, vagy érvénytelen az értéke.                                                                                        | Igen      | N/A     |
-| fejléc neve                | Az ellenőrizendő HTTP-fejléc neve.                                                                                                                                  | Igen      | N/A     |
-| kis- és nagybetűk figyelmen kívül hagyása                | Igaz vagy Hamis értékre állítható. Ha a rendszer a True case értéket figyelmen kívül hagyja, amikor a fejlécértéket összehasonlítja az elfogadható értékek készletével.                                    | Igen      | N/A     |
+| sikertelen művelet – ellenőrzési hiba – üzenet | A HTTP-válasz törzsében visszaadott hibaüzenet, ha a fejléc nem létezik, vagy érvénytelen értékkel rendelkezik. Az üzenetnek megfelelő speciális karakterekkel kell elmenekülnie. | Igen      | N/A     |
+| Sikertelen bejelentkezés – httpcode      | HTTP-állapotkód, amely akkor tér vissza, ha a fejléc nem létezik vagy érvénytelen értékkel rendelkezik.                                                                                        | Igen      | N/A     |
+| fejléc neve                | Az ellenőriznie kívánt HTTP-fejléc neve.                                                                                                                                  | Igen      | N/A     |
+| Mellőzés – eset                | Értéke TRUE (igaz) vagy FALSE (hamis) lehet. Ha a True (igaz) értékre van állítva, a rendszer figyelmen kívül hagyja, ha a fejléc értékét összehasonlítja az elfogadható értékek halmazával.                                    | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő, kimenő
+-   **Házirend fejezetei:** bejövő, kimenő
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>Hívási arány korlátozása előfizetés szerint
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>A hívások sebességének korlátozása előfizetés szerint
 
-A `rate-limit` szabályzat megakadályozza, hogy az API-használat kiugrások előfizetésenként korlátozza a hívási sebesség egy megadott számú egy adott időszakban. A házirend aktiválásakor a hívó `429 Too Many Requests` megkapja a válasz állapotkódját.
+A `rate-limit` házirend előfizetések alapján MEGAKADÁLYOZZA az API-használati tüskéket azáltal, hogy a megadott időszakra korlátozza a hívások sebességét egy megadott számra. Ha ez a szabályzat aktiválódik, a hívó megkapja a `429 Too Many Requests` válasz állapotkódot.
 
 > [!IMPORTANT]
-> Ez a házirend házirend-dokumentumonként csak egyszer használható.
+> Ez a szabályzat csak egyszer használható házirend-dokumentumként.
 >
-> [A házirend-kifejezések](api-management-policy-expressions.md) nem használhatók a házirend egyik házirendattribútumában sem.
+> A szabályzat [kifejezései](api-management-policy-expressions.md) nem használhatók a házirend egyik házirend-attribútumában sem.
 
 > [!CAUTION]
-> A sávszélesség-szabályozási architektúra elosztott jellege miatt a sebességkorlátozás soha nem teljesen pontos. A konfigurált és az engedélyezett kérelmek valós száma közötti különbség a kérelem mennyiségétől és sebességétól, a háttér-késéstől és más tényezőktől függően változik.
+> A szabályozási architektúra elosztott jellege miatt a díjszabási korlátozás soha nem teljesen pontos. A konfigurált és a valós idejű kérelmek száma közötti különbség a kérés mennyisége és sebessége, a háttérbeli késés és egyéb tényezők alapján változhat.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -120,41 +120,41 @@ A `rate-limit` szabályzat megakadályozza, hogy az API-használat kiugrások el
 
 ### <a name="elements"></a>Elemek
 
-| Név       | Leírás                                                                                                                                                                                                                                                                                              | Kötelező |
+| Name (Név)       | Leírás                                                                                                                                                                                                                                                                                              | Kötelező |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| sebességhatár | Gyökérelem.                                                                                                                                                                                                                                                                                            | Igen      |
-| api-t        | Adjon hozzá egy vagy több ilyen elemet, hogy a terméken belüli API-kra hívásdíjkorlátot szabjon ki. A termék- és API-hívási sebességkorlátok egymástól függetlenül érvényesek. Az API-ra a `name` `id`vagy a . Ha mindkét attribútum `id` meg van `name` adva, a rendszer használni fogja, és figyelmen kívül hagyja.                    | Nem       |
-| Művelet  | Adjon hozzá egy vagy több ilyen elemet, hogy egy API-n belüli műveletekre hívásdíjkorlátot szabjon ki. A termék-, API- és művelethívási sebességkorlátok egymástól függetlenül kerülnek alkalmazásra. A műveletre hivatkozni `name` lehet `id`a vagyon keresztül. Ha mindkét attribútum `id` meg van `name` adva, a rendszer használni fogja, és figyelmen kívül hagyja. | Nem       |
+| korlát mértéke | Gyökérelem.                                                                                                                                                                                                                                                                                            | Igen      |
+| api-t        | Vegyen fel egy vagy több ilyen elemet a terméken belüli API-k hívási arányának korlátozására. A termék-és API-hívások díjszabását a rendszer egymástól függetlenül alkalmazza. Az API-t a vagy `name` `id`a használatával lehet hivatkozni. Ha mindkét attribútum meg van adva `id` , a rendszer ezt `name` fogja használni, és figyelmen kívül hagyja.                    | Nem       |
+| művelet  | Vegyen fel egy vagy több ilyen elemet egy API-n belüli műveletek hívási sebességének korlátozására. A termék, az API és a műveleti hívási sebesség korlátai egymástól függetlenül érvényesek. A műveletet a vagy `name` `id`a használatával lehet hivatkozni. Ha mindkét attribútum meg van adva `id` , a rendszer ezt `name` fogja használni, és figyelmen kívül hagyja. | Nem       |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név           | Leírás                                                                                           | Kötelező | Alapértelmezett |
+| Name (Név)           | Leírás                                                                                           | Kötelező | Alapértelmezett |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| név           | Annak az API-nak a neve, amelyre a díjkorlátot alkalmazni kell.                                                | Igen      | N/A     |
-| Hívások          | A megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`a. | Igen      | N/A     |
-| megújítási időszak | Az az időszak másodpercben, amely után a kvóta visszaáll.                                              | Igen      | N/A     |
+| név           | Annak az API-nak a neve, amelyre alkalmazni szeretné a díjszabási korlátot.                                                | Igen      | N/A     |
+| hívások          | A által megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`. | Igen      | N/A     |
+| megújítás – időszak | Az az időtartam másodpercben, amely után a kvóta alaphelyzetbe áll.                                              | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 
--   **Házirend-hatókörök:** termék, api, működés
+-   **Házirend-hatókörök:** termék, API, művelet
 
-## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>Hívási sebesség korlátozása kulcs szerint
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>A hívások sebességének korlátozása kulcs szerint
 
 > [!IMPORTANT]
-> Ez a funkció nem érhető el az API Management **felhasználási** szintjében.
+> Ez a funkció nem érhető el a API Management **felhasználási** szintjein.
 
-A `rate-limit-by-key` házirend megakadályozza, hogy az API-használat csúcsok egy kulcs alapon korlátozza a hívási sebesség egy megadott szám egy adott időszakban. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában házirend-kifejezéssel van megadva. Választható növekmény feltételadható annak meghatározásához, hogy mely kérelmeket kell beleszámítani a korlátba. A házirend aktiválásakor a hívó `429 Too Many Requests` megkapja a válasz állapotkódját.
+A `rate-limit-by-key` házirend a megadott időszakra korlátozva meggátolja a hívások sebességét egy adott számra. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg. Opcionális növekményes feltétel adható meg annak megadásához, hogy mely kérelmeket kell figyelembe venni a korláton. Ha ez a szabályzat aktiválódik, a hívó megkapja a `429 Too Many Requests` válasz állapotkódot.
 
-A szabályzattal kapcsolatos további információkért és példákért olvassa el [a Speciális kérelmek szabályozása az Azure API Management szolgáltatással című témakört.](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)
+A szabályzattal kapcsolatos további információkért és Példákért lásd: [speciális kérelmek szabályozása az Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
 
 > [!CAUTION]
-> A sávszélesség-szabályozási architektúra elosztott jellege miatt a sebességkorlátozás soha nem teljesen pontos. A konfigurált és az engedélyezett kérelmek valós száma közötti különbség a kérelem mennyiségétől és sebességétól, a háttér-késéstől és más tényezőktől függően változik.
+> A szabályozási architektúra elosztott jellege miatt a díjszabási korlátozás soha nem teljesen pontos. A konfigurált és a valós idejű kérelmek száma közötti különbség a kérés mennyisége és sebessége, a háttérbeli késés és egyéb tényezők alapján változhat.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <rate-limit-by-key calls="number"
@@ -166,7 +166,7 @@ A szabályzattal kapcsolatos további információkért és példákért olvassa
 
 ### <a name="example"></a>Példa
 
-A következő példában a sebességkorlátot a hívó IP-címe határozza meg.
+A következő példában a hívó IP-címe a díjszabási korlátot.
 
 ```xml
 <policies>
@@ -185,32 +185,32 @@ A következő példában a sebességkorlátot a hívó IP-címe határozza meg.
 
 ### <a name="elements"></a>Elemek
 
-| Név              | Leírás   | Kötelező |
+| Name (Név)              | Leírás   | Kötelező |
 | ----------------- | ------------- | -------- |
-| kulcs-limit-by-key | Gyökérelem. | Igen      |
+| mérték – korlát – kulcs | Gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név                | Leírás                                                                                           | Kötelező | Alapértelmezett |
+| Name (Név)                | Leírás                                                                                           | Kötelező | Alapértelmezett |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Hívások               | A megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`a. | Igen      | N/A     |
-| ellenkulcs         | A díjkorlát-házirendhez használandó kulcs.                                                             | Igen      | N/A     |
-| növekmény-feltétel | A logikai kifejezés, amely megadja, hogy a kérelmet bele kell-e számítani a kvótába (`true`).        | Nem       | N/A     |
-| megújítási időszak      | Az az időszak másodpercben, amely után a kvóta visszaáll.                                              | Igen      | N/A     |
+| hívások               | A által megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`. | Igen      | N/A     |
+| számláló – kulcs         | A díjszabási szabályzathoz használandó kulcs.                                                             | Igen      | N/A     |
+| növekmény – feltétel | A logikai kifejezés, amely megadja, hogy a kérést a kvóta (`true`) felé kell-e számítani.        | Nem       | N/A     |
+| megújítás – időszak      | Az az időtartam másodpercben, amely után a kvóta alaphelyzetbe áll.                                              | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>Hívó IP-azonosítójának korlátozása
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>Hívó IP-címeinek korlátozása
 
-A `ip-filter` házirendszűrők (lehetővé teszik/letiltjuk) a hívásokat adott IP-címekről és/vagy címtartományokból.
+A `ip-filter` szabályzat szűrői (engedélyezheti/megtagadja) a HÍVÁSOKAT adott IP-címekről, illetve címtartományból.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -221,7 +221,7 @@ A `ip-filter` házirendszűrők (lehetővé teszik/letiltjuk) a hívásokat adot
 
 ### <a name="example"></a>Példa
 
-A következő példában a házirend csak az egyetlen IP-címről vagy a megadott IP-címek tartományából érkező kéréseket engedélyezi.
+A következő példában a házirend csak az egyetlen IP-címről vagy a megadott IP-címtartományból érkező kéréseket engedélyezi
 
 ```xml
 <ip-filter action="allow">
@@ -232,36 +232,36 @@ A következő példában a házirend csak az egyetlen IP-címről vagy a megadot
 
 ### <a name="elements"></a>Elemek
 
-| Név                                      | Leírás                                         | Kötelező                                                       |
+| Name (Név)                                      | Leírás                                         | Kötelező                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
-| ip-szűrő                                 | Gyökérelem.                                       | Igen                                                            |
-| address                                   | Egyetlen IP-címet ad meg, amelyre szűrni kell.   | Legalább egy `address` `address-range` vagy elem szükséges. |
-| címtartomány ="cím" ="cím" között | Megadja azt az IP-címtartományt, amelyre szűrni kell. | Legalább egy `address` `address-range` vagy elem szükséges. |
+| IP-szűrő                                 | Gyökérelem.                                       | Igen                                                            |
+| address                                   | Egyetlen IP-címet ad meg a szűréshez.   | Legalább egy `address` `address-range` elemet kötelező megadni. |
+| címtartomány a következőből: = "címe" – = "címe" | A szűrni kívánt IP-címtartomány megadása. | Legalább egy `address` `address-range` elemet kötelező megadni. |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név                                      | Leírás                                                                                 | Kötelező                                           | Alapértelmezett |
+| Name (Név)                                      | Leírás                                                                                 | Kötelező                                           | Alapértelmezett |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| címtartomány ="cím" ="cím" között | A hozzáférés engedélyezéséhez vagy megtagadásához szolgáló IP-címek tartománya.                                        | Az elem `address-range` használathoz szükséges. | N/A     |
-| ip-filter action="&#124; tiltó"    | Itt adható meg, hogy a megadott IP-címekhez és -tartományokhoz engedélyezni kell-e hívásokat. | Igen                                                | N/A     |
+| címtartomány a következőből: = "címe" – = "címe" | IP-címek tartománya, amely engedélyezi vagy megtagadja a hozzáférést.                                        | A `address-range` elem használatakor szükséges. | N/A     |
+| IP-szűrési művelet = "&#124; tiltás engedélyezése"    | Megadja, hogy a hívások engedélyezettek-e, vagy sem a megadott IP-címekhez és tartományokhoz. | Igen                                                | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 -   **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a>Használati kvóta beállítása előfizetés szerint
 
-A `quota` szabályzat előfizetésenként kényszeríti a megújuló vagy élettartamra szóló hívás mennyiséget és/vagy sávszélesség-kvótát.
+A `quota` szabályzat előfizetése alapján kikényszeríti a megújítható vagy életprevalencia-hívások mennyiségét és/vagy sávszélesség-kvótáját.
 
 > [!IMPORTANT]
-> Ez a házirend házirend-dokumentumonként csak egyszer használható.
+> Ez a szabályzat csak egyszer használható házirend-dokumentumként.
 >
-> [A házirend-kifejezések](api-management-policy-expressions.md) nem használhatók a házirend egyik házirendattribútumában sem.
+> A szabályzat [kifejezései](api-management-policy-expressions.md) nem használhatók a házirend egyik házirend-attribútumában sem.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -287,38 +287,38 @@ A `quota` szabályzat előfizetésenként kényszeríti a megújuló vagy élett
 
 ### <a name="elements"></a>Elemek
 
-| Név      | Leírás                                                                                                                                                                                                                                                                                  | Kötelező |
+| Name (Név)      | Leírás                                                                                                                                                                                                                                                                                  | Kötelező |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | kvóta     | Gyökérelem.                                                                                                                                                                                                                                                                                | Igen      |
-| api-t       | Adjon hozzá egy vagy több ilyen elemet, hogy a terméken belüli API-kra híváskvótát szabjon ki. A termék- és API-híváskvóták egymástól függetlenül kerülnek alkalmazásra. Az API-ra a `name` `id`vagy a . Ha mindkét attribútum `id` meg van `name` adva, a rendszer használni fogja, és figyelmen kívül hagyja.                    | Nem       |
-| Művelet | Adjon hozzá egy vagy több ilyen elemet az API-n belüli műveletek híváskvótájának kikényszerítéséhez. A termék-, API- és művelethívási kvóták egymástól függetlenül kerülnek alkalmazásra. A műveletre hivatkozni `name` lehet `id`a vagyon keresztül. Ha mindkét attribútum `id` meg van `name` adva, a rendszer használni fogja, és figyelmen kívül hagyja. | Nem       |
+| api-t       | Vegyen fel egy vagy több ilyen elemet a terméken belüli API-kra vonatkozó hívási kvóta kiszabásához. A termék-és API-hívások kvótái egymástól függetlenül vannak alkalmazva. Az API-t a vagy `name` `id`a használatával lehet hivatkozni. Ha mindkét attribútum meg van adva `id` , a rendszer ezt `name` fogja használni, és figyelmen kívül hagyja.                    | Nem       |
+| művelet | Vegyen fel egy vagy több ilyen elemet egy API-n belüli műveletekre vonatkozó hívási kvóta kiszabásához. A termék-, API-és műveleti hívások kvótái egymástól függetlenül vannak alkalmazva. A műveletet a vagy `name` `id`a használatával lehet hivatkozni. Ha mindkét attribútum meg van adva `id` , a rendszer ezt `name` fogja használni, és figyelmen kívül hagyja. | Nem       |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név           | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
+| Name (Név)           | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | név           | Annak az API-nak vagy műveletnek a neve, amelyre a kvóta vonatkozik.                                             | Igen                                                              | N/A     |
-| Sávszélesség      | A kilobájtok maximális száma a megadott időintervallumban. `renewal-period` | Vagy `calls` `bandwidth`a , vagy mindkettőt együtt kell megadni. | N/A     |
-| Hívások          | A megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`a.     | Vagy `calls` `bandwidth`a , vagy mindkettőt együtt kell megadni. | N/A     |
-| megújítási időszak | Az az időszak másodpercben, amely után a kvóta visszaáll.                                                  | Igen                                                              | N/A     |
+| sávszélesség      | A-ben megadott időintervallumban engedélyezett maximálisan megengedett kilobájtok száma `renewal-period`. | Vagy `calls`, `bandwidth`vagy mindkettőt meg kell adni. | N/A     |
+| hívások          | A által megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`.     | Vagy `calls`, `bandwidth`vagy mindkettőt meg kell adni. | N/A     |
+| megújítás – időszak | Az az időtartam másodpercben, amely után a kvóta alaphelyzetbe áll.                                                  | Igen                                                              | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
--   **Szakpolitikai hatókörök:** termék
+-   **Házirend fejezetei:** bejövő
+-   **Házirend-hatókörök:** termék
 
 ## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>Használati kvóta beállítása kulcs szerint
 
 > [!IMPORTANT]
-> Ez a funkció nem érhető el az API Management **felhasználási** szintjében.
+> Ez a funkció nem érhető el a API Management **felhasználási** szintjein.
 
-A `quota-by-key` házirend kulcsalapon kényszeríti a megújuló vagy élettartamra szóló hívás mennyiséget és/vagy sávszélesség-kvótát. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában házirend-kifejezéssel van megadva. Választható növekmény feltétel adható meg, hogy mely kérelmeket kell beleszámítani a kvótába. Ha több házirend növelné ugyanazt a kulcsértéket, kérésenként csak egyszer növekszik. A híváskorlát elérésekor a hívó `403 Forbidden` megkapja a válasz állapotkódját.
+A `quota-by-key` szabályzat a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélességét kényszeríti ki a kulcs alapján. A kulcs tetszőleges karakterlánc-értékkel rendelkezhet, és általában egy házirend-kifejezés használatával adható meg. Opcionális növekményes feltétel adható meg annak megadásához, hogy mely kérelmeket kell figyelembe venni a kvóta felé. Ha több házirend is megnöveli a kulcs értékét, akkor a kérések száma csak egyszer növekszik. Ha elérte a hívási korlátot, a hívó megkapja a `403 Forbidden` válasz állapotkódot.
 
-A szabályzattal kapcsolatos további információkért és példákért olvassa el [a Speciális kérelmek szabályozása az Azure API Management szolgáltatással című témakört.](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)
+A szabályzattal kapcsolatos további információkért és Példákért lásd: [speciális kérelmek szabályozása az Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <quota-by-key calls="number"
@@ -331,7 +331,7 @@ A szabályzattal kapcsolatos további információkért és példákért olvassa
 
 ### <a name="example"></a>Példa
 
-A következő példában a kvóta a hívó IP-címe van bekarikulva.
+A következő példában a kvóta a hívó IP-címe alapján van megjelölve.
 
 ```xml
 <policies>
@@ -349,37 +349,37 @@ A következő példában a kvóta a hívó IP-címe van bekarikulva.
 
 ### <a name="elements"></a>Elemek
 
-| Név  | Leírás   | Kötelező |
+| Name (Név)  | Leírás   | Kötelező |
 | ----- | ------------- | -------- |
 | kvóta | Gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név                | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
+| Name (Név)                | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| Sávszélesség           | A kilobájtok maximális száma a megadott időintervallumban. `renewal-period` | Vagy `calls` `bandwidth`a , vagy mindkettőt együtt kell megadni. | N/A     |
-| Hívások               | A megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`a.     | Vagy `calls` `bandwidth`a , vagy mindkettőt együtt kell megadni. | N/A     |
-| ellenkulcs         | A kvótaházirendhez használandó kulcs.                                                                      | Igen                                                              | N/A     |
-| növekmény-feltétel | A logikai kifejezés, amely meghatározza, hogy a kérelmet bele kell-e számítani a kvótába (`true`)             | Nem                                                               | N/A     |
-| megújítási időszak      | Az az időszak másodpercben, amely után a kvóta visszaáll.                                                  | Igen                                                              | N/A     |
+| sávszélesség           | A-ben megadott időintervallumban engedélyezett maximálisan megengedett kilobájtok száma `renewal-period`. | Vagy `calls`, `bandwidth`vagy mindkettőt meg kell adni. | N/A     |
+| hívások               | A által megadott időintervallumban engedélyezett hívások maximális száma `renewal-period`.     | Vagy `calls`, `bandwidth`vagy mindkettőt meg kell adni. | N/A     |
+| számláló – kulcs         | A kvóta-házirendhez használandó kulcs.                                                                      | Igen                                                              | N/A     |
+| növekmény – feltétel | A logikai kifejezés, amely megadja, hogy a kérést a kvóta felé kell-`true`e számítani ()             | Nem                                                               | N/A     |
+| megújítás – időszak      | Az az időtartam másodpercben, amely után a kvóta alaphelyzetbe áll.                                                  | Igen                                                              | N/A     |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="validate-jwt"></a><a name="ValidateJWT"></a>JWT érvényesítése
+## <a name="validate-jwt"></a><a name="ValidateJWT"></a>JWT ellenőrzése
 
-A `validate-jwt` házirend egy adott HTTP-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.
+A `validate-jwt` szabályzat egy adott http-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.
 
 > [!IMPORTANT]
-> A `validate-jwt` házirend megköveteli, hogy a `exp` regisztrált jogcím szerepeljen a JWT-jogkivonatban, kivéve, ha `require-expiration-time` az attribútum meg van adva, és a . `false`
-> A `validate-jwt` szabályzat támogatja a HS256 és RS256 aláírási algoritmusokat. A HS256 esetében a kulcsot a bázis64 kódolású űrlapon a házirenden belül kell megadni. Az RS256 esetében a kulcsot egy Open ID konfigurációs végponton keresztül kell megadni.
-> A `validate-jwt` házirend támogatja a szimmetrikus kulcsokkal titkosított tokeneket az alábbi A128CBC-HS256, A192CBC-HS384, A256CBC-HS512 titkosítási algoritmusokkal.
+> A `validate-jwt` szabályzat megköveteli, hogy `exp` a regisztrált jogcím szerepeljen az JWT-tokenben, `require-expiration-time` kivéve, ha az attribútum meg `false`van adva, és a értékre van állítva.
+> A `validate-jwt` szabályzat támogatja a HS256 és a RS256 aláírási algoritmusokat. A HS256 a kulcsot a Base64 kódolású űrlapon belül kell megadni a szabályzatban. Ahhoz, hogy RS256 a kulcsot meg kell adni egy Open ID konfigurációs végponton keresztül.
+> A `validate-jwt` házirend támogatja a szimmetrikus kulcsokkal titkosított tokeneket a következő titkosítási algoritmusok használatával: A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <validate-jwt
@@ -422,7 +422,7 @@ A `validate-jwt` házirend egy adott HTTP-fejlécből vagy egy megadott lekérde
 
 ### <a name="examples"></a>Példák
 
-#### <a name="simple-token-validation"></a>Egyszerű jogkivonat-érvényesítés
+#### <a name="simple-token-validation"></a>Egyszerű jogkivonat ellenőrzése
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
@@ -438,7 +438,7 @@ A `validate-jwt` házirend egy adott HTTP-fejlécből vagy egy megadott lekérde
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-token-validation"></a>Az Azure Active Directory tokenérvényesítése
+#### <a name="azure-active-directory-token-validation"></a>Azure Active Directory jogkivonat ellenőrzése
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -454,7 +454,7 @@ A `validate-jwt` házirend egy adott HTTP-fejlécből vagy egy megadott lekérde
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-b2c-token-validation"></a>Az Azure Active Directory B2C tokenérvényesítése
+#### <a name="azure-active-directory-b2c-token-validation"></a>Azure Active Directory B2C jogkivonat ellenőrzése
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -470,9 +470,9 @@ A `validate-jwt` házirend egy adott HTTP-fejlécből vagy egy megadott lekérde
 </validate-jwt>
 ```
 
-#### <a name="authorize-access-to-operations-based-on-token-claims"></a>Hozzáférés engedélyezése jogkivonatjogcímeken alapuló műveletekhez
+#### <a name="authorize-access-to-operations-based-on-token-claims"></a>A jogkivonatok jogcímein alapuló műveletekhez való hozzáférés engedélyezése
 
-Ez a példa bemutatja, hogyan használhatja a [JWT-házirend érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) a token jogcímjog-értéken alapuló műveletekhez való hozzáférés engedélyezéséhez.
+Ez a példa azt mutatja be, hogyan használható a [JWT-érvényesítési](api-management-access-restriction-policies.md#ValidateJWT) házirend a műveletekhez való hozzáférés engedélyezésére a jogkivonat-jogcímek értéke alapján.
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
@@ -505,45 +505,45 @@ Ez a példa bemutatja, hogyan használhatja a [JWT-házirend érvényesítése](
 
 | Elem             | Leírás                                                                                                                                                                                                                                                                                                                                           | Kötelező |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| érvényesít-jwt        | Gyökérelem.                                                                                                                                                                                                                                                                                                                                         | Igen      |
-| Közönség           | A tokenen szereplő elfogadható közönségjogcímek listáját tartalmazza. Ha több közönségérték van jelen, akkor a rendszer minden értéket addig próbál, amíg az összes ki nem merül (ebben az esetben az érvényesítés sikertelen), vagy amíg az egyik sikeres nem lesz. Legalább egy célközönséget meg kell adni.                                                                     | Nem       |
-| kibocsátó-aláíró kulcsok | Az aláírt jogkivonatok érvényesítéséhez használt Base64 kódolású biztonsági kulcsok listája. Ha több biztonsági kulcs van jelen, akkor minden kulcs kimerül, amíg az összes ki merül (ebben az esetben az érvényesítés sikertelen), vagy amíg az egyik sikeres (hasznos jogkivonat-átgörgetés). A kulcselemek `id` egy nem kötelező `kid` attribútummal rendelkeznek, amely a jogcímegyeztetéshez szolgál.               | Nem       |
-| visszafejtés-kulcsok     | A tokenek visszafejtéséhez használt Base64 kódolású kulcsok listája. Ha több biztonsági kulcs van jelen, akkor a rendszer minden kulcsot addig próbál meg, amíg az összes kulcs ki nem merül (ebben az esetben az érvényesítés sikertelen), vagy amíg egy kulcs sikeres nem lesz. A kulcselemek `id` egy nem kötelező `kid` attribútummal rendelkeznek, amely a jogcímegyeztetéshez szolgál.                                                 | Nem       |
-| Kibocsátók             | A jogkivonatot kibocsátó elfogadható rendszertagok listája. Ha több kiállítói érték van jelen, akkor a rendszer minden értéket addig próbál meg, amíg az összes ki nem merül (ebben az esetben az érvényesítés sikertelen), vagy amíg az egyik sikeres nem lesz.                                                                                                                                         | Nem       |
-| openid-config (nyílt-konfiguráció)       | A megfelelő Open ID konfigurációs végpont megadásához használt elem, amelyből aláíró kulcsok és kibocsátó szerezhető be.                                                                                                                                                                                                                        | Nem       |
-| kötelező követelések     | A jogkivonaton várhatóan jelen lévő jogcímek listáját tartalmazza, hogy érvényesnek minősüljön. Ha `match` az attribútum van `all` beállítva, hogy minden jogcímérték a szabályzatban jelen kell lennie a jogkivonatban az érvényesítés sikeres legyen. Ha `match` az attribútum `any` beállítása legalább egy jogcím jelen kell lennie a jogkivonatban az érvényesítés sikeres. | Nem       |
+| ellenőrzés – JWT        | Gyökérelem.                                                                                                                                                                                                                                                                                                                                         | Igen      |
+| közönség           | A jogkivonatban található elfogadható célközönségi jogcímek listáját tartalmazza. Ha több célközönség érték van megadva, akkor minden érték az összes Kimerítés után próbálkozik (ebben az esetben az ellenőrzés meghiúsul), vagy amíg az egyik sikeres. Legalább egy célközönséget meg kell adni.                                                                     | Nem       |
+| kiállító – aláíró kulcsok | Az aláírt tokenek ellenőrzéséhez használt Base64 kódolású biztonsági kulcsok listája. Ha több biztonsági kulcs is van, akkor a rendszer minden kulcsot megpróbál, amíg az összes kimerül (ebben az esetben az ellenőrzés meghiúsul), vagy amíg az egyik sikeres (a jogkivonat-átváltáshoz hasznos). A kulcsfontosságú elemekhez választható `id` attribútum tartozik, amely a `kid` jogcímek közötti egyezésre szolgál.               | Nem       |
+| visszafejtés – kulcsok     | A jogkivonatok visszafejtéséhez használt Base64 kódolású kulcsok listája. Ha több biztonsági kulcs is van, akkor a rendszer minden kulcsot megpróbál, amíg az összes kulcs ki nem merül (ebben az esetben az ellenőrzés meghiúsul), vagy amíg a kulcs nem sikerül. A kulcsfontosságú elemekhez választható `id` attribútum tartozik, amely a `kid` jogcímek közötti egyezésre szolgál.                                                 | Nem       |
+| kibocsátók             | A jogkivonatot kiállító elfogadható rendszerbiztonsági tag listája. Ha több kiállítói érték is létezik, akkor minden egyes értéket megpróbál a rendszer, amíg az összes ki nem fejeződik (ebben az esetben az ellenőrzés meghiúsul), vagy amíg az egyik sikeres.                                                                                                                                         | Nem       |
+| OpenID – konfiguráció       | A megfelelőségi azonosító konfigurációs végpontjának megadásához használt elem, amelyből megszerezhetők az aláíró kulcsok és a kibocsátók.                                                                                                                                                                                                                        | Nem       |
+| kötelező – jogcímek     | Azon jogcímek listáját tartalmazza, amelyeknek a jogkivonatban szerepelniük kell, hogy az érvényes legyen. Ha az `match` attribútum `all` minden jogcím értékre van beállítva, akkor a jogkivonatban jelen kell lennie ahhoz, hogy az érvényesítés sikeres legyen. Ha az `match` attribútum `any` értéke legalább egy jogcím, akkor a jogkivonatban jelen kell lennie ahhoz, hogy az érvényesítés sikeres legyen. | Nem       |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Név                            | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező                                                                         | Alapértelmezett                                                                           |
+| Name (Név)                            | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező                                                                         | Alapértelmezett                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| óra-döntés                      | Időtartomány. Segítségével megadhatja a maximális várható időkülönbség a jogkivonat-kibocsátó és az API Management-példány között.                                                                                                                                                                                                                                                                                                               | Nem                                                                               | 0 másodperc                                                                         |
-| sikertelen-érvényesítés-hibaüzenet | Hibaüzenet et a HTTP-válasz törzsében, ha a JWT nem felel meg az érvényesítésen. Ennek az üzenetnek megfelelően meg kell szabadulnia a speciális karakterektől.                                                                                                                                                                                                                                                                                                 | Nem                                                                               | Az alapértelmezett hibaüzenet az érvényesítési problémától függ, például a "JWT nincs jelen" |
-| failed-validation-httpcode      | HTTP-állapotkód, amelyet vissza kell adni, ha a JWT nem felel meg az érvényesítésen.                                                                                                                                                                                                                                                                                                                                                                                         | Nem                                                                               | 401                                                                               |
-| fejléc neve                     | A jogkivonatot tároló HTTP-fejléc neve.                                                                                                                                                                                                                                                                                                                                                                                                         | Az `header-name`egyiket meg kell adni, `query-parameter-name` vagy `token-value` meg kell adni. | N/A                                                                               |
-| lekérdezés-paraméter-név            | A jogkivonatot tartalmazó lekérdezési paraméter neve.                                                                                                                                                                                                                                                                                                                                                                                                     | Az `header-name`egyiket meg kell adni, `query-parameter-name` vagy `token-value` meg kell adni. | N/A                                                                               |
-| token-érték                     | JWT-tokent tartalmazó karakterláncot visszaadó kifejezés                                                                                                                                                                                                                                                                                                                                                                                                     | Az `header-name`egyiket meg kell adni, `query-parameter-name` vagy `token-value` meg kell adni. | N/A                                                                               |
-| id                              | Az `id` `key` elem attribútuma lehetővé teszi, hogy megadja a `kid` feltételt, amely a jogkivonatban (ha van) egyeztetve lesz, hogy megtudja, a megfelelő kulcsot használja az aláírás érvényesítéséhez.                                                                                                                                                                                                                                           | Nem                                                                               | N/A                                                                               |
-| Mérkőzés                           | Az `match` `claim` elem attribútuma azt határozza meg, hogy a házirend minden jogcímértékének jelen kell-e lennie a jogkivonatban a sikeres érvényesítéshez. Lehetséges értékek:<br /><br /> - `all`- a házirend minden jogcímértékének jelen kell lennie a jogkivonatban az érvényesítés sikeréhez.<br /><br /> - `any`- legalább egy jogcímértéknek jelen kell lennie a jogkivonatban az érvényesítés sikeréhez.                                                       | Nem                                                                               | összes                                                                               |
-| lejárati idő megkövetelése         | Logikai. Itt adható meg, hogy szükség van-e lejárati jogcímre a jogkivonatban.                                                                                                                                                                                                                                                                                                                                                                               | Nem                                                                               | igaz                                                                              |
-| megkövetelési rendszer                  | A tokenséma neve, pl. "bemutatóra szóló". Ha ez az attribútum be van állítva, a házirend biztosítja, hogy a megadott séma szerepeljen az Engedélyezési fejléc értékében.                                                                                                                                                                                                                                                                                    | Nem                                                                               | N/A                                                                               |
-| szükséges-aláírt-tokenek           | Logikai. Itt adható meg, hogy szükség van-e jogkivonat aláírásra.                                                                                                                                                                                                                                                                                                                                                                                           | Nem                                                                               | igaz                                                                              |
-| Elválasztó                       | Sztring. Megadja az elválasztót (pl. ",") egy többértékű jogcím értékkészletének kinyeréséhez.                                                                                                                                                                                                                                                                                                                                          | Nem                                                                               | N/A                                                                               |
-| url                             | Nyissa meg az azonosító konfigurációs végpontURL-címét, ahonnan az Open ID konfigurációs metaadatok beszerezhetők. A válasznak az URL-címen meghatározott specifikációk szerint kell lennie:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Az Azure Active Directory esetén `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` használja a következő URL-címet: a `contoso.onmicrosoft.com`címtárbérlő nevének helyettesítése, pl. . | Igen                                                                              | N/A                                                                               |
-| kimeneti token-változó-név      | Sztring. Annak a környezeti változónak a neve, [`Jwt`](api-management-policy-expressions.md) amely a jogkivonat-értéket típusobjektumként kapja meg a jogkivonat-ellenőrzés során                                                                                                                                                                                                                                                                                     | Nem                                                                               | N/A                                                                               |
+| óra – döntés                      | TimeSpan. Ezzel a beállítással adható meg a jogkivonat-kiállító és a API Management-példány rendszerórája közötti maximális várható időeltérés.                                                                                                                                                                                                                                                                                                               | Nem                                                                               | 0 másodperc                                                                         |
+| sikertelen – ellenőrzés – hiba – üzenet | A HTTP-válasz törzsében visszaadott hibaüzenet, ha a JWT nem ad át érvényesítést. Az üzenetnek megfelelő speciális karakterekkel kell elmenekülnie.                                                                                                                                                                                                                                                                                                 | Nem                                                                               | Az alapértelmezett hibaüzenet az érvényesítési problémától függ, például "a JWT nem jelennek meg". |
+| sikertelen – érvényesítés – httpcode      | HTTP-állapotkód, amely akkor tér vissza, ha a JWT nem felel meg az érvényesítésnek.                                                                                                                                                                                                                                                                                                                                                                                         | Nem                                                                               | 401                                                                               |
+| fejléc neve                     | A jogkivonatot birtokló HTTP-fejléc neve.                                                                                                                                                                                                                                                                                                                                                                                                         | Az `header-name`egyiket `query-parameter-name` , `token-value` vagy meg kell adni. | N/A                                                                               |
+| lekérdezés-paraméter-neve            | A jogkivonatot tároló lekérdezési paraméter neve.                                                                                                                                                                                                                                                                                                                                                                                                     | Az `header-name`egyiket `query-parameter-name` , `token-value` vagy meg kell adni. | N/A                                                                               |
+| jogkivonat-érték                     | JWT tokent tartalmazó sztringet visszaadó kifejezés                                                                                                                                                                                                                                                                                                                                                                                                     | Az `header-name`egyiket `query-parameter-name` , `token-value` vagy meg kell adni. | N/A                                                                               |
+| id                              | Az `id` `key` elem attribútuma lehetővé teszi annak a karakterláncnak a megadását, amely a `kid` jogkivonatban található jogcímek között szerepel (ha van), hogy kiderítse az aláírás-ellenőrzéshez használandó megfelelő kulcsot.                                                                                                                                                                                                                                           | Nem                                                                               | N/A                                                                               |
+| mérkőzés                           | Az `match` `claim` elem attribútuma azt határozza meg, hogy a házirendben szereplő összes jogcím értékének szerepelnie kell-e a jogkivonatban az érvényesítés sikerességéhez. Lehetséges értékek:<br /><br /> - `all`– a szabályzatban szereplő összes jogcím értékének jelen kell lennie a jogkivonatban, hogy az érvényesítés sikeres legyen.<br /><br /> - `any`– legalább egy jogcím értékének szerepelnie kell a jogkivonatban, hogy sikeres legyen az érvényesítés.                                                       | Nem                                                                               | összes                                                                               |
+| lejárati idő megkövetelése         | Logikai. Meghatározza, hogy szükséges-e lejárati jogcím a jogkivonatban.                                                                                                                                                                                                                                                                                                                                                                               | Nem                                                                               | igaz                                                                              |
+| szükséges – séma                  | A jogkivonat-séma neve, például "tulajdonos". Ha ez az attribútum be van állítva, akkor a házirend biztosítja, hogy a megadott séma megtalálható legyen az engedélyezési fejléc értékében.                                                                                                                                                                                                                                                                                    | Nem                                                                               | N/A                                                                               |
+| kötelező aláírású tokenek           | Logikai. Megadja, hogy szükséges-e a jogkivonat aláírása.                                                                                                                                                                                                                                                                                                                                                                                           | Nem                                                                               | igaz                                                                              |
+| elválasztó                       | Sztring. Meghatározza a többértékű jogcímből származó értékek kinyeréséhez használandó elválasztó karaktert (például ",").                                                                                                                                                                                                                                                                                                                                          | Nem                                                                               | N/A                                                                               |
+| url                             | Nyissa meg az azonosító konfigurációs végpontjának URL-címét, amelyből megkérheti a nyitott azonosító konfigurációs metaadatait. A válasznak a következő URL-címen definiált specifikációknak kell`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`megjelennie:. Azure Active Directory használja a következő URL-címet `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : a címtár-bérlő nevének helyettesítése, `contoso.onmicrosoft.com`például. | Igen                                                                              | N/A                                                                               |
+| output-token-változó-neve      | Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét a sikeres [`Jwt`](api-management-policy-expressions.md) jogkivonat-ellenőrzés után egy típusú objektumként fogja fogadni                                                                                                                                                                                                                                                                                     | Nem                                                                               | N/A                                                                               |
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 -   **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="next-steps"></a>További lépések
 
-A házirendekkel kapcsolatos további információkért lásd:
+További információ a házirendek használatáról:
 
--   [Szabályzatok az API Managementben](api-management-howto-policies.md)
+-   [Szabályzatok API Management](api-management-howto-policies.md)
 -   [API-k átalakítása](transform-api.md)
--   [Házirend-útmutató](api-management-policy-reference.md) a házirend-utasítások és beállításaik teljes listájához
--   [Házirendminták](policy-samples.md)
+-   Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
+-   [Házirend-minták](policy-samples.md)

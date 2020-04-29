@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a webtáblából az Azure Data Factory használatával
-description: Megtudhatja, hogy miként helyezhet át adatokat egy weblapon lévő táblából az Azure Data Factory használatával.
+title: Adatok áthelyezése webes táblából Azure Data Factory használatával
+description: További információ az adatok áthelyezéséről egy weblapon lévő táblázatból Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,30 +13,30 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265713"
 ---
-# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése webtábla-forrásból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése webtábla-forrásokból Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-web-table-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-web-table.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a [Webtábla-összekötő a V2](../connector-web-table.md)alkalmazásban című témakört.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, lásd: a [webes tábla összekötője a v2-ben](../connector-web-table.md).
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok áthelyezése egy táblázatból egy weblapon egy támogatott fogadó adattárba. Ez a cikk az [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md) ről szóló cikkre épül, amely általános áttekintést nyújt a másolási tevékenységgel rendelkező adatáthelyezésről és a forrásként/fogadóként támogatott adattárak listájáról.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy weblapon lévő táblából egy támogatott fogadó adattárba való áthelyezéséhez. Ez a cikk az adattovábbítási [tevékenységekről](data-factory-data-movement-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt a másolási tevékenységgel végzett adatáthelyezésről és a forrásként/mosogatóként támogatott adattárakról.
 
-Az adatelények jelenleg csak a webtáblából más adattárolókba való adatáthelyezést támogatják, más adattárakból nem a webtábla célhelyére történő átmozgatását.
+A adatfeldolgozó jelenleg csak a webtáblákból származó adatok áthelyezését támogatja más adattárakba, de más adattárakból nem helyez át adatáthelyezést egy webes táblába.
 
 > [!IMPORTANT]
-> Ez a webösszekötő jelenleg csak a táblázattartalom HTML-lapról történő kibontását támogatja. Http/s-végpontból történő adatok beolvasásához használja inkább a [HTTP-összekötőt.](data-factory-http-connector.md)
+> Ez a webes összekötő jelenleg csak a táblázat tartalmának kinyerését támogatja egy HTML-lapról. HTTP/s-végpont adatainak lekéréséhez használja helyette a [http-összekötőt](data-factory-http-connector.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A webtábla-összekötő használatához be kell állítania egy saját üzemeltetésű integrációs futásidejűt `gatewayName` (más néven Adatkezelési átjárót), és konfigurálnia kell a tulajdonságot a fogadóhoz csatolt szolgáltatásban. Ha például a webtáblából az Azure Blob storage-ba szeretne másolni, konfigurálja az Azure Storage-hoz csatolt szolgáltatást a következőképpen:
+A webes tábla összekötő használatához létre kell hoznia egy helyi Integration Runtime (más néven adatkezelés átjárót), és konfigurálnia kell a `gatewayName` tulajdonságot a fogadó társított szolgáltatásban. Ha például a webtáblából az Azure Blob Storage-ba szeretne másolni, konfigurálja az Azure Storage-beli társított szolgáltatást a következő módon:
 
 ```json
 {
@@ -52,27 +52,27 @@ A webtábla-összekötő használatához be kell állítania egy saját üzemelt
 ```
 
 ## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot egy másolási tevékenységgel, amely különböző eszközök/API-k használatával áthelyezi az adatokat egy helyszíni Cassandra-adattárból. 
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal. 
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Olvassa el [az oktatóanyagot: Folyamat létrehozása a Másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakörben egy gyors útmutatót a folyamat másolása az adatok másolása varázslóval történő létrehozásához. 
-- A következő eszközökkel is létrehozhat egy folyamatot: **Visual Studio,** **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**és REST **API.** Lásd: [Tevékenység-oktatóanyag másolása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című témakörben részletes útmutatást talál egy másolási tevékenységgel rendelkező folyamat létrehozásához. 
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
+- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
-Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépéseket hajthatja végre egy olyan folyamat létrehozásához, amely adatokat helyezi át a forrásadattárból a fogadó adattárába:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. **Összekapcsolt szolgáltatások** létrehozása a bemeneti és kimeneti adattárak és az adat-előállító összekapcsolására.
-2. **Adatkészletek** létrehozása a másolási művelet bemeneti és kimeneti adatainak ábrázolására. 
-3. Hozzon létre egy **folyamatot** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, egy adatkészletet pedig kimenetként vesz fel. 
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. 
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. 
 
-A varázsló használatakor a Data Factory entitásokhoz (csatolt szolgáltatások, adatkészletek és a folyamat) json-definíciók automatikusan létrejönnek. Eszközök/API-k használatakor (a .NET API kivételével) ezeket a Data Factory entitásokat a JSON formátum használatával definiálhatja.  A minta JSON-definíciók data factory entitások, amelyek adatok másolására szolgálnak egy webtábla, lásd: [JSON példa: Adatok másolása webtáblából az Azure Blob](#json-example-copy-data-from-web-table-to-azure-blob) szakasza ebben a cikkben. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  Az adatok webtáblákból való másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a jelen cikk [JSON-példa: adatok másolása webtáblából az Azure blobba](#json-example-copy-data-from-web-table-to-azure-blob) című szakaszát. 
 
-A következő szakaszok a Webtábla data factory entitásai definiálására használt JSON-tulajdonságok részleteit ismertetik:
+A következő szakaszokban részletesen ismertetjük a webtáblára jellemző Data Factory entitások definiálásához használt JSON-tulajdonságokat:
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
-Az alábbi táblázat a webkapcsolattal ellátott szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+A következő táblázat a webes társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A típustulajdonságnak a következőre kell állítania: **Web** |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
 | URL-cím |A webes forrás URL-címe |Igen |
 | authenticationType |Névtelen. |Igen |
 
@@ -94,17 +94,17 @@ Az alábbi táblázat a webkapcsolattal ellátott szolgáltatásra jellemző JSO
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálására szolgáló & tulajdonságok teljes listáját az [Adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben olvashat. A json-i adatkészletek például a struktúra, a rendelkezésre állás és a szabályzat hasonlóak az összes adatkészlettípushoz (Azure SQL, Azure blob, Azure table stb.).
+Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és tájékoztatást nyújt az adatok helyéről az adattárban. A **WebTable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **webtable** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |az adatkészlet típusát. **webtable-re** kell állítani |Igen |
-| path |A táblát tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva elérési út, csak a csatolt szolgáltatásdefinícióban megadott URL-címet használja a program. |
-| Index |Az erőforrás ban lévő tábla indexe. A [HTML-lapok szakaszban lévő táblázat indexének beszerzése](#get-index-of-a-table-in-an-html-page) című témakörben a HTML-lapokban lévő táblázat indexindexének beszerzése című témakört találja. |Igen |
+| type |az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
+| path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
+| index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Igen |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -126,27 +126,27 @@ A **typeProperties** szakasz az adatkészlet egyes típusainál eltérő, és t�
 ```
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A tevékenységek definiálására rendelkezésre álló szakaszok & tulajdonságok teljes listáját a [Folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben olvashat. Tulajdonságok, például név, leírás, bemeneti és kimeneti táblák és házirend állnak rendelkezésre minden típusú tevékenységek.
+A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
 
-Mivel a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusoktól függően változnak. Másolási tevékenység esetén a források és a fogadók típusától függően változnak.
+Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-Jelenleg, ha a másolási tevékenység forrása **WebSource**típusú, a további tulajdonságok nem támogatottak.
+Jelenleg, ha a másolási tevékenység forrása **webforrásként**van megadva, a további tulajdonságok nem támogatottak.
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON-példa: Adatok másolása webtáblából az Azure Blobba
-A következő minta a következőket mutatja:
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON-példa: adatok másolása webes táblából az Azure Blobba
+A következő minta a következőket mutatja be:
 
-1. [Web](#linked-service-properties)típusú csatolt szolgáltatás.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú kapcsolt szolgáltatás.
-3. [WebTable](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet.](data-factory-create-datasets.md)
-5. [WebForrást](#copy-activity-properties) és [BlobSinket](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat.](data-factory-create-pipelines.md)
+1. Egy [webes](#linked-service-properties)típusú társított szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+3. [Webtábla](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+5. [Webforrást](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta óránként adatokat másol egy webtáblából egy Azure-blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszok ismertetik.
+A minta óránként másolja át az adatait egy webtáblából egy Azure-blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Az alábbi minta bemutatja, hogyan másolhat adatokat egy webtáblából egy Azure blobba. Azonban az adatok közvetlenül másolhatók az [Adatmozgatási tevékenységek](data-factory-data-movement-activities.md) cikkben az Azure Data Factory másolási tevékenység használatával szereplő egyik fogadóba.
+Az alábbi példa bemutatja, hogyan másolhat adatok egy webtáblából egy Azure-blobba. Az adattovábbítási [tevékenységekről szóló cikkben megadott](data-factory-data-movement-activities.md) mosogatók adatai azonban közvetlenül átmásolhatók a Azure Data Factory másolási tevékenységének használatával.
 
-**Webkapcsolattal összekapcsolt szolgáltatás** Ez a példa a webkapcsolattal rendelkező szolgáltatást használja névtelen hitelesítéssel. A [webcsatolt szolgáltatás](#linked-service-properties) szakaszban a különböző típusú hitelesítéseket használhatja.
+**Webes társított szolgáltatás** Ez a példa a webes társított szolgáltatást használja névtelen hitelesítéssel. A használható hitelesítés különböző típusairól a [webes társított szolgáltatás](#linked-service-properties) című szakaszban olvashat.
 
 ```json
 {
@@ -163,7 +163,7 @@ Az alábbi minta bemutatja, hogyan másolhat adatokat egy webtáblából egy Azu
 }
 ```
 
-**Azure Storage-hoz csatolt szolgáltatás**
+**Azure Storage társított szolgáltatás**
 
 ```json
 {
@@ -178,10 +178,10 @@ Az alábbi minta bemutatja, hogyan másolhat adatokat egy webtáblából egy Azu
 }
 ```
 
-**WebTable bemeneti adatkészlet** A **külső** **true** beállítás tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet az adat-előállítón kívül található, és nem az adat-előállító tevékenység által előállított.
+**Webtábla bemeneti adatkészlete** A **külső** beállítása **igaz** érték esetén a Data Factory szolgáltatás, amely az adatkészletet az adat-előállítón kívülre helyezi, és nem az adat-előállító tevékenysége állítja elő.
 
 > [!NOTE]
-> A [HTML-lapok szakaszban lévő táblázat indexének beszerzése](#get-index-of-a-table-in-an-html-page) című témakörben a HTML-lapokban lévő táblázat indexindexének beszerzése című témakört találja.  
+> A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) .  
 >
 >
 
@@ -207,7 +207,7 @@ Az alábbi minta bemutatja, hogyan másolhat adatokat egy webtáblából egy Azu
 
 **Azure blobkimeneti adatkészlet**
 
-Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül beírásra.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1).
 
 ```json
 {
@@ -231,11 +231,11 @@ Az adatok óránként egy új blobba (gyakoriság: óra, időköz: 1) kerül be�
 
 
 
-**Folyamat másolási tevékenységgel**
+**Másolási tevékenységgel rendelkező folyamat**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránként i. A folyamat JSON-definíciójában a **forrástípus** **WebSource-ra** van állítva, **a fogadó** típusa pedig **BlobSink**.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa a **BlobSink**értékre van állítva **, és a** **fogadó típusa a** következő:.
 
-A WebSource által támogatott tulajdonságok listájának WebSource-típustulajdonságai.
+A Webforrások által támogatott tulajdonságok listájáért lásd: Webforrások típusának tulajdonságai.
 
 ```json
 {  
@@ -283,33 +283,33 @@ A WebSource által támogatott tulajdonságok listájának WebSource-típustulaj
 }
 ```
 
-## <a name="get-index-of-a-table-in-an-html-page"></a>Táblázat indexének beszereznie HTML-lapon
-1. Indítsa el **az Excel 2016-ot,** és váltson az **Adatok** lapra.  
-2. Kattintson az eszköztár **Új lekérdezés gombjára,** mutasson **a Más forrásokból pontra,** és kattintson a **Webről**parancsra.
+## <a name="get-index-of-a-table-in-an-html-page"></a>Táblázat indexének beolvasása egy HTML-oldalon
+1. Indítsa el az **Excel 2016 alkalmazást** , és váltson át az **adatlapra.**  
+2. Kattintson a **New Query (új lekérdezés** ) elemre az eszköztáron, mutasson a **más forrásokból** lehetőségre, és kattintson **a from web**
 
-    ![A Power Query menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. A **Forrásból** párbeszédpanelen adja meg a JSON csatolt szolgáltatásban https://en.wikipedia.org/wiki/) használt **URL-címet** (például az adatkészlethez megadott elérési úttal együtt (például: AFI%27s_100_Years... 100_Movies), majd kattintson **az OK gombra.**
+    ![Power Query menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON- https://en.wikipedia.org/wiki/) ban kíván használni (például: az adatkészlethez megadott elérési úttal együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
 
-    ![Webről párbeszédpanel](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
+    ![Webes párbeszédpanelen](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    A példában használt URL-cím:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Ha megjelenik **az Access webes tartalom** párbeszédpanele, válassza ki a megfelelő **URL-címet**, **hitelesítést,** majd kattintson a **Csatlakozás gombra.**
+    Az ebben a példában használt URL-cím:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Ha a **webes tartalom elérése** párbeszédpanel jelenik meg, válassza ki a **megfelelő URL-címet**, a **hitelesítést**, majd kattintson a **Kapcsolódás**elemre.
 
-   ![Az Access webes tartalom párbeszédpanelje](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. Kattintson egy **táblázatelemre** a fa nézetben a táblázat tartalmának **megtekintéséhez,** majd kattintson az alsó Szerkesztés gombra.  
+   ![Hozzáférés a webes tartalomhoz párbeszédpanel](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
+5. Kattintson a fanézetben **a táblázat elemre** a tartalom megjelenítéséhez, majd kattintson a lap alján található **Szerkesztés** gombra.  
 
    ![Kezelő párbeszédpanel](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. A **Lekérdezésszerkesztő** ablakban kattintson az eszköztár **Speciális szerkesztő** gombjára.
+6. A **Lekérdezés-szerkesztő** ablakban kattintson **speciális szerkesztő** gombra az eszköztáron.
 
     ![Speciális szerkesztő gomb](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
-7. A Speciális szerkesztő párbeszédpanelen a "Forrás" melletti szám az index.
+7. A Speciális szerkesztő párbeszédpanelen a "forrás" mező melletti szám az index.
 
-    ![Speciális szerkesztő - Index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
+    ![Speciális szerkesztő – index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
-Excel 2013 használata esetén az index lekérdezéséhez használja [az Excelhez készült Microsoft Power Queryt.](https://www.microsoft.com/download/details.aspx?id=39379) A részleteket a [Csatlakozás weblaphoz](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) című cikkben találja. A lépések hasonlóak az [asztali Microsoft Power BI](https://powerbi.microsoft.com/desktop/)használata esetén is.
+Ha az Excel 2013-et használja, az index beszerzéséhez használja a [Excelhez készült Microsoft Power Query](https://www.microsoft.com/download/details.aspx?id=39379) . További részletekért lásd [a kapcsolódás weblaphoz](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) című cikket. A lépések hasonlóak, ha a [Microsoft Power bi for Desktopot](https://powerbi.microsoft.com/desktop/)használja.
 
 > [!NOTE]
-> Ha oszlopokat szeretne leképezni a forrásadatkészletről a fogadó adatkészletoszlopaira, olvassa el [az Adatkészletoszlopok leképezése az Azure Data Factoryban című témakört.](data-factory-map-columns.md)
+> Ha az oszlopokat a forrás adatkészletből a fogadó adatkészletből származó oszlopokra kívánja leképezni, tekintse meg [Azure Data Factory az adatkészlet oszlopainak](data-factory-map-columns.md)
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
-A [Tevékenység teljesítményének másolása & hangolási útmutatóban](data-factory-copy-activity-performance.md) megismerést talál az adatok (másolási tevékenység) azure Data Factory ban az adatmozgatás (másolási tevékenység) teljesítményét befolyásoló legfontosabb tényezőkről, valamint az optimalizálás különböző módjairól.
+A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

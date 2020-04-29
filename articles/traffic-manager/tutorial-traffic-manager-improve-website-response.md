@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – A webhelyre adott válasz javítása az Azure Traffic Manager rel
-description: Ez az oktatóanyag-cikk ismerteti, hogyan hozhat létre egy Traffic Manager-profilt egy rendkívül reszponzív webhely létrehozásához.
+title: Oktatóanyag – a webhely válaszának fejlesztése az Azure Traffic Manager
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Traffic Manager-profilt egy rendkívül rugalmas webhely létrehozásához.
 services: traffic-manager
 author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
 ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77136388"
 ---
-# <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: A webhelyválasz javítása a Traffic Manager használatával
+# <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: a webhely válaszának javítása Traffic Manager használatával
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre a Traffic Manager egy rendkívül reszponzív webhelyet azáltal, hogy a felhasználói forgalmat a legalacsonyabb késleltetéssel rendelkező webhelyre irányítja. Általában a legalacsonyabb késésű adatközpont az, amely a legközelebb van a földrajzi távolsághoz.
+Ez az oktatóanyag azt ismerteti, hogyan használható a Traffic Manager egy gyorsan reagáló webhely létrehozásához azáltal, hogy a legalacsonyabb késéssel irányítja át a felhasználói forgalmat a webhelyre. Általában a legalacsonyabb késésű adatközpont a földrajzi távolsághoz legközelebbi.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -28,22 +28,22 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Két, egy alapszintű webhelyet futtató virtuális gép létrehozása az IIS-en
 > * Két virtuális tesztgép létrehozása a Traffic Manager működés közbeni megtekintéséhez
 > * Az IIS-t futtató virtuális gépek DNS-nevének konfigurálása
-> * Traffic Manager-profil létrehozása a webhely teljesítményének javítása érdekében
+> * Traffic Manager-profil létrehozása a webhely továbbfejlesztett teljesítményéhez
 > * Virtuálisgép-végpontok hozzáadása a Traffic Manager-profilhoz
 > * A Traffic Manager megtekintése működés közben
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha működés közben szeretné megtekinteni a Traffic Managert, az oktatóanyaghoz a következőket kell üzembe helyeznie:
 
-- A különböző Azure-régiókban – **USA keleti régióban** és **Nyugat-Európában**– futó alapvető webhelyek két példánya.
-- Két teszt virtuális gépek teszteléséhez a Traffic Manager - egy virtuális gép **az USA keleti részén,** és a második virtuális gép **Nyugat-Európában.** A teszt virtuális gépek segítségével szemlélteti, hogy a Traffic Manager hogyan irányítja a felhasználói forgalmat a webhelyre, amely ugyanabban a régióban fut, mivel a legalacsonyabb késést biztosítja.
+- Különböző Azure-régiókban futó alapszintű webhelyek két példánya – **USA keleti** régiója és **Nyugat-Európa**.
+- Két tesztelési virtuális gép a Traffic Manager-One VM teszteléséhez az **USA keleti** régiójában és a második virtuális gépen **Nyugat-Európában**. A tesztelési virtuális gépek azt szemléltetik, hogy a Traffic Manager hogyan irányítja át a felhasználói forgalmat az ugyanabban a régióban futó webhelyre, ahol a legalacsonyabb késést biztosítja.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ### <a name="create-websites"></a>Webhelyek létrehozása
 
@@ -54,37 +54,37 @@ Ebben a szakaszban két webhelypéldányt hoz létre, amelyek a két szolgáltat
 
 #### <a name="create-vms-for-running-websites"></a>Virtuális gépek létrehozása webhelyek futtatásához
 
-Ebben a szakaszban két virtuális gépet hoz létre *myIISVMEastUS* és *myIISVMWestEurope* az **USA keleti** és **nyugat-európai** Azure-régióban.
+Ebben a szakaszban két virtuális gépet hoz létre *myIISVMEastUS* és *MyIISVMWestEurope* az **USA keleti** régiójában és a **Nyugat-európai** Azure-régióban.
 
-1. Az Azure Portal felső, bal sarkában válassza az Erőforrás > létrehozása**Windows** > **Server 2019 Datacenter** **lehetőséget.**
-2. A **Virtuális gép létrehozása**csoportban írja be vagy válassza ki a következő értékeket az **Alapok** lapon:
+1. A Azure Portal bal felső sarkában válassza az **erőforrás** > létrehozása**számítás** > **Windows Server 2019 Datacenter**elemet.
+2. A **virtuális gép létrehozása**területen írja be vagy válassza ki a következő értékeket az **alapok** lapon:
 
-   - **Előfizetési** > **erőforráscsoport**: Válassza **az Új létrehozása lehetőséget,** majd írja be a **myResourceGroupTM1 parancsot.**
-   - **Példány részletei** > **Virtuális gép neve**: Írja be a *myIISVMEastUS*nevet.
-   - **Példány részleteirégió** > **Region**: Válassza az USA **keleti régiója**lehetőséget.
-   - **Rendszergazdai fiók** > **felhasználóneve**: Adja meg az Ön által választott felhasználónevet.
-   - **Rendszergazdai fiók** > **jelszava:** Adja meg az Ön által választott jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Bejövő portszabályok** > **Nyilvános bejövő portok**: Válassza a Kijelölt **portok engedélyezése**lehetőséget.
-   - **Bejövő portszabályok:** > **Bejövő portok kiválasztása:** Válassza az **RDP** és **a HTTP elemet** a legördülő mezőben.
+   - **Előfizetés** > -**erőforráscsoport**: válassza az **új létrehozása** elemet, majd írja be a **myResourceGroupTM1**.
+   - **Példány részletei** > **virtuális gép neve**: Type *myIISVMEastUS*.
+   - **Példány részletei** > terület: válassza az **USA keleti****régióját**.
+   - **Rendszergazdai fiók** > **felhasználóneve**: adja meg a választott felhasználónevet.
+   - **Rendszergazdai fiók** > **jelszava**: adja meg a választott jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Bejövő portok szabályai** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
+   - **Bejövő portszabályok** > a**bejövő portok kiválasztása**: válassza az **RDP** és a **http** elemet a legördülő listából.
 
-3. Válassza a **Kezelés** lapot, vagy válassza a **Tovább: Lemezek**, majd **a Tovább: Hálózat**, majd a **Tovább: Kezelés**lehetőséget. A **Figyelés**csoportban állítsa a **Rendszerindításdiadia -t** **Ki**beállításra.
+3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
-5. Tekintse át a beállításokat, majd kattintson a **Létrehozás gombra.**  
-6. A következő lépéseket követve hozzon létre egy második virtuális gép nevű *myIISVMWestEurope*, egy **erőforrás csoport** neve *myResourceGroupTM2*, a **helyét** *Nyugat-Európa*, és az összes többi beállítás ugyanaz, mint *myIISVMEastUS*.
+5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
+6. A következő lépésekkel hozhat létre egy *myIISVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myIISVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
 
    ![Virtuális gép létrehozása](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Az IIS telepítése és az alapértelmezett webhely testreszabása
 
-Ebben a szakaszban telepíti az IIS-kiszolgálót a két virtuális gépre, a *myIISVMEastUS* és a *myIISVMWestEurope rendszerre,* majd frissíti az alapértelmezett webhelyoldalt. Az egyéni webhelylap azon virtuális gép nevét jeleníti meg, amelyhez Ön csatlakozik a webhely böngészőbeli megnyitásakor.
+Ebben a szakaszban telepítenie kell az IIS-kiszolgálót a két virtuális gépre *myIISVMEastUS* és *myIISVMWestEurope*, majd frissítenie kell az alapértelmezett webhely lapot. Az egyéni webhelylap azon virtuális gép nevét jeleníti meg, amelyhez Ön csatlakozik a webhely böngészőbeli megnyitásakor.
 
 1. Válassza a **Minden erőforrás** elemet a bal oldali menüben, majd az erőforrások listájában a *myResourceGroupTM1* erőforráscsoportban található *myIISVMEastUS* elemet.
 2. Az **Áttekintés** lapon kattintson a **Csatlakozás** lehetőségre, majd a **Csatlakozás virtuális géphez** területen válassza az **RDP-fájl letöltése** elemet.
 3. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
-4. Válassza **az OK gombot.**
+4. Kattintson az **OK** gombra.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
-6. A kiszolgáló asztalán keresse meg a **Windows felügyeleti eszközök**>**kiszolgálókezelőjét.**
+6. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök**>**Kiszolgálókezelő**elemre.
 7. Indítsa el a Windows PowerShellt a VM1 gépen, majd telepítse az IIS-kiszolgálót, és frissítse az alapértelmezett htm-fájlt az alábbi parancsokkal.
 
     ```powershell-interactive
@@ -100,51 +100,51 @@ Ebben a szakaszban telepíti az IIS-kiszolgálót a két virtuális gépre, a *m
 
      ![Az IIS telepítése és a webhely testreszabása](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 8. Szüntesse meg az RDP-kapcsolatot a *myIISVMEastUS* virtuális géppel.
-9. Ismételje meg *az* 1-8. *myIISVMWestEurope*
+9. Ismételje meg a 1-8-as lépést a következővel: RDP-kapcsolat létrehozásával a *myResourceGroupTM2* erőforráscsoport virtuálisgép- *myIISVMWestEurope* az IIS telepítéséhez és az alapértelmezett weblap testreszabásához.
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Az IIS-t futtató virtuális gépek DNS-neveinek konfigurálása
 
-A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a felhasználói forgalmat. Ebben a szakaszban konfigurálja az IIS-kiszolgálók DNS-neveit - *myIISVMEastUS* és *myIISVMWestEurope*.
+A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a felhasználói forgalmat. Ebben a szakaszban az IIS-kiszolgálók – *myIISVMEastUS* és *myIISVMWestEurope*DNS-neveit konfigurálja.
 
 1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd válassza a *myResourceGroupTM1* erőforráscsoportban található *myIISVMEastUS* elemet az erőforrások listájában.
 2. Az **Áttekintés** lap **DNS-név** területén válassza a **Konfigurálás** lehetőséget.
 3. A **Konfiguráció** lap DNS-név címkéje alatt adjon hozzá egy egyedi nevet, majd válassza a **Mentés** lehetőséget.
-4. Ismételje meg *az* 1-3. *myIISVMWestEurope*
+4. Ismételje meg a 1-3-es lépést a *myIISVMWestEurope* nevű virtuális gép esetében, amely a *myResourceGroupTM2* -erőforráscsoporthoz található.
 
 ### <a name="create-test-vms"></a>Virtuális tesztgépek létrehozása
 
-Ebben a szakaszban virtuális gép *(myVMEastUS* és *myVMWestEurope)* létrehozása minden Azure-régióban **(USA keleti régiója** és **Nyugat-Európa ).** Ezekkel a virtuális gépekkel tesztelheti, hogy a webhely megnyitásakor a Traffic Manager hogyan irányítja át a forgalmat a legközelebbi IIS-kiszolgálónak.
+Ebben a szakaszban létrehoz egy virtuális gépet (*myVMEastUS* és *myVMWestEurope*) minden egyes Azure-régióban (az**USA keleti** régiójában és **Nyugat-Európában**). Ezekkel a virtuális gépekkel tesztelheti, hogy a webhely megnyitásakor a Traffic Manager hogyan irányítja át a forgalmat a legközelebbi IIS-kiszolgálónak.
 
-1. Az Azure Portal felső, bal sarkában válassza az Erőforrás > létrehozása**Windows** > **Server 2019 Datacenter** **lehetőséget.**
-2. A **Virtuális gép létrehozása**csoportban írja be vagy válassza ki a következő értékeket az **Alapok** lapon:
+1. A Azure Portal bal felső sarkában válassza az **erőforrás** > létrehozása**számítás** > **Windows Server 2019 Datacenter**elemet.
+2. A **virtuális gép létrehozása**területen írja be vagy válassza ki a következő értékeket az **alapok** lapon:
 
-   - **Előfizetési** > **erőforráscsoport**: Válassza a **myResourceGroupTM1 lehetőséget.**
-   - **Példány részletei** > **Virtuális gép neve**: Írja be a *myVMEastUS*nevet.
-   - **Példány részleteirégió** > **Region**: Válassza az USA **keleti régiója**lehetőséget.
-   - **Rendszergazdai fiók** > **felhasználóneve**: Adja meg az Ön által választott felhasználónevet.
-   - **Rendszergazdai fiók** > **jelszava:** Adja meg az Ön által választott jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Bejövő portszabályok** > **Nyilvános bejövő portok**: Válassza a Kijelölt **portok engedélyezése**lehetőséget.
-   - **Bejövő portszabályok** > **Bejövő portok kiválasztása:** Válassza az **RDP** elemet a legördülő mezőben.
+   - **Előfizetési** > **erőforráscsoport**: válassza a **myResourceGroupTM1**lehetőséget.
+   - **Példány részletei** > **virtuális gép neve**: Type *myVMEastUS*.
+   - **Példány részletei** > terület: válassza az **USA keleti****régióját**.
+   - **Rendszergazdai fiók** > **felhasználóneve**: adja meg a választott felhasználónevet.
+   - **Rendszergazdai fiók** > **jelszava**: adja meg a választott jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Bejövő portok szabályai** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
+   - **Bejövő portszabályok** > a**bejövő portok kiválasztása**: válassza az **RDP** elemet a legördülő listából.
 
-3. Válassza a **Kezelés** lapot, vagy válassza a **Tovább: Lemezek**, majd **a Tovább: Hálózat**, majd a **Tovább: Kezelés**lehetőséget. A **Figyelés**csoportban állítsa a **Rendszerindításdiadia -t** **Ki**beállításra.
+3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
-5. Tekintse át a beállításokat, majd kattintson a **Létrehozás gombra.**  
-6. A lépéseket követve hozzon létre egy második virtuális gép nevű *myVMWestEurope*, egy **erőforrás csoport** neve *myResourceGroupTM2*, **a helyét** *Nyugat-Európa*, és az összes többi beállítás ugyanaz, mint *myVMEastUS*.
+5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
+6. A következő lépésekkel hozhat létre egy *myVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Hozzon létre egy Traffic Manager-profilt, amely úgy irányítja a felhasználói forgalmat, hogy a legalacsonyabb késéssel lévő végpontra küldi őket.
+Hozzon létre egy Traffic Manager-profilt, amely a legalacsonyabb késleltetésű végpontra küldi a felhasználói forgalmat.
 
-1. A képernyő bal felső részén válassza az **Erőforrás** > létrehozása Hálózati**forgalomkezelő létrehozása** > csoport létrehozása : Create (Erőforrás**létrehozása: Forgalomkezelő** > **létrehozása) lehetőséget.**
+1. A képernyő bal felső részén válassza az **erőforrás** > **létrehozása hálózatkezelés** > **Traffic Manager profil** > **létrehozása**lehetőséget.
 2. A **Traffic Manager-profil létrehozása** területen adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Név                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
-    | Útválasztási metódus          | Válassza ki a **Teljesítmény** útválasztási módszert.                                       |
+    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
+    | Útválasztási metódus          | Válassza ki a **teljesítmény** -útválasztási módszert.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
-    | Erőforráscsoport          | Válassza ki a *myResourceGroupTM1*erőforráscsoportot. |
+    | Erőforráscsoport          | Válassza ki az erőforráscsoport *myResourceGroupTM1*. |
     | Hely                | Válassza az **USA keleti régiója** lehetőséget. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
     |
 
@@ -152,33 +152,33 @@ Hozzon létre egy Traffic Manager-profilt, amely úgy irányítja a felhasznál�
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
-Adja hozzá az IIS-kiszolgálókat futtató két virtuális gépet - *a myIISVMEastUS* & *myIISVMWestEurope-ot,* hogy a felhasználói forgalmat a legközelebbi végponthoz irányítsa a felhasználóhoz.
+Adja hozzá az IIS-kiszolgálók- *myIISVMEastUS* & *myIISVMWestEurope* futtató két virtuális gépet a felhasználói forgalom a legközelebbi végpontra történő átirányításához a felhasználó felé.
 
 1. A portál keresősávjában keressen rá az előző szakaszban létrehozott Traffic Manager-profil nevére, majd válassza ki a profilt a megjelenített eredmények között.
 2. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok**, majd a **Hozzáadás** elemre.
-3. Írja be vagy jelölje ki a következő adatokat, fogadja el a fennmaradó beállítások alapértelmezett beállításait, majd kattintson az **OK gombra:**
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Azure-végpont                                   |
-    | Név           | myEastUSEndpoint                                        |
+    | Name (Név)           | myEastUSEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |        |           |
 
-4. Ismételje meg a *2.* *myWestEuropeEndpoint* *myIISVMWestEurope-ip*
+4. A 2. és a 3. lépést megismételve adjon hozzá egy *myWestEuropeEndpoint* nevű másik végpontot a nyilvános IP *-myIISVMWestEurope-IP-* címhez, amely a *myIISVMWestEurope*nevű IIS-kiszolgáló virtuális géphez van társítva.
 5. Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
     ![Traffic Manager-végpont hozzáadása](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager-profil tesztelése
 
-Ebben a szakaszban tesztelheti, hogy a Traffic Manager hogyan irányítja a felhasználói forgalmat a legközelebbi virtuális gépekhez a webhelyet futtató, minimális késés biztosítása érdekében. A Traffic Manager működés közbeni megtekintéséhez végezze el a következő lépéseket:
+Ebben a szakaszban azt teszteli, hogy a Traffic Manager hogyan irányítja át a felhasználói forgalmat a webhelyet futtató legközelebbi virtuális gépekre a minimális késés biztosításához. A Traffic Manager működés közbeni megtekintéséhez végezze el a következő lépéseket:
 
 1. Határozza meg a Traffic Manager-profilja DNS-nevét.
 2. A Traffic Manager megtekintése működés közben:
-    - Az **USA keleti régiójában,** webböngészőben található tesztvirtuális gépből *(myVMEastUS)* keresse meg a Traffic Manager-profil DNS-nevét.
-    - A **nyugat-európai** régióban, webböngészőben található teszt virtuális gép *(myVMWestEurope)* böngészőből keresse meg a Traffic Manager-profil DNS-nevét.
+    - Az **USA keleti** régiójában található teszt virtuális gépről (*myVMEastUS*) nyissa meg a webböngészőben a Traffic Manager profiljának DNS-nevét.
+    - A **Nyugat-európai** régióban található test VM (*myVMWestEurope*) webböngészőben keresse meg a Traffic Manager profiljának DNS-nevét.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>A Traffic Manager-profil DNS-nevének meghatározása
 
@@ -199,13 +199,13 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 1. Válassza a **Minden erőforrás** elemet a bal oldali menüben, majd az erőforrások listájában a *myResourceGroupTM1* erőforráscsoportban található *myVMEastUS* elemet.
 2. Az **Áttekintés** lapon kattintson a **Csatlakozás** lehetőségre, majd a **Csatlakozás virtuális géphez** területen válassza az **RDP-fájl letöltése** elemet.
 3. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
-4. Válassza **az OK gombot.**
+4. Kattintson az **OK** gombra.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
-1. A *myVMEastUS* virtuális gépen egy webböngészőben adja meg a Traffic Manager-profil DNS-nevét a webhely megtekintéséhez. Mivel az USA **keleti részén**található virtuális gép az USA keleti részén található legközelebbi IIS-kiszolgálón *található,* az **USA keleti részén**található legközelebbi webhelyre kerül.
+1. A *myVMEastUS* virtuális gépen egy webböngészőben adja meg a Traffic Manager-profil DNS-nevét a webhely megtekintéséhez. Mivel az **USA keleti**régiójában található virtuális gép a legközelebbi, az **USA keleti**régiójában lévő IIS-kiszolgáló *myIISVMEastUS* található webhelyre irányítja.
 
    ![Traffic Manager-profil tesztelése](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. Ezután csatlakozzon a **Nyugat-Európában** található VM *myVMWestEurope-hoz* az 1-5 lépésekkel, és keresse meg a Traffic Manager profil tartománynevét ebből a virtuális gépből. Mivel a VM **található Nyugat-Európában**, akkor most irányítják a honlapon üzemeltetett legközelebbi IIS szerver *myIISVMWestEurope* található **Nyugat-Európában**.
+2. Ezután kapcsolódjon a **Nyugat-Európában** található *myVMWestEurope* a 1-5-es lépések végrehajtásával, és keresse meg a Traffic Manager profil TARTOMÁNYNEVÉt erről a virtuális gépről. Mivel a **Nyugat-Európában**található virtuális gép a legközelebb a **Nyugat-Európában**található IIS-kiszolgáló *myIISVMWestEurope* elérhető webhelyre irányítja.
 
    ![Traffic Manager-profil tesztelése](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

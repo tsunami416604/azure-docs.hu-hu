@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267988"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
@@ -47,12 +47,12 @@ A StorSimple felhőalapú készülék két modellben érhető el: a hagyományos
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 mag, 7 GB memória)| Standard_DS3 (4 mag, 14 GB memória)|
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |Az Azure Premium Storage-t használja a helyi lemezekhez<sup>2</sup> <br></br> |
+| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |Azure Premium Storaget használ a helyi lemezekhez<sup>2</sup> <br></br> |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek <br></br>Kis késés és nagyobb teljesítményű számítási feladatok<br></br>Másodlagos vészhelyreállítási eszköz |
 
-<sup>1</sup> *Korábbi nevén a 1100*.
+<sup>1</sup> *korábbi nevén 1100*.
 
-<sup>2</sup> *A 8010-es és a 8020-as csomag az Azure Standard Storage szolgáltatást használja a felhőréteghez. A különbség csak az eszközön belüli helyi rétegben létezik.*
+<sup>2</sup> *mind a 8010, mind a 8020 az Azure standard Storage-t használja a felhő szintjéhez. A különbség csak a helyi szinten található az eszközön belül*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>A felhőalapú készülék és a fizikai eszköz közötti különbségek
 
@@ -64,10 +64,10 @@ Az alábbi táblázat a StorSimple felhőalapú készülék és a StorSimple fiz
 
 |  | Fizikai eszköz | Felhőalapú készülék |
 | --- | --- | --- |
-| **Helyen** |Az adatközpontban található. |Az Azure-ban fut. |
+| **Hely** |Az adatközpontban található. |Az Azure-ban fut. |
 | **Hálózati illesztők** |Hat hálózati adapterrel rendelkezik: DATA 0-tól DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: DATA 0. |
 | **Regisztráció** |A rendszer a kezdeti konfigurációs lépés során regisztrálja. |A regisztráció egy külön feladat. |
-| **Szolgáltatásadat-titkosítási kulcsa** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a felhőalapú készüléket. |A felhőalapú készülékről nem tud újra létrejönni. |
+| **Szolgáltatás adattitkosítási kulcsa** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a felhőalapú készüléket. |A felhőalapú készülékről nem tud újra létrejönni. |
 | **Támogatott kötettípusok** |A helyileg rögzített és a rétegzett köteteket is támogatja. |Csak a rétegzett köteteket támogatja. |
 
 ## <a name="prerequisites-for-the-cloud-appliance"></a>A felhőalapú készülék előfeltételei
@@ -96,7 +96,7 @@ A felhőalapú készülék kiépítése előtt a következő előkészületekre 
 Hajtsa végre a következő frissítéseket a StorSimple-eszközkezelő szolgáltatáson a felhőalapú készülék létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-8000-manage-acrs.md) azokhoz a gépekhez, amelyek a felhőalapú készülék gazdakiszolgálói lesznek.
-* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók létrehozásáról.](../storage/common/storage-create-storage-account.md)
+* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [standard szintű Storage-fiókok](../storage/common/storage-create-storage-account.md)létrehozásáról.
 * A felhőalapú készülék létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:

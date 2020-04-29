@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70072156"
 ---
 # <a name="edit-an-api"></a>API szerkesztése
@@ -64,5 +64,5 @@ A háttérrendszer API-ját frissítheti az Azure Portalról. Ehhez tegye a köv
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [APIM-házirendminták](policy-samples.md)
-> [A közzétett API átalakítása és védelme](transform-api.md)
+> [A APIM Policy Samples](policy-samples.md)
+> [a közzétett API-k átalakítása és biztosítása](transform-api.md)

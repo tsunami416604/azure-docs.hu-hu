@@ -1,7 +1,7 @@
 ---
-title: 'ONNX: magas perf, platformfüggetlen következtetések'
+title: 'ONNX: nagy teljesítményű, platformfüggetlen következtetés'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan az Open Neural Network Exchange (ONNX) segítségével optimalizálja a következtetés a gépi tanulási modell.
+description: Ismerje meg, hogyan használható a nyílt neurális hálózati Exchange (ONNX) a gépi tanulási modell következtetésének optimalizálásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,85 +12,85 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270172"
 ---
-# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: Ml-modellek létrehozása és felgyorsítása
+# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
-Ismerje meg, hogyan az [Open Neural Network Exchange](https://onnx.ai) (ONNX) segítségével optimalizálja a következtetés a gépi tanulási modell. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modell előrejelzési, leggyakrabban az éles adatok. 
+Ismerje meg, hogyan használható a [nyílt neurális hálózati Exchange](https://onnx.ai) (ONNX) a gépi tanulási modell következtetésének optimalizálásához. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. 
 
-A gépi tanulási modellek izálása a következtetés (vagy modellpontozás) érdekében nehéz, mivel a modell és a következtetési könyvtár finomhangolásával a legtöbbet kell kihoznia a hardverképességekből. A probléma rendkívül nehéz, ha azt szeretné, hogy optimális teljesítményt különböző platformokon (felhő / él, CPU / GPU, stb), mivel mindegyik különböző képességekkel és jellemzőkkel rendelkezik. A komplexitás növekszik, ha a modellek a különböző keretek, amelyek futtatásához kell futtatni a különböző platformokon. Nagyon időigényes a keretrendszerek és a hardverek különböző kombinációinak optimalizálása. A megoldás a vonat egyszer a kívánt keretrendszer, és fuss bárhol a felhőben vagy szélén van szükség. Itt jön a mi a be a mibe az ONNX.
+A gépi tanulási modellek a következtetésekhez való optimalizálása (vagy a modell pontozása) nehéz, mivel a modell és a következtetési könyvtár összehangolása szükséges a legtöbb hardveres funkció kihasználásához. A probléma rendkívül nehéz lesz, ha a különböző típusú platformokon (felhő/Edge, CPU/GPU stb.) optimális teljesítményt szeretne kapni, mivel mindegyik különböző képességekkel és jellemzőkkel rendelkezik. A bonyolultság akkor növekszik, ha számos különböző keretrendszerből származó modellekkel rendelkezik, amelyek számos különböző platformon futnak. Nagyon sok időt kell igénybe venni a keretrendszerek és a hardverek különböző kombinációinak optimalizálására. Egy olyan megoldás, amelyet egyszer kell betanítani az előnyben részesített keretrendszerben, és a felhőben vagy az Edge-ben bárhol futnia kell. Itt jön a ONNX.
 
-A Microsoft és a partnerek közössége létrehozta az ONNX-et nyílt szabványként a gépi tanulási modellek képviseletére. Számos [keretrendszer modelljei,](https://onnx.ai/supported-tools) például a TensorFlow, a PyTorch, a SciKit-Learn, a Keras, a Chainer, az MXNet és a MATLAB exportálhatók vagy konvertálhatók szabványos ONNX formátumra. Miután a modellek ONNX formátumban vannak, különböző platformokon és eszközökön futtathatók.
+A Microsoft és a partnerek egyik közössége nyílt szabványként hozta létre a gépi tanulási modelleket képviselő ONNX. A [számos keretrendszerből](https://onnx.ai/supported-tools) származó modellek, például a TensorFlow, a PyTorch, a SciKit, a kerasz, a chainer, a MXNet és a MATLAB, a szabványos ONNX formátumba exportálhatók vagy konvertálhatók. Ha a modellek ONNX formátumúak, különböző platformokon és eszközökön is futtathatók.
 
-[Az ONNX Runtime](https://github.com/Microsoft/onnxruntime) egy nagy teljesítményű következtetési motor az ONNX modellek éles környezetben történő üzembe helyezéséhez. Felhőre és élre is optimalizálva van, és Linuxon, Windowson és Macen is működik. C++-ban írott, c, Python és C# API-kis. Az ONNX Runtime támogatja az ÖSSZES ONNX-ML specifikációt, és integrálja a gyorsítókat különböző hardvereken, például a TensorRT-en az NVidia GPU-kon.
+A [ONNX Runtime](https://github.com/Microsoft/onnxruntime) egy nagy teljesítményű, a ONNX-modellek éles környezetben történő üzembe helyezéséhez használható. A felhő és a peremhálózat számára egyaránt optimalizált, és Linux, Windows és Mac rendszereken is működik. A C++ nyelvben írt C, Python és C# API-kkal is rendelkezik. Az ONNX Runtime támogatást nyújt az összes ONNX-ML specifikációhoz, és a különböző hardverek, például az NVidia GPU-k TensorRT is integrálható a gyorssegédekkel.
 
-Az ONNX-futásidejű nagy méretű Microsoft-szolgáltatásokban, például a Bingben, az Office-ban és a Cognitive Servicesben használatos. A teljesítménynövekedés számos tényezőtől függ, de ezek a Microsoft-szolgáltatások __átlagosan 2-szeres teljesítménynövekedést értek el a CPU-n.__ Az ONNX Futásidő a Windows ML részeként is használható több száz millió eszközön. Használhatja a futásidejű Azure Machine Learning. Az ONNX runtime használatával élvezheti a széles körű gyártási szintű optimalizálást, tesztelést és folyamatos fejlesztéseket.
+A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és a Cognitive Servicesban használatos. A teljesítménybeli nyereség számos tényezőtől függ, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__-ban. A ONNX Runtime a Windows ML részeként is használatos több száz millió eszközön. A futtatókörnyezetet Azure Machine Learning használatával használhatja. A ONNX Runtime használatával kihasználhatja a nagy teljesítményű optimalizálási, tesztelési és folyamatos fejlesztéseket.
 
-[![ONNX-folyamatábra az edzést, a konvertereket és a telepítést ábrázoló](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
+[![ONNX-folyamatábra, amely bemutatja a képzést, a konvertereket és az üzembe helyezést](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
 
-## <a name="get-onnx-models"></a>ONNX modellek beolvasása
+## <a name="get-onnx-models"></a>ONNX-modellek beolvasása
 
-Az ONNX modelleket többféleképpen szerezheti be:
-+ Új ONNX-modell betanítása az Azure Machine Learningben (lásd a cikk alján található példákat)
-+ Konvertálja a meglévő modellt egy másik formátumból ONNX formátumra (lásd az [oktatóanyagokat)](https://github.com/onnx/tutorials) 
-+ Előre betanított ONNX-modell beolvasása az [ONNX modellállatkertből](https://github.com/onnx/models) (lásd a cikk alján található példákat)
-+ Személyre szabott ONNX-modell létrehozása az [Azure Custom Vision szolgáltatásból](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
+A ONNX-modelleket többféleképpen is beszerezheti:
++ Új ONNX-modell betanítása Azure Machine Learningban (lásd a cikk alján található példákat)
++ Meglévő modell átalakítása más formátumból ONNX (lásd az [oktatóanyagokat](https://github.com/onnx/tutorials)) 
++ Egy előre betanított ONNX-modell beszerzése a [ONNX Model Zoo](https://github.com/onnx/models) -ból (lásd a cikk alján található példákat)
++ Testreszabott ONNX-modell létrehozása az [Azure Custom Vision szolgáltatásból](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
-Számos modell, beleértve a képbesorolást, az objektumészlelést és a szövegfeldolgozást, ONNX modellként is ábrázolható. Előfordulhat azonban, hogy egyes modellek konvertálása nem lehetséges. Ha befut ebben a helyzetben, kérjük, fájl egy probléma a GitHub a megfelelő konverter, amit használt. A meglévő formátummodell tanévenként a probléma elnem hárította.
+Számos modell, beleértve a képbesorolást, az objektumok észlelését és a ONNX modellként is megjeleníthető. Előfordulhat azonban, hogy egyes modellek nem alakíthatók át sikeresen. Ha ebben a helyzetben fut, a megfelelő konverter GitHubján egy problémát kell megadnia. A probléma megoldása előtt továbbra is használhatja a meglévő Format modellt.
 
-## <a name="deploy-onnx-models-in-azure"></a>ONNX-modellek telepítése az Azure-ban
+## <a name="deploy-onnx-models-in-azure"></a>ONNX-modellek üzembe helyezése az Azure-ban
 
-Az Azure Machine Learning segítségével telepítheti, kezelheti és figyelheti AZ ONNX-modelleket. A szabványos [üzembe helyezési munkafolyamat](concept-model-management-and-deployment.md) és az ONNX-futásidő használatával létrehozhat egy, a felhőben üzemeltetett REST-végpontot. Lásd a cikk végén található Jupyter-jegyzetfüzetek példáját, hogy saját maga próbálja ki. 
+A Azure Machine Learning segítségével üzembe helyezheti, kezelheti és figyelheti a ONNX-modelljeit. A normál [üzembe helyezési munkafolyamat](concept-model-management-and-deployment.md) és a ONNX futtatókörnyezet használatával létrehozhat egy felhőben üzemeltetett Rest-végpontot. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
 
-### <a name="install-and-use-onnx-runtime-with-python"></a>Az ONNX Runtime telepítése és használata pythonnal
+### <a name="install-and-use-onnx-runtime-with-python"></a>A ONNX Runtime telepítése és használata a Python használatával
 
-Python csomagok ONNX Runtime állnak rendelkezésre [PyPi.org](https://pypi.org) [(CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)). Kérjük, a telepítés előtt olvassa el [a rendszerkövetelményeket.](https://github.com/Microsoft/onnxruntime#system-requirements) 
+A ONNX Runtime Python-csomagjai a [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)) szolgáltatásban érhetők el. A telepítés előtt olvassa el a [rendszerkövetelményeket](https://github.com/Microsoft/onnxruntime#system-requirements) . 
 
- A Python ONNX-futási ideje telepítéséhez használja az alábbi parancsok egyikét: 
+ A Pythonhoz készült ONNX Runtime telepítéséhez használja az alábbi parancsok egyikét: 
 ```python   
 pip install onnxruntime       # CPU build
 pip install onnxruntime-gpu   # GPU build
 ```
 
-Az ONNX Runtime hívásához használja a következőt:    
+A ONNX Runtime a Python-szkriptben való meghívásához használja a következőt:    
 ```python
 import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-A modellhez mellékelt dokumentáció általában a modell használatának bemeneteit és kimeneteit ismerteti. A modell megtekintéséhez használhat vizualizációs eszközt is, például [Netront.](https://github.com/lutzroeder/Netron) Az ONNX Futásidejű lehetővé teszi a modell metaadatainak, bemeneteinek és kimeneteinek lekérdezését is:    
+A modellt kísérő dokumentáció általában megadja a modell használatának bemeneteit és kimeneteit. A modell megjelenítéséhez olyan vizualizációs eszközt is használhat, mint például a [Netron](https://github.com/lutzroeder/Netron) . A ONNX Runtime lehetővé teszi a modell metaadatainak, bemenetének és kimenetének lekérdezését is:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-A modell következtetéséhez használja `run` és adja át a visszaadandó kimenetek listáját (hagyja üresen, ha az összeset szeretné), valamint a bemeneti értékek térképét. Az eredmény a kimenetek listája.  
+A modell kiszámításához használja `run` a és a pass értéket a visszaadni kívánt kimenetek listájában (hagyja üresen, ha az összeset meg szeretné jeleníteni) és a bemeneti értékek egy térképét. Az eredmény a kimenetek listája.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-A teljes Python API-referencia, tekintse meg az [ONNX runtime referencia docs](https://aka.ms/onnxruntime-python).    
+A Python API teljes leírását a [ONNX futásidejű](https://aka.ms/onnxruntime-python)dokumentációjában találhatja meg.    
 
 ## <a name="examples"></a>Példák
 
-Tekintse meg [a how-to-use-azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) például az ONNX-modelleket létrehozó és üzembe helyező jegyzetfüzeteket.
+Lásd: [útmutató – azureml/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) , például Onnx-modelleket létrehozó és telepítő jegyzetfüzetek.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>További információ
 
-További információ az ONNX-ről vagy a projekthez való hozzájárulásról:
-+ [Az ONNX projekt honlapja](https://onnx.ai)
+További információ a ONNX vagy a projekthez való hozzájárulásról:
++ [ONNX projekt webhelye](https://onnx.ai)
 + [ONNX-kód a GitHubon](https://github.com/onnx/onnx)
 
-További információ az ONNX futásidejéről vagy a projekthez való hozzájárulásról:
-+ [ONNX futásidejű GitHub-tárcsa](https://github.com/Microsoft/onnxruntime)
+További információ a ONNX Futtatókörnyezetről vagy a projekthez való hozzájárulásról:
++ [ONNX futásidejű GitHub-tárház](https://github.com/Microsoft/onnxruntime)
 
 
