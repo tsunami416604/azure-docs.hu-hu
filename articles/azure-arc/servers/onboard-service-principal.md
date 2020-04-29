@@ -1,6 +1,6 @@
 ---
-title: Hibrid gépek csatlakoztatása az Azure-hoz nagy méretekben
-description: Ebben a cikkben megtudhatja, hogyan csatlakoztathat gépeket az Azure-hoz az Azure-beli kiszolgálók (előzetes verzió) használatával egyszerű szolgáltatás használatával.
+title: Hibrid gépek összekötése az Azure-on nagy méretekben
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc for Servers (előzetes verzió) használatával az egyszerű szolgáltatásnév használatával.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,35 +9,35 @@ ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77192271"
 ---
-# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek csatlakoztatása az Azure-hoz nagy méretekben
+# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben
 
-A környezetében lévő több Windows- vagy Linux-géphez is engedélyezheti az Azure Arc kiszolgálókhoz (előzetes verzió) a követelményektől függően számos rugalmas beállítással. Az általunk biztosított sablonparancsfájl használatával automatizálhatja a telepítés minden lépését, beleértve az Azure Archoz való csatlakozás létrehozását is. Azonban szükség van, hogy interaktívan hajtsa végre ezt a parancsfájlt egy fiókkal, amely emelt szintű engedélyekkel rendelkezik a célgépen és az Azure-ban. A gépek csatlakoztatásához az Azure Arc a kiszolgálók, használhatja az Azure Active Directory [szolgáltatás névjegyzékhasználata](../../active-directory/develop/app-objects-and-service-principals.md) helyett a kiemelt identitás [interaktívan csatlakoztassa a gépet.](onboard-portal.md) Az egyszerű szolgáltatás egy speciális korlátozott felügyeleti identitás, amely csak a minimális `azcmagent` engedélyt kap a gépek csatlakoztatásához szükséges az Azure-hoz a parancs használatával. Ez biztonságosabb, mint egy magasabb jogosultságú fiók, például egy bérlői rendszergazda használata, és követi a hozzáférés-vezérlés biztonsági gyakorlati tanácsok. A szolgáltatásnév csak a bevezetés során használatos, más célra nem használható.  
+Az Azure arc for Servers (előzetes verzió) szolgáltatást engedélyezheti több Windows-vagy Linux-gépen a környezetben, és a követelményektől függően számos rugalmas lehetőség közül választhat. Az általunk biztosított sablon-parancsfájl segítségével automatizálhatja a telepítés minden lépését, beleértve az Azure arc-hoz való kapcsolódás létrehozását is. Azonban a parancsfájlt interaktív módon kell végrehajtani egy olyan fiókkal, amely emelt szintű engedélyekkel rendelkezik a célszámítógépen és az Azure-ban. Ahhoz, hogy a gépeket az Azure arc kiszolgálókhoz lehessen kapcsolni a kiszolgálókon, használhat egy Azure Active Directory [szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md) ahelyett, hogy a Kiemelt identitást használja a [számítógép interaktív összekapcsolásához](onboard-portal.md). Az egyszerű szolgáltatásnév egy speciális, korlátozott felügyeleti identitás, amely csak a gépek az Azure-hoz való összekapcsolásához szükséges minimális `azcmagent` engedélyeket kapja meg a parancs használatával. Ez biztonságosabb, mint egy magasabb jogosultsági szintű fiók használata, mint például egy Bérlői rendszergazda, és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárásokat követi. Az egyszerű szolgáltatás csak a bevezetéskor használatos, ezért semmilyen más célra nem használható.  
 
-A csatlakoztatott számítógép ügynökének telepítéséhez és konfigurálásához szükséges telepítési módszerekhez a használt automatikus módszernek rendszergazdai engedélyekkel kell rendelkeznie a gépekhez. Linuxon, a gyökérfiók és a Windows használatával, a Helyi rendszergazdák csoport tagjaként.
+A csatlakoztatott számítógép-ügynök telepítéséhez és konfigurálásához szükséges telepítési módszerek megkövetelik, hogy a használt automatizált módszer rendszergazdai engedélyekkel rendelkezik a gépeken. Linux rendszeren a rendszergazdai fiók és a Windows rendszeren a helyi Rendszergazdák csoport tagjaként.
 
-Mielőtt elkezdenéd, tekintse át az [előfeltételeket,](overview.md#prerequisites) és ellenőrizze, hogy az előfizetés és az erőforrások megfelelnek-e a követelményeknek.
+Mielőtt elkezdené, tekintse át az [előfeltételeket](overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-A folyamat végén sikeresen csatlakoztatta a hibrid gépeket az Azure Arc kiszolgálókhoz.
+A folyamat végén sikeresen csatlakoztatta a hibrid gépeket az Azure arc for Servers rendszerhez.
 
-## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Egyszerű szolgáltatás létrehozása nagy méretekben való bevezetéshez
+## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Egyszerű szolgáltatás létrehozása a méretezéshez
 
-Az [Azure PowerShell](/powershell/azure/install-az-ps) használatával hozzon létre egy egyszerű szolgáltatás a [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) parancsmaggal. Vagy kövesse az egyszerű [szolgáltatás létrehozása az Azure Portal használatával a](../../active-directory/develop/howto-create-service-principal-portal.md) feladat végrehajtásához című csoportban felsorolt lépéseket.
+A [Azure PowerShell](/powershell/azure/install-az-ps) használatával létrehozhat egy egyszerű szolgáltatást a [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) parancsmaggal. Vagy követheti az egyszerű szolgáltatásnév létrehozása című témakörben felsorolt lépéseket a feladat végrehajtásához [a Azure Portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md) .
 
 > [!NOTE]
-> Amikor létrehoz egy egyszerű szolgáltatás, a fiók tulajdonosának vagy felhasználói hozzáférés-rendszergazdának kell lennie a bevezetéshez használni kívánt előfizetésben. Ha nem rendelkezik a szerepkör-hozzárendelések létrehozásához szükséges engedélyekkel, előfordulhat, hogy létrejön az egyszerű szolgáltatás, de nem tud gépeket bevonni.
+> Egyszerű szolgáltatásnév létrehozásakor a fióknak a bevezetéshez használni kívánt előfizetés tulajdonosi vagy felhasználói hozzáférési rendszergazdája kell lennie. Ha nem rendelkezik megfelelő engedélyekkel a szerepkör-hozzárendelések létrehozásához, előfordulhat, hogy az egyszerű szolgáltatásnév létrejött, de nem fogja tudni bevezetni a gépeket.
 >
 
-A szolgáltatásnév a PowerShell használatával, hajtsa végre a következőket.
+Az egyszerű szolgáltatásnév a PowerShell használatával történő létrehozásához hajtsa végre a következő műveleteket.
 
-1. Futtassa a következő parancsot. A [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) parancsmag kimenetét változóban kell tárolnia, különben egy későbbi lépésben nem fogja tudni beolvasni a szükséges jelszót.
+1. Futtassa a következő parancsot. A [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) parancsmag kimenetét egy változóban kell tárolnia, vagy egy későbbi lépésben nem fogja tudni lekérni a szükséges jelszót.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -54,43 +54,43 @@ A szolgáltatásnév a PowerShell használatával, hajtsa végre a következőke
     Type                  :
     ```
 
-2. A `$sp` változóban tárolt jelszó beolvasásához futtassa a következő parancsot:
+2. A `$sp` változóban tárolt jelszó lekéréséhez futtassa a következő parancsot:
 
     ```azurepowershell-interactive
     $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
     $credential.GetNetworkCredential().password
     ```
 
-3. A kimenetben keresse meg a jelszó értékét a mező **jelszó** alatt, és másolja azt. Is keresse meg az értéket a területen **ApplicationId** és másolja is. Tartogasd őket későbbre egy biztonságos helyre. Ha elfelejti vagy elveszíti a szolgáltatás egyszerű jelszavát, alaphelyzetbe állíthatja azt a [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) parancsmag használatával.
+3. A kimenetben keresse meg a jelszó értéket a mező **jelszava** alatt, és másolja. Keresse meg a **ApplicationId** mező alatti értéket is, és másolja azt is. Mentse őket később egy biztonságos helyen. Ha elfelejti vagy elveszíti a szolgáltatás egyszerű jelszavát, a [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) parancsmag használatával visszaállíthatja.
 
-A következő tulajdonságok értékeit a következő paraméterekkel `azcmagent`használjuk:
+A következő tulajdonságok értékeit használja a rendszer a paraméternek átadott `azcmagent`paraméterekkel:
 
-* Az **ApplicationId** tulajdonság értéke a `--service-principal-id` paraméterértékhez használatos.
-* A **jelszó** tulajdonság értéke az `--service-principal-secret` ügynök csatlakoztatásához használt paraméterhez használatos.
+* A **ApplicationId** tulajdonság értékét a rendszer a `--service-principal-id` paraméter értékéhez használja.
+* A **Password (jelszó** ) tulajdonság értéke az ügynök összekapcsolásához használt `--service-principal-secret` paraméterhez használatos.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a szolgáltatásnév **ApplicationId** tulajdonság, nem az **id** tulajdonság.
+> Ügyeljen arra, hogy az egyszerű szolgáltatásnév **ApplicationId** tulajdonságát használja, ne az **ID** tulajdonságot.
 >
 
-Az **Azure Connected Machine bevezetési** szerepkör csak a gép fedélzeti ellátásához szükséges engedélyeket tartalmazza. Az egyszerű szolgáltatásengedély hez hozzárendelheti, hogy hatóköre erőforráscsoportot vagy előfizetést tartalmazzon. Szerepkör-hozzárendelés hozzáadásához olvassa el a [Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure Portal használatával,](../../role-based-access-control/role-assignments-portal.md) illetve [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure CLI használatával című témakört.](../../role-based-access-control/role-assignments-cli.md)
+Az **Azure Connected Machine** bevezetési szerepkör csak a gép bevezetéséhez szükséges engedélyeket tartalmazza. Hozzárendelheti az egyszerű szolgáltatás engedélyét, hogy a hatóköre tartalmazzon egy erőforráscsoportot vagy egy előfizetést. A szerepkör-hozzárendelés hozzáadásával kapcsolatban lásd: [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal](../../role-based-access-control/role-assignments-portal.md) , illetve [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md).
 
-## <a name="install-the-agent-and-connect-to-azure"></a>Telepítse az ügynököt, és csatlakozzon az Azure-hoz
+## <a name="install-the-agent-and-connect-to-azure"></a>Az ügynök telepítése és az Azure-hoz való kapcsolódás
 
-A következő lépések telepítése és konfigurálása a csatlakoztatott gép ügynök a hibrid gépeken a parancsfájlsablon használatával, amely végrehajtja a hasonló lépéseket a [Connect hibrid gépek az Azure-hoz az Azure Portalon](onboard-portal.md) cikket. A különbség az utolsó lépés, ahol létrehozza a `azcmagent` kapcsolatot az Azure Arc a parancs használatával a szolgáltatás névszerint. 
+A következő lépésekkel telepítheti és konfigurálhatja a csatlakoztatott gépi ügynököt a hibrid gépeken a parancsfájl-sablon használatával, amely a [hibrid gépek csatlakoztatása az Azure-hoz](onboard-portal.md) című témakörben leírt hasonló lépéseket hajt végre a Azure Portal cikkben. A különbség az utolsó lépés, amelyben az Azure arc kapcsolatát az `azcmagent` paranccsal az egyszerű szolgáltatásnév használatával hozza létre. 
 
-Az alábbiakban azalábbi beállításokat kell beállítania a `azcmagent` parancs a szolgáltatásnévhez való használatra.
+Az alábbi beállításokkal konfigurálhatja az `azcmagent` egyszerű szolgáltatáshoz használt parancsot.
 
 * `tenant-id`: Az egyedi azonosító (GUID), amely az Azure AD dedikált példányát jelöli.
-* `subscription-id`: Az Azure-előfizetés előfizetésazonosítója (GUID), amelyben a gépeket szeretné.
-* `resource-group`: Az erőforráscsoport neve, amelyhez a csatlakoztatott gépeket szeretné tartozni.
-* `location`: Lásd a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet ugyanaz vagy eltérő, mint az erőforráscsoport helye.
-* `resource-name`: (*Nem kötelező*) a helyszíni gép Azure-erőforrás-ábrázolásához használható. Ha nem adja meg ezt az értéket, a gép állomásnevét használja a gép.
+* `subscription-id`: Annak az Azure-előfizetésnek az előfizetés-azonosítója (GUID), amelyhez a gépeket szeretné használni.
+* `resource-group`: Az erőforráscsoport neve, ahová a csatlakoztatott gépek tartoznak.
+* `location`: Tekintse meg a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
+* `resource-name`: (Nem*kötelező*) a helyszíni gép Azure-beli erőforrás-ábrázolásához használatos. Ha nem megadja ezt az értéket, a rendszer a gép állomásnevét használja.
 
-A parancssori `azcmagent` eszközről az [Azcmagent referencia](azcmagent-reference.md)című elem áttekintésével tudhat meg többet.
+A `azcmagent` parancssori eszközzel kapcsolatos további információkért tekintse meg a [Azcmagent-hivatkozás](azcmagent-reference.md)áttekintését.
 
 ### <a name="windows-installation-script"></a>Windows telepítési parancsfájl
 
-Az alábbiakban egy példa a Csatlakoztatott gép ügynök windows telepítési parancsfájl, amely úgy módosult, hogy a szolgáltatás egyszerű, hogy támogassa a teljesen automatizált, nem interaktív telepítés az ügynök.
+A következőkben egy példa látható a Windows telepítési parancsfájlhoz készült csatlakoztatott Machine Agent ügynökre, amelyet úgy módosítottak, hogy az a szolgáltatásnév használatával támogassa az ügynök teljes mértékben automatizált, nem interaktív telepítését.
 
 ```
  # Download the package
@@ -110,9 +110,9 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
-### <a name="linux-installation-script"></a>Linux telepítő parancsfájl
+### <a name="linux-installation-script"></a>Linuxos telepítési parancsfájl
 
-Az alábbiakban egy példa a Csatlakoztatott gép ügynök Linux telepítési parancsfájl, amely úgy módosult, hogy a szolgáltatás névszerint támogatja az ügynök teljesen automatizált, nem interaktív telepítését.
+A következőkben egy példa látható a Linux telepítési parancsfájlhoz készült csatlakoztatott Machine Agent ügynökre, amelyet az egyszerű szolgáltatásnév használata az ügynök teljes mértékben automatizált, nem interaktív telepítésének támogatásához módosított.
 
 ```
 # Download the installation package
@@ -131,12 +131,12 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Miután telepítette az ügynököt, és konfigurálja, hogy csatlakozzon az Azure Arc kiszolgálókhoz (előzetes verzió), nyissa meg az Azure Portalon, hogy ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Tekintse meg gépeit az [Azure Portalon.](https://aka.ms/hybridmachineportal)
+Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. Megtekintheti a gépeket a [Azure Portalban](https://aka.ms/hybridmachineportal).
 
-![Sikeres kiszolgálói kapcsolat](./media/onboard-portal/arc-for-servers-successful-onboard.png)
+![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan kezelheti a gépet az [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendégkonfigurációja,](../../governance/policy/concepts/guest-configuration.md)ellenőrizze, hogy a gép a várt Log Analytics-munkaterületnek jelent-e, lehetővé teszi a figyelést az [Azure Monitor virtuális gépekkel](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és még sok más használatával.
+- Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 
-- További információ a [Log Analytics-ügynökről.](../../azure-monitor/platform/log-analytics-agent.md) A Windows és Linux log analytics-ügynöke akkor szükséges, ha proaktív módon szeretné figyelni a számítógépen futó operációs rendszert és számítási feladatokat, kezelni szeretné az Automation runbookok vagy megoldások, például az Update Management használatával, vagy más Azure-szolgáltatásokat, például az [Azure Security Centert.](../../security-center/security-center-intro.md)
+- További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-intro.md).

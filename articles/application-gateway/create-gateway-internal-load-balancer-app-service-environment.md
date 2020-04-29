@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásátjáró – ILB ASE – alkalmazásátjáró hibáinak elhárítása | Microsoft dokumentumok
-description: Megtudhatja, hogyan háríthatja el az alkalmazásátjárót belső terheléselosztó használatával az Azure-beli App Service-környezettel
+title: Azure-beli Application Gateway-ILB Microsoft Docs
+description: Megtudhatja, hogyan végezhet hibakeresést egy Application Gateway használatával egy belső Load Balancer az Azure-ban App Service Environment
 services: vpn-gateway
 documentationCenter: na
 author: genlin
@@ -15,60 +15,60 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668564"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttérkiszolgálói tanúsítvány nem szerepel az alkalmazásátjáró engedélyezési listáján, amely egy alkalmazásszolgáltatás-környezettel rendelkező belső terheléselosztót használ
+# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttér-kiszolgálói tanúsítvány nem engedélyezett olyan Application Gateway számára, amely egy belső Load Balancert használ App Service Environment
 
-Ez a cikk a következő problémát hárítja el: A tanúsítvány nem szerepel a listán, amikor belső terheléselosztó (ILB) használatával hoz létre egy alkalmazásátjárót egy app service-környezettel (ASE) együtt az Azure-beli végpontok közötti TLS használatával.
+Ez a cikk a következő problémát ismerteti: A tanúsítvány nem engedélyezett, ha egy belső Load Balancer (ILB) és egy App Service Environment (bevezető) használatával hoz létre egy Application Gateway-t, ha az Azure-ban végpontok közötti TLS-t használ.
 
 ## <a name="symptoms"></a>Probléma
 
-Ha egy alkalmazásátjáró t a háttérrendszer egy ASE-vel egy ASE használatával hoz létre, a háttérkiszolgáló nem megfelelő állapotúvá válhat. Ez a probléma akkor fordul elő, ha az alkalmazásátjáró hitelesítési tanúsítványa nem egyezik meg a háttérkiszolgálón konfigurált tanúsítvánnyal. Példaként a következő forgatókönyv:
+Amikor egy ILB használatával hoz létre egy Application Gateway-t, a háttérrendszer a háttér-kiszolgálóval is megsérült. Ez a probléma akkor fordul elő, ha az Application Gateway hitelesítési tanúsítványa nem egyezik meg a háttér-kiszolgálón konfigurált tanúsítvánnyal. Példaként tekintse meg a következő forgatókönyvet:
 
-**Alkalmazásátjáró konfigurációja:**
+**Application Gateway konfiguráció:**
 
-- **Hallgató:** Többoldalas
-- **Kikötő:** 443
+- **Figyelő:** Több hely
+- **Port:** 443
 - **Állomásnév:** test.appgwtestase.com
-- **SSL-tanúsítvány:** CN=test.appgwtestase.com
-- **Háttérkészlet:** IP-cím vagy teljes tartományna
+- **SSL-tanúsítvány:** CN = test. appgwtestase. com
+- **Háttér-készlet:** IP-cím vagy teljes tartománynév
 - **IP-cím:**: 10.1.5.11
-- **HTTP-beállítások:** HTTPS
-- **Kikötő:** 443
-- **Egyéni mintavétel:** Hostname – test.appgwtestase.com
-- **Hitelesítési tanúsítvány:** test.appgwtestase.com .cer
-- **Háttérállapot:** Nem kifogástalan – a háttérkiszolgáló tanúsítványa nem szerepel az Application Gateway listáival.
+- **Http-beállítások:** HTTPS
+- **Port:**: 443
+- **Egyéni mintavétel:** Állomásnév – test.appgwtestase.com
+- **Hitelesítési tanúsítvány:** . cer – test.appgwtestase.com
+- **Háttér állapota:** Nem megfelelő – a háttér-kiszolgáló tanúsítványa nincs engedélyezve a Application Gateway.
 
-**ASE konfiguráció:**
+**Bemutató konfiguráció:**
 
-- **ILB IP cím:** 10.1.5.11
-- **Domain név:** appgwtestase.com
-- **Alkalmazásszolgáltatás:** test.appgwtestase.com
-- **SSL kötés:** SNI SSL – CN=test.appgwtestase.com
+- **ILB IP-cím:** 10.1.5.11
+- **Tartománynév:** appgwtestase.com
+- **App Service:** test.appgwtestase.com
+- **SSL-kötés:** SNI SSL – CN = test. appgwtestase. com
 
-Az alkalmazásátjáró elérésekor a következő hibaüzenet jelenik meg, mert a háttérkiszolgáló nem kifogástalan:
+Az Application Gateway eléréséhez a következő hibaüzenet jelenik meg, mert a háttér-kiszolgáló állapota nem kifogástalan:
 
-**502 – A webkiszolgáló érvénytelen választ kapott, miközben átjáróként vagy proxykiszolgálóként működt.**
+**502 – a webkiszolgáló érvénytelen választ kapott az átjáróként vagy proxykiszolgálóként való működés közben.**
 
 ## <a name="solution"></a>Megoldás
 
-Ha nem használ állomásnevet egy HTTPS-webhely eléréséhez, a háttérkiszolgáló visszaadja a konfigurált tanúsítványt az alapértelmezett webhelyen, ha az SNI le van tiltva. Az ILB ASE esetében az alapértelmezett tanúsítvány az ILB-tanúsítványból származik. Ha az ILB-hez nincsenek konfigurált tanúsítványok, a tanúsítvány az ASE alkalmazástanúsítványból származik.
+Ha nem használ állomásnévt egy HTTPS-webhely eléréséhez, a háttér-kiszolgáló az alapértelmezett webhelyen visszaadja a konfigurált tanúsítványt, abban az esetben, ha a SNI le van tiltva. Egy ILB-benyújtó esetében az alapértelmezett tanúsítvány az ILB-tanúsítványból származik. Ha nincsenek konfigurált tanúsítványok a ILB, a tanúsítvány a benyújtó alkalmazás-tanúsítványból származik.
 
-Ha teljesen minősített tartománynevet (FQDN) használ az ILB eléréséhez, a háttérkiszolgáló a HTTP-beállításokban feltöltött megfelelő tanúsítványt adja vissza. Ellenkező esetben vegye figyelembe a következő lehetőségeket:
+Ha teljes tartománynevet (FQDN) használ a ILB eléréséhez, a háttér-kiszolgáló a HTTP-beállításokban feltöltött megfelelő tanúsítványt fogja visszaadni. Ha ez nem igaz, vegye figyelembe a következő lehetőségeket:
 
-- Az alkalmazásátjáró háttérkészletében használja az FQDN-t az ILB IP-címére való rámutatáshoz. Ez a beállítás csak akkor működik, ha saját DNS-zónával vagy egyéni DNS-sel van konfigurálva. Ellenkező esetben létre kell hoznia egy "A" rekordot egy nyilvános DNS-hez.
+- Használja a teljes tartománynevet az Application Gateway háttér-készletében, hogy a ILB IP-címére mutasson. Ez a beállítás csak akkor működik, ha rendelkezik saját DNS-zónával vagy egyéni DNS-kiszolgálóval. Ellenkező esetben létre kell hoznia egy "A" rekordot a nyilvános DNS-hez.
 
-- Használja a feltöltött tanúsítványt az ILB-n vagy az alapértelmezett tanúsítványon (ILB-tanúsítvány) a HTTP-beállításokban. Az alkalmazásátjáró lekéri a tanúsítványt, amikor hozzáfér az ILB IP-a mintavétel.
+- Használja a feltöltött tanúsítványt a ILB vagy az alapértelmezett tanúsítványon (ILB-tanúsítványon) a HTTP-beállítások között. Az Application Gateway lekéri a tanúsítványt, amikor hozzáfér a ILB IP-címéhez a mintavételhez.
 
-- Használjon helyettesítő tanúsítványt az ILB-n és a háttérkiszolgálón, hogy az összes webhely esetében a tanúsítvány közös. Ez a megoldás azonban csak aldomainek esetén lehetséges, és nem akkor, ha mindegyik webhely különböző állomásneveket igényel.
+- Használjon helyettesítő tanúsítványt a ILB és a háttér-kiszolgálón, hogy az összes webhelyhez a tanúsítvány gyakori legyen. Ez a megoldás azonban csak altartományok esetén lehetséges, és nem, ha az egyes webhelyekhez eltérő állomásnevek szükségesek.
 
-- Törölje a törlést az **alkalmazásátjáró alkalmazásszolgáltatáshoz** beállításának jelölőnégyzetből arra az esetre, ha az ILB IP-címét használná.
+- Ha a ILB IP-címét használja, törölje az **app Service-hez való használat** beállítását az Application Gateway esetében.
 
-A terhelés csökkentése érdekében feltöltheti az ILB-tanúsítványt a HTTP-beállításokban, hogy a mintavételi útvonal működjön. (Ez a lépés csak az engedélyezési listára. Nem lesz használva a TLS kommunikációhoz.) Az ILB-tanúsítványt úgy töltheti le, hogy az ILB-t az IP-címével együtt https-alapú böngészőből éri el, majd a TLS/SSL tanúsítványt Base-64 kódolású CER formátumban exportálja, és feltölti a tanúsítványt a megfelelő HTTP-beállításokra.
+A terhelés csökkentése érdekében feltöltheti a ILB-tanúsítványt a HTTP-beállításokba a mintavételi útvonal működésének érdekében. (Ez a lépés csak a Whitelisting számára érhető el. A TLS-kommunikációhoz nem használható.) A ILB-tanúsítvány lekéréséhez nyissa meg az IP-címét a ILB a HTTPS-en keresztül, majd exportálja a TLS/SSL-tanúsítványt egy Base-64 kódolású CER formátumba, és töltse fel a tanúsítványt a megfelelő HTTP-beállításokra.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

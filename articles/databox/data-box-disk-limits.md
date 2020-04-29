@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Disk korlátok | Microsoft dokumentumok
-description: A cikk a Microsoft Azure Data Box Disk rendszerkorlátait és ajánlott méreteit ismerteti.
+title: Azure Data Box Disk korlátok | Microsoft Docs
+description: A rendszerkorlátokat és a Microsoft Azure Data Box Disk ajánlott méreteit ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260162"
 ---
-# <a name="azure-data-box-disk-limits"></a>Az Azure Data Box lemezkorlátai
+# <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
 
-Vegye figyelembe ezeket a korlátokat a Microsoft Azure Data Box Disk megoldás üzembe helyezéseés működtetése során.
+Vegye figyelembe ezeket a korlátokat a Microsoft Azure Data Box Disk megoldás üzembe helyezése és üzemeltetése során.
 
-## <a name="data-box-service-limits"></a>Data Box szolgáltatás korlátai
+## <a name="data-box-service-limits"></a>Data Box szolgáltatási korlátok
 
- - A Data Box szolgáltatás a régió [elérhetősége](data-box-disk-overview.md#region-availability)mezőben felsorolt Azure-régiókban érhető el.
- - A Data Box Disk egyetlen tárfiókot támogat.
+ - Data Box szolgáltatás a [régió rendelkezésre állása területen](data-box-disk-overview.md#region-availability)felsorolt Azure-régiókban érhető el.
+ - Data Box Disk támogatja az egyetlen Storage-fiókot.
 
-## <a name="data-box-disk-performance"></a>Adatdoboz lemezének teljesítménye
+## <a name="data-box-disk-performance"></a>Data Box Disk teljesítmény
 
 A tesztjeink során USB 3.0-ás kapcsolat esetén a lemezeknél 430 MB/s-os adatátviteli sebességet is mértünk. A tényleges szám a használt fájl méretének függvényében eltérő lehet. Kisebb fájlok esetén gyengébb teljesítmény figyelhető meg.
 
-## <a name="azure-storage-limits"></a>Az Azure tárolási korlátai
+## <a name="azure-storage-limits"></a>Azure Storage-korlátok
 
-Ez a szakasz ismerteti az Azure Storage-szolgáltatás korlátait, valamint az Azure Files, az Azure-blokkblobok és az Azure-lapblobok szükséges elnevezési konvencióit, a Data Box szolgáltatásra vonatkozóan. Tekintse át figyelmesen a tárolási korlátokat, és kövesse az összes ajánlást.
+Ez a szakasz az Azure Storage szolgáltatásra vonatkozó korlátozásokat, valamint a Azure Files, az Azure Block blobok és az Azure Page Blobok szükséges elnevezési konvencióit írja le a Data Box szolgáltatásnak megfelelően. Alaposan tekintse át a tárolási korlátokat, és kövesse az összes javaslatot.
 
-Az Azure storage-szolgáltatás korlátaival és a megosztások, tárolók és fájlok elnevezésével kapcsolatos gyakorlati tanácsokról a következő információkat talál:
+Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és fájlok elnevezésére vonatkozó ajánlott eljárásokkal kapcsolatos legfrissebb információkért keresse fel a következőt:
 
 - [Tárolók elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Megosztások elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blobok és lapblobok blokkolása konvenciók](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Blobok és lapok blob-konvencióinak letiltása](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Ha vannak olyan fájlok vagy könyvtárak, amelyek meghaladják az Azure Storage szolgáltatás korlátait, vagy nem felelnek meg az Azure Files/Blob elnevezési konvencióknak, majd ezek a fájlok vagy könyvtárak nem kerülnek be az Azure Storage-ba a Data Box szolgáltatáson keresztül.
+> Ha vannak olyan fájlok vagy könyvtárak, amelyek túllépik az Azure Storage szolgáltatás korlátozásait, vagy nem felelnek meg Azure Files/blob elnevezési konvencióknak, akkor ezeket a fájlokat vagy könyvtárakat a rendszer nem tölti be az Azure Storage-ba a Data Box szolgáltatáson keresztül.
 
 ## <a name="data-upload-caveats"></a>Az adatfeltöltés kikötései
 
-- Ne másolja az adatokat közvetlenül a lemezekre. Adatok másolása előre létrehozott *BlockBlob*,*PageBlob*és *AzureFile* mappákba.
-- A *BlockBlob* és a *PageBlob* alatt egy mappa egy tároló. Például a tárolók *BlockBlob/container* és *PageBlob/container*néven jönnek létre.
-- Ha van egy meglévő Azure-objektum (például egy blob) a felhőben, amelynek neve megegyezik a másolt objektum nevével, a Data Box Disk átnevezi a fájlt fájlként(1) a felhőben.
-- A *BlockBlob* és *a PageBlob* megosztásokba írt összes fájl blokkblobként és lapblobként kerül feltöltésre.
-- A *BlockBlob* és *a PageBlob* mappák alatt létrehozott üres könyvtárhierarchia (fájlok nélkül) nem kerül feltöltésre.
-- Ha bármilyen hiba történik az adatok Azure-ba való feltöltésekénél, a céltárfiókban hibanapló jön létre. A hibanapló elérési útja elérhető a portálon, amikor a feltöltés befejeződött, és a naplót áttekintheti a korrekciós intézkedések elvégzéséhez. Ne töröljön adatokat a forrásból a feltöltött adatok ellenőrzése nélkül.
-- A fájl metaadatok és az NTFS-engedélyek nem őrződnek meg, amikor az adatok at feltöltik az Azure Files-ba. Például a fájlok *Utolsó módosítás* attribútuma nem marad meg az adatok másolásakor.
-- Ha a sorrendben felügyelt lemezeket adott meg, tekintse át a következő szempontokat:
+- Ne másolja közvetlenül a lemezekre az Adatmásolást. Az Adatmásolás előre létrehozott *BlockBlob*,*PageBlob*és *AzureFile* mappákba.
+- A *BlockBlob* és a *PageBlob* alá tartozó mappa egy tároló. A tárolók például *BlockBlob/tárolóként* és *PageBlob/tárolóként*jönnek létre.
+- Ha van egy meglévő Azure-objektuma (például egy blob) a felhőben, amelynek a neve megegyezik az éppen másolt objektum nevével, Data Box Disk átnevezi a fájlt fájlként (1) a felhőben.
+- A rendszer a *BlockBlob* és a *PageBlob* -megosztásba írt összes fájlt feltöltötte egy blokk-blobként és egy oldal blobként.
+- A *BlockBlob* és a *PageBlob* mappák alatt létrehozott összes üres címtár-hierarchia nincs feltöltve.
+- Ha bármilyen hiba merül fel az Azure-ba történő adatfeltöltés során, a rendszer egy naplófájlt hoz létre a célként szolgáló Storage-fiókban. A hibanapló elérési útja elérhető a portálon a feltöltés befejeződése után, és áttekintheti a naplót a kijavítani kívánt művelet elvégzéséhez. Ne törölje a forrás adatait a feltöltött adatok ellenőrzése nélkül.
+- A fájl-metaadatok és az NTFS-engedélyek nem őrződnek meg, amikor a rendszer feltölti az adatokat Azure Filesba. A fájlok *utolsó módosított* attribútuma például nem lesz megtartva az adatmásoláskor.
+- Ha a felügyelt lemezeket a sorrendben adta meg, tekintse át az alábbi további szempontokat:
 
     - Egy erőforráscsoport csak egy adott nevű felügyelt lemezt tartalmazhat az előre létrehozott mappákban és a teljes Data Box Disken. Ez azt is jelenti, hogy az előre létrehozott mappákba feltöltött VHD-knak egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik meg egy erőforráscsoport meglévő felügyelt lemez nevével sem. Ha a VHD-k azonos névvel rendelkeznek, akkor csak egy VHD lesz átalakítva egy azonos névvel rendelkező felügyelt lemezzé. A többi VHD-fájl lapblobként lesz feltöltve az előkészítési tárfiókba.
     - Mindig másolja át a VHD-kat az egyik előre létrehozott mappába. Ha a VHD-kat ezen mappákon kívülre vagy egy Ön által létrehozott mappába másolja, akkor a VHD-k nem felügyelt lemezekként, hanem lapblobként lesznek feltöltve az Azure Storage-fiókba.
     - Csak a rögzített VHD-ket lehet feltölteni felügyelt lemezek létrehozásához. A dinamikus VHD-k, a virtuális különbséglemezek és a VHDX-fájlok nem támogatottak.
 
-## <a name="azure-storage-account-size-limits"></a>Az Azure tárfiók méretkorlátai
+## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai
 
-Az alábbiakban a tárfiókba másolt adatok méretére vonatkozó korlátokat. Győződjön meg arról, hogy a feltöltött adatok megfelelnek ezeknek a korlátoknak. A korlátokkal kapcsolatos legfrissebb információkért keresse fel az [Azure blob tárolási méretezési céljait](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) és az [Azure Files méretezési célokat.](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)
+Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk az [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) és [Azure Files méretezési célok](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)című témakörben olvashatók.
 
-| Az Azure storage-fiókba másolt adatok mérete                      | Alapértelmezett korlát          |
+| Az Azure Storage-fiókba másolt adatmennyiség                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|
-| Blob és lapblob blokkolása                                            | 500 TB tárfiókonként. <br> Ez magában foglalja az összes forrásból származó adatokat, beleértve a Data Box Disk-et is.|
+| BLOB és oldal blobjának letiltása                                            | 500 TB/Storage-fiók. <br> Ide tartoznak az összes forrásból származó adatok, beleértve a Data Box Disk is.|
 
 
-## <a name="azure-object-size-limits"></a>Az Azure-objektumok méretkorlátai
+## <a name="azure-object-size-limits"></a>Azure-objektum méretének korlátai
 
-Az alábbiakban az Azure-objektumok megírható méretei láthatók. Győződjön meg arról, hogy a feltöltött fájlok megfelelnek ezeknek a korlátoknak.
+Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról, hogy az összes feltöltött fájl megfelel a fenti korlátoknak.
 
-| Azure-objektumtípusa | Alapértelmezett korlát                                             |
+| Azure-objektumtípus | Alapértelmezett korlát                                             |
 |-------------------|-----------------------------------------------------------|
-| Blob blokkolása        | ~ 4,75 TiB                                                 |
-| Lapblob         | 8 TiB <br> (A Lapblob formátumban feltöltött összes fájlnak 512 bájtnak kell lennie, különben a feltöltés sikertelen. <br> Mind a Virtuális merevlemez, mind a VHDX 512 bájttal van elrendezve.) |
-|Azure Files        | 1 TiB <br> Legfeljebb a részesedés mérete 5 TiB     |
-| Felügyelt lemezek     |4 TiB <br> A méretről és a korlátokról további információt a következő témakörben talál: <li>[Méretezhetőségi célok felügyelt lemezekhez](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| BLOB letiltása        | ~ 4,75 TiB                                                 |
+| Oldal Blobja         | 8 TiB <br> (Az oldal blob-formátumában feltöltött összes fájlnak 512 bájtnak kell lennie, különben a feltöltés meghiúsul. <br> A VHD és a VHDX egyaránt 512 bájtra van igazítva.) |
+|Azure Files        | 1 TiB <br> Legfeljebb a megosztás mérete 5 TiB     |
+| Felügyelt lemezek     |4 TiB <br> A mérettel és a korlátokkal kapcsolatos további információkért lásd: <li>[A felügyelt lemezek skálázhatósági céljai](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure-blokkblob, lapblob és fájlelnevezési konvenciók
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Az Azure Block blob, az oldal blobja és a fájl elnevezési konvenciói
 
 | Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Tárolónevek a blokkblobhoz és a lapblobhoz <br> Az Azure Files fájlmegosztási nevei | Érvényes, 3–63 karakter hosszú DNS-névnek kell lennie. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
-| Azure-fájlok könyvtár- és fájlnevei     |<li> A kis- és nagybetűk megőrzése, a kis- és nagybetűk megkülönböztetése, és nem haladhatja meg a 255 karakter hosszúságot. </li><li> Nem végződhet a perjellel (/). </li><li>Ha rendelkezésre áll, akkor automatikusan törlődik. </li><li> A következő karakterek nem engedélyezettek:<code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> Az URL-elérési út érvénytelen karakterei nem engedélyezettek. Az uE000-hez hasonló \\kódpontok nem érvényes Unicode karakterek. Egyes ASCII- vagy Unicode karakterek, például vezérlőkarakterek (0x00–0x1F, \\u0081 stb.) szintén nem engedélyezettek. A HTTP/1.1-ben található Unicode karakterláncokra vonatkozó szabályokat lásd az RFC 2616 2.2 szakasz: Alapszabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, dot character (.) és two dot character (..).</li>|
+| Tárolók nevei a blob és az oldal blobja számára <br> Azure Files fájlmegosztás neve | Érvényes DNS-névnek kell lennie, amely 3 – 63 karakter hosszú lehet. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
+| Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek:<code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. A kódok, \\például a uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek ( \\kell lennie 0x00 – 0x1F, u0081 stb.) nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
 | Blobnevek blokkblob és lapblob esetén      | A blobnevek megkülönböztetik a kis- és nagybetűket, illetve bármilyen karakterkombinációt tartalmazhatnak <br> A blob nevének 1–1024 karakter hosszúságúnak kell lennie. <br> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. <br>A blob nevét alkotó részleges útvonalak száma legfeljebb 254 lehet. A részleges útvonalak két elválasztókarakter (pl. a perjel „/”) közötti sztringek, amelyek megegyeznek egy virtuális könyvtár nevével. |
 
-## <a name="managed-disk-naming-conventions"></a>Felügyelt lemezelnevezési konvenciók
+## <a name="managed-disk-naming-conventions"></a>Felügyelt lemez elnevezési konvenciói
 
 | Entitás | Konvenciók                                             |
 |-------------------|-----------------------------------------------------------|
-| Felügyelt lemeznevek       | <li> A név nek 1 és 80 karakter között kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzásjellel kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásjeleket, pontokat vagy kötőjeleket tartalmazhat. </li><li>   A névnek nem `/`lehet szóköze vagy .                                              |
+| Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/`.                                              |
 
 ## <a name="next-steps"></a>További lépések
 
-- [Adatdoboz-lemez rendszerkövetelményeinek áttekintése](data-box-disk-system-requirements.md)
+- A [rendszerkövetelmények áttekintése Data Box Disk](data-box-disk-system-requirements.md)

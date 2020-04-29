@@ -1,124 +1,124 @@
 ---
 title: Az ArrInspector ellenőrző eszköz
-description: Az ArrInspector eszköz felhasználói kézikönyve
+description: A ArrInspector eszköz felhasználói kézikönyve
 author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680075"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Az ArrInspector ellenőrző eszköz
 
-Az ArrInspector egy webalapú eszköz, amellyel egy futó Azure Remote Rendering munkamenet et vizsgálhat. Azt a célt szolgál, hogy hibakeresési célokra használható, hogy vizsgálja meg a jelenet renderelése, a naplóüzenetek megjelenítése, és figyelemmel kíséri az élő teljesítményt a kiszolgálón.
+A ArrInspector egy webalapú eszköz, amely egy futó Azure távoli renderelési munkamenet vizsgálatára szolgál. Ennek célja, hogy hibakeresési célokra, a megjelenített jelenet struktúrájának vizsgálatára, a naplófájlok megjelenítésére és az élő teljesítmény figyelésére szolgáljon.
 
-![ArrInspector (arrfelügyelő)](./media/arr-inspector.png)
+![ArrInspector](./media/arr-inspector.png)
 
-## <a name="connecting-to-the-arrinspector"></a>Csatlakozás az ArrInspector-hez
+## <a name="connecting-to-the-arrinspector"></a>Csatlakozás a ArrInspector
 
-Miután megszerezte az ARR-kiszolgáló állomásnevét `mixedreality.azure.com`(végződése), csatlakozzon a [ConnectToArrInspectorAsync használatával.](../../how-tos/frontend-apis.md#connect-to-arr-inspector) Ez a `StartArrInspector.html` függvény létrehoz egy olyan eszközt, amelyen az alkalmazás fut. Az ArrInspector elindításához nyissa meg a fájlt egy böngészővel (Edge, Firefox vagy Chrome) egy számítógépen. A fájl csak 24 óráig érvényes.
+Miután megszerezte az ARR- `mixedreality.azure.com`kiszolgáló hostname (végződés) értékét, kapcsolódjon a [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)használatával. Ez a függvény létrehoz `StartArrInspector.html` egy eszközt azon az eszközön, amelyen az alkalmazás fut. A ArrInspector elindításához nyissa meg a fájlt egy böngészőben (Edge, Firefox vagy Chrome) egy számítógépen. A fájl csak 24 órán keresztül érvényes.
 
-Ha a hívásokat kezdeményező `ConnectToArrInspectorAsync` alkalmazás már fut a számítógépen:
+Ha a meghívásos `ConnectToArrInspectorAsync` alkalmazás már fut egy számítógépen:
 
-* Ha az Egység integrációt használja, előfordulhat, hogy automatikusan elindul az Ön számára.
-* Ellenkező esetben a fájl a *User\\Folders\\LocalAppData\\\\[your_app] AC Temp*mappában található.
+* Ha az Unity-integrációt használja, előfordulhat, hogy automatikusan elindul.
+* Ellenkező esetben a ( *\\LocalAppData\\) [Your_app]\\AC\\Temp felhasználói mappákban*található fájlt fogja megtalálni.
 
-Ha az alkalmazás HoloLensen fut:
+Ha az alkalmazás HoloLens fut:
 
-1. A HoloLens elérése a [Windows eszközportálon](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)keresztül.
-1. Nyissa meg a *System > Fájlkezelőt*.
-1. Keresse meg *a\\User\\Folders\\LocalAppData [your_app]\\AC Temp*.
-1. Mentse *a StartArrInspector.html fájlt* a számítógépre.
-1. Nyissa meg *a StartArrInspector.html fájlt* a munkamenet ArrInspector fájljának betöltéséhez.
+1. A HoloLens elérése a [Windows-eszköz portál](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)használatával.
+1. Nyissa meg a *System > file Explorer programot*.
+1. Navigáljon a *felhasználói\\mappák\\LocalAppData [your_app\\]\\AC Temp*.
+1. Mentse a *StartArrInspector. html fájlt* a számítógépre.
+1. Nyissa meg a *StartArrInspector. html fájlt* a munkamenet ArrInspector betöltéséhez.
 
-## <a name="the-performance-panel"></a>A Teljesítmény panel
+## <a name="the-performance-panel"></a>A teljesítmény panel
 
-![A Teljesítmény panel](./media/performance-panel.png)
+![A teljesítmény panel](./media/performance-panel.png)
 
-Ez a panel a kiszolgáló által elérhetőnek kitett összes képkockánkénti teljesítményértékek grafikonjait jeleníti meg. Az értékek jelenleg tartalmazzák a frame time, FPS, CPU és memória használat, memória statisztika, mint a teljes RAM-használat, objektum számít, stb.
+Ez a panel a-kiszolgáló által kiváltott összes teljesítmény értékének gráfját mutatja. Az értékek jelenleg tartalmazzák a keret idejét, az FPS-t, a PROCESSZORt és a memóriahasználat, a memória statisztikáit, például a teljes RAM-használatot, az objektumok számát stb.
 
-Ezen paraméterek egyikének megjelenítéséhez kattintson az **Új hozzáadása** gombra, és válassza ki a párbeszédpanelen látható értékek egyikét. Ez a művelet új görgetési diagramot ad a panelhez, amely valós időben követi nyomon az értékeket. A jobb oldalon látható a *minimális*, *maximális* és *aktuális* érték.
+A paraméterek egyikének megjelenítéséhez kattintson az **új hozzáadása** gombra, és válassza ki a párbeszédpanelen megjelenő elérhető értékek egyikét. Ez a művelet egy új görgethető diagramot szúr be a panelre, valós időben nyomon követni az értékeket. A jobb oldalon láthatja a *minimális*, a *maximális* és a *jelenlegi* értéket.
 
-A grafikont az egérrel húzva pásztázhatja, azonban a vízszintes pásztázás csak akkor lehetséges, ha az ArrInspector szüneteltetve van.
+A diagramot a tartalom egérrel való húzásával is megadhatja, a függőleges pásztázás azonban csak akkor lehetséges, ha a ArrInspector a szüneteltetett állapotban van.
 
-A CTRL billentyű húzás közbeni lenyomva tartása lehetővé teszi a nagyítást. A vízszintes zoom az alján lévő csúszkával is szabályozható.
+A CTRL billentyűt lenyomva tartva a nagyítást is lehetővé teszi. A vízszintes nagyítás is szabályozható a csúszka alján.
 
-A függőleges tartomány számítása alapértelmezés szerint az aktuálisan megjelenített értékek alapján történik, a min és a max értékek pedig a jobb oldali szövegmezőkben jelennek meg. Ha az értékek manuálisan vannak beállítva, vagy közvetlenül a szövegdobozba írja be őket, vagy pásztázással/nagyítással, a grafikon ezeket az értékeket fogja használni. Az automatikus függőleges keretezés visszaállításához kattintson a jobb felső sarokban lévő ikonra.
+A függőleges tartomány alapértelmezés szerint a jelenleg megjelenített értékek alapján van kiszámítva, a jobb oldalon pedig a minimális és a maximális értékek láthatók. Ha az értékeket manuálisan állítja be, vagy közvetlenül a szövegmezőbe írja be őket, vagy pásztázás/nagyítás használatával, a gráf ezeket az értékeket fogja használni. Az automatikus függőleges kialakítás visszaállításához kattintson a jobb felső sarokban található ikonra.
 
 ![függőleges tartomány](./media/vertical-range.png)
 
-## <a name="the-log-panel"></a>A Napló panel
+## <a name="the-log-panel"></a>A napló panel
 
 ![Napló panel](./media/log-panel.png)
 
-A naplópanelen a kiszolgálóoldalon létrehozott naplóüzenetek listája látható. A kapcsolaton legfeljebb 200 korábbi naplóüzenet jelenik meg, és újakat nyomtat ki, ahogy történnek.
+A napló panel a kiszolgáló oldalán létrehozott naplóüzenetek listáját jeleníti meg. Kapcsolat esetén a rendszer akár 200 korábbi naplóbejegyzést is megjelenít, és az újakat fogja nyomtatni.
 
-A lista a napló típusa `[Error/Warning/Info/Debug]` alapján szűrhető a felső gombok segítségével.
-![Naplószűrő gombok](./media/log-filter.png)
+A lista alapján szűrheti a napló típusát `[Error/Warning/Info/Debug]` a felül található gombokkal.
+![Naplók szűrése gombok](./media/log-filter.png)
 
-## <a name="the-timing-data-capture-panel"></a>Az Időzítési adatok rögzítése panel
+## <a name="the-timing-data-capture-panel"></a>Az időzítési adatrögzítés panel
 
-![Időzítési adatok rögzítése](./media/timing-data-capture.png)
+![Időzítési adatrögzítés](./media/timing-data-capture.png)
 
-Ez a panel az időzítési adatok rögzítésére és letöltésére szolgál a kiszolgálóról. A fájl chrome [tracing JSON formátumot](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)használ. Az adatok vizsgálatához nyissa meg `Chrome://tracing` a Chrome-ot az URL-címen, és húzza a letöltött fájlt az oldalra. Az időzítési adatokat folyamatosan gyűjtik egy rögzített méretű gyűrűs pufferben. Amikor kivan írva, a rögzítés csak a közvetlen múltra vonatkozó információkat tartalmaz, ami néhány másodpercet vagy néhány percet jelent.
+Ez a panel az időzítési információk rögzítésére szolgál a kiszolgálóról, és letölti azt. A fájl a [Chrome nyomkövetési JSON-formátumot](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)használja. Az adatellenőrzéshez nyissa meg a Chrome- `Chrome://tracing` t az URL-címen, és húzza a letöltött fájlt a lapra. Az időzítési adatok folyamatos gyűjtése rögzített méretű gyűrűs pufferben történik. Ha kiírja, a rögzítés csak az azonnali múltbeli adatokat tartalmazza, azaz néhány másodpercet néhány percre.
 
-## <a name="the-scene-inspection-panel"></a>A Jelenet vizsgálópanel
+## <a name="the-scene-inspection-panel"></a>A jelenet ellenőrzési panelje
 
-![Jelenet vizsgálópanel](./media/scene-inspection-panel.png)
+![A jelenet ellenőrzési panelje](./media/scene-inspection-panel.png)
 
-Ez a panel a renderelt jelenet szerkezetét mutatja. Az objektumhierarchia a bal oldalon, a kijelölt objektum tartalma a jobb oldalon. A panel írásvédett, és valós időben frissül.
+Ez a panel a renderelt jelenet szerkezetét mutatja. Az objektum-hierarchia balra van, a kiválasztott objektum tartalma a jobb oldalon van. A panel írásvédett, és valós időben frissül.
 
-## <a name="the-vm-debug-information-panel"></a>A Virtuálisgép hibakeresési adatai panel
+## <a name="the-vm-debug-information-panel"></a>A virtuális gép hibakeresési információi panelje
 
-![A virtuális gép hibakeresési információs panelje](./media/state-debugger-panel.png)
+![Virtuális gép hibakeresési információi panelje](./media/state-debugger-panel.png)
 
-Ez a panel kínál néhány hibakeresési funkciót.
+Ez a panel néhány hibakeresési funkciót kínál.
 
 ### <a name="restart-service"></a>Szolgáltatás újraindítása
 
-A **Szolgáltatás újraindítása** gomb újraindítja a futásidejű t a virtuális gépen, amelyhez az arrInspector csatlakozik. Minden csatlakoztatott ügyfél megszakad, és az arrInspector lapot újra kell tölteni az újraindított szolgáltatáshoz való csatlakozáshoz.
+A **szolgáltatás újraindítása gomb újraindítja** azon a virtuális gépen futó futtatókörnyezetet, amelyhez a arrInspector csatlakozik. A csatlakoztatott ügyfelek le lesznek választva, és a arrInspector lapot újra kell tölteni az újraindított szolgáltatáshoz való kapcsolódáshoz.
 
 ### <a name="collect-debug-information"></a>Hibakeresési adatok gyűjtése
 
-A **Hibakeresési adatok gyűjtése a virtuális géphez** gomb megnyit egy párbeszédpanelt, amely lehetővé teszi, hogy az ARR-példány tágítsa a hibakeresési adatok gyűjtését a virtuális gépről:
+A **virtuális gép hibakeresési információinak összegyűjtése** gomb egy párbeszédpanelt nyit meg, amely lehetővé teszi az ARR-példány aktiválását, hogy hibakeresési információkat gyűjtsön a virtuális gépen:
 
-![Virtuálisgép hibakeresési információs párbeszédpanelje](./media/state-debugger-dialog.png)
+![Virtuális gép hibakeresési adatai párbeszédpanel](./media/state-debugger-dialog.png)
 
-A hibakeresési információk segítségével az Azure remote rendering csapata elemezheti a futó ARR-példányban előforduló problémákat. A párbeszéd ablaka további részleteket tartalmaz, például a probléma reprodukálásának lépéseit.
+A hibakeresési információk segítségével az Azure távoli renderelési csapata elemezheti a futó ARR-példányokban előforduló problémákat. A párbeszédpanelen további részletek is megadhatók, például a probléma ismételt létrehozásához szükséges lépések.
 
-Miután a **Kezdő gyűjtés gombra** kattintott, a párbeszédpanel bezárul, és megkezdődik a gyűjtési folyamat. A virtuális gépre vonatkozó információk gyűjtése eltarthat néhány percig.
+A **gyűjtés megkezdése** gombra kattintás után a párbeszédpanel bezáródik, és megkezdődik a gyűjtési folyamat. A virtuális gépen található információk gyűjtése néhány percet is igénybe vehet.
 
-![Folyamatban lévő virtuális gép hibakeresési információgyűjtése](./media/state-debugger-panel-in-progress.png)
+![A virtuális gép hibakeresési információinak gyűjtése folyamatban van](./media/state-debugger-panel-in-progress.png)
 
-Miután a gyűjtemény befejeződött, értesítést kap az ArrInspector ablakban. Ez az értesítés egy azonosítót tartalmaz, amely azonosítja ezt a gyűjteményt. Mindenképpen mentse ezt az azonosítót, hogy továbbítsa azt az Azure távoli renderelési csapatnak.
+Miután a gyűjtemény elkészült, értesítést fog kapni a ArrInspector ablakban. Ez az értesítés egy azonosítót tartalmaz, amely azonosítja ezt az adott gyűjteményt. Mentse ezt az azonosítót, hogy átadja azt az Azure távoli renderelési csapatának.
 
-![A Virtuálisgép-hibakeresés –adatgyűjtés sikeres](./media/state-debugger-snackbar-success.png)
+![A virtuális gép hibakeresési információinak gyűjtése sikeres](./media/state-debugger-snackbar-success.png)
 
 > [!IMPORTANT]
-> Nem lehet letölteni, vagy más módon elérni a virtuális gép hibakeresési adatait. Csak az Azure Remote-renderelési csapat rendelkezik hozzáféréssel az összegyűjtött adatokhoz. Kapcsolatba kell lépnie velünk, és el kell küldenie a gyűjtemény azonosítóját, hogy kivizsgáljuk a látott problémát.
+> A virtuális gép hibakeresési információi nem tölthetők le vagy egyéb módon nem érhetők el. Csak az Azure távoli renderelési csapata férhet hozzá az összegyűjtött adatokhoz. Kapcsolatba kell lépnie velünk, és el kell küldenie a gyűjtemény AZONOSÍTÓját, számunkra pedig meg kell vizsgálnia a megjelenő problémát.
 
-## <a name="pause-mode"></a>Szünet mód
+## <a name="pause-mode"></a>Szüneteltetési mód
 
-A jobb felső sarokban a kapcsoló lehetővé teszi a panelek élő frissítésének szüneteltetését. Ez a mód hasznos lehet egy adott állapot alapos vizsgálatához.
+A jobb felső sarokban egy kapcsoló segítségével szüneteltetheti a panelek élő frissítését. Ez a mód hasznos lehet egy adott állapot alapos vizsgálatához.
 
-![Szünet mód](./media/pause-mode.png)
+![Szüneteltetési mód](./media/pause-mode.png)
 
 Az élő frissítés újbóli engedélyezésekor az összes panel alaphelyzetbe áll.
 
-## <a name="host-configuration"></a>Állomás konfigurációja
+## <a name="host-configuration"></a>Gazdagép konfigurációja
 
-Alapértelmezés szerint az eszköz csatlakozik az Arr-kiszolgálóhoz, amely ugyanazon az a állomáson fut, amely az ArrInspector-t szolgálja ki. Azonban beállíthatja, hogy vizsgálja meg egy másik kiszolgálón, feltételezve, hogy fut egy ARR példány az eszköztároló port nyitva.
+Alapértelmezés szerint az eszköz csatlakozik az ArrInspector-t kiszolgáló, ugyanazon a gazdagépen futó ARR-kiszolgálóhoz. Azonban konfigurálhatja egy másik kiszolgáló vizsgálatára, feltéve, hogy egy ARR-példányt futtat a megnyitott szerszámozási porton.
 
-Ehhez fért hozzá a fejlécsáv bal oldalán található főmenühöz, és válassza a *Host configuration*lehetőséget. Kattintson **az Új állomás hozzáadása**gombra, és írja be a nevet és az állomásnevet. *Állomásnév* esetén csak a programba `.mixedreality.azure.com`végződő `http://` állomásnevet használja, ne tartalmazza vagy portját.
+Ehhez nyissa meg a címsor bal oldalán található főmenüt, és válassza a *gazdagép konfigurációja*lehetőséget. Kattintson az **új gazdagép hozzáadása**elemre, és adja meg a nevet és az állomásnevet. Az *állomásnév* csak a-ban `.mixedreality.azure.com`végződő állomásnevet használja, ne `http://` tartalmazzon vagy egy portot.
 
-![Állomás konfigurációja](./media/host-configuration.png)
+![Gazdagép konfigurációja](./media/host-configuration.png)
 
-Ha gyorsan szeretne egyik állomásról a másikra váltani, használja a jobb felső sarokban lévő legördülő menüt.
+Ha gyorsan át szeretné váltani az egyik gazdagépről a másikra, használja a jobb felső sarokban található legördülő listát.
 
-![Host kombinált](./media/host-switch-combo.png)
+![Gazdagép kombinált listája](./media/host-switch-combo.png)
 
-Az állomáslista a böngésző helyi tárolójában tárolódik, így az ugyanannak a böngészőnek az újbóli megnyitásakor megmarad.
+A gazdagépek listáját a böngésző helyi tárolójában tárolja a rendszer, így az azonos böngésző újbóli megnyitásakor megmarad.

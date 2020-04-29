@@ -1,88 +1,88 @@
 ---
-title: PBR anyagok
-description: A PBR anyagtípusát írja le.
+title: PBR-anyagok
+description: A PBR anyag típusát írja le.
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680257"
 ---
-# <a name="pbr-materials"></a>PBR anyagok
+# <a name="pbr-materials"></a>PBR-anyagok
 
-*A PBR-anyagok* az Azure távoli renderelése egyik támogatott [anyagtípusa.](../../concepts/materials.md) Olyan olyan [tűnések esetén használatosak,](../../concepts/meshes.md) amelyeknek reális megvilágítást kell kapniuk.
+A *pbr-anyagok* az Azure távoli renderelés egyik támogatott anyag- [típusa](../../concepts/materials.md) . Ezeket olyan [Rácsvonalak](../../concepts/meshes.md) használják, amelyeknek reális világítást kell kapniuk.
 
-A PBR a **P**hisztérikus **B**ased **R**endering rövidítése, és azt jelenti, hogy az anyag fizikailag kézenfekvő módon írja le a felület vizuális tulajdonságait, így minden megvilágítási körülmény között reális eredmények lehetségesek. A legtöbb modern játékmotor és tartalomkészítő eszköz támogatja a PBR-anyagokat, mivel a valós idejű rendereléshez a valós világ forgatókönyveinek legjobb közelítése.
+A PBR a **P**hysically **B**ased **R**-megsértését jelöli, és azt jelenti, hogy az anyag fizikailag kézenfekvő módon mutatja be egy felület vizuális tulajdonságait, így a reális eredmények az összes megvilágítás esetén lehetségesek. A legtöbb modern játék-végrehajtó eszköz támogatja a PBR-anyagokat, mivel ezek a valós idejű rendereléshez szükséges valós forgatókönyvek legjobb közelítését jelentik.
 
-![Sisak glTF minta modell által renderelt ARR](media/helmet.png)
+![Az ARR által megjelenített Helmet glTF-minta modell](media/helmet.png)
 
-A PBR anyagok azonban nem univerzális megoldások. Vannak olyan anyagok, amelyek a betekintési szögtől függően eltérő színeket tükröznek. Például, néhány szövet vagy autó festékek. Az ilyen típusú anyagokat nem kezeli a szabványos PBR-modell, és jelenleg nem támogatja az Azure Remote Rendering. Ez magában foglalja a PBR kiterjesztéseket, mint például *a vékonyfóliát* (többrétegű felületek) és a *Clear-Coat -t* (autófestékek hez).
+A PBR-anyagok nem univerzális megoldások, bár. A látószögtől függően eltérő színű anyagok szerepelnek. Például bizonyos hálók vagy autók. Az ilyen típusú anyagokat nem a szabványos PBR-modell kezeli, és az Azure távoli renderelés jelenleg nem támogatja azokat. Ez magában foglalja a PBR-bővítményeket, például a *vékony fóliát* (többrétegű felületek) és a *világos réteget* (az autó festéséhez).
 
-## <a name="common-material-properties"></a>Közös anyagtulajdonságok
+## <a name="common-material-properties"></a>Gyakori anyagok tulajdonságai
 
-Ezek a tulajdonságok minden anyagra közösek:
+Ezek a tulajdonságok az összes anyagnál közösek:
 
-* **albedoColor:** Ezt a színt megszorozzuk más színekkel, például az *albedoMap* vagy *a csúcspont színekkel.* Ha egy anyagon engedélyezve van az *átlátszóság,* az alfa-csatorna az opacitás beállítására szolgál, teljesen átlátszatlan és `1` `0` teljesen átlátszó jelentéssel. Az alapértelmezett érték a fehér.
+* **albedoColor:** A rendszer ezt a színt más színekkel szorozza meg, például a *albedoMap* vagy a *csúcspont színével*. Ha az *átlátszóság* engedélyezve van egy adott anyagon, az alfa-csatorna az opacitás beállítására szolgál `1` , amely teljes mértékben `0` átlátszatlan és teljes átláthatóságot jelent. Az alapértelmezett érték fehér.
 
   > [!NOTE]
-  > Ha a PBR anyag teljesen átlátszó, mint egy tökéletesen tiszta üvegdarab, még mindig tükrözi a környezetet. Fényes foltok, mint a nap még mindig látható a reflexió. Ez más a [színes anyagok](color-materials.md).
+  > Ha a PBR-anyagok teljesen transzparensek, például tökéletesen tiszta üvegként, továbbra is tükrözik a környezetet. A reflexióban a világos foltok, például a nap még mindig láthatók. Ez különbözik a [színanyagoktól](color-materials.md).
 
-* **albedoMap:** [2D textúra](../../concepts/textures.md) a képpontonkénti albedo értékekhez.
+* **albedoMap:** [2D-textúra](../../concepts/textures.md) a képpont albedó értékekhez.
 
-* **alphaClipEnabled** és **alphaClipThreshold:** Ha *alphaClipEnabled* igaz, minden pixel, ahol az albedo alfa értéke alacsonyabb, mint *alphaClipThreshold* nem lesz megrajzolva. Alfa nyírás lehet használni anélkül, hogy az átláthatóság és sokkal gyorsabb teszi. Alpha nyírt anyagok még mindig lassabb, hogy tegye, mint a teljesen átlátszatlan anyagok, mégis. Alapértelmezés szerint az alfa-vágás le van tiltva.
+* **alphaClipEnabled** és **alphaClipThreshold:** ha a *alphaClipEnabled* értéke igaz, az összes képpont, ahol a albedó alfa-értéke alacsonyabb, mint a *alphaClipThreshold* , nem lesz kirajzolva. Az Alpha-levágást még az átlátszóság engedélyezése nélkül is használhatja, és a renderelés sokkal gyorsabb. Az alfa-levágott anyagok továbbra is lassabbak, mint a teljes mértékben átlátszatlan anyagok, mégis. Alapértelmezés szerint az Alpha levágása le van tiltva.
 
-* **textureCoordinateScale** és **textureCoordinateOffset:** A skála megszorozva lesz az UV textúra koordinátáiban, az eltolás hozzáadódik. Lehet használni, hogy nyúlik, és a shift a textúrák. Az alapértelmezett lépték (1, 1) és az eltolás (0, 0).
+* **textureCoordinateScale** és **textureCoordinateOffset:** a skála az UV-textúra koordinátáiba van szorozva, az eltolás hozzá lesz adva. A textúrák nyújtására és átváltására használható. Az alapértelmezett skála (1, 1) és az eltolás (0, 0).
 
-* **useVertexColor:** Ha a háló csúcspontszíneket tartalmaz, és ez a beállítás engedélyezve van, a hálók csúcspontjainak csúcspontjai megszorozzák az *albedoColor* és *albedoMap színeket.* Alapértelmezés szerint a csúcspont színei le vannak tiltva.
+* **useVertexColor:** Ha a háló csúcspont színeket tartalmaz, és ez a beállítás engedélyezve van, a rácsvonalak csúcspontjának színét a rendszer a *albedoColor* és a *albedoMap*szorozza. Alapértelmezés szerint a csúcspontok színei le vannak tiltva.
 
-* **isDoubleSided:** Ha a kétoldalas ság igaz értékre van állítva, az ezzel az anyaggal rendelkező háromszögek akkor is megjelennek, ha a kamera a hátukon van. A PBR anyagok világítás is megfelelően kiszámítani a hátsó lapok. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [Egyoldalas renderelés](single-sided-rendering.md).
+* **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. A PBR-anyagok megvilágítása is megfelelően van kiszámítva a vissza arcok számára. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [egyoldalas megjelenítés](single-sided-rendering.md).
 
-## <a name="pbr-material-properties"></a>PBR anyag tulajdonságai
+## <a name="pbr-material-properties"></a>PBR-anyagok tulajdonságai
 
-A fizikai alapú renderelés alapgondolata a *BaseColor,* *Metalness*és *Roughness* tulajdonságok használata a valós anyagok széles körének emulálásához. A PBR részletes leírása túlmutat e cikk hatályán. A PBR-ről további információt [további forrásokban](http://www.pbr-book.org)talál. A következő tulajdonságok a PBR-anyagokra vonatkoznak:
+A fizikailag vezérelt renderelés lényege, hogy a *BaseColor*, a *fémesség*és a *érdesség* tulajdonságait használja a valós anyagok széles skálájának emulálása érdekében. A PBR részletes leírása meghaladja a jelen cikk hatókörét. További információ a PBR-ról: [egyéb források](http://www.pbr-book.org). A következő tulajdonságok a PBR-anyagokra vonatkoznak:
 
-* **baseColor:** A PBR-anyagokban az *albedo színt* *alapszínnek*nevezik. Az Azure Remote Renderelés az *albedo szín* tulajdonság már jelen van a közös anyag tulajdonságait, így nincs további alapszín tulajdonság.
+* **baseColor:** A PBR-anyagokban a *albedó színét* az *alapszínnek*nevezzük. Az Azure távoli renderelés során a *albedó Color* tulajdonság már szerepel a közös anyag tulajdonságai között, így nincs további alapszín tulajdonság.
 
-* **érdesség** és **érdességTérkép: Az** érdesség határozza meg, hogy a felület milyen durva vagy sima. A durva felületek több irányba szórják a fényt, mint a sima felületek, amelyek a tükröződéseket inkább homályossá teszik, mint élessé. Az értéktartomány `0.0` a-hoz `1.0`terjed. Ha `roughness` `0.0`egyenlő, a tükröződések élesek lesznek. Ha `roughness` `0.5`egyenlő, a tükröződések elmosódnak.
+* **érdesség** és **roughnessMap:** a durvaség meghatározza, hogy a felület milyen durva vagy egyenletes legyen. A durva felületek a sima felületeknél több irányba szórják a fényt, így a reflexiók elmosódottak, nem pedig élesek. Az érték tartományból származik `0.0` `1.0`. Ha `roughness` egyenlő `0.0`, a reflexiók élesek lesznek. Ha `roughness` egyenlő `0.5`, a reflexiók elmosódottak lesznek.
 
-  Ha mind érdességi értéket, mind érdességi térképet ad meg, a végső érték a kettő terméke lesz.
+  Ha a rendszer a durva és a durva leképezést is megadja, a végső érték a kettő szorzata lesz.
 
-* **metalness** és **metalnessMap:** A fizika, ez a tulajdonság megfelel, hogy a felület vezető vagy dielektromos. Vezetőképes anyagok különböző fényvisszaverő tulajdonságokkal, és általában fényvisszaverő nélkül albedo szín. A PBR-anyagokban ez a tulajdonság befolyásolja, hogy egy felület mennyire tükrözi a környező környezetet. Az értékek `0.0` `1.0`a és a között mozognak. Amikor a `0.0`fémesség , az albedo színe teljesen látható, és az anyag úgy néz ki, mint a műanyag vagy kerámia. Amikor a `0.5`fémesség, úgy néz ki, mint a festett fém. Amikor a `1.0`fémesség , a felület szinte teljesen elveszti albedo színét, és csak tükrözi a környezetet. Például, `metalness` ha `1.0` `roughness` van, és akkor `0.0` egy felület úgy néz ki, mint a valós tükör.
+* **fémmegmunkálás** és **metalnessMap:** a fizikában ez a tulajdonság azt jelzi, hogy egy felület vezetőképes vagy dielektromos állapotú-e. A vezetőképes anyagok eltérő fényvisszaverő tulajdonságokkal rendelkeznek, és a albedó szín nélkül általában nem tükröznek. A PBR-anyagokban ez a tulajdonság befolyásolja, hogy a felület mekkora mértékben tükrözi a környező környezetet. Az értékek a `0.0` és `1.0`a közötti tartományba esnek. A fémesség `0.0`esetén a albedó színe teljesen látható, az anyag pedig műanyag-vagy kerámiákhoz hasonlít. Ha a fémesség `0.5`, úgy tűnik, hogy a festett fém. A fémesség `1.0`esetén a felület majdnem teljesen elveszti a albedó színét, és csak a környéket tükrözi. `metalness` Például, ha `1.0` az, és `roughness` `0.0` egy olyan felület, mint a valós tükrözés.
 
-  Ha mind a fémességi értéket, mind a fémességi térképet szállítjuk, a végső érték a kettő terméke lesz.
+  Ha a rendszer egy fémes értéket és egy fémes térképet is biztosít, akkor a végső érték a kettő szorzata lesz.
 
-  ![fémesség és érdesség](./media/metalness-roughness.png)
+  ![a fémek és a durvaség](./media/metalness-roughness.png)
 
-  A fenti képen a jobb alsó sarokban lévő gömb úgy néz ki, mint egy igazi fémanyag, a bal alsó úgy néz ki, mint a kerámia vagy műanyag. Az albedo színe is változik a fizikai tulajdonságok nak megfelelően. A növekvő érdesség, az anyag elveszti reflexió élességét.
+  A fenti képen a jobb alsó sarokban lévő gömb úgy néz ki, mint egy valódi fém, a bal alsó rész a kerámia vagy a műanyag elemre hasonlít. A albedó színe a fizikai tulajdonságok alapján is változik. A növekvő durvasággal az anyag elveszíti a tükröződés élességét.
 
-* **normalMap:** A finom szemcsés részletek szimulálása érdekében [normál térkép](https://en.wikipedia.org/wiki/Normal_mapping) et lehet biztosítani.
+* **normalMap:** A részletes részletességi adatok szimulálása érdekében egy [normál leképezést](https://en.wikipedia.org/wiki/Normal_mapping) is meg lehet adni.
 
-* **okclusionMap** és **aoScale:** [A környezeti elzáródás](https://en.wikipedia.org/wiki/Ambient_occlusion) valósághűvé teszi a hasadékokkal rendelkező objektumokat azáltal, hogy árnyékokat ad az elzárt területekhez. Az elzáródási `1.0`érték `0.0` a -tól a `1.0` -ig `0.0` terjed, ahol sötétséget jelent (elzárva), és azt jelenti, hogy nincs elzáródás. Ha egy 2D textúra elzáródási térképként van megadva, a hatás engedélyezve van, és az *aoScale* szorzóként működik.
+* **occlusionMap** és **aoScale:** a [környezeti elzáródások](https://en.wikipedia.org/wiki/Ambient_occlusion) olyan objektumokat tesznek elérhetővé, amelyekkel az árnyékok a bezárt területekhez hozzáadhatók. Az értéknek a `0.0` - `1.0`tól a `0.0` -ig történő elzáródása, `1.0` ahol a sötétség (bezárt) és az azt jelenti, hogy nincsenek elzáródások. Ha egy 2D-textúra elzáródási térképként van megadva, a hatás engedélyezve van, és a *aoScale* szorzóként működik.
 
-  ![Okklúziós térkép](./media/boom-box-ao2.gif)
+  ![Elzáródási Térkép](./media/boom-box-ao2.gif)
 
-* **átlátható:** PBR-anyagok esetében csak egy áttetszőségi beállítás van: engedélyezve van-e vagy sem. Az opacitást az albedo szín alfa-csatornája határozza meg. Ha engedélyezve van, egy összetettebb renderelési folyamat ot hív meg a rendszer a félig átlátszó felületek rajzolására. Az Azure Remote Rendering valós [sorrendfüggetlen átláthatóságot](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) valósít meg.
+* **transzparens:** A PBR-anyagok esetében csak egyetlen áttetszőségi beállítás van: engedélyezve van vagy nem. Az opacitást a albedó színe alfa-csatornája határozza meg. Ha engedélyezve van, a rendszer összetettebb renderelési folyamatot hív meg félig átlátszó felületek rajzolásához. Az Azure-alapú távoli renderelés igaz [sorrendű, független átlátszóságot](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) valósít meg.
 
-  Az átlátszó geometria renderelése költséges. Ha csak lyukakra van szüksége egy felületen, például egy fa leveleinél, akkor jobb, ha inkább alfa vágást használ.
+  Az átlátszó geometria költséges a megjelenítéshez. Ha csak a felületen lévő lyukakra van szüksége, például egy fa leveleinél, érdemes inkább alfa-nyírást használni.
 
-  ![Átláthatósági](./media/transparency.png) közlemény a fenti képen, hogy a jobb szélső gömb teljesen átlátszó, de a reflexió még mindig látható.
+  ![A](./media/transparency.png) fenti képen látható átlátszósági figyelmeztetés, hogy a jobb szélső gömb teljesen transzparens, de a reflexió továbbra is látható.
 
   > [!IMPORTANT]
-  > Ha bármely anyagot átlátszatlanról átlátszóra kell váltani futásidőben, a renderelőnek a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md)kell használnia. Ez a korlátozás nem vonatkozik azokra az anyagokra, amelyeket átlátszó anyagként alakítanak át.
+  > Ha bármilyen anyagot át kell váltani átlátszatlanról áttetszőre futásidőben, a megjelenítőnek a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md)kell használnia. Ez a korlátozás nem vonatkozik azokra az anyagokra, amelyeket transzparens anyagként konvertálnak a kezdéshez.
 
 ## <a name="technical-details"></a>Technikai részletek
 
-Az Azure Remote Rendering a Cook-Torrance mikrodimenziós BRDF-et használja a GGX NDF, Schlick Fresnel és egy GGX Smith kifejezéssel, amely lamberti szórt kifejezéssel korrelál. Ez a modell jelenleg a de facto ipari szabvány. További részletes részleteket ebben a cikkben talál: [Fizikai alapú renderelés - Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Az Azure Remote rendering a Cook-Torrance mikro-dimenziós BRDF használja a GGX NDF, a Schlick Fresnel és a GGX Smith korrelált láthatósági kifejezéssel egy Lambert Diffúz kifejezéssel. Ez a modell jelenleg a de facto iparági szabvány. További részletes részletekért tekintse meg a következő cikket: [fizikailag alapú renderelés – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
- Az Azure távoli renderelésben használt *Metalness-Roughness* PBR modell alternatívája a *Specular-Glossiness* PBR modell. Ez a modell az anyagok szélesebb körét képviselheti. Azonban ez drágább, és általában nem működik jól a valós idejű esetekben.
-Nem mindig lehet a *Specular-Glossiness-ről* *metalness-érdességgé* konvertálni, mivel vannak *olyan (diffúz, specular) értékpárok,* amelyeket nem lehet *átváltani (BaseColor, Metalness)* értékpárrá. A másik irányban történő átalakítás egyszerűbb és pontosabb, mivel az összes *(BaseColor, Metalness)* pár jól meghatározott *(szórványos, specular)* pároknak felel meg.
+ A *ragyogás* pbr modell az Azure Remote rendering-ben használt *fémmentes pbr-* modell alternatívája. Ez a modell az anyagok szélesebb körét reprezentálhatja. Azonban ez drágább, és általában nem működik megfelelően a valós idejű esetekben.
+Nem mindig lehetséges a *ragyogás* -ről a *fémekre* váltani, mivel olyan *(diffúziós, visszaverődési)* érték párokat, amelyek nem alakíthatók át *(BaseColor, fémes)*. A másik irányba történő átalakítás egyszerűbb és pontosabb, mivel az összes *(BaseColor, fémes)* párok jól meghatározott *(diffúz, fényvisszaverődési)* pároknak felelnek meg.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Színes anyagok](color-materials.md)
 * [Textúrák](../../concepts/textures.md)
-* [Rácsvonalak](../../concepts/meshes.md)
+* [Hálók](../../concepts/meshes.md)

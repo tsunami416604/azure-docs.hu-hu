@@ -1,7 +1,7 @@
 ---
-title: A v2 API által létrehozott Video Indexer kimenet vizsgálata – Azure
+title: Vizsgálja meg a v2 API által létrehozott Video Indexer kimenetet – Azure
 titleSuffix: Azure Media Services
-description: Ez a témakör az Azure Media Services videoindexelő kimenetét vizsgálja v2 API által.
+description: Ez a témakör a v2 API által előállított Azure Media Services Video Indexer kimenetét vizsgálja.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245927"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>Az API által létrehozott Video Indexer kimenet vizsgálata
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>Vizsgálja meg az API által létrehozott Video Indexer kimenetet
 
-Amikor meghívja a **Get Video Index** API-t, és a válasz állapota rendben van, részletes JSON-kimenetet kap választartalomként. A JSON-tartalom a megadott videóelemzések részleteit tartalmazza. Az elemzések a következők: átiratok, OCRs, arcok, témák, blokkok, stb. Minden egyes elemzési típus olyan időtartományokpéldányokat tartalmaz, amelyek azt mutatják, hogy az elemzés mikor jelenik meg a videóban. 
+Ha meghívja a **videó beolvasása** API-t, és a válasz állapota ok, akkor részletes JSON-kimenetet kap a válasz tartalmaként. A JSON-tartalom a megadott videó-információk részleteit tartalmazza. Az elemzések a következők: átiratok, felismerése, arcok, témakörök, blokkok stb. Az egyes betekintési típusok olyan időtartomány-példányokat tartalmaznak, amelyek azt mutatják be, hogy mikor jelenik meg a videóban. 
 
-1. A JSON-fájl beolvasásához hívja meg a [Videoindex API beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
-1. Ha bizonyos összetevők is érdekelnek, hívja meg [a Videoartifact Download URL API-t](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
+1. A JSON-fájl lekéréséhez hívja meg a [video index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) -t.
+1. Ha az adott összetevőkre is kíváncsi, hívja le a [videó-összetevő letöltése URL API-t](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
 
-    Az API-hívásban adja meg a kért műtermék típusát (OCR, Arcok, Kulcskeretek stb.)
+    Az API-hívásban adja meg a kért összetevő típusát (OCR, Faces, Key Frames stb.)
 
-Vizuálisan is megvizsgálhatod a videó összesített elemzési **adatait,** ha megnyomod a [Videó indexelő](https://www.videoindexer.ai/) webhelyén található Videó gombját. További információt a [Videoelemzések megtekintése és szerkesztése című témakörben talál.](video-indexer-view-edit.md)
+A videó összesített elemzéseit a [video Indexer](https://www.videoindexer.ai/) webhelyén található videó **Lejátszás** gombjára kattintva is megtekintheti. További információ: [video-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-Ez a cikk a Get Video **Index** API által visszaadott JSON-tartalmat vizsgálja. 
+Ez a cikk a **video index API lekérése** által VISSZAadott JSON-tartalmat vizsgálja meg. 
 
 > [!NOTE]
-> A Video Indexer összes hozzáférési jogkivonatának lejárata egy óra.
+> Video Indexer összes hozzáférési jogkivonatának lejárata egy óra.
 
 
-## <a name="root-elements"></a>Gyökérelemek
+## <a name="root-elements"></a>Gyökérszintű elemek
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|accountId|A lejátszási lista VI-fiókazonosítója.|
-|id|A lejátszási lista azonosítója.|
-|név|A lejátszási lista neve.|
-|leírás|A lejátszási lista leírása.|
-|userName (Felhasználónév)|A lejátszási listát létrehozó felhasználó neve.|
-|Létrehozott|A lejátszási lista létrehozási ideje.|
-|privacyMode (adatvédelem)|A lejátszási lista adatvédelmi módja (privát/nyilvános).|
-|state|A lejátszási lista (feltöltve, feldolgozva, feldolgozva, sikertelenen, karanténba helyezve).|
+|accountId|A lista VI-fiókjának azonosítója.|
+|id|A lista azonosítója.|
+|név|A lista neve.|
+|leírás|A lista leírása.|
+|userName (Felhasználónév)|A listát létrehozó felhasználó neve.|
+|létrehozott|A lista létrehozási ideje.|
+|privacyMode|A lista adatvédelmi módja (magán/nyilvános).|
+|state|A lista (feltöltve, feldolgozás, feldolgozás, sikertelen, karanténba helyezve).|
 |isOwned|Azt jelzi, hogy a listát az aktuális felhasználó hozta-e létre.|
-|szerkeszthető|Azt jelzi, hogy az aktuális felhasználó jogosult-e a lista szerkesztésére.|
-|isBase|Azt jelzi, hogy a lejátszási lista alap lejátszási lista (videó) vagy más videókból készült lejátszási lista (származtatott).|
+|isEditable|Azt jelzi, hogy az aktuális felhasználó rendelkezik-e a lista szerkesztéséhez szükséges engedélyekkel.|
+|isBase|Azt jelzi, hogy a lista egy alapszintű lista (videó) vagy más videókból (származtatott) készült lejátszási lista.|
 |durationInSeconds|A lejátszási lista teljes időtartama.|
-|summarizedInsights|Tartalmaz egy [summarizedInsights](#summarizedinsights).
-|Videók|A lejátszási listát építő [videók](#videos) listája.<br/>Ha ez a lista más videók időtartományait tartalmazza, a listában szereplő videók csak a mellékelt időtartományok adatait tartalmazzák.|
+|summarizedInsights|Egy [summarizedInsights](#summarizedinsights)tartalmaz.
+|videók|A lista összeállítására szolgáló [videók](#videos) listája.<br/>Ha ez a lista más videók (származtatott) időtartományait tartalmazza, az ebben a listában szereplő videók csak a befoglalt időtartományokból származó adatokkal fognak szerepelni.|
 
 ```json
 {
@@ -76,52 +76,52 @@ Ez a cikk a Get Video **Index** API által visszaadott JSON-tartalmat vizsgálja
 
 ## <a name="summarizedinsights"></a>summarizedInsights
 
-Ez a szakasz az elemzések összegzését mutatja.
+Ez a szakasz az információk összegzését jeleníti meg.
 
 |Attribútum | Leírás|
 |---|---|
-|név|A videó neve. Például az Azure Monitor.|
+|név|A videó neve. Például Azure Monitor.|
 |id|A videó azonosítója. Például: 63c6d532ff.|
-|privacyMode (adatvédelem)|A bontás a következő módok egyikével rendelkezhet: **Privát**, **Nyilvános**. **Nyilvános** – a videó mindenki számára látható a fiókodban, és mindenki számára, akinek van linkje a videóra. **Privát** – a videó a fiókod minden tagjának látható.|
-|duration|Egy időtartamot tartalmaz, amely leírja a betekintés bekövetkezésének idejét. Az időtartam másodpercben van.|
+|privacyMode|A részletezés az alábbi módok egyikével rendelkezhet: **Private**, **Public**. **Nyilvános** – a videó a fiókjában mindenki számára látható, és a videóra mutató hivatkozást is tartalmaz. **Magánjellegű** – a videó mindenki számára látható a fiókjában.|
+|duration|Egy időtartamot tartalmaz, amely leírja a betekintési időt. Az időtartam másodpercben.|
 |thumbnailVideoId|Annak a videónak az azonosítója, amelyből a miniatűr készült.
-|thumbnailId|A videó miniatűr azonosítója. Ahhoz, hogy a tényleges miniatűr, hívja [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és adja át thumbnailVideoId és thumbnailId.|
-|Arcok|Nulla vagy több arcot tartalmazhat. További információt az Arcok című [témakörben talál.](#faces)|
-|kulcsszavak|Nulla vagy több kulcsszót tartalmazhat. További információt a [kulcsszavak](#keywords)című témakörben talál.|
-|Érzelmeket|Nulla vagy több érzést tartalmazhat. További információt az érzelmek című témakörben [talál.](#sentiments)|
-|audioEffects| Tartalmazhat nulla vagy több audioEffects. További részletes információt a [audioEffects .](#audioEffects)|
-|Címkék| Nulla vagy több címkét tartalmazhat. További információt a [címkék](#labels)között talál.|
-|Márkák| Nulla vagy több márkát tartalmazhat. További információkért lásd a [márkákat.](#brands)|
-|statisztika | További információkért lásd a [statisztikákat.](#statistics)|
-|Érzelmek| Tartalmazhat nulla vagy több érzelmeket. További részletes információkért lásd [az érzelmeket.](#emotions)|
-|Témák|Nulla vagy több témakört tartalmazhat. A [témák](#topics) betekintést.|
+|thumbnailId|A videó miniatűr-azonosítója A tényleges miniatűr beszerzéséhez hívja meg a [Get-miniatűrt](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) , és adja át a thumbnailVideoId és a thumbnailId.|
+|arcok|Nulla vagy több arcot is tartalmazhat. Részletesebb információ: [Faces (arcok](#faces)).|
+|kulcsszavak|Nulla vagy több kulcsszót is tartalmazhat. Részletesebb információ: [kulcsszavak](#keywords).|
+|érzelmeket|Nulla vagy több érzelem is szerepelhet. Részletesebb információ: [érzelmek](#sentiments).|
+|audioEffects| Nulla vagy több audioEffects is tartalmazhat. Részletesebb információ: [audioEffects](#audioEffects).|
+|Címkék| Nulla vagy több címkét is tartalmazhat. További információ: [címkék](#labels).|
+|márkák| Nulla vagy több márkát is tartalmazhat. Részletesebb információ: [Brands](#brands).|
+|statisztikák | Részletesebb információ: [statisztika](#statistics).|
+|érzelmeket| Nulla vagy több érzelem is szerepelhet. Részletesebb információ: [érzelmek](#emotions).|
+|témakörök|Nulla vagy több témakört is tartalmazhat. A [témakörök](#topics) betekintést nyújtanak.|
 
-## <a name="videos"></a>Videók
+## <a name="videos"></a>videók
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|accountId|A videó VI-fiókazonosítója.|
+|accountId|A videó VI-fiókjának azonosítója.|
 |id|A videó azonosítója.|
 |név|A videó neve.
-|state|A videó állapota (feltöltve, feltöltve, feldolgozva, feldolgozva, sikertelenül, karanténba helyezve).|
-|feldolgozás, folyamat|A feldolgozás folyamata a feldolgozás során (például 20%).|
-|hibakód|A hibakód, ha nem sikerült feldolgozni (például "UnsupportedFileType").|
-|hibaÜzenet|A hibaüzenet, ha nem sikerült feldolgozni.|
-|külső azonosító|A videó külső azonosítója (ha a felhasználó ezt adja meg).|
-|externalUrl|A videó külső URL-címét (ha a felhasználó megvan adva).|
-|metaadatok|A videó külső metaadatai (ha a felhasználó ezt adja meg).|
-|isFelnőtt|Azt jelzi, hogy a videót manuálisan nézték-e felül, és felnőtt videóként azonosították-e.|
-|Betekintést|Az elemzési objektum. További információ: [Insights](#insights).|
-|thumbnailId|A videó miniatűr azonosítója. Ahhoz, hogy a tényleges miniatűr hívás [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és adja át a videó azonosítóés thumbnailId.|
-|publishedUrl|Egy URL-t a videó streameléséhez.|
-|publishedUrlProxy|A videó streameléséhez használható URL (Apple-eszközök esetén).|
-|viewToken|Rövid élettartamú nézettoken a videó streameléséhez.|
-|sourceLanguage|A videó forrásnyelve.|
+|state|A videó állapota (feltöltött, feldolgozás, feldolgozott, sikertelen, karanténba helyezve).|
+|processingProgress|A feldolgozási folyamat a feldolgozás során (például 20%).|
+|failureCode|Nem sikerült feldolgozni a hibakódot (például: "UnsupportedFileType").|
+|failureMessage|Nem sikerült feldolgozni a hibaüzenetet.|
+|externalId|A videó külső azonosítója (ha a felhasználó adja meg).|
+|Alkalmazásazonosítójának|A videó külső URL-címe (ha a felhasználó adja meg).|
+|metaadatok|A videó külső metaadatai (ha a felhasználó adja meg).|
+|isAdult|Azt jelzi, hogy a videó manuálisan lett-e áttekintve és azonosítva felnőtt videóként.|
+|betekintést|Az adatfelismerési objektum. [További információ: az](#insights)információk.|
+|thumbnailId|A videó miniatűr-azonosítója A tényleges miniatűr hívás Get [-thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és a videó azonosítójának és thumbnailId átadása.|
+|publishedUrl|A videó továbbítására szolgáló URL-cím.|
+|publishedUrlProxy|Egy URL-cím, amely továbbítja a videót (Apple-eszközök esetén).|
+|viewToken|Rövid életű megtekintési jogkivonat a videó folyamatos átviteléhez.|
+|sourceLanguage|A videó forrásának nyelve|
 |language|A videó tényleges nyelve (fordítás).|
-|indexingPreset|A videó indexeléséhez használt készlet.|
-|streamingPreset|A videó közzétételéhez használt készlet.|
-|linguisticModelId|A CRIS modell a videó átírására szolgál.|
-|statisztika | További információ: [statistics](#statistics).|
+|indexingPreset|A videó indexeléséhez használt beállításkészlet.|
+|streamingPreset|A videó közzétételéhez használt beállításkészlet.|
+|linguisticModelId|A videó átírásához használt CRIS-modell.|
+|statisztikák | További információ: [statisztika](#statistics).|
 
 ```json
 {
@@ -148,30 +148,30 @@ Ez a szakasz az elemzések összegzését mutatja.
     }],
 }
 ```
-### <a name="insights"></a>Betekintést
+### <a name="insights"></a>betekintést
 
-Minden egyes betekintés (például átirati sorok, arcok, márkák stb.) egyedi elemek listáját tartalmazza (például face1, face2, face3), és minden elemnek saját metaadatai és példányai listája van (amelyek további választható metaadatokat tartalmazó időtartományok).
+Az egyes elemzések (például a átirat sorai, az arcok, a márkák stb.) tartalmazzák az egyedi elemek listáját (például face1, face2, face3), és mindegyik elemhez saját metaadatok tartoznak, valamint a példányok listája (amely a további opcionális metaadatokat tartalmazó időtartományok).
 
-Az arc nak lehet azonosítója, neve, miniatűrje, egyéb metaadatai és időbeli példányainak listája (például: 00:00:05 – 00:00:10, 00:01:00 - 00:02:30 és 00:41:21 – 00:41:49.) Minden időbeli példány további metaadatokkal rendelkezhet. Például az arc téglalapkoordinátái (20 230,60,60).
+Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadatokkal és az ideiglenes példányaik listájával (például: 00:00:05 – 00:00:10, 00:01:00-00:02:30 és 00:41:21 – 00:41:49). Minden ideiglenes példányhoz további metaadatok tartozhatnak. Például az arc téglalapjának koordinátái (20230, 60, 60).
 
 |Verzió|A kód verziója|
 |---|---|
-|sourceLanguage|A videó forrásnyelve (egy mesternyelvet feltételezve). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
-|language|Az elemzési nyelv (lefordítva a forrásnyelv). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
-|Átirat|Az [átirat](#transcript) betekintést.|
-|Ocr|Az [OCR](#ocr) betekintést.|
-|kulcsszavak|A [kulcsszavak](#keywords) betekintést.|
-|blocks|Egy vagy több [blokkot](#blocks) tartalmazhat|
-|Arcok|Az [arcok](#faces) éleslátás.|
-|Címkék|A [címkék](#labels) betekintést.|
-|Lövések|A [lövések](#shots) betekintést.|
-|Márkák|A [márkák](#brands) betekintést.|
-|audioEffects|A [audioEffects](#audioEffects) betekintést.|
-|Érzelmeket|Az [érzelmek](#sentiments) betekintést.|
-|visualContentModeration (vizuális tartalommoderálás)|A [visualContentModeration](#visualcontentmoderation) betekintést.|
-|textualContentModeration (szövegezési tartalommoderálás)|A [textualContentModeration](#textualcontentmoderation) betekintést.|
-|Érzelmek| Az [érzelmek éleslátása.](#emotions)|
-|Témák|A [témák](#topics) betekintést.|
+|sourceLanguage|A videó forrásának nyelve (feltételezve, hogy egy fő nyelv). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
+|language|Az adatfelismerés nyelve (a forrás nyelvétől lefordítva). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
+|átirat|Az [átirat](#transcript) betekintést nyújt.|
+|OCR|Az [OCR](#ocr) -betekintést.|
+|kulcsszavak|A [kulcsszavak](#keywords) betekintése.|
+|blocks|Egy vagy több [blokkot](#blocks) is tartalmazhat|
+|arcok|Az [arcok](#faces) betekintést nyernek.|
+|Címkék|A [címkék](#labels) betekintést nyernek.|
+|lövések|A [felvételek](#shots) betekintést nyernek.|
+|márkák|A [márkák](#brands) betekintése.|
+|audioEffects|A [audioEffects](#audioEffects) betekintést nyújt.|
+|érzelmeket|Az [érzelmek](#sentiments) betekintése.|
+|visualContentModeration|A [visualContentModeration](#visualcontentmoderation) betekintést nyújt.|
+|textualContentModeration|A [textualContentModeration](#textualcontentmoderation) betekintést nyújt.|
+|érzelmeket| Az [érzelmek](#emotions) betekintése.|
+|témakörök|A [témakörök](#topics) betekintést nyújtanak.|
 
 Példa:
 
@@ -199,16 +199,16 @@ Példa:
 Attribútum | Leírás
 ---|---
 id|A blokk azonosítója.|
-Példányok|A blokk időtartományainak listája.|
+esetben|A blokk időtartományait tartalmazó lista.|
 
-#### <a name="transcript"></a>Átirat
+#### <a name="transcript"></a>átirat
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A vonal azonosítója.|
-|szöveg|Maga az átirat.|
-|language|Az átirat nyelve. Célja, hogy támogassa átirat, ahol minden sor lehet egy másik nyelvet.|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez a sor megjelent. Ha a példány átirata, akkor csak 1 példánylesz.|
+|id|A sor azonosítója.|
+|szöveg|Maga a átirat.|
+|language|A átirat nyelve. Az olyan átiratok támogatását célozza, ahol az egyes sorok más nyelven is rendelkezhetnek.|
+|esetben|Az időtartományok listája, ahol ez a sor megjelent. Ha a példány átirat, akkor csak 1 példánya lesz.|
 
 Példa:
 
@@ -239,19 +239,19 @@ Példa:
 ] 
 ```
 
-#### <a name="ocr"></a>Ocr
+#### <a name="ocr"></a>OCR
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|Az OCR vonal azonosítója.|
-|szöveg|Az OCR szöveg.|
-|megbízhatóság|Az elismerési bizalom.|
-|language|Az OCR nyelv.|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez az OCR megjelent (ugyanaz az OCR többször is megjelenhet).|
-|magasság|Az OCR téglalap magassága|
-|felül|A felső hely a px|
-|balra| A bal oldali hely px-ben|
-|szélesség|Az OCR téglalap szélessége|
+|id|Az OCR-sor azonosítója.|
+|szöveg|Az OCR szövege.|
+|megbízhatóság|Az elismerés megbízhatósága.|
+|language|Az OCR nyelve.|
+|esetben|Azon időtartományok listája, amelyekben ez az OCR megjelent (ugyanaz az OCR többször is megjelenhet).|
+|magasság|Az OCR-négyszög magassága|
+|felül|A legfelső szintű hely a px-ban|
+|balra| A bal oldali hely a px-ban|
+|szélesség|Az OCR-négyszög szélessége|
 
 ```json
 "ocr": [
@@ -276,13 +276,13 @@ Példa:
 
 #### <a name="keywords"></a>kulcsszavak
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |id|A kulcsszó azonosítója.|
 |szöveg|A kulcsszó szövege.|
 |megbízhatóság|A kulcsszó felismerési megbízhatósága.|
-|language|A kulcsszó nyelv (ha lefordítva).|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez a kulcsszó megjelent (a kulcsszó többször is megjelenhet).|
+|language|A kulcsszó nyelve (fordításkor).|
+|esetben|Azon időtartományok listája, amelyekben ez a kulcsszó megjelent (a kulcsszó többször is megjelenhet).|
 
 ```json
 {
@@ -305,21 +305,21 @@ Példa:
 }
 ```
 
-#### <a name="faces"></a>Arcok
+#### <a name="faces"></a>arcok
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|Az arcazonosító.|
-|név|Az arc neve. Ez lehet "Ismeretlen #0, egy azonosított híresség vagy egy ügyfél képzett személy.|
-|megbízhatóság|Az arcazonosítási magabiztosság.|
+|id|A Face azonosító.|
+|név|Az arc neve. Ez lehet ismeretlen #0, egy azonosított híresség vagy egy felhasználó által betanított személy.|
+|megbízhatóság|Az arc azonosításának megbízhatósága.|
 |leírás|A híresség leírása. |
-|thumbnailId|Az arc miniatűrjének azonosítója.|
-|knownPersonId|Ha ismert személy, akkor a belső azonosítója.|
-|referenciaazonosító|Ha ez egy Bing híresség, a Bing ID.|
-|referenceType (hivatkozási típus)|Jelenleg csak Bing.|
-|cím|Ha hírességről van szó, akkor a címe (például "A Microsoft vezérigazgatója").|
-|imageUrl|Ha ez egy híresség, a kép url.|
-|Példányok|Ezek olyan esetek, amikor az arc megjelent az adott időtartományban. Minden példánynak van egy thumbnailsId azonosítója is. |
+|thumbnailId|Az adott arc miniatűrje.|
+|knownPersonId|Ha ismert személy, a belső azonosítója.|
+|referenceId|Ha ez egy Bing-híresség, a Bing-azonosítója.|
+|referenceType|Jelenleg csak a Bing.|
+|cím|Ha ez egy híresség, a címe (például "a Microsoft VEZÉRIGAZGATÓJA").|
+|imageUrl|Ha ez egy híresség, a képe URL-címe.|
+|esetben|Ezek a példányok, ahol az arc megjelent a megadott időtartományban. Minden példányhoz tartozik egy thumbnailsId is. |
 
 ```json
 "faces": [{
@@ -352,12 +352,12 @@ Példa:
 
 #### <a name="labels"></a>Címkék
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A címke azonosítója.|
-|név|A címke neve (például "Számítógép", "TV").|
-|language|A címke név nyelve (lefordítva). BCP-47|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez a címke megjelent (a címke többször is megjelenhet). Minden példánynak van egy megbízhatósági mezője. |
+|id|A címke azonosítója|
+|név|A címke neve (például "számítógép", "TV").|
+|language|A címke nevének nyelve (fordításkor). BCP-47|
+|esetben|Azon időtartományok listája, amelyekben ez a címke megjelent (a címke többször is megjelenhet). Minden példány megbízhatósági mezővel rendelkezik. |
 
 
 ```json
@@ -409,12 +409,12 @@ Példa:
   ] 
 ```
 
-#### <a name="scenes"></a>Jelenetek
+#### <a name="scenes"></a>jelenetek
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A helyszín azonosítója.|
-|Példányok|A jelenet időtartományainak listája (egy jelenetnek csak 1 példánya lehet).|
+|id|A jelenet azonosítója.|
+|esetben|A jelenet időtartományának listája (a jelenet csak 1 példányt tartalmazhat).|
 
 ```json
 "scenes":[  
@@ -442,13 +442,13 @@ Példa:
 ]
 ```
 
-#### <a name="shots"></a>Lövések
+#### <a name="shots"></a>lövések
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A lövés azonosítója.|
-|Kulcsképek|A képképkulcs-képkockák listája (mindegyiknek van azonosítója és példányok időtartományainak listája). Minden keyFrame-példányrendelkezik egy thumbnailId mezővel, amely a keyFrame miniatűr azonosítóját tartalmazza.|
-|Példányok|A felvétel időtartományainak listája (a felvételnek csak 1 példánya lehet).|
+|id|A shot azonosítója.|
+|Kulcsképek|A lövésen belüli kulcsképek listája (mindegyik rendelkezik AZONOSÍTÓval és a példányok időtartományának listájával). Mindegyik kulcsképek-példányhoz tartozik egy thumbnailId mező, amely tartalmazza a kulcs miniatűrje AZONOSÍTÓját.|
+|esetben|A lelőtt időtartományok listája (a shot csak 1 példányt tartalmazhat).|
 
 ```json
 "shots":[  
@@ -490,20 +490,20 @@ Példa:
 ]
 ```
 
-#### <a name="brands"></a>Márkák
+#### <a name="brands"></a>márkák
 
-A beszédben szöveges átiratban és/vagy videoocr-ben észlelt üzleti és termékmárkanevek. Ez nem foglalja magában a márkák vizuális felismerését vagy az embléma észlelését.
+Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OCR-nek a beszédében észlelhetők. Ez nem tartalmazza a márkák vagy embléma-észlelés vizualizációs felismerését.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |id|A márka azonosítója.|
-|név|A márka neve.|
-|referenciaazonosító | Az utótag a márka wikipedia url. Például a "Target_Corporation" a . [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)
-|referenceUrl | A márka Wikipedia url, ha létezik. [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)Például.
+|név|A márkák neve.|
+|referenceId | A márka wikipedia URL-címének utótagja Például a "Target_Corporation" a utótagja [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|referenceUrl | A márka wikipedia URL-címe, ha van ilyen. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |leírás|A márkák leírása.|
 |címkét|A márkához társított előre definiált címkék listája.|
-|megbízhatóság|A Video Indexer márkadetektor megbízhatósági értéke (0-1).|
-|Példányok|A márka időtartományainak listája. Minden példánynak van egy brandType-ja, amely azt jelzi, hogy ez a márka megjelent-e az átiratban vagy az OCR-ben.|
+|megbízhatóság|A Video Indexer Brand detektor (0-1) megbízhatósági értéke.|
+|esetben|A márka időtartományának listája. Minden példány rendelkezik egy brandType, amely azt jelzi, hogy ez a márka szerepel-e az átiratban vagy az OCR-ben.|
 
 ```json
 "brands": [
@@ -551,23 +551,23 @@ A beszédben szöveges átiratban és/vagy videoocr-ben észlelt üzleti és ter
 ]
 ```
 
-#### <a name="statistics"></a>statisztika
+#### <a name="statistics"></a>statisztikák
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|CorrespondenceCount (Levelezésszáma)|A videóban lévő levelek száma.|
-|SpeakerWordCount (Szószám)|A szavak száma hangszórónként.|
-|SpeakerNumberOfTöredékek|A hangszóró által a videóban lévő töredékek mennyisége.|
-|HangszóróLeghosszabbMonolog|A beszélő leghosszabb monológja. Ha a hangszóró a monológban csendben van, az benne van. Csend elején és végén a monolog eltávolítjuk.| 
-|HangszóróTalkToListenratio|A számítás a hangszóró monológján töltött időn alapul (a kettő között a csend nélkül) osztva a videó teljes idejével. Az idő a harmadik tizedesvesszőre lesz kerekítve.|
+|CorrespondenceCount|A videóban található Levelezések száma.|
+|SpeakerWordCount|A beszélő szavak száma.|
+|SpeakerNumberOfFragments|A szónak a videóban található töredékek mennyisége.|
+|SpeakerLongestMonolog|A beszélő leghosszabb monologot. Ha a beszélő a monologot belül csendben van, a rendszer belefoglalja. A rendszer eltávolítja a monologot elején és végén található csendet.| 
+|SpeakerTalkToListenRatio|A számítás a beszélő monologot töltött idő (a között a csend nélkül) alapján történik, a videó teljes időpontjára bontva. Az idő a harmadik tizedes pontra van kerekítve.|
 
 #### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A hangeffektus azonosítója.|
-|type|A hangeffektus típusa (például Taps, Beszéd, Csend).|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez a hanghatás megjelent.|
+|id|A hanghatás azonosítója.|
+|type|A hanghatás típusa (például: taps, beszéd, csend).|
+|esetben|Azon időtartományok listája, amelyekben ez a hanghatás megjelent.|
 
 ```json
 "audioEffects": [
@@ -588,16 +588,16 @@ A beszédben szöveges átiratban és/vagy videoocr-ben észlelt üzleti és ter
 ]
 ```
 
-#### <a name="sentiments"></a>Érzelmeket
+#### <a name="sentiments"></a>érzelmeket
 
-Az érzelmeket a sentimentType mező (Pozitív/Semleges/Negatív) összesíti. Például 0-0,1, 0.1-0.2.
+Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|Az érzelmek azonosítója.|
-|averageScore |Az adott véleménytípus összes példányának összes pontszámának átlaga - Pozitív/Semleges/Negatív|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez az érzés megjelent.|
-|hangulattípus |A típus lehet "Pozitív", "Semleges" vagy "Negatív".|
+|id|Az érzelmi azonosító.|
+|averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
+|esetben|Azon időtartományok listája, amelyekben ez a hangulat megjelent.|
+|sentimentType |A típus "pozitív", "semleges" vagy "negatív" lehet.|
 
 ```json
 "sentiments": [
@@ -625,18 +625,18 @@ Az érzelmeket a sentimentType mező (Pozitív/Semleges/Negatív) összesíti. P
 ]
 ```
 
-#### <a name="visualcontentmoderation"></a>visualContentModeration (vizuális tartalommoderálás)
+#### <a name="visualcontentmoderation"></a>visualContentModeration
 
-A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyekről a Video Indexer potenciálisan felnőtt tartalommal rendelkezik. Ha a visualContentModeration üres, nincs azonosított felnőtt tartalom.
+A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyeknek a Video Indexer valószínűleg felnőtt tartalommal rendelkeznek. Ha a visualContentModeration üres, nincs azonosított felnőtt tartalom.
 
-Előfordulhat, hogy a felnőtteknek szóló vagy pikáns tartalmat tartalmazó videók csak privát nézetben érhetők el. A felhasználóknak lehetőségük van arra, hogy kérelmet nyújtsanak be a tartalom emberi felülvizsgálatára, amely esetben az IsAdult attribútum tartalmazza az emberi felülvizsgálat eredményét.
+A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználóknak lehetősége van arra, hogy a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldjenek, amely esetben a IsAdult attribútum az emberi felülvizsgálat eredményét fogja tartalmazni.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A vizuális tartalom moderálásazonosítója.|
-|felnőttPontszám|A felnőtt pontszám (a tartalom moderátor).|
-|racyScore (racyScore)|A pikáns pontszám (a tartalom moderálásából).|
-|Példányok|Azoknak az időtartományoknak a listája, ahol ez a vizuális tartalommoderáció megjelent.|
+|id|A vizuális tartalom moderálásának azonosítója.|
+|adultScore|A felnőtt pontszám (a tartalom moderátora).|
+|racyScore|A zamatos pontszám (a tartalom moderálása alapján).|
+|esetben|Azon időtartományok listája, amelyekben a vizualizációs tartalom moderálása megmutatkozott.|
 
 ```json
 "VisualContentModeration": [
@@ -665,23 +665,23 @@ Előfordulhat, hogy a felnőtteknek szóló vagy pikáns tartalmat tartalmazó v
 ] 
 ```
 
-#### <a name="textualcontentmoderation"></a>textualContentModeration (szövegezési tartalommoderálás) 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A szöveges tartalommoderálás azonosítója.|
+|id|A szöveges tartalom moderálásának azonosítója.|
 |bannedWordsCount |A tiltott szavak száma.|
-|tiltottWordsRatio |Az arány a szavak teljes számához viszonyítva.|
+|bannedWordsRatio |A szavak összesített számának aránya.|
 
-#### <a name="emotions"></a>Érzelmek
+#### <a name="emotions"></a>érzelmeket
 
-A Video Indexer beszéd- és hangjelzések alapján azonosítja az érzelmeket. Az azonosított érzelem lehet: öröm, szomorúság, harag, vagy a félelem.
+A Video Indexer az érzelmeket beszéd és hangjelek alapján azonosítja. Az azonosított érzelem a következőket jelenthetheti: Joy, szomorúság, harag vagy félelem.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|Az érzelmi azonosító.|
-|type|Az érzelem pillanat, hogy azonosították alapján beszéd és audio dákó. Az érzelem lehet: öröm, szomorúság, harag, vagy a félelem.|
-|Példányok|Egy lista az időtartományokról, ahol ez az érzelem megjelent.|
+|id|Az érzelem azonosítója.|
+|type|A beszéd-és hangjelzések alapján azonosított érzelem pillanata. Az érzelem lehet: Joy, szomorúság, düh vagy félelem.|
+|esetben|Azon időtartományok listája, amelyekben ez az érzelem megjelent.|
 
 ```json
 "emotions": [{
@@ -763,19 +763,19 @@ A Video Indexer beszéd- és hangjelzések alapján azonosítja az érzelmeket. 
 ],
 ```
 
-#### <a name="topics"></a>Témák
+#### <a name="topics"></a>témakörök
 
-Video Indexer teszi következtetni a fő témák átiratok. Ha lehetséges, a 2. [IPTC](https://iptc.org/standards/media-topics/) 
+Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges, a 2. szintű [IPTC](https://iptc.org/standards/media-topics/) -besorolás szerepel. 
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
-|id|A téma azonosítója.|
-|név|A téma neve, például: "Gyógyszerek".|
-|referenciaazonosító|A témakörhierarchiát tükröző zsemlemorzsa. Például: "Egészség és jólét / Orvostudomány és egészségügy / Gyógyszerek".|
-|megbízhatóság|A megbízhatósági pontszám a tartományban [0,1]. A magasabb magabiztosabb.|
-|language|A témában használt nyelv.|
-|iptcName|Az IPTC médiakód neve, ha észlelve van.|
-|Példányok |Jelenleg a Video Indexer nem indexel egy témakört időintervallumokba, így a teljes videó időközként szolgál.|
+|id|A témakör azonosítója.|
+|név|A témakör neve, például: "gyógyszeripar".|
+|referenceId|A témakörök hierarchiáját tükröző zsemlemorzsa. Például: "Health and jólét/orvostudomány és egészségügy/gyógyszeripar".|
+|megbízhatóság|A megbízhatósági pontszám a tartományban [0, 1]. A magasabb szintű bizalom.|
+|language|A témakörben használt nyelv.|
+|iptcName|Az IPTC adathordozó-kód neve, ha észlelve van.|
+|esetben |A Video Indexer jelenleg nem indexeli a témakört az időintervallumok szerint, így a teljes videó az intervallumként lesz használva.|
 
 ```json
 "topics": [{
@@ -810,7 +810,7 @@ Video Indexer teszi következtetni a fő témák átiratok. Ha lehetséges, a 2.
 
 ## <a name="next-steps"></a>További lépések
 
-[Video indexelő fejlesztői portál](https://api-portal.videoindexer.ai)
+[Video Indexer fejlesztői portál](https://api-portal.videoindexer.ai)
 
-A widgetek alkalmazásba ágyazásáról a [Video Indexer widgetek beágyazása az alkalmazásokba című témakörben](video-indexer-embed-widgets.md)talál további információt. 
+További információ a widgetek alkalmazásban való beágyazásáról: [video Indexer widgetek beágyazása az alkalmazásokba](video-indexer-embed-widgets.md). 
 

@@ -1,62 +1,62 @@
 ---
-title: IP-címek az Azure Functionsben
-description: Megtudhatja, hogyan keresheti meg a függvényalkalmazások bejövő és kimenő IP-címeit, és mi okozza azok módosítását.
+title: Azure Functions IP-címei
+description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656771"
 ---
-# <a name="ip-addresses-in-azure-functions"></a>IP-címek az Azure Functionsben
+# <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
-Ez a cikk a függvényalkalmazások IP-címével kapcsolatos alábbi témaköröket ismerteti:
+Ez a cikk a Function apps IP-címeivel kapcsolatos alábbi témaköröket ismerteti:
 
-* A függvényalkalmazás által jelenleg használt IP-címek megkeresése.
-* Mi okozza a függvényalkalmazás IP-címének módosítását?
-* A függvényalkalmazások elérésére képes IP-címek korlátozása.
-* Hogyan juthat be egy függvényalkalmazás dedikált IP-címeihez.
+* A Function app által jelenleg használt IP-címek megkeresése.
+* Mi okozza a Function alkalmazás IP-címeinek módosítását.
+* A Function alkalmazáshoz hozzáférő IP-címek korlátozása.
+* Dedikált IP-címek lekérése egy Function alkalmazáshoz.
 
-Az IP-címek a függvényalkalmazásokhoz vannak társítva, nem az egyes függvényekhez. A bejövő HTTP-kérelmek nem használhatják a bejövő IP-címet az egyes függvények hívására; az alapértelmezett tartománynevet (functionappname.azurewebsites.net) vagy egyéni tartománynevet kell használniuk.
+Az IP-címek a Function apps szolgáltatáshoz vannak társítva, nem az egyes függvényekhez. A bejövő HTTP-kérések nem használhatják a bejövő IP-címet az egyes függvények meghívásához. az alapértelmezett tartománynevet (functionappname.azurewebsites.net) vagy egy egyéni tartománynevet kell használniuk.
 
-## <a name="function-app-inbound-ip-address"></a>Függvényalkalmazás bejövő IP-címe
+## <a name="function-app-inbound-ip-address"></a>Function alkalmazás bejövő IP-címe
 
-Minden függvényalkalmazás egyetlen bejövő IP-címmel rendelkezik. Az IP-cím megkeresése:
+Mindegyik Function alkalmazás egyetlen bejövő IP-címmel rendelkezik. Az IP-cím megkeresése:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Nyissa meg a függvényalkalmazást.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Navigáljon a Function alkalmazáshoz.
 3. Válassza a **Platformfunkciók** lehetőséget.
-4. Válassza a **Tulajdonságok**lehetőséget, és a bejövő IP-cím a **Virtuális IP-cím**csoportban jelenik meg.
+4. Válassza a **Tulajdonságok**lehetőséget, és a bejövő IP-cím megjelenik a **virtuális IP-cím**területen.
 
-## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Függvényalkalmazás kimenő IP-címei
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Function alkalmazás kimenő IP-címei
 
-Minden függvényalkalmazás rendelkezik egy készlet a rendelkezésre álló kimenő IP-címek. Bármely függvényből, például egy háttéradatbázisból származó kimenő kapcsolat a rendelkezésre álló kimenő IP-címek egyikét használja forrás IP-címként. Nem lehet előre tudni, hogy egy adott kapcsolat melyik IP-címet fogja használni. Emiatt a háttérszolgáltatásnak meg kell nyitnia a tűzfalat a függvényalkalmazás összes kimenő IP-címére.
+Minden Function alkalmazáshoz elérhető kimenő IP-címek vannak megadva. A függvények kimenő kapcsolatai, például egy háttér-adatbázis esetében az elérhető kimenő IP-címek egyikét használják a forrás IP-címként. Nem tudja előre, hogy melyik IP-címet fogja használni az adott kapcsolatok. Emiatt a háttér-szolgáltatásnak meg kell nyitnia a tűzfalat a Function alkalmazás összes kimenő IP-címéhez.
 
-A függvényalkalmazás számára elérhető kimenő IP-címek megkeresése:
+A Function app számára elérhető kimenő IP-címek megkeresése:
 
-1. Jelentkezzen be az [Azure Resource Explorer](https://resources.azure.com)be.
-2. Válassza ki **az előfizetéseket > {előfizetése} > a Microsoft.Web > webhelyein >.**
-3. A JSON panelen keresse meg `id` a helyet egy tulajdonsággal, amely a függvényalkalmazás nevében végződik.
-4. Lásd `outboundIpAddresses` `possibleOutboundIpAddresses`és. 
+1. Jelentkezzen be a [Azure erőforrás-kezelőba](https://resources.azure.com).
+2. Válassza **az előfizetések > {előfizetése} > providers > Microsoft. Web > helyek**lehetőséget.
+3. A JSON panelen keresse meg a helyet egy olyan `id` tulajdonsággal, amely a Function alkalmazás nevében ér véget.
+4. Lásd `outboundIpAddresses` : `possibleOutboundIpAddresses`és. 
 
-A készlet `outboundIpAddresses` jelenleg elérhető a függvényalkalmazás. A készlet `possibleOutboundIpAddresses` tartalmazza az IP-címeket, amelyek csak akkor lesznek elérhetők, ha a függvényalkalmazás [más tarifacsomagokra méretez.](#outbound-ip-address-changes)
+A készlet `outboundIpAddresses` jelenleg elérhető a Function alkalmazás számára. A készlet olyan `possibleOutboundIpAddresses` IP-címeket tartalmaz, amelyek csak akkor lesznek elérhetők, ha a Function alkalmazás [más díjszabási szintekre van bontva](#outbound-ip-address-changes).
 
-A rendelkezésre álló kimenő IP-címek megkeresésének másik módja a [Cloud Shell](../cloud-shell/quickstart.md)használata:
+Az elérhető kimenő IP-címek keresésének másik módja a [Cloud Shell](../cloud-shell/quickstart.md)használata:
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 > [!NOTE]
-> Ha egy függvényalkalmazás, amely fut a [felhasználási terv](functions-scale.md#consumption-plan) van méretezve, egy új sor kimenő IP-címek lehet hozzárendelni. Ha a felhasználási terven fut, előfordulhat, hogy a teljes adatközpontot engedélyezési listára kell tenni.
+> Ha a használati [csomagon](functions-scale.md#consumption-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. A használati terv futtatásakor előfordulhat, hogy a teljes adatközpontot kell megadnia.
 
-## <a name="data-center-outbound-ip-addresses"></a>Adatközpont kimenő IP-címei
+## <a name="data-center-outbound-ip-addresses"></a>Az adatközpont kimenő IP-címei
 
-Ha a függvényalkalmazások által használt kimenő IP-címeket kell engedélyezési listára tenni, egy másik lehetőség a függvényalkalmazások adatközpontjának (Azure-régió) engedélyezési listázása. [Letölthet egy JSON-fájlt, amely felsorolja az összes Azure-adatközpont IP-címét.](https://www.microsoft.com/en-us/download/details.aspx?id=56519) Ezután keresse meg a JSON-töredéket, amely a függvényalkalmazás által futtatott régióra vonatkozik.
+Ha meg kell adnia a Function apps által használt kimenő IP-címeket, egy másik lehetőség a Function apps adatközpontjának (Azure Region) engedélyezési listájának engedélyezése. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
 
-Például így nézhet ki a nyugat-európai JSON-töredék:
+A Nyugat-európai JSON-töredék például a következőhöz hasonló lehet:
 
 ```
 {
@@ -78,56 +78,56 @@ Például így nézhet ki a nyugat-európai JSON-töredék:
 }
 ```
 
- Ha további információra van szüksége arról, hogy mikor frissül a fájl, és mikor változnak az IP-címek, **bontsa** ki a [Letöltőközpont lap](https://www.microsoft.com/en-us/download/details.aspx?id=56519)Részletek szakaszát.
+ A fájl frissítésével és az IP-címek változásával kapcsolatos információkért bontsa ki a [Letöltőközpont oldal](https://www.microsoft.com/en-us/download/details.aspx?id=56519) **részletek** szakaszát.
 
-## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>Bejövő IP-cím módosításai
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>Bejövő IP-címek változásai
 
-A bejövő **IP-cím** változhat, ha:
+A bejövő IP-cím a következő **esetekben** változhat:
 
-- Töröljön egy függvényalkalmazást, és hozza létre újra egy másik erőforráscsoportban.
-- Törölje az erőforráscsoport és a régió utolsó függvényalkalmazását, és hozza létre újra.
-- TLS-kötés törlése, például [a tanúsítvány megújítása](../app-service/configure-ssl-certificate.md#renew-certificate)során.
+- Törölje a Function alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz.
+- Törölje az utolsó függvény alkalmazást egy erőforráscsoport és egy régió kombinációjában, majd hozza létre újra.
+- Törölje a TLS-kötést, például a [tanúsítvány megújítása](../app-service/configure-ssl-certificate.md#renew-certificate)során.
 
-Amikor a függvényalkalmazás [egy felhasználási tervben](functions-scale.md#consumption-plan)fut, a bejövő IP-cím akkor is változhat, ha nem végzett műveleteket, például a fent felsoroltakat. [listed above](#inbound-ip-address-changes)
+Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a bejövő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
-## <a name="outbound-ip-address-changes"></a>Kimenő IP-cím módosításai
+## <a name="outbound-ip-address-changes"></a>Kimenő IP-címek változásai
 
-A függvényalkalmazás elérhető kimenő IP-címeinek készlete a következő kbanadékban változhat:
+A Function app számára elérhető kimenő IP-címek készlete a következő esetekben változhat:
 
-* Minden olyan műveletet végrehajthat, amely megváltoztathatja a bejövő IP-címet.
-* Módosítsa az App Service-csomag tarifacsomagját. Az összes lehetséges kimenő IP-cím listája, amelyet az alkalmazás az `possibleOutboundIPAddresses` összes tarifacsomaghoz használhat, a tulajdonságban található. Lásd: [Kimenő IP-k keresése.](#find-outbound-ip-addresses)
+* Hajtson végre bármilyen műveletet, amely módosíthatja a bejövő IP-címet.
+* Változtassa meg a App Service csomag díjszabási szintjét. Az alkalmazás által használható összes lehetséges kimenő IP-cím listája a `possibleOutboundIPAddresses` tulajdonságban található. Lásd: [kimenő IP](#find-outbound-ip-addresses)-címek keresése.
 
-Amikor a függvényalkalmazás [egy felhasználási tervben](functions-scale.md#consumption-plan)fut, a kimenő IP-cím akkor is változhat, ha nem hajtott végre műveleteket, például a fent felsoroltakat. [listed above](#inbound-ip-address-changes)
+Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a kimenő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
-Kimenő IP-címmódosítás szándékos kényszerítése:
+A kimenő IP-címek módosításának szándékos kényszerítése:
 
-1. Az App Service-csomag fel- vagy leskálázható a Standard és a Premium v2 tarifacsomagok között.
+1. A standard és a prémium v2 díjszabási szintjeinek méretezése App Service.
 2. Várjon 10 percet.
-3. Skálázás vissza oda, ahonnan elindult.
+3. Méretezés vissza, ahol elindította.
 
 ## <a name="ip-address-restrictions"></a>IP-címekre vonatkozó korlátozások
 
-Konfigurálhatja azoknak az IP-címeknek a listáját, amelyeket engedélyezni vagy megtagadni szeretne egy függvényalkalmazáshoz való hozzáféréshez. További információ: [Azure App Service static IP restrictions](../app-service/app-service-ip-restrictions.md).
+Konfigurálhatja azon IP-címek listáját, amelyeknek engedélyezni vagy megtagadni kívánja a hozzáférést egy függvény alkalmazásához. További információ: [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md).
 
 ## <a name="dedicated-ip-addresses"></a>Dedikált IP-címek
 
-Ha statikus, dedikált IP-címekre van szüksége, javasoljuk, hogy [az App Service-környezetek](../app-service/environment/intro.md) (az App Service-csomagok [elkülönített szintje).](https://azure.microsoft.com/pricing/details/app-service/) További információt az [App Service-környezet IP-címei](../app-service/environment/network-info.md#ase-ip-addresses) és [az App Service-környezetbe irányuló bejövő forgalom szabályozása című témakörben talál.](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)
+Ha statikus, dedikált IP-címekre van szüksége, javasoljuk [app Service környezetek](../app-service/environment/intro.md) használatát (App Service-csomagok [elkülönített szintje](https://azure.microsoft.com/pricing/details/app-service/) ). További információ: [app Service Environment IP-címek](../app-service/environment/network-info.md#ase-ip-addresses) és a [Bejövő forgalom vezérlése egy app Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
-Annak kiderítése, hogy a függvényalkalmazás fut-e egy App Service-környezetben:
+Annak megállapítása, hogy a függvény alkalmazás fut-e egy App Service Environmentban:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Nyissa meg a függvényalkalmazást.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Navigáljon a Function alkalmazáshoz.
 3. Válassza az **Áttekintés** lapot.
-4. Az App Service-csomag csomag az **App Service-csomag/tarifacsomag**alatt jelenik meg. Az App Service-környezet tarifacsomag **elkülönített.**
+4. A App Service csomag szintje a **app Service terv/árképzési**szinten jelenik meg. A App Service Environment díjszabási szintje **elkülönített**.
  
-Alternatív megoldásként használhatja a [Cloud Shellt:](../cloud-shell/quickstart.md)
+Másik lehetőségként használhatja a [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-Az App `sku` Service-környezet `Isolated`.
+A App Service Environment `sku` `Isolated`.
 
 ## <a name="next-steps"></a>További lépések
 
-Az IP-változások gyakori oka a függvényalkalmazás-méretezés módosítása. [További információ a függvényalkalmazás-méretezésről.](functions-scale.md)
+Az IP-változások gyakori oka az alkalmazások méretezésének változásai. [További információ a Function app skálázásról](functions-scale.md).

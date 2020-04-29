@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatott számítógép-ügynök telepítése a Windows PowerShell DSC használatával
-description: Ebben a cikkben megtudhatja, hogyan csatlakoztathat gépeket az Azure-hoz az Azure-beli Arc kiszolgálókhoz (előzetes verzió) használatával a Windows PowerShell DSC használatával.
+title: Csatlakoztatott számítógép ügynökének telepítése a Windows PowerShell DSC használatával
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc for Servers (előzetes verzió) használatával a Windows PowerShell DSC használatával.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,88 +9,88 @@ ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79164682"
 ---
-# <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott számítógép ügynöktelepítése a Windows PowerShell DSC használatával
+# <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
-A [Windows PowerShell kívánt állapotkonfigurációja](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a Windows-számítógépek szoftvertelepítését és -konfigurációját. Ez a cikk ismerteti, hogyan dsc használatával telepítheti az Azure Arc kiszolgálók hoz csatlakoztatott gép ügynök hibrid Windows-gépeken.
+A [Windows PowerShell desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan telepítheti a DSC-t az Azure arc for Servers Connected Machine Agent használatára a hibrid Windows rendszerű gépeken.
 
 ## <a name="requirements"></a>Követelmények
 
-- A Windows PowerShell 4.0-s vagy újabb verziója
+- Windows PowerShell 4,0 vagy újabb verzió
 
-- Az [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modul
+- A [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modul
 
-- A gépek nem interaktív módon az Azure Archoz való csatlakoztatásához egyszerű szolgáltatás. Kövesse az Egyszerű [szolgáltatás létrehozása nagy méretekben való bevezetéshez](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) szakaszlépéseit, ha még nem hozott létre egyszerű szolgáltatást az Arc számára a kiszolgálókhoz.
+- Egy egyszerű szolgáltatásnév, amely nem interaktív módon csatlakozik a gépekhez az Azure-ív számára. Ha még nem hozott létre a kiszolgálókhoz arc for Servers szolgáltatást, kövesse az [egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a bevezetéshez című szakasz lépéseit.
 
-## <a name="install-the-connectedmachine-dsc-module"></a>A ConnectedMachine DSC modul telepítése
+## <a name="install-the-connectedmachine-dsc-module"></a>A ConnectedMachine DSC moduljának telepítése
 
-1. A modul manuális telepítéséhez töltse le a forráskódot, és `$env:ProgramFiles\WindowsPowerShell\Modules folder`csomagolja ki a projektkönyvtár tartalmát a számára. Vagy futtassa a következő parancsot a PowerShell-galériából a PowerShellGet használatával történő telepítéshez (a PowerShell 5.0-s részében):
+1. A modul manuális telepítéséhez töltse le a forráskódot, és bontsa ki a projekt könyvtára tartalmát a `$env:ProgramFiles\WindowsPowerShell\Modules folder`következőre:. Vagy futtassa a következő parancsot a PowerShell-galériából a PowerShellGet használatával történő telepítéshez (a PowerShell 5,0-ben):
 
     ```powershell
     Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
     ```
 
-2. A telepítés megerősítéséhez futtassa a következő parancsot, és győződjön meg arról, hogy az Azure Connected Machine DSC rendelkezésre álló erőforrásokat.
+2. A telepítés megerősítéséhez futtassa a következő parancsot, és győződjön meg arról, hogy az Azure Connected Machine DSC-erőforrásai elérhetők.
 
     ```powershell
     Get-DscResource -Module AzureConnectedMachineDsc
     ```
 
-   A kimenetben a következőhöz hasonló tetszőséget kell látnia:
+   A kimenetben a következőhöz hasonlónak kell megjelennie:
 
-   ![Példa a csatlakoztatott gép DSC modul telepítésének megerősítésére](./media/onboard-dsc/confirm-module-installation.png)
+   ![A csatlakoztatott Machine DSC-modul telepítési példájának megerősítése](./media/onboard-dsc/confirm-module-installation.png)
 
-## <a name="install-the-agent-and-connect-to-azure"></a>Telepítse az ügynököt, és csatlakozzon az Azure-hoz
+## <a name="install-the-agent-and-connect-to-azure"></a>Az ügynök telepítése és az Azure-hoz való kapcsolódás
 
-A modul ban található erőforrások az Azure Connected Machine Agent konfigurációjának kezelésére szolgálnak. Is szerepel egy PowerShell-parancsfájl `AzureConnectedMachineAgent.ps1` `AzureConnectedMachineDsc\examples` , megtalálható a mappában. Közösségi erőforrásokat használ a letöltés és a telepítés automatizálásához, és kapcsolatot létesít az Azure Arc. Ez a parancsfájl hasonló lépéseket hajt végre a [Connect hibrid gépek az Azure-hoz az Azure Portal cikkből.](onboard-portal.md)
+Az ebben a modulban található erőforrások úgy vannak kialakítva, hogy kezelhesse az Azure-beli csatlakoztatott gép ügynökének konfigurációját. A tartalmaz egy PowerShell-parancsfájlt `AzureConnectedMachineAgent.ps1`is, amely `AzureConnectedMachineDsc\examples` a mappában található. Közösségi erőforrásokat használ a letöltés és a telepítés automatizálásához, és kapcsolatot létesíteni az Azure arc használatával. Ez a szkript a [hibrid gépek az Azure-ba való összekapcsolásához a Azure Portal](onboard-portal.md) cikkben ismertetett hasonló lépéseket hajtja végre.
 
-Ha a számítógépnek proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után az [itt](onboard-portal.md#configure-the-agent-proxy-setting)ismertetett parancsot kell futtatnia. Ezzel beállítja a `https_proxy`proxykiszolgáló rendszerkörnyezeti változóját. Ahelyett, hogy a parancsot manuálisan futtatna, ezt a lépést a DSC-vel hajthatja végre a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modul használatával.
+Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, az [itt](onboard-portal.md#configure-the-agent-proxy-setting)ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy`. A parancs manuális futtatása helyett a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modul használatával elvégezheti ezt a lépést a DSC-vel.
 
 >[!NOTE]
->A DSC futtatásának engedélyezéséhez a Windows rendszert úgy kell konfigurálni, hogy akkor is megkapja a PowerShell távoli parancsait, ha localhost-konfigurációt futtat. A környezet megfelelő konfigurálásához csak `Set-WsManQuickConfig -Force` futtassa egy emelt szintű PowerShell-terminálon.
+>A DSC futtatásának engedélyezéséhez a Windows rendszert úgy kell konfigurálni, hogy a localhost konfigurációjának futtatásakor is megkapja a PowerShell távoli parancsait. A környezet megfelelő konfigurálásához egyszerűen futtasson `Set-WsManQuickConfig -Force` egy emelt szintű PowerShell-terminált.
 >
 
 A konfigurációs dokumentumok (MOF-fájlok) a `Start-DscConfiguration` parancsmag használatával alkalmazhatók a gépre.
 
-Az alábbiakban azokat a paramétereket, amelyeket átad a PowerShell-parancsfájlnak.
+A következő paraméterek a használni kívánt PowerShell-szkripthez adhatók meg.
 
 - `TenantId`: Az egyedi azonosító (GUID), amely az Azure AD dedikált példányát jelöli.
 
-- `SubscriptionId`: Az Azure-előfizetés előfizetésazonosítója (GUID), amelyben a gépeket szeretné.
+- `SubscriptionId`: Annak az Azure-előfizetésnek az előfizetés-azonosítója (GUID), amelyhez a gépeket szeretné használni.
 
-- `ResourceGroup`: Az erőforráscsoport neve, amelyhez a csatlakoztatott gépeket szeretné tartozni.
+- `ResourceGroup`: Az erőforráscsoport neve, ahová a csatlakoztatott gépek tartoznak.
 
-- `Location`: Lásd a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet ugyanaz vagy eltérő, mint az erőforráscsoport helye.
+- `Location`: Tekintse meg a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
 
-- `Tags`: A csatlakoztatott gép erőforrására alkalmazandó címkék karakterlánctömbje.
+- `Tags`: A csatlakoztatott gépi erőforrásra alkalmazni kívánt címkék karakterlánc-tömbje.
 
-- `Credential`: PowerShell-hitelesítő adatok objektuma az **ApplicationId** azonosítóval és **jelszóval,** amely a gépek nagy méretekben történő regisztrálására [szolgál egyszerű szolgáltatás](onboard-service-principal.md)használatával. 
+- `Credential`: A **ApplicationId** és- **jelszóval** rendelkező PowerShell hitelesítőadat-objektum, amellyel a gépeket egy [egyszerű szolgáltatásnév](onboard-service-principal.md)használatával regisztrálják a méretekben. 
 
-1. Egy PowerShell-konzolon keresse meg azt `.ps1` a mappát, amelyben a fájlt mentette.
+1. A PowerShell-konzolon Navigáljon arra a mappára, ahová a `.ps1` fájlt mentette.
 
-2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk összeállításáról a DSC-konfigurációk című témakörben talál információt: [DSC-konfigurációk:](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)
+2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk fordításával kapcsolatos információkért lásd: [DSC-konfigurációk](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
     ```
 
-3. Ezzel létrehoz `localhost.mof file` egy új mappát, amelynek neve `C:\dsc`.
+3. Ekkor létrejön egy `localhost.mof file` nevű `C:\dsc`új mappa.
 
-Miután telepítette az ügynököt, és konfigurálja, hogy csatlakozzon az Azure Arc kiszolgálókhoz (előzetes verzió), nyissa meg az Azure Portalon, hogy ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Tekintse meg gépeit az [Azure Portalon.](https://aka.ms/hybridmachineportal)
+Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. Megtekintheti a gépeket a [Azure Portalban](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Hozzáadás meglévő konfigurációkhoz
 
-Ez az erőforrás hozzáadható a meglévő DSC-konfigurációkhoz, hogy egy számítógép végpontok között lévő konfigurációt képviseljen. Előfordulhat például, hogy hozzá szeretné adni ezt az erőforrást egy olyan konfigurációhoz, amely beállítja a biztonságos operációs rendszer beállításait.
+Ezt az erőforrást hozzá lehet adni a meglévő DSC-konfigurációkhoz a gép végpontok közötti konfigurációjának ábrázolásához. Előfordulhat például, hogy hozzá szeretné adni ezt az erőforrást egy olyan konfigurációhoz, amely az operációs rendszer biztonságos beállításait állítja be.
 
-A [PowerShell-katalógus CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modul segítségével létrehozhat egy [összetett erőforrást](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) a példa konfiguráció, a konfigurációk kombinálásának további egyszerűsítése érdekében.
+A PowerShell-galéria [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan kezelheti a gépet az [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendégkonfigurációja,](../../governance/policy/concepts/guest-configuration.md)ellenőrizze, hogy a gép a várt Log Analytics-munkaterületnek jelent-e, lehetővé teszi a figyelést az [Azure Monitor virtuális gépekkel](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és még sok más használatával.
+- Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 
-- További információ a [Log Analytics-ügynökről.](../../azure-monitor/platform/log-analytics-agent.md) A Windows és Linux log analytics-ügynöke akkor szükséges, ha proaktív módon szeretné figyelni a számítógépen futó operációs rendszert és számítási feladatokat, kezelni szeretné az Automation runbookok vagy megoldások, például az Update Management használatával, vagy más Azure-szolgáltatásokat, például az [Azure Security Centert.](../../security-center/security-center-intro.md)
+- További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-intro.md).

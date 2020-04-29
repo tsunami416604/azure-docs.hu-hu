@@ -1,25 +1,25 @@
 ---
-title: A régiók közötti ütközések kezelése az Azure Cosmos DB-ben
-description: Megtudhatja, hogyan kezelheti az ütközéseket az Azure Cosmos DB-ben az utolsó író által megnyert vagy egyéni ütközésfeloldási szabályzat létrehozásával
+title: A Azure Cosmos DB régiói közötti ütközések kezelése
+description: Ismerje meg, hogyan kezelheti az ütközéseket Azure Cosmos DB a Last-Writer-WINS vagy egy egyéni ütközés-feloldási szabályzat létrehozásával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247409"
 ---
-# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Ütközésfeloldási szabályzatok kezelése az Azure Cosmos DB-ben
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
 
-Többrégiós írások esetén, ha több ügyfél ír ugyanabba az elembe, ütközések léphetnek fel. Ütközés esetén az ütközést különböző ütközésfeloldási házirendek használatával oldhatja fel. Ez a cikk az ütközésfeloldási házirendek kezelését ismerteti.
+A többrégiós írások esetében, ha több ügyfél is ír ugyanarra az elemre, ütközések merülhetnek fel. Ütközés esetén az ütközést a különböző ütközés-feloldási házirendek használatával oldhatja fel. Ez a cikk az ütközés-feloldási szabályzatok kezelését ismerteti.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Utolsó író által nyert ütközésfeloldási házirend létrehozása
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Utolsó-író-WINS ütközés-feloldási szabályzat létrehozása
 
-Ezek a minták azt mutatják be, hogyan állíthat be egy tárolót egy utolsó író által megnyert ütközésfeloldási házirenddel. Az utolsó író-wins alapértelmezett elérési útja az `_ts` időbélyeg mező vagy a tulajdonság. Az SQL API-k esetében ez is beállítható egy felhasználó által definiált, numerikus típusú elérési útra. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva, vagy érvénytelen, `_ts`akkor alapértelmezés szerint a . A házirenddel feloldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a házirendet az összes API használhatja.
+Ezek a minták bemutatják, hogyan állíthat be egy tárolót egy utolsó író-WINS ütközés-feloldási házirenddel. Az utolsó-író-WINS alapértelmezett útvonala az időbélyeg mező vagy a `_ts` tulajdonság. Az SQL API esetében ez egy numerikus típusú felhasználó által megadott elérési útra is beállítható. Ütközés esetén a legmagasabb érték nyer. Ha az elérési út nincs beállítva vagy érvénytelen, a rendszer az alapértelmezett `_ts`értéket adja meg. A szabályzattal megoldott ütközések nem jelennek meg az ütközési hírcsatornában. Ezt a szabályzatot minden API használhatja.
 
 ### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -99,23 +99,23 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Egyéni ütközésfeloldási házirend létrehozása tárolt eljárással
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Egyéni ütközés-feloldási szabályzat létrehozása tárolt eljárás használatával
 
-Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Ezek az ütközések csak akkor jelennek meg az ütközési hírcsatornában, ha hiba történt a tárolt eljárásban. Miután a házirend létrejött a tárolóval, létre kell hoznia a tárolt eljárást. Az alábbi .NET SDK minta egy példát mutat be. Ez a szabályzat csak a Core (SQL) Api-ban támogatott.
+Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Ezek az ütközések nem jelennek meg az ütközési hírcsatornában, kivéve, ha hiba van a tárolt eljárásban. Miután létrehozta a szabályzatot a tárolóval, létre kell hoznia a tárolt eljárást. Az alábbi .NET SDK-minta egy példát mutat be. Ezt a házirendet csak a Core (SQL) API támogatja.
 
-### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Példa egyéni ütközésfeloldási tárolt eljárásra
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Minta egyéni ütközés-feloldás tárolt eljárása
 
-Az egyéni ütközésfeloldási tárolt eljárásokat az alábbi függvényaláíráshasználatával kell végrehajtani. A függvény nevének nem kell egyeznie a tárolt eljárás tárolóval történő regisztrálásakor használt névvel, de egyszerűsíti az elnevezést. Az alábbiakban ismerteti azokat a paramétereket, amelyeket ehhez a tárolt eljáráshoz végre kell hajtani.
+Az egyéni ütközések feloldására szolgáló tárolt eljárásokat az alább látható függvény aláírása alapján kell megvalósítani. A függvény nevének nem kell megegyeznie a tárolt eljárás tárolóval való regisztrálása során használt névvel, de egyszerűsíti a névadást. Itt látható a tárolt eljáráshoz szükséges paraméterek leírása.
 
-- **incomingItem**: Az ütközéseket okozó véglegesítésbe beszúrt vagy frissített elem. Null a törlési műveleteknél.
-- **existingItem**: Az éppen véglegesített elem. Ez az érték nem null értékű frissítésben, beszúrásesetén vagy törléskor pedig null.
-- **isTombstone**: Logikai érték, amely azt jelzi, hogy a bejövő elem ütközik-e egy korábban törölt elemsel. Ha igaz, a existingItem is null.
-- **ütközőelemek:** A tárolóban lévő összes olyan elem véglegesített verziójának tömbje, amely ütközik az azonosítón lévő bejövő elemvagy bármely más egyedi indextulajdonság gal.
+- **incomingItem**: az ütközéseket generáló véglegesítő vagy frissített tétel. NULL értékű a törlési műveletekhez.
+- **existingItem**: a jelenleg véglegesített tétel. Ez az érték nem null értékű a frissítésben, és null értékű INSERT vagy DELETE esetén.
+- **isTombstone**: logikai érték, amely azt jelzi, hogy a incomingItem ütközik-e egy előzőleg törölt elemmel. Igaz értéke esetén a existingItem is null értékű.
+- **conflictingItems**: a tárolóban lévő összes elem véglegesített verziójának tömbje, amely ütközik a incomingItem azonosítóval vagy bármely más egyedi index-tulajdonsággal.
 
 > [!IMPORTANT]
-> A tárolt eljárásokhoz ugyanúgy, mint bármely tárolt eljárás esetében, az egyéni ütközésfeloldási eljárás is hozzáférhet az azonos partíciókulccsal rendelkező adatokhoz, és bármilyen beszúrási, frissítési vagy törlési műveletet végrehajthat az ütközések feloldásához.
+> Akárcsak a tárolt eljárásokhoz hasonlóan, egy egyéni ütközés-feloldási eljárás ugyanazzal a partíciós kulccsal fér hozzá az adatokhoz, és bármilyen beszúrási, frissítési vagy törlési műveletet végrehajthat az ütközések feloldásához.
 
-Ez a tárolt mintaeljárás úgy oldja fel `/myCustomId` az ütközéseket, hogy kiválasztja a legalacsonyabb értéket az elérési útról.
+Ez a minta tárolt eljárás az ütközéseket az `/myCustomId` elérési út legalacsonyabb értékének kiválasztásával oldja fel.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -222,7 +222,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-A tároló létrehozása után létre `resolver` kell hoznia a tárolt eljárást.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a name="java-sync-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -235,7 +235,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-A tároló létrehozása után létre `resolver` kell hoznia a tárolt eljárást.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,7 +254,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-A tároló létrehozása után létre `resolver` kell hoznia a tárolt eljárást.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -270,11 +270,11 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-A tároló létrehozása után létre `resolver` kell hoznia a tárolt eljárást.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Egyéni ütközésfeloldási szabályzat létrehozása
 
-Ezek a minták bemutatják, hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz. Ezek az ütközések megjelennek a konfliktus-hírcsatornában.
+Ezek a minták bemutatják, hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz. Ezek az ütközések az ütközési hírcsatornában jelennek meg.
 
 ### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
@@ -352,7 +352,7 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 ## <a name="read-from-conflict-feed"></a>Olvasás az ütközéscsatornából
 
-Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Az ütközések csak akkor jelennek meg az ütközési hírcsatornában, ha azokat nem oldották fel automatikusan, vagy ha egyéni ütközési házirendet használnak.
+Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Az ütközések csak akkor jelennek meg az ütközési hírcsatornában, ha nem lettek automatikusan feloldva, vagy egyéni ütközési házirendet használnak.
 
 ### <a name="net-sdk-v2"></a><a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
@@ -424,12 +424,12 @@ while conflict:
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg az alábbi Azure Cosmos DB-fogalmakat:
+Ismerkedjen meg az alábbi Azure Cosmos DB fogalmakkal:
 
 - [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-- [Többfőkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
-- [Ügyfelek konfigurálása többhomoláshoz](how-to-manage-database-account.md#configure-multiple-write-regions)
-- [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókjából](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Hogyan kell beállítani a multi-master az alkalmazásokban](how-to-multi-master.md).
+- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+- [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md).
 - [Particionálás és adatelosztás](partition-data.md)
 - [Indexelés az Azure Cosmos DB-ben](indexing-policies.md)

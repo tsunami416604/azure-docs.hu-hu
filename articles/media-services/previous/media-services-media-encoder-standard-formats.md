@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard formátumok és kodekek - Azure
-description: Ez a cikk áttekintést nyújt a Media Encoder Standard formátumokról és kodekekről.
+title: Media Encoder Standard formátumok és kodekek – Azure
+description: Ez a cikk áttekintést nyújt Media Encoder Standard formátumokról és kodekekről.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,21 +15,21 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251023"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
-> [!div class="op_single_selector" title1="Válassza ki a Media Services használt verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [2-es verzió](media-services-media-encoder-standard-formats.md)
 > * [3-as verzió](../latest/media-encoder-standard-formats.md)
 
-Ez a dokumentum a Media Encoder Standard alkalmazással használható leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza.
+Ez a dokumentum a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket Media Encoder Standard használhat.
 
-## <a name="input-containerfile-formats"></a>Beviteli tároló/fájl formátumok
+## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
 | --- | --- |
 | FLV (H.264 és AAC kodekkel) (.flv) |Igen |
@@ -45,21 +45,21 @@ Ez a dokumentum a Media Encoder Standard alkalmazással használható leggyakori
 | QuickTime (.mov) |Igen |
 
 > [!NOTE]
-> A fenti lista a leggyakrabban előforduló fájlkiterjesztéseket tartalmazza. A Media Encoder Standard számos mást is támogat (például .m2ts, .mpeg2video, .qt). Ha megpróbál kódolni egy fájlt, és hibaüzenetet kap arról, hogy a formátum nem támogatott, itt adja [meg](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)visszajelzését.
+> A fenti lista a leggyakrabban előforduló fájlkiterjesztéseket tartalmazza. A Media Encoder Standard számos más támogatást támogat (például:. m2ts,. mpeg2video,. Qt). Ha egy fájlt próbál kódolni, és a nem támogatott formátumra vonatkozó hibaüzenetet kap, [itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)adja meg a visszajelzését.
 > 
 > 
 
-### <a name="audio-formats-in-input-containers"></a>Hangformátumok beviteli tárolókban
-A Media Encoder Standard a következő hangformátumokat támogatja a beviteli tárolókban:
+### <a name="audio-formats-in-input-containers"></a>Hangformátumok bemeneti tárolókban
+Media Encoder Standard támogatja a következő hangformátumok átvitelét a bemeneti tárolókban:
 
-* MXF, GXF és QuickTime fájlok, amelyek hangsávot tartalmaznak átlapolt sztereó vagy 5.1-es mintával
+* MXF-, GXF-és QuickTime-fájlok, amelyek hang-és hangsávokat tartalmazhatnak az összekapcsolt sztereó vagy 5,1-mintákkal
 
 vagy
 
 * Olyan MXF-, GXF- és QuickTime-fájlok, melyekben külön PCM sávban található a hang, de csatornaleképezés (sztereó vagy 5.1) a fájlok metaadataiból származtatható
 
-## <a name="input-video-codecs"></a>Videokodekek bevitele
-| Videokodekek bevitele | Támogatott |
+## <a name="input-video-codecs"></a>Bemeneti videó codec-je
+| Bemeneti videó codec-je | Támogatott |
 | --- | --- |
 | 8 bites/10 bites AVC, akár 4:2:2-esig, ideértve az AVCIntrát is |8 bites 4:2:0-es és 4:2:2-es |
 | Avid DNxHD (MXF-ben) |Igen |
@@ -79,9 +79,9 @@ vagy
 | Apple ProRes Proxy |Igen |
 | Apple ProRes 4444 |Igen |
 | Apple ProRes 4444 XQ |Igen |
-| HEVC/H.265| Fő és Fő 10 (&#42;) Profilok<br/>A Main 10 Profile támogatás 8bites 4:2:0 tartalomhoz készült. |
+| HEVC/H. 265| Fő és fő 10 (&#42;) profilok<br/>A 10 fő profil támogatása a 8bit 4:2:0-tartalomhoz készült. |
 
-## <a name="input-audio-codecs"></a>Hangkodekek bevitele
+## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Igen |
@@ -89,7 +89,7 @@ vagy
 | MP3 (MPEG-1, 3 hangréteg) |Igen |
 | Windows Media Audio |Igen |
 | WAV/PCM |Igen |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
 | AMR (adaptív többsebességű) |Igen |
@@ -99,12 +99,12 @@ vagy
 | Dolby® Digital (E-AC3) |Nem |
 
 ## <a name="output-formats-and-codecs"></a>Kimeneti formátumok és kodekek
-Az alábbi táblázat az exportra támogatott kodekeket és fájlformátumokat sorolja fel.
+A következő táblázat az exportáláshoz támogatott kodekeket és fájlformátumokat sorolja fel.
 
-| Fájlformátum | Videó kodek | Hang kodek |
+| Fájlformátum | Videó kodek | Hangkodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(beleértve a többbitrátásos MP4-tárolókat is) |H.264 (magas, fő és alapvonal profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (magas, fő és alapvonal profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(többek között a többszörös sávszélességű MP4-tárolók) |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, it-AAC v1, it-AAC v2 |
+| MPEG2 – TS |H. 264 (magas, fő és alapkonfigurációs profilok) |AAC-LC, it-AAC v1, it-AAC v2 |
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -113,7 +113,7 @@ Az alábbi táblázat az exportra támogatott kodekeket és fájlformátumokat s
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még
-[Igény szerinti tartalom kódolása az Azure Media Services szolgáltatással](media-services-encode-asset.md)
+[Igény szerinti tartalom kódolása Azure Media Services](media-services-encode-asset.md)
 
-[Kódolás a Media Encoder Standard segítségével](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Kódolás a Media Encoder Standard használatával](media-services-dotnet-encode-with-media-encoder-standard.md)
 

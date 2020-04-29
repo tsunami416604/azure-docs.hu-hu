@@ -1,6 +1,6 @@
 ---
-title: Tartomány- és TLS-/SSL-tanúsítványok – problémamegoldás
-description: Megoldásokat találhat azokra a gyakori problémákra, amelyekkel egy tartomány vagy TLS/SSL-tanúsítvány konfigurálásakor találkozhat az Azure App Service-ben.
+title: A tartomány és a TLS/SSL-tanúsítványok hibáinak megoldása
+description: A tartomány-vagy TLS/SSL-tanúsítvány Azure App Serviceban való konfigurálásakor felmerülő gyakori problémák megoldásait találja.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,49 +9,49 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668022"
 ---
-# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Tartomány- és TLS-/SSL-tanúsítványproblémák elhárítása az Azure App Service szolgáltatásban
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>A tartományok és a TLS/SSL-tanúsítványok problémáinak elhárítása Azure App Service
 
-Ez a cikk azokat a gyakori problémákat sorolja fel, amelyekkel a webalkalmazások hoz az Azure App Service-ben konfigurálásakor találkozhat. Ismerteti továbbá a lehetséges okokat és megoldásokat ezekre a problémákra.
+Ez a cikk azokat a gyakori problémákat sorolja fel, amelyek akkor fordulhatnak elő, amikor a Azure App Service webalkalmazásaihoz konfigurál egy tartomány-vagy TLS/SSL-tanúsítványt. Emellett leírja a problémák lehetséges okait és megoldásait is.
 
-Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure [szakértőivel az MSDN és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN-és stack overflow fórumokban](https://azure.microsoft.com/support/forums/)található Azure-szakértőkkel. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="certificate-problems"></a>Tanúsítványproblémák
+## <a name="certificate-problems"></a>Tanúsítványokkal kapcsolatos problémák
 
-### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Nem adhat hozzá TLS/SSL-tanúsítványkötést egy alkalmazáshoz 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Nem adható hozzá TLS/SSL-tanúsítvány kötése egy alkalmazáshoz 
 
 #### <a name="symptom"></a>Hibajelenség
 
-TLS-kötés hozzáadásakor a következő hibaüzenet jelenik meg:
+Ha TLS-kötést ad hozzá, a következő hibaüzenet jelenik meg:
 
-"Nem sikerült hozzáadni az SSL-kötést. A meglévő VIP-tanúsítvány nem állítható be, mert egy másik VIP már használja ezt a tanúsítványt."
+"Nem sikerült hozzáadni az SSL-kötést. Nem állítható be a tanúsítvány a meglévő VIP-hez, mert egy másik VIP már használja ezt a tanúsítványt. "
 
 #### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötéssel rendelkezik ugyanahhoz az IP-címhez több alkalmazásban. Az A alkalmazás például egy régi tanúsítvánnyal rendelkező IP-alapú SSL-lel rendelkezik. A B alkalmazás IP-alapú SSL-lel rendelkezik, és ugyanahhoz az IP-címhez új tanúsítványt kell tanúsítania. Amikor frissíti az alkalmazás TLS-kötést az új tanúsítvánnyal, ez a hiba sikertelen lesz, mert ugyanazt az IP-címet használja egy másik alkalmazás. 
+Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötést használ ugyanahhoz az IP-címhez több alkalmazás között. Az A alkalmazás például egy olyan IP-alapú SSL-t tartalmaz, amely egy régi tanúsítvánnyal rendelkezik. A B alkalmazásnak van egy IP-alapú SSL-je, amely egy új tanúsítvánnyal rendelkezik ugyanahhoz az IP-címhez. Ha az alkalmazás TLS-kötését az új tanúsítvánnyal frissíti, akkor ez a hiba meghiúsul, mert ugyanazt az IP-címet használja egy másik alkalmazáshoz. 
 
 #### <a name="solution"></a>Megoldás 
 
 A probléma megoldásához használja az alábbi módszerek egyikét:
 
-- Törölje az IP-alapú SSL-kötést a régi tanúsítványt használó alkalmazáson. 
-- Hozzon létre egy új, IP-alapú SSL-kötést, amely az új tanúsítványt használja.
+- Törölje az IP-alapú SSL-kötést azon az alkalmazáson, amely a régi tanúsítványt használja. 
+- Hozzon létre egy új IP-alapú SSL-kötést, amely az új tanúsítványt használja.
 
-### <a name="you-cant-delete-a-certificate"></a>Tanúsítvány nem törölhető 
+### <a name="you-cant-delete-a-certificate"></a>A tanúsítvány nem törölhető 
 
 #### <a name="symptom"></a>Hibajelenség
 
-Amikor megpróbál törölni egy tanúsítványt, a következő hibaüzenet jelenik meg:
+Amikor megpróbálja törölni a tanúsítványt, a következő hibaüzenet jelenik meg:
 
-"Nem lehet törölni a tanúsítványt, mert jelenleg TLS/SSL-kötésben használatos. A tanúsítvány törlése előtt el kell távolítani a TLS-kötést."
+"Nem sikerült törölni a tanúsítványt, mert jelenleg egy TLS-/SSL-kötésben van használatban. A tanúsítvány törléséhez el kell távolítani a TLS-kötést. "
 
 #### <a name="cause"></a>Ok
 
@@ -59,206 +59,206 @@ Ez a probléma akkor fordulhat elő, ha egy másik alkalmazás használja a tan�
 
 #### <a name="solution"></a>Megoldás
 
-Távolítsa el a tanúsítvány TLS-kötését az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, és nyissa meg újra az Azure Portalt egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
+Távolítsa el az adott tanúsítványhoz tartozó TLS-kötést az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, majd nyissa meg újra a Azure Portal egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
 
-### <a name="you-cant-purchase-an-app-service-certificate"></a>Nem vásárolhat App Service-tanúsítványt 
+### <a name="you-cant-purchase-an-app-service-certificate"></a>Nem vásárolhat App Service tanúsítványt 
 
 #### <a name="symptom"></a>Hibajelenség
-Nem vásárolhat Azure [App Service-tanúsítványt](./configure-ssl-certificate.md#import-an-app-service-certificate) az Azure Portalon.
+A Azure Portal nem vásárolhat [Azure app Service tanúsítványt](./configure-ssl-certificate.md#import-an-app-service-certificate) .
 
 #### <a name="cause-and-solution"></a>Ok és megoldás
-A probléma a következő okok valamelyike miatt fordulhat elő:
+Ez a probléma a következő okok bármelyike miatt fordulhat elő:
 
-- Az App Service-csomag ingyenes vagy megosztott. Ezek a tarifacsomagok nem támogatják a TLS-t. 
+- Az App Service-csomag ingyenes vagy megosztott. Ezek az árképzési szintek nem támogatják a TLS-t. 
 
-    **Megoldás:** Frissítse az App Service-csomagot az alkalmazás standardra.
+    **Megoldás**: frissítse a app Service tervet az alkalmazásról a standard szintre.
 
-- Az előfizetés nem rendelkezik érvényes hitelkártyával.
+- Az előfizetéshez nem tartozik érvényes hitelkártya.
 
-    **Megoldás:** Adjon hozzá érvényes hitelkártyát az előfizetéséhez. 
+    **Megoldás**: adjon hozzá egy érvényes bankkártyát az előfizetéséhez. 
 
-- Az előfizetési ajánlat nem támogatja az App Service-tanúsítvány, például a Microsoft Student megvásárlását.  
+- Az előfizetési ajánlat nem támogatja App Service-tanúsítvány, például a Microsoft Student megvásárlását.  
 
-    **Megoldás:** Frissítse előfizetését. 
+    **Megoldás**: frissítse az előfizetését. 
 
 - Az előfizetés elérte az előfizetésben engedélyezett vásárlások korlátját.
 
-    **Megoldás:** Az App Service-tanúsítványok legfeljebb 10 tanúsítványvásárlást vásárolhatnak a szolgáltatáskezelő és az EA előfizetési típusokhoz. Más előfizetési típusok esetén a korlát 3. A korlát növeléséhez forduljon az [Azure ügyfélszolgálatához.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-- Az App Service-tanúsítvány csalásként volt megjelölve. A következő hibaüzenet jelenik meg: "A tanúsítványt csalás miatt megjelölték. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány 24 órán belül nem válik használhatóvá, forduljon az Azure-támogatáshoz."
+    **Megoldás**: app Service a tanúsítványokhoz legfeljebb 10 tanúsítvány vásárolható meg az utólagos elszámolású és az EA-előfizetések típusaihoz. Más előfizetési típusok esetén a korlát 3. A korlát növeléséhez forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Az App Service-tanúsítvány csalásként lett megjelölve. A következő hibaüzenetet kapta: "a tanúsítvány a lehetséges csalások miatt meg lett jelölve. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány 24 órán belül nem lesz használható, forduljon az Azure ügyfélszolgálatához. "
 
-    **Megoldás:** Ha a tanúsítvány csalásként van megjelölve, és 24 óra elteltével nem oldódik fel, kövesse az alábbi lépéseket:
+    **Megoldás**: Ha a tanúsítvány csalásként van megjelölve, és 24 óra elteltével nem oldódik meg, kövesse az alábbi lépéseket:
 
-    1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-    2. Nyissa meg az **App Service-tanúsítványok**lehetőséget, és jelölje ki a tanúsítványt.
-    3. Válassza a Tanúsítvány **konfigurációs** > **lépés 2.** > **Domain Verification** Ez a lépés e-mailértesítést küld az Azure-tanúsítványszolgáltatónak a probléma megoldásához.
+    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+    2. Lépjen **app Service a tanúsítványok**elemre, és válassza ki a tanúsítványt.
+    3. A **tanúsítvány konfigurációjának** > kiválasztása**2. lépés:** > a**tartomány ellenőrzésének**ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
 
-## <a name="custom-domain-problems"></a>Egyéni tartományproblémák
+## <a name="custom-domain-problems"></a>Egyéni tartományi problémák
 
 ### <a name="a-custom-domain-returns-a-404-error"></a>Egy egyéni tartomány 404-es hibát ad vissza 
 
 #### <a name="symptom"></a>Hibajelenség
 
-Amikor az egyéni tartománynév vel lépfel a webhelyre, a következő hibaüzenet jelenik meg:
+Ha az Egyéni tartománynév használatával keres a webhelyre, a következő hibaüzenet jelenik meg:
 
-"Hiba 404-Web app nem található."
+"Hiba 404 – a webalkalmazás nem található."
 
 #### <a name="cause-and-solution"></a>Ok és megoldás
 
 **1. ok** 
 
-A konfigurált egyéni tartományból hiányzik egy CNAME vagy A rekord. 
+A konfigurált egyéni tartományból hiányzik egy CNAME vagy egy rekord. 
 
 **Megoldás az 1. ok esetén**
 
-- Ha A rekordot adott hozzá, győződjön meg arról, hogy txt rekord is hozzá lett adva. További információt az A rekord létrehozása című [témakörben talál.](./app-service-web-tutorial-custom-domain.md#create-the-a-record)
-- Ha nem kell használnia a gyökértartományt az alkalmazáshoz, javasoljuk, hogy A rekord helyett CNAME rekordot használjon.
-- Ne használjon cname rekordot és A rekordot ugyanarra a tartományra. Ez a probléma ütközést okozhat, és megakadályozhatja a tartomány megoldását. 
+- Ha hozzáadott egy rekordot, győződjön meg róla, hogy a TXT-rekord is hozzá van adva. További információt [az a rekord létrehozása](./app-service-web-tutorial-custom-domain.md#create-the-a-record)című témakörben talál.
+- Ha nem kell használnia az alkalmazás legfelső szintű tartományát, azt javasoljuk, hogy egy rekord helyett CNAME-rekordot használjon.
+- Ne használjon egyszerre egy CNAME rekordot és egy rekordot ugyanahhoz a tartományhoz. Ez a probléma ütközést okozhat, és megakadályozhatja a tartomány feloldását. 
 
 **2. ok** 
 
-Lehet, hogy az internetböngésző továbbra is gyorsítótárazása a tartomány régi IP-címét. 
+Előfordulhat, hogy az internetböngésző továbbra is gyorsítótárazza a tartomány régi IP-címét. 
 
-**Megoldás a 2.**
+**Megoldás a 2. okból**
 
-Törölje a böngészőt. Windows-eszközök esetén futtathatja `ipconfig /flushdns`a parancsot. A [WhatsmyDNS.net](https://www.whatsmydns.net/) segítségével ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. 
+Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ipconfig /flushdns`. A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. 
 
-### <a name="you-cant-add-a-subdomain"></a>Altartomány nem vehet fel 
+### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá altartományt 
 
 #### <a name="symptom"></a>Hibajelenség
 
-Altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet egy alkalmazáshoz.
+Egy altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet az alkalmazáshoz.
 
 #### <a name="solution"></a>Megoldás
 
-- Ellenőrizze az előfizetés rendszergazdájától, hogy rendelkezik-e állomásnév hozzáadására vonatkozó engedélyekkel az alkalmazáshoz.
-- Ha további altartományokra van szüksége, azt javasoljuk, hogy módosítsa a tartományüzemeltetésit Az Azure Domain Name Service (DNS) szolgáltatásra. Az Azure DNS használatával 500 állomásnevet adhat hozzá az alkalmazáshoz. További információt az [Altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)című témakörben talál.
+- Az előfizetés rendszergazdájával ellenőrizze, hogy van-e engedélye az állomásnév hozzáadására az alkalmazáshoz.
+- Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
 
 ### <a name="dns-cant-be-resolved"></a>A DNS nem oldható fel
 
 #### <a name="symptom"></a>Hibajelenség
 
-A következő hibaüzenet jelenik meg:
+A következő hibaüzenetet kapta:
 
 "A DNS-rekord nem található."
 
 #### <a name="cause"></a>Ok
-A probléma a következő okok valamelyike miatt fordul elő:
+Ez a probléma a következő okok egyike miatt fordul elő:
 
-- Az életidő (TTL) időszaka még nem járt le. Ellenőrizze a tartomány DNS-konfigurációját a TTL érték meghatározásához, majd várja meg, amíg az időszak lejár.
+- Az élettartam (TTL) időszaka nem járt le. Ellenőrizze a tartomány DNS-konfigurációját, hogy meghatározza a TTL-értéket, majd várjon, amíg lejár az időszak.
 - A DNS-konfiguráció helytelen.
 
 #### <a name="solution"></a>Megoldás
-- Várjon 48 órát, amíg a probléma magától megoldódik.
-- Ha a DNS-konfigurációban meg tudja változtatni a TTL-beállítást, módosítsa az értéket 5 percre, és nézze meg, hogy ez megoldja-e a problémát.
-- A [WhatsmyDNS.net](https://www.whatsmydns.net/) segítségével ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. Ha nem, konfigurálja az A rekordot az alkalmazás megfelelő IP-címére.
+- Várjon 48 órát a probléma megoldásához.
+- Ha a DNS-konfigurációban módosíthatja a TTL-beállítást, módosítsa az értéket 5 percre, és ellenőrizze, hogy ez megoldja-e a problémát.
+- A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. Ha nem, konfigurálja az a rekordot az alkalmazás megfelelő IP-címére.
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Vissza kell állítania egy törölt tartományt 
+### <a name="you-need-to-restore-a-deleted-domain"></a>A törölt tartományt vissza kell állítania 
 
 #### <a name="symptom"></a>Hibajelenség
-A tartomány már nem látható az Azure Portalon.
+A tartomány már nem látható a Azure Portalban.
 
 #### <a name="cause"></a>Ok 
-Lehet, hogy az előfizetés tulajdonosa véletlenül törölte a tartományt.
+Előfordulhat, hogy az előfizetés tulajdonosa véletlenül törölte a tartományt.
 
 #### <a name="solution"></a>Megoldás
-Ha a tartományt kevesebb mint hét nappal ezelőtt törölték, a tartomány még nem kezdte el a törlési folyamatot. Ebben az esetben megvásárolhatja ugyanazt a tartományt újra az Azure Portalon ugyanazzal az előfizetéssel. (Ne felejtse el beírni a pontos tartománynevet a keresőmezőbe.) Ehhez a tartományért nem kell újra fizetnie. Ha a tartományt több mint hét nappal ezelőtt törölték, kérjen segítséget az Azure támogatási szolgálatátaaakért a tartomány visszaállításához. [Azure support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Ha a tartományt a hét napja kevesebb, mint hét napja törölte, a tartomány még nem indította el a törlési folyamatot. Ebben az esetben ugyanezt a tartományt is megvásárolhatja a Azure Portal ugyanazon előfizetés alatt. (Ügyeljen arra, hogy a keresőmezőbe írja be a pontos tartománynevet.) Erre a tartományra vonatkozóan nem számítunk fel újra díjat. Ha a tartományt több mint hét napja törölte, forduljon az [Azure támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a tartomány visszaállításával kapcsolatos segítségért.
 
 ## <a name="domain-problems"></a>Tartományi problémák
 
-### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Nem a megfelelő tartományhoz vásárolt TLS/SSL tanúsítványt
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>TLS/SSL-tanúsítványt vásárolt a helytelen tartományhoz
 
 #### <a name="symptom"></a>Hibajelenség
 
-Nem a megfelelő tartományhoz vásárolt App Service-tanúsítványt. A tanúsítvány nem frissíthető a megfelelő tartomány használatához.
+Nem megfelelő tartományhoz vásárolt App Service-tanúsítványt. A tanúsítvány nem frissíthető a megfelelő tartomány használatára.
 
 #### <a name="solution"></a>Megoldás
 
-Törölje a tanúsítványt, majd vásároljon új tanúsítványt.
+Törölje a tanúsítványt, majd vásároljon egy új tanúsítványt.
 
-Ha a nem megfelelő tartományt használó jelenlegi tanúsítvány "Kiadva" állapotban van, akkor a tanúsítványért is fizetnie kell. Az App Service-tanúsítványok nem téríthetők vissza, de az [Azure-támogatáshoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) fordulhat, hogy megállapítsa, vannak-e más lehetőségek is. 
+Ha a hibás tartományt használó aktuális tanúsítvány a "kiállított" állapotban van, akkor a tanúsítványért is fizetnie kell. App Service tanúsítványok nem téríthetők vissza, de az [Azure támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) is megtudhatja, hogy vannak-e más lehetőségek. 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>Egy App Service-tanúsítvány megújításra került, de az alkalmazás a régi tanúsítványt jeleníti meg 
+### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>Egy App Service tanúsítvány megújítása megtörtént, de az alkalmazás a régi tanúsítványt jeleníti meg. 
 
 #### <a name="symptom"></a>Hibajelenség
 
-Az App Service-tanúsítvány meglett újulva, de az App Service-tanúsítványt használó alkalmazás továbbra is a régi tanúsítványt használja. Emellett figyelmeztetést is kapott, hogy a HTTPS protokoll szükséges.
+Az App Service-tanúsítvány megújítása megtörtént, de a App Service tanúsítványt használó alkalmazás továbbra is a régi tanúsítványt használja. Emellett figyelmeztetést kapott, hogy a HTTPS protokoll megadása kötelező.
 
 #### <a name="cause"></a>Ok 
-Az App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt. A tanúsítvány elforgatása vagy frissítésekor az alkalmazás néha még mindig a régi tanúsítványt, és nem az újonnan frissített tanúsítványt kéri be. Ennek az az oka, hogy a tanúsítvány-erőforrás szinkronizálásának feladata még nem futott. Kattintson a Szinkronizálás gombra. A szinkronizálási művelet automatikusan frissíti a tanúsítvány állomásnév-kötéseit az App Service-ben anélkül, hogy az alkalmazásoknak állásidőt okozna.
+A App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt. Amikor elforgat vagy frissít egy tanúsítványt, néha az alkalmazás továbbra is beolvassa a régi tanúsítványt, nem pedig az újonnan frissített tanúsítványt. Ennek az az oka, hogy a tanúsítvány-erőforrás szinkronizálásának feladata még nem fut. Kattintson a szinkronizálás elemre. A szinkronizálási művelet automatikusan frissíti a tanúsítványhoz tartozó állomásnév-kötéseket App Service anélkül, hogy leállást okozna az alkalmazásai számára.
  
 #### <a name="solution"></a>Megoldás
 
-Kényszerítheti a tanúsítvány szinkronizálását:
+A tanúsítvány szinkronizálását kényszerítheti:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **az App Service-tanúsítványok**lehetőséget, majd válassza ki a tanúsítványt.
-2. Válassza **a Rekey and Sync (Újrakulcs és szinkronizálás)** lehetőséget, majd a **Szinkronizálás**lehetőséget. A szinkronizálás befejezése némi időt vesz igénybe. 
-3. Amikor a szinkronizálás befejeződött, a következő értesítés jelenik meg: "Sikeresen frissítette az összes erőforrást a legújabb tanúsítvánnyal."
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **app Service tanúsítványokat**, majd válassza ki a tanúsítványt.
+2. Válassza a **regenerálás és szinkronizálás**lehetőséget, majd válassza a **szinkronizálás**lehetőséget. A szinkronizálás eltarthat egy ideig. 
+3. A szinkronizálás befejezésekor a következő értesítés jelenik meg: "az összes erőforrás frissítése sikeresen megtörtént a legújabb tanúsítvánnyal."
 
 ### <a name="domain-verification-is-not-working"></a>A tartomány ellenőrzése nem működik 
 
 #### <a name="symptom"></a>Hibajelenség 
-Az App Service-tanúsítvány tartományi ellenőrzést igényel, mielőtt a tanúsítvány készen áll a használatra. Ha az Ellenőrzés lehetőséget **választja,** a folyamat sikertelen lesz.
+A App Service tanúsítványhoz a tanúsítvány használatának megkezdése előtt tartományi ellenőrzés szükséges. Ha az **ellenőrzés**lehetőséget választja, a folyamat sikertelen lesz.
 
 #### <a name="solution"></a>Megoldás
-Manuálisan ellenőrizze a tartományt TXT rekord hozzáadásával:
+A tartomány manuális ellenőrzése TXT-rekord hozzáadásával:
  
-1.  Nyissa meg a tartománynevet tartalmazó DNS-szolgáltatót.
-2.  Adjon hozzá egy TXT-rekordot a tartományhoz, amely az Azure Portalon megjelenő tartományi jogkivonat értékét használja. 
+1.  Lépjen a tartománynév szolgáltatás (DNS) szolgáltatóhoz, amely a tartománynevet tárolja.
+2.  Adjon hozzá egy TXT-rekordot a tartományhoz, amely a Azure Portal látható tartományi jogkivonat értékét használja. 
 
-Várjon néhány percet, amíg a DNS-propagálás futni fog, majd a **Frissítés** gombra kattintva indítsa el az ellenőrzést. 
+Várjon néhány percet a DNS-propagálás futtatására, majd kattintson a **frissítés** gombra az ellenőrzés elindításához. 
 
-Másik lehetőségként a HTML-weblap módszerrel manuálisan ellenőrizheti a tartományt. Ez a módszer lehetővé teszi a hitelesítésszolgáltató számára, hogy ellenőrizze annak a tartománynak a tartomány tulajdonjogát, amelyhez a tanúsítványt kiállították.
+Alternatív megoldásként a HTML-weblap metódus használatával manuálisan is ellenőrizheti a tartományt. Ezzel a módszerrel a hitelesítésszolgáltató megerősítheti annak a tartománynak a tulajdonjogát, amelyre a tanúsítványt kiállították.
 
-1.  {domain ellenőrző token}.html nevű HTML-fájl létrehozása. A fájl tartalmának a tartomány-ellenőrző jogkivonat értékének kell lennie.
-3.  Töltse fel ezt a fájlt a tartományt tároló webkiszolgáló gyökerébe.
-4.  A tanúsítvány állapotának ellenőrzéséhez válassza a **Frissítés** lehetőséget. Az ellenőrzés befejezéséhez néhány percbe is beletelhet.
+1.  Hozzon létre egy {domain ellenőrző jogkivonat}. html nevű HTML-fájlt. A fájl tartalmának a tartomány-ellenőrzési jogkivonat értékének kell lennie.
+3.  Töltse fel ezt a fájlt a tartományt üzemeltető webkiszolgáló gyökerébe.
+4.  A tanúsítvány állapotának megtekintéséhez válassza a **frissítés** lehetőséget. Az ellenőrzés befejezéséhez néhány percet is igénybe vehet.
 
-Ha például egy 1234abcd tartomány-ellenőrzési jogkivonattal rendelkező azure.com szabványos tanúsítványt https://azure.com/1234abcd.html vásárol, a webes kérelemnek 1234abcd-et kell visszaadnia. 
+Ha például a azure.com standard tanúsítványát vásárolja meg a tartomány-ellenőrzési jogkivonat 1234abcd, egy webes kérelemnek https://azure.com/1234abcd.html kell visszaadnia a 1234abcd. 
 
 > [!IMPORTANT]
-> A tanúsítványrendelésnek mindössze 15 napja van a tartományellenőrzési művelet befejezésére. 15 nap elteltével a hitelesítésszolgáltató megtagadja a tanúsítványt, és nem számítunk fel díjat a tanúsítványért. Ebben az esetben törölje ezt a tanúsítványt, és próbálkozzon újra.
+> A tanúsítvány megrendelése csak 15 napot tartalmaz a tartomány-ellenőrzési művelet befejezéséhez. 15 nap elteltével a hitelesítésszolgáltató megtagadja a tanúsítványt, és a tanúsítványért nem számítunk fel díjat. Ebben a helyzetben törölje a tanúsítványt, és próbálkozzon újra.
 >
 > 
 
 ### <a name="you-cant-purchase-a-domain"></a>Nem vásárolhat tartományt
 
 #### <a name="symptom"></a>Hibajelenség
-Az Azure Portalon nem vásárolhat App Service-tartományt.
+A Azure Portal nem vásárolhat App Service tartományt.
 
 #### <a name="cause-and-solution"></a>Ok és megoldás
 
-A probléma a következő okok valamelyike miatt fordul elő:
+Ez a probléma a következő okok egyike miatt fordul elő:
 
 - Nincs hozzáadva hitelkártya az Azure-előfizetéshez, vagy a hitelkártya érvénytelen.
 
-    **Megoldás:** Adjon hozzá érvényes hitelkártyát az előfizetéséhez.
+    **Megoldás**: adjon hozzá egy érvényes bankkártyát az előfizetéséhez.
 
 - Nem Ön az előfizetés tulajdonosa, így nem rendelkezik engedéllyel a tartományvásárláshoz.
 
-    **Megoldás:** [Rendelje hozzá a tulajdonosi szerepkört](../role-based-access-control/role-assignments-portal.md) a fiókjához. Vagy forduljon az előfizetés rendszergazdájához, hogy engedélyt kérjen egy tartomány megvásárlására.
+    **Megoldás**: [rendelje hozzá a tulajdonosi szerepkört](../role-based-access-control/role-assignments-portal.md) a fiókhoz. Vagy forduljon az előfizetés rendszergazdájához, és kérjen engedélyt a tartomány megvásárlására.
 - Az előfizetésében elérte a tartományvásárlások maximális számát. Jelenleg legfeljebb 20 tartományt vásárolhat.
 
-    **Megoldás:** Ha a korlátra való emelést szeretné kérni, forduljon az [Azure ügyfélszolgálatához.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+    **Megoldás**: a korlát növelésének igényléséhez forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Az Azure-előfizetésének típusa nem támogatja App Service-tartományok vásárlását.
 
-    **Megoldás:** Frissítse Azure-előfizetését egy másik előfizetéstípusra, például egy szolgáltatásalapú előfizetésre.
+    **Megoldás**: frissítse az Azure-előfizetést egy másik előfizetés-típusra, például egy utólagos elszámolású előfizetésre.
 
-### <a name="you-cant-add-a-host-name-to-an-app"></a>Nem adhat állomásnevet egy alkalmazáshoz 
+### <a name="you-cant-add-a-host-name-to-an-app"></a>Nem adhat hozzá állomásnevet az alkalmazáshoz 
 
 #### <a name="symptom"></a>Hibajelenség
 
-Állomásnév hozzáadásakor a folyamat nem ellenőrzi és nem ellenőrzi a tartományt.
+Állomásnév hozzáadásakor a folyamat nem ellenőrzi és ellenőrzi a tartományt.
 
 #### <a name="cause"></a>Ok 
 
-A probléma a következő okok valamelyike miatt fordul elő:
+Ez a probléma a következő okok egyike miatt fordul elő:
 
-- Nincs engedélye állomásnév hozzáadására.
+- Nincs engedélye az állomásnév hozzáadására.
 
-    **Megoldás:** Kérje meg az előfizetés rendszergazdáját, hogy adjon engedélyt egy állomásnév hozzáadására.
-- A tartomány tulajdonjoga nem ellenőrizhető.
+    **Megoldás**: kérje meg az előfizetés rendszergazdáját, hogy adjon engedélyt az állomásnév hozzáadására.
+- Nem lehetett ellenőrizni a tartomány tulajdonjogát.
 
-    **Megoldás:** Ellenőrizze, hogy a CNAME vagy a A rekord megfelelően van-e konfigurálva. Ha egyéni tartományt szeretne egy alkalmazáshoz hozzárendeli, hozzon létre Egy CNAME vagy Egy rekordot. Ha gyökértartományt szeretne használni, A és TXT rekordokat kell használnia:
+    **Megoldás**: Ellenőrizze, hogy a CNAME vagy egy rekord megfelelően van-e konfigurálva. Ha egyéni tartományt szeretne hozzárendelni egy alkalmazáshoz, hozzon létre egy CNAME rekordot vagy egy rekordot. Ha legfelső szintű tartományt kíván használni, A és A TXT típusú rekordokat kell használnia:
 
     |Rekordtípus|Gazdagép|Mutasson a|
     |------|------|-----|
@@ -268,56 +268,56 @@ A probléma a következő okok valamelyike miatt fordul elő:
 
 ## <a name="faq"></a>GYIK
 
-**Be kell állítanom az egyéni tartományomat a webhelyemhez, miután megvásároltam?**
+**Meg kell-e adni a saját webhelyem egyéni tartományát a vásárlás után?**
 
-Ha megvásárol egy tartományt az Azure Portalon, az App Service-alkalmazás automatikusan konfigurálva van az adott egyéni tartomány használatára. Nem kell további lépéseket tennie. További információért tekintse meg az [Azure App Service önsegítő szolgálatát: Egyéni tartománynév hozzáadása](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) a Channel9-en.
+Amikor megvásárol egy tartományt a Azure Portal, a App Service alkalmazás automatikusan az adott egyéni tartomány használatára van konfigurálva. Nem kell további lépéseket végrehajtania. További információkért tekintse meg [Azure app Service saját súgóját: adjon hozzá egy egyéni tartománynevet](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) a Channel9.
 
-**Használhatom az Azure Portalon vásárolt tartományt, hogy inkább egy Azure-beli virtuális gépre mutassak?**
+**Használhatok a Azure Portalban megvásárolt tartományt egy Azure-beli virtuális gépre való Rámutatás helyett?**
 
 Igen, a tartományt egy virtuális gépre irányíthatja. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../dns/dns-custom-domain.md) ismertető cikkben talál.
 
-**A tartományomat a GoDaddy vagy az Azure DNS üzemelteti?**
+**A saját tartománya a GoDaddy vagy a Azure DNS?**
 
-Az App Service-tartományok a GoDaddy segítségével regisztrálják a tartományokat, az Azure DNS pedig a tartományokat. 
+App Service tartományok a GoDaddy használatával tartományi regisztrációt használnak, és Azure DNS a tartományok üzemeltetéséhez. 
 
-**Engedélyezve van az automatikus megújítás, de továbbra is kapott megújítási értesítést a tartományomról e-mailben. Mit kell tennem?**
+**Engedélyezve van az automatikus megújítás, de a saját tartományra vonatkozó megújítási értesítés is érkezett e-mailben. Mit tegyek?**
 
-Ha engedélyezve van az automatikus megújítás, nem kell semmilyen műveletet végrehajtania. Az értesítési e-mailt adunk, hogy tájékoztassuk, hogy a domain közel van a lejárathoz, és manuálisan megújítható, ha az automatikus megújítás nincs engedélyezve.
+Ha engedélyezve van az automatikus megújítás, semmilyen műveletet nem kell elvégeznie. Az értesítő e-mailt arról tájékoztatjuk, hogy a tartomány le van zárva, és manuálisan megújítható, ha nincs engedélyezve az automatikus megújítás.
 
-**Kell fizetnem a tartományomat tároló Azure DNS-ért?**
+**Kell-e fizetnem a saját tartományt üzemeltető Azure DNSért?**
 
-A tartományvásárlás kezdeti költsége csak a tartomány regisztrációjára vonatkozik. A regisztrációs költségmellett az Azure DNS-ért a használat alapján is felszámítjuk. További információ: [Azure DNS-díjszabás](https://azure.microsoft.com/pricing/details/dns/) további részletekért.
+A tartományi vásárlás kezdeti díja csak a tartományi regisztrációra vonatkozik. A regisztrációs költségek mellett a használat alapján felmerül a Azure DNS díja. További információ: [Azure DNS díjszabása](https://azure.microsoft.com/pricing/details/dns/) .
 
-**A tartományomat korábban vásároltam az Azure Portalon, és át szeretnék helyezni a GoDaddy-tárhelyről az Azure DNS-üzemeltetésre. Hogy tehetném ezt?**
+**Korábban megvásároltam a tartományt a Azure Portal, és szeretném áttérni a GoDaddy-gazdagépről Azure DNS-üzemeltetésre. Hogyan tehetem meg ezt?**
 
-Nem kötelező áttelepíteni az Azure DNS-üzemeltetési. Ha szeretne áttérni az Azure DNS-re, az Azure Portalon található tartománykezelési élmény az Azure DNS-re való áttéréshez szükséges lépésekről nyújt tájékoztatást. Ha a tartományt az App Service-en keresztül vásárolta, a GoDaddy-tárhelyről az Azure DNS-re való áttelepítés viszonylag zökkenőmentes eljárás.
+A Azure DNS-üzemeltetésre való Migrálás nem kötelező. Ha Azure DNSre szeretne áttérni, a Azure Portal a tartományi felügyeleti felület a Azure DNSre való áttéréshez szükséges lépésekről nyújt információt. Ha a tartományt App Service keresztül vásárolta meg, akkor a GoDaddy-gazdagépről a Azure DNSra történő áttelepítés viszonylag zökkenőmentes eljárás.
 
-**Szeretném megvásárolni a tartományomat az App Service-tartományból, de az Azure DNS helyett a GoDaddy-n is üzemeltethetem a tartományomat?**
+**Szeretném megvásárolni a tartományt a App Service tartományból, de a Azure DNS helyett a saját tartományt is üzemeltetem a GoDaddyben?**
 
-2017. július 24-től a portálon vásárolt App Service-tartományok az Azure DNS-en találhatók. Ha egy másik tárhelyszolgáltatót szeretne használni, akkor a webhelyükön kell megvásárolnia a domain hosting megoldást.
+2017. július 24-én kezdődően a portálon megvásárolt App Service tartományok a Azure DNSon futnak. Ha inkább egy másik szolgáltatót szeretne használni, a webhelyére kell lépnie egy tartományi üzemeltetési megoldás beszerzéséhez.
 
-**Fizetnem kell a tartományom adatvédelmi védelméért?**
+**Kell-e fizetnem a saját tartomány adatvédelem terén?**
 
-Ha az Azure Portalon keresztül vásárol egy tartományt, további költségek nélkül hozzáadhat adatvédelmet. Ez az egyik előnye a tartomány megvásárlásának az Azure App Service-en keresztül.
+Ha a Azure Portal keresztül vásárol egy tartományt, lehetősége van arra, hogy az adatvédelmet külön díj nélkül adja hozzá. Ez az egyik előnye, hogy a tartomány megvásárlása Azure App Service használatával történik.
 
-**Ha úgy döntök, hogy már nem szeretném a tartományomat, visszakaphatom a pénzemet?**
+**Ha úgy döntöttem, hogy már nem szeretném, hogy a tartományom, Visszakaphatom a pénzemet?**
 
-Domain vásárlásakor nem kell öt napig fizetnie, amely idő alatt eldöntheti, hogy nem kívánja-e a tartományt. Ha úgy dönt, hogy nem szeretné, hogy a tartomány az adott öt napos időszakon belül, akkor nem kell fizetnie. (.uk domainek kivételt képeznek ez alól. Ha .uk domaint vásárol, azonnal felszámítjuk, és nem térítjük vissza.)
+Egy tartomány megvásárlásakor nem számítunk fel öt napos időszakra, amely során eldöntheti, hogy nem kívánja-e a tartományt használni. Ha úgy dönt, hogy nem szeretné, hogy a tartomány az adott ötéves időszakon belül legyen, nem számítunk fel díjat. (. az Egyesült királyságbeli tartományok kivételt képeznek. Ha egy. Egyesült királyságbeli tartományt vásárol, azonnal felszámítja, és nem lehet visszatéríteni.)
 
-**Használhatom a tartományt egy másik Azure App Service-alkalmazásban az előfizetésemben?**
+**Használhatom a tartományt egy másik Azure App Service alkalmazásban is az előfizetésben?**
 
-Igen. Amikor az Azure Portalon az egyéni tartományok és a TLS-panel eléréséhez, láthatja a megvásárolt tartományokat. Beállíthatja, hogy az alkalmazás ezen tartományok bármelyikét használja.
+Igen. Ha a Azure Portal az egyéni tartományokhoz és a TLS-panelhez fér hozzá, a megvásárolt tartományok láthatók. Az alkalmazást úgy is konfigurálhatja, hogy az adott tartományokat használja.
 
-**Átvihetek egy tartományt az egyik előfizetésből egy másik előfizetésbe?**
+**Átvihetek egy tartományt egy előfizetésből egy másik előfizetésbe?**
 
-A tartomány áthelyezheti a tartományt egy másik előfizetés/erőforráscsoport a [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell-parancsmag használatával.
+A [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell-parancsmag használatával áthelyezheti a tartományt egy másik előfizetésre vagy erőforrás-csoportra.
 
-**Hogyan kezelhetem az egyéni tartományomat, ha jelenleg nem rendelkezem Azure App Service-alkalmazással?**
+**Hogyan kezelhetem az egyéni tartományt, ha jelenleg nem Azure App Service alkalmazásom van?**
 
-A tartomány akkor is kezelheti, ha nem rendelkezik App Service Web App alkalmazással. A tartomány azure-szolgáltatásokhoz, például virtuális géphez, tárolóhoz stb. Ha az App Service Web Apps tartományát kívánja használni, akkor olyan webalkalmazást kell megadnia, amely nem szerepel az ingyenes app service-csomagban ahhoz, hogy a tartományt a webalkalmazáshoz kösse.
+A tartományt akkor is kezelheti, ha nincs App Service webalkalmazása. A tartomány használható Azure-szolgáltatásokhoz, például virtuális gépekhez, tároláshoz stb. Ha a tartományt a App Service Web Appshoz kívánja használni, akkor meg kell adnia egy webalkalmazást, amely nem szerepel a Ingyenes App Service tervben ahhoz, hogy a tartomány a webalkalmazáshoz legyen kötve.
 
-**Áthelyezhetek egy egyéni tartományt rendelkező webalkalmazást egy másik előfizetésbe vagy az App Service-környezet 1-es verzióból v2-be?**
+**Áthelyezhetek egy webalkalmazást egyéni tartománnyal egy másik előfizetésbe vagy App Service Environment v1-ről v2-re?**
 
-Igen, áthelyezheti a webalkalmazást az előfizetések között. Kövesse az [Erőforrások áthelyezése az Azure-ban](../azure-resource-manager/management/move-resource-group-and-subscription.md)című útmutatót. A webalkalmazás áthelyezésekének során néhány korlátozás van. További információt az [App Service-erőforrások áthelyezésének korlátozása](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)című témakörben talál.
+Igen, áthelyezheti a webalkalmazást az előfizetések között. Kövesse az [erőforrások Azure-ban való áthelyezésének](../azure-resource-manager/management/move-resource-group-and-subscription.md)útmutatását. A webalkalmazás áthelyezése néhány korlátozással jár. További információ: [app Service erőforrások áthelyezésének korlátozásai](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
-A webalkalmazás áthelyezése után az egyéni tartományokon belüli tartományok állomásnév-kötéseinek változatlannak kell maradniuk. Az állomásnév-kötések konfigurálásához nincs szükség további lépésekre.
+A webalkalmazás áthelyezése után az egyéni tartományokban lévő tartományok állomásnév-kötései változatlanok maradnak. Az állomásnév-kötések konfigurálásához nincs szükség további lépésekre.

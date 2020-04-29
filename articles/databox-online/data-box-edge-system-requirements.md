@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Edge rendszerkövetelményei| Microsoft dokumentumok
-description: Ismerje meg az Azure Data Box Edge szoftver- és hálózati követelményeit
+title: Microsoft Azure Data Box Edge rendszerkövetelményei | Microsoft Docs
+description: Tudnivalók a Azure Data Box Edge szoftveres és hálózati követelményeiről
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,26 +9,26 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260227"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerkövetelményei
+# <a name="azure-data-box-edge-system-requirements"></a>Rendszerkövetelmények Azure Data Box Edge
 
-Ez a cikk ismerteti a fontos rendszerkövetelmények a Microsoft Azure Data Box Edge megoldás és az Azure Data Box Edge-hez csatlakozó ügyfelek számára. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt üzembe helyezná a Data Box Edge-et. Erre az információkra szükség szerint hivatkozhat a központi telepítés és az azt követő művelet során.
+Ez a cikk a Microsoft Azure Data Box Edge megoldás és a Azure Data Box Edgehoz csatlakozó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt telepítené a Data Box Edge. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
 
 A Data Box Edge rendszerkövetelményei a következők:
 
-- **A gazdagépek szoftverkövetelményei** – ismerteti a támogatott platformokat, a helyi konfigurációs felhasználói felület böngészőit, az SMB-ügyfeleket, valamint az eszközt elérő ügyfelekre vonatkozó további követelményeket.
-- **Hálózati követelmények az eszköz** - tájékoztatást nyújt a hálózati követelmények a fizikai eszköz működéséhez.
+- A **gazdagépek szoftveres követelményei** – a támogatott platformokat, a helyi konfiguráció felhasználói felületének böngészőit, az SMB-ügyfeleket, valamint az eszközt elérő ügyfelekre vonatkozó további követelményeket ismerteti.
+- **Az eszköz hálózati követelményei** – információt nyújt a fizikai eszköz működésével kapcsolatos hálózati követelményekről.
 
-## <a name="supported-os-for-clients-connected-to-device"></a>Támogatott operációs rendszer az eszközhöz csatlakoztatott ügyfelek számára
+## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszere
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
-## <a name="supported-protocols-for-clients-accessing-device"></a>Az eszközt elérő ügyfelek támogatott protokolljai
+## <a name="supported-protocols-for-clients-accessing-device"></a>Az eszközt elérő ügyfelek által támogatott protokollok
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
@@ -40,41 +40,41 @@ A Data Box Edge rendszerkövetelményei a következők:
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
-## <a name="supported-browsers-for-local-web-ui"></a>Támogatott böngészők a helyi webes felhasználói felülethez
+## <a name="supported-browsers-for-local-web-ui"></a>A helyi webes felhasználói felület által támogatott böngészők
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="networking-port-requirements"></a>Hálózati portkövetelmények
+## <a name="networking-port-requirements"></a>Hálózati portokra vonatkozó követelmények
 
-### <a name="port-requirements-for-data-box-edge"></a>A Data Box Edge portkövetelményei
+### <a name="port-requirements-for-data-box-edge"></a>A Data Box Edge portjának követelményei
 
-Az alábbi táblázat azokat a portokat sorolja fel, amelyeket meg kell nyitni a tűzfalon az SMB, a felhő vagy a felügyeleti forgalom engedélyezéséhez. Ebben a *táblában a bejövő* vagy *bejövő* arra az irányra utal, amelyből a bejövő ügyfél hozzáférést kér az eszközhöz. *Kimenő* vagy *kimenő* utal, amelyben a Data Box Edge eszköz adatokat küld külsőleg, a központi telepítésen túl, például az internetfelé.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box Edge-eszköz hogyan küldi el az adatokat külsőleg, az üzemelő példányon kívül, például az internet felé.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-### <a name="port-requirements-for-iot-edge"></a>Az IoT Edge portkövetelményei
+### <a name="port-requirements-for-iot-edge"></a>A IoT Edge portjának követelményei
 
-Az Azure IoT Edge lehetővé teszi a kimenő kommunikációt egy helyszíni Edge-eszközről az Azure-felhőbe a támogatott IoT Hub-protokollok használatával. Bejövő kommunikáció csak akkor szükséges, bizonyos forgatókönyvek, ahol az Azure IoT Hub kell lenyomni az üzeneteket az Azure IoT Edge-eszköz (például felhőről eszközre üzenetküldés).
+Azure IoT Edge lehetővé teszi a kimenő kommunikációt egy helyszíni peremhálózati eszközről az Azure-felhőbe a támogatott IoT Hub protokollok használatával. A bejövő kommunikációra csak bizonyos esetekben van szükség, amikor az Azure IoT Hub üzeneteket kell leküldenie az Azure IoT Edge eszköznek (például felhőből az eszközre).
 
-Használja az alábbi táblázatot az Azure IoT Edge-futásidejű tüzemeltető kiszolgálók portkonfigurációjához:
+Használja a következő táblázatot a port konfigurálásához a Azure IoT Edge futtatókörnyezetet futtató kiszolgálókon:
 
-| Port száma | Be- vagy ki | Port hatóköre | Kötelező | Útmutatás |
+| Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutatás |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyitott Az IoT Edge-kiépítés. Ez a konfiguráció manuális parancsfájlok vagy Az Azure IoT-eszközlétesítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
-A teljes körű információkért látogasson el [a tűzfal és a port konfigurációs szabályok IoT Edge telepítéséhez.](https://docs.microsoft.com/azure/iot-edge/troubleshoot)
+A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
-## <a name="url-patterns-for-firewall-rules"></a>A tűzfalszabályok URL-mintái
+## <a name="url-patterns-for-firewall-rules"></a>Tűzfalszabályok URL-mintái
 
-A hálózati rendszergazdák gyakran konfigurálhatnak speciális tűzfalszabályokat az URL-minták alapján a bejövő és a kimenő forgalom szűréséhez. A Data Box Edge-eszköz és a szolgáltatás más Microsoft-alkalmazásoktól, például az Azure Service Bustól, az Azure Active Directory hozzáférés-vezérléstől, a tárfiókoktól és a Microsoft Update-kiszolgálóktól függ. Az ezekhez az alkalmazásokhoz társított URL-minták a tűzfalszabályok konfigurálására használhatók. Fontos megérteni, hogy az ezekhez az alkalmazásokhoz társított URL-minták változhatnak. Ezek a változások megkövetelik, hogy a hálózati rendszergazda szükség szerint figyelje és frissítse a Data Box Edge tűzfalszabályait.
+A hálózati rendszergazdák gyakran konfigurálhatják a speciális tűzfalszabályok alapján a bejövő és a kimenő forgalom szűrésére szolgáló URL-mintákat. A Data Box Edge eszköz és a szolgáltatás más Microsoft-alkalmazásokkal (például Azure Service Bus, Azure Active Directory Access Control, Storage-fiókokkal és Microsoft Update-kiszolgálókkal függ. Az ezekhez az alkalmazásokhoz társított URL-mintákat a tűzfalszabályok konfigurálására lehet használni. Fontos megérteni, hogy az alkalmazásokhoz társított URL-minták megváltoztathatók. Ezekhez a változásokhoz a hálózati rendszergazdának kell megfigyelnie és frissítenie a tűzfal szabályait a Data Box Edge, ahogy és amikor szükséges.
 
-Azt javasoljuk, hogy a tűzfal szabályok at kimenő forgalom alapján Data Box Edge rögzített IP-címek, a legtöbb esetben bőségesen. Az alábbi információk segítségével azonban speciális tűzfalszabályokat állíthat be, amelyek a biztonságos környezetek létrehozásához szükségesek.
+Javasoljuk, hogy a legtöbb esetben a Data Box Edge rögzített IP-címek alapján állítsa be a tűzfal szabályait a kimenő forgalomra vonatkozóan. Az alábbi információk segítségével azonban megadhatja a biztonságos környezetek létrehozásához szükséges speciális tűzfalszabályok beállításait is.
 
 > [!NOTE]
-> - Az eszköz (forrás) IP-k mindig be kell állítani, hogy az összes felhő-kompatibilis hálózati adapterek.
-> - A cél IP-címeket [az Azure adatközpont IP-tartományaira](https://www.microsoft.com/download/confirmation.aspx?id=41653)kell állítani.
+> - Az eszköz (forrás) IP-címeit mindig az összes felhőalapú hálózati adapterre kell beállítani.
+> - A cél IP-címeket az [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653)értékre kell beállítani.
 
-### <a name="url-patterns-for-gateway-feature"></a>AZ átjárószolgáltatás URL-mintái
+### <a name="url-patterns-for-gateway-feature"></a>Az átjáró szolgáltatás URL-mintái
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
@@ -82,21 +82,21 @@ Azt javasoljuk, hogy a tűzfal szabályok at kimenő forgalom alapján Data Box 
 
 | URL-minta                      | Összetevő vagy funkció                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft tárolóbeállítás-nyilvántartás (kötelező)               |
-| https://\*.azurecr.io                     | Személyes és külső tárolónyilvántartások (nem kötelező) | 
-| https://\*.azure-devices.net              | IoT Hub-hozzáférés (kötelező)                             | 
+| https:\//MCR.microsoft.com<br></br>https://\*. CDN.mscr.IO | Microsoft Container Registry (kötelező)               |
+| https://\*. azurecr.IO                     | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
+| https://\*. Azure-Devices.net              | IoT Hub hozzáférés (kötelező)                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>Az Azure Government átjárójának URL-mintái
+### <a name="url-patterns-for-gateway-for-azure-government"></a>A Azure Government átjárójának URL-mintái
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>Az Azure Government számítási URL-mintái
+### <a name="url-patterns-for-compute-for-azure-government"></a>A számítási feladatokhoz tartozó URL-minták Azure Government
 
 | URL-minta                      | Összetevő vagy funkció                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft tárolóbeállítás-nyilvántartás (kötelező)               |
-| https://\*.azure-devices.us              | IoT Hub-hozzáférés (kötelező)           |
-| https://\*.azurecr.us                    | Személyes és külső tárolónyilvántartások (nem kötelező) | 
+| https:\//MCR.microsoft.com<br></br>https://\*. CDN.mscr.com | Microsoft Container Registry (kötelező)               |
+| https://\*. Azure-Devices.us              | IoT Hub hozzáférés (kötelező)           |
+| https://\*. azurecr.us                    | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 
@@ -104,35 +104,35 @@ Azt javasoljuk, hogy a tűzfal szabályok at kimenő forgalom alapján Data Box 
 
 ## <a name="compute-sizing-considerations"></a>Számítási méretezési szempontok
 
-Használja a tapasztalatfejlesztése és tesztelése során a megoldást annak érdekében, hogy elegendő kapacitás legyen a Data Box Edge eszközön, és az eszköz optimális teljesítményt nyújtson.
+A megoldás fejlesztésével és tesztelésével gondoskodhat arról, hogy elegendő kapacitás legyen a Data Box Edge-eszközön, és hogy az eszköz optimális teljesítményű legyen.
 
-A következő tényezőket kell figyelembe vennie:
+Az alábbi tényezőket érdemes figyelembe venni:
 
-- **Konténer-specifikus -** Gondoljon a következőkre.
+- **Tárolók sajátosságai** – gondolja át az alábbiakat.
 
-    - Hány tároló van a számítási feladatokban? Lehet, hogy egy csomó könnyű tárolók szemben néhány erőforrás-igényes is.
-    - Melyek a tárolókszámára lefoglalt erőforrások, szemben az általuk felhasznált erőforrásokkal?
+    - Hány tároló van a munkaterhelésben? Számos könnyű tárolót használhat, és néhány erőforrás-igényes is.
+    - Milyen erőforrásokra vannak kiosztva ezek a tárolók, illetve milyen erőforrásokat használnak?
     - Hány réteget osztanak meg a tárolók?
-    - Vannak használaton kívüli konténerek? A leállított tároló továbbra is lemezterületet foglal.
-    - Milyen nyelven vannak megírva a tárolók?
-- **A feldolgozott adatok mérete** – Mennyi adatot fognak feldolgozni a tárolók? Ezek az adatok lemezterületet foglalnak el, vagy az adatok fellesznek dolgozva a memóriában?
-- **Várható teljesítmény** – Melyek a megoldás kívánt teljesítményjellemzői? 
+    - Vannak fel nem használt tárolók? Egy leállított tároló továbbra is elegendő lemezterületet igényel.
+    - Milyen nyelven íródott a tárolók?
+- **A feldolgozott** adatmennyiség mérete – mennyi az adattárolók feldolgozása? Az adatmennyiség lemezterületet vagy az adatmennyiséget fogja feldolgozni a memóriában?
+- **Várt teljesítmény** – Mik a megoldás kívánt teljesítmény-jellemzői? 
 
-A megoldás teljesítményének megértéséhez és finomításához a következőket használhatja:
+A megoldás teljesítményének megismeréséhez és pontosításához használhatja a következőt:
 
-- Az Azure Portalon elérhető számítási metrikák. Nyissa meg a Data Box Edge erőforrást, majd nyissa meg **a Figyelés > metrikák .** Tekintse meg az **Edge-számítás – Memóriahasználat** és **Edge-számítás – Százalékos CPU** a rendelkezésre álló erőforrások megértéséhez, és hogyan kerülnek az erőforrások at.
+- A Azure Portalben elérhető számítási mérőszámok. Lépjen a Data Box Edge-erőforráshoz, és válassza a **figyelés > metrikák**lehetőséget. Tekintse meg az **Edge számítási memória használatának** és a **peremhálózati számítási kapacitásának százalékos arányát** , hogy megismerje a rendelkezésre álló erőforrásokat és a felhasznált erőforrásokat.
 - Az eszköz PowerShell-felületén keresztül elérhető figyelési parancsok, például:
 
-    - `dkrdbe stats`a tároló(k) erőforrás-használati statisztikáinak élő közvetítésének leéséhez. A parancs támogatja a PROCESSZOR, a memóriahasználat, a memóriakorlát és a hálózati IO-metrikákat.
-    - `dkrdbe system df`a felhasznált lemezterülettel kapcsolatos információk beszerezéséhez. 
-    - `dkrdbe image prune`a nem használt képek megtisztításához és a szabad hely felszabadításához.
-    - `dkrdbe ps --size`a futó tároló hozzávetőleges méretének megtekintéséhez. 
+    - `dkrdbe stats`a tároló (k) erőforrás-használati statisztikáinak élő streambe való beszerzéséhez. A parancs támogatja a PROCESSZORt, a memóriahasználat, a memória korlátját és a hálózati IO-metrikákat.
+    - `dkrdbe system df`a felhasznált lemezterület mennyiségére vonatkozó információk lekérése. 
+    - `dkrdbe image prune`a fel nem használt rendszerképek tisztítása és a szabad terület felszabadítása.
+    - `dkrdbe ps --size`egy futó tároló hozzávetőleges méretének megtekintéséhez. 
 
-    A rendelkezésre álló parancsokkal kapcsolatos további információkért látogasson el a [Számítási modulok figyelése és hibaelhárítása című témakörbe.](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)
+    Az elérhető parancsokról további információt a következő témakörben olvashat: a [számítási modulok figyelése és hibáinak megoldása](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-Végül győződjön meg arról, hogy érvényesíti a megoldást az adatkészleten, és számszerűsíti a teljesítményt a Data Box Edge éles környezetben üzembe helyezése előtt.
+Végezetül ellenőrizze, hogy az adatkészleten érvényesíti-e a megoldást, és az éles környezetben való üzembe helyezés előtt számszerűsítse Data Box Edge teljesítményét.
 
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Az Azure Data Box Edge üzembe helyezése](data-box-edge-deploy-prep.md)
+- [A Azure Data Box Edge üzembe helyezése](data-box-edge-deploy-prep.md)

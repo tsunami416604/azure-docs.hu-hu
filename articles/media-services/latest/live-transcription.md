@@ -1,7 +1,7 @@
 ---
 title: Élő átírás
 titleSuffix: Azure Media Services
-description: További információ az Azure Media Services élő átírásáról.
+description: Ismerkedjen meg Azure Media Services élő átírással.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79499873"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
-Az Azure Media Service különböző protokollokban biztosítja a video-, hang- és szöveganyagokat. Amikor az élő közvetítést MPEG-DASH vagy HLS/CMAF használatával teszi közzé, majd a videóval és hanggal együtt szolgáltatásunk az IMSC1.1-kompatibilis TTML-ben továbbítja az átírt szöveget. A szállítás MPEG-4 Part 30 (ISO/IEC 14496-30) töredékekbe van csomagolva. Ha a szállítás hls/TS-en keresztül, majd a szöveg szállított darabolt VTT.
+Az Azure Media Service videó-, hang-és szöveges szolgáltatásokat biztosít különböző protokollokban. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML-ban továbbítja az átmásolt szöveget. A kézbesítés az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve.
 
-Ez a cikk bemutatja, hogyan engedélyezheti az élő átírást élő események streamelésekesetén az Azure Media Services v3-as használatával. Mielőtt folytatna, győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (a részleteket az [oktatóanyagban](stream-files-tutorial-with-rest.md) találja). Ismernie kell az [élő streamelés](live-streaming-overview.md) fogalmát is. Javasoljuk, hogy töltse ki a [Stream live with Media Services](stream-live-tutorial-with-api.md) oktatóanyag.
+Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services v3-vel való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Azt javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be.
 
 > [!NOTE]
-> Jelenleg az élő transzkripció csak az USA nyugati régiójában érhető el előnézeti funkcióként. Támogatja a kimondott szavak angol nyelvű átírását a szöveghez. A szolgáltatás API-hivatkozása az alábbiakban található – a becasuse előzetes verzióban érhető el, a részletek nem érhetők el a REST-dokumentumokkal.
+> Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Támogatja az angol nyelvű szöveg átírását. Az ehhez a szolgáltatáshoz tartozó API-hivatkozás az alábbi – mert előzetes verzióban érhető el, a részletek nem érhetők el a REST-dokumentumokban.
 
 ## <a name="creating-the-live-event"></a>Az élő esemény létrehozása
 
-Az élő esemény létrehozásához küldje el a PUT műveletet a 2019-05-01-preview verzióra, például:
+Az élő esemény létrehozásához a PUT műveletet a 2019-05-01-Preview verzióra kell elküldeni, például:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-A művelet a következő törzsű (ahol egy áthaladási élő esemény jön létre rtmp, mint a betöltési protokoll). Figyelje meg egy átírástulajdonság hozzáadását. A nyelv egyetlen engedélyezett értéke az en-US.
+A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását. A nyelvhez csak az en-US engedélyezett érték adható meg.
 
 ```
 { 
@@ -88,24 +88,24 @@ A művelet a következő törzsű (ahol egy áthaladási élő esemény jön lé
 } 
 ```
 
-Az élő esemény állapotának lekérdezése mindaddig, amíg "Futás" állapotba nem kerül, ami azt jelzi, hogy most már küldhet hozzájárulási RTMP-hírcsatornát. Most már ugyanazokat a lépéseket, mint ebben az oktatóanyagban, például az előnézeti hírcsatorna ellenőrzése és az Élő kimenetek létrehozása.
+Lekérdezheti az élő esemény állapotát, amíg a "Running" állapotba nem kerül, ami azt jelzi, hogy most már küldhet egy, az RTMP-hírcsatornát is. Mostantól ugyanazok a lépések láthatók, mint az oktatóanyagban, például az előnézeti hírcsatorna ellenőrzése és az élő kimenetek létrehozása.
 
-## <a name="transcription-delivery-and-playback"></a>Átírás kézbesítése és lejátszása
+## <a name="transcription-delivery-and-playback"></a>Transzkripciós kézbesítés és lejátszás
 
-Tekintse át a [dinamikus csomagolásáttekintésről](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) szóló cikket arról, hogy szolgáltatásunk hogyan használja a dinamikus csomagolást a videók, hanganyagok és szövegek különböző protokollokban történő szállításához. Amikor az élő közvetítést MPEG-DASH vagy HLS/CMAF használatával teszi közzé, majd a videóval és hanggal együtt szolgáltatásunk az IMSC1.1-kompatibilis TTML-ben továbbítja az átírt szöveget. Ez a szállítás MPEG-4 Part 30 (ISO/IEC 14496-30) töredékekbe van csomagolva. Ha a szállítás segítségével HLS /TS, majd a szöveg szállított darabolt VTT. Használhatja a weblejátszó, például az [Azure Media Player](use-azure-media-player.md) az adatfolyam lejátszásához.  
+Tekintse át a [dinamikus csomagolás áttekintése című](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) cikket, amely bemutatja, hogyan használja a szolgáltatás a dinamikus csomagolást videó, hang és szöveg továbbítására különböző protokollokban. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML-ban továbbítja az átmásolt szöveget. Ez a kézbesítés az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a HLS/TS-n keresztül kézbesítést használ, a szöveg feldarabolt VTT lesz kézbesítve. A stream lejátszásához használhat egy weblejátszót, például a [Azure Media Player](use-azure-media-player.md) .  
 
 > [!NOTE]
-> Az Azure Media Player használata esetén használja a 2.3.3-as vagy újabb verziót.
+> Azure Media Player használata esetén használja a 2.3.3-es vagy újabb verziót.
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Az előzetes verzióban az alábbi ismert problémák vannak az élő átírással kapcsolatban:
+Az előzetes verzióban az alábbi ismert problémák állnak az élő átirattal:
 
-* A funkció csak az USA nyugati részén 2 érhető el.
-* Az alkalmazásoknak a [Media Services v3 OpenAPI specifikációjában](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertetett előzetes API-kat kell használniuk.
-* Az egyetlen támogatott nyelv az angol (en-us).
-* Tartalomvédelem esetén csak az AES borítéktitkosítás támogatott.
+* A szolgáltatás csak az USA 2. nyugati régiójában érhető el.
+* Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
+* Az egyetlen támogatott nyelv az angol (en-US).
+* A tartalomvédelem csak az AES-borítékok titkosítását támogatja.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Media Services áttekintése](media-services-overview.md)
+* [Media Services áttekintése](media-services-overview.md)

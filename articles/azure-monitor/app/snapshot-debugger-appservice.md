@@ -1,54 +1,54 @@
 ---
-title: Pillanatkép-hibakereső engedélyezése .NET-alkalmazásokhoz az Azure App Service-ben | Microsoft dokumentumok
-description: Pillanatkép-hibakereső engedélyezése .NET-alkalmazásokhoz az Azure App Service-ben
+title: A .NET-alkalmazások Snapshot Debugger engedélyezése a Azure App Serviceban | Microsoft Docs
+description: .NET-alkalmazások Snapshot Debuggerának engedélyezése Azure App Service
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298273"
 ---
-# <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Pillanatkép-hibakereső engedélyezése .NET-alkalmazásokhoz az Azure App Service-ben
+# <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>.NET-alkalmazások Snapshot Debuggerának engedélyezése Azure App Service
 
-Snapshot Debugger jelenleg működik ASP.NET és ASP.NET Core alkalmazások, amelyek futnak az Azure App Service Windows-szolgáltatási csomagok.
+A Snapshot Debugger jelenleg a ASP.NET és a ASP.NET Core a Windows-szolgáltatási csomagok Azure App Service futó alkalmazásain működik.
 
-## <a name="enable-snapshot-debugger"></a><a id="installation"></a>Pillanatkép-hibakereső engedélyezése
-A Snapshot Debugger engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, az alábbi utasításokat olvashatja a Snapshot Debugger más támogatott platformokon való engedélyezéséhez:
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a>Snapshot Debugger engedélyezése
+Az alkalmazások Snapshot Debuggerának engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, akkor a Snapshot Debugger más támogatott platformokon való engedélyezésével kapcsolatban itt talál útmutatást:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric-szolgáltatások](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Az Azure virtuális gépek és a virtuális gépek méretezési készletei](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric szolgáltatások](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure-Virtual Machines és virtuálisgép-méretezési csoportok](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Helyszíni virtuális vagy fizikai gépek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Ha a .NET Core előzetes verzióját használja, kövesse a [Snapshot Debugger engedélyezése más környezetekben](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című útmutatót, hogy a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet csomagot tartalmazza az alkalmazással, majd töltse ki az alábbi utasításokat. 
+Ha a .NET Core előzetes verzióját használja, kövesse az [Snapshot Debugger engedélyezése más környezetekhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című szakaszt a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagnak az alkalmazással való belefoglalásához, majd fejezze be az alábbi utasításokat. 
 
-Az Application Insights Snapshot Debugger előre telepítve van az App Services futásidejű részeként, de be kell kapcsolnia az App Service-alkalmazás pillanatképeinek lekérni. Miután telepített egy alkalmazást, még akkor is, ha az Application Insights SDK-t a forráskódba helyezte, kövesse az alábbi lépéseket a pillanatkép-hibakereső engedélyezéséhez.
+Application Insights Snapshot Debugger előre telepítve van a App Services futtatókörnyezet részeként, de be kell kapcsolni, hogy pillanatképeket kapjon a App Service alkalmazáshoz. Miután telepítette az alkalmazást, még akkor is, ha a forráskódban szerepel a Application Insights SDK, az alábbi lépésekkel engedélyezheti a pillanatkép-hibakeresőt.
 
-1. Nyissa meg az **App Services** ablaktábláját az Azure Portalon.
-2. Nyissa meg **a Beállítások > Az Application Insights** ablaktáblán.
+1. Nyissa meg a Azure Portal **app Services** ablaktábláját.
+2. Navigáljon a **beállítások > Application Insights** panelre.
 
-   ![Az App Insights engedélyezése az App Services portálon](./media/snapshot-debugger/applicationinsights-appservices.png)
+   ![Az alkalmazás-felismerés engedélyezése App Services portálon](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Kövesse az ablaktáblán található utasításokat egy új erőforrás létrehozásához, vagy válasszon ki egy meglévő App Insights-erőforrást az alkalmazás figyeléséhez. Győződjön meg arról is, hogy a Snapshot Debugger mindkét kapcsolója be van **kapcsolva.**
+3. Kövesse a panel utasításait egy új erőforrás létrehozásához, vagy válasszon ki egy meglévő alkalmazás-keresési erőforrást az alkalmazás figyeléséhez. Győződjön meg arról is, hogy a Snapshot Debugger mindkét kapcsolója **be van kapcsolva**.
 
-   ![App Insights-webhelybővítmény hozzáadása][Enablement UI]
+   ![Alkalmazás-áttekintési hely kiterjesztésének hozzáadása][Enablement UI]
 
-4. A Pillanatkép-hibakereső most már engedélyezve van egy App Services-alkalmazásbeállítás használatával.
+4. A Snapshot Debugger mostantól engedélyezve van egy App Services alkalmazás-beállítás használatával.
 
-    ![Alkalmazásbeállítás pillanatkép-hibakeresőhez][snapshot-debugger-app-setting]
+    ![Alkalmazás-beállítás a Snapshot Debugger][snapshot-debugger-app-setting]
 
-## <a name="disable-snapshot-debugger"></a>Pillanatkép-hibakereső letiltása
+## <a name="disable-snapshot-debugger"></a>Snapshot Debugger letiltása
 
-Kövesse ugyanazokat a lépéseket, mint a **Snapshot Debugger engedélyezése,** de kapcsolja be mindkét kapcsolót a Snapshot Debugger beállításhoz. **Off**
-Azt javasoljuk, hogy a Snapshot Debugger engedélyezve van az összes alkalmazáson az alkalmazáskivételek diagnosztikájának megkönnyítése érdekében.
+Hajtsa végre az **Snapshot Debugger engedélyezésének**lépéseit, de mindkét kapcsolót a Snapshot Debuggerra kapcsolhatja **ki**.
+Javasoljuk, hogy az alkalmazás-kivételek diagnosztizálásához az összes alkalmazásnál Snapshot Debugger engedélyezzen.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Egy Azure App Service, beállíthatja az alkalmazás beállításait egy Azure Resource Manager sablon, hogy a Snapshot Debugger és profiler engedélyezheti. Hozzáad egy konfigurációs erőforrást, amely a webhely gyermekerőforrásaként tartalmazza az alkalmazásbeállításokat:
+Egy Azure App Service esetében megadhatja az alkalmazás beállításait egy Azure Resource Manager sablonban a Snapshot Debugger és a Profiler engedélyezéséhez. Olyan konfigurációs erőforrást ad hozzá, amely a webhely alárendelt erőforrásként tartalmazza az alkalmazás beállításait:
 
 ```json
 {
@@ -90,9 +90,9 @@ Egy Azure App Service, beállíthatja az alkalmazás beállításait egy Azure R
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre forgalmat az alkalmazás, amely kivételt válthat ki. Ezután várjon 10–15 percet, amíg a pillanatképeket el kell küldeni az Application Insights-példány.
-- Tekintse meg a [pillanatképek az](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) Azure Portalon.
-- A Pillanatkép-hibakeresővel kapcsolatos problémák elhárításával kapcsolatos segítségért olvassa el a [Pillanatképhiba-elhárító hibaelhárításcímű témakört.](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)
+- Adatforgalom létrehozása az alkalmazás számára, amely kivételt indíthat. Ezután várjon 10 – 15 percet a pillanatképek Application Insights példányba való elküldésekor.
+- A Azure Portal található [Pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) .
+- Snapshot Debugger problémák elhárításával kapcsolatos segítségért lásd: [Snapshot Debugger hibaelhárítás](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png

@@ -1,63 +1,63 @@
 ---
-title: TexConv - Textúra átalakító eszköz
-description: Használati utasítás a TexConv parancssori eszközhöz
+title: TexConv – textúra átalakító eszköz
+description: A TexConv parancssori eszköz felhasználói kézikönyve
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680023"
 ---
-# <a name="texconv---texture-conversion-tool"></a>TexConv - Textúra átalakító eszköz
+# <a name="texconv---texture-conversion-tool"></a>TexConv – textúra átalakító eszköz
 
-A TexConv egy parancssori eszköz a textúrák tipikus beviteli formátumokból, például a PNG, a TGA, a JPEG és a DDS optimalizált formátumokba történő feldolgozásához a futásidejű felhasználáshoz.
-Míg a leggyakoribb forgatókönyv az, hogy `A.xxx` konvertálni `B.yyy`egy bemeneti fájlt egy optimalizált formátumban, az eszköz számos további lehetőségek speciális használatra.
+A TexConv egy parancssori eszköz, amely a szokásos bemeneti formátumokból, például a PNG, a TGA, a JPEG és a DDS használatával dolgozza fel a textúrákat a futásidejű felhasználáshoz optimalizált formátumba.
+Habár a leggyakoribb forgatókönyv egy bemeneti fájl `A.xxx` optimalizált formátumba `B.yyy`konvertálása, az eszköz számos további lehetőséget kínál a speciális használatra.
 
-## <a name="command-line-help"></a>Parancssori súgó
+## <a name="command-line-help"></a>Parancssori Súgó
 
-Ha a TexConv.exe-t a `--help` paraméterrel futtatja, az összes rendelkezésre álló lehetőség megjelenik. Ezenkívül a TexConv kinyomtatja a használt beállításokat, amikor végrehajtják, hogy segítsen megérteni, mit csinál. A részletekért tekintse meg ezt a kimenetet.
+Ha a TexConv. exe fájlt `--help` a paraméterrel futtatja, az összes elérhető lehetőség megjelenik. Emellett a TexConv kinyomtatja a használatban lévő beállításokat a végrehajtás során, hogy segítsen megérteni, hogy mi történik. További részletekért olvassa el ezt a kimenetet.
 
 ## <a name="general-usage"></a>Általános használat
 
-A TexConv mindig **pontosan egy kimeneti** fájlt állít elő. Több **bemeneti** fájlt is használhat a kimenet összeállításához. A szerelvény, azt is szüksége van egy **csatorna leképezése**, amely megmondja, hogy melyik csatorna *(Piros, Zöld, Kék* vagy *Alfa*), hogy melyik bemeneti fájlt, és mozgassa azt, amely csatorna a kimeneti kép.
+A TexConv mindig **pontosan egy kimeneti** fájlt hoz létre. **Több bemeneti** fájlt is használhat a kimenet összeállításához. A szerelvényhez szükség van egy csatorna- **hozzárendelésre**is, amely azt jelzi, hogy melyik csatornán (*vörös, zöld, kék* vagy *alfa*) kell elkészítenie a bemeneti fájlt, és át kell helyeznie azt a kimeneti rendszerkép adott csatornáján.
 
-A legtöbb egyenes előre parancssor a következő:
+A legegyenesebb továbbítási parancssor a következő:
 
 ```cmd
 TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 ```
 
-- `-out`a kimeneti fájlt és -formátumot adja meg
-- `-in0`az első bemeneti kép megadása
-- `-rgba`azt mondja, hogy a kimeneti képnek mind a négy csatornát használnia kell, és hogy 1:1 arányban kell venni a bemeneti képből
+- `-out`a kimeneti fájl és a formátum megadása
+- `-in0`Megadja az első bemeneti képet
+- `-rgba`azt jelzi, hogy a kimeneti képnek mind a négy csatornát kell használnia, és a bemeneti rendszerképből 1:1 kell venni.
 
 ## <a name="multiple-input-files"></a>Több bemeneti fájl
 
-Ha több bemeneti fájl kimenetét szeretné összeállítani, adja meg az egyes bemeneti fájlokat a `-in` növekvő számú beállítással:
+Ha több bemeneti fájlból kívánja összeállítani a kimenetet, adja meg az `-in` összes bemeneti fájlt a beállítással növekvő számmal:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-2D textúrákból történő kockatérkép összeállításakor `-right`használhatja `-top` `-bottom`a `-front` `-back` , `-px` `-left`, `-py` `-ny`, `-pz` `-nz`, vagy , `-nx`, , , , , .
+Cubemap 2D-textúrákból való összegyűjtésekor az egyik a következőt `-left`is `-top`használhatja `-bottom` `-front` `-right`:, `-back` , `-px`, `-nx`, `-py`vagy `-ny`, `-pz`, `-nz`,,,.
 
-A bemenetek kimeneti fájlhoz való hozzárendeléséhez megfelelő csatornaleképezésre van szükség.
+Ha ezeket a bemeneteket a kimeneti fájlba szeretné képezni, megfelelő csatorna-megfeleltetésre van szükség.
 
-## <a name="channel-mappings"></a>Csatornaleképezések
+## <a name="channel-mappings"></a>Csatorna-hozzárendelések
 
-A csatornaleképezési beállítások határozzák meg, hogy melyik bemenetből töltse ki az adott kimeneti csatornákat. Az egyes csatornák bemenetét az így megfelelően adhatja meg:
+A csatorna-hozzárendelési beállítások határozzák meg, hogy melyik bemenetből kell kitölteni az adott kimeneti csatornákat. Az egyes csatornák bemeneteit a következőhöz hasonlóan adhatja meg:
 
 ```cmd
 -r in0.b -g in0.g -b in0.r -a in1.r
 ```
 
-Itt a kimenet RGB csatornái az első bemeneti képpel lesznek feltöltve, de a piros és a kék csere lesz. A kimenet alfa-csatornája a második bemeneti kép piros csatornájának értékeivel lesz feltöltve.
+Itt a kimenet RGB-csatornái kitöltése az első bemeneti képpel történik, de a vörös és a kék szín cserélve lesz. A kimenet alfa-csatornája a második bemeneti rendszerkép piros csatornájának értékeivel lesz kitöltve.
 
-Az egyes csatornák leképezésének külön-külön történő megadása a legnagyobb rugalmasságot biztosítja. A kényelem érdekében ugyanez lehet írni a "swizzling" operátorok:
+Az egyes csatornák leképezésének megadása külön biztosítja a legnagyobb rugalmasságot. Az egyszerűség kedvéért a "swizzling" operátorok is megírhatók:
 
 ```cmd
 -rgb in0.bgr -a in1.r
@@ -65,69 +65,69 @@ Az egyes csatornák leképezésének külön-külön történő megadása a legn
 
 ### <a name="output-channels"></a>Kimeneti csatornák
 
-A következő csatornaleképezési beállítások érhetők el:
+A következő csatorna-leképezési lehetőségek érhetők el:
 
-- `-r`, `-g` `-b`, `-a` , : Ezek egycsatornás hozzárendeléseket határoznak meg
-- `-rg`: Adja meg a piros és zöld csatorna hozzárendeléseket.
-- `-rgb`: Adja meg a piros, zöld és kék csatorna hozzárendeléseket.
-- `-rgba`: Mind a négy csatorna-hozzárendelést megadja.
+- `-r`, `-g`, `-b`, `-a` : Az egycsatornás hozzárendelések meghatározása
+- `-rg`: A vörös és a zöld csatorna hozzárendeléseinek meghatározása.
+- `-rgb`: A vörös, zöld és kék csatorna hozzárendeléseinek meghatározása.
+- `-rgba`: Megadja mind a négy csatorna hozzárendelését.
 
-Csak az R, RG vagy RGB csatornát említve utasítja a TexConv-ot, hogy hozzon létre egy kimeneti fájlt, amely csak 1, 2 vagy 3 csatornával rendelkezik.
+A csak az R, RG vagy RGB csatornát említve arra utasítja a TexConv, hogy hozzon létre egy kimeneti fájlt, amely csak 1, 2 vagy 3 csatornával rendelkezik.
 
 ### <a name="input-swizzling"></a>Bemeneti swizzling
 
-Amikor megadja, hogy melyik bemeneti textúrának kell kitöltenie melyik kimeneti csatornát, a bemenetet fel lehet pisnyelni:
+Amikor megadja, hogy melyik bemeneti textúrának kell kitöltenie a kimeneti csatornát, az egyik csalás a bemenetet:
 
-- `-rgba in0`egyenértékű a`-rgba in0.rgba`
-- `-rgba in0.bgra`felpezsdül a bemeneti csatornák
-- `-rgb in0.rrr`a piros csatornát az összes csatornára
+- `-rgba in0`egyenértékű a következővel`-rgba in0.rgba`
+- `-rgba in0.bgra`a bemeneti csatornákat fogja csalás
+- `-rgb in0.rrr`a piros csatornát minden csatornára duplikálja
 
-A csatornákat fekete vagy fehér színnel is kitöltheti:
+A csatornákat feketével vagy fehérrel is kitöltheti:
 
-- `-rgb in0 -a white`létrehoz egy 4 csatornás kimeneti textúrát, de az alfa teljesen átlátszatlan
-- `-rg black -b white`létrehoz egy teljesen kék textúra
+- `-rgb in0 -a white`létrehoz egy 4 csatornás kimeneti textúrát, de az alfaot teljesen átlátszatlanra állítja
+- `-rg black -b white`egy teljesen kék textúrát fog létrehozni
 
 ## <a name="common-options"></a>Gyakori beállítások
 
-A legérdekesebb lehetőségek az alábbiakban vannak felsorolva. További lehetőségek vannak `TexConv --help`felsorolva .
+A legérdekesebb lehetőségek alább láthatók. A további lehetőségek a következők `TexConv --help`:.
 
 ### <a name="output-type"></a>Kimenet típusa
 
-- `-type 2D`: A kimenet egy normál 2D-s kép lesz.
-- `-type Cubemap`: A kimenet egy kockatérképes kép lesz. Csak DDS kimeneti fájlok esetén támogatott. Ha ez meg van adva, a kockatérképet 6 normál 2D bemeneti lemezképből lehet összeállítani.
+- `-type 2D`: A kimenet normál 2D-képként jelenik meg.
+- `-type Cubemap`: A kimenet egy cubemap-rendszerkép lesz. Csak a DDS kimeneti fájlok esetében támogatott. Ha ez meg van adva, a cubemap 6 normál 2D bemeneti rendszerképből is összeállítható.
 
-### <a name="image-compression"></a>Képtömörítés
+### <a name="image-compression"></a>Képek tömörítése
 
-- `-compression none`: A kimeneti kép tömörítetlen lesz.
-- `-compression medium`: Ha támogatott, a kimeneti kép tömörítést használ a túl sok minőség feláldozása nélkül.
-- `-compression high`: Ha támogatott, a kimeneti kép tömörítési és áldozati minőséget használ egy kisebb fájl javára.
+- `-compression none`: A kimeneti rendszerkép kibontása nem történik meg.
+- `-compression medium`: Ha támogatott, a kimeneti rendszerkép tömörítést fog használni a túl sok minőség feláldozása nélkül.
+- `-compression high`: Ha támogatott, a kimeneti rendszerkép tömörítést és az áldozat minőségét fogja használni egy kisebb fájl javára.
 
-### <a name="mipmaps"></a>Miptérképek
+### <a name="mipmaps"></a>Mipmap
 
-Alapértelmezés szerint a TexConv miptérképeket hoz létre, amikor a kimeneti formátum támogatja.
+Alapértelmezés szerint a TexConv a Mipmap hozza létre, ha a kimeneti formátum támogatja azt.
 
-- `-mipmaps none`: A miptérképek nem jönnek létre.
-- `-mipmaps Linear`: Ha támogatott, a mipmaps egy dobozszűrő használatával jön létre.
+- `-mipmaps none`: A Mipmap nem jön létre.
+- `-mipmaps Linear`: Ha támogatott, a Mipmap egy box-szűrő használatával jön létre.
 
-### <a name="usage-srgb--gamma-correction"></a>Használat (sRGB / gamma korrekció)
+### <a name="usage-srgb--gamma-correction"></a>Használat (sRGB/gamma-javítás)
 
-A `-usage` beállítás meghatározza a kimenet célját, és így megmondja a TexConv-nak, hogy alkalmazza-e a gamma korrekciót a bemeneti és kimeneti fájlokra. A használat csak az RGB csatornákat érinti. Az alfa-csatorna mindig "lineáris" értékeket tartalmaz. Ha a használat nincs megadva, az "automatikus" mód megpróbálja észlelni az első bemeneti lemezkép formátumából és fájlnevéből származó használatot. Például az egy- és kétcsatornás kimeneti formátumok mindig lineárisak. Ellenőrizze a kimenetet, hogy milyen döntést hozott a TexConv.
+Ez `-usage` a beállítás határozza meg a kimenet célját, és így közli a TexConv, hogy a bemeneti és a kimeneti fájlok esetében a gamma-korrekciót kell-e alkalmazni. A használat csak az RGB-csatornákat érinti. Az alfa-csatorna mindig "lineáris" értékeket tartalmaz. Ha nincs megadva a használat, az "automatikus" mód megpróbálja észlelni a használatot az első bemeneti rendszerkép formátuma és fájlneve alapján. Például a single és a Dual Channel kimeneti formátum mindig lineáris. Tekintse meg a kimenetet, és tekintse meg, hogy milyen TexConv hozott létre.
 
-- `-usage Linear`: A kimeneti kép olyan értékeket tartalmaz, amelyek nem színeket jelölnek. Ez általában a helyzet a fémes és érdes ség textúrák, valamint mindenféle maszkok.
+- `-usage Linear`: A kimeneti rendszerkép olyan értékeket tartalmaz, amelyek nem képviselnek színeket. Ez általában a fémes és a durva textúrák, valamint a különböző maszkok esetében van.
 
-- `-usage Color`: A kimeneti kép színeket jelöl, például diffúz/albedo térképeket. Az sRGB-jelző a kimeneti DDS-fejlécben lesz beállítva.
+- `-usage Color`: A kimeneti képképet jelölő szín, például diffúz/albedó térképek. Az sRGB jelző a kimeneti DDS fejlécben lesz beállítva.
 
-- `-usage HDR`: A kimeneti fájlnak képpontonként több mint 8 bitet kell használnia a kódoláshoz. Ennek következtében az összes érték lineáris térben van tárolva. HDR textúrák esetén nem számít, hogy az adatok színt vagy más adatot jelölnek.For HDR textúrák it does not matter whether the data represents color or other data.
+- `-usage HDR`: A kimeneti fájlnak a kódoláshoz csatornánként 8 bitesnél több bitet kell használnia. Ennek következtében az összes érték lineáris térben tárolódik. A HDR-textúrák esetében nem számít, hogy az adott szín vagy más adatértéket képvisel-e.
 
-- `-usage NormalMap`: A kimeneti kép egy érintőtérű normál térképet jelöl. Az értékek normalizálódnak, és a mipmap számítás a kissé lesz optimalizálva.
+- `-usage NormalMap`: A kimeneti rendszerkép egy tangens – normál Térkép. Az értékek normalizálva lesznek, és a Mipmap számítás kis mértékben lesz optimalizálva.
 
-- `-usage NormalMap_Inverted`: A kimenet egy érintőtérű normál térkép, amelynek Y-ja a bemenettel ellentétes irányba mutat.
+- `-usage NormalMap_Inverted`: A kimenet egy, a bemenettől eltérő irányba mutató szóköz, amely az Y-vel ellentétes irányban mutat.
 
-### <a name="image-rescaling"></a>Kép átméretezése
+### <a name="image-rescaling"></a>Képek átméretezése
 
-- `-minRes 64`: Megadja a kimenet minimális felbontását. Ha a bemeneti kép kisebb, akkor felskálázott lesz.
-- `-maxRes 1024`: Megadja a kimenet maximális felbontását. Ha a bemeneti kép nagyobb, akkor leméreteződik.
-- `-downscale 1`: Ha ez nagyobb, mint 0, a bemeneti képek a felére csökkennek az N felbontásban. Ezzel általános minőségcsökkentést alkalmazhat.
+- `-minRes 64`: A kimenet minimális felbontását adja meg. Ha a bemeneti rendszerkép kisebb, akkor a rendszer felskálázást kap.
+- `-maxRes 1024`: A kimenet maximális felbontását adja meg. Ha a bemeneti rendszerkép nagyobb, akkor a rendszer a downscaled fogja kérni.
+- `-downscale 1`: Ha ez meghaladja a 0 értéket, a bemeneti képekre az N-idő felbontása felére kerül. Ezzel általános minőség-csökkentést alkalmazhat.
 
 ## <a name="examples"></a>Példák
 
@@ -137,27 +137,27 @@ A `-usage` beállítás meghatározza a kimenet célját, és így megmondja a T
 TexConv.exe -out D:/diffuse.dds -in0 D:/diffuse.jpg -rgba in0 -usage color
 ```
 
-### <a name="convert-a-normal-map"></a>Normál térkép konvertálása
+### <a name="convert-a-normal-map"></a>Normál Térkép konvertálása
 
 ```cmd
 TexConv.exe -out D:/normalmap.dds -in0 D:/normalmap.png -rgb in0 -usage normalmap
 ```
 
-### <a name="create-an-hdr-cubemap"></a>HDR-kockatérkép létrehozása
+### <a name="create-an-hdr-cubemap"></a>HDR-cubemap létrehozása
 
 ```cmd
 TexConv.exe -out "D:/skybox.dds" -in0 "D:/skymap.hdr" -rgba in0 -type cubemap -usage hdr
 ```
 
-A HDR kockatérképek nagyszerű forrása [a hdrihaven.com](https://hdrihaven.com/hdris/).
+A HDR-cubemaps kiváló forrása a [hdrihaven.com](https://hdrihaven.com/hdris/).
 
-### <a name="bake-multiple-images-into-one"></a>Süssünk több képet egy
+### <a name="bake-multiple-images-into-one"></a>Több rendszerkép összesütése egy
 
 ```cmd
 TexConv.exe -out "D:/Baked.dds" -in0 "D:/metal.tga" -in1 "D:/roughness.png" -in2 "D:/DiffuseAlpha.dds" -r in1.r -g in0.r -b black -a in2.a -usage linear
 ```
 
-### <a name="extract-a-single-channel"></a>Egyetlen csatorna kinyerése
+### <a name="extract-a-single-channel"></a>Egyetlen csatorna kibontása
 
 ```cmd
 TexConv.exe -out D:/alpha-mask-only.dds -in0 D:/DiffuseAlpha.dds -r in0.a

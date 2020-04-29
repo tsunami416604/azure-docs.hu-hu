@@ -1,6 +1,6 @@
 ---
-title: Lapsablonok az Azure API Management ben | Microsoft dokumentumok
-description: Ismerje meg, hogyan szabhatja testre a fejlesztői portál lapok tartalmát az Azure API Management sablonkészletével.
+title: Lapok az Azure API Managementban | Microsoft Docs
+description: Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalain található tartalmakat az Azure API Management sablonjainak használatával.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249541"
 ---
-# <a name="page-templates-in-azure-api-management"></a>Lapsablonok az Azure API Management ben
-Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő , például a [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a megadott honosított [karakterlánc-erőforrások,](api-management-template-resources.md#strings) [a karakterjel-erőforrások](api-management-template-resources.md#glyphs)és az [oldalvezérlők](api-management-page-controls.md)használatával nagy rugalmasságot biztosít az oldalak tartalmának beállításához, ahogy azt megfelelőnek látja ezekkel a sablonokkal.  
+# <a name="page-templates-in-azure-api-management"></a>Lapok az Azure API Management
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
   
- Az ebben a szakaszban található sablonok lehetővé teszik a bejelentkezés, a regisztráció és a lap nem található lapok tartalmának testreszabását a fejlesztői portálon.  
+ Az ebben a szakaszban található sablonok segítségével testre szabhatja a bejelentkezés, a regisztráció és az oldal nem található lapjait a fejlesztői portálon.  
   
 -   [Bejelentkezés](#SignIn)  
   
 -   [feliratkozni](#SignUp)  
   
--   [Az oldal nem található](#PageNotFound)  
+-   [A lap nem található](#PageNotFound)  
   
 > [!NOTE]
->  A minta alapértelmezett sablonjai a következő dokumentációban találhatók, de a folyamatos fejlesztések miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon megtekintheti a kívánt egyedi sablonokra való navigálással. A sablonok használatáról további információt [az API Management fejlesztői portál testreszabása sablonok használatával című](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)témakörben talál.  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="sign-in"></a><a name="SignIn"></a>bejelentkezés  
- A **bejelentkezési** sablon lehetővé teszi a bejelentkezési lap testreszabását a fejlesztői portálon.  
+ A **bejelentkezési** sablon lehetővé teszi a bejelentkezési oldal testreszabását a fejlesztői portálon.  
   
- ![Bejelentkezési lap](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM bejelentkezési lapfejlesztői portálsablonjai")  
+ ![Bejelentkezési oldal](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "A APIM bejelentkezési oldala a fejlesztői portál sablonjai")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -100,16 +100,16 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 ```  
   
 ### <a name="controls"></a>Vezérlők  
- Ez a sablon a következő [lapvezérlőket használhatja.](api-management-page-controls.md)  
+ Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [alap-bejelentkezés](api-management-page-controls.md#basic-signin)  
+-   [alapszintű – bejelentkezési](api-management-page-controls.md#basic-signin)  
   
--   [Szolgáltatók](api-management-page-controls.md#providers)  
+-   [szolgáltatók](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>Adatmodell  
- [Felhasználói bejelentkezési](api-management-template-data-model-reference.md#UseSignIn) entitás.  
+ [Felhasználó bejelentkezési](api-management-template-data-model-reference.md#UseSignIn) entitása.  
   
-### <a name="sample-template-data"></a>Mintasablon adatai  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {
@@ -138,9 +138,9 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 ```  
   
 ##  <a name="sign-up"></a><a name="SignUp"></a>feliratkozni  
- A **regisztrációs** sablon lehetővé teszi a regisztrációs lap testreszabását a fejlesztői portálon.  
+ A **regisztrációs** sablon segítségével testre szabhatja a regisztrációs oldalt a fejlesztői portálon.  
   
- ![Feliratkozási oldal](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM-regisztráció lapfejlesztői portálsablonjai")  
+ ![Regisztrációs oldal](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM regisztrációs oldal fejlesztői portál sablonjai")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -159,14 +159,14 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 ```  
   
 ### <a name="controls"></a>Vezérlők  
- Ez a sablon a következő [lapvezérlőket használhatja.](api-management-page-controls.md)  
+ Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [Feliratkozás](api-management-page-controls.md#sign-up)  
+-   [regisztráció](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>Adatmodell  
- [Felhasználói regisztrációs](api-management-template-data-model-reference.md#UserSignUp) entitás.  
+ [Felhasználói regisztráció](api-management-template-data-model-reference.md#UserSignUp) entitása.  
   
-### <a name="sample-template-data"></a>Mintasablon adatai  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -185,10 +185,10 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a>Az oldal nem található  
- A **nem található lap** sablon lehetővé teszi a fejlesztői portálon nem található lap testreszabását.  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a>A lap nem található  
+ A **lap nem található** sablon lehetővé teszi az oldal nem található oldalának testreszabását a fejlesztői portálon.  
   
- ![Nem található oldal](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Az APIM nem található a lapfejlesztői portál sablonjaiban")  
+ ![Nem található lap](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "A APIM nem található a fejlesztői portál sablonjai")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -223,19 +223,19 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 ```  
   
 ### <a name="controls"></a>Vezérlők  
- Előfordulhat, hogy ez a sablon nem használ [oldalvezérlőket.](api-management-page-controls.md)  
+ A sablon nem használhat [oldal vezérlőelemeket](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|referenceCode (hivatkozáskód)|sztring|A kód akkor jön létre, ha az oldal belső hiba következtében jelenik meg.|  
-|hibakód|sztring|A kód akkor jön létre, ha az oldal belső hiba következtében jelenik meg.|  
-|e-mailBody|sztring|E-mail törzs e-mail törzs e-mail törzse akkor jött létre, ha ez az oldal belső hiba miatt jelent meg.|  
-|requestedUrl|sztring|A kért URL-cím, amikor a lap nem található.|  
-|referrerUrl|sztring|A hivatkozó URL-címe a kért URL-hez.|  
+|referenceCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|errorCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|emailBody|sztring|Az e-mail-szövegtörzs akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|requestedUrl|sztring|A lap nem található a kért URL-cím.|  
+|referrerUrl|sztring|A kért URL-címhez tartozó hivatkozó URL-cím.|  
   
-### <a name="sample-template-data"></a>Mintasablon adatai  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -248,4 +248,4 @@ Az Azure API Management lehetővé teszi a fejlesztői portállapok tartalmának
 ```
 
 ## <a name="next-steps"></a>További lépések
-A sablonok használatáról további információt [az API Management fejlesztői portál testreszabása sablonok használatával című](api-management-developer-portal-templates.md)témakörben talál.
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

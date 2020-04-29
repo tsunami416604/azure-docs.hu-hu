@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Gateway eszközhöz való csatlakozás és kezelés a Windows PowerShell használatával
-description: Ez a témakör azt ismerteti, hogy miként csatlakozhat a Data Box Gateway-hez, majd hogyan kezelhető a Windows PowerShell-felületen keresztül.
+title: Azure Data Box Gateway eszköz csatlakoztatása és kezelése a Windows PowerShell használatával
+description: Ismerteti, hogyan csatlakozhat a szolgáltatáshoz, majd hogyan felügyelheti Data Box Gateway a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260214"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Azure Data Box Gateway-eszköz kezelése a Windows PowerShell használatával
 
-Az Azure Data Box Gateway megoldás lehetővé teszi, hogy adatokat küldjön a hálózaton keresztül az Azure-ba. Ez a cikk a Data Box Gateway eszköz konfigurációs és felügyeleti feladatait ismerteti. Használhatja az Azure Portalon, a helyi webes felhasználói felület, vagy a Windows PowerShell-felület en kezelheti az eszközt.
+Azure Data Box Gateway megoldás lehetővé teszi az adatküldés hálózaton keresztül az Azure-ba. Ez a cikk a Data Box Gateway eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
-Ez a cikk a PowerShell-felület használatával végzett feladatokra összpontosít.
+Ez a cikk a PowerShell-felületet használó feladatokra összpontosít.
 
-Ez a cikk a következő eljárásokat tartalmazza:
+Ez a cikk az alábbi eljárásokat tartalmazza:
 
-- Csatlakozás a PowerShell-kapcsolathoz
+- Kapcsolódás a PowerShell felületéhez
 - Támogatási csomag létrehozása
 - Tanúsítvány feltöltése
-- Indítás nem DHCP-környezetben
-- Eszközadatok megtekintése
+- Rendszerindítás nem DHCP-környezetben
+- Eszköz adatainak megtekintése
 
-## <a name="connect-to-the-powershell-interface"></a>Csatlakozás a PowerShell-kapcsolathoz
+## <a name="connect-to-the-powershell-interface"></a>Kapcsolódás a PowerShell felületéhez
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -41,11 +41,11 @@ Ez a cikk a következő eljárásokat tartalmazza:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-## <a name="boot-up-in-non-dhcp-environment"></a>Indítás nem DHCP-környezetben
+## <a name="boot-up-in-non-dhcp-environment"></a>Rendszerindítás nem DHCP-környezetben
 
 [!INCLUDE [Boot up in non-DHCP environment](../../includes/data-box-edge-gateway-boot-non-dhcp.md)]
 
-## <a name="view-device-information"></a>Eszközadatok megtekintése
+## <a name="view-device-information"></a>Eszköz adatainak megtekintése
 
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 

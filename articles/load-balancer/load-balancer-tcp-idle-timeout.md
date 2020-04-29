@@ -1,7 +1,7 @@
 ---
-title: A tcp-időtúltöltés konfigurálása az Azure-ban
+title: A terheléselosztó TCP-üresjárati időkorlátjának konfigurálása az Azure-ban
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure Load Balancer TCP tétlen időtúltöltést.
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Load Balancer TCP üresjárati időkorlátját.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,36 +14,36 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456828"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>TCP-időtúlterhelési beállítások konfigurálása az Azure Load Balancer-hez
+# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát beállításainak konfigurálása Azure Load Balancer
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, `Connect-AzAccount` az Azure-ral való kapcsolat létrehozásához is futnia kell.
+Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Connect-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="tcp-idle-timeout"></a>TCP-járat-időeltetés
-Az Azure Load Balancer egy tétlen időtúlterhelési beállítás 4 perc és 30 perc között van. Alapértelmezés szerint 4 percre van beállítva. Ha az inaktív időszak hosszabb, mint az időtúlérték, nincs garancia arra, hogy a TCP vagy HTTP-munkamenet megmarad az ügyfél és a felhőszolgáltatás között.
+## <a name="tcp-idle-timeout"></a>TCP Üresjárati időkorlát
+Azure Load Balancer üresjárati időkorlátja 4 perc és 30 perc között van. Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad.
 
-A kapcsolat bezárásaután az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "Az alapul szolgáló kapcsolat megszakadt: A kiszolgáló bezártegy olyan kapcsolatot, amelyet életben kellett tartania."
+Ha a csatlakozás be van zárva, az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "az alapul szolgáló csatlakozás bezárult: a kiszolgáló lezárta az életben tartani várt kapcsolatokat."
 
-Bevett gyakorlat a TCP életben tartásának használata. Ez a gyakorlat hosszabb ideig tartja a kapcsolatot aktívállapotban. További információt a [.NET példákban talál.](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx) Ha engedélyezve van az életben tartás, a csomagok küldése a kapcsolat inaktivitási időszakaiban történik. Az életben tartó csomagok biztosítják, hogy az érvénytelen időtúllépési érték nem érhető el, és a kapcsolat hosszú ideig megmarad.
+Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net-példákat](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Életben tartási csomagok gondoskodnak arról, hogy az Üresjárati időkorlát értéke ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
 
-A beállítás csak bejövő kapcsolatok esetén működik. A kapcsolat elvesztésének elkerülése érdekében konfigurálja a TCP életben tartását az alapjárati időtúllépési beállításnál kisebb időközzel, vagy növelje az alapjárati időtúllépésértékét. Ezeknek a forgatókönyveknek a támogatásához egy konfigurálható tétlen időkitöltés támogatott.
+A beállítás csak a bejövő kapcsolatok esetében működik. A kapcsolat elvesztésének elkerüléséhez konfigurálja a TCP Keep-Alive értéket az Üresjárati időkorlát beállításnál kisebb intervallumra, vagy növelje az Üresjárati időkorlát értékét. Ezen forgatókönyvek támogatásához konfigurálható Üresjárati időkorlát támogatása lett hozzáadva.
 
-A TCP keep-alive olyan esetekben működik, amikor az akkumulátor élettartama nem megszorítás. Mobilalkalmazásokhoz nem ajánlott. A TCP életben tartás mobilalkalmazásban való használata gyorsabban lemerítheti az eszköz akkumulátorát.
+A TCP Keep-Alive olyan forgatókönyvek esetén működik, ahol az akkumulátorok élettartama nem korlátozás. A mobil alkalmazások esetében nem ajánlott. Ha egy TCP Keep-Alive protokollt használ a mobil alkalmazásban, az eszköz akkumulátora gyorsabban kiüríthető.
 
-![TCP időmeghosszabbítása](./media/load-balancer-tcp-idle-timeout/image1.png)
+![TCP-időtúllépés](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-A következő szakaszok ismertetik, hogyan módosíthatja az írási időtúlterhelési beállításokat a nyilvános IP és a terheléselosztó erőforrások.
+A következő szakaszok azt ismertetik, hogyan változtathatók meg a nyilvános IP-címek és a terheléselosztó erőforrásainak üresjárati időtúllépési beállításai.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>A tcp-időszám-szám beállítása a példányszintű nyilvános IP-címhez 15 percre
+## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>A példány-szintű nyilvános IP-cím TCP-időtúllépésének beállítása 15 percre
 
 ```azurepowershell-interactive
 $publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
@@ -51,11 +51,11 @@ $publicIP.IdleTimeoutInMinutes = "15"
 Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ```
 
-A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúlérték 4 perc. Az időhosszabbítási tartomány 4–30 perc.
+A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúllépés 4 perc. Az elfogadható időtúllépési tartomány 4 – 30 percet vesz igénybe.
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>A TCP időtúlnapjának beállítása 15 percre egy terheléselosztásos szabályon
+## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Egy elosztott terhelésű szabály TCP-időtúllépésének beállítása 15 percre
 
-A terheléselosztó tétlen időtúlnapjának beállításához az "IdleTimeoutInMinutes" beállítás a terheléselosztási szabályon van beállítva. Példa:
+A terheléselosztó üresjárati időkorlátjának beállításához a "IdleTimeoutInMinutes" beállítás van beállítva a terheléselosztási szabályhoz. Például:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
@@ -63,8 +63,8 @@ $lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Belső terheléselosztó áttekintése](load-balancer-internal-overview.md)
+[A belső Load Balancer áttekintése](load-balancer-internal-overview.md)
 
-[Internetalapú terheléselosztó konfigurálásának első lépései](quickstart-create-standard-load-balancer-powershell.md)
+[Az internetre irányuló terheléselosztó konfigurálásának első lépései](quickstart-create-standard-load-balancer-powershell.md)
 
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)

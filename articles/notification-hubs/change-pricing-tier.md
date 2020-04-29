@@ -1,6 +1,6 @@
 ---
-title: Értesítési központok névterének tarifacsomagjának módosítása | Microsoft dokumentumok
-description: Ismerje meg, hogyan módosíthatja az Azure Notification Hubs névter ének díjcsomagját.
+title: Notification Hubs névtér árképzési szintjeinek módosítása | Microsoft Docs
+description: Megtudhatja, hogyan módosíthatja egy Azure Notification Hubs-névtér díjszabási szintjét.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -14,81 +14,81 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656468"
 ---
-# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Az Azure értesítési központok névterének díjszabási szintjének módosítása
+# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification hub-névtér árképzési szintjeinek módosítása
 
-Az értesítési központok három szinten érhető el: **ingyenes**, **alapszintű**és **szabványos**. Ez a cikk bemutatja, hogyan módosíthatja az Azure Notification Hubs névtér díjszabási szintjét.
+A Notification Hubs három szinten érhető el: **ingyenes**, **alapszintű**és **standard**. Ez a cikk bemutatja, hogyan módosíthatja az Azure Notification Hubs-névtér díjszabási szintjét.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Notification Hubs,a hub a legkisebb erőforrás/entitás. Általában egy alkalmazáshoz van rendelve, és minden egyes platformértesítési rendszerhez (PNS) egy tanúsítványt tud tárolni, amelyet támogatunk az alkalmazáshoz. Az alkalmazás lehet egy hibrid, vagy egy natív és egy platformfüggetlen alkalmazás.
+Az Azure Notification Hubsban a hub a legkisebb erőforrás/entitás. Általában egy alkalmazásra mutat, és minden egyes Platform Notification System (PNS) esetében egy tanúsítványt tart fenn, amelyet támogatunk az alkalmazáshoz. Az alkalmazás lehet hibrid, natív és platformfüggetlen alkalmazás is.
 
-A **névtér** értesítési központok gyűjteménye. Minden névtér általában egy adott célra kapcsolódó és használt elosztókból áll. Például három különböző névtér fejlesztési, tesztelési és éles célokra, illetve.
+A **névtér** az értesítési központok gyűjteménye. Az egyes névterek általában a kapcsolódó és adott célra használt hubokból állnak. Például három különböző névteret használhat fejlesztési, tesztelési és éles üzemi célokra.
 
-A névteret az **ingyenes,** **alapszintű**vagy **standard** tarifacsomagokkal társíthatja. A réteget olyan névtérhez használhatja, amely megfelel az igényeinek. A következő szakaszok bemutatják, hogyan módosíthatja az értesítési központok névterének tarifacsomagját.
+Az **ingyenes**, az **alapszintű**vagy a **standard** szintű díjszabással is társíthat névtereket. Használhatja a szintet az igényeinek megfelelő névtérhez. A következő részekben bemutatjuk, hogyan módosíthatja egy Notification Hubs névtér díjszabási szintjét.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 
-Az Azure Portal használatakor módosíthatja a névtér díjszabási szintjét a névtér lapon vagy egy központi lapon. Ha egy központi lapon módosítja, akkor a névtér szintjén is módosítja. Módosítja a névtér és a névtér összes hubjának tarifacsomagját.
+A Azure Portal használatakor megváltoztathatja a névtér díjszabási szintjét a névtér lapon vagy egy központi lapon. Ha egy központi lapon módosítja azt, akkor a névtér szintjén kell megváltoztatnia. Megváltoztatja a névtér és a névtér összes csomópontjának árképzési szintjét.
 
-### <a name="change-tier-on-the-namespace-page"></a>Szint módosítása a névtér lapon
+### <a name="change-tier-on-the-namespace-page"></a>A névtér oldalának változási szintje
 
-Az alábbi eljárás bemutatja, hogyan módosíthatja egy névtér tarifacsomagját a névtér lapon. Ha módosítja egy névtér szintjét, az a névtér összes hubjára vonatkozik.
+A következő eljárás azt mutatja be, hogyan változtatható meg a névtér díjszabási szintje a névtér lapon. Ha megváltoztatja egy névtér szintjét, az a névtér összes hubhoz érvényes lesz.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza a bal oldali menü **Minden szolgáltatás lehetőséget.**
-3. Válassza **az Értesítési központ névtereit** a **dolgok internete** csoportban. Ha a szöveg melletti`*`csillagot ( ) választja, az a **KEDVENCEK**csoportbal oldali navigációs sávjára kerül. Ez segít elérni a névterek lap gyorsabb megy előre. Miután hozzáadja a KEDVENCEKhez, válassza **az Értesítési központ névterét.**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
+3. Válassza az **értesítési központ névterek** lehetőséget a **eszközök internetes hálózata** szakaszban. Ha a csillag (`*`) lehetőséget választja a szöveg mellett, a rendszer hozzáadja a bal oldali navigációs sávra a **Kedvencek**alatt. Ez segít a névterek oldal gyorsabb elérésében. Miután hozzáadta a KEDVENCekhez, válassza az **értesítési központ névterek**lehetőséget.
 
-    ![Minden szolgáltatás -> Értesítési központ névterét](./media/change-pricing-tier/all-services-nhub.png)
+    ![Minden szolgáltatás – > értesítési központ névterei](./media/change-pricing-tier/all-services-nhub.png)
 
-4. Az **Értesítési központ névterei** lapon jelölje ki azt a névteret, amelynek a tarifacsomagját módosítani szeretné.
-5. A névtér **értesítési központ névtér** lapján az Essentials szakaszban láthatja a névtér aktuális tarifacsomagját. **Essentials** Az alábbi képen láthatja, hogy a névtér tarifaszintje **szabad.**
+4. Az **értesítési központ névterei** lapon válassza ki azt a névteret, amelynek az árképzési szintjét módosítani kívánja.
+5. A névtérhez tartozó **értesítési központ névtér** lapján megtekintheti a névtér aktuális díjszabási szintjét az **alapvető** erőforrások szakaszban. A következő képen láthatja, hogy a névtér díjszabási szintje **ingyenes**.
 
-    ![Aktuális tarifacsomag a névtérlapon](./media/change-pricing-tier/pricing-tier-before.png)
+    ![Aktuális díjszabási csomag a névtér oldalon](./media/change-pricing-tier/pricing-tier-before.png)
 
-6. A névtér **értesítési központ névtér** lapján válassza a Kezelési csoport Díjszabási szint **csoportban** a **Tarifacsomag** lehetőséget.
+6. A névtérhez tartozó **értesítési központ névtér** lapján válassza az **árképzési szintet** a **kezelés** szakaszban.
 
-    ![Tarifacsomag kiválasztása a névtér lapon](./media/change-pricing-tier/namespace-select-pricing-menu.png)
+    ![Válassza ki az árképzési szintet a névtér oldalon](./media/change-pricing-tier/namespace-select-pricing-menu.png)
 
-7. Módosítsa a tarifacsomagot, majd kattintson a **Kijelölés** gombra.
-8. A szintmódosítási művelet állapotát a **riasztásokban láthatja.**
-9. Váltás az **Áttekintés** lapra. Ellenőrizze, hogy az új szint megjelenik-e az **Essentials** szakasz **Tarifaszint** mezőjéhez.
-10. Ez a lépés nem kötelező. Jelöljön ki egy elosztót a névtérben. Győződjön meg arról, hogy ugyanazt a tarifacsomagot látja az **Essentials** szakaszban. A névtérben lévő összes hubhoz ugyanazt a tarifacsomagot kell látnia.
+7. Módosítsa az árképzési szintet, majd kattintson a **kiválasztás** gombra.
+8. A **riasztásokban**megtekintheti a rétegek módosítása művelet állapotát.
+9. Váltson át az **Áttekintés** lapra. Ellenőrizze, hogy megjelenik-e az új **csomag az alapvető** erőforrások szakasz **díjszabási szintje** mezőjében.
+10. Ez a lépés nem kötelező. Válasszon ki egy hubot a névtérben. Győződjön meg róla, hogy ugyanazt az árképzési szintet látja az **alapvető** erőforrások szakaszban. A névtérben lévő összes hubok esetében ugyanazt az árképzési szintet kell megtekinteni.
 
-### <a name="change-tier-on-the-hub-page"></a>Szint módosítása a központi lapon
+### <a name="change-tier-on-the-hub-page"></a>A központ oldalának változási szintje
 
-Az alábbi eljárás bemutatja, hogyan módosíthatja egy névtér tarifacsomagját a központi lapon. Annak ellenére, hogy ezeket a lépéseket a központi lapról kezdve, ténylegesen módosíthatja a névtér és a névtér összes hubja tarifacsomagját.
+Az alábbi eljárás bemutatja, hogyan módosíthatja a névtér díjszabási szintjét a központ lapon. Annak ellenére, hogy ezek a lépések a központ lapról kezdődnek, a névtér és a névtérben lévő összes központ díjszabási szintjét ténylegesen megváltoztathatja.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza a bal oldali menü **Minden szolgáltatás lehetőséget.**
-3. Válassza az **Értesítési központok lehetőséget** a **dolgok internete** csoportban.
-4. Válassza ki az értesítési **központot.**
-5. A bal oldali menüben válassza a **Tarifacsomag** lehetőséget.
-6. Módosítsa a tarifacsomagot, és kattintson a **Kijelölés** gombra. Ez a művelet módosítja a hubot tartalmazó névtér tarifacsomag-beállítását. Így láthatja az új tarifacsomagot a névtér lapon és az összes központi lapon.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
+3. A **eszközök internetes hálózata** szakaszban válassza a **Notification Hubs** lehetőséget.
+4. Válassza ki az **értesítési**központot.
+5. Válassza ki a bal oldali menüben a **díjszabási szintet** .
+6. Módosítsa az árképzési szintet, majd kattintson a **kiválasztás** gombra. Ez a művelet megváltoztatja a hubot tartalmazó névtér díjszabási szintje beállítását. Így az új díjszabási szintet láthatja a névtér és az összes központ oldalain.
 
 > [!NOTE]
-> Minden tarifacsomag-módosítás azonnal hatályba lép.
+> Az árképzési szintek változásai azonnal érvénybe lépnek.
 
 ## <a name="use-rest-api"></a>A REST API használata
 
-A következő erőforrás-szolgáltató REST API-k segítségével lejuthat az aktuális tarifacsomaglevételére és frissítésére.
+A következő erőforrás-szolgáltató REST API-k segítségével lekérheti a jelenlegi árképzési szintet, és frissítheti azt.
 
-### <a name="get-current-pricing-tier-for-a-namespace"></a>A névtér aktuális tarifacsomagjának beszereznie
+### <a name="get-current-pricing-tier-for-a-namespace"></a>Névtér aktuális díjszabási szintjeinek beolvasása
 
-Az aktuális névtérszint levételéhez küldjön egy GET parancsot, ahogy az a következő példában látható:
+Az aktuális névtér-rétegek beszerzéséhez küldje el a GET parancsot az alábbi példában látható módon:
 
 ```REST
 GET: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
 ```
 
-### <a name="update-pricing-tier-for-a-namespace"></a>Névtér tarifacsomagjának frissítése
+### <a name="update-pricing-tier-for-a-namespace"></a>Névtér frissítésének díjszabási szintje
 
-A névtérszint frissítéséhez küldjön egy PUT parancsot, ahogy az a következő példában látható:
+A névtér-rétegek frissítéséhez küldje el a PUT parancsot az alábbi példában látható módon:
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
@@ -97,4 +97,4 @@ Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezekről a szintekről és az árképzésről az [Értesítési központok díjszabása](https://azure.microsoft.com/pricing/details/notification-hubs/)című témakörben talál további információt.
+További információ ezekről a csomagokról és díjszabásról: [Notification Hubs díjszabása](https://azure.microsoft.com/pricing/details/notification-hubs/).

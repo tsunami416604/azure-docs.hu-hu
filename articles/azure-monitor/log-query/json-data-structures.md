@@ -1,35 +1,35 @@
 ---
-title: Karakterláncok kezelése az Azure Monitor naplólekérdezéseiben | Microsoft dokumentumok
-description: Ez a cikk egy oktatóanyag ot tartalmaz az Azure Monitor Log Analytics használatával az Azure Portalon a naplóadatok lekérdezéséhez és elemzéséhez az Azure Monitorban.
+title: Karakterláncok használata Azure Monitor log-lekérdezésekben | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Monitor Log Analytics a Azure Portal a Azure Monitor naplózási adatai lekérdezéséhez és elemzéséhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672975"
 ---
-# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON- és adatstruktúrák kal való együttműködés az Azure Monitor naplólekérdezéseiben
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON-és adatstruktúrák használata Azure Monitor log-lekérdezésekben
 
 > [!NOTE]
-> A lecke befejezése előtt el kell [végeznie az Azure Monitor loganalytics szolgáltatásának](get-started-portal.md) első lépéseit és [az Azure Monitor naplólekérdezéseinek első lépéseit.](get-started-queries.md)
+> A lecke elvégzése előtt fejezze be a [Azure Monitor log Analytics](get-started-portal.md) és a [Azure monitor log-lekérdezések első](get-started-queries.md) lépéseinek megismerését.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-A beágyazott objektumok olyan objektumok, amelyek egy tömb ben lévő más objektumokat vagy kulcsértékpárok térképét tartalmazzák. Ezek az objektumok JSON-karakterláncként jelennek meg. Ez a cikk azt ismerteti, hogy a JSON hogyan használható az adatok beolvasására és a beágyazott objektumok elemzésére.
+A beágyazott objektumok olyan objektumok, amelyek egy tömb más objektumait vagy a kulcs-érték párok egy térképét tartalmazzák. Ezek az objektumok JSON-karakterláncként jelennek meg. Ez a cikk azt ismerteti, hogyan használható a JSON az adatlekérdezéshez és a beágyazott objektumok elemzéséhez.
 
-## <a name="working-with-json-strings"></a>JSON-karakterláncok kal való együttműködés
-Egy `extractjson` ismert elérési út egy adott JSON-elemének elérésére használható. Ehhez a függvényhez olyan görbekifejezésszükséges, amely a következő konvenciókat használja.
+## <a name="working-with-json-strings"></a>JSON-karakterláncok használata
+Egy `extractjson` ismert elérési úton található adott JSON-elem elérésére használható. Ehhez a függvényhez olyan elérésiút-kifejezésre van szükség, amely az alábbi konvenciókat használja.
 
-- _$_ a gyökérmappára való hivatkozás
-- A zárójel vagy pont jelölés segítségével az alábbi példákban bemutatott indexek és elemek hivatkozhatnak.
+- _$_ a gyökérmappa átirányítása
+- A szögletes zárójel vagy a pont jelölés használatával az alábbi példákban látható módon hivatkozhat az indexekre és az elemekre.
 
 
-Az indexek és a poklelemek szögletes zárójeleit különelemekkel választhatja el:
+Az indexek és a pontok szögletes zárójeleit az elemek elkülönítéséhez használhatja:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -45,7 +45,7 @@ print hosts_report
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
 ```
 
-Ha csak egy elem van, csak a dot jelölést használhatja:
+Ha csak egy elem van, csak a pont jelölését használhatja:
 
 ```Kusto
 let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
@@ -56,8 +56,8 @@ print hosts_report
 
 ## <a name="working-with-objects"></a>Objektumok használata
 
-### <a name="parsejson"></a>parsejson között
-A jsonstruktúra több elemének eléréséhez könnyebb dinamikus objektumként hozzáférni. Szövegadatok `parsejson` dinamikus objektumra való levetítése. Miután dinamikus típussá konvertálta, további függvények használhatók az adatok elemzésére.
+### <a name="parsejson"></a>parseJSON
+A JSON-struktúra több elemének eléréséhez egyszerűbb a dinamikus objektumként való elérése. A `parsejson` használatával szöveges és dinamikus objektumokra is felhasználható. A dinamikus típusra konvertálása után további függvények is használhatók az adatok elemzéséhez.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -67,8 +67,8 @@ print hosts_object
 
 
 
-### <a name="arraylength"></a>tömbhossz
-A `arraylength` tömb elemeinek megszámlálására használható:
+### <a name="arraylength"></a>arraylength
+Egy `arraylength` tömb elemei számának megszámlálásához használja a következőt:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -77,7 +77,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Az `mvexpand` objektumok tulajdonságainak külön sorokra bontása.
+Egy `mvexpand` objektum tulajdonságainak különálló sorokra való tördelésére használható.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -88,7 +88,7 @@ print hosts_object
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
-Az `buildschema` objektum összes értékét felismerő séma leésének leése:
+A `buildschema` paranccsal lekérheti az objektum összes értékét azonosító sémát:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -110,9 +110,9 @@ A kimenet JSON formátumú séma:
     }
 }
 ```
-Ez a kimenet az objektummezők nevét és egyező adattípusait írja le. 
+Ez a kimenet az objektum mezőinek nevét és a hozzájuk tartozó adattípusokat ismerteti. 
 
-A beágyazott objektumok sémája eltérő lehet, például a következő példában:
+A beágyazott objektumok különböző sémákkal rendelkezhetnek, például a következő példában:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
@@ -124,7 +124,7 @@ print hosts_object
 ![Séma létrehozása](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a naplólekérdezések azure Monitor ban való használatának egyéb leckéit:
+Tekintse meg a Azure Monitor a naplók használatával kapcsolatos további leckéket:
 
 - [Sztringműveletek](string-operations.md)
 - [Dátum és idő típusú adatokkal végzett műveletek](datetime-operations.md)

@@ -1,5 +1,5 @@
 ---
-title: Eseményközpont létrehozása engedélyezve lévő rögzítéssel - Azure Event Hubs | Microsoft dokumentumok
+title: Event hub létrehozása az engedélyezve rögzítéssel – Azure Event Hubs | Microsoft Docs
 description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 services: event-hubs
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453870"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
@@ -27,7 +27,7 @@ Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely
 
 Ez a cikk azt is bemutatja, hogyan adhatja meg, hogy a rendszer az Azure Storage-blobokban vagy egy Azure Data Lake Store-ban rögzítse az eseményeket, az Ön által kiválasztott célhely alapján.
 
-A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A JSON szintaxisát és a sablonokban használható tulajdonságokat a [Microsoft.EventHub erőforrástípusai](/azure/templates/microsoft.eventhub/allversions)című témakörben olvashatja el.
+A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. EventHub-erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
 
 További információk az Azure-erőforrások elnevezési szabályainak mintáiról és gyakorlati megoldásairól: [Az Azure-erőforrások elnevezési szabályai][Azure Resources naming conventions].
 
@@ -235,7 +235,7 @@ A blobtároló, amelyben rögzíti az eseményadatokat.
 }
 ```
 
-Használja az alábbi paramétereket, ha az Azure Data Lake Store Gen 1-et választja úti célként. Az engedélyeket arra a Data Lake Store-útvonalra kell beállítania, ahol az eseményeket rögzíteni kívánja. Engedélyek beállításához olvassa el [az Adatok rögzítése az Azure Data Lake Storage Gen 1 alkalmazásba című témakört.](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)
+A következő paraméterek használata esetén válassza az 1. generációs Azure Data Lake Store a cél lehetőséget. Az engedélyeket arra a Data Lake Store-útvonalra kell beállítania, ahol az eseményeket rögzíteni kívánja. Az engedélyek megadásával kapcsolatban lásd: [adatgyűjtés az 1. generációs Azure Data Lake Storage](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -387,7 +387,7 @@ Létrehoz egy **EventHub** típusú névteret egy eseményközponttal, valamint 
 ```
 
 > [!NOTE]
-> A **skipEmptyArchives** tulajdonság gal engedélyezheti vagy letilthatja az üres fájlok kiírását, ha a Rögzítés ablakban nem történik esemény. 
+> Engedélyezheti vagy letilthatja az üres fájlok kibocsátását, ha a rögzítési időszak során nem történik esemény a **skipEmptyArchives** tulajdonság használatával. 
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 
@@ -429,7 +429,7 @@ Az Event Hubs Rögzítés funkcióját az [Azure Portal](https://portal.azure.co
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
+* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
 * [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 

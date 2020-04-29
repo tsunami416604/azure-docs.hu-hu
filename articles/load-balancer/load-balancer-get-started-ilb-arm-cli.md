@@ -1,7 +1,7 @@
 ---
-title: Belső alapszintű terheléselosztó létrehozása - Azure CLI
+title: Belső alapszintű Load Balancer létrehozása – Azure CLI
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre belső terheléselosztót az Azure CLI használatával
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre belső Load balancert az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79457011"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
@@ -62,7 +62,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy belső terheléselosztót a **myLoadBalancer** nevű [hálózati lb](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) create-val, amely tartalmazza a **myFrontEnd**nevű előtér-IP-konfigurációt, egy **myBackEndPool** nevű háttérkészletet, amely egy privát IP-címhez van társítva **10.0.0.7.
+Hozzon létre egy belső Load Balancer az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **myLoadBalancer** , amely tartalmaz egy **myFrontEnd**nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttér-készletet, amely egy magánhálózati IP-címhez * * 10.0.0.7 van társítva.
 
 ```azurecli-interactive
   az network lb create \

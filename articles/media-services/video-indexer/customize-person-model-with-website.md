@@ -1,7 +1,7 @@
 ---
-title: Személymodell testreszabása a Video Indexer webhelyével
+title: Személy modell testreszabása Video Indexer webhellyel
 titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan szabhatja testre a személymodellt a Video Indexer webhelyével.
+description: Megtudhatja, hogyan szabhatja testre a személy modelljét a Video Indexer webhelyén.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,205 +11,205 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: f29e651f5c8542722f0dc2c9878184ac0d2a6a1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79499976"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-website"></a>Személymodell testreszabása a Video Indexer webhelyével
+# <a name="customize-a-person-model-with-the-video-indexer-website"></a>Személy modell testreszabása a Video Indexer webhellyel
 
-A Video Indexer támogatja a hírességek ismertségét a videotartalmakhoz. A híresség elismerés vonás borít körülbelül egy millió szembenéz azon alapszik általában igényelt adatforrás mint IMDB, Wikipedia, és tető Összekapcsolt influencers. A részletes áttekintést a [Személy modell testreszabása a VideoIndexer ben című témakörben találja.](customize-person-model-overview.md)
+A Video Indexer támogatja a videókra vonatkozó híresség-felismerést. A híresség-felismerési funkció a gyakran igényelt adatforrások (például a IMDB, a wikipedia és a legnépszerűbb LinkedIn-befolyásoló) alapján körülbelül 1 000 000 arcot ölel fel. A részletes áttekintést lásd: [személy modell testreszabása video Indexerban](customize-person-model-overview.md).
 
-A Video Indexer webhely segítségével szerkesztheti a videóban észlelt arcokat, a jelen témakörben leírtak szerint. Az API-t is használhatja, ahogy azt a [Személy testreszabása modell API-k használatával](customize-person-model-with-api.md)című részben ismerteti.
+A jelen témakörben ismertetett módon szerkesztheti a videóban észlelt arcokat a Video Indexer webhelyen. Használhatja az API-t is a következő témakörben ismertetett módon: [személyre szabott modell testreszabása API](customize-person-model-with-api.md)-k használatával.
 
-## <a name="central-management-of-person-models-in-your-account"></a>Személymodellek központi kezelése a fiókjában
+## <a name="central-management-of-person-models-in-your-account"></a>A fiókban található személyek modelljeinek központi kezelése
 
-1. A fiókban lévő Személy modellek megtekintéséhez, szerkesztéséhez és törléséhez keresse meg a Video Indexer webhelyét, és jelentkezzen be.
+1. A fiókban lévő személy modellek megtekintéséhez, szerkesztéséhez és törléséhez keresse meg a Video Indexer webhelyet, és jelentkezzen be.
 
-2. Válassza a tartalommodell testreszabási gombját a lap jobb felső sarkában.
+2. Válassza ki a tartalmi modell testreszabása gombot az oldal jobb felső sarkában.
 
-    ![Tartalommodell testreszabása](./media/customize-face-model/content-model-customization.png)
+    ![Tartalmi modell testreszabása](./media/customize-face-model/content-model-customization.png)
 
-3. Válassza a Személyek lapot.
+3. Válassza a People (személyek) lapot.
 
-    A fiókjában megjelenik az Alapértelmezett személy modell. Az Alapértelmezett személy modell tartalmazza azokat az arcokat, amelyeket esetleg szerkesztett vagy módosított a videók elemzési adataiban, amelyekhez nem adott meg egyéni személymodellt az indexelés során.
+    Ekkor megjelenik az alapértelmezett person modell a fiókjában. Az alapértelmezett person-modell minden olyan arcot tartalmaz, amelyet Ön a videók elemzésekor vagy módosításakor adott meg, amelyhez nem adott meg egyéni személy modellt az indexelés során.
 
-    Ha más személymodelleket is létrehozott, azok is megjelennek ezen az oldalon.
+    Ha más személy modelleket hozott létre, azok is megjelennek ezen az oldalon.
 
-    ![Tartalommodell testreszabása](./media/customize-face-model/content-model-customization-people-tab.png)
+    ![Tartalmi modell testreszabása](./media/customize-face-model/content-model-customization-people-tab.png)
 
-## <a name="create-a-new-person-model"></a>Új személymodell létrehozása
+## <a name="create-a-new-person-model"></a>Új személy modell létrehozása
 
-1. Válassza a **+ Modell hozzáadása** gombot.
+1. Kattintson a **+ modell hozzáadása** gombra.
 
-    ![Új személymodell hozzáadása](./media/customize-face-model/add-new-person.png)
+    ![Új személy modell hozzáadása](./media/customize-face-model/add-new-person.png)
 
-2. Írja be a modell nevét, és válassza a név melletti csekk gombot.
+2. Adja meg a modell nevét, és kattintson a név melletti pipa gombra.
 
-    ![Új személymodell hozzáadása](./media/customize-face-model/add-new-person2.png)
+    ![Új személy modell hozzáadása](./media/customize-face-model/add-new-person2.png)
 
-    Új Személy modellt hozott létre. Most már hozzáadhat arcokat az új Személy modellhez.
+    Létrehozott egy új személy modellt. Most már hozzáadhat arcokat az új személy modellhez.
 
-3. Jelölje ki a lista menügombot, és válassza **a + Személy hozzáadása**lehetőséget.
+3. Válassza a lista menü gombot, és válassza a **+ személy hozzáadása**elemet.
 
-    ![Új személymodell hozzáadása](./media/customize-face-model/add-new-person3.png)
+    ![Új személy modell hozzáadása](./media/customize-face-model/add-new-person3.png)
 
-## <a name="add-a-new-person-to-a-person-model"></a>Új személy hozzáadása személymodellhez
+## <a name="add-a-new-person-to-a-person-model"></a>Új személy hozzáadása egy személy modellhez
 
 > [!NOTE]
-> A Video Indexer lehetővé teszi, hogy több azonos nevű személyt vegyen fel egy Személy modellbe. Azonban azt javasoljuk, hogy egyedi neveket adjon meg a modell minden egyes személyének a használhatóság és az egyértelműség érdekében.
+> Video Indexer lehetővé teszi több személy hozzáadását ugyanazzal a névvel egy person-modellben. Javasoljuk azonban, hogy egyedi neveket adjon meg a modellben a használhatóság és az átláthatóság érdekében.
 
-1. Ha új lapot szeretne hozzáadni egy Személy modellhez, kattintson a lista menügombra annak a Személy modellnek a mellett, amelyhez hozzá szeretné adni az arcot.
+1. Ha új arcot szeretne hozzáadni egy személy modellhez, válassza a lista menü gombot azon személy modell mellett, amelyhez hozzá kívánja adni a Face elemet.
 
-1. Válassza a **+ Személy hozzáadása** lehetőséget a menüből.
+1. Válassza a **+ személy hozzáadása** lehetőséget a menüből.
 
     ![Új arc hozzáadása a személyhez](./media/customize-face-model/add-new-face.png)
 
-    Egy előugró ablak ban kérni fogja, hogy töltse ki a személy adatait. Írja be a személy nevét, és válassza a csekk gombot.
+    Az előugró ablak a személy adatainak kitöltésére kéri. Írja be a személy nevét, és kattintson a pipa gombra.
 
     ![Új arc hozzáadása a személyhez](./media/customize-face-model/add-new-face2.png)
 
-    Ezután választhat a fájlkezelőből, vagy áthúzhatja az arc arcképeit. A Video Indexer minden szabványos képfájltípust (pl. JPG, PNG stb.) megveszi.
+    Ezután kiválaszthatja a fájlkezelőt, vagy áthúzhatja a Face (arc) rendszerképeit. A Video Indexer minden szabványos képfájl-típust végrehajt (pl.: JPG, PNG és egyebek).
 
-    A Video Indexer észleli ennek a személynek az előfordulásait az indexelt jövőbeli videókban és az aktuálisan már indexelt videókban, azzal a Személy modellel, amelyhez hozzáadta ezt az új arcot. Az aktuális videókban szereplő személy felismerése némi időt vehet igénybe, mivel ez egy kötegelt folyamat.
+    A Video Indexer képes érzékelni az adott személy előfordulásait az indexelt jövőbeli videók és az aktuálisan már indexelt videók alapján, a személy modelljével, amelyhez új arcot adott hozzá. Az aktuális videókban szereplő személy felismerése hosszabb időt is igénybe vehet, mivel ez egy batch-folyamat.
 
-## <a name="rename-a-person-model"></a>Személymodell átnevezése
+## <a name="rename-a-person-model"></a>Személy modell átnevezése
 
-A fiókjában lévő bármely személymodellt átnevezheti, beleértve az Alapértelmezett személy modellt is. Még ha átnevezi az alapértelmezett Személy modellt, akkor is alapértelmezett személymodellként fog szolgálni a fiókjában.
+A fiókban bármely személy modell átnevezhető, beleértve az alapértelmezett személy modelljét is. Még akkor is, ha átnevezi az alapértelmezett személy modelljét, továbbra is az alapértelmezett személy modellként fog megjelenni a fiókjában.
 
-1. Jelölje ki az átnevezni kívánt Személy modell melletti lista menügombot.
-2. Válassza a menü **Átnevezés parancsát.**
+1. Válassza az átnevezni kívánt személy modell melletti lista menü gombot.
+2. Válassza az **Átnevezés** lehetőséget a menüből.
 
-    ![Személymodell átnevezése](./media/customize-face-model/rename-person.png)
+    ![Személy modell átnevezése](./media/customize-face-model/rename-person.png)
 
 3. Válassza ki a modell aktuális nevét, és írja be az új nevet.
 
-    ![Személymodell átnevezése](./media/customize-face-model/rename-person2.png)
+    ![Személy modell átnevezése](./media/customize-face-model/rename-person2.png)
 
-4. Jelölje ki az átnevezendő modell ellenőrző gombját.
+4. Jelölje be a modell átnevezett jelölőnégyzetét.
 
-## <a name="delete-a-person-model"></a>Személymodell törlése
+## <a name="delete-a-person-model"></a>Személy modell törlése
 
-A fiókjában létrehozott bármely Személy modelltörölhető. Az alapértelmezett személymodell azonban nem törölhető.
+Törölheti a fiókjában létrehozott bármely személy modelljét. Nem törölheti azonban az alapértelmezett személy modelljét.
 
-1. Válassza a menü **Törlés parancsát.**
+1. A menüből válassza a **Törlés** lehetőséget.
 
-    ![Személymodell törlése](./media/customize-face-model/delete-person.png)
+    ![Személy modell törlése](./media/customize-face-model/delete-person.png)
 
-    Megjelenik egy előugró ablak, amely értesíti, hogy ez a művelet törli a Személy modellt, valamint a benne lévő összes személyt és fájlt. Ez a művelet nem lehet visszavonni.
+    Ekkor megjelenik egy előugró ablak, amely értesíti arról, hogy a művelet törli a személy modelljét és az összes benne található embert és fájlt. Ez a művelet nem vonható vissza.
 
-    ![Személymodell törlése](./media/customize-face-model/delete-person2.png)
+    ![Személy modell törlése](./media/customize-face-model/delete-person2.png)
 
-1. Ha biztos benne, válassza ismét a Törlés lehetőséget.
+1. Ha biztos benne, válassza a törlés újra lehetőséget.
 
 > [!NOTE]
-> Az ezzel a (most törölt) személymodellel indexelt meglévő videók nem támogatják a videóban megjelenő arcok nevének frissítését. Ezekben a videókban csak akkor szerkesztheti az arcok nevét, ha egy másik Személy modell használatával újraindexeli őket. Ha személymodell megadása nélkül indexel, a rendszer az alapértelmezett modellt fogja használni.
+> Az ezzel (most törölt), a személy modellje által indexelt meglévő videók nem támogatják a videóban megjelenő arcok nevének frissítését. Ezekben a videókban csak akkor szerkesztheti az arcok neveit, ha azokat egy másik személy modellel újraindexeli. Ha a személy modell megadása nélkül végez újraindexelést, a rendszer az alapértelmezett modellt fogja használni.
 
-## <a name="manage-existing-people-in-a-person-model"></a>Meglévő személyek kezelése egy személymodellben
+## <a name="manage-existing-people-in-a-person-model"></a>Személy modellben lévő meglévő személyek kezelése
 
-A Személy modellek tartalmának megtekintéséhez jelölje ki a Személy modell neve melletti nyilat. A legördülő menü megmutatja az összes ember az adott személy modell. Ha az egyes személyek melletti lista menügombot választja, megjelenik a Beállítások kezelése, átnevezése és törlése.  
+Ha meg szeretné nézni a saját modelljeinek tartalmát, válassza a személy modell neve melletti nyilat. A legördülő lista az adott személy modellben lévő összes embert megjeleníti. Ha az egyes személyek mellett a lista menü gombra kattint, megjelenik a kezelés, az átnevezés és a törlés lehetőség.  
 
 ![Új arc hozzáadása a személyhez](./media/customize-face-model/manage-people.png)
 
 ### <a name="rename-a-person"></a>Személy átnevezése
 
-1. Ha át szeretne nevezni egy személyt a Személy modellben, jelölje ki a lista menügombot, és válassza a lista menü **Átnevezés** parancsát.
-1. Válassza ki a személy aktuális nevét, és írja be az új nevét.
-1. Jelölje ki az ellenőrzés gombot, és a személy neve meglesz.
+1. A személy modellben lévő személy átnevezéséhez kattintson a lista menü gombra, és válassza az **Átnevezés** lehetőséget a lista menüből.
+1. Válassza ki a személy aktuális nevét, és gépelje be az új nevet.
+1. Jelölje be a jelölőnégyzetet, és a személy átnevezve lesz.
 
 ### <a name="delete-a-person"></a>Személy törlése
 
-1. Ha törölni szeretne egy személyt a Személy modellből, jelölje ki a lista menügombot, és válassza a lista menü **Törlés parancsát.**
-1. Egy előugró ablak jelzi, hogy ez a művelet törli a személyt, és hogy ez a művelet nem lehet visszavonni.
-1. Válassza a **Törlés** ismét lehetőséget, és ezzel eltávolítja a személyt a Személy modellből.
+1. Ha törölni szeretne egy személyt a személy modelljéből, kattintson a lista menü gombra, és válassza a **Törlés** lehetőséget a lista menüből.
+1. Egy előugró ablak azt jelzi, hogy ez a művelet törli a személyt, és a művelet nem vonható vissza.
+1. Válassza a **Törlés** újra lehetőséget, és ezzel eltávolítja a személyt a person modellből.
 
 ### <a name="manage-a-person"></a>Személy kezelése
 
-Ha a Kezelés lehetőséget **választja,** akkor az összes olyan arc jelenik meg, amelyből ez a személy modell betanítása folyamatban van. Ezek az arcok az adott személy nek az ezt a Személy modellt használó videókban vagy a manuálisan feltöltött képekből származó eseményekből származnak.
+Ha a **kezelés**lehetőséget választja, megjelenik az összes olyan arc, amelyet a személy modellből betanítanak. Ezek az arcok az adott személy azon lapjairól érkeznek, amelyek ezt a személy modellt használják, vagy a manuálisan feltöltött képekből származnak.
 
-A **Képek hozzáadása**lehetőséget választva további arcokat adhat a személyhez.
+A **képek hozzáadása**lehetőség kiválasztásával több arcot is hozzáadhat a személyhez.
 
-A Kezelés ablaktáblán átnevezheti a személyt, és törölheti a személyt a Személy modellből.
+A kezelés ablaktáblával átnevezheti a személyt, és törölheti a személyt a személy modellből.
 
-## <a name="use-a-person-model-to-index-a-video"></a>Videó indexelése személymodell használatával
+## <a name="use-a-person-model-to-index-a-video"></a>Személy modell használata videó indexeléséhez
 
-A Személy modell segítségével indexelheted az új videódat, ha a videó feltöltése során hozzárendeled a Személy modellt.
+Az új videót úgy is használhatja, hogy a person modellt a videó feltöltésekor rendeli hozzá.
 
-Ha a Személy modellt új videón szeretné használni, tegye a következőket:
+Ha a személy modelljét új videón szeretné használni, hajtsa végre a következő lépéseket:
 
-1. Válassza a **Feltöltés** gombot a lap tetején.
+1. Kattintson a lap tetején található **feltöltés** gombra.
 
-    ![Személymodell feltöltése](./media/customize-face-model/upload.png)
+    ![Személy modell feltöltése](./media/customize-face-model/upload.png)
 
-1. Dobja el a videofájlt a körbe, vagy keresse meg a fájlt.
-1. Válassza a **Speciális beállítások** nyílat.
+1. Dobja el a videofájlokat a körben, vagy tallózással keresse meg a fájlt.
+1. Válassza a **Speciális beállítások** nyilat.
 
-    ![Személymodell feltöltése](./media/customize-face-model/upload2.png)
+    ![Személy modell feltöltése](./media/customize-face-model/upload2.png)
 
-1. Jelölje ki a legördülő menüt, és válassza ki a létrehozott Személy modellt.
+1. Válassza ki a legördülő listát, és válassza ki a létrehozott személy modellt.
 
-    ![Személymodell feltöltése](./media/customize-face-model/upload3.png)
+    ![Személy modell feltöltése](./media/customize-face-model/upload3.png)
 
-1. Válassza a **Feltöltés** lehetőséget az oldal alján, és az új videó indexelése a Személy modell használatával lesz.
+1. Válassza ki a **feltöltés** lehetőséget az oldal alján, és az új videó indexelve lesz a személy modellje alapján.
 
-Ha a feltöltés során nem ad meg személymodellt, a Video Indexer indexeli a videót a fiókjában lévő Alapértelmezett személy modell használatával indexeli.
+Ha nem adja meg a személy modelljét a feltöltés során, Video Indexer indexeli a videót a fiókjában lévő alapértelmezett személy modell használatával.
 
-## <a name="use-a-person-model-to-reindex-a-video"></a>Videó újraindexelése személymodell használatával
+## <a name="use-a-person-model-to-reindex-a-video"></a>Videó újraindexelése személy modell használatával
 
-Ha személymodellt szeretne használni a gyűjteményében lévő videók újraindexeléséhez, nyissa meg a fiókvideóit a Video Indexer kezdőlapján, és mutasson az újraindexelni kívánt videó nevére.
+Ha egy személy modell segítségével szeretné átindexelni a gyűjteményben található videót, lépjen a fiókhoz tartozó videók oldalra a Video Indexer kezdőlapon, és vigye az egérmutatót az újraindexelni kívánt videó nevére.
 
-A videó szerkesztési, törlési és újraindexelési lehetőségei láthatók.
+Megtekintheti a videó szerkesztésének, törlésének és újraindexelésének lehetőségeit.
 
-1. Válaszd ki a videó újraindexelésének lehetőségét.
+1. Válassza a videó újraindexelésének lehetőségét.
 
-    ![Videó újraindexelése a Person modell eleinte](./media/customize-face-model/reindex.png)
+    ![Videó újraindexelése a person Model használatával](./media/customize-face-model/reindex.png)
 
-    Most kiválaszthatja azt a Személy modellt, akivel újraindexelheti a videót.
-1. Jelölje ki a legördülő menüt, és válassza ki a használni kívánt Személy modellt.
+    Mostantól kiválaszthatja azt a személy modellt, amellyel újra indexelheti a videót.
+1. Válassza ki a legördülő listát, és válassza ki a használni kívánt személy modellt.
 
-    ![Videó újraindexelése a Person modell eleinte](./media/customize-face-model/reindex2.png)
+    ![Videó újraindexelése a person Model használatával](./media/customize-face-model/reindex2.png)
 
-1. Válaszd ki az **Újraindex** gombot, és a videód újraindexelésre kerül a Személy modelled használatával.
+1. Jelölje be az **újraindexelés** gombot, és a videó újraindexelve lesz a személy modellje alapján.
 
-Az imént újraindexelt videóban észlelt és felismert arcokon végzett új módosításokat a rendszer a videó újraindexeléséhez használt Személy modellbe menti.
+Minden olyan új módosítást, amelyet a rendszer az imént újraindexelt videóban észlelt és azonosított arcokon végez, a videó újraindexeléséhez használt személy modellbe menti.
 
-## <a name="managing-people-in-your-videos"></a>Emberek kezelése a videóidban
+## <a name="managing-people-in-your-videos"></a>Felhasználók kezelése a videókban
 
-Az arcok szerkesztésével és törlésével kezelheti az észlelt arcokat és az indexelt videókban felismert személyeket.
+Kezelheti az észlelt arcokat, valamint az arcok szerkesztésével és törlésével az indexelt videókban felismert személyeket.
 
-Az arc törlésével eltávolít egy adott arcot a videó elemzési adatai közül.
+Egy arc törlésével egy adott arc törlődik a videóból.
 
-Az arc szerkesztése átnevezi az észlelt és esetleg a videóban felismert arcot. Amikor szerkesztesz egy arcot a videódban, a rendszer ezt a nevet személybejegyzésként menti a Személy modellbe, amelyet a feltöltés és az indexelés során rendeltek a videóhoz.
+Az arc szerkesztése átnevezi az észlelt és valószínűleg felismerhető arcot a videóban. Ha szerkeszt egy arcot a videójában, akkor a rendszer a nevet a feltöltés és az indexelés során a videóhoz rendelt személyként adja meg.
 
-Ha feltöltés közben nem rendel személymodellt a videóhoz, a rendszer a rendszer a fiók alapértelmezett személy modelljébe menti a szerkesztést.
+Ha nem rendel hozzá egy személy modellt a videóhoz a feltöltés során, a Szerkesztés a fiók alapértelmezett személy modelljébe kerül.
 
 ### <a name="edit-a-face"></a>Arc szerkesztése
 
 > [!NOTE]
-> Ha egy személymodellnek két vagy több azonos nevű személye van, akkor nem fogod tudni megcímkézni ezt a nevet az adott Személy modellt használó videókon belül. Csak a Video Indexer tartalommodell testreszabási lapjának Kapcsolatok lapján módosíthatja azokat, akik megosztják ezt a nevet. Ezért javasoljuk, hogy a Személy modell minden egyes személyének egyedi neveket adjon meg.
+> Ha egy személy modell két vagy több különböző személlyel rendelkezik ugyanazzal a névvel, ezt a nevet nem fogja tudni felcímkézni az adott személy modellt használó videókon belül. A Video Indexerban csak a tartalom modell testreszabása oldal People (személyek) lapján módosíthatja azokat a személyeket, akik ezt a nevet megosztják. Ezért javasoljuk, hogy egyedi neveket adjon meg minden személynek a személyes modellben.
 
 1. Nyissa meg a Video Indexer webhelyét, és jelentkezzen be.
-1. Keressen rá egy megtekinteni és szerkesztni kívánt videóra a fiókjában.
-1. Ha egy arcot szeretne szerkeszteni a videóban, lépjen az Elemzések lapra, és válassza a ceruza ikont az ablak jobb felső sarkában.
+1. Keressen rá egy videóra, amelyet meg szeretne tekinteni, és szerkeszteni szeretné a fiókjában.
+1. A videóban lévő arc szerkesztéséhez lépjen az elemzések lapra, és válassza a ceruza ikont az ablak jobb felső sarkában.
 
     ![Arc szerkesztése a videóban](./media/customize-face-model/edit-face.png)
 
-1. Jelölje ki az észlelt lapok bármelyikét, és módosítsa a nevüket az "Ismeretlen #X" (vagy az archoz korábban hozzárendelt név) értéken.
-1. Az új név beírása után jelölje ki az új név melletti ellenőrző ikont. Ez a művelet menti az új nevet, és felismeri és elnevezi az arc összes előfordulását a többi aktuális videóba és a jövőbeli videókba. Az arc felismerése a többi aktuális videóban időbe telhet, amíg érvénybe lép, mivel ez egy kötegelt folyamat.
+1. Válassza ki az észlelt arcok bármelyikét, és változtassa meg a nevüket az "ismeretlen #X" (vagy a korábban az arcához rendelt név) alapján.
+1. Az új név beírása után jelölje be az új név melletti pipa ikont. Ez a művelet elmenti az új nevet, és felismeri és átnevezi az adott arc összes előfordulását a többi aktuális videóban és a később feltöltött videókon. A többi aktuális videóban lévő arc felismerése hosszabb időt is igénybe vehet, mivel ez egy batch-folyamat.
 
-Ha egy olyan arcot nevezel meg egy meglévő személy nevével a videó által használt Személy modellben, amelyet a videóból származó észlelt arcképek egyesítnek a modellben már meglévőkkel. Ha új nevű arcot nevez el, a videó által használt Személy modellben új személybejegyzés jön létre.
+Ha egy olyan személy nevét adja meg a személy modelljében, amelyet a videó használ, akkor az adott személy ezen videójában lévő észlelt Face images egyesíteni fogja a modellben már létezőket. Ha új névvel látja el a nevet, a rendszer létrehoz egy új személy bejegyzést a videó által használt személy modellben.
 
 ![Arc szerkesztése a videóban](./media/customize-face-model/edit-face2.png)
 
 ### <a name="delete-a-face"></a>Arc törlése
 
-Ha törölni szeretne egy észlelt arcot a videóban, nyissa meg az Elemzési adatok ablaktáblát, és válassza a ceruza ikont az ablaktábla jobb felső sarkában. Az arc neve alatt válassza a **Törlés** lehetőséget. Ez a művelet eltávolítja az észlelt arcot a videóból. A személy arca továbbra is észlelhető lesz a többi videóban, amelyben megjelenik, de az indexelésután is törölheted az arcot ezekből a videókból.
+Ha törölni szeretne egy észlelt arcot a videójában, lépjen az elemzések ablaktáblára, és válassza a ceruza ikont a panel jobb felső sarkában. Válassza a **Törlés** lehetőséget az arc neve alatt. Ez a művelet eltávolítja az észlelt arcot a videóból. A személy arca továbbra is megjelenik a többi olyan videóban, amelyben megjelenik, de az indexelt után is törölheti ezeket a videókat.
 
-A személy, ha meglett nevezve, továbbra is létezni fog abban a Személy modellben, amelyet az arc törlését tartalmazó videó indexelésére használtak, kivéve, ha kifejezetten törli a személyt a Személy modellből.
+A személy, ha megkapta a nevét, továbbra is létezik a személy modellben, amely azt a videót indexeli, amelyről törölte az arcot, kivéve, ha kifejezetten törli a személyt a személy modelljéből.
 
-![Arc törlése a videóból](./media/customize-face-model/delete-face.png)
+![Arc törlése a videóban](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Személymodell testreszabása API-k használatával](customize-person-model-with-api.md)
+[Személy modell testreszabása API-k használatával](customize-person-model-with-api.md)

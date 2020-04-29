@@ -1,71 +1,71 @@
 ---
-title: Átviteli költség optimalizálása az Azure Cosmos DB-ben
-description: Ez a cikk bemutatja, hogyan optimalizálhatja az Azure Cosmos DB-ben tárolt adatok átviteli költségek optimalizálása.
+title: Az átviteli sebesség optimalizálása Azure Cosmos DB
+description: Ez a cikk azt ismerteti, hogyan optimalizálható a Azure Cosmos DBban tárolt adatok átviteli sebessége.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501465"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
-A kiépített átviteli modell biztosításával az Azure Cosmos DB kiszámítható teljesítményt kínál bármilyen méretekben. A teljesítmény lefoglalása vagy kiépítése idő előtt kiküszöböli a "zajos szomszéd hatást" a teljesítményre. Adja meg a szükséges átviteli szintet, és az Azure Cosmos DB garantálja a konfigurált átviteli, SLA által támogatott.
+A kiépített átviteli sebességi modell használatával Azure Cosmos DB kiszámítható teljesítményt biztosít bármilyen méretben. Az átviteli sebesség megőrzése vagy kiépítés előtt az idő kiküszöböli a "zajos szomszéd" hatást a teljesítményre. Megadhatja a szükséges átviteli sebesség pontos mértékét, és Azure Cosmos DB garantálja a beállított átviteli sebességet, amely az SLA-ra vonatkozik.
 
-Kezdheti legalább 400 RU/s átviteli fokkal, és másodpercenként több tízmillió kérelemre vagy még többre skálázható. Minden kérelem az Azure Cosmos-tároló vagy -adatbázis, például egy olvasási kérelem, írási kérelem, lekérdezési kérelem, tárolt eljárások megfelelő költség, amely le van vonva a kiosztott átviteli. Ha 400 RU/s-t létesít, és 40 több mint egy e-kódba kerülő lekérdezést ad ki, másodpercenként 10 ilyen lekérdezést adhat ki. Minden olyan kérelem, amely azon túl, hogy lesz sebesség-korlátozott, és meg kell próbálnia a kérelmet. Ha ügyfél-illesztőprogramokat használ, támogatják az automatikus újrapróbálkozási logikát.
+Kezdődhet a minimális átviteli sebesség 400 RU/mp-ben, és akár több tízmillió kérést is beállíthat másodpercenként vagy akár többre. Minden, az Azure Cosmos-tárolón vagy-adatbázison kiállított kérelem, például olvasási kérelem, írási kérelem, lekérdezési kérelem, tárolt eljárások a kiosztott átviteli sebességtől számított megfelelő költségekkel rendelkeznek. Ha 400 RU/s-t hoz létre, és egy olyan lekérdezést ad ki, amely a 40 RUs költséggel jár, másodpercenként 10 ilyen lekérdezést fog kiadni. A fentieken túli kérések díjszabása korlátozott lesz, és újra kell próbálkoznia a kéréssel. Ha az ügyfél-illesztőprogramokat használja, az automatikus újrapróbálkozási logikát támogatja.
 
 Az átviteli sebességet adatbázisok vagy tárolók között is kioszthatja, és a különféle stratégiákkal alacsonyabbak lehetnek a költségek a forgatókönyvtől függően.
 
-## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizálás az átviteli hang különböző szinteken történő kiépítésével
+## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizálás az átviteli sebesség különböző szinteken való kiépítés útján
 
-* Ha egy adatbázis átviteli terhelését, az összes tárolók, például gyűjtemények/táblák/grafikonok az adatbázison belül megoszthatja az átviteli terhelés alapján. Az adatbázis szintjén fenntartott átviteli terhelés egyenlőtlenül van megosztva, a tárolók adott készletének munkaterhelésétől függően.
+* Ha egy adatbázison kiépíti az átviteli sebességet, az összes tároló, például a gyűjtemények/táblák/gráfok az adott adatbázison belül megoszthatják az átviteli sebességet a terhelés alapján. Az adatbázis szintjén fenntartott átviteli sebesség egyenlően oszlik meg, attól függően, hogy milyen munkaterhelést adott meg a tárolók adott készletén.
 
-* Ha egy tárolóátviteli rendszer kiépítése, az átviteli garantált az adott tároló, az SLA által támogatott. A logikai partíciókulcs kiválasztása elengedhetetlen a terhelés egyenletes elosztásához a tároló összes logikai partíciója között. További részletek: [Particionálás](partitioning-overview.md) és [horizontális skálázáscikkek.](partition-data.md)
+* Ha egy tárolón kiépíti az átviteli sebességet, az átviteli sebesség garantált az adott tároló számára, és az SLA-t is támogatja. A logikai partíciós kulcs kiválasztása elengedhetetlen a tároló összes logikai partícióján belüli terhelés elosztásához. További részletekért lásd: [particionálás](partitioning-overview.md) és [horizontális skálázási](partition-data.md) cikkek.
 
-A kiépített átviteli stratégia eldöntéséhez az alábbiakban néhány irányelv et kell ismertette:
+Az alábbiakban néhány, a kiosztott átviteli sebességre vonatkozó stratégiát kell eldöntenie:
 
-**Fontolja meg az átviteli érték kiépítését egy Azure Cosmos-adatbázisban (amely tárolók készletét tartalmazza), ha:**
+**Vegye fontolóra az átviteli sebesség kiszámítását egy Azure Cosmos-adatbázison (tárolók készletét tartalmazó), ha**:
 
-1. Néhány tucat Azure Cosmos-tárolóval rendelkezik, és szeretné megosztani az átviteli műveleteket néhány vagy az összes között. 
+1. Néhány tucat Azure Cosmos-tárolóval rendelkezik, és az átviteli sebességet szeretné megosztani egy vagy több között. 
 
-2. Egybérlős adatbázisból, amelyet iaaS-üzemeltetésű virtuális gépeken vagy helyszíni futtatásra terveztek, például NoSQL vagy relációs adatbázisokat az Azure Cosmos DB-be. És ha sok gyűjtemények / táblák / grafikonok, és nem szeretné, hogy bármilyen változás az adatmodell. Vegye figyelembe, hogy előfordulhat, hogy az Azure Cosmos DB által kínált előnyök egy részét kell veszélyeztetnie, ha nem frissíti az adatmodellt, amikor egy helyszíni adatbázisból migrál. Javasoljuk, hogy mindig újra hozzáférjen az adatmodellhez, hogy a legtöbbet hozhesse ki a teljesítmény szempontjából, és optimalizálja a költségeket. 
+2. Olyan egybérlős adatbázisból végez áttelepítést, amely IaaS üzemeltetett virtuális gépeken vagy helyszíni környezetben való futtatásra készült, például a NoSQL vagy a Azure Cosmos DB. Ha pedig sok gyűjtemény/táblázat/gráf van, és nem kívánja módosítani az adatmodellt. Vegye figyelembe, hogy a Azure Cosmos DB által kínált előnyök némelyikét meg kell sérteni, ha nem frissíti az adatmodellt egy helyszíni adatbázisból való Migrálás során. Javasoljuk, hogy az adatmodellt mindig újra hozzáférhessen, hogy a lehető legtöbbet hozza ki a teljesítmény szempontjából, és optimalizálja a költségeket is. 
 
-3. Szeretné felvenni a nem tervezett kiugrások a számítási feladatok alapján az adatbázis szintjén a munkaterhelés váratlan kiugrása a készletezési átviteli teljesítmény miatt. 
+3. A számítási feladatokban nem tervezett tüskéket kíván felvenni a számítási feladatokban a számítási feladatok váratlan terhelésének figyelembevételével. 
 
-4. Ahelyett, hogy az egyes tárolók adott átviteli, érdekel, hogy az összesített átviteli az adatbázison belüli tárolók egy készletén keresztül.
+4. Az egyes tárolók egyedi átviteli sebességének beállítása helyett az összesített átviteli sebességet kell megszereznie az adatbázison belüli tárolók készletében.
 
-**Fontolja meg az átviteli átbocsátást egy adott tárolón, ha:**
+**Vegye fontolóra az átviteli sebességet egy adott tárolón, ha:**
 
-1. Néhány Azure Cosmos-tárolóval rendelkezik. Mivel az Azure Cosmos DB séma-független, egy tároló tartalmazhat olyan elemeket, amelyek heterogén sémákat tartalmaznak, és nem követeli meg az ügyfelektől, hogy több tárolótípust hozzanak létre, minden entitáshoz egyet. Ez mindig egy lehetőség, hogy fontolja meg, ha csoportosítása külön mondjuk 10-20 konténerek egyetlen tartályba van értelme. A konténerekre vonatkozó minimum 400 több rúg esetén az összes 10–20 tároló összevonása költséghatékonyabb lehet. 
+1. Néhány Azure Cosmos-tárolóval rendelkezik. Mivel Azure Cosmos DB a séma-agnosztikus, egy tároló olyan elemeket tartalmazhat, amelyek heterogén sémákkal rendelkeznek, és nem igénylik, hogy az ügyfelek több típusú tárolót hozzanak létre, egyet az egyes entitásokhoz. Mindig érdemes megfontolni, hogy a csoportosítás külön mondjuk 10-20 tárolót egyetlen tárolóba. Ha a tárolók számára legalább 400 RUs van, az összes 10-20-tárolót egyetlen költséghatékonyan egyesítheti. 
 
-2. Szeretné szabályozni az átviteli egy adott tárolón, és kap a garantált átviteli egy adott tároló sla által támogatott.
+2. Egy adott tároló átviteli sebességét szeretné vezérelni, és egy adott tároló garantált átviteli sebességét kell lekérnie, amely SLA-t támogat.
 
-**Tekintsük a hibrid a fenti két stratégia:**
+**Vegye fontolóra a fenti két stratégia hibridjét:**
 
-1. Ahogy korábban említettük, az Azure Cosmos DB lehetővé teszi a fenti két stratégia keverését és egyeztetését, így most már rendelkezhet néhány tárolóval az Azure Cosmos-adatbázisban, amelyek megoszthatják az adatbázisban kiosztott átviteli szintet, valamint az ugyanazon az adatbázison belüli egyes tárolókat , amely nek célzott mennyiségű kiosztott átviteli. 
+1. Ahogy korábban említettük, a Azure Cosmos DB lehetővé teszi a fenti két stratégia összekeverését és egyeztetését, így most már rendelkezik néhány tárolóval az Azure Cosmos-adatbázisban, amely megoszthatja az adatbázison kiosztott átviteli sebességet, valamint az ugyanazon az adatbázison belüli tárolókat, amelyekhez dedikált mennyiségű kiosztott átviteli sebesség tartozhat. 
 
-2. A fenti stratégiákat alkalmazhatja egy hibrid konfiguráció kialakításához, ahol mindkét adatbázisszintű kiosztott átviteli mivel rendelkezik egyes tárolók dedikált átviteli mivel.
+2. A fenti stratégiák olyan hibrid konfigurációval is alkalmazhatók, ahol az adatbázis-szintű kiosztott átviteli sebesség is rendelkezésre áll, és egyes tárolók dedikált átviteli sebességgel rendelkeznek.
 
-Ahogy az alábbi táblázatban látható, az API-választástól függően különböző részletességű átviteli sebességgel is kiépítheti az átviteli szintet.
+Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján különböző részletességi szinten is kiépítheti az átviteli sebességet.
 
-|API|**A megosztott** átviteli |A **dedikált** átviteli |
+|API|**Megosztott** átviteli sebesség esetében konfigurálja a következőt: |**Dedikált** átviteli sebesség esetén konfigurálja a következőt: |
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
 |MongoDB-hez készült Azure Cosmos DB API|Adatbázis|Gyűjtemény|
-|Cassandra API|Kulcstér|Tábla|
+|Cassandra API|Kulcstartomány|Tábla|
 |Gremlin API|Adatbázisfiók|Graph|
-|Tábla API|Adatbázisfiók|Tábla|
+|Table API|Adatbázisfiók|Tábla|
 
-Az átviteli képesség különböző szinteken történő kiépítésével optimalizálhatja a költségeket a számítási feladatok jellemzői alapján. Ahogy korábban említettük, programozottan és bármikor növelheti vagy csökkentheti a kiosztott átviteli-átviteli egy tároló(k) vagy együttesen egy tárolókészleten keresztül. Rugalmasskálázási átviteli terhelés, a számítási feladatok változása, csak akkor fizet az átviteli, konfigurált. Ha a tároló vagy a tárolók több régióban oszlik meg, majd a tárolón vagy tárolók készletén konfigurált átviteli hang garantáltan elérhető vé válik az összes régióban.
+Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizálás a kérések sebességkorlátozásával
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizálás díjszabással – a kérések korlátozása
 
-A számítási feladatok, amelyek nem érzékenyek a késésre, kevesebb átviteli sebességet építhet ki, és hagyja, hogy az alkalmazás kezelje a sebességkorlátozást, ha a tényleges átviteli sebesség meghaladja a kiosztott átviteli sebességet. A kiszolgáló megelőzőjelleggel befejezi `RequestRateTooLarge` a kérést (429-es `x-ms-retry-after-ms` HTTP-állapotkód), és visszaadja a fejlécet, jelezve, hogy a felhasználónak mennyi időt kell várnia a kérelem újbóli megkísérlése előtt. 
+A késésre nem érzékeny munkaterhelések esetében kiépítheti a kevesebb átviteli sebességet, és engedélyezheti az alkalmazás-kezelői sebesség korlátozását, ha a tényleges átviteli sebesség meghaladja a kiosztott átviteli sebességet. A kiszolgáló a `RequestRateTooLarge` (429-es http-állapotkód) megelőző jelleggel befejezi a kérést `x-ms-retry-after-ms` , és visszaküldi a fejlécet, amely jelzi, hogy a felhasználónak mennyi idő elteltével kell megvárnia a kérés újrapróbálkozása előtt. 
 
 ```html
 HTTP Status 429, 
@@ -73,13 +73,13 @@ HTTP Status 429,
  x-ms-retry-after-ms :100
 ```
 
-### <a name="retry-logic-in-sdks"></a>Újrapróbálkozási logika az SDK-kban 
+### <a name="retry-logic-in-sdks"></a>Újrapróbálkozási logika az SDK-ban 
 
-A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon elkapják ezt a választ, tiszteletben tartják a kiszolgáló által megadott újrapróbálkozási fejlécet, és újrapróbálkoznak a kéréssel. Ha csak akkor éri el fiókját, ha több ügyfél egyidejűleg fér hozzá, a következő újrapróbálkozás sikeres lesz.
+A natív SDK-k (.NET/.NET Core, Java, Node. js és Python) implicit módon elkapják ezt a választ, figyelembe veszik a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem fér hozzá, a következő újrapróbálkozás sikeres lesz.
 
-Ha egynél több ügyfél összesítve működik következetesen meghaladja a kérelem aránya, az alapértelmezett újrapróbálkozások száma, amely jelenleg 9, nem elegendő. Ilyen esetekben az ügyfél `RequestRateTooLargeException` egy 429-es állapotkódot ad az alkalmazásnak. Az alapértelmezett újrapróbálkozások száma a `RetryOptions` ConnectionPolicy példány beállításával módosítható. Alapértelmezés szerint `RequestRateTooLargeException` a 429-es állapotkóddal rendelkező konkumulatív várakozási idő 30 másodperc után kerül vissza, ha a kérelem továbbra is a kérelemsebesség felett működik. Ez akkor is előfordul, ha az aktuális újrapróbálkozások száma kisebb, mint a maximális újrapróbálkozások száma, legyen az az alapértelmezett 9 vagy egy felhasználó által definiált érték. 
+Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az 429-as állapotkódot `RequestRateTooLargeException` veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy `RetryOptions` -példányra való beállításával. Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
 
-[A MaxRetryAttemptsOnThrottledRequests beállítása](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 3, így ebben az esetben, ha egy kérelemművelet a tároló számára fenntartott átviteli sebesség túllépésével korlátozott, a kérelemművelet háromszor újrapróbálkozik, mielőtt eldobnák a kivételt az alkalmazás alól. [A MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, így ebben az esetben, ha az összesítő újrapróbálkozási várakozási idő másodpercben, mivel az első kérelem meghaladja a 60 másodpercet, a kivétel megjelenik.
+A [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -89,98 +89,98 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="partitioning-strategy-and-provisioned-throughput-costs"></a>A particionálási stratégia és a kiosztott átviteli sebesség költségei
 
-A jó particionálási stratégia fontos az Azure Cosmos DB költségeinek optimalizálásához. Győződjön meg arról, hogy nincs döntés a partíciók, amelyek a tárolási metrikákon keresztül elérhetővé. Győződjön meg arról, hogy nincs döntés az átviteli egy partíció, amely elérhető az átviteli metrikák. Győződjön meg arról, hogy nincs ferde ség az adott partíciókulcsok felé. A tárolóban lévő domináns kulcsok metrikákon keresztül érhetők el, de a kulcs az alkalmazás hozzáférési mintájától függ. A legjobb, ha a megfelelő logikai partíciókulcsra gondol. Egy jó partíciókulcs nak a következő jellemzőkkel kell rendelkeznie:
+A megfelelő particionálási stratégia fontos az Azure Cosmos DB költségeinek optimalizálása érdekében. Győződjön meg arról, hogy a partíciók nincsenek elferdítve, amelyek a tárolási metrikákkal vannak kitéve. Győződjön meg arról, hogy a partíciók esetében nem áll rendelkezésre az átviteli sebesség, amely az átviteli mérőszámokkal van kitéve. Ügyeljen arra, hogy az adott partíciós kulcsok ne legyenek elferdítve. A tárolóban lévő domináns kulcsok a metrikák révén vannak kitéve, de a kulcs az alkalmazás-hozzáférési mintától függ. Érdemes meggondolni a logikai partíciók megfelelő kulcsát. A megfelelő partíciós kulcs várhatóan a következő tulajdonságokkal rendelkezik:
 
-* Válasszon egy partíciókulcsot, amely egyenletesen osztja el a számítási feladatokat az összes partícióközött, és egyenletesen az idő múlásával. Más szóval, nem kell néhány kulcsot az adatok többsége és néhány kulcsok kevesebb vagy nincs adat. 
+* Olyan partíciós kulcsot válasszon, amely egyenletesen osztja el a számítási feladatokat az összes partíción, és az idő múlásával. Más szóval nem kell bizonyos kulcsokat felvennie az adatmennyiséggel és néhány olyan kulccsal, amely kevesebb vagy semmilyen adattal rendelkezik. 
 
-* Válasszon egy partíciókulcsot, amely lehetővé teszi a hozzáférési minták egyenletes eloszlását a logikai partíciók között. A munkaterhelés ésszerűen az összes kulcsközött is. Más szóval a munkaterhelés nagy részét nem kell összpontosítani néhány konkrét kulcsokat. 
+* Olyan partíciós kulcsot válasszon, amely lehetővé teszi, hogy a hozzáférési minták egyenletesen legyenek elosztva a logikai partíciók között. A számítási feladat az összes kulcs között ésszerűen is használható. Más szóval a munkaterhelés többsége nem koncentrálhat néhány konkrét kulcsra. 
 
-* Válasszon olyan partíciókulcsot, amely értékek széles skáláját kínálja. 
+* Válasszon olyan partíciós kulcsot, amely számos értéket tartalmaz. 
 
-Az alapötlet az adatok és a tevékenység terjesztése a tárolóban a logikai partíciók készletében, hogy az adattároláshoz és átviteli kapacitáshoz szükséges erőforrások a logikai partíciók között legyenek elosztva. A partíciókulcsokra jelöltek tartalmazhatnak olyan tulajdonságokat, amelyek gyakran jelennek meg szűrőként a lekérdezésekben. A lekérdezések hatékonyan irányíthatók a partíciókulcs nak a szűrőpredikátumba való belefoglalásával. Egy ilyen particionálási stratégia, a kiosztott átviteli hang optimalizálása sokkal könnyebb lesz. 
+Az alapvető elképzelés az adatok és a tárolóban lévő tevékenységek elosztása a logikai partíciók készletében, így az adattárolásra és az átviteli sebességre vonatkozó erőforrások eloszthatók a logikai partíciók között. A partíciós kulcsok pályázói tartalmazhatják a lekérdezésekben gyakran megjelenő tulajdonságokat. A lekérdezések hatékonyan irányíthatók úgy, hogy a Filter predikátumban található partíciós kulcsot is megadhatják. A particionálási stratégia révén a kiépített átviteli sebesség sokkal egyszerűbb lesz. 
 
-### <a name="design-smaller-items-for-higher-throughput"></a>Kisebb elemek tervezése a nagyobb átmenő bb átmenő kontra 
+### <a name="design-smaller-items-for-higher-throughput"></a>Kisebb elemek tervezése nagyobb átviteli sebességhez 
 
-A kérelem díj vagy a kérelem feldolgozási költsége egy adott művelet közvetlenül korrelál a cikk méretét. A nagy cikkeken végzett műveletek többe kerülnek, mint a kisebb cikkeken végzett műveletek. 
+Egy adott művelet kérésének díja vagy a kérelmek feldolgozási díja közvetlenül összefügg az elemek méretével. A nagyméretű elemeken végrehajtott műveletek a kisebb elemeknél több művelettel járnak. 
 
 ## <a name="data-access-patterns"></a>Adatelérési minták 
 
-Mindig jó gyakorlat, hogy logikailag elkülönítse az adatokat logikai kategóriákba az adatok elérésének milyen gyakran. Ha forró, közepes vagy lehűtési adatokként kategorizálja, finomíthatja a felhasznált tárolót és a szükséges átviteli forgalmat. A hozzáférés gyakoriságától függően az adatokat külön tárolókba (például táblákba, grafikonokba és gyűjteményekbe) helyezheti el, és finomíthatja a kiosztott átviteli szintet, hogy megfeleljen az adott adatszegmens igényeinek. 
+Mindig érdemes logikusan elkülöníteni az adatait logikai kategóriákba, attól függően, hogy milyen gyakran férhet hozzá az adataihoz. A gyakori, közepes vagy hideg adatok kategorizálásával finomíthatja a felhasznált tárterületet és a szükséges teljesítményt. A hozzáférés gyakorisága függvényében az adatok külön tárolóba helyezhetők (például táblázatok, diagramok és gyűjtemények), és a kiépített átviteli sebesség finomhangolása az adatok adott szegmensének igényei szerint. 
 
-Továbbá ha az Azure Cosmos DB-t használja, és tudja, hogy nem fog bizonyos adatértékek alapján keresni, vagy ritkán fog hozzáférni, tárolja ezeknek az attribútumoknak a tömörített értékeit. Ezzel a módszerrel tárhelyet, indexterületet és kiosztott átviteli kapacitást takaríthat meg, és alacsonyabb költségeket eredményezhet.
+Emellett, ha Azure Cosmos DBt használ, és tudja, hogy nem bizonyos adatértékek alapján keres, vagy csak ritkán fér hozzájuk, akkor ezeket az attribútumok tömörített értékeit kell tárolnia. Ezzel a módszerrel mentheti a tárterületet, az indexet és a kiépített átviteli sebességet, és alacsonyabb költségeket eredményezhet.
 
-## <a name="optimize-by-changing-indexing-policy"></a>Optimalizálás indexelési házirend módosításával 
+## <a name="optimize-by-changing-indexing-policy"></a>Optimalizálás az indexelési szabályzat módosításával 
 
-Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli minden rekord minden tulajdonságát. Ennek célja a fejlesztés megkönnyítése és a kiváló teljesítmény biztosítása számos különböző típusú ad hoc lekérdezések. Ha több ezer tulajdonsággal rendelkező nagy rekordokkal rendelkezik, előfordulhat, hogy nem hasznos az átviteli költség kifizetése minden tulajdonság indexelése esetén, különösen akkor, ha csak 10 vagy 20 ilyen tulajdonságra kérdez. Ahogy egyre közelebb a szerzés egy fogantyút a konkrét számítási feladatok, a mi útmutatást, hogy az index házirend finomhangolása. Az Azure Cosmos DB indexelési szabályzatának részletes adatai [itt](indexing-policies.md)találhatók. 
+Alapértelmezés szerint a Azure Cosmos DB automatikusan indexel minden rekord összes tulajdonságát. Ennek célja, hogy megkönnyítse a fejlesztést, és kiváló teljesítményt biztosítson számos különböző típusú ad hoc lekérdezésben. Ha nagy mennyiségű, több ezer tulajdonságú rekorddal rendelkezik, akkor nem lehet hasznos, ha az indexelési költségeket nem érdemes kifizetni, különösen akkor, ha csak 10 vagy 20 ilyen tulajdonságot szeretne lekérdezni. Ahogy közelebb kerül az adott számítási feladathoz, az útmutatónk szerint hangoljuk be az index-szabályzatot. Azure Cosmos DB indexelési szabályzat részletes adatai [itt](indexing-policies.md)találhatók. 
 
-## <a name="monitoring-provisioned-and-consumed-throughput"></a>Kiépített és felhasznált átviteli adatátatok figyelése 
+## <a name="monitoring-provisioned-and-consumed-throughput"></a>Kiépített és felhasznált átviteli sebesség figyelése 
 
-Figyelheti a kiépített rúmiák teljes számát, a korlátozott díjú kérelmek számát, valamint az Azure Portalon felhasznált több felhasználói nem működő felhasználói nem működő fél szolgáltatásait. Az alábbi képen egy használati példa mérőszám látható:
+Nyomon követheti a kiépített RUs teljes számát, a korlátozott számú kérelmek számát, valamint a Azure Portal felhasznált RUs számát. Az alábbi képen egy példa használati metrika látható:
 
-![Kérésegységek figyelése az Azure Portalon](./media/optimize-cost-throughput/monitoring.png)
+![A kérések egységeinek figyelése a Azure Portal](./media/optimize-cost-throughput/monitoring.png)
 
-Riasztásokat is beállíthat annak ellenőrzésére, hogy a korlátozott sebességű kérelmek száma meghaladja-e az adott küszöbértéket. További részletekért [tekintse meg az Azure Cosmos DB-cikk figyelése](use-metrics.md) című témakört. Ezek a riasztások e-mailt küldhetnek a fiók rendszergazdáinak, vagy meghívhatnak egy egyéni HTTP Webhookot vagy egy Azure-függvényt a kiosztott átviteli kapcsolat automatikus növeléséhez. 
+Riasztásokat is beállíthat, hogy ellenőrizze, hogy a korlátozott kérelmek száma meghaladja-e a megadott küszöbértéket. További részletekért tekintse [meg a Azure Cosmos db cikk figyelését](use-metrics.md) ismertető cikket. Ezek a riasztások e-mailt küldhetnek a fiók rendszergazdái számára, vagy meghívhatnak egy egyéni HTTP-webhookot vagy egy Azure-függvényt a kiépített átviteli sebesség automatikus növelésére. 
 
-## <a name="scale-your-throughput-elastically-and-on-demand"></a>Az átviteli mennyiség rugalmas és igény szerinti méretezése 
+## <a name="scale-your-throughput-elastically-and-on-demand"></a>Az átviteli sebesség rugalmas és igény szerinti méretezése 
 
-Mivel a kiosztott átviteli igény díja a kiosztott átviteli igény egyeztetése segíthet elkerülni a nem használt átviteli díjakat. A kiosztott átviteli átmenő bármikor felfelé vagy lefelé skálázhatja, szükség szerint. Ha az átviteli igény nagyon kiszámítható, használhatja az Azure Functions-t, és időzítőesemény-eseményindítóval [növelheti vagy csökkentheti az átviteli veszélyt az ütemezés szerint.](scale-on-schedule.md) 
+Mivel a kiosztott átviteli sebességért számítunk fel díjat, a kiépített átviteli sebességnek megfelelően kell megelőznie a fel nem használt átviteli sebességet. A kiosztott átviteli sebességet igény szerint bármikor fel-vagy lekicsinyítheti. Ha az átviteli sebesség igénye nagyon kiszámítható, használhat Azure Functions, és időzítő trigger használatával [növelheti vagy csökkentheti az átviteli sebességet](scale-on-schedule.md). 
 
-* A felhasználói felhasználói nem ű szolgáltatások felhasználásának és a korlátozott sebességkorlátozott kérelmek aránya azt mutatják, hogy nem kell tartani a kiépített egész állandó egész nap vagy a hét folyamán. Lehet, hogy kevesebb forgalmat éjszaka vagy a hétvégén. Az Azure Portal vagy az Azure Cosmos DB natív SDK-k vagy REST API használatával bármikor skálázhatja a kiosztott átviteli. Az Azure Cosmos DB REST API-ja végpontokat biztosít a tárolók teljesítményszintjének programozott frissítéséhez, így a nap időpontjától vagy a hét napjától függően egyszerűen módosíthatja a kód átviteli teljesítményét. A művelet leállás nélkül történik, és általában kevesebb mint egy perc alatt lép érvénybe. 
+* Az RUs felhasználásának figyelése és a korlátozott számú kérelem aránya azt mutatja, hogy a nap folyamán vagy a héten nem kell folyamatosan kiépíteni az állandókat. Előfordulhat, hogy kevesebb forgalmat kell megkapnia éjjel vagy a hétvégén. Azure Portal vagy Azure Cosmos DB natív SDK-k vagy REST API segítségével bármikor méretezheti a kiosztott átviteli sebességet. A Azure Cosmos DB REST API végpontokat biztosít a tárolók teljesítményi szintjének programozott frissítéséhez, így egyszerűvé teszi az átviteli sebesség beállítását a kód napjától vagy a hét napjától függően. A művelet leállás nélkül történik, és általában kevesebb, mint egy perc alatt lép érvénybe. 
 
-* Az egyik terület, amelyet az átviteli kell, amikor adatokat az Azure Cosmos DB-be, például az adatok áttelepítése során. Miután befejezte az áttelepítést, skálázhatja a kiosztott átviteli átbocsátásle a megoldás állandósult állapotának kezeléséhez.  
+* Az adatátviteli sebesség az egyik terület, amikor az adatok betöltését Azure Cosmos DBba, például az adatáttelepítés során. Miután befejezte az áttelepítést, a kiépített átviteli sebességet Lekicsinyítve kezelheti a megoldás állandó állapotát.  
 
-* Ne feledje, hogy a számlázás egy órás részletességű, így nem takarít meg pénzt, ha a kiosztott átviteli forgalmat gyakrabban módosítja, mint egy óra egy időben.
+* Ne feledje, hogy a számlázás egy órás részletességgel rendelkezik, így nem fog pénzt spórolni, ha a kiosztott átviteli sebességet gyakrabban, mint egy órát módosítják.
 
-## <a name="determine-the-throughput-needed-for-a-new-workload"></a>Az új munkaterheléshez szükséges átviteli terhelés meghatározása 
+## <a name="determine-the-throughput-needed-for-a-new-workload"></a>Az új munkaterheléshez szükséges átviteli sebesség meghatározása 
 
-Az új számítási feladatok kiosztott átviteli igényének meghatározásához a következő lépéseket használhatja: 
+Az új munkaterhelés kiépített átviteli sebességének meghatározásához a következő lépéseket használhatja: 
 
-1. Végezzen el egy kezdeti, durva kiértékelést a kapacitástervező vel, és módosítsa a becsléseket az Azure Cosmos Explorer segítségével az Azure Portalon. 
+1. Végezzen el egy kezdeti, durva értékelést a Capacity Planner használatával, és állítsa be a becsléseket a Azure Portal Azure Cosmos Explorer segítségével. 
 
-2. Javasoljuk, hogy hozza létre a tárolók a vártnál nagyobb átviteli, és szükség szerint leskálázás. 
+2. Azt javasoljuk, hogy a tárolókat a vártnál magasabb átviteli sebességgel hozza létre, majd szükség szerint méretezéssel. 
 
-3. Javasoljuk, hogy a natív Azure Cosmos DB SDK-k egyikét használja az automatikus újrapróbálkozások előnyeinek kihasználásához, amikor a kérelmek díja korlátozott lesz. Ha olyan platformon dolgozik, amely nem támogatott, és a Cosmos DB REST API-ját használja, valósítsa meg saját újrapróbálkozási szabályzatát a `x-ms-retry-after-ms` fejléc használatával. 
+3. Javasoljuk, hogy a natív Azure Cosmos DB SDK-k egyikét használja az automatikus újrapróbálkozások kihasználása érdekében, amikor a kérelmek díjszabása korlátozott. Ha olyan platformon dolgozik, amely nem támogatott, és nem használja a Cosmos DB REST API, akkor a `x-ms-retry-after-ms` fejléc használatával hajtsa végre a saját újrapróbálkozási házirendjét. 
 
-4. Győződjön meg arról, hogy az alkalmazáskód szabályosan támogatja az esetet, ha az összes újrapróbálkozás sikertelen. 
+4. Győződjön meg arról, hogy az alkalmazás kódja szabályosan támogatja az esetet, amikor az összes újrapróbálkozás sikertelen lesz. 
 
-5. Az Azure Portalon elérhető riasztások konfigurálásával értesítéseket kaphat a sebességkorlátozásról. Az elmúlt 15 percben konzervatív korlátokkal, például 10 korlátozott díjkéréssel kezdhet, és átválthat a lelkesebb szabályokra, ha kitalálja a tényleges fogyasztást. Az alkalmi sebességkorlátok rendben vannak, azt mutatják, hogy a beállított korlátokkal játszol, és pontosan ezt szeretnéd tenni. 
+5. A Azure Portal riasztásait úgy is konfigurálhatja, hogy a díjszabásra vonatkozó értesítéseket kapjon. Az elmúlt 15 percben megjelenő konzervatív korlátokkal, például a 10 sebességre korlátozott kérelmekkel kezdődhet, és a tényleges felhasználás megállapítása után átválthat több lelkes szabályra. Alkalmankénti díjszabás – a határértékek megfelelnek a beállított korlátoknak, és pontosan ezt kívánja elvégezni. 
 
-6. A figyelés segítségével megismerheti a forgalmi mintát, így figyelembe veheti, hogy dinamikusan kell módosítania az átviteli átviteli kiépítést a nap vagy egy hét alatt. 
+6. A figyelés használatával megismerheti a forgalmi mintát, így érdemes megfontolnia, hogy dinamikusan kell módosítania az átviteli sebesség kiosztását a nap folyamán vagy hetente. 
 
-7. Rendszeresen figyelje a kiosztott és a felhasznált átviteli arányt, hogy győződjön meg arról, hogy nem létesített ki a szükséges nél több tárolót és adatbázist. Miután egy kicsit túlegy kiosztott átviteli egy jó biztonsági ellenőrzés.  
+7. Figyelje a kiépített és felhasznált átviteli sebesség arányát, és győződjön meg arról, hogy a szükséges számú tárolót és adatbázist nem osztotta ki. A kiosztott átviteli sebesség egy kis mértékben biztonságos ellenőrzés.  
 
-### <a name="best-practices-to-optimize-provisioned-throughput"></a>Ajánlott eljárások a kiosztott átviteli hang optimalizálásához 
+### <a name="best-practices-to-optimize-provisioned-throughput"></a>Ajánlott eljárások a kiépített átviteli sebesség optimalizálásához 
 
-Az alábbi lépések segítségével rendkívül méretezhetővé és költséghatékonysá teheti megoldásait az Azure Cosmos DB használata esetén.  
+A következő lépések segítségével a megoldásait rugalmasan méretezhető és költséghatékonyan teheti meg Azure Cosmos DB használatakor.  
 
-1. Ha jelentősen túlépített átviteli a tárolók és adatbázisok között, tekintse át a kiépített vt-k felhasznált rendszerszámos, és finomítsa a számítási feladatokat.  
+1. Ha jelentősen meghaladja a tárolók és adatbázisok kiépített átviteli sebességét, tekintse át az RUs által kiépített vs felhasznált RUs-t, és finomítsa a számítási feladatokat.  
 
-2. Az alkalmazás által igényelt fenntartott átviteli igény becsült mennyiségének becslésére az alkalmazás által igényelt fenntartott átviteli terhelés az alkalmazás által használt reprezentatív Azure Cosmos-tároló vagy-adatbázis tipikus műveletek futtatásához társított ru-díj rögzítése, és majd becsülje meg az egyes másodpercenként végrehajtandó műveletek számát. Ügyeljen arra, hogy a mérési és tartalmazza a tipikus lekérdezések és azok használatát is. A lekérdezések RU-költségeinek programozott vagy a portál használatával történő becsléséről [a lekérdezések költségének optimalizálása](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)című témakörben olvashat. 
+2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](online-backup-and-restore.md)című témakört. 
 
-3. Egy másik módja annak, hogy a műveletek és azok költségeit a Rendszeres egységekben az Azure Monitor naplók engedélyezésével, amely megadja a művelet/időtartam és a kérelem díjának lebontását. Az Azure Cosmos DB kérési díjat biztosít minden művelethez, így minden műveletdíj tárolható vissza a válaszból, majd elemzésre használható. 
+3. A műveletek és azok költségeinek egy másik módja, ha engedélyezi a Azure Monitor-naplókat, így a művelet/időtartam és a kérések díjszabása is elérhető. A Azure Cosmos DB minden művelethez megadja a kérelmek díját, így minden műveleti díj visszatárolható a válaszból, majd elemzésre használható. 
 
-4. Rugalmasan skálázhatja fel felé és lefelé a kiosztott átviteli, ahogy a számítási feladatok igényeinek megfelelően. 
+4. A számítási teljesítmény igényének kielégítése érdekében a kiosztott átviteli sebesség rugalmasan méretezhető. 
 
-5. Az Azure Cosmos-fiókhoz társított régiókat szükség szerint hozzáadhatja és eltávolíthatja, és szabályozhatja a költségeket. 
+5. Az Azure Cosmos-fiókjához tartozó régiókat a szükséges módon veheti fel és távolíthatja el, és szabályozhatja a költségeket. 
 
-6. Győződjön meg arról, hogy az adatok és a számítási feladatok elosztása a tárolók logikai partíciói között. Ha egyenetlen partíció-elosztással rendelkezik, ez a szükséges értéknél nagyobb átviteli értéket eredményezhet. Ha úgy látja, hogy ferde elosztással rendelkezik, javasoljuk, hogy egyenletesen ossza el a számítási feladatokat a partíciók között, vagy particionálja újra az adatokat. 
+6. Győződjön meg arról, hogy az adatok és a munkaterhelések elosztása is megtörtént a tárolók logikai partíciói között. Ha a partíciók eloszlása egyenetlen, ez a szükségesnél nagyobb átviteli sebességet eredményezhet. Ha azt állapítja meg, hogy ferde eloszlással rendelkezik, javasoljuk, hogy egyenletesen osztja el a munkaterhelést a partíciók között, vagy particionálja újra az adatok mennyiségét. 
 
-7. Ha sok tárolóval rendelkezik, és ezek a tárolók nem igényelnek SL-eket, használhatja az adatbázis-alapú ajánlatot azokban az esetekben, ahol a tárolónkénti átviteli átviteli átviteli SlA-k nem vonatkoznak. Meg kell határoznia, hogy az Azure Cosmos-tárolók közül melyiket szeretné áttelepíteni az adatbázis szintű átviteli ajánlatra, és majd áttelepíteni őket egy módosítási hírcsatorna-alapú megoldás használatával. 
+7. Ha sok tárolóval rendelkezik, és ezek a tárolók nem igénylik a SLA-kat, akkor használhatja az adatbázis-alapú ajánlatot azokra az esetekre, amikor a/Container átviteli sebesség SLA-kat nem kell alkalmazni. Meg kell határoznia, hogy az Azure Cosmos-tárolók melyikét szeretné áttelepíteni az adatbázis-szint átviteli sebességre, majd áttelepíteni őket egy Change feed-alapú megoldás használatával. 
 
-8. Fontolja meg a "Cosmos DB free tier" (ingyenes egy évig), Próbálja Cosmos DB (legfeljebb három régió) vagy letölthető Cosmos DB emulátor fejlesztési és tesztelési forgatókönyvek. Ezekkel a beállításokkal a teszt-dev, jelentősen csökkentheti a költségeket.  
+8. Vegye fontolóra a "Cosmos DB ingyenes szintet" (egy évig ingyenes), próbálkozzon Cosmos DB (legfeljebb három régióval), vagy letölthető Cosmos DB Emulator fejlesztési és tesztelési forgatókönyvekhez. Ha ezeket a lehetőségeket a test-dev szolgáltatáshoz használja, jelentősen csökkentheti költségeit.  
 
-9. Számítási feladatoktól függő költségoptimalizálást végezhet – például a kötegméret növelését, a több régióközötti terheléselosztási olvasásokat és adott esetben az adatok duplikálását.
+9. Továbbra is elvégezheti a munkaterhelés-specifikus költségmegtakarításokat – például növeli a Batch-méretet, a terheléselosztási beolvasást több régióban, és visszaduplikálja az adatokat, ha van ilyen.
 
-10. Az Azure Cosmos DB fenntartott kapacitásával akár 65%-os kedvezményt is kaphat három éven keresztül. Az Azure Cosmos DB fenntartott kapacitásmodellje egy előzetes kötelezettségvállalás az idő múlásával szükséges kérelmek egységek. A kedvezmények többszintűek, így minél több kérelemegységet használ hosszabb ideig, annál több lesz a kedvezmény. Ezek a kedvezmények azonnal érvénybe lépnek. A kiosztott értékek felett használt fenntartott értékek felett használt fenntartott szolgáltatások díja a nem fenntartott kapacitásköltsége alapján kerül felszámításra. További részletekért lásd [a Cosmos DB fenntartott kapacitását).](cosmos-db-reserved-capacity.md) Fontolja meg a fenntartott kapacitás megvásárlását a kiosztott átviteli költségek további csökkentése érdekében.  
+10. Azure Cosmos DB fenntartott kapacitással három évig akár 65%-os kedvezményt érhet el. Azure Cosmos DB fenntartott kapacitási modell előzetes kötelezettségvállalás a kérések egysége számára az idő múlásával. A kedvezményeket úgy kell megválasztani, hogy minél több kérési egységet használjanak hosszabb időszakra, annál nagyobb a kedvezmény. Ezeket a kedvezményeket azonnal alkalmazza a rendszer. A kiépített értékek fölött használt összes RUs díja a nem fenntartott kapacitás díja alapján történik. További részletekért tekintse meg [Cosmos db fenntartott kapacitást](cosmos-db-reserved-capacity.md)). Vegye fontolóra a fenntartott kapacitás megvásárlását, hogy tovább csökkentse a kiosztott átviteli sebességet.  
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután az alábbi cikkekkel többet tudhat meg a költségoptimalizálásról az Azure Cosmos DB-ben:
+A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 
-* További információ [az optimalizálásról fejlesztési és tesztelési célokra](optimize-dev-test.md)
-* További információ [az Azure Cosmos DB-számlájának ismertetéséről](understand-your-bill.md)
-* További információ a [tárolási költség optimalizálásáról](optimize-cost-storage.md)
-* További információ [az olvasási és írási költségek optimalizálásáról](optimize-cost-reads-writes.md)
-* További információ [a lekérdezések költségének optimalizálásáról](optimize-cost-queries.md)
-* További információ a több régióra kiterjedő [Azure Cosmos-fiókok költségeinek optimalizálásáról](optimize-cost-regions.md)
+* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
+* További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
+* További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
+* További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
 

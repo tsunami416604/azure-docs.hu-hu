@@ -1,6 +1,6 @@
 ---
-title: A mobilalkalmazás-fejlesztés különböző szakaszai a Visual Studio App Center és az Azure-szolgáltatások segítségével
-description: Ismerje meg a mobilalkalmazások fejlesztésének különböző szakaszait, valamint azt, hogy a Microsoft-szolgáltatások, például a Visual Studio App Center hogyan segíthetnek egy kiváló minőségű mobilalkalmazás létrehozásában.
+title: A Mobile App Development különböző szakaszai a Visual Studio App Center és az Azure-szolgáltatásokkal
+description: Ismerje meg a Mobile Application Development különböző szakaszait, valamint azt, hogy a Microsoft-szolgáltatások, például a Visual Studio App Center hogyan hozhatnak létre magas színvonalú mobil alkalmazást.
 author: codemillmatt
 ms.assetid: 12bbb070-9b3c-1234-5678-ccff02097224
 ms.service: vs-appcenter
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 8d0fbc12f3048b6a9c81d53c9a9cd0a1998d4f88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240060"
 ---
-# <a name="different-stages-in-mobile-application-development"></a>A mobilalkalmazások fejlesztésének különböző szakaszai
-A mobilalkalmazás létrehozása több szakaszból áll. A Microsoft szolgáltatásainak, eszközeinek és technológiáinak előnyeit egyszerűen kihasználhatja a kiváló minőségű mobilalkalmazások létrehozásához.
+# <a name="different-stages-in-mobile-application-development"></a>A mobil alkalmazások fejlesztésének különböző szakaszai
+A mobil alkalmazások létrehozása több fázist is magában foglal. A Microsoft szolgáltatásait, eszközeit és technológiáit könnyedén kihasználhatja magas színvonalú mobil alkalmazások létrehozásához.
 
 ## <a name="app-development"></a>Alkalmazás-fejlesztés
-Natív egyplatformos ügyfélalkalmazásokat hozhat létre olyan nyelvekkel, mint az Objective-C és a Java. A Xamarin, a React Native és a Unity segítségével többplatformos alkalmazásokat hozhat létre. Hibrid alkalmazásokat is készíthet a Cordova használatával. Ügyfélalkalmazások létrehozásához használja az Azonosítókat és a kódszerkesztőket, például a Visual Studiot, a Visual Studio for Mac-et vagy a Visual Studio code-ot PC-ken és Mac-en.
+Natív egyplatformos ügyfélalkalmazások olyan nyelvekkel is létrehozhatók, mint a Objective-C és a Java. Többplatformos alkalmazásokat hozhat létre a Xamarin használatával, a natív és az egységességi reagálással. A Cordova használatával hibrid alkalmazásokat is készíthet. Ügyfélalkalmazások létrehozásához használja az ide-ket és a kód-szerkesztőket, például a Visual studiót, a Visual Studio for Mac vagy a Visual Studio Code-ot a számítógépeken és a Mac gépeken.
 
-## <a name="plan-and-design-with-back-end-services"></a>Tervezés és tervezés háttérszolgáltatásokkal
- A Microsoft számos szolgáltatást nyújt a mobilalkalmazás biztonságos, méretezhető és megbízható háttérrendszerének beállításához. Kiszolgáló nélküli API-kat és eseményindítókat anélkül hozhat létre, hogy saját kiszolgálóit kellene karbantartania. A leküldéses értesítések, az offline adatszinkronizálás, a hitelesítés és az adatszolgáltatások használatával olyan átfogó és kiterjedt mobil háttérrendszer kialakításához, amely számos alkalmazásépítési forgatókönyvet támogat. 
+## <a name="plan-and-design-with-back-end-services"></a>Tervezés és kialakítás háttér-szolgáltatásokkal
+ A Microsoft számos szolgáltatást biztosít a mobil alkalmazások biztonságos, méretezhető és megbízható háttérrendszer beállításához. Kiszolgáló nélküli API-kat és eseményindítókat hozhat létre anélkül, hogy saját kiszolgálókat kellene fenntartania. A leküldéses értesítések, a kapcsolat nélküli adatszinkronizálás, a hitelesítés és az adatszolgáltatások segítségével átfogó és kiterjedt mobil háttérrendszer készíthető, amely számos alkalmazás-kialakítási forgatókönyvet támogat. 
  
- A háttérszolgáltatás létrehozása számos követelményt támaszt. A következőket kell:
-   - Korlátozza az eszközön lévő adattárolást.
-   - Adatok szinkronizálása több eszközön.
+ A háttér-szolgáltatás létrehozása számos követelményt is tartalmaz. A következőket kell tennie:
+   - Korlátozza az adattárolást az eszközön.
+   - Több eszközön szinkronizálhatja az adatokat.
    - Győződjön meg arról, hogy az alkalmazás hálózati kapcsolat nélkül fut.
    - Értesítések küldése a felhasználóknak.
-   - Csökkentse az energiafogyasztást.
-   - Skálázható, megbízható és biztonságos háttérrendszert hozhat létre.
-   - A kiszolgáló karbantartásának automatizálása.
+   - Csökkentheti az akkumulátorok felhasználását.
+   - Méretezhető, megbízható és biztonságos háttérrendszer létrehozása.
+   - Automatizálja a kiszolgáló karbantartását.
 
 ## <a name="devops-and-continuous-monitoring"></a>DevOps és folyamatos figyelés
-Mobil- és felhőközpontú alkalmazások létrehozásához használja ki a folyamatos integráció (CI), a folyamatos kézbesítés (CD) és a folyamatos figyelési szolgáltatások előnyeit, hogy natív buildeket hozzon létre minden platformon. A felhasználói felület automatizálási tesztjeit több ezer fizikai eszközön futtathatja, automatizálhatja azok kiadásait a bétatesztelési csatornákon keresztül, vagy közvetlenül az alkalmazásáruházakba helyezheti üzembe helyezését. Az alkalmazások használati elemzési, hiba- és kivételadatait is gyűjtheti.
+Mobil-és felhőalapú alkalmazások létrehozásához használja ki a folyamatos integráció (CI), a folyamatos teljesítés (CD) és a folyamatos monitorozási szolgáltatások előnyeit, hogy minden platformon natív buildeket készítsen. Több ezer fizikai eszközön is futtathat FELHASZNÁLÓIFELÜLET-automatizálási teszteket, automatizálhatja a kiadásokat a bétaverziós tesztelési csatornákon keresztül, vagy közvetlenül telepíthet az alkalmazás-áruházakba. Emellett a használati elemzések, a hibák és a kivételek adatai is begyűjthetők az alkalmazásaikban.
 
 ## <a name="additional-services"></a>További szolgáltatások
-Számos Azure-szolgáltatás használható fel a létrehozandó alkalmazás típusától és jellegétől függően:
-  - Az Azure Cognitive Search a belső adatok minden típusában, gyors lekérdezéssel kereshet.
-  - Azure Cognitive Services mesterséges intelligencia használata az alkalmazásban.
-  - Az Azure SignalR lehetővé teszi a valós idejű kommunikációt az alkalmazásban.
+Számos Azure-szolgáltatás felhasználható a kiépített alkalmazás típusától és természetétől függően:
+  - Az Azure Cognitive Search a gyors lekérdezéssel megkeresheti az összes típusú belső adattípust.
+  - Az Azure Cognitive Services a mesterséges intelligencia használatát az alkalmazásban.
+  - Azure-jelző, hogy valós idejű kommunikációt engedélyezzen az alkalmazásban.

@@ -1,5 +1,5 @@
 ---
-title: Belső terheléselosztó létrehozása – Azure-sablon
+title: Belső Load Balancer létrehozása – Azure-sablon
 titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó sablon használatával a Resource Managerben
 services: load-balancer
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456964"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Belső terheléselosztó létrehozása sablon használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -42,10 +42,10 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 
 A letöltött sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-1. Ha még soha nem használta az Azure PowerShellt, olvassa el [az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview) című témakört, és kövesse az utasításokat egészen a végéig az Azure-ba való bejelentkezéshez és az előfizetés kiválasztásához.
+1. Ha még soha nem használta a Azure PowerShellt, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview) című témakört, és kövesse az utasításokat egészen az Azure-ba való bejelentkezéshez és az előfizetés kiválasztásához.
 2. Töltse le a paramétereket tartalmazó fájlt a helyi lemezre.
 3. Szerkessze a fájlt, majd mentse el.
-4. Futtassa a **New-AzResourceGroupDeployment** parancsmast egy erőforráscsoport létrehozásához a sablon használatával.
+4. A **New-AzResourceGroupDeployment** parancsmag futtatásával hozzon létre egy erőforráscsoportot a sablon használatával.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -57,8 +57,8 @@ A letöltött sablon PowerShell használatával történő üzembe helyezéséhe
 
 Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori felület használatával.
 
-1. Ha még soha nem használta az Azure CLI-t, olvassa el [az Azure CLI telepítése és konfigurálása](../cli-install-nodejs.md) című témakört, és kövesse az utasításokat addig a pontig, ahol kiválasztja az Azure-fiókját és előfizetését.
-2. Nyissa [https://shell.azure.com](https://shell.azure.com) meg a Cloud Shell t a böngészőjében. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
+1. Ha még soha nem használta az Azure CLI-t, olvassa el [Az Azure CLI telepítése és konfigurálása](../cli-install-nodejs.md) című témakört, és kövesse az utasításokat arra a pontra, ahol az Azure-fiókot és-előfizetést kiválasztja.
+2. [https://shell.azure.com](https://shell.azure.com) Nyissa meg a Cloud shellt a böngészőben. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
 
     ```console
     azure config mode arm
@@ -81,4 +81,4 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
 
-A Sablonban lévő terheléselosztó JSON-szintaxisát és tulajdonságait a [Microsoft.Network/loadBalancers című](/azure/templates/microsoft.network/loadbalancers)témakörben olvashatja.
+A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure NetApp Files hálózattervezés irányelvei | Microsoft dokumentumok
-description: Ez az irányelvek, amelyek segítségével hatékony hálózati architektúra az Azure NetApp Files használatával.
+title: Útmutató a Azure NetApp Files Network Planning szolgáltatáshoz | Microsoft Docs
+description: Útmutatást nyújt a hatékony hálózati architektúra kialakításához Azure NetApp Files használatával.
 services: azure-netapp-files
 documentationcenter: ''
 author: ram-kakani
@@ -15,117 +15,117 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667871"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
-A hálózati architektúra tervezése az alkalmazásinfrastruktúra tervezésének kulcsfontosságú eleme. Ez a cikk segít hatékony hálózati architektúrát tervezni a számítási feladatok számára, hogy kihasználhassa az Azure NetApp Files gazdag képességeit.
+A hálózati architektúra megtervezése az alkalmazás-infrastruktúra megtervezésének egyik kulcsfontosságú eleme. Ez a cikk segít megtervezni a számítási feladatok hatékony hálózati architektúráját, hogy kihasználhassa a Azure NetApp Files gazdag képességeit.
 
-Az Azure NetApp-fájlok kötetei úgy vannak kialakítva, hogy egy speciális célú alhálózatban, az Azure virtuális hálózaton belül [delegált alhálózatban](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) legyenek. Ezért a kötetek közvetlenül a virtuális hálózatról, a társviszony-létesített virtuális hálózatok ugyanabban a régióban, vagy a helyszíni egy virtuális hálózati átjáró (ExpressRoute vagy VPN-átjáró) szükség szerint. Az alhálózat az Azure NetApp-fájlok számára van elrendelve, és nincs kapcsolat más Azure-szolgáltatásokkal vagy az internettel.
+Azure NetApp Files kötetek úgy vannak kialakítva, hogy egy speciális célú alhálózatban legyenek, amelyet az Azure-Virtual Network [delegált](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) alhálózatnak nevezünk. Így a köteteket közvetlenül a VNet, az azonos régióban található, egymástól független virtuális hálózatok, illetve a helyszíni átjárón (ExpressRoute vagy VPN Gateway) Virtual Network keresztül is elérheti, ha szükséges. Az alhálózat Azure NetApp Files dedikált, és nincs kapcsolat a többi Azure-szolgáltatással vagy az internettel.
 
 ## <a name="considerations"></a>Megfontolandó szempontok  
 
-Az Azure NetApp Files hálózat tervezésekor érdemes megvizsgálni a szempontokat.
+Azure NetApp Files hálózat tervezésekor érdemes figyelembe vennie néhány megfontolandó szempontot.
 
 ### <a name="constraints"></a>Korlátozások
 
-Az alábbi funkciók jelenleg nem támogatottak az Azure NetApp-fájlok esetében: 
+Az alábbi funkciók jelenleg nem támogatottak a Azure NetApp Files esetén: 
 
-* A delegált alhálózatra alkalmazott hálózati biztonsági csoportok (NSG-k)
-* Felhasználó által definiált útvonalak (UDRs) címelőtaggal Azure NetApp-fájlok alhálózataként
-* Azure-szabályzatok (például egyéni elnevezési szabályzatok) az Azure NetApp Files felületen
-* Az Azure NetApp Files forgalom terheléselosztói
-* Az Azure NetApp-fájlok nem támogatottak az Azure Virtual WAN szolgáltatással
+* A delegált alhálózatra alkalmazott hálózati biztonsági csoportok (NSG-EK)
+* Felhasználó által megadott útvonalak (UDR-EK) az Azure NetApp-fájlok alhálózata címének előtagjaként
+* Azure-szabályzatok (például egyéni elnevezési házirendek) a Azure NetApp Files felületen
+* Terheléselosztó Azure NetApp Files forgalomhoz
+* Az Azure Virtual WAN Azure NetApp Files nem támogatott
 
-Az Azure NetApp-fájlokra a következő hálózati korlátozások vonatkoznak:
+A következő hálózati korlátozások érvényesek Azure NetApp Filesre:
 
-* Az Azure NetApp-fájlokkal (beleértve a társviszonyba adott virtuális hálózatokat is) használatban lévő virtuális hálózatokban használt IP-k száma nem haladhatja meg az 1000-et. Azon dolgozunk, hogy növeljük ezt a korlátot, hogy megfeleljen az ügyfélméret követelményeinek. 
-* Minden Egyes Azure virtuális hálózat (VNet) csak egy alhálózat delegálható az Azure NetApp-fájlok.
+* A Azure NetApp Files (beleértve a társas virtuális hálózatok) VNet használt IP-címek száma nem haladhatja meg az 1000-ot. Dolgozunk a határérték növelésén, hogy megfeleljen az ügyfelek méretezési igényeinek. 
+* Minden egyes Azure-Virtual Network (VNet) esetében csak egy alhálózat delegálható Azure NetApp Fileshoz.
 
 
 ### <a name="supported-network-topologies"></a>Támogatott hálózati topológiák
 
-Az alábbi táblázat az Azure NetApp-fájlok által támogatott hálózati topológiákat ismerteti.  Ismerteti a nem támogatott topológiák kerülő megoldásait is. 
+A következő táblázat a Azure NetApp Files által támogatott hálózati topológiákat ismerteti.  Emellett ismerteti a nem támogatott topológiák megkerülő megoldásait is. 
 
 |    Topológiák    |    Támogatott    |     Áthidaló megoldás    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    A kötethez való kapcsolódás helyi virtuális hálózatban    |    Igen    |         |
-|    Kapcsolat a kötethez egy társviszony-létesített virtuális hálózatban (ugyanaz a régió)    |    Igen    |         |
-|    Kapcsolat a kötethez egy társviszony-létesített virtuális hálózatban (több régióban vagy globális társviszony-létesítés)    |    Nem    |    None    |
-|    Kapcsolat egy kötethez ExpressRoute-átjárón keresztül    |    Igen    |         |
-|    A helyszíni kapcsolat egy küllős virtuális hálózatban lévő kötethez ExpressRoute-átjárón keresztül, valamint az átjáró-átvitellel rendelkező virtuális hálózat társviszony-létesítése    |    Igen    |        |
-|    A helyszíni és a küllővirtuális hálózat vpn-átjárón keresztüli kötete közötti kapcsolat    |    Igen    |         |
-|    A helyszíni kapcsolat egy küllővirtuális hálózat ban lévő kötethez VPN-átjárón keresztül, valamint virtuális hálózat-társviszony-létesítés átjáró-átvitellel    |    Igen    |         |
+|    Kapcsolat a kötettel a helyi VNet    |    Igen    |         |
+|    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Igen    |         |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    None    |
+|    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Igen    |         |
+|    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Igen    |        |
+|    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Igen    |         |
+|    Helyszíni kapcsolat a VPN-átjárón keresztüli küllős VNet, illetve a VNet és az átjárók közötti adatforgalom    |    Igen    |         |
 
 
-## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuális hálózat az Azure NetApp-fájlok köteteihez
+## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek virtuális hálózata
 
-Ez a szakasz ismerteti a virtuális hálózat tervezését segítő fogalmakat.
+Ez a szakasz a virtuális hálózatok tervezését segítő fogalmakat ismerteti.
 
 ### <a name="azure-virtual-networks"></a>Azure-beli virtuális hálózatok
 
-Az Azure NetApp Files-kötet kiépítése előtt létre kell hoznia egy Azure virtuális hálózatot (VNet), vagy olyan hálózatot kell használnia, amely már létezik az előfizetésében. A virtuális hálózat határozza meg a kötet hálózati határát.  A virtuális hálózatok létrehozásáról az [Azure Virtuális hálózat dokumentációjában](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)olvashat bővebben.
+Azure NetApp Files kötet kiépítés előtt létre kell hoznia egy Azure-beli virtuális hálózatot (VNet), vagy az előfizetésben már létezőt kell használnia. A VNet határozza meg a kötet hálózati határát.  A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg az [Azure Virtual Network dokumentációját](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ### <a name="subnets"></a>Alhálózatok
 
-Az alhálózatok a virtuális hálózatot külön címterekre bontják, amelyeket az Azure-erőforrások használnak.  Az Azure NetApp-fájlok kötetei egy [delegált alhálózatnak](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)nevezett speciális célú alhálózatban találhatók. 
+Az alhálózatok a virtuális hálózatot különálló, a bennük található Azure-erőforrások által használható címekre osztják.  Azure NetApp Files kötetek a [meghatalmazott alhálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)nevű speciális célú alhálózatban találhatók. 
 
-Az alhálózati delegálás explicit engedélyeket ad az Azure NetApp Files szolgáltatásnak, hogy szolgáltatásspecifikus erőforrásokat hozzon létre az alhálózatban.  A szolgáltatás üzembe helyezésekor egyedi azonosítót használ. Ebben az esetben egy hálózati illesztő jön létre az Azure NetApp-fájlok hoz létre kapcsolatot.
+Az alhálózati delegálás explicit jogosultságokat biztosít a Azure NetApp Files szolgáltatás számára, hogy a szolgáltatásra jellemző erőforrásokat hozzon létre az alhálózatban.  A szolgáltatás üzembe helyezése során egyedi azonosítót használ. Ebben az esetben a rendszer létrehoz egy hálózati adaptert, amely lehetővé teszi a Azure NetApp Fileshoz való kapcsolódást.
 
-Ha új virtuális hálózatot használ, létrehozhat egy alhálózatot, és delegálhatja az alhálózatot az Azure NetApp-fájlokba az [Alhálózat Azure NetApp-fájlokra való delegálása](azure-netapp-files-delegate-subnet.md)című útmutató utasításainak követésével. Delegálhat egy meglévő üres alhálózatot is, amely még nincs delegálva más szolgáltatásokhoz.
+Ha új VNet használ, létrehozhat egy alhálózatot, és delegálhatja az alhálózatot úgy, hogy Azure NetApp Files az [alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)című témakör útmutatását követve. Olyan meglévő üres alhálózatot is delegálhat, amely még nem lett delegálva más szolgáltatásokhoz.
 
-Ha a virtuális hálózat társviszonyban van egy másik virtuális hálózattal, nem bonthatja ki a virtuális hálózat címterületét. Ezért az új delegált alhálózatot a virtuális hálózat címterületén belül kell létrehozni. Ha ki kell terjesztenie a címterületet, a címterület kibontása előtt törölnie kell a virtuális társviszony-létesítést.
+Ha a VNet egy másik VNet van társítva, akkor nem lehet kibontani a VNet. Emiatt az új delegált alhálózatot a VNet belül kell létrehozni. Ha ki kell bővíteni a Címterület méretét, törölnie kell a VNet-társítást a Címterület bővítése előtt.
 
-### <a name="udrs-and-nsgs"></a>UdRs és NSG-k
+### <a name="udrs-and-nsgs"></a>UDR és NSG
 
-A felhasználó által definiált útvonalak (UDRs) és a hálózati biztonsági csoportok (NSG-k) nem támogatottak az Azure NetApp-fájlok delegált alhálózatain.
+A felhasználó által megadott útvonalak (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon.
 
-Megoldásként nsg-ket alkalmazhat más alhálózatokra, amelyek engedélyezik vagy megtagadják a forgalmat az Azure NetApp Files delegált alhálózatába és onnan.  
+Áthidaló megoldásként alkalmazhat NSG más alhálózatokra, amelyek engedélyezik vagy megtagadják a Azure NetApp Files delegált alhálózatra irányuló és onnan érkező forgalmat.  
 
-## <a name="azure-native-environments"></a>Az Azure natív környezetei
+## <a name="azure-native-environments"></a>Azure-beli natív környezetek
 
-Az alábbi ábra egy Azure-natív környezetet mutat be:
+Az alábbi ábra egy Azure-beli natív környezetet ábrázol:
 
-![Azure-natív hálózati környezet](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
+![Azure – natív hálózatkezelési környezet](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
 
-### <a name="local-vnet"></a>Helyi virtuális hálózat
+### <a name="local-vnet"></a>Helyi VNet
 
-Az alapvető forgatókönyv az Azure NetApp Files-kötet létrehozása vagy az azure-beli NetApp-fájlok kötetének létrehozása vagy csatlakoztatása ugyanabban a virtuális hálózatban lévő virtuális gépről. A fenti ábrán a Virtuális hálózat 2 virtuális hálózatához az 1.
+Alapszintű forgatókönyv egy Azure NetApp Files kötet létrehozása vagy összekötése egy virtuális gépről (VM) ugyanabban a VNet. A fenti ábrán a fenti diagramon a 2. kötet egy delegált alhálózatban jön létre, és az alapértelmezett alhálózatban az 1. virtuális gépre csatlakoztatható VNet.
 
 ### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
 
-Ha további virtuális hálózatok ugyanabban a régióban, amelyek hozzáférést egymás erőforrásaihoz való hozzáférésre van szüksége, a virtuális hálózatok virtuális [hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) használatával csatlakoztatható a biztonságos kapcsolat az Azure-infrastruktúrán keresztül. 
+Ha ugyanabban a régióban további virtuális hálózatok van szükség, amelynek hozzá kell férnie egymás erőforrásaihoz, a virtuális hálózatok az Azure-infrastruktúrán keresztüli biztonságos kapcsolat engedélyezéséhez a [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) -társítás használatával csatlakozhat. 
 
-Vegye figyelembe a VNet 2 és a VNet 3 a fenti ábrán. Ha a Virtuálisgép 1-nek csatlakoznia kell a 2-es virtuális géphez vagy a 2-es kötethez, vagy ha a 2.virtuális géphez kell csatlakoznia az 1. 
+A fenti ábrán vegye fontolóra a 2. és a 3. VNet VNet. Ha a VM 1 virtuális GÉPHEZ 2 vagy 2. kötethez kell csatlakoznia, vagy ha a 2. VM 1. vagy 1. kötethez csatlakoznia kell, engedélyeznie kell a VNet-társítást a 2. és a 3. VNet között. 
 
-Emellett fontolja meg egy forgatókönyvet, ahol a Virtuális hálózat 1 társviszonyban van a Virtuális hálózat 2 és a Virtuális hálózat 2 társviszonyt a VNet 3 ugyanabban a régióban. A Virtuális hálózat 1-ből származó erőforrások csatlakozhatnak a Virtuális hálózat 2-es hálózatának erőforrásaihoz, de nem tudnak csatlakozni a 3-as virtuális hálózat erőforrásaihoz, kivéve, ha a Virtuális hálózat 1 és a VNet 3 társviszonyban van. 
+Emellett Vegyünk például egy olyan forgatókönyvet, ahol a VNet 1 a VNet 2-vel van társítva, a 2. VNet pedig ugyanabban a régióban található VNet 3. Az 1. VNet erőforrásai a VNet 2 erőforrásaihoz kapcsolódhatnak, de nem tudnak csatlakozni a 3. VNet lévő erőforrásokhoz, kivéve, ha a VNet 1 és a VNet 3 nem található. 
 
-A fenti ábrán, bár a VM 3 tud csatlakozni az 1.  Ennek az az oka, hogy a küllővirtuális hálózatok nem társviszonyt, és _a tranzit-útválasztás nem támogatott a virtuális hálózat társviszony-létesítés._
+A fenti ábrán bár a VM 3 képes csatlakozni az 1. kötethez, a VM 4 nem tud kapcsolódni a 2. kötethez.  Ennek az az oka, hogy a küllős virtuális hálózatok nem támogatottak, és az _átviteli útválasztás nem támogatott a VNet_-társítások esetében.
 
 ## <a name="hybrid-environments"></a>Hibrid környezetek
 
-Az alábbi ábra egy hibrid környezetet mutat be: 
+A következő ábra egy hibrid környezetet ábrázol: 
 
 ![Hibrid hálózati környezet](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-A hibrid forgatókönyvben a helyszíni adatközpontokból származó alkalmazásoknak hozzá kell férnie az Azure-beli erőforrásokhoz.  Ez a helyzet, hogy ki kívánja-e terjeszteni az adatközpontot az Azure-ra, vagy az Azure natív szolgáltatásait vagy a vészhelyreállítást. Tekintse meg [a VPN-átjáró tervezési lehetőségeket,](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) amelyek ből megtudhatja, hogyan csatlakoztathat több erőforrást a helyszínen az Azure-beli erőforrásokhoz egy helyek közötti VPN-en vagy egy ExpressRoute-on keresztül.
+A hibrid forgatókönyvben a helyszíni adatközpontokból származó alkalmazásoknak hozzá kell férniük az Azure-ban található erőforrásokhoz.  Ez azt jelzi, hogy az adatközpontot ki szeretné-e terjeszteni az Azure-ra, vagy szeretné használni az Azure natív szolgáltatásait vagy a vész-helyreállítást. A helyek közötti VPN-en vagy ExpressRoute keresztül az Azure-beli erőforrásokhoz több helyszíni erőforrás összekapcsolásával kapcsolatos információkért tekintse meg [VPN Gateway tervezési lehetőségeket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
 
-Egy hibrid hub-küllős topológia, az Azure-ban a központi virtuális hálózat a helyszíni hálózathoz való kapcsolódás központi pontjaként működik. A küllők virtuális hálózatok a hub, és a számítási feladatok elkülönítésére használhatók.
+A hibrid küllős topológiában az Azure hub-VNet a helyszíni hálózathoz való kapcsolódás központi pontja. A küllők a központtal virtuális hálózatok, és a számítási feladatok elkülönítésére használhatók.
 
-A konfigurációtól függően a helyszíni erőforrások at a hub és a küllők erőforrások csatlakoztatása.
+A konfigurációtól függően a helyszíni erőforrásokat a hub és a küllők erőforrásaihoz is csatlakoztathatja.
 
-A fent bemutatott topológia, a helyszíni hálózat csatlakozik egy központi virtuális hálózat az Azure-ban, és vannak 2 küllős virtuális hálózatok ugyanabban a régióban társviszonyban a központi virtuális hálózat.  Ebben a forgatókönyvben az Azure NetApp-fájlok kötetei számára támogatott csatlakozási lehetőségek a következők:
+A fenti ábrán látható topológiában a helyszíni hálózat egy Azure-beli hub-VNet csatlakozik, és két küllős virtuális hálózatok található ugyanabban a régióban, mint a hub VNet.  Ebben az esetben a Azure NetApp Files kötetek által támogatott csatlakozási lehetőségek a következők:
 
-* A helyszíni erőforrások Virtuális gép 1 és Virtuálisgép 2 csatlakozhat az 1. 
-* A helyszíni erőforrások virtuális gép 1 és virtuális gép 2 csatlakozhat a 2.
-* A központi virtuális hálózat 3 virtuális gépe a küllővirtuális hálózat 2.
-* VM 4 küllős vnet 1 és VM 5 küllős virtuális hálózat 2 csatlakozhat a kötet 1 a központi virtuális hálózat.
-* A küllős VNet 1 vm 4-es gépe nem tud csatlakozni a 2.L. küllős virtuális hálózat 3. Emellett a vm 5 a küllős virtuális hálózat2 nem tud csatlakozni a 2. Ez azért van így, mert a küllővirtuális hálózatok nem társviszonyt, és _a tranzit-útválasztás nem támogatott a virtuális hálózat társviszony-létesítés._
-* A fenti architektúrában, ha van egy átjáró a küllővirtuális hálózatban is, az ANF-kötethez való kapcsolódás a hub átjárón keresztül való csatlakozásból elvész. A küllővirtuális hálózatban előnyben részesíti az átjárót, így csak az átjárón keresztül csatlakozó gépek csatlakozhatnak az ANF-kötethez.
+* A helyszíni erőforrások 1. és 2. virtuálisgép-hálózata egy helyek közötti VPN-vagy ExpressRoute-áramköri kapcsolaton keresztül tud csatlakozni a központban található 1-es kötethez. 
+* A helyszíni erőforrások 1. és 2. virtuálisgép-hálózata a 2. kötethez vagy a 3. kötethez kapcsolódhat helyek közötti VPN-és regionális vnet-társítás esetén.
+* A központi VNet található VM 3 a küllős VNet 1 és a 3. kötet 2. kötetéhez tud csatlakozni.
+* Az 1. és a küllős VNet 2. virtuális gép 4-es VM-VNet a hub VNet tud csatlakozni az 1. kötethez.
+* A küllős VNet 1 virtuális gép 4-es verziójában nem lehet csatlakozni a 3. kötethez a küllős VNet 2. Emellett a küllős VNet2 5. virtuális gép nem tud csatlakozni a 2. kötethez a küllős VNet 1. Ez azért van így, mert a küllős virtuális hálózatok nem támogatottak, és az _átviteli útválasztás nem támogatott a VNet_-társítások esetében.
+* A fenti architektúrában, ha van egy átjáró a küllős VNET, akkor a ANF-kötetnek az átjárón keresztül a hub-on keresztül való kapcsolata elvész. A megtervezéssel előnyben részesítette az átjárót a küllő VNet, így csak az átjárón keresztül csatlakozó gépek csatlakozhatnak a ANF-kötethez.
 
 ## <a name="next-steps"></a>További lépések
 

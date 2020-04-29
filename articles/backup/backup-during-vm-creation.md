@@ -1,92 +1,92 @@
 ---
 title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
-description: Bemutatja, hogyan engedélyezheti a biztonsági mentést, amikor azure-beli virtuális gép létrehozása az Azure Backup használatával.
+description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672811"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
-Az Azure Backup szolgáltatás használatával készítsen biztonsági másolatot az Azure virtuális gépekről.Use the Azure Backup service to back up Azure virtual machines (VMs). A virtuális gépekbiztonsági mentéséről a biztonsági mentési házirendben megadott ütemezés szerint készülnek, és helyreállítási pontok jönnek létre biztonsági mentések. A helyreállítási pontok a Helyreállítási szolgáltatások tárolóiban tárolódnak.
+Az Azure Virtual Machines (VM) biztonsági mentéséhez használja a Azure Backup szolgáltatást. A virtuális gépek a biztonsági mentési szabályzatban megadott ütemezésnek megfelelően készülnek, a helyreállítási pontok pedig biztonsági másolatokból jönnek létre. A helyreállítási pontok tárolása Recovery Services-tárolókban történik.
 
-Ez a cikk részletezi, hogyan engedélyezheti a biztonsági mentést, amikor virtuális gépet (VM) hoz létre az Azure Portalon.  
+Ez a cikk azt ismerteti, hogyan engedélyezhető a biztonsági mentés a virtuális gép (VM) a Azure Portalban történő létrehozásakor.  
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- [Ellenőrizze,](backup-support-matrix-iaas.md#supported-backup-actions) hogy mely operációs rendszerek támogatottak, ha engedélyezi a biztonsági mentést, amikor virtuális gép létrehozásakor engedélyezi.
+- [Győződjön meg](backup-support-matrix-iaas.md#supported-backup-actions) arról, hogy mely operációs rendszerek támogatottak, ha a virtuális gép létrehozásakor engedélyezi a biztonsági mentést.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha még nem jelentkezett be a fiókjába, jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-## <a name="create-a-vm-with-backup-configured"></a>Virtuális gép létrehozása konfigurált biztonsági másolattal
+## <a name="create-a-vm-with-backup-configured"></a>Virtuális gép létrehozása a Backup szolgáltatással konfigurálva
 
-1. Az Azure Portalon kattintson **az Erőforrás létrehozása**elemre.
+1. A Azure Portal kattintson az **erőforrás létrehozása**elemre.
 
-2. Az Azure Piactéren kattintson a **Számítási gombra,** majd válasszon ki egy virtuális géplemezképet.
+2. Az Azure Marketplace-en kattintson a **számítás**elemre, majd válasszon ki egy virtuálisgép-rendszerképet.
 
-3. Állítsa be a virtuális gép a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) [vagy](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) linuxos utasításoknak megfelelően.
+3. Állítsa be a virtuális gépet a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) -vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) -utasításoknak megfelelően.
 
-4. A **Kezelés** lap **Biztonsági mentés engedélyezése**területén kattintson **a Be gombra.**
-5. Az Azure Backup biztonsági mentések egy Recovery Services-tárolóba. Kattintson **az Új létrehozása gombra,** ha nem rendelkezik meglévő tárolóval.
-6. Fogadja el a javasolt tároló nevét, vagy adja meg a saját.
-7. Adja meg vagy hozzon létre egy erőforráscsoportot, amelyben a tároló található lesz. Az erőforráscsoport-tároló eltérhet a virtuális gép erőforráscsoporttól.
+4. A **kezelés** lap **biztonsági mentés engedélyezése**területén kattintson **a be**gombra.
+5. Azure Backup biztonsági mentéseket egy Recovery Services-tárolóba. Kattintson az **új létrehozása** lehetőségre, ha nem rendelkezik meglévő tárolóval.
+6. Fogadja el a javasolt tár nevét, vagy adja meg a sajátját.
+7. Itt adhatja meg vagy hozhatja létre azt az erőforráscsoportot, amelyben a tároló található. Az erőforráscsoport-tároló eltérő lehet a virtuálisgép-erőforráscsoporthoz.
 
-    ![Biztonsági mentés engedélyezése virtuális géphez](./media/backup-during-vm-creation/enable-backup.png)
+    ![Virtuális gép biztonsági mentésének engedélyezése](./media/backup-during-vm-creation/enable-backup.png)
 
-8. Fogadja el az alapértelmezett biztonsági mentési házirendet, vagy módosítsa a beállításokat.
-    - A biztonsági mentési szabályzat határozza meg, hogy milyen gyakran készítsen biztonsági mentési pillanatképeket a virtuális gépről, és mennyi ideig őrizze meg ezeket a biztonsági másolatokat.
-    - Az alapértelmezett házirend naponta egyszer biztonsági másolatot ad a virtuális gépről.
-    - Testreszabhatja a saját biztonsági mentési szabályzategy Azure virtuális gép, hogy a biztonsági mentések naponta vagy hetente.
-    - [További információ](backup-azure-vms-introduction.md#backup-and-restore-considerations) az Azure-beli virtuális gépek biztonsági mentési szempontjairól.
-    - [További információ](backup-instant-restore-capability.md) az azonnali visszaállítás funkcióról.
+8. Fogadja el az alapértelmezett biztonsági mentési szabályzatot, vagy módosítsa a beállításokat.
+    - A biztonsági mentési szabályzat meghatározza, hogy a virtuális gép milyen gyakran készítsen biztonsági mentési pillanatképeket, és hogy mennyi ideig tart a biztonsági másolatok megőrzése.
+    - Az alapértelmezett házirend naponta egyszer biztonsági másolatot készít a virtuális gépről.
+    - Az Azure-beli virtuális gépekre vonatkozó saját biztonsági mentési szabályzatok testreszabásával napi vagy heti biztonsági mentést készíthet.
+    - [További](backup-azure-vms-introduction.md#backup-and-restore-considerations) információ az Azure-beli virtuális gépek biztonsági mentésével kapcsolatos megfontolásokról.
+    - [További](backup-instant-restore-capability.md) információ az azonnali visszaállítási funkcióról.
 
-      ![Alapértelmezett biztonsági mentési házirend](./media/backup-during-vm-creation/daily-policy.png)
+      ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-during-vm-creation/daily-policy.png)
 
-## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Biztonsági másolat erőforráscsoport virtuális gépekhez
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines Azure Backup erőforráscsoport
 
-A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot (RG), amely eltér a virtuális gép erőforráscsoportjától a visszaállítási pontgyűjtemény (RPC) tárolásához. Az RPC a felügyelt virtuális gépek azonnali helyreállítási pontjait is eltalizittének ad otthont. A Biztonsági másolat szolgáltatás által létrehozott erőforráscsoport `AzureBackupRG_<Geo>_<number>`alapértelmezett elnevezési formátuma: . Például: *AzureBackupRG_northeurope_1*. Most már testreszabhatja az Azure Backup által létrehozott erőforráscsoport nevét.
+A Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre, amely eltér a virtuális gép erőforráscsoporthoz, amely a visszaállítási pontok gyűjteményét (RPC) tárolja. Az RPC a felügyelt virtuális gépek azonnali helyreállítási pontjait üzemelteti. A Backup szolgáltatás által létrehozott erőforráscsoport alapértelmezett elnevezési formátuma a (z) `AzureBackupRG_<Geo>_<number>`:. Például: *AzureBackupRG_northeurope_1*. Most testreszabhatja Azure Backup által létrehozott erőforráscsoport-nevet.
 
-Megjegyzésre mutat:
+Megjegyzés:
 
-1. Használhatja az RG alapértelmezett nevét, vagy szerkesztheti a vállalati követelményeknek megfelelően.
-2. Az RG névmintát adja meg a virtuális gép biztonsági mentési házirendjének létrehozása során. Az RG névformátumnak a `<alpha-numeric string>* n <alpha-numeric string>`következő formátumúnak kell lennie: . Az 'n' helyére egy egész szám kerül (1-től kezdődően), és a horizontális felskálázásra szolgál, ha az első RG megtelt. Egy RG-nek ma legfeljebb 600 RFC-je lehet.
-              ![Név kiválasztása házirend létrehozásakor](./media/backup-during-vm-creation/create-policy.png)
-3. A mintának az alábbi RG elnevezési szabályokat kell követnie, és a teljes hossz nem haladhatja meg a maximálisan megengedett RG névhosszt.
-    1. Az erőforráscsoportok nevei csak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójeleket engedélyezik. Nem végződhetnek egy időszakban.
-    2. Az erőforráscsoport nevek legfeljebb 74 karaktert tartalmazhatnak, beleértve az RG nevét és az utótagot.
-4. Az `<alpha-numeric-string>` első kötelező, míg a második az "n" után nem kötelező. Ez csak akkor érvényes, ha személyre szabott nevet ad meg. Ha egyik szövegdobozba sem ír be semmit, a program az alapértelmezett nevet használja.
-5. Az RG nevét szükség esetén módosíthatja a házirend módosításával. Ha a névminta megváltozik, új rp-k jönnek létre az új RG-ben. Azonban a régi r-k továbbra is a régi RG-ben maradnak, és nem kerülnek áthelyezésre, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül a RPs kap szemetet gyűjtött, mint a pontok lejár.
-![Név módosítása házirend módosításakor](./media/backup-during-vm-creation/modify-policy.png)
-6. Azt tanácsoljuk, hogy ne zárolja a biztonsági mentési szolgáltatás által használatra létrehozott erőforráscsoportot.
+1. Használhatja a RG alapértelmezett nevét, vagy szerkesztheti a vállalati követelmények szerint.
+2. Adja meg a RG neve mintát bemenetként a virtuális gép biztonsági mentési szabályzatának létrehozásakor. A RG nevének a következő formátumúnak kell lennie `<alpha-numeric string>* n <alpha-numeric string>`:. az "n" kifejezés egy egész számmal (1-től kezdődően) van lecserélve, és az első RG megtelte esetén felskálázásra szolgál. Egy RG jelenleg legfeljebb 600 távoli eljáráshívások lehet.
+              ![Válassza ki a nevet a szabályzat létrehozásakor](./media/backup-during-vm-creation/create-policy.png)
+3. A mintában az alábbi RG-elnevezési szabályoknak kell szerepelnie, és a teljes hossz nem haladhatja meg a maximálisan megengedett RG-név hosszát.
+    1. Az erőforráscsoportok nevei csak alfanumerikus karaktereket, pontokat, aláhúzást, kötőjelet és zárójelet tartalmazhatnak. Nem végződhet ponttal.
+    2. Az erőforráscsoportok nevei legfeljebb 74 karaktert tartalmazhatnak, beleértve a RG nevét és az utótagot is.
+4. Az első `<alpha-numeric-string>` kötelező, míg a második az "n" után nem kötelező. Ez csak akkor érvényes, ha a testreszabott nevet adja meg. Ha nem ad meg semmit a szövegmezők egyikében sem, a rendszer az alapértelmezett nevet használja.
+5. A RG nevét szerkesztheti a szabályzat módosításával, ha szükséges. Ha a név minta módosul, a rendszer az új RPs-t hozza létre az új RG-ban. A régi RPs azonban továbbra is a régi RG-ban marad, és nem helyezhető át, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül az RPs a pontok lejárata után begyűjti a szemetet.
+![Név módosítása a házirend módosításakor](./media/backup-during-vm-creation/modify-policy.png)
+6. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot.
 
-Az Azure Backup erőforráscsoport PowerShell használatával a virtuális gépekhez való konfigurálásához olvassa el [az Azure Backup erőforráscsoport létrehozása a pillanatkép-megőrzés során című segédprogramot.](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)
+Ha a PowerShell használatával szeretné konfigurálni a Virtual Machines Azure Backup erőforráscsoportot, tekintse meg [Azure Backup erőforráscsoport létrehozását a pillanatképek megőrzése során](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentés indítása a virtuális gép létrehozása után
 
-A virtuális gép biztonsági mentése a biztonsági mentési szabályzatnak megfelelően fog futni. Azonban azt javasoljuk, hogy futtasson egy kezdeti biztonsági mentést.
+A virtuális gép biztonsági mentése a biztonsági mentési szabályzatnak megfelelően fog futni. Javasoljuk azonban, hogy futtasson egy kezdeti biztonsági mentést.
 
 A virtuális gép létrehozása után tegye a következőket:
 
-1. A virtuális gép tulajdonságai között kattintson a **Biztonsági másolat gombra.** A virtuális gép állapota kezdeti biztonsági mentés függőben, amíg a kezdeti biztonsági mentés nem fut
-2. Kattintson **a Biztonsági másolat most** gombra az igény szerinti biztonsági mentés futtatásához.
+1. A virtuális gép tulajdonságainál kattintson a **biztonsági mentés**elemre. A virtuális gép állapota kezdeti biztonsági mentés, amíg a kezdeti biztonsági mentés nem fut
+2. Kattintson a **biztonsági mentés most** lehetőségre egy igény szerinti biztonsági mentés futtatásához.
 
     ![Igény szerinti biztonsági mentés futtatása](./media/backup-during-vm-creation/run-backup.png)
 
-## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Védett virtuális gép üzembe helyezése Erőforrás-kezelő sablon használatával
+## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Védett virtuális gép üzembe helyezése Resource Manager-sablonnal
 
-Az előző lépések bemutatják, hogyan használhatja az Azure Portalon egy virtuális gép létrehozásához és a Recovery Services-tárolóban való védelméhez. Ha gyorsan szeretne telepíteni egy vagy több virtuális gépet, és védeni szeretné őket a Recovery Services-tárolóban, olvassa el a [Windows virtuális gép telepítése és a biztonsági mentés engedélyezése sablont.](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)
+Az előző lépések azt ismertetik, hogyan használható a Azure Portal egy virtuális gép létrehozásához és egy Recovery Services-tárolóban való megvédéséhez. Egy vagy több virtuális gép gyors üzembe helyezéséhez és Recovery Services-tárolóban való védeleméhez tekintse meg a [Windows rendszerű virtuális gép üzembe helyezése és a biztonsági mentés engedélyezése](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megvédte a virtuális gép, megtanulják, hogyan kezelheti és állítsa vissza őket.
+Most, hogy megvédte a virtuális gépet, megtudhatja, hogyan kezelheti és állíthatja vissza őket.
 
 - [Virtuális gépek kezelése és monitorozása](backup-azure-manage-vms.md)
 - [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md)
 
-Ha bármilyen problémát tapasztal, [tekintse át](backup-azure-vms-troubleshoot.md) a hibaelhárítási útmutatót.
+Ha bármilyen problémába ütközik, [tekintse át](backup-azure-vms-troubleshoot.md) a hibaelhárítási útmutatót.

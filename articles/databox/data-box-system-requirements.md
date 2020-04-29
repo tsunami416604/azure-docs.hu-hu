@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Azure Data Box rendszerkövetelményei| Microsoft dokumentumok
+title: Microsoft Azure Data Box rendszerkövetelményei | Microsoft Docs
 description: Az Azure Data Box szoftveres és hálózati követelményeinek ismertetése
 services: databox
 author: alkohli
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259954"
 ---
-# <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerkövetelményei
+# <a name="azure-data-box-system-requirements"></a>Rendszerkövetelmények Azure Data Box
 
-Ez a cikk ismerteti a fontos rendszerkövetelmények a Microsoft Azure Data Box és az ügyfelek csatlakozik az adatdobozhoz. Azt javasoljuk, hogy alaposan tekintse át az információkat, mielőtt üzembe helyezné az adatdobozt, majd szükség szerint hivatkozzon rá a központi telepítés és az azt követő művelet során.
+Ez a cikk a Microsoft Azure Data Box fontos rendszerkövetelményeit, valamint a Data Boxhoz csatlakozó ügyfeleket ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat a Data Box üzembe helyezése előtt, majd az üzembe helyezés és az azt követő művelet során szükség szerint küldje vissza.
 
 A rendszerkövetelmények a következők:
 
-* **A Data Boxhoz csatlakozó állomások szoftverkövetelményei** – ismertetik a támogatott platformokat, a helyi webes felhasználói felület böngészőit, az SMB-ügyfeleket, valamint az adatdobozhoz csatlakozni képes állomásokra vonatkozó további követelményeket.
-* **A Data Box hálózati követelményei** - tájékoztatást nyújt a Data Box optimális működéséhez szükséges hálózati követelményekről.
+* A **Data boxhoz csatlakozó gazdagépek szoftveres követelményei** – ismerteti a támogatott platformokat, a helyi webes felhasználói felület, az SMB-ügyfelek és a Data boxhoz csatlakozni képes gazdagépek további követelményeit.
+* **A Data Box hálózati követelményei** – információt nyújt a Data Box optimális működéséhez szükséges hálózati követelményekről.
 
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
 
-A szoftverkövetelmények tartalmazzák a támogatott operációs rendszerekre, a helyi webes felhasználói felület támogatott böngészőire és az SMB-ügyfelekre vonatkozó információkat.
+A szoftverre vonatkozó követelmények tartalmazzák a támogatott operációs rendszerekkel, a helyi webes felhasználói felület és az SMB-ügyfelek által támogatott böngészőkkel kapcsolatos információkat.
 
 ### <a name="supported-operating-systems-for-clients"></a>Az ügyfelekhez támogatott operációs rendszerek
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Támogatott fájlrendszerek Linux-ügyfelekszámára
+### <a name="supported-file-systems-for-linux-clients"></a>Támogatott fájlrendszerek Linux rendszerű ügyfelek számára
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
@@ -51,15 +51,15 @@ A szoftverkövetelmények tartalmazzák a támogatott operációs rendszerekre, 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha nem áll rendelkezésre 10 GbE-kapcsolat, az adatok másolásához 1 GbE-s adatkapcsolat használható, de a másolási sebesség hatással van.
+Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, az adatmásoláshoz egy 1 GbE adatkapcsolat használható, de a másolási sebességek is hatással vannak.
 
-### <a name="port-requirements"></a>Kikötői követelmények
+### <a name="port-requirements"></a>Portra vonatkozó követelmények
 
-Az alábbi táblázat azokat a portokat sorolja fel, amelyeket meg kell nyitni a tűzfalon az SMB- vagy NFS-forgalom engedélyezéséhez. Ebben a *táblában a bejövő* vagy *bejövő* arra az irányra utal, amelyből a bejövő ügyfél hozzáférést kér az eszközhöz. *A* *kimenő* vagy kimenő eszköz arra az irányra utal, amelyben a Data Box eszköz a központi telepítésen kívül, például az internetre való kimenő adatokat küldi.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon, hogy engedélyezze az SMB-vagy NFS-forgalmat. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Data Box üzembe helyezése](data-box-deploy-ordered.md)
+* [A Azure Data Box üzembe helyezése](data-box-deploy-ordered.md)
