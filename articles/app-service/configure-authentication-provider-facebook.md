@@ -1,6 +1,6 @@
 ---
 title: Facebook-hitelesítés konfigurálása
-description: További információ arról, hogyan konfigurálhatja a Facebook-hitelesítést identitásszolgáltatóként az App Service vagy az Azure Functions alkalmazáshoz.
+description: Megtudhatja, hogyan konfigurálhatja a Facebook-hitelesítést identitás-szolgáltatóként a App Service vagy Azure Functions alkalmazáshoz.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
@@ -8,66 +8,66 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80519964"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása a Facebook bejelentkezési funkciójának használatára
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása Facebook-Bejelentkezés használatára
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Service vagy az Azure Functions a Facebook hitelesítési szolgáltatóként való használata.
+Ez a cikk bemutatja, hogyan konfigurálhatja Azure App Service vagy Azure Functions a Facebook hitelesítési szolgáltatóként való használatára.
 
-A cikkben szereplő eljárás végrehajtásához olyan Facebook-fiókra van szükség, amely ellenőrzött e-mail címmel és mobiltelefonszámmal rendelkezik. Új Facebook-fiók létrehozásához nyissa meg [a facebook.com.]
+A cikkben ismertetett eljárás végrehajtásához olyan Facebook-fiókra van szükség, amely ellenőrzött e-mail-címmel és mobiltelefon-számmal rendelkezik. Új Facebook-fiók létrehozásához nyissa meg a [Facebook.com].
 
-## <a name="register-your-application-with-facebook"></a><a name="register"> </a>Regisztrálja jelentkezését a Facebookon
+## <a name="register-your-application-with-facebook"></a><a name="register"> </a>Alkalmazás regisztrálása a Facebook-ban
 
-1. Nyissa meg a [Facebook Developers] webhelyét, és jelentkezzen be a Facebook-fiókjának hitelesítő adataival.
+1. Nyissa meg a [Facebook Developers] webhelyet, és jelentkezzen be Facebook-fiókjának hitelesítő adataival.
 
-   Ha nem rendelkezik Facebook for Developers fiókkal, válassza **az Első lépések** lehetőséget, és kövesse a regisztrációs lépéseket.
-1. Válassza **a Saját alkalmazások** > **új alkalmazás hozzáadása**lehetőséget.
-1. A **Megjelenítendő név** mezőben:
-   1. Írja be az alkalmazás egyedi nevét.
-   1. Adja meg **a kapcsolattartó e-mail címét.**
-   1. Válassza **az Alkalmazásazonosító létrehozása**lehetőséget.
-   1. Végezd el a biztonsági ellenőrzést.
+   Ha nem rendelkezik Facebook for Developers-fiókkal, kattintson az első **lépések** lehetőségre, és kövesse a regisztrációs lépéseket.
+1. Válassza **a saját alkalmazások** > **új alkalmazás hozzáadása**lehetőséget.
+1. A **megjelenítendő név** mezőben:
+   1. Adjon egyedi nevet az alkalmazásnak.
+   1. Adja meg a **kapcsolattartási E-mail címét**.
+   1. Válassza az **alkalmazás-azonosító létrehozása**lehetőséget.
+   1. Fejezze be a biztonsági ellenőrzését.
 
    Megnyílik az új Facebook-alkalmazás fejlesztői irányítópultja.
-1. Válassza **az Irányítópult** > **Facebook Bejelentkezés** > **beállítása** > **Web**lehetőséget .
-1. A Bal oldali navigációs alatt **Facebook Bejelentkezés**, válassza a **Beállítások**lehetőséget.
-1. Az **Érvényesség oauth átirányítása URI-k** mezőbe írja be a következőt: `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`. Ne felejtse el lecserélni `<app-name>` az Azure App Service-alkalmazás nevét.
-1. Válassza a **Módosítások mentése lehetőséget.**
-1. A bal oldali ablaktáblában válassza az **Alapbeállítások** > **lehetőséget.** 
-1. Az **Alkalmazástitkos kulcsot mezőben** válassza a **Megjelenítés**lehetőséget. Másolja az **Alkalmazásazonosító** és az **Alkalmazástitkos ítmény értékeit.** Később az App Service-alkalmazás azure-beli konfigurálásához használja őket.
+1. Válassza az **irányítópult** > **Facebook-Bejelentkezés** > **Set up** > **webes**beállítása lehetőséget.
+1. A **Facebook-Bejelentkezés**alatt a bal oldali navigációs sávon válassza a **Beállítások**lehetőséget.
+1. Az **érvényes OAuth átirányítási URI** -k mezőben `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`adja meg a értéket. Ne felejtse `<app-name>` el helyettesíteni a Azure app Service alkalmazás nevét.
+1. Válassza a **módosítások mentése**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **Beállítások** > **alapszintű**lehetőséget. 
+1. Az **alkalmazás titkos kulcsa** mezőben válassza a **Megjelenítés**lehetőséget. Másolja az alkalmazás- **azonosító** és az **alkalmazás titkos kulcsának**értékeit. Később a App Service alkalmazást az Azure-ban konfigurálhatja.
 
    > [!IMPORTANT]
-   > Az alkalmazás titkosíthatósága fontos biztonsági hitelesítő adat. Ezt a titkot ne ossza meg senkivel, és ne ossza el egy ügyfélalkalmazáson belül.
+   > Az alkalmazás titkos kulcsa egy fontos biztonsági hitelesítő adat. Ezt a titkos kódot Ne ossza meg senkivel, vagy Ossza szét egy ügyfélalkalmazás alkalmazásán belül.
    >
 
 1. Az alkalmazás regisztrálásához használt Facebook-fiók az alkalmazás rendszergazdája. Ezen a ponton csak a rendszergazdák jelentkezhetnek be ebbe az alkalmazásba.
 
-   Más Facebook-fiókok hitelesítéséhez válassza az **Alkalmazás-ellenőrzés** lehetőséget, és engedélyezze **az \<alkalmazásnév nyilvánossá tétele>,** hogy a nyilvánosság facebookos hitelesítéssel férhessen hozzá az alkalmazáshoz.
+   Más Facebook-fiókok hitelesítéséhez válassza az **alkalmazás-áttekintés** lehetőséget, és engedélyezze ** \<az-App-Name> nyilvános** beállítást, hogy lehetővé tegye a nyilvánosság számára, hogy a Facebook-hitelesítés használatával hozzáférjen az alkalmazáshoz.
 
-## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-adatok hozzáadása az alkalmazáshoz
+## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-információk hozzáadása az alkalmazáshoz
 
-1. Jelentkezzen be az [Azure Portalon,] és keresse meg az App Service-alkalmazást.
-1. Válassza a **Beállítások** > **hitelesítése / engedélyezés**lehetőséget, és győződjön meg arról, hogy az **App Service-hitelesítés** be van **kapcsolva.**
-1. Válassza a **Facebook**lehetőséget, majd illessze be a korábban kapott alkalmazásazonosító és alkalmazástitkos értékeket. Engedélyezze az alkalmazás által szükséges hatóköröket.
-1. Válassza **az OK gombot.**
+1. Jelentkezzen be a [Azure Portalba] , és navigáljon a app Service alkalmazáshoz.
+1. Válassza a **Beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **Facebook**lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
+1. Kattintson az **OK** gombra.
 
-   ![Képernyőkép a Facebook mobilalkalmazás beállításairól][0]
+   ![Képernyőkép a Mobile App Facebook beállításairól][0]
 
-    Alapértelmezés szerint az App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-hoz való engedélyezett hozzáférést. Engedélyeznie kell a felhasználókat az alkalmazáskódban.
-1. (Nem kötelező) Ha csak a Facebook által hitelesített felhasználókra szeretné korlátozni a hozzáférést, állítsa be **a Művelet et, ha a kérés nincs hitelesítve a** **Facebook**számára. Ha ezt a funkciót állítja be, az alkalmazás minden kérelem hitelesítését igényli. Emellett átirányítja az összes nem hitelesített kérelmet a Facebookra hitelesítésre.
+    Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyeznie kell a felhasználókat az alkalmazás kódjában.
+1. Választható Ha csak a Facebook által hitelesített felhasználók számára szeretné korlátozni a hozzáférést, akkor állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Facebookon**. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett az összes nem hitelesített kérelmet is átirányítja a Facebookon a hitelesítéshez.
 
    > [!CAUTION]
-   > A hozzáférés ily módon történő korlátozása az alkalmazás minden hívására vonatkozik, ami nem feltétlenül kívánatos a nyilvánosan elérhető kezdőlappal rendelkező alkalmazások esetében, mint sok egyoldalas alkalmazásban. Az ilyen alkalmazások esetében **előfordulhat, hogy a névtelen kérelmek engedélyezése (nincs művelet)** előnyben részesíthető, így az alkalmazás manuálisan indítja el magát a hitelesítést. További információt a [Hitelesítési folyamat című témakörben talál.](overview-authentication-authorization.md#authentication-flow)
+   > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, hogy az alkalmazás manuálisan megkezdse a hitelesítést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
 
 1. Kattintson a **Mentés** gombra.
 
-Most már készen állsz arra, hogy a Facebookot használd hitelesítésre az alkalmazásodban.
+Most már készen áll a Facebook használatára a hitelesítéshez az alkalmazásban.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>További lépések
 
@@ -77,7 +77,7 @@ Most már készen állsz arra, hogy a Facebookot használd hitelesítésre az al
 [0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
-[Facebook fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268286
+[Facebook-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure-portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

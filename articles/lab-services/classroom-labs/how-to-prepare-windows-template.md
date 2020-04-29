@@ -1,6 +1,6 @@
 ---
-title: Útmutató a Windows sablongép beállításához | Microsoft dokumentumok
-description: A Windows-sablongépek előkészítésének általános lépései a Lab Services szolgáltatásban.  Ezek a lépések közé tartozik a Windows Update ütemezésének beállítása, a OneDrive telepítése és az Office telepítése.
+title: Útmutató Windows-sablonok számítógépének beállításához | Microsoft Docs
+description: Általános lépések a Windows-sablonok számítógépének előkészítéséhez a labor Servicesben.  Ezek a lépések a Windows Update ütemtervének, a OneDrive telepítésének és az Office telepítésének beállítását foglalják magukban.
 services: lab-services
 documentationcenter: na
 author: EMaher
@@ -11,28 +11,28 @@ ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
 ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521189"
 ---
-# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató a Windows-sablongépek beállításához az Azure Lab Servicesben
+# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 
-Ha windows 10-es sablongépet állít be az Azure Lab Services hez, az alábbiakban néhány gyakorlati tanácsra és tippekre van szüksége. Az alábbi konfigurációs lépések mind nem kötelezőek.  Ezek az előkészítő lépések azonban segíthetnek abban, hogy diákjai hatékonyabbak legyenek, minimalizálja az óramegszakításokat, és biztosíthatja, hogy a legújabb technológiákat használják.
+Ha Azure Lab Serviceshoz állít be egy Windows 10-es sablont, az alábbi ajánlott eljárásokat és tippeket érdemes figyelembe vennie. Az alábbi konfigurációs lépések mindegyike nem kötelező.  Ezek az előkészítő lépések azonban segíthetnek a tanulók hatékonyabbá tételében, az osztályok időkorlátjának minimalizálásában és a legújabb technológiák használatának biztosításában.
 
 >[!IMPORTANT]
->Ez a cikk a PowerShell-kódrészleteket tartalmazza a gépsablon módosítási folyamatának egyszerűsítéséhez.  Az összes megjelenített PowerShell-parancsfájlok, érdemes futtatni őket a Windows PowerShell rendszergazdai jogosultságokkal. A Windows 10-ben ennek gyors módja, hogy a jobb gombbal a Start menüre kattint, és válassza a "Windows PowerShell (Admin)"-t.
+>Ez a cikk PowerShell-kódrészleteket tartalmaz a gépi sablon módosítási folyamatának egyszerűsítéséhez.  Az összes megjelenített PowerShell-parancsfájlhoz rendszergazdai jogosultságokkal kell futtatnia azokat a Windows PowerShellben. A Windows 10 rendszerben a gyors módja, hogy a jobb gombbal kattintson a Start menüre, és válassza a "Windows PowerShell (rendszergazda)" lehetőséget.
 
-## <a name="install-and-configure-onedrive"></a>A OneDrive telepítése és konfigurálása
+## <a name="install-and-configure-onedrive"></a>OneDrive telepítése és konfigurálása
 
-Annak érdekében, hogy a diákok adatai ne vesszenek el egy virtuális gép alaphelyzetbe állítása esetén, javasoljuk a diákoknak, hogy biztonsági másolatot készítsenek az adataikról a felhőbe.  A Microsoft OneDrive segítségével a diákok megvédhetik az adataikat.  
+Ha a virtuális gép alaphelyzetbe állítása esetén a tanulói adatok elvesznek, akkor azt javasoljuk, hogy a tanulók az adataikat a felhőbe állítsa vissza.  A Microsoft OneDrive segíthetnek a tanulóknak az adataik védelmében.  
 
 ### <a name="install-onedrive"></a>A OneDrive telepítése
 
-A OneDrive manuális letöltéséhez és telepítéséhez tekintse meg a [OneDrive](https://onedrive.live.com/about/download/) vagy a [OneDrive Vállalati verzió](https://onedrive.live.com/about/business/) letöltési lapjait.
+A OneDrive manuális letöltéséhez és telepítéséhez tekintse meg a [OneDrive](https://onedrive.live.com/about/download/) vagy a [OneDrive for Business](https://onedrive.live.com/about/business/) letöltési lapját.
 
-A következő PowerShell-parancsfájlt is használhatja.  Automatikusan letölti és telepíti a OneDrive legújabb verzióját.  A OneDrive-ügyfél telepítése után futtassa a telepítőt.  Példánkban a kapcsolósegítségével telepítjük a `/allUsers` OneDrive-ot a számítógép összes felhasználója számára. A kapcsolót `/silent` a OneDrive csendes telepítéséhez is használjuk.
+A következő PowerShell-parancsfájlt is használhatja.  A rendszer automatikusan letölti és telepíti a OneDrive legújabb verzióját.  Miután telepítette a OneDrive-ügyfelet, futtassa a telepítőt.  A példánkban a `/allUsers` kapcsoló használatával telepítjük a OneDrive a gépen lévő összes felhasználóra. A kapcsolót a `/silent` OneDrive csendes telepítésére is használjuk.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -50,23 +50,23 @@ Write-Host "Installing OneDrive..."
 & $env:USERPROFILE/Downloads/OneDriveSetup.exe /allUsers /silent
 ```
 
-### <a name="onedrive-customizations"></a>A OneDrive testreszabásai
+### <a name="onedrive-customizations"></a>OneDrive testreszabása
 
-A [OneDrive-on számos testreszabásvégezhető](https://docs.microsoft.com/onedrive/use-group-policy)el. Tegyünk le néhány, a leggyakoribb testreszabások.
+Számos [testreszabási művelet hajtható végre a OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Ismerkedjen meg a leggyakoribb testreszabásokkal.
 
-#### <a name="silently-move-windows-known-folders-to-onedrive"></a>A Windows ismert mappáinak csendes áthelyezése a OneDrive-ra
+#### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows ismert mappák csendes áthelyezése a OneDrive
 
-Az olyan mappákat, mint a Dokumentumok, letöltések és képek gyakran használják a diákok fájljainak tárolására. Annak érdekében, hogy ezekről a mappákról biztonsági másolatot készítsen a OneDrive-ba, javasoljuk, hogy helyezze át ezeket a mappákat a OneDrive-ra.
+A dokumentumokat, például a dokumentumokat, a letöltéseket és a képeket gyakran használják a tanulói fájlok tárolására. A mappák OneDrive való biztonsági mentésének biztosításához javasoljuk, hogy helyezze át ezeket a mappákat a OneDrive.
 
-Ha olyan számítógépen van, amely nem használja az Active Directoryt, a felhasználók manuálisan is áthelyezhetik ezeket a mappákat a OneDrive-ra, miután hitelesítik magukat a OneDrive-on.
+Ha olyan gépen van, amely nem Active Directory használ, a felhasználók manuálisan is áthelyezhetik ezeket a mappákat a OneDrive, ha a hitelesítésük a OneDrive történik.
 
 1. Fájlkezelő megnyitása
-2. Kattintson a jobb gombbal a Dokumentumok, letöltések vagy Képek mappára.
-3. Nyissa meg a Tulajdonságok > hely.  Helyezze át a mappát egy új mappába a OneDrive könyvtárában.
+2. Kattintson a jobb gombbal a dokumentumok, letöltések vagy képek mappára.
+3. Lépjen a tulajdonságok > helyre.  Helyezze át a mappát egy új mappába a OneDrive könyvtárban.
 
-Ha a virtuális gép csatlakozik az Active Directoryhoz, beállíthatja, hogy a sablongép automatikusan kérje a diákokat, hogy az ismert mappákat helyezze át a OneDrive-ra.  
+Ha a virtuális gép csatlakoztatva van Active Directoryhoz, beállíthatja, hogy a sablon számítógépe automatikusan rákérdezzen a tanulók számára az ismert mappák OneDrive való áthelyezésére.  
 
-Először le kell kérnie az Office-bérlőazonosítóját.  További útmutatást [az Office 365-ös bérlői azonosító jave talál.](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)  Az Office 365-ös bérlői azonosítót a következő PowerShell használatával is beszerezheti.
+Először le kell kérnie az Office-bérlő AZONOSÍTÓját.  További útmutatásért tekintse meg [az Office 365-bérlő azonosítójának megkeresése](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)című témakört.  Az Office 365-bérlő AZONOSÍTÓját az alábbi PowerShell használatával is lekérheti.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -76,7 +76,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Miután rendelkezik az Office 365-ös bérlői azonosítójával, állítsa be a OneDrive-ot úgy, hogy az ismert mappákat a következő PowerShell használatával helyezze át a OneDrive-ra.
+Miután megtörtént az Office 365-bérlő azonosítója, állítsa be a OneDrive-t, hogy a következő PowerShell használatával Kérdezzen rá az ismert mappák OneDrive való áthelyezésére.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -88,9 +88,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "KFMSilentOptIn" -Value $officeTenantID -PropertyType STRING
 ```
 
-### <a name="use-onedrive-files-on-demand"></a>OneDrive-fájlok igény szerinti használata
+### <a name="use-onedrive-files-on-demand"></a>Igény szerinti OneDrive-fájlok használata
 
-Előfordulhat, hogy a diákok nak sok fájlja van a OneDrive-fiókjukban. A számítógép helymegtakarítása és a letöltési idő csökkentése érdekében javasoljuk, hogy a diákok OneDrive-fiókjában tárolt összes fájlt igény szerint tegye elérhetővé.  Az igény szerinti fájlok csak akkor töltődnek le, ha a felhasználó hozzáfér a fájlhoz.
+A tanulók több fájlt is tartalmazhatnak a OneDrive-fiókjaikban. A tárhelynek a gépen való megtakarítása és a letöltési idő csökkentése érdekében javasoljuk, hogy a Student OneDrive-fiókjában tárolt összes fájl igény szerinti legyen.  Az igény szerinti fájlok csak akkor tölthetők le, ha a felhasználó hozzáfér a fájlhoz.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -98,9 +98,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "FilesOnDemandEnabled" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="silently-sign-in-users-to-onedrive"></a>A felhasználók csendes bejelentkezése a OneDrive-ra
+### <a name="silently-sign-in-users-to-onedrive"></a>Felhasználók csendes bejelentkezésének OneDrive
 
-A OneDrive beállítható úgy, hogy automatikusan jelentkezzen be a bejelentkezett felhasználó Windows-hitelesítő adataival.  Az automatikus bejelentkezés olyan osztályok esetében hasznos, ahol a diák az Office 365 iskolai hitelesítő adataival jelentkezik be.
+A OneDrive beállítható úgy, hogy automatikusan bejelentkezzen a bejelentkezett felhasználó Windows-hitelesítő adataival.  Az automatikus bejelentkezés olyan osztályok esetében hasznos, ahol a tanuló az Office 365 iskolai hitelesítő adataival jelentkezik be.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -108,9 +108,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "SilentAccountConfig" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>A OneDrive telepítésének végén megjelenő oktatóanyag letiltása
+### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>Tiltsa le a OneDrive-telepítő végén megjelenő oktatóanyagot
 
-Ezzel a beállítással megakadályozhatja, hogy az oktatóanyag elinduljon a OneDrive telepítőjének végén lévő webböngészőben.
+Ezzel a beállítással megakadályozhatja, hogy az oktatóanyag a OneDrive-telepítő végén webböngészőben legyen elindítva.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -118,9 +118,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "DisableTutorial" -Value "00000001" -PropertyType DWORD -Force
 ```
 
-### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Az automatikusan letöltendő fájl maximális méretének beállítása
+### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Az automatikusan letölteni kívánt fájl maximális méretének beállítása
 
-Ez a beállítás a OneDrive szinkronizálási ügyfélalkalmazásán a Windows-hitelesítő adataikkal együtt használatos az olyan eszközökön, amelyeken nincs engedélyezve a OneDrive-fájlok igény szerinti engedélyezése. Minden olyan felhasználó, aki a megadott küszöbértéknél nagyobb OneDrive-val rendelkezik (MB-ban) a rendszer kéri, hogy válassza ki azokat a mappákat, amelyeket szinkronizálni szeretne, mielőtt a OneDrive szinkronizálási ügyfélprogram (OneDrive.exe) letölti a fájlokat.  Példánkban az "1111-2222-3333-4444" az Office 365-ös bérlői azonosító, a 0005000 pedig 5 GB-os küszöbértéket állít be.
+Ezt a beállítást a rendszer a felhasználók beavatkozás nélküli bejelentkezéséhez használja a OneDrive-szinkronizálási ügyfélhez a Windows hitelesítő adataival azokon az eszközökön, amelyeken az igény szerinti OneDrive-fájlok nincsenek engedélyezve. A rendszer a megadott küszöbértéknél nagyobb OneDrive rendelkező felhasználókat kéri a szinkronizálni kívánt mappák kiválasztására, mielőtt a OneDrive Sync ügyfél (OneDrive. exe) letölti a fájlokat.  A példánkban a "1111-2222-3333-4444" az Office 365-bérlő azonosítója, az 0005000 pedig 5 GB-os küszöbértéket állít be.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -129,20 +129,20 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>A Microsoft Office 365 telepítése és konfigurálása
+## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office telepítése és konfigurálása 365
 
-### <a name="install-microsoft-office-365"></a>A Microsoft Office 365 telepítése
+### <a name="install-microsoft-office-365"></a>Telepítés Microsoft Office 365
 
-Ha a sablongépnek szüksége van az Office-ra, javasoljuk, hogy az Office telepítését az [Office deployment tool (ODT) eszközsegítségével](https://www.microsoft.com/download/details.aspx?id=49117 )telepítse. Az [Office 365 Ügyfélkonfigurációs szolgáltatás](https://config.office.com/) segítségével újrafelhasználható konfigurációs fájlt kell létrehoznia, hogy megdöntse, mely architektúrára, milyen funkciókra lesz szüksége az Office-ból, és milyen gyakran frissül.
+Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az Office üzembe helyezését az Office [Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 )használatával. Létre kell hoznia egy újrafelhasználható konfigurációs fájlt az [office 365 ügyfél-konfigurációs szolgáltatás](https://config.office.com/) használatával, amely kiválaszthatja, hogy melyik architektúrára, milyen funkciókra lesz szüksége az Office-től, és milyen gyakran frissíti őket.
 
-1. Nyissa meg az [Office 365 Ügyfélkonfigurációs szolgáltatást,](https://config.office.com/) és töltse le saját konfigurációs fájlját.
-2. Az [Office-telepítő eszköz letöltése](https://www.microsoft.com/download/details.aspx?id=49117).  Letöltött fájl `setup.exe`lesz .
-3. Futtassa `setup.exe /download configuration.xml` az Office-összetevők letöltéséhez.
-4. Futtassa `setup.exe /configure configuration.xml` az Office-összetevők telepítéséhez.
+1. Nyissa meg az [Office 365 ügyfél-konfigurációs szolgáltatást](https://config.office.com/) , és töltse le a saját konfigurációs fájlját.
+2. Töltse le az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117).  A `setup.exe`letöltött fájl lesz.
+3. Az `setup.exe /download configuration.xml` Office-összetevők letöltéséhez futtassa a parancsot.
+4. Az `setup.exe /configure configuration.xml` Office-összetevők telepítéséhez futtassa a parancsot.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>A Microsoft Office 365 frissítési csatornájának módosítása
+### <a name="change-the-microsoft-office-365-update-channel"></a>A Microsoft Office 365 frissítési csatorna módosítása
 
-Az Office konfigurációs eszközsegítségével beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A csatorna URL-címeinek frissítése [az Office 365 ProPlus frissítési csatornájának módosítása a szervezetben lévő eszközökhöz](https://docs.microsoft.com/deployoffice/change-update-channels)című részben található. Az alábbi példa bemutatja, hogyan állíthatja be az Office 365-öt a havi frissítési csatorna használatára.
+Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A frissítési csatorna URL-címei az [Office 365 ProPlus frissítési csatornájának módosítása a szervezeten belüli eszközökhöz](https://docs.microsoft.com/deployoffice/change-update-channels)című részében találhatók. Az alábbi példa bemutatja, hogyan állíthatja be az Office 365-et a havi frissítési csatorna használatára.
 
 ```powershell
 # Update to the Office 365 Monthly Channel
@@ -156,14 +156,14 @@ Set-ItemProperty
 
 ### <a name="install-the-latest-windows-updates"></a>A legújabb Windows-frissítések telepítése
 
-Javasoljuk, hogy a sablon virtuális gépközzététele előtt telepítse a legújabb Microsoft-frissítéseket a sablongépre biztonsági okokból.  Azt is potenciálisan elkerüli a diákok, hogy megzavarta a munkájukat, amikor a frissítések futnak váratlan időpontokban.
+Javasoljuk, hogy biztonsági okokból telepítse a legújabb Microsoft-frissítéseket a sablon számítógépre, mielőtt közzéteszi a virtuális gépet.  Azt is elkerülheti, hogy a tanulók ne tudják megszakítani a munkájukat, amikor a frissítések váratlan időpontokban futnak.
 
-1. Indítási **beállítások** a Start menüből
-2. Kattintson a **Frissítés** & Biztonság
-3. Kattintson **a Frissítések keresése gombra**
-4. A frissítések letöltése és telepítése.
+1. **Beállítások** elindítása a Start menüből
+2. Kattintson a **frissítés** & Biztonság elemre.
+3. Kattintson **a frissítések keresése** elemre.
+4. A rendszer letölti és telepíti a frissítéseket.
 
-A PowerShell segítségével is frissítheti a sablongép.
+A PowerShell használatával is frissítheti a sablon számítógépét.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -174,28 +174,28 @@ Set-ExecutionPolicy default -Force
 ```
 
 >[!NOTE]
->Egyes frissítések esetében szükség lehet a számítógép újraindítására.  A rendszer megkérdezi, hogy szükség van-e újraindításra.
+>Egyes frissítések esetében előfordulhat, hogy a gépet újra kell indítani.  A rendszer felszólítja, ha újraindításra van szükség.
 
-### <a name="install-the-latest-updates-for-microsoft-store-apps"></a>A Microsoft Store-alkalmazások legújabb frissítéseinek telepítése
+### <a name="install-the-latest-updates-for-microsoft-store-apps"></a>Microsoft Store alkalmazások legújabb frissítéseinek telepítése
 
-Javasoljuk, hogy az összes Microsoft Store-alkalmazást frissítsük a legújabb verzióikra.  Az alábbiakban az alkalmazások Microsoft Store-ból történő manuális frissítésére vonatkozó utasításokat találja.  
+Javasoljuk, hogy az összes Microsoft Store alkalmazást frissítse a legújabb verzióra.  Az alábbi útmutatást követve manuálisan frissítheti az alkalmazásokat a Microsoft Storeról.  
 
-1. Indítsa el a **Microsoft Store** alkalmazást.
-2. Kattintson az alkalmazás felső sarkában lévő felhasználói fénykép melletti ellipszisre (...).
-3. Válassza a **Legördülő** menü Letöltés és frissítések parancsát.
-4. Kattintson **a Frissítés beszerezni** gombra.
+1. **Microsoft Store** alkalmazás elindítása.
+2. Kattintson a felhasználói fénykép melletti ellipszisre (...) az alkalmazás felső sarkában.
+3. Válassza a **Letöltés** és frissítések lehetőséget a legördülő menüből.
+4. Kattintson a **frissítés beolvasása** gombra.
 
-A PowerShell segítségével is frissítheti a már telepített Microsoft Store-alkalmazásokat.
+A PowerShell használatával is frissítheti Microsoft Store már telepített alkalmazásokat.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
 ```
 
-### <a name="stop-automatic-windows-updates"></a>Az automatikus Windows-frissítések leállítása
+### <a name="stop-automatic-windows-updates"></a>Automatikus Windows-frissítések leállítása
 
-A Windows legújabb verziójára való frissítése után érdemes lehet leállítani a Windows-frissítéseket.  Az automatikus frissítések potenciálisan zavarhatják az ütemezett óraidőt.  Ha a tanfolyam már fut, megkérheti a diákokat, hogy manuálisan ellenőrizzék a frissítéseket, vagy adjanak automatikus frissítéseket az ütemezett órákon kívül.  A Windows Update testreszabási lehetőségeiről a [Windows Update további beállításainak kezelése](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)című témakörben olvashat bővebben.
+Ha a Windowst a legújabb verzióra frissíti, érdemes lehet megszüntetni a Windows-frissítéseket.  Az automatikus frissítések megakadályozhatják az ütemezett osztályok időpontját.  Ha a tanfolyam már fut, gondolja át, hogy a tanulók manuálisan keresik-e meg a frissítéseket, vagy az ütemezett órákon kívüli időpontra állítanak be automatikus frissítéseket.  A Windows Update testreszabási lehetőségeivel kapcsolatos további információkért tekintse meg a [további Windows Update-beállítások kezelése](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)című témakört.
 
-Előfordulhat, hogy az automatikus Windows-frissítések leállnak a következő PowerShell-parancsfájl használatával.
+Előfordulhat, hogy az automatikus Windows-frissítések a következő PowerShell-parancsfájl használatával leállnak.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
@@ -205,35 +205,35 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
 
 ## <a name="install-foreign-language-packs"></a>Idegen nyelvi csomagok telepítése
 
-Ha további nyelvekre van szüksége a virtuális gépen, hozzáadhatja őket a Microsoft Store-on keresztül.
+Ha a virtuális gépen további nyelvekre van szüksége, akkor a Microsoft Storeon keresztül adhatja hozzá őket.
 
-1. A Microsoft Store elindítása
-2. Keresés a "nyelvi csomag"
-3. A telepíteni kívánt nyelv kiválasztása
+1. Microsoft Store elindítása
+2. A "nyelvi csomag" kifejezés keresése
+3. Válassza ki a telepítendő nyelvet
 
-Ha már be van jelentkezve a sablon virtuális gép, használja a ["Nyelvi csomag telepítése" parancsikont,](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) hogy közvetlenül a megfelelő beállítások lapra.
+Ha már bejelentkezett a sablon virtuális gépre, a ["nyelvi csomag telepítése" parancsikon](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) használatával lépjen közvetlenül a megfelelő beállítások lapra.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Szükségtelen beépített alkalmazások eltávolítása
 
-A Windows 10 számos beépített alkalmazást tartalmaz, amelyekre nem feltétlenül van szükség az adott osztályhoz. A számítógép lemezképének diákok számára történő egyszerűsítése érdekében érdemes lehet eltávolítani néhány alkalmazást a sablongépről.  A telepített alkalmazások listájának megtekintéséhez `Get-AppxPackage` használja a PowerShell-parancsmag.  Az alábbi példa az összes eltávolítható telepített alkalmazást mutatja be.
+A Windows 10 számos beépített alkalmazást tartalmaz, amelyek esetleg nem szükségesek az adott osztályhoz. A diákoknak szánt számítógépes rendszerkép leegyszerűsítése érdekében előfordulhat, hogy el szeretné távolítani néhány alkalmazást a sablon gépről.  A telepített alkalmazások listájának megtekintéséhez használja a PowerShell `Get-AppxPackage` -parancsmagot.  Az alábbi példa az összes eltávolítható alkalmazást megjeleníti.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
 ```
 
-Alkalmazás eltávolításához használja az Eltávolítás-Appx parancsmagát.  Az alábbi példa bemutatja, hogyan lehet eltávolítani mindent XBox kapcsolatos.
+Egy alkalmazás eltávolításához használja a Remove-Appx parancsmagot.  Az alábbi példa bemutatja, hogyan távolíthatja el az XBox-hoz kapcsolódó összes információt.
 
 ```powershell
 Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-AppxPackage $_} }
 ```
 
-## <a name="install-common-teaching-related-applications"></a>Általános tanítással kapcsolatos alkalmazások telepítése
+## <a name="install-common-teaching-related-applications"></a>Közös tanítással kapcsolatos alkalmazások telepítése
 
-Telepítsen más alkalmazásokat, amelyeket általában a Windows Áruházbeli alkalmazáson keresztül tanítanak. A javaslatok közé tartoznak az olyan alkalmazások, mint a [Microsoft Rajztábla alkalmazás,](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)a [Microsoft Teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)és a Minecraft [Education Edition](https://education.minecraft.net/). Ezeket az alkalmazásokat manuálisan kell telepíteni a Windows Áruházon keresztül vagy a megfelelő webhelyeken keresztül a sablon virtuális gépén.
+Telepítsen más alkalmazásokat, amelyeket gyakran használnak a Windows áruházbeli alkalmazásban való tanításhoz. A javaslatok közé tartoznak például a [Microsoft faliújság-alkalmazás](https://www.microsoft.com/store/productId/9MSPC6MP8FM4), a [Microsoft Teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)és a [Minecraft Education Edition](https://education.minecraft.net/). Ezeket az alkalmazásokat manuálisan kell telepíteni a Windows áruházon keresztül vagy a sablon virtuális gépén lévő saját webhelyein keresztül.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk azt mutatja, hogy választható lépéseket, hogy előkészítse a Windows sablon virtuális gép egy hatékony osztály.  A lépések közé tartozik a OneDrive telepítése és az Office 365 telepítése, a Windows-frissítések telepítése és a Microsoft Store-alkalmazások frissítéseinek telepítése.  Azt is megvitattuk, hogyan állíthatod be a frissítéseket az osztályod számára legmegfelelőbb ütemezéshez.  
+Ez a cikk a Windows-sablonos virtuális gép hatékony osztályra történő előkészítésének opcionális lépéseit mutatja be.  A lépések közé tartozik a OneDrive telepítése és az Office 365 telepítése, a Windows frissítéseinek telepítése és a frissítések telepítése Microsoft Store alkalmazásokhoz.  Azt is ismertetjük, hogyan állíthatja be a frissítéseket egy olyan ütemtervre, amely az osztály számára a legjobban működik.  
 
 ## <a name="next-steps"></a>További lépések
-A Windows leállítási viselkedésének szabályozásáról szóló cikk a költségek kezelésének elősegítésére: [Útmutató a Windows leállítási viselkedésének szabályozásához](how-to-windows-shutdown.md)
+Tekintse meg a Windows leállítási viselkedésének szabályozása a költségek kezeléséhez: [útmutató a Windows leállítási viselkedésének szabályozásához](how-to-windows-shutdown.md) .

@@ -1,6 +1,6 @@
 ---
-title: Streamelési szabályzatok az Azure Media Servicesszolgáltatásban | Microsoft dokumentumok
-description: Ez a cikk ismerteti, hogy mik a streamelési szabályzatok, és hogyan használják az Azure Media Services.
+title: Streaming-szabályzatok a Azure Media Servicesban | Microsoft Docs
+description: Ez a cikk ismerteti a folyamatos átviteli házirendeket, valamint azt, hogy a Azure Media Services hogyan használják őket.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582759"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
-Az Azure Media Services v3-as [eszközében a streamelési szabályzatok](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszik a streamelési protokollok és titkosítási beállítások meghatározását a [streamelési lokátorokhoz.](streaming-locators-concept.md) A Media Services v3 néhány előre definiált streamelési szabályzatot biztosít, így közvetlenül használhatja őket próbaverzióra vagy éles környezetre. 
+Azure Media Services v3 esetén a [folyamatos átviteli házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszik a folyamatos átviteli protokollok és titkosítási beállítások megadását a [streaming-lokátorok](streaming-locators-concept.md)számára. A Media Services v3 néhány előre definiált adatfolyam-szabályzatot biztosít, hogy azokat közvetlenül próbaverzióhoz vagy éles üzemhez lehessen használni. 
 
-A jelenleg rendelkezésre álló előre definiált streamelési házirendek:<br/>
+A jelenleg elérhető előre definiált folyamatos átviteli szabályzatok:<br/>
 * "Predefined_DownloadOnly"
 * "Predefined_ClearStreamingOnly"
 * "Predefined_DownloadAndClearStreaming"
@@ -30,11 +30,11 @@ A jelenleg rendelkezésre álló előre definiált streamelési házirendek:<br/
 * "Predefined_MultiDrmCencStreaming" 
 * "Predefined_MultiDrmStreaming"
 
-A következő "Döntési fa" segítségével kiválaszthatja az előre meghatározott streamelési szabályzatot a forgatókönyvhöz.
+A következő "döntési fa" segítségével kiválaszthatja a forgatókönyvhöz előre definiált adatfolyam-szabályzatot.
 
 > [!IMPORTANT]
-> * A Datetime típusú **streamelési házirendek** tulajdonságai mindig UTC formátumúak.
-> * A Media Service-fiókhoz korlátozott házirendeket kell terveznie, és újra fel kell használnia őket a streamelési lokátorokhoz, amikor ugyanazokra a beállításokra van szükség. További információ: [Quotas and limits](limits-quotas-constraints.md).
+> * A DateTime típusú **adatfolyam-házirendek** tulajdonságai mindig UTC formátumban jelennek meg.
+> * A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Döntési fa
 
@@ -42,13 +42,13 @@ Kattintson a képre a teljes méretű megjelenítéshez.
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-A tartalom titkosításakor létre kell [hoznia egy tartalomkulcs-házirendet,](content-key-policy-concept.md)a **tartalomkulcs-házirendre** nincs szükség a tiszta adatfolyam-továbbításhoz vagy -letöltéshez. 
+Ha titkosítja a tartalmat, létre kell hoznia egy [tartalmi kulcsra vonatkozó házirendet](content-key-policy-concept.md), a **tartalmi kulcs házirendje** nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
 
-Ha speciális követelményekkel rendelkezik (például ha különböző protokollokat szeretne megadni, egyéni kulcskézbesítési szolgáltatást kell használnia, vagy tiszta hangsávot kell használnia), [létrehozhat](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) egy egyéni streamelési szabályzatot. 
+Ha speciális követelményekkel rendelkezik (például ha különböző protokollokat szeretne megadni, egyéni kulcsú kézbesítési szolgáltatást kell használnia, vagy tiszta hangsávot kell használnia), [létrehozhat](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) egyéni adatfolyam-házirendet. 
 
-## <a name="get-a-streaming-policy-definition"></a>Streamelési szabályzat definíciójának beszereznie  
+## <a name="get-a-streaming-policy-definition"></a>Folyamatos átviteli szabályzat definíciójának beolvasása  
 
-Ha szeretné látni a streaming szabályzat definícióját, használja a [Leget és](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) adja meg a házirend nevét. Példa:
+Ha meg szeretné tekinteni az adatfolyam-szabályzat definícióját, használja a [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) lehetőséget, és adja meg a szabályzat nevét. Például:
 
 ### <a name="rest"></a>REST
 
@@ -79,9 +79,9 @@ Válasz:
 }
 ```
 
-## <a name="filtering-ordering-paging"></a>Szűrés, rendelés, lapozás
+## <a name="filtering-ordering-paging"></a>Szűrés, rendezés, lapozás
 
-Lásd: [Media Services-entitások szűrése, rendelése, lapozása.](entities-overview.md)
+Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 

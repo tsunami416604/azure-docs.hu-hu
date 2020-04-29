@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption – mintaszkriptek
-description: Ez a cikk a Microsoft Azure lemeztitkosítás linuxos virtuális gépekhez függeléke.
+description: Ez a cikk a Linux rendszerű virtuális gépek Microsoft Azure lemezes titkosításának függeléke.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,21 +9,21 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585958"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
-Ez a cikk mintaparancsfájlokat tartalmaz az előre titkosított virtuális gépek és egyéb feladatok előkészítéséhez.
+Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.
 
  
 
-## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-parancsfájlok mintája az Azure lemeztitkosításhoz 
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-parancsfájlok Azure Disk Encryptionhoz 
 
-- **Az összes titkosított virtuális gép listázása az előfizetésben**
+- **Az előfizetésben található összes titkosított virtuális gép listázása**
 
      ```azurepowershell-interactive
      $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
@@ -31,84 +31,84 @@ Ez a cikk mintaparancsfájlokat tartalmaz az előre titkosított virtuális gép
      Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
      ```
 
-- **A kulcstartóban lévő virtuális gépek titkosításához használt összes lemeztitkosítási titok listázása** 
+- **A Key vaultban lévő virtuális gépek titkosításához használt összes lemez-titkosítási titok listázása** 
 
      ```azurepowershell-interactive
      Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
-### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Az Azure Disk Encryption előfeltételeinek PowerShell-parancsfájl használata
-Ha már ismeri az Azure disk encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételei PowerShell-parancsfájlt.](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ) A PowerShell-parancsfájl használatával például tekintse meg a [Virtuálisgép titkosítása rövid útmutató című témakört.](disk-encryption-powershell-quickstart.md) Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszáról a 211-es sortól kezdve, hogy titkosítsa a meglévő virtuális gépek összes lemezét egy meglévő erőforráscsoportban. 
+### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Az Azure Disk Encryption előfeltételek PowerShell-parancsfájl használata
+Ha már ismeri a Azure Disk Encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételek PowerShell-szkriptet](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-szkriptek használatára példát a [virtuális gépek titkosítása](disk-encryption-powershell-quickstart.md)– gyors útmutató című témakörben talál. A parancsfájl egy szakaszának megjegyzéseit eltávolíthatja a meglévő erőforráscsoporthoz tartozó meglévő virtuális gépek összes lemezének titkosításához a 211. sorban kezdődően. 
 
-Az alábbi táblázat bemutatja, hogy mely paraméterek használhatók a PowerShell-parancsfájlban: 
+A következő táblázat a PowerShell-parancsfájlban használható paramétereket mutatja be: 
 
 
 |Paraméter|Leírás|Kötelező?|
 |------|------|------|
-|$resourceGroupName| Annak az erőforráscsoportnak a neve, amelyhez a KeyVault tartozik.  Egy új erőforráscsoport jön létre ezzel a névvel, ha nem létezik.| True (Igaz)|
-|$keyVaultName|Annak a KeyVault-nak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Egy új tároló ezzel a névvel jön létre, ha nem létezik.| True (Igaz)|
-|$location|A KeyVault helye. Győződjön meg arról, hogy a keyvault és a virtuális gépek titkosítani kell ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
-|$subscriptionId|A használandó Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
-|$aadAppName|Az Azure AD-alkalmazás neve, amely titkos kulcsok keyvault-írási használatával lesz használva. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha ez az alkalmazás már létezik, adja át az aadClientSecret paramétert a parancsfájlnak.|False (Hamis)|
-|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyféltkati titka.|False (Hamis)|
-|$keyEncryptionKeyName|A keyvaultban nem kötelező kulcstitkosítási kulcs neve. Ha nem létezik ilyen nevű új kulcs jön létre.|False (Hamis)|
+|$resourceGroupName| Azon erőforráscsoport neve, amelyhez a kulcstartó tartozik.  Ha az egyik nem létezik, akkor létrejön egy ilyen nevű új erőforráscsoport.| True (Igaz)|
+|$keyVaultName|Annak a kulcstartónak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Ha az egyik nem létezik, akkor a rendszer létrehoz egy új tárat ezzel a névvel.| True (Igaz)|
+|$location|A kulcstartó helye. Győződjön meg arról, hogy a kulcstároló és a virtuális gépek titkosítva vannak ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
+|$subscriptionId|A használni kívánt Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
+|$aadAppName|Annak az Azure AD-alkalmazásnak a neve, amelyet a rendszer a kulcstartók írásához fog használni. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, adja át a aadClientSecret paramétert a parancsfájlnak.|False (Hamis)|
+|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyfél-titka.|False (Hamis)|
+|$keyEncryptionKeyName|A kulcstartóban nem kötelező kulcs-titkosítási kulcs neve. Ha az egyik nem létezik, a rendszer létrehoz egy új kulcsot a névvel.|False (Hamis)|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazás nélkül
 
-- [Lemeztitkosítás engedélyezése meglévő vagy linuxos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
-- [Titkosítás letiltása egy futó Linux virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
-    - A titkosítás letiltása csak linuxos virtuális gépek adatkötetein engedélyezett.  
+- [A lemez titkosításának engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+- [Titkosítás letiltása futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - A titkosítás letiltása csak a Linux rendszerű virtuális gépek adatkötetein engedélyezett.  
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Egy Azure AD-alkalmazással (előző kiadás) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazással (korábbi kiadás) 
  
-- [Lemeztitkosítás engedélyezése meglévő vagy linuxos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
+- [A lemez titkosításának engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 
--  [Titkosítás letiltása egy futó Linux virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
-    - A titkosítás letiltása csak linuxos virtuális gépek adatkötetein engedélyezett. 
+-  [Titkosítás letiltása futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
+    - A titkosítás letiltása csak a Linux rendszerű virtuális gépek adatkötetein engedélyezett. 
 
 
-- [Új titkosított felügyelt lemez létrehozása előre titkosított virtuális merevlemez/tárolóblobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Létrehoz egy új, titkosított felügyelt lemezt, amely előre titkosított virtuális merevlemezt és a hozzá tartozó titkosítási beállításokat biztosít
+- [Új titkosított felügyelt lemez létrehozása egy előre titkosított VHD/Storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Létrehoz egy új titkosított felügyelt lemezt, amely egy előre titkosított VHD-t és a hozzá tartozó titkosítási beállításokat biztosított.
 
 
 
 
 
-## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Operációs rendszermeghajtó titkosítása linuxos virtuális számítógépen
+## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>OPERÁCIÓSRENDSZER-meghajtó titkosítása futó Linux rendszerű virtuális gépen
 
-### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosításának előfeltételei
+### <a name="prerequisites-for-os-disk-encryption"></a>Az operációsrendszer-lemez titkosításának előfeltételei
 
-* A virtuális gépnek az Azure Disk Encryption által támogatott operációs rendszerekben felsorolt operációsrendszer-titkosítással kompatibilis terjesztést kell [használnia.](disk-encryption-overview.md#supported-vms) 
-* A virtuális gép létre kell hozni a Marketplace-rendszerkép az Azure Resource Manager.
-* Legalább 4 GB RAM-mal rendelkező Azure virtuális gép (az ajánlott méret 7 GB).
-* (RHEL és CentOS esetén) Tiltsa le az SELinux-ot. Az SELinux letiltásához lásd: "4.4.2. SELinux letiltása" a [SELinux felhasználói és rendszergazdai útmutatójában](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.
-* Az SELinux letiltása után legalább egyszer indítsa újra a virtuális gépet.
+* A virtuális gépnek az operációsrendszer-lemez titkosításával kompatibilis disztribúciót kell használnia a [Azure Disk Encryption támogatott operációs rendszerek](disk-encryption-overview.md#supported-vms) listájában. 
+* A virtuális gépet a piactér rendszerképből kell létrehozni Azure Resource Manager.
+* Legalább 4 GB RAM memóriával rendelkező Azure-beli virtuális gép (az ajánlott méret 7 GB).
+* (RHEL és CentOS esetén) SELinux letiltása. A SELinux letiltásához tekintse meg a "4.4.2. A SELinux letiltása a [SELinux felhasználói és rendszergazdai útmutatójában](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.
+* A SELinux letiltását követően legalább egyszer indítsa újra a virtuális gépet.
 
 ### <a name="steps"></a>Lépések
-1. Hozzon létre egy virtuális gép segítségével a korábban megadott disztribúciók egyikével.
+1. Hozzon létre egy virtuális gépet a korábban megadott eloszlások egyikének használatával.
 
-   A CentOS 7.2 esetében az operációs rendszer lemeztitkosítása speciális lemezképen keresztül támogatott. A lemezkép használatához adja meg a "7.2n" értéket termékváltozatként a virtuális gép létrehozásakor:
+   A CentOS 7,2 esetében az operációs rendszer lemezének titkosítása egy speciális rendszerkép használatával támogatott. A rendszerkép használatához a virtuális gép létrehozásakor a "7.2 n" kifejezést kell megadni SKU-ként:
 
    ```powershell
     Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
    ```
-2. Konfigurálja a virtuális gép az igényeinek megfelelően. Ha az összes (OS + adat) meghajtót titkosítja, az adatmeghajtókat meg kell adni, és az /etc/fstab könyvtárból kell csatlakoztatni.
+2. Konfigurálja a virtuális gépet az igényeinek megfelelően. Ha az összes (OS + összes) meghajtót titkosítani fogja, az adatmeghajtókat meg kell adni és csatlakoztatni kell a/etc/fstab.
 
    > [!NOTE]
-   > Use UUID=... adatmeghajtók megadása az /etc/fstab kapcsolóban a blokkeszköz nevének megadása helyett (például /dev/sdb1). A titkosítás során a meghajtók sorrendje megváltozik a virtuális gépen. Ha a virtuális gép a blokkeszközök adott sorrendjére támaszkodik, nem fogja csatlakoztatni őket a titkosítás után.
+   > Az UUID =... az adatmeghajtók az/etc/fstab-ben való megadásához a blokk eszköz nevének megadása helyett (például/dev/sdb1). A titkosítás során a meghajtók megváltoznak a virtuális gépen. Ha a virtuális gép a blokkoló eszközök meghatározott sorrendjére támaszkodik, a titkosítás után nem fogja tudni csatlakoztatni azokat.
 
-3. Jelentkezzen ki az SSH-munkamenetekből.
+3. Jelentkezzen ki az SSH-munkamenetből.
 
-4. Az operációs rendszer titkosításához adja meg a volumeType értéket **All** vagy **os értéket,** ha engedélyezi a titkosítást.
+4. Az operációs rendszer titkosításához a titkosítás engedélyezésekor az **összes** vagy az **operációs rendszer** volumeType kell megadni.
 
    > [!NOTE]
-   > Minden olyan felhasználói térfolyamatot, `systemd` amely nem szolgáltatásként `SIGKILL`fut, le kell ölni egy . Indítsa újra a virtuális gépet. Ha engedélyezi az operációs rendszer lemeztitkosítását egy futó virtuális gépen, tervezze meg a virtuális gép állásidejét.
+   > A `systemd` szolgáltatásként nem futtató összes felhasználói terület folyamatát le kell ölni `SIGKILL`. Indítsa újra a virtuális gépet. Ha egy futó virtuális gépen engedélyezi az operációsrendszer-lemez titkosítását, tervezze meg a virtuális gépek leállását.
 
-5. Rendszeresen figyelemmel kíséri a titkosítás előrehaladását a [következő szakaszutasításainak](#monitoring-os-encryption-progress)használatával.
+5. A [következő szakaszban](#monitoring-os-encryption-progress)található utasítások alapján rendszeres időközönként figyelje a titkosítás előrehaladását.
 
-6. Miután a Get-AzVmDiskEncryptionStatus a "VMRestartPending" állapotot jeleníti meg, indítsa újra a virtuális gépét, vagy jelentkezzen be, vagy a portál, a PowerShell vagy a CLI használatával.
+6. Miután a Get-AzVmDiskEncryptionStatus megjeleníti a "VMRestartPending" kifejezést, indítsa újra a virtuális gépet a bejelentkezéshez vagy a portál, a PowerShell vagy a CLI használatával.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -118,23 +118,23 @@ Az alábbi táblázat bemutatja, hogy mely paraméterek használhatók a PowerSh
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-   Újraindítás előtt azt javasoljuk, hogy mentse a virtuális gép [rendszerindítási diagnosztikája.](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)
+   A rendszer újraindítása előtt azt javasoljuk, hogy mentse a virtuális gép [rendszerindítási diagnosztikát](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) .
 
-## <a name="monitoring-os-encryption-progress"></a>Az operációs rendszer titkosítási folyamatának figyelése
-Az operációs rendszer titkosításának előrehaladását háromféleképpen figyelheti:
+## <a name="monitoring-os-encryption-progress"></a>Operációs rendszer titkosítási folyamatának figyelése
+Az operációs rendszer titkosítási folyamatát háromféle módon követheti nyomon:
 
-* Használja `Get-AzVmDiskEncryptionStatus` a parancsmagot, és vizsgálja meg a ProgressMessage mezőt:
+* Használja a `Get-AzVmDiskEncryptionStatus` parancsmagot, és vizsgálja meg a feladatnézetben mezőt:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk encryption started
     ```
-  Miután a virtuális gép elérte az "operációs rendszer lemeztitkosítás indítása", körülbelül 40–50 percet vesz igénybe egy prémium szintű storage-alapú virtuális gép.
+  Miután a virtuális gép eléri az "operációsrendszer-lemez titkosítását", a Premium Storage-beli virtuális gépen körülbelül 40 – 50 percet vesz igénybe.
 
-  Mert a [probléma #388](https://github.com/Azure/WALinuxAgent/issues/388) WALinuxAgent, és `OsVolumeEncrypted` `DataVolumesEncrypted` megjelenik, mint `Unknown` néhány disztribúciók. A WALinuxAgent 2.1.5-ös és újabb verziójával ez a probléma automatikusan megoldódik. Ha látja `Unknown` a kimenetben, ellenőrizheti a lemeztitkosításállapotát az Azure Resource Explorer használatával.
+  A [probléma #388](https://github.com/Azure/WALinuxAgent/issues/388) a WALinuxAgent-ben `OsVolumeEncrypted` , `DataVolumesEncrypted` és az egyes `Unknown` disztribúciókban is megjelenik. A WALinuxAgent 2.1.5-es és újabb verzióiban ez a probléma automatikusan rögzített. Ha a kimenetben látható `Unknown` , akkor a Azure erőforrás-kezelő használatával ellenőrizheti a lemez titkosításának állapotát.
 
-  Nyissa meg az [Azure Resource Explorer](https://resources.azure.com/)t , majd bontsa ki ezt a hierarchiát a bal oldali választópanelen:
+  Nyissa meg a [Azure erőforrás-kezelő](https://resources.azure.com/), majd bontsa ki ezt a hierarchiát a bal oldali kiválasztási panelen:
 
   ~~~~
   |-- subscriptions
@@ -148,49 +148,49 @@ Az operációs rendszer titkosításának előrehaladását háromféleképpen f
                                         |-- InstanceView
   ~~~~                
 
-  A InstanceView nézetben görgessen le a meghajtók titkosítási állapotának megtekintéséhez.
+  A InstanceView görgessen lefelé a meghajtók titkosítási állapotának megtekintéséhez.
 
-  ![Virtuálisgép-példány nézete](./media/disk-encryption/vm-instanceview.png)
+  ![Virtuálisgép-példány nézet](./media/disk-encryption/vm-instanceview.png)
 
-* Nézd [meg boot diagnosztika](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Az ADE kiterjesztésből származó `[AzureDiskEncryption]`üzeneteket előtaggal kell előzni.
+* Tekintse meg a [rendszerindítási diagnosztikát](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Az ADE kiterjesztésből származó üzeneteket előre fel kell oldani `[AzureDiskEncryption]`.
 
-* Jelentkezzen be a virtuális gépre SSH-n keresztül, és a bővítmény naplóját a következőtől kapja meg:
+* Jelentkezzen be a virtuális gépre SSH-n keresztül, és szerezze be a bővítmény naplóját:
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
-  Azt javasoljuk, hogy ne jelentkezzen be a virtuális gép, amíg az operációs rendszer titkosítása folyamatban van. Másolja a naplókat csak akkor, ha a másik két módszer nem sikerült.
+  Javasoljuk, hogy ne jelentkezzen be a virtuális gépre, amíg az operációs rendszer titkosítása folyamatban van. A naplók másolása csak akkor, ha a másik két módszer meghiúsult.
 
-## <a name="prepare-a-pre-encrypted-linux-vhd"></a>Előre titkosított Linux-virtuális merevlemez előkészítése
-Az előre titkosított virtuális gépek előkészítése a disztribúciótól függően változhat. Példák az Ubuntu 16, openSUSE 13.2 és CentOS 7 előkészítésére. 
+## <a name="prepare-a-pre-encrypted-linux-vhd"></a>Előre titkosított linuxos virtuális merevlemez előkészítése
+Az előre titkosított virtuális merevlemezek előkészítése a terjesztéstől függően változhat. Az Ubuntu 16, az openSUSE 13,2 és a CentOS 7 előkészítésének példái érhetők el. 
 
 ### <a name="ubuntu-16"></a>Ubuntu 16
-Konfigurálja a titkosítást a telepítési telepítés során az alábbi lépésekkel:
+Az alábbi lépéseket követve konfigurálja a titkosítást a terjesztés telepítése során:
 
-1. Válassza **a Titkosított kötetek konfigurálása** a lemezek particionálásakor lehetőséget.
+1. Válassza a **titkosított kötetek konfigurálása** a lemezek particionálásakor lehetőséget.
 
-   ![Ubuntu 16.04 beállítás - Titkosított kötetek konfigurálása](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+   ![Ubuntu 16,04 telepítő – titkosított kötetek konfigurálása](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
-2. Hozzon létre egy külön rendszerindító meghajtót, amelyet nem szabad titkosítani. Titkosítsa a gyökérmeghajtót.
+2. Hozzon létre egy különálló rendszerindító meghajtót, amely nem titkosítható. Titkosítsa a legfelső szintű meghajtót.
 
-   ![Ubuntu 16.04 telepítés - Válassza ki a titkosítandó eszközöket](./media/disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+   ![Ubuntu 16,04 telepítő – a titkosítani kívánt eszközök kiválasztása](./media/disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
-3. Adjon meg egy jelszót. Ez az a jelszó, amelyet feltöltött a kulcstartóba.
+3. Adjon meg egy jelszót. Ez az a jelszó, amelyet a Key vaultba töltött fel.
 
-   ![Ubuntu 16.04 beállítás - Jelszó biztosítása](./media/disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+   ![Ubuntu 16,04 telepítő – hozzáférési kód megadása](./media/disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
-4. A particionálás befejezése.
+4. Particionálás befejezése.
 
-   ![Ubuntu 16.04 beállítás - A particionálás befejezése](./media/disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+   ![Ubuntu 16,04 telepítő – particionálás befejezése](./media/disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
-5. Amikor elindítja a virtuális gép, és kéri a jelszót, használja a jelszót a 3.
+5. Amikor elindítja a virtuális gépet, és a rendszer jelszót kér, használja a 3. lépésben megadott jelszót.
 
-   ![Ubuntu 16.04 telepítő - Jelszó benyújtása a rendszerindításkor](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+   ![Ubuntu 16,04 telepítő – jelszó megadása rendszerindításkor](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Készítse elő a virtuális gép feltöltésre az Azure-ba [ezeket az utasításokat.](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) Ne futtassa az utolsó lépést (a virtuális gép deprovisioning) még.
+6. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez [ezen utasítások](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)használatával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
-Konfigurálja a titkosítást az Azure-ral való együttműködésre az alábbi lépésekkel:
+Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azure-nal való együttműködéshez:
 
-1. Hozzon létre egy fájlt a /usr/local/sbin/azure_crypt_key.sh fájl alatt, a következő parancsfájl tartalmával. Ügyeljen a KeyFileName, mert ez a jelszó fájlneve által használt Azure.
+1. Hozzon létre egy fájlt a/usr/local/sbin/azure_crypt_key. sh fájlban a következő parancsfájl tartalmával. Ügyeljen arra, hogy a jelszót az Azure által használt jelszó-fájlnév adja meg.
 
     ```bash
     #!/bin/sh
@@ -227,7 +227,7 @@ Konfigurálja a titkosítást az Azure-ral való együttműködésre az alábbi 
     fi
    ```
 
-2. Módosítsa a kripta konfigurációt az */etc/crypttab fájlban.* A listának így kell kinéznie:
+2. Módosítsa a */etc/crypttab*található Crypt-konfigurációt. A listának így kell kinéznie:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -236,7 +236,7 @@ Konfigurálja a titkosítást az Azure-ral való együttműködésre az alábbi 
    ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
    ```
-5. Edit */etc/initramfs-tools/modules* by appending lines:
+5. */Etc/initramfs-tools/modules* szerkesztése sorok hozzáfűzésével:
    ```
     vfat
     ntfs
@@ -244,32 +244,32 @@ Konfigurálja a titkosítást az Azure-ral való együttműködésre az alábbi 
     nls_utf8
     nls_iso8859-1
    ```
-6. Futtassa `update-initramfs -u -k all` az initramfok `keyscript` frissítéséhez, hogy a hatályba lépjen.
+6. A `update-initramfs -u -k all` futtatásával frissítse a initramfs, hogy `keyscript` az érvénybe lépne.
 
-7. Most már megszüntetheti a virtuális gép.
+7. Most már kiépítheti a virtuális gépet.
 
-   ![Ubuntu 16.04 telepítés - update-initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+   ![Ubuntu 16,04 telepítő-Update-initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
-8. Folytassa a következő lépéssel, és töltse fel a virtuális merevlemezt az Azure-ba.
+8. Folytassa a következő lépéssel, és töltse fel a VHD-t az Azure-ba.
 
-### <a name="opensuse-132"></a>openSUSE 13.2
-A titkosítás telepítési telepítés során történő konfigurálásához tegye a következő lépéseket:
-1. A lemezek particionálásakor válassza a **Kötetcsoport titkosítása**lehetőséget, majd adjon meg egy jelszót. Ezt a jelszót fogja feltölteni a kulcstartóba.
+### <a name="opensuse-132"></a>openSUSE 13,2
+A titkosítás konfigurálásához végezze el a következő lépéseket:
+1. A lemezek particionálásakor válassza a **kötet csoport titkosítása**lehetőséget, majd adja meg a jelszót. Ez a jelszó, amelyet fel fog tölteni a kulcstartóba.
 
-   ![openSUSE 13.2 telepítő – Kötetcsoport titkosítása](./media/disk-encryption/opensuse-encrypt-fig1.png)
+   ![openSUSE 13,2 telepítő – kötet csoportjának titkosítása](./media/disk-encryption/opensuse-encrypt-fig1.png)
 
-2. Indítsa el a virtuális gép jelszavát.
+2. Indítsa el a virtuális gépet a jelszavával.
 
-   ![openSUSE 13.2 telepítő - Jelszó benyújtása rendszerindításkor](./media/disk-encryption/opensuse-encrypt-fig2.png)
+   ![openSUSE 13,2 telepítő – jelszó megadása rendszerindításkor](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Készítse elő a virtuális gépet az Azure-ba való feltöltésre az [SLES vagy openSUSE virtuális gép előkészítése az Azure-hoz](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)című útmutatóban. Ne futtassa az utolsó lépést (a virtuális gép deprovisioning) még.
+3. Készítse elő a virtuális GÉPET az Azure-ba való feltöltéshez a [SLES-vagy openSUSE-alapú virtuális gép Azure-ban történő előkészítésének](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)utasításait követve. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
-Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, tegye a következő lépéseket:
-1. Eded az /etc/dracut.conf kapcsolót, és add hozzá a következő sort:
+A titkosítás az Azure-ban való működésének konfigurálásához hajtsa végre a következő lépéseket:
+1. Szerkessze a/etc/Dracut.conf, és adja hozzá a következő sort:
     ```
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
-2. A /usr/lib/dracut/modules.d/90crypt/module-setup.sh fájl végéig fűzi hozzá ezeket a sorokat:
+2. Tegye megjegyzésbe ezeket a sorokat a fájl/usr/lib/Dracut/modules.d/90crypt/Module-Setup.sh végéig:
    ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
@@ -282,11 +282,11 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
    ```
 
-3. Fűzze hozzá a következő sort a /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh fájl elejéhez:
+3. Fűzze hozzá a következő sort a/usr/lib/Dracut/modules.d/90crypt/parse-crypt.sh fájl elejéhez:
    ```bash
     DRACUT_SYSTEMD=0
    ```
-   És változtassa meg az összes előfordulása:
+   És az összes előfordulásának módosítása:
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
@@ -294,7 +294,7 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
    ```bash
     if [ 1 ]; then
    ```
-4. Edit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh és csatolja a "# Open LUKS eszközhöz":
+4. Szerkessze a/usr/lib/Dracut/modules.d/90crypt/cryptroot-Ask.sh, és fűzze hozzá a "# Open LUKS Device":
 
     ```bash
     MountPoint=/tmp-keydisk-mount
@@ -316,41 +316,41 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
     fi
     done
     ```
-5. Futtassa `/usr/sbin/dracut -f -v` az initrd frissítéséhez.
+5. Futtassa `/usr/sbin/dracut -f -v` a parancsot a initrd frissítéséhez.
 
-6. Most már megszüntetheti a virtuális gép, és töltse fel a virtuális merevlemezt az Azure-ba.
+6. Most kiépítheti a virtuális gépet, és feltöltheti a VHD-t az Azure-ba.
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 és RHEL 8.1
+### <a name="centos-7-and-rhel-81"></a>CentOS 7 és RHEL 8,1
 
-A titkosítás telepítési telepítés során történő konfigurálásához tegye a következő lépéseket:
-1. A lemezek **particionálásakor válassza az Adataim titkosítása** lehetőséget.
+A titkosítás konfigurálásához végezze el a következő lépéseket:
+1. Válassza **a saját adatai titkosítása a** lemezek particionálásakor lehetőséget.
 
-   ![CentOS 7 telepítés – telepítési célhely](./media/disk-encryption/centos-encrypt-fig1.png)
+   ![CentOS 7 telepítő – telepítési cél](./media/disk-encryption/centos-encrypt-fig1.png)
 
-2. Győződjön meg **arról,** hogy a Titkosítás lehetőség van kiválasztva a gyökérpartícióhoz.
+2. Győződjön meg arról, hogy a gyökérszintű partícióhoz a **titkosítás** van kiválasztva.
 
-   ![CentOS 7 telepítő -A gyökérpartíció titkosításának kiválasztása](./media/disk-encryption/centos-encrypt-fig2.png)
+   ![CentOS 7 telepítő – a gyökérszintű partíció titkosításának kiválasztása](./media/disk-encryption/centos-encrypt-fig2.png)
 
 3. Adjon meg egy jelszót. Ez az a jelszó, amelyet fel fog tölteni a kulcstartóba.
 
-   ![CentOS 7 telepítő – jelszó megadására](./media/disk-encryption/centos-encrypt-fig3.png)
+   ![CentOS 7 telepítő – hozzáférési kód megadása](./media/disk-encryption/centos-encrypt-fig3.png)
 
-4. Amikor elindítja a virtuális gép, és kéri a jelszót, használja a jelszót a 3.
+4. Amikor elindítja a virtuális gépet, és a rendszer jelszót kér, használja a 3. lépésben megadott jelszót.
 
-   ![CentOS 7 beállítás - Adja meg a jelszót a rendszerindításkor](./media/disk-encryption/centos-encrypt-fig4.png)
+   ![CentOS 7 telepítő – jelszó megadása a csomagtartóban](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Készítse elő a virtuális gépet az Azure-ba való feltöltésre a "CentOS 7.0+" utasítások használatával a [CentOS-alapú virtuális gép előkészítése az Azure-hoz](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)című részben. Ne futtassa az utolsó lépést (a virtuális gép deprovisioning) még.
+5. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez az [Azure-hoz készült CentOS-alapú virtuális gép előkészítése](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)című témakör "CentOS 7.0 +" utasításával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
-6. Most már megszüntetheti a virtuális gép, és töltse fel a virtuális merevlemezt az Azure-ba.
+6. Most kiépítheti a virtuális gépet, és feltöltheti a VHD-t az Azure-ba.
 
-Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, tegye a következő lépéseket:
+A titkosítás az Azure-ban való működésének konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Eded az /etc/dracut.conf kapcsolót, és add hozzá a következő sort:
+1. Szerkessze a/etc/Dracut.conf, és adja hozzá a következő sort:
     ```
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 
-2. A /usr/lib/dracut/modules.d/90crypt/module-setup.sh fájl végéig fűzi hozzá ezeket a sorokat:
+2. Tegye megjegyzésbe ezeket a sorokat a fájl/usr/lib/Dracut/modules.d/90crypt/Module-Setup.sh végéig:
    ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
@@ -363,11 +363,11 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
    ```
 
-3. Fűzze hozzá a következő sort a /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh fájl elejéhez:
+3. Fűzze hozzá a következő sort a/usr/lib/Dracut/modules.d/90crypt/parse-crypt.sh fájl elejéhez:
    ```bash
     DRACUT_SYSTEMD=0
    ```
-   És változtassa meg az összes előfordulása:
+   És az összes előfordulásának módosítása:
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
@@ -375,7 +375,7 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
    ```bash
     if [ 1 ]; then
    ```
-4. Edit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh és hozzáfűzze a következőután a "# Open LUKS eszköz":
+4. Szerkessze a/usr/lib/Dracut/modules.d/90crypt/cryptroot-Ask.sh, és fűzze hozzá a következőt a "# Open LUKS-eszköz" után:
     ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -396,17 +396,17 @@ Ha titkosítást szeretne beállítani az Azure-ral való együttműködésre, t
     fi
     done
     ```    
-5. Futtassa a "/usr/sbin/dracut -f -v" kapcsolót az initrd frissítéséhez.
+5. Futtassa a "/usr/sbin/Dracut-f-v" parancsot a initrd frissítéséhez.
 
-    ![CentOS 7 beállítás - futtatás /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
+    ![CentOS 7 telepítő – a/usr/sbin/Dracut-f-v futtatása](./media/disk-encryption/centos-encrypt-fig5.png)
 
-## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Titkosított virtuális merevlemez feltöltése Azure-tárfiókba
-A DM-Crypt titkosítás engedélyezése után a helyi titkosított virtuális merevlemezt fel kell tölteni a tárfiókba.
+## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Titkosított virtuális merevlemez feltöltése Azure Storage-fiókba
+A DM-Crypt titkosítás engedélyezése után a helyi titkosított VHD-t fel kell tölteni a Storage-fiókjába.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Töltse fel az előre titkosított virtuális gép titkos kulcsát a key vaultba
-Ha egy Azure AD-alkalmazás használatával (előző kiadás) titkosítása során a korábban beszerzett lemeztitkosítási titkos kulcsot titkos ítva kell feltölteni a kulcstárolóban. A key vault kell lemeztitkosítás és engedélyek engedélyezve az Azure AD-ügyfél.
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Töltse fel az előre titkosított virtuális gép titkos kulcsát a kulcstartóba
+Ha egy Azure AD-alkalmazás (előző kiadás) használatával titkosít, a korábban beszerzett lemez-titkosítási titkot titkos kulcsként kell feltölteni a kulcstartóba. A Key vaultnak rendelkeznie kell a lemez titkosításával és az Azure AD-ügyfélhez engedélyezett engedélyekkel.
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"
@@ -418,8 +418,8 @@ Ha egy Azure AD-alkalmazás használatával (előző kiadás) titkosítása sor�
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
 ``` 
 
-### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>A lemeztitkosítás titkos kulcsa nincs kek-vel titkosítva
-A titkos kulcs beállítása a key vaultban használja a [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). A jelszó base64 karakterláncként van kódolva, majd feltöltve a key vaultba. Emellett győződjön meg arról, hogy a következő címkék vannak beállítva, amikor létrehozza a titkos kulcsot a key vaultban.
+### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>A lemez titkosítási titka nem titkosított KEK-sel
+A titkos kulcs a Key vaultban történő beállításához használja a [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). A jelszó Base64 karakterláncként van kódolva, majd feltöltve a kulcstartóba. Továbbá győződjön meg arról, hogy a következő címkék vannak beállítva, amikor létrehozza a titkos kulcsot a kulcstartóban.
 
 ```powershell
 
@@ -436,10 +436,10 @@ A titkos kulcs beállítása a key vaultban használja a [Set-AzKeyVaultSecret](
 ```
 
 
-Használja `$secretUrl` a következő lépésben [az operációs rendszer lemezének kek használata nélküli csatlakoztatásához.](#without-using-a-kek)
+Használja a `$secretUrl` következő lépésben az operációsrendszer- [lemez csatlakoztatását a KEK használata nélkül](#without-using-a-kek).
 
-### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK-vel titkosított lemeztitkosítási titkoskulcs
-Mielőtt feltöltene a titkos kulcsot a key vaultba, tetszés szerint titkosíthatja egy kulcstitkosítási kulcs használatával. A wrap [API segítségével](https://msdn.microsoft.com/library/azure/dn878066.aspx) először titkosítsa a titkos kulcsot a kulcs titkosítási kulcs használatával. A wrap művelet kimenete egy base64 URL-kódolású karakterlánc, amelyet a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával titkosként tölthet fel.
+### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>A lemez titkosítási titka egy KEK-sel titkosítva
+Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy titkosítsa azt egy kulcs titkosítási kulcs használatával. A wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) használatával először Titkosítsa a titkos kulcsot a kulcs titkosítási kulcsával. Ennek a körbefuttatási műveletnek a kimenete Base64 URL-kódolású karakterlánc, amelyet ezután titkos kulcsként tölthet fel a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -529,12 +529,12 @@ Mielőtt feltöltene a titkos kulcsot a key vaultba, tetszés szerint titkosíth
     $secretUrl = $response.id
 ```
 
-`$KeyEncryptionKey` Használja, `$secretUrl` és a következő lépésben [az operációs rendszer lemezének kek használatával történő csatlakoztatásához.](#using-a-kek)
+A következő lépésben használja `$KeyEncryptionKey` az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek). `$secretUrl`
 
-##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL megadása operációsrendszer-lemez csatolásakor
+##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL-cím megadása operációsrendszer-lemez csatlakoztatásakor
 
 ###  <a name="without-using-a-kek"></a>KEK használata nélkül
-Az operációs rendszer lemezének csatlakoztatása közben `$secretUrl`át kell adnia a . Az URL-cím a "KEK-vel nem titkosított lemeztitkosítási titok" szakaszban jött létre.
+Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl`a következőt:. Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -547,7 +547,7 @@ Az operációs rendszer lemezének csatlakoztatása közben `$secretUrl`át kell
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK használata
-Amikor csatlakoztatja az operációs `$KeyEncryptionKey` `$secretUrl`rendszer lemezét, adja át, és . Az URL-cím a "KEK-vel titkosított lemeztitkosítási titkosítatlan" szakaszban jött létre.
+Az operációsrendszer-lemez csatlakoztatásakor adja meg `$KeyEncryptionKey` a `$secretUrl`és a kapcsolót. Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

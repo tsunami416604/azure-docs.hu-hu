@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-feladat (kódolás és elemzés) hibakódok | Microsoft dokumentumok
-description: Ez a cikk a feladat hibakódjaira mutató hivatkozási témakörre mutat, és hasznos hivatkozásokat ad a kapcsolódó témakörökre.
+title: Azure Media Services feladatok (kódolás és elemzés) hibakódok | Microsoft Docs
+description: Ez a cikk a feladathoz tartozó hibakódokra mutató hivatkozásokat tartalmaz, és hasznos hivatkozásokat biztosít a kapcsolódó témakörökhöz.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,30 +14,30 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
 ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582215"
 ---
-# <a name="media-services-job-error-codes"></a>Media Services feladathibakódok
+# <a name="media-services-job-error-codes"></a>Media Services feladattípus-hibakódok
 
-Ez a témakör egy REST-referenciadokumentumra mutat a [munkaköri](transforms-jobs-concept.md) hibakódok és üzenetek részletes leírásához.
+Ez a témakör egy REST-alapú hivatkozási dokumentumra hivatkozik a [feladatokhoz](transforms-jobs-concept.md) tartozó hibakódok és üzenetek részletes leírásához.
 
 ## <a name="job-error-codes"></a>Feladathibakódok
 
-A következő REST-dokumentum részletes magyarázatot ad a [feladathibakódokról](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+A következő REST-dokumentum részletesen ismerteti a [feladatokkal kapcsolatos hibakódokat](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
-Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
 ## <a name="see-also"></a>Lásd még
 
 - [Streamvégpont-hibakódok](streaming-endpoint-error-codes.md)
-- [Az Azure Media Services fogalmai](concepts-overview.md)
-- [Kvóták és korlátozások](limits-quotas-constraints.md)
+- [Azure Media Services fogalmak](concepts-overview.md)
+- [Kvóták és korlátok](limits-quotas-constraints.md)
 
 ## <a name="next-steps"></a>További lépések
 
-[Példa: access ErrorCode and Message from ApiException with .NET](configure-connect-dotnet-howto.md#connect-to-the-net-client)
+[Példa: hozzáférés ErrorCode és üzenetküldés a ApiException és a .NET használatával](configure-connect-dotnet-howto.md#connect-to-the-net-client)

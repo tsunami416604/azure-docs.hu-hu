@@ -1,6 +1,6 @@
 ---
-title: Társértékesítési lehetőség a PartnerCenterben | Azure Piactér
-description: Az ajánlat Társértékesítés lapján megadott információkat a Microsoft értékesítési csapatai felhasználják, hogy többet megtudjanak a megoldásról, amikor kiértékelik az ügyféligényeknek megfelelő információkat.
+title: Közös értékesítés lehetősége a partner Centerben | Azure piactér
+description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni a megoldásról.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,99 +8,99 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80517927"
 ---
-# <a name="co-sell-option-in-partner-center"></a>Társértékesítési lehetőség a Partnerközpontban
+# <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
-A Co-sell lapon történő tájékoztatás teljesen opcionális. A Co-sell Ready és az IP Co-sell Ready státusz eléréséhez szükséges. A megadott adatokat a Microsoft értékesítési csapatai arra használják fel, hogy többet tudjanak meg a megoldásról, amikor kiértékelik, hogy azok megfelelnek-e az ügyfelek igényeinek. Nem érhető el közvetlenül az ügyfelek számára. További információt az [Értékesítés a Microsofton keresztül](https://partner.microsoft.com/membership/sell-with-microsoft)című témakörben talál.
+A közös értékesítés lapon található információk megadása teljes mértékben nem kötelező. A közös értékesítésre kész és az IP közös értékesítésre kész állapotot kell elérni. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy a megoldásra vonatkozó további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: értékesítés a [Microsofton keresztül](https://partner.microsoft.com/membership/sell-with-microsoft).
 
-A Partnerközpont közös értékesítési lehetősége jelenleg bizonyos ajánlattípusokhoz érhető el. A további ajánlattípusok támogatása idővel elérhetővé válik.
+A partneri központban a közös értékesítés lehetőség jelenleg néhány ajánlati típushoz érhető el. A további ajánlat-típusok támogatása az idő múlásával elérhetővé válik.
 
-| **Ajánlat típusa** | **A Partnerközpontban elérhető közös értékesítési oldal** |
+| **Ajánlat típusa** | **A partner Centerben elérhető közös értékesítési oldal** |
 |    -----------------------    |    -----------------------------  |
-| Szoftver szolgáltatásként (SaaS) |     Általános elérhetőség 2020.      |
-| Dynamics 365 for Customer Engagement & PowerApps      |     Már elérhető      |
+| Szolgáltatott szoftver (SaaS) |     Általános elérhetőség április 2020      |
+| Dynamics 365 a Customer engagement & PowerApps      |     Már elérhető      |
 | Dynamics 365 for Operations     |     Már elérhető       |
-| Dynamics 365 Business Central      |  Általános elérhetőség 2020.     |
-| Azure-alkalmazás     |     Általános elérhetőség 2020.     |
-| Azure-beli virtuális gép      |     Bejelentendő       |
-| Azure-tároló     |     Bejelentendő       |
-| Tanácsadói szolgáltatás      |     Bejelentendő       |
-| IoT peremhálózati modul      |     Bejelentendő       |
-| Power BI Service App     |     Bejelentendő       |
+| Dynamics 365 Business Central      |  Általános elérhetőség április 2020     |
+| Azure-alkalmazás     |     Általános elérhetőség április 2020     |
+| Azure-beli virtuális gép      |     A bejelentés       |
+| Azure-tároló     |     A bejelentés       |
+| Tanácsadói szolgáltatás      |     A bejelentés       |
+| IoT Edge modul      |     A bejelentés       |
+| Power BI szolgáltatásalkalmazás     |     A bejelentés       |
 |  |
 
-## <a name="listing"></a>Listázási
+## <a name="listing"></a>Listázása
 
-A közös értékesítési listák segítségével a Microsoft értékesítési csapatai szélesebb közönség számára forgalmazhatják a megoldást.
+A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak felvenni a megoldást a szélesebb közönség számára.
 
-- Válassza ki azokat a Microsoft-platformokat, amelyekkel az ajánlat készült, bővíti vagy integrálja azokat.
-- Válassza ki azokat a piaci szegmenseket, amelyeket az ajánlat megcéloz.
-- Válassza ki az ajánlathoz a [megoldás típusát.](#solution-type)
+- Válassza ki azokat a Microsoft-platformokat, amelyekkel az ajánlatát létrehozta, kiterjeszti vagy integrálja a szolgáltatással.
+- Válassza ki az ajánlat által célzott piaci szegmenseket.
+- Válassza ki az ajánlathoz tartozó [megoldás típusát](#solution-type) .
 - Válasszon legfeljebb három [megoldási területet](#solution-areas) és alterületet.
 
 ### <a name="solution-type"></a>Megoldás típusa
 
-A megoldástípusok segítenek meghatározni azokat a forgatókönyveket, amelyeket az ajánlat nak kell kezelnie.
+A megoldások típusai segítenek meghatározni azokat a forgatókönyveket, amelyeket az ajánlat célja a megoldáshoz.
 
 | **Megoldás típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| Eszköz (hardver) | Olyan ajánlat, amely hardvert hoz fel vagy értékesít egy eszközgyártótól. |
-| IP (alkalmazás) | Alkalmazások vagy más szerzői jogi védelem alatt nem rendelkező anyagok, amelyek az ügyfél használatára vannak licencelve. Például: egy CRM-program, amely a helyszínen licencelhető és telepíthető. |
-| Szolgáltatás | Gyakorlati szakértelem egy adott egyszeri projekthez, amelyet gyakran tanácsadókon keresztül szállítanak. Például: ügyféladatbázis beállítása egy ügyfél számára (az ügyfél vállalja a felelősséget az adatbázis szállítás utáni működtetéséért). |
-| Felügyelt szolgáltatás | Gyakorlati szakértelem egy felhőalapú projekthez, általában folyamatosan. Például: Platform és eszközök biztosítása egy online adatbázis futtatásához, a felügyelt szolgáltató által biztosított folyamatos felügyelettel. |
+| Eszköz (hardver) | Olyan ajánlat, amely az eszköz gyártójától származó hardverek létrehozását és értékesítését foglalja magában. |
+| IP (alkalmazás) | Az ügyfél általi használatra jogosult alkalmazások vagy más, szerzői joggal rendelkező anyagok. Például: olyan CRM-program, amely a helyszínen engedélyezhető és telepíthető. |
+| Szolgáltatás | Gyakorlati szakértelem egy adott egyszeri projekthez, amely gyakran tanácsadók útján valósul meg. Példa: ügyfél-adatbázis beállítása egy ügyfélhez (az ügyfél számára, hogy a kézbesítés után az adatbázis üzemeltetését vállalja). |
+| Felügyelt szolgáltatás | Gyakorlati szakértelem egy felhőalapú projekthez, általában folyamatosan. Példa: platformot és eszközöket biztosít az online adatbázisok futtatásához, a felügyelt szolgáltató által biztosított folyamatos felügyelettel. |
 
 ### <a name="solution-areas"></a>Megoldási területek
 
 A megoldási területek segítenek a megoldás további meghatározásában.
 
-Legfeljebb három megoldási területet adhat hozzá az ajánlathoz. Minden megoldásterülethez legfeljebb két megoldásalterületet választhat. Több alkategória kijelöléséhez használja `Ctrl` a (Windows rendszeren) vagy a Command billentyűt (Mac OS rendszeren).
+Az ajánlathoz legfeljebb három megoldási területet adhat hozzá. Minden egyes megoldási területen két megoldási alkörzet közül választhat. Több alkategória kiválasztásához használja a `Ctrl` kulcsot (Windows rendszeren) vagy a parancssort (Mac OS).
 
 ## <a name="documents"></a>Dokumentumok
 
-A Microsoft számára fedezetet nyújthat az ügyfelek igényeinek felméréséhez.
+A Microsoft számára biztosítékot biztosíthat az ügyfelek igényeinek kiértékeléséhez.
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
-| *Ügyfél egy-pager* | Az ajánlat ügyfélre kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel, hogy segítsenek meghatározni, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen álljon-e. <br> <br> Használja a Partnerközpontban elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egyoldalas sablon </li> <li> Microsoft Dynamics 365 egyoldalozósablon </li> <li> Az Office 365 egyoldalas sablonja </li> <li> Windows 10 egyoldalú sablon </li> </ul> |
-| *Ügyfél bemutatója* | Csúsztassa a fedélzetet a megoldás és az értékajánlat feldobásához. Miután meggyőződött arról, hogy az ajánlat készen áll az ügyfélre, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor képvisel. A bemutatónak ki kell terjednie arra, hogy mit csinál a megoldás, hogyan segíthet az ügyfeleknek, milyen iparágakra vonatkozik a megoldás, és hogyan viszonyul a konkurens megoldásokhoz. <br> <br> Használja a Partnerközpontban elérhető sablont.|
-| *Ügyfél esettanulmány* | Ez az információ azt mutatja, hogy ön és a Microsoft korábban hogyan telepítette ezt a megoldást. <br> <br> Használja a Partnerközpontban elérhető sablont. |
-| *Ellenőrizhető ügyfél nyer (nem kötelező)* | A megoldás üzembe helyezése utáni ügyfélsikerekre vonatkozó konkrét példák. |
-| *Csatornapitch deck (opcionális)* | Diacsomag olyan információkkal, amelyek segítenek a csatorna viszonteladóinak többet megtudni a megoldásról, és felkészíteni értékesítési csapataikat az ajánlat értékesítésére. Ez általában magában foglalja a lift pályán, információkat a megcélzott ügyfelek, kérdéseket feltenni az ügyfelek, beszélő pontok, és a linkeket videók, dokumentáció, és a támogatási információkat. |
-| *Referenciaarchitektúra-diagramok* | A partner által létrehozott IP-címet, valamint a Microsoft felhőszolgáltatásokkal való kapcsolatát, valamint az IP-társértékesítési program műszaki követelményeinek megfelelő modellt bemutató dokumentum. |
-| *Egyéb dokumentumok* | Opcionálisan akár öt további dokumentumot vagy videót is feltölthet, hogy a Microsoft értékesítési csapatai és csatornaviszonteladói többet tudjanak meg a megoldásról, a szervezetről és/vagy a differenciálókról. |
-| *Külső hivatkozási URL* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csapatai és a csatornaviszonteladók többet tudhatnak meg a megoldásról. |
+| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Office 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
+| *Ügyfél bemutatása* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
+| *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
+| *Ellenőrizhető ügyfél-WINS (nem kötelező)* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |
+| *Channel pitch Deck (nem kötelező)* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg a megoldásról, és elérhetik az értékesítési csapatait, hogy eladják az ajánlatot. A szolgáltatás általában egy liftre, a megcélzott ügyfelekre, az ügyfelek megkérdezésére, a beszélgetési pontokra, valamint a videókra, a dokumentációra és a támogatási információkra mutató hivatkozásokat tartalmaz. |
+| *Hivatkozási architektúra diagramjai* | Egy dokumentum, amely a partner által létrehozott IP-címet jelképező modellt, valamint a Microsoft Cloud Services szolgáltatással való kapcsolatát, valamint az IP-cím közös értékesítésének technikai követelményeit mutatja be. |
+| *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg a megoldásról, a szervezetről és/vagy a differenciálekről. |
+| *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak megtudni a megoldásról. |
 
 ## <a name="contacts"></a>Kapcsolatok
 
-A kapcsolattartási adatok lehetővé teszik a Microsoft értékesítési csapatai és csatornaviszonteladók számára, hogy további információkat kérjenek a szervezet megfelelő erőforrásától. A kapcsolattartási adatok a Microsoft összes értékesítési csapata számára elérhetők. Ha úgy dönt, hogy ajánlatát elérhetővé teszi a CSP programban, akkor ez az elérhetőségi információ a csatorna viszonteladói számára is elérhető.
+A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők.
 
-Ez a dokumentum útmutatást nyújt a partnerek különböző szerepköreiről és a közöttük való választásmódjáról. A névjegyek et úgy adhathatja meg, hogy letölti a CSV-sablont a Partnerközpontból, minden sort kitölt a kapcsolattartóval kapcsolatos információkkal, és importálja ezt a CSV-fájlt. A CSV-fájl importálása felülírja a meglévő névjegyeket.
+Ez a dokumentum útmutatást nyújt a partnerek különböző szerepköreivel és azok közötti választással kapcsolatban. Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központból, és az egyes sorokban megtölti a kapcsolattartó adatait, és importálja ezt a CSV-fájlt. A CSV-fájlok importálása felülírja a meglévő névjegyeket.
 
-Exportálhatja az ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
+Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
 
-* *Név (kötelező)*: A partner neve.
-* *E-mail cím (kötelező)*: A kapcsolattartó e-mail címe.
-* *Beosztás (kötelező)*: Beosztás.
-* *Szerepkör (kötelező)*: A sablonban a következő szerepkörök egyikét használja ebben a mezőben.
+* *Név (kötelező)*: a partner neve.
+* *E-mail-cím (kötelező)*: a partner e-mail-címe.
+* *Beosztás (kötelező)*: beosztás.
+* *Szerepkör (kötelező)*: használja a következő szerepkörök egyikét a sablonban ebben a mezőben.
 
     | **Szerepkör**    | **Leírás**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Ez a szerepkör a megoldás marketingtevékenységére és a Microsoft értékesítési csapataival és csatornaviszonteladóival való együttműködésre összpontosít. A marketingtevékenységek és az ajánlattartalmak, például a termékleírások, a képek és a videók fő kapcsolattartója. |
-    | *:::no-loc text="Partner sales":::* | Ez a szerepkör a megoldás értékesítésére és a Microsoft értékesítési csapataival és a csatornaviszonteladókkal való együttműködésre összpontosít. A társértékesítési megoldásoknál jelezze legalább egy partner értékesítési kapcsolattartóját régiónként, ahol co-sell Ready szeretne lenni. Ugyanaz a partner értékesítési kapcsolattartó több régióra is kiterjedhet. |
-    | *:::no-loc text="Partner technical sales":::* | Támogatja a műszaki architektúra és üzembe helyezési szempontok at az értékesítési ciklus, az értékesítés utáni integráció és a telepítési időszakok során. |
-    | *:::no-loc text="Partner customer success manager":::* | Általában támogatja az ügyfelek üzembe helyezés utáni, hogy segítsen nekik a legtöbbet hozza ki a megoldás, és növekszik a lábnyom az ügyfél szervezetén belül. |
+    | *:::no-loc text="Partner marketing":::* | Ez a szerepkör a megoldás marketingjét és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal folytatott marketing-erőfeszítésekkel foglalkozik. A marketing-bevezetések és az ajánlat tartalmának, például a termékleírások, a képek és a videók listázásának fő pontja. |
+    | *:::no-loc text="Partner sales":::* | Ez a szerepkör a megoldás értékesítésére és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal való együttműködésre koncentrál. A közös értékesítésre szolgáló megoldások esetében adjon meg legalább egy partneri értékesítési kapcsolattartót régiónként, amelyben szeretné, hogy a közös értékesítés készüljön. Ugyanaz a partner értékesítési kapcsolat több régióra is kiterjed. |
+    | *:::no-loc text="Partner technical sales":::* | A technikai architektúrát és üzembe helyezési szempontokat az értékesítési ciklus, az értékesítés utáni integráció és a telepítési időszakok során támogatja. |
+    | *:::no-loc text="Partner customer success manager":::* | A általában támogatja az ügyfeleket a telepítés után, hogy a lehető legtöbbet hozza ki a megoldásból, és növelje a lábnyomát az ügyfél szervezetén belül. |
 
-* *Országok/régiók (kötelező):*  A sablon kitöltésekor használja a [felsorolt két betűs ország-/régiókódot.](./commercial-marketplace-co-sell-countries.md) Ha a kapcsolattartó az összes országot/régiót lefedi, használja az "OOO" hárombetűs kódot. Ha egy kapcsolattartó egynél több országot/régiót fed le, írja be a két betűkódot vesszővel elválasztva (például írja be az "US, CA, FR" szót idézőjelek nélkül a sablonba).
+* *Országok/régiók (kötelező):*  A sablon kitöltésekor használja a [két betű ország/régió kódokat a felsoroltak szerint](./commercial-marketplace-co-sell-countries.md). Ha a kapcsolattartó az összes országot/régiót tartalmazza, használja az "OOO" három betűt. Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két betűs kódot vesszővel elválasztva (például: "US, CA, FR", idézőjelek nélkül a sablonba).
 
-    Az országoknak/régióknak tükrözniük kell az egyes kapcsolattartók területét. A Microsoft értékesítési csapatai és csatornaviszonteladói ezeket az információkat arra használják fel, hogy információt kérjenek, vagy együttműködjenek az adott országon/régión belüli értékesítésekkel.
+    Az országoknak/régióknak minden partner területét tükröznie kell. A Microsoft értékesítési csapatai és a csatorna-viszonteladók ezeket az információkat az adott országon/régión belüli értékesítések kérelmezésére és a velük folytatott együttműködésre használják fel.
 
-* *Államok/tartományok (választható):*  A sablon kitöltésekor használja az [Államok/Tartományok táblázatban](./commercial-marketplace-co-sell-states.md)felsorolt XX-XX formátumot.
+* *Államok/tartományok (nem kötelező):*  A sablon kitöltésekor használja az XX-XX formátumot az [Államok/tartományok táblában](./commercial-marketplace-co-sell-states.md)felsoroltak szerint.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információt a [Termékértékesítés a Microsofttal című](https://partner.microsoft.com/membership/sell-with-microsoft)témakörben talál.
+- További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

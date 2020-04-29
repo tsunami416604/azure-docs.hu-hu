@@ -1,6 +1,6 @@
 ---
-title: Hibakódok az Azure Spot virtuális gépekhez és a méretezési csoportok példányaihoz
-description: Ismerje meg a hibakódokat, amelyeket a direkt virtuális gépek használatakor és a méretezési példányok használatakor esetleg láthat.
+title: Az Azure spot-alapú virtuális gépek és a méretezési csoportok példányainak hibakódai
+description: Ismerje meg, hogy milyen hibakódok jelenhetnek meg a helyszínen futó virtuális gépek és a méretezési csoport példányainak használatakor.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.openlocfilehash: 5a34dc2b9468c6c5af4af0e0addfd8b9ebb7e792
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80547816"
 ---
-# <a name="error-messages-for-spot-vms-and-scale-sets"></a>Hibaüzenetek direkt virtuális gépekhez és méretezési csoportokhoz
+# <a name="error-messages-for-spot-vms-and-scale-sets"></a>A helyszíni virtuális gépekhez és a méretezési csoportokhoz tartozó hibaüzenetek
 
-Íme néhány lehetséges hibakód, amelyet a direkt virtuális gépek és a méretezési készletek használatakor kaphat.
+Íme néhány lehetséges hibakód, amelyet a helyszíni virtuális gépek és a méretezési csoportok használatakor kaphat.
 
 
 | Kulcs | Üzenet | Leírás |
 |-----|---------|-------------|
-| SkuNotAvailable | Az\<erőforrás " erőforrás\>" kért szintje jelenleg\<\>nem érhető\<el a hely " hely " helyen " az előfizetési " előfizetési azonosítóhoz".\> Próbálkozzon egy másik szinttel, vagy telepítse egy másik helyre. | Nincs elég Azure Spot kapacitás ezen a helyen a virtuális gép vagy a méretezési csoport példányának létrehozásához. |
-| EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  A kilakoltatási szabályzat csak az Azure Spot virtuális gépeken állítható be. | Ez a virtuális gép nem egy direkt virtuális gép, így nem állíthatja be a kilakoltatási szabályzatot. |
-| AzureSpotVMNotSupportedinavailabilityset  |  Az Azure Spot virtuális gép nem támogatott a rendelkezésre állási készlet. | Meg kell választania, hogy egy direkt virtuális gép, vagy egy virtuális gép egy rendelkezésre állási csoportban, nem választhatja mindkettőt. |
-| Az AzureSpotfeaturenotEnabledForSubscription  |  Az előfizetés nincs engedélyezve az Azure Spot funkcióval. | Használjon olyan előfizetést, amely támogatja a direkt virtuális gépeket. |
-| VMPriorityCannotBeAalkalmazott  |  A megadott prioritási{0}érték ' ' nem alkalmazható{1}a virtuális gépre ' ' , mivel a virtuális gép létrehozásakor nem adott meg prioritást. | Adja meg a prioritást, amikor a virtuális gép jön létre. |
-| SpotPriceGreaterThanProvidedmaxPrice  |  Nem hajtható{0}végre a ' "{1} művelet, mivel a megadott{2} max ár ' USD'{3}alacsonyabb, mint az Azure Spot VM méretének ' aktuális azonnali ára ' USD'. | Válasszon magasabb maximális árat. További információt a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) vagy Windows díjszabási információi című témakörben [talál.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)|
-| MaxPriceValueInvalid  |  Érvénytelen maximális árérték. A maximális ár csak -1 vagy decimálisan nagyobb érték, mint nulla. A -1 maximális árazt a értéket jelzi, hogy az Azure Spot virtuális gép árokok miatt nem lesz kizárva. | Adjon meg érvényes maximális árat. További információ: Pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) or [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). |
-| MaxPriceChangeNotAllowedForAllocatedVms | A maximális árváltozás nem engedélyezett,{0}ha a virtuális gép ' ' jelenleg le van foglalva. Szabadítsa fel a felszabadítást, majd próbálkozzon újra. | Stop\A virtuális gép felszabadítása, hogy módosíthatja a maximális árat. |
-| MaxPriceChangeNemengedélyezett | A maximális árváltozás nem megengedett. | A virtuális gép maximális ára nem módosítható. |
-| Az AzureSpotnotSupportedForTHISAPIVersion  |  Az Azure Spot nem támogatott ebben az API-verzióban. | Az API-verziónak 2019-03-01-nek kell lennie. |
-| Az AzureSpotnemtámogatottthisVmSize esetén  |  Az Azure Spot nem támogatott {0}ebben a virtuális gép méretben. | Válasszon másik virtuális gép mérete. További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
-| MaxPriceIsTámogatottcsakazurespotvirtualmachines  |  A maximális ár csak az Azure Spot virtuális gépek esetében támogatott. | További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
-| Erőforrások áthelyezéseazurespotvmnottámogatott  |  Az erőforrások áthelyezése kérelem egy Azure Spot virtuális gépet tartalmaz. Ez jelenleg nem támogatott. Ellenőrizze a virtuális gépazonosítók hibarészleteit. | A direkt virtuális gépek nem helyezhető át. |
-| MoveResourcesWithAzureSpotVmssNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure Spot virtuálisgép-méretezési készletet tartalmaz. Ez jelenleg nem támogatott. Ellenőrizze a virtuálisgép-méretezési készlet azonosítóinak hibarészleteit. | A Direktszín méretezési példányait nem helyezheti át. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Az ideiglenes operációsrendszer-lemezek nem támogatottak a direkt virtuális gépek számára. | Használjon rendszeres operációsrendszer-lemezt a direkt virtuális géphez. |
-| AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Az Azure Spot virtuális gép nem támogatott virtuálisgép-vezénylési móddal. | Állítsa be a vezénylési módot a virtuálisgép-méretezési készletre a Direktszínpéldányok használatához. |
+| SkuNotAvailable | Az erőforrás\<"erőforrás\>" kért szintje jelenleg nem érhető el a (z)\<\>\<subscriptionID\>előfizetés "location" helyén. Próbálkozzon másik szinten, vagy helyezzen üzembe egy másik helyet. | Ezen a helyen nincs elegendő Azure-beli helyszíni kapacitás a virtuális gép vagy a méretezési csoport példányának létrehozásához. |
+| EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  A kizárási szabályzat csak az Azure spot Virtual Machines állítható be. | Ez a virtuális gép nem egy helyszíni virtuális gép, ezért nem állíthatja be a kizárási szabályzatot. |
+| AzureSpotVMNotSupportedInAvailabilitySet  |  Az Azure spot virtuális gép nem támogatott a rendelkezésre állási csoporton belül. | Válasszon egy helyszíni virtuális gépet, vagy használjon egy virtuális gépet egy rendelkezésre állási csoportban, nem választhat mindkettőt. |
+| AzureSpotFeatureNotEnabledForSubscription  |  Az előfizetés nincs engedélyezve az Azure spot szolgáltatással. | Használjon olyan előfizetést, amely támogatja a helyszíni virtuális gépeket. |
+| VMPriorityCannotBeApplied  |  A megadott prioritási érték{0}("") nem alkalmazható a ({1}z) "" virtuális gépre, mert nem lett megadva prioritás a virtuális gép létrehozásakor. | A virtuális gép létrehozásakor válassza ki a prioritást. |
+| SpotPriceGreaterThanProvidedMaxPrice  |  A (z) "{0}" művelet nem hajtható végre, mert{1} a megadott "USD" maximális ár alacsonyabb, mint{2} a jelenlegi "USD" ár az Azure{3}spot VM-méretnél (). | Válasszon magasabb maximális árat. További információ: a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) vagy a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)díjszabási információi.|
+| MaxPriceValueInvalid  |  A maximális ár értéke érvénytelen. A maximális ár értéke csak-1, a nullánál nagyobb tizedes tört. A-1 érték maximális értéke azt jelzi, hogy az Azure spot virtuális gép árát nem lehet kizárni az árak miatt. | Érvényes maximális árat adjon meg. További információ: a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) vagy a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)díjszabása. |
+| MaxPriceChangeNotAllowedForAllocatedVMs | A maximális árváltozás nem engedélyezett, ha a (z{0}) "" virtuális gép jelenleg le van foglalva. Szabadítson fel és próbálkozzon újra. | Stop\Deallocate a virtuális gépet, hogy meg lehessen változtatni a maximális árat. |
+| MaxPriceChangeNotAllowed | Az árváltozás maximális értéke nem engedélyezett. | A virtuális gép maximális ára nem módosítható. |
+| AzureSpotIsNotSupportedForThisAPIVersion  |  Az Azure spot nem támogatott ehhez az API-verzióhoz. | Az API-verziót 2019-03-01-re kell állítani. |
+| AzureSpotIsNotSupportedForThisVMSize  |  Az Azure spot nem támogatott ehhez a virtuálisgép- {0}mérethez. | Válasszon másik virtuális gép méretét. További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  A maximális díj csak az Azure spot Virtual Machines esetén támogatott. | További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
+| MoveResourcesWithAzureSpotVMNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli helyszíni virtuális gépet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuális gépek azonosítóinak részleteit. | A Direktszínű virtuális gépek nem helyezhetők át. |
+| MoveResourcesWithAzureSpotVmssNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli virtuálisgép-méretezési készletet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuálisgép-méretezési csoport azonosítóinak részleteit. | A direktszín-méretezési csoport példányai nem helyezhetők át. |
+| EphemeralOSDisksNotSupportedForSpotVMs | Az ideiglenes operációsrendszer-lemezek nem támogatottak a helyszíni virtuális gépek esetében. | Használjon normál operációsrendszer-lemezt a helyszíni virtuális géphez. |
+| AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | A virtuálisgép-méretezési csoport virtuálisgép-méretezési módban nem támogatja az Azure-beli helyszíni virtuális gépeket. | A hangelőkészítési módot állítsa be a virtuálisgép-méretezési csoportba a direktszínes példányok használatához. |
 
 
-**Következő lépések** További információ: [spot Virtual Machines](./linux/spot-vms.md).
+**További lépések** További információ: [spot Virtual Machines](./linux/spot-vms.md).

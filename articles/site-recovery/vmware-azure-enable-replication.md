@@ -1,149 +1,149 @@
 ---
-title: VMware virtuális gépek engedélyezése vészhelyreállításhoz az Azure Site Recovery használatával
-description: Ez a cikk azt ismerteti, hogyan engedélyezheti a VMware VM replikációját a vészhelyreállításhoz az Azure Site Recovery szolgáltatás használatával
+title: A VMware virtuális gépek engedélyezése a vész-helyreállításhoz Azure Site Recovery használatával
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető a VMware VM-replikáció a vész-helyreállításhoz a Azure Site Recovery szolgáltatás használatával
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584146"
 ---
-# <a name="enable-replication-to-azure-for-vmware-vms"></a>A vmware-virtuális gépek azure-beli replikációjának engedélyezése
+# <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépekhez
 
-Ez a cikk ismerteti, hogyan engedélyezheti a helyszíni VMware virtuális gépek (VM) azure-ba replikációját.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a helyszíni VMware virtuális gépek (VM-EK) replikálása az Azure-ba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy a rendszer megfelel az alábbi feltételeknek:
+Ez a cikk azt feltételezi, hogy a rendszer megfelel a következő feltételeknek:
 
-- [Állítsa be a helyszíni forráskörnyezetet.](vmware-azure-set-up-source.md)
-- [Állítsa be a célkörnyezetet az Azure-ban.](vmware-azure-set-up-target.md)
-- A kezdés előtt [ellenőrizze a követelményeket és az előfeltételeket.](vmware-physical-azure-support-matrix.md) Fontos megjegyezni a következőket:
-  - [Támogatott operációs rendszerek](vmware-physical-azure-support-matrix.md#replicated-machines) replikált gépekhez.
-  - [A tárolás/lemez](vmware-physical-azure-support-matrix.md#storage) támogatása.
-  - [Az Azure-követelmények,](vmware-physical-azure-support-matrix.md#azure-vm-requirements) amelyeknek a helyszíni gépeknek meg kell felelniük.
+- [A helyszíni forrás környezet beállítása](vmware-azure-set-up-source.md).
+- [Állítsa be a célként megadott környezetet az Azure-ban](vmware-azure-set-up-target.md).
+- Mielőtt elkezdené, [ellenőrizze a követelményeket és az előfeltételeket](vmware-physical-azure-support-matrix.md) . Fontos megjegyezni a következőket:
+  - A replikált gépek [támogatott operációs rendszerei](vmware-physical-azure-support-matrix.md#replicated-machines) .
+  - [Tárterület-/lemez-](vmware-physical-azure-support-matrix.md#storage) támogatás.
+  - Az [Azure-követelmények](vmware-physical-azure-support-matrix.md#azure-vm-requirements) , amelyeknek a helyszíni számítógépeknek meg kell felelniük.
 
 ### <a name="resolve-common-issues"></a>Gyakori problémák megoldása
 
 - Minden lemeznek 4 TB-nál kisebbnek kell lennie.
-- Az operációs rendszer lemezének alaplemeznek kell lennie, nem dinamikus lemeznek.
-- A 2.
+- Az operációs rendszer lemezének alapszintű lemeznek kell lennie, nem dinamikus lemeznek.
+- A 2. generációs UEFI-kompatibilis virtuális gépek esetében az operációsrendszer-családnak Windows rendszernek kell lennie, és a rendszerindító lemeznek a 300 GB-nál kisebbnek kell lennie.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-VMware virtuális gépek replikálásakor tartsa szem előtt ezt az információt:
+A VMware virtuális gépek replikálásakor tartsa szem előtt ezeket az információkat:
 
-- Az Azure felhasználói fiókjának rendelkeznie kell bizonyos [engedélyekkel](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) egy új virtuális gép Azure-ba replikálásának engedélyezéséhez.
-- A VMware virtuális gépek 15 percenként kerülnek felderítésre. 15 percet vagy többet is igénybe vehet, amíg a virtuális gépek a felderítés után megjelennek az Azure Portalon. Új vCenter-kiszolgáló vagy vSphere-gazdagép hozzáadásakor a felderítés 15 percet vagy többet is igénybe vehet.
-- A virtuális gépen a környezet változásainak frissítése a portálon 15 percet vagy többet is igénybe vehet. Például a VMware eszközök telepítése.
-- Ellenőrizheti a VMware virtuális gépek utoljára felderített idejét: Tekintse meg a vCenter-kiszolgáló/vSphere gazdagép **Konfigurációs kiszolgálók** lapjának **Utolsó kapcsolatfelvételi időpontja** mezőt.
-- Ha az ütemezett felderítésre való várakozás nélkül szeretne virtuális gépeket hozzáadni a replikációhoz, jelölje ki a konfigurációs kiszolgálót (de ne kattintson rá), és válassza a **Frissítés**lehetőséget.
-- Ha engedélyezi a replikációt, ha a virtuális gép előkészíti, a folyamatkiszolgáló automatikusan telepíti az Azure Site Recovery Mobility szolgáltatást a virtuális gépen.
+- Az Azure-beli felhasználói fióknak bizonyos [engedélyekkel](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) kell rendelkeznie az új virtuális gép Azure-ba való replikálásának engedélyezéséhez.
+- A VMware virtuális gépek 15 percenként észlelhetők. Akár 15 percet is igénybe vehet, hogy a virtuális gépek megjelenjenek a Azure Portal a felderítés után. Új vCenter-kiszolgáló vagy vSphere-gazdagép hozzáadásakor a felderítés 15 vagy több percig is eltarthat.
+- A virtuális gépen a portálon való frissítéshez akár 15 percet is igénybe vehet. Például a VMware-eszközök telepítése.
+- A VMware virtuális gépek legutóbb felderített idejét a következő helyen tekintheti meg: a vCenter-kiszolgáló/vSphere-gazdagép **konfigurációs kiszolgálók** lapjának **utolsó elérhetősége** mezőjében.
+- Ha virtuális gépeket szeretne hozzáadni a replikáláshoz anélkül, hogy meg kellene várni az ütemezett felderítést, jelölje ki a konfigurációs kiszolgálót (de ne kattintson rá), majd válassza a **frissítés**lehetőséget.
+- Ha engedélyezi a replikációt, a virtuális gép előkészítésekor a Process Server automatikusan telepíti a Azure Site Recovery mobilitási szolgáltatást a virtuális gépen.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-Az ebben a szakaszban ismertetett lépések előtt tekintse át az alábbi információkat:
+A szakasz lépéseinek elvégzése előtt tekintse át a következő információkat:
 
-- Az Azure Site Recovery mostantól közvetlenül replikálja a felügyelt lemezeket az összes új replikációhoz. A folyamatkiszolgáló replikációs naplókat ír a célrégióban lévő gyorsítótártárfiókba. Ezek a naplók helyreállítási pontok létrehozására szolgálnak a replikán kezelt lemezeken, amelyek elnevezési konvenciója `asrseeddisk`.
-- A felügyelt lemezekre való replikáció PowerShell-támogatása az [Az.RecoveryServices modul 2.0.0-s verziójával](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) kezdődik
-- A feladatátvétel időpontjában a kiválasztott helyreállítási pont a célfelügyelt lemez létrehozásához használatos.
-- A korábban a céltárfiókokra replikálásra konfigurált virtuális gépeket ez nem érinti.
-- Egy új virtuális gép tárfiókok replikációja csak egy REprezentációs állapotátviteli (REST) API-n és powershellen keresztül érhető el. Az Azure REST API 2016-08-10-es vagy 2018-01-10-es verziója a tárfiókokreplikációhoz.
+- A Azure Site Recovery mostantól közvetlenül a felügyelt lemezekre replikálja az összes új replikálást. A Process Server a replikációs naplókat a célként megadott régióban lévő cache Storage-fiókba írja. Ezek a naplók olyan helyreállítási pontok létrehozására szolgálnak a replika által felügyelt lemezeken, `asrseeddisk`amelyek elnevezési konvenciója a következő:.
+- A felügyelt lemezekre történő replikáció PowerShell-támogatása az [az. recoveryservices szolgáltatónál modul verziójának 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) kezdődően érhető el.
+- A feladatátvétel időpontjában a kiválasztott helyreállítási pont a célként kezelt lemez létrehozásához használatos.
+- Azok a virtuális gépek, amelyek korábban a cél Storage-fiókokra való replikálásra vannak konfigurálva, nem érintettek.
+- Az új virtuális gépekhez tartozó Storage-fiókokba való replikálás csak reprezentációs állapot-átadási (REST) API-n és PowerShellen keresztül érhető el. A Storage-fiókok replikálásához használja az Azure REST API 2016-08-10-es vagy 2018-01-10-os verzióját.
 
-A replikáció engedélyezéséhez hajtsa végre az alábbi lépéseket:
+A replikáció engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Lépjen a **2.** > **Source** Miután első alkalommal engedélyezte a replikációt, válassza a **+Replikálás** lehetőséget a tárolóban a további virtuális gépek replikációjának engedélyezéséhez.
-1. A **Forrás** lapon > **Forrás**lapon válassza ki a konfigurációs kiszolgálót.
-1. A **Géptípus mezőben**válassza a **Virtuális gépek** vagy a Fizikai **gépek**lehetőséget.
-1. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet felügyelő vCenter-kiszolgálót, vagy válassza ki magát a gazdagépet. Ez a beállítás nem releváns, ha fizikai számítógépeket replikál.
-1. Válassza ki a folyamatkiszolgálót. Ha nem hoznak létre további folyamatkiszolgálókat, a konfigurációs kiszolgáló beépített folyamatkiszolgálója elérhető lesz a legördülő menüben. Az egyes folyamatkiszolgálók állapota az ajánlott korlátok és egyéb paraméterek szerint van feltüntetve. Válasszon egy kifogástalan folyamatkiszolgálót. [Kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) folyamatkiszolgáló nem választható ki. Elháríthatja [és megoldhatja](vmware-physical-azure-troubleshoot-process-server.md) a hibákat, **vagy** beállíthat egy [kibővített folyamatkiszolgálót.](vmware-azure-set-up-process-server-scale.md)
+1. Ugrás a **2. lépés: az alkalmazás** > **forrásának**replikálása. Miután az első alkalommal engedélyezte a replikálást, a tárolóban válassza a **+ replikálás** lehetőséget a további virtuális gépek replikálásának engedélyezéséhez.
+1. A **forrás** oldalon > **forrás**lapon válassza ki a konfigurációs kiszolgálót.
+1. A **gép típusa**beállításnál válassza a **Virtual Machines** vagy a **fizikai gépek**lehetőséget.
+1. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet felügyelő vCenter-kiszolgálót, vagy válassza ki magát a gazdagépet. Ez a beállítás nem vonatkozik a fizikai számítógépek replikálására.
+1. Válassza ki a folyamat-kiszolgálót. Ha nem hozott létre további folyamat-kiszolgálókat, a konfigurációs kiszolgáló beépített folyamat-kiszolgálója lesz elérhető a legördülő menüben. Az egyes folyamatok kiszolgálóinak állapota ajánlott korlátként és egyéb paraméterekként van megjelölve. Válassza ki az egészséges folyamat kiszolgálóját. Nem lehet kiválasztani egy [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Process Servert. A hibák [elhárításához és megoldásához,](vmware-physical-azure-troubleshoot-process-server.md) **illetve** a [kibővíthető folyamat kiszolgálójának](vmware-azure-set-up-process-server-scale.md)beállításához is használható.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="Replikációs forrásablak engedélyezése":::
-
-   > [!NOTE]
-   > A [9.24-es verziótól](site-recovery-whats-new.md)kezdődően további riasztásokat vezetnek be a folyamatkiszolgáló állapotriasztásainak javítása érdekében. Frissítse a Site Recovery összetevőit a 9.24-es vagy újabb verzióra az összes létrehozandó riasztáshoz.
-
-1. A **Target területen**válassza ki azt az előfizetési és erőforráscsoportot, ahol létre szeretné hozni a feladatátvételt a virtuális gépeken. Válassza ki a központi telepítési modellt, amelyet használni szeretne az Azure-ban a feladatátvételi virtuális gépek.
-1. Válassza ki az Azure-hálózat ot és az alhálózatot, amelyhez az Azure-beli virtuális gépek a feladatátvétel után csatlakoznak. A hálózatnak ugyanabban a régióban kell lennie, mint a Site Recovery szolgáltatás tárolójának.
-
-   Válassza **a Beállítás most a kijelölt gépekhez** lehetőséget, ha a hálózati beállítást az összes olyan virtuális gépre alkalmazni szeretné, amelyet védelemre választott. Válassza **a Később konfigurálása** lehetőséget az Azure-hálózat virtuális gépenkéntkiválasztásához. Ha nem rendelkezik hálózattal, létre kell hoznia egyet. Ha hálózatot szeretne létrehozni az Azure Resource Manager használatával, válassza **az Új létrehozása lehetőséget.** Ha van ilyen, válasszon egy alhálózatot, majd kattintson **az OK gombra.**
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Replikációs célablak engedélyezése":::
-
-1. **Virtuális gépek:** > Válassza ki a**virtuális gépeket,** válassza ki a replikálni kívánt virtuális gépeket. Csak olyan virtuális gépeket választhat ki, amelyekreplikációja engedélyezhető. Ezután kattintson az **OK** gombra. Ha nem lát vagy nem jelöl ki egy adott virtuális gépet, olvassa el a [Forrásgép nem szerepel az Azure Portalon a](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) probléma megoldásához.
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Replikáció engedélyezése A virtuális gépek ablakának kiválasztása":::
-
-1.  > Tulajdonságok **Properties****konfigurálása tulajdonsága,** válassza ki a fiókot, hogy a folyamat kiszolgáló automatikusan telepíti a Site Recovery Mobility szolgáltatás a virtuális gép. Azt is válassza ki, hogy milyen típusú cél felügyelt lemezt használni a replikációaz adatforgalmi minták alapján.
-1. Alapértelmezés szerint a forrás virtuális gép összes lemeze replikálódik. A lemezek replikációból való kizárásához törölje a jelet a **Másolat** jelölőnégyzetből azon lemezek esetében, amelyeket nem szeretne replikálni. Ezután kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja. [További információ](vmware-azure-exclude-disk.md) a lemezek kizárásáról.
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Replikációs konfigurálási tulajdonságok ablakának engedélyezése":::
-
-1. A **Replikációbeállításaitól** > Konfigurálja a**replikációs beállításokat,** ellenőrizze, hogy a megfelelő replikációs házirend van-e kiválasztva. A replikációs házirend beállításait a **Beállítások** > **replikációs házirendházirendek** > házirendjének beállításai a Beállítások_beállításainak szerkesztése című_ > lapon**módosíthatja.** A házirendekre alkalmazott módosítások a replikálásra és az új virtuális gépekre is vonatkoznak.
-1. Ha virtuális gépeket szeretne gyűjteni egy replikációs csoportba, engedélyezze **a többvirtuális gép konzisztenciáját.** Adja meg a csoport nevét, majd kattintson az **OK gombra.**
+   :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="Replikálási forrás ablakának engedélyezése":::
 
    > [!NOTE]
-   > - A replikációs csoportban lévő virtuális gépek együtt replikálódnak, és megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkeznek, amikor feladatátvételt kapnak.
-   > - Gyűjtse össze a virtuális gépeket és a fizikai kiszolgálókat, hogy tükrözze a számítási feladatokat. A több virtuális gép konzisztenciájának engedélyezése hatással lehet a számítási feladatok teljesítményére. Ezt csak akkor tegye, ha a virtuális gépek ugyanazt a számítási feladatot futtatják, és konzisztenciára van szükség.
+   > A 9,24-es [verziótól](site-recovery-whats-new.md)kezdődően további riasztások jelennek meg a Process Server állapotára vonatkozó riasztások javítása érdekében. Frissítse a Site Recovery összetevőket a 9,24-es vagy újabb verzióra az összes generált riasztáshoz.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Replikációs ablak engedélyezése":::
+1. A **cél**mezőben válassza ki azt az előfizetést és erőforráscsoportot, amelyben létre szeretné hozni a feladatátvételen átesett virtuális gépeket. Válassza ki azt a telepítési modellt, amelyet az Azure-ban szeretne használni a feladatátvétel alatt álló virtuális gépekhez.
+1. Válassza ki azt az Azure-hálózatot és-alhálózatot, amelyhez az Azure virtuális gépek csatlakozni fognak a feladatátvételt követően. A hálózatnak ugyanabban a régióban kell lennie, mint a Site Recovery Service Vault.
 
-1. Válassza ki a **Replikáció engedélyezése** elemet. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **feladatok** > **hely-helyreállítási feladatai ban követheti**nyomon. A **Véglegesítési védelem** feladat futtatása után a virtuális gép készen áll a feladatátvételre.
+   Válassza a **beállítás most a kijelölt gépekhez** lehetőséget, hogy a hálózati beállítást a védelemre kiválasztott összes virtuális gépre alkalmazza. Válassza a **Konfigurálás később** lehetőséget az Azure-hálózat virtuális gépen való kiválasztásához. Ha nincs hálózata, létre kell hoznia egyet. Ha Azure Resource Manager használatával szeretne hálózatot létrehozni, válassza az **új létrehozása**lehetőséget. Válassza ki az alhálózatot, ha van ilyen, majd kattintson **az OK gombra**.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Replikálási cél ablakának engedélyezése":::
+
+1. **Virtuális gépek** > esetén**válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan virtuális gépeket választhat, amelyeken engedélyezhető a replikáció. Ezután kattintson az **OK** gombra. Ha nem látja vagy nem jelöl ki egy adott virtuális gépet, a probléma megoldásához tekintse meg [a forrásoldali gép nem szerepel a Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) .
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Replikáció engedélyezése – virtuális gépek kiválasztása ablak":::
+
+1.  > A **Tulajdonságok****konfigurálásához**válassza ki azt a fiókot, amelyet a Process Server használ a site Recovery mobilitási szolgáltatás automatikus telepítésére a virtuális gépen. Azt is válassza ki, hogy milyen típusú felügyelt lemezt kíván használni a replikáláshoz az adatváltozási minták alapján.
+1. Alapértelmezés szerint a rendszer a forrás virtuális gép összes lemezét replikálja. Ha ki szeretné zárni a lemezeket a replikációból, törölje a **Belefoglalás** jelölőnégyzetet minden olyan lemez esetében, amelyet nem szeretne replikálni. Ezután kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja. [További](vmware-azure-exclude-disk.md) információ a lemezek kizárásáról.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Replikálási tulajdonságok konfigurálásának engedélyezése ablak":::
+
+1. A replikációs **Beállítások** > **konfigurálásával konfigurálja**a replikációs beállításokat, és ellenőrizze, hogy a megfelelő replikációs házirend van-e kiválasztva. A replikációs házirend beállításait a **Beállítások** > **replikációs házirendek** > _Házirend neve_ > **szerkesztési beállítások**lehetőségre módosíthatja. A házirendre alkalmazott módosítások a replikálásra és az új virtuális gépekre is érvényesek.
+1. Ha virtuális gépeket szeretne összegyűjteni egy replikációs csoportba, engedélyezze a **több virtuális gépre kiterjedő konzisztenciát**. Adja meg a csoport nevét, majd kattintson **az OK gombra**.
+
+   > [!NOTE]
+   > - A replikációs csoportban lévő virtuális gépek együtt replikálódnak, és megosztott összeomlás-konzisztens és alkalmazás-konzisztens helyreállítási pontokat biztosítanak a feladatátvétel során.
+   > - Összegyűjtheti a virtuális gépeket és a fizikai kiszolgálókat, hogy azok tükrözze a számítási feladatokat. A több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a munkaterhelés teljesítményére. Ezt csak akkor hajtsa végre, ha a virtuális gépek ugyanazt a számítási feladatot futtatják, és konzisztensnek kell lenniük.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Replikálási ablak engedélyezése":::
+
+1. Válassza ki a **Replikáció engedélyezése** elemet. A **védelem engedélyezése** feladat előrehaladását a beállítások**feladatok** > **site Recovery feladatok** **menüpontban** > követheti nyomon. A **védelem véglegesítése** feladatok futtatása után a virtuális gép készen áll a feladatátvételre.
 
 ## <a name="view-and-manage-vm-properties"></a>A virtuális gépek tulajdonságainak megtekintése és kezelése
 
-Ezután ellenőrizze a forrás virtuális gép tulajdonságait. Ne feledje, hogy az Azure virtuális gép nevének meg kell felelnie az [Azure virtuális gép követelményeinek.](vmware-physical-azure-support-matrix.md#replicated-machines)
+Ezután ellenőrizze a forrás virtuális gép tulajdonságait. Ne feledje, hogy az Azure-beli virtuális gép nevének meg kell felelnie az Azure-beli [virtuális gépek követelményeinek](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-1. Nyissa meg a **Replikált** > **elemek beállításait,** és jelölje ki a virtuális gépet. Az **Essentials** lap a virtuális gép beállításaival és állapotával kapcsolatos információkat jeleníti meg.
+1. Lépjen a **Beállítások** > **replikált elemek elemre**, majd válassza ki a virtuális gépet. Az **Essentials** oldal a virtuális gép beállításairól és állapotáról jelenít meg információkat.
 1. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.
-1. A **Számítási és hálózati** > **számítási tulajdonságokban**több virtuálisgép-tulajdonság is módosítható.
+1. A **számítás és hálózat** > **számítási tulajdonságok**területén több virtuálisgép-tulajdonságot is módosíthat.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Számítási és hálózati tulajdonságok ablak":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Számítási és hálózati Tulajdonságok ablak":::
 
-   - **Azure virtuális gép neve:** szükség esetén módosítsa a nevet az Azure-követelményeknek megfelelően.
-   - **Cél virtuális gép mérete vagy virtuális gép típusa:** Az alapértelmezett virtuális gép mérete a lemezszám, a hálózati adapterek számát, a processzormagok számát, a memóriát és a cél Azure-régióban rendelkezésre álló virtuálisgép-szerepkör-méretek alapján választjuk ki a rendszer. Az Azure Site Recovery kiválasztja az első elérhető virtuális gép méretét, amely megfelel az összes feltételnek. A feladatátvétel előtt bármikor kiválaszthat egy másik virtuális gép méretet az igények alapján. A virtuális gép lemezmérete is a forráslemez mérete, és csak feladatátvétel után módosítható. További információ a lemezméretekről és az IOPS-díjakról a [Windows virtuálisgép-lemezei méretezhetőségi és teljesítménycéljainak eléréséről.](/azure/virtual-machines/windows/disk-scalability-targets)
-   - **Erőforráscsoport**: Kiválaszthatja azt az [erőforráscsoportot,](/azure/azure-resource-manager/management/overview#resource-groups)amelyből a virtuális gép a post feladatátvétel részévé válik. Ezt a beállítást a feladatátvétel előtt bármikor módosíthatja. Feladatátvétel után, ha áttelepíti a virtuális gépet egy másik erőforráscsoportba, a virtuális gép védelmi beállításai megszakadnak.
-   - **Rendelkezésre állási csoport:** Kiválaszthatja a [rendelkezésre állási csoport,](/azure/virtual-machines/windows/tutorial-availability-sets) ha a virtuális gép kell egy része egy post feladatátvétel. Amikor kiválaszt egy rendelkezésre állási készletet, tartsa szem előtt a következő információkat:
-     - Csak a megadott erőforráscsoporthoz tartozó rendelkezésre állási csoportok jelennek meg.
+   - **Azure-beli virtuális gép neve**: ha szükséges, módosítsa a nevet az Azure-követelmények teljesítéséhez.
+   - **Cél virtuálisgép-méret vagy virtuálisgép-típus**: az alapértelmezett virtuálisgép-méret a lemezes darabszámot, a hálózati adapterek darabszámát, a CPU-mag darabszámát, a memóriát és az elérhető virtuálisgép-szerepkört tartalmazó paraméterek alapján lesz kiválasztva a cél Azure-régióban. Azure Site Recovery kiválasztja az első elérhető virtuálisgép-méretet, amely megfelel az összes feltételnek. A feladatátvétel előtt bármikor kiválaszthat egy másik virtuálisgép-méretet az igényei szerint. A virtuális gép lemezének mérete a forrás lemez méretétől is függ, és csak a feladatátvétel után módosítható. További információk a [Windows rendszerű virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó](/azure/virtual-machines/windows/disk-scalability-targets)IOPS-méretekről és a díjszabásról.
+   - **Erőforráscsoport**: kiválaszthat egy [erőforráscsoportot](/azure/azure-resource-manager/management/overview#resource-groups), amelyből a virtuális gép a feladatátvétel utáni részévé válik. Ez a beállítás a feladatátvétel előtt bármikor módosítható. Ha a feladatátvételt követően áttelepíti a virtuális gépet egy másik erőforráscsoporthoz, az adott virtuális gép védelmi beállításai is megszakadnak.
+   - **Rendelkezésre állási csoport**: kiválaszthatja a [rendelkezésre állási készletet](/azure/virtual-machines/windows/tutorial-availability-sets) , ha a virtuális gépnek egy feladatátvétel utáni résznek kell lennie. A rendelkezésre állási csoport kiválasztásakor tartsa szem előtt a következő információkat:
+     - Csak a megadott erőforráscsoporthoz tartozó rendelkezésre állási csoportok szerepelnek a felsorolásban.
      - A különböző virtuális hálózatokon lévő virtuális gépek nem lehetnek ugyanannak a rendelkezésre állási csoportnak a részei.
-     - Csak az azonos méretű virtuális gépek lehetnek egy rendelkezésre állási csoport részét.
+     - Csak azonos méretű virtuális gépek lehetnek egy rendelkezésre állási csoport részei.
 
-1. A célhálózat, az alhálózat és az Azure virtuális géphez rendelt IP-cím adatait is hozzáadhatja.
-1. A **Lemezek alkalmazásban láthatja**a replikálandó virtuális gép operációs rendszerét és adatlemezeit.
+1. Az Azure-beli virtuális géphez hozzárendelt célként megadott hálózattal, alhálózattal és IP-címmel kapcsolatos információkat is hozzáadhat.
+1. A **lemezeken**a replikálni kívánt virtuális gépen található operációs rendszer és adatlemezek láthatók.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Hálózatok és IP-címek konfigurálása
 
-Beállíthatja a cél IP-címet:
+Megadhatja a cél IP-címét:
 
-- Ha nem ad meg címet, a feladatátvételi virtuális gép DHCP-t használ.
-- Ha olyan címet állít be, amely nem érhető el feladatátvételkor, a feladatátvétel nem működik.
-- Ha a cím elérhető a teszt feladatátvételi hálózatban, használhatja ugyanazt a cél IP-címet a teszt feladatátvételhez.
+- Ha nem ad meg címet, a feladatátvételen átadott virtuális gép DHCP-t használ.
+- Ha olyan címeket állít be, amely nem érhető el a feladatátvétel során, a feladatátvétel nem működik.
+- Ha a cím elérhető a feladatátvételi teszt hálózaton, ugyanazt a cél IP-címet használhatja a feladatátvételi teszthez.
 
-A hálózati adapterek számát a célvirtuális géphez megadott méret határozza meg, az alábbiak szerint:
+A hálózati adapterek számát a cél virtuális géphez megadott méret határozza meg, a következőképpen:
 
-- Ha a hálózati adapterek száma a forrás virtuális gépen kisebb vagy egyenlő, hogy hány adapterek, amelyek a cél virtuális gép mérete, a cél rendelkezik ugyanannyi adapterek, mint a forrás.
-- Ha a forrás virtuális gép adaptereinek száma meghaladja a cél virtuális gép méretének engedélyezett számát, a rendszer a célméretet használja. Ha például egy forrás virtuális gép két hálózati adapterrel rendelkezik, és a célvirtuális gép mérete négy, a cél virtuális gép két adapterrel rendelkezik. Ha a forrás virtuális gép két adapter, de a célméretecsak támogatja az egyik, a cél virtuális gép csak egy adapter.
-- Ha a virtuális gép több hálózati adapterrel rendelkezik, mindegyik ugyanahhoz a hálózathoz csatlakozik. Emellett a listában látható első adapter lesz az Azure virtuális gép alapértelmezett hálózati adaptere.
+- Ha a forrás virtuális gépen lévő hálózati adapterek száma kisebb vagy egyenlő, mint a célként megadott virtuális gép méretéhez engedélyezett adapterek száma, a célként megadott számú adapter megegyezik a forrással.
+- Ha a forrás virtuális géphez tartozó adapterek száma meghaladja a cél virtuális gép méretéhez engedélyezett számot, a rendszer a célként megadott maximális méretet használja. Ha például a forrás virtuális gép két hálózati adapterrel rendelkezik, és a cél virtuális gép mérete négyet támogat, a célként megadott virtuális gép két adapterrel rendelkezik. Ha a forrásoldali virtuális gép két adapterrel rendelkezik, de a célként megadott méret csak egyet támogat, a célként megadott virtuális gépnek csak egy adaptere van.
+- Ha a virtuális gépnek több hálózati adaptere van, akkor mind ugyanahhoz a hálózathoz csatlakoznak. Emellett a listában látható első adapter lesz az alapértelmezett hálózati adapter az Azure-beli virtuális gépen.
 
 ### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A Microsoft Frissítési Garancia-ügyfelek az Azure Hybrid Benefit használatával megtakaríthatják az Azure-ba áttelepített Windows Server-számítógépek licencelési költségeit. Az előny az Azure vész-helyreállítási is vonatkozik. Ha jogosult, hozzárendelheti a kedvezményt a virtuális gép, amely site recovery hoz létre, ha van egy feladatátvétel.
+A Microsoft frissítési garanciával rendelkező ügyfelei az Azure-ba migrált Windows Server rendszerű számítógépek licencelési költségeinek mentését Azure Hybrid Benefit használhatják. Az előny az Azure vész-helyreállításra is vonatkozik. Ha Ön jogosult, hozzárendelheti az előnyt ahhoz a virtuális géphez, amelyet Site Recovery hoz létre, ha van feladatátvétel.
 
-1. Nyissa meg a replikált virtuális gép **Számítógép és hálózat tulajdonságait.**
-1. Válaszoljon, amikor megkérdezi, hogy rendelkezik-e olyan Windows Server-licenccel, amely alkalmassá teszi önt az Azure Hybrid Benefit használatára.
-1. Győződjön meg arról, hogy rendelkezik egy jogosult Windows Server-licencfrissítési garanciával, amely segítségével alkalmazhatja a kedvezményt a feladatátvételkor létrehozandó virtuális gépre.
+1. Nyissa meg a replikált virtuális gép **számítógép-és hálózati tulajdonságait** .
+1. Válasz, ha a rendszer megkérdezi, hogy van-e olyan Windows Server-licence, amely jogosult a Azure Hybrid Benefitre.
+1. Győződjön meg arról, hogy jogosult Windows Server-licenccel rendelkezik frissítési garanciával, amely a feladatátvétel során létrehozandó virtuális gépre való juttatás alkalmazására használható.
 1. Mentse a replikált virtuális gép beállításait.
 
-[További információ](https://azure.microsoft.com/pricing/hybrid-benefit/) az Azure Hybrid Benefit szolgáltatásról.
+[További](https://azure.microsoft.com/pricing/hybrid-benefit/) információ a Azure Hybrid Benefitról.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután a virtuális gép elérte a védett állapotot, próbálja meg egy [feladatátvétel,](site-recovery-failover.md) hogy ellenőrizze, hogy az alkalmazás jelenik-e meg az Azure-ban.
+Miután a virtuális gép elérte a védett állapotot, próbálja meg a [feladatátvételt](site-recovery-failover.md) , és győződjön meg arról, hogy az alkalmazás megjelenik az Azure-ban.
 
-- [További információ](site-recovery-manage-registration-and-protection.md) arról, hogyan lehet megtisztítani a regisztrációs és védelmi beállításokat a replikáció letiltásához.
-- [További információ](vmware-azure-disaster-recovery-powershell.md) arról, hogyan automatizálhatja a virtuális gépek replikációját a PowerShell használatával.
+- [További](site-recovery-manage-registration-and-protection.md) információ a regisztrálási és védelmi beállítások törléséről a replikáció letiltásához.
+- [További](vmware-azure-disaster-recovery-powershell.md) információ a virtuális gépek replikálásának automatizálásáról a PowerShell használatával.

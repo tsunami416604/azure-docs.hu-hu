@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cloud Shell szolgáltatásai | Microsoft dokumentumok
-description: Az Azure Cloud Shell funkcióinak áttekintése
+title: Azure Cloud Shell funkciók | Microsoft Docs
+description: A Azure Cloud Shell szolgáltatásainak áttekintése
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,70 +15,70 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521013"
 ---
-# <a name="features--tools-for-azure-cloud-shell"></a>Funkciók & eszközök az Azure Cloud Shellhez
+# <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-Az Azure Cloud `Ubuntu 16.04 LTS`Shell fut .
+Azure Cloud Shell fut `Ubuntu 16.04 LTS`.
 
 ## <a name="features"></a>Szolgáltatások
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
-A Cloud Shell biztonságosan és automatikusan hitelesíti a fiókhoz való hozzáférést az Azure CLI és az Azure PowerShell számára.
+Cloud Shell biztonságosan és automatikusan hitelesíti a fiókhoz való hozzáférést az Azure CLI-hez és a Azure PowerShellhoz.
 
-### <a name="home-persistence-across-sessions"></a>$HOME perzisztencia a munkamenetek között
+### <a name="home-persistence-across-sessions"></a>$HOME adatmegőrzés a munkamenetek között
 
-A munkamenetek közötti fájlok megőrzéséhez a Cloud Shell végigvezeti önt egy Azure-fájlmegosztás csatolásán az első indításkor.
-Miután elkészült, a Cloud Shell automatikusan csatolja a tárolót `$HOME\clouddrive`(csatlakoztatva) minden jövőbeli munkamenethez.
-Emellett a `$HOME` könyvtár megmarad az Azure-fájlmegosztásban.Emellett a könyvtár is persistizált as an.img in your Azure File share.
-A számítógépen `$HOME` és a gép állapotán kívül lévő fájlok nem maradnak meg a munkamenetek között. Ajánlott eljárásokat a titkos kulcsok, például az SSH-kulcsok tárolásakor. Az olyan szolgáltatások, mint [az Azure Key Vault, oktatóanyagokkal rendelkeznek a beállításhoz.](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites)
+A fájlok munkamenetek közötti megőrzéséhez Cloud Shell végigvezeti egy Azure-fájlmegosztás első indításkor való csatlakoztatásán.
+Ha elkészült, Cloud Shell automatikusan csatolja a tárolót (csatolva `$HOME\clouddrive`) az összes jövőbeli munkamenethez.
+Emellett a `$HOME` címtára. img néven is megmarad az Azure-fájlmegosztás számára.
+A és a `$HOME` gép állapotán kívüli fájlok nem maradnak meg a munkamenetek között. Ajánlott eljárások használata titkos kódok, például SSH-kulcsok tárolásához. Olyan szolgáltatások [, mint a Azure Key Vault a telepítőhöz kapcsolódó oktatóanyagok](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
-[További információ a felhőshellben továbbra is megőrzött fájlokról.](persisting-shell-storage.md)
+[További információ a fájlok megőrzéséről a Cloud Shellban.](persisting-shell-storage.md)
 
 ### <a name="azure-drive-azure"></a>Azure-meghajtó (Azure:)
 
-A Cloud Shell Ben a`Azure:`PowerShell biztosítja az Azure-meghajtót ( ). Az Azure-meghajtóra válthat `cd Azure:` a használatával, majd `cd  ~`vissza a kezdőkönyvtárba.
-Az Azure-meghajtó lehetővé teszi az Azure-erőforrások, például a compute, a Network, a Storage stb.
-Továbbra is használhatja a jól ismert [Azure PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/azure) ezeket az erőforrásokat, függetlenül attól, hogy a meghajtóban van-e.
-Az Azure-erőforrásokon végrehajtott módosítások, akár közvetlenül az Azure Portalon, akár az Azure PowerShell-parancsmagokon keresztül, megjelennek az Azure-meghajtóban.  Futtathatja `dir -Force` az erőforrások frissítéséhez.
+A Cloud Shell PowerShell-je biztosítja az Azure`Azure:`-meghajtót (). Átválthat az Azure `cd Azure:` -ra, és visszatérhet a saját kezdőkönyvtárának a `cd  ~`saját könyvtárába.
+Az Azure-meghajtó az Azure-erőforrások (például számítás, hálózat, tárolás stb.) egyszerű felderítését és navigálását teszi lehetővé a fájlrendszerhez hasonló módon.
+Továbbra is használhatja az ismerős [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure) az erőforrások kezeléséhez, függetlenül attól, hogy melyik meghajtóról van.
+Az Azure-erőforrásokon végrehajtott, közvetlenül Azure Portal vagy Azure PowerShell parancsmagokkal végzett módosítások az Azure-meghajtón is megjelennek.  A futtatásával `dir -Force` frissítheti az erőforrásokat.
 
 ![](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Exchange Online kezelése
 
-A Cloud Shell ben lévő PowerShell az Exchange Online-modul privát buildjét tartalmazza.  Futtassa `Connect-EXOPSSession` az Exchange-parancsmagok levezetéséhez.
+A Cloud Shell PowerShell az Exchange Online modul privát összeállítását tartalmazza.  Az `Connect-EXOPSSession` Exchange-parancsmagok beszerzéséhez futtassa a parancsot.
 
 ![](media/features-powershell/exchangeonline.png)
 
  Futtassa a `Get-Command -Module tmp_*` parancsot.
 > [!NOTE]
-> A modul nevének `tmp_`a programmal kell kezdődnie, ha ugyanazzal az előtaggal telepített modulokat, a parancsmagok is megjelennek. 
+> A modul nevének a (z `tmp_`) értékkel kell kezdődnie, ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
-### <a name="deep-integration-with-open-source-tooling"></a>Mély integráció a nyílt forráskódú eszközökkel
+### <a name="deep-integration-with-open-source-tooling"></a>Mélyreható integráció nyílt forráskódú eszközökkel
 
-A Cloud Shell előre konfigurált hitelesítést tartalmaz a nyílt forráskódú eszközökhöz, például a Terraform, az Ansible és a Chef InSpec eszközökhöz. Próbálja ki a példa forgatókönyvek.
+A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansible és a Chef inspec előre konfigurált hitelesítését tartalmazza. Próbálja ki a példákat a forgatókönyvek közül.
 
 ## <a name="tools"></a>Eszközök
 
-|Kategória   |Név   |
+|Kategória   |Name (Név)   |
 |---|---|
-|Linux eszközök            |bash<br> zsh<br> Sh<br> tmux (angol)<br> Ásni<br>               |
-|Azure-eszközök            |[Azure CLI](https://github.com/Azure/azure-cli) és [Klasszikus Azure CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions parancssori felület](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Szövegszerkesztők           |kód (Cloud Shell szerkesztő)<br> vim<br> nano<br> emacs    |
+|Linux-eszközök            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
+|Azure-eszközök            |[Azure CLI](https://github.com/Azure/azure-cli) és [klasszikus Azure CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions parancssori felület](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Szövegszerkesztők           |Code (Cloud Shell Editor)<br> vim<br> nano<br> emacs    |
 |Verziókövetés         |git                    |
-|Eszközök készítése            |make<br> maven<br> npm<br> Pip         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl között](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Élén](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|Adatbázisok              |MySQL kliens<br> PostgreSql kliens<br> [sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython-ügyfél<br> [Felhőöntödei CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Báb csavar](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp csomagoló](https://www.packer.io/)|
+|Buildelő eszközök            |make<br> maven<br> npm<br> pip         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
+|Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL – parancsfájl](https://github.com/Microsoft/sql-xplat-cli) |
+|Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -89,10 +89,10 @@ A Cloud Shell előre konfigurált hitelesítést tartalmaz a nyílt forráskód�
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2.7 és 3.5 (alapértelmezett)|
+|Python     |2,7 és 3,5 (alapértelmezett)|
 
 ## <a name="next-steps"></a>További lépések
-[Bash a Cloud Shell rövid útmutató](quickstart.md) <br>
-[PowerShell a Cloud Shell rövid útmutatójában](quickstart-powershell.md) <br>
-[További információ az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>
-[További információ az Azure PowerShellről](https://docs.microsoft.com/powershell/azure/) <br>
+[Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
+[PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md) <br>
+[További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>
+[Tudnivalók a Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

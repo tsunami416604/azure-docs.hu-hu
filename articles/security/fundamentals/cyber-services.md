@@ -1,6 +1,6 @@
 ---
-title: Microsoft-szolgáltatások a kiberbiztonság területén | Microsoft dokumentumok
-description: A cikk bemutatja a Microsoft kiberbiztonsággal kapcsolatos szolgáltatásait, valamint azt, hogy miként kaphat további információkat ezekről a szolgáltatásokról.
+title: Microsoft-szolgáltatások a kiberbiztonsági-ben | Microsoft Docs
+description: A cikk bevezetést nyújt a kiberbiztonsági-hez kapcsolódó Microsoft-szolgáltatásokról, valamint arról, hogyan szerezhet be további információt ezekről a szolgáltatásokról.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -16,28 +16,28 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
 ms.openlocfilehash: 997bd480fd8b552d7cff61d7a4798e0a3d4db5bf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548648"
 ---
-# <a name="microsoft-services-in-cybersecurity"></a>Microsoft-szolgáltatások a kiberbiztonság terén
+# <a name="microsoft-services-in-cybersecurity"></a>Microsoft-szolgáltatások a kiberbiztonsági-ben
 
-A Microsoft Services átfogó megközelítést biztosít a biztonság, az identitás és a kiberbiztonság terén. Ezek közé tartozik egy sor biztonsági és identitásszolgáltatások között stratégia, tervezés, végrehajtás, és a folyamatos támogatást. Ezek a szolgáltatások segíthetnek a vállalati ügyfeleknek a stratégiai céljaiknak megfelelő biztonsági megoldások megvalósításában.
+A Microsoft szolgáltatásai átfogó megközelítést biztosítanak a biztonság, az identitás és a kiberbiztonsági terén. Többek között a stratégia, a tervezés, a megvalósítás és a folyamatos támogatás számos biztonsági és Identity szolgáltatást tartalmaz. Ezek a szolgáltatások segíthetnek a vállalati ügyfeleknek olyan biztonsági megoldások megvalósításában, amelyek összhangban vannak a stratégiai céljaikkal.
 
-A Microsoft-szolgáltatások olyan megoldásokat hozhatnak létre, amelyek integrálják és fejlesztik termékeink legújabb biztonsági és identitási képességeit, hogy megvédjék vállalkozását és innovációt hajtsanak elő.
+A Microsoft-szolgáltatások olyan megoldásokat hozhatnak létre, amelyek integrálják és javítják a termékeink legújabb biztonsági és identitási képességeit, így biztosítva a vállalata és az innovációt.
 
-Műszaki szakembereink ből álló csapatunk magasan képzett szakértőkből áll, akik rengeteg biztonsági és identitási tapasztalatot kínálnak.
+Technikai szakemberekből álló csapatunk olyan magasan képzett szakértőkből áll, akik számos biztonsági és identitási élményt nyújtanak.
 
-További információ a Microsoft Services által nyújtott szolgáltatásokról:
+További információ a Microsoft-szolgáltatások által nyújtott szolgáltatásokról:
 
-* [Biztonsági kockázatértékelés](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
-* [Dinamikus identitáskeret-felmérés](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Az Active Directory-szolgáltatások kapcsolat nélküli felmérése](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Továbbfejlesztett biztonsági felügyeleti környezet](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
-* [Azure AD megvalósítási szolgáltatásai](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Biztosítása ellen oldalirányú számla mozgalom](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Incidensre adott válasz és helyreállítás](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Biztonsági kockázatfelmérés](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Dinamikus identitás-keretrendszer értékelése](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
+* [Offline értékelés a Active Directory-szolgáltatásokhoz](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
+* [Fokozott biztonsági felügyeleti környezet](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Azure AD-implementációs szolgáltatások](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
+* [Az oldalirányú fiókok mozgatásának védelme](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
+* [Incidensek válasza és helyreállítása](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
-[További információ](https://aka.ms/cyberserv) a Microsoft Services biztonsági tanácsadási szolgáltatásairól.
+[További](https://aka.ms/cyberserv) információ a Microsoft Services biztonsági tanácsadói szolgáltatásairól.

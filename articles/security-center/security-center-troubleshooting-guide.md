@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center – Hibaelhárítási útmutató | Microsoft Docs
-description: Ez az útmutató informatikai szakembereknek, biztonsági elemzőknek és felhőrendszergazdáknak szól, akiknek az Azure Security Centerrel kapcsolatos problémákelhárítására van szükségük.
+description: Ez az útmutató olyan informatikai szakembereknek, biztonsági elemzőknek és felhőalapú rendszergazdáknak szól, akiknek szükségük van a Azure Security Center kapcsolatos problémák elhárítására.
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585326"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
 Ez az útmutató olyan informatikai (IT) szakemberek, információbiztonsági elemzők és felhőrendszergazdák számára készült, akik szervezetei az Azure Security Centert használják, és el kell hárítaniuk a használathoz kapcsolódó problémákat.
 
-A Security Center a Log Analytics-ügynök segítségével gyűjti és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A cikkben szereplő információk a Security Center működését jelölik a Log Analytics-ügynökre való áttérés után.
+Security Center a Log Analytics ügynök használatával gyűjti és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Log Analytics-ügynökre való áttérés után Security Center funkciót jelentenek.
 
 ## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
 Ez az útmutató a Security Center használatához kapcsolódó problémák hibaelhárítását mutatja be.
 
-Riasztástípusok:
+Riasztási típusok:
 
 * Virtuális gép működésének elemzése (VMBA)
 * Hálózatelemzés
@@ -54,25 +54,25 @@ A napló tartalmazza az erőforrásokon végrehajtott összes írási műveletet
 
 ## <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
-A Security Center a Log Analytics-ügynök – ez ugyanaz az ügynök, amelyet az Azure Monitor szolgáltatás használ – biztonsági adatok gyűjtése az Azure virtuális gépek. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
+A Security Center a Log Analytics-ügynököt használja – ez ugyanaz az ügynök, amelyet az Azure Monitor Service használ – az Azure-beli virtuális gépekről származó biztonsági adatok gyűjtésére. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
 
 * HealthService.exe
 
-Ha megnyitja a szolgáltatásfelügyeleti konzolt (services.msc), a Log Analytics-ügynök szolgáltatás az alábbiak szerint fut:
+Ha megnyitja a szolgáltatások kezelése konzolt (Services. msc), akkor a Log Analytics ügynök szolgáltatás fut, ahogy az alábbi ábrán is látható:
 
 ![Szolgáltatások](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Ha meg szeretné tekinteni, hogy az ügynök melyik verziójával rendelkezik, nyissa meg a **Feladatkezelőt**, a **Folyamatok** lapon keresse meg a **Log Analytics ügynöki szolgáltatást,** kattintson rá a jobb gombbal, és kattintson a **Tulajdonságok parancsra.** A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
+Az ügynök adott verziójának megtekintéséhez nyissa meg a **Feladatkezelő eszközt**a **folyamatok** lapon, keresse meg a **log Analytics ügynök szolgáltatást**, kattintson rá a jobb gombbal, majd kattintson a **Tulajdonságok**parancsra. A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
 
 ![Fájl](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics-ügynök telepítési forgatókönyvei
+## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics ügynök telepítési forgatókönyvei
 
-Két telepítési forgatókönyv, amely eltérő eredményeket hozhat, amikor a Log Analytics-ügynök a számítógépre telepítésekor. A támogatott forgatókönyvek:
+A Log Analytics ügynöknek a számítógépre való telepítésekor két telepítési forgatókönyvnek lehet különböző eredményei. A támogatott forgatókönyvek:
 
-* **A Security Center automatikusan telepítette az ügynököt**: ebben a forgatókönyvben a Security Centerben és a naplóbeli kereséssel egyaránt megtekintheti a riasztásokat. E-mailes értesítéseket fog kapni arra az e-mail címre, amely az erőforráshoz tartozó előfizetés biztonsági házirendjében konfigurált.
+* **A Security Center automatikusan telepítette az ügynököt**: ebben a forgatókönyvben a Security Centerben és a naplóbeli kereséssel egyaránt megtekintheti a riasztásokat. E-mail-értesítést fog kapni az előfizetés biztonsági szabályzatában konfigurált e-mail-címre, amelyhez az erőforrás tartozik.
 
-* **Ügynök manuálisan telepítve egy virtuális gép az Azure-ban**található: ebben a forgatókönyvben, ha az ügynökök letöltött és manuálisan telepített február előtt 2017, megtekintheti a riasztásokat a Security Center portálon csak akkor, ha szűri az előfizetés a munkaterület tartozik. Ha azon az előfizetésen szűr, amelyhez az erőforrás tartozik, nem jelennek meg riasztások. E-mailes értesítéseket fog kapni arra az e-mail címre, amely et a munkaterülethez tartozó előfizetés biztonsági szabályzatában konfigurálta.
+* Az **ügynök manuális telepítése az Azure-ban található virtuális gépen**: ebben a forgatókönyvben, ha az ügynököket az 2017 február előtt manuálisan letöltötte és telepítette, akkor a riasztásokat csak akkor tekintheti meg a Security Center portálon, ha a munkaterülethez tartozó előfizetésre szűr. Ha az erőforráshoz tartozó előfizetésre szűr, nem jelenik meg riasztás. E-mail-értesítést fog kapni az előfizetés biztonsági szabályzatában konfigurált e-mail-címre, amelyhez a munkaterület tartozik.
 
 > [!NOTE]
 > A második forgatókönyvben ismertetett viselkedés elkerülése érdekében figyeljen arra, hogy az ügynök legújabb verzióját töltse le.
@@ -83,15 +83,15 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 
 | Figyelés állapota | Leírás | A megoldás lépései |
 |---|---|---|
-| Ügynök függőben lévő telepítése | A Log Analytics-ügynök telepítése még mindig fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
-| Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics-ügynök csak akkor telepíthető a virtuális gép, amely fut. | Indítsa újra a virtuális gépet. |
-| Hiányzó vagy érvénytelen azure-os virtuálisgép-ügynök | A Log Analytics-ügynök még nincs telepítve.  Ahhoz, hogy a Security Center telepítse a bővítményt, érvényes azure-os virtuálisgép-ügynök szükséges. | Telepítse, telepítse újra vagy frissítse a virtuális gépen található azure-os virtuálisgép-ügynököt. |
-| A virtuális gép állapota nem áll készen a telepítésre  | A Log Analytics-ügynök még nincs telepítve, mert a virtuális gép nem áll készen a telepítésre. A virtuális gép a virtuálisgép-ügynökkel vagy a virtuális gép üzembe helyezésével kapcsolatos probléma miatt nem áll készen a telepítésre. | Ellenőrizze a virtuális gép állapotát. Térjen vissza a **Virtuális gépek** szakaszra a portálon, és jelölje ki a virtuális gépet az állapotra vonatkozó információk megtekintéséhez. |
-|A telepítés nem sikerült – általános hiba | A Log Analytics-ügynök telepítve lett, de hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
-| A telepítés nem sikerült – a helyi ügynök már telepítve van | A Log Analytics-ügynök telepítése nem sikerült. A Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager) már telepítve van a virtuális gépen. A több-helymeghatározó konfiguráció elkerülése érdekében, ahol a virtuális gép két külön munkaterületnek jelent, a Log Analytics ügynök telepítése leállt. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
-| Az ügynök nem tud csatlakozni a munkaterülethez | A Log Analytics-ügynök telepítve van, de a hálózati kapcsolat miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a Monitoring Agent hálózati követelményeit ismertető részt. |
-| Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | Security Center azonosította, hogy a virtuális gépre telepített Log Analytics-ügynök egy olyan munkaterülethez csatlakozik, amelyhez nem fér hozzá. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Vagy az ügynök adatokat jelent, de hiányzik egy Azure-erőforrás-azonosító, így lehetetlen az adatok egyeztetése az Azure virtuális gép. A Linux hibaelhárításáról a [Linuxos Log Analytics ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)című témakörben talál. Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Ügynök függőben lévő telepítése | A Log Analytics ügynök telepítése még fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
+| Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics ügynök csak a rendszert futtató virtuális gépekre telepíthető. | Indítsa újra a virtuális gépet. |
+| Hiányzó vagy érvénytelen azure-os virtuálisgép-ügynök | A Log Analytics ügynök még nincs telepítve.  Ahhoz, hogy a Security Center telepítse a bővítményt, érvényes azure-os virtuálisgép-ügynök szükséges. | Telepítse, telepítse újra vagy frissítse a virtuális gépen található azure-os virtuálisgép-ügynököt. |
+| A virtuális gép állapota nem áll készen a telepítésre  | A Log Analytics ügynök még nincs telepítve, mert a virtuális gép nem áll készen a telepítésre. A virtuális gép a virtuálisgép-ügynökkel vagy a virtuális gép üzembe helyezésével kapcsolatos probléma miatt nem áll készen a telepítésre. | Ellenőrizze a virtuális gép állapotát. Térjen vissza a **Virtuális gépek** szakaszra a portálon, és jelölje ki a virtuális gépet az állapotra vonatkozó információk megtekintéséhez. |
+|A telepítés nem sikerült – általános hiba | A Log Analytics ügynök telepítve van, de hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
+| A telepítés nem sikerült – a helyi ügynök már telepítve van | Log Analytics ügynök telepítése nem sikerült. Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager), amely már telepítve van a virtuális gépen. Ha el szeretné kerülni a többsoros konfigurációt, ahol a virtuális gép két különálló munkaterületre jelent jelentést, a Log Analytics ügynök telepítése leállt. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
+| Az ügynök nem tud csatlakozni a munkaterülethez | A Log Analytics ügynök telepítve van, de a hálózati kapcsolat miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a Monitoring Agent hálózati követelményeit ismertető részt. |
+| Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | Security Center azonosította, hogy a virtuális gépre telepített Log Analytics-ügynök egy olyan munkaterülethez csatlakozik, amelyhez nincs hozzáférése. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Vagy az ügynök jelentéskészítési adatforrást tartalmaz, de hiányzik az Azure-erőforrás azonosítója, így nem lehet az Azure-beli virtuális géphez igazodni. A Linux hibaelhárításával kapcsolatban lásd: a [Linux rendszerhez készült log Analytics-ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Az ügynök nincs telepítve | Az adatgyűjtés le van tiltva. | Kapcsolja be az adatgyűjtést a biztonsági házirendben, vagy telepítse manuálisan a Log Analytics-ügynököt. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>A figyelőügynök hibaelhárítása – hálózati követelmények <a name="mon-network-req"></a>
@@ -132,7 +132,7 @@ Ha problémákat tapasztal a Security Center irányítópultjának betöltése s
 
 ## <a name="contacting-microsoft-support"></a>Kapcsolatfelvétel a Microsoft támogatási szolgálatával
 
-Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha azonban további hibaelhárításra van szüksége, az alábbi módon megnyithat egy új támogatási kérelmet az **Azure Portal használatával:**
+Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha azonban további hibaelhárításra van szüksége, az alábbi ábrán látható módon nyithat meg egy új támogatási kérést **Azure Portal** használatával:
 
 ![Microsoft támogatási szolgálat](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -140,15 +140,15 @@ Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók
 
 Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabályzatainak konfigurálását. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – Ismerje meg, hogyan tervezheti meg és ismerheti meg az Azure Security Center bevezetésének tervezési szempontjait.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát
-* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – További információ a biztonsági riasztások kezeléséről és az azokra való válaszadásról
+* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md) – útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
 * [Az Azure Security Center biztonsági riasztásainak megismerése](security-center-alerts-type.md)
 * [Oktatóanyag: Reagálás a biztonsági incidensekre](tutorial-security-incident.md)
 * [Riasztások érvényesítése az Azure Security Centerben](security-center-alert-validation.md)
 * [E-mail-értesítések az Azure Security Centerben](security-center-provide-security-contact-details.md)
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
-* [Az Azure Security Center észlelési képességei](security-center-detection-capabilities.md)
-* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ismerje meg, hogyan figyelheti a partnermegoldások állapotát.
-* [Az Azure Security Center –](faq-general.md) Gyakori kérdések – Gyakori kérdések a szolgáltatás használatával kapcsolatban
+* [Azure Security Center észlelési képességek](security-center-detection-capabilities.md)
+* [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
+* [Azure Security Center GYIK](faq-general.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

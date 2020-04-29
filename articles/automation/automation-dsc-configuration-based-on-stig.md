@@ -1,7 +1,7 @@
 ---
-title: A STIG-en alapuló konfiguráció az állapotkonfigurációban való használatra - Azure Automation
-description: Ismerje meg a STIG-alapú konfigurációk at Azure Automation.
-keywords: dsc,powershell,konfiguráció,beállítás
+title: A STIG-alapú konfiguráció az állapot-konfigurációban való használatra – Azure Automation
+description: Tudnivalók a Azure Automation-beli állapot-konfigurációhoz tartozó STIG-konfigurációkról.
+keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,38 +11,38 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585534"
 ---
 # <a name="configuration-based-on-stig"></a>STIG-alapú konfiguráció
 
-> A következőre vonatkozik: Windows PowerShell 5.1
+> A következőkre vonatkozik: Windows PowerShell 5,1
 
-A konfigurációs tartalom első alkalommal való létrehozása kihívást jelenthet.
-Sok esetben a cél a kiszolgálók konfigurációjának automatizálása egy olyan "alapkonfiguráció" után, amely remélhetőleg egy iparági ajánláshoz igazodik.
+A konfigurációs tartalom első alkalommal történő létrehozása kihívást jelenthet.
+Sok esetben a cél az, hogy automatizálja a kiszolgálók konfigurációját az "alapterv" után, amely remélhetőleg egy iparági javaslathoz igazodik.
 
 > [!NOTE]
-> Ez a cikk a nyílt forráskódú közösség által fenntartott megoldásra hivatkozik.
-> A támogatás csak GitHub-együttműködés formájában érhető el, a Microsofttól nem.
+> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
+> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
 
 ## <a name="community-project-powerstig"></a>Közösségi projekt: PowerSTIG
 
-A [PowerSTIG](https://github.com/microsoft/powerstig) nevű közösségi projekt célja, hogy ezt a problémát a STIG-ről (Security Technical Implementation Guide) kapott [nyilvános információk](https://public.cyber.mil/stigs/) on alapuló DSC-tartalom létrehozásával oldja meg,
+A [PowerSTIG](https://github.com/microsoft/powerstig) nevű közösségi projekt célja, hogy a probléma megoldásához a Stig (biztonsági technikai megvalósítási útmutató) által biztosított [nyilvános információk](https://public.cyber.mil/stigs/) alapján DSC-tartalmat generáljon.
 
-Kezelése alapvonalak bonyolultabb, mint amilyennek hangzik.
-Számos szervezetnek dokumentálnia kell a szabályok [alóli kivételeket,](https://github.com/microsoft/powerstig#powerstigdata) és azadatokat nagy méretekben kell kezelnie.
-A PowerSTIG úgy oldja meg a problémát, hogy [összetett erőforrásokat](https://github.com/microsoft/powerstig#powerstigdsc) biztosít a konfiguráció egyes területének kezeléséhez, ahelyett, hogy egy nagy fájlban próbálna meg foglalkozni a beállítások teljes tartományával.
+Az alapkonfigurációk kezelése bonyolultabb, mint amilyennek hangzik.
+Számos szervezetnek [dokumentálnia kell a kivételeket](https://github.com/microsoft/powerstig#powerstigdata) a szabályokhoz, és az adatmennyiséget nagy mértékben kell kezelnie.
+A PowerSTIG úgy kezeli a problémát, hogy [összetett erőforrásokat](https://github.com/microsoft/powerstig#powerstigdsc) biztosít a konfiguráció egyes területeinek kezeléséhez ahelyett, hogy egyetlen nagyméretű fájl összes beállítását próbálja meg kezelni.
 
-A konfigurációk létrehozása után a [DSC konfigurációs parancsfájljai](/powershell/scripting/dsc/configurations/configurations) segítségével mof-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat az Azure Automationbe.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekérése.
+A konfigurációk létrehozása után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/configurations/configurations) segítségével létrehozhat MOF-fájlokat, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekéréséhez.
 
-A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériába,](https://www.powershellgallery.com) és töltse le a megoldást, vagy kattintson a "Projektwebhely" gombra a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
+A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Windows PowerShell kívánt állapotkonfigurációja – áttekintés](/powershell/scripting/dsc/overview/overview)
+- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
-- [A helyi konfigurációkezelő konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)

@@ -1,6 +1,6 @@
 ---
-title: App Service-környezet használata és kezelése
-description: Ismerje meg, hogyan hozhat létre, tehet közzé és méretezhetők fel alkalmazások egy App Service-környezetben. A cikkben található összes gyakori feladat megkeresése.
+title: App Service Environment használata és kezelése
+description: Megtudhatja, hogyan hozhat létre, tehet közzé és méretezheti alkalmazásokat egy App Service Environmentban. A cikkben szereplő általános feladatok megkeresése.
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
@@ -8,123 +8,123 @@ ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586135"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
-Az App Service-környezet (ASE) az Azure App Service egy alhálózat ba egy ügyfél Azure virtuális hálózati példányában. Az ASE a következőkből áll:
+Az App Service Environment (beszállítói) Azure App Service központi telepítése az ügyfél Azure Virtual Network-példányában lévő alhálózatba. A betanítás a következőkből áll:
 
-- **Előtér- végek**: Ahol a HTTP vagy https leáll egy App Service-környezetben
-- **Dolgozók**: Az alkalmazásokat üzemeltető erőforrások
-- **Adatbázis**: A környezetet meghatározó adatokat tartalmazza
-- **Tárolás**: Az ügyfél által közzétett alkalmazások üzemeltetésére szolgál
+- **Előtér**: http-vagy https-megszakítások egy app Service Environment
+- **Feldolgozók**: az alkalmazásokat üzemeltető erőforrások
+- **Adatbázis**: a környezetet meghatározó információk tárolására szolgál.
+- **Storage**: az ügyfél által közzétett alkalmazások üzemeltetéséhez használatos
 
-Az ASE egy külső vagy belső virtuális IP-cím (VIP) az alkalmazás eléréséhez telepítheti. A külső IP-címzéssel rendelkező központi telepítést általában *külső ASE-nek*nevezik. A belső VIRTUÁLIS IP-című központi telepítést *ILB ASE-nek* nevezik, mert belső terheléselosztót (ILB) használ. Az ILB ASE-ről az [ILB ASE létrehozása és használata][MakeILBASE]című témakörben olvashat bővebben.
+Az alkalmazások eléréséhez külső vagy belső virtuális IP-címmel (VIP) is üzembe helyezhető. A külső virtuális IP-vel való üzembe helyezést általában *külső*bevezetésnek nevezik. A belső VIP-alapú telepítést *ILB* -bevezetésnek nevezzük, mivel belső TERHELÉSELOSZTÓ (ILB) használatával működik. További információ a ILB-szolgáltatóról: ILB-betanító [létrehozása és használata][MakeILBASE].
 
-## <a name="create-an-app-in-an-ase"></a>Alkalmazás létrehozása ASE-ben
+## <a name="create-an-app-in-an-ase"></a>Alkalmazás létrehozása a központban
 
-Ha egy alkalmazást egy ASE-ben szeretne létrehozni, ugyanazt a folyamatot használja, mint amikor általában létrehoz egy alkalmazást, de néhány kisebb különbséggel. Új App Service-csomag létrehozásakor:
+Ha egy alkalmazást szeretne létrehozni egy kiegészítő szolgáltatásban, ugyanazt a folyamatot kell használnia, mint amikor általában létrehoz egy alkalmazást, de néhány kisebb eltéréssel. Új App Service terv létrehozásakor:
 
-- Ahelyett, hogy egy földrajzi helyet választana, ahol az alkalmazást telepíti, egy ASE-t választ a helyként.
-- Az ASE-ben létrehozott összes App Service-csomag csak egy elkülönített tarifacsomagban lehet.
+- Ahelyett, hogy egy földrajzi helyet válasszon az alkalmazás üzembe helyezéséhez, válasszon egy bevezetési helyet.
+- A teljes előállítók által létrehozott App Service csomagok csak elszigetelt árképzési szinten lehetnek.
 
-Ha nem rendelkezik ASE-vel, létrehozhat egyet az [App Service-környezet létrehozása][MakeExternalASE]című útmutató utasításait követve.
+Ha nem rendelkezik beadással, a [létrehozásához kövesse az App Service Environment létrehozása][MakeExternalASE]című témakör utasításait.
 
-Alkalmazás létrehozása ASE-ben:
+Alkalmazás létrehozása a kiegészítőben:
 
-1. Válassza **az Erőforrás** > létrehozása**Web + Mobile** > **Web App lehetőséget.**
+1. Válassza **az erőforrás** > **létrehozása web és mobil** > **webalkalmazás**lehetőséget.
 
-1. Adja meg az alkalmazás nevét. Ha már kiválasztott egy App Service-csomagot egy ASE-ben, az alkalmazás tartományneve az ASE tartománynevét tükrözi:
+1. Adja meg az alkalmazás nevét. Ha már kiválasztott egy App Service-csomagot a központhoz, az alkalmazás tartományneve a kiegészítő csomag tartománynevét tükrözi:
 
-    ![Alkalmazásnév kiválasztása][1]
+    ![Alkalmazás nevének kiválasztása][1]
 
 1. Válasszon egy előfizetést.
 
-1. Adjon meg egy nevet egy új erőforráscsoportnak, vagy válassza a **Meglévő használata lehetőséget,** és válasszon egyet a legördülő listából.
+1. Adja meg az új erőforráscsoport nevét, vagy válassza a **meglévő használata** lehetőséget, és válasszon egyet a legördülő listából.
 
 1. Válassza ki az operációs rendszert.
 
-1. Válasszon ki egy meglévő App Service-csomagot az ASE-ben, vagy hozzon létre egy újat az alábbi lépésekkel:
+1. Válasszon ki egy meglévő App Service-csomagot a központból, vagy hozzon létre egy újat a következő lépések végrehajtásával:
 
-    a. Az Azure Portal bal oldali menüjében válassza **az Erőforrás létrehozása > webalkalmazás**lehetőséget.
+    a. A Azure Portal bal oldali menüben válassza az **erőforrás létrehozása > webalkalmazás**lehetőséget.
 
     b. Válassza ki az előfizetést.
 
-    c. Jelölje ki vagy hozza létre az erőforráscsoportot.
+    c. Válassza ki vagy hozza létre az erőforráscsoportot.
 
     d. Adja meg a webalkalmazás nevét.
 
-    e. Válassza **a Kód** vagy a **DockerContainer lehetőséget.**
+    e. Válassza ki a **kód** -vagy **DockerContainer**.
 
-    f. Jelöljön ki egy futásidejű vermet.
+    f. Válasszon futtatókörnyezetet.
 
-    g. Válassza a **Linux** vagy **a Windows**lehetőséget. 
+    g. Válassza a **Linux** vagy a **Windows**lehetőséget. 
 
-    h. Válassza ki az ASE-t a **Régió** legördülő listában. 
+    h. Válassza ki a központot a **régió** legördülő listából. 
 
-    i. Jelöljön ki vagy hozzon létre egy új App Service-csomagot. Új App Service-csomag létrehozása esetén válassza ki a megfelelő **elkülönített** termékváltozat-méretet.
+    i. Válasszon ki vagy hozzon létre egy új App Service csomagot. Ha új App Service tervet hoz létre, válassza ki a megfelelő **elkülönített** SKU-méretet.
 
-    ![Elkülönített tarifacsomagok][2]
+    ![Elkülönített árképzési szintek][2]
 
     > [!NOTE]
-    > A Linux-alkalmazások és a Windows-alkalmazások nem lehetnek ugyanabban az App Service-csomagban, de ugyanabban az App Service-környezetben lehetnek.
+    > A Linux-alkalmazások és a Windows-alkalmazások nem lehetnek ugyanabban a App Servicei csomagban, de ugyanabban a App Service Environmentban lehetnek.
     >
 
-1. Válassza **a Véleményezés + létrehozás**lehetőséget, győződjön meg arról, hogy az adatok helyesek, majd válassza a **Létrehozás lehetőséget.**
+1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, győződjön meg arról, hogy az adatok helyesek, majd válassza a **Létrehozás**lehetőséget.
 
-## <a name="how-scale-works"></a>A méretezés immára
+## <a name="how-scale-works"></a>A skálázás működése
 
-Minden App Service-alkalmazás egy App Service-csomagban fut. Az App Service-környezetek alkalmazásszolgáltatási csomagokat tartanak, az App Service-csomagok pedig alkalmazásokat. Egy alkalmazás méretezésekénél az App Service-csomag és az ugyanabban a csomagban lévő összes alkalmazás is méretezhető.
+Minden App Service alkalmazás egy App Service tervben fut. App Service környezetek App Service terveket tartanak fenn, és a App Service csomagok megtartják az alkalmazásokat. Az alkalmazások skálázásakor a App Service tervet és az ugyanazon a csomagban található összes alkalmazást is át kell méreteznie.
 
-Az App Service-csomag méretezésekénél a szükséges infrastruktúra automatikusan hozzáadódik. Az infrastruktúra hozzáadása közben a műveletek méretezése késleltetést okoz. Ha több méretezési műveletet végez egymás után, az első infrastruktúra-méretezési kérelem lesz eltéve, és a többi várólistára kerül. Amikor az első méretezési művelet befejeződik, a többi infrastruktúra-kérelmek együtt működnek. És az infrastruktúra hozzáadásakor az App Service-csomagok vannak hozzárendelve, ha szükséges. Az új App Service-csomag létrehozása önmagában is méretezési művelet, mert további hardvert kér.
+App Service csomag skálázásakor a rendszer automatikusan hozzáadja a szükséges infrastruktúrát. Az infrastruktúra hozzáadásakor idő telik el a műveletek méretezése során. Ha több méretezési műveletet hajt végre egymás után, a rendszer az első infrastruktúra-méretezési kérelmet is végrehajtja, és a többi várólistára kerül. Ha az első skálázási művelet befejeződik, a többi infrastruktúra-kérelem együtt működik. Az infrastruktúra hozzáadásakor a rendszer a App Service csomagokat rendeli hozzá a megfelelő módon. Egy új App Service terv létrehozása maga a skálázási művelet, mert további hardvert kér.
 
-A több-bérlős App Service-ben a skálázás azonnali, mert az erőforrások készlete könnyen elérhető, hogy támogassa azt. Az ASE-ben nincs ilyen puffer, és az erőforrások igény alapján vannak lefoglalva.
+A több-bérlős App Service esetén a skálázás azonnal megtörténik, mivel az erőforrások készlete azonnal elérhetővé válik a támogatásához. Egy központhoz nem tartoznak ilyen pufferek, és az erőforrások igény szerint vannak lefoglalva.
 
-Egy ASE-ben egy App Service-csomag legfeljebb 100 példányok skálázható. Egy ASE legfeljebb 201 teljes példányok az összes App Service-csomagok az adott ASE-ben.
+Egy központból akár 100 példányra is méretezheti az App Service-tervet. A központból legfeljebb 201 teljes példány lehet az adott központhoz tartozó összes App Service csomagra vonatkozóan.
 
 ## <a name="ip-addresses"></a>IP-címek
 
-Az App Service dedikált IP-címet rendelhet egy alkalmazáshoz. Ez a funkció az IP-alapú SSL konfigurálása után érhető el, ahogy azt egy [meglévő egyéni TLS/SSL-tanúsítvány kötése az Azure App Service szolgáltatáshoz][ConfigureSSL]című dokumentum ismerteti. Az ILB ASE-ben nem adhat hozzá további IP-címeket az IP-alapú SSL-hez.
+A App Service hozzárendelheti a dedikált IP-címet egy alkalmazáshoz. Ez a képesség az IP-alapú SSL konfigurálása után érhető el, a következő témakörben leírtak szerint: [meglévő egyéni TLS/SSL-tanúsítvány kötése Azure app Servicehoz][ConfigureSSL]. Egy ILB-ben nem adhat hozzá IP-alapú SSL-hez használandó IP-címeket.
 
-Egy külső ASE, az IP-alapú SSL-t az alkalmazás ugyanúgy konfigurálhatja, mint a több-bérlős App Service. Mindig van egy tartalék cím az ASE-ben, legfeljebb 30 IP-cím. Minden alkalommal, amikor használja az egyiket, egy másik at ad hozzá, hogy egy cím mindig könnyen elérhető legyen. Egy másik IP-cím lefoglalásához időkésleltetés szükséges. Ez a késleltetés megakadályozza az IP-címek gyors egymásutánban történő hozzáadását.
+A külső kiegészítő szolgáltatással ugyanúgy konfigurálhatja az alkalmazáshoz tartozó IP-alapú SSL-t, mint a több-bérlős App Service. Mindig van egy tartalék cím a kiegészítőben, amely legfeljebb 30 IP-címmel rendelkezik. Minden alkalommal, amikor használja az egyiket, a rendszer egy másikat ad hozzá, hogy a címek mindig azonnal elérhetők legyenek. Egy másik IP-cím lefoglalásához késleltetés szükséges. Ez a késleltetés megakadályozza az IP-címek gyors egymásutánban való hozzáadását.
 
 ## <a name="front-end-scaling"></a>Előtér-méretezés
 
-Az App Service-csomagok horizontális felskálázásakor a dolgozók automatikusan hozzáadódnak a támogatásukhoz. Minden ASE két előtérrel jön létre. Az előtér-végződések automatikusan horizontális felskálázás a 15 App Service-csomag példányai egy front-end sebességgel. Ha például három App Service-csomaggal rendelkezik, egyenként öt példánysal, akkor összesen 15 példányés három előtér-vége van. Ha összesen 30 példányra skáláz, négy előtér-vége van. Ez a minta a horizontális felskálázáskor folytatódik.
+A App Service-csomagok méretezése után a rendszer automatikusan hozzáadja a feldolgozókat a támogatáshoz. Minden előkészítés két előtéri végponttal jön létre. Az előtér automatikusan kibővíti az összes 15 App Service csomag példányának minden készlete esetében az egyik előtéri sebességet. Ha például három App Service-csomaggal rendelkezik, amelyek mindegyike öt példányból áll, összesen 15 példánya és három előtér áll rendelkezésre. Ha összesen 30 példányra méretezi a méretezést, négy előtér áll rendelkezésre. Ez a minta a Kibővítés során folytatódik.
 
-Az alapértelmezés szerint lefoglalt előtér-végződések száma mérsékelt terhelés esetén is jó. Az arány töt példányonként akár egy előtérre is csökkentheti. Módosíthatja az előtér méretét is. Alapértelmezés szerint egymagosak. Az Azure Portalon módosíthatja a méretüket két vagy négy mag helyett.
+Az alapértelmezés szerint kiosztott előtér-végpontok száma megfelelő a mérsékelt terheléshez. Minden öt példány esetében csökkentheti az arányt az egyik előtérként. Módosíthatja az előtér-végpontok méretét is. Alapértelmezés szerint egyetlen mag van. A Azure Portal a méretet két vagy négy magot is megváltoztathatja.
 
-Van egy díj az arány vagy az előtér méretének megváltoztatásáért. További információ: [Azure App Service-díjszabás.][Pricing] Ha szeretné javítani az ASE terhelhetőségét, nagyobb javulást kap az első méretezés kétmagos előtér-végekre, mielőtt módosítaná a méretezési arányt. Az elülső végek magméretének módosítása az ASE frissítését eredményezi, és a szokásos munkaidőn kívül kell elvégezni.
+Az arány vagy az előtér-méretek módosítása díjköteles. További információ: [Azure app Service díjszabása][Pricing]. Ha javítani szeretné a betöltési kapacitást, akkor a méretezési arány módosítása előtt nagyobb javulást érhet el a kétmagos előtér-végpontok között. Az előtér alapméretének módosítása a bevezetés frissítését eredményezi, és a szokásos munkaidőn kívül kell történnie.
 
-Előtér-erőforrások az ASE HTTP/HTTPS végpontja. Az alapértelmezett előtér-konfigurációval az előtér-alapú memóriahasználat következetesen 60 százalék körül van. Az előtér-rendszerek méretezésének elsődleges oka a CPU-használat, amelyet elsősorban a HTTPS-forgalom vezérel.
+Az előtér-erőforrások a szolgáltatáshoz tartozó HTTP/HTTPS-végpont. Az alapértelmezett előtér-konfigurációnál az előtér-memóriahasználat körülbelül 60%-kal egyenletes. A kezdeti végpontok méretezésének elsődleges oka a CPU-használat, amelyet elsődlegesen a HTTPS-forgalom vezérel.
 
 ## <a name="app-access"></a>Alkalmazás-hozzáférés
 
-Egy külső ASE-ben az alkalmazás létrehozásához használt tartományutótag *a .&lt; asename&gt;.p.azurewebsites.net*. Ha az ASE neve _external-ase,_ és üzemeltetegy _contoso_ nevű alkalmazást az ASE-ben, akkor a következő URL-címeken éri el:
+Egy külső benyújtó esetében az alkalmazás létrehozásához használt tartomány utótagja a következő: *.&lt; asename&gt;. p.azurewebsites.net*. Ha a kiegészítő szolgáltató neve _külső-_ bemutató, és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-A külső ASE létrehozásáról az [App Service-környezet létrehozása című témakörben][MakeExternalASE]talál további információt.
+További információ a külső kiegészítő szolgáltatás létrehozásáról: [app Service Environment létrehozása][MakeExternalASE].
 
-Az ILB ASE-ben az alkalmazás létrehozásához használt tartományutótag *a .&lt; asename&gt;.appserviceenvironment.net*. Ha az ASE neve _ilb-ase,_ és üzemeltet egy _contoso_ nevű alkalmazást az ASE-ben, akkor a következő URL-címeken éri el:
+Egy ILB-előkészítőben az alkalmazás létrehozásához használt tartomány utótagja a következő: *.&lt; asename&gt;. appserviceenvironment.net*. Ha a szolgáltató neve _ILB-kiegészítő_ , és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
 
-Az ILB ASE létrehozásáról az [ILB ASE létrehozása és használata][MakeILBASE]című témakörben talál további információt.
+További információ a ILB-előkészítés létrehozásáról: [ILB-bekészítés létrehozása és használata][MakeILBASE].
 
-Az SCM URL-cím a Kudu konzol elérésére vagy az alkalmazás webtelepítés sel történő közzétételére szolgál. A Kudu konzolról további információt az [Azure App Service Kudu konzolja című][Kudu]témakörben talál. A Kudu konzol webes felhasználói felületet biztosít a hibakereséshez, a fájlok feltöltéséhez, a fájlok szerkesztéséhez és még sok máshoz.
+Az SCM URL-cím a kudu-konzol eléréséhez, illetve az alkalmazás Web Deploy használatával történő közzétételéhez használható. További információ a kudu-konzolról: [kudu-konzol a Azure app Service][Kudu]. A kudu-konzol webes felhasználói felületet biztosít a hibakereséshez, a fájlok feltöltéséhez és a fájlok szerkesztéséhez.
 
 ### <a name="dns-configuration"></a>DNS-konfiguráció 
 
-Ha egy külső ASE használata esetén az ASE-ben készült alkalmazások regisztrálva vannak az Azure DNS-ben. Az ILB ASE-vel saját DNS-t kell kezelnie. 
+Ha külső beadást használ, a szolgáltatón keresztül készített alkalmazások regisztrálva vannak Azure DNSban. A ILB bevezetésével a saját DNS-t kell kezelnie. 
 
-A DNS konfigurálása az ILB ASE-vel:
+A DNS konfigurálása a ILB beadásával:
 
     create a zone for <ASE name>.appserviceenvironment.net
     create an A record in that zone that points * to the ILB IP address
@@ -132,118 +132,118 @@ A DNS konfigurálása az ILB ASE-vel:
     create a zone in <ASE name>.appserviceenvironment.net named scm
     create an A record in the scm zone that points * to the ILB IP address
 
-Az ASE alapértelmezett tartományutótag DNS-beállításai nem korlátozzák az alkalmazásokat arra, hogy csak ezeken a neveken érhetők el. Egyéni tartománynevet az ILB ASE-ben az alkalmazások érvényesítése nélkül is beállíthat. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, megteheti, és az ILB IP-címére mutathatja. Az egyéni tartománynév működik az alkalmazáskérelmek, de nem az scm oldalon. Az scm-webhely csak az * &lt;.scm&gt;alkalmazásnévnél érhető el.&lt; asename&gt;.appserviceenvironment.net*. 
+A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a * &lt;&gt;AppName. SCM-ben&lt; érhető el. asename&gt;. appserviceenvironment.net*. 
 
-A zóna neve *.&lt; az .appserviceenvironment.net&gt;globálisan* egyedi. 2019 májusa előtt az ügyfelek meg tudták adni az ILB ASE tartományutótagot. Ha *a tartományutótagot .contoso.com* kívánta használni, akkor ezt megtehette, és ez magában foglalja az scm webhelyet is. Voltak kihívások, hogy a modell, beleértve; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az scm-helyen, valamint a helyettesítő tanúsítvány használatának követelménye. Az ILB ASE alapértelmezett tanúsítványfrissítési folyamata szintén zavaró volt, és az alkalmazás újraindítását okozta. A problémák megoldásához az ILB ASE viselkedése megváltozott, hogy az ASE neve és a Microsoft tulajdonában lévő utótag alapján használjon tartományutótagot. Az ILB ASE viselkedésének módosítása csak a 2019 májusa után végrehajtott ILB ASE-ket érinti. A már meglévő ILB-ase-knek továbbra is kezelniük kell az ASE alapértelmezett tanúsítványát és DNS-konfigurációját.
+A nevű zóna *.&lt; a&gt;asename. appserviceenvironment.net* globálisan egyedi. A 2019. május előtt az ügyfelek megadhatják a ILB beadásának tartományi utótagját. Ha a *. contoso.com* -t szeretné használni a tartománynév-utótaghoz, akkor ezt megteheti, és ez magában foglalja az SCM-helyet. A modellel kapcsolatos kihívások is megtalálhatók; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az SCM-hellyel, valamint a helyettesítő tanúsítvány használatára vonatkozó követelmény. A ILB-ben használt alapértelmezett tanúsítvány-frissítési folyamat megszakadt, és az alkalmazás újraindítását is okozta. Ezeknek a problémáknak a megoldásához a ILB-bevezetési viselkedés úgy módosult, hogy a szolgáltató neve és a Microsoft tulajdonában lévő utótag alapján egy tartományi utótagot használjon. A ILB-beli beváltási viselkedés változása csak a 2019 májusi ILB-ASE érinti. A meglévő ILB-ASE továbbra is kezelni kell a bevezetési és DNS-konfigurációjuk alapértelmezett tanúsítványát.
 
 ## <a name="publishing"></a>Közzététel
 
-Az ASE-ben, csakúgy, mint a több-bérlős App Service, a következő módszerekkel tehet közzé:
+A több-bérlős App Servicehoz hasonlóan a következő módszerekkel teheti közzé a szolgáltatót:
 
 - Webes telepítés
 - FTP
 - Folyamatos integráció (CI)
-- Drag and drop a Kudu konzol
-- IDE, például Visual Studio, Eclipse vagy IntelliJ IDEA
+- Drag and drop a kudu-konzolon
+- IDE, például a Visual Studio, az Eclipse vagy a IntelliJ IDEA
 
-Külső ASE-vel ezek a közzétételi beállítások ugyanúgy működnek. További információ: [Deployment in Azure App Service][AppDeploy].
+A külső bevezetők esetében ezek a közzétételi lehetőségek mind ugyanúgy működnek. További információ: [Deployment in Azure app Service][AppDeploy].
 
-Az ILB ASE esetén a közzétételi végpontok csak az ILB-n keresztül érhetők el. Az ILB egy privát IP-cím az ASE alhálózat a virtuális hálózatban. Ha nem rendelkezik hálózati hozzáféréssel az ILB-hez, nem tehet közzé alkalmazásokat az adott ASE-n. Ahogy az [ILB ASE létrehozása és használata][MakeILBASE]című részben is megjegyeztük, konfigurálnia kell a DNS-t a rendszerben lévő alkalmazásokhoz. Ez a követelmény magában foglalja az SCM-végpontot. Ha a végpontok nincsenek megfelelően definiálva, nem tehető közzé. Az IDEs-nek hálózati hozzáféréssel kell rendelkeznie az ILB-hez, hogy közvetlenül közzétehesse azt.
+A ILB-kiegészítő szolgáltatással a közzétételi végpontok csak a ILB érhetők el. A ILB egy magánhálózati IP-címen található a virtuális hálózatban lévő bekapcsolási alhálózaton. Ha nincs hálózati hozzáférése a ILB, akkor nem tehet közzé alkalmazásokat az adott kiegészítő csomagon. Amint azt a [ILB-előállítók létrehozása és használata][MakeILBASE]című része feljegyezte, konfigurálnia kell a DNS-t a rendszerben lévő alkalmazásokhoz. Ez a követelmény magában foglalja az SCM-végpontot. Ha a végpontok nincsenek megfelelően definiálva, akkor nem lehet közzétenni. Az ide-nek a ILB való közvetlen közzétételhez is hálózati hozzáférésre van szükségük.
 
-További módosítások nélkül az internetalapú CI-rendszerek, például a GitHub és az Azure DevOps nem működnek ilb ASE-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti az ILB ASE-ben való közzétételt az Azure DevOps-ból, ha saját üzemeltetésű kiadási ügynököt telepít az ILB ASE-t tartalmazó virtuális hálózatba. Másik lehetőségként használhat olyan CI-rendszert is, amely lekéréses modellt használ, például a Dropboxot.
+További változtatások nélkül az internetalapú CI-rendszerek (például a GitHub és az Azure DevOps) nem működnek a ILB-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti a közzétételt az Azure DevOps származó ILB-előállítók számára, ha telepít egy saját üzemeltetésű kiadási ügynököt a virtuális hálózatban, amely tartalmazza a ILB-javítót. Azt is megteheti, hogy olyan CI-rendszer használatát is használja, amely lekéréses modellt, például Dropbox-t használ.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ezt az alkalmazás közzétételi profiljában és az alkalmazás portálablakában láthatja (az **Áttekintés** > **essentials** és a **Tulajdonságok területen).**
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés** > **alapjai** és a **Tulajdonságok**területen is).
 
 ## <a name="storage"></a>Storage
 
-Az ASE 1 TB-os tárhellyel rendelkezik az ASE összes alkalmazásához. Az elkülönített díjszabási termékváltozatban az App Service-csomag alapértelmezés szerint legfeljebb 250 GB-os korláttal rendelkezik. Ha öt vagy több App Service-csomag, ügyeljen arra, hogy ne lépje túl az ASE 1 TB-os korlátját. Ha egy App Service-csomagban a 250 GB-nál nagyobb korlátra van szüksége, forduljon az ügyfélszolgálathoz, és legfeljebb 1 TB-ra módosítsa az App Service-csomag korlátját. A csomagkorlát beállítása kor, még mindig van egy 1 TB-os korlát az összes App Service-csomagok az ASE-ben.
+A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban lévő App Service csomag alapértelmezés szerint 250 GB-os korlátot tartalmaz. Ha öt vagy több App Service-csomaggal rendelkezik, ügyeljen arra, hogy ne lépje túl a kisegítő lehetőség 1 TB-os korlátját. Ha egy App Service-csomagban több, mint az 250 GB-os korlátra van szüksége, forduljon az ügyfélszolgálathoz, és állítsa be a App Service-csomag korlátját legfeljebb 1 TB-ra. Ha a csomagra vonatkozó korlátot módosítják, akkor a kiegészítő csomagban található összes App Service-csomagra vonatkozóan továbbra is 1 TB korlát szerepel.
 
 ## <a name="logging"></a>Naplózás
 
-Integrálhatja az ASE-t az Azure Monitorral, így az ASE-ről naplókat küldhet az Azure Storage, az Azure Event Hubs vagy a Log Analytics szolgáltatásba. Ezek az elemek ma kerülnek naplózásra:
+Integrálhatja a beAzure Monitort a beépítés az Azure Storage-ba, az Azure Event Hubs-ra vagy a Log Analytics-re való elküldéséhez. Ezeket az elemeket a rendszer a mai napon naplózza:
 
 | Helyzet | Üzenet |
 |---------|----------|
-| Az ASE nem kifogástalan | A megadott ASE érvénytelen virtuális hálózati konfiguráció miatt nem megfelelő. Az ASE felfüggesztésre kerül, ha a nem megfelelő állapot továbbra is. Győződjön meg arról, https://docs.microsoft.com/azure/app-service/environment/network-infohogy az itt meghatározott iránymutatásokat betartják: . |
-| Az ASE alhálózat a helyből már majdnem elfogyott | A megadott ASE egy alhálózatban van, amely szinte nincs szabad hely. Vannak {0} még címek. Ha ezek a címek kimerültek, az ASE nem lesz képes skálázni.  |
-| Az ASE megközelíti a teljes példánykorlátot | A megadott ASE megközelíti az ASE teljes példánykorlátját. Jelenleg legfeljebb 201 példányT tartalmazó App Service-csomagpéldányokat tartalmaz. {0} |
-| Az ASE nem tudja elérni a függőséget | A megadott ASE nem képes {0}elérni.  Győződjön meg arról, https://docs.microsoft.com/azure/app-service/environment/network-infohogy az itt meghatározott iránymutatásokat betartják: . |
-| Az ASE fel van függesztve | A megadott ASE felfüggesztésre kerül. Az ASE felfüggesztése lehet a fiók hiánya vagy érvénytelen virtuális hálózati konfiguráció. Oldja fel a kiváltó ok, és folytassa az ASE a forgalom további kiszolgálásához. |
-| Az ASE frissítése megkezdődött | Megkezdődött a platform frissítése a megadott ASE-re. A skálázási műveletek késése várható. |
-| Az ASE frissítése befejeződött | A platform frissítése a megadott ASE befejeződött. |
-| Megkezdődtek a méretezési műveletek | Az App Service-csomag ( ){0}méretezése megkezdődött. Kívánt {1} állapot:{2} Én munkavállalók.
-| A méretezési műveletek befejeződtek | Az App Service-csomag ( ){0}méretezése befejeződött. Jelenlegi {1} állapot:{2} I munkavállalók. |
-| A méretezési műveletek sikertelenek voltak | Egy App Service-csomag ({0}) méretezése nem sikerült. Jelenlegi {1} állapot:{2} I munkavállalók. |
+| A Bea nem kifogástalan állapotú | A megadott beadási állapot nem kifogástalan, mert érvénytelen a virtuális hálózati konfiguráció. Ha a sérült állapot továbbra is fennáll, a rendszer felfüggeszti a bevezetés állapotát. Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| A bevezetési alhálózat csaknem el van szabadítva | A megadott beadási pont egy olyan alhálózaton van, amely szinte nem elegendő. {0} Fennmaradó címek vannak. A címek kimerítése után a kisegítő lehetőség nem méretezhető.  |
+| A Bea teljes példány korlátja közeledik | A megadott beadási szolgáltatás a teljes körű beadási korláthoz közeledik. Jelenleg a 201 {0} -példányok maximális számát tartalmazza app Service. |
+| A kiegészítő szolgáltatás nem tudja elérni a függőséget | A megadott beadási lehetőség nem érhető {0}el.  Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| A beépítés fel van függesztve | A megadott beadási szolgáltatás fel van függesztve. A bevonási felfüggesztés oka lehet a fiók hiánya vagy az érvénytelen virtuális hálózati konfiguráció. Oldja meg a kiváltó okot, és folytassa a beszállítást, hogy továbbra is kiszolgálja a forgalmat. |
+| A bevezető csomag frissítése megkezdődött | Megkezdődött a platform frissítése a megadott beadásra. Késések várhatók a skálázási műveletekben. |
+| A betöltési frissítés befejeződött | Befejeződött a platform frissítése a megadott beadási csomagra. |
+| A skálázási műveletek elkezdődtek | Egy App Service terv ({0}) megkezdte a skálázást. Kívánt állapot: {1} {2} feldolgozók.
+| A skálázási műveletek befejeződtek | Egy App Service terv ({0}) befejezte a skálázást. Jelenlegi állapot: {1} {2} feldolgozók. |
+| A skálázási műveletek sikertelenek voltak | Egy App Service-csomag{0}() méretezése nem sikerült. Jelenlegi állapot: {1} {2} feldolgozók. |
 
-Az ASE naplózásának engedélyezése:
+A beléptetés beléptetésének engedélyezése:
 
-1. A portálon nyissa meg a **Diagnosztikai beállítások lehetőséget.**
-1. Válassza **a Diagnosztikai beállítás hozzáadása lehetőséget.**
-1. Adja meg a naplóintegráció nevét.
-1. Jelölje ki és konfigurálja a kívánt naplócélokat.
-1. Válassza **az AppServiceEnvironmentPlatformLogs lehetőséget.**
+1. A portálon lépjen a **diagnosztika beállítások**elemre.
+1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+1. Adja meg a naplózási integráció nevét.
+1. Válassza ki és konfigurálja a kívánt napló célhelyeit.
+1. Válassza a **AppServiceEnvironmentPlatformLogs**lehetőséget.
 
-![ASE diagnosztikai napló beállításai][4]
+![A beadási diagnosztikai napló beállításai][4]
 
-Ha integrálható a Log Analytics szolgáltatással, megtekintheti a naplókat az ASE **portálnaplók** kiválasztásával és az **AppServiceEnvironmentPlatformLogs**lekérdezés létrehozásával. A naplók csak akkor kerülnek kibocsátásra, ha az ASE-nek van egy eseménye, amely elindítja azt. Ha az ASE nem rendelkezik ilyen esemény, nem lesz naplók. A Log Analytics-munkaterületen a naplók egy példa gyors megtekintéséhez hajtson végre egy méretezési műveletet az ASE egyik App Service-csomagjával. Ezután futtathat egy lekérdezést **appserviceenvironmentplatformlogs** a naplók megtekintéséhez. 
+Ha integrálja Log Analyticsokkal, a naplókat a beadási portál **naplók** elemének kiválasztásával, valamint a **AppServiceEnvironmentPlatformLogs**-sel kapcsolatos lekérdezés létrehozásával tekintheti meg. A rendszer csak akkor bocsát ki naplókat, ha a bevezetőnek van olyan eseménye, amely elindítja azt. Ha a kiegészítő szolgáltatás nem rendelkezik ilyen eseménnyel, akkor nem lesz napló. A Log Analytics munkaterületen található naplók gyors megjelenítéséhez hajtson végre egy méretezési műveletet a központhoz tartozó App Service-csomagok egyikével. Ezután futtathat egy lekérdezést a **AppServiceEnvironmentPlatformLogs** a naplók megtekintéséhez. 
 
 **Riasztás létrehozása**
 
-Ha riasztást szeretne létrehozni a naplók ellen, kövesse a [Naplóriasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával című útmutatóutasításait.][logalerts] Röviden:
+Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozása, megtekintése és kezelése a Azure monitor használatával című][logalerts]témakör utasításait. Röviden:
 
-* A Riasztások lap megnyitása az ASE-portálon
+* A beadási portál riasztások oldalának megnyitása
 * **Új riasztási szabály** kiválasztása
-* Válassza ki az erőforrást a Log Analytics-munkaterületének
-* Állítsa be az állapotot egy egyéni naplókereséssel az "AppServiceEnvironmentPlatformLogs | ahol a ResultDescription tartalmazza a "megkezdte a méretezést", vagy amit csak akar. Állítsa be a küszöbértéket. 
-* Szükség szerint adjon hozzá vagy hozzon létre egy műveletcsoportot. A műveletcsoportban adhatja meg a riasztásra adott választ, például e-mailt vagy SMS-t küld.
-* Nevezze el a riasztást, és mentse azt.
+* Válassza ki az erőforrást, hogy az Log Analytics munkaterület legyen
+* Állítsa be a feltételt egy egyéni naplóbeli kereséssel egy olyan lekérdezés használatához, mint például: "AppServiceEnvironmentPlatformLogs | ahol a ResultDescription "megkezdődött a skálázás", vagy bármi más, amire szüksége van. Szükség szerint állítsa be a küszöbértéket. 
+* Szükség szerint adjon hozzá vagy hozzon létre egy műveleti csoportot. A műveleti csoport a riasztásra adott válasz, például e-mailek küldése vagy SMS-üzenet megadása.
+* Nevezze el a riasztást, és mentse.
 
-## <a name="upgrade-preference"></a>Frissítési beállítás
+## <a name="upgrade-preference"></a>Frissítési beállítások
 
-Ha több ASEs, érdemes lehet egyes ases frissíteni kell, mielőtt mások. Az ASE **HostingEnvironment Resource Manager** objektumon belül beállíthat egy értéket a **frissítéspszre .** A **frissítésPreferencia-beállítás** sablon, ARMClient vagy https://resources.azure.com. A három lehetséges érték a következő:
+Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference**értékét. A **upgradePreference** beállítását sablon, ARMClient vagy https://resources.azure.coma használatával lehet konfigurálni. A három lehetséges érték a következők:
 
-- **Nincs:** Az Azure nem adott kötegben frissíti az ASE-t. Ez az alapértelmezett érték.
-- **Korai:** Az ASE az App Service-frissítések első felében frissül.
-- **Kése:** Az ASE az App Service-frissítések második felében frissül.
+- **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az alapértelmezett érték.
+- **Korai**: a bevezetés a app Service frissítéseinek első felében lesz frissítve.
+- **Későn**: a bevezetés a app Service frissítéseinek második felében lesz frissítve.
 
-Ha a használata, https://resources.azure.comaz alábbi lépéseket, hogy állítsa be a **frissítésPszértékek:**
+Ha használja https://resources.azure.com, kövesse az alábbi lépéseket a **upgradePreferences** értékének beállításához:
 
-1. Nyissa meg resources.azure.com és jelentkezzen be Azure-fiókjával.
-1. \/\[Lépjen végig az előfizetések\]\/előfizetési\/\[név\]\/resourceGroup erőforráscsoport névszolgáltatóinak\/a Microsoft.Web\/hostingEnvironments\/\[ASE névhez szükséges erőforrásokon.\]
-1. Felül válassza az **Olvasás/írás** lehetőséget.
+1. Lépjen a resources.azure.com webhelyre, és jelentkezzen be az Azure-fiókjával.
+1. Ugorjon végig az erőforrásokon\/\[\]\/az előfizetések előfizetés neve\]\/resourceGroups\/\/\[erőforráscsoport neve szolgáltatók\/Microsoft\/\[. Web\]hostingEnvironments.
+1. Válassza a felül található **írás/írás** elemet.
 1. Válassza a **Szerkesztés** elemet.
-1. Állítsa be a **frissítésBeállítás** értékét a kívánt három érték egyikére.
-1. Válassza a **Javítás**lehetőséget.
+1. Állítsa be a **upgradePreference** a kívánt három érték egyikére.
+1. Válassza a **javítás**lehetőséget.
 
-![erőforrások azúrkék com megjelenítése][5]
+![erőforrások Azure com-megjelenítés][5]
 
-A **frissítésPszek** funkció teszi a legtöbb értelme, ha több ASEs, mert a "korai" ASEs lesz frissítve, mielőtt a "late" ASEs. Ha több ASEs, be kell állítania a fejlesztési és tesztelési ASEs a "korai" és a termelési ASEs a "Late".
+A **upgradePreferences** szolgáltatás a legtöbb esetben a több ASE, mivel a "korai" ASE a "késői" ASE előtt frissülni fog. Ha több ASE rendelkezik, a fejlesztési és tesztelési ASE "korai" értékre kell állítania, és az éles ASE "késő" értékűnek kell lennie.
 
 ## <a name="pricing"></a>Díjszabás
 
-Az *Elkülönített* nevű díjszabási termékváltozat csak ASEs-ekkel használható. Az ASE-ben üzemeltetett összes App Service-csomag az elkülönített díjszabási termékváltozatban található. Az App Service-csomagok elkülönített díjai régiónként eltérőek lehetnek.
+Az *elkülönített* árképzési SKU csak a ASE-hez használható. A központon belül futtatott összes App Service elkülönített díjszabási SKU-ban található. A App Service csomagok elkülönített díjai régiónként eltérőek lehetnek.
 
-Az App Service-csomagok ára mellett az ASE-re is átalánydíj áll. Az átalánydíj nem változik az ASE méretével. Az ASE-infrastruktúráért minden 15 App Service-csomagpéldányután egy további előtér-díj alapértelmezett méretezési arányt fizet.
+A App Service csomagok díjszabásán felül a beadási csomagra vonatkozó átalány is érvényes. Az átalány nem változik a befektetés méretével. A beosztási infrastruktúra minden 15 App Service csomag példánya esetében egy további előtér alapértelmezett skálázási sebességével fizet.
 
-Ha az alapértelmezett méretezési arány egy előtér minden 15 App Service-csomag példányok nem elég gyors, beállíthatja az arány, amelyelővégek hozzáadása, vagy az előtér-végek méretét. Ha módosítja az arányt vagy a méretet, akkor az alapértelmezés szerint nem hozzáadott előtér-magokért kell fizetnie.
+Ha az egyik előtér alapértelmezett skálázási sebessége minden 15 App Service-csomag esetében nem elég gyors, beállíthatja, hogy a rendszer milyen arányt vegyen fel az előtér-végpontok hozzáadásához, vagy az előtér méretét. Ha módosítja az arányt vagy a méretet, akkor az előtérbeli, alapértelmezés szerint nem hozzáadott előtér-magokért kell fizetnie.
 
-Ha például a skálázási arányt 10-re állítja be, az Alkalmazásszolgáltatási csomagok minden 10 példányához hozzáad egy előtér-végződést. Az átalánydíj minden 15 példányra egy előtér-skálát fedez fel. A skálázási arány 10, akkor fizet díjat a harmadik előtér, amely hozzáadódik a 10 App Service-csomag példányai. Nem kell fizetnie érte, amikor eléri a 15 példányt, mert automatikusan hozzá lett adva.
+Ha például a skálázási arányt 10 értékre állítja, akkor a rendszer a App Service csomagok minden 10 példányához beadja az előtért. A átalánydíjas díj minden 15 példányra kiterjed az egyik előtér skálázási sebességére. A 10-es skálázási aránnyal a 10 App Service csomag példányaihoz hozzáadott harmadik előtéri díjat kell fizetni. Nem kell fizetnie, ha 15 példányt ér el, mert azt automatikusan hozzáadták.
 
-Ha az előtér méretét két magra állítja, de nem állítja be az arányt, akkor az extra magokért fizet. Az ASE két előtér-végződéssel jön létre, így még az automatikus skálázási küszöbérték alatt is két extra magért fizetne, ha a méretet kétmagos előtér-végekre növelné.
+Ha az előtér méretét két mag fölé állítja, de nem módosítja az arányt, akkor a további magokért kell fizetnie. A rendszer két előtéri végpontot hoz létre, így még az automatikus skálázási küszöbérték alatt is, ha a méretet kétmagos előtér-végpontra növelte.
 
-További információ: [Azure App Service-díjszabás.][Pricing]
+További információ: [Azure app Service díjszabása][Pricing].
 
-## <a name="delete-an-ase"></a>ASE törlése
+## <a name="delete-an-ase"></a>Bemutató törlése
 
-ASE törlése:
+A bemutató rendszer törlése:
 
-1. Válassza a **Törlés** lehetőséget az **App Service-környezet** ablaktábla tetején.
+1. Válassza a **Törlés** lehetőséget a **app Service Environment** ablaktábla tetején.
 
-1. Adja meg az ASE nevét annak megerősítéséhez, hogy törölni szeretné. AsE törlésekor is törli az összes tartalom benne.
+1. Adja meg a beadási hely nevét annak megerősítéséhez, hogy törölni szeretné. Ha töröl egy beadást, akkor a benne található összes tartalmat is törli.
 
-    ![ASE-törlés][3]
+    ![Bemutatás törlése][3]
 
-1. Válassza **az OK gombot.**
+1. Kattintson az **OK** gombra.
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

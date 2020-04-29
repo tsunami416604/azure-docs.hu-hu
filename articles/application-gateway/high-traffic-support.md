@@ -1,6 +1,6 @@
 ---
-title: Application Gateway nagy forgalmú mennyiség támogatása
-description: Ez a cikk útmutatást nyújt az Azure Application Gateway konfigurálásához a nagy hálózati forgalomban szereplő forgatókönyvek támogatása érdekében.
+title: Application Gateway nagy forgalmú kötetek támogatása
+description: Ez a cikk útmutatást nyújt az Azure Application Gateway konfigurálásához a nagy hálózati forgalomra vonatkozó forgatókönyvek támogatásához.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
 ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617202"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Nagy mennyiségű forgalom támogatása az Application Gatewayben
 
 >[!NOTE]
-> Ez a cikk néhány javasolt útmutatást ismertet, amelyek segítenek az Application Gateway beállításában a COVID-19 válság miatt fellépő nagy forgalmú forgalom kezelése érdekében.
+> Ez a cikk néhány javasolt útmutatót tartalmaz, amelyek segítségével beállíthatja, hogy a Application Gateway a COVID-19 válság miatt esetlegesen előforduló nagy forgalmú forgalom miatt további forgalmat kezeljen.
 
-Az Application Gateway webalkalmazás-tűzfallal (WAF) skálázható és biztonságos módon kezelheti a webalkalmazások forgalmát.
+A webalkalmazások forgalmát méretezhető és biztonságos módon kezelheti a webalkalmazási tűzfallal (WAF) Application Gateway használatával.
 
-Az alábbi javaslatok segítenek az Application Gateway WAF-fel történő beállításában a további forgalom kezelésére.
+A következő javaslatok segítséget nyújtanak a WAF-vel való Application Gateway beállításában a további forgalom kezeléséhez.
 
-## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Használja a v2 Termékváltozat ot a v1-en keresztül az automatikus skálázási képességekhez és a teljesítményhez
-A v2 Termékváltozat automatikus skálázást kínál annak érdekében, hogy az Application Gateway a forgalom növekedésével növekedjen. Emellett más jelentős teljesítménybeli előnyöket is kínál, például az 5x jobb TLS-kiszervezési teljesítményt, a gyorsabb üzembe helyezési és frissítési időket, a zónaredundanciát és még többet a v1-hez képest. További információt a [v2 dokumentációjában](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)talál. 
+## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Használja a v2 SKU-t a v1 protokollon keresztül az automatikus skálázási képességek és a teljesítmény előnyeihez
+A v2 SKU automatikus skálázást biztosít annak biztosításához, hogy a Application Gateway képes legyen a forgalom növekedésére. Emellett további jelentős teljesítménybeli előnyöket is kínál, például az 5x-ös jobb TLS-kiszervezési teljesítményt, a gyorsabb üzembe helyezést és a frissítés időpontját, a zónák redundanciát és egyebeket a V1-hez képest. További információkért lásd a [v2 dokumentációját](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 
 
 ## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>A példányok maximális számának beállítása a lehető legnagyobb értékre (125)
  
-Feltéve, hogy egy Application Gateway v2 Termékváltozat, a maximális példányszám beállítása a maximális lehetséges érték 125 lehetővé teszi, hogy az Application Gateway szükség szerint horizontális felskálázás. Ez lehetővé teszi, hogy kezelje az alkalmazások forgalmának lehetséges növekedését. A használt kapacitásegységekért csak díjat számítunk fel.  
+Feltételezve, hogy rendelkezik egy Application Gateway v2 SKU-val, a maximális példányszámot a maximális 125 értékre állítja, így a Application Gateway igény szerint felskálázást tesz lehetővé. Ez lehetővé teszi, hogy kezelje az alkalmazásaihoz való adatforgalom lehetséges növekedését. Csak a használt kapacitási egységekre (ke) számítunk fel díjat.  
 
-## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>Állítsa be a minimális példányszámot az átlagos CU-használat alapján
+## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>A példányok minimális számának beállítása az átlagos CU-használat alapján
 
-Feltéve, hogy egy Application Gateway v2 termékváltozat, automatikus skálázás hat-hét percet vesz igénybe horizontális felskálázás. A nagyobb minimális példányszám, az Application Gateway jobban tudja kezelni a forgalmat, ha a terhelés növekszik, mert a forgalom kiugrása nem igényel automatikus skálázási műveletet.  
+Feltételezve, hogy rendelkezik egy Application Gateway v2 SKU-val, az automatikus skálázás 6 – hét percet vesz igénybe a horizontális felskálázás érdekében. A minimális példányszámnál a Application Gateway a terhelés növelésekor jobban kezelheti a forgalmat, mivel a forgalomban nem szükséges egy automatikus skálázási művelet.  
 
-## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Riasztás, ha egy bizonyos metrika meghaladja az átlagos CU-kihasználtság 75%-át 
-Tekintse meg az [Application Gateway metrikák dokumentációját](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) a metrikák és egyéb forgatókönyvek részletes magyarázatáért. 
+## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Riasztás, ha egy adott metrika meghaladja a CU átlagos kihasználtságának 75%-át 
+A metrikák és egyéb útmutatók részletes ismertetését lásd a [Application Gateway metrikák dokumentációjában](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) . 
 
-### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Példa: Riasztás beállítása az átlagos CU-használat 75%-ára
+### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Példa: riasztás beállítása az átlagos CU-használat 75%-ában
 
-Ebben a példában bemutatja, hogyan használhatja az Azure Portalon egy riasztás beállítása, ha az átlagos CU-használat 75%-a elérte. 
-1. Nyissa meg az **Alkalmazásátjárót.**
-2. A bal oldali panelen válassza **a Metrikák** lehetőséget a **Figyelés** lapon. 
-3. Adjon hozzá egy metrikát az **átlagos aktuális számítási egységekhez.** 
-![Waf-mérőszám beállítása](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
-4. Ha a minimális példányszámot az átlagos CU-használatra állította be, folytassa a riasztást, ha a minimális példányok 75%-a használatban van. Ha például az átlagos használat 10 cus, állítson be riasztást 7.5 CU.For example, if your average usage is 10 CUs, set a alert on 7.5 CUs. Ez figyelmezteti, ha a használat növekszik, és időt ad a válaszadásra. Növelheti a minimumot, ha úgy gondolja, hogy ez a forgalom fenntartható lesz, hogy figyelmeztesse Önt, hogy a forgalom növekedhet. 
-![WAF-riasztás beállítása](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
+Ebből Azure Portal a példából megtudhatja, hogyan állíthatja be a riasztást, ha elérte a CU-használat 75%-át. 
+1. Navigáljon a **Application Gateway**.
+2. A bal oldali panelen a **figyelés** lapon válassza a **metrikák** lehetőséget. 
+3. Metrika hozzáadása az **átlagos aktuális számítási egységekhez**. 
+![WAF metrika beállítása](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
+4. Ha beállította a minimális példányszámot az átlagos CU-használathoz, folytassa a riasztást, ha a minimális példányok 75%-a használatban van. Ha például az átlagos használat 10 ke, állítson be egy riasztást 7,5 ke-ra. Ez riasztást küld, ha a használat növekszik, és időt ad a válaszadásra. Ha úgy gondolja, hogy a forgalom továbbra is fennáll, akkor a minimumot növelheti. 
+![WAF riasztás beállítása](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
 
 > [!NOTE]
-> Beállíthatja, hogy a riasztás alacsonyabb vagy magasabb CU kihasználtsági százalékban történjen attól függően, hogy mennyire szeretné bizalmasan beállítani a potenciális forgalmi csúcsokat.
+> Beállíthatja, hogy a riasztás alacsonyabb vagy magasabb CU-kihasználtsági arányban történjen, attól függően, hogy mennyire érzékeny a potenciális forgalom.
 
-## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>A WAF beállítása geoszűréssel és botvédelemmel a támadások leállításához
-Ha egy további biztonsági réteget szeretne az alkalmazás előtt, használja az Application Gateway WAF_v2 Termékváltozat waf-képességek. Beállíthatja, hogy a v2 Termékváltozat csak egy adott országból vagy országokból származó alkalmazásokhoz való hozzáférést engedélyezze. Waf-egyéni szabályt állít be, amely kifejezetten engedélyezi vagy blokkolja a földrajzi helyen alapuló forgalmat. További információt az [egyéni szabályok geoszűrése](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) című témakörben talál, valamint [arról, hogy miként konfigurálhatja az egyéni szabályokat az Application Gateway WAF_v2 termékváltozaton keresztül a PowerShellen keresztül.](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)
+## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>A WAF beállítása a geofiltering és a bot Protection szolgáltatással a támadások leállításához
+Ha további biztonsági réteget szeretne használni az alkalmazás előtt, használja a Application Gateway WAF_v2 SKU-t a WAF képességekhez. A v2 SKU-t úgy állíthatja be, hogy csak az adott országban vagy országokban engedélyezze az alkalmazásokhoz való hozzáférést. A WAF egyéni szabály beállításával explicit módon engedélyezheti vagy letilthatja a forgalmat a földrajzi hely alapján. További információ: [geofiltering egyéni szabályok](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) és [egyéni szabályok konfigurálása Application Gateway WAF_v2 SKU-n keresztül a PowerShell használatával](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
-Engedélyezze a robotvédelem et az ismert rossz robotok blokkolására. Ez csökkenti az alkalmazáshoz való forgalom mennyiségét. További információt a [robotvédelem beállítási utasításokkal című](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)témakörben talál.
+Engedélyezze a bot Protectiont az ismert helytelen robotok blokkolásához. Ez csökkenti az alkalmazás felé irányuló forgalom mennyiségét. További információ: [a bot Protection beállítása a set up utasítással](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
-## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>A diagnosztika bekapcsolása az Application Gateway és a WAF szolgáltatásban
+## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>Diagnosztika bekapcsolása Application Gateway és WAF
 
-A diagnosztikai naplók lehetővé teszik a tűzfalnaplók, a teljesítménynaplók és a hozzáférési naplók megtekintését. Ezeket a naplókat az Azure-ban az Alkalmazásátjárók kezeléséhez és hibaelhárításához használhatja. További információt a [diagnosztikai dokumentációban](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging)talál. 
+A diagnosztikai naplók lehetővé teszik a tűzfalak, a Teljesítménynaplók és a hozzáférési naplók megtekintését. Az Azure-ban ezeket a naplókat használhatja az Application Gateway-alkalmazások kezeléséhez és hibakereséséhez. További információkért tekintse meg a [diagnosztika dokumentációját](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging). 
 
-## <a name="set-up-an-tls-policy-for-extra-security"></a>TLS-házirend beállítása a fokozott biztonság érdekében
-Győződjön meg arról, hogy a legújabb TLS-házirendverziót[(AppGwSslPolicy20170401S)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)használja. Ez kikényszeríti a TLS 1.2 és erősebb titkosításokat. További információt a [TLS-házirendverziók és titkosítási csomagok PowerShell en keresztüli konfigurálása című](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)témakörben talál.
+## <a name="set-up-an-tls-policy-for-extra-security"></a>TLS-szabályzat beállítása további biztonsághoz
+Győződjön meg arról, hogy a legújabb TLS-házirend verzióját használja ([AppGwSslPolicy20170401S](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)). Ez kikényszeríti a TLS 1,2 és az erősebb titkosítási algoritmusokat. További információ: a [TLS-házirend verzióinak és a titkosítási csomagok konfigurálása a PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)használatával.

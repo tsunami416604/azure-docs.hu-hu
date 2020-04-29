@@ -1,7 +1,7 @@
 ---
-title: Eszközök kezelése az Azure Media Servicesben
+title: Eszközök kezelése a Azure Media Servicesban
 titleSuffix: Azure Media Services
-description: Olyan eszköz, ahol az adathordozót (például feltöltés vagy élő betöltés révén), kimeneti adathordozót (egy feladat kimenetéből) és adathordozót tesz közzé (streameléshez). Ez a témakör áttekintést nyújt egy új eszköz létrehozásáról és a fájlok feltöltéséről.
+description: Olyan eszköz, amelybe be kell töltenie az adathordozót (például feltöltéssel vagy élő betöltéssel), kimeneti adathordozóval (a feladatok kimenetéről), és közzé kell tennie az adathordozót (adatfolyamként). Ez a témakör áttekintést nyújt az új eszközök létrehozásáról és a fájlok feltöltéséről.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,38 +14,38 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582202"
 ---
 # <a name="manage-assets"></a>Eszközök kezelése
 
-Az Azure Media Servicesben egy [eszköz](https://docs.microsoft.com/rest/api/media/assets) az a hely, ahol 
+A Azure Media Servicesban egy [eszköz](https://docs.microsoft.com/rest/api/media/assets) , ahol 
 
-* médiafájlok feltöltése egy eszközbe,
-* élő közvetítések betöltése és archiválása egy eszközbe,
-* az elemzési feladat kódolásának eredményeit egy eszközre adja át,
-* média közzététele streamelésre, 
+* médiafájlok feltöltése egy eszközre
+* élő streamek beolvasása és archiválása egy eszközbe
+* elemzési feladatok egy eszközre való kódolásának eredményeinek kimenete
+* adathordozó közzététele a folyamatos átvitelhez 
 * fájlok letöltése egy eszközről.
 
-Ez a témakör áttekintést ad arról, hogyan tölthet fel fájlokat egy eszközbe, és hogyan hajthat végre néhány más gyakori műveletet. Azt is előírja, hogy a linkeket a kód minták és a kapcsolódó témákat.
+Ez a témakör áttekintést nyújt arról, hogyan tölthet fel fájlokat egy eszközre, és hogyan végezhet el más gyakori műveleteket. Emellett a kódokra és a kapcsolódó témakörökre mutató hivatkozásokat is tartalmaz.
 
 ## <a name="prerequisite"></a>Előfeltétel 
 
-A fejlesztés megkezdése előtt tekintse át a következőket:
+A fejlesztés megkezdése előtt tekintse át a következőt:
 
 * [Alapelvek](concepts-overview.md)
-* [Fejlesztés a Media Services 3-as vAPI-jával](media-services-apis-overview.md) (információkat tartalmaz az API-k eléréséről, elnevezési konvenciókról és így tovább) 
+* [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (beleértve az API-k elérésére, az elnevezési konvenciók stb. vonatkozó információkat) 
 
-## <a name="upload-media-files-into-an-asset"></a>Médiafájlok feltöltése eszközbe
+## <a name="upload-media-files-into-an-asset"></a>Médiafájlok feltöltése egy eszközre
 
-Miután a digitális fájlokat feltöltötte a tárolóba, és társított egy eszköz, akkor fel lehet használni a Media Services kódolás, streamelés, és elemzése tartalmi munkafolyamatok. A Media Services egyik gyakori munkafolyamata egy fájl feltöltése, kódolása és streamelése. Ez a szakasz az általános lépéseket ismerteti.
+Miután a digitális fájlokat feltöltötte a Storage-ba, és egy objektumhoz társítva van, a Media Services kódolás, a folyamatos átvitel és a tartalom elemzése munkafolyamatokban is használhatók. Az egyik gyakori Media Services munkafolyamat egy fájl feltöltése, kódolása és továbbítása. Ez a szakasz az általános lépéseket ismerteti.
 
-1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API a tároló nevét `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`adja vissza (például).
+1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API a tároló nevét adja vissza (például: `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
 
-    Ha már rendelkezik egy blob tároló, amely szeretne társítani egy eszköz, megadhatja a tároló nevét, amikor létrehozza az eszközt. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. A "videos/inputs/input.mp4" fájlnévvel rendelkező tároló azonban nem fog működni.
+    Ha már rendelkezik egy eszközhöz társítandó blob-tárolóval, megadhatja a tároló nevét az eszköz létrehozásakor. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a "videos/Inputs/input. mp4" fájlnévvel rendelkező tároló nem fog működni.
 
     Az Azure CLI-vel közvetlenül feltölthet bármilyen tárfiókba és tárolóba, amelyhez jogosultsággal rendelkezik az előfizetésében.
 
@@ -58,17 +58,17 @@ Miután a digitális fájlokat feltöltötte a tárolóba, és társított egy e
 
     A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
 
-    **Az AssetContainerSas.listContainerSas** egy [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) paramétert vesz fel, amelyen beállította a értékét. `expiryTime` Az időt 24 < kell állítani.
+    A **AssetContainerSas. listContainerSas** a [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) beállított `expiryTime`ListContainerSasInput paramétert veszi igénybe. Az időt < 24 órára kell beállítani.
 
-    [A ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több SAS-URL-t ad vissza, mivel minden tárfiókhoz két tárfiók kulcs ad vissza. A tárfiók két kulcs, mert segít a feladatátvétel és a tárfiók kulcsok zökkenőmentes elforgatása. Az első SAS-URL-cím az első tárfiókkulcsot, a második SAS-URL-cím pedig a második kulcsot jelöli.
-3. Az Azure Storage API-k vagy SDK-k (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.NET SDK)](../../storage/blobs/storage-quickstart-blobs-dotnet.md)segítségével fájlokat tölthet fel az eszköztárolóba.
+    A [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több sas URL-címet ad vissza, mivel minden egyes Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert segít a Storage-fiókok kulcsainak feladatátvételében és zökkenőmentes elforgatásában. Az első SAS URL-cím az első Storage-fiók kulcsa, a második SAS URL-cím pedig a második kulcsot jelöli.
+3. Az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) használva tölthet fel fájlokat az Asset tárolóba.
 4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat.
-5. A tartalom streamelése a "kimeneti" eszközről.
+5. Továbbítsa a tartalmat a "output" objektumból.
 
 ### <a name="create-a-new-asset"></a>Új adategység létrehozása
 
 > [!NOTE]
-> Az eszköz Datetime típusú tulajdonságai mindig UTC formátumúak.
+> A DateTime típusú tulajdonságok mindig UTC formátumban jelennek meg.
 
 #### <a name="rest"></a>REST
 
@@ -76,9 +76,9 @@ Miután a digitális fájlokat feltöltötte a tárolóba, és társított egy e
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-A REST példa: [Hozzon létre egy eszköz REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) példa.
+A REST-példákat lásd: [eszköz létrehozása Rest](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) -példával.
 
-A példa bemutatja, hogyan hozhat létre a **kérelem törzse,** ahol megadhatja a leírást, a tároló nevét, a tárfiókot és egyéb hasznos adatokat.
+A példa bemutatja, hogyan hozhatja létre a **kérelem törzsét** , ahol megadhatja a leírást, a tároló nevét, a Storage-fiókot és más hasznos információkat.
 
 #### <a name="curl"></a>cURL
 
@@ -102,49 +102,49 @@ curl -X PUT \
 
 ### <a name="see-also"></a>Lásd még
 
-* [Feladatbevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
-* [Feladatbevitel létrehozása HTTPS-URL-címről](job-input-from-http-how-to.md)
+* [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
+* [Feladathoz tartozó bemenet létrehozása HTTPS URL-címről](job-input-from-http-how-to.md)
 
-## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Élő közvetítések betöltése és archiválása egy eszközbe
+## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Élő streamek beolvasása és archiválása egy eszközbe
 
-A Media Services szolgáltatásban az [Élő kimenet](https://docs.microsoft.com/rest/api/media/liveoutputs) objektum olyan, mint egy digitális videofelvevő, amely az élő közvetítést a Media Services-fiók egy eszközébe rögzíti. A rögzített tartalom megmarad az [eszköz](https://docs.microsoft.com/rest/api/media/assets) erőforrás által meghatározott tárolóban.
+A Media Services egy [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom az [eszköz](https://docs.microsoft.com/rest/api/media/assets) erőforrása által meghatározott tárolóban marad.
 
 További információkért lásd:
 
 * [Egy felhőalapú DVR használata](live-event-cloud-dvr.md)
-* [Élő oktatóanyag streamelése](stream-live-tutorial-with-api.md)
+* [Streaming Live-oktatóanyag](stream-live-tutorial-with-api.md)
 
-## <a name="output-the-results-of-a-job-to-an-asset"></a>Feladat eredményeinek kimenetele egy eszközre
+## <a name="output-the-results-of-a-job-to-an-asset"></a>Feladatok eredményének kimenete egy eszközre
 
-A Media Services szolgáltatásban a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladat](transforms-jobs-concept.md)eredményének tárolásához.
+Media Services a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladatok](transforms-jobs-concept.md)eredményének tárolásához.
 
 További információkért lásd:
 
 * [Videó kódolása](encoding-concept.md)
-* [Feladatbevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
+* [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
 
-## <a name="publish-an-asset-for-streaming"></a>Eszköz közzététele streameléshez
+## <a name="publish-an-asset-for-streaming"></a>Eszköz közzététele adatfolyamként
 
-Egy eszköz streameléshez való közzétételéhez létre kell hoznia egy [streamelési lokátort.](streaming-locators-concept.md) A streamelési lokátornak ismernie kell a közzétenni kívánt eszköznevet. 
+Egy eszköz a folyamatos átvitelhez való közzétételéhez létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). A folyamatos átviteli lokátornak ismernie kell a közzétenni kívánt eszköz nevét. 
 
 További információkért lásd:
 
-[Oktatóanyag: Videók feltöltése, kódolása és streamelése a Media Services v3-as számával](stream-files-tutorial-with-api.md)
+[Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)
 
-## <a name="download-results-of-a-job-from-an-output-asset"></a>Feladat eredményeinek letöltése kimeneti eszközről
+## <a name="download-results-of-a-job-from-an-output-asset"></a>Feladatok eredményeinek letöltése kimeneti eszközről
 
-Ezután letöltheti a feladat ezen eredményeit egy helyi mappába a Media Service és a Storage API-k használatával. 
+Ezután letöltheti a feladatok eredményeit egy helyi mappába a Media Service és a Storage API-k használatával. 
 
-Lásd a [fájlok letöltése](download-results-howto.md) példa.
+Lásd: [fájlok letöltése](download-results-howto.md) példa.
 
-## <a name="filtering-ordering-paging"></a>Szűrés, rendelés, lapozás
+## <a name="filtering-ordering-paging"></a>Szűrés, rendezés, lapozás
 
-Lásd: [Media Services-entitások szűrése, rendelése, lapozása.](entities-overview.md)
+Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a teljes kódpéldákat, amelyek bemutatják, hogyan lehet feltölteni, kódolni, elemezni, streamelni élőben és igény szerint: 
+Tekintse meg a teljes kód példáit, amelyek bemutatják, hogyan tölthet fel, kódolhat, elemezheti és közvetítheti élőben és igény szerint: 
 
-* [Jáva](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [PIHENÉS](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [Rest](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

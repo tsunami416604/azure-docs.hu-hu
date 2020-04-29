@@ -1,6 +1,6 @@
 ---
-title: Kimenő forgalom lezárása
-description: Ismerje meg, hogyan integrálható az Azure Firewall szolgáltatással az App Service-környezetből származó kimenő forgalom biztonságossá tétele érdekében.
+title: Kimenő forgalom zárolása
+description: Ismerje meg, hogyan integrálható a Azure Firewall a kimenő forgalom biztonságos App Service-környezetből történő biztonságossá tételéhez.
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
@@ -8,109 +8,109 @@ ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3dadb57c6358623974de1a27e1601d99b28fee32
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584328"
 ---
-# <a name="locking-down-an-app-service-environment"></a>App Service-környezet zárolása
+# <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
-Az App Service-környezet (ASE) számos külső függőséget, hogy a megfelelő működéshez hozzáférést igényel. Az ASE az ügyfél Azure virtuális hálózat (VNet) él. Az ügyfeleknek engedélyezniük kell az ASE függőségi forgalmat, ami problémát jelent az ügyfelek számára, amelyek szeretnék lezárni az összes kimenő a virtuális hálózatról.
+A App Service Environment (beadási) számos külső függőséggel rendelkezik, amelyekhez hozzáférést igényel ahhoz, hogy megfelelően működjön. A beszállító az Azure Virtual Networkban (VNet) él. Az ügyfeleknek engedélyezniük kell a bevezető függőségi forgalmat, ami olyan ügyfelek számára jelent problémát, akik az összes kimenő forgalomból le szeretnék zárni a VNet.
 
-Az ASE kezelésére használt bejövő végpontok száma. A bejövő felügyeleti forgalom nem küldhető tűzfaleszközön keresztül. A forgalom forráscímei ismertek, és közzé vannak téve az [App Service-környezet felügyeleti címeket](https://docs.microsoft.com/azure/app-service/environment/management-addresses) tartalmazó dokumentumban. Van is egy Service Tag nevű AppServiceManagement, amely használható a hálózati biztonsági csoportok (NSG-k) a bejövő forgalom biztonságossá tétele.
+Számos bejövő végpontot használnak a bevezetéshez. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és közzé lesznek téve a [app Service Environment felügyeleti címek](https://docs.microsoft.com/azure/app-service/environment/management-addresses) dokumentumban. Létezik egy AppServiceManagement nevű szolgáltatási címke is, amely hálózati biztonsági csoportokkal (NSG) is használható a bejövő forgalom biztonságossá tételéhez.
 
-Az ASE kimenő függőségek szinte teljesen definiálva vannak a teljes tartománynevekkel, amelyek mögött nincsenek statikus címek. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók az ASE kimenő forgalmának zárolására. A címek elég gyakran változnak ahhoz, hogy ne lehessen szabályokat beállítani az aktuális felbontás alapján, és ezt fel használni az NSG-k létrehozásához. 
+A kihelyezett kifelé irányuló kimenő függőségek szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek a mögöttes statikus címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók a kifelé irányuló kimenő forgalom zárolására. A címek elég gyakran változnak, hogy az aktuális felbontáson alapuló szabályok nem állíthatók be, és ezt a NSG létrehozásához használja. 
 
-A kimenő címek biztonságossá tétele olyan tűzfaleszköz használatának megoldása, amely a tartománynevek en alapuló kimenő forgalmat szabályozhatja. Az Azure Firewall korlátozhatja a kimenő HTTP- és HTTPS-forgalmat a cél teljes tartományszáma alapján.  
+A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. A Azure Firewall a cél teljes tartományneve alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat.  
 
 ## <a name="system-architecture"></a>Rendszer-architektúra
 
-Az ASE üzembe helyezése tűzfaleszközön áthaladó kimenő forgalommal az ASE alhálózaton lévő útvonalak módosításához szükséges. Az útvonalak IP szinten működnek. Ha nem vigyáz az útvonalak definiálására, kényszerítheti a TCP-válaszforgalmat egy másik címforrásra. Ha a válaszcíme eltér a címforgalomtól, a problémát aszimmetrikus útválasztásnak nevezzük, és megszakítja a TCP-t.
+Egy olyan, a tűzfalon áthaladó kimenő forgalommal rendelkező bevezetéshez, amely az útvonalakat a bevezető alhálózaton át kívánja módosítani. Az útvonalak IP-szinten működnek. Ha nem érdekli az útvonalak meghatározása, a TCP-válasz forgalmát más címről is kikényszerítheti a forrásra. Ha a válasz címe eltér a címek adatforgalmával, akkor a problémát aszimmetrikus útválasztásnak nevezzük, és a rendszer megszakítja a TCP-t.
 
-Az ASE-be érkező bejövő forgalomnak meg kell határoznia az útvonalakat, ugyanúgy válaszolhat, mint a hogy a forgalom beérkezett. Az útvonalakat meg kell határozni a bejövő felügyeleti kérelmekhez és a bejövő alkalmazáskérelmekhez.
+Az útvonalakat úgy kell meghatározni, hogy a beérkező forgalom ugyanúgy reagáljon, mint a forgalom. Az útvonalakat meg kell határozni a bejövő felügyeleti kérelmekhez és a bejövő alkalmazásokra vonatkozó kérésekhez.
 
-Az ASE-be irányuló és onnan érkező forgalomnak be kell tartania az alábbi egyezményeket:
+A befelé irányuló adatforgalomnak a következő egyezményeknek kell megfelelnie
 
-* Az Azure SQL, Storage és Event Hub forradtforgalmat tűzfaleszköz használata nem támogatja. Ezt a forgalmat közvetlenül ezeknek a szolgáltatásoknak kell elküldeni. Ennek módja a három szolgáltatás szolgáltatásvégpontjainak konfigurálása. 
-* Útvonaltábla-szabályokat kell definiálni, amelyek a bejövő felügyeleti forgalmat visszaküldik onnan, ahonnan érkezett.
-* Útvonaltábla-szabályokat kell definiálni, amelyek a bejövő alkalmazásforgalmat visszaküldik onnan, ahonnan érkezett. 
-* Az ASE-ből kilépő összes többi forgalom elküldhető a tűzfaleszközre egy útvonaltábla-szabállyal.
+* Az Azure SQL, a Storage és az Event hub szolgáltatásba irányuló adatforgalom nem támogatott a tűzfal eszközének használata esetén. Ezt a forgalmat közvetlenül a szolgáltatásoknak kell elküldeni. Ennek az az oka, hogy a szolgáltatás-végpontokat konfigurálja a három szolgáltatáshoz. 
+* Az útválasztási táblázat szabályait úgy kell meghatározni, hogy a bejövő felügyeleti forgalom vissza legyen küldve onnan, ahonnan származik.
+* Az útválasztási táblázat szabályait úgy kell meghatározni, hogy a bejövő alkalmazások forgalmát visszaküldjék a Honnan érkezett helyről. 
+* Az összes többi, a bevezetőt elhagyó adatforgalmat elküldhetik a tűzfal eszközére egy útválasztási táblázat szabály segítségével.
 
-![ASE az Azure Tűzfal kapcsolati folyamatával][5]
+![BeAzure Firewalli kapcsolatok folyamata][5]
 
 ## <a name="locking-down-inbound-management-traffic"></a>Bejövő felügyeleti forgalom zárolása
 
-Ha az ASE alhálózatmég nem rendelkezik nsg-hez rendelt, hozzon létre egyet. Az NSG-n belül állítsa be az első szabályt, amely engedélyezi az AppServiceManagement nevű szolgáltatáscímkéből származó forgalmat a 454-es, 455-ös portokon. Az AppServiceManagement címkéből való hozzáférést engedélyező szabály az egyetlen dolog, amely az ASE kezeléséhez szükséges a nyilvános IP-címekhez. A szolgáltatási címke mögött található címek csak az Azure App Service felügyeletére szolgálnak. Az ezeken a kapcsolatokon keresztül áramló felügyeleti forgalom titkosított és hitelesítési tanúsítványokkal védett. A csatorna tipikus forgalma olyan dolgokat tartalmaz, mint például az ügyfél által kezdeményezett parancsok és az állapotminta. 
+Ha a betanító alhálózat még nincs hozzárendelve NSG, hozzon létre egyet. A NSG belül állítsa be az első szabályt, hogy engedélyezze a forgalmat a AppServiceManagement nevű szolgáltatási címkétől az 454-es, 455-as porton. A AppServiceManagement címkéből való hozzáférést engedélyező szabály az egyetlen, ami szükséges a nyilvános IP-címekről a bevezetésének kezeléséhez. A szolgáltatás címkéje mögött található címek csak a Azure App Service felügyeletére használhatók. Az ezeken a kapcsolatokon áthaladó felügyeleti forgalom titkosítva van, és biztonságos a hitelesítési tanúsítványokkal. Az ezen a csatornán jellemző forgalom olyan dolgokat tartalmaz, mint például az ügyfél által kezdeményezett parancsok és az állapot-mintavétel. 
 
-Ases, amelyek a portálon keresztül egy új alhálózat készül egy NSG, amely tartalmazza az engedélyezési szabály az AppServiceManagement címke.  
+A portálon egy új alhálózattal létrehozott ASE egy olyan NSG készülnek, amely tartalmazza a AppServiceManagement címke engedélyezési szabályát.  
 
-Az ASE-nek engedélyeznie kell az 16001-es port terheléselosztó címkéjéből érkező bejövő kérelmeket is. Az 16001-es port terheléselosztójának kérései életben tartják a terheléselosztó és az ASE előtér-végeközötti ellenőrzéseket. Ha az 16001-es port le van tiltva, az ASE nem megfelelő állapotba kerül.
+A kiegészítő szolgáltatásnak a 16001-as porton lévő Load Balancer címkén is engedélyeznie kell a bejövő kérelmeket. Az 16001-as porton lévő Load Balancertól érkező kérések életben maradnak a Load Balancer és a központba való bejáratok között. Ha a 16001-es port le van tiltva, a bevezetés nem kifogástalan állapotú lesz.
 
-## <a name="configuring-azure-firewall-with-your-ase"></a>Az Azure tűzfal konfigurálása az ASE-vel 
+## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Firewall konfigurálása a beadással 
 
-A meglévő ASE-ből az Azure Firewall tűzfallal való zárolásának lépései a következők:
+A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalom zárolásának lépései a következők:
 
-1. Engedélyezze a szolgáltatásvégpontokat az SQL, storage és Event Hub az ASE alhálózaton. A szolgáltatásvégpontok engedélyezéséhez lépjen be a hálózati portálra, > alhálózatokat, és válassza a Microsoft.EventHub, a Microsoft.SQL és a Microsoft.Storage lehetőséget a Szolgáltatás végpontjai legördülő menüből. Ha az Azure SQL szolgáltatásvégpontjai engedélyezve vannak, az alkalmazások által konfigurált Azure SQL-függőségeket is konfigurálni kell a szolgáltatásvégpontokkal. 
+1. Engedélyezze a szolgáltatási végpontokat az SQL, a Storage és az Event hub számára a szolgáltatói alhálózatán. A szolgáltatási végpontok engedélyezéséhez lépjen a hálózatkezelési portál > alhálózatok elemre, és válassza a Microsoft. EventHub, a Microsoft. SQL és a Microsoft. Storage lehetőséget a szolgáltatás végpontjai legördülő listából. Ha a szolgáltatási végpontok engedélyezve vannak az Azure SQL-ben, az alkalmazások által használt Azure SQL-függőségeket is konfigurálni kell a szolgáltatás-végpontokkal. 
 
-   ![szolgáltatásvégpontok kiválasztása][2]
+   ![szolgáltatási végpontok kiválasztása][2]
   
-1. Hozzon létre egy AzureFirewallSubnet nevű alhálózatot a virtuális hálózatban, ahol az ASE létezik. Kövesse az Azure [Firewall dokumentációjában](https://docs.microsoft.com/azure/firewall/) található utasításokat az Azure Firewall létrehozásához.
+1. Hozzon létre egy AzureFirewallSubnet nevű alhálózatot abban a VNet, ahol a központjának létezik. A Azure Firewall létrehozásához kövesse az [Azure Firewall dokumentációjának](https://docs.microsoft.com/azure/firewall/) utasításait.
 
-1. Az Azure Firewall felhasználói felületén > szabályok > alkalmazásszabály gyűjteményében válassza az Alkalmazásszabály-gyűjtemény hozzáadása lehetőséget. Adjon meg egy nevet, prioritást és állítsa be az Engedélyezés lehetőséget. A Teljes tartománynév-címkék szakaszban adjon meg egy nevet, állítsa a forráscímeket *-ra, és válassza ki az App Service-környezet teljes tartománynév-címkét és a Windows Update szolgáltatást. 
+1. Az Azure Firewall felhasználói felület > szabályok > az alkalmazási szabályok gyűjteménye területen válassza az alkalmazás-szabály gyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A FQDN-címkék szakaszban adjon meg egy nevet, állítsa be a címeket a * értékre, és válassza ki a App Service Environment FQDN címkét és a Windows Update. 
    
-   ![Alkalmazásszabály hozzáadása][1]
+   ![Alkalmazás-szabály hozzáadása][1]
    
-1. Az Azure Firewall felhasználói felületén > szabályok > hálózati szabály gyűjtemény, válassza a Hálózati szabály gyűjtemény hozzáadása. Adjon meg egy nevet, prioritást és állítsa be az Engedélyezés lehetőséget. Az IP-címek csoport Szabályok szakaszában adjon meg egy nevet, válasszon egy **ptocol-t bármelyik**ből , állítsa a * forrás és cél címek beállítását, és állítsa a portokat 123-ra. Ez a szabály lehetővé teszi, hogy a rendszer az Óraszinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt ugyanúgy az 12000-es portra, hogy segítsen a rendszerproblémák osztályozásában. 
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges**ptocol, állítsa be a forrás-és célcím beállítást, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
 
    ![NTP hálózati szabály hozzáadása][3]
    
-1. Az Azure Firewall felhasználói felületén > szabályok > hálózati szabály gyűjtemény, válassza a Hálózati szabály gyűjtemény hozzáadása. Adjon meg egy nevet, prioritást és állítsa be az Engedélyezés lehetőséget. A Szabályok szakaszban a Szolgáltatás címkék, adjon meg egy nevet, válassza ki a protokoll **bármely**, állítsa * a Forrás címek, válassza ki az AzureMonitor szolgáltatáscímkéjét, és állítsa be a portok 80, 443. Ez a szabály lehetővé teszi, hogy a rendszer az Azure Monitor állapot- és metrikaadatokkal való ellátásához.
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban a szolgáltatás címkék területén adjon meg egy nevet, válasszon ki egy **tetszőleges**protokollt, állítsa * a forrás címekre, válassza ki a AzureMonitor szolgáltatási címkéjét, és állítsa a portokat 80, 443 értékre. Ez a szabály lehetővé teszi, hogy a Azure Monitor állapot-és mérőszámokkal kapcsolatos információkat adjon meg.
 
-   ![NTP-szolgáltatáscímke hálózati szabályának hozzáadása][6]
+   ![NTP szolgáltatási címke hálózati szabályának hozzáadása][6]
    
-1. Hozzon létre egy útvonaltáblát az [App Service-környezet felügyeleti címeiből]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) származó felügyeleti címekkel az internet következő ugrásával. Az útvonaltábla-bejegyzések szükségesek az aszimmetrikus útválasztási problémák elkerüléséhez. Adja hozzá az IP-címfüggőségek útvonalait az ip-címfüggőségekben az internet következő ugrásával. Adjon hozzá egy virtuális berendezés-útvonalat a 0.0.0.0/0-s útvonaltáblához, és a következő ugrás az Azure Tűzfal privát IP-címe. 
+1. Hozzon létre egy útválasztási táblázatot a [app Service Environment felügyeleti címekből]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) származó felügyeleti címekkel az Internet következő ugrásával. Az útválasztási tábla bejegyzéseinek elkerülheti az aszimmetrikus útválasztási problémákat. Vegyen fel útvonalakat az IP-címek függőségeinél alább látható, az Internet következő ugrásával elérhető IP-címek függőségeibe. Adjon hozzá egy virtuális berendezési útvonalat a 0.0.0.0/0 útválasztási táblázathoz, és a következő ugrás a Azure Firewall magánhálózati IP-címe legyen. 
 
-   ![Útvonaltábla létrehozása][4]
+   ![Útválasztási táblázat létrehozása][4]
    
-1. Rendelje hozzá a létrehozott útvonaltáblát az ASE alhálózatához.
+1. Rendelje hozzá a létrehozott útválasztási táblázatot a bevezető alhálózathoz.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>Az ASE telepítése tűzfal mögött
+#### <a name="deploying-your-ase-behind-a-firewall"></a>A bevezetése tűzfal mögötti üzembe helyezése
 
-Az ASE tűzfal mögötti üzembe helyezésének lépései megegyeznek a meglévő ASE konfigurálásával egy Azure tűzfallal, kivéve, hogy létre kell hoznia az ASE alhálózatot, és kövesse az előző lépéseket. Az ASE egy már meglévő alhálózatban történő létrehozásához egy Erőforrás-kezelő sablont kell használnia az [ASE létrehozása erőforrás-kezelő sablonnal](https://docs.microsoft.com/azure/app-service/environment/create-from-template)című dokumentumban leírtak szerint.
+A központnak a tűzfal mögötti üzembe helyezésének lépései ugyanazok, mint a meglévő beadási Azure Firewall konfigurálása, kivéve, ha létre kell hoznia a bevezetési alhálózatot, majd követnie kell az előző lépéseket. Ha egy meglévő alhálózatban szeretné létrehozni a bevezetőt, akkor egy Resource Manager-sablont kell használnia a szolgáltató [Resource Manager-sablonnal történő létrehozásával foglalkozó](https://docs.microsoft.com/azure/app-service/environment/create-from-template)dokumentumban leírtak szerint.
 
 ## <a name="application-traffic"></a>Alkalmazás forgalma 
 
-A fenti lépések lehetővé teszik az ASE működését gond nélkül. Továbbra is konfigurálnia kell a dolgokat az alkalmazás igényeinek megfelelően. Az Azure Tűzfallal konfigurált ASE-ben lévő alkalmazások két probléma merülnek fel.  
+A fenti lépések lehetővé teszik, hogy a bevezetés problémamentesen működjön. Továbbra is konfigurálnia kell a dolgokat az alkalmazás igényeinek megfelelően. Két probléma merült fel olyan alkalmazásokkal kapcsolatban, amelyek Azure Firewall-vel vannak konfigurálva.  
 
-- Alkalmazás-függőségek hozzá kell adni az Azure tűzfal vagy az útvonaltábla. 
-- Az aszimmetrikus útválasztási problémák elkerülése érdekében útvonalakat kell létrehozni az alkalmazásforgalomhoz.
+- Az alkalmazás függőségeit fel kell venni a Azure Firewall vagy az útválasztási táblába. 
+- A aszimmetrikus útválasztási problémák elkerülése érdekében létre kell hozni útvonalakat az alkalmazás forgalmához
 
-Ha az alkalmazások függőségekkel rendelkeznek, hozzá kell adni őket az Azure tűzfalhoz. Alkalmazásszabályok létrehozása a HTTP/HTTPS-forgalom és a hálózati szabályok engedélyezéséhez minden máshoz. 
+Ha az alkalmazásai függőségekkel rendelkeznek, azokat hozzá kell adni a Azure Firewallhoz. Alkalmazás-szabályok létrehozása a HTTP/HTTPS-forgalom és a hálózati szabályok minden más számára történő engedélyezéséhez. 
 
-Ha ismeri a címtartományt, amelyből az alkalmazáskérelem-forgalom származik, hozzáadhatja azt az ASE-alhálózathoz rendelt útvonaltáblához. Ha a címtartomány nagy vagy meghatározatlan, akkor egy hálózati készülék, például az Application Gateway segítségével adhat meg egy címet, amelyet hozzáadhat az útvonaltáblához. Az Alkalmazásátjáró ILB ASE-vel történő konfigurálásáról az [ILB ASE integrálása alkalmazásátjáróval](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) című témakört
+Ha ismeri azt a címtartományt, amelyet az alkalmazás kérelmének adatforgalma fog származni, hozzáadhatja azt a bevezető alhálózathoz rendelt útválasztási táblához. Ha a címtartomány nagy vagy nincs meghatározva, akkor a Application Gateway egy olyan hálózati berendezést használhat, amely az útválasztási táblázatba való felvételhez egy-egy-egy-egy IP-címeket biztosít. A Application Gateway ILB-vel történő konfigurálásával kapcsolatos részletekért olvassa el a következőt: a ILB-előállítók [integrálása egy Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
-Az Application Gateway ezen használata csak egy példa a rendszer konfigurálására. Ha ezt az elérési utat követte, akkor hozzá kell adnia egy útvonalat az ASE alhálózati útvonaltáblához, hogy az Application Gateway-nek küldött válaszforgalom közvetlenül menjen oda. 
+A Application Gateway használata csupán egy példa arra, hogyan konfigurálhatja a rendszerét. Ha ezt az elérési utat követte, akkor hozzá kell adnia egy útvonalat a bevezető alhálózat útválasztási táblájához, hogy a Application Gateway küldött válasz-forgalom azonnal elérhető legyen. 
 
 ## <a name="logging"></a>Naplózás 
 
-Az Azure Firewall naplókat küldhet az Azure Storage, az Event Hub vagy az Azure Monitor naplóiba. Az alkalmazás bármely támogatott célhoz való integrálásához nyissa meg az Azure Firewall portált > diagnosztikai naplókat, és engedélyezze a naplókat a kívánt célhoz. Ha integrálja az Azure Monitor naplók, majd láthatja az Azure Firewall-nek küldött forgalom naplózását. A visszautasított forgalom megtekintéséhez nyissa meg a Log Analytics munkaterületi portálját > Naplók portálon, és írjon be egy lekérdezést, például 
+Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Azure Monitor naplókba. Az alkalmazás bármely támogatott célhoz való integrálásához lépjen a Azure Firewall-portálra > a diagnosztikai naplókat, és engedélyezze a kívánt célhelyhez tartozó naplókat. Ha integrálja Azure Monitor-naplókat, akkor a Azure Firewallba érkező forgalom naplózása látható. A megtagadott forgalom megjelenítéséhez nyissa meg a Log Analytics munkaterület-portálon > naplókat, és adjon meg egy lekérdezést, például: 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Az Azure-tűzfal integrálása az Azure Monitor-naplók hasznos, ha először egy alkalmazás működik, ha nem ismeri az összes alkalmazás-függőségek. Az Azure Monitor naplóiról az [Azure Monitor adatainak elemzése az Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)című területen olvashat bővebben.
+Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Függőségek
 
-A következő információk csak akkor szükségesek, ha az Azure Firewall-kiszolgálótól eltérő tűzfalberendezést kíván konfigurálni. 
+A következő információkra csak akkor van szükség, ha nem Azure Firewall tűzfalat kíván konfigurálni. 
 
-- A szolgáltatásvégpontra képes szolgáltatásokat szolgáltatásvégpontokkal kell konfigurálni.
-- Az IP-címfüggőségek nem HTTP/S-forgalomra (TCP- és UDP-forgalomra) szolgálnak
-- Az FQDN HTTP/HTTPS végpontok a tűzfaleszközbe helyezhetők.
-- A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek az ASE-től függően változhatnak a minősítők száma alapján. 
-- A Linux-függőségek csak akkor jelentenek problémát, ha Linux-alkalmazásokat telepít az ASE-be. Ha nem telepít Linux-alkalmazásokat az ASE-be, akkor ezeket a címeket nem kell hozzáadni a tűzfalhoz. 
+- A szolgáltatási végponttal kompatibilis szolgáltatásokat a szolgáltatási végpontokkal kell konfigurálni.
+- Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
+- Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
+- A helyettesítő HTTP-/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek a kiszervezettől. 
+- A Linux-függőségek csak akkor fontosak, ha Linux-alkalmazásokat telepít a központba. Ha nem telepít linuxos alkalmazásokat a bevezetésbe, akkor ezeket a címeket nem kell hozzáadni a tűzfalhoz. 
 
-#### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatásvégpont-képes függőségek 
+#### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek 
 
 | Végpont |
 |----------|
@@ -118,24 +118,24 @@ A következő információk csak akkor szükségesek, ha az Azure Firewall-kiszo
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>IP-címfüggőségek
+#### <a name="ip-address-dependencies"></a>IP-címek függőségei
 
 | Végpont | Részletek |
 |----------| ----- |
-| \*:123 | NTP óra ellenőrzés. A forgalmat a 123-as port több végpontján ellenőrzik |
-| \*:12000 | Ez a port néhány rendszerfigyelésre szolgál. Ha blokkolva van, akkor néhány kérdést nehezebb lesz osztályozás, de az ASE továbbra is működik |
-| 40.77.24.27:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 40.77.24.27:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.90.249.229:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.90.249.229:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 104.45.230.69:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 104.45.230.69:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.82.184.151:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.82.184.151:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
+| \*: 123 | NTP órajel-ellenőrzési. A forgalom a 123-es porton több végponton van bejelölve |
+| \*: 12000 | A rendszer ezt a portot használja a rendszerfigyeléshez. Ha blokkolva van, bizonyos problémák nehezebbek lesznek az osztályozáshoz, de a bevezetés továbbra is működni fog |
+| 40.77.24.27:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 40.77.24.27:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
 
-Az Azure tűzfal automatikusan kap mindent az alábbi konfigurálva a teljes tartománynév-címkéket. 
+A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konfigurált összes értéket. 
 
-#### <a name="fqdn-httphttps-dependencies"></a>Teljes qdn HTTP/HTTPS-függőségek 
+#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-függőségek 
 
 | Végpont |
 |----------|
@@ -218,17 +218,17 @@ Az Azure tűzfal automatikusan kap mindent az alábbi konfigurálva a teljes tar
 |ctldl.windowsupdate.com:80 |
 |ctldl.windowsupdate.com:443 |
 
-#### <a name="wildcard-httphttps-dependencies"></a>Helyettesítő http/HTTPS-függőségek 
+#### <a name="wildcard-httphttps-dependencies"></a>Helyettesítő HTTP/HTTPS-függőségek 
 
 | Végpont |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*management.azure.com:443 |
-| \*.update.microsoft.com:443 |
-| \*windowsupdate.microsoft.com:443 |
-| \*identity.azure.net:443 |
-| \*ctldl.windowsupdate.com:80 |
-| \*ctldl.windowsupdate.com:443 |
+|gr-Prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
+| \*. update.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
+| \*. identity.azure.net:443 |
+| \*. ctldl.windowsupdate.com:80 |
+| \*. ctldl.windowsupdate.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux-függőségek 
 
@@ -243,7 +243,7 @@ Az Azure tűzfal automatikusan kap mindent az alábbi konfigurálva a teljes tar
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
-| \*cdn.mscr.io:443 |
+| \*. cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
@@ -260,19 +260,19 @@ Az Azure tűzfal automatikusan kap mindent az alábbi konfigurálva a teljes tar
 |40.76.35.62:11371 |
 |104.215.95.108:11371 |
 
-## <a name="us-gov-dependencies"></a>Us Gov függőségek
+## <a name="us-gov-dependencies"></a>US Gov függőségek
 
-Az EGYESÜLT ÁLLAMOKbeli gov-régiók as-ek esetében kövesse az [Azure Firewall konfigurálása a](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) jelen dokumentum ASE szakaszában található utasításokat az Azure tűzfal ase-vel történő konfigurálásához.
+US Gov régiókban található ASE esetében kövesse a jelen dokumentum [Azure Firewall konfigurálása](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) a beadással című szakaszának utasításait, és konfigurálja az Azure Firewallt a központhoz.
 
-Ha az Azure Tűzfaltól eltérő eszközt szeretne használni az USA-ban 
+Ha a Azure Firewallon kívül más eszközt szeretne használni US Gov 
 
-* A szolgáltatásvégpontra képes szolgáltatásokat szolgáltatásvégpontokkal kell konfigurálni.
-* Az FQDN HTTP/HTTPS végpontok a tűzfaleszközbe helyezhetők.
-* A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek az ASE-től függően változhatnak a minősítők száma alapján.
+* A szolgáltatási végponttal kompatibilis szolgáltatásokat a szolgáltatási végpontokkal kell konfigurálni.
+* Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
+* A helyettesítő HTTP-/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek a kiszervezettől.
 
-A Linux nem érhető el az EGYESÜLT Államok kormányának régióiban, és így nem szerepel választható konfigurációként.
+A Linux US Gov régióban nem érhető el, ezért nem választható konfigurációként szerepel.
 
-#### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatásvégpont-képes függőségek ####
+#### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek ####
 
 | Végpont |
 |----------|
@@ -280,28 +280,28 @@ A Linux nem érhető el az EGYESÜLT Államok kormányának régióiban, és íg
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>IP-címfüggőségek
+#### <a name="ip-address-dependencies"></a>IP-címek függőségei
 
 | Végpont | Részletek |
 |----------| ----- |
-| \*:123 | NTP óra ellenőrzés. A forgalmat a 123-as port több végpontján ellenőrzik |
-| \*:12000 | Ez a port néhány rendszerfigyelésre szolgál. Ha blokkolva van, akkor néhány kérdést nehezebb lesz osztályozás, de az ASE továbbra is működik |
-| 40.77.24.27:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 40.77.24.27:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.90.249.229:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.90.249.229:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 104.45.230.69:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 104.45.230.69:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.82.184.151:80 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
-| 13.82.184.151:443 | Az ASE-problémák nyomon követéséhez és riasztásához szükséges |
+| \*: 123 | NTP órajel-ellenőrzési. A forgalom a 123-es porton több végponton van bejelölve |
+| \*: 12000 | A rendszer ezt a portot használja a rendszerfigyeléshez. Ha blokkolva van, bizonyos problémák nehezebbek lesznek az osztályozáshoz, de a bevezetés továbbra is működni fog |
+| 40.77.24.27:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 40.77.24.27:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
 
 #### <a name="dependencies"></a>Függőségek ####
 
 | Végpont |
 |----------|
-| \*ctldl.windowsupdate.com:80 |
-| \*management.usgovcloudapi.net:80 |
-| \*update.microsoft.com:80 |
+| \*. ctldl.windowsupdate.com:80 |
+| \*. management.usgovcloudapi.net:80 |
+| \*. update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
@@ -344,9 +344,9 @@ A Linux nem érhető el az EGYESÜLT Államok kormányának régióiban, és íg
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
 |mscrl.microsoft.com
-|az ocsp.digicert.0 |
+|OCSP. Digicert. 0 |
 |ocsp.msocsp.co|
-|az ocsp.verisign.0 |
+|OCSP. VeriSign. 0 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -358,8 +358,8 @@ A Linux nem érhető el az EGYESÜLT Államok kormányának régióiban, és íg
 |www.msftconnecttest.com:80 |
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
-|\*management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
+|\*. management.usgovcloudapi.net:443 |
+|\*. update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

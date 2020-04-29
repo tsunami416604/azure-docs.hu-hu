@@ -1,6 +1,6 @@
 ---
-title: CreateOptions írása modulokhoz - Azure IoT Edge | Microsoft dokumentumok
-description: A createOptions használata a központi telepítési jegyzékben a modulok futásidőben történő konfigurálásához
+title: CreateOptions írása modulok számára – Azure IoT Edge | Microsoft Docs
+description: Az üzembe helyezési jegyzék createOptions használata a modulok futásidőben történő konfigurálásához
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550343"
 ---
-# <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>A tárolók létrehozásának beállításai az IoT Edge-modulokhoz
+# <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Tároló-létrehozási beállítások konfigurálása IoT Edge modulokhoz
 
-A deployment jegyzékben található **createOptions** paraméter lehetővé teszi a modultárolók futásidőben történő konfigurálását. Ez a paraméter kibővíti a modulok feletti vezérlést, és lehetővé teszi az olyan feladatok elvégzését, mint a modul hozzáférésének engedélyezése vagy korlátozása a gazdaeszköz erőforrásaihoz, vagy a hálózatkonfigurálás.
+Az üzembe helyezési jegyzékben a **createOptions** paraméter lehetővé teszi a modul tárolóinak konfigurálását futásidőben. Ez a paraméter kibővíti a vezérlőket a modulok felett, és lehetővé teszi olyan feladatok végrehajtását, mint például a modul erőforrásaihoz való hozzáférés engedélyezése vagy korlátozása, illetve a hálózatkezelés konfigurálása.
 
-Az IoT Edge-modulok Docker-kompatibilis tárolókként vannak megvalósítva az IoT Edge-eszközön. A Docker számos lehetőséget kínál a tárolók létrehozására, és ezek a lehetőségek az IoT Edge-modulokra is vonatkoznak. További információ: [Docker container create options](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+IoT Edge modulokat Docker-kompatibilis tárolóként kell megvalósítani a IoT Edge eszközön. A Docker számos lehetőséget kínál a tárolók létrehozására, és ezek a beállítások a IoT Edge modulokra is érvényesek. További információkért lásd a [Docker-tároló létrehozási beállításait](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="format-create-options"></a>Létrehozási beállítások formázása
 
-Az IoT Edge központi telepítési jegyzékfájljának elfogadja a JSON formátumú létrehozási beállításokat. Például vegye be a létrehozási beállításokat, amelyek automatikusan szerepelnek minden edgeHub modulhoz:
+A IoT Edge üzembe helyezési jegyzékfájl a JSON formátummal formázott létrehozási beállításokat fogadja el. Tegyük fel például, hogy az egyes edgeHub-modulok automatikusan tartalmazzák a létrehozási beállításokat:
 
 ```json
 "createOptions": {
@@ -50,36 +50,36 @@ Az IoT Edge központi telepítési jegyzékfájljának elfogadja a JSON formátu
 }
 ```
 
-Ez az edgeHub-példa a **HostConfig.PortBindings** paramétert használja a tárolóban lévő elérhető portok leképezéséhez a gazdaeszköz portjához.
+Ez a edgeHub-példa a **HostConfig. PortBindings** paraméter használatával képezi le a tárolón lévő, a gazdagépen lévő portokra mutató portot.
 
-Ha az Azure IoT Tools-bővítményeket használja a Visual Studio vagy a Visual Studio-kódhoz, a **telepítési.template.json** fájlba írhatja a létrehozási beállításokat JSON formátumban. Ezután a bővítmény használatával hozza létre az IoT Edge-megoldás, vagy a központi telepítési jegyzékfájl létrehozása, akkor stringify a JSON az IoT Edge futásidejű elvárja. Példa:
+Ha a Visual studióhoz vagy a Visual Studio Code-hoz készült Azure IoT Tools-bővítményeket használja, a **telepítési. template. JSON** fájlban megírhatja a létrehozási beállításokat JSON formátumban. Ezután, amikor a bővítmény használatával felépíti a IoT Edge-megoldást, vagy létrehozza a telepítési jegyzéket, a JSON-t a IoT Edge futtatókörnyezet által várt formátumban fogja stringify. Például:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-A létrehozási beállítások írásának `docker inspect` egyik tippje a parancs használata. A fejlesztési folyamat részeként futtassa `docker run <container name>`a modult helyileg a használatával. Ha már a modul működik, ahogy `docker inspect <container name>`szeretné, fuss . Ez a parancs JSON formátumban adja ki a modul részleteit. Keresse meg a beállított paramétereket, és másolja a JSON-t. Példa:
+A létrehozási beállítások írásához egy tippet kell használni `docker inspect` a parancs használatával. A fejlesztési folyamat részeként futtassa a modult helyileg a használatával `docker run <container name>`. Ha a modul a kívánt módon működik, futtassa a parancsot `docker inspect <container name>`. Ez a parancs JSON formátumban jeleníti meg a modul részleteit. Keresse meg a konfigurált paramétereket, és másolja a JSON-t. Például:
 
-[![A docker-vizsgálat](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) eredményei](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![A Docker vizsgálatának eredményei](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a>Gyakori helyzetek
 
-A tárolólétrehozásaszámos forgatókönyvet tesz lehetővé, de az alábbiakban az IoT Edge-megoldások létrehozásakor a leggyakrabban jelennek meg:
+A tároló-létrehozási lehetőségek számos forgatókönyvet tesznek lehetővé, de a leggyakrabban a IoT Edge megoldások kiépítésekor következik be:
 
-* [A modulok hozzáférésének a gazdagép-tároláshoz való hozzáférése](how-to-access-host-storage-from-module.md)
-* [Állomásport hozzárendelése modulporthoz](#map-host-port-to-module-port)
-* [Modulmemória és processzorhasználat korlátozása](#restrict-module-memory-and-cpu-usage)
+* [Modulok elérésének biztosítása a gazdagép-tárolóhoz](how-to-access-host-storage-from-module.md)
+* [Gazdagép portjának hozzárendelése a modul portjához](#map-host-port-to-module-port)
+* [A modul memóriájának és CPU-használatának korlátozása](#restrict-module-memory-and-cpu-usage)
 
-### <a name="map-host-port-to-module-port"></a>Állomásport hozzárendelése modulporthoz
+### <a name="map-host-port-to-module-port"></a>Gazdagép portjának hozzárendelése a modul portjához
 
-Ha a modulnak az IoT Edge-megoldáson kívüli szolgáltatással kell kommunikálnia, és ehhez nem használ üzenet-útválasztást, akkor le kell képeznie egy gazdaportot egy modulporthoz.
+Ha a modulnak a IoT Edge-megoldáson kívüli szolgáltatással kell kommunikálnia, és nem használja az üzenet-útválasztást, akkor egy gazda portot kell leképeznie egy modul-portra.
 
 >[!TIP]
->Ez a portleképezés nem szükséges a modul-modul kommunikációhoz ugyanazon az eszközön. Ha az A modulnak le kell kérdeznie egy B modulon tárolt API-t, ezt portleképezés nélkül teheti meg. A B modulnak meg kell adnia egy `EXPOSE 8080`portot a dockerfile-ban, például: . Ezután az A modul lekérdezheti az API-t a B modul nevével, például: `http://ModuleB:8080/api`.
+>Ez a port-hozzárendelés nem szükséges a modul – modul típusú kommunikációhoz ugyanazon az eszközön. Ha A modulnak le kell kérdezni egy, a B modulban üzemeltetett API-t, a port leképezése nélkül is megteheti. A B modulnak ki kell mutatnia egy portot a Docker, például `EXPOSE 8080`:. Ezután az A modul lekérdezheti az API-t a B modul neve alapján `http://ModuleB:8080/api`, például:.
 
-Először győződjön meg arról, hogy a modulon belüli port elérhető a kapcsolatok figyeléséhez. Ezt a dockerfile [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) utasításával teheti meg. Például: `EXPOSE 8080`. A tcp protokoll alapértelmezett utasítása, ha nincs megadva, vagy megadhatja az UDP-t.
+Először győződjön meg arról, hogy a modulon belüli port elérhető a kapcsolatok figyelése érdekében. Ezt a Docker teheti [elérhetővé teheti utasítás használatával](https://docs.docker.com/engine/reference/builder/#expose) . Például: `EXPOSE 8080`. Ha nincs megadva, a közzétett utasítás alapértelmezett értéke a TCP protokoll, vagy megadhatja az UDP-t.
 
-Ezután használja a **PortBindings** beállítást a [Docker-tároló](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **HostConfig** csoportjában a create beállításokat a modulban lévő elérhető port leképezéséhez a gazdaeszköz portjához. Ha például a 8080-as portot a modulon belül tette ki, és azt szeretné leképezni a gazdaeszköz 80-as portjára, a template.json fájlban lévő létrehozási beállítások a következő példához hasonlóan fognak kinézni:
+Ezután használja a [Docker-tároló létrehozási beállításainak](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **HostConfig** csoportjában található **PortBindings** beállítást a modulban lévő, a gazdagépen lévő porthoz tartozó port leképezéséhez. Ha például az 8080-es portot a modulon belül közzétette, és azt szeretné leképezni a gazdagép-eszköz 80-es portjához, a template. JSON fájl létrehozási beállításai a következő példához hasonlóan néznek ki:
 
 ```json
 "createOptions": {
@@ -95,21 +95,21 @@ Ezután használja a **PortBindings** beállítást a [Docker-tároló](https://
 }
 ```
 
-Miután stringified a központi telepítési jegyzékfájl, ugyanaz a konfiguráció a következő példához hasonlóan jelenik meg:
+Az üzembe helyezési jegyzék sztringesített követően ugyanaz a konfiguráció a következő példához hasonlóan fog kinézni:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8080/tcp\":[{\"HostPort\":\"80\"}]}}}"
 ```
 
-### <a name="restrict-module-memory-and-cpu-usage"></a>Modulmemória és processzorhasználat korlátozása
+### <a name="restrict-module-memory-and-cpu-usage"></a>A modul memóriájának és CPU-használatának korlátozása
 
-Deklarálhatja, hogy a modul a gazdagép erőforrásaiból mennyit használhat. Ez a vezérlő hasznos annak biztosításához, hogy egy modul ne fogyasszon túl sok memóriát vagy processzorhasználatot, és megakadályozza, hogy más folyamatok fussanak az eszközön. Ezeket a beállításokat a [Docker-tároló létrehozása lehetőségeka](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **HostConfig** csoportban, többek között:
+Deklarálhatja, hogy a gazdagép erőforrásai mekkora részét használhatják a modulok. Ez a vezérlő hasznos annak biztosítására, hogy az egyik modul ne fogyasszon túl sok memóriát vagy CPU-használatot, és megakadályozza, hogy más folyamatok fussanak az eszközön. Ezeket a beállításokat a [Docker-tároló létrehozási lehetőségeivel](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) kezelheti a **HostConfig** csoportban, beleértve a következőket:
 
-* **Memória**: Memóriakorlát bájtban. Például 268435456 bájt = 256 MB.
-* **MemorySwap**: Teljes memóriakorlát (memória + swap). Például 536870912 bájt = 512 MB
-* **CpuPeriod**: A CPU-időszak hossza mikroszekundumban. Az alapértelmezett érték 100000, így például egy 25000-es érték a tárolót a PROCESSZOR-erőforrások 25%-ára korlátozza.
+* **Memória**: a memória maximális mérete bájtban kifejezve. Például 268435456 bájt = 256 MB.
+* **MemorySwap**: teljes memória korlátja (memória + felcserélés). Például 536870912 bájt = 512 MB
+* **CpuPeriod**: a CPU-időszak hossza a másodpercenként. Az alapértelmezett érték 100000, így például a 25000 értéke korlátozza a tárolót a CPU-erőforrások 25%-ában.
 
-A template.json formátumban ezek az értékek a következő példához hasonlóan néznek ki:
+A template. JSON formátumban ezek az értékek a következő példához hasonlóan néznek ki:
 
 ```json
 "createOptions": {
@@ -121,7 +121,7 @@ A template.json formátumban ezek az értékek a következő példához hasonló
 }
 ```
 
-Miután a végső központi telepítés jegyzékfájljának karakterláncait, ezek az értékek a következő példához hasonlóan jelennek meg:
+A végső üzembe helyezési jegyzék sztringesített követően ezek az értékek a következő példához hasonlóan fognak kinézni:
 
 ```json
 "createOptions":"{\"HostConfig\":{\"Memory\":268435456,\"MemorySwap\":536870912,\"CpuPeriod\":25000}}"
@@ -129,7 +129,7 @@ Miután a végső központi telepítés jegyzékfájljának karakterláncait, ez
 
 ## <a name="next-steps"></a>További lépések
 
-További példák a létrehozási beállítások működés közben, lásd az alábbi IoT Edge-minták:
+Ha további példákat szeretne a műveletek létrehozásához, tekintse meg a következő IoT Edge mintákat:
 
-* [Egyéni látás és az Azure IoT Edge egy Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
-* [Azure IoT Edge blobtárolási minta](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)
+* [Custom Vision és Azure IoT Edge egy málna PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [BLOB Storage-minta Azure IoT Edge](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

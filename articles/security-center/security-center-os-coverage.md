@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center által támogatott platformok | Microsoft dokumentumok
-description: Ez a dokumentum az Azure Security Center által támogatott platformok listáját tartalmazza.
+title: A Azure Security Center által támogatott platformok | Microsoft Docs
+description: Ez a dokumentum a Azure Security Center által támogatott platformok listáját tartalmazza.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,51 +14,51 @@ ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
 ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521919"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
-Ez a lap az Azure Security Center által támogatott platformokat és környezeteket jeleníti meg.
+Ezen a lapon láthatók a Azure Security Center által támogatott platformok és környezetek.
 
-## <a name="combinations-of-environments"></a>Környezetkombinációk<a name="vm-server"></a>
+## <a name="combinations-of-environments"></a>Környezetek kombinációi<a name="vm-server"></a>
 
-Az Azure Security Center különböző típusú hibrid környezetekben támogatja a virtuális gépeket és kiszolgálókat:
+Azure Security Center a különböző típusú hibrid környezetekben támogatja a virtuális gépeket és a kiszolgálókat:
 
-* Csak az Azure
-* Azure és helyszíni
-* Az Azure és más felhők
+* Csak Azure
+* Az Azure és a helyszíni
+* Azure és más felhők
 * Azure, egyéb felhők és helyszíni
 
-Egy Azure-előfizetésen aktivált Azure-környezet esetén az Azure Security Center automatikusan felderíti az előfizetésen belül üzembe helyezett IaaS-erőforrásokat.
+Azure-előfizetésben aktivált Azure-környezet esetén a Azure Security Center automatikusan felderíti az előfizetésen belül üzembe helyezett IaaS-erőforrásokat.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Security Center a [Log Analytics-ügynöktől](../azure-monitor/platform/agents-overview.md#log-analytics-agent)függ. Győződjön meg arról, hogy a gépek en futnak az ügynök támogatott operációs rendszereinek egyikén, az alábbi oldalakon leírtak szerint:
+A Security Center a [log Analytics ügynöktől](../azure-monitor/platform/agents-overview.md#log-analytics-agent)függ. Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek valamelyikét futtatják az alábbi lapokon leírtak szerint:
 
-* [Log Analytics ügynök Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
-* [Log Analytics ügynök Linux által támogatott operációs rendszerekhez](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
 
-Győződjön meg arról is, hogy a Log Analytics-ügynök [megfelelően van konfigurálva az adatok biztonsági központba küldéséhez](security-center-enable-data-collection.md#manual-agent)
+Győződjön meg arról is, hogy a Log Analytics ügynök [megfelelően van konfigurálva, hogy az adatküldés Security Center](security-center-enable-data-collection.md#manual-agent)
 
 > [!TIP]
-> Ha többet szeretne tudni a Windows és Linux rendszeren elérhető Security Center-szolgáltatásokról, olvassa el [a Szolgáltatások lefedettsége a gépekhez című témakört.](security-center-services.md)
+> Ha többet szeretne megtudni a Windows és Linux rendszerhez elérhető konkrét Security Center funkciókról, tekintse meg a [számítógépek szolgáltatás lefedettségét](security-center-services.md)ismertető témakört.
 
-## <a name="managed-virtual-machine-services"></a>Felügyelt virtuálisgép-szolgáltatások<a name="virtual-machine"></a>
+## <a name="managed-virtual-machine-services"></a>Felügyelt virtuális gépek szolgáltatásai<a name="virtual-machine"></a>
 
-Virtuális gépek is jönnek létre egy ügyfél-előfizetés részeként néhány Azure által felügyelt szolgáltatások is, például az Azure Kubernetes (AKS), Az Azure Databricks és így tovább. A Security Center felderíti ezeket a virtuális gépeket is, és a Log Analytics-ügynök telepíthető és konfigurálható, ha egy támogatott operációs rendszer érhető el.
+Az Azure által felügyelt szolgáltatások, például az Azure Kubernetes (ak), a Azure Databricks és egyebek mellett a virtuális gépek is létrejönnek egy ügyfél-előfizetésben. Security Center ezeket a virtuális gépeket is felhasználja, és a Log Analytics ügynök telepíthető és konfigurálható, ha támogatott operációs rendszer érhető el.
 
-## <a name="cloud-services"></a>Felhőszolgáltatások<a name="cloud-services"></a>
+## <a name="cloud-services"></a>Cloud Services<a name="cloud-services"></a>
 
-A felhőalapú szolgáltatásban futó virtuális gépek is támogatottak. Csak a felhőszolgáltatások webes és feldolgozói szerepkörök, amelyek éles tárolóhelyeken futnak, figyelt. A felhőszolgáltatásokról az [Azure Cloud Services áttekintése című témakörben](../cloud-services/cloud-services-choose-me.md)olvashat bővebben.
+A Cloud Service-ben futó virtuális gépek is támogatottak. Csak az üzemi tárolóhelyeken futó Cloud Services-alapú webes és feldolgozói szerepköröket figyeli a rendszer. További információ a Cloud Services szolgáltatásról: [Az Azure Cloud Services áttekintése](../cloud-services/cloud-services-choose-me.md).
 
-Az Azure Stackben található virtuális gépek védelme is támogatott. A Security Center Azure Stackkel való integrációjáról az [Azure Stack virtuális gépei nek a Security Centerbe című témakörben](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)talál további információt.
+A Azure Stackban található virtuális gépek védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)bevezetését ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [gyűjti a Security Center az adatokat a Log Analytics ügynök használatával.](security-center-enable-data-collection.md)
-- Ismerje meg, hogyan [kezeli és védi a Security Center az adatokat.](security-center-data-security.md)
-- Ismerje meg, hogyan [tervezheti meg és ismerheti meg az Azure Security Center bevezetésének tervezési szempontjait.](security-center-planning-and-operations-guide.md)
+- Ismerje meg, hogy [a Security Center hogyan gyűjt adatokat az log Analytics ügynökkel](security-center-enable-data-collection.md).
+- Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
+- Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).

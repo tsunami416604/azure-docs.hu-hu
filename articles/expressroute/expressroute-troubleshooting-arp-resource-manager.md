@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ARP-táblák – Hibaelhárítás'
-description: Ez a lap útmutatást nyújt az ExpressRoute-áramkör ARP-tábláinak
+title: 'Azure ExpressRoute: ARP-táblák – hibaelhárítás'
+description: Ez az oldal a ExpressRoute-áramkör ARP-tábláinak beolvasására vonatkozó utasításokat tartalmazza.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -9,38 +9,38 @@ ms.date: 01/30/2017
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: b31e9eb852c69d5f02eb855e319d2a4901942994
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618523"
 ---
-# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák beszerzése az Erőforrás-kezelő telepítési modelljében
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák lekérése a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell – Klasszikus](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-Ez a cikk végigvezeti a lépéseket az ExpressRoute-kapcsolat ARP-tábláinak megismeréséhez.
+Ez a cikk végigvezeti a ExpressRoute-áramkör ARP-tábláinak megismeréséhez szükséges lépéseken.
 
 > [!IMPORTANT]
-> Ez a dokumentum egyszerű problémák diagnosztizálásának és javításának elősegítésére szolgál. Nem helyettesíti a Microsoft támogatását. Ha nem tudja megoldani a problémát az alábbi útmutató segítségével, meg kell nyitnia egy támogatási jegyet a [Microsoft támogatási szolgálatával.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+> A dokumentum célja, hogy segítséget nyújtson az egyszerű problémák diagnosztizálásában és megoldásában. Nem helyettesíti a Microsoft támogatási szolgálatát. Ha nem tudja megoldani a problémát az alább ismertetett útmutatással, meg kell nyitnia egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 > 
 > 
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Címfeloldási protokoll (ARP) és ARP-táblák
-A címfeloldási protokoll (ARP) a [826.](https://tools.ietf.org/html/rfc826) Az ARP az Ethernet-cím (MAC-cím) ip-címmel történő leképezésére szolgál.
+## <a name="address-resolution-protocol-arp-and-arp-tables"></a>A címhozzárendelés protokoll (ARP) és az ARP-táblák
+A címhozzárendelés protokoll (ARP) az [RFC 826](https://tools.ietf.org/html/rfc826)-ben definiált 2. rétegbeli protokoll. Az ARP az Ethernet-cím (MAC-cím) IP-címmel való leképezésére szolgál.
 
-Az ARP-tábla egy adott társviszony-létesítés ipv4-címének és MAC-címének leképezését tartalmazza. Az ExpressRoute-kapcsolatlétesítés ARP-táblája a következő információkat biztosítja az egyes összeköttetések (elsődleges és másodlagos) kapcsolathoz
+Az ARP-táblázat egy adott társítás IPv4-címeinek és MAC-címeinek leképezését biztosítja. Az ExpressRoute-kapcsolati kapcsolatok ARP-táblázata az egyes interfészekhez (elsődleges és másodlagos) a következő információkat tartalmazza.
 
-1. A helyszíni útválasztó-összeköttetés IP-címének hozzárendelése a MAC-címhez
-2. ExpressRoute-útválasztó ip-címének hozzárendelése a MAC-címhez
-3. A feltérképezés kora
+1. Helyszíni útválasztó illesztő IP-címének hozzárendelése a MAC-címhez
+2. A ExpressRoute útválasztó felületének IP-címének hozzárendelése a MAC-címhez
+3. A leképezés kora
 
-Az ARP-táblák segíthetnek a 2. 
+Az ARP-táblázatok segítségével ellenőrizheti a 2. réteg konfigurációját, és elháríthatja az alapszintű 2. rétegbeli csatlakozási problémákat 
 
 Példa ARP-táblázatra: 
 
@@ -50,26 +50,26 @@ Példa ARP-táblázatra:
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-A következő szakasz az ExpressRoute peremhálózati útválasztók által látható ARP-táblák megtekintésének módjáról nyújt tájékoztatást. 
+A következő szakasz arról nyújt tájékoztatást, hogyan tekintheti meg az ExpressRoute Edge-útválasztók által látott ARP-táblákat. 
 
-## <a name="prerequisites-for-learning-arp-tables"></a>Az ARP-táblázatok tanulásának előfeltételei
-Győződjön meg arról, hogy a következő, mielőtt továbbhaladna
+## <a name="prerequisites-for-learning-arp-tables"></a>Az ARP-táblák megismerésének előfeltételei
+Mielőtt továbblépne, ellenőrizze, hogy rendelkezik-e a következőkkel
 
-* Érvényes ExpressRoute-áramkör, amely legalább egy társviszony-létesítéssel van konfigurálva. Az áramkört a kapcsolatszolgáltatónak teljesen konfigurálnia kell. Önnek (vagy a kapcsolatszolgáltatónak) konfigurálnia kell legalább egy társviszony-létesítést (Azure private, Azure public and Microsoft) ezen a kapcsolatcsoporton.
-* A társviszony-létesítések konfigurálásaként használt IP-címtartományok (Azure private, Azure public és Microsoft). Tekintse át az IP-cím hozzárendelési példákat az [ExpressRoute útválasztási követelmények lapon](expressroute-routing.md) annak megértéséhez, hogy az IP-címek hogyan vannak leképezve az Ön és az ExpressRoute oldalán lévő összeköttetésekhez. A társviszony-létesítési konfigurációval kapcsolatos információkat az [ExpressRoute-társviszony-létesítési konfigurációs lap](expressroute-howto-routing-arm.md)áttekintésével kaphatja meg.
-* Információ a hálózati csapat / kapcsolat szolgáltató a MAC-címek használt interfészek ezekkel az IP-címekkel.
-* Rendelkeznie kell a legújabb PowerShell-modul az Azure-hoz (1.50-es vagy újabb verzió).
+* Legalább egy társítással konfigurált érvényes ExpressRoute-áramkör. Az áramkört teljesen konfigurálni kell a kapcsolat szolgáltatójának. Az adott áramkörön (vagy a kapcsolat szolgáltatójánál) konfigurálnia kell legalább az egyik társat (Azure Private, Azure Public és Microsoft).
+* A társak konfigurálásához használt IP-címtartományok (Azure Private, Azure Public és Microsoft). Tekintse át az IP-címek hozzárendelésével kapcsolatos példákat az [ExpressRoute-útválasztási követelmények oldalon](expressroute-routing.md) , és Ismerje meg, hogy az IP-címek hogyan vannak leképezve a felületekre az Ön oldalán és a ExpressRoute oldalon. A társítási konfigurációval kapcsolatos információkat a ExpressRoute-társítási [konfiguráció oldalának](expressroute-howto-routing-arm.md)áttekintésével érheti el.
+* A hálózati csapat/kapcsolat szolgáltatójától származó információk az ezen IP-címekkel használt felületek MAC-címein.
+* Az Azure-hoz készült legújabb PowerShell-modulnak (1,50-es vagy újabb verzió) kell lennie.
 
 > [!NOTE]
-> Ha a 3. Ez a művelet a megfelelő útválasztási konfigurációt fogja alkalmazni a kapcsolatcsoporton. 
+> Ha a 3. réteg a szolgáltató által biztosított, és az ARP-táblák üresek az alábbi portálon/kimenetben, frissítse az áramköri konfigurációt a portál frissítés gombjával. Ez a művelet a megfelelő útválasztási konfigurációt alkalmazza az áramkörön. 
 >
 >
 
-## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Az ExpressRoute-kapcsolat ARP-tábláinak beszerzése
-Ez a szakasz a PowerShell használatával társviszony-létesítésenként megtekintheti az ARP-táblák megtekintését. Önnek vagy a kapcsolatszolgáltatónak konfigurálnia kell a társviszony-létesítést, mielőtt továbbhaladna. Minden körnek két elérési útja van (elsődleges és másodlagos). Az egyes görbék ARP-táblája egymástól függetlenül ellenőrizhető.
+## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>A ExpressRoute-áramkör ARP-tábláinak beolvasása
+Ez a szakasz útmutatást nyújt arról, hogy miként tekintheti meg egymással az ARP-táblákat a PowerShell használatával. Az Ön vagy a kapcsolat szolgáltatójának a folytatás előtt konfigurálnia kell a társítást. Minden áramkör két elérési úttal rendelkezik (elsődleges és másodlagos). Az ARP-táblázatot egymástól függetlenül is megtekintheti.
 
-### <a name="arp-tables-for-azure-private-peering"></a>ARP-táblák az Azure privát társviszony-létesítéséhez
-A következő parancsmag az ARP-táblákat biztosítja az Azure privát társviszony-létesítéséhez
+### <a name="arp-tables-for-azure-private-peering"></a>ARP-táblák az Azure Private-társához
+A következő parancsmag az Azure privát társának ARP-táblázatait tartalmazza
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -81,7 +81,7 @@ A következő parancsmag az ARP-táblákat biztosítja az Azure privát társvis
         # ARP table for Azure private peering - Secondary path
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-A mintakimenet az alábbiakban látható az egyik útvonalhoz
+A minta kimenete alább látható az egyik elérési útra
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -89,8 +89,8 @@ A mintakimenet az alábbiakban látható az egyik útvonalhoz
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering"></a>ARP-táblák az Azure nyilvános társviszony-létesítéséhez
-A következő parancsmag az ARP-táblákat biztosítja az Azure nyilvános társviszony-létesítéséhez
+### <a name="arp-tables-for-azure-public-peering"></a>ARP-táblák az Azure nyilvános társának
+A következő parancsmag az Azure nyilvános társ-összevonásához használható ARP-táblákat tartalmazza
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -103,7 +103,7 @@ A következő parancsmag az ARP-táblákat biztosítja az Azure nyilvános társ
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-A mintakimenet az alábbiakban látható az egyik útvonalhoz
+A minta kimenete alább látható az egyik elérési útra
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -111,8 +111,8 @@ A mintakimenet az alábbiakban látható az egyik útvonalhoz
           0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-microsoft-peering"></a>ARP-táblák Microsoft társviszony-létesítéshez
-A következő parancsmag a Microsoft társviszony-létesítésének ARP-tábláit tartalmazza
+### <a name="arp-tables-for-microsoft-peering"></a>ARP-táblák a Microsoft-partnerek számára
+A következő parancsmag a Microsoft-partnerek ARP-tábláit biztosítja
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -125,7 +125,7 @@ A következő parancsmag a Microsoft társviszony-létesítésének ARP-táblái
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-A mintakimenet az alábbiakban látható az egyik útvonalhoz
+A minta kimenete alább látható az egyik elérési útra
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -133,22 +133,22 @@ A mintakimenet az alábbiakban látható az egyik útvonalhoz
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
-## <a name="how-to-use-this-information"></a>Az információk felhasználása
-A társviszony-létesítés ARP-táblája a 2. Ez a szakasz áttekintést nyújt arról, hogyan fognak kinézni az ARP-táblák a különböző forgatókönyvek alatt.
+## <a name="how-to-use-this-information"></a>Az információk használata
+A társítások ARP-táblázata a 2. réteg konfigurációjának és a kapcsolatok ellenőrzésének meghatározására használható. Ez a szakasz áttekintést nyújt arról, hogy az ARP-táblázatok hogyan fognak megjelenni a különböző forgatókönyvekben.
 
-### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tábla, ha egy áramkör üzemi állapotban van (várt állapot)
-* Az ARP-táblában lesz egy bejegyzés a helyszíni oldalra érvényes IP-címmel és MAC-címmel, valamint hasonló bejegyzéssel a Microsoft oldalán. 
+### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tábla, ha egy áramkör működési állapotban van (várt állapot)
+* Az ARP-táblázat egy érvényes IP-címet és MAC-címet tartalmazó bejegyzéssel fog rendelkezni a helyszíni oldalon, valamint egy hasonló bejegyzés a Microsoft oldalán. 
 * A helyszíni IP-cím utolsó oktettje mindig páratlan szám lesz.
-* A Microsoft IP-cím utolsó oktettje mindig páros szám lesz.
-* Ugyanaz a MAC-cím jelenik meg a Microsoft oldalán mind a 3 társviszony (elsődleges / másodlagos) esetében. 
+* A Microsoft IP-címének utolsó oktettje mindig páros szám lesz.
+* Ugyanez a MAC-címe fog megjelenni a Microsoft oldalán mind a 3 (elsődleges, mind a másodlagos) partner számára. 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1   ffff.eeee.dddd
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP tábla, ha a helyszíni / kapcsolódási szolgáltató oldalán problémák vannak
-Ha problémák merülnek fel a helyszíni vagy a kapcsolatszolgáltatóval kapcsolatban, előfordulhat, hogy vagy csak egy bejegyzés jelenik meg az ARP-táblában, vagy a helyszíni MAC-cím nem lesz teljes. Ez a Microsoft oldalán használt MAC-cím és IP-cím közötti leképezést jeleníti meg. 
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszíni/kapcsolati szolgáltató oldalán problémák léptek fel
+Ha problémák merülnek fel a helyszíni vagy a kapcsolati szolgáltatóval kapcsolatban, láthatja, hogy az ARP-táblában vagy a helyszíni MAC-címen csak egy bejegyzés jelenik meg. Ekkor megjelenik a Microsoft oldalán használt MAC-cím és IP-cím közötti leképezés. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
@@ -163,20 +163,20 @@ vagy
 
 
 > [!NOTE]
-> Az ilyen problémák hibakereséséhez nyisson meg egy támogatási kérelmet a kapcsolódási szolgáltatónál. Ha az ARP-tábla nem rendelkezik a MAC-címekhez leképezett összeköttetések IP-címeivel, tekintse át a következő információkat:
+> Az ilyen problémák hibakereséséhez nyisson meg egy támogatási kérést a kapcsolat szolgáltatójánál. Ha az ARP-tábla nem rendelkezik a MAC-címekhez hozzárendelt adapterek IP-címeivel, tekintse át a következő információkat:
 > 
-> 1. Ha az MSEE-PR és az MSEE közötti kapcsolathoz rendelt /30 alhálózat első IP-címét használja az MSEE-PR interfészen. Az Azure mindig a második IP-címet használja az MSEEs-hez.
-> 2. Ellenőrizze, hogy az ügyfél (C-Tag) és a szolgáltatás (S-Tag) VLAN-címkék megfelelnek-e mind az MSEE-PR, mind az MSEE páron.
+> 1. Ha a MSEE-PR és a MSEE közötti kapcsolathoz hozzárendelt/30 alhálózat első IP-címe a MSEE-PR felületén van használatban. Az Azure mindig a második IP-címet használja a Msee.
+> 2. Ellenőrizze, hogy az ügyfél (C-tag) és a szolgáltatás (S-tag) VLAN-címkék egyeznek-e mind a MSEE, mind a MSEE párban.
 > 
 
-### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-tábla, ha a Microsoft oldalának problémái vannak
-* Ha problémák merülnek fel a Microsoft oldalán, akkor nem jelenik meg a társviszony-létesítéshez a társviszony-létesítéshez megjelenő ARP-tábla. 
-* Nyisson meg egy támogatási jegyet a [Microsoft támogatásával.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Adja meg, hogy probléma van-e a 2. 
+### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-tábla, ha a Microsoft oldalán problémák léptek fel
+* Ha problémák merülnek fel a Microsoft oldalán, nem jelenik meg a társak számára megjelenített ARP-táblázat. 
+* Nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy van-e probléma a 2. rétegbeli kapcsolattal. 
 
 ## <a name="next-steps"></a>Következő lépések
-* 3. rétegkonfigurációinak ellenőrzése az ExpressRoute-kapcsolaton
-  * Útvonal-összegzés beszerezni a BGP-munkamenetek állapotának meghatározásához 
-  * Útvonaltábla beszereznie annak meghatározásához, hogy mely előtagokat hirdeti meg az ExpressRoute-on keresztül
-* Adatátvitel ellenőrzése bájtok véleményezésével/be
-* Nyisson meg egy támogatási jegyet a [Microsoft támogatási szolgálatával,](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ha továbbra is problémákat tapasztal.
+* 3. rétegbeli konfigurációk ellenőrzése a ExpressRoute-áramkörhöz
+  * Útvonal-összefoglalás beolvasása a BGP-munkamenetek állapotának megállapításához 
+  * Útválasztási táblázat beolvasása a ExpressRoute-ben meghirdetett előtagok meghatározásához
+* Adatátvitel ellenőrzése a bájtok és a kimenő adatok áttekintésével
+* Ha továbbra is problémákat tapasztal, nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 

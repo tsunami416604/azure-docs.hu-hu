@@ -1,79 +1,79 @@
 ---
-title: A biztonsági szolgáltatások áttekintése
-description: Ismerje meg az Azure Backup biztonsági kameráinak biztonsági funkcióit, amelyek segítenek a biztonsági mentési adatok védelmében és a vállalkozás biztonsági igényeinek kielégítésében.
+title: A biztonsági funkciók áttekintése
+description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585819"
 ---
-# <a name="overview-of-security-features-in-azure-backup"></a>Az Azure Backup biztonsági szolgáltatásainak áttekintése
+# <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
-Az adatok védelme érdekében az egyik legfontosabb lépés egy megbízható biztonsági mentési infrastruktúra. De ugyanolyan fontos annak biztosítása, hogy az adatok ról biztonsági mentésbiztonságos módon, és hogy a biztonsági mentések mindig védett. Az Azure Backup biztonságot nyújt a biztonsági mentési környezetben – mind az adatok átvitele közben, mind az inaktív állapotban. Ez a cikk az Azure Backup biztonsági mentési funkcióit sorolja fel, amelyek segítenek a biztonsági mentési adatok védelmében és a vállalkozás biztonsági igényeinek kielégítésében.
+Az adatai védelme érdekében a legfontosabb lépések egyike, hogy megbízható biztonsági mentési infrastruktúrát biztosítson. De éppen olyan fontos, hogy az adatokat biztonságos módon biztonsági mentést készítsen, és a biztonsági mentések mindig védve legyenek. Azure Backup biztosít biztonságot a biztonsági mentési környezet számára – mindkettő, ha az adatok átvitel közben és nyugalmi állapotban vannak. Ez a cikk felsorolja Azure Backup biztonsági képességeit, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 
-## <a name="management-and-control-of-identity-and-user-access"></a>Az identitás és a felhasználói hozzáférés kezelése és ellenőrzése
+## <a name="management-and-control-of-identity-and-user-access"></a>Az identitás-és felhasználói hozzáférés kezelése és felügyelete
 
-Az Azure Backup lehetővé teszi a részletes hozzáférés kezelését az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)használatával. Az RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a munkájukhoz szükséges felhasználók számára biztosíthatja a hozzáférést.
+Azure Backup lehetővé teszi a részletes hozzáférés felügyeletét az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)használatával. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
 
-Az Azure Backup három beépített szerepkört biztosít a biztonsági mentéskezelési műveletek vezérléséhez:
+A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-kezelési műveletek vezérléséhez:
 
-* Biztonsági másolat közreműködője - biztonsági mentések létrehozása és kezelése, kivéve a Recovery Services-tároló törlését és a másokhoz való hozzáférést
-* Biztonságimásolat-készítő – minden, amit egy közreműködő tesz, kivéve a biztonsági mentési házirendek eltávolítását és kezelését
-* Biztonságimásolat-olvasó – az összes biztonságimentés-kezelési művelet megtekintésére vonatkozó engedélyek
+* Biztonsági mentési közreműködő – biztonsági másolatok létrehozása és kezelése, kivéve Recovery Services tár törlését és mások számára való hozzáférést biztosít
+* Backup operátor – minden közreműködő a biztonsági mentés és a biztonsági mentési házirendek kezelése kivételével
+* Backup Reader – engedélyek az összes biztonsági mentési kezelési művelet megtekintéséhez
 
-További információ az Azure Backup kezeléséhez a [szerepköralapú hozzáférés-vezérlésről.](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)
+További információ a [szerepköralapú hozzáférés-vezérlésről Azure Backup kezeléséhez](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
-Az Azure Backup számos biztonsági vezérlőt épített a szolgáltatásba a biztonsági rések megelőzése, észlelése és megválaszolása érdekében. További információ [az Azure Backup biztonsági vezérlőiről.](https://docs.microsoft.com/azure/backup/backup-security-controls)
+A Azure Backup számos, a szolgáltatásba beépített biztonsági vezérlőt tartalmaz a biztonsági rések megelőzésére, észlelésére és reagálására. További információ a [Azure Backup biztonsági vezérlőinek](https://docs.microsoft.com/azure/backup/backup-security-controls).
 
-## <a name="separation-between-guest-and-azure-storage"></a>A vendég- és az Azure-tároló elkülönítése
+## <a name="separation-between-guest-and-azure-storage"></a>A vendég és az Azure Storage közötti elkülönítés
 
-Az Azure Backup, amely magában foglalja a virtuális gép biztonsági mentésés az SQL és az SAP HANA virtuális gép biztonsági mentés, a biztonsági mentési adatok az Azure storage-ban tárolják, és a vendég nem rendelkezik közvetlen hozzáféréssel a biztonsági mentési tároló vagy annak tartalmát.  A virtuális gép biztonsági mentésével a biztonsági mentési pillanatkép létrehozása és tárolása az Azure-háló, ahol a vendég nem vesz részt más, mint az alkalmazás konzisztens biztonsági mentések számítási feladatának lefizetése.  Az SQL és az SAP HANA, a biztonsági mentési bővítmény ideiglenes hozzáférést kap az adott blobok írásához.  Ily módon, még egy sérült környezetben, a meglévő biztonsági mentések nem lehet manipulálni, vagy törölni a vendég.
+A Azure Backup, amely magában foglalja a virtuális gépek biztonsági mentését és az SQL-t, és SAP HANA a virtuális gép biztonsági mentésében, a biztonsági mentési információ az Azure Storage-ban tárolódik, és a vendégnek nincs közvetlen hozzáférése a biztonsági mentési tárolóhoz vagy  A virtuális gép biztonsági mentése esetén a biztonsági mentés pillanatképének létrehozása és tárolása az Azure-hálón történik, ahol a vendég nem vesz részt az alkalmazás-konzisztens biztonsági másolatok űrlapsablon fokozatos leválasztása.  Az SQL és a SAP HANA használatával a biztonsági mentési bővítmény ideiglenes hozzáférést kap az adott blobokhoz való íráshoz.  Így még a feltört környezetben is a meglévő biztonsági mentéseket nem lehet illetéktelenül módosítani vagy törölni a vendég.
 
-## <a name="internet-connectivity-not-required-for-azure-vm-backup"></a>Az Azure vm biztonsági mentéséhez nem szükséges internetkapcsolat
+## <a name="internet-connectivity-not-required-for-azure-vm-backup"></a>Az Azure virtuális gép biztonsági mentéséhez nem szükséges internetkapcsolat
 
-Az Azure virtuális gépek biztonsági mentése az adatok áthelyezése a virtuális gép lemezéről a Recovery Services-tárolóba. Azonban az összes szükséges kommunikáció és adatátvitel csak az Azure gerinchálózatán történik anélkül, hogy a virtuális hálózat eléréséhez. Ezért a biztonságos hálózatokon belül elhelyezett Azure virtuális gépek biztonsági mentése nem követeli meg, hogy hozzáférést biztosítson az IP-khez vagy a teljes tartománynhálózatokhoz.
+Az Azure-beli virtuális gépekről készült biztonsági mentéshez a virtuális gép lemezéről az Recovery Services-tárolóba történő adatátvitelre van szükség. Azonban az összes szükséges kommunikáció és adatforgalom csak az Azure gerinces hálózaton történik, anélkül, hogy hozzá kellene férnie a virtuális hálózathoz. Ezért a biztonságos hálózatokon belül elhelyezett Azure-beli virtuális gépek biztonsági mentése nem igényli, hogy bármilyen IP-cím vagy teljes tartománynév számára engedélyezze a hozzáférést.
 
-## <a name="private-endpoints-for-azure-backup"></a>Privát végpontok az Azure biztonsági mentéséhez
+## <a name="private-endpoints-for-azure-backup"></a>Privát végpontok az Azure Backup szolgáltatáshoz
 
-Most már [használhatja a privát végpontok](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) biztonsági másolatot az adatokbiztonságosan a kiszolgálók egy virtuális hálózaton belül a Recovery Services-tároló. A privát végpont a virtuális hálózat címterületéről származó IP-címet használ a tárolóhoz, így nem kell a virtuális hálózatokat nyilvános IP-kszámára elérhetővé tenni. A privát végpontok az Azure-beli virtuális gépeken futó SQL- és SAP HANA-adatbázisok biztonsági mentéséhez és visszaállításához használhatók. Azt is fel lehet használni a helyszíni kiszolgálók a MARS-ügynök használatával.
+Mostantól [privát végpontokat](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) is használhat az adatok biztonságos biztonsági mentésére a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárolóba. A privát végpont egy IP-címet használ a tár VNET, így nem kell kiadnia a virtuális hálózatokat a nyilvános IP-címekhez. Az Azure-beli virtuális gépeken futó SQL-és SAP HANA-adatbázisok biztonsági mentésére és visszaállítására privát végpontok használhatók. A MARS-ügynököt használó helyszíni kiszolgálókhoz is használható.
 
 >[!NOTE]
-> Ez a funkció jelenleg korlátozott annektál. Kérjük, töltse ki [ezt a felmérést,](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUQk5EQ1QxRzVOWDNDS1Y1Q0xLTkdLQ0U0RC4u) és [írjon nekünk,](mailto:azbackupnetsec@microsoft.com) ha szeretné használni a privát végpontok az Azure Backup. A funkció használatának lehetőségét az Azure Backup szolgáltatás jóvá kell hagynia.
+> Ez a szolgáltatás jelenleg korlátozott rendelkezésre állású. Kérjük, töltse ki [ezt a kérdőívet](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUQk5EQ1QxRzVOWDNDS1Y1Q0xLTkdLQ0U0RC4u) , és küldjön [nekünk e-mailt](mailto:azbackupnetsec@microsoft.com) , ha Azure Backup privát végpontokat szeretne használni. A funkció használatának lehetősége a Azure Backup szolgáltatás jóváhagyását képezi.
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>Az átvitel és nyugalom alatt lévő adatok titkosítása
+## <a name="encryption-of-data-in-transit-and-at-rest"></a>Az átvitel és a nyugalmi állapotban lévő adatok titkosítása
 
-A titkosítás védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure-on belül az Azure storage és a tároló közötti átvitel alatt álló adatokhttps-védelemmel rendelkeznek. Ezek az adatok az Azure gerinchálózatán maradnak.
+A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
 
-* A biztonsági mentési adatok automatikusan titkosítva vannak a Microsoft által kezelt kulcsokkal. A biztonsági mentésben szereplő felügyelt lemezes virtuális gépeket is titkosíthatja a Recovery Services Vaultban az Azure Key Vaultban tárolt [ügyfél által](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) kezelt kulcsok használatával. A titkosítás engedélyezéséhez nem kell semmilyen explicit műveletet végrehajtania. Ez a Recovery Services-tárolóba biztonsági mentést le, minden számítási feladatra vonatkozik.
+* A biztonsági mentési adatai automatikusan titkosítva vannak a Microsoft által felügyelt kulcsokkal. A felügyelt lemezes virtuális gépek biztonsági mentését a Recovery Services tárolóban is titkosíthatja a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) használatával. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtania. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
 
-* Az Azure Backup támogatja az Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek operációsrendszer-/adatlemezeit Azure Disk Encryption (ADE) titkosítással titkosítják. [További információ a titkosított Azure-virtuális gépekről és az Azure Backup ról.](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)
+* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei Azure Disk Encryption (ADE) titkosítással rendelkeznek. [További információ a titkosított Azure-beli virtuális gépekről és Azure Backupokról](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
-## <a name="protection-of-backup-data-from-unintentional-deletes"></a>A biztonsági másolat adatainak védelme a nem szándékos törlésekkel szemben
+## <a name="protection-of-backup-data-from-unintentional-deletes"></a>A véletlen törlésből származó biztonsági mentési adatok védelme
 
-Az Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatok védelme érdekében még a törlés után is. A helyreállítható törlés, ha a felhasználó törli a biztonsági másolatot a virtuális gép, a biztonsági mentési adatok megmaradnak további 14 napig, amely lehetővé teszi a biztonsági mentési elem helyreállítása adatvesztés nélkül. A biztonsági mentési adatok "helyreállítható törlés" állapotban való további 14 napos megőrzése nem jár semmilyen költséggel az ügyfél számára. [További információ a helyreállítható törlésről.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
+A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a virtuális gép biztonsági mentését, a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. [További információ a Soft delete](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)szolgáltatásról.
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Gyanús tevékenység figyelése és riasztásai
 
-Az Azure Backup [beépített figyelési és riasztási lehetőségeket](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) biztosít az Azure Backup hoz kapcsolódó eseményekhez kapcsolódó műveletek megtekintéséhez és konfigurálásához. [A biztonsági mentési jelentések](https://docs.microsoft.com/azure/backup/configure-reports) egyablakos célként szolgálnak a használat nyomon követéséhez, a biztonsági mentések és -visszaállítások naplózásához, valamint a legfontosabb trendek azonosításához a részletesség különböző szintjein. Az Azure Backup figyelési és jelentéskészítő eszközeivel riasztást adhat bármely jogosulatlan, gyanús vagy rosszindulatú tevékenységre, amint azok bekövetkeznek.
+A Azure Backup [beépített figyelési és riasztási képességeket](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) biztosít a Azure Backuphoz kapcsolódó események műveleteinek megtekintésére és konfigurálására. A [biztonsági mentési jelentések](https://docs.microsoft.com/azure/backup/configure-reports) a használat nyomon követésére, a biztonsági mentések és a visszatárolások naplózására, valamint a különböző részletességi szinteken a főbb trendek azonosítására szolgálnak. A Azure Backup monitorozási és jelentéskészítési eszközeivel azonnal riasztást kaphat a jogosulatlan, gyanús vagy rosszindulatú tevékenységekről, amint azok bekövetkeznek.
 
-## <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági mentések védelmére
+## <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági másolatok védelme érdekében
 
-Az Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynök segítségével biztonsági másolatot készít a fájlokról, mappákról, valamint a kötetről vagy a rendszerállapotról egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági mentések védelméhez. Ezek a szolgáltatások a következők:
+A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a szolgáltatások a következők:
 
-* A rendszer egy további hitelesítési réteget ad hozzá, amikor kritikus műveletet hajtanak végre, például egy jelszót módosítanak. Ez az ellenőrzés biztosítja, hogy az ilyen műveleteket csak érvényes Azure-hitelesítő adatokkal rendelkező felhasználók hajthassák végre. [További információ a támadásokat megakadályozó funkciókról.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)
+* A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal. [További információ a támadásokat megakadályozó funkciókról](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
 
-* A törölt biztonsági mentési adatok a törlés napjától számított további 14 napig maradnak meg. Ez biztosítja az adatok helyrehozhatóságát egy adott időszakon belül, így nincs adatvesztés akkor is, ha támadás történik. Emellett nagyobb számú minimális helyreállítási pontot tartanak fenn a sérült adatok elleni védelem érdekében. [További információ a törölt biztonsági mentési adatok helyreállításáról](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+* A törölt biztonsági mentési adatok a törlés időpontjától számítva további 14 napig megmaradnak. Ez egy adott időszakon belül gondoskodik az adathelyreállításról, így az adatvesztés még akkor sem, ha támadás történik. Emellett a rendszer a minimális helyreállítási pontok számát is megőrzi a sérült információk védelme érdekében. [További információ a törölt biztonsági másolatok adatainak helyreállításáról](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
 
-* A Microsoft Azure Recovery Services (MARS) ügynök használatával biztonsági mentésre kerülő adatok esetében a rendszer egy jelszót használ annak biztosítására, hogy az adatok titkosítása az Azure Backup ba való feltöltés előtt titkosítva legyen, és csak az Azure Backup biztonsági rendszerből való letöltés után fejtse vissza. A jelszó részletei csak a jelszót létrehozó felhasználó és a vele konfigurált ügynök számára érhetők el. A szolgáltatással semmit sem továbbít a rendszer, illetve nem oszt meg. Ez biztosítja az adatok teljes biztonságát, mivel a véletlenül elérhető adatok (például a hálózat elleni véletlen ülecsű támadás) használhatatlanok a jelszó nélkül, és a jelmondat nem kerül elküldésre a hálózaton.
+* A Microsoft Azure Recovery Services-(MARS-) ügynök használatával biztonsági mentést biztosító hozzáférési kód segítségével biztosítható, hogy az adatok titkosítva legyenek a feltöltés előtt Azure Backup és visszafejtése csak Azure Backup letöltése után. A hozzáférési kód adatai csak azon felhasználó számára érhetők el, aki létrehozta a hozzáférési kódot, és a hozzá konfigurált ügynököt. A szolgáltatás nem küldi el és nem osztja meg a szolgáltatást. Ez biztosítja, hogy az adatai teljes mértékben biztonságban legyenek, mivel a véletlenül feltett (például a hálózatban lévő), a jelszó nélküli támadás nem használható, és a jelszót a rendszer nem küldi el a hálózaton.
 
-## <a name="compliance-with-standardized-security-requirements"></a>A szabványosított biztonsági követelményeknek való megfelelés
+## <a name="compliance-with-standardized-security-requirements"></a>Megfelelőség a szabványosított biztonsági követelményekkel
 
-Annak érdekében, hogy a szervezetek megfeleljenek az egyének adatainak gyűjtésére és felhasználására vonatkozó nemzeti, regionális és iparág-specifikus követelményeknek, a Microsoft Azure & az Azure Backup a tanúsítványok és tanúsítványok átfogó készletét kínálja. [Tekintse meg a megfelelőségi tanúsítványok listáját](compliance-offerings.md)
+Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & Azure Backup a minősítések és igazolások átfogó készletét kínálja. [Tekintse meg a megfelelőségi tanúsítványok listáját](compliance-offerings.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Backup ot használó felhőalapú számítási feladatok védelmére szolgáló biztonsági funkciók](backup-azure-security-feature-cloud.md)
-* [Az Azure Backup biztonsági mentést használó hibrid biztonsági mentések védelmére szolgáló biztonsági funkciók](backup-azure-security-feature.md)
+* [Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához](backup-azure-security-feature-cloud.md)
+* [Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez](backup-azure-security-feature.md)

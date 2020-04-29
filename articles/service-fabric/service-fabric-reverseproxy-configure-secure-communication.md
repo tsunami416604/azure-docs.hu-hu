@@ -1,41 +1,41 @@
 ---
-title: Az Azure Service Fabric fordított proxy biztonságos kommunikációja
-description: Konfigurálja a fordított proxyt a biztonságos végpontok közötti kommunikáció engedélyezéséhez egy Azure Service Fabric-alkalmazásban.
+title: Azure Service Fabric fordított proxy biztonságos kommunikációja
+description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazások biztonságos, végpontok közötti kommunikációjának engedélyezéséhez.
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617111"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
 
-Ez a cikk bemutatja, hogyan hozhat létre biztonságos kapcsolatot a fordított proxy és a szolgáltatások között, így lehetővé téve a végpontok közötti biztonságos csatornát. Ha többet szeretne megtudni a fordított proxyról, olvassa [el a Proxy visszafordítása az Azure Service Fabricben](service-fabric-reverseproxy.md)
+Ez a cikk azt ismerteti, hogyan hozható létre biztonságos kapcsolat a fordított proxy és a szolgáltatások között, így lehetővé válik a végpontok közötti biztonságos csatorna engedélyezése. További információ a fordított proxyról: [fordított proxy az Azure-ban Service Fabric](service-fabric-reverseproxy.md)
 
-A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy https-kapcsolaton történő figyelésre van beállítva. Ez a cikk feltételezi, hogy ez a helyzet.
-Tekintse meg [a telepítés fordított proxy az Azure Service Fabric](service-fabric-reverseproxy-setup.md) konfigurálása a fordított proxy a Service Fabric.
+A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy a HTTPS-figyelésre van konfigurálva. Ez a cikk azt feltételezi, hogy ez a helyzet.
+A fordított proxy Service Fabric-ben való konfigurálásához tekintse meg a [fordított proxy beállítása az Azure Service Fabricban](service-fabric-reverseproxy-setup.md) című témakört.
 
-## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létrehozása a fordított proxy és a szolgáltatások között 
+## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létesítése a fordított proxy és a szolgáltatások között 
 
-### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy hitelesítése szolgáltatásokhoz:
-A fordított proxy azonosítja magát a tanúsítványt használó szolgáltatások számára. Az Azure-fürtök esetében a tanúsítvány ***reverseProxyCertificate*** tulajdonsággal van megadva az Erőforrás-kezelő sablon [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [Resource type szakaszában.](../azure-resource-manager/templates/template-syntax.md) Önálló fürtök esetén a tanúsítvány a ClusterConfig.json **Biztonsági** szakaszában található ***ReverseProxyCertificate*** vagy ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [Fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy hitelesítése a szolgáltatásokban:
+A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [**-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig. JSON **biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
-A szolgáltatások megvalósíthatják a logikát a fordított proxy által bemutatott tanúsítvány ellenőrzéséhez. A szolgáltatások megadhatják az elfogadott ügyféltanúsítvány adatait konfigurációs beállításokként a konfigurációs csomagban. Ez futásidőben olvasható, és a fordított proxy által bemutatott tanúsítvány érvényesítésére használható. A [konfigurációs](service-fabric-manage-multiple-environment-app-configuration.md) beállítások hozzáadásához olvassa el az Alkalmazásparaméterek kezelése című hivatkozást. 
+A szolgáltatások a fordított proxy által megjelenített tanúsítvány ellenőrzéséhez implementálják a logikát. A szolgáltatások megadhatják az elfogadott ügyféltanúsítvány részleteit konfigurációs beállításokként a konfigurációs csomagban. Ez futásidőben olvasható, és a fordított proxy által bemutatott tanúsítvány ellenőrzéséhez használható. A konfigurációs beállítások hozzáadásához tekintse meg az [alkalmazás paramétereinek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) című témakört. 
 
-### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>A szolgáltatás identitását a szolgáltatás által bemutatott tanúsítványon keresztül ellenőrző proxy:
-A fordított proxy a következő házirendeket támogatja a szolgáltatások által bemutatott tanúsítványok kiszolgálói tanúsítvány-ellenőrzésének végrehajtásához: Nincs, ServiceCommonNameAndIssuer és ServiceCertificateThumbprints.
-A fordított proxy házirendjének kiválasztásához adja meg az **ApplicationCertificateValidationPolicy parancsot** az **ApplicationGateway/Http** [szakaszfabricSettings](service-fabric-cluster-fabric-settings.md)csoportjában.
+### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Fordított proxy a szolgáltatás identitásának ellenőrzéséhez a szolgáltatás által bemutatott tanúsítványon keresztül:
+A fordított proxy a következő házirendeket támogatja a szolgáltatások által bemutatott tanúsítványok tanúsítvány-ellenőrzésének végrehajtásához: none, ServiceCommonNameAndIssuer és ServiceCertificateThumbprints.
+A fordított proxy használatára vonatkozó szabályzat kiválasztásához adja meg a **ApplicationCertificateValidationPolicy** a **ApplicationGateway/http** szakaszban a [fabricSettings](service-fabric-cluster-fabric-settings.md)alatt.
 
 A következő szakasz az egyes beállítások konfigurációs részleteit mutatja be.
 
-### <a name="service-certificate-validation-options"></a>Szolgáltatási tanúsítványok ellenőrzési beállításai 
+### <a name="service-certificate-validation-options"></a>Szolgáltatás tanúsítvány-ellenőrzési lehetőségei 
 
-- **Nincs**: A fordított proxy kihagyja a proxied service tanúsítvány ellenőrzését, és létrehozza a biztonságos kapcsolatot. Ez az alapértelmezett viselkedés.
-Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** értékkel az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+- **Nincs**: a fordított proxy kihagyja a proxyzott szolgáltatás tanúsítványának ellenőrzését, és létrehozza a biztonságos kapcsolatot. Ez az alapértelmezett viselkedés.
+A [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban válassza a **none** értéket a **ApplicationCertificateValidationPolicy** .
 
    ```json
    {
@@ -55,7 +55,7 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-- **ServiceCommonNameAnd Issuer**: A fordított proxy a tanúsítvány köznapi neve és azonnali kibocsátójának ujjlenyomata alapján ellenőrzi a szolgáltatás által bemutatott tanúsítványt: Adja meg az **ApplicationCertificateValidationPolicy** értéket a **ServiceCommonNameAndIssuer** értékkel az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+- **ServiceCommonNameAndIssuer**: a fordított proxy ellenőrzi a szolgáltatás által bemutatott tanúsítványt a tanúsítvány köznapi neve és az azonnali kiállító ujjlenyomata alapján: a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban adja meg a **ApplicationCertificateValidationPolicy** értéket a **ServiceCommonNameAndIssuer** értékkel.
 
    ```json
    {
@@ -75,10 +75,10 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-   A szolgáltatás köznapi nevének és kiállítói ujjlenyomatainak listájának megadásához adjon hozzá egy [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) szakaszt **a fabricSettings**csoportban, az alábbiak szerint. A **paraméterek** tömbjében több tanúsítvány köznapi neve és kiállítóujjlenyomat-párja is hozzáadható. 
+   A szolgáltatás köznapi nevének és kiállítójának ujjlenyomatai megfelelnek megadásához vegyen fel egy [**ApplicationGateway/http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) szakaszt a **fabricSettings**alatt az alább látható módon. A **Parameters** tömbben több tanúsítvány köznapi neve és kiállítója is felvehető. 
 
-   Ha a végpont fordított proxy csatlakozik bemutatja a tanúsítványt, aki a köznapi neve és a kibocsátó ujjlenyomata megegyezik az itt megadott értékek bármelyikével, létrejön egy TLS-csatorna.
-   Ha nem egyezteti a tanúsítvány adatait, a fordított proxy meghiúsul az ügyfél kérésének egy 502-es (Bad Gateway) állapotkóddal. A HTTP állapotsor az "Érvénytelen SSL-tanúsítvány" kifejezést is tartalmazza. 
+   Ha a végpontok fordított proxyja csatlakozik ahhoz, hogy egy olyan tanúsítványt adjon meg, amely köznapi neve és kiállítói ujjlenyomata megegyezik az itt megadott értékek bármelyikével, a rendszer létrehoz egy TLS-csatornát.
+   A tanúsítvány részleteinek egyeztetése után a fordított proxy nem teljesíti az ügyfél 502-as (hibás átjáróval rendelkező) állapotkóddal kapcsolatos kérelmét. A HTTP-állapotsorban az "érvénytelen SSL-tanúsítvány" kifejezés is szerepelni fog. 
 
    ```json
    {
@@ -102,7 +102,7 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-- **ServiceCertificateThumbprints**: Reverse proxy ellenőrzi a proxied szolgáltatás tanúsítvány alapján ujjlenyomatát. Ezt az útvonalat akkor is megválaszthatja, ha a szolgáltatások önaláírt tanúsítványokkal vannak konfigurálva: Adja meg az **ApplicationCertificateValidationPolicy** értéket kapta **ServiceCertificateThumbprints** értékkel az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+- **ServiceCertificateThumbprints**: a fordított proxy ellenőrzi a proxyn lévő szolgáltatás tanúsítványát az ujjlenyomata alapján. Dönthet úgy is, hogy ezt az útvonalat adja meg, ha a szolgáltatások önaláírt tanúsítványokkal vannak konfigurálva: a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban adja meg a **ServiceCertificateThumbprints** értékkel rendelkező **ApplicationCertificateValidationPolicy** .
 
    ```json
    {
@@ -122,7 +122,7 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-   Adja meg az ujjlenyomatokat is egy **ServiceCertificateThumbprints** bejegyzéssel az **ApplicationGateway/Http** szakaszban. Az értékmezőben több ujjlenyomat is megadható vesszővel tagolt listaként, az alábbiak szerint:
+   A **ApplicationGateway/http** szakaszban a **ServiceCertificateThumbprints** bejegyzést is megadhatja a ujjlenyomatai megfelelnek. Több ujjlenyomatai megfelelnek is megadható vesszővel tagolt listaként az érték mezőben, az alábbi ábrán látható módon:
 
    ```json
    {
@@ -143,12 +143,12 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-   Ha a kiszolgálói tanúsítvány ujjlenyomata szerepel ebben a konfigurációs bejegyzésben, a fordított proxy váltja a TLS-kapcsolatot. Ellenkező esetben megszakítja a kapcsolatot, és nem felel meg az ügyfél kérésének egy 502-es (Bad Gateway) segítségével. A HTTP állapotsor az "Érvénytelen SSL-tanúsítvány" kifejezést is tartalmazza.
+   Ha a kiszolgálói tanúsítvány ujjlenyomata szerepel ebben a konfigurációs bejegyzésben, a fordított proxy sikeresen bekapcsolja a TLS-kapcsolatokat. Ellenkező esetben megszűnik a kapcsolat, és az ügyfél 502-as (hibás átjáróval rendelkező) kérelme sikertelen lesz. A HTTP-állapotsorban az "érvénytelen SSL-tanúsítvány" kifejezés is szerepelni fog.
 
-## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Végpontkijelölési logika, amikor a szolgáltatások biztonságos és nem biztonságos végpontokat biztosítanak
-A service fabric támogatja a szolgáltatás több végpontjának konfigurálását. További információt az [Erőforrások megadása szolgáltatásjegyzékben című témakörben talál.](service-fabric-service-manifest-resources.md)
+## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Végpont-kiválasztási logika, ha a szolgáltatások biztonságos és nem biztonságos végpontokat tesznek elérhetővé
+A Service Fabric támogatja a szolgáltatások több végpontjának konfigurálását. További információ: [erőforrások megadása egy szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md).
 
-A névfeloldási proxy kiválasztja az egyik végpontot a kérelem továbbításához a [szolgáltatás URI-jában](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy)lévő **ListenerName** lekérdezési paraméter alapján. Ha a **ListenerName** paraméter nincs megadva, a fordított proxy bármelyik végpontot kiválaszthat a végpontok listájából. A szolgáltatáshoz konfigurált végpontoktól függően a kijelölt végpont lehet HTTP vagy HTTPS végpont. Előfordulhatnak olyan esetek vagy követelmények, amikor azt szeretné, hogy a fordított proxy "csak biztonságos módban" működjön; ez azt, hogy nem szeretné, hogy a biztonságos fordított proxy továbbítsa a kérelmeket a nem biztonságos végpontok. Ha a fordított proxyt csak biztonságos módba szeretné állítani, adja meg a **SecureOnlyMode** konfigurációs **bejegyzést,** amelynek értéke igaz az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.   
+A fordított proxy kijelöli az egyik végpontot, hogy továbbítsa a kérést a [szolgáltatás URI-ja](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy) **ListenerName** lekérdezési paramétere alapján. Ha a **ListenerName** paraméter nincs megadva, a fordított proxy a végpontok listából bármelyik végpontot kiválaszthatja. A szolgáltatáshoz konfigurált végpontok függvényében a kiválasztott végpont HTTP-vagy HTTPS-végpont lehet. Lehetnek olyan forgatókönyvek vagy követelmények, amelyekben a fordított proxyt csak "biztonságos módban" kell használni; vagyis nem szeretné, hogy a biztonságos fordított proxy továbbítsa a kérelmeket a nem biztonságos végpontoknak. Ha a fordított proxyt csak biztonságos módra szeretné beállítani, adja meg a **SecureOnlyMode** konfigurációs bejegyzést az **igaz** értékkel a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.   
 
 ```json
 {
@@ -170,26 +170,26 @@ A névfeloldási proxy kiválasztja az egyik végpontot a kérelem továbbítás
 ```
 
 > [!NOTE]
-> Ha a **SecureOnlyMode**rendszerben működik, ha az ügyfél http(nem biztonságos) végpontnak megfelelő **Figyelőnevet** adott meg, a fordított proxy 404-es (nem található) HTTP-állapotkóddal nem felel meg a kérésnek.
+> Ha a **SecureOnlyMode**-ben működik, ha az ügyfél egy http (nem védett) végpontnak megfelelő **ListenerName** adott meg, akkor a fordított proxy a 404 (nem található) http-állapotkód miatt meghiúsul a kérelemben.
 
-## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Ügyféltanúsítvány-hitelesítés beállítása a fordított proxyn keresztül
-A TLS-végződés a fordított proxynál történik, és az ügyféltanúsítvány összes adata elvész. Ahhoz, hogy a szolgáltatások végrehajtsák az ügyféltanúsítvány-hitelesítést, adja meg a **ForwardClientCertificate** beállítást az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Ügyféltanúsítvány-alapú hitelesítés beállítása fordított proxyn keresztül
+A TLS-megszakítás a fordított proxyn történik, és az összes ügyféltanúsítvány-érték elvész. Ahhoz, hogy a szolgáltatások ügyféltanúsítvány-alapú hitelesítést végezzenek, a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban a **ForwardClientCertificate** beállítást kell megadnia.
 
-1. Ha a **ForwardClientCertificate** **értéke hamis,** a fordított proxy nem kéri az ügyféltanúsítványt az ügyféllel folytatott TLS-kézfogás során.
+1. Ha a **ForwardClientCertificate** **hamis**értékre van állítva, akkor a fordított proxy nem kéri le az ügyféltanúsítványt a TLS-kézfogás során az ügyféllel.
 Ez az alapértelmezett viselkedés.
 
-2. Ha a **ForwardClientCertificate** **értéke igaz,** a fordított proxy az ügyféllel folytatott TLS-kézfogás során kéri az ügyfél tanúsítványát.
-Ezután továbbítja az ügyféltanúsítvány adatait egy **X-Client-Certificate nevű egyéni HTTP-fejlécben.** A fejlécértéke az ügyfél tanúsítványának base64 kódolású PEM formátumú karakterlánca. A tanúsítvány adatainak vizsgálata után a szolgáltatás sikeres/sikertelen lehet a megfelelő állapotkóddal rendelkező kérelemben.
-Ha az ügyfél nem mutat be tanúsítványt, a fordított proxy továbbít egy üres fejlécet, és hagyja, hogy a szolgáltatás kezelje az esetet.
+2. Ha a **ForwardClientCertificate** értéke **true (igaz**), a fordított proxy a TLS-kézfogás során kéri az ügyfél tanúsítványát az ügyféllel.
+Ezután továbbítja az ügyféltanúsítvány-adatkészletet egy **X-Client-Certificate**nevű egyéni http-fejlécbe. A fejléc értéke az ügyfél tanúsítványának Base64 kódolású PEM formátumú karakterlánca. A szolgáltatás a tanúsítvány adatai vizsgálatát követően a megfelelő állapotkódot követően sikeres vagy sikertelen lehet.
+Ha az ügyfél nem tartalmaz tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és lehetővé teszi, hogy a szolgáltatás kezelje az esetet.
 
 > [!NOTE]
-> Fordított proxy egy egyszerű forwarder. Nem hajtja végre az ügyfél tanúsítványának érvényesítését.
+> A fordított proxy egy egyszerű továbbító. Az ügyfél tanúsítványának érvényesítése nem történik meg.
 
 
 ## <a name="next-steps"></a>További lépések
-* [Fordított proxy beállítása és konfigurálása fürtön.](service-fabric-reverseproxy-setup.md)
-* Lásd: [Fordított proxy konfigurálása a biztonságos szolgáltatásokhoz való csatlakozáshoz](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
-* Tekintse meg a http-kommunikáció t a Szolgáltatások közötti kommunikáció egy [minta projekt a GitHubon.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Távoli eljáráshívások a Megbízható szolgáltatások távoli hívásával](service-fabric-reliable-services-communication-remoting.md)
-* [Az OWIN alkalmazást használó webes API a Megbízható szolgáltatásokban](service-fabric-reliable-services-communication-webapi.md)
+* [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
+* Tekintse meg a [fordított proxy konfigurálása a biztonságos szolgáltatásokhoz való csatlakozáshoz](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) című témakört.
+* Tekintse [meg a githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)található, a szolgáltatások közötti http-kommunikáció példáját.
+* [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
+* [OWIN-t használó webes API Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [Fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)

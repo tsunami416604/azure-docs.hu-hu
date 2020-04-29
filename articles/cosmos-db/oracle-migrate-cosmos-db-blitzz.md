@@ -1,6 +1,6 @@
 ---
-title: Adatok áttelepítése az Oracle-ről az Azure Cosmos DB Cassandra API-ra a Blitzz használatával
-description: Ismerje meg, hogyan telepítheti át az adatokat az Oracle-adatbázisból az Azure Cosmos DB Cassandra API-ba a Blitzz használatával.
+title: Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API a Blitzz használatával
+description: Ismerje meg, hogyan telepítheti át az Oracle Database-ből származó adatok Azure Cosmos DB Cassandra API a Blitzz használatával.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,43 +8,43 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546273"
 ---
-# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok áttelepítése az Oracle-ről az Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
+# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
 
-Cassandra API az Azure Cosmos DB vált egy nagyszerű választás a vállalati számítási feladatok, amelyek futnak az Oracle különböző okok miatt, mint például:
+A Azure Cosmos DB Cassandra API az Oracle-ben futó nagyvállalati számítási feladatok széles választékát váltják ki, többek között:
 
-* **Jobb méretezhetőség és elérhetőség:** Kiküszöböli az egyes meghibásodási pontokat, a jobb méretezhetőséget és az alkalmazások rendelkezésre állását.
+* **Jobb méretezhetőség és rendelkezésre állás:** Kiküszöböli az egyes meghibásodási pontokat, az alkalmazások jobb méretezhetőségét és rendelkezésre állását.
 
-* **Jelentős költségmegtakarítás:** Az Azure Cosmos DB költségmegtakarítást, amely tartalmazza a virtuális gépek költségét, a sávszélességet és a vonatkozó Oracle-licenceket. Emellett nem kell kezelnie az adatközpontokat, a kiszolgálókat, az SSD-tárolást, a hálózati és az áramköltségeket.
+* **Jelentős költségmegtakarítás:** A költségeket megtakaríthatja Azure Cosmos DBával, amely magában foglalja a virtuális gépek, a sávszélesség és az esetlegesen érvényes Oracle-licencek költségeit is. Emellett nem szükséges az adatközpontok, a kiszolgálók, az SSD-tárolók, a Hálózatkezelés és a villamosenergia-költségek kezelése.
 
-* **Nincs általános terhelés az irányítás és a figyelés terén:** Teljes körűen felügyelt felhőszolgáltatásként az Azure Cosmos DB megszünteti a beállítások számtalan kezelésének és figyelésének többletterhelését.
+* **A felügyelet és a figyelés nem jelent terhelést:** Teljes körűen felügyelt felhőalapú szolgáltatásként Azure Cosmos DB eltávolítja a rengeteg beállítás felügyeletének és figyelésének terhét.
 
-Az adatbázis-munkaterhelések áttelepítése különböző platformokról a másikra különböző módokon. [A Blitzz](https://www.blitzz.io) egy olyan eszköz, amely biztonságos és megbízható módot kínál a különböző adatbázisokból az Azure Cosmos DB-re történő nulla állásidő-áttelepítés végrehajtására. Ez a cikk ismerteti az adatok áttelepítése az Oracle-adatbázisból az Azure Cosmos DB Cassandra API blitzz használatával szükséges lépéseket.
+Az adatbázis-számítási feladatok egyik platformról a másikra való áttelepíthetők többféleképpen. A [Blitzz](https://www.blitzz.io) egy olyan eszköz, amely biztonságos és megbízható módot biztosít a különböző adatbázisokból Azure Cosmos DBba való áttelepítésének leállására. Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek az Oracle Database-ből származó adatok Azure Cosmos DB Cassandra API a Blitzz használatával történő átimportálásához.
 
-## <a name="benefits-using-blitzz-for-migration"></a>Előnyök a Blitzz használata a migrációhoz
+## <a name="benefits-using-blitzz-for-migration"></a>Az Blitzz for Migration használatának előnyei
 
-A Blitzz áttelepítési megoldása lépésről lépésre közelíti meg az összetett működési munkaterhelések áttelepítését. A blitzz nulla állásidő-áttelepítési tervének legfontosabb szempontjai a következők:
+A Blitzz áttelepítési megoldása a komplex működési feladatok áttelepítésének lépésenkénti megközelítését követi. A Blitzz Zero-állásidő áttelepítési tervének főbb szempontjai a következők:
 
-* Az üzleti logika (táblák, indexek, nézetek) automatikus áttelepítését kínálja az Oracle adatbázisból az Azure Cosmos DB-be. Nem kell manuálisan létrehoznia a sémákat.
+* A szolgáltatás az üzleti logika (táblák, indexek, nézetek) automatikus áttelepítését kínálja az Oracle Database-ből Azure Cosmos DBra. A sémákat nem kell manuálisan létrehoznia.
 
-* A Blitzz nagy mennyiségű és párhuzamos adatbázis-replikációt kínál. Lehetővé teszi, hogy mind a forrás-, mind a célplatformok szinkronban legyenek az áttelepítés során a Change-Data-Capture (CDC) nevű technikával. A CDC használatával blitzz folyamatosan lekéri a változások adatfolyamát a forrás adatbázis(Oracle), és alkalmazza azt a céladatbázis (Azure Cosmos DB).
+* A Blitzz nagy mennyiségű és párhuzamos adatbázis-replikációt biztosít. Lehetővé teszi, hogy a forrás-és a célként megadott platformok szinkronban legyenek az áttelepítés során a Change-adatrögzítés (CDC) nevű technikával. A CDC használatával a Blitzz folyamatosan lekéri a forrás-adatbázis (Oracle) változásait, és alkalmazza azt a céladatbázis (Azure Cosmos DB) számára.
 
-* Hibatűrő, és pontosan az adatok kézbesítését garantálja még a rendszer hardver- vagy szoftverhibája esetén is.
+* Hibatűrő, és a rendszer hardver-vagy szoftver-meghibásodása esetén is pontosan egyszer garantálja az adattovábbítást.
 
-* Az adatokat az átvitel során számos biztonsági módszerrel biztosítja, mint például a TLS/SSL, titkosítás.
+* Az adatátvitel során a különböző biztonsági módszertanok, például a TLS/SSL és a titkosítás használatával biztosít védelmet.
 
-* Szolgáltatásokat kínál a PL/SQL-ben írt összetett üzleti logika konvertálásához az Azure Cosmos DB egyenértékű üzleti logikájává.
+* Olyan szolgáltatásokat kínál, amelyekkel az összetett üzleti logikát (PL./SQL) a Azure Cosmos DBban egyenértékű üzleti logikára konvertálhatja.
 
-## <a name="steps-to-migrate-data"></a>Az adatok áttelepítése lépései
+## <a name="steps-to-migrate-data"></a>Az adatáttelepítés lépései
 
-Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és áttelepíti az adatokat az Oracle-adatbázisból az Azure Cosmos DB-be.
+Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához és az Oracle Database-ből a Azure Cosmos DBba való áttelepítéséhez szükségesek.
 
-1. A Blitzz replikáns telepítését hozó számítógépről adjon hozzá egy biztonsági tanúsítványt. Ezt a tanúsítványt a Blitzz replikáns a megadott Azure Cosmos DB-fiókkal való TLS-kapcsolat létrehozásához szükséges. A tanúsítványt a következő lépésekkel veheti fel:
+1. Adjon hozzá egy biztonsági tanúsítványt a számítógépről, amelyre telepíteni szeretné a Blitzz-replikált. Ezt a tanúsítványt a Blitzz-replikált a megadott Azure Cosmos DB fiókkal létesített TLS-kapcsolat létesítéséhez szükséges. A tanúsítványt a következő lépésekkel adhatja hozzá:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt
@@ -52,13 +52,13 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és �
    keytool -keystore $JAVA_HOME/lib/security/cacerts -importcert -alias bc2025ca -file bc2025.cer
    ```
 
-1. ou lehet kapni a Blitzz telepítés és a bináris fájlokat sem kér egy demo a [Blitzz honlapján](https://www.blitzz.io). Másik lehetőségként [e-mailt](mailto:success@blitzz.io) is küldhet a csapatnak.
+1. a szervezeti egység a Blitzz-telepítést és a bináris fájlokat a [Blitzz webhelyén](https://www.blitzz.io)bemutató kéréssel szerezheti be. Azt is megteheti, hogy [e-mailt](mailto:success@blitzz.io) küld a csapatnak.
 
-   ![Blitzz replikáns eszköz letöltés](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   ![Blitzz replikált eszköz letöltése](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
 
-   ![Blitzz replikáns fájlok](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   ![Blitzz replikált-fájlok](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
 
-1. A CLI terminálról állítsa be a forrásadatbázis konfigurációját. Nyissa meg a **`vi conf/conn/oracle.yml`** konfigurációs fájlt a paranccsal, és adjon hozzá egy vesszővel tagolt listát az oracle csomópontok IP-címeiről, a portszámról, a felhasználónévről, a jelszóról és minden egyéb szükséges adatról. A következő kód egy példa konfigurációs fájlt mutat be:
+1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/oracle.yml`** fájlt a paranccsal, és adja hozzá az Oracle-csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő kód egy példaként szolgáló konfigurációs fájlt mutat be:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és �
    use-ssl: false
    ```
 
-   ![Az Oracle kapcsolatszerkesztő megnyitása](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   ![Az Oracle-kapcsolatok szerkesztőjének megnyitása](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
 
-   ![Oracle kapcsolat konfigurációja](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   ![Oracle-kapcsolatok konfigurálása](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
 
-   A konfigurációs adatok kitöltése után mentse és zárja be a fájlt.
+   A konfigurációs adatok kitöltése után mentse és zárjuk be a fájlt.
 
-1. Szükség esetén beállíthatja a forrásadatbázis-szűrőfájlt. A szűrőfájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a **`vi filter/oracle_filter.yml`** konfigurációs fájlt a paranccsal, és adja meg a következő konfigurációs adatokat:
+1. Igény szerint beállíthatja a forrás adatbázis-szűrő fájlját is. A szűrő fájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a konfigurációs **`vi filter/oracle_filter.yml`** fájlt a parancs használatával, és adja meg a következő konfigurációs adatokat:
 
    ```bash
 
@@ -90,19 +90,19 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és �
    Types: [TABLE]
    ```
  
-   Az adatbázis-szűrő részleteinek kitöltése után mentse és zárja be a fájlt.
+   Az adatbázis-szűrő részleteinek kitöltése után mentse és zárjuk be a fájlt.
 
-1. Ezután beállítja a céladatbázis konfigurációját. A konfiguráció definiálása előtt [hozzon létre egy Azure Cosmos DB Cassandra API-fiókot.](create-cassandra-dotnet.md#create-a-database-account) [Válassza ki a megfelelő partíciókulcsot](partitioning-overview.md#choose-partitionkey) az adatok közül, majd hozzon létre egy Kulcstér és egy táblát az áttelepített adatok tárolására.
+1. Ezután be kell állítania a céladatbázis konfigurációját. A konfiguráció megadása előtt [hozzon létre egy Azure Cosmos DB Cassandra API fiókot](create-cassandra-dotnet.md#create-a-database-account). [Válassza ki az adatokból a megfelelő partíciós kulcsot](partitioning-overview.md#choose-partitionkey) , majd hozzon létre egy kulcstartót, valamint egy táblát az áttelepített adatok tárolásához.
 
-1. Az adatok áttelepítése előtt növelje a tároló átviteli átaputét az alkalmazás gyors áttelepítéséhez szükséges mennyiségre. Például növelheti az átviteli 100000 Több rekts. Az átviteli kábel méretezése az áttelepítés megkezdése előtt segít az adatok rövidebb idő alatt történő áttelepítésében. 
+1. Az adatok áttelepítése előtt növelje a tároló átviteli sebességét az alkalmazás gyors áttelepítéséhez szükséges mennyiségre. Megnövelheti például az átviteli sebességet 100000 RUs-re. Az adatátviteli sebesség az áttelepítés megkezdése előtt méretezése segít az adatok áttelepítésében kevesebb idő alatt. 
 
    ![Az Azure Cosmos-tároló méretezése az egész](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
 
-   Az áttelepítés befejezése után csökkentenie kell az átviteli szintet. Az egyes műveletekhez szükséges tárolt adatok és a felelős információk mennyisége alapján megbecsülheti az adatáttelepítés után szükséges átviteli forgalmat. Ha többet szeretne megtudni a szükséges rúpiák becsléséhez, olvassa [el az átviteli kapacitás kiépítése a tárolókon és adatbázisokon](set-throughput.md) és a Becslés [iRU/s az Azure Cosmos DB kapacitástervező](estimate-ru-with-capacity-planner.md) cikkek használatával.
+   Az áttelepítés befejeződése után csökkentenie kell az átviteli sebességet. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
-1. Az Azure Cosmos-fiók **kapcsolati pontjának, portjának, felhasználónevének**és **elsődleges jelszavának** beszerezése a **Kapcsolati karakterlánc** ablaktáblából. Ezeket az értékeket a konfigurációs fájlban fogja használni.
+1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét**és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
 
-1. A CLI terminálról állítsa be a céladatbázis konfigurációját. Nyissa meg a **`vi conf/conn/cosmosdb.yml`** konfigurációs fájlt a paranccsal, és adjon hozzá egy vesszővel tagolt listát a gazdagép URI-járól, a portszámáról, a felhasználónevéről, a jelszaváról és más szükséges paraméterekről. Az alábbi példa a konfigurációs fájl tartalmára mutat be:
+1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/cosmosdb.yml`** fájlt a paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
 
    ```bash
    type: COSMOSDB
@@ -117,37 +117,37 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és �
    use-ssl: false
    ```
 
-1. Ezután telepítse át az adatokat a Blitzz használatával. A Blizz replikáns teljes **vagy** **pillanatkép** módban futtatható:
+1. Ezután az Blitzz használatával telepítse át az adatátvitelt. A Blizz replikált **teljes** vagy **Pillanatkép** módban is futtathatja:
 
-   * **Teljes mód** – Ebben a módban a replikáns továbbra is fut az áttelepítés után, és figyeli a változásokat a forrás Oracle rendszer. Ha bármilyen változást észlel, azok replikálódik a cél Azure Cosmos-fiók valós időben.
+   * **Teljes mód** – ebben a módban a replikált továbbra is futni fog az áttelepítés után, és figyeli a forrás Oracle-rendszer változásait. Ha bármilyen változást észlel, valós időben replikálja a cél Azure Cosmos-fiókban.
 
-   * **Pillanatkép mód** – Ebben a módban sémaáttelepítést és egyszeri adatreplikációt hajthat végre. Ez a beállítás nem támogatja a valós idejű replikációt.
+   * **Pillanatkép mód** – ebben a módban elvégezheti a séma áttelepítését és az egyszeri adatreplikálást. Ez a beállítás nem támogatja a valós idejű replikálást.
 
 
-   A fenti két mód használatával az áttelepítés nulla állásidővel hajtható végre.
+   A fenti két mód használatával a Migrálás nulla állásidővel végezhető el.
 
-1. Az adatok áttelepítéséhez futtassa a következő parancsot a Blitzz replikáns CLI terminálról:
+1. Az adatok áttelepíthetők a Blitzz replikált CLI-terminálból, a következő parancs futtatásával:
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing
    ```
 
-   A replikáns felhasználói felület a replikáció előrehaladását mutatja. Miután a séma áttelepítési és pillanatkép-művelet befejeződött, a folyamat 100%. Az áttelepítés befejezése után ellenőrizheti az adatokat a cél Azure Cosmos-adatbázisban.
+   A replikált felhasználói felületén látható a replikálási folyamat. Ha elkészült a séma-áttelepítési és a pillanatkép-művelet, a folyamat 100%-ot mutat. Az áttelepítés befejezése után érvényesítheti a cél Azure Cosmos-adatbázisban található adatforrásokat.
 
-   ![Oracle adatáttelepítési kimenet](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   ![Oracle-adatáttelepítési kimenet](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
 
-1. Mivel teljes módot használt az áttelepítéshez, olyan műveleteket hajthat végre, mint például adatok beszúrása, frissítése vagy törlése a forrás Oracle adatbázisban. Később ellenőrizheti, hogy azok replikálva valós időben a cél Azure Cosmos-adatbázisban. Az áttelepítés után győződjön meg arról, hogy csökkentse az Azure Cosmos-tárolóhoz konfigurált átviteli.
+1. Mivel a teljes áttelepítési módot használta, olyan műveleteket hajthat végre, mint például az adatok beszúrása, frissítése vagy törlése a forrás Oracle-adatbázisban. Később ellenőrizheti, hogy valós időben replikálódnak-e a cél Azure Cosmos-adatbázison. Az áttelepítés után csökkentse az Azure Cosmos-tárolóhoz konfigurált átviteli sebességet.
 
-1. A replikáns bármely ponton leállíthatja, és újraindíthatja a **--resume** kapcsolóval. A replikáció attól a ponttól folytatódik, amelyet az adatok konzisztenciájának veszélyeztetése nélkül leállított. A következő parancs bemutatja, hogyan kell használni a folytatáskapcsolót.
+1. A replikált bármikor leállíthatja, és újraindíthatja a **--resume** kapcsolóval. A replikálás az adatok konzisztenciájának veszélyeztetése nélkül folytatódik a pontról. Az alábbi parancs bemutatja, hogyan használhatja a folytatás kapcsolót.
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing --resume
    ```
 
-Ha többet szeretne megtudni az adatok célhoz való áttelepítéséről, a valós idejű áttelepítésről, olvassa el a [Blitzz replikáns bemutatóját.](https://www.youtube.com/watch?v=y5ZeRK5A-MI)
+Ha többet szeretne megtudni az adatáttelepítés célhelyre való áttelepítéséről, tekintse meg a [Blitzz replikált bemutatóját](https://www.youtube.com/watch?v=y5ZeRK5A-MI).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
-* [A partíciós kulcs – gyakorlati tanácsok](partitioning-overview.md#choose-partitionkey)
-* [Ru/s becslése az Azure Cosmos DB kapacitástervező](estimate-ru-with-capacity-planner.md) i.
+* [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)
+* [Ru/s becslése a Azure Cosmos db Capacity Planner cikkei alapján](estimate-ru-with-capacity-planner.md)

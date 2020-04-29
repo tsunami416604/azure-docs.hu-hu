@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center-vizsgálat során talált felhasználói adatok kezelése
-description: " Ismerje meg, hogyan kezelheti az Azure Security Center vizsgálati funkciójában található felhasználói adatokat. "
+title: Azure Security Center vizsgálatban talált felhasználói adatkezelési szolgáltatás kezelése
+description: " Megtudhatja, hogyan kezelheti a Azure Security Center vizsgálati funkciójában található felhasználói információkat. "
 services: operations-management-suite
 documentationcenter: na
 author: memildin
@@ -14,38 +14,38 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582988"
 ---
-# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center-vizsgálat során talált felhasználói adatok kezelése
-Ez a cikk az Azure Security Center vizsgálati szolgáltatásában található felhasználói adatok kezelésével kapcsolatos információkat tartalmaz. A vizsgálati adatokat az [Azure Monitor naplói](../log-analytics/log-analytics-overview.md) tárolják, és a Security Centerben teszik elérhetővé. A felhasználói adatok kezelése magában foglalja az adatok törlését vagy exportálását.
+# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Security Center vizsgálatban talált felhasználói adatkezelési szolgáltatás kezelése
+Ez a cikk a Azure Security Center vizsgálati funkciójában található felhasználói adatok kezelésével kapcsolatos információkat tartalmazza. A vizsgálati adatvizsgálatok tárolása [Azure monitor naplókban](../log-analytics/log-analytics-overview.md) történik, és Security Center elérhető. A felhasználói adatkezelési funkció magában foglalja az adattörlési vagy-exportálási lehetőséget.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Személyes adatok keresése és azonosítása
-Az Azure Portalon a Security Center vizsgálati funkciójával személyes adatokat kereshet. A vizsgálati funkció a **Biztonsági riasztások**szolgáltatás ban érhető el.
+A Azure Portalban a Security Center vizsgálati funkciója használható a személyes adatkereséshez. A vizsgálati funkció a **biztonsági riasztások**területen érhető el.
 
-A vizsgálati funkció az összes entitást, felhasználói információt és adatot jeleníti meg az **Entitások** lapon.
+A vizsgálat funkció az **entitások** lapon lévő összes entitást, felhasználói információt és adatot megjeleníti.
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Személyes információk védelme és a hozzáférés szabályozása
-A Reader, Owner, Contributor vagy Account Administrator szerepkörrel rendelkező biztonsági központ-felhasználó hozzáférhet az ügyféladatokhoz az eszközön belül.
+Az olvasó, a tulajdonos, a közreműködő vagy a fiók rendszergazdája által hozzárendelt Security Center felhasználó az eszközön belül férhet hozzá az ügyféladatok eléréséhez.
 
-Az Olvasó, a tulajdonos és a közreműködői szerepkörökről az [Azure szerepköralapú hozzáférés-vezérlésének beépített szerepkörei](../role-based-access-control/built-in-roles.md) című témakörben olvashat bővebben. Ha többet szeretne megtudni a Fiókfelügyelő szerepkörről, tekintse meg az [Azure-előfizetés-rendszergazdákat.](../cost-management-billing/manage/add-change-subscription-administrator.md)
+Az olvasói, a tulajdonosi és a közreműködő szerepkörökkel kapcsolatos további tudnivalókért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés beépített szerepköreit](../role-based-access-control/built-in-roles.md) . Az [Azure-előfizetés rendszergazdái](../cost-management-billing/manage/add-change-subscription-administrator.md) további információkat tudhatnak meg a fiók rendszergazdai szerepköréről.
 
 ## <a name="deleting-personal-data"></a>Személyes adatok törlése
-A Tulajdonos, Közreműködő vagy fiókfelügyelő szerepkörrel elosztott biztonsági központ-felhasználó törölheti a vizsgálati adatokat.
+A tulajdonos, közreműködő vagy fiók rendszergazdája által hozzárendelt Security Center felhasználó törölheti a vizsgálati adatokat.
 
-A vizsgálat törléséhez kérelmet `DELETE` küldhet az Azure Resource Manager REST API-nak:
+Egy vizsgálat törléséhez `DELETE` kérelmet küldhet a Azure Resource Manager Rest APIba:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-A `incidentName` bemenet megtalálható az összes incidens `GET` felsorolásával egy kérés használatával:
+A `incidentName` bemenet a `GET` kérelmeket használó összes incidens felsorolásával érhető el:
 
 ```HTTP
 GET
@@ -53,8 +53,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>Személyes adatok exportálása
-A Tulajdonos, Közreműködő vagy fiókadminisztrátor szerepkörrel elosztott biztonsági központ-felhasználó exportálhatja a vizsgálati adatokat. A vizsgálati adatok exportálásához nyissa meg az **Entitások** lapot a vonatkozó információk másolásához és beillesztéséhez.
+A tulajdonos, közreműködő vagy fiók rendszergazdája által hozzárendelt Security Center felhasználó exportálhatja a vizsgálati adatokat. A vizsgálati információk exportálásához lépjen az **entitások** lapra a megfelelő információk másolásához és beillesztéséhez.
 
 ## <a name="next-steps"></a>További lépések
-A felhasználói adatok kezeléséről a [Felhasználói adatok kezelése az Azure Security Centerben](security-center-privacy.md)című témakörben talál további információt.
-Ha többet szeretne tudni a személyes adatok azure-figyelőnaplókban való törléséről, olvassa [el a Személyes adatok exportálása és törlése.](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)
+A felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatok kezelése Azure Security Centerban](security-center-privacy.md).
+Ha többet szeretne megtudni a személyes adatainak törléséről Azure Monitor naplókban, tekintse meg a [személyes adatainak exportálása és törlése](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)című témakört.

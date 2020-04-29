@@ -1,6 +1,6 @@
 ---
 title: Tranzakciós replikáció
-description: Ismerje meg az SQL Server tranzakciós replikációhasználatát egyetlen, készletezett és példány-adatbázisokkal az Azure SQL Database-ben.
+description: Ismerje meg, hogyan használhatja SQL Server tranzakciós replikációt egyetlen, készletezett és példány-adatbázissal Azure SQL Databaseokban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,75 +12,75 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
 ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80607597"
 ---
-# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció egyetlen, készletezett és példányadatbázisokkal az Azure SQL Database-ben
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció egyetlen, készletezett és példány-adatbázissal Azure SQL Database
 
-A tranzakciós replikáció az Azure SQL Database és az SQL Server egyik szolgáltatása, amely lehetővé teszi az Azure SQL Database vagy az SQL Server tábláiból származó adatok replikálását a távoli adatbázisokra helyezett táblákra. Ez a szolgáltatás lehetővé teszi több tábla szinkronizálását különböző adatbázisokban.
+A tranzakciós replikáció a Azure SQL Database és SQL Server egyik funkciója, amely lehetővé teszi az adatok replikálását Azure SQL Database vagy SQL Server a távoli adatbázisokra helyezett táblákba. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban.
 
-## <a name="when-to-use-transactional-replication"></a>Mikor kell használni a tranzakciós replikációt?
+## <a name="when-to-use-transactional-replication"></a>Mikor kell használni a tranzakciós replikációt
 
 A tranzakciós replikáció a következő esetekben hasznos:
-- Közzéteheti az adatbázis egy vagy több táblájában végrehajtott módosításokat, és terjesztheti azokat egy vagy több SQL Server vagy Azure SQL-adatbázisba, amelyek előfizettek a módosításokra.
-- Több elosztott adatbázis szinkronállapotban tartása.
-- A módosítások folyamatos közzétételével telepítse át az adatbázisokat az egyik SQL Server kiszolgálóról vagy a felügyelt példányról egy másik adatbázisba.
+- Egy adatbázis egy vagy több táblájában végzett módosítások közzététele, és a módosítások előfizetése egy vagy több SQL Server vagy Azure SQL-adatbázisba.
+- Több elosztott adatbázis tartása szinkronizált állapotban.
+- Az adatbázisok áttelepíthetők egy SQL Server vagy felügyelt példányból egy másik adatbázisba a módosítások folyamatos közzétételekor.
 
 ## <a name="overview"></a>Áttekintés
 
-A tranzakciós replikáció fő összetevői az alábbi képen láthatók:  
+A tranzakciós replikáció legfontosabb összetevői a következő képen láthatók:  
 
-![replikáció az SQL Database-rel](media/replication-to-sql-database/replication-to-sql-database.png)
+![replikálás SQL Database](media/replication-to-sql-database/replication-to-sql-database.png)
 
-A **Publisher** olyan példány vagy kiszolgáló, amely a frissítések nek a Forgalmazónak történő elküldésével teszi közzé az egyes táblákon (cikkekben) végrehajtott módosításokat. Az SQL Server következő verziói támogatják az Azure SQL-adatbázisban való közzétételt egy helyszíni SQL Server kiszolgálóról:
+A **közzétevő** egy olyan példány vagy kiszolgáló, amely közzéteszi az egyes táblákon végrehajtott módosításokat, és elküldi a frissítéseket a terjesztőnek. A helyszíni SQL Server összes Azure SQL Database-adatbázisának közzétételét a SQL Server következő verziói támogatják:
 
 - SQL Server 2019 (előzetes verzió)
-- SQL Server 2016 –SQL 2017
-- SQL Server 2014 SP1 CU3 vagy nagyobb (12.00.4427)
+- SQL Server 2016 – SQL 2017
+- SQL Server 2014 SP1 CU3 vagy újabb (12.00.4427)
 - SQL Server 2014 RTM CU10 (12.00.2556)
-- SQL Server 2012 SP3 vagy nagyobb (11.0.6020)
+- SQL Server 2012 SP3 vagy újabb (11.0.6020)
 - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-- Az SQL Server más verziói, amelyek nem támogatják az Azure-beli objektumokban való közzétételt, az [adatok újbóli közzétételére](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) szolgáló módszer rel az SQL Server újabb verzióiba helyezhető át. 
+- Az olyan SQL Server más verziói esetében, amelyek nem támogatják az Azure-ban lévő objektumok közzétételét, a [republishing](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) adatmódszer használatával áthelyezheti az adatátvitelt a SQL Server újabb verzióiba. 
 
-A **Disztribútor** olyan példány vagy kiszolgáló, amely összegyűjti a cikkek változásait a Kiadótól, és továbbítja azokat az Előfizetőknek. A Disztribútor lehet Az Azure SQL Database felügyelt példánya vagy az SQL Server (bármely verzió, amíg egyenlő vagy magasabb, mint a Publisher verzió). 
+A **terjesztő** egy olyan példány vagy kiszolgáló, amely a cikkek egy közzétevőtől származó változásait gyűjti, és elosztja azokat az előfizetőknek. A terjesztő lehet Azure SQL Database felügyelt példány vagy SQL Server (bármely verzió, ameddig a közzétevő verziója megegyezik vagy annál nagyobb). 
 
-Az **Előfizető** olyan példány vagy kiszolgáló, amely megkapja a Közzétevőn végrehajtott módosításokat. Az előfizetők lehetnek egy-, készletezésű és példányadatbázisok az Azure SQL Database vagy az SQL Server-adatbázisokban. Az egyvagy több szálas adatbázis előfizetőjét push-előfizetőként kell konfigurálni. 
+Az **előfizető** olyan példány vagy kiszolgáló, amely a közzétevőn végrehajtott módosításokat fogadja. Az előfizetők lehetnek önálló, készletezett és példány-adatbázisok Azure SQL Database vagy SQL Server adatbázisokban. Egy vagy készletezett adatbázis előfizetőjét leküldéses előfizetőként kell konfigurálni. 
 
-| Szerepkör | Egy- és összevont adatbázisok | Példányadatbázisok |
+| Szerepkör | Önálló és készletezett adatbázisok | Példány-adatbázisok |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen | 
-| **Forgalmazó** | Nem | Igen|
+| **Terjesztő** | Nem | Igen|
 | **Lekéréses előfizető** | Nem | Igen|
 | **Leküldéses előfizető**| Igen | Igen|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > A lekéréses előfizetés nem támogatott, ha a forgalmazó egy példány adatbázis, és az előfizető nem. 
+  > A lekéréses előfizetés nem támogatott, ha a terjesztő egy példány-adatbázis, és az előfizető nem. 
 
-A replikációnak különböző [típusai](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)vannak:
+A replikáció különböző [típusú](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
-| Replikáció | Egy- és összevont adatbázisok | Példányadatbázisok|
+| Replikáció | Önálló és készletezett adatbázisok | Példány-adatbázisok|
 | :----| :------------- | :--------------- |
-| [**Szokásos tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen | 
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen | 
 | [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
-| [**Replikáció egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
-| [**Egyenrangú a(z) peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
+| [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
+| [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
 | [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
-| [**Updatable előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
+| [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - A replikáció régebbi verzióval történő konfigurálása a MSSQL_REPL20084 (A folyamat nem tudott csatlakozni \<az előfizetőhöz.) és MSSQ_REPL40532 (A kiszolgálónév nem nyitható meg,> a bejelentkezés kéri. A bejelentkezés nem sikerült.)
-  > - Az Azure SQL Database összes szolgáltatásának használatához az [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és az SQL Server Data Tools [(SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióját kell használnia.
+  > - Ha egy régebbi verzió használatával próbál meg konfigurálni a replikálást, a hiba MSSQL_REPL20084 (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQ_REPL40532 ( \<a kiszolgáló neve nem nyitható meg a bejelentkezés által kért>. A bejelentkezés sikertelen.)
+  > - A Azure SQL Database összes funkciójának használatához a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióját kell használnia.
   
-  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Támogatási mátrix a példányadatbázisokhoz és a helyszíni rendszerekhez
-  A példányadatbázisok replikációs támogatási mátrixa megegyezik a helyszíni SQL Server replikációs támogatási mátrixával. 
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Támogatási mátrix a példány-adatbázisok és a helyszíni rendszerek számára
+  A példány-adatbázisok replikálási támogatási mátrixa ugyanaz, mint a helyszíni SQL Server. 
   
-| **Publisher**   | **Forgalmazó** | **Előfizető** |
+| **Publisher**   | **Terjesztő** | **Előfizető** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
@@ -93,65 +93,65 @@ A replikációnak különböző [típusai](https://docs.microsoft.com/sql/relati
 ## <a name="requirements"></a>Követelmények
 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között. 
-- Egy Azure Storage-fiók megosztás a replikáció által használt működő könyvtárhoz. 
-- A 445-ös portnak (TCP kimenő) meg kell nyitva lennie a felügyelt példány alhálózatának biztonsági szabályaiban az Azure-fájlmegosztás eléréséhez. 
-- Az 1433-as portot (TCP kimenő) meg kell nyitni, ha a Kiadó/Forgalmazó felügyelt példányon van, és az előfizető nem. Előfordulhat, hogy a 1433-as `allow_linkedserver_outbound` **célszolgáltatás címkéjének** felügyelt példánynkénti `virtualnetwork` `internet`NSG kimenő biztonsági szabályát is a-ról . 
-- A replikációs résztvevők (kiadó, forgalmazó, lekéréses előfizető és lekéréses előfizető) minden típusa elhelyezhető felügyelt példányokon, de a közzétevőnek és a forgalmazónak a felhőben vagy a helyszínen lévőnek kell lennie.
-- Ha a kiadó, a forgalmazó és/vagy az előfizető különböző virtuális hálózatokban létezik, akkor a VPN-társviszony-létesítést az egyes entitások között kell létrehozni, hogy a közzétevő és a forgalmazó között VPN-társviszony-létesítés legyen, és/vagy a forgalmazó és az előfizető között VPN-társviszony-létesítés legyen. 
+- Egy Azure Storage-fiók megosztása a replikáció által használt munkakönyvtárhoz. 
+- A felügyelt példány alhálózatának biztonsági szabályaiban meg kell nyitni az 445 (TCP kimenő) portot az Azure-fájlmegosztás eléréséhez. 
+- A 1433-as (TCP kimenő) portot meg kell nyitni, ha a közzétevő/terjesztő felügyelt példányon található, és az előfizető nem. Előfordulhat, hogy módosítania kell a felügyelt példány NSG kimenő biztonsági `allow_linkedserver_outbound` szabályát a esetében a **1433** `virtualnetwork` -as portra `internet`vonatkozóan. 
+- A replikációs résztvevők (kiadó, terjesztő, lekéréses előfizető és leküldéses előfizető) minden típusa felügyelt példányokon helyezhető el, de a közzétevőnek és a terjesztőnek egyaránt a felhőben vagy mindkét helyszínen kell lennie.
+- Ha a közzétevő, a terjesztő és/vagy az előfizető különböző virtuális hálózatokban található, akkor az egyes entitások között meg kell teremteni a VPN-társítást, például a közzétevő és a terjesztő közötti VPN-társítást, illetve a terjesztő és az előfizető közötti VPN-kapcsolatot. 
 
 
 >[!NOTE]
-> - Előfordulhat, hogy az 53-as hiba, amikor csatlakozik egy Azure Storage-fájl, ha a kimenő hálózati biztonsági csoport (NSG) 445-ös port javallt, ha a forgalmazó egy példány adatbázis és az előfizető a helyszínen. A probléma megoldásához [frissítse a vNet NSG-t.](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 
+> - Ha a kimenő hálózati biztonsági csoport (NSG) 445-es portja le van tiltva, ha a terjesztő egy példány-adatbázis, és az előfizető a helyszínen van, akkor a 53-es hiba léphet fel az Azure Storage-fájlhoz való csatlakozáskor. A probléma megoldásához [frissítse a VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
 
 
-### <a name="compare-data-sync-with-transactional-replication"></a>Az adatszinkronizálás összehasonlítása a tranzakciós replikációval
+### <a name="compare-data-sync-with-transactional-replication"></a>Adatszinkronizálás összehasonlítása tranzakciós replikációval
 
 | | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
-| Előnyök | - Aktív-aktív támogatás<br/>- Kétirányú között helyszíni és az Azure SQL Database | - Kisebb késleltetés<br/>- Tranzakciós konzisztencia<br/>- A meglévő topológia újrafelhasználása a migráció után |
-| Hátrányok | - 5 min vagy több késleltetés<br/>- Nincs tranzakciós konzisztencia<br/>- Nagyobb teljesítményhatás | - Nem lehet közzétenni az Azure SQL Database egyetlen adatbázisvagy készletbe helyezett adatbázis<br/>- Magas karbantartási költség |
+| Előnyök | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után |
+| Hátrányok | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | – Nem lehet közzétenni Azure SQL Database önálló adatbázisból vagy készletezett adatbázisból<br/>– Magas karbantartási díj |
 | | | |
 
 ## <a name="common-configurations"></a>Gyakori konfigurációk
 
-A közzétevőnek és a forgalmazónak általában a felhőben vagy a helyszínen kell lennie. A következő konfigurációk vannak támogatva: 
+Általánosságban a közzétevőnek és a terjesztőnek a felhőben vagy a helyszínen kell lennie. A következő konfigurációk vannak támogatva: 
 
-### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Kiadó a helyi Forgalmazóval egy felügyelt példányon
+### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Közzétevő helyi terjesztővel felügyelt példányon
 
-![Egyetlen példány kiadóként és forgalmazóként](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Önálló példány Közzétevőként és terjesztőként](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-A Publisher és a forgalmazó egyetlen felügyelt példányon belül van konfigurálva, és a módosítások terjesztése más felügyelt példányok, egyetlen adatbázis, készletezött adatbázis vagy az SQL Server helyszíni terjesztésére. 
+A közzétevő és a terjesztő egyetlen felügyelt példányon belül van konfigurálva, és a módosításokat más felügyelt példányra, önálló adatbázisra, készletezett adatbázisra vagy SQL Server a helyszínen osztja el. 
 
-### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Közzétevő távoli forgalmazóval egy felügyelt példányon
+### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Közzétevő távoli terjesztővel felügyelt példányon
 
-Ebben a konfigurációban az egyik felügyelt példány olyan módosításokat tesz közzé egy másik felügyelt példányon elhelyezett forgalmazónak, amely számos forrás felügyelt példányt képes kiszolgálni, és módosításokat terjeszthet egy vagy több példányra a felügyelt példányon, az egyetlen adatbázison, a készletezett adatbázison vagy az SQL Serveren.
+Ebben a konfigurációban az egyik felügyelt példány közzétesz egy másik felügyelt példányra helyezett terjesztőt, amely számos forrásként kezelt példányt képes kiszolgálni, és a módosításokat egy vagy több, felügyelt példányra, önálló adatbázisra, készletezett adatbázisra vagy SQL Serverra is kiterjesztheti.
 
-![Külön példányok a Kiadó és a Forgalmazó számára](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
+![A közzétevő és a terjesztő külön példányai](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-A közzétevő és a forgalmazó két felügyelt példányon van konfigurálva. Ezzel a konfigurációval vannak bizonyos korlátozások: 
+A közzétevő és a terjesztő két felügyelt példányon van konfigurálva. Ehhez a konfigurációhoz bizonyos korlátozások vonatkoznak: 
 
-- Mindkét felügyelt példány ugyanazon a virtuális hálózaton található.
+- Mindkét felügyelt példány ugyanazon a vNet található.
 - Mindkét felügyelt példány ugyanazon a helyen található.
 
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Kiadó és forgalmazó helyszíni, egyetlen, összevont és példányadatbázis előfizetőjével 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Kiadó és forgalmazó helyszíni előfizetővel egyetlen, készletezett és példányos adatbázisban 
 
-![Az Azure SQL DB mint előfizető](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
+![Azure SQL-adatbázis előfizetőként](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-Ebben a konfigurációban egy Azure SQL-adatbázis (egyetlen, készletezésű és példányadatbázis) egy előfizető. Ez a konfiguráció támogatja a helyszíni azure-ból való áttelepítést. Ha egy előfizető egyetlen vagy készletezésű adatbázisban van, leküldéses módban kell lennie.  
+Ebben a konfigurációban egy Azure SQL Database (egy, készletezett és példány-adatbázis) egy előfizető. Ez a konfiguráció támogatja a helyszíni rendszerről az Azure-ba való áttelepítést. Ha egy előfizető egyetlen vagy készletezett adatbázisban található, leküldéses módban kell lennie.  
 
 ## <a name="with-failover-groups"></a>Feladatátvételi csoportokkal
 
-Ha a georeplikáció engedélyezve van egy [feladatátvételi csoport](sql-database-auto-failover-group.md) **közzétevői** vagy **forgalmazói** példányán, a felügyelt példány rendszergazdájának a feladatátvétel t követően meg kell tisztítania a régi elsődleges összes kiadványt, és újra kell konfigurálnia őket az új elsődleges en. Ebben a forgatókönyvben a következő tevékenységekre van szükség:
+Ha a földrajzi replikáció engedélyezve van egy [feladatátvevő csoportban](sql-database-auto-failover-group.md)lévő **közzétevő** vagy **terjesztő** példányon, a felügyelt példány rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
 
-1. Állítsa le az adatbázisban futó összes replikációs feladatot, ha vannak ilyenek.
-2. A közzétevőtől származó előfizetési metaadatok at a következő parancsfájl publisher adatbázisban történő futtatásával dobja el:
+1. Állítsa le az adatbázison futó összes replikációs feladatot, ha vannak ilyenek.
+2. Az előfizetés metaadatainak eldobása a közzétevőtől a következő parancsfájl futtatásával a közzétevő adatbázisán:
 
    ```sql
    EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
    ```             
  
-1. Az előfizetés metaadatainak eldobása az előfizetőtől. Futtassa a következő parancsfájlt az előfizetési adatbázison az előfizetői példányon:
+1. Az előfizetés metaadatainak eldobása az előfizetőtől. Futtassa a következő parancsfájlt az előfizetői példányon az előfizetési adatbázison:
 
    ```sql
    EXEC sp_subscription_cleanup
@@ -160,43 +160,43 @@ Ha a georeplikáció engedélyezve van egy [feladatátvételi csoport](sql-datab
       @publication = N'<name of publication>'; 
    ```                
 
-1. A közzétett adatbázisban a következő parancsfájl futtatásával a közzétett adatbázisban a következő parancsfájl futtatásával erőszakkal elkell dobni a közzétevőtől származó összes replikációs objektumot:
+1. Az összes replikációs objektum kényszerített eldobása a közzétevőtől a közzétett adatbázisban a következő parancsfájl futtatásával:
 
    ```sql
    EXEC sp_removedbreplication
    ```
 
-1. Erőteljesen csepp régi forgalmazó az eredeti elsődleges példány (ha nem sikerült vissza egy régi elsődleges, hogy a korábban volt egy forgalmazó). Futtassa a következő parancsfájlt a főadatbázison a régi, forgalmazó által felügyelt példányban:
+1. Az eredeti elsődleges példánytól származó régi terjesztő kényszerített eldobása (ha a feladatátvételt egy olyan régi elsődlegesre végzi, amely a terjesztőhöz lett használva). Futtassa a következő parancsfájlt a főadatbázisban a régi terjesztő által felügyelt példányon:
 
    ```sql
    EXEC sp_dropdistributor 1,1
    ```
 
-Ha a georeplikáció engedélyezve van egy **előfizetői** példányon egy feladatátvételi csoportban, a kiadványt úgy kell konfigurálni, hogy csatlakozzon az előfizető felügyelt példányának feladatátvételi csoportfigyelő végpontjához. Feladatátvétel esetén a felügyelt példány rendszergazdájának későbbi művelete a feladatátvétel típusától függ: 
+Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfizetői** példányán, a kiadványt úgy kell konfigurálni, hogy az előfizető által felügyelt példányhoz kapcsolódjon a feladatátvételi csoport figyelő-végponthoz. Feladatátvétel esetén a felügyelt példány rendszergazdája a következő művelettől függ, hogy milyen típusú feladatátvétel történt: 
 
-- Adatvesztés nélküli feladatátvétel esetén a replikáció a feladatátvétel után is működni fog. 
-- Adatvesztéssel kapcsolatos feladatátvétel esetén a replikáció is működni fog. Újra replikálja az elveszett változásokat. 
-- Adatvesztéssel kapcsolatos feladatátvétel esetén, de az adatvesztés kívül esik a terjesztési adatbázis megőrzési időszakán, a felügyelt példány rendszergazdájának újra kell inicializálnia az előfizetési adatbázist. 
+- Adatvesztés nélküli feladatátvétel esetén a replikáció a feladatátvételt követően továbbra is működni fog. 
+- Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat. 
+- Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési időszakán kívül esik, a felügyelt példány rendszergazdájának újra kell inicializálnia az előfizetési adatbázist. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A rendszerhiba-közzétevő és az előfizető közötti replikáció konfigurálása](replication-with-sql-database-managed-instance.md)
-- [A rendszerjelző szolgáltatás kiadójának, a hibajelző-elosztónak és az SQL Server-előfizetőknek a replikációkonfigurálása](sql-database-managed-instance-configure-replication-tutorial.md)
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) az Azure `N'azuresqldbdns.database.windows.net` SQL Database-kiszolgáló nevének előfizetőként való használatával (például az Azure SQL Database nevét céladatbázisként (például **Adventureworks.** )
+- [A MI közzétevő és előfizető közötti replikáció konfigurálása](replication-with-sql-database-managed-instance.md)
+- [A MI közzétevő, a MI terjesztő és a SQL Server előfizető közötti replikáció konfigurálása](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
+- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) a Azure SQL Database-kiszolgáló nevének előfizetőként való használatával ( `N'azuresqldbdns.database.windows.net` például a Azure SQL Database nevet a céladatbázisként (például **AdventureWorks**). )
 
 
-A tranzakciós replikáció konfigurálásáról az alábbi útmutatókban talál további információt:
+A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 
 
 
 ## <a name="see-also"></a>Lásd még:  
 
-- [Replikáció hibajelzővel és feladatátvételi csoporttal](sql-database-managed-instance-transact-sql-information.md#replication)
+- [Replikáció egy MI és egy feladatátvételi csoporttal](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikáció az SQL Database-be](replication-to-sql-database.md)
-- [Replikáció a felügyelt példányba](replication-with-sql-database-managed-instance.md)
+- [Replikálás felügyelt példányra](replication-with-sql-database-managed-instance.md)
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [A replikáció típusai](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Figyelés (replikáció)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Figyelés (replikálás)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Előfizetés inicializálása](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

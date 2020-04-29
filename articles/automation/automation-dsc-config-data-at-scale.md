@@ -1,7 +1,7 @@
 ---
-title: Konfigurációs adatok nagy méretekben - Azure Automation
-description: Ismerje meg, hogyan konfigurálhatja az adatokat az Azure Automation állapotkonfigurációjához.
-keywords: dsc,powershell,konfiguráció,beállítás
+title: Konfigurációs adatmennyiség – Azure Automation
+description: Megtudhatja, hogyan konfigurálhatja az adatmennyiséget a Azure Automation állapotának konfigurálásához.
+keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,46 +11,46 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585575"
 ---
 # <a name="configuration-data-at-scale"></a>Konfigurációs adatok nagy mennyiségben
 
-> A következőre vonatkozik: Windows PowerShell 5.1
+> A következőkre vonatkozik: Windows PowerShell 5,1
 
-Több száz vagy több ezer szerver kezelése kihívást jelent.
-Az ügyfelek visszajelzést adtak arról, hogy a legnehezebb szempont a [konfigurációs adatok](/powershell/scripting/dsc/configurations/configdata)kezelése.
-Az információk rendszerezése logikai konstrukciókban, például a hely, a típus és a környezet között.
+Több száz vagy több ezer kiszolgáló kezelése kihívást jelenthet.
+Az ügyfelek visszajelzéseket adtak arról, hogy a legnehezebb szempont a [konfigurációs információk](/powershell/scripting/dsc/configurations/configdata)tényleges kezelése.
+Információk rendszerezése logikai szerkezetek között, például hely, típus és környezet.
 
 > [!NOTE]
-> Ez a cikk a nyílt forráskódú közösség által fenntartott megoldásra hivatkozik.
-> A támogatás csak GitHub-együttműködés formájában érhető el, a Microsofttól nem.
+> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
+> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
 
 ## <a name="community-project-datum"></a>Közösségi projekt: Datum
 
-A kihívás megoldására létrehozták a [Datum](https://github.com/gaelcolas/Datum) nevű, közösségi encikbe tanévben álló megoldást.
-A Datum más konfigurációkezelő platformok nagyszerű ötleteire épül, és ugyanolyan típusú megoldást valósít meg a PowerShell DSC-hez.
-Az információk logikai ötletek alapján [vannak rendszerezve a szöveges fájlokba.](https://github.com/gaelcolas/Datum#3-intended-usage)
-Példák a következők:
+A probléma megoldásához egy [Datum](https://github.com/gaelcolas/Datum) nevű közösségi karbantartó megoldás lett létrehozva.
+Az Datum nagyszerű ötleteket kínál más konfigurációs felügyeleti platformoktól, és ugyanazt a megoldást alkalmazza a PowerShell DSC-hez.
+Az adatokat logikai ötletek alapján [rendezi a rendszer szöveges fájlokba](https://github.com/gaelcolas/Datum#3-intended-usage) .
+Ilyenek például a következők:
 
 - Globálisan alkalmazandó beállítások
-- A hely összes kiszolgálójára alkalmazandó beállítások
-- Az összes adatbázis-kiszolgálóra érvényes beállítások
-- Egyéni kiszolgálóbeállítások
+- A hely összes kiszolgálójára érvényes beállítások
+- Az összes adatbázis-kiszolgálóra alkalmazandó beállítások
+- Egyedi kiszolgálóbeállítások
 
-Ez az információ a kívánt fájlformátumban (JSON, Yaml vagy PSD1) van rendezve.
-Ezután parancsmagokkal hozlétre a konfigurációs adatfájlokat az egyes fájlokból származó információk nak a kiszolgáló vagy kiszolgálói szerepkör egyetlen nézetébe [történő összevonásával.](https://github.com/gaelcolas/Datum#datum-tree)
+Ezeket az információkat a kívánt fájlformátumban (JSON, YAML vagy PSD1) rendezi a rendszer.
+Ezután a rendszer parancsmagokat biztosít a konfigurációs adatfájlok létrehozásához azáltal, hogy az egyes fájlokból származó [információkat összevonja](https://github.com/gaelcolas/Datum#datum-tree) egy kiszolgáló vagy kiszolgálói szerepkör egyetlen nézetében.
 
-Az adatfájlok létrehozása után a [DSC konfigurációs parancsfájlokkal](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) mof-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat az Azure Automation be.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekérése.
+Az adatfájlok létrejötte után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) használatával MOF-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekéréséhez.
 
-A Datum kipróbálásához látogasson el a [PowerShell-galériába,](https://www.powershellgallery.com/packages/datum/) és töltse le a megoldást, vagy kattintson a "Projektwebhely" gombra a [dokumentáció](https://github.com/gaelcolas/Datum#2-getting-started--concepts)megtekintéséhez.
+Az Datum kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/datum/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/gaelcolas/Datum#2-getting-started--concepts)megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Windows PowerShell kívánt állapotkonfigurációja – áttekintés](/powershell/scripting/dsc/overview/overview)
+- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
-- [A helyi konfigurációkezelő konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)

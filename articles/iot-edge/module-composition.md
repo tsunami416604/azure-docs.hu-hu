@@ -1,6 +1,6 @@
 ---
-title: Modul & útvonalak üzembe helyezése telepítési jegyzékekkel – Azure IoT Edge
-description: Megtudhatja, hogy a központi telepítési jegyzékfájl hogyan deklarálja, hogy mely modulokat kell telepíteni, hogyan telepítheti őket, és hogyan hozhat létre közöttük üzenetútvonalakat.
+title: Modul üzembe helyezése & útvonalakon üzembe helyezési jegyzékfájlokkal – Azure IoT Edge
+description: Megtudhatja, hogyan deklarálja az üzembe helyezési jegyzék a telepítendő modulokat, hogyan helyezheti üzembe őket, és hogyan hozhat létre egymás között üzenet-útvonalakat.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545633"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
 
-Minden IoT Edge-eszköz legalább két modult futtat: $edgeAgent és $edgeHub, amelyek az IoT Edge-futásidő részét képezik. Az IoT Edge-eszköz több további modult futtathat tetszőleges számú folyamathoz. A központi telepítési jegyzékfájl segítségével tájékoztassa az eszközről, hogy mely modulokat kell telepítenie, és hogyan konfigurálhatja őket az együttműködésre.
+Minden IoT Edge eszköz legalább két modult futtat: $edgeAgent és $edgeHub, amelyek az IoT Edge futtatókörnyezet részét képezik. IoT Edge eszköz több további modult is futtathat tetszőleges számú folyamat esetén. Az üzembe helyezési jegyzék segítségével adja meg, hogy az eszköz mely modulokat telepítse, és hogyan konfigurálhatja őket a közös munkához.
 
-A *központi telepítési jegyzékfájl* egy JSON-dokumentum, amely a következőket írja le:
+Az *üzembe helyezési jegyzék* egy JSON-dokumentum, amely a következőket ismerteti:
 
-* Az **IoT Edge ügynök** modul iker, amely három összetevőből áll:
-  * A tárolórendszerkép az eszközön futó minden modulhoz.
-  * A modullemezképeket tartalmazó magántároló-nyilvántartások eléréséhez szükséges hitelesítő adatok.
-  * Az egyes modulok létrehozásának és kezelésének módjára vonatkozó utasítások.
-* Az **IoT Edge hub** modul iker, amely magában foglalja, hogyan üzenetek között a modulok között, és végül az IoT Hub.
-* A kívánt tulajdonságait minden további modul twins (nem kötelező).
+* A **IoT Edge Agent** modul Twin, amely három összetevőt tartalmaz:
+  * Az eszközön futó egyes modulok tárolójának képe.
+  * A modul rendszerképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatok.
+  * Útmutató az egyes modulok létrehozásához és kezeléséhez.
+* Az **IoT Edge hub** -modul Twin, amelybe beletartozik az üzenetek a modulok közötti áramlása, és végül a IoT hub.
+* Az extra modulok kívánt tulajdonságai (opcionális).
 
-Minden IoT Edge-eszközt üzembe helyezési jegyzékfájllal kell konfigurálni. Egy újonnan telepített IoT Edge futásidejű jelenti a hibakódot, amíg konfigurált egy érvényes jegyzékfájl.
+Az összes IoT Edge eszközt üzembe helyezési jegyzékkel kell konfigurálni. Egy újonnan telepített IoT Edge Runtime egy hibakódot jelent, amíg érvényes jegyzékfájlt nem konfigurált.
 
-Az Azure IoT Edge oktatóanyagokban egy központi telepítési jegyzékfájl létrehozása az Azure IoT Edge portálon egy varázsló. A központi telepítési jegyzékfájl programozott módon is alkalmazhat rest vagy az IoT Hub service SDK használatával. További információ: [IoT Edge-telepítések ismertetése.](module-deployment-monitoring.md)
+A Azure IoT Edge oktatóanyagokban az üzembe helyezési jegyzéket a Azure IoT Edge portálon elérhető varázsló segítségével hozhatja létre. Az üzembe helyezési jegyzék programozott módon is alkalmazható a REST vagy a IoT Hub Service SDK használatával. További információ: [IoT Edge központi telepítések ismertetése](module-deployment-monitoring.md).
 
-## <a name="create-a-deployment-manifest"></a>Központi telepítési jegyzékfájl létrehozása
+## <a name="create-a-deployment-manifest"></a>Üzembe helyezési jegyzék létrehozása
 
-Magas szinten a központi telepítési jegyzékfájl a modul ikreik listáját, amelyek a kívánt tulajdonságokkal vannak konfigurálva. A központi telepítési jegyzékfájl egy IoT Edge-eszköz (vagy eszközök egy csoportját) közli, hogy mely modulokat kell telepíteni, és hogyan konfigurálhatja őket. A központi telepítési jegyzékek tartalmazzák az egyes ikermodulok *kívánt tulajdonságait.* Az IoT Edge-eszközök jelentés vissza az egyes modulok *jelentett tulajdonságait.*
+Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek a kívánt tulajdonságokkal vannak konfigurálva. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok *kívánt tulajdonságait* . IoT Edge az eszközök jelentést készítenek az egyes modulok *jelentett tulajdonságairól* .
 
-Minden telepítési jegyzékben két modulra van szükség: `$edgeAgent`és `$edgeHub`a . Ezek a modulok az IoT Edge futtatótér részét képezik, amely kezeli az IoT Edge-eszközt és a rajta futó modulokat. Ezekről a modulokról további információt [az IoT Edge futásidő és az architektúra ismertetése](iot-edge-runtime.md)című témakörben talál.
+Minden üzembe helyezési jegyzékfájlban két modulra `$edgeAgent`van szükség `$edgeHub`: és. Ezek a modulok a IoT Edge eszközt és a rajta futó modulokat kezelő IoT Edge futtatókörnyezet részét képezik. További információ ezekről a modulokról: [a IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
-A két futásidejű modul mellett legfeljebb 20 saját modult adhat hozzá egy IoT Edge-eszközön való futtatáshoz.
+A két futásidejű modul mellett akár 20 modult is hozzáadhat a saját IoT Edge eszközön való futtatáshoz.
 
-Egy központi telepítési jegyzékfájl, amely csak az IoT Edge futásidejű (edgeAgent és edgeHub) érvényes.
+A IoT Edge futtatókörnyezetet (edgeAgent és edgeHub) tartalmazó telepítési jegyzékfájl érvényes.
 
-A telepítési jegyzékek ezt a struktúrát követik:
+Az üzembe helyezési jegyzékek ezt a struktúrát követik:
 
 ```json
 {
@@ -77,11 +77,11 @@ A telepítési jegyzékek ezt a struktúrát követik:
 
 ## <a name="configure-modules"></a>Modulok konfigurálása
 
-Adja meg, hogy az IoT Edge futásidejű telepíti a modulokat a központi telepítésben. Az IoT Edge-ügynök a futásidejű összetevő, amely kezeli az IoT Edge-eszközök telepítését, frissítéseit és állapotjelentését. Ezért a $edgeAgent modul iker tartalmazza a konfigurációs és felügyeleti információkat az összes modul. Ez az információ magában foglalja az IoT Edge-ügynök konfigurációs paramétereit.
+Annak meghatározása, hogy a IoT Edge futtatókörnyezet hogyan telepíti a modulokat a telepítésben. A IoT Edge ügynök az a futtatókörnyezet-összetevő, amely egy IoT Edge eszköz telepítésével, frissítésével és állapotával kapcsolatos jelentéskészítést kezeli. Ezért a $edgeAgent modul Twin az összes modul konfigurációs és felügyeleti információit tartalmazza. Ez az információ magában foglalja a IoT Edge-ügynök konfigurációs paramétereit is.
 
-A tulajdonságok teljes listáját, amely lehet vagy kell felvenni, lásd: [Tulajdonságok az IoT Edge-ügynök és az IoT Edge hub.](module-edgeagent-edgehub.md)
+A megadható vagy kötelező tulajdonságok teljes listájáért tekintse meg [a IoT Edge ügynök és a IoT Edge hub tulajdonságait](module-edgeagent-edgehub.md).
 
-A $edgeAgent tulajdonságok követik ezt a struktúrát:
+A $edgeAgent tulajdonságok ezt a struktúrát követik:
 
 ```json
 "$edgeAgent": {
@@ -116,9 +116,9 @@ A $edgeAgent tulajdonságok követik ezt a struktúrát:
 
 ## <a name="declare-routes"></a>Útvonalak deklarálása
 
-Az IoT Edge hub kezeli a modulok, az IoT Hub és a levéleszközök közötti kommunikációt. Ezért a $edgeHub modul iker tartalmaz egy kívánt tulajdonság ot *útvonalak,* amely deklarálja, hogyan üzeneteket a központi telepítésen belül. Ugyanazon a központi telepítésen belül több útvonal is lehet.
+Az IoT Edge hub felügyeli a modulok, a IoT Hub és a leveles eszközök közötti kommunikációt. Ezért a $edgeHub modul Twin egy olyan, az *útvonalak* nevű kívánt tulajdonságot tartalmaz, amelyek bemutatják, hogyan jutnak át az üzenetek a központi telepítésbe. Ugyanazon az üzemelő példányon belül több útvonal is lehet.
 
-Az útvonalak a kívánt **$edgeHub** a következő szintaxissal lesznek deklarálva:
+Az útvonalak a **$edgeHub** kívánt tulajdonságaiban vannak deklarálva a következő szintaxissal:
 
 ```json
 "$edgeHub": {
@@ -131,41 +131,41 @@ Az útvonalak a kívánt **$edgeHub** a következő szintaxissal lesznek deklar�
 }
 ```
 
-Minden útvonalhoz szükség van egy forrásra és egy fogadóra, de a feltétel egy választható darab, amely az üzenetek szűrésére használható.
+Minden útvonalnak forrásra és fogadóra van szüksége, de a feltétel egy opcionális darab, amely az üzenetek szűrésére használható.
 
 ### <a name="source"></a>Forrás
 
-A forrás határozza meg, hogy az üzenetek honnan származnak. Az IoT Edge modulokról vagy levéleszközökről irányíthatja az üzeneteket.
+A forrás meghatározza, hogy az üzenetek honnan származnak. A IoT Edge üzeneteket küldhet a modulokból vagy a levelekből származó eszközökről.
 
-Az IoT SDK-k használatával a modulok deklarálhatnak adott kimeneti várólistákat az üzeneteikhez a ModuleClient osztály használatával. A kimeneti várólisták nem szükségesek, de több útvonal kezeléséhez hasznosak. A leaf-eszközök az IoT SDK-k DeviceClient osztályával ugyanúgy küldhetnek üzeneteket az IoT Edge átjáróeszközeinek, mint az IoT Hubnak. További információ: [Az Azure IoT Hub SDK-k megértése és használata.](../iot-hub/iot-hub-devguide-sdks.md)
+A IoT SDK-k használatával a modulok adott kimeneti várólistákat deklarálnak az üzeneteik számára a ModuleClient osztály használatával. A kimeneti várólisták nem szükségesek, de hasznosak lehetnek több útvonal kezeléséhez. A Leaf-eszközök a IoT SDK-k DeviceClient-osztályával ugyanúgy küldhetnek üzeneteket IoT Edge átjáró-eszközökre, mint az üzenetek küldését IoT Hub. További információ: az [Azure IoT hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md).
 
-A forrástulajdonság a következő értékek bármelyike lehet:
+A forrás tulajdonság a következő értékek bármelyike lehet:
 
 | Forrás | Leírás |
 | ------ | ----------- |
-| `/*` | Minden eszközről felhőbe irányuló üzenet vagy ikermódosítási értesítés bármely modulról vagy levéleszközről |
-| `/twinChangeNotifications` | Bármilyen ikerváltozás (jelentett tulajdonságok) bármely modulból vagy levéleszközből |
-| `/messages/*` | Bármely eszközről felhőbe irányuló üzenet, amelyet egy modul küld valamilyen kimeneten vagy egyáltalán nem kimeneten keresztül, vagy egy levéleszköz |
-| `/messages/modules/*` | A modul által egy vagy több kimeneten keresztül küldött eszközről felhőbe küldött üzenet |
-| `/messages/modules/<moduleId>/*` | Egy adott modul által küldött eszközről felhőbe irányuló üzenet, amely et egy vagy egyáltalán nem |
-| `/messages/modules/<moduleId>/outputs/*` | Egy adott modul által egy adott kimeneten keresztül küldött eszközről felhőbe küldött üzenet |
-| `/messages/modules/<moduleId>/outputs/<output>` | Bármely eszközről felhőbe irányuló üzenet, amelyet egy adott modul küld egy adott kimeneten keresztül |
+| `/*` | Minden eszközről a felhőbe irányuló üzenet vagy kettős változási értesítés bármely modulból vagy levélből |
+| `/twinChangeNotifications` | Bármely modulból vagy levélből származó, kettős változás (jelentett tulajdonságok) |
+| `/messages/*` | Bármely, a modul által egy vagy több kimeneten vagy egy levélen keresztül küldött eszközről a felhőbe irányuló üzenet |
+| `/messages/modules/*` | Bármely modul által a felhőbe küldött, egy vagy több kimenetet tartalmazó eszközről a felhőbe irányuló üzenet |
+| `/messages/modules/<moduleId>/*` | Bármely, egy adott modul által küldött eszközről a felhőbe irányuló üzenet egy vagy több kimeneten keresztül |
+| `/messages/modules/<moduleId>/outputs/*` | Egy adott modul által a kimeneten keresztül küldött összes eszközről a felhőbe irányuló üzenet |
+| `/messages/modules/<moduleId>/outputs/<output>` | Egy adott modul által az adott kimeneten küldött összes eszközről a felhőbe irányuló üzenet |
 
 ### <a name="condition"></a>Állapot
 
-A feltétel nem kötelező az útvonal-deklarációban. Ha a forrástól a fogadóba szeretné átadni az összes üzenetet, hagyja ki teljesen a **WHERE** záradékot. Vagy használhatja az [IoT Hub lekérdezési nyelv](../iot-hub/iot-hub-devguide-routing-query-syntax.md) szűrése bizonyos üzenetek vagy üzenettípusok, amelyek megfelelnek a feltételnek. Az IoT Edge-útvonalak nem támogatják az üzenetek szűrését ikercímkék vagy tulajdonságok alapján.
+A feltétel nem kötelező az útvonal deklarációjában. Ha az összes üzenetet át szeretné adni a forrásról a fogadónak, csak hagyja ki a **Where** záradékot teljesen. Vagy használhatja a [IoT hub lekérdezési nyelvet](../iot-hub/iot-hub-devguide-routing-query-syntax.md) a feltételnek megfelelő üzenetek vagy üzenetek szűrésére. IoT Edge útvonalak nem támogatják az üzenetek szűrését a Twin címkék vagy tulajdonságok alapján.
 
-Az IoT Edge-ben a modulok között átadott üzenetek ugyanúgy vannak formázva, mint az eszközök és az Azure IoT Hub között átadott üzenetek. Minden üzenet JSON formátumú, és **rendszertulajdonságokkal**, **appTulajdonságokkal**és **törzsparaméterekkel** rendelkezik.
+A IoT Edge moduljai között továbbított üzenetek ugyanúgy vannak formázva, mint az eszközök és az Azure IoT Hub között továbbított üzenetek. Minden üzenet JSON-ként van formázva, és **systemProperties**, **appProperties**és **szövegtörzs** paraméterekkel rendelkezik.
 
-A lekérdezéseket a következő szintaxissal a három paraméter bármelyike köré építheti:
+A következő szintaxissal hozhat létre lekérdezéseket a három paraméter bármelyikén:
 
-* Rendszertulajdonságok: `$<propertyName>` vagy`{$<propertyName>}`
+* Rendszertulajdonságok `$<propertyName>` : vagy`{$<propertyName>}`
 * Alkalmazás tulajdonságai:`<propertyName>`
-* A test tulajdonságai:`$body.<propertyName>`
+* Törzs tulajdonságai:`$body.<propertyName>`
 
-Az üzenettulajdonságoklekérdezéseinek létrehozásáról az [Eszközről a felhőbe irányuló üzenetútvonalak lekérdezési kifejezéseit című témakörben találja.](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+Az üzenet tulajdonságaira vonatkozó lekérdezések létrehozásával kapcsolatos példákat az [eszközről a felhőbe irányuló Message Routes lekérdezési kifejezések](../iot-hub/iot-hub-devguide-routing-query-syntax.md)című témakörben talál.
 
-Egy példa, amely az IoT Edge-re jellemző, ha szűrni szeretné az átjáróeszközhöz egy levéleszközről érkező üzeneteket. A modulokból érkező üzenetek közé tartozik a **connectionModuleId**nevű rendszertulajdonság. Ha tehát közvetlenül az IoT Hubra szeretné átirányítani az üzeneteket a levéleszközökről, használja a következő útvonalat a modulüzenetek kizárásához:
+IoT Edgera jellemző példa az, amikor egy levélből álló eszközről szeretne szűrni egy átjáró-eszközre érkező üzeneteket. A modulokból érkező üzenetek közé tartozik egy **connectionModuleId**nevű rendszertulajdonság. Tehát ha a levélből származó üzeneteket közvetlenül a IoT Hubra szeretné irányítani, a következő útvonal használatával zárja ki a modulok üzeneteit:
 
 ```query
 FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
@@ -173,30 +173,30 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 ### <a name="sink"></a>Sink (Fogadó)
 
-A fogadó határozza meg, hogy az üzenetek et hová küldjék. Csak a modulok és az IoT Hub fogadhat üzeneteket. Az üzenetek nem irányíthatók más eszközökre. Nincsenek helyettesítő beállítások a fogadó tulajdonságban.
+A fogadó meghatározza az üzenetek küldésének helyét. Csak modulok és IoT Hub fogadhatnak üzeneteket. Az üzenetek nem irányíthatók át más eszközökre. A fogadó tulajdonságban nincsenek helyettesítő karakterek.
 
 A fogadó tulajdonság a következő értékek bármelyike lehet:
 
 | Sink (Fogadó) | Leírás |
 | ---- | ----------- |
-| `$upstream` | Az üzenet küldése az IoT Hubnak |
-| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Az üzenet elküldése egy adott modul egy adott bemenetére |
+| `$upstream` | Üzenet küldése IoT Hub |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Az üzenet elküldése egy adott modul megadott bemenetére |
 
-Az IoT Edge legalább egyszer garantálja. Az IoT Edge hub tárolja az üzeneteket helyileg abban az esetben, ha egy útvonal nem tudja kézbesíteni az üzenetet a fogadó. Például ha az IoT Edge hub nem tud csatlakozni az IoT Hubhoz, vagy a célmodul nem csatlakozik.
+A IoT Edge legalább egyszeri garanciát biztosít. Az IoT Edge hub helyileg tárolja az üzeneteket, ha egy útvonal nem tudja kézbesíteni az üzenetet a fogadónak. Ha például az IoT Edge hub nem tud csatlakozni a IoT Hubhoz, vagy a célként megadott modul nincs csatlakoztatva.
 
-Az IoT Edge hub tárolja az üzeneteket `storeAndForwardConfiguration.timeToLiveSecs` az [IoT Edge hub kívánt tulajdonságainak](module-edgeagent-edgehub.md)tulajdonságában megadott időpontig.
+IoT Edge hub a `storeAndForwardConfiguration.timeToLiveSecs` [IoT Edge hub kívánt tulajdonságainak](module-edgeagent-edgehub.md)tulajdonságában megadott időpontig tárolja az üzeneteket.
 
-## <a name="define-or-update-desired-properties"></a>Kívánt tulajdonságok definiálása vagy frissítése
+## <a name="define-or-update-desired-properties"></a>A kívánt tulajdonságok megadása vagy frissítése
 
-A központi telepítési jegyzékfájl megadja a kívánt tulajdonságokat az IoT Edge-eszközre telepített minden egyes modulhoz. A központi telepítési jegyzékben kívánt tulajdonságok felülírják a modul ikerelemben jelenleg lévő kívánt tulajdonságokat.
+Az üzembe helyezési jegyzék a IoT Edge eszközön központilag telepített modulok kívánt tulajdonságait határozza meg. Az üzembe helyezési jegyzékfájl kívánt tulajdonságai felülírják a modulban jelenleg található kívánt tulajdonságokat.
 
-Ha nem adja meg a modul iker kívánt tulajdonságait a központi telepítési jegyzékben, az IoT Hub semmilyen módon nem módosítja a modul iker. Ehelyett programozott módon állíthatja be a kívánt tulajdonságokat.
+Ha nem ad meg külön modult a központi telepítési jegyzékfájlban, IoT Hub nem módosítja a modult a Twin módon. Ehelyett programozott módon állíthatja be a kívánt tulajdonságokat.
 
-Ugyanazokat a mechanizmusokat, amelyek lehetővé teszik az eszköz ikrek módosítását, a modulikrek módosítására használják. További információt a [modul ikerfejlesztői útmutatójában talál.](../iot-hub/iot-hub-devguide-module-twins.md)
+Ugyanazok a mechanizmusok, amelyek lehetővé teszik az eszközök ikrek módosítását, az ikrek moduljának módosítására szolgálnak. További információ: a [modul Twin fejlesztői útmutatója](../iot-hub/iot-hub-devguide-module-twins.md).
 
-## <a name="deployment-manifest-example"></a>Példa telepítési jegyzékfájlra
+## <a name="deployment-manifest-example"></a>Üzembe helyezési jegyzékfájl – példa
 
-A következő példa bemutatja, hogyan nézhet ki egy érvényes telepítési jegyzékfájl-dokumentum.
+Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyzékfájlt tartalmazó dokumentum milyen módon jelenhet meg.
 
 ```json
 {
@@ -281,6 +281,6 @@ A következő példa bemutatja, hogyan nézhet ki egy érvényes telepítési je
 
 ## <a name="next-steps"></a>További lépések
 
-* A $edgeAgent és $edgeHub beilleszthető vagy bekell, hogy szerepeljen tulajdonságok teljes listáját, [lásd: Az IoT Edge-ügynök és az IoT Edge hub tulajdonságai.](module-edgeagent-edgehub.md)
+* A $edgeAgent és az $edgeHubben felvehető vagy befoglalható tulajdonságok teljes listáját az [IoT Edge ügynök és IoT Edge hub tulajdonságai](module-edgeagent-edgehub.md)részben találja.
 
-* Most, hogy már tudja, hogyan használják az IoT Edge-modulokat, [ismerje meg az IoT Edge-modulok fejlesztésére vonatkozó követelményeket és eszközöket.](module-development.md)
+* Most, hogy már tudja, hogyan használják IoT Edge modulokat, [Ismerje meg a IoT Edge modulok fejlesztésének követelményeit és eszközeit](module-development.md).

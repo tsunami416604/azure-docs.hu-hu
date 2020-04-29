@@ -1,6 +1,6 @@
 ---
-title: Toll tesztelése | Microsoft dokumentumok
-description: A cikk áttekintést nyújt a penetrációs tesztelési (pentest) folyamatról, és arról, hogy miként hajtsa végre a tollazatot az Azure-infrastruktúrában futó alkalmazásokkal szemben.
+title: Tollas tesztelés | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a penetrációs tesztelési folyamatról, valamint arról, hogy az Azure-infrastruktúrában futó alkalmazások hogyan teljesítik a legrészletesebb műveleteket.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
 ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549253"
 ---
-# <a name="penetration-testing"></a>Penetrációs vizsgálat
-Az Azure alkalmazásteszteléshez és -üzembe helyezéshez való használatának egyik előnye, hogy gyorsan létrehozhat környezeteket. Nem kell aggódnia a saját helyszíni hardverének igénylése, beszerzése és "állványozása és halmozása" miatt.
+# <a name="penetration-testing"></a>Behatolás tesztelése
+Az Azure az alkalmazások teszteléséhez és üzembe helyezéséhez való használatának egyik előnye, hogy gyorsan lekérheti a környezetek létrehozását. Nem kell aggódnia az igényléssel, a beszerzéssel és a saját helyszíni hardverek üzemeltetésével és halmozásával kapcsolatban.
 
-Ez nagyszerű - de még mindig meg kell győződnie arról, hogy elvégzi a szokásos biztonsági átvilágítást. Az egyik dolog, amit valószínűleg szeretne megtenni, a penetráció tesztelése az Azure-ban telepített alkalmazások.
+Ez nagyszerű – de továbbra is meg kell győződnie arról, hogy a szokásos biztonsági átvilágítás végrehajtása folyamatban van. Az egyik legvalószínűbb, hogy a penetráció teszteli az Azure-ban üzembe helyezett alkalmazásokat.
 
-Lehet, hogy már tudja, hogy a Microsoft elvégzi [az Azure-környezet behatolási tesztelését.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) Ez segít az Azure-fejlesztések javításában.
+Lehet, hogy már tudja, hogy a Microsoft [Az Azure-környezetének penetrációs tesztelését](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)végzi. Ez segít az Azure-beli fejlesztése terén.
 
-Mi nem penetráció teszt a kérelmet az Ön számára, de megértjük, hogy lesz akar, és el kell végezni e vizsgálatot a saját alkalmazásokat. Ez jó dolog, mert ha növeli alkalmazásai biztonságát, a teljes Azure-ökoszisztéma biztonságosabbá tétele.
+Nem vesszük figyelembe az alkalmazás tesztelését, de tisztában vagyunk vele, hogy a saját alkalmazásaiban kell majd tesztelést végeznie. Ez jó dolog, mert az alkalmazások biztonságának növelése révén biztonságosabbá teheti a teljes Azure-ökoszisztémát.
 
-2017. június 15-től a Microsoftnak már nincs szüksége előzetes jóváhagyásra az Azure-erőforrásokkal való behatolási teszt elvégzéséhez. Azok az ügyfelek, akik hivatalosan dokumentálni kívánják a Microsoft Azure-ral szembeni közelgő behatolástesztelési kötelezettségvállalásokat, javasoljuk, hogy töltsék ki az [Azure-szolgáltatás penetrációs tesztelési tesztelési értesítési űrlapját.](https://portal.msrc.microsoft.com/en-us/engage/pentest) Ez a folyamat csak a Microsoft Azure-hoz kapcsolódik, és nem vonatkozik más Microsoft Felhőszolgáltatásra.
+2017. június 15-től a Microsoft már nem igényel előzetes jóváhagyást az Azure-erőforrásokra vonatkozó behatolási teszt elvégzéséhez. Azok az ügyfelek, akik formálisan szeretnék dokumentálni a jövőbeli penetrációs tesztelési folyamatokat, Microsoft Azure az [Azure-szolgáltatások elterjedtségének teszteléséről szóló értesítési űrlapot](https://portal.msrc.microsoft.com/en-us/engage/pentest)kell kitölteniük. Ez a folyamat csak Microsoft Azurehoz kapcsolódik, és nem alkalmazható más Microsoft Cloud szolgáltatásra.
 
 >[!IMPORTANT]
->Bár a Microsoft értesítése a tolltesztelési tevékenységekről már nem szükséges, az ügyfeleknek továbbra is meg kell felelniük a [Microsoft Cloud Unified Penetration Testing Rules of Engagement szabályainak.](https://technet.microsoft.com/mt784683)
+>A Microsoft a toll-tesztelési tevékenységek bejelentése után már nem szükséges, hogy az ügyfeleknek továbbra is meg kell felelniük az összevonáshoz [Microsoft Cloud egységes penetráció tesztelési szabályainak](https://technet.microsoft.com/mt784683).
 
-A szabványos tesztek a következők:
+A végrehajtható szabványos tesztek a következők:
 
-* Tesztek a végpontokon az [Open Web Application Security Project (OWASP) 10 legfontosabb biztonsági résének feltárására](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* A végpontok [fuzz tesztelése](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
-* A végpontok [portszkennelése](https://en.wikipedia.org/wiki/Port_scanner)
+* Tesztek a végpontokon az [Open Web Application Security Project (OWASP) Top 10 biztonsági rések](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) felfedéséhez
+* A végpontok [fuzz Testing tesztelése](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
+* A végpontok [portjának vizsgálata](https://en.wikipedia.org/wiki/Port_scanner)
 
-Az egyik típusú teszt, amely nem hajtható végre bármilyen [szolgáltatásmegtagadási (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadás. Ez magában foglalja a DoS-támadás kezdeményezését, vagy a kapcsolódó tesztek elvégzését, amelyek bármilyen Típusú DoS-támadást meghatározhatnak, bemutathatnak vagy szimulálhatnak.
+A nem hajtható végre egy olyan típusú teszt, amely valamilyen [szolgáltatásmegtagadási (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadás. Ez magában foglalja a DoS-támadás megindítását, vagy olyan kapcsolódó tesztek elvégzését, amelyek bármilyen típusú DoS-támadást meghatározhatnak vagy szimulálnak.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha hivatalosan is dokumentálni szeretné a Microsoft Azure-ban üzemeltetett alkalmazásaival szembeni közelgő behatolási tesztelést, menjen át a [behatolástesztelési szabályokra,](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) és töltse ki a tesztelési értesítési űrlapot.
+- Ha az Microsoft Azure-ban üzemeltetett alkalmazásaira vonatkozóan szeretne formálisan dokumentálni egy közelgő behatolási tesztet, akkor a [bevezetési tesztelési szabályokkal](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) kapcsolatos további információkért tekintse át a részvételi tesztre vonatkozó szabályokat, és töltse ki a tesztelési értesítés

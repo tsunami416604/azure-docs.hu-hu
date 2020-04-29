@@ -1,6 +1,6 @@
 ---
-title: Böngészőkapcsolat engedélyezése az Azure DevTest Labs virtuális gépeken | Microsoft dokumentumok
-description: A DevTest Labs mostantól integrálható az Azure Bastion szolgáltatással, a labor tulajdonosaként engedélyezheti az összes tesztkörnyezetbeli virtuális gép böngészőn keresztüli elérését.
+title: Böngészőalapú kapcsolatok engedélyezése Azure DevTest Labs virtuális gépeken | Microsoft Docs
+description: A DevTest Labs mostantól integrálva van az Azure Bastion szolgáltatással, a labor tulajdonosaként pedig engedélyezheti a tesztkörnyezet összes virtuális gépe elérését egy böngészőben.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
 ms.openlocfilehash: 86304fc7776f49c999924b8609f2d26120cee372
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549086"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Böngészőkapcsolat engedélyezése tesztkörnyezetben lévő virtuális gépeken 
+# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Böngészőalapú kapcsolatok engedélyezése a labor virtuális gépeken 
 
-A DevTest Labs integrálható [az Azure Bastion](https://docs.microsoft.com/azure/bastion/)szolgáltatással, amely lehetővé teszi, hogy egy böngészőn keresztül csatlakozzon a virtuális gépekhez. Először engedélyeznie kell a böngészőkapcsolatot a tesztkörnyezetben lévő virtuális gépeken.
+A DevTest Labs integrálható az [Azure Bastion](https://docs.microsoft.com/azure/bastion/)szolgáltatással, amely lehetővé teszi a virtuális gépekhez való kapcsolódást egy böngészőben. Először engedélyeznie kell a böngészőalapú kapcsolódást a labor virtuális gépeken.
 
-A tesztkörnyezet tulajdonosaként engedélyezheti az összes tesztkörnyezetbeli virtuális gép böngészőn keresztüli elérését. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre. Az Azure Bastion biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül az Azure Portalon a TLS-en keresztül. Amikor az Azure Bastion on keresztül csatlakozik, a virtuális gépek nem kell egy nyilvános IP-címet. További információ: [Mi az Azure-bástya?](../bastion/bastion-overview.md)
+A labor tulajdonosaként engedélyezheti az összes Tesztkörnyezet virtuális gép elérését egy böngészőben. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre. Az Azure Bastion biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a TLS-en keresztül Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre. További információ: [Mi az az Azure Bastion?](../bastion/bastion-overview.md)
 
 > [!NOTE]
-> A böngészőkapcsolat engedélyezése a tesztkörnyezetben lévő virtuális gépeken előzetes verzióban érhető el.
+> A böngészőalapú kapcsolatok engedélyezése a labor virtuális gépeken előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan engedélyezheti a böngésző kapcsolatot a tesztkörnyezetben lévő virtuális gépeken.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a böngészőalapú kapcsolatokat a labor virtuális gépeken.
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Telepítsen egy megerősített állomást a meglévő tesztkörnyezet virtuális hálózatában **(OR),** csatlakoztassa a tesztkörnyezetet egy megerősített konfigurált virtuális hálózattal. 
+Helyezzen üzembe egy megerősített gazdagépet a meglévő labor virtuális hálózatában **(vagy)** a labort egy megerősített konfigurált VNet. 
 
-Ha tudni szeretné, hogyan helyezhet üzembe egy bástya-állomást egy virtuális hálózatban, olvassa el az [Azure Bastion-állomás létrehozása (előzetes verzió) című témakört.](../bastion/bastion-create-host-portal.md) A megerősített gazdagép létrehozásakor válassza ki a tesztkörnyezet virtuális hálózatát. 
+Ha meg szeretné tudni, hogyan helyezhet üzembe egy megerősített gazdagépet egy VNet, tekintse meg [Az Azure Bastion-gazdagép (előzetes verzió) létrehozását](../bastion/bastion-create-host-portal.md)ismertető témakört. A megerősített gazdagép létrehozásakor válassza ki a labor virtuális hálózatát. 
 
-Ha tudni szeretné, hogyan csatlakoztathatja a labort egy megerősített konfigurált virtuális hálózattal, olvassa [el a Virtuális hálózat konfigurálása az Azure DevTest Labs alkalmazásban című témakört.](devtest-lab-configure-vnet.md) Válassza ki a virtuális hálózat, amely a bastion állomás üzembe helyezett és az **AzureBastionSubnet** benne. Itt vannak a részletes lépések: 
+Ha meg szeretné tudni, hogyan csatlakoztatható a labor egy megerősített VNet, tekintse meg [a virtuális hálózat konfigurálása Azure DevTest Labsban](devtest-lab-configure-vnet.md)című témakört. Válassza ki azt a VNet, amelyen telepítve van a megerősített gazdagép, valamint a **AzureBastionSubnet** . A részletes lépések a következők: 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Válassza a bal oldali navigációs menü **Minden szolgáltatás lehetőséget.** 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget. 
 1. Válassza a **DevTest Labs** elemet a listából. 
-1. A laborok listájából válassza ki *a labort.* 
+1. A Labs listából válassza ki *a labort*. 
 
     > [!NOTE]
-    > Az Azure Bastion jelenleg előzetes verzióban érhető el. A következő régiókra korlátozódik: USA nyugati régiója, USA keleti régiója, Nyugat-Európa, USA déli középső régiója, Kelet-Ausztrália és Kelet-Japán. Ezért hozzon létre egy tesztkörnyezetet az egyik ilyen régióban, ha a labor nincs az egyikben. 
-1. A bal oldali menü **Beállítások** szakaszában válassza a **Konfiguráció és házirendek** lehetőséget. 
-1. Válassza **a Virtuális hálózatok lehetőséget.**
-1. Válassza az eszköztár **Hozzáadás parancsát.** 
-1. Válassza ki azt a **virtuális hálózatot,** amelya megerősített állomás telepítve van. 
-1. Válassza ki az **alhálózatot: AzureBastionSubnet.** 
+    > Az Azure Bastion jelenleg előzetes verzióban érhető el. A következőkre korlátozódik: USA nyugati régiója, USA keleti régiója, Nyugat-Európa, az USA déli középső régiója, Kelet-Ausztrália és Kelet-Japán. Ezért hozzon létre egy labort ezekben a régiókban, ha a labor egyike sincs bennük. 
+1. A bal oldali menüben a **Beállítások** szakaszban válassza a **konfiguráció és szabályzatok** lehetőséget. 
+1. Válassza a **virtuális hálózatok**lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget az eszköztáron. 
+1. Válassza ki azt a **VNet** , amelyen telepítve van a megerősített gazdagép. 
+1. Válassza ki az alhálózatot: **AzureBastionSubnet**. 
 
     ![Alhálózat](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
-1. Válassza **a Használat a virtuális gép létrehozásához** lehetőséget. 
+1. Válassza **a használat a virtuális gép létrehozásakor** lehetőséget. 
 1. Válassza az eszköztár **Save** (Mentés) elemét. 
-1. Ha van egy régi virtuális hálózat a laborban, távolítsa el kiválasztásával **...*  és távolítsa el a **parancsot.** 
+1. Ha a laborhoz már van egy régi VNet, a **...* gombra kattintva távolítsa el.  és **távolítsa el**. 
 
-## <a name="enable-browser-connection"></a>Böngészőkapcsolat engedélyezése 
+## <a name="enable-browser-connection"></a>Böngészőalapú kapcsolatok engedélyezése 
 
-Miután rendelkezik egy megerősített konfigurált virtuális hálózat a laboron belül, a labor tulajdonosaként engedélyezheti a böngésző csatlakozása a labor virtuális gépeken.
+Miután a laborban beállította a megerősített VNet, a tesztkörnyezet tulajdonosaként engedélyezheti a böngészőhöz való csatlakozási szolgáltatást.
 
-A böngészőcsatlakozás engedélyezéséhez a tesztkörnyezetben lévő virtuális gépeken hajtsa végre az alábbi lépéseket:
+Az alábbi lépéseket követve engedélyezheti a böngésző kapcsolódását a labor virtuális gépeken:
 
-1. Az Azure Portalon keresse meg *a labort.*
-1. Válassza a **Konfiguráció és házirendek**lehetőséget.
-1. A **Beállítások csoportban**válassza a **Böngésző csatlakozás (előnézet)** lehetőséget.
+1. A Azure Portal navigáljon a *laborhoz*.
+1. Válassza **a konfiguráció és szabályzatok**lehetőséget.
+1. A **Beállítások**területen válassza a **böngészőbeli kapcsolat (előzetes verzió)** lehetőséget.
 
-![Böngészőkapcsolat engedélyezése](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
+![Böngészőalapú kapcsolatok engedélyezése](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Az alábbi cikkből megtudhatja, hogyan csatlakozhat a virtuális gépekhez böngészővel: [Böngészőn keresztül csatlakozhat a virtuális gépekhez](connect-virtual-machine-through-browser.md)
+A következő cikkből megtudhatja, hogyan csatlakozhat a virtuális gépekhez egy böngésző használatával: [Kapcsolódás a virtuális gépekhez egy böngészőben](connect-virtual-machine-through-browser.md)

@@ -1,6 +1,6 @@
 ---
-title: Biztonsági javaslatok az Azure Marketplace-rendszerképekhez | Microsoft dokumentumok
-description: Ez a cikk ajánlásokat tartalmaz a piacon található képekhez
+title: Biztonsági javaslatok az Azure Marketplace-lemezképekhez | Microsoft Docs
+description: Ez a cikk a piacon található rendszerképekre vonatkozó ajánlásokat tartalmaz
 services: security
 documentationcenter: na
 author: terrylanfear
@@ -13,65 +13,65 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548656"
 ---
-# <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-lemezképekhez
+# <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképekhez
 
-A rendszerképnek meg kell felelnie ezeknek a biztonsági konfigurációs javaslatoknak. Ez segít fenntartani a magas szintű biztonságot a partnermegoldás-lemezképek számára az Azure Marketplace-en.
+A rendszerképnek meg kell felelnie ezeknek a biztonsági konfigurációs javaslatoknak. Ez segít megőrizni a partneri megoldások képeinek magas szintű biztonságát az Azure piactéren.
 
-A beküldés előtt mindig futtasson biztonsági rést a lemezképen. Ha saját közzétett lemezképében biztonsági rést észlel, időben tájékoztatnia kell az ügyfeleket a biztonsági résről és annak javításáról.
+Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a rendszerképen. Ha a saját közzétett rendszerképében biztonsági rést derít fel, akkor a biztonsági rést és annak kijavítását időben tájékoztatnia kell ügyfeleiről.
 
-## <a name="open-source-based-images"></a>Nyílt forráskódú képek
+## <a name="open-source-based-images"></a>Nyílt forráskódú lemezképek
 
 |||
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Kategória**                                                 | **Jelölőnégyzet**                                                                                                                                                                                                                                                                              |
-| Biztonság                                                     | Telepítse a legújabb biztonsági javításokat a Linux disztribúcióhoz.                                                                                                                                                                                                              |
-| Biztonság                                                     | Kövesse az iparági irányelveket a virtuális gép rendszerképének biztonságossá tétele az adott Linux-disztribúcióhoz.                                                                                                                                                                                     |
-| Biztonság                                                     | Korlátozza a támadási felületet azáltal, hogy minimális helyigényű, csak a szükséges Windows Server-szerepkörökkel, szolgáltatásokkal, szolgáltatásokkal és hálózati portokkal rendelkezik.                                                                                                                                               |
-| Biztonság                                                     | A forráskód és az eredményül kapott virtuális géprendszer-rendszer rosszindulatú programok keresése.                                                                                                                                                                                                                                   |
-| Biztonság                                                     | A virtuális merevlemez-lemezkép csak azokat a szükséges zárolt fiókokat tartalmazza, amelyek nem rendelkeznek olyan alapértelmezett jelszóval, amely lehetővé tenné az interaktív bejelentkezést; Nincs hátsó ajtó.                                                                                                                                           |
-| Biztonság                                                     | Tiltsa le a tűzfalszabályokat, kivéve, ha az alkalmazás funkcionálisan támaszkodik rájuk, például egy tűzfalberendezésre.                                                                                                                                                                             |
-| Biztonság                                                     | Távolítson el minden bizalmas információt a virtuális merevlemez-lemezképből, például tesztelje az SSH-kulcsokat, az ismert hosts fájlt, a naplófájlokat és a szükségtelen tanúsítványokat.                                                                                                                                       |
-| Biztonság                                                     | Ne használja az LVM-et.                                                                                                                                                                                                                                            |
-| Biztonság                                                     | Adja meg a szükséges könyvtárak legújabb verzióit: </br> - OpenSSL v1.0 vagy nagyobb </br> - Python 2.5 vagy újabb (Python 2.6+ erősen ajánlott) </br> - Python pyasn1 csomag, ha még nincs telepítve </br> - d.OpenSSL v 1.0 vagy nagyobb                                                                |
-| Biztonság                                                     | Törölje a Bash/Shell előzménybejegyzéseit.                                                                                                                                                                                                                                             |
-| Hálózat                                                   | Alapértelmezés szerint az SSH-kiszolgálót is tartalmazza. Állítsa sSH életben tartani, hogy sshd config a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
-| Hálózat                                                   | Távolítson el minden egyéni hálózati konfigurációt a lemezképből. A resolv.conf: `rm /etc/resolv.conf`fájl törlése.                                                                                                                                                                                |
-| Környezet                                                   | Telepítse a legújabb Azure Linux-ügynök.</br> - Telepítse az RPM vagy Deb csomaggal.  </br> - Használhatja a kézi telepítési folyamatot is, de a telepítő csomagok ajánlottak és előnyben részesítendők. </br> - Ha az ügynököt manuálisan telepíti a GitHub-tárházból, először másolja a fájlt a `waagent` fájlba, `/usr/sbin` és fusson (gyökérként): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Az ügynök konfigurációs `/etc/waagent.conf`fájlja a rendszerre kerül. |
-| Környezet                                                   | Győződjön meg arról, hogy az Azure-támogatás szükség esetén soros konzolkimenetet biztosít partnereiszámára, és megfelelő időbeli meghosszabbítást biztosít az operációs rendszer felhőalapú tárhelyről történő csatlakoztatásához. Adja hozzá a következő paramétereket a `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`kernel rendszerindító sorképéhez: . |
-| Környezet                                                   | Nincs swap partíció az operációs rendszer lemezén. A felcserélést a Linux-ügynök kérheti a helyi erőforrás-lemezen való létrehozáshoz.         |
-| Környezet                                                   | Hozzon létre egyetlen gyökérpartíciót az operációs rendszer lemezéhez.      |
-| Környezet                                                   | Csak 64 bites operációs rendszer.                                                                                                                                                                                                                                                          |
+| Biztonság                                                     | Telepítse az összes legújabb biztonsági javítást a Linux-disztribúcióhoz.                                                                                                                                                                                                              |
+| Biztonság                                                     | Az iparági irányelvek követésével biztonságossá teheti a virtuálisgép-rendszerképet az adott Linux-disztribúcióhoz.                                                                                                                                                                                     |
+| Biztonság                                                     | Korlátozza a támadási felületet úgy, hogy a minimális helyigényt csak a szükséges Windows Server-szerepkörökkel, szolgáltatásokkal, szolgáltatásokkal és hálózati portokkal tartja.                                                                                                                                               |
+| Biztonság                                                     | A forráskód és a létrejövő virtuálisgép-rendszerkép vizsgálata a kártevő szoftverhez.                                                                                                                                                                                                                                   |
+| Biztonság                                                     | A VHD-rendszerkép csak olyan szükséges zárolt fiókokat tartalmaz, amelyek nem rendelkeznek az interaktív bejelentkezést lehetővé tevő alapértelmezett jelszóval. nincs hátsó ajtó.                                                                                                                                           |
+| Biztonság                                                     | A tűzfalszabályok letiltása, ha az alkalmazás nem támaszkodik rájuk, például egy tűzfal készülékre.                                                                                                                                                                             |
+| Biztonság                                                     | Távolítsa el az összes bizalmas információt a VHD-rendszerképből, például az SSH-kulcsokat, az ismert fájlokat, a naplófájlokat és a szükségtelen tanúsítványokat.                                                                                                                                       |
+| Biztonság                                                     | Kerülje az LVM használatát.                                                                                                                                                                                                                                            |
+| Biztonság                                                     | Adja meg a szükséges kódtárak legújabb verzióit: </br> -OpenSSL 1.0 vagy újabb verzió </br> -Python 2,5 vagy újabb (Python 2.6 + ajánlott) </br> -Python pyasn1-csomag, ha még nincs telepítve </br> -d. OpenSSL v 1,0 vagy újabb                                                                |
+| Biztonság                                                     | A bash/shell History bejegyzéseinek törlése.                                                                                                                                                                                                                                             |
+| Hálózat                                                   | Adja meg az SSH-kiszolgálót alapértelmezetten. Állítsa be az SSH-t életben az sshd-konfigurációba a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
+| Hálózat                                                   | Távolítsa el az egyéni hálózati konfigurációt a rendszerképből. Törölje a resolv. conf fájlt `rm /etc/resolv.conf`:.                                                                                                                                                                                |
+| Üzembe helyezés                                                   | Telepítse a legújabb Azure Linux-ügynököt.</br> -Telepítés az RPM vagy a deb csomag használatával.  </br> – A manuális telepítési folyamat is használható, de a telepítő csomagok ajánlottak és előnyben részesítettek. </br> – Ha manuálisan telepíti az ügynököt a GitHub-tárházból, először `waagent` másolja `/usr/sbin` és futtassa a fájlt (root néven): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Az ügynök konfigurációs fájlját a rendszer `/etc/waagent.conf`a következő helyen helyezi el:. |
+| Üzembe helyezés                                                   | Győződjön meg arról, hogy az Azure-támogatás szükség esetén a soros konzol kimenetével biztosíthatja partnereit, és megfelelő időkorlátot biztosít a Felhőbeli tároló operációsrendszer-lemez csatlakoztatásához. Adja hozzá a következő paramétereket a rendszerkép kernel rendszerindítási `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`sorához:. |
+| Üzembe helyezés                                                   | Nincs lapozófájl-partíció az operációsrendszer-lemezen. A felcserélés a Linux-ügynök által a helyi erőforrás lemezén történő létrehozáshoz kérhető le.         |
+| Üzembe helyezés                                                   | Hozzon létre egyetlen legfelső szintű partíciót az operációsrendszer-lemez számára.      |
+| Üzembe helyezés                                                   | 64 bites operációs rendszer csak.                                                                                                                                                                                                                                                          |
 
-## <a name="windows-server-based-images"></a>Windows Server alapú lemezképek
+## <a name="windows-server-based-images"></a>Windows Server-alapú rendszerképek
 
 |||
 |-------------| -------------------------|
 | **Kategória**                                                     | **Jelölőnégyzet**                                                                                                                                                                |
-| Biztonság                                                         | Használjon biztonságos operációsrendszer-alaplemezképet. A Windows Server rendszeren alapuló lemezképek forrásához használt virtuális merevlemeznek a Microsoft Azure-on keresztül biztosított Windows Server operációsrendszer-lemezképekből kell származnia. |
+| Biztonság                                                         | Használjon biztonságos operációsrendszer-alapképet. A Windows Serveren alapuló lemezképek forrásához használt virtuális merevlemeznek a Microsoft Azure által biztosított Windows Server operációsrendszer-lemezképből kell származnia. |
 | Biztonság                                                         | Telepítse a legújabb biztonsági frissítéseket.                                                                                                                                     |
-| Biztonság                                                         | Az alkalmazások nem függhetnek a korlátozott felhasználónevektől, például a rendszergazdától, a gyökértől vagy a rendszergazdától.                                                                |
-| Biztonság                                                         | Engedélyezze a BitLocker meghajtótitkosítást az operációs rendszer merevlemezeihez és az adatmerevlemezekhez is.                                                             |
-| Biztonság                                                         | Korlátozza a támadási felületet azáltal, hogy minimális helyigényű, csak a szükséges Windows Server-szerepkörökkel, szolgáltatásokkal, szolgáltatásokkal és hálózati portokkal rendelkezik.                         |
-| Biztonság                                                         | A forráskód és az eredményül kapott virtuális géprendszer-rendszer rosszindulatú programok keresése.                                                                                                                     |
-| Biztonság                                                         | Állítsa be a Windows Server rendszerképeinek biztonsági frissítését automatikus frissítésre.                                                                                                                |
-| Biztonság                                                         | A virtuális merevlemez-lemezkép csak azokat a szükséges zárolt fiókokat tartalmazza, amelyek nem rendelkeznek olyan alapértelmezett jelszóval, amely lehetővé tenné az interaktív bejelentkezést; Nincs hátsó ajtó.                             |
-| Biztonság                                                         | Tiltsa le a tűzfalszabályokat, kivéve, ha az alkalmazás funkcionálisan támaszkodik rájuk, például egy tűzfalberendezésre.                                                               |
-| Biztonság                                                         | Távolítson el minden bizalmas információt a virtuális merevlemez-lemezképből, beleértve a HOSTS-fájlokat, a naplófájlokat és a szükségtelen tanúsítványokat.                                              |
-| Környezet                                                       | Csak 64 bites operációs rendszer.                            |
+| Biztonság                                                         | Az alkalmazások nem lehetnek olyan korlátozott felhasználónevek, mint a rendszergazda, a gyökér vagy a rendszergazda.                                                                |
+| Biztonság                                                         | Az operációs rendszer merevlemez-meghajtóinak és az adatmerevlemezek BitLocker meghajtótitkosítás engedélyezése.                                                             |
+| Biztonság                                                         | Korlátozza a támadási felületet úgy, hogy minimális helyigényt biztosít, csak a szükséges Windows Server-szerepköröket, szolgáltatásokat, szolgáltatásokat és hálózati portokat engedélyezte.                         |
+| Biztonság                                                         | A forráskód és a létrejövő virtuálisgép-rendszerkép vizsgálata a kártevő szoftverhez.                                                                                                                     |
+| Biztonság                                                         | A Windows Server-lemezképek biztonsági frissítésének beállítása az automatikus frissítéshez.                                                                                                                |
+| Biztonság                                                         | A VHD-rendszerkép csak olyan szükséges zárolt fiókokat tartalmaz, amelyek nem rendelkeznek az interaktív bejelentkezést lehetővé tevő alapértelmezett jelszóval. nincs hátsó ajtó.                             |
+| Biztonság                                                         | A tűzfalszabályok letiltása, ha az alkalmazás nem támaszkodik rájuk, például egy tűzfal készülékre.                                                               |
+| Biztonság                                                         | Távolítsa el az összes bizalmas információt a VHD-rendszerképből, beleértve a GAZDAGÉPek fájljait, a naplófájlokat és a szükségtelen tanúsítványokat.                                              |
+| Üzembe helyezés                                                       | 64 bites operációs rendszer csak.                            |
 
-Még akkor is, ha a szervezet nem rendelkezik lemezképek az Azure-piactéren, fontolja meg a Windows és a Linux rendszerkép konfigurációk alapján ezeket a javaslatokat.
+Ha a szervezet nem rendelkezik rendszerképekkel az Azure Marketplace-en, érdemes megfontolnia a Windows-és Linux-lemezképek konfigurációjának ellenőrzését ezen javaslatok alapján.
 
-## <a name="contacting-customers"></a>Ügyfelekkel való kapcsolatfelvétel
+## <a name="contacting-customers"></a>Kapcsolatfelvétel az ügyfelekkel
 
-Az ügyfelek és kapcsolattartási e-mailjeik azonosítása:
+Ügyfelek és kapcsolattartási e-mailek azonosítása:
 
-1.  A Cloud Partner Portal bal oldali sínen válassza az **Insights**lehetőséget.
-2.  A **Rendelések és a Kihasználat** lapon a **Kezdési dátum** és a **Záró dátum** mezővel lekérdezheti a szükséges dátumtartományon belüli felhasználást. Ez azt mutatja, hogy mely Azure-előfizetések használták az ajánlat napi rendszerességgel. Exportálja ezeket az adatokat. 
-3.  Hasonlóképpen a **Vevő** lapon lekérdezheti és exportálhatja a vevőbázist.
-4.  A szükséges ügyféladatok megkereséséhez a 2.
+1.  Cloud Partner Portal a bal oldali vasúton **válassza az**eredmények elemet.
+2.  A **megrendelések és használat** lapon a **kezdési dátum** és a **Befejezés dátuma** mezők használatával kérdezheti le a szükséges dátumtartományt a használaton belül. Ez azt mutatja, hogy mely Azure-előfizetések lettek felhasználva az ajánlathoz napi rendszerességgel. Exportálja ezeket az adatfájlokat. 
+3.  Hasonlóképpen, az **ügyfél** lapon kérdezheti le és exportálhatja az ügyfél alapjait.
+4.  A szükséges ügyfél-információk megkereséséhez a 2. lépésben szereplő előfizetés-azonosítót kell megegyeznie a 3. lépésben szereplő előfizetés-AZONOSÍTÓval.
