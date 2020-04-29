@@ -1,6 +1,6 @@
 ---
-title: Windows virtuális asztali felhasználói kapcsolat késése - Azure
-description: Kapcsolatkés a Windows virtuális asztali felhasználók számára.
+title: Windows rendszerű virtuális asztali felhasználói kapcsolat késése – Azure
+description: A Windows rendszerű virtuális asztali felhasználók kapcsolati késése.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,24 +9,24 @@ ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128191"
 ---
-# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>A felhasználói kapcsolat késésének meghatározása a Windows Virtuális asztalban
+# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Felhasználói kapcsolat késésének meghatározása a Windows rendszerű virtuális asztalon
 
-A Windows virtuális asztal globálisan elérhető. A rendszergazdák virtuális gépeket (VM-eket) hozhatnak létre bármely Azure-régióban, ahol csak akarnak. A kapcsolat késése a felhasználók és a virtuális gépek helyétől függően változhat. A Windows virtuális asztali szolgáltatásai folyamatosan jelennek meg az új földrajzi területeken a késés javítása érdekében. 
+A Windows rendszerű virtuális asztal globálisan elérhető. A rendszergazdák bármilyen Azure-régióban létrehozhatnak virtuális gépeket (VM). A kapcsolatok késése a felhasználók és a virtuális gépek helyétől függően változhat. A Windows rendszerű virtuális asztali szolgáltatások folyamatosan új földrajzi területekre kerülnek a késés javítása érdekében. 
  
-A [Windows virtuális asztali élmény becslő eszközével](https://azure.microsoft.com/services/virtual-desktop/assessment/) meghatározhatja a virtuális gépek késésének optimalizálásához legmegfelelőbb helyet. Javasoljuk, hogy két-három havonta használja az eszközt, hogy megbizonyosodjon arról, hogy az optimális hely nem változott, amikor a Windows virtuális asztal új területekre kerül. 
+A [Windows rendszerű virtuális asztali élmény kalkulátor eszköz](https://azure.microsoft.com/services/virtual-desktop/assessment/) segítségével meghatározhatja a virtuális gépek késésének optimális helyét. Azt javasoljuk, hogy az eszközt két-három hónapon belül használja, hogy az optimális hely ne változzon meg, mivel a Windows rendszerű virtuális asztal kikerül az új területekre. 
 
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-A Windows virtuális asztal az Azure Traffic Manager t használja, amely ellenőrzi a felhasználó DNS-kiszolgálójának helyét a legközelebbi Windows virtuális asztali szolgáltatáspéldány megkereséséhez. Javasoljuk, hogy a rendszergazdák tekintse át a felhasználó DNS-kiszolgálójának helyét, mielőtt kiválasztanák a virtuális gépek helyét.
+A Windows virtuális asztal az Azure Traffic Manager használja, amely ellenőrzi a felhasználó DNS-kiszolgálójának helyét, hogy megtalálja a legközelebbi Windows virtuális asztali szolgáltatás példányát. Azt javasoljuk, hogy a rendszergazdák a virtuális gépek helyének kiválasztása előtt tekintsék át a felhasználó DNS-kiszolgálójának helyét.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az optimális késés legjobb helyének ellenőrzéséhez tekintse meg a [Windows virtuális asztali élmény becslőeszközét.](https://azure.microsoft.com/services/virtual-desktop/assessment/)
-- A díjcsomagokról a [Windows virtuális asztal díjszabása ( Windows virtuális asztal díjszabása](https://azure.microsoft.com/pricing/details/virtual-desktop/)) oldalon található.
-- A Windows virtuális asztal központi telepítésének megkezdéséhez tekintse meg [oktatóanyagunkat.](tenant-setup-azure-active-directory.md)
+- Az optimális késés eléréséhez tekintse meg a [Windows rendszerű virtuális asztali élmény kalkulátor eszközét](https://azure.microsoft.com/services/virtual-desktop/assessment/).
+- A díjszabási csomagokért lásd: a [Windows rendszerű virtuális asztali díjszabása](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+- A Windows rendszerű virtuális asztalok üzembe helyezésének első lépéseihez tekintse meg [az oktatóanyagot](tenant-setup-azure-active-directory.md).

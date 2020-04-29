@@ -1,6 +1,6 @@
 ---
 title: Konfigurálás és kezelés
-description: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure SQL Database-t.
+description: Útmutató Azure SQL Database konfigurálásához és kezeléséhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,22 +12,22 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209428"
 ---
-# <a name="how-to-use-azure-sql-database"></a>Az Azure SQL Database használata
+# <a name="how-to-use-azure-sql-database"></a>A Azure SQL Database használata
 
-Ebben a szakaszban különböző útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek az Azure SQL-adatbázis kezelésében és konfigurálásában. Az [egységes adatbázishoz](sql-database-howto-single-database.md) és a felügyelt példányhoz tartozó útmutatókat is [megtalálhatja.](sql-database-howto-managed-instance.md)
+Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a Azure SQL Database kezelésében és konfigurálásában. Az [önálló adatbázisokhoz](sql-database-howto-single-database.md) és a [felügyelt példányokhoz](sql-database-howto-managed-instance.md)is találhat konkrét útmutatókat.
 
 ## <a name="load-data"></a>Adatok betöltése
 
-- [Egyetlen adatbázis vagy készletbe adott adatbázis másolása az Azure-on belül](sql-database-copy.md)
+- [Egyetlen adatbázis vagy készletezett adatbázis másolása az Azure-on belül](sql-database-copy.md)
 - [Adatbázis importálása BACPAC-ból](sql-database-import.md)
 - [Adatbázis exportálása BACPAC-ba](sql-database-export.md)
-- [Adatok betöltése BCP protokollal](sql-database-load-from-csv-with-bcp.md)
+- [Adatok betöltése a BCP használatával](sql-database-load-from-csv-with-bcp.md)
 - [Adatok betöltése az ADF használatával](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json)
 
 ### <a name="data-sync"></a>Adatszinkronizálás
@@ -35,7 +35,7 @@ Ebben a szakaszban különböző útmutatókat, parancsfájlokat és magyarázat
 - [SQL-adatszinkronizálás](sql-database-sync-data.md)
 - [Adatszinkronizálási ügynök](sql-database-data-sync-agent.md)
 - [Sémaváltozások replikálása](sql-database-update-sync-schema.md)
-- [Figyelés az OMS-szel](sql-database-sync-monitor-oms.md)
+- [Monitorozás az OMS-szel](sql-database-sync-monitor-oms.md)
 - [Ajánlott eljárások az adatszinkronizáláshoz](sql-database-best-practices-data-sync.md)
 - [Az adatszinkronizálás hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
@@ -51,8 +51,8 @@ Ebben a szakaszban különböző útmutatókat, parancsfájlokat és magyarázat
 ### <a name="extended-events"></a>Bővített események
 
 - [Bővített események](sql-database-xevent-db-diff-from-svr.md)
-- [Kiterjesztett események tárolása eseményfájlba](sql-database-xevent-code-event-file.md)
-- [Kiterjesztett események tárolása gyűrűpufferbe](sql-database-xevent-code-ring-buffer.md)
+- [Kiterjesztett események tárolása az Event file-ban](sql-database-xevent-code-event-file.md)
+- [Kiterjesztett események tárolása gyűrűs pufferbe](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>Funkciók konfigurálása
 
@@ -65,17 +65,17 @@ Ebben a szakaszban különböző útmutatókat, parancsfájlokat és magyarázat
 - [TDE BYOK-kulcsok váltása](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [A TDE-védő eltávolítása](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Memóriabeli OLTP konfigurálása](sql-database-in-memory-oltp-migration.md)
-- [Az Azure Automation konfigurálása](sql-database-manage-automation.md)
+- [Azure Automation konfigurálása](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolat](sql-database-libraries.md)
+- [Kapcsolatok](sql-database-libraries.md)
 - [Spark-összekötő használata](sql-database-spark-connector.md)
 - [Alkalmazás hitelesítése](sql-database-client-id-keys.md)
-- [Kötegelés használata a jobb teljesítmény érdekében](sql-database-use-batching-to-improve-performance.md)
+- [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](sql-database-use-batching-to-improve-performance.md)
 - [Csatlakoztatási útmutató](sql-database-connectivity-issues.md)
 - [DNS-aliasok](dns-alias-overview.md)
-- [A PowerShell DNS-alias beállítása](dns-alias-powershell.md)
+- [DNS-alias beállítása PowerShell](dns-alias-powershell.md)
 - [Portok – ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
 - [C és C ++](sql-database-develop-cplusplus-simple.md)
 - [Excel](sql-database-connect-excel.md)
@@ -94,5 +94,5 @@ Ebben a szakaszban különböző útmutatókat, parancsfájlokat és magyarázat
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [a felügyelt példányok útmutatóiról.](sql-database-howto-managed-instance.md)
-- További információ [az egyes adatbázisok útmutatóiról.](sql-database-howto-single-database.md)
+- További információ a [felügyelt példányokkal kapcsolatos útmutatókról](sql-database-howto-managed-instance.md).
+- További információ [az önálló adatbázisok](sql-database-howto-single-database.md)útmutatóinak megismeréséről.

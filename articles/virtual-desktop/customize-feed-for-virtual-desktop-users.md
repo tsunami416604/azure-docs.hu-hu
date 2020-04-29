@@ -1,6 +1,6 @@
 ---
-title: Hírcsatornák testreszabása a Windows virtuális asztali felhasználók számára - Azure
-description: A Windows virtuális asztali felhasználók hírcsatornájának testreszabása PowerShell-parancsmagokkal.
+title: A Windows rendszerű virtuális asztali felhasználók hírcsatornáinak testreszabása – Azure
+description: A Windows rendszerű virtuális asztali felhasználók hírcsatornáinak testreszabása PowerShell-parancsmagokkal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,61 +9,61 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128080"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
 
-Testreszabhatja a hírcsatornát, hogy a RemoteApp és a távoli asztali erőforrások felismerhető módon jelenjenek meg a felhasználók számára.
+Testreszabhatja a hírcsatornát, hogy a RemoteApp-és távoli asztali erőforrások felismerhető módon jelenjenek meg a felhasználók számára.
 
-Először [töltse le és importálja a Windows Virtual Desktop PowerShell modult](/powershell/windows-virtual-desktop/overview/) a PowerShell-munkamenetben való használatra, ha még nem tette meg. Ezután futtassa a következő parancsmast a fiókjába való bejelentkezéshez:
+Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="customize-the-display-name-for-a-remoteapp"></a>RemoteApp megjelenítendő nevének testreszabása
+## <a name="customize-the-display-name-for-a-remoteapp"></a>A RemoteApp megjelenítendő nevének testreszabása
 
-A közzétett RemoteApp megjelenítendő nevét a rövid név beállításával módosíthatja. Alapértelmezés szerint a rövid név megegyezik a RemoteApp program nevével.
+A közzétett RemoteApp megjelenített nevét megváltoztathatja a felhasználóbarát név beállításával. Alapértelmezés szerint a felhasználóbarát név megegyezik a RemoteApp program nevével.
 
-Egy alkalmazáscsoport közzétett RemoteApps-listájának lekéréséhez futtassa a következő PowerShell-parancsmackét:
+Az alkalmazáscsoport közzétett RemoteAppinak listájának lekéréséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![A Get-RDSRemoteApp Get-RDSRemoteApp parancsmag képernyőképe, amelynek neve és friendlyname jave van kiemelve.](media/get-rdsremoteapp.png)
+![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/get-rdsremoteapp.png)
 
-Ha rövid nevet szeretne hozzárendelni egy RemoteApp-hoz, futtassa a következő PowerShell-parancsmacãdat:
+Ha rövid nevet szeretne hozzárendelni egy RemoteApp-hoz, futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![A Set-RDSRemoteApp PowerShell-parancsmag képernyőképe, amelyen a Név és az Új barátságosnév ki van emelve.](media/set-rdsremoteapp.png)
+![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Távoli asztal megjelenítendő nevének testreszabása
 
-A közzétett távoli asztal megjelenítendő nevét egy rövid név beállításával módosíthatja. Ha manuálisan hozott létre egy gazdakészletet és asztali alkalmazáscsoportot a PowerShellen keresztül, az alapértelmezett rövid név a "Session Desktop" név. Ha létrehozott egy gazdakészletet és asztali alkalmazáscsoportot a GitHub Azure Resource Manager sablonon vagy az Azure Marketplace-ajánlaton keresztül, az alapértelmezett rövid név megegyezik a gazdakészlet nevével.
+Egy közzétett távoli asztal megjelenítendő nevét a felhasználóbarát név beállításával módosíthatja. Ha manuálisan hozott létre egy gazdagép-készletet és egy asztali alkalmazást a PowerShell használatával, az alapértelmezett felhasználóbarát név a "munkamenet-asztal". Ha a GitHub Azure Resource Manager sablonnal vagy az Azure Marketplace-ajánlaton keresztül hozott létre egy gazdagép-készletet és egy asztali alkalmazást, az alapértelmezett felhasználóbarát név ugyanaz, mint a gazdagép-készlet neve.
 
-A távoli asztali erőforrás lekéréséhez futtassa a következő PowerShell-parancsmast:
+A távoli asztal erőforrásának lekéréséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![A Get-RDSRemoteApp Get-RDSRemoteApp parancsmag képernyőképe, amelynek neve és friendlyname jave van kiemelve.](media/get-rdsremotedesktop.png)
+![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/get-rdsremotedesktop.png)
 
-Ha rövid nevet szeretne rendelni a távoli asztali erőforráshoz, futtassa a következő PowerShell-parancsmackét:
+Ha rövid nevet szeretne rendelni a távoli asztali erőforráshoz, futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![A Set-RDSRemoteApp PowerShell-parancsmag képernyőképe, amelyen a Név és az Új barátságosnév ki van emelve.](media/set-rdsremotedesktop.png)
+![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows virtuális asztali ügyfélbe, hogy tesztelje azt. Ehhez folytassa a Csatlakozás a Windows virtuális asztalhoz útmutatóhoz:
+Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
     
  * [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-and-10.md)
  * [Csatlakozás webböngészőről](connect-web.md) 

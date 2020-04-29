@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Windows virtuális asztalhoz iOS-ből – Azure
-description: Hogyan csatlakozhat a Windows virtuális asztalhoz az iOS-ügyfélhasználatával.
+title: Kapcsolódás a Windows rendszerű virtuális asztalhoz iOS-Azure-ból
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az iOS-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -9,43 +9,43 @@ ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3bf9ea6c68e4cbbe721705639e6c6416c0e93c9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128251"
 ---
 # <a name="connect-with-the-ios-client"></a>Kapcsolódás az iOS-ügyfélhez
 
-> Az iOS 13.0-s vagy újabb verzióra vonatkozik. Kompatibilis az iPhone, iPad és iPod touch készülékekkel.
+> A következőkre vonatkozik: iOS 13,0 vagy újabb. IPhone-, iPad-és iPod Touch-kompatibilis.
 
-A Windows Virtual Desktop erőforrásait iOS-eszközéről érheti el letölthető kliensünkkel. Ez az útmutató megmutatja, hogyan állíthatja be az iOS-ügyfelet.
+A Windows rendszerű virtuális asztali erőforrásokat a letölthető ügyféllel is elérheti iOS-eszközéről. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az iOS-ügyfelet.
 
 ## <a name="install-the-ios-client"></a>Az iOS-ügyfél telepítése
 
-Első lépésekhez [töltse le](https://aka.ms/rdios) és telepítse az ügyfelet iOS-készülékére.
+Első lépésként [töltse le](https://aka.ms/rdios) és telepítse az ügyfelet iOS-eszközén.
 
-## <a name="subscribe-to-a-feed"></a>Feliratkozás hírcsatornára
+## <a name="subscribe-to-a-feed"></a>Előfizetés hírcsatornára
 
-Iratkozzon fel a rendszergazda által biztosított hírcsatornára, és megkapja az iOS-készülékén elérhető felügyelt erőforrások listáját.
+Fizessen elő a rendszergazda által biztosított hírcsatornára az iOS-eszközön elérhető felügyelt erőforrások listájának lekéréséhez.
 
-Feliratkozás hírcsatornára:
+Előfizetés a hírcsatornára:
 
-1. A Kapcsolatközpontban koppintson a ikonra, **+** majd a Munkaterület **hozzáadása**elemre.
-2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címmezőjébe.** A hírcsatorna URL-címe lehet URL vagy e-mail cím.
-   - Ha URL-t használsz, használd azt, amit a rendszergazda adott neked. Általában az <https://rdweb.wvd.microsoft.com>URL.
-   - Az e-mail használatához adja meg e-mail címét. Ez arra utasítja az ügyfelet, hogy keressen egy URL-t az e-mail címéhez társított url-cím után, ha a rendszergazda így konfigurálta a kiszolgálót.
-3. Koppintson a **Tovább gombra.**
-4. Adja meg a hitelesítő adatait, amikor a rendszer kéri.
-   - A **Felhasználónév (Felhasználónév)** mezőbe adja meg az erőforrásokhoz való hozzáféréshez szükséges jogosultsággal rendelkező felhasználónevet.
-   - A **Jelszó**mezőbe adja meg a felhasználónévhez társított jelszót.
-   - A rendszer további tényezők megadását is kérheti, ha a rendszergazda így konfigurálta a hitelesítést.
+1. A Csatlakozáskezelő területen koppintson **+** a elemre, majd koppintson a **munkaterület hozzáadása**lehetőségre.
+2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
+   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com>.
+   - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
+3. Koppintson a **tovább**gombra.
+4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
+   - A **Felhasználónév mezőben**adja meg a felhasználónevet, amely jogosult az erőforrások elérésére.
+   - A **Password (jelszó**) mezőben adja meg a felhasználónévhez tartozó jelszót.
+   - Az is előfordulhat, hogy további tényezőket kell megadnia, ha a rendszergazda úgy konfigurálta a hitelesítést.
 5. Koppintson a **Mentés** gombra.
 
-Ezt követően a kapcsolatközpontnak meg kell jelenítenie a távoli erőforrásokat.
+Ezután a Csatlakozáskezelő megjeleníti a távoli erőforrásokat.
 
-Miután feliratkozott egy hírcsatornára, a hírcsatorna tartalma rendszeresen automatikusan frissül. Az erőforrások a rendszergazda által végzett módosítások alapján adhatók hozzá, módosíthatók vagy távolíthatók el.
+Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni az iOS-ügyfél használatáról, olvassa el [az Első lépések az iOS-ügyfél](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/) dokumentációját.
+Ha többet szeretne megtudni az iOS-ügyfél használatáról, tekintse meg az iOS-ügyfél dokumentációjának használatának [első lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/) .

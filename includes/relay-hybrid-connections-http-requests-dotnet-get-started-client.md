@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79200294"
 ---
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
@@ -25,7 +25,7 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 2. Válassza az **Előzetes verzió belefoglalása** lehetőséget. 
-3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. A keresési eredmények között válassza a **Microsoft Azure Relay lehetőséget.**
+3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. A keresési eredmények között válassza a **Microsoft Azure Relay**lehetőséget.
 4. Válassza a **2.0.0-preview1-20180523** lehetőséget a verzió megadásakor. 
 5. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
 

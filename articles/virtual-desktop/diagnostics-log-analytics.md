@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop diagnosztikai naplóelemzés - Azure
-description: A naplóelemzés használata a Windows Virtuális asztal diagnosztikai szolgáltatásával.
+title: Windows rendszerű virtuális asztali diagnosztika log Analytics – Azure
+description: A log Analytics használata a Windows rendszerű virtuális asztali diagnosztika szolgáltatással.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 12/18/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127973"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>A Log Analytics használata a diagnosztikai funkcióhoz
+# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
-A Windows virtuális asztal diagnosztikai szolgáltatást kínál, amely lehetővé teszi a rendszergazda számára a problémák azonosítását egyetlen felületen keresztül. Ez a szolgáltatás naplózza a diagnosztikai információkat, amikor valaki windowsos virtuális asztal szerepkörrel rendelkezik, és használja a szolgáltatást. Minden napló információkat tartalmaz arról, hogy melyik Windows virtuális asztal szerepkör vett részt a tevékenységben, a munkamenet során megjelenő hibaüzeneteket, a bérlői adatokat és a felhasználói adatokat. A diagnosztikai szolgáltatás tevékenységnaplókat hoz létre mind a felhasználói, mind a felügyeleti műveletekhez. Minden tevékenységnapló három fő kategóriába tartozik: 
+A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. Ez a szolgáltatás naplózza a diagnosztikai adatokat, amikor valaki hozzárendelt egy Windows rendszerű virtuális asztali szerepkört a szolgáltatáshoz. Minden napló tartalmaz információt arról, hogy mely Windows virtuális asztali szerepkört vett részt a tevékenységben, a munkamenet során megjelenő hibaüzeneteket, a bérlői adatokat és a felhasználói adatokat. A diagnosztikai szolgáltatás a felhasználói és rendszergazdai műveletekhez is létrehozza a tevékenység naplóit. Minden tevékenység naplója három fő kategóriába tartozik: 
 
-- Előcsatorna-előfizetési tevékenységek: amikor egy felhasználó a Microsoft Remote Desktop alkalmazásokon keresztül próbál csatlakozni a hírcsatornához.
-- Csatlakozási tevékenységek: amikor a felhasználó microsoft távoli asztali alkalmazásokon keresztül próbál csatlakozni egy asztalhoz vagy RemoteApp-hoz.
-- Felügyeleti tevékenységek: ha a rendszergazda felügyeleti műveleteket hajt végre a rendszeren, például gazdagépkészleteket hoz létre, felhasználókat rendel az alkalmazáscsoportokhoz, és szerepkör-hozzárendeléseket hoz létre.
+- Hírcsatorna-előfizetési tevékenységek: amikor egy felhasználó Microsoft Távoli asztal-alkalmazásokon keresztül próbál csatlakozni a hírcsatornához.
+- Kapcsolódási tevékenységek: amikor egy felhasználó Microsoft Távoli asztal alkalmazáson keresztül próbál csatlakozni egy asztali vagy RemoteApp-hoz.
+- Felügyeleti tevékenységek: Ha a rendszergazda felügyeleti műveleteket hajt végre a rendszeren, például a gazdagépek létrehozása, a felhasználók hozzárendelése az alkalmazás-csoportokhoz és a szerepkör-hozzárendelések létrehozása.
 
-Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás része a Windows virtuális asztalnak. A Windows virtuális asztal csatlakozási problémái akkor fordulhatnak elő, ha a felhasználó hálózati kapcsolattal kapcsolatos problémákat tapasztal.
+Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás a Windows virtuális asztal része. A Windows rendszerű virtuális asztali kapcsolattal kapcsolatos problémák akkor fordulnak elő, ha a felhasználó hálózati kapcsolati problémákba ütközik.
 
-## <a name="why-you-should-use-log-analytics"></a>Miért érdemes a Log Analytics szolgáltatást használni?
+## <a name="why-you-should-use-log-analytics"></a>Miért érdemes használni a Log Analytics
 
-Azt javasoljuk, hogy a Log Analytics segítségével elemezze a diagnosztikai adatokat az Azure-ügyfél, amely túlmutat az egyfelhasználós hibaelhárítás. A virtuális gépek teljesítményszámlálóinak a Log Analytics behívása során egyetlen eszközzel rendelkezik a központi telepítéshez szükséges információk összegyűjtéséhez.
+Javasoljuk, hogy a Log Analytics használatával elemezze az Azure-ügyfél diagnosztikai adatait, amely túllépi az egyfelhasználós hibaelhárítást. A virtuálisgép-teljesítményszámlálók beolvasása Log Analytics egy eszköz segítségével gyűjtheti össze az üzembe helyezésre vonatkozó információkat.
 
 ## <a name="before-you-get-started"></a>A kezdés előtt
 
-Mielőtt a Log Analytics a diagnosztikai funkcióval, létre kell [hoznia egy munkaterületet.](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)
+Mielőtt a diagnosztikai szolgáltatással Log Analytics használni, [létre kell hoznia egy munkaterületet](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
 
-A munkaterület létrehozása után kövesse a [Windows-számítógépek csatlakoztatása](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) az Azure Monitorhoz című útmutató utasításait a következő információk bekerüléséhez: 
+Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait: 
 
 - A munkaterület azonosítója
 - A munkaterület elsődleges kulcsa
 
-Erre az információra a beállítási folyamat későbbi részében lesz szüksége.
+Ezt az információt később a telepítési folyamat során kell megadnia.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnosztikai adatok leküldése a munkaterületre 
+## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnosztikai adatai leküldése a munkaterületre 
 
-A Windows virtuális asztal bérlőjéből diagnosztikai adatokat lelökhet a munkaterület naplóanalytics szolgáltatásába. Ezt a funkciót azonnal beállíthatja, amikor először hozza létre a bérlőt a munkaterület nek a bérlőhöz való összekapcsolásával, vagy később egy meglévő bérlővel állíthatja be.
+A Windows rendszerű virtuális asztali bérlő diagnosztikai adatait leküldheti a munkaterülethez tartozó Log Analyticsba. Ezt a szolgáltatást azonnal beállíthatja a bérlő első létrehozásakor, ha a munkaterületet a bérlőhöz kapcsolja, vagy később egy meglévő Bérlővel is beállíthatja.
 
-Ha a bérlőt az új bérlő beállítása közben a Log Analytics-munkaterülethez szeretné kapcsolni, futtassa a következő parancsmast a Windows virtuális asztalra való bejelentkezéshez a TenantCreator felhasználói fiókjával: 
+Ha az új bérlő beállítása közben szeretné összekapcsolni a bérlőt a Log Analytics munkaterülettel, futtassa a következő parancsmagot a Windows rendszerű virtuális asztalra való bejelentkezéshez a TenantCreator felhasználói fiókjával: 
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
 ```
 
-Ha egy meglévő bérlőt szeretne összekapcsolni új bérlő helyett, futtassa inkább ezt a parancsmast: 
+Ha új bérlő helyett egy meglévő bérlőt szeretne összekapcsolni, futtassa a következő parancsmagot: 
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-Ezeket a parancsmagokat minden bérlőhöz futtatnia kell, amelyet a Log Analytics-hez szeretne kapcsolni. 
+Ezeket a parancsmagokat minden olyan bérlőhöz futtatnia kell, amelyhez Log Analytics szeretne csatolni. 
 
 >[!NOTE]
->Ha nem szeretné összekapcsolni a Log Analytics munkaterületet, amikor `New-RdsTenant` létrehoz egy bérlőt, futtassa inkább a parancsmacst. 
+>Ha a bérlő létrehozásakor nem szeretné összekapcsolni a Log Analytics munkaterületet, futtassa `New-RdsTenant` inkább a parancsmagot. 
 
-## <a name="cadence-for-sending-diagnostic-events"></a>Ütemszám diagnosztikai események küldéséhez
+## <a name="cadence-for-sending-diagnostic-events"></a>A diagnosztikai események küldésének ritmusa
 
-A diagnosztikai eseményeket a rendszer elküldi a Log Analytics szolgáltatásnak, ha befejeződött.  
+Ha elkészült, a rendszer a diagnosztikai eseményeket a Log Analytics elküldi.  
 
-## <a name="example-queries"></a>Példa lekérdezésekre
+## <a name="example-queries"></a>Példák lekérdezésekre
 
-A következő példalekérdezések azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan hoz létre jelentést a rendszer leggyakoribb tevékenységeiről:
+Az alábbi példák azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan készít jelentést a rendszer leggyakoribb tevékenységeiről:
 
-Ez az első példa a támogatott távoli asztali ügyfelekkel rendelkező felhasználók által kezdeményezett csatlakozási tevékenységeket mutatja be:
+Ez az első példa a támogatott távoli asztali ügyfelekkel rendelkező felhasználók által kezdeményezett kapcsolódási tevékenységeket mutatja be:
 
 ```powershell
 WVDActivityV1_CL 
@@ -95,7 +95,7 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
 
-Ez a következő példa lekérdezés a bérlők rendszergazdái által végzett felügyeleti tevékenységeket jeleníti meg:
+A következő példában szereplő lekérdezés a rendszergazdák által a bérlők számára végzett felügyeleti tevékenységeket mutatja be:
 
 ```powershell
 WVDActivityV1_CL 
@@ -121,16 +121,16 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
  
-## <a name="stop-sending-data-to-log-analytics"></a>Adatok küldésének leállítása a Log Analytics szolgáltatásba 
+## <a name="stop-sending-data-to-log-analytics"></a>Adatok küldésének leállítása a Log Analyticsba 
 
-Ha le szeretné állítani az adatok küldését egy meglévő bérlőtől a Log Analytics szolgáltatásba, futtassa a következő parancsmagot, és állítson be üres karakterláncokat:
+Ha le szeretné állítani az adatok egy meglévő bérlőről Log Analyticsra való küldését, futtassa a következő parancsmagot, és állítsa be az üres karakterláncokat:
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-Ezt a parancsmamot minden bérlőhöz futtatnia kell, amelyről le szeretné állítani az adatok küldését. 
+Ezt a parancsmagot minden olyan bérlő esetében futtatnia kell, amelyről le szeretné állítani az adatok küldését. 
 
 ## <a name="next-steps"></a>További lépések 
 
-A diagnosztikai szolgáltatás által azonosítható gyakori hibaforgatókönyvek áttekintéséhez olvassa [el a Problémák azonosítása és diagnosztizálása című témakört.](diagnostics-role-service.md#common-error-scenarios)
+A diagnosztikai szolgáltatás által azonosítható gyakori hibák áttekintése: a [problémák azonosítása és diagnosztizálása](diagnostics-role-service.md#common-error-scenarios).

@@ -1,6 +1,6 @@
 ---
-title: Windows virtuális asztali környezet – Azure
-description: A Windows virtuális asztali környezet alapvető elemei.
+title: Windows rendszerű virtuális asztali környezet – Azure
+description: A Windows rendszerű virtuális asztali környezet alapvető elemei.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,60 +9,60 @@ ms.date: 04/12/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127920"
 ---
 # <a name="windows-virtual-desktop-environment"></a>A Windows Virtual Desktop környezete
 
-A Windows virtuális asztal egy olyan szolgáltatás, amely egyszerű és biztonságos hozzáférést biztosít a felhasználók számára a virtualizált asztalokhoz és a RemoteApps-hez. Ez a témakör egy kicsit többet fog mondani a Windows Virtual Desktop környezet általános szerkezetéről.
+A Windows Virtual Desktop egy olyan szolgáltatás, amely egyszerű és biztonságos hozzáférést biztosít a felhasználóknak a virtualizált asztali számítógépekhez és a RemoteAppokhoz. Ez a témakör részletesen ismerteti a Windows rendszerű virtuális asztali környezet általános szerkezetét.
 
 ## <a name="tenants"></a>Bérlők
 
-A Windows virtuális asztal bérlője az elsődleges felület a Windows virtuális asztali környezet kezeléséhez. Minden Windows virtuális asztal bérlőkell társítható az Azure Active Directory, amely a felhasználók, akik bejelentkeznek a környezetbe. A Windows virtuális asztal bérlője, megkezdheti a gazdagépkészletek futtatásához a felhasználók számítási feladatok.
+A Windows rendszerű virtuális asztali bérlő a Windows rendszerű virtuális asztali környezet felügyeletének elsődleges felülete. Minden Windowsos virtuális asztali bérlőhöz társítani kell a környezetbe bejelentkező felhasználókat tartalmazó Azure Active Directory. A Windows rendszerű virtuális asztali bérlőből megkezdheti a gazdagép-készletek létrehozását a felhasználók munkaterhelésének futtatásához.
 
-## <a name="host-pools"></a>Gazdamedencék
+## <a name="host-pools"></a>Gazdagépek készletei
 
-A gazdakészlet olyan Azure virtuális gépek gyűjteménye, amelyek munkamenet-gazdagépként regisztrálnak a Windows virtuális asztal szolgáltatásra a Windows virtuális asztali ügynök futtatásakor. A gazdagépkészletben lévő összes munkamenetgazda virtuális gépet ugyanabból a lemezképből kell beszerezni a konzisztens felhasználói élmény érdekében.
+A gazdagépek olyan Azure-beli virtuális gépek gyűjteményei, amelyek a Windows rendszerű virtuális asztali ügynök futtatásakor a Windows Virtual Desktop szolgáltatásban futnak. A gazdagép-készletben lévő összes munkamenet-gazda virtuális gépet ugyanabból a rendszerképből kell származnia, amely konzisztens felhasználói élményt nyújt.
 
-A gazdakészlet kétféle lehet:
+A gazdagépek két típus egyike lehet:
 
-- Személyes, ahol minden munkamenet-állomás az egyes felhasználókhoz van rendelve.
-- Készletezve, ahol a munkamenet-állomások bármely olyan felhasználótól fogadhatnak kapcsolatot, aki jogosult a gazdagépkészleten belüli alkalmazáscsoportra.
+- Személyes, ahol minden egyes munkamenet-gazdagép az egyes felhasználókhoz van rendelve.
+- Készletezett, ahol a munkamenet-gazdagépek fogadhatnak kapcsolatokat bármely olyan felhasználótól, aki a gazdagépen belül egy alkalmazáscsoport számára van engedélyezve.
 
-A gazdakészlet további tulajdonságait beállíthatja a terheléselosztási viselkedés, az egyes munkamenet-gazdagépek által levehető munkamenetek számának, valamint a gazdagépkészletmunkamenet-gazdagépekkel való kapcsolatfelvételhez, miközben be van jelentkezve a Windows virtuális asztal munkameneteibe. Alkalmazáscsoportokon keresztül szabályozhatja a felhasználók számára közzétett erőforrásokat.
+A gazdagépen további tulajdonságokat is megadhat a terheléselosztási viselkedés megváltoztatásához, az egyes munkamenet-állomások által elvégezhető munkamenetek számának megadásához, valamint arról, hogy a felhasználó milyen műveleteket végezhet a gazdagépen a gazdaszámítógépen a Windows rendszerű virtuális asztali munkamenetbe való bejelentkezéskor. A felhasználók számára közzétett erőforrásokat az alkalmazás-csoportok segítségével szabályozhatja.
 
 ## <a name="app-groups"></a>Alkalmazáscsoportok
 
-Az alkalmazáscsoport a gazdagépkészletmunkamenet-gazdagépein telepített alkalmazások logikai csoportja. Az alkalmazáscsoport két típusa lehet:
+Az alkalmazáscsoport a gazdagépen lévő munkamenet-gazdagépekre telepített alkalmazások logikai csoportosítása. Az alkalmazások csoportja a két típus egyike lehet:
 
-- RemoteApp, ahol a felhasználók hozzáférhetnek az egyénileg kiválasztott és az alkalmazáscsoportban közzéteszett RemoteApps alkalmazásokhoz
-- Asztal, ahol a felhasználók a teljes asztalhoz férnek hozzá
+- RemoteApp, ahol a felhasználók az egyénileg kiválasztott és az alkalmazás csoportba való közzétételhez hozzáférnek a RemoteApp-hoz
+- Asztal, ahol a felhasználók a teljes asztalt érik el
 
-Alapértelmezés szerint egy asztali alkalmazáscsoport (az "Asztali alkalmazáscsoport") automatikusan létrejön, amikor gazdakészletet hoz létre. Ezt az alkalmazáscsoportot bármikor eltávolíthatja. Azonban nem hozhat létre másik asztali alkalmazáscsoportot a gazdakészletben, amíg létezik asztali alkalmazáscsoport. A RemoteApps közzétételéhez létre kell hoznia egy RemoteApp-alkalmazáscsoportot. Több RemoteApp-alkalmazáscsoportot is létrehozhat a különböző munkavégző forgatókönyvek befogadásához. A különböző RemoteApp-alkalmazáscsoportok egymást átfedő RemoteApps-alkalmazásokat is tartalmazhatnak.
+Alapértelmezés szerint a rendszer automatikusan létrehoz egy asztali alkalmazást ("asztali alkalmazáscsoport"), amikor létrehoz egy gazdagép-készletet. Az alkalmazáscsoport bármikor eltávolítható. Azonban nem hozhat létre másik asztali alkalmazást a gazdagépen, amíg létezik egy asztali alkalmazáscsoport. A RemoteApp-alkalmazások közzétételéhez létre kell hoznia egy RemoteApp-alkalmazás csoportot. Több RemoteApp-alkalmazáscsoport is létrehozható a különböző munkavégző forgatókönyvek kielégítése érdekében. A különböző RemoteApp-alkalmazások többek között átfedésben lévő RemoteAppkat is tartalmazhatnak.
 
-Erőforrások felhasználók számára való közzétételéhez hozzá kell rendelnie őket az alkalmazáscsoportokhoz. Amikor felhasználókat rendel alkalmazáscsoportokhoz, vegye figyelembe az alábbi dolgokat:
+Az erőforrások felhasználók számára való közzétételéhez hozzá kell rendelnie azokat az alkalmazás-csoportokhoz. Amikor felhasználókat rendel az alkalmazás-csoportokhoz, vegye figyelembe a következőket:
 
-- A felhasználó nem rendelhető hozzá egyszerre asztali alkalmazáscsoporthoz és egy RemoteApp-alkalmazáscsoporthoz ugyanabban a gazdakészletben.
-- Egy felhasználó több alkalmazáscsoporthoz is hozzárendelhető ugyanazon a gazdakészleten belül, és a hírcsatorna mindkét alkalmazáscsoport felhalmozódása lesz.
+- Egy felhasználó nem rendelhető hozzá egyszerre egy asztali alkalmazáscsoport és egy RemoteApp-alkalmazáscsoport is ugyanabban a gazdagép-készletben.
+- Egy felhasználó több, ugyanazon a gazdagépen belüli alkalmazás-csoporthoz is hozzárendelhető, és a hírcsatorna mindkét alkalmazáscsoport összegyűjtését eredményezi.
 
 ## <a name="tenant-groups"></a>Bérlői csoportok
 
-A Windows virtuális asztal rendszerben a Windows virtuális asztal bérlője az a hely, ahol a legtöbb beállítás és konfiguráció történik. A Windows virtuális asztal bérlője tartalmazza a gazdakészleteket, az alkalmazáscsoportokat és az alkalmazáscsoport felhasználói hozzárendeléseit. Előfordulhatnak azonban olyan helyzetek, amikor egyszerre több Windows virtuális asztal-bérlőt kell kezelnie, különösen akkor, ha Ön felhőszolgáltató (CSP) vagy üzemeltetési partner. Ilyen esetekben egyéni Windows virtuális asztal bérlői csoport használatával elhelyezheti az ügyfelek Windows virtuális asztal bérlőit, és központilag kezelheti a hozzáférést. Ha azonban csak egyetlen Windows virtuális asztal bérlőt kezel, a bérlői csoport fogalma nem érvényes, és továbbra is működtetheti és kezelheti az alapértelmezett bérlői csoportban létező bérlőt.
+A Windows virtuális asztal szolgáltatásban a Windows rendszerű virtuális asztali bérlő az a hely, ahol a telepítés és a konfigurálás nagy része történik. A Windows rendszerű virtuális asztali bérlő tartalmazza a gazdagépeket, az alkalmazás-csoportokat és az alkalmazáscsoport felhasználói hozzárendeléseit. Bizonyos esetekben azonban előfordulhat, hogy egyszerre több Windows rendszerű virtuális asztali bérlőt kell kezelnie, különösen akkor, ha Ön egy felhőalapú szolgáltató (CSP) vagy egy szolgáltatói partner. Ezekben az esetekben használhat egy egyéni Windowsos virtuális asztali bérlői csoportot az ügyfelek Windows rendszerű virtuális asztali bérlői és központilag felügyelt hozzáférésének elhelyezésére. Ha azonban csak egyetlen Windowsos virtuális asztali bérlőt kezel, a bérlői csoport fogalma nem érvényes, és továbbra is használhatja és kezelheti a bérlőt, amely az alapértelmezett bérlői csoportban található.
 
 ## <a name="end-users"></a>Végfelhasználók
 
-Miután hozzárendelte a felhasználókat az alkalmazáscsoportjaikhoz, bármelyik Windows virtuális asztali ügyféllel csatlakozhatnak a Windows virtuális asztal központi telepítéséhez.
+Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlakozhatnak a Windows rendszerű virtuális asztali környezethez a Windows rendszerű virtuális asztali ügyfelek bármelyikével.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a delegált hozzáférésről és aszerepkörök felhasználókhoz rendeléséről a [Windows virtuális asztal Delegált hozzáférés szolgáltatásában.](delegated-access-virtual-desktop.md)
+További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop.md).
 
-A Windows virtuális asztal bérlőjének beállításáról a Bérlő létrehozása a Windows virtuális asztalon című [témakörben](tenant-setup-azure-active-directory.md)olvashat.
+A Windows rendszerű virtuális asztali bérlő beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
 
-A Windows Virtuális asztalhoz való csatlakozásról az alábbi cikkek ben olvashat:
+A következő cikkekből megtudhatja, hogyan csatlakozhat a Windows rendszerű virtuális asztalhoz:
 
 - [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-and-10.md)
 - [Csatlakozás webböngészőről](connect-web.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Próbálja ki a tartalommoderátort a weben – Tartalommoderátor'
+title: 'Gyors útmutató: Content Moderator kipróbálása a Web-Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az online Tartalommoderátor-ellenőrző eszközt fogja használni a Tartalommoderátor alapvető funkcióinak tesztelésére anélkül, hogy kódot kellene írnia.
+description: Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszközt fogja használni a Content Moderator alapvető funkcióinak teszteléséhez anélkül, hogy kódot kellene írnia.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,77 +11,77 @@ ms.topic: quickstart
 ms.date: 03/13/2020
 ms.author: pafarley
 ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79203563"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Rövid útmutató: Próbálja ki a tartalommoderátort az interneten
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
-Ebben a rövid útmutatóban az online Tartalommoderátor-ellenőrző eszközzel anélkül tesztelheti a Tartalommoderátor alapvető funkcióit, hogy bármilyen kódot kellene írnia. Ha gyorsabban szeretné integrálni ezt a szolgáltatást az alkalmazásba, tekintse meg a további rövid útmutatókat a [Következő lépések](#next-steps) szakaszban.
+Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszköz használatával tesztelheti a Content Moderator alapvető funkcióit anélkül, hogy kódot kellene írnia. Ha gyorsabban szeretné integrálni ezt a szolgáltatást az alkalmazásba, tekintse meg a többi rövid útmutatót a [következő lépések](#next-steps) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Webböngésző
+- Egy webböngésző
 
-## <a name="set-up-the-review-tool"></a>Az ellenőrző eszköz beállítása
-A Tartalommoderátor-ellenőrző eszköz egy webalapú eszköz, amely lehetővé teszi az emberi bírálók számára, hogy segítsék a kognitív szolgáltatást a döntéshozatalban. Ebben az útmutatóban a felülvizsgálati eszköz beállításának rövid folyamatán megy keresztül, hogy láthassa, hogyan működik a Tartalommoderátor szolgáltatás. Nyissa meg a [Tartalommoderátor-ellenőrzési eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyét, és regisztráljon.
+## <a name="set-up-the-review-tool"></a>A felülvizsgálati eszköz beállítása
+A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi felülvizsgálók segítsek a kognitív szolgáltatást a döntések meghozatalában. Ebben az útmutatóban elsajátíthatja a felülvizsgálati eszköz beállításának rövid folyamatát, hogy láthassa, hogyan működik a Content Moderator szolgáltatás. Lépjen a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és regisztráljon.
 
-![Tartalommoderátor kezdőlapja](images/homepage.PNG)
+![Content Moderator Kezdőlap](images/homepage.PNG)
 
-## <a name="create-a-review-team"></a>Felülvizsgálati csoport létrehozása
+## <a name="create-a-review-team"></a>Felülvizsgálati csapat létrehozása
 
-Ezután hozzon létre egy felülvizsgálati csapatot. Egy működő forgatókönyv, ez lesz a csoport, akik manuálisan felülvizsgálja a szolgáltatás moderálási döntéseket. Csapat létrehozásához ki kell választania egy **régiót,** és meg kell adnia egy **csapatnevet** és egy **csapatazonosítót.** Ha meg szeretné hívni kollégáit a csapatba, ezt az e-mail címük megadásával teheti meg itt.
+Ezután hozzon létre egy felülvizsgálati csapatot. A munkahelyen ez azon személyek csoportja lesz, akik manuálisan áttekintik a szolgáltatás moderálási döntéseit. Csapat létrehozásához ki kell választania egy **régiót**, és meg kell adnia a **csoport nevét** és a **csoport azonosítóját**. Ha meg szeretné hívni a munkatársakat a csapatnak, az e-mail-címei Itt megadhatók.
 
 > [!NOTE]
-> **A csapatnév** a felülvizsgálati csapat rövid neve. Ez a név jelenik meg az Azure Portalon. A **csapatazonosító** segítségével a programokkal azonosíthatja a felülvizsgálati csapatot.
+> A **csapat neve** a felülvizsgálati csapat rövid neve. Ez a név jelenik meg a Azure Portalban. A **csapat azonosítója** a felülvizsgálati csapat programozott módon azonosítására szolgál.
 
 > [!div class="mx-imgBorder"]
 > ![Csapattag meghívása](images/create-team.png)
 
-Ha úgy dönt, hogy az adatokat ügyfél által felügyelt kulccsal (CMK) titkosítja, a rendszer kéri a Tartalommoderátor erőforrás **erőforrásazonosítóját** az E0 tarifacsomagban. A megadott erőforrásnak újnak kell lennie. 
+Ha ügyfél által felügyelt kulcs (CMK) használatával titkosítja az adattitkosítást, a rendszer a E0-díjszabási szinten kéri a Content Moderator-erőforrás **erőforrás-azonosítójának** megadását. Az Ön által megadott erőforrásnak újnak kell lennie. 
 
 > [!div class="mx-imgBorder"]
-> ![Csapattag meghívása CMK-vel](images/create-team-cmk.png)
+> ![Csapattag meghívása a CMK](images/create-team-cmk.png)
 
-Ha megpróbál újra felhasználni egy tartalommoderátor-erőforrást, a következő figyelmeztetés jelenik meg: 
+Ha egy Content Moderator erőforrás újrafelhasználását kísérli meg, akkor a következő figyelmeztetés jelenik meg: 
 
 > [!div class="mx-imgBorder"]
-> ![CMK-hiba](images/create-team-cmk-fail.png)
+> ![CMK hiba](images/create-team-cmk-fail.png)
 
-## <a name="upload-sample-content"></a>Mintatartalom feltöltése
+## <a name="upload-sample-content"></a>Minta tartalmának feltöltése
 
-Most már készen áll a mintatartalom feltöltésére. Válassza **> Kép kipróbálása**, **szöveg >** vagy próbálja ki **> videó**lehetőséget.
+Most már készen áll a minta tartalmának feltöltésére. Válassza ki a **kipróbálás > a rendszerkép**lehetőséget, **próbálkozzon > szöveggel**, vagy **próbálja meg > videót**.
 
-![Kép- vagy szövegmoderálás kipróbálása](images/tryimagesortext.png)
+![Képek vagy szöveges moderálás kipróbálása](images/tryimagesortext.png)
 
-Küldje el a tartalmat moderálásra. Belsőleg a felülvizsgálati eszköz meghívja a moderálási API-kat a tartalom beszkafét. Miután a beolvasás befejeződött, megjelenik egy üzenet, amely tájékoztatja Önt arról, hogy az eredmények az értékelésre várnak.
+A tartalom moderálás céljából történő elküldése. Belsőleg a felülvizsgálati eszköz meghívja a moderálási API-kat a tartalom vizsgálatához. Miután a vizsgálat befejeződött, megjelenik egy üzenet, amely tájékoztatja arról, hogy az eredmények várnak az ellenőrzésre.
 
-![Közepes fájlok](images/submitted.png)
+![Közepes méretű fájlok](images/submitted.png)
 
-## <a name="review-moderation-tags"></a>Moderálási címkék áttekintése
+## <a name="review-moderation-tags"></a>Moderációs címkék áttekintése
 
-Tekintse át az alkalmazott moderálási címkéket. Láthatja, hogy mely címkéket alkalmaztaa a tartalomra, és hogy mi volt a pontszám az egyes kategóriákban. A [kép,](image-moderation-api.md) [a szöveg](text-moderation-api.md)és a [videómoderálás](video-moderation-api.md) témakörében többet is megtudhat arról, hogy mit jeleznek a különböző tartalomcímkék.
+Tekintse át az alkalmazott moderálási címkéket. Láthatja, hogy mely címkék lettek alkalmazva a tartalomra, és hogy a pontszám milyen kategóriában volt. A [képekkel](image-moderation-api.md), [szövegekkel](text-moderation-api.md)és [videó](video-moderation-api.md) -moderálással kapcsolatos témakörökből megtudhatja, hogy mit jelez a különböző tartalmi címkék.
 
 ![Eredmények áttekintése](images/reviewresults_text.png)
 
-Egy projektben Ön vagy az ellenőrző csoport módosíthatja ezeket a címkéket, vagy szükség szerint további címkéket adhat hozzá. Ezeket a módosításokat a **Tovább** gombbal küldi el. Ahogy az üzleti alkalmazás meghívja a moderátor API-kat, a címkézett tartalom itt sorba áll, készen arra, hogy az emberi ellenőrző csoportok áttekintsék. Ezzel a módszerrel gyorsan áttekintheti a nagy mennyiségű tartalmat.
+Egy projektben Ön vagy a felülvizsgálati csapat módosíthatja ezeket a címkéket, vagy szükség szerint további címkéket is hozzáadhat. Ezeket a módosításokat a **Next (tovább** ) gombbal küldheti el. Ahogy az üzleti alkalmazás meghívja a moderátori API-kat, a címkézett tartalom itt fog megjelenni, és készen áll az emberi felülvizsgálati csapatok általi felülvizsgálatra. Ezt a módszert követve gyorsan áttekintheti a nagy mennyiségű tartalmat.
 
-Ezen a ponton a Tartalommoderátor-ellenőrző eszközt használta a tartalommoderátor-szolgáltatás által megtehető példák megtekintéséhez. Ezután többet is megtudhat a felülvizsgálati eszközről, és arról, hogyan integrálhatja azt egy szoftverprojektbe az API-k áttekintése használatával, vagy átugorhatja a [Következő lépések](#next-steps) szakaszt, ahol megtudhatja, hogyan használhatja a Moderálás API-kat az alkalmazásban.
+Ezen a ponton a Content Moderator felülvizsgálati eszköz használatával láthatta a Content Moderator szolgáltatás által elvégezhető példákat. Ezután megtudhatja, hogyan integrálhatja a felülvizsgálati eszközt, és hogyan integrálhatja azt egy szoftveres projektbe az API-k áttekintése segítségével, vagy kihagyhatja a [következő lépések](#next-steps) szakaszt, amelyből megtudhatja, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
 
 ## <a name="learn-more-about-the-review-tool"></a>További információ a felülvizsgálati eszközről
 
-Ha többet szeretne megtudni a Tartalommoderátor-ellenőrzési eszköz használatáról, tekintse meg a [Véleményezés eszköz](Review-Tool-User-Guide/human-in-the-loop.md) útmutatóját, és tekintse meg a Felülvizsgálati eszköz API-jait, amelyből megtudhatja, hogyan finomíthatja az emberi értékelés élményét:
-- A [feladat API](try-review-api-job.md) ellenőrzi a tartalmat a moderálás API-k használatával, és értékeléseket hoz létre a felülvizsgálati eszközben. 
-- A [Felülvizsgálati API](try-review-api-review.md) közvetlenül kép-, szöveg- vagy videoértékeléseket hoz létre az emberi moderátorok számára anélkül, hogy először beszkavalnák a tartalmat. 
-- A [Munkafolyamat API](try-review-api-workflow.md) létrehozza, frissíti és leadja a csapat által létrehozott egyéni munkafolyamatok részleteit.
+Ha többet szeretne megtudni a Content Moderator felülvizsgálati eszköz használatáról, tekintse meg a [felülvizsgálati](Review-Tool-User-Guide/human-in-the-loop.md) eszköz útmutatását, és tekintse meg a felülvizsgálati eszköz API-kat, hogy megtudja, hogyan finomíthatja a humán felülvizsgálati élményt:
+- A [feladatok API](try-review-api-job.md) a moderálási API-k használatával vizsgálja meg a tartalmat, és a felülvizsgálati eszközben hozza létre az értékeléseket. 
+- A [felülvizsgálati API](try-review-api-review.md) közvetlenül a tartalom első vizsgálata nélkül hozza létre az emberi moderátorok képét, szövegét vagy videós felülvizsgálatát. 
+- A [munkafolyamat API](try-review-api-workflow.md) hozza létre, frissíti és beolvassa a csoport által létrehozott egyéni munkafolyamatok részleteit.
 
-Vagy folytassa a következő lépésekkel a moderálási API-k használatának megkezdéséhez a kódban.
+Vagy folytassa a következő lépésekkel a kód moderálási API-jai használatának megkezdéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan használhatja a Moderálás API-kat az alkalmazásban.
-- Képmoderálás megvalósítása. Használja az [API-konzolt,](try-image-api.md) vagy kövesse a [.NET SDK gyorsindítást](dotnet-sdk-quickstart.md) a képek bekéseléséhez és a potenciális felnőtt és pikáns tartalom észleléséhez címkék, megbízhatósági pontszámok és egyéb kinyert információk használatával.
-- Szövegmoderálás megvalósítása. Használja az [API-konzolt,](try-text-api.md) vagy használja a [.NET SDK gyorsindítást](dotnet-sdk-quickstart.md) a szöveges tartalom lehetséges káromkodás, géppel támogatott nem kívánt szövegbesorolás (előzetes verzió) és személyes adatok vizsgálatához.
-- Videómoderálás megvalósítása. Kövesse a [C# videómoderálási útmutatóját a](video-moderation-api.md) videók bekereséséhez és a potenciális felnőtt és pikáns tartalmak észleléséhez. 
+Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
+- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
+- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy használja a [.net SDK](dotnet-sdk-quickstart.md) gyors verzióját a szöveges tartalom vizsgálatához a lehetséges trágárság, a gépi támogatású nemkívánatos szöveg besorolása (előzetes verzió) és a személyes adatokat.
+- Videó-moderálás implementálása. Kövesse a [videó moderálásának útmutatóját a C#-](video-moderation-api.md) hoz a videók vizsgálatához és a potenciális felnőtt és a zamatos tartalmak észleléséhez. 
