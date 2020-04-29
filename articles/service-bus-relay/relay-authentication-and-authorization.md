@@ -1,6 +1,6 @@
 ---
-title: Azure Relay hitelesítése és engedélyezése | Microsoft dokumentumok
-description: Ez a cikk áttekintést nyújt a megosztott hozzáférésű aláírás (SAS) hitelesítésaz Azure Relay szolgáltatással.
+title: Hitelesítés és engedélyezés Azure Relay | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a közös hozzáférésű aláírás (SAS) hitelesítéséről a Azure Relay szolgáltatással.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,41 +15,41 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514578"
 ---
-# <a name="azure-relay-authentication-and-authorization"></a>Azure Relay hitelesítése és engedélyezése
+# <a name="azure-relay-authentication-and-authorization"></a>Hitelesítés és engedélyezés Azure Relay
 
-Az alkalmazások a megosztott hozzáférésű aláírás (SAS) hitelesítésével hitelesíthetik magukat az Azure Relay számára. A SAS-hitelesítés lehetővé teszi, hogy az alkalmazások hitelesítsék magukat az Azure Relay szolgáltatás ban a továbbító névtérben konfigurált hozzáférési kulcs használatával. Ezt a kulcsot használhatja egy megosztott hozzáférésű aláírási jogkivonat létrehozásához, amelyet az ügyfelek a továbbító szolgáltatás hitelesítéséhez használhatnak.
+Az alkalmazások közös hozzáférésű aláírási (SAS-) hitelesítés használatával hitelesíthetők Azure Relay. Az SAS-hitelesítés lehetővé teszi az alkalmazások számára, hogy a továbbítási névtérben konfigurált hozzáférési kulccsal hitelesítsék a Azure Relay szolgáltatást. Ezt a kulcsot használhatja arra, hogy létrehoz egy közös hozzáférési aláírási jogkivonatot, amelyet az ügyfelek a Relay szolgáltatásban való hitelesítéshez használhatnak.
 
-## <a name="shared-access-signature-authentication"></a>Megosztott hozzáférésű aláírás hitelesítése
+## <a name="shared-access-signature-authentication"></a>Közös hozzáférésű aláírások hitelesítése
 
-[A SAS-hitelesítés](../service-bus-messaging/service-bus-sas.md) lehetővé teszi, hogy a felhasználó számára hozzáférést biztosítson az Azure Relay adott jogosultságokkal rendelkező erőforrásaihoz. A SAS-hitelesítés egy erőforráshoz kapcsolódó jogosultságokkal rendelkező kriptográfiai kulcs konfigurációját foglalja magában. Az ügyfelek ezután hozzáférhetnek az erőforráshoz egy SAS-jogkivonat bemutatásával, amely az elérendő erőforrás URI-t és a beállított kulccsal aláírt lejárati szintet jelenti.
+Az [sas-hitelesítés](../service-bus-messaging/service-bus-sas.md) lehetővé teszi a felhasználók számára, hogy hozzáférést biztosítson Azure Relay erőforrásokhoz adott jogokkal. Az SAS-hitelesítés magában foglalja egy adott erőforráshoz társított jogokkal rendelkező titkosítási kulcs konfigurációját. Az ügyfelek ezután egy SAS-token bemutatásával férhetnek hozzá ehhez az erőforráshoz, amely az elérni kívánt erőforrás-URI-t és a beállított kulccsal lejáró lejárati értéket tartalmazza.
 
-A SAS-kulcsokat továbbító névtérben konfigurálhatja. A Service Bus-üzenetküldéssel ellentétben [a hibrid kapcsolatok továbbítása](relay-hybrid-connections-protocol.md) támogatja a jogosulatlan vagy névtelen feladókat. Az entitás létrehozásakor engedélyezheti a névtelen hozzáférést, ahogy az a portálról a következő képernyőképen látható:
+Az SAS-kulcsok a Relay-névtérben konfigurálhatók. A Service Bus üzenetkezeléstől eltérően a [Relay hibrid kapcsolatok](relay-hybrid-connections-protocol.md) támogatja a jogosulatlan vagy névtelen küldőket. Az entitáshoz való névtelen hozzáférést a létrehozáskor engedélyezheti, ahogy az a portálon látható következő képernyőképen is látható:
 
 ![][0]
 
-A SAS használatához konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektumot egy továbbító névtérben, amely a következőkből áll:
+Az SAS használatához konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -objektumot egy továbbító névtéren, amely a következőkből áll:
 
-* A szabályt azonosító *kulcsnév.*
-* *A PrimaryKey* egy sas-tokenek aláírására/érvényesítésére használt kriptográfiai kulcs.
-* *SecondaryKey* egy kriptográfiai kulcs aláírására/érvényesítésére használt SAS-jogkivonatok.
-* A megadott figyelési, küldési vagy kezelési jogok gyűjteményét képviselő *jogok.*
+* A szabályt azonosító *Kulcsnév* .
+* A *PrimaryKey* a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
+* A *értesítésiközpont* a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
+* A figyelési, küldési vagy kezelési jogosultságok gyűjteményét képviselő *jogosultságok* .
 
-A névtér szintjén konfigurált engedélyezési szabályok hozzáférést biztosíthatnak a névtérben lévő összes továbbítókapcsolathoz a megfelelő kulccsal aláírt jogkivonatokkal rendelkező ügyfelek számára. Legfeljebb 12 ilyen engedélyezési szabály konfigurálható egy továbbító névtérben. Alapértelmezés szerint az összes jogosultsággal rendelkező [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) minden névtérhez konfigurálva van, amikor először kivan építve.
+A névtér szintjén konfigurált engedélyezési szabályok hozzáférést biztosíthatnak a névtérben lévő összes továbbítási kapcsolathoz a megfelelő kulccsal aláírt tokenekkel rendelkező ügyfelek számára. Akár 12 ilyen engedélyezési szabály is konfigurálható egy továbbító névtérben. Alapértelmezés szerint minden egyes jogosultsággal rendelkező [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) konfigurálva van minden névtérhez, amikor először kiépítik őket.
 
-Egy entitás eléréséhez az ügyfélnek egy adott [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)használatával létrehozott SAS-jogkivonatra van szüksége. A SAS-jogkivonat egy erőforrás-karakterlánc HMAC-SHA256 használatával jön létre, amely az erőforrás URI-címéből áll, amelyhez a hozzáférést igénylik, és egy lejárati lejárati lejárati lejárata az engedélyezési szabályhoz társított kriptográfiai kulccsal.
+Egy entitás eléréséhez az ügyfélnek egy adott [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)létrehozott sas-tokent kell használnia. Az SAS-tokent egy olyan erőforrás-karakterlánc HMAC-SHA256 hozza létre, amely a hozzáférést igényelő erőforrás-URI-t, valamint az engedélyezési szabályhoz társított titkosítási kulccsal lejáró lejáratot tartalmaz.
 
-Az Azure Relay SAS-hitelesítéstámogatása megtalálható az Azure .NET SDK 2.0-s és újabb verzióiban. A SAS támogatja a [SharedAccessAuthorizationRule programot.](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) A kapcsolati karakterláncot paraméterként fogadó összes API tartalmazza a SAS-kapcsolati karakterláncok támogatását.
+A Azure Relay SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és újabb verzióiban érhető el. Az SAS a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)támogatását is támogatja. Minden olyan API-t, amely a paramétert fogadja, az SAS-kapcsolatok karakterláncok támogatását tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-- Folytassa a [Service Bus-hitelesítés olvasását megosztott hozzáférésű aláírásokkal](../service-bus-messaging/service-bus-sas.md) a SAS-szal kapcsolatos további részletekért.
-- A hibrid kapcsolatok ról az [Azure Relay Hybrid Connections protokoll útmutatójában](relay-hybrid-connections-protocol.md) részletes információkat talál.
-- A Service Bus Messaging hitelesítésével és engedélyezésével kapcsolatos megfelelő információkért lásd: [Service Bus hitelesítés és engedélyezés.](../service-bus-messaging/service-bus-authentication-and-authorization.md) 
+- A SAS-vel kapcsolatos további részletekért olvassa [el Service Bus hitelesítés közös hozzáférési aláírásokkal](../service-bus-messaging/service-bus-sas.md) című cikkét.
+- A Hibrid kapcsolatok képességgel kapcsolatos részletes információkért tekintse meg a [Azure Relay hibrid kapcsolatok protokoll útmutatóját](relay-hybrid-connections-protocol.md) .
+- Service Bus üzenetkezelési hitelesítéssel és engedélyezéssel kapcsolatos információkért lásd: [Service Bus hitelesítés és engedélyezés](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
 
 [0]: ./media/relay-authentication-and-authorization/hcanon.png

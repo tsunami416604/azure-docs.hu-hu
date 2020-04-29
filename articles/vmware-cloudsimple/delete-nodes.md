@@ -1,6 +1,6 @@
 ---
-title: A CloudSimple vmware-megoldásának csomópontjainak törlése – Azure
-description: Ismerje meg, hogyan törölheti a csomópontokat a VMWare szolgáltatásból a CloudSimple telepítésével
+title: A VMware-megoldás csomópontjainak törlése a CloudSimple által – Azure
+description: Ismerje meg, hogyan törölhet csomópontokat VMWare-ről a CloudSimple-telepítéssel
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -9,44 +9,44 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024738"
 ---
-# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Csomópontok törlése az Azure VMware-megoldásból a CloudSimple által
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Csomópontok törlése az Azure VMware-megoldásból a CloudSimple használatával
 
-A CloudSimple-csomópontok at a létrehozásuk után a szolgáltatás méri.  A csomópontok mérésének leállításához törölni kell a csomópontokat.  Törli a nem használt csomópontokat az Azure Portalról.
+A CloudSimple-csomópontok a létrehozásuk után vannak mérten.  A csomópontok mérésének leállításához törölni kell a csomópontokat.  Törli a Azure Portal nem használt csomópontokat.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Egy csomópont csak a következő feltételek mellett törölhető:
+Csomópontot csak a következő feltételekkel lehet törölni:
 
-* A csomópontoksegítségével létrehozott magánfelhő törlődik.  Privát felhő törléséről olvassa el Az [Azure VMware-megoldás törlése a CloudSimple private cloud szolgáltatással című témakört.](delete-private-cloud.md)
-* A csomópont a magánfelhő zsugorításával lett eltávolítva a magánfelhőből.  A magánfelhő zsugorításáról a [Shrink Azure VMware Solution by CloudSimple Private Cloud című témakörben találja.](shrink-private-cloud.md)
+* A csomópontokkal létrehozott privát felhő törlődik.  Privát felhő törléséhez tekintse meg a [CloudSimple privát felhőből származó Azure VMware-megoldás törlése](delete-private-cloud.md)című témakört.
+* A csomópont el lett távolítva a privát felhőből a privát felhő zsugorodása mellett.  A privát felhő csökkentése érdekében lásd: [Az Azure VMware-megoldás zsugorítása a CloudSimple privát felhővel](shrink-private-cloud.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="delete-cloudsimple-node"></a>CloudSimple csomópont törlése
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Keresse meg a **CloudSimple csomópontokat.**
+2. CloudSimple- **csomópontok**keresése.
 
-   ![Keresés CloudSimple csomópontok](media/create-cloudsimple-node-search.png)
+   ![CloudSimple-csomópontok keresése](media/create-cloudsimple-node-search.png)
 
-3. Válassza a **CloudSimple csomópontok lehetőséget.**
+3. Válassza a **CloudSimple-csomópontok**lehetőséget.
 
-4. Válassza ki azokat a csomópontokat, amelyek nem tartoznak a törölni kívánt magánfelhőhöz.  **A PRIVATE CLOUD NAME** oszlop azt a magánfelhő-nevet jeleníti meg, amelyhez egy csomópont tartozik.  Ha egy csomópontot nem használ egy magánfelhő, az érték üres lesz. 
+4. Válassza ki azokat a csomópontokat, amelyek nem tartoznak a törölni kívánt privát felhőhöz.  A **saját felhő neve** oszlop azt a saját Felhőbeli nevet jeleníti meg, amelyhez a csomópont tartozik.  Ha egy csomópontot nem használ egy privát felhő, az érték üres lesz. 
 
-    ![Felhőegyszerű csomópontok kiválasztása](media/select-delete-cloudsimple-node.png)
+    ![CloudSimple-csomópontok kiválasztása](media/select-delete-cloudsimple-node.png)
 
 > [!NOTE]
-> Csak azok a csomópontok törölhetők, amelyek nem részei a magánfelhőnek.
+> Csak azokat a csomópontokat lehet törölni, amelyek nem részei a privát felhőnek.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [magánfelhőről](cloudsimple-private-cloud.md)
+* A [Private Cloud](cloudsimple-private-cloud.md) megismerése

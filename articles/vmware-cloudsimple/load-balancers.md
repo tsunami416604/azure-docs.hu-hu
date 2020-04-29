@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple-től – Válasszon terheléselosztási megoldást a CloudSimple privát felhőihez
-description: Bemutatja, hogy milyen terheléselosztási lehetőségek központi döngesztése egy alkalmazást magánfelhőben
+title: Azure VMware-megoldás a CloudSimple által – válasszon egy terheléselosztási megoldást a CloudSimple privát felhők számára
+description: Ismerteti az alkalmazások privát felhőben való üzembe helyezésének terheléselosztási beállításait.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -9,38 +9,38 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014878"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Válasszon terheléselosztási megoldást a CloudSimple privát felhőihez
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Terheléselosztási megoldás kiválasztása a privát felhők CloudSimple
 
-Amikor egy alkalmazást egy CloudSimple private cloud ban telepít, számos lehetőség közül választhat a terheléselosztáshoz.
+Ha egy CloudSimple privát felhőben helyez üzembe egy alkalmazást, a terheléselosztáshoz több beállítást is választhat.
 
-Választhat egy virtuális vagy szoftveralapú terheléselosztót a CloudSimple magánfelhőben, vagy akár azure L7-es terheléselosztót is használhat az Azure-előfizetésében a CloudSimple private cloudban futó webes csomagvirtuális gépek frontális működtetéséhez. Itt felsorolunk néhány lehetőséget:
+A CloudSimple saját felhőben is kiválaszthatja a virtuális vagy szoftveres terheléselosztó szolgáltatást, vagy akár az Azure-előfizetésében futó Azure L7 Load balancert is használhatja, hogy a webes rétegbeli virtuális gépek a CloudSimple privát felhőben fussanak. Itt felsorolunk néhány lehetőséget:
 
-## <a name="virtual-load-balancers"></a>Virtuális terheléselosztók
+## <a name="virtual-load-balancers"></a>Virtuális Load Balancer
 
-Virtuális terheléselosztó készülékeket a VMware-környezetben a vCenter-felületen keresztül telepíthet, és konfigurálhatja őket az alkalmazásforgalom előtér-előtérre.
+A vCenter felületen keresztül telepítheti a virtuális Load Balancer-berendezéseket a VMware-környezetbe, és beállíthatja őket az alkalmazás forgalmának befejezéséhez.
 
-Néhány népszerű gyártók: NginX: http://nginx.org/en/docs/http/load_balancing.html F5- BigIP https://www.f5.com/products/big-ip-services/virtual-editions - Traffic Manager: Citrix ADC:https://www.citrix.com/products/citrix-adc/
+Néhány népszerű gyártó: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC:https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Az Azure L7 terheléselosztó
+## <a name="azure-l7-load-balancer"></a>Azure L7 Load Balancer
 
-Ha az Azure Application Gateway-t L7-es terheléselosztóként használja a magánfelhőben futó alkalmazáshoz, nem kell kezelnie a terheléselosztó szoftvert. A terheléselosztó szoftvert az Azure kezeli. A privát felhőben lévő összes webes csomag virtuális gépe magáncélú IP-címeket használ, és a nevek feloldásához nincs szükség további NAT-szabályokra vagy nyilvános IP-címekre. A webes szintű virtuális gépek privát, alacsony késésű, nagy sávszélességű kapcsolaton keresztül kommunikálnak az Azure Application Gateway-rel.
+Ha az Azure Application Gatewayt L7 terheléselosztóként használja a privát felhőben futó alkalmazáshoz, nem kell kezelnie a terheléselosztó szoftverét. A terheléselosztó szoftverét az Azure felügyeli. A magánhálózati felhőben lévő összes webes virtuális gép magánhálózati IP-címeket használ, és nincs szükség további NAT-szabályokra vagy nyilvános IP-címekre a nevek feloldásához. A webes rétegbeli virtuális gépek privát, kis késleltetésű, nagy sávszélességű kapcsolaton keresztül kommunikálnak az Azure Application Gateway.
 
-Ha többet szeretne megtudni arról, hogyan konfigurálhatja ezt a megoldást, olvassa el a megoldás útmutató az Azure Application Gateway használata l7-es terheléselosztóként című útmutatót.
+Ha többet szeretne megtudni a megoldás konfigurálásáról, tekintse meg a megoldási útmutatót az Azure Application Gateway L7 Load Balancer használatával történő használatáról.
 
-## <a name="azure-internal-load-balancer"></a>Az Azure belső terheléselosztója
+## <a name="azure-internal-load-balancer"></a>Azure belső terheléselosztó
 
-Ha úgy dönt, hogy az alkalmazást egy hibrid környezetben futtatja, ahol a webes előtér-réteg egy Azure-beli virtuális hálózaton belül fut az Azure-előfizetésben, és az alkalmazás DB-rétege vmware virtuális gépeken fut a CloudSimple private cloudban, használhatja az Azure belső terhelését kiegyensúlyozó (L4 terheléselosztó) előtt a DB tier virtuális gépek forgalomkezelés.
+Ha úgy dönt, hogy az alkalmazást egy hibrid telepítésben futtatja, ahol a webes előtér-réteg az Azure-előfizetésben található Azure-vNet belül fut, és az alkalmazás adatbázis-rétege VMware virtuális gépeken fut a CloudSimple Private Cloud szolgáltatásban, az Azure belső terheléselosztó (L4 Load Balancer) az adatbázis-rétegbeli virtuális gépekhez, az adatforgalom kezeléséhez is használható.
 
-További információ: Azure [Belső terheléselosztó](../load-balancer/concepts-limitations.md#internalloadbalancer) dokumentáció.
+További információt az Azure [belső Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) dokumentációjában talál.
 
-## <a name="global-server-load-balancer"></a>Globális kiszolgálóterhelés-elosztó
+## <a name="global-server-load-balancer"></a>Globális kiszolgáló Load Balancer
 
-Ha DNS-alapú terheléselosztót keres, akkor használhatja az Azure Marketplace-en elérhető harmadik féltől származó megoldásokat, vagy a natív Azure-megoldással.
+Ha DNS-alapú Load balancert keres, akkor használhatja az Azure Marketplace-en elérhető, harmadik féltől származó megoldásokat vagy a natív Azure-megoldást is.
 
-Az Azure Traffic Manager egy DNS-alapú terheléselosztó, amely lehetővé teszi a forgalom optimális elosztását a szolgáltatások között a globális Azure-régiókban és a helyszínen, miközben magas rendelkezésre állást és válaszidőt biztosít. További információ: Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) dokumentáció.
+Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a forgalom optimális elosztását a globális Azure-régiók és a helyszíni szolgáltatások között, miközben magas rendelkezésre állást és válaszadást biztosít. További információt az Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) dokumentációjában talál.

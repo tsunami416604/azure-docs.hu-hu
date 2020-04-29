@@ -1,6 +1,6 @@
 ---
-title: Service Bus aszinkron üzenetküldés | Microsoft dokumentumok
-description: Ismerje meg, hogy az Azure Service Bus hogyan támogatja az aszinkronizációt egy áruházon keresztül, és továbbítsa a várólistákkal, témakörökkel és előfizetésekkel rendelkező továbbítási mechanizmust.
+title: Aszinkron üzenetkezelés Service Bus | Microsoft Docs
+description: Megtudhatja, hogyan támogatja a Azure Service Bus a asynchronism a várólistákkal, témakörökkel és előfizetésekkel rendelkező tárolási és továbbítási mechanizmussal.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,57 +15,57 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761032"
 ---
-# <a name="asynchronous-messaging-patterns-and-high-availability"></a>Aszinkron üzenetküldési minták és magas rendelkezésre állás
+# <a name="asynchronous-messaging-patterns-and-high-availability"></a>Aszinkron üzenetkezelési minták és magas rendelkezésre állás
 
-Az aszinkron üzenetküldés számos módon valósítható meg. Várólistákkal, témakörökkel és előfizetésekkel az Azure Service Bus támogatja az aszinkronizációt egy áruházon és továbbítási mechanizmuson keresztül. Normál (szinkron) művelet esetén üzeneteket küldhet várólistákba és témakörökbe, és üzeneteket fogadhat a várólistákból és az előfizetésekből. Az írott alkalmazások attól függnek, hogy ezek az entitások mindig elérhetők-e. Ha az entitás állapota megváltozik, a különböző körülmények miatt, szüksége van egy módja annak, hogy egy csökkentett képesség entitás, amely képes kielégíteni a legtöbb igényt.
+Az aszinkron üzenetkezelés számos különböző módon valósítható meg. A várólisták, témakörök és előfizetések esetében Azure Service Bus az asynchronism-t egy áruházbeli és egy továbbítási mechanizmuson keresztül támogatja. A normál (szinkron) művelet során üzeneteket küld a várólistáknak és témaköröknek, és üzeneteket fogadhat a várólistákból és előfizetésekről. Az írási alkalmazások attól függnek, hogy ezek az entitások mindig elérhetők-e. Ha az entitások állapota számos körülmény miatt megváltoznak, a lehető legkevesebb képességet biztosító entitást kell biztosítania, amely kielégíti a legtöbb igényt.
 
-Az alkalmazások általában aszinkron üzenetkezelési mintákat használnak számos kommunikációs forgatókönyv engedélyezéséhez. Alkalmazásokat hozhat létre, amelyekben az ügyfelek üzeneteket küldhetnek a szolgáltatásoknak, még akkor is, ha a szolgáltatás nem fut. A kommunikáció adatlöketeit tapasztaló alkalmazások esetében a várólista segíthet a terhelés kiegyenlítésében azáltal, hogy helyet biztosít a kommunikáció puffereléséhez. Végül egy egyszerű, de hatékony terheléselosztót kaphat az üzenetek több gépen történő elosztásához.
+Az alkalmazások jellemzően aszinkron üzenetkezelési mintákat használnak számos kommunikációs forgatókönyv engedélyezéséhez. Olyan alkalmazásokat hozhat létre, amelyekben az ügyfelek üzeneteket küldhetnek a szolgáltatásoknak, még akkor is, ha a szolgáltatás nem fut. Az olyan alkalmazások esetében, amelyek a kommunikációt tapasztalják, a várólista a pufferek közötti kommunikációhoz szükséges hely biztosításával segítheti a terhelést. Végül egy egyszerű, de hatékony terheléselosztó használatával több gépen is terjesztheti az üzeneteket.
 
-Ezen entitások elérhetőségének fenntartása érdekében fontolja meg számos különböző módon, amelyben ezek az entitások úgy tűnhet, nem érhető el a tartós üzenetküldő rendszer. Általánosságban elmondható, hogy azt látjuk, hogy az entitás elérhetetlenné válik az általunk írt alkalmazások számára a következő különböző módokon:
+Ezen entitások rendelkezésre állásának fenntartása érdekében vegye figyelembe, hogy az entitások számos különböző módon jelenhetnek meg tartós üzenetküldési rendszer esetén. Általánosságban azt láthatjuk, hogy az entitás elérhetetlenné válik az alábbi módon írt alkalmazások számára:
 
 * Nem lehet üzeneteket küldeni.
 * Nem lehet üzeneteket fogadni.
-* Nem lehet kezelni az entitásokat (létrehozás, beolvasás, frissítés vagy törlés).
-* Nem lehet kapcsolatba lépni a szolgáltatással.
+* Az entitások nem kezelhetők (entitások létrehozása, lekérése, frissítése vagy törlése).
+* Nem lehet kapcsolódni a szolgáltatáshoz.
 
-Minden ilyen hibák, különböző hibamódok léteznek, amelyek lehetővé teszik az alkalmazás továbbra is a munkát bizonyos szinten a csökkentett képesség. Egy olyan rendszer például, amely képes üzeneteket küldeni, de nem fogadja őket, továbbra is fogadhat rendeléseket a vevőktől, de nem tudja feldolgozni ezeket a rendeléseket. Ez a témakör ismerteti a lehetséges problémákat, és hogyan ezek a problémák enyhítésére. A Service Bus számos olyan megoldást vezetett be, amelyeket engedélyeznie kell, és ez a témakör az opt-in-tlement megoldások használatára vonatkozó szabályokat is ismerteti.
+Ezeknél a hibáknál különböző meghibásodási módok léteznek, amelyek lehetővé teszik, hogy az alkalmazások bizonyos szinten továbbra is végezzenek munkát. Például egy olyan rendszer, amely képes üzeneteket küldeni, de nem fogadja őket, továbbra is fogadhat rendeléseket az ügyfelektől, de nem tudja feldolgozni ezeket a rendeléseket. Ez a témakör a lehetséges problémákat ismerteti, valamint a problémák enyhítésének módját. Service Bus számos olyan megoldást vezetett be, amelyeknek be kell jelentkezniük, és ez a témakör a beléptetési megoldások használatának szabályozására vonatkozó szabályokat is tárgyalja.
 
-## <a name="reliability-in-service-bus"></a>Megbízhatóság a szervizbuszban
-Az üzenetekkel és az entitásokkal kapcsolatos problémák kezelésére többféle módon is kezelhetők, és a kockázatcsökkentés megfelelő használatára vonatkozó irányelvek is vonatkoznak. Az irányelvek megértéséhez először meg kell értenie, hogy mi sikertelen lehet a Service Bus ban. Az Azure-rendszerek kialakítása miatt ezek a problémák általában rövid életűek. Magas szinten az elérhetetlenség különböző okai a következők:
+## <a name="reliability-in-service-bus"></a>Megbízhatóság a Service Busban
+Az üzenetek és az entitások problémáinak kezeléséhez számos lehetőség áll rendelkezésre, és vannak olyan irányelvek, amelyek az ilyen enyhítések megfelelő használatát szabályozzák. Az irányelvek megismeréséhez először meg kell ismernie, hogy milyen hibák jelentkezhetnek Service Bus. Az Azure-rendszerek kialakítása miatt ezek a problémák általában rövid életűek. Magas szinten a nem rendelkezésre állás különböző okai a következők:
 
-* Szabályozás egy külső rendszerből, amelytől a Service Bus függ. A szabályozás a tárolási és számítási erőforrásokkal való interakciókból ered.
-* Probléma egy olyan rendszerhez, amelytől a Service Bus függ. Például a tároló egy adott része problémákba ütközhet.
-* A Service Bus hibája egyetlen alrendszeren. Ebben a helyzetben a számítási csomópont inkonzisztens állapotba kerülhet, és újra kell indítania magát, így az összes entitás, amely et szolgál a terhelési elosztás más csomópontokra. Ez viszont okozhat egy rövid ideig tartó lassú üzenetfeldolgozás.
-* A Service Bus hibája egy Azure-adatközponton belül. Ez egy "katasztrofális hiba", amelynek során a rendszer több percig vagy néhány óráig nem érhető el.
+* Olyan külső rendszer szabályozása, amelyen Service Bus függ. A szabályozás a tárolási és számítási erőforrásokkal folytatott interakciók során történik.
+* Probléma olyan rendszer esetén, amelyen Service Bus függ. A tárterület adott része például problémákat okozhat.
+* Service Bus meghibásodása egyetlen alrendszeren. Ebben az esetben a számítási csomópontok inkonzisztens állapotba kerülhetnek, és újra kell indítani magukat, ami minden entitás számára elérhetővé teszi a többi csomópontnak való terheléselosztást. Ez pedig rövid ideig tartó lassú feldolgozást eredményezhet.
+* Az Azure-adatközponton belüli Service Bus meghibásodása. Ez egy "katasztrofális hiba", amelynek során a rendszer több percig vagy néhány órán keresztül nem érhető el.
 
 > [!NOTE]
-> A **tárolás** kifejezés az Azure Storage-t és az SQL Azure-t is jelentheti.
+> A **tárolás** kifejezés az Azure Storage és a SQL Azure is jelentheti.
 > 
 > 
 
-A Service Bus számos megoldást tartalmaz ezekre a problémákra. A következő szakaszok ismertetik az egyes kérdéseket és azok megfelelő mérséklését.
+A Service Bus számos megoldást tartalmaz a problémákra. A következő fejezetek tárgyalják az egyes problémákat és azok megfelelő megoldásait.
 
 ### <a name="throttling"></a>Throttling
-A Service Bus segítségével a szabályozás lehetővé teszi a kooperatív üzenetdíj-kezelést. Minden egyes Service Bus-csomópont számos entitásnak ad otthont. Ezek az entitások a processzor, a memória, a tárolás és más aspektusak tekintetében támasztja alatt a rendszer igényeit. Ha ezek közül bármelyik a megadott küszöbértékeket meghaladó használatot észlel, a Service Bus megtagadhat egy adott kérelmet. A hívó kap egy [ServerBusyException és][ServerBusyException] újrapróbálkozik 10 másodperc után.
+A Service Bus a szabályozás lehetővé teszi a kooperatív üzenetek arányának kezelését. Minden egyes Service Bus csomópont számos entitást ad meg. Ezek az entitások a rendszeren a CPU, a memória, a tárolás és az egyéb aspektusok tekintetében igénylik a rendszer követelményeit. Ha ezen aspektusok bármelyike észleli a meghatározott küszöbértékeket meghaladó használatot, Service Bus megtagadhatja egy adott kérést. A hívó [ServerBusyException][ServerBusyException] kap, és 10 másodperc elteltével újrapróbálkozik.
 
-Ennek csökkentéseként a kódnak be kell olvasnia a hibát, és legalább 10 másodpercre le kell állítania az üzenet újrapróbálkozásait. Mivel a hiba az ügyfélalkalmazás különböző részeiközött is előfordulhat, várható, hogy minden egyes darab egymástól függetlenül végrehajtja az újrapróbálkozási logikát. A kód csökkentheti annak valószínűségét, hogy egy várólistán vagy témakörben engedélyezi a particionálást.
+Enyhítő megoldásként a kódnak el kell olvasnia a hibát, és legalább 10 másodpercig le kell állítani az üzenet újrapróbálkozásait. Mivel a hiba az ügyfélalkalmazás különböző részeiben fordulhat elő, a rendszer azt várja, hogy mindegyik darab önállóan végrehajtja az újrapróbálkozási logikát. A kód csökkentheti annak valószínűségét, hogy a particionálás a várólistán vagy a témakörben engedélyezve van.
 
-### <a name="issue-for-an-azure-dependency"></a>Azure-függőség kiadása
-Az Azure-on belüli egyéb összetevők esetenként szolgáltatási problémákkal is rendelkezhetnek. Ha például a Service Bus által használt rendszer frissítése folyamatban van, a rendszer ideiglenesen csökkentett képességeket tapasztalhat. Az ilyen típusú problémák megoldásához a Service Bus rendszeresen vizsgálja és alkalmazza a kockázatcsökkentést. Ezek a mérséklések mellékhatásai nem jelennek meg. Például a tárolással kapcsolatos átmeneti problémák kezeléséhez a Service Bus olyan rendszert valósít meg, amely lehetővé teszi az üzenetküldési műveletek következetes működését. A megoldás jellege miatt az elküldött üzenet akár 15 percet is igénybe vehet, hogy megjelenjen az érintett várólistában vagy előfizetésben, és készen álljon egy fogadási műveletre. Általánosságban elmondható, hogy a legtöbb entitás nem fogja tapasztalni ezt a problémát. Azonban az Azure-on belüli Service Bus-ban lévő entitások száma miatt ez a megoldás néha szükséges a Service Bus-ügyfelek egy kis részhalmaza esetén.
+### <a name="issue-for-an-azure-dependency"></a>Azure-függőséggel kapcsolatos probléma
+Az Azure-on belüli egyéb összetevők időnként szolgáltatási problémákat okozhatnak. Ha például egy Service Bus által használt rendszer frissítése folyamatban van, a rendszer átmenetileg csökkentheti a képességeket. Az ilyen típusú problémák megoldásához Service Bus rendszeresen vizsgálja és implementálja a mérsékléseket. Megjelennek az ilyen enyhítések mellékhatásai. Ha például a tárterülettel kapcsolatos átmeneti problémákat szeretné kezelni, Service Bus megvalósít egy olyan rendszer megvalósítását, amely lehetővé teszi, hogy az üzenetek küldésének műveletei következetesen működjenek. A mérséklés jellegéből adódóan az elküldött üzenetek akár 15 percet is igénybe vehetnek az érintett várólistában vagy előfizetésben, és készen állnak a fogadási műveletre. Általánosságban elmondható, hogy a legtöbb entitás nem fogja tapasztalni ezt a problémát. Az Azure-ban Service Busban lévő entitások száma miatt azonban ez a megoldás esetenként Service Bus ügyfelek kis részhalmazára is szükség van.
 
-### <a name="service-bus-failure-on-a-single-subsystem"></a>A Service Bus hibája egyetlen alrendszeren
-Minden alkalmazás esetén a körülmények a Service Bus belső összetevőjének inkonzisztenssé válását okozhatják. Amikor a Service Bus észleli ezt, adatokat gyűjt az alkalmazásból, hogy segítse a történtek diagnosztizálásában. Az adatok gyűjtése után az alkalmazás újraindul, hogy megpróbálja visszaadni azt egy konzisztens állapotba. Ez a folyamat meglehetősen gyorsan történik, és azt eredményezi, hogy egy entitás úgy tűnik, hogy néhány percig nem érhető el, bár a tipikus leállási idő sokkal rövidebb.
+### <a name="service-bus-failure-on-a-single-subsystem"></a>Egyetlen alrendszer meghibásodása Service Bus
+Bármely alkalmazással a körülmények a Service Bus belső összetevőjének inkonzisztensvé válását okozhatják. Ha Service Bus észleli ezt, az adatokat gyűjt az alkalmazásból, hogy segítséget nyújtsanak a történtek diagnosztizálásában. Az adatok összegyűjtése után az alkalmazás újraindul egy konzisztens állapotba való visszatérési kísérlet során. Ez a folyamat meglehetősen gyorsan zajlik, és egy entitás, amely úgy tűnik, hogy legfeljebb néhány percig elérhetetlenné válik, bár a jellemző leállási idő sokkal rövidebb.
 
-Ezekben az esetekben az ügyfélalkalmazás létrehoz egy [System.TimeoutException][System.TimeoutException] vagy [MessagingException][MessagingException] kivételt. A Service Bus automatikus ügyfél-újrapróbálkozási logika formájában tartalmaz egy kockázatcsökkentést. Miután az újrapróbálkozási időszak kimerült, és az üzenet nem kézbesítve, akkor fedezze fel más említett a cikkben a [leállások és katasztrófák kezeléséről][handling outages and disasters].
+Ezekben az esetekben az ügyfélalkalmazás egy [System. timeoutexception osztályról][System.TimeoutException] -vagy [MessagingException][MessagingException] -kivételt hoz létre. Service Bus a probléma megoldását automatikus ügyfél-újrapróbálkozási logika formájában tartalmazza. Ha az újrapróbálkozási időszak kimerült, és nem érkezik meg az üzenet, a cikk a leállások és a [katasztrófák kezelésével][handling outages and disasters]foglalkozó cikkben említettek alapján is megismerheti.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megtanulta az aszinkron üzenetküldés alapjait a Service Busban, további részleteket olvashat a [kimaradások és katasztrófák kezeléséről.][handling outages and disasters]
+Most, hogy megismerte az aszinkron üzenetkezelés alapjait Service Busban, olvassa el az [kimaradások és a katasztrófák kezelésével][handling outages and disasters]kapcsolatos további részleteket.
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

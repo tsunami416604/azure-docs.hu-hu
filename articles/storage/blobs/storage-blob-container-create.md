@@ -1,6 +1,6 @@
 ---
-title: Blob-tároló létrehozása vagy törlése a .NET használatával – Azure Storage
-description: Ismerje meg, hogyan hozhat létre vagy törölhet egy blobtárolót az Azure Storage-fiókban a .NET ügyfélkódtár használatával.
+title: BLOB-tároló létrehozása vagy törlése a .NET-Azure Storage használatával
+description: Megtudhatja, hogyan hozhat létre vagy törölhet blob-tárolókat az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135938"
 ---
-# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tároló létrehozása vagy törlése az Azure Storage szolgáltatásban a .NET használatával
+# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tároló létrehozása vagy törlése az Azure Storage-ban .NET-tel
 
-Az Azure Storage-ban lévő blobok tárolókba vannak rendezve. Blob feltöltése előtt létre kell hoznia egy tárolót. Ez a cikk bemutatja, hogyan hozhat létre és törölhet tárolókat az [Azure Storage-ügyfélkódtárban .](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+Az Azure Storage-beli Blobok tárolóba vannak rendezve. A Blobok feltöltéséhez először létre kell hoznia egy tárolót. Ez a cikk bemutatja, hogyan hozhat létre és törölhet tárolókat a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
 
-## <a name="name-a-container"></a>Tároló elnevezése
+## <a name="name-a-container"></a>Tároló neve
 
-A tároló nevének érvényes DNS-névnek kell lennie, mivel a tároló vagy blobjai címzéséhez használt egyedi URI részét képezi. A tároló elnevezésekénekkor kövesse az alábbi szabályokat:
+A tároló nevének érvényes DNS-névnek kell lennie, mivel az a tároló vagy a Blobok kezeléséhez használt egyedi URI részét képezi. A tárolók elnevezése esetén kövesse az alábbi szabályokat:
 
-- A tárolónevek 3 és 63 karakter közötti hosszúak lehetnek.
-- A tárolóneveknek betűvel vagy számmal kell kezdődniük, és csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatják.
-- A tárolónevekben két vagy több egymást követő kötőjel karakter nem engedélyezett.
+- A tároló neve 3 – 63 karakter hosszúságú lehet.
+- A tároló nevének betűvel vagy számmal kell kezdődnie, és csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat.
+- Két vagy több egymást követő kötőjel karakter nem engedélyezett a tárolók neveiben.
 
-A tároló URI-ja a következő formátumban van:
+A tároló URI-ja ebben a formátumban van:
 
 `https://myaccount.blob.core.windows.net/mycontainer`
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Tároló létrehozásához hívja meg az alábbi módszerek egyikét:
+Tároló létrehozásához hívja a következő módszerek egyikét:
 
 - [Létrehozás](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [Createifnotexists metódust](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
-A **Create** és **a CreateAsync** metódusok kivételt jelentenek, ha már létezik ilyen nevű tároló.
+A **create** és a **CreateAsync** metódus kivételt jelez, ha már létezik ilyen nevű tároló.
 
-A **CreateIfNotExists** és **a CreateIfNotExistsAsync** metódus logikai értéket ad vissza, amely jelzi, hogy a tároló t a rendszer létrehozta-e. Ha már létezik ilyen nevű tároló, akkor ezek a metódusok **hamis** értéket adnak vissza, jelezve, hogy nem jött létre új tároló.
+A **createifnotexists metódust** és a **CreateIfNotExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy létrejött-e a tároló. Ha már létezik ilyen nevű tároló, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy az új tároló nem lett létrehozva.
 
-A tárolók közvetlenül a tárfiók alatt jönnek létre. Nem lehet egyik konténert a másik alá ágyazni.
+A tárolók közvetlenül a Storage-fiók alatt jönnek létre. Egy tárolót nem lehet beágyazni egy másik alá.
 
-A következő példa aszinkron tárolót hoz létre:
+A következő példa aszinkron módon hoz létre egy tárolót:
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -79,15 +79,15 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 }
 ```
 
-## <a name="create-the-root-container"></a>A gyökértároló létrehozása
+## <a name="create-the-root-container"></a>A gyökér tároló létrehozása
 
-A gyökértároló alapértelmezett tárolóként szolgál a tárfiókhoz. Minden tárfióknak lehet egy gyökértárolója, amelynek *$root.*. Explicit módon létre kell hoznia vagy törölnie kell a gyökértárolót.
+A legfelső szintű tároló a Storage-fiók alapértelmezett tárolója. Mindegyik Storage-fiók rendelkezhet egy legfelső szintű tárolóval, amelynek neve *$root.*. Explicit módon létre kell hoznia vagy törölnie kell a legfelső szintű tárolót.
 
-Hivatkozhat a gyökértárolóban tárolt blobra a gyökértároló nevének megfoglalása nélkül. A gyökértároló lehetővé teszi, hogy a tárfiók-hierarchia legfelső szintjén hivatkozzon egy blobra. Hivatkozhat például egy blobra, amely a gyökértárolóban található a következő módon:
+A gyökér tárolóban tárolt blobokra hivatkozhat a gyökér-tároló nevének megadása nélkül is. A gyökérszintű tároló lehetővé teszi, hogy a Storage-fiók hierarchiájának legfelső szintjén lévő blobra hivatkozzon. Hivatkozhat például egy blobra, amely a következő módon található a gyökér tárolóban:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
-A következő példa szinkron módon hozza létre a gyökértárolót:
+A következő példa a gyökérszintű tárolót szinkron módon hozza létre:
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -117,18 +117,18 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 ## <a name="delete-a-container"></a>Tároló törlése
 
-A .NET tárolók törléséhez használja az alábbi módszerek egyikét:
+A tárolók .NET-ben való törléséhez használja a következő módszerek egyikét:
 
 - [Szabályzat](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
-- [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
+- [Deleteifexists paranccsal](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 
-A **Delete** és **a DeleteAsync** metódus kivételt okoz, ha a tároló nem létezik.
+A **delete** és a **DeleteAsync** metódus kivételt jelez, ha a tároló nem létezik.
 
-A **DeleteIfExists** és **a DeleteIfExistsAsync** metódus logikai értéket ad vissza, amely jelzi, hogy a tárolótörölve lett-e törölve. Ha a megadott tároló nem létezik, akkor ezek a módszerek **hamis** értéket adnak vissza, jelezve, hogy a tároló nem lett törölve.
+A **deleteifexists paranccsal** és a **DeleteIfExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy a tároló törölve lett-e. Ha a megadott tároló nem létezik, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy a tároló nem lett törölve.
 
-Miután törölt egy tárolót, nem hozhat létre azonos nevű tárolót legalább 30 másodpercig, de valószínűleg tovább. A tároló törlése közben az azonos nevű tároló létrehozására tett kísérlet sikertelen lesz a 409-es HTTP-hibakóddal (Ütközés). A tárolón vagy a benne található blobokon lévő egyéb műveletek sikertelenek lesznek a 404-es HTTP-hibakóddal (Nem található), miközben a tároló törlés alatt van.
+A tárolók törlése után nem hozhat létre azonos nevű tárolót legalább 30 másodpercig, és esetleg hosszabb időt is. A tároló törlését követően az azonos nevű tároló létrehozása sikertelen lesz a 409-es HTTP-hibakód miatt (ütközés). A tárolón vagy a benne található blobokon végrehajtott egyéb műveletek sikertelenek lesznek a 404-as HTTP-hibakód miatt (nem található) a tároló törlésekor.
 
 A következő példa törli a megadott tárolót, és kezeli a kivételt, ha a tároló nem létezik:
 
@@ -153,7 +153,7 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
 }
 ```
 
-A következő példa bemutatja, hogyan lehet törölni az összes olyan tárolót, amely egy megadott előtaggal kezdődik. A példa megszakítja a bérletet, ha van egy meglévő bérlet a tárolón.
+Az alábbi példa bemutatja, hogyan törölheti az összes olyan tárolót, amely a megadott előtaggal kezdődik. A példa megszakítja a bérletet, ha van egy meglévő bérlet a tárolóban.
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)

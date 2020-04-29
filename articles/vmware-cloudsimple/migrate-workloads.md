@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple-től – A számítási feladatok virtuális gépeiáttelepítése a privát felhőbe
-description: A virtuális gépek áttelepítése a helyszíni vCenterből a CloudSimple Private Cloud vCenter be
+title: Azure VMware-megoldás CloudSimple használatával – a számítási feladatok virtuális gépei áttelepíthetők a privát felhőbe
+description: Ismerteti, hogyan telepíthet át virtuális gépeket a helyszíni vCenter a CloudSimple saját Felhőbeli vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -9,40 +9,40 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019995"
 ---
-# <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>Számítási virtuális gépek áttelepítése a helyszíni vCenterből a Private Cloud vCenter-környezetbe
+# <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>A számítási feladatok virtuális gépei migrálása a helyszíni vCenter a saját Felhőbeli vCenter-környezetbe
 
-Virtuális gépek áttelepítése egy helyszíni adatközpontból a CloudSimple private cloud, számos lehetőség áll rendelkezésre.  A magánfelhő natív hozzáférést biztosít a VMware vCenterhez, és a VMware által támogatott eszközök a számítási feladatok áttelepítéséhez használhatók. Ez a cikk a vCenter áttelepítési lehetőségeinek egy részét ismerteti.
+Ha a virtuális gépeket a helyszíni adatközpontból a saját CloudSimple-felhőbe szeretné áttelepíteni, több lehetőség is rendelkezésre áll.  A privát felhő natív hozzáférést biztosít a VMware vCenter, a VMware által támogatott eszközöket pedig a munkaterhelések áttelepítéséhez használhatja. Ez a cikk a vCenter áttelepítési lehetőségeinek némelyikét ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Virtuális gépek és a helyszíni adatközpontból származó adatok áttelepítése hálózati kapcsolatot igényel az adatközpontból a privát felhőkörnyezetbe.  A hálózati kapcsolat létrehozásához használja az alábbi módszerek egyikét:
+A virtuális gépek és az adatok helyszíni adatközpontból történő áttelepítéséhez az adatközponttól a saját felhőalapú környezetéhez való hálózati kapcsolat szükséges.  A hálózati kapcsolat létrehozásához használja a következő módszerek egyikét:
 
-* Helyek közötti [VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni környezet és a magánfelhő között.
-* ExpressRoute globális elérési kapcsolat a helyszíni ExpressRoute-kapcsolat és a CloudSimple ExpressRoute-kapcsolat között.
+* [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni környezet és a saját felhő között.
+* ExpressRoute Global Reach kapcsolatot a helyszíni ExpressRoute-áramkör és egy CloudSimple ExpressRoute-áramkör között.
 
-A hálózati elérési út a helyszíni vCenter-környezetből a privát felhőbe elérhetőnek kell lennie a vMotion használatával a virtuális gépek áttelepítéséhez.  A helyszíni vCenter vMotion-hálózatának útválasztási képességekkel kell rendelkeznie.  Ellenőrizze, hogy a tűzfal engedélyezi-e a helyszíni vCenter és a Private Cloud vCenter közötti összes vMotion-forgalmat. (A magánfelhőben a vMotion hálózaton való útválasztás alapértelmezés szerint be van állítva.)
+A helyszíni vCenter-környezetből a privát felhőbe való hálózati elérési útnak elérhetőnek kell lennie a virtuális gépek vMotion használatával történő áttelepítéséhez.  A helyszíni vCenter lévő vMotion-hálózatnak útválasztási képességekkel kell rendelkeznie.  Ellenőrizze, hogy a tűzfal engedélyezi-e az összes vMotion-forgalmat a helyszíni vCenter és a saját felhőalapú vCenter között. (A privát felhőben a vMotion-hálózat útválasztása alapértelmezés szerint konfigurálva van.)
 
-## <a name="migrate-isos-and-templates"></a>Az ISO-k és sablonok áttelepítése
+## <a name="migrate-isos-and-templates"></a>ISO-és sablonok migrálása
 
-Ha új virtuális gépeket szeretne létrehozni a magánfelhőben, használja az ISO-k és a virtuálisgép-sablonok használatát.  Az ISO-k és sablonok feltöltéséhez és a private cloud vCenter szolgáltatásba való elérhetővé tenni, használja a következő módszert.
+Ha új virtuális gépeket szeretne létrehozni a saját felhőben, használja az ISO-ket és a virtuálisgép-sablonokat.  Az ISO-és sablonok saját Felhőbeli vCenter való feltöltéséhez és elérhetővé tételéhez használja a következő módszert.
 
-1. Töltse fel az ISO-t a private cloud vCenter-be a vCenter felhasználói felületéről.
-2. [Tartalomtár közzététele](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A0F1C13-7336-45CE-B211-610D39A6E1F4.html) a Private Cloud vCenter szolgáltatásban:
+1. Töltse fel az ISO-t a Private Cloud vCenter a vCenter felhasználói felületéről.
+2. [Hozzon közzé egy Content Library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A0F1C13-7336-45CE-B211-610D39A6E1F4.html) -t a saját felhőalapú vCenter:
 
-    1. Tegye közzé a helyszíni tartalomtárat.
-    2. Hozzon létre egy új tartalomtárat a Private Cloud vCenteren.
-    3. Iratkozzon fel a közzétett helyszíni tartalomtárra.
-    4. Szinkronizálja a tartalomtárat az előfizetett tartalmakhoz való hozzáféréshez.
+    1. Tegye közzé a helyszíni tartalom-függvénytárat.
+    2. Hozzon létre egy új tartalmat a saját felhő vCenter.
+    3. Fizessen elő a közzétett helyszíni tartalom-függvénytárra.
+    4. Szinkronizálja a tartalmi könyvtárat az előfizetett tartalmak eléréséhez.
 
-## <a name="migrate-vms-using-powercli"></a>Virtuális gépek áttelepítése a PowerCLI használatával
+## <a name="migrate-vms-using-powercli"></a>Virtuális gépek migrálása a PowerCLI használatával
 
-Virtuális gépek áttelepítése a helyszíni vCenter a private cloud vCenter, használja vMware PowerCLI vagy a Cross vCenter számítási feladatok áttelepítése segédprogram érhető el vmware Labs.  A következő mintaparancsfájl a PowerCLI áttelepítési parancsait mutatja be.
+Ha virtuális gépeket szeretne áttelepíteni a helyszíni vCenter a saját Felhőbeli vCenter, használja a VMware PowerCLI vagy a VMware Labs-ból elérhető Cross vCenter munkaterhelés-áttelepítési segédprogramot.  A következő minta parancsfájl a PowerCLI áttelepítési parancsokat mutatja be.
 
 ```
 $sourceVC = Connect-VIServer -Server <source-vCenter name> -User <source-vCenter user name> -Password <source-vCenter user password>
@@ -53,19 +53,19 @@ Move-VM -VM $vm -VMotionPriority High -Destination (Get-VMhost -Server $targetVC
 ```
 
 > [!NOTE]
-> A cél vCenter-kiszolgáló és az ESXi-állomások nevének használatához konfigurálja a DNS-továbbítást a helyszíni webfelhőbe.
+> A cél vCenter-kiszolgáló és ESXi-gazdagépek nevének használatához konfigurálja a DNS-továbbítást a helyszínről a privát felhőbe.
 
-## <a name="migrate-vms-using-nsx-layer-2-vpn"></a>Virtuális gépek áttelepítése NSX Layer 2 VPN használatával
+## <a name="migrate-vms-using-nsx-layer-2-vpn"></a>Virtuális gépek migrálása a NSX 2. rétegbeli VPN használatával
 
-Ez a beállítás lehetővé teszi a számítási feladatok élő áttelepítését a helyszíni VMware környezetből az Azure-beli magánfelhőbe.  Ezzel a kiterjesztett Layer 2 hálózattal a helyszíni alhálózat elérhető lesz a magánfelhőben.  Áttelepítés után a virtuális gépekhez nem szükséges új IP-címhozzárendelés.
+Ez a beállítás lehetővé teszi a számítási feladatok élő áttelepítését a helyszíni VMware-környezetből az Azure-beli privát felhőbe.  Ezzel a kibővített 2. rétegbeli hálózattal a helyszíni alhálózat elérhető lesz a privát felhőben.  Az áttelepítés után az új IP-cím hozzárendelése nem szükséges a virtuális gépekhez.
 
-[A 2.](migration-layer-2-vpn.md)
+A számítási [feladatok migrálása a 2. rétegbeli hálózatokkal](migration-layer-2-vpn.md) című témakör leírja, hogyan használható 2. RÉTEGbeli VPN a 2. rétegbeli hálózat kiépítéséhez a helyi környezetből a saját felhőbe.
 
-## <a name="migrate-vms-using-backup-and-disaster-recovery-tools"></a>Virtuális gépek áttelepítése biztonsági mentési és vész-helyreállítási eszközökkel
+## <a name="migrate-vms-using-backup-and-disaster-recovery-tools"></a>Virtuális gépek migrálása biztonsági mentési és vész-helyreállítási eszközök használatával
 
-Virtuális gépek áttelepítése a privát felhőbe biztonsági mentési/visszaállítási eszközök és vész-helyreállítási eszközök használatával végezhető el.  Használja a magánfelhőt célként a külső gyártótól származó eszközzel létrehozott biztonsági mentések visszaállításához.  A magánfelhő a VMware SRM vagy egy külső gyártó tól származó eszköz használatával is használható vész-helyreállítási célként.
+A virtuális gépeknek a privát felhőbe történő áttelepítése a biztonsági mentési/visszaállítási eszközök és a vész-helyreállítási eszközök használatával végezhető el.  A privát felhőt célként használhatja a harmadik féltől származó eszköz használatával létrehozott biztonsági másolatok visszaállításához.  A privát felhő a VMware SRM vagy egy harmadik féltől származó eszköz használatával vész-helyreállítási célpontként is használható.
 
-Az eszközök használatával további információt az alábbi témakörökben talál:
+Ezen eszközök használatával kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [A Számítási feladatok virtuális gépeinek biztonsági és biztonsági és biztonsági, a(z) Veeam B&R használatával](backup-workloads-veeam.md)
-* [A CloudSimple Private Cloud beállítása vész-helyreállítási helyként a helyszíni VMware-számítási feladatokhoz](disaster-recovery-zerto.md)
+* [Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával](backup-workloads-veeam.md)
+* [A CloudSimple saját felhő beállítása vész-helyreállítási helyként a helyszíni VMware-alapú számítási feladatokhoz](disaster-recovery-zerto.md)

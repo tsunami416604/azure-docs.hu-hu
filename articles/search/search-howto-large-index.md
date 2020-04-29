@@ -1,7 +1,7 @@
 ---
-title: Nagy adatkészlet indexelése beépített indexelők használatával
+title: Nagyméretű adathalmaz indexelése beépített indexelő használatával
 titleSuffix: Azure Cognitive Search
-description: Stratégiák nagy adatindexeléshez vagy számítási szempontból intenzív indexeléshez kötegelt módban, erőforrás-elemzésen és az ütemezett, párhuzamos és elosztott indexelési technikákon keresztül.
+description: Stratégiák a nagyméretű adatindexeléshez vagy a számítási feladatok számításához kötegelt módban, újraelosztással, valamint az ütemezett, párhuzamos és elosztott indexeléshez szükséges technikákkal.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,95 +9,95 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190959"
 ---
-# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagy adatkészletek indexelése az Azure Cognitive Search szolgáltatásban
+# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
-Az adatkötetek növekedésével vagy a feldolgozási igények változásával előfordulhat, hogy az egyszerű vagy alapértelmezett indexelési stratégiák már nem praktikusak. Az Azure Cognitive Search esetében számos módszer létezik a nagyobb adatkészletek elhelyezésére, az adatfeltöltési kérelmek strukturálásától kezdve az ütemezett és elosztott számítási feladatok forrásspecifikus indexelőjének használatáig.
+Mivel az adatmennyiség növekedése vagy feldolgozása szükségessé vált, előfordulhat, hogy az egyszerű vagy az alapértelmezett indexelési stratégiák már nem praktikusak. Az Azure Cognitive Search esetében több módszer áll rendelkezésre a nagyobb adatkészletek elhelyezésére, az adatfeltöltési kérelmek szerkezetének módjától kezdve az ütemezett és elosztott számítási feladatokhoz forrás-specifikus indexelő használatával.
 
-Ugyanezek a technikák vonatkoznak a hosszú ideig futó folyamatokra is. A [párhuzamos indexelésben](#parallel-indexing) ismertetett lépések különösen hasznosak a számításigényes indexeléshez, például a képelemzéshez vagy a természetes nyelvi feldolgozáshoz egy [AI dúsítási folyamatban.](cognitive-search-concept-intro.md)
+Ugyanezek a technikák a hosszan futó folyamatokra is érvényesek. A [párhuzamos indexelésben](#parallel-indexing) leírt lépések különösen hasznosak a számítási igényű indexeléshez, például a képelemzéshez vagy a természetes nyelvi feldolgozáshoz egy [mesterséges intelligencia](cognitive-search-concept-intro.md)-bővítési folyamatban.
 
-A következő szakaszok három, nagy mennyiségű adat indexelésének technikáját ismertetik.
+A következő részekben a nagy mennyiségű adatindexeléshez három módszer található.
 
-## <a name="option-1-pass-multiple-documents"></a>1. lehetőség: Több dokumentum átadása
+## <a name="option-1-pass-multiple-documents"></a>1. lehetőség: több dokumentum továbbítása
 
-A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa, ha egyetlen kérelemben több dokumentumot vagy rekordot küld el. Mindaddig, amíg a teljes hasznos adat 16 MB alatt van, a kérelem legfeljebb 1000 dokumentumot képes kezelni egy tömeges feltöltési műveletben. Ezek a korlátok attól függetlenül érvényesek, hogy a [Documents REST hozzáadása API-t](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vagy a .NET SDK [Index metódusát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) használja. Mindkét API esetében 1000 dokumentumot kell csomagolnia az egyes kérelmek törzsébe.
+A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek attól függetlenül, hogy a .NET SDK-ban a [dokumentumok hozzáadása REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vagy a [tárgymutató metódust](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) használja. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
 
-A kötegindexelés rest vagy .NET vagy indexelők használatával történő egyedi kérelmekhez van megvalósítva. Néhány indexelő konként működik. Pontosabban az Azure Blob indexelése a kötegméretet 10 dokumentumra állítja be a nagyobb átlagos dokumentumméret elismeréseként. [Indexelő létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)alapú indexelők esetén `BatchSize` beállíthatja, hogy az argumentum testre szabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
-
-> [!NOTE]
-> A dokumentum méretének lekicsiben tartása érdekében ne adjon hozzá nem lekérdezhető adatokat az indexhez. A képek és más bináris adatok közvetlenül nem kereshetők, és nem tárolhatók az indexben. Ha nem lekérdezhető adatokat szeretne integrálni a keresési eredményekbe, meg kell határoznia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.
-
-## <a name="option-2-add-resources"></a>2. lehetőség: Erőforrások hozzáadása
-
-Szolgáltatások, amelyek a standard [tarifacsomagok](search-sku-tier.md) egyikén vannak kiépítve, gyakran kihasználatlan kapacitással rendelkeznek mind a tárolási, mind a számítási feladatokhoz (lekérdezések vagy indexelés), ami [a partíció és a replika számának növelését](search-capacity-planning.md) a nagyobb adatkészletek elhelyezésére nyilvánvaló megoldássá teszi. A legjobb eredmény érdekében mindkét erőforrásra szüksége van: a tárolási partíciókra és az adatbetöltési munka replikáira.
-
-A replikák és partíciók növelése számlázható események, amelyek növelik a költségeket, de ha nem folyamatosan indexel maximális terhelés alatt, hozzáadhat léptéket az indexelési folyamat időtartama alatt, majd az indexelés után visszaállíthatja az erőforrásszinteket lefelé. Kész.
-
-## <a name="option-3-use-indexers"></a>3. lehetőség: Indexelők használata
-
-[Az indexelők](search-indexer-overview.md) a támogatott Azure-adatforrások kereshető tartalomfeltérképezésére szolgálnak. Bár nem kifejezetten nagyméretű indexeléshez készült, számos indexelő képesség különösen hasznos a nagyobb adatkészletek befogadásához:
-
-+ Az ütemezők lehetővé teszik az indexelés rendszeres időközönkénttörténő csomagolását, hogy az idő múlásával eloszthassa.
-+ Az ütemezett indexelés az utolsó ismert megállóhelyen folytatódhat. Ha egy adatforrás nem teljesen bejárása egy 24 órás ablakon belül, az indexelő folytatja az indexelést a második napon, ahol abbahagyta.
-+ Az adatok kisebb egyedi adatforrásokra történő particionálása lehetővé teszi a párhuzamos feldolgozást. A forrásadatokat kisebb összetevőkre bonthatja, például az Azure Blob storage több tárolóra, majd létrehozhat megfelelő, több [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Cognitive Search szolgáltatásban, amelyek párhuzamosan indexelhetők.
+A Batch-indexelés a REST vagy a .NET használatával, vagy az indexelő segítségével valósítható meg az egyes kérelmek esetében. Néhány indexelő több különböző korlátozás alatt működik. Pontosabban, az Azure Blob indexelése a köteg méretét 10 dokumentumra állítja be a nagyobb méretű dokumentumok méretének elismeréseként. Az indexelő [REST API létrehozásán](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)alapuló indexek esetében beállíthatja az `BatchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
 
 > [!NOTE]
-> Az indexelők adatforrás-specifikusak, így az indexelő megközelítés használata csak az Azure-beli kiválasztott adatforrások esetében használható: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob storage](search-howto-indexing-azure-blob-storage.md), Table [storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+> A dokumentumok méretének megőrzéséhez ne adjon hozzá nem lekérdezhető adatmennyiséget egy indexhez. A képek és más bináris adatfájlok nem kereshetők közvetlenül, és nem tárolhatók az indexben. A nem lekérdezhető adatmennyiség keresési eredményekbe való integrálásához meg kell adnia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.
+
+## <a name="option-2-add-resources"></a>2. lehetőség: erőforrások hozzáadása
+
+A [standard szintű díjszabási](search-sku-tier.md) szinten kiépített szolgáltatások gyakran kihasználatlan kapacitást biztosítanak a tároláshoz és a munkaterhelésekhez (lekérdezésekhez vagy indexeléshez), ami [növeli a partíció és a replika számára a](search-capacity-planning.md) nagyobb adatkészletek fogadásának kézenfekvő megoldását. A legjobb eredmény érdekében mindkét erőforrásra szüksége van: partíciók tároláshoz, valamint az adatfeldolgozáshoz szükséges replikák.
+
+A megnövelt replikák és partíciók olyan számlázható események, amelyek növelik a költségeket, de ha nem folyamatosan indexeli a maximális terhelés alatt, az indexelési folyamat időtartamára skálát adhat hozzá, majd az indexelés befejezése után lefelé állíthatja az erőforrás-szinteket.
+
+## <a name="option-3-use-indexers"></a>3. lehetőség: indexelő használata
+
+Az [Indexelő](search-indexer-overview.md) a támogatott Azure-adatforrások bejárására szolgál a kereshető tartalomhoz. Míg a nem kifejezetten a nagyméretű indexeléshez készült, több indexelő képesség különösen hasznos a nagyobb adatkészletek fogadásához:
+
++ Az ütemező segítségével rendszeres időközönként kioszthatja az indexelést, így az idő múlásával kiterjesztheti.
++ Az ütemezett indexelés az utolsó ismert leállítási ponton is folytatódhat. Ha egy adatforrást nem teljes egészében bemászott egy 24 órás időszakon belül, az indexelő a második napon folytatja az indexelést, bárhol marad.
++ Az adatmennyiség kisebb különálló adatforrásokra való particionálásával párhuzamos feldolgozást tesz lehetővé. A forrásadatok feloszthatók kisebb összetevőkre, például több tárolóra az Azure Blob Storage-ban, majd létrehozhatja a megfelelő, több [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Cognitive Searchban, amely párhuzamosan indexelhető.
+
+> [!NOTE]
+> Az indexelő az adatforrás-specifikus, ezért az indexelő módszer használata csak az Azure-beli kiválasztott adatforrások esetén használható: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos db](search-howto-index-cosmosdb.md).
 
 ### <a name="scheduled-indexing"></a>Ütemezett indexelés
 
-Indexelő ütemezése fontos mechanizmus a nagy adatkészletek feldolgozásához, valamint a lassú folyamatok, például a képelemzés egy kognitív keresési folyamat. Az indexelő feldolgozása 24 órás időszakon belül működik. Ha a feldolgozás nem fejeződik be 24 órán belül, az indexelő ütemezésének viselkedése az Ön előnyére válhat. 
+Az indexelő ütemezése fontos mechanizmus a nagyméretű adatkészletek feldolgozásához, valamint a lassú futású folyamatokhoz, például a képelemzéshez a kognitív keresési folyamatokban. Az indexelő feldolgozása egy 24 órás időszakon belül működik. Ha a feldolgozást 24 órán belül nem sikerül befejezni, az indexelő ütemezésének viselkedése működhet az előnyben. 
 
-Az ütemezett indexelés tervezés szerint meghatározott időközönként kezdődik, és a feladat általában befejeződik, mielőtt a következő ütemezett intervallumban folytatná. Ha azonban a feldolgozás nem fejeződik be az intervallumon belül, az indexelő leáll (mert kifutott az időből). A következő időközönként a feldolgozás ott folytatódik, ahol az utolsó abbahagyta, és a rendszer nyomon követi, hogy ez hol történik. 
+A tervezés szerint a ütemezett indexelés adott időközönként indul el, és a következő ütemezett időközön végzett folytatás előtt a feladatok általában befejeződik. Ha azonban a feldolgozás nem fejeződik be az intervallumon belül, az indexelő leáll (mert elfogyott az idő). A következő időszakban a feldolgozás folytatja az utolsó leállást, és a rendszer nyomon követi, hogy hol történik. 
 
-A gyakorlatban a több napon át terjedő indexterhelések esetében az indexelőt 24 órás ütemezésszerint helyezheti el. Amikor az indexelés folytatódik a következő 24 órás ciklus, újraindul az utolsó ismert jó dokumentum. Ily módon az indexelő napok on-át dolgozhat egy dokumentumhátralékon, amíg az összes feldolgozatlan dokumentumot fel nem dolgozza fel. Erről a megközelítésről további információt a [Nagy adatkészletek indexelése az Azure Blob storage-ban című témakörben talál.](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets) Az ütemezések beállításáról bővebben az [Indexelő REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) című témakörben vagy [az Azure Cognitive Search indexelők ütemezése](search-howto-schedule-indexers.md)című témakörben olvashat bővebben.
+A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
 ### <a name="parallel-indexing"></a>Párhuzamos indexelés
 
-A párhuzamos indexelési stratégia több adatforrás egyszerre történő indexelésén alapul, ahol minden adatforrás-definíció az adatok egy részét határozza meg. 
+A párhuzamos indexelési stratégia a több adatforrások egyidejű indexelésén alapul, ahol az egyes adatforrás-definíciók az adathalmazt határozzák meg. 
 
-A nem rutinszerű, számításigényes indexelési követelmények – például a kognitív keresési folyamatban, képelemzésben vagy természetes nyelvi feldolgozásban beolvasott dokumentumokon – a párhuzamos indexálási stratégia gyakran a megfelelő megközelítés a a legrövidebb idő alatt. Ha kiküszöbölheti vagy csökkentheti a lekérdezési kérelmeket, a lekérdezéseket nem egyszerre kezelő szolgáltatás párhuzamos indexelése a legjobb stratégia a lassú feldolgozású tartalom nagy törzsén való munkavégzéshez. 
+A nem rutin jellegű, számítási igényű indexelési követelmények – mint például az OCR a beolvasott dokumentumokban egy kognitív keresési folyamatban, képelemzés vagy természetes nyelvi feldolgozás – a párhuzamos indexelési stratégia gyakran a megfelelő módszer a hosszú ideig futó folyamat végrehajtásához a lehető legrövidebb időn belül. Ha törölheti vagy csökkentheti a lekérdezési kérelmeket, a párhuzamos indexelés olyan szolgáltatáson, amely nem kezeli egyszerre a lekérdezéseket, a legjobb stratégiai lehetőség a lassú feldolgozású tartalom nagy törzse. 
 
 A párhuzamos feldolgozás a következő elemekből áll:
 
-+ Ossza fel a forrásadatokat több tároló vagy több virtuális mappa között ugyanabban a tárolóban. 
-+ Az egyes mini adatkészleteket a saját [adatforrásához](https://docs.microsoft.com/rest/api/searchservice/create-data-source)rendelje hozzá , párosítva a saját [indexelőjével.](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ A kognitív kereséshez hivatkozzon az egyes indexelő definíciók ban ugyanazokat a [skillseteket.](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ Írja be ugyanazt a célkeresési indexet. 
-+ Ütemezze az összes indexelőt egyszerre való futtatásra.
++ A forrásadatok felosztása több tároló vagy ugyanazon tárolóban található több virtuális mappa között. 
++ Rendelje hozzá az egyes mini-adatkészleteket saját [adatforrásához](https://docs.microsoft.com/rest/api/searchservice/create-data-source), párosítva a saját [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer)szolgáltatásával.
++ A kognitív kereséshez az egyes indexelő definíciók azonos [készségkészlet](https://docs.microsoft.com/rest/api/searchservice/create-skillset) hivatkozhat.
++ Írás ugyanabba a cél keresési indexbe. 
++ Ütemezze az összes indexelő futtatását egy időben.
 
 > [!NOTE]
-> Az Azure Cognitive Search, nem rendelhet hozzá egyedi replikák vagy partíciók indexelés vagy lekérdezésfeldolgozás. A rendszer határozza meg az erőforrások felhasználásának módját. A lekérdezési teljesítményre gyakorolt hatás megértéséhez megpróbálhatja a párhuzamos indexelést egy tesztkörnyezetben, mielőtt éles környezetbe görgetné.  
+> Az Azure Cognitive Searchban nem rendelhet hozzá különálló replikákat vagy partíciókat az indexeléshez vagy a lekérdezések feldolgozásához. A rendszer határozza meg az erőforrások felhasználásának módját. A lekérdezési teljesítményre gyakorolt hatás megismerése érdekében próbálkozzon párhuzamos indexeléssel egy tesztkörnyezetben, mielőtt éles környezetbe helyezné azokat.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Párhuzamos indexelés konfigurálása
 
-Indexelők esetében a feldolgozási kapacitás lazán alapul egy indexelő alrendszer minden egyes szolgáltatási egység (SU) által használt keresési szolgáltatás. Több egyidejű indexelők is lehetséges az Azure Cognitive Search-szolgáltatások alapszintű vagy standard szintű, legalább két replikával rendelkező azure cognitive Search-szolgáltatások. 
+Az indexek esetében a feldolgozási kapacitás lazán a keresési szolgáltatás által használt egyes szolgáltatási egységek (SU) egy indexelő alrendszerén alapul. Több párhuzamos indexelő is lehetséges az Azure Cognitive Search-szolgáltatásokban, amelyek legalább két replikával rendelkező alapszintű vagy standard csomagokban vannak kiépítve. 
 
-1. Az [Azure Portalon](https://portal.azure.com)a keresési szolgáltatás **irányítópultjának áttekintése** lapon ellenőrizze a **tarifacsomag,** hogy tudja kezelni a párhuzamos indexelés. Mind az alapszintű, mind a standard szintű szintek több replikát kínálnak.
+1. A [Azure Portal](https://portal.azure.com)keresési szolgáltatás irányítópultjának **Áttekintés** lapján tekintse meg a **díjszabási szintet** annak megerősítéséhez, hogy képes-e párhuzamos indexelést fogadni. Az alapszintű és a standard csomag több replikát is kínál.
 
-2. A **Beállítások** > **méretezése**párbeszédpanelen növelje a párhuzamos feldolgozás [replikáit:](search-capacity-planning.md) minden egyes indexelő-munkaterheléshez egy további replika. Hagyjon elegendő számot a meglévő lekérdezési kötethez. A lekérdezési számítási feladatok indexeléshez való feláldozása nem jó kompromisszum.
+2. A **Beállítások** > **méretezése**elemnél növelje a párhuzamos feldolgozás [replikáit](search-capacity-planning.md) : egy további replikát az egyes indexelő munkaterhelésekhez. Hagyjon elegendő számot a meglévő lekérdezési kötethez. Az indexeléshez szükséges lekérdezési számítási feladatok feláldozása nem jó kompromisszum.
 
-3. Az adatokat több tárolóba oszthatja olyan szinten, amelyet az Azure Cognitive Search indexelői elérhetnek. Ez lehet több tábla az Azure SQL Database-ben, több tároló az Azure Blob storage-ban, vagy több gyűjtemény. Minden táblához vagy tárolóhoz adjon meg egy adatforrás-objektumot.
+3. Az Azure Cognitive Search indexelő által elérhetővé tett szinten több tárolóba terjesztheti az adattárat. Ez több tábla lehet Azure SQL Database, több tároló az Azure Blob Storage-ban vagy több gyűjtemény is. Definiáljon egy adatforrás-objektumot minden táblához vagy tárolóhoz.
 
-4. Hozzon létre és ütemezzen több indexelőt párhuzamosan futtatandó anno:
+4. Több indexelő létrehozása és ütemezett futtatása párhuzamosan:
 
-   + Tegyük fel, hogy egy szolgáltatás hat replikák. Konfiguráljon hat indexelőt, amelyek mindegyike az adatkészlet egyhatodát tartalmazó adatforráshoz van rendelve a teljes adatkészlet hatirányú felosztásához. 
+   + Tegyük fel, hogy egy szolgáltatás hat replikával rendelkezik. A hat indexelő beállítása, amelyek mindegyike egy olyan adatforráshoz van rendelve, amely a teljes adathalmaz 6 irányú felosztására szolgáló adathalmaz egy-hatodik példányát tartalmazza. 
 
-   + Mutasson minden indexelőt ugyanarra az indexre. A kognitív keresési számítási feladatok, pont minden indexelő ugyanazzal a skillset.
+   + Minden indexelő ugyanarra az indexre mutasson. A kognitív keresési munkaterhelések esetében minden indexelő ugyanarra a készségkészlet mutat.
 
-   + Az egyes indexelő-definíciókon belül ütemezze ugyanazt a futásidejű végrehajtási mintát. Például `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` létrehoz egy ütemezést a 2018-05-15 minden indexelők, nyolc órás időközönként futó.
+   + Az egyes indexelő definíciók között ütemezze a futtatási időpontot. Például `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` létrehoz egy 2018-05-15-os ütemtervet az összes indexelő esetében, amely nyolc órás időközönként fut.
 
-Az ütemezett időpontban az összes indexelők megkezdik a végrehajtást, az adatok betöltését, a dúsítások alkalmazását (ha kognitív keresési folyamatot konfigurált), és írásban az indexbe. Az Azure Cognitive Search nem zárolja a frissítések indexét. Az egyidejű írások kezelése történik, és az újrapróbálkozás, ha egy adott írási művelet sikertelen az első próbálkozásra.
+Az ütemezett időpontban minden indexelő megkezdi a végrehajtást, az adattöltést, a dúsítások alkalmazását (ha a kognitív keresési folyamatot konfigurálta), és az indexbe ír. Az Azure Cognitive Search nem zárolja a frissítések indexét. Az egyidejű írásokat a rendszer felügyeli, és újrapróbálkozik, ha egy adott írás nem sikerül az első kísérlet során.
 
 > [!Note]
-> Replikák növelésekor fontolja meg a partíciók számának növelése, ha az index mérete az előrejelzések szerint jelentősen növekszik. A partíciók indexelt tartalom szeleteit tárolják; minél több partícióvan, annál kisebb a szelet mindegyik kell tárolni.
+> A replikák növelésekor érdemes lehet növelni a partíciók darabszámát, ha az index mérete várhatóan jelentősen megnő. A partíciók az indexelt tartalom szeleteit tárolják; minél több partíció van, annál kisebb a szelet, amelyet egyenként tárolnia kell.
 
 ## <a name="see-also"></a>Lásd még
 
@@ -107,4 +107,4 @@ Az ütemezett időpontban az összes indexelők megkezdik a végrehajtást, az a
 + [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md)
 + [Azure Table Storage-indexelő](search-howto-indexing-azure-tables.md)
-+ [Biztonság az Azure Cognitive Search területén](search-security-overview.md)
++ [Biztonság az Azure Cognitive Search](search-security-overview.md)

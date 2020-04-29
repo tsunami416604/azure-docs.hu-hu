@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – VPN konfigurálása a helyszíni és a magánfelhő között
-description: A helyszíni hálózat és a CloudSimple magánfelhő közötti hely–vagy pont-hely VPN-kapcsolat konfigurálása
+title: Azure VMware-megoldás CloudSimple – VPN konfigurálása a helyszíni és a privát felhő között
+description: Útmutató helyek közötti vagy pont – hely típusú VPN-kapcsolat konfigurálásához a helyszíni hálózat és a CloudSimple privát felhője között
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,112 +9,112 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087125"
 ---
-# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása a CloudSimple private cloudszolgáltatással
+# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz
 
-A VPN-átjárók lehetővé teszik, hogy a helyszíni hálózatról és az ügyfélszámítógépről csatlakozzon a CloudSimple hálózathoz.  Ebben a cikkben a VPN-átjárók a CloudSimple portálról történő beállításával kapcsolatos információkat talál.  A helyszíni hálózat és a CloudSimple-hálózat közötti VPN-kapcsolat hozzáférést biztosít a vCenterhez és a privát felhő munkaterheléseihez. A CloudSimple támogatja mind a pont-hely VPN, mind a helyek közötti VPN-átjárókat.
+A VPN-átjárók lehetővé teszik, hogy a helyszíni hálózatról és egy ügyfélszámítógépről távolról kapcsolódjon a CloudSimple hálózathoz.  Ebből a cikkből megtudhatja, hogyan állíthatja be a VPN-átjárókat a CloudSimple-portálról.  A helyszíni hálózat és a CloudSimple közötti VPN-kapcsolat hozzáférést biztosít a vCenter és a munkaterhelésekhez a saját felhőben. A CloudSimple a pont – hely VPN-t és a helyek közötti VPN-átjárókat is támogatja.
 
-## <a name="vpn-gateway-types"></a>VPN-átjárótípusok
+## <a name="vpn-gateway-types"></a>VPN-átjárók típusai
 
-* **A point-to-site VPN kapcsolat** a legegyszerűbb módja annak, hogy a számítógépről csatlakozzon a magánfelhőhöz. A helyek közötti VPN-kapcsolat segítségével távolról csatlakozhat a magánfelhőhöz.
-* **A helyek közötti VPN-kapcsolat** lehetővé teszi a magánfelhőbeli számítási feladatok beállítását a helyszíni szolgáltatások eléréséhez. A helyszíni Active Directoryt is használhatja identitásforrásként a privát felhőbeli vCenter-kiszolgálón való hitelesítéshez.  Jelenleg **a házirendalapú VPN-típus** támogatott.
+* A **pont – hely VPN** -kapcsolat a legegyszerűbb módja a saját felhőhöz való csatlakozásnak a számítógépről. A pont – hely VPN-kapcsolat használatával távolról csatlakozhat a privát felhőhöz.
+* A **helyek közötti VPN-** kapcsolat lehetővé teszi a saját Felhőbeli számítási feladatok beállítását a helyszíni szolgáltatások eléréséhez. A helyszíni Active Directory identitás forrásaként is használhatja a saját felhőalapú vCenter való hitelesítéshez.  Jelenleg a **házirend-alapú VPN-** típus támogatott.
 
-Egy régióban létrehozhat egy helyek közötti VPN-átjárót és egy pont-hely VPN átjárót.
+Egy régióban létrehozhat egy helyek közötti VPN-átjárót és egy pont – hely típusú VPN-átjárót.
 
 ## <a name="point-to-site-vpn"></a>Pont–hely VPN
 
-A pont-hely VPN-átjáró létrehozásáról a [Pont-hely VPN átjáró létrehozása](vpn-gateway.md#create-point-to-site-vpn-gateway)című témakörben található.
+Pont – hely típusú VPN-átjáró létrehozásával kapcsolatban lásd: [pont – hely típusú VPN-átjáró létrehozása](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Csatlakozás a CloudSimple szolgáltatáshoz a point-to-site VPN használatával
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Csatlakozás a CloudSimple pont – hely típusú VPN használatával
 
-VPN-ügyfél szükséges a CloudSimple-hez való csatlakozáshoz a számítógépről.  Töltse le az [OpenVPN klienst](https://openvpn.net/community-downloads/) Windows rendszerre, vagy [a Viscosity-t](https://www.sparklabs.com/viscosity/download/) macOS-re és OS X-re.
+A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szükséges.  Töltse le a Windowshoz készült [OpenVPN-ügyfelet](https://openvpn.net/community-downloads/) , illetve a MacOS és az OS X [viszkozitását](https://www.sparklabs.com/viscosity/download/) .
 
-1. Indítsa el a CloudSimple portált, és válassza a **Hálózat**lehetőséget.
-2. Válassza a **VPN-átjáró lehetőséget.**
-3. A VPN-átjárók listájában kattintson a pont-hely VPN átjáróra.
+1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
+2. Válassza a **VPN Gateway**lehetőséget.
+3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
 4. Válassza a **Felhasználók** lehetőséget.
-5. Kattintson a **VPN-konfiguráció letöltése lehetőségre**
+5. Kattintson a **saját VPN-konfiguráció letöltése** elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)
 
 6. A konfiguráció importálása a VPN-ügyfélen
 
-    * A [Windows-ügyfél konfigurációjának importálására](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) vonatkozó utasítások
-    * A [konfiguráció macOS vagy OS X rendszeren történő importálásának](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection) utasításai
+    * Útmutató a [konfiguráció importálásához a Windows-ügyfélen](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
+    * Útmutató a [konfiguráció importálásához MacOS vagy OS X rendszeren](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Csatlakozzon a CloudSimple VPN-átjáróhoz.
+7. Csatlakozás a CloudSimple VPN-átjáróhoz.
 
-Az alábbi példa a **viskozitási ügyféllel**történő kapcsolat importálása látható.
+Az alábbi példa azt mutatja be, hogyan importálhatók a kapcsolatok a **viszkozitási ügyféllel**.
 
-#### <a name="import-connection-on-viscosity-client"></a>Kapcsolat importálása viskozitási ügyfélen
+#### <a name="import-connection-on-viscosity-client"></a>Importálási kapcsolatok a viszkozitási ügyfélen
 
-1. Bontsa ki a VPN-konfiguráció tartalmát a letöltött .zip fájlból.
+1. Bontsa ki a VPN-konfiguráció tartalmát a letöltött. zip fájlból.
 
-2. Nyissa meg a Viscosity-t a számítógépen.
+2. Nyissa meg a viszkozitást a számítógépén.
 
-3. Kattintson **+** az ikonra, és válassza **a Kapcsolat** > importálása**fájlból**lehetőséget.
+3. Kattintson az **+** ikonra, és válassza a **kapcsolatok** > importálása**fájlból**lehetőséget.
 
     ![VPN-konfiguráció importálása fájlból](media/import-p2s-vpn-config.png)
 
-4. Jelölje ki a használni kívánt protokoll OpenVPN konfigurációs fájlját (.ovpn), és kattintson a **Megnyitás gombra.**
+4. Válassza ki a használni kívánt protokollhoz tartozó OpenVPN konfigurációs fájlt (. ovpn), majd kattintson a **Megnyitás**gombra.
 
     ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
 
-A kapcsolat most megjelenik a Viszkozitás menüben.
+A kapcsolatok most a viszkozitás menüben jelennek meg.
 
 #### <a name="connect-to-the-vpn"></a>Kapcsolódás a VPN-hez
 
-Ha a Viscosity OpenVPN-ügyféllel szeretne csatlakozni a VPN-hez, válassza ki a kapcsolatot a menüből. A menüikon frissül, jelezve, hogy a kapcsolat létrejött.
+Ha a VPN-kapcsolathoz a viszkozitási OpenVPN-ügyféllel szeretne csatlakozni, válassza ki a kapcsolatot a menüből. A menü ikonja azt jelzi, hogy a kapcsolódás létrejött.
 
 ![VPN](media/vis03.png)
 
-### <a name="connecting-to-multiple-private-clouds"></a>Csatlakozás több privát felhőhöz
+### <a name="connecting-to-multiple-private-clouds"></a>Csatlakozás több privát Felhőkhöz
 
-A pont-hely VPN-kapcsolat feloldja az első létrehozott magánfelhő DNS-nevét. Ha más privát felhőket szeretne elérni, frissítenie kell a VPN-ügyfél DNS-kiszolgálóját.
+A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első saját felhő DNS-nevét. Ha más privát Felhőkhöz szeretne hozzáférni, frissítenie kell a DNS-kiszolgálót a VPN-ügyfélen.
 
-1. Indítsa el [a CloudSimple portált.](access-cloudsimple-portal.md)
+1. Indítsa el a [CloudSimple portált](access-cloudsimple-portal.md).
 
-2. Nyissa meg az **Erőforrások** > **magánfelhőket,** és válassza ki azt a magánfelhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
-3. A magánfelhő **Összefoglaló** lapján másolja a Magánfelhő DNS-kiszolgáló IP-címét az **Alapszintű adatok csoportba.**
+3. A privát felhő **Összegzés** lapján másolja a saját FELHŐBELI DNS-kiszolgáló IP-címét az **alapszintű adatok**területen.
 
-    ![Magánfelhő DNS-kiszolgálói](media/private-cloud-dns-server.png)
+    ![Privát Felhőbeli DNS-kiszolgálók](media/private-cloud-dns-server.png)
 
-4. Kattintson a jobb gombbal a számítógép tálcáján lévő Viszkozitás ikonra, és válassza a **Beállítások parancsot.**
+4. Kattintson a jobb gombbal a számítógép rendszertálcán található viszkozitás ikonra, és válassza a **Beállítások**lehetőséget.
 
     ![VPN](media/vis00.png)
 
-5. Válassza ki a CloudSimple VPN-kapcsolatot.
+5. Válassza ki a CloudSimple VPN-kapcsolat lehetőséget.
 
     ![VPN-kapcsolat](media/viscosity-client.png)
 
-6. A kapcsolat tulajdonságainak módosításához kattintson a **Szerkesztés** gombra.
+6. A kapcsolódási tulajdonságok módosításához kattintson a **Szerkesztés** gombra.
 
     ![VPN-kapcsolat szerkesztése](media/viscosity-edit-connection.png)
 
-7. Kattintson a **Hálózat** fülre, és adja meg a magánfelhő DNS-kiszolgáló IP-címét vesszővel vagy térközrel elválasztva, és a tartományt a . ```cloudsimple.io```  Válassza **a VPN-kiszolgáló által küldött DNS-beállítások figyelmen kívül hagyása**lehetőséget.
+7. Kattintson a **hálózatkezelés** lapra, és adja meg a saját FELHŐbeli DNS-kiszolgáló IP-címét vesszővel vagy szóközzel elválasztva, valamint a tartományt ```cloudsimple.io```.  Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
 
-    ![VPN-hálózat](media/viscosity-edit-connection-networking.png)
+    ![VPN-hálózatkezelés](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
-> Az első magánfelhőhöz való csatlakozáshoz távolítsa el ezeket a beállításokat, és csatlakozzon a VPN-kiszolgálóhoz.
+> Az első saját felhőhöz való csatlakozáshoz távolítsa el ezeket a beállításokat, és kapcsolódjon a VPN-kiszolgálóhoz.
 
 ## <a name="site-to-site-vpn"></a>Helyek közötti VPN
 
-A helyek közötti VPN-átjáró létrehozásáról a [Helyek közötti VPN-átjáró létrehozása](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)című témakörben található.  A helyszíni hálózatról a magánfelhőbe irányuló helyek közötti VPN-kapcsolat biztosítja ezeket az előnyöket.  
+Helyek közötti VPN-átjáró létrehozásához tekintse meg a [helyek közötti VPN-átjáró létrehozása](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)című témakört.  A helyszíni hálózat és a privát felhő közötti helyek közötti VPN-kapcsolat biztosítja ezeket az előnyöket.  
 
-* A privát felhőbeli vCenter kisegítő lehetőségei a helyszíni hálózat bármely munkaállomásáról
-* A helyszíni Active Directory használata vCenter-identitásforrásként
-* Virtuálisgép-sablonok, ISO-k és egyéb fájlok kényelmes átvitele a helyszíni erőforrásokból a privát felhőbeli vCenterbe
-* A magánfelhőn futó számítási feladatok hozzáférhetősége a helyszíni hálózatról
+* A saját felhőalapú vCenter kisegítő lehetőségei a helyszíni hálózat bármely munkaállomásáról
+* Helyszíni Active Directory használata vCenter-identitás forrásaként
+* A virtuálisgép-sablonok, az ISO-eszközök és más fájlok kényelmes átvitele a helyszíni erőforrásokból a saját Felhőbeli vCenter
+* A helyszíni hálózatról a saját felhőben futó munkaterhelések hozzáférhetősége
 
-A helyszíni VPN-átjáró magas rendelkezésre állású módban való beállításához [olvassa el A magas rendelkezésre állású VPN-kapcsolat konfigurálása](high-availability-vpn-connection.md)című témakört.
+Ha magas rendelkezésre állású módban szeretné beállítani a helyszíni VPN-átjárót, tekintse meg a [magas rendelkezésre állású VPN-kapcsolat konfigurálása](high-availability-vpn-connection.md)című témakört.
 
 > [!IMPORTANT]
->    1. Állítsa a TCP MSS-befogást 1200-ra a VPN-eszközön. Vagy ha a VPN-eszközök nem támogatják az MSS befogást, akkor az MTU-t az alagút-kapcsolaton 1240 bájtra állíthatja.
-> 2. A helyek közötti VPN beállítása után továbbítsa a *.cloudsimple.io DNS-kéréseit a magánfelhő DNS-kiszolgálóinak.  Kövesse a [helyszíni DNS-telepítő utasításait.](on-premises-dns-setup.md)
+>    1. Állítsa be a TCP MSS-befogást a 1200-es méretre a VPN-eszközön. Ha a VPN-eszközök nem támogatják a MSS-befogást, akkor a bújtatási felületen lévő MTU-t 1240 bájtra is állíthatja.
+> 2. Miután beállította a helyek közötti VPN-t, továbbítsa a *. cloudsimple.io DNS-kérelmeit a privát Felhőbeli DNS-kiszolgálókra.  Kövesse a helyszíni [DNS-telepítő](on-premises-dns-setup.md)utasításait.

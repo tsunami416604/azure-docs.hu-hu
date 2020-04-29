@@ -1,7 +1,7 @@
 ---
-title: Videoindexelő-jelenetek, -felvételek és kulcsképek
+title: Video Indexer jelenetek, felvételek és kulcsképek
 titleSuffix: Azure Media Services
-description: Ez a témakör áttekintést nyújt a Video Indexer jelenetekről, felvételekről és kulcsképekről.
+description: Ez a témakör áttekintést nyújt a Video Indexer jelenetekről, a képekről és a kulcsképekről.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,52 +11,52 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245940"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
 
-A Video Indexer támogatja a videók szerkezeti és szemantikai tulajdonságokon alapuló időbeli egységekre történő szegmentálását. Ez a funkció lehetővé teszi az ügyfelek számára, hogy könnyedén böngészhessenek, kezelhessenek és szerkeszthessék videotartalmaikat különböző részletességek alapján. A jelen témakörben ismertetett jelenetek, felvételek és kulcsképek alapján például.   
+Video Indexer támogatja a videók szegmentálását a strukturális és szemantikai tulajdonságok alapján. Ez a funkció lehetővé teszi az ügyfeleknek, hogy különböző részletességek alapján könnyedén böngészhetik, kezelhetik és szerkeszthetik a videó tartalmát. Például a jelen témakörben ismertetett jelenetek, felvételek és kulcsképek alapján.   
 
 ![Jelenetek, felvételek és kulcsképkockák](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
-## <a name="scene-detection"></a>Jelenetfelismerés  
+## <a name="scene-detection"></a>Jelenet észlelése  
  
-A Video Indexer vizuális jelzések alapján határozza meg, hogy egy jelenet mikor változik meg a videóban. A jelenet egyetlen eseményt ábrázol, és egymást követő felvételek sorozatából áll, amelyek szemantikailag kapcsolódnak egymáshoz. A jelenet miniatűrje az alapul szolgáló felvétel első kulcsképe. A videóindexelő a videókat jelenetekbe szegezi az egymást követő felvételek színkoherenciája alapján, és lekéri az egyes jelenetek kezdési és befejezési idejét. A jelenetfelismerés kihívást jelentő feladatnak számít, mivel a videók szemantikai aspektusainak számszerűsítését foglalja magában.
+Video Indexer határozza meg, hogy a jelenet Mikor változik a videóban a vizualizációs célzások alapján. Egy jelenet egyetlen eseményt ábrázol, és egymást követő felvételekből áll, amelyek szemantikai kapcsolatban állnak egymással. A jelenet miniatűrje a mögöttes felvétel első képkockája. A video Indexer egy videót helyez el a jeleneteken az egymást követő felvételek közötti színkoherencia alapján, és lekéri az egyes jelenetek kezdő és záró időpontját. A jelenet észlelése kihívást jelentő feladat, mivel a videók szemantikai szempontjait is magában foglalja.
 
 > [!NOTE]
-> Legalább 3 jelenetet tartalmazó videókra alkalmazható.
+> Olyan videókra vonatkozik, amelyek legalább 3 jelenetet tartalmaznak.
 
 ## <a name="shot-detection"></a>Lövés észlelése
 
-A Video Indexelő a képolvasás vizuális jelzések alapján határozza meg, hogy mikor változik a felvétel a videóban, a szomszédos képkockák színsémájának hirtelen és fokozatos átmeneteinek követésével. A felvétel metaadatai tartalmazzák a kezdési és befejezési időpontot, valamint a felvételben szereplő kulcsképek listáját. A felvételek egymást követő képkockák, amelyeket ugyanabból a fényképezőgépből vettek.
+Video Indexer meghatározza, hogy mikor változik a videó a vizualizációs dákó alapján, hogy a rendszer hirtelen és fokozatos átmeneteket is nyomon követ a szomszédos keretek színsémájában. A shot metaadatai a kezdő és a záró időpontot is tartalmazzák, valamint a lövéshez tartozó kulcsképek listáját. A felvételek egymást követő képkockák, amelyek ugyanabból a kamerából származnak.
 
-## <a name="keyframe-detection"></a>Kulcskép észlelése
+## <a name="keyframe-detection"></a>Kulcsképek észlelése
 
-A Video Indexer kiválasztja az egyes felvételekre legjobban reprezentáló keret(eke)t. A kulcsképek a teljes videóból kiválasztott reprezentatív képkockák az esztétikai tulajdonságok (például kontraszt és állandóság) alapján. A Video Indexer a kép metaadatainak részeként lekéri a kulcsképazonosítók listáját, amely alapján az ügyfelek nagy felbontású képként kinyerhetik a kulcsképet.  
+Video Indexer kiválasztja az egyes lövésekhez legjobban illő keret (eke) t. A kulcsképek a teljes videóban az esztétikai tulajdonságok (például a kontraszt és a stabilitás) alapján kiválasztott reprezentatív keretek. Video Indexer lekéri a képkockák azonosítóinak listáját a shot metaadatainak részeként, amely alapján az ügyfelek nagy felbontású képként kinyerhetik a képkockát.  
 
 ### <a name="extracting-keyframes"></a>Kulcsképek kibontása
 
-A videó nagy felbontású kulcsképének kinyeréséhez először fel kell töltenie és indexelnie kell a videót.
+A videóhoz tartozó nagy felbontású kulcsképek kinyeréséhez először fel kell töltenie és indexelni kell a videót.
 
 ![Kulcsképek](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
-#### <a name="with-the-video-indexer-website"></a>A Video Indexer weboldalával
+#### <a name="with-the-video-indexer-website"></a>A Video Indexer webhelyén
 
-Kulcsképek kinyeréséhez a Video Indexer webhely használatával töltse fel és indexelje a videót. Miután az indexelési feladat befejeződött, kattintson a **Letöltés** gombra, és válassza **az Eltérések (ZIP)** lehetőséget. Ezzel letölti az összetevők mappát a számítógépre. 
+A kulcsképek kinyeréséhez használja a Video Indexer webhelyet, töltse fel és indexelje a videóját. Az indexelési feladatok befejezését követően kattintson a **Letöltés** gombra, és válassza az összetevők **(zip)** lehetőséget. Ezzel letölti az összetevők mappát a számítógépére. 
 
 ![Kulcsképek](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-Csomagolja ki és nyissa meg a mappát. A *_KeyframeThumbnail* mappában, és megtalálja az összes kulcsképkockákat, amelyeket kivont a videó. 
+Bontsa ki és nyissa meg a mappát. A *_KeyframeThumbnail* mappában a videóból kinyert összes kulcsképek megtalálhatók. 
 
 #### <a name="with-the-video-indexer-api"></a>A Video Indexer API-val
 
-Ha kulcsképeket szeretne beszerezni a Video Indexer API használatával, töltse fel és indexelje a videót a [Videohívás feltöltése](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) funkcióval. Az indexelési feladat befejezése után hívja meg a [Videoindex bekerülése](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)hívást. Ez megadja az összes betekintést, hogy a Video Indexer kivont a tartalom egy JSON-fájlban.  
+Ha a Video Indexer API-val szeretné lekérni a kulcsképek használatát, töltse fel és indexelje a videót a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) hívás használatával. Az indexelési feladatok befejezése után hívja meg a [Get video indexet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Ez megadja az összes olyan bepillantást, amelyet a rendszer egy JSON-fájlban lévő tartalomból Video Indexer kinyerni.  
 
-Minden egyes felvétel metaadatának részeként megkapja a kulcsképazonosítók listáját. 
+Ekkor megjelenik a kulcsképek azonosítóinak listája az egyes shot metaadatok részeként. 
 
 ```json
 "shots":[  
@@ -98,35 +98,35 @@ Minden egyes felvétel metaadatának részeként megkapja a kulcsképazonosító
 ]
 ```
 
-Most minden ilyen kulcskép-azonosítót futtatnia kell a [Miniatűrök beírása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) híváson. Ezzel letölti az egyes kulcsképkocka-képeket a számítógépre. 
+Ekkor futtatnia kell ezeket a kulcsképek-azonosítókat a [miniatűrök beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) hívásban. Ezzel letölti a kulcsképek lemezképeit a számítógépre. 
 
-## <a name="editorial-shot-type-detection"></a>Szerkesztői felvétel típusának észlelése
+## <a name="editorial-shot-type-detection"></a>Szerkesztői shot típusú észlelés
 
-Kulcsképek társított felvételek a kimeneti JSON. 
+A kulcsképek a kimenet JSON-ban található felvételekhez vannak társítva. 
 
-Az egyes felvételekhez társított felvétel típusa az insights JSON-ban a szerkesztői típusát jelöli. Előfordulhat, hogy ezek a felvétel típus jellemzői hasznosak, ha a videókat klipekbe, előzetesekbe vagy művészi célokra egy adott kulcsképstílust keres. A különböző típusok meghatározása az egyes felvételek első kulcsképének elemzése alapján kerül meghatározásra. A felvételeket az első kulcsképkocka képaránya, mérete és helye alapján azonosítják. 
+Az adatforrások JSON-beli felvételéhez tartozó shot típus a szerkesztői típust jelöli. Ezek a shot Type-jellemzők hasznosak lehetnek a videók klipek, pótkocsik számára történő szerkesztésekor, illetve a képkockák adott stílusának művészi célokra való keresésekor. A különböző típusok meghatározása az egyes lövések első képkockájának elemzése alapján történik. A képeket az első képkockában megjelenő arcok méretezése, mérete és helye azonosítja. 
 
-A felvétel mérete és léptéke a kamera és a keretben megjelenő arcok közötti távolság alapján kerül meghatározásra. Ezekkel a tulajdonságokkal a Video Indexer a következő felvételtípusokat észleli:
+A shot méretének és méretezésének meghatározása a kamera és a keretben megjelenő arcok távolsága alapján történik. Ezeknek a tulajdonságoknak a használatával a Video Indexer észleli a következő shot típusokat:
 
-* Széles: azt mutatja, egy egész személy testét.
-* Közepes: mutatja egy személy felsőtest és az arc.
-* Közelről: főleg egy személy arcát mutatja.
-* Extrém közelkép: egy személy arcát mutatja, amint kitölti a képernyőt. 
+* Széles: egy teljes személy törzsét jeleníti meg.
+* Közepes: egy személy felső törzsét és arcát mutatja.
+* Bezárás: elsősorban egy személy arcát mutatja.
+* Extreme Közelkép: egy személy arcát jeleníti meg a képernyő kitöltésével. 
 
-A felvétel típusai a tárgy karaktereinek helye alapján is meghatározhatók a keret középpontjához képest. Ez a tulajdonság a következő képtípusokat határozza meg a Video Indexer ben:
+A lövési típusok a tulajdonos karakterek helye alapján is meghatározhatók a keret közepéhez képest. Ez a tulajdonság határozza meg a következő shot típusokat a Video Indexerban:
 
-* Bal oldali arc: egy személy jelenik meg a bal oldalon a keret.
-* Középső lap: egy személy jelenik meg a keret középső részén.
-* Jobb oldali arc: egy személy jelenik meg a jobb oldalon a keret.
-* Kültéri: egy személy jelenik meg egy szabadtéri környezetben.
-* Beltéri: egy személy jelenik meg egy beltéri környezetben.
+* Bal oldali: a keret bal oldalán egy személy jelenik meg.
+* Középső arc: egy személy jelenik meg a keret középső régiójában.
+* Jobb oldali: egy személy jelenik meg a keret jobb oldalán.
+* Kültéri: egy személy jelenik meg egy külső beállításban.
+* Beltéri: egy személy megjelenik egy beltéri környezetben.
 
 További jellemzők:
 
-* Két lövés: két személy arcát mutatja közepes méretű.
-* Több arc: kettőnél több személy.
+* Két kép: két személy közepes méretű arca látható.
+* Több arc: több mint két személy.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az API által létrehozott Video Indexer kimenet vizsgálata](video-indexer-output-json-v2.md#scenes)
+[Vizsgálja meg az API által létrehozott Video Indexer kimenetet](video-indexer-output-json-v2.md#scenes)

@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés az Azure Media Kódolóról a Media Encoder Standard szolgáltatásra | Microsoft dokumentumok
-description: Ez a témakör bemutatja, hogyan lehet áttelepíteni az Azure Media Kódolóa a Media Encoder Standard médiaprocesszor.
+title: Migrálás Azure Media Encoderról Media Encoder Standardra | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan lehet áttelepíteni a Azure Media Encoderról a Media Encoder Standard Media Processor szolgáltatásba.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513501"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés az Azure Media Kódolóról a Media Encoder Standard szolgáltatásra
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Azure Media Encoderról Media Encoder Standard
 
-Ez a cikk ismerteti az örökölt Azure Media Encoder (AME) médiaprocesszorról (amely kivonás alatt) a Media Encoder Standard médiaprocesszorra való áttelepítés lépéseit ismerteti. A nyugdíjazási dátumokat lásd az [örökölt összetevők](legacy-components.md) témakörben.
+Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a régi Azure Media Encoder (AME) adathordozó-processzorról (amely kivonásra kerül) a Media Encoder Standard Media Processor szolgáltatásba. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
 
-Amikor fájlokat kódol a ame-vel, az ügyfelek `H264 Adaptive Bitrate MP4 Set 1080p`általában egy elnevezett előre beállított karakterláncot használtak, például . Az áttelepítéshez a kódot frissíteni kell, hogy a **Media Encoder Standard** médiaprocesszort használhassa a `H264 Multiple Bitrate 1080p`képkezelő helyett, és az egyik egyenértékű [rendszerkészletet,](media-services-mes-presets-overview.md) például a . 
+A fájlok az AME-val való kódolásakor az ügyfelek általában egy megnevezett `H264 Adaptive Bitrate MP4 Set 1080p`előre definiált karakterláncot használnak, például:. A Migrálás érdekében a kódot frissíteni kell, hogy a **Media Encoder standard** adathordozó-processzort a ame helyett használja, és az egyik egyenértékű [rendszer-előállítson](media-services-mes-presets-overview.md) , például `H264 Multiple Bitrate 1080p`:. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés a Media Encoder Standard alkalmazásba
+## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés Media Encoder Standardre
 
-Íme egy tipikus C# kódminta, amely az örökölt médiaprocesszort használja. 
+Íme egy tipikus C#-mintakód, amely az örökölt adathordozó-processzort használja. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Itt van a frissített verzió, amely a Media Encoder Standard.Here is the updated version that uses Media Encoder Standard.
+A Media Encoder Standardt használó frissített verzió.
 
 ```csharp
 // Declare a new job. 
@@ -64,13 +64,13 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Speciális forgatókönyvek 
 
-Ha saját kódolási készletet hozott létre az AME számára a sémával, akkor a [Media Encoder Standard megfelelő séma](media-services-mes-schema.md)jelenik meg. Ha kérdése van azzal kapcsolatban, hogyan képezze le a régebbi beállításokat az új kódolóhoz, kérjük, lépjen kapcsolatba velünk amailto:amshelp@microsoft.com  
+Ha a saját sémája alapján hozta létre saját kódolási beállításkészletét az AME-hoz, akkor a [Media Encoder standard egyenértékű sémával](media-services-mes-schema.md)rendelkezik. Ha kérdése van, hogy miként képezhető le a régebbi beállítások az új kódolóhoz, forduljon hozzánk a következőn keresztülmailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Ismert különbségek 
 
-A Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményt nyújt, és jobb minőségű kimenetet eredményez, mint a régebbi AME kódoló. Továbbá: 
+Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményű, és jobb minőségű kimenetet eredményez, mint az örökölt AME-kódoló. Továbbá: 
 
-* A Media Encoder Standard a kis- és nagyjavítástól eltérő elnevezési konvencióval rendelkező kimeneti fájlokat hoz létre.
-* A Media Encoder Standard olyan összetevőket hoz létre, mint például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl metaadatait](media-services-output-metadata-schema.md)tartalmazó fájlok.
+* Media Encoder Standard különböző elnevezési konvencióval rendelkező kimeneti fájlokat hoz létre, mint az AME.
+* A Media Encoder Standard összetevőket, például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl (oka) metaadatokat](media-services-output-metadata-schema.md)tartalmazó fájlokat hoz létre.
 
 ## <a name="next-steps"></a>További lépések
 

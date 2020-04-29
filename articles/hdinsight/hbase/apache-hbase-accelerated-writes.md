@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
-description: Áttekintést nyújt az Azure HDInsight gyorsított írási funkciójáról, amely prémium szintű felügyelt lemezeket használ az Apache HBase írási előrenapló teljesítményének javítása érdekében.
+description: Áttekintést nyújt az Azure HDInsight gyorsított írási funkcióról, amely prémium szintű felügyelt lemezeket használ az Apache HBase Write Ahead-napló teljesítményének javítására.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,43 +8,43 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76764584"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
 
-Ez a cikk az Apache HdInsight **accelerated Writes** funkciójának hátterét, valamint az írási teljesítmény hatékony használatát ismerteti. **Az Accelerated Writes** [az Azure prémium szintű SSD-felügyelt lemezeit](../../virtual-machines/linux/disks-types.md#premium-ssd) használja az Apache HBase Írási előrenapló (WAL) teljesítményének javítása érdekében. Ha többet szeretne megtudni az Apache HBase-ről, olvassa el [a Mi az Apache HBase a HDInsight ban.](apache-hbase-overview.md)
+Ez a cikk a **gyorsított írások** funkciójának hátterét mutatja be az Apache HBase az Azure HDInsight, valamint azt, hogy miként használható hatékonyan az írási teljesítmény javítása érdekében. A **gyorsított írások** az [Azure Premium SSD Managed Disks](../../virtual-machines/linux/disks-types.md#premium-ssd) használatával javítják az Apache HBase Write Ahead log (Wal) teljesítményét. Ha többet szeretne megtudni az Apache HBase, olvassa el a [Mi az Apache HBase a HDInsight-ben](apache-hbase-overview.md)című témakört.
 
 ## <a name="overview-of-hbase-architecture"></a>A HBase architektúra áttekintése
 
-A HBase alkalmazásban egy **sor** egy vagy több **oszlopból** áll, és egy **sorkulcs**azonosítja. Több sor alkotja a **táblázatot**. Az oszlopok **olyan cellákat**tartalmaznak , amelyek az oszlopban lévő érték időbélyeggel ellátott változatai. Az oszlopok **oszlopcsaládokba**vannak csoportosítva, és az oszlopcsalád összes oszloposzlopa együtt tárolódik a **HFiles**nevű tárolófájlokban.
+A HBase-ben egy **sor** egy vagy több **oszlopból** áll, és egy **sor kulcs**azonosítja. Több sor alkot egy **táblát**. Az oszlopok **cellákat**tartalmaznak, amelyek az oszlopban szereplő érték időbélyegzős verziói. Az oszlopok **oszlopos családokba**vannak csoportosítva, és egy adott oszlopban lévő összes oszlop együtt tárolódik a **HFiles**nevű tárolási fájlokban.
 
-A HBase **régiói** az adatfeldolgozási terhelés kiegyenlítésére szolgálnak. A HBase először egy tábla sorait tárolja egyetlen régióban. A sorok több régióban oszlanak meg, ahogy a táblázatban szereplő adatok mennyisége nő. **A régiókiszolgálók** több régióra vonatkozó kéréseket is képesek kezelni.
+Az adatfeldolgozási terhelés kiegyensúlyozására a HBase **régióit** használják. A HBase először a tábla sorait tárolja egyetlen régióban. A sorok több régióban oszlanak el, mivel a tábla adatai mennyisége növekszik. A **régió-kiszolgálók** több régióban is kezelhetik a kérelmeket.
 
-## <a name="write-ahead-log-for-apache-hbase"></a>Előre napló írása az Apache HBase-hez
+## <a name="write-ahead-log-for-apache-hbase"></a>Írási napló az Apache HBase
 
-A HBase először adatfrissítéseket ír egy olyan típusú véglegesítési naplóba, amelyet előre írási naplónak (WAL) neveznek. Miután a frissítés a WAL-ban tárolódik, a rendszer a memóriában lévő **MemStore -ba**kerül. Amikor a memóriában lévő adatok elérik a maximális kapacitást, a rendszer HFile fájlként írja a **lemezre.**
+A HBase először az adatfrissítéseket írja be egy írási előre írásos naplónak (WAL) nevezett véglegesítő naplóba. A frissítés a WAL-ben való tárolása után a memóriában lévő **MemStore**van írva. Ha a memóriában lévő adatmennyiség eléri a maximális kapacitást, a lemezként **HFile**van írva.
 
-Ha egy **RegionServer** összeomlik, vagy elérhetetlenné válik a MemStore kiürítése előtt, a Frissítések újralejátszására használható az Előreírási napló. A WAL nélkül, ha egy **RegionServer** összeomlik a **HFile**frissítéseinek kiürítése előtt, az összes frissítés elveszik.
+Ha egy **RegionServer** összeomlik vagy elérhetetlenné válik a MemStore kiürítése előtt, az írási előre napló használható a frissítések visszajátszására. A WAL nélkül, ha egy **RegionServer** összeomlik a frissítések egy **HFile**való kiürítése előtt, az összes frissítés elvész.
 
-## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Gyorsított írási funkció az Apache HBase-hez való Azure HDInsight ban
+## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Gyorsított írási funkciók az Azure HDInsight for Apache HBase
 
-A Gyorsított írási funkció megoldja a felhőalapú tárolóban lévő Előre írási naplók használatával okozott magasabb írási késések problémáját.  A HDInsight Apache HBase fürtök gyorsított írási szolgáltatása prémium szintű SSD-vel kezelt lemezeket csatlakoztat minden RegionServer (feldolgozócsomópont) számára. A "Előre" naplóírásezési naplók ezután a Felhőalapú tárolás helyett ezekre a prémium szintű felügyelt lemezekre vannak csatlakoztatva a Hadoop fájlrendszerbe (HDFS).  A prémium szintű felügyelt lemezek szilárdtest-lemezeket (SSD- k) használnak, és kiváló I/O-teljesítményt és hibatűrést kínálnak.  A nem felügyelt lemezektől eltérően, ha egy tárolóegység leáll, az nem lesz hatással az azonos rendelkezésre állási csoport többi tárolóegységére.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késleltetést és jobb rugalmasságot biztosítanak az alkalmazások számára. Az Azure által felügyelt lemezekről a Bevezetés az Azure által felügyelt lemezekbe című témakörben olvashat [bővebben.](../../virtual-machines/windows/managed-disks-overview.md)
+A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási és olvasási műveletek által okozott nagyobb írási késések problémáját.  Az Apache HBase-fürtök HDInsight gyorsított írási funkciója minden RegionServer (feldolgozó csomópont) prémium szintű SSD által felügyelt lemezeket csatol. Az írási előre megadott naplók ezután a prémium szintű felügyelt lemezekre csatlakoztatott Hadoop fájlrendszerbe (HDFS) lesznek írva, a felhőalapú tárolás helyett.  A prémium szintű Managed-Disks SSD-ket használ, és kiváló I/O-teljesítményt biztosít hibatűréssel.  A nem felügyelt lemezekkel ellentétben, ha az egyik tárolási egység leáll, az nem érinti az azonos rendelkezésre állási csoportba tartozó más tárolási egységeket.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késést és nagyobb rugalmasságot biztosítanak alkalmazásai számára. Az Azure által felügyelt lemezekről az [Azure Managed Disks bemutatása](../../virtual-machines/windows/managed-disks-overview.md)című témakörben olvashat bővebben.
 
-## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>A HBase gyorsított írásai engedélyezése a HDInsightban
+## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a Gyorsított írások szolgáltatással, kövesse a Fürtök beállítása a [HDInsightban](../hdinsight-hadoop-provision-linux-clusters.md) című részben leírt lépéseket, amíg el nem éri **a 3.** A **Metastore-beállítások csoportban**jelölje be a **HBase gyorsított írásengedélyezése**jelölőnégyzet jelölését. Ezután folytassa a fürt létrehozásának további lépéseit.
+Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai**területen jelölje be a **HBase gyorsított írások engedélyezése**jelölőnégyzetet. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
-![Gyorsított írási beállítások engedélyezése a HDInsight Apache HBase-hez](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 
-Az adatok tartósságának megőrzése érdekében hozzon létre egy fürtöt legalább három munkavégző csomókkal. Létrehozása után nem skálázhatja le a fürtöt háromnál kevesebb munkavégző csomópontra.
+Az adattartósság megőrzése érdekében hozzon létre egy legalább három munkavégző csomóponttal rendelkező fürtöt. A létrehozást követően nem méretezheti le a fürtöt kevesebb mint három munkavégző csomópontra.
 
-A fürt törlése előtt ürítse ki vagy tiltsa le a HBase-táblákat, hogy ne veszítse el az Előretolási napló adatait.
+A fürt törlése előtt Ürítse ki vagy tiltsa le a HBase-táblákat, hogy ne veszítse el az előre nem látott napló adatait.
 
 ```
 flush 'mytable'
@@ -54,13 +54,13 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-Kövesse a hasonló lépéseket a fürt leskálázásakor: ürítse ki a táblákat, és tiltsa le a táblákat a bejövő adatok leállításához. A fürt nem skálázható le három csomópontnál kevesebbre.
+Hajtsa végre a hasonló lépéseket a fürt skálázásakor: Ürítse ki a táblákat, és tiltsa le a táblákat a bejövő adatértékek leállításához. A fürt nem méretezhető le kevesebb mint három csomópontra.
 
-Az alábbi lépések végrehajtásával biztosítható a sikeres leskálázás, és elkerülheti annak lehetőségét, hogy egy névcsomópont csökkentett módban legyen az alulreplikált vagy ideiglenes fájlok miatt.
+Az alábbi lépések végrehajtásával biztosítható, hogy a rendszer sikeres legyen, és elkerülje a namenode, ha a replikált vagy ideiglenes fájlok miatt a biztonságos módba kerül.
 
-Ha a namenode nem megy safemode után egy skálázás le, hdfs parancsok segítségével re-replikálása az alulreplikált blokkokat, és kap hdfs ki a csökkentett módban. Ez az újrareplikáció lehetővé teszi a HBase sikeres újraindítását.
+Ha a namenode egy vertikális leskálázás után is a safemode-ba kerül, a hdfs-parancsok használatával végezze el újra a replikált blokkokat, és a hdfs-t biztonságos módból válassza. Ez az újrareplikálás lehetővé teszi a HBase sikeres újraindítását.
 
 ## <a name="next-steps"></a>További lépések
 
-* Hivatalos Apache HBase dokumentáció az [Előretigó napló szolgáltatásban](https://hbase.apache.org/book.html#wal)
-* A HDInsight Apache HBase fürt gyorsíráshasználatára való frissítéséhez olvassa el Az [Apache HBase-fürt áttelepítése új verzióra](apache-hbase-migrate-new-version.md)című témakört.
+* A hivatalos Apache HBase dokumentációja az [előre írható log szolgáltatásról](https://hbase.apache.org/book.html#wal)
+* Ha a HDInsight Apache HBase-fürtöt a gyorsított írások használatára szeretné frissíteni, tekintse meg [az Apache HBase-fürt áttelepítését egy új verzióra](apache-hbase-migrate-new-version.md).

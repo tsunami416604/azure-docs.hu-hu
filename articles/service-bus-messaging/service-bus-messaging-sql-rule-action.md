@@ -1,6 +1,6 @@
 ---
-title: SQLRuleAction szintaxis hivatkozás az Azure Service Busban
-description: Ez a cikk az SQLRuleAction szintaxisra mutató hivatkozást tartalmaz. A műveletek SQL-nyelvű szintaxissal vannak megírva, amely et egy közvetített üzenettel szemben hajt végre.
+title: A SQLRuleAction szintaxisának referenciája Azure Service Bus
+description: Ez a cikk a SQLRuleAction szintaxisát ismerteti. A műveletek olyan SQL-Language-alapú szintaxisban íródnak, amelyet egy felügyelt üzeneten végeztek el.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759628"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>SQLRuleAction szintaxis hivatkozás az Azure Service Bus-hoz
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus SQLRuleAction szintaxisának referenciája
 
-Az *SqlRuleAction* az [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) osztály egy példánya, és az SQL-language alapú szintaxissal írt műveletek készletét jelöli, amelyet egy [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)hajt végre.   
+A *SqlRuleAction* a [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) osztály egy példánya, amely az SQL-Language-alapú szintaxisban írt, az [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-on végrehajtott műveletek készletét jelöli.   
   
-Ez a cikk az SQL-szabály műveletnyelvhelyességének részleteit sorolja fel.  
+Ez a cikk az SQL-szabály műveleti nyelvtanának részleteit sorolja fel.  
   
 ```  
 <statements> ::=
@@ -65,11 +65,11 @@ Ez a cikk az SQL-szabály műveletnyelvhelyességének részleteit sorolja fel.
   
 ## <a name="arguments"></a>Argumentumok  
   
--   `<scope>`választható karakterlánc, amely a hatókörét `<property_name>`jelzi. Az érvényes `sys` `user`értékek vagy . Az `sys` érték azt a `<property_name>` rendszerhatókört jelzi, ahol a [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)köztulajdonneve. `user`jelzi a felhasználói `<property_name>` hatókört, ahol a [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótár ának kulcsa. `user`a hatókör az `<scope>` alapértelmezett hatókör, ha nincs megadva.  
+-   `<scope>`egy opcionális karakterlánc, amely a hatókörét jelzi `<property_name>`. Az érvényes értékek `sys` a `user`következők: vagy. Az `sys` érték azt a rendszerhatókört jelöli, ahol `<property_name>` a a [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)egy nyilvános tulajdonságának neve. `user`Megadja a felhasználói hatókört, ahol `<property_name>` a a [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótárának kulcsa. `user`a hatókör az alapértelmezett hatókör, `<scope>` ha nincs megadva.  
   
 ### <a name="remarks"></a>Megjegyzések  
 
-A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem létező felhasználói tulajdonság elérésére tett kísérlet nem hiba. Ehelyett egy nem létező felhasználói tulajdonság belsőleg kiértékelése ismeretlen értékként történik. Egy ismeretlen értéket a kezelő értékelése során kezel a rendszer.  
+Egy nem létező rendszertulajdonság elérésére tett kísérlet hibát jelez, míg egy nem létező felhasználói tulajdonság elérésére tett kísérlet nem hiba. Ehelyett egy nem létező felhasználói tulajdonságot belsőleg kiértékel a rendszer ismeretlen értékként. Az operátorok kiértékelése során az ismeretlen értéket külön kezeli a rendszer.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -84,21 +84,21 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
 ```  
   
 ### <a name="arguments"></a>Argumentumok  
- `<regular_identifier>`a következő reguláris kifejezéssel ábrázolt karakterlánc:  
+ `<regular_identifier>`a következő reguláris kifejezéssel jelölt karakterlánc:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
- Ez minden olyan karakterláncot jelent, amely betűvel kezdődik, és amelyet egy vagy több aláhúzás/betű/számjegy követ.  
+ Ez olyan karakterláncot jelent, amely betűvel kezdődik, és egy vagy több aláhúzás/betű/számjegy követi.  
   
- `[:IsLetter:]`minden Unicode karaktert jelent, amely Unicode betűként van kategorizálva. `System.Char.IsLetter(c)`visszaadja, `true` ha `c` Unicode betű.  
+ `[:IsLetter:]`olyan Unicode-karakter, amely Unicode betűként van kategorizálva. `System.Char.IsLetter(c)`a `true` értéket `c` adja vissza, ha az egy Unicode betű.  
   
- `[:IsDigit:]`bármely Tizedesjegyként kategorizált Unicode karaktert jelent. `System.Char.IsDigit(c)`ha Unicode-jegy, akkor ad vissza. `true` `c`  
+ `[:IsDigit:]`olyan Unicode-karakter, amely decimális számjegyként van kategorizálva. `System.Char.IsDigit(c)`a `true` értéket `c` adja vissza, ha az egy Unicode számjegy.  
   
- A `<regular_identifier>` nem lehet fenntartott kulcsszó.  
+ A `<regular_identifier>` nem lehet foglalt kulcsszó.  
   
- `<delimited_identifier>`minden olyan karakterlánc, amely bal/jobb szögletes zárójelben van ([]). A jobb oldali szögletes zárójel két jobb oldali szögletes zárójelként jelenik meg. Az alábbi példák: `<delimited_identifier>`  
+ `<delimited_identifier>`a bal/jobb oldali szögletes zárójelek ([]) közé zárt karakterlánc. A jobb oldali szögletes zárójel két jobb oldali szögletes zárójelként jelenik meg. Az alábbi példák a `<delimited_identifier>`következőkre mutatnak:  
   
 ```  
 [Property With Space]  
@@ -106,13 +106,13 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
   
 ```  
   
- `<quoted_identifier>`minden olyan karakterlánc, amely idézőjelek közé van zárva. Az azonosítóban a dupla idézőjel két idézőjelként jelenik meg. Nem ajánlott az idézett azonosítók használata, mert könnyen összetéveszthető egy karakterlánc-állandóval. Ha lehetséges, használjon tagolt azonosítót. Az alábbi példa `<quoted_identifier>`a következőkre mutat be:  
+ `<quoted_identifier>`minden olyan karakterlánc, amely dupla idézőjelekkel van ellátva. Az azonosító dupla idézőjele két idézőjel. Az idézőjelek használata nem ajánlott, mert könnyen összetéveszthető karakterlánc-konstanssal. Ha lehetséges, használjon tagolt azonosítót. Az alábbi példa a `<quoted_identifier>`következőket szemlélteti:  
   
 ```  
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>Minta  
+## <a name="pattern"></a>minta  
   
 ```  
 <pattern> ::=  
@@ -121,11 +121,11 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
   
 ### <a name="remarks"></a>Megjegyzések
   
- `<pattern>`karakterláncként kiértékelt kifejezésnek kell lennie. Ezt használják, mint a minta a LIKE operátor.      A következő helyettesítő karaktereket tartalmazhatja:  
+ `<pattern>`karakterláncként kiértékelt kifejezésnek kell lennie. A rendszer mintaként használja a hasonló operátorhoz.      A következő helyettesítő karaktereket tartalmazhatja:  
   
 -   `%`: Nulla vagy több karakterből álló karakterlánc.  
   
--   `_`: Bármilyen karakter.  
+-   `_`: Egyetlen karakter.  
   
 ## <a name="escape_char"></a>escape_char  
   
@@ -136,11 +136,11 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
   
 ### <a name="remarks"></a>Megjegyzések
   
- `<escape_char>`olyan kifejezésnek kell lennie, amelyet hossz-karakterláncként értékel ki 1. A LIKE operátor menekülési karaktereként használja.  
+ `<escape_char>`egy olyan kifejezésnek kell lennie, amely 1. hosszúságú sztringként van kiértékelve. A hasonló operátorhoz tartozó Escape-karakterként használható.  
   
- Például `property LIKE 'ABC\%' ESCAPE '\'` a `ABC%` kezdő karakterlánc helyett `ABC`nem egyezik.  
+ Például a `property LIKE 'ABC\%' ESCAPE '\'` egyezés helyett `ABC%` a karakterrel kezdődő sztring szerepel `ABC`.  
   
-## <a name="constant"></a>Állandó  
+## <a name="constant"></a>állandó  
   
 ```  
 <constant> ::=  
@@ -149,27 +149,27 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
   
 ### <a name="arguments"></a>Argumentumok  
   
--   `<integer_constant>`Olyan számsorozat, amely nem idézőjelek közé van tizedesszámba. Az értékek belsőként `System.Int64` tárolódnak, és ugyanazt a tartományt követik.  
+-   `<integer_constant>`egy olyan számsorozat, amely nem idézőjelek közé esik, és nem tartalmaz decimális pontokat. Az értékeket `System.Int64` belsőleg tárolja a rendszer, és ugyanazt a tartományt követi.  
   
-     Az alábbi példák hosszú állandókra mutatnak be példákat:  
+     A következő példák hosszú állandókat mutatnak be:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>`Olyan számsorozat, amely nem idézőjelek közé van bezárva, és tizedesvesszőt tartalmaz. Az értékek belső `System.Double` legeltetése belsőleg tárolódik, és ugyanazt a tartományt/pontosságot követik.  
+-   `<decimal_constant>`egy olyan számokból álló karakterlánc, amely nem idézőjelek közé esik, és tizedes pontot tartalmaz. Az értékeket `System.Double` belsőleg tárolja a rendszer, és kövesse ugyanazt a tartományt/pontosságot.  
   
-     Egy későbbi verzióban ez a szám egy másik adattípusban tárolható a pontos számszemantika támogatása érdekében, ezért ne hagyatkozzon arra a tényre, hogy `System.Double` az alapul szolgáló adattípus a hoz alapul. `<decimal_constant>`  
+     Egy későbbi verzióban ezt a számot egy másik adattípusban tárolhatja a pontos számú szemantika támogatásához, ezért nem szabad az alapul szolgáló adattípusra `System.Double` támaszkodni. `<decimal_constant>`  
   
-     Az alábbi példák tizedes állandókra mutatnak be:  
+     A következő példák decimális konstansokra mutatnak:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>`Tudományos jelöléssel írt szám. Az értékek belső `System.Double` legeltetése belsőleg tárolódik, és ugyanazt a tartományt/pontosságot követik. Az alábbi példák hozzávetőleges számállandókra mutatnak be példákat:  
+-   `<approximate_number_constant>`egy tudományos jelöléssel írt szám. Az értékeket `System.Double` belsőleg tárolja a rendszer, és kövesse ugyanazt a tartományt/pontosságot. Az alábbi példákban megközelítheti a szám konstansait:  
   
     ```  
     101.5E5  
@@ -185,7 +185,7 @@ A nem létező rendszertulajdon elérésére tett kísérlet hiba, míg egy nem 
   
 ### <a name="remarks"></a>Megjegyzések
   
-A logikai állandókat a `TRUE` `FALSE`vagy a kulcsszavak jelölik. Az értékek a `System.Boolean`tárolódnak .  
+A logikai konstansok a kulcsszavak `TRUE` vagy `FALSE`a alapján jelennek meg. Az értékek a következőképpen `System.Boolean`tárolódnak:.  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -195,9 +195,9 @@ A logikai állandókat a `TRUE` `FALSE`vagy a kulcsszavak jelölik. Az értékek
   
 ### <a name="remarks"></a>Megjegyzések
   
-A karakterlánc-állandók aposztrófok közé vannak foglalva, és érvényes Unicode karaktereket tartalmaznak. A karakterlánc-állandóba ágyazott egyetlen idézőjel két aposztrófként jelenik meg.  
+A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>Funkció  
+## <a name="function"></a>függvény  
   
 ```  
 <function> :=  
@@ -207,18 +207,18 @@ A karakterlánc-állandók aposztrófok közé vannak foglalva, és érvényes U
   
 ### <a name="remarks"></a>Megjegyzések  
 
-A `newid()` függvény a metódus által létrehozott `System.Guid.NewGuid()` **System.Guid** értéket adja vissza.  
+A `newid()` függvény a `System.Guid.NewGuid()` metódus által generált **System. GUID azonosítót** adja vissza.  
   
-A `property(name)` függvény a. által hivatkozott `name`tulajdonság értékét adja eredményül. Az `name` érték bármely érvényes kifejezés lehet, amely karakterláncértéket ad vissza.  
+A `property(name)` függvény a által `name`hivatkozott tulajdonság értékét adja vissza. Az `name` érték bármely érvényes kifejezés lehet, amely egy karakterlánc-értéket ad vissza.  
   
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-- A SET új tulajdonság létrehozására vagy egy meglévő tulajdonság értékének frissítésére szolgál.
-- Az REMOVE tulajdonság eltávolítására szolgál.
-- A SET implicit átalakítást hajt végre, ha lehetséges, ha a kifejezéstípus és a meglévő tulajdonságtípus eltérő.
-- A művelet sikertelen, ha nem létező rendszertulajdonságokra hivatkozik.
-- A művelet nem sikertelen, ha nem létező felhasználói tulajdonságokra hivatkozik.
-- A nem létező felhasználói tulajdonság belsőleg "Ismeretlen" állapotúként lesz kiértékelve, az operátorok kiértékelésekor az [SQLFilter-rel](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) megegyező szemantikát követve.
+- A SET egy új tulajdonság létrehozására szolgál, vagy egy meglévő tulajdonság értékét frissíti.
+- Az Eltávolítás a tulajdonságok eltávolítására szolgál.
+- Ha lehetséges, akkor a SET implicit konverziót hajt végre, ha a kifejezés típusa és a meglévő tulajdonság típusa eltérő.
+- A művelet meghiúsul, ha nem létező Rendszertulajdonságok lettek hivatkozva.
+- A művelet nem sikerül, ha a nem létező felhasználói tulajdonságok hivatkoztak.
+- A nem létező felhasználói tulajdonságokat belsőleg "ismeretlen" értékként értékeli ki a rendszer, és a [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a kezelők kiértékelése során megjelenő szemantikat követve.
 
 ## <a name="next-steps"></a>További lépések
 

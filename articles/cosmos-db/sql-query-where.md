@@ -1,21 +1,21 @@
 ---
-title: WHERE záradék az Azure Cosmos DB-ben
-description: Információ az Azure Cosmos DB SQL WHERE záradékáról
+title: WHERE záradék Azure Cosmos DB
+description: Tudnivalók a Azure Cosmos DB SQL WHERE záradékáról
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898774"
 ---
-# <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék az Azure Cosmos DB-ben
+# <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
 
-A választható WHERE`WHERE <filter_condition>`záradék ( ) olyan feltételt (feltételeket) határoz meg, amelyeknek a forrás JSON-elemeknek meg kell felelniük ahhoz, hogy a lekérdezés bevonja őket az eredményekbe. A JSON-elemnek ki kell `true` értékelnie az eredményhez figyelembe veendő feltételeket. Az indexréteg a WHERE záradék segítségével határozza meg a forráselemek azon legkisebb részhalmazát, amely az eredmény része lehet.
+A választható WHERE záradék (`WHERE <filter_condition>`) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott `true` feltételeket kell figyelembe venni az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,21 +29,21 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Megadja a visszaadandó dokumentumok teljesítésének feltételét.  
+   Meghatározza a visszaadott dokumentumok számára teljesítendő feltételt.  
   
 - `<scalar_expression>`  
   
-   A kiszámítandó értéket jelölő kifejezés. A részleteket [lásd: Skaláris kifejezések.](sql-query-scalar-expressions.md)  
+   A kiszámítani kívánt értéket jelölő kifejezés. Részletekért lásd a [skaláris kifejezéseket](sql-query-scalar-expressions.md) .  
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Ahhoz, hogy a dokumentum visszaadható legyen, a szűrőfeltételként megadott kifejezésnek igaz értéket kell kiértékelnie. Csak a `true` logikai érték felel meg a feltételnek, bármely más érték: nem definiált, null, hamis, Szám, Tömb vagy Objektum nem felel meg a feltételnek.
+  Ahhoz, hogy a dokumentum visszaadja a szűrési feltételnek megadott kifejezést, az igaz értéket kell kiértékelni. Csak a logikai `true` érték felel meg a feltételnek, bármely más érték: nem definiált, null, hamis, szám, tömb vagy objektum nem felel meg a feltételnek.
 
-  Ha a partíciókulcsot egy `WHERE` egyenlőségszűrő részeként adja meg a záradékban, a lekérdezés automatikusan csak a megfelelő partíciókra szűr.
+  Ha egy egyenlőségi szűrő részeként belefoglalja a partíciós kulcsot a `WHERE` záradékba, a lekérdezés automatikusan csak a megfelelő partíciókat fogja szűrni.
 
 ## <a name="examples"></a>Példák
 
-A következő lekérdezés olyan `id` elemeket kér, amelyek olyan tulajdonságot tartalmaznak, amelynek `AndersenFamily`értéke . Nem tartalmaz minden olyan elemet, `id` amely nem rendelkezik `AndersenFamily`tulajdonsággal, vagy amelynek értéke nem egyezik meg.
+A következő lekérdezés olyan `id` elemeket kér, amelyek értéke a tulajdonság. `AndersenFamily` Kizár minden olyan olyan tételt, amely nem rendelkezik `id` tulajdonsággal, vagy amelynek értéke nem `AndersenFamily`egyezik.
 
 ```sql
     SELECT f.address
@@ -65,17 +65,17 @@ Az eredmény a következő:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>Skaláris kifejezések a WHERE záradékban
 
-Az előző példa egy egyszerű egyenlőségi lekérdezést mutatott. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt bináris és unary kifejezések. A forrás JSON-objektumból származó tulajdonsághivatkozások szintén érvényes kifejezések.
+Az előző példában egy egyszerű egyenlőségi lekérdezés látható. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt bináris és egyoperandusú kifejezések. A forrás JSON-objektumra mutató tulajdonságok szintén érvényes kifejezések.
 
-A következő támogatott bináris operátorokat használhatja:  
+A következő támogatott bináris operátorok használhatók:  
 
 |**Operátor típusa**  | **Értékek** |
 |---------|---------|
-|Számtani | +,-,*,/,% |
-|Bitenkénti    | \|, &, ^, <<, >>, >>> (nulla kitöltéses jobb eltolás) |
-|Logikai    | ÉS, VAGY, NEM      |
-|Összehasonlítás | =, &lt;!=, &gt; &lt;, &gt;=, =,  <> |
-|Sztring     |  \|\|(összefűzés) |
+|Aritmetikai | +,-,*,/,% |
+|Bitenkénti    | \|, &, ^,  <<,  >>,  >>>  (nulla kitöltés jobb eltolása) |
+|Logikai    | ÉS, VAGY NEM      |
+|Összehasonlítás | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Sztring     |  \|\|CONCATENATE |
 
 A következő lekérdezések bináris operátorokat használnak:
 
@@ -93,7 +93,7 @@ A következő lekérdezések bináris operátorokat használnak:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-A +,-, ~, és a NOT operátorokat is használhatja a lekérdezésekben, ahogy az a következő példákban látható:
+A következő példákban látható módon használhatja az unáris operátorok +,-, ~, és nem a lekérdezésekben is:
 
 ```sql
     SELECT *
@@ -105,10 +105,10 @@ A +,-, ~, és a NOT operátorokat is használhatja a lekérdezésekben, ahogy az
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-A lekérdezésekben tulajdonsághivatkozásokat is használhat. Például `SELECT * FROM Families f WHERE f.isRegistered` a tulajdonságot `isRegistered` tartalmazó JSON elemet adja `true`eredményül, amelynek értéke megegyezik a értékével. Bármely más érték, `false` `null`például , `<object>`, `<array>` `Undefined` `<number>`, , `<string>`, , , , vagy , kizárja a cikket az eredményből.
+A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot `isRegistered` tartalmazó olyan JSON- `true`tételt, amelynek értéke egyenlő. Bármely más érték `false`, például `null` `Undefined` `<number>` `<string>` `<object>`,,,,, vagy `<array>`, kizárja az elemet az eredményből.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kezdetekhez](sql-query-getting-started.md)
-- [IN kulcsszó](sql-query-keywords.md#in)
+- [Első lépések](sql-query-getting-started.md)
+- [A kulcsszóban](sql-query-keywords.md#in)
 - [FROM záradék](sql-query-from.md)

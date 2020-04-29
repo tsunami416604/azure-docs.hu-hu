@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB Graph adatbázis regionális végpontjai
-description: További információ az alkalmazás legközelebbi Graph-adatbázis-végpontjához való csatlakozásról
+title: Azure Cosmos DB Graph-adatbázis regionális végpontjai
+description: Megtudhatja, hogyan csatlakozhat az alkalmazáshoz a legközelebbi gráf-adatbázis-végponthoz
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,44 +8,44 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897859"
 ---
-# <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Az Azure Cosmos DB Graph-fiók regionális végpontjai
-Az Azure Cosmos DB Graph adatbázis [globálisan elosztott,](distribute-data-globally.md) így az alkalmazások több olvasási végpontot is használhatnak. A több helyen írási hozzáférést igénylő alkalmazásoknak lehetővé kell tenniük [a többfőes](how-to-multi-master.md) képességet.
+# <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionális végpontok Azure Cosmos DB Graph-fiókhoz
+Azure Cosmos DB Graph-adatbázis [globálisan elosztott](distribute-data-globally.md) , így az alkalmazások több olvasási végpontot is használhatnak. A több helyen írási hozzáféréssel rendelkező alkalmazásoknak engedélyezniük kell a [több főkiszolgálós](how-to-multi-master.md) funkciót.
 
-Egynél több régió kiválasztása okok:
-1. **Horizontális olvasási méretezhetőség** – az alkalmazás terhelésének növekedésével célszerű lehet az olvasási forgalmat különböző Azure-régiókba irányítani.
-2. **Kisebb késés** – csökkentheti a hálózati késés terhelését az egyes bejárások útválasztásával olvasási és írási forgalmat a legközelebbi Azure-régióban.
+Az egynél több régió kiválasztásának okai:
+1. **Horizontális olvasási méretezhetőség** – az alkalmazás terhelésének növekedésével körültekintő lehet az olvasási forgalom átirányítása különböző Azure-régiókba.
+2. **Alacsonyabb késés** – az egyes bejárások hálózati késését az olvasási és írási forgalom továbbításával csökkentheti a legközelebbi Azure-régióra.
 
-**Az adatok tárolási** követelménye az Azure Resource Manager-szabályzat Cosmos DB-fiókra való beállításával érhető el. Az ügyfél korlátozhatja azokat a régiókat, amelyekbe a Cosmos DB replikálja az adatokat.
+Az **adattárolásra** vonatkozó követelményt úgy érheti el, ha Cosmos db fiókra vonatkozó Azure Resource Manager házirendet állít be. Az ügyfél korlátozhatja azokat a régiókat, amelyekben Cosmos DB replikálja az adatforrásokat.
 
 ## <a name="traffic-routing"></a>Forgalom útválasztása
 
-A Cosmos DB Graph adatbázis-motor több régióban fut, amelyek mindegyike több fürtöt tartalmaz. Minden fürt több száz géppel rendelkezik. Cosmos DB Graph fiók DNS CNAME *accountname.gremlin.cosmos.azure.com* feloldja a DNS Egy fürt rekordja. A terheléselosztó egyetlen IP-címe elrejti a belső fürttopológiát.
+Cosmos DB gráf-adatbázismotor több régióban fut, amelyek mindegyike több fürtöt tartalmaz. Minden fürt több száz gépet tartalmaz. Cosmos DB Graph-fiók DNS CNAME *accountname.Gremlin.Cosmos.Azure.com* feloldja A fürt egy rekordját a DNS-ben. A terheléselosztó egyetlen IP-címe elrejti a belső fürt topológiáját.
 
-A Cosmos DB Graph-fiók minden régiójához létrejön egy regionális DNS CNAME rekord. A regionális végpont formátuma *accountname-region.gremlin.cosmos.azure.com.* A regionális végpont régiószegmense az [Azure régió](https://azure.microsoft.com/global-infrastructure/regions) nevéből az összes szóköz eltávolításával érhető el. A globális `"East US 2"` adatbázisfiók régiójának `"contoso"` például DNS CNAME *contoso-eastus2.gremlin.cosmos.azure.com*
+A rendszer egy regionális DNS CNAME rekordot hoz létre Cosmos DB gráf-fiók minden régiójához. A regionális végpont formátuma *accountname-Region.Gremlin.Cosmos.Azure.com*. A regionális végpont területi szegmensét az [Azure-régió](https://azure.microsoft.com/global-infrastructure/regions) nevéből származó összes szóköz eltávolításával szerzi be a rendszer. Például a `"contoso"` globális `"East US 2"` adatbázis-fiók régiójának DNS CNAME *contoso-eastus2.Gremlin.Cosmos.Azure.com* kell lennie.
 
-TinkerPop Gremlin kliens célja, hogy működjön együtt egy szerver. Az alkalmazás globális írható DNS CNAME-t használhat az olvasási és írási forgalomhoz. A régióbarát alkalmazásoknak regionális végpontot kell használniuk az olvasási forgalomhoz. Csak akkor használjon regionális végpontot írási forgalomhoz, ha egy adott régió írási műveletek fogadására van konfigurálva. 
-
-> [!NOTE]
-> A Cosmos DB Graph motor képes fogadni az olvasási régióban az olvasási régióban a régió proxyáltal történő írási műveletet. Nem ajánlott írásokat küldeni csak olvasható régióba, mivel növeli a bejárási késést, és a jövőben korlátozások vonatkoznak rá.
-
-A CNAME globális adatbázisfiók mindig érvényes írási területre mutat. Az írási régió kiszolgálóoldali feladatátvétele során a Cosmos DB frissíti a CNAME globális adatbázis-fiókot, hogy az új régióra mutasson. Ha az alkalmazás nem tudja kezelni a forgalom átirányítását a feladatátvétel után, akkor a DNS CNAME globális adatbázisfiókot kell használnia.
+A TinkerPop Gremlin-ügyfél egyetlen kiszolgálóval való együttműködésre lett tervezve. Az alkalmazás globális írható DNS CNAME-t használhat az olvasási és írási forgalomhoz. A régiót támogató alkalmazásoknak regionális végpontot kell használniuk az olvasási forgalomhoz. Csak akkor használja a regionális végpontot írási forgalomhoz, ha az adott régió az írások fogadására van konfigurálva. 
 
 > [!NOTE]
-> A Cosmos DB nem irányítja a forgalmat a hívó földrajzi közelsége alapján. Minden alkalmazástól megkell adnia a megfelelő régiót az egyedi alkalmazásigényeknek megfelelően.
+> Cosmos DB gráf-kezelő írási műveletet tud fogadni az olvasási régióban az írási régióba irányuló adatforgalom proxyval történő elküldésével. Nem ajánlott írásvédett régióba írni az írásokat, mivel ez növeli a bejárási késést, és a jövőben korlátozásokra is vonatkozik.
 
-## <a name="portal-endpoint-discovery"></a>Portálvégpont felderítése
+A globális adatbázis-fiók CNAME Always egy érvényes írási régióra mutat. Az írási régió kiszolgálóoldali feladatátvétele során Cosmos DB frissíti a globális adatbázis-fiók CNAME rekordját, hogy az új régióra mutasson. Ha az alkalmazás nem tudja kezelni a forgalom újrairányítását feladatátvétel után, akkor a globális adatbázis-fiók DNS-CNAME értékét kell használnia.
 
-Az Azure Cosmos DB Graph-fiók régióinak listájának legegyszerűbb lekérnie az Azure Portal áttekintése az Azure Portalon. Működni fog az alkalmazások, amelyek nem módosítják a régiók gyakran, vagy egy módja annak, hogy frissítse a listát alkalmazás konfiguráción keresztül.
+> [!NOTE]
+> A Cosmos DB nem irányítja át a forgalmat a hívó földrajzi közelsége alapján. Az alkalmazás minden egyes alkalmazásnál kiválasztja a megfelelő régiót az alkalmazások egyedi igényeinek megfelelően.
 
-![A Cosmos DB Graph-fiók régióinak lekérése a portálról](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+## <a name="portal-endpoint-discovery"></a>Portál végpontjának felderítése
 
-Az alábbi példa a regionális Gremlin végpont elérésének általános elveit mutatja be. Az alkalmazásnak figyelembe kell vennie a forgalmat küldő régiók számát, és a megfelelő Gremlin-ügyfelek számát példányosítani.
+Az Azure Cosmos DB Graph-fiókhoz tartozó régiók listájának beszerzésének legegyszerűbb módja az Áttekintés panel Azure Portal. Működni fog olyan alkalmazások esetében, amelyek nem módosítják a régiókat gyakran, vagy úgy, hogy az alkalmazás konfigurációján keresztül frissítik a listát.
+
+![Cosmos DB Graph-fiók régióinak beolvasása a portálról](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+
+Az alábbi példa a regionális Gremlin-végpont elérésére vonatkozó általános alapelveket mutatja be. Az alkalmazásnak meg kell fontolnia, hogy hány régióban kell elküldeni a forgalmat a megfelelő Gremlin-ügyfelek számára a példányok számára.
 
 ```csharp
 // Example value: Central US, West US and UK West. This can be found in the overview blade of you Azure Cosmos DB Gremlin Account. 
@@ -78,9 +78,9 @@ foreach (string gremlinAccountRegion in gremlinAccountRegions)
 
 ## <a name="sdk-endpoint-discovery"></a>SDK-végpont felderítése
 
-Az alkalmazás használhatja [az Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) a Graph-fiók olvasási és írási helyeinek felderítéséhez. Ezek a helyek bármikor módosíthatók a kiszolgálóoldali kézi újrakonfigurálás vagy az automatikus feladatátvétel révén.
+Az alkalmazás az [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -val képes felderíteni az olvasási és írási helyet a Graph-fiók számára. Ezek a helyszínek a kiszolgálóoldali vagy automatikus feladatátvétel manuális újrakonfigurálásával bármikor megváltoztathatók.
 
-A TinkerPop Gremlin SDK nem rendelkezik API-val a Cosmos DB Graph adatbázis-fiók régióinak felderítéséhez. A futásidejű végpontfelderítést igénylő alkalmazásoknak 2 különálló SDK-t kell üzemeltetnia a folyamattérben.
+A TinkerPop Gremlin SDK-nak nincs olyan API-je, amely felderíti Cosmos DB Graph adatbázis-fiók régióit. A futásidejű végpontok felderítését igénylő alkalmazásoknak 2 külön SDK-t kell futtatniuk a folyamat területén.
 
 ```csharp
 // Depending on the version and the language of the SDK (.NET vs Java vs Python)
@@ -109,7 +109,7 @@ foreach (string location in readLocations)
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Adatbázisfiókok vezérlésének kezelése](how-to-manage-database-account.md) az Azure Cosmos DB-ben
-* [Magas rendelkezésre állás](high-availability.md) az Azure Cosmos DB-ben
-* [Globális disztribúció az Azure Cosmos DB-vel – a motorháztető alatt](global-dist-under-the-hood.md)
-* [Azure CLI-minták](cli-samples.md) az Azure Cosmos DB-hez
+* Az [adatbázis-fiókok felügyeletének kezelése](how-to-manage-database-account.md) a Azure Cosmos DBban
+* [Magas rendelkezésre állás](high-availability.md) a Azure Cosmos DBban
+* [Globális terjesztés Azure Cosmos DBokkal – a motorháztető alatt](global-dist-under-the-hood.md)
+* [Azure CLI-minták](cli-samples.md) a Azure Cosmos DBhoz

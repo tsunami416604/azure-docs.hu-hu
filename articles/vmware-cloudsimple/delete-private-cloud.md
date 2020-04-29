@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás törlése a CloudSimple private cloud szolgáltatásával
-description: A CloudSimple private cloud törlésének ismertetése.
+title: Azure VMware-megoldás törlése a CloudSimple privát felhővel
+description: Útmutató CloudSimple privát felhő törléséhez.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024755"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő törlése
 
-A CloudSimple rugalmasságot biztosít a magánfelhő törléséhez.  A magánfelhő egy vagy több vSphere-fürtből áll. Minden fürt rendelkezhet 3–16 csomópontos csomópontokkal. Ha töröl egy magánfelhőt, az összes fürt törlődik.
+A CloudSimple rugalmasságot biztosít a privát felhő törléséhez.  A privát felhő egy vagy több vSphere-fürtből áll. Minden fürthöz 3 – 16 csomópont tartozhat. Ha töröl egy privát felhőt, az összes fürt törölve lesz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A magánfelhő törlése törli a teljes magánfelhőt.  A magánfelhő összes összetevője törlődik.  Ha meg szeretné tartani az adatokat, győződjön meg arról, hogy biztonsági másolatot tett az adatokról a helyszíni tárolóba vagy az Azure-tárolóba.
+A privát felhő törlése törli a teljes privát felhőt.  A rendszer törli a privát felhő összes összetevőjét.  Ha meg szeretné őrizni az összes adatmennyiséget, győződjön meg róla, hogy biztonsági másolatot készített a helyszíni tárolóba vagy az Azure Storage szolgáltatásba.
 
-A magánfelhő összetevői a következők:
+A privát felhő összetevői a következők:
 
-* CloudSimple csomópontok
-* Virtuális gépek
+* CloudSimple-csomópontok
+* Virtual machines (Virtuális gépek)
 * Virtuális helyi hálózatok vagy alhálózatok
-* A magánfelhőn tárolt összes felhasználói adat
-* A VIRTUÁLIS/ ALHÁLÓZAT összes tűzfalszabály-melléklete
+* A privát felhőben tárolt összes felhasználói érték
+* Az összes tűzfalszabály melléklete egy VLAN/alhálózat számára
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="delete-a-private-cloud"></a>Magánfelhő törlése
 
-1. [A CloudSimple portál elérése.](access-cloudsimple-portal.md)
+1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
 
-2. Nyissa meg az **Erőforrások** lapot.
+2. Nyissa meg az **erőforrások** lapot.
 
-3. Kattintson a törölni kívánt magánfelhőre
+3. Kattintson a törölni kívánt privát felhőre
 
-4. Az összesítő lapon kattintson a **Törlés gombra.**
+4. Az összefoglalás lapon kattintson a **Törlés**gombra.
 
-    ![Magánfelhő törlése](media/delete-private-cloud.png)
+    ![Privát felhő törlése](media/delete-private-cloud.png)
 
-5. A megerősítő lapon adja meg a magánfelhő nevét, és kattintson a **Törlés gombra.** 
+5. A jóváhagyás lapon adja meg a saját felhő nevét, majd kattintson a **Törlés**gombra. 
 
-    ![Privát felhő törlése - megerősítés](media/delete-private-cloud-confirm.png)
+    ![Privát felhő törlése – megerősítés](media/delete-private-cloud-confirm.png)
 
-A magánfelhő törlésre van megjelölve.  A törlési folyamat három óra elteltével kezdődik, és törli a magánfelhőt.
+A privát felhő törlésre van megjelölve.  A törlési folyamat három óra elteltével indul el, és törli a privát felhőt.
 
 > [!CAUTION]
-> A csomópontokat a magánfelhő törlése után törölni kell.  A csomópontok mérése addig folytatódik, amíg a csomópontok törlődnek az előfizetésből.
+> A csomópontokat törölni kell a saját felhő törlése után.  A csomópontok mérése folytatódni fog, amíg a csomópontok törlődnek az előfizetésből.
 
 ## <a name="next-steps"></a>További lépések
 

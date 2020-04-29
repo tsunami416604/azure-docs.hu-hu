@@ -1,7 +1,7 @@
 ---
 title: Gyakori keresési indexelő problémák elhárítása
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search indexelőivel kapcsolatos hibák és gyakori problémák kijavítása, beleértve az adatforrás-kapcsolatot, a tűzfalat és a hiányzó dokumentumokat.
+description: Az Azure Cognitive Search indexelő hibáival kapcsolatos hibák és gyakori problémák megoldása, beleértve az adatforrás-kapcsolatokat, a tűzfalat és a hiányzó dokumentumokat.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,39 +9,39 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190933"
 ---
-# <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Gyakori indexelő problémák elhárítása az Azure Cognitive Search szolgáltatásban
+# <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
-Az indexelők számos problémát okozhatnak az Azure Cognitive Search adatok indexelésekén. A hiba fő kategóriái a következők:
+Az indexelő több problémát is futtathat az Azure Cognitive Searchba való adatindexelés során. A hiba fő kategóriái a következők:
 
 * [Csatlakozás adatforráshoz vagy más erőforráshoz](#connection-errors)
-* [Dokumentumfeldolgozás](#document-processing-errors)
-* [Dokumentum betöltése indexbe](#index-errors)
+* [Dokumentumok feldolgozása](#document-processing-errors)
+* [Dokumentumok betöltése egy indexbe](#index-errors)
 
 ## <a name="connection-errors"></a>Csatlakozási hibák
 
 > [!NOTE]
-> Az indexelők korlátozott anamforokat támogatnak az Azure hálózati biztonsági mechanizmusai által védett adatforrások és egyéb erőforrások eléréséhez. Jelenleg az indexelők csak a megfelelő IP-címtartomány-korlátozási mechanizmusokon vagy NSG-szabályokon keresztül férhetnek hozzá az adatforrásokhoz, ha alkalmazható. Az egyes támogatott adatforrások elérésének részletei az alábbiakban találhatók.
+> Az indexelő korlátozott támogatást biztosít az Azure hálózati biztonsági mechanizmusok által védett adatforrásokhoz és egyéb erőforrásokhoz való hozzáféréshez. Jelenleg az indexelő csak a megfelelő IP-címtartomány korlátozási mechanizmusai vagy NSG-szabályok segítségével férhetnek hozzá az adatforrásokhoz, ha van ilyen. Az egyes támogatott adatforrásokhoz való hozzáférés részleteit alább találja.
 >
-> Megtudhatja, hogy az IP-címét a keresési szolgáltatás pingelésével `<your-search-service-name>.search.windows.net`a teljesen minősített domain név (pl., ).
+> A keresési szolgáltatás IP-címét a teljes tartománynév (pl.: `<your-search-service-name>.search.windows.net`) pingelésével tekintheti meg.
 >
-> A `AzureCognitiveSearch` [szolgáltatáscímke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartományát a [Letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) vagy a [Service Tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)segítségével találhatja meg. Az IP-címtartomány hetente frissül.
+> A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
-Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztosít. Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. A tűzfalhibák általában általánosak, és így néznek `The remote server returned an error: (403) Forbidden` ki: vagy `Credentials provided in the connection string are invalid or have expired`a .
+Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztosít. Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. A tűzfal hibái általában általánosak, és a `The remote server returned an error: (403) Forbidden` következőképpen `Credentials provided in the connection string are invalid or have expired`néznek ki: vagy.
 
-Az indexelők számára két lehetőség van arra, hogy ilyen példányban hozzáférjenek ezekhez az erőforrásokhoz:
+A következő két lehetőség közül választhat, amelyek lehetővé teszik az indexelő számára ezen erőforrások elérését egy adott példányban:
 
-* Tiltsa le a tűzfalat, lehetővé téve a hozzáférést **az összes hálózatról** (ha lehetséges).
-* Másik lehetőségként engedélyezheti a hozzáférést a keresési szolgáltatás IP-címéhez `AzureCognitiveSearch` és az erőforrás tűzfalszabályaiban található [IP-címcímhez](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) (IP-címtartomány korlátozása).
+* Tiltsa le a tűzfalat azáltal, hogy engedélyezi a hozzáférést az **összes hálózatról** (ha lehetséges).
+* Azt is megteheti, hogy engedélyezi a keresési szolgáltatás IP-címét és a `AzureCognitiveSearch` [szolgáltatási címke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány használatát az erőforrás tűzfalszabályok esetében (az IP-címtartomány korlátozása).
 
-Az egyes adatforrástípusok IP-címtartomány-korlátozásainak konfigurálásáról az alábbi hivatkozásokon talál részleteket:
+Az IP-címtartomány korlátozásának az egyes adatforrások esetében történő konfigurálásával kapcsolatos részletek a következő hivatkozásokban találhatók:
 
 * [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
@@ -49,31 +49,31 @@ Az egyes adatforrástípusok IP-címtartomány-korlátozásainak konfigurálás�
 
 * [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
 
-**Korlátozás:** Amint azt a fenti dokumentációban az Azure Storage, IP-címtartomány korlátozások csak akkor működnek, ha a keresési szolgáltatás és a tárfiók különböző régiókban található.
+**Korlátozás**: az Azure Storage fenti dokumentációjában leírtaknak megfelelően az IP-címtartomány korlátozásai csak akkor működnek, ha a keresési szolgáltatás és a Storage-fiók különböző régiókban található.
 
-Az Azure-függvények (amelyek [egyéni webapi-készségként](cognitive-search-custom-skill-web-api.md)használhatók) szintén [támogatják az IP-címkorlátozásokat.](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions) A konfigurálandó IP-címek listája a keresési szolgáltatás IP-címe és `AzureCognitiveSearch` a szolgáltatáscímke IP-címtartománya.
+Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és a `AzureCognitiveSearch` szolgáltatási címke IP-címtartomány.
 
-Az ADATOK Azure-beli virtuális gépSQL-kiszolgálón való elérésének részleteit [itt](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismerteti
+Az Azure-beli virtuális gépen futó SQL Server-adatokhoz való hozzáférés részleteit [itt](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) találja:
 
 ### <a name="configure-network-security-group-nsg-rules"></a>Hálózati biztonsági csoport (NSG) szabályainak konfigurálása
 
-Amikor egy SQL felügyelt példányban fér hozzá az adatokhoz, vagy ha egy Azure virtuális gép egy [egyéni webapi-szakértelem](cognitive-search-custom-skill-web-api.md)webszolgáltatás-URI-jaként használatos, az ügyfeleknek nem kell adott IP-címekkel foglalkozniuk.
+Ha egy SQL felügyelt példányban lévő adatokhoz fér hozzá, vagy ha egy Azure-beli virtuális gépet webszolgáltatási URI-ként használ egy [egyéni webes API-képességhez](cognitive-search-custom-skill-web-api.md), az ügyfeleknek nem kell konkrét IP-címmel foglalkoznia.
 
-Ilyen esetekben az Azure virtuális gép, vagy az SQL felügyelt példány konfigurálható, hogy egy virtuális hálózaton belül található. Ezután egy hálózati biztonsági csoport beállítható a virtuális hálózati alhálózatokba és hálózati adapterekbe be- és kiáramló hálózati forgalom típusának szűrésére.
+Ilyen esetekben az Azure-beli virtuális gép vagy az SQL felügyelt példánya konfigurálható úgy, hogy a virtuális hálózaton belül legyen. Ezután egy hálózati biztonsági csoport konfigurálható úgy, hogy szűrje a virtuális hálózati alhálózatok és hálózati adapterek bejövő és kimenő hálózati forgalmának típusát.
 
-A `AzureCognitiveSearch` szolgáltatáscímke közvetlenül használható a bejövő [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) ban anélkül, hogy meg kellene keresnie az IP-címtartományát.
+A `AzureCognitiveSearch` szolgáltatási címke közvetlenül használható a bejövő [NSG-szabályokban](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) anélkül, hogy meg kellene keresnie az IP-címtartományt.
 
-Az SQL felügyelt példányok adatainak elérésével kapcsolatos további részleteket [itt](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) ismertetjük.
+A felügyelt SQL-példányokban tárolt adatokhoz való hozzáférés további részleteit [itt](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) találja
 
-### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "Indexelés" nincs engedélyezve
+### <a name="cosmosdb-indexing-isnt-enabled"></a>Az "indexelés" CosmosDB nincs engedélyezve
 
-Az Azure Cognitive Search implicit függa Cosmos DB indexelés. Ha kikapcsolja az automatikus indexelést a Cosmos DB-ben, az Azure Cognitive Search sikeres állapotot ad vissza, de nem indexeli a tároló tartalmát. A beállítások ellenőrzéséről és az indexelés bekapcsolásával kapcsolatos tudnivalókért olvassa el [az Indexelés kezelése az Azure Cosmos DB-ben](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
+Az Azure Cognitive Search implicit függőséggel rendelkezik Cosmos DB indexeléshez. Ha kikapcsolja az automatikus indexelést Cosmos DBban, az Azure Cognitive Search sikeres állapotot ad vissza, de nem tudja indexelni a tároló tartalmát. A beállítások vizsgálatával és az indexelés bekapcsolásával kapcsolatos utasításokért lásd: [az indexelés kezelése Azure Cosmos DBban](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
-## <a name="document-processing-errors"></a>Dokumentumfeldolgozási hibák
+## <a name="document-processing-errors"></a>Dokumentált feldolgozási hibák
 
-### <a name="unprocessable-or-unsupported-documents"></a>Feldolgozhatatlan vagy nem támogatott dokumentumok
+### <a name="unprocessable-or-unsupported-documents"></a>Feldolgozható vagy nem támogatott dokumentumok
 
-A blob indexelő [dokumentumok, amelyek dokumentumformátumok kifejezetten támogatott.](search-howto-indexing-azure-blob-storage.md#SupportedFormats). . Néha egy blob storage tároló nem támogatott dokumentumokat tartalmaz. Máskor lehetnek problémás dokumentumok. A [konfigurációs beállítások módosításával](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)elkerülheti az indexelő leállítását ezeken a dokumentumokon:
+A blob indexelő [dokumentumai, melyeket a dokumentumok formátumai kifejezetten támogatnak.](search-howto-indexing-azure-blob-storage.md#SupportedFormats) Előfordulhat, hogy a blob Storage-tároló nem támogatott dokumentumokat tartalmaz. Egyéb esetekben problémás dokumentumok is előfordulhatnak. A [konfigurációs beállítások módosításával](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)elkerülheti az indexelő leállítását ezen dokumentumokon:
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -86,12 +86,12 @@ api-key: [admin key]
 }
 ```
 
-### <a name="missing-document-content"></a>Hiányzó dokumentumtartalom
+### <a name="missing-document-content"></a>Hiányzó dokumentum tartalma
 
-A blob indexelő [megkeresi és kibontja a szöveget a tárolóban lévő blobokból.](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs) A szöveg kibontásával kapcsolatos problémák a következők:
+A blob indexelő [megkeresi és kiolvassa a tárolóban lévő Blobok szövegét](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). A szöveg kinyerésével kapcsolatos problémák például a következők:
 
-* A dokumentum csak beolvasott képeket tartalmaz. A nem szöveges tartalommal rendelkező PDF-blobok, például a beolvasott képek (JG-k) nem eredményeznek eredményt egy szabványos blobindexelő folyamatban. Ha szöveges elemeket tartalmazó képtartalma van, [a kognitív kereséssel](cognitive-search-concept-image-scenarios.md) megkeresheti és kibonthatja a szöveget.
-* A blob indexelő van beállítva, hogy csak index elmetaadatok. A tartalom kinyeréséhez a blob indexelőt úgy kell konfigurálni, hogy [kinyerje a tartalmat és a metaadatokat:](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)
+* A dokumentum csak a beolvasott képeket tartalmazza. A nem szöveges tartalmú PDF-Blobok, például a beolvasott képek (jpg-EK) nem eredményeznek eredményt a szabványos blob-indexelési folyamatokban. Ha szöveges elemekkel rendelkező képtartalommal rendelkezik, a [kognitív keresés](cognitive-search-concept-image-scenarios.md) használatával megkeresheti és kinyerheti a szöveget.
+* A blob-indexelő úgy van beállítva, hogy csak a metaadatok indexelésére legyen konfigurálva. A tartalom kinyeréséhez a blob indexelő úgy kell konfigurálni, hogy [mindkét tartalmat és metaadatot kinyerje](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -104,14 +104,14 @@ api-key: [admin key]
 }
 ```
 
-## <a name="index-errors"></a>Indexhibák
+## <a name="index-errors"></a>Indexelési hibák
 
 ### <a name="missing-documents"></a>Hiányzó dokumentumok
 
-Az indexelők [adatforrásból](https://docs.microsoft.com/rest/api/searchservice/create-data-source)származó dokumentumokat keresnek. Néha úgy tűnik, hogy az adatforrásból származó, indexelendő dokumentum hiányzik egy indexből. A hibák több gyakori oka is előfordulhat:
+Az indexelő a dokumentumokat egy [adatforrásból](https://docs.microsoft.com/rest/api/searchservice/create-data-source)keresi meg. Időnként előfordulhat, hogy az adatforrásból olyan dokumentum van, amelyet indexelni kellett volna egy indexből. A hibák néhány gyakori oka lehet:
 
-* A dokumentum nincs indexelve. Ellenőrizze a portálon a sikeres indexelő futtatás.
-* A dokumentum az indexelő futtatása után frissült. Ha az indexelő [ütemezés szerint](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)van, akkor végül újrafut, és felveszi a dokumentumot.
-* Az adatforrásban megadott [lekérdezés](/rest/api/searchservice/create-data-source) kizárja a dokumentumot. Az indexelők nem indexelhetik azadatforrásrészét nem lévő dokumentumokat.
-* [A mezőleképezések](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy [a a ai-dúsítás](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) módosította a dokumentumot, és a várttól eltérően néz ki.
-* A [lookup document API segítségével](https://docs.microsoft.com/rest/api/searchservice/lookup-document) megkeresheti a dokumentumot.
+* A dokumentum nem lett indexelve. A sikeres indexelő futtatásához keresse meg a portált.
+* A dokumentum frissült az indexelő futtatása után. Ha az indexelő [ütemezett](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), akkor a rendszer végül Újrafuttatja és felveszi a dokumentumot.
+* Az adatforrásban megadott [lekérdezés](/rest/api/searchservice/create-data-source) kizárja a dokumentumot. Az indexelő nem tudja indexelni azokat a dokumentumokat, amelyek nem részei az adatforrásnak.
+* A [mező-hozzárendelések](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy a [mesterséges intelligencia-gazdagítás](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) megváltoztatta a dokumentumot, és a várttól eltérőnek tűnik.
+* A dokumentum kereséséhez használja a [keresési dokumentum API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) -t.

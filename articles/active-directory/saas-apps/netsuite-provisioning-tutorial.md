@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Netsuite OneWorld konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Netsuite OneWorld között.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés a NetSuite-OneWorld konfigurálása a Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a NetSuite OneWorld között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,85 +16,85 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c9a823e6515c2bfe09e1ab7bcef471eb8169e75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063295"
 ---
-# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: A Netsuite konfigurálása automatikus felhasználói kiépítéshez
+# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó üzembe helyezéséhez szükséges a NetSuite konfigurálása
 
-Ez az oktatóanyag célja, hogy megmutassa a Netsuite OneWorld és az Azure AD által végrehajtandó lépéseket a felhasználói fiókok automatikus kiépítéséhez és a felhasználói fiókok azure AD-ről netsuite-re történő automatikus kiépítéséhez és kiépítésének kiteljesítéséhez.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a NetSuite OneWorld és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a NetSuite-ba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
 *   Egy Azure Active Directory-bérlő.
-*   Netsuite OneWorld előfizetés. Vegye figyelembe, hogy az automatikus felhasználói kiépítés jelenleg csak a NetSuite OneWorld-tel támogatott.
-*   A Netsuite rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
+*   Egy NetSuite OneWorld-előfizetés. Vegye figyelembe, hogy az automatikus felhasználó-kiépítés jelenleg csak a NetSuite OneWorld támogatott.
+*   Felhasználói fiók a NetSuite-ban rendszergazdai engedélyekkel.
 
-## <a name="assigning-users-to-netsuite-oneworld"></a>Felhasználók hozzárendelése a Netsuite OneWorld-höz
+## <a name="assigning-users-to-netsuite-oneworld"></a>Felhasználók kiosztása a NetSuite OneWorld
 
-Az Azure Active Directory a "hozzárendelések" nevű koncepciót használja annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói fiók kiépítése, csak a felhasználók és csoportok, amelyek "hozzárendelt" egy alkalmazás az Azure AD-ben szinkronizálva vannak.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-ben mely felhasználók és/vagy csoportok képviselik azon felhasználókat, akiknek hozzáférésre van szükségük a Netsuite alkalmazáshoz. Miután eldöntötte, ezeket a felhasználókat hozzárendelheti a Netsuite alkalmazáshoz az alábbi utasításokat követve:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználók és/vagy csoportok szerepelnek az Azure AD-ben azon felhasználók számára, akiknek hozzáférésre van szükségük a NetSuite-alkalmazáshoz. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a NetSuite-alkalmazáshoz:
 
-[Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Fontos tippek a felhasználók Netsuite OneWorld-höz való hozzárendeléséhez
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Fontos Tippek a felhasználók a NetSuite-OneWorld való hozzárendeléséhez
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van hozzárendelve a NetSuite a létesítési konfiguráció teszteléséhez. Később további felhasználók és/vagy csoportok is hozzárendelhetők.
+*   Az üzembe helyezési konfiguráció teszteléséhez egyetlen Azure AD-felhasználó van hozzárendelve a NetSuite-hez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-*   Amikor egy felhasználót a Netsuite-hez rendel, érvényes felhasználói szerepkört kell választania. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítés.
+*   Amikor felhasználót rendel a NetSuite-hoz, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
 
-## <a name="enable-user-provisioning"></a>Felhasználói kiépítés engedélyezése
+## <a name="enable-user-provisioning"></a>A felhasználó üzembe helyezésének engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-t a Netsuite felhasználói fiók létesítési API-jával való csatlakoztatásán, és konfigurálja a kiépítési szolgáltatást a hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához a Netsuite-ban az Azure AD-ben a felhasználó- és csoport-hozzárendelés alapján.
+Ez a szakasz végigvezeti az Azure AD-nek a NetSuite felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP] 
-> Az [Azure Portalon](https://portal.azure.com)található utasításokat követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a Netsuite szolgáltatáshoz. Egyszeri bejelentkezés konfigurálható az automatikus kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a NetSuite számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok kiépítésének konfigurálása:
+### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok üzembe helyezésének konfigurálása:
 
-Ez a szakasz célja, hogy körvonalazza, hogyan engedélyezheti az Active Directory felhasználói fiókok felhasználók általi kiépítését a Netsuite számára.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok telepítése a NetSuite-ra.
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure Active Directory > Vállalati alkalmazások > az összes alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-1. Ha már konfigurálta a Netsuite-ot egyszeri bejelentkezéshez, keresse meg a Netsuite példányát a keresőmező használatával. Ellenkező esetben válassza **a Hozzáadás** és keresés a **Netsuite** elemet az alkalmazásgalériában. Válassza ki a Netsuite elemet a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
+1. Ha már konfigurálta a NetSuite-t az egyszeri bejelentkezéshez, keressen rá a NetSuite-példányra a keresőmező használatával. Ellenkező esetben kattintson a **Hozzáadás** gombra, és keressen rá a **NetSuite** kifejezésre az alkalmazás-katalógusban. A keresési eredmények közül válassza ki a NetSuite elemet, majd adja hozzá az alkalmazások listájához.
 
-1. Válassza ki a Netsuite példányát, majd válassza **a Kiépítés** lapot.
+1. Válassza ki a NetSuite példányát, majd válassza a **kiépítés** lapot.
 
-1. Állítsa a **létesítési módot** **Automatikus**ra. 
+1. Állítsa a **kiépítési módot** **automatikus**értékre. 
 
-    ![Kiépítés](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-1. A **Rendszergazdai hitelesítő adatok csoportban** adja meg a következő konfigurációs beállításokat:
+1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
-    a. A **Rendszergazdai felhasználónév** mezőbe írjon be egy Netsuite-fióknevet, amelyhez a **rendszergazdai** profil Netsuite.com van rendelve.
+    a. A **rendszergazda felhasználóneve** szövegmezőbe írja be azt a NetSuite-fióknevet, amelynek a NetSuite.com hozzá van rendelve a **rendszergazda** profilja.
    
-    b. A **Rendszergazdai jelszó** mezőbe írja be a fiók jelszavát.
+    b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
       
-1. Az Azure Portalon kattintson a **Kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure AD csatlakozni tud a Netsuite alkalmazáshoz.
+1. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a NetSuite-alkalmazáshoz.
 
-1. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek kiépítési hibaértesítéseket kell kapnia, és jelölje be a jelölőnégyzetet.
-
-1. Kattintson a **Mentés gombra.**
-
-1. A Leképezések csoportban válassza az Azure Active Directory-felhasználók szinkronizálása a Netsuite.Under Mappings ( Leképezések ) területen válassza **az Azure Active Directory-felhasználók szinkronizálása a Netsuite.**
-
-1. Az **Attribútum-leképezések** szakaszban tekintse át az Azure AD-ről a Netsuite-re szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Netsuite felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások véglegesítéséhez kattintson a Mentés gombra.
-
-1. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a NetSuite, módosítsa a **kiépítés állapota** **be a** Beállítások szakaszban
+1. Az **értesítő e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek a kiépítési hibákra vonatkozó értesítéseket kell kapnia, majd jelölje be a jelölőnégyzetet.
 
 1. Kattintson a **Mentés gombra.**
 
-Elindítja a Felhasználók és csoportok szakaszban a Netsuite-hoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg a szolgáltatás fut. A Szinkronizálás **részletei** szakaszban figyelheti a folyamatot, és követheti a kiépítési tevékenységnaplókra mutató hivatkozásokat, amelyek a hálózati alkalmazás létesítési szolgáltatása által végrehajtott összes műveletet ismertetik.
+1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a NetSuite-** ra lehetőséget.
 
-Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésről szóló jelentéskészítéscímű témakörben](../app-provisioning/check-status-user-account-provisioning.md)olvashat bővebben.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a NetSuite-ra szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy a **megfelelő** tulajdonságokként kiválasztott attribútumok a NetSuite felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
-## <a name="additional-resources"></a>További források
+1. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a NetSuite-hoz, módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
-* [Felhasználói fiókok kiépítési kezeléséa vállalati alkalmazásokhoz](tutorial-list.md)
+1. Kattintson a **Mentés gombra.**
+
+Elindítja a felhasználók és csoportok szakaszban a Netsuitehoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a NetSuite-alkalmazáson végrehajtott összes műveletet.
+
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+
+## <a name="additional-resources"></a>További háttéranyagok
+
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](netsuite-tutorial.md)

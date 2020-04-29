@@ -1,7 +1,7 @@
 ---
-title: Biztonságos API-k az API-k hitelesítésével az API Managementben
+title: API-k biztonságossá tétele az API Management-ben az ügyféltanúsítvány-alapú hitelesítés használatával
 titleSuffix: Azure API Management
-description: Az API-k ügyféltanúsítványokkal való biztonságos hozzáférésének védelme
+description: Ismerje meg, hogyan védheti meg az API-kat az Ügyféltanúsítványok használatával
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76713149"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az API Managementben
 
-Az API Management lehetővé teszi az API-k (azaz ügyfél és API Management) ügyféltanúsítványok használatával történő biztonságos elérését. A házirend-kifejezések segítségével ellenőrizheti a bejövő tanúsítványokat, és ellenőrizheti a tanúsítványok tulajdonságait a kívánt értékekkel szemben.
+A API Management az Ügyféltanúsítványok használatával biztonságossá teheti az API-khoz (például az ügyféltől a API Managementig) való hozzáférést. Érvényesítheti a bejövő tanúsítványokat, és ellenőrizheti a tanúsítvány tulajdonságait a kívánt értékekkel a házirend-kifejezések használatával.
 
-Az API-k háttérszolgáltatásához való hozzáférés ügyféltanúsítványok (azaz az API-kezelés háttérrendszerhez) használatával történő biztosításáról a [Háttérszolgáltatások védelme az ügyféltanúsítvány-hitelesítés használatával című](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) témakörben található.
+További információ az API-k az Ügyféltanúsítványok használatával történő elérésének biztosításáról (azaz API Management a háttérrendszer számára): a [háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> A Fejlesztői, Alapszintű, Standard vagy Prémium szintű csomagokHTTP/2-es verzióján keresztüli ügyféltanúsítványok fogadásához és ellenőrzéséhez be kell kapcsolnia az "Ügyféltanúsítvány egyeztetése" beállítást az "Egyéni tartományok" panelen az alábbi módon.
+> Az ügyféltanúsítványok a fejlesztői, alapszintű, standard vagy prémium szinteken HTTP/2 protokollon keresztüli fogadásához és ellenőrzéséhez be kell kapcsolni az "egyéni tartományok" panel "ügyfél-tanúsítvány egyeztetése" beállítását az alábbi ábrán látható módon.
 
 ![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 > [!IMPORTANT]
-> A Felhasználás i. szintben lévő ügyféltanúsítványok fogadásához és ellenőrzéséhez be kell kapcsolnia az "Ügyféltanúsítvány kérése" beállítást az "Egyéni tartományok" panelen az alábbiak szerint.
+> Az ügyféltanúsítványok a használati szinten való fogadásához és ellenőrzéséhez be kell kapcsolni az "egyéni tartományok" panel "ügyfél-tanúsítvány kérése" beállítását az alábbi ábrán látható módon.
 
 ![Ügyféltanúsítvány kérése](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>A kibocsátó és a tárgy ellenőrzése
+## <a name="checking-the-issuer-and-subject"></a>A kiállító és a tárgy ellenőrzése
 
-Az alábbi házirendek beállíthatók úgy, hogy ellenőrizzék az ügyféltanúsítvány kibocsátóját és tulajdonosát:
+Az alábbi házirendek konfigurálhatók a kiállító és az ügyféltanúsítvány tárgyának vizsgálatához:
 
 ```xml
 <choose>
@@ -51,12 +51,12 @@ Az alábbi házirendek beállíthatók úgy, hogy ellenőrizzék az ügyféltan�
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista `context.Request.Certificate.VerifyNoRevocation()` használatának letiltása a `context.Request.Certificate.Verify()`helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` tanúsítvány(oka)t fel kell [tölteni az](api-management-howto-ca-certificates.md) API Management szolgáltatásba, és működni enem szükséges.
+> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
 
 ## <a name="checking-the-thumbprint"></a>Az ujjlenyomat ellenőrzése
 
-Az alábbi házirendek beállíthatók az ügyféltanúsítvány ujjlenyomatának ellenőrzésére:
+Az alábbi házirendek konfigurálhatók az ügyféltanúsítvány ujjlenyomatának vizsgálatához:
 
 ```xml
 <choose>
@@ -69,12 +69,12 @@ Az alábbi házirendek beállíthatók az ügyféltanúsítvány ujjlenyomatána
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista `context.Request.Certificate.VerifyNoRevocation()` használatának letiltása a `context.Request.Certificate.Verify()`helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` tanúsítvány(oka)t fel kell [tölteni az](api-management-howto-ca-certificates.md) API Management szolgáltatásba, és működni enem szükséges.
+> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Ujjlenyomat ellenőrzése az API Management szolgáltatásba feltöltött tanúsítványokkal szemben
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Ujjlenyomat ellenőrzése a API Management feltöltött tanúsítványokkal szemben
 
-A következő példa bemutatja, hogyan ellenőrizheti az ügyféltanúsítvány ujjlenyomatát az API Management szolgáltatásba feltöltött tanúsítványokkal szemben:
+Az alábbi példa bemutatja, hogyan ellenőrizhető az ügyféltanúsítvány ujjlenyomata a API Managementba feltöltött tanúsítványokkal szemben:
 
 ```xml
 <choose>
@@ -88,16 +88,16 @@ A következő példa bemutatja, hogyan ellenőrizheti az ügyféltanúsítvány 
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista `context.Request.Certificate.VerifyNoRevocation()` használatának letiltása a `context.Request.Certificate.Verify()`helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` tanúsítvány(oka)t fel kell [tölteni az](api-management-howto-ca-certificates.md) API Management szolgáltatásba, és működni enem szükséges.
+> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
 
 > [!TIP]
-> A [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-holtpont-probléma többféleképpen is megnyilvánulhat, például a kérelmek lefagyása, a kérelmek `403 Forbidden` állapotkódot eredményeznek az időtúllépés után, `context.Request.Certificate` a `null`. Ez a probléma `POST` `PUT` általában körülbelül 60 KB vagy annál nagyobb tartalomhosszúságú és -kérelmeket érint.
-> A probléma előfordulásának megakadályozása érdekében kapcsolja be az "Ügyféltanúsítvány egyeztetése" beállítást a kívánt állomásnevekhez az "Egyéni tartományok" panelen az alábbi módon. Ez a funkció nem érhető el a Felhasználás i.
+> A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések lefagyása után az időtúllépés után `403 Forbidden` `context.Request.Certificate` a kérések állapotkódot eredményeznek. `null` Ez a probléma általában `POST` `PUT` a tartalom hossza körülbelül 60KB vagy nagyobb.
+> Ha meg szeretné akadályozni, hogy ez a probléma ne jelenjen meg, kapcsolja be az "ügyfél-tanúsítvány egyeztetése" beállítást az "egyéni tartományok" panelen az alábbi ábrán látható módon. Ez a funkció nem érhető el a felhasználási szinten.
 
 ![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>További lépések
 
--   [Háttérszolgáltatások védelme az ügyféltanúsítvány-hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 -   [Tanúsítványok feltöltése](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

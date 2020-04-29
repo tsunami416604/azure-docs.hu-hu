@@ -1,5 +1,5 @@
 ---
-title: Az Azure Event Grid biztonsága és hitelesítése
+title: Biztonság és hitelesítés Azure Event Grid
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti.
 services: event-grid
 author: banisadr
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899281"
 ---
-# <a name="authorizing-access-to-event-grid-resources"></a>Hozzáférés engedélyezése az Eseményrács erőforrásaihoz
-Az Azure Event Grid lehetővé teszi, hogy szabályozhatja a különböző felhasználók számára adott hozzáférési szintet a különböző felügyeleti műveletek, például az esemény-előfizetések listázásához, újak létrehozásához és kulcsok létrehozásához. Az Event Grid az Azure szerepköralapú hozzáférés-vezérlését (RBAC) használja.
+# <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
+Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző felügyeleti műveletek, például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid az Azure szerepköralapú hozzáférés-vezérlését (RBAC) használja.
 
-## <a name="operation-types"></a>Művelettípusok
+## <a name="operation-types"></a>Működési típusok
 
-Az Event Grid a következő műveleteket támogatja:
+Event Grid a következő műveleteket támogatja:
 
-* Microsoft.EventGrid/*/olvasás
-* Microsoft.EventGrid/*/írás
-* Microsoft.EventGrid/*/delete
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
-* Microsoft.EventGrid/topics/listKeys/action
-* Microsoft.EventGrid/topics/regenerateKey/action
+* Microsoft. EventGrid/*/READ
+* Microsoft. EventGrid/*/Write
+* Microsoft. EventGrid/*/delete
+* Microsoft. EventGrid/eventSubscriptions/getFullUrl/művelet
+* Microsoft. EventGrid/témakörök/Listkeys műveletének beolvasása/művelet
+* Microsoft. EventGrid/témakörök/regenerateKey/művelet
 
-Az utolsó három művelet potenciálisan titkos információkat ad vissza, amelyek kiszűrve lesznek a normál olvasási műveletekből. Javasoljuk, hogy korlátozza a hozzáférést ezekhez a műveletekhez. 
+Az utolsó három művelet visszaküldi a potenciálisan titkos adatokat, amelyek kiszűrik a normál olvasási műveleteket. Javasoljuk, hogy korlátozza a hozzáférést ezekhez a műveletekhez. 
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
-Az Event Grid két beépített szerepkört biztosít az esemény-előfizetések kezeléséhez. Fontos, hogy [eseménytartományokat valósítson](event-domains.md) meg, mert megadja a felhasználóknak az eseménytartomány témaköreire való feliratkozáshoz szükséges engedélyeket. Ezek a szerepkörök az esemény-előfizetésekre összpontosítanak, és nem biztosítanak hozzáférést az olyan műveletekhez, mint például a témakörök létrehozása.
+A Event Grid két beépített szerepkört biztosít az esemény-előfizetések kezeléséhez. Fontosak az esemény- [tartományok](event-domains.md) megvalósításakor, mert a felhasználóknak az adott esemény tartományában lévő témakörökre való előfizetéshez szükséges engedélyeket adják meg. Ezek a szerepkörök az esemény-előfizetésekre összpontosítanak, és nem biztosítanak hozzáférést olyan műveletekhez, mint például a témakörök létrehozása.
 
-[Ezeket a szerepköröket hozzárendelheti egy felhasználóhoz vagy csoporthoz.](../role-based-access-control/quickstart-assign-role-user-portal.md)
+[Ezeket a szerepköröket hozzárendelheti egy felhasználóhoz vagy csoportjához](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**EventGrid EventSubscription Közreműködő**: Event Grid-előfizetési műveletek kezelése
+**EventGrid EventSubscription közreműködő**: Event Grid-előfizetési műveletek kezelése
 
 ```json
 [
@@ -73,7 +73,7 @@ Az Event Grid két beépített szerepkört biztosít az esemény-előfizetések 
 ]
 ```
 
-**EventGrid EventSubscription-olvasó**: Event Grid-előfizetések olvasása
+**EventGrid EventSubscription-olvasó**: olvasás Event Grid előfizetések
 
 ```json
 [
@@ -109,9 +109,9 @@ Az Event Grid két beépített szerepkört biztosít az esemény-előfizetések 
 
 Ha a beépített szerepköröktől eltérő engedélyeket kell megadnia, létrehozhat egyéni szerepköröket.
 
-Az alábbiakban példa Eseményrács szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára, hogy különböző műveleteket. Ezek az egyéni szerepkörök különböznek a beépített szerepköröktől, mivel szélesebb körű hozzáférést biztosítanak, mint az esemény-előfizetések.
+A következő példa olyan Event Grid szerepkör-definíciókat mutat be, amelyek lehetővé teszik a felhasználók számára a különböző műveletek elvégzését. Ezek az egyéni szerepkörök különböznek a beépített szerepköröktől, mert szélesebb körű hozzáférést biztosítanak, mint a csak az esemény-előfizetések.
 
-**EventGridReadOnlyRole.json**: Csak írásvédett műveletek engedélyezése.
+**EventGridReadOnlyRole. JSON**: csak olvasási műveletek engedélyezése.
 
 ```json
 {
@@ -130,7 +130,7 @@ Az alábbiakban példa Eseményrács szerepkör-definíciók, amelyek lehetővé
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Korlátozott utóműveletek engedélyezése, de a törlési műveletek lehetővé teszi.
+**EventGridNoDeleteListKeysRole. JSON**: a korlátozás utáni műveletek engedélyezése, de a törlési műveletek letiltása.
 
 ```json
 {
@@ -153,7 +153,7 @@ Az alábbiakban példa Eseményrács szerepkör-definíciók, amelyek lehetővé
 }
 ```
 
-**EventGridContributorRole.json**: Lehetővé teszi az összes eseményrács-műveletet.
+**EventGridContributorRole. JSON**: engedélyezi az összes Event Grid-műveletet.
 
 ```json
 {
@@ -175,14 +175,14 @@ Az alábbiakban példa Eseményrács szerepkör-definíciók, amelyek lehetővé
 }
 ```
 
-Egyéni szerepköröket hozhat létre a [PowerShell,](../role-based-access-control/custom-roles-powershell.md) [az Azure CLI](../role-based-access-control/custom-roles-cli.md)és a [REST](../role-based-access-control/custom-roles-rest.md)használatával.
+Egyéni szerepköröket a [PowerShell](../role-based-access-control/custom-roles-powershell.md), az [Azure CLI](../role-based-access-control/custom-roles-cli.md)és a [Rest](../role-based-access-control/custom-roles-rest.md)használatával hozhat létre.
 
 
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-Az Event Grid szolgáltatás által lemezre írt összes eseményt vagy adatot egy Microsoft által felügyelt kulcs titkosítja, amely biztosítja, hogy az inkban van titkosítva. Ezenkívül az események vagy adatok által megőrzött maximális időtartam 24 óra az [Event Grid újrapróbálkozási házirendjének](delivery-and-retry.md)betartásával. Az Event Grid 24 óra elteltével automatikusan törli az összes eseményt vagy adatot, vagy az esemény az élő adást, attól függően, hogy melyik a kisebb.
+A Event Grid szolgáltatás által lemezre írt összes eseményt vagy adatfájlt egy Microsoft által felügyelt kulcs titkosítja, amely biztosítja, hogy az inaktív állapotban legyen titkosítva. Emellett az események vagy az adatmegőrzési időszak maximális időtartama 24 óra az [Event Grid újrapróbálkozási házirend](delivery-and-retry.md)betartásával. A Event Grid 24 óra elteltével automatikusan törli az összes eseményt vagy az adatmennyiséget, vagy az esemény élettartama, attól függően, hogy melyik a kisebb.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Eseményrács bemutatása az [Eseményrács – bemutatkozása:](overview.md)
+* A Event Grid bevezetését lásd: [About Event Grid](overview.md)

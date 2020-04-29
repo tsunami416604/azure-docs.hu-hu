@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli virtuális gépek meglévő rendelkezésre állási készlethez való hozzáadásának támogatása | Microsoft dokumentumok
-description: Ez a cikk egy támogatási mátrixot tartalmaz arról, hogy melyik virtuálisgép-sorozatot keverheti ugyanabban a rendelkezésre állási készletben
+title: Azure-beli virtuális gépek meglévő rendelkezésre állási csoportba való felvételének támogatása | Microsoft Docs
+description: Ez a cikk egy támogatási mátrixot biztosít arról, hogy mely virtuálisgép-sorozatokat lehet összekeverni ugyanabban a rendelkezésre állási csoportba
 documentationcenter: ''
 author: Deland-Han
 manager: dcscontentpm
@@ -9,27 +9,27 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a9ca8f219bef787de04b51600209bfd3a24dd166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77122921"
 ---
-# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Az Azure-beli virtuális gépek meglévő rendelkezésre állási készlethez való hozzáadásának támogatása
+# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Azure-beli virtuális gépek meglévő rendelkezésre állási csoportba való felvételének támogatása
 
-Előfordulhat, hogy korlátozásokkal jár, amikor új virtuális gépeket (VM-eket) ad hozzá egy meglévő rendelkezésre állási csoporthoz. A következő diagram részletezi, hogy melyik virtuálisgép-sorozatot keverheti ugyanabban a rendelkezésre állási csoportban.
+Időnként előfordulhat, hogy a meglévő rendelkezésre állási csoportba új virtuális gépek (VM-EK) hozzáadásakor bizonyos korlátozásokkal találkozhat. A következő diagram részletezi, hogy mely virtuálisgép-sorozatokat lehet összekeverni ugyanabban a rendelkezésre állási csoportba.
 
-Itt van a támogathatósági mátrix a különböző típusú virtuális gépek keveréséhez:
+Itt látható a támogatási mátrix, amely különböző típusú virtuális gépeket kever:
 
-Sorozat & rendelkezésre állási készlet|Második virtuális gép|A|Av2 között|D|Dv2|Dv3|
+Adatsorozat & rendelkezésre állási csoport|Második virtuális gép|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |Első virtuális gép|||||||
 |A||OK|OK|OK|OK|OK|
-|Av2 között||OK|OK|OK|OK|OK|
+|Av2||OK|OK|OK|OK|OK|
 |D||OK|OK|OK|OK|OK|
 |Dv2||OK|OK|OK|OK|OK|
 |Dv3||OK|OK|OK|OK|OK|
 
-Az összes többi sorozat nem lehet ugyanabban a rendelkezésre állási csoportban, mert egy adott hardvert igényelnek.
+Az összes többi sorozat nem lehet ugyanabban a rendelkezésre állási csoportban, mert egy adott hardverre van szükségük.
 
-Az A8/A9 virtuális gép mérete nem keverhető a dedikált RDMA háttérhálózat követelménye miatt.
+Az A8-as/A9-es virtuális gép mérete nem keverhető a dedikált RDMA háttér-hálózatra vonatkozó követelmény miatt.

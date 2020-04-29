@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services – Időzített metaadatok jelzése élő közvetítésben
-description: Ez a specifikáció ismerteti az idővel időzített metaadatok jelzésének módszereit az Azure Media Services betöltése és streamelése során. Ez magában foglalja az általános időzített metaadat-jelek (ID3) támogatását, valamint az SCTE-35 jelzést a hirdetés beillesztéséhez és az állapotjelzések összeillesztéséhez.
+title: Azure Media Services – időzített metaadatok jelzése élő adatfolyamban
+description: Ez a specifikáció olyan metódusokat vázol fel, amelyek jelzik az időzített metaadatokat a Azure Media Servicesba való betöltéskor és továbbításkor. Ez magában foglalja az általános időzített metaadatok (ID3) használatát, valamint a SCTE-35 jelzést az ad-beszúráshoz és a összekötési feltétel jelzéséhez.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -15,136 +15,136 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137322"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése az élő közvetítésben 
+# <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
-Utoljára frissítve: 2019-08-22
+Utolsó frissítés: 2019-08-22
 
-### <a name="conformance-notation"></a>Szabálytalanság jelölése
+### <a name="conformance-notation"></a>Megfelelőségi jelölés
 
-A dokumentumban szereplő "MUST", "MUST", "REQUIRED", "SHALL", "NOT", "SHOULD", "NOT", "RECOMMENDED", "MAY" és "OPTIONAL" kulcsszavakat a 2119.
+A (z) "kötelező", "nem", "REQUIREd", ",", "NOT", "No", "not", "NOT", "ajánlott", "MAY" és "OPTIONal" kulcsszót a jelen dokumentumban leírt módon kell értelmezni, az RFC 2119
 
 ## <a name="1-introduction"></a>1. Bevezetés 
 
-Annak jelzésére, hogy hirdetéseket vagy egyéni metaadat-eseményeket helyeznek el egy ügyféllejátszón, a műsorszolgáltatók gyakran használják a videóba ágyazott időzített metaadatokat. Ezeknek a forgatókönyveknek az engedélyezéséhez a Media Services támogatja az időzített metaadatok átvitelét az élő közvetítési csatorna betöltési pontjáról az ügyfélalkalmazásba.
-Ez a specifikáció számos olyan módot vázol fel, amelyet a Media Services támogat az élő adatfolyam-jeleken belüli időzített metaadatokhoz.
+A hirdetmények és az egyéni metaadat-események az ügyfélszámítógépen való beszúrásának jelzése érdekében a műsorszolgáltatók gyakran használják a videón belül beágyazott időzített metaadatokat. Ezen forgatókönyvek engedélyezéséhez Media Services támogatja az időzített metaadatok átvitelét az élő adatfolyam-csatorna betöltési pontjáról az ügyfélalkalmazás számára.
+Ez a specifikáció több, a Media Services által támogatott üzemmódot vázol fel az élő adatfolyam-jeleken belüli időzített metaadatokhoz.
 
-1. [SCTE-35] jelzés, amely megfelel az [SCTE-35], [SCTE-214-1], [SCTE-214-3] és [RFC8216] által meghatározott szabványoknak
+1. [SCTE-35] olyan jelzés, amely megfelel a [SCTE-35], [SCTE-214-1], [SCTE-214-3] és [RFC8216] által ismertetett szabványoknak.
 
-2. [SCTE-35] jelzés, amely megfelel az RTMP-hirdetésjelzés örökölt [Adobe-Primetime] specifikációjának.
+2. [SCTE-35] olyan jelzés, amely megfelel a régi [Adobe-főkiszolgálói] specifikációnak az RTMP ad-jelzéshez.
    
-3. Általános időzített metaadat-jelző mód, olyan üzenetek esetén, amelyek **NEM** [SCTE-35] üzenetek, és [ID3v2] vagy az alkalmazás fejlesztője által meghatározott más egyéni sémákat hordozhatnak.
+3. Általános időkorlátú metaadat-jelző mód, amely **nem** [SCTE-35], és a [ID3v2] vagy más, az alkalmazás fejlesztője által definiált egyéni sémákat is tartalmazhat.
 
-## <a name="11-terms-used"></a>1.1 Használt kifejezések
+## <a name="11-terms-used"></a>1,1 használt kifejezések
 
 | Időtartam                | Meghatározás                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hirdetésszünet            | Olyan hely vagy időpont, ahol egy vagy több hirdetés jeleníthető meg; megegyezik a haszonnal és az elhelyezési lehetőséggel.                                                                                                                     |
-| Hirdetésdöntési szolgáltatás | külső szolgáltatás, amely eldönti, hogy mely hirdetés(ek) és időtartamok jelenjenek meg a felhasználó számára. A szolgáltatásokat általában egy partner biztosítja, és nem tartoznak a dokumentum hatálya alól.                                                                    |
-| Végszó                 | A közelgő hirdetésszünet idő- és paramétereinek megjelölése. Ne feledje, hogy a jelzések jelezhetik a függőben lévő váltást egy hirdetésszünetre, függőben a következő hirdetésre való váltást egy hirdetésszüneten belül, és függőben lévő váltást a hirdetésszünetről a fő tartalomra.           |
-| Packager            | Az Azure Media Services "Streaming Endpoint" dinamikus csomagolási lehetőségeket biztosít a DASH és a HLS számára, és a médiaiparban "Packager"-nek nevezik.                                                                              |
-| Bemutató ideje   | Az az időpont, amikor egy eseményt a megjelenítő elé terjeszt. Az idő azt a pillanatot jelöli a média idővonalán, amikor a megtekintő látni fogja az eseményt. Egy SCTE-35 splice_info() parancsüzenet megjelenítési ideje például a splice_time(). |
-| Érkezési idő        | Az eseményüzenet megérkezésének időpontja. Az idő általában különbözik az esemény megjelenítési idejétől, mivel az eseményüzenetek et az esemény megjelenítési ideje előtt küldi el a rendszer.                                                    |
-| Ritka pálya        | nem folytonos, és egy szülő- vagy vezérlősávval szinkronizált idő.                                                                                                                                                  |
-| Forrás              | Az Azure Media streaming szolgáltatás                                                                                                                                                                                                             |
-| Csatorna mosogató        | Az Azure Media Élő streaming szolgáltatás                                                                                                                                                                                                        |
+| Ad-töréspont            | Az a hely vagy pont, ahol egy vagy több hirdetés ütemezhető kézbesítésre; ugyanaz, mint az igény szerinti és elhelyezési lehetőség.                                                                                                                     |
+| Ad-döntési szolgáltatás | külső szolgáltatás, amely eldönti, hogy mely ad (k) és időtartamok jelenjenek meg a felhasználó számára. A szolgáltatásokat általában egy partner nyújtja, és a jelen dokumentum hatókörén kívül esik.                                                                    |
+| Cue                 | A közelgő ad-töréspont időpontjának és paramétereinek a megjelölése. Vegye figyelembe, hogy a figyelmeztetések függőben lévő váltást jelezhetnek egy ad-töréspontra, függőben van egy ad-törésponton belüli következő hirdetésre, és függőben lévő váltás a fő tartalomra.           |
+| Packager            | A "folyamatos átviteli végpont" Azure Media Services dinamikus csomagolási képességeket biztosít a DASH és a HLS számára, és a Media Industry "csomagoló" néven ismert.                                                                              |
+| Megjelenítés időpontja   | Az az idő, amikor egy esemény megjelenik egy megjelenítőben. Az idő az a pillanat, amely az adathordozó idővonalán látható, hogy a megjelenítő megtekinti az eseményt. Például egy SCTE-35 splice_info () parancssori üzenet megjelenítésének időpontja a splice_time (). |
+| Érkezés időpontja        | Az az idő, amikor egy esemény üzenet érkezik. Az idő általában eltér az esemény megjelenítési idejétől, mert az esemény üzeneteit az esemény megjelenítési időpontja előtt küldik el.                                                    |
+| Ritka nyomon követés        | a média nyomon követése nem folyamatos, és az idő a szülő-vagy a vezérlési követéssel szinkronizálva van.                                                                                                                                                  |
+| Forrás              | Az Azure Media Streaming Service                                                                                                                                                                                                             |
+| Csatorna fogadója        | Az Azure Media Live Streaming szolgáltatás                                                                                                                                                                                                        |
 | HLS                 | Apple HTTP Live Streaming protokoll                                                                                                                                                                                                            |
-| Kötőjel                | Dinamikus adaptív streamelés HTTP-n keresztül                                                                                                                                                                                                          |
-| Sima              | Zökkenőmentes streamelési protokoll                                                                                                                                                                                                                     |
-| MPEG2-TS            | MPEG 2 átviteli adatfolyamok                                                                                                                                                                                                                      |
-| RTMP                | Valós idejű multimédiás protokoll                                                                                                                                                                                                                 |
-| uimsbf között              | Aláíratlan egész szám, a legjelentősebb bit először.                                                                                                                                                                                                 |
+| DASH                | Dinamikus adaptív átvitel HTTP-n keresztül                                                                                                                                                                                                          |
+| Smooth              | Smooth Streaming protokoll                                                                                                                                                                                                                     |
+| MPEG2 – TS            | MPEG 2 átviteli streamek                                                                                                                                                                                                                      |
+| RTMP                | Valós idejű multimédia protokoll                                                                                                                                                                                                                 |
+| uimsbf              | Előjel nélküli egész, legjelentősebb bit.                                                                                                                                                                                                 |
 
 ---
 
-## <a name="12-normative-references"></a>1.2 Normatív referenciák
+## <a name="12-normative-references"></a>1,2 normatív referenciák
 
-A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek e szövegben való hivatkozással e dokumentum rendelkezéseit képezik. A szabványügyi testületek minden dokumentumot felülvizsgálnak, és az olvasókat arra ösztönzik, hogy vizsgálják meg az alább felsorolt dokumentumok legfrissebb kiadásainak alkalmazásának lehetőségét. Az olvasók at is emlékezteti, hogy a hivatkozott dokumentumok újabb kiadásai nem feltétlenül kompatibilisek az Azure Media Services időzített metaadat-specifikációjának ezen verziójával.
+A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben a szövegben található hivatkozással alkotják a jelen dokumentum rendelkezéseit. Az összes dokumentumra a Standards szervek általi felülvizsgálat vonatkozik, és az olvasóknak javasoljuk, hogy vizsgálják meg az alább felsorolt dokumentumok legújabb kiadásainak alkalmazását. Az olvasókat arra is emlékezteti, hogy előfordulhat, hogy a hivatkozott dokumentumok újabb kiadásai nem kompatibilisek a Azure Media Serviceshoz tartozó, időzített metaadatok specifikációjának ezen verziójával.
 
 
 | Standard          | Meghatározás                                                                                                                                                                                                     |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Adobe-Primetime] | [Primetime digitális program beillesztése jelző specifikáció 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
-| [Adobe-Flash-AS]  | [FLASH ActionScript nyelvi útmutató](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
-| - Nem, nem, nem, nem, nem, nem, nem, nem, nem, nem            | ["AmF0 műveletkérő üzenet formátuma"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
-| [DASH-IF-IOP]     | DASH Ipari Fórum Interop Útmutató v 4.2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
-| [HLS-TMD]         | Időzített metaadatok a HTTP Live Streaming szolgáltatáshoz -[https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
-| [CMAF-ID3]        | [Időzített metaadatok a közös médiaalkalmazás-formátumban (CMAF)](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
-| [ID3v2]           | ID3 Címke 2.4.0-s verzió[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
-| [ISO-14496-12]    | ISO/IEC 14496-12: 12. rész ISO alapmédia fájlformátum, FourthEdition 2012-07-15                                                                                                                                 |
-| [MPEGDASH]        | Informatika - Dinamikus adaptív streamelés HTTP-n (DASH) keresztül - 1. 2014. május. Közzétett. Url:https://www.iso.org/standard/65274.html         |
-| [MPEGCMAF]        | Információtechnológia -- Multimédia alkalmazásformátum (MPEG-A) -- 19. 2018. január. Közzétett. Url:https://www.iso.org/standard/71975.html |
-| [MPEGCENC]        | Informatika -- MPEG-rendszerek technológiái -- 7. 2016 februárjában. Közzétett. Url:https://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | ["Microsoft Smooth Streaming Protocol", 2014.](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-Betöltés]  | [Az Azure Media Services töredezett MP4 élő betöltési specifikációja](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
-| [RFC8216]         | R. Pantos, Ed.; W. Május. HTTP élő közvetítés. 2017 augusztusában. Információs. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
-| [RFC4648]         | A Base16, Base32 és Base64 adatkódolások -[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| - Nem, nem, nem, nem, nem, nem, nem            | ["Az Adobe valós idejű üzenetküldő protokollja", 2012.](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
-| [SCTE-35-2019]    | SCTE 35: 2019 - Digitális program beillesztése üzenet kábelhez -https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH az IP-alapú kábelszolgáltatások 1.                                                                                                                 |
-| [SCTE-214-3]      | SCTE 214-3 2015 MPEG DASH az IP-alapú kábelszolgáltatások 3.                                                                                                                                  |
-| [SCTE-224]        | SCTE 224 2018r1 – Eseményütemezési és értesítési felület                                                                                                                                                  |
-| [SCTE-250]        | Esemény- és jelzőkezelési API (ESAM)                                                                                                                                                                      |
+| [Adobe – főműsoridői] | [Főműsoridőben a digitális program beszúrási jelzője 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
+| [Adobe-Flash-AS]  | [FLASH ActionScript nyelvi referenciája](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
+| [AMF0]            | ["A művelet üzenetének formátuma AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
+| [DASH-IF-IOP]     | A DASH Industry Forum együttműködési útmutatója v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
+| [HLS-TMD]         | HTTP Live Streaminghoz tartozó időzített metaadatok[https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
+| [CMAF-ID3]        | [Időzített metaadatok a Common Media Application Format (CMAF) szolgáltatásban](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
+| ID3v2           | ID3 tag verziója 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
+| [ISO-14496-12]    | ISO/IEC 14496-12:12. rész ISO-alapú adathordozó-fájlformátum, FourthEdition 2012-07-15                                                                                                                                 |
+| [MPEGDASH]        | Information Technology – dinamikus adaptív átvitel HTTP-n keresztül (DASH) – 1. rész: a média bemutatása és a szegmens formátuma. Május 2014. Közzétett. URLhttps://www.iso.org/standard/65274.html         |
+| [MPEGCMAF]        | Információtechnológia – multimédia-alkalmazás formátuma (MPEG-A) – 19. rész: a szegmentált adathordozók közös multimédia-alkalmazási formátuma (CMAF). Január 2018. Közzétett. URLhttps://www.iso.org/standard/71975.html |
+| [MPEGCENC]        | Information Technology--MPEG Systems Technologies--7. rész: általános titkosítás az ISO-alapú médiafájl formátumú fájlokban. Február 2016. Közzétett. URLhttps://www.iso.org/standard/68042.html                   |
+| [MS-SSTR]         | ["Microsoft Smooth Streaming Protocol", május 15., 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-betöltés]  | [Azure Media Services darabolt MP4 élő betöltési specifikáció](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming. Augusztus 2017. Tájékoztató. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
+| [RFC4648]         | A Base16, a Base32 és a Base64-alapú adatkódolások[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
+| RTMP            | ["Az Adobe valós idejű üzenetkezelési protokollja", december 21., 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| [SCTE-35-2019]    | SCTE 35:2019 – digitális program beszúrása cueing üzenet a kábelhez –https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
+| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH IP-alapú kábeltelevíziós szolgáltatásokhoz 1. rész: MPD-korlátozások és-bővítmények                                                                                                                 |
+| [SCTE-214-3]      | SCTE 214-3 2015 MPEG DASH IP-alapú kábeltelevíziós szolgáltatásokhoz 3. rész: kötőjel/FF-profil                                                                                                                                  |
+| [SCTE-224]        | SCTE 224 2018r1 – esemény ütemezése és értesítési felület                                                                                                                                                  |
+| [SCTE-250]        | Esemény-és jelzőlámpa-kezelési API (a ()                                                                                                                                                                      |
 
 ---
 
 
-## <a name="2-timed-metadata-ingest"></a>2. Időzített metaadat-betöltés
+## <a name="2-timed-metadata-ingest"></a>2. időzített metaadatok betöltése
 
-Az Azure Media Services támogatja a valós idejű sávon átnyúló metaadatokat mind az [RTMP] és a Smooth Streaming [MS-SSTR-Int) protokollokhoz. A valós idejű metaadatok egyéni események definiálására használhatók, saját egyedi egyéni sémákkal (JSON, Bináris, XML), valamint iparági definiált formátumokkal, például ID3-mal vagy SCTE-35-tel a szórásos adatfolyamokban a hirdetésjelzéshez. 
+Azure Media Services támogatja a valós idejű sávon belüli metaadatokat mind az [RTMP], mind a Smooth Streaming [MS-SSTR-betöltés] protokoll esetében. A valós idejű metaadatok egyéni események definiálására használhatók saját egyedi sémákkal (JSON, bináris, XML), valamint az iparág által definiált formátumokkal (például ID3 vagy SCTE-35) a szórásos streamekben. 
 
-Ez a cikk az egyéni időzített metaadat-jelek küldésének részleteit ismerteti az Azure Media Services támogatott betöltési protokolljainak használatával. A cikk azt is elmagyarázza, hogy a HLS, dash és smooth streaming jegyzékei hogyan vannak elrendezve az időzített metaadat-jelekkel, valamint azzal, hogy hogyan kerül a sávon keresztül, amikor a tartalom CMAF (MP4 töredékek) vagy a Transport Stream (TS) szegmensek használatával kerül továbbításra a HLS számára. 
+Ez a cikk részletesen ismerteti, hogyan küldhet egyéni időzített metaadatokat a Azure Media Services támogatott betöltési protokollok használatával. A cikk azt is ismerteti, hogyan történik a HLS, a kötőjel és a Smooth Streaming jegyzékfájljának az időzített metaadatokkal való megjelenítése, valamint a sávon belüli átvitel módja, ha a tartalmat a rendszer a CMAF (MP4-töredékek) vagy a HLS Transport stream (TS) szegmensének használatával továbbítja. 
 
-Az időzített metaadatok gyakori használati esetesetei a következők:
+Gyakori használati esetek az időzített metaadatok esetében:
 
- - SCTE-35 hirdetési jelek, amelyek hirdetéstöréseket indítanak el egy élő eseményben vagy lineáris adásban
- - Egyéni ID3-metaadatok, amelyek eseményeket indíthatnak el egy ügyfélalkalmazásban (böngésző, iOS vagy Android)
- - Egyénileg definiált JSON-, bináris- vagy XML-metaadatok az ügyfélalkalmazások eseményeinek aktiválásához
- - Telemetria élő kódolóból, IP-kamerából vagy drónból
- - Események egy IP kamera, mint a mozgás, arcfelismerés, stb
- - Az akciókamera, a drón vagy a mozgó eszköz földrajzi helyzetadatai
- - Dalszöveg
- - Programhatárok lineáris élő hírcsatornán
- - Élő hírfolyamban megjelenítendő képek vagy bővített metaadatok
- - Sporteredmények vagy játékóra-információk
- - A videó mellett a böngészőben megjelenítendő interaktív hirdetési csomagok
- - Kvízek vagy szavazások
+ - SCTE-35 ad-jelek az ad-megszakítások aktiválására élő vagy lineáris szórás esetén
+ - Egyéni ID3-metaadatok, amelyek aktiválják az eseményeket egy ügyfélalkalmazás (böngésző, iOS vagy Android)
+ - Egyéni JSON-, bináris vagy XML-metaadatok egy ügyfélalkalmazás eseményeinek elindításához
+ - Telemetria egy élő kódolóból, IP-kamerából vagy drone-ből
+ - Olyan IP-kamera eseményei, mint például a mozgás, az Arcfelismerés stb.
+ - A földrajzi helyzet információi egy művelet kamerából, a droneból vagy az eszköz áthelyezése
+ - Song lyrics
+ - A program határai a lineáris élő hírcsatornán
+ - Az élő hírcsatornán megjelenítendő képek vagy kibővített metaadatok
+ - Sportesemények vagy játék-óra információk
+ - Interaktív hirdetési csomagok a böngészőben megjelenített videó mellett
+ - Tesztek és lekérdezések
   
-Az Azure Media Services Élő események és a Packager képes fogadni ezeket az időzített metaadat-jeleket, és azokat olyan metaadatfolyammá alakítja, amely a szabványokon alapuló protokollok, például a HLS és a DASH protokollok használatával elérheti az ügyfélalkalmazásokat.
+Azure Media Services az élő események és a csomagolók képesek fogadni ezeket az időzített metaadatokat, és olyan metaadatokba konvertálják őket, amelyek a szabványokon alapuló protokollok, például a HLS és a DASH használatával képesek elérni az ügyfélalkalmazások elérését.
 
 
-## <a name="21-rtmp-timed-metadata"></a>2.1 RTMP időzített metaadatok
+## <a name="21-rtmp-timed-metadata"></a>2,1 RTMP időzített metaadatok
 
-Az [RTMP] protokoll lehetővé teszi az időzített metaadat-jelek küldését különböző esetekben, beleértve az egyéni metaadatokat és az SCTE-35 hirdetési jeleket. 
+Az [RTMP] protokoll lehetővé teszi, hogy a rendszer időzített metaadatokat küldjön a különböző forgatókönyvekhez, beleértve az egyéni metaadatokat és a SCTE-35 ad-jeleket. 
 
-A hirdetési jelek (cue üzenetek) [AMF0] dákóüzenetként kerülnek elküldésre az [RTMP] adatfolyamba ágyazva. Előfordulhat, hogy a dákó üzeneteket valamikor a tényleges esemény előtt küldik el, vagy [SCTE35] hirdetéssplice jelet kell betartania. A forgatókönyv támogatásához az esemény tényleges megjelenítési időbélyege a cue üzenetben kerül elküldésre. További információ: [AMF0].
+A hirdetési jelek (Cue-üzenetek) az [RTMP] streamben beágyazott [AMF0] Cue-üzenetekként lesznek elküldve. Előfordulhat, hogy a rendszer elküldte a Cue-üzeneteket a tényleges esemény vagy a [SCTE35] ad-összekötési jel előtt. Ennek a forgatókönyvnek a támogatásához a rendszer az esemény tényleges bemutató időbélyegét küldi el a végszó üzenetben. További információ: [AMF0].
 
-Az Azure Media Services rtmp-betöltéséhez a következő [AMF0] parancsokat támogatja:
+A következő [AMF0] parancsokat az RTMP betöltéséhez Azure Media Services támogatja:
 
-- **onUserDataEvent** - egyéni metaadatokhoz vagy [ID3v2] időzített metaadatokhoz használható
-- **onAdCue** - elsősorban a reklámelhelyezési lehetőség jelzésére szolgál az élő közvetítésben. A dákó két formája támogatott, egy egyszerű és egy "SCTE-35" mód. 
-- **onCuePoint** - bizonyos helyszíni hardverkódolók, például az Elemental Live kódoló által támogatott, az [SCTE35] üzenetek jelzésére. 
+- **onUserDataEvent** – egyéni metaadatok vagy [ID3v2] időzített metaadatok használata
+- **onAdCue** – elsősorban az élő streamben a hirdetmények elhelyezésére szolgáló lehetőség jelzésére használatos. A Cue két formája támogatott, egy egyszerű mód és egy "SCTE-35" üzemmód. 
+- **onCuePoint** – bizonyos helyszíni hardveres kódolók, például az elemi élő kódoló által támogatott jelek [SCTE35] üzenetek. 
   
 
-Az alábbi táblázat az AMF-üzenet hasznos adatának azon formátumát ismerteti, amelyet a Media Services az "egyszerű" és az [SCTE35] üzenetmódokban is befog tölteni.
+Az alábbi táblázat az AMF üzenet adattartalomának formátumát mutatja be, amelyet a Media Services az "egyszerű" és a [SCTE35] üzenet módokon is betölt.
 
-Az [AMF0] üzenet neve több azonos típusú eseményadatfolyam megkülönböztetésére használható.  Mind az [SCTE-35] üzenetek, mind az "egyszerű" mód esetében az AMF-üzenet nevének az [Adobe-Primetime] specifikációban előírtak szerint "onAdCue"-nak kell lennie.  Az alább nem felsorolt mezőket az Azure Media Services betöltéskor figyelmen kívül hagyja.
+A [AMF0] üzenet neve több, egyazon típusú esemény-adatfolyam megkülönböztetésére használható.  A [SCTE-35] és az "Simple" mód esetében az AMF-üzenet nevének "onAdCue" értékűnek kell lennie az [Adobe-főkiszolgálói] specifikációban leírtak szerint.  Az alább nem felsorolt mezőket figyelmen kívül kell hagyni a betöltéskor Azure Media Services.
 
-## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 RTMP egyéni metaadatokkal az "onUserDataEvent" használatával
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 RTMP egyéni metaadatokkal a "onUserDataEvent" használatával
 
-Ha egyéni metaadat-hírcsatornákat szeretne biztosítani a felsőáramú kódolóból, AZ IP-kamerából, a droneból vagy az RTMP protokollt használó eszközről, használja az "onUserDataEvent" [AMF0] adatüzenet parancstípusát.
+Ha a felsőbb rétegbeli kódolótól, az IP-kamerától, a drone-től vagy az eszköztől az RTMP protokollt használó egyéni metaadatokat szeretne biztosítani, használja a "onUserDataEvent" [AMF0] adatüzenet parancs típusát.
 
-Az **"onUserDataEvent"** adatüzenet-parancsnak egy üzenethasznos adatot kell hordoznia a media services által rögzítendő és a sávon túli fájlformátumba csomagolandó üzenetekkel, valamint a HLS, dash és smooth streaming jegyzékeivel.
-Javasoljuk, hogy az időzített metaadat-üzeneteket legfeljebb 0,5 másodpercenként (500 ms) küldjék el, vagy az élő közvetítés stabilitási problémái léphetnek fel. Ha keretszintű metaadatokat kell megadnia, minden üzenet több képkockából származó metaadatokat összesíthet. Ha többsávszélességű adatfolyamot küld, ajánlott a metaadatokat egyetlen bitrátán is megadni a sávszélesség csökkentése és a video-/hangfeldolgozással való interferencia elkerülése érdekében. 
+A **"onUserDataEvent"** adatüzenet-parancsnak a következő definícióval ellátott üzenettel kell rendelkeznie a Media Services és a sávon belüli fájlformátumba való becsomagolással, valamint a HLS, DASH és Smooth streaming jegyzékfájlokkal együtt.
+Azt javasoljuk, hogy az időzített metaadatokat legalább 0,5 másodpercenként (500ms), vagy az élő streamtel kapcsolatos stabilitási problémák esetén ne kelljen gyakrabban elküldeni. Minden üzenet több képkockából is összesítheti a metaadatokat, ha frame szintű metaadatokat kell megadnia. Ha a többszörös átviteli sebességű streameket küld, javasoljuk, hogy a metaadatokat csak egyetlen bitráta esetén adja meg, hogy csökkentse a sávszélességet, és ne zavarja a videó/hang feldolgozását. 
 
-Az **"onUserDataEvent"** hasznos adatának [MPEGDASH] EventStream XML formátumú üzenetnek kell lennie. Ez megkönnyíti az egyénidefiniált sémákban való átadást, amelyek a HLS- vagy DASH-protokollokon keresztül szállított CMAF [MPEGCMAF] tartalom sávon keresztül ily módon hordozható tartalomban hordozhatók. Minden DASH eseményfolyam-üzenet tartalmaz egy schemeIdUri-t, amely URN-üzenetséma azonosítóként működik, és meghatározza az üzenet hasznos adatát. Egyes sémákat, mint például a "https://aomedia.org/emsg/ID3" az [ID3v2] vagy az **urna:scte:scte35:2013:bin** az [SCTE-35] esetében, az együttműködési képesség relevancia ipari konzorciumai szabványosítják. Bármely alkalmazásszolgáltató saját egyéni sémát definiálhat az általa (saját tartomány) lévő URL-cím használatával, és adott módon megadhatja az adott URL-címet, ha úgy dönt. Ha egy játékosnak van kezelője a meghatározott sémához, akkor ez az egyetlen összetevő, amelynek meg kell értenie a hasznos terhet és a protokollt.
+A **"onUserDataEvent"** értékének a következőnek kell lennie: [MPEGDASH] EventStream XML Format üzenet. Ez megkönnyíti az olyan egyéni definiált sémák átadását, amelyek a sávon belüli "emsg" adattartalomban hajthatók végre a CMAF [MPEGCMAF] tartalmak esetében, amelyeket HLS vagy DASH protokollon keresztül továbbítanak. Minden DASH Event stream-üzenet tartalmaz egy schemeIdUri, amely URN-üzenet séma-azonosítóként működik, és meghatározza az üzenet hasznos adatait. Egyes sémák (példáulhttps://aomedia.org/emsg/ID3"" for [ID3v2], vagy **urn: SCTE: scte35:2013: bin** for [SCTE-35]) szabványosítva vannak az iparági konzorciumok közötti együttműködésre. Bármely alkalmazás-szolgáltató definiálhatja saját egyéni sémáját egy olyan URL-cím használatával, amelyet a vezérlő (a tulajdonában lévő tartomány) határoz meg, és az adott URL-címen megadhat egy specifikációt. Ha egy lejátszó rendelkezik kezelővel a definiált sémához, akkor ez az egyetlen olyan összetevő, amelynek ismernie kell a hasznos adatokat és a protokollt.
 
-Az [MPEG-DASH] EventStream XML tartalom sémája a következőképpen határozható meg (részlet a DASH ISO-IEC-23009-1-3rd Edition kiadásból). Vegye figyelembe, hogy az "EventStream"-enként jelenleg csak egy "EventType" támogatott. Csak az első **Esemény** elem lesz feldolgozva, ha az **EventStream**több eseményt is megad.
+Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van definiálva: (kivonat a DASH ISO-IEC-23009-1-3rd Edition kiadásból). Vegye figyelembe, hogy jelenleg csak egy "EventType" adható meg "EventStream". A rendszer csak az első **esemény** elemét dolgozza fel, ha több esemény van megadva a **EventStream**.
 
 ```xml
   <!-- Event Stream -->
@@ -174,7 +174,7 @@ Az [MPEG-DASH] EventStream XML tartalom sémája a következőképpen határozha
 ```
 
 
-### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>Példa ID3-as sémaazonosítóval és base64 kódolású adattartalommal rendelkező XML-eseménystreamre.  
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>Példa XML-eseményre az ID3 séma-AZONOSÍTÓval és a Base64 kódolású adattartalommal.  
 ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
@@ -184,7 +184,7 @@ Az [MPEG-DASH] EventStream XML tartalom sémája a következőképpen határozha
    <EventStream>
 ```
 
-### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Példa eseményfolyamra egyéni sémaazonosítóval és base64 kódolású bináris adatokkal  
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Példa az esemény-adatfolyamra egyéni séma-AZONOSÍTÓval és Base64 kódolású bináris adattal  
 ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <EventStream schemeIdUri="urn:example.org:custom:binary">
@@ -194,7 +194,7 @@ Az [MPEG-DASH] EventStream XML tartalom sémája a következőképpen határozha
    <EventStream>
 ```
 
-### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Példa eseményfolyamra egyéni sémaazonosítóval és egyéni JSON-azonosítóval  
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Példa az Event Streamre egyéni séma-AZONOSÍTÓval és egyéni JSON-vel  
 ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <EventStream schemeIdUri="urn:example.org:custom:JSON">
@@ -207,100 +207,100 @@ Az [MPEG-DASH] EventStream XML tartalom sémája a következőképpen határozha
    <EventStream>
 ```
 
-### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott rendszerazonosító URI-k
-| Rendszerazonosító URI                 | Leírás                                                                                                                                                                                                                                          |
+### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
+| Séma AZONOSÍTÓjának URI-ja                 | Leírás                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| https:\//aomedia.org/emsg/ID3 | Ez a témakör azt ismerteti, hogy az [ID3v2] metaadatok hogyan vihetők át időzített metaadatként egy METAF-kompatibilis [MPEGCMAF] töredezett MP4-ben. További információt az [Időzített metaadatok a Common Media Application Format (CMAF) formátumban talál.](https://github.com/AOMediaCodec/id3-emsg) |
+| https:\//aomedia.org/emsg/ID3 | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://github.com/AOMediaCodec/id3-emsg) |
 
-### <a name="event-processing-and-manifest-signaling"></a>Eseményfeldolgozás és jegyzékfájl jelzése
+### <a name="event-processing-and-manifest-signaling"></a>Események feldolgozása és jegyzékfájlok jelzése
 
-Érvényes **"onUserDataEvent"** esemény beérkezésekor az Azure Media Services olyan érvényes XML-tartalomra fog keresni, amely megegyezik az EventStreamType (a [MPEGDASH] nyelven definiálva), elemzi az XML-tartalom, és átalakítja azt egy [MPEGCMAF] MP4 fragmentum 'emsg' 1.   A Packager észleli az "emsg" mezőt az élő közvetítésben, és:
+Egy érvényes **"onUserDataEvent"** esemény kézhezvétele után Azure Media Services egy érvényes XML-adattartalmat keres, amely megfelel a EventStreamType ([MPEGDASH]), elemezve az XML-adattartalmat, és átalakítja a [MPEGCMAF] MP4-töredék "emsg" 1. verziójának tárolására az élő archívumban és a Media Services csomagolóba való továbbításhoz.   A csomagoló a "emsg" mezőt fogja felderíteni az élő streamben, és:
 
-- a) "dinamikusan csomagolja" ts szegmensekbe a HLS-ügyfeleknek történő szállításhoz a HLS időzített metaadat-specifikációjának [HLS-TMD] megfelelően;
-- b) továbbítja azt CMAF-töredékekben hls-en vagy DASH-en keresztül történő szállításra, vagy 
-- (c) alakítsa át ritka vágányjellé a Smooth Streaming [MS-SSTR] keresztültörténő kézbesítéshez.
+- (a) "dinamikusan csomagolt" – a terminálszolgáltatási szegmensek számára történő kézbesítés a HLS-ügyfeleknek a HLS időzített metaadatok specifikációjának megfelelően [HLS-TMD], vagy
+- (b) továbbítsa azt a CMAF-töredékek HLS vagy KÖTŐJELen keresztül történő kézbesítéséhez, vagy 
+- (c) Smooth Streaming [MS-SSTR] használatával átalakíthatja a továbbítást egy ritka nyomon követési jelre.
 
-A SÁVOn át eső CMAF vagy TS PES csomagok on kívül a DASH (MPD) és a Smooth Streaming jegyzékei a sávon kívüli eseményfolyamokra (más néven a Smooth Streaming ritka streamsávjára) hivatkoznak. 
+Amellett, hogy a sávon belüli "emsg" formátum CMAF vagy TS PES-csomagok a HLS-hez, a kötőjel (MPD) jegyzékfájlja, és Smooth Streaming tartalmazni fog egy hivatkozást a sávon belüli esemény-adatfolyamokra (más néven a Smooth Streaming). 
 
-Az egyes események vagy adatrakományok NEM kimenetek közvetlenül a HLS, DASH vagy Smooth jegyzékekben. 
+Az egyes események vagy adattartalmaik nem közvetlenül a HLS, KÖTŐJELhez vagy simított jegyzékfájlokhoz tartoznak. 
 
-### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>További információs korlátozások és alapértelmezett értékek az onUserDataEvent eseményekhez
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>További tájékoztató megkötések és alapértékek a onUserDataEvent eseményeihez
 
-- Ha az időskála nincs beállítva az EventStream elemben, a rendszer alapértelmezés szerint az RTMP 1 kHz-es időskálát használja.
-- Az onUserDataEvent üzenet kézbesítése legfeljebb 500 ms-onként egyszer érhető el. Ha gyakrabban küld eseményeket, az hatással lehet az élő hírcsatorna sávszélességére és stabilitására
+- Ha az időskála nincs beállítva a EventStream elemben, a rendszer alapértelmezés szerint az RTMP 1 kHz-es időkeretét használja.
+- Egy onUserDataEvent-üzenet kézbesítése a 500ms-k maximális száma szerint van korlátozva. Ha gyakrabban küld eseményeket, az hatással lehet az élő csatorna sávszélességére és stabilitására.
 
-## <a name="212-rtmp-ad-cue-signaling-with-onadcue"></a>2.1.2 RTMP hirdetésjelző "onAdCue" jelzéssel
+## <a name="212-rtmp-ad-cue-signaling-with-onadcue"></a>2.1.2 RTMP ad Cue-jelzés a "onAdCue" kifejezéssel
 
-Az Azure Media Services több [AMF0] üzenettípust is figyelhet és válaszolhat, amelyek segítségével különböző valós idejű szinkronizált metaadatokat jelezhet az élő adatfolyamban.  Az [Adobe-Primetime] specifikáció két dákótípust határoz meg, amelyeket "egyszerű" és "SCTE-35" módnak neveznek. Az "egyszerű" módban a Media Services egyetlen AMF-üzenetben , az "onAdCue"-ban támogatja az "onAdCue" nevű tartalom használatát, amely megfelel az alábbi táblázatnak, amelyet az "Egyszerű mód" jelhez határoznak meg.  
+Azure Media Services több [AMF0] típusú üzenet figyelésére és reagálására is képes, amelyek különböző valós idejű szinkronizált metaadatokat jelezhetnek az élő adatfolyamban.  Az [Adobe-főkiszolgálói] specifikáció két, "Simple" és "SCTE-35" üzemmódú Cue-típust határoz meg. Az "egyszerű" mód esetében Media Services támogatja a "onAdCue" nevű egyetlen AMF Cue-üzenetet egy olyan adattartalom használatával, amely megfelel az "egyszerű mód" jel számára az alábbi táblázatnak.  
 
-A következő szakasz az RTMP "egyszerű" módhasznos terhelését mutatja be, amely egy alapvető "spliceOut" hirdetési jel jelzésére használható, amelyet a HLS, a DASH és a Microsoft Smooth Streaming ügyféljegyzékbe visznek át. Ez nagyon hasznos olyan esetekben, amikor az ügyfél nem rendelkezik összetett SCTE-35 alapú hirdetésjelző központi telepítési vagy beillesztési rendszerrel, és egy alapvető helyszíni kódolót használ a dákó üzenet api-n keresztül történő elküldéséhez. A helyszíni kódoló általában támogatja a REST-alapú API-t a jel aktiválásához, amely a videostreamet is "összeilleszti" egy IDR-keret behelyezésével a videóba, és új gop-ot indít.
+A következő szakasz az RTMP "Simple" (egyszerű) üzemmódját mutatja be, amely a HLS, DASH és Microsoft Smooth Streaming ügyfél-jegyzékfájlján keresztül átvitt alapvető "spliceOut" ad-jel jelzésére használható. Ez olyan esetekben hasznos, amikor az ügyfél nem rendelkezik összetett SCTE-35-alapú ad-jelző üzembe helyezési vagy beszúrási rendszerrel, és egy alapszintű helyszíni kódolót használ, amely egy API-n keresztül küldi el a végszó-üzenetet. A helyszíni kódoló általában egy REST-alapú API-t támogat a jel kiváltásához, amely "összefonási feltételt" is biztosít a videó streamnek, ha beszúr egy IDR-keretet a videóba, és új GOP-t indít el.
 
-## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 RTMP hirdetésjelző "onAdCue" - Egyszerű mód
+## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 RTMP ad Cue-jelzés "onAdCue" – egyszerű mód
 
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type       | Sztring     | Kötelező  | Az esemény üzenet.  Kell "SpliceOut" kijelölni egy egyszerű mód splice.                                                                                                                                                                                                         |
-| id         | Sztring     | Kötelező  | A kötést vagy a szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja                                                                                                                                                                                       |
-| duration   | Szám     | Kötelező  | Az időtartam a splice. Az egységek tört másodpercek.                                                                                                                                                                                                                           |
-| elapsed    | Szám     | Optional  | Amikor a jel megismétlődik a hangolás támogatása érdekében, ez a mező a splice kezdete óta eltelt megjelenítési idő. Az egységek tört másodpercek. Egyszerű mód használata esetén ez az érték nem haladhatja meg a kötés eredeti időtartamát. |
-| time       | Szám     | Kötelező  | A megjelenési idő nek kell lennie. Az egységek tört másodpercek.                                                                                                                                                                                                |
+| type       | Sztring     | Kötelező  | Az esemény üzenete.  A "SpliceOut" értékkel kell kijelölni egy egyszerű üzemmód összekötését.                                                                                                                                                                                                         |
+| id         | Sztring     | Kötelező  | A összefonást vagy szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja.                                                                                                                                                                                       |
+| duration   | Szám     | Kötelező  | A Összefonás időtartama. Az egységek töredékes másodpercek.                                                                                                                                                                                                                           |
+| elapsed    | Szám     | Optional  | Ha a rendszer megismétli a jelet a hangolásának támogatásához, ez a mező a Kiindulás óta eltelt bemutatási idő mennyiségét jelöli. Az egységek töredékes másodpercek. Egyszerű mód használata esetén ez az érték nem lépheti túl a kötés eredeti időtartamát. |
+| time       | Szám     | Kötelező  | A összekötés időpontjának kell lennie a bemutató időpontjában. Az egységek töredékes másodpercek.                                                                                                                                                                                                |
 
 ---
  
-#### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa MPEG DASH jegyzékfájl kimenetére az Adobe RTMP egyszerű mód használatakor
+#### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa az MPEG DASH jegyzékfájl kimenetére az Adobe RTMP egyszerű üzemmódjának használatakor
 
-Lásd a [3.3.2.1 MPEG DASH .mpd EventStream példát az Adobe egyszerű módhasználatával](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Lásd például [az 3.3.2.1 MPEG Dash. mpd EventStream az Adobe Simple Mode használatával](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
-Lásd a [3.3.3.1 DASH-jegyzékfájl egypontú és adobe egyszerű módú fájljait](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
+Lásd például [a 3.3.3.1 Dash manifestt egyetlen időszakra és az Adobe Simple Mode-](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals) ra
 
-#### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa HLS manifest kimenet re adobe RTMP egyszerű mód használataesetén
+#### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa HLS-jegyzékfájl kimenetére az Adobe RTMP egyszerű üzemmódjának használatakor
 
-Lásd a [3.2.2 HLS manifest példát az Adobe egyszerű móddal és az EXT-X-CUE címkével](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
+Lásd: [3.2.2 HLS manifest – példa az Adobe Simple Mode és a ext-X-Cue címke használatával](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
 
-## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 RTMP hirdetésjelző "onAdCue" - SCTE-35 móddal
+## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 RTMP ad Cue-jelzés "onAdCue"-SCTE-35 móddal
 
-Ha olyan fejlettebb szórásos termelési munkafolyamattal dolgozik, amely megköveteli, hogy a teljes SCTE-35 tartalomüzenet átkerüljön a HLS- vagy DASH-jegyzékbe, a legjobb, ha az [Adobe-Primetime] specifikáció "SCTE-35 mode"-ját használja.  Ez a mód támogatja a sávon keresztüli SCTE-35 jelek közvetlenül a helyszíni élő kódolóba, amely ezután az [Adobe-Primetime] specifikációban megadott "SCTE-35 mód" használatával kódolja a jeleket az RTMP-adatfolyamba. 
+Ha olyan speciális szórási üzemi munkafolyamattal dolgozik, amelyhez a teljes SCTE-35 adattartalom-üzenetet át kell vinni a HLS vagy a DASH jegyzékfájlba, érdemes az [Adobe-főkiszolgálói] specifikáció "SCTE-35" módszerét használni.  Ez a mód támogatja a sávon kívüli SCTE-35 jeleket, amelyek közvetlenül a helyszíni élő kódolóba kerülnek, amely ezután az [Adobe-főkiszolgálói] specifikációban megadott "SCTE-35 mód" használatával kódolja a jeleket az RTMP-adatfolyamba. 
 
-Általában SCTE-35 üzenetek jelenhetnek meg csak az MPEG-2 átviteli stream (TS) bemenetek egy helyszíni kódoló. Az SCTE-35-öt tartalmazó átviteli adatfolyam-betöltés konfigurálásáról érdeklődjön a kódoló gyártójánál, és hogy miként engedélyezheti az RTMP-nek való áthaladást Adobe SCTE-35 módban.
+Általában a SCTE-35 üzenetek csak az MPEG-2 Transport stream (TS) bemeneteken szerepelhetnek egy helyszíni kódolón. A kódoló gyártójával megtudhatja, hogyan konfigurálhat egy olyan átviteli adatfolyamot, amely SCTE-35-et tartalmaz, és engedélyezi azt a RTMP-re az Adobe SCTE-35 módban.
 
-Ebben a forgatókönyvben a következő hasznos adat kell küldeni a helyszíni kódoló az **"onAdCue"** [AMF0] üzenet típusa használatával kell küldeni.
+Ebben az esetben a következő adattartalomot kell elküldeni a helyszíni kódolóból az **"onAdCue"** [AMF0] típusú üzenet használatával.
 
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Végszó        | Sztring     | Kötelező  | Az esemény üzenet.  Az [SCTE-35] üzenetek esetében ennek a hls, smooth és dash ügyfeleknek küldött üzenetek hez a base64 kódolású [RFC4648] bináris splice_info_section() kell lennie.                                                                                                                                                                                                                               |
-| type       | Sztring     | Kötelező  | Az üzenetsémét azonosító URL-cím vagy URL-cím. Az [SCTE-35] üzenetek esetében ennek **"scte35"-nek** **kell** lennie ahhoz, hogy az üzeneteket a HLS, Smooth és Dash ügyfeleknek küldhessék az [Adobe-Primetime] követelményeknek megfelelően. Opcionálisan az "urn:scte:scte35:2013:bin" URL-cím is használható az [SCTE-35] üzenet jelzésére.                                                                                                        |
-| id         | Sztring     | Kötelező  | A kötést vagy a szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja.  Az azonos szemantikával rendelkező üzenetek értéke megegyezik.                                                                                                                                                                                                                                                       |
-| duration   | Szám     | Kötelező  | Az esemény vagy a hirdetés-splice-szegmens időtartama, ha ismert. Ha ismeretlen, akkor az érték **0 legyen.**                                                                                                                                                                                                                                                                                                                    |
-| elapsed    | Szám     | Optional  | Amikor az [SCTE-35] hirdetésjelzés torkodonsolása közben megismétlődik, akkor ez a mező a splice kezdete óta eltelt megjelenítési idő. Az egységek tört másodpercek. [SCTE-35] módban ez az érték meghaladhatja a kötés vagy szegmens eredeti megadott időtartamát.                                                                                                                   |
-| time       | Szám     | Kötelező  | Az esemény vagy hirdetés megjelenési ideje.  A bemutatási **időnek** és időtartamnak igazodnia kell az I. mellékletben meghatározott 1- vagy 2-es típusú streamhozzáférési pontokhoz (SAP). A HLS-kimenő forgalom esetében az időnek és az **időtartamnak** igazodnia kell a szegmenshatárokhoz. Az ugyanazon eseményfolyamon belüli különböző eseményüzenetek megjelenítési ideje és időtartama nem fedheti át egymást. Az egységek tört másodpercek. |
+| Cue        | Sztring     | Kötelező  | Az esemény üzenete.  A [SCTE-35] üzenetek esetében ennek a Base64-kódolású [RFC4648] bináris splice_info_section () értéknek kell lennie ahhoz, hogy üzeneteket lehessen elküldeni a HLS, a Smooth és a Dash ügyfeleknek.                                                                                                                                                                                                                               |
+| type       | Sztring     | Kötelező  | Az üzenet sémáját azonosító URN vagy URL-cím. A (z) [SCTE-35] üzenetek **esetében ennek a** **"scte35"** értékűnek kell lennie ahhoz, hogy üzeneteket lehessen elküldeni a HLS, a Smooth és a Dash ügyfeleknek az [Adobe-főkiszolgálói] verziónak megfelelően. Szükség esetén az "urn: SCTE: scte35:2013: bin" nevű URN is használható a [SCTE-35] üzenet jelzésére.                                                                                                        |
+| id         | Sztring     | Kötelező  | A összefonást vagy szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja.  Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük.                                                                                                                                                                                                                                                       |
+| duration   | Szám     | Kötelező  | Az esemény vagy az ad összekötésének időtartama (ha ismert). Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie.                                                                                                                                                                                                                                                                                                                    |
+| elapsed    | Szám     | Optional  | Amikor a [SCTE-35] ad-jelet megismétlik a behangolásához, ez a mező a Kiindulás óta eltelt megjelenítési idő mennyiségét mutatja. Az egységek töredékes másodpercek. A [SCTE-35] módban ez az érték túllépheti a Összefonás vagy a szegmens eredeti megadott időtartamát.                                                                                                                   |
+| time       | Szám     | Kötelező  | Az esemény vagy az ad összekötésének megjelenítési ideje.  A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint. A kimenő HLS esetében az időt és az időtartamot a szegmens határaihoz **kell** igazítani. Az azonos esemény-adatfolyamon belüli különböző események megjelenítési ideje és időtartama nem lehet átfedésben. Az egységek töredékes másodpercek. |
 
 ---
 
-#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>Példa MPEG DASH .mpd jegyzékfájl SCTE-35 móddal
-Lásd [a 3.3.3.2.](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>Példa MPEG DASH. mpd jegyzékfájlra SCTE-35 móddal
+Lásd: [3.3.3.2 – példa Dash manifest – SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
-#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Példa HLS manifest .m3u8 SCTE-35 módú jellel
-Lásd [a 3.2.1.1.](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Példa HLS manifest. m3u8 SCTE-35 módú jellel
+Lásd: [3.2.1.1, példa: HLS manifest, SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
-## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP hirdetés jelzés "onCuePoint" az Elemental Live
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP ad-jelzés a "onCuePoint" elemmel élő
 
-Az Elemental Live helyszíni kódoló támogatja az RTMP-jel hirdetésjelölőit. Az Azure Media Services jelenleg csak az RTMP "onCuePoint" hirdetésjelölő-típusát támogatja.  Ez az Elemental Media Live kódoló beállításaiban vagy AZ API-ban található Adobe RTMP csoportbeállításokban engedélyezhető a **"ad_markers**" "onCuePoint" értékre állításával.  A részleteket az Elemental Live dokumentációjában találja. Ha engedélyezi ezt a funkciót az RTMP-csoportban, az SCTE-35 jeleket továbbítja az Azure Media Services által feldolgozandó Adobe RTMP-kimenetek számára.
+A helyszíni élő helyszíni kódoló az RTMP-jel ad-jelölőit támogatja. A Azure Media Services jelenleg csak a "onCuePoint" ad-jelölő típusát támogatja az RTMP-hez.  Ez a "**ad_markers**" érték "onCuePoint" értékre állításával engedélyezhető az Adobe RTMP-csoport beállításaiban az elemi média élő kódoló beállításaiban vagy API-ban.  A részletekért tekintse meg az Element Live dokumentációját. Ha engedélyezi ezt a funkciót az RTMP-csoportban, a SCTE-35 jeleket továbbít az Adobe RTMP-kimenetekre, amelyeket Azure Media Services fog feldolgozni.
 
-Az "onCuePoint" üzenettípus az [Adobe-Flash-AS] fájlban van definiálva, és az Elemental Live RTMP kimenetről küldött tartalomstruktúra a következő.
+Az "onCuePoint" típusú üzenet típusa az [Adobe-Flash-AS] értékben van definiálva, és a következő adattartalom-szerkezettel rendelkezik, amikor az elemi élő RTMP kimenetből küldi el.
 
 
 | Tulajdonság   | Leírás                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| név       | Az Elemental Live névnek '**scte35**' -nak kell lennie.                                                                                                                                                                              |
-| time       | Az az idő másodpercben, amikor a pont a videofájlban az idővonal során történt                                                                                                                                           |
-| type       | A cue pont típusát "**esemény**" típusúra kell állítani.                                                                                                                                                                             |
-| paraméterek | Név-érték pár karakterláncok asszociatív tömbje, amely az SCTE-35 üzenetből származó adatokat tartalmazza, beleértve az azonosítót és az időtartamot is. Ezeket az értékeket az Azure Media Services elemzi, és tartalmazza a jegyzékfájl dekorációs címke. |
+| név       | A névnek "**scte35**" értéknek kell lennie az elemi Live-ban.                                                                                                                                                                              |
+| time       | Az az idő másodpercben, amikor a Cue-pont bekövetkezett a videóban az idősor során                                                                                                                                           |
+| type       | A Cue-pont típusát "**Event**" értékre kell beállítani.                                                                                                                                                                             |
+| paraméterek | A név/érték párok összevonási tömbje, amely a SCTE-35 üzenetből származó információkat tartalmazza, beleértve az azonosítót és az időtartamot is. Ezeket az értékeket Azure Media Services elemzi, és a jegyzékfájl díszítési címkéjén szerepel. |
 
 
-Ha ezt a hirdetésjelölő módot használja, a HLS jegyzékfájl kimenete hasonló az Adobe "Simple" módjához.
+Ha ezt az ad-jelölőt használja, a HLS jegyzékfájl kimenete az Adobe "Simple" (egyszerű) üzemmódhoz hasonló.
 
 
-#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>Példa MPEG DASH MPD, egypont, Adobe Simple mode jelek
+#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>Példa az MPEG DASH MPD-ra, egy időszakra, az Adobe Simple Mode-jelekre
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -355,9 +355,9 @@ Ha ezt a hirdetésjelölő módot használja, a HLS jegyzékfájl kimenete hason
 </MPD>
 ~~~
 
-#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Példa HLS lejátszási lista, Adobe Simple mode jelek ext-x-CUE címkével (csonkolt "..." a rövidségért)
+#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Példa HLS lejátszási listára, Adobe Simple Mode-jelek EXT-X-CUE címke használatával (csonkolt "..." a rövidség kedvéért)
 
-A következő példa a Media Services dinamikus csomagzatának kimenetét mutatja be egy RTMP-adatfolyamhoz az Adobe "egyszerű" módjelek használatával, valamint az örökölt [Adobe-Primetime] EXT-X-CUE címkét.  
+Az alábbi példa bemutatja a Media Services dinamikus csomagolásának kimenetét egy RTMP betöltési streamhez az Adobe "Simple" mód jelei és az örökölt [Adobe-főkiszolgálói] EXT-X-CUE címke használatával.  
 
 ~~~
 #EXTM3U
@@ -399,107 +399,107 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 ~~~
 
-### <a name="216-cancellation-and-updates"></a>2.1.6 Lemondás és frissítések
+### <a name="216-cancellation-and-updates"></a>2.1.6 törlése és frissítése
 
-Az üzenetek megszakíthatók vagy frissíthetők több, azonos megjelenítési idővel és azonosítóval ellátott üzenet elküldésével. A bemutató ideje és az azonosító egyedileg azonosítja az eseményt, és az utolsó üzenet, amely egy adott bemutatóidejére érkezett, és amely megfelel a görgetés előtti megkötéseknek, az az üzenet, amelyet a rendszer a rendszer a megszólítás előtt fogad el. A frissített esemény felülírja a korábban fogadott üzeneteket. Az előgörgetési megkötés négy másodperc. A bemutató időpontja előtt legalább négy másodperccel fogadott üzeneteket a rendszer a bemutató időpontja előtt fogja megküldeni.
+Az üzenetek megvonhatók vagy frissíthetők úgy, hogy több üzenetet küldenek ugyanazzal a megjelenítési idővel és AZONOSÍTÓval. A megjelenítési idő és az azonosító egyedi módon azonosítja az eseményt, és egy adott bemutatási időre kapott utolsó üzenet, amely megfelel az előzetes korlátozásoknak, az az üzenet, amelyet a rendszer elvégez. A frissített esemény felülírja a korábban fogadott üzeneteket. A pre-roll korlátozás négy másodperc. A bemutató időpontja előtt legalább négy másodpercig fogadott üzenetek lesznek elvégezve.
 
-## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 Töredezett MP4 lenyelés (Smooth Streaming)
+## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2,2 töredezett MP4 betöltés (Smooth Streaming)
 
-Az élő közvetítés betöltésére vonatkozó követelményekről az [MS-SSTR-Betöltés] című dokumentumban tájékozódhat. A következő szakaszok az időzített bemutató metaadatainak betöltésével kapcsolatos részleteket ismertetik.  Az időzített bemutató metaadatait ritka sávként kell betartani, amelyet a Live Server manifest box (lásd MS-SSTR) és a Movie Box ("moov") is definiál.  
+Az élő stream betöltésével kapcsolatos követelményekért tekintse meg az [MS-SSTR-betöltés] című témakört. A következő szakaszokban részletesen ismertetjük az időzített bemutató metaadatainak betöltésével kapcsolatos részleteket.  Az időzített megjelenítési metaadatokat a rendszer ritka számként tölti be, amely az élő kiszolgáló jegyzékfájljában (lásd: MS-SSTR) és a Movie Box ("Moov") van meghatározva.  
 
-Minden ritka töredék egy filmtöredékdobozból ("moof") és a Media Data Boxból ("mdat") áll, ahol a "mdat" mező a bináris üzenet.
+Minden ritka töredék egy film fragment Box ("moof") és a Media Data Box ("mdat")ből áll, ahol a "mdat" mező a bináris üzenet.
 
-A hirdetések képkockapontos beillesztésének elérése érdekében a kódolónak fel kell osztania a töredéket a bemutató időpontjában, amikor a dákót be kell illeszteni.  Létre kell hozni egy új töredéket, amely az I. mellékletben meghatározott újonnan létrehozott IDR-kerettel vagy 1 vagy 2 típusú streamhozzáférési pontokkal (SAP) kezdődik. Ez lehetővé teszi, hogy az Azure Media Packager megfelelően hozzon létre egy HLS-jegyzékfájl és egy DASH többidőszakos jegyzékfájl, ahol az új időszak kezdődik a keret-pontos splice feltételként prezentációs idő.
+A keretek pontos beszúrásához a kódolónak fel kell osztania a töredéket a bemutató időpontjában, ahol a végszót be kell szúrni.  Létre kell hozni egy új töredéket, amely egy újonnan létrehozott IDR-kerettel kezdődik, vagy 1. vagy 2. típusú stream hozzáférési pontokkal (SAP), az [ISO-14496-12] i. mellékletben meghatározottak szerint. Ez lehetővé teszi az Azure adathordozó-csomagoló számára, hogy megfelelően létrehozzon egy HLS-jegyzékfájlt és egy KÖTŐJELes többpontos jegyzékfájlt, ahol az új időszak a kereten belüli, összefonásra vonatkozó, feltételes bemutató időpontjában kezdődik.
 
-### <a name="221-live-server-manifest-box"></a>2.2.1 Élő kiszolgálójegyzék-mező
+### <a name="221-live-server-manifest-box"></a>2.2.1 élő kiszolgáló jegyzékfájlja
 
-A ritka sávot a Live Server Manifest mezőben **kell** deklarálni ** \<egy\> szövegfolyam-bejegyzéssel,** és a következő attribútumokkal **kell** rendelkeznie:
+A **ritka számot be kell jelenteni** az élő kiszolgáló jegyzékfájljában egy ** \<textstream\> ** -bejegyzéssel, és a következő tulajdonságokkal **kell** rendelkeznie:
 
 | **Attribútum neve** | **Mező típusa** | **Szükséges?** | **Leírás**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Szám         | Kötelező      | "0" **értékkel kell** rendelkeznie, amely ismeretlen, változó bitrátával rendelkező sávot jelez.                                                                                                                                                          |
-| parentTrackName    | Sztring         | Kötelező      | A szülőpálya neve **kell,** hogy legyen, amelyhez a ritka pályaidőkódok időskála-igazítást tartalmaznak. A szülőzene nem lehet ritka szám.                                                                             |
-| manifestOutput     | Logikai        | Kötelező      | **Kell** "igaz", jelezve, hogy a ritka pálya lesz ágyazva a Smooth ügyfél jegyzékfájl.                                                                                                                        |
-| Altípus            | Sztring         | Kötelező      | **A** négykarakterű "DATA" kódnak kell lennie.                                                                                                                                                                                  |
-| Séma             | Sztring         | Kötelező      | **Az** üzenetsémát azonosító URN-nek vagy URL-nek kell lennie. Az [SCTE-35] üzenetek esetében ennek "urn:scte:scte35:2013:bin" **kell** lennie ahhoz, hogy az üzeneteket az [SCTE-35] követelményeknek megfelelően küldje el a HLS, Smooth és Dash ügyfeleknek. |
-| trackName          | Sztring         | Kötelező      | **A** ritka pálya neve kell, hogy legyen. A trackName több eseményfolyam megkülönböztetésére is használható ugyanazzal a sémával. Minden egyedi **eseményfolyamnak** egyedi műsorszám-névvel kell rendelkeznie.                                |
-| Időskála          | Szám         | Optional      | **A** szülőszám időskálájának kell lennie.                                                                                                                                                                               |
+| systemBitrate      | Szám         | Kötelező      | "0" értéknek **kell lennie** , amely egy ismeretlen, változó bitsebességű számot jelez.                                                                                                                                                          |
+| parentTrackName    | Sztring         | Kötelező      | A fölérendelt nyomon követési időszaknak **kell lennie** , amelyhez a ritka nyomon követési időkódok időkerete igazított. A szülő nyomon követése nem lehet ritka.                                                                             |
+| manifestOutput     | Logikai        | Kötelező      | A "true" értéknek **kell lennie** , amely azt jelzi, hogy a ritka nyomon követés be lesz ágyazva a zökkenőmentes ügyfél-jegyzékfájlba.                                                                                                                        |
+| Altípus            | Sztring         | Kötelező      | Az "adat" négy karakterből álló kódnak **kell lennie** .                                                                                                                                                                                  |
+| Séma             | Sztring         | Kötelező      | Az üzenet-sémát azonosító URN vagy URL-címnek **kell lennie** . A (z) [SCTE-35] üzenetek **esetében ennek az** "urn: SCTE: scte35:2013: bin" értékűnek kell lennie ahhoz, hogy üzeneteket lehessen ELKÜLDENI a HLS, a Smooth és a Dash ügyfeleknek a [SCTE-35] megfelelőséggel. |
+| trackName          | Sztring         | Kötelező      | A ritka sáv nevének **kell lennie** . A trackName használatával több esemény-adatfolyamot is megkülönböztetni ugyanazzal a sémával. Minden egyedi esemény-adatfolyamnak egyedi nyomkövetési névvel **kell** rendelkeznie.                                |
+| időskála          | Szám         | Optional      | A szülő nyomon követési időkeretének **kell lennie** .                                                                                                                                                                               |
 
 ---
 
-### <a name="222-movie-box"></a>2.2.2 Filmdoboz
+### <a name="222-movie-box"></a>2.2.2 Movie Box
 
-A Movie Box ('moov') a Live Server Manifest Box-ot követi a stream fejlécének részeként egy ritka számhoz.
+A Movie Box ("Moov") az élő kiszolgáló jegyzékfájljának részeként követi a ritka nyomon követéshez használt stream-fejlécet.
 
-A "moov" mezőnek **tartalmaznia kell** az [ISO-14496-12] mezőben meghatározott **TrackHeaderBox ('tkhd')** mezőt, a következő megkötésekkel:
+A "Moov" mezőnek tartalmaznia **kell** egy **TrackHeaderBox ("tkhd")** , az [ISO-14496-12] mezőben meghatározottak szerint, a következő korlátozásokkal:
 
 | **Mező neve** | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 bites, aláíratlan egész szám | Kötelező      | **0-nak kell** lennie, mivel a sávdobozban nulla minta van, és a minták teljes időtartama a vágánydobozban 0. |
+| duration       | 64 bites előjel nélküli egész szám | Kötelező      | 0 értékűnek **kell lennie** , mivel a Track Box nulla mintákat tartalmaz, a számok teljes időtartama pedig 0. |
 
 ---
 
-A "moov" mezőnek **tartalmaznia kell** az [ISO-14496-12] -ben meghatározott **HandlerBox ("hdlr")** mezőt, a következő korlátozásokkal:
+A "Moov" mezőnek tartalmaznia **kell** egy **HandlerBox ("hdlr")** az [ISO-14496-12] definiált módon az alábbi korlátozásokkal:
 
 | **Mező neve** | **Mező típusa**          | **Szükséges?** | **Leírás**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
-| handler_type   | 32 bites, aláíratlan egész szám | Kötelező      | **Kell** "meta". |
+| handler_type   | 32 bites előjel nélküli egész szám | Kötelező      | **A "** meta" értéknek kell lennie. |
 
 ---
 
-Az "stsd" mezőnek tartalmaznia **kell** egy MetaDataSampleEntry mezőt, amelynek kódolási neve az [ISO-14496-12] mezőben meghatározott.  Az SCTE-35 üzenetek esetében például a **kódnévnek** "scte"-nek kell lennie.
+A "stsd" mezőnek tartalmaznia **kell** egy, az [ISO-14496-12] által definiált kódolási névvel rendelkező MetaDataSampleEntry-mezőt.  A SCTE-35 üzenetek esetében például a **kódolás neve legyen** "SCTE".
 
-### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 Filmtöredék doboz és médiaadat-doboz
+### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 Movie fragment Box és Media Data Box
 
-A ritka pályatöredékek egy filmtöredékdobozból ("moof") és egy médiaadat-dobozból ("mdat") állnak.
+A ritka követési töredékek egy film töredékét ("moof") és egy adathordozó-Data Box ("mdat") tartalmaznak.
 
 > [!NOTE]
-> A hirdetések képkockapontos beillesztésének elérése érdekében a kódolónak fel kell osztania a töredéket a bemutató időpontjában, amikor a dákót be kell illeszteni.  Létre kell hozni egy új töredéket, amely az [I. mellékletben] meghatározott újonnan létrehozott IDR-kerettel vagy 1- vagy 2-es típusú streamhozzáférési pontokkal (SAP) kezdődik.
+> A keretek pontos beszúrásához a kódolónak fel kell osztania a töredéket a bemutató időpontjában, ahol a végszót be kell szúrni.  Létre kell hozni egy új töredéket, amely egy újonnan létrehozott IDR-kerettel kezdődik, vagy 1. vagy 2. típusú stream hozzáférési pontok (SAP), az [ISO-14496-12] i. mellékletben meghatározottak szerint.
 > 
 
-A MovieFragmentBox ('moof') mezőnek tartalmaznia **kell** az [MS-SSTR] mezőben meghatározott **TrackFragmentExtendedHeaderBox ('uuid')** mezőt a következő mezőkkel:
+A MovieFragmentBox ("moof") mezőben szerepelnie **kell** egy, az [MS-SSTR] mezőben definiált **TrackFragmentExtendedHeaderBox (UUID)** , amely a következő mezőket tartalmazza:
 
 | **Mező neve**         | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
-| fragment_absolute_time | 64 bites, aláíratlan egész szám | Kötelező      | **Az** esemény érkezési ideje kell, hogy legyen. Ez az érték az üzenetet a szülősávhoz igazítja.           |
-| fragment_duration      | 64 bites, aláíratlan egész szám | Kötelező      | **Az** esemény időtartama kell, hogy legyen. Az időtartam nulla lehet, jelezve, hogy az időtartam ismeretlen. |
+| fragment_absolute_time | 64 bites előjel nélküli egész szám | Kötelező      | Az esemény érkezési időpontjának **kell lennie** . Ez az érték az üzenetet a fölérendelt nyomon követéssel igazítja.           |
+| fragment_duration      | 64 bites előjel nélküli egész szám | Kötelező      | Az esemény időtartamának **kell lennie** . Az időtartam nulla lehet, jelezve, hogy az időtartam ismeretlen. |
 
 ---
 
 
-A MediaDataBox ('mdat') mezőnek a következő formátummal **kell** rendelkeznie:
+A MediaDataBox ("mdat") mezőnek a következő formátumúnak kell **lennie** :
 
 | **Mező neve**          | **Mező típusa**                   | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                 | 32 bites, aláíratlan egész szám (uimsbf) | Kötelező      | A "mdat" mező tartalmának formátumát határozza meg. Az ismeretlen verziókat a rendszer figyelmen kívül hagyja. Jelenleg az egyetlen támogatott verzió 1.                                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32 bites, aláíratlan egész szám (uimsbf) | Kötelező      | Az üzenet ezen példányát azonosítja. Az azonos szemantikával rendelkező üzenetek értéke megegyezik; ez azt, hogy elegendő bármely eseményüzenet-mező feldolgozása ugyanazzal az azonosítóval.                                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32 bites, aláíratlan egész szám (uimsbf) | Kötelező      | A TrackFragmentExtendedHeaderBox mezőben megadott fragment_absolute_time összege és a presentation_time_delta az esemény megjelenítési ideje **kell,** hogy legyen. A bemutatási **időnek** és időtartamnak igazodnia kell az I. mellékletben meghatározott 1- vagy 2-es típusú streamhozzáférési pontokhoz (SAP). A HLS-kimenő forgalom esetében az időnek és az **időtartamnak** igazodnia kell a szegmenshatárokhoz. Az ugyanazon eseményfolyamon belüli különböző eseményüzenetek megjelenítési ideje és időtartama nem **fedheti** át egymást. |
-| message                 | bájttömb                       | Kötelező      | Az esemény üzenet. Az [SCTE-35] üzenetek esetében az üzenet a bináris splice_info_section(). Az [SCTE-35] üzenetek esetében ennek **kell** lennie a splice_info_section() annak érdekében, hogy az [SCTE-35] követelményeknek megfelelően a HLS, Smooth és Dash ügyfeleknek küldjék az üzeneteket. Az [SCTE-35] üzenetek esetében a bináris splice_info_section() a "mdat" mező hasznos terhelése, és **NEM** base64 kódolású.                                                                                                                     |
+| version                 | 32 bites előjel nélküli egész szám (uimsbf) | Kötelező      | Meghatározza a "mdat" mező tartalmának formátumát. Ismeretlen verziók figyelmen kívül lesznek hagyva. Jelenleg az egyetlen támogatott verzió az 1.                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32 bites előjel nélküli egész szám (uimsbf) | Kötelező      | Az üzenet ezen példányát azonosítja. Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük; Ez egy, az ugyanazzal az azonosítóval rendelkező esemény-üzenetpanel feldolgozása is elegendő.                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32 bites előjel nélküli egész szám (uimsbf) | Kötelező      | A TrackFragmentExtendedHeaderBox megadott fragment_absolute_time összegének és **a presentation_time_deltanak** az esemény megjelenítési időpontjának kell lennie. A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint. A kimenő HLS esetében az időt és az időtartamot a szegmens határaihoz **kell** igazítani. Az azonos esemény-adatfolyamon belüli különböző események megjelenítési ideje és időtartama nem **lehet** átfedésben. |
+| message                 | bájttömb                       | Kötelező      | Az esemény üzenete. A [SCTE-35] üzenetek esetében az üzenet a bináris splice_info_section (). A [SCTE-35] üzenetek **esetében ennek a** splice_info_section () értéknek kell lennie ahhoz, hogy üzeneteket lehessen ELKÜLDENI a HLS, a Smooth és a Dash ügyfeleknek a [SCTE-35] megfelelőséggel. A (z) [SCTE-35] üzenetek esetében a bináris splice_info_section () a "mdat" mező hasznos adatai, és **nem** Base64 kódolású.                                                                                                                     |
 
 ---
 
 
-### <a name="224-cancellation-and-updates"></a>2.2.4 Lemondás és frissítések
+### <a name="224-cancellation-and-updates"></a>2.2.4 törlés és frissítések
 
-Az üzenetek megszakíthatók vagy frissíthetők több, azonos megjelenítési idővel és azonosítóval ellátott üzenet elküldésével.  A bemutató ideje és azonosítója egyedileg azonosítja az eseményt. Az utolsó üzenet, amely egy adott bemutatóidejére érkezett, és amely megfelel az előgörgetési korlátozásoknak, az az üzenet, amelyre reagál. A frissített üzenet felülírja a korábban fogadott üzeneteket.  Az előgörgetési megkötés négy másodperc. A bemutató időpontja előtt legalább négy másodperccel fogadott üzeneteket a rendszer a bemutató időpontja előtt fogja megküldeni. 
+Az üzenetek megvonhatók vagy frissíthetők úgy, hogy több üzenetet küldenek ugyanazzal a megjelenítési idővel és AZONOSÍTÓval.  A megjelenítési idő és az azonosító egyedi módon azonosítja az eseményt. Az utolsó üzenet, amely egy adott bemutatási időre érkezett, amely megfelel az előre meghatározott megkötéseknek, az az üzenet, amelyet a rendszer elvégez. A frissített üzenet felülírja a korábban fogadott üzeneteket.  A pre-roll korlátozás négy másodperc. A bemutató időpontja előtt legalább négy másodpercig fogadott üzenetek lesznek elvégezve. 
 
 
-## <a name="3-timed-metadata-delivery"></a>3 időzített metaadat-kézbesítés
+## <a name="3-timed-metadata-delivery"></a>3 időzített metaadatok kézbesítése
 
-Az eseményfolyam-adatok átlátszatlanok a Media Services számára. A Media Services csupán három információt ad át a betöltési végpont és az ügyfél végpontja között. A következő tulajdonságokat az [SCTE-35] és/vagy az ügyfél streamelési protokolljának megfelelően kézbesítik az ügyfélnek:
+Az esemény stream-adatterülete nem átlátszó Media Services. Media Services csupán három adatot továbbít a betöltési végpont és az ügyfél végpontja között. A rendszer a következő tulajdonságokat továbbítja az ügyfélnek a [SCTE-35] és/vagy az ügyfél folyamatos átviteli protokolljának megfelelően:
 
-1.  Séma – az üzenet sémát azonosító URN vagy URL.
-2.  Bemutató ideje – az esemény bemutatási ideje a média idővonalán.
+1.  Séma – az üzenet sémáját azonosító URN vagy URL-cím.
+2.  Megjelenítés időpontja – az esemény megjelenítési időpontja az adathordozó idővonalán.
 3.  Időtartam – az esemény időtartama.
-4.  Azonosító – az esemény opcionális egyedi azonosítója.
-5.  Üzenet – az esemény adatokat.
+4.  ID – az eseményhez nem kötelező egyedi azonosító.
+5.  Üzenet – az eseményre vonatkozó adatértékek.
 
-## <a name="31-microsoft-smooth-streaming-manifest"></a>3.1 Microsoft Smooth Streaming Manifest  
+## <a name="31-microsoft-smooth-streaming-manifest"></a>3,1 Microsoft Smooth Streaming jegyzékfájl  
 
-A ritka üzenetsávok formázásáról a ritka vágánykezelés [MS-SSTR] című dokumentumban talál részleteket. Az [SCTE35] üzenetek esetén a Smooth Streaming a base64 kódolású splice_info_section() egy ritka töredékét adja ki.
-A StreamIndex **altípusának** "DATA" altípussal kell rendelkeznie, és a CustomAttributes **attribútumnak** name="Séma" és Value="urn:scte:scte35:2013:bin" attribútumot kell tartalmaznia.
+A ritka üzenetek nyomon követésével kapcsolatos részletekért tekintse meg a ritka kezelés [MS-SSTR] című témakört. Az [SCTE35] üzenetek esetében Smooth Streaming a Base64 kódolású splice_info_section () kimenetét egy ritka töredékbe írja.
+A StreamIndex tartalmaznia **kell** az "adattípust", és a CustomAttributes tartalmaznia **kell** egy "Schema" és Value = "urn: SCTE: scte35:2013: bin" nevű attribútumot.
 
-#### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Simított ügyféljegyzékpélda a base64 kódolású [SCTE35] splice_info_section()
+#### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Sima ügyféloldali jegyzékfájl, példa Base64 kódolású [SCTE35] splice_info_section ()
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
 <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
@@ -538,24 +538,24 @@ A StreamIndex **altípusának** "DATA" altípussal kell rendelkeznie, és a Cust
 </SmoothStreamingMedia>
 ~~~
 
-## <a name="32-apple-hls-manifest-decoration"></a>3.2 Apple HLS manifest dekoráció
+## <a name="32-apple-hls-manifest-decoration"></a>3,2 Apple HLS-jegyzékfájlok díszítése
 
-Az Azure Media Services a következő HLS-jegyzékcímkéket támogatja a hirdetési tartalmakkal kapcsolatos információk jelzésére egy élő vagy igény szerinti esemény során. 
+A Azure Media Services a következő HLS-jegyzékeket támogatja az ad-adatoknak az élő vagy igény szerinti eseményeknél való jelzéséhez. 
 
-- EXT-X-DATERANGE az Apple HLS meghatározása szerint [RFC8216]
-- EXT-X-CUE az [Adobe-Primetime] meghatározása szerint - ez a mód "örököltnek" minősül. Az ügyfeleknek lehetőség szerint el kell fogadniuk az EXT-X-DATERANGE címkét.
+- EXT-X-DATERANGE az Apple HLS definiálva [RFC8216]
+- EXT-X-CUE az [Adobe-főkiszolgálói] meghatározása szerint – ez a mód "örökölt". Ha lehetséges, az ügyfeleknek el kell fogadniuk az EXT-X-DATERANGE címkét.
 
-Az egyes címkék adatkimenete a használt betöltési jelmódtól függően változik. Az RTMP Adobe Simple móddal történő betöltéspéldául nem tartalmazza a teljes SCTE-35 base64 kódolású hasznos terhet.
+Az egyes címkék adatkimenete a felhasznált betöltési mód alapján változhat. Például az Adobe Simple Mode módban való betöltés nem tartalmazza a teljes SCTE-35 Base64 kódolású adattartalmat.
 
-## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 Apple HLS EXT-X-DATERANGE -val (ajánlott)
+## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 Apple HLS EXT-X-DATERANGE (ajánlott)
 
-Az Apple HTTP Live Streaming [RFC8216] specifikáció lehetővé teszi az [SCTE-35] üzenetek jelzését. Az üzenetek a szegmens lejátszási listába egy EXT-X-DATERANGE címkében kerülnek be az [RFC8216] szakaszonként, "SCTE-35 hozzárendelése EXT-X-DATERANGE-be" című szakaszban.  Az ügyfélalkalmazási réteg elemezheti az M3U lejátszási listát, és feldolgozhatja az M3U címkéket, vagy fogadhatja az eseményeket az Apple player keretrendszeren keresztül.  
+Az Apple HTTP Live Streaming [RFC8216] specifikációja lehetővé teszi a [SCTE-35] üzenetek jelzését. Az üzenetek bekerülnek a szegmens lejátszási listára egy EXT-X-DATERANGE címke alapján [RFC8216] szakaszban, melynek címe: "Mapping SCTE-35 in EXT-X-DATERANGE".  Az ügyfélalkalmazás rétege elemezheti az M3U-listát, és feldolgozhatja az M3U-címkéket, vagy megtekintheti az eseményeket az Apple Player Framework használatával.  
 
-Az Azure Media Services (3-as verziójú API) **ajánlott** megközelítése az [RFC8216] követése, és a jegyzékben az [SCTE35] hirdetési szolgáltatás kihasználtságának EXT-X_DATERANGE címkéjének használata.
+A Azure Media Services (3. verzió API) **ajánlott** megközelítése a [RFC8216] követése, és a (X_DATERANGE) [SCTE35] ad igény szerinti díszítésének EXT-címkéjének használata a jegyzékfájlban.
 
-## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 Példa HLS jegyzékfájl .m3u8 az SCTE-35 EXT-X-DATERANGE jelzésével
+## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 példa HLS manifest. m3u8, amely a SCTE-35 EXT-X-DATERANGE jeleket mutatja
 
-A következő példa hls jegyzékfájl kimeneta a Media Services dinamikus csomagzó jat a használata az EXT-X-DATERANGE címke [RFC8216] jelző SCTE-35 események az adatfolyamban. Ezenkívül ez az adatfolyam tartalmazza az [Adobe-Primetime] "örökölt" EXT-X-CUE címkéjét is.
+A következő példa a Media Services dinamikus HLS származó jegyzékfájl kimenetét jeleníti meg, amely a SCTE-35 eseményeket jelzi a streamben: [RFC8216]. Emellett ez az adatfolyam tartalmazza az [Adobe-főkiszolgálói] "örökölt" EXT-X-CUE címkéjét.
 
 ~~~
 #EXTM3U
@@ -756,27 +756,27 @@ Fragments(video=28648620,format=m3u8-aapl-v8)
 ~~~
 
 
-## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue-legacy"></a>3.2.2 Apple HLS Adobe Primetime EXT-X-CUE (örökölt)
+## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue-legacy"></a>3.2.2 Apple HLS az Adobe főműsoridőben EXT-X-CUE (örökölt)
 
-Van egy "örökölt" implementáció is az Azure Media Servicesben (2-es és 3-as verziójú API), amely az [Adobe-Primetime] "SCTE-35 mode" -ban meghatározott EXT-X-CUE címkét használja. Ebben a módban az Azure Media Services base64 kódolású [SCTE-35] splice_info_section() lesz beágyazva az EXT-X-CUE címkébe.  
+Létezik egy "örökölt" implementáció is a Azure Media Services (2. és 3. verziójú API), amely az EXT-X-CUE címkét használja az [Adobe-főkiszolgálói] "SCTE-35 Mode" kifejezésben meghatározottak szerint. Ebben a módban a Azure Media Services Base64 kódolású [SCTE-35] splice_info_section () beágyazását fogja ellátni az EXT-X-CUE címkében.  
 
-Az "örökölt" EXT-X-CUE címke az alábbiakban meghatározott, és normatív hivatkozással is szerepelhet az [Adobe-Primetime] specifikációban. Ezt csak az örökölt SCTE35 jelzéshez szabad használni, ahol szükséges, ellenkező esetben az ajánlott címkét az [RFC8216] EXT-X-DATERANGE-ként definiálja. 
+Az "örökölt" EXT-X-CUE címke az alábbi módon van definiálva, és az [Adobe-főkiszolgálói] specifikációban hivatkozott normatíva is lehet. Ezt csak az örökölt SCTE35-jelzésekhez szabad használni, ha szükséges, ellenkező esetben az ajánlott címke a [RFC8216]-ben van definiálva EXT-X-DATERANGE. 
 
 | **Attribútum neve** | **Típus**                      | **Szükséges?**                             | **Leírás**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Végszó                | idézett karakterlánc                 | Kötelező                                  | Az [RFC4648] című közlemény base64 kódolású karakterláncként van kódolva. Az [SCTE-35] üzenetek esetében ez a base64 kódolású splice_info_section().                                                                                                                                      |
-| TÍPUS               | idézett karakterlánc                 | Kötelező                                  | Az üzenetsémét azonosító URL-cím vagy URL-cím. Az [SCTE-35] üzenetek esetében a típus az "scte35" speciális értéket veszi fel.                                                                                                                                                                          |
-| ID (Azonosító)                 | idézett karakterlánc                 | Kötelező                                  | Az esemény egyedi azonosítója. Ha az azonosító nincs megadva, amikor az üzenet betöltése, az Azure Media Services létrehoz egy egyedi azonosítót.                                                                                                                                              |
-| Időtartam           | decimális lebegőpontos szám | Kötelező                                  | Az esemény időtartama. Ha ismeretlen, akkor az érték **0 legyen.** Az egységek tényszerű másodpercek.                                                                                                                                                                                           |
-| Eltelt            | decimális lebegőpontos szám | Nem kötelező, de a csúszóablakhoz szükséges | Ha a jel ismétlődik, hogy támogassa a csúszó bemutató ablak, ez a mező **kell** az összeget a bemutató idő telt el, mivel az esemény kezdődött. Az egységek tört másodpercek. Ez az érték meghaladhatja a kötés vagy a szegmens eredeti megadott időtartamát. |
-| TIME               | decimális lebegőpontos szám | Kötelező                                  | Az esemény bemutatóidőpontja. Az egységek tört másodpercek.                                                                                                                                                                                                                        |
+| CUE                | idézett karakterlánc                 | Kötelező                                  | Az üzenet Base64 kódolású karakterláncként van kódolva a következővel: [RFC4648]. A [SCTE-35] üzenetek esetében ez a Base64 kódolású splice_info_section ().                                                                                                                                      |
+| TÍPUS               | idézett karakterlánc                 | Kötelező                                  | Az üzenet sémáját azonosító URN vagy URL-cím. A (z) [SCTE-35] üzenetek esetében a típus a következő speciális értéket veszi fel: "scte35".                                                                                                                                                                          |
+| ID (Azonosító)                 | idézett karakterlánc                 | Kötelező                                  | Az esemény egyedi azonosítója. Ha az üzenet betöltése után nincs megadva az azonosító, Azure Media Services egyedi azonosítót fog előállítani.                                                                                                                                              |
+| IDŐTARTAMA           | decimális lebegőpontos szám | Kötelező                                  | Az esemény időtartama. Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie. Az egységek a frakciós másodpercek.                                                                                                                                                                                           |
+| ELTELT            | decimális lebegőpontos szám | Nem kötelező, de kötelező a csúszó ablakhoz | Ha a rendszer megismétli a jelet a csúszó bemutató ablakának támogatásához, akkor ebben **a mezőben az** esemény megkezdése óta eltelt bemutatási idő mennyiségének kell lennie. Az egységek töredékes másodpercek. Ez az érték túllépheti a Összefonás vagy a szegmens eredeti megadott időtartamát. |
+| TIME               | decimális lebegőpontos szám | Kötelező                                  | Az esemény megjelenítési időpontja. Az egységek töredékes másodpercek.                                                                                                                                                                                                                        |
 
 
-A HLS-lejátszó alkalmazásrétege a TÍPUS segítségével azonosítja az üzenet formátumát, dekódolja az üzenetet, alkalmazza a szükséges időkonverziókat, és feldolgozza az eseményt.  Az események időszinkronizálása a szülőzene szegmens lejátszási listájában történik az esemény időbélyegének megfelelően.  Ezeket a legközelebbi szegmens (#EXTINF címke) elé helyezi.
+A HLS Player alkalmazás rétege a típus használatával azonosítja az üzenet formátumát, dekódolja az üzenetet, alkalmazza a szükséges időkonverziókat, és feldolgozza az eseményt.  Az események az esemény időbélyegének megfelelően szinkronizálva lesznek a fölérendelt sáv szegmensének lejátszási listájában.  Ezeket a rendszer a legközelebbi szegmens (#EXTINF címke) elé szúrja be.
 
-### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 HLS .m3u8 jegyzékfájl példa a "Legacy" Adobe Primetime EXT-X-CUE használatával
+### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 HLS. m3u8 manifest – példa az "örökölt" Adobe főműsoridőt EXT-X-CUE használatával
 
-A következő példa a HLS jegyzékbe vételét mutatja be az Adobe Primetime EXT-X-CUE címkével.  A "CUE" paraméter csak a TYPE és az Duration tulajdonságokat tartalmazza, ami azt jelenti, hogy ez egy RTMP-forrás volt, amely az Adobe "egyszerű" módjelzést használ.  Ha ez egy SCTE-35 módú jel, a címke tartalmazza a base64 kódolt bináris SCTE-35 hasznos terhet a [3.2.1.1 példában](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)láthatómódon.
+Az alábbi példa az Adobe főkiszolgálói EXT-X-CUE címke használatával mutatja be a HLS-jegyzékfájlok díszítését.  A "CUE" paraméter csak a típus és az időtartam tulajdonságokat tartalmazza, ami azt jelenti, hogy ez egy RTMP-forrás az Adobe "Simple" üzemmódjának jelzésével.  Ha ez egy SCTE-35 módú jel volt, a címke tartalmazza a [3.2.1.1-példában](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)látható Base64 kódolású bináris SCTE-35 adattartalmat.
 
 ~~~
 #EXTM3U
@@ -839,58 +839,58 @@ Fragments(video=4011702982,format=m3u8-aapl)
 
 ~~~
 
-### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>3.2.4 HLS-üzenetkezelés a "Legacy" Adobe Primetime EXT-X-CUE-hoz
+### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>3.2.4 HLS az "örökölt" Adobe főműsoridőhez EXT-X-CUE
 
-Az eseményeket az egyes video- és hangsávok szegmens lejátszási listája jelzi. Az EXT-X-CUE címke pozíciójának mindig közvetlenül az első HLS-szegmens előtt **kell** lennie (a kiillesztés vagy a szegmens indítása előtt), vagy közvetlenül az utolsó HLS-szegmens után (a splice-ben vagy a szegmens végén), amelyre az IDŐ és az IDŐTARTAM attribútumai vonatkoznak, az [Adobe-Primetime] által megkövetelt módon.
+Az események az egyes videó-és hangsávok szegmensének lejátszási listáján vannak jelezve. Az EXT-X-CUE címke pozíciójának mindig közvetlenül az első HLS-szegmens (összekapcsolás vagy szegmens elején), vagy közvetlenül az utolsó HLS-szegmens (Összefonás vagy szegmens végén) **után kell** lennie, amely az [Adobe-főkiszolgálói] által megkövetelt értékre vonatkozik.
 
-Ha egy csúszó bemutatóablak engedélyezve van, az EXT-X-CUE címkét elég gyakran **meg kell** ismételni ahhoz, hogy a splice vagy a szegmens mindig teljes mértékben le legyen írva a szegmens lejátszási listában, és az ELAPSED attribútumot **kell** használni annak jelzésére, hogy a splice vagy a szegmens mennyi ideig volt aktív, ahogy azt az [Adobe-Primetime] előírja.
+Ha engedélyezve van egy csúszó bemutató ablak, a EXT-X- **Cue címkét gyakran kell** megismételni ahhoz, hogy a összekötés vagy a szegmens mindig teljes mértékben le legyen írva a szegmens lejátszási listájában, és az eltelt **attribútumot fel kell használni** arra, hogy jelezze a összekötés vagy a szegmens aktív állapotának időtartamát az [Adobe-főkiszolgálói] által előírt módon.
 
-Ha egy csúszó bemutatóablak engedélyezve van, az EXT-X-CUE címkék törlődnek a szegmens lejátszási listáról, amikor az általuk hivatkozott médiaidő kigördült a csúszó bemutatóablakból.
+Ha engedélyezve van egy csúszó bemutató ablak, a rendszer eltávolítja az EXT-X-CUE címkét a szegmens lejátszási listáról, amikor az általa hivatkozott adathordozó-idő kiesik a csúszó bemutató ablakból.
 
-## <a name="33-dash-manifest-decoration-mpd"></a>3.3 DASH jegyzékbe való kitüntetés (MPD)
+## <a name="33-dash-manifest-decoration-mpd"></a>3,3 DASH-jegyzékfájl díszítése (MPD)
 
-Az [MPEGDASH] három féleképpen jelezheti az eseményeket:
+A [MPEGDASH] három módszert biztosít az események jelzésére:
 
-1.  Az MPD EventStream ben jelzett események
-2.  Sávon keresztül jelzett események az Esemény üzenetpanellel ("emsg")
-3.  Az 1 és a 2 kombinációja
+1.  Az MPD EventStream jelzett események
+2.  A sávon belül megjelenő események az Event Message Box ("emsg") használatával
+3.  1 és 2 kombináció
 
-Az MPD EventStream ben jelzett események hasznosak a VOD-streameléshez, mivel az ügyfelek az MPD letöltésekor azonnal hozzáférhetnek az összes eseményhez. Az SSAI-jelzéshez is hasznos, ahol a lejjebb lévő SSAI-szállítónak elemeznie kell a többidőszaki MPD-jegyzékből származó jeleket, és dinamikusan kell beszúrnia a hirdetéstartalmat.  A sávon ('emsg')megoldás akkor hasznos, ha az ügyfeleknek nem kell újra letölteniük az MPD-t, vagy nincs SSAI-jegyzékfájl-manipuláció az ügyfél és az eredet között. 
+Az MPD-EventStream jelzett események hasznosak a VOD-adatfolyamok számára, mivel az ügyfelek az összes eseményhez hozzáférnek, azonnal az MPD letöltésekor. A SSAI jelzése is hasznos, ahol az alsóbb rétegbeli SSAI gyártójának a jeleket egy többpontos MPD-jegyzékből kell elemezni, és az ad-tartalmat dinamikusan kell beszúrnia.  A sávon kívüli ("emsg") megoldás az élő adatfolyamok esetében hasznos, ahol az ügyfeleknek nem kell újra letölteniük az MPD-t, vagy az ügyfél és a forrás között nem történik SSAI-jegyzékfájl-manipuláció. 
 
-Az Azure Media Services alapértelmezett viselkedése a DASH számára az, hogy jelezzen mind az MPD EventStream, mind a sávon keresztül az Event Message Box ('emsg') használatával.
+Azure Media Services a kötőjel alapértelmezett viselkedése az MPD EventStream és sávon belüli, az Event Message Box ("emsg") használatával történő jel.
 
-Az [RTMP] vagy az [MS-SSTR-Ingt] felett bevitt cue-üzenetek dash-eseményekbe vannak leképezve a sávon belüli 'emsg' mezők és/vagy az MPD-n belüli EventStreams használatával. 
+Az [RTMP] vagy [MS-SSTR-betöltés] során betöltött Cue-üzenetek KÖTŐJELes eseményekre vannak leképezve, sávon belüli "emsg" és/vagy in-MPD EventStreams használatával. 
 
-A DASH sávon keresztüli SCTE-35 jelzése az [SCTE-214-3] és a [DASH-IF-IOP] 13.12.2 szakasz ("SCTE35 Események") című szakaszban meghatározott meghatározást és követelményeket követi. 
+Sávon belüli SCTE – 35 jelzés a KÖTŐJELhez a [SCTE-214-3] és a (z) [DASH-IF-IOP] szakasz 13.12.2 ("SCTE35 Events") meghatározott definícióját és követelményeit követi. 
 
-Sávon keresztül [SCTE-35] kocsi esetén az Eseményüzenet mező ('emsg') a schemeId = "urn:scte:scte35:2013:bin" azonosítót használja. MpD jegyzékjegyzék-dekoráció esetén az EventStream schemeId az "urn:scte:scte35:2014:xml+bin" függvényt használja.  Ez a formátum az esemény XML-ábrázolása, amely a teljes SCTE-35 üzenet betöltési üzenetének bináris base64 kódolású kimenetét tartalmazza. 
+A sávon belüli [SCTE-35] szállítás esetében az eseményazonosító ("emsg") a schemeId = "urn: SCTE: scte35:2013: bin" karaktert használja. Az MPD-jegyzékfájl díszítéséhez a EventStream schemeId az "urn: SCTE: scte35:2014: XML + bin" kifejezést használja.  Ez a formátum az esemény XML-ábrázolása, amely tartalmazza a betöltéskor megérkezett teljes SCTE-35 üzenet bináris Base64-kódolású kimenetét. 
 
-Az [SCTE-35] dákó üzenetek dash-ben történő szállításának normatív hivatkozási definíciói az [SCTE-214-1] 6.7.4 (MPD) és [SCTE-214-3] 7.3.2(SCTE 35 dákóüzenetek szállítása) között érhetők el.
+A [SCTE-35] Cue-üzenetek DASH-ben történő szállításának normatív referenciái a [SCTE-214-1] SEC 6.7.4 (MPD) és [SCTE-214-3] SEC 7.3.2 (SCTE 35 Cue-üzenetek szállítása).
 
-### <a name="331-mpeg-dash-mpd-eventstream-signaling"></a>3.3.1 MPEG DASH (MPD) EventStream jelzés
+### <a name="331-mpeg-dash-mpd-eventstream-signaling"></a>3.3.1 MPEG DASH (MPD) EventStream-jelzés
 
-Az események jegyzékfájl (MPD) díszítése az MPD-ben az EventStream elem használatával jelenik meg, amely a Period elemen belül jelenik meg. A használt schemeId a következő: "urn:scte:scte35:2014:xml+bin".
+Az események manifest (MPD) díszítését az MPD jelzi az EventStream elem használatával, amely az időszak elemen belül jelenik meg. A használt schemeId az "urn: SCTE: scte35:2014: XML + bin".
 
 > [!NOTE]
-> Rövidség céljából [SCTE-35] lehetővé teszi a signal.binary elem base64 kódolású szakaszának használatát (a Signal.SpliceInfoSection elem helyett) a teljesen elemizált végszó üzenet szállításának alternatívájaként.
-> Az Azure Media Services ezt az "xml+bin" módszert használja az MPD-jegyzékben való jelzéshez.
-> Ez a [DASH-IF-IOP] által használt ajánlott módszer is - lásd [a DASH IF IOP iránymutatás "Ad insertion event streams" című szakaszát.](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html#ads-insertion-event-streams)
+> A rövidség kedvéért a [SCTE-35] lehetővé teszi a Base64 kódolású szakasz használatát a Signal. Binary elemben (a Signal. SpliceInfoSection elem helyett), amely egy teljesen elemzett Cue-üzenet szállításának alternatívájaként.
+> A Azure Media Services ezt az "XML + bin" módszert használja az MPD jegyzékfájlban való megjelenítéshez.
+> Ez az ajánlott módszer az [DASH-IF-IOP] – Lásd a [kötőjel "ad inserting Event Streams" című szakaszát, ha IOP-útmutató](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html#ads-insertion-event-streams)
 > 
 
-Az EventStream elem attribútumai a következőtulajdonságokkal rendelkeznek:
+A EventStream elem a következő attribútumokkal rendelkezik:
 
 | **Attribútum neve** | **Típus**                | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémát azonosítja. A séma értéke a Séma attribútum értéke a Live Server Manifest mezőben. Az **értéknek** az üzenetsémát azonosító URN-nek vagy URL-nek kell lennie; A támogatott kimeneti mintazonosítónak az "urn:scte35:2014:xml+bin" (SCTE-214-1] mp 6.7.4 (MPD) szerint kell lennie az "urn:scte:scte35:2014:xml+bin" (SCTE-214-1] mp 6.7.4 (MPD) szerint, mivel a szolgáltatás jelenleg csak az "xml+bin" szót támogatja az MPD rövidsége érdekében. |
-| érték              | sztring                  | Optional      | A séma tulajdonosai által az üzenet szemantikájának testreszabásához használt további karakterlánc-érték. Annak érdekében, hogy több eseményfolyamot különböztetjen meg ugyanazzal a sémával, az értéket az eseményfolyam nevére **kell** beállítani (trackName for [MS-SSTR-Ingt] vagy AMF üzenet neve az [RTMP] betöltéséhez).                                                                         |
-| Időskála          | 32 bites, aláíratlan egész szám | Kötelező      | Az időskála, kullancsper másodpercben.                                                                                                                                                                                                                                                                                                                                                     |
+| scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet sémáját azonosító URN-nek vagy URL- **címnek kell** lennie; A támogatott kimeneti schemeId "urn: SCTE: scte35:2014: XML + bin"/[SCTE-214-1] SEC 6.7.4 (MPD) lehet, mivel a szolgáltatás jelenleg csak az "XML + bin"-t támogatja, ha rövid idő alatt az MPD szerepel. |
+| érték              | sztring                  | Optional      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
+| Időskála          | 32 bites előjel nélküli egész szám | Kötelező      | Az időskála másodpercenkénti száma.                                                                                                                                                                                                                                                                                                                                                     |
 
 
-### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 Példa eseménystreamek az MPEG DASH-hez
+### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 példa az esemény-adatfolyamokra MPEG DASH esetén
 
-#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 Példa MPEG DASH .mpd nyilvánvaló jelzése RTMP streaming adobe egyszerű módban
+#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1-példa az MPEG DASH. mpd-jegyzékfájl az RTMP streaminghez Adobe Simple Mode használatával
 
-A következő példa egy eseményrészletet mutat be a Media Services dinamikus csomagcsomagolójától egy RTMP-adatfolyamhoz az Adobe "egyszerű" módjelzéssel.
+Az alábbi példa egy olyan részlet EventStream mutat be, amely egy RTMP-adatfolyam Media Services dinamikus csomagolójának az Adobe "Simple" módú jelzéssel való használatával történő továbbítását mutatja be.
 
 ~~~ xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
@@ -909,9 +909,9 @@ A következő példa egy eseményrészletet mutat be a Media Services dinamikus 
     </EventStream>
 ~~~
 
-#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 Példa MPEG DASH .mpd rtmp adatfolyam jegyzékfájljelzésére Adobe SCTE-35 módban
+#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>példa az 3.3.2.2 MPEG DASH. mpd-jegyzékfájlra egy RTMP-adatfolyamhoz az Adobe SCTE-35 mód használatával
 
-A következő példa egy eseményrészletet mutat be a Media Services dinamikus csomagcsomagolójától egy RTMP-adatfolyamhoz az Adobe SCTE-35 módú jelzéshasználatával.
+Az alábbi példa egy olyan részlet EventStream mutat be, amely az SCTE-35 módú adatjelzést használó RTMP-adatfolyamhoz tartozó dinamikus csomagoló Media Services.
 
 ~~~ xml
 <!-- Example EventStream element using xml+bin style signaling per [SCTE-214-1] -->
@@ -931,15 +931,15 @@ A következő példa egy eseményrészletet mutat be a Media Services dinamikus 
 ~~~
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a presentationTime az [SCTE-35] esemény megjelenítési ideje, amelyet az időszak kezdési időpontjához viszonyítva, nem pedig az üzenet érkezési idejére fordítanak le.
-> A[MPEGDASH] a Event@presentationTime következőképpen definiálja a következőt: "Az esemény megjelenítési idejét adja meg az időszak kezdetéhez viszonyítva.
-> A megjelenítési idő másodpercekben megadva értéke az attribútum értékének EventStream@timescale és az attribútum értékének felosztása.
+> Vegye figyelembe, hogy a presentationTime a [SCTE-35] eseménynek a lefordított időponthoz viszonyított időpontja, amely nem az üzenet érkezési időpontja.
+> A (z) [ Event@presentationTime MPEGDASH] a következőt határozza meg: "az esemény megjelenítésének időpontja az időszak elejéhez viszonyítva.
+> A megjelenítési idő másodpercben megadott értéke az attribútum értékének és az EventStream@timescale attribútum értékének a felosztása.
 > Ha nincs jelen, a megjelenítési idő értéke 0.
 
-#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 Példa MPEG DASH jegyzékfájl (MPD) egypontos, EventStream, Adobe egyszerű módú jelek használatával
+#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 – példa az MPEG DASH manifest (MPD) használatára egyidejű, EventStream, Adobe egyszerű üzemmódú jelek használatával
 
-A következő példa a Media Services dinamikus csomagolójának kimenetét mutatja be egy forrás RTMP-adatfolyamhoz az Adobe "egyszerű" módú hirdetési jelmódszerével. A kimenet egy egyidőszakos jegyzékfájl, amely egy EventStream-et jelenít meg az "urn:com:adobe:dpi:simple:2015" és az "simplesignal" értékű tulajdonság ot használó SchemeId Uri használatával.
-Minden egyszerű jel egy eseményelemben @presentationTime @durationtalálható, @id a , és a bejövő egyszerű jelek alapján felszámított tulajdonságok.
+Az alábbi példa egy, az Adobe "Simple" módban az ad Signal metódust használó, a forrás RTMP-adatfolyam Media Services dinamikus csomagolásának kimenetét jeleníti meg. A kimenet egy egyidőszakos jegyzékfájl, amely egy olyan EventStream mutat be, amely a schemeId URI-t használja az "urn: com: Adobe: dpi: Simple: 2015" értékre, a Value tulajdonság pedig "simplesignal" értékűre van állítva.
+Az egyes egyszerű jeleket a (z), @presentationTime @duration, és @id tulajdonságokat tartalmazó Event elemben kell megadni a bejövő egyszerű jelek alapján.
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -992,10 +992,10 @@ Minden egyszerű jel egy eseményelemben @presentationTime @durationtalálható,
 
 ~~~
 
-#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 Példa MPEG DASH-jegyzékfájl (MPD) többpontos EventStream alkalmazással, Adobe SCTE35 módú jelzéssel
+#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 például az MPEG DASH manifest (MPD) többpontos EventStream, az Adobe SCTE35 mód jelzésének használatával
 
-A következő példa a Media Services dinamikus csomagolójának kimenetét mutatja be egy forrás RTMP-adatfolyamhoz az Adobe SCTE35 módú jelzés használatával.
-Ebben az esetben a kimeneti jegyzékfájl egy többidőszakos DASH .mpd, egy EventStream elemmel, és @schemeIdUri az "urn:scte:scte35:2014:xml+bin" tulajdonság, valamint az @value "scte35" tulajdonság. Az EventStream minden eseményeleme tartalmazza a teljes base64 kódolású bináris SCTE35 jelet 
+Az alábbi példa bemutatja, hogyan jelenik meg a forrás RTMP-adatfolyam Media Services dinamikus csomagolásának kimenete az Adobe SCTE35 mód jelzésének használatával.
+Ebben az esetben a kimeneti jegyzékfájl egy többpontos kötőjel. mpd egy EventStream elemmel, az "urn: @schemeIdUri SCTE: scte35:2014: XML + bin" @value tulajdonság pedig "scte35" értékre van állítva. A EventStream minden esemény eleme tartalmazza a teljes Base64 kódolású bináris SCTE35-jelet. 
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1122,51 +1122,51 @@ Ebben az esetben a kimeneti jegyzékfájl egy többidőszakos DASH .mpd, egy Eve
 </MPD>
 
 ~~~
-### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG DASH Sávon keresztül imessage box jelzés
+### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG-kötőjel sávon belüli esemény-jelző
 
-A sávon ként idorozott eseményfolyamhoz az MPD-nek inbandEventStream elemmel kell rendelkeznie az Adaptációs készlet szintjén.  Ez az elem rendelkezik egy kötelező schemeIdUri attribútummal és opcionális időskála attribútummal, amely az Eseményüzenet-mezőben ("emsg") is megjelenik.  Az MPD-ben nem definiált sémaazonosítókkal rendelkező eseményüzenetek nem **lehetnek** jelen.
+A sávon kívüli adatfolyamok esetén az MPD-nek egy InbandEventStream elemre van szüksége a beállított értéknél.  Ez az elem egy kötelező schemeIdUri attribútummal és választható időkeret-attribútummal rendelkezik, amely szintén megjelenik az esemény üzenet mezőjében ("emsg").  Az **mpd-ben nem** definiált séma-azonosítókkal rendelkező esemény-üzenetsor nem lehet jelen.
 
-Sávon keresztül [SCTE-35] kocsi esetén a **jeleknek** a schemeId = "urn:scte:scte35:2013:bin" szót kell használniuk.
-Az [SCTE-35] sávon kénti üzenetek szállításának normatív definícióit az [SCTE-214-3] 7.3.2 (SCTE 35 dákóüzenetek szállítása) határozza meg.
+Sávon belüli [SCTE-35] szállítás esetén a jeleknek a schemeId = "urn: SCTE: scte35:2013: bin" kifejezést **kell** használniuk.
+A [SCTE-35] sávon belüli üzenetek [SCTE-214-3] SEC 7.3.2 (SCTE 35 Cue-üzenetek szállítása) által definiált normatív meghatározásai.
 
-A következő részletek ismertetik azokat az értékeket, amelyekre az ügyfélnek számítania kell az "emsg"-ben az [SCTE-214-3] szerint:
+A következő részletek felvázolják, hogy az ügyfélnek milyen értékeket kell várnia a "emsg" a [SCTE-214-3] megfelelőséggel:
 
 | **Mező neve**          | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | sztring                  | Kötelező      | Az üzenet sémát azonosítja. A séma értéke a Séma attribútum értéke a Live Server Manifest mezőben. Az **értéknek** az üzenetsémát azonosító URN-nek kell lennie. Az [SCTE-35] üzenetek esetében **ennek** az [SCTE-214-3] megfelelő "urn:scte:scte35:2013:bin" (urna:scte35:2013:bin) kell, hogy legyen.          |
-| Érték                   | sztring                  | Kötelező      | A séma tulajdonosai által az üzenet szemantikájának testreszabásához használt további karakterlánc-érték. Annak érdekében, hogy több eseményfolyamot különböztetjen meg ugyanazzal a sémával, az érték az eseményfolyam nevére lesz állítva (trackName for Smooth betöltés vagy AMF-üzenet neve rtmp betöltéshez). |
-| Időskála               | 32 bites, aláíratlan egész szám | Kötelező      | Az "emsg" mezőben lévő idő- és időtartammezők időskálája másodpercenként.                                                                                                                                                                                                            |
-| Presentation_time_delta | 32 bites, aláíratlan egész szám | Kötelező      | Az esemény megjelenítési idejének és a szegmens legkorábbi megjelenítési idejének a médiamegjelenítési idő különbözete. A bemutatási **időnek** és időtartamnak igazodnia kell az I. mellékletben meghatározott 1- vagy 2-es típusú streamhozzáférési pontokhoz (SAP).                                  |
-| event_duration          | 32 bites, aláíratlan egész szám | Kötelező      | Az esemény időtartama, vagy 0xFFFFFFFF ismeretlen időtartamjelzésére.                                                                                                                                                                                                                              |
-| Azonosító                      | 32 bites, aláíratlan egész szám | Kötelező      | Az üzenet ezen példányát azonosítja. Az azonos szemantikával rendelkező üzenetek értéke megegyezik. Ha az azonosító nincs megadva, amikor az üzenet betöltése, az Azure Media Services létrehoz egy egyedi azonosítót.                                                                                        |
-| Message_data            | bájttömb              | Kötelező      | Az esemény üzenet. Az [SCTE-35] üzenetek esetében az üzenetadatok a bináris splice_info_section() az [SCTE-214-3]                                                                                                                                                                        |
+| scheme_id_uri           | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet-sémát azonosító URN- **nek** kell lennie. A (z) [SCTE-35] üzenetek **esetében ennek a következőnek kell** lennie: "urn: SCTE: scte35:2013: bin" a [SCTE-214-3] megfelelőséggel          |
+| Érték                   | sztring                  | Kötelező      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az érték az esemény-adatfolyam neve lesz (trackName a Smooth betöltéshez vagy az AMF-üzenet neve az RTMP betöltéséhez). |
+| Időskála               | 32 bites előjel nélküli egész szám | Kötelező      | A "emsg" mezőben lévő időpontok és időtartam mezők időkerete (óra/s).                                                                                                                                                                                                            |
+| Presentation_time_delta | 32 bites előjel nélküli egész szám | Kötelező      | A média bemutatójának időbeli változása az esemény megjelenítési idejének és a legkorábbi bemutatási idő különbözete ebben a szegmensben. A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint.                                  |
+| event_duration          | 32 bites előjel nélküli egész szám | Kötelező      | Az esemény vagy a 0xFFFFFFFF-es időtartam, amely ismeretlen időtartamot jelez.                                                                                                                                                                                                                              |
+| Azonosító                      | 32 bites előjel nélküli egész szám | Kötelező      | Az üzenet ezen példányát azonosítja. Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük. Ha az üzenet betöltése után nincs megadva az azonosító, Azure Media Services egyedi azonosítót fog előállítani.                                                                                        |
+| Message_data            | bájttömb              | Kötelező      | Az esemény üzenete. A [SCTE-35] üzenetek esetében az üzenet a bináris splice_info_section (), amely megfelel a következőnek: [SCTE-214-3].                                                                                                                                                                        |
 
 
-#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Példa InBandEvenStream entitásra az Adobe Simple módhoz
+#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Példa InBandEvenStream-entitás az Adobe Simple Mode-hoz
 ~~~ xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
 ~~~
 
-### <a name="335-dash-message-handling"></a>3.3.5 DASH-üzenetek kezelése
+### <a name="335-dash-message-handling"></a>3.3.5 DASH-üzenetek kezelésére
 
-Az eseményeket sávon belül, az "emsg" mezőben jelzik mind a videó, mind a hangsáv számára.  A jelzés minden olyan szegmenskérelemnél megtörténik, amelynek a presentation_time_delta legrövidebb ideje. 
+Az eseményeket a sávon belül, a "emsg" mezőben, a videó-és hangsávok esetében is jelezni kell.  Az összes olyan szegmensre vonatkozó kérelem, amelynél a presentation_time_delta 15 másodperc vagy kevesebb. 
 
-Ha egy csúszó bemutatóablak engedélyezve van, az eseményüzenetek törlődnek az MPD-ből, ha az eseményüzenet ideje és időtartama kisebb, mint a jegyzékben lévő médiaadatok ideje.  Más szóval az eseményüzenetek törlődnek a jegyzékfájlból, amikor az adathordozó-idő, amelyre hivatkoznak, kigördült a csúszó bemutatóablakból.
+Ha a csúszó bemutató ablak engedélyezve van, az esemény üzenetei el lesznek távolítva az MPD-ből, ha az üzenet időtartamának és időtartamának összege kevesebb, mint a jegyzékfájlban lévő adathordozó-adatok ideje.  Ez azt jelenti, hogy az esemény üzenetei el lesznek távolítva a jegyzékből, ha az arra a médiára vonatkozó idő, amelyre hivatkozik, kigördült a csúszó bemutató ablakból.
 
-## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. SCTE-35 Betöltés megvalósítási útmutató kódoló gyártók
+## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. SCTE-35 betöltési útmutató kódoló szállítók számára
 
-Az alábbi irányelvek olyan gyakori problémák, amelyek hatással lehetnek a kódoló szállítói nak a specifikáció megvalósítására.  Az alábbi irányelveket valós partnerek visszajelzései alapján gyűjtöttük össze, hogy mások számára könnyebblegyen ezt a specifikációt alkalmazni. 
+Az alábbi irányelvek olyan gyakori problémák, amelyek hatással lehetnek a kódoló gyártó általi megvalósítására a specifikációban.  Az alábbi irányelveket a valós partneri visszajelzések alapján gyűjtöttük össze, hogy könnyebben lehessen megvalósítani ezt a specifikációt mások számára. 
 
-Az [SCTE-35] üzenetek bináris formátumban kerülnek betöltésre az **"urn:scte35:2013:bin"** (MS-SSTR-Ingest) és az [RTMP] betöltése esetén az **"scte35"** típus használatával. Az [SCTE-35] időzítés átalakításának megkönnyítése érdekében, amely az MPEG-2 átviteli adatfolyam-bemutatási időbélyegein (PTS) alapul, a PTS (pts_time + a splice_time()) pts_adjustment és a média idővonala közötti leképezést az esemény megjelenítési ideje biztosítja ( a sima betöltés fragment_absolute_time mezője és az RTMP betöltésének időmezője). A leképezésre azért van szükség, mert a 33 bites PTS-érték körülbelül 26,5 óránként gördül át.
+[SCTE-35] az üzeneteket bináris formátumban kell beírni az **"urn: SCTE: scte35:2013: bin"** sémával az [MS-SSTR-betöltés] és a (z) [RTMP] esetében a **"scte35"** típus használatával. A (z) [SCTE-35] időzítésének megkönnyítése érdekében, amely az MPEG-2 Transport stream bemutató időbélyegei (PTS) alapján történik, a PTS (pts_time + pts_adjustment splice_time ()) és az adathordozó idővonala közötti leképezést az esemény megjelenítési ideje (fragment_absolute_time a zökkenőmentes betöltés és az RTMP betöltésének időmezője) határozza meg. A leképezésre azért van szükség, mert a 33 bites PTS-érték körülbelül 26,5 óránként történik.
 
-A sima streamelési betöltés [MS-SSTR-Int] megköveteli, hogy **MUST** a médiaadat-mező ("mdat") tartalmazza az [SCTE-35] -ben meghatározott **splice_info_section()** . 
+Smooth Streaming **Betöltés** [MS-SSTR-betöltés] megköveteli, hogy a Media Data Box ("mdat") tartalmaznia kell a (z) [SCTE-35] által meghatározott **splice_info_sectiont ()** . 
 
-RTMP-betöltés esetén az AMF-üzenet cue attribútuma az [SCTE-35] mezőben meghatározott base64-kódolású **splice_info_section()** értékre van állítva.  
+Az RTMP betöltéséhez az AMF-üzenet Cue attribútuma a [SCTE-35] által definiált Base64 kódolású **splice_info_section ()** értékre van állítva.  
 
-Ha az üzenetek formátuma fent leírta, a rendszer a hls, smooth és DASH ügyfeleknek küldi el őket a fent meghatározottak szerint.  
+Ha az üzenetek a fent ismertetett formátumban vannak megadva, a rendszer elküldi őket a HLS, a Smooth és a DASH ügyfeleknek a fentiekben leírtak szerint.  
 
-Amikor az Azure Media Services platformon teszteli a megvalósítást, először kezdje el a tesztelést egy "átmenő" LiveEvent-el, mielőtt egy encoding LiveEvent en tesztelésre lépne.
+Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "pass-through" LiveEvent kell elkezdeni a tesztelést, mielőtt a kódolást LiveEvent.
 
 ---
 
@@ -1174,12 +1174,12 @@ Amikor az Azure Media Services platformon teszteli a megvalósítást, először
 
 | Dátum     | Változások                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| 07/2/19  | Felülvizsgált RTMP betöltés részére SCTE35 támogat, hozzáadott RTMP " onCuePoint" részére ElemI Él                                  |
-| 08/22/19 | Frissítve, hogy hozzáadja az OnUserDataEvent-et az RTMP-hez az egyéni metaadatokhoz                                                          |
-| 1/08/20  | Javítottuk az RTMP Simple és RTMP SCTE35 módban történt hibát. Az "onCuePoint"-ról "onAdCue"-ra változott. Frissítve: Egyszerű mód táblázat. |
+| 07/2/19  | Átdolgozott RTMP betöltés a SCTE35-támogatáshoz, új RTMP "onCuePoint"                                  |
+| 08/22/19 | Frissítve a OnUserDataEvent és az RTMP egyéni metaadatokhoz való hozzáadásához                                                          |
+| 1/08/20  | Kijavítva a hiba a RTMP egyszerű és RTMP SCTE35 módban. A "onCuePoint" típusról "onAdCue" értékre módosult. Frissült az egyszerű üzemmódú tábla. |
 
 ## <a name="next-steps"></a>További lépések
-A Media Services tanulási útvonalainak megtekintése.
+Megtekintheti Media Services képzési útvonalakat.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

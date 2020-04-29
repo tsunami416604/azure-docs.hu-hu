@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services magas rendelkezésre állású kódolása
-description: Megtudhatja, hogyan lehet feladatátvételt egy másodlagos Media Services-fiókba, ha egy regionális adatközpont-kimaradás vagy hiba történik.
+title: Azure Media Services magas rendelkezésre állású kódolás
+description: Megtudhatja, hogyan hajthat végre feladatátvételt másodlagos Media Services-fiókra, ha regionális adatközpont-leállás vagy-meghibásodás történik.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,53 +14,53 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78934194"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services magas rendelkezésre állású kódolás 
 
-Az Azure Media Services kódolási szolgáltatás egy regionális kötegelt feldolgozási platform, és jelenleg nem tervezték a magas rendelkezésre állás egyetlen régión belül. A kódolási szolgáltatás jelenleg nem biztosít azonnali feladatátvételt a szolgáltatás, ha van egy regionális adatközpont kimaradás vagy az alapul szolgáló összetevő vagy függő szolgáltatások (például a tárolás, SQL) meghibásodása esetén. Ez a cikk bemutatja, hogyan telepítheti a Media Services magas rendelkezésre állású architektúrát feladatátvételsel, és hogyan biztosíthatja az alkalmazások optimális rendelkezésre állását.
+A Azure Media Services kódolási szolgáltatás egy regionális batch-feldolgozó platform, amely jelenleg egyetlen régión belül nem magas rendelkezésre állásra van tervezve. A kódolási szolgáltatás jelenleg nem biztosít azonnali feladatátvételt a szolgáltatáshoz, ha a mögöttes összetevő vagy a függő szolgáltatások (például a Storage, az SQL) esetében regionális adatközpont-leállás vagy meghibásodás történt. Ez a cikk bemutatja, hogyan helyezheti üzembe a Media Servicest a magas rendelkezésre állású architektúra fenntartásához a feladatátvétel és az alkalmazások optimális rendelkezésre állásának biztosítása érdekében.
 
-A cikkben ismertetett irányelvek és gyakorlati tanácsok követésével csökkentheti a hibák, késések kódolásának kockázatát, és minimálisra csökkentheti a helyreállítási időt, ha egy adott régióban kimaradás történik.
+A cikkben leírt irányelvek és ajánlott eljárások követésével csökkentheti a kódolási hibák, a késések és a helyreállítási idő minimalizálásának kockázatát, ha egy adott régióban áramkimaradás történik.
 
-## <a name="how-to-build-a-cross-regional-encoding-system"></a>Hogyan építsünk egy régiók közötti kódolási rendszer
+## <a name="how-to-build-a-cross-regional-encoding-system"></a>Régiók közötti kódolási rendszer létrehozása
 
-* [Hozzon létre](create-account-cli-how-to.md) két (vagy több) Azure Media Services-fiókot.
+* [Hozzon létre](create-account-cli-how-to.md) két (vagy több) Azure Media Services fiókot.
 
-    A két fióknak különböző régiókban kell lennie. További információ: [azok a régiók, ahol az Azure Media Services szolgáltatás telepítve van.](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
-* Töltse fel a médiafájlokat ugyanabba a régióba, ahonnan a feladatot be szeretné küldeni. A kódolás elindításáról további információt a [Feladatbemenet létrehozása HTTPS-URL-címről](job-input-from-http-how-to.md) vagy [Feladatbevitel létrehozása helyi fájlból című](job-input-from-local-file-how-to.md)témakörben talál.
+    A két fióknak különböző régiókban kell lennie. További információ: [a Azure Media Services szolgáltatást üzembe helyező régiók](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Töltse fel az adathordozót ugyanabba a régióba, ahonnan el szeretné küldeni a feladatot. A kódolás megkezdésével kapcsolatos további információkért lásd: [a feladatok bevitele HTTPS URL-](job-input-from-http-how-to.md) címről vagy egy [helyi fájlból származó feladatok létrehozása](job-input-from-local-file-how-to.md).
 
-    Ha ezután újra el kell küldenie a [feladatot](transforms-jobs-concept.md) egy másik régióba, használhatja a JobInputHttp-t, vagy a [Copy-Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) segítségével másolhatja az adatokat a forráseszköz tárolójából egy másik régióban lévő eszköztárolóba.
-* Iratkozzon fel a JobStateChange üzenetek minden fiókban az Azure Event Grid en keresztül. További információkért lásd:
+    Ha ezt követően újra el kell küldenie a [feladatot](transforms-jobs-concept.md) egy másik régióba, használhatja a JobInputHttp-t, vagy a [copy-blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) paranccsal másolhatja át az adatait a forrás-eszköz tárolójából a másik régióba tartozó tárgyieszköz-tárolóba.
+* Fizessen elő az egyes fiókokban lévő JobStateChange-üzenetekre Azure Event Gridon keresztül. További információkért lásd:
 
-    * [Audio Analytics-minta,](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) amely bemutatja, hogyan figyelheti a feladatot az Azure Event Grid del, beleértve a tartalék hozzáadása esetén az Azure Event Grid üzenetek késik valamilyen okból.
-    * [Azure Event Grid-sémák a Media Services-eseményekhez](media-services-event-schemas.md)
-    * [Regisztráljon eseményekre az Azure Portalon vagy a CLI-n keresztül](reacting-to-media-services-events.md) (ezt az EventGrid Management SDK-val is megteheti)
-    * [Microsoft.Azure.EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (amely natív módon támogatja a Media Services-eseményeket).
+    * A [hangelemzés mintája](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) , amely bemutatja, hogyan figyelheti a feladatokat Azure Event Grid beleértve a tartalék hozzáadását, ha a Azure Event Grid üzenetek valamilyen okból késleltetve vannak.
+    * [Media Services eseményekhez Azure Event Grid sémák](media-services-event-schemas.md)
+    * Az [események regisztrálása a Azure Portal vagy a CLI](reacting-to-media-services-events.md) használatával (ezt a EVENTGRID Management SDK-val is elvégezheti)
+    * [Microsoft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (amely natív módon támogatja az Media Services eseményeket).
 
-    Event Grid-eseményeket is felhasználhat az Azure Functions segítségével.
-* Feladat [létrehozásakor:](transforms-jobs-concept.md)
+    Azure Functions használatával Event Grid eseményeket is felhasználhat.
+* A [feladatok](transforms-jobs-concept.md)létrehozásakor:
 
-    * Véletlenszerűen válasszon ki egy fiókot a jelenleg használt fiókok listájából (ez a lista általában mindkét fiókot tartalmazza, de ha problémákat észlel, akkor csak egy fiókot tartalmazhat). Ha a lista üres, küldj riasztást, hogy az operátor megvizsgálhassa.
-    * Általános útmutatás: [JobOutputonként](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) egy [adathordozószámára fenntartott egységre](media-reserved-units-cli-how-to.md) van szükség (kivéve, ha [videoanalyzerPreset-et](analyzing-video-audio-files-concept.md) használ, ahol joboutputonként 3 media fenntartott egység ajánlott).
-    * A kiválasztott fiókhoz lefoglalt médiaegységek (MrUs) számának beszámítása. Ha az aktuális **adathordozó-lefoglalt egységek** száma még nem éri el a maximális értéket, adja meg a feladat által szükséges MRUs-ok számát, és frissítse a szolgáltatást. Ha a feladat benyújtási aránya magas, és gyakran lekérdezi az MRUs-t, hogy megtalálja, hogy a maximális, használjon elosztott gyorsítótárat az értékhez ésszerű időtúlértékkel.
-    * Számolja meg a repülési feladatok számát.
+    * Véletlenszerűen válasszon ki egy fiókot a jelenleg használt fiókok listájából (ez a lista általában mindkét fiókot tartalmazza, de ha problémát észlel, akkor csak egy fiókot tartalmazhat). Ha a lista üres, riasztást küld, hogy az operátor megvizsgálja.
+    * Általános útmutatóként egy [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) (kivéve, ha a [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) 3 Media szolgáltatás [számára fenntartott](media-reserved-units-cli-how-to.md) egységet használ, JobOutput ajánlott).
+    * A kiválasztott fiókhoz tartozó Media szolgáltatás számára fenntartott egységek (MRUs) számának beolvasása. Ha a **Media szolgáltatás számára fenntartott egységek** száma még nincs a maximális értéknél, adja hozzá a feladatokhoz szükséges MRUs számát, és frissítse a szolgáltatást. Ha a feladatokhoz tartozó beküldési arány magas, és gyakran kérdezi le a MRUs, hogy a lehető legtöbbet találja, használjon egy elosztott gyorsítótárat az értékhez ésszerű időkorlát mellett.
+    * Tartsa meg a fedélzeti feladatok számát.
 
-* Amikor a JobStateChange-kezelő értesítést kap arról, hogy egy feladat elérte az ütemezett állapotot, jegyezze fel az ütemezési állapotba való belépés idejét és a használt régiót/fiókot.
-* Amikor a JobStateChange-kezelő értesítést kap arról, hogy egy feladat elérte a feldolgozási állapotot, jelölje meg a feladat rekordját feldolgozásként.
-* Amikor a JobStateChange-kezelő értesítést kap arról, hogy egy feladat elérte a Befejezett/Hiba/Visszavont állapotot, jelölje meg a feladat rekordját véglegesként, és csökkentse a repülési feladat számát. A kiválasztott fiókhoz lefoglalt médiaegységek számának beszerezhető, és hasonlítsa össze az aktuális MRU-számot a repülési feladat számával. Ha a repülési szám kisebb, mint az MRU-szám, majd csökkentse azt, és frissítse a szolgáltatást.
-* Van egy külön folyamat, amely rendszeresen megnézi a feladatok ról uk rekordokat
+* Ha a JobStateChange-kezelő értesítést kap arról, hogy egy adott tevékenység elérte az ütemezett állapotot, jegyezze fel az ütemezési állapotba és a használt régióba/fiókba való belépés időpontját.
+* Ha a JobStateChange-kezelő értesítést kap arról, hogy egy adott művelet elérte a feldolgozási állapotot, a feladathoz tartozó rekordot megjelölve feldolgozásként jelöli meg a feladatot.
+* Ha a JobStateChange-kezelő értesítést kap arról, hogy a feladat elérte a befejezett/hibás/megszakított állapotot, állítsa be véglegesként a feladat rekordját, és állítsa le a fedélzeti feladatok darabszámát. Szerezze be a kiválasztott fiókhoz tartozó Media szolgáltatás számára fenntartott egységek számát, és hasonlítsa össze az aktuális MRU-számot a fedélzeti feladatok számával. Ha a fedélzeti szám kisebb, mint az MRU szám, akkor a rendszer csökkenti és frissíti a szolgáltatást.
+* Külön folyamattal kell rendelkeznie, amely rendszeresen megvizsgálja a feladatok rekordjait
     
-    * Ha az ütemezett állapotban olyan feladatok vannak, amelyek egy adott régióban ésszerű időn belül nem jutottak a feldolgozási állapotba, távolítsa el a régiót a jelenleg használt fiókok listájáról.  Az üzleti követelményektől függően dönthet úgy, hogy azonnal törli ezeket a feladatokat, és újra elküldi őket a másik régióba. Vagy adhatnál nekik még egy kis időt, hogy a következő államba költözzenek.
-    * A fiókban konfigurált médiafenntartott egységek számától és a beküldési aránytól függően előfordulhatnak olyan feladatok is, amelyek várólistára helyezett állapotban vannak, amelyeket a rendszer még nem vett fel feldolgozásra.  Ha a várólistára helyezett állapotban lévő feladatok listája egy régióban egy elfogadható korláton túlnő, ezek a feladatok visszavonhatók és elküldhetők a másik régióba.  Ez azonban annak a tünete lehet, hogy nincs elegendő media által fenntartott egység a fiókban az aktuális terheléshez.  Szükség esetén az Azure-támogatáson keresztül magasabb Media-szolgáltatás számára fenntartott egységkvótát kérhet.
-    * Ha egy régiót eltávolítottak a fióklistáról, figyelje meg a helyreállítást, mielőtt újra hozzáadná a listához.  A regionális állapot figyelhető a régióban meglévő feladatokon keresztül (ha nem törölték és nem nyújtották be újra), a fiók egy idő után visszaadva a listához, valamint az operátorok figyelhetik az Azure-kommunikációt a kimaradásokról, amelyek hatással lehetnek a kimaradásokra. Azure Media Services.
+    * Ha az ütemezett állapot olyan feladatokkal rendelkezik, amelyek egy adott régióra vonatkozóan ésszerű időn belül nem fejlettek a feldolgozási állapotra, távolítsa el a régiót a jelenleg használt fiókok listájáról.  Az üzleti igényektől függően dönthet úgy, hogy azonnal megszakítja a feladatokat, és visszaküldi azokat a másik régióba. Vagy további időt adhat nekik, hogy a következő állapotba lépjenek.
+    * A fiókon konfigurált Media szolgáltatás számára fenntartott egységek számától és a beküldési sebességtől függően előfordulhat, hogy a rendszer a várólistán lévő feladatok esetében is felveszi a feladatokat, mert a rendszer még nem vette fel a feldolgozásra.  Ha a várólistán lévő feladatok listája egy adott régióban egy elfogadható korláton túlnyúlva nő, akkor ezeket a feladatokat megszakíthatja, és elküldheti a másik régiónak.  Ez azonban annak a tünete lehet, hogy nincs elég Media szolgáltatás számára fenntartott egység konfigurálva a fiókban az aktuális terheléshez.  Ha szükséges, magasabb szintű Media szolgáltatás számára fenntartott egységre vonatkozó kvótát igényelhet az Azure-támogatással.
+    * Ha egy régiót eltávolítottak a fiók listájából, figyelje a helyreállítást a listához való hozzáadás előtt.  A regionális állapot a régió meglévő feladatain keresztül figyelhető (ha nem lettek megszakítva és nem lettek elküldve), a fiók egy adott időtartam után visszakerül a listához, és az operátorok figyelik az Azure-kommunikációt az olyan kimaradások miatt, amelyek hatással lehetnek a Azure Media Servicesra.
     
-Ha úgy találja, hogy az MRU-szám sokszor fel-le ver, helyezze át a decrement logikát az időszakos feladatra. A feladat előtti submit logika hasonlítsa össze a bevizsgálati szám az aktuális MRU-szám, hogy szükség van az MRU frissítésére.
+Ha úgy találja, hogy az MRU szám a nagy mennyiségű felveréssel van elválasztva, helyezze át a logikai műveletet az időszakos feladatba. Ellenőrizze, hogy az előzetes feladatot Beküldő logika összehasonlítja-e a fedélzeti darabszámot az aktuális MRU számmal, hogy meg kell-e frissítenie a MRUs.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Igény szerinti, igény szerinti, régiók közötti streamelést hozhat létre](media-services-high-availability-streaming.md)
-* [Kódminták kijelentkezése](https://docs.microsoft.com/samples/browse/?products=azure-media-services)
+* [Igény szerinti, többrégiós adatfolyamok készítése](media-services-high-availability-streaming.md)
+* Példák a [kód](https://docs.microsoft.com/samples/browse/?products=azure-media-services) megadására

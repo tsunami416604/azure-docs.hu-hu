@@ -1,7 +1,7 @@
 ---
-title: NSG-folyamatnaplók kezelése – Azure PowerShell
+title: NSG-adatforgalmi naplók kezelése – Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: Ez a lap bemutatja, hogyan kezelhetők a Hálózati biztonsági csoport folyamatnaplói az Azure Network Watcher ben a PowerShell segítségével
+description: Ez az oldal ismerteti, hogyan kezelhetők a hálózati biztonsági csoportok folyamatábrái az Azure Network Watcher a PowerShell-lel
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,33 +13,33 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 9612afdb63c6988c0027f003caeacd456b5e50e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840944"
 ---
-# <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Hálózati biztonsági csoportfolyamat-naplók konfigurálása a PowerShell használatával
+# <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Hálózati biztonsági csoport Folyamatábráinak konfigurálása a PowerShell-lel
 
 > [!div class="op_single_selector"]
-> - [Azure-portál](network-watcher-nsg-flow-logging-portal.md)
-> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-A hálózati biztonsági csoport folyamatnaplói a Network Watcher szolgáltatása, amely lehetővé teszi a hálózati biztonsági csoporton keresztül a be- és kilépésip-forgalommal kapcsolatos információkat. Ezek a folyamatnaplók json formátumban vannak megírva, és szabályonként mutatják a kimenő és bejövő folyamatokat, a folyamat által alkalmazott hálózati adaptert, a folyamat 5-tuple információit (Forrás/cél IP, Forrás/cél port, Protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
+A hálózati biztonsági csoport folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat. Ezeket a folyamatokat a rendszer JSON formátumban írja be, és a kimenő és bejövő folyamatokat egy szabály alapján jeleníti meg, a flow a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/cél port, protokoll), és ha a forgalom engedélyezett vagy megtagadott volt.
 
 ## <a name="register-insights-provider"></a>Insights-szolgáltató regisztrálása
 
-A folyamatnaplózás sikeres működéséhez a **Microsoft.Insights-szolgáltatót** regisztrálni kell. Ha nem biztos abban, hogy a **Microsoft.Insights-szolgáltató** regisztrálva van-e, futtassa a következő parancsfájlt.
+Ahhoz, hogy a folyamatok naplózása sikeresen működjön, regisztrálni kell a **Microsoft. bepillantást** nyújtó szolgáltatót. Ha nem biztos abban, hogy a **Microsoft.** betekintő szolgáltató regisztrálva van, futtassa az alábbi szkriptet.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-## <a name="enable-network-security-group-flow-logs-and-traffic-analytics"></a>Hálózati biztonsági csoportfolyamat-naplók és forgalomelemzés engedélyezése
+## <a name="enable-network-security-group-flow-logs-and-traffic-analytics"></a>Hálózati biztonsági csoport Folyamatábráinak és Traffic Analyticsának engedélyezése
 
-A folyamatnaplók engedélyezésére a következő példa jelenik meg:
+A flow-naplók engedélyezésére szolgáló parancs az alábbi példában látható:
 
 ```powershell
 $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
@@ -65,11 +65,11 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 ```
 
-A megadott tárfiókhoz nem lehetnek olyan hálózati szabályok, amelyek csak a Microsoft-szolgáltatásokra vagy adott virtuális hálózatokra korlátozzák a hálózati hozzáférést. A tárfiók lehet ugyanabban, vagy egy másik Azure-előfizetés, mint az NSG, amely engedélyezi a folyamatnaplót. Ha különböző előfizetéseket használ, mindkettőt ugyanahhoz az Azure Active Directory-bérlőhöz kell társítani. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyekkel.](required-rbac-permissions.md)
+A megadott Storage-fiók nem rendelkezhet olyan hálózati szabályokkal, amelyek csak a Microsoft-szolgáltatásokhoz vagy adott virtuális hálózatokhoz való hálózati hozzáférést korlátozzák. A Storage-fiók azonos vagy egy másik Azure-előfizetéssel is rendelkezhet, mint a NSG. Ha különböző előfizetéseket használ, mindkettőhöz ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyekkel](required-rbac-permissions.md).
 
-## <a name="disable-traffic-analytics-and-network-security-group-flow-logs"></a>Forgalomelemzési és hálózati biztonsági csoportfolyamat-naplók letiltása
+## <a name="disable-traffic-analytics-and-network-security-group-flow-logs"></a>Traffic Analytics és hálózati biztonsági csoport Folyamatábráinak letiltása
 
-A következő példa segítségével tiltsa le a forgalomelemzést és a folyamatnaplókat:
+A következő példa a Traffic Analytics és a flow-naplók letiltására használható:
 
 ```powershell
 #Disable Traffic Analaytics by removing -EnableTrafficAnalytics property
@@ -81,18 +81,18 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 
 ## <a name="download-a-flow-log"></a>Flow-napló letöltése
 
-A folyamatnapló tárolási helye a létrehozáskor van definiálva. A tárfiókba mentett folyamatnaplók elérésének kényelmes eszköze a Microsoft Azure Storage Explorer, amely itt tölthető le:https://storageexplorer.com/
+A folyamat naplójának tárolási helye a létrehozáskor van meghatározva. A rendszer a Storage-fiókba mentett adatforgalmi naplók elérésére alkalmas eszközt Microsoft Azure Storage Explorer, amely letölthető innen:https://storageexplorer.com/
 
-Ha meg van adva tárfiók, a folyamatnapló-fájlok a következő helyen tárolódnak egy tárfiókba:
+Ha meg van adva Storage-fiók, a rendszer a flow-naplófájlokat a következő helyen menti a Storage-fiókba:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-A napló szerkezetéről a [Hálózati biztonsági csoport folyamatnaplójának áttekintése](network-watcher-nsg-flow-logging-overview.md)
+A naplófájl felépítésével kapcsolatos információkért lásd: a [hálózati biztonsági csoport folyamatábrájának áttekintése](network-watcher-nsg-flow-logging-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az [NSG-folyamatnaplók visualualizálása a PowerBI-vel](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Ismerje meg, hogyan [jelenítheti meg a NSG flow-naplókat a PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) használatával
 
-Ismerje meg, hogyan [jelenítheti meg az NSG-folyamatnaplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Ismerje meg, hogyan [jelenítheti meg a NSG-flow-naplókat nyílt forráskódú eszközökkel](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

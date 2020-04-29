@@ -1,6 +1,6 @@
 ---
-title: Mintaadatok az Azure HDInsight Hive-táblákban – Csapatadatelemzési folyamat
-description: Az Azure HDInsight Hive-táblákban tárolt, a Hive-lekérdezések használatával az adatok elemzésre jobban kezelhető méretére csökkenthető késedelmi adatok.
+title: Mintaadatok az Azure HDInsight-struktúra tábláiban – csoportos adatelemzési folyamat
+description: Az Azure HDInsight-struktúra tábláiban tárolt, struktúra-lekérdezéseket használó adatmennyiség, amely az adatmennyiséget az elemzéshez könnyebben kezelhető méretre csökkenti.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,29 +12,29 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76719993"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
-Ez a cikk ismerteti, hogyan csökkentheti az Azure HDInsight Hive-táblákban tárolt adatok at Hive-lekérdezések használatával, hogy csökkentse azt egy méret jobban kezelhető elemzésre. Három, népszerűen használt mintavételi módszert foglal magában:
+Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure HDInsight-struktúra tábláiban tárolt adatmintákat a kaptár-lekérdezések használatával, hogy az elemzéshez könnyebben kezelhető méretre csökkentse. Három népszerű használatú mintavételi módszert foglal magában:
 
-* Egységes szúrópróbaszerű mintavétel
-* Véletlenszerű mintavétel csoportok szerint
-* Rétegzett mintavétel
+* Egységes véletlenszerű mintavétel
+* Véletlenszerű mintavételezés csoportok szerint
+* Rétegzett mintavételezés
 
-**Miért érdemes mintát venni az adataiból?**
-Ha az elemezni kívánt adatkészlet nagy, általában érdemes levenni az adatokat, hogy csökkentse azokat egy kisebb, de reprezentatívabb és kezelhetőbb méretre. A lemintavételezés megkönnyíti az adatok megértését, feltárását és a szolgáltatástervezést. A csapat adatelemzési folyamatának szerepe az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípus-készítése.
+**Miért érdemes felvenni az adatait?**
+Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A leállási mintavételezés megkönnyíti az adatfelismerést, a feltárást és a szolgáltatások fejlesztését. A csapat adatelemzési folyamatának szerepe az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
 
-Ez a mintavételezési feladat egy lépés a [csapat adatelemzési folyamatában (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
 
-## <a name="how-to-submit-hive-queries"></a>Hive-lekérdezések küldése
-Hive-lekérdezések küldhetők a Hadoop parancssori konzolról a Hadoop-fürt főcsomópontján.  Jelentkezzen be a Hadoop-fürt fő csomópontjába, nyissa meg a Hadoop parancssori konzolt, és küldje el onnan a Hive-lekérdezéseket. A Hive-lekérdezések Hadoop parancssori konzolon történő elküldésével kapcsolatos tudnivalókért olvassa [el a Hive-lekérdezések küldése című témakört.](move-hive-tables.md#submit)
+## <a name="how-to-submit-hive-queries"></a>Struktúra-lekérdezések beküldése
+A kaptár lekérdezéseit a Hadoop parancssori konzolról lehet elküldeni a Hadoop-fürt fő csomópontján.  Jelentkezzen be a Hadoop-fürt fő csomópontjára, nyissa meg a Hadoop parancssori konzolt, és küldje el innen a kaptár-lekérdezéseket. A kaptár-lekérdezések a Hadoop parancssori konzolon való elküldésével kapcsolatos utasításokért lásd: [a struktúra-lekérdezések elküldése](move-hive-tables.md#submit).
 
-## <a name="uniform-random-sampling"></a><a name="uniform"></a>Egységes szúrópróbaszerű mintavétel
-Az egységes véletlenszerű mintavétel azt jelenti, hogy az adatkészlet minden egyes sorának egyenlő esélye van a mintavételre. Ez úgy valósítható meg, hogy egy további mező rand() a belső "select" lekérdezés adatkészletéhez, és a külső "select" lekérdezés, hogy a feltétel, hogy a véletlen mezőben.
+## <a name="uniform-random-sampling"></a><a name="uniform"></a>Egységes véletlenszerű mintavétel
+Az egységes véletlenszerű mintavételezés azt jelenti, hogy az adatkészletben lévő minden egyes sor a mintavétel során egyenlő eséllyel szerepel. Ezt egy extra mező () a belső "Select" lekérdezésben megadott adatkészletbe, a külső "Select" lekérdezésen belül, az adott véletlenszerű mezőre való felvételével lehet megvalósítani.
 
 Itt láthat egy példalekérdezést:
 
@@ -49,12 +49,12 @@ Itt láthat egy példalekérdezést:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-Itt `<sample rate, 0-1>` adja meg a felhasználók által mintát venni kívánt rekordok arányát.
+Itt adhatja `<sample rate, 0-1>` meg a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
 
-## <a name="random-sampling-by-groups"></a><a name="group"></a>Véletlenszerű mintavétel csoportok szerint
-Kategorikus adatok mintavételezésekor érdemes lehet vagy a kategorikus változó bizonyos értékének összes példányát. Ezt a fajta mintavételt "csoportonkénti mintavételnek" nevezik. Ha például van egy "*State*" kategorikus változója, amely például NY, MA, CA, NJ és PA értékekkel rendelkezik, azt szeretné, hogy az egyes államok rekordjai együtt legyenek, függetlenül attól, hogy mintavételre kerülnek-e vagy sem.
+## <a name="random-sampling-by-groups"></a><a name="group"></a>Véletlenszerű mintavételezés csoportok szerint
+A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
 
-Íme egy példa lekérdezés, amely csoportonként mintát vesz:
+Íme egy példa a Group:
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -80,8 +80,8 @@ Kategorikus adatok mintavételezésekor érdemes lehet vagy a kategorikus válto
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified-sampling"></a><a name="stratified"></a>Rétegzett mintavétel
-A véletlenszerű mintavételt egy kategorikus változó tekintetében rétegezik, ha a kapott minták kategorikus értékei ugyanolyan arányban vannak jelen, mint a szülő populációban. Ugyanazt a példát használva, mint fent, tegyük fel, hogy az adatok a következő megfigyelések államok: NJ 100 megfigyelések, NY 60 megfigyelések, és wa már 300 megfigyelések. Ha a rétegzett mintavétel sebességét 0,5-re adja meg, akkor a kapott mintának körülbelül 50, 30 és 150 megfigyeléssel kell rendelkeznie NJ, NY, illetve WA tekintetében.
+## <a name="stratified-sampling"></a><a name="stratified"></a>Rétegzett mintavételezés
+A véletlenszerű mintavételezés egy kategorikus változóra vonatkozik, ha a beszerzett minták olyan kategorikus értékekkel rendelkeznek, amelyek ugyanabban az arányban találhatók, mint a szülő populációban. Ha ugyanezt a példát használja, tegyük fel, hogy az adatai a következő állapotok szerint jelennek meg: NJ 100 észrevételt tartalmaz, a NY 60 megfigyelésekkel rendelkezik, és a WA rendelkezik 300-megjegyzésekkel. Ha azt adja meg, hogy a rétegzett mintavételezés sebessége 0,5, akkor a beszerzett minta a NJ, NY és WA megközelítőleg 50, 30 és 150 megfigyeléssel rendelkezik.
 
 Itt láthat egy példalekérdezést:
 
@@ -99,5 +99,5 @@ Itt láthat egy példalekérdezést:
     where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 
 
-A Hive-ban elérhető speciális mintavételi módszerekről a [LanguageManual mintavételezéscímű](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)témakörben olvashat.
+További információ a kaptárban elérhető fejlettebb mintavételi módszerekről: [LanguageManual mintavétel](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
 

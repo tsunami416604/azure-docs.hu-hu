@@ -1,63 +1,63 @@
 ---
-title: Service Fabric Mesh alkalmazás áthelyezése másik régióba
-description: A Service Fabric Mesh-erőforrások at az aktuális sablon egy példányának üzembe helyezésével helyezheti át egy új Azure-régióba.
+title: Service Fabric Mesh-alkalmazás áthelyezése egy másik régióba
+description: Service Fabric Mesh-erőforrásokat áthelyezhet úgy, hogy az aktuális sablon egy példányát egy új Azure-régióba telepíti.
 author: erikadoyle
 ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908162"
 ---
-# <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh alkalmazás áthelyezése egy másik Azure-régióba
+# <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh-alkalmazás áthelyezése egy másik Azure-régióba
 
-Ez a cikk ismerteti, hogyan helyezheti át a Service Fabric Mesh-alkalmazást és annak erőforrásait egy másik Azure-régióba. Előfordulhat, hogy az erőforrásokat több okból is áthelyezi egy másik régióba. Például a kimaradásokra adott válaszként, csak bizonyos régiókban elérhető funkciók vagy szolgáltatások megszerzésére, a belső szabályzati és irányítási követelmények teljesítésére, vagy a kapacitástervezési követelményekre reagálva.
+Ez a cikk azt ismerteti, hogyan helyezheti át a Service Fabric Mesh-alkalmazást és annak erőforrásait egy másik Azure-régióba. Az erőforrásokat több okból is áthelyezheti egy másik régióba. Például az kimaradásokra adott válaszként az egyes régiókban elérhető funkciók vagy szolgáltatások megszerzéséhez, a belső házirend-és irányítási követelmények teljesítéséhez, vagy a kapacitás megtervezésének követelményeire adott válaszként.
 
- [A Service Fabric Mesh nem támogatja](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) az erőforrások közvetlen áthelyezését az Azure-régiókközött. Azonban közvetve áthelyezheti az erőforrásokat, ha telepíti az aktuális Azure Resource Manager-sablon egy példányát az új célrégióba, majd átirányítja a bejövő forgalom és a függőségek az újonnan létrehozott Service Fabric Mesh alkalmazás.
+ [Service Fabric Mesh nem támogatja](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) az erőforrások közvetlen áthelyezését az Azure-régiók között. Az erőforrásokat azonban közvetve áthelyezheti a jelenlegi Azure Resource Manager-sablon egy példányának az új célcsoportba való telepítésével, majd átirányíthatja a bejövő forgalmat és a függőségeket az újonnan létrehozott Service Fabric Mesh-alkalmazásba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A be- és a szolgáltatásháló-kiszolgáló alkalmazás közötti forgalom irányítására szolgáló infó (például [Application Gateway)](https://docs.microsoft.com/azure/application-gateway/)közvetítőként szolgál az ügyfelek és a Service Fabric Mesh alkalmazás közötti forgalom irányításához
-* A Service Fabric Mesh (előzetes verzió)`westus` `eastus`elérhetősége `westeurope`a cél Azure-régióban ( , vagy )
+* A beáramlási vezérlő (például [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)), hogy közvetítőként szolgáljon az ügyfelek és a Service Fabric Mesh alkalmazás közötti adatforgalom továbbításához
+* Service Fabric Mesh (előzetes verzió) elérhetősége a cél Azure-`westus`régióban `eastus`(, `westeurope`, vagy)
 
 ## <a name="prepare"></a>Előkészítés
 
-1. Az Azure Resource Manager-sablon és a legutóbbi központi telepítés paramétereinek exportálásával "pillanatképet" készíthet a Service Fabric Mesh-alkalmazás aktuális állapotáról. Ehhez kövesse a sablon [exportálása az](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) Azure Portal használatával történő üzembe helyezés után leírt lépéseket. Használhatja [az Azure CLI,](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates) [Az Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy [a REST API használatát](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)is.
+1. Készítse el a Service Fabric Mesh alkalmazás aktuális állapotának pillanatképét a Azure Resource Manager sablon és paraméterek exportálásával a legújabb telepítésből. Ehhez kövesse a [sablon exportálása a telepítés után](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) a Azure Portal használatával című témakör lépéseit. Használhatja az [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)-t, a [Azure PowerShellt](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)és a [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)is.
 
-2. Adott esetben [exportálja az ugyanazon erőforráscsoportba lévő egyéb erőforrásokat](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) a célrégióban történő átcsoportosításhoz.
+2. Ha alkalmazható, [exportálja ugyanazon erőforráscsoport más erőforrásait](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) az újratelepítéshez a célként megadott régióban.
 
-3. Tekintse át (és szükség esetén szerkesztheti) az exportált sablont, hogy megbizonyosodjon arról, hogy a meglévő tulajdonságértékek azok, amelyeket a célrégióban használni szeretne. Az `location` új (Azure-régió) egy paraméter, amely et az újratelepítés során fog megadni.
+3. Tekintse át (és szükség esetén szerkessze) az exportált sablont annak biztosítására, hogy a meglévő tulajdonságértékek a megcélzott régióban használni kívánt értékek legyenek. Az új `location` (Azure-régió) egy paraméter, amelyet az újratelepítése során fog megadni.
 
 ## <a name="move"></a>Áthelyezés
 
-1. Hozzon létre egy új erőforráscsoportot (vagy használjon egy meglévőt) a célrégióban.
+1. Hozzon létre egy új erőforráscsoportot (vagy használjon egy meglévőt) a célként megadott régióban.
 
-2. Az exportált sablon, kövesse az [erőforrások üzembe helyezése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) az Azure Portalon. Használhatja [az Azure CLI,](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli) [Az Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)vagy [a REST API használatát](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest)is.
+2. Az exportált sablonnal kövesse az [erőforrások telepítése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) a Azure Portal használatával című témakör lépéseit. Használhatja az [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)-t, a [Azure PowerShellt](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)és a [REST API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest)is.
 
-3. A kapcsolódó erőforrások, például [az Azure Storage-fiókok](../storage/common/storage-account-move.md)áthelyezésével kapcsolatos útmutatásért tekintse meg az [Azure-erőforrások régiók közötti áthelyezése](../azure-resource-manager/management/move-region.md)témakörben felsorolt egyes szolgáltatásokra vonatkozó útmutatást.
+3. A kapcsolódó erőforrások, például az [Azure Storage-fiókok](../storage/common/storage-account-move.md)áthelyezésével kapcsolatos útmutatásért tekintse meg az [Azure-erőforrások régiókban való mozgatása](../azure-resource-manager/management/move-region.md)című témakörben felsorolt egyes szolgáltatások útmutatását.
 
 ## <a name="verify"></a>Ellenőrzés
 
-1. Amikor a központi telepítés befejeződött, tesztelje az alkalmazás végpont(oka)t az alkalmazás működésének ellenőrzéséhez.
+1. Ha a telepítés befejeződött, tesztelje az alkalmazás-végpont (oka) t az alkalmazás működésének ellenőrzéséhez.
 
-2. Az alkalmazás állapotát is ellenőrizheti az alkalmazás állapotának[(az hálóalkalmazás megjelenítése)](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)ellenőrzésével, valamint az alkalmazásnaplók és ([az hálókód-csomagnapló](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) parancsainak áttekintésével az [Azure Service Fabric Mesh CLI](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli)használatával.
+2. Az alkalmazás állapotát az [Azure Service Fabric Mesh](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli)parancssori felület használatával ellenőrizheti az alkalmazás állapotának ([az Mesh app show](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) ellenőrzésével és az alkalmazás naplófájljainak és ([az Mesh Code-Package-log](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) parancsainak a megtekintésével is.
 
 ## <a name="commit"></a>Véglegesítés
 
-Miután megerősítette a Service Fabric Mesh alkalmazás egyenértékű funkcióját a célrégióban, konfigurálja a bejövő forgalom vezérlőjét (például [az Application Gateway-t)](../application-gateway/redirect-overview.md)az új alkalmazásra irányuló forgalom átirányításához.
+Miután megerősítette a Service Fabric Mesh alkalmazás egyenértékű funkcióit a megcélzott régióban, konfigurálja a bejövő vezérlőt (például [Application Gateway](../application-gateway/redirect-overview.md)), hogy átirányítsa a forgalmat az új alkalmazásra.
 
-## <a name="clean-up-source-resources"></a>Forrásforrások karbantartása
+## <a name="clean-up-source-resources"></a>Forrás erőforrásainak törlése
 
-A Service Fabric Mesh alkalmazás áthelyezésének befejezéséhez [törölje a forrásalkalmazást és/vagy a szülő erőforráscsoportot.](../azure-resource-manager/management/delete-resource-group.md)
+A Service Fabric Mesh alkalmazás áthelyezésének befejezéséhez [törölje a forrásoldali alkalmazást és/vagy a szülő erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Azure-erőforrások áthelyezése régiók között](../azure-resource-manager/management/move-region.md)
-* [Az Azure-erőforrások régiók közötti áthelyezésének támogatása](../azure-resource-manager/management/region-move-support.md)
+* [Azure-erőforrások régiók közötti áthelyezésének támogatása](../azure-resource-manager/management/region-move-support.md)
 * [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Erőforrás-áthelyezési műveletek támogatása](../azure-resource-manager/management/move-support-resources.md
 )

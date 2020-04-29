@@ -1,6 +1,6 @@
 ---
 title: A portál használata karbantartási értesítésekhez
-description: Tekintse meg az Azure-ban futó virtuális gépek karbantartási értesítéseit, és indítsa el az önkiszolgáló karbantartást a portál használatával.
+description: Megtekintheti az Azure-ban futó virtuális gépek karbantartási értesítéseit, és megkezdheti az önkiszolgáló karbantartást a portál használatával.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,63 +8,63 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77115738"
 ---
-# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Tervezett karbantartási értesítések kezelése a portál használatával
+# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Tervezett karbantartási értesítések feldolgozása a portál használatával
 
-**Ez a cikk linuxos és Windows-os virtuális gépekre vonatkozik.**
+**Ez a cikk a Linux és Windows rendszerű virtuális gépekre is vonatkozik.**
 
-A [tervezett karbantartási](maintenance-notifications.md) hullám ütemezése után ellenőrizheti az érintett virtuális gépek listáját. 
+A [tervezett karbantartási](maintenance-notifications.md) hullám ütemezése után megtekintheti az érintett virtuális gépek listáját. 
 
-Használhatja az Azure Portalon, és keresse meg a karbantartásra ütemezett virtuális gépek.
+Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett virtuális gépeket.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A bal oldali navigációs sávon kattintson a **Virtuális gépek gombra.**
+2. A bal oldali navigációs sávon kattintson a **Virtual Machines**elemre.
 
-3. A Virtuális gépek ablaktáblán válassza az **Oszlopok szerkesztése** gombot az elérhető oszlopok listájának megnyitásához.
+3. Az Virtual Machines ablaktáblán válassza az **Oszlopok szerkesztése** gombot az elérhető oszlopok listájának megnyitásához.
 
-4. Jelölje ki és adja hozzá a következő oszlopokat:
+4. Válassza ki és adja hozzá a következő oszlopokat:
 
-   **Karbantartási állapot**: A virtuális gép karbantartási állapotát jeleníti meg. A lehetséges értékek a következők:
+   **Karbantartási állapot**: a virtuális gép karbantartási állapotát jeleníti meg. A lehetséges értékek a következők:
       
       | Érték | Leírás |
       |-------|-------------|
-      | Indítás most | A virtuális gép az önkiszolgáló karbantartási ablakban, amely lehetővé teszi, hogy saját maga kezdeményezze a karbantartást. Lásd alább, hogyan kell elindítani a karbantartást a virtuális gépen. | 
-      | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. A karbantartási időszakról a Karbantartás - Ütemezett ablak kiválasztásával ebben a nézetben, vagy a virtuális gépre kattintva ismerheti meg. | 
+      | Indítás most | A virtuális gép önkiszolgáló karbantartási ablakban van, amely lehetővé teszi a karbantartás elindítását. A virtuális gép karbantartásának megkezdéséről alább tájékozódhat. | 
+      | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. A karbantartási időszak megismeréséhez kattintson a karbantartás – ütemezett ablakra ebben a nézetben, vagy a virtuális gépre kattintva. | 
       | Már frissítve | A virtuális gép már frissítve van, és jelenleg nincs szükség további műveletre. | 
-      | Próbálkozzon később | Ön sikertelenkarbantartást kezdeményezett. Az önkiszolgáló karbantartási lehetőséget egy későbbi időpontban is használhatja. | 
-      | Próbálkozzon újra | A korábban sikertelen, saját kezdeményezésű karbantartást újra próbálkozhat. | 
-      | - | A virtuális gép nem része a tervezett karbantartási hullám. |
+      | Újrapróbálkozás később | Sikeresen kezdeményezte a karbantartást. Az önkiszolgáló karbantartási lehetőséget később is használhatja. | 
+      | Újrapróbálkozás most | Újra próbálkozhat egy korábban sikertelen, önkezdeményezett karbantartással. | 
+      | - | A virtuális gép nem része egy tervezett karbantartási hullámnak. |
       
 
-   **Karbantartás – Önkiszolgáló ablak**: Megmutatja az időablakot, amikor önbeindíthatja a karbantartást a virtuális gépeken.
+   **Karbantartás – önkiszolgáló ablak**: az időintervallumot jeleníti meg, amikor a virtuális gépeken végezheti el a karbantartást.
    
-   **Karbantartás – Ütemezett ablak:** Azt az időablakot jeleníti meg, amikor az Azure a karbantartás befejezéséhez karbantartja a virtuális gépét. 
+   **Karbantartás – ütemezett ablak**: azt az időintervallumot jeleníti meg, amikor az Azure karbantartja a virtuális gépet a karbantartás befejezése érdekében. 
 
 
 
-## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
+## <a name="notification-and-alerts-in-the-portal"></a>Értesítés és riasztások a portálon
 
-Az Azure közli a tervezett karbantartás ütemezését azáltal, hogy e-mailt küld az előfizetés tulajdonosának és társtulajdonosai csoportnak. Azure-tevékenységnapló-riasztások létrehozásával további címzetteket és csatornákat adhat hozzá ehhez a kommunikációhoz. További információt a [Tevékenységnapló-értesítések létrehozása a szolgáltatásértesítésekhez](../azure-monitor/platform/alerts-activity-log-service-notifications.md)című témakörben talál.
+Az Azure a tervezett karbantartásra vonatkozó ütemtervet küld az előfizetés tulajdonosának és a közös tulajdonosok csoportjának e-mail-címének elküldésével. Ehhez a kommunikációhoz további címzetteket és csatornákat is hozzáadhat az Azure-műveletnapló riasztások létrehozásával. További információkért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-Győződjön meg arról, hogy az **eseménytípust** **tervezett karbantartásként,** a **Szolgáltatásokat** pedig **virtuálisgép-méretezési készletként** és/vagy **virtuális gépként**állította be.
+Győződjön meg arról, hogy az **eseménytípus** **tervezett karbantartásként**, valamint **Services** **Virtual Machine Scale sets** és/vagy **Virtual Machinesként**van megadva.
 
-## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Karbantartás indítása a virtuális gépen a portálról
+## <a name="start-maintenance-on-your-vm-from-the-portal"></a>A virtuális gép karbantartásának elindítása a portálról
 
-A virtuális gép részleteinek megtekintése közben további karbantartással kapcsolatos részleteket láthat.  
-A virtuális gép részletes nézetének tetején egy új értesítési menüszalag kerül hozzáadásra, ha a virtuális gép szerepel egy tervezett karbantartási hullámban. Ezenkívül egy új lehetőség is hozzáadódik a karbantartás megkezdéséhez, ha lehetséges. 
+A virtuális gép részleteinek megtekintése közben több karbantartással kapcsolatos részletet is megtekintheti.  
+A virtuális gép részletes nézetének tetején megjelenik egy új értesítési menüszalag, ha a virtuális gép egy tervezett karbantartási hullámban szerepel. Emellett új lehetőség adódik a karbantartás megkezdéséhez, amikor lehetséges. 
 
 
-Kattintson a karbantartási értesítésre a karbantartási oldal megtekintéséhez a tervezett karbantartás további részleteit. Innen a virtuális gép **karbantartását is elindíthatja.**
+A karbantartási értesítésre kattintva megtekintheti a karbantartási oldalt, ahol további részleteket talál a tervezett karbantartásról. Innentől kezdve **megkezdheti a karbantartást** a virtuális gépen.
 
-A karbantartás megkezdése után a virtuális gép megmarad, és a karbantartási állapot néhány percen belül frissül, hogy tükrözze az eredményt.
+A karbantartás megkezdése után a rendszer karbantartja a virtuális gépet, és a karbantartási állapot néhány percen belül frissülni fog.
 
-Ha lemaradt az önkiszolgáló ablakról, továbbra is láthatja az ablakot, amikor a virtuális gép az Azure által karbantartott lesz. 
+Ha kihagyta az önkiszolgáló ablakot, akkor továbbra is megtekintheti az ablakot, amikor a virtuális gépet az Azure fogja karbantartani. 
 
 
 ## <a name="next-steps"></a>További lépések

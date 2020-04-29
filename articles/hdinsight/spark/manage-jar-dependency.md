@@ -1,6 +1,6 @@
 ---
-title: Jar-függőségek kezelése – Azure HDInsight
-description: Ez a cikk a HDInsight-alkalmazások Java Archive (JAR) függőségei kezelésével kapcsolatos gyakorlati tanácsokat ismerteti.
+title: JAR-függőségek kezelése – Azure HDInsight
+description: Ez a cikk a Java Archive (JAR) függőségeinek HDInsight-alkalmazásokhoz való kezelésének ajánlott eljárásait ismerteti.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,32 +9,32 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77135732"
 ---
-# <a name="jar-dependency-management-best-practices"></a>JAR-függőségkezelés – gyakorlati tanácsok
+# <a name="jar-dependency-management-best-practices"></a>A JAR függőségek kezelése – ajánlott eljárások
 
-A HDInsight-fürtökre telepített összetevők külső gyártótól származó könyvtáraktól függenek. Általában, egy adott változata a közös modulok, mint a Guava hivatkozik ezek a beépített alkatrészek. Amikor egy alkalmazás a függőségek, ez ütközést okozhat a különböző verziói ugyanazon modul. Ha az osztályelérési úton először hivatkozott összetevő-verzió, a beépített összetevők kivételeket eredményezhetnek a verzióink inkompatibilitása miatt. Ha azonban a beépített összetevők először a classpath-ba injektálják `NoSuchMethod`a függőségeiket, az alkalmazás hibákat okozhat, például .
+A HDInsight-fürtökre telepített összetevők függőségekkel rendelkeznek a harmadik féltől származó tárakban. Általában a gyakori modulok (például a guava) egy adott verzióját a beépített összetevők hivatkoznak rá. Ha az alkalmazást a függőségeivel együtt küldi el, az ütközést eredményezhet ugyanazon modul különböző verziói között. Ha a osztályútvonal elsőként hivatkozott összetevő-verzió szerepel, a beépített összetevők kivételeket okozhatnak a verzió inkompatibilitása miatt. Ha azonban a beépített összetevők beinjektálják a függőségeiket a osztályútvonal, az alkalmazás hasonló `NoSuchMethod`hibákat eredményezhet.
 
-A verzióütközések elkerülése érdekében fontolja meg az alkalmazásfüggőségek árnyékolását.
+A verziók ütközésének elkerülése érdekében érdemes megfontolni az alkalmazás függőségeinek árnyékolását.
 
-## <a name="what-does-package-shading-mean"></a>Mit jelent a csomag árnyékolása?
-Az árnyékolás lehetővé teszi a függőségek felvételét és átnevezését. Áthelyezi az osztályokat, és átírja az érintett bytecode és erőforrások at, hogy hozzon létre egy privát másolatot a függőségek.
+## <a name="what-does-package-shading-mean"></a>Mit jelent a csomagok árnyékolása?
+Az árnyékolás lehetővé teszi a függőségek belefoglalását és átnevezését. Visszakeresi az osztályokat, és átírja az érintett bytecode és erőforrásokat a függőségek privát másolatának létrehozásához.
 
-## <a name="how-to-shade-a-package"></a>Hogyan kell árnyékolni egy csomagot?
+## <a name="how-to-shade-a-package"></a>Hogyan lehet egy csomagot árnyékolni?
 
-### <a name="use-uber-jar"></a>Uber-jar használata
-Az Uber-jar egy egyetlen jar fájl, amely tartalmazza az alkalmazás jar és a függőségek. Az Uber-jar függőségei alapértelmezés szerint nem árnyékoltak. Bizonyos esetekben ez verzióütközést okozhat, ha más összetevők vagy alkalmazások a könyvtárak egy másik verziójára hivatkoznak. Ennek elkerülése érdekében létrehozhat egy Uber-Jar fájlt néhány (vagy az összes) a függőségek árnyékolt.
+### <a name="use-uber-jar"></a>Az Über-jar használata
+Az Über-jar egyetlen jar-fájl, amely az alkalmazás jar-t és annak függőségeit is tartalmazza. Az Über-jar függőségei alapértelmezés szerint nem árnyékoltak. Bizonyos esetekben ez a verziók ütközését eredményezheti, ha más összetevők vagy alkalmazások a könyvtárak egy másik verziójára hivatkoznak. Ennek elkerüléséhez létrehozhat egy über-jar-fájlt a függőségek árnyékolt (vagy az összes) használatával.
 
-### <a name="shade-package-using-maven"></a>Shade csomag maven használatával
-A Maven java és Scala nyelven is készíthet alkalmazásokat. Maven-shade-plugin segítségével hozzon létre egy árnyékos uber-jar könnyen.
+### <a name="shade-package-using-maven"></a>Csomag árnyékolása a Maven használatával
+A Maven a Java és a Scala nyelveken írt alkalmazásokat is felépítheti. A Maven-Shade-plugin segítségével egyszerűen hozhat létre árnyékolt über-jar-t.
 
-Az alábbi példa `pom.xml` egy fájlt mutat be, amelyet úgy frissítettek, hogy árnyékot vessen a maven-shade-plugin használatával.  Az XML-szakasz `<relocation>…</relocation>` a `com.google.guava` megfelelő `com.google.shaded.guava` JAR-fájlbejegyzések áthelyezésével és az érintett bytecode újraírásával áthelyezi az osztályokat a csomagról a csomagra.
+Az alábbi példa egy olyan fájlt `pom.xml` mutat be, amely frissítve lett egy csomagnak a Maven-Shade-plugin használatával történő árnyékolására.  Az XML- `<relocation>…</relocation>` szakasz a csomagból `com.google.guava` csomagba `com.google.shaded.guava` helyezi az osztályokat a megfelelő JAR-fájlok bejegyzéseinek áthelyezésével és az érintett bytecode átírásával.
 
-A `pom.xml`módosítása után `mvn package` hajthatja végre az árnyékolt über-jar.
+A módosítás `pom.xml`után végrehajthatja `mvn package` az árnyékolt über-jar kiépítését.
 
 ```xml
   <build>
@@ -64,10 +64,10 @@ A `pom.xml`módosítása után `mvn package` hajthatja végre az árnyékolt üb
   </build>
 ```
 
-### <a name="shade-package-using-sbt"></a>Shade csomag sbt használatával
-SBT is egy épít szerszám részére Scala és Jávai. SBT nincs árnyék plugin, mint a maven-shade-plugin. A csomagok `build.sbt` árnyékolásával módosíthatja a fájlt. 
+### <a name="shade-package-using-sbt"></a>SBT használatával árnyékolt csomag
+A SBT egy, a Scala és a Java rendszerhez készült Build eszköz is. A SBT nem rendelkezik olyan árnyalatos beépülő modullal, mint a Maven-Shade-plugin. A fájlt módosíthatja `build.sbt` árnyalatos csomagokba. 
 
-Például az `com.google.guava`árnyékoláshoz hozzáadhatja az `build.sbt` alábbi parancsot a fájlhoz:
+Például `com.google.guava`az alábbi parancs a `build.sbt` fájlhoz adható:
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,10 +75,10 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-Ezután `sbt clean` futtathatja `sbt assembly` és létrehozhatja az árnyékolt jar fájlt. 
+Ezután futtathatja `sbt clean` és `sbt assembly` létrehozhatja az árnyékolt jar-fájlt. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight IntelliJ eszközök használata](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
+* [HDInsight IntelliJ-eszközök használata](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
 
-* [Hozzon létre egy Scala Maven alkalmazást a Spark in IntelliJ-ben](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)
+* [Scala Maven-alkalmazás létrehozása a Sparkhoz a IntelliJ-ben](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)

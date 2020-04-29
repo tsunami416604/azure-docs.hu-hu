@@ -1,6 +1,6 @@
 ---
-title: Blob másolása a .NET használatával – Azure Storage
-description: Megtudhatja, hogyan másolhat egy blobot az Azure Storage-fiókban a .NET ügyfélkódtár használatával.
+title: BLOB másolása a .NET-Azure Storage szolgáltatással
+description: Megtudhatja, hogyan másolhat egy blobot az Azure Storage-fiókba a .NET ügyféloldali kódtár használatával.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,46 +9,46 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135887"
 ---
-# <a name="copy-a-blob-with-net"></a>Blob másolása a .NET segítségével
+# <a name="copy-a-blob-with-net"></a>BLOB másolása .NET-tel
 
-Ez a cikk bemutatja, hogyan másolhat egy blobot egy Azure Storage-fiókkal. Azt is bemutatja, hogyan szakítható meg egy aszinkron másolási művelet. A példakód az [Azure Storage ügyfélkódtárját használja a .NET rendszerhez.](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+Ez a cikk bemutatja, hogyan másolhat egy blobot egy Azure Storage-fiókkal. Azt is bemutatja, hogyan lehet megszakítani egy aszinkron másolási műveletet. A példában szereplő kód a [.net-hez készült Azure Storage ügyféloldali kódtárat](/dotnet/api/overview/azure/storage?view=azure-dotnet)használja.
 
-## <a name="about-copying-blobs"></a>Blobok másolása –
+## <a name="about-copying-blobs"></a>Tudnivalók a Blobok másolásáról
 
-Ha egy blobot ugyanabban a tárfiókban másol, az szinkron művelet. A fiókok közötti másolás aszinkron művelet. A [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) és [a StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) metódusok egy másolat-azonosítóértéket adnak vissza, amely az állapot ellenőrzéséhez vagy a másolási művelet megszakításához használatos.
+Amikor ugyanabba a Storage-fiókba másol egy blobot, ez egy szinkron művelet. A fiókok közötti másolás aszinkron művelet. A [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) és a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) metódus az állapot vizsgálatára, illetve a másolási művelet megszakítására szolgáló másolati azonosító értéket ad vissza.
 
-A másolási művelet forrásblobja lehet egy blokkblob, egy hozzáfűző blob, egy lapblob vagy egy pillanatkép. Ha a célblob már létezik, akkor ugyanolyan blobtípussal kell rendelkeznie, mint a forrásblobnak. Minden meglévő célblob felüllesz írva. 
+A másolási műveletekhez tartozó forrás blob lehet egy blokkos blob, egy hozzáfűző blob, egy oldal blobja vagy egy pillanatkép. Ha a cél blob már létezik, a forrás-blobtal megegyező típusú blobnak kell lennie. A rendszer felülírja a meglévő cél blobokat. 
 
-A célblob nem módosítható, amíg egy másolási művelet folyamatban van. A célblobcsak egy függőben lévő másolási blob művelet. Más szóval egy blob nem lehet a cél több függőben lévő másolási műveletek.
+A cél blob nem módosítható, amíg folyamatban van egy másolási művelet. A cél blob csak egy függőben lévő másolási blob művelettel rendelkezhet. Más szóval a blob nem lehet a több függőben lévő másolási művelet célja.
 
-A teljes forrásblob vagy fájl mindig másolásra kerül. Bájt- vagy blokktartomány másolása nem támogatott.
+A teljes forrás blobot vagy fájlt mindig másolja a rendszer. A bájtok vagy blokkok egy tartományának másolása nem támogatott.
 
-Blob másolásakor a rendszer tulajdonságait másolja a cél blob azonos értékekkel.
+A Blobok másolásakor a rendszer a cél blobba másolja a rendszertulajdonságokat ugyanazokkal az értékekkel.
 
-Az összes blobtípus esetében ellenőrizheti a [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet) tulajdonságot a célblobon a másolási művelet állapotának lekéri. A végső blob véglegesítése, amikor a másolat befejeződik.
+A másolási művelet állapotának lekéréséhez a cél blobban található [CopyState. status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet) tulajdonságot az összes blob-típusnál tekintheti meg. A másolás befejezésekor a rendszer véglegesíti a végső blobot.
 
-A másolási művelet a következő formák bármelyikét használhatja:
+A másolási művelet a következő formák bármelyikét elvégezheti:
 
-  - Másolhatja a forrásblobot egy másik nevű célblobba. A célblob lehet egy meglévő blob azonos blob típusú (blokk, hozzáfűzés vagy lap), vagy lehet egy új blob által létrehozott másolási művelet.
-  - A forrásblob ot egy azonos nevű célblobba másolhatja, így hatékonyan lecserélheti a célblobot. Egy ilyen másolási művelet eltávolítja a nem véglegesített blokkokat, és felülírja a célblob metaadatait.
-  - Az Azure File szolgáltatásban egy forrásfájlt másolhat egy célblobba. A célblob lehet egy meglévő blokkblob, vagy lehet egy új blokkblob, amelyet a másolási művelet hozott létre. A fájlokból lapblobokba vagy hozzáfűző blobokba másolása nem támogatott.
-  - A pillanatképet átmásolhatja az alap blob. Egy pillanatkép az alap blob pozíciójában, visszaállíthatja egy blob egy korábbi verzióját.
-  - A pillanatképet más néven más célblobba másolhatja. Az eredményül kapott célblob egy írható blob, és nem egy pillanatkép.
+  - A forrás blobokat átmásolhatja egy másik névvel ellátott cél blobba. A cél blob lehet ugyanazon blob típusú (blokk, Hozzáfűzés vagy lap) meglévő blobja, vagy a másolási művelet által létrehozott új blob is lehet.
+  - A forrás blobot a cél blobba másolhatja ugyanazzal a névvel, és így gyakorlatilag lecserélheti a cél blobot. A másolási művelet eltávolítja a nem véglegesített blokkokat, és felülírja a cél blob metaadatait.
+  - A forrásfájl az Azure file Service-ben egy cél blobba másolható. A cél blob lehet egy meglévő blokk-blob, vagy lehet egy új, a másolási művelet által létrehozott blokk-blob. A fájlok másolása az oldal blobokra vagy a hozzáfűzési Blobok nem támogatottak.
+  - A pillanatképek az alap blobon keresztül másolhatók. Egy pillanatképnek az alap blob pozícióba való előléptetésével a blob egy korábbi verzióját állíthatja vissza.
+  - A pillanatképeket átmásolhatja egy másik néven megadott cél blobba. Az eredményül kapott cél blob egy írható blob, nem pillanatkép.
 
-## <a name="copy-a-blob"></a>Blob másolása
+## <a name="copy-a-blob"></a>BLOB másolása
 
-Blob másolásához hívja meg az alábbi módszerek egyikét:
+BLOB másolásához hívja a következő módszerek egyikét:
 
  - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
  - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
-A következő kódpélda egy korábban létrehozott blobra mutató hivatkozást kap, és ugyanabban a tárolóban egy új blobba másolja azt:
+A következő kódrészlet egy korábban létrehozott blobra mutató hivatkozást kap, és egy új blobba másolja azt ugyanabban a tárolóban:
 
 ```csharp
 private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
@@ -107,13 +107,13 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
-## <a name="abort-a-blob-copy-operation"></a>Blob másolási művelet megszakítása
+## <a name="abort-a-blob-copy-operation"></a>BLOB-másolási művelet megszakítása
 
-Egy másolási művelet megszakítása azt eredményezi, hogy a cél blobok, hozzáfűző blobok és lapblobok nulla hosszúságú célblobot eredményez. A célblob metaadatai azonban az új értékeket a forrásblobból másolja, vagy explicit módon a [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) vagy a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) hívásban állítják be. Ha meg szeretné tartani az eredeti metaadatokat a másolat `StartCopy` előttről, készítsen pillanatképet a célblobról, mielőtt hívna vagy `StartCopyAsync`.
+A másolási művelet megszakításakor a rendszer nulla hosszúságú cél blobot eredményez a Blobok, a blobok és a Blobok hozzáfűzéséhez. A cél blob metaadatai azonban az új értékeket a forrás blobból másolják, vagy explicit módon beállították a [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) vagy a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) -hívásban. Ha meg szeretné őrizni az eredeti metaadatokat a másolás előtt, készítsen pillanatképet a cél blobról `StartCopy` a `StartCopyAsync`hívás vagy a előtt.
 
-Folyamatban lévő blobmásolási művelet megszakításakor a célblob [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) beállítása [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet).
+Egy folyamatban lévő blob másolási művelet megszakításakor a cél blob [CopyState. status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) értéke [CopyStatus. megszakítva](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet).
 
-Az [AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy?view=azure-dotnet) és [az AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync?view=azure-dotnet) metódusok megszakítják a blob másolási műveletét, és nulla hosszúságú és teljes metaadatokkal rendelkező célblobot hagynak.
+A [AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy?view=azure-dotnet) és a [AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync?view=azure-dotnet) metódus megszakít egy folyamatban lévő blob másolási műveletet, és a cél blobot nulla hosszúságú és teljes metaadatokkal hagyja el.
 
 ```csharp
 // Fetch the destination blob's properties before checking the copy state.
@@ -131,7 +131,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi témakörök a blobok másolásával és a folyamatban lévő másolási műveletek az Azure REST API-k használatával történő megszakításával kapcsolatos információkat tartalmaznak.
+A következő témakörök a Blobok másolásával és a folyamatban lévő másolási műveletek megszakításával kapcsolatos információkat tartalmazzák az Azure REST API-k használatával.
 
 - [Copy Blob](/rest/api/storageservices/copy-blob)
-- [Blob másolásának megszakítása](/rest/api/storageservices/abort-copy-blob)
+- [BLOB másolásának megszakítása](/rest/api/storageservices/abort-copy-blob)

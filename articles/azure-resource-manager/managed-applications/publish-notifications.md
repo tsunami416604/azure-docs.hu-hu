@@ -1,42 +1,42 @@
 ---
 title: Felügyelt alkalmazások értesítésekkel
-description: Konfigurálja a felügyelt alkalmazásokat webhook-végpontokkal, hogy értesítéseket kapjanak a létrehozott, a frissítésekről, a törlésekről és a felügyelt alkalmazáspéldányok hibáiról.
+description: A felügyelt alkalmazások webhook-végpontokkal történő konfigurálásával értesítéseket kaphat a felügyelt alkalmazás példányain létrehozott létrehozási, frissítési, törlési és hibákról.
 ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
 ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76715669"
 ---
-# <a name="azure-managed-applications-with-notifications"></a>Azure által kezelt alkalmazások értesítésekkel
+# <a name="azure-managed-applications-with-notifications"></a>Azure által felügyelt alkalmazások értesítésekkel
 
-Az Azure által felügyelt alkalmazásértesítések lehetővé teszik a közzétevők számára, hogy a felügyelt alkalmazáspéldányok életciklus-eseményei alapján automatizálják a műveleteket. A közzétevők egyéni értesítési webhook-végpontokat adhatnak meg az új és a meglévő felügyelt alkalmazáspéldányokról szóló eseményértesítések fogadásához. A közzétevők egyéni munkafolyamatokat állíthatnak be az alkalmazás kiépítésekor, a frissítésekben és a törléskor.
+Az Azure Managed Application Notifications lehetővé teszi, hogy a közzétevők a felügyelt alkalmazás példányainak Életciklus-eseményei alapján automatizálják a műveleteket. A közzétevők egyéni értesítési webhook-végpontokat is megadhatnak az új és a meglévő felügyelt alkalmazási példányokkal kapcsolatos esemény-értesítések fogadásához. A kiadók egyéni munkafolyamatokat állíthatnak be az alkalmazások üzembe helyezése, frissítése és törlése során.
 
 ## <a name="getting-started"></a>Első lépések
-Felügyelt alkalmazások fogadásának megkezdéséhez forgasson elő egy nyilvános HTTPS-végpontot, és adja meg, amikor közzéteszi a szolgáltatáskatalógus-alkalmazás-definíciót vagy az Azure Marketplace-ajánlatot.
+A felügyelt alkalmazások fogadásának megkezdéséhez hozzon létre egy nyilvános HTTPS-végpontot, és a Service Catalog alkalmazás-definíció vagy az Azure Marketplace-ajánlat közzétételekor tegye meg.
 
-Az alábbi lépések közül kaphatunk gyorsan:
-1. Pörgessfel egy nyilvános HTTPS-végpontot, amely `200 OK`naplózza a bejövő POST-kérelmeket és visszaküldőket.
-2. Adja hozzá a végpontot a szolgáltatáskatalógus-alkalmazás-definícióhoz vagy az Azure Marketplace-ajánlathoz a cikk későbbi részében ismertetett módon.
-3. Hozzon létre egy felügyelt alkalmazáspéldányt, amely hivatkozik az alkalmazás-definíció vagy az Azure Marketplace-ajánlat.
-4. Ellenőrizze, hogy az értesítések beérkeznek-e.
-5. Engedélyezze az engedélyezést a cikk **Végpont-hitelesítéscímű** szakaszában leírtak szerint.
-6. Kövesse a cikk **Értesítésséma** szakaszában található utasításokat az értesítési kérelmek elemzéséhez és az üzleti logika megvalósításához az értesítés alapján.
+A gyors kezdéshez a következő lépéseket javasoljuk:
+1. Hozzon létre egy nyilvános HTTPS-végpontot, amely naplózza a `200 OK`beérkező post kéréseket, és visszatér.
+2. Adja hozzá a végpontot a Service Catalog alkalmazás-definícióhoz vagy az Azure Marketplace-ajánlathoz a cikk későbbi részében leírtak szerint.
+3. Hozzon létre egy felügyelt alkalmazás-példányt, amely az alkalmazás-definícióra vagy az Azure Marketplace ajánlatra hivatkozik.
+4. Ellenőrizze, hogy az értesítések fogadása megtörtént-e.
+5. Engedélyezze az engedélyezést a jelen cikk **végpont-hitelesítés** című szakaszában leírtak szerint.
+6. A jelen cikk **értesítési séma** szakaszának utasításait követve elemezheti az értesítési kérelmeket, és az értesítés alapján megvalósíthatja az üzleti logikát.
 
-## <a name="add-service-catalog-application-definition-notifications"></a>Szolgáltatáskatalógus alkalmazásdefiníciós értesítéseinek hozzáadása
-#### <a name="azure-portal"></a>Azure portál
-Első lépések: [Szolgáltatáskatalógus-alkalmazás közzététele az Azure Portalon keresztül.](./publish-portal.md)
+## <a name="add-service-catalog-application-definition-notifications"></a>Service Catalog alkalmazás-definíciós értesítések hozzáadása
+#### <a name="azure-portal"></a>Azure Portal
+Első lépésként tekintse meg [a Service Catalog-alkalmazás közzététele Azure Portal segítségével](./publish-portal.md)című témakört.
 
-![Szolgáltatáskatalógus-alkalmazásdefiníciós értesítések az Azure Portalon](./media/publish-notifications/service-catalog-notifications.png)
+![A Service Catalog alkalmazás-definíciós értesítései a Azure Portal](./media/publish-notifications/service-catalog-notifications.png)
 
 #### <a name="rest-api"></a>REST API
 
 > [!NOTE]
-> Jelenleg csak egy végpontot adhat `notificationEndpoints` meg az alkalmazásdefiníció tulajdonságaiban.
+> Jelenleg csak egy végpontot `notificationEndpoints` adhat meg az alkalmazás definíciójának tulajdonságaiban.
 
 ``` JSON
     {
@@ -60,27 +60,27 @@ Első lépések: [Szolgáltatáskatalógus-alkalmazás közzététele az Azure P
         ...
 
 ```
-## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace-en kezelt alkalmazásértesítések hozzáadása
-További információ: [Create an Azure application offer](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
+## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace által felügyelt alkalmazások értesítéseinek hozzáadása
+További információ: Azure- [alkalmazási ajánlat létrehozása](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
 
-![Az Azure Marketplace felügyelt alkalmazásértesítései az Azure Portalon](./media/publish-notifications/marketplace-notifications.png)
+![Az Azure Marketplace által felügyelt alkalmazások értesítései a Azure Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Eseményindítók
-Az alábbi táblázat az EventType és a ProvisioningState összes lehetséges kombinációját, valamint azok eseményindítóit ismerteti:
+A következő táblázat a EventType és a ProvisioningState lehetséges kombinációit és azok eseményindítóit ismerteti:
 
-EventType (Eseménytípus) | ProvisioningState (KiépítésÁllapota) | Értesítési eseményindító
+EventType | ProvisioningState | Értesítési trigger
 ---|---|---
-PUT | Elfogadva | A felügyelt erőforráscsoport létrehozása és előrejelzése sikeresen megtörtént a PUT alkalmazás után (a felügyelt erőforráscsoporton belüli központi telepítés megkezdése előtt).
-PUT | Sikeres | A felügyelt alkalmazás teljes körű kiépítése a PUT után sikerült.
-PUT | Sikertelen | Az alkalmazáspéldány-kiépítés put-jának meghibásodása.
-Javítás | Sikeres | Miután a felügyelt alkalmazáspéldány sikeresen frissítette a címkéket, a JIT hozzáférési házirendet vagy a felügyelt identitást.
-DELETE | Törlés | Amint a felhasználó elindítja a felügyelt alkalmazáspéldány törlését.
+PUT | Elfogadva | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen befejeződött (a felügyelt erőforráscsoporthoz való központi telepítés elindítását megelőzően).
+PUT | Sikeres | A felügyelt alkalmazás teljes kiépítés sikerült egy PUT után.
+PUT | Sikertelen | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
+JAVÍTÁS | Sikeres | A felügyelt alkalmazás példányának sikeres JAVÍTÁSát követően a címkék, a JIT hozzáférési házirend vagy a felügyelt identitás frissítése sikerült.
+DELETE | Törlése | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
 DELETE | Törölve | A felügyelt alkalmazás teljes és sikeres törlése után.
-DELETE | Sikertelen | A törlési folyamat során a törlést letiltást letiltást okozó hiba után.
+DELETE | Sikertelen | A törlést blokkoló megszüntetési folyamat során felmerülő bármilyen hiba.
 ## <a name="notification-schema"></a>Értesítési séma
-Amikor a webhook-végpontot az értesítések kezeléséhez, akkor elemeznie kell a hasznos terhet, hogy fontos tulajdonságokat kapjon, majd az értesítés után kell cselekednie. A szolgáltatáskatalógus és az Azure Marketplace felügyelt alkalmazásértesítései számos azonos tulajdonságot biztosítanak. A mintákat követő táblázat két kis különbséget vázol fel.
+Amikor felgyorsítja a webhook-végpontot az értesítések kezeléséhez, elemezni kell a hasznos adatokat, hogy a fontos tulajdonságok beolvasása után az értesítésre reagáljon. A Service Catalog és az Azure Marketplace által felügyelt alkalmazások értesítései számos azonos tulajdonságot biztosítanak. A mintákat követő táblázatban két kis különbség szerepel.
 
-#### <a name="service-catalog-application-notification-schema"></a>Szolgáltatáskatalógus alkalmazásértesítési sémája
-Az alábbiakban egy mintaszolgáltatás-katalógus értesítését olvashatja egy felügyelt alkalmazáspéldány sikeres kiépítése után:
+#### <a name="service-catalog-application-notification-schema"></a>Service Catalog-alkalmazás értesítési sémája
+A következő egy minta Service Catalog-értesítés a felügyelt alkalmazás példányának sikeres kiépítés után:
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
 
@@ -94,7 +94,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-Ha a kiépítés sikertelen, a rendszer értesítést küld a megadott végpontnak a hiba részleteivel.
+Ha a kiépítés sikertelen, a rendszer a hiba részleteivel kapcsolatos értesítést küld a megadott végpontnak.
 
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
@@ -119,9 +119,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-#### <a name="azure-marketplace-application-notification-schema"></a>Az Azure Marketplace alkalmazásértesítési sémája
+#### <a name="azure-marketplace-application-notification-schema"></a>Azure Marketplace-alkalmazás értesítési sémája
 
-Az alábbiakban egy mintaszolgáltatás-katalógus értesítését olvashatja egy felügyelt alkalmazáspéldány sikeres kiépítése után:
+A következő egy minta Service Catalog-értesítés a felügyelt alkalmazás példányának sikeres kiépítés után:
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
 
@@ -143,7 +143,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-Ha a kiépítés sikertelen, a rendszer értesítést küld a megadott végpontnak a hiba részleteivel.
+Ha a kiépítés sikertelen, a rendszer a hiba részleteivel kapcsolatos értesítést küld a megadott végpontnak.
 
 ``` HTTP
 POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_parameter_value} HTTP/1.1
@@ -179,19 +179,19 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 Paraméter | Leírás
 ---|---
 eventType | Az értesítést kiváltó esemény típusa. (Például PUT, PATCH, DELETE.)
-applicationId | Annak a felügyelt alkalmazásnak a teljesen minősített erőforrás-azonosítója, amelyhez az értesítés indult.
-eventTime | Az értesítést kiváltó esemény időbélyege. (Dátum és idő UTC ISO 8601 formátumban.)
-provisioningState | A felügyelt alkalmazáspéldány létesítési állapota. (Például Sikerült, Sikertelen, Törlés, Törölve.)
-error | *Csak akkor adja meg, ha a kiépítési állapot sikertelen.* A hibát okozó hibakódot, üzenetet és részleteket tartalmazza.
-alkalmazásdefinícióazonosító | *Csak a szolgáltatáskatalógus ban kezelt alkalmazásokhoz van megadva.* Annak az alkalmazásdefiníciónak a teljesen minősített erőforrás-azonosítóját jelöli, amelyhez a felügyelt alkalmazáspéldány ki lett építve.
-Terv | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva.* A felügyelt alkalmazáspéldány közzétevőt, ajánlatot, termékváltozatát és verzióját jelöli.
-billingDetails | *Csak az Azure Marketplace felügyelt alkalmazásaihoz van megadva.* A felügyelt alkalmazáspéldány számlázási részletei. Tartalmazza a forrásUsageId, amely segítségével lekérdezheti az Azure Marketplace használati részletek.
+applicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett.
+eventTime | Az értesítést kiváltó esemény időbélyegzője. (Dátum és idő UTC ISO 8601 formátumban)
+provisioningState | A felügyelt alkalmazás példányának kiépítési állapota. (Például sikeres, sikertelen, törlés, törölt.)
+error | *Csak akkor van megadva, ha a ProvisioningState sikertelen*. A hibát okozó probléma kódját, üzenetét és részleteit tartalmazza.
+applicationDefinitionId | *Csak a Service Catalog által felügyelt alkalmazásokhoz van megadva*. Annak az alkalmazás-definíciónak a teljes erőforrás-azonosítóját jelöli, amelyhez a felügyelt alkalmazás példánya ki lett építve.
+csomag | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva*. A felügyelt alkalmazás példányának közzétevőjét, ajánlatát, SKU-jának és verziószámát jelöli.
+billingDetails | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva.* A felügyelt alkalmazás példányának számlázási adatai. Azokat a resourceUsageId tartalmazza, amelyekkel lekérdezheti az Azure Marketplace-en a használati adatokat.
 
-## <a name="endpoint-authentication"></a>Végpont-hitelesítés
-A webhook-végpont védelme és az értesítés hitelességének biztosítása:
-1. Adjon meg egy lekérdezési paramétert a webhook\:URI tetején, így: https //your-endpoint.com?sig=Guid. Minden értesítésnél ellenőrizze, hogy `sig` a lekérdezési paraméter rendelkezik-e a várt értékkel. `Guid`
-2. Get kiadása a felügyelt alkalmazáspéldányon az applicationId használatával. Ellenőrizze, hogy a provisioningState megfelel-e a provisioningState az értesítés a konzisztencia biztosítása érdekében.
+## <a name="endpoint-authentication"></a>Végponti hitelesítés
+A webhook-végpont biztonságossá tételéhez és az értesítés hitelességének biztosításához:
+1. Adjon meg egy lekérdezési paramétert a webhook URI-ja felett, például\:: https//Your-Endpoint.com? SIG = GUID. Minden értesítésnél győződjön meg arról, hogy a `sig` lekérdezési paraméter a `Guid`várt értékkel rendelkezik.
+2. Adja ki a beolvasást a felügyelt alkalmazás példányán a applicationId használatával. Ellenőrizze, hogy a provisioningState megegyezik-e az értesítés provisioningState, hogy a konzisztencia biztosítható legyen.
 
-## <a name="notification-retries"></a>Értesítés újrapróbálkozásai
+## <a name="notification-retries"></a>Értesítési újrapróbálkozások
 
-A felügyelt alkalmazásértesítési `200 OK` szolgáltatás választ vár a webhook-végponttól az értesítésre. Az értesítési szolgáltatás újra próbálkozik, ha a webhook-végpont 500-nál nagyobb vagy azzal egyenlő HTTP-hibakódot ad vissza, ha 429-es hibakódot ad vissza, vagy ha a végpont ideiglenesen nem érhető el. Ha a webhook-végpont nem válik elérhetővé 10 órán belül, az értesítési üzenet megszakad, és az újrapróbálkozások leáll.
+A felügyelt alkalmazás értesítési szolgáltatása a `200 OK` webhook-végponttól érkező választ vár az értesítésre. Az értesítési szolgáltatás újra próbálkozik, ha a webhook-végpont 500-as vagy annál nagyobb HTTP-hibakódot ad vissza, ha 429-es hibakódot ad vissza, vagy ha a végpont átmenetileg nem érhető el. Ha a webhook végpontja 10 órán belül nem érhető el, az értesítési üzenet el lesz dobva, és az újrapróbálkozások le fognak állni.

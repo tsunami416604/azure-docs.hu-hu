@@ -1,6 +1,6 @@
 ---
-title: Az Azure VMware-megoldás zsugorítása a CloudSimple private cloud szolgáltatásával
-description: A CloudSimple private cloud zsugorításának ismertetése.
+title: Az Azure VMware-megoldás csökkentése a CloudSimple privát felhővel
+description: Útmutatás a CloudSimple-alapú privát felhők lekicsinyítéséhez.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -9,55 +9,55 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014266"
 ---
-# <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple magánfelhő zsugorítása
+# <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
-A CloudSimple rugalmasságot biztosít a privát felhő dinamikus zsugorításához.  A magánfelhő egy vagy több vSphere-fürtből áll. Minden fürt rendelkezhet 3–16 csomópontos csomópontokkal. A magánfelhő zsugorításakor eltávolít egy csomópontot a meglévő fürtből, vagy egy teljes fürtet töröl. 
+A CloudSimple rugalmasságot biztosít a privát felhők dinamikus összezsugorodása érdekében.  A privát felhő egy vagy több vSphere-fürtből áll. Minden fürthöz 3 – 16 csomópont tartozhat. Egy privát felhő zsugorításakor eltávolít egy csomópontot a meglévő fürtből, vagy törölhet egy teljes fürtöt. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A magánfelhő zsugorításához a következő feltételeknek kell teljesülniük.  A magánfelhő létrehozásakor létrehozott felügyeleti fürt (első fürt) nem törölhető.
+A privát felhő zsugorodása után a következő feltételeknek kell teljesülniük.  A privát felhő létrehozásakor létrehozott felügyeleti fürt (első fürt) nem törölhető.
 
-* Egy vSphere-fürtnek három csomódból kell rendelkeznie.  A három csomót csak fürt nem zsugorítható.
-* A teljes felhasznált tárterület nem haladhatja meg a fürt zsugorítása utáni teljes kapacitást.
-* Ellenőrizze, hogy bármely elosztott erőforrás-ütemező (DRS) szabályok megakadályozzák vMotion egy virtuális gép.  Ha szabályok vannak jelen, tiltsa le vagy törölje a szabályokat.  A DRS-szabályok tartalmazzák a virtuális gépet az affinitási szabályok üzemeltetéséhez.
+* A vSphere-fürtnek három csomóponttal kell rendelkeznie.  Csak három csomóponttal rendelkező fürt nem lehet összezsugorodni.
+* A felhasznált tárterület teljes mérete nem haladhatja meg a fürt zsugorodása utáni teljes kapacitást.
+* Ellenőrizze, hogy az elosztott erőforrás-ütemező (DRS) szabályai meggátolják-e a virtuális gépek vMotion.  Ha szabályok vannak jelen, tiltsa le vagy törölje a szabályokat.  A DRS-szabályok közé tartozik a virtuális gép az affinitási szabályok üzemeltetéséhez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="shrink-a-private-cloud"></a>Magánfelhő zsugorítása
 
-1. [A CloudSimple portál elérése.](access-cloudsimple-portal.md)
+1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
 
-2. Nyissa meg az **Erőforrások** lapot.
+2. Nyissa meg az **erőforrások** lapot.
 
-3. Kattintson a zsugorítani kívánt magánfelhőre
+3. Kattintson a használni kívánt privát felhőre
 
-4. Az összegzés lapon kattintson a **Zsugorítás gombra.**
+4. Az összefoglalás lapon kattintson a **zsugorodás**elemre.
 
-    ![Magánfelhő zsugorítása](media/shrink-private-cloud.png)
+    ![Privát felhő zsugorítása](media/shrink-private-cloud.png)
 
-5. Jelölje ki a zsugorítani vagy törölni kívánt fürtöt. 
+5. Válassza ki a lekicsinyíteni vagy törölni kívánt fürtöt. 
 
-    ![Magánfelhő zsugorítása – fürt kiválasztása](media/shrink-private-cloud-select-cluster.png)
+    ![Privát felhő zsugorítása – fürt kiválasztása](media/shrink-private-cloud-select-cluster.png)
 
-6. Válassza **az Egy csomópont eltávolítása** vagy a Teljes fürt törlése **lehetőséget.** 
+6. Válassza az **egyetlen csomópont eltávolítása** vagy **a teljes fürt törlése**lehetőséget. 
 
 7. A fürt kapacitásának ellenőrzése
 
-8. Kattintson a **Küldés** gombra a magánfelhő zsugorításához.
+8. Kattintson a **Submit (Küldés** ) gombra a privát felhő összezsugorodása érdekében.
 
-A magánfelhő zsugorítása elindul.  Figyelemmel kísérheti a tevékenységek előrehaladását.  A zsugorítási folyamat az adatoktól függően néhány órát is igénybe vehet, amelyet újra kell szinkronizálni a vSAN-on.
+A privát felhő zsugorodása megkezdődik.  Nyomon követheti a feladatok előrehaladását.  A zsugorodó folyamat néhány órát is igénybe vehet az adattól függően, amelyet újra kell szinkronizálni a vSAN-on.
 
 > [!NOTE]
-> 1. Ha egy magánfelhő zsugorítása az adatközpont utolsó vagy egyetlen fürtjének törlésével, az adatközpont nem törlődik.
-> 2. Ha a DRS-szabályok megsértése történik, csomópont nem lesz eltávolítva a fürtből, és a feladat leírása azt mutatja, hogy egy csomópont eltávolítása megsérti a DRS-szabályokat a fürtön.    
+> 1. Ha az adatközpontban az utolsó vagy az egyetlen fürt törlésével csökkenti a privát felhőt, az adatközpont nem lesz törölve.
+> 2. Ha bármely DRS-szabály megsértése történik, a rendszer nem távolítja el a csomópontot a fürtből, és a feladat leírása azt mutatja, hogy a csomópontok eltávolítása megsérti a fürt DRS-szabályait.    
 
 
 ## <a name="next-steps"></a>További lépések

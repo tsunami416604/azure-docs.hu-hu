@@ -1,6 +1,6 @@
 ---
-title: Üzleti megértés a csapatadat-elemzési folyamatában
-description: A célok, feladatok és a szállítások az üzleti ismeretek szakaszában az adat-tudományos projektek a csapat adatelemzési folyamat.
+title: Üzleti ismeretek a csoportos adatelemzési folyamatban
+description: A csoportos adatelemzési folyamat során az adatelemzési projektek üzleti megértéséhez szükséges célok, feladatok és termékek.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,83 +12,83 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76710332"
 ---
-# <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>A csapatadat-elemzési folyamat életciklusának üzleti ismeretekkel kapcsolatos szakasza
+# <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának üzleti megértési szakasza
 
-Ez a cikk ismerteti a célokat, feladatokat és a csapatadat-elemzési folyamat (TDSP) üzleti ismeretekhez kapcsolódó szakaszához kapcsolódó célokat, feladatokat és eredményeket. Ez a folyamat egy ajánlott életciklust biztosít, amely az adatelemzési projektek strukturálásához használható. Az életciklus felvázolja azokat a főbb szakaszokat, amelyeket a projektek általában végrehajtanak, gyakran ismétlődően:
+Ez a cikk a csoportos adatelemzési folyamat (TDSP) üzleti megértési szakaszával kapcsolatos célokat, feladatokat és teljesítéseket ismerteti. Ez a folyamat egy javasolt életciklust biztosít, amely segítségével strukturálhatja az adatelemzési projekteket. Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
 
    1. **Üzleti ismertetés**
    2. **Adatgyűjtés és adatértelmezés**
    3. **Modellezés**
-   4. **Környezet**
+   4. **Üzembe helyezés**
    5. **Felhasználói elfogadás**
 
-Itt van egy vizuális ábrázolása a TDSP életciklus: 
+Itt látható a TDSP életciklus vizuális ábrázolása: 
 
-![TDSP életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Célok
-* Adja meg a modellcélként szolgáló legfontosabb változókat, amelyek kapcsolódó metrikákat használnak, határozzák meg a projekt sikerét.
-* Azonosítsa azokat a releváns adatforrásokat, amelyekhez a vállalkozás nak hozzáférése van, vagy amelyekhez hozzá kell jutnia.
+* Adja meg azokat a fő változókat, amelyek a modell céljaként szolgálnak, és amelyek a kapcsolódó mérőszámokat használják a projekt sikerességének meghatározásához.
+* Azonosítsa azokat a releváns adatforrásokat, amelyekhez a vállalat hozzáfér, vagy amelyet meg kell szereznie.
 
-## <a name="how-to-do-it"></a>Hogyan kell csinálni
-Ebben a szakaszban két fő feladatfoglalkozik: 
+## <a name="how-to-do-it"></a>Útmutató
+Ebben a szakaszban két fő feladat foglalkozik: 
 
-   * **Célok meghatározása:** Az üzleti problémák megértése és azonosítása érdekében működjön együtt az ügyféllel és más érdekelt felekkel. Fogalmazzon meg olyan kérdéseket, amelyek meghatározzák az adatelemzési technikák által megcélozható üzleti célokat.
-   * **Adatforrások azonosítása**: Keresse meg azokat a releváns adatokat, amelyek segítenek megválaszolni a projekt célkitűzéseit meghatározó kérdéseket.
+   * **Célkitűzések meghatározása**: az üzleti problémák megismeréséhez és azonosításához használja az ügyfelet és más érdekelteket. Olyan kérdéseket fogalmazhat meg, amelyek meghatározzák az adatelemzési technikák által megcélzott üzleti célokat.
+   * **Adatforrások azonosítása**: keresse meg a releváns adatokat, amelyek segítségével választ kaphat a projekt céljait meghatározó kérdésekre.
 
 ### <a name="define-objectives"></a>Célkitűzések meghatározása
-1. Ennek a lépésnek a központi célja az elemzés által előre jelzett kulcsfontosságú üzleti változók azonosítása. Ezeket a változókat *modellcélokként*hivatkozzuk, és a projekt sikerének meghatározásához a hozzájuk társított mutatókat használjuk. Két példa ilyen célok értékesítési előrejelzések vagy annak valószínűsége, hogy egy rendelés csalárd.
+1. Ennek a lépésnek a központi célja, hogy azonosítsa azokat a kulcsfontosságú üzleti változókat, amelyeknek meg kell jósolnia az elemzést. Ezeket a változókat a *modell céljaként*tekintjük át, és a hozzájuk társított metrikákat használjuk a projekt sikerességének meghatározásához. Az ilyen célok két példája az értékesítési előrejelzések vagy a megrendelés csalárd valószínűsége.
 
-2. A projekt céljait releváns, konkrét és egyértelmű "éles" kérdések feltevésével és finomításával határozhatja meg. Az adattudomány olyan folyamat, amely neveket és számokat használ az ilyen kérdések megválaszolására. Általában adatelemzési vagy gépi tanulást használ öt féle kérdés megválaszolására:
+2. A projekt céljainak meghatározása: az "éles" kérdésekkel kapcsolatos, konkrét és kétértelmű kérdések megkérdezése és finomítása. Az adatelemzés olyan folyamat, amely neveket és számokat használ az ilyen kérdések megválaszolásához. Az adatelemzés és a gépi tanulás jellemzően öt típusú kérdés megválaszolására használható:
  
-   * Mennyit vagy mennyi? (regresszió)
-   * Melyik kategóriában? (osztályozás)
-   * Melyik csoport? (fürtözés)
-   * Nem furcsa ez? (anomáliadetektálás)
-   * Melyik lehetőséget kell figyelembe venni? (ajánlás)
+   * Mennyit vagy hányat? regressziós
+   * Melyik kategória? besorolási
+   * Melyik csoport? fürtszolgáltatás
+   * Ez fura? (anomáliák észlelése)
+   * Melyik beállítást kell figyelembe venni? ajánlás
 
-   Határozza meg, hogy a következő kérdések közül melyiket teszi fel, és hogyan éri el az üzleti célokat.
+   Határozza meg, hogy mely kérdésekre kéri fel, és hogy milyen módon érheti el üzleti céljait.
 
-3. A projektcsapat definiálása a tagok szerepköreinek és felelősségi körének megadásával. Dolgozzon ki egy magas szintű mérföldkő tervet, amelyet további információk felfedezése után is megkell tasznia. 
+3. Adja meg a projekt csapatát a tagjai szerepköreinek és feladatainak megadásával. Dolgozzon ki egy magas szintű mérföldkő-tervet, amelyről részletesebben is tájékozódhat. 
 
-4. Határozza meg a sikermutatókat. Például előfordulhat, hogy szeretne elérni egy ügyfél lemorzsolódás előrejelzést. A három hónapos projekt végére "x" százalékos pontossági arányra van szükség. Ezekkel az adatokkal, akkor az ügyfelek promóciók csökkentése lemorzsolódás. A mérőszámoknak **SMART-nak**kell lenniük: 
+4. Adja meg a sikerességi metrikákat. Előfordulhat például, hogy az ügyfél-adatforgalom előrejelzését szeretné elérni. A három hónapos projekt végén a "x" százalék pontossága szükséges. Ezekkel az adatforgalommal csökkentheti az ügyfelek akcióit. A metrikáknak **intelligensnek**kell lenniük: 
 
    * **S**pecific 
-   * **M**m mbiztosítable
+   * **M**easurable
    * **Egy**chievable 
-   * **R**elevant 
-   * **T**ime-kötött 
+   * **R**-elevant 
+   * **T**IME – kötve 
 
 ### <a name="identify-data-sources"></a>Adatforrások azonosítása
-Azonosítsa azokat az adatforrásokat, amelyek ismert példákat tartalmaznak az éles kérdésekre adott válaszokra. Keresse meg a következő adatokat:
+Azonosítsa azokat az adatforrásokat, amelyek ismert példákat tartalmaznak az éles kérdések megválaszolására. Keresse meg a következő adatértékeket:
 
-* A kérdésszempontjából releváns adatok. Vannak-e olyan mérőszámai a célnak és a célhoz kapcsolódó funkcióknak?
-* Olyan adatok, amelyek pontosan mérik a modell célját és az érdeklődési funkciókat.
+* A kérdéshez kapcsolódó adatokat. Van-e a célhoz kapcsolódó célkitűzésekkel és szolgáltatásokkal kapcsolatos mértéke?
+* A modell céljának pontos mértékét és a fontos funkciókat tartalmazó adatmennyiség.
 
-Előfordulhat például, hogy a meglévő rendszereknek további típusú adatokat kell gyűjteniük és naplózniuk a probléma megoldásához és a projekt célok eléréséhez. Ebben az esetben érdemes lehet külső adatforrásokat keresni, vagy frissíteni a rendszereket az új adatok gyűjtéséhez.
+Előfordulhat például, hogy a meglévő rendszereknek további típusú adatokat kell összegyűjteniük és naplóznia a probléma megoldásához és a projekt céljainak eléréséhez. Ebben az esetben előfordulhat, hogy külső adatforrásokat szeretne keresni, vagy frissítenie kell a rendszereket az új adatok gyűjtéséhez.
 
 ## <a name="artifacts"></a>Összetevők
-Itt vannak a deliverables ebben a szakaszban:
+Ebben a szakaszban a következő termékek szerepelnek:
 
-   * [Charter dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): A TDSP projektszerkezet-definíciója szabványos sablont tartalmaz. A charta dokumentum egy élő dokumentum. A sablont az egész projekt során új felderítések és az üzleti követelmények változása során frissítheti. A legfontosabb az, hogy iterálni a dokumentumot, további részleteket, ahogy halad a felderítési folyamat. Az ügyfél és más érdekelt felek bevonása a változtatásokba, és egyértelműen közöljük velük a változások okait.  
-   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): A TDSP **projektadat-jelentés** mappájában található **Adatdefiníciók** jelentés **Nyers adatforrások** szakasza tartalmazza az adatforrásokat. Ez a szakasz a nyers adatok eredeti és célhelyeit határozza meg. A későbbi szakaszokban további részleteket, például a parancsfájlokat is kitöltheti az adatok analitikus környezetbe való áthelyezéséhez.  
-   * [Adatszótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum az ügyfél által megadott adatok leírását tartalmazza. Ezek a leírások információkat tartalmaznak a sémáról (az adattípusokról és az érvényesítési szabályokról, ha vannak ilyenek) és az entitáskapcsolati diagramokról, ha rendelkezésre állnak.
+   * [Charter-dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): a TDSP-projekt szerkezetének definíciójában szabványos sablon szerepel. A charter dokumentum egy élő dokumentum. A sablon frissítése a projekt során az új felfedezések és az üzleti követelmények változása révén végezhető el. A legfontosabb, hogy megismételje a dokumentumot, és részletesebben adja meg a felderítési folyamat előrehaladását. Tartsa meg az ügyfelet és a többi érintett felet a módosítások elvégzésében, és egyértelműen tájékoztassa a módosításokat.  
+   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): a TDSP Project **ADATJELENTÉSI** mappájában található **adatdefiníciós** jelentés **nyers adatforrások** szakasza tartalmazza az adatforrásokat. Ez a szakasz a nyers adatként használt eredeti és célhelyeket határozza meg. A későbbi fázisokban további részleteket adhat meg, például a szkripteket, amelyek az adatokat az analitikus környezetbe helyezik át.  
+   * [Adatszótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum az ügyfél által biztosított adatmennyiség leírását tartalmazza. Ezek a leírások tartalmazzák a sémával kapcsolatos információkat (az adattípusokat és az érvényesítési szabályokra vonatkozó adatokat, ha vannak ilyenek) és az entitás-relációs diagramokat, ha vannak ilyenek.
 
 ## <a name="next-steps"></a>További lépések
 
-A TDSP életciklusának egyes lépéseire mutató hivatkozások:
+Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 
    1. [Üzleti ismertetés](lifecycle-business-understanding.md)
    2. [Adatgyűjtés és adatértelmezés](lifecycle-data.md)
    3. [Modellezés](lifecycle-modeling.md)
-   4. [Környezet](lifecycle-deployment.md)
+   4. [Üzembe helyezés](lifecycle-deployment.md)
    5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
-Teljes forgatókönyveket biztosítunk, amelyek bemutatják a folyamat összes lépését az adott forgatókönyvekhez. A [Példa forgatókönyvek](walkthroughs.md) cikk hivatkozásokat és miniatűr leírásokat tartalmazó forgatókönyvek listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőt, a helyszíni eszközöket és szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
+Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 

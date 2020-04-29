@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-megoldás a CloudSimple-től – szolgáltatás
+title: Azure VMware-megoldás CloudSimple-szolgáltatással
 description: Áttekintést nyújt a CloudSimple szolgáltatásról és fogalmakról.
 author: sharaths-cs
 ms.author: b-shsury
@@ -9,20 +9,20 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024953"
 ---
-# <a name="cloudsimple-service-overview"></a>CloudSimple szolgáltatás – áttekintés
+# <a name="cloudsimple-service-overview"></a>A CloudSimple szolgáltatás áttekintése
 
-A CloudSimple szolgáltatás lehetővé teszi, hogy a CloudSimple által az Azure VMware-megoldás felhasználását használja.  A szolgáltatás létrehozása lehetővé teszi, hogy csomópontokat vásároljon, csomópontokat foglaljon le, és hozzon létre privát felhőket.  A CloudSimple szolgáltatást minden olyan Azure-régióban hozza létre, ahol a CloudSimple szolgáltatás elérhető. A szolgáltatás határozza meg az Azure VMware-megoldás felhőalapú hálózatát. A peremhálózati hálózat olyan szolgáltatásokat támogat, amelyek magukban foglalják a VPN-t, az ExpressRoute-ot és a privát felhőkhöz való internetkapcsolatot.
+A CloudSimple szolgáltatás lehetővé teszi, hogy a CloudSimple az Azure VMware-megoldást használja.  A szolgáltatás létrehozása lehetővé teszi a csomópontok megvásárlását, a csomópontok fenntartását és a privát felhők létrehozását.  A CloudSimple szolgáltatást minden olyan Azure-régióban létre kell hoznia, ahol a CloudSimple szolgáltatás elérhető. A szolgáltatás a CloudSimple által definiált Azure VMware-megoldás peremhálózati hálózatát határozza meg. A peremhálózati hálózat olyan szolgáltatásokat támogat, amelyek VPN-, ExpressRoute-és internetkapcsolattal rendelkeznek a privát Felhőkhöz.
 
 ## <a name="gateway-subnet"></a>Átjáró alhálózata
 
-Az átjáró-alhálózat szükséges a CloudSimple szolgáltatás, és egyedi a régióban, amelyben létrehozták. Az átjáró alhálózat a peremhálózati hálózat létrehozásakor használatos, és /28 CIDR blokkot igényel.  Az átjáró alhálózati címterének egyedinek kell lennie. Nem fedheti át a CloudSimple környezettel kommunikáló hálózatot. A CloudSimple-lel kommunikáló hálózatok közé tartoznak a helyszíni hálózatok és az Azure virtuális hálózatai.  Az átjáró alhálózata nem törölhető a létrehozása után.  Az átjáró alhálózata a szolgáltatás törlésekor törlődik.
+Az átjáró-alhálózatok CloudSimple szolgáltatáshoz szükségesek, és egyediek ahhoz a régióhoz, amelyben létrehozták. Az átjáró-alhálózat a peremhálózati hálózat létrehozásakor használatos, és egy/28 CIDR blokkot igényel.  Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal. A CloudSimple-mel kommunikáló hálózatok közé tartoznak a helyszíni hálózatok és az Azure Virtual Network.  Az átjáró-alhálózat nem törölhető A létrehozásuk után.  Az átjáró-alhálózat törlődik a szolgáltatás törlésekor.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [hozhat létre CloudSimple szolgáltatást az Azure-ban.](quickstart-create-cloudsimple-service.md)
+* Ismerje meg, hogyan [hozhat létre CloudSimple szolgáltatást az Azure](quickstart-create-cloudsimple-service.md)-ban.

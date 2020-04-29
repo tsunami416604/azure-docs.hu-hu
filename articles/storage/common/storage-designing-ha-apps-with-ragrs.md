@@ -1,7 +1,7 @@
 ---
-title: Magas rendelkezésre állású alkalmazások tervezése georedundáns tárolással
+title: A földrajzilag redundáns tárolást használó, magasan elérhető alkalmazások tervezése
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan használhatja az olvasási hozzáférésű georedundáns tárolást egy magas rendelkezésre állású alkalmazás megtervezéséhez, amely elég rugalmas a kimaradások kezeléséhez.
+description: Ismerje meg, hogyan használhatja az olvasási hozzáférésű geo-redundáns tárolást egy olyan, magasan elérhető alkalmazás létrehozásához, amely elég rugalmas az kimaradások kezeléséhez.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,145 +11,145 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77157092"
 ---
-# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Magas rendelkezésre állású alkalmazások tervezése olvasási hozzáférésű georedundáns tárolással
+# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással
 
-A felhőalapú infrastruktúrák, például az Azure Storage közös jellemzője, hogy magas rendelkezésre állású platformot biztosítanak az alkalmazások üzemeltetéséhez. A felhőalapú alkalmazások fejlesztőinek alaposan meg kell fontolniuk, hogyan használhatják ki ezt a platformot, hogy magas rendelkezésre állású alkalmazásokat juttassanak el a felhasználókhoz. Ez a cikk arra összpontosít, hogy a fejlesztők hogyan használhatják az Azure georedundáns replikációs beállításait annak biztosítására, hogy az Azure Storage-alkalmazásaik magas rendelkezésre állásúak legyenek.
+A felhőalapú infrastruktúrák, például az Azure Storage közös funkciója, hogy egy kiválóan elérhető platformot biztosítanak az alkalmazások üzemeltetéséhez. A felhőalapú alkalmazások fejlesztőinek alaposan meg kell fontolniuk, hogyan használják ki ezt a platformot, hogy magasan elérhető alkalmazásokat nyújtsanak a felhasználóknak. Ez a cikk azt ismerteti, hogyan használhatják a fejlesztők az Azure geo-redundáns replikációs lehetőségeit annak biztosítására, hogy az Azure Storage-alkalmazások nagy rendelkezésre álljanak.
 
-A georedundáns replikációra konfigurált tárfiókok szinkron replikálásra kerülnek az elsődleges régióban, majd aszinkron módon replikálódnak egy több száz mérföldre lévő másodlagos régióba. Az Azure Storage kétféle georedundáns replikációt kínál:
+A Geo-redundáns replikációhoz konfigurált Storage-fiókok szinkron módon replikálódnak az elsődleges régióba, majd aszinkron módon replikálódnak egy olyan másodlagos régióra, amely több száz kilométerre van. Az Azure Storage két típusú geo-redundáns replikációt kínál:
 
-* [A földrajzi zónaredundáns tárolás (GZRS) (előzetes verzió)](storage-redundancy.md) replikációt biztosít a magas rendelkezésre állást és maximális tartósságot igénylő forgatókönyvekhez. Az adatok szinkron módon replikálódik három Azure rendelkezésre állási zónában az elsődleges régióban zónaredundáns tárolás (ZRS) használatával, majd aszinkron módon replikálódik a másodlagos régióban. A másodlagos régióban lévő adatokolvasási hozzáférés engedélyezéséhez engedélyezze az olvasási hozzáférésű geozónaredundáns tárolást (RA-GZRS).
-* [A georedundáns tárolás (GRS)](storage-redundancy.md) régióközi replikációt biztosít a regionális kimaradások elleni védelem érdekében. Az adatok szinkron módon háromszor replikálódnak az elsődleges régióban a helyileg redundáns tárolás (LRS) használatával, majd aszinkron módon replikálják a másodlagos régióba. A másodlagos régióban lévő adatokolvasási hozzáférés engedélyezéséhez engedélyezze az olvasási hozzáférésű georedundáns tárolást (RA-GRS).
+* A [geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)](storage-redundancy.md) a magas rendelkezésre állást és a maximális tartósságot igénylő forgatókönyvek replikálását teszi lehetővé. Az adatreplikációt az elsődleges régióban lévő három Azure-beli rendelkezésre állási zónában szinkron módon replikálja a rendszer a ZRS használatával, majd aszinkron módon replikálja a másodlagos régióba. Ha olvasási hozzáférést szeretne a másodlagos régióban lévő adathozzáféréshez, engedélyezze az olvasási hozzáférésű geo-Zone-redundáns tárolást (RA-GZRS).
+* A [geo-redundáns tárolás (GRS)](storage-redundancy.md) lehetővé teszi a régiók közötti replikációt a regionális kimaradások elleni védelem érdekében. Az adatreplikációt az elsődleges régióban a helyileg redundáns tárolás (LRS) használatával szinkronban, majd aszinkron módon replikálja a másodlagos régióba. A másodlagos régióban lévő adatolvasási hozzáférés engedélyezéséhez engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS).
 
-Ez a cikk bemutatja, hogyan tervezheti meg az alkalmazást az elsődleges régióban egy kimaradás kezelésére. Ha az elsődleges régió elérhetetlenné válik, az alkalmazás alkalmazkodhat olvasási műveletek et a másodlagos régió helyett. A kezdés előtt győződjön meg arról, hogy tárfiókja ra-GRS vagy RA-GZRS-hez van konfigurálva.
+Ez a cikk bemutatja, hogyan tervezheti meg az alkalmazást az elsődleges régióban leállások kezeléséhez. Ha az elsődleges régió elérhetetlenné válik, az alkalmazás alkalmazkodik a másodlagos régióra irányuló olvasási műveletek végrehajtásához. Mielőtt elkezdené, győződjön meg róla, hogy a Storage-fiókja RA-GRS vagy RA-GZRS van konfigurálva.
 
-Arról, hogy mely elsődleges régiók vannak párosítva a másodlagos régiókkal, olvassa el [az Üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure Paired Regions című témakört.](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
+További információ arról, hogy mely elsődleges régiók állnak párosítva a másodlagos régiókkal [: az üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-A cikk kódrészleteket tartalmaz, és a végén egy teljes mintára mutató hivatkozást, amelyet letölthet és futtathat.
+Ebben a cikkben kódrészletek is szerepelnek, valamint egy teljes, a letöltéshez és futtatáshoz használható teljes mintára mutató hivatkozás.
 
-## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Alkalmazástervezési szempontok a másodlagos
+## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Az alkalmazás kialakításával kapcsolatos szempontok a másodlagosról való olvasáskor
 
-A cikk célja, hogy megmutassa, hogyan tervezheti meg az olyan alkalmazást, amely továbbra is működni fog (bár korlátozott kapacitással), még az elsődleges adatközpontban bekövetkező súlyos katasztrófa esetén is. Az alkalmazást úgy tervezheti meg, hogy az átmeneti vagy hosszú ideig futó problémákat úgy kezelje, hogy a másodlagos régióból olvassa, ha olyan probléma merül fel, amely zavarja az elsődleges régióból történő olvasást. Ha az elsődleges régió ismét elérhető, az alkalmazás visszatérhet az olvasáshoz az elsődleges régióból.
+Ennek a cikknek a célja, hogy bemutassa, hogyan tervezhet meg egy olyan alkalmazást, amely továbbra is működni fog (bár csak korlátozott kapacitásban), még akkor is, ha az elsődleges adatközpontban súlyos katasztrófa következik be. Úgy is megtervezheti az alkalmazást, hogy az átmeneti vagy hosszan futó problémákat a másodlagos régióból olvasson, ha probléma merül fel az elsődleges régióból való olvasással. Ha az elsődleges régió újra elérhetővé válik, az alkalmazás visszatérhet az elsődleges régióból való olvasásra.
 
-Ne feledje, hogy az RA-GRS vagy RA-GZRS alkalmazás tervezésekor ezek a kulcsfontosságú pontok:
+Vegye figyelembe ezeket a kulcsfontosságú pontokat az alkalmazás tervezésekor az RA-GRS vagy RA-GZRS:
 
-* Az Azure Storage egy másodlagos régióban az elsődleges régióban tárolt adatok csak olvasható másolatát tárolja. Afent említettek szerint a tárolási szolgáltatás határozza meg a másodlagos régió helyét.
+* Az Azure Storage egy másodlagos régió elsődleges régiójában tárolt adatai írásvédett másolatát tárolja. A fentiekben leírtaknak megfelelően a Storage szolgáltatás meghatározza a másodlagos régió helyét.
 
-* Az írásvédett másolat [végül konzisztens](https://en.wikipedia.org/wiki/Eventual_consistency) az elsődleges régió ban lévő adatokkal.
+* A csak olvasható másolat [végül konzisztens](https://en.wikipedia.org/wiki/Eventual_consistency) az elsődleges régióban lévő értékekkel.
 
-* Blobok, táblák és várólisták esetén lekérdezheti a másodlagos régióban az *utolsó szinkronizálási idő* értékét, amely jelzi, hogy mikor történt az utolsó replikáció az elsődleges és a másodlagos régió között. (Ez nem támogatott az Azure Files, amely jelenleg nem rendelkezik RA-GRS redundanciával.)
+* A Blobok, táblák és várólisták esetében lekérdezheti a másodlagos régiót az *utolsó szinkronizálási idő* értékhez, amely megadja, hogy mikor történt az utolsó replikáció az elsődlegesről a másodlagos régióra. (Azure Files nem támogatott, mert jelenleg nem rendelkezik az RA-GRS redundanciával.)
 
-* A storage-ügyfélkódtár segítségével adatokat olvashat és írhat az elsődleges vagy másodlagos régióban. Az olvasási kérelmeket automatikusan átis irányíthatja a másodlagos régióba, ha az elsődleges régióba irányuló olvasási kérelem idővel kimenő.
+* A Storage ügyféloldali kódtár használatával az elsődleges vagy a másodlagos régióban is olvashatók és írhatók az adattípusok. Az olvasási kérelmeket automatikusan átirányíthatja a másodlagos régióba, ha az elsődleges régió olvasási kérelme időtúllépést tapasztal.
 
-* Ha az elsődleges régió elérhetetlenné válik, kezdeményezhet egy fiók feladatátvételt. Amikor a másodlagos régióba ad át feladatátvételt, az elsődleges régióra mutató DNS-bejegyzések a másodlagos régióra változnak. A feladatátvétel befejezése után az írási hozzáférés helyreáll a GRS- és RA-GRS-fiókokhoz. További információ: [Vész-helyreállítási és tárfiók feladatátvétel (előzetes verzió) az Azure Storage-ban.](storage-disaster-recovery-guidance.md)
+* Ha az elsődleges régió elérhetetlenné válik, kezdeményezheti a fiók feladatátvételét. Ha átadja a feladatátvételt a másodlagos régiónak, az elsődleges régióra mutató DNS-bejegyzések a másodlagos régióra mutatnak. A feladatátvétel befejezése után a rendszer visszaállítja az írási hozzáférést a GRS és az RA-GRS fiókok számára. További információ: vész- [helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
 > [!NOTE]
-> Az ügyfél által kezelt fiók feladatátvétele (előzetes verzió) még nem érhető el a GZRS/RA-GZRS-t támogató régiókban, így az ügyfelek jelenleg nem kezelhetik a gzrs- és RA-GZRS-fiókokkal rendelkező fiókfeladat-átvételi eseményeket. Az előzetes verzió során a Microsoft kezeli a GZRS/RA-GZRS-fiókokat érintő feladatátvételi eseményeket.
+> Az ügyfél által felügyelt fiók feladatátvétele (előzetes verzió) még nem érhető el az GZRS/RA-GZRS támogató régiókban, így az ügyfelek jelenleg nem kezelhetik a fiók feladatátvételi eseményeit a GZRS és az RA-GZRS fiókokkal. Az előzetes verzió ideje alatt a Microsoft felügyeli az GZRS/RA-GZRS-fiókokat érintő feladatátvételi eseményeket.
 
-### <a name="using-eventually-consistent-data"></a>Végül konzisztens adatok használata
+### <a name="using-eventually-consistent-data"></a>Végül konzisztens adatszolgáltatások használata
 
-A javasolt megoldás feltételezi, hogy elfogadható a potenciálisan elavult adatok visszaküldése a hívó alkalmazásnak. Mivel a másodlagos régióban lévő adatok végül konzisztensek, lehetséges, hogy az elsődleges régió elérhetetlenné válik, mielőtt a másodlagos régió frissítése befejeződött.
+A javasolt megoldás azt feltételezi, hogy elfogadható, hogy a hívó alkalmazás potenciálisan elavult adatbevitelt ad vissza. Mivel a másodlagos régióban lévő adategységek végül konzisztensek, lehetséges, hogy az elsődleges régió elérhetetlenné válhat, mielőtt a másodlagos régió frissítése befejezte a replikálást.
 
-Tegyük fel például, hogy az ügyfél sikeresen küld egy frissítést, de az elsődleges régió sikertelen lesz, mielőtt a frissítés a másodlagos régióba kerül. Amikor az ügyfél kéri, hogy olvassa vissza az adatokat, a frissített adatok helyett a másodlagos régióból kapnak az elavult adatokat. Az alkalmazás tervezésekor el kell döntenie, hogy ez elfogadható-e, és ha igen, hogyan fog üzenetet küldeni az ügyfélnek. 
+Tegyük fel például, hogy az ügyfél sikeresen elküld egy frissítést, de az elsődleges régió meghibásodik a frissítésnek a másodlagos régióba való propagálása előtt. Amikor az ügyfél az adatok visszaolvasását kéri, a frissített adatok helyett a másodlagos régióból kapják meg az elavult adatok listáját. Az alkalmazás tervezésekor el kell döntenie, hogy ez elfogadható-e, és ha igen, hogyan fog üzenetet adni az ügyfélnek. 
 
-A cikk későbbi részében bemutatjuk, hogyan ellenőrizheti a másodlagos adatok utolsó szinkronizálási idejét, hogy ellenőrizze, hogy a másodlagos naprakész-e.
+A cikk későbbi részében bemutatjuk, hogyan ellenőrizhető a másodlagos adatok utolsó szinkronizálási ideje annak megállapítására, hogy a másodlagos érték naprakész-e.
 
-### <a name="handling-services-separately-or-all-together"></a>Szolgáltatások külön-külön vagy együttes kezelése
+### <a name="handling-services-separately-or-all-together"></a>Szolgáltatások külön vagy együtt történő kezelésére
 
-Bár valószínűtlen, lehetséges, hogy egy szolgáltatás elérhetetlenné válik, míg a többi szolgáltatás továbbra is teljesen működőképes. Az újrapróbálkozások és az írásvédett mód az egyes szolgáltatások külön-külön (blobok, várólisták, táblák), vagy általánosan kezelni újrapróbálkozások az összes tárolási szolgáltatások együtt.
+Habár nem valószínű, lehetséges, hogy az egyik szolgáltatás elérhetetlenné válik, amíg a többi szolgáltatás továbbra is teljesen működőképes. Az egyes szolgáltatásokhoz tartozó újrapróbálkozásokat és írásvédett üzemmódot külön kezelheti (Blobok, várólisták, táblák), vagy az újrapróbálkozásokat általános módon kezelheti az összes tárolási szolgáltatáshoz.
 
-Ha például várólistákat és blobokat használ az alkalmazásban, dönthet úgy, hogy külön kódot helyez el az újrapróbálható hibák kezelésére ezek mindegyikéhez. Ezután ha újrapróbálkozik a blob szolgáltatás, de a várólista-szolgáltatás továbbra is működik, csak az alkalmazás, amely kezeli a blobok hatással lesz. Ha úgy dönt, hogy általánosan kezeli az összes tárolási szolgáltatás újrapróbálkozását, és a blobszolgáltatás hívása újrapróbálható hibát ad vissza, akkor a blobszolgáltatás és a várólista-szolgáltatás kéréseit is érinti.
+Ha például várólistákat és blobokat használ az alkalmazásban, dönthet úgy, hogy külön kódot helyez el az újrapróbálkozást lehetővé tevő hibák kezelésére. Ezután, ha újra próbálkozik a blob szolgáltatással, de a várólista-szolgáltatás továbbra is működik, a rendszer csak az alkalmazásnak a blobokat kezelő részét érinti. Ha úgy dönt, hogy az összes tárolási szolgáltatást általános próbálkozással kezeli, és a blob szolgáltatás hívása újrapróbálkozást lehetővé tevő hibát ad vissza, akkor a blob Service-hez és a várólista-szolgáltatáshoz intézett kérések is hatással lesznek.
 
-Végső soron ez az alkalmazás összetettségétől függ. Dönthet úgy, hogy nem kezeli a hibákat a szolgáltatás, hanem átirányítja az olvasási kérelmeket az összes tárolási szolgáltatások a másodlagos régióba, és futtassa az alkalmazást csak olvasható módban, ha hibát észlel az elsődleges régióbármely tárolási szolgáltatás.
+Végső soron ez az alkalmazás összetettségétől függ. Dönthet úgy, hogy nem kezeli a hibákat a szolgáltatással, hanem az összes tárolási szolgáltatás olvasási kérelmeit átirányítja a másodlagos régióba, és az alkalmazást írásvédett módban futtatja, amikor az elsődleges régióban található tárolási szolgáltatásokkal kapcsolatos problémát észlel.
 
 ### <a name="other-considerations"></a>Egyéb szempontok
 
-Ezek a többi szempont fogjuk megvitatni a többi ezt a cikket.
+A további szempontokat a cikk további részében tárgyaljuk.
 
-* Olvasási kérelmek újrapróbálkozásainak kezelése az Áramkör-megszakító mintával
+* Olvasási kérelmek újrapróbálkozásai az áramkör-megszakító mintájának használatával
 
-* Végül konzisztens adatok és az utolsó szinkronizálás időpontja
+* Végül – konzisztens adatértékek és a legutóbbi szinkronizálás időpontja
 
 * Tesztelés
 
 ## <a name="running-your-application-in-read-only-mode"></a>Az alkalmazás futtatása írásvédett módban
 
-Az elsődleges régióban a kimaradás hatékony előkészítéséhez képesnek kell lennie a sikertelen olvasási kérelmek és a sikertelen frissítési kérelmek kezelésére (ebben az esetben a frissítés, azaz beszúrások, frissítések és törlések). Ha az elsődleges régió meghibásodik, az olvasási kérelmek átirányíthatók a másodlagos régióba. A frissítési kérelmek azonban nem irányíthatók át a másodlagosra, mert a másodlagos írásvédett. Ezért meg kell terveznie az alkalmazást, hogy csak olvasható módban fusson.
+Ahhoz, hogy az elsődleges régióban ténylegesen felkészüljön a leállás, képesnek kell lennie a sikertelen olvasási kérelmek és a sikertelen frissítési kérések kezelésére (ebben az esetben a lapkákat, a frissítéseket és a törléseket). Ha az elsődleges régió meghibásodik, az olvasási kérések átirányíthatók a másodlagos régióba. A frissítési kérelmek azonban nem irányíthatók át a másodlagosra, mert a másodlagos írásvédett. Ezért meg kell terveznie, hogy az alkalmazás csak olvasható módban fusson.
 
-Például beállíthatja a jelzőt, amely ellenőrzi, mielőtt bármilyen frissítési kérelmek et az Azure Storage-ba. Amikor az egyik frissítési kérelem megérkezik, kihagyhatja azt, és visszaküldheti a megfelelő választ az ügyfélnek. Előfordulhat, hogy bizonyos szolgáltatásokat teljesen le szeretne tiltani, amíg a probléma meg nem oldódik, és értesíti a felhasználókat, hogy ezek a szolgáltatások átmenetileg nem érhetők el.
+Beállíthat például egy olyan jelzőt, amelyet a rendszer az Azure Storage-ba irányuló frissítési kérések elküldése előtt ellenőriz. Ha az egyik frissítési kérelem átkerül, kihagyhatja, és megfelelő választ adhat vissza az ügyfélnek. Előfordulhat, hogy a probléma megoldása érdekében akár le is tilthatja bizonyos szolgáltatásokat, és értesíti a felhasználókat arról, hogy ezek a szolgáltatások átmenetileg nem érhetők el.
 
-Ha úgy dönt, hogy az egyes szolgáltatások hibáit külön-külön kezeli, akkor az alkalmazás szolgáltatásonkénti csak olvasható módban való futtatásának lehetőségét is kezelnie kell. Előfordulhat például, hogy minden engedélyezhető és letiltható szolgáltatáshoz írásvédett jelzők vannak. Ezután a kód megfelelő helyein kezelheti a zászlót.
+Ha úgy dönt, hogy az egyes szolgáltatások hibáit külön kezeli, akkor azt is kezelni kell, hogy az alkalmazás csak olvasható módban fusson a szolgáltatással. Előfordulhat például, hogy az egyes szolgáltatásokhoz engedélyezhető és letiltható csak olvasható jelzők találhatók. Ezt követően a jelölőt a kód megfelelő helyein kezelheti.
 
-Az alkalmazás írásvédett módban való futtatásának másik oldala is előnyös – lehetővé teszi, hogy egy nagyobb alkalmazásfrissítés során korlátozott funkcionalitást biztosítson. Az alkalmazás csak olvasható módban futtatható, és a másodlagos adatközpontra mutathat, így a frissítések készítése közben senki sem férhet hozzá az adatokhoz az elsődleges régióban.
+Az alkalmazás csak olvasható módban való futtatásának lehetősége további előnyt jelent – lehetővé teszi a korlátozott funkcionalitás biztosítását az alkalmazások jelentős frissítése során. Az alkalmazás csak olvasható módban futtatható, és a másodlagos adatközpontra mutat, így biztosítva, hogy a frissítés során senki ne férhessenek hozzá az elsődleges régióban lévő adatokhoz.
 
-## <a name="handling-updates-when-running-in-read-only-mode"></a>Frissítések kezelése írásvédett módban történő futtatáskor
+## <a name="handling-updates-when-running-in-read-only-mode"></a>Frissítések kezelése írásvédett módban való futtatáskor
 
-Írásvédett módban számos módon kezelhetők a frissítési kérelmek. Nem fogjuk átfogóan lefedni, de általában van néhány minta, amit figyelembe veszel.
+A frissítési kérelmek többféleképpen is kezelhetnek, ha csak olvasható módban futnak. Ezt az átfogóan nem fogjuk lefedni, de általában néhány minta is van.
 
-1. Válaszolhat a felhasználónak, és megmondhatja nekik, hogy jelenleg nem fogadja el a frissítéseket. Egy kapcsolatkezelő rendszer például lehetővé teheti az ügyfelek számára a kapcsolattartási adatok elérését, de nem csökkentheti a frissítéseket.
+1. Válaszolhat a felhasználóra, és megadhatja, hogy jelenleg nem fogadja el a frissítéseket. A kapcsolattartási felügyeleti rendszer például lehetővé teheti, hogy az ügyfelek hozzáférhessenek a kapcsolattartási adatokhoz, de nem teszik elérhetővé a frissítéseket.
 
-2. A frissítések et egy másik régióban is várólistára viheti. Ebben az esetben a függőben lévő frissítési kérelmeket egy másik régióban lévő várólistába kell írnia, majd az elsődleges adatközpont újra online állapotba kerülése után feldolgozhatja ezeket a kérelmeket. Ebben az esetben tudatnia kell az ügyféllel, hogy a kért frissítés várólistára kerül későbbi feldolgozásra.
+2. A frissítéseket egy másik régióban is sorba helyezni. Ebben az esetben a függőben lévő frissítési kérelmeket egy másik régióba tartozó várólistára írja, majd az elsődleges adatközpont újbóli elvégzése után feldolgozza a kérelmeket. Ebben a forgatókönyvben az ügyfélnek tudnia kell, hogy a kért frissítés várólistára kerül a későbbi feldolgozáshoz.
 
-3. A frissítéseket egy másik régióban lévő tárfiókba írhatja. Ezután, amikor az elsődleges adatközpont újra online állapotba kerül, az adatok szerkezetétől függően egyesítheti ezeket a frissítéseket az elsődleges adatokba. Ha például külön fájlokat hoz létre dátum-/időbélyegzővel a névben, ezeket a fájlokat visszamásolhatja az elsődleges régióba. Ez bizonyos számítási feladatok, például a naplózás és az iOT-adatok esetében működik.
+3. A frissítéseket egy másik régióban lévő Storage-fiókba is írhatja. Azután, hogy az elsődleges adatközpont ismét online állapotba kerül, az adatszerkezettől függően kialakíthatja ezeket a frissítéseket az elsődleges adatba. Ha például külön fájlokat hoz létre egy dátum-/időbélyegzővel a névben, akkor ezeket a fájlokat visszamásolhatja az elsődleges régióba. Ez bizonyos számítási feladatokhoz (például naplózási és iOT) működik.
 
-## <a name="handling-retries"></a>Újrapróbálkozások kezelése
+## <a name="handling-retries"></a>Újrapróbálkozások kezelésére
 
-Az Azure Storage-ügyfélkódtár segítségével meghatározhatja, hogy mely hibák kísérelhetők meg újra. Például egy 404-es hiba (az erőforrás nem található) nem történik meg újra, mert az újbóli próbálkozás valószínűleg nem eredményez sikeres eredményt. Másrészt az 500-as hiba újrapróbálkozhat, mert kiszolgálóhiba, és a probléma egyszerűen átmeneti probléma lehet. További részletekért tekintse meg az [ExponentialRetry osztály nyílt forráskódját](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) a .NET storage ügyféltárban. (Keresse meg a ShouldRetry metódust.)
+Az Azure Storage ügyféloldali kódtár segítségével meghatározhatja, hogy mely hibákat lehet újrapróbálni. Például egy 404-es hiba (az erőforrás nem található) nem próbálkozik újra, mert a próbálkozás nem valószínű, hogy sikeres. Másrészről egy 500-es hiba is újrapróbálkozhat, mert kiszolgálóhiba miatt a probléma egyszerűen átmeneti probléma lehet. További részletekért tekintse meg a [ExponentialRetry osztály nyílt forráskódját](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) a .net Storage ügyféloldali kódtáraban. (Keresse meg a ShouldRetry metódust.)
 
 ### <a name="read-requests"></a>Olvasási kérelmek
 
-Az olvasási kérelmek átirányíthatók a másodlagos tárolóba, ha probléma van az elsődleges tárhellyel. Amint azt a fentiekben [a használata végül konzisztens adatok](#using-eventually-consistent-data)használata, elfogadhatónak kell lennie az alkalmazás potenciálisan elavult adatok olvasása. Ha a tárolóügyfél-kódtárat használja a másodlagos adatok eléréséhez, megadhatja az olvasási kérelem újrapróbálkozási viselkedését, ha a **LocationMode** tulajdonság értékét az alábbiak egyikére állítja:
+Az olvasási kérések átirányíthatók a másodlagos tárolóba, ha probléma van az elsődleges tárolóval. Amint azt a fentiekben említettük, a [végül konzisztens](#using-eventually-consistent-data)adatszolgáltatások használata esetén elfogadhatónak kell lennie ahhoz, hogy az alkalmazás az elavult adatolvasást is tudja Ha a Storage ügyféloldali kódtár használatával fér hozzá az adatokhoz a másodlagosból, megadhatja az olvasási kérelem újrapróbálkozási viselkedését úgy, hogy a **blobrequestoptions locationmode** tulajdonság értékét a következők egyikére állítja be:
 
-* **PrimaryOnly** (az alapértelmezett)
+* **PrimaryOnly** (alapértelmezett)
 
-* **PrimaryThenMásodlagos**
+* **PrimaryThenSecondary**
 
-* **MásodlagosCsak**
+* **SecondaryOnly**
 
-* **Másodlagos ThenPrimary**
+* **SecondaryThenPrimary**
 
-Ha a **LocationMode-ot** **PrimaryThenSecondary**-ra állítja, ha az elsődleges végpontra irányuló kezdeti olvasási kérelem sikertelen, újrapróbálkozható hibával, az ügyfél automatikusan újabb olvasási kérelmet küld a másodlagos végpontnak. Ha a hiba kiszolgálói időtúljárat, akkor az ügyfélnek meg kell várnia az időtúltöltés lejáratát, mielőtt újrapróbálkozási hibát kapna a szolgáltatástól.
+Ha a **blobrequestoptions locationmode** a **PrimaryThenSecondary**értékre állítja, ha az elsődleges végponthoz tartozó kezdeti olvasási kérelem meghiúsul, és az újrapróbálkozási hiba történik, akkor az ügyfél automatikusan egy másik olvasási kérelmet küld a másodlagos végpontnak. Ha a hiba a kiszolgáló időtúllépése, akkor az ügyfélnek várnia kell, amíg az időtúllépés lejár, mielőtt újrapróbálkozó hibát kap a szolgáltatástól.
 
-Alapvetően két forgatókönyvet kell figyelembe venni, amikor eldönti, hogyan reagáljon egy újrapróbálható hibára:
+Az újrapróbálkozást lehetővé tevő hibákra vonatkozó döntés során alapvetően két forgatókönyvnek kell megfontolnia:
 
-* Ez egy elszigetelt probléma, és az elsődleges végpontra irányuló további kérelmek nem adnak vissza újrapróbálható hibát. Egy példa arra, hogy ez hol fordulhat elő, ha átmeneti hálózati hiba lép fel.
+* Ez egy elszigetelt probléma, és az elsődleges végpontra irányuló további kérések nem adnak vissza újrapróbálkozást lehetővé tevő hibát. Ilyen eset lehet például, ha átmeneti hálózati hiba történt.
 
-    Ebben a forgatókönyvben nincs jelentős teljesítménybüntetés a **LocationMode** **PrimaryThenSecondary** beállítással, mivel ez csak ritkán fordul elő.
+    Ebben az esetben nincs jelentős teljesítménybeli szankció a **Blobrequestoptions locationmode** **PrimaryThenSecondary** való beállításakor, mivel ez csak ritkán fordul elő.
 
-* Ez a probléma az elsődleges régióban lévő legalább egy tárolási szolgáltatással van, és az elsődleges régióban a szolgáltatásminden későbbi kérésvalószínűleg egy ideig újrapróbálható hibákat ad vissza. Erre példa, ha az elsődleges régió teljesen elérhetetlen.
+* Ez a probléma az elsődleges régióban található tárolási szolgáltatások közül legalább egy, az elsődleges régióban pedig az adott szolgáltatásra vonatkozó összes további kérelem valószínűleg az újrapróbálkozást lehetővé tevő hibákat fogja visszaadni egy adott időtartamra. Ilyen például, ha az elsődleges régió teljesen elérhetetlenné válik.
 
-    Ebben a forgatókönyvben van egy teljesítmény büntetés, mert az összes olvasási kérelmek megpróbálja az elsődleges végpont ot, várja meg, amíg az időtúltöltés lejár, majd váltson a másodlagos végpontra.
+    Ebben a forgatókönyvben egy teljesítménnyel kapcsolatos szankció van, mivel az összes olvasási kérelem először az elsődleges végpontot próbálja megvárni, várjon, amíg lejár az időtúllépés, majd váltson a másodlagos végpontra.
 
-Ezekben az esetekben azonosítania kell, hogy folyamatban van-e az elsődleges végpontdal kapcsolatos probléma, és az összes olvasási kérelmet közvetlenül a másodlagos végpontnak küldje el a **LocationMode** tulajdonság **SecondaryOnly**beállításával. Ekkor is módosítania kell az alkalmazást, hogy csak olvasható módban fusson. Ezt a megközelítést [megszakítómintának nevezik.](/azure/architecture/patterns/circuit-breaker)
+Ezekben az esetekben meg kell állapítania, hogy az elsődleges végponton van-e folyamatban lévő probléma, és az összes olvasási kérést közvetlenül a másodlagos végpontnak küldje el úgy, hogy a **blobrequestoptions locationmode** tulajdonságot **SecondaryOnly**értékre állítja. Jelenleg az alkalmazás írásvédett módban történő futtatását is módosítania kell. Ezt a megközelítést nevezzük áramkör- [megszakító mintának](/azure/architecture/patterns/circuit-breaker).
 
-### <a name="update-requests"></a>Kérelmek frissítése
+### <a name="update-requests"></a>Frissítési kérelmek
 
-Az áramkör-megszakító minta a frissítési kérelmekre is alkalmazható. A frissítési kérelmek azonban nem irányíthatók át másodlagos tárolóba, amely írásvédett. Ezeknél a kérelmeknél a **LocationMode** tulajdonságot **PrimaryOnly** értékre (alapértelmezett) kell hagyni. A hibák kezeléséhez metrikát alkalmazhat ezekre a kérelmekre – például 10 hibát egy sorban –, és ha a küszöbérték teljesül, kapcsolja be az alkalmazást írásvédett módba. Ugyanazokat a módszereket használhatja a frissítési módba való visszatéréshez, mint amelyeket az áramkör-megszakító mintáról szóló következő szakaszban ismertetünk.
+Az áramkör-megszakító minta is alkalmazható a frissítési kérelmekre. A frissítési kérelmek azonban nem irányíthatók át másodlagos tárolóba, amely csak olvasható. Ezekben a kérelmekben hagyja a **blobrequestoptions locationmode** tulajdonságot a **PrimaryOnly** értékre (az alapértelmezett értékre). Ezeknek a hibáknak a kezeléséhez mérőszámot alkalmazhat ezekre a kérelmekre – például egy sor 10 hibáját –, és ha a küszöbérték teljesül, az alkalmazást csak olvasható módba állíthatja. Ugyanezeket a metódusokat használhatja a frissítési módba való visszatéréshez, az áramkör-megszakító mintájának következő részében leírtak szerint.
 
 ## <a name="circuit-breaker-pattern"></a>Áramkör-megszakító minta
 
-Az áramkör-megszakító minta használata az alkalmazásban megakadályozhatja, hogy újra megkíséreljen egy olyan műveletet, amely valószínűleg ismételten sikertelen lesz. Lehetővé teszi, hogy az alkalmazás továbbra is fusson, és ne vegye fel az időt, amíg a művelet et exponenciálisan próbálja meg. Azt is észleli, ha a hiba ki lett javítva, amikor az alkalmazás újra próbálkozhat a művelettel.
+Az áramkör-megszakító mintájának alkalmazása megakadályozza, hogy egy olyan műveletet próbálkozzon újra, amely valószínűleg többször is sikertelen lesz. Ez lehetővé teszi, hogy az alkalmazás továbbra is fusson ahelyett, hogy időt kelljen kipróbálnia a művelet exponenciális megkezdése közben. Azt is észleli, ha a hiba kijavítva lett, és ekkor az alkalmazás újra próbálkozhat a művelettel.
 
-### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Az áramkör-megszakító minta megvalósítása
+### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Az áramkör-megszakító minta implementálása
 
-Annak megállapításához, hogy egy elsődleges végpontdal kapcsolatban folyamatos probléma van-e, figyelheti, hogy az ügyfél milyen gyakran találkozik újrapróbálkozási hibákkal. Mivel minden eset más, el kell döntenie, hogy a kívánt küszöbértéket a döntést, hogy a másodlagos végpontra váltson, és futtassa az alkalmazást csak olvasható módban. Dönthet például úgy, hogy végrehajtja a kapcsolót, ha 10 hiba van egymás után sikertelenül. Egy másik példa a váltás, ha a kérelmek 90%-a 2 perces időszakban sikertelen.
+Annak megállapításához, hogy van-e folyamatban probléma az elsődleges végponttal, megfigyelheti, hogy az ügyfél milyen gyakran jelentkezik az újrapróbálkozást lehetővé tevő hibákkal. Mivel minden eset eltérő, meg kell határoznia azt a küszöbértéket, amelyet a másodlagos végpontra való váltáshoz kíván használni, és az alkalmazást csak olvasható módban futtathatja. Dönthet például úgy, hogy végrehajtja a kapcsolót, ha 10 hiba történt egy olyan sorban, amely nem rendelkezik sikerrel. Egy másik példa arra, hogy ha a kérések 90%-a 2 percenként meghiúsul.
 
-Az első forgatókönyv, egyszerűen tartsa meg a hibák száma, és ha van egy sikeres elérése előtt a maximális, állítsa be a count vissza nullára. A második esetben a megvalósítás egyik módja a MemoryCache objektum használata (a .NET-ben). Minden kérelemhez adjon hozzá egy CacheItem elemet a gyorsítótárhoz, állítsa az értéket sikeresre (1) vagy sikertelen (0), és állítsa a lejárati időt 2 percre (vagy bármi legyen is az időmegkötés). A bejegyzés lejárati idejének elérésekor a program automatikusan eltávolítja a bejegyzést. Ez ad egy gördülő 2 perces ablak. Minden alkalommal, amikor kérelmet küld a tárolási szolgáltatásnak, először egy Linq lekérdezést használ a MemoryCache objektumon keresztül az értékek összegzésével és a számmal való elosztjuk a sikeres százalékos értéket. Ha a százalékos siker bizonyos küszöbérték (például 10%) alá csökken, állítsa a **LocationMode** tulajdonságot az olvasási kérelmekhez **Másodlagoscsak** értékre, és a folytatás előtt váltsa át az alkalmazást írásvédett módba.
+Az első forgatókönyv esetében egyszerűen megtarthatja a hibák számát, és ha a maximális érték elérése előtt sikeres lehet, állítsa vissza a számlálót nullára. A második forgatókönyvben a megvalósításának egyik módja az MemoryCache objektum használata (.NET-ben). Minden kérelem esetében adjon hozzá egy CacheItem a gyorsítótárhoz, állítsa be az értéket a sikeres (1) vagy a sikertelen (0) értékre, majd állítsa a lejárati időt 2 percre (vagy bármilyen időkorlátra). A bejegyzés lejárati idejének elérésekor a rendszer automatikusan eltávolítja a bejegyzést. Ez egy 2 perces gördülő időszakot nyújt. Minden alkalommal, amikor kérelmet küld a Storage szolgáltatásnak, először egy LINQ-lekérdezést használ a MemoryCache objektumon a százalékos siker kiszámításához az értékek összegzésével és a darabszám szerinti osztással. Ha a sikeres százalékos arány néhány küszöbérték alá csökken (például 10%), állítsa a **blobrequestoptions locationmode** tulajdonságot olvasási kérelmek **SecondaryOnly** , és a folytatás előtt váltson írásvédett módba.
 
-A kapcsoló beállításának meghatározásához használt hibaküszöb szolgáltatásról szolgáltatásra változhat az alkalmazásban, ezért érdemes lehet konfigurálható paraméterekké tenni őket. Ez az a pont, ahol úgy dönt, hogy az egyes szolgáltatások újrapróbálható hibáit külön-külön vagy egyként kezeli, ahogy azt korábban tárgyaltuk.
+Azon hibák küszöbértéke, amelyekkel meghatározható, hogy a kapcsoló Mikor hajthatja végre a szolgáltatást a szolgáltatástól az alkalmazásban, ezért konfigurálható paramétereket kell megfontolnia. Emellett az is előfordulhat, hogy az újrapróbálkozási hibákat az egyes szolgáltatásokból külön vagy egy, a korábban tárgyalt módon kezeli.
 
-Egy másik szempont, hogyan kell kezelni egy alkalmazás több példányát, és mi a teendő, ha újrapróbálkozási hibákat észlel az egyes példányokban. Előfordulhat például, hogy 20 virtuális gép fut ugyanazzal az alkalmazással. Minden esetet külön kezel? Ha egy példány problémákat okoz, csak erre az egy példányra szeretné korlátozni a választ, vagy meg szeretné próbálni, hogy az összes példány ugyanúgy reagáljon, ha egy példánynak problémája van? A példányok külön-külön történő kezelése sokkal egyszerűbb, mint a válasz koordinálása közöttük, de ennek módja az alkalmazás architektúrájának függ.
+Egy másik szempont, hogyan kezelhető egy alkalmazás több példánya, és mi a teendő az egyes példányok újrapróbálkozási hibáinak észlelése során. Előfordulhat például, hogy 20 virtuális gépet futtat ugyanazzal az alkalmazással. Külön kezeli az egyes példányokat? Ha az egyik példány problémákba ütközik, szeretné korlátozni a választ erre az egyetlen példányra, vagy szeretné, hogy az összes példány ugyanúgy reagáljon, amikor az egyik példány problémát észlel? A példányok külön kezelésének módja sokkal egyszerűbb, mint a válaszok összehangolása, de ez az alkalmazás architektúráján alapul.
 
-### <a name="options-for-monitoring-the-error-frequency"></a>A hibagyakoriság figyelésének lehetőségei
+### <a name="options-for-monitoring-the-error-frequency"></a>A hibák gyakoriságának figyelésére szolgáló beállítások
 
-Három fő lehetőség van az újrapróbálkozások gyakoriságának figyelésére az elsődleges régióban annak meghatározásához, hogy mikor váltson át a másodlagos régióra, és módosítsa az alkalmazást, hogy csak olvasható módban fusson.
+Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelésére az elsődleges régióban, hogy meghatározza, mikor kell átváltani a másodlagos régióba, és hogy az alkalmazás csak olvasható módban fusson.
 
-* Adjon hozzá egy kezelőt az [**Újrapróbálkozás**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) iajzathoz a tárolási kérelmeknek átadott [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumhoz – ez a módszer jelenik meg ebben a cikkben, és a kísérő mintában használatos. Ezek az események akkor jönnek végbe, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik újrapróbálható hibákkal az elsődleges végponton.
+* Adjon hozzá egy kezelőt az [**újrapróbálkozási**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) eseményhez a Storage-kérelmeknek átadott [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumban – ez a jelen cikkben és a kísérő mintában használt metódus. Ezek az események akkor következnek be, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik az újrapróbálkozást lehetővé tevő hibákkal egy elsődleges végponton.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Három fő lehetőség van az újrapróbálkozások gyakoriságának figyelésé
     };
     ```
 
-* Az egyéni újrapróbálkozási házirend [**Kiértékelése**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódusában egyéni kódot futtathat, amikor újrapróbálkozás történik. Az újrapróbálkozási folyamat felvételén kívül ez lehetőséget ad az újrapróbálkozási viselkedés módosítására is.
+* Az egyéni újrapróbálkozási szabályzat [**kiértékelési**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódusában egyéni kódokat futtathat, amikor újra megtörténik az újrapróbálkozások. Az újrapróbálkozások bekövetkezésekor a rögzítés mellett lehetősége van az újrapróbálkozási viselkedés módosítására is.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -188,39 +188,39 @@ Három fő lehetőség van az újrapróbálkozások gyakoriságának figyelésé
     }
     ```
 
-* A harmadik megközelítés egy egyéni figyelési összetevő az alkalmazásban, amely folyamatosan pingeli az elsődleges tárolási végpont dumi olvasási kérelmek (például egy kis blob olvasása) állapotának meghatározásához. Ez némi forrást igényelne, de nem jelentős összeget. Ha olyan problémát fedez fel, amely eléri a küszöbértéket, akkor a kapcsolót **másodlagoscsak** és csak olvasható módba kell végrehajtania.
+* A harmadik módszer egy egyéni figyelési összetevő megvalósítása az alkalmazásban, amely folyamatosan Pingeli az elsődleges tárolási végpontot a dummy olvasási kérelmekkel (például egy kis blob olvasásával) az állapotának meghatározásához. Ez némi erőforrást is igénybe vehet, de nem jelent jelentős mennyiséget. Ha olyan problémát észlel, amely eléri a küszöbértéket, akkor a kapcsolót a **SecondaryOnly** és csak olvasható módra kell végrehajtania.
 
-Egy bizonyos ponton érdemes visszaváltani az elsődleges végpont használatára, és lehetővé kell tenni a frissítéseket. Ha a fent felsorolt első két módszer egyikét használja, egyszerűen visszaválthat az elsődleges végpontra, és engedélyezheti a frissítési módot, miután tetszőlegesen kiválasztott idő vagy műveletek száma történt. Ezután hagyja, hogy menjen át az újrapróbálkozási logika újra. Ha a probléma megoldódott, továbbra is az elsődleges végpontot fogja használni, és engedélyezi a frissítéseket. Ha továbbra is fennáll a probléma, akkor még egyszer visszavált a másodlagos végpontra és a csak olvasható módra, miután nem felelt meg a megadott feltételeknek.
+Egy ponton vissza kell térnie az elsődleges végpont használatára, és engedélyezni kell a frissítéseket. Ha a fent felsorolt két módszer egyikét használja, egyszerűen visszaválthat az elsődleges végpontra, és engedélyezheti a frissítési módot a tetszőlegesen kijelölt idő vagy a műveletek számának elvégzése után. Ezután ismét átléphet az újrapróbálkozási logikára. Ha a probléma kijavítva lett, továbbra is az elsődleges végpontot fogja használni, és engedélyezi a frissítéseket. Ha a probléma továbbra is fennáll, akkor a beállított feltételek végrehajtása után a rendszer még egyszer visszavált a másodlagos végpontra és a írásvédett módra.
 
-A harmadik forgatókönyv esetén, ha az elsődleges tárolási végpont pingelése ismét sikeres lesz, aktiválhatja a kapcsolót a **PrimaryOnly-ra,** és folytathatja a frissítések engedélyezését.
+A harmadik forgatókönyv esetén, amikor az elsődleges tároló végpontjának pingelése ismét sikeres lesz, aktiválhatja a váltást a **PrimaryOnly** , és folytathatja a frissítések engedélyezését.
 
-## <a name="handling-eventually-consistent-data"></a>Kezelés végül konzisztens adatok
+## <a name="handling-eventually-consistent-data"></a>A végül konzisztens adatkezelés
 
-Georedundáns tárolási munkák tranzakciók replikálása az elsődleges a másodlagos régióban. Ez a replikációs folyamat garantálja, hogy a másodlagos régióban lévő adatok *végül konzisztensek lesznek.* Ez azt jelenti, hogy az elsődleges régió összes tranzakciója végül megjelenik a másodlagos régióban, de előfordulhat, hogy késés van a megjelenésük előtt, és nincs garancia arra, hogy a tranzakciók ugyanabban a sorrendben érkeznek meg, mint amilyensorrendben vannak. eredetileg az elsődleges régióban alkalmazták. Ha a tranzakciók nem sorrendben érkeznek a másodlagos régióba, *előfordulhat,* hogy a másodlagos régióban lévő adatok inkonzisztens állapotban vannak, amíg a szolgáltatás utoléri.
+A Geo-redundáns tárolás úgy működik, hogy az elsődlegesről a másodlagos régióba replikálja a tranzakciókat. Ez a replikációs folyamat garantálja, hogy a másodlagos régióban lévő adategységek *végül konzisztensek*. Ez azt jelenti, hogy az elsődleges régió összes tranzakciója végül megjelenik a másodlagos régióban, de előfordulhat, hogy a megjelenésük előtt késésben van, és nem garantálható, hogy a tranzakciók ugyanabban a sorrendben érkeznek a másodlagos régióba, mint ahogyan eredetileg az elsődleges régióban voltak alkalmazva. Ha a tranzakciók sorrendben érkeznek meg a másodlagos régióban, akkor *Előfordulhat* , hogy a másodlagos régióban lévő adatai inkonzisztens állapotba kerülnek, amíg a szolgáltatás fel nem zárkózik.
 
-Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha frissíti egy alkalmazott adatait, hogy azok a rendszergazdák szerepkör tagjává *válhassanak.* A példa kedvéért ehhez frissítenie kell az **alkalmazottentitást,** és frissítenie kell egy **rendszergazdai szerepkör** entitást a rendszergazdák teljes számának számával. Figyelje meg, hogyan alkalmazzák a frissítéseket sorrendben a másodlagos régióban.
+Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha egy alkalmazott adatait frissíti, hogy azok a *rendszergazdák* szerepkör tagjai legyenek. Ennek a példának a kedvéért ehhez frissítenie kell az **alkalmazott** entitást, és frissítenie kell egy **rendszergazdai szerepkör** entitást a rendszergazdák teljes száma számával. Figyelje meg, hogy a frissítések nem sorrendben vannak alkalmazva a másodlagos régióban.
 
-| **Time** | **Tranzakció**                                            | **Replikációs**                       | **Utolsó szinkronizálás időpontja** | **Eredmény** |
+| **Time** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás ideje** | **Eredmény** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
-| T0       | "A" tranzakció: <br> Alkalmazott beszúrása <br> az elsődleges |                                   |                    | Az elsődleges,<br> még nem replikálódott. |
-| T1       |                                                            | A tranzakció <br> replikált<br> Másodlagos | T1 | Az A tranzakció replikált másodlagos. <br>Utolsó szinkronizálás idáig frissítve.    |
-| T2       | "B" tranzakció:<br>Frissítés<br> alkalmazotti entitás<br> az elsődleges  |                                | T1                 | "B" tranzakció írott elsődleges,<br> még nem replikálódott.  |
-| T3       | C tranzakció:<br> Frissítés <br>adminisztrátor<br>szerepkör entitás a<br>Elsődleges |                    | T1                 | C tranzakció az elsődleges,<br> még nem replikálódott.  |
-| *T4*     |                                                       | C tranzakció <br>replikált<br> Másodlagos | T1         | A C tranzakció replikált másodlagos.<br>A LastSyncTime nem frissült, mert <br>a B tranzakció még nem lett replikálva.|
-| *T5*     | Entitások olvasása <br>másodlagos                           |                                  | T1                 | Az alkalmazott elavult értékét kapja <br> mert a B tranzakció nem <br> replikálódik még. Ön kap az új értéket<br> rendszergazdai szerepkör entitás, mert C<br> Replikált. Az utolsó szinkronizálás időpontja még mindig nem<br> frissítve lett, mert a B tranzakció<br> nem replikálódott. Megmondhatja a<br>a rendszergazdai szerepkör entitása inkonzisztens <br>mert az entitás dátuma/időpontja <br>az utolsó szinkronizálás ióményidő. |
-| *T6 (1998)*     |                                                      | "B" tranzakció<br> replikált<br> Másodlagos | T6 (1998)                 | *T6* – A C-n keresztül végrehajtott összes tranzakció <br>replikált, Utolsó szinkronizálás időpontja<br> frissítésre kerül. |
+| T0       | A tranzakció: <br> Alkalmazott beszúrása <br> elsődleges entitás |                                   |                    | Egy beszúrt tranzakció az elsődlegesbe<br> még nincs replikálva. |
+| T1       |                                                            | A tranzakció <br> replikálva a következőre<br> másodlagos | T1 | A tranzakció replikálása másodlagosra történik. <br>A legutóbbi szinkronizálás ideje frissítve.    |
+| T2       | B tranzakció:<br>Frissítés<br> alkalmazotti entitás<br> az elsődleges  |                                | T1                 | A B tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
+| T3       | C tranzakció:<br> Frissítés <br>adminisztrátor<br>szerepkör entitása a<br>elsődleges |                    | T1                 | A C tranzakció elsődlegesre lett írva,<br> még nincs replikálva.  |
+| *T4*     |                                                       | C tranzakció <br>replikálva a következőre<br> másodlagos | T1         | A C tranzakció replikálása másodlagosra történik.<br>A LastSyncTime nem frissült, mert <br>a B tranzakció még nincs replikálva.|
+| *T5*     | Entitások olvasása <br>másodlagosról                           |                                  | T1                 | Az alkalmazott elavult értékét kapja <br> entitás, mert a B tranzakció nem <br> még replikálva. A következő új értéket kapja:<br> rendszergazdai szerepkör entitása, mert C<br> replikált. A legutóbbi szinkronizálás ideje még nem<br> Frissítve, mert a B tranzakció<br> még nincs replikálva. Megtudhatja, hogy<br>a rendszergazdai szerepkör entitása inkonzisztens <br>mivel az entitás dátuma/időpontja a következő után van <br>a legutóbbi szinkronizálás ideje. |
+| *T6*     |                                                      | B tranzakció<br> replikálva a következőre<br> másodlagos | T6                 | *T6* – a C-n keresztül lebonyolított tranzakciók száma <br>replikálva, utolsó szinkronizálás ideje<br> frissült. |
 
-Ebben a példában tegyük fel, hogy az ügyfél a T5 másodlagos régiójából való olvasásra vált. Jelenleg sikeresen tudja olvasni a **rendszergazdai szerepkör** entitását, de az entitás olyan értéket tartalmaz a rendszergazdák számára, amely jelenleg nem egyeztethető össze a másodlagos régióban rendszergazdaként megjelölt **alkalmazottentitások** számával. Az ügyfél egyszerűen megjelenítheti ezt az értéket, azzal a kockázattal, hogy inkonzisztens információ. Másik lehetőségként az ügyfél megpróbálhatja megállapítani, hogy a **rendszergazdai szerepkör** esetleg inkonzisztens állapotban van-e, mert a frissítések nem megfelelően történtek, majd erről tájékoztatja a felhasználót.
+Ebben a példában feltételezzük, hogy az ügyfél a T5 másodlagos régiójából való olvasásra vált. Ekkor sikeresen beolvashatja a **rendszergazdai szerepkör** entitást, de az entitás tartalmazza a rendszergazdák számának értékét, amely nem konzisztens a másodlagos régióban rendszergazdaként megjelölt **alkalmazotti** entitások számával. Az ügyfél egyszerűen megjelenítheti ezt az értéket azzal a kockázattal, hogy inkonzisztens információ. Azt is megteheti, hogy az ügyfél megpróbálta megállapítani, hogy a **rendszergazdai szerepkör** valószínűleg inkonzisztens állapotban van-e, mert a frissítések sorrendje nem megfelelő, majd tájékoztatja a felhasználót erről a tényről.
 
-Annak felismeréséhez, hogy potenciálisan inkonzisztens adatokkal rendelkezik, az ügyfél használhatja az *utolsó szinkronizálási idő* értékét, amelyet bármikor megkaphat egy tárolási szolgáltatás lekérdezésével. Ez azt az időpontot jelzi, amikor a másodlagos régióban lévő adatok utoljára konzisztensek voltak, és amikor a szolgáltatás az adott időpont előtti összes tranzakciót alkalmazta. A fenti példában, miután a szolgáltatás beszúrta az **alkalmazott entitást** a másodlagos régióban, az utolsó szinkronizálási idő *T1*értékre van állítva. A *T1* szinten marad, amíg a szolgáltatás nem frissíti az **alkalmazottentitást** a másodlagos régióban, amikor *T6*értékre van állítva . Ha az ügyfél lekéri az utolsó szinkronizálási időpont, amikor beolvassa az entitást a *T5,* összehasonlíthatja azt az entitás időbélyegével. Ha az entitás időbélyege későbbi, mint az utolsó szinkronizálási idő, akkor az entitás potenciálisan inkonzisztens állapotban van, és az alkalmazáshoz tartozó műveletet végrehajthatja. Ennek a mezőnek a használatával tudnia kell, hogy mikor fejeződött be az elsődleges frissítés utolsó frissítése.
+Annak felismeréséhez, hogy potenciálisan inkonzisztens adatmennyiséggel rendelkezik, az ügyfél használhatja a *legutóbbi szinkronizálás időpontját* , amelyet bármikor lekérhet a tárolási szolgáltatás lekérdezésével. Ez azt jelzi, hogy mikor történt a másodlagos régióban lévő adategység utolsó egységessége, és ha a szolgáltatás az adott időpontot megelőzően az összes tranzakciót alkalmazta. A fenti példában látható példa azt követően, hogy a szolgáltatás beszúrja az **alkalmazott** entitást a másodlagos régióban, a legutóbbi szinkronizálási idő a *T1*értékre van állítva. Addig marad *T1* , amíg a szolgáltatás frissíti a másodlagos régióban lévő **Employee** entitást, ha a *T6*értékre van állítva. Ha az ügyfél lekéri a legutóbbi szinkronizálási időt, amikor beolvassa az entitást a *T5*-ben, akkor összehasonlíthatja azt az entitás időbélyegével. Ha az entitás időbélyege későbbi, mint az utolsó szinkronizálás ideje, akkor az entitás potenciálisan inkonzisztens állapotban van, és az alkalmazásra vonatkozó megfelelő művelet is megtehető. Ennek a mezőnek a használatával tudnia kell, hogy mikor fejeződött be az elsődleges frissítés.
 
-Az utolsó szinkronizálási időpont ellenőrzéséről a [Tárfiók utolsó szinkronizálási ideje tulajdonságának ellenőrzése című témakörben olvashat.](last-sync-time-get.md)
+A legutóbbi szinkronizálás időpontjának vizsgálatával kapcsolatban lásd: [Storage-fiók utolsó szinkronizálási idejének tulajdonságának](last-sync-time-get.md)megkeresése.
 
 ## <a name="testing"></a>Tesztelés
 
-Fontos annak tesztelése, hogy az alkalmazás a várt módon viselkedik-e, amikor újrapróbálkozási hibákba ütközik. Például meg kell vizsgálnia, hogy az alkalmazás átvált-e a másodlagos és csak olvasható módba, ha problémát észlel, és visszavált, amikor az elsődleges régió ismét elérhetővé válik. Ehhez meg kell szimulálni a újrapróbálható hibákat, és szabályoznia kell, hogy milyen gyakran fordulnak elő.
+Fontos ellenőrizni, hogy az alkalmazás a várt módon viselkedik-e, amikor az újrapróbálkozást lehetővé tevő hibákba ütközik. Például tesztelni kell, hogy az alkalmazás a másodlagosra vált, és csak olvasható módba váltson, amikor problémát észlel, és visszavált, amikor az elsődleges régió újra elérhetővé válik. Ehhez az újrapróbálkozást lehetővé tevő hibákat szimulálni kell, és meg kell határozni, hogy milyen gyakran történjenek.
 
-A [Fiddler](https://www.telerik.com/fiddler) segítségével elhallgathatja és módosíthatja a HTTP-válaszokat egy parancsfájlban. Ez a parancsfájl képes azonosítani az elsődleges végpontból érkező válaszokat, és a HTTP-állapotkódot olyanra módosítja, amelyet a storage-ügyféltár újrapróbálható hibaként ismer fel. Ez a kódrészlet egy egyszerű példát mutat be egy Fiddler-parancsfájlra, amely elfogja az 502-es állapot visszaadásához az **alkalmazotti adatok** táblájával szembeni olvasási kérelmekre adott válaszokat:
+A [Hegedűs](https://www.telerik.com/fiddler) a http-válaszok lehallgatására és módosítására használható egy parancsfájlban. Ez a szkript azonosíthatja az elsődleges végponttól érkező válaszokat, és a HTTP-állapotkódot úgy változtathatja meg, hogy a Storage ügyféloldali kódtár újrapróbálkozást lehetővé tevő hibát észlel. Ez a kódrészlet egy olyan Hegedűs-parancsfájl egyszerű példáját mutatja be, amely elfogja a **employeedata** tábla olvasási kéréseire adott válaszokat, hogy visszaadja a 502 állapotot:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -232,12 +232,12 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Ezt a példát kiterjesztheti a kérelmek szélesebb körének elfogására, és csak néhányon módosíthatja a **responseCode-ot,** hogy jobban szimuláljon egy valós forgatókönyvet. A Fiddler-parancsfájlok testreszabásáról a Fiddler [dokumentációban](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) található Kérelem vagy válasz módosítása című témakörben olvashat bővebben.
+Ezt a példát úgy is kiterjesztheti, hogy a kérések szélesebb körét elhallgassa, és csak néhányat módosítsa a **responseCode** , hogy jobban szimulálja a valós helyzetet. A Hegedűs-parancsfájlok testreszabásával kapcsolatos további információkért lásd: [kérelem vagy válasz módosítása](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) a Hegedűs dokumentációjában.
 
-Ha az alkalmazás írásvédett módra való váltásának küszöbértékeit konfigurálhatóvá tette, könnyebb lesz a viselkedés nem éles tranzakciós kötetekkel való tesztelése.
+Ha elvégezte az alkalmazás csak olvasható módra való váltásának küszöbértékeit, akkor könnyebben tesztelheti a nem éles tranzakciós kötetekkel kapcsolatos viselkedést.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A másodlagos régióból való olvasásról további információt, többek között az Utolsó szinkronizálási idő tulajdonság beállításának további példáját az [Azure Storage Redundancia beállításai és az Olvasási georedundáns tárolás című témakörben talál.](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)
+* További információ a másodlagos régióról való olvasásról, többek között a legutóbbi szinkronizálási idő tulajdonságának beállításáról: az [Azure Storage redundancia beállításai és az olvasási hozzáférés geo-redundáns tárolás](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
-* A teljes minta, amely bemutatja, hogyan lehet a váltás oda-vissza az elsődleges és másodlagos végpontok között, [lásd: Azure minták – Az áramkör-megszakító minta használata AZ RA-GRS tároló.](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)
+* Az elsődleges és másodlagos végpontok közötti váltás menetét bemutató teljes minta: [Azure-minták – az áramkör-megszakító minta és ra-GRS tároló használatával](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

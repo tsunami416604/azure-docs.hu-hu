@@ -1,6 +1,6 @@
 ---
-title: Mozaikréteg hozzáadása térképhez | Microsoft Azure Maps
-description: Ebből a cikkből megtudhatja, hogyan fedheti le a mozaikréteget a térképen a Microsoft Azure Maps Web SDK használatával. A mozaikrétegek lehetővé teszik a képek térképen való megjelenítését.
+title: Csempe réteg hozzáadása térképhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan fedi le egy csempét a térképeken a Microsoft Azure Maps web SDK használatával. A csempe rétegek lehetővé teszik képek megjelenítését egy térképen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,37 +10,37 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988600"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Csemperéteg hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan fedheti át a mozaikréteget a térképen. A mozaikrétegek lehetővé teszik, hogy képeket helyezhet az Azure Maps alaptérképcsempéire. Az Azure Maps csempézési rendszeréről a [Szintek és a csemperács nagyítása című témakörben](zoom-levels-and-tile-grid.md)talál további információt.
+Ez a cikk bemutatja, hogyan fedi le a csempéket a térképre. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. A Azure Maps csempe rendszerével kapcsolatos további információkért lásd: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-A mozaikréteg kiszolgálóról töltődik be a csempékbe. Ezek a képek előre renderelhetők vagy dinamikusan renderelhetők. Az előre renderelt képek ugyanúgy tárolódnak, mint bármely más kép a kiszolgálón, olyan elnevezési konvenció használatával, amelyet a csemperéteg megért. A dinamikusan renderelt képek szolgáltatás segítségével valós időben töltik be a képeket. Az Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) osztály a következő három különböző csempeszolgáltatás-elnevezési konvenciót támogat: 
+Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket lehet előre megjeleníteni vagy dinamikusan megjeleníteni. Az előre megjelenített lemezképek, mint a kiszolgálók bármely más lemezképe, egy elnevezési konvenció használatával, amely a csempe rétegének ismerete. A dinamikusan renderelt képek egy szolgáltatás használatával töltik be a képeket valós időben. Az Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat: 
 
-* X, Y, Nagyítás jelölés - X az oszlop, Y a mozaikrács ban lévő mozaik sorpozíciója, a Nagyítás jelölés pedig a nagyítási szint alapján.
-* Négykulcsos jelölés – Az x, y és a nagyítási adatok egyesítése egyetlen karakterlánc-értékben. Ez a karakterlánc-érték egyetlen csempe egyedi azonosítójává válik.
-* Határolókeret – Adjon meg egy képet a `{west},{south},{east},{north}`Határolókeret koordinátái formátumban: . Ezt a formátumot gyakran használják a [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
+* X, Y, nagyítás jelölése – az X az oszlop, az Y a csempe rácsában lévő csempe sora, a nagyítási szint pedig a nagyítási szint alapján van megadva.
+* Quadkey-jelölés – az x, y és nagyítási adatokat egyetlen karakterlánc-értékre kombinálja. Ez a karakterlánc-érték egyetlen csempe egyedi azonosítója lesz.
+* Határolókeret – a határolókeret koordinátáit tartalmazó képet ad meg: `{west},{south},{east},{north}`. Ezt a formátumot általában a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)használják.
 
 > [!TIP]
-> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) nagyszerű módja annak, hogy nagy adatkészleteket jelenítsen meg a térképen. Nem csak egy mozaikréteg generálható képből, a vektoros adatok mozaikrétegként is renderelhetők. Ha a vektoradatokat mozaikrétegként rendereli, a térképvezérlésnek csak azokat a csempéket kell betöltenie, amelyek fájlméretük kisebb, mint az általuk képviselt vektoradatoknak. Ezt a technikát gyakran használják több millió sornyi adat renderelésére a térképen.
+> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, a vektoros adatok csempe rétegként is megjeleníthető. Ha a vektoros adatmegjelenítést csempe rétegként jeleníti meg, a Térkép vezérlőelemnek csak az általuk képviselt adatmennyiségnél kisebb méretű csempéket kell betöltenie. Ezt a technikát általában több millió adatsor megjelenítésére használják a térképen.
 
-A csempe rétegnek átadott csempe URL-címének http-nek vagy https-URL-nek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonjának, amely a következő paramétereket használja: 
+A csempe rétegbe átadott csempe URL-címnek http vagy HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
-* `{x}`- X helyzetben a csempe. Is `{y}` szüksége `{z}`van, és .
-* `{y}`- Y helyzetben a csempe. Is `{x}` szüksége `{z}`van, és .
-* `{z}`- Zoom szinten a csempe. Is `{x}` szüksége `{y}`van, és .
-* `{quadkey}`- Csempe négykulcsos azonosító alapján a Bing Maps csempe rendszer elnevezési konvenció.
-* `{bbox-epsg-3857}`- Az EPSG 3857 térbeli referenciarendszer formátumú `{west},{south},{east},{north}` határolókeret-karakterlánca.
-* `{subdomain}`- Az altartomány értékek helyőrzője, `subdomain` ha meg van adva, a függvény hozzáadódik.
+* `{x}`-A csempe X pozíciója A és `{y}` a `{z}`is szükséges.
+* `{y}`-A csempe Y pozíciója A és `{x}` a `{z}`is szükséges.
+* `{z}`– A csempe nagyítási szintje A és `{x}` a `{y}`is szükséges.
+* `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
+* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a EPSG `{west},{south},{east},{north}` 3857 térbeli hivatkozási rendszer formátumát jelöli.
+* `{subdomain}`– Az altartomány értékeinek helyőrzője, ha meg van `subdomain` adva, a hozzá lesz adva.
 
 ## <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
- Ez a minta bemutatja, hogyan hozhat létre mozaikréteget, amely mozaikkészletre mutat. Ez a minta az x, y, zoom csempézési rendszert használja. A forrás a csempe réteg egy időjárási radar overlay az [Iowa Környezetvédelmi Mesonet az Iowa State University](https://mesonet.agron.iastate.edu/ogc/). A radaradatok megtekintésekor ideális esetben a felhasználók tisztán látnák a városok címkéit, ahogy navigálnak a térképen. Ez a viselkedés úgy valósítható meg, `labels` hogy a mozaikréteget a réteg alá szúrja be.
+ Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ez a példa az x, y, zoom csempe rendszerét használja. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. A radar-információk megtekintésekor ideális esetben a felhasználók egyértelműen megtekinthetik a városok feliratait, ahogy azok a térképen navigálnak. Ez a viselkedés úgy valósítható meg, ha beszúrja a csempe `labels` réteget a réteg alá.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -52,20 +52,20 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-Az alábbiakban a fenti funkciók teljes futókód-mintája látható.
+Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Mozaikréteg X, Y és Z használatával' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Tollcsempe réteget X, Y és Z használatával</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
+<iframe height='500' scrolling='no' title='Réteg csempe X, Y és Z használatával' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>csempe réteget X, Y és Z használatával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) értékkel a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customize-a-tile-layer"></a>Mozaikréteg testreszabása
+## <a name="customize-a-tile-layer"></a>Csempe rétegének testreszabása
 
-A csemperéteg-osztály nak számos formázási lehetősége van. Itt van egy szerszám -hoz megpróbál őket ki.
+A csempe réteg osztályának számos stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Mozaikréteg beállításai' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Tollmozaik réteg beállításaiaz</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen oldalon</a>.
+<iframe height='700' scrolling='no' title='Csempe rétegének beállításai' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>csempe rétegének beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések
@@ -73,12 +73,12 @@ A csemperéteg-osztály nak számos formázási lehetősége van. Itt van egy sz
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Mozaikréteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
+> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
-További kódmintákat a térképekhez további kódmintákért tekintse meg:
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
 > [Rendszerképréteg hozzáadása](./map-add-image-layer.md)

@@ -1,6 +1,6 @@
 ---
-title: A projektvezető feladatai a csapatadat-elemzési folyamatban
-description: A projektérdeklődők tevékenységeinek részletes forgatókönyve egy csapatadat-elemzési folyamat csapatában
+title: A projekthez vezető feladatok a csoportos adatelemzési folyamat során
+description: Egy projekt feladatainak részletes bemutatása egy csoportos adatelemzési folyamat munkacsoportján
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,90 +11,90 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76714410"
 ---
-# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projektvezető tevékenységek a csapatadat-elemzési folyamatban
+# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projekt-érdeklődői feladatok a csoportos adatelemzési folyamatban
 
-Ez a cikk azokat a tevékenységeket ismerteti, amelyeket a *projektérdeklődők* befejeznek, hogy a csapatcsoportuk számára egy tárházat állítsanak be a [csapatadat-elemzési folyamatban](overview.md) (TDSP). A TDSP a Microsoft által kifejlesztett keretrendszer, amely strukturált tevékenységsorozatot biztosít a felhőalapú, prediktív elemzési megoldások hatékony végrehajtásához. A TDSP célja az együttműködés és a csapattanulás javítása. A TDSP-n szabványosító adatelemzési csoport személyzeti szerepköreinek és társított feladatainak vázlatát a [Csapatadat-elemzési folyamat szerepkörei és feladatai című témakörben tetszésben tetszésszerint olvassa](roles-tasks.md)el.
+Ez a cikk azokat a feladatokat ismerteti, amelyekkel a *projekt* elvégezhető, hogy a [csoportos adatelemzési folyamat](overview.md) (TDSP) adattárat állítson be a Project csapatának. A TDSP a Microsoft által kifejlesztett keretrendszer, amely strukturált tevékenységeket biztosít a felhőalapú, prediktív elemzési megoldások hatékony végrehajtásához. A TDSP célja az együttműködés és a csapatmunka fejlesztése. A munkatársak szerepköreinek és a TDSP szabványosított adatelemzési csapathoz kapcsolódó feladatoknak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
-A projektvezető kezeli az egyes adatszakértők napi tevékenységeit egy adott adatelemzési projekten a TDSP-ben. Az alábbi ábra a projektvezető-tevékenységek munkafolyamatát mutatja be:
+A projekt a TDSP egy adott adatelemzési projekten belül az egyes adatszakértők napi tevékenységeit kezeli. A következő ábrán a Project Lead-feladatok munkafolyamata látható:
 
-![Projektvezető tevékenység munkafolyamata](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![Projekt-érdeklődői feladat munkafolyamata](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
-Ez az oktatóanyag ismerteti az 1. 
+Ez az oktatóanyag az 1. lépés: a Project-Tárház létrehozása és a 2. lépés: a csapat ProjectTemplate adattárból származó projekt-adattár bevezetését ismerteti. 
 
-3. lépés: Szolgáltatásmunkaelem létrehozása a projekthez, és 4. [Agile development of data science projects](agile-development.md)
+A 3. lépés: a szolgáltatás munkaelemének létrehozása a projekthez és a 4. lépés: a projekt szakaszaihoz tartozó történetek hozzáadása című témakörben talál további információt az [adatelemzési projektek agilis fejlesztéséről](agile-development.md).
 
-5. lépés: Tárolási/elemzési eszközök létrehozása és testreszabása, és szükség esetén a [Csapatadatok és elemzési erőforrások létrehozása](team-lead-tasks.md#create-team-data-and-analytics-resources)című témakörben.
+5. lépés: a tárolási/elemzési eszközök és megosztások létrehozása és testreszabása, ha szükséges, tekintse meg a [Team-adatok és-elemzési erőforrások létrehozása](team-lead-tasks.md#create-team-data-and-analytics-resources)című témakört.
 
-6. lépés: A projekttár háztár biztonsági vezérlésének beállítása a [Csapattagok hozzáadása és az engedélyek konfigurálása című témakörben](team-lead-tasks.md#add-team-members-and-configure-permissions)látható.
+6. lépés: a Project repository biztonsági ellenőrzésének beállítása című témakörben talál további információt a [csapattagok hozzáadása és az engedélyek konfigurálása](team-lead-tasks.md#add-team-members-and-configure-permissions)című részben.
 
 > [!NOTE] 
-> Ez a cikk az Azure Repos-t használja egy TDSP-projekt beállításához, mert így valósíthatja meg a TDSP-t a Microsoftnál. Ha a csapat egy másik kódüzemeltetési platformot használ, a projektvezető-tevékenységek azonosak, de a befejezésük módja eltérő lehet.
+> Ez a cikk az Azure Repos használatával állít be egy TDSP-projektet, mert ez a Microsoft TDSP megvalósításának módja. Ha a csapata egy másik kód-üzemeltetési platformot használ, a projekt vezető feladatai ugyanazok, de a végrehajtás módja eltérő lehet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy a [csoportvezető](group-manager-tasks.md) és a [csoportvezető](team-lead-tasks.md) a következő erőforrásokat és engedélyeket állította be:
+Ez az oktatóanyag feltételezi, hogy a csoportvezető és a [Team](team-lead-tasks.md) [Manager](group-manager-tasks.md) a következő erőforrásokat és engedélyeket állította be:
 
-- Az Azure **DevOps-szervezet** az adategységhez
-- Csapatprojekt **project** az adatelemzési csapat számára
-- Csapatsablon- és **segédprogram-adattárak**
-- **A** projekt adattárai létrehozásához és szerkesztéséhez a szervezeti fiókhoz szükséges engedélyek
+- Az adategységhez tartozó Azure DevOps- **szervezet**
+- Az adatelemzési csapathoz tartozó csoportos **projekt**
+- A Team template és a Utilities **tárházai**
+- A szervezeti fiók **engedélyei** a projekt adattárainak létrehozásához és szerkesztéséhez
 
-A klónozó adattárak és a tartalom módosítása a helyi gépen vagy adatelemzési virtuális gép (DSVM), vagy az Azure-fájltárolás beállítása és csatlakoztatása a DSVM, akkor is meg kell fontolnia ezt az ellenőrzőlistát:
+A Tárházak klónozásához és a tartalmak módosításához a helyi gépen vagy Data Science Virtual Machineon (DSVM), illetve az Azure file Storage beállítása és csatlakoztatása a DSVM-hez az alábbi ellenőrzőlista is szükséges:
 
 - Azure-előfizetés.
-- Git telepítve van a gépre. Ha DSVM-et használ, a Git előre telepítve van. Ellenkező esetben tekintse meg a [Platformok és eszközök függeléket.](platforms-and-tools.md#appendix)
-- Ha DSVM-et szeretne használni, az Azure-ban létrehozott és konfigurált Windows vagy Linux DSVM. További információt és utasításokat az [Adatelemzési virtuálisgép dokumentációjában talál.](/azure/machine-learning/data-science-virtual-machine/)
-- Windows DSVM esetén a [Git credential manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a számítógépen. A *README.md* fájlban görgessen le a **Letöltés és telepítés** szakaszhoz, és válassza ki a legújabb **telepítőt**. Töltse le az *.exe* telepítőt a telepítő lapról, és futtassa azt. 
-- Linuxos DSVM esetén a DSVM-en beállított és az Azure DevOps-ban hozzáadott SSH nyilvános kulcs. További információt és utasításokat a Platformok és eszközök függelék **SSH-kulcs létrehozása** [című szakaszában talál.](platforms-and-tools.md#appendix) 
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
+- Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
+- Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
 
-## <a name="create-a-project-repository-in-your-team-project"></a>Projekttár létrehozása a csapatprojektben
+## <a name="create-a-project-repository-in-your-team-project"></a>Projekt Tárház létrehozása a csapat projektjeiben
 
-Projekttár létrehozása a csapat **MyTeam-projektjében:**
+Projekt Tárház létrehozása a csapat **MyTeam** -projektben:
 
-1. Nyissa meg a csapat **projektösszefoglaló** lapját *a https:\//\<kiszolgálónév>/\<szervezet neve>/\<csapatnév>*, például **https:\//dev.azure.com/DataScienceUnit/MyTeam**, és válassza a **Repók** lehetőséget a bal oldali navigációs sávon. 
+1. Nyissa meg a csapat projekt **-Összefoglalás** lapját a *https\//\<: kiszolgálónév>\</szervezet neve>\</csapat neve>*, például **https:\//dev.Azure.com/DataScienceUnit/MyTeam**, és válassza a **reposs** elemet a bal oldali navigációs sávon. 
    
-1. Válassza ki a tárház nevét a lap tetején, majd válassza az **Új tárház** lehetőséget a legördülő menüből.
+1. Válassza ki az adattár nevét az oldal tetején, majd válassza az **új tárház** lehetőséget a legördülő menüből.
    
    ![Új tárház kiválasztása](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. Az **Új tárház létrehozása** párbeszédpanelen győződjön meg arról, hogy a **Git** a **Típus**csoportban van kiválasztva. Írja be a *DSProject1 értéket* **a Tárház neve mezőbe,** majd válassza **a Létrehozás lehetőséget.**
+1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus**területen. Adja meg a *DSProject1* a **tárház neve**területen, majd válassza a **Létrehozás**lehetőséget.
    
    ![Tárház létrehozása](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
-1. Ellenőrizze, hogy láthatja-e az új **DSProject1** tárházat a projektbeállítások lapon. 
+1. Győződjön meg arról, hogy az új **DSProject1** -tárház megjelenik a projekt beállításai lapon. 
    
-   ![Projekttár a Projektbeállítások párbeszédpanelen](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
+   ![Projekt adattár a projekt beállításaiban](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-## <a name="import-the-team-template-into-your-project-repository"></a>A csapatsablon importálása a projekttárházba
+## <a name="import-the-team-template-into-your-project-repository"></a>A csoport sablonjának importálása a projekt adattárba
 
-A projekttár feltöltése a csapatsablon-tárház tartalmával:
+A Project-tárház feltöltése a Team template-tárház tartalmával:
 
-1. A csapat **projektösszegzés** lapján válassza a **Repók** lehetőséget a bal oldali navigációs sávon. 
+1. A csapat projekt- **Összefoglalás** lapján válassza a **repók** lehetőséget a bal oldali navigációs sávon. 
    
-1. Válassza ki a tárház nevét a lap tetején, és válassza a **DSProject1** elemet a legördülő menüből.
+1. Válassza ki a tárház nevét az oldal tetején, majd válassza a **DSProject1** lehetőséget a legördülő listából.
    
 1. A **DSProject1 üres** lapon válassza az **Importálás**lehetőséget. 
    
    ![Importálás kiválasztása](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. A **Git-tárház importálása** párbeszédpanelen válassza a **Git** **forrástípust,** és írja be a **TeamTemplate** tárház URL-címét a **Klónozó URL csoportban.** Az URL-cím *\//\<https:\<kiszolgálónév>/ szervezet neve\<>/ csapatnév>/_git/\<csapatsablon tárház neve>. * Például: **\/https: /dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https\//\<: kiszolgálónév>/\<szervezet neve>/\<csapat neve>/_git/\<Team template adattár neve>*. Például: **https:\//dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
-1. Kattintson az **Importálás** gombra. A csapatsablon-tárház tartalma a projekttárházba kerül. 
+1. Kattintson az **Importálás** gombra. A Team template-tárház tartalmát a rendszer importálja a projekt adattárba. 
    
-   ![Csapatsablon-tárház importálása](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
+   ![Csoport sablonjának importálása adattár](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-Ha a projekttár tartalmát a projekt egyedi igényeinek megfelelően testre kell szabnia, hozzáadhat, törölhet vagy módosíthat tárházfájlokat és -mappákat. Közvetlenül dolgozhat az Azure-tárházakban, vagy klónozhatja a tárházat a helyi számítógépre vagy a DSVM-re, módosításokat hajthat végre, és véglegesítheti és leküldéses a frissítéseket a megosztott projekttárházba. Kövesse a [csoportadattárak tartalmának testreszabása](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)című útmutatót.
+Ha testre kell szabnia a projekt-tárház tartalmát, hogy az megfeleljen a projekt konkrét igényeinek, hozzáadhat, törölhet vagy módosíthat adattár-fájlokat és mappákat. Közvetlenül dolgozhat az Azure-adattárakban, vagy a tárházat a helyi gépre vagy DSVM, módosíthatja és véglegesítheti, és leküldheti a frissítéseket a megosztott projekt adattárba. Kövesse a Team- [Tárházak tartalmának testreszabása](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)című témakör utasításait.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a csapatadat-elemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes leírására mutató hivatkozásokat olvashat:
+Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
-- [Csoportkezelői feladatok adatelemzési csoportszámára](group-manager-tasks.md)
-- [Csapatvezető-feladatok egy adatelemzési csapatszámára](team-lead-tasks.md)
-- [Egyéni közreműködői feladatok egy adatelemzési csapatszámára](project-ic-tasks.md)
+- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
+- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
+- [Adatelemzési csapat Egyéni közreműködő feladatai](project-ic-tasks.md)

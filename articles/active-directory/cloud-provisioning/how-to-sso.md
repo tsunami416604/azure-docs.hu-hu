@@ -1,6 +1,6 @@
 ---
-title: Az egyszeri bejelentkezés használata a felhőalapú kiépítéssel
-description: Ez a cikk ismerteti, hogyan telepítheti és használhatja az sso a felhőkiépítés.
+title: Egyszeri bejelentkezés használata a felhőalapú kiépítés során
+description: Ez a cikk bemutatja, hogyan telepítheti és használhatja az SSO-t a felhőalapú kiépítés során.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908989"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>Egyszeri bejelentkezés használata felhőalapú kiépítéssel
-A következő dokumentum ismerteti, hogyan használhatja az egyszeri bejelentkezés a felhőkiépítés.
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>Egyszeri bejelentkezés használata a felhőalapú kiépítés használatával
+Az alábbi dokumentum azt ismerteti, hogyan használhatja az egyszeri bejelentkezést a felhőalapú kiépítés során.
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]
 

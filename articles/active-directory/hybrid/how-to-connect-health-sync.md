@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897205"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
@@ -64,19 +64,19 @@ Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure 
 
 ![Szinkronizálási késések](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report"></a>Objektumszint-szinkronizálási hibajelentés
+## <a name="object-level-synchronization-error-report"></a>Objektum szintű szinkronizációs hibajelentés
 Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a Windows Server AD és az Azure AD közötti, Azure AD Connect használatával történő identitásszinkronizálás közben jelentkeznek.
 
 * A jelentésben a szinkronizáló ügyfél (az Azure AD Connect 1.1.281.0 vagy újabb verziói) által rögzített hibák szerepelnek
 * Azokat a hibákat tartalmazza, amelyek a szinkronizálási motor legutóbbi szinkronizálási művelete során jelentkeztek. („Exportálás” az Azure AD Connectoron.)
 * Ahhoz, hogy a jelentés a legfrissebb adatokat tartalmazza, az Azure AD Connect Health szinkronizálási ügynöknek a megfelelő végpontokra irányuló kimenő kapcsolattal kell rendelkeznie.
-* A jelentés **30 percenként frissül** az Azure AD Connect Health ügynök által a szinkronizáláshoz feltöltött adatok használatával. A következő kulcsfontosságú képességeket biztosítja:
+* A jelentés **30 percenként frissül** a Azure ad Connect Health-ügynök által a szinkronizáláshoz feltöltött adatszolgáltatások használatával. A következő főbb képességeket biztosítja
 
   * Hibák kategorizálása
   * Objektumlista kategóriánként összesített hibákkal
   * A hibákkal kapcsolatos minden adat egy helyen látható
   * Objektumok összehasonlítása ütközési hibák alapján
-  * A hibajelentés letöltése CVS-ként
+  * Hibajelentés letöltése CVS-ként
 
 ### <a name="categorization-of-errors"></a>Hibák kategorizálása
 A jelentés az alábbi kategóriák szerint csoportosítja a jelentkező szinkronizálási hibákat:
@@ -114,12 +114,12 @@ Az Exportálás gomb kiválasztásával letölthet egy CSV-fájlt, amely tartalm
 Bizonyos duplikált attribútumok felhasználói forráshorgony-frissítést is érintő szinkronizálási hibái esetén a hibákat javíthatja közvetlenül a portálról. További információ a [duplikált attribútumok szinkronizálási hibáinak diagnosztizálásáról és javításáról](how-to-connect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Hibák elhárítása szinkronizálás közben](tshoot-connect-sync-errors.md)
+* [Hibaelhárítási hibák a szinkronizálás során](tshoot-connect-sync-errors.md)
 * [Duplikált attribútummal kapcsolatos rugalmasság](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)
-* [Az Azure AD Connect Health műveletei](how-to-connect-health-operations.md)
+* [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](how-to-connect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)
 * [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md)
-* [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md)
-* [Az Azure AD Connect állapotverzióinak előzményei](reference-connect-health-version-history.md)
+* [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](reference-connect-health-faq.md)
+* [Azure AD Connect Health korábbi verziók](reference-connect-health-version-history.md)

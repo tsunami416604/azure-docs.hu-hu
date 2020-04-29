@@ -1,6 +1,6 @@
 ---
-title: A csapatadat-elemzési folyamat életciklusának ügyfélelfogadási szakasza
-description: Az adatelemzési projektek ügyfélelfogadási szakaszának céljai, feladatai és szállítói
+title: A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
+description: Az adatelemzési projektek vevői elfogadási szakaszának célja, feladatai és termékei
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,52 +12,52 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720520"
 ---
-# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>A csapatadat-elemzési folyamat életciklusának ügyfélelfogadási szakasza
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
 
-Ez a cikk ismerteti a célokat, feladatokat és a csapatadat-elemzési folyamat (TDSP) ügyfél-elfogadási szakaszához kapcsolódó célokat, feladatokat és eredményeket. Ez a folyamat egy ajánlott életciklust biztosít, amely az adatelemzési projektek strukturálásához használható. Az életciklus felvázolja azokat a főbb szakaszokat, amelyeket a projektek általában végrehajtanak, gyakran ismétlődően:
+Ez a cikk a csoportos adatelemzési folyamat (TDSP) ügyfél-elfogadási szakaszához kapcsolódó célokat, feladatokat és teljesítéseket ismerteti. Ez a folyamat egy javasolt életciklust biztosít, amely segítségével strukturálhatja az adatelemzési projekteket. Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
 
    1. **Üzleti ismertetés**
    2. **Adatgyűjtés és adatértelmezés**
    3. **Modellezés**
-   4. **Környezet**
+   4. **Üzembe helyezés**
    5. **Felhasználói elfogadás**
 
-Itt van egy vizuális ábrázolása a TDSP életciklus: 
+Itt látható a TDSP életciklus vizuális ábrázolása: 
 
-![TDSP életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cél
-**A projektvégtermék véglegesítése**: Győződjön meg arról, hogy a folyamat, a modell és azok éles környezetben való üzembe helyezése megfelel-e az ügyfél céljainak.
+**Projekt-végtermékek véglegesítése**: Ellenőrizze, hogy a folyamat, a modell és az üzemi környezetben való üzembe helyezése megfelel-e az ügyfél célkitűzéseinek.
 
-## <a name="how-to-do-it"></a>Hogyan kell csinálni
-Ebben a szakaszban két fő feladatfoglalkozik:
+## <a name="how-to-do-it"></a>Útmutató
+Ebben a szakaszban két fő feladat foglalkozik:
 
-   * **Rendszerérvényesítés:** Győződjön meg arról, hogy az üzembe helyezett modell és folyamat megfelel-e az ügyfél igényeinek.
-   * **Projekt átadása:** Adja át a projektet annak az entitásnak, amely a rendszert éles környezetben fogja futtatni.
+   * **Rendszer-ellenőrzés**: Ellenőrizze, hogy az üzembe helyezett modell és a folyamat megfelel-e az ügyfél igényeinek.
+   * **Projekt-kikapcsolás**: kapcsolja ki a projektet arra az entitásra, amelyen a rendszer éles környezetben fog futni.
 
-Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igényeiknek, és hogy elfogadható pontossággal válaszol-e a kérdésekre, hogy a rendszert éles környezetben telepítsék az ügyfél alkalmazásáltali használatra. Minden dokumentáció véglegesítésre és felülvizsgálatra kerül. A projektet átadják a műveletekért felelős entitásnak. Ez az entitás lehet például egy informatikai vagy ügyfél-adatelemzési csapat, vagy az ügyfél ügynöke, aki felelős a rendszer éles környezetben történő futtatásáért. 
+Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igényeknek, és hogy a megfelelő pontossággal válaszol-e a rendszer éles környezetben való üzembe helyezésére az ügyfél alkalmazása általi használatra. Az összes dokumentáció véglegesítése és felülvizsgálata megtörténik. A projekt átadásra kerül a műveletekért felelős entitás számára. Ez az entitás lehet például egy IT vagy Customer adattudományi csapat, vagy az ügyfélnek a rendszer éles környezetben való futtatásért felelős ügynöke. 
 
 ## <a name="artifacts"></a>Összetevők
-A fő műtárgy, amelyet ebben a végső szakaszban hoztak létre, a **projekt kilépési jelentése az ügyfél számára**. Ez a technikai jelentés tartalmazza a projekt minden olyan részletét, amely hasznos a rendszer működtetésének megismeréséhez. A TDSP [kilépési jelentéssablont](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) biztosít. Használhatja a sablont úgy, ahogy van, vagy testreszabhatja az adott ügyféligényeknek megfelelően. 
+Az ebben az utolsó szakaszban létrehozott fő összetevő az **ügyfélre vonatkozó projekt kilépési jelentése**. Ez a technikai jelentés tartalmazza a teljes projekt részletes ismertetését, amely a rendszer működésének megismeréséhez hasznos. A TDSP egy [kilépési jelentési](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) sablont biztosít. A sablont használhatja, vagy testre is szabhatja az ügyfél igényeihez. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A TDSP életciklusának egyes lépéseire mutató hivatkozások:
+Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 
    1. [Üzleti ismertetés](lifecycle-business-understanding.md)
    2. [Adatgyűjtés és adatértelmezés](lifecycle-data.md)
    3. [Modellezés](lifecycle-modeling.md)
-   4. [Környezet](lifecycle-deployment.md)
+   4. [Üzembe helyezés](lifecycle-deployment.md)
    5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
-Teljes forgatókönyveket biztosítunk, amelyek bemutatják a folyamat összes lépését az adott forgatókönyvekhez. A [Példa forgatókönyvek](walkthroughs.md) cikk hivatkozásokat és miniatűr leírásokat tartalmazó forgatókönyvek listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőt, a helyszíni eszközöket és szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
+Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-Példák az Azure Machine Learning Studio tdsp-kben végrehajtott lépések végrehajtásáról: [Use the TDSP with Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

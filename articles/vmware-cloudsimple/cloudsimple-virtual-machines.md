@@ -10,32 +10,32 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024908"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>A CloudSimple virtuális gépek áttekintése
+# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple Virtual Machines – áttekintés
 
-A CloudSimple lehetővé teszi a VMware virtuális gépek (VM-ek) kezelését az Azure Portalról.  A virtuális gömbfürtből származó fürt vagy erőforráskészlet kezelése az Azure-on keresztül történik az előfizetéshez való hozzárendeléssel.
+A CloudSimple lehetővé teszi a VMware virtuális gépek (VM-EK) kezelését a Azure Portal.  A vSphere-fürtről származó fürt vagy erőforráskészlet az Azure-on keresztül felügyelhető az előfizetéshez való hozzárendeléssel.
 
-CloudSimple virtuális gép létrehozásához az Azure-ból, a virtuális gép sablon léteznie kell a private cloud vCenter.  A sablon az operációs rendszer és az alkalmazások testreszabására szolgál.  A sablon virtuális gép lehet megerősített, hogy megfeleljen a vállalati biztonsági házirendek.  A sablon segítségével virtuális gépeket hozhat létre, majd az Azure Portalon egy önkiszolgáló modell használatával használhatja fel őket.
+Ha CloudSimple virtuális gépet szeretne létrehozni az Azure-ból, egy virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter.  A sablon az operációs rendszer és az alkalmazások testreszabására szolgál.  A sablon virtuális gépe megerősíthető, hogy megfeleljen a vállalati biztonsági házirendeknek.  A sablon segítségével virtuális gépeket hozhat létre, majd önkiszolgáló modell használatával felhasználhatja azokat a Azure Portal.
 
 ## <a name="benefits"></a>Előnyök
 
-Az Azure Portalcloudtól származó CloudSimple virtuális gépek önkiszolgáló mechanizmust biztosítanak a felhasználók számára a VMware virtuális gépek létrehozásához és kezeléséhez.
+A Azure Portal CloudSimple virtuális gépei olyan önkiszolgáló mechanizmust biztosítanak, amellyel a felhasználók VMware virtuális gépeket hozhatnak létre és kezelhetnek.
 
-* CloudSimple virtuális gép létrehozása a privát felhőbeli vCenteren
-* Virtuálisgép-tulajdonságok kezelése
+* CloudSimple virtuális gép létrehozása a saját Felhőbeli vCenter
+* Virtuális gép tulajdonságainak kezelése
   * Lemezek hozzáadása/eltávolítása
   * Hálózati adapterek hozzáadása/eltávolítása
 * A CloudSimple virtuális gép energiagazdálkodási műveletei
-  * Be- és kikapcsolás
+  * Bekapcsolás és kikapcsolás
   * Virtuális gép alaphelyzetbe állítása
 * Virtuális gép törlése
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [használható vmware virtuális gépek az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* Az [Azure-előfizetés leképezése](azure-subscription-mapping.md)
+* Ismerje meg, hogyan használhatja [a VMWare virtuális gépeket az Azure](quickstart-create-vmware-virtual-machine.md) -ban
+* Ismerje meg, hogyan [képezhető le Azure-előfizetése](azure-subscription-mapping.md)

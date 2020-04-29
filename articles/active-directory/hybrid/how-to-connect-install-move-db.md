@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019281"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
@@ -25,13 +25,13 @@ Ez a dokumentum azt mutatja be, hogyan helyezhető át az Azure AD Connect-adatb
 ## <a name="about-this-scenario"></a>A forgatókönyv ismertetése
 Szeretnénk néhány információval kezdeni, amelyek erre a forgatókönyvre vonatkoznak.  Az Azure AD Connect 1.1.819.0-s verziója van telepítve egy önálló Windows Server 2016 tartományvezérlőn,  amely az adatbázishoz a beépített SQL Server 2012 Express Editiont használja.  Az adatbázis egy SQL Server 2017 kiszolgálóra lesz áthelyezve.
 
-![forgatókönyv-architektúra](media/how-to-connect-install-move-db/move1.png)
+![forgatókönyv architektúrája](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Az Azure AD Connect-adatbázis áthelyezése
 Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távoli SQL Serverre.
 
 1. Az Azure AD Connect-kiszolgálón lépjen a **Szolgáltatások** részhez, és állítsa le a **Microsoft Azure AD-szinkronizáló** szolgáltatást.
-2. Keresse meg a **%ProgramFiles%\Microsoft Azure AD Sync\Data mappát,** és másolja az **ADSync.mdf** és **ADSync_log.ldf** fájlokat a távoli SQL Server kiszolgálóra.
+2. Keresse meg a **%ProgramFiles%\Microsoft Azure ad Sync\Data** mappát, és másolja a **AdSync. MDF** és **ADSync_log. ldf** fájlokat a távoli SQL Serverba.
 3. Indítsa újra a **Microsoft Azure AD-szinkronizáló** szolgáltatást az Azure AD Connect-kiszolgálón.
 4. Az Azure AD Connect eltávolításához lépjen a következő helyre: Vezérlőpult – Programok – Programok és szolgáltatások.  Válassza ki a Microsoft Azure AD Connectet, és kattintson a fent található eltávolítási gombra.
 5. A távoli SQL Serveren nyissa meg az SQL Server Management Studio alkalmazást.
@@ -42,11 +42,11 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 8. Az adatbázis csatolása után lépjen vissza az Azure AD Connect-kiszolgálóhoz, és telepítse az Azure AD Connectet.
 9. Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
    ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db1.png)
-10. Indítson új parancssort vagy PowerShell-munkamenetet. Keresse meg \<a mappameghajtót>\programfájlok\Microsoft Azure AD Connect. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
+10. Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a \<mappa meghajtó> \program files\microsoft Azure ad Connect. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db3.png)
-12. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
+12. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Például:         
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db4.png)           
 
 13. A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
@@ -64,7 +64,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db8.png)
  
  
-17. A **Konfigurálásra kész** képernyőn kattintson a **Telepítés gombra.**
+17. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db9.png)
  
  

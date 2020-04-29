@@ -1,6 +1,6 @@
 ---
-title: Kvóták és korlátok – Azure Event Hubs | Microsoft dokumentumok
-description: Ez a cikk korlátozza és kvóták az Azure Event Hubs. Például az előfizetésenkénti névterek száma, az eseményközpontok száma névtérenként.
+title: Kvóták és korlátozások – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk az Azure Event Hubs korlátozásait és kvótáit tartalmazza. Például az előfizetéshez tartozó névterek száma, az Event hubok száma névtérben.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: bbe747228fa2f587bc1369c3cb1fbbc91d1817e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309540"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure Event Hubs-kvóták és korlátozások
 
-Ez a szakasz az Azure Event Hubs alapvető kvótáit és korlátait sorolja fel.
+Ez a szakasz az Azure Event Hubs alapszintű kvótáit és korlátait sorolja fel.
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -32,6 +32,6 @@ Ez a szakasz az Azure Event Hubs alapvető kvótáit és korlátait sorolja fel.
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
-* [Eseményközpontok automatikus felfújása](event-hubs-auto-inflate.md)
+* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
+* [Event Hubs automatikus kiemelés](event-hubs-auto-inflate.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

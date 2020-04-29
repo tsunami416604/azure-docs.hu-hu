@@ -1,6 +1,6 @@
 ---
-title: A tartalom titkosítása tárolótitkosítással az AMS REST API használatával
-description: Ismerje meg, hogyan titkosíthatja a tartalmat tárolótitkosítással az AMS REST API-k használatával.
+title: A tartalom titkosítása a Storage encryption használatával AMS REST API
+description: Megtudhatja, hogyan titkosíthatja a tartalmat a Storage encryption használatával az AMS REST API-kkal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,71 +15,71 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773602"
 ---
-# <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása tárolótitkosítással 
+# <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással 
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2-höz nem ad nak hozzá új szolgáltatásokat vagy funkciókat. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >   
 
-Erősen ajánlott a tartalom helyi titkosítása AES-256 bites titkosítással, majd töltse fel az Azure Storage-ba, ahol tárolja titkosítva.
+Javasoljuk, hogy helyileg Titkosítsa a tartalmakat AES-256 bites titkosítással, majd töltse fel azt az Azure Storage-ba, ahol a tárolása titkosított állapotban van.
 
-Ez a cikk áttekintést nyújt az AMS-tárolótitkosításról, és bemutatja, hogyan töltheti fel a titkosított tárolótartalmat:
+Ez a cikk áttekintést nyújt az AMS Storage-titkosításról, és bemutatja, hogyan tölthetők fel a Storage titkosított tartalma:
 
 * Hozzon létre egy tartalomkulcsot.
-* Hozzon létre egy eszközt. Állítsa az AssetCreationOption beállítást StorageEncryption értékre az eszköz létrehozásakor.
+* Hozzon létre egy eszközt. Állítsa be a AssetCreationOption StorageEncryption az eszköz létrehozásakor.
   
-     A titkosított eszközök tartalomkulcsokhoz vannak társítva.
-* A tartalomkulcs csatolása az eszközhöz.  
-* Állítsa be a titkosítással kapcsolatos paramétereket az AssetFile entitásokon.
+     A titkosított eszközök a tartalmi kulcsokkal vannak társítva.
+* A tartalmi kulcs összekapcsolása az objektummal.  
+* Állítsa be a titkosítással kapcsolatos paramétereket a AssetFile entitásokra.
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
-Ha egy tároló titkosított eszközt szeretne kézbesíteni, konfigurálnia kell az eszköz kézbesítési szabályzatát. Az eszköz streamelése előtt a streamelési kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési szabályzat használatával streameli a tartalmat. További információt az [Eszközkézbesítési házirendek konfigurálása című témakörben talál.](media-services-rest-configure-asset-delivery-policy.md)
+Ha titkosított eszközt szeretne kézbesíteni, konfigurálnia kell az eszköz kézbesítési házirendjét. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel továbbítja a tartalmat. További információ: az [eszközök kézbesítési házirendjeinek konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 
-Amikor a Media Services entitásait éri el, meghatározott fejlécmezőket és értékeket kell beállítania a HTTP-kérelmekben. További információt a [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md)című témakörben talál. 
+A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md). 
 
-### <a name="storage-side-encryption"></a>Tárolási oldali titkosítás
+### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
 
 |Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Media Services storage titkosítása|AES-256 titkosítás, a Media Services által kezelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
-|[Tárolószolgáltatás titkosítása inaktív adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, az Azure vagy az ügyfél által kezelt kulcs|Támogatott|Támogatott|
-|[Tároló ügyféloldali titkosítása](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure storage által kínált ügyféloldali titkosítás, amelyet az ügyfél kezel a Key Vaultban|Nem támogatott|Nem támogatott|
+|Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
+|[Inaktív adatok Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
+|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vault|Nem támogatott|Nem támogatott|
 
-<sup>1</sup> Bár a Media Services támogatja a tartalom tiszta/titkosítás nélküli kezelését, ez nem ajánlott.
+<sup>1</sup> míg Media Services támogatja a tartalom törlését, illetve titkosítás nélkül, nem ajánlott.
 
-<sup>2</sup> A Media Services v3-as rendszerben a tárolótitkosítás (AES-256 titkosítás) csak akkor támogatott visszamenőleges kompatibilitás esetén, ha az eszközök a Media Services v2-vel jöttek létre. Jelentés: v3 működik a meglévő tároló titkosított eszközök, de nem teszi lehetővé az újak létrehozását.
+<sup>2</sup> Media Services v3-as verzióban a Storage encryption (AES-256 encryption) csak akkor támogatott a visszamenőleges kompatibilitás érdekében, ha az eszközök Media Services v2-mel lettek létrehozva. A v3 azt jelenti, hogy a meglévő tárolók titkosított eszközeivel működik együtt, de nem engedélyezi újak létrehozását.
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
-Az AMS API-hoz való csatlakozásról az [Access the Azure Media Services API azure AD-hitelesítéssel című témakörben](media-services-use-aad-auth-to-access-ams-api.md)talál további információt. 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="storage-encryption-overview"></a>Tárolási titkosítás – áttekintés
-Az AMS-tároló titkosítása a teljes fájlra alkalmazza az **AES-CTR** módtitkosítást.  Az AES-CTR mód egy blokktitkosítás, amely tetszőleges hosszúságú adatokat képes titkosítani anélkül, hogy kikellene tömíteni. Úgy működik, hogy titkosítja a számláló blokk az AES algoritmus, majd XOR-ing kimenetét AES az adatokat, hogy titkosítsa vagy visszafejti.  A használt számlálóblokk úgy épül fel, hogy az InitializationVector értékét a számláló értékének 0-7 bájtjára másolja, és a számláló 8–15 bájtja nullára van állítva. A 16 bájtos számlálóblokk ból a 8–15 bájtot (azaz a legkevésbé jelentős bájtot) egyszerű, 64 bites, előíratlan egész számként használják, amely minden további feldolgozott adatblokkhoz egy-egy nő, és hálózati bájtsorrendben marad. Ha ez az egész szám eléri a maximális értéket (0xFFFFFFFFFFFFFFFFFF), akkor a növelés nullára állítja vissza a blokkszámlálót (8–15 bájt), anélkül, hogy befolyásolná a számláló többi 64 bitjét (azaz a 0-tól 7-ig).   Az AES-CTR mód ú titkosítás biztonságának fenntartása érdekében az initializationVector értéknek minden egyes tartalomkulcshoz egyedinek kell lennie minden egyes fájlesetében, és a fájloknak 2^64 blokknál rövidebbnek kell lenniük.  Ez az egyedi érték annak biztosítására szolgál, hogy a számláló értéke soha ne legyen újra felhasználva egy adott kulccsal. A CTR móddal kapcsolatos további információkért tekintse meg ezt a [wikioldalt](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (a wikicikk az "InitializationVector" helyett a "Nonce" kifejezést használja).
+## <a name="storage-encryption-overview"></a>A Storage-titkosítás áttekintése
+Az AMS tároló titkosítása **AES-CTR** módú titkosítást alkalmaz a teljes fájlra.  Az AES-CTR mód egy blokkos rejtjel, amely tetszőleges hosszúságú, kitöltés nélküli adatátvitelt képes titkosítani. Úgy működik, hogy egy számláló-blokkot titkosít egy AES algoritmussal, majd az AES kimenetét a titkosításhoz vagy visszafejtéshez szükséges adatokat kizáróan végzi.  A használt számláló-blokkot úgy kell létrehozni, hogy a számláló értékének 0 és 7 közötti InitializationVector másolja, és a számláló értékének 8 és 15 közötti értéke nulla. A 16 bájtos számláló, a 8 – 15. bájt (azaz a legkevésbé jelentős bájtok) egy egyszerű, 64 bites előjel nélküli egész szám, amely eggyel nő a feldolgozott adatblokkok esetében, és a hálózati bájtok sorrendje szerint van tárolva. Ha ez az egész szám eléri a maximális értéket (0xFFFFFFFFFFFFFFFF), akkor a növekményes érték nullára (8 – 15 bájt) visszaállítja a blokk számlálóját anélkül, hogy ez hatással lenne a számláló többi 64-es bitje (azaz 0 és 7 között).   Az AES-CTR módú titkosítás biztonságának fenntartása érdekében az egyes InitializationVector megadott kulcs azonosítójának értékének az egyes fájlokhoz egyedinek kell lennie, és a fájlokhoz nem lehet kevesebb, mint 2 ^ 64 blokk.  Ez az egyedi érték annak biztosítására szolgál, hogy a számláló értékét soha ne használják újra egy adott kulccsal. A CTR-móddal kapcsolatos további információkért tekintse meg [ezt a wiki-oldalt](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (a wiki-cikk az "alkalom" kifejezést használja "InitializationVector" helyett).
 
-**A Storage Encryption** használatával titkosíthatja a tiszta tartalmat helyileg AES-256 bites titkosítással, majd töltse fel az Azure Storage-ba, ahol az inaktív titkosítást tárolja. A tárolótitkosítással védett eszközök automatikusan titkosítatlanok lesznek, és a kódolás előtt egy titkosított fájlrendszerbe kerülnek, és opcionálisan újra titkosítva lesznek, mielőtt új kimeneti eszközként újra feltöltenék őket. A tárolótitkosítás elsődleges használati esete az, ha a kiváló minőségű bemeneti médiafájlokat erős titkosítással szeretné biztosítani a lemezen.
+A **Storage encryption** használatával Titkosítsa a tartalmakat helyileg AES-256 bites titkosítással, majd töltse fel azt az Azure Storage-ba, ahol a tárolása titkosított állapotban van. A Storage encryption szolgáltatással védett eszközök titkosítása automatikusan titkosítva történik, és a kódolás előtt titkosított fájlrendszerbe kerül, és szükség esetén újra titkosítva lesz, mielőtt új kimeneti eszközként feltölti őket. A tárolás titkosításának elsődleges használati esete, ha a magas színvonalú bemeneti médiafájlokat erős titkosítással szeretné biztonságossá tenni a lemezen.
 
-A tárolóval titkosított eszköz biztosításához konfigurálnia kell az eszköz kézbesítési szabályzatát, hogy a Media Services tudja, hogyan szeretné kézbesíteni a tartalmat. Az eszköz streamelése előtt a streamelési kiszolgáló eltávolítja a tárolótitkosítást, és a megadott kézbesítési házirend (például AES, közös titkosítás vagy titkosítás nélkül) segítségével streameli a tartalmat.
+A titkosított adategységek kézbesítéséhez konfigurálnia kell az eszköz kézbesítési házirendjét, hogy Media Services tudja, hogyan szeretné kézbesíteni a tartalmat. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel (például AES, Common encryption vagy nincs titkosítás) továbbítja a tartalmat.
 
-## <a name="create-contentkeys-used-for-encryption"></a>Titkosításhoz használt contentkeys létrehozása
-A titkosított eszközök a storage-titkosítási kulcsokhoz vannak társítva. Hozza létre a titkosításhoz használandó tartalomkulcsot az eszközfájlok létrehozása előtt. Ez a szakasz a tartalomkulcs létrehozását ismerteti.
+## <a name="create-contentkeys-used-for-encryption"></a>Titkosításhoz használt Tartalomkulcsok létrehozása
+A titkosított eszközök a Storage titkosítási kulcsaihoz vannak társítva. Hozza létre az adategység fájljainak létrehozása előtt a titkosításhoz használandó tartalmi kulcsot. Ez a szakasz a tartalmi kulcs létrehozását ismerteti.
 
-Az alábbiakban a titkosítani kívánt eszközökhöz társítani kívánt tartalomkulcsok létrehozásának általános lépéseit tetszetős lépések találhatók. 
+A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, amelyeket a titkosítani kívánt eszközökkel társít. 
 
-1. A tárolótitkosításhoz véletlenszerűen hozzon létre egy 32 bájtos AES-kulcsot. 
+1. A tárolási titkosításhoz véletlenszerűen állítson elő egy 32 bájtos AES-kulcsot. 
    
-    A 32 bájtos AES-kulcs az eszköz tartalomkulcsa, ami azt jelenti, hogy az adott eszközhöz társított összes fájlnak ugyanazt a tartalomkulcsot kell használnia a visszafejtés során. 
-2. Hívja meg a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és [a GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metódusok, hogy a megfelelő X.509 tanúsítvány, amelyet fel kell használni a tartalomkulcs titkosításához.
-3. Titkosítsa a tartalomkulcsot az X.509 tanúsítvány nyilvános kulccsal. 
+    Az 32 bájtos AES-kulcs az eszközhöz tartozó tartalmi kulcs, ami azt jelenti, hogy az adott eszközhöz társított összes fájlnak ugyanazt a tartalmi kulcsot kell használnia a visszafejtés során. 
+2. Hívja meg a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metódust a megfelelő X. 509 tanúsítvány lekéréséhez, amelyet a tartalmi kulcs titkosításához kell használnia.
+3. Titkosítsa a tartalmi kulcsot az X. 509 tanúsítvány nyilvános kulcsával. 
    
-   A Media Services .NET SDK az RSA-t oaep-kóddal használja a titkosítás során.  A .NET példa a [EncryptSymmetricKeyData függvényben](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)látható.
-4. Hozzon létre egy ellenőrzőösszeg-értéket a kulcsazonosító és a tartalomkulcs használatával számítva. A következő .NET példa az ellenőrzőösszeget a kulcsazonosító GUID részével és a törlési tartalomkulcssal számítja ki.
+   Media Services .NET SDK az RSA-t használja a OAEP a titkosítás végrehajtásakor.  A .NET-példákat a [EncryptSymmetricKeyData függvényben](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tekintheti meg.
+4. Hozzon létre egy ellenőrzőösszeg-értéket a kulcs azonosítója és a tartalmi kulcs alapján. A következő .NET-példa kiszámítja az ellenőrzőösszeget a kulcs azonosítójának GUID része és a tartalom törlése kulcs használatával.
 
     ```csharp
             public static string CalculateChecksum(byte[] contentKey, Guid keyId)
@@ -109,22 +109,22 @@ Az alábbiakban a titkosítani kívánt eszközökhöz társítani kívánt tart
             }
     ```
 
-5. Hozza létre a Content kulcsot a **EncryptedContentKey** (base64 kódolású karakterláncra konvertálva), **a ProtectionKeyId**, **a ProtectionKeyType**, **contentkeytype**és az előző lépésekben kapott **Ellenőrzőösszeg** értékekkel.
+5. Hozza létre a **EncryptedContentKey** (a Base64 kódolású karakterlánccá konvertált), a **ProtectionKeyId**, a **ProtectionKeyType**, a **ContentKeyType**és az **ellenőrzőösszeg** értékeit, amelyeket az előző lépésekben kapott.
 
-    A tárolótitkosításhoz a következő tulajdonságokat kell tartalmaznia a kérelem törzsében.
+    A tárolási titkosításhoz a következő tulajdonságokat kell tartalmaznia a kérés törzsében.
 
-    Törzstulajdonság kérése    | Leírás
+    Kérelem törzsének tulajdonsága    | Leírás
     ---|---
-    Azonosító | A ContentKey-azonosító a következő formátumban jön létre: "nb:kid:UUID:\<NEW GUID>".
-    ContentKeyType (Tartalomkulcstípusa) | A tartalomkulcs típusa egy egész szám, amely meghatározza a kulcsot. A tárolótitkosítási formátum esetében az érték 1.
-    Titkosított tartalomkulcs | Létrehozunk egy új tartalomkulcs-értéket, amely egy 256 bites (32 bájt) érték. A kulcs titkosítva van a Microsoft Azure Media Services ből lekért X.509-es tárolótitkosítási tanúsítvánnyal a GetProtectionKeyId és a GetProtectionKeyId metódusok HTTP GET Get-kérésének végrehajtásával. Példaként a következő .NET-kódot olvassa el: az [itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiált **EncryptSymmetricKeyData** metódus .
-    ProtectionKeyId azonosító | Ez a biztonsági kulcs azonosítója a tartalomkulcs titkosításához használt X.509-es titkosítási x.509-es tanúsítványhoz.
-    ProtectionKeyType típus | Ez a tartalomkulcs titkosításához használt védelmi kulcs titkosítási típusa. Ez az érték StorageEncryption(1) a példánkban.
-    Ellenőrzőösszeg |A tartalomkulcs MD5-ös számítása. A tartalomazonosító és a tartalomkulcs titkosításával számítja ki. A példakód bemutatja az ellenőrzőösszeg kiszámítását.
+    Azonosító | A ContentKey azonosítója a következő formátumban jön létre: "NB: Kid: UUID:\<NEW GUID>".
+    ContentKeyType | A tartalmi kulcs típusa egy egész szám, amely meghatározza a kulcsot. A tárolási titkosítási formátum értéke 1.
+    EncryptedContentKey | Létrehozunk egy új, 256 bites (32 bájt) értékű tartalmi kulcs értéket. A kulcs titkosítása a Microsoft Azure Media Services által lekért Storage encryption X. 509 tanúsítvánnyal történik a GetProtectionKeyId és a GetProtectionKey metódusok HTTP GET kérelmének végrehajtásával. Példaként tekintse meg a következő .NET-kódot: az [itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiált **EncryptSymmetricKeyData** metódus.
+    ProtectionKeyId | Ez a védelmi kulcs azonosítója a tartalmi kulcs titkosításához használt Storage encryption X. 509 tanúsítványhoz.
+    ProtectionKeyType | A tartalom kulcsának titkosításához használt védelmi kulcs titkosítási típusa. Ez az érték StorageEncryption (1) a példánkban.
+    Ellenőrzőösszeg |A tartalmi kulcs MD5 kiszámított ellenőrzőösszege. A rendszer a tartalom AZONOSÍTÓjának a tartalmi kulccsal való titkosításával számítja ki. A példában szereplő kód azt mutatja be, hogyan számítható ki az ellenőrzőösszeg.
 
 
 ### <a name="retrieve-the-protectionkeyid"></a>A ProtectionKeyId beolvasása
-A következő példa bemutatja, hogyan lehet letölteni a ProtectionKeyId, a tanúsítvány ujjlenyomatát, a tanúsítvány, amelyet a tartalomkulcs titkosításakor kell használnia. Ezzel a lépéssel győződjön meg arról, hogy már rendelkezik a megfelelő tanúsítvánnyal a számítógépen.
+Az alábbi példa bemutatja, hogyan kérheti le a ProtectionKeyId, a tanúsítvány ujjlenyomatát a tartalmi kulcs titkosításakor használandó tanúsítványhoz. Ezzel a lépéssel győződjön meg róla, hogy már rendelkezik a megfelelő tanúsítvánnyal a gépen.
 
 Kérés:
 
@@ -154,8 +154,8 @@ Válasz:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>A ProtectionKeyId ProtectionKeyId kulcsának beolvasása
-A következő példa bemutatja, hogyan lehet beolvasni az X.509 tanúsítványt az előző lépésben kapott ProtectionKeyId használatával.
+### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>A ProtectionKeyId ProtectionKey beolvasása
+Az alábbi példa bemutatja, hogyan kérhető le az X. 509 tanúsítvány az előző lépésben kapott ProtectionKeyId használatával.
 
 Kérés:
 
@@ -188,12 +188,12 @@ Válasz:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-### <a name="create-the-content-key"></a>A tartalomkulcs létrehozása
-Miután lekérte az X.509 tanúsítványt, és a nyilvános kulcsával titkosította a tartalomkulcsot, hozzon létre egy **ContentKey** entitást, és ennek megfelelően állítsa be a tulajdonságértékeit.
+### <a name="create-the-content-key"></a>A tartalom kulcsának létrehozása
+Miután lekérte az X. 509 tanúsítványt, és a nyilvános kulcsát használta a tartalmi kulcs titkosításához, hozzon létre egy **ContentKey** -entitást, és ennek megfelelően állítsa be a tulajdonság értékét.
 
-A tartalomkulcs létrehozásakor bekell állítani a típust. A tárolótitkosítás használataesetén az értéket "1"-re kell állítani. 
+A tartalmi kulcs létrehozásakor beállított értékek egyike a típus. A tárolási titkosítás használatakor az értéket az "1" értékre kell beállítani. 
 
-A következő példa bemutatja, hogyan hozhat létre egy **ContentKeya-t** **egy ContentKeyType** készlettel a tárolótitkosításhoz ("1") és a **ProtectionKeyType** "0" értékre, jelezve, hogy a védelmi kulcs azonosítója az X.509 tanúsítvány ujjlenyomata.  
+Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** egy **ContentKeyType** készlettel ("1") és a **ProtectionKeyType** "0" értékre állítva, hogy JELEZZE, hogy a védelmi kulcs azonosítója az X. 509 tanúsítvány ujjlenyomata.  
 
 Kérés
 
@@ -243,7 +243,7 @@ Válasz:
     "Checksum":"calculated checksum"}
 
 ## <a name="create-an-asset"></a>Eszköz létrehozása
-A következő példa bemutatja, hogyan hozhat létre egy eszközt.
+Az alábbi példa bemutatja, hogyan hozhat létre egy eszközt.
 
 **HTTP-kérés**
 
@@ -261,7 +261,7 @@ A következő példa bemutatja, hogyan hozhat létre egy eszközt.
 
 **HTTP-válasz**
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTP/1.1 201 Created
     Cache-Control: no-cache
@@ -289,8 +289,8 @@ Ha sikeres, a következő választ adja vissza:
        "StorageAccountName":"storagetestaccount001"
     }
 
-## <a name="associate-the-contentkey-with-an-asset"></a>A ContentKey társítása egy eszközhöz
-A ContentKey létrehozása után társítsa azt az eszközhöz a $links művelet használatával, ahogy az a következő példában látható:
+## <a name="associate-the-contentkey-with-an-asset"></a>A ContentKey hozzárendelése egy eszközhöz
+A ContentKey létrehozása után társítsa azt az eszközhöz a $links művelettel, az alábbi példában látható módon:
 
 Kérés:
 
@@ -310,12 +310,12 @@ Válasz:
 
     HTTP/1.1 204 No Content 
 
-## <a name="create-an-assetfile"></a>Eszközfájl létrehozása
-Az [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blobtárolóban tárolt video- vagy hangfájlt jelöl. Egy eszközfájl mindig egy eszközhöz van társítva, és egy eszköz egy vagy több eszközfájlt tartalmazhat. A Media Services kódoló feladata sikertelen, ha egy eszközfájl-objektum nincs társítva egy blobtárolóban lévő digitális fájlhoz.
+## <a name="create-an-assetfile"></a>AssetFile létrehozása
+A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt videót vagy hangfájlt jelöl. Az adategységek mindig egy adott objektumhoz vannak társítva, és egy adott eszköz egy vagy több adatfájlt is tartalmazhat. A Media Services Encoder feladat meghiúsul, ha egy objektum nem egy blob-tárolóban lévő digitális fájllal van társítva.
 
-Az **AssetFile** példány és a tényleges médiafájl két különálló objektum. Az AssetFile példány metaadatokat tartalmaz a médiafájlról, míg a médiafájl a tényleges médiatartalmat tartalmazza.
+A **AssetFile** példány és a tényleges médiafájl két különálló objektum. A AssetFile-példány metaadatokat tartalmaz a médiafájlról, míg a médiafájl tartalmazza a tényleges médiatartalom tartalmát.
 
-Miután feltöltötte a digitális médiafájlt egy blobtárolóba, a **MERGE** HTTP-kérelem melengetése segítségével frissíti az AssetFile fájlt a médiafájllal kapcsolatos információkkal (ez a cikk nem jelenik meg). 
+Miután feltöltötte a digitális médiafájlt egy blob-tárolóba, az **egyesítési** http-kéréssel frissíti a AssetFile a médiafájl információit használva (ez a cikk nem jelenik meg). 
 
 **HTTP-kérés**
 

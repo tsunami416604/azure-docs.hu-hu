@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatás kiválasztása a csapatadat-elemzési folyamatában
-description: Ismerteti a szolgáltatás kiválasztásának célját, és példákat mutat be a gépi tanulás adatjavítási folyamatában betöltött szerepükre.
+title: Funkció kiválasztása a csoportos adatelemzési folyamatban
+description: Ismerteti a szolgáltatások kiválasztásának célját, és példákat nyújt a szerepkörre a gépi tanulás adatfejlesztési folyamatában.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,56 +12,56 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76716682"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Funkcióválasztás a csoportos adatelemzési folyamatban (TDSP)
-Ez a cikk ismerteti a szolgáltatás kiválasztásának céljait, és példákat mutat be a gépi tanulás adatjavítási folyamatában betöltött szerepére. Ezek a példák az Azure Machine Learning Studio-ból származnak.
+Ez a cikk ismerteti a szolgáltatások kiválasztásának célját, és példákat nyújt a szerepkörére a gépi tanulás adatfejlesztési folyamatában. Ezek a példák a Azure Machine Learning Studioból származnak.
 
-A mérnöki és a kiválasztott funkciók egy része a Team Data Science Process (TDSP) vázolt cikkben [Mi a csapat adatelemzési folyamat?](overview.md). A funkciótervezés és a kiválasztás a TDSP **Funkciók fejlesztése** lépésének részét képezi.
+A szolgáltatások mérnöki és kiválasztási funkciója a csoportos adatelemzési folyamat (TDSP) egyik része, amely a következő cikkben található: [Mi a csoportos adatelemzési folyamat?](overview.md). A funkciók mérnöki és kiválasztási funkciója a TDSP **szolgáltatások fejlesztése** lépésének részei.
 
-* **funkciótervezés:** Ez a folyamat további releváns funkciókat próbál létrehozni az adatok meglévő nyers funkcióiból, és növelni a tanulási algoritmus prediktív erejét.
-* **funkciókiválasztása**: Ez a folyamat kiválasztja az eredeti adatfunkciók legfontosabb részhalmazát, hogy csökkentse a betanítási probléma méretdimenzionális jellegét.
+* **szolgáltatás-mérnöki**: Ez a folyamat megkísérli további releváns funkciók létrehozását az adatok meglévő nyers szolgáltatásaiból, és a prediktív teljesítmény növelését a tanulási algoritmusra.
+* **funkció kiválasztása**: Ez a folyamat kiválasztja az eredeti adatszolgáltatások kulcsának részhalmazát, hogy megpróbálja csökkenteni a dimenzióját.
 
-Általában **a szolgáltatásmérnöki** először további funkciók létrehozásához, majd a **szolgáltatás kiválasztási** lépés történik, hogy megszüntesse irreleváns, redundáns, vagy erősen korrelált funkciók.
+A rendszer általában a szolgáltatások **fejlesztését** alkalmazza a további funkciók létrehozásához, majd a **funkció kiválasztása** lépéssel megszünteti a lényegtelen, redundáns vagy szorosan korrelált funkciókat.
 
-## <a name="filter-features-from-your-data---feature-selection"></a>Szolgáltatások szűrése az adatokból - funkcióválasztás
-A funkciókiválasztása osztályozási vagy regressziós feladatokhoz használható. A cél a szolgáltatások egy részhalmazának kiválasztása az eredeti adatkészletből, amely minimális szolgáltatáskészlethasználatával csökkenti a méreteit az adatok maximális varianciájának jelölésére. A jellemzők ezen részhalmaza a modell betanítására szolgál. A funkcióválasztás két fő célt szolgál.
+## <a name="filter-features-from-your-data---feature-selection"></a>Funkciók szűrése az adatokból – funkció kiválasztása
+A szolgáltatás kiválasztása besorolási vagy regressziós feladatokhoz is használható. A cél az, hogy kiválassza az eredeti adatkészlet azon funkcióinak egy részhalmazát, amelyek csökkentik a méreteiket a minimálisan szükséges funkciók használatával, hogy az az adatok maximális mennyiségét képviseljék. A funkciók ezen részhalmaza a modell betanítására szolgál. A funkció kiválasztása két fő célt szolgál.
 
-* Először is, a szolgáltatás kiválasztása gyakran növeli a besorolás pontosságát azáltal, hogy megszünteti a lényegtelen, redundáns vagy erősen korrelált funkciók kiküszöbölése.
-* Másodszor, csökkenti a funkciók számát, ami hatékonyabbá teszi a modell betanítási folyamatát. A hatékonyság fontos a tanulók számára, akiknek drága a képzése, mint például a támogató vektorgépek.
+* Első lépésként a funkció kiválasztása gyakran növeli a besorolási pontosságot a lényegtelen, redundáns vagy szorosan korrelált funkciók kiiktatásával.
+* Másodszor csökkenti a funkciók számát, ami hatékonyabbá teszi a modell betanítási folyamatát. A hatékonyság fontos az olyan tanulók számára, akik a támogatási vektoros gépek betanítására költségesek.
 
-Bár a szolgáltatáskiválasztása célja, hogy csökkentse a modell betanításához használt adatkészlet funkcióinak számát, a "méretcsökkentés" kifejezés nem hivatkozik rá. A szolgáltatáskijelölési módszerek az adatok eredeti jellemzőinek egy részét kinyerik anélkül, hogy módosítanák azokat.  Dimenzincia csökkentésmódszerek foglalkoztat mesterséges funkciók, amelyek átalakítják az eredeti funkciókat, és így módosíthatja azokat. A méretcsökkentési módszerek közé tartozik például a fő összetevőelemzés, a kanonikus korrelációs elemzés és az egyes érték-decomposition.
+Bár a funkciók kiválasztása csökkenti a modell betanításához használt adatkészlet funkcióinak számát, a "dimenzióját Reduction" kifejezés nem hivatkozik rá. A szolgáltatás kiválasztási módszerei az adatok eredeti funkcióinak egy részhalmazát kinyerik a módosítás nélkül.  A dimenzióját-csökkentési módszerek olyan mérnöki funkciókat alkalmaznak, amelyek az eredeti funkciókat át tudják alakítani, és így módosíthatják azokat. A dimenzióját-csökkentési módszerek példái közé tartozik a fő összetevő-elemzés, a kanonikus korrelációs elemzés és az egyes számú értékek elbomlása.
 
-Többek között a felügyelt környezetben alkalmazott funkciókiválasztási módszerek egyik széles körben alkalmazott kategóriáját "szűrőalapú szolgáltatásválasztásnak" nevezzük. Az egyes funkciók és a célattribútum közötti korreláció kiértékelésével ezek a módszerek statisztikai mértéket alkalmaznak az egyes funkciókhoz való pontszám hozzárendeléséhez. A funkciók ezután rangsorolják a pontszám, amely segítségével állítsa be a küszöbértéket tartani vagy kiküszöbölni egy adott funkció. Az ezekben a módszerekben alkalmazott statisztikai intézkedések közé tartozik például a személykorreláció, a kölcsönös információ és a Chi squared teszt.
+Többek között a felügyelt környezetekben az egyik legszélesebb körben alkalmazott szolgáltatás-kiválasztási módszer a "szűrésen alapuló funkció kiválasztása". Az egyes szolgáltatások és a célként megadott attribútumok közötti korreláció kiértékelésével ezek a módszerek statisztikai mértéket alkalmaznak az egyes funkciókhoz tartozó pontszámok hozzárendeléséhez. A funkciók ezután a pontszám szerint vannak rangsorolva, amely segítségével megadható a küszöbérték egy adott szolgáltatás megőrzése vagy kiküszöbölése érdekében. Az ezekben a módszerekben használt statisztikai intézkedések közé tartozik például a személy korrelációja, a kölcsönös információ és a Chi négyzetes teszt.
 
-Az Azure Machine Learning Studio-ban vannak olyan modulok, amelyek a szolgáltatás kiválasztása. Az alábbi ábrán látható módon ezek a modulok [tartalmazzák a szűrőalapú funkcióválasztást][filter-based-feature-selection] és a [Fisher-lineáris diszkrimináns elemzést.][fisher-linear-discriminant-analysis]
+Azure Machine Learning Studio a funkciók kiválasztásához modulok vannak megadva. Ahogy az az alábbi ábrán is látható, ezek a modulok a [Filter-alapú funkciók kiválasztása][filter-based-feature-selection] és a [Fisher lineáris diszkrimináns elemzése][fisher-linear-discriminant-analysis].
 
-![Szolgáltatásválasztó modulok](./media/select-features/feature-Selection.png)
+![Funkció-kiválasztási modulok](./media/select-features/feature-Selection.png)
 
-Vegyük például a [szűrőalapú szolgáltatáskijelölési][filter-based-feature-selection] modul használatát. A kényelem érdekében továbbra is használja a szövegbányászati példát. Tegyük fel, hogy egy 256 szolgáltatásból álló készlet létrehozása után szeretne regressziós modellt létrehozni a [Szolgáltatáskivonat-gyűjtés][feature-hashing] modulon keresztül, és hogy a válaszváltozó a "Col1", amely 1 és 5 közötti könyvminősítéseket tartalmaz. Ha a "Szolgáltatáspontozási módszert" "Pearson-korreláció"-ra, a "Cél oszlopot" pedig "Col1"-re, a "Kívánt funkciók száma" pedig 50-re állítja. Ezután a modul [szűrőalapú szolgáltatásválasztása][filter-based-feature-selection] 50 funkciót tartalmazó adatkészletet hoz létre a "Col1" célattribútummal együtt. Az alábbi ábra a kísérlet folyamatát és a bemeneti paramétereket mutatja be:
+Vegyük például a [Filter-alapú funkciók kiválasztási][filter-based-feature-selection] moduljának használatát. A kényelmes használat érdekében folytassa a Text Mining példa használatát. Tegyük fel, hogy egy regressziós modellt szeretne létrehozni a 256-szolgáltatások egy készletének létrehozása után a [szolgáltatás kivonatolási][feature-hashing] modulján keresztül, és a válasz változó a "Col1", amely az 1 és 5 közötti könyv-felülvizsgálati minősítéseket tartalmazza. A "szolgáltatás pontozási metódusa" beállítás "Pearson korreláció" értékre állításával a "cél oszlop" "Col1", a "kívánt funkciók száma" pedig 50-re van állítva. Ezt követően a modul [Filter-alapú funkciója][filter-based-feature-selection] a 50 funkciókat tartalmazó adatkészletet hoz létre, amely a "Col1" célként megadott attribútummal együtt. Az alábbi ábra a kísérlet folyamatát és a bemeneti paramétereket mutatja be:
 
-![Szűrőalapú szolgáltatáskijelölési modul tulajdonságai](./media/select-features/feature-Selection1.png)
+![Filter-alapú szolgáltatás kiválasztási moduljának tulajdonságai](./media/select-features/feature-Selection1.png)
 
-Az alábbi ábra az eredményül kapott adatkészleteket mutatja be:
+A következő ábra az eredményül kapott adatkészleteket mutatja be:
 
-![A szűrőalapú szolgáltatáskijelölési modul eredményül kapott adatkészlete](./media/select-features/feature-Selection2.png)
+![A szűrő alapú funkciók kiválasztási moduljának eredményül kapott adatkészlete](./media/select-features/feature-Selection2.png)
 
-Minden egyes funkció pontozott a pearsoni korreláció alapján, amely maga és a "Col1" célattribútum alapján történik. A funkciók a legjobb pontszámok at tartják.
+Mindegyik funkció a saját maga és a "Col1" cél attribútum közötti Pearson-korreláción alapul. A legfontosabb pontszámokkal rendelkező funkciók megmaradnak.
 
-A kiválasztott jellemzők megfelelő pontszámai az alábbi ábrán láthatók:
+A kiválasztott szolgáltatások megfelelő pontszámai az alábbi ábrán láthatók:
 
-![A szűrőalapú szolgáltatáskijelölési modul kottapontjai](./media/select-features/feature-Selection3.png)
+![A Filter-alapú funkciók kiválasztási moduljának pontszámai](./media/select-features/feature-Selection3.png)
 
-A [szűrőalapú szolgáltatásválasztó][filter-based-feature-selection] modul alkalmazásával a 256 funkcióból 50 van kiválasztva, mert a "Col1" célváltozóval a leginkább korrelált funkciókkal rendelkeznek, a "Pearson korreláció" pontozási módszer alapján.
+Ennek a [szűrő-alapú funkció-kiválasztási modulnak a Kiválasztásával][filter-based-feature-selection] 50-ből 256-funkciók közül választhat, mivel azok a leginkább korrelált funkciókkal rendelkeznek a "Col1" megcélzott változóval, a "Pearson korreláció" pontozási módszer alapján.
 
 ## <a name="conclusion"></a>Összegzés
-A szolgáltatástervezés és a szolgáltatáskiválasztása két általánosan megtervezett és kiválasztott funkció, amelyek növelik a betanítási folyamat hatékonyságát, amely megpróbálja kinyerni az adatokban található legfontosabb információkat. Emellett javítják ezeknek a modelleknek a hatalmát a bemeneti adatok pontos besorolásához és az érdeklődésre számot tartó eredmények erőteljesebb előrejelzéséhez. A funkciótervezés és a kiválasztás kombinálható, hogy a tanulás takarásban kezelhetőbb legyen. Ezt úgy éri el, hogy javítja, majd csökkenti a modell kalibrálásához vagy betanításához szükséges funkciók számát. Matematikailag szólva a modell betanításához kiválasztott funkciók a független változók minimális készletei, amelyek elmagyarázzák az adatok mintáit, majd sikeresen előrejelzik az eredményeket.
+A funkciók mérnöki és funkcióinak kiválasztása két gyakran használt és kiválasztott szolgáltatás, így növelheti az adatokban található kulcsfontosságú információk kinyeréséhez szükséges képzési folyamat hatékonyságát. Emellett javítják ezeknek a modelleknek a hatékonyságát a bemeneti adatok pontos osztályozása érdekében, valamint a kamatok kiszámításának hatékonyabbá válását. A funkciók mérnöki és kijelölési funkciói is kombinálhatók, így a tanulás több számítási feltételt is igénybe vehet. Ezt a modell kalibrálásához vagy betanításához szükséges szolgáltatások számának növelésével és csökkentésével végzi. Matematikailag a modell betanítására kiválasztott funkciók a független változók minimális készlete, amelyek ismertetik az adatmintázatokat, majd megjósolják az eredmények sikerességét.
 
-Ez nem mindig feltétlenül hajtsa végre a szolgáltatás mérnöki vagy funkció kiválasztása. Az, hogy szükség van-e rá, az összegyűjtött adatoktól, a kiválasztott algoritmustól és a kísérlet céljától függ.
+Nem mindig feltétlenül kell végrehajtania a szolgáltatások mérnöki vagy szolgáltatásbeli kijelölését. Szükség van-e rá, vagy nem függ az összegyűjtött adatoktól, a kiválasztott algoritmustól és a kísérlet céljától.
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -1,6 +1,6 @@
 ---
-title: Csomagellenőrzés az Azure Network Watcher rel | Microsoft dokumentumok
-description: Ez a cikk azt ismerteti, hogy a Network Watcher használatával hogyan végezhet mélyreható csomagellenőrzést a virtuális gépekről
+title: Csomagok ellenőrzése az Azure Network Watcher | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használható a Network Watcher a virtuális gépekről összegyűjtött részletes csomagok ellenőrzéséhez
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,117 +13,117 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152924"
 ---
-# <a name="packet-inspection-with-azure-network-watcher"></a>Csomagellenőrzés az Azure Network Watcher rel
+# <a name="packet-inspection-with-azure-network-watcher"></a>Csomagok ellenőrzése az Azure Network Watcher
 
-A Network Watcher csomagrögzítési szolgáltatásával rögzítheti és kezelheti az Azure virtuális gépeken lévő rögzítési munkameneteket a portálról, a PowerShellből, a CLI-ből és programozott módon az SDK és a REST API-n keresztül. A csomagrögzítés lehetővé teszi a csomagszintű adatokat igénylő forgatókönyvek kezelését azáltal, hogy az információkat könnyen használható formátumban adja meg. Kihasználva a szabadon elérhető eszközöket az adatok vizsgálatához, megvizsgálhatja a virtuális gépekre küldött és onnan érkező kommunikációt, és betekintést nyerhet a hálózati forgalomba. A csomagrögzítési adatok néhány példája: a hálózati vagy alkalmazásproblémák kivizsgálása, a hálózati visszaélések és a behatolási kísérletek észlelése, vagy a jogszabályi megfelelőség fenntartása. Ebben a cikkben bemutatjuk, hogyan lehet megnyitni a Network Watcher által biztosított csomagrögzítő fájlt egy népszerű nyílt forráskódú eszközzel. Példákat is bemutatunk, amelyek bemutatják a kapcsolat késésének kiszámítását, a rendellenes forgalom azonosítását és a hálózati statisztikák vizsgálatát.
+A Network Watcher csomag rögzítési funkciójával elindíthatja és kezelheti az Azure-beli virtuális gépeken a portálról, a PowerShellből, a CLI-ből és programozott módon, az SDK-ban és REST API keresztül. A csomagok rögzítése lehetővé teszi, hogy olyan forgatókönyveket adjon meg, amelyek a csomagok szintjének megfelelő adatokat igényelnek, mivel az információkat könnyen használható formátumban kell megadni. A szabadon elérhető eszközöket kihasználva ellenőrizheti az adatokat, és megvizsgálhatja a virtuális gépekről érkező és onnan érkező kommunikációt, és betekintést nyerhet a hálózati forgalomba. A csomagok rögzítése többek között a következőkből áll: a hálózat vagy az alkalmazások problémáinak kivizsgálása, a hálózati visszaélések észlelése és a behatolási kísérletek, illetve a szabályozások megfelelőségének fenntartása Ebben a cikkben bemutatjuk, hogyan nyitható meg a Network Watcher által biztosított csomag-rögzítési fájl egy népszerű nyílt forráskódú eszköz használatával. Olyan példákat is ismertetünk, amelyek bemutatják a kapcsolati késés kiszámítását, a rendellenes forgalom azonosítását és a hálózati statisztikák vizsgálatát.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk néhány előre konfigurált forgatókönyvön megy keresztül egy korábban futtatott csomagrögzítésen. Ezek a forgatókönyvek olyan képességeket mutatnak be, amelyek a csomagrögzítés áttekintésével érhetők el. Ez a forgatókönyv a [WireShark](https://www.wireshark.org/) segítségével vizsgálja meg a csomagrögzítést.
+Ez a cikk a korábban futtatott csomagok rögzítésének egyes előre konfigurált forgatókönyveit ismerteti. Ezek a forgatókönyvek olyan képességeket mutatnak be, amelyek a csomagok rögzítésének áttekintésével érhetők el. Ez a forgatókönyv a [WireShark](https://www.wireshark.org/) használatával vizsgálja meg a csomagok rögzítését.
 
-Ebben a forgatókönyvben azt feltételezi, hogy már futtatott egy csomagrögzítést egy virtuális gépen. A csomagrögzítés létrehozásáról a [Csomagrögzítés ek kezelése a portállal](network-watcher-packet-capture-manage-portal.md) vagy a REST alkalmazással című webhelyen a [Csomagrögzítések kezelése REST API-val](network-watcher-packet-capture-manage-rest.md)című webhelyen című ellátogat.
+Ez a forgatókönyv feltételezi, hogy már futtatta a csomagok rögzítését egy virtuális gépen. Ha meg szeretné tudni, hogyan hozhat létre egy csomagot rögzítő látogatást a csomagok rögzítésének [kezelése a portálon](network-watcher-packet-capture-manage-portal.md) vagy a REST-mel a [csomagok rögzítésének REST API használatával történő kezelésével](network-watcher-packet-capture-manage-rest.md).
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Ebben az esetben:
+Ebben az esetben a következőket kell tennie:
 
-* Csomagrögzítés áttekintése
+* Csomagok rögzítésének áttekintése
 
-## <a name="calculate-network-latency"></a>Hálózati késés számítása
+## <a name="calculate-network-latency"></a>Hálózati késés kiszámítása
 
-Ebben a forgatókönyvben bemutatjuk, hogyan tekintheti meg a TCP-beszélgetés kezdeti oda-vissza (RTT) beszélgetését, amely két végpont között történik.
+Ebben a forgatókönyvben bemutatjuk, hogyan lehet megtekinteni a két végpont között bekövetkező Transmission Control Protocol (TCP) beszélgetés kezdeti oda-és RTT.
 
-TCP-kapcsolat létrehozásakor a kapcsolatban küldött első három csomag a hármas kézfogásnak nevezett mintát követi. A kézfogásban küldött első két csomag, az ügyfél kezdeti kérése és a kiszolgáló válasza alapján kiszámíthatjuk a késést, amikor ez a kapcsolat létrejött. Ezt a késést oda-vissza útnak (RTT) nevezik. A TCP protokollról és a háromutas kézfogásról a következő forrásról talál további információt. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
+TCP-kapcsolatok létrehozásakor a rendszer az első három, a csatlakozás során küldött csomagot követ egy, a háromutas kézfogásnak nevezett mintát. Ha megvizsgálja az ebben a kézfogásban elküldött első két csomagot, az ügyféltől érkező első kérést és a kiszolgáló válaszát, a kapcsolat létrejötte után kiszámíthatja a késést. Ezt a késést a kerekítési idő (RTT) nevezik. A TCP protokollal és a háromutas kézfogással kapcsolatos további információkért tekintse meg a következő erőforrást. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>1. lépés
 
-WireShark indítása
+WireShark elindítása
 
 ### <a name="step-2"></a>2. lépés
 
-Töltse be a **.cap** fájlt a csomagrögzítésből. Ez a fájl megtalálható a blob ban mentette a mi helyileg a virtuális gépen, attól függően, hogyan konfigurálta azt.
+Töltse be a **. Cap** fájlt a csomag rögzítéséről. Ez a fájl megtalálható a blobban, amelyet a virtuális gépen helyileg mentettek, attól függően, hogy hogyan konfigurálta.
 
 ### <a name="step-3"></a>3. lépés
 
-A TCP-beszélgetések kezdeti oda-vissza utazásának (RTT) megtekintéséhez csak a TCP kézfogásban részt vevő első két csomagot fogjuk megtekinteni. A háromutas kézfogás első két csomagját fogjuk használni, amelyek a [SYN], [SYN, ACK] csomagok. A TCP-fejlécben beállított jelzőkről vannak elnevezve. Ebben az esetben a kézfogás utolsó csomagja, az [ACK] csomag nem lesz használva. A [SYN] csomagot az ügyfél küldi el. Miután megkapta a kiszolgáló, elküldi az [ACK] csomagot, hogy nyugtázza a SYN fogadását az ügyféltől. Kihasználva azt a tényt, hogy a szerver válasza nagyon kevés többletterhelést igényel, kiszámítjuk az RTT-t, kivonva az [SYN, ACK] csomag ügyfél általi fogadásának idejét, mire az ügyfél a [SYN] csomagot elküldte.
+Ha meg szeretné tekinteni a TCP-beszélgetések kezdeti oda-és beosztási idejét (RTT), akkor csak a TCP-kézfogásban érintett első két csomagot tekintjük meg. A háromutas kézfogásban az első két csomagot fogjuk használni, amelyek a [SYN], [SYN, ACK] csomagok. Ezek neve a TCP-fejlécben beállított jelzők. A kézfogásban ([ACK]) lévő utolsó csomag nem lesz használatban ebben a forgatókönyvben. Az ügyfél elküldi a [SYN] csomagot. A kérést követően a kiszolgáló elküldi a [ACK] csomagot, amely visszaigazolja, hogy fogadja a SYN-t az ügyféltől. Annak a ténynek a kihasználása, hogy a kiszolgáló válasza nagyon kis terhelést igényel, a RTT kiszámításával kiszámítjuk, hogy az ügyfél a [SYN, ACK] csomagot fogadta el a-ügyfél által küldött Time [SYN] csomaggal.
 
-A WireShark használatával ezt az értéket kiszámítjuk számunkra.
+A WireShark használata esetén ez az érték számít a számunkra.
 
-Ahhoz, hogy könnyebben megtekinthesse az első két csomagot a TCP háromutas kézfogásban, a WireShark által biztosított szűrési képességet használjuk.
+Ahhoz, hogy könnyebben megtekinthesse az első két csomagot a TCP háromutas kézfogásban, a WireShark által biztosított szűrési funkciót fogjuk használni.
 
-A szűrő WireShark alkalmazásban való alkalmazásához bontsa ki a rögzítésben lévő [SYN] csomag "Átviteli vezérlési protokoll" szegmensét, és vizsgálja meg a TCP fejlécben beállított jelzőket.
+A szűrő WireShark való alkalmazásához bontsa ki a rögzítésben a [SYN] csomag "Transmission Control Protocol" szegmensét, és vizsgálja meg a TCP-fejlécben beállított jelzőket.
 
-Mivel az összes [SYN] és [SYN, ACK] csomagra szeretnénk szűrni, a zászlók alatt megerősítik, hogy a Syn bit 1-re van állítva, majd kattintson a jobb gombbal a Syn bit -> Apply as Filter -> Selected.
+Mivel a (z) [SYN] és a [SYN, ACK] csomagok szűrését keresjük, a jelzők területen ellenőrizze, hogy a SYN bit értéke 1, majd kattintson a jobb gombbal a SYN bites > alkalmazza szűrő-> kiválasztva.
 
 ![7. ábra][7]
 
 ### <a name="step-4"></a>4. lépés
 
-Most, hogy szűrte az ablakot, hogy csak a [SYN] bitbeállítással rendelkező csomagokat láthassa, könnyedén kiválaszthatja az okat, hogy megtekinthesse a kezdeti RTT-t. Egy egyszerű módja annak, hogy megtekinthesse az RTT wireshark egyszerűen kattintson a legördülő jelölt "SEQ / ACK" elemzés. Ekkor megjelenik az RTT. Ebben az esetben az RTT 0,0022114 másodperc, azaz 2,211 ms volt.
+Most, hogy kiszűrte az ablakot, hogy csak a [SYN] bites csomagokat jelenítse meg, egyszerűen kiválaszthatja a kívánt beszélgetéseket, hogy megtekintse a kezdeti RTT. A RTT WireShark való megtekintésének egyszerű módja egyszerűen kattintson a "SEQ/ACK" elemzésre. Ekkor megjelenik a RTT. Ebben az esetben a RTT 0,0022114 másodperc vagy 2,211 MS volt.
 
 ![8. ábra][8]
 
-## <a name="unwanted-protocols"></a>Nem kívánt protokollok
+## <a name="unwanted-protocols"></a>Nemkívánatos protokollok
 
-Az Azure-ban üzembe helyezett virtuálisgép-példányon számos alkalmazás futtatható. Sok ilyen alkalmazások kommunikálni a hálózaton keresztül, talán az Ön kifejezett engedélye nélkül. A hálózati kommunikáció tárolására a csomagrögzítés segítségével megvizsgálhatjuk, hogyan beszélnek az alkalmazások a hálózaton, és megkereshetjük a problémákat.
+Az Azure-ban üzembe helyezett virtuálisgép-példányon több alkalmazás is fut. Számos ilyen alkalmazás kommunikál a hálózaton keresztül, például explicit engedélye nélkül. A hálózati kommunikációt a csomagok rögzítése használatával vizsgálhatja meg, hogy az alkalmazás hogyan kommunikál a hálózaton, és megkeresi az esetleges problémákat.
 
-Ebben a példában áttekintjük a korábbi futtatott csomagrögzítést a nem kívánt protokollok miatt, amelyek a számítógépen futó alkalmazástól származó jogosulatlan kommunikációt jelezhetik.
-
-### <a name="step-1"></a>1. lépés
-
-Ugyanannak a rögzítésnek az előző esetben történő használata a **Statisztikai** > **protokollhierarchia elemre**
-
-![protokollhierarchia menü][2]
-
-Megjelenik a protokollhierarchia ablaka. Ez a nézet a rögzítési munkamenet során használt összes protokoll, valamint a protokollok használatával továbbított és fogadott csomagok számát tartalmazza. Ez a nézet hasznos lehet a nem kívánt hálózati forgalom megkereséséhez a virtuális gépeken vagy a hálózaton.
-
-![protokollhierarchia megnyitva][3]
-
-Mint látható a következő képernyő elfog, nem volt forgalom a BitTorrent protokoll, amelyet a peer-to-peer fájlmegosztás. Rendszergazdaként nem számít a BitTorrent forgalomra ezen a virtuális gépen. Most, hogy tisztában van ezzel a forgalommal, eltávolíthatja a virtuális gépen telepített társ-egyenrangú szoftvert, vagy blokkolhatja a forgalmat a hálózati biztonsági csoportok vagy a tűzfal használatával. Emellett dönthet úgy, hogy a csomagrögzítéseket ütemezés szerint futtatja, így rendszeresen áttekintheti a protokoll használatát a virtuális gépeken. Ha például automatizálhatja a hálózati feladatokat az azure-ban, látogasson el [a Hálózati erőforrások figyelése az azure-automatizálással](network-watcher-monitor-with-azure-automation.md)
-
-## <a name="finding-top-destinations-and-ports"></a>A legnépszerűbb úti célok és portok keresése
-
-A forgalom típusainak, a végpontok és a portok közlésének megértése fontos a hálózaton lévő alkalmazások és erőforrások figyelésekor és hibaelhárításakor. A csomagrögzítő fájl felülről történő felhasználásával gyorsan megtudhatjuk, hogy a virtuális gépünk legnépszerűbb úti céljaival kommunikál, és a portokat is használjuk.
+Ebben a példában áttekintjük a nem kívánt protokollok korábban futtatott csomagjainak rögzítését, amely arra utalhat, hogy jogosulatlan kommunikációt jelez a gépen futó alkalmazástól.
 
 ### <a name="step-1"></a>1. lépés
 
-Az előző forgatókönyvben ugyanezzel a rögzítéssel kattintson az > **IPv4-statisztika** > **cél- és portjainak statisztikája elemre.** **Statistics**
+Ha ugyanazt a rögzítést használja az előző forgatókönyvben, kattintson a **statisztika** > **protokoll-hierarchia** elemre.
 
-![csomagrögzítési ablak][4]
+![protokoll-hierarchia menü][2]
+
+Megjelenik a protokoll-hierarchia ablak. Ez a nézet a rögzítési munkamenet során használt összes protokoll listáját, valamint a protokollok használatával továbbított és fogadott csomagok számát tartalmazza. Ez a nézet hasznos lehet a virtuális gépek vagy hálózatok nemkívánatos hálózati forgalmának megállapításához.
+
+![protokoll-hierarchia megnyitva][3]
+
+Ahogy az alábbi képernyőfelvételen is látható, a BitTorrent protokollt használó forgalom a társ-fájlmegosztás számára használt. Rendszergazdaként nem várható, hogy az adott virtuális gépeken a BitTorrent-forgalom látható. Most, hogy már ismeri ezt a forgalmat, eltávolíthatja a virtuális gépre telepített társközi szoftvert, vagy hálózati biztonsági csoportokkal vagy tűzfallal is blokkolhatja a forgalmat. Emellett dönthet úgy is, hogy a csomagok rögzítését ütemezett módon futtatja, így rendszeresen áttekintheti a protokollok használatát a virtuális gépeken. Példa a hálózati feladatok automatizálására az Azure-ban: [hálózati erőforrások figyelése az Azure Automation](network-watcher-monitor-with-azure-automation.md) használatával
+
+## <a name="finding-top-destinations-and-ports"></a>Legfelső szintű célhelyek és portok keresése
+
+A forgalom, a végpontok és az átadott portok megértése fontos a hálózatban lévő alkalmazások és erőforrások figyelése és hibaelhárítása során. A csomag rögzítési fájlját a fentiek alapján gyorsan megtudhatja, hogy a virtuális gép mely célállomásokkal kommunikál, és milyen portokat használ.
+
+### <a name="step-1"></a>1. lépés
+
+Ugyanazon rögzítés használata az előző forgatókönyvben kattintson a **statisztika** > **IPv4 statisztikai** > **Célhelyek és portok** elemre.
+
+![csomag rögzítése ablak][4]
 
 ### <a name="step-2"></a>2. lépés
 
-Ahogy átnézzük az eredményeket, egy vonal kiemelkedik, több kapcsolat volt a 111-es porton. A leggyakrabban használt port a 3389 volt, amely távoli asztal, a többi pedig az RPC dinamikus portjai.
+Ahogy megvizsgáljuk, hogy az eredmények egy sor kiemelkedik, több kapcsolat van a 111-as porton. A leggyakrabban használt port 3389, amely távoli asztal, a fennmaradó pedig RPC dinamikus portok.
 
-Bár ez a forgalom nem jelent semmit, ez egy port, amelyet sok kapcsolathoz használtak, és a rendszergazda számára ismeretlen.
+Habár ez a forgalom nem jelent semmit, a sok kapcsolathoz használt port, amely ismeretlen a rendszergazda számára.
 
 ![5. ábra][5]
 
 ### <a name="step-3"></a>3. lépés
 
-Most, hogy meghatároztunk egy nem megfelelő portot, kiszűrhetjük a rögzítésünket a port alapján.
+Most, hogy meghatározta a porton kívüli portot, a port alapján szűrheti a rögzítést.
 
-A szűrő ebben a forgatókönyvben a következő lenne:
+Az ebben a példában szereplő szűrő a következő:
 
 ```
 tcp.port == 111
 ```
 
-A szűrő szövegét felülről adjuk meg a szűrő szövegdobozába, és beírjuk az Entert.
+A szűrő szövegmezőbe írja be a szűrési szöveget, majd nyomja meg az ENTER billentyűt.
 
 ![6. ábra][6]
 
-Az eredményekből láthatjuk, hogy az összes forgalom egy helyi virtuális gépről érkezik ugyanazon az alhálózaton. Ha még mindig nem értjük, hogy miért történik ez a forgalom, tovább vizsgálhatjuk a csomagokat, hogy megállapítsuk, miért kezdeményezi ezeket a hívásokat a 111-es porton. Ezzel az információval megtesszük a megfelelő lépéseket.
+Az eredményekből láthatjuk, hogy az összes forgalom az azonos alhálózaton található helyi virtuális gépről érkezik. Ha továbbra sem értjük a forgalom okait, továbbra is ellenőrizheti a csomagokat, hogy megtudja, miért teszi ezeket a hívásokat a 111-as porton. Ezekkel az adatokkal elvégezheti a megfelelő műveletet.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Network Watcher egyéb diagnosztikai funkcióit az [Azure hálózatfigyelés áttekintésének ellátogatásával](network-watcher-monitoring-overview.md)
+További információ a Network Watcher egyéb diagnosztikai funkcióiról: az [Azure hálózati monitorozásának áttekintése](network-watcher-monitoring-overview.md)
 
 [1]: ./media/network-watcher-deep-packet-inspection/figure1.png
 [2]: ./media/network-watcher-deep-packet-inspection/figure2.png

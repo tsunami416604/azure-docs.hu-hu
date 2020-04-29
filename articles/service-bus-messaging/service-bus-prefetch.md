@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus előzetes betöltési üzenetei | Microsoft dokumentumok
-description: Az Azure Service Bus-üzenetek előzetes betöltésével javíthatja a teljesítményt. Az üzenetek könnyen elérhetők a helyi lekéréshez, mielőtt az alkalmazás kéri őket.
+title: Azure Service Bus Microsoft Docs
+description: Azure Service Bus üzenetek előhívásával javíthatja a teljesítményt. Az üzenetek az alkalmazások kérelme előtt azonnal elérhetők a helyi lekéréshez.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,49 +14,49 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760657"
 ---
-# <a name="prefetch-azure-service-bus-messages"></a>Az Azure Service Bus-üzenetek előzetes betöltése
+# <a name="prefetch-azure-service-bus-messages"></a>A prefektus Azure Service Bus üzenetek
 
-Ha *az előzetes betöltés* engedélyezve van a hivatalos Service Bus-ügyfelek bármelyikében, a fogadó csendesen több üzenetet szerez be, a [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) korlátig, az on túl, amit az alkalmazás eredetileg kért.
+Ha *bármelyik* hivatalos Service Bus ügyfélben engedélyezve van a kinyerés, a fogadó csendesen több üzenetet kap, akár a [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) -korlátot, az eredetileg kért alkalmazás után.
 
-Egyetlen kezdeti [fogadási](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) vagy [receiveasync-hívás](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) tehát azonnali felhasználásra vonatkozó üzenetet szerez be, amelyet a rendszer a mint elérhetővé ad vissza. Az ügyfél ezután további üzeneteket szerez be a háttérben, hogy kitöltse az előzetes betöltési puffert.
+Az egyszeri kezdeti [fogadási](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) vagy [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) hívása ezért azonnali, azonnal visszaadott felhasználásra vonatkozó üzenetet küld. Az ügyfél ezután további üzeneteket olvas be a háttérben, hogy kitöltse a prefektusi puffert.
 
-## <a name="enable-prefetch"></a>Előzetes letöltés engedélyezése
+## <a name="enable-prefetch"></a>A prefektus engedélyezése
 
-A .NET segítségével az Előzetes betöltés i szolgáltatás engedélyezéséhez a **MessageReceiver**, **QueueClient**vagy SubscriptionClient [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) tulajdonságát nullánál nagyobb számra **állítja.** Ha az értéket nullára állítja, az előzetes beolvasást kapcsolja ki.
+A .NET-tel a **MessageReceiver**, a **QueueClient**vagy a **SubscriptionClient** [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) tulajdonságát nullánál nagyobb értékre állíthatja be. Ha az értéket nullára állítja, a kikapcsolja a prefektust.
 
-Ezt a beállítást egyszerűen hozzáadhatja a [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) vagy a [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) minták beállításainak fogadási oldalára, hogy lássa a hatást ezekben a környezetekben.
+Ezt a beállítást egyszerűen hozzáadhatja a [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) vagy a [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples beállítások fogadó-oldalához, így láthatja ennek hatását.
 
-Amíg az üzenetek elérhetők az előzetes betöltési pufferben, a későbbi/**receiveasync-hívások** azonnal teljesülnek a pufferből, és a puffer a háttérben töltődik fel, amint rendelkezésre áll a hely. **Receive** Ha nincs elérhető kézbesítési üzenet, a fogadási művelet kiüríti a puffert, majd a várt vagy blokk, ahogy az várható volt.
+Amíg az üzenetek elérhetők a visszahívási pufferben, a további **fogadási**/**ReceiveAsync** -hívások azonnal teljesülnek a pufferből, és a puffer a háttérben lesz feltöltve, mert elérhetővé válik. Ha nincs elérhető üzenet a kézbesítéshez, a fogadási művelet kiüríti a puffert, majd megvárja vagy blokkolja a várt módon.
 
-Az előzetes betöltés ugyanúgy működik az [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) és [onMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API-kkal is.
+A prefektus is ugyanúgy működik együtt a [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) és a [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API-kkal.
 
-## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Ha ez gyorsabb, miért prefetch nem az alapértelmezett beállítás?
+## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Ha gyorsabb, miért nem ez az alapértelmezett beállítás?
 
-Prefetch felgyorsítja az üzenet áramlását azáltal, hogy egy üzenet könnyen elérhető a helyi lekérés, amikor és mielőtt az alkalmazás kéri az egyik. Ez az átviteli nyereség egy olyan kompromisszum eredménye, amelyet az alkalmazás szerzőjének kifejezetten meg kell tennie:
+A kiállítók felgyorsítják az üzenetek folyamatát azáltal, hogy egy üzenetet azonnal elérhetővé tesznek a helyi lekéréshez, amikor az alkalmazás kér egyet. Ez az átviteli sebesség azt eredményezi, hogy az alkalmazás szerzője explicit módon végzi el a kompromisszumot:
 
-A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) fogadási móddal az előzetes betöltési pufferbe beszerzett összes üzenet már nem érhető el a várólistában, és csak a memórián belüli előzetes betöltési pufferben található, amíg a **Receive**/**ReceiveAsync** vagy az **OnMessage**/**OnMessageAsync** API-kon keresztül be nem érkeznek az alkalmazásba. Ha az alkalmazás leáll, mielőtt az üzenetek beérkeznek az alkalmazásba, ezek az üzenetek helyrehozhatatlanul elvesznek.
+A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) fogadási mód használata esetén a rendszer az összes, a Meghívási pufferben beszerzett üzenet már nem érhető el a várólistában, és csak a memóriában tárolt kiküldési pufferben tárolja, amíg a **fogadási**/**ReceiveAsync** vagy **OnMessage**/**OnMessageAsync** API-kkal nem érkeznek az alkalmazásba. Ha az alkalmazás leáll, mielőtt az üzenetek beérkeznek az alkalmazásba, az üzenetek visszaszerezhetetlenül elvesznek.
 
-PeekLock [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) fogadási módban az előzetes betöltési pufferbe beolvasott üzenetek zárolt állapotban kerülnek be a pufferbe, és a zárolás idikálási órája van. Ha az előzetes betöltési puffer nagy, és a feldolgozás olyan sokáig tart, hogy az üzenetzárolások lejárnak, miközben az előzetes betöltési pufferben tartózkodik, vagy akár az üzenet feldolgozása közben is, előfordulhat, hogy az alkalmazás nak zavaró eseményeket kell kezelnie.
+A [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) fogadási módban a visszahívási pufferbe beolvasott üzeneteket a rendszer zárolt állapotba tölti be a pufferbe, és a zárolási ketyegő időtúllépési idővel rendelkezik. Ha a visszahívási puffer mérete nagy, és a feldolgozás addig tart, amíg az üzenetek zárolása lejár, miközben a rendszer a visszahívási pufferben tartózkodik, vagy amíg az alkalmazás feldolgozza az üzenetet, előfordulhat, hogy az alkalmazás kezelésére bizonyos zavaros események szükségesek.
 
-Előfordulhat, hogy az alkalmazás lejárt vagy hamarosan lejáró zárolással rendelkező üzenetet szerez be. Ha igen, az alkalmazás feldolgozhatja az üzenetet, de előfordulhat, hogy nem tudja befejezni a zárolás lejárata miatt. Az alkalmazás ellenőrizheti a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) tulajdonságot (amely a bróker és a helyi gép órája közötti óradöntésnek van alávetve). Ha az üzenetzárolás lejárt, az alkalmazásnak figyelmen kívül kell hagynia az üzenetet; nem api-hívás, vagy az üzenetet kell tenni. Ha az üzenet nem jár le, de a lejárat küszöbön áll, a zárolás üzenet hívásával megújítható és meghosszabbítható egy másik alapértelmezett zárolási [időszakkal. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Előfordulhat, hogy az alkalmazás lejárt vagy közeljövőben lejáró zárolással rendelkező üzenetet szerez be. Ha igen, az alkalmazás feldolgozhatja az üzenetet, de azt is megtudhatja, hogy a zárolás lejárata miatt nem hajtható végre. Az alkalmazás megtekintheti a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) tulajdonságot (amely a közvetítő és a helyi gép órája között eldönthető óra alapján változhat). Ha az üzenet zárolása lejárt, az alkalmazásnak figyelmen kívül kell hagynia az üzenetet; nincs szükség API-hívásra vagy az üzenet elküldésére. Ha az üzenet nem járt le, de a lejárat küszöbön van, a zárolás megújítható és kiterjeszthető egy másik alapértelmezett zárolási időszakra az üzenet meghívásával [. RenewLock ()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
-Ha a zárolás csendben lejár az előbetöltési pufferben, az üzenet félbeszakadtként lesz kezelve, és ismét elérhetővé válik a várólistából való lekéréshez. Ez azt eredményezheti, hogy a beolvasás beolvasása az előzetes betöltési pufferbe kerül; a végén. Ha az előbetöltési puffert általában nem lehet átdolgozni az üzenet lejárata során, akkor az üzenetek ismételten újra betöltése, de soha nem lesz hatékonyan használható (érvényesen zárolt) állapotban, és végül a kézbesítetlen levelek várólistájába kerülnek, miután a maximális szállítási szám túllépése.
+Ha a zárolás csendesen lejár a visszahívási pufferben, az üzenet az elhagyott értékként lesz kezelve, és újra elérhetővé válik a várólistából való lekéréshez. Ez azt eredményezheti, hogy a rendszer beolvassa a kihívási pufferbe; a végponton helyezhető el. Ha a visszahívási puffer általában nem használható az üzenetek lejárati ideje alatt, akkor az üzenetek ismételt beolvasása megtörténik, de a rendszer soha nem kézbesíti hatékonyan a felhasználható (érvényesen zárolt) állapotot, és végül áthelyezi a kézbesítetlen levelek várólistára, ha túllépi a maximális kézbesítési értéket.
 
-Ha nagyfokú megbízhatóságra van szüksége az üzenetek feldolgozásához, és a feldolgozás jelentős munkát és időt vesz igénybe, ajánlott az előzetes betöltési funkciót konzervatív módon vagy egyáltalán nem használni.
+Ha magas fokú megbízhatóságra van szüksége az üzenetek feldolgozásához, és a feldolgozás jelentős munkát és időt vesz igénybe, akkor azt javasoljuk, hogy a kivonási funkciót konzervatívan, vagy egyáltalán ne használja.
 
-Ha nagy átviteli sebességű és üzenetfeldolgozási általában olcsó, előzetes letöltés jelentős átviteli előnyöket eredményez.
+Ha nagy átviteli sebességre van szüksége, és az üzenetek feldolgozására általában olcsó, akkor jelentős teljesítménybeli előnyökkel jár.
 
-A várólista vagy előfizetésen beállított maximális előfetch-számot és zárolási időtartamot úgy kell kiegyenlíteni, hogy a zárolási időtúllépés legalább meghaladja az előre betöltési puffer maximális méretére vonatkozó összesített várható üzenetfeldolgozási időt, plusz egy üzenetet. Ugyanakkor, a zár időtúllépés kellene nem kell olyan hosszú, hogy az üzenetek meghaladhatják a maximális [TimeToLive,](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) ha véletlenül leesett, így megkövetelve a zár lejár, mielőtt redelivered.
+A rendszer a várólistán vagy az előfizetésen beállított maximális visszahívási időtartamot és a zárolási időtartamot úgy kell kiegyenlíteni, hogy a zárolási időkorlát legalább meghaladja a Meghívási puffer maximális méretét, valamint egy üzenetet. Ugyanakkor a zárolás időkorlátja nem lehet olyan sokáig, hogy az üzenetek túllépik a maximális [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , amikor véletlenül eldobják őket, így a zárolást az újbóli kézbesítés előtt le kell zárni.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Service Bus üzenetküldéséről, olvassa el az alábbi témaköröket:
+Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)

@@ -1,6 +1,6 @@
 ---
-title: InvalidNetworkConfigurationErrorCode hiba – Azure HDInsight
-description: A sikertelen fürtlétrehozásak különböző okai az InvalidNetworkConfigurationErrorCode segítségével az Azure HDInsightban
+title: InvalidNetworkConfigurationErrorCode-hiba – Azure HDInsight
+description: Az Azure HDInsight InvalidNetworkConfigurationErrorCode-beli sikertelen fürtök létrehozásának különböző okai
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,41 +8,41 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720384"
 ---
-# <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása sikertelen az InvalidNetworkConfigurationErrorCode szolgáltatással az Azure HDInsightban
+# <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-Ha a "Virtuális hálózat konfigurációja nem kompatibilis a HDInsight-követelménnyel" című hibakódot `InvalidNetworkConfigurationErrorCode` látja, az általában a fürt virtuális hálózati [konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba leírásának többi része alapján kövesse az alábbi szakaszokat a probléma megoldásához.
+Ha a "Virtual Network konfiguráció `InvalidNetworkConfigurationErrorCode` nem kompatibilis a HDInsight-követelménysel" leírásban látható hibakód jelenik meg, általában a fürt [virtuális hálózati konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba további leírása alapján a probléma megoldásához kövesse az alábbi szakaszokat.
 
-## <a name="hostname-resolution-failed"></a>"A állomásnév feloldása nem sikerült"
+## <a name="hostname-resolution-failed"></a>"Az állomásnév feloldása sikertelen"
 
 ### <a name="issue"></a>Probléma
 
-A hiba leírása a következőt tartalmazza: "A állomásnév feloldása nem sikerült".
+A hiba leírása tartalmazza az "állomásnév feloldása sikertelen" kifejezést.
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára utal. A virtuális hálózaton belüli DNS-kiszolgálók továbbíthatják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához (a részleteket [lásd: Névfeloldás a virtuális hálózatokban).](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) Az Azure rekurzív feloldóihoz való hozzáférés a virtuális IP 168.63.129.16-on keresztül érhető el. Ez az IP csak az Azure virtuális gépekről érhető el. Így nem fog működni, ha onprem DNS-kiszolgálót használ, vagy a DNS-kiszolgáló egy Azure virtuális gép, amely nem része a fürt virtuális hálózatának.
+Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára mutat. A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához (a részletekért lásd: [névfeloldás a virtuális](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) hálózatokban). Az Azure rekurzív feloldóit a virtuális IP-168.63.129.16 keresztül érheti el. Ez az IP-cím csak az Azure-beli virtuális gépekről érhető el. Így nem fog működni, ha helyszíni DNS-kiszolgálót használ, vagy a DNS-kiszolgáló egy olyan Azure-beli virtuális gép, amely nem része a fürt virtuális hálózatának.
 
 ### <a name="resolution"></a>Megoldás:
 
-1. Ssh a virtuális gép, amely része a fürt, és futtassa a parancsot `hostname -f`. Ez visszaadja a gazdagép teljesen minősített tartománynevét (a `<host_fqdn>` továbbiakban: az alábbi utasítások).
+1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f`. Ezzel visszaadja a gazdagép teljes tartománynevét ( `<host_fqdn>` az alábbi útmutatásnak megfelelően).
 
-1. Ezután futtassa a `nslookup <host_fqdn>` `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`parancsot (például ). Ha ez a parancs IP-címre oldja fel a nevet, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben vessen fel egy támogatási esetet a HDInsight segítségével, és kivizsgáljuk a problémát. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
+1. Ezután futtassa a parancsot `nslookup <host_fqdn>` (például: `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Ha a parancs feloldja a nevet egy IP-címhez, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben az HDInsight-mel támogatási esetet kell megvizsgálnia, és meg fogjuk vizsgálni a problémát. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
 
-1. Ha a fenti parancs nem ad vissza `nslookup <host_fqdn> 168.63.129.16` IP-címet, akkor futtassa (például `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Ha ez a parancs képes feloldani az IP-címet, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-ére, vagy nem olyan virtuális gép, amely ugyanannak a virtuális hálózatnak a része, mint a fürt.
+1. Ha a fenti parancs nem ad vissza IP-címet, futtassa `nslookup <host_fqdn> 168.63.129.16` a parancsot (például `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`:). Ha ez a parancs képes az IP-cím feloldására, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-be, vagy nem olyan virtuális gép, amely a fürthöz tartozó virtuális hálózat részét képezi.
 
-1. Ha nem rendelkezik olyan Azure-gépekkel, amelyek egyéni DNS-kiszolgálóként működhetnek a fürt virtuális hálózatában, akkor először hozzá kell adnia ezt. Hozzon létre egy virtuális gépet a virtuális hálózatban, amely DNS-továbbítóként lesz konfigurálva.
+1. Ha nem rendelkezik olyan Azure-beli virtuális géppel, amely egyéni DNS-kiszolgálóként működhet a fürt virtuális hálózatában, előbb hozzá kell adnia ezt. Hozzon létre egy virtuális GÉPET a virtuális hálózaton, amely DNS-továbbítóként lesz konfigurálva.
 
-1. Miután telepített egy virtuális gépet a virtuális hálózatban, konfigurálja a DNS-továbbítási szabályokat ezen a virtuális gépen. Továbbítsa az összes iDNS-névfeloldási kérelmet a 168.63.129.16-ra, a többit pedig a DNS-kiszolgálóra. [Íme](../hdinsight-plan-virtual-network-deployment.md) egy példa az egyéni DNS-kiszolgáló beállítására.
+1. Miután telepített egy virtuális GÉPET a virtuális hálózatban, konfigurálja a DNS-továbbítási szabályokat ezen a virtuális GÉPEN. Továbbítsa az összes iDNS névfeloldási kérelmet a 168.63.129.16, a többi pedig a DNS-kiszolgálóra. [Íme](../hdinsight-plan-virtual-network-deployment.md) egy példa erre a beállításra egy egyéni DNS-kiszolgálón.
 
-1. Adja hozzá a virtuális gép IP-címét a virtuális hálózat DNS-konfigurációjának első DNS-bejegyzéseként.
+1. Adja hozzá a virtuális gép IP-címét első DNS-bejegyzésként a Virtual Network DNS-konfigurációhoz.
 
 ---
 
@@ -50,23 +50,23 @@ Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára utal. A virt
 
 ### <a name="issue"></a>Probléma
 
-A hiba leírása tartalmazza a "Nem sikerült csatlakozni az Azure Storage-fiókhoz" vagy "Nem sikerült csatlakozni az Azure SQL-hez".
+A hiba leírása a következőt tartalmazza: "nem sikerült csatlakozni az Azure Storage-fiókhoz" vagy "nem sikerült csatlakozni az Azure SQL-hez".
 
 ### <a name="cause"></a>Ok
 
-Az Azure Storage és az SQL nem rendelkezik rögzített IP-címekkel, ezért engedélyeznikell a kimenő kapcsolatokat az összes IP-szolgáltatóhoz, hogy engedélyezze ezeknek a szolgáltatásoknak a elérését. A pontos megoldási lépések attól függnek, hogy hálózati biztonsági csoportot (NSG) vagy felhasználó által definiált szabályokat (UDR) állított-e be. A [hálózati forgalom hdinsight-mal való szabályozásáról a hálózati biztonsági csoportokkal és a felhasználó által definiált útvonalakkal](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) című szakaszban tájékformulatot talál ezekről a konfigurációkról.
+Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért engedélyeznie kell a kimenő kapcsolatokat az összes IP-címhez a szolgáltatások elérésének engedélyezéséhez. A pontos megoldási lépések attól függnek, hogy beállította-e a hálózati biztonsági csoportot (NSG) vagy a felhasználó által definiált szabályokat (UDR). A konfigurációk részletes ismertetését lásd: a [hálózati forgalom szabályozása hálózati biztonsági csoportokkal és felhasználó által megadott útvonalakkal HDInsight](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
 ### <a name="resolution"></a>Megoldás:
 
 * Ha a fürt [hálózati biztonsági csoportot (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)használ.
 
-    Nyissa meg az Azure Portalon, és azonosítsa az nsg, amely társítva van az alhálózat, ahol a fürt üzembe helyezése. A **Kimenő biztonsági szabályok** szakaszban, engedélyezése kimenő internet-hozzáférés korlátozás nélkül (vegye figyelembe, hogy egy kisebb **prioritási** szám itt azt jelenti, magasabb prioritás). Az **alhálózatok** szakaszban ellenőrizze azt is, hogy ez az NSG alkalmazható-e a fürt alhálózatára.
+    Nyissa meg a Azure Portal, és keresse meg azt az alhálózathoz társított NSG, amelyben a fürtöt üzembe helyezi. A **kimenő biztonsági szabályok** szakaszban korlátozás nélkül engedélyezheti az internetre irányuló kimenő hozzáférést (vegye figyelembe, hogy a kisebb **prioritási** szám nagyobb prioritást jelent). Emellett az **alhálózatok** szakaszban ellenőrizze, hogy a NSG alkalmazva van-e a fürt alhálózatára.
 
 * Ha a fürt [felhasználó által definiált útvonalakat (UDR)](../../virtual-network/virtual-networks-udr-overview.md)használ.
 
-    Nyissa meg az Azure Portalon, és azonosítsa az útvonaltáblát, amely a fürt üzembe helyezésének alhálózatához van társítva. Miután megtalálta az alhálózat útvonaltáblája, vizsgálja meg az **útvonalszakaszt.**
+    Nyissa meg a Azure Portal, és azonosítsa a fürt üzembe helyezéséhez használt alhálózathoz társított útválasztási táblázatot. Miután megtalálta az alhálózat útválasztási táblázatát, ellenőrizze az **útvonalak** szakaszt.
 
-    Ha vannak definiálva útvonalak, győződjön meg arról, hogy vannak útvonalak az IP-címekhez ahhoz a régióhoz, ahol a fürtöt telepítették, és az egyes útvonalak **NextHopType** az **Internet**. A fent említett cikkben minden szükséges IP-címhez meg kell határozni egy útvonalat.
+    Ha vannak meghatározott útvonalak, ellenőrizze, hogy vannak-e útvonalak az IP-címekhez ahhoz a régióhoz, ahol a fürtöt telepítették, és az egyes útvonalak **NextHopType** az **Internet**. A fenti cikkben leírt minden szükséges IP-címhez meg kell adni egy útvonalat.
 
 ---
 
@@ -74,7 +74,7 @@ Az Azure Storage és az SQL nem rendelkezik rögzített IP-címekkel, ezért eng
 
 ### <a name="issue"></a>Probléma
 
-A hibaleírások a következőhöz hasonló üzeneteket tartalmaznak:
+A hibák leírása a következőhöz hasonló üzeneteket tartalmaz:
 
 ```
 ErrorCode: InvalidNetworkConfigurationErrorCode
@@ -83,13 +83,13 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 ### <a name="cause"></a>Ok
 
-Valószínűleg probléma az egyéni DNS-beállítással.
+Valószínűleg probléma van az egyéni DNS-beállítással.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális hálózaton belüli DNS-kiszolgálók továbbíthatják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához. További információt a Névfeloldás a virtuális hálózatokban című [témakörben talál.](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) Az Azure rekurzív feloldóihoz való hozzáférés a virtuális IP 168.63.129.16-on keresztül érhető el.
+Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához. További információ: [névfeloldás a virtuális hálózatokban](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Az Azure rekurzív feloldóit a virtuális IP-168.63.129.16 keresztül érheti el.
 
-1. Az [ssh paranccsal](../hdinsight-hadoop-linux-use-ssh-unix.md) csatlakozhat a fürthöz. Az alábbi parancs szerkesztésével cserélje le a CLUSTERNAME-t a fürt nevére, majd írja be a parancsot:
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -109,25 +109,25 @@ Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális h
     nameserver 10.21.34.44
     ```
 
-    Az eredmény alapján - válasszon egyet a következő lépések közül:
+    Az eredmény alapján – a következő lépések egyikének kiválasztásával követheti el:
 
-#### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 nem szerepel a listán
+#### <a name="1686312916-is-not-in-this-list"></a>a 168.63.129.16 nem szerepel a listában
 
 **1. lehetőség**  
-Adja hozzá a 168.63.129.16-ot a virtuális hálózat első egyéni DNS-eként az [Azure HDInsight virtuális hálózatának megtervezése](../hdinsight-plan-virtual-network-deployment.md)című részben leírt lépések segítségével. Ezek a lépések csak akkor alkalmazhatók, ha az egyéni DNS-kiszolgáló Linuxon fut.
+Adja hozzá a 168.63.129.16-t a virtuális hálózat első egyéni DNS-ként az [Azure HDInsight virtuális hálózatának megtervezése](../hdinsight-plan-virtual-network-deployment.md)című témakörben ismertetett lépések alapján. Ezek a lépések csak akkor érvényesek, ha az egyéni DNS-kiszolgáló Linux rendszeren fut.
 
 **2. lehetőség**  
-Dns-kiszolgáló virtuális gépének telepítése a virtuális hálózathoz. Ez a következő lépéseket foglalja magában:
+Helyezzen üzembe egy DNS-kiszolgálói virtuális GÉPET a virtuális hálózathoz. Ez a következő lépéseket foglalja magában:
 
-* Hozzon létre egy virtuális gépet a virtuális hálózatban, amely DNS-továbbítóként lesz konfigurálva (lehet Linux vagy Windows VM).
-* Konfigurálja a DNS-továbbítási szabályokat ezen a virtuális gépen (továbbítsa az összes iDNS-névfeloldási kérelmet a 168.63.129.16-ra, a többit pedig a DNS-kiszolgálóra).
-* Adja hozzá a virtuális gép IP-címét a virtuális hálózat DNS-konfigurációjának első DNS-bejegyzéseként.
+* Hozzon létre egy virtuális GÉPET a virtuális hálózaton, amely DNS-továbbítóként lesz konfigurálva (ez lehet Linux vagy Windows rendszerű virtuális gép).
+* Konfigurálja a DNS-továbbítási szabályokat ezen a virtuális gépen (az összes iDNS névfeloldási kérelem továbbítása a 168.63.129.16, a többi pedig a DNS-kiszolgálóra).
+* Adja hozzá a virtuális gép IP-címét az első DNS-bejegyzésként Virtual Network DNS-konfigurációhoz.
 
-#### <a name="1686312916-is-in-the-list"></a>168.63.129.16 szerepel a listán
+#### <a name="1686312916-is-in-the-list"></a>a 168.63.129.16 szerepel a listán
 
-Ebben az esetben hozzon létre egy támogatási esetet a HDInsight segítségével, és kivizsgáljuk a problémát. A támogatási eset tartalmazza az alábbi parancsok eredményét. Ez segít nekünk a probléma gyorsabb kivizsgálásában és megoldásában.
+Ebben az esetben hozzon létre egy támogatási esetet a HDInsight, és vizsgáljuk meg a problémát. Adja meg az alábbi parancsok eredményét a támogatási esetben. Ez segít a probléma gyorsabb kivizsgálásában és megoldásában.
 
-A főcsomópont ssh munkamenetéből szerkesztse, majd futtassa a következőket:
+A fő csomóponton egy SSH-munkamenetből szerkessze és futtassa a következőt:
 
 ```bash
 hostname -f
@@ -139,10 +139,10 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 ### <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal, amely javítja az ügyfélélményt azáltal, hogy az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Csatlakozás az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

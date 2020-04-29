@@ -1,5 +1,5 @@
 ---
-title: Élő közvetítés végrehajtása az Azure Media Services használatával többbites adatfolyamok létrehozásához az Azure Portalon | Microsoft dokumentumok
+title: Élő közvetítés végrehajtása a Azure Media Services használatával többszörös sávszélességű streamek létrehozásához Azure Portal segítségével | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy az Azure Portal használatával hogyan hozhat létre egy egyszeres átviteli sebességű élő streamet fogadó csatornát, amely többszörös átviteli sebességű streammé kódolja a fogadott bemenetet.
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162565"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő közvetítés végrehajtása a Media Services használatával többbites adatfolyamok létrehozásához az Azure Portalsegítségével  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam-továbbítás Media Services használatával többszörös átviteli sebességű streameket hozhat létre a Azure Portal  
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -29,7 +29,7 @@ ms.locfileid: "77162565"
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag bemutatja, hogyan hozzon létre egy egyszeres sávszélességű élő streamet fogadó **csatornát**, amely többszörös sávszélességű streammé kódolja azt.
 
@@ -41,10 +41,10 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 > [!NOTE]
 > Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 
-1. Csatlakoztasson a számítógéphez egy videokamerát. <br/>A beállítási ötletek, nézd meg [egyszerű és hordozható esemény video gear setup]( https://link.medium.com/KNTtiN6IeT).
+1. Csatlakoztasson a számítógéphez egy videokamerát. <br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
 
-    Ha nem fér hozzá a fényképezőgéphez, az olyan eszközök, mint a [Telestream Wirecast,](media-services-configure-wirecast-live-encoder.md) élő hírcsatornát hozhatnak létre egy videofájlból.
-1. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP vagy Smooth Streaming. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt. <br/>Is, nézd meg ezt a blogot: [Élő streaming termelés OBS](https://link.medium.com/ttuwHpaJeT).
+    Ha nem rendelkezik hozzáféréssel egy kamerához, az eszközök, például a [Wirecast](media-services-configure-wirecast-live-encoder.md) használhatók élő hírcsatornák létrehozásához.
+1. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP vagy Smooth Streaming. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt. <br/>Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
 
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 1. Hozzon létre és indítson el egy csatornát. 
@@ -94,7 +94,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
         Ha a csatorna vagy a hozzá tartozó események/programok már elindultak, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szükség, hozzon létre külön-külön csatornákat az egyes streamprotokollokhoz.  
    2. Alkalmazhatja az IP-korlátozást a betöltésre. 
 
-       Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a csatornára. Az engedélyezett IP-címek egyetlen IP-címként is megadhatók (pl. "10.0.0.1"), IP-címet és CIDR alhálózati maszkot (pl. "10.0.0.1/22"), vagy IP-címet és pontozott decimális alhálózati maszkot használó IP-tartomány (pl. "10.0.0.1(255.255.252.0)" IP-tartomány).
+       Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a csatornára. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-cím és egy CIDR alhálózati maszk használatával (pl. "10.0.0.1/22"), vagy egy IP-tartománnyal, egy IP-cím és egy pontozott decimális alhálózati maszk (például "10.0.0.1 (255.255.252.0)") használatával.
 
        Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 6. A **Preview** (Előnézet) lapon alkalmazza az IP-korlátozást az előnézetre.
@@ -114,7 +114,7 @@ További információk: [Live streaming using Azure Media Services to create mul
 ## <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket kell megadnia az élő kódolónak. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
-![url-címek betöltése](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![betöltési URL-címek](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>Események létrehozása és kezelése
 
@@ -141,7 +141,7 @@ Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetőv�
 Ha elvégezte a stream és a csatorna összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy objektumot, egy programot és egy streamelési lokátort. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
 
 >[!NOTE]
->Amikor az AMS-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+>Az AMS-fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 Az esemény két különböző módon indítható el: 
 
@@ -181,9 +181,9 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 ## <a name="view-archived-content"></a>Archivált tartalom megtekintése
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
-Az eszközök kezeléséhez válassza a **Beállítás** lehetőséget, és kattintson **az Eszközök gombra.**
+Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök**elemre.
 
-![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![Eszközök](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.

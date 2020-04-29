@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – nyilvános IP-címek lefoglalása
-description: Ez a témakör azt ismerteti, hogy miként foglalhatja le a nyilvános IP-címeket a virtuális gépekhez a magánfelhő-környezetben
+title: Azure VMware-megoldás CloudSimple – nyilvános IP-címek lefoglalása
+description: Ismerteti, hogyan lehet nyilvános IP-címeket lefoglalni a virtuális gépek számára a saját felhőalapú környezetben
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,29 +9,29 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024296"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Nyilvános IP-címek lefoglalása privát felhőalapú környezethez
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Nyilvános IP-címek lefoglalása a saját felhőalapú környezethez
 
-Nyissa meg a Nyilvános IP-címek lapot a Hálózat lapon, és rendeljen nyilvános IP-címeket a virtuális gépekhez a privát felhőbeli környezetben.
+Nyissa meg a nyilvános IP-címek lapot a hálózat lapon a saját felhőalapú környezetében lévő virtuális gépek nyilvános IP-címeinek lefoglalásához.
 
-1. Az oldalsó menüben [elérheti a CloudSimple portált,](access-cloudsimple-portal.md) és válassza a **Hálózat** lehetőséget.
-2. Válassza a **Nyilvános IP-eket**.
-3. Kattintson **az Új nyilvános IP gombra.**
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
+2. Válassza a **nyilvános IP**-címek lehetőséget.
+3. Kattintson az **új nyilvános IP-cím**elemre.
 
-    ![Nyilvános IP-oldalak](media/public-ips-page.png)
+    ![Nyilvános IP-címek lap](media/public-ips-page.png)
 
-4. Adjon meg egy nevet az IP-címbejegyzés azonosításához.
+4. Adja meg az IP-cím bejegyzését azonosító nevet.
 5. Tartsa meg az alapértelmezett helyet.
-6. A csúszkával szükség esetén módosíthatja az tétlen időkimenőt.
-7. Adja meg azt a helyi IP-címet, amelyhez nyilvános IP-címet kíván rendelni.
+6. Ha szükséges, használja a csúszkát az Üresjárati időkorlát módosításához.
+7. Adja meg azt a helyi IP-címet, amelyhez nyilvános IP-címet szeretne hozzárendelni.
 8. Adjon meg egy társított DNS-nevet.
-9. Kattintson a **Küldés gombra.**
+9. Kattintson a **Submit (Küldés**) gombra.
 
-![Nyilvános IP-k kiosztása](media/network-public-ip-allocate.png)
+![Nyilvános IP-címek lefoglalása](media/network-public-ip-allocate.png)
 
-Megkezdődik a nyilvános IP-cím felosztása. A tevékenység állapotát a Tevékenység **> tevékenységek** lapon ellenőrizheti. Ha a foglalás befejeződött, az új bejegyzés megjelenik a Nyilvános IP-oldalakon.
+A nyilvános IP-cím lefoglalásának feladata megkezdődik. A feladat állapotát a **tevékenység > feladatok** oldalon tekintheti meg. A foglalás befejezésekor az új bejegyzés megjelenik a nyilvános IP-címek lapon.

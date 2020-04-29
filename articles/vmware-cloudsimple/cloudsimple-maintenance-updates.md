@@ -1,7 +1,7 @@
 ---
-title: CloudSimple karbantartás és frissítések
+title: CloudSimple-karbantartás és-frissítések
 titleSuffix: Azure VMware Solution by CloudSimple
-description: A CloudSimple szolgáltatás folyamatának ismertetése az ütemezett karbantartáshoz és frissítésekhez
+description: Ismerteti a CloudSimple szolgáltatási folyamatát az ütemezett karbantartáshoz és frissítésekhez
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -10,100 +10,100 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025027"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple karbantartás és frissítések
+# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-karbantartás és-frissítések
 
-A private cloud környezet úgy van kialakítva, hogy egyetlen meghibásodási pont nélkül.
+A privát felhőalapú környezet úgy van kialakítva, hogy ne legyen egyetlen meghibásodási pont.
 
-* Az ESXi klaszterek vSphere High Availability (HA) függvényben vannak konfigurálva. A fürtök mérete úgy van méretezve, hogy legalább egy tartalék csomópont ot a rugalmasság.
-* Redundáns elsődleges tároló által biztosított vSAN, amely előírja, legalább három csomópont, hogy védelmet nyújtson egyetlen hiba ellen. A vSAN beállítható úgy, hogy nagyobb rugalmasságot biztosítson a nagyobb fürtök számára.
-* A vCenter, a PSC és az NSX-kezelő virtuális gépei RAID-10 tárolóval vannak konfigurálva a tárolási hibák elleni védelem érdekében. A virtuális gépek et a vSphere HA védi a csomópont/hálózati hibák ellen.
-* Az ESXi házigazdák redundáns ventilátorokkal és hálózati adapterekkel rendelkeznek.
-* A TOR és a gerinckapcsolók HA-párokban vannak konfigurálva, hogy rugalmasságot biztosítsanak.
+* Az ESXi-fürtök vSphere magas rendelkezésre állással (HA) vannak konfigurálva. A fürtök mérete legalább egy tartalék csomópont legyen a rugalmasság érdekében.
+* A redundáns elsődleges tárterületet a vSAN biztosítja, amelynek legalább három csomóponttal kell rendelkeznie az egyetlen hiba elleni védelem biztosításához. a vSAN konfigurálható úgy, hogy magasabb rugalmasságot biztosítson a nagyobb fürtök számára.
+* a vCenter, a PSC és a NSX Manager virtuális gépek RAID-10 tárolóval vannak konfigurálva a tárolási hibák elleni védelemhez. A virtuális gépek a vSphere és a hálózati hibák ellen védettek.
+* Az ESXi-gazdagépek redundáns ventilátorokkal és hálózati adapterekkel rendelkeznek.
+* A TOR-és gerinc-kapcsolók a rugalmasság biztosításához a HA párokban vannak konfigurálva.
 
-A CloudSimple folyamatosan figyeli a következő virtuális gépeket az rendelkezésre állás és a rendelkezésre állás tekintetében, és rendelkezésre állási SL-eket biztosít:
+A CloudSimple folyamatosan figyeli a következő virtuális gépeket az üzemidő és a rendelkezésre állás érdekében, és rendelkezésre állási SLA-kat biztosít:
 
-* ESXi házigazdák
+* ESXi-gazdagépek
 * vCenter
-* Pbb
-* NSX menedzser
+* PBB
+* NSX-kezelő
 
-A CloudSimple folyamatosan figyeli a hibákat:
+A CloudSimple a következő folyamatos hibák figyelését is figyeli:
 
 * Merevlemezek
-* Fizikai HÁLÓZATI ADAPTER-portok
+* Fizikai NIC-portok
 * Kiszolgálók
 * Ventilátor
 * Power
 * Switchek
 * Portok váltása
 
-Ha egy lemez vagy csomópont meghibásodik, egy új csomópont automatikusan hozzáadódik az érintett VMware-fürthöz, hogy azonnal állapotba hozza azt.
+Ha egy lemez vagy csomópont meghibásodik, a rendszer automatikusan hozzáadja az érintett VMware-fürthöz egy új csomópontot, amely azonnal visszaállítja az állapotot.
 
-A CloudSimple biztonsági másolatot készít, karbantart és frissíti ezeket a VMware-elemeket a privát felhőkben:
+A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a VMware-elemeket a privát felhőkben:
 
-* Esxi
-* vCenter platformszolgáltatások
-* Vezérlő
-* vSAN között
-* Nsx
+* ESXi
+* vCenter platform szolgáltatásai
+* Tartományvezérlő
+* vSAN
+* NSX
 
 ## <a name="back-up-and-restore"></a>Biztonsági mentés és visszaállítás
 
 A CloudSimple biztonsági mentése a következőket tartalmazza:
 
-* A vCenter-, PSC- és DVS-szabályok éjszakai növekményes biztonsági mentései.
-* vCenter natív API-k az alkalmazásréteg összetevőinek biztonsági mentésére.
+* A vCenter, a PSC és a DVS szabályainak éjszakai növekményes biztonsági mentései.
+* natív API-kat vCenter az összetevők biztonsági mentéséhez az alkalmazás rétegében.
 * Automatikus biztonsági mentés a VMware felügyeleti szoftver frissítése vagy frissítése előtt.
-* vCenter-adattitkosítás a forrásnál, mielőtt az adatok átvitele egy TLS1.2 titkosított csatornán keresztül az Azure-ba. Az adatok egy Azure blobban tárolódnak, ahol régiók között replikálódik.
+* vCenter az adattitkosítást a forrásnál, mielőtt az adatátvitelt TLS 1.2 titkosított csatornán keresztül az Azure-ba viszi át. Az adattárolást egy olyan Azure-Blob tárolja, amelyben a régiókban replikálódik.
 
-A visszaállítást [támogatási kérelem](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kérheti.
+A visszaállítást [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kérheti le.
 
 ## <a name="maintenance"></a>Karbantartás
 
-A CloudSimple többféle tervezett karbantartást végez.
+A CloudSimple többféle típusú karbantartást végez.
 
-### <a name="backendinternal-maintenance"></a>Háttérrendszer/belső karbantartás
+### <a name="backendinternal-maintenance"></a>Háttér/belső karbantartás
 
-Ez a karbantartás általában magában foglalja a fizikai eszközök újrakonfigurálását vagy a szoftverjavítások telepítését. Ez nem befolyásolja a szervizelt eszközök szokásos felhasználását. Mivel a redundáns hálózati adapterek minden fizikai állványra mennek, a normál hálózati forgalmat és a magánfelhő-műveleteket ez nem érinti. Előfordulhat, hogy csak akkor észleli a teljesítményre gyakorolt hatást, ha a szervezet a teljes redundáns sávszélességet szeretné használni a karbantartási időköz alatt.
+Ez a karbantartás általában a fizikai eszközök újrakonfigurálását vagy a szoftverfrissítések telepítését foglalja magában. Ez nem befolyásolja a kiszolgált eszközök normál felhasználását. A redundáns hálózati adapterek és az egyes fizikai állványok, a normál hálózati forgalom és a privát Felhőbeli műveletek nem érintettek. A teljesítményre gyakorolt hatás csak akkor tapasztalható, ha a szervezet a teljes redundáns sávszélességet szeretné használni a karbantartási időszakban.
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple portál karbantartása
+### <a name="cloudsimple-portal-maintenance"></a>CloudSimple-portál karbantartása
 
-Néhány korlátozott szolgáltatás állásidő szükséges, ha a CloudSimple vezérlősík vagy infrastruktúra frissítése. Jelenleg a karbantartási időközök lehetnek olyan gyakoriak, mint havonta egyszer. A gyakoriság várhatóan csökkenni fog az idő múlásával. A CloudSimple értesítést küld a portál karbantartásáról, és a lehető legrövidebb időközt biztosítja. A portál karbantartási időköze alatt a következő szolgáltatások továbbra is minden hatással járnak:
+A CloudSimple-vezérlő síkja vagy az infrastruktúra frissítésekor bizonyos korlátozott szolgáltatási állásidőre van szükség. Jelenleg a karbantartási időközök lehetnek olyan gyakoriak, mint havonta egyszer. A gyakoriság várhatóan az idő múlásával csökken. A CloudSimple értesítést biztosít a portál karbantartásáról, és a lehető legrövidebb időn belül megtartja az intervallumot. A portál karbantartási időszaka alatt a következő szolgáltatások továbbra is hatással vannak a működésre:
 
 * VMware felügyeleti sík és alkalmazások
 * vCenter-hozzáférés
-* Minden hálózat és tárolás
+* Minden Hálózatkezelés és tárterület
 * Minden Azure-forgalom
 
-### <a name="vmware-infrastructure-maintenance"></a>VMware infrastruktúra karbantartása
+### <a name="vmware-infrastructure-maintenance"></a>VMware-infrastruktúra karbantartása
 
-Esetenként szükség van a VMware-infrastruktúra konfigurációjának módosítására.  Jelenleg ezek az intervallumok 1-2 havonta fordulhatnak elő, de a gyakoriság idővel várhatóan csökkenni fog. Az ilyen típusú karbantartás általában a CloudSimple-szolgáltatások normál felhasználásának megszakítása nélkül végezhető el. A VMware karbantartási időköze alatt a következő szolgáltatások továbbra is minden hatással járnak:
+Időnként szükség van a VMware-infrastruktúra konfigurációjának módosítására.  Jelenleg ezek az intervallumok minden 1-2 hónapban előfordulhatnak, de a gyakoriság várhatóan az idő múlásával csökken. Az ilyen típusú karbantartás általában a CloudSimple-szolgáltatások normál fogyasztásának megszakítása nélkül végezhető el. A VMware karbantartási időköze során a következő szolgáltatások továbbra is hatással vannak a működésre:
 
 * VMware felügyeleti sík és alkalmazások
 * vCenter-hozzáférés
-* Minden hálózat és tárolás
+* Minden Hálózatkezelés és tárterület
 * Minden Azure-forgalom
 
 ## <a name="updates-and-upgrades"></a>Frissítések és frissítések
 
-A CloudSimple felelős a VMware szoftverek (ESXi, vCenter, PSC és NSX) életciklus-kezeléséért a magánfelhőben.
+A CloudSimple feladata a VMware-szoftverek (ESXi, vCenter, PSC és NSX) életciklus-kezelése a privát felhőben.
 
 A szoftverfrissítések a következők:
 
 * **Javítások**. A VMware által kiadott biztonsági javítások vagy hibajavítások.
-* **Frissítések**. A VMware veremösszetevő alverziómódosítása.
-* **Frissítések**. A VMware veremösszetevő főverzióváltása.
+* **Frissítések**. Egy VMware stack-összetevő másodlagos verziója megváltozik.
+* **Frissítések**. VMware stack-összetevő főverziójának módosítása.
 
-A CloudSimple teszteli a kritikus biztonsági javítást, amint elérhetővé válik a VMware-ből. Az SLA-nként a CloudSimple egy héten belül kiadja a biztonsági javítást a privát felhőbeli környezetekbe.
+A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérhetővé válik. A CloudSimple egy héten belül kivezeti a biztonsági javítást a privát felhőalapú környezetekhez.
 
-A CloudSimple negyedéves karbantartási frissítéseket biztosít a VMware szoftverösszetevőihez. Amikor a VMware szoftver új főverziója elérhető, a CloudSimple együttműködik az ügyfelekkel, hogy összehangolja a megfelelő karbantartási időszakot a frissítéshez.
+A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Számítási feladatok virtuális gépeinek biztonsági és biztonsági tartaléka a Veeam használatával](backup-workloads-veeam.md)
+[Munkaterhelési virtuális gépek biztonsági mentése a Veeam használatával](backup-workloads-veeam.md)

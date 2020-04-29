@@ -1,5 +1,5 @@
 ---
-title: Élő közvetítés helyszíni kódolókkal az Azure Portal használatával | Microsoft dokumentumok
+title: Élő stream helyszíni kódolókkal Azure Portal használatával | Microsoft Docs
 description: Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva.
 services: media-services
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162752"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő streamelés helyszíni kódolókkal az Azure Portal használatával
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [Többi](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure Portalon. 
 
@@ -54,8 +54,8 @@ A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streame
 > [!NOTE]
 > Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
     
-1. Csatlakoztasson a számítógéphez egy videokamerát. <br/>A beállítási ötletek, nézd meg [egyszerű és hordozható esemény video gear setup]( https://link.medium.com/KNTtiN6IeT).
-1. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.<br/>Is, nézd meg ezt a blogot: [Élő streaming termelés OBS](https://link.medium.com/ttuwHpaJeT).
+1. Csatlakoztasson a számítógéphez egy videokamerát. <br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
+1. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.<br/>Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
    
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 1. Hozzon létre és indítson el egy átmenő csatornát.
@@ -148,9 +148,9 @@ Az átmenő csatornákról az [élő stream többszörös átviteli sebességű 
 ## <a name="view-archived-content"></a>Archivált tartalom megtekintése
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
-Az eszközök kezeléséhez válassza a **Beállítás** lehetőséget, és kattintson **az Eszközök gombra.**
+Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök**elemre.
 
-![Objektumok](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Eszközök](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
