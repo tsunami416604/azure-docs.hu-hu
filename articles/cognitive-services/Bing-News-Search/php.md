@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Hírkeresés végrehajtása a PHP és a Bing News Search REST API segítségével'
+title: 'Gyors útmutató: Hírek keresése a PHP-vel és a Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak a PHP használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API PHP használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383089"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírkeresés végrehajtása a PHP és a Bing News Search REST API használatával
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a PHP használatával és a Bing News Search REST API
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
-Míg ez az alkalmazás php-ben íródott, az API egy RESTful webszolgáltatás, amely a legtöbb programozási nyelvet kompatibilis.
+Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* PHP 5.6 vagy újabb
+* PHP 5,6 vagy újabb
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -40,7 +40,7 @@ A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-b
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
 4. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-5. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+5. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 5. Futtassa a programot.
 
 ```php

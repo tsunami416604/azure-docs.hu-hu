@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Az Azure Service Fabric Mesh szolgáltatásban futó alkalmazás frissítése
+title: Oktatóanyag – az Azure Service Fabric Meshban futó alkalmazások frissítése
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan lehet frissíteni a Service Fabric Meshben futó Service Fabric-alkalmazások szolgáltatásait.
 author: dkkapur
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351728"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Oktatóanyag: A Service Fabric Meshben futó Service Fabric-alkalmazások frissítése
 
-Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Ha elkészült, egy webes előtér-szolgáltatás fut a magasabb CPU-erőforrások.
+Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Ha elkészült, a webes előtér-szolgáltatás nagyobb CPU-erőforrásokkal fut.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -50,7 +50,7 @@ Ez az oktatóanyag az [előzőleg telepített](service-fabric-mesh-tutorial-temp
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. A webes előtér-szolgáltatás CPU-erőforrásainak növelése érdekében módosítsa a központi telepítési sablon vagy paraméterfájl *cpue* értékét.  Ezt követően frissítse az alkalmazást.
+Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. A webes előtér-szolgáltatás CPU-erőforrásainak növeléséhez módosítsa a *cpue* értéket a telepítési sablonban vagy a Parameters fájlban.  Ezt követően frissítse az alkalmazást.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Az üzembehelyezési sablon paramétereinek módosítása
 

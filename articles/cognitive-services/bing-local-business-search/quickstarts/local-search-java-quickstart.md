@@ -1,7 +1,7 @@
 ---
-title: Gyorsútmutató – Lekérdezés küldése az API-nak Java használatával – Bing helyi üzleti keresés
+title: Rövid útmutató – lekérdezés küldése az API-nak a Java-Bing helyi üzleti keresés használatával
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a kérelmek küldését a Bing Helyi üzleti keresési API-nak, amely egy Azure Cognitive Service.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74665185"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rövid útmutató: Lekérdezés küldése a Bing Helyi üzleti keresési API-nak Java használatával
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
-Ezzel a rövid útmutatóval megkezdheti a kérelmek küldését a Bing Helyi üzleti keresési API-nak, amely egy Azure Cognitive Service. Bár ez az egyszerű alkalmazás Java nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis bármely programozási nyelvvel, amely képes HTTP-kéréseket készíteni és elemezni a JSON-t.
+Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-Ez a példaalkalmazás helyi válaszadatokat kér `hotel in Bellevue`le az API-ból a keresési lekérdezéshez.
+Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevue`API-ból érkező helyi válaszüzeneteket kéri le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java Fejlesztői Készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Az ingyenes próbaverzió aktiválásakor szüksége lesz a hozzáférési kulcsra.  Lásd még: [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásához megadott hozzáférési kulcsra.  Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Ez a példaalkalmazás helyi válaszadatokat kap egy *bellevue-i*szállodálekérdezéséből.
+Ez a példa az alkalmazás helyi válaszüzeneteket olvas be a *Bellevue egyik szállodájának*lekérdezése alapján.
 
 ## <a name="create-the-request"></a>A kérelem létrehozása 
 
-A következő kód `WebRequest`létrehoz egy , beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési karakterláncot a "hotel a Bellevue"-hoz.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejlécét, és hozzáadja a "Hotel in Bellevue" lekérdezési karakterláncot.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -51,7 +51,7 @@ A következő kód `WebRequest`létrehoz egy , beállítja a hozzáférési kulc
 
 ## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
-A Bing helyi vállalati keresési API a Bing keresőmotorjának találatait adja vissza.
+A Bing helyi üzleti keresési API a Bing keresőmotor eredményeit adja vissza.
 1. Töltse le vagy telepítse a gson-kódtárat.
 2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
@@ -165,6 +165,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [Helyi üzleti keresés rövid útmutató](local-quickstart.md)
-- [A helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)
-- [Helyi üzleti keresés Python rövid útmutató](local-search-python-quickstart.md)
+- [Helyi üzleti keresés – rövid útmutató](local-quickstart.md)
+- [Helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)
+- [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

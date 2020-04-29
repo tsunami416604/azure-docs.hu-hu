@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75379291"
 ---
-Vizsgálja `"confidence"` meg az egyes kulcs/érték `"pageResults"` eredmény értékeit a csomópont alatt. Azt is meg kell néznie `"readResults"` a megbízhatósági pontszámok a csomópont, amely megfelel a szöveg olvasási művelet. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredmények megbízhatóságát, ezért mindkettőt ellenőrizze.
-* Ha az olvasási művelet megbízhatósági pontszámai alacsonyak, próbálja meg javítani a bemeneti dokumentumok minőségét [(lásd: Bemeneti követelmények).](../overview.md#input-requirements)
-* Ha a kulcs/érték kinyerési művelet megbízhatósági pontszámai alacsonyak, győződjön meg arról, hogy az elemzett dokumentumok azonos típusúak, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumai megjelenésük eltérő, fontolja meg a különböző mappákra való felosztásukat, és minden változathoz betanítási modellt.
+Vizsgálja meg `"confidence"` az egyes kulcsok/értékek eredményének értékét a `"pageResults"` csomópont alatt. Tekintse meg a `"readResults"` csomópontban található megbízhatósági pontszámokat is, amelyek a szöveges olvasási műveletnek felelnek meg. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
+* Ha az olvasási művelet megbízhatósági pontszáma alacsony, próbálja meg javítani a bemeneti dokumentumok minőségét (lásd a [bemeneti követelményeket](../overview.md#input-requirements)).
+* Ha a kulcs/érték kibontási műveletének megbízhatósági pontszáma alacsony, ügyeljen arra, hogy az elemzett dokumentumok ugyanolyan típusúak legyenek, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumaiban változások vannak kialakítva, érdemes lehet különböző mappákba bontani őket, és minden egyes változathoz egy modellt betanítani.
 
-A megcélzott megbízhatósági pontszámok a használati esettől függenek, de általában jó gyakorlat a 80%-os vagy annál magasabb pontszámot megcélozni. Érzékenyebb esetekben, például orvosi feljegyzések vagy számlakivonatok olvasása esetén 100%-os pontszám ajánlott.
+A megcélzott megbízhatósági pontszámok a használati esettől függenek, de általában jó gyakorlat a 80%-os vagy újabb pontszám megcélzására. Az olyan érzékeny esetekben, mint például az orvosi rekordok vagy a számlázási utasítások beolvasása, 100%-os pontszám ajánlott.

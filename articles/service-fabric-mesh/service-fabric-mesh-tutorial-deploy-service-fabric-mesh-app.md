@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Egy Service Fabric Mesh-alkalmazás telepítése
+title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése
 description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást a Visual Studióval.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351846"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
@@ -111,9 +111,9 @@ Az oktatóanyagban használt alkalmazás neve: `todolistapp`. A következő para
 az mesh app show --resource-group $rg --name todolistapp
 ```
 
-## <a name="get-the-ip-address-of-your-deployment"></a>A központi telepítés IP-címének beszerezése
+## <a name="get-the-ip-address-of-your-deployment"></a>Az üzemelő példány IP-címének beolvasása
 
-Ha meg szeretné szerezni az alkalmazás IP-címét, használja a következő parancsot:
+Ha az alkalmazáshoz tartozó IP-címet szeretné beszerezni, használja a következő parancsot:
   
 ```azurecli-interactive
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway

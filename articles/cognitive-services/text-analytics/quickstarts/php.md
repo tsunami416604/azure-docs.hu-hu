@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: A Text Analytics API meghívása a PHP használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódmintákat, hogy gyorsan elkezdhesse használni a Text Analytics API-t az Azure Cognitive Servicesben.
+description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378585"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a PHP használatával
 <a name="HOLTop"></a>
 
-Ez a cikk [bemutatja,](#Detect)hogyan lehet felismerni a nyelvet, [elemezni a véleményeket,](#SentimentAnalysis) [kinyerni a kulcsfontosságú kifejezéseket,](#KeyPhraseExtraction)és azonosítani a [kapcsolódó entitásokat](#Entities) a [Php-vel a Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) használatával.
+Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a véleményét](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -36,7 +36,7 @@ A Language Detection API a [Detect Language metódus](https://westcentralus.dev.
 
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
-1. Másolja a Text Analytics-kulcsot és a végpontot a kódba.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -144,7 +144,7 @@ A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sent
 
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
-1. Másolja a Text Analytics-kulcsot és a végpontot a kódba.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -229,7 +229,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
-1. Másolja a Text Analytics-kulcsot és a végpontot a kódba.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -329,7 +329,7 @@ Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az 
 
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
-1. Másolja a Text Analytics-kulcsot és a végpontot a kódba. 
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra. 
 1. Futtassa a programot.
 
 ```php
@@ -431,9 +431,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzés a Power BI-val](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szövegelemzés – áttekintés](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

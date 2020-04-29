@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-sablonok az Azure webalkalmazás-tűzfalhoz
-description: Azure Resource Manager-sablonok az Azure webalkalmazás-tűzfalhoz
+title: Az Azure webalkalmazási tűzfal Azure Resource Manager sablonjai
+description: Az Azure webalkalmazási tűzfal Azure Resource Manager sablonjai
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,17 +8,17 @@ ms.topic: sample
 ms.date: 09/28/2019
 ms.author: victorh
 ms.openlocfilehash: 5dabe0337ab2ba92a19b198941d9830aee4dd885
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73501630"
 ---
-# <a name="azure-resource-manager-templates-for-azure-web-application-firewall"></a>Azure Resource Manager-sablonok az Azure webalkalmazás-tűzfalhoz
+# <a name="azure-resource-manager-templates-for-azure-web-application-firewall"></a>Az Azure webalkalmazási tűzfal Azure Resource Manager sablonjai
 
-Az alábbi táblázat az Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz az Azure Web Application Firewall számára.
+Az alábbi táblázat az Azure webalkalmazási tűzfal Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
-| [Alkalmazásátjáró v2 webalkalmazás-tűzfallal](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Alkalmazásátjáró 2-es v2-es eszköz létrehozása webalkalmazás-tűzfallal.|
+| [Application Gateway v2 webalkalmazási tűzfallal](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Létrehoz egy Application Gateway v2-et a Web Application Firewall V2 használatával.|
 | | |

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Videók keresése a REST API és a C# használatával – Bing videokeresés'
+title: 'Gyors útmutató: videók keresése a REST API és C#-Bing Video Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval videókeresési kérelmeket küldhet a Bing Video Search REST API-nak a C# használatával.
+description: Ezzel a rövid útmutatóval videó-keresési kéréseket küldhet a Bing Video Search REST API C# használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382701"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Rövid útmutató: Videók keresése a Bing Video Search REST API-val és a C-vel #
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és C használatával #
 
-Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű C# alkalmazás http-videokeresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű C#-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) további hibakezeléssel, funkciókkal és kódjegyzetekkel.
+A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) további hibakezelés, funkciók és kódok megjegyzésekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/)bármely kiadása.
+* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
@@ -32,7 +32,7 @@ A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/c
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új konzolmegoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. Hozzon létre egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/c
     using System.Collections.Generic;
     ```
 
-2. Adjon hozzá változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. `uriBase`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
+2. Adja hozzá a változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. `uriBase`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -50,7 +50,7 @@ A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/c
     const string searchTerm = "kittens";
     ```
 
-### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Struct létrehozása a Bing Video Search API-válasz formázásához
+### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>A Bing Video Search API-válasz formázására szolgáló struct létrehozása
 
 1. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
 
@@ -62,11 +62,11 @@ A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/c
         }
     ```
 
-## <a name="create-and-handle-a-video-search-request"></a>Videokeresési kérelem létrehozása és kezelése
+## <a name="create-and-handle-a-video-search-request"></a>Videó-keresési kérelem létrehozása és kezelése
 
-Hozzon létre egy `BingVideoSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A módszerben hajtsa végre a következő lépéseket:
+Hozzon létre egy `BingVideoSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A metódusban hajtsa végre a következő lépéseket:
 
-1. Hozza létre a keresési kérés URI-ját. Vegye figyelembe, hogy a Keresés keresési kifejezést a karakterlánchoz való hozzáfűzés előtt formázni kell.
+1. Hozza létre a keresési kérés URI-ját. Vegye figyelembe, hogy a keresési kifejezés toSearch formázva kell lennie, mielőtt hozzáfűzi a karakterlánchoz.
 
     ```csharp
     
@@ -76,7 +76,7 @@ Hozzon létre egy `BingVideoSearch` nevű metódust, amely meghívja az API-t, m
     //...
     ```
 
-2. A webes kérés végrehajtása a `Ocp-Acpim-Subscription-Key` kulcs fejléchez `HttpWebResponse` való hozzáadásával és az API-válasz tárolására egy objektum használatával. Ezután `StreamReader` használja a a JSON-karakterlánc bekapásához.
+2. Hajtsa végre a webes kérelmet úgy, hogy hozzáadja `Ocp-Acpim-Subscription-Key` a kulcsot a fejléchez `HttpWebResponse` , és egy objektumot használ az API-válasz tárolására. Ezután a paranccsal `StreamReader` kérje le a JSON-karakterláncot.
 
     ```csharp
     //...
@@ -89,7 +89,7 @@ Hozzon létre egy `BingVideoSearch` nevű metódust, amely meghívja az API-t, m
 
 ## <a name="process-the-result"></a>Az eredmény feldolgozása
 
-1. Hozza létre a keresési eredmény objektumát, és nyerje ki a Bing HTTP-fejléceit. Ezután `searchResult` adja vissza az objektumot. 
+1. Hozza létre a keresési eredmény objektumát, és nyerje ki a Bing HTTP-fejléceit. Ezután adja vissza `searchResult` az objektumot. 
 
     ```csharp
     var searchResult = new SearchResult();

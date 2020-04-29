@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Keresési kérelem küldése a REST API-nak Java használatával – Bing entitáskeresés'
+title: 'Gyors útmutató: keresési kérelem küldése a REST API Javával – Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API-nak Java használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API Javával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75384151"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Rövid útmutató: Keresési kérelem küldése a Bing Entity Search REST API-nak Java használatával
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API Javával
 
-Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Entity Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ.
 
 Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java Fejlesztői Készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * A [Gson-kódtár](https://github.com/google/gson)
 
 
@@ -50,7 +50,7 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
    import com.google.gson.JsonParser;
    ```
 
-2. Egy új osztályban hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és egy keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+2. Egy új osztályban hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és egy keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
    ```java
    public class EntitySearch {
@@ -66,11 +66,11 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
     
    ```
 
-## <a name="construct-a-search-request-string"></a>Keresési kérelem karakterláncának összeállítása
+## <a name="construct-a-search-request-string"></a>Keresési kérelem karakterláncának létrehozása
 
-1. Hozzon létre `search()` egy JSON `String`függvényt. url-kódolja a keresési lekérdezést, és adja `&q=`hozzá egy paraméterkarakterlánchoz a segítségével. Adja hozzá a piacot a karakterlánchoz. `?mkt=`
+1. Hozzon létre egy `search()` nevű függvényt, `String`amely egy JSON-t ad vissza. URL – kódolja a keresési lekérdezést, és adja hozzá egy Parameters karakterlánchoz a `&q=`következővel:. Adja hozzá a piacot a karakterlánchoz a következővel: `?mkt=`.
  
-2. Hozzon létre egy URL-objektumot a gazdagép, az elérési út és a paraméterek karakterláncaival.
+2. Hozzon létre egy URL-objektumot a gazdagép, az elérési út és a paraméterek karakterláncával.
     
     ```java
     //...
@@ -83,7 +83,7 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
       
 ## <a name="send-a-search-request-and-receive-a-response"></a>Keresési kérelem küldése és válasz fogadása
 
-1. A `search()` fenti függvényben hozzon `HttpsURLConnection` létre `url.openCOnnection()`egy új objektumot a segítségével. Állítsa be a `GET`kérelem módszert , és `Ocp-Apim-Subscription-Key` adja hozzá az előfizetési kulcsot a fejléchez.
+1. A `search()` fent létrehozott függvényben hozzon létre egy `HttpsURLConnection` új objektumot `url.openCOnnection()`a paranccsal. Állítsa be a kérelem metódusát `GET`, és adja hozzá az előfizetési `Ocp-Apim-Subscription-Key` kulcsot a fejléchez.
 
     ```java
     //...
@@ -94,7 +94,7 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
     //...
     ```
 
-2. Hozzon `StringBuilder`létre egy újat. Használjon `InputStreamReader` új paraméterként az API-válasz olvasásához `BufferedReader` példányosításkor.  
+2. Hozzon létre `StringBuilder`egy újat. Az API `BufferedReader` - `InputStreamReader` válasz elolvasásához használja az új paramétert.  
     
     ```java
     //...
@@ -104,7 +104,7 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
     //...
     ```
 
-3. Hozzon `String` létre egy objektumot `BufferedReader`a válasz tárolására a ból. Végighaladjon rajta, és fűzjön hozzá minden sort a karakterlánchoz. Ezután zárja be az olvasót, és küldje vissza a választ. 
+3. Hozzon `String` létre egy objektumot, amely a válaszát tárolja `BufferedReader`. Ismételje meg a szöveget, és fűzze hozzá az egyes sorokhoz a karakterláncot. Ezután zárjuk le az olvasót, és adja vissza a választ. 
     
     ```java
     String line;
@@ -119,9 +119,9 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
 
 ## <a name="format-the-json-response"></a>A JSON-válasz formázása
 
-1. Hozzon létre `prettify` egy új függvényt, amelynek célja a JSON-válasz formázása. Hozzon `JsonParser`létre egy `parse()` újat, és hívja meg a json szöveget, és tárolja JSON-objektumként. 
+1. Hozzon létre egy nevű `prettify` új függvényt a JSON-válasz formázásához. Hozzon létre `JsonParser`egy újat, `parse()` és hívja meg a JSON-szöveget, és tárolja JSON-objektumként. 
 
-2. A Gson-könyvtár segítségével `GsonBuilder()`hozzon `setPrettyPrinting().create()` létre egy újat, és formázza a jsont. Akkor adja vissza.    
+2. Hozzon létre egy új `GsonBuilder()`, a Gson-kódtár használatával `setPrettyPrinting().create()` , és formázza a JSON-t. Ezután adja vissza.    
   
    ```java
    //...
@@ -134,9 +134,9 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
    //...
    ```
 
-## <a name="call-the-search-function"></a>A keresési funkció felhívása
+## <a name="call-the-search-function"></a>A Search függvény meghívása
 
-1. A projekt fő metódusából `search()`hívja meg `prettify()` a programot, és formázza a szöveget.
+1. A projekt fő metódusában hívja meg a függvényt `search()`, és `prettify()` formázza a szöveget.
     
     ```java
         public static void main(String[] args) {
@@ -221,4 +221,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../overview.md )
-* [Bing entitáskeresési API– referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

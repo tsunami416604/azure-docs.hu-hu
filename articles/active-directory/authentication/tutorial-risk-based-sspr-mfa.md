@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74846351"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Oktatóanyag: Kockázatészlelések használata a többtényezős hitelesítés és a jelszómódosítások aktiválásához
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Oktatóanyag: kockázati észlelések használata a Multi-Factor Authentication és a jelszó módosításának elindításához
 
 Az oktatóanyagban az Azure Active Directory (Azure AD) Identity Protectiont fogjuk engedélyezni, amely az Azure AD Premium P2 szolgáltatása, és sokkal több, mint egy egyszerű monitorozási és jelentéskészítési eszköz. A vállalat identitásainak védelme érdekében konfigurálhat olyan kockázatalapú szabályzatokat, amelyek automatikusan reagálnak a kockázatos viselkedési mintákra. Ezekkel a szabályzatokkal automatikusan blokkolható vagy kezdeményezhető a helyreállítás, beleértve a jelszómódosítások és a többtényezős hitelesítés kikényszerítését.
 
-Az Azure AD Identity Protection szabályzatok a meglévő feltételes hozzáférési szabályzatok mellett további védelmi rétegként is használhatók. Bár lehet, hogy a felhasználók soha nem viselkednek majd kockázatosan és aktiválják a szabályzatokat, rendszergazdaként nyugodt lehet, hogy gondoskodott a védelemről.
+Azure AD Identity Protection szabályzatok a meglévő feltételes hozzáférési szabályzatok mellett további védelmi rétegként is használhatók. Bár lehet, hogy a felhasználók soha nem viselkednek majd kockázatosan és aktiválják a szabályzatokat, rendszergazdaként nyugodt lehet, hogy gondoskodott a védelemről.
 
-A kockázatészlelést kiváltó elemek közé tartoznak a következők:
+A kockázatok észlelését kiváltó elemek többek között a következők lehetnek:
 
 * Felhasználók, akiknek kiszivárogtak a hitelesítő adatai
 * Bejelentkezések névtelen IP-címről
@@ -52,16 +52,16 @@ A kockázatalapú szabályzatok engedélyezése egyszerű. Az alábbi lépések 
 
 ### <a name="enable-users-to-register-for-multi-factor-authentication"></a>Többtényezős hitelesítésre való regisztrálás engedélyezése a felhasználók számára
 
-Az Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, amely segít a felhasználók regisztrálásában a többtényezős hitelesítéshez, és könnyen azonosíthatja az aktuális regisztrációs állapotot. A szabályzat az engedélyezése esetén nem követeli meg a felhasználóktól a többtényezős hitelesítést, de felkéri őket az előzetes regisztrációra.
+Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, amely segítséget nyújt a felhasználók számára a Multi-Factor Authentication regisztrálásához és az aktuális regisztrációs állapot egyszerű azonosításához. A szabályzat az engedélyezése esetén nem követeli meg a felhasználóktól a többtényezős hitelesítést, de felkéri őket az előzetes regisztrációra.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.
 1. Kattintson az **MFA-regisztráció** lehetőségre.
 1. Állítsa a Házirend érvényesítése beállítást **Be** értékre.
    1. A szabályzat beállításával az összes felhasználónak regisztrálnia kell a többtényezős hitelesítéshez használható módszereket.
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
-   ![A felhasználók regisztrációjának megkövetelése az MFA-ra bejelentkezéskor](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![A felhasználók regisztrációjának megkövetelése az MFA-ban bejelentkezéskor](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Kockázatalapú jelszómódosítások engedélyezése
 
@@ -73,7 +73,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
 1. A **Hozzáférés** területen válassza a **Hozzáférés engedélyezése**, majd a **Jelszómódosítás megkövetelése** lehetőséget.
 1. Kattintson a Kiválasztás gombra.
 1. Állítsa a Házirend érvényesítése beállítást **Be** értékre.
-1. Kattintson a **Mentés gombra**
+1. Kattintson a **Mentés** gombra
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Kockázatalapú többtényezős hitelesítés engedélyezése
 
@@ -85,7 +85,7 @@ A legtöbb felhasználó viselkedése normális, amely követhető, és amikor e
 1. A **Hozzáférés** területen válassza a **Hozzáférés engedélyezése**, majd a **Többtényezős hitelesítés megkövetelése** lehetőséget.
 1. Kattintson a Kiválasztás gombra.
 1. Állítsa a Házirend érvényesítése beállítást **Be** értékre.
-1. Kattintson a **Mentés gombra**
+1. Kattintson a **Mentés** gombra
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

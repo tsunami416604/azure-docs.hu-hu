@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Videók keresése a REST API és a Node.js használatával – Bing videokeresés'
+title: 'Gyors útmutató: videók keresése a REST API és a Node. js használatával – Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval videókeresési kérelmeket küldhet a Bing Video Search REST API-nak JavaScript használatával.
+description: Ezzel a rövid útmutatóval kereshet a Bing Video Search REST API a JavaScript használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382667"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rövid útmutató: Videók keresése a Bing Video Search REST API-val és a Node.js használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és Node. js használatával
 
-Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás http-videokeresési lekérdezést küld az API-nak, és megjeleníti a választ. Míg ez az alkalmazás javascriptben íródott, és node.js-t használ, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
 
-* A JavaScript kérése modulja
-    * Ezt a modult a`npm install request`
+* A JavaScript kérési modulja
+    * Ezt a modult a következő használatával telepítheti`npm install request`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy új JavaScript fájlt a kedvenc IDE vagy szerkesztő. Állítsa be a szigort, és adja hozzá a következő követelményt:
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a korlátozást, és adja hozzá a következő követelményt:
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési kifejezéshez. `host`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési kifejezéshez. `host`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t,
 
 ## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
 
-1. Hozzon létre `response_handler` egy függvényt, amelyet az API-ból JSON-válasz készítésére hívnak. Hozzon létre egy változót a választörzsszámára. Fűzze hozzá `data` a választ, `response.on()`ha jelző t kap a használatával.
+1. Hozzon létre egy `response_handler` nevű függvényt, amely JSON-választ KÉSZÍT az API-tól. Hozzon létre egy változót a válasz törzse számára. A válasz hozzáfűzése a `data` jelző fogadásakor, a használatával `response.on()`.
 
     ```javascript
     let response_handler = function (response) {
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t,
     };
     ```
     
-   1. Ha `end` jelzésre kerül, a binghez kapcsolódó fejlécek tárolására használható `response.on()` (a vagy `bingapis` `x-msedge-`a kezdővel kezdődik). Ezután elemezd a JSON-t a `JSON.parse()` `JSON.stringify()`használatával, alakítsa át karakterláncgá a használatával, és nyomtassa ki.
+   1. Ha `end` a rendszer jelzi, a `response.on()` használatával tárolhatja a Binggel kapcsolatos fejléceket ( `bingapis` a `x-msedge-`vagy a verziótól kezdődően). Ezután elemezze a JSON `JSON.parse()`-t a használatával, alakítsa át `JSON.stringify()`egy sztringre, és nyomtassa ki.
 
        ```javascript
        response.on('end', function () {
@@ -75,9 +75,9 @@ Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t,
        });
        ```
 
-## <a name="create-and-send-the-search-request"></a>Keresési kérelem létrehozása és elküldése
+## <a name="create-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. Hozzon létre `bing_video_search()`egy függvényt, amelynek neve . Adja hozzá a kérelem paramétereit, beleértve az állomásnevét és a fejléceket. Kódolja a keresési kifejezést, és fűzze `?q=` hozzá az elérési út paraméteréhez a paraméterrel. Ezután küldje `req.end()`el a kérést a segítségével.
+1. Hozzon létre egy `bing_video_search()`nevű függvényt. Adja hozzá a kérelem paramétereit, beleértve az állomásnevet és a fejléceket. Kódolja a keresési kifejezést, és fűzze hozzá a Path paraméterhez a `?q=` (z) paraméterrel. Ezt követően küldje el a `req.end()`kérelmet a-val.
 
     ```javascript
     let bing_video_search = function (search_term) {

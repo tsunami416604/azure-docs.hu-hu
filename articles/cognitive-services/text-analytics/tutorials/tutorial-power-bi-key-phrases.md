@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy a Text Analytics API használatával hogyan nyerhetki kulcskifejezéseket a Power BI-ban tárolt szövegekből.
+description: Megtudhatja, hogyan lehet a Text Analytics API használatával kinyerni a Power BIban tárolt szövegből származó kulcsfontosságú kifejezéseket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378534"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
@@ -94,7 +94,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive
 | | |
 | - | - |
 | `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
-| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A Key Phrases API megköveteli, hogy ezek az adatok ne legyenek hosszabbak körülbelül 5120 karakternél.|
+| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A legfontosabb kifejezések API-nak szüksége van arra, hogy az adathalmaz ne legyen hosszabb 5 120 karakternél.|
 | `language` | A dokumentum természetes nyelvét jelölő kód. A mintaadatokban minden üzenet angolul van, így a mezőre rögzítheti a `en` értéket.|
 
 ## <a name="create-a-custom-function"></a>Egyéni függvény létrehozása
@@ -114,7 +114,7 @@ Az új lekérdezés eredetileg `Query1` névvel megjelenik a Lekérdezések list
 Most a **Kezdőlap** menüszalag **Lekérdezés** csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
 
 > [!NOTE]
-> Cserélje le az alábbi (tartalmazó) `<your-custom-subdomain>`példavégpontot a Text Analytics-erőforráshoz létrehozott végpontra. Ezt a végpontot úgy találhatja meg, hogy bejelentkezik az `Quick start` [Azure Portalra,](https://azure.microsoft.com/features/azure-portal/)kiválasztja a Text Analytics-előfizetését, és kiválasztja a .
+> Cserélje le az alábbi példás végpontot (amely tartalmazza `<your-custom-subdomain>`) a Text Analytics erőforráshoz generált végponttal. Ezt a végpontot megkeresheti a [Azure Portalba](https://azure.microsoft.com/features/azure-portal/)való bejelentkezéssel, a Text Analytics-előfizetés kiválasztásával, majd a lehetőség kiválasztásával `Quick start`.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ A Power BI Desktopban, a Lekérdezésszerkesztő ablakban váltson vissza a `Fab
 
 Megjelenik az Egyéni függvény hívása párbeszédablak. Az **Új oszlop neve** mezőbe írja be: `keyphrases`. A **Függvénylekérdezésnél** válassza ki a létrehozott, `KeyPhrases` egyéni függvényt.
 
-A párbeszédpanelen új mező jelenik meg, **(nem kötelező) szöveg**. A mezőben azt kell megadnunk, mely oszlop adja a Key Phrases API `text` paraméterének az értékét. (Ne feledje, hogy már kódolta `language` `id` a és a paraméterek értékeit.) Válassza `Merged` ki (a [korábban](#PreparingData) létrehozott oszlopot a tárgy- és üzenetmezők egyesítésével) a legördülő menüből.
+A párbeszédpanelen új mező jelenik meg, **(nem kötelező) szöveg**. A mezőben azt kell megadnunk, mely oszlop adja a Key Phrases API `text` paraméterének az értékét. (Ne feledje, hogy már rögzítette a és `language` `id` a paraméterek értékeit.) Válassza `Merged` ki (a [korábban](#PreparingData) létrehozott oszlopot a tárgy és az üzenet mezőinek egyesítésével) a legördülő menüből.
 
 ![[Egyéni függvény hívása]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -217,7 +217,7 @@ A jelentésben a Fókusz mód eszközre kattintva közelebbről is megtekintheti
 
 A Text Analytics szolgáltatás a Microsoft Azure Cognitive Services szolgáltatásainak egyike, és hangulatelemzési és nyelvfelismerési funkciókat is kínál. A nyelvfelismerés különösen hasznos, ha az ügyfelek visszajelzései nem mind angol nyelven születnek.
 
-Mindkét további API hasonlóan működik, mint a Key Phrases API. Ez azt jelenti, hogy a Power BI Desktoppal integrálni tudja majd őket olyan egyéni függvénnyel, amely majdnem megegyezik az oktatóanyagban létrehozottal. Csak hozzon létre egy üres lekérdezést, és illessze be a megfelelő kódot az alábbiak közül a Speciális szerkesztőbe a korábbihoz hasonló módon. (Ne felejtsd el a hozzáférési kulcsot!) Ezután a korábhoz megfelelően a függvénnyel új oszlopot adhat a táblához.
+Mindkét további API hasonlóan működik, mint a Key Phrases API. Ez azt jelenti, hogy a Power BI Desktoppal integrálni tudja majd őket olyan egyéni függvénnyel, amely majdnem megegyezik az oktatóanyagban létrehozottal. Csak hozzon létre egy üres lekérdezést, és illessze be a megfelelő kódot az alábbiak közül a Speciális szerkesztőbe a korábbihoz hasonló módon. (Ne feledkezzen meg a hozzáférési kulcsról!) Ezután, ahogy korábban is, használja a függvényt, és vegyen fel egy új oszlopot a táblába.
 
 Az alábbi hangulatelemzési függvény egy pontszámot ad vissza, amely a szövegben kifejezett hangulatot méri.
 
@@ -296,7 +296,7 @@ További információk a Text Analytics szolgáltatásról, a Power Query M kép
 > [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [M power query m hivatkozás](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M-hivatkozás](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI-dokumentáció](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

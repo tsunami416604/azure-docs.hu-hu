@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Kiskereskedelmi készletválaszték frissítése közzétételi/előfizetési csatornák és témakörszűrők használatával az Azure CLI-vel'
-description: 'Oktatóanyag: Ebben az oktatóanyagban megtudhatja, hogyan küldhet és fogadhat üzeneteket egy témakörből és előfizetésből, és hogyan adhat hozzá és használhat szűrőszabályokat az Azure CLI használatával'
+title: 'Oktatóanyag: a kiskereskedelmi leltári választék frissítése a közzétételi/előfizetési csatornák és a témakör-szűrők használatával az Azure CLI-vel'
+description: 'Oktatóanyag: ebben az oktatóanyagban megtudhatja, hogyan küldhet és fogadhat üzeneteket egy témakörből és előfizetésből, valamint hogyan adhat hozzá és használhat szűrési szabályokat az Azure CLI használatával'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718923"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése parancssori felület és témakörök/előfizetések használatával
@@ -32,7 +32,7 @@ Erre a forgatókönyvre egy példa, amikor több kiskereskedelmi üzletben friss
 
 ![témakör](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ingyenes fiókot.][]
+Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot][] .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Ha Service Bus-alkalmazást szeretne létrehozni a Java használatával, akkor a
 
 - [Java fejlesztői készlet](https://aka.ms/azure-jdks), legújabb verzió.
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Apache Maven](https://maven.apache.org), 3.0-s vagy újabb verzió.
+- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -346,7 +346,7 @@ Folytassa a következő oktatóanyaggal, ha szeretne többet megtudni a Service 
 > [!div class="nextstepaction"]
 > [Leltár frissítése a PowerShell és témakörök/előfizetések használatával](service-bus-tutorial-topics-subscriptions-portal.md)
 
-[ingyenes számla]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes fiók]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

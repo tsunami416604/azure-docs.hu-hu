@@ -9,16 +9,16 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73523005"
 ---
-1. Az [Azure Portal](https://portal.azure.com) menüben válassza az **Erőforrás létrehozása parancsot.** 
+1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása**lehetőséget. 
 
-   ![Erőforrás létrehozása az Azure Portalon](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
-2. A **Keresés a piactéren** mezőbe írja be a **Helyi hálózati átjáró**kifejezést, majd nyomja le az **Enter** billentyűt a kereséshez. Ez visszaad egy listát az eredményekkel. Kattintson a **Helyi hálózati átjáró** elemre, majd kattintson a **Létrehozás** gombra a **Helyi hálózati átjáró létrehozása** lap megnyitásához.
+   ![Erőforrás létrehozása a Azure Portalban](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. A **Keresés a piactéren** mezőbe írja be a **helyi hálózati átjáró**kifejezést, majd nyomja le az **ENTER** billentyűt a kereséshez. Ez visszaad egy listát az eredményekkel. Kattintson a **Helyi hálózati átjáró** elemre, majd kattintson a **Létrehozás** gombra a **Helyi hálózati átjáró létrehozása** lap megnyitásához.
 
    ![A helyi hálózati átjáró létrehozása](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "A helyi hálózati átjáró létrehozása")
 
@@ -30,6 +30,6 @@ ms.locfileid: "73523005"
    - **BGP beállítások konfigurálása:** Csak BGP konfigurálásakor használja. Más esetben ne jelölje be ezt a jelölőnégyzetet.
    - **Előfizetés:** Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg.
    - **Erőforráscsoport:** Válassza ki a használni kívánt erőforráscsoportot. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy korábban létrehozottat.
-   - **Helyszín:** A hely megegyezik a más **beállításokban megadott területekkel.** Válassza ki azt a helyet, ahol az objektum létrejön. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
+   - **Hely:** A hely megegyezik a más beállításokban található **régióval** . Válassza ki azt a helyet, ahol az objektumot létre kívánja hozni. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
 
 4. Miután végzett az értékek megadásával, kattintson a **Létrehozás** gombra a lap alján a helyi hálózati átjáró létrehozásához.

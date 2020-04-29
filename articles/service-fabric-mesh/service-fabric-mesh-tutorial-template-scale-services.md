@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag - Az Azure Service Fabric Mesh szolgáltatásban futó alkalmazások méretezése
+title: Oktatóanyag – az Azure Service Fabric Meshban futó alkalmazások méretezése
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan lehet méretezni a Service Fabric Meshben futó alkalmazások szolgáltatásait.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351821"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Oktatóanyag: Az Azure Service Fabric Meshben futó alkalmazások méretezése
@@ -42,7 +42,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Szolgáltatások horizontális le- és felskálázása
 
-Az alkalmazások Service Fabric Mesh szolgáltatásba való üzembe helyezésének egyik fő előnye, hogy könnyedén skálázhatja a szolgáltatásokat. Ezt a szolgáltatások különböző terhelésének kezelésére vagy a rendelkezésre állás javítására kell használni.
+Az alkalmazások Service Fabric Meshba való üzembe helyezésének egyik fő előnye, hogy könnyedén méretezheti vagy kibővítheti szolgáltatásait. Ezt a szolgáltatások különböző terhelésének kezelésére, illetve a rendelkezésre állás javítására kell használni.
 
 Ez az oktatóanyag az [előzőleg telepített](service-fabric-mesh-tutorial-template-deploy-app.md) és már futó Teendőlista-mintát használja példaként. Az alkalmazás két szolgáltatással rendelkezik: WebFrontEnd és ToDoService. Eredetileg mindkét szolgáltatás 1 replikával lett üzembe helyezve.  A WebFrontEnd szolgáltatás futó replikáinak számát a következő futtatásával tekintheti meg:
 

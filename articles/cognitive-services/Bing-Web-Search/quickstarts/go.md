@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Webes keresés végrehajtása a Go – Bing Web Search REST API-val'
+title: 'Gyors útmutató: webes keresés végrehajtása a go-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak a Go használatával, és JSON-választ kaphat
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API a go használatával, és JSON-választ kap
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -13,15 +13,15 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74978798"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rövid útmutató: Keresés az interneten a Bing Web Search REST API és az Go használatával
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a go használatával
 
-Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Web Search API-t, és megkaphatja a JSON-választ. Ez a Go alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás go nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Go-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Amíg az alkalmazás be van írva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -111,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>A fő függvény deklarálása és a változók megadása  
 
-Ez a kód deklarálja a fő függvényt, és megadja a szükséges változókat. `endpoint`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
+Ez a kód deklarálja a fő függvényt, és megadja a szükséges változókat. `endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -307,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Mintaválasz  
 
-A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a mintaválasz a `BingAnswer` struct használatával `result.Name` `result.URL`lett formázva, és a és a .
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a példa a `BingAnswer` struct használatával lett formázva, és megjeleníti `result.Name` a `result.URL`és a.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Hírkeresés végrehajtása a Node.js - Bing News Search REST API-val'
+title: 'Gyors útmutató: Hírek keresése a Node. js-ben – Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak a Node.js használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérelmet küldhet a Bing News Search REST API Node. js használatával, és egy JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383132"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírkeresés végrehajtása a Node.js és a Bing News Search REST API használatával
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Node. js és a Bing News Search használatával REST API
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
 Bár ez az alkalmazás JavaScript nyelven lett íródott és Node.js-szel fut, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)
+A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/
     let https = require('https');
     ```
 
-2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz. 
+2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -70,7 +70,7 @@ A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/
         });
         ```
 
-    3. Ha egy **záró** jelző t jelez, a JSON és a fejlécek megtekinthetők.
+    3. Ha a **végpont** jelzője be van jelezve, a JSON és a fejlécek is megtekinthetők.
 
         ```javascript
         response.on('end', function () {

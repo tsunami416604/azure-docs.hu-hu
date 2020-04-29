@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Képelemzésbe való betekintés a REST API és a Node.js használatával – Bing Visual Search'
+title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Node. js használatával – Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy miként tölthet fel képet a Bing Visual Search API-ba, és hogyan kaphat betekintést.
+description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75379708"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Rövid útmutató: Képelemzési adatok beszereznie a Bing Visual Search REST API-val és a Node.js használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és Node. js használatával
 
-Ezzel a rövid útmutatóval első alkalommal hívhatja meg a Bing Visual Search API-t, és megtekintheti a keresési eredményeket. Ez az egyszerű JavaScript-alkalmazás feltölt egy képet az API-ba, és megjeleníti a róla visszaadott információkat. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API, és megtekintheti a keresési eredményeket. Ez az egyszerű JavaScript-alkalmazás feltölt egy rendszerképet az API-ba, és megjeleníti a róluk visszaadott adatokat. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
-* A JavaScript kérése modul. A modul `npm install request` telepítéséhez a paranccsal telepítheti a modult.
-* Az űrlapadat modul. A parancs `npm install form-data` segítségével telepítheti a modult. 
+* A JavaScript kérési modulja. A modul telepítéséhez `npm install request` a parancsot használhatja.
+* Az űrlap-adatmodul. A `npm install form-data` parancs használatával telepítheti a modult. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy JavaScript-fájlt kedvenc IDE-jében vagy szerkesztőjében, és állítsa be a következő követelményeket:
+1. Hozzon létre egy JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adja meg a következő követelményeket:
 
     ```javascript
     var request = require('request');
@@ -39,7 +39,7 @@ Ezzel a rövid útmutatóval első alkalommal hívhatja meg a Bing Visual Search
     var fs = require('fs');
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a lemezkép elérési úthoz. `baseUri`lehet az alábbi globális végpont, vagy az erőforráshoz az Azure Portalon megjelenő [egyéni altartomány-végpont:](../../../cognitive-services/cognitive-services-custom-subdomains.md)
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. `baseUri`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ Ezzel a rövid útmutatóval első alkalommal hívhatja meg a Bing Visual Search
     var imagePath = "path-to-your-image";
     ```
 
-3. Hozzon létre `requestCallback()` egy függvényt, amely kinyomtatja a választ az API-ból:
+3. Hozzon létre egy `requestCallback()` nevű függvényt az API válaszának kinyomtatásához:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -55,9 +55,9 @@ Ezzel a rövid útmutatóval első alkalommal hívhatja meg a Bing Visual Search
     }
     ```
 
-## <a name="construct-and-send-the-search-request"></a>A keresési kérelem megépítése és elküldése
+## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-Helyi kép feltöltésekénaz űrlapadatoknak `Content-Disposition` tartalmazniuk kell a fejlécet. Be kell `name` állítani a paraméter "kép", és a `filename` paraméter lehet beállítani, hogy bármilyen karakterláncot. Az űrlap tartalma tartalmazza a kép bináris adatait. A legnagyobb feltölthető képméret 1 MB.
+Helyi rendszerkép feltöltésekor az űrlaphoz tartozó adatoknak szerepelniük `Content-Disposition` kell a fejlécben. A `name` paramétert a "rendszerkép" értékre kell állítani, `filename` és a paraméter tetszőleges sztringre állítható be. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A legnagyobb feltölthető képméret 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -68,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-1. Hozzon létre egy `FormData()`új **FormData** objektumot a használatával, és fűzz hozzá a kép elérési útját a következő használatával: `fs.createReadStream()`
+1. Hozzon létre **FormData** egy új FormData `FormData()`objektumot a használatával, és fűzze hozzá a rendszerkép elérési útját a következő használatával `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. A kérelemtár segítségével töltse fel `requestCallback()` a képet, és hívja a válasz nyomtatásához. Ügyeljen arra, hogy az előfizetési kulcsot hozzáadja a kérelem fejlécéhez:
+2. A kérelem könyvtárával töltse fel a képet, és hívja `requestCallback()` meg a válasz nyomtatását. Ügyeljen arra, hogy az előfizetési kulcsot hozzáadja a kérelem fejlécébe:
 
     ```javascript
     form.getLength(function(err, length){
@@ -91,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Visual Search egyoldalas webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

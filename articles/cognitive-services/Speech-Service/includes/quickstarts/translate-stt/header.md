@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd-szöveg fordítása – Beszédszolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési szolgáltatás fordítása'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: d4781808ce8e80f62e86ce1d0c6db9c38b2636d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74980941"
 ---
-Ebben a rövid útmutatóban a [Beszéd SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) segítségével interaktívan lefordítja a beszédeket az egyik nyelvről a másik nyelvű szövegre. Néhány előfeltétel teljesítése után a beszéd-szöveg fordítás a következő öt lépést teszi:
+Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával interaktív módon fordíthatja le a beszédet az egyik nyelvről a másik nyelvre. Néhány előfeltétel kielégítése után a beszéd – szöveg fordítása csak öt lépést vesz igénybe:
 > [!div class="checklist"]
-> * Hozzon ````SpeechConfig```` létre egy objektumot az előfizetési kulcsból és a régióból.
-> * Frissítse ````SpeechConfig```` az objektumot a forrás- és célnyelvek megadásához.
-> * Objektum ````TranslationRecognizer```` létrehozása felülről az ````SpeechConfig```` objektum használatával.
-> * Az ````TranslationRecognizer```` objektum használatával indítsa el a felismerési folyamat egyetlen utterance (kifejezés).
-> * Vizsgálja ````TranslationRecognitionResult```` meg a visszaküldötteket.
+> * Hozzon ````SpeechConfig```` létre egy objektumot az előfizetési kulcs és a régió alapján.
+> * Az ````SpeechConfig```` objektum frissítése a forrás és a cél nyelvének megadásához.
+> * Hozzon ````TranslationRecognizer```` létre egy objektumot ````SpeechConfig```` a fenti objektum használatával.
+> * Az ````TranslationRecognizer```` objektum használatával egyetlen lemondás esetén indíthatja el az elismerési folyamatot.
+> * Vizsgálja meg ````TranslationRecognitionResult```` a visszaadott értéket.
