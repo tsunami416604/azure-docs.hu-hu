@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A Bing egyéni keresés ügyféltár használata'
+title: 'Gyors útmutató: az Bing Custom Search ügyféloldali kódtár használata'
 titleSuffix: Azure Cognitive Services
-description: Az Egyéni keresés API ügyfélkódtárakat kínál, amelyek megkönnyítik a keresési képességek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
+description: A Custom Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270946"
 ---
-# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Rövid útmutató: A Bing egyéni keresés ügyféltár használata
+# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Gyors útmutató: az Bing Custom Search ügyféloldali kódtár használata
 
 ::: zone pivot="programming-language-csharp"
 

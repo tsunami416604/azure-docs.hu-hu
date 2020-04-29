@@ -1,55 +1,55 @@
 ---
-title: Az Azure NetApp-fájlok integrálása az Azure Kubernetes szolgáltatással
-description: Ismerje meg, hogyan integrálható az Azure NetApp-fájlok az Azure Kubernetes szolgáltatással
+title: Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
+description: Ismerje meg, hogyan integrálható Azure NetApp Files az Azure Kubernetes Service-szel
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
 ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273748"
 ---
-# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Az Azure NetApp-fájlok integrálása az Azure Kubernetes szolgáltatással
+# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 
-[Az Azure NetApp Files][anf] egy nagyvállalati szintű, nagy teljesítményű, forgalmi díjas fájltárolási szolgáltatás, amely az Azure-on fut. Ez a cikk bemutatja, hogyan integrálhatja az Azure NetApp-fájlokat az Azure Kubernetes szolgáltatással (AKS).
+[Azure NetApp Files][anf] az Azure-on futó nagyvállalati szintű, nagy teljesítményű és mért használatú file Storage szolgáltatás. Ez a cikk bemutatja, hogyan integrálhatja Azure NetApp Files az Azure Kubernetes szolgáltatással (ak).
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
 > [!IMPORTANT]
-> Az AKS-fürtnek olyan régióban kell [lennie, amely támogatja az Azure NetApp-fájlokat.][anf-regions]
+> Az AK-fürtnek olyan régióban is kell lennie [, amely támogatja a Azure NetApp Files][anf-regions].
 
-Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="limitations"></a>Korlátozások
 
-Az Azure NetApp-fájlok használatakor a következő korlátozások érvényesek:
+A Azure NetApp Files használatakor a következő korlátozások érvényesek:
 
-* Az Azure NetApp Files csak [bizonyos Azure-régiókban][anf-regions]érhető el.
-* Az Azure NetApp-fájlok használata előtt hozzáférést kell biztosítani az Azure NetApp Files szolgáltatáshoz. A hozzáférés igényléséhez használhatja az [Azure NetApp Files várólisták beküldési űrlapját.][anf-waitlist] Az Azure NetApp Files szolgáltatás addig nem érhető el, amíg meg nem kapja az Azure NetApp Files csapatának hivatalos visszaigazoló e-mailjét.
-* Az Azure NetApp Files szolgáltatást ugyanabban a virtuális hálózatban kell létrehozni, mint az AKS-fürt.
-* Az AKS-fürt kezdeti üzembe helyezése után csak az Azure NetApp-fájlok statikus kiépítése támogatott.
-* A dinamikus kiépítés azure NetApp Files használatával telepítse és konfigurálja a [NetApp Trident](https://netapp-trident.readthedocs.io/) 19.07-es vagy újabb verzióját.
+* Azure NetApp Files csak [a kiválasztott Azure-régiókban][anf-regions]érhető el.
+* Azure NetApp Files használata előtt hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz. A hozzáférésre való jelentkezéshez használhatja a [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist]. A Azure NetApp Files szolgáltatás addig nem érhető el, amíg nem kapja meg a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
+* A Azure NetApp Files szolgáltatást ugyanabban a virtuális hálózatban kell létrehozni, mint az AK-fürtöt.
+* Egy AK-fürt kezdeti üzembe helyezése után a Azure NetApp Files csak a statikus kiépítés támogatott.
+* Ha Azure NetApp Files használatával szeretne dinamikus kiépíteni, telepítse és konfigurálja a [NetApp Trident](https://netapp-trident.readthedocs.io/) 19,07-es vagy újabb verzióját.
 
-## <a name="configure-azure-netapp-files"></a>Azure NetApp-fájlok konfigurálása
+## <a name="configure-azure-netapp-files"></a>Azure NetApp Files konfigurálása
 
 > [!IMPORTANT]
-> A *Microsoft.NetApp* erőforrás-szolgáltató regisztrálása előtt ki kell töltenie az [Azure NetApp Files várólistára vonatkozó beküldési űrlapot][anf-waitlist] az előfizetéséhez. Nem regisztrálhatja az erőforrás-biztosít, amíg meg nem kapja a hivatalos visszaigazoló e-mailt az Azure NetApp Files csapat.
+> A *Microsoft. NetApp* erőforrás-szolgáltató regisztrálásához el kell végeznie az előfizetéshez tartozó [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist] . Az erőforrás nem regisztrálható, amíg meg nem kapja a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
 
-Regisztrálja a *Microsoft.NetApp* erőforrás-szolgáltatót:
+Regisztrálja a *Microsoft. NetApp* erőforrás-szolgáltatót:
 
 ```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
 > [!NOTE]
-> Ez eltarthat egy ideig.
+> Ez hosszabb időt is igénybe vehet.
 
-Amikor létrehoz egy Azure NetApp-fiókot az AKS-hez, létre kell hoznia a fiókot a **csomópont** erőforráscsoportban. Először az erőforráscsoport nevét az [az aks][az-aks-show] `--query nodeResourceGroup` show paranccsal kapja meg, és adja hozzá a lekérdezési paramétert. A következő példa a *myResourceGroup*nevű AKS-fürt csomóponterőforrás-csoportját kapja: *myAKSCluster*
+Amikor létrehoz egy Azure NetApp-fiókot az AK-val való használatra, létre kell hoznia a fiókot a **csomópont** -erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá `--query nodeResourceGroup` a lekérdezési paramétert. A következő példa lekéri a *myAKSCluster* nevű AK-fürthöz tartozó csomópont-erőforráscsoportot az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -59,7 +59,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Hozzon létre egy Azure NetApp Files fiókot a **csomópont** erőforráscsoportjában és az AKS-fürttel azonos régióban [az az netappfiles fiók létrehozása használatával.][az-netappfiles-account-create] A következő példa létrehoz egy *myaccount1* nevű fiókot a *MC_myResourceGroup_myAKSCluster_eastus* erőforráscsoportban és *az Eastus* régióban:
+Hozzon létre egy Azure NetApp Files fiókot a **csomópont** -erőforráscsoport és az AK-fürttel azonos régióban az [az netappfiles Account Create][az-netappfiles-account-create]paranccsal. A következő példa létrehoz egy *myaccount1* nevű fiókot a *MC_myResourceGroup_myAKSCluster_eastus* erőforráscsoporthoz és a *eastus* régióban:
 
 ```azurecli
 az netappfiles account create \
@@ -68,7 +68,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-Hozzon létre egy új kapacitáskészletet [az az netappfiles készlet létrehozása][az-netappfiles-pool-create]segítségével. A következő példa létrehoz egy új kapacitáskészlet nevű *mypool1* 4 TB méretű és *prémium szintű* szolgáltatás:
+Hozzon létre egy új kapacitási készletet az [az netappfiles Pool Create][az-netappfiles-pool-create]paranccsal. Az alábbi példa egy *mypool1* nevű új kapacitási készletet hoz létre 4 TB méretű és *prémium* szintű szolgáltatási szinten:
 
 ```azurecli
 az netappfiles pool create \
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-Hozzon létre egy alhálózatot az [Azure NetApp-fájlok nak az][anf-delegate-subnet] az hálózati [virtuálishálózat-alhálózat létrehozása][az-network-vnet-subnet-create]használatával. *Ennek az alhálózatnak ugyanabban a virtuális hálózatban kell lennie, mint az AKS-fürtnek.*
+Hozzon létre egy alhálózatot, amelyet [delegálhat Azure NetApp Files][anf-delegate-subnet] az [az Network vnet subnet Create][az-network-vnet-subnet-create]paranccsal. *Ennek az alhálózatnak ugyanabban a virtuális hálózatban kell lennie, mint az AK-fürt.*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -95,7 +95,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.0.0/28
 ```
 
-Hozzon létre egy kötetet az [az netappfiles kötet létrehozása][az-netappfiles-volume-create]használatával.
+Hozzon létre egy kötetet az [az netappfiles Volume Create][az-netappfiles-volume-create]paranccsal.
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -126,7 +126,7 @@ az netappfiles volume create \
 
 ## <a name="create-the-persistentvolume"></a>A PersistentVolume létrehozása
 
-A kötet részleteinek listázása az [netappfiles kötetmegjelenítés használatával][az-netappfiles-volume-show]
+A kötet részleteinek listázása az [az netappfiles Volume show][az-netappfiles-volume-show] használatával
 
 ```azurecli
 az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
@@ -148,7 +148,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Hozzon `pv-nfs.yaml` létre egy definiáló persistentvolume. Cserélje `path` le a `server` *creationToken* és *ipAddress* az előző parancsból. Példa:
+Hozzon `pv-nfs.yaml` létre egy definiált PersistentVolume. Cserélje `path` le a *creationToken* elemet a `server` creationToken és az *IP* -cím elemre az előző parancsban. Például:
 
 ```yaml
 ---
@@ -166,13 +166,13 @@ spec:
     path: /myfilepath2
 ```
 
-Frissítse a *kiszolgálót* és az előző lépésben létrehozott NFS (Network File System) kötet értékeinek *elérési útját.* Hozza létre a PersistentVolume-t a [kubectl apply][kubectl-apply] paranccsal:
+Frissítse a *kiszolgálót* és az *elérési utat* az NFS-(hálózati fájlrendszer) kötetnek az előző lépésben létrehozott értékére. Hozza létre a PersistentVolume a [kubectl Apply][kubectl-apply] paranccsal:
 
 ```console
 kubectl apply -f pv-nfs.yaml
 ```
 
-Ellenőrizze, hogy a PersistentVolume *állapota* *elérhető-e* a [kubectl describe][kubectl-describe] paranccsal:
+Ellenőrizze, hogy a PersistentVolume *állapota* *elérhető* -e a [kubectl leíró][kubectl-describe] parancs használatával:
 
 ```console
 kubectl describe pv pv-nfs
@@ -180,7 +180,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>A PersistentVolumeClaim létrehozása
 
-Hozzon `pvc-nfs.yaml` létre egy definiáló persistentvolume. Példa:
+Hozzon `pvc-nfs.yaml` létre egy definiált PersistentVolume. Például:
 
 ```yaml
 apiVersion: v1
@@ -196,21 +196,21 @@ spec:
       storage: 1Gi
 ```
 
-Hozza létre a PersistentVolumeClaim-et a [kubectl apply][kubectl-apply] paranccsal:
+Hozza létre a PersistentVolumeClaim a [kubectl Apply][kubectl-apply] paranccsal:
 
 ```console
 kubectl apply -f pvc-nfs.yaml
 ```
 
-Ellenőrizze, hogy a PersistentVolumeClaim *állapota* meg *van kötve* a [kubectl describe][kubectl-describe] paranccsal:
+Ellenőrizze, hogy a PersistentVolumeClaim *állapota* *kötve* van-e a [kubectl leíró][kubectl-describe] parancs használatával:
 
 ```console
 kubectl describe pvc pvc-nfs
 ```
 
-## <a name="mount-with-a-pod"></a>Rögzítés egy hüvely
+## <a name="mount-with-a-pod"></a>Csatlakoztatás Pod-mel
 
-Hozzon `nginx-nfs.yaml` létre egy definiáló pod, amely a PersistentVolumeClaim. Példa:
+Hozzon `nginx-nfs.yaml` létre egy olyan Pod-definíciót, amely a PersistentVolumeClaim használja. Például:
 
 ```yaml
 kind: Pod
@@ -234,19 +234,19 @@ spec:
       claimName: pvc-nfs
 ```
 
-Hozza létre a pod a [kubectl alkalmazni][kubectl-apply] parancs:
+Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal:
 
 ```console
 kubectl apply -f nginx-nfs.yaml
 ```
 
-Ellenőrizze, hogy a pod *fut-e* a [kubectl leírás][kubectl-describe] paranccsal:
+Ellenőrizze, hogy *fut* -e a pod a [kubectl leíró][kubectl-describe] parancs használatával:
 
 ```console
 kubectl describe pod nginx-nfs
 ```
 
-Ellenőrizze, hogy a kötet csatlakoztatva van-e a podsegítségével [kubectl exec][kubectl-exec] csatlakozni a pod, majd `df -h` ellenőrizze, hogy a kötet csatlakoztatva van.
+Ellenőrizze, hogy a kötet csatlakoztatva van-e a pod-hoz a [kubectl exec][kubectl-exec] használatával, hogy `df -h` csatlakozik-e a hüvelyhez, és ellenőrizze, hogy a kötet csatlakoztatva van-e.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
@@ -262,7 +262,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure NetApp-fájlokról a [Mi az Azure NetApp-fájlok című témakörben talál][anf]további információt. Az NFS AKS-sel való használatáról az [NFS (Network File System) Linux Server-kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatással (AKS)][aks-nfs]című témakörben talál további információt.
+További információ a Azure NetApp Filesről: [Mi az Azure NetApp Files][anf]. További információ az NFS-sel való használatáról: [NFS (hálózati fájlrendszer) Linux Server-kötet létrehozása és használata az Azure Kubernetes szolgáltatással (ak)][aks-nfs].
 
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md

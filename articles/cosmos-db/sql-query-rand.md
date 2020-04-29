@@ -1,6 +1,6 @@
 ---
-title: RAND az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az SQL rendszer funkció RAND az Azure Cosmos DB.
+title: RAND Azure Cosmos DB lekérdezési nyelven
+description: Ismerje meg az SQL System Function RAND Azure Cosmos DB-ben való megismerését.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302219"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
- Véletlenszerűen generált numerikus értéket ad eredményül a(z) [0,1 értékből).
+ Egy véletlenszerűen generált numerikus értéket ad vissza [0, 1).
  
 ## <a name="syntax"></a>Szintaxis
   
@@ -25,11 +25,11 @@ RAND ()
 
 ## <a name="return-types"></a>Visszatérési típusok
 
-  Numerikus kifejezést ad eredményül.
+  Egy numerikus kifejezést ad vissza.
 
 ## <a name="remarks"></a>Megjegyzések
 
-  `RAND`nem determinisztikus függvény. Az ismétlődő hívások `RAND` nem ugyanazt az eredményt adják vissza.
+  `RAND`egy determinált függvény. Az ismétlődő hívások `RAND` nem adják vissza ugyanazt az eredményt.
 
 ## <a name="examples"></a>Példák
   
@@ -39,7 +39,7 @@ RAND ()
 SELECT RAND() AS rand 
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"rand": 0.87860053195618093}]  
@@ -47,10 +47,10 @@ SELECT RAND() AS rand
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Matematikai függvények Az Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

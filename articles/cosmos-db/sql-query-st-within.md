@@ -1,6 +1,6 @@
 ---
-title: ST_WITHIN az Azure Cosmos DB lekérdezési nyelvében
-description: Az Azure Cosmos DB ST_WITHIN SQL-rendszerfunkcióiról.
+title: Azure Cosmos DB lekérdezési nyelv ST_WITHIN
+description: Ismerkedjen meg a Azure Cosmos DB SQL System Function ST_WITHINával.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296116"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
- Logikai kifejezést ad vissza, amely azt jelzi, hogy az első argumentumban megadott GeoJSON objektum (Point, Polygon vagy LineString) a második argumentum GeoJSON (Point, Polygon vagy LineString) argumentumában található-e.  
+ Egy logikai kifejezést ad vissza, amely azt jelzi, hogy az első argumentumban megadott GeoJSON objektum (pont, sokszög vagy LineString) a második argumentumban a GeoJSON (pont, sokszög vagy LineString) belül van-e.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,15 +26,15 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *spatial_expr*  
-   GeoJSON-pont, sokszög vagy LineString objektumkifejezés.  
+   Egy GeoJSON pont, sokszög vagy LineString objektum kifejezés.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Logikai értéket ad eredményül.  
+  Logikai értéket ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa bemutatja, hogyan keresheti meg `ST_WITHIN`az összes családi dokumentumot egy sokszögben a használatával.  
+  Az alábbi példa bemutatja, hogyan keresheti meg az összes családi dokumentumot egy sokszögen belül a használatával `ST_WITHIN`.  
   
 ```sql
 SELECT f.id
@@ -45,7 +45,7 @@ WHERE ST_WITHIN(f.location, {
 })  
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{ "id": "WakefieldFamily" }]  
@@ -53,10 +53,10 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció egy [térinformatikai index](index-policy.md#spatial-indexes)előnyeit élvezi.
+Ez a rendszerfunkció kihasználja a [térinformatikai index](index-policy.md#spatial-indexes)előnyeit.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Térbeli függvények Az Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

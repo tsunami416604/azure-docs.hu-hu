@@ -1,6 +1,6 @@
 ---
-title: JOBBRA az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az SQL-rendszer függvény e KÖZVETLEN az Azure Cosmos DB.
+title: JOBB Azure Cosmos DB lekérdezési nyelven
+description: Ismerkedjen meg az SQL System függvénysel közvetlenül a Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302151"
 ---
 # <a name="right-azure-cosmos-db"></a>JOBB (Azure Cosmos DB)
- A megadott számú karakterrel rendelkező karakterlánc jobb részét adja eredményül.  
+ A megadott számú karakterből álló karakterlánc jobb oldali részét adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,24 +26,24 @@ RIGHT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Argumentumok
   
 *str_expr*  
-   Az a karakterlánc-kifejezés, amelyből ki szeretné nyerni a karaktereket.  
+   A karakterlánc-kifejezés kinyerni a karaktereket a következőből:.  
   
 *num_expr*  
-   Numerikus kifejezés, amely megadja a karakterek számát.  
+   Egy numerikus kifejezés, amely a karakterek számát határozza meg.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa az "abc" jobb oldali részét adja vissza a különböző hosszértékekhez.  
+  Az alábbi példa az "ABC" jobb részét adja vissza a különböző hosszúságú értékekhez.  
   
 ```sql
 SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"r1": "c", "r2": "bc"}]  
@@ -51,10 +51,10 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

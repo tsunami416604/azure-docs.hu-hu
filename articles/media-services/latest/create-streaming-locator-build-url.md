@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy streamelési lokátort és hozzon létre URL-címeket - Azure Media Services
-description: Ez a cikk bemutatja, hogyan hozhat létre egy streamelési lokátort, és hogyan hozhat létre URL-eket.
+title: Adatfolyam-kereső létrehozása és URL-címek összeállítása – Azure Media Services
+description: Ez a cikk bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan készíthet URL-címeket.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304562"
 ---
-# <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek létrehozása
+# <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek összeállítása
 
-Az Azure Media Services ben egy streamelési URL-cím létrehozásához először létre kell hoznia egy [streamelési lokátort.](streaming-locators-concept.md) Ezután összefűzi a [Streamelési végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints) állomásnevét és a **streamelési lokátor** elérési útját. Ebben a példában az *alapértelmezett* **streamelési végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **streamelési végpont** leállított állapotban lesz, ezért meg kell hívnia az **Indítást** a streamelés megkezdéséhez.
+Azure Media Services a streaming URL-cím létrehozásához először létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). Ezután összefűzi a [streaming Endpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot a streaming megkezdéséhez.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy streamelési lokátort, és hogyan hozhat létre streamelési URL-címet Java és .NET SDK-k használatával.
+Ez a cikk bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan készíthet streaming URL-címet Java és .NET SDK-k használatával.
 
 ## <a name="prerequisite"></a>Előfeltétel 
 
-[Dinamikus csomagolás](dynamic-packaging-overview.md) megtekintése
+[Dinamikus csomagolás](dynamic-packaging-overview.md) előzetes verziója
 
 ## <a name="java"></a>Java
 
@@ -85,7 +85,7 @@ private static List<String> getStreamingUrls(MediaManager manager, String resour
 }
 ```
 
-Tekintse meg a teljes kódmintát: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -158,14 +158,14 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-Tekintse meg a teljes kódmintát: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="see-also"></a>Lásd még
 
 * [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-howto.md)
 * [Szűrők létrehozása REST használatával](filters-dynamic-manifest-rest-howto.md)
-* [Szűrők létrehozása CLI-vel](filters-dynamic-manifest-cli-howto.md)
+* [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
 
 ## <a name="next-steps"></a>További lépések
 
-[Védje tartalmát a DRM segítségével.](protect-with-drm.md)
+[A DRM-védelemmel ellátott tartalmakat](protect-with-drm.md).

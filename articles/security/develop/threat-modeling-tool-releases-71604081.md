@@ -1,7 +1,7 @@
 ---
-title: A Microsoft Threat Modeling Tool 4/9/2019 kiadása
+title: Microsoft Threat Modeling Tool kiadás 4/9/2019
 titleSuffix: Azure
-description: A fenyegetésmodellező eszköz kiadási megjegyzésekének dokumentálása
+description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -9,51 +9,51 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 59d385ba7de5bf7bceae4dc8ddadbca813046094
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78269726"
 ---
-# <a name="threat-modeling-tool-update-release-71604081---492019"></a>A Threat Modeling Tool 7.1.60408.1 - 4/9/2019 frissítés
+# <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool Update kiadás 7.1.60408.1-4/9/2019
 
-A Microsoft Threat Modeling Tool (TMT) 7.1.60408.1-es verziója 2019.
+A Microsoft Threat Modeling Tool (TMT) 7.1.60408.1 verziója április 9 2019-én megjelent, és a következő módosításokat tartalmazza:
 
-- Új rajzsablonok az Azure Key Vaulthoz és az Azure Traffic Managerhez
-- A TMT verziószáma mostantól megjelenik a kezdőképernyőn
-- A támogatási hivatkozások frissültek
+- Új rajzsablonok a Azure Key Vault és az Azure Traffic Manager
+- Az TMT verziószáma mostantól megjelenik a kezdőképernyőn
+- A támogatási hivatkozások frissítve lettek
 - Hibajavítások
 
-## <a name="feature-changes"></a>Funkcióváltozások
+## <a name="feature-changes"></a>Szolgáltatások módosításai
 
-### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Új rajzsablonok az Azure Key Vaulthoz és az Azure Traffic Managerhez
+### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Új rajzsablonok a Azure Key Vault és az Azure Traffic Manager
 
-![Azure Key Vault-rajzsablon](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Azure Key Vault stencil](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
-Az Azure Key Vault és az Azure Traffic Manager új rajzsablonjai és fenyegetései lettek hozzáadva az Azure stencilkészletéhez. Az Azure stencil-készleten alapuló modellek megnyitásakor a rendszer kéri a felhasználókat a modellhez társított sablon frissítésére. Az Azure stencil-készleten alapuló modell frissítése manuálisan is kezdeményezhető a "Fájl" menü "Sablon alkalmazása" parancsával, és a legújabb Azure Cloud Services.tb7 fájl újbóli alkalmazásával.
+Az Azure-beli Azure Key Vault és az Azure-Traffic Manager új rajzsablonok és fenyegetések is megjelennek. Amikor az Azure-beli rajzsablonon alapuló modelleket nyit meg, a rendszer kérni fogja a felhasználókat a modellhez társított sablon frissítésére. A modellek Azure-beli rajzsablonon alapuló frissítése manuálisan is elindítható a "fájl" menü "sablon alkalmazása" parancsának használatával, és újraalkalmazhatja a legújabb Azure Cloud Services. tb7 fájlt.
 
-### <a name="tmt-version-number-is-now-shown-on-the-home-screen"></a>A TMT verziószáma mostantól megjelenik a kezdőképernyőn
+### <a name="tmt-version-number-is-now-shown-on-the-home-screen"></a>Az TMT verziószáma mostantól megjelenik a kezdőképernyőn
 
-A fenyegetésmodellező eszköz ügyfélverziója mostantól megjelenik a könnyebb hozzáférés érdekében az alkalmazás kezdőképernyőjén.
+A könnyű elérés érdekében a Threat Modeling Tool ügyfél-verziója mostantól megjelenik a kezdőképernyő alkalmazásának képernyőjén.
 
-![Azure Key Vault-rajzsablon](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Azure Key Vault stencil](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
-### <a name="support-links-have-been-updated"></a>A támogatási hivatkozások frissültek
+### <a name="support-links-have-been-updated"></a>A támogatási hivatkozások frissítve lettek
 
-Az eszköz összes támogatási linkje frissült, [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) hogy a felhasználókat az MSDN-fórum helyett irányítsa.
+Az eszközön belüli összes támogatási hivatkozás frissítve lett, és [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) nem MSDN-fórumként irányítja a felhasználókat.
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
-- .NET verzió szükséges
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
+- .NET-verzió szükséges
+  - [.Net-4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények
   - Az eszköz és a sablonok frissítéseinek fogadásához internetkapcsolat szükséges.
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A fenyegetésmodellező eszköz dokumentációja [a docs.microsoft.com](threat-modeling-tool.md)található, és információkat tartalmaz [az eszköz használatával kapcsolatban.](threat-modeling-tool-getting-started.md)
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

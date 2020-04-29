@@ -1,7 +1,7 @@
 ---
-title: A Microsoft Threat Modeling Tool 1/29/2019 kiadása
+title: Microsoft Threat Modeling Tool kiadás 1/29/2019
 titleSuffix: Azure
-description: A fenyegetésmodellező eszköz kiadási megjegyzésekének dokumentálása
+description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -9,39 +9,39 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
 ms.openlocfilehash: 7d0be8d7243331264c10a407e3d78370ea798928
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78269777"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
 
-A Microsoft Threat Modeling Tool 7.1.60126.1 verziója 2019.
+A Microsoft Threat Modeling Tool verziójának 7.1.60126.1 január 29 2019-én adták ki, és a következő módosításokat tartalmazza:
 
-- A .NET minimálisan szükséges verziója [.NET 4.7.1-re](https://go.microsoft.com/fwlink/?LinkId=863262)nőtt.
-- A Windows minimálisan szükséges verziója a .NET függőség miatt [a Windows 10 évfordulós frissítésére](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) lett növelve.
-- Az eszköz Beállítások menüjében egy modellérvényesítési kapcsolófunkció került hozzáadásra.
-- A fenyegetéstulajdonságaiban több hivatkozás is frissült.
-- A kisebb felhasználói felület az eszköz kezdőképernyőjén módosul.
-- A Fenyegetésmodellezési eszköz mostantól örökli a gazdaoperációs rendszer TLS-beállításait, és a TLS 1.2-es vagy újabb tls-t igénylő környezetekben is támogatott.
+- A .NET-es verzió minimálisan szükséges verziója a [.net-4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)lett megnövelve.
+- A minimálisan szükséges Windows-verzió a .NET-függőség miatt megnőtt a [Windows 10 évfordulós frissítésére](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) .
+- Egy modell-ellenőrzési váltógomb lett hozzáadva az eszköz beállítások menüjéhez.
+- A fenyegetés tulajdonságai között több hivatkozás is frissült.
+- Másodlagos UX-módosítások az eszköz kezdőképernyő képernyőjén.
+- A Threat Modeling Tool mostantól örökli a gazda operációs rendszer TLS-beállításait, és olyan környezetekben támogatott, amelyeken TLS 1,2 vagy újabb rendszer szükséges.
 
-## <a name="feature-changes"></a>Funkcióváltozások
+## <a name="feature-changes"></a>Szolgáltatások módosításai
 
-### <a name="model-validation-option"></a>Modell érvényesítési lehetősége
+### <a name="model-validation-option"></a>Modell-ellenőrzési lehetőség
 
-Az ügyfelek visszajelzései alapján egy lehetőség lett hozzáadva az eszközhöz a modell-érvényesítés engedélyezéséhez vagy letiltásához. Korábban, ha a sablon egyetlen egyirányú adatfolyamot használt két objektum között, előfordulhat, hogy hibaüzenetet kapott az Üzenetek keretben, amely a következőket tartalmazza: Az ObjectsName legalább egy "Any"-t igényel. A modellellenőrzés letiltása megakadályozza, hogy ezek a figyelmeztetések megjelenjenek a nézetben.
+Az ügyfelek visszajelzései alapján a modell érvényesítésének engedélyezéséhez vagy letiltásához lehetőség lett hozzáadva az eszközhöz. Korábban, ha a sablon egyetlen egyirányú adatfolyamatot használt két objektum között, előfordulhat, hogy hibaüzenetet kapott az üzenetek keretében: a ObjectsName használatához legalább egy "any" érték szükséges. A modell érvényesítésének letiltása megakadályozza, hogy ezek a figyelmeztetések a nézetben legyenek megjelenítve.
 
-A modellérvényesítés be- és kikapcsolására a Fájl->Beállítások->Beállítások menüben választhat. A beállítás alapértelmezett értéke Letiltva.
+A modell-ellenőrzés be-és kikapcsolásának lehetősége a file->Settings->Options menüben található. A beállítás alapértelmezett értéke le van tiltva.
 
-![Modell érvényesítési beállítása](./media/threat-modeling-tool-releases-71601261/tmt_model_validation_option.png)
+![Modell-ellenőrzési lehetőség](./media/threat-modeling-tool-releases-71601261/tmt_model_validation_option.png)
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
-- .NET verzió szükséges
-  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
+- .NET-verzió szükséges
+  - [.Net-4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények
   - Az eszköz és a sablonok frissítéseinek fogadásához internetkapcsolat szükséges.
 
@@ -51,15 +51,15 @@ A modellérvényesítés be- és kikapcsolására a Fájl->Beállítások->Beál
 
 #### <a name="issue"></a>Probléma
 
-A .NET 4.7.1 vagy újabb verziót nem telepíthető Windows 10 rendszerek, például a Windows 10 Enterprise LTSB (1507-es verzió) felhasználói nem tudják megnyitni az eszközt a frissítés után. A Windows ezen régebbi verziói már nem támogatottak a Fenyegetésmodellező eszköz számára, és nem telepíthetik a legújabb frissítést.
+A .NET 4.7.1 vagy újabb rendszerű Windows 10-es rendszerek felhasználói, például a Windows 10 Enterprise LTSB (1507-es verzió) nem tudják megnyitni az eszközt a frissítés után. A Windows régebbi verziói már nem támogatott platformok a Threat Modeling Tool számára, és nem kell telepíteni a legújabb frissítést.
 
 #### <a name="workaround"></a>Áthidaló megoldás
 
-A legújabb frissítést telepítő Windows 10 Enterprise LTSB (1507-es verzió) felhasználói visszatérhetnek a Fenyegetésmodellező eszköz korábbi verziójához az Alkalmazások & szolgáltatások eltávolítása párbeszédpanelen keresztül.
+A Windows 10 Enterprise LTSB (1507-es verzió) azon felhasználói, akik telepítették a legújabb frissítést, visszaállhatnak a Threat Modeling Tool korábbi verziójára az alkalmazások & funkcióinak eltávolítási párbeszédpanelén.
 
 ## <a name="documentation-and-feedback"></a>Dokumentáció és visszajelzés
 
-- A fenyegetésmodellező eszköz dokumentációja [a docs.microsoft.com](threat-modeling-tool.md)található, és információkat tartalmaz [az eszköz használatával kapcsolatban.](threat-modeling-tool-getting-started.md)
+- A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

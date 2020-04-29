@@ -1,6 +1,6 @@
 ---
 title: Az Azure AD-séma és az egyéni kifejezések ismertetése
-description: Ez a cikk ismerteti az Azure AD-séma, az attribútumok, amelyek a létesítő ügynök folyamatok, és az egyéni kifejezések.
+description: Ez a cikk az Azure AD-sémát, a kiépítési ügynök által forgalmazott attribútumokat és az egyéni kifejezéseket ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,67 +16,67 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299329"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Az Azure AD-séma ismertetése
-Az Azure Active Directoryban (Azure AD) egy objektum, mint minden könyvtárban, egy programozott magas szintű adatkonstrukció, amely például a felhasználókat, csoportokat és kapcsolattartókat jelöl. Amikor új felhasználót vagy kapcsolattartót hoz létre az Azure AD-ben, az objektum új példányát hozza létre. Ezek a példányok tulajdonságaik alapján differenciálhatók.
+A Azure Active Directory (Azure AD) egyik objektuma, például bármely címtár, egy programozott, magas szintű adatszerkezet, amely felhasználók, csoportok és névjegyek számára is jelent. Amikor új felhasználót vagy kapcsolatot hoz létre az Azure AD-ben, az adott objektum új példányát hozza létre. Ezek a példányok a tulajdonságaik alapján különböztethetők meg.
 
-Az Azure AD-ben lévő tulajdonságok azok az elemek, amelyek az Azure AD-ben egy objektum egy példányának adatainak tárolásáért felelősek.
+Az Azure AD-beli tulajdonságok az Azure AD-beli objektumok egy példányával kapcsolatos információk tárolására felelős elemek.
 
-Az Azure AD-séma határozza meg a szabályokat, amelyek tulajdonságokat lehet használni egy bejegyzésben, milyen típusú értékeket, amelyek ezek a tulajdonságok, és hogyan felhasználók kölcsönhatásba léphetnek ezekkel az értékekkel. 
+Az Azure AD-séma határozza meg azokat a szabályokat, amelyekhez tulajdonságokat lehet használni egy adott bejegyzésben, a tulajdonságokat tartalmazó értékek fajtáit, valamint azt, hogy a felhasználók hogyan használhatják ezeket az értékeket. 
 
-Az Azure AD kétféle tulajdonsággal rendelkezik:
-- **Beépített tulajdonságok:** Az Azure AD-séma által előre definiált tulajdonságok. Ezek a tulajdonságok különböző felhasználási módokat biztosítanak, és előfordulhat, hogy nem érhetők el.
-- **Címtárbővítmények:** Olyan tulajdonságok, amelyek levannak biztosítva, hogy az Azure AD saját használatra testreszabható legyen. Ha például egy adott attribútummal bővítette a helyszíni Active Directoryt, és szeretné továbbítani ezt az attribútumot, használhatja a megadott egyéni tulajdonságok egyikét. 
+Az Azure AD két típusú tulajdonsággal rendelkezik:
+- **Beépített tulajdonságok**: az Azure ad-séma által előre definiált tulajdonságok. Ezek a tulajdonságok eltérő felhasználást biztosítanak, és lehetséges, hogy nem érhetők el.
+- **Directory-bővítmények**: az Azure ad saját használatra való testreszabásához megadott tulajdonságok. Ha például kibővítette a helyszíni Active Directory egy bizonyos attribútummal, és az attribútumot szeretné átdolgozni, a megadott egyéni tulajdonságok egyikét használhatja. 
 
 ## <a name="attributes-and-expressions"></a>Attribútumok és kifejezések
-Ha egy objektum, például egy felhasználó ki van építve az Azure AD-be, a felhasználói objektum új példánya jön létre. Ez a létrehozás tartalmazza az objektum tulajdonságait, amelyeket attribútumokként is ismerünk. Kezdetben az újonnan létrehozott objektum attribútumait a szinkronizálási szabályok által meghatározott értékekre állították be. Ezeket az attribútumokat ezután naprakészen a felhőkiépítési ügynök.
+Ha egy objektum, például egy felhasználó az Azure AD-be van kiépítve, a rendszer létrehozza a felhasználói objektum egy új példányát. Ez a létrehozás magában foglalja az objektum tulajdonságait is, amelyek más néven attribútumok. Kezdetben az újonnan létrehozott objektum attribútumai a szinkronizálási szabályok által meghatározott értékekre vannak beállítva. Ezeket az attribútumokat a rendszer a felhőalapú kiépítési ügynökön keresztül naprakészen tartja.
 
 ![Objektum kiépítés](media/concept-attributes/attribute1.png)
 
-Előfordulhat például, hogy egy felhasználó egy marketingosztály tagja. Az Azure AD-részleg attribútum a kiépítéskor jön létre, és az érték értéke Marketing. Hat hónappal később, ha értékesítésre váltanak, a helyszíni Active Directory részlegattribútumuk Értékesítés re változik. Ez a módosítás szinkronizálja az Azure AD-t, és megjelenik az Azure AD felhasználói objektumban.
+Előfordulhat például, hogy egy felhasználó tagja egy marketing részlegnek. Az Azure AD Department attribútuma kezdetben a kiépítés után jön létre, az érték pedig marketing. Hat hónappal később, ha az értékesítésre változnak, a helyszíni Active Directory Department attribútuma értékesítésre változik. Ez a változás szinkronizál az Azure AD-vel, és az Azure AD felhasználói objektumában jelenik meg.
 
-Attribútum-szinkronizálás lehet közvetlen, ahol az érték az Azure AD-ben közvetlenül a helyszíni attribútum értéke. Vagy egy programozott kifejezés is kezelni a szinkronizálást. Programozott kifejezésre van szükség azokban az esetekben, amikor valamilyen logikát vagy meghatározást kell tenni az érték feltöltéséhez.
+Az attribútumok szinkronizálása lehet közvetlen, ahol az Azure AD-ban lévő érték közvetlenül a helyszíni attribútum értékére van beállítva. Vagy egy programozott kifejezés is kezelheti a szinkronizálást. Szükség van egy programozott kifejezésre olyan esetekben, amikor valamilyen logikát vagy meghatározást kell végezni az érték feltöltéséhez.
 
-Ha például a " "john.smith@contoso.com"mail attribútummal" volt, és a " "@contoso.comrészt ki kellett tépni, és csak a "john.smith" értéket kellett kifolynia, akkor a következőhöz hasonlót használ:
+Ha például a "" e-mail-attribútummaljohn.smith@contoso.comrendelkezik, és a "@contoso.com" részének és a folyamatnak csak a "John. Smith" értéket kell kimutatnia, akkor a következőhöz hasonlót kell használnia:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (mail):john.smith@contoso.com" "
-* **KIMENET**: "john.smith"
+* **Bemenet** (e-mail): "john.smith@contoso.com"
+* **Kimenet**: "John. Smith"
 
-Az egyéni kifejezések írásáról és a szintaxisról az [Attribútumleképezések írása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)című témakörben talál további információt.
+Az egyéni kifejezések és a szintaxis megírásával kapcsolatos további információkért lásd: [kifejezések írása az attribútumok megfeleltetéséhez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
 
-Az alábbi táblázat felsorolja a gyakori attribútumokat, és hogyan szinkronizálja őket az Azure AD-vel.
+Az alábbi táblázat a gyakori attribútumokat és az Azure AD-vel való szinkronizálást ismerteti.
 
 
 |Helyszíni Active Directory|Leképezés típusa|Azure AD|
 |-----|-----|-----|
-|Cn|Direct|köznapi név
-|országKód|Direct|országKód|
+|CN|Direct|Köznapinév
+|Országhívószám|Direct|Országhívószám|
 |displayName|Direct|displayName|
 |givenName|Kifejezés|givenName|
-|objectGUID azonosító|Direct|sourceAnchorBinary|  
-|userprincipalName (felhasználóneve)|Direct|userPrincipalName|
-|ProxyAdress (ProxyAcím)|Direct|Proxycím|
+|objectGUID|Direct|sourceAnchorBinary|  
+|userprincipalName|Direct|userPrincipalName|
+|ProxyAdress|Direct|ProxyAddress|
 
 ## <a name="view-the-schema"></a>A séma megtekintése
 > [!WARNING]
-> A felhőkiépítési konfiguráció létrehoz egy egyszerű szolgáltatás. Az egyszerű szolgáltatás az Azure Portalon látható. Ne módosítsa az attribútum-leképezések használatával az egyszerű szolgáltatás az Azure Portalon.  Ez nem támogatott.
+> A Felhőbeli kiépítési konfiguráció létrehoz egy szolgáltatásnevet. Az egyszerű szolgáltatásnév a Azure Portal látható. Ne módosítsa az attribútum-hozzárendeléseket a Azure Portal egyszerű szolgáltatásnév használatával.  Ez nem támogatott.
 
 A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
 
-1.  Nyissa meg a [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)t.
-1.  Jelentkezzen be globális rendszergazdai fiókjával.
-1.  A bal oldalon válassza ki a **módosítási engedélyeket,** és győződjön meg arról, hogy **a Directory.ReadWrite.All** *jóváhagyással rendelkezik.*
-1.  Futtassa `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`a lekérdezést . Ez a lekérdezés a szolgáltatásnévi tagok szűrt listáját adja vissza.
-1.  Keresse `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` meg és `"id"`jegyezze fel a értékét.
+1.  Lépjen a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer).
+1.  Jelentkezzen be a globális rendszergazdai fiókjával.
+1.  A bal oldalon válassza az **engedélyek módosítása** lehetőséget, és győződjön meg arról, hogy a *Consented* **könyvtár. ReadWrite. All** .
+1.  Futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`. Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
+1.  Keresse `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` meg és jegyezze fel `"id"`a értékét.
     ```
     "value": [
             {
@@ -149,8 +149,8 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
                 "passwordCredentials": []
             },
     ```
-1. Cserélje `{Service Principal id}` le az értéket, `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`és futtassa a lekérdezést .
-1. Keresse `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` meg és `"id"`jegyezze fel a értékét.
+1. Cserélje `{Service Principal id}` le az értéket a értékre, és `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`futtassa a lekérdezést.
+1. Keresse `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` meg és jegyezze fel `"id"`a értékét.
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -245,7 +245,7 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
  
     Például: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   Cserélje `{Service Principal Id}` `{AD2ADD Provisioning Id}` ki, és az értékeket.
+   `{AD2ADD Provisioning Id}` Cserélje le `{Service Principal Id}` az értékeket az értékekre.
 
 1. Ez a lekérdezés a sémát adja vissza.
 

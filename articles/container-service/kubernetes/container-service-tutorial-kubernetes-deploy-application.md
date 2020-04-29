@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service oktatóanyag – alkalmazás telepítése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás üzembe helyezése
 description: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274052"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>(ELAVULT) Alkalmazások futtatása a Kubernetes ben
+# <a name="deprecated-run-applications-in-kubernetes"></a>ELAVULT Alkalmazások futtatása a Kubernetes-ben
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes szolgáltatásban (AKS)](../../aks/tutorial-kubernetes-deploy-application.md)című témakörben található.
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

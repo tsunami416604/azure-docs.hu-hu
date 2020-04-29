@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Helyesírás-ellenőrzés a Bing Helyesírás-ellenőrző SDK c #'
+title: 'Gyors útmutató: helyesírás-ellenőrzés a C Bing Spell Check SDK-val #'
 titleSuffix: Azure Cognitive Services
-description: Első lépések a Bing Helyesírás-ellenőrző REST API-val a helyesírás és a nyelvhelyesség ellenőrzéséhez.
+description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273531"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rövid útmutató: Helyesírás-ellenőrzés a Bing Helyesírás-ellenőrző SDK c #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: helyesírás-ellenőrzés a C Bing Spell Check SDK-val #
 
-Ezzel a rövid útmutatóval megkezdheti a helyesírás-ellenőrzést a Bing Helyesírás-ellenőrző SDK-val C#-hez. Bár a Bing helyesírás-ellenőrzés a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az SDK egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)
+Ezzel a rövid útmutatóval megkezdheti a C# Bing Spell Check SDK-val való helyesírás-ellenőrzést. Habár a Bing Spell Check REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)található.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://visualstudio.microsoft.com/downloads/)bármely kiadása.
-* A Bing helyesírás-ellenőrzés [Nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
+* A [Visual Studio 2017 vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása.
+* A Bing Spell Check [NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, válassza **a NuGet csomagok kezelése a** Visual **Studióban a Solution Explorer** ből lehetőséget. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag a következő függőségeket is telepíti:
+Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **NuGet-csomagok kezelése** **megoldáskezelő** a Visual Studióban lehetőséget. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag a következő függőségeket is telepíti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -36,7 +36,7 @@ Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, vá
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja `using` hozzá a következő utasítást.
+1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a `using` következő utasítást.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, vá
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Hozzon létre egy új osztályt. Ezután hozzon létre egy `SpellCheckCorrection()` aszinkron függvényt hívott, amely egy előfizetési kulcsot vesz, és elküldi a helyesírás-ellenőrzési kérelmet.
+2. Hozzon létre egy új osztályt. Ezután hozzon létre egy nevű `SpellCheckCorrection()` aszinkron függvényt, amely egy előfizetési kulcsot fogad, és elküldi a helyesírás-ellenőrzési kérést.
 
 3. Új `ApiKeyServiceClientCredentials` objektum létrehozásával hozza létre az ügyfelet. 
 
@@ -59,15 +59,15 @@ Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, vá
     }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>Küldje el a kérést, és olvassa el a választ
+## <a name="send-the-request-and-read-the-response"></a>A kérelem elküldése és a válasz elolvasása
 
-1. A fent létrehozott függvényben hajtsa végre a következő lépéseket. Küldje el a helyesírás-ellenőrzési kérelmet az ügyfélnek. Adja hozzá a bejelölendő szöveget a `text` `proof`paraméterhez, és állítsa a módot a beállításra.  
+1. A fent létrehozott függvényben hajtsa végre a következő lépéseket. Küldje el a helyesírás-ellenőrzési kérelmet az ügyféllel. Adja hozzá a `text` paraméterhez ellenőrizendő szöveget, és állítsa be a módot a következőre: `proof`.  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
     ```
 
-2. Szerezd meg az első helyesírás-ellenőrzési eredményt, ha van ilyen. Nyomtassa ki az első hibásan írt szót (jogkivonatot), a jogkivonat típusát és a javaslatok számát.
+2. Az első helyesírás-ellenőrzés eredményének beolvasása, ha van ilyen. Nyomtassa ki a visszaadott első hibásan beírt szót (tokent), a jogkivonat típusát és a javaslatok számát.
 
     ```csharp
     var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
@@ -81,7 +81,7 @@ Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, vá
     }
     ```
 
-3. Szerezd meg az első javasolt korrekciót, ha van ilyen. Nyomtassa ki a javaslat pontszámát és a javasolt szót. 
+3. Kérje le az első javasolt javítást, ha van ilyen. Nyomtassa ki a javaslat pontszámát és a javasolt szót. 
 
     ```csharp
     var suggestions = firstspellCheckResult.Suggestions;
@@ -96,7 +96,7 @@ Ha hozzá szeretné adni a Bing helyesírás-ellenőrző SDK-t a projekthez, vá
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Készítse el és futtassa a projektet. Visual Studio használata esetén nyomja le az **F5** billentyűt a fájl hibakereséséhez.
+Hozza létre és futtassa a projektet. Ha a Visual studiót használja, nyomja le az **F5** billentyűt a fájl hibakereséséhez.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -104,4 +104,4 @@ Készítse el és futtassa a projektet. Visual Studio használata esetén nyomja
 > [Egyoldalas webalkalmazás létrehozása](tutorials/spellcheck.md)
 
 - [Mi a Bing Spell Check API?](overview.md)
-- [Bing helyesírás-ellenőrzés C# SDK referenciaútmutató](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spell Check C# SDK-útmutató](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

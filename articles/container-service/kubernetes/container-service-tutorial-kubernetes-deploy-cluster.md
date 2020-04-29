@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service oktatóanyag – fürt telepítése
+title: ELAVULT Azure Container Service oktatóanyag – fürt üzembe helyezése
 description: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274006"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ELAVULT) Kubernetes-fürt üzembe helyezése az Azure Container Service szolgáltatásban
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ELAVULT Kubernetes-fürt üzembe helyezése Azure Container Service
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Egy Azure Kubernetes-szolgáltatás (AKS) fürt telepítése](../../aks/tutorial-kubernetes-deploy-cluster.md)című témakörben található.
+> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziója: [oktatóanyag: Azure Kubernetes Service (ak) fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és felt�
 
 Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal. 
 
-A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md)jött létre.
+A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md)lett létrehozva.
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 

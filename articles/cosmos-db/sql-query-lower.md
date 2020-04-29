@@ -1,6 +1,6 @@
 ---
-title: ALSÓSZINT az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az Azure Cosmos DB KIS SQL rendszerfunkcióját, amely a nagybetűs karakteradatok kisbetűssé konvertálása után karakterlánc-kifejezést ad vissza
+title: Azure Cosmos DB lekérdezési nyelv alacsonyabb
+description: Ismerkedjen meg az Azure Cosmos DB alsó SQL System függvényével, amely egy karakterlánc-kifejezést ad vissza a nagybetűs karakterek kisbetűsre konvertálása után.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302270"
 ---
-# <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
- Karakterlánc-kifejezést ad vissza, miután a nagybetűs karakteradatokat kisbetűssé alakította.  
+# <a name="lower-azure-cosmos-db"></a>ALSÓ (Azure Cosmos DB)
+ Egy karakterlánc-kifejezést ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.  
 
-A LOWER rendszer funkció nem használja az indexet. Ha azt tervezi, hogy nem ér el gyakori kis- és nagybetűket, akkor az ALSÓSZINTŰ rendszerfunkció jelentős mennyiségű VT-t vehet igénybe. Ebben az esetben ahelyett, hogy az ALSÓ rendszer funkciót használná az adatok minden alkalommal történő normalizálására az összehasonlításhoz, a behelyezéskor normalizálhatja a burkolatot. Ezután egy lekérdezés, mint a SELECT * FROM c WHERE LOWER(c.name) = 'bob' egyszerűen SELECT * FROM c WHERE c.name = 'bob'.
+Az alsó rendszerfüggvény nem használja az indexet. Ha gyakori kis-és nagybetűket nem megkülönböztető összehasonlításokat tervez, az alacsonyabb rendszerfunkció nagy mennyiségű RU-t is felhasználhat. Ha ez az eset áll fenn, ahelyett, hogy az alacsonyabb rendszerfüggvényt használja az összehasonlítások minden egyes időpontjában, a borítást a beszúráskor normalizálhatja. Ezután egy olyan lekérdezés, mint például a SELECT * FROM c, ahol az alacsonyabb (c. Name) = ' Bob ' egyszerűen kiválaszthatja a * c betűt, ahol a c.name = ' Bob '.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -32,17 +32,17 @@ LOWER(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa bemutatja, hogyan használható `LOWER` egy lekérdezésben.  
+  Az alábbi példa bemutatja, hogyan használható `LOWER` egy lekérdezésben.  
   
 ```sql
 SELECT LOWER("Abc") AS lower
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"lower": "abc"}]  
@@ -51,10 +51,10 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

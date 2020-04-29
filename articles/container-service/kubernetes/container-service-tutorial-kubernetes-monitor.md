@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure Container Service oktatóanyag – Kubernetes figyelése
+title: ELAVULT Azure Container Service oktatóanyag – Kubernetes figyelése
 description: Azure Container Service-oktatóanyag – A Kubernetes monitorozása a Log Analytics használatával
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273321"
 ---
-# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(ELAVULT) Kubernetes-fürt figyelése a Log Analytics szolgáltatással
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>ELAVULT Kubernetes-fürt figyelése Log Analytics
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó oktatóanyag frissített verziójáról az [Azure-figyelő tárolók (előzetes verzió) című témakörben olvashat.](../../azure-monitor/insights/container-insights-overview.md)
+> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziójáért lásd: [Azure monitor for containers (előzetes verzió) – áttekintés](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

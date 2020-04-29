@@ -1,6 +1,6 @@
 ---
-title: LTRIM az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az Azure Cosmos DB LTRIM SQL rendszerfunkcióját, amely egy karakterlánc-kifejezést ad vissza, miután eltávolítja a kezdő üres helyeket
+title: LTRIM Azure Cosmos DB lekérdezési nyelven
+description: A LTRIM SQL System függvényének megismerése Azure Cosmos DB egy karakterlánc-kifejezés visszaadása, miután eltávolítja a kezdő üreseket
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 08c069de70684a8562e86963ddb2e84ee889e7cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302253"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
- Karakterlánc-kifejezést ad vissza, miután eltávolítja a kezdő üres eket.  
+ Egy karakterlánc-kifejezést ad vissza, miután eltávolítja a kezdő üres értékeket.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -30,17 +30,17 @@ LTRIM(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Karakterlánc-kifejezést ad vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa bemutatja, hogyan használható `LTRIM` egy lekérdezésen belül.  
+  Az alábbi példa bemutatja, hogyan használható `LTRIM` a lekérdezésen belül.  
   
 ```sql
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"l1": "abc", "l2": "abc", "l3": "abc   "}]  
@@ -48,10 +48,10 @@ SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB karakterlánc-függvényei](sql-query-string-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Az Azure Container Service oktatóanyaga – Alkalmazás frissítése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás frissítése
 description: Azure Container Service-oktatóanyag – Alkalmazás frissítése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274129"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>(ELAVULT) Alkalmazás frissítése a Kubernetes ben
+# <a name="deprecated-update-an-application-in-kubernetes"></a>ELAVULT Alkalmazás frissítése a Kubernetes-ben
 
 > [!TIP]
-> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazás frissítése az Azure Kubernetes-szolgáltatásban (AKS)](../../aks/tutorial-kubernetes-app-update.md)című témakörben található.
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazás frissítése az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

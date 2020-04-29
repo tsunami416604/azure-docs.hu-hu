@@ -1,6 +1,6 @@
 ---
-title: GetCurrentDateTime az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg az SQL rendszer funkció GetCurrentDateTime az Azure Cosmos DB.
+title: GetCurrentDateTime Azure Cosmos DB lekérdezési nyelven
+description: Ismerkedjen meg az SQL System Function GetCurrentDateTime Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303902"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Az aktuális UTC (egyezményes világidő) dátumot és időt adja eredményül ISO 8601 karakterláncként.
+ Az aktuális UTC (egyezményes világidő) dátumának és időpontjának beolvasása ISO 8601-karakterláncként.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -25,39 +25,39 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Az aktuális UTC-dátum és idő ISO 8601 karakterlánc-értéket adja eredményül abban a formátumban, akövetkező: `YYYY-MM-DDThh:mm:ss.fffffffZ`
+  Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a `YYYY-MM-DDThh:mm:ss.fffffffZ` formátumban, ahol:
   
   |||
   |-|-|
-  |Éééé|négyjegyű év|
-  |MM|kétjegyű hónap (01 = január stb.)|
-  |Dd|a hónap kétjegyű napja (01-től 31-ig)|
-  |T|jelző az időelemek kezdetére|
-  |óó|kétjegyű óra (00-tól 23-ig)|
-  |hh|kétjegyű perc (00-tól 59-ig)|
-  |mm|kétjegyű másodperc (00 és 59 között)|
-  |.fffffff|hétjegyű tört másodpercek|
-  |Z|UTC (koordinált világidő) jelölés||
+  |ÉÉÉÉ|négyjegyű év|
+  |MM|kétjegyű hónap (01 = Január stb.)|
+  |DD|hónap kétjegyű napja (01 – 31)|
+  |T|az időelemek kezdetének jelölője|
+  |óó|kétjegyű óra (00 – 23)|
+  |hh|kétjegyű perc (00 – 59)|
+  |mm|kétszámjegyű másodperc (00 – 59)|
+  |.fffffff|hét számjegyű tört másodperc|
+  |Z|UTC (egyezményes világidő) jelölő||
   
-  Az ISO 8601 formátumról további információt [a ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  Az ISO 8601 formátumával kapcsolatos további információkért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
 ## <a name="remarks"></a>Megjegyzések
 
-  A GetCurrentDateTime() egy nem determinisztikus függvény. 
+  A GetCurrentDateTime () egy determinált-függvény. 
   
   A visszaadott eredmény UTC.
 
-  A pontosság 7 számjegy, 100 nanoszekundumos pontossággal.
+  A pontosság 7 számjegy, amelynek pontossága 100 nanoszekundumban.
 
 ## <a name="examples"></a>Példák
   
-  A következő példa bemutatja, hogyan lehet leadni az aktuális UTC dátumidő a GetCurrentDateTime() beépített függvény használatával.
+  Az alábbi példa azt mutatja be, hogyan kérhető le az aktuális UTC dátum idő a GetCurrentDateTime () beépített függvény használatával.
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime
 ```  
   
- Íme egy példa eredményhalmaz.
+ Íme egy példa az eredményhalmaz értékére.
   
 ```json
 [{
@@ -67,6 +67,6 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB dátum- és időfüggvényei](sql-query-date-time-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: ARRAY_SLICE az Azure Cosmos DB lekérdezési nyelvében
-description: Ismerje meg, hogyan adja vissza a tömbösSQL-kifejezés tömbszelet-SQL-rendszerfüggvénye egy tömbkifejezés egy részét
+title: Azure Cosmos DB lekérdezési nyelv ARRAY_SLICE
+description: Ismerje meg, hogyan adja vissza a tömbbeli szeletek SQL System függvényét Azure Cosmos DB egy Array kifejezés egy részét.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303324"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
- Tömbkifejezés egy részét adja vissza.
+ Egy tömb kifejezésének egy részét adja vissza.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -26,20 +26,20 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 ## <a name="arguments"></a>Argumentumok
   
 *arr_expr*  
-   Bármely tömbkifejezés.  
+   Bármely tömb kifejezés.  
   
 *num_expr*  
-   Nulla alapú numerikus index, amelynél a tömb ötóra kezdődik. Negatív értékek használhatók a kezdő index megadására a tömb utolsó eleméhez képest, azaz -1 a tömb utolsó elemére hivatkozik.  
+   Nulla-alapú numerikus index a tömb megkezdéséhez. A rendszer negatív értékeket is felhasználhat a tömb utolsó eleméhez viszonyított kezdő index megadására, azaz a-1 a tömb utolsó elemére hivatkozik.  
 
-*num_expr* Nem kötelező numerikus kifejezés, amely az eredményül kapott tömb elemeinek maximális számát állítja be.    
+*num_expr* Nem kötelező numerikus kifejezés, amely az eredményül kapott tömbben lévő elemek maximális számát állítja be.    
 
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Tömbkifejezést ad eredményül.  
+  Egy tömböt megadó kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  A következő példa bemutatja, hogyan szerezhet `ARRAY_SLICE`be különböző szeleteket egy tömbből a használatával.  
+  Az alábbi példa bemutatja, hogyan lehet egy tömb különböző szeleteit beolvasni a használatával `ARRAY_SLICE`.  
   
 ```sql
 SELECT
@@ -53,7 +53,7 @@ SELECT
   
 ```  
   
- Itt van az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{  
@@ -69,10 +69,10 @@ SELECT
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfunkció nem használja az indexet.
+Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tömbfüggvények Az Azure Cosmos DB](sql-query-array-functions.md)
-- [Rendszerfüggvények Az Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Array függvények Azure Cosmos DB](sql-query-array-functions.md)
+- [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
