@@ -1,6 +1,6 @@
 ---
-title: Adatlemez csatolása Windows virtuális géphez az Azure-ban a PowerShell használatával
-description: Új vagy meglévő adatlemez csatolása Windows virtuális géphez a PowerShell használatával az Erőforrás-kezelő telepítési modelljével.
+title: Adatlemez csatlakoztatása egy Windows rendszerű virtuális géphez az Azure-ban a PowerShell használatával
+description: Új vagy meglévő adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell és a Resource Manager-alapú üzemi modell használatával.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267754"
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása PowerShelllel rendelkező Windows virtuális géphez
+# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
 
-Ez a cikk bemutatja, hogyan csatolhatja az új és a meglévő lemezeket egy Windows virtuális gép hez a PowerShell használatával. 
+Ez a cikk bemutatja, hogyan csatlakoztathatja az új és a meglévő lemezeket egy Windows rendszerű virtuális géphez a PowerShell használatával. 
 
-Először is, tekintse át ezeket a tippeket:
+Először tekintse át a következő tippeket:
 
-* A virtuális gép mérete határozza meg, hogy hány adatlemez csatlakoztatható. További információ: [Méretek a virtuális gépekhez.](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* A prémium szintű SSD-k használatához [prémium szintű, tárhelyre képes virtuális géptípusra](sizes-memory.md)van szükség, például a DS-sorozatú vagy a GS-sorozatú virtuális gépre.
+* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információ: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* A prémium SSD-k használatához [prémium szintű Storage-kompatibilis virtuálisgép-típusra](sizes-memory.md)van szükség, például a DS-sorozat vagy a GS sorozatú virtuális gép számára.
 
-Ez a cikk a PowerShellt használja az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez a cikk a PowerShellt használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
-## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása virtuális géphez
+## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása egy virtuális géphez
 
-Ez a példa bemutatja, hogyan adhat hozzá üres adatlemezt egy meglévő virtuális géphez.
+Ebből a példából megtudhatja, hogyan adhat hozzá üres adatlemezt egy meglévő virtuális géphez.
 
 ### <a name="using-managed-disks"></a>Felügyelt lemezek használata
 
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Felügyelt lemezek használata rendelkezésre állási zónában
 
-Ha egy rendelkezésre állási zónában szeretne lemezt `-Zone` létrehozni, használja a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) függvényt a paraméterrel. A következő példa lemezt hoz létre az *1.*
+Ha lemezt szeretne létrehozni egy rendelkezésre állási zónában, használja a `-Zone` [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) paramétert. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -69,7 +69,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>A lemez inicializálása
 
-Üres lemez hozzáadása után inicializálnia kell azt. A lemez inicializálásához jelentkezzen be egy virtuális gépre, és használja a lemezkezelés. Ha engedélyezte [a WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) és a tanúsítvány a virtuális gép létrehozásakor, a távoli PowerShell segítségével inicializálhatja a lemezt. Egyéni parancsfájl-bővítményt is használhat:
+Ha üres lemezt ad hozzá, inicializálnia kell azt. A lemez inicializálásához bejelentkezhet egy virtuális gépre, és a Lemezkezelés szolgáltatással is használható. Ha a [rendszerfelügyeleti](https://docs.microsoft.com/windows/desktop/WinRM/portal) webszolgáltatások és a virtuális gép tanúsítványát engedélyezte a létrehozásakor, a távoli PowerShell használatával inicializálhatja a lemezt. Egyéni parancsfájl-bővítményt is használhat:
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -97,9 +97,9 @@ A parancsfájl tartalmazhat kódot a lemezek inicializálásához, például:
     }
 ```
 
-## <a name="attach-an-existing-data-disk-to-a-vm"></a>Meglévő adatlemez csatolása virtuális géphez
+## <a name="attach-an-existing-data-disk-to-a-vm"></a>Meglévő adatlemez csatolása egy virtuális géphez
 
-Egy meglévő felügyelt lemezt adatlemezként csatolhat egy virtuális géphez.
+Egy meglévő felügyelt lemezt adatlemezként is csatolhat egy virtuális géphez.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -117,4 +117,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>További lépések
 
-A felügyelt lemezeket sablonok használatával is telepítheti. További információ: [Felügyelt lemezek használata az Azure Resource Manager-sablonokban](using-managed-disks-template-deployments.md) vagy a több adatlemez üzembe helyezéséhez szolgáló [rövid útmutató sablon.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)
+A felügyelt lemezeket sablonok használatával is üzembe helyezheti. További információ: [Managed Disks használata Azure Resource Manager sablonokban](using-managed-disks-template-deployments.md) vagy a gyors üzembe helyezési [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) több adatlemez telepítéséhez.

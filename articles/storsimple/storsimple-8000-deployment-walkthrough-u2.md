@@ -1,5 +1,5 @@
 ---
-title: A StorSimple 8000 sorozatú eszköz üzembe helyezése az Azure Portalon
+title: A StorSimple 8000 Series eszköz üzembe helyezése Azure Portal
 description: Ez a cikk a 3-as vagy újabb frissítést futtató StorSimple 8000 sorozatú eszköz és a StorSimple-eszközkezelő szolgáltatás üzembe helyezésének lépéseit és ajánlott eljárásait ismerteti.
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267949"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
@@ -28,7 +28,7 @@ Az oktatóanyagban szereplő információk arra a feltételezésre alapulnak, ho
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy mielőtt hozzákezdene, tekintse át a konfigurációs ellenőrzőlistát. Az üzembehelyezési és konfigurációs folyamatok végrehajtása eltarthat egy ideig.
 
 > [!NOTE]
-> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. A 7000-es sorozatú eszközökkel [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)kapcsolatos teljes körű információkért látogasson el a következő oldalra: . A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja. 
+> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. Az 7000 sorozatú eszközökről a következő témakörben olvashat részletesen: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja. 
 
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
@@ -37,24 +37,24 @@ Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszk
 | Lépés | Leírás |
 | --- | --- |
 | **Előfeltételek** |Ezeknek teljesülniük kell az üzembe helyezésre való felkészülés során. |
-| [Központi telepítés konfigurációjának ellenőrzőlistája](#deployment-configuration-checklist) |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |
+| [Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist) |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |
 | [Üzembe helyezési előfeltételek](#deployment-prerequisites) |Ezek alapján lehet ellenőrizni, hogy a környezet készen áll-e az üzembe helyezésre. |
 |  | |
 | **RÉSZLETES ÜZEMBE HELYEZÉS** |Ezek a lépések szükségesek a StorSimple eszköz üzemi környezetben való telepítéséhez. |
-| [1. lépés: Új szolgáltatás létrehozása](#step-1-create-a-new-service) |A felhőfelügyelet és a felhőalapú tárolás beállítása a StorSimple-eszközhöz. *Hagyja ki ezt a lépést, ha más StorSimple eszközökhöz is rendelkezik egy meglévő szolgáltatással.* |
-| [2. lépés: A szolgáltatás regisztrációs kulcsának beszereznie](#step-2-get-the-service-registration-key) |Ezzel a kulccsal regisztrálhatja és csatlakoztathatja az eszközét a felügyeleti szolgáltatáshoz. |
+| [1. lépés: Új szolgáltatás létrehozása](#step-1-create-a-new-service) |A felhőfelügyelet és a felhőalapú tárolás beállítása a StorSimple-eszközhöz. *Hagyja ki ezt a lépést, ha már rendelkezik meglévő szolgáltatással más StorSimple-eszközökhöz*. |
+| [2. lépés: a szolgáltatás regisztrációs kulcsának beszerzése](#step-2-get-the-service-registration-key) |Ezzel a kulccsal regisztrálhatja és csatlakoztathatja az eszközét a felügyeleti szolgáltatáshoz. |
 | [3. lépés: Az eszköz konfigurálása és regisztrálása a StorSimple-höz készült Windows PowerShell-lel](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |A felügyeleti szolgáltatással végzett telepítés befejezéséhez csatlakoztassa az eszközt a hálózathoz, és regisztrálja az Azure-ban. |
 | [4. lépés: Minimális eszközbeállítások végrehajtása.](#step-4-complete-minimum-device-setup)</br>[Ajánlott eljárás: A StorSimple eszköz frissítése](#scan-for-and-apply-updates) |A felügyeleti szolgáltatással végezze el az eszköz beállítását, és engedélyezze rajta a tárolást. |
 | [5. lépés: Kötettároló létrehozása](#step-5-create-a-volume-container) |Hozzon létre egy tárolót a kötetek kiépítéséhez. A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. |
-| [6. lépés: Kötet létrehozása](#step-6-create-a-volume) |Tárköteteket építhet ki a StorSimple-eszközön a kiszolgálói számára. |
-| [7. lépés: Kötet csatlakoztatása, inicializálása és formázása](#step-7-mount-initialize-and-format-a-volume)</br>[Nem kötelező: Az MPIO konfigurálása](storsimple-8000-configure-mpio-windows-server.md) |Csatlakoztassa a kiszolgálókat az eszköz által biztosított iSCSI-tárolóhoz. Választható lehetőségként konfigurálhatja az MPIO-t, hogy a kiszolgálók képesek legyenek tűrni a kapcsolati, a hálózati és az adapterhibákat. |
-| [8. lépés: Biztonsági mentés készítése](#step-8-take-a-backup) |A biztonsági mentés házirendjének beállítása az adatok védelme érdekében |
+| [6. lépés: kötet létrehozása](#step-6-create-a-volume) |Tárköteteket építhet ki a StorSimple-eszközön a kiszolgálói számára. |
+| [7. lépés: Kötet csatlakoztatása, inicializálása és formázása](#step-7-mount-initialize-and-format-a-volume)</br>[Választható lehetőség: az MPIO konfigurálása](storsimple-8000-configure-mpio-windows-server.md) |Csatlakoztassa a kiszolgálókat az eszköz által biztosított iSCSI-tárolóhoz. Választható lehetőségként konfigurálhatja az MPIO-t, hogy a kiszolgálók képesek legyenek tűrni a kapcsolati, a hálózati és az adapterhibákat. |
+| [8. lépés: biztonsági mentés készítése](#step-8-take-a-backup) |A biztonsági mentés házirendjének beállítása az adatok védelme érdekében |
 |  | |
 | **EGYÉB ELJÁRÁSOK** |Előfordulhat, hogy a megoldás üzembe helyezése során ezekre az eljárásokra kell majd hivatkoznia. |
 | [Új tárfiók konfigurálása a szolgáltatáshoz](#configure-a-new-storage-account-for-the-service) | |
 | [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](#use-putty-to-connect-to-the-device-serial-console) | |
-| [A Windows Server-gazdagép IQN-jének beolvasása](#get-the-iqn-of-a-windows-server-host) | |
-| [Kézi biztonsági mentés létrehozása](#create-a-manual-backup) | |
+| [Egy Windows Server-gazdagép IQN beolvasása](#get-the-iqn-of-a-windows-server-host) | |
+| [Manuális biztonsági mentés létrehozása](#create-a-manual-backup) | |
 
 
 ## <a name="deployment-configuration-checklist"></a>Üzembehelyezési konfigurációs ellenőrzőlista

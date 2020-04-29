@@ -1,60 +1,60 @@
 ---
-title: Új Azure Kubernetes-szolgáltatás (AKS) fürt figyelése | Microsoft dokumentumok
-description: Megtudhatja, hogyan engedélyezheti egy új Azure Kubernetes-szolgáltatás (AKS) fürt figyelését az Azure Monitor tárolók előfizetéséhez.
+title: Új Azure Kubernetes Service-(ak-) fürt figyelése | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti a figyelést egy új Azure Kubernetes Service (ak) fürthöz a Azure Monitor for containers előfizetéssel.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275437"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes-szolgáltatás (AKS) fürt figyelésének engedélyezése
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk ismerteti, hogyan állíthatja be az Azure Monitor tárolók az [Azure Kubernetes-szolgáltatásüzemeltetésben](https://docs.microsoft.com/azure/aks/) üzemeltetett felügyelt Kubernetes-fürt, amely az előfizetésben üzembe helyezésre készül.
+Ez a cikk azt ismerteti, hogyan állítható be Azure Monitor for containers az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) -ben üzemeltetett felügyelt Kubernetes-fürt figyelésére, amelyet az előfizetésében üzembe helyezésre készül.
 
-Az AKS-fürtök figyelését a támogatott módszerek egyikével engedélyezheti:
+A támogatott módszerek egyikének használatával engedélyezheti az AK-fürtök figyelését:
 
 * Azure CLI
 * Terraform
 
 ## <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
 
-Az Azure CLI-vel létrehozott új AKS-fürt figyelésének engedélyezéséhez kövesse az [AKS-fürt létrehozása](../../aks/kubernetes-walkthrough.md#create-aks-cluster)című szakasz rövid útmutatójában található lépést.  
+Az Azure CLI-vel létrehozott új AK-fürt figyelésének engedélyezéséhez kövesse a rövid útmutató című cikk lépéseit az [AK-fürt létrehozása](../../aks/kubernetes-walkthrough.md#create-aks-cluster)című szakaszban.  
 
 >[!NOTE]
->Ha úgy dönt, hogy az Azure CLI, először telepítenie kell, és a CLI helyileg kell használni. Az Azure CLI 2.0.74-es vagy újabb verzióját kell futtatnia. A verzió azonosításához `az --version`futtassa a futtassa a futtassa a futtassa a futtassa Ha telepítenie vagy frissítenie kell az Azure CLI-t, [olvassa el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört. Ha telepítette az aks-preview CLI bővítmény 0.4.12-es vagy újabb verzióját, távolítsa el az előzetes verzió engedélyezéséhez végzett módosításokat, mivel felülírhatja az azure CLI alapértelmezett viselkedését, mivel az AKS előzetes verzió funkciói nem érhetők el az Azure US Governmnet felhőben.
+>Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version`parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. Ha telepítette az AK-előnézet CLI-bővítményének 0.4.12 vagy újabb verzióját, távolítsa el az előnézeti bővítmény engedélyezéséhez szükséges módosításokat, mivel ez felülbírálhatja az alapértelmezett Azure CLI-viselkedést, mivel az AK előzetes verziójának funkciói nem érhetők el az Azure US Governmnet-felhőben.
 
 ## <a name="enable-using-terraform"></a>Engedélyezés a Terraform használatával
 
-Ha [egy új AKS-fürtet telepít a Terraform használatával,](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)akkor adja meg a profilban a [Log Analytics-munkaterület létrehozásához](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) szükséges argumentumokat, ha nem dönt úgy, hogy egy meglévőt ad meg. 
+Ha [új AK-fürtöt helyez üzembe a Terraform használatával](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), akkor a profilban szükséges argumentumokat kell megadnia [log Analytics munkaterület létrehozásához](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) , ha a felhasználó nem ad meg egy meglévőt. 
 
 >[!NOTE]
->Ha úgy dönt, hogy a Terraform, futtatnia kell a Terraform Azure RM Provider 1.17.0-s vagy újabb verziója.
+>Ha a Terraform használata mellett dönt, akkor a Terraform Azure RM Provider 1.17.0 vagy újabb verzióját kell futtatnia.
 
-Ha hozzá szeretné adni az Azure Monitort a tárolókhoz a munkaterülethez, tekintse meg [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) és töltse ki a profilt a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) hozzáadásával, és adja meg a **oms_agent.** 
+Ha Azure Monitor szeretne hozzáadni a tárolóhoz a munkaterülethez, tekintse meg a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) és a profil befejezéséhez a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) , majd a **oms_agent**megadása című témakört. 
 
-Miután engedélyezte a figyelést és az összes konfigurációs feladat sikeres befejezését, kétféleképpen figyelheti a fürt teljesítményét:
+Miután engedélyezte a figyelést, és az összes konfigurációs feladat sikeresen befejeződött, két módon figyelheti a fürt teljesítményét:
 
-* Közvetlenül az AKS-fürtben a bal oldali ablaktáblában az **Állapot** lehetőséget választva.
-* A **Tárolóelemzésfigyelés csempe figyelése** az AKS-fürtlapon a kijelölt fürthöz. Az Azure Monitor bal oldali ablaktáblájában válassza az **Állapot**lehetőséget. 
+* Közvetlenül az AK-fürtben válassza az **állapot** lehetőséget a bal oldali ablaktáblán.
+* A kiválasztott fürt AK-fürt lapjának **figyelés tároló-bepillantások** csempéjét választva. Azure Monitor a bal oldali ablaktáblán válassza az **állapot**lehetőséget. 
 
-  ![Az AKS-tárolók Azure-figyelőjének kiválasztásának lehetőségei](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![A tárolók Azure Monitor kiválasztásának lehetőségei az AK-ban](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
-Miután engedélyezte a figyelést, körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt állapotmetrikákat. 
+A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait. 
 
-## <a name="verify-agent-and-solution-deployment"></a>Ügynök- és megoldástelepítés ellenőrzése
-A *06072018-as* vagy újabb ügynökverzióval ellenőrizheti, hogy az ügynök és a megoldás is sikeresen üzembe lett-e. Az ügynök korábbi verzióival csak az ügynök üzembe helyezését ellenőrizheti.
+## <a name="verify-agent-and-solution-deployment"></a>Ügynök és megoldás központi telepítésének ellenőrzése
+Az ügynök *06072018* -es vagy újabb verziójával ellenőrizheti, hogy az ügynök és a megoldás telepítése is sikeres volt-e. Az ügynök korábbi verzióiban csak az ügynök üzembe helyezését ellenőrizheti.
 
-### <a name="agent-version-06072018-or-later"></a>Ügynök 06072018-as vagy újabb verziója
-Futtassa a következő parancsot az ügynök sikeres telepítésének ellenőrzéséhez. 
+### <a name="agent-version-06072018-or-later"></a>Ügynök 06072018-es vagy újabb verziója
+A következő parancs futtatásával ellenőrizheti, hogy az ügynök telepítése sikeresen megtörtént-e. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -62,13 +62,13 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-A megoldás telepítésének ellenőrzéséhez futtassa a következő parancsot:
+A megoldás üzembe helyezésének ellenőrzéséhez futtassa a következő parancsot:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -76,15 +76,15 @@ NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
 
-### <a name="agent-version-earlier-than-06072018"></a>A 06072018-nál korábbi ügynökverzió
+### <a name="agent-version-earlier-than-06072018"></a>Ügynök verziója 06072018-nál korábbi
 
-A *06072018* előtt kiadott Log Analytics-ügynök-verzió megfelelő telepítésének ellenőrzéséhez futtassa a következő parancsot:  
+A következő parancs futtatásával ellenőrizheti, hogy a Log Analytics ügynöknek a *06072018* -es verziójának megfelelő telepítését adta-e meg:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-A kimenetnek a következőhöz kell hasonlítania, ami azt jelzi, hogy megfelelően lett telepítve:  
+A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -92,14 +92,14 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése CLI-vel
-A `aks show` parancs segítségével olyan részleteket kaphat, mint például a megoldás engedélyezve van-e vagy sem, mi a Log Analytics munkaterület-erőforrásazonosítója, és összegző részleteket a fürtről.  
+## <a name="view-configuration-with-cli"></a>Konfiguráció megtekintése a parancssori felülettel
+A `aks show` paranccsal olyan részleteket kaphat, mint például a megoldás, amely a log Analytics munkaterület resourceID, valamint a fürt összegző részleteit is lehetővé teszi.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 ```
 
-Néhány perc múlva a parancs befejezi és visszaadja a JSON-formátumú információkat a megoldásról.  A parancs eredményeinek meg kell mutatniuk a figyelési bővítmény profilt, és a következő példakimenetre hasonlítanak:
+Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JSON-formátumú adatokat adja vissza.  A parancs eredményeinek meg kell jeleníteniük a figyelési bővítmény profilját, és a következő példában szereplő kimenetre hasonlítanak:
 
 ```
 "addonProfiles": {
@@ -114,6 +114,6 @@ Néhány perc múlva a parancs befejezi és visszaadja a JSON-formátumú inform
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha a megoldás bedeszkázása közben problémákat tapasztal, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md)
+* Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Ha a figyelés engedélyezve van az AKS-fürt és a rajtuk futó számítási feladatok állapotának és erőforrás-kihasználtságának összegyűjtéséhez, ismerje meg, [hogyan használhatja az](container-insights-analyze.md) Azure Monitort tárolókhoz.
+* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.

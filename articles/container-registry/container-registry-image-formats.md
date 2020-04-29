@@ -1,49 +1,49 @@
 ---
-title: Támogatott tartalomformátumok
-description: Ismerje meg az Azure Container Registry által támogatott tartalomformátumokat, beleértve a Docker-kompatibilis tárolórendszerképeket, helm-diagramokat, OCI-rendszerképeket és OCI-összetevőket.
+title: Támogatott tartalom-formátumok
+description: További információ a Azure Container Registry által támogatott fájlformátumokról, beleértve a Docker-kompatibilis tároló lemezképeit, a Helm-diagramokat, a OCI-lemezképeket és a OCI-összetevőket.
 ms.topic: article
 ms.date: 08/30/2019
 ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247006"
 ---
-# <a name="content-formats-supported-in-azure-container-registry"></a>Az Azure Container Registry által támogatott tartalomformátumok
+# <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry támogatott tartalom-formátumok
 
-Az Azure Container Registry privát tárházhasználatával kezelheti az alábbi tartalomformátumok egyikét. 
+A következő tartalom-formátumok egyikének kezeléséhez használjon Azure Container Registry saját tárházát. 
 
-## <a name="docker-compatible-container-images"></a>Docker-kompatibilis tárolórendszerképek
+## <a name="docker-compatible-container-images"></a>Docker-kompatibilis tároló lemezképei
 
-A következő Docker-tárolórendszerképek támogatottak:
+A következő Docker-tároló képformátumai támogatottak:
 
-* [Docker-rendszerjegyzék-jegyzék V2, 1.](https://docs.docker.com/registry/spec/manifest-v2-1/)
+* [Docker-rendszerkép jegyzékfájlja v2, 1. séma](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker Image Manifest V2, Séma 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - tartalmazza a manifest listákat, amelyek lehetővé teszik a többplatformos lemezképek tárolását egyetlen "image:tag" hivatkozás alatt
+* [Docker-rendszerkép jegyzékfájl v2, 2. séma](https://docs.docker.com/registry/spec/manifest-v2-2/) – olyan jegyzékeket tartalmaz, amelyek lehetővé teszik, hogy a beállításjegyzékek többplatformos rendszerképeket tároljanak egyetlen "Image: tag" hivatkozással
 
-## <a name="oci-images"></a>OCI képek
+## <a name="oci-images"></a>OCI-lemezképek
 
-Az Azure Container Registry támogatja az open [container initiative (OCI) image format specification szolgáltatásnak](https://github.com/opencontainers/image-spec/blob/master/spec.md)megfelelő lemezképeket. A csomagolási formátumok közé tartozik [a Szingularitás képformátum (SIF)](https://github.com/sylabs/sif).
+Azure Container Registry támogatja a [nyílt tároló kezdeményezés (OCI) képformátumának specifikációjának](https://github.com/opencontainers/image-spec/blob/master/spec.md)megfelelő lemezképeket. A csomagolási formátumok közé tartozik a [szingularitás képformátuma (SIF)](https://github.com/sylabs/sif).
 
-## <a name="oci-artifacts"></a>OCI-leletek
+## <a name="oci-artifacts"></a>OCI összetevők
 
-Az Azure Container Registry támogatja az [OCI distribution specification,](https://github.com/opencontainers/distribution-spec)a szállító-semleges, felhő-független spec tárolására, megosztására, biztonságos és üzembe helyezési tárolórendszerképek és egyéb tartalomtípusok (összetevők). A specifikáció lehetővé teszi, hogy a rendszerleíró adatbázis a tárolórendszerképek mellett számos műtermék tárolását is lehetővé tegye. A műterméknek megfelelő eszközhasználatot használ a műtermékek leküldése és lekérése. Például lásd: [OCI-összetevő leküldése és lekérése egy Azure-tároló beállításjegyzék használatával.](container-registry-oci-artifacts.md)
+Azure Container Registry támogatja a [OCI-terjesztési specifikációt](https://github.com/opencontainers/distribution-spec), a szállítói semleges, a felhő-agnosztikus specifikációt a tároló-lemezképek és más tartalomtípusok (összetevők) tárolására, megosztására, védelmére és üzembe helyezésére. A specifikáció lehetővé teszi, hogy a beállításjegyzék az összetevők széles körét tárolja a tároló rendszerképein kívül. Az összetevőnek megfelelő eszközöket kell használnia az összetevők leküldéséhez és lekéréséhez. Példaként tekintse meg az [OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával](container-registry-oci-artifacts.md)című témakört.
 
-Az OCI-összetevőkről az [OCI-beállításjegyzék tárolóként (ORAS)](https://github.com/deislabs/oras) tárházés az [OCI-összetevők](https://github.com/opencontainers/artifacts) tárháza a GitHubon című témakörben olvashat bővebben.
+Ha többet szeretne megtudni a OCI összetevőkről, tekintse meg a [OCI beállításjegyzék as Storage (ORAS)](https://github.com/deislabs/oras) tárházát és a [OCI](https://github.com/opencontainers/artifacts) -összetevők tárházát a githubon.
 
-## <a name="helm-charts"></a>Helm térképek
+## <a name="helm-charts"></a>Helm-diagramok
 
-Az Azure Container Registry üzemeltetheti a [Helm-diagramok](https://helm.sh/)adattárak, a csomagolási formátum gyorskezelésére és üzembe helyezésére használt alkalmazások Kubernetes. [Helm ügyfél](https://docs.helm.sh/using_helm/#installing-helm) 2-es verziója (2.11.0 vagy újabb) támogatott.
+A Azure Container Registry képes a Helm- [diagramok](https://helm.sh/), a Kubernetes alkalmazások gyors kezelésére és üzembe helyezésére használt csomagolási formátum tárolására. A [Helm Client](https://docs.helm.sh/using_helm/#installing-helm) 2-es verziója (2.11.0 vagy újabb) támogatott.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg, hogyan [leküldéses és lekéréses](container-registry-get-started-docker-cli.md) lemezképek az Azure Container Registry használatával.
+* Lásd: lemezképek [leküldése és lekérése](container-registry-get-started-docker-cli.md) Azure Container Registry használatával.
 
-* [Az ACR-feladatok](container-registry-tasks-overview.md) segítségével tárolórendszerképeket hozhat létre és tesztel. 
+* Az [ACR-feladatok](container-registry-tasks-overview.md) használatával készíthet és tesztelheti a tárolók lemezképeit. 
 
-* A [Moby BuildKit](https://github.com/moby/buildkit) segítségével OCI formátumú tárolókat hozhat létre és csomagol.
+* A [Moby BUILDKIT](https://github.com/moby/buildkit) OCI formátumban hozhat létre és csomagolhat tárolókat.
 
-* Hozzon létre egy [Helm-tárházat](container-registry-helm-repos.md) az Azure Container Registry üzemelteti. 
+* Hozzon létre egy Azure Container Registry-ben üzemeltetett [Helm-tárházat](container-registry-helm-repos.md) . 
 
 

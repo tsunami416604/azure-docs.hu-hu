@@ -1,6 +1,6 @@
 ---
-title: A .NET telepítése az Azure Cloud Services szerepköreire | Microsoft dokumentumok
-description: Ez a cikk azt ismerteti, hogy miként telepíthető manuálisan a .
+title: A .NET telepítése Azure Cloud Services-szerepkörökön | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan telepítheti manuálisan a .NET-keretrendszert a Cloud Service webes és feldolgozói szerepkörein
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214721"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése az Azure Cloud Services szerepköreire
-Ez a cikk ismerteti, hogyan telepítheti a .NET Framework olyan verzióit, amelyek nem az Azure Vendég operációs rendszerhez származnak. A .NET használatával konfigurálhatja a felhőszolgáltatás webes és feldolgozói szerepköreit.
+# <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése Azure Cloud Services-szerepkörökre
+Ez a cikk azt ismerteti, hogyan telepíthet olyan .NET-keretrendszer-verziókat, amelyek nem az Azure vendég operációs rendszerhez tartoznak. A .NET-kiszolgáló és a feldolgozói szerepkörök konfigurálásához használhatja a .NET-et a vendég operációs rendszeren.
 
-A .NET Framework 4.6.2-t például telepítheti a Vendég operációsrendszer-család 4-re, amely nem jár a .NET Framework 4.6 bármely kiadásával. (A Vendég operációsrendszer-család 5 nem jön a .NET Framework 4.6.) Az Azure Vendég operációs rendszer kiadásairól az Azure Vendég operációs rendszer kiadásáról szóló legfrissebb információkért tekintse meg az [Azure Vendég operációs rendszer kiadásának híreit.](cloud-services-guestos-update-matrix.md) 
+A .NET-keretrendszer 4.6.2 telepíthető például a vendég operációs rendszer 4-es verziójára, amely a .NET-keretrendszer 4,6-es verziójának semmilyen kiadására nem alkalmas. (A vendég operációs rendszer 5. termékcsaládja a .NET-keretrendszer 4,6-es verziójával érhető el.) Az Azure vendég operációs rendszer kiadásaival kapcsolatos legfrissebb információkért tekintse meg az [Azure vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)című témakört. 
 
 >[!IMPORTANT]
->Az Azure SDK 2.9 tartalmazza a . A korlátozás javítása a [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) webhelyen érhető el.
+>Az Azure SDK 2,9 korlátozást tartalmaz a .NET-keretrendszer 4,6 telepítéséhez a vendég operációsrendszer-család 4-es vagy korábbi verziójában. A korlátozáshoz tartozó javítás a [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) webhelyen érhető el.
 
-A .NET telepítése a webes és feldolgozói szerepkörökön, a .NET web telepítő a felhőszolgáltatási projekt részeként. Indítsa el a telepítőt a szerepkör indítási feladatainak részeként. 
+Ha a .NET-et a webes és feldolgozói szerepkörökön szeretné telepíteni, foglalja bele a .NET web Installert a Cloud Service-projekt részeként. Indítsa el a telepítőt a szerepkör indítási feladatainak részeként. 
 
-## <a name="add-the-net-installer-to-your-project"></a>A .NET telepítő hozzáadása a projekthez
-A .
+## <a name="add-the-net-installer-to-your-project"></a>A .NET-telepítő hozzáadása a projekthez
+A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a telepíteni kívánt verziót:
 
-* [.NET Framework 4.8 webes telepítő](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET Framework 4.7.2 webes telepítő](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 webes telepítő](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET-keretrendszer 4,8 web Installer](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET-keretrendszer 4.7.2 web Installer](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET-keretrendszer 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
-Webes *szerepkör* telepítőjének hozzáadása:
-  1. A **Megoldáskezelő**ben a **Szerepkörök** a felhőalapú szolgáltatásprojektben csoportban kattintson a jobb gombbal a *webes* szerepkörre, és válassza az Új mappa **hozzáadása** > **parancsot.** Hozzon létre egy **bin**nevű mappát .
-  2. Kattintson a jobb gombbal a raktárhely mappára, és válassza a Meglévő elem **hozzáadása** > **parancsot.** Jelölje ki a .NET telepítőt, és adja hozzá a tárolómappához.
+A telepítő hozzáadása *webes* szerepkörhöz:
+  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza az**új mappa** **hozzáadása** > lehetőséget. Hozzon létre egy **bin**nevű mappát.
+  2. Kattintson a jobb gombbal a Bin mappára, **Add** > és válassza a**meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
   
-A feldolgozói *szerepkör* telepítőjének hozzáadása:
-* Kattintson a jobb gombbal a *dolgozói* szerepkörre, és válassza a Meglévő elem **hozzáadása** > **parancsot.** Jelölje ki a .NET telepítőt, és adja hozzá a szerepkörhöz. 
+A telepítő hozzáadása *feldolgozói* szerepkörhöz:
+* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a**meglévő elem** **hozzáadása** > lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
 
-Ha így ad hozzá fájlokat a szerepkörtartalom mappájához, a rendszer automatikusan hozzáadja őket a felhőszolgáltatási csomaghoz. A fájlok ezután a virtuális gépen egy konzisztens helyre kerülnek. Ismételje meg ezt a folyamatot a felhőszolgáltatásban lévő minden webes és feldolgozói szerepköresetében, hogy minden szerepkör rendelkezik a telepítő egy-egy másolatával.
+Ha a fájlokat így hozzáadja a szerepkör-tartalom mappájához, azok automatikusan hozzáadódnak a Cloud Service-csomaghoz. Ezután a rendszer a virtuális gép egy konzisztens helyére telepíti a fájlokat. Ismételje meg ezt a folyamatot a felhőalapú szolgáltatás minden webes és feldolgozói szerepköre esetében, hogy minden szerepkör rendelkezik a telepítő másolatával.
 
 > [!NOTE]
-> A .NET Framework 4.6.2-t akkor is telepítse a felhőszolgáltatási szerepkörre, ha az alkalmazás a .NET Framework 4.6-ot célozza meg. A vendég operációs rendszer tartalmazza a Tudásbázis [3098779-es](https://support.microsoft.com/kb/3098779) és [3097997-es és 3097997-es frissítését.](https://support.microsoft.com/kb/3097997) Problémák merülhetnek fel a .NET alkalmazások futtatásakor, ha a .NET Framework 4.6 a Tudásbázis frissítései nek tetejére van telepítve. A problémák elkerülése érdekében a 4.6-os verzió helyett telepítse a .NET Framework 4.6.2-es verzióját. További információt a [Tudásbázis 3118750](https://support.microsoft.com/kb/3118750) és [4340191.](https://support.microsoft.com/kb/4340191)
+> A .NET-keretrendszer 4.6.2 a Cloud Service-szerepkörre kell telepítenie, még akkor is, ha az alkalmazás a .NET-keretrendszer 4,6-es példányát A vendég operációs rendszer tartalmazza a Tudásbázis [3098779-es frissítését](https://support.microsoft.com/kb/3098779) és a 3097997-es [frissítést](https://support.microsoft.com/kb/3097997). A .NET-alkalmazások futtatásakor problémák léphetnek fel, ha a .NET-keretrendszer 4,6 telepítve van a Tudásbázis frissítésein. A probléma elkerülése érdekében telepítse a .NET-keretrendszer 4.6.2-et a 4,6-es verzió helyett. További információt a [tudásbázis 3118750](https://support.microsoft.com/kb/3118750) -es és [4340191](https://support.microsoft.com/kb/4340191)-es cikkében talál.
 > 
 > 
 
-![Szerepkör tartalma telepítőfájlokkal][1]
+![Szerepkörök tartalma a telepítő fájljaival][1]
 
-## <a name="define-startup-tasks-for-your-roles"></a>Indítási feladatok definiálása a szerepkörökhöz
-Az indítási feladatok segítségével műveleteket hajthat végre a szerepkör indítása előtt. A . Az indítási feladatokról az [Indítási feladatok futtatása az Azure-ban című témakörben](cloud-services-startup-tasks.md)talál további információt. 
+## <a name="define-startup-tasks-for-your-roles"></a>Adja meg a szerepkörök indítási feladatait
+Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A .NET-keretrendszer indítási feladat részeként történő telepítése biztosítja, hogy a keretrendszer telepítve legyen az alkalmazás kódjának futtatása előtt. Az indítási feladatokkal kapcsolatos további információkért lásd: [indítási feladatok futtatása az Azure-ban](cloud-services-startup-tasks.md). 
 
-1. Adja hozzá a következő tartalmat a ServiceDefinition.csdef fájlhoz a **WebRole** vagy **workerrole** csomópont alatt az összes szerepkörhöz:
+1. Adja hozzá a következő tartalmat a ServiceDefinition. csdef fájlhoz a **webrole** vagy a **WorkerRole** csomópontban az összes szerepkörhöz:
    
     ```xml
     <LocalResources>
@@ -73,19 +73,19 @@ Az indítási feladatok segítségével műveleteket hajthat végre a szerepkör
     </Startup>
     ```
    
-    Az előző konfiguráció a `install.cmd` .NET framework telepítéséhez rendszergazdai jogosultságokkal futtatja a konzolparancsot. A konfiguráció létrehoz egy **NETFXInstall**nevű **LocalStorage** elemet is. Az indítási parancsfájl úgy állítja be az ideiglenes mappát, hogy ezt a helyi tárolási erőforrást használja. 
+    Az előző konfiguráció a konzol parancsát `install.cmd` rendszergazdai jogosultságokkal futtatja a .NET-keretrendszer telepítéséhez. A konfiguráció emellett létrehoz egy **NETFXInstall**nevű **LocalStorage** elemet is. Az indítási parancsfájl beállítja a Temp mappát a helyi tárolási erőforrás használatára. 
     
     > [!IMPORTANT]
-    > A keretrendszer megfelelő telepítésének biztosítása érdekében állítsa az erőforrás méretét legalább 1024 MB-ra.
+    > A keretrendszer helyes telepítésének biztosításához állítsa az erőforrás méretét legalább 1 024 MB-ra.
     
-    Az indítási feladatokról az [Azure Cloud Services gyakori indítási feladatai című](cloud-services-startup-tasks-common.md)témakörben talál további információt.
+    További információ az indítási feladatokról: [általános Azure Cloud Services indítási feladatok](cloud-services-startup-tasks-common.md).
 
-2. Hozzon létre egy **install.cmd** nevű fájlt, és adja hozzá a következő telepítési parancsfájlt a fájlhoz.
+2. Hozzon létre egy **install. cmd** nevű fájlt, és adja hozzá a következő telepítési parancsfájlt a fájlhoz.
 
-   A parancsfájl a rendszerleíró adatbázis lekérdezésével ellenőrzi, hogy a . Ha a . A problémák elhárítása érdekében a parancsfájl naplózza az összes tevékenységet a fájl startuptasklog-(aktuális dátum és idő).txt, amely a **InstallLogs** helyi tárolóban található.
+   A parancsfájl ellenőrzi, hogy a .NET-keretrendszer adott verziója már telepítve van-e a számítógépen a beállításjegyzék lekérdezésével. Ha a .NET-keretrendszer verziója nincs telepítve, a .NET-keretrendszer web Installer megnyitása megtörtént. A hibák elhárítása érdekében a parancsfájl az összes tevékenységet naplózza a startuptasklog-(aktuális dátum és idő). txt fájlba, amely a **InstallLogs** helyi tárolójában van tárolva.
    
    > [!IMPORTANT]
-   > A install.cmd fájl létrehozásához használjon egyszerű szövegszerkesztőt, például a Windows Jegyzettömböt. Ha a Visual Studio segítségével hoz létre szövegfájlt, és a kiterjesztést .cmd-re módosítja, a fájl továbbra is tartalmazhat UTF-8 bájtos rendelési jelet. Ez a jel hibát okozhat a parancsfájl első sorának futtatásakor. A hiba elkerülése érdekében a parancsfájl első sorában adjon olyan REM utasítást, amelyet a bájtrendelés feldolgozása kihagyhat. 
+   > A install. cmd fájl létrehozásához használjon egy egyszerű szövegszerkesztőt, például a Windows jegyzettömböt. Ha a Visual Studióval szövegfájlt hoz létre, és a kiterjesztést a. cmd fájlba módosítja, akkor a fájl továbbra is tartalmazhatja az UTF-8 bájtos sorrendet. Ez a jel hibát okozhat a parancsfájl első sorának futtatásakor. A hiba elkerüléséhez végezze el a parancsfájl első sorát, amely a byte Order Processing által kihagyható REM-utasítás. 
    > 
    >
    
@@ -197,17 +197,17 @@ Az indítási feladatok segítségével műveleteket hajthat végre a szerepkör
    EXIT /B 0
    ```
 
-3. Adja hozzá a install.cmd fájlt az egyes szerepkörökhöz a**Meglévő elem** **hozzáadása** > a **Megoldáskezelőben** című témakörkorábbi témakörben leírtak szerint. 
+3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz **Add** > **meglévő elem** hozzáadása **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
 
-    A lépés befejezése után minden szerepkörnek rendelkeznie kell a .NET telepítő fájllal és a install.cmd fájllal.
+    A lépés befejezése után az összes szerepkörnek rendelkeznie kell a .NET Installer-fájllal és a install. cmd fájllal.
 
-   ![Szerepkör tartalma az összes fájllal][2]
+   ![Szerepkörök tartalma az összes fájllal][2]
 
-## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>A Diagnosztika konfigurálása az indítási naplók Blob-tárolóba való átviteléhez
-A telepítési problémák elhárításának egyszerűsítése érdekében beállíthatja, hogy az Azure Diagnostics átvigye az indítási parancsfájl vagy a .NET telepítő által létrehozott naplófájlokat az Azure Blob storage-ba. Ezzel a módszerrel megtekintheti a naplókat a naplófájlok letöltésével a Blob storage ahelyett, hogy a távoli asztalon a szerepkörbe.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Diagnosztika konfigurálása az indítási naplók blob Storage-ba történő átviteléhez
+A telepítési hibák elhárításának leegyszerűsítése érdekében beállíthatja, hogy a Azure Diagnostics az indítási parancsfájl vagy a .NET-telepítő által az Azure Blob Storage-hoz generált naplófájlok átvitelére. Ezzel a megközelítéssel megtekintheti a naplókat úgy, hogy letölti a naplófájlokat a blob Storage-ból, ahelyett, hogy a Távoli asztalt a szerepkörbe helyezi.
 
 
-A Diagnosztika konfigurálásához nyissa meg a diagnostics.wadcfgx fájlt, és adja hozzá a következő tartalmat a **Könyvtárak** csomóponthoz: 
+A diagnosztika konfigurálásához nyissa meg a Diagnostics. wadcfgx fájlt, és adja hozzá a következő tartalmat a **címtárak** csomópontban: 
 
 ```xml 
 <DataSources>
@@ -217,15 +217,15 @@ A Diagnosztika konfigurálásához nyissa meg a diagnostics.wadcfgx fájlt, és 
 </DataSources>
 ```
 
-Ez az XML úgy konfigurálja a Diagnosztikát, hogy a **NETFXInstall** erőforrás naplókönyvtárában lévő fájlokat átvigye a **netfx-install** blob tároló diagnosztikai tárfiókjába.
+Ez az XML úgy konfigurálja a diagnosztikát, hogy a **NETFXInstall** erőforrásban lévő naplófájlokat a **netfx-install** blob tárolóban lévő diagnosztikai Storage-fiókba vigye át.
 
-## <a name="deploy-your-cloud-service"></a>A felhőszolgáltatás üzembe helyezése
-A felhőszolgáltatás telepítésekor az indítási feladatok telepítik a .NET Framework rendszert, ha még nincs telepítve. A felhőszolgáltatási szerepkörök *foglalt* állapotban vannak, miközben a keretrendszer telepítése folyamatban van. Ha a keretrendszer telepítése újraindítást igényel, a szolgáltatásszerepkörök is újraindulhatnak. 
+## <a name="deploy-your-cloud-service"></a>A Cloud Service üzembe helyezése
+A Cloud Service üzembe helyezésekor az indítási feladatok telepítik a .NET-keretrendszert, ha még nincs telepítve. A felhőalapú szolgáltatási szerepkörök *elfoglalt* állapotban vannak a keretrendszer telepítésekor. Ha a keretrendszer telepítése újraindítást igényel, előfordulhat, hogy a szolgáltatási szerepkörök is újraindulnak. 
 
-## <a name="additional-resources"></a>További források
-* [A .][Installing the .NET Framework]
-* [A .NET Framework telepített verzióinak meghatározása][How to: Determine Which .NET Framework Versions Are Installed]
-* [A .][Troubleshooting .NET Framework Installations]
+## <a name="additional-resources"></a>További háttéranyagok
+* [A .NET-keretrendszer telepítése][Installing the .NET Framework]
+* [A .NET-keretrendszer telepített verzióinak meghatározása][How to: Determine Which .NET Framework Versions Are Installed]
+* [A .NET-keretrendszer telepítésének hibaelhárítása][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

@@ -1,27 +1,27 @@
 ---
-title: Munkafolyamat-definíció – nyelvi séma hivatkozása
-description: Útmutató a JSON-sémához és a munkafolyamat-definíciós nyelv szintaxisához, amely az Azure Logic Apps munkafolyamatait ismerteti
+title: Munkafolyamat-definíció nyelvi sémájának referenciája
+description: Útmutató a JSON-sémához és a munkafolyamat-definíciós nyelv szintaxisához, amely leírja a munkafolyamatokat Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283861"
 ---
-# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató az Azure Logic Apps munkafolyamat-definíciós nyelvéhez
+# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
 
-Amikor létrehoz egy logikai alkalmazást az [Azure Logic Apps](../logic-apps/logic-apps-overview.md)alkalmazásban, a logikai alkalmazás rendelkezik egy mögöttes munkafolyamat-definícióval, amely leírja a logikai alkalmazásban futó tényleges logikát. Ez a munkafolyamat-definíció [JSON-t](https://www.json.org/) használ, és a Munkafolyamat-definíciónyelv sémája által ellenőrzött struktúrát követ. Ez a hivatkozás áttekintést nyújt erről a struktúráról, valamint arról, hogy a séma hogyan definiálja az attribútumokat a munkafolyamat-definícióban.
+Amikor [Azure Logic Appsban](../logic-apps/logic-apps-overview.md)hoz létre logikai alkalmazást, a logikai alkalmazásnak van egy mögöttes munkafolyamat-definíciója, amely leírja a logikai alkalmazásban futó tényleges logikát. A munkafolyamat-definíció [JSON](https://www.json.org/) -t használ, és a munkafolyamat-definíció nyelvi sémája által érvényesített struktúrát követi. Ez a hivatkozás áttekintést nyújt erről a szerkezetről, valamint arról, hogy a séma hogyan határozza meg az attribútumokat a munkafolyamat-definícióban.
 
 ## <a name="workflow-definition-structure"></a>Munkafolyamat-definíciós struktúra
 
-A munkafolyamat-definíció mindig tartalmaz egy eseményindítót a logikai alkalmazás példányosításához, valamint egy vagy több műveletet, amelyek az eseményindító tüzek után futnak.
+A munkafolyamat-definíció mindig tartalmaz egy eseményindítót a logikai alkalmazás létrehozásához, valamint egy vagy több olyan műveletet, amely az eseményindítót követően fut.
 
-A munkafolyamat-definíció magas szintű struktúrája:
+A munkafolyamat-definíciók magas szintű szerkezete:
 
 ```json
 "definition": {
@@ -38,28 +38,28 @@ A munkafolyamat-definíció magas szintű struktúrája:
 | Attribútum | Kötelező | Leírás |
 |-----------|----------|-------------|
 | `definition` | Igen | A munkafolyamat-definíció kezdő eleme |
-| `$schema` | Csak akkor, ha külsőleg hivatkozik egy munkafolyamat-definícióra | A JSON-sémafájl helye, amely a munkafolyamat-definíciónyelv verzióját írja le, amely itt található: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | Nem | A munkafolyamat-futásidőben végrehajtandó egy vagy több művelet definíciói. További információ: [Eseményindítók és műveletek](#triggers-actions). <p><p>Maximális intézkedések: 250 |
-| `contentVersion` | Nem | A munkafolyamat-definíció verziószáma, amely alapértelmezés szerint "1.0.0.0" . A munkafolyamat üzembe helyezésekor a helyes definíció azonosításához és megerősítéséhez adjon meg egy használni kívánt értéket. |
-| `outputs` | Nem | A munkafolyamat-futtatásból visszaadandó kimenetek definíciói. További információ: [Outputs](#outputs). <p><p>Maximális kimenet: 10 |
-| `parameters` | Nem | Egy vagy több paraméter definíciói, amelyek átadják a logikai alkalmazás futásidejű értékeit. További információ: [Paraméterek](#parameters). <p><p>Maximális paraméterek: 50 |
-| `staticResults` | Nem | A műveletek által álkimenetként visszaadott egy vagy több statikus eredmény definíciói, ha a statikus eredmények engedélyezve vannak ezeken a műveleteken. Az attribútum minden `runtimeConfiguration.staticResult.name` műveletdefinícióban a megfelelő `staticResults`definícióra hivatkozik. További információ: [Statikus eredmények](#static-results). |
-| `triggers` | Nem | Egy vagy több eseményindító definíciója, amely a munkafolyamatot példányosítja. Több eseményindítót is definiálhat, de csak a munkafolyamat-definíciós nyelvvel, vizuálisan nem a Logic Apps Designeren keresztül. További információ: [Eseményindítók és műveletek](#triggers-actions). <p><p>Maximális kiváltó okok: 10 |
+| `$schema` | Csak akkor, ha külsőleg hivatkozik egy munkafolyamat-definícióra | A munkafolyamat-definíció nyelvi verzióját leíró JSON-sémafájl helye, amelyet itt talál: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | Nem | A munkafolyamat-futtatókörnyezetben végrehajtandó egy vagy több művelet definíciói. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Maximális műveletek: 250 |
+| `contentVersion` | Nem | A munkafolyamat-definíció verziószáma, amely alapértelmezés szerint "1.0.0.0". A munkafolyamat telepítésekor a megfelelő definíció azonosításához és megerősítéséhez adja meg a használni kívánt értéket. |
+| `outputs` | Nem | Egy munkafolyamat-futtatásból visszaadott kimenetek definíciói. További információt a [kimenetek](#outputs)című témakörben talál. <p><p>Maximális kimenetek: 10 |
+| `parameters` | Nem | Egy vagy több olyan paraméter definíciója, amely átadja a logikai alkalmazás futtatókörnyezetében használni kívánt értékeket. További információ: [Paraméterek](#parameters). <p><p>Maximális paraméterek: 50 |
+| `staticResults` | Nem | Egy vagy több művelet által visszaadott egy vagy több statikus eredmény definíciói, ha a statikus eredmények engedélyezve vannak ezeken a műveleteken. Az egyes műveletek definíciójában az `runtimeConfiguration.staticResult.name` attribútum a megfelelő definícióra hivatkozik belül `staticResults`. További információ: [statikus eredmények](#static-results). |
+| `triggers` | Nem | Egy vagy több, a munkafolyamatot létrehozó eseményindító definíciói. Több trigger is megadható, de csak a munkafolyamat-definíciós nyelvvel, nem pedig vizuálisan a Logic Apps Designer használatával. További információ: [triggerek és műveletek](#triggers-actions). <p><p>Eseményindítók maximális száma: 10 |
 ||||
 
 <a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions"></a>Eseményindítók és műveletek
 
-A munkafolyamat-definícióban `triggers` `actions` a szakaszok határozzák meg a munkafolyamat végrehajtása során bekövetkező hívásokat. A szintaxisról és a szakaszokról további információt a [Munkafolyamat-eseményindítók és -műveletek című témakörben talál.](../logic-apps/logic-apps-workflow-actions-triggers.md)
+A munkafolyamatok definíciójában `triggers` a `actions` és a szakaszban a munkafolyamat végrehajtása során megjelenő hívásokat határozzák meg. Az ezekkel a részekkel kapcsolatos szintaxissal és további információkkal kapcsolatban lásd: [munkafolyamat-eseményindítók és-műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="parameters"></a>
 
 ## <a name="parameters"></a>Paraméterek
 
-A központi telepítési életciklus általában különböző környezetekben fejlesztési, tesztelési, átmeneti és éles környezetben. Logikai alkalmazások különböző környezetekben történő üzembe helyezésekor valószínűleg különböző értékeket szeretne használni, például a kapcsolati karakterláncokat a központi telepítési igények alapján. Vagy előfordulhat, hogy olyan értékeket szeretne újra felhasználni a logikai alkalmazásban hardcoding nélkül, vagy gyakran változnak. A munkafolyamat-definíció `parameters` szakaszában megadhatja vagy szerkesztheti a logikai alkalmazás által futásidőben használt értékek paramétereit. Először meg kell határoznia ezeket a paramétereket, mielőtt ezeket a paramétereket a munkafolyamat-definíció más részeire hivatkozna.
+Az üzembe helyezési életciklus általában különböző környezetekkel rendelkezik fejlesztési, tesztelési, előkészítési és éles környezetben. Ha különböző környezetekben helyez üzembe logikai alkalmazásokat, valószínűleg különböző értékeket kíván használni, például a kapcsolódási karakterláncokat a telepítési igények alapján. Vagy előfordulhat, hogy olyan értékeket is használhat, amelyeket a logikai alkalmazásban rögzítjük nélkül vagy a módosítást követően is használni szeretne. A munkafolyamat-definíció `parameters` szakaszban megadhatja vagy szerkesztheti azokat az értékeket, amelyeket a logikai alkalmazás futásidőben használ. Először ezeket a paramétereket kell megadnia, mielőtt a munkafolyamat-definícióban máshol is hivatkozhat ezekre a paraméterekre.
 
-Itt van a paraméterdefiníció általános szerkezete:
+A paraméterek definíciójának általános szerkezete:
 
 ```json
 "parameters": {
@@ -76,20 +76,20 @@ Itt van a paraméterdefiníció általános szerkezete:
 
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*paraméter-név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
-| <*paraméter-típus*> | Igen | int, float, string, bool, tömb, tárgy, securestring, secureobject <p><p>**Megjegyzés:** Minden jelszó, kulcs és titkos `securestring` kulcs `secureobject` esetén `GET` használja a vagy típusokat, mert a művelet nem adja vissza ezeket a típusokat. A paraméterek védelméről további információt a [Biztonsági javaslatok a művelethez és a bemeneti paraméterekhez című témakörben talál.](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
-| <*alapértelmezett paraméter-érték*> | Igen | Ugyanaz, mint`type` | Az alapértelmezett paraméterérték, amelyet akkor érdemes megadni, ha nincs megadva érték a munkafolyamat példányos kora. Az `defaultValue` attribútum szükséges, hogy a Logic App Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
-| <*tömb-és engedélyezett paraméter-értékek*> | Nem | Tömb | Tömb olyan értékekkel, amelyeket a paraméter el tud fogadni |
-| <*paraméter-leírás*> | Nem | JSON-objektum | Bármely más paraméterrészlet, például a paraméter leírása |
+| <*paraméter – név*> | Igen | Sztring | A definiálni kívánt paraméter neve |
+| <*paraméter típusa*> | Igen | int, float, string, bool, Array, Object, SecureString, secureobject <p><p>**Megjegyzés**: az összes jelszóhoz, kulcshoz és titokhoz használja `securestring` a `secureobject` vagy a típust, mert a `GET` művelet nem ad vissza ilyen típusokat. A paraméterek biztonságossá tételével kapcsolatos további információkért lásd: [biztonsági javaslatok a műveletekhez és a bemeneti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | A paraméter típusa |
+| <*default-paraméter-érték*> | Igen | Ugyanaz, mint`type` | Az alapértelmezett paraméterérték, amelyet akkor kell használni, ha nincs megadva érték a munkafolyamat példányainak létrehozásakor. Az `defaultValue` attribútum megadása kötelező, hogy a Logic app Designer helyesen tudja megjeleníteni a paramétert, de megadhat egy üres értéket. |
+| <*tömb – engedélyezett – paraméter-értékek*> | Nem | Tömb | Egy tömb, amely a paraméter által elfogadható értékekkel rendelkezik |
+| <*paraméter – Leírás*> | Nem | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
 ||||
 
-Ezután hozzon létre egy [Azure Resource Manager-sablont](../azure-resource-manager/templates/overview.md) a munkafolyamat-definícióhoz, határozza meg azokat a sablonparamétereket, amelyek elfogadják a telepítéssorán kívánt értékeket, cserélje le a kódolható értékeket a sablon- vagy munkafolyamat-definíciós paraméterekre való hivatkozásokkal, és tárolja a központi telepítéssorán használandó értékeket egy külön [paraméterfájlban.](../azure-resource-manager/templates/parameter-files.md) Így ezeket az értékeket könnyebben módosíthatja a paraméterfájlon keresztül anélkül, hogy frissítenie kellene és újra kellene telepítenie a logikai alkalmazást. A bizalmas vagy biztonságos, például felhasználónevek, jelszavak és titkos kulcsok, tárolhatja ezeket az értékeket az Azure Key Vaultban, és a paraméterfájl lekérni ezeket az értékeket a key vault. További információ és példák a paraméterek sablon- és munkafolyamat-definíciós szinteken történő [meghatározásáról: Áttekintés: A logikai alkalmazások üzembe helyezésének automatizálása az Azure Resource Manager-sablonokkal című témakörben.](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/templates/overview.md) a munkafolyamat-definícióhoz, definiálja a központi telepítésben használni kívánt értékeket elfogadó sablon paramétereit, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíció paramétereinek megfelelő értékekre, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/templates/parameter-files.md). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
 ## <a name="static-results"></a>Statikus eredmények
 
-Az `staticResults` attribútumban adja meg a `outputs` művelet `status` mock, és hogy a művelet visszatér, ha a művelet statikus eredmény beállítása be van kapcsolva. A művelet definíciójában az `runtimeConfiguration.staticResult.name` attribútum hivatkozik a statikus `staticResults`eredménydefiníció nevére. Megtudhatja, hogyan [tesztelheti a logikai alkalmazásokat a szimulált adatokkal statikus eredmények beállításával.](../logic-apps/test-logic-apps-mock-data-static-results.md)
+Az `staticResults` attribútumban Definiáljon egy művelet modelljét `outputs` , `status` és azt, hogy a művelet akkor adja vissza, ha a művelet statikus eredményhalmaz beállítása be van kapcsolva. A művelet definíciójában az `runtimeConfiguration.staticResult.name` attribútum a statikus eredmény definíciójának nevére hivatkozik. `staticResults` Megtudhatja, hogyan [tesztelheti a Logic apps-alkalmazásokat a statikus eredmények beállításával](../logic-apps/test-logic-apps-mock-data-static-results.md).
 
 ```json
 "definition": {
@@ -114,14 +114,14 @@ Az `staticResults` attribútumban adja meg a `outputs` művelet `status` mock, �
 
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*statikus-eredmény-definíció-név*> | Igen | Sztring | Egy statikus eredménydefiníció neve, amelyre egy `runtimeConfiguration.staticResult` műveletdefiníció egy objektumon keresztül hivatkozhat. További információt a [Futásidejű konfigurációs beállítások című](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)témakörben talál. <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
-| <*kimeneti attribútumok és értékek visszaadva*> | Igen | Változó | Ezeknek az attribútumoknak a követelményei a különböző feltételektől függően változnak. Ha például `status` az, `Succeeded` `outputs` az attribútum tartalmazza a művelet által álkimenetként visszaadott attribútumokat és értékeket. Ha `status` az `Failed`, `outputs` az attribútum `errors` tartalmazza az attribútumot, amely egy `message` vagy több hibainformációt tartalmazó hibaobjektummal rendelkező tömb. |
-| <*fejlécértékek*> | Nem | JSON | A művelet által visszaadott fejlécértékek |
-| <*állapotkód visszaadva*> | Igen | Sztring | A művelet által visszaadott állapotkód |
-| <*művelet-állapot*> | Igen | Sztring | A művelet állapota például `Succeeded` vagy`Failed` |
+| <*statikus – eredmény-definíció – név*> | Igen | Sztring | A statikus eredmény definíciójának neve, amelyet a műveleti definíció hivatkozhat egy `runtimeConfiguration.staticResult` objektumon keresztül. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
+| <*output-attributes-and-Values – visszaadott*> | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` értéke `Succeeded`, az `outputs` attribútum a művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` értéke `Failed`, az `outputs` attribútum tartalmazza az `errors` attribútumot, amely egy vagy több `message` hibás információt tartalmazó tömb. |
+| <*fejléc – értékek*> | Nem | JSON | A művelet által visszaadott fejléc-értékek |
+| <*állapot-kód – visszaadott*> | Igen | Sztring | A művelet által visszaadott állapotkód |
+| <*művelet – állapot*> | Igen | Sztring | A művelet állapota, például `Succeeded` vagy`Failed` |
 |||||
 
-Ebben a HTTP-műveletdefinícióban `runtimeConfiguration.staticResult.name` például az `HTTP0` attribútumhivatkozások az `staticResults` attribútumon belül találhatók, ahol a művelet mock kimenetei definiálva vannak. Az `runtimeConfiguration.staticResult.staticResultOptions` attribútum azt adja meg, `Enabled` hogy a statikus eredménybeállítás a HTTP-műveletben van.
+Ebben a HTTP-művelet definíciójában például az `runtimeConfiguration.staticResult.name` attribútum azon `HTTP0` `staticResults` attribútumon belül hivatkozik, ahol a művelethez tartozó modell-kimenetek definiálva vannak. Az `runtimeConfiguration.staticResult.staticResultOptions` attribútum azt adja meg, hogy a statikus `Enabled` eredmény beállítás a http-műveleten van.
 
 ```json
 "actions": {
@@ -142,7 +142,7 @@ Ebben a HTTP-műveletdefinícióban `runtimeConfiguration.staticResult.name` pé
 },
 ```
 
-A HTTP-művelet a belső `HTTP0` `staticResults`definíciókimeneteit adja vissza. Ebben a példában az állapotkód esetében `OK`a mock kimenet . A fejlécértékek esetében a `"Content-Type": "application/JSON"`mock kimenet . A művelet állapotában a mock `Succeeded`kimenet .
+A HTTP-művelet a `HTTP0` definíción belüli `staticResults`kimeneteket adja vissza. Ebben a példában az állapotkód esetében a modell kimenete a következő: `OK`. A fejléc értékeinél a modell kimenete `"Content-Type": "application/JSON"`a következő:. A művelet állapotához a modell kimenete a következő `Succeeded`:.
 
 ```json
 "definition": {
@@ -170,7 +170,7 @@ A HTTP-művelet a belső `HTTP0` `staticResults`definíciókimeneteit adja vissz
 
 ## <a name="expressions"></a>Kifejezések
 
-A JSON segítségével a tervezés időpontjában létező literális értékek lehetnek, például:
+A JSON használatával olyan literál értékekkel rendelkezhet, amelyek a tervezési időszakban léteznek, például:
 
 ```json
 "customerName": "Sophia Owen",
@@ -178,64 +178,64 @@ A JSON segítségével a tervezés időpontjában létező literális értékek 
 "rainbowColorsCount": 7
 ```
 
-Olyan értékeket is megkaphat, amelyek futási időig nem léteznek. Ezeknek az értékeknek a ábrázolására használhat *olyan kifejezéseket,* amelyek et futásidőben kiértékeli a program. A kifejezés olyan sorozat, amely egy vagy több [függvényt](#functions), [operátorokat,](#operators)változókat, explicit értékeket vagy állandókat tartalmazhat. A munkafolyamat-definícióban a JSON-karakterlánc-érték bármely pontján használhat egy kifejezést úgy, hogy a kifejezést az at-sign ( .\@ Egy JSON-értéket képviselő kifejezés kiértékelésekor a kifejezéstörzs kinyerhető \@ a karakter eltávolításával, és mindig egy másik JSON-értéket eredményez.
+Olyan értékekkel is rendelkezhet, amelyek nem léteznek futási időben. Az értékek megjelenítéséhez használhat *kifejezéseket*, amelyeket a rendszer futási időben értékel ki. A kifejezés olyan sorozatot mutat be, amely egy vagy több [függvényt](#functions), [operátort](#operators), változót, explicit értéket vagy állandót tartalmazhat. A munkafolyamat-definícióban egy JSON-karakterlánc értékében bárhol használhatja a kifejezést a (z) jellel (\@). Egy JSON-értéket jelölő kifejezés kiértékelése során a kifejezés törzsét Kinyeri a \@ karakter eltávolításával, és mindig egy másik JSON-értéket ad eredményként.
 
-A korábban definiált `customerName` tulajdonság esetében például a tulajdonság értékét egy kifejezés [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) függvényének `accountName` használatával szerezheti be, és hozzárendelheti a tulajdonsághoz:
+Például a korábban definiált `customerName` tulajdonság esetében a tulajdonság értékét egy kifejezés [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) függvényének használatával szerezheti be, és hozzárendelheti az értéket a `accountName` tulajdonsághoz:
 
 ```json
 "customerName": "Sophia Owen",
 "accountName": "@parameters('customerName')"
 ```
 
-*A karakterlánc-interpoláció* lehetővé teszi több kifejezés használatát \@ a karakterláncokon belül, amelyeket a karakter és a kapcsos zárójelek ({}). Itt van a szintaxis:
+A *karakterlánc-interpolációval* több kifejezés is használható a karakterláncokban, amelyek a \@ karakter-és kapcsos zárójelek ({}) szerint vannak becsomagolva. A szintaxis a következő:
 
 ```json
 @{ "<expression1>", "<expression2>" }
 ```
 
-Az eredmény mindig egy karakterlánc, így `concat()` ez a képesség hasonló a funkcióhoz, például: 
+Az eredmény mindig karakterlánc, így a funkció hasonló a `concat()` függvényhez, például: 
 
 ```json
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Ha van egy konstans \@ karakterlánc, amely \@ a \@ karakterrel kezdődik, előtagolja a karaktert egy másik karakterrel escape karakterként:\@\@
+Ha olyan literál sztringet tartalmaz, amely a \@ karakterrel kezdődik, a \@ karaktert egy másik \@ karakterrel együtt Escape-karakterként kell előtagként megjelölni:\@\@
 
-Ezek a példák bemutatják a kifejezések kiértékelésének módját:
+Ezek a példák a kifejezések kiértékelésének módját mutatják be:
 
 | JSON-érték | Eredmény |
 |------------|--------|
-| "Sophia Owen" | Vissza ezeket a karaktereket: "Sophia Owen" |
-| "tömb[1]" | Adja vissza a következő karaktereket: 'tömb[1]" |
-| "\@\@" | Ezeket a karaktereket egykarakteres\@karakterláncként adja vissza: ' |
-| " \@" | Ezeket a karaktereket kétkarakteres \@karakterláncként adja vissza: ' |
+| "Sophia Owen" | A következő karakterek visszaadása: "Sophia Owen" |
+| "tömb [1]" | A következő karakterek visszaadása: "Array [1]" |
+| "\@\@" | A karaktereket a következő karakterként kell visszaadni: "\@" |
+| " \@" | A karaktereket a következő két karakterből álló karakterláncként kell \@visszaadni: "" |
 |||
 
-Ezeknél a példáknál tegyük fel, hogy a "myBirthMonth" egyenlő a "január" és a "myAge" egyenlő a 42-es számmal:
+Ezen példák esetében tegyük fel, hogy a "myBirthMonth" érték "január" és "myAge" értékkel egyenlő, mint a 42-as szám:
 
 ```json
 "myBirthMonth": "January",
 "myAge": 42
 ```
 
-Ezek a példák bemutatják a következő kifejezések kiértékelésének módját:
+Ezek a példák a következő kifejezések kiértékelésének módját mutatják be:
 
 | JSON-kifejezés | Eredmény |
 |-----------------|--------|
-| "\@paraméterek(''myBirthMonth')" | Adja vissza ezt a karakterláncot: "Január" |
-| "\@{parameters('myBirthMonth')}" | Adja vissza ezt a karakterláncot: "Január" |
-| "\@paraméterek('myAge')" | Adja vissza ezt a számot: 42 |
-| "\@{parameters('myAge')}" | Ezt a számot adja vissza karakterláncként: "42" |
-| "A korom \@{parameters('myAge')}" | Adja vissza ezt a karakterláncot: "Az én koromban 42" |
-| "\@concat('Az én korom ", string(parameters('myAge)))" | Adja vissza ezt a karakterláncot: "Az én koromban 42" |
-| "A korom \@ \@{parameters('myAge')}" | Adja vissza ezt a karakterláncot, amely \@a következő kifejezést tartalmazza: "Az én életkorom {parameters('myAge')}' |
+| "\@parameters (' myBirthMonth ')" | A következő sztring visszaadása: "január" |
+| "\@{parameters (' myBirthMonth ')}" | A következő sztring visszaadása: "január" |
+| "\@parameters (' myAge ')" | A következő szám visszaadása: 42 |
+| "\@{parameters (' myAge ')}" | A szám visszaadása karakterláncként: "42" |
+| "Az életkorom \@{parameters (' myAge ')}) | A következő sztring visszaadása: "My Age is 42" |
+| "\@concat (' My Age is ', string (parameters (' myAge '))) | A következő sztring visszaadása: "My Age is 42" |
+| "Az életkorom \@ \@{parameters (' myAge ')}) | Adja vissza ezt a karakterláncot, amely tartalmazza a következő kifejezést: \@"a My Age értéke {parameters (' myAge ')} ' |
 |||
 
-Ha vizuálisan dolgozik a Logic Apps Designeralkalmazásban, kifejezéseket hozhat létre a Kifejezésszerkesztőn keresztül, például:
+Amikor vizuálisan dolgozik a Logic Apps Designerben, létrehozhat kifejezéseket a Kifejezésszerkesztő használatával, például:
 
-![Logic Apps Designer > Expression builder](./media/logic-apps-workflow-definition-language/expression-builder.png)
+![Logic Apps Designer > Expression Builder](./media/logic-apps-workflow-definition-language/expression-builder.png)
 
-Ha elkészült, a kifejezés megjelenik a megfelelő tulajdonsághoz a `searchQuery` munkafolyamat-definícióban, például az itt lévő tulajdonsághoz:
+Ha elkészült, a kifejezés megjelenik a munkafolyamat-definícióban található megfelelő tulajdonsághoz, például a `searchQuery` tulajdonság itt:
 
 ```json
 "Search_tweets": {
@@ -259,12 +259,12 @@ Ha elkészült, a kifejezés megjelenik a megfelelő tulajdonsághoz a `searchQu
 
 ## <a name="outputs"></a>Kimenetek
 
-A `outputs` szakaszban adja meg azokat az adatokat, amelyeket a munkafolyamat visszaadhat, amikor a futás befejeződött. Ha például egy adott állapotot vagy értéket szeretne nyomon követni az egyes futtatásokból, adja meg, hogy a munkafolyamat kimenete adja vissza ezeket az adatokat.
+A `outputs` szakaszban adja meg a munkafolyamat által visszaadott adatait, amikor a rendszer készen áll. Ha például egy adott állapotot vagy értéket szeretne nyomon követni az egyes futtatásokból, adja meg, hogy a munkafolyamat kimenete az adatokat adja vissza.
 
 > [!NOTE]
-> Amikor válaszol a szolgáltatás REST API-jából érkező `outputs`bejövő kérésekre, ne használja a használatát. Ehelyett használja `Response` a művelettípust. További információt a [Munkafolyamat-eseményindítók és -műveletek című témakörben talál.](../logic-apps/logic-apps-workflow-actions-triggers.md)
+> Ha a szolgáltatás REST API érkező kérésekre válaszol, ne használja `outputs`. Ehelyett használja a `Response` művelet típusát. További információ: [munkafolyamat-eseményindítók és-műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-A kimeneti definíció általános struktúrája:
+A kimenet definíciójának általános szerkezete:
 
 ```json
 "outputs": {
@@ -277,34 +277,34 @@ A kimeneti definíció általános struktúrája:
 
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*kulcsnév*> | Igen | Sztring | A kimeneti visszatérési érték kulcsneve |
-| <*kulcs-típus*> | Igen | int, float, string, securestring, bool, tömb, JSON objektum | A kimeneti visszatérési érték típusa |
-| <*kulcs-érték*> | Igen | Megegyezik <*kulcstípussal*> | A kimeneti visszatérési érték |
+| <*kulcs neve*> | Igen | Sztring | A kimenet visszatérési értékének kulcsa |
+| <*kulcs típusa*> | Igen | int, float, string, SecureString, bool, Array, JSON objektum | A kimenet visszatérési értékének típusa |
+| <*kulcs-érték*> | Igen | Ugyanaz, mint <*Key-Type*> | A kimenet visszatérési értéke |
 |||||
 
-A kimenet lehívásához egy munkafolyamat-futtatásból tekintse át a logikai alkalmazás futtatási előzményeit és adatait az Azure Portalon, vagy használja a [Workflow REST API-t.](https://docs.microsoft.com/rest/api/logic/workflows) A kimenetet külső rendszereknek is átadhatja, például a Power BI-nak, hogy irányítópultokat hozhasson létre.
+Egy munkafolyamat-Futtatás kimenetének lekéréséhez tekintse át a logikai alkalmazás futtatási előzményeit és részleteit a Azure Portal, vagy használja a [munkafolyamat-REST API](https://docs.microsoft.com/rest/api/logic/workflows). Külső rendszereknek is átadhatja a kimenetet, például Power BI, hogy irányítópultokat lehessen létrehozni.
 
 <a name="operators"></a>
 
 ## <a name="operators"></a>Operátorok
 
-[Kifejezésekben](#expressions) és [függvényekben](#functions)az operátorok meghatározott feladatokat hajtanak végre, például egy tulajdonságra vagy egy tömb ben lévő értékre hivatkoznak.
+A [kifejezésekben](#expressions) és [függvényekben](#functions)a kezelők adott feladatokat hajtanak végre, például egy tulajdonságra vagy egy tömbben lévő értékre hivatkoznak.
 
 | Művelet | Tevékenység |
 |----------|------|
-| ' | Ha egy karakterláncot konstansbevitelként vagy kifejezésként és függvényben szeretne `'<myString>'`használni, a karakterláncot csak aposztrófokkal csomagolja be, például . Ne használjon idézőjeleket (""), amelyek ütköznek a JSON-formázással a teljes kifejezés körül. Példa: <p>**Igen**: length('Hello') </br>**Nem**: hossz("Hello") <p>Tömbök vagy számok átírásakor nincs szükség tördelési írásjelekre. Példa: <p>**Igen:** hossz([1, 2, 3]) </br>**Nem**: hossz("[1, 2, 3]") |
-| [] | Ha egy tömbben egy adott pozícióban (indexben) szeretne hivatkozni egy értékre, használjon szögletes zárójeleket. Például a tömb második elemének bekéséhez: <p>`myArray[1]` |
-| . | Ha egy objektum egy tulajdonságára szeretne hivatkozni, használja a pontoperátort. Egy `name` `customer` JSON-objektum tulajdonságának lekérnie például: <p>`"@parameters('customer').name"` |
-| ? | Ha egy objektum null tulajdonságaira szeretne hivatkozni futásidejű hiba nélkül, használja a kérdőjel operátort. Ha például egy eseményindító null kimeneteit szeretné kezelni, ezt a kifejezést használhatja: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
+| ' | Ha karakterláncot vagy kifejezéseket és függvényeket szeretne használni, akkor a sztringet csak egyszeres idézőjelek közé kell becsomagolni, például: `'<myString>'`. Ne használjon idézőjeleket (""), amelyek ütköznek a teljes kifejezés JSON-formázásával. Például: <p>**Igen**: hossz ("Hello") </br>**Nem**: hossz ("helló") <p>Tömbök vagy számok átadásakor nincs szükség a tördelési írásjelekre. Például: <p>**Igen**: hossz ([1, 2, 3]) </br>**Nem**: hossz ("[1, 2, 3]") |
+| [] | Ha egy tömbben egy adott pozíció (index) értékére szeretne hivatkozni, szögletes zárójeleket kell használnia. Például egy tömb második elemének lekéréséhez: <p>`myArray[1]` |
+| . | Egy objektum egy tulajdonságára való hivatkozáshoz használja a dot operátort. Például egy `name` `customer` JSON-objektum tulajdonságának beszerzéséhez: <p>`"@parameters('customer').name"` |
+| ? | Ha futásidejű hibát nem tartalmazó objektumban szeretne null tulajdonságokat hivatkozni, használja a kérdőjel operátort. Ha például egy triggerből null kimenetet szeretne kezelni, ezt a kifejezést használhatja: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 
 <a name="functions"></a>
 
 ## <a name="functions"></a>Functions
 
-Egyes kifejezések olyan futásidejű műveletekből kapják meg az értékeiket, amelyek a munkafolyamat-definíció futtatásakor még nem létezhetnek. Ha ezeket az értékeket kifejezésekben szeretné hivatkozni vagy használni szeretné, használhatja a Munkafolyamat-definíciós nyelv által biztosított [*függvényeket.*](../logic-apps/workflow-definition-language-functions-reference.md)
+Egyes kifejezések olyan futtatókörnyezeti műveletek értékeit kapják meg, amelyek esetleg még nem léteznek, amikor a munkafolyamat-definíció elindul. A kifejezésekben szereplő értékek hivatkozásához és használatához használhatja a munkafolyamat-definíciós nyelv által biztosított [*függvényeket*](../logic-apps/workflow-definition-language-functions-reference.md) .
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [munkafolyamat-definíció nyelvi műveleteiről és eseményindítóiról](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* Ismerje meg a logikai alkalmazások programozott létrehozását és kezelését a [Workflow REST API-val](https://docs.microsoft.com/rest/api/logic/workflows)
+* A [munkafolyamat-definíció nyelvi műveleteinek és eseményindítóinak](../logic-apps/logic-apps-workflow-actions-triggers.md) megismerése
+* Ismerje meg, hogyan hozhat létre és kezelhet Logic apps-alkalmazásokat a [Munkafolyamattal REST API](https://docs.microsoft.com/rest/api/logic/workflows)
