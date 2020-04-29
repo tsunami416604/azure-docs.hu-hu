@@ -1,6 +1,6 @@
 ---
-title: Első lépések az Azure AD-hitelesítéssel
-description: Megtudhatja, hogyan érheti el az Azure Active Directory (Azure AD) hitelesítést az Azure Media Services API felhasználásához.
+title: Ismerkedés az Azure AD-hitelesítéssel
+description: Megtudhatja, hogyan érheti el Azure Active Directory (Azure AD) hitelesítését a Azure Media Services API felhasználásához.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,61 +14,61 @@ ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
 ms.openlocfilehash: 6e1ab30e8b4cf44f7d1f82fd94fb9bf854915557
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79478252"
 ---
-# <a name="get-credentials-to-access-media-services-api"></a>Hitelesítő adatok beszereznie a Media Services API-hoz való hozzáféréshez  
+# <a name="get-credentials-to-access-media-services-api"></a>Hitelesítő adatok beszerzése Media Services API-hoz való hozzáféréshez  
 
-Ha az Azure Media Services API eléréséhez Azure AD-hitelesítést használ, két hitelesítési lehetőség közül választhat:
+Ha Azure AD-hitelesítést használ a Azure Media Services API eléréséhez, két hitelesítési lehetőség közül választhat:
 
-- **Egyszerű szolgáltatáshitelesítés** (ajánlott)
+- **Egyszerű szolgáltatásnév hitelesítése** (ajánlott)
 
-    Szolgáltatás hitelesítése. A hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek démonszolgáltatásokat, középső rétegbeli szolgáltatásokat vagy ütemezett feladatokat futtatnak: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k vagy mikroszolgáltatások.
+    Szolgáltatás hitelesítése. Az ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak: webalkalmazások, Function apps, Logic apps, API-k vagy egy szolgáltatás.
 - **Felhasználóhitelesítés**
 
-    Hitelesítse azt a személyt, aki az alkalmazást használja a Media Services-erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználónak a hitelesítő adatokat. Egy példa egy felügyeleti konzol alkalmazás által használt jogosult felhasználók kódolási feladatok figyelésére vagy élő streamelés. 
+    Az alkalmazást használó személy hitelesítése Media Services erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a hitelesítő adatok megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak. 
 
-Ez a cikk a Media Services API-hoz való hozzáférés hez szükséges hitelesítő adatok beszerzésének lépéseit ismerteti. Válasszon az alábbi lapok közül.
+Ez a cikk a hitelesítő adatok Media Services API-hoz való hozzáférésének lépéseit ismerteti. Válasszon a következő lapok közül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [ingyenes Azure-próbaverzióval.](https://azure.microsoft.com/pricing/free-trial/) 
-- Egy Media Services-fiók. További információ: [Azure Media Services-fiók létrehozása az Azure Portal használatával](create-account-howto.md)című témakörben talál.
+- Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [ingyenes Azure-próbaverzióval](https://azure.microsoft.com/pricing/free-trial/). 
+- Egy Media Services-fiók. További információ: [Azure Media Services fiók létrehozása a Azure Portal használatával](create-account-howto.md).
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
 ### <a name="api-access"></a>API-hozzáférés 
 
-Az **API-hozzáférési** lap lehetővé teszi az API-hoz való csatlakozáshoz használni kívánt hitelesítési módszer kiválasztását. Az oldal az API-hoz való csatlakozáshoz szükséges értékeket is tartalmazza.
+Az **API-hozzáférés** lapon kiválaszthatja az API-hoz való kapcsolódáshoz használni kívánt hitelesítési módszert. Az oldalon az API-hoz való kapcsolódáshoz szükséges értékeket is megadja.
 
-1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a Media Services-fiókot.
-2. Válassza ki, hogyan csatlakozhat a Media Services API-hoz.
-3. A Csatlakozás a **Media Services API-hoz csoportban**válassza ki azt a Media Services API-verziót, amelyhez csatlakozni szeretne (a V3 a szolgáltatás legújabb verziója).
+1. A [Azure Portal](https://portal.azure.com/)válassza ki Media Services-fiókját.
+2. Válassza ki, hogyan szeretne csatlakozni a Media Services API-hoz.
+3. A **kapcsolódás Media Services API**-hoz területen válassza ki azt a Media Services API-verziót, amelyhez csatlakozni szeretne (v3 a szolgáltatás legújabb verziója).
 
-### <a name="service-principal-authentication--recommended"></a>Egyszerű szolgáltatáshitelesítés (ajánlott)
+### <a name="service-principal-authentication--recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
 
-Egy Azure Active Directory (Azure AD) alkalmazás használatával hitelesíti a szolgáltatást, és titkos. Ez a Media Services API-t hívó középső rétegbeli szolgáltatások számára ajánlott. Ilyenek például a webalkalmazások, funkciók, logikai alkalmazások, API-k és mikroszolgáltatások. Ez az ajánlott hitelesítési módszer.
+Egy Azure Active Directory (Azure AD) alkalmazás és titok használatával hitelesíti a szolgáltatást. Ez a Media Services API-t hívó középső szintű szolgáltatások esetében ajánlott. Ilyenek például a Web Apps, a functions, a Logic Apps, az API-k és a-szolgáltatások. Ez az ajánlott hitelesítési módszer.
 
-#### <a name="manage-your-azure-ad-app-and-secret"></a>Az Azure AD-alkalmazás és a titkos
+#### <a name="manage-your-azure-ad-app-and-secret"></a>Az Azure AD-alkalmazás és a titkos kód kezelése
 
-Az **AAD-alkalmazás és a titkos** funkció kezelése parancatussal új Azure AD-alkalmazást választhat ki vagy hozhat létre, és létrehozhat egy titkos kulcsot. Biztonsági okokból a titok nem jeleníthető meg a fűrészlap bezárása után. Az alkalmazás az alkalmazásazonosítót és a titkos hitelesítést használja a médiaszolgáltatások érvényes jogkivonatának beszerzéséhez.
+A **HRE-alkalmazás és a titkos kód kezelése** szakasz lehetővé teszi, hogy új Azure ad-alkalmazást válasszon ki vagy hozzon létre, és létrehoz egy titkos kulcsot. Biztonsági okokból a titkos kód nem jeleníthető meg a panel bezárása után. Az alkalmazás az alkalmazás AZONOSÍTÓját és a titkos kulcsot használja a Media Services érvényes jogkivonat beszerzéséhez.
 
-Győződjön meg arról, hogy rendelkezik-e megfelelő engedélyekkel egy alkalmazás regisztrálásához az Azure AD-bérlővel, és rendelje hozzá az alkalmazást egy szerepkörhöz az Azure-előfizetésben. További információ: [Required permissions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Győződjön meg arról, hogy rendelkezik megfelelő engedélyekkel az alkalmazás Azure AD-bérlőben való regisztrálásához és az alkalmazás az Azure-előfizetésben lévő szerepkörhöz való hozzárendeléséhez. További információ: [szükséges engedélyek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-#### <a name="connect-to-media-services-api"></a>Csatlakozás a Media Services API-hoz
+#### <a name="connect-to-media-services-api"></a>Kapcsolódás Media Services API-hoz
 
-A **Media Services hez való csatlakozás API** olyan értékeket biztosít, amelyeket az egyszerű szolgáltatásalkalmazás csatlakoztatásához használ. Szöveges értékeket kaphat, vagy másolhatja a JSON- vagy XML-blokkokat.
+A **kapcsolódás Media Services API** -hoz a szolgáltatás egyszerű alkalmazásának összekapcsolásához használt értékeket adja meg. Szöveges értékeket is letölthet, vagy átmásolhatja a JSON-vagy XML-blokkokat.
 
 ### <a name="user-authentication"></a>Felhasználóhitelesítés
 
-Ez a beállítás egy alkalmazott vagy egy Azure Active Directory-tag hitelesítésére használható, aki egy alkalmazást használ a Media Services-erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználóhitelesítő adatait. Ezt a hitelesítési módszert csak felügyeleti alkalmazásokhoz szabad használni.
+Ezzel a beállítással lehet hitelesíteni egy alkalmazottat vagy egy olyan Azure Active Directory tagját, aki egy alkalmazást használ az Media Services erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Ezt a hitelesítési módszert csak felügyeleti alkalmazásokhoz lehet használni.
 
-#### <a name="connect-to-media-services-api"></a>Csatlakozás a Media Services API-hoz
+#### <a name="connect-to-media-services-api"></a>Kapcsolódás Media Services API-hoz
 
-Másolja a hitelesítő adatokat a felhasználói alkalmazás csatlakoztatásához a Csatlakozás a **Media Services API-hoz** szakaszból. Szöveges értékeket kaphat, vagy másolhatja a JSON- vagy XML-blokkokat.
+Másolja a hitelesítő adatait a felhasználói alkalmazás összekapcsolásához a **kapcsolódás Media Services API-hoz** szakaszhoz. Szöveges értékeket is letölthet, vagy átmásolhatja a JSON-vagy XML-blokkokat.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -78,4 +78,4 @@ Másolja a hitelesítő adatokat a felhasználói alkalmazás csatlakoztatásáh
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Videók feltöltése, kódolása és streamelése a Media Services v3 segítségével.](stream-files-tutorial-with-api.md)
+[Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md).

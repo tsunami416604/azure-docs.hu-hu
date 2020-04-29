@@ -1,6 +1,6 @@
 ---
-title: Azure Bejárati ajtó - háttérállapot-figyelés | Microsoft dokumentumok
-description: Ez a cikk segít megérteni, hogy az Azure Front Door hogyan figyeli a háttérrendszerek állapotát
+title: Azure bejárati ajtó – háttér állapotának monitorozása | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogy az Azure bejárati ajtaja hogyan figyeli a háttérrendszer állapotát
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,65 +12,65 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471574"
 ---
 # <a name="health-probes"></a>Állapotminták
 
-Annak érdekében, hogy egy adott bejárati ajtó környezetből az egyes háttérrendszerek állapotát és közelségét határozza meg, minden bejárati ajtó környezet rendszeres időközönként szintetikus HTTP/HTTPS-kérelmet küld a konfigurált háttérrendszerek mindegyikének. A Front Door ezután a mintavételek válaszai alapján határozza meg, hogy melyek a „legjobb” háttérrendszerek, amelyekre továbbítania kell a valódi ügyfélkéréseket. 
+Az egyes háttérrendszer-környezetek állapotának és közelségének meghatározásához az egyes bejárati környezetek időnként egy szintetikus HTTP/HTTPS-kérést küldenek minden konfigurált háttérrendszer számára. A Front Door ezután a mintavételek válaszai alapján határozza meg, hogy melyek a „legjobb” háttérrendszerek, amelyekre továbbítania kell a valódi ügyfélkéréseket. 
 
 > [!WARNING]
-> Mivel a Bejárati ajtó világszerte számos peremhálózati környezettel rendelkezik, az állapotminta-kérelmek mennyisége a háttérrendszerekhez meglehetősen magas lehet – a percenkénti 25 kérelemtől a percenkénti 1200 kérelemig, a konfigurált állapotmintavételi gyakoriságtól függően. Az alapértelmezett mintavételi gyakoriság 30 másodperc, a mintavételi kötet a háttérrendszer körülbelül 200 kérelmek percenként.
+> Mivel a bejárati ajtó sok peremhálózati környezettel rendelkezik, globálisan, az állapot-mintavételi kérelmek mennyiségét a háttérrendszer számára is elég magas – 25 kérés percenként, akár 1200 kérelem percenként, a beállított állapottól függően. Az alapértelmezett, 30 másodperces mintavételi gyakorisággal a háttérbeli mintavételi mennyiségnek percenként 200 kérésnek kell lennie.
 
 ## <a name="supported-protocols"></a>Támogatott protokollok
 
-A Bejárati ajtó támogatja a mintavételek HTTP- vagy HTTPS protokollon keresztüli küldését. A rendszer a mintavételeket ugyanazokon az ügyfélkérelmek átirányítására konfigurált, nem felülbírálható TCP-portokon keresztül küldi el.
+A bejárati ajtó támogatja a mintavételek HTTP-vagy HTTPS-protokollon keresztüli küldését. A rendszer a mintavételeket ugyanazokon az ügyfélkérelmek átirányítására konfigurált, nem felülbírálható TCP-portokon keresztül küldi el.
 
-## <a name="supported-http-methods-for-health-probes"></a>Támogatott HTTP-módszerek az állapotmintásokhoz
+## <a name="supported-http-methods-for-health-probes"></a>Az állapot-mintavételek támogatott HTTP-módszerei
 
-A Bejárati ajtó a következő HTTP-módszereket támogatja az állapotmintaküldéshez:
+A bejárati ajtó a következő HTTP-metódusokat támogatja az állapot-mintavételek küldéséhez:
 
-1. **GET:** A GET metódus azt jelenti, hogy a Kérés-URI bármilyen információt lekér (entitás formájában).
-2. **Fej:** A HEAD metódus megegyezik a GET-vel, azzal a kivételével, hogy a kiszolgáló nem ad vissza üzenettörzset a válaszban. Az új bejárati ajtó profilok esetében a mintavételi módszer alapértelmezés szerint HEAD-ként van beállítva.
+1. **Beolvasás:** A GET metódus azt jelenti, hogy a kérelem-URI azonosítja az összes információt (egy entitás formájában).
+2. **Head:** A HEAD metódus megegyeznek azzal a kivétellel, hogy a kiszolgálón nem lehet visszaadni a válaszban szereplő üzenet törzsét. Az új előtérben lévő profilok esetében alapértelmezés szerint a mintavételi módszer a következő: HEAD.
 
 > [!NOTE]
-> Az alacsonyabb terhelés és a költségek a háttérrendszereken, bejárati ajtó azt javasolja, hogy head kérelmek et az egészségügyi szondák.
+> A háttérbeli terhelések és a költségek csökkentése érdekében a bejárati ajtó javasolja az állapot-mintavételek HEAD kérelmének használatát.
 
-## <a name="health-probe-responses"></a>Egészségügyi mintavételi válaszok
+## <a name="health-probe-responses"></a>Állapot-mintavételi válaszok
 
 | Válaszok  | Leírás | 
 | ------------- | ------------- |
-| Az egészség meghatározása  |  A 200 OK állapotkód azt jelzi, hogy a háttérterület kifogástalan állapotú. Minden más kudarcnak számít. Ha bármilyen okból (beleértve a hálózati hiba) érvényes HTTP-válasz nem érkezik meg a mintavételhez, a mintavétel hibaként számít.|
-| Késés mérése  | A késleltetés a falióra idő, amelyet közvetlenül a szondakérés elküldése előtti pillanattól kezdve mérnek addig a pillanatig, amikor megkapjuk a válasz utolsó bájtot. Minden kéréshez új TCP-kapcsolatot használunk, így ez a mérés nem elfogult a meglévő meleg kapcsolatokkal rendelkező háttérrendszerek felé.  |
+| Állapot meghatározása  |  A 200 OK állapotkód azt jelzi, hogy a háttér állapota Kifogástalan. Minden más hibát jelez. Ha bármilyen okból (a hálózati meghibásodást is beleértve) nem érkezik érvényes HTTP-válasz a mintavételhez, a mintavétel meghibásodásnak számít.|
+| Mérési késés  | A késés az az idő, amelyet a rendszer közvetlenül a mintavételi kérelem elküldése előtt mért, amikor a válasz utolsó bájtját megkaptuk. Minden kérelemhez új TCP-kapcsolatot használunk, így ez a mérték nem torzítja a meglévő, meleg kapcsolatokkal rendelkező háttérrendszer irányába.  |
 
-## <a name="how-front-door-determines-backend-health"></a>Hogyan határozza meg a Front Door a háttér-állapotot?
+## <a name="how-front-door-determines-backend-health"></a>A háttérrendszer állapotának meghatározása
 
-Az Azure Bejárati ajtaját használja ugyanazt a három lépéses folyamat ot az összes algoritmus állapotának meghatározásához.
+Az Azure bejárati ajtó ugyanazt a három lépésből álló folyamatot használja az összes algoritmusban az állapot meghatározásához.
 
-1. A letiltott háttérrendszerek kizárása.
+1. A letiltott háttérrendszer kizárása.
 
-2. Az állapotmintahibákkal kapcsolatos háttérrendszerek kizárása:
-    * Ez a kiválasztás az utolsó _n_ állapotminta-válaszok vizsgálatával történik. Ha legalább _x_ kifogástalan, a háttér-adék kifogástalannak minősül.
+2. Állapot-mintavételi hibákkal rendelkező hátterek kizárása:
+    * Ezt a kijelölést az utolsó _n_ Health mintavételi válasz alapján kell megtekinteni. Ha legalább _x_ állapota Kifogástalan, a rendszer kifogástalannak tekinti a hátteret.
 
-    * _n_ a SampleSize tulajdonság terheléselosztási beállításokban való módosításával van konfigurálva.
+    * _n_ konfigurálva van a SampleSize tulajdonságának módosításával a terheléselosztási beállításokban.
 
-    * _X_ a SuccessfulSamplesRequired tulajdonság módosításával van konfigurálva a terheléselosztási beállításokban.
+    * az _x_ konfigurálva van a SuccessfulSamplesRequired tulajdonság módosításával a terheléselosztási beállításokban.
 
-3. A háttérkészletből a bejárati ajtó emellett méri és fenntartja az egyes háttérrendszerek késését (oda-vissza idő).
+3. A háttér-készletben lévő, kifogástalan állapotú háttérrendszer mellett a bejárati ajtó is méri a mértékeket, és fenntartja az egyes háttérrendszer késését (az oda-és visszaút időpontját).
 
 
-## <a name="complete-health-probe-failure"></a>Teljes állapotminta hiba
+## <a name="complete-health-probe-failure"></a>Állapot-mintavételi hiba befejezése
 
-Ha az állapotpróbák sikertelenek a háttérkészlet minden háttérrendszeréhez, majd a Bejárati ajtó az összes háttérrendszer kifogástalannak tekinti a forgalmat, és a forgalmat egy ciklikus multiplexelés-eloszlásban irányítja mindegyikben.
+Ha az állapot-mintavétel egy háttér-készlet minden egyes munkafelületén meghiúsul, akkor a bevezető ajtó az összes háttérrendszer állapotát figyelembe veszi, és egy ciklikus multiplexelés eloszlásban irányítja át a forgalmat.
 
-Ha bármelyik háttér-háttéradat kifogástalan állapotba kerül, majd a Bejárati ajtó folytatja a normál terheléselosztási algoritmust.
+Ha bármelyik háttér Kifogástalan állapotba kerül, a bejárati ajtó a normál terheléselosztási algoritmust fogja folytatni.
 
-## <a name="disabling-health-probes"></a>Az állapotvizsgálók letiltása
+## <a name="disabling-health-probes"></a>Állapot-mintavétel letiltása
 
-Ha egyetlen háttér-tartaléka van a háttérkészletben, dönthet úgy, hogy letiltja az állapot-mintavételek csökkenti a terhelést az alkalmazás háttér-. Még akkor is, ha több háttérprogram a háttérkészletben, de csak egyikük engedélyezett állapotban van, letilthatja az állapotminta.
+Ha a háttér-készletben egyetlen háttérrel rendelkezik, letilthatja az alkalmazás-háttér terhelését csökkentő állapot-mintavételt. Még ha több háttérrel is rendelkezik a háttér-készletben, de csak az egyikük engedélyezett állapotban van, letilthatja az állapot-mintavételt.
 
 ## <a name="next-steps"></a>További lépések
 

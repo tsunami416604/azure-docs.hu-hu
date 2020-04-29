@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477255"
 ---
-Webszolgáltatás frissítéséhez használja `update` a módszert. Frissítheti a webszolgáltatást, hogy egy új modellt, egy új bejegyzésparancsfájlt vagy egy következtetési konfigurációban megadható új függőségeket használjon. További információt a [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)dokumentumában talál.
+Webszolgáltatások frissítéséhez használja a `update` metódust. Frissítheti a webszolgáltatást egy új modell, egy új bejegyzési parancsfájl vagy egy következtetési konfigurációban megadható új függőségek használatára. További információkért tekintse meg a [webszolgáltatások dokumentációját. frissítés](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
 
 > [!IMPORTANT]
-> Amikor egy modell új verzióját hozza létre, manuálisan kell frissítenie a használni kívánt szolgáltatást.
+> A modell új verziójának létrehozásakor manuálisan kell frissítenie az összes használni kívánt szolgáltatást.
 >
-> Az SDK nem használható az Azure Machine Learning-tervezőáltal közzétett webszolgáltatás frissítéséhez.
+> Az SDK-val nem lehet frissíteni a Azure Machine Learning Designer alkalmazásban közzétett webszolgáltatásokat.
 
 **Az SDK használata**
 
-A következő kód bemutatja, hogyan lehet az SDK segítségével frissíteni a modell, a környezet és a bejegyzés parancsfájl egy webszolgáltatás:
+A következő kód bemutatja, hogyan használható az SDK a webszolgáltatások modelljének, környezetének és bejegyzési parancsfájljának frissítéséhez:
 
 ```python
 from azureml.core import Environment
@@ -51,9 +51,9 @@ print(service.state)
 print(service.get_logs())
 ```
 
-**A CLI használata**
+**A parancssori felület használata**
 
-A webszolgáltatást az ML CLI használatával is frissítheti. A következő példa bemutatja egy új modell regisztrálását, majd egy webszolgáltatás frissítését az új modell használatához:
+A webszolgáltatás a ML parancssori felület használatával is frissíthető. Az alábbi példa bemutatja egy új modell regisztrálását, majd egy webszolgáltatás frissítését az új modell használatára:
 
 ```azurecli
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --output-metadata-file modelinfo.json
@@ -61,8 +61,8 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 ```
 
 > [!TIP]
-> Ebben a példában egy JSON-dokumentum segítségével adja át a modell adatait a regisztrációs parancsból a frissítési parancsba.
+> Ebben a példában egy JSON-dokumentum segítségével továbbítja a modell adatait a regisztrációs parancsból az Update parancsba.
 >
-> Ha frissíteni szeretné a szolgáltatást új bejegyzésparancsfájl vagy környezet használatára, hozzon `ic` létre egy [következtetéskonfigurációs fájlt,](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) és adja meg azt a paraméterrel.
+> Ha a szolgáltatást új bejegyzési parancsfájl vagy környezet használatára szeretné frissíteni, hozzon létre egy [következtetési konfigurációs fájlt](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) , és adja meg `ic` a paramétert.
 
-További információt az [az ml szolgáltatásfrissítésdokumentációjában](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) talál.
+További információt az az [ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) dokumentációjában talál.

@@ -1,6 +1,6 @@
 ---
-title: Áttelepítés az Azure Media Services v2-ről a v3-ra | Microsoft dokumentumok
-description: Ez a cikk az Azure Media Services v3-ban bevezetett módosításait ismerteti, és két verzió közötti különbségeket mutatja be. A cikk áttelepítési útmutatást is tartalmaz a Media Services 2-es v3-as ról a 3-as programra való áttéréshez.
+title: Áttelepítés Azure Media Services v2-ről v3-re | Microsoft Docs
+description: Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerteti, és két verzió közötti különbségeket mutatja. A cikk áttelepítési útmutatót is biztosít a Media Services v2-ről a v3-re való áthelyezéshez.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -16,71 +16,71 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472067"
 ---
-# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató a Media Services 2-es v3-as ról a 3-as vagy a 3-as
+# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
->Kap értesítést, hogy mikor kell újra ezt az oldalt a `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` frissítések másolásával és beillesztése ezt az URL-t: az RSS feed olvasó.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` -cím másolásával és beillesztésével: az RSS-hírcsatorna-olvasóba.
 
-Ez a cikk a Media Services 2-es és 3-as v3-as részéből származó áttelepítési útmutatást tartalmazza.
+Ez a cikk a Media Services v2 és v3 közötti áttelepítési útmutatót ismerteti.
 
-Ha a mai napon kifejlesztett videoszolgáltatással rendelkezik a [media services v2 API-kon](../previous/media-services-overview.md)felül, tekintse át az alábbi irányelveket és szempontokat, mielőtt áttérne a v3 API-kra. A v3 API számos előnnyel és új funkcióval rendelkezik, amelyek javítják a Media Services fejlesztői élményét és képességeit. Azonban, ahogy azt a cikk [ismert problémák](#known-issues) című részében, vannak is bizonyos korlátozások miatt az API-verziók közötti változások. Ez a lap megmarad, mivel a Media Services csapata folyamatosan fejleszti a v3 API-kat, és kezeli a verziók közötti hézagokat. 
+Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)-kra épülő videó-szolgáltatást már ma fejlesztette ki, tekintse át a következő irányelveket és szempontokat a V3 API-kra való Migrálás előtt. A V3 API számos előnnyel és új funkcióval rendelkezik, amelyek javítják a Media Services fejlesztői élményét és képességeit. Azonban a jelen cikk [ismert problémák](#known-issues) című szakaszában leírtak szerint az API-verziók változásai miatt bizonyos korlátozások is fennállnak. Ez az oldal továbbra is érvényben marad, mivel a Media Services csapat tovább fejleszti a V3 API-kat, és megjavítja a verziók közötti hézagokat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Médiaszolgáltatások [2. és 3.-es v.](media-services-v2-vs-v3.md)
+* Felülvizsgálat [Media Services v2 és v3](media-services-v2-vs-v3.md)
 * [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="benefits-of-media-services-v3"></a>A Media Services 3-as számú alkalmazásának előnyei
+## <a name="benefits-of-media-services-v3"></a>A Media Services v3 előnyei
   
 ### <a name="api-is-more-approachable"></a>Az API jobban megközelíthető
 
-*  A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Az Azure Resource Manager-sablonok segítségével hozhat létre és helyezhet üzembe átalakításokat, végpontok streamelését, élő eseményeket és egyebeket.
-* [OpenAPI Specification (korábbi nevén Swagger)](https://aka.ms/ams-v3-rest-sdk) dokumentum.
-    Az összes szolgáltatásösszetevő sémáját elérhetővé teszi, beleértve a fájlalapú kódolást is.
-* A [.NET,](https://aka.ms/ams-v3-dotnet-ref).NET Core, [Node.js,](/javascript/api/overview/azure/mediaservices/management) [Python,](https://aka.ms/ams-v3-python-ref) [Java,](https://aka.ms/ams-v3-java-ref) [Go](https://aka.ms/ams-v3-go-ref)és Ruby.
-* [Azure CLI-integráció](https://aka.ms/ams-v3-cli-ref) az egyszerű parancsfájlok támogatásához.
+*  A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Azure Resource Manager sablonok használatával átalakításokat, folyamatos átviteli végpontokat, élő eseményeket és egyéb műveleteket hozhat létre és helyezhet üzembe.
+* [OpenAPI-specifikáció (korábbi nevén henceg)](https://aka.ms/ams-v3-rest-sdk) dokumentum.
+    Minden szolgáltatás-összetevő számára elérhetővé teszi a sémát, beleértve a fájl alapú kódolást is.
+* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node. js](/javascript/api/overview/azure/mediaservices/management), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
+* [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integráció az egyszerű parancsfájlok támogatásához.
 
 ### <a name="new-features"></a>Új funkciók
 
-* A fájlalapú feladat feldolgozásához http(S) URL-címet használhat bemenetként.<br/>Nem kell, hogy a tartalom már tárolt Az Azure-ban, és nem kell létrehozni eszközök.
-* Bemutatja az [átalakítások](transforms-jobs-concept.md) fogalmát a fájlalapú feladatfeldolgozáshoz. Az átalakítás segítségével újrafelhasználható konfigurációkat hozhat létre, Azure Resource Manager-sablonokat hozhat létre, és elkülönítheti a feldolgozási beállításokat több ügyfél vagy bérlő között.
-* Egy eszköz rendelkezhet több [streamelési lokátorral,](streaming-locators-concept.md) amelyek mindegyike különböző [dinamikus csomagolási](dynamic-packaging-overview.md) és dinamikus titkosítási beállításokkal rendelkezik.
-* [A tartalomvédelem](content-key-policy-concept.md) támogatja a többkulcsos funkciókat.
-* Akár 24 órás élő eseményeket is streamelhet, ha a Media Services használatával egyetlen bitráta-hozzájárulási hírcsatornát több bitrátával rendelkező kimeneti adatfolyamba átkódol.
-* Új alacsony késleltetésű élő közvetítés támogatása az élő eseményeken. További információ: [Késés](live-event-latency.md).
-* A Live Event Preview támogatja a [dinamikus csomagolást](dynamic-packaging-overview.md) és a dinamikus titkosítást. Ez lehetővé teszi a tartalomvédelmet az előzetes verzióban, valamint a DASH és a HLS csomagoláson.
-* Az élő kimenet használata egyszerűbb, mint a program entitás a v2 API-kban. 
-* Továbbfejlesztett RTMP támogatás (nagyobb stabilitás és több forráskódoló támogatás).
-* RTMPS biztonságos betöltés.<br/>Élő esemény létrehozásakor 4 betöltési URL-t kap. A 4 betöltési URL-címek szinte azonosak, ugyanazt a streamelési jogkivonatot (AppId), csak a port szám része más. Két URL elsődleges és az RTMPS biztonsági mentése.   
-* Szerepköralapú hozzáférés-vezérlés (RBAC) az entitások felett. 
+* A fájl alapú feladatok feldolgozásához a HTTP (S) URL-címet használhatja bemenetként.<br/>Nem kell az Azure-ban tárolt tartalmakat használnia, és nem kell eszközöket létrehoznia.
+* Bevezeti a fájl alapú feladatok feldolgozásának [átalakítási](transforms-jobs-concept.md) koncepcióját. Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között.
+* Egy eszközhöz több [folyamatos átviteli lokátor](streaming-locators-concept.md) is tartozhat, amelyek különböző [dinamikus csomagolási](dynamic-packaging-overview.md) és dinamikus titkosítási beállításokkal rendelkeznek.
+* A [Content Protection](content-key-policy-concept.md) támogatja a többkulcsos funkciókat.
+* Akár 24 órán át tartó élő eseményeket is továbbíthat, ha Media Services használ egy sávszélesség-összefoglalást egy olyan kimeneti adatfolyamba, amely több bitrátát tartalmaz.
+* Új, kis késleltetésű élő adatfolyam-támogatás élő eseményeken. További információ: [késés](live-event-latency.md).
+* Az élő esemény előzetes verziója támogatja a [dinamikus csomagolást](dynamic-packaging-overview.md) és a dinamikus titkosítást. Ez az előzetes verzióban, valamint a DASH és a HLS csomagoláson is lehetővé teszi a tartalomvédelem használatát.
+* Az élő kimenet használata egyszerűbb, mint a program entitás a v2 API-kon. 
+* Továbbfejlesztett RTMP-támogatás (nagyobb stabilitás és több forrás-kódoló támogatása).
+* A RTMP biztonságos betöltést biztosít.<br/>Élő esemény létrehozásakor 4 betöltési URL-címet kap. A 4 betöltési URL-cím majdnem azonos, ugyanazzal a folyamatos átviteli jogkivonattal (AppId) rendelkezik, csak a portszám rész különbözik. A két URL-cím elsődleges és biztonsági másolat az RTMP-hez.   
+* Szerepköralapú hozzáférés-vezérléssel (RBAC) rendelkezik az entitások felett. 
 
 ## <a name="known-issues"></a>Ismert problémák
 
-*  Jelenleg használhatja az [Azure Portalon:](https://portal.azure.com/)
+*  Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használhatja:
 
-    * Media Services v3 [élő események](live-events-outputs-concept.md)kezelése, 
-    * nézet (nem kezeli) v3 [Eszközök,](assets-concept.md) 
-    * [az API-k elérésével kapcsolatos információk.](access-api-portal.md) 
+    * Media Services v3 [élő események](live-events-outputs-concept.md)kezelése 
+    * v3- [eszközök](assets-concept.md)megtekintése (nem felügyelt) 
+    * [az API-k elérésére vonatkozó információk beolvasása](access-api-portal.md). 
 
-    Minden más felügyeleti feladathoz (például [átalakítások és feladatok](transforms-jobs-concept.md) és [tartalomvédelem)](content-protection-overview.md)használja a [REST API-t,](https://docs.microsoft.com/rest/api/media/)a [CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
-* A media szolgáltatás számára fenntartott egységeket (MRUs) kell kiépítenie a fiókjában, hogy szabályozhassa a feladatok egyidejűségét és teljesítményét, különösen a video- vagy hangelemzéssel kapcsolatosakat. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. Az MRUs-okat a [CLI 2.0-s v3-as](media-reserved-units-cli-how-to.md)használatával kezelheti az [Azure Portalon](../previous/media-services-portal-scale-media-processing.md), vagy a [v2 API-k](../previous/media-services-dotnet-encoding-units.md)használatával. Ki kell építenie az MRUs-t, függetlenül attól, hogy a Media Services v2-es vagy 3-as API-kat használja.
-* A v3 API-val létrehozott Media Services-entitásokat nem tudja a v2 API-val kezelni.  
-* A V2 API-ban nem minden entitás jelenik meg automatikusan a V3 API-ban.  Az alábbiakban példákat mutatunk be a két verzióban lévő, nem kompatibilis entitásokra:  
-    * A v2-ben létrehozott feladatok és feladatok nem jelennek meg a v3-ban, mivel nincsenek átalakításhoz társítva. A javaslat az, hogy váltson a v3 átalakítások és feladatok. Lesz egy viszonylag rövid ideig igénylő figyelemmel kíséri a fedélzeti v2 jobs az átállás során.
-    * A v2-vel létrehozott csatornák és programok (amelyek a v3-ban élő eseményekre és élő kimenetekre vannak leképezve) nem kezelhetők a v3-mal. A javaslat az, hogy váltson a v3 Élő események és élő kimenetek egy kényelmes csatorna stop.<br/>Jelenleg nem lehet áttelepíteni a folyamatosan futó csatornákat.  
+    Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+* A Media szolgáltatás számára fenntartott egységeket (MRUs-ket) a fiókjában kell kiépíteni a feladatok párhuzamosságának és teljesítményének szabályozása érdekében, különösen a videó-vagy hangelemzést is beleértve. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. A MRUs a parancssori felület 2,0-es verziójával kezelheti [Media Services v3](media-reserved-units-cli-how-to.md)esetén, a [Azure Portal](../previous/media-services-portal-scale-media-processing.md)vagy a [v2 API](../previous/media-services-dotnet-encoding-units.md)-k használatával. MRUs kell kiépíteni, függetlenül attól, hogy Media Services v2 vagy V3 API-t használ.
+* Media Services a V3 API-val létrehozott entitásokat nem lehet a v2 API-val felügyelni.  
+* A v2 API-ban lévő összes entitás automatikusan megjelenik a V3 API-ban.  A következő példa a két, nem kompatibilis verzióban található entitásokra mutat példát:  
+    * A v2-ben létrehozott feladatok és feladatok nem jelennek meg a v3-as verzióban, mivel nincsenek átalakítók társítva. A javaslat a v3 átalakításokra és feladatokra vált. Viszonylag rövid időszakra van szükség, amely a fedélzeti v2-feladatok figyelését teszi szükségessé az átállás során.
+    * A v2-vel létrehozott csatornák és programok (amelyek az élő eseményekhez és a v3-as élő kimenetekhez vannak leképezve) nem folytathatják a v3-vel való felügyeletet. Javasoljuk, hogy térjen át a v3 élő eseményekre, és az élő kimeneteket egy kényelmes csatornán állítsa le.<br/>Jelenleg nem telepíthet át folyamatosan futó csatornákat.  
 
 > [!NOTE]
-> Ez a lap megmarad, mivel a Media Services csapata folyamatosan fejleszti a v3 API-kat, és kezeli a verziók közötti hézagokat.
+> Ez az oldal továbbra is érvényben marad, mivel a Media Services csapat tovább fejleszti a V3 API-kat, és megjavítja a verziók közötti hézagokat.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
-Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Távoli fájl kódolása URL alapján és a videó streamelése - .NET](stream-files-dotnet-quickstart.md)
+[Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET](stream-files-dotnet-quickstart.md)

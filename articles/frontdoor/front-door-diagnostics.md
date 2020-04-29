@@ -1,6 +1,6 @@
 ---
-title: Metrikák és naplók figyelése az Azure Bejárati ajtajában| Microsoft dokumentumok
-description: Ez a cikk ismerteti a különböző metrikák és hozzáférési naplók, amelyek az Azure Front Door támogatja
+title: Metrikák és naplók figyelése az Azure bejárati ajtóban | Microsoft Docs
+description: Ez a cikk az Azure-előtérben támogatott különböző mérőszámokat és hozzáférési naplókat ismerteti
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,99 +12,99 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471727"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure bejárati ajtajában
+# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
-Az Azure Front Door használatával az alábbi módokon figyelheti az erőforrásokat:
+Az Azure bejárati ajtót használva a következő módokon figyelheti az erőforrásokat:
 
-- **Mérőszámok**. Az Azure Front Door jelenleg hét metrikával rendelkezik a teljesítményszámlálók megtekintéséhez.
-- **Naplók**. A tevékenység- és diagnosztikai naplók lehetővé teszik a teljesítmény, a hozzáférés és más adatok mentését vagy felhasználását egy erőforrásból figyelési célokra.
+- **Metrikák**. Az Azure bejárati ajtajának jelenleg hét mérőszáma van a teljesítményszámlálók megtekintéséhez.
+- **Naplók**. A tevékenység-és diagnosztikai naplók lehetővé teszik a teljesítmény, hozzáférés és egyéb adatok mentését, illetve az erőforrásokból való felhasználását figyelés céljából.
 
 ### <a name="metrics"></a>Mérőszámok
 
-Metrikák egy olyan funkció, bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintéséhez a portálon. A bejárati ajtó mutatói a következők:
+A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metrika | Metrikus megjelenítendő név | Unit (Egység) | Dimenziók | Leírás |
+| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Leírás |
 | --- | --- | --- | --- | --- |
-| Kérésszáma | Kérelmek száma | Darabszám | httpállapota</br>httpstatuscsoport</br>Ügyfélterület</br>Ügyfélország | A Bejárati ajtó által kiszolgált ügyfélkérelmek száma.  |
-| Kérésméretet | A kérelem mérete | Bájt | httpállapota</br>httpstatuscsoport</br>Ügyfélterület</br>Ügyfélország | Az ügyfelektől a Bejárati ajtónak kérésként küldött bájtok száma. |
-| Válaszméret | Válasz mérete | Bájt | httpállapota</br>httpstatuscsoport</br>Ügyfélterület</br>Ügyfélország | A bejárati ajtóból az ügyfeleknek válaszként küldött bájtok száma. |
-| Összesen Késedelmiség | Teljes késés | Ezredmásodperc | httpállapota</br>httpstatuscsoport</br>Ügyfélterület</br>Ügyfélország | A Bejárati ajtó által fogadott ügyfélkérésből számított idő, amíg az ügyfél nem nyugtázta az utolsó válaszbájtot a Bejárati ajtóból. |
-| Háttérvégpontkérése | Háttér-kérelem száma | Darabszám | httpállapota</br>httpstatuscsoport</br>Háttér | A bejárati ajtóból a háttérrendszereknek küldött kérelmek száma. |
-| HáttérendKérelem Latency | Háttér-kérelem késése | Ezredmásodperc | Háttér | A bejárati ajtó által a háttérrendszernek küldött kérelem számításának időpontja, amíg a Bejárati ajtó meg nem kapta az utolsó válaszbájtot a háttérrendszertől. |
-| BackendHealthPercentage | Háttér-állapot százalékos aránya | Százalék | Háttér</br>Háttérkészlet | A sikeres állapotpróbák százalékos aránya a bejárati ajtótól a háttérrendszerekig. |
-| WebApplicationFirewallRequestCount | Webalkalmazás tűzfalának kérelmek száma | Darabszám | PolicyName</br>Szabályneve</br>Műveletek | A Bejárati ajtó alkalmazásréteg-biztonsága által feldolgozott ügyfélkérelmek száma. |
+| RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
+| RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
+| ResponseSize | Válasz mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtótól az ügyfeleknek küldött válaszként küldött bájtok száma. |
+| TotalLatency | Teljes késés | Ezredmásodpercben | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyféltől érkező kérelemből kiszámított idő, amíg az ügyfél el nem fogadta az utolsó válasz bájtját a bejárati ajtótól. |
+| BackendRequestCount | Háttérbeli kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>Háttérrendszer | A bejárati ajtóról a háttérbe küldött kérések száma. |
+| BackendRequestLatency | Háttérbeli kérelmek késése | Ezredmásodpercben | Háttérrendszer | A kérelemnek a háttérbe való beérkezése után kiszámított idő, amíg be nem érkezett az utolsó válasz bájtja a háttérből. |
+| BackendHealthPercentage | Háttér állapotának százalékos aránya | Százalék | Háttérrendszer</br>Háttérkészletek | A sikeres állapot-mintavételek százalékos aránya a bejárati ajtóról a háttérbe. |
+| WebApplicationFirewallRequestCount | Webalkalmazási tűzfalra vonatkozó kérelmek száma | Darabszám | PolicyName</br>RuleName</br>Műveletek | Az alkalmazási rétegben a bejárati ajtó biztonságával feldolgozott ügyfélalkalmazások száma |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Tevékenységnaplók
 
-A tevékenységnaplók a Bejárati ajtón végzett műveletekről nyújtanak információt. Azt is meghatározzák, hogy mit, ki és mikor bármilyen írási műveletek (fel, posta, vagy törölje) hozott bejárati ajtó.
+A Tevékenységnaplók a bejárati ajtókon végzett műveletekről nyújtanak információt. Azt is meghatározzák, hogy mi, ki és mikor történik a bejáratkor végrehajtott írási műveletek (Put, post vagy DELETE).
 
 >[!NOTE]
->A tevékenységnaplók nem tartalmaznak olvasási (beolvasási) műveleteket. Emellett nem tartalmazzák az Azure Portal vagy az eredeti Felügyeleti API használatával végrehajtott műveleteket.
+>A Tevékenységnaplók nem tartalmaznak olvasási (Get) műveleteket. Emellett nem tartalmazzák a Azure Portal vagy az eredeti felügyeleti API használatával végrehajtott műveleteket.
 
-A tevékenységnaplók elérése a bejárati ajtajában vagy az Azure-erőforrások összes naplójában az Azure Monitorban. A tevékenységnaplók megtekintése:
+A hozzáférési tevékenység naplóit a bejárati ajtón vagy az Azure-erőforrások összes naplóján Azure Monitor. A tevékenységnaplók megtekintése:
 
-1. Válassza ki a bejárati ajtó példányát.
-2. Válassza **a Tevékenységnapló lehetőséget.**
+1. Válassza ki az előtérben lévő példányt.
+2. Válassza a **műveletnapló**lehetőséget.
 
     ![Tevékenységnapló](./media/front-door-diagnostics/activity-log.png)
 
-3. Válasszon egy szűrési hatókört, majd válassza **az Alkalmaz**lehetőséget.
+3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz**gombra.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnosztikai naplók
-A diagnosztikai naplók gazdag információkat nyújtanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenységnaplóktól.
+A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenység naplóitól.
 
-A tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekbe. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekbe. További információ: [Azure Monitor diagnosztikai naplók.](../azure-monitor/platform/platform-logs-overview.md)
+A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
 
 ![Diagnosztikai naplók](./media/front-door-diagnostics/diagnostic-log.png)
 
 Diagnosztikai naplók konfigurálása a bejárati ajtóhoz:
 
-1. Válassza ki az Azure bejárati ajtaját.
+1. Válassza ki az Azure-bejárati ajtót.
 
-2. Válassza **a Diagnosztikai beállítások lehetőséget**.
+2. Válassza a **diagnosztikai beállítások**lehetőséget.
 
-3. Válassza **a Diagnosztika bekapcsolása**lehetőséget. Archiválja a diagnosztikai naplókat és a metrikákat egy tárfiókba, továbbítsa őket egy eseményközpontba, vagy küldje el őket az Azure Monitor naplóiba.
+3. Kattintson **a diagnosztika bekapcsolása**elemre. Archiválja a diagnosztikai naplókat, valamint mérőszámokat egy Storage-fiókba, továbbíthatja őket egy Event hubhoz, vagy elküldheti azokat Azure Monitor naplókba.
 
-Bejárati ajtó jelenleg diagnosztikai naplók (óránként kötegelve). A diagnosztikai naplók minden egyes bejegyzéshez egyedi API-kérelmeket biztosítanak, amelyek a következő sémával rendelkeznek:
+A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként kötegelt feldolgozással). A diagnosztikai naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával:
 
 | Tulajdonság  | Leírás |
 | ------------- | ------------- |
-| BackendHostname | Ha a kérést háttérkiszolgálóra továbbították, ez a mező a háttérkiszolgáló állomásnevét jelöli. Ez a mező üres lesz, ha a kérelmet átirányították vagy egy regionális gyorsítótárba irányították (ha a gyorsítótárazás engedélyezve van a művelettervi szabályhoz). |
-| Gyorsítótár állapota | Gyorsítótárazási esetekesetén ez a mező határozza meg a POP gyorsítótár-találatot/tévesztést |
-| ClientIp (Ügyfél IP-címe) | A kérést küldő ügyfél IP-címe. Ha a kérelemben x-forwarded-for fejléc volt, akkor az ügyfél IP-címe ugyanabból lesz kiválasztva. |
-| Ügyfélport | A kérést küldő ügyfél IP-portja. |
-| HttpMódszer | A kérelem által használt HTTP-módszer. |
-| httpstatuskód | A proxytól visszaadott HTTP-állapotkód. |
-| httpStatusDetails | A kérelem eredményül kapott állapota. Ennek a karakterlánc-értéknek a jelentése egy Állapothivatkozás-táblában található. |
-| HttpVerzió | A kérelem vagy kapcsolat típusa. |
-| POP | Annak az élnek a rövid neve, ahol a kérelem landolt. |
-| Kérésbájt | A HTTP-kérelem üzenet mérete bájtban, beleértve a kérelem fejlécek és a kérelem törzse. |
-| RequestUri (Kérés) | A fogadott kérelem URI-ja. |
-| Válaszbájt | A háttérkiszolgáló által válaszként küldött bájtok.  |
-| Útválasztási szabály neve | A kérelem által egyeztetett útválasztási szabály neve. |
-| SecurityProtocol (Biztonsági protokoll) | A kérés által használt TLS/SSL protokollverzió, vagy null, ha nincs titkosítás. |
-| SentToOriginPajzs | Logikai mező, amely azt jelöli, hogy az első környezetben hiányzott-e a gyorsítótár, és a kérés a regionális gyorsítótárba lett-e elküldve. Hagyja figyelmen kívül ezt a mezőt, ha a művelettervszabály átirányítás, vagy ha nincs engedélyezve a gyorsítótárazás. |
-| Időtaken | A művelet időtartama ezredmásodpercben. |
-| Követési hivatkozás | Az egyedi hivatkozási karakterlánc, amely azonosítja a Bejárati ajtó által kiszolgált kérelmet, amelyet X-Azure-Ref fejlécként is küldött az ügyfélnek. Egy adott kérelem hozzáférési naplóiban a részletek kereséséhez szükséges. |
-| Useragent | Az ügyfél által használt böngészőtípusa. |
+| BackendHostname | Ha a kérést egy háttérbe továbbították, ez a mező a háttér állomásnevét jelöli. Ez a mező üresen marad, ha a kérés átirányítása vagy továbbítása regionális gyorsítótárba történik (ha a gyorsítótárazás engedélyezve van az útválasztási szabályhoz). |
+| CacheStatus | Gyorsítótárazási forgatókönyvek esetén ez a mező a legördülő menüben definiált gyorsítótár-találatok és-kihagyás |
+| ClientIp (Ügyfél IP-címe) | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. Ha a kérelemben a fejléchez X-továbbítás történt, akkor az ügyfél IP-címe azonos. |
+| ClientPort | Az ügyfél IP-portja, amely a kérést elvégezte. |
+| HttpMethod | A kérelem által használt HTTP-metódus. |
+| HttpStatusCode | A proxy által visszaadott HTTP-állapotkód. |
+| HttpStatusDetails | Az eredményül kapott állapot a kérelemben. A karakterlánc értékének jelentése az állapot-hivatkozási táblában található. |
+| HttpVersion | A kérelem vagy a kapcsolatok típusa. |
+| POP | A kérelem által kirakodott szegély rövid neve. |
+| RequestBytes | A HTTP-kérelem üzenetének mérete bájtban, beleértve a kérések fejléceit és a kérelem törzsét. |
+| RequestUri | A fogadott kérelem URI-ja. |
+| ResponseBytes | A háttér-kiszolgáló által válaszként küldött bájtok.  |
+| RoutingRuleName | Annak az útválasztási szabálynak a neve, amelyhez a kérelem illeszkedik. |
+| SecurityProtocol | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás. |
+| SentToOriginShield | Logikai mező, amely azt jelöli, hogy az első környezetben történt-e gyorsítótár-kihagyás, és a rendszer elküldte a kérelmet a regionális gyorsítótárnak. Hagyja figyelmen kívül ezt a mezőt, ha az útválasztási szabály egy átirányítás, vagy ha nincs engedélyezve a gyorsítótárazás. |
+| Eltelt idő | A művelet végrehajtásának időtartama (ezredmásodpercben). |
+| TrackingReference | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
+| UserAgent | Az ügyfél által használt böngésző típusa. |
 
-**Megjegyzés:** A különböző útválasztási konfigurációk és a forgalmi viselkedések, néhány mező, mint a backendHostname, cacheStatus, sentToOriginShield, és a POP mező válaszolhat különböző értékeket. Az alábbi táblázat ismerteti a különböző értékeket, ezeket a mezőket különböző forgatókönyvekhez:
+**Megjegyzés:** A különböző útválasztási konfigurációk és a forgalom viselkedése érdekében egyes mezők, például a backendHostname, a cacheStatus, a sentToOriginShield és a POP mező különböző értékekkel is reagálhat. Az alábbi táblázat ismerteti a különböző értékeket, ezek a mezők különböző forgatókönyvekhez szükségesek:
 
-| Forgatókönyvek | Naplóbejegyzések száma | POP | BackendHostname | SentToOriginPajzs | Gyorsítótár állapota |
+| Forgatókönyvek | Naplóbejegyzések száma | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Útválasztási szabály gyorsítótárazás nélkül | 1 | Élű POP-kód | Háttértartalék, ahol a kérelem továbbításra került | False (Hamis) | CONFIG_NOCACHE |
-| Útválasztási szabály, amelyen engedélyezve van a gyorsítótárazás. Gyorsítótár-találat a POP szélén | 1 | Élű POP-kód | Üres | False (Hamis) | Megüt |
-| Útválasztási szabály, amelyen engedélyezve van a gyorsítótárazás. Gyorsítótár-tévesztés a pop-pszélnél, de a gyorsítótár lecsapott a szülőgyorsítótár POP-ra | 2 | 1. Edge POP-kód</br>2. Szülő gyorsítótár POP-kódja | 1. Szülőgyorsítótár POP-állomásneve</br>2. Üres | 1. Igaz</br>2. Hamis | 1. HIÁNYZIK</br>2. PARTIAL_HIT |
-| Útválasztási szabály, amelyen engedélyezve van a gyorsítótárazás. Gyorsítótár-tévesztés a szélen és a szülő gyorsítótárpop-ban is | 2 | 1. Edge POP-kód</br>2. Szülő gyorsítótár POP-kódja | 1. Szülőgyorsítótár POP-állomásneve</br>2. Háttérrendszer, amely segít a gyorsítótár feltöltésén | 1. Igaz</br>2. Hamis | 1. HIÁNYZIK</br>2. KISASSZONY |
+| Útválasztási szabály engedélyezve gyorsítótárazás nélkül | 1 | Edge POP-kód | A kérés továbbítására szolgáló háttér | False (Hamis) | CONFIG_NOCACHE |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-találat a peremhálózati POP-on | 1 | Edge POP-kód | Üres | False (Hamis) | HIT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge és a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bejárati ajtó profil létrehozása](quickstart-create-front-door.md)
-- [A bejárati ajtó működése](front-door-routing-architecture.md)
+- [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
+- [Az előtérben működik](front-door-routing-architecture.md)
