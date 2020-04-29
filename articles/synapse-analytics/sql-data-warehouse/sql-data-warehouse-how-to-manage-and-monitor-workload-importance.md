@@ -1,6 +1,6 @@
 ---
 title: A számítási feladat fontosságának kezelése és figyelése
-description: Ismerje meg, hogyan kezelheti és figyelheti a kérelmek szintű fontosságát az Azure Synapse Analytics szolgáltatásban.
+description: Ismerje meg, hogyan kezelheti és figyelheti a kérelmek szintjének fontosságát az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,20 +12,20 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633321"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure Synapse Analytics szolgáltatásban
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure szinapszis Analyticsben
 
-Kezelheti és figyelheti a Synapse SQL-kérelemszintű fontosságát az Azure Synapse-ban a DMV-k és a katalógusnézetek használatával.
+Az Azure Szinapszisban az DMV-és katalógus-nézetek segítségével kezelheti és figyelheti a szinapszis SQL-kérelmek szintjének fontosságát.
 
-## <a name="monitor-importance"></a>Fontosság figyelése
+## <a name="monitor-importance"></a>Figyelés fontossága
 
-A [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamikus felügyeleti nézetben lévő új fontosságoszlop használatával figyelheti a fontosságot.
-Az alábbi figyelési lekérdezés a lekérdezések küldési idejét és kezdési idejét mutatja. Tekintse át a küldési és kezdési időt a fontossággal együtt, és tekintse meg, hogy a fontosság hogyan befolyásolta az ütemezést.
+Figyelje meg a fontosságot az új fontosság oszlop használatával a [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamikus felügyeleti nézetében.
+Az alábbi figyelési lekérdezés a lekérdezések küldési idejét és kezdési idejét jeleníti meg. Tekintse át a beküldési időt és a kezdési időpontot, és tekintse meg a fontosságot az ütemezés fontosságának meghatározásához
 
 ```sql
 SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
@@ -35,11 +35,11 @@ SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
 ORDER BY r.start_time
 ```
 
-Ha tovább szeretné vizsgálni a lekérdezések ütemezésének módját, használja a katalógusnézeteket.
+A lekérdezések időzítésének további megkereséséhez használja a katalógus nézeteket.
 
-## <a name="manage-importance-with-catalog-views"></a>Fontosság kezelése katalógusnézetekkel
+## <a name="manage-importance-with-catalog-views"></a>Fontosság kezelése a katalógus nézeteivel
 
-A sys.workload_management_workload_classifiers katalógusnézet az osztályozókra vonatkozó információkat tartalmaz. Az erőforrásosztályokhoz leképező rendszer által definiált osztályozók kizárásához hajtsa végre a következő kódot:
+A sys. workload_management_workload_classifiers katalógus nézet az osztályozók információit tartalmazza. Ha ki szeretné zárni az erőforrás-osztályokra leképezett rendszer által definiált osztályozók körét, hajtsa végre a következő kódot:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-A [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)katalógusnézet az osztályozó létrehozásához használt paraméterekre vonatkozó információkat tartalmazza.  Az alábbi lekérdezés azt mutatja, hogy az ```membername``` ExecReportsClassifier az ExecutiveReports értékekkel rendelkező értékek paraméterén jött létre:
+A (z) [sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)katalógus nézete az osztályozó létrehozásakor használt paraméterekkel kapcsolatos információkat tartalmaz.  Az alábbi lekérdezés azt mutatja, hogy a ```membername``` ExecReportsClassifier a paraméterben lett létrehozva a ExecutiveReports értékkel:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -59,8 +59,8 @@ SELECT c.name,cd.classifier_type, classifier_value
 
 ![lekérdezés eredményei](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
 
-A hibabesorolás hibaelhárításának egyszerűsítése érdekében javasoljuk, hogy távolítsa el az erőforrásosztály szerepkör-leképezéseit a számítási feladatok osztályozóinak létrehozásakor. Az alábbi kód visszaadja a meglévő erőforrásosztály-szerepkör-tagságokat. Futtassa ```membername``` a sp_droprolemember a megfelelő erőforrásosztályból visszaadott minden egyes visszaadott hoz.
-Az alábbi példa a létezés ellenőrzésére szolgál, mielőtt eldobna egy munkaterhelés-osztályozót:
+A hibák elhárítása érdekében javasoljuk, hogy távolítsa el az erőforrás-osztály szerepkör-hozzárendeléseket a számítási feladatok besorolásának létrehozásakor. Az alábbi kód az erőforrás-osztály meglévő szerepkör-tagságát adja vissza. Sp_droprolemember futtatása a megfelelő ```membername``` erőforrás osztályból visszaadott mindegyikhez.
+Az alábbi példa a meglétét ellenőrzi a számítási feladatok besorolásának eldobása előtt:
 
 ```sql
 IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name = 'ExecReportsClassifier')
@@ -70,8 +70,8 @@ GO
 
 ## <a name="next-steps"></a>További lépések
 
-- A besorolásról további információt a [Számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
-- A fontosságról további információt a [Munkaterhelés fontossága című témakörben talál.](sql-data-warehouse-workload-importance.md)
+- A besorolással kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).
+- További információ a Fontosságról: számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md)
 
 > [!div class="nextstepaction"]
-> [Ugrás a Számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md)
+> [Ugrás a számítási feladatok fontosságának konfigurálására](sql-data-warehouse-how-to-configure-workload-importance.md)

@@ -1,6 +1,6 @@
 ---
-title: REST API – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: REST API az Event Grid en IoT Edge.
+title: REST API-Azure Event Grid IoT Edge | Microsoft Docs
+description: REST API on Event Grid on IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841829"
 ---
 # <a name="rest-api"></a>REST API
-Ez a cikk az Azure Event Grid REST API-jait ismerteti az IoT Edge-en
+Ez a cikk a Azure Event Grid REST API-jait ismerteti IoT Edge
 
-## <a name="common-api-behavior"></a>Az API gyakori viselkedése
+## <a name="common-api-behavior"></a>Általános API-viselkedés
 
 ### <a name="base-url"></a>Kiindulási URL-cím
-Az IoT Edge Eseményrács a következő API-kat (5888-as port) és HTTPS-kapcsolaton keresztül teszi elérhetővé (4438-as port).
+A Event Grid on IoT Edge a következő API-kat teszi elérhetővé a HTTP-n (5888-as porton) és a HTTPS-en (4438-es port
 
-* HTTP alap URL-címe:http://eventgridmodule:5888
-* A HTTPS alap URL-címe:https://eventgridmodule:4438
+* HTTP-alap URL-cím:http://eventgridmodule:5888
+* HTTPS alap URL-címe:https://eventgridmodule:4438
 
 ### <a name="request-query-string"></a>Lekérdezési karakterlánc kérése
-Minden API-kérelemhez a következő lekérdezési karakterlánc-paraméter szükséges:
+Minden API-kérelemhez a következő lekérdezési karakterlánc paraméter szükséges:
 
 ```?api-version=2019-01-01-preview```
 
-### <a name="request-content-type"></a>Tartalomtípus kérése
-Minden API-kérelemnek **tartalomtípussal kell rendelkeznie.**
+### <a name="request-content-type"></a>Kérelem tartalmának típusa
+Minden API-kérelemnek tartalmaznia kell egy **Content-Type értéket**.
 
-**EventGridSchema** vagy **CustomSchema**esetén a Content-Type értéke a következő értékek egyike lehet:
+**EventGridSchema** vagy **CustomSchema**esetén a Content-Type érték a következő értékek egyike lehet:
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-Strukturált módban **CloudEventSchemaV1_0** esetén a Content-Type értéke a következő értékek egyike lehet:
+Strukturált módban lévő **CloudEventSchemaV1_0** esetén a Content-Type érték a következő értékek egyike lehet:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,10 +51,10 @@ Strukturált módban **CloudEventSchemaV1_0** esetén a Content-Type értéke a 
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-Ha **CloudEventSchemaV1_0** bináris módban van, a részleteket a [dokumentációban](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) találja.
+Bináris módban való **CloudEventSchemaV1_0** esetén a részletekért tekintse meg a [dokumentációt](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) .
 
-### <a name="error-response"></a>Hibaválasz
-Minden API a következő hasznos adattal ad vissza hibát:
+### <a name="error-response"></a>Hiba válasza
+Minden API hibát ad vissza a következő adattartalommal:
 
 ```json
 {
@@ -72,11 +72,11 @@ Minden API a következő hasznos adattal ad vissza hibát:
 
 ## <a name="manage-topics"></a>Témakörök kezelése
 
-### <a name="put-topic-create--update"></a>Tedd téma (create / update)
+### <a name="put-topic-create--update"></a>Téma létrehozása (létrehozás/frissítés)
 
 **Kérelem**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Hasznos teher**:
+**Hasznos**adatok:
 
 ```json
     {
@@ -88,9 +88,9 @@ Minden API a következő hasznos adattal ad vissza hibát:
     }
 ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 
 ```json
 {
@@ -105,13 +105,13 @@ Minden API a következő hasznos adattal ad vissza hibát:
 }
 ```
 
-### <a name="get-topic"></a>Témakör beszereznie
+### <a name="get-topic"></a>Témakör lekérése
 
 **Kérelem**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -125,13 +125,13 @@ Minden API a következő hasznos adattal ad vissza hibát:
 }
 ```
 
-### <a name="get-all-topics"></a>Az összes témakör bekerülése
+### <a name="get-all-topics"></a>Összes téma beolvasása
 
 **Kérelem**:``` GET /topics?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 ```json
 [
     {
@@ -161,16 +161,16 @@ Minden API a következő hasznos adattal ad vissza hibát:
 
 **Kérelem**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200, üres hasznos teher
+**Válasz**: http 200, üres hasznos adat
 
 ## <a name="manage-event-subscriptions"></a>Esemény-előfizetések kezelése
-Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `EndpointType=EdgeHub / EndpointType=EventGrid` minták a következő részben vannak. 
+Az ebben a szakaszban szereplő `EndpointType=Webhook;`minták a következőt használják:. A JSON-minták `EndpointType=EdgeHub / EndpointType=EventGrid` a következő szakaszban találhatók. 
 
-### <a name="put-event-subscription-create--update"></a>Esemény-előfizetés (létrehozás/frissítés)
+### <a name="put-event-subscription-create--update"></a>Esemény-előfizetés elhelyezése (létrehozás/frissítés)
 
 **Kérelem**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Hasznos teher**:
+**Hasznos**adatok:
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -268,9 +268,9 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 }
 ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 
 ```json
 {
@@ -371,13 +371,13 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 ```
 
 
-### <a name="get-event-subscription"></a>Esemény-előfizetés beszerezni
+### <a name="get-event-subscription"></a>Esemény-előfizetés beolvasása
 
 **Kérelem**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -476,13 +476,13 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 }
 ```
 
-### <a name="get-event-subscriptions"></a>Esemény-előfizetések beszereznie
+### <a name="get-event-subscriptions"></a>Esemény-előfizetések beolvasása
 
 **Kérelem**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200
+**Válasz**: http 200
 
-**Hasznos teher**:
+**Hasznos**adatok:
 ```json
 [
     {
@@ -498,12 +498,12 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 
 **Kérelem**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Válasz**: HTTP 200, nincs hasznos teher
+**Válasz**: http 200, nincs hasznos adat
 
 
 ## <a name="publish-events-api"></a>Események közzététele API
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>Események kötegének küldése (az Event Grid sémájában)
+### <a name="send-batch-of-events-in-event-grid-schema"></a>Események kötegének elküldése (Event Grid sémában)
 
 **Kérelem**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
@@ -523,20 +523,20 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 ]
 ```
 
-**Válasz**: HTTP 200, üres hasznos teher
+**Válasz**: http 200, üres hasznos adat
 
 
-**Hasznos mező leírásai**
-- ```Id```kötelező. Ez bármilyen karakterlánc-érték lehet, amelyet a hívó feltölt. Az Event Grid NEM végez duplikáltelem-észlelést, és nem kényszeríti ki a szemantikát ezen a mezőn.
-- ```Topic```nem kötelező, de ha meg van adva, meg kell egyeznie a kérelem URL-címéről származó topic_name
-- ```Subject```kötelező, bármilyen karakterlánc-érték lehet
-- ```EventType```kötelező, bármilyen karakterlánc-érték lehet
-- ```EventTime```kötelező, nem érvényesítve, de megfelelő DateTime-nak kell lennie.
+**Adattartalom mező leírása**
+- ```Id```kötelező. A hívó által feltöltött bármely karakterláncérték lehet. Event Grid nem végez ismétlődő észlelést, vagy nem kényszeríti ki a szemantikai műveleteket ezen a területen.
+- ```Topic```nem kötelező, de ha meg kell egyeznie a kérelem URL-címével topic_name
+- ```Subject```kötelező, bármilyen sztring lehet.
+- ```EventType```kötelező, bármilyen sztring lehet.
+- ```EventTime```kötelező, nem érvényesítve, de megfelelő DateTime értéknek kell lennie.
 - ```DataVersion```kötelező
-- ```MetadataVersion```nem kötelező, ha meg van adva, akkor egy karakterláncnak kell lennie az értékkel```"1"```
-- ```Data```nem kötelező, és bármilyen JSON token lehet (szám, karakterlánc, logikai, tömb, objektum)
+- ```MetadataVersion```megadása nem kötelező, ha meg van adva, akkor az értéket tartalmazó sztringnek kell lennie```"1"```
+- ```Data```nem kötelező, és bármely JSON-token lehet (szám, karakterlánc, logikai, tömb, objektum)
 
-### <a name="send-batch-of-events-in-custom-schema"></a>Események kötegének küldése (egyéni sémában)
+### <a name="send-batch-of-events-in-custom-schema"></a>Események kötegének elküldése (egyéni sémában)
 
 **Kérelem**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
@@ -548,18 +548,18 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 ]
 ```
 
-**Válasz**: HTTP 200, üres hasznos teher
+**Válasz**: http 200, üres hasznos adat
 
 
-**Hasznos teher korlátozásai**
-- Kell egy sor események.
-- Minden tömbbejegyzésnek JSON-objektumnak kell lennie.
-- Nincs más megkötések (kivéve a hasznos adat méretét).
+**Hasznos adatokra vonatkozó korlátozások**
+- Események tömbje kell, hogy legyen.
+- Minden tömb-bejegyzésnek JSON-objektumnak kell lennie.
+- Nincs más korlátozás (a hasznos adatok méretétől eltérő).
 
 ## <a name="examples"></a>Példák
 
-### <a name="set-up-topic-with-eventgrid-schema"></a>Témakör beállítása az EventGrid sémával
-Úgy állít be egy témakört, hogy az eseményeket közzé kell tenni az **eventgridschema-ban.**
+### <a name="set-up-topic-with-eventgrid-schema"></a>Témakör beállítása a EventGrid-sémával
+Egy olyan témakört állít be, amely az események **eventgridschema**való közzétételét igényli.
 
 ```json
     {
@@ -572,7 +572,7 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Témakör beállítása egyéni sémával
-Úgy állít be egy témakört, `customschema`hogy az eseményeket közzé kell tenni a-ban.
+Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `customschema`.
 
 ```json
     {
@@ -584,8 +584,8 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
     }
 ```
 
-### <a name="set-up-topic-with-cloud-event-schema"></a>Témakör beállítása felhőalapú eseménysémával
-Úgy állít be egy témakört, `cloudeventschema`hogy az eseményeket közzé kell tenni a-ban.
+### <a name="set-up-topic-with-cloud-event-schema"></a>Témakör beállítása a Cloud Event Schema szolgáltatással
+Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `cloudeventschema`.
 
 ```json
     {
@@ -597,8 +597,8 @@ Az ebben a `EndpointType=Webhook;`szakaszban található minták a . A json `End
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>WebHook beállítása célként, eseményrácschemában kézbesítendő események
-Ezzel a céltípussal eseményeket küldhet bármely más modulnak (amely HTTP-végpontot üzemeltet) vagy a hálózat/internet bármely HTTP-címezhető végpontjára.
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Webhook beállítása célként, a eventgridschema-ben küldendő események
+Ennek a célhelynek a használatával minden más modulba (amely egy HTTP-végpontot) vagy a hálózaton/interneten található bármely HTTP-címezhető végpontba küldheti az eseményeket.
 
 ```json
 {
@@ -617,19 +617,19 @@ Ezzel a céltípussal eseményeket küldhet bármely más modulnak (amely HTTP-v
 }
 ```
 
-Az `endpointUrl` attribútum korlátai:
-- Nem lehet null értékű.
-- Abszolút URL-nek kell lennie.
-- Ha outbound__webhook__httpsOnly értéke igaz az EventGridModule beállításokban, akkor csak HTTPS-nek kell lennie.
-- Ha outbound__webhook__httpsOnly értéke hamis, akkor lehet HTTP vagy HTTPS.
+Megkötések `endpointUrl` az attribútumon:
+- Nem null értékűnek kell lennie.
+- Abszolút URL-címnek kell lennie.
+- Ha outbound__webhook__httpsOnly értéke TRUE (igaz) értékre van állítva a EventGridModule-beállításokban, csak HTTPS-nek kell lennie.
+- Ha outbound__webhook__httpsOnly hamis értékre van állítva, akkor HTTP vagy HTTPS lehet.
 
-Az ingatlanra vonatkozó `eventDeliverySchema` korlátozások:
-- Meg kell egyeznie az előfizetési témakör bemeneti sémájával.
-- Lehet null. Alapértelmezés szerint a témakör bemeneti sémája.
+A `eventDeliverySchema` tulajdonságra vonatkozó megkötések:
+- Meg kell egyeznie a feliratkozási témakör bemeneti sémájával.
+- Ez lehet null értékű. Alapértelmezés szerint a témakör bemeneti sémája.
 
-### <a name="set-up-iot-edge-as-destination"></a>Az IoT Edge beállítása célként
+### <a name="set-up-iot-edge-as-destination"></a>IoT Edge beállítása célként
 
-Ezzel a célponttal eseményeket küldhet az IoT Edge Hubba, és peremhálózati hub útválasztási/szűrési/továbbítási alrendszerének kell alávetni.
+Ezen a célhelyen küldhet eseményeket IoT Edge hubhoz, és az Edge hub útválasztási/szűrési/továbbítási alrendszerének kell alávetni.
 
 ```json
 {
@@ -647,9 +647,9 @@ Ezzel a célponttal eseményeket küldhet az IoT Edge Hubba, és peremhálózati
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>Az Event Grid Cloud beállítása úti célként
+### <a name="set-up-event-grid-cloud-as-destination"></a>Event Grid felhő beállítása célként
 
-Ezzel a célállomásra eseményeket küldhet az Event Gridbe a felhőben (Azure). Először be kell állítania egy felhasználói témakört a felhőben, amelybe az eseményeket el kell küldeni, mielőtt esemény-előfizetést hozna létre a peremhálózaton.
+Ezen a célhelyen küldhet eseményeket a felhőbe (Azure) Event Gridba. Először létre kell hoznia egy felhasználói témakört a felhőben, amelybe az eseményeket el kell juttatni, mielőtt a peremhálózati esemény-előfizetést hozna létre.
 
 ```json
 {
@@ -669,14 +669,14 @@ Ezzel a célállomásra eseményeket küldhet az Event Gridbe a felhőben (Azure
 }
 ```
 
-EndpointUrl:
-- Nem lehet null értékű.
-- Abszolút URL-nek kell lennie.
-- Az `/api/events` elérési utat a kérelem URL-elérési útján kell definiálni.
-- A lekérdezési karakterláncban kell lennie. `api-version=2018-01-01`
-- Ha outbound__eventgrid__httpsOnly értéke igaz az EventGridModule beállításokban (alapértelmezés szerint igaz), akkor csak HTTPS-nek kell lennie.
-- Ha outbound__eventgrid__httpsOnly értéke hamis, akkor lehet HTTP vagy HTTPS.
-- Ha outbound__eventgrid__allowInvalidHostnames értéke hamis (alapértelmezés szerint hamis), akkor a következő végpontok egyikét kell megcéloznia:
+EndpointUrl
+- Nem null értékűnek kell lennie.
+- Abszolút URL-címnek kell lennie.
+- Az elérési utat `/api/events` meg kell adni a kérelem URL-címének elérési útjában.
+- A lekérdezési `api-version=2018-01-01` karakterláncban kell szerepelnie.
+- Ha outbound__eventgrid__httpsOnly True értékre van állítva a EventGridModule-beállításokban (alapértelmezés szerint igaz), csak HTTPS-ként kell megadni.
+- Ha outbound__eventgrid__httpsOnly hamis értékre van állítva, akkor HTTP vagy HTTPS lehet.
+- Ha a outbound__eventgrid__allowInvalidHostnames hamis értékre van állítva (alapértelmezés szerint False), akkor a következő végpontok egyikét kell megcéloznia:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
@@ -684,18 +684,18 @@ EndpointUrl:
 SasKey:
 - Nem null értékűnek kell lennie.
 
-Témakör neve:
-- Ha a Subscription.EventDeliverySchema értéke EventGridSchema, az ebből a mezőből származó érték minden esemény Témakör mezőjébe kerül, mielőtt továbbítanák az Event Grid beépülanak a felhőben.
-- Ha a Subscription.EventDeliverySchema beállítása CustomEventSchema, ez a tulajdonság figyelmen kívül hagyja, és az egyéni esemény hasznos adatát továbbítja pontosan úgy, ahogy az érkezett.
+TopicName:
+- Ha az előfizetés. EventDeliverySchema értéke EventGridSchema, akkor az ebben a mezőben szereplő érték minden esemény témakör-mezőjébe kerül, mielőtt a felhőben Event Grid.
+- Ha az előfizetés. EventDeliverySchema értéke CustomEventSchema, akkor a rendszer figyelmen kívül hagyja ezt a tulajdonságot, és az egyéni esemény adattartalmát pontosan úgy továbbítja a rendszer, ahogy az érkezett.
 
-## <a name="set-up-event-hubs-as-a-destination"></a>Az Eseményközpontok beállítása úti célként
+## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs beállítása célként
 
-Ha közzé szeretne tenni egy `endpointType` `eventHub` Eseményközpontban, állítsa be a következőt, és adja meg:
+Az Event hub-ban való közzétételhez állítsa `endpointType` be `eventHub` a következőt:
 
-* connectionString: A megosztott hozzáférési házirend által létrehozott adott eseményközpont kapcsolati karakterlánca.
+* connectionString: az adott esemény központhoz tartozó kapcsolati karakterlánc, amelyet egy megosztott elérési házirend használatával generált.
 
     >[!NOTE]
-    > A kapcsolati karakterláncnak entitásspecifikusnak kell lennie. A névtér kapcsolati karakterláncának használata nem fog működni. Létrehozhat egy entitásspecifikus kapcsolati karakterláncot, ha az Azure Portalon közzétenni kívánt eseményközpontra navigál, és a **megosztott hozzáférési szabályzatok** elemre kattint va, hogy új entitásspecifikus connecection-karakterláncot hozzon létre.
+    > A kapcsolatok karakterláncának entitás-specifikusnak kell lennie. A névtér-kapcsolatok karakterláncának használata nem fog működni. Létrehozhat egy entitás-specifikus kapcsolati karakterláncot úgy, hogy az Azure Portalon közzétenni kívánt esemény hubhoz navigál, és a **megosztott hozzáférési házirendek** elemre kattint egy új entitás-specifikus connecection-karakterlánc létrehozásához.
 
     ```json
         {
@@ -710,14 +710,14 @@ Ha közzé szeretne tenni egy `endpointType` `eventHub` Eseményközpontban, ál
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>Szolgáltatásbusz-várólisták beállítása célként
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus várólisták beállítása célhelyként
 
-Ha közzé szeretne tenni egy `endpointType` szolgáltatásbusz-várólistában, állítsa be a következőt, `serviceBusQueue` és adja meg:
+Service Bus üzenetsor közzétételéhez állítsa be a `endpointType` `serviceBusQueue` következőt:
 
-* connectionString: A megosztott hozzáférési házirend en keresztül létrehozott adott service bus-várólistához tartozó kapcsolati karakterlánc.
+* connectionString: a megadott Service Bus-várólista kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
     >[!NOTE]
-    > A kapcsolati karakterláncnak entitásspecifikusnak kell lennie. A névtér kapcsolati karakterláncának használata nem fog működni. Hozzon létre egy entitásspecifikus kapcsolati karakterláncot az Azure Portalon közzétenni kívánt adott Service Bus-várólistára való navigálással, és kattintson a **Megosztott hozzáférési szabályzatok** elemre egy új entitásspecifikus connecection karakterlánc létrehozásához.
+    > A kapcsolatok karakterláncának entitás-specifikusnak kell lennie. A névtér-kapcsolatok karakterláncának használata nem fog működni. Hozzon elő egy entitás-specifikus kapcsolati karakterláncot úgy, hogy az Azure Portalon közzétenni kívánt Service Bus várólistára navigál, és a **megosztott hozzáférési házirendek** elemre kattintva létrehoz egy új entitás-specifikus connecection karakterláncot.
 
     ```json
         {
@@ -732,14 +732,14 @@ Ha közzé szeretne tenni egy `endpointType` szolgáltatásbusz-várólistában,
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>Szolgáltatásbusz-témakörök beállítása úti célként
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus témakörök beállítása célhelyként
 
-A Service Bus-témakörben való `endpointType` `serviceBusTopic` közzétételhez állítsa be a következőt, és adja meg:
+Service Bus témakör közzétételéhez állítsa be a `endpointType` `serviceBusTopic` következőt:
 
-* connectionString: Kapcsolati karakterlánc a megosztott hozzáférési szabályzat on keresztül létrehozott adott Service Bus-témakörhöz.
+* connectionString: a megadott Service Bus témakör kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
     >[!NOTE]
-    > A kapcsolati karakterláncnak entitásspecifikusnak kell lennie. A névtér kapcsolati karakterláncának használata nem fog működni. Hozzon létre egy entitásspecifikus kapcsolati karakterláncot az Azure Portalon közzétenni kívánt adott Service Bus-témakörre való navigálással, és kattintson a **megosztott hozzáférési szabályzatok** elemre egy új entitásspecifikus connecection karakterlánc létrehozásához.
+    > A kapcsolatok karakterláncának entitás-specifikusnak kell lennie. A névtér-kapcsolatok karakterláncának használata nem fog működni. Hozzon elő egy entitás-specifikus kapcsolati karakterláncot, és navigáljon az Azure Portalon közzétenni kívánt Service Bus témakörre, majd kattintson a **megosztott hozzáférési házirendek** elemre egy új entitás-specifikus connecection-karakterlánc létrehozásához.
 
     ```json
         {
@@ -754,15 +754,15 @@ A Service Bus-témakörben való `endpointType` `serviceBusTopic` közzétételh
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>A tárolási várólisták beállítása célként
+## <a name="set-up-storage-queues-as-a-destination"></a>Tárolási várólisták beállítása célhelyként
 
-A tárolóvárólistában való közzétételhez állítsa be a `endpointType` következőt, `storageQueue` és adja meg:
+A Storage-üzenetsor közzétételéhez állítsa be a `endpointType` `storageQueue` következőt:
 
-* queueName: Annak a tárolóvárólistának a neve, amelynek közzé teszi a közzétételt.
-* connectionString: A storage-várólista által tárolt tárfiók kapcsolati karakterlánca.
+* queueName: az a tárolási várólista neve, amelyet közzé szeretne tennie.
+* connectionString: a Storage-fiókhoz tartozó kapcsolati sztring a tárolási üzenetsor.
 
     >[!NOTE]
-    > Unline Event Hubs, Service Bus várólisták, és a Service Bus-témakörök, a tárolási várólisták használt kapcsolati karakterlánc nem entitásspecifikus. Ehelyett meg kell, de a kapcsolati karakterlánc a tárfiók.
+    > A Event Hubs, Service Bus a várólisták és a Service Bus témakörök nem használhatók, mert a tárolási várólistákhoz használt kapcsolatok karakterlánca nem entitás-specifikus. Ehelyett a Storage-fiókhoz tartozó kapcsolatok karakterláncát kell megadnia.
 
     ```json
         {

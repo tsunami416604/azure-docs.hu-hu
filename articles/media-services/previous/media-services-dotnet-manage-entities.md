@@ -1,6 +1,6 @@
 ---
-title: Eszközök és kapcsolódó entitások kezelése a Media Services .NET SDK szolgáltatással
-description: Ismerje meg, hogyan kezelheti az eszközöket és a kapcsolódó entitásokat a Media Services SDK for .NET szolgáltatással.
+title: Eszközök és kapcsolódó entitások kezelése Media Services .NET SDK-val
+description: Ismerje meg, hogyan kezelheti az eszközöket és a kapcsolódó entitásokat a .NET-hez készült Media Services SDK-val.
 author: juliako
 manager: femila
 editor: ''
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251140"
 ---
-# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Eszközök és kapcsolódó entitások kezelése a Media Services .NET SDK szolgáltatással
+# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Eszközök és kapcsolódó entitások kezelése Media Services .NET SDK-val
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
-> * [Többi](media-services-rest-manage-entities.md)
+> * [REST](media-services-rest-manage-entities.md)
 > 
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez a témakör bemutatja, hogyan kezelheti az Azure Media Services-entitásokat a .NET használatával.
+Ez a témakör bemutatja, hogyan kezelheti Azure Media Services entitásokat a .NET-tel.
 
-2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. 2017. április 1-jén például a fiókban lévő bármely feladatrekord automatikusan törlődik. Ha archiválnia kell a feladat/feladat adatait, használhatja a jelen témakörben leírt kódot.
+2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1-jén a fiókban lévő minden olyan feladatra vonatkozó rekordot, amely a 2016 december 31-én régebbi, automatikusan törlődik. Ha archiválni szeretné a feladat/feladat adatait, használhatja a jelen témakörben ismertetett kódot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
+Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
-## <a name="get-an-asset-reference"></a>Eszközhivatkozás beszerzése
-Gyakori feladat egy meglévő eszközre való hivatkozás beszerzése a Media Servicesszolgáltatásban. A következő kód példa bemutatja, hogyan kaphat egy eszköz hivatkozást a kiszolgáló környezeti objektum eszközök gyűjteménye alapján egy eszköz azonosító. A következő kód példa egy Linq lekérdezést használ egy meglévő IAsset-objektumra való hivatkozás lekéréséhez.
+## <a name="get-an-asset-reference"></a>Tárgyieszköz-hivatkozás beszerzése
+Gyakori feladat, hogy a Media Services egy meglévő eszközre mutató hivatkozást kapjon. A következő mintakód bemutatja, hogyan kérhető le egy eszköz-hivatkozás a kiszolgálói környezeti objektum assets gyűjteményéből az eszköz azonosítója alapján. A következő kódrészlet egy LINQ-lekérdezést használ egy meglévő IAsset-objektumra mutató hivatkozás beszerzéséhez.
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -58,7 +58,7 @@ Gyakori feladat egy meglévő eszközre való hivatkozás beszerzése a Media Se
 ```
 
 ## <a name="list-all-assets"></a>Az összes eszköz listázása
-A storage-ban lévő eszközök számának növekedésével hasznos lehet az eszközök listázása. A következő kód példa bemutatja, hogyan kell iterálni a kiszolgálói környezet objektum eszközök gyűjteménye. Minden egyes eszköz, a kód példa is írja néhány tulajdonság értékeit a konzolra. Például minden eszköz sok médiafájlt tartalmazhat. A példakód az egyes eszközökhöz társított összes fájlt kiírja.
+Mivel a tárhelyen lévő eszközök száma növekszik, hasznos lehet az eszközök listázása. A következő mintakód bemutatja, hogyan lehet megismételni az eszközök gyűjteményét a kiszolgáló környezeti objektumán. Az egyes adategységek esetében a kód példa a tulajdonságok egyes értékeit is beírja a-konzolra. Az egyes eszközök például több médiafájlt is tartalmazhatnak. A kód például az egyes eszközökhöz társított összes fájlt kiírja.
 
 ```csharp
     static void ListAssets()
@@ -98,11 +98,11 @@ A storage-ban lévő eszközök számának növekedésével hasznos lehet az esz
     }
 ```
 
-## <a name="get-a-job-reference"></a>Álláshivatkozás beszerezni
+## <a name="get-a-job-reference"></a>Feladatok hivatkozásának beolvasása
 
-Ha a Media Services-kódban dolgozik a feldolgozási feladatokkal, gyakran kell egy azonosítón alapuló meglévő feladatra mutató hivatkozást kapnia. A következő kód példa bemutatja, hogyan lehet egy iJob-objektumra mutató hivatkozást beszerezni a Feladatok gyűjteményből.
+Ha Media Services kódban dolgozik a feldolgozási feladatokkal, gyakran egy azonosító alapján kell megszereznie egy meglévő feladatra mutató hivatkozást. A következő mintakód bemutatja, hogyan kérhető le egy IJob objektumra mutató hivatkozás a feladatok gyűjteményből.
 
-Előfordulhat, hogy egy hosszú ideig futó kódolási feladat indításakor álláshivatkozást kell beszereznie, és ellenőriznie kell a feladat állapotát egy szálon. Ilyen esetekben, amikor a metódus visszatér egy szál, be kell olvasnia egy feladatra frissített hivatkozást.
+Előfordulhat, hogy a hosszú ideig futó kódolási feladatok elindításához meg kell adnia egy feladatot, és egy szálon ellenőriznie kell a feladatok állapotát. Ilyen esetekben, ha a metódus egy szálból tér vissza, a feladatokra vonatkozó frissített hivatkozást kell lekérnie.
 
 ```csharp
     static IJob GetJob(string jobId)
@@ -120,10 +120,10 @@ Előfordulhat, hogy egy hosszú ideig futó kódolási feladat indításakor ál
     }
 ```
 
-## <a name="list-jobs-and-assets"></a>Állások és eszközök listázása
-Fontos kapcsolódó feladat az eszközök listázása a hozzájuk tartozó feladattal a Media Services szolgáltatásban. A következő kód példa bemutatja, hogyan kell felsorolni az egyes IJob-objektumok, majd minden feladat, megjeleníti a feladat tulajdonságait, az összes kapcsolódó feladatok, az összes bemeneti eszközök és az összes kimeneti eszközök. A példában szereplő kód számos más feladathoz is hasznos lehet. Ha például egy vagy több korábban futtatott kódolási feladat kimeneti eszközeit szeretné felsorolni, ez a kód bemutatja, hogyan érheti el a kimeneti eszközöket. Ha egy kimeneti eszközre hivatkozik, a tartalmat letöltheti vagy URL-eket adhat meg más felhasználóknak vagy alkalmazásoknak. 
+## <a name="list-jobs-and-assets"></a>Feladatok és eszközök listázása
+Fontos szempont, hogy az eszközöket a társított feladattal rendelkező Media Services sorolja fel. A következő mintakód bemutatja, hogyan listázhatja az egyes IJob objektumokat, majd minden egyes feladathoz megjelenítheti a feladattal kapcsolatos tulajdonságokat, az összes kapcsolódó feladatot, az összes bemeneti eszközt és a kimeneti eszközöket. Az ebben a példában szereplő kód számos más feladathoz is hasznos lehet. Ha például egy vagy több korábban futtatott kódolási feladatból szeretné kilistázni a kimeneti eszközöket, akkor ez a kód azt mutatja be, hogyan férhet hozzá a kimeneti eszközökhöz. Ha egy kimeneti objektumra mutató hivatkozással rendelkezik, a tartalmat letöltheti más felhasználók vagy alkalmazások számára, vagy URL-címeket is biztosíthat. 
 
-Az eszközök szállításának lehetőségeiről további információt [az Eszközök szállítása a Media Services SDK for .NET szolgáltatással című témakörben talál.](media-services-deliver-streaming-content.md)
+További információ az eszközök kézbesítési lehetőségeiről: [eszközök kézbesítése a .net-hez készült Media Services SDK-val](media-services-deliver-streaming-content.md).
 
 ```csharp
     // List all jobs on the server, and for each job, also list 
@@ -202,10 +202,10 @@ Az eszközök szállításának lehetőségeiről további információt [az Esz
     }
 ```
 
-## <a name="list-all-access-policies"></a>Az összes hozzáférési házirend listázása
-A Media Services ben hozzáférési szabályzatot definiálhat egy eszközön vagy annak fájljain. A hozzáférési házirend határozza meg egy fájl vagy egy eszköz engedélyeit (milyen típusú hozzáférés és időtartam). A Media Services-kódban általában egy hozzáférési szabályzatot úgy határoz meg, hogy létrehoz egy IAccessPolicy objektumot, majd társítja azt egy meglévő eszközhöz. Ezután hozzon létre egy ILocator objektumot, amely lehetővé teszi, hogy közvetlen hozzáférést biztosítson az eszközökhöz a Media Services-ben. A dokumentációs sorozatot kísérő Visual Studio-projekt számos kódpéldát tartalmaz, amelyek bemutatják, hogyan hozhat létre és rendelhet hozzá hozzáférési szabályzatokat és helymeghatározókat az eszközökhöz.
+## <a name="list-all-access-policies"></a>Az összes hozzáférési szabályzat listázása
+Media Services a hozzáférési házirendet megadhatja egy eszközön vagy annak fájljain. A hozzáférési házirend határozza meg egy fájl vagy eszköz engedélyeit (a hozzáférés típusát és az időtartamot). A Media Services-kódban általában egy IAccessPolicy objektum létrehozásával definiál egy hozzáférési szabályzatot, majd egy meglévő eszközzel társítja azt. Ezután létrehoz egy ILocator objektumot, amely lehetővé teszi, hogy közvetlen hozzáférést biztosítson a Media Services lévő eszközökhöz. A dokumentációs sorozathoz tartozó Visual Studio-projekt több olyan kódrészletet tartalmaz, amelyek bemutatják, hogyan hozhat létre és rendelhet hozzá hozzáférési házirendeket és lokátorokat az eszközökhöz.
 
-A következő példa kód bemutatja, hogyan listázhatja a kiszolgáló összes hozzáférési házirendét, és megmutatja az egyes engedélyek típusát. A hozzáférési házirendek megtekintésének másik hasznos módja, ha felsorolja a kiszolgálón található összes ILocator objektumot, majd minden lokátor esetében az AccessPolicy tulajdonság használatával listázhatja a kapcsolódó hozzáférési házirendet.
+A következő mintakód bemutatja, hogyan listázhatja az összes hozzáférési házirendet a kiszolgálón, és megjeleníti az egyesekhez társított engedélyek típusát. A hozzáférési szabályzatok megtekintésének egy másik hasznos módja a kiszolgálón lévő összes ILocator listázása, majd az egyes lokátorok esetében a társított hozzáférési szabályzatot a saját AccessPolicy tulajdonságával is listázhatja.
 
 ```csharp
     static void ListAllPolicies()
@@ -222,12 +222,12 @@ A következő példa kód bemutatja, hogyan listázhatja a kiszolgáló összes 
     }
 ```
     
-## <a name="limit-access-policies"></a>Hozzáférési házirendek korlátozása 
+## <a name="limit-access-policies"></a>Hozzáférési szabályzatok korlátozása 
 
 >[!NOTE]
 > A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. 
 
-Létrehozhat például egy általános szabályzatkészletet a következő kóddal, amely csak egyszer futna az alkalmazásban. Az azonosítókat naplózhatja egy naplófájlba későbbi használatra:
+Létrehozhat például egy általános szabályzatot a következő kóddal, amely csak egyszer fut az alkalmazásban. Az azonosítókat naplófájlba is naplózhatja későbbi használat céljából:
 
 ```csharp
     double year = 365.25;
@@ -241,7 +241,7 @@ Létrehozhat például egy általános szabályzatkészletet a következő kódd
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 ```
 
-Ezután a kódban lévő azonosítókat a következőkkel használhatja:
+Ezután használhatja a kód meglévő azonosítóit a következőhöz hasonló módon:
 
 ```csharp
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
@@ -265,12 +265,12 @@ Ezután a kódban lévő azonosítókat a következőkkel használhatja:
     Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
 ```
 
-## <a name="list-all-locators"></a>Az összes lokátor felsorolása
-A lokátor egy URL-cím, amely közvetlen elérési utat biztosít egy eszköz eléréséhez, valamint az eszközhöz a lokátor társított hozzáférési szabályzata által meghatározott engedélyeket. Minden eszköz rendelkezhet egy iLocator-objektumok gyűjteménye a Lokátorok tulajdonságához társítva. A kiszolgálókörnyezet rendelkezik egy lokátorok gyűjteményével is, amely tartalmazza az összes lokátort.
+## <a name="list-all-locators"></a>Az összes lokátor listázása
+A lokátor egy URL-cím, amely közvetlen elérési utat biztosít az eszköz eléréséhez, valamint az eszközhöz a lokátorhoz tartozó hozzáférési házirend által meghatározott engedélyekkel. Minden eszközhöz hozzá lehet rendelni egy ILocator-objektumot a lokátorok tulajdonságában. A kiszolgáló környezetében a lokátorok gyűjteménye is megtalálható, amely tartalmazza az összes lokátort.
 
-A következő kódpélda a kiszolgáló összes lokátorát sorolja fel. Minden lokátor, azt mutatja, a kapcsolódó eszköz és hozzáférési szabályzat azonosítóját. Azt is megjeleníti az engedélyek típusát, a lejárati dátumot, és a teljes elérési utat az eszközhöz.
+A következő kódrészlet a kiszolgálón található összes lokátort listázza. Minden lokátornál megjelenik a kapcsolódó objektum és hozzáférési szabályzat azonosítója. Emellett megjeleníti az engedélyek típusát, a lejárati dátumot, valamint az eszköz teljes elérési útját.
 
-Vegye figyelembe, hogy egy eszköz lokátor elérési útja csak egy alap URL-címet az eszközhöz. Ha közvetlen elérési utat szeretne létrehozni az egyes fájlokhoz, amelyeket egy felhasználó vagy alkalmazás megkereshet, a kódnak hozzá kell adnia az adott fájl elérési útját a lokátor elérési úthoz. Ennek módjáról az [Eszközök szállítása a Media Services SDK for .NET szolgáltatással](media-services-deliver-streaming-content.md)című témakörben olvashat bővebben.
+Vegye figyelembe, hogy egy adott eszközhöz tartozó lokátor elérési útja csak az objektum alap URL-címe. Ha egy felhasználó vagy alkalmazás által megkereshető egyes fájlokhoz közvetlen elérési utat szeretne létrehozni, a kódnak hozzá kell adnia a megadott elérési utat a lokátor elérési útjához. Ennek módjáról további információt a következő témakörben talál: [eszközök kézbesítése a .net-hez készült Media Services SDK-val](media-services-deliver-streaming-content.md).
 
 ```csharp
     static void ListAllLocators()
@@ -292,10 +292,10 @@ Vegye figyelembe, hogy egy eszköz lokátor elérési útja csak egy alap URL-c�
     }
 ```
 
-## <a name="enumerating-through-large-collections-of-entities"></a>Számbavétel entitások nagy gyűjteményein keresztül
-Entitások lekérdezésekénél, egyszerre legfeljebb 1000 entitás tért vissza, mert a nyilvános REST v2 1000-es eredményeket korlátozza a lekérdezési eredményeket. A Kihagyás és a Take műveletet kell használnia, amikor entitások nagy gyűjteményein keresztül kell felsorolnia. 
+## <a name="enumerating-through-large-collections-of-entities"></a>Az entitások nagy gyűjteményének enumerálása
+Az entitások lekérdezése esetén a rendszer egy legfeljebb 1000 entitást ad vissza, mert a nyilvános REST v2 a lekérdezés eredményét 1000 eredményre korlátozza. A kihagyás és az igény használata az entitások nagy gyűjteményén keresztül. 
 
-A következő függvény végighalad a megadott Media Services-fiók összes feladatán. A Media Services 1000 feladatot ad vissza a Feladatgyűjteményben. A függvény a Kihagyás és a Take funkciót használja annak érdekében, hogy az összes feladat fel legyen sorolva (abban az esetben, ha több mint 1000 feladat van a fiókjában).
+A következő függvény a megadott Media Services fiókban lévő összes feladaton keresztül hurkokat mutat be. A Media Services a feladatok gyűjteményében a 1000-es feladatokat adja vissza. A függvény kihagyja a kihagyást, és gondoskodik arról, hogy minden feladat enumerálásra kerüljön (ha a fiókjában több mint 1000 feladat van).
 
 ```csharp
     static void ProcessJobs()
@@ -336,7 +336,7 @@ A következő függvény végighalad a megadott Media Services-fiók összes fel
 ```
 
 ## <a name="delete-an-asset"></a>Eszköz törlése
-A következő példa töröl egy eszközt.
+A következő példa töröl egy objektumot.
 
 ```csharp
     static void DeleteAsset( IAsset asset)
@@ -351,10 +351,10 @@ A következő példa töröl egy eszközt.
     }
 ```
 
-## <a name="delete-a-job"></a>Feladat törlése
-Egy feladat törléséhez ellenőriznie kell a feladat állapotát az állapot tulajdonságban jelzettmódon. A befejezett vagy visszavont feladatok törölhetők, míg az egyes más állapotokban lévő feladatokat, például a várólistán lévő, ütemezett vagy feldolgozási feladatokat először meg kell szakítani, majd törölhetők.
+## <a name="delete-a-job"></a>Feladatok törlése
+A feladatok törléséhez ellenőriznie kell a feladatok állapotát az állapot tulajdonságban jelzett módon. A befejezett vagy megszakított feladatok törölhetők, míg bizonyos más állapotokban lévő feladatok, például az üzenetsor-kezelés, az ütemezett vagy a feldolgozás, először meg kell szüntetni, majd törölhetik őket.
 
-A következő kódpélda egy feladat törlésének módját mutatja be a feladatállapotok ellenőrzésével, majd az állapot befejezésekor vagy megszakításakor történő törléssel. Ez a kód a témakör előző szakaszát, a feladatra mutató hivatkozás megszerzéséhez: Álláshivatkozás beszerzése.
+A következő kódrészlet egy metódust mutat be a feladatok törléséhez a feladatok állapotának ellenőrzésével, majd az állapot befejezésének vagy megszakításának törlésekor. Ez a kód a következő témakör előző szakasza alapján használható a feladatokra való hivatkozás beszerzéséhez: feladatok hivatkozásának beolvasása.
 
 ```csharp
     static void DeleteJob(string jobId)
@@ -404,8 +404,8 @@ A következő kódpélda egy feladat törlésének módját mutatja be a feladat
 ```
 
 
-## <a name="delete-an-access-policy"></a>Hozzáférési házirend törlése
-A következő kód példa bemutatja, hogyan lehet egy hivatkozást egy házirend-azonosító alapján egy hozzáférési szabályzatra, majd törölni a házirendet.
+## <a name="delete-an-access-policy"></a>Hozzáférési szabályzat törlése
+A következő mintakód bemutatja, hogyan kérhető le egy házirend-azonosítón alapuló hozzáférési házirendre mutató hivatkozás, majd törölhető a szabályzat.
 
 ```csharp
     static void DeleteAccessPolicy(string existingPolicyId)

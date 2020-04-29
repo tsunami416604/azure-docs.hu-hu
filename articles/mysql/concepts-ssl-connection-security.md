@@ -1,32 +1,32 @@
 ---
 title: SSL-kapcsolat – Azure Database for MySQL
-description: Információ az Azure Database MySQL-hez és a kapcsolódó alkalmazásokmegfelelő SSL-kapcsolatokhoz való konfigurálásához
+description: Információk a Azure Database for MySQL és a társított alkalmazások az SSL-kapcsolatok megfelelő használatához való konfigurálásához
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 6a12ef851823ab5eff2b11905d05be1950c82ef0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474271"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>SSL-kapcsolat a MySQL-alapú Azure Databaseben
+# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>SSL-kapcsolat a Azure Database for MySQL
 
-Az Azure Database for MySQL támogatja az adatbázis-kiszolgáló ügyfélalkalmazásokhoz való csatlakoztatását a Secure Sockets Layer (SSL) használatával. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
+A Azure Database for MySQL a SSL (SSL) használatával támogatja az adatbázis-kiszolgáló és az ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
-## <a name="ssl-default-settings"></a>SSL alapértelmezett beállításai
+## <a name="ssl-default-settings"></a>Alapértelmezett SSL-beállítások
 
-Alapértelmezés szerint az adatbázis-szolgáltatást úgy kell konfigurálni, hogy SSL-kapcsolatokat igényeljen a MySQL-hez való csatlakozáskor.  Javasoljuk, hogy amikor csak lehetséges, ne tiltsa le az SSL opciót.
+Alapértelmezés szerint az adatbázis-szolgáltatást úgy kell konfigurálni, hogy a MySQL-hez való csatlakozáskor SSL-kapcsolatokat igényeljen.  Javasoljuk, hogy ha lehetséges, ne tiltsa le az SSL-beállítást.
 
-Új Azure-adatbázis kiépítése a MySQL-kiszolgáló az Azure Portalon és a CLI-n keresztül, ssl-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
+Amikor új Azure Database for MySQL kiszolgálót épít ki a Azure Portal és a parancssori felületen, az SSL-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
 
-A különböző programozási nyelvek csatlakozási karakterláncai az Azure Portalon jelennek meg. Ezek a kapcsolati karakterláncok tartalmazzák az adatbázishoz való csatlakozáshoz szükséges SSL-paramétereket. Az Azure Portalon válassza ki a kiszolgálót. A **Beállítások** fejléc alatt jelölje ki a **Kapcsolati karakterláncokat**. Az SSL-paraméter az összekötőtől függően változik, például "ssl=true" vagy "sslmode=require" vagy "sslmode=required" és egyéb változatok.
+A különböző programozási nyelvekhez tartozó kapcsolatok karakterláncai a Azure Portal láthatók. Ezek a kapcsolati karakterláncok tartalmazzák az adatbázishoz való kapcsolódáshoz szükséges SSL-paramétereket. A Azure Portal válassza ki a kiszolgálót. A **Beállítások** fejléc alatt válassza ki a **kapcsolatok karakterláncait**. Az SSL-paraméter az összekötőtől függően változik, például: "SSL = true" vagy "sslmode = require" vagy "sslmode = Required" és egyéb variációk.
 
-Az SSL-kapcsolat engedélyezéséről és letiltásáról az alkalmazás fejlesztése során az [SSL konfigurálása](howto-configure-ssl.md)című dokumentumban olvashat.
+Ha szeretné megtudni, hogyan engedélyezheti vagy tilthatja le az SSL-kapcsolatokat az alkalmazások fejlesztésekor, tekintse meg az [SSL konfigurálását](howto-configure-ssl.md)ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-[Kapcsolatkönyvtárak a MySQL-hez készült Azure Database kapcsolattárakhoz](concepts-connection-libraries.md)
+[Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md)

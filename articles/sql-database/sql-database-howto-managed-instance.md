@@ -1,6 +1,6 @@
 ---
 title: Felügyelt példány konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure SQL Database felügyelt példányát.
+description: Megtudhatja, hogyan konfigurálhatja és felügyelheti Azure SQL Database felügyelt példányát.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,39 +12,39 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80638034"
 ---
-# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány használata az Azure SQL Database-ben
+# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány használata Azure SQL Database
 
-Ebben a cikkben különböző útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a felügyelt példány kezelésében és konfigurálásában.
+Ebben a cikkben különböző útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a felügyelt példányok kezelésében és konfigurálásában.
 
 ## <a name="migration"></a>Migrálás
 
-- [Áttelepítés felügyelt példányra](sql-database-managed-instance-migrate.md) – Ismerje meg az ajánlott áttelepítési folyamatot és a felügyelt példányba való áttelepítéshez szükséges eszközöket.
+- [Migrálás felügyelt példányra](sql-database-managed-instance-migrate.md) – az ajánlott áttelepítési folyamat és a felügyelt példányra való áttelepítéshez szükséges eszközök megismerése.
 
-- [TDE-tanúsítvány áttelepítése felügyelt példányba](sql-database-managed-instance-migrate-tde-certificate.md) – Ha az SQL Server-adatbázis átlátszó adattitkosítással (TDE) védett, akkor át kell telepítenie azokat a tanúsítványokat, amelyet egy felügyelt példány használhat az Azure-ban visszaállítani kívánt biztonsági másolat visszafejtéséhez.
+- [TDE-tanúsítvány migrálása felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md) – ha a SQL Server-adatbázist transzparens adattitkosítással (TDE) védik, át kell telepítenie azt a tanúsítványt, amelyet a felügyelt példányok használhatnak az Azure-ban visszaállítani kívánt biztonsági mentés visszafejtéséhez.
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
 
-- [A felügyelt példány alhálózatának méretét határozza meg](sql-database-managed-instance-determine-size-vnet-subnet.md) – A felügyelt példány olyan alhálózatba kerül, amely nem méretezhető át, miután hozzáadja a belső erőforrásokat. Ezért ki kell számítania, hogy milyen IP-címtartományra lenne szükség az alhálózathoz az alhálózatban telepíteni kívánt példányok számától és típusától függően.
-- [Hozzon létre új virtuális hálózatot és alhálózatot egy felügyelt példányhoz](sql-database-managed-instance-create-vnet-subnet.md) – az Azure virtuális hálózatot és az alhálózatot, ahol a felügyelt példányokat telepíteni szeretné, az [itt leírt hálózati követelményeknek](sql-database-managed-instance-connectivity-architecture.md#network-requirements)megfelelően kell konfigurálni. Ebben az útmutatóban megtalálja az új virtuális hálózat és a felügyelt példányok megfelelően konfigurált alhálózatának létrehozásának legegyszerűbb módját.
-- [Konfigurálja a meglévő virtuális hálózatot és alhálózatot egy felügyelt példányhoz](sql-database-managed-instance-configure-vnet-subnet.md) – ha a meglévő virtuális hálózatot és alhálózatot a felügyelt példányok belső telepítésére szeretné konfigurálni, itt megtalálhatja a [hálózati követelményeket](sql-database-managed-instance-connectivity-architecture.md#network-requirements) és az alhálózatot a követelményeknek megfelelően konfiguráló parancsfájlt.
-- [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md) – egyéni DNS-t kell konfigurálnia, ha az egyéni tartományok külső erőforrásait a felügyelt példányból szeretné elérni a db mail profilok csatolt kiszolgálóján keresztül.
-- [Hálózati konfiguráció szinkronizálása](sql-database-managed-instance-sync-network-configuration.md) – Előfordulhat, hogy bár [integrálta az alkalmazást egy Azure virtuális hálózattal,](../app-service/web-sites-integrate-with-vnet.md)&#39;nem hozhat létre kapcsolatot egy felügyelt példányhoz. Az egyik dolog, amit megpróbálhat, hogy frissítse a hálózati konfigurációt a szolgáltatási csomaghoz.
-- [Felügyeleti végpont IP-cím keresése](sql-database-managed-instance-find-management-endpoint-ip-address.md) – A felügyelt példány nyilvános végpontot használ felügyeleti célokra. A felügyeleti végpont IP-címét az itt leírt parancsfájl segítségével határozhatja meg.
-- [Ellenőrizze a beépített tűzfal védelme](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – A felügyelt példány védett beépített tűzfal, amely lehetővé teszi a forgalmat csak a szükséges portokon. A beépített tűzfalszabályokat az útmutatóban ismertetett parancsfájl segítségével ellenőrizheti és ellenőrizheti.
-- [Alkalmazások csatlakoztatása](sql-database-managed-instance-connect-app.md) – A felügyelt példány a saját privát Azure-virtuális hálózatában van elhelyezve, privát IP-címmel. Ismerje meg a különböző minták at az alkalmazások csatlakoztatása a felügyelt példányhoz.
+- [Felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md) – a felügyelt példány olyan alhálózatot helyez el, amely nem méretezhető, ha a benne lévő erőforrásokat hozzáadja. Ezért érdemes kiszámítani, hogy milyen IP-címtartományt kell megadni az alhálózatnak az alhálózatban telepíteni kívánt példányok számától és típusaitól függően.
+- [Hozzon létre új VNet és alhálózatot egy felügyelt példányhoz](sql-database-managed-instance-create-vnet-subnet.md) – az Azure VNet és az alhálózatot, ahol telepíteni kívánja a felügyelt példányokat, az [itt ismertetett hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements)szerint kell konfigurálni. Ebből az útmutatóból megtudhatja, hogyan hozhatja létre az új VNet és az alhálózatot megfelelően konfigurált felügyelt példányok számára.
+- [Meglévő VNet és alhálózat konfigurálása felügyelt példányhoz](sql-database-managed-instance-configure-vnet-subnet.md) – ha a meglévő VNet és alhálózatot úgy szeretné konfigurálni, hogy a felügyelt példányok telepítve legyenek, itt találhatja meg a [hálózati követelményeket](sql-database-managed-instance-connectivity-architecture.md#network-requirements) ellenőrző parancsfájlt, és a követelmények szerint konfigurálja az alhálózatot.
+- [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md) – egyéni DNS-t kell konfigurálnia, ha a felügyelt példányban lévő külső erőforrásokhoz szeretne hozzáférni az adatbázisbeli levelezési profilok csatolt kiszolgálóján keresztül.
+- [Hálózati konfiguráció szinkronizálása](sql-database-managed-instance-sync-network-configuration.md) – előfordulhat, hogy bár az [alkalmazást Azure-Virtual Network integrálta](../app-service/web-sites-integrate-with-vnet.md),&#39;t létesíthet kapcsolatot a felügyelt példányokkal. Az egyik lehetőség, hogy megpróbáljuk frissíteni a szolgáltatási csomag hálózati konfigurációját.
+- [Felügyeleti VÉGPONT IP-címének keresése](sql-database-managed-instance-find-management-endpoint-ip-address.md) – a felügyelt példány nyilvános végpontot használ felügyeleti célokra. A felügyeleti végpont IP-címét az itt ismertetett parancsfájl használatával határozhatja meg.
+- A [beépített tűzfalbeállítások ellenőrzése](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – a felügyelt példány olyan beépített tűzfallal védett, amely csak a szükséges portokon engedélyezi a forgalmat. Az útmutatóban ismertetett parancsfájllal ellenőrizheti és ellenőrizheti a beépített tűzfalszabályok szabályait.
+- Az [alkalmazások összekötése](sql-database-managed-instance-connect-app.md) – a felügyelt példány a saját privát Azure-VNet kerül, privát IP-címmel. Ismerje meg az alkalmazások felügyelt példányhoz való csatlakoztatásának különböző mintáit.
 
 ## <a name="feature-configuration"></a>Szolgáltatás konfigurációja
 
-- [A tranzakciós replikáció](replication-with-sql-database-managed-instance.md) lehetővé teszi az adatok replikálását a felügyelt példányok között, vagy a helyszíni SQL Server rendszerből egy felügyelt példányba, és fordítva. A tranzakcióreplikáció használatáról és konfigurálásáról ebben az útmutatóban talál további információt.
-- [Fenyegetésészlelés konfigurálása](sql-database-managed-instance-threat-detection.md) – [a fenyegetésészlelés](sql-database-threat-detection-overview.md) egy beépített Azure SQL Database-szolgáltatás, amely észleli a különböző potenciális támadásokat, például az SQL Injection vagy a gyanús helyekről való hozzáférést. Ebben az útmutatóban megtudhatja, hogyan engedélyezheti és konfigurálhatja a felügyelt példány [fenyegetésészlelését.](sql-database-threat-detection-overview.md)
-- [Riasztások létrehozása](sql-database-managed-instance-alerts.md) lehetővé teszi, hogy riasztások beállítása a figyelt metrikák, például a CPU-kihasználtság, a tárhelyfelhasználás, IOPS és mások felügyelt példány. Ebben az útmutatóban megtudhatja, hogyan engedélyezheti és konfigurálhatja a felügyelt példány riasztásait.
+- A [tranzakciós replikáció](replication-with-sql-database-managed-instance.md) lehetővé teszi, hogy az adatait felügyelt példányok között, vagy a helyszíni SQL Server egy felügyelt példányra replikálja, és fordítva. További információ a tranzakciós replikáció használatáról és konfigurálásáról ebben az útmutatóban.
+- A [fenyegetések észlelésének konfigurálása](sql-database-managed-instance-threat-detection.md) – a [fenyegetések észlelése](sql-database-threat-detection-overview.md) egy beépített Azure SQL Database funkció, amely különböző lehetséges támadásokat, például SQL-befecskendezést vagy gyanús helyekről való hozzáférést észlel. Ebből az útmutatóból megtudhatja, hogyan engedélyezheti és konfigurálhatja a [fenyegetések észlelését](sql-database-threat-detection-overview.md) felügyelt példányok esetén.
+- A [riasztások létrehozása](sql-database-managed-instance-alerts.md) lehetővé teszi a riasztások beállítását a figyelt mérőszámokon, például a processzor kihasználtsága, a tárterület-felhasználás, a IOPS és mások számára a felügyelt példányok esetében. Ebből az útmutatóból megtudhatja, hogyan engedélyezheti és konfigurálhatja a felügyelt példányok riasztásait.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [egyes adatbázisok útmutatóiról](sql-database-howto-single-database.md)
+- További információ [az önálló adatbázisok](sql-database-howto-single-database.md) útmutatóinak megismeréséről

@@ -1,6 +1,6 @@
 ---
-title: A dinamikus SQL használata
-description: Tippek a dinamikus SQL-t használó fejlesztési megoldásokhoz a Synapse SQL-készletben.
+title: Dinamikus SQL használata
+description: Tippek a dinamikus SQL-t használó fejlesztési megoldásokhoz a szinapszis SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a9280bb8153204f86096cf8249ff053bee3f71cc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633526"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dinamikus SQL a Synapse SQL-készletben
+# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dinamikus SQL a szinapszis SQL-készletben
 
-Ez a cikk a dinamikus SQL-készletben dinamikus SQL-t használó fejlesztési megoldásokra vonatkozó tippeket tartalmazza.
+Ez a cikk az SQL-készletben található dinamikus SQL-t használó fejlesztési megoldásokhoz nyújt tippeket.
 
 ## <a name="dynamic-sql-example"></a>Dinamikus SQL-példa
 
-Az SQL-készlet alkalmazáskódjának fejlesztése során előfordulhat, hogy dinamikus SQL-t kell használnia a rugalmas, általános és moduláris megoldások biztosításához. Az SQL-készlet jelenleg nem támogatja a blobadat-típusokat.
+Az SQL-készlet kódjának fejlesztésekor előfordulhat, hogy dinamikus SQL-t kell használnia a rugalmas, általános és moduláris megoldások biztosításához. Az SQL-készlet jelenleg nem támogatja a blob-adattípusokat.
 
-A blobadat-típusok támogatása korlátozhatja a karakterláncok méretét, mivel a blob-adattípusok varchar(max) és nvarchar(max) típusokat is tartalmaznak.
+A blob-adattípusok nem támogatják a karakterláncok méretét, mivel a blob-adattípusok a varchar (max) és a nvarchar (max) típusokat is tartalmazzák.
 
-Ha ezeket a típusokat használta az alkalmazáskódban nagy karakterláncok létrehozásához, fel kell bontania a kódot adattömbökre, és helyette az EXEC utasítást kell használnia.
+Ha már használta ezeket a típusokat az alkalmazás kódjában nagyméretű karakterláncok létrehozásához, akkor a kódot adattömbökbe kell bontania, és ehelyett az EXEC utasítást kell használnia.
 
 Egy egyszerű példa:
 
@@ -40,11 +40,11 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Ha a karakterlánc rövid, [a sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a szokásos módon is használhatja.
+Ha a karakterlánc rövid, akkor a [Sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a megszokott módon használhatja.
 
 > [!NOTE]
-> A dinamikus SQL-ként végrehajtott utasításokra továbbra is vonatkozik az összes T-SQL érvényesítési szabály.
+> A dinamikus SQLként végrehajtott utasítások továbbra is az összes T-SQL érvényesítési szabály hatálya alá esnek.
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

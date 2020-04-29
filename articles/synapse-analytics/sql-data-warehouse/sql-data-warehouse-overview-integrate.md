@@ -1,6 +1,6 @@
 ---
 title: Integrált megoldások készítése
-description: Megoldáseszközök és partnerek, amelyek integrálhatók a Synapse SQL-készlettel.
+description: A szinapszis SQL-készlettel integrált megoldási eszközök és partnerek.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,54 +12,54 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633144"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Egyéb szolgáltatások integrálása az SQL Analytics adattárházával
+# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Más szolgáltatások integrálása SQL Analytics-adattárházba
 
-Az Azure Synapse Analytics-en belüli SQL Analytics-funkció lehetővé teszi a felhasználók számára, hogy integrálódjanak számos más azure-beli szolgáltatással. Az SQL Analytics használatával adattárházat hozhat létre az SQL Pool-erőforráson keresztül, amely ezután számos további szolgáltatást használhat, amelyek közül néhány a következőket tartalmazza:
+Az Azure szinapszis Analyticsen belüli SQL Analytics funkció lehetővé teszi a felhasználók számára az Azure számos más szolgáltatásának integrálását. Az SQL Analytics használatával létrehozhat egy adattárházat az SQL-készlet erőforrásán keresztül, amely több további szolgáltatást is használhat, amelyek némelyike többek között a következőkre használható:
 
 * Power BI
 * Azure Data Factory
 * Azure Machine Learning
 * Azure Stream Analytics
 
-Az Azure-beli integrációs szolgáltatásokkal kapcsolatos további információkért tekintse meg az [integrációs partnerek](sql-data-warehouse-partner-data-integration.md)ről szóló cikket.
+Az Azure-beli integrációs szolgáltatásokkal kapcsolatos további információkért tekintse át az [integrációs partnerek](sql-data-warehouse-partner-data-integration.md)című cikket.
 
 ## <a name="power-bi"></a>Power BI
 
-A Power BI-integráció lehetővé teszi az adattárház számítási teljesítményének és a Power BI dinamikus jelentéskészítési és vizualizációs kombinálásának kombinálását. A Power BI-integráció jelenleg a következőket tartalmazza:
+Az Power BI integráció lehetővé teszi az adatraktár számítási teljesítményének összevonását a Power BI dinamikus jelentéskészítésével és vizualizációval. Power BI integráció jelenleg a következőket tartalmazza:
 
-* **Direct Connect:** Egy fejlettebb kapcsolat logikai leküldéses egy SQL-készlet használatával kiépített adattárház hoz létre. A lenyomás gyorsabb elemzést tesz lehetővé nagyobb léptékben.
-* **Megnyitás a Power BI-ban**: A "Megnyitás a Power BI-ban" gomb a power BI-nak továbbítja a példányadatokat a csatlakozás egyszerűbb módja érdekében.
+* **Közvetlen**kapcsolat: az SQL-készlettel kiépített adattárházak logikai pushdown való fejlettebb kapcsolata. A pushdown gyorsabb elemzést tesz lehetővé nagyobb méretekben.
+* **Megnyitás a Power BIban**: a "Megnyitás Power bi" gomb a példányok információit átadja a Power BInak a kapcsolódás egyszerűsített módjaként.
 
-További információt az [Integráció a Power BI-val](sql-data-warehouse-get-started-visualize-with-power-bi.md)vagy a Power BI [dokumentációjában](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/)talál.
+További információ: Integration [with Power bi](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power bi dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-Az Azure Data Factory egy felügyelt platformot biztosít a felhasználóknak összetett kinyerési és betöltési folyamatok létrehozásához. Az Azure Data Factory-val való SQL-készletintegráció a következőket tartalmazza:
+Azure Data Factory a felhasználók számára felügyelt platformot biztosít összetett kinyerési és betöltési folyamatok létrehozásához. Az SQL Pool Azure Data Factory-integrációja a következőket tartalmazza:
 
-* **Tárolt eljárások**: A tárolt eljárások végrehajtásának koordinálása.
-* **Másolás:** Az ADF segítségével helyezze át az adatokat az SQL-készletbe. Ez a művelet használhatja az ADF szabványos adatmozgatási mechanizmusát vagy a PolyBase-t a fedelek alatt.
+* **Tárolt eljárások**: a tárolt eljárások végrehajtásának összehangolása.
+* **Másolás**: használja az ADF-et az adatgyűjtés SQL-készletbe való áthelyezéséhez. Ez a művelet az ADF standard adatáthelyezési mechanizmusát vagy a borítók alá tartozó albaset is használhatja.
 
-További információ: [Integrálás az Azure Data Factory szolgáltatással](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakörben talál.
+További információ: [integráció a Azure Data Factorysal](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Az Azure Machine Learning egy teljes körűen felügyelt elemzési szolgáltatás, amely lehetővé teszi bonyolult modellek létrehozását a prediktív eszközök nagy készletével. Az SQL-készlet a modellek forrása és célja egyaránt támogatott, és a következő funkciókkal rendelkezik:
+A Azure Machine Learning egy teljes körűen felügyelt elemzési szolgáltatás, amely lehetővé teszi, hogy bonyolult modelleket hozzon létre a prediktív eszközök nagy készletével. Az SQL-készlet ezen modellek forrásaként és célként is támogatott, és a következő funkciókkal rendelkezik:
 
-* **Adatok olvasása:** A T-SQL-t az SQL-készlethez használva nagy méretekben hajtsa elő a modelleket.
-* **Adatok írása:** Véglegesítse a módosításokat bármely modellről az SQL-készletbe.
+* **Olvasási információk:** A T-SQL-T az SQL-készleten keresztül méretezheti a méretezési modelleken.
+* **Írási érték:** A változások bármely modellből visszakerülnek az SQL-készletbe.
 
-További információ: [Integrálható az Azure Machine Learningszolgáltatással című témakörben.](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+További információ: [integráció a Azure Machine Learningsal](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md).
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-Az Azure Stream Analytics egy összetett, teljes körűen felügyelt infrastruktúra az Azure Event Hubból létrehozott eseményadatok feldolgozásához és feldolgozásához.  Az SQL-készlettel való integráció lehetővé teszi az adatfolyam-adatfolyamadatok hatékony feldolgozását és tárolását a relációs adatok mellett, amelyek lehetővé teszik a mélyebb, fejlettebb elemzést.  
+A Azure Stream Analytics egy összetett, teljes körűen felügyelt infrastruktúra az Azure Event hub-ból generált események feldolgozásához és felhasználásához.  Az SQL-készlettel való integráció lehetővé teszi, hogy a folyamatos átvitelt és a fejlettebb elemzést is lehetővé tévő, a kapcsolódó adattovábbítási szolgáltatásokkal együtt hatékonyan dolgozza fel és tárolja  
 
-* **Munkahely kimenete:** A Stream Analytics-feladatok ból közvetlenül az SQL-készletbe küldhet kimenetet.
+* **Feladatok kimenete:** Kimenet küldése Stream Analytics-feladatokból közvetlenül az SQL-készletbe.
 
-További információ: [Integrálás az Azure Stream Analytics szolgáltatással](sql-data-warehouse-integrate-azure-stream-analytics.md)című témakörben talál.
+További információ: [integráció a Azure stream Analyticssal](sql-data-warehouse-integrate-azure-stream-analytics.md).

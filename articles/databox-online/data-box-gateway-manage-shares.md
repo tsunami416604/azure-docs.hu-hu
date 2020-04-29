@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265440"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
@@ -50,7 +50,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 5. Válassza ki a **tárolási szolgáltatást** a blokkblobok, lapblobok vagy fájlok közül. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adatok blokkblobokban legyenek tárolva az Azure-ban, ezért a **Blokkblob** lehetőséget választjuk. Ha a **Lapblob** lehetőséget választja, biztosítania kell az adatok 512 bájtos igazítását. A VHDX például mindig 512 bájtos igazítású.
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy az Azure Storage-fiók, amely használata nem rendelkezik a nemmódosíthatósági szabályzatok, ha egy Azure Stack Edge vagy Data Box Gateway eszközzel használja. További információt a [Blob Storage-alapú megváltoztathatatlansági házirendek beállítása és kezelése című témakörben talál.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)
+   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. A következő lépés attól függ, hogy SMB- vagy NFS-megosztást hozunk-e létre.
     - **SMB-megosztás létrehozásakor** – A **Teljes körű jogosultsággal rendelkező helyi felhasználó** mezőben válasszon az **Új létrehozása** és a **Meglévő használata** lehetőségek közül. Ha új helyi felhasználót hoz létre, adja meg a **felhasználónevet** és a **jelszót**, majd erősítse meg a jelszót. Ezzel hozzárendeli az engedélyeket a helyi felhasználóhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
@@ -88,7 +88,7 @@ A törlés végrehajtása után annak megfelelően frissül a megosztások list�
 A frissítési funkció lehetővé teszi a helyszíni megosztások tartalmának frissítését. A megosztások frissítésekor a rendszer keresést indít a legutóbbi frissítés óta a felhőbe feltöltött Azure-objektumok (például blobok és fájlok) azonosítására. Az eszközön található helyszíni megosztás tartalma ezt követően frissül ezekkel a fájlokkal. 
 
 > [!NOTE]
-> Az engedélyek és a hozzáférés-vezérlési listák (ACL-k) nem őrződnek meg a frissítési művelet során. 
+> Az engedélyek és hozzáférés-vezérlési listák (ACL-ek) nem őrződnek meg a frissítési művelet során. 
 
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
@@ -113,7 +113,7 @@ Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Por
 Hiba esetén a rendszer riasztást ad ki. A riasztás részletei között szerepel a hiba oka és a hibaelhárítási javaslat. A riasztás továbbá tartalmaz egy fájlra mutató hivatkozást is, amelyre rákattintva megtekintheti a teljes hibajegyzéket, azon fájlok listájával együtt, amelyek esetében a frissítési vagy törlési művelet meghiúsult.
 
 >[!IMPORTANT]
-> Ebben a kiadásban egyszerre csak egy megosztást frissítsen.
+> Ebben a kiadásban ne frissítsen egyszerre több megosztást.
 
 ## <a name="sync-storage-keys"></a>Tárkulcsok szinkronizálása
 
@@ -122,7 +122,7 @@ Ha a tárfiók kulcsai le lettek cserélve, akkor szinkronizálni kell a tárel�
 A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépéseket az Azure Portalon.
 
 1. Lépjen az erőforrás **Áttekintés** területére. 
-2. A megosztások listájából válassza ki és kattintson a szinkronizálandó tárfiókhoz társított megosztásra. Kattintson **a Tárolókulcs szinkronizálása gombra.** 
+2. A megosztások listájában válassza ki, majd kattintson a szinkronizálni kívánt Storage-fiókhoz társított megosztásra. Kattintson a **Storage-kulcs szinkronizálása**elemre. 
 
      ![1. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

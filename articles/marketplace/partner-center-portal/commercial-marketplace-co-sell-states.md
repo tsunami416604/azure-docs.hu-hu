@@ -1,6 +1,6 @@
 ---
-title: Állami és tartományi kódok társeladása | Azure Piactér
-description: Használja ezeket az állam- és tartománykódokat, amikor elérhetőségi adatokat ad meg az ajánlat co-sell oldalán.
+title: Az állam-és tartományi kódok közös értékesítése | Azure piactér
+description: Ezeket az állapot-és tartományi kódokat akkor használja, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,77 +8,77 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619363"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Állami és tartománykódok társeladása
+# <a name="co-sell-state-and-province-codes"></a>Az állam-és tartományi kódok közös értékesítése
 
-Adott esetben használja ezeket a kódokat, hogy megadja az állam/ tartomány adatait, amikor [elérhetőségi adatokat ad meg az ajánlat Co-sell oldalán.](commercial-marketplace-co-sell.md#contacts)
+Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak megadásához, amikor [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat](commercial-marketplace-co-sell.md#contacts)nyújt.
 
-## <a name="us-states-and-territories"></a>Amerikai államok és területek
+## <a name="us-states-and-territories"></a>Egyesült Államok és területek
 
-|   Állam és terület neve          |   Kód    |
+|   Állapot és terület neve          |   Kód    |
 |-------------------------------------|-----------|
-| Alabama                             | AMERIKAI-AL     |
-| Alaszka                              | Egyesült Államok-AK     |
-| Arizona                             | AMERIKAI-AZ     |
-| Arkansas                            | US-AR     |
-| Kalifornia                          | AMERIKAI-CA     |
-| Colorado                            | AMERIKAI-CO     |
-| Connecticut                         | AMERIKAI-CT     |
-| Delaware                            | AMERIKAI-DE     |
-| Florida                             | AMERIKAI-FL     |
-| Grúzia                             | Amerikai Egyesült Államok-GA     |
-| Hawaii                              | AMERIKAI-HI     |
-| Idaho                               | AMERIKAI-AZONOSÍTÓ     |
-| Illinois                            | US-IL     |
-| Indiana                             | US-IN     |
-| Iowa                                | AMERIKAI-IA     |
-| Arkansas                              | US-KS     |
-| Kentucky                            | US-KY     |
-| Louisiana                           | AMERIKAI-LA     |
-| Maine                               | US-ÉN     |
-| Maryland                            | AMERIKAI-MD     |
-| Massachusetts                       | Egyesült Államok-MA     |
-| Michigan                            | US-MI     |
-| Minnesota                           | Egyesült Államok-MN     |
-| Mississippi                         | AMERIKAI-MA     |
-| Missouri                            | AMERIKAI-MO     |
-| Montana                             | EGYESÜLT ÁLLAMOK-MT     |
-| Nebraska                            | AMERIKAI-NE     |
-| Nevada                              | AZ EGYESÜLT ÁLLAMOK-NV     |
-| New Hampshire                       | Amerikai Egyesült Államok-NH     |
-| New Jersey                          | EGYESÜLT ÁLLAMOK-NJ     |
-| Új-Mexikó                          | USA-NM     |
-| New York                            | AMERIKAI-NY     |
-| Észak-Karolina                      | AMERIKAI-NC     |
-| North Dakota                        | EGYESÜLT ÁLLAMOK-ND     |
-| Ohio                                | USA-OH     |
-| Oklahoma                            | US-OK     |
-| Oregon                              | AZ EGYESÜLT ÁLLAMOK-OR     |
-| Pennsylvania                        | AMERIKAI-PA     |
-| Rhode Island                        | AMERIKAI-RI     |
-| Dél-Karolina                      | Amerikai-SC     |
-| Dél-Dakota                        | Amerikai-SD     |
-| Tennessee                           | EGYESÜLT ÁLLAMOK-TN     |
-| Texas                               | AMERIKAI-TX     |
-| Utah                                | AMERIKAI-UT     |
-| Vermont                             | US-VT     |
-| Virginia                            | AMERIKAI-VA     |
-| Washington                          | AMERIKAI-WA     |
-| Nyugat-Virginia                       | US-WV     |
-| Wisconsin                           | Amerikai-WI     |
-| Wyoming                             | AMERIKAI-WY     |
-| District of Columbia                | USA-DC között     |
-| Amerikai Szamoa                      | USA-AS     |
-| Guam                                | AMERIKAI-GU     |
-| Északi Mariana-szigetek            | Amerikai-MP     |
-| Puerto Rico                         | AMERIKAI-PR     |
-| Egyesült Államok kisebb külső szigetek | AMERIKAI-UM    |
-| Amerikai Virgin-szigetek                 | US-VI    |
+| Alabama                             | USA – AL     |
+| Alaszka                              | USA – AK     |
+| Arizona                             | USA – AZ     |
+| Arkansas                            | USA – AR     |
+| Kalifornia                          | USA – CA     |
+| Colorado                            | USA – CO     |
+| Connecticut                         | USA – CT     |
+| Delaware                            | USA – DE     |
+| Florida                             | USA – FL     |
+| Grúzia                             | USA – GA     |
+| Hawaii                              | USA – HI     |
+| Idaho                               | US-ID     |
+| Illinois                            | USA – IL     |
+| Indiana                             | USA – A     |
+| Iowa                                | USA – IA     |
+| Arkansas                              | USA – KS     |
+| Kentucky                            | USA – KY     |
+| Louisiana                           | USA – LA     |
+| Maine                               | USA – ÉN     |
+| Maryland                            | USA – MD     |
+| Massachusetts                       | USA – MA     |
+| Michigan                            | USA – MI     |
+| Minnesota                           | USA – MN     |
+| Mississippi                         | USA – MS     |
+| Missouri                            | USA – MO     |
+| Montana                             | USA – MT     |
+| Nebraska                            | USA – NE     |
+| Nevada                              | USA – NV     |
+| New Hampshire                       | USA – NH     |
+| New Jersey                          | USA – NJ     |
+| Új-Mexikó                          | USA – NM     |
+| New York                            | USA – NY     |
+| Észak-Karolina                      | USA – NC     |
+| North Dakota                        | USA – ND     |
+| Ohio                                | USA – OH     |
+| Oklahoma                            | USA – OK     |
+| Oregon                              | USA – VAGY     |
+| Pennsylvania                        | USA – PA     |
+| Rhode Island                        | USA – RI     |
+| Dél-Karolina                      | USA – SC     |
+| Dél-Dakota                        | USA – SD     |
+| Tennessee                           | USA – TN     |
+| Texas                               | USA – TX     |
+| Utah                                | USA – UT     |
+| Vermont                             | USA – VT     |
+| Virginia                            | USA – VA     |
+| Washington                          | USA – WA     |
+| Nyugat-Virginia                       | USA – WV     |
+| Wisconsin                           | USA – WI     |
+| Wyoming                             | USA – WY     |
+| District of Columbia                | USA – DC     |
+| Amerikai Szamoa                      | USA – AS     |
+| Guam                                | USA – GU     |
+| Északi Mariana-szigetek            | USA – MP     |
+| Puerto Rico                         | USA – PR     |
+| Egyesült Államok kisebb kifelé húzódó szigetek | USA – UM    |
+| Amerikai Virgin-szigetek                 | USA – VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>Kanadai tartományok és területek
 
@@ -99,9 +99,9 @@ Adott esetben használja ezeket a kódokat, hogy megadja az állam/ tartomány a
 | Yukon                               |  CA-YT    |
 
 
-## <a name="australian-states-and-territories"></a>Ausztrál államok és területek
+## <a name="australian-states-and-territories"></a>Ausztráliai Államok és területek
 
-|   Állam és terület neve          |   Kód    |
+|   Állapot és terület neve          |   Kód    |
 |-------------------------------------|-----------|
 | Új-Dél-Wales                     |  AU-NSW   |
 | Queensland                          |  AU-QLD   |
@@ -115,4 +115,4 @@ Adott esetben használja ezeket a kódokat, hogy megadja az állam/ tartomány a
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [partnerközpontban található közös értékesítési lehetőségről.](./commercial-marketplace-co-sell.md)
+- További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor – gyakori kérdések | Microsoft dokumentumok
-description: Válaszok az Azure Monitorral kapcsolatos gyakori kérdésekre.
+title: Azure Monitor GYIK | Microsoft Docs
+description: Válaszok a Azure Monitorekkel kapcsolatos gyakori kérdésekre.
 services: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,145 +8,145 @@ author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
 ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80637774"
 ---
-# <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor – gyakori kérdések
+# <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
-Ez a Microsoft GYIK az Azure Monitorral kapcsolatos gyakori kérdések listája.
+A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája.
 
 ## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
-Az [Azure Monitor](overview.md) egy azure-beli szolgáltatás, amely az Azure-ban, más felhőkörnyezetekben vagy a helyszínen lévő alkalmazások és szolgáltatások teljesítmény- és rendelkezésre állásfigyelését biztosítja. Az Azure Monitor több forrásból gyűjt adatokat egy közös adatplatformba, ahol elemezhetőak a trendek és az anomáliák számára. Az Azure Monitor gazdag funkciói segítséget nyújtanak az alkalmazásra esetleg érintő kritikus helyzetek gyors azonosításában és megválaszolásában.
+[Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
 
-### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Mi a különbség az Azure Monitor, a Log Analytics és az Application Insights között?
-2018 szeptemberében a Microsoft egyetlen szolgáltatásba egyesítette az Azure Monitort, a Log Analytics-et és az Application Insightsot, hogy hatékony, teljes körű figyelést biztosítson az alkalmazások és az általuk megbízhat összetevők számára. A Log Analytics és az Application Insights szolgáltatásai nem változtak, bár egyes funkciók átlettek újnéven az Azure Monitorra annak érdekében, hogy jobban tükrözzék az új hatókörüket. A log adatmotor és a lekérdezési nyelv a Log Analytics most már nevezik Azure Monitor naplók. Lásd: [Az Azure Monitor terminológiai frissítései.](terminology.md)
+### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Mi a különbség a Azure Monitor, a Log Analytics és a Application Insights között?
+Szeptember 2018-án a Microsoft kombinált Azure Monitor, Log Analytics és Application Insights egyetlen szolgáltatásba, amely hatékony, teljes körű monitorozást tesz lehetővé az alkalmazások és a rájuk támaszkodó összetevők számára. A Log Analytics és Application Insights funkciói nem változtak, bár egyes funkciók a Azure Monitorre lettek állítva, hogy jobban tükrözzék az új hatókört. A Log Analytics naplózási adatmotorja és lekérdezési nyelve már Azure Monitor naplók néven is ismert. Lásd: [Azure monitor terminológiai frissítések](terminology.md).
 
-### <a name="what-does-azure-monitor-cost"></a>Mennyibe kerül az Azure Monitor?
-Az Azure Monitor automatikusan engedélyezett, például a metrikák és a tevékenységnaplók gyűjteménye díjmentesen biztosított. Más funkciók, például a naplólekérdezések és a riasztások költségei is járnak. Tekintse meg az [Azure Monitor díjszabási oldalon](https://azure.microsoft.com/pricing/details/monitor/) részletes díjszabási információkat.
+### <a name="what-does-azure-monitor-cost"></a>Mit jelent a Azure Monitor díja?
+A Azure Monitor automatikusan engedélyezett szolgáltatásai, például a metrikák és a tevékenységek naplóinak gyűjtése díjmentes. Más szolgáltatásokkal, például a naplók lekérdezésével és a riasztásokkal kapcsolatos költségeket is tartalmaz. A részletes díjszabási információkért tekintse meg a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/) .
 
-### <a name="how-do-i-enable-azure-monitor"></a>Hogyan engedélyezhetem az Azure Monitort?
-Az Azure Monitor abban a pillanatban engedélyezve van, amikor új Azure-előfizetést hoz létre, és [a tevékenységnapló](platform/activity-logs-overview.md) és a platform [metrikái](platform/data-platform-metrics.md) automatikusan összegyűjtésre kerülnek. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk összegyűjtéséhez, és [figyelési megoldások](insights/solutions.md) és [elemzések](insights/insights-overview.md) hozzáadásával további elemzéseket biztosítaz egyes szolgáltatások összegyűjtött adatairól. 
+### <a name="how-do-i-enable-azure-monitor"></a>Hogyan az Azure Monitor engedélyezése?
+Azure Monitor engedélyezve van az új Azure-előfizetés létrehozásakor, valamint a [tevékenység naplójának](platform/activity-logs-overview.md) és a platform [metrikáinak](platform/data-platform-metrics.md) automatikus gyűjtése. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk gyűjtéséhez, valamint a [figyelési megoldások](insights/solutions.md) és elemzések hozzáadásához [, hogy](insights/insights-overview.md) további elemzéseket nyújtson az egyes szolgáltatások összegyűjtött adatairól. 
 
-### <a name="how-do-i-access-azure-monitor"></a>Hogyan érhetem el az Azure Monitort?
-Az Azure Monitor összes funkcióját és adatát elérheti az Azure Portal **Monitor** menüjéből. A **figyelési** szakasz a menü különböző Azure-szolgáltatások hozzáférést biztosít ugyanazokhoz az eszközökhöz egy adott erőforrásra szűrt adatokkal. Az Azure Monitor-adatok a CLI, a PowerShell és a REST API használatával is elérhetők a különböző forgatókönyvek számára.
+### <a name="how-do-i-access-azure-monitor"></a>Hogyan a hozzáférési Azure Monitor?
+A Azure Portal **figyelés** menüjében található összes Azure monitor funkció és az adatok elérése. A különböző Azure-szolgáltatások menüjének **figyelés** szakasza ugyanazokat az eszközöket biztosítja, mint az adott erőforráshoz szűrt adatok. Azure Monitor adatok a CLI, a PowerShell és a REST API használatával számos különböző forgatókönyvhöz is elérhetők.
 
-### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Van az Azure Monitor helyszíni verziója?
-Nem. Az Azure Monitor egy méretezhető felhőszolgáltatás, amely nagy mennyiségű adatot dolgoz fel és tárol, bár az Azure Monitor figyelheti a helyszíni és más felhőkben lévő erőforrásokat.
+### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Van Azure Monitor helyszíni verziója?
+Nem. A Azure Monitor egy skálázható felhőalapú szolgáltatás, amely nagy mennyiségű adattal dolgoz fel és tárol, bár a Azure Monitor a helyszínen és más felhőkben lévő erőforrásokat is képes figyelni.
 
-### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Az Azure Monitor figyelheti a helyszíni erőforrásokat?
-Igen, az Azure-erőforrásokból származó figyelési adatok gyűjtése mellett az Azure Monitor adatokat gyűjthet a virtuális gépekről és alkalmazásokból más felhőkben és a helyszínen. Lásd: [Az Azure Monitor figyelési adatainak forrásai.](platform/data-sources.md)
+### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Képes Azure Monitor figyelni a helyszíni erőforrásokat?
+Igen, az Azure-erőforrásokból származó monitorozási adatok gyűjtése mellett Azure Monitor adatokat gyűjthet a virtuális gépekről és az egyéb felhőben és a helyszínen lévő alkalmazásokból is. Tekintse [meg Azure monitor figyelési adatforrásait](platform/data-sources.md).
 
-### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Integrálja az Azure Monitort a System Center Operations Managerrel?
-A meglévő System Center Operations Manager felügyeleti csoport az Azure Monitorhoz csatlakoztatva adatokat gyűjthet az ügynököktől az Azure Monitor naplókba. Ez lehetővé teszi, hogy naplólekérdezések és megoldás segítségével elemezze az ügynököktől gyűjtött adatokat. Beállíthatja a meglévő System Center Operations Manager-ügynököket is, hogy közvetlenül az Azure Monitornak küldjenek adatokat. Lásd: [Operations Manager csatlakoztatása az Azure Monitorhoz.](platform/om-agents.md)
+### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Azure Monitor integrálódik a System Center Operations Manager?
+A meglévő System Center Operations Manager felügyeleti csoport összekapcsolásával Azure Monitorheti az ügynököktől származó adatok Azure Monitor naplókba való gyűjtését. Ez lehetővé teszi a naplók és a megoldás használatát az ügynököktől gyűjtött adatok elemzéséhez. A meglévő System Center Operations Manager ügynököket úgy is konfigurálhatja, hogy közvetlenül a Azure Monitor küldje el az adatküldést. Lásd: [Operations Manager kapcsolódása Azure monitorhoz](platform/om-agents.md).
 
-### <a name="what-ip-addresses-does-azure-monitor-use"></a>Milyen IP-címeket használ az Azure Monitor?
-Tekintse meg [az Application Insights és a Log Analytics által használt IP-címeket](app/ip-addresses.md) az ügynökök és más külső erőforrások eléréséhez szükséges IP-címek és portok felsorolására. 
+### <a name="what-ip-addresses-does-azure-monitor-use"></a>Milyen IP-címeket Azure Monitor használni?
+Tekintse meg az [Application Insights által használt IP-címeket, és log Analytics](app/ip-addresses.md) az ügynökökhöz és más külső erőforrásokhoz szükséges IP-címek és portok listáját a Azure monitor eléréséhez. 
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-### <a name="where-does-azure-monitor-get-its-data"></a>Honnan szerzi be az Azure Monitor az adatait?
-Az Azure Monitor különböző forrásokból gyűjt adatokat, például az Azure platformról és az erőforrásokból, az egyéni alkalmazásokból és a virtuális gépeken futó ügynökökből származó naplókat és metrikákat. Más szolgáltatások, például az Azure Security Center és a Network Watcher adatokat gyűjtenek egy Log Analytics-munkaterületre, így elemezhetők az Azure Monitor adataival. Egyéni adatokat is küldhet az Azure Monitornak a REST API-val a naplókhoz vagy a metrikákhoz. Lásd: [Az Azure Monitor figyelési adatainak forrásai.](platform/data-sources.md)
+### <a name="where-does-azure-monitor-get-its-data"></a>Hol Azure Monitor lekérni az adatgyűjtést?
+A Azure Monitor különböző forrásokból gyűjt adatokat, beleértve az Azure platformról és erőforrásokból, az egyéni alkalmazásokból és a virtuális gépeken futó ügynököktől származó naplókat és mérőszámokat. Más szolgáltatások, például a Azure Security Center és a Network Watcher adatokat gyűjtenek egy Log Analytics munkaterületen, így Azure Monitor adatokkal elemezhetők. A naplók és a metrikák REST API használatával egyéni adatokat is küldhet Azure Monitor. Tekintse [meg Azure monitor figyelési adatforrásait](platform/data-sources.md).
 
-### <a name="what-data-is-collected-by-azure-monitor"></a>Milyen adatokat gyűjt az Azure Monitor? 
-Az Azure Monitor különböző forrásokból gyűjtadatokat [naplókba](platform/data-platform-logs.md) vagy [metrikákba.](platform/data-platform-metrics.md) Minden adattípusnak megvannak a maga relatív előnyei, és mindegyik támogatja az Azure Monitor egy adott szolgáltatáskészletét. Minden Azure-előfizetéshez egyetlen metrika-adatbázis található, miközben több Log Analytics-munkaterületet is létrehozhat a naplók összegyűjtéséhez a követelményektől függően. Lásd: [Azure Monitor adatplatform.](platform/data-platform.md)
+### <a name="what-data-is-collected-by-azure-monitor"></a>Milyen adatokat gyűjtenek a Azure Monitor? 
+Azure Monitor a különböző forrásokból származó adatokat [naplókba](platform/data-platform-logs.md) vagy [metrikába](platform/data-platform-metrics.md)gyűjti. Az egyes adattípusok viszonylagos előnyökkel rendelkeznek, és mindegyikük a Azure Monitor szolgáltatásainak egy adott készletét támogatja. Minden Azure-előfizetéshez egyetlen metrikai adatbázis van, míg a követelményektől függően több Log Analytics munkaterületet is létrehozhat a naplók gyűjtéséhez. Lásd: [Azure monitor adatplatform](platform/data-platform.md).
 
-### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Van-e maximális mennyiségű adat, amelyet összegyűjthetek az Azure Monitorban?
-Nincs korlátozva a metrikus adatok gyűjthető, de ezek az adatok tárolása legfeljebb 93 napig. Lásd: [Metrikák megőrzése](platform/data-platform-metrics.md#retention-of-metrics). Nincs korlátozva a naplóadatok gyűjtése, de ez hatással lehet a log analytics-munkaterület által választott tarifacsomag. Lásd [az árképzés részleteit](https://azure.microsoft.com/pricing/details/monitor/).
+### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Van-e a Azure Monitor összegyűjtött adatok maximális mennyisége?
+A begyűjthető metrikus adatok mennyisége nincs korlátozva, de ezeket az adatokat legfeljebb 93 napig tároljuk. Lásd: [mérőszámok megőrzése](platform/data-platform-metrics.md#retention-of-metrics). Az összegyűjtött naplózási adatok mennyisége nem korlátozható, de a Log Analytics munkaterülethez választott díjszabási szinten is hatással lehet. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/monitor/).
 
-### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hogyan érhetem el az Azure Monitor által gyűjtött adatokat?
-Az elemzések és a megoldások egyéni élményt nyújtanak az Azure Monitorban tárolt adatokkal való munkához. A kusto-lekérdezési nyelv (KQL) nyelven írt naplólekérdezés használatával közvetlenül dolgozhat a naplóadatokkal. Az Azure Portalon lekérdezéseket írhat és futtathat, és interaktívan elemezheti az adatokat a Log Analytics használatával. A metrikák elemzése az Azure Portalon a Metrikák Intézővel. Lásd: [Naplóadatok elemzése az Azure Monitorban](log-query/log-query-overview.md) és [Az Azure Metrics Explorer első lépései](platform/metrics-getting-started.md)című témakört.
+### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hogyan Azure Monitor által gyűjtött adatokhoz való hozzáférést?
+Az elemzések és megoldások egyéni felhasználói élményt biztosítanak a Azure Monitor tárolt adatkezelési feladatok elvégzéséhez. A Kusto lekérdezési nyelvben (KQL) írt napló lekérdezéssel közvetlenül is dolgozhat a naplózási adataival. A Azure Portalban lekérdezéseket írhat és futtathat, és interaktív módon elemezheti az adatelemzést Log Analytics használatával. A Azure Portal metrikáinak elemzése a Metrikaböngésző. Lásd: a [naplózási információk elemzése Azure monitor](log-query/log-query-overview.md) és [Az Azure Metrikaböngésző első lépései](platform/metrics-getting-started.md).
 
-## <a name="solutions-and-insights"></a>Megoldások és betekintések
+## <a name="solutions-and-insights"></a>Megoldások és bepillantást nyerhet
 
-### <a name="what-is-an-insight-in-azure-monitor"></a>Mi az azure monitorbe adott betekintés?
-Az insights személyre szabott figyelési élményt nyújt az adott Azure-szolgáltatásokhoz. Ugyanazokat a metrikákat és naplókat használják, mint az Azure Monitor más funkciói, de további adatokat gyűjthetnek, és egyedi élményt nyújthatnak az Azure Portalon. Lásd: [Insights az Azure Monitorban.](insights/insights-overview.md)
+### <a name="what-is-an-insight-in-azure-monitor"></a>Mi a Azure Monitor betekintése?
+Az adatok testreszabott figyelési élményt nyújtanak az adott Azure-szolgáltatásokhoz. Ugyanazokat a metrikákat és naplókat használják, mint a Azure Monitor egyéb funkciói, de további adatokat gyűjthetnek, és egyedi felhasználói élményt nyújthatnak a Azure Portal. Tekintse [meg Azure monitor](insights/insights-overview.md).
 
-Az Azure Portalon az insights megtekintéséhez tekintse meg a **Figyelő** menü **Insights** szakaszát vagy a szolgáltatás **menüfigyelés** szakaszát.
+A Azure Portalban megjelenő információk megtekintéséhez tekintse meg **a szolgáltatás** menüjének **figyelés** menüjének és **figyelés** szakaszának áttekintés szakaszát.
 
-### <a name="what-is-a-solution-in-azure-monitor"></a>Mi a megoldás az Azure Monitorban?
-A figyelési megoldások egy adott alkalmazás vagy szolgáltatás Azure Monitor-funkciók on alapuló, logikával csomagolt készletei. Naplóadatokat gyűjtenek az Azure Monitorban, és az Azure Portalon közös felhasználói felület használatával naplólekérdezéseket és nézeteket biztosítanak az elemzéshez. Lásd: [Figyelési megoldások az Azure Monitorban.](insights/solutions.md)
+### <a name="what-is-a-solution-in-azure-monitor"></a>Mi az a megoldás a Azure Monitor?
+A figyelési megoldások egy adott alkalmazás vagy szolgáltatás Azure Monitor szolgáltatások alapján történő figyelésére szolgáló, csomagolt logikai készletek. A naplózási adatokat Azure Monitorba gyűjtik, és a Azure Portal gyakori felhasználói felületén keresztül nyújtanak naplózási lekérdezéseket és nézeteket az elemzéshez. Lásd: [Azure monitor figyelési megoldásai](insights/solutions.md).
 
-Az Azure Portalon a megoldások megtekintéséhez kattintson a Figyelő menü **Egyebek** szakaszában az **Egyebek** szakasz a Tovább **gombra.** Kattintson a **Hozzáadás** gombra, ha további megoldásokat szeretne hozzáadni a munkaterülethez.
+Ha meg szeretné tekinteni a megoldásokat a Azure Portalban, kattintson **a** **figyelés** menü áttekintések szakaszában található **továbbiak** elemre. Kattintson a **Hozzáadás** gombra további megoldások hozzáadásához a munkaterülethez.
 
 ## <a name="logs"></a>Naplók
 
-### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Mi a különbség az Azure Monitor-naplók és az Azure Data Explorer között?
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Monitor Naplók épül az Azure Data Explorer, és ugyanazt a Kusto lekérdezési nyelv (KQL) néhány kisebb különbség. Lásd: [Az Azure Monitor naplólekérdezési nyelvi különbségei.](log-query/data-explorer-difference.md)
+### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Mi a különbség a Azure Monitor naplók és az Azure Adatkezelő között?
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Azure Monitor naplók az Azure Adatkezelőra épülnek, és ugyanazokat a Kusto-lekérdezési nyelvet (KQL) használják néhány kisebb eltéréssel. Lásd: [Azure monitor a naplózási lekérdezés nyelvi különbségeit](log-query/data-explorer-difference.md).
 
-### <a name="how-do-i-retrieve-log-data"></a>Hogyan kérhetem le a naplóadatokat?
-Minden adat beolvasása a Log Analytics munkaterület segítségével egy naplólekérdezés tanusta lekérdezési nyelv (KQL) használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és elemzéseket, amelyek naplólekérdezéseket tartalmaznak egy adott alkalmazáshoz vagy szolgáltatáshoz. Lásd: [A naplólekérdezések áttekintése az Azure Monitorban.](log-query/log-query-overview.md)
+### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
+Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](log-query/log-query-overview.md).
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Mi a Log Analytics-munkaterület?
-Az Azure Monitor által gyűjtött összes naplóadat egy Log Analytics-munkaterületen tárolódik. A munkaterület lényegében egy tároló, ahol a naplóadatok at különböző forrásokból gyűjtik. Előfordulhat, hogy egyetlen Log Analytics-munkaterülettel rendelkezik az összes figyelési adathoz, vagy több munkaterületre vonatkozó követelményekkel rendelkezik. Lásd: [Az Azure Monitor-naplók központi telepítésének tervezése.](platform/design-logs-deployment.md)
+A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics munkaterületen tárolja a rendszer. A munkaterület lényegében egy olyan tároló, amelyben a naplózási adatokat különböző forrásokból gyűjti a rendszer. Lehet, hogy az összes figyelési adathoz egyetlen Log Analytics munkaterület tartozik, vagy több munkaterületre vonatkozó követelmények is lehetnek. Lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md).
 
-### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Áthelyezhet egy meglévő Log Analytics-munkaterületet egy másik Azure-előfizetésbe?
-A munkaterületet áthelyezheti az erőforráscsoportok vagy előfizetések között, de nem egy másik régióba. Lásd: [A Naplóelemzés munkaterületének áthelyezése különböző előfizetésre vagy erőforráscsoportra.](platform/move-workspace.md)
+### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Át lehet helyezni egy meglévő Log Analytics munkaterületet egy másik Azure-előfizetésbe?
+Áthelyezheti a munkaterületet erőforráscsoportok vagy előfizetések között, de nem egy másik régióba. Lásd: [log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoporthoz](platform/move-workspace.md).
 
-### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Miért nem látom a Lekérdezéskezelő t és a Mentés gombokat a Log Analytics szolgáltatásban?
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Miért nem látom a Query Explorer és a Save gombokat a Log Analyticsban?
 
-**A Lekérdezéskezelő**, **a Mentés** és **az Új riasztási szabály** gombjai nem érhetők el, ha a [lekérdezéshatókör](log-query/scope.md) egy adott erőforrásra van beállítva. Riasztások létrehozásához, a lekérdezés mentéséhez vagy betöltéséhez a Log Analytics hatókörét egy munkaterületre kell hatókörbe tenni. A Log Analytics munkaterületi környezetben való megnyitásához válassza az **Azure Monitor** menü **Naplók parancsát.** Az utoljára használt munkaterület van kiválasztva, de bármely más munkaterületet kijelölhet. Lásd: [Lekérdezéshatókör és időtartomány naplózása az Azure Monitor loganalytics szolgáltatásában](log-query/scope.md)
+A **lekérdezési tallózó**, a **Mentés** és az **új riasztási szabály** gomb nem érhető el, ha a [lekérdezési hatókör](log-query/scope.md) egy adott erőforrásra van beállítva. Riasztások létrehozásához, illetve egy lekérdezés mentéséhez vagy betöltéséhez Log Analytics hatókörét egy munkaterületre kell korlátozni. Ha Log Analytics szeretne megnyitni a munkaterület környezetében, válassza a **Azure monitor** menüjének **naplók** elemét. A legutóbb használt munkaterület van kiválasztva, de más munkaterületet is kijelölhet. Lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](log-query/scope.md)
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Miért jelenik meg a hiba: "Regisztrálja az erőforrás-szolgáltató "Microsoft.Insights" az előfizetés, hogy ezt a lekérdezést" megnyitásakor Log Analytics egy virtuális gép? 
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Miért kapok hibaüzenetet: "az erőforrás-szolgáltató regisztrálása a Microsoft. reinsights" ehhez az előfizetéshez, hogy engedélyezze ezt a lekérdezést a virtuális gép Log Analytics megnyitásakor? 
 Számos erőforrás-szolgáltató automatikusan regisztrálva van, de előfordulhat, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. A regisztráció hatóköre mindig az előfizetés. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hozzáférési hibaüzenetet, amikor a Log Analytics-et virtuális gépről nyitom meg? 
-A virtuális gép naplók megtekintéséhez olvasási engedéllyel kell rendelkeznie a virtuális gép naplókat tároló munkaterületek számára. Ezekben az esetekben a rendszergazdának meg kell adnia önnek az Azure-beli engedélyeket.
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hibaüzenetet a Log Analytics virtuális gépről való megnyitásakor? 
+A virtuális gépek naplófájljainak megtekintéséhez olvasási engedéllyel kell rendelkeznie a virtuálisgép-naplókat tároló munkaterületekhez. Ezekben az esetekben a rendszergazdának Önnek kell megadnia Önnek az Azure-beli engedélyeket.
 
 ## <a name="alerts"></a>Riasztások
 
-### <a name="what-is-an-alert-in-azure-monitor"></a>Mi az azure-figyelő riasztása?
-Riasztások proaktív módon értesíti Önt, ha fontos feltételek találhatók a figyelési adatokat. Lehetővé teszik a problémák azonosítását és kezelését, mielőtt a rendszer felhasználói észrevennék őket. Többféle riasztás létezik:
+### <a name="what-is-an-alert-in-azure-monitor"></a>Mi a riasztás a Azure Monitorban?
+A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. Több fajta riasztás létezik:
 
-- Metrika – A metrika értéke meghaladja a küszöbértéket.
-- Naplólekérdezés – A naplólekérdezés eredményei megfelelnek a megadott feltételeknek.
-- Tevékenységnapló – A tevékenységnapló eseménye megfelel a megadott feltételeknek.
-- Webes teszt – A rendelkezésre állási teszt eredményei megfelelnek a meghatározott feltételeknek.
-
-
-A [Microsoft Azure riasztásainak áttekintése](platform/alerts-overview.md)című témakörben olvashat.
+- Metrika – a metrika értéke meghaladja a küszöbértéket.
+- Napló lekérdezése – a naplózási lekérdezés eredményei megfelelnek a megadott feltételeknek.
+- A tevékenység naplója – a műveletnapló eseménye megfelel a megadott feltételeknek.
+- Webteszt – a rendelkezésre állási teszt által meghatározott feltételeknek megfelelő eredmények.
 
 
-### <a name="what-is-an-action-group"></a>Mi az a műveletcsoport?
-A műveletcsoport olyan értesítések és műveletek gyűjteménye, amelyeket egy riasztás aktiválhat. Több riasztás egyetlen műveletcsoportot is használhat, amely lehetővé teszi az értesítések és műveletek gyakori készleteinek kihasználását. Lásd: [Műveletcsoportok létrehozása és kezelése az Azure Portalon.](platform/action-groups.md)
+Lásd: [Microsoft Azure riasztások áttekintése](platform/alerts-overview.md).
 
 
-### <a name="what-is-an-action-rule"></a>Mi az a műveletszabály?
-A műveletszabály lehetővé teszi egy bizonyos feltételeknek megfelelő riasztáskészlet viselkedésének módosítását. Ez lehetővé teszi, hogy olyan követelményeket hajtson végre, mint a riasztási műveletek letiltása a karbantartási időszakban. Egy műveletcsoportot is alkalmazhat egy riasztáskészletre ahelyett, hogy közvetlenül a riasztási szabályokra alkalmazna. Lásd: [Műveletszabályok](platform/alerts-action-rules.md).
+### <a name="what-is-an-action-group"></a>Mi az a műveleti csoport?
+A műveleti csoport a riasztások által aktiválható értesítések és műveletek gyűjteménye. Több riasztás is használhat egyetlen műveleti csoportot, amely lehetővé teszi az értesítések és műveletek közös készletének kihasználása. Lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](platform/action-groups.md).
+
+
+### <a name="what-is-an-action-rule"></a>Mi az a műveleti szabály?
+A műveleti szabályok lehetővé teszik egy adott feltételnek megfelelő riasztások viselkedésének módosítását. Ez lehetővé teszi az ilyen követelmények elvégzését a riasztási műveletek letiltásával a karbantartási időszakokban. Egy műveleti csoportot riasztási csoportra is alkalmazhat, ahelyett, hogy közvetlenül a riasztási szabályokra alkalmazná őket. Lásd: [műveleti szabályok](platform/alerts-action-rules.md).
 
 ## <a name="agents"></a>Ügynökök
 
-### <a name="does-azure-monitor-require-an-agent"></a>Az Azure Monitornak szüksége van ügynökre?
-Az ügynök csak az operációs rendszerből és a virtuális gépek ben lévő számítási feladatokból szükséges adatok gyűjtéséhez szükséges. A virtuális gépek az Azure-ban, egy másik felhőkörnyezetben vagy a helyszínen is elhelyezhetők. Tekintse [meg az Azure Monitor-ügynökök áttekintése című témakört.](platform/agents-overview.md)
+### <a name="does-azure-monitor-require-an-agent"></a>Szükség van Azure Monitor ügynökre?
+Az ügynököknek csak az operációs rendszer és a virtuális gépek munkaterhelései adatainak gyűjtésére van szükségük. A virtuális gépek az Azure-ban, egy másik Felhőbeli környezetben vagy a helyszínen is megtalálhatók. Lásd: [a Azure monitor ügynökök áttekintése](platform/agents-overview.md).
 
 
-### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Mi a különbség az Azure Monitor-ügynökök között?
-Az Azure Diagnostic bővítmény az Azure virtuális gépekhez, és adatokat gyűjt az Azure Monitor Metrics, az Azure Storage és az Azure Event Hubs. A Log Analytics-ügynök az Azure-ban, egy másik felhőbeli környezetben vagy a helyszínen lévő virtuális gépekhez készült, és adatokat gyűjt az Azure Monitor Naplók ba. A függőségi ügynök megköveteli a Log Analytics-ügynök és az összegyűjtött folyamat részleteit és függőségek. Tekintse [meg az Azure Monitor-ügynökök áttekintése című témakört.](platform/agents-overview.md)
+### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Mi a különbség a Azure Monitor-ügynökök között?
+Az Azure diagnosztikai bővítmény az Azure Virtual Machines szolgáltatáshoz kapcsolódik, és adatokat gyűjt Azure Monitor metrikák, az Azure Storage és az Azure Event Hubs számára. A Log Analytics-ügynök az Azure-beli virtuális gépek, egy másik felhőalapú környezet vagy a helyszíni, és adatokat gyűjt Azure Monitor naplókhoz. A függőségi ügynök a Log Analytics ügynök és az összegyűjtött folyamat részleteit és függőségeit igényli. Lásd: [a Azure monitor ügynökök áttekintése](platform/agents-overview.md).
 
 
-### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Az ügynökforgalom az ExpressRoute-kapcsolatomat használja?
-Az Azure Monitornak irányuló forgalom a Microsoft peering ExpressRoute-áramkört használja. Az [ExpressRoute-forgalom](../expressroute/expressroute-faqs.md#supported-services) különböző típusainak leírását az ExpressRoute dokumentációjában találja. 
+### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Használ-e az ügynöki forgalom az ExpressRoute-kapcsolatokat?
+A Azure Monitor felé irányuló forgalom a Microsoft peering ExpressRoute áramkört használja. A különböző típusú ExpressRoute-forgalom leírását a [ExpressRoute dokumentációjában](../expressroute/expressroute-faqs.md#supported-services) találja. 
 
-### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hogyan győződhetek meg arról, hogy a Log Analytics-ügynök képes-e kommunikálni az Azure Monitorral?
-Az ügynökszámítógép Vezérlőpultján válassza a **Biztonsági & beállítások**lehetőséget , a Microsoft Monitoring **Agent** lehetőséget. Az **Azure Log Analytics (OMS)** lapon egy zöld pipa ikon megerősíti, hogy az ügynök képes kommunikálni az Azure Monitor. A sárga figyelmeztető ikon azt jelenti, hogy az ügynöknek problémái vannak. Ennek egyik gyakori oka, hogy a **Microsoft Monitoring Agent** szolgáltatás leállt. A szolgáltatás vezérlőjének használatával indítsa újra a szolgáltatást.
+### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hogyan ellenőrizhető, hogy az Log Analytics ügynök képes-e kommunikálni a Azure Monitorokkal?
+Az ügynök számítógépének Vezérlőpultján válassza a **biztonsági & beállítások**, **Microsoft monitoring Agent** lehetőséget. Az **Azure log Analytics (OMS)** lapon a zöld pipa ikon megerősíti, hogy az ügynök képes kommunikálni a Azure monitorokkal. A sárga figyelmeztető ikon azt jelzi, hogy az ügynök problémába ütközik. Ennek egyik gyakori oka, hogy a **Microsoft monitoring Agent** szolgáltatás leállt. A Service Control Manager használatával indítsa újra a szolgáltatást.
 
-### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hogyan akadályozhatom meg, hogy a Log Analytics-ügynök kommunikáljon az Azure Monitorral?
-A Közvetlenül a Log Analytics szolgáltatáshoz kapcsolódó ügynökök esetén nyissa meg a Vezérlőpultot, és válassza a **Biztonsági & beállítások**, a Microsoft Monitoring **Agent**lehetőséget. Az **Azure Log Analytics (OMS)** lapon távolítsa el az összes felsorolt munkaterületek. A System Center Operations Manager alkalmazásban távolítsa el a számítógépet a Log Analytics által felügyelt számítógépek listájáról. Az Operations Manager frissíti az ügynök konfigurációját, hogy a továbbiakban ne jelentsen a Log Analytics-nek. 
+### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hogyan leállítani a Log Analytics-ügynököt a Azure Monitorsal folytatott kommunikációhoz?
+Log Analytics közvetlenül csatlakozó ügynökökhöz nyissa meg a Vezérlőpultot, és válassza a **biztonsági & beállítások**, majd a **Microsoft monitoring Agent**lehetőséget. Az **Azure log Analytics (OMS)** lapon távolítsa el a felsorolt munkaterületeket. A System Center Operations Manager távolítsa el a számítógépet a Log Analytics felügyelt számítógépek listából. Operations Manager frissíti az ügynök konfigurációját, hogy a továbbiakban ne jelentsen Log Analytics. 
 
-### <a name="how-much-data-is-sent-per-agent"></a>Mennyi adat küldése ügynökenként?
-Az ügynökenként küldött adatok mennyisége a következőktől függ:
+### <a name="how-much-data-is-sent-per-agent"></a>Mennyibe kerül az adatküldés/ügynök?
+Az ügynökök által elküldett adatok mennyisége a következőktől függ:
 
-* Az Ön által engedélyezett megoldások
-* Az összegyűjtött naplók és teljesítményszámlálók száma
-* A naplókban lévő adatok mennyisége
+* Az engedélyezett megoldások
+* A begyűjtött naplók és teljesítményszámlálók száma
+* A naplókban tárolt adatmennyiség
 
-A részletekért tekintse [meg a Használat és a költségek kezelése az Azure Monitor naplókkal.](platform/manage-cost-storage.md)
+A részletekért lásd: [a használat és a költségek kezelése Azure monitor naplókkal](platform/manage-cost-storage.md) .
 
-A WireData-ügynök futtatására képes számítógépek esetében a következő lekérdezéssel megtekintheti, hogy mennyi adatot küld a rendszer:
+A WireData-ügynököt futtató számítógépek esetében a következő lekérdezéssel tekintheti meg az adatküldés mennyiségét:
 
 ```Kusto
 WireData
@@ -155,129 +155,129 @@ WireData
 | summarize sum(TotalBytes) by Computer 
 ```
 
-### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Mekkora hálózati sávszélességet használ a Microsoft Management Agent (MMA) az Azure Monitornak történő adatküldéskor?
-A sávszélesség az elküldött adatok mennyiségének függvénye. Az adatok tömörítése a hálózaton keresztül történő küldés során történik.
+### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Mennyi hálózati sávszélességet használ a Microsoft Management agent (MMA), amikor adatokat küld a Azure Monitor?
+A sávszélesség a továbbított adatmennyiség függvénye. Az adat tömörítve van, mert a hálózaton keresztül küldi el a rendszer.
 
 
-### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Hogyan kaphatok értesítést, ha a Log Analytics-ügynöktől származó adatgyűjtés leáll?
+### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Hogyan lehet értesítést kapni, ha a Log Analytics ügynökből származó adatgyűjtés leáll?
 
-Használja az [új naplóriasztás létrehozása](platform/alerts-metric.md) című részben leírt lépéseket, amelyekértesítést kapnak az adatgyűjtés leállításakor. A riasztási szabályhoz a következő beállításokat használja:
+A következő témakörben ismertetett lépéseket követve értesülhet arról, hogy az adatgyűjtés Mikor leáll: [új napló létrehozása riasztás](platform/alerts-metric.md) . Használja a következő beállításokat a riasztási szabályhoz:
 
-- **Riasztási feltétel megadása:** Adja meg a Log Analytics-munkaterületet erőforrás-célként.
+- **Riasztási feltétel meghatározása**: adja meg az log Analytics munkaterületet erőforrás-célként.
 - **Riasztási feltételek** 
-   - **Jel neve**: *Egyéni naplókeresés*
+   - **Jel neve**: *egyéni naplók keresése*
    - **Keresési lekérdezés**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Riasztási logika**: *Az eredmények száma* **alapján** , **A feltétel** *nagyobb, mint*, **Küszöbérték** *0*
-   - **Értékelés:** **Időszak (percben)** *30*, **Gyakoriság (percben)** *10*
+   - **Riasztási logika**: az *eredmények száma*, a **Condition** **küszöbértéknél** *nagyobb*érték **alapján** *0*
+   - **Értékelés alapja**: **időtartam (percben)** *30*, **gyakoriság (perc)** *10*
 - **Riasztás részleteinek megadása** 
-   - **Név**: *Az adatgyűjtés leállt*
+   - **Név**: *az adatgyűjtés leállt*
    - **Súlyosság**: *Figyelmeztetés*
 
-Adjon meg egy meglévő vagy új [műveletcsoportot,](platform/action-groups.md) hogy amikor a naplóriasztás feltételeknek felel meg, értesítést kapjon, ha 15 percnél tovább hiányzik egy szívverés.
+Válasszon egy meglévő vagy új [műveleti csoportot](platform/action-groups.md) , hogy ha a naplózási riasztás megfelel a feltételeknek, értesítést kap, ha 15 percnél hosszabb szívverés van megadva.
 
 
-### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Milyen tűzfalkövetelmények vonatkoznak az Azure Monitor-ügynökökre?
-A [tűzfalkövetelményekkel](platform/log-analytics-agent.md#network-requirements)kapcsolatos részleteket a Hálózati tűzfal követelményeiben találja.
+### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Mik a Azure Monitor ügynökökre vonatkozó tűzfalszabályok?
+A tűzfalra vonatkozó követelmények részleteiért lásd a [hálózati tűzfalakra vonatkozó követelményeket](platform/log-analytics-agent.md#network-requirements).
 
 
 ## <a name="visualizations"></a>Vizualizációk
 
-### <a name="why-cant-i-see-view-designer"></a>Miért nem látom a Tervező megtekintése?
+### <a name="why-cant-i-see-view-designer"></a>Miért nem látom a Designer nézetet?
 
-A View Designer csak a Közreműködői engedélyekkel vagy magasabb szintű felhasználók számára érhető el a Log Analytics-munkaterületen.
+A tervező csak közreműködői engedélyekkel rendelkező felhasználók számára érhető el a Log Analytics munkaterületen.
 
 ## <a name="application-insights"></a>Application Insights
 
 ### <a name="configuration-problems"></a>Konfigurációs problémák
-*Gondjaim vannak a következők beállításával:*
+*Nem sikerül beállítani a következőket:*
 
 * [.NET-alkalmazás](app/asp-net-troubleshoot-no-data.md)
 * [Már futó alkalmazás figyelése](app/monitor-performance-live-website-now.md#troubleshoot)
 * [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](app/java-troubleshoot.md)
 
-*Nem kapok adatokat a szerveremről*
+*Nem kapok adatok a kiszolgálóról*
 
 * [Tűzfal-kivételek beállítása](app/ip-addresses.md)
-* [ASP.NET kiszolgáló beállítása](app/monitor-performance-live-website-now.md)
+* [ASP.NET-kiszolgáló beállítása](app/monitor-performance-live-website-now.md)
 * [Java-kiszolgáló beállítása](app/java-agent.md)
 
-### <a name="can-i-use-application-insights-with-"></a>Használhatom az Application Insightsot a ...?
+### <a name="can-i-use-application-insights-with-"></a>Használhatom a Application Insights...?
 
-* [Webalkalmazások egy IIS-kiszolgálón az Azure Virtuálisgép- vagy az Azure virtuálisgép-méretezési csoportban](app/azure-vm-vmss-apps.md)
-* [Webalkalmazások Az IIS-kiszolgálón – helyszíni vagy virtuális gép](app/asp-net.md)
+* [Webalkalmazások egy Azure-beli virtuális gépen vagy Azure-beli virtuálisgép-méretezési csoporton belüli IIS-kiszolgálón](app/azure-vm-vmss-apps.md)
+* [Webalkalmazások egy helyi IIS-kiszolgálón vagy egy virtuális gépen](app/asp-net.md)
 * [Java-webalkalmazások](app/java-get-started.md)
 * [Node.js-alkalmazások](app/nodejs.md)
 * [Webalkalmazások az Azure-ban](app/azure-web-apps.md)
-* [Felhőszolgáltatások az Azure-ban](app/cloudservices.md)
-* [A Dockerben futó alkalmazáskiszolgálók](app/docker.md)
+* [Cloud Services az Azure-ban](app/cloudservices.md)
+* [A Docker-ben futó alkalmazás-kiszolgálók](app/docker.md)
 * [Egyoldalas webalkalmazások](app/javascript.md)
-* [Sharepoint](app/sharepoint.md)
-* [Asztali Windows-alkalmazás](app/windows-desktop.md)
+* [SharePoint](app/sharepoint.md)
+* [Windows asztali alkalmazás](app/windows-desktop.md)
 * [Más platformok](app/platforms.md)
 
 ### <a name="is-it-free"></a>Ingyenes?
 
-Igen, kísérleti használatra. Az alapdíjcsomagban a jelentkezése minden hónapban ingyenesen küldhet bizonyos adatkeretet. Az ingyenes juttatás elég nagy ahhoz, hogy fedezze a fejlesztést, és egy alkalmazást közzétesz néhány felhasználó számára. Beállíthatja a korlátot, hogy megakadályozza a megadott adatmennyiségnél nagyobb mennyiségű adat feldolgozását.
+Igen, kísérleti felhasználásra. Az alapszintű díjszabás keretében az alkalmazás minden hónapban díjmentesen küldhet bizonyos adatmennyiséget. Az ingyenes juttatás elég nagy a fejlesztéshez, és egy alkalmazás közzététele kis számú felhasználó számára. Beállíthat egy korlátot, amely megakadályozza a megadott mennyiségű adatok feldolgozását.
 
-A gb nagyobb mennyiségű telemetriai adatokat számít fel. Adunk néhány tippet, hogyan lehet [korlátozni a díjakat](app/pricing.md).
+A GB-nál nagyobb mennyiségű telemetria számítunk fel. Néhány tippet adunk a [díjak korlátozására](app/pricing.md).
 
-Az Enterprise terv díjat számít fel minden egyes nap, amikor minden webkiszolgáló-csomópont telemetriai adatokat küld. Ez akkor alkalmas, ha azt szeretné, hogy a folyamatos export nagy léptékben.
+A nagyvállalati csomag minden nap esetében díjat számít fel, amelyet minden egyes webkiszolgáló-csomópont telemetria küld. Megfelelő, ha a folyamatos exportálást nagy léptékben kívánja használni.
 
-[Olvassa el az árképzési tervet](https://azure.microsoft.com/pricing/details/application-insights/).
+[Olvassa el a díjszabási tervet](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ### <a name="how-much-does-it-cost"></a>Mennyibe kerül?
 
-* Nyissa **meg** a Használati és becsült költségek lapot egy Application Insights-erőforrásban. Van egy diagram a legutóbbi használatról. Ha szeretné, beállíthat adatkötet-korlátot.
-* Nyissa meg az [Azure Billing panelt,](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) hogy a számlákat az összes erőforrásközött láthassa.
+* Nyissa meg a **használati és becsült költségek lapot** egy Application Insights erőforrásban. Van egy diagram a közelmúltbeli használatról. Ha kívánja, beállíthatja az adatmennyiség korlátját.
+* Nyissa meg az [Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) paneljét, és tekintse meg a számlákat az összes erőforráson.
 
-### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Mit módosít az Application Insights a projektben?
-A részletek a projekt típusától függenek. Webes alkalmazás esetén:
+### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Mit Application Insights módosítani a projektben?
+A részletek a projekt típusától függenek. Webalkalmazások esetén:
 
 * Hozzáadja ezeket a fájlokat a projekthez:
   * ApplicationInsights.config
-  * ai.js
-* Telepíti a következő NuGet csomagokat:
-  * *Application Insights API* – az alapvető API
-  * *Application Insights API webes alkalmazásokhoz* – telemetriai adatok küldésére szolgál a kiszolgálóról
-  * *Application Insights API JavaScript-alkalmazásokhoz* – telemetriai adatok küldésére szolgál az ügyféltől
-* A csomagok a következő szerelvényeket tartalmazzák:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
-* Elemek beszúrása a következő be:
+  * ai. js
+* A következő NuGet-csomagokat telepíti:
+  * *Application INSIGHTS API* – a Core API
+  * *Application INSIGHTS API webalkalmazásokhoz* – telemetria küldésére szolgál a kiszolgálóról
+  * *Application INSIGHTS API JavaScript-alkalmazásokhoz* – telemetria küldésére szolgál az ügyféltől
+* A csomagok közé tartoznak a következő szerelvények:
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. platform
+* Elemek beszúrása a következőkbe:
   * Web.config
-  * csomagok.config
-* (Csak új projektek – ha [egy meglévő projekthez adja hozzá az Application Insights ot,][start]ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél- és kiszolgálókódba, hogy inicializálja őket az Application Insights erőforrásazonosítóval. Egy MVC alkalmazásban például a program kódot illeszt be a\_mesterlap nézeteibe/megosztott/Layout.cshtml
+  * packages. config
+* (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a kód bekerül a mesteroldalak nézeteibe/Shared/\_layout. cshtml
 
-### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíthetek a régebbi SDK-verziókról?
-Tekintse meg az SDK-hoz tartozó, az alkalmazástípusnak megfelelő [kibocsátási megjegyzéseket.](app/release-notes.md)
+### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
+Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
-### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan módosíthatom, hogy a projektem melyik Azure-erőforrásnak küld adatokat?
-A Megoldáskezelőben kattintson a jobb gombbal, `ApplicationInsights.config` és válassza az Application Insights frissítése **parancsot.** Az adatokat elküldheti egy meglévő vagy új azure-beli erőforrásnak. A frissítő varázsló módosítja a instrumentation kulcsot az ApplicationInsights.config fájlban, amely meghatározza, hogy a kiszolgáló SDK-ja hol küldi az adatokat. Ha nem szünteti meg az "Összes frissítése" jelölőnégyzet jelölését, akkor az is módosítja a kulcsot, ahol megjelenik a weblapokon.
+### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
+A Megoldáskezelő kattintson `ApplicationInsights.config` a jobb gombbal, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
-Asztali alkalmazás, amelyet az IIS-webkiszolgálón használhat az Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjttetési telemetriai adatokat: leállíthatja, ha nem konfigurálegy alkalmazást. 
+Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
 [További információ](app/monitor-performance-live-website-now.md#questions).
 
-### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetriai adatokat gyűjt az Application Insights?
+### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
-Kiszolgálói webalkalmazásokból:
+A Server Web appsből:
 
 * HTTP-kérések
-* [Függőségek](app/asp-net-dependencies.md). Hívások: SQL adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob storage és a várólista. 
-* [Kivételek](app/asp-net-exceptions.md) és veremnyomkövetések.
-* [Teljesítményszámlálók](app/performance-counters.md) – Ha [állapotfigyelőt,](app/monitor-performance-live-website-now.md) [Az App Services Azure figyelését,](app/azure-web-apps.md)a virtuális gép vagy a virtuális gép [méretezésének azure-figyelését](app/azure-vm-vmss-apps.md)vagy az [Application Insights összegyűjtött íróját](app/java-collectd.md)használja.
-* [Egyéni események és a kódolandó mutatók.](app/api-custom-events-metrics.md)
-* [Nyomkövetési naplók,](app/asp-net-trace-logs.md) ha konfigurálja a megfelelő gyűjtőt.
+* [Függőségek](app/asp-net-dependencies.md). Hívások: SQL-adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob Storage és üzenetsor. 
+* [Kivételek](app/asp-net-exceptions.md) és verem-Nyomkövetések.
+* [Teljesítményszámlálók](app/performance-counters.md) – ha [Állapotmonitort](app/monitor-performance-live-website-now.md)használ, a [app Services Azure-figyelést](app/azure-web-apps.md), a [virtuális gép vagy a virtuálisgép-méretezési csoport azure-figyelését](app/azure-vm-vmss-apps.md), vagy a [Application Insights gyűjtött író](app/java-collectd.md).
+* [Egyéni események és mérőszámok](app/api-custom-events-metrics.md) .
+* [Nyomkövetési naplók](app/asp-net-trace-logs.md) , ha a megfelelő gyűjtőt konfigurálja.
 
-[Ügyfélweblapokról:](app/javascript.md)
+Az [ügyfél weblapjairól](app/javascript.md):
 
 * [Oldalmegtekintések száma](app/usage-overview.md)
-* [AJAX hívások](app/asp-net-dependencies.md) Futó parancsfájlból érkező kérelmek.
-* Oldalnézet betöltési adatai
-* A felhasználók és a munkamenetek száma
+* [Ajax-hívások](app/asp-net-dependencies.md) Futó parancsfájlból végrehajtott kérelmek.
+* Az oldal nézet betöltési adatkészlete
+* Felhasználók és munkamenetek száma
 * [Hitelesített felhasználói azonosítók](app/api-custom-events-metrics.md#authenticated-users)
 
 Más forrásokból, ha konfigurálja őket:
@@ -287,94 +287,94 @@ Más forrásokból, ha konfigurálja őket:
 * [Log Analytics](platform/data-collector-api.md)
 * [LogStash](platform/data-collector-api.md)
 
-### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetem vagy módosíthatom a telemetriai adatokat?
+### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetők vagy módosíthatok néhány telemetria?
 
-Igen, a szerveren lehet írni:
+Igen, a kiszolgálón írhat:
 
-* Telemetriai processzor szűrése vagy hozzáadása tulajdonságok a kiválasztott telemetriai elemeket, mielőtt azok az alkalmazásból való elküldésük előtt.
-* Telemetriai inicializáló a telemetriai elemek tulajdonságainak hozzáadásához.
+* A telemetria a kiválasztott telemetria-elemekhez tartozó tulajdonságokat szűrheti vagy adja hozzá az alkalmazásból való elküldése előtt.
+* A telemetria inicializáló tulajdonságot adhat hozzá a telemetria összes eleméhez.
 
-További információ a [ASP.NET](app/api-filtering-sampling.md) vagy a [Java.](app/java-filter-telemetry.md)
+További információ a [ASP.net](app/api-filtering-sampling.md) és a [Java](app/java-filter-telemetry.md)-ról.
 
-### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hogyan történik a város, az ország/régió és az egyéb földrajzi helyadatok kiszámítása?
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hogyan számítják ki a város, az ország/régió és az egyéb földrajzi hely adatértékét?
 
-A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával keressük meg a webes ügyfél IP-címét (IPv4 vagy IPv6).
+A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megkeresjük a webes ügyfél IP-címét (IPv4 vagy IPv6).
 
-* Böngésző telemetriai adatok: Gyűjtjük a feladó IP-címét.
-* Kiszolgálótelemetria: Az Application Insights modul gyűjti az ügyfél IP-címét. A bevan `X-Forwarded-For` állítva, nem kerül összegyűjtésre.
-* Ha többet szeretne megtudni arról, hogyan gyűjtik az IP-cím- és helymeghatározási adatokat az Application Insightsban, olvassa el ezt a [cikket.](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)
-
-
-Beállíthatja, `ClientIpHeaderTelemetryInitializer` hogy az IP-címet egy másik fejlécből vegye át. Egyes rendszerekben például egy proxy, terheléselosztó vagy CDN mozgatja a rendszerbe. `X-Originating-IP` [További információ](https://apmtips.com/blog/2016/07/05/client-ip-address/).
-
-A [Power BI segítségével](app/export-power-bi.md ) megjelenítheti a kérelem telemetriáját egy térképen.
+* Böngésző telemetria: összegyűjtjük a küldő IP-címét.
+* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` be van állítva, a rendszer nem gyűjti.
+* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Mennyi ideig őrzi meg az adatokat a portálon? Biztonságos?
-Tekintse meg az [adatmegőrzést és az adatvédelmet.][data]
+Beállíthatja, hogy `ClientIpHeaderTelemetryInitializer` az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP`. [További információ](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Mi történik az Application Insight telemetriai adataival, ha egy kiszolgáló vagy eszköz megszakad az Azure-ral?
-
-Minden SDK-nk, beleértve a webes SDK-t is, magában foglalja a "megbízható szállítást" vagy a "robusztus szállítást". Amikor a kiszolgáló vagy az eszköz megszakad az Azure-ral való kapcsolata, a telemetriai adatok [helyileg tárolódnak a fájlrendszerben](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server SDK) vagy a HTML5 Session Storage (Web SDK) rendszerben. Az SDK rendszeres időközönként újra elküldi ezt a telemetriai adatokat, amíg a betöltési szolgáltatás úgy véli, hogy "elavult" (48 óra naplók, 30 perc metrikák). Az elavult telemetriai adatok el leszek dobva. Bizonyos esetekben, például ha a helyi tároló megtelt, az újrapróbálkozás nem történik meg.
+A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
 
-### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Lehet személyes adatokat küldeni a telemetriai adatokat?
+### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Mennyi ideig tartanak a portálon tárolt adat? Biztonságos?
+Vessen egy pillantást az [adatok megőrzésére és az adatvédelemre][data].
 
-Ez akkor lehetséges, ha a kód ilyen adatokat küld. Ez akkor is előfordulhat, ha a veremnyomkövetésváltozói személyes adatokat tartalmaznak. A fejlesztőcsapatnak kockázatértékelést kell végeznie a személyes adatok megfelelő kezelése érdekében. [További információ az adatmegőrzésről és az adatvédelemről.](app/data-retention-privacy.md)
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Mi történik az alkalmazás-betekintési telemetria, ha egy kiszolgáló vagy eszköz elveszti az Azure-ral való kapcsolódást?
 
-**Az** ügyfél webcímének minden oktettje mindig 0-ra van állítva a földrajzi helyattribútumok felkeresése után.
+Az összes SDK, beleértve a web SDK-t is, "megbízható átvitel" vagy "robusztus szállítás". Ha a kiszolgáló vagy az eszköz elveszti a kapcsolatot az Azure-val, a telemetria [a fájlrendszeren](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server SDK-k) vagy a HTML5 munkamenet-tárolóban (web SDK) helyileg tárolja a rendszer. Az SDK rendszeres időközönként újra megpróbálja elküldeni ezt a telemetria, amíg a betöltési szolgáltatás nem tekinti az "elavult" (48 órás naplók, 30 perc a metrikák esetében). A rendszer elveti az elavult telemetria. Bizonyos esetekben, például ha a helyi tárterület megtelt, a rendszer nem hajtja végre az újrapróbálkozást.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Saját Instrumentation kulcs látható az én weboldal forrása. 
 
-* Ez bevett gyakorlat a felügyeleti megoldások ban.
-* Nem használható az adatok ellopására.
-* Ezt fel lehet használni az adatok elferdítésére vagy riasztások indítására.
-* Nem hallottuk, hogy bármely ügyfélnek ilyen problémái voltak.
+### <a name="could-personal-data-be-sent-in-the-telemetry"></a>A személyes adatküldés a telemetria?
+
+Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha a stack-nyomkövetésben szereplő változók személyes adatba tartoznak. A fejlesztési csapatnak kockázatértékelést kell végeznie, hogy a személyes adatai megfelelően legyenek kezelve. [További információ az adatmegőrzésről és az adatvédelemről](app/data-retention-privacy.md).
+
+Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi hely attribútumainak megvizsgálása után.
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>A saját kialakítási kulcs látható a saját weblap forrásában. 
+
+* Ez a figyelési megoldások általános gyakorlata.
+* Nem használható az adatai ellopására.
+* Felhasználhatja az adatait, vagy riasztásokat indíthat.
+* Nem tudtuk meghallgatni, hogy minden ügyfélnek ilyen problémája volt.
 
 Ön ilyenkor az alábbiakat teheti:
 
-* Két külön Instrumentation kulcsok (külön Application Insights-erőforrások) az ügyfél- és kiszolgálóadatok. Vagy
-* Írjon egy proxyt, amely fut a kiszolgálón, és a webes ügyfél adatokat küldeni, hogy a proxy.
+* Az ügyfél-és a kiszolgálói adatforrásokhoz két különálló rendszerkulcs (külön Application Insights erőforrás) használata szükséges. Vagy
+* Írjon be egy proxyt, amely a kiszolgálón fut, és hogy a webes ügyfél az adott proxyn keresztül küldje el az adatait.
 
-### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Hogyan láthatom a POST-adatokat a diagnosztikai keresésben?
-Nem naplózzuk automatikusan a POST-adatokat, de használhatja a TrackTrace-hívást: tegye az adatokat az üzenet paraméterbe. Ez hosszabb méretkorláttal rendelkezik, mint a karakterlánc-tulajdonságokra vonatkozó korlátok, bár nem szűrhető rajta.
+### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Hogyan lásd: az adatposta a diagnosztikai keresésben?
+A rendszer nem naplózza az adatpostát, de TrackTrace hívást is használhat: az üzenet paraméterében elhelyezheti az adatbevitelt. Ez hosszabb mérethatárt, mint a karakterlánc-tulajdonságok korlátai, de nem szűrheti.
 
-### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Érdemes egy vagy több Application Insights-erőforrást használni?
+### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Egy vagy több Application Insights-erőforrást használok?
 
-Egyetlen erőforrás használata egyetlen üzleti rendszer összes összetevőjéhez vagy szerepköréhez. Külön erőforrásokat használhat a fejlesztési, tesztelési és kiadási verziókhoz, valamint a független alkalmazásokhoz.
+Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes összetevőhöz vagy szerepkörhöz. Külön erőforrásokat használhat a fejlesztési, tesztelési és kiadási verziókhoz, valamint a független alkalmazásokhoz.
 
-* [Lásd a vitát itt](app/separate-resources.md)
-* [Példa – felhőszolgáltatás feldolgozói és webes szerepkörökkel](app/cloudservices.md)
+* [Itt tekintheti meg a vitát](app/separate-resources.md)
+* [Példa – felhőalapú szolgáltatás munkavégző és webes szerepkörökkel](app/cloudservices.md)
 
-### <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Hogyan tudom dinamikusan megváltoztatni a műszerezési kulcsot?
+### <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Hogyan dinamikusan módosítja a kialakítási kulcsot?
 
-* [Vita itt](app/separate-resources.md)
-* [Példa – felhőszolgáltatás feldolgozói és webes szerepkörökkel](app/cloudservices.md)
+* [Vitafórum](app/separate-resources.md)
+* [Példa – felhőalapú szolgáltatás munkavégző és webes szerepkörökkel](app/cloudservices.md)
 
-### <a name="what-are-the-user-and-session-counts"></a>Mik a felhasználó és a munkamenet számít?
+### <a name="what-are-the-user-and-session-counts"></a>Mik a felhasználók és a munkamenetek száma?
 
-* A JavaScript SDK beállít egy felhasználói cookie-t a webes ügyfélen, hogy azonosítsa a visszatérő felhasználókat, és egy munkamenet-cookie-t a tevékenységek csoportosításához.
-* Ha nincs ügyféloldali parancsfájl, [a kiszolgálón is beállíthat cookie-kat.](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)
-* Ha egy valódi felhasználó különböző böngészőkben használja a webhelyet, vagy privát/inkognitóböngészést használ, vagy különböző gépeket használ, akkor többször is megszámolja őket.
-* Ha azonosítani szeretné a bejelentkezett felhasználót a gépek és a böngészők között, adjon hozzá egy hívást a [SetAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users)beállításhoz.
+* A JavaScript SDK beállítja a felhasználói cookie-t a webes ügyfélen, a visszatérő felhasználók azonosítására, valamint egy munkamenet-cookie-t a tevékenységek csoportosítására.
+* Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Ha egy valós felhasználó különböző böngészőkben használja a webhelyét, vagy ha privát vagy inkognitóbani böngészést vagy különböző gépeket használ, a rendszer egynél többször veszi fel őket.
+* A bejelentkezett felhasználók számítógépek és böngészők közötti azonosításához vegyen fel egy hívást a [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users)szolgáltatásba.
 
-### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Engedélyeztem mindent az Application Insightsban?
-| Mit kell látnia | Hogyan juthat el | Miért akarod? |
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Engedélyeztem mindent Application Insights?
+| Mit kell látnia? | Útmutató | Miért szeretné |
 | --- | --- | --- |
-| Rendelkezésre állási diagramok |[Webes tesztek](app/monitor-web-app-availability.md) |Tudja, hogy a webalkalmazás fel |
-| Szerver app perf: válaszidő, ... |[Alkalmazáselemzési adatok hozzáadása a projekthez](app/asp-net.md) vagy [AI-állapotfigyelő telepítése a kiszolgálón](app/monitor-performance-live-website-now.md) (vagy saját kód írása a [függőségek nyomon követéséhez)](app/api-custom-events-metrics.md#trackdependency) |Perf problémák észlelése |
-| Függőségi telemetria |[AI-állapotfigyelő telepítése a kiszolgálóra](app/monitor-performance-live-website-now.md) |Adatbázisokkal vagy más külső összetevőkkel kapcsolatos problémák diagnosztizálása |
-| Veremnyomkövetések leképezése kivételekből |[TrackException hívások beszúrása a kódba](app/asp-net-exceptions.md) (de néhány automatikusan jelentkezik) |Kivételek észlelése és diagnosztizálása |
-| Keresési napló nyomkövetései |[Naplózási adapter hozzáadása](app/asp-net-trace-logs.md) |Kivételek diagnosztizálása, perverz problémák |
-| Az ügyfélhasználat alapjai: oldalmegtekintések, munkamenetek, ... |[JavaScript inicializáló a weboldalakon](app/javascript.md) |Használatelemzés |
-| Ügyfél egyéni mutatói |[Hívások nyomon követése a weboldalakon](app/api-custom-events-metrics.md) |A felhasználói élmény fokozása |
-| Kiszolgáló egyéni mutatói |[Hívások nyomon követése a kiszolgálón](app/api-custom-events-metrics.md) |Üzleti intelligencia |
+| Rendelkezésre állási diagramok |[Webes tesztek](app/monitor-web-app-availability.md) |Ismerje meg a webalkalmazását |
+| Server app Perf: válaszidő,... |[Application Insights hozzáadása a projekthez](app/asp-net.md) vagy [AI-Állapotmonitor telepítése a kiszolgálón](app/monitor-performance-live-website-now.md) (vagy saját kód írása a [függőségek nyomon követéséhez](app/api-custom-events-metrics.md#trackdependency)) |A Teljesítményfigyelő hibáinak észlelése |
+| Függőségi telemetria |[AI-Állapotmonitor telepítése a kiszolgálón](app/monitor-performance-live-website-now.md) |Az adatbázisokkal vagy más külső összetevőkkel kapcsolatos problémák diagnosztizálása |
+| Verem nyomkövetésének lekérése kivételekről |[TrackException-hívások beszúrása a kódban](app/asp-net-exceptions.md) (de néhányat automatikusan kell jelenteni) |Kivételek észlelése és diagnosztizálása |
+| Keresési naplók nyomkövetése |[Naplózási adapter hozzáadása](app/asp-net-trace-logs.md) |Kivételek diagnosztizálása, Perf-problémák |
+| Az ügyfél használatának alapjai: oldalletöltések, munkamenetek,... |[JavaScript-inicializálás a weblapokon](app/javascript.md) |Használatelemzés |
+| Ügyfél egyéni metrikái |[Hívások követése a weblapokon](app/api-custom-events-metrics.md) |Felhasználói élmény fokozása |
+| Kiszolgáló egyéni metrikái |[Hívások követése a kiszolgálón](app/api-custom-events-metrics.md) |Üzleti intelligencia |
 
-### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Miért egyenlőtlenek a keresések és a mérőszámok diagramjainak számai?
+### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Miért nem egyenlő a keresési és a metrikák diagramjai?
 
-[Mintavételi](app/sampling.md) csökkenti a telemetriai elemek (kérések, egyéni események stb.) ténylegesen küldött az alkalmazásból a portálra. A Keresés ben láthatja a ténylegesen beérkezett elemek számát. Az események számát megjelenítő metrikadiagramokban láthatja az eredeti események számát. 
+A [mintavétel](app/sampling.md) csökkenti az alkalmazásból a portálra ténylegesen küldött telemetria elemek (kérelmek, egyéni események stb.) számát. A keresés területen láthatja a ténylegesen fogadott elemek számát. Az események számát megjelenítő mérőszám-diagramoknál megtekintheti a bekövetkezett eredeti események számát. 
 
-Minden egyes továbbított elem egy `itemCount` tulajdonságot hordoz, amely megmutatja, hogy az elem hány eredeti eseményt jelent. A működés közbeni mintavételezések megfigyeléséhez futtathatja ezt a lekérdezést az Analytics szolgáltatásban:
+Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely azt mutatja, hogy hány eredeti eseményt képvisel az adott tétel. A mintavétel működés közbeni megfigyeléséhez futtassa ezt a lekérdezést az Analyticsben:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -383,59 +383,59 @@ Minden egyes továbbított elem egy `itemCount` tulajdonságot hordoz, amely meg
 
 ### <a name="automation"></a>Automation
 
-#### <a name="configuring-application-insights"></a>Az Application Insights konfigurálása
+#### <a name="configuring-application-insights"></a>Application Insights konfigurálása
 
-[PowerShell-parancsfájlokat az](app/powershell.md) Azure Resource Monitor használatával a következőkre írhat:
+A PowerShell-szkripteket az Azure erőforrás-figyelő használatával is [megírhatja](app/powershell.md) :
 
-* Hozzon létre és frissítse az Application Insights-erőforrásokat.
-* Állítsa be az árképzési tervet.
-* Szerezd meg a műszerkulcsot.
-* Adjon hozzá egy metrikariasztást.
-* Adjon hozzá egy rendelkezésre állási tesztet.
+* Application Insights erőforrások létrehozása és frissítése.
+* Állítsa be a díjszabási tervet.
+* Szerezze be a kialakítási kulcsot.
+* Metrikai riasztás hozzáadása.
+* Adja meg a rendelkezésre állási tesztet.
 
-Nem állíthat be metrikakezelő jelentést, és nem állíthat be folyamatos exportálást.
+Nem állítható be metrikai Explorer-jelentés, vagy nem állítható be folyamatos exportálás.
 
 #### <a name="querying-the-telemetry"></a>A telemetria lekérdezése
 
-A [REST API segítségével](https://dev.applicationinsights.io/) [analytics-lekérdezéseket](app/analytics.md) futtat.
+[Analytics](app/analytics.md) -lekérdezések futtatásához használja a [REST API](https://dev.applicationinsights.io/) .
 
-### <a name="how-can-i-set-an-alert-on-an-event"></a>Hogyan állíthatok be riasztást egy eseményről?
+### <a name="how-can-i-set-an-alert-on-an-event"></a>Hogyan állíthatok be riasztást eseményre?
 
-Az Azure-riasztások csak a metrikákon. Hozzon létre egy egyéni metrikát, amely átlépi az értékküszöböt, amikor az esemény bekövetkezik. Ezután állítson be egy riasztást a metrika. Értesítést kap, ha a metrika mindkét irányban átlépi a küszöbértéket; nem kap értesítést, amíg az első átkelés, nem számít, hogy a kezdeti érték magas vagy alacsony; mindig van egy késés néhány perc.
+Az Azure-riasztások csak mérőszámokon alapulnak. Hozzon létre egy egyéni mérőszámot, amely egy érték küszöbértékét adja meg, amikor az esemény bekövetkezik. Ezután állítson be egy riasztást a metrikán. Értesítést kap, ha a metrika mindkét irányban átlépi a küszöbértéket; nem kap értesítést az első átlépésig, függetlenül attól, hogy a kezdeti érték magas vagy alacsony; a késések mindig néhány percet vesznek igénybe.
 
-### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Vannak-e adatátviteli díjak egy Azure-webalkalmazás és az Application Insights között?
+### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Vannak adatátviteli díjak az Azure-webalkalmazások és a Application Insights között?
 
-* Ha az Azure-webapp üzemelteti egy adatközpontban, ahol van egy Application Insights-gyűjtemény végpont, nincs díj. 
-* Ha nincs gyűjteményvégpont a gazdagép adatközpontjában, akkor az alkalmazás telemetriai adatai [azure-beli kimenő díjakat](https://azure.microsoft.com/pricing/details/bandwidth/)vonnak maga után.
+* Ha az Azure-webalkalmazás egy olyan adatközpontban található, amelyben Application Insights gyűjtemény végpontja található, díjmentesen használható. 
+* Ha nem található gyűjteményi végpont a gazdagép adatközpontjában, akkor az alkalmazás telemetria az Azure-beli [kimenő díjakat](https://azure.microsoft.com/pricing/details/bandwidth/)is felmerül.
 
-Ez nem függ attól, hogy az Application Insights-erőforrás hol található. Ez csak a végpontok eloszlásáttól függ.
+Ez nem függ attól, hogy hol található a Application Insights-erőforrás. Csak a végpontok eloszlása függ.
 
-### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetriai adatokat az Application Insights-portálra?
+### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetria az Application Insights portálra?
 
-Javasoljuk, hogy használja az SDK-kat és az [SDK API-t.](app/api-custom-events-metrics.md) Vannak változatai az SDK különböző [platformokon](app/platforms.md). Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozásokat és így tovább kezelik. A [betöltési séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és a [végpontprotokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
+Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](app/api-custom-events-metrics.md)-t. Különböző [platformokon](app/platforms.md)léteznek az SDK különféle változatai. Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozást és így tovább kezelik. A betöltési [séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és a [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
 
-### <a name="can-i-monitor-an-intranet-web-server"></a>Figyelhetek intranetes webkiszolgálót?
+### <a name="can-i-monitor-an-intranet-web-server"></a>Nyomon követhető az intranetes webkiszolgáló?
 
-Igen, de engedélyeznie kell a szolgáltatásokba irányuló forgalmat tűzfalkivételekkel vagy proxyátirányításokkal.
-- QuickPulse (Gyorspulzus)`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider alkalmazásszolgáltató`https://dc.services.visualstudio.com:443` 
-- TelemettryChannel`https://dc.services.visualstudio.com:443` 
+Igen, de engedélyeznie kell a szolgáltatásoknak a tűzfal-kivételek vagy a proxy-átirányítások által nyújtott forgalmat.
+- QuickPulse`https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
+- TelemetryChannel`https://dc.services.visualstudio.com:443` 
 
 
-Tekintse át a szolgáltatások és IP-címek teljes listáját [itt.](app/ip-addresses.md)
+Tekintse át a szolgáltatások és IP-címek teljes listáját [itt](app/ip-addresses.md).
 
-#### <a name="firewall-exception"></a>Tűzfal kivétel
+#### <a name="firewall-exception"></a>Tűzfal-kivétel
 
-Engedélyezze a webkiszolgáló nak, hogy telemetriát küldjön a végpontjainknak. 
+Lehetővé teszi, hogy a webkiszolgáló telemetria küldjön a végpontoknak. 
 
 #### <a name="gateway-redirect"></a>Átjáró átirányítása
 
-Irányítsa át a kiszolgálóról az intraneten lévő átjáróra irányuló forgalmat a végpontok felülírásával a konfigurációban. Ha ezek az "Endpoint" tulajdonságok nem találhatók meg a konfigurációban, ezek az osztályok az ApplicationInsights.config példában alább látható alapértelmezett értékeket fogják használni. 
+Átirányíthatja a forgalmat a kiszolgálóról az intranetes átjáróra a konfigurációban található végpontok felülírásával. Ha ezek a "végpont" tulajdonságok nem szerepelnek a konfigurációban, ezek az osztályok az alapértelmezett értékeket fogják használni az alábbi példában látható ApplicationInsights. config fájlban. 
 
-Az átjáró nak a végpont alapcímére kell irányítania a forgalmat. A konfigurációban cserélje le `http://<your.gateway.address>/<relative path>`az alapértelmezett értékeket a programra.
+Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket a `http://<your.gateway.address>/<relative path>`értékre.
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa Az ApplicationInsights.config alapértelmezett végpontokkal:
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa ApplicationInsights. config alapértelmezett végpontokkal:
 ```xml
 <ApplicationInsights>
   ...
@@ -457,16 +457,16 @@ Az átjáró nak a végpont alapcímére kell irányítania a forgalmat. A konfi
 ```
 
 > [!NOTE]
-> Az ApplicationIdProvider a 2.6.0-s verziótól érhető el.
+> A ApplicationIdProvider a v 2.6.0-től kezdődően érhető el.
 
 
 
-#### <a name="proxy-passthrough"></a>Proxy áthaladás
+#### <a name="proxy-passthrough"></a>Proxy átengedése
 
-A proxy-áthaladás egy számítógépszintű vagy alkalmazásszintű proxy konfigurálásával érhető el.
-További információt a dotnet DefaultProxy című cikkében [talál.](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)
+A proxy továbbítása a gépi vagy az alkalmazás szintű proxy konfigurálásával érhető el.
+További információ: a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
  
- Példa Web.config:
+ Példa web. config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -476,16 +476,16 @@ További információt a dotnet DefaultProxy című cikkében [talál.](https://
 ```
  
 
-### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Futtatható a rendelkezésre állási webtesztek intranetes kiszolgálón?
+### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Futtathatok rendelkezésre állási webes teszteket egy intranetes kiszolgálón?
 
-Webes [tesztjeink](app/monitor-web-app-availability.md) olyan jelenléti pontokon futnak, amelyeket világszerte terjesztenek. Két megoldás létezik:
+A [webes tesztek](app/monitor-web-app-availability.md) a világ minden részén elosztott, jelenléti pontokon futnak. Két megoldás létezik:
 
-* Tűzfal ajtó - A kérelmek engedélyezése a kiszolgálóra [a webes tesztügynökök hosszú és módosítható listájáról.](app/ip-addresses.md)
-* Saját kódot írhat, hogy rendszeres kéréseket küldjön a kiszolgálónak az intraneten belülről. Erre a célra futtathatja a Visual Studio webes tesztjeit. A tesztelő elküldheti az eredményeket az Application Insights nak a TrackAvailability() API használatával.
+* Tűzfal ajtaja – engedélyezze a kérelmeket [a kiszolgálónak a webes tesztek hosszú és módosítható listájáról](app/ip-addresses.md).
+* Saját kód megírásával rendszeres kérelmeket küldhet a kiszolgálónak az intraneten belülről. A Visual Studio webes tesztek erre a célra is futtathatók. A Tester a TrackAvailability () API használatával küldheti el az eredményeket Application Insights.
 
-### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Mennyi ideig tart a telemetriai adatok gyűjtése?
+### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Mennyi időt vesz igénybe a telemetria gyűjtése?
 
-A legtöbb Application Insights-adat késése 5 perc alatt. Egyes adatok hosszabb időt vehetnek igénybe; általában nagyobb naplófájlok. További információt az [Application Insights SLA](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/)című témakörben talál.
+A legtöbb Application Insights adat 5 perces késéssel rendelkezik. Egyes adatsorok hosszabb időt vehetnek igénybe; általában nagyobb naplófájlok. További információ: [Application INSIGHTS SLA](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/).
 
 
 
@@ -499,43 +499,43 @@ A legtöbb Application Insights-adat késése 5 perc alatt. Egyes adatok hosszab
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
-Ez a Microsoft GYIK a tárolók Azure Monitorjával kapcsolatos gyakori kérdések listája. Ha bármilyen további kérdése van a megoldással kapcsolatban, látogasson el a [vitafórumra,](https://feedback.azure.com/forums/34192--general-feedback) és tegye fel kérdéseit. Amikor egy kérdést gyakran felteszünk, hozzáadjuk ehhez a cikkhez, hogy gyorsan és egyszerűen megtalálható legyen.
+Ez a Microsoft gyakori kérdések listája a Azure Monitor for containers szolgáltatással kapcsolatos gyakori kérdésekre mutat. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
-### <a name="what-does-other-processes-represent-under-the-node-view"></a>Mit *jelentenek az Egyéb folyamatok* a Csomópont nézetben?
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>Mit jelent a *többi folyamat* a csomópont nézet alatt?
 
-**Más folyamatok** célja, hogy segítsen egyértelműen megérteni a csomóponton a magas erőforrás-használat kiváltó okait. Ez lehetővé teszi a konténeres folyamatok és a nem konténeres folyamatok közötti használat megkülönböztetését.
+A **többi folyamat** célja, hogy könnyebben megértse a csomópont magas erőforrás-használatának kiváltó okát. Ez lehetővé teszi a tárolók és a nem tároló folyamatok közötti használat megkülönböztetését.
 
-Mik ezek **az egyéb folyamatok?** 
+Mik ezek a **más folyamatok**? 
 
-Ezek nem tárolóba helyezett folyamatok, amelyek a csomóponton futnak.  
+Ezek a nem tároló folyamatok, amelyek a csomóponton futnak.  
 
-Hogy számoljuk ezt ki?
+Hogyan számítjuk ki ezt?
 
-**Egyéb folyamatok** = *Teljes használat a CAdvisor-használatból* - *konténeres folyamatból*
+**Egyéb folyamatok** = *teljes kihasználtsága a CAdvisor* - *-használatból a tároló folyamatból*
 
-Az **egyéb folyamatok a következőket tartalmazzák:**
+A **többi folyamat** az alábbiakat tartalmazza:
 
-- Saját irányítású vagy felügyelt Kubernetes nem konténeres folyamatok 
+- Önállóan felügyelt vagy felügyelt Kubernetes nem tároló folyamatok 
 
-- Tárolófutási idő folyamatok  
+- Tároló futásidejű folyamatai  
 
 - Kubelet  
 
 - A csomóponton futó rendszerfolyamatok 
 
-- A csomóponthardveren vagy virtuális gépen futó egyéb, nem Kubernetes-számítási feladatok 
+- Csomópontok hardverén vagy virtuális gépen futó egyéb nem Kubernetes számítási feladatok 
 
-### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>A ContainerLog tábla lekérdezésekénnél nem jelennek meg a Kép és a Név tulajdonságértékek.
+### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Nem látom a ContainerLog tábla lekérdezése során kitöltött képek és nevek tulajdonság értékét.
 
-Az ügynök verziójában ciprod12042019 és újabb, alapértelmezés szerint ez a két tulajdonság nem töltődik fel minden naplósorban, hogy minimalizálja a naplóadatok kal kapcsolatos költségeket. Két lehetőség van a tábla lekérdezésére, amelyek ezeket a tulajdonságokat tartalmazzák az értékeikkel:
+Az ügynök verziójának ciprod12042019 és újabb verzióiban alapértelmezés szerint ez a két tulajdonság nem töltődik fel minden egyes naplófájlhoz, hogy csökkentse a begyűjtött naplózási adatokhoz felmerülő költségeket. Az alábbi két lehetőség közül választhat a tulajdonságokat tartalmazó tábla lekérdezéséhez:
 
 #### <a name="option-1"></a>1. lehetőség 
 
-Csatlakozzon más táblákhoz, hogy ezeket a tulajdonságértékeket felvesse az eredményekbe.
+Csatlakozás más táblákhoz, hogy ezek a tulajdonságértékek szerepeljenek az eredmények között.
 
-Módosítsa a lekérdezéseket úgy, hogy ```ContainerInventory``` azok tartalmazzák a táblából származó Image és ImageTag tulajdonságokat a ContainerID tulajdonsághoz való csatlakozással. A KubepodInventory tábla ContaineName ```ContainerLog``` mezőjéből a Name tulajdonságot (ahogy az korábban megjelent a táblában) a ContainerID tulajdonsághoz való csatlakozással is felveheti. Ez az ajánlott beállítás.
+Módosítsa a lekérdezéseket úgy, hogy a ```ContainerInventory``` táblázatból a ContainerID tulajdonsághoz való csatlakozással képet és ImageTag tulajdonságokat is tartalmazzon. A Name ( ```ContainerLog``` név) tulajdonságot belefoglalhatja a KubepodInventory tábla ContaineName mezőjéből a ContainerID tulajdonsághoz való csatlakozással. Ez az ajánlott lehetőség.
 
-A következő példa egy részletes mintalekérdezés, amely bemutatja, hogyan lehet ezeket a mezőértékeket illesztésekkel beszerezni.
+A következő példa egy példaként szolgáló részletes lekérdezést tartalmaz, amely ismerteti, hogyan lehet beolvasni ezeket a mezőértékeket az illesztésekkel.
 
 ```
 //lets say we are querying an hour worth of logs
@@ -559,50 +559,50 @@ ContainerLog
 
 #### <a name="option-2"></a>2. lehetőség
 
-Engedélyezze újra a gyűjteményt ezekhez a tulajdonságokhoz minden tárolónapló-sorhoz.
+Engedélyezze újra a gyűjteményt ezen tulajdonságok esetében minden egyes tároló-naplófájlhoz.
 
-Ha az első beállítás nem megfelelő a lekérdezési módosítások miatt, újra engedélyezheti a ```log_collection_settings.enrich_container_logs``` mezők gyűjtését, ha engedélyezi a beállítást az ügynök konfigurációs leképezésében az [adatgyűjtés konfigurációs beállításaiban](insights/container-insights-agent-config.md)leírtak szerint.
+Ha az első lehetőség a lekérdezés módosítása miatt nem megfelelő, akkor az [adatgyűjtési konfigurációs beállítások](insights/container-insights-agent-config.md)részben leírtak szerint engedélyezheti ```log_collection_settings.enrich_container_logs``` a mezők begyűjtését az ügynök konfigurációs térképének beállításával.
 
 > [!NOTE]
-> A második beállítás nem ajánlott az 50-nél több csomópontot tartalmazó nagy fürtöknél, mivel a dúsítás végrehajtásához api-kiszolgálóhívásokat hoz létre a fürt minden csomópontjáról. Ez a beállítás minden összegyűjtött naplósor adatméretét is növeli.
+> A második lehetőség nem ajánlott olyan nagyméretű fürtök esetében, amelyek több mint 50 csomóponttal rendelkeznek, mert az API-kiszolgáló hívásokat kezdeményez a fürt minden csomópontján, hogy elvégezze ezt a dúsítást. Ez a beállítás az adatok méretét is növeli minden összegyűjtött naplófájl esetében.
 
-### <a name="can-i-view-metrics-collected-in-grafana"></a>Megtekinthetem a Grafana-ban összegyűjtött mutatókat?
+### <a name="can-i-view-metrics-collected-in-grafana"></a>Megtekinthetem a Grafana összegyűjtött mérőszámokat?
 
-Az Azure Monitor tárolók támogatja a Grafana irányítópultokon a Log Analytics-munkaterületen tárolt metrikák megtekintését. A kezdéshez egy sablont is betölthet a Grafana [irányítópult-tárházáról,](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) és hivatkozást nyújtunk be, amely segítséget nyújt a figyelt fürtök további adatainak lekérdezéséhez az egyéni Grafana-irányítópultokon való megjelenítéshez. 
+A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Figyelhetem az AKS-motorfürtömet az Azure Monitor tárolókkal?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Megfigyelhető az AK-motor fürtje Azure Monitor for containers használatával?
 
-Az Azure Monitor a tárolók támogatja a figyeléstároló-számítási feladatok üzembe helyezett AKS-motor (korábbi nevén ACS-motor) fürt(ek) az Azure-ban üzemeltetett. További részletekért és a forgatókönyv figyelésének engedélyezéséhez szükséges lépések áttekintéséről az [Azure Monitor használata az AKS-engine tárolókhoz című témakörben](https://github.com/microsoft/OMS-docker/tree/aks-engine)olvashat.
+A tárolók Azure Monitor támogatja az Azure-ban üzemeltetett, AK-motor (korábbi nevén ACS-motor) fürt (ek) ben üzembe helyezett, a tároló munkaterheléseit. További részletek és áttekintés a forgatókönyv figyelésének engedélyezéséhez szükséges lépésekről: a [Azure monitor használata a tárolók számára az AK-motorhoz](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
-### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Miért nem látom az adatokat a Log Analytics-munkaterületemen?
+### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Miért nem láthatók a Log Analytics munkaterület adatai?
 
-Ha nem látja az adatokat a Log Analytics munkaterületen egy bizonyos időpontban mindennapi, lehet, hogy elérte az alapértelmezett 500 MB-os korlátot, vagy a napi korlátot, hogy szabályozza a napi adatok gyűjtésére. Ha a napkorra vonatkozó korlát teljesül, az adatgyűjtés csak a következő napon áll le és folytatódik. Az adathasználat és a várt használati minták alapján egy másik tarifacsomagra való frissítésmegtekintéséről az [Adathasználat és a költségek naplózása](platform/manage-cost-storage.md)című témakörben található. 
+Ha a Log Analytics munkaterületen nem tud adatokat látni a mindennapi időpontokban, előfordulhat, hogy elérte az alapértelmezett 500 MB-os korlátot, vagy a naponta begyűjthető adatok mennyiségének szabályozására megadott napi korlátot. Ha a napi korlát teljesül, az adatgyűjtés csak a következő napon leáll, és folytatja a műveletet. Tekintse át az adatfelhasználást, és frissítsen egy másik díjszabási csomagra a várt használati szokások alapján: az [adatok használatának és költségének naplózása](platform/manage-cost-storage.md). 
 
-### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Mik a container-állapotok a ContainerInventory táblában vannak megadva?
+### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Mik a ContainerInventory táblában megadott tárolók állapotai?
 
-A ContainerInventory tábla a leállított és a futó tárolókra vonatkozó információkat tartalmazza. A táblát az ügynökön belüli munkafolyamat tölti fel, amely lekérdezi a docker-t az összes tárolóra (futás és leállítva), és továbbítja az adatokat a Log Analytics-munkaterületről.
+A ContainerInventory tábla a leállított és futó tárolókkal kapcsolatos információkat tartalmaz. A tábla az ügynökön belüli munkafolyamattal van feltöltve, amely lekérdezi a Docker-t az összes tárolónál (futó és leállított), és továbbítja az adatokat a Log Analytics munkaterületen.
  
-### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hogyan oldhatom meg *a hiányzó előfizetés-regisztrációs* hibát?
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hogyan a *hiányzó előfizetés-regisztrációs* hiba elhárítása?
 
-Ha a **Microsoft.OperationsManagement számára hiányzó előfizetés-regisztráció**hibaüzenetjelenik meg, a **microsoft.OperationsManagement** erőforrás-szolgáltató regisztrálásával oldhatja meg azt abban az előfizetésben, amelyen a munkaterület definiálva van. Ennek dokumentációja [itt](../azure-resource-manager/templates/error-register-resource-provider.md)található.
+Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**, akkor a Microsoft. OperationsManagement erőforrás-szolgáltató regisztrálása az előfizetésben, ahol a munkaterület meg van adva, a **Microsoft.** . Ennek a dokumentációja [itt](../azure-resource-manager/templates/error-register-resource-provider.md)található.
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Támogatja az RBAC-kompatibilis AKS-fürtöket?
+### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Támogatja a RBAC-kompatibilis AK-fürtöket?
 
-A tárolófigyelési megoldás nem támogatja az RBAC-ot, de az Azure Monitor tárolókhoz támogatja. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a panelekben, amelyek a fürtök adatait jelenítik meg.
+A tároló-figyelési megoldás nem támogatja a RBAC, de a tárolók esetében Azure Monitor is támogatott. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a fürtök adatait megjelenítő pengék között.
 
-### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hogyan engedélyezhetem a naplógyűjtést a kube-rendszer névterében lévő tárolókhoz a Helmen keresztül?
+### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hogyan lehetővé teszi a naplók gyűjtését a Kube-System névtérben a Helm használatával?
 
-A kube-system névtértárolóiból származó naplógyűjtemény alapértelmezés szerint le van tiltva. A naplógyűjtés az omsagent környezeti változójának beállításával engedélyezhető. További információkért tekintse meg az [Azure-figyelő a github-tárolók](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) lapján. 
+Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárolók naplójának gyűjteménye. A omsagent egy környezeti változó beállításával engedélyezhető a naplók gyűjteménye. További információ: [Azure monitor for containers](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) GitHub oldal. 
 
-### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hogyan frissíthetem az omsagentet a legújabb verzióra?
+### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hogyan frissíteni a omsagent a legújabb kiadású verzióra?
 
-Az ügynök frissítésének módjáról az [Ügynökkezelés](insights/container-insights-manage-agent.md)című témakörben olvashat.
+Az ügynök frissítésének megismeréséhez tekintse meg az [ügynökök kezelése](insights/container-insights-manage-agent.md)című témakört.
 
-### <a name="how-do-i-enable-multi-line-logging"></a>Hogyan engedélyezhetem a többsoros naplózást?
+### <a name="how-do-i-enable-multi-line-logging"></a>Hogyan a többsoros naplózás engedélyezése?
 
-Jelenleg az Azure Monitor tárolók nem támogatja a többsoros naplózást, de vannak olyan megoldások, amelyek rendelkezésre állnak. Beállíthatja az összes szolgáltatást, hogy JSON formátumban írjon, majd a Docker/Moby egyetlen sorként írja őket.
+A tárolók számára jelenleg Azure Monitor nem támogatja a többsoros naplózást, de vannak elérhető áthidaló megoldások. Az összes szolgáltatást JSON formátumban is konfigurálhatja, majd a Docker/Moby egyetlen sorba írja azokat.
 
-A naplót például JSON-objektumként csomagolhatja, amint az alábbi példában látható egy minta node.js alkalmazásesetében:
+Például becsomagolhatja a naplót JSON-objektumként, ahogy az alábbi példában is látható egy példa Node. js-alkalmazáshoz:
 
 ```
 console.log(json.stringify({ 
@@ -613,112 +613,112 @@ console.log(json.stringify({
       }));
 ```
 
-Ezek az adatok a következő példához fognak hasonlítani az Azure Monitorban a naplóklekérdezéskor:
+Az alábbi példához hasonlóan a naplók esetében a következő példa jelenik meg Azure Monitorban:
 
 ```
 LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
-A probléma részletes áttekintését a következő [GitHub-hivatkozásból](https://github.com/moby/moby/issues/22920)tekintheti meg.
+A probléma részletes megtekintéséhez tekintse meg a következő GitHub- [hivatkozást](https://github.com/moby/moby/issues/22920).
 
-### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hogyan oldhatom meg az Azure AD-hibákat, amikor engedélyezem az élő naplókat? 
+### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Az élő naplók engedélyezésekor Hogyan az Azure AD-hibák elhárítása? 
 
-A következő hiba jelenhet meg: **A kérelemben megadott válasz URL-cím nem egyezik meg\>az alkalmazáshoz beállított válasz URL-címekkel: "<alkalmazásazonosító "**. A megoldás megoldása megtalálható a [cikkben Hogyan tekintheti meg a tárolóadatokat valós időben az Azure Monitor tárolókhoz.](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) 
+A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "<Application\>id"**. A megoldás megoldása a következő cikkben található: a [tárolók információinak valós idejű megtekintése Azure monitor a tárolók](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
 
-### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudom frissíteni a fürtöt a bevezetés után?
+### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudom frissíteni a fürtöt a bevezetést követően?
 
-Ha miután engedélyezi az Azure Monitor tárait egy AKS-fürthöz, törli azt a Log Analytics-munkaterületet, amelynek a fürt az adatokat küldte, amikor megpróbálja frissíteni a fürtöt, sikertelen lesz. A munka kerülő megoldásához le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetésben egy másik érvényes munkaterületre hivatkozva hivatkozzon. Amikor ismét megpróbálja végrehajtani a fürtfrissítést, annak fel kell dolgoznia, és sikeresen el kell végeznie.  
+Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor törölje azt a Log Analytics-munkaterületet, amelyhez a fürt az adatokat küldi, amikor a fürt frissítésére tett kísérlet során sikertelen lesz. Ennek megkerüléséhez le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetés egy másik érvényes munkaterületre hivatkozik. Ha újra megpróbálja végrehajtani a fürt frissítését, akkor a folyamatnak sikeresen fel kell dolgoznia és el kell végeznie a műveletet.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Mely portokat és tartományokat kell megnyitnom/engedélyezési listát kell nyitnom az ügyintézőhöz?
+### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Mely portokra és tartományokra van szükségem az ügynök megnyitásához/engedélyezési listához?
 
-Tekintse meg a [hálózati tűzfal követelményeit](insights/container-insights-onboard.md#network-firewall-requirements) a proxy- és tűzfal-konfigurációs adatokhoz, amelyek az Azure, az Azure US Government és az Azure China 21Vianet felhők használatával szükségesek a tárolóügynökhöz.
+Tekintse meg a [hálózati tűzfalra vonatkozó követelményeket](insights/container-insights-onboard.md#network-firewall-requirements) a proxyra és a tűzfalra vonatkozó konfigurációs információkhoz, amelyek a tároló ügynökhöz szükségesek az Azure, az Azure US government és az Azure China 21Vianet-felhők esetében.
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-Ez a Microsoft GYIK az Azure Monitor szolgáltatás virtuális gépekhez szolgáltatásával kapcsolatos gyakori kérdések listája. Ha bármilyen további kérdése van a megoldással kapcsolatban, látogasson el a [vitafórumra,](https://feedback.azure.com/forums/34192--general-feedback) és tegye fel kérdéseit. Amikor egy kérdést gyakran felteszünk, hozzáadjuk ehhez a cikkhez, hogy gyorsan és egyszerűen megtalálható legyen.
+A Microsoft gyakori kérdései a Azure Monitor for VMskal kapcsolatos gyakori kérdések listája. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
-### <a name="can-i-onboard-to-an-existing-workspace"></a>Bevihető egy meglévő munkaterületre?
-Ha a virtuális gépek már csatlakoznak egy Log Analytics-munkaterülethez, továbbra is használhatja ezt a munkaterületet, amikor az Azure Monitor virtuális gépekhez kerül, feltéve, hogy az [az itt](insights/vminsights-enable-overview.md#prerequisites)felsorolt támogatott régiók egyikében található.
-
-
-### <a name="can-i-onboard-to-a-new-workspace"></a>Bevihetek egy új munkaterületre? 
-Ha a virtuális gépek jelenleg nem csatlakozik egy meglévő Log Analytics-munkaterület, létre kell hoznia egy új munkaterületet az adatok tárolására. Új alapértelmezett munkaterület létrehozása automatikusan történik, ha konfigurálja az azure-beli virtuális gépek egyetlen Azure-figyelő az Azure Portalon keresztül.
-
-Ha úgy dönt, hogy a parancsfájl-alapú metódust használja, ezeket a lépéseket az Azure PowerShell vagy a Resource Manager sabloncikk ismerteti az [Azure-figyelő szolgáltatáshoz az Azure PowerShell vagy a Resource Manager sablon](insights/vminsights-enable-at-scale-powershell.md) cikk. 
-
-### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mit tegyek, ha a virtuális gép már jelentést tesz egy meglévő munkaterületre?
-Ha már gyűjt adatokat a virtuális gépekről, lehet, hogy már konfigurálta, hogy adatokat jelentsen egy meglévő Log Analytics-munkaterületnek.  Mindaddig, amíg ez a munkaterület az egyik támogatott régióban van, engedélyezheti az Azure Monitor virtuális gépek, hogy a már meglévő munkaterületet.  Ha a már használt munkaterület nem a támogatott régiók egyikében található, akkor jelenleg nem lesz képes az Azure Monitor virtuális gépekhez való be- és beszállni.  Aktívan dolgozunk a további régiók támogatásén.
+### <a name="can-i-onboard-to-an-existing-workspace"></a>Bejelentkezhetek egy meglévő munkaterületre?
+Ha a virtuális gépek már csatlakoznak egy Log Analytics-munkaterülethez, akkor továbbra is használhatja ezt a munkaterületet Azure Monitor for VMsba való bevezetéskor, amennyiben az [itt](insights/vminsights-enable-overview.md#prerequisites)felsorolt támogatott régiók egyikében található.
 
 
-### <a name="why-did-my-vm-fail-to-onboard"></a>Miért nem sikerült a virtuális gépemnek a fedélzeten dolgoznia?
-Amikor egy Azure-virtuális gép az Azure Portalon, a következő lépések következnek be:
+### <a name="can-i-onboard-to-a-new-workspace"></a>Bejelentkezhetek egy új munkaterületre? 
+Ha a virtuális gépek jelenleg nem kapcsolódnak meglévő Log Analytics-munkaterülethez, létre kell hoznia egy új munkaterületet az adatai tárolásához. Az új alapértelmezett munkaterület létrehozása automatikusan történik, ha egyetlen Azure-beli virtuális gépet állít be Azure Monitor for VMs a Azure Portal keresztül.
 
-* Ha ez a beállítás be van jelölve, létrejön egy alapértelmezett Log Analytics-munkaterület.
-* A Log Analytics-ügynök az Azure virtuális gépeken egy virtuális gép bővítmény használatával, ha megállapítást nyer, hogy szükség van.  
-* Az Azure Monitor virtuális gépek leképezési függőségi ügynök az Azure-beli virtuális gépek en egy bővítmény használatával, ha úgy határozza meg, hogy szükség van. 
+Ha úgy dönt, hogy a parancsfájl-alapú módszert használja, ezeket a lépéseket a [Azure monitor for VMS engedélyezése Azure PowerShell vagy Resource Manager-sablon használatával](insights/vminsights-enable-at-scale-powershell.md) című cikkben tárgyaljuk. 
 
-A fedélzeti folyamat során ellenőrizzük a fentiek állapotát, hogy visszaküldjük önnek az értesítési állapotot a portálon. A munkaterület és az ügynök telepítése általában 5–10 percet vesz igénybe. A figyelési adatok megtekintése a portálon további 5-10 percet vesz igénybe.  
-
-Ha elindította a bevezetést, és olyan üzeneteket lát, amelyek jelzik, hogy a virtuális gépnek be kell szállnia, a virtuális gép a folyamat befejezéséhez legfeljebb 30 percet kell hagynia. 
+### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mi a teendő, ha a virtuális gép már jelent egy meglévő munkaterületet?
+Ha már begyűjti az adatait a virtuális gépekről, lehetséges, hogy már konfigurálta az adatok jelentését egy meglévő Log Analytics-munkaterületre.  Ha a munkaterület az egyik támogatott régióban található, akkor a Azure Monitor for VMst engedélyezheti a meglévő munkaterületen.  Ha a már használt munkaterület nem a támogatott régiókban található, akkor a Azure Monitor for VMs jelenleg nem fog tudni bejelentkezni.  Aktívan dolgozunk a további régiók támogatásán.
 
 
-### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nem látok néhány vagy bármilyen adatot a virtuális gép teljesítménydiagramjain
-Teljesítménydiagramjaink frissültek az *InsightsMetrics* táblázatban tárolt adatok használatával.  Az adatok megtekintéséhez ezekben a diagramokban frissítenie kell az új Virtuálisgép-elemzési megoldás használatához.  További információkért olvassa el a [GA GYIK-et.](insights/vminsights-ga-release-faq.md)
+### <a name="why-did-my-vm-fail-to-onboard"></a>Miért nem sikerült bejelentkezni a virtuális gépre?
+Amikor Azure-beli virtuális gépet telepít a Azure Portalból, a következő lépések történnek:
 
-Ha nem látja a teljesítményadatokat a lemeztáblában vagy néhány teljesítménydiagramon, akkor előfordulhat, hogy a teljesítményszámlálók nincsenek konfigurálva a munkaterületen. A feloldáshoz futtassa a következő [PowerShell-parancsfájlt.](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)
+* Ha ez a beállítás be van jelölve, egy alapértelmezett Log Analytics munkaterület jön létre.
+* A Log Analytics ügynök virtuálisgép-bővítmény használatával települ az Azure-beli virtuális gépekre, ha azt meg kell határozni.  
+* A Azure Monitor for VMs Map-függőségi ügynök az Azure-beli virtuális gépeken bővítmény használatával van telepítve, ha azt meg kell határozni. 
+
+A bevezetési folyamat során a fent ismertetett állapotot vizsgáljuk, hogy az értesítési állapotot a portálon vissza lehessen adni. A munkaterület és az ügynök telepítésének konfigurálása általában 5 – 10 percet vesz igénybe. A figyelési információk megtekintése a portálon további 5 – 10 percet vesz igénybe.  
+
+Ha kezdeményezte a bevezetést, és megtekinti, hogy a virtuális gépet be kell-e állítani, akkor akár 30 percet is igénybe vehet, amíg a virtuális gép elvégezheti a folyamatot. 
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor szolgáltatás a virtuális gépek leképezési funkciójától a Szolgáltatástérképtől?
-Az Azure Monitor szolgáltatás a virtuális gépek leképezése szolgáltatás alapja a Szolgáltatástérkép, de a következő különbségek:
+### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nem látok olyan információt, amely a virtuális gép teljesítmény-diagramjaiban található
+A teljesítmény-diagramok frissítve lettek a *InsightsMetrics* táblában tárolt adatszolgáltatások használatára.  Ha szeretné megtekinteni az ezekben a diagramokban lévőket, frissítenie kell az új VM-elemzési megoldás használatára.  További információkért tekintse meg a [GA GYIK](insights/vminsights-ga-release-faq.md) -t.
 
-* A Map nézet érhető el a virtuális gép panelen és az Azure Monitor virtuális gépek az Azure Monitor alatt érhető el.
-* A térkép kapcsolatai most már kattinthatók, és a kapcsolatmetrikus adatok nézetét jelenítik meg a kiválasztott kapcsolat oldalsó panelén.
-* Van egy új API, amely a térképek létrehozásához használható az összetettebb térképek jobb támogatása érdekében.
-* Figyelt virtuális gépek most már szerepelnek az ügyfélcsoport csomópont, és a fánk diagram mutatja a figyelt és nem figyelt virtuális gépek a csoportban.  Azt is fel lehet használni, hogy szűrje a gépek listáját, ha a csoport ki van bontva.
-* Figyelt virtuális gépek most már szerepelnek a kiszolgálóport csoport csomópontok, és a fánk diagram mutatja a figyelt és nem figyelt gépek a csoportban.  Azt is fel lehet használni, hogy szűrje a gépek listáját, ha a csoport ki van bontva.
-* A térképstílus frissült, hogy jobban konzisztenslegyen az Alkalmazáselemzési adatokból származó Alkalmazástérképpel.
-* Az oldalsó panelek frissültek, és nem rendelkeznek a Szolgáltatástérkép - Frissítéskezelés, Változáskövetés, Biztonság és Ügyfélszolgálat által támogatott integrációs szolgáltatások teljes készletével. 
-* A csoportok és gépek leképezésének lehetősége frissült, és most már támogatja az előfizetéseket, az erőforráscsoportokat, az Azure virtuálisgép-méretezési csoportokat és a felhőszolgáltatásokat.
-* Új szolgáltatásleképezési gépcsoportokat nem hozhat létre az Azure Monitor szolgáltatás virtuális gépek leképezése szolgáltatásban.  
+Ha nem látja a teljesítményadatokat a lemez táblában vagy egyes teljesítmény-diagramoknál, akkor előfordulhat, hogy a teljesítményszámlálók nem konfigurálhatók a munkaterületen. A megoldáshoz futtassa a következő [PowerShell-szkriptet](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell).
 
-### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért jelennek meg pontozott vonalak a teljesítménydiagramokon?
-Ennek több oka is lehet.  Azokban az esetekben, ahol az adatgyűjtésben hézag van, a vonalakat pontozottként ábrázoljuk.  Ha módosította az adatmintavételgyakoriságot az engedélyezett teljesítményszámlálókhoz (az alapértelmezett beállítás az adatok 60 másodpercenként történő gyűjtése), akkor a diagramon pontozott vonalak láthatók, ha szűk időtartományt választ a diagramhoz, és a mintavételi gyakoriság kisebb, mint a diagramon használt gyűjtőméret (például a mintavételi gyakoriság 10 percenként, a diagramon pedig 5 perc).  Ha szélesebb időtartományt választ a megtekintéshez, a diagramvonalak nak folytonos vonalakként kell megjelenniük, nem pedig pontként ebben az esetben.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>A csoportok támogatottak az Azure Monitor virtuális gépekhez?
-Igen, miután telepítette a függőségi ügynök adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési készletek és a felhőszolgáltatások alapján csoportok megjelenítéséhez.  Ha szolgáltatástérképet használt, és gépcsoportokat hozott létre, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportszűrőben, ha a megtekintett munkaterülethez hozta létre őket. 
+### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor for VMs Map funkció a Service Maptól?
+Az Azure Monitor for VMs-leképezési funkció Service Mapon alapul, de a következő különbségek vannak:
 
-### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan láthatom a 95.
-Alapértelmezés szerint a lista úgy van rendezve, hogy a kiválasztott metrika 95.  A diagramra kattintva megnyílik a **Felső N lista** nézet a megfelelő mutatóval.
+* A Térkép nézet a virtuális gép paneljéről, illetve a Azure Monitor alatt Azure Monitor for VMs érhető el.
+* A térképen lévő kapcsolatok most már rákattintanak, és megjelenítik a kapcsolat metrikájának adatait a kijelölt kapcsolat oldalsó paneljén.
+* Létezik egy új API, amely a térképek létrehozásához használható összetettebb térképek jobb támogatásához.
+* A figyelt virtuális gépek már szerepelnek az ügyféloldali csoport csomópontban, és a fánk diagramon látható a csoportban lévő figyelt vs nem figyelt virtuális gépek aránya.  A csoport kibontásakor a számítógépek listájának szűrésére is használható.
+* A figyelt virtuális gépek már szerepelnek a kiszolgáló portjának csomópontjaiban, és a fánk diagramon a figyelt és a nem figyelt gépek aránya látható a csoportban.  A csoport kibontásakor a számítógépek listájának szűrésére is használható.
+* A Térkép stílusa úgy lett frissítve, hogy jobban konzisztens legyen az Application-adatokból származó app Map szolgáltatással.
+* Az oldalsó panelek frissítve lettek, és nem rendelkeznek a Service Map-Update Management, a Change Tracking, a Security és a Service Desk által támogatott teljes integrációs készlettel. 
+* A csoportok és gépek leképezésre való kiválasztásának lehetősége frissítve lett, és mostantól támogatja az előfizetéseket, az erőforráscsoportok, az Azure virtuálisgép-méretezési csoportokat és a Cloud Services szolgáltatást.
+* Az új Service Map számítógépcsoportok nem hozhatók létre a Azure Monitor for VMs Map szolgáltatásban.  
 
-### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan kezeli a Map funkció a különböző virtuális hálózatok és alhálózatok duplikált IP-k kezelésére?
-Ha az IP-tartományokat virtuális gépekkel vagy az Azure virtuálisgép-méretezési készletekkel duplikálja az alhálózatok és a virtuális hálózatok között, előfordulhat, hogy az Azure Monitor szolgáltatás virtuálisgépek leképezése helytelen információkat jelenít meg. Ez egy ismert probléma, és vizsgáljuk a lehetőségeket, hogy javítsa ezt a tapasztalatot.
+### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért mutatnak pontozott vonalakat a teljesítmény-diagramok?
+Ez néhány ok miatt fordulhat elő.  Abban az esetben, ha az adatgyűjtésben hézag van, a vonalakat pontozott értékre ábrázoljuk.  Ha módosította az adatmintavételezés gyakoriságát az engedélyezett teljesítményszámlálók esetében (az alapértelmezett beállítás az adatok gyűjtése 60 másodpercenként), a diagramon szaggatott vonalakat láthat, ha a diagramhoz a keskeny időtartományt választja, a mintavételi gyakoriság pedig kisebb, mint a diagramon használt gyűjtő mérete (például a mintavételezés gyakorisága 10 percenként, a diagram minden gyűjtője pedig 5 perc).  Ha szélesebb időtartományt szeretne megtekinteni, akkor a diagram sorai nem pontokként, hanem folytonos vonalakként jelennek meg.
 
-### <a name="does-map-feature-support-ipv6"></a>Támogatja a Map szolgáltatás az IPv6-ot?
-A térképfunkció jelenleg csak az IPv4 protokollt támogatja, és az IPv6 támogatását vizsgáljuk. Az IPv6-on belül bújtatott IPv4-et is támogatjuk.
+### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Támogatottak-e a csoportok Azure Monitor for VMs?
+Igen, a függőségi ügynök telepítése után adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési csoportok és a Cloud Services alapján.  Ha már használta a Service Map és létrehozott számítógép-csoportokat, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportok szűrőben, ha létrehozta őket a megtekintett munkaterülethez. 
 
-### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Amikor betöltök egy térképet egy erőforráscsoporthoz vagy más nagy csoporthoz, a térkép nehezen tekinthető meg
-Bár a nagy és összetett konfigurációk kezeléséhez javítottuk a Map-et, rájövünk, hogy a térkép sok csomó csomó csomóponttal, kapcsolattal és fürtként működő csomóval rendelkezhet.  Elkötelezettek vagyunk a mellett, hogy tovább növeljük a méretezhetőség növelését.   
+### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekintse meg a 95. percentilis-sor az összesített teljesítményű diagramokon való vezetésének részleteit?
+Alapértelmezés szerint a lista úgy van rendezve, hogy megjelenítse azokat a virtuális gépeket, amelyek a 95. percentilis legmagasabb értékkel rendelkeznek a kiválasztott metrika esetében, kivéve a rendelkezésre álló memória diagramot, amely az 5. percentilis legalacsonyabb értékkel rendelkező gépeket jeleníti meg.  A diagramra kattintva megnyílik a **legfelső N listanézet** nézet a megfelelő metrika kiválasztásával.
 
-### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért néz ki a Teljesítmény lapon a hálózati diagram, mint az Azure virtuális gép áttekintése lapon lévő hálózati diagram?
+### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan kezeli a Map szolgáltatás a duplikált IP-címeket különböző virtuális hálózatok és alhálózatokon?
+Ha az IP-tartományokat virtuális gépek vagy Azure virtuálisgép-méretezési csoportok között duplikálja az alhálózatok és a virtuális hálózatok között, akkor Azure Monitor for VMs leképezés helytelen információk megjelenítésére vezethet. Ez egy ismert probléma, amely a tapasztalatok fejlesztését vizsgálja.
 
-Az Azure virtuális gép áttekintő lapja a vendég virtuális gép ben végzett tevékenység mérése alapján jeleníti meg a diagramokat.  Az Azure virtuális gép áttekintése a hálózati diagram, csak a hálózati forgalom, amely a számlázási lesz.  Ez nem foglalja magában a virtuális hálózatok közötti forgalmat.  Az Azure Monitor virtuális gépekhez megjelenített adatok és diagramok a vendég virtuális gép adataira épülnek, és a hálózati diagram megjeleníti az összes TCP/IP-forgalmat, amely az adott virtuális gép felé és kimenő, beleértve a virtuális hálózatokat is.
+### <a name="does-map-feature-support-ipv6"></a>Támogatja az IPv6 a Map funkciót?
+A Térkép funkció jelenleg csak az IPv4-t támogatja, és az IPv6 támogatását vizsgáljuk. Az IPv6-on belül bújtatott IPv4-t is támogatja.
 
-### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérik a válaszidőt a VMConnection-ben tárolt és a kapcsolatpanelen és a munkafüzetekben?
+### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Egy erőforráscsoport vagy más nagyméretű csoport térképének betöltésekor nehéz megtekinteni a térképet
+Habár a nagy és összetett konfigurációk kezelésére tettük elérhetővé a térképet, rájövünk, hogy a térképen számos csomópont, kapcsolat és csomópont működik fürtként.  Elkötelezettek vagyunk a skálázhatóság növelésének támogatásával.   
 
-A válaszidő közelítés. Mivel nem instrument a kódot az alkalmazás, nem igazán tudom, mikor kezdődik a kérelem, és mikor érkezik a válasz. Ehelyett megfigyeljük, hogy a kapcsolaton keresztül küldött adatok, majd a kapcsolaton lévő adatok visszatérnek. Ügynökünk nyomon követi ezeket a küldéseket és fogadásokat, és megpróbálja párosítani őket: a küldések sorozatát, majd a fogadások sorozatát kérés/válasz párként értelmezi. A műveletek közötti időzítés a válaszidő. Ez magában foglalja a hálózati késést és a kiszolgáló feldolgozási idejét.
+### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért különbözik a hálózati diagram a teljesítmény lapon, mint a hálózati diagram az Azure-beli virtuális gépek áttekintő oldalán?
 
-Ez a közelítés jól működik a kérelmeken/válaszokon alapuló protokollok esetében: egyetlen kérelem jelenik meg a kapcsolaton, és egyetlen válasz érkezik. Ez a helyzet a HTTP(S) (nélkül csővezeték), de nem teljesülnek más protokollok.
+Az Azure-beli virtuális gépek áttekintő lapja diagramokat jelenít meg a vendég virtuális gép tevékenységének mérése alapján.  Az Azure-beli virtuális gépek áttekintő hálózati diagramja csak a számlázásra kerülő hálózati forgalmat jeleníti meg.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  A Azure Monitor for VMs számára megjelenített adatok és diagramok a vendég virtuális gépről származó adatokon alapulnak, és a hálózati diagram megjeleníti az összes bejövő és kimenő TCP/IP-forgalmat, beleértve a virtuális gépek közötti hálózatot is.
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Vannak-e korlátozások, ha én vagyok a Log Analytics ingyenes díjszabási csomag?
-Ha az Azure Monitort az *ingyenes* díjszabási szint használatával konfigurálta a Log Analytics-munkaterülettel, az Azure Monitor for VMs Map funkció csak öt, a munkaterülethez csatlakoztatott csatlakoztatott gépet támogat. Ha öt virtuális gép csatlakozik egy szabad munkaterülethez, leválasztja az egyik virtuális gépet, majd később csatlakozik egy új virtuális géphez, az új virtuális gép nem figyelhető, és megjelenik a Térkép lapon.  
+### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérjük a válaszidő a VMConnection tárolt és a kapcsolatok paneljén és a munkafüzetek között?
 
-Ebben a feltételben a rendszer megkérdezi a **Kipróbálás most** lehetőséget, amikor megnyitja a virtuális gép, és válassza **insights** a bal oldali ablaktáblában, még akkor is, ha már telepítve van a virtuális gép.  Azonban nem kéri a beállításokat, mint általában akkor fordul na be, ha ez a virtuális gép nem volt berakva az Azure Monitor virtuális gépekhez. 
+A válaszidő egy közelítés. Mivel nem használjuk az alkalmazás kódját, nem igazán tudjuk, hogy mikor kezdődik a kérelem, és mikor érkezik a válasz. Ehelyett megfigyeljük, hogy a rendszer egy kapcsolatban küldi az adatküldést, majd az adott kapcsolatban visszaérkező adatforrásokat. Az ügynök nyomon követi ezeket a küldési és fogadási kísérleteket, és párosítja őket: az elküldött sorok sorozata, amelyet a fogadások sorozata, a kérelem/válasz pároknak kell értelmezni. A műveletek közötti időzítés a válaszidő. Ez magában foglalja a hálózati késést és a kiszolgáló feldolgozási idejét is.
+
+Ez a közelítés a kérelmek/válaszok alapjául szolgáló protokollok esetében jól működik: egyetlen kérelem érkezik a hálózatra, és egyetlen válasz érkezik. Ez a HTTP (S) esetén (csővezeték nélkül), de más protokollok esetében nem teljesül.
+
+### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>A korlátozások vonatkoznak a Log Analytics ingyenes díjszabási csomagra?
+Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log Analytics munkaterülettel, Azure monitor for VMS a Térkép funkció csak a munkaterülethez csatlakozó öt csatlakoztatott gépet fogja támogatni. Ha az ingyenes munkaterülethez öt virtuális gép csatlakozik, az egyik virtuális gép leválasztását követően később egy új virtuális gépet csatlakoztat, az új virtuális gép nem lesz figyelve, és a Térkép oldalon jelenik meg.  
+
+Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
 ## <a name="next-steps"></a>További lépések
-Ha a kérdésére itt nem kap választ, további kérdéseket és válaszokat az alábbi fórumokon talál.
+Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
 - [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
-Az Azure Monitorral kapcsolatos általános visszajelzésért látogasson el a [visszajelzési fórumra.](https://feedback.azure.com/forums/34192--general-feedback)
+Ha Azure Monitor általános visszajelzést szeretne kapni, látogasson el a [visszajelzési fórumra](https://feedback.azure.com/forums/34192--general-feedback).

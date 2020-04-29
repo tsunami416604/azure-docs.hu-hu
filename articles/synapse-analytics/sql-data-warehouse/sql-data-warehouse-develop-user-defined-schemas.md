@@ -1,6 +1,6 @@
 ---
 title: Felhasználó által definiált sémák használata
-description: Tippek a T-SQL felhasználó által definiált sémák használatával megoldások fejlesztéséhez a Synapse SQL-készletben.
+description: Tippek a T-SQL felhasználó által definiált sémák használatához a szinapszis SQL-készletben lévő megoldások fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633456"
 ---
 # <a name="user-defined-schemas-in-synapse-sql-pool"></a>Felhasználó által definiált sémák a szinapszis SQL-készletben
-Ez a cikk a T-SQL-felhasználó által definiált sémák használatával kapcsolatos számos tippet nyújt a Synapse SQL-készletben lévő megoldások fejlesztéséhez.
+Ez a cikk arra összpontosít, hogy több tippet is biztosítson a T-SQL felhasználó által definiált sémák használatához a szinapszis SQL-készletben található megoldások fejlesztéséhez.
 
-## <a name="schemas-for-application-boundaries"></a>Sémák az alkalmazáshatárokhoz
+## <a name="schemas-for-application-boundaries"></a>Az alkalmazás határaihoz tartozó sémák
 
-A hagyományos adatraktárak gyakran külön adatbázisokat használnak az alkalmazáshatárok létrehozásához a munkaterhelés, a tartomány vagy a biztonság alapján. 
+A hagyományos adattárházak gyakran külön adatbázisokat használnak az alkalmazások határainak a munkaterhelés, a tartomány vagy a biztonság alapján történő létrehozásához. 
 
-Például egy hagyományos SQL Server adattárház tartalmazhat egy átmeneti adatbázist, egy adattárház-adatbázist és néhány adattárház-adatbázist. Ebben a topológiában minden adatbázis számítási feladatok és biztonsági határként működik az architektúrában.
+Egy hagyományos SQL Server adattárház például tartalmazhat átmeneti adatbázist, adattárház-adatbázist és néhány data mart adatbázist. Ebben a topológiában minden adatbázis munkaterhelésként és biztonsági határként működik az architektúrában.
 
-Ezzel szemben az SQL-készlet egy adatbázison belül futtatja a teljes adattárház-munkaterhelést. A keresztadatbázis-illesztések nem engedélyezettek. Az SQL-készlet várakozásai szerint a raktár által használt összes táblát egy adatbázisban kell tárolni.
+Ezzel szemben az SQL-készlet a teljes adattárház-munkaterhelést egy adatbázison belül futtatja. Az adatbázison keresztüli illesztések nem engedélyezettek. Az SQL-készlet elvárja, hogy a raktár által használt összes tábla egy adatbázison belül legyen tárolva.
 
 > [!NOTE]
-> Az SQL-készlet semmilyen adatbázisközi lekérdezést nem támogat. Következésképpen az adattárház-implementációk, amelyek ezt a mintát kihasználják, felül kell vizsgálni.
+> Az SQL-készlet nem támogatja a bármilyen típusú adatbázisok lekérdezését. Ennek következtében az ezt a mintát használó adatraktár-implementációkat felül kell vizsgálni.
 > 
 > 
 
 ## <a name="recommendations"></a>Javaslatok
-A következőkben a számítási feladatok, a biztonság, a tartomány és a funkcionális határok felhasználói alapú sémák használatával történő konszolidálására vonatkozó javaslatok találhatók:
+A következő javaslatok a számítási feladatok, a biztonság, a tartomány és a funkcionális határok konszolidálása felhasználó által definiált sémák használatával:
 
-- Egyetlen SQL-készletadatbázis segítségével futtassa a teljes adattárház-munkaterhelést.
-- Konszolidálja a meglévő adattárház-környezetet egy SQL-készletadatbázis használatához.
-- Használja ki a **felhasználó által definiált sémákat,** hogy a határ korábban adatbázisok használatával megvalósított.
+- Egy SQL Pool-adatbázis használatával futtathatja a teljes adattárház számítási feladatát.
+- Konszolidálja meglévő adattárház-környezetét egy SQL Pool-adatbázis használatához.
+- **Felhasználó által definiált sémák** használata a korábban adatbázisokkal megvalósított határ biztosításához.
 
-Ha a felhasználó által definiált sémák at korábban nem használták, akkor tiszta lappal rendelkezik. Használja a régi adatbázis nevét a felhasználó által definiált sémák alapjaként az SQL-készlet adatbázisában.
+Ha korábban nem használták a felhasználó által definiált sémákat, akkor tiszta lappal rendelkezik. Használja a régi adatbázis nevét a felhasználó által definiált sémák alapjául az SQL-készlet adatbázisában.
 
-Ha a sémákmár használatosak, akkor van néhány lehetőség:
+Ha a sémák már használatban vannak, akkor néhány lehetőség közül választhat:
 
-- Távolítsa el az örökölt sémaneveket, és kezdje újra.
-- Őrizze meg az örökölt sémaneveket úgy, hogy az örökölt séma nevét előre meg kell őrizni a táblanévhez.
-- Az örökölt sémanevek megtartása a tábla nézetei vel egy további sémában implementálva a régi sémastruktúra újbóli létrehozásához.
+- Távolítsa el a régi sémák nevét, és kezdje el a frissen.
+- Tartsa meg a régi séma nevét az örökölt séma neve alapján a tábla nevére.
+- Tartsa meg a régi sémák nevét úgy, hogy egy további sémában lévő nézeteket implementál, hogy újra létrehozza a régi séma-struktúrát.
 
 > [!NOTE]
-> Az első ellenőrzési lehetőség 3 tűnhet, mint a legvonzóbb lehetőség. Azonban az ördög a részletekben rejlik. A nézetek csak az SQL-készletben olvashatók. Minden adatot vagy táblamódosítást az alaptáblán kell végrehajtani. 3. lehetőség is bevezet egy réteg nézetek a rendszerbe. Érdemes lehet, hogy ez néhány további gondolat, ha a nézetek használata az architektúra már.
+> Előfordulhat, hogy a 3. első ellenőrzési lehetőség a leginkább vonzó megoldásnak tűnik. Az ördög azonban részletesen szerepel. A nézetek csak olvashatók az SQL-készletben. Az alaptáblán minden adat-vagy tábla-módosítást el kell végezni. A 3. lehetőség is bevezeti a nézet rétegét a rendszerbe. Érdemes lehet ezt néhány további gondolatot használni, ha már használja a nézeteket az architektúrában.
 > 
 > 
 
 ### <a name="examples"></a>Példák:
-Felhasználó által definiált sémák megvalósítása adatbázisnevek alapján:
+Felhasználó által definiált sémák implementálása az adatbázis neve alapján:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -73,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Őrizheti meg az örökölt sémaneveket az előre függőben lévő kontrától a táblanévig. Sémák használata a munkaterhelés határához:
+A régi séma neveit a táblázat nevére való előre függőben tarthatja. Sémák használata a munkaterhelés határához:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -91,7 +91,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Örökölt sémanevek megtartása nézetek használatával:
+Örökölt sémák nevének megtartása nézetek használatával:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -119,10 +119,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> A sémastratégia bármilyen változását felül kell vizsgálni az adatbázis biztonsági modelljével. Sok esetben a séma szintjén engedélyek hozzárendelésével egyszerűsítheti a biztonsági modellt. Ha részletesebb engedélyekre van szükség, akkor adatbázis-szerepköröket is használhat.
+> A séma-stratégiában bekövetkező változásoknak át kell tekinteniük az adatbázis biztonsági modelljét. Sok esetben lehet, hogy a séma szintjén rendeli hozzá az engedélyeket a biztonsági modell egyszerűsítéséhez. Ha további részletességi engedélyekre van szükség, akkor használhatja az adatbázis-szerepköröket.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

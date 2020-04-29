@@ -1,6 +1,6 @@
 ---
-title: Bejövő hívások ügyfélhitelesítésének konfigurálása - Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Konfigurálja az Event Grid által az IoT Edge-en elérhetővé tett API-protokollokat.
+title: A bejövő hívások ügyfél-hitelesítésének konfigurálása – Azure Event Grid IoT Edge | Microsoft Docs
+description: A Event Grid által elérhetővé tett API-protokollok konfigurálása IoT Edgeon.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841791"
 ---
-# <a name="configure-client-authentication-of-incoming-calls"></a>Bejövő hívások ügyfélhitelesítésének konfigurálása
+# <a name="configure-client-authentication-of-incoming-calls"></a>A bejövő hívások ügyfél-hitelesítésének konfigurálása
 
-Ez az útmutató példákat ad az Event Grid modul lehetséges ügyfélhitelesítési konfigurációira. Az Event Grid modul kétféle ügyfélhitelesítést támogat:
+Ez az útmutató példákat mutat be a Event Grid modul lehetséges ügyfél-hitelesítési konfigurációjáról. A Event Grid modul két típusú ügyfél-hitelesítést támogat:
 
-* Megosztott hozzáférésű aláírás (SAS) kulcsalapú
-* Tanúsítványalapú
+* Közös hozzáférésű aláírás (SAS) kulcs alapú
+* Tanúsítvány alapú
 
-Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](security-authentication.md) útmutató.
+Tekintse meg a [biztonsági és hitelesítési](security-authentication.md) útmutatót az összes lehetséges konfigurációhoz.
 
-## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Tanúsítványalapú ügyfélhitelesítés engedélyezése, önaláírt tanúsítványok nélkül
+## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Tanúsítvány alapú ügyfél-hitelesítés engedélyezése, önaláírt tanúsítványok nélkül
 
 ```json
  {
@@ -38,7 +38,7 @@ Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](s
 }
  ```
 
-## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Tanúsítványalapú ügyfélhitelesítés engedélyezése, önaláírt tanúsítványok engedélyezése
+## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Tanúsítvány alapú ügyfél-hitelesítés engedélyezése, önaláírt tanúsítványok engedélyezése
 
 ```json
  {
@@ -52,9 +52,9 @@ Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](s
 ```
 
 >[!NOTE]
->Állítsa be a tulajdonság **inbound__clientAuth__clientCert__allowUnknownCA** **csak** tesztkörnyezetekben, mert általában önaláírt tanúsítványokat használhat. Éles számítási feladatok esetén azt javasoljuk, hogy állítsa be ezt a tulajdonságot **hamis** és tanúsítványok egy hitelesítésszolgáltatótól.
+>Állítsa a tulajdonságot a **inbound__clientAuth__clientCert__allowUnknownCA** **igaz** értékre csak tesztkörnyezetben, mivel általában önaláírt tanúsítványokat is használhat. Éles számítási feladatokhoz azt javasoljuk, hogy ezt a tulajdonságot **hamis** értékre állítsa be, és egy hitelesítésszolgáltatótól (CA) származó tanúsítványokat.
 
-## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Tanúsítványalapú és sas-kulcsalapú ügyfélhitelesítés engedélyezése
+## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Tanúsítvány-alapú és Sas-kulcs alapú ügyfél-hitelesítés engedélyezése
 
 ```json
  {
@@ -70,4 +70,4 @@ Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](s
  ```
 
 >[!NOTE]
->A SAS-kulcsalapú ügyfélhitelesítés lehetővé teszi, hogy egy nem IoT peremhálózati modul felügyeleti és futásidejű műveleteket végez, feltételezve természetesen, hogy az API-portok az IoT Edge-hálózaton kívül érhetők el.
+>Az SAS-kulcs alapú ügyfél-hitelesítés lehetővé teszi a nem IoT Edge-modul számára a felügyeleti és futtatókörnyezeti műveletek elvégzését, feltételezve, hogy az API-portok a IoT Edge hálózaton kívül is elérhetők.

@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server – Első lépések az Azure MFA Server ben – Azure Active Directory
+title: Ismerkedés az Azure MFA-kiszolgálóval – Azure Active Directory
 description: Részletes bevezetés az Azure MFA Server a helyszínen történő használatába
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653127"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
 <center>
 
-![Az MFA-kiszolgáló helyszíni alkalmazásának első lépései](./media/howto-mfaserver-deploy/server2.png)</center>
+![Első lépések a helyszíni MFA-kiszolgálóval](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Ezen a lapon a kiszolgáló új telepítését és helyszíni Active Directoryval való beállítását ismertetjük. Ha már telepített MFA-kiszolgálót és frissíteni szeretné, tekintse meg [a legújabb Azure Multi-Factor Authentication-kiszolgálóra való frissítéssel kapcsolatos](howto-mfaserver-deploy-upgrade.md) témakört. Ha csak a webszolgáltatás telepítésével kapcsolatban keres információt, tekintse meg [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md) című témakört.
 
 > [!IMPORTANT]
-> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
+> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
 
@@ -55,7 +55,7 @@ Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt 
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
 | Szoftverek |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
-| Engedélyek | Tartományi rendszergazda vagy vállalati rendszergazdai fiók az Active Directoryval való regisztrációhoz |
+| Engedélyek | Tartományi rendszergazda vagy vállalati rendszergazdai fiók Active Directoryhoz való regisztráláshoz |
 
 ### <a name="azure-mfa-server-components"></a>Az Azure MFA-kiszolgáló összetevői
 
@@ -95,12 +95,12 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) rendszergazdaként.
-2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **Security** > **MFA**lehetőséget.
-3. A **Kezelő MFA-kiszolgáló jain**válassza a **Kiszolgáló beállításai lehetőséget.**
+1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
+2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági** > **MFA**elemet.
+3. A **kezelő MFA-kiszolgáló**területen válassza a **kiszolgáló beállításai**lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 
-   ![Az MFA-kiszolgáló letöltése az Azure Portalról](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![MFA-kiszolgáló letöltése a Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Hagyja megnyitva ezt az oldalt, mivel a telepítő futtatása után még hivatkozni fogunk rá.
 
@@ -109,16 +109,16 @@ Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-
 Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győződjön meg róla, hogy az a kiszolgáló, amelyikre telepíti, megfelel-e a tervezési szakaszban felsorolt követelményeknek.
 
 1. Kattintson duplán a végrehajtható fájlra.
-2. A Telepítési mappa kiválasztása képernyőn ellenőrizze, hogy a mappa helyes-e, és kattintson a **Tovább**gombra.
+2. A telepítési mappa kiválasztása képernyőn győződjön meg arról, hogy a mappa helyes, és kattintson a **tovább**gombra.
 3. A telepítés befejezése után kattintson a **Befejezés** gombra. Ekkor elindul a konfigurációs varázsló.
 4. A konfigurációs varázsló üdvözlőképernyőjén jelölje be **A hitelesítéskonfiguráló varázsló használatának kihagyása** jelölőnégyzetet, és kattintson a **Tovább** gombra. Bezáródik a varázsló, és elindul a kiszolgáló.
 
-   ![Ugrás a Hitelesítés konfigurálása varázslóval](./media/howto-mfaserver-deploy/skip2.png)
+   ![Kihagyás a hitelesítési konfiguráció varázsló használatával](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Azon az oldalon, ahonnan letöltötte a kiszolgálót, kattintson az **Aktiváló hitelesítő adatok előállítása** gombra. Másolja ezt az információt az Azure MFA-kiszolgálón a megfelelő mezőkbe, majd kattintson az **Aktiválás** lehetőségre.
 
 > [!NOTE]
-> Csak a globális rendszergazdák képesek aktiválási hitelesítő adatokat létrehozni az Azure Portalon.
+> Csak a globális rendszergazdák képesek az aktiválási hitelesítő adatok előállítására a Azure Portalban.
 
 ## <a name="send-users-an-email"></a>E-mail küldése a felhasználóknak
 
@@ -136,7 +136,7 @@ Kattintson a bal oldalon található e-mail ikonra az e-mailek küldésére vona
 
 Az E-mail tartalma lapon áttekintheti a választható e-mail-sablonokat. Válassza a leginkább megfelelő sablont attól függően, hogyan konfigurálta a felhasználókat a kétlépéses ellenőrzés végrehajtására.
 
-![MFA Server E-mail sablonok a konzolon](./media/howto-mfaserver-deploy/email2.png)
+![MFA-kiszolgálói E-mail sablonok a konzolon](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Felhasználók importálása az Active Directoryból
 
@@ -149,7 +149,7 @@ A kiszolgáló telepítése után a felhasználók hozzáadása következik. Lé
 3. Most kereshet egyes felhasználókat vagy kereshet az AD címtárban felhasználókat tartalmazó szervezeti egységeket. Ebben az esetben meg kell adni a felhasználók szervezeti egységét.
 4. Jelölje ki az összes felhasználót a jobb oldalon, és kattintson az **Importálás** gombra. Megjelenik egy előugró ablak, amely a művelet sikerességéről értesít. Zárja be az importálási ablakot.
 
-   ![MFA-kiszolgáló felhasználói importálása az Active Directoryból](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA-kiszolgáló felhasználójának importálása Active Directory](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatikus szinkronizálás az Active Directoryval
 
@@ -161,7 +161,7 @@ A kiszolgáló telepítése után a felhasználók hozzáadása következik. Lé
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>A felhasználói adatok kezelése az Azure Multi-Factor Authentication-kiszolgálón
 
-Ha a többtényezős hitelesítés (MFA) kiszolgáló helyszíni használata, a felhasználó adatait a helyszíni kiszolgálók tárolják. A felhőben nincsenek állandó felhasználói adatok. Amikor a felhasználó kétlépéses ellenőrzést végez, az MFA-kiszolgáló elküldi az adatokat az Azure MFA-felhőszolgáltatásnak az ellenőrzés végrehajtásához. Amikor a rendszer ezeket a hitelesítési kéréseket elküldi a felhőszolgáltatásnak, a kérések és a naplók a következő mezőket tartalmazzák, hogy azok elérhetők legyenek az ügyfél hitelesítési/használati jelentéseiben. Egyes mezők megadása nem kötelező, így engedélyezhetők vagy letilthatók a Multi-Factor Authentication-kiszolgálón. Az MFA-kiszolgáló és az MFA-felhőszolgáltatás közötti kommunikáció SSL-/TLS-titkosítást használ a 443-as kimenő porton. Ezek a mezők a következők:
+Ha a helyszíni Multi-Factor Authentication-(MFA-) kiszolgálót használja, a rendszer a helyi kiszolgálókon tárolja a felhasználó által tárolt adatfájlokat. A felhőben nincsenek állandó felhasználói adatok. Amikor a felhasználó kétlépéses ellenőrzést végez, az MFA-kiszolgáló elküldi az adatokat az Azure MFA-felhőszolgáltatásnak az ellenőrzés végrehajtásához. Amikor a rendszer ezeket a hitelesítési kéréseket elküldi a felhőszolgáltatásnak, a kérések és a naplók a következő mezőket tartalmazzák, hogy azok elérhetők legyenek az ügyfél hitelesítési/használati jelentéseiben. Egyes mezők megadása nem kötelező, így engedélyezhetők vagy letilthatók a Multi-Factor Authentication-kiszolgálón. Az MFA-kiszolgáló és az MFA-felhőszolgáltatás közötti kommunikáció SSL-/TLS-titkosítást használ a 443-as kimenő porton. Ezek a mezők a következők:
 
 * Egyedi azonosító – felhasználónév vagy belső MFA-kiszolgálói azonosító
 * Utónév és vezetéknév (nem kötelező)
@@ -177,7 +177,7 @@ Ha a többtényezős hitelesítés (MFA) kiszolgáló helyszíni használata, a 
 A fenti mezőkön kívül a rendszer az ellenőrzési eredményeket (sikeres/elutasítva) és az elutasítások okait is tárolja a hitelesítési adatokkal együtt. Ezek az adatok a hitelesítési/használati jelentésekben érhetők el.
 
 > [!IMPORTANT]
-> 2019 márciusátantól a telefonhívási beállítások nem lesznek elérhetők az MFA Server-felhasználók számára az ingyenes/próba verziós Azure AD-bérlőkben. Az SMS-üzeneteket ez a változás nem érinti. A telefonhívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a módosítás csak az ingyenes/próba verziós Azure AD-bérlők.
+> 2019 márciusában a telefonhívási lehetőségek nem lesznek elérhetők az MFA-kiszolgáló felhasználói számára ingyenes/próbaverziós Azure AD-bérlők esetében. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a változás csak az ingyenes/próbaverziós Azure AD-bérlőket befolyásolja.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Az Azure MFA-kiszolgáló biztonsági mentése és visszaállítása
 
@@ -204,5 +204,5 @@ Miután az MFA Server 8.x vagy újabb változatára frissített, érdemes eltáv
 - A [felhasználói portál](howto-mfaserver-deploy-userportal.md) telepítése és konfigurálása a felhasználói önkiszolgáló funkciókhoz.
 - Az Azure MFA-kiszolgáló telepítése és konfigurálása [Active Directory összevonási szolgáltatásokkal](multi-factor-authentication-get-started-adfs.md), [RADIUS-hitelesítéssel](howto-mfaserver-dir-radius.md) vagy [LDAP-hitelesítéssel](howto-mfaserver-dir-ldap.md).
 - [Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló](howto-mfaserver-nps-rdg.md) telepítése és konfigurálása.
-- [Telepítse az Azure többtényezős hitelesítési kiszolgáló mobilalkalmazás-webszolgáltatását.](howto-mfaserver-deploy-mobileapp.md)
-- [Speciális forgatókönyvek az Azure többtényezős hitelesítésével és a külső VPN-ekkel.](howto-mfaserver-nps-vpn.md)
+- [Telepítse az Azure multi-Factor Authentication-kiszolgáló Mobile App Web Service](howto-mfaserver-deploy-mobileapp.md)-t.
+- [Speciális forgatókönyvek az Azure multi-Factor Authentication és a harmadik féltől származó virtuális magánhálózatok esetében](howto-mfaserver-nps-vpn.md).

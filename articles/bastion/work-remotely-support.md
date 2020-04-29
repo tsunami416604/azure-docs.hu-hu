@@ -1,6 +1,6 @@
 ---
-title: 'A Bástya távhasználata: Azure-bástya'
-description: Ez az oldal bemutatja, hogyan használhatja ki az Azure Bastion-t a covid-19-es világjárvány miatt távolról történő munkavégzés engedélyezéséhez.
+title: 'Távoli használat a Bastion használatával: Azure Bastion'
+description: Ez az oldal azt ismerteti, hogyan használhatja az Azure Bastion-t a COVID-19 világjárvány miatti távoli működés érdekében.
 services: bastion
 author: mialdrid
 ms.service: bastion
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
 ms.openlocfilehash: 182195190fed70b46185f98f595de6b6c32bbffe
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619399"
 ---
-# <a name="working-remotely-using-azure-bastion"></a>Az Azure Bastion távoli használata
+# <a name="working-remotely-using-azure-bastion"></a>Távoli munka az Azure Bastion használatával
 
-Az Azure Bastion kulcsfontosságú szerepet játszik a távoli munkahelyi forgatókönyvek támogatásában azáltal, hogy lehetővé teszi az internetkapcsolattal rendelkező felhasználók számára az Azure virtuális gépek elérését. Különösen lehetővé teszi a rendszergazdák számára, hogy az Azure-on futó alkalmazásaikat bármikor és a világ bármely pontjáról kezeljék.
+Az Azure Bastion kulcsfontosságú szerepet játszik a távoli munkafolyamatok támogatásában azáltal, hogy lehetővé teszi, hogy az internetkapcsolattal rendelkező felhasználók hozzáférjenek az Azure Virtual Machines szolgáltatáshoz. Különösen lehetővé teszi a rendszergazdák számára, hogy az Azure-on futó alkalmazásaikat bármikor és bárhonnan, a világ bármely pontjáról kezelhesse.
 
 >[!NOTE]
->Ez a cikk bemutatja, hogyan használhatja ki az Azure Bastion, az Azure, a Microsoft hálózat és az Azure-partneri ökoszisztéma segítségével a távoli munka és a covid-19-es válság miatt felmerülő hálózati problémák enyhítése.
+>Ez a cikk azt ismerteti, hogyan használhatja az Azure-t, az Azure-t, a Microsoft-hálózatot és az Azure partner-ökoszisztémát a COVID-19-válság miatt felmerülő hálózati problémák megoldásához.
 >
 
-## <a name="securely-access-virtual-machines"></a>A virtuális gépek biztonságos elérése
+## <a name="securely-access-virtual-machines"></a>Virtuális gépek biztonságos elérése
 
-Pontosabban az Azure Bastion biztonságos és zökkenőmentes RDP/SSH kapcsolatot biztosít az Azure virtuális hálózaton belüli virtuális gépekhez, közvetlenül az Azure Portalon, nyilvános IP-cím használata nélkül. Az Azure Bastion architektúráról és a legfontosabb funkciókról a [Mi az Azure-bástya](bastion-overview.md)című.
+Pontosabban, az Azure Bastion biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít az Azure-beli virtuális hálózaton belüli virtuális gépekhez, a nyilvános IP-cím használata nélkül, közvetlenül a Azure Portal. Az Azure-beli megerősített architektúrával és főbb funkciókkal kapcsolatos további információkért tekintse meg a [Mi az az Azure Bastion](bastion-overview.md).
 
-Az Azure Bastion virtuális hálózatonként van telepítve, ami azt jelenti, hogy a vállalatok konfigurálhatnak és kezelhetnek egy Azure-bastiont, hogy gyorsan támogassák a távoli felhasználók hozzáférését a virtuális virtuális eszközökhöz egy Azure virtuális hálózaton belül. Az Azure Bastion létrehozásához és kezeléséhez a [Bástyagazdagép létrehozása](bastion-create-host-portal.md)című dokumentumban talál útmutatást.
+Az Azure Bastion virtuális hálózatokon van üzembe helyezve, ami azt jelenti, hogy a vállalatok egy Azure-ban konfigurálják és kezelhetik a virtuális gépekhez egy Azure-beli virtuális hálózaton belüli távoli felhasználói hozzáférést. Az Azure Bastion létrehozásával és kezelésével kapcsolatos útmutatásért tekintse meg a [megerősített gazdagép létrehozása](bastion-create-host-portal.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-* Konfigurálja az Azure Bastion az [Azure Portalon](bastion-create-host-portal.md), [a PowerShellen](bastion-create-host-powershell.md)vagy az Azure CLI-n keresztül.
+* Konfigurálja az Azure Bastion-t a [Azure Portal](bastion-create-host-portal.md), a [PowerShell](bastion-create-host-powershell.md)vagy az Azure CLI használatával.
 
-* További információkért olvassa el a [Bástya GYIK-et.](bastion-faq.md)
+* További információért olvassa el a [megerősített gyakori kérdések](bastion-faq.md) című témakört.

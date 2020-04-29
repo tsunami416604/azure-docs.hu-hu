@@ -1,6 +1,6 @@
 ---
-title: Az Akka Streams használata az Apache Kafka szolgáltatáshoz – Azure Event Hubs| Microsoft dokumentumok
-description: Ez a cikk az Akka-adatfolyamok Azure-eseményközponthoz való csatlakoztatásáról nyújt tájékoztatást.
+title: A Apache Kafka-Azure Event Hubs-hoz készült beadási streamek használata | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók az Azure Event hub-ba a kiszolgált adatfolyamok.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,28 +12,28 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632846"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Akka Streams használata az Apache Kafkához készült Event Hubs szolgáltatással
-Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az Akka Streams-t egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Kafka Azure Event Hubs támogatja az [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html)
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Kafka Azure-Event Hubs [Apache Kafka 1,0-es verzióval támogatott.](https://kafka.apache.org/10/documentation.html)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * A példaprojekt klónozása
-> * Az Akka Streams gyártójának futtatása 
-> * Az Akka Streams fogyasztói futtatása
+> * A kiállítók futtatása 
+> * A bevezetési streamek fogyasztójának futtatása
 
 > [!NOTE]
 > Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő előfeltételekkel rendelkezik:
+Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket. 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
@@ -47,26 +47,26 @@ Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elő
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Az Event Hubs névtér bármely Event Hubs szolgáltatásból történő küldéséhez vagy fogadásához szükséges. Részletes információkért [lásd: Eseményközpont létrehozása.](event-hubs-create.md) Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
+Bármely Event Hubs szolgáltatásból történő küldéshez vagy fogadáshoz Event Hubs névtér szükséges. További információt az [Event hub létrehozása](event-hubs-create.md) című témakörben talál. Ügyeljen arra, hogy későbbi használatra másolja a Event Hubs-kapcsolódási karakterláncot.
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy rendelkezik egy Event Hubs kapcsolati karakterlánccal, klónozza a Kafka-tárház Azure-eseményközpontokat, és keresse meg az `akka` almappát:
+Most, hogy rendelkezik egy Event Hubs kapcsolódási karakterlánccal, klónozott az Azure-Event Hubs a Kafka-tárházhoz `akka` , és navigáljon az almappába:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
-## <a name="run-akka-streams-producer"></a>Az Akka Streams gyártójának futtatása
+## <a name="run-akka-streams-producer"></a>A kiállítók futtatása
 
-A megadott Akka Streams produceri példával üzeneteket küldhet az Event Hubs szolgáltatásnak.
+A megadott beadási streamek gyártói példájának használatával üzeneteket küldhet a Event Hubs szolgáltatásnak.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Eseményközpontok Kafka-végpontjának biztosítása
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="producer-applicationconf"></a>Gyártói alkalmazás.conf
+#### <a name="producer-applicationconf"></a>Producer Application. conf
 
-Frissítse `bootstrap.servers` a `sasl.jaas.config` és `producer/src/main/resources/application.conf` az értékeket, hogy a gyártó az Event Hubs Kafka-végponthoz irányítsa a megfelelő hitelesítéssel.
+A `bootstrap.servers` és `sasl.jaas.config` a értékének `producer/src/main/resources/application.conf` frissítésével irányítsa a gyártót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 akka.kafka.producer {
@@ -84,26 +84,26 @@ akka.kafka.producer {
 }
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Gyártó futtatása a parancssorból
+### <a name="run-producer-from-the-command-line"></a>A gyártó futtatása a parancssorból
 
-A gyártó parancssorból történő futtatásához hozza létre a JAR-t, majd fusson a Maven-en belülről (vagy hozza létre a JAR-t Maven használatával, majd futtassa Java-ban a szükséges Kafka JAR(ok) hozzáadásával az osztályhoz):
+Ha a parancssorból szeretné futtatni a gyártót, a JAR-t, majd a Mavenből futtatva futtassa a jar-t, majd futtassa a-t a Maven használatával, majd futtassa a Java-ban a szükséges Kafka-JAR (ok) hozzáadásával a osztályútvonal):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-A gyártó megkezdi az események küldését az eseményközpontba a témában, `test`és kinyomtatja az eseményeket stdout-ra.
+A gyártó megkezdi az események küldését az Event `test`hub számára a témakörben, és kinyomtatja az eseményeket az stdout-ba.
 
-## <a name="run-akka-streams-consumer"></a>Az Akka Streams fogyasztói futtatása
+## <a name="run-akka-streams-consumer"></a>A bevezetési streamek fogyasztójának futtatása
 
-A megadott fogyasztói példában fogadhat üzeneteket az eseményközpontból.
+A megadott fogyasztói példa használatával fogadhat üzeneteket az Event hub-ból.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Eseményközpontok Kafka-végpontjának biztosítása
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="consumer-applicationconf"></a>Fogyasztói alkalmazás.conf
+#### <a name="consumer-applicationconf"></a>Consumer Application. conf
 
-Frissítse `bootstrap.servers` a `sasl.jaas.config` és `consumer/src/main/resources/application.conf` az értékeket, hogy az elődet az Event Hubs Kafka-végponthoz irányítsa a megfelelő hitelesítéssel.
+A `bootstrap.servers` és `sasl.jaas.config` a értékének `consumer/src/main/resources/application.conf` frissítésével irányítsa a fogyasztót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 akka.kafka.consumer {
@@ -124,25 +124,25 @@ akka.kafka.consumer {
 }
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Fogyasztó futtatása a parancssorból
+### <a name="run-consumer-from-the-command-line"></a>A felhasználó futtatása a parancssorból
 
-A fogyasztó parancssorból történő futtatásához hozza létre a JAR-t, majd fusson a Maven-en belülről (vagy hozza létre a JAR-t maven használatával, majd futtassa Java-ban a szükséges Kafka JAR(ok) hozzáadásával a classpath-hoz):
+Ha a parancssorból szeretné futtatni a fogyasztót, adja ki a JAR-t, majd futtassa a Mavenből (vagy a Maven használatával a JAR-t használva, majd futtassa a Java-ban a szükséges Kafka-JAR (ok) hozzáadásával a osztályútvonal):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Ha az eseményközpont eseményeket (például, ha a gyártó is fut), `test`akkor a fogyasztó megkezdi az események fogadását a témából. 
+Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó megkezdi az események fogadását `test`a témakörből. 
 
-Nézze meg az [Akka Streams Kafka Guide](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) részletesebb információt Akka Patakok.
+Tekintse meg a bevezetési [Streams Kafka-útmutatót](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) , ahol részletesebb információkat találhat a bevezető streamekről.
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a Kafka eseményközpontokról, olvassa el az alábbi cikkeket:  
+Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő cikkeket:  
 
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
 - [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
-- [A Kafka Connect integrálása egy eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [A Kafka-kapcsolat integrálása az Event hubhoz](event-hubs-kafka-connect-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Az Apache Kafka fejlesztői útmutatója az Azure Event Hubs-hoz](apache-kafka-developer-guide.md)
+- [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)

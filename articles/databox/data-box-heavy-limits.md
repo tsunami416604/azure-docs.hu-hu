@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Heavy határértékek | Microsoft dokumentumok
-description: A cikk a Microsoft Azure Data Box Heavy összetevőinek és kapcsolatainak rendszerkorlátait és ajánlott méreteit ismerteti.
+title: Azure Data Box Heavy korlátok | Microsoft Docs
+description: A rendszerkorlátokat és a Microsoft Azure Data Box Heavy összetevők és kapcsolatok ajánlott méreteit ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260097"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Az Azure Data Box Heavy korlátai
+# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy korlátok
 
-Vegye figyelembe ezeket a korlátokat az Azure Data Box Heavy-eszköz üzembe helyezéseés működtetése során. Az alábbi táblázat az adatdobozra vonatkozó korlátozásokat ismerteti.
+Vegye figyelembe ezeket a korlátokat a Azure Data Box Heavy eszköz üzembe helyezése és üzemeltetése során. A következő táblázat ismerteti a Data Box korlátozásait.
 
 
 ## <a name="data-box-heavy-service-limits"></a>Data Box Heavy szolgáltatási korlátok
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-heavy-limits"></a>Data Box Nehéz határértékek
+## <a name="data-box-heavy-limits"></a>Data Box Heavy korlátok
 
-- A Data Box Heavy csomópontonként legfeljebb 1 milliárd fájlt képes tárolni.
-- A Data Box Heavy legfeljebb 512 tárolót vagy megosztást támogat csomópontonként a felhőben. A felhasználói megosztáson belüli legfelső szintű könyvtárak tárolókká vagy Azure-fájlmegosztásokká válnak a felhőben.
+- Data Box Heavy legfeljebb 1 000 000 000 fájlt tárolhat a csomópontok száma szerint.
+- A Data Box Heavy a felhőben legfeljebb 512 tárolót vagy megosztást támogat. A felhasználói megosztáson belüli legfelső szintű könyvtárak tárolók vagy Azure-fájlmegosztás formájában válnak elérhetővé a felhőben.
 
-## <a name="azure-storage-limits"></a>Az Azure Storage korlátai
+## <a name="azure-storage-limits"></a>Azure Storage-korlátok
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 
@@ -37,14 +37,14 @@ Vegye figyelembe ezeket a korlátokat az Azure Data Box Heavy-eszköz üzembe he
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-limits"></a>Az Azure tárfiók méretkorlátai
+## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai
 
 [!INCLUDE [data-box-storage-account-size-limits](../../includes/data-box-storage-account-size-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Az Azure-objektumok méretkorlátai
+## <a name="azure-object-size-limits"></a>Azure-objektum méretének korlátai
 
 [!INCLUDE [data-box-object-size-limits](../../includes/data-box-object-size-limits.md)]
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure-blokkblob, lapblob és fájlelnevezési konvenciók
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Az Azure Block blob, az oldal blobja és a fájl elnevezési konvenciói
 
 [!INCLUDE [data-box-naming-conventions](../../includes/data-box-naming-conventions.md)]

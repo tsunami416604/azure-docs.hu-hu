@@ -1,57 +1,57 @@
 ---
-title: Az Azure App Service-erőforrások áthelyezése
-description: Az Azure Resource Manager használatával áthelyezi az App Service-erőforrásokat egy új erőforráscsoportba vagy előfizetésbe.
+title: Azure App Service erőforrások áthelyezése
+description: A Azure Resource Manager használatával áthelyezheti App Service erőforrásait egy új erőforráscsoporthoz vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655775"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>Útmutató áthelyezése az App Service-erőforrásokhoz
+# <a name="move-guidance-for-app-service-resources"></a>Útmutató a App Service-erőforrások áthelyezéséhez
 
-Ez a cikk az App Service-erőforrások áthelyezésének lépéseit ismerteti. Az App Service-erőforrások új előfizetésbe való áthelyezéséhez speciális követelmények vonatkoznak.
+Ez a cikk a App Service erőforrások áthelyezésének lépéseit ismerteti. A App Service-erőforrások új előfizetésre való áthelyezésének speciális követelményei vannak.
 
 ## <a name="move-across-subscriptions"></a>Áthelyezés az előfizetések között
 
-Amikor egy webalkalmazást előfizetések között helyez át, a következő útmutatás érvényes:
+Ha egy webalkalmazást az előfizetések között helyez át, a következő útmutatók érvényesek:
 
-- A célerőforrás-csoport nem rendelkezhet meglévő App Service-erőforrásokkal. Az App Service-erőforrások a következők:
+- A cél erőforráscsoport nem rendelkezhet meglévő App Service erőforrásokkal. App Service erőforrások a következők:
     - Web Apps
     - App Service-csomagok
-    - Feltöltött vagy importált TLS/SSL tanúsítványok
+    - Feltöltött vagy importált TLS/SSL-tanúsítványok
     - App Service-környezetek
-- Az erőforráscsoport összes App Service-erőforrását együtt kell áthelyezni. Vegye figyelembe, hogy az App Service-környezetek nem helyezhetők át új erőforráscsoportba vagy új előfizetésbe.
-- A tls-kötések törlése nélkül áthelyezheti a webhez kötött tanúsítványt, feltéve, hogy a tanúsítvány az erőforráscsoport összes többi erőforrásával együtt kerül áthelyezésre.
-- Az App Service-erőforrások csak abból az erőforráscsoportból helyezhetők át, amelyben eredetileg létrehozták őket. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban van, helyezze vissza az eredeti erőforráscsoportba. Ezután helyezze át az erőforrást az előfizetések között.
+- Az erőforráscsoporthoz tartozó összes App Service-erőforrást együtt kell áthelyezni. Vegye figyelembe, hogy App Service környezetek nem helyezhetők át új erőforrás-csoportba, és nem új előfizetésre.
+- A tanúsítványokat a TLS-kötések törlése nélkül helyezheti át a web-re, ha a tanúsítványt az erőforráscsoport összes többi erőforrásával áthelyezi.
+- App Service erőforrásokat csak abban az erőforráscsoporthoz lehet áthelyezni, amelyben eredetileg létrehozták őket. Ha egy App Service erőforrás már nem szerepel az eredeti erőforráscsoporthoz, helyezze vissza az eredeti erőforráscsoporthoz. Ezután helyezze át az erőforrást az előfizetések között.
 
-Ha nem emlékszik az eredeti erőforráscsoportra, a diagnosztika segítségével megtalálhatja. A webalkalmazáshoz válassza **a Problémák diagnosztizálása és megoldása**lehetőséget. Ezután válassza a **Konfiguráció és kezelés**lehetőséget.
+Ha nem emlékszik az eredeti erőforráscsoporthoz, megkeresheti azt a diagnosztika használatával. A webalkalmazáshoz válassza a **diagnosztizálás és problémák megoldása**lehetőséget. Ezután válassza a **konfiguráció és kezelés**lehetőséget.
 
 ![Diagnosztika kiválasztása](./media/app-service-move-limitations/select-diagnostics.png)
 
-Válassza **az Áttelepítési beállítások lehetőséget.**
+Válassza az **áttelepítési beállítások**lehetőséget.
 
-![Áttelepítési beállítások megadása](./media/app-service-move-limitations/select-migration.png)
+![Áttelepítési beállítások kiválasztása](./media/app-service-move-limitations/select-migration.png)
 
-Válassza ki a webalkalmazás áthelyezéséhez ajánlott lépések beállítását.
+A webalkalmazás áthelyezéséhez válassza a javasolt lépések lehetőséget.
 
-![Az ajánlott lépések kiválasztása](./media/app-service-move-limitations/recommended-steps.png)
+![Javasolt lépések kiválasztása](./media/app-service-move-limitations/recommended-steps.png)
 
-Az erőforrások áthelyezése előtt megjelennek az ajánlott műveletek. Az adatok tartalmazzák a webalkalmazás eredeti erőforráscsoportját.
+Az erőforrások áthelyezése előtt el kell végeznie az ajánlott műveleteket. Az információ tartalmazza a webalkalmazás eredeti erőforrás-csoportját.
 
 ![Javaslatok](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Támogatás áthelyezése
 
-Annak meghatározásához, hogy mely App Service-erőforrások helyezhetők át, olvassa el a következők áthelyezési támogatási állapotát:
+A következő témakörben megtudhatja, hogy mely App Service erőforrásokat lehet áthelyezni:
 
-- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
-- [Microsoft.Tanúsítványregisztráció](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
-- [Microsoft.Web](../move-support-resources.md#microsoftweb)
+- [Microsoft. AppService](../move-support-resources.md#microsoftappservice)
+- [Microsoft. CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
+- [Microsoft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Microsoft. Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>További lépések
 
-Az erőforrások áthelyezésére vonatkozó parancsokról az [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe (Erőforrások áthelyezése)](../move-resource-group-and-subscription.md)témakörben található.
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../move-resource-group-and-subscription.md).

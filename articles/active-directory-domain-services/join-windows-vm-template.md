@@ -1,6 +1,6 @@
 ---
-title: Windows Virtuális gép csatlakozása az Azure AD DS-hez | Microsoft dokumentumok
-description: Megtudhatja, hogy miként csatlakozhat új vagy meglévő Windows Server virtuális géphez egy Új Vagy meglévő Windows Server virtuális géphez egy Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz.
+title: Windows rendszerű virtuális gép csatlakoztatása az Azure AD DShoz – sablon használata | Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat Azure Resource Manager-sablonokkal új vagy meglévő Windows Server rendszerű virtuális géphez egy Azure Active Directory Domain Services felügyelt tartományhoz.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,35 +12,35 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: d2108b4c6b81675e2df6789d412dbd7d36f58a4d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655111"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Csatlakozás Windows Server virtuális géphez egy Azure Active Directory tartományi szolgáltatások által kezelt tartományhoz Erőforrás-kezelő sablon használatával
+# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
-Az Azure virtuális gépek (VM-ek) üzembe helyezésének és konfigurálásának automatizálásához használhatja a Resource Manager-sablont. Ezek a sablonok lehetővé teszik, hogy minden alkalommal egységes központi telepítéseket hozzon létre. A bővítmények is szerepelhetnek a sablonokban, hogy automatikusan konfigurálja a virtuális gép a központi telepítés részeként. Egy hasznos bővítmény csatlakozik a virtuális gépek egy tartományhoz, amely használható az Azure Active Directory tartományi szolgáltatások (Azure AD DS) felügyelt tartományok.
+Az Azure Virtual Machines (VM) üzembe helyezésének és konfigurálásának automatizálásához Resource Manager-sablont is használhat. Ezek a sablonok lehetővé teszik, hogy minden alkalommal konzisztens központi telepítéseket hozzon létre. A bővítmények a sablonokban is szerepelhetnek, így a virtuális gép automatikusan konfigurálható a telepítés részeként. Az egyik hasznos bővítmény csatlakozik a virtuális gépekhez egy tartományhoz, amely Azure Active Directory Domain Services (Azure AD DS) által felügyelt tartományokhoz használható.
 
-Ez a cikk bemutatja, hogyan hozhat létre és csatlakozhat egy Windows Server virtuális géphez egy Azure AD DS által felügyelt tartományhoz az Erőforrás-kezelő sablonok használatával. Azt is megtudhatja, hogyan csatlakozhat egy meglévő Windows Server virtuális géphez egy Azure AD DS-tartományhoz.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és csatlakozhat Windows Server rendszerű virtuális gépekhez egy Azure AD DS felügyelt tartományhoz Resource Manager-sablonok használatával. Azt is megtudhatja, hogyan csatlakozhat egy meglévő Windows Server rendszerű virtuális géphez egy Azure AD DS-tartományhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
+Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
-    * Szükség esetén az első oktatóanyag [létrehoz és konfigurál egy Azure Active Directory tartományi szolgáltatások példányát.][create-azure-ad-ds-instance]
-* Egy felhasználói fiók, amely az Azure AD DS felügyelt tartomány ának része.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
 
-## <a name="azure-resource-manager-template-overview"></a>Az Azure Resource Manager-sablon – áttekintés
+## <a name="azure-resource-manager-template-overview"></a>Azure Resource Manager sablonok áttekintése
 
-Az Erőforrás-kezelő sablonjai lehetővé teszik az Azure-infrastruktúra kódban való definiálását. A szükséges erőforrások, hálózati kapcsolatok vagy a virtuális gépek konfigurációja egy sablonban definiálható. Ezek a sablonok minden alkalommal egységes, reprodukálható központi telepítéseket hoznak létre, és a módosítások végrehajtása kor verzióváltozattal is verziózhatók. További információt az [Azure Resource Manager-sablonok – áttekintés című témakörben talál.][template-overview]
+A Resource Manager-sablonok lehetővé teszik az Azure-infrastruktúra definiálását a kódban. A szükséges erőforrások, hálózati kapcsolatok vagy virtuális gépek konfigurációja a sablonban is meghatározhatók. Ezek a sablonok minden alkalommal konzisztens, reprodukálható központi telepítéseket hoznak létre, és a módosítások elvégzése közben is telepíthetők. További információ: [Azure Resource Manager sablonok áttekintése][template-overview].
 
-Minden erőforrás javascript-objektumnotúcés (JSON) használatával egy sablonban van definiálva. A következő JSON-példa a *Microsoft.Compute/virtualMachines/extensions* erőforrástípust használja az Active Directory tartományillesztésbővítmény telepítéséhez. A rendszer a központi telepítéskor megadott paramétereket használja. A bővítmény üzembe helyezésekor a virtuális gép csatlakozik a megadott Azure AD DS felügyelt tartományhoz.
+Az egyes erőforrások JavaScript Object Notation (JSON) használatával vannak definiálva egy sablonban. A következő JSON-példa a *Microsoft. számítás/virtualMachines/Extensions* erőforrástípus használatával telepíti a Active Directory tartományhoz való csatlakozás bővítményt. A rendszer a telepítéskor megadott paramétereket használja. A bővítmény telepítésekor a virtuális gép a megadott Azure AD DS felügyelt tartományhoz csatlakozik.
 
 ```json
  {
@@ -70,74 +70,74 @@ Minden erőforrás javascript-objektumnotúcés (JSON) használatával egy sablo
     }
 ```
 
-Ez a virtuálisgép-bővítmény akkor is telepíthető, ha nem hoz létre virtuális gép ugyanabban a sablonban. A jelen cikkben szereplő példák az alábbi módszereket mutatják be:
+Ez a virtuálisgép-bővítmény akkor is üzembe helyezhető, ha nem hoz létre virtuális gépet ugyanabban a sablonban. A jelen cikkben szereplő példák a következő megközelítéseket mutatják be:
 
-* [Windows Server virtuális gép létrehozása és csatlakozás felügyelt tartományhoz](#create-a-windows-server-vm-and-join-to-a-managed-domain)
-* [Meglévő Windows Server virtuális gép csatlakoztatása felügyelt tartományhoz](#join-an-existing-windows-server-vm-to-a-managed-domain)
+* [Windows Server rendszerű virtuális gép létrehozása és csatlakoztatása felügyelt tartományhoz](#create-a-windows-server-vm-and-join-to-a-managed-domain)
+* [Meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](#join-an-existing-windows-server-vm-to-a-managed-domain)
 
-## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>Windows Server virtuális gép létrehozása és csatlakozás felügyelt tartományhoz
+## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>Windows Server rendszerű virtuális gép létrehozása és csatlakoztatása felügyelt tartományhoz
 
-Ha Windows Server virtuális gépre van szüksége, létrehozhat és konfigurálhat egyet egy Erőforrás-kezelő sablon használatával. A virtuális gép üzembe helyezésekor egy bővítmény telepítve lesz, hogy csatlakozzon a virtuális géphez egy Azure AD DS felügyelt tartományhoz. Ha már rendelkezik olyan virtuális gépsel, amelyhez csatlakozni szeretne egy Azure AD DS felügyelt tartományához, ugorjon [egy meglévő Windows Server virtuális géphez egy felügyelt tartományhoz való csatlakozása lehetőségre.](#join-an-existing-windows-server-vm-to-a-managed-domain)
+Ha Windows Server rendszerű virtuális gépre van szüksége, hozzon létre és konfiguráljon egy Resource Manager-sablon használatával. A virtuális gép telepítésekor a rendszer telepíti a bővítményt, hogy csatlakozzon a virtuális géphez egy Azure AD DS felügyelt tartományhoz. Ha már rendelkezik egy Azure AD DS felügyelt tartományhoz csatlakoztatni kívánt virtuális géppel, ugorjon a [meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](#join-an-existing-windows-server-vm-to-a-managed-domain)lehetőségre.
 
-Windows Server virtuális gép létrehozásához, majd csatlakozzon egy Azure AD DS felügyelt tartományhoz, hajtsa végre az alábbi lépéseket:
+Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakoztassa egy Azure AD DS felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-1. Tallózással keresse meg a [rövid útmutató sablont.](https://azure.microsoft.com/resources/templates/201-vm-domain-join/) Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
-1. Az **Egyéni telepítés** lapon adja meg a következő adatokat a Windows Server virtuális gép létrehozásához és az Azure AD DS felügyelt tartományhoz való csatlakozásához:
+1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
+1. Az **Egyéni telepítés** lapon adja meg a következő adatokat egy Windows Server rendszerű virtuális gép Azure AD DS felügyelt tartományhoz való létrehozásához és csatlakoztatásához:
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte az Azure AD tartományi szolgáltatásokat. |
-    | Erőforráscsoport            | Válassza ki a virtuális gép erőforráscsoportját. |
-    | Hely                  | Válassza ki a helyét a virtuális gép. |
-    | Meglévő virtuális hálózat neve        | A virtuális gépet csatlakoztatni, például a *myVnet-hez*csatlakoztatandó meglévő virtuális hálózat neve. |
-    | Meglévő alhálózat neve      | A meglévő virtuális hálózati alhálózat neve, például *a Munkaterhelések.* |
-    | DNS-címke előtagja          | Adjon meg egy DNS-nevet a virtuális géphez, például *a myvm.* |
-    | Virtuális gép mérete                   | Adja meg a virtuális gép méretét, például *Standard_DS2_v2.* |
-    | A csatlakozáshoz csatlakozó tartomány            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aaddscontoso.com*. |
-    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartományának felhasználói fiókja, amelyet a virtuális gépnek a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az Azure AD DS felügyelt tartományának részét kell, hogy legyen. |
+    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | Erőforráscsoport            | Válassza ki a virtuális géphez tartozó erőforráscsoportot. |
+    | Hely                  | Válassza ki a virtuális gép helyét. |
+    | Meglévő VNET neve        | Annak a meglévő virtuális hálózatnak a neve, amelyhez a virtuális gépet (például *myVnet*) szeretné kapcsolni. |
+    | Létező alhálózat neve      | A meglévő virtuális hálózat alhálózatának neve, például *munkaterhelések*. |
+    | DNS-címke előtagja          | Adja meg a virtuális gép számára használandó DNS-nevet (például *myvm*). |
+    | Virtuális gép mérete                   | Meg kell adni a virtuális gép méretét, például *Standard_DS2_v2*. |
+    | Csatlakozás tartományhoz            | Az Azure AD DS felügyelt tartomány DNS-neve, például *aaddscontoso.com*. |
+    | Tartomány felhasználóneve           | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni `contosoadmin@aaddscontoso.com`, például:. Ennek a fióknak az Azure AD DS felügyelt tartomány részeként kell lennie. |
     | Tartományi jelszó           | Az előző beállításban megadott felhasználói fiók jelszava. |
-    | Választható szervezeti egység elérési útja          | Az egyéni szervezeti egység, amelyben hozzáadja a virtuális gép. Ha nem ad meg értéket ehhez a paraméterhez, a virtuális gép hozzáadódik az alapértelmezett *AAD DC-számítógépek szervezeti* egységéhez. |
-    | Virtuális gép felügyeleti felhasználóneve         | Adja meg a helyi rendszergazdai fiókot, amelyet a virtuális gépen kell létrehozni. |
-    | Virtuális gép rendszergazdai jelszava         | Adja meg a helyi rendszergazdai jelszót a virtuális géphez. Hozzon létre egy erős helyi rendszergazdai jelszót a jelszónyers támadások elleni védelem érdekében. |
+    | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
+    | Virtuális gép rendszergazdai felhasználóneve         | A virtuális gépen létrehozandó helyi rendszergazdai fiókot kell megadnia. |
+    | Virtuális gép rendszergazdai jelszava         | Helyi rendszergazdai jelszót kell megadni a virtuális géphez. Hozzon létre egy erős helyi rendszergazdai jelszót a jelszó-kényszerített támadásokkal szembeni védelem érdekében. |
 
-1. Tekintse át a feltételeket, majd jelölje be a Bejelölő **az Elfogadom a fent meghatározott feltételeket**. Ha készen áll, válassza **a Vásárlás** lehetőséget a virtuális gép létrehozásához és az Azure AD DS felügyelt tartományhoz való csatlakozásához.
+1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket**jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális gép létrehozásához és az Azure AD DS felügyelt tartományhoz való csatlakoztatásához.
 
 > [!WARNING]
-> **Óvatosan kezelje a jelszavakat.**
-> A sablon paraméterfájl az Azure AD DS felügyelt tartományának részét tartalmazó felhasználói fiók jelszavát kéri. Ne adjon meg manuálisan értékeket ebbe a fájlba, és ne hagyja elérhetővé a fájlmegosztásokon vagy más megosztott helyeken.
+> **A jelszavakat körültekintően kezelheti.**
+> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri, amely az Azure AD DS felügyelt tartomány részét képezi. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
 
-A telepítés sikeres befejezéséhez néhány percet vesz igénybe. Ha elkészült, a Windows virtuális gép jön létre, és csatlakozott az Azure AD DS felügyelt tartományhoz. A virtuális gép tartományi fiókok használatával kezelhető vagy bejelentkezhető.
+A telepítés sikeres befejezéséhez néhány percet is igénybe vehet. Ha elkészült, a Windows rendszerű virtuális gép létrejön, és csatlakozik az Azure AD DS felügyelt tartományhoz. A virtuális gép felügyelhető vagy bejelentkezhet tartományi fiókok használatával.
 
-## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>Meglévő Windows Server virtuális gép csatlakoztatása felügyelt tartományhoz
+## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>Meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 
-Ha rendelkezik egy meglévő virtuális gép, vagy a virtuális gépek csoportja, amely szeretne csatlakozni egy Azure AD DS felügyelt tartományhoz, használhatja a Resource Manager sablon csak a virtuálisgép-bővítmény üzembe helyezéséhez.
+Ha van egy meglévő virtuális gépe vagy virtuális gépek csoportja, amelyhez csatlakozni szeretne egy Azure AD DS felügyelt tartományhoz, egy Resource Manager-sablonnal is üzembe helyezheti a virtuálisgép-bővítményt.
 
-Ha meglévő Windows Server virtuális géphez szeretne csatlakozni egy Azure AD DS által felügyelt tartományhoz, hajtsa végre az alábbi lépéseket:
+Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni egy Azure AD DS felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-1. Tallózással keresse meg a [rövid útmutató sablont.](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/) Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
-1. Az **egyéni üzembe helyezés** lapon adja meg a következő adatokat, hogy csatlakozzon a virtuális gép az Azure AD DS felügyelt tartományhoz:
+1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
+1. Az **Egyéni telepítés** lapon adja meg a következő információkat a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához:
 
     | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte az Azure AD tartományi szolgáltatásokat. |
-    | Erőforráscsoport            | Válassza ki az erőforráscsoportot a meglévő virtuális gép. |
+    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | Erőforráscsoport            | Válassza ki az erőforráscsoportot a meglévő virtuális géppel. |
     | Hely                  | Válassza ki a meglévő virtuális gép helyét. |
-    | Virtuális gép listája                   | Adja meg a meglévő virtuális gép(ek) vesszővel tagolt listáját, hogy csatlakozzon az Azure AD DS felügyelt tartományához, például *a myVM1,myVM2*tartományhoz. |
-    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartományának felhasználói fiókja, amelyet a virtuális gépnek a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aaddscontoso.com`. Ennek a fióknak az Azure AD DS felügyelt tartományának részét kell, hogy legyen. |
-    | Tartományi csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |
-    | Választható szervezeti egység elérési útja          | Az egyéni szervezeti egység, amelyben hozzáadja a virtuális gép. Ha nem ad meg értéket ehhez a paraméterhez, a virtuális gép hozzáadódik az alapértelmezett *AAD DC-számítógépek szervezeti* egységéhez. |
+    | VIRTUÁLIS gépek listája                   | Adja meg az Azure AD DS felügyelt tartományhoz (például *myVM1, myVM2*) való csatlakozáshoz használandó meglévő virtuális gép (ek) vesszővel tagolt listáját. |
+    | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni `contosoadmin@aaddscontoso.com`, például:. Ennek a fióknak az Azure AD DS felügyelt tartomány részeként kell lennie. |
+    | Tartományhoz való csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |
+    | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
 
-1. Tekintse át a feltételeket, majd jelölje be a Bejelölő **az Elfogadom a fent meghatározott feltételeket**. Ha készen áll, válassza **a Vásárlás** lehetőséget, hogy csatlakozzon a virtuális géphez az Azure AD DS felügyelt tartományhoz.
+1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket**jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához.
 
 > [!WARNING]
-> **Óvatosan kezelje a jelszavakat.**
-> A sablon paraméterfájl az Azure AD DS felügyelt tartományának részét tartalmazó felhasználói fiók jelszavát kéri. Ne adjon meg manuálisan értékeket ebbe a fájlba, és ne hagyja elérhetővé a fájlmegosztásokon vagy más megosztott helyeken.
+> **A jelszavakat körültekintően kezelheti.**
+> A sablon-paraméter fájlja egy olyan felhasználói fiók jelszavát kéri, amely az Azure AD DS felügyelt tartomány részét képezi. Ne adja meg manuálisan az értékeket ebbe a fájlba, és hagyja azt elérhetővé a fájlmegosztás vagy más megosztott helyen.
 
-A központi telepítés sikeres befejezéséhez néhány percet vesz igénybe. Ha elkészült, a megadott Windows virtuális gépek csatlakoznak az Azure AD DS felügyelt tartományhoz, és tartományi fiókok használatával kezelhetők vagy bejelentkezhetők.
+Néhány percet vesz igénybe, hogy a központi telepítés sikeresen befejeződjön. Ha elkészült, a megadott Windows rendszerű virtuális gépek csatlakoznak az Azure AD DS felügyelt tartományhoz, és felügyelhetők vagy bejelentkezhetnek a tartományi fiókok használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure Portal használatával konfigurálhatja és üzembe helyezte az erőforrásokat sablonok használatával. Erőforrásokat is üzembe helyezhet az [Azure PowerShell][deploy-powershell] vagy az [Azure CLI][deploy-cli]használatával Erőforrás-kezelő sablonokkal.
+Ebben a cikkben a Azure Portal segítségével konfigurálta és telepítette az erőforrásokat sablonok használatával. Az erőforrásokat [Azure PowerShell][deploy-powershell] vagy az [Azure CLI][deploy-cli]használatával is üzembe helyezheti Resource Manager-sablonokkal.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

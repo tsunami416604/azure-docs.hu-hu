@@ -1,6 +1,6 @@
 ---
-title: Identitás konfigurálása – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Az Event Grid modul identitásának konfigurálása
+title: Identitás konfigurálása – Azure Event Grid IoT Edge | Microsoft Docs
+description: Event Grid modul identitásának konfigurálása
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,20 +10,20 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841765"
 ---
-# <a name="configure-identity-for-the-event-grid-module"></a>Az Event Grid modul identitásának konfigurálása
+# <a name="configure-identity-for-the-event-grid-module"></a>Identitás konfigurálása a Event Grid modulhoz
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az identitást a Grid on Edge számára. Alapértelmezés szerint az Event Grid modul az IoT biztonsági démon által konfigurált identitástanúsítványt mutatja be. Event Grid on Edge bemutatja az identitás-tanúsítvány a kimenő hívások, amikor eseményeket kézbesít. Az előfizető ezután ellenőrizheti, hogy az Event Grid modul, amely elküldte az eseményt, mielőtt elfogadja.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a rácshoz tartozó identitást az Edge-ben. Alapértelmezés szerint a Event Grid modul a IoT biztonsági démon által konfigurált identitás-tanúsítványt jeleníti meg. Az Edge Event Grid a kimenő hívásával mutatja be az identitási tanúsítványát, amikor eseményeket küld. Az előfizető ezt követően ellenőrizheti, hogy az a Event Grid modul, amely elküldje az eseményt az elfogadás előtt.
 
-Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](security-authentication.md) útmutató.
+Tekintse meg a [biztonsági és hitelesítési](security-authentication.md) útmutatót az összes lehetséges konfigurációhoz.
 
-## <a name="always-present-identity-certificate"></a>Mindig jelen identitásigazolás
-Íme egy példa konfigurációmindig bemutatja az identitástanúsítványt a kimenő hívások. 
+## <a name="always-present-identity-certificate"></a>Az identitás tanúsítványa mindig szerepel
+A következő példa egy olyan konfigurációt mutat be, amely a kimenő hívásokon lévő Identity tanúsítványokat mutatja be. 
 
 ```json
  {
@@ -34,8 +34,8 @@ Az összes lehetséges konfigurációt lásd: [Biztonsági és hitelesítési](s
 }
  ```
 
-## <a name="dont-present-identity-certificate"></a>Nincs identitásigazolás
-Íme egy példa konfiguráció, amely nem mutatja be az identitástanúsítványt a kimenő hívások. 
+## <a name="dont-present-identity-certificate"></a>Nem jelennek meg az identitás tanúsítványa
+Az alábbi példa egy olyan konfigurációt mutat be, amely nem mutatja be a kimenő hívásokra vonatkozó identitás-tanúsítványt. 
 
 ```json
  {

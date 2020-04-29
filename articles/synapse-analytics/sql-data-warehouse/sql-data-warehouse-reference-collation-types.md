@@ -1,6 +1,6 @@
 ---
-title: Adatraktár-egyeztetési típusok
-description: Az Azure Synapse Analytics SQL-készlet által támogatott rendezési típusok.
+title: Az adatraktár rendezési típusai
+description: Az Azure szinapszis Analytics SQL-készletben támogatott rendezési típusok.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,23 +11,23 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633089"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Az Azure Synapse Analytics SQL-készlet adatbázis-rendezési támogatása
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Az Azure szinapszis Analytics SQL-készlet adatbázis-rendezési támogatása
 
-Módosíthatja az alapértelmezett adatbázis-rendezésaz Azure Portalon, amikor új Azure Synapse SQL-készlet adatbázis létrehozása. Ez a funkció még könnyebbé teszi egy új adatbázis létrehozását a 3800 támogatott adatbázis-illesztések egyikével.
+Az új Azure szinapszis SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal alapértelmezett adatbázis-rendezését. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
 
-A rendezések biztosítják a karakteralapú adattípusok területi beállítását, kódlapját, rendezési sorrendjét és karakterérzékenységi szabályait. A kiválasztás után az összes olyan oszlop és kifejezés, amely rendezési adatokat igényel, örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklődés felülbírálható, ha egy karakteralapú adattípushoz külön rendezést ad meg.
+A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok megkülönböztetésére vonatkozó szabályok megadását. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 
-## <a name="changing-collation"></a>Az illesztés módosítása
+## <a name="changing-collation"></a>Rendezés módosítása
 
-Az alapértelmezett rendezés módosításához frissítse a Kiépítési környezet rendezési mezőjére.
+Ha módosítani szeretné az alapértelmezett rendezést, frissítse a rendezés mezőt a létesítési élményben.
 
-Ha például a kis- és nagybetűk megkülönböztetésére szeretné módosítani az alapértelmezett rendezést, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS.
+Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra.
 
 ## <a name="list-of-unsupported-collation-types"></a>Nem támogatott rendezési típusok listája
 
@@ -102,12 +102,12 @@ Ha például a kis- és nagybetűk megkülönböztetésére szeretné módosíta
 * SQL_EBCDIC1141_CP1_CS_AS
 * SQL_EBCDIC277_2_CP1_CS_AS
 
-## <a name="checking-the-current-collation"></a>Az aktuális illesztés ellenőrzése
+## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
 
-Az adatbázis aktuális illesztésének ellenőrzéséhez futtassa a következő T-SQL kódrészletet:
+Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el:
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-Ha a "Rendezés" tulajdonságparaméterként megfelel, a DatabasePropertyEx függvény a megadott adatbázis aktuális illesztését adja vissza. További információ: [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ: [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

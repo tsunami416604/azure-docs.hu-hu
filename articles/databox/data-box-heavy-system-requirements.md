@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Heavy rendszerkövetelmények| Microsoft dokumentumok
-description: Ismerje meg az Azure Data Box Heavy szoftver- és hálózati követelményeit
+title: Microsoft Azure Data Box Heavy rendszerkövetelményei | Microsoft Docs
+description: Tudnivalók a Azure Data Box Heavy szoftveres és hálózati követelményeiről
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,30 +9,30 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260071"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Az Azure Data Box Heavy rendszerkövetelményei
+# <a name="azure-data-box-heavy-system-requirements"></a>Rendszerkövetelmények Azure Data Box Heavy
 
-Ez a cikk ismerteti az Azure Data Box Heavy eszköz és az eszközhöz csatlakozó ügyfelek fontos rendszerkövetelményeit. Azt javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt üzembe helyezné a Data Box Heavy, majd szükség szerint hivatkozzon rá szükség szerint a központi telepítés és az azt követő művelet során.
+Ez a cikk a Azure Data Box Heavy eszközre és az eszközhöz csatlakozó ügyfelekre vonatkozó fontos rendszerkövetelményeket ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat a Data Box Heavy üzembe helyezése előtt, majd az üzembe helyezés és az azt követő művelet során szükség szerint küldje vissza.
 
 A rendszerkövetelmények a következők:
 
-* **A Data Box Heavy-hoz csatlakozó állomások szoftverkövetelményei** – ismertetik a támogatott platformokat, a helyi webes felhasználói felület böngészőit, az SMB-ügyfeleket, valamint az adatdobozhoz csatlakozni képes állomásokra vonatkozó további követelményeket.
-* **A Data Box Heavy hálózati követelményei** - tájékoztatást nyújt a Data Box Heavy eszköz optimális működéséhez szükséges hálózati követelményekről.
+* A **Data Box Heavyhoz csatlakozó gazdagépek szoftveres követelményei** – ismerteti a támogatott platformokat, a helyi webes felhasználói felület, az SMB-ügyfelek és a Data boxhoz csatlakozni képes gazdagépek további követelményeit.
+* **A Data Box Heavy hálózati követelményei** – információt nyújt a Data Box Heavy eszköz optimális működéséhez szükséges hálózati követelményekről.
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
 
-A szoftverkövetelmények tartalmazzák a támogatott operációs rendszerekre, a helyi webes felhasználói felület támogatott böngészőire és az SMB-ügyfelekre vonatkozó információkat.
+A szoftverre vonatkozó követelmények tartalmazzák a támogatott operációs rendszerekkel, a helyi webes felhasználói felület és az SMB-ügyfelek által támogatott böngészőkkel kapcsolatos információkat.
 
 ### <a name="supported-operating-systems-for-clients"></a>Az ügyfelekhez támogatott operációs rendszerek
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Támogatott fájlrendszerek Linux-ügyfelekszámára
+### <a name="supported-file-systems-for-linux-clients"></a>Támogatott fájlrendszerek Linux rendszerű ügyfelek számára
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
@@ -50,14 +50,14 @@ A szoftverkövetelmények tartalmazzák a támogatott operációs rendszerekre, 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. A leggyorsabb másolási sebesség elérése esetén két 40 GbE-es kapcsolat használható párhuzamosan (csomópontonként egyet). Ha nem rendelkezik 40 GbE-vel, azt javasoljuk, hogy legalább két 10 GbE-es kapcsolattal (csomópontonként egy) rendelkezik.
+Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. A leggyorsabb másolási sebességhez a 2 40-GbE kapcsolatok párhuzamosan használhatók (egy csomóponton belül). Ha nem érhető el a 40-GbE, javasoljuk, hogy legalább 2 10-GbE kapcsolattal rendelkezzen (egy-egy csomóponton).
 
-### <a name="port-requirements"></a>Kikötői követelmények
+### <a name="port-requirements"></a>Portra vonatkozó követelmények
 
-Az alábbi táblázat azokat a portokat sorolja fel, amelyeket meg kell nyitni a tűzfalon az SMB- vagy NFS-forgalom engedélyezéséhez. Ebben a *táblában a bejövő* vagy *bejövő* arra az irányra utal, amelyből a bejövő ügyfél hozzáférést kér az eszközhöz. *Kimenő* vagy *kimenő* utal, amelyben a Data Box Heavy eszköz adatokat küld külsőleg, túl a központi telepítés: például kimenő az internetre.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon, hogy engedélyezze az SMB-vagy NFS-forgalmat. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box Heavy-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Data Box üzembe helyezése](data-box-deploy-ordered.md)
+* [A Azure Data Box üzembe helyezése](data-box-deploy-ordered.md)

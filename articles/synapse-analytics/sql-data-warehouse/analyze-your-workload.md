@@ -1,6 +1,6 @@
 ---
 title: A számítási feladatok elemzése
-description: Az Azure Synapse Analytics lekérdezési rangsorolásának elemzésére szolgáló technikák.
+description: Módszerek az Azure szinapszis Analytics szolgáltatásbeli számítási feladatok rangsorolásának elemzéséhez.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631241"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>A számítási feladatok elemzése az Azure Synapse Analytics szolgáltatásban
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Számítási feladatok elemzése az Azure szinapszis Analytics szolgáltatásban
 
-A Synapse SQL-számítási feladatának elemzésére szolgáló technikák az Azure Synapse Analytics szolgáltatásban.
+Technikák a szinapszis SQL-munkaterhelések elemzéséhez az Azure szinapszis Analyticsben.
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
-A Synapse SQL erőforrásosztályokat biztosít a rendszererőforrások lekérdezésekhez való hozzárendeléséhez.  Az erőforrásosztályokról további információt az [Erőforrásosztályok & a munkaterhelés-kezelés című](resource-classes-for-workload-management.md)témakörben talál.  A lekérdezések megvárják, hogy a lekérdezéshez rendelt erőforrásosztálynak a jelenleg rendelkezésre állónál több erőforrásra van szüksége.
+A szinapszis SQL erőforrás-osztályokat biztosít a rendszererőforrásoknak a lekérdezésekhez való hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Várakozással váró lekérdezésészlelése és egyéb DMV-k
+## <a name="queued-query-detection-and-other-dmvs"></a>Várólistán lévő lekérdezések észlelése és egyéb DMV
 
-A DMV segítségével azonosíthatja az `sys.dm_pdw_exec_requests` egyidejűségi várólistában várakozó lekérdezéseket. Az egyidejűségi tárolóhelyre váró lekérdezések állapota **felfüggesztett.**
+A `sys.dm_pdw_exec_requests` DMV használatával azonosíthatja a párhuzamossági sorban Várakozó lekérdezéseket. Az egyidejű tárolóhelyre várakozó lekérdezések **felfüggesztve**állapottal rendelkeznek.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-A számítási feladatok kezelése `sys.database_principals`szerepkörök megtekinthetők a segítségével.
+A számítási feladatok felügyeleti szerepkörei a `sys.database_principals`használatával tekinthetők meg.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -51,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-A következő lekérdezés megmutatja, hogy az egyes felhasználók melyik szerepkörhöz vannak hozzárendelve.
+A következő lekérdezés azt jeleníti meg, hogy az egyes felhasználók melyik szerepkörhöz vannak rendelve.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -63,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-A Szinapszis SQL a következő várakozási típusokkal rendelkezik:
+A szinapszis SQL a következő várakozási típusokkal rendelkezik:
 
-* **LocalQueriesConcurrencyResourceType**: Olyan lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén kívül helyezkednek el. A dmv-lekérdezések `SELECT @@VERSION` és a rendszerfüggvények, például a helyi lekérdezések példái.
-* **UserConcurrencyResourceType**: Lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén belül ülnek. A végfelhasználói tábláklekérdezései olyan példákat jelentenek, amelyek ezt az erőforrástípust használnák.
-* **DmsConcurrencyResourceType**: Az adatmozgatási műveletekből eredő várakozás.
-* **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázisról biztonsági másolat készül. Az erőforrástípus maximális értéke 1. Ha egyszerre több biztonsági mentést is kért, a többi várólistára kerül. Általában azt javasoljuk, hogy egy minimális idő között egymást követő pillanatképek 10 perc.
+* **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például `SELECT @@VERSION` a helyi lekérdezések példái.
+* **UserConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszerben található lekérdezések. A végfelhasználói táblákra irányuló lekérdezések olyan példákat mutatnak be, amelyek ezt az erőforrástípust használják.
+* **DmsConcurrencyResourceType**: megvárja az adatáthelyezési műveletek eredményét.
+* **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázis biztonsági mentése folyamatban van. Az erőforrástípus maximális értéke 1. Ha egy időben több biztonsági mentést is kértek, a többi üzenetsor. Általánosságban elmondható, hogy az egymást követő Pillanatképek közül legalább 10 percet ajánlunk.
 
-A `sys.dm_pdw_waits` DMV segítségével megtekinthető, hogy a kérelem mely erőforrásokra vár.
+A `sys.dm_pdw_waits` DMV használatával megtekintheti, hogy mely erőforrásokra vár kérelmek.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-A `sys.dm_pdw_resource_waits` DMV egy adott lekérdezés várakozási adatait jeleníti meg. Az erőforrások várakozási ideje az erőforrások megadására váró időt méri. A jelvárakozási idő az az idő, ameddig az alapul szolgáló SQL-kiszolgálók a lekérdezést a processzorra ütemezik.
+A `sys.dm_pdw_resource_waits` DMV egy adott lekérdezés várakozási adatait jeleníti meg. Az erőforrás-várakozási idő az erőforrások számára várakozási időt méri. A várakozási idő az az idő, ameddig a mögöttes SQL-kiszolgálók a lekérdezéseket a CPU-ra ütemezhetik.
 
 ```sql
 SELECT  [session_id]
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-A `sys.dm_pdw_resource_waits` DMV-ben is használhatja, hogy hány egyidejűségi bővítőhely kapott.
+Azt is megteheti `sys.dm_pdw_resource_waits` , hogy a DMV kiszámítja, hogy hány párhuzamossági tárolóhelyet adtak meg.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-A `sys.dm_pdw_wait_stats` DMV használható történelmi trend elemzése vár.
+A `sys.dm_pdw_wait_stats` DMV a várakozások történelmi trendek elemzésére használható.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme a Synapse SQL rendszerben](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa [el az Indexek létrehozása a szegmensminőség javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)című témakört.
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele a SZINAPSZIS SQL-ben](sql-data-warehouse-overview-manage-security.md). Ha többet szeretne megtudni arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, tekintse meg az [indexek újraépítése a szegmens minőségének javítása érdekében című szakaszt](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

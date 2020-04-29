@@ -1,6 +1,6 @@
 ---
-title: T-SQL hurkok használata
-description: Tippek a T-SQL hurkok használatával történő megoldásfejlesztéshez és a kurzorok cseréjéhez a Synapse SQL-készletben.
+title: T-SQL-hurkok használata
+description: Tippek a megoldások fejlesztéséhez a T-SQL-hurkok használatával és kurzorok cseréje a szinapszis SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 72a39804931c0834233e91190aacffa8d35912df
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633480"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>T-SQL hurkok használata a Szinapszis SQL-készletében
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>T-SQL-hurkok használata a szinapszis SQL-készletben
 
-Ez a cikk a T-SQL-hurkok használatával és a kurzorok cseréjével történő SQL-készletmegoldások fejlesztésére vonatkozó tippeket tartalmazza.
+Ez a cikk a T-SQL-hurkok használatával és a kurzorok cseréjével kapcsolatos tippeket tartalmaz az SQL Pool-megoldások fejlesztéséhez.
 
-## <a name="purpose-of-while-loops"></a>A WHILE hurkok célja
+## <a name="purpose-of-while-loops"></a>Hurkok célja
 
-A Szinapszis SQL-készlet támogatja a [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ciklust a kimutatásblokkok ismételt végrehajtásához. Ez a WHILE ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten le nem állítja a ciklust a BREAK kulcsszó használatával.
+A szinapszis SQL-készlet a [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával.
 
-A hurkok az SQL-kódban definiált kurzorok cseréjéhez hasznosak. Szerencsére, szinte minden kurzorok, amelyek írt SQL-kód a gyors előre, csak olvasható fajta. Tehát, While hurkok egy nagyszerű alternatíva helyett kurzorok.
+A hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Szóval, míg a hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>Kurzorok cseréje a Synapse SQL-készletben
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Kurzorok cseréje a szinapszis SQL-készletben
 
-Azonban, mielőtt búvárkodás a fejét először fel kell tennie magának a következő kérdést: "Lehet ezt a kurzort átírni, hogy használja set-alapú műveletek?"
+Mielőtt azonban először is felmerülnek a merülés előtt, a következő kérdéssel kell megkérdezni: "lehetséges, hogy a kurzor újraírható a set-based Operations használatára?"
 
-Sok esetben a válasz igen, és gyakran a legjobb megközelítés. A set-alapú műveletek gyakran gyorsabban hajtják végre, mint egy iteratív, sorról sorra megközelítés.
+Sok esetben a válasz igen, és gyakran a legjobb megoldás. A készleten alapuló művelet gyakran gyorsabb, mint egy iterációs, soron belüli módszer.
 
-A gyors előremutató írásvédett kurzorok könnyen cserélhetők egy hurokszerkezettel. A következő példa egy egyszerű. Ez a példakód frissíti az adatbázis minden táblájának statisztikáit. A ciklusban lévő táblák ismétlésével minden parancs sorrendben hajtható végre.
+A gyors továbbítást csak olvasható kurzorok egyszerűen lecserélhetik hurkos szerkezettel. A következő példa egy egyszerű. Ez a kódrészlet frissíti az adatbázis minden táblájának statisztikáit. Ha megismétli a hurokban lévő táblákat, az egyes parancsok végrehajtása sorban történik.
 
-Először hozzon létre egy ideiglenes táblát, amely egyedi sorszámot tartalmaz az egyes kimutatások azonosítására:
+Először hozzon létre egy ideiglenes táblázatot, amely egy egyedi sorszámot tartalmaz, amely az egyes utasítások azonosítására szolgál:
 
 ```sql
 CREATE TABLE #tbl
@@ -51,7 +51,7 @@ FROM    sys.tables
 ;
 ```
 
-Másodszor, inicializálja a változó végrehajtásához szükséges ciklus:
+Másodszor, inicializálja a hurok végrehajtásához szükséges változókat:
 
 ```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -59,7 +59,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Most hurok alatt nyilatkozatok végrehajtó őket egyenként:
+Most a következő utasításokon keresztül hajtja végre az egyes utasításokat:
 
 ```sql
 WHILE   @i <= @nbr_statements
@@ -78,4 +78,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
+További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

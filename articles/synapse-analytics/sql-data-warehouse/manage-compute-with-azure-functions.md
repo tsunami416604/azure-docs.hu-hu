@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A számítás kezelése az Azure Functions segítségével'
-description: Hogyan használhatja az Azure-függvényeket az SQL-készlet kiszámításának kezeléséhez az Azure Synapse Analytics szolgáltatásban.
+title: 'Oktatóanyag: számítások kezelése Azure Functions'
+description: Az Azure functions használata az SQL-készlet számítási feladatainak kezeléséhez az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,37 +12,37 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631968"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Számítási erőforrások kezelése az Azure Synapse Analytics SQL-készletében az Azure Functions függvényében
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
-Ez az oktatóanyag az Azure Functions segítségével kezeli az Azure Synapse Analytics SQL-készletszámítási erőforrásait.
+Ez az oktatóanyag a Azure Functions használatával kezeli a számítási erőforrásokat egy SQL-készlethez az Azure szinapszis Analyticsben.
 
-Az Azure Function App SQL-készlettel való használatához létre kell hoznia egy [egyszerű szolgáltatásfiókot](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) közreműködői hozzáféréssel az SQL-készletpéldányával azonos előfizetés keretében.
+Az Azure-függvényalkalmazás SQL-készlettel való használatához létre kell hoznia egy [egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az SQL Pool-példánnyal azonos előfizetéshez tartozó közreműködői hozzáféréssel.
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Időzítőalapú méretezés üzembe helyezése Azure Resource Manager-sablonnal
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Időzítő alapú skálázás üzembe helyezése Azure Resource Manager sablonnal
 
-A sablon telepítéséhez a következő információkra van szükség:
+A sablon üzembe helyezéséhez a következő információk szükségesek:
 
-- Annak az erőforráscsoportnak a neve, amelyben az SQL-készletpéldány található
-- Annak a logikai kiszolgálónak a neve, amelyben az SQL-készletpéldány található
-- Az SQL-készletpéldány neve
+- Azon erőforráscsoport neve, amelyben az SQL-készlet példánya szerepel
+- Annak a logikai kiszolgálónak a neve, amelyen az SQL-készlet példánya található
+- Az SQL-készlet példányának neve
 - Az Azure Active Directory bérlőazonosítója (Directory-azonosító)
 - Előfizetés azonosítója
 - Egyszerű szolgáltatás alkalmazásazonosítója
 - Egyszerű szolgáltatás titkos kulcsa
 
-Az előző adatok után telepítse a sablont:
+Ha már rendelkezik a fenti információkkal, telepítse a következő sablont:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Miután üzembe helyezte a sablont, három új erőforrást kell találnia: egy ingyenes Azure App Service-csomagot, egy fogyasztásalapú függvényalkalmazás-csomagot és egy tárfiókot, amely kezeli a naplózást és a műveleti várólistát. Olvassa el a többi szakaszt, ha meg szeretné tudni, hogyan módosíthatja az üzembe helyezett függvényeket az igényeinek megfelelően.
+A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azure App Service csomagot, egy fogyasztási alapú függvényalkalmazás tervet, valamint egy olyan Storage-fiókot, amely kezeli a naplózást és a műveleti várólistát. Olvassa el a többi szakaszt, ha meg szeretné tudni, hogyan módosíthatja az üzembe helyezett függvényeket az igényeinek megfelelően.
 
 ## <a name="change-the-compute-level"></a>A számítási szint módosítása
 
@@ -50,11 +50,11 @@ Miután üzembe helyezte a sablont, három új erőforrást kell találnia: egy 
 
    ![Sablonnal üzembe helyezett függvények](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás idejét szeretné módosítani. A legördülő menüben válassza az Integráció parancsot.
+2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás idejét szeretné módosítani. A legördülő menüben válassza az integrálás lehetőséget.
 
    ![Integrálás kiválasztása a függvényhez](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Jelenleg a *%ScaleDownTime%* vagy a *%ScaleUpTime%* értéknek kell megjelennie. Ezek az értékek azt jelzik, hogy az ütemezés az [Alkalmazásbeállításokban](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) beállított értékeken alapul. Egyelőre figyelmen kívül hagyhatja ezt az értéket, és a következő lépések alapján módosíthatja az ütemezést a kívánt időpontra.
+3. Jelenleg a *%ScaleDownTime%* vagy a *%ScaleUpTime%* értéknek kell megjelennie. Ezek az értékek azt jelzik, hogy az ütemezés az [Alkalmazásbeállításokban](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) beállított értékeken alapul. Egyelőre figyelmen kívül hagyhatja ezt az értéket, és a következő lépések alapján módosíthatja az ütemtervet a kívánt időpontra.
 
 4. Az ütemezési területen adja meg az SQL Data Warehouse vertikális felskálázásának gyakoriságát CRON-kifejezésként.
 
@@ -66,9 +66,9 @@ Miután üzembe helyezte a sablont, három új erőforrást kell találnia: egy 
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   Például *a "0 30 9 * * 1-5"* minden hétköznap 9:30-kor egy eseményindítót tükrözne. További információért tekintse meg az Azure Functions [ütemezési példákat](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) ismertető leírását.
+   Például a *"0 30 9 * * * 1-5"* egy-egy triggert tükröz minden hétköznapon 9 órakor. További információért tekintse meg az Azure Functions [ütemezési példákat](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) ismertető leírását.
 
-## <a name="change-the-time-of-the-scale-operation"></a>A méretezési művelet időpontjának módosítása
+## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet időpontjának módosítása
 
 1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
 
@@ -76,7 +76,7 @@ Miután üzembe helyezte a sablont, három új erőforrást kell találnia: egy 
 
    ![A függvényhez tartozó eseményindító számítási szintjének módosítása](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. Módosítsa a *ServiceLevelObjective* értékét a kívánt szintre, és kattintson a mentés gombra. Ez az érték az a számítási szint, amelyet az adattárház-példány az Integrálás szakaszban meghatározott ütemezés alapján méretez.
+3. Módosítsa a *ServiceLevelObjective* értékét a kívánt szintre, és kattintson a mentés gombra. Ez az érték az a számítási szint, amelyet az adatraktár-példány az integráció szakaszban meghatározott ütemterv alapján fog méretezni.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Szüneteltetés vagy folytatás használata méretezés helyett
 
@@ -91,13 +91,13 @@ Alapértelmezés szerint jelenleg a *DWScaleDownTrigger* és a *DWScaleUpTrigger
 3. Lépjen az adott eseményindító *Integrálás* lapjára az ütemezés módosításához.
 
    > [!NOTE]
-   > A skálázási eseményindítók és a szüneteltetési/folytatási eseményindítók közötti funkcionális különbség a várólistába küldött üzenet. További információ: [Új eseményindító függvény hozzáadása.](manage-compute-with-azure-functions.md#add-a-new-trigger-function)
+   > A skálázási eseményindítók és a szüneteltetési/folytatási eseményindítók közötti funkcionális különbség a várólistára küldött üzenet. További információkért lásd: [új trigger függvény hozzáadása](manage-compute-with-azure-functions.md#add-a-new-trigger-function).
 
 ## <a name="add-a-new-trigger-function"></a>Új eseményindító függvény hozzáadása
 
-A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a funkciókkal egy nap folyamán csak egyszer és egyszer lehet leskálázni. Részletesebb vezérlés, például a skálázás naponta többször, vagy eltérő skálázási viselkedés a hétvégén, hozzá kell adnia egy másik eseményindító.
+A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függvényekkel a nap folyamán csak egyszer és egyszer lehet méretezni. Ha részletesebb szabályozásra van szükség, például napi többszöri méretezésre vagy a hétvégén eltérő skálázási viselkedésre van szüksége, újabb triggert kell hozzáadnia.
 
-1. Hozzon létre egy új üres függvényt. A *+* függvénysablon ablaktábla megjelenítéséhez jelölje ki a Functions hely melletti gombot.
+1. Hozzon létre egy új üres függvényt. Kattintson a *+* függvények helye melletti gombra a Function sablon panel megjelenítéséhez.
 
    ![Új függvény létrehozása](./media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -113,7 +113,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a funkci
 
    ![Az index.js másolása](././media/manage-compute-with-azure-functions/index-js.png)
 
-5. Állítsa a működési változót a kívánt viselkedésre az alábbiak szerint:
+5. Állítsa a műveleti változót a kívánt viselkedésre a következőképpen:
 
    ```javascript
    // Resume the SQL pool instance
@@ -135,7 +135,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a funkci
 
 ## <a name="complex-scheduling"></a>Összetett ütemezés
 
-Ez a szakasz röviden bemutatja, mi szükséges a szüneteltetési, folytatási és méretezési képességek összetettebb ütemezéséhez.
+Ez a szakasz röviden bemutatja, hogy mire van szükség a szüneteltetési, a folytatási és a méretezési funkciók összetettebb ütemezésének megkezdéséhez.
 
 ### <a name="example-1"></a>1. példa
 
@@ -148,7 +148,7 @@ Vertikális felskálázás 8:00-kor DW600 értékre, és vertikális leskáláz�
 
 ### <a name="example-2"></a>2. példa
 
-Napi skála fel 08:00 DW1000, skála le egyszer DW600 at 4, és a skála le 10:00-DW200.
+Napi méretezés 08:00 és DW1000 között, a leskálázás egyszer, kor DW600 16:00-kor, és 10 – DW200.
 
 | Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |
@@ -171,4 +171,4 @@ Vertikális felskálázás 8:00-kor DW1000 értékre, és vertikális leskáláz
 
 További információk az [időzítő által aktivált](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure-függvényekről.
 
-Pénztár az SQL-készlet [mintatár.](https://github.com/Microsoft/sql-data-warehouse-samples)
+Az SQL Pool [Samples repository](https://github.com/Microsoft/sql-data-warehouse-samples)kifizetése.

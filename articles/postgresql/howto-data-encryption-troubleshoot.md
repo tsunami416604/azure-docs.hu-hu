@@ -1,62 +1,62 @@
 ---
-title: Adattitkosítás – Azure Database for PostgreSQL - Single Server
-description: Megtudhatja, hogyan háríthatja el az Azure Database for PostgreSQL – Single Server adattitkosításának hibaelhárítását
+title: Adattitkosítás – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Megtudhatja, hogyan lehet elhárítani az adattitkosítást a Azure Database for PostgreSQL egyetlen kiszolgálón
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 2902ff17ac14a48f1a11259339c2ab1bc4595980
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299260"
 ---
-# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Adattitkosítás – Egykiszolgálós megoldás az Azure Database for PostgreSQL szolgáltatásban – Egykiszolgálós
+# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Az adattitkosítás hibakeresése Azure Database for PostgreSQL – egyetlen kiszolgálón
 
-Ez a cikk segít azonosítani és megoldani azokat a gyakori problémákat, amelyek az Azure Database for PostgreSQL egykiszolgálós központi telepítésében fordulhatnak elő, ha az ügyfél által felügyelt kulcs használatával konfigurálva vannak az adattitkosítással.
+Ez a cikk segítséget nyújt a Azure Database for PostgreSQL egykiszolgálós telepítésekor előforduló gyakori problémák azonosításában és megoldásában, ha az ügyfél által felügyelt kulcs használatával van konfigurálva adattitkosítással.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-Ha úgy konfigurálja az adattitkosítást, hogy ügyfél által felügyelt kulcsot használjon az Azure Key Vaultban, a kiszolgáló nak folyamatos hozzáférésre van szüksége a kulcshoz. Ha a kiszolgáló elveszíti a hozzáférést az ügyfél által felügyelt kulcshoz az Azure Key Vaultban, megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és az állapotát ***nem érhető el*** az Azure Portalon.
+Ha az adattitkosítást úgy konfigurálja, hogy az Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálónak folyamatos hozzáférést kell adni a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
 
-Ha már nincs szüksége egy nem elérhető Azure-adatbázis postgreSQL-kiszolgáló, törölheti azt, hogy ne felmerülő költségeket. A kiszolgálón nincs más művelet, amíg a kulcstartóhoz való hozzáférés helyre nem áll, és a kiszolgáló elérhetővé nem válik. Az adattitkosítási lehetőség nem módosítható `Yes`(ügyfél által kezelt) `No` és (szolgáltatás által felügyelt) egy elérhetetlen kiszolgálón, ha az ügyfél által felügyelt kulccsal van titkosítva. A kiszolgáló újbóli elérhetővé tétele előtt manuálisan kell újraérvényesítenie a kulcsot. Ez a művelet azért szükséges, hogy megvédje az adatokat a jogosulatlan hozzáféréstől, miközben az ügyfél által felügyelt kulcsra vonatkozó engedélyeket visszavonják.
+Ha már nincs szüksége egy nem elérhető Azure Database for PostgreSQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes`(felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
 
-## <a name="common-errors-causing-server-to-become-inaccessible"></a>Gyakori hibák, amelyek a kiszolgáló elérhetetlenné válását okozzák
+## <a name="common-errors-causing-server-to-become-inaccessible"></a>A kiszolgáló elérhetetlenné válását okozó gyakori hibák
 
-A következő helytelen konfigurációk okozzák a legtöbb problémát az Azure Key Vault-kulcsokat használó adattitkosítással kapcsolatban:
+A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó adattitkosítással kapcsolatos legtöbb problémát okoz:
 
-- A kulcstartó nem érhető el, vagy nem létezik:
-  - A kulcstartó véletlenül törölve lett.
-  - Egy időszakos hálózati hiba miatt a key vault nem érhető el.
+- A Key Vault nem érhető el, vagy nem létezik:
+  - A Key vaultot véletlenül törölték.
+  - Egy időszakos hálózati hiba miatt a kulcstartó nem érhető el.
 
-- Nincs engedélye a kulcstartó eléréséhez, vagy a kulcs nem létezik:
+- Nincs engedélye a kulcstartó elérésére, vagy a kulcs nem létezik:
   - A kulcs lejárt, vagy véletlenül törölték vagy letiltották.
-- Az Azure Database for PostgreSQL-példány felügyelt identitása véletlenül törlődött.
-  - Az Azure Database for PostgreSQL-példány felügyelt identitása nem rendelkezik megfelelő kulcsengedélyekkel. Az engedélyek például nem tartalmazzák a Beget, a Körbefuttatást és a Kicsomagolást.
-  - Az Azure Database for PostgreSQL-példány felügyelt identitásengedélyeit visszavonták vagy törölték.
+- A Azure Database for PostgreSQL példány felügyelt identitása véletlenül törölve lett.
+  - A Azure Database for PostgreSQL példány felügyelt identitása nem rendelkezik elegendő jogosultsággal. Az engedélyek például nem tartalmazzák a Get, a wrap és a kicsomagolás funkciót.
+  - A Azure Database for PostgreSQL példány felügyelt identitására vonatkozó engedélyeket visszavonták vagy törölték.
 
 ## <a name="identify-and-resolve-common-errors"></a>Gyakori hibák azonosítása és megoldása
 
-### <a name="errors-on-the-key-vault"></a>Hibák a key vaultban
+### <a name="errors-on-the-key-vault"></a>Hibák a Key vaultban
 
-#### <a name="disabled-key-vault"></a>Letiltott kulcstartó
+#### <a name="disabled-key-vault"></a>A Key Vault letiltva
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **Magyarázat:** A művelet nem hajtható végre a kiszolgálón, mert az Azure Key Vault kulcs le van tiltva.
+- **Magyarázat**: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
 
-#### <a name="missing-key-vault-permissions"></a>Hiányzó kulcstartó engedélyek
+#### <a name="missing-key-vault-permissions"></a>Hiányzó Key Vault-engedélyek
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Magyarázat:** A kiszolgáló nem rendelkezik a szükséges Get, Wrap és Unwrap engedélyekkel az Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az azonosítóval rendelkező egyszerű szolgáltatásnak.
+- **Magyarázat**: a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
 
 ### <a name="mitigation"></a>Kezelés
 
-- Győződjön meg arról, hogy az ügyfél által felügyelt kulcs a key vaultban található.
-- Azonosítsa a key vault, majd nyissa meg a key vault az Azure Portalon.
-- Győződjön meg arról, hogy a kulcs URI azonosítja a kulcs, amely jelen van.
+- Győződjön meg arról, hogy az ügyfél által felügyelt kulcs megtalálható a kulcstartóban.
+- Azonosítsa a kulcstartót, majd nyissa meg a Azure Portal található kulcstartót.
+- Győződjön meg arról, hogy a kulcs URI-ja egy jelen lévő kulcsot azonosít.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Portal használatával adattitkosítást állíthat be egy ügyfél által felügyelt kulccsal a PostgreSQL Azure Database-ben](howto-data-encryption-portal.md)
+[Az Azure Portal használatával állíthatja be az adattitkosítást az ügyfél által felügyelt kulccsal Azure Database for PostgreSQL](howto-data-encryption-portal.md)

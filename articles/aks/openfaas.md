@@ -1,53 +1,53 @@
 ---
-title: OpenFaaS használata az Azure Kubernetes szolgáltatással (AKS)
-description: Megtudhatja, hogyan telepítheti és használhatja az OpenFaaS-t egy Azure Kubernetes-fürt (AKS) fürtön kiszolgáló nélküli függvények tárolókkal történő létrehozásához.
+title: A OpenFaaS használata az Azure Kubernetes szolgáltatással (ak)
+description: Ismerje meg, hogyan helyezhet üzembe és használhat OpenFaaS egy Azure Kubernetes Service-(ak-) fürtön kiszolgáló nélküli függvények létrehozásához tárolókkal.
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631467"
 ---
-# <a name="using-openfaas-on-aks"></a>OpenFaaS használata AKS-en
+# <a name="using-openfaas-on-aks"></a>OpenFaaS használata az AK-on
 
-[Az OpenFaaS][open-faas] egy keretrendszer a kiszolgáló nélküli függvények létrehozásához tárolók használatával. Mint egy nyílt forráskódú projekt, hogy szerzett nagyszabású elfogadása a közösségen belül. Ez a dokumentum részletezi az OpenFaas telepítését és használatát egy Azure Kubernetes-fürt (AKS) fürtön.
+A [OpenFaaS][open-faas] a kiszolgáló nélküli függvények a tárolók használatával történő létrehozásához használható keretrendszer. Nyílt forráskódú projektként nagy léptékű bevezetést szerzett a Közösségen belül. Ez a dokumentum részletesen ismerteti a OpenFaas telepítését és használatát egy Azure Kubernetes Service-(ak-) fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések végrehajtásához a következőkre van szükség.
+A cikkben szereplő lépések végrehajtásához a következőkre lesz szüksége.
 
-* A Kubernetes alapvető megértése.
-* Egy Azure Kubernetes-szolgáltatás (AKS) fürt és AKS-hitelesítő adatok konfigurálva a fejlesztési rendszeren.
+* A Kubernetes alapszintű ismerete.
+* Az Azure Kubernetes Service (ak) fürt és a fejlesztési rendszeren konfigurált AK-beli hitelesítő adatok.
 * Az Azure CLI telepítve van a fejlesztői rendszeren.
-* Git parancssori eszközök telepítve a rendszerre.
+* A rendszerre telepített git parancssori eszközök.
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>Az OpenFaaS helmdiagram tártárjának hozzáadása
+## <a name="add-the-openfaas-helm-chart-repo"></a>A OpenFaaS Helm chart-adattár hozzáadása
 
-Nyissa [https://shell.azure.com](https://shell.azure.com) meg az Azure Cloud Shellt a böngészőjében.
+[https://shell.azure.com](https://shell.azure.com) Nyissa meg a Azure Cloud shellt a böngészőben.
 
-Az OpenFaaS saját kormánydiagramokat tart fenn, hogy naprakész legyen a legújabb változásokkal.
+A OpenFaaS megtartja a saját Helm-diagramjait, hogy naprakészek legyenek a legújabb módosításokkal.
 
 ```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
 
-## <a name="deploy-openfaas"></a>OpenFaaS telepítése
+## <a name="deploy-openfaas"></a>OpenFaaS üzembe helyezése
 
-Ajánlott eljárásként az OpenFaaS és az OpenFaaS függvényeket saját Kubernetes névterükben kell tárolni.
+Helyes gyakorlat, hogy a OpenFaaS és a OpenFaaS függvényt a saját Kubernetes-névterében kell tárolni.
 
-Névtér létrehozása az OpenFaaS rendszerhez és függvényekhez:
+Hozzon létre egy névteret a OpenFaaS rendszer és a függvények számára:
 
 ```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Hozzon létre egy jelszót az OpenFaaS felhasználói felületi portálhoz és a REST API-hoz:
+Jelszó létrehozása a OpenFaaS felhasználói felületi portálhoz és REST API:
 
 ```console
 # generate a random password
@@ -58,11 +58,11 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-A titk értékét a `echo $PASSWORD`segítségével kaphatja meg.
+A titok értékét lekérheti a paranccsal `echo $PASSWORD`.
 
-Az itt létrehozott jelszót a kormánydiagram fogja használni az egyszerű hitelesítés engedélyezéséhez az OpenFaaS átjárón, amely egy felhőloadbalancer-en keresztül érhető el az interneten.
+Az itt létrehozott jelszót a Helm diagram fogja használni az alapszintű hitelesítés engedélyezéséhez a OpenFaaS-átjárón, amely egy felhőalapú terheléselosztó keresztül elérhető az interneten.
 
-Az OpenFaaS helmdiagramja megtalálható a klónozott tárházban. Ezzel a diagramkal telepítheti az OpenFaaS-t az AKS-fürtbe.
+A klónozott tárház tartalmazza a OpenFaaS Helm diagramját. Ezzel a diagrammal telepíthet OpenFaaS az AK-fürtbe.
 
 ```console
 helm upgrade openfaas --install openfaas/openfaas \
@@ -94,7 +94,7 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-Nyilvános IP-cím jön létre az OpenFaaS átjáró eléréséhez. Az IP-cím beolvasásához használja a [kubectl get service parancsot.][kubectl-get] Eltarthat egy percig, amíg az IP-cím hozzá van rendelve a szolgáltatáshoz.
+A rendszer létrehoz egy nyilvános IP-címet a OpenFaaS-átjáró eléréséhez. Az IP-cím lekéréséhez használja a [kubectl Get Service][kubectl-get] parancsot. Egy percet is igénybe vehet, hogy az IP-cím hozzá legyen rendelve a szolgáltatáshoz.
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
@@ -108,17 +108,17 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Az OpenFaaS rendszer teszteléséhez keresse meg a 8080-as port külső IP-címét ebben `http://52.186.64.52:8080` a példában. A rendszer kéri a bejelentkezést. A jelszó beolvasásához írja be a be írását. `echo $PASSWORD`
+A OpenFaaS rendszer teszteléséhez keresse meg a külső IP-címet a 8080-as `http://52.186.64.52:8080` porton ebben a példában. A rendszer kérni fogja, hogy jelentkezzen be. A jelszó beolvasásához írja `echo $PASSWORD`be a következőt:.
 
 ![OpenFaaS felhasználói felület](media/container-service-serverless/openfaas.png)
 
-Végül telepítse az OpenFaaS CLI-t. Ez a példa használt sört, lásd az [OpenFaaS CLI dokumentáció][open-faas-cli] további lehetőségeket.
+Végül telepítse a OpenFaaS CLI-t. Ez a példa a brewt használta, további lehetőségekért tekintse meg a [OPENFAAS CLI dokumentációját][open-faas-cli] .
 
 ```console
 brew install faas-cli
 ```
 
-Állítsa `$OPENFAAS_URL` be a nyilvános IP fent található.
+Állítsa `$OPENFAAS_URL` be a fentiekben található nyilvános IP-címet.
 
 Jelentkezzen be az Azure CLI-vel:
 
@@ -129,13 +129,13 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 ## <a name="create-first-function"></a>Első függvény létrehozása
 
-Most, hogy az OpenFaaS működőképes, hozzon létre egy függvényt az OpenFaas portálhasználatával.
+Most, hogy a OpenFaaS működőképes, hozzon létre egy függvényt a OpenFaas-portál használatával.
 
-Kattintson **az Új funkció telepítése gombra,** és keresse meg a **Figlet**kifejezést. Jelölje ki a Figlet függvényt, majd kattintson **a Telepítés gombra.**
+Kattintson az **új funkció telepítése** és a **Figlet**keresése elemre. Válassza ki a Figlet függvényt, majd kattintson a **telepítés**elemre.
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
-Curl használatával hívja meg a függvényt. Cserélje le az IP-címet a következő példában az OpenFaas átjárócímére.
+Használja a curl-t a függvény meghívásához. Cserélje le az IP-címet a következő példában az OpenFaas-átjáróval.
 
 ```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
@@ -154,7 +154,7 @@ Kimenet:
 
 ## <a name="create-second-function"></a>Második függvény létrehozása
 
-Most hozzon létre egy második függvényt. Ez a példa az OpenFaaS CLI használatával lesz telepítve, és egy egyéni tárolórendszerképet tartalmaz, és adatokat a Cosmos DB-ből. A függvény létrehozása előtt több elemet kell konfigurálni.
+Most hozzon létre egy második függvényt. Ez a példa a OpenFaaS CLI használatával lesz üzembe helyezve, és tartalmaz egy egyéni tároló rendszerképet, és beolvassa az adatok egy Cosmos DB. A függvény létrehozása előtt több elemet is konfigurálni kell.
 
 Először hozzon létre egy új erőforráscsoportot a Cosmos DB számára.
 
@@ -162,15 +162,15 @@ Először hozzon létre egy új erőforráscsoportot a Cosmos DB számára.
 az group create --name serverless-backing --location eastus
 ```
 
-CosmosDB-példány `MongoDB`telepítése. A példánynak szüksége van `openfaas-cosmos` egy egyedi névre, és frissítenie kell a környezetére való frissítést.
+Helyezzen üzembe egy CosmosDB-példányt `MongoDB`. A példánynak egyedi névnek kell lennie `openfaas-cosmos` , és frissítenie kell valami egyedire a környezetében.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-A Cosmos adatbázis-kapcsolati karakterláncbe, és tárolja azt egy változóban.
+Szerezze be a Cosmos Database-beli kapcsolatok karakterláncát, és tárolja egy változóban.
 
-Frissítse az `--resource-group` argumentum értékét az erőforráscsoport nevére, és az `--name` argumentumot a Cosmos DB nevére.
+Frissítse az `--resource-group` argumentum értékét az erőforráscsoport nevére, és az `--name` argumentumot a Cosmos db nevére.
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Most feltölti a Cosmos DB-t tesztadatokkal. Hozzon létre `plans.json` egy elnevezett fájlt, és másolja a következő json.
+Most töltse ki a Cosmos DBt a tesztelési adatokkal. Hozzon létre egy `plans.json` nevű fájlt, és másolja a következő JSON-t.
 
 ```json
 {
@@ -194,15 +194,15 @@ Most feltölti a Cosmos DB-t tesztadatokkal. Hozzon létre `plans.json` egy elne
 }
 ```
 
-A *mongoimport* eszközzel töltse be a CosmosDB-példányadatokkal.
+A *mongoimport* eszköz használatával töltse be a CosmosDB-példányt az adattal.
 
-Szükség esetén telepítse a MongoDB eszközöket. A következő példa ezeket az eszközöket a brew használatával telepíti, további lehetőségeket a [MongoDB dokumentációjában][install-mongo] talál.
+Ha szükséges, telepítse a MongoDB-eszközöket. Az alábbi példa a Brew használatával telepíti ezeket az eszközöket, további lehetőségekért tekintse meg a [MongoDB dokumentációját][install-mongo] .
 
 ```console
 brew install mongodb
 ```
 
-Töltse be az adatokat az adatbázisba.
+Töltse be az adatbázist az adatbázisba.
 
 ```console
 mongoimport --uri=$COSMOS -c plans < plans.json
@@ -215,20 +215,20 @@ Kimenet:
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-A függvény létrehozásához futtassa a következő parancsot. Frissítse az argumentum értékét az `-g` OpenFaaS átjárócímmel.
+Futtassa a következő parancsot a függvény létrehozásához. Frissítse az `-g` argumentum értékét a OpenFaaS-átjáró címeként.
 
 ```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
-Üzembe helyezés után látnia kell az újonnan létrehozott OpenFaaS-végpontot a függvényhez.
+Az üzembe helyezést követően az újonnan létrehozott OpenFaaS-végpontot kell látnia a függvényhez.
 
 ```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
 
-Tesztelje a funkciót göndör. Frissítse az IP-címet az OpenFaaS átjárócímmel.
+Tesztelje a függvényt a curl használatával. Frissítse az IP-címet az OpenFaaS-átjáró címével.
 
 ```console
 curl -s http://52.186.64.52:8080/function/cosmos-query
@@ -240,13 +240,13 @@ Kimenet:
 [{"ID":"","Name":"two_person","FriendlyName":"","PortionSize":"","MealsPerWeek":"","Price":72,"Description":"Our basic plan, delivering 3 meals per week, which will feed 1-2 people."}]
 ```
 
-A funkciót az OpenFaaS felhasználói felületén is tesztelheti.
+A függvényt a OpenFaaS felhasználói felületén is tesztelheti.
 
 ![helyettesítő szöveg](media/container-service-serverless/OpenFaaSUI.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az OpenFaaS-műhelyrel továbbra is tanulhat olyan gyakorlati laborokon keresztül, amelyek olyan témaköröket fednek le, mint például a saját GitHub-robot létrehozása, a titkok fogyasztása, a metrikák megtekintése és az automatikus méretezés.
+Továbbra is megismerheti a OpenFaaS workshopot olyan gyakorlati laborok segítségével, amelyek olyan témaköröket ölelnek fel, mint például a saját GitHub-robot létrehozása, a titkok felhasználása, a metrikák megtekintése és az automatikus skálázás.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

@@ -1,6 +1,6 @@
 ---
-title: Kimeneti kötegelés az Azure Event Grid IoT Edge-ben | Microsoft dokumentumok
-description: Kimeneti kötegelés az Event Gridben az IoT Edge-en.
+title: Azure Event Grid IoT Edge kimenete Microsoft Docs
+description: A Event Grid IoT Edge-on való bekapcsolásának kimenete.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,50 +10,50 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841747"
 ---
 # <a name="output-batching"></a>Kimenet kötegelése
 
-Az Event Grid támogatja, hogy egyetlen kézbesítési kérelemben egynél több eseményt kézbesítsen. Ez a funkció lehetővé teszi a teljes kézbesítési átviteli szint növelését a HTTP kérelemenkénti általános költségeinek megfizetése nélkül. A kötegelés alapértelmezés szerint ki van kapcsolva, és előfizetésenként is bekapcsolható.
+Event Grid több esemény egyetlen kézbesítési kérelemben való továbbítását támogatja. Ez a funkció lehetővé teszi a teljes kézbesítési sebesség növelését anélkül, hogy a HTTP per-Request típusú terhelést kellene fizetnie. A Batch szolgáltatás alapértelmezés szerint ki van kapcsolva, és előfizetésre is kapcsolható.
 
 > [!WARNING]
-> Az egyes kézbesítési kérelmek feldolgozásának maximálisan engedélyezett időtartama nem változik, még akkor sem, ha az előfizetői kódnak kötegelt kérelemenként több munkát kell végeznie. A szállítási időtúlérték alapértelmezés szerint 60 másodperc.
+> Az egyes kézbesítési kérések feldolgozásához megengedett maximális időtartam nem változik, bár az előfizetői kódnak több munkát kell végeznie a kötegelt kérések esetében. A kézbesítés időtúllépése alapértelmezett értéke 60 másodperc.
 
-## <a name="batching-policy"></a>Kötegelési házirend
+## <a name="batching-policy"></a>Kötegelt házirend
 
-Az Event Grid kötegelési viselkedése előfizetőnként testreszabható a következő két beállítás módosításával:
+A Event Grid batching viselkedése előfizetőként testreszabható, az alábbi két beállítás csípésével:
 
-* Események maximális százaléka kötegenként
+* Események maximális száma kötegben
 
-  Ez a beállítás a kötegelt kézbesítési kérelemhez adható események számának felső korlátját határozza meg.
+  Ezzel a beállítással állítható be a kötegelt kézbesítési kérelembe felvehető események száma felső korlátja.
 
-* Előnyben részesített kötegméret kilobájtban
+* Előnyben részesített köteg mérete (kilobájtban)
 
-  Ez a gomb a szállítási kérelemenként elküldhető kilobájtok maximális számának további szabályozására szolgál.
+  Ez a gomb a kézbesítési kérelemben elküldhető kilobájtok maximális számának szabályozására szolgál.
 
-## <a name="batching-behavior"></a>Kötegelési viselkedés
+## <a name="batching-behavior"></a>Kötegelt működés
 
-* Minden vagy egyik sem
+* Összes vagy nincs
 
-  Az Event Grid mindent vagy semmit szemantikával működik. Nem támogatja a kötegelt kézbesítés részleges sikerét. Az előfizetőknek ügyelve arra, hogy csak annyi eseményt kérjenek kötegenként, amennyit 60 másodperc alatt ésszerűen kezelni tudnak.
+  A Event Grid minden-vagy-none szemantikagal működik. Nem támogatja a Batch-kézbesítések részleges sikerességét. Az előfizetőknek körültekintően kell lenniük arra, hogy csak annyi eseményt kérjenek a Batch szolgáltatásban, amennyit 60 másodperc alatt ésszerűen kezelhetnek.
 
-* Optimista kötegelés
+* Optimista kötegelt feldolgozás
 
-  A kötegelési házirend-beállítások nem szigorú a kötegelési viselkedés, és a legjobb erőfeszítés alapján tiszteletben tartják. Alacsony eseményarány esetén gyakran megfigyeli, hogy a kötegméretek kisebbek, mint a kötegenkéntkért maximális események.
+  A batching házirend-beállításai nem szigorú korlátokat mutatnak a kötegek viselkedésére vonatkozóan, és a legjobb erőfeszítést figyelembe veszik. Az alacsony események díjainál gyakran megfigyelheti, hogy a köteg mérete kisebb, mint a másodpercenként kért maximális események száma.
 
-* Az alapértelmezett érték KI
+* Az alapértelmezett beállítás a kikapcsolva értékre van állítva
 
-  Alapértelmezés szerint az Event Grid minden kézbesítési kérelemhez csak egy eseményt ad hozzá. A kötegelés bekapcsolásával beállíthatja a JSON-előfizetés esemény-előfizetése korábban említett beállítások egyikét.
+  Alapértelmezés szerint a Event Grid csak egy eseményt hoz létre az egyes kézbesítési kérelmekhez. A kötegelt feldolgozás bekapcsolásának módja az esemény-előfizetés JSON-fájljában korábban említett beállítások valamelyikének beállítása.
 
 * Alapértelmezett értékek
 
-  Esemény-előfizetés létrehozásakor nem szükséges megadni a beállításokat (A kötegenkénti események maximális száma és a köteghozzávemérete kilo bájtban). Ha csak egy beállítás van beállítva, az Event Grid (konfigurálható) alapértelmezett értékeket használ. Tekintse meg a következő szakaszokaz alapértelmezett értékeket, és hogyan lehet felülírni őket.
+  Egy esemény-előfizetés létrehozásakor nem szükséges megadni a beállításokat (a kötegek maximális számát, valamint a kötegelt méretet kilogramm bájtban). Ha csak egy beállítás van beállítva, Event Grid a (konfigurálható) alapértelmezett értékeket használja. Tekintse meg a következő részeket az alapértelmezett értékekről, valamint a felülbírálásuk módját.
 
-## <a name="turn-on-output-batching"></a>Kimeneti kötegelés bekapcsolása
+## <a name="turn-on-output-batching"></a>A kimeneti köteg bekapcsolása
 
 ```json
 {
@@ -73,20 +73,20 @@ Az Event Grid kötegelési viselkedése előfizetőnként testreszabható a köv
 }
 ```
 
-## <a name="configuring-maximum-allowed-values"></a>A maximálisan megengedett értékek konfigurálása
+## <a name="configuring-maximum-allowed-values"></a>Maximálisan engedélyezett értékek konfigurálása
 
-A következő telepítési időbeállítások szabályozzák az esemény-előfizetés létrehozásakor engedélyezett maximális értéket.
+A következő üzembe helyezési idő beállítások az esemény-előfizetés létrehozásakor engedélyezett maximális értéket vezérlik.
 
 | Tulajdonság neve | Leírás |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A `PreferredBatchSizeInKilobytes` gomb maximális értéke megengedett. Az `1033`alapértelmezett érték .
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | A `MaxEventsPerBatch` gomb maximális értéke megengedett. Az `50`alapértelmezett érték .
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A `PreferredBatchSizeInKilobytes` forgatógomb számára engedélyezett maximális érték Alapértelmezett `1033`érték.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | A `MaxEventsPerBatch` forgatógomb számára engedélyezett maximális érték Alapértelmezett `50`érték.
 
 ## <a name="configuring-runtime-default-values"></a>Futásidejű alapértelmezett értékek konfigurálása
 
-A következő telepítési időbeállítások szabályozzák az egyes gombok futásidejű alapértelmezett értékét, ha az nincs megadva az Esemény-előfizetésben. Megismételni, legalább egy gombot be kell állítani az Esemény-előfizetés bekapcsolása kötegelési viselkedés.
+A következő üzembe helyezési idő beállításai vezérlik az egyes gombok futásidejű alapértelmezett értékét, ha az esemény-előfizetésben nincs megadva. Az ismételt próbálkozáshoz be kell állítani legalább egy gombot az esemény-előfizetésre, hogy bekapcsolja a kötegelt működést.
 
 | Tulajdonság neve | Leírás |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | Maximális kézbesítési `MaxEventsPerBatch` kérelem mérete, ha csak meg van adva. Az `1_058_576`alapértelmezett érték .
-| `broker__defaultMaxEventsPerBatch` | Köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` meg van adva. Az `10`alapértelmezett érték .
+| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete `MaxEventsPerBatch` , ha csak meg van adva. Alapértelmezett `1_058_576`érték.
+| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` meg van adva. Alapértelmezett `10`érték.

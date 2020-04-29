@@ -1,7 +1,7 @@
 ---
-title: Modell értelmezhetősége az Azure Machine Learningben
+title: A modell értelmezése Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan magyarázhatja el, hogy a modell miért készít előrejelzéseket az Azure Machine Learning SDK használatával. A betanítás és a következtetés során használható, hogy megértse, hogyan készít a modell előrejelzéseket.
+description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Machine Learning SDK használatával. A képzés során felhasználható, hogy megtudja, hogyan teszi lehetővé a modell előrejelzéseit.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,94 +11,94 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
 ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631414"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Modell értelmezhetősége az Azure Machine Learningben
+# <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-## <a name="overview-of-model-interpretability"></a>A modell értelmezhetőségének áttekintése
+## <a name="overview-of-model-interpretability"></a>A modell értelmezésének áttekintése
 
-Az adatszakértők, könyvvizsgálók és üzleti döntéshozók számára egyaránt kritikus fontosságú az adatszakértők, könyvvizsgálók és üzleti döntéshozók számára a vállalati irányelveknek, iparági szabványoknak és kormányzati előírásoknak való megfelelés biztosítása érdekében:
+A tolmácsolás kritikus fontosságú az adatszakértők, a könyvvizsgálók és az üzleti döntéshozók számára, így biztosítva a vállalati szabályzatoknak, az iparági szabványoknak és a kormányzati szabályozásoknak való megfelelést:
 
-+ Az adatszakértőknek képesnek kell lenniük arra, hogy elmagyarázzák modelljeiket a vezetőknek és az érdekelt eknek, hogy megértsék megállapításaik értékét és pontosságát. Azt is megkövetelik, hogy értelmezhetőlegyen a modellek hibakeresése, és megalapozott döntéseket hozzanak arról, hogyan lehetne javítani őket. 
++ Az adatszakértőknek meg kell adniuk modelljeiket a vezetők és az érdekelt felek számára, hogy megértsék az eredmények értékét és pontosságát. Emellett a modelljeik hibakereséséhez és a megalapozott döntések meghozatalához is szükségesek. 
 
-+ A jogi ellenőröknek olyan eszközökre van szükségük, amelyek a szabályozási megfeleléssel kapcsolatos modellek et validálják, és nyomon követik, hogy a modellek döntései hogyan befolyásolják az embereket. 
++ A jogi ellenőrök olyan eszközöket igényelnek, amelyekkel a modelleket érvényesíteni kell a jogszabályoknak való megfelelés tekintetében, és azt is, hogy a modellek milyen hatással vannak az emberi 
 
-+ Az üzleti döntéshozóknak lelki békére van szükségük azáltal, hogy képesek biztosítani az átláthatóságot a végfelhasználók számára. Ez lehetővé teszi számukra, hogy keresni és fenntartani a bizalmat.
++ Az üzleti döntéshozóknak szem előtt kell tartaniuk az átláthatóságot a végfelhasználók számára. Ez lehetővé teszi, hogy a megbízhatóságot megszerezzék és megőrizzék.
 
 
-A gépi tanulási modell ismertetésének engedélyezése fontos a modellfejlesztés két fő fázisában:
-+ A képzési szakaszban a modelltervezők és -értékelők a modell értelmezhetőségi kimenetét használhatják a hipotézisek ellenőrzésére és az érdekelt felekkel való bizalom kiépítésére. A modell betekintési adatait is használják a hibakereséshez, a modell viselkedésének a céljaiknak megfelelő érvényesítéséhez, valamint a modell tisztességtelenvagy jelentéktelen funkciók ellenőrzéséhez.
+A modell fejlesztésének két fő fázisában fontos a gépi tanulási modell elmagyarázása.
++ A betanítási fázisban a modell-tervezők és-értékelők a modell értelmező kimenetét használhatják a hipotézisek ellenőrzéséhez és az érdekelt felekkel való bizalom kiépítéséhez. Emellett a modellen alapuló elemzéseket is felhasználják a hibakereséshez, a modell viselkedésének érvényesítéséhez, valamint a modell méltánytalan vagy jelentéktelen funkcióinak ellenőrzéséhez.
 
-+ A következtetési fázisban, mivel az átláthatóság körül telepített modellek lehetővé teszi a vezetők számára, hogy megértsék ", ha telepített", hogyan működik a modell, és hogyan döntéseket kezelik, és hatással van az emberek a valós életben. 
++ A következtetési fázisban az üzembe helyezett modellek átláthatósága lehetővé teszi a vezetők számára, hogy megértsék a modell működésének módját, valamint azt, hogy a rendszer hogyan kezeli és befolyásolja a valós életben lévő döntéseket. 
 
-## <a name="interpretability-with-azure-machine-learning"></a>Értelmezhetőség az Azure Machine Learning segítségével
+## <a name="interpretability-with-azure-machine-learning"></a>Értelmezés Azure Machine Learning
 
-Az értelmezhetőségi osztályok több SDK-csomagon keresztül érhetők el: (További információ az [SDK-csomagok Azure Machine Learninghez történő telepítéséről)](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
 
-* `azureml.interpret`, a fő csomag, amely a Microsoft által támogatott funkciókat tartalmazza.
+* `azureml.interpret`a fő csomag, amely a Microsoft által támogatott funkciókat tartalmazza.
 
-* `azureml.contrib.interpret`, megtekintheti az előzetes verziót és a kipróbálható kísérleti funkciókat.
+* `azureml.contrib.interpret`, előzetes verzió, és kísérleti funkciók, amelyeket kipróbálhat.
 
-* `azureml.train.automl.automlexplainer`automatikus gépi tanulási modellek értelmezéséhez.
+* `azureml.train.automl.automlexplainer`csomag az automatizált gépi tanulási modellek értelmezéséhez.
 
-Általános `pip install azureml-interpret` `pip install azureml-interpret-contrib` használatra, valamint `pip install azureml-interpret-contrib` az értelmezhetőségi csomagok leéséhez használható AutoML-használathoz.
+A `pip install azureml-interpret` és `pip install azureml-interpret-contrib` az általános használatra, `pip install azureml-interpret-contrib` a AutoML pedig az értelmező csomagok beszerzésére használható.
 
 
 > [!IMPORTANT]
-> A `contrib` névtér tartalma nem teljes mértékben támogatott. Ahogy a kísérleti funkciók kiforrnak, fokozatosan átkerülnek a fő névtérbe.
+> A `contrib` névtérben lévő tartalom nem teljes mértékben támogatott. Mivel a kísérleti funkciók megérettek, a rendszer fokozatosan a fő névtérbe helyezi át őket.
 .
 
 
 
-## <a name="how-to-interpret-your-model"></a>Hogyan kell értelmezni a modell
+## <a name="how-to-interpret-your-model"></a>A modell értelmezése
 
-Az SDK-ban lévő osztályok és módszerek használatával a következőket teheti:
-+ Magyarázza el a modell előrejelzését a teljes modell és/vagy az egyes adatpontok jellemzőfontossági értékeinek létrehozásával. 
-+ A modell értelmezhetőségét valós adatkészleteken, nagy méretekben, betanítás és következtetés során érheti el.
-+ Interaktív vizualizációs irányítópult használata az adatok mintáinak és magyarázatainak felderítéséhez a betanítási időben
-
-
-A gépi tanulásban a **funkciók** a céladatpont előrejelzésére használt adatmezők. A hitelkockázat előrejelzéséhez például az életkor, a fiókméret és a fiókéletkor adatmezői használhatók. Ebben az esetben az életkor, a fiók mérete és a fiók **életkora funkciók.** A szolgáltatásfontosság megmutatja, hogy az egyes adatmezők hogyan befolyásolták a modell előrejelzéseit. Például az életkor erősen használható az előrejelzésben, míg a fiók mérete és kora nem befolyásolja jelentősen az előrejelzési értékeket. Ez a folyamat lehetővé teszi az adatszakértők számára, hogy elmagyarázzák az eredményül kapott előrejelzéseket, így az érdekelt felek láthatják, hogy milyen funkciók a legfontosabbak a modellben.
-
-Itt megismerheti a támogatott értelmezhetőségi technikákat, a támogatott gépi tanulási modelleket és a támogatott futtatási környezeteket.
+Az SDK osztályok és metódusok használatával a következőket teheti:
++ Magyarázza el a modell előrejelzését azáltal, hogy a teljes modell és/vagy az egyes datapoints esetében a szolgáltatás fontossági értékeit hozza létre. 
++ A valós idejű adatkészletek modell-értelmezésének megvalósítása a képzés és a következtetések során.
++ Interaktív vizualizációs irányítópult használatával felderítheti az adatmintákat és magyarázatokat a képzés ideje alatt
 
 
-## <a name="supported-interpretability-techniques"></a>Támogatott értelmezhetőségi technikák
+A gépi tanulásban a **funkciók** a célként megadott adatpontok előrejelzésére szolgáló adatmezők. Például a hitelkockázat előrejelzéséhez az életkor, a fiók mérete és a fiók kora adatmezőket lehet használni. Ebben az esetben a kor, a fiók mérete és a fiók kora **funkciók**. A szolgáltatás fontossága azt mutatja be, hogy az egyes adatmezők hogyan érintik a modell előrejelzéseit. Előfordulhat például, hogy az életkor nagy mértékben használatban van az előrejelzésben, míg a fiók mérete és kora nem befolyásolja jelentősen az előrejelzési értékeket. Ez a folyamat lehetővé teszi, hogy az adatszakértők elmagyarázzák az eredményül kapott előrejelzéseket, így az érdekelt felek betekintést nyerhetnek a modellbe a legfontosabb funkciókba.
 
- `azureml-interpret`az [Interpret-Community](https://github.com/interpretml/interpret-community/)-ben kifejlesztett értelmezhetőségi technikákat használja, egy nyílt forráskódú python csomagot az értelmezhető modellek képzésére és a blackbox AI rendszerek magyarázatára. [Az Interpret-Community](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázók állomása, és jelenleg a következő értelmezhetőségi technikákat támogatja:
+Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulási modelleket és a támogatott futtatási környezeteket itt.
 
-|Értelmezhetőségi technika|Leírás|Típus|
+
+## <a name="supported-interpretability-techniques"></a>Támogatott értelmezési technikák
+
+ `azureml-interpret`a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
+
+|Értelmező technika|Leírás|Típus|
 |--|--|--------------------|
-|1. SHAP fa magyarázó| [SHAP](https://github.com/slundberg/shap)'s fa magyarázó, amelynek középpontjában a polinom idő gyors SHAP érték becslési algoritmus kifejezett **fák és együttesek a fák**.|Modellspecifikus|
-|2. SHAP mélymagyarázó| A [SHAP](https://github.com/slundberg/shap)magyarázata alapján a Deep Explainer "egy nagy sebességű közelítési algoritmus a SHAP értékekhez a deep learning modellekben , amely a [SHAP NIPS papírban](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)leírt DeepLIFT-el való kapcsolatra épül . **TensorFlow** modellek és **Keras** modellek a TensorFlow háttér-támogatott (van is előzetes támogatást PyTorch)".|Modellspecifikus|
-|3. SHAP lineáris magyarázó| [A SHAP](https://github.com/slundberg/shap)'s Linear explainer kiszámítja a SHAP értékeket egy **lineáris modellhez,** opcionálisan figyelembe véve a funkciók közötti korrelációkat.|Modellspecifikus|
-|4. SHAP kernel magyarázó| [A SHAP](https://github.com/slundberg/shap)'s Kernel magyarázó egy speciálisan súlyozott helyi lineáris regressziót használ **bármely modell**SHAP értékeinek becsléséhez.|Modell-agnosztikus|
-|5. Utánozza Explainer (Global Helyettes)| Utánozza explainer alapul az ötlet a képzés [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) utánozni blackbox modellek. A globális helyettesítő modell egy gyújtószikramentesen értelmezhető modell, amely be van tanítva, hogy a lehető legpontosabban közelítse **meg bármely fekete dobozmodell** előrejelzéseit. Az adatszakértők értelmezhetik a helyettesítő modellt, hogy következtetéseket vonjanak le a fekete doboz modellről. A helyettesítő modellként a következő értelmezhető modellek egyikét használhatja: LightGBM (LGBMExplainableModel), Lineáris regresszió (LinearExplainableModel), Sztochastikus gradiens esésmagyarázható modell (SGDExplainableModel) és Decision Tree (DecisionTreeExplainableModel).|Modell-agnosztikus|
-|6. Permutációs funkció fontossági magyarázó (PFI)| A permutációs funkciófontosság egy olyan módszer, amely a [Breiman Random Forests című tanulmánya](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett osztályozási és regressziós modellek magyarázatára szolgál (lásd 10. szakasz). Magas szinten, a hogyan működik, véletlenszerűen csoszogó adatok egy funkció egy időben a teljes adatkészletet, és kiszámítja, hogy mennyi a teljesítmény mutató az érdeklődés i. Minél nagyobb a változás, annál fontosabb ez a funkció. A PFI meg tudja magyarázni **az alapul szolgáló modellek** általános viselkedését, de nem magyarázza meg az egyes előrejelzéseket. |Modell-agnosztikus|
+|1. SHAP Tree-magyarázat| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
+|2. a Deep elmagyarázó átalakítása| A [Shaper](https://github.com/slundberg/shap)magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
+|3. az átalakítás lineáris magyarázata| A [Shap](https://github.com/slundberg/shap)lineáris elmagyarázó számítási funkciói a **lineáris modell**értékeit, opcionálisan elvégzik a szolgáltatások közötti korrelációk elszámolását.|Modell-specifikus|
+|4. az SHAPer kernel-magyarázata| A [Shap](https://github.com/slundberg/shap)kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek**formálási értékeinek becsléséhez.|Modell – agnosztikus|
+|5. utánozza a magyarázatot (globális helyettes)| Az adatutánozás elmagyarázása a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) a tábla modelljeinek utánzására való betanításának gondolatán alapul. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kitanítva, hogy a lehető legpontosabban közelítse meg a **fekete Box-modellek** előrejelzéseit. Az adatszakértők a helyettesítő modellt úgy tudják értelmezni, hogy levonja a fekete Box-modellel kapcsolatos következtetéseket. A következő értelmezhető modellek egyikét használhatja helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatos modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).|Modell – agnosztikus|
+|6. permutáció funkció fontossági magyarázata (PFI)| A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció. A PFI megmagyarázhatja a **mögöttes modellek** általános viselkedését, de nem magyarázza el az egyes előrejelzéseket. |Modell – agnosztikus|
 
 
 
 
-A fent leírt értelmezhetőségi technikák mellett támogatunk `TabularExplainer`egy másik [SHAP-alapú magyarázót](https://github.com/slundberg/shap)is, amelyet úgy hívunk. A modelltől függően a támogatott SHAP magyarázók egyikét `TabularExplainer` használja:
+A fent ismertetett értelmező technikák mellett egy másik, a nevű `TabularExplainer` [SHAP-alapú magyarázat](https://github.com/slundberg/shap)is támogatott. A modelltől függően a támogatott `TabularExplainer` SHAP-magyarázatok egyikét használja:
 
 * TreeExplainer az összes fa alapú modellhez
-* DeepExplainer DNN modellekhez
+* DeepExplainer DNN-modellekhez
 * LinearExplainer lineáris modellekhez
 * KernelExplainer az összes többi modellhez
 
-`TabularExplainer`jelentős funkció- és teljesítménynövelő fejlesztéseket hajtott végre a közvetlen SHAP Explainers felett:
+`TabularExplainer`jelentős funkciókkal és teljesítménnyel kapcsolatos fejlesztéseket hajtott végre a Direct SHAP-magyarázatokkal:
 
-* **Az inicializálási adatkészlet összegzése**. Azokban az esetekben, ahol a magyarázat sebessége a legfontosabb, összefoglaljuk az inicializálási adatkészletet, és létrehozunk egy kis reprezentatív mintákat, amelyek felgyorsítják az általános és az egyéni jellemzőfontossági értékek létrehozását.
-* **Mintavétel ez a kiértékelési adatkészlet**. Ha a felhasználó nagy kiértékelési mintákat ad át, de valójában nem kell mindegyiket kiértékelni, a mintavételi paraméter igaz értékre állítható, hogy felgyorsítsa az általános modell magyarázatainak kiszámítását.
+* **Az inicializálási adatkészlet összefoglalása**. Azokban az esetekben, amikor a magyarázat sebessége a legfontosabb, összefoglaljuk az inicializálási adatkészletet, és létrehozunk egy kis reprezentatív mintát, amely felgyorsítja a teljes és az egyes funkciók fontossági értékeinek létrehozását.
+* **A kiértékelési adatkészlet mintavételezése**. Ha a felhasználó a kiértékelési minták nagy készletét adja vissza, de valójában nem szükséges mindegyiket kiértékelni, a mintavételi paraméter értéke TRUE (igaz) lehet, hogy felgyorsítsa a teljes modell magyarázatának kiszámítását.
 
-Az alábbi ábra a támogatott magyarázók aktuális szerkezetét mutatja be.
+Az alábbi ábrán a támogatott magyarázatok aktuális szerkezete látható.
 
-[![Gépi tanulási értelmezhetőségi architektúra](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
+[![Machine Learning-értelmező architektúra](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
 
 
 ## <a name="supported-machine-learning-models"></a>Támogatott gépi tanulási modellek
@@ -109,15 +109,15 @@ Az `azureml.interpret` SDK csomagja a következő adatkészlet-formátumokkal be
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-A magyarázat függvények a modelleket és a folyamatokat is bemenetként fogadják el. Ha egy modell van megadva, a `predict` `predict_proba` modellnek végre kell hajtania az előrejelzési funkciót, vagy amely megfelel a Scikit-egyezménynek. Ha a modell nem támogatja ezt, akkor csomagolja a modell egy `predict` `predict_proba` függvényt, amely ugyanazt az eredményt, mint vagy a Scikit, és használja, hogy a burkoló függvény a kiválasztott magyarázó. Ha egy folyamat meg van adva, a magyarázat függvény feltételezi, hogy a futó folyamat parancsfájl egy előrejelzést ad vissza. Ezzel a csomagolási technikával támogathatja a `azureml.interpret` PyTorch, a TensorFlow és a Keras deep learning keretrendszereken keresztül betanított modelleket, valamint a klasszikus gépi tanulási modelleket.
+A magyarázó függvények bemenetként is elfogadják a modelleket és a folyamatokat. Ha meg van adni modell, a modellnek meg kell valósítania `predict` az `predict_proba` előrejelzési függvényt, vagy a Scikit egyezménynek megfelelően kell megfelelnie. Ha a modell nem támogatja ezt, becsomagolhatja a modellt egy olyan függvénybe, amely ugyanazt az eredményt hozza `predict` létre `predict_proba` , mint a Scikit, és ezt a burkoló függvényt használja a kiválasztott magyarázattal. Ha egy folyamat van megadva, a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájlja egy előrejelzést ad vissza. Ezzel a burkoló módszerrel `azureml.interpret` a PyTorch-, TensorFlow-és kerasz-alapú modelleket, valamint a klasszikus gépi tanulási modelleket is támogathatja.
 
 ## <a name="local-and-remote-compute-target"></a>Helyi és távoli számítási cél
 
-A `azureml.interpret` csomag helyi és távoli számítási célokkal egyaránt működik. Ha helyileg fut, az SDK-függvények nem lépnek kapcsolatba egyetlen Azure-szolgáltatással sem. 
+A `azureml.interpret` csomag úgy van kialakítva, hogy a helyi és távoli számítási célokkal is működjön. Ha helyileg fut, az SDK-függvények nem fognak kapcsolatba lépni az Azure-szolgáltatásokkal. 
 
-A magyarázat ot távolról futtathatja az Azure Machine Learning Compute szolgáltatásban, és naplózhatja a magyarázatadatait az Azure Machine Learning run history szolgáltatásába. Miután ezeket az információkat naplózták, a magyarázatból származó jelentések és vizualizációk könnyen elérhetők az Azure Machine Learning stúdióban felhasználói elemzésre.
+A magyarázatot távolról is futtathatja Azure Machine Learning számításon, és naplózhatja a magyarázat adatait a Azure Machine Learning futtatási előzmények szolgáltatásba. Az információk naplózása után a magyarázatokból származó jelentések és vizualizációk azonnal elérhetők a Azure Machine Learning Studióban a felhasználók elemzéséhez.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [helyi](how-to-machine-learning-interpretability-aml.md) és az Azure Machine Learning távszámítási erőforrásokkal kapcsolatos modellek értelmezhetőségét. Tekintse meg a [mintanotebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) további forgatókönyveket.
+Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .

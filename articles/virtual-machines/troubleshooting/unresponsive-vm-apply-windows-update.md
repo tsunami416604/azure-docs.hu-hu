@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gép e-vel nem válaszol c01A001D hibával a Windows Update alkalmazásakor
-description: Ez a cikk lépéseket tartalmaz a problémák megoldásához, ahol a Windows-frissítés hibát generál, és nem válaszol egy Azure virtuális gép.
+title: Az Azure-beli virtuális gép nem válaszol a C01A001D hibával a Windows Update alkalmazásakor
+description: Ez a cikk olyan problémák megoldását ismerteti, amelyekben a Windows Update hibát generál, és egy Azure-beli virtuális gépen nem válaszol.
 services: virtual-machines-windows
 documentationcenter: ''
 author: TobyTu
@@ -15,62 +15,62 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633956"
 ---
-# <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A Virtuális gép nem válaszol a "C01A001D" hibaüzenettel a Windows Update alkalmazásakor
+# <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A virtuális gép nem válaszol "C01A001D" hibaüzenettel Windows Update alkalmazása során
 
-Ez a cikk lépéseket tartalmaz a problémák megoldásához, ahol a Windows Update (KB) hibát generál, és nem válaszol egy Azure-beli virtuális gép.
+Ez a cikk azokat a problémákat ismerteti, amelyekkel a Windows Update (KB) hibát generál, és egy Azure-beli virtuális gépen nem válaszol.
 
 ## <a name="symptoms"></a>Probléma
 
-Ha a [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használja a virtuális gép képernyőképének megtekintéséhez, megjelenik a folyamatban lévő Windows Update (KB), de a "C01A001D" hibakóddal sikertelen.
+Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, a folyamatban lévő Windows Update (kb) megjelenik, de a hibakód: "C01A001D".
 
-![nem válaszol a Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
+![nem válaszol Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
 ## <a name="cause"></a>Ok
 
-A fájlrendszerben nem hozható létre alapfájl. Az operációs rendszer nem tud fájlokat írni a lemezre.
+Nem hozható létre alapvető fájl a fájlrendszerben. Az operációs rendszer nem tud fájlokat írni a lemezre.
 
 ## <a name="resolution"></a>Megoldás:
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
-1. [Hozzon létre és férjen hozzá egy javító virtuális géphez.](#create-and-access-a-repair-vm)
-2. [Szabadítson fel helyet a merevlemezen](#free-up-space-on-the-hard-disk).
-3. [Ajánlott: A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét.](#recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection)
-4. [Építse újra a virtuális gép](#rebuild-the-vm).
+1. [Hozzon létre és nyissa meg a javítási virtuális gépet](#create-and-access-a-repair-vm).
+2. [Szabadítson fel lemezterületet a merevlemezen](#free-up-space-on-the-hard-disk).
+3. [Ajánlott: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét](#recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection).
+4. Hozza [létre újra a virtuális gépet](#rebuild-the-vm).
 
 > [!NOTE]
-> Ha ez a hiba történik, a vendég operációs rendszer nem működik. A probléma megoldásához kapcsolat nélküli módban kell elhárítania a hibákat.
+> Ha ez a hiba történik, a vendég operációs rendszer nem működik. A probléma megoldásához offline módban kell hibaelhárítást végeznie.
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A [virtuális gép javítási parancsainak 1-3.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)
-2. Csatlakozzon a javítási virtuális géphez a Távoli asztali kapcsolat használatával.
+1. A javítási virtuális gép előkészítéséhez kövesse [a virtuális gép javítási parancsainak 1-3. lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+2. Kapcsolódjon a javítási virtuális géphez Távoli asztali kapcsolat használatával.
 
-### <a name="free-up-space-on-the-hard-disk"></a>Hely felszabadítása a merevlemezen
+### <a name="free-up-space-on-the-hard-disk"></a>Szabadítson fel lemezterületet a merevlemezen
 
-Ha a lemez még nem 1 Tb, át kell méretezni. Ha a lemez 1 TB-os, hajtsa végre a lemez karbantartását és a meghajtó töredezettségmentesítését.
+Ha a lemez még nem 1 TB, át kell méreteznie. Ha a lemez 1 TB méretű, hajtson végre egy Lemezkarbantartó-lemezt és a meghajtó töredezettségmentesítését.
 
-1. Ellenőrizze, hogy megtelt-e a lemez. Ha a lemez 1 Tb alatt van, [bontsa ki legfeljebb 1 Tb-re a PowerShell használatával.](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)
-2. Ha a lemez 1 Tb-ot ért el, végezzen lemeztisztítást.
-    - [Válassza le az adatlemezt a hibás virtuális gépről.](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)
-    - [Csatlakoztassa az adatlemezt egy működő virtuális géphez.](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)
-    - A [Lemezkarbantartó eszközzel](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) szabadíthat fel helyet.
-3. Az átméretezés és a karbantartás után töredezettségmentesítse a meghajtót:
+1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez 1 TB-nál kisebb, [akkor a PowerShell használatával legfeljebb 1 TB-ra bontsa ki](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+2. Ha a lemez 1 TB, hajtson végre egy Lemezkarbantartó-karbantartási műveletet.
+    - [Válassza le az adatlemezt a hibás virtuális](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)gépről.
+    - [Csatlakoztassa az adatlemezt egy működő virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - Lemezterület felszabadításához használja a [lemezkarbantartó eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
+3. Az átméretezés és a karbantartás után a meghajtó töredezettségmentesítése:
 
     ```
     defrag <LETTER ASSIGN TO THE OS DISK>: /u /x /g
     ```
     A töredezettség szintjétől függően ez órákig is eltarthat.
 
-### <a name="recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: A virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriakép gyűjteményét
+### <a name="recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriaképek gyűjtését
 
-1. Nyisson meg egy rendszergazdai parancssori munkamenetet (Futtatás rendszergazdaként).
+1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa az alábbi parancsot:
 
     Soros konzol engedélyezése:
@@ -79,19 +79,19 @@ Ha a lemez még nem 1 Tb, át kell méretezni. Ha a lemez 1 TB-os, hajtsa végre
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
-3. Győződjön meg arról, hogy az operációs rendszer lemezén a szabad terület legalább egyenlő a virtuális gép memória (RAM) mérete.
+3. Győződjön meg arról, hogy az operációsrendszer-lemez szabad területe eléri a virtuális gép memóriájának (RAM) méretét.
 
-    Ha nincs elég hely az operációs rendszer lemezén, módosítsa a helyet, ahol a memóriakép fájl jön létre, és utalja át a virtuális géphez csatolt adatlemezre, és elegendő szabad terület. A hely módosításához `%SystemRoot%` cserélje le az adatlemez meghajtóbetűjelét (például "F:") az alábbi parancsokban:
+    Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítsa a memóriakép fájljának helyét, és a virtuális géphez csatlakoztatott adatlemezre, valamint elegendő szabad területtel forduljon. A hely módosításához cserélje le `%SystemRoot%` az adatlemez betűjelét (például "F:") az alábbi parancsokban található adatlemezre:
 
-    **Az operációs rendszer kiírásának engedélyezése javasolt konfiguráció:**
+    **OPERÁCIÓSRENDSZER-memóriakép javasolt konfigurációjának engedélyezése:**
 
-    Hibás operációsrendszer-lemez betöltése:
+    Sérült operációsrendszer-lemez betöltése:
 
     ```
     REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
     ```
 
-    Engedélyezés a ControlSet001-en:
+    Engedélyezés a ControlSet001:
 
     ```
     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
@@ -99,7 +99,7 @@ Ha a lemez még nem 1 Tb, át kell méretezni. Ha a lemez 1 TB-os, hajtsa végre
     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
     ```
 
-    Engedélyezés a ControlSet002-n:
+    Engedélyezés a ControlSet002:
 
     ```
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +107,7 @@ Ha a lemez még nem 1 Tb, át kell méretezni. Ha a lemez 1 TB-os, hajtsa végre
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
     ```
 
-    Hibás operációsrendszer-lemez eltávolítása:
+    Sérült operációsrendszer-lemez eltávolítása:
 
     ```
     REG UNLOAD HKLM\BROKENSYSTEM
@@ -115,4 +115,4 @@ Ha a lemez még nem 1 Tb, át kell méretezni. Ha a lemez 1 TB-os, hajtsa végre
 
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A [virtuális gép javítási parancsainak 5.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .

@@ -1,6 +1,6 @@
 ---
-title: Szünet, folytatás, méretezés REST API-kkal
-description: Kezelje a számítási teljesítményt az Azure Synapse Analytics adattárházában a REST API-kon keresztül.
+title: Szüneteltetés, folytatás, méretezés REST API-kkal
+description: A számítási teljesítmény kezelése az Azure szinapszis Analytics-adattárházban REST API-kon keresztül.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633206"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST API-k az Azure SQL Data Warehouse-hoz
+# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST API-k Azure SQL Data Warehousehoz
 
-REST API-k az Azure Synapse Analytics adattárában a számítási feladatok kezeléséhez.
+REST API-k a számítások kezeléséhez az Azure szinapszis Analytics-adattárházban.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az adatraktári egységek módosításához használja az Adatbázis REST [létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) API-t. A következő példa az adattárház egységekdw1000-re állítja a MySQLDW adatbázist, amely a MyServer kiszolgálón található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoportban található.
+Az adatraktár-egységek módosításához használja az [adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. A következő példa beállítja az adatraktár-egységeket a DW1000 adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,9 +37,9 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-## <a name="pause-compute"></a>A számítás szüneteltetése
+## <a name="pause-compute"></a>Számítás szüneteltetése
 
-Adatbázis szüneteltetéséhez használja az Adatbázis REST-ének [szüneteltetése](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) API-t. A következő példa egy Server01 nevű kiszolgálón található Database02 nevű adatbázist szüneteltet. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoportban található.
+Egy adatbázis szüneteltetéséhez használja az [adatbázis szüneteltetése](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. Az alábbi példa egy Database02 nevű adatbázist szüneteltet egy Kiszolgalo01 nevű kiszolgálón. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -47,33 +47,33 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>Számítás folytatása
 
-Adatbázis indításához használja a [Folytatás adatbázis](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API-t. A következő példa egy Database02 nevű adatbázist indít el egy Server01 nevű kiszolgálón. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoportban található.
+Az adatbázis elindításához használja az [adatbázis folytatása](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. A következő példa egy Database02 nevű adatbázist indít el egy Kiszolgalo01 nevű kiszolgálón. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="check-database-state"></a>Adatbázis állapotának ellenőrzése
+## <a name="check-database-state"></a>Adatbázis állapotának keresése
 
 > [!NOTE]
-> Jelenleg Előfordulhat, hogy az adatbázis állapota az online állapotot adja vissza, miközben az adatbázis befejezi az online munkafolyamatot, ami csatlakozási hibákat eredményez. Előfordulhat, hogy 2–3 perces késleltetést kell hozzáadnia az alkalmazáskódhoz, ha ezt az API-hívást használja a csatlakozási kísérletek elindításához.
+> A jelenleg ellenőrzött adatbázis állapota ONLINE állapotba kerülhet, miközben az adatbázis befejezi az online munkafolyamatot, és kapcsolódási hibákat eredményez. Ha ezt az API-hívást használja a kapcsolódási kísérletek elindításához, előfordulhat, hogy az alkalmazás kódjában egy 2-3 perces késleltetést kell hozzáadnia.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>Karbantartási ütemterv beszerezni
+## <a name="get-maintenance-schedule"></a>Karbantartási ütemterv beolvasása
 
-Ellenőrizze az adattárházhoz beállított karbantartási ütemezést.
+Keresse meg az adatraktárhoz beállított karbantartási ütemtervet.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
 
 ```
 
-## <a name="set-maintenance-schedule"></a>Karbantartási ütemezés beállítása
+## <a name="set-maintenance-schedule"></a>Karbantartási ütemterv beállítása
 
-Karbantartási ütemezés beállítása és frissítése meglévő adattárházon.
+Karbantartási ütemterv beállítása és frissítése egy meglévő adatraktáron.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -99,4 +99,4 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="next-steps"></a>További lépések
 
-További információt a [Számítási feladatok kezelése című témakörben talál.](sql-data-warehouse-manage-compute-overview.md)
+További információ: a [számítások kezelése](sql-data-warehouse-manage-compute-overview.md).

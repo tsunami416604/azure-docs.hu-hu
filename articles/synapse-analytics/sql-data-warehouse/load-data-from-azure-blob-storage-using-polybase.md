@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A New York-i taxiadatok betöltése'
-description: Az oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a New York-i Taxicab-adatokat egy globális Azure-blobból a Synapse SQL számára.
+title: 'Oktatóanyag: a New York-i taxik-adatbázis betöltése'
+description: Az oktatóanyag a Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy globális Azure-blobból a szinapszis SQL-hez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 741779e8328c38e544b1ad297e59155dab4e8c0d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633909"
 ---
-# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: Töltse be a New York-i taxiadatkészletet
+# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
 
-Ez az oktatóanyag a PolyBase használatával tölti be a New York-i Taxitaxi-adatokat egy globális Azure blobtár-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
+Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait egy globális Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 >
-> * SQL-készlet létrehozása az Azure Portalon
+> * SQL-készlet létrehozása a Azure Portalban
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 > * Csatlakozás az adattárházhoz az SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
@@ -33,7 +33,7 @@ Ez az oktatóanyag a PolyBase használatával tölti be a New York-i Taxitaxi-ad
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -45,13 +45,13 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
 
-Az SQL-készlet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) belül egy [Azure SQL logikai kiszolgálón](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) jön létre.
+A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoporton](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) belül egy [Azure SQL logikai kiszolgálón](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) jön létre.
 
-Üres adatbázis létrehozásához kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Válassza ki az **adatbázisok** az **új** lapon, és válassza az **Azure Synapse Analytics** a **Kiemelt** az **új** lapon.
+2. Az **új oldalon válassza az** **adatbázisok** lehetőséget, majd az **új** oldal **Kiemelt** részén válassza az **Azure szinapszis Analytics** elemet.
 
     ![adattárház létrehozása](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -62,7 +62,7 @@ Az SQL-készlet a [számítási erőforrások](memory-concurrency-limits.md)megh
    | *név**            | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
    | **Előfizetés**   | Az Ön előfizetése     | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup       | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
-   | **Forrás kijelölése**  | Üres adatbázis        | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
+   | **Forrás kiválasztása**  | Üres adatbázis        | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
 
     ![adattárház létrehozása](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
@@ -71,68 +71,68 @@ Az SQL-készlet a [számítási erőforrások](memory-concurrency-limits.md)megh
     | Beállítás                | Ajánlott érték          | Leírás                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
     | **Kiszolgáló neve**        | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
-    | **Kiszolgálórendszergazdai bejelentkezés** | Bármely érvényes név           | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
+    | **Kiszolgáló-rendszergazdai bejelentkezés** | Bármely érvényes név           | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Jelszó**           | Bármely érvényes jelszó       | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-    | **Helyen**           | Bármely érvényes hely       | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
+    | **Hely**           | Bármely érvényes hely       | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
 5. Válassza a **Kiválasztás** lehetőséget.
 
-6. Válassza a **Teljesítményszint lehetőséget,** ha meg szeretné adni, hogy az adattárház Gen1 vagy Gen2, és az adatraktáregységek számát.
+6. Válassza a **teljesítményszint** lehetőséget annak megadásához, hogy az adatraktár Gen1 vagy Gen2, valamint az adatraktár-egységek számát.
 
-7. Ehhez az oktatóanyaghoz válassza az SQL-készlet **Gen2**lehetőséget. A csúszka alapértelmezés szerint **DW1000c** értékre van állítva.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban.
+7. Ebben az oktatóanyagban válassza az SQL Pool **Gen2**elemet. Alapértelmezés szerint a csúszka a **DW1000c** értékre van állítva.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban.
 
     ![teljesítmény konfigurálása](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Kattintson az **Alkalmaz** gombra.
-9. A kiépítési panelen válassza ki az üres adatbázis **illesztését.** A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+9. A kiépítés panelen válasszon ki egy **rendezést** az üres adatbázishoz. A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-10. Most, hogy kitöltötte az űrlapot, válassza a **Létrehozás** lehetőséget az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
+10. Most, hogy elvégezte az űrlapot, válassza a **Létrehozás** lehetőséget az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
 
-11. Az eszköztáron válassza az **Értesítések** lehetőséget a telepítési folyamat figyeléséhez.
+11. Az eszköztáron válassza az **értesítések** lehetőséget a telepítési folyamat figyeléséhez.
   
      ![értesítés](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
-Kiszolgálószintű tűzfal, amely megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgáló bármely adatbázisához. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
+A kiszolgáló szintjén található tűzfal, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
 
 > [!NOTE]
 > Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 
-1. A telepítés befejezése után válassza az **SQL-adatbázisok lehetőséget** a bal oldali menüből, majd válassza a **mySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely a teljesen minősített kiszolgálónevét (például **mynewserver-20180430.database.windows.net)** jeleníti meg, és további konfigurációs lehetőségeket biztosít.
+1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **MySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Ezután válassza ki a kiszolgáló nevét a kiszolgáló beállításainak megnyitásához.
 
     ![kiszolgálónév keresése](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-3. A kiszolgálóbeállítások megnyitásához válassza ki a kiszolgáló nevét.
+3. Válassza ki a kiszolgáló nevét a kiszolgáló beállításainak megnyitásához.
 
     ![kiszolgáló beállításai](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. Válassza **a Tűzfalbeállítások megjelenítése**lehetőséget. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
+4. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
     ![kiszolgálói tűzfalszabály](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
-5. Válassza az **eszköztár Ügyfél IP hozzáadása** lehetőséget, ha az aktuális IP-címet új tűzfalszabályhoz szeretné hozzáadni. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
+5. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
 6. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
 
-7. Válassza **az OK gombot,** majd zárja be a **Tűzfal beállításai** lapot.
+7. Kattintson **az OK gombra** , majd a **tűzfalbeállítások** oldal bezárásához.
 
 Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz erről az IP-címről. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Ezen a lapon válassza **a KI** lehetőséget, majd a **Mentés** lehetőséget az összes Azure-szolgáltatás tűzfalának letiltásához.
+> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válassza **ki** ezt a lapot, majd a **Mentés** gombra kattintva tiltsa le a tűzfalat az összes Azure-szolgáltatáshoz.
 
 ## <a name="get-the-fully-qualified-server-name"></a>A teljes kiszolgálónév lekérése
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza ki az **Azure Synapse Analytics** a bal oldali menüben, és válassza ki az adatbázist az **Azure Synapse Analytics** oldalon.
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljesen minősített név mynewserver-20180430.database.windows.net.
+2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, és válassza ki az adatbázist az **Azure szinapszis Analytics** oldalán.
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név mynewserver-20180430.database.windows.net.
 
     ![kapcsolatadatok](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -147,7 +147,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | Beállítás        | Ajánlott érték                            | Leírás                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Kiszolgáló típusa    | Adatbázismotor                            | Kötelezően megadandó érték                                       |
-    | Kiszolgálónév    | A teljes kiszolgálónév            | A név kell valami ilyesmi: **mynewserver-20180430.database.windows.net**. |
+    | Kiszolgálónév    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
     | Hitelesítés | SQL Server-hitelesítés                  | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés          | A kiszolgálói rendszergazdafiók                   | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó       | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -162,13 +162,13 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memóriamaximumok meghatározása a konfigurált [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) és [erőforrásosztály](resource-classes-for-workload-management.md) szerint történik.
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma az [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) és a konfigurált [erőforrás-osztály](resource-classes-for-workload-management.md) szerint van meghatározva.
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
 Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat bejelentkezéseket és felhasználókat. Kövesse ezeket a lépéseket egy **LoaderRC20** nevű fiók és felhasználó létrehozásához. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztályhoz.
 
-1. Az SSMS jobb oldali válassza ki a **főkiszolgálót** a legördülő menü megjelenítéséhez, és válassza az **Új lekérdezés**parancsot. Megnyílik egy új lekérdezési ablak.
+1. A SSMS kattintson a jobb gombbal a **Master** elemre a legördülő menü megjelenítéséhez, majd válassza az **Új lekérdezés**lehetőséget. Megnyílik egy új lekérdezési ablak.
 
     ![Új lekérdezés a master adatbázisban](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -199,7 +199,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
 
 Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés.  
 
-1. Az Objektumkezelőben válassza a **Csatlakozás** legördülő menüt, és válassza az **Adatbázis-motor lehetőséget**. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
+1. A Object Explorer területen válassza a **kapcsolat** legördülő menüt, és válassza az **adatbázismotor**lehetőséget. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
 
     ![Csatlakozás az új fiókkal](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -213,9 +213,9 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ez az oktatóanyag bemutatja, hogyan használhatja a külső táblákat a New York-i taxiadatok betöltéséhez egy Azure Storage-blobból. A későbbi, a [betöltési áttekintésben](design-elt-data-loading.md)megtudhatja, hogyan juthat el az Azure blobstorage-ba, illetve hogyan töltheti be őket közvetlenül a forrásból.
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a külső táblákat a New York-i taxi-adatok Azure Storage-blobból való betöltésére. Ha szeretné megtudni, hogyan érheti el adatait az Azure Blob Storage-ba, vagy hogyan töltheti be közvetlenül a forrásból, tekintse meg a [Betöltés áttekintését](design-elt-data-loading.md).
 
-Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt adatokkal kapcsolatos információkat. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója.
+Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt adatokra vonatkozó információkat. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója.
 
 1. Az előző szakaszban LoaderRC20-ként jelentkezett be az adattárházba. Az SSMS-ben kattintson jobb gombbal a LoaderRC20-kapcsolatra, és válassza a **New Query** (Új lekérdezés) elemet.  Megnyílik egy új lekérdezési ablak.
 
@@ -229,7 +229,7 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     CREATE MASTER KEY;
     ```
 
-4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz csatolt parancs futtatásához jelölje ki a futtatni kívánt parancsokat, és válassza a **Végrehajtás lehetőséget.**
+4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz fűzött parancs futtatásához jelölje ki a futtatni kívánt parancsokat, és válassza a **végrehajtás**lehetőséget.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -271,7 +271,7 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     CREATE SCHEMA ext;
     ```
 
-7. Hozza létre a külső táblákat. A tábladefiníciók az adatraktárban tárolódnak, de a táblák az Azure blob storage-ban tárolt adatokra hivatkoznak. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
+7. Hozza létre a külső táblákat. A táblázat definíciói az adattárházban tárolódnak, de a táblázatok az Azure Blob Storage-ban tárolt adathivatkozásokat használják. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[Date]
@@ -442,12 +442,12 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ez a szakasz az imént definiált külső táblákat használja a mintaadatok azure storage blobból való betöltéséhez.  
+Ez a szakasz az imént definiált külső táblákat használja a mintaadatok Azure Storage Blobból való betöltéséhez.  
 
 > [!NOTE]
 > Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a select utasítás külső táblából választ, az adatok importálása az adatraktár ban lévő relációs táblába történik.
+A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a SELECT utasítást kiválasztja egy külső táblából, az adatok az adatraktárban található, egy rokon táblába kerülnek importálásra.
 
 1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
 
@@ -518,7 +518,7 @@ A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-a
     ;
     ```
 
-2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adatot tölt be, és nagy teljesítményt igénylő fürtözött oszlopcentrikus indexekbe tömöríti azokat. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát.
+2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adat betöltése és tömörítése nagy teljesítményű fürtözött oszlopcentrikus indexekre. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát.
 
     ```sql
     SELECT
@@ -560,17 +560,17 @@ A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-a
 
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>Hitelesítés felügyelt identitások használatával a betöltéshez (nem kötelező)
 
-A PolyBase használatával történő betöltés és a felügyelt identitások hitelesítése a legbiztonságosabb mechanizmus, amely lehetővé teszi a virtuális hálózati szolgáltatás végpontjainak kihasználását az Azure Storage-szal.
+A legbiztonságosabb módszer a virtuális hálózati szolgáltatásbeli végpontok kihasználása és a felügyelt identitások használatával történő betöltés.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse az Azure PowerShellt ezzel az [útmutatóval.](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-2. Ha általános célú v1- vagy blobtár-fiókkal rendelkezik, először frissítenie kell az általános célú v2-re ezzel az [útmutatóval.](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-3. Az Azure Storage-fiók **tűzfalai és a virtuális hálózatok** beállításai menüben be van kapcsolva a megbízható **Microsoft-szolgáltatások hozzáférésének engedélyezése a tárfiókhoz.** További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
+1. Azure PowerShell telepítése az [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
+2. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)használatával kell frissítenie az általános célú v2-re.
+3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) .
 
 #### <a name="steps"></a>Lépések
 
-1. A PowerShellben **regisztrálja az SQL-kiszolgálót az** Azure Active Directoryval (AAD):
+1. A PowerShellben **regisztrálja az SQL servert** Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
@@ -578,19 +578,19 @@ A PolyBase használatával történő betöltés és a felügyelt identitások h
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
 
-2. Általános **célú v2 tárfiók** létrehozása ezzel az [útmutatóval.](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+2. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
 
    > [!NOTE]
-   > Ha általános célú v1- vagy blobtár-fiókkal rendelkezik, **először frissítenie** kell a v2-re ezzel az [útmutatóval.](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+   > Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
 
-3. A tárfiók alatt keresse meg a **Hozzáférés-vezérlés (IAM)** elemet, és válassza **a Szerepkör-hozzárendelés hozzáadása**lehetőséget. Rendelje hozzá **a Storage Blob Data Contributor** RBAC szerepkört az SQL Database-kiszolgálóhoz.
+3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **Storage blob-adatközreműködői** RBAC szerepkört a SQL Database-kiszolgálóhoz.
 
    > [!NOTE]
-   > Ezt a lépést csak tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiről ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ismerteti.
+   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
   
-**Polibázis-kapcsolat az Azure Storage-fiókkal:**
+**Alapszintű kapcsolat az Azure Storage-fiókkal:**
 
-1. Hozza létre az adatbázis hatóköre hitelesítő adatait **az IDENTITY = "Felügyelt szolgáltatás identitása"** használatával:
+1. Hozza létre az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat az **Identity = ' Managed Service Identity '** használatával:
 
    ```SQL
    CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -598,14 +598,14 @@ A PolyBase használatával történő betöltés és a felügyelt identitások h
 
    > [!NOTE]
    >
-   > * Nincs szükség secret megadása az Azure Storage hozzáférési kulcs, mert ez a mechanizmus [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) használ a borítók alatt.
-   > * Identity név kell **"felügyelt szolgáltatás identitása"** a PolyBase-kapcsolat az Azure Storage-fiókkal való együttműködésre.
+   > * Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) használ a borítók alatt.
+   > * Az identitás nevének **"Managed Service Identity"** kell lennie az Azure Storage-fiókkal való együttműködéshez.
 
-2. Hozza létre a külső adatforrást, amely megadja az adatbázis hatókörrel rendelkező hitelesítő adatait a felügyelt szolgáltatásidentitással.
+2. Hozza létre a külső adatforrást, amely megadja az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat a Managed Service Identity.
 
-3. Lekérdezés a szokásos módon [külső táblák](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával .
+3. Lekérdezés normál módon [külső táblák](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával.
 
-Tekintse meg a következő [dokumentációt,](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ha virtuális hálózati szolgáltatás végpontokat szeretne beállítani az Azure Synapse Analytics számára.
+Ha az Azure szinapszis Analytics szolgáltatáshoz virtuális hálózati szolgáltatási végpontokat szeretne beállítani, tekintse meg az alábbi [dokumentációt](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -616,17 +616,17 @@ Az adattárházába betöltött számítási erőforrások és adatok díjkötel
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)válassza ki az adatraktárt.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **Szünet** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához válassza a **Start gombot.**
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 
-3. Ha el szeretné távolítani az adatraktárt, hogy ne kelljen fizetnie a számításért vagy a tárolásért, válassza a **Törlés lehetőséget.**
+3. Ha el szeretné távolítani az adattárházat, így nem számítja fel a számítás vagy a tárolás díját, válassza a **Törlés**lehetőséget.
 
-4. A létrehozott SQL-kiszolgáló eltávolításához jelölje **be mynewserver-20180430.database.windows.net** az előző képen, majd kattintson a **Törlés gombra.**  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
-5. Az erőforráscsoport eltávolításához válassza a **MyResourceGroup**lehetőséget, majd az **Erőforráscsoport törlése**lehetőséget.
+5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -644,7 +644,7 @@ A következőket hajtotta végre:
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-A fejlesztési áttekintéshez továbbtekinthet, és megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure Synapse Analytics szolgáltatásba.
+Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure szinapszis Analytics szolgáltatásba.
 
 > [!div class="nextstepaction"]
-> [Meglévő adatbázis Azure Synapse Analytics szolgáltatásba való áttelepítésének tervezési döntései](sql-data-warehouse-overview-develop.md)
+> [Megtervezheti a meglévő adatbázisok Azure szinapszis Analytics szolgáltatásba való átépítésének döntéseit](sql-data-warehouse-overview-develop.md)

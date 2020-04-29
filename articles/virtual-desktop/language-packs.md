@@ -1,6 +1,6 @@
 ---
-title: Nyelvi csomagok telepítése Windows 10-es virtuális gépekre a Windows Virtuális asztalon – Azure
-description: A Windows 10 többmunkamenetes virtuális gépeknyelvi csomagjainak telepítése a Windows Virtual Desktop rendszerben.
+title: Nyelvi csomagok telepítése Windows 10 rendszerű virtuális gépekre a Windows Virtual Desktopban – Azure
+description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi csomagjainak telepítése a Windows Virtual Desktopban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,150 +9,150 @@ ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80634034"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
 
-Ha a Windows virtuális asztal központi telepítéseit nemzetközi szinten állítja be, célszerű biztosítani, hogy a központi telepítés több nyelvet is támogatott legyen. Nyelvi csomagokat telepíthet egy Windows 10 Enterprise többmunkamenetes virtuális gép (VM) lemezképére, amely annyi nyelvet támogat, amennyire a szervezetnek szüksége van. Ez a cikk bemutatja, hogyan telepítheti a nyelvi csomagokat, és hogyan rögzítheti azokat a képeket, amelyek lehetővé teszik a felhasználók számára, hogy saját megjelenítési nyelveket válasszanak.
+A Windows rendszerű virtuális asztali környezetek nemzetközileg történő telepítése során érdemes meggyőződni arról, hogy a központi telepítés több nyelvet is támogat. A nyelvi csomagokat Windows 10 Enterprise rendszerű, többmunkamenetes virtuálisgép-(VM-) rendszerképre is telepítheti, hogy a szervezet igényeinek megfelelő számú nyelvet támogassa. Ebből a cikkből megtudhatja, hogyan telepíthet nyelvi csomagokat és rögzíthet lemezképeket, amelyek lehetővé teszik, hogy a felhasználók saját megjelenítési nyelveket válasszanak.
 
-További információ a virtuális gépek Azure-beli üzembe helyezéséről az [Azure-portállal elérhető zónában elérhető zónában elérhető windowsos virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)című webhelyen.
+További információ a virtuális gépek Azure-beli üzembe helyezéséről [a Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal](../virtual-machines/windows/create-portal-availability-zone.md).
 
 >[!NOTE]
->Ez a cikk a Windows 10 Enterprise többmunkamenetes virtuális gépekre vonatkozik.
+>Ez a cikk a Windows 10 Enterprise rendszerű, több munkamenetes virtuális gépekre vonatkozik.
 
 ## <a name="install-a-language-pack"></a>Nyelvi csomag telepítése
 
-Ha nyelvi csomagokkal szeretne virtuálisgép-lemezképet létrehozni, először telepítenie kell a nyelvi csomagokat egy gépre, és rögzítenie kell róla egy képet.
+Ha nyelvi csomagokat tartalmazó virtuálisgép-lemezképet szeretne létrehozni, először telepítenie kell a nyelvi csomagokat a gépre, és rögzítenie kell a lemezképet.
 
 Nyelvi csomagok telepítése:
 
 1. Jelentkezzen be rendszergazdaként.
-2. Ellenőrizze, hogy telepítette-e a Windows és a Windows Áruház összes legújabb frissítését.
-3. Nyissa meg a **Beállítások** > ideje & nyelvi**terület****lehetőséget.** > 
-4. Az **Ország vagy régió**csoportban válassza ki a kívánt országot vagy régiót a legördülő menüből.
-    Ebben a példában **Franciaországot**választjuk , ahogy az a következő képernyőképen látható:
+2. Győződjön meg arról, hogy telepítette a Windows és a Windows áruház legújabb frissítéseit.
+3. Lépjen a **Beállítások** > **ideje & nyelvi** > **régió**menüpontra.
+4. Az **ország vagy régió**területen válassza ki az előnyben részesített országot vagy régiót a legördülő menüből.
+    Ebben a példában a **franciaországi**lehetőséget fogjuk kiválasztani, ahogy az alábbi képernyőképen is látható:
 
-    ![Képernyőkép a Régió lapról. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
+    ![A régió oldalának képernyőképe. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
 
-5. Ezt követően válassza **a Nyelv**lehetőséget, majd a **Nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd válassza a **Tovább**gombot.
-6. Amikor megnyílik a **Nyelvi szolgáltatások telepítése** ablak, jelölje be a Nyelvi csomag telepítése jelölőnégyzetet, és állítsa be a Windows **megjelenítési nyelveként.**
+5. Ezután válassza a **Language (nyelv**), majd **a nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd kattintson a **tovább**gombra.
+6. Amikor megnyílik a **nyelvi szolgáltatások telepítése** ablak, jelölje be a **nyelvi csomag telepítése és beállítása a Windows megjelenítési nyelvként**jelölőnégyzetet.
 7. Válassza az **Install** (Telepítés) lehetőséget.
-8. Ha egyszerre több nyelvet szeretne hozzáadni, válassza **a Nyelv hozzáadása**lehetőséget, majd ismételje meg a folyamatot egy nyelv hozzáadásához az 5. Ismételje meg ezt a folyamatot minden telepíteni kívánt nyelven. Egyszerre azonban csak egy nyelvet állíthat be megjelenítési nyelvként.
+8. Ha egyszerre több nyelvet szeretne felvenni, válassza a **nyelv hozzáadása**lehetőséget, majd ismételje meg a folyamatot, és adjon hozzá egy nyelvet az 5. és 6. lépésben. Ismételje meg ezt a folyamatot minden telepíteni kívánt nyelvnél. Egyszerre azonban csak egy nyelvet állíthat be megjelenítési nyelvként.
 
-    Fussunk át egy gyors vizuális bemutatón. Az alábbi képeken bemutatjuk, hogyan kell telepíteni a francia és a holland nyelvi csomagokat, majd beállíthatja a francia megjelenítési nyelvet.
+    Futtassunk egy gyors vizuális bemutatót. Az alábbi képek bemutatják, hogyan telepítheti a francia és holland nyelvi csomagokat, majd beállíthatja a franciát megjelenítési nyelvként.
 
-    ![A folyamat elején található Nyelv lap képernyőképe. A Windows kijelölt megjelenítési nyelve az angol.](media/language-page-default.png)
+    ![A folyamat elején található nyelvi oldal képernyőképe. A kiválasztott Windows megjelenítési nyelv az angol.](media/language-page-default.png)
 
-    ![Képernyőkép a nyelvválasztó ablakról. A felhasználó beírta a "francia" szót a keresősávba, hogy megtalálja a francia nyelvű csomagokat.](media/select-language-french.png)
+    ![A nyelv kiválasztása ablak képernyőképe. A felhasználó a francia nyelvi csomagok megtalálásához a "francia" kifejezést adta meg a keresősávban.](media/select-language-french.png)
 
-    ![Képernyőkép a Nyelvi szolgáltatások telepítése lapról. A francia a kívánt nyelv. A kiválasztott beállítások a következők: "A megjelenítési nyelv beállítása", "Nyelvi csomag telepítése", "Beszédfelismerés" és "Kézírás".](media/install-language-features.png)
+    ![A nyelvi szolgáltatások telepítési oldalának képernyőképe. A franciát választott nyelvként válassza ki. A kiválasztott beállítások a "saját megjelenítési nyelv beállítása", "nyelvi csomag telepítése", "beszédfelismerés" és "kézírás".](media/install-language-features.png)
 
-    A nyelvi csomagok telepítése után a nyelvi csomagok nevei megjelennek a nyelvek listájában.
+    Miután telepítette a nyelvi csomagokat, megjelenik a nyelvi csomagok neve a nyelvek listájában.
 
-    ![Képernyőkép a nyelvi oldalról, amelyen az új nyelvi csomagok vannak telepítve. A francia és a holland nyelvi csomagok a "preferált nyelvek" alatt találhatók.](media/language-page-complete.png)
+    ![A nyelvi oldal képernyőképe a telepített új nyelvi csomagokkal. A francia és a holland nyelvi csomagok az "előnyben részesített nyelvek" területen jelennek meg.](media/language-page-complete.png)
 
-9. Ha megjelenik egy ablak, amely arra kéri, hogy jelentkezzen ki a munkamenetből. Jelentkezzen ki, majd jelentkezzen be újra. A megjelenítési nyelvnek most már a kiválasztott nyelvnek kell lennie.
+9. Ha megjelenik egy ablak, amely arra kéri, hogy jelentkezzen ki a munkamenetből. Jelentkezzen ki, majd jelentkezzen be újra. A megjelenítési nyelvnek most a kiválasztott nyelvnek kell lennie.
 
-10.  Nyissa meg a **Vezérlőpult** > **óráját és** > **régióját.**
+10.  Nyissa meg a **Vezérlőpult** > **óra és régió** > **régióját**.
 
-11.  Amikor megnyílik a **Régió** ablak, válassza a **Felügyelet** lapot, majd a **Beállítások másolása**lehetőséget.
+11.  Amikor megnyílik a **régió** ablak, válassza az **Adminisztráció** fület, majd válassza a **Beállítások másolása**lehetőséget.
 
-12.  Jelölje be az Üdvözlőképernyő és a **rendszerfiókok,** valamint az **Új felhasználói fiókok jelölőnégyzetet.**
+12.  Jelölje be az **üdvözlő képernyő és a rendszerfiókok** és az **új felhasználói fiókok**jelölőnégyzetet.
 
-13.  Válassza **az OK gombot.**
+13.  Kattintson az **OK** gombra.
 
-14.  Megnyílik egy ablak, amely a munkamenet újraindítását mondja. Válassza **az Újraindítás most**lehetőséget.
+14.  Ekkor megnyílik egy ablak, és megtudhatja, hogy újraindítsa a munkamenetet. Válassza az **Újraindítás most**lehetőséget.
 
-15.  Miután újra bejelentkezett, lépjen vissza a Vezérlőpult > **órája és régiója** >  **Control Panel****vezérlőpulthoz.**
+15.  Miután bejelentkezett, lépjen vissza a **Vezérlőpult** > **óra és régió** > **területére**.
 
-16.  Válassza a **Felügyelet** lapot.
+16.  Válassza az **Adminisztráció** lapot.
 
-17.  Válassza **a Rendszer területi beállításának módosítása**lehetőséget.
+17.  Válassza a **rendszerterületi beállítások módosítása**lehetőséget.
 
-18. A **Jelenlegi rendszer területi beállításai**nak legördülő menüjében válassza ki a használni kívánt területi beállításokat. Ezután válassza az **OK gombot.**
+18. A **jelenlegi rendszerterületi beállítás**alatti legördülő menüben válassza ki a használni kívánt nyelvi beállításokat. Ezután kattintson **az OK gombra**.
 
-19. Válassza **az Újraindítás most** lehetőséget a munkamenet újbóli újraindításához.
+19. A munkamenet újbóli újraindításához válassza az **Újraindítás most** lehetőséget.
 
 Gratulálunk, telepítette a nyelvi csomagokat!
 
-A folytatás előtt győződjön meg arról, hogy a rendszer a Windows és a Windows Áruház legújabb verzióival rendelkezik.
+A folytatás előtt győződjön meg arról, hogy a rendszer a Windows és a Windows áruház legújabb verzióit telepítette.
 
 ## <a name="sysprep"></a>Sysprep
 
-Ezután sysprep a gép előkészítése a képrögzítési folyamat.
+Ezután a számítógép Sysprep eszközét kell előkészítenie a rendszerkép-rögzítési folyamat előkészítéséhez.
 
-A számítógép sysprep-je:
+A gép Sysprep:
 
 1. Nyissa meg a PowerShellt rendszergazdaként.
-2. Futtassa a következő parancsmast a megfelelő könyvtárba való ugráshoz:
+2. Futtassa a következő parancsmagot, hogy a megfelelő könyvtárba lépjen:
    
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
-3. Ezután futtassa a következő parancsmast:
+3. Ezután futtassa a következő parancsmagot:
     
     ```powershell
     .\sysprep.exe
     ```
 
-4. Amikor megnyílik a Rendszerelőkészítő eszköz ablak, jelölje be a **Generalize**feliratú jelölőnégyzetet, majd válassza a **Leállítási beállítások lehetőséget,** és válassza a legördülő menü **Leállítás** parancsát.
+4. Amikor megnyílik a rendszer-előkészítő eszköz ablak, jelölje be az **általánosítás**feliratú jelölőnégyzetet, majd lépjen a **leállítási beállítások** pontra, és válassza a **Leállítás** lehetőséget a legördülő menüből.
 
 >[!NOTE]
->A syprep folyamat néhány percet vesz igénybe. A virtuális gép leállításakor a távoli munkamenet bontja a kapcsolatot.
+>A syprep folyamat eltarthat néhány percig. Ahogy a virtuális gép leáll, a távoli munkamenet leválasztja a kapcsolatot.
 
-### <a name="resolve-sysprep-errors"></a>Sysprep hibák megoldása
+### <a name="resolve-sysprep-errors"></a>Sysprep-hibák elhárítása
 
-Ha a sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tennie:
+Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tennie:
 
-1. Nyissa **meg a C meghajtót,** és nyissa meg a **Windows** > **System32 Sysprep** > **Panther**alkalmazást, majd nyissa meg a **setuperr** fájlt.
+1. Nyissa meg a **C meghajtót** , és lépjen a **Windows** > **System32 Sysprep** > **Panther**elemre, majd nyissa meg a **Setuperr** fájlt.
 
-   A hibafájlszöveg megmondja, hogy el kell távolítania egy adott nyelvi csomagot, ahogy az az alábbi képen látható. Másolja a következő lépés nyelvi csomagnevét.
+   A hibaüzenet szövege azt jelzi, hogy el kell távolítania egy adott nyelvi csomagot, ahogy az az alábbi képen is látható. Másolja a nyelvi csomag nevét a következő lépéshez.
 
-   ![Képernyőkép a setuperr fájlról. A csomag nevét tartalmazó szöveg sötétkék színnel van kiemelve.](media/setuperr-package-name.png)
+   ![Képernyőkép a Setuperr-fájlról. A csomag nevét tartalmazó szöveg ki van emelve a sötétkék színnel.](media/setuperr-package-name.png)
 
-2. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsmamot a 2.
+2. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsmagot a 2. lépésben átmásolt csomag nevével a nyelvi csomag eltávolításához:
 
    ```powershell
    Remove-AppxPackage <package name>
    ```
 
-3. Ellenőrizze, hogy eltávolította-e a `Remove-AppxPackage` csomagot a parancsmag ismételt futtatásával. Ha sikeresen eltávolította a csomagot, egy üzenetnek kell látnia, amely szerint az eltávolítani kívánt csomag nem létezik.
+3. Győződjön meg arról, hogy eltávolította a csomagot a `Remove-AppxPackage` parancsmag ismételt futtatásával. Ha sikeresen eltávolította a csomagot, megjelenik egy üzenet, amely szerint az eltávolítani kívánt csomag nem létezik.
 
-4. Futtassa újra a `sysprep.exe` parancsmarunt.
+4. Futtassa újra `sysprep.exe` a parancsmagot.
 
-## <a name="capture-the-image"></a>A kép rögzítése
+## <a name="capture-the-image"></a>A rendszerkép rögzítése
 
-Most, hogy a rendszer készen áll, rögzíthet egy lemezképet, hogy más felhasználók is elkezdhessék használni a virtuális gépeket a rendszer alapján anélkül, hogy meg kellene ismételnie a konfigurációs folyamatot.
+Most, hogy a rendszer készen áll, rögzítheti a lemezképeket, hogy más felhasználók is elkezdhetik használni a virtuális gépeket a rendszer alapján anélkül, hogy meg kellene ismételnie a konfigurációs folyamatot.
 
-Kép rögzítése:
+Rendszerkép rögzítése:
 
-1. Nyissa meg az Azure Portalon, és válassza ki a [nyelvi csomag telepítése](#install-a-language-pack) és a [sysprep](#sysprep)területen konfigurált számítógép nevét.
+1. Lépjen a Azure Portal, és válassza ki annak a gépnek a nevét, amelyet a [nyelvi csomag](#install-a-language-pack) és a [Sysprep](#sysprep)telepítése című részében konfigurált.
 
-2. Válassza a **Rögzítés**lehetőséget.
+2. Válassza a **rögzítés**lehetőséget.
 
-3. Írja be a kép nevét a **Név** mezőbe, és rendelje hozzá az erőforráscsoporthoz az **Erőforráscsoport** legördülő menüvel, ahogy az az alábbi képen látható.
+3. Adja meg a rendszerkép nevét a Name ( **név** ) mezőben, és rendelje hozzá az **erőforráscsoporthoz az erőforráscsoport legördülő menüből** az alábbi ábrán látható módon.
 
-   ![Képernyőkép a Kép létrehozása ablakról. A tesztlemezképhez adott felhasználó neve "vmwvd-image-fr", és hozzárendelték a "testwvdimagerg" erőforráscsoporthoz.](media/create-image.png)
+   ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
 
 4. Kattintson a **Létrehozás** gombra.
 
-5. Várjon néhány percet, amíg a rögzítési folyamat befejeződik. Amikor a kép készen áll, egy üzenetnek kell lennie az Értesítési központban, amely tudatja önvel, hogy a kép rögzítésre került.
+5. Várjon néhány percet, amíg a rögzítési folyamat befejeződik. Ha a rendszerkép elkészült, egy üzenet jelenik meg az értesítési központban, amely értesíti, hogy a rendszerkép rögzítése megtörténik.
 
-Most már üzembe helyezhet egy virtuális gép az új lemezkép használatával. A virtuális gép telepítésekor kövesse a Windows virtuális gép létrehozása az [Azure Portal rendelkezésre állási zónájában](../virtual-machines/windows/create-portal-availability-zone.md)című útmutató utasításait.
+Most már üzembe helyezhet egy virtuális gépet az új rendszerkép használatával. A virtuális gép központi telepítésekor kövesse a [Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában található utasításokat a Azure Portal](../virtual-machines/windows/create-portal-availability-zone.md).
 
-### <a name="how-to-change-display-language-for-standard-users"></a>Az általános megjelenítési nyelv módosítása általános jogú felhasználók számára
+### <a name="how-to-change-display-language-for-standard-users"></a>Az általános jogú felhasználók megjelenítési nyelvének módosítása
 
 Az általános jogú felhasználók módosíthatják a virtuális gépek megjelenítési nyelvét.
 
 A megjelenítési nyelv módosítása:
 
-1. Nyissa meg a **Nyelvi beállítások lehetőséget.** Ha nem tudja, hogy hol van, **megadhatja** a Nyelvet a Start menü keresősávjába.
+1. Lépjen a **nyelvi beállítások menüpontra**. Ha nem tudja, hol van, megadhatja a **nyelvet** a Start menü keresési sávjában.
 
-2. A Windows megjelenítési nyelvlegördülő menüjében válassza ki a megjelenítési nyelvként használni kívánt nyelvet.
+2. A Windows megjelenítési nyelv legördülő menüben válassza ki a nyelvet, amelyet a megjelenítési nyelvként kíván használni.
 
-3. Jelentkezzen ki a munkamenetből, majd jelentkezzen be újra. A megjelenítési nyelvnek most a 2.
+3. Jelentkezzen ki a munkamenetből, majd jelentkezzen be újra. A megjelenítési nyelvnek most a 2. lépésben kiválasztottnak kell lennie.

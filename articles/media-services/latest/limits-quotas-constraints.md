@@ -1,6 +1,6 @@
 ---
-title: Kvóták és korlátozások az Azure Media Servicesben
-description: Ez a témakör a Microsoft Azure Media Services kvótáit és korlátait ismerteti.
+title: Kvóták és korlátozások a Azure Media Servicesban
+description: Ez a témakör a Microsoft Azure Media Services kvótáit és korlátozásait ismerteti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,101 +12,101 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632212"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
-# <a name="azure-media-services-quotas-and-limits"></a>Az Azure Media Services kvótái és korlátai
+# <a name="azure-media-services-quotas-and-limits"></a>Kvóták és korlátozások Azure Media Services
 
-Ez a cikk a Leggyakoribb Microsoft Azure Media Services-korlátokat sorolja fel, amelyeket kvótáknak is neveznek.
+Ez a cikk a leggyakoribb Microsoft Azure Media Services-korlátozásokat sorolja fel, amelyeket esetenként kvótának is nevezünk.
 
 > [!NOTE]
-> A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet a kvóták növelésének kéréséhez. Ne hozzon létre további Azure Media Services-fiókokat, hogy magasabb korlátokat szerezzen.
+> A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
 
-## <a name="account-limits"></a>Fiókkorlátok
-
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| [Media Services-fiókok](media-services-account-concept.md) egyetlen előfizetésben | 25 (rögzített) |
-
-## <a name="asset-limits"></a>Eszközlimitek
+## <a name="account-limits"></a>Fiók korlátai
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| [Eszközök](assets-concept.md) Media Services-fiókonként | 1,000,000|
+| Egyetlen előfizetésben lévő [fiókok Media Services](media-services-account-concept.md) | 25 (rögzített) |
+
+## <a name="asset-limits"></a>Eszközök korlátai
+
+| Erőforrás | Alapértelmezett korlát | 
+| --- | --- | 
+| [Eszközök](assets-concept.md) /Media Services fiók | 1,000,000|
 
 ## <a name="storage-limits"></a>Tárolási korlátok
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret korlátozva van. <sup>(1)</sup> |
+| Fájlméret| Bizonyos esetekben a Media Services feldolgozásakor támogatott maximális fájlméret megengedett. <sup>1</sup> |
 | [Tárfiókok](storage-account-concept.md) | 100<sup>(2)</sup> (rögzített) |
 
-<sup>1</sup> Az egyetlen blob maximális támogatott mérete jelenleg legfeljebb 5 TB az Azure Blob Storage-ban. További korlátozások vonatkoznak a Media Services a szolgáltatás által használt virtuális gép méretealapján. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozása (kódolása vagy elemzése) eredményeként létrehozott fájlokra vonatkozik. Ha a forrásfájl nagyobb, mint 260 GB, a feladat valószínűleg sikertelen lesz. 
+<sup>1</sup> az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
 
-Az alábbi táblázat az S1, S2 és S3 adathordozó-lefoglalt egységek rekedéseit mutatja be. Ha a forrásfájl nagyobb, mint a táblázatban meghatározott korlátok, a kódolási feladat sikertelen lesz. Ha hosszú időtartamú 4K felbontású forrásokat kódol, a szükséges teljesítmény eléréséhez S3 média számára fenntartott egységeket kell használnia. Ha az S3-ban fenntartott egységekre vonatkozó 260 GB-os korlátnál nagyobb 4K-s tartalommal rendelkezik, nyisson meg egy támogatási jegyet.
+Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4K-tartalommal rendelkezik, amely nagyobb, mint az S3 Media szolgáltatás számára fenntartott egységek 260 GB-os korlátja, nyisson meg egy támogatási jegyet.
 
-|Adathordozóáltal lefoglalt egység típusa|Maximális bemeneti méret (GB)|
+|Media szolgáltatás számára fenntartott egység típusa|Maximális bemeneti méret (GB)|
 |---|---|
 |S1 |    26|
 |S2    | 60|
 |S3    |260|
 
-<sup>2</sup> A tárfiókoknak ugyanabból az Azure-előfizetésből kell származniuk.
+<sup>2</sup> a Storage-fiókoknak ugyanahhoz az Azure-előfizetéshez kell tartoznia.
 
-## <a name="jobs-encoding--analyzing-limits"></a>Feladatok (kódolás & elemzés) határértékek
-
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| [Feladatok](transforms-jobs-concept.md) Media Services-fiókonként | 500 000 <sup>(3)</sup> (rögzített)|
-| Feladatonkénti alapanyagok | 50 (rögzített)|
-| Feladatonkénti munkakimenetek | 20 (rögzített) |
-| [Átalakítások](transforms-jobs-concept.md) Media Services-fiókonként | 100 (fix)|
-| Kimenetek átalakítása átalakításban | 20 (rögzített) |
-| Fájlok feladatbemenetenként|10 (rögzített)|
-
-<sup>3</sup> Ez a szám tartalmazza a várólistán lévő, befejezett, aktív és megszakított feladatokat. Nem tartalmazza a törölt feladatokat. 
-
-A fiókban lévő, 90 napnál régebbi feladatbejegyzések automatikusan törlődnek, még akkor is, ha a rekordok teljes száma a maximális kvóta alatt van. 
-
-## <a name="live-streaming-limits"></a>Élő közvetítéskorlátai
+## <a name="jobs-encoding--analyzing-limits"></a>Feladatok (kódolási & elemzése) korlátok
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| [Élő események](live-events-outputs-concept.md) <sup>(4)</sup> Media Services-fiókonként |5|
-| Élő kimenetek élő eseményenként |3 <sup>(5)</sup> |
+| [Feladatok](transforms-jobs-concept.md) /Media Services fiók | 500 000 <sup>(3)</sup> (rögzített)|
+| Feladathoz tartozó bemenetek száma | 50 (rögzített)|
+| Feladatok kimenete/feladatok | 20 (rögzített) |
+| [Átalakítások](transforms-jobs-concept.md) száma Media Services fiókkal | 100 (rögzített)|
+| Kimenetek átalakítása egy átalakításban | 20 (rögzített) |
+| Fájlok/feladatok bevitele|10 (rögzített)|
+
+<sup>3</sup> ez a szám üzenetsor-, befejezett, aktív és megszakított feladatokat tartalmaz. Nem tartalmazza a törölt feladatokat. 
+
+A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akkor is, ha a rekordok teljes száma nem éri el a maximális kvótát. 
+
+## <a name="live-streaming-limits"></a>Élő közvetítés korlátai
+
+| Erőforrás | Alapértelmezett korlát | 
+| --- | --- | 
+| [Élő események](live-events-outputs-concept.md) <sup>(4)</sup> /Media Services fiók |5|
+| Élő kimenet/élő esemény |3 <sup>(5)</sup> |
 | Élő kimenet maximális időtartama | 25 óra |
 
-<sup>4</sup> Az élő eseménykorlátokkal kapcsolatos részletes információkért lásd: [Élő eseménytípusok összehasonlítása és korlátai.](live-event-types-comparison.md)
+<sup>4</sup> az élő események korlátaival kapcsolatos részletes információkért lásd: [élő eseménytípus összehasonlítása és korlátai](live-event-types-comparison.md).
 
-<sup>5</sup> Az élő kimenetek létrehozásakor kezdődnek, és törléskor leállnak.
+<sup>5</sup> élő kimenet létrehozásakor kezdődik, és a törléskor leáll.
 
-## <a name="packaging--delivery-limits"></a>Csomagolási & szállítási korlátok
+## <a name="packaging--delivery-limits"></a>Csomagolási & kézbesítési korlátok
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| [Végpontok streamelése](streaming-endpoint-concept.md) (leállítva vagy futtatva) Media Services-fiókonként|2 |
+| [Adatfolyam-végpontok](streaming-endpoint-concept.md) (leállított vagy futó) Media Services fiókkal|2 |
 | [Dinamikusjegyzék-szűrők](filters-dynamic-manifest-overview.md)|100|
-| [Streamelési szabályok](streaming-policy-concept.md) | 100 <sup>(6) Az</sup> |
-| Egy eszközhöz egyszerre társított egyedi [streamelési lokátorok](streaming-locators-concept.md) | 100<sup>(7)</sup> (rögzített) |
+| [Streamelési szabályok](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
+| Egy adott eszközhöz társított egyedi [streaming-lokátorok](streaming-locators-concept.md) | 100<sup>(7)</sup> (rögzített) |
 
-<sup>6</sup> Egyéni [streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies)használataesetén a Media Service-fiókhoz korlátozott számú ilyen házirendet kell megterveznie, és újra fel kell használnia őket a StreamingLocatorok számára, amikor ugyanazokra a titkosítási beállításokra és protokollokra van szükség. Nem hozhat létre új streamelési szabályzatot az egyes streamelési lokátorokhoz.
+<sup>6</sup> ha egyéni [folyamatos átviteli szabályzatot](https://docs.microsoft.com/rest/api/media/streamingpolicies)használ, a Media Service-fiókjához korlátozott készletet kell terveznie, és újra fel kell használni a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.
 
-<sup>7</sup> A streamelési lokátorok at nem a felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
+<sup>7</sup> a folyamatos átviteli lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére szolgálnak. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
 
 ## <a name="protection-limits"></a>Védelmi korlátok
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| Beállítások [tartalomkulcs-házirendenként](content-key-policy-concept.md) |30 | 
-| Licencek havonta a Media Services kulcskézbesítési szolgáltatásában szereplő drm-típusok hoz a fiókonként|1,000,000|
+| A [tartalmi kulcsokra vonatkozó házirend](content-key-policy-concept.md) beállításai |30 | 
+| Licencek havonta az egyes DRM-típusok esetében Media Services Key Delivery Service-fiókban|1,000,000|
 
 ## <a name="support-ticket"></a>Támogatási jegy
 
-A nem rögzített erőforrások esetében kérheti a kvóták emelését egy [támogatási jegy](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával. Részletes információkat a kérelemben a kívánt kvótaváltozásokról, a használati esetekről és a szükséges régiókról. <br/>**Ne** hozzon létre további Azure Media Services-fiókokat csak azért, hogy megpróbálja tágítani a korlátokat.
+A nem rögzített erőforrások esetében a [támogatási jegy](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kérheti a kvóták kiemelését. A kérelemben szereplő részletes információkat a kívánt kvóta változásaira, a használati esetekre és a szükséges régiókra vonatkozóan adja meg. <br/>**Ne** hozzon létre további Azure Media Services-fiókokat csak azért, hogy megpróbálja tágítani a korlátokat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Az 5.1-es frissítés telepítése a StorSimple 8000 sorozatú eszközre | Microsoft dokumentumok
-description: A cikk a StorSimple 8000 Series 5.1-es sorozatának 5.1-es sorozatának telepítését ismerteti a StorSimple 8000 sorozatú eszközön.
+title: Az 5,1-es frissítés telepítése a StorSimple 8000 Series eszközön | Microsoft Docs
+description: Ismerteti, hogyan telepíthető a StorSimple 8000 Series Update 5,1 a StorSimple 8000 Series eszközre.
 services: storsimple
 documentationcenter: NA
 author: priestlg
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658039"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>Az 5.1-es frissítés telepítése StorSimple eszközre
+# <a name="install-update-51-on-your-storsimple-device"></a>Az 5,1-es frissítés telepítése a StorSimple-eszközön
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag bemutatja, hogyan telepítheti az 5.1-es frissítést egy korábbi szoftververziót futtató StorSimple-eszközre az Azure Portalon keresztül. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+Ez az oktatóanyag azt ismerteti, hogyan telepítheti a 5,1-es frissítést egy korábbi verziót futtató StorSimple-eszközön a Azure Portal használatával. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-Az 5.1-es frissítés nem zavaró biztonsági frissítéseket tartalmaz. A nem zavaró vagy rendszeres frissítések az Azure Portalon keresztül alkalmazhatók <!--or by the hotfix method-->.
+Az 5,1-es frissítés magában foglalja a nem zavaró biztonsági frissítéseket. A nem zavaró vagy rendszeres frissítések a Azure Portal használatával alkalmazhatók <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * Az 5.1-es frissítés kötelező frissítés, amelyet azonnal telepíteni kell. További információt az [5.1-es frissítésről szóló kiadási megjegyzések című témakörben talál.](storsimple-update51-release-notes.md)
-> * A telepítés előtt manuális és automatikus előzetes ellenőrzéseket végeznek az eszköz állapotának meghatározására a hardverállapot és a hálózati kapcsolat szempontjából. Ezek az előzetes ellenőrzések csak akkor hajtják végre, ha alkalmazza a frissítéseket az Azure Portalon.
-> * Ha a gyorsjavítási módszerrel szeretné telepíteni, forduljon a [Microsoft támogatási szolgálatához.](mailto:support@microsoft.com)
+> * Az 5,1-es frissítés kötelezően frissül, és azonnal telepíteni kell. További információ: 5,1-es [kibocsátási megjegyzések frissítése](storsimple-update51-release-notes.md).
+> * A telepítés előtt manuális és automatikus ellenőrzéseket végeznek az eszközök állapotának meghatározásához a hardver állapota és a hálózati kapcsolat alapján. Ezeket az előzetes ellenőrzéseket csak akkor hajtja végre, ha a Azure Portalről alkalmazza a frissítéseket.
+> * Ha a gyorsjavítási módszer használatával szeretné telepíteni, forduljon a [Microsoft ügyfélszolgálatahoz](mailto:support@microsoft.com).
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,12 +45,12 @@ Az 5.1-es frissítés nem zavaró biztonsági frissítéseket tartalmaz. A nem z
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>Az 5.1-es frissítés telepítése az Azure Portalon keresztül
+## <a name="install-update-51-through-the-azure-portal"></a>Telepítse a 5,1-es frissítést a Azure Portal
 
-Az alábbi lépésekkel frissítheti az eszközt az [5.1-es frissítésre.](storsimple-update51-release-notes.md)
+Az alábbi lépések végrehajtásával frissítheti az eszközt az 5,1-es [frissítéssel](storsimple-update51-release-notes.md).
 
 > [!NOTE]
-> A Microsoft további diagnosztikai információkat vesz fel az eszközről. Ennek eredményeképpen, amikor műveleti csapatunk azonosítja a problémákat okozó eszközöket, jobban fel vagyunk szerelve az eszközről származó adatok gyűjtésére és a problémák diagnosztizálására.
+> A Microsoft további diagnosztikai adatokat kér le az eszközről. Ennek eredményeképpen, amikor az operatív csapatunk olyan eszközöket azonosít, amelyekkel problémák léptek fel, jobban felkészültünk az adatok gyűjtésére az eszközről és a problémák diagnosztizálására.
 
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
@@ -58,17 +58,17 @@ Az alábbi lépésekkel frissítheti az eszközt az [5.1-es frissítésre.](stor
 
     ![Eszköz kiválasztása](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Nyissa meg az **Eszközbeállítások** > **Eszközfrissítések lapot.**
+2. Navigáljon az eszközbeállítások**eszköz frissítései** **menüpontra** > .
 
-    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update-51/update2.png)
+    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Értesítés jelenik meg, ha új frissítések érhetők el. Másik lehetőségként az **Eszközfrissítések** panelen kattintson a **Frissítések bekeresése gombra.** Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
+3. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése**lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
-    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update-51/update3.png)
+    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update3.png)
 
-4. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson **a Frissítések telepítése gombra.** A **Rendszeres frissítések megerősítése** panelen tekintse át a frissítések alkalmazása előtt végrehajtandó előfeltételeket. Jelölje be a jelölőnégyzetet, jelezve, hogy készen áll az eszköz frissítésére, majd kattintson a **Telepítés gombra.**
+4. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése**elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés**gombra.
 
-    ![Kattintson az Eszközfrissítések elemre](./media/storsimple-8000-install-update-51/update4.png)
+    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Megkezdődik az előfeltételek ellenőrzése. Ezekbe az ellenőrzésekbe a következők tartoznak:
    
@@ -76,9 +76,9 @@ Az alábbi lépésekkel frissítheti az eszközt az [5.1-es frissítésre.](stor
    * **A hardverösszetevők állapotának ellenőrzései** annak ellenőrzéséhez, hogy a StorSimple eszközön lévő összes hardverösszetevő kifogástalan állapotú legyen.
    * **DATA 0 ellenőrzések** annak ellenőrzéséhez, hogy a DATA 0 engedélyezett legyen az eszközön. Ha ez az illesztőfelület nem engedélyezett, engedélyeznie kell, majd újra kell próbálkoznia.
 
-     A frissítés csak akkor töltődik le és települ, ha az összes ellenőrzés sikeresen befejeződött. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az előzetes ellenőrzések sikertelenek, akkor megkapja a hiba okait. Oldja meg ezeket a problémákat, majd próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
+     A frissítés letöltése és telepítése csak akkor történik meg, ha az összes ellenőrzés sikeresen befejeződött. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az előzetes ellenőrzések sikertelenek, akkor a hiba okai lesznek elérhetők. Oldja meg ezeket a problémákat, majd próbálja megismételni a műveletet. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
 
-7. Az előzetes ellenőrzések sikeres befejezése után létrejön egy frissítési feladat. A frissítési feladat sikeres létrehozásáról értesítést kap.
+7. Az előzetes ellenőrzések sikeres befejeződése után létrejön egy frissítési feladatok. A frissítési feladat sikeres létrehozásáról értesítést kap.
    
     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update6.png)
    
@@ -88,14 +88,14 @@ Az alábbi lépésekkel frissítheti az eszközt az [5.1-es frissítésre.](stor
 
     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update8.png)
 
-     A frissítési feladat előrehaladását az **Eszközbeállítások > feladatok**területen is figyelheti. A **Feladatok** panelen láthatja a frissítés folyamatát.
+     Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból**is. A **feladatok** panelen láthatja a frissítés folyamatát.
 
      ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update7.png)
 
-10. A feladat befejezése után keresse meg az **Eszközbeállítások > Eszközfrissítések .** A szoftver verzióját most frissíteni kell.
+10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései**elemre. A szoftver verzióját most frissíteni kell.
 
 
-Ellenőrizze, hogy az eszközön fut-e a **StorSimple 8000 Series 5.1 frissítése (6.3.9600.17885)**. Az **utolsó frissítés dátumát** módosítani kell.
+Ellenőrizze, hogy az eszközön fut-e a **StorSimple 8000 Series Update 5,1 (6.3.9600.17885)**. A **legutóbbi frissítés dátumát** módosítani kell.
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az [5.1-es frissítés kiadásáról.](storsimple-update51-release-notes.md)
+További információ az 5,1-es [frissítésről](storsimple-update51-release-notes.md).

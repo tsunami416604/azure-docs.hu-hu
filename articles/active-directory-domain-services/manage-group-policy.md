@@ -1,6 +1,6 @@
 ---
-title: Csoportházirend létrehozása és kezelése az Azure AD tartományi szolgáltatásokban | Microsoft dokumentumok
-description: Megtudhatja, hogyan szerkesztheti a beépített csoportházirend-objektumokat, és hogyan hozhat létre saját egyéni szabályzatokat egy Azure Active Directory tartományi szolgáltatások által felügyelt tartományban.
+title: Csoportházirend létrehozása és kezelése Azure AD Domain Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan szerkesztheti a beépített csoportházirend-objektumokat (GPO-kat), és hogyan hozhat létre saját egyéni házirendeket egy Azure Active Directory Domain Services felügyelt tartományban.
 author: iainfoulds
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -11,116 +11,116 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655039"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Egy Azure AD tartományi szolgáltatások által kezelt tartományban
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
 
-Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) felhasználói és számítógép-objektumainak beállításait gyakran csoportházirend-objektumok (GSo-k) használatával kezelik. Az Azure AD DS beépített csoportházirend-azonosítókat tartalmaz az *AADDC-felhasználók* és az *AADDC-számítógépek tárolókhoz.* Ezeket a beépített csoportházirend-csoportokat testreszabhatja a csoportházirend szükség szerint történő konfigurálásához. Az *Azure AD DC rendszergazdák csoportjának* tagjai csoportházirend-felügyeleti jogosultságokkal rendelkeznek az Azure AD DS-tartományban, és egyéni csoportházirend-azonosítókat és szervezeti egységeket is létrehozhatnak. A csoportházirendről és annak működéséről a [Csoportházirend áttekintése][group-policy-overview]című témakörben talál további információt.
+Azure Active Directory Domain Services (Azure AD DS) felhasználói és számítógép-objektumainak beállításait a rendszer gyakran Csoportházirend objektumok (GPO-k) használatával kezeli. Az Azure AD DS beépített csoportházirend-objektumokat tartalmaz a *AADDC-felhasználók* és a *AADDC számítógép* -tárolók számára. Ezeket a beépített csoportházirend-objektumokat testreszabhatja úgy, hogy a környezetéhez szükség szerint konfigurálja Csoportházirend. Az *Azure ad DC-rendszergazdák* csoport tagjai csoportházirend rendszergazdai jogosultságokkal rendelkeznek az Azure AD DS tartományban, és egyéni csoportházirend-objektumokat és szervezeti egységeket (OU-ket) is létrehozhatnak. További információ a Csoportházirendről és annak működéséről: [csoportházirend Overview (áttekintés][group-policy-overview]).
 
-Hibrid környezetben a helyszíni Activeád-ds-környezetben konfigurált csoportházirendek nincsenek szinkronizálva az Azure AD DS-sel. A felhasználók vagy számítógépek konfigurációs beállításainak definiálásához az Azure AD DS-ben, szerkesztse az egyik alapértelmezett csoportházirend-azonosítót, vagy hozzon létre egy egyéni csoportházirend-jámfort.
+Hibrid környezetben a helyszíni AD DS környezetekben konfigurált csoportházirendek nem szinkronizálhatók az Azure AD DS. Az Azure AD DSban található felhasználók vagy számítógépek konfigurációs beállításainak megadásához szerkessze az egyik alapértelmezett csoportházirend-objektumot, vagy hozzon létre egy egyéni GPO-t.
 
-Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend-kezelési eszközöket, majd szerkesztheti a beépített csoportházirend-csoportokat, és egyéni csoportházirend-csoportokat hozhat létre.
+Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend felügyeleti eszközöket, és hogyan szerkesztheti a beépített csoportházirend-objektumokat, és hogyan hozhat létre egyéni csoportházirend-objektumokat.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
+A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
-    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
-* Az Azure AD DS felügyelt tartományához csatlakozott Windows Server felügyeleti virtuális gép.
-    * Szükség esetén végezze el az oktatóanyagot [a Windows Server virtuális gép létrehozásához, és csatlakozzon egy felügyelt tartományhoz.][create-join-windows-vm]
-* Egy felhasználói fiók, amely az *Azure AD DC rendszergazdák* csoportjának tagja az Azure AD-bérlőben.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm].
+* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
 
 > [!NOTE]
-> A csoportházirend felügyeleti sablonjait úgy használhatja, hogy az új sablonokat a felügyeleti munkaállomásra másolja. Másolja az *.admx* fájlokat a `%SYSTEMROOT%\PolicyDefinitions` területi *.adml* `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`fájlokba, és másolja a programba, ahol `Language-CountryRegion` megegyezik az *.adml* fájlok nyelvével és régiójával.
+> Csoportházirend Felügyeleti sablonok az új sablonok felügyeleti munkaállomásra másolásával is használhatja. Másolja az *. admx* fájlokat a `%SYSTEMROOT%\PolicyDefinitions` ba `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, és másolja a területi beállítások *. adml* fájlokat a re, `Language-CountryRegion` ahol a megegyezik a *. adml* fájlok nyelvével és régiójával.
 >
-> Másolja például az *.adml* fájlok angol,Egyesült Államok `\en-us` beli verzióját a mappába.
+> Másolja például a *. adml* fájl angol, Egyesült Államok verzióját a `\en-us` mappába.
 >
-> Azt is megteheti, hogy központilag tárolja a csoportházirend felügyeleti sablonaz Azure AD DS felügyelt tartomány részét képezi tartományvezérlőkön. További információt a [Csoportházirend felügyeleti sablonjainak központi áruházának létrehozása és kezelése a Windows rendszerben](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)című témakörben talál.
+> Azt is megteheti, hogy központilag tárolja a Csoportházirend felügyeleti sablont az Azure AD DS felügyelt tartomány részét képező tartományvezérlőkön. További információ: [Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése a Windowsban](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
-## <a name="install-group-policy-management-tools"></a>Csoportházirend-kezelő eszközök telepítése
+## <a name="install-group-policy-management-tools"></a>Csoportházirend felügyeleti eszközök telepítése
 
-A csoportházirend-objektum (GSO-k) létrehozásához és konfigurálásához telepítenie kell a Csoportházirend-kezelő eszközöket. Ezek az eszközök a Windows Server szolgáltatásaként telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítéséről a [Távoli kiszolgálófelügyeleti eszközök (RSAT)][install-rsat]telepítése című témakörben talál további információt.
+Csoportházirend objektum (GPO-k) létrehozásához és konfigurálásához telepítenie kell a Csoportházirend felügyeleti eszközöket. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
-1. Jelentkezzen be a felügyeleti virtuális gép. Az Azure Portal használatával való csatlakozáslépéseiről a [Csatlakozás Windows Server virtuális géphez][connect-windows-server-vm]című témakörben található.
-1. **A Kiszolgálókezelőnek** alapértelmezés szerint meg kell nyitnia, amikor bejelentkezik a virtuális gépre. Ha nem, válassza a **Start** menü **Kiszolgálókezelő parancsát.**
-1. A **Kiszolgálókezelő** ablak *Irányítópult* ablakában válassza a **Szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *Szerepkörök és szolgáltatások hozzáadása varázsló*Kezdés **előtt** lapján válassza a **Tovább**lehetőséget.
-1. A *Telepítés típusmezőben*hagyja bejelölve a **szerepkör- vagy szolgáltatásalapú telepítési** beállítást, és válassza a **Tovább**gombot.
-1. A **Kiszolgálókiválasztása** lapon válassza ki az aktuális virtuális gépelemet a kiszolgálókészletből, például *myvm.aaddscontoso.com*, majd válassza a **Tovább**gombot.
-1. A **Kiszolgálói szerepkörök** lapon kattintson a **Tovább gombra.**
-1. A **Szolgáltatások** lapon válassza a **Csoportházirend kezelése** szolgáltatást.
+1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
+1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
+1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
+1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
+1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
+1. A **szolgáltatások** lapon válassza ki a **csoportházirend felügyeleti** funkciót.
 
-    ![Telepítse a "Csoportházirend kezelése" a Szolgáltatások lapról](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
+    ![A "Csoportházirend felügyelet" telepítése a szolgáltatások lapról](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. A **Megerősítés** lapon válassza a **Telepítés**lehetőséget. A Csoportházirend-kezelési eszközök telepítése eltarthat egy-két percig.
-1. Ha a szolgáltatás telepítése befejeződött, válassza a **Bezárás** lehetőséget a **Szerepkörök és szolgáltatások hozzáadása** varázslóból való kilépéshez.
+1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A Csoportházirend felügyeleti eszközök telepítése egy-két percet is igénybe vehet.
+1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
-## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>A Csoportházirend kezelése konzol megnyitása és objektum szerkesztése
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>A Csoportházirend-kezelő konzol megnyitása és objektum szerkesztése
 
-Alapértelmezett csoportházirend-objektumok (CSOPORTházirend-objektumok) léteznek a felhasználók és a számítógépek egy Azure AD DS felügyelt tartományban. Ha a Csoportházirend kezelése szolgáltatás telepítve van az előző szakaszból, tekintsünk meg és szerkesszünk egy meglévő csoportházirend-jámfort. A következő szakaszban egyéni csoportházirend-szolgáltatót hoz létre.
+Alapértelmezett csoportházirend-objektumok (GPO-k) léteznek az Azure AD DS felügyelt tartományában lévő felhasználók és számítógépek számára. Az előző szakaszban telepített Csoportházirend felügyeleti szolgáltatással megtekintheti és szerkesztheti a meglévő csoportházirend-objektumokat. A következő szakaszban létrehozhat egy egyéni csoportházirend-objektumot.
 
 > [!NOTE]
-> A csoportházirend felügyeletéhez egy Azure AD DS felügyelt tartományban, be kell jelentkeznie egy felhasználói fiókba, amely tagja az *AAD DC rendszergazdák* csoportnak.
+> A csoportházirend Azure AD DS felügyelt tartományban való felügyeletéhez be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
 
-1. A kezdőképernyőn válassza a **Felügyeleti eszközök lehetőséget.** Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **Csoportházirend-kezelést** is.
-1. A Csoportházirend kezelése konzol (GPMC) megnyitásához válassza a **Csoportházirend kezelése**lehetőséget.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **csoportházirend felügyeletet** is.
+1. A Csoportházirend-kezelő konzol (GPMC) megnyitásához válassza a **csoportházirend felügyelet**lehetőséget.
 
-    ![A Csoportházirend kezelése konzol készen áll a csoportházirend-objektumok szerkesztésére](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+    ![A Csoportházirend-kezelő konzol készen áll a csoportházirend-objektumok szerkesztésére](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Az Azure AD DS által felügyelt tartományban két beépített csoportházirend-objektum (GSo) található – az egyik az *AADDC computers* tárolóhoz, a másik pedig az *AADDC-felhasználók* tárolóhoz tartozik. Ezeket a csoportházirend-ok testreszabásához konfigurálhatja a csoportházirendet szükség szerint az Azure AD DS felügyelt tartományon belül.
+Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt tartományhoz – egyet a *AADDC számítógépek* tárolóhoz, egyet pedig a *AADDC-felhasználók* tárolóhoz. Ezeket a csoportházirend-objektumokat testreszabhatja úgy, hogy szükség szerint konfigurálja a csoportházirendet az Azure AD DS felügyelt tartományon belül.
 
-1. A **Csoportházirend kezelése** konzolon bontsa ki az **Erdő: aaddscontoso.com** csomópontot. Ezután **bontsa** ki a Tartományok csomópontokat.
+1. A **csoportházirend felügyeleti** konzolon bontsa ki az **erdő: aaddscontoso.com** csomópontot. Ezután bontsa ki a **tartományok** csomópontokat.
 
-    Az *AADDC számítógépek* és az *AADDC-felhasználók*számára két beépített tároló létezik. Ezek a tárolók mindegyike egy alapértelmezett csoportházirend-ormány t alkalmazva.
+    Két beépített tároló létezik a *AADDC számítógépek* és a *AADDC-felhasználók*számára. Ezen tárolók mindegyike alapértelmezett GPO-t alkalmaz.
 
-    ![Az alapértelmezett "AADDC számítógépek" és "AADDC-felhasználók" tárolókra alkalmazott beépített csoportházirend-kezelők](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
+    ![Az alapértelmezett "AADDC Computers" és "AADDC Users" tárolók esetében alkalmazott beépített csoportházirend-objektumok](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Ezek a beépített csoportházirend-kezelők testreszabhatók az Azure AD DS felügyelt tartományának adott csoportszabályzatának konfigurálásához. Válassza ki jobbra az egyik csoportházirend-csoportházirend-csoport rendszert, például az *AADDC Computers csoportházirend-ormát,* majd válassza **a Szerkesztés... parancsot.**
+1. Ezek a beépített csoportházirend-objektumok testreszabhatók meghatározott csoportházirendek konfigurálásához az Azure AD DS felügyelt tartományon. Kattintson a jobb gombbal valamelyik csoportházirend-objektumra, például a *AADDC számítógépek csoportházirend-objektumára*, majd válassza a **Szerkesztés...** lehetőséget.
 
-    ![Válassza ki a "Szerkesztés" lehetőséget az egyik beépített csoportházirend-szervezet számára](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
+    ![Válassza a beépített csoportházirend-objektumok egyikének szerkesztésére szolgáló lehetőséget.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-1. A Csoportházirend-kezelés szerkesztője eszköz lehetővé teszi a csoportházirend-objektum testreszabását, például *a fiókházirendek*:
+1. Megnyílik a Csoportházirend-felügyeleti szerkesztő eszköz, amely lehetővé teszi a csoportházirend-objektum testreszabását, például a *fiókok házirendjeit*:
 
-    ![A csoportházirend-kiszolgáló testreszabása a beállítások szükség szerint való konfigurálásához](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Csoportházirend-objektum testreszabása a szükséges beállítások megadásához](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-    Ha végzett, a házirend mentéséhez válassza **a Fájl > mentés i.** A számítógépek alapértelmezés szerint 90 percenként frissítik a csoportházirendet, és alkalmazzák a módosításokat.
+    Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
-## <a name="create-a-custom-group-policy-object"></a>Egyéni csoportházirend-objektum létrehozása
+## <a name="create-a-custom-group-policy-object"></a>Egyéni Csoportházirend objektum létrehozása
 
-Hasonló házirend-beállítások csoportosításához gyakran hoz létre további csoportházirend-csoportokat ahelyett, hogy az összes szükséges beállítást alkalmazna az egyetlen, alapértelmezett csoportházirend-rendszerben. Az Azure AD DS segítségével létrehozhatja vagy importálhatja saját egyéni csoportházirend-objektumait, és összekapcsolhatja őket egy egyéni szervezeti egységhez. Ha először létre kell hoznia egy egyéni szervezeti egységet, olvassa [el az Egyéni szervezeti egység létrehozása az Azure AD DS felügyelt tartományában című témakört.](create-ou.md)
+A hasonló házirend-beállítások csoportosításához gyakran további csoportházirend-objektumokat kell létrehoznia, ahelyett, hogy az egyetlen, alapértelmezett GPO-ban alkalmazza az összes szükséges beállítást. Az Azure AD DS használatával létrehozhatja vagy importálhatja saját egyéni csoportházirend-objektumait, és összekapcsolhatja azokat egy egyéni szervezeti egységgel. Ha először létre kell hoznia egy egyéni szervezeti egységet, tekintse meg az [Egyéni szervezeti egység létrehozása Azure AD DS felügyelt tartományban](create-ou.md)című témakört.
 
-1. A **Csoportházirend kezelése** konzolon válassza ki az egyéni szervezeti egységet( OU), például a *MyCustomOU-t.* Válassza ki a jobb gombot, és válassza **a Csoportházirend-kiszolgáló létrehozása lehetőséget ebben a tartományban, és itt kapcsolja össze...**:
+1. A **csoportházirend felügyeleti** konzolon válassza ki az egyéni szervezeti egységet (OU), például *MyCustomOU*. Kattintson a jobb gombbal a szervezeti egységre, majd válassza a **csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás itt...**:
 
-    ![Egyéni csoportházirend-kiszolgáló létrehozása a Csoportházirend kezelése konzolon](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+    ![Egyéni csoportházirend-objektum létrehozása a Csoportházirend felügyeleti konzolon](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
-1. Adja meg az új csoportházirend-csoportházirend-orvának a nevét, például *az Egyéni csoportházirend-csoportházirend-csoport házirendje,* majd kattintson az **OK gombra.** Ezt az egyéni csoportházirend-ormányt egy meglévő csoportházirend-csoportházirend-szolgáltatóra és házirend-beállításokra is alapozhatja.
+1. Adja meg az új csoportházirend-objektum nevét, például *az egyéni csoportházirend-objektumot*, majd kattintson **az OK gombra**. Ezt az egyéni csoportházirend-objektumot kiválaszthatja egy meglévő csoportházirend-objektumra, és beállíthatja a házirend-beállításokat.
 
-    ![Az új egyéni gpo nevének megadása](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
+    ![Adja meg az új egyéni csoportházirend-objektum nevét](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-1. Az egyéni gpo jön létre, és kapcsolódik az egyéni szervezeti egység. A házirend-beállítások konfigurálásához válassza ki a jobb gombot az egyéni csoportházirend-szolgáltatóval, és válassza a **Szerkesztés... parancsot:**
+1. Az egyéni csoportházirend-objektum létrejön, és az egyéni szervezeti egységhez van csatolva. A házirend-beállítások konfigurálásához kattintson a jobb gombbal az egyéni csoportházirend-objektumra, és válassza a **Szerkesztés...** lehetőséget:
 
-    ![Válassza ki az egyéni házirend-eszköz házirend-eszközének "szerkesztése" lehetőséget](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+    ![Válassza az egyéni csoportházirend-objektum szerkesztése lehetőséget](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
 
-1. A **Csoportházirend kezelése szerkesztő** vel testre szabhatja a csoportházirend-objektumot:
+1. A **csoportházirend-felügyeleti szerkesztő** megnyílik, hogy lehetővé tegye a csoportházirend-objektum testreszabását:
 
-    ![A csoportházirend-kiszolgáló testreszabása a beállítások szükség szerint való konfigurálásához](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Csoportházirend-objektum testreszabása a szükséges beállítások megadásához](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
-    Ha végzett, a házirend mentéséhez válassza **a Fájl > mentés i.** A számítógépek alapértelmezés szerint 90 percenként frissítik a csoportházirendet, és alkalmazzák a módosításokat.
+    Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
 ## <a name="next-steps"></a>További lépések
 
-A Csoportházirend kezelése konzollal konfigurálható csoportházirend-beállításokról a [Csoportházirend-beállításelemek használata][group-policy-console]című témakörben olvashat bővebben.
+További információ a Csoportházirend-kezelő konzol használatával konfigurálható elérhető Csoportházirend beállításokról: [csoportházirend beállításelemek][group-policy-console]használata.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
