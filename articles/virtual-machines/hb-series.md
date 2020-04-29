@@ -1,6 +1,6 @@
 ---
-title: HB-sorozat - Azure virtuális gépek
-description: A HB sorozatú virtuális gépekre vonatkozó előírások.
+title: HB-sorozat – Azure Virtual Machines
+description: A HB sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 600f10e81742e9bb66c800b747fd7b2dc062754d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164831"
 ---
 # <a name="hb-series"></a>HB-sorozat
 
-A HB sorozatú virtuális gépek a memória sávszélessége által vezérelt alkalmazásokhoz vannak optimalizálva, például a folyadékdinamikához, az explicit véges elemek elemzéséhez és az időjárás modellezéséhez. A HB virtuális gépek 60 AMD EPYC 7551 processzormagot, 4 GB RAM-ot cpu magonként és egyidejű többszálas működés nélkül tartalmaznak. A HB virtuális gép akár 260 GB/s memóriasávszélességet is biztosít.
+A HB sorozatú virtuális gépek a memória-sávszélesség által vezérelt alkalmazások számára vannak optimalizálva, mint például a Fluid Dynamics, a explicit véges elemek elemzése és az időjárási modellezés. A HB-beli virtuális gépeken 60 AMD EPYC 7551 processzor-mag, 4 GB RAM/CPU mag, egyidejű többszálúség nélkül. A HB virtuális gépek akár 260 GB/s memóriát is biztosítanak a memória sávszélességéhez.
 
 ACU: 199-216
 
-Prémium szintű tárhely: Támogatott
+Premium Storage: támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Támogatott
+Premium Storage gyorsítótárazás: támogatott
 
-Élő áttelepítés: Nem támogatott
+Élő áttelepítés: nem támogatott
 
-Memóriamegőrzési frissítések: Nem támogatott
+Memória-megőrzési frissítések: nem támogatott
 
-| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alap CPU-frekvencia (GHz) | All-cores frekvencia (GHz, csúcs) | Egymagos frekvencia (GHz, csúcs) | RDMA teljesítmény (Gb/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Maximális Ethernet hálózati adapterek |
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Ethernet hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Összes | 700 | 4 | 1 |
 
@@ -45,4 +45,4 @@ Memóriamegőrzési frissítések: Nem támogatott
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

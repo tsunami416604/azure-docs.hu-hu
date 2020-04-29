@@ -1,5 +1,5 @@
 ---
-title: HC-sorozat – Azure virtuális gépek
+title: HC-sorozat – Azure Virtual Machines
 description: A HC-sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: jonbeck7
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164780"
 ---
 # <a name="hc-series"></a>HC-sorozat
 
-A HC-sorozatú virtuális gépek a sűrű számítással vezérelt alkalmazásokhoz vannak optimalizálva, például implicit véges elemelemzésre, molekuláris dinamikára és számítási kémiára. A HC virtuális gépek 44 Intel Xeon Platinum 8168 processzormagot, cpumagonként 8 GB RAM-ot és hyperthreading nélküli processzormagot tartalmaznak. Az Intel Xeon Platinum platform támogatja az Intel gazdag ökoszisztéma szoftver eszközök, mint például az Intel Math Kernel Library.
+A HC sorozatú virtuális gépek a sűrű számítások által vezérelt alkalmazások számára vannak optimalizálva, mint például az implicit, véges elemek elemzése, a molekuláris dinamika és a számítási kémia. A HC-alapú virtuális gépek a 44 Intel Xeon Platinum 8168 processzor-magot, a CPU-mag 8 GB RAM-ot, a feleznie pedig nem rendelkeznek. Az Intel Xeon Platinum platform támogatja az Intel olyan szoftverek gazdag ökoszisztémáját, mint az Intel Math kernel Library.
 
 ACU: 297-315
 
-Prémium szintű tárhely: Támogatott
+Premium Storage: támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Támogatott
+Premium Storage gyorsítótárazás: támogatott
 
-Élő áttelepítés: Nem támogatott
+Élő áttelepítés: nem támogatott
 
-Memóriamegőrzési frissítések: Nem támogatott
+Memória-megőrzési frissítések: nem támogatott
 
-| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alap CPU-frekvencia (GHz) | All-cores frekvencia (GHz, csúcs) | Egymagos frekvencia (GHz, csúcs) | RDMA teljesítmény (Gb/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Maximális Ethernet hálózati adapterek |
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Ethernet hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Összes | 700 | 4 | 1 |
 
@@ -45,4 +45,4 @@ Memóriamegőrzési frissítések: Nem támogatott
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

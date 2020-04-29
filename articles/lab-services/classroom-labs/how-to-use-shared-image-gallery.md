@@ -1,6 +1,6 @@
 ---
-title: Megosztott képgaléria használata az Azure Lab Servicesben | Microsoft dokumentumok
-description: Megtudhatja, hogyan konfigurálhatja a tesztkörnyezet-fiókot egy megosztott képtár használatára, hogy a felhasználó megoszthassa a lemezképet másokkal, és egy másik felhasználó a lemezkép segítségével hozzon létre egy sablonvirtuális gép a laborban.
+title: Közös rendszerkép-katalógus használata Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat egy Lab-fiókot megosztott képkatalógus használatára úgy, hogy egy felhasználó megoszthat egy képet a másikkal, és egy másik felhasználó is használhatja a rendszerképet a sablon létrehozásához a laborban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190449"
 ---
-# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képtár használata az Azure Lab Servicesben
-Ez a cikk bemutatja, hogyan tanárok / labor admin mentheti a sablon virtuálisgép-kép, hogy azt újra mások is. Ezeket a képeket a rendszer egy megosztott [Azure-képgalériába](../../virtual-machines/windows/shared-image-galleries.md)menti. Első lépésként a labor rendszergazdája egy meglévő megosztott képgalériát csatol a laborfiókhoz. A megosztott képgaléria csatlakoztatása után a laborfiókban létrehozott laborok képeket menthet a megosztott képgalériába. Más tanárok is kiválaszthatják ezt a képet a megosztott képgalériából, hogy sablont hozzanak létre az osztályaikszámára. 
+# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
+Ebből a cikkből megtudhatja, hogy a tanárok/labor-rendszergazdák hogyan menthetik a sablonhoz tartozó virtuálisgép-rendszerképeket, hogy azok újra felhasználhatók legyenek Ezeket a lemezképeket egy Azure-beli [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógusba menti a rendszer. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
 
 > [!NOTE]
-> Jelenleg az Azure Lab Services támogatja a sablon virtuális gépek létrehozását, amelyek csak **általános virtuálisgép-lemezképeken** (nem speciális lemezképeken) alapulnak egy megosztott képgalériában. 
+> A Azure Lab Services jelenleg csak az **általánosított** virtuálisgép-rendszerképek (nem speciális lemezképek) alapján támogatja a sablon alapú virtuális gépek létrehozását. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Hozzon létre egy megosztott képgalériát [az Azure PowerShell](../../virtual-machines/windows/shared-images.md) vagy az [Azure CLI](../../virtual-machines/linux/shared-images.md)használatával.
-- A megosztott képgalériát csatolta a tesztkörnyezet-fiókhoz. A megosztott [képgaléria csatolása és leválasztása](how-to-attach-detach-shared-image-gallery.md)témakörben talál részletes útmutatást.
+- Hozzon létre egy megosztott képtárat [Azure PowerShell](../../virtual-machines/windows/shared-images.md) vagy az [Azure CLI](../../virtual-machines/linux/shared-images.md)használatával.
+- Csatlakoztatta a megosztott képtárat a labor-fiókhoz. Részletes útmutatásért lásd: [megosztott képgyűjtemény csatolása vagy leválasztása](how-to-attach-detach-shared-image-gallery.md).
 
 
-## <a name="save-an-image-to-the-shared-image-gallery"></a>Kép mentése a megosztott képtárba
-A megosztott képgaléria csatlakoztatása után a laborfiók rendszergazdája vagy a tanár mentheti a képet a megosztott képgalériába, hogy azt más tanárok újra feltudják használni. 
+## <a name="save-an-image-to-the-shared-image-gallery"></a>Rendszerkép mentése a megosztott képtárba
+Egy megosztott képkatalógus csatolása után egy labor-fiók rendszergazdája vagy egy oktató mentheti a képeket a megosztott képkatalógusba, hogy más tanárok is felhasználhatják őket. 
 
-1. A **tesztkörnyezet Sablon** lapján válassza az **Exportálás megosztott képtárba** lehetőséget az eszköztáron.
+1. A labor **sablon** lapján válassza az **Exportálás a közös rendszerkép** -katalógusba lehetőséget az eszköztáron.
 
-    ![Kép mentése gomb](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
-2. Az **Exportálás megosztott képtárba** párbeszédpanelen adja meg **a kép nevét**, majd kattintson az Exportálás **gombra.** 
+    ![Rendszerkép mentése gomb](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. Az **Exportálás megosztott rendszerkép** -katalógusba párbeszédpanelen adja meg a **rendszerkép nevét**, majd válassza az **Exportálás**lehetőséget. 
 
-    ![Exportálás a Megosztott képtárba párbeszédpanel](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
-3. A művelet előrehaladását a Sablon lapon **láthatja.** Ez a művelet eltarthat valamikor. 
+    ![Exportálás megosztott képgyűjteménybe párbeszédpanel](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. A művelet előrehaladását a **sablon** lapon tekintheti meg. A művelet eltarthat egy ideig. 
 
-    ![Folyamatban lévő exportálás](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+    ![Exportálás folyamatban](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
 4. Ha az exportálási művelet sikeres, a következő üzenet jelenik meg:
 
-    ![Exportálás befejezve](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
+    ![Az Exportálás befejeződött](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-A megosztott képtárba is feltölthet egy képet egy tesztkörnyezeten kívül. További információt a [Megosztott képgaléria – áttekintés című témakörben talál.](../../virtual-machines/windows/shared-images.md) 
+Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-images.md). 
 
-## <a name="use-an-image-from-the-shared-image-gallery"></a>Kép használata a megosztott képtárból
-A tanár/professzor az új laborlétrehozása során kiválaszthatja a megosztott képgalériában elérhető egyéni képet.
+## <a name="use-an-image-from-the-shared-image-gallery"></a>Rendszerkép használata a megosztott rendszerkép-gyűjteményből
+Egy tanár/professzor kiválaszthat egy egyéni rendszerképet, amely a sablon megosztott képgalériájában elérhető az új tesztkörnyezet létrehozása során.
 
-![Virtuálisgép-kép használata a galériából](../media/how-to-use-shared-image-gallery/use-shared-image.png)
+![Virtuálisgép-rendszerkép használata a katalógusból](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
 ## <a name="next-steps"></a>További lépések
-A megosztott képgalériákról a [megosztott képgalériában](../../virtual-machines/windows/shared-image-galleries.md)talál további információt.
+A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](../../virtual-machines/windows/shared-image-galleries.md).

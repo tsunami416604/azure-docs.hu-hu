@@ -1,137 +1,137 @@
 ---
-title: Azure Application Insights használati kohorszok | Microsoft dokumentumok
-description: Különböző készletek vagy felhasználók, munkamenetek, események vagy műveletek elemzése, amelyek bensőséges dolgokkal rendelkeznek
+title: Azure Application Insights használati kohorszok | Microsoft Docs
+description: Különböző készletek vagy felhasználók, munkamenetek, események vagy olyan műveletek elemzése, amelyekben valami közös
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671086"
 ---
-# <a name="application-insights-cohorts"></a>Alkalmazáselemzési kohorszok
+# <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
-A kohorsz olyan felhasználók, munkamenetek, események vagy műveletek készlete, amelyekben van valami közös. Az Azure Application Insightsban a kohorszokat egy elemzési lekérdezés határozza meg. Azokban az esetekben, amikor a felhasználók vagy események egy adott csoportját ismételten elemezni kell, a kohorszok nagyobb rugalmasságot biztosítanak ahhoz, hogy pontosan azt a készletet fejezhessék ki, amely érdekli.
+Az kohorsz olyan felhasználók, munkamenetek, események vagy műveletek összessége, amelyek közösen rendelkeznek. Az Azure Application Insightsban a kohorszokat egy elemzési lekérdezés határozza meg. Azokban az esetekben, amikor a felhasználók vagy események egy adott halmazát ismételten kell elemezni, a kohorszok nagyobb rugalmasságot biztosítanak, hogy pontosan azt a készletet adja meg, amelyre kíváncsi.
 
 ![Kohorszok ablaktábla](./media/usage-cohorts/001.png)
 
-## <a name="cohorts-versus-basic-filters"></a>Kohorszok kontra alapvető szűrők
+## <a name="cohorts-versus-basic-filters"></a>Kohorszok és alapszintű szűrők
 
-A kohorszokat a szűrőkhöz hasonló módon használják. A kohorszdefiníciók azonban egyéni elemzési lekérdezésekből épülnek fel, így sokkal alkalmazkodóbbak és összetettebbek. A szűrőkkel ellentétben a kohorszokat mentheti, hogy a csapat többi tagja újra felhasználhassa őket.
+A kohorszok a szűrőkhöz hasonló módon használatosak. A kohorszok definíciói azonban egyéni analitikai lekérdezésekből készültek, így sokkal jobban alkalmazkodnak és összetettebbek. A szűrőktől eltérően mentheti a kohorszokat, így a csapat más tagjai újra felhasználhatják őket.
 
-Megadhat egy kohorszt azon felhasználókszámára, akik mind kipróbáltak egy új funkciót az alkalmazásban. Ezt a kohorszt mentheti az Application Insights-erőforrásban. A jövőben könnyen elemezhető az adott felhasználók mentett csoportja.
+Meghatározhatja, hogy a felhasználók milyen kohorszban próbáltak új funkciót használni az alkalmazásban. Ezt a kohorszot mentheti a Application Insights erőforrásban. A későbbiekben könnyen elemezheti az adott felhasználók mentett csoportját.
 
 > [!NOTE]
-> Létrehozása után a kohorszok elérhetők a Felhasználók, munkamenetek, események és felhasználói folyamatok eszközökből.
+> A létrehozásuk után a kohorszok elérhetők a felhasználók, a munkamenetek, az események és a Felhasználókövetés eszközök közül.
 
-## <a name="example-engaged-users"></a>Példa: Elkötelezett felhasználók
+## <a name="example-engaged-users"></a>Példa: résztvevő felhasználók
 
-A csapat úgy definiálja az elkötelezett felhasználót, mint bárkit, aki egy adott hónapban ötször vagy többször használja az alkalmazást. Ebben a szakaszban meghatározza az eljegyzett felhasználók kohorszát.
+A csapata egy résztvevő felhasználót határoz meg, aki egy adott hónapban öt vagy több alkalommal használja az alkalmazást. Ebben a szakaszban megadhatja a résztvevő felhasználók kohorszát.
 
-1. Nyissa meg a Kohorszok eszközt.
+1. Nyissa meg a Kohorszs eszközt.
 
-2. Válassza a **Sablongyűjtemény** lapot. A különböző kohorszok sablonjainak gyűjteménye látható.
+2. Válassza a **sablon-gyűjtemény** fület. A különböző kohorszokhoz tartozó sablonok gyűjteménye látható.
 
-3. Válassza **az Elkötelezett felhasználók lehetőséget - a Használt napok szerint.**
+3. Válassza ki **a résztvevő felhasználókat – a használat napjai szerint**.
 
-    Ennek a kohorsznak három paramétere van:
-    * **Tevékenységek**, ahol kiválaszthatja, hogy mely események és oldalmegtekintések számítanak "használatnak".
-    * **Időszak**, a hónap meghatározása.
-    * **UsedAtLeastCustom**, azon alkalmak száma, amikor a felhasználóknak használniuk kell valamit egy időszakon belül, hogy részt vegyenek.
+    Az kohorsz három paramétert biztosít:
+    * **Tevékenységek**, ahol kiválaszthatja, hogy mely események és oldalletöltések száma "használat".
+    * **Időszak**, egy hónap definíciója.
+    * **UsedAtLeastCustom**, hogy a felhasználóknak hány alkalommal kell használnia egy adott időszakon belül a befoglalt értéket.
 
-4. Módosítsa **a UsedAtLeastCustom** értéket **5+ napra,** és hagyja az **Időszakot** az alapértelmezett 28 napon belül.
+4. Módosítsa **UsedAtLeastCustom** a UsedAtLeastCustom **5 + nap**értékre, és hagyjon **időt** az alapértelmezett 28 napra.
 
-    ![Elkötelezett felhasználók](./media/usage-cohorts/003.png)
+    ![Résztvevő felhasználók](./media/usage-cohorts/003.png)
 
-    Ez a kohorsz most az összes egyéni eseménnyel vagy oldalmegtekintéssel küldött felhasználói azonosítót jelöli az elmúlt 28 nap 5 különböző napján.
+    Most ez az kohorsz az összes egyéni eseménnyel vagy oldal nézettel ellátott felhasználói azonosítót az elmúlt 28 napban 5 külön nappal mutatja.
 
 5. Kattintson a **Mentés** gombra.
 
    > [!TIP]
-   > Adjon nevet a kohorsznak, például "Elkötelezett felhasználók (5+ Nap)." Mentse azt a "Saját jelentések" vagy a "Megosztott jelentések" című helyre, attól függően, hogy azt szeretné, hogy az Application Insights-erőforráshoz hozzáféréssel rendelkező más személyek is lássák ezt a kohorszt.
+   > Adja meg a kohorsz nevét, például a "résztvevő felhasználók (5 + nap)" nevet. Mentse a "saját jelentések" vagy a "megosztott jelentések" kifejezésre attól függően, hogy szeretné-e, ha a Application Insights erőforráshoz hozzáférő más felhasználók is láthassák ezt a kohorszot.
 
-6. Válassza **a Vissza a gyűjteménybe**lehetőséget.
+6. Válassza **a vissza a**katalógushoz lehetőséget.
 
-### <a name="what-can-you-do-by-using-this-cohort"></a>Mit lehet tenni ezzel a kohorszhasználatával?
+### <a name="what-can-you-do-by-using-this-cohort"></a>Mit tehet a következő kohorsz használatával?
 
-Nyissa meg a Felhasználók eszközt. A **Megjelenítés** legördülő lista válassza ki a létrehozott kohorszt a **Felhasználók csoportban.**
+Nyissa meg a felhasználók eszközt. A **Megjelenítés** legördülő listában válassza ki azokat a kohorszokat, amelyeket a **-hez tartozó felhasználók**alatt hozott létre.
 
-Most a Felhasználók eszköz a felhasználók kohorszára van szűrve:
+A felhasználók eszköz mostantól a felhasználók ezen kohorszára van szűrve:
 
-![Adott kohorszra szűrt felhasználók ablaktábla](./media/usage-cohorts/004.png)
+![Felhasználók ablaktábla egy adott kohorszra szűrve](./media/usage-cohorts/004.png)
 
-Néhány fontos dolog, hogy észre:
+Néhány fontos Tudnivaló:
 
-* Ezt a készletet nem hozhatja létre normál szűrőkkel. A dátumlogika fejlettebb.
-* Ezt a kohorszt tovább szűrheti a Felhasználók eszköz normál szűrőivel. Így bár a kohorsz 28 napos ablakokon van definiálva, a Felhasználók eszköz időtartományát továbbra is 30, 60 vagy 90 napra állíthatja be.
+* Ez a készlet nem hozható létre normál szűrők használatával. A dátum logikája fejlettebb.
+* Az kohorszot a felhasználók eszköz normál szűrőinek használatával is szűrheti. Így bár az kohorsz a 28 napos Windowson van meghatározva, a felhasználók eszközön a 30, 60 vagy 90 napig is beállíthatja az időtartományt.
 
-Ezek a szűrők olyan kifinomultabb kérdéseket támogatnak, amelyeket a lekérdezésszerkesztőn keresztül nem lehet kifejezni. Erre példa azok _az emberek, akik az elmúlt 28 napban részt vettek. Hogy viselkedtek ugyanazok az emberek az elmúlt 60 napban?_
+Ezek a szűrők olyan kifinomultabb kérdéseket is támogatnak, amelyeket nem lehet kifejezni a lekérdezés-szerkesztőn keresztül. Ilyenek például az _elmúlt 28 napban résztvevő személyek. Hogyan viselkedtek ugyanezek az elmúlt 60 napban?_
 
-## <a name="example-events-cohort"></a>Példa: Események kohorsz
+## <a name="example-events-cohort"></a>Példa: események kohorsz
 
-Azt is, hogy kohorszok események. Ebben a szakaszban adhatja meg az események és az oldalmegtekintések kohorszát. Ezután láthatja, hogyan kell használni őket a többi eszközből. Ez a kohorsz olyan eseményeket határozhat meg, amelyeket a csapat _aktív használatnak_ tekint, vagy egy bizonyos új funkcióhoz kapcsolódó készletet.
+Az események kohorszait is elvégezheti. Ebben a szakaszban megadhatja az események és a lapok nézeteinek kohorszját. Ezután láthatja, hogyan használhatja őket a többi eszközről. Ez a kohorsz meghatározhatja azokat az eseményeket, amelyeket a csapata az _aktív használatra_ vagy egy adott új szolgáltatáshoz kapcsolódó készletre gondol.
 
-1. Nyissa meg a Kohorszok eszközt.
+1. Nyissa meg a Kohorszs eszközt.
 
-2. Válassza a **Sablongyűjtemény** lapot. A különböző kohorszok sablonjainak gyűjteménye jelenik meg.
+2. Válassza a **sablon-gyűjtemény** fület. Különböző kohorszokhoz tartozó sablonok gyűjteménye látható.
 
-3. Válassza **az Eseményválasztó lehetőséget**.
+3. Válassza az **események választó**elemet.
 
-    ![Képernyőkép az eseményválasztóról](./media/usage-cohorts/006.png)
+    ![Képernyőkép az események választóról](./media/usage-cohorts/006.png)
 
-4. A **Tevékenységek** legördülő lista válassza ki a kohorszban lenni kívánt eseményeket.
+4. A **tevékenységek** legördülő listában válassza ki azokat az eseményeket, amelyeket az kohorszban szeretne használni.
 
-5. Mentsd el a kohorszot, és adj neki nevet.
+5. Mentse a kohorszt, és adjon neki nevet.
 
-## <a name="example-active-users-where-you-modify-a-query"></a>Példa: Aktív felhasználók, ahol módosítja a lekérdezést
+## <a name="example-active-users-where-you-modify-a-query"></a>Példa: az aktív felhasználók, akiknél módosít egy lekérdezést
 
-Az előző két kohorszt legördülő mezők használatával határozták meg. De a kohorszokat is meghatározhatja elemzési lekérdezések használatával a teljes rugalmasság érdekében. Hogy megnézhesse, hogyan, hozzon létre egy kohorszt a felhasználók az Egyesült Királyságból.
+Az előző két kohorsz a legördülő listák használatával lett meghatározva. De a teljes rugalmasság érdekében elemzési lekérdezésekkel is meghatározhatja a kohorszokat. Ha szeretné megtekinteni, hogyan hozhat létre az Egyesült Királyságból származó felhasználókat.
 
-![Animált kép séta használata Kohorsz eszköz](./media/usage-cohorts/cohorts0001.gif)
+![Animált rendszerképek a Kohorszs eszköz használatával](./media/usage-cohorts/cohorts0001.gif)
 
-1. Nyissa meg a Kohorszok eszközt, válassza a **Sablongyűjtemény** lapot, és válassza **az Üres felhasználók kohorsz lehetőséget**.
+1. Nyissa meg a Kohorszs eszközt, válassza a **sablon** -katalógus lapot, és válassza az **üres felhasználók kohorsz**lehetőséget.
 
     ![Üres felhasználók kohorsz](./media/usage-cohorts/001.png)
 
-    Három részből áll:
-   * Markdown-szövegrész, ahol részletesebben leírhatja a kohorszot a csapat többi tagja számára.
+    Három szakaszt tartalmaz:
+   * A Markdown szöveg szakasza, ahol részletesebben leírja a kohorszot a csapat többi részén.
 
-   * A paraméterek szakasz, ahol a saját paramétereket, mint **a tevékenységek** és egyéb legördülő mezők az előző két példa.
+   * A parameters (paraméterek) szakasz, amelyben a saját paramétereket, például a **tevékenységeket** és az előző két példa további legördülő mezőit hajtja végre.
 
-   * Egy lekérdezési szakasz, ahol a kohorszegy egy elemzési lekérdezés használatával definiálható.
+   * Egy lekérdezési szakasz, ahol a kohorszt analitikai lekérdezéssel definiálhatja.
 
-     A lekérdezésszakaszban [elemzési lekérdezést ír.](/azure/kusto/query) A lekérdezés kiválasztja a definiálni kívánt kohorszot leíró sorok bizonyos készletét. A Kohorsz eszköz ezután implicit módon hozzáad egy "| a lekérdezés user_Id" záradékkal összegezve. Ezek az adatok a lekérdezés alatt jelennek meg egy táblában, így meggyőződhet arról, hogy a lekérdezés eredményeket ad vissza.
+     A lekérdezési szakaszban [egy elemzési lekérdezést kell írnia](/azure/kusto/query). A lekérdezés kiválasztja a definiálni kívánt kohorszot leíró sorok bizonyos készletét. A Kohorszs eszköz implicit módon hozzáadja a következőt: "| összefoglalja user_Id "záradékot a lekérdezéshez. Ezek az adatnézetek egy tábla lekérdezése alatt tekinthetők meg, így biztos lehet benne, hogy a lekérdezés az eredményeket adja vissza.
 
      > [!NOTE]
-     > Ha nem látja a lekérdezést, próbálja meg átméretezése a szakaszt, hogy magasabb, és felfedi a lekérdezést. A szakasz elején látható animált .gif az átméretezési viselkedést mutatja be.
+     > Ha nem látja a lekérdezést, próbálja meg átméretezni a szakaszt, hogy az magasabb legyen, és láthatóvá tegye a lekérdezést. A szakasz elején található animált. gif az átméretezési viselkedést szemlélteti.
 
-2. Másolja és illessze be a következő szöveget a lekérdezésszerkesztőbe:
+2. Másolja és illessze be a következő szöveget a lekérdezés-szerkesztőbe:
 
     ```KQL
     union customEvents, pageViews
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Válassza a **Lekérdezés futtatása** lehetőséget. Ha nem látja a felhasználói azonosítók jelennek meg a táblázatban, módosítsa az országot/régiót, ahol az alkalmazás felhasználók.
+3. Válassza a **Lekérdezés futtatása** lehetőséget. Ha nem látja a felhasználói azonosítókat a táblázatban, váltson arra az országra/régióra, ahol az alkalmazás felhasználókkal rendelkezik.
 
-4. Mentse és nevezze el a kohorszot.
+4. Mentse és nevezze el az kohorszt.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-_Egy bizonyos országból/régióból származó felhasználók ból álló kohorszot határoztam meg. Amikor összehasonlítom ezt a kohorsza a Felhasználók eszköz csak beállít egy szűrőt, hogy az ország / régió, látom a különböző eredményeket. miért?_
+_Meghatároztam egy adott ország/régió felhasználóinak kohorszát. Ha összehasonlítom ezt az kohorszot a felhasználók eszközben, hogy csak az adott országra/régióra vonatkozó szűrőt állítson be, különböző eredmények jelennek meg. miért?_
 
-A kohorszok és a szűrők különbözőek. Tegyük fel, hogy van egy kohorsz a felhasználók az Egyesült Királyságban (meghatározott, mint az előző példa), és összehasonlítja az eredményeket a szűrő beállítása "Ország vagy régió = Egyesült Királyság."
+A kohorszok és a szűrők eltérőek. Tegyük fel, hogy az Egyesült Királyságból (például az előző példához hasonlóan) a felhasználók kohorsza van, és összehasonlítja az eredményeit az "ország vagy régió = Egyesült Királyság" szűrő beállításához.
 
-* A kohorsz verzió az okat a felhasználóktól származó összes eseményt megjeleníti, akik egy vagy több eseményt küldtek az Egyesült Királyságból az aktuális időtartományban. Ha ország vagy régió szerint oszlik, valószínűleg sok országot és régiót lát.
-* A szűrők verziója csak az Egyesült Királyságból származó eseményeket jeleníti meg. De ha ország vagy régió szerint oszlasz meg, akkor csak az Egyesült Királyságot látod.
+* A kohorsz verziója az aktuális időtartományban az Egyesült Királyságból érkező, egy vagy több eseményt küldő felhasználók összes eseményét jeleníti meg. Ha ország vagy régió szerint osztja szét, valószínűleg sok országot és régiót láthat.
+* A szűrők verziója csak az Egyesült Királyságból származó eseményeket mutatja. Ha azonban ország vagy régió szerint bontotta, akkor csak az Egyesült Királyság jelenik meg.
 
 ## <a name="learn-more"></a>Részletek
 
 * [Elemzés lekérdezési nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)
 * [Felhasználói folyamatok](usage-flows.md)
-* [Használat – áttekintés](usage-overview.md)
+* [A használat áttekintése](usage-overview.md)

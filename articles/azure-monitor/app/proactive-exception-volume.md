@@ -1,30 +1,30 @@
 ---
-title: A kivételek mennyiségének rendellenes növekedése – Azure Application Insights
-description: Alkalmazáskivételek figyelése az Azure Application Insights intelligens észlelési a kivételmennyiség szokatlan mintákat.
+title: Rendellenes növekedés a kivételek mennyiségében – Azure Application Insights
+description: Alkalmazás-kivételek figyelése az Azure Application Insights az intelligens észleléssel a kivételt okozó kötet szokatlan mintázata esetén.
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671766"
 ---
-# <a name="abnormal-rise-in-exception-volume-preview"></a>A kivétel mennyiségének rendellenes növekedése (előzetes verzió)
+# <a name="abnormal-rise-in-exception-volume-preview"></a>Rendellenes növekedés a kivétel mennyisége (előzetes verzió)
 
-Az Application Insights automatikusan elemzi az alkalmazásban okozott kivételeket, és figyelmezteti a kivételtelemetria szokatlan mintáira.
+Application Insights automatikusan elemzi az alkalmazásban eldobott kivételeket, és figyelmezteti a kivételek telemetria szokatlan mintázatokra.
 
-Ez a funkció nem igényel speciális beállítást, kivéve az alkalmazás kivételjelentési beállításainak [konfigurálását.](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) Akkor aktív, ha az alkalmazás elegendő kivételtelemetriai adatokat hoz létre.
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, kivéve az alkalmazásra vonatkozó [kivétel-jelentéskészítés konfigurálását](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) . Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapom meg az ilyen típusú intelligens észlelési értesítést?
-Előfordulhat, hogy ilyen típusú értesítést kap, ha az alkalmazás egy adott típus kivételeinek száma rendellenesen növekszik egy nap alatt, az előző hét nap során számított alaptervhez képest.
-Gépi tanulási algoritmusok at használnak a kivételek számának növekedésének észlelésére, miközben figyelembe veszi az alkalmazás használatának természetes növekedését.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
+Ez a típusú értesítés akkor fordulhat elő, ha az alkalmazás egy nap során rendellenes növekedést mutat egy adott típusú kivételek számának az elmúlt hét napban számított alaptervhez képest.
+A rendszer gépi tanulási algoritmusokat használ a kivételek számának növekedésének észlelésére, miközben figyelembe veszi az alkalmazás használatának természetes növekedését.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Biztos, hogy az alkalmazásomnak van problémája?
-Nem, az értesítés nem jelenti azt, hogy az alkalmazásnak feltétlenül problémája van. Bár a kivételek túl nagy száma általában alkalmazásproblémát jelez, ezek a kivételek jóindulatúak lehetnek, és az alkalmazás megfelelően kezeli őket.
+## <a name="does-my-app-definitely-have-a-problem"></a>Az alkalmazásom biztosan probléma?
+Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van problémája. Bár a kivételek túlzott száma általában egy alkalmazás hibáját jelzi, a kivételek jóindulatú lehetnek, és az alkalmazás megfelelően kezeli őket.
 
 ## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
-Az értesítések diagnosztikai információkat tartalmaznak a diagnosztikai folyamat támogatásához:
-1. **Osztályozás.** Az értesítés megmutatja, hogy hány felhasználót vagy hány kérelmet érint. Ez segíthet abban, hogy prioritást rendeljen a problémához.
-2. **Hatókör.** A probléma minden forgalmat érint, vagy csak valamilyen műveletet? Ez az információ az értesítésből szerezhető be.
-3. **Diagnosztizálni.** Az észlelés információkat tartalmaz arról a módszerről, amelyből a kivétel történt, valamint a kivétel típusát. A kapcsolódó elemeket és jelentéseket a támogató információkhoz csatolva is használhatja a probléma további diagnosztizálásához.
+Az értesítések közé tartoznak a diagnosztikai információk, amelyek támogatják a diagnosztikai folyamatot:
+1. **Osztályozás.** Az értesítés azt mutatja, hogy hány felhasználó vagy hány kérelem van hatással. Ez segíthet a probléma prioritásának hozzárendelésében.
+2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.
+3. **Diagnosztizálása.** Az észlelés a kivétel eldobásának módszerével, valamint a kivétel típusával kapcsolatos információkat tartalmaz. A probléma további diagnosztizálásához a kapcsolódó elemeket és jelentéseket is használhatja a támogatási információkhoz.

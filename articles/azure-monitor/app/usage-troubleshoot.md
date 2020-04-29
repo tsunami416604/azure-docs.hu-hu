@@ -1,52 +1,52 @@
 ---
 title: Felhasználói elemzési eszközök – Azure Application Insights
-description: Hibaelhárítási útmutató – a webhely- és alkalmazáshasználat elemzése az Application Insights segítségével.
+description: Hibaelhárítási útmutató – a hely és az alkalmazás használatának elemzése a Application Insights használatával.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670916"
 ---
-# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Felhasználói viselkedéselemző eszközök – problémamegoldás az Application Insights ban
-Kérdése van a [felhasználói viselkedéselemző eszközökkel kapcsolatban az Application Insightsban:](usage-overview.md) [Felhasználók, munkamenetek, események,](usage-segmentation.md) [csatornák,](usage-funnels.md) [felhasználói folyamatok,](usage-flows.md) [megőrzés](usage-retention.md)vagy kohorszok? Íme néhány válasz.
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
+Kérdése van a [felhasználói viselkedést elemző eszközökkel kapcsolatban Application Insights](usage-overview.md): [felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [Felhasználókövetés](usage-flows.md), [megőrzés](usage-retention.md)vagy kohorszok? Íme néhány válasz.
 
 ## <a name="counting-users"></a>Felhasználók számlálása
-**A felhasználói viselkedéselemző eszközök azt mutatják, hogy az alkalmazásomnak egy felhasználója/munkamenete van, de tudom, hogy az alkalmazásomnak sok felhasználója/munkamenete van. Hogyan javíthatom ezeket a helytelen számokat?**
+**A felhasználói viselkedés elemzési eszközei azt mutatják, hogy az alkalmazásom egy felhasználóval vagy munkamenettel rendelkezik, de tudom, hogy az alkalmazásom sok felhasználóval vagy munkamenettel rendelkezik. Hogyan oldhatók meg ezek a helytelen számok?**
 
-Az Application Insights minden telemetriai eseménye rendelkezik egy [névtelen felhasználói azonosítóval](../../azure-monitor/app/data-model-context.md) és egy [munkamenet-azonosítóval,](../../azure-monitor/app/data-model-context.md) amelyek két szabványos tulajdonságuk. Alapértelmezés szerint az összes használatelemzési eszköz számolja a felhasználókat és a munkameneteket ezen azonosítók alapján. Ha ezek a szabványos tulajdonságok nincsenek feltöltve egyedi azonosítókkal az alkalmazás minden egyes felhasználójára és munkamenetére vonatkozóan, a használati elemzési eszközökben helytelenül fogja látni a felhasználók és munkamenetek számát.
+A Application Insights összes telemetria-eseményében szerepel egy [névtelen felhasználói azonosító](../../azure-monitor/app/data-model-context.md) és egy [munkamenet-azonosító](../../azure-monitor/app/data-model-context.md) a szabványos tulajdonságaik közül kettőként. Alapértelmezés szerint az összes használati elemzési eszköz a felhasználók és a munkamenetek számát ezen azonosítók alapján számítja ki. Ha ezeket a szabványos tulajdonságokat nem tölti fel egyedi azonosítók az alkalmazás minden felhasználója és munkamenete számára, akkor a használati elemzési eszközökben a felhasználók és a munkamenetek helytelen száma jelenik meg.
 
-Ha egy webalkalmazást figyel, a legegyszerűbb megoldás az [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) hozzáadása az alkalmazáshoz, és győződjön meg arról, hogy a parancsfájlkódrészlet be van töltve minden oldalon, amelyet figyelni szeretne. A JavaScript SDK automatikusan létrehozza a névtelen felhasználói és munkamenet-azonosítókat, majd feltölti a telemetriai eseményeket ezekkel az azonosítókkal, ahogy azok az alkalmazásból kerülnek elküldésre.
+Ha webalkalmazást figyel, a legegyszerűbb megoldás a [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) hozzáadása az alkalmazáshoz, és győződjön meg arról, hogy a parancsfájl-kódrészlet be van töltve minden figyelni kívánt oldalon. A JavaScript SDK automatikusan létrehoz névtelen felhasználói és munkamenet-azonosítókat, majd feltölti a telemetria-eseményeket az alkalmazásból elküldett azonosítókkal.
 
-Ha egy webszolgáltatás (nincs felhasználói felület), [hozzon létre egy telemetriai inicializáló, amely feltölti a névtelen felhasználói azonosító és a munkamenet-azonosító tulajdonságai](usage-send-user-context.md) szerint a szolgáltatás fogalmak egyedi felhasználók és munkamenetek.
+Ha webszolgáltatást figyel (nincs felhasználói felülete), [hozzon létre egy telemetria-inicializáló, amely feltölti a névtelen felhasználói azonosító és a munkamenet-azonosító tulajdonságait](usage-send-user-context.md) a szolgáltatás egyedi felhasználók és munkamenetek fogalmai alapján.
 
-Ha az alkalmazás [hitelesített felhasználói azonosítókat](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)küld, a Felhasználók eszközben hitelesített felhasználói azonosítók alapján számolhat. A "Megjelenítés" legördülő menüben válassza a "Hitelesített felhasználók" lehetőséget.
+Ha az alkalmazás [hitelesített felhasználói azonosítókat](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)küld, akkor a felhasználók eszközön a hitelesített felhasználói azonosítók alapján számíthat. A "Megjelenítés" legördülő menüben válassza a "hitelesített felhasználók" lehetőséget.
 
-A felhasználói viselkedéselemző eszközök jelenleg nem támogatják a számláló felhasználók vagy munkamenetek alapján tulajdonságok nem névtelen felhasználói azonosító, hitelesített felhasználói azonosító, vagy a munkamenet-azonosító.
+A felhasználói viselkedés elemzési eszközei jelenleg nem támogatják a felhasználók és a munkamenetek számlálását a névtelen felhasználói AZONOSÍTÓtól, a hitelesített felhasználói AZONOSÍTÓtól vagy a munkamenet-AZONOSÍTÓtól eltérő tulajdonságok alapján.
 
-## <a name="naming-events"></a>Elnevezési események
-**Az alkalmazásom több ezer különböző oldalmegtekintési és egyéni eseménynévvel rendelkezik. Nehéz megkülönböztetni őket, és a felhasználói viselkedéselemző eszközök gyakran nem válaszolnak. Hogyan oldhatom meg ezeket az elnevezési problémákat?**
+## <a name="naming-events"></a>Események elnevezése
+**Az alkalmazásom több ezer különböző oldal-és egyéni esemény-névvel rendelkezik. Nehéz megkülönböztetni őket egymástól, és a felhasználói viselkedés elemzési eszközei gyakran nem válaszolnak. Hogyan javíthatom ezeket az elnevezési problémákat?**
 
-Az oldalnézet és az egyéni eseménynevek a felhasználói viselkedéselemző eszközökben használatosak. Az események helyes elnevezése elengedhetetlen ahhoz, hogy ezek az eszközök értéket kapjanak. A cél az egyensúly a túl kevés, túlságosan általános név ("Kattintással gomb" és a túl sok,\/túlságosan specifikus név között ("A szerkesztés gombra kattintva http: /www.contoso.com/index").
+Az oldal nézet és az egyéni események nevei a felhasználói viselkedés elemzési eszközein keresztül használatosak. A kiértékelési események is kritikus fontosságúak az ilyen eszközökből származó értékek beszerzéséhez. A cél egy olyan egyensúly, amely a túl kevés, túlságosan általános névvel ("gomb csattant"), és túl sok, túlságosan specifikus névvel rendelkezik ("Szerkesztés gomb rákattintott\/a http:/www.contoso.com/index").
 
-Ha módosítani szeretné az alkalmazás által küldött oldalnézetet és egyéni eseményneveket, módosítania kell az alkalmazás forráskódját, és újra kell telepítenie azokat. **Az Application Insights összes telemetriai adata 90 napig tárolódik, és nem törölhető,** így az eseményneveken végzett módosítások 90 napig tart a teljes jegyzékbe. A névváltoztatást követő 90 napon belül a régi és az új eseménynevek is megjelennek a telemetriai adatokban, ezért módosítsa a lekérdezéseket és kommunikáljon a csapatokon belül, ennek megfelelően.
+Ha módosítani szeretné a lap nézetét és az alkalmazás által küldött egyéni események nevét, meg kell változtatnia az alkalmazás forráskódját, és újra kell telepítenie. A **Application Insightsban lévő összes telemetria-adatérték 90 napig tárolódik, és nem törölhető**, így az események neveiben végzett módosítások teljes egészében a 90 nap lesz. A név módosítása után a 90 nappal a régi és az új esemény neve is megjelenik a telemetria, így a lekérdezéseket és a csapatokon belüli kommunikációt is módosítani kell.
 
-Ha az alkalmazás túl sok oldalnézetnevet küld, ellenőrizze, hogy ezek az oldalnézetnevek manuálisan vannak-e megadva a kódban, vagy az Application Insights JavaScript SDK automatikusan küldi őket:
+Ha az alkalmazás túl sok nézet nevét küldi el, ellenőrizze, hogy a rendszer manuálisan adta-e meg ezeket a nézeteket a kódban, vagy hogy automatikusan elküldje-e őket a Application Insights JavaScript SDK:
 
-* Ha az oldalnézet neveit manuálisan [ `trackPageView` ](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)adja meg a kód az API használatával, módosítsa a nevet, hogy kevésbé specifikus legyen. Kerülje a gyakori hibákat, például az URL-t az oldalnézet nevébe. Ehelyett használja az `trackPageView` API URL-paraméterét. Helyezze át az egyéb részleteket az oldalnézet nevéből az egyéni tulajdonságokba.
+* Ha az oldal nézetének neve manuálisan van megadva a kódban az [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)használatával, módosítsa a nevet kevésbé konkrétra. Kerülje a gyakori hibákat, például az URL-cím elhelyezését az oldal nézetének nevében. Ehelyett használja az `trackPageView` API URL-paraméterét. Más részletek áthelyezése az oldal nézetének nevéből egyéni tulajdonságokba.
 
-* Ha az Application Insights JavaScript SDK automatikusan oldalnézetneveket küld, módosíthatja az oldalak címét, vagy átválthat az oldalnézet nevek manuális küldésére. Az SDK alapértelmezés szerint az egyes lapok [címét](https://developer.mozilla.org/docs/Web/HTML/Element/title) küldi el oldalnézet névként. Meg tudná változtatni a címeket, hogy általánosabb, de szem előtt tartva a SEO és egyéb hatások ez a változás lehetett volna. Az oldalnézet nevek manuális `trackPageView` megadása az API-val felülbírálja az automatikusan gyűjtött neveket, így az oldalcímek módosítása nélkül több általános nevet küldhet a telemetriai adatokban.   
+* Ha a Application Insights JavaScript SDK automatikusan küldi az oldal nézetének neveit, módosíthatja a lapok címeit, vagy átválthat az oldalmegtekintések nevének manuális elküldéséhez. Az SDK alapértelmezés szerint az oldal nézet neveként elküldi az egyes lapok [címét](https://developer.mozilla.org/docs/Web/HTML/Element/title) . Megváltoztathatja a címeket, hogy általánosabbak legyenek, de figyelembe kell vennie a SEO-t és más, a változtatások következményeit is. Az oldalmegtekintési nevek manuális megadásával `trackPageView` az API felülbírálja az automatikusan összegyűjtött neveket, így több általános nevet is küldhet a telemetria a lapok címeinek módosítása nélkül.   
 
-Ha az alkalmazás túl sok egyéni eseménynevet küld, módosítsa a kódot a név kevésbé specifikusakra. Ismét kerülje az URL-címek és más oldalankénti vagy dinamikus információk elhelyezését közvetlenül az egyéni eseménynevekben. Ehelyett helyezze át ezeket az adatokat `trackEvent` az egyéni esemény egyéni tulajdonságaiba az API-val. A helyett például a `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`( `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`a) helyett valami ilyesmit javasolunk.
+Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, módosítsa a kód nevét kevésbé konkrét értékre. Az URL-címek és más, oldalanként vagy dinamikus információk az egyéni események neveiben való közvetlen üzembe helyezésének elkerülése érdekében. Ehelyett helyezze át ezeket az adatokat az egyéni esemény egyéni tulajdonságaiba az `trackEvent` API-val. Például a helyett `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`a következőt javasoljuk: `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Felhasználói viselkedéselemző eszközök – áttekintés](usage-overview.md)
+* [A felhasználói viselkedés elemzési eszközeinek áttekintése](usage-overview.md)
 
 ## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)

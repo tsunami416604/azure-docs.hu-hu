@@ -1,6 +1,6 @@
 ---
-title: Dv3 és Dsv3 sorozatú – Azure virtuális gépek
-description: A Dv3 és Dsv3 sorozatú virtuális gépek specifikációi.
+title: Dv3 és Dsv3 sorozat – Azure Virtual Machines
+description: A Dv3 és a Dsv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164406"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 és DSv3 sorozat
 
-A Dv3 sorozat az Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processzorokon fut, hiperszálas konfigurációban, ami jobb értéket biztosít a legtöbb általános cél számítási feladatok. A memória kibővült (~3,5 GiB/vCPU-ról 4 GiB/vCPU-ra), míg a lemez- és hálózati korlátokat magonként módosították, hogy igazodjanak a hyperthreading-ra való áttéréshez. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memória virtuálisgép-méreteivel, azokat a memóriára optimalizált [Ev3 és Esv3 sorozatba](ev3-esv3-series.md)helyezték át.
+A Dv3 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Hyper-threaded konfigurációban való futtatásával jobb értéket biztosít a legtöbb általános célú munkaterheléshez. A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, ezeket a rendszer áthelyezte a memória-optimalizált [Ev3 és Esv3-sorozatba](ev3-esv3-series.md).
 
-Példa a D-sorozathasználati esetek közé tartoznak a nagyvállalati szintű alkalmazások, relációs adatbázisok, a memóriában belüli gyorsítótárazás és az analitika.
+Példa: a D sorozat használati esetei nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
 
 ## <a name="dv3-series"></a>Dv3-sorozat
 
-A Dv3 sorozatú méretek intel® Xeon® 8171M 2,1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz(Broadwell) vagy Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processzorokon futnak Intel Turbo Boost Technology 2.0 processzorokkal. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+A Dv3 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Intel Turbo Boost Technology 2,0. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához Dsv3-méreteket vegyen igénybe. A Dsv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Dv3-sorozatéval.
 
-A Dv3 sorozatú virtuális gépek Intel® hyper-Threading technológiával rendelkeznek.
+Az Dv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rendelkeznek.
 
 ACU: 160–190
 
-Prémium szintű tárhely: Nem támogatott
+Premium Storage: nem támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Nem támogatott
+Premium Storage gyorsítótárazás: nem támogatott
 
-Élő áttelepítés: Támogatott
+Élő áttelepítés: támogatott
 
-Memóriamegőrzési frissítések: Támogatott
+Memória megőrzésének frissítései: támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális ideiglenes tárolási átviteli sebesség: IOPS/Olvasás i.BBps/Írás i.BBps | Maximális hálózati adapterek/hálózati sávszélesség |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Hálózati adapterek maximális száma/sávszélesség |
 |---|---|---|---|---|---|---|
 | Standard_D2_v3  | 2  | 8   | 50   | 4  | 3000/46/23     | 2/1000  |
 | Standard_D4_v3  | 4  | 16  | 100  | 8  | 6000/93/46     | 2/2000  |
@@ -50,21 +50,21 @@ Memóriamegőrzési frissítések: Támogatott
 
 ## <a name="dsv3-series"></a>Dsv3-sorozat
 
-A Dsv3 sorozatú méretek az Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processzorokon futnak Intel Turbo Boost Technology 2.0 technológiával, és prémium szintű tárhelyet használnak. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok az Intel Turbo Boost Technology 2,0 használatával futnak, és a Premium Storage-t használják a Dsv3 sorozatos méretek futtatására. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
-A Dsv3 sorozatú virtuális gépek Intel® hyper-Threading technológiával rendelkeznek.
+Az Dsv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rendelkeznek.
 
 ACU: 160–190
 
-Prémium szintű tárhely: Támogatott
+Premium Storage: támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Támogatott
+Premium Storage gyorsítótárazás: támogatott
 
-Élő áttelepítés: Támogatott
+Élő áttelepítés: támogatott
 
-Memóriamegőrzési frissítések: Támogatott
+Memória megőrzésének frissítései: támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott gyorsítótárazási és ideiglenes tárolási átviteli sebesség: IOPS/MBps (gyorsítótár mérete GiB-ben) | Maximális nem gyorsítótárazott lemezátviteli sebesség: IOPS/MBps | Maximális hálózati adapterek/várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)       | 3200/48    | 2/1000  |
 | Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)      | 6400/96    | 2/2000  |
@@ -87,4 +87,4 @@ Memóriamegőrzési frissítések: Támogatott
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

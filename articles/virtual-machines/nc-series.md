@@ -1,6 +1,6 @@
 ---
-title: NC-sorozat - Azure virtuális gépek
-description: Az NC sorozatú virtuális gépekre vonatkozó előírások.
+title: NC sorozat – Azure Virtual Machines
+description: Az NC sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: eab7dfe79aa5cdf234c8bc9472387214f7df3563
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164525"
 ---
 # <a name="nc-series"></a>NC sorozat
 
-Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor hajtja. A felhasználók gyorsabban átrághatják az adatokat, ha a CUDA-t energiafeltárási alkalmazásokhoz, összeomlás-szimulációkhoz, sugáralapú rendereléshez, mélytanuláshoz és egyebekhez használják. Az NC24r konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati illesztőt biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
+Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor látja el. A felhasználók gyorsabban végezhetik el az adatgyűjtést, ha a CUDA használatával hasznosítják az energetikai feltárási alkalmazásokat, az összeomlási szimulációkat, a Ray által követett renderelést, a mély tanulást stb. A NC24r konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
-Prémium szintű tárhely: Nem támogatott
+Premium Storage: nem támogatott
 
-Prémium szintű tárolási gyorsítótárazás: Nem támogatott
+Premium Storage gyorsítótárazás: nem támogatott
 
-Élő áttelepítés: Nem támogatott
+Élő áttelepítés: nem támogatott
 
-Memóriamegőrzési frissítések: Nem támogatott
+Memória-megőrzési frissítések: nem támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|
@@ -43,9 +43,9 @@ Memóriamegőrzési frissítések: Nem támogatott
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA GPU-illesztőprogramokat.
 
-Az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) megfelelő NVIDIA CUDA vagy GRID illesztőprogramokat telepít egy N sorozatú Virtuális gépre. Telepítse vagy kezelje a bővítményt az Azure Portalon vagy az olyan eszközökkel, például az Azure PowerShell vagy az Azure Resource Manager-sablonok használatával, mint például az Azure PowerShell vagy az Azure Resource Manager-sablonok. A támogatott operációs rendszereket és a telepítési lépéseket az [NVIDIA GPU-illesztőprogram-bővítmény dokumentációjában](./extensions/hpccompute-gpu-windows.md) találja. A virtuálisgép-bővítményekről az [Azure virtuálisgép-bővítmények és -szolgáltatások](./extensions/overview.md)című témakörben talál általános tudnivalókat.
+Az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](./extensions/overview.md).
 
-Ha úgy dönt, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, olvassa el az [N sorozatú GPU-illesztőprogram beállítása Windows](./windows/n-series-driver-setup.md) vagy N [sorozatú GPU-illesztőprogram linuxos beállítását](./linux/n-series-driver-setup.md) a támogatott operációs rendszerek, illesztőprogramok, telepítés és ellenőrzési lépések hez.
+Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](./windows/n-series-driver-setup.md) vagy [N sorozatú GPU-illesztőhöz Linux](./linux/n-series-driver-setup.md) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -58,4 +58,4 @@ Ha úgy dönt, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ol
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

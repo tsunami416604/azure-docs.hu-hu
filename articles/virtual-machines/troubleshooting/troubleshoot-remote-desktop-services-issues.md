@@ -1,6 +1,6 @@
 ---
-title: A Távoli asztali szolgáltatások nem indul nak el az Azure virtuális gépen | Microsoft dokumentumok
-description: A Távoli asztali szolgáltatások szolgáltatással kapcsolatos problémák elhárítása virtuális géphez való csatlakozáskor | Microsoft dokumentumok
+title: Távoli asztali szolgáltatások nem indul el Azure-beli virtuális gépen | Microsoft Docs
+description: A virtuális géphez való csatlakozáskor megtudhatja, hogyan lehet elhárítani a Távoli asztali szolgáltatások kapcsolatos problémákat. Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,67 +13,67 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919464"
 ---
-# <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>A Távoli asztali szolgáltatások nem indul el egy Azure virtuális gépen
+# <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások nem Azure-beli virtuális gépen indul
 
-Ez a cikk ismerteti, hogyan hárítsa el a problémákat, amikor csatlakozik egy Azure virtuális gép (VM) és a Távoli asztali szolgáltatások, vagy a TermService, nem indul el, vagy nem indul el.
+Ez a cikk az Azure-beli virtuális gépekhez (VM) és Távoli asztali szolgáltatások vagy TermService való csatlakozás során felmerülő hibák elhárítását ismerteti, nem indul el vagy nem indul el.
 
 
 ## <a name="symptoms"></a>Probléma
 
-Amikor megpróbál csatlakozni egy virtuális géphez, a következő forgatókönyveket tapasztalja:
+Amikor megpróbál csatlakozni egy virtuális géphez, a következő esetekben fog megjelenni:
 
-- A virtuális gép képernyőképe azt mutatja, hogy az operációs rendszer teljesen be van töltve, és a hitelesítő adatokra vár.
+- A virtuális gép képernyőképe azt mutatja, hogy az operációs rendszer teljes mértékben be van töltve, és a hitelesítő adatokra vár.
 
-    ![Képernyőkép a virtuális gép állapotáról](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
+    ![Képernyőfelvétel a virtuális gép állapotáról](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
 
-- Távolról megtekintheti az eseménynaplókat a virtuális gép en az Eseménynapló használatával. Láthatja, hogy a Távoli asztali szolgáltatások (TermService) nem indul el, vagy nem indul el. A következő napló egy minta:
+- A virtuális gép eseménynaplóit a Eseménynapló használatával távolról tekintheti meg. Láthatja, hogy Távoli asztali szolgáltatások, TermService, nem indul el vagy nem indul el. A következő napló egy példa:
 
-    **Napló neve**: Rendszer </br>
-    **Forrás**: Szolgáltatásvezérlő </br>
-    **Dátum**: 12/16/2017 11:19:36 AM</br>
+    **Napló neve**: rendszer </br>
+    **Forrás**: Service Control Manager </br>
+    **Dátum**: 12/16/2017 11:19:36</br>
     **Eseményazonosító**: 7022</br>
-    **Feladatkategória**: Nincs</br>
-    **Szint**: Hiba</br>
-    **Kulcsszavak:** Klasszikus</br>
+    **Feladat kategóriája**: nincs</br>
+    **Szint**: hiba</br>
+    **Kulcsszavak**: klasszikus</br>
     **Felhasználó**: N/A</br>
-    **Számítógép**: vm.contoso.com</br>
-    **Leírás**: A Távoli asztali szolgáltatások szolgáltatás indításkor megindult. 
+    **Számítógép**: VM.contoso.com</br>
+    **Leírás**: a távoli asztali szolgáltatások szolgáltatás indításkor lefagyott. 
 
-    A Serial Access Console szolgáltatással a következő lekérdezés futtatásával is megkeresheti ezeket a hibákat: 
+    Az alábbi lekérdezés futtatásával is megkeresheti ezeket a hibákat a soros hozzáférés konzoljának használatával: 
 
         wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
 
 ## <a name="cause"></a>Ok
  
-A probléma oka az, hogy a Távoli asztali szolgáltatások szolgáltatás nem fut a virtuális gépen. Az ok a következő esetektől függhet: 
+Ez a probléma azért fordul elő, mert Távoli asztali szolgáltatások nem fut a virtuális gépen. Az ok a következő esetekben változhat: 
 
-- A TermService szolgáltatás **letiltott**értékre van állítva. 
-- A TermService szolgáltatás összeomlik, vagy nem válaszol. 
-- A TermService nem indul el, mert helytelen konfiguráció van.
+- A TermService szolgáltatás **Letiltva**értékre van állítva. 
+- A TermService szolgáltatás összeomlik vagy nem válaszol. 
+- A TermService helytelen konfiguráció miatt nem indul el.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma elhárításához használja a Soros konzolt. Vagy pedig [javítsa ki a virtuális gép offline](#repair-the-vm-offline) csatlakoztatásával a virtuális gép operációs rendszer lemeze egy helyreállítási virtuális gép.
+A probléma megoldásához használja a soros konzolt. Másik lehetőségként [javítsa ki a virtuális gépet](#repair-the-vm-offline) úgy, hogy a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez csatolja.
 
 ### <a name="use-serial-console"></a>Soros konzol használata
 
-1. A [Soros konzol](serial-console-windows.md) eléréséhez válassza **a Támogatás & a hibaelhárítási** > **soros konzolt.** Ha a szolgáltatás engedélyezve van a virtuális gép, a virtuális gép sikeresen csatlakoztatható.
+1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás** > **Serial Console**lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
 
-2. Hozzon létre egy új csatornát egy CMD-példányhoz. Adja meg a **CMD-t** a csatorna elindításához és a csatorna nevének beírásához.
+2. Hozzon létre egy új csatornát egy CMD-példányhoz. Írja be a **cmd parancsot** a csatorna elindításához és a csatorna nevének lekéréséhez.
 
-3. Váltson a CMD-példányt futtató csatornára. Ebben az esetben az 1-es csatornának kell lennie:
+3. Váltson arra a csatornára, amelyen a CMD-példány fut. Ebben az esetben az 1. csatornát kell megadnia:
 
    ```
    ch -si 1
    ```
 
-4. Válassza **az Enter** again lehetőséget, és adjon meg egy érvényes felhasználónevet és jelszót, helyi vagy tartományazonosítót a virtuális géphez.
+4. Válassza újra az **ENTER billentyűt** , és adjon meg egy érvényes felhasználónevet és jelszót, helyi vagy tartományi azonosítót a virtuális géphez.
 
 5. A TermService szolgáltatás állapotának lekérdezése:
 
@@ -81,37 +81,37 @@ A probléma elhárításához használja a Soros konzolt. Vagy pedig [javítsa k
    sc query TermService
    ```
 
-6. Ha a szolgáltatás állapota **Leállítva**látható, próbálja meg elindítani a szolgáltatást:
+6. Ha a szolgáltatás állapota **leállt**, próbálja meg elindítani a szolgáltatást:
 
     ```
     sc start TermService
      ``` 
 
-7. A szolgáltatás ismételt lekérdezése a szolgáltatás sikeres elindításához:
+7. Kérdezze le újra a szolgáltatást, hogy meggyőződjön arról, hogy a szolgáltatás sikeresen elindult:
 
    ```
    sc query TermService
    ```
-8. Ha a szolgáltatás nem indul el, kövesse a megoldást a kapott hiba alapján:
+8. Ha a szolgáltatás nem indul el, a kapott hiba alapján kövesse a megoldást:
 
     |  Hiba |  Javaslat |
     |---|---|
-    |5 - HOZZÁFÉRÉS MEGTAGADVA |Lásd: [A TermService szolgáltatás hozzáférés-megtagadási hiba miatt leállt.](#termservice-service-is-stopped-because-of-an-access-denied-problem) |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Lásd: [A TermService szolgáltatás le van tiltva.](#termservice-service-is-disabled)  |  
-    |1058 - ERROR_SERVICE_DISABLED  |Lásd: [A TermService szolgáltatás összeomlik vagy lefagy.](#termservice-service-crashes-or-hangs)  |
-    |1059 - ERROR_CIRCULAR_DEPENDENCY |A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.|
-    |1067 - ERROR_PROCESS_ABORTED  |Lásd: [A TermService szolgáltatás összeomlik vagy lefagy.](#termservice-service-crashes-or-hangs)  |
-    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |Lásd: [A TermService szolgáltatás sikertelen bejelentkezési hiba miatt](#termservice-service-fails-because-of-logon-failure) |
-    |1070 - ERROR_SERVICE_START_HANG   | Lásd: [A TermService szolgáltatás összeomlik vagy lefagy.](#termservice-service-crashes-or-hangs) |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | Lásd: [A TermService szolgáltatás le van tiltva.](#termservice-service-is-disabled)  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz. |
-    |1753   |A probléma gyors megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.   |
+    |5 – HOZZÁFÉRÉS MEGTAGADVA |[A hozzáférés-megtagadási hiba miatt a TermService szolgáltatás leállt](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Lásd: [a TermService szolgáltatás le van tiltva](#termservice-service-is-disabled).  |  
+    |1058 – ERROR_SERVICE_DISABLED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termservice-service-crashes-or-hangs).  |
+    |1059 – ERROR_CIRCULAR_DEPENDENCY |A probléma gyors megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .|
+    |1067 – ERROR_PROCESS_ABORTED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termservice-service-crashes-or-hangs).  |
+    |1068 – ERROR_SERVICE_DEPENDENCY_FAIL|A probléma gyors megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .|
+    |1069 – ERROR_SERVICE_LOGON_FAILED  |[A bejelentkezési hiba miatt nem sikerül a TermService szolgáltatás](#termservice-service-fails-because-of-logon-failure) : |
+    |1070 – ERROR_SERVICE_START_HANG   | Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termservice-service-crashes-or-hangs). |
+    |1077 – ERROR_SERVICE_NEVER_STARTED   | Lásd: [a TermService szolgáltatás le van tiltva](#termservice-service-is-disabled).  |
+    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   |A probléma gyors megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . |
+    |1753   |A probléma gyors megoldásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .   |
     
-#### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>A TermService szolgáltatás leáll egy hozzáférés megtagadása miatt probléma miatt
+#### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>A TermService szolgáltatás egy hozzáférés-megtagadási probléma miatt leáll
 
-1. Csatlakozzon a [Soros konzolhoz,](serial-console-windows.md) és nyisson meg egy PowerShell-példányt.
-2. Töltse le a Folyamatfigyelő eszközt a következő parancsfájl futtatásával:
+1. Kapcsolódjon a [soros konzolhoz](serial-console-windows.md) , és nyisson meg egy PowerShell-példányt.
+2. Töltse le a Process monitor eszközt a következő parancsfájl futtatásával:
 
    ```
    remove-module psreadline  
@@ -121,89 +121,89 @@ A probléma elhárításához használja a Soros konzolt. Vagy pedig [javítsa k
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Most kezdj el egy **procmon** nyomkövetést:
+3. Most indítson el egy **Procmon** -nyomkövetést:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
    ```
 
-4. Reprodukálja a problémát a hozzáférés **megtagadva**szolgáltatást nyújtó szolgáltatás elindításával: 
+4. A **hozzáférés megtagadását**biztosító szolgáltatás indításával reprodukálja a problémát: 
 
    ```
    sc start TermService 
    ```
 
-   Ha nem sikerül, szakítsa meg a Folyamatfigyelő nyomkövetését:
+   Ha nem sikerül, szakítsa meg a folyamat figyelője nyomkövetését:
 
    ```   
    procmon /Terminate 
    ```
 
-5. Gyűjtse össze a **c:\temp\ProcMonTrace.PML**fájlt:
+5. Gyűjtse össze a fájl **c:\temp\ProcMonTrace.PML**:
 
     1. [Adatlemez csatolása a virtuális géphez](../windows/attach-managed-disk-portal.md
 ).
-    2. A Serial Console segítségével a fájlt az új meghajtóra másolhatja. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban Az F a csatolt adatlemez illesztőprogram-betűjele.
-    3. Válassza le az adatmeghajtót, és csatolja egy működő virtuális géphez, amelyen telepítve van a Folyamatfigyelő ubstakke.
+    2. A soros konzol segítségével átmásolhatja a fájlt az új meghajtóra. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban az F a csatolt adatlemez illesztőprogram-betűjele.
+    3. Válassza le az adatmeghajtót, és csatolja egy olyan működő virtuális gépen, amelyen telepítve van a Process monitor ubstakke.
 
-6. Nyissa meg **a ProconTrace.PML-t** a működő virtuális gép folyamatfigyelésével. Ezután a szűrés eredmény szerint **az ACCESS DENIED**, ahogy az a következő képernyőképen látható:
+6. Nyissa meg a **ProcMonTrace. PML** a Munkavirtuális gép folyamat-figyelési funkciójával. Ezután a szűrés **eredmény alapján hozzáférés MEGtagadva**, az alábbi képernyőképen látható módon:
 
-    ![Szűrés eredmény szerint a Folyamatfigyelőben](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![Szűrés eredményként a Process monitorban](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
-6. Javítsa ki a kimeneten lévő beállításkulcsokat, mappákat vagy fájlokat. Ezt a problémát általában akkor okozza, ha a szolgáltatásban használt bejelentkezési fiók nem rendelkezik ACL-engedéllyel ezekhez az objektumokhoz. A bejelentkezési fiók megfelelő ACL-engedélyének megismeréséhez ellenőrizheti a kifogástalan állapotú virtuális gép. 
+6. Javítsa ki a beállításjegyzékben található beállításkulcsokat, mappákat vagy fájlokat. Ezt a problémát általában akkor okozhatja, ha a szolgáltatásban használt bejelentkezési fiók nem rendelkezik ACL-engedéllyel az objektumok eléréséhez. A bejelentkezési fiók megfelelő ACL-engedélyének megismeréséhez megtekintheti az egészséges virtuális gépet. 
 
 #### <a name="termservice-service-is-disabled"></a>A TermService szolgáltatás le van tiltva
 
-1. A szolgáltatás visszaállítása az alapértelmezett indítási értékre:
+1. Állítsa vissza a szolgáltatást az alapértelmezett indítási értékre:
 
    ```
    sc config TermService start= demand 
    ```
 
-2. Indítsa el a szolgáltatást:
+2. A szolgáltatás elindítása:
 
    ```
    sc start TermService
    ```
 
-3. Ismét lekell kérdezni az állapotát, hogy a szolgáltatás futjon:
+3. A szolgáltatás futásának ellenőrzéséhez ismét kérdezze le az állapotát:
 
    ```
    sc query TermService 
    ```
 
-4. Próbáljon meg csatlakozni a virtuális géphez a Távoli asztal használatával.
+4. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
-#### <a name="termservice-service-fails-because-of-logon-failure"></a>A TermService szolgáltatás bejelentkezési hiba miatt sikertelen
+#### <a name="termservice-service-fails-because-of-logon-failure"></a>A TermService szolgáltatás sikertelen bejelentkezési hiba miatt meghiúsult
 
-1. Ez a probléma akkor fordul elő, ha a szolgáltatás indítási fiókja megváltozott. Ezt visszamódosította az alapértelmezett értékre: 
+1. Ez a probléma akkor fordul elő, ha a szolgáltatás indítási fiókja módosult. A visszaállítás visszaállítva az alapértelmezett értékre: 
 
         sc config TermService obj= 'NT Authority\NetworkService'
-2. Indítsa el a szolgáltatást:
+2. A szolgáltatás elindítása:
 
         sc start TermService
-3. Próbáljon meg csatlakozni a virtuális géphez a Távoli asztal használatával.
+3. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
-#### <a name="termservice-service-crashes-or-hangs"></a>A TermService szolgáltatás összeomlik vagy lefagy
-1. Ha a szolgáltatás állapota beragadt az **Indítás** vagy **a Leállítás**szolgáltatásban, próbálja meg leállítani a szolgáltatást: 
+#### <a name="termservice-service-crashes-or-hangs"></a>TermService szolgáltatás összeomlik vagy lefagy
+1. Ha a szolgáltatás állapota **Indítás** vagy **Leállítás**közben megakad, próbálja meg leállítani a szolgáltatást: 
 
         sc stop TermService
-2. Különítse el a szolgáltatást a saját "svchost" tárolóján:
+2. A szolgáltatás elkülönítése a saját "Svchost" tárolóján:
 
         sc config TermService type= own
-3. Indítsa el a szolgáltatást:
+3. A szolgáltatás elindítása:
 
         sc start TermService
-4. Ha a szolgáltatás továbbra sem indul el, [forduljon az ügyfélszolgálathoz.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+4. Ha a szolgáltatás még nem indul el, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>A virtuális gép kapcsolat nélküli javítása
+### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációs rendszer lemezének csatolása helyreállítási virtuális géphez
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. [Csatlakoztassa az operációs rendszer lemezét egy helyreállítási virtuális géphez.](../windows/troubleshoot-recovery-disks-portal.md)
-2. Távoli asztali kapcsolat indítása a helyreállítási virtuális géppel. Győződjön meg arról, hogy a csatlakoztatott lemez **online** ként van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
-3. Nyisson meg egy rendszergazdai jogú parancssorpéldányt (**Futtatás rendszergazdaként**). Ezután futtassa a következő parancsfájlt. Feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel **F**. Cserélje le a megfelelő értéket a virtuális gép. 
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+2. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez. Győződjön meg arról, hogy a csatlakoztatott lemez **online** állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
+3. Nyisson meg egy rendszergazda jogú parancssor-példányt (**Futtatás rendszergazdaként**). Ezután futtassa az alábbi szkriptet. Feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel **F**. Cserélje le a megfelelő értékre a virtuális gépen. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -217,8 +217,8 @@ A probléma elhárításához használja a Soros konzolt. Vagy pedig [javítsa k
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Válassza le az operációs rendszer lemezét, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md). Ezután ellenőrizze, hogy a probléma megoldódott-e.
+4. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md). Ezután győződjön meg arról, hogy a probléma megoldódott-e.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha továbbra is segítségre van szüksége, a probléma megoldásához [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma megoldását.

@@ -1,87 +1,87 @@
 ---
-title: Az Azure Application Insights használati hatása | Microsoft-dokumentumok
-description: Elemezze, hogy a különböző tulajdonságok milyen hatással lehetnek az alkalmazások egyes részeinek konverziós arányára.
+title: Az Azure Application Insights használatának hatása | Microsoft docs
+description: Elemezheti, hogy a különböző tulajdonságok milyen hatással lehetnek az alkalmazások egyes részeinek konverziós arányára.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671035"
 ---
-# <a name="impact-analysis-with-application-insights"></a>Hatáselemzés az Application Insights segítségével
+# <a name="impact-analysis-with-application-insights"></a>Impact Analysis Application Insights
 
-Az Impact azt elemzi, hogy a betöltési idők és más tulajdonságok hogyan befolyásolják az alkalmazás különböző részeinek konverziós arányát. Pontosabban fogalmazva felderíti, hogy az **oldalnézet**, **az egyéni események**vagy **kérelmek** bármely **dimenziója** hogyan befolyásolja egy másik **oldalnézet** vagy **egyéni esemény**használatát. 
+A hatás azt elemzi, hogy a betöltési idő és más tulajdonságok milyen hatással vannak az alkalmazás különböző részeinek konverziós arányára. Pontosabban fogalmazva azt észleli, hogy egy **oldal nézet**, egy **egyéni esemény**vagy **kérelem** **bármely dimenziója** hatással van-e egy másik **oldal** vagy **egyéni esemény**használatára. 
 
-![Érintőeszköz](./media/usage-impact/0001-impact.png)
+![Hatás eszköz](./media/usage-impact/0001-impact.png)
 
-## <a name="still-not-sure-what-impact-does"></a>Még mindig nem biztos benne, mit csinál az Impact?
+## <a name="still-not-sure-what-impact-does"></a>Még nem biztos benne, hogy milyen hatással van?
 
-Az impact egyik módja az, hogy a végső eszköz az érvek rendezésére a csapategy tagja, hogy milyen lassúság bizonyos szempontból a webhely befolyásolja, hogy a felhasználók kibír körül. Bár a felhasználók tolerálhatnak egy bizonyos mértékű lassúságot, az Impact betekintést nyújt abba, hogyan lehet a legjobban egyensúlyba hozni az optimalizálást és a teljesítményt a felhasználói konverzió maximalizálása érdekében.
+Az egyik lehetőség az, hogy a hatás úgy gondolja, mint a végső eszköz az argumentumok rendezésére valakivel a csapatával kapcsolatban, hogy a hely bizonyos aspektusa milyen mértékben befolyásolja a felhasználók körét. Míg a felhasználók bizonyos mennyiségű lassúságot elérhetik, a hatás azt mutatja be, hogy miként lehet a lehető legjobban kiegyensúlyozni az optimalizálást és a teljesítményt a felhasználók átalakításának maximalizálása érdekében.
 
-De a teljesítmény elemzése csak az Impact képességeinek egy része. Mivel az Impact támogatja az egyéni eseményeket és dimenziókat, az olyan kérdések megválaszolása, mint például, hogy a felhasználói böngésző választása hogyan korrelál a különböző konverziós arányokkal, csak néhány kattintásnyira van.
+A teljesítmény elemzése azonban csak a hatások egy részhalmaza lehet. Mivel a hatás támogatja az egyéni eseményeket és dimenziókat, a kérdések megválaszolásához hasonlóan a felhasználói böngésző választásának eltérő díjszabása is csupán néhány kattintásnyira van.
 
-![Képernyőkép-átalakítás böngészők által](./media/usage-impact/0004-browsers.png)
+![Képernyőképek konvertálása böngészők szerint](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Az Application Insights-erőforrásnak oldalmegtekintéseket vagy egyéni eseményeket kell tartalmaznia az Impact eszköz használatához. [Megtudhatja, hogy miként állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse az oldalmegtekintéseket az Application Insights JavaScript SDK segítségével.](../../azure-monitor/app/javascript.md) Azt is vegye szem előtt, hogy mivel korrelációt elemez, a mintaméret számít.
+> A Application Insights-erőforrásnak oldalletöltések vagy egyéni eseményeket kell tartalmaznia az Impact eszköz használatához. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](../../azure-monitor/app/javascript.md). Azt is vegye figyelembe, hogy mivel a korreláció elemzése, a minta méretének számítása.
 >
 >
 
-## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Hatással van az oldalbetöltési idő arra, hogy hány anenerlátot konvertálaz oldalamon?
+## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>A lap betöltési ideje befolyásolja, hogy hány ember konvertálja a saját oldalra?
 
-Ha az Impact eszközzel szeretné megválaszolni a kérdéseket, válasszon egy kezdeti oldalmegtekintést, egyéni eseményt vagy kérést.
+Ha szeretné megkezdeni a kérdések megválaszolását a hatás eszközzel, válassza ki a kezdeti oldal nézetet, az egyéni eseményt vagy a kérelmet.
 
-![Érintőeszköz](./media/usage-impact/0002-dropdown.png)
+![Hatás eszköz](./media/usage-impact/0002-dropdown.png)
 
-1. Válasszon egy oldalnézetet **a Lapnézet ide gördülő** legördülő menüből.
-2. Hagyja meg az **elemzést, hogy a** legördülő lista az **Időtartam** alapértelmezett kiválasztásánál (Ebben a környezetben az **Időtartam** az **Oldalbetöltési idő aliasa.)**
-3. A legördülő legördülő **használatának hatásaihoz** válasszon ki egy egyéni eseményt. Ennek az eseménynek meg kell felelnie az 1.
+1. Válassza ki az oldal nézetét az **oldal nézet** legördülő menüjéből.
+2. Hagyja meg az **elemzés módját, hogy** a legördülő lista az alapértelmezett **időtartamot** válassza (ebben **a kontextusban az** **oldal betöltési ideje**alias).
+3. A legördülő lista **használatának hatásaként** válassza ki az egyéni eseményt. Az eseménynek meg kell felelnie az 1. lépésben kiválasztott oldal nézet felhasználói felületi elemének.
 
 ![Az eredmények képernyőképe](./media/usage-impact/0003-results.png)
 
-Ebben az esetben a **termékoldal** betöltési ideje növeli a konverziós arány **tanévenként a Termék vásárlása kattintással.** A fenti eloszlás alapján az optimális oldalterhelés idotartama 3,5 másodperc lehet a potenciális 55%-os konverziós arány elérése érdekében. A 3,5 másodperc alatti betöltési idő csökkentése érdekében a további teljesítménybeli fejlesztések jelenleg nem kapcsolódnak további konverziós előnyökhöz.
+Ebben a példában a **Product (termék) oldal** betöltési ideje növeli az átváltási arányt a **termékek megvásárlására kattintva** A fenti eloszlás alapján a 3,5 másodperces optimális terhelési időtartam megcélozható a 55%-os lehetséges konverziós arány eléréséhez. Az 3,5 másodperc alatti betöltési idő csökkentése további teljesítménnyel kapcsolatos továbbfejlesztések jelenleg nem korrelálnak további konverziós előnyökkel.
 
-## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Mi a teendő, ha egyéni módon követem az oldalmegtekintéseket vagy a betöltési időket?
+## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Mi a teendő, ha egyéni módon követem nyomon az oldalletöltések vagy a betöltési időt?
 
-Az Impact támogatja mind a szabványos, mind az egyéni tulajdonságokat és méréseket. Azt használsz, amit akarsz. Időtartam helyett használjon szűrőket az elsődleges és másodlagos események pontosabb.
+A hatás a szabványos és az egyéni tulajdonságokat, valamint a méréseket is támogatja. Használja bármit, amit szeretne. Az időtartam helyett a szűrők használata az elsődleges és másodlagos eseményeken a pontosabb beszerzéséhez.
 
-## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>A különböző országokból vagy régiókból származó felhasználók eltérő arányban konvertálnak?
+## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Különböző országokból vagy régiókból származó felhasználók eltérő díjszabás szerint alakulnak?
 
-1. Válasszon egy oldalnézetet **a Lapnézet ide gördülő** legördülő menüből.
-2. Válassza az "Ország vagy régió" lehetőséget **a** legördülő menü
-3. A legördülő menü **használatának hatásaihoz** válasszon egy olyan egyéni eseményt, amely megfelel az 1.
+1. Válassza ki az oldal nézetét az **oldal nézet** legördülő menüjéből.
+2. Válassza az "ország vagy régió" lehetőséget az **elemzés** a legördülő menüben
+3. A legördülő lista **használatának hatására** válasszon ki egy egyéni eseményt, amely az 1. lépésben kiválasztott oldal nézet felhasználói felületi elemének felel meg.
 
-Ebben az esetben az eredmények már nem illeszkednek egy folyamatos x-tengelyes modellbe, mint az első példában. Ehelyett egy szegmentált tölcsérhez hasonló vizualizáció jelenik meg. Rendezés **használat** szerint az egyéni eseményre való konverzió ország/régió alapján történő módosításának megtekintéséhez.
+Ebben az esetben az eredmények már nem illeszkednek egy folytonos x tengelyes modellbe, ahogy az első példában is voltak. Ehelyett egy szegmentált tölcsérhez hasonló vizualizáció jelenik meg. Rendezés a **használat** alapján az egyéni eseményre az ország/régió alapján történő átalakítás változásának megtekintéséhez.
 
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hogyan számítja ki az Impact eszköz ezeket a konverziós arányokat?
+## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hogyan számítja ki a hatás eszköz ezeket az átváltási díjakat?
 
-A motorháztető alatt az Impact eszköz a [Pearson korrelációs együtthatóra](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)támaszkodik. Az eredményeket -1 és 1 között számítják ki, a -1 negatív lineáris korrelációt, az 1 pedig pozitív lineáris korrelációt.
+A motorháztető alatt az Impact eszköz a [Pearson korrelációs együtthatóra](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)támaszkodik. Az eredmények a-1 és 1 közötti értékkel vannak kiszámítva, ami negatív lineáris korrelációt jelöl, és 1 pozitív lineáris korrelációt jelképez.
 
-Az impact analízis működésének alapvető bontása a következő:
+A Impact Analysis működésének alapvető részletezése a következő:
 
-Hagyja, hogy _A_ = az első legördülő menüben kiválasztott főoldalnézet/egyéni esemény/kérés legyen. (**Az oldalnézethez).**
+Legyen _a_ = az első legördülő listában kiválasztott fő oldal nézet/egyéni esemény/kérelem. (**Az oldal nézethez**).
 
-Hagyja, _hogy B_ = a kiválasztott másodlagos oldalnézet/egyéni esemény **(hatással van a használatára).**
+Legyen _B_ = a másodlagos lap nézete/egyéni kiválasztott esemény (**a használata hatással**van).
 
-Az Impact a kiválasztott időtartományban lévő felhasználók összes munkamenetének mintáját vizsgálja. Minden egyes munkamenethez az _A_.
+A hatás a kiválasztott időtartományban lévő felhasználók összes munkamenetének mintáját vizsgálja. Minden egyes munkamenet esetében az _a_egyes előfordulásait keresi.
 
-A munkamenetek ezután két különböző _típusú almunkamenetre oszlanak_ a következő két feltétel egyike alapján:
+A munkamenetek két különböző típusú _almunkamenetre_ bonthatók, a következő két feltétel egyike alapján:
 
-- Az átalakított almunkamenet egy B-edkedéssel végződő munkamenetből áll, és magában foglalja a _B._ előtti összes _A_ eseményt. _B_
-- Nem konvertált almunkamenet akkor következik be, amikor az _"A"_ terminál nélkül fordul elő _._
+- Az átalakított almunkamenetek egy _b_ eseménnyel végződő munkamenetből állnak, és minden _olyan_ eseményt foglalnak magukban, amelyek a _b_előtt történnek.
+- A nem konvertált almunkamenet akkor következik be, amikor _az összes művelet a_ _B_terminál nélkül történik.
 
-Az Impact végső kiszámításának módja attól függ, hogy metrikus vagy dimenzió szerint elemezzük-e. Metrikák esetén az almunkamenetben az összes _A_'s átlagos. Míg a dimenziók esetében az _Egyes A_ értékek _1/N-rel_ járulnak hozzá a _B-hez_ rendelt értékhez, ahol _N_ az almunkamenetben _lévő A's_száma.
+A hatás végső kiszámításának módja attól függően változik, hogy metrika vagy dimenzió alapján elemezzük-e a rendszer. A metrikák esetében az összes _egy_almunkamenetben átlaga. Míg a dimenziók esetében az egyes értékek értéke _1/N_ értékkel _járul hozzá a_ _B_ -hez rendelt értékhez, ahol _N_ az almunkamenetben _lévők_száma.
 
 ## <a name="next-steps"></a>További lépések
 
-- A használati élmény engedélyezéséhez kezdje el elküldeni [az egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalnézeteket.](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)
-- Ha már küld egyéni eseményeket vagy oldalnézeteket, fedezze fel a Használati eszközöket, hogy megtudja, hogyan használják a felhasználók a szolgáltatást.
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+- Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)

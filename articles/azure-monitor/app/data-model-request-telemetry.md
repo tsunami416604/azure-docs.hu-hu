@@ -1,33 +1,33 @@
 ---
-title: Adatmodell a kérelemtelemetriához – Azure Application Insights
-description: Application Insights-adatmodell a kérelem telemetriai adataihoz
+title: Adatmodell a kérelem telemetria – Azure Application Insights
+description: Application Insights adatmodell a kérelem telemetria
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671902"
 ---
-# <a name="request-telemetry-application-insights-data-model"></a>Telemetriai adatok kérése: Application Insights-adatmodell
+# <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
 
-A kérelem telemetriai elem (az [Application Insights)](../../azure-monitor/app/app-insights-overview.md)az alkalmazás külső kérése által aktivált végrehajtási logikai sorrendet jelöli. Minden kérelem végrehajtása egyedi `ID` `url` azonosító, amely tartalmazza az összes végrehajtási paramétert. A kérelmeket logikai `name` szerint `source` csoportosíthatja, és meghatározhatja a kérelemet. A kódvégrehajtása `success` bizonyos `fail` . `duration` Mind a sikeres, mind a sikertelen `resultCode`végrehajtást tovább csoportosíthatja a. A borítékszinten definiált kérelemtelemetria ia.
+A kérelem telemetria eleme ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) az alkalmazás külső kérelme által aktivált végrehajtás logikai sorozatot jelöli. Minden kérelem végrehajtását egyedi `ID` azonosítja, és `url` az összes végrehajtási paramétert tartalmazza. A kérelmeket logikusan `name` csoportosíthatja, és `source` megadhatja a kérést. A kód végrehajtása a `success` vagy `fail` a szolgáltatáshoz vezethet. `duration` A sikeres és a sikertelen végrehajtás is elvégezhető a `resultCode`további csoportosításával. A kérés telemetria megadott kezdési ideje.
 
-Kérelem telemetriai támogatja a szabványos bővíthetőségi modell egyéni `properties` és. `measurements`
+A telemetria kérése támogatja a standard bővíthetőségi `properties` modellt `measurements`a Custom és a használatával.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
-A kérelem neve a kérelem feldolgozásához szükséges kódelérési utat jelöli. Alacsony számossági érték a kérelmek jobb csoportosításának lehetővé teszi. Http-kérelmek esetén a HTTP-metódust és `GET /values/{id}` az `id` URL-elérési út sablont jelöli, például a tényleges érték nélkül.
+A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL `GET /values/{id}` -cím elérési útját jelöli, mint a tényleges `id` érték nélkül.
 
-Application Insights web SDK küld kérelem neve "ahogy van" tekintetében a levél esetében. A felhasználói felületcsoportosítása megkülönbözteti `GET /Home/Index` a kis- `GET /home/INDEX` és nagybetűket, így a rendszer elkülönítve számolja, még akkor is, ha gyakran ugyanazt a vezérlőt és műveletvégrehajtást eredményezik. Ennek az az oka, hogy az URL-ek általában [a kis- és nagybetűket.](https://www.w3.org/TR/WD-html40-970708/htmlweb.html) Érdemes megnézni, hogy `404` minden történt-e a nagybetűvel beírt URL-eknél. A ASP.NET Web SDK által kért névgyűjtést a [blogbejegyzésben olvashatja](https://apmtips.com/blog/2015/02/23/request-name-and-url/)el.
+Application Insights web SDK a "as is" nevű kérelem nevét küldi el a Letter eset tekintetében. A felhasználói felületen való csoportosítás megkülönbözteti a `GET /Home/Index` kis-és nagybetűket, ezért a rendszer attól `GET /home/INDEX` függetlenül számítja, hogy az adott vezérlő és a művelet végrehajtása gyakran azonos-e. Ennek az az oka, hogy az URL-címek általában [megkülönböztetik a kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Érdemes megtekinteni `404` , hogy az URL-címek nagybetűvel lettek-e beírva. A ASP.NET web SDK-val kapcsolatos további információk a kérelmek neve gyűjteményben olvashatók a [blogbejegyzésben](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maximális hossz: 1024 karakter
 
 ## <a name="id"></a>ID (Azonosító)
 
-A kérelemhívás-példány azonosítója. A kérelem és más telemetriai elemek közötti korrelációra szolgál. Az azonosítónak globálisan egyedinek kell lennie. További információ: [Korrelációs](../../azure-monitor/app/correlation.md) oldal.
+Egy kérelem hívási példányának azonosítója. A kérelem és az egyéb telemetria elemek közötti korrelációhoz használatos. Az AZONOSÍTÓnak globálisan egyedinek kell lennie. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
 Maximális hossz: 128 karakter
 
@@ -39,29 +39,29 @@ Maximális hossz: 2048 karakter
 
 ## <a name="source"></a>Forrás
 
-A kérelem forrása. Ilyenek például a hívó műszerezési kulcsa vagy a hívó IP-címe. További információ: [Korrelációs](../../azure-monitor/app/correlation.md) oldal.
+A kérelem forrása. Ilyenek például a hívó rendszerállapot-kulcsa vagy a hívó IP-címe. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
 Maximális hossz: 1024 karakter
 
 ## <a name="duration"></a>Időtartam
 
-A kérelem időtartama `DD.HH:MM:SS.MMMMMM`formátumban: . . Pozitívnak és kevesebbnek kell lennie, mint `1000` a napok. Ez a mező szükséges, mivel a kérelem telemetriai adatok jelöli a műveletet az elején és a végén.
+Kérelem időtartama (formátum) `DD.HH:MM:SS.MMMMMM`:. Értéke csak pozitív és nem `1000` lehet nap. Erre a mezőre azért van szükség, mert a Request telemetria a művelet kezdetét és végét jelöli.
 
-## <a name="response-code"></a>Válaszkód
+## <a name="response-code"></a>Válasz kódja
 
-A kérelem végrehajtásának eredménye. HTTP-állapotkód a HTTP-kérelmekhez. Más kérelemtípusok esetében lehet `HRESULT` érték- vagy kivételtípus.
+A kérelem végrehajtásának eredménye. A HTTP-kérelmek HTTP-állapotkódot. Más típusú kérelmek `HRESULT` esetében az érték vagy a kivétel típusa lehet.
 
 Maximális hossz: 1024 karakter
 
 ## <a name="success"></a>Sikeres
 
-A sikeres vagy sikertelen hívás jelzése. A mező kitöltése kötelező. Ha nincs kifejezetten `false` beállítva - a kérelem sikeresnek minősül. Állítsa ezt `false` az értéket, ha a műveletet kivétel szakította meg, vagy hibaeredmény-kódot adott vissza.
+A sikeres vagy sikertelen hívás megjelölése. A mező kitöltése kötelező. Ha nincs explicit módon beállítva a `false` – a kérelem sikeresnek tekintendő. Állítsa be ezt az `false` értéket arra az esetre, ha a művelet kivétel miatt megszakadt, vagy a hiba eredményének kódját adta vissza.
 
-A webes alkalmazások esetében az Application Insights egy kérelmet `400` sikeresként `401`definiál, ha a válaszkód kisebb vagy egyenlő. Vannak azonban olyan esetek, amikor ez az alapértelmezett leképezés nem egyezik meg az alkalmazás szemantikai. A `404` válaszkód jelezheti a "nincs rekord",, amely része lehet a rendszeres áramlásnak. Azt is jelezheti, hogy egy törött link. A hibás hivatkozások, akkor is végre fejlettebb logika. A hibás hivatkozásokat csak akkor jelölheti meg hibaként, ha ezek a hivatkozások ugyanazon a webhelyen találhatók az url referrer elemzésével. Vagy jelölje meg őket hibaként, amikor a vállalat mobilalkalmazásából érik el őket. `301` Hasonlóképpen, `302` és azt jelzi, hiba, amikor az ügyfél, amely nem támogatja az átirányítás.
+A webalkalmazások esetében Application Insights sikeres kérést adjon meg, ha a válasz kódja kisebb `400` vagy egyenlő. `401` Vannak azonban olyan esetek, amikor ez az alapértelmezett leképezés nem egyezik az alkalmazás szemantikai állapotával. A válasz `404` kódja a "No Records" kifejezésre utalhat, amely a normál folyamat része lehet. Emellett hibás hivatkozást is jelezhet. A hibás hivatkozások esetében még összetettebb logika is megvalósítható. A hibás hivatkozásokat csak akkor lehet hibákként megjelölni, ha a hivatkozások ugyanazon a helyen találhatók, a hivatkozó URL-cím elemzésével. Vagy megjelölheti őket meghibásodásként a vállalat mobil alkalmazásából való hozzáféréskor. Hasonlóképpen `301` , `302` és azt jelzi, hogy hiba történt az átirányítást nem támogató ügyféltől való hozzáféréskor.
 
-A részben `206` elfogadott tartalom egy általános kérelem sikertelenségére utalhat. Például az Application Insights-végpont egyetlen kérelemként telemetriai elemek kötegét kapja. Akkor `206` ad vissza, ha a köteg egyes cikkei feldolgozása nem sikerült. A növekvő `206` arány olyan problémát jelez, amelyet ki kell vizsgálni. Hasonló logika `207` vonatkozik a multi-status, ahol a siker lehet a legrosszabb a külön válaszkódok.
+A részlegesen `206` elfogadott tartalom egy általános kérelem meghibásodását jelezhetik. A Application Insights végpont például egyetlen kérelemként fogadja a telemetria elemek kötegét. A függvény `206` akkor adja vissza, ha a köteg egyes elemeit nem sikerült feldolgozni. A növekvő arány `206` a vizsgálandó problémára utal. Hasonló logika vonatkozik arra `207` a többszörös állapotra, ahol a siker lehet az eltérő válasz kódokhoz tartozó legrosszabb érték.
 
-Elolvashatja tovább kérésre eredmény kód és állapotkód a [blogbejegyzést](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+További információ: kérelem eredményének kódja és állapotkód a [blogbejegyzésben](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
@@ -74,6 +74,6 @@ Elolvashatja tovább kérésre eredmény kód és állapotkód a [blogbejegyzés
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni kérelem telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- Tekintse meg az Application Insights-típusok és adatmodell [adatmodelljét.](data-model.md)
-- Ismerje meg, hogyan [konfigurálhatja ASP.NET Core](../../azure-monitor/app/asp-net.md) alkalmazás az Application Insights.
-- Tekintse meg az Application Insights által támogatott [platformokat.](../../azure-monitor/app/platforms.md)
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Megtudhatja, hogyan [konfigurálhat ASP.net Core](../../azure-monitor/app/asp-net.md) alkalmazást Application Insights használatával.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

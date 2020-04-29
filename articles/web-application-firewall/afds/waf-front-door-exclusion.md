@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás-tűzfal kizárási listák az Azure Bejárati ajtajában – Azure portal
-description: Ez a cikk az Azure Front on Azure Portal kizárási listák konfigurációjával kapcsolatos információkat tartalmaz.
+title: Webalkalmazási tűzfal kizárási listája az Azure bejárati ajtóban – Azure Portal
+description: Ez a cikk információt nyújt a kizárási listáról az Azure-ban a Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,44 +8,44 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77925929"
 ---
-# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazás-tűzfal (WAF) a Bejárati ajtó szolgáltatás kizárási listáival 
+# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazási tűzfal (WAF) a bejárati ajtó szolgáltatás kizárási listájával 
 
-Előfordulhat, hogy a webalkalmazás-tűzfal (WAF) blokkolja az alkalmazás engedélyezésére vonatkozó kéréseket. Az Active Directory például beilleszti a hitelesítéshez használt tokeneket. Ezek a tokenek tartalmazhatnak speciális karaktereket, amelyek hamis pozitív eredményt válthatnak ki a WAF-szabályokból. A WAF kizárási listák lehetővé teszik bizonyos kérésattribútumok kihagyását a WAF-kiértékelésből.  A kizárási lista konfigurálható [a PowserShell,](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0) [az Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [a Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy az Azure Portal használatával. A következő példa az Azure Portal konfigurációját mutatja be. 
-## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása az Azure Portal használatával
-**A kizárások kezelése** a WAF portálról érhető el **a Felügyelt szabályok** alatt
+Előfordulhat, hogy a webalkalmazási tűzfal (WAF) blokkolni kívánja az alkalmazás számára engedélyezni kívánt kérelmet. A Active Directory például beszúrja a hitelesítéshez használt jogkivonatokat. Ezek a tokenek olyan speciális karaktereket tartalmazhatnak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését.  A kizárási lista a [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), a [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható. A következő példa a Azure Portal konfigurációját mutatja be. 
+## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása a Azure Portal használatával
+A **kizárások kezelése** a WAF-portálról a **felügyelt szabályok** területen érhető el
 
-![Kizárás](../media/waf-front-door-exclusion/exclusion1.png)
+![Kizárások](../media/waf-front-door-exclusion/exclusion1.png)
 ![kezelése exclusion_add kezelése](../media/waf-front-door-exclusion/exclusion2.png)
 
- Példa kizárási ![listára: Exclusion_define kezelése](../media/waf-front-door-exclusion/exclusion3.png)
+ Példa kizárási listára ![: exclusion_define kezelése](../media/waf-front-door-exclusion/exclusion3.png)
 
-Ez a példa kizárja a *felhasználói* fejlécmező értékét. Az érvényes kérelem tartalmazhatja azt a *felhasználói* mezőt, amely egy SQL-injektálási szabályt kiváltó karakterláncot tartalmaz. Ebben az esetben kizárhatja a *felhasználói* paramétert, hogy a WAF-szabály ne számítson ki semmit a mezőben.
+Ez a példa a *felhasználói* fejléc mezőben lévő értéket zárja ki. Egy érvényes kérelem tartalmazhatja az SQL-injektálási szabályt kiváltó karakterláncot tartalmazó *felhasználói* mezőt is. Ebben az esetben kizárhatja a *felhasználói* paramétereket, így a WAF-szabály nem értékel semmit a mezőben.
 
-A kizárási listákhoz név szerint a következő attribútumok adhatók hozzá. A használt mezők értékeit a rendszer nem a WAF-szabályok alapján értékeli ki, de a nevüket kiértékeli. A kizárási listák megszüntetik a terület értékének ellenőrzését.
+A következő attribútumok adhatók hozzá a kizárási listához név szerint. A rendszer nem értékeli ki a használt mezők értékeit a WAF-szabályok alapján, de a nevük kiértékelése megtörténik. A kizárási listán el kell távolítani a mező értékének ellenőrzését.
 
-* Kérelemfejléc neve
-* Cookie-név kérése
-* Lekérdezési karakterlánc args neve
-* Törzsbejegyzés-bejegyzés e-oszlop nevének kérése
+* Kérelem fejlécének neve
+* Kérelem cookie-neve
+* Lekérdezési karakterlánc-argumentumok neve
+* Kérelem törzse post argumentumok neve
 
-Megadhatja a pontos kérelem fejlécét, törzsét, cookie-ját vagy lekérdezési karakterlánc-attribútumegyezést.  Vagy megadhatja a részleges egyezéseket is. A következő operátorok a támogatott egyezési feltételek:
+Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési karakterlánc-attribútumát.  Másik lehetőségként megadhatja a részleges egyezéseket is. A támogatott egyeztetési feltételek a következő operátorok:
 
-- **Egyenlő :** Ez az operátor pontos egyezéshez használatos. Például egy **bearerToken**nevű fejléc kiválasztásához használja az egyenlő operátort, a választókészlettel **pedig bearerToken.**
-- **A következővel kezdődik:** Ez az operátor a megadott választóértékkel kezdődő összes mezőt egyezteti.
-- **Végződés:** Ez az operátor a megadott választóértékkel végződő összes kérelemmezőnek megfelel.
-- **A következőket tartalmazza:** Ez az operátor megfelel a megadott választóértéket tartalmazó összes kérelemmezőnek.
-- **Egyenlő bármely**: Ez az operátor megfelel az összes kérelem mezőnek. * a választó érték.
+- **Egyenlő**: ez az operátor pontos egyezést használ. Például egy **bearerToken**nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
+- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
+- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
+- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
+- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választó értéke.
 
-A fejléc- és cookie-nevek nem tartalmaznak kis- és nagybetűket.
+A fejléc és a cookie neve nem megkülönbözteti a kis-és nagybetűket.
 
-A kizárási listát alkalmazhatja a kezelt szabálykészlet összes szabályára, egy adott szabálycsoport szabályaira vagy egyetlen szabályra az előző példában látható módon. 
+Kizárási listát alkalmazhat a felügyelt szabálykészlet összes szabályára, egy adott szabálykészlet szabályaira vagy egyetlen, az előző példában látható szabályra. 
 
 ## <a name="next-steps"></a>További lépések
 
-A WAF-beállítások konfigurálása után olvassa el a WAF-naplók megtekintésének módját. További információ: [Front Door diagnostics](../afds/waf-front-door-monitor.md).
+A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: a [bejárati ajtó diagnosztikája](../afds/waf-front-door-monitor.md).

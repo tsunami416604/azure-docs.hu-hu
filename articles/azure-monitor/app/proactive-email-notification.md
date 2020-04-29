@@ -1,44 +1,44 @@
 ---
 title: Intelligens észlelési értesítés módosítása – Azure Application Insights
-description: Váltás az alapértelmezett értesítési címzettekre az Intelligens észlelés szolgáltatásból. Az intelligens észlelés lehetővé teszi az alkalmazások nyomkövetéseifigyelést az Azure Application Insights segítségével a nyomkövetési telemetriai minták szokatlan minták.
+description: Váltson az alapértelmezett értesítési címzettekre az intelligens észleléstől. Az intelligens észlelés lehetővé teszi az alkalmazások nyomkövetésének figyelését az Azure Application Insights a nyomkövetési telemetria szokatlan mintáit.
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671783"
 ---
-# <a name="smart-detection-e-mail-notification-change"></a>Intelligens észlelési e-mail értesítés módosítása
+# <a name="smart-detection-e-mail-notification-change"></a>Az e-mail értesítések intelligens észlelésének változása
 
-Az ügyfelek visszajelzései alapján 2019. április 1-jén megváltoztatjuk az alapértelmezett szerepköröket, amelyek e-mailes értesítéseket kapnak az Intelligens észleléstől.
+Az ügyfelek visszajelzései alapján 2019 április 1-jén módosítjuk azokat az alapértelmezett szerepköröket, amelyek e-mail-értesítéseket fogadnak az intelligens észleléstől.
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Jelenleg az intelligens észlelési e-mail értesítések alapértelmezés szerint az _Előfizetés tulajdonosa_, _az Előfizetés-közreműködő_és az _Előfizetés-olvasó_ szerepköröknek kerülnek elküldésre. Ezek a szerepkörök gyakran olyan felhasználókat foglalnak magukban, akik nem vesznek részt aktívan a figyelésben, ami miatt sok ilyen felhasználó szükségtelenül kap értesítéseket. Ennek a felhasználói élménynek a javítása érdekében módosítjuk, hogy az e-mail értesítések alapértelmezés szerint csak a [Figyelési olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és a [Közreműködőfigyelés](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) szerepkörhöz kerülhessenek.
+Jelenleg az intelligens észlelési értesítő e-maileket a rendszer alapértelmezés szerint az _előfizetés tulajdonosa_, az _előfizetés közreműködői_és az _előfizetés-olvasó_ szerepkörei számára küldi el. Ezek a szerepkörök gyakran tartalmaznak olyan felhasználókat, akik aktívan nem vesznek részt a figyelésben, ami miatt a felhasználók sok esetben szükségtelenül kapják meg az értesítéseket. A felhasználói élmény javítása érdekében az e-mail értesítések csak a [figyelési olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és a [közreműködői szerepkörök figyelését](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) teszik elérhetővé.
 
-## <a name="scope-of-this-change"></a>A módosítás hatálya
+## <a name="scope-of-this-change"></a>A módosítás hatóköre
 
-Ez a módosítás minden intelligens észlelési szabályt érint, kivéve a következőket:
+Ez a módosítás az összes intelligens észlelési szabályra hatással lesz, a következők kivételével:
 
-* Az intelligens észlelési szabályok előnézetként vannak megjelölve. Ezek az intelligens észlelési szabályok ma nem támogatják az e-mailes értesítéseket.
+* Az intelligens észlelési szabályok előzetesként vannak megjelölve. Ezek az intelligens észlelési szabályok jelenleg nem támogatják az e-mail-értesítéseket.
 
-* A hibaanomáliák szabálya. Ez a szabály az új alapértelmezett szerepkörök célzását kezdi meg, amint áttér egy klasszikus riasztásról az egyesített riasztási platformra (további információ [itt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)érhető el.)
+* Hiba anomália szabály. Ez a szabály elindítja az új alapértelmezett szerepkörök célzását, miután áttelepítette azt egy klasszikus riasztásból az egyesített riasztások platformra (További információ [itt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)található.)
 
-## <a name="how-to-prepare-for-this-change"></a>Hogyan készüljünk fel erre a változásra?
+## <a name="how-to-prepare-for-this-change"></a>Felkészülés ehhez a változáshoz
 
-Annak érdekében, hogy az intelligens észlelési értesítések et a megfelelő felhasználóknak küldje el a rendszer, ezeket a felhasználókat hozzá kell rendelni az előfizetés [figyelési olvasójához](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) vagy [a közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) szerepkörökhöz.
+Annak biztosítása érdekében, hogy az intelligens észlelésről érkező e-mailes értesítések a megfelelő felhasználók számára legyenek elküldve, ezeket a felhasználókat hozzá kell rendelni a [figyelési olvasóhoz](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) vagy az előfizetés [figyelő közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) szerepköreihez.
 
-Ha felhasználókat szeretne hozzárendelni a figyelési olvasóhoz vagy a közreműködői szerepkörök figyelése szerepkörökhöz az Azure Portalon keresztül, kövesse a [szerepkör-hozzárendelés hozzáadása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) című cikkben ismertetett lépéseket. Győződjön meg arról, hogy a _figyelési olvasó_ vagy _a figyelési közreműködő,_ mint a szerepkör, amelyhez a felhasználók vannak rendelve.
+Ha felhasználókat szeretne hozzárendelni a figyelési olvasóhoz vagy a közreműködő szerepkörökhöz a Azure Portalon keresztül, kövesse a [szerepkör-hozzárendelés hozzáadása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) című cikkben ismertetett lépéseket. Ügyeljen arra, hogy a _figyelési olvasót_ vagy a _figyelő közreműködőt_ adja meg a felhasználókhoz hozzárendelt szerepkörhöz.
 
 > [!NOTE]
-> Ez a módosítás nem érinti az intelligens észlelési értesítések adott címzettjeit, akik a szabálybeállításokban a _További e-mail címzettek_ beállítással vannak konfigurálva. Ezek a címzettek továbbra is megkapják az e-mail értesítéseket.
+> Ez a változás nem érinti az intelligens észlelési értesítések adott címzettjeit, amelyeket a szabály beállításai között a _további e-mail címzettek_ lehetőséggel konfiguráltak. A címzettek továbbra is megkapják az e-mailes értesítéseket.
 
-Ha bármilyen kérdése vagy aggálya van ezzel a változással kapcsolatban, ne habozzon [kapcsolatba lépni velünk.](mailto:smart-alert-feedback@microsoft.com)
+Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, ne habozzon [kapcsolatba lépni velünk](mailto:smart-alert-feedback@microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
 

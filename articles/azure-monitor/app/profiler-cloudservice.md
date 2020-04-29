@@ -1,49 +1,49 @@
 ---
-title: Élő Azure Felhőszolgáltatások profila application insightsmal | Microsoft dokumentumok
-description: Engedélyezze az Application Insights Profiler szolgáltatást az Azure Cloud Services hez.
+title: Profil élő Azure-Cloud Services a Application Insightskal | Microsoft Docs
+description: Az Azure Cloud Services Application Insights Profiler engedélyezése.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671664"
 ---
-# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Élő Azure Felhőszolgáltatások profila application insightssegítségével
+# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services a Application Insights
 
-Az Application Insights Profiler ezeket a szolgáltatásokat is telepítheti:
+A Application Insights Profiler a következő szolgáltatásokon is üzembe helyezhető:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric-alkalmazások](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure virtuális gépek](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric alkalmazások](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure-Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Az Application Insights Profiler az Azure Diagnostics bővítményrel van telepítve. Csak konfigurálnia kell az Azure Diagnostics-t a Profiler telepítéséhez és profilok küldéséhez az Application Insights-erőforrásba.
+Application Insights Profiler telepítve van a Azure Diagnostics bővítménnyel. Csak konfigurálnia kell Azure Diagnostics a Profiler telepítéséhez és profilok küldéséhez a Application Insights-erőforráshoz.
 
-## <a name="enable-profiler-for-azure-cloud-services"></a>Profilozó engedélyezése az Azure Felhőszolgáltatásokhoz
-1. Ellenőrizze, hogy a [.NET Framework 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb rendszert használja-e. Ha a 4-es operációsrendszer-családot használja, telepítenie kell a .NET Framework 4.6.1-es vagy újabb [rendszert egy indítási feladattal.](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet) Az OS Family 5 alapértelmezés szerint a .NET Framework kompatibilis verzióját tartalmazza. 
+## <a name="enable-profiler-for-azure-cloud-services"></a>A Profiler engedélyezése az Azure Cloud Services
+1. Győződjön meg arról, hogy a .net- [keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -es vagy újabb verziója van használatban. Ha a 4-es operációsrendszer-családot használja, [indítási feladattal](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)kell telepítenie a .NET-keretrendszer 4.6.1-es vagy újabb verzióját. Az operációsrendszer-család 5 alapértelmezés szerint a .NET-keretrendszer kompatibilis verzióját tartalmazza. 
 
-1. Adja hozzá [az Application Insights SDK-t az Azure Cloud Services szolgáltatáshoz.](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)
+1. [Application INSIGHTS SDK hozzáadása az Azure Cloud Serviceshoz](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-    **A hiba a profiler, hogy a hajók a WAD a Cloud Services ki lett javítva.** A WAD (1.12.2.0) felhőszolgáltatásokhoz készült legújabb verziója az App Insights SDK összes legújabb verziójával működik. A Cloud Service-üzemeltetés gazdagépei automatikusan frissítik a WAD-t, de az nem azonnali. A frissítés kényszerítéséhez újratelepítheti a szolgáltatást, vagy újraindíthatja a csomópontot.
+    **A Profilerben szereplő hiba, amely a Cloud Services WAD-ban található.** A Cloud Services WAD (1.12.2.0) legújabb verziója az App ininsights SDK legújabb verzióival működik. A Cloud Service-gazdagépek automatikusan frissítik a WAD-t, de nem azonnal. A frissítés kényszerítéséhez újra üzembe helyezheti a szolgáltatást, vagy újraindíthatja a csomópontot.
 
-1. A kérelmek nyomon követése az Application Insights segítségével:
+1. Kérelmek nyomon követése Application Insightsekkel:
 
-    * A webes szerepkörök ASP.NET az Application Insights automatikusan nyomon követheti a kérelmeket.
+    * A ASP.NET webes szerepkörök esetében Application Insights automatikusan nyomon követheti a kérelmeket.
 
-    * Feldolgozói szerepkörök esetén [adjon hozzá kódot a kérelmek nyomon követéséhez.](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)
+    * Feldolgozói szerepköröknél [adjon hozzá kódot a kérelmek nyomon követéséhez](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
 
-1. Konfigurálja az Azure Diagnostics bővítményt a Profiler engedélyezéséhez:
+1. Konfigurálja a Azure Diagnostics bővítményt a Profiler engedélyezéséhez:
 
-    a. Keresse meg az [Azure Diagnostics diagnostics.wadcfgx](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazásszerepkörhöz, ahogy az itt látható:  
+    a. Keresse meg az alkalmazás szerepköréhez tartozó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *Diagnostics. wadcfgx* fájlt, ahogy az itt látható:  
 
       ![A diagnosztikai konfigurációs fájl helye](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Ha nem találja a fájlt, olvassa [el az Azure Cloud Services és a virtuális gépek diagnosztika beállítása című témakört.](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+      Ha nem találja a fájlt, olvassa el a [diagnosztika beállítása az Azure-Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Adja hozzá `SinksConfig` a következő szakaszt a következő `WadCfg`gyermekelemként:  
+    b. Adja hozzá a `SinksConfig` következő szakaszt a gyermek elemeként `WadCfg`:  
 
       ```xml
       <WadCfg>
@@ -58,18 +58,18 @@ Az Application Insights Profiler az Azure Diagnostics bővítményrel van telep�
       ```
 
     > [!NOTE]
-    > Ha a *diagnostics.wadcfgx* fájl egy másik ApplicationInsights típusú fogadót is tartalmaz, az alábbi instrumentation kulcsok mindháromnak egyeznie kell:  
+    > Ha a *Diagnostics. wadcfgx* fájl egy másik, ApplicationInsights típusú gyűjtőt is tartalmaz, a következő rendszerállapot-kulcsok mindhárom elemének meg kell egyeznie:  
     > * Az alkalmazás által használt kulcs. 
-    > * Az ApplicationInsights-fogadó által használt kulcs. 
-    > * Az ApplicationInsightsProfiler fogadóáltal használt kulcs. 
+    > * A ApplicationInsights-fogadó által használt kulcs. 
+    > * A ApplicationInsightsProfiler-fogadó által használt kulcs. 
     >
-    > A szervizelési csoportban megtalálhatja a `ApplicationInsights` fogadó által használt tényleges instrumentation kulcsértéket. *\*. . cscfg* fájlokat. 
-    > A Visual Studio 15.5 Azure SDK-kiadása után csak az alkalmazás és az ApplicationInsightsProfiler-fogadó által használt instrumentation kulcsoknak kell egyeznie.
+    > Megkeresheti a fogadó által `ApplicationInsights` a ServiceConfiguration használt tényleges kialakítási kulcs értékét *.\* cscfg* -fájlok. 
+    > A Visual Studio 15,5 Azure SDK kiadása után csak az alkalmazás által használt rendszerállapot-kulcsok és a ApplicationInsightsProfiler kell egyezniük egymással.
 
-1. Telepítse a szolgáltatást az új diagnosztikai konfigurációval, és az Application Insights Profiler úgy van konfigurálva, hogy futtassa a szolgáltatáson.
+1. Telepítse a szolgáltatást az új diagnosztikai konfigurációval, és Application Insights Profiler konfigurálva van a szolgáltatáson való futtatásra.
  
 ## <a name="next-steps"></a>További lépések
 
-* Hozzon létre forgalmat az alkalmazásba (például indítson el egy [rendelkezésre állási tesztet).](monitor-web-app-availability.md) Ezután várjon 10–15 percet, amíg a nyomkövetések elindulnak az Application Insights-példányba.
-* Tekintse meg [a Profiler-nyomkövetéseket](profiler-overview.md?toc=/azure/azure-monitor/toc.json) az Azure Portalon.
-* A Profilozóval kapcsolatos problémák elhárításához olvassa el a [Profilozó hibaelhárítás című témakört.](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)
+* Adatforgalom létrehozása az alkalmazáshoz (például egy [rendelkezésre állási teszt](monitor-web-app-availability.md)elindításához). Ezután várjon 10 – 15 percet, amíg a Nyomkövetések el nem jutnak a Application Insights példányba.
+* Lásd: [Profiler-Nyomkövetések](profiler-overview.md?toc=/azure/azure-monitor/toc.json) a Azure Portalban.
+* A Profiler problémáinak elhárításához tekintse meg a [Profiler hibaelhárítását](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)ismertető témakört.

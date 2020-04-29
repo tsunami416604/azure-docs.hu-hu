@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális gépek méretei - GPU | Microsoft dokumentumok
-description: Az Azure-ban a virtuális gépekhez elérhető különböző GPU-optimalizált méretek listája. A vCPU-k, adatlemezek és hálózati adapterek számával, valamint a tárolóátviteli és hálózati sávszélességgel kapcsolatos információkat sorolja fel a sorozat méreteihez.
+title: Azure VM-méretek – GPU | Microsoft Docs
+description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző GPU-optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines
 documentationcenter: ''
 author: vikancha
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: 7e1e0d488844a94bd0be2b91398678e620295729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77913582"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuális gépméretek
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuálisgép-méretek
 
-A GPU-ra optimalizált virtuálisgépek méretei olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezeket a méreteket a számításigényes, nagy grafikai igényű és vizualizációs számítási feladatokhoz tervezték. Ez a cikk a GPU-k, a vCPU-k, az adatlemezek és a hálózati adapterek számáról és típusáról tartalmaz tájékoztatást. A tárolási átviteli és a hálózati sávszélesség is szerepel a csoportosítás minden egyes méretéhez.
+A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
-- [NC-sorozatú](nc-series.md), [NCv2 sorozatú](ncv2-series.md), [NCv3 sorozatú](ncv3-series.md) méretek a számításigényes és hálózatigényes alkalmazásokhoz és algoritmusokhoz vannak optimalizálva. Néhány példa a CUDA és openCL-alapú alkalmazások és szimulációk, AI és deep learning. Az NCv3 sorozat az NVIDIA Tesla V100 GPU-jával rendelkező nagy teljesítményű számítási feladatokra összpontosít. Az NC sorozat az Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) processzort, az NCv2 és NCv3 sorozatú virtuális gépek pedig az Intel Xeon E5-2690 v4 (Broadwell) processzort használják.
+- Az [NC sorozat](nc-series.md), a [NCv2 sorozat](ncv2-series.md), a [NCv3-](ncv3-series.md) sorozat mérete nagy számítási igényű és hálózati igényű alkalmazásokhoz és algoritmusokhoz van optimalizálva. Ilyenek például a CUDA és a OpenCL-alapú alkalmazások, a szimulációk, az AI és a Deep learning. A NCv3 sorozat az NVIDIA Tesla V100 GPU-val rendelkező nagy teljesítményű számítási feladatokra összpontosít. Az NC sorozat az Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell) processzort használja, a NCv2 és a NCv3 sorozatú virtuális gépek pedig az Intel Xeon E5-2690 v4 (Broadwell) processzort használják.
 
-- [Az ND sorozat](nd-series.md)és az [NDv2 sorozat](ndv2-series.md) méretei a mélytanulásra vonatkozó képzési és következtetési forgatókönyvekre összpontosítanak. Az NVIDIA Tesla P40 GPU-t és az Intel Xeon E5-2690 v4 (Broadwell) processzort használják. Az NDv2 sorozat az Intel Xeon Platinum 8168 (Skylake) processzort használja.
+- Az [ND sorozat](nd-series.md)és a [NDv2-sorozat](ndv2-series.md) méretei a mélyreható tanuláshoz szükséges képzésekre és következtetésekre összpontosítanak. Az NVIDIA Tesla P40 GPU és az Intel Xeon E5-2690 v4 (Broadwell) processzort használják. Az NDv2 sorozat az Intel Xeon Platinum 8168 (Skylake) processzort használja.
 
-- [Az NV-sorozatú](nv-series.md) és [NVv3-as sorozatú](nvv3-series.md) méreteket optimalizálták és távoli vizualizációra, streamelésre, játékra, kódolásra és VDI-forgatókönyvekre tervezték olyan keretrendszerek használatával, mint az OpenGL és a DirectX. Ezeket a virtuális gépeket az NVIDIA Tesla M60 GPU támogatja.
+- Az [NV-sorozat](nv-series.md) és a [NVv3-sorozat](nvv3-series.md) méretei a távoli vizualizációk, streaming-, játék-, kódolási és VDI-forgatókönyvekhez lettek optimalizálva, olyan keretrendszerek használatával, mint például az OpenGL és a DirectX. Ezeket a virtuális gépeket az NVIDIA Tesla M60 GPU támogatja.
 
-- [NVv4 sorozat](nvv4-series.md) VM-méretek optimalizálva és vdi-re és távoli megjelenítésre optimalizálva és tervezve. Particionált GPU-kkal az NVv4 a megfelelő méretet kínálja a kisebb GPU-erőforrásokat igénylő munkaterhelések számára. Ezeket a virtuális gépeket az AMD Radeon Instinct MI25 GPU támogatja. Az NVv4 virtuális gépek jelenleg csak a Windows vendég operációs rendszerét támogatják.
+- [NVv4 sorozat](nvv4-series.md) A virtuális gépek és a távoli vizualizációk számára optimalizált és tervezett virtuálisgép-méretek. A particionált GPU-k esetében a NVv4 a kisebb GPU-erőforrásokat igénylő számítási feladatok számára biztosít megfelelő méretet. Ezeket a virtuális gépeket az AMD Radeon ösztön MI25 GPU támogatja. A NVv4 virtuális gépek jelenleg csak a Windows vendég operációs rendszert támogatják.
 
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA GPU-illesztőprogramokat.
 
-Az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) megfelelő NVIDIA CUDA vagy GRID illesztőprogramokat telepít egy N sorozatú Virtuális gépre. Telepítse vagy kezelje a bővítményt az Azure Portalon vagy az olyan eszközökkel, például az Azure PowerShell vagy az Azure Resource Manager-sablonok használatával, mint például az Azure PowerShell vagy az Azure Resource Manager-sablonok. A támogatott operációs rendszereket és a telepítési lépéseket az [NVIDIA GPU-illesztőprogram-bővítmény dokumentációjában](/azure/virtual-machines/extensions/hpccompute-gpu-windows) találja. A virtuálisgép-bővítményekről az [Azure virtuálisgép-bővítmények és -szolgáltatások](/azure/virtual-machines/extensions/overview)című témakörben talál általános tudnivalókat.
+Az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/azure/virtual-machines/extensions/overview).
 
-Ha úgy dönt, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, olvassa el az [N sorozatú GPU-illesztőprogram beállítása Windows](/azure/virtual-machines/windows/n-series-driver-setup) vagy N [sorozatú GPU-illesztőprogram linuxos beállítását](/azure/virtual-machines/linux/n-series-driver-setup) a támogatott operációs rendszerek, illesztőprogramok, telepítés és ellenőrzési lépések hez.
+Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](/azure/virtual-machines/windows/n-series-driver-setup) vagy [N sorozatú GPU-illesztőhöz Linux](/azure/virtual-machines/linux/n-series-driver-setup) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-- Az N sorozatú virtuális gépek elérhetőségéről a [Termékek régiónként elérhető című](https://azure.microsoft.com/regions/services/)témakörben tájékot keres.
+- Az N sorozatú virtuális gépek elérhetőségét lásd: [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/).
 
-- Az N sorozatú virtuális gépek csak az Erőforrás-kezelő telepítési modelljében telepíthetők.
+- Az N sorozatú virtuális gépek csak a Resource Manager-alapú üzemi modellben helyezhetők üzembe.
 
-- Az N sorozatú virtuális gépek különböznek a lemezekhez támogatott Azure Storage típusától. Az NC és nv virtuális gépek csak a standard lemeztároló (HDD) által támogatott virtuálisgép-lemezeket támogatják. Az NCv2, NCv3, ND, NDv2 és NVv2 virtuális gépek csak a prémium szintű lemeztároló (SSD) által támogatott virtuálisgép-lemezeket támogatják.
+- Az N sorozatú virtuális gépek különböznek a lemezük által támogatott Azure Storage-típustól. Az NC-és NV-alapú virtuális gépek csak a standard Disk Storage (HDD) által támogatott VM-lemezeket támogatják. A NCv2, a NCv3, az ND, a NDv2 és a NVv2 virtuális gépek csak a Premium Disk Storage (SSD) által támogatott virtuálisgép-lemezeket támogatják.
 
-- Ha néhány N sorozatú virtuális gépnél többet szeretne telepíteni, fontolja meg a felosztó-kiosztó előfizetést vagy más vásárlási lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
+- Ha több N sorozatú virtuális gépet szeretne üzembe helyezni, vegye fontolóra az utólagos elszámolású előfizetést vagy más vásárlási lehetőséget. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
-- Előfordulhat, hogy növelnie kell a magok kvótáját (régiónként) az Azure-előfizetésben, és növelnie kell a külön kvótát az NC, NCv2, NCv3, ND, NDv2, NV vagy NVv2 magok esetében. A kvótanövelésének igényléséhez [nyisson meg egy online ügyfélszolgálati kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md) díjmentesen. Az alapértelmezett korlátozások az előfizetési kategóriától függően változhatnak.
+- Előfordulhat, hogy az Azure-előfizetésében meg kell emelni a magok kvótáját (régiónként), és meg kell emelni az NC, a NCv2, a NCv3, az ND, a NDv2, az NV vagy a NVv2 magok külön kvótáját. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](../azure-portal/supportability/how-to-create-azure-support-request.md) díjmentesen. Az alapértelmezett korlátok az előfizetési kategóriától függően változhatnak.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -64,4 +64,4 @@ Ha úgy dönt, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ol
 
 ## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

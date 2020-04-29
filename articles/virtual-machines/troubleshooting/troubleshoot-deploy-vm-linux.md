@@ -1,6 +1,6 @@
 ---
-title: Linuxos virtuálisgép-problémák azure-beli telepítésének elhárítása – problémamegoldás | Microsoft dokumentumok
-description: Linuxos virtuálisgép-problémák üzembe helyezése az Azure Resource Manager telepítési modellben üzembe helyezése.
+title: A linuxos virtuális gépek Azure-beli üzembe helyezésével kapcsolatos problémák elhárítása | Microsoft Docs
+description: A Linux rendszerű virtuális gépek problémáinak üzembe helyezésével kapcsolatos hibák elhárítása a Azure Resource Manager üzemi modellben.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,80 +15,80 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921436"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Linux rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
-A virtuális gép (VM) üzembe helyezési problémáinak elhárításához az Azure-ban tekintse át a [leggyakoribb hibákat](#top-issues) és megoldásokat.
+A virtuális gépek üzembe helyezésével kapcsolatos problémák elhárításához az Azure-ban tekintse át a leggyakoribb hibák és megoldások [legfontosabb problémáit](#top-issues) .
 
-Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel [az MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
-## <a name="top-issues"></a>Legfontosabb problémák
+## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>A fürt nem támogatja a kért virtuális gép méretét
-\<tulajdonságok supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Próbálkozzon újra a kérelem egy kisebb virtuális gép mérete használatával.
+## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>A fürt nem támogatja a kért VM-méretet
+\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+- Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 - Ha a kért virtuális gép mérete nem módosítható:
-    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportban. Kattintson **az Erőforráscsoportok** > erőforráscsoport > **erőforrások** > a virtuális gépek > **a virtuális gépek** > a virtuális gép > **a Stop**elemre.
-    - Miután az összes virtuális gép leáll, hozza létre a virtuális gépet a kívánt méretben.
-    - Indítsa el először az új virtuális gépet, majd jelölje ki az egyes leállított virtuális gépeket, és kattintson a Start gombra.
+    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
+    - Az összes virtuális gép leállítása után a kívánt méretben hozza létre a virtuális gépet.
+    - Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>A fürt nem rendelkezik szabad erőforrásokkal
-\<tulajdonságok supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Próbálkozzon később a kéréssel.
-- Ha az új virtuális gép egy másik rendelkezésre állási készlet része lehet
-    - Hozzon létre egy virtuális gép egy másik rendelkezésre állási csoport (ugyanabban a régióban).
+\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+- Később próbálja megismételni a kérést.
+- Ha az új virtuális gép egy másik rendelkezésre állási csoport része lehet
+    - Hozzon létre egy virtuális gépet egy másik rendelkezésre állási készletben (ugyanabban a régióban).
     - Adja hozzá az új virtuális gépet ugyanahhoz a virtuális hálózathoz.
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Hogyan aktiválhatom a havi kreditemet a Visual Studio Enterprise (BizSpark) számára?
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>A havi kreditek Hogyan aktiválása a Visual Studio Enterprise (BizSpark) szolgáltatáshoz
 
-A havi kredit aktiválásához olvassa el ezt a [cikket.](https://azure.microsoft.com/offers/ms-azr-0064p/)
+A havi kreditek aktiválásához tekintse meg ezt a [cikket](https://azure.microsoft.com/offers/ms-azr-0064p/).
 
-## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Miért nem tudom telepíteni a GPU-illesztőprogramot egy Ubuntu NV VM-hez?
+## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Miért nem lehet telepíteni a GPU-illesztőprogramot Ubuntu NV virtuális géphez?
 
-Jelenleg a Linux GPU-támogatás csak az Ubuntu Server 16.04 LTS rendszert futtató Azure NC-virtuális gépeken érhető el. További információ: [GPU-illesztőprogramok beállítása Linux ot futtató N sorozatú virtuális gépekhez.](../linux/n-series-driver-setup.md)
+A Linux GPU-támogatás jelenleg csak az Ubuntu Server 16,04 LTS rendszert futtató Azure NC virtuális gépeken érhető el. További információ: [GPU-illesztőprogramok beállítása a Linuxon futó N sorozatú virtuális gépekhez](../linux/n-series-driver-setup.md).
 
-## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>Hiányoznak az illesztőprogramjaim a Linux N-Series VM-emből
+## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>A Linux N sorozatú virtuális gépek illesztőprogramjai hiányoznak
 
 A Linux-alapú virtuális gépek illesztőprogramjai [itt](../linux/n-series-driver-setup.md)találhatók. 
 
-## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nem találom a GPU-példányt az N sorozatú virtuális gépemben
+## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nem találom az N sorozatú virtuális gépen található GPU-példányt
 
-A Windows Server 2016 vagy Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU-funkcióinak kihasználásához a telepítés után telepítenie kell az NVIDIA grafikus illesztőprogramokat minden virtuális gépre. Az illesztőprogram-beállítási információk [a Windows virtuális gépekhez](../windows/n-series-driver-setup.md) és [a Linuxos virtuális gépekhez](../linux/n-series-driver-setup.md)érhetők el.
+A Windows Server 2016 vagy a Windows Server 2012 R2 rendszerű Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához a telepítés után minden virtuális gépre telepítenie kell az NVIDIA grafikus illesztőprogramokat. Az illesztőprogram telepítési információi a [Windows rendszerű virtuális gépek](../windows/n-series-driver-setup.md) és a [linuxos virtuális gépek](../linux/n-series-driver-setup.md)számára érhetők el.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Elérhetők az N sorozatú virtuális gépek a régiómban?
+## <a name="is-n-series-vms-available-in-my-region"></a>Az N sorozatú virtuális gépek elérhetők a saját régióban?
 
-A rendelkezésre állást a [Termékek régiónként táblázatból](https://azure.microsoft.com/regions/services)és [az](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)árakból itt ellenőrizheti.
+A rendelkezésre álló termékek elérhetőségét a [régiók táblázata alapján](https://azure.microsoft.com/regions/services), a díjszabást pedig [itt](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)tekintheti meg.
 
-## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Nem látom a virtuális gép mérete család, amely szeretnék átméretezésekor a virtuális gép.
+## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Nem látom a virtuális gép átméretezése során használni kívánt virtuálisgép-méretet.
 
-Amikor egy virtuális gép fut, akkor telepítve van egy fizikai kiszolgálón. Az Azure-régiók fizikai kiszolgálói közös fizikai hardverfürtökbe vannak csoportosítva. A virtuális gép átméretezése, amely megköveteli, hogy a virtuális gép kell mozgatni a különböző hardverfürtök eltérő attól függően, hogy melyik üzembe helyezési modellt használták a virtuális gép üzembe helyezéséhez.
+Ha egy virtuális gép fut, a rendszer egy fizikai kiszolgálóra telepíti. Az Azure-régiókban található fizikai kiszolgálók általános fizikai hardverek csoportjaiba vannak csoportosítva. A virtuális gép különböző hardveres fürtökre való áthelyezését igénylő virtuális gépek átméretezése eltérő lehet attól függően, hogy melyik üzemi modellt használták a virtuális gép üzembe helyezéséhez.
 
-- A klasszikus üzembe helyezési modellben üzembe helyezett virtuális gépeket el kell távolítani, és újra kell telepíteni a virtuális gépek egy másik méretcsaládban lévő méretre való módosításához.
+- A klasszikus üzemi modellben üzembe helyezett virtuális gépeket el kell távolítani és újra kell telepíteni, hogy a virtuális gépeket egy másik méretű családban lévő méretre módosítsa.
 
-- Az Erőforrás-kezelő központi telepítési modelljében üzembe helyezett virtuális gépeknek le kell állítania a rendelkezésre állási csoportban lévő összes virtuális gépet, mielőtt módosítaná a rendelkezésre állási csoport bármely virtuális gépének méretét.
+- A Resource Manager-alapú üzemi modellben üzembe helyezett virtuális gépeket a rendelkezésre állási csoportba tartozó virtuális gépek méretének módosítása előtt le kell állítania a rendelkezésre állási csoport összes virtuális gépén.
 
-## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>A felsorolt virtuális gép mérete nem támogatott a rendelkezésre állási készlet üzembe helyezésekor.
+## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>A felsorolt virtuálisgép-méret nem támogatott a rendelkezésre állási csoport telepítésekor.
 
-Válasszon olyan méretet, amely et a rendelkezésre állási csoport fürtje támogatja. Ajánlott, ha egy rendelkezésre állási csoport, válassza ki a legnagyobb virtuális gép mérete úgy gondolja, hogy szükség van, és hogy az első üzembe helyezés a rendelkezésre állási készlet.
+Válassza ki a rendelkezésre állási csoport fürtjét támogató méretet. Azt javasoljuk, hogy egy rendelkezésre állási csoport létrehozásakor válassza ki a szükséges legnagyobb méretű virtuálisgép-méretet, és hogy az első üzembe helyezése legyen a rendelkezésre állási csoportnak.
 
-## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Milyen Linux-disztribúciók/-verziók támogatottak az Azure-ban?
+## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Milyen Linux-disztribúciók/verziók támogatottak az Azure-ban?
 
-A listát a Linux on [Azure által jóváhagyott disztribúciók](../linux/endorsed-distros.md).
+A Linuxon megtalálhatja az [Azure által támogatott disztribúciók](../linux/endorsed-distros.md)listáját.
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Hozzáadhatok egy meglévő klasszikus virtuális gép egy rendelkezésre állási csoport?
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Felvehetek meglévő klasszikus virtuális gépet egy rendelkezésre állási csoportba?
 
-Igen. Hozzáadhat egy meglévő klasszikus virtuális gép egy új vagy meglévő rendelkezésre állási csoport. További információt a [Meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz című](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)témakörben talál.
+Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő rendelkezésre állási csoporthoz. További információ: [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>További lépések
-Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel [az MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/)
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
-Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

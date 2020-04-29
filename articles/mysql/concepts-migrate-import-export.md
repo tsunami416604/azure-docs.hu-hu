@@ -1,115 +1,115 @@
 ---
-title: Importálás és exportálás - Azure Database for MySQL
-description: Ez a cikk ismerteti az adatbázisok importálásának és exportálásának gyakori módjait az Azure Database for MySQL-ben, például a MySQL Workbench eszközeivel.
+title: Importálás és exportálás – Azure Database for MySQL
+description: Ez a cikk az adatbázisok Azure Database for MySQL-ben történő importálásának és exportálásának általános módszereit ismerteti a MySQL Workbench eszközzel.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163726"
 ---
-# <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítése importálás és exportálás használatával
-Ez a cikk két gyakori módszert ismerteti az adatok importálása és exportálása egy Azure Database for MySQL-kiszolgáló a MySQL Workbench használatával. 
+# <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
+Ez a cikk két gyakori megközelítést ismertet az adatAzure Database for MySQL-kiszolgálóra való importálásához és exportálásához a MySQL Workbench használatával. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-Az útmutató útmutatón való átlépéshez a következőkre van szükség:
-- Azure-adatbázis a MySQL-kiszolgálóhoz, az [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)létrehozása az Azure Portal használatával című szöveget követve.
-- MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/) vagy más harmadik fél MySQL eszköz, hogy ezt az import / export.
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy Azure Database for MySQL-kiszolgáló, [Azure Database for MySQL-kiszolgáló Azure Portal használatával történő létrehozása](quickstart-create-mysql-server-database-using-azure-portal.md)után.
+- MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/) vagy más, harmadik féltől származó MySQL-eszköz az importáláshoz/exportáláshoz.
 
-## <a name="use-common-tools"></a>Általános eszközök használata
-A közös segédprogramok és eszközök, például a MySQL Workbench vagy a mysqldump segítségével távolról csatlakozhat, és adatokat importálhat vagy exportálhat a MySQL Azure Database for MySQL-adatbázisba. 
+## <a name="use-common-tools"></a>Gyakori eszközök használata
+Az olyan gyakori segédprogramok és eszközök, mint például a MySQL Workbench vagy a mysqldump, távolról csatlakozhatnak és importálhatók vagy exportálhatók az Azure Database for MySQLba. 
 
-Használja ezeket az eszközöket az ügyfélgépen egy internet-kapcsolaton keresztül, hogy csatlakozzon az Azure Database for MySQL-hez. Ssl-titkosítású kapcsolat használata a legjobb biztonsági eljárásokhoz, az [SSL-kapcsolat konfigurálása](concepts-ssl-connection-security.md)az Azure Database for MySQL alkalmazásban című részben leírtak szerint.
+Az ügyfélgépen lévő eszközök használatával internetkapcsolattal csatlakozhat Azure Database for MySQLhoz. Használjon SSL-titkosítású kapcsolatot az ajánlott biztonsági eljárásokhoz az SSL- [kapcsolat konfigurálása Azure Database for MySQLban](concepts-ssl-connection-security.md)című témakörben leírtak szerint.
 
-Az Azure Database for MySQL-be való áttelepítéskor nem kell áthelyeznie az importálási és exportálási fájlokat semmilyen speciális felhőhelyre. 
+A Azure Database for MySQLba való Migrálás során nem kell áthelyeznie az importálási és exportálási fájlokat a Felhőbeli helyre. 
 
-## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>Adatbázis létrehozása az Azure Database for MySQL-kiszolgálón
-Hozzon létre egy üres adatbázist az Azure Database for MySQL-kiszolgálón, ahol át szeretné telepíteni az adatokat. Az adatbázis létrehozásához használjon egy eszközt, például a MySQL Workbench, a Vaad vagy a Navicat eszközt. Az adatbázis neve megegyezhet a kimászott adatokat tartalmazó adatbázisnevével, vagy létrehozhat egy másik nevű adatbázist is.
+## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>Adatbázis létrehozása a Azure Database for MySQL-kiszolgálón
+Hozzon létre egy üres adatbázist azon a Azure Database for MySQL-kiszolgálón, amelyen át szeretné telepíteni az adatátvitelt. Az adatbázis létrehozásához használjon például a MySQL Workbench, a Varangy vagy a Navicat eszközt. Az adatbázis neve megegyezik a dömpingelt adattartalommal, vagy létrehozhat egy másik nevet tartalmazó adatbázist is.
 
-A csatlakozáshoz keresse meg a kapcsolatadatait az Azure Database for MySQL **áttekintése** című témakörben.
+A csatlakozáshoz keresse meg a kapcsolati adatokat a Azure Database for MySQL **áttekintésében** .
 
-![A kapcsolatadatainak megkeresése az Azure Portalon](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
+![A Azure Portal található kapcsolatok adatainak megkeresése](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
-Adja hozzá a kapcsolat adatait a MySQL Workbench-hez.
+Adja hozzá a kapcsolódási adatokat a MySQL Workbenchhez.
 
-![MySQL Workbench kapcsolati karakterlánc](./media/concepts-migrate-import-export/2_setup-new-connection.png)
+![MySQL Workbench-beli kapcsolatok karakterlánca](./media/concepts-migrate-import-export/2_setup-new-connection.png)
 
-## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Annak meghatározása, hogy mikor kell importálási és exportálási technikákat használni a memóriakép helyett, és állítsa vissza
-A MySQL-eszközök segítségével importálhat és exportálhat adatbázisokat az Azure MySQL-adatbázisba a következő esetekben. Más esetekben előfordulhat, hogy a [memóriakép és](concepts-migrate-dump-restore.md) visszaállítási megközelítés használata. 
+## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Annak meghatározása, hogy mikor használjon importálási és exportálási technikákat a memóriakép és a visszaállítás helyett
+A MySQL Tools használatával adatbázisok importálhatók és exportálhatók az Azure MySQL-adatbázisba az alábbi esetekben. Más helyzetekben a [memóriakép és a visszaállítás](concepts-migrate-dump-restore.md) megközelítés használata is hasznos lehet. 
 
-- Ha egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba importálandó táblákat szelektíven kell kiválasztania, a legjobb, ha az importálási és exportálási technikát használja.  Ezzel kihagyhatja a szükségtelen táblákat az áttelepítésből, hogy időt és erőforrásokat takarítson meg. Például használja `--include-tables` a `--exclude-tables` vagy kapcsolót a `--tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a kapcsoló [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
-- Amikor a tábláktól eltérő adatbázis-objektumokat helyezi át, explicit módon hozza létre ezeket az objektumokat. Tartalmazza a kényszereket (elsődleges kulcs, idegen kulcs, indexek), nézeteket, függvényeket, eljárásokat, eseményindítókat és minden más áttelepíteni kívánt adatbázis-objektumot.
-- Ha nem MySQL-adatbázisból származó adatokat telepít át, hozzon létre egylapos fájlokat, és importálja őket a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)segítségével.
+- Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata.  Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. `--include-tables` Használja például a vagy `--exclude-tables` a kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsolót a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Ha a táblázatokon kívül más adatbázis-objektumokat helyez át, explicit módon hozza létre ezeket az objektumokat. Belefoglalja a korlátozásokat (elsődleges kulcs, idegen kulcs, indexek), nézeteket, függvényeket, eljárásokat, eseményindítókat és bármely más, az áttelepíteni kívánt adatbázis-objektumot.
+- Ha egy MySQL-adatbázistól eltérő külső adatforrásokból végez áttelepítést, hozzon létre lapos fájlokat, és importálja őket a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)használatával.
 
-Győződjön meg arról, hogy az adatbázis összes táblája az InnoDB tárolómotort használja, amikor adatokat tölt be az Azure Database for MySQL-be. Az Azure Database for MySQL csak az InnoDB tárolómotort támogatja, így nem támogatja az alternatív tárolómotorokat. Ha a táblák alternatív tárolómotorokat igényelnek, konvertálja őket az InnoDB motorformátum használatára, mielőtt az Azure Database for MySQL-re váltana. 
+Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, ha az adatAzure Database for MySQLba tölti be az adatgyűjtést. A Azure Database for MySQL csak a InnoDB tároló motort támogatja, így nem támogatja az alternatív tárolóeszközöket. Ha a táblák alternatív tárolókat igényelnek, ügyeljen arra, hogy a InnoDB motor formátumát használja a Azure Database for MySQLba való áttelepítés előtt. 
 
-Ha például van egy WordPress vagy webalkalmazás, amely a MyISAM motort használja, először konvertálja a táblákat az adatok InnoDB táblákba való áttelepítésével. Ezután állítsa vissza az Azure Database for MySQL.Then restore to Azure Database for MySQL. A záradék `ENGINE=INNODB` segítségével állítsa be a tábla létrehozásának motorját, majd az áttelepítés előtt vigye át az adatokat a kompatibilis táblába. 
+Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. Ezután állítsa vissza Azure Database for MySQL. A záradék `ENGINE=INNODB` használatával állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
 
 ## <a name="performance-recommendations-for-import-and-export"></a>Teljesítményre vonatkozó javaslatok importáláshoz és exportáláshoz
--   Fürtözött indexeket és elsődleges kulcsokat hozhat létre az adatok betöltése előtt. Adatok betöltése elsődleges kulcssorrendben. 
--   A másodlagos indexek létrehozásának késleltetése az adatok betöltéséig. Az összes másodlagos index létrehozása a betöltés után. 
--   Az idegenkulcs-megkötések letiltása betöltés előtt. Az idegen kulcsellenőrzések letiltása jelentős teljesítménynövekedést biztosít. Engedélyezze a korlátozásokat, és ellenőrizze az adatokat a terhelés után a hivatkozási integritás biztosítása érdekében.
--   Adatok betöltése párhuzamosan. Kerülje a túl sok párhuzamosság, amely azt eredményezné, hogy elérje az erőforrás-korlátot, és az azure-portálon elérhető metrikák használatával figyelheti az erőforrásokat. 
--   Szükség esetén használjon particionált táblákat.
+-   Fürtözött indexeket és elsődleges kulcsokat hozhat létre az adatbetöltése előtt. Az elsődleges kulcs sorrendjében tölti be az adatterhelést. 
+-   A másodlagos indexek létrehozásának késleltetése, amíg az betöltés be nem fejeződik. Az összes másodlagos index létrehozása a betöltés után. 
+-   A betöltés előtt tiltsa le a külső kulcsok korlátozásait. A külső kulcsok ellenőrzésének letiltása jelentős teljesítményt nyújt. Engedélyezze a korlátozásokat, és ellenőrizze az adatok betöltését a hivatkozási integritás biztosítása érdekében.
+-   Párhuzamosan tölthetők be az adathalmazok. Kerülje a túl sok párhuzamosságot, amelynek hatására elérheti az erőforrás-korlátot, és figyelheti az erőforrásokat a Azure Portal elérhető metrikák használatával. 
+-   Szükség esetén particionált táblákat használjon.
 
 ## <a name="import-and-export-by-using-mysql-workbench"></a>Importálás és exportálás a MySQL Workbench használatával
-A MySQL Workbench programban kétféleképpen exportálhat és importálhat adatokat. Mindegyik más célt szolgál. 
+A MySQL Workbenchben kétféleképpen exportálhat és importálhat adatfájlokat. Mindegyik más célt szolgál. 
 
-### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Táblázatadatok exportálása és importálása varázslók az objektumböngésző helyi menüjéből
-![MySQL Workbench varázslók az objektumböngésző helyi menüjében](./media/concepts-migrate-import-export/p1.png)
+### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Táblázatos adatok exportálása és importálása varázsló az objektum böngésző helyi menüjéből
+![MySQL Workbench varázslók az objektum böngésző helyi menüjében](./media/concepts-migrate-import-export/p1.png)
 
-A táblaadatok varázslói CSV- és JSON-fájlok használatával támogatják az importálási és exportálási műveleteket. Számos beállítási lehetőséget tartalmaznak, például elválasztókat, oszlopkijelölést és kódolási kijelölést. Minden varázslót helyi vagy távolról csatlakoztatott MySQL-kiszolgálókon hajthat végre. Az importálási művelet tartalmazza a táblázatot, az oszlopot és a típusleképezést. 
+A táblázatos adatokhoz tartozó varázslók a CSV-és JSON-fájlok használatával támogatják az importálási és exportálási műveleteket. Több konfigurációs lehetőséget is tartalmaznak, például elválasztókat, oszlopok kijelölését és a kódolás kijelölését. Az egyes varázslókat helyi vagy távolról csatlakoztatott MySQL-kiszolgálókon is elvégezheti. Az importálási művelet táblázat-, oszlop-és típus-hozzárendelést tartalmaz. 
 
-Ezeket a varázslókat az objektumböngésző helyi menüjéből érheti el, ha a jobb gombbal egy táblára kattint. Ezután válassza a **Táblaadatok exportálása varázslóvagy** **a Táblaadat-importálás varázsló lehetőséget.** 
+Ezek a varázslók az objektum böngésző helyi menüjéből érhetők el, ha a jobb gombbal a táblára kattint. Ezután válassza a **tábla adatexportálás varázsló** vagy a **tábla adatimportálása varázslót**. 
 
-#### <a name="table-data-export-wizard"></a>Táblaadat-exportálás varázsló
-A következő példa csv-fájlba exportálja a táblát: 
-1. Kattintson a jobb gombbal az exportálandó adatbázis táblájára. 
-2. Válassza a **Táblaadatok exportálása varázslót**. Jelölje ki az exportálandó oszlopokat, a soreltolást (ha van ilyen) és a darabszámot (ha van ilyen). 
-3. Az **Adatok kiválasztása exportáláshoz** lapon kattintson a **Tovább**gombra. Jelölje ki a fájl elérési útját, a CSV- vagy JSON-fájltípust. Válassza ki a sorelválasztót, a karakterláncok befedésének módját és a mezőelválasztót is. 
-4. A **Kimeneti fájl helyének kiválasztása** lapon kattintson a **Tovább**gombra. 
-5. Az **Adatok exportálása** lapon kattintson a **Tovább gombra.**
+#### <a name="table-data-export-wizard"></a>Tábla adatexportálási varázslója
+Az alábbi példa egy CSV-fájlba exportálja a táblázatot: 
+1. Kattintson a jobb gombbal az exportálni kívánt adatbázis táblára. 
+2. Válassza a **tábla adatexportálás varázslót**. Válassza ki az exportálandó oszlopokat, a sorok eltolását (ha van), és a darabszámot (ha van ilyen). 
+3. Az **exportálni kívánt adatexportálás** lapon kattintson a **tovább**gombra. Válassza ki a fájl elérési útját, CSV-fájlját vagy JSON-fájltípusát. Válassza ki a vonal elválasztóját, a karakterláncok befoglalásának metódusát és a mező elválasztóját is. 
+4. A **kimeneti fájl helyének kiválasztása** lapon kattintson a **tovább**gombra. 
+5. Az **adatexportálás** lapon kattintson a **tovább**gombra.
 
-#### <a name="table-data-import-wizard"></a>Táblaadat-importálás varázsló
-A következő példa csv-fájlból importálja a táblát:
-1. Kattintson a jobb gombbal az importálandó adatbázis táblájára. 
-2. Tallózással keresse meg és jelölje ki az importálandó CSV-fájlt, majd kattintson a **Tovább**gombra. 
-3. Jelölje be a céltáblát (új vagy meglévő), és jelölje be a **Csonka tábla importálás előtt** jelölőnégyzetet, vagy törölje belőle a jelet. Kattintson a **Tovább** gombra.
-4. Jelölje ki a kódolást és az importálandó oszlopokat, majd kattintson a **Tovább**gombra. 
-5. Az **Adatok importálása** lapon kattintson a **Tovább**gombra. A varázsló ennek megfelelően importálja az adatokat.
+#### <a name="table-data-import-wizard"></a>Tábla adatimportálása varázsló
+Az alábbi példa egy CSV-fájlból importálja a táblázatot:
+1. Kattintson a jobb gombbal az importálandó adatbázis táblára. 
+2. Keresse meg és válassza ki az importálni kívánt CSV-fájlt, majd kattintson a **tovább**gombra. 
+3. Válassza ki a céltábla (új vagy meglévő) elemet, és jelölje be a **tábla csonkítása az importálás előtt** jelölőnégyzetet, vagy törölje a jelölést. Kattintson a **Tovább** gombra.
+4. Válassza ki a kódolás és az importálandó oszlopok elemet, majd kattintson a **tovább**gombra. 
+5. Az **adatimportálás** lapon kattintson a **tovább**gombra. A varázsló ennek megfelelően importálja az adatmennyiséget.
 
-### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>SQL-adatok exportálása és importálása varázslók a Navigátor ablaktáblából
-A MySQL Workbench-ből vagy a mysqldump parancsból létrehozott SQL exportálásához vagy importálásához használjon varázslót. A varázslókat a **Navigátor** ablaktáblából vagy a főmenü **Kiszolgáló** parancsával érheti el. Ezután válassza **az Adatexportálás** vagy **adatimportálás lehetőséget.** 
+### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>SQL-adatok exportálási és importálási varázslók a navigátor ablaktáblán
+A MySQL Workbenchből generált vagy a mysqldump parancsból generált SQL-alapú exportálás vagy Importálás varázsló használatával. Nyissa meg ezeket a varázslókat a **navigátor** ablaktáblán, vagy válassza a főmenü **kiszolgáló** elemét. Ezután válassza **Az adatexportálás** vagy **az adatimportálás**lehetőséget. 
 
-#### <a name="data-export"></a>Adatok exportálása
-![MySQL Workbench-adatok exportálása a Navigátor ablaktáblával](./media/concepts-migrate-import-export/p2.png)
+#### <a name="data-export"></a>Adatexportálás
+![MySQL Workbench adatexportálás a navigátor panel használatával](./media/concepts-migrate-import-export/p2.png)
 
-Az **Adatexportálás** lapon exportálhatja a MySQL-adatokat. 
-1. Jelölje ki az exportálni kívánt sémákat, tetszés szerint válasszon ki adott sémaobjektumokat/táblákat az egyes sémákból, és hozza létre az exportálást. A konfigurációs beállítások közé tartozik a projektmappába vagy az önálló SQL-fájlba való exportálás, a tárolt rutinok és események kiírása vagy a táblaadatok kihagyása. 
+Az **adatexportálás** lapon a MySQL-adatait is exportálhatja. 
+1. Válassza ki az exportálni kívánt sémákat, szükség esetén válassza ki az egyes sémák egyes sémái objektumait/táblázatait, majd az exportálást. A konfigurációs beállítások közé tartozik az Exportálás egy Project mappába vagy egy önálló SQL-fájlba, a tárolt rutinok és események kiírása vagy a táblázat adatainak kihagyása. 
  
-   Másik lehetőségként az **Eredményhalmaz exportálása** segítségével exportálhat egy adott eredményhalmazt az SQL-szerkesztőben egy másik formátumba, például CSV,JSON, HTML és XML formátumba. 
-3. Jelölje ki az exportálni kívánt adatbázis-objektumokat, és adja meg a kapcsolódó beállításokat.
-4. Az aktuális objektumok betöltéséhez kattintson a **Frissítés** gombra.
-5. Az exportálási művelet finomításához nyissa meg a **Speciális beállítások** lapot. Például adja hozzá a táblázatzárolásokat, használjon csere utasításhelyett, és idézőjelek et backtick karakterekkel.
-6. Az exportálási folyamat megkezdéséhez kattintson az **Exportálás indítása** gombra.
+   Azt is megteheti, hogy egy **eredményhalmaz exportálásával** exportál egy adott EREDMÉNYHALMAZT az SQL-szerkesztőben más formátumba, például CSV, JSON, HTML és XML formátumban. 
+3. Válassza ki az exportálandó adatbázis-objektumokat, majd konfigurálja a kapcsolódó beállításokat.
+4. Az aktuális objektumok betöltéséhez kattintson a **frissítés** gombra.
+5. Megnyithatja a **Speciális beállítások** lapot az exportálási művelet pontosításához. Tegyük fel például, hogy a tábla zárolások hozzáadása, az INSERT utasítás helyett a Replace, és a kezdő karaktereket tartalmazó idézőjelek szerepelnek.
+6. Kattintson az **Exportálás megkezdése** elemre az exportálási folyamat megkezdéséhez.
 
 
 #### <a name="data-import"></a>Adatimportálás
-![MySQL Workbench-adatimportálás a Management Navigator használatával](./media/concepts-migrate-import-export/p3.png)
+![MySQL Workbench adatimportálás a felügyeleti navigátor használatával](./media/concepts-migrate-import-export/p3.png)
 
-Az **Adatimportálás** lapon importálhatja vagy visszaállíthatja az exportált adatokat az adatexportálási műveletből vagy a mysqldump parancsból. 
-1. Válassza ki a projektmappát vagy az önálló SQL-fájlt, válassza ki az importálni kívánt sémát, vagy válassza az **Új** lehetőséget új séma definiálásához. 
-2. Az importálási folyamat megkezdéséhez kattintson az **Importálás indítása** gombra.
+Az **adatimportálás** lapon importálhatja vagy visszaállíthatja az exportált adatok adatait az adatexportálási műveletből vagy a mysqldump parancsból. 
+1. Válassza ki a Project mappát vagy az önálló SQL-fájlt, válassza ki az importálni kívánt sémát, vagy válassza az **új** lehetőséget egy új séma definiálásához. 
+2. Az importálási folyamat megkezdéséhez kattintson az **Importálás megkezdése** elemre.
 
 ## <a name="next-steps"></a>További lépések
-- Egy másik áttelepítési megközelítésként olvassa el [a MySQL-adatbázis áttelepítése dump használatával című olvasnivalót, és állítsa vissza az Azure Database for MySQL alkalmazásban](concepts-migrate-dump-restore.md)című fájlt.
-- Az adatbázisok Azure Database for MySQL-be való áttelepítéséről az [Adatbázis-áttelepítési útmutatóban](https://aka.ms/datamigration)talál további információt. 
+- Egy másik áttelepítési módszerként olvassa el [a MySQL-adatbázis áttelepítése a dump használatával és a visszaállítás a Azure Database for MySQLban című részt](concepts-migrate-dump-restore.md).
+- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration). 

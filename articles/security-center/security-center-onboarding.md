@@ -1,6 +1,6 @@
 ---
-title: A standard szintű fokozott biztonság – Azure Security Center
-description: " Ismerje meg, hogyan lehet az Azure Security Center standard rakoncáta a fokozott biztonság érdekében. "
+title: Standard szintű, fokozott biztonságú Azure Security Center
+description: " Megtudhatja, hogyan hozhatja ki a Azure Security Center Standard szintűt a fokozott biztonság érdekében. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,33 +14,33 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
 ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77912052"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Regisztráció az Azure Security Center Standardra a biztonság növelése érdekében
-Frissítsen a Security Center Standard szolgáltatásra, hogy kihasználhassa a fokozott biztonsági felügyeletet és a fenyegetésvédelmet a hibrid felhőbeli számítási feladatokhoz. Kipróbálhatja standard ingyenes. További információt a Biztonsági központ [díjszabási oldalán](https://azure.microsoft.com/pricing/details/security-center/) talál.
+Frissítsen Security Center szabványra, hogy kihasználhassa a fokozott biztonság kezelése és a fenyegetések elleni védelem előnyeit a hibrid felhőalapú számítási feladatokhoz. Megpróbálkozhat a standard szintű ingyenes kipróbálással is. További információért tekintse meg a Security Center [díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/) .
 
-A Security Center szabványos szintje a következőket tartalmazza:
+A standard szintű Security Center a következőket tartalmazza:
 
-- **Hibrid biztonság** – Egységes biztonságszemléletet kaphat az összes helyszíni és felhőbeli számítási feladatban. A biztonsági szabályzatokat és a hibrid felhőbeli számítási feladatok biztonságát folyamatosan felmérheti a biztonsági szabványoknak való megfelelés érdekében. Különböző forrásokból, például tűzfalakból és más partnermegoldásokból származó biztonsági adatok gyűjtése, keresése és elemzése.
-- Biztonsági riasztások – Fejlett **elemzésekkel** és a Microsoft Intelligent Security Graph segítségével előnyt szerezhet a fejlődő kibertámadásokkal szemben. Használja ki a beépített viselkedéselemzéseket és a gépi tanulást a támadások és a nulladik napi támadások azonosításához. Figyelje a hálózatokat, gépeket és felhőszolgáltatásokat a bejövő támadások és a szabálysértést követő tevékenységek esetén. Egyszerűsítse a nyomozást interaktív eszközökkel és kontextuális fenyegetésekkel kapcsolatos intelligenciával.
-- **Hozzáférés és alkalmazásvezérlők** – Blokkolja a rosszindulatú programokat és más nem kívánt alkalmazásokat az adott számítási feladatokhoz igazított és gépi tanulással működő engedélyezési javaslatok alkalmazásával. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépek felügyeleti portjaihoz való just-in-time, szabályozott hozzáféréssel, drasztikusan csökkentve a találgatásos és egyéb hálózati támadásoknak való kitettséget.
+- **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Különböző forrásokból, például tűzfalakból és egyéb partneri megoldásokból származó biztonsági adatokat gyűjthet, kereshet és elemez.
+- **Biztonsági riasztások** – speciális elemzések és a Microsoft intelligens biztonsági gráf használata a fejlődő cyber-támadásokkal szemben. A támadásokat és a napi használatot lehetővé téve a beépített viselkedés-elemzés és a gépi tanulás kihasználása. Figyelheti a hálózatokat, a gépeket és a Felhőbeli szolgáltatásokat a beérkező támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse a nyomozást az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
+- **Hozzáférés és alkalmazás-vezérlőelemek** – a kártevők és más nemkívánatos alkalmazások letiltása az adott számítási feladatokhoz igazított engedélyezési Javaslatok alkalmazásával és a gépi tanulással. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken futó felügyeleti portok igény szerinti, felügyelt hozzáférésével, drasztikusan csökkentve a találgatásos és más hálózati támadásokkal szembeni kitettséget.
 
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrások észlelése
 A Security Center automatikusan észleli azokat az Azure-előfizetéseket vagy munkaterületeket, amelyeken nincs engedélyezve a Security Center Standard. Ez a Security Center ingyenes verzióját használó Azure-előfizetéseket és az olyan munkaterületeket is magában foglalja, amelyeken nincs engedélyezve a biztonsági megoldás.
 
-Frissítheti a teljes Azure-előfizetést a standard szintre, amelyet az előfizetésen belüli összes támogatott erőforrás öröklődik. A Standard szint alkalmazása egy munkaterületre a munkaterületre jelentést tevő összes erőforrásra vonatkozik.
+A teljes Azure-előfizetést a standard szintre is frissítheti, amelyet az előfizetés összes támogatott erőforrása örököl. A standard szint munkaterületre való alkalmazása a munkaterületre jelentett összes erőforrásra vonatkozik.
 
 > [!NOTE]
-> Előfordulhat, hogy szeretné kezelni a költségeket, és korlátozza a megoldáshoz gyűjtött adatok mennyiségét, ha az ügynökök egy adott készletére korlátozza azadatokat. [A megoldás célzása](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy hatókört alkalmazzon a megoldásra, és a munkaterület számítógépeinek egy részét célozza meg. Ha megoldáscélzást használ, a Security Center úgy sorolja fel a munkaterületet, hogy nincs megoldás.
+> Érdemes lehet felügyelni a költségeket, és korlátozni a megoldáshoz összegyűjtött adatok mennyiségét, ha korlátozza azt egy adott ügynökre. A [megoldás célcsoportja](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy hatókört alkalmazzon a megoldásra, és a munkaterületen lévő számítógépek egy részhalmazát célozza meg. Ha megoldás-célcsoportot használ, Security Center listázza a munkaterületet úgy, hogy ne legyen megoldás.
 >
 >
 
-## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure-előfizetés vagy munkaterület frissítése
-Előfizetés vagy munkaterület szabványosra való frissítése:
+## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure-előfizetés vagy-munkaterület frissítése
+Előfizetés vagy munkaterület frissítése a standard szintre:
 1. A Security Center főmenüjében válassza az **Első lépések** elemet.
   ![Bevezetés](./media/security-center-onboarding/get-started.png)
 2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
@@ -52,61 +52,61 @@ Előfizetés vagy munkaterület szabványosra való frissítése:
 
 
    > [!NOTE]
-   > A Security Center ingyenes funkciói csak az Azure-beli virtuális gépekre és a VMSS-re vonatkoznak. Az ingyenes képességek nem vonatkoznak a nem Azure-beli számítógépekre. Ha a Standard lehetőséget választja, a standard képességek az összes Azure-beli virtuális gépre, virtuálisgép-méretezési csoportra és nem Azure-beli számítógépekre vonatkoznak, amelyek a munkaterületre kerülnek. Azt javasoljuk, hogy alkalmazza a Standard az Azure és a nem Azure-erőforrások speciális biztonságának biztosítása érdekében.
+   > A Security Center ingyenes képességei csak az Azure-beli virtuális gépekre és VMSS vonatkoznak. Az ingyenes képességek nincsenek alkalmazva a nem Azure-beli számítógépekre. Ha a standard lehetőséget választja, a rendszer az összes Azure-beli virtuális GÉPRE, virtuálisgép-méretezési csoportra és a munkaterületnek jelentő nem Azure-beli számítógépekre alkalmazza a standard képességeket. Javasoljuk, hogy az Azure-ban és a nem Azure-beli erőforrásokhoz való fokozott biztonság érdekében alkalmazzon standard szintű megoldást.
    >
 
-## <a name="onboard-non-azure-computers"></a>Beépített, nem Azure-alapú számítógépek
-A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. Nem Azure-beli számítógépeket az **Első lépések** panelről vagy a **Számítási** panelről adhat hozzá. Végigmegyünk mindkét módszeren.
+## <a name="onboard-non-azure-computers"></a>Nem Azure-beli számítógépek előkészítése
+A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. A nem Azure-beli számítógépeket az **első lépések** panelen vagy a **számítás** panelen adhatja hozzá. Mindkét módszert bemutatjuk.
 
-### <a name="add-new-non-azure-computers-from-getting-started"></a>Új, nem Azure-beli számítógépek hozzáadása **az első lépésekből**
+### <a name="add-new-non-azure-computers-from-getting-started"></a>Új nem Azure-beli számítógépek hozzáadása az **első lépésekhez**
 
-1. Visszatérés az **első lépésekhez**.
+1. Visszatérés a **kezdéshez**.
 2. Válassza a **Bevezetés** lapot.
 
-   ![Nem Azure-os](./media/security-center-onboarding/non-azure.png)
+   ![Nem Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
    ![Nem Azure-beli számítógép hozzáadása][7]
 
-Ha már rendelkezik munkaterületekkel, azok az **Új, nem Azure-alapú számítógépek hozzáadása**csoportban jelennek meg. Számítógépeket hozzáadhat egy meglévő munkaterülethez, vagy létrehozhat egy új munkaterületet. Új munkaterület létrehozásához jelölje ki az **új munkaterület hozzáadása**hivatkozást .
+Ha már van munkaterülete, akkor az új, **nem Azure-beli számítógépek hozzáadása**szakaszban szerepel. Hozzáadhat számítógépeket egy meglévő munkaterülethez, vagy létrehozhat egy új munkaterületet. Új munkaterület létrehozásához kattintson az **Új munkaterület hozzáadása**hivatkozásra.
 
-### <a name="add-new-non-azure-computers-from-compute"></a>Új, nem Azure-alapú számítógépek hozzáadása **a Compute szolgáltatásból**
+### <a name="add-new-non-azure-computers-from-compute"></a>Új nem Azure-beli számítógépek hozzáadása a **számítási** feladatokhoz
 
 **Új munkaterület létrehozása és számítógép hozzáadása**
 
-1. Az **Új, nem Azure-alapú számítógépek hozzáadása csoportban**válassza **az Új munkaterület hozzáadása**lehetőséget.
+1. Az **új nem Azure-beli számítógépek hozzáadása**területen válassza az **Új munkaterület hozzáadása**lehetőséget.
 
    ![Új munkaterület hozzáadása][4]
 
-2. A **Biztonság és naplózás csoportban**válassza az **OMS-munkaterület** lehetőséget új munkaterület létrehozásához.
+2. Az **Security and Audit**területen válassza az **OMS-munkaterület** lehetőséget egy új munkaterület létrehozásához.
    > [!NOTE]
    > Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
-3. Az **OMS-munkaterület csoportban**adja meg a munkaterület adatait.
-4. Az **OMS-munkaterület csoportban**válassza az **OK lehetőséget.** Miután kiválasztotta az OK gombot, kap egy hivatkozást egy Windows- vagy Linux-ügynök letöltéséhez, valamint a munkaterület-azonosítóhoz használt kulcsokat az ügynök konfigurálásához.
-5. A **Biztonság és naplózás csoportban**válassza az OK **gombot.**
+3. A **OMS munkaterületen**adja meg a munkaterület adatait.
+4. A **OMS munkaterületen**kattintson **az OK gombra**. Miután kiválasztotta az OK gombot, megjelenik egy hivatkozás, amely a munkaterület-AZONOSÍTÓhoz tartozó Windows-vagy Linux-ügynök és-kulcsok letöltésére használható az ügynök konfigurálásához.
+5. A **Security and Audit**alatt kattintson **az OK gombra**.
 
-**Meglévő munkaterület kijelölése és számítógép hozzáadása**
+**Válasszon ki egy meglévő munkaterületet, és adja hozzá a számítógépet**
 
-A számítógép hozzáadásához kövesse a bevezetés **munkafolyamatát**, ahogy fent látható. A számítógépet a Compute munkafolyamatának követésével is **hozzáadhatja.** Ebben a példában a **Compute**.
+A következő ábrán látható módon adhat hozzá számítógépet a **Onboarding**munkafolyamatból. Számítógépet a **számítási**munkafolyamat követésével is hozzáadhat. Ebben a példában a **számítást**használjuk.
 
-1. Visszatérés a Biztonsági központ főmenüjéhez és **az Áttekintés** irányítópulthoz.
+1. Térjen vissza Security Center főmenüjéhez és az **Áttekintés** irányítópulthoz.
 
    ![Áttekintés][5]
 
-2. Válassza **a Számítási & alkalmazások lehetőséget.**
-3. A **Számítási & alkalmazások csoportban**válassza a Számítógépek **hozzáadása**lehetőséget.
+2. Válassza a **számítási & alkalmazások**lehetőséget.
+3. A **számítás & alkalmazások**területen válassza a **számítógépek hozzáadása**elemet.
 
    ![Számítás panel][6]
 
-4. Az **Új, nem Azure-alapú számítógépek hozzáadása csoportban**válassza ki azt a munkaterületet, amelyhez a számítógépet csatlakoztatni szeretné, és kattintson a **Számítógépek hozzáadása**gombra.
+4. Az **új nem Azure-beli számítógépek hozzáadása**területen válassza ki azt a munkaterületet, amelyhez a számítógépet hozzá szeretné kapcsolni, és kattintson a **számítógépek hozzáadása**lehetőségre.
 
    ![Számítógépek hozzáadása][7]
 
-   A **Direct Agent** panel egy windowsos vagy Linux-ügynök, valamint a munkaterület-azonosító és az ügynök konfigurálásához használható kulcsok letöltésére szolgáló hivatkozást biztosít.
+   A **közvetlen ügynök** panel egy hivatkozást tartalmaz egy Windows-vagy Linux-ügynök letöltésére, valamint az ügynök konfigurálásához használandó munkaterület-azonosítóra és kulcsokra.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan hozhatja be az Azure-t és a nem Azure-erőforrásokat a Security Center fejlett biztonságának kihasználása érdekében. Ha többet szeretne tenni a beépített erőforrásokkal, olvassa el a
+Ebből a cikkből megtudhatta, hogyan végezheti el az Azure-beli és nem Azure-erőforrások bevezetését az Security Center fokozott biztonságának kihasználása érdekében. A beérkező erőforrásokkal kapcsolatos további információkért lásd:
 
 - [Az adatgyűjtés engedélyezése](security-center-enable-data-collection.md)
 - [Fenyegetésfelderítési jelentés](security-center-threat-report.md)

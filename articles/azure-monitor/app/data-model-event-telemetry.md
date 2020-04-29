@@ -1,25 +1,25 @@
 ---
-title: Azure Application Insights telemetriai adatmodell – Eseménytelemetria | Microsoft dokumentumok
-description: Application Insights-adatmodell az eseménytelemetria
+title: Azure Application Insights Telemetria adatmodell – Event telemetria | Microsoft Docs
+description: Az Event telemetria Application Insights adatmodellje
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671880"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Eseménytelemetria: Application Insights-adatmodell
+# <a name="event-telemetry-application-insights-data-model"></a>Event telemetria: Application Insights adatmodell
 
-Létrehozhat eseménytelemetriai elemeket (az [Application Insightsban)](../../azure-monitor/app/app-insights-overview.md)az alkalmazásban bekövetkezett esemény ábrázolására. Általában ez egy felhasználói beavatkozás, mint például a gombkattintás vagy a pénztár megrendelése. Ez is lehet egy alkalmazás életciklus-esemény, például inicializálás vagy konfigurációs frissítés. 
+Az telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) létrehozhat egy eseményt, amely az alkalmazásban bekövetkezett események ábrázolására használható. Általában ez egy felhasználói beavatkozás, például a Button Click vagy a Order pénztár. Az alkalmazás életciklus-eseménye (például inicializálás vagy konfiguráció frissítése) is lehet. 
 
-Szemantikailag az események összefügghetnek a kérésekkel, vagy nem. Azonban, ha megfelelően használják, esemény telemetriai fontosabb, mint a kérelmek vagy nyomkövetések. Az események üzleti telemetriai adatokat képviselnek, és különálló, kevésbé agresszív [mintavételezésnek](../../azure-monitor/app/api-filtering-sampling.md)kell lenniük.
+Szemantikailag előfordulhat, hogy az események nem korrelálnak a kérelmekkel. Ha azonban megfelelően van használatban, az Event telemetria fontosabb, mint a kérelmek vagy a Nyomkövetések. Az események üzleti telemetria jelentenek, és külön, kevésbé agresszív [mintavételezéssel](../../azure-monitor/app/api-filtering-sampling.md)kell rendelkezniük.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
-Esemény neve. A megfelelő csoportosítás és hasznos metrikák engedélyezéséhez korlátozza az alkalmazást úgy, hogy az néhány különálló eseménynevet hozzon létre. Például ne használjon külön nevet egy esemény minden létrehozott példányához.
+Esemény neve. A megfelelő csoportosítás és a hasznos mérőszámok engedélyezéséhez korlátozza az alkalmazást, hogy az csak kis számú különböző eseményt generáljon. Például ne használjon külön nevet az esemény minden egyes generált példánya számára.
 
 Maximális hossz: 512 karakter
 
@@ -33,6 +33,6 @@ Maximális hossz: 512 karakter
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az Application Insights-típusok és adatmodell [adatmodelljét.](data-model.md)
-- [Egyéni eseménytelemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Tekintse meg az Application Insights által támogatott [platformokat.](../../azure-monitor/app/platforms.md)
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- [Egyéni Event telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

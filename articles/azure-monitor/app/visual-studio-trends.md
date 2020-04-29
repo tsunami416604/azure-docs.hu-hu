@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670865"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
@@ -52,16 +52,16 @@ Az Application Insights Trends szolgáltatása idősoron jeleníti meg az alkalm
 
 Az ablak felső részén található vezérlőeszközök segítségével beállíthatja, hogy a telemetriai adatok mely típusait szeretné megtekinteni. Először válassza ki azokat a telemetriai adatok azon típusait, amelyeknek az adataira kíváncsi:
 
-* **Telemetriatípusa** – Kiszolgálói kérelmek, kivételek, függőségek vagy egyéni események
+* **Telemetria típus** – kiszolgálói kérelmek, kivételek, függőségek vagy egyéni események
 * **Időtartomány** – Bármely időpont az elmúlt 30 perctől az elmúlt 3 napig
 * **Csoportosítási szempont** – Kivétel típusa, probléma azonosítója, ország/régió, és továbbiak.
 
-Ezután kattintson **a Telemetriai adatok elemzése** a lekérdezés futtatásához.
+Ezután kattintson a **telemetria elemzése** elemre a lekérdezés futtatásához.
 
 A vizualizáción látható körök közötti navigáció:
 
 * Kattintson egy buborék kiválasztásához. Ezzel frissíti az ablak alján található szűrőket, csak azokat az eseményeket összegezve, amelyekre egy adott időszakban került sor.
-* Kattintson duplán egy buborékra a Kereső eszközre való navigáláshoz, és tekintse meg az adott időszakban bekövetkezett összes telemetriai eseményt.
+* Kattintson duplán a buborékra, és keresse meg a keresési eszközt, és tekintse meg az adott időszak során bekövetkezett összes egyéni telemetria eseményt
 * Nyomja le a CTRL billentyűt, és kattintson egy buborékra, ha meg szeretné szüntetni a kijelölését a képi megjelenítésben.
 
 > [!TIP]
@@ -70,7 +70,7 @@ A vizualizáción látható körök közötti navigáció:
 > 
 
 ## <a name="filter"></a>Szűrés
-Az ablak alján található szűrővezérlőkkel specifikusabb trendeket is feltárhat. Kattintson az alkalmazni kívánt szűrő nevére. Gyorsan válthat különböző szűrők között, így olyan trendeket is feltárhat, amelyek a telemetria egy adott dimenziójában rejtőznek. Ha egy dimenzióban szűrőt alkalmaz, például kivételtípust, a többi dimenzióban lévő szűrők akkor is kattinthatók maradnak, ha szürkén jelennek meg. A szűrő alkalmazásának visszanem szeretné kiiktatni, kattintson rá újra. Ctrl+kattintással egy dimenzión belül több szűrőt is kijelölhet.
+Az ablak alján található szűrővezérlőkkel specifikusabb trendeket is feltárhat. Kattintson az alkalmazni kívánt szűrő nevére. Gyorsan válthat különböző szűrők között, így olyan trendeket is feltárhat, amelyek a telemetria egy adott dimenziójában rejtőznek. Ha egy szűrőt alkalmaz egy dimenzióban (például a kivétel típusa), a más dimenziókban lévő szűrők továbbra is rákattintanak, de szürkén jelennek meg. Szűrő eltávolításához kattintson rá újra. Ctrl+kattintással egy dimenzión belül több szűrőt is kijelölhet.
 
 ![Trendszűrők](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -86,7 +86,7 @@ A szűrés törléséhez kattintson az adott dimenzióhoz tartozó **Remove sele
 ![Több szűrő](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Rendellenességek keresése
-A Trends eszköz arra is képes, hogy megmutassa, mely eseménykörök számítanak rendellenesnek az adott idősorban szereplő többi körhöz képest. A View Type (Nézettípus) legördülő menüben válassza a **Counts in time bucket (highlight anomalies)** (Időtartamra vonatkozó számérték – rendellenességek kiemelése) vagy a **Percentages in time bucket (highlight anomalies)** (Időtartamra vonatkozó százalékérték – rendellenességek kiemelése) lehetőséget. A rendszer pirossal jelöli a rendellenesként értékelt köröket. Az anomáliák olyan buborékok, amelyek száma/százaléka meghaladja az elmúlt két időszakban bekövetkezett számlálások/százalékok szórásának 2,1-szeresét (48 óra, ha az elmúlt 24 órát tekinti meg stb.).
+A Trends eszköz arra is képes, hogy megmutassa, mely eseménykörök számítanak rendellenesnek az adott idősorban szereplő többi körhöz képest. A View Type (Nézettípus) legördülő menüben válassza a **Counts in time bucket (highlight anomalies)** (Időtartamra vonatkozó számérték – rendellenességek kiemelése) vagy a **Percentages in time bucket (highlight anomalies)** (Időtartamra vonatkozó százalékérték – rendellenességek kiemelése) lehetőséget. A rendszer pirossal jelöli a rendellenesként értékelt köröket. Az anomáliák olyan buborékokként vannak definiálva, mint az elmúlt két időszakban (48 óra, ha az elmúlt 24 órában stb.) meghaladják a számok/százalékok 2,1-szort.
 
 ![A színes pontok rendellenességeket jelölnek.](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

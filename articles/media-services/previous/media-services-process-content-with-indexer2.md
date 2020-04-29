@@ -1,6 +1,6 @@
 ---
-title: Médiafájlok indexelése az Azure Media Indexer 2 előzetes verzióval | Microsoft dokumentumok
-description: Az Azure Media Indexer lehetővé teszi, hogy a médiafájlok tartalmát kereshetővé tegye, és teljes szöveges átiratot hozzon létre a feliratozáshoz és a kulcsszavakhoz. Ez a témakör a Media Indexer 2 Preview használatát mutatja be.
+title: Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval | Microsoft Docs
+description: Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Ez a témakör bemutatja, hogyan használható Media Indexer 2 előzetes verzió.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163794"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Médiafájlok indexelése az Azure Media Indexer 2 előzetes verzióval
+# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval
 
 > [!NOTE]
-> Az **Azure Media Indexer 2** médiaprocesszor kilesz vonva. A nyugdíjazási dátumokat lásd az [örökölt összetevők](legacy-components.md) témakörben. [Az Azure Media Services videoindexelője](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt médiaprocesszort. További információ: Áttelepítés az [Azure Media Indexerről és az Azure Media Indexer 2-ről az Azure Media Services videoindexelőre](migrate-indexer-v1-v2.md)című témakörben.
+> A **Azure Media Indexer 2** adathordozó-processzor ki lesz vonva. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt adathordozó-processzort. További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
 
-Az **Azure Media Indexer 2 Előzetes** médiaprocesszor (MP) lehetővé teszi a médiafájlok és tartalmak kereshetővé tévául, valamint a feliratozási sávok létrehozásának. Az Azure Media [Indexer](media-services-index-content.md)korábbi verziójához képest az **Azure Media Indexer 2 Preview** gyorsabb indexelést hajt végre, és szélesebb nyelvi támogatást nyújt. A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a kínai (mandarin, az egyszerűsített), a portugál, az arab, az orosz és a japán.
+A **Azure Media Indexer 2 előnézeti** adathordozó-feldolgozó (mp) lehetővé teszi a médiafájlok és a tartalmak kereshetővé tételét, valamint a kódolt feliratozási sávok létrehozását. A [Azure Media Indexer](media-services-index-content.md)korábbi verziójához képest **Azure Media Indexer 2 előzetes** verzió gyorsabb indexelést végez, és szélesebb körű nyelvi támogatást nyújt. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (mandarin, egyszerűsített), portugál, Arab, orosz és Japán.
 
-Az **Azure Media Indexer 2 előzetes verzió mp** jelenleg előzetes verzióban.
+A **Azure Media Indexer 2 előzetes** verziójú mp jelenleg előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat az **Azure Media Indexer 2 Preview**segítségével.
+Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat **Azure Media Indexer 2 előzetes**verzióval.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
 A következő szempontokat kell figyelembe venni:
  
-* Az Azure China 21Vianet és az Azure Government nem támogatja az Indexer 2-t.
-* Tartalom indexelésekor ügyeljen arra, hogy nagyon tiszta beszéddel rendelkező médiafájlokat használjon (háttérzene, zaj, effektusok vagy mikrofonsziták nélkül). Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy előadások. Előfordulhat, hogy a következő tartalom nem alkalmas indexelésre: filmek, tv-műsorok, vegyes hang- és hangeffektusokkal rendelkező tartalmak, rosszul rögzített, háttérzajú tartalom (szimás).
+* Az indexelő 2 nem támogatott az Azure China 21Vianet és Azure Governmentban.
+* A tartalom indexelése során ügyeljen arra, hogy a nagyon egyértelmű beszédtel (háttérzene, zaj, effektusok vagy mikrofon nélkül sziszegve) adathordozó-fájlokat használjon. Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy bemutatók. Előfordulhat, hogy az alábbi tartalmak nem alkalmasak indexelésre: filmek, TV-műsorok, bármilyen kevert hang-és hanghatások, a rosszul rögzített tartalom (sziszegés).
  
 ## <a name="input-and-output-files"></a>Bemeneti és kimeneti fájlok
 ### <a name="input-files"></a>Bemeneti fájlok
-Hang- vagy videofájlok
+Hang-és videofájlok
 
 ### <a name="output-files"></a>Kimeneti fájlok
-Az indexelési feladat a következő formátumokban hozhat létre feliratfájlokat:  
+Az indexelési feladatok a következő formátumokban hozhatnak be zárt képaláírás-fájlokat:  
 
 * **TTML**
 * **WebVTT**
 
-Az ilyen formátumú feliratfájlok segítségével a hang- és videofájlok hozzáférhetők lehetnek a hallássérült ek számára.
+Az ezekben a formátumokban lezárt feliratú (CC) fájlok használhatók hang-és videofájlok elérhetővé tételéhez a fogyatékkal élők számára.
 
-## <a name="task-configuration-preset"></a>Feladat konfigurációja (készlet)
-Indexelési feladat létrehozásakor az **Azure Media Indexer 2 Preview,** meg kell adnia egy konfigurációs készlet.
+## <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
+**Azure Media Indexer 2 előzetes**verzióval rendelkező indexelési feladat létrehozásakor meg kell adnia egy konfigurációs beállításkészletet.
 
-A következő JSON beállítja az elérhető paramétereket.
+A következő JSON a rendelkezésre álló paramétereket állítja be.
 
 ```json
     {
@@ -73,31 +73,31 @@ A következő JSON beállítja az elérhető paramétereket.
 ```
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
-Az Azure Media Indexer 2 Preview támogatja a következő nyelvek beszéd-szöveg szöveggé válását (a nyelv nevének megadásakor a feladatkonfigurációban a négykarakteres kódot az alábbi módon mutatja):
+Azure Media Indexer 2 az előzetes verzió támogatja a beszédfelismerést a következő nyelveken (a feladat konfigurációjában a nyelv nevének megadásakor), 4 karakterből álló kódot használjon zárójelben az alábbi módon:
 
-* Angol [Enus]
-* Spanyol [ESEs]
+* Angol [EnUs]
+* Spanyol [EsEs]
 * Kínai (mandarin, egyszerűsített) [ZhCn]
 * Francia [FrFr]
-* Német [Dede]
+* Német [DeDe]
 * Olasz [ItIt]
 * Portugál [PtBr]
 * Arab (egyiptomi) [ArEg]
-* Japán [Jajp]
-* Orosz [RuRu]
+* Japán [JaJp]
+* Orosz [Lajos]
 * Brit angol [EnGb]
 * Spanyol (Mexikó) [EsMx] 
 
 ## <a name="supported-file-types"></a>Támogatott fájltípusok
 
-A támogatott fájltípusokról a [támogatott kodekek/formátumok](media-services-media-encoder-standard-formats.md#input-containerfile-formats) című részben talál további információt.
+A támogatott fájltípusokkal kapcsolatos információkért tekintse meg a [támogatott kodekek/formátumok](media-services-media-encoder-standard-formats.md#input-containerfile-formats) szakaszt.
 
-## <a name="net-sample-code"></a>.NET mintakód
+## <a name="net-sample-code"></a>.NET-mintakód
 
-A következő program bemutatja, hogyan:
+A következő program a következőket mutatja be:
 
-1. Hozzon létre egy eszközt, és töltsön fel egy médiafájlt az eszközbe.
-2. Hozzon létre egy feladatot egy indexelő feladattal egy konfigurációs fájl alapján, amely a következő jsonkészletet tartalmazza:
+1. Hozzon létre egy adategységet, és töltsön fel egy médiafájlt az eszközre.
+2. A következő JSON-beállításkészletet tartalmazó konfigurációs fájl alapján hozzon létre egy indexelési feladattal rendelkező feladatot:
 
     ```json
             {
@@ -119,7 +119,7 @@ A következő program bemutatja, hogyan:
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
+Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 
@@ -298,7 +298,7 @@ namespace IndexContent
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Az Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
+[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
-[Az Azure Media Analytics bemutatói](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

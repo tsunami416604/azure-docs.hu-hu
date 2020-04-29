@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-feladat üzembe helyezése CI/CD npm csomag használatával
-description: Ez a cikk bemutatja, hogyan használhatja az Azure Stream Analytics CI/CD npm csomagot a folyamatos integrációs és üzembe helyezési folyamat beállításához.
+title: Azure Stream Analytics-feladatok üzembe helyezése CI/CD NPM csomag használatával
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NPM-csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,25 +9,25 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76962191"
 ---
-# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Azure Stream Analytics-feladat üzembe helyezése CI/CD npm csomag használatával 
+# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Azure Stream Analytics-feladatok üzembe helyezése CI/CD NPM csomag használatával 
 
-Az Azure Stream Analytics CI/CD npm csomag használatával folyamatos integrációs és üzembe helyezési folyamatot állíthat be a Stream Analytics-feladatokhoz. Ez a cikk ismerteti, hogyan kell használni az npm csomag általában bármely CI/CD-rendszer, valamint az Azure Pipelines üzembe helyezésre vonatkozó konkrét utasításokat.
+A Azure Stream Analytics CI/CD NPM csomaggal beállíthatja a Stream Analytics feladatokhoz szükséges folyamatos integrációt és üzembe helyezési folyamatot. Ez a cikk azt ismerteti, hogyan használható a NPM-csomag általános használata bármely CI/CD-rendszerrel, valamint az Azure-folyamatokkal való üzembe helyezésre vonatkozó konkrét utasítások.
 
-A PowerShell használatával történő üzembe helyezésről a [Resource Manager-sablonfájlés az Azure PowerShell központi telepítése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) Az [Erőforrás-kezelő sablonban](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)arról is olvashat, hogyan használható paraméterként egy objektum.
+További információ a PowerShell-lel történő telepítéséről: [üzembe helyezés Resource Manager-sablonfájl és Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Azt is megtudhatja, hogyan [használhatja az objektumokat paraméterként egy Resource Manager-sablonban](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
-## <a name="build-the-vs-code-project"></a>A VS Code projekt létrehozása
+## <a name="build-the-vs-code-project"></a>A VS Code projekt összeállítása
 
-Az **asa-streamanalytics-cicd** npm csomag használatával engedélyezheti az Azure Stream Analytics-feladatok folyamatos integrációját és üzembe helyezését. Az npm csomag biztosítja az eszközöket a [Stream Analytics Visual Studio Code projektek](quick-create-vs-code.md)Azure Resource Manager-sablonjainak létrehozásához. Windows, macOS és Linux rendszeren is használható a Visual Studio Code telepítése nélkül.
+Az **ASA-streamanalytics-vel NPM-** csomag használatával engedélyezheti a folyamatos integrációt és üzembe helyezést Azure stream Analytics feladatokhoz. A NPM csomag lehetővé teszi az eszközök számára, hogy [stream Analytics Visual Studio Code-projektekhez](quick-create-vs-code.md)Azure Resource Manager sablonokat lehessen előállítani. A Visual Studio Code telepítése nélkül is használható Windows, macOS és Linux rendszereken.
 
-A [csomagot](https://www.npmjs.com/package/azure-streamanalytics-cicd) közvetlenül letöltheti, vagy [globálisan](https://docs.npmjs.com/downloading-and-installing-packages-globally) telepítheti a `npm install -g azure-streamanalytics-cicd` parancs segítségével. Ez az ajánlott megközelítés, amely egy Build-folyamat Build-folyamat egy PowerShell- vagy Azure CLI-parancsfájl-feladatában is használható az **Azure-folyamatokban.**
+[A csomagot közvetlenül letöltheti](https://www.npmjs.com/package/azure-streamanalytics-cicd) , vagy [globálisan](https://docs.npmjs.com/downloading-and-installing-packages-globally) telepítheti a `npm install -g azure-streamanalytics-cicd` parancs használatával. Ez az ajánlott módszer, amely egy **Azure-folyamatokban**lévő build-folyamat PowerShell-vagy Azure CLI-parancsfájl-feladatában is használható.
 
-Miután telepítette a csomagot, a következő paranccsal adja ki az Azure Resource Manager-sablonokat. A **scriptPath** argumentum a projekt **asaql** fájljának abszolút elérési útja. Győződjön meg arról, hogy az asaproj.json és a JobConfig.json fájlok ugyanabban a mappában vannak a parancsfájllal. Ha a **outputPath** nincs megadva, a sablonok a **Telepítés** mappába kerülnek a projekt **tárolómappája** alatt.
+A csomag telepítése után a következő paranccsal exportálhatja a Azure Resource Manager sablonokat. A **scriptPath** argumentum a **asaql** fájl abszolút elérési útja a projektben. Győződjön meg arról, hogy a asaproj. JSON és a JobConfig. JSON fájlok ugyanabban a mappában találhatók, mint a parancsfájl. Ha a **outputPath** nincs megadva, a sablonok a projekt **bin** mappájában, a **központi telepítés** mappában lesznek elhelyezve.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -37,20 +37,20 @@ Példa (macOS rendszeren)
 azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
-Amikor egy Stream Analytics Visual Studio Code projekt sikeresen épül fel, a következő két Azure Resource Manager-sablonfájlt hozza létre a **bin/[Debug/Retail]/Deploy** mappában: 
+Stream Analytics Visual Studio Code-projekt sikeres létrehozásakor a a következő két Azure Resource Manager sablonfájlt hozza létre a **bin/[debug/Retail]/Deploy** mappában: 
 
-*  Erőforrás-kezelő sablonfájlja
+*  Resource Manager-sablonfájl
 
        [ProjectName].JobTemplate.json 
 
-*  Erőforrás-kezelő paraméterfájlja
+*  Resource Manager-paraméterek fájlja
 
        [ProjectName].JobTemplate.parameters.json   
 
-A parameters.json fájl alapértelmezett paraméterei a Visual Studio Code projekt beállításaiból származnak. Ha egy másik környezetben szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
+A Parameters. JSON fájlban lévő alapértelmezett paraméterek a Visual Studio Code projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
 > [!NOTE]
-> Az összes hitelesítő adat esetében az alapértelmezett értékek null értékűek. Az értékeket a felhőbe való üzembe helyezés előtt **be kell** állítania.
+> Az összes hitelesítő adat esetében az alapértelmezett értékek NULL értékre vannak állítva. A felhőbe való üzembe helyezés előtt **be kell állítania** az értékeket.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -60,136 +60,136 @@ A parameters.json fájl alapértelmezett paraméterei a Visual Studio Code proje
 
 ## <a name="deploy-with-azure-pipelines"></a>Üzembe helyezés az Azure Pipelines használatával
 
-Ez a szakasz ismerteti, hogyan hozhat létre Azure-folyamatok [létrehozása](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) és [feloldása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) folyamatok npm használatával.
+Ez a szakasz részletesen [ismerteti, hogyan](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hozhat létre és [szabadíthat fel](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) folyamatokat a NPM használatával az Azure-folyamatok létrehozásával.
 
-Nyisson meg egy webböngészőt, és keresse meg az Azure Stream Analytics Visual Studio Code projektet.
+Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual Studio Code projekthez.
 
-1. A bal oldali navigációs menü **Folyamatok csoportban** válassza a **Builds (Builds)** lehetőséget. Ezután válassza az **Új folyamat lehetőséget**
+1. A bal oldali navigációs menü **folyamatok** területén válassza a **buildek**lehetőséget. Ezután válassza az **új folyamat** elemet.
 
    ![Új Azure-folyamat létrehozása](./media/setup-cicd-vs-code/new-pipeline.png)
 
-2. Válassza **a Klasszikus szerkesztő használata** yaml nélküli folyamat létrehozásához lehetőséget.
+2. Válassza **a klasszikus szerkesztő használata** lehetőséget a YAML nélküli folyamat létrehozásához.
 
-3. Válassza ki a forrástípusát, a csoportprojektet és a tárházat. Ezután válassza a **Folytatás** elemet.
+3. Válassza ki a forrás típusát, a csapat projektjét és a tárházat. Ezután válassza a **Folytatás** elemet.
 
-   ![Válassza az Azure Stream Analytics projektet](./media/setup-cicd-vs-code/select-repo.png)
+   ![Azure Stream Analytics projekt kiválasztása](./media/setup-cicd-vs-code/select-repo.png)
 
-4. A **Sablon kiválasztása** lapon válassza az **Üres feladat lehetőséget.**
+4. A **sablon választása** lapon válassza az **üres feladatot**.
 
-### <a name="add-npm-task"></a>Npm-feladat hozzáadása
+### <a name="add-npm-task"></a>NPM feladat hozzáadása
 
-1. A **Feladatok** lapon válassza ki az **1.** Írja be az "npm" szót a feladatkeresésbe, és válassza az **npm lehetőséget.**
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Adja meg a "NPM" kifejezést a feladat keresése területen, majd válassza a **NPM**lehetőséget.
 
-   ![Npm feladat kijelölése](./media/setup-cicd-vs-code/search-npm.png)
+   ![NPM feladat kiválasztása](./media/setup-cicd-vs-code/search-npm.png)
 
-2. Adja meg a feladatnak **a Megjelenítendő nevet**. Módosítsa a **Parancs** beállítást *egyénire,* és írja be a következő parancsot a **Parancs és argumentumok mezőbe.** Hagyja meg a többi alapértelmezett beállítást.
+2. Adja meg a feladat **megjelenítendő nevét**. Módosítsa a **parancsot** *egyénire* , és adja meg a következő parancsot a **parancsban és argumentumokban**. Hagyja meg a többi alapértelmezett beállítást.
 
    ```cmd
    install -g azure-streamanalytics-cicd
    ```
 
-   ![Npm feladat konfigurációinak megadása](./media/setup-cicd-vs-code/npm-config.png)
+   ![Adja meg a NPM feladat konfigurációit](./media/setup-cicd-vs-code/npm-config.png)
 
 ### <a name="add-command-line-task"></a>Parancssori feladat hozzáadása
 
-1. A **Feladatok** lapon válassza ki az **1.** Keressen a **parancssorra.**
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Keresse meg a **parancssort**.
 
-2. Adjon a feladatnak **egy Megjelenítendő nevet,** és írja be a következő parancsfájlt. Módosítsa a parancsfájlt a tárház nevével és a projekt nevével.
+2. Adja meg a feladat **megjelenítendő nevét** , és adja meg a következő parancsfájlt. Módosítsa a szkriptet az adattár nevével és a projekt nevével.
 
    ```cmd
    azure-streamanalytics-cicd build -scriptPath $(Build.SourcesDirectory)/myASAProject/myASAProj.asaql
    ```
 
-   ![Parancssori feladat konfigurációinak megadása](./media/setup-cicd-vs-code/commandline-config.png)
+   ![Adja meg a parancssori feladathoz tartozó konfigurációkat](./media/setup-cicd-vs-code/commandline-config.png)
 
-### <a name="add-copy-files-task"></a>Fájlok másolásának hozzáadása feladat
+### <a name="add-copy-files-task"></a>Fájlok másolása feladat hozzáadása
 
-1. A **Feladatok** lapon válassza ki az **1.** Fájlok **másolása**keresése . Ezután adja meg a következő konfigurációkat.
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. **Fájlok másolásának**keresése. Ezután adja meg a következő konfigurációkat.
 
    |Paraméter|Input (Bemenet)|
    |-|-|
-   |Megjelenített név|Fájlok másolása a következőbe: $(build.artifactstagingdirectory)|
-   |Forrásmappa|`$(system.defaultworkingdirectory)`| 
+   |Megjelenített név|Fájlok másolása ide: $ (Build. artifactstagingdirectory)|
+   |Forrás mappája|`$(system.defaultworkingdirectory)`| 
    |Tartalom| `**\Deploy\**` |
    |Célmappa| `$(build.artifactstagingdirectory)`|
 
-   ![A másolási feladat konfigurációinak megadása](./media/setup-cicd-vs-code/copy-config.png)
+   ![A másolási feladathoz tartozó konfigurációk megadása](./media/setup-cicd-vs-code/copy-config.png)
 
-### <a name="add-publish-build-artifacts-task"></a>Közzétételi buildösszetevők hozzáadása feladat
+### <a name="add-publish-build-artifacts-task"></a>Közzététel-összeállítási összetevők hozzáadása feladat
 
-1. A **Feladatok** lapon válassza ki az **1.** Keresse meg a **Build-összetevők közzététele elemet,** és válassza a beállítást a fekete nyíl ikonnal. 
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Keressen rá a **közzétett Build** -összetevők keresése elemre, és válassza a fekete nyíl ikont. 
 
-2. Ne módosítsa az alapértelmezett konfigurációkat.
+2. Ne módosítsa az alapértelmezett konfigurációk egyikét sem.
 
-### <a name="save-and-run"></a>Mentés és futtatás
+### <a name="save-and-run"></a>Mentés és Futtatás
 
-Miután befejezte az npm, a parancssori adatok hozzáadását, a fájlok másolását és a buildösszetevők közzétételét, válassza **a & várólista mentése**lehetőséget. Amikor a program kéri, adjon meg egy mentési megjegyzést, és válassza a **Mentés és futtatás**lehetőséget.
+Miután végzett a NPM, a parancssorból, a fájlok másolásával és a Build-összetevők közzétételével kapcsolatos feladatok hozzáadásával, válassza a **mentés & üzenetsor**lehetőséget. Amikor a rendszer kéri, adjon meg egy mentési megjegyzést, és válassza a **Mentés és Futtatás**lehetőséget.
 
-## <a name="release-with-azure-pipelines"></a>Kiadás az Azure-folyamatokkal
+## <a name="release-with-azure-pipelines"></a>Kiadás Azure-folyamatokkal
 
-Nyisson meg egy webböngészőt, és keresse meg az Azure Stream Analytics Visual Studio Code projektet.
+Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual Studio Code projekthez.
 
-1. A bal oldali navigációs menü **Folyamatok csoportban** válassza a **Felengedések**lehetőséget. Ezután válassza **az Új folyamat lehetőséget**.
+1. A bal oldali navigációs menü **folyamatok** területén válassza a **kiadások**elemet. Ezután válassza az **új folyamat**lehetőséget.
 
-2. Válassza **a Kezdés üres feladattal**lehetőséget.
+2. Válassza **az indítás üres feladatokkal**lehetőséget.
 
-3. Az **Eltérések** párbeszédpanelen válassza a **+ Műtermék hozzáadása**lehetőséget. A **Forrás csoportban**válassza ki az imént létrehozott buildfolyamatot, és válassza **a Hozzáadás**lehetőséget.
+3. Az összetevők **mezőben válassza az** **+ összetevő hozzáadása**elemet. A **forrás**területen válassza ki az imént létrehozott Build folyamatot, majd válassza a **Hozzáadás**lehetőséget.
 
-   ![Build-folyamat műtermék ének megadása](./media/setup-cicd-vs-code/build-artifact.png)
+   ![Adja meg a folyamat létrehozása összetevőt](./media/setup-cicd-vs-code/build-artifact.png)
 
-4. Módosítsa az **1.** **Deploy job to test environment**
+4. Módosítsa az 1. **fázis** nevét a **feladatok tesztelési környezetbe való telepítéséhez**.
 
-5. Adjon hozzá egy új szakaszt, és nevezze **el a feladat üzembe helyezése éles környezetbe.**
+5. Vegyen fel egy új szakaszt, és nevezze el az **üzembe helyezési feladatot éles környezetbe**.
 
-### <a name="add-tasks"></a>Tevékenységek hozzáadása
+### <a name="add-tasks"></a>Feladatok hozzáadása
 
-1. A feladatok legördülő menüben válassza a Telepítési feladat a **környezet teszteléséhez**lehetőséget. 
+1. A feladatok legördülő menüben válassza a **feladat üzembe helyezése a tesztkörnyezet teszteléséhez**lehetőséget. 
 
-2. Válassza **+** ki az **Ügynök feladat** melletti elemet, és keresse meg az *Azure erőforráscsoport üzembe helyezését.* Adja meg a következő paramétereket:
-
-   |Beállítás|Érték|
-   |-|-|
-   |Megjelenített név| *A myASAJob telepítése*|
-   |Azure-előfizetés| Válassza ki az előfizetését.|
-   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
-   |Erőforráscsoport| Válasszon nevet a streamanalytics-feladatot tartalmazó teszterőforrás-csoportnak.|
-   |Hely|Adja meg a teszterőforrás-csoport helyét.|
-   |Sablon helye| *Csatolt műtermék*|
-   |Sablon| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
-   |Sablon paraméterei|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
-   |Sablon paramétereinek felülbírálása|- Input_IoTHub1_iotHubNamespace $(test_eventhubname)|
-   |Telepítési mód|Növekvő|
-
-3. A feladatok legördülő menüben válassza **a Feladat üzembe helyezése éles környezetbe**lehetőséget.
-
-4. Válassza **+** ki az **Ügynök feladat** melletti elemet, és keresse meg az *Azure erőforráscsoport üzembe helyezését.* Adja meg a következő paramétereket:
+2. Válassza ki **+** az ügynök melletti **feladatot** , és keresse meg az *Azure-erőforráscsoport üzembe helyezését*. Adja meg a következő paramétereket:
 
    |Beállítás|Érték|
    |-|-|
-   |Megjelenített név| *A myASAJob telepítése*|
+   |Megjelenített név| *MyASAJob üzembe helyezése*|
    |Azure-előfizetés| Válassza ki az előfizetését.|
    |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
-   |Erőforráscsoport| Válasszon nevet a Stream Analytics-feladatot tartalmazó termelési erőforráscsoportnak.|
-   |Hely|Válassza ki a termelési erőforráscsoport helyét.|
-   |Sablon helye| *Csatolt műtermék*|
-   |Sablon| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
-   |Sablon paraméterei|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
-   |Sablon paramétereinek felülbírálása|-Input_IoTHub1_iotHubNamespace $(eventhubname)|
-   |Telepítési mód|Növekvő|
+   |Erőforráscsoport| Válassza ki a Stream Analytics feladatot tartalmazó tesztelési erőforráscsoport nevét.|
+   |Hely|Válassza ki a tesztelési erőforráscsoport helyét.|
+   |Sablon helye| *Társított összetevő*|
+   |Sablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
+   |Sablon paraméterei|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Sablon paramétereinek felülbírálása|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
+   |Üzembe helyezési mód|Növekvő|
+
+3. A feladatok legördülő menüben válassza a **feladat üzembe helyezése éles környezetben**lehetőséget.
+
+4. Válassza ki **+** az ügynök melletti **feladatot** , és keresse meg az *Azure-erőforráscsoport üzembe helyezését*. Adja meg a következő paramétereket:
+
+   |Beállítás|Érték|
+   |-|-|
+   |Megjelenített név| *MyASAJob üzembe helyezése*|
+   |Azure-előfizetés| Válassza ki az előfizetését.|
+   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
+   |Erőforráscsoport| Válassza ki az üzemi erőforráscsoport nevét, amely a Stream Analytics feladatot fogja tartalmazni.|
+   |Hely|Válassza ki az üzemi erőforráscsoport helyét.|
+   |Sablon helye| *Társított összetevő*|
+   |Sablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
+   |Sablon paraméterei|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Sablon paramétereinek felülbírálása|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
+   |Üzembe helyezési mód|Növekvő|
 
 ### <a name="create-release"></a>Kiadás létrehozása
 
-Kiadás létrehozásához válassza a **Kiadás létrehozása lehetőséget** a jobb felső sarokban.
+A kiadás létrehozásához válassza a jobb felső sarokban található **kiadás létrehozása** elemet.
 
-![Kiadás létrehozása az Azure-folyamatok használatával](./media/setup-cicd-vs-code/create-release.png)
+![Kiadás létrehozása az Azure-folyamatokkal](./media/setup-cicd-vs-code/create-release.png)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-Az Azure Data Lake Store Gen1 felügyelt identitásának kimeneti fogadóként való használatához az Azure-ba való üzembe helyezés előtt hozzáférést kell biztosítania az egyszerű szolgáltatás hoz a PowerShell használatával. További információ az [ADLS Gen1 felügyelt identitással történő központi telepítéséről az Erőforrás-kezelő sablonnal.](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)
+Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimeneti fogadóként, az Azure-ba való üzembe helyezés előtt meg kell adnia a szolgáltatásnevet a PowerShell használatával. További információ a [ADLS Gen1 felügyelt identitással való üzembe helyezéséhez Resource Manager-sablonnal](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Hozzon létre egy Azure Stream Analytics-felhőfeladatot a Visual Studio-kódban (előzetes verzió)](quick-create-vs-code.md)
-* [A Test Stream Analytics helyi lekérdezései a Visual Studio-kóddal (előzetes verzió)](visual-studio-code-local-run.md)
-* [Az Azure Stream Analytics felfedezése a Visual Studio-kóddal (előzetes verzió)](visual-studio-code-explore-jobs.md)
+* [Gyors útmutató: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)](quick-create-vs-code.md)
+* [Stream Analytics lekérdezések tesztelése helyileg a Visual Studio Code-ban (előzetes verzió)](visual-studio-code-local-run.md)
+* [Ismerkedés a Azure Stream Analytics a Visual Studio Code (előzetes verzió) szolgáltatással](visual-studio-code-explore-jobs.md)

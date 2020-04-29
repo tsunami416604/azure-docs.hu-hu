@@ -1,70 +1,70 @@
 ---
-title: Adatmodell metrikatelemetriai adatokhoz – Azure Application Insights
-description: Application Insights-adatmodell metrikatelemetriai adatokhoz
+title: Adatmodell metrikus telemetria – Azure Application Insights
+description: Application Insights adatmodell metrikus telemetria
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671970"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Metrikatelemetria: Application Insights-adatmodell
+# <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights adatmodell
 
-Az [Application Insights](../../azure-monitor/app/app-insights-overview.md)által támogatott metrikatelemetriai két típus létezik: egyetlen mérés és előre összesített metrika. Egyetlen mérés csak egy név és érték. Az előre összesített metrika a metrika minimális és maximális értékét határozza meg az összesítési intervallumban és annak szórásában.
+A [Application Insights](../../azure-monitor/app/app-insights-overview.md)kétféle metrikai telemetria támogat: egyetlen mérési és előre aggregált metrika. Az egyszeres mérés csak a név és az érték. Az előre aggregált metrika a metrika minimális és maximális értékét adja meg az összesítési intervallumban és a szórásban.
 
-Az összesített metrikatelemetriai adatok feltételezik, hogy az összesítési időszak egy perc volt.
+Az előre összesített metrikai telemetria feltételezi, hogy az összesítési időszak egy perc volt.
 
-Az Application Insights számos jól ismert metrikanévet támogat. Ezek a mérőszámok a performanceCounters táblába kerülnek.
+A Application Insights számos jól ismert metrikai nevet támogat. Ezek a metrikák a performanceCounters táblázatba kerülnek.
 
-Rendszer- és folyamatszámlálókat jelölő metrikus mutatók:
+A rendszerszintű és a folyamat számlálóit jelölő metrika:
 
-| **.NET név**             | **Platform agnosztikus név** | **REST API-név** | **Leírás**
+| **.NET-név**             | **Platform agnosztikus neve** | **REST API neve** | **Leírás**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
-| `\Processor(_Total)\% Processor Time` | Folyamatban lévő munka... | [processorCpuSzázalék](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | teljes gép CPU
-| `\Memory\Available Bytes`                 | Folyamatban lévő munka... | [memóriaElérhető bájt](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | A számítógépen futó folyamatok számára rendelkezésre álló fizikai memória bájtban való mennyiségét jeleníti meg. Kiszámítása a nullázott, szabad és készenléti memórialistákon lévő terület összegének összegzésével történik. A szabad memória készen áll a használatra; a nullázott memória nullákkal töltött memóriaoldalakból áll, hogy a későbbi folyamatok ne láthassák az előző folyamat által használt adatokat; a készenléti memória olyan memória, amelyet eltávolítottak a folyamat munkakészletéből (fizikai memóriájából) a lemezre vezető úton, de még visszahívható. Lásd [memóriaobjektum](https://msdn.microsoft.com/library/ms804008.aspx)
-| `\Process(??APP_WIN32_PROC??)\% Processor Time` | Folyamatban lévő munka... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Cpu a folyamat otthont az alkalmazás
-| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Folyamatban lévő munka... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | az alkalmazást üzemeltető folyamat által használt memória
-| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Folyamatban lévő munka... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | az I/O-műveletek sebessége az alkalmazást tároló folyamat szerint fut
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | Folyamatban lévő munka... | [kérésekPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | alkalmazásonként feldolgozott kérelmek aránya 
-| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | Folyamatban lévő munka... | [kivételekPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | az alkalmazás által okozott kivételek aránya
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Folyamatban lévő munka... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | átlagos kérelmek végrehajtási ideje
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Folyamatban lévő munka... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a várólistában történő feldolgozásra váró kérelmek száma
+| `\Processor(_Total)\% Processor Time` | Munka folyamatban... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | számítógép teljes PROCESSZORa
+| `\Memory\Available Bytes`                 | Munka folyamatban... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | A számítógépen futó folyamatok számára elérhető fizikai memória mennyiségét jeleníti meg bájtban. A kiszámításához a rendszer a nulla, az ingyenes és a készenléti memória listán lévő tárterület összegét összesíti. A szabad memória készen áll a használatra. a letiltott memória a nullával kitöltött memóriából áll, hogy megakadályozza a későbbi folyamatok számára az előző folyamat által használt adatok megtekintését; a készenléti memória olyan memória, amely el lett távolítva egy folyamat munkakészletéről (fizikai memóriája) a lemezre, de továbbra is visszahívható. Lásd: [memória objektum](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Process(??APP_WIN32_PROC??)\% Processor Time` | Munka folyamatban... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Az alkalmazást működtető folyamat PROCESSZORa
+| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Munka folyamatban... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | az alkalmazást működtető folyamat által használt memória
+| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Munka folyamatban... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | az alkalmazás futtatásának folyamata által futtatott I/O-műveletek sebessége
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | Munka folyamatban... | [requestsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | az alkalmazás által feldolgozott kérelmek aránya 
+| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | Munka folyamatban... | [exceptionsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | az alkalmazás által eldobott kivételek aránya
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Munka folyamatban... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | kérelmek átlagos végrehajtási ideje
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Munka folyamatban... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a várólistán való feldolgozásra váró kérelmek száma
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
-Az Application Insights-portálon és a felhasználói felületen látni kívánt metrika neve. 
+A Application Insights Portálon és felhasználói felületen megjelenő metrika neve. 
 
 ## <a name="value"></a>Érték
 
-Egyetlen érték a méréshez. Az összesítéshez egyedi mérések összege.
+Egy érték a méréshez. Az összesítéshez tartozó egyedi mérések összege.
 
 ## <a name="count"></a>Darabszám
 
-Az összesített metrika mérőszám súlya. Nem szabad beállítani a méréshez.
+Az összesített metrika metrikájának súlya Nem szabad beállítani a mérést.
 
 ## <a name="min"></a>Min
 
-Az összesített metrika minimális értéke. Nem szabad beállítani a méréshez.
+Az összesített metrika minimális értéke. Nem szabad beállítani a mérést.
 
 ## <a name="max"></a>Max
 
-Az összesített metrika maximális értéke. Nem szabad beállítani a méréshez.
+Az összesített metrika maximális értéke. Nem szabad beállítani a mérést.
 
 ## <a name="standard-deviation"></a>Szórás
 
-Az összesített metrika szórása. Nem szabad beállítani a méréshez.
+Az összesített metrika szórása. Nem szabad beállítani a mérést.
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
-Metrika `CustomPerfCounter` az `true` egyéni tulajdonság beállítása azt jelzi, hogy a metrika képviseli a Windows teljesítményszámláló. Ezek a mérőszámok a performanceCounters táblázatban. Nem a customMetrics.Not in customMetrics. A metrika neve is elemezve van a kategória-, számláló- és példánynevek kinyeréséhez.
+Az egyéni tulajdonsággal `CustomPerfCounter` beállított metrika `true` azt jelzi, hogy a metrika a Windows-teljesítményszámláló értékét jelöli. Ezek a metrikák a performanceCounters táblában vannak elhelyezve. Nem a customMetrics. A metrika neve a kategória, a számláló és a példányok neveinek kinyeréséhez is értelmezve lesz.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan használhatja az [Application Insights API-t egyéni eseményekhez és mérőszámokhoz.](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)
-- Tekintse meg az Application Insights-típusok és adatmodell [adatmodelljét.](data-model.md)
-- Tekintse meg az Application Insights által támogatott [platformokat.](../../azure-monitor/app/platforms.md)
+- Ismerje meg, hogyan használhatja [a Application INSIGHTS API-t egyéni eseményekhez és mérőszámokhoz](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
