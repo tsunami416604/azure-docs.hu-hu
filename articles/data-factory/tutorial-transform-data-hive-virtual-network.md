@@ -1,5 +1,5 @@
 ---
-title: Adatok átalakítása a Hive használatával az Azure virtuális hálózatban
+title: Adatátalakítás a kaptár használatával az Azure-ban Virtual Network
 description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
 services: data-factory
 ms.service: data-factory
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: bf696b79215843e392fcf510e35cc410ff9902a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409204"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
@@ -32,20 +32,20 @@ Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-fol
 > * A folyamat futásának monitorozása 
 > * A kimenet ellenőrzése 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Az Azure Storage-fiók.** Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
-- **Az Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
+- **Azure Storage-fiók**. Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
+- **Azure Virtual Network.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
     ![Virtuális hálózat létrehozása](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatolja az előző lépésben létrehozott virtuális hálózathoz az [Azure HDInsight Azure virtuális hálózat segítségével történő bővítésével](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) kapcsolatos cikk utasításait követve. Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
 
     ![HDInsight virtuális hálózaton](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Az Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+- **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive-szkript feltöltése Blob Storage-fiókba
 
@@ -105,7 +105,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://a
     ```powershell
     Get-AzSubscription
     ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **SubscriptionId** -t az Azure-előfizetés azonosítójával:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -186,7 +186,7 @@ Hozzon létre egy JSON-fájlt az előnyben részesített szerkesztővel, másolj
 }
 ```
 
-Cserélje le ** &lt; &lt;a&gt; &gt; fióknevet és** a fiókkulcsot az Azure Storage-fiók nevére és kulcsára.
+Cserélje ** &lt;le&gt; az &lt;accountname&gt; és a accountkey** az Azure Storage-fiókjának nevére és kulcsára.
 
 ### <a name="hdinsight-linked-service"></a>HDInsight társított szolgáltatás
 
@@ -219,9 +219,9 @@ Hozzon létre egy JSON-fájlt a kívánt szerkesztőprogrammal, másolja a fájl
 
 Frissítse a következő tulajdonságok értékeit a társított szolgáltatás definíciójában:
 
-- **userName**. A fürt bejelentkezési felhasználójának neve, amely a fürt létrehozásakor lett megadva. 
+- **Felhasználónév**. A fürt bejelentkezési felhasználójának neve, amely a fürt létrehozásakor lett megadva. 
 - **password**. A felhasználó jelszava.
-- **clusterUri**. Adja meg a HDInsight-fürt URL-címét a következő formátumban: `https://<clustername>.azurehdinsight.net`.  A cikk azt feltételezi, hogy a fürtöt az interneten éri el. A fürthöz például a `https://clustername.azurehdinsight.net` címen tud csatlakozni. Ez a cím a nyilvános átjárót használja, amely nem érhető el, ha az internetes hozzáférés korlátozva lett hálózati biztonsági csoportokkal (NSG-kkel) vagy felhasználó által definiált útvonalakkal (UDR-ekkel). Ahhoz, hogy a Data Factory feladatokat küldhessen az Azure-beli virtuális hálózaton található HDInsight-fürtre, az Azure-beli virtuális hálózatot úgy kell konfigurálni, hogy az URL-cím feloldható legyen a HDInsight által használt átjáró magánhálózati IP-címére.
+- **clusterUri**. Adja meg a HDInsight-fürt URL-címét a következő formátumban `https://<clustername>.azurehdinsight.net`:.  A cikk azt feltételezi, hogy a fürtöt az interneten éri el. A fürthöz például a `https://clustername.azurehdinsight.net` címen tud csatlakozni. Ez a cím a nyilvános átjárót használja, amely nem érhető el, ha az internetes hozzáférés korlátozva lett hálózati biztonsági csoportokkal (NSG-kkel) vagy felhasználó által definiált útvonalakkal (UDR-ekkel). Ahhoz, hogy a Data Factory feladatokat küldhessen az Azure-beli virtuális hálózaton található HDInsight-fürtre, az Azure-beli virtuális hálózatot úgy kell konfigurálni, hogy az URL-cím feloldható legyen a HDInsight által használt átjáró magánhálózati IP-címére.
 
   1. Az Azure Portalról nyissa meg a virtuális hálózatot, amelyen a HDInsight található. Nyissa meg a hálózati adaptert, amelynek a neve a következő karakterlánccal kezdődik: `nic-gateway-0`. Jegyezze fel a magánhálózati IP-címét. Például: 10.6.0.15. 
   2. Ha az Azure virtuális hálózaton van DNS-kiszolgáló, frissítse a DNS-rekordot, hogy a HDInsight-fürt URL-címe (`https://<clustername>.azurehdinsight.net`) feloldható legyen a `10.6.0.15` címre. Ez az ajánlott eljárás. Ha nincs DNS-kiszolgáló az Azure virtuális hálózaton, akkor átmeneti megoldást jelenthet, ha szerkeszti az összes saját üzemeltetésű integrációs modulként regisztrált virtuális gép listáját tartalmazó gazdafájlt (C:\Windows\System32\drivers\etc) egy, a következőhöz hasonló bejegyzés hozzáadásával: 

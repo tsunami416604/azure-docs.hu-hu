@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása a Databricks Jar segítségével
-description: Ismerje meg, hogyan dolgozhatja fel vagy alakíthatja át az adatokat egy Databricks Jar futtatásával.
+title: Az adatátalakítás a Databricks jar-val
+description: Megtudhatja, hogyan dolgozhat fel és alakíthat át adatátalakítást egy Databricks jar futtatásával.
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
@@ -12,24 +12,24 @@ author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
 ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414610"
 ---
-# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Adatok átalakítása Jar-tevékenység futtatásával az Azure Databricks-ben
+# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Az adatátalakításhoz jar-tevékenység fut Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az Azure Databricks Jar tevékenység egy [data factory folyamat](concepts-pipelines-activities.md) egy Spark Jar az Azure Databricks-fürtben fut. Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.Az Azure Databricks egy felügyelt platform az Apache Spark futtatásához.
+A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks jar-tevékenysége egy Spark jar-t futtat a Azure Databricks-fürtben. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.A Azure Databricks felügyelt platform a Apache Spark futtatásához.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
-## <a name="databricks-jar-activity-definition"></a>Databricks Jar tevékenység definíciója
+## <a name="databricks-jar-activity-definition"></a>Databricks jar-tevékenység definíciója
 
-Itt van a minta JSON meghatározása Databricks Jar Tevékenység:
+Itt látható a Databricks jar-tevékenység JSON-definíciója:
 
 ```json
 {
@@ -52,26 +52,26 @@ Itt van a minta JSON meghatározása Databricks Jar Tevékenység:
 
 ```
 
-## <a name="databricks-jar-activity-properties"></a>Databricks Jar tevékenység tulajdonságai
+## <a name="databricks-jar-activity-properties"></a>Databricks jar-tevékenység tulajdonságai
 
-Az alábbi táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
+A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
 |Tulajdonság|Leírás|Kötelező|
 |:--|---|:-:|
-|név|A folyamatban lévő tevékenység neve.|Igen|
-|leírás|A tevékenység tevékenységét leíró szöveg.|Nem|
-|type|Databricks Jar tevékenység esetén a tevékenység típusa DatabricksSparkJar.|Igen|
-|linkedServiceName|Annak a Databricks csatolt szolgáltatásnak a neve, amelyen a Jar tevékenység fut. A csatolt szolgáltatásról a [Csatolt szolgáltatások számítási cikkében](compute-linked-services.md) olvashat.|Igen|
-|mainClassName (mainClassName)|A végrehajtandó fő metódust tartalmazó osztály teljes neve. Ezt az osztályt könyvtárként biztosított JAR-ban kell tartani.|Igen|
-|paraméterek|A fő metódusnak átadott paraméterek.  Ez egy sor húr.|Nem|
-|Könyvtárak|A feladatot végrehajtó fürtre telepítendő tárak listája. Ez lehet <karakterlánc, objektum>|Igen (legalább egy, amely a mainClassName metódust tartalmazza)|
+|név|A folyamatban szereplő tevékenység neve.|Igen|
+|leírás|A tevékenység működését leíró szöveg|Nem|
+|type|A Databricks jar tevékenység esetén a tevékenység típusa DatabricksSparkJar.|Igen|
+|linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a jar-tevékenység fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
+|mainClassName|A végrehajtandó fő metódust tartalmazó osztály teljes neve. Ennek az osztálynak szerepelnie kell egy könyvtárként megadott JAR-fájlban.|Igen|
+|paraméterek|A Main metódusnak átadott paraméterek.  Ez a karakterláncok tömbje.|Nem|
+|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. <sztring, objektum> tömbje lehet.|Igen (legalább egy mainClassName metódust tartalmaz)|
 
 > [!NOTE]
-> **Ismert probléma** – Ha ugyanazt az [interaktív fürtöt](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) használja egyidejű Databricks Jar tevékenységek futtatásához (fürt újraindítása nélkül), van egy ismert probléma databricks, ahol az első tevékenység paramétereiben fogja használni a következő tevékenységek is. Ezért helytelen paraméterek et adnak át a következő feladatoknak. Ennek csökkentése érdekében használja a [feladatfürt](compute-linked-services.md#example---using-new-job-cluster-in-databricks) helyett. 
+> **Ismert probléma** – ha ugyanazt az [interaktív fürtöt](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) használja az egyidejű Databricks jar-tevékenységek futtatásához (a fürt újraindítása nélkül), akkor ismert probléma van a Databricks, ahol az első tevékenység paramétereit is a következő tevékenységek használják majd. Emiatt a rendszer helytelen paramétereket ad át a következő feladatoknak. Ezzel a megoldással csökkentheti a [feladatok fürtjét](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
 
-## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak adatbricktevékenységekhez
+## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a databricks-tevékenységekhez
 
-A fenti Databricks tevékenységdefinícióban a következő könyvtártípusokat adhatja meg: *jar*, *tojás,* *maven*, *pypi*, *cran.*
+A fenti Databricks-tevékenység definíciójában a következő típustár-típusokat adhatja meg: *jar*, *Egg*, *Maven*, *PyPI*, *Cran*.
 
 ```json
 {
@@ -105,19 +105,19 @@ A fenti Databricks tevékenységdefinícióban a következő könyvtártípusoka
 
 ```
 
-További részletekért tekintse [databricks dokumentáció](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) könyvtártípusok.
+További részletekért tekintse meg a [Databricks dokumentációját](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) .
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése databricks-ben
+## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése a Databricks-ben
 
-#### <a name="using-databricks-workspace-ui"></a>[A Databricks munkaterület felhasználói felületének használata](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[Databricks-munkaterület felhasználói felületének használata](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja a [Databricks CLI (telepítés) parancsot.](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) 
+A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja a [DATABRICKS CLI-t (telepítés)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-A Jar-kódtárak általában a dbfs:/FileStore/jars alatt tárolódnak a felhasználói felület használata közben. Felsorolhatja az egész CLI: *databricks fs ls dbfs:/FileStore/job-jars* 
+A jar-kódtárak általában a dbfs:/FileStore/tégelyek alatt tárolódnak, miközben a felhasználói felületet használják. A CLI-n keresztül listázhatja az összeset: *databricks FS ls dbfs:/FileStore/Job-jars* 
 
 
 
-#### <a name="copy-library-using-databricks-cli"></a>[Tár másolása a Databricks CLI használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
-Használja a Databricks [CLI-t (telepítési lépések)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+#### <a name="copy-library-using-databricks-cli"></a>[Könyvtár másolása a Databricks CLI használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+Használja a Databricks CLI [-t (telepítési lépések)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Példa - JAR másolása a dbfs-be: *dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar*
+Példa – a JAR másolása a dbfs: *dbfs CP sparkpi-Assembly-0.1. jar dbfs:/docs/SparkPi. jar*

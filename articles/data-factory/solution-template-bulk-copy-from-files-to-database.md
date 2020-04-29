@@ -1,6 +1,6 @@
 ---
 title: Tömeges másolás fájlokból adatbázisba
-description: Megtudhatja, hogyan másolhat adatokat tömegesen az Azure Data Lake Storage Gen2-ből az Azure Synapse Analytics / Azure SQL Database szolgáltatásba.
+description: Megtudhatja, hogyan használhat megoldási sablonnal az adatok tömeges másolását Azure Data Lake Storage Gen2ról az Azure szinapszis Analytics/Azure SQL Databaseba.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -9,61 +9,61 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 070b708f204006bc1ba90c4c3676696291fde902
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414872"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Tömeges másolás fájlokból adatbázisba
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk egy megoldássablont ismertet, amely az Azure Data Lake Storage Gen2-ből tömegesen másolhatja az adatokat az Azure Synapse Analytics / Azure SQL Database szolgáltatásba.
+Ez a cikk egy megoldási sablont ismertet, amellyel az adatok tömegesen másolhatók az Azure szinapszis Analytics/Azure SQL Databaseba Azure Data Lake Storage Gen2.
 
-## <a name="about-this-solution-template"></a>A megoldássablon – kapcsolat
+## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 
-Ez a sablon az Azure Data Lake Storage Gen2 forrásból szerzi be a fájlokat. Ezután a forrás minden egyes fájlját átitatja, és átmásolja a fájlt a céladattárba. 
+Ez a sablon Azure Data Lake Storage Gen2 forrásból kérdez le fájlokat. Ezután megismétli a forrás minden fájlját, és átmásolja a fájlt a célhely adattárba. 
 
-Jelenleg ez a sablon csak **a DelimitedText** formátumú adatok másolását támogatja. A más adatformátumú fájlok a forrásadattárból is beolvashatók, de nem másolhatók a céladattárba.  
+Ez a sablon jelenleg csak az adatok **DelimitedText** formátumban való másolását támogatja. Más adatformátumokban lévő fájlok is beolvashatók a forrás adattárból, de nem másolhatók a célhely adattárára.  
 
 A sablon három tevékenységet tartalmaz:
-- **A Metaadat-tevékenység beolvasása** fájlokat az Azure Data Lake Storage Gen2, és átadja azokat a későbbi *ForEach* tevékenység.
-- **ForEach** tevékenység lekéri a fájlokat a *Metaadat-jelentés* tevékenység és iterates minden fájlt a *Másolás* tevékenység.
-- **A** másolási tevékenység a *ForEach* tevékenységben található, így az egyes fájlokat a forrásadattárból a céladattárba másolhatja.
+- A **metaadatok beolvasása** tevékenység lekéri a fájlokat a Azure Data Lake Storage Gen2ból, és átadja őket a következő *foreach* tevékenységnek.
+- A **foreach** tevékenység lekéri a *metaadatok beolvasása* tevékenység fájljait, és megismétli az egyes fájlokat a *másolási* tevékenységnek.
+- A **másolási** tevékenység a *foreach* tevékenységben található, hogy az egyes fájlokat a forrás adattárból a cél adattárba másolja.
 
-A sablon a következő két paramétert határozza meg:
-- *SourceContainer* a gyökértároló elérési útja, ahonnan az adatok az Azure Data Lake Storage Gen2. 
-- *A SourceDirectory* a gyökértároló alatti könyvtárelérési út, ahonnan az adatok at az Azure Data Lake Storage Gen2-ből másolja a rendszer.
+A sablon a következő két paramétert definiálja:
+- A *SourceContainer* az a legfelső szintű tároló elérési útja, ahová a rendszer átmásolja az adatait a Azure Data Lake Storage Gen2. 
+- A *SourceDirectory* a gyökér tárolóban lévő könyvtár elérési útja, ahol az adatok a Azure Data Lake Storage Gen2ból másolódnak.
 
-## <a name="how-to-use-this-solution-template"></a>A megoldássablon használata
+## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Nyissa meg a **Fájlokból az adatbázisból tömeges** másolássablont. **Új** kapcsolat létrehozása a forrás Gen2 tárolóval. Ne feledje, hogy a "GetMetadataDataset" és a "SourceDataset" a forrásfájl-tároló ugyanazon kapcsolatára mutató hivatkozások.
+1. Nyissa meg a **fájlok tömeges másolását az adatbázis** sablonba. Hozzon létre egy **új** kapcsolódást a forrás Gen2-tárolóhoz. Ügyeljen arra, hogy a "GetMetadataDataset" és a "SourceDataset" a forrásfájl-tároló ugyanazon kapcsolódására hivatkozik.
 
-    ![Új kapcsolat létrehozása a forrásadattárhoz](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    ![Új kapcsolódás létrehozása a forrás-adattárhoz](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. **Hozzon** létre egy új kapcsolatot a fogadó adattár, amely az adatok másolása.
+2. Hozzon létre egy **új** kapcsolódást ahhoz a fogadó adattárhoz, amelybe az adatok másolása folyamatban van.
 
-    ![Új kapcsolat létrehozása a fogadó adattárával](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    ![Új kapcsolódás létrehozása a fogadó adattárához](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
-3. Válassza **a Sablon használata lehetőséget.**
+3. Válassza **a sablon használata**lehetőséget.
 
     ![Sablon használata](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
     
-4. A következő példában látható módon egy folyamat jönne létre:
+4. A folyamat a következő példában látható módon jön létre:
 
     ![A folyamat áttekintése](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Ha az **Azure Synapse Analytics (korábban SQL DW)** adatcélként a fent említett **2.** Ahogy a következő képernyőképen látható, a sablon automatikusan létrehoz egy *tárolási útvonalat* a Blob storage számára. Ellenőrizze, hogy a tároló a folyamat futtatása után lett-e létrehozva.
+    > Ha az **Azure szinapszis Analytics (korábbi nevén SQL DW)** lehetőséget választotta a fent említett **2. lépésben** megadott adat célhelyként, akkor meg kell adnia egy, az Azure Blob Storage-hoz való kapcsolódást az átmeneti tároláshoz, SQL Data Warehouse-alapú alapkövetelménynek megfelelően. A következő képernyőfelvételen látható, hogy a sablon automatikusan létrehozza a blob Storage *tárolási útvonalát* . Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
         
-    ![Polibázis beállítása](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    ![Alapszintű beállítás](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Válassza **a Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd a **Befejezés**lehetőséget.
+5. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
-    ![Kattintson a **Debug**](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    ![Kattintson * * hibakeresés * *](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 
-6. Ha a folyamat sikeresen befejeződik, a következő példához hasonló eredmények jelennek meg:
+6. A folyamat futásának sikeres befejeződése után az alábbi példához hasonló eredményeket láthat:
 
     ![Az eredmény áttekintése](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 

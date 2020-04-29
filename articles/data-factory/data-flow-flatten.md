@@ -1,6 +1,6 @@
 ---
-title: Átalakítás összeolvasztása az adatfolyam leképezésében
-description: Denormalizálás a hierarchikus adatokat az összeolvasztási transzformáció használatával
+title: Átalakítás összeolvasztása a leképezési adatfolyamban
+description: Hierarchikus adatai denormalizálása a összeolvasztási transzformáció használatával
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,41 +8,41 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413681"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>Átalakítás összeolvasztása az adatfolyam leképezésében
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Átalakítás összeolvasztása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az összeolvasztási transzformáció segítségével tömbértékeket vehet fel hierarchikus struktúrákon belül, például a JSON-on belül, és egyes sorokba húzva azokat. Ezt a folyamatot denormalizációnak nevezzük.
+A összeolvasztási transzformáció használatával a tömb értékeit hierarchikus struktúrákba, például JSON-ba helyezheti el, és lefordíthatja őket különálló sorokba. Ez a folyamat denormalizálás néven ismert.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az összeolvasztási transzformáció a következő konfigurációs beállításokat tartalmazza:
+A összeolvasztási transzformáció a következő konfigurációs beállításokat tartalmazza
 
 ![Beállítások összeolvasztása](media/data-flow/flatten1.png "Beállítások összeolvasztása")
 
-### <a name="unroll-by"></a>Kitekerés
+### <a name="unroll-by"></a>Legördülő
 
-Jelöljön ki egy letekerni kívánt tömböt. A kimeneti adatok minden tömbben elemenként egy sort kapnak. Ha a bemeneti sorban lévő tömb letekerése null értékű vagy üres, akkor egy kimeneti sor lesz, amelynek kibontott értékei nullértékűek.
+Válasszon ki egy tömböt a legördülő listából. A kimeneti adatokat minden tömbben egy sor fogja tartalmazni. Ha a bemeneti sorban lévő unroll by tömb null értékű vagy üres, akkor egyetlen kimeneti sor lesz NULL értékként megadva.
 
-### <a name="unroll-root"></a>Gyökér kitekerése
+### <a name="unroll-root"></a>Legördülő gyökér
 
-Alapértelmezés szerint az összeolvasztási transzformáció kiteker idomítja a tömböt annak a hierarchiának a tetejére, amelyben létezik. Tetszés szerint kiválaszthat egy tömböt a roll-gyökér kioldásaként. A letekerési gyökérnek olyan összetett objektumok tömbjének kell lennie, amelyek tömb szerint vannak vagy tartalmazzák a letekerést. Ha a letekerési gyökér van kiválasztva, a kimeneti adatok elemenként legalább egy sort tartalmaznak a roll gyökérben. Ha a bemeneti sorban nincs elem a roll gyökér, akkor el kell dobni a kimeneti adatokat. A letekerési gyökér kiválasztása mindig kevesebb vagy egyenlő számú sort eredményez, mint az alapértelmezett viselkedés.
+Alapértelmezés szerint a összeolvasztási transzformáció leállítja a tömböt a-hierarchia tetejére. Kiválaszthat egy tömböt a legördülő gyökérként. A legördülő főtanúsítványnak olyan összetett objektumok tömbje kell, amelyek vagy a unroll by tömböt tartalmazzák. Ha a legördülő főtanúsítvány ki van választva, a kimeneti adatok legalább egy sort tartalmaznak a legördülő főtanúsítványban. Ha a bemeneti sorban nincsenek elemek a legördülő főgyökérben, a rendszer elveti a kimeneti adatokból. A legördülő főtanúsítványok kiválasztásakor a rendszer mindig kisebb vagy egyenlő számú sort ad eredményül, mint az alapértelmezett viselkedés.
 
-### <a name="flatten-mapping"></a>Leképezés összeolvasztása
+### <a name="flatten-mapping"></a>Lelapul leképezés
 
-A select átalakításhoz hasonlóan válassza ki az új struktúra vetületét a bejövő mezőkből és a denormalizált tömbből. Ha egy denormalizált tömb van leképezve, a kimeneti oszlop ugyanaz lesz az adattípus, mint a tömb. Ha a letekerés tömb szerint olyan összetett objektumok tömbje, amelyek résztömböket tartalmaznak, a subarry egy elemének leképezése tömböt fog kiadni.
+A Select transzformációhoz hasonlóan válassza ki az új struktúra kivetítését a bejövő mezőkből és a denormalizált tömbből. Ha egy denormalizált tömb le van képezve, a kimeneti oszlop a tömb adattípusa lesz. Ha az unroll by tömb olyan összetett objektumok tömbje, amelyek altömböket tartalmaznak, az adott subarry egy elemének leképezése kimenetként egy tömböt fog kiszolgálni.
 
-A leképezési kimenet ellenőrzéséhez tekintse meg a vizsgálat lapot és az adatok előnézetét.
+A leképezési kimenet ellenőrzéséhez tekintse meg a vizsgálat lapot és az adatelőnézett.
 
 ## <a name="examples"></a>Példák
 
-Az alábbi JSON-objektumból megtudhatja, hogy milyen példákat talál az összeolvasztási transzformációra
+Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul átalakításhoz
 
 ``` json
 {
@@ -64,11 +64,11 @@ Az alábbi JSON-objektumból megtudhatja, hogy milyen példákat talál az össz
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>Nincs letekerési gyökér karakterlánctömbbel
+### <a name="no-unroll-root-with-string-array"></a>Nincs legördülő gyökér karakterlánc-tömbvel
 
-| Kitekerés | Gyökér kitekerése | Vetület |
+| Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| goods.customers | None | név <br> vevő = áruk.vevő |
+| termékek. ügyfelek | None | név <br> ügyfél = termékek. ügyfél |
 
 #### <a name="output"></a>Kimenet
 
@@ -82,11 +82,11 @@ Az alábbi JSON-objektumból megtudhatja, hogy milyen példákat talál az össz
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>Nincs letekerési gyökér összetett tömbbel
+### <a name="no-unroll-root-with-complex-array"></a>Nincs legördülő gyökér összetett tömbvel
 
-| Kitekerés | Gyökér kitekerése | Vetület |
+| Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderelemek | None | név <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.item <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> hely = hely |
+| áruk. Orders. szállított. orderItems | None | név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
 
 #### <a name="output"></a>Kimenet
 
@@ -103,11 +103,11 @@ Az alábbi JSON-objektumból megtudhatja, hogy milyen példákat talál az össz
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>Ugyanaz a gyökér, mint a letekerési tömbnél
+### <a name="same-root-as-unroll-array"></a>Ugyanaz a gyökér, mint a legördülő tömb
 
-| Kitekerés | Gyökér kitekerése | Vetület |
+| Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| goods.orders | goods.orders | név <br> goods.orders.shipped.orderItems.itemName <br> goods.customers <br> location |
+| termékek. megrendelések | termékek. megrendelések | név <br> áruk. Orders. szállított. orderItems. itemName <br> termékek. ügyfelek <br> location |
 
 #### <a name="output"></a>Kimenet
 
@@ -119,11 +119,11 @@ Az alábbi JSON-objektumból megtudhatja, hogy milyen példákat talál az össz
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>Gyökér letekerése összetett tömbbel
+### <a name="unroll-root-with-complex-array"></a>Gyökér kivonása összetett tömbvel
 
-| Kitekerés | Gyökér kitekerése | Vetület |
+| Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItem | goods.orders |név <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.item <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> hely = hely |
+| áruk. Orders. szállított. orderItem | termékek. megrendelések |név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
 
 #### <a name="output"></a>Kimenet
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>További lépések
 
-* A [Pivot átalakítássegítségével](data-flow-pivot.md) a sorokat oszlopokba forgatja.
-* A [Kimutatás feloldása az](data-flow-unpivot.md) oszlopok sorokká alakítása érdekében.
+* Sorok oszlopokra való kimutatásához használja a [pivot transzformációt](data-flow-pivot.md) .
+* A kimutatás [transzformációval](data-flow-unpivot.md) oszlopokat szúrhat be a sorokba.

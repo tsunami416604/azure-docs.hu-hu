@@ -1,6 +1,6 @@
 ---
-title: Új és módosított fájlok másolása a LastModifiedDate programmal
-description: Ismerje meg, hogyan használhat megoldássablont a LastModifiedDate új és módosított fájlok másolásához az Azure Data Factory segítségével.
+title: Új és módosított fájlok másolása a LastModifiedDate
+description: Megtudhatja, hogyan másolhat új és módosított fájlokat a LastModifiedDate és a Azure Data Factory használatával a megoldási sablonnal.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,83 +12,83 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 979977b2dd2eb5742d4e488623c79cb91427f055
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414799"
 ---
-# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása lastmodifieddate segítségével az Azure Data Factory
+# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk egy olyan megoldássablont ismerteti, amelyet csak a LastModifiedDate segítségével másolhat fájlalapú tárolóból céltárolóba. 
+Ez a cikk egy megoldási sablont mutat be, amellyel az új és módosított fájlokat csak a LastModifiedDate egy fájl alapú tárolóból a célhelyre másolhatja. 
 
-## <a name="about-this-solution-template"></a>A megoldássablon – kapcsolat
+## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 
-Ez a sablon először csak a **LastModifiedDate**attribútumaik alapján jelöli ki az új és módosított fájlokat, majd a kijelölt fájlokat az adatforrás-tárolóból az adatcéltárolóba másolja.
+Ez a sablon először kiválasztja az új és módosított fájlokat az attribútumok **LastModifiedDate**, majd átmásolja ezeket a kiválasztott fájlokat az adatforrás-tárolóból az adatok célhelyére.
 
-A sablon egy tevékenységet tartalmaz:
-- **Másoláshoz** csak a LastModifiedDate által imitáltak fájlokat másolja egy fájltárolóból a céltárolóba.
+A sablon egyetlen tevékenységet tartalmaz:
+- **Másolja** az új és módosított fájlok másolását a LastModifiedDate egy adattárból a célhelyre.
 
-A sablon hat paramétert határoz meg:
--  *FolderPath_Source* az a mappaelérési út, ahol a forrástárolóból olvashatja a fájlokat. Az alapértelmezett értéket a saját mappaelérési útjára kell cserélnie.
--  *Directory_Source* az almappa elérési útja, ahol a forrástárolóból olvashatja a fájlokat. Az alapértelmezett értéket saját almappa elérési útjára kell cserélnie.
--  *FolderPath_Destination* az a mappaelérési út, amelyen fájlokat szeretne másolni a céltárolóba. Az alapértelmezett értéket a saját mappaelérési útjára kell cserélnie.
--  *Directory_Destination* az az almappa elérési útja, amelyen fájlokat szeretne másolni a céltárolóba. Az alapértelmezett értéket saját almappa elérési útjára kell cserélnie.
--  *LastModified_From* azon fájlok kiválasztására szolgál, amelyek LastModifiedDate attribútuma a datetime érték után vagy azzal egyenlő.  Annak érdekében, hogy csak az új fájlokat jelölje ki, amelyeket legutóbb nem másolt, ez a datetime érték lehet a folyamat legutóbbi aktiválásának időpontja. Az alapértelmezett értéket lecserélheti a "2019-02-01T00:00:00Z" alapértelmezett értékre a várt LastModifiedDate értékre UTC időzónában. 
--  *LastModified_To* azon fájlok kijelölésére szolgál, amelyek LastModifiedDate attribútuma megelőzi ezt a datetime értéket. Annak érdekében, hogy csak az új fájlokat jelölje ki, amelyeket legutóbb nem másolt, ez a datetime érték lehet az jelen idő.  Az alapértelmezett értéket lecserélheti a "2019-02-01T00:00:00Z" alapértelmezett értékre a várt LastModifiedDate értékre UTC időzónában. 
+A sablon hat paramétert definiál:
+-  *FolderPath_Source* a mappa elérési útja, ahol a forrás-áruházból beolvashatja a fájlokat. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
+-  *Directory_Source* az az almappa elérési útja, ahol a forrás-áruházból beolvashatja a fájlokat. Az alapértelmezett értéket a saját almappájának elérési útjára kell cserélnie.
+-  *FolderPath_Destination* a mappa elérési útja, ahová a fájlokat másolni szeretné a célhelyre. Az alapértelmezett értéket a saját mappa elérési útjára kell cserélnie.
+-  *Directory_Destination* az az almappa elérési útja, ahová a fájlokat másolni szeretné a célhelyre. Az alapértelmezett értéket a saját almappájának elérési útjára kell cserélnie.
+-  *LastModified_From* használatával kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma az adott datetime érték után vagy azzal egyenlő.  Ahhoz, hogy csak az új fájlok legyenek kiválasztva, amelyek nem lettek átmásolva a legutóbbi időpontra, ez a DateTime érték lehet a folyamat utolsó indításakor elindított idő. Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
+-  *LastModified_To* használatával kiválaszthatja azokat a fájlokat, amelyek LastModifiedDate attribútuma a DateTime érték előtt van. Ha csak az új fájlokat szeretné kijelölni, amelyek nem lettek átmásolva a legutóbbi időpontra, akkor ez a DateTime érték lehet a jelenlegi időpont.  Az alapértelmezett "2019-02-01T00:00:00Z" értéket lecserélheti a várt LastModifiedDate az UTC időzónában. 
 
-## <a name="how-to-use-this-solution-template"></a>A megoldássablon használata
+## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Ugrás a **sablonra: Új fájlok másolása csak lastmodifieddate**segítségével. **Hozzon** létre egy új kapcsolatot a forrástárolóval. A forrástároló az a hely, ahonnan fájlokat szeretne másolni.
+1. Ugrás a sablonra **új fájlok másolása csak a LastModifiedDate használatával**. Hozzon létre egy **új** kapcsolódást a forrás Storage-tárolóhoz. A forrásként szolgáló tár, ahová a fájlokat másolni kívánja.
 
-    ![Új kapcsolat létrehozása a forrással](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    ![Új kapcsolódás létrehozása a forráshoz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
-2. **Hozzon** létre egy új kapcsolatot a céltárban. A céltárolóaz a hely, ahová fájlokat szeretne másolni. 
+2. Hozzon létre egy **új** kapcsolódást a célhelyhez. A célhely, ahová a fájlokat másolni kívánja. 
 
-    ![Új kapcsolat létrehozása a célhoz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    ![Új kapcsolódás létrehozása a célhoz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-3. Válassza **a Sablon használata lehetőséget.**
+3. Válassza **a sablon használata**lehetőséget.
 
     ![Sablon használata](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
-4. A panelen elérhető folyamat látható lesz, ahogy az a következő példában látható:
+4. Ekkor megjelenik a panelen elérhető folyamat, ahogy az az alábbi példában is látható:
 
     ![A folyamat megjelenítése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-5. Válassza **a Debug**lehetőséget, írja be a **Paraméterek** értékét, és válassza a **Befejezés**lehetőséget.  Az alábbi képen a következő ként állítjuk be a paramétereket.
-   - **FolderPath_Source** = forrásmappa
+5. Válassza a **hibakeresés**elemet, írja be a **Paraméterek** értékét, majd válassza a **Befejezés**lehetőséget.  Az alábbi képen a paramétereket az alábbiak szerint állítja be.
+   - **FolderPath_Source** = SourceFolder
    - **Directory_Source** = almappa
-   - **FolderPath_Destination** = célmappa
+   - **FolderPath_Destination** = destinationfolder
    - **Directory_Destination** = almappa
    - **LastModified_From** = 2019-02-01T00:00:00Z
    - **LastModified_To** = 2019-03-01T00:00:00Z
     
-    A példa azt jelzi, hogy a legutóbb módosított fájlok a megadott időtartamon belül (**2019-02-01T00:00:00Z -** **2019-03-01T00:00:00Z**) lesznek átmásolva a forrásútvonal **sourcefolder/alfolder** a célelérési út **célfolder /almappa**.  Ezeket lecserélheti a saját paramétereire.
+    A példa azt jelzi, hogy a TimeSpan (**2019-02-01T00:00:00Z** és **2019-03-01T00:00:00Z**) a legutóbb módosított fájlok a forrás elérési út **SourceFolder/almappájából** lesznek másolva a **destinationfolder/almappában**.  Ezeket lecserélheti a saját paramétereinek használatával.
 
     ![A folyamat futtatása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
-6. Tekintse át az eredményt. Látni fogja, csak a fájlok utolsó módosított a beállított időtartományban már másolt a cél tárolóba.
+6. Tekintse át az eredményt. A rendszer csak a konfigurált TimeSpan belül utoljára módosított fájlokat másolja a célhelyre.
 
     ![Az eredmény áttekintése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. Most már hozzáadhat egy bukdácsoló ablakok eseményindítót a folyamat automatizálásához, így a folyamat csak a LastModifiedDate által idomásolhatja az új és a módosított fájlokat.  Válassza **az Eseményindító hozzáadása**lehetőséget, majd az **Új/Szerkesztés lehetőséget.**
+7. Most hozzáadhat egy kieséses Windows-triggert a folyamat automatizálásához, így a folyamat a LastModifiedDate rendszeres időközönként csak az új és módosított fájlokat tudja másolni.  Válassza az **trigger hozzáadása**lehetőséget, és válassza az **új/szerkesztés**lehetőséget.
 
     ![Az eredmény áttekintése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-8. Az **Eseményindítók hozzáadása** ablakban válassza a **+ Új**lehetőséget.
+8. Az **Eseményindítók hozzáadása** ablakban válassza az **+ új**lehetőséget.
 
-9. Válassza a **Tumbling ablak** lehetőséget az eseményindító típusához, állítsa be **minden 15 perc(ek)** ismétlődésként (bármikor átválthat az időközre). Válassza az **Igen** lehetőséget az Aktivált mezőben, majd az **OK**gombot.
+9. Az eseményindító típusának kiválasztásához válassza a kikapcsolás **ablakot** **15 percenként** , az ismétlődés (bármilyen intervallumra módosítható) értékre állítva. Válassza az **Igen** lehetőséget az aktivált mezőben, majd kattintson **az OK gombra**.
 
     ![Eseményindító létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-10. Állítsa be az **eseményindító futtatási paramétereinek** értékét a következőképpen, majd válassza a **Befejezés**gombot.
-    - **FolderPath_Source** = **forrásmappát**.  A mappát a forrásadattárban cserélheti le.
-    - **Directory_Source** = **almappát.**  Az almappát lecserélheti a forrásadattárban.
-    - **FolderPath_Destination** = **célmappát.**  A céladattárban a mappát helyettesítheti.
-    - **Directory_Destination** = **almappát.**  A céladattárban az almappát lecserélheti.
-    - **LastModified_From** =  **LastModified_From\@trigger().outputs.windowStartTime**.  Ez egy rendszerváltozó az eseményindítóból, amely meghatározza, hogy a folyamat mikor aktiválódott utoljára.
-    - **LastModified_To** = **LastModified_To\@trigger().outputs.windowEndTime**.  Ez egy rendszerváltozó az eseményindítóból, amely meghatározza a folyamat ezúttal történő indításának idejét.
+10. Állítsa be az **trigger futtatási paramétereinek** értékét az alábbiak szerint, majd válassza a **Befejezés**lehetőséget.
+    - **FolderPath_Source** = **SourceFolder**.  A mappát lecserélheti a forrás adattárban.
+    - **Directory_Source** = **almappa**.  A helyére a forrás adattárban található almappát használhatja.
+    - **FolderPath_Destination** = **destinationfolder**.  Lecserélheti a mappát a célhely adattárában.
+    - **Directory_Destination** = **almappa**.  Az almappában lecserélheti a cél adattárban.
+    - **LastModified_From** =  **LastModified_From\@trigger (). outputs. windowStartTime**.  Ez az a rendszerváltozó, amely azt határozza meg, hogy mikor indította el a folyamat az utolsó alkalommal.
+    - **LastModified_To** = **LastModified_To\@trigger (). outputs. windowEndTime**.  Ez egy rendszerváltozó az Indítóban, amely meghatározza, hogy a folyamat mikor aktiválja ezt az időt.
     
     ![Bemeneti paraméterek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -96,11 +96,11 @@ A sablon hat paramétert határoz meg:
     
     ![Az összes közzététele](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 
-12. Hozzon létre új fájlokat az adatforrástár forrásmappájában.  Most arra vár, hogy a folyamat automatikusan aktiválódjon, és csak az új fájlok lesznek átmásolva a céltárolóba.
+12. Hozzon létre új fájlokat a forrás mappában az adatforrás-tárolóban.  Most arra vár, hogy a folyamat automatikusan aktiválódik, és csak az új fájlok lesznek másolva a célhelyre.
 
-13. Válassza a Bal oldali navigációs panel **Monitor** fülét, és várjon körülbelül 15 percet, ha az eseményindító ismétlődése 15 percenként van beállítva. 
+13. Válassza a **figyelés** fület a bal oldali navigációs panelen, és várjon körülbelül 15 percet, ha az eseményindító ismétlődése 15 percenként van beállítva. 
 
-14. Tekintse át az eredményt. Látni fogja, hogy a folyamat 15 percenként automatikusan aktiválódik, és csak a forrástárolóból származó új vagy módosított fájlok lesznek átmásolva a céltárolóba minden egyes folyamatfuttatáskor.
+14. Tekintse át az eredményt. A folyamat 15 percenként automatikusan elindul, és csak a forrás-áruházból származó új vagy módosított fájlok lesznek átmásolva a célhelyre minden egyes folyamat futtatásakor.
 
     ![Az eredmény áttekintése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     

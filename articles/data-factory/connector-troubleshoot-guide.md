@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory-összekötők hibaelhárítása
-description: Ismerje meg, hogyan háríthatja el az összekötővel kapcsolatos problémákat az Azure Data Factoryban.
+description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory összekötői problémáit.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -9,28 +9,28 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410234"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhárítási módszereket ismerteti.
+Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszereit vizsgálja.
   
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-### <a name="error-code--azurebloboperationfailed"></a>Hibakód: Az AzureBlobOperation sikertelen
+### <a name="error-code--azurebloboperationfailed"></a>Hibakód: AzureBlobOperationFailed
 
 - **Üzenet**:`Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
-- **Ok**: Blob tárolási művelet hit probléma.
+- **OK**: a blob Storage-művelettel kapcsolatos probléma lépett fel.
 
-- **Ajánlás**: Ellenőrizze a hibát részletesen. Tekintse meg a https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesblob súgódokumentumát: . Ha segítségre van szüksége, forduljon a tárolócsapathoz.
+- **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a blob Súgó https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesdokumentumát:. Ha segítségre van szüksége, lépjen kapcsolatba a Storage csapatával.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Hibakód: AzureBlobServiceNotReturnExpectedDataLength
@@ -50,66 +50,66 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="error-message-request-size-is-too-large"></a>Hibaüzenet: A kérelem mérete túl nagy
+### <a name="error-message-request-size-is-too-large"></a>Hibaüzenet: a kérelem mérete túl nagy
 
-- **Jelenségek**: Adatokat másol az Azure Cosmos DB-be az alapértelmezett írási kötegmérettel, és a ***"Request size is too large" hibaüzenetjelenik*** meg.
+- **Tünetek**: az adatmásolás Azure Cosmos DBba az alapértelmezett írási köteg méretével, és a *"**kérés mérete túl nagy**"*.
 
-- **Ok:** A Cosmos DB egyetlen kérelem méretét 2 MB-ra korlátozza. A képlet: Kérelem mérete = Egydokumentum mérete * Írási kötegméret. Ha a dokumentum mérete nagy, az alapértelmezett viselkedés túl nagy kérésméretet eredményez. Az írási köteg méretét beállíthatja.
+- **OK**: a Cosmos db egy kérés méretét 2 MB-ra korlátozza. A képlet:, kérelem mérete = egydokumentumos méret * írási köteg mérete. Ha a dokumentum mérete nagy, az alapértelmezett viselkedés túl nagy méretű kérések méretét eredményezi. Beállíthatja az írási köteg méretét.
 
-- **Megoldás**: A másolási tevékenység fogadójában csökkentse az "Írási kötegméret" értéket (az alapértelmezett érték 10000).
+- **Megoldás**: a másolási tevékenység fogadójában csökkentse a "batch méretének megírása" értéket (az alapértelmezett érték 10000).
 
-### <a name="error-message-unique-index-constraint-violation"></a>Hibaüzenet: Egyedi indexmegkötés-megsértés
+### <a name="error-message-unique-index-constraint-violation"></a>Hibaüzenet: egyedi index megkötésének megsértése
 
-- **Jelenségek**: Adatok Cosmos DB-be másolásakor a következő hibaüzenetjelenik meg:
+- **Tünetek**: az adatok Cosmos DBba való másolása során a következő hibaüzenetet kapta:
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
     Exception was Message: {"Errors":["Encountered exception while executing function. Exception = Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
-- **Ok**: Két oka lehet:
+- **OK**: két lehetséges oka van:
 
-    - Ha a **Beszúrás** írási viselkedésként használja, ez a hiba azt jelenti, hogy a forrásadatok sorai/objektumai azonos azonosítóval rendelkeznek.
+    - Ha a **Beszúrás** írási viselkedést használja, ez a hiba azt jelenti, hogy az adatforráshoz tartozó sorok/objektumok UGYANAZZAL az azonosítóval rendelkeznek.
 
-    - Ha **az Upsert-et** írási viselkedésként használja, és egy másik egyedi kulcsot állít be a tárolóhoz, ez a hiba azt jelenti, hogy a forrásadatok különböző azonosítókkal rendelkező sorokkal/objektumokkal rendelkeznek, de a megadott egyedi kulcs értéke megegyezik.
+    - Ha a **Upsert** -et írási viselkedésként használja, és egy másik egyedi kulcsot állít be a tárolóhoz, akkor ez a hiba azt jelenti, hogy az adatforráshoz tartozó sorok/objektumok eltérő azonosítókkal rendelkeznek, de a definiált egyedi kulcshoz ugyanaz az érték tartozik.
 
-- **Állásfoglalás**: 
+- **Megoldás**: 
 
-    - Az 1 ok esetén állítsa be **az Upsert-et** írási viselkedésként.
-    - A 2-es ok esetén győződjön meg arról, hogy minden dokumentum különböző értékkel rendelkezik a definiált egyedi kulcshoz.
+    - A cause1 esetében állítsa a **Upsert** írási viselkedésként.
+    - A 2. ok esetén győződjön meg arról, hogy minden dokumentum eltérő értékkel rendelkezik a definiált egyedi kulcshoz.
 
-### <a name="error-message-request-rate-is-large"></a>Hibaüzenet: A kérelmek aránya nagy
+### <a name="error-message-request-rate-is-large"></a>Hibaüzenet: a kérelmek aránya nagy
 
-- **Jelenségek**: Adatok Cosmos DB-be másolásakor a következő hibaüzenetjelenik meg:
+- **Tünetek**: az adatok Cosmos DBba való másolása során a következő hibaüzenetet kapta:
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
     Message=Message: {"Errors":["Request rate is large"]}
     ```
 
-- **Ok:** A használt kérelem egységek nagyobbak, mint a rendelkezésre álló RU konfigurálva Cosmos DB. Ismerje meg, hogyan Cosmos DB kiszámítja RU [innen](../cosmos-db/request-units.md#request-unit-considerations).
+- **OK**: a használt kérelmek száma nagyobb, mint a Cosmos DBban konfigurált, rendelkezésre álló ru. Ismerje meg, hogyan számítja ki a Cosmos DB RU- [t innen.](../cosmos-db/request-units.md#request-unit-considerations)
 
-- **Megoldás**: Itt van két megoldás:
+- **Megoldás**: két megoldás:
 
-    1. **Növelje a tároló RU** nagyobb értéket a Cosmos DB, amely javítja a másolási tevékenység teljesítményét, bár több költséget a Cosmos DB. 
+    1. **Növelje a tároló ru** -t nagyobb értékre Cosmos DBban, ami javítja a másolási tevékenység teljesítményét, de a Cosmos db további költségekkel járna. 
 
-    2. Csökkentse **a writeBatchSize** értéket kisebb értékre (például 1000- re), és állítsa a **parallelCopies** kisebb értékre (például 1, amely a másolási futtatási teljesítményt rosszabbá teszi, mint az aktuális, de nem jár több költséggel a Cosmos DB-ben.
+    2. Csökkentse a **writeBatchSize** kisebb értékre (például 1000), és állítsa be a **parallelCopies** -t kisebb értékre (például 1), amely a jelenleginél rosszabban fogja a másolási teljesítményt, de a Cosmos db nem jár további költségekkel.
 
-### <a name="column-missing-in-column-mapping"></a>Hiányzik az oszlopleképezésből hiányzó oszlop
+### <a name="column-missing-in-column-mapping"></a>Az oszlop-hozzárendelésből hiányzó oszlop
 
-- **Jelenségek**: Amikor a Cosmos DB sémáját importálja az oszlopleképezéshez, néhány oszlop hiányzik. 
+- **Tünetek**: Ha az oszlop-hozzárendeléshez Cosmos db sémát importál, egyes oszlopok hiányoznak. 
 
-- **Ok**: Az ADF az első 10 Cosmos DB-dokumentum sérelméből következtet. Ha egyes oszlopok/tulajdonságok nem rendelkeznek értékkel ezekben a dokumentumokban, akkor az ADF nem fogja észlelni őket, így nem jelennek meg.
+- **OK**: Az ADF kikövetkezteti a sémát az első 10 Cosmos db dokumentumból. Ha egyes oszlopok/tulajdonságok nem rendelkeznek értékkel ezekben a dokumentumokban, az ADF nem észleli azt, így nem fog megjelenni.
 
-- **Megoldás**: A lekérdezést az alábbi módon hangolhatja be, hogy az oszlop üres értékkel jelenjen meg az eredményhalmazban: (tegyük fel, hogy a "lehetetlen" oszlop hiányzik az első 10 dokumentumból). Azt is megteheti, hogy manuálisan adja hozzá az oszlopot a leképezéshez.
+- **Megoldás**: az alábbi módon beállíthatja a lekérdezést úgy, hogy az oszlop kikényszerítve jelenjen meg az eredményhalmaz üres értékével: (feltételezhető, hogy "Impossible" oszlop hiányzik az első 10 dokumentumból). Azt is megteheti, hogy manuálisan hozzáadja az oszlopot a leképezéshez.
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
     ```
 
-### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Hibaüzenet: Az olvasó GuidRepresentation ábrázolása CSharpLegacy
+### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Hibaüzenet: az olvasó GuidRepresentation CSharpLegacy
 
-- **Jelenségek**: Amikor adatokat másol a Cosmos DB MongoAPI/MongoDB uuid mezővel, a következő hibát találja be:
+- **Tünetek**: Cosmos db MongoAPI/MongoDB és az UUID mezőből származó adatok másolása során a következő hibaüzenetet kapta:
 
     ```
     Failed to read data via MongoDB client.,
@@ -117,9 +117,9 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
     Message=The GuidRepresentation for the reader is CSharpLegacy which requires the binary sub type to be UuidLegacy not UuidStandard.,Source=MongoDB.Bson,’“,
     ```
 
-- **Ok**: Kétféleképpen lehet képviselni uuid a BSON - UuidStardard és UuidLegacy. Alapértelmezés szerint az UuidLegacy az adatok olvasására szolgál. Akkor jön a hiba, ha az UUID adatai a MongoDB-ban UuidStandard.
+- **OK**: az UUID-t kétféleképpen lehet a BSON-UuidStardard és a UuidLegacy-ben ábrázolni. Alapértelmezés szerint a UuidLegacy az adatolvasásra szolgál. Ha a MongoDB-beli UUID-adatai UuidStandard, a rendszer hibát jelez.
 
-- **Megoldás**: A MongoDB kapcsolati karakterláncban adja hozzá az "**uuidRepresentation=standard " opciót.** További információ: [MongoDB connection string](connector-mongodb.md#linked-service-properties).
+- **Megoldás**: a MongoDB-kapcsolatok karakterláncában adja hozzá a "**uuidRepresentation = standard**" beállítást. További információ: MongoDB- [kapcsolatok karakterlánca](connector-mongodb.md#linked-service-properties).
             
 
 ## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
@@ -128,17 +128,17 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 - **Üzenet**:`ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
-- **Ok**: Az ADLS Gen2 eldobja a hibát, amely azt jelzi, hogy a művelet sikertelen volt.
+- **OK**: a ADLS Gen2 a művelet hibáját jelző hibaüzenetet nem sikerült.
 
-- **Javaslat**: Ellenőrizze az ADLS Gen2 által eldobott részletes hibaüzenetet. Ha átmeneti hiba okozza, próbálkozzon újra. Ha további segítségre van szüksége, forduljon az Azure Storage támogatási szolgálatához, és adja meg a kérelemazonosítót hibaüzenetben.
+- **Javaslat**: ADLS Gen2 által kiváltott részletes hibaüzenet. Ha átmeneti hiba okozta, próbálkozzon újra. Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure Storage támogatási szolgálatával, és adja meg a kérelem AZONOSÍTÓját a hibaüzenetben.
 
-- **Ok:** Ha a hibaüzenet "Tiltott" üzenetet tartalmaz, előfordulhat, hogy a használt egyszerű szolgáltatás vagy felügyelt identitás nem rendelkezik elegendő engedéllyel az ADLS Gen2 eléréséhez.
+- **OK**: Ha a hibaüzenet "tiltott" üzenetet tartalmaz, akkor előfordulhat, hogy az Ön által használt egyszerű szolgáltatásnév vagy felügyelt identitás nem rendelkezik elegendő engedéllyel a ADLS Gen2 eléréséhez.
 
-- **Ajánlás**: Olvassa el https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authenticationa súgódokumentumot: .
+- **Javaslat**: Tekintse meg a Súgó dokumentumot https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication:.
 
-- **Ok**: Ha a hibaüzenet "InternalServerError" üzenetet tartalmaz, a hibát az ADLS Gen2 adja vissza.
+- **OK**: Ha a hibaüzenetben a "InternalServerError" szöveg szerepel, a ADLS Gen2 a hibát adja vissza.
 
-- **Javaslat**: Átmeneti hiba okozhatja, próbálkozzon újra. Ha a probléma továbbra is fennáll, forduljon az Azure Storage támogatási szolgálatához, és adja meg a kérelem azonosítóját a hibaüzenetben.
+- **Javaslat**: Előfordulhat, hogy az átmeneti hiba okozta. próbálkozzon újra. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az Azure Storage támogatási szolgálatával, és adja meg a kérelem AZONOSÍTÓját a hibaüzenetben.
 
 
 ### <a name="error-code--adlsgen2invalidurl"></a>Hibakód: AdlsGen2InvalidUrl
@@ -163,131 +163,131 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 ## <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hibaüzenet: A távoli kiszolgáló hibát adott vissza: (403) Tiltott
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hibaüzenet: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott
 
-- **Jelenségek**: A másolási tevékenység a következő hibával sikertelen: 
+- **Tünetek**: a másolási tevékenység a következő hiba miatt meghiúsul: 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Ok:** Az egyik lehetséges ok az, hogy az egyszerű szolgáltatás vagy a felügyelt identitás használata nem rendelkezik engedéllyel az adott mappához/fájlhoz való hozzáféréshez.
+- **OK**: az egyik lehetséges ok az, hogy az Ön által használt szolgáltatásnév vagy felügyelt identitás nem rendelkezik engedéllyel az adott mappához vagy fájlhoz való hozzáféréshez.
 
-- **Megoldás:** Adjon megfelelő engedélyeket a másolni kívánt mappákra és almappákra. Olvassa el ezt a [doc](connector-azure-data-lake-store.md#linked-service-properties).
+- **Megoldás**: adjon meg megfelelő engedélyeket a másolandó mappákhoz és almappákhoz. Tekintse át [ezt a dokumentációt](connector-azure-data-lake-store.md#linked-service-properties).
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hibaüzenet: Nem sikerült beszerezni a hozzáférési jogkivonatot az egyszerű szolgáltatás használatával. ADAL hiba: service_unavailable
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hibaüzenet: nem sikerült lekérni a hozzáférési tokent az egyszerű szolgáltatásnév használatával. ADAL-hiba: service_unavailable
 
-- **Jelenségek**: A másolási tevékenység a következő hibával sikertelen:
+- **Tünetek**: a másolási tevékenység a következő hiba miatt meghiúsul:
 
     ```
     Failed to get access token by using service principal. 
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **Ok:** Ha az Azure Active Directory tulajdonában lévő Service Token Server (STS) nem érhető el, azaz túl elfoglalt a kérelmek kezeléséhez, akkor egy HTTP-hibát 503-as értéket ad vissza. 
+- **OK**: ha a Azure Active Directory által birtokolt szolgáltatás-jogkivonat-kiszolgáló (STS) nem érhető el, azaz a kérelmek kezeléséhez túl elfoglalt, a 503 http-hibát ad vissza. 
 
-- **Megoldás**: A másolási tevékenység et néhány perc elteltével futtassa újra.
+- **Megoldás**: több perc elteltével futtassa újra a másolási tevékenységet.
                   
 
-## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Adattárház/Azure SQL Database/SQL Server
+## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Hibakód: SqlFailedToConnect
 
 - **Üzenet**:`Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
-- **Ok**: Ha a hibaüzenet "SqlException" üzenetet tartalmaz, az SQL Database eldobja a hibát, amely azt jelzi, hogy egy adott művelet sikertelen volt.
+- **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: Kérjük, keressen az SQL hibakód https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsebben a referencia doc további részletekért: . Ha további segítségre van szüksége, forduljon az Azure SQL-támogatáshoz.
+- **Javaslat**: a további részletekért tekintse meg a következő SQL-hibakódot ebben https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsa dokumentációban:. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
 
-- **Ok**: Ha a hibaüzenet "Ügyfél IP-címmel"...' nem érhető el a kiszolgáló", és az Azure SQL Database-hez próbál csatlakozni, általában az Azure SQL Database tűzfal problémája okozza.
+- **OK**: Ha a hibaüzenetben szerepel az "ügyfél IP-címmel"... a nem fér hozzá a kiszolgálóhoz, és a Azure SQL Databasehoz próbál csatlakozni, általában Azure SQL Database tűzfal okozza a problémát.
 
-- **Javaslat:** Az Azure SQL Server tűzfalkonfigurációjában engedélyezze az "Azure-szolgáltatások és -erőforrások hozzáférését a kiszolgálóhoz" beállításengedélyezéséhez. Referencia dokumentum: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+- **Javaslat**: az Azure SQL Server tűzfal konfigurációjában engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. Dokumentáció: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
 
 
 ### <a name="error-code--sqloperationfailed"></a>Hibakód: SqlOperationFailed
 
 - **Üzenet**:`A database operation failed. Please search error to get more details.`
 
-- **Ok**: Ha a hibaüzenet "SqlException" üzenetet tartalmaz, az SQL Database eldobja a hibát, amely azt jelzi, hogy egy adott művelet sikertelen volt.
+- **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre "150". Ez dobja legújabb verziós SQL hibákat. Kérjük, olvassa https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompatel a részleteket doc: .
-        Az SQL-problémák elhárításához további részletekért keressen az SQL https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorshibakód alapján ebben a kézikönyvben: . Ha további segítségre van szüksége, forduljon az Azure SQL-támogatáshoz.
+- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). A legújabb verziójú SQL-hibákat is el tudja dobni. Tekintse át a részleteket tartalmazó https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompatdoc:.
+        Az SQL-problémák elhárításához a jelen dokumentációban keresse meg az SQL-hibakódot a további https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsrészletekért:. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
 
-- **Ok**: Ha a hibaüzenet "PdwManagedToNativeInteropException" értéket tartalmaz, általában a forrás- és a fogadóoszlop mérete közötti eltérés okozza.
+- **OK**: Ha a hibaüzenet "PdwManagedToNativeInteropException"-t tartalmaz, általában a forrás-és a fogadó oszlop méretének eltérése okozta.
 
-- **Javaslat**: Ellenőrizze a forrás- és a fogadóoszlopok méretét. Ha további segítségre van szüksége, forduljon az Azure SQL-támogatáshoz.
+- **Javaslat**: a forrás-és a fogadó oszlopok méretének megkeresése. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
 
-- **Ok**: Ha a hibaüzenet "InvalidOperationException" üzenetet tartalmaz, általában érvénytelen bemeneti adatok okozzák.
+- **OK**: Ha a hibaüzenet "InvalidOperationException"-t tartalmaz, általában érvénytelen bemeneti adatok okozzák.
 
-- **Javaslat**: Annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységen, amely átirányíthatja a problémás sorokat a tárolóba további vizsgálat céljából. Referencia dokumentum: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Hibakód: SqlUnauthorizedAccess
 
 - **Üzenet**:`Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
-- **Ok:** A hitelesítő adatok helytelenek, vagy a bejelentkezési fiók nem fér hozzá az SQL Database-hez.
+- **OK**: a hitelesítő adatok helytelenek, vagy a bejelentkezési fiók nem fér hozzá SQL Databasehoz.
 
-- **Javaslat**: Ellenőrizze, hogy a bejelentkezési fiók elegendő engedéllyel rendelkezik az SQL-adatbázis eléréséhez.
+- **Javaslat**: Győződjön meg arról, hogy a bejelentkezési fiók rendelkezik a SQL Database eléréséhez szükséges engedéllyel.
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>Hibakód: SqlOpenConnectionTimeout
 
 - **Üzenet**:`Open connection to database timeout after '%timeoutValue;' seconds.`
 
-- **Ok**: Lehet SQL Database átmeneti hiba.
+- **OK**: lehetséges, hogy SQL Database átmeneti hiba történt.
 
-- **Javaslat:** Próbálkozzon újra a nagyobb kapcsolatidő-túllépési időtúllépési értékkel rendelkező csatolt szolgáltatáskapcsolati karakterlánc frissítésével.
+- **Javaslat**: próbálja meg újra frissíteni a társított szolgáltatás kapcsolati karakterláncát nagyobb kapcsolati időtúllépési értékkel.
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Hibakód: SqlAutoCreateTableTypeMapFailed
 
 - **Üzenet**:`Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
-- **Ok**: Az automatikus létrehozási tábla nem felel meg a forráskövetelménynek.
+- **OK**: az automatikus létrehozási tábla nem tudja kielégíteni a forrás követelményét.
 
-- **Javaslat**: Frissítse az oszloptípust a "leképezések" mezőben, vagy manuálisan hozza létre a fogadótáblát a célkiszolgálón.
+- **Javaslat**: frissítse az oszlop típusát a hozzárendelések területen, vagy manuálisan hozza létre a fogadó táblát a célkiszolgálón.
 
 
 ### <a name="error-code--sqldatatypenotsupported"></a>Hibakód: SqlDataTypeNotSupported
 
 - **Üzenet**:`A database operation failed. Check the SQL errors.`
 
-- **Ok:** Ha a probléma SQL-forrásból történik, és a hiba az SqlDateTime túlcsordulásával kapcsolatos, az adatérték a logikai típustartományon (1/1/1753 12:00:00 AM - 12/31/9999 11:59:59 PM) túlvan.
+- **OK**: Ha a probléma az SQL-forráson történik, és a hiba a SqlDateTime túlcsorduláshoz kapcsolódik, az adatérték a logikai típus tartományán (1/1/1753 12:00:00 – 12/31/9999 11:59:59 PM) van.
 
-- **Javaslat:** A típust karakterláncba adja a forrás SQL-lekérdezésben, vagy a másolási tevékenység oszlopban az oszloptípust "Karakterlánc" -ra módosítja.
+- **Javaslat**: a típust írja a forrás SQL-lekérdezésbe, vagy a másolási tevékenység oszlopban módosítsa az oszlop típusát "string" értékre.
 
-- **Ok:** Ha a probléma az SQL-fogadóban fordul elő, és a hiba az SqlDateTime túlcsorduláshoz kapcsolódik, az adatérték a fogadótábla megengedett tartománya felett van.
+- **OK**: Ha a probléma az SQL-tárolón történik, és a hiba a SqlDateTime túlcsorduláshoz kapcsolódik, az adatérték a fogadó tábla megengedett tartományán kívül esik.
 
-- **Javaslat**: Frissítse a megfelelő oszloptípust "datetime2" típusra a fogadótáblában.
+- **Javaslat**: a megfelelő oszlop típusának frissítése a fogadó táblában lévő "datetime2" típusra.
 
 
-### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Hibakód: SqlInvalidDbStoredEljárás
+### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Hibakód: SqlInvalidDbStoredProcedure
 
 - **Üzenet**:`The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
-- **Ok**: A megadott tárolt eljárás érvénytelen. Ezt az okozhatja, hogy a tárolt eljárás nem ad vissza adatokat.
+- **OK**: a megadott tárolt eljárás érvénytelen. Ennek oka az lehet, hogy a tárolt eljárás nem ad vissza semmilyen adatforrást.
 
-- **Javaslat**: Ellenőrizze a tárolt eljárást az SQL Tools. Győződjön meg arról, hogy a tárolt eljárás vissza tudja adni az adatokat.
+- **Javaslat**: Ellenőrizze a tárolt eljárást az SQL-eszközök alapján. Győződjön meg arról, hogy a tárolt eljárás képes visszaadni az adatvesztést.
 
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>Hibakód: SqlInvalidDbQueryString
 
 - **Üzenet**:`The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
-- **Ok**: A megadott SQL-lekérdezés érvénytelen. Ezt az okozhatja, hogy a lekérdezés nem ad vissza adatokat
+- **OK**: a megadott SQL-lekérdezés érvénytelen. Ennek oka az lehet, hogy a lekérdezés nem ad vissza semmilyen adatforrást.
 
-- **Javaslat**: Érvényesítse az SQL-lekérdezést az SQL Tools segítségével. Győződjön meg arról, hogy a lekérdezés adatokat tud visszaadni.
+- **Javaslat**: az SQL-lekérdezés ÉRVÉNYESÍTÉSe SQL-eszközök alapján. Győződjön meg arról, hogy a lekérdezés képes visszaadni az adatkérést.
 
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>Hibakód: SqlInvalidColumnName
 
 - **Üzenet**:`Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
-- **Ok**: Nem található az oszlop. Lehetséges konfiguráció rossz.
+- **OK**: az oszlop nem található. A lehetséges konfiguráció helytelen.
 
-- **Javaslat:** Ellenőrizze az oszlopot a lekérdezésben, a "struktúra" az adatkészletben és a "leképezések" tevékenységben.
+- **Javaslat**: Ellenőrizze a lekérdezésben szereplő oszlopot, a "Structure" objektumot és a "leképezéseket" a tevékenységben.
 
 
 ### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Hibakód: SqlColumnNameMismatchByCaseSensitive
@@ -299,40 +299,40 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 - **Üzenet**:`Timeouts in SQL write operation.`
 
-- **Ok**: Lehet SQL Database átmeneti hiba.
+- **OK**: lehetséges, hogy SQL Database átmeneti hiba történt.
 
-- **Javaslat**: Próbálkozzon újra. Ha probléma repro, forduljon az Azure SQL-támogatás.
+- **Javaslat**: próbálkozzon újra. Ha probléma Reprodukálási, forduljon az Azure SQL támogatási szolgálatához.
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>Hibakód: SqlBatchWriteTransactionFailed
 
 - **Üzenet**:`SQL transaction commits failed`
 
-- **Ok:** Ha a kivétel részletei folyamatosan megmondják a tranzakció időhalátrát, az integrációs futásidő és az adatbázis közötti hálózati késés magasabb, mint az alapértelmezett küszöbérték 30 másodperc.
+- **OK**: Ha a kivétel részletei folyamatosan jelzik a tranzakció időtúllépését, az integrációs modul és az adatbázis közötti hálózati késés az alapértelmezett küszöbértéknél nagyobb, mint 30 másodperc.
 
-- **Javaslat:** Frissítse az Sql-hez kapcsolódó szolgáltatás kapcsolati karakterláncát a "kapcsolat időtúllépési" értéke 120 vagy magasabb, és futtassa újra a tevékenységet.
+- **Javaslat**: az SQL társított szolgáltatás kapcsolati karakterláncának frissítése a "kapcsolat időtúllépése" értékkel egyenlő, mint 120 vagy magasabb, majd futtassa újra a tevékenységet.
 
-- **Ok**: Ha a kivétel részletei időnként azt mondják, hogy megszakadt az sqlconnection, lehet, hogy csak átmeneti hálózati hiba vagy SQL Database oldalprobléma
+- **OK**: Ha a kivétel részletei időnként megszakadnak a SqlConnection, akkor csak átmeneti hálózati hiba vagy SQL Databasei oldal probléma
 
-- **Javaslat:** Próbálkozzon újra a tevékenységgel, és tekintse át az SQL Database oldalmetrikáit.
+- **Javaslat**: próbálkozzon újra a tevékenységgel, és tekintse át SQL Database oldal metrikáit.
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Hibakód: SqlBulkCopyInvalidColumnLength
 
 - **Üzenet**:`SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
-- **Ok:** Az SQL tömeges másolása nem sikerült, mert érvénytelen oszlophosszt kapott az bcp-ügyféltől.
+- **OK**: az SQL tömeges másolása nem sikerült, mert a BCP-ügyfél érvénytelen hosszúságú oszlopot kapott.
 
-- **Javaslat**: Annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységen, amely átirányíthatja a problémás sorokat a tárolóba további vizsgálat céljából. Referencia dokumentum: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Hibakód: SqlConnectionIsClosed
 
 - **Üzenet**:`The connection is closed by SQL Database.`
 
-- **Ok:** Az SQL-kapcsolatot az SQL Database bezárja, ha a nagy egyidejű futtatás és a kiszolgáló megszakítja a kapcsolatot.
+- **OK**: az SQL-alapú kapcsolatok SQL Database lezárult, ha a nagy egyidejű Futtatás és a kiszolgáló leáll.
 
-- **Javaslat**: A távoli kiszolgáló bezárta az SQL-kapcsolatot. Próbálkozzon újra. Ha probléma repro, forduljon az Azure SQL-támogatás.
+- **Javaslat**: a távoli kiszolgáló lezárta az SQL-kapcsolatokat. Próbálkozzon újra. Ha probléma Reprodukálási, forduljon az Azure SQL támogatási szolgálatához.
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Hibakód: SqlCreateTableFailedUnsupportedType
@@ -340,9 +340,9 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 - **Üzenet**:`Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
 
 
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hibaüzenet: Az átalakítás nem sikerült, amikor karakterkarakterláncból egyedi azonosítóvá konvertált
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hibaüzenet: nem sikerült az átalakítás a karakterláncról uniqueidentifier való átalakításkor
 
-- **Jelenségek**: Amikor táblázatos adatforrásból (például SQL Serverből) másolja az adatokat az Azure SQL Data Warehouse-ba szakaszos másolással és polybase használatával, a következő hibaüzenetjelenik meg:
+- **Tünetek**: Ha táblázatos adatforrásból (például SQL Server) másol adatokat a szakaszos másolással és a (z Azure SQL Data Warehouse) használatával, a következő hibaüzenet jelenik meg:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -351,13 +351,13 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Ok:** Az Azure SQL Data Warehouse PolyBase nem tudja konvertálni az üres karakterláncot GUID-ra.
+- **OK**: Azure SQL Data Warehouse a Base nem tud üres karakterláncot konvertálni GUID-ra.
 
-- **Megoldás**: A Másolási tevékenység fogadójában a Polybase-beállítások csoportban állítsa a **"Type type default**" beállítást hamisra.
+- **Megoldás**: a másolási tevékenység fogadójában, a Alapszintű beállítások területen állítsa a "**alapértelmezett típus használata**" beállítást hamis értékre.
 
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Hibaüzenet: Várt adattípus: DECIMAL(x,x), Jogsértő érték
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Hibaüzenet: várt adattípus: decimális (x, x), jogsértő érték
 
-- **Jelenségek**: Ha táblázatos adatforrásból (például SQL Serverből) másolja az adatokat az SQL DW-be szakaszos másolással és polybase használatával, a következő hibaüzenet jelenik meg:
+- **Tünetek**: Ha táblázatos adatforrásból (például SQL Server) másol adatokat az SQL DW-be a szakaszos másolás és a kiindulási szolgáltatás használatával, a következő hibaüzenet jelenik meg:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -367,13 +367,13 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **Ok:** Az Azure SQL Data Warehouse Polybase nem tud üres karakterláncot (null értéket) beszúrni a decimális oszlopba.
+- **OK**: Azure SQL Data Warehouse a nem szúrható be üres karakterlánc (null érték) decimális oszlopba.
 
-- **Megoldás**: A Másolási tevékenység fogadójában a Polybase-beállítások csoportban állítsa a **"Type type default**" beállítást hamisra.
+- **Megoldás**: a másolási tevékenység fogadójában, a Alapszintű beállítások területen állítsa a "**alapértelmezett típus használata**" beállítást hamis értékre.
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Hibaüzenet: Java-kivételüzenet:HdfsBridge::CreateRecordReader
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Hibaüzenet: Java-kivételt jelző üzenet: HdfsBridge:: CreateRecordReader
 
-- **Jelenségek:** Adatokat másol az Azure SQL Data Warehouse-ba a PolyBase használatával, és a következő hibát találja el:
+- **Tünetek**: az adatok a Azure SQL Data Warehouse használatával másolhatók a-ba, és a következő hibaüzenetet kaptak:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -382,39 +382,39 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Ok**: Ennek oka az, hogy a séma (teljes oszlopszélesség) túl nagy (1 MB-nál nagyobb). Ellenőrizze a cél SQL DW tábla sémáját az összes oszlop méretének hozzáadásával:
+- **OK**: a lehetséges ok az, hogy a séma (az oszlopszélesség teljes szélessége) túl nagy (1 MB-nál nagyobb). Az összes oszlop méretének hozzáadásával keresse meg a cél SQL DW-tábla sémáját:
 
-    - Int -> 4 bájt
-    - Bigint -> 8 bájt
-    - Varchar(n),char(n),bináris(n), varbinary(n) -> n bájt
-    - Nvarchar(n), nchar(n) -> n*2 bájt
-    - Dátum -> 6 bájt
-    - Datetime/(2), smalldatetime -> 16 bájt
-    - Datetimeoffset -> 20 bájt
-    - Decimális -> 19 bájt
-    - Úszó -> 8 bájt
-    - Pénz -> 8 bájt
-    - Smallmoney -> 4 byte
-    - Real -> 4 bájt
-    - Smallint -> 2 bájt
-    - Idő -> 12 bájt
-    - Tinyint -> 1 bájt
+    - Int-> 4 bájt
+    - Bigint – > 8 bájt
+    - Varchar (n), char (n), Binary (n), varbinary (n) – > n bájt
+    - Nvarchar (n), nchar (n) – > n * 2 bájt
+    - Dátum – > 6 bájt
+    - Datetime/(2), idő adattípusúra – > 16 bájt
+    - DateTimeOffset – > 20 bájt
+    - Decimális > 19 bájt
+    - Float-> 8 bájt
+    - Pénz – > 8 bájt
+    - Túlcsordulási – > 4 bájt
+    - Valós > 4 bájt
+    - Smallint – > 2 bájt
+    - Idő – > 12 bájt
+    - Tinyint – > 1 bájt
 
-- **Felbontás**: Az oszlop szélességének csökkentése 1 MB-nál kisebbre
+- **Megoldás**: csökkentse az oszlopszélességet 1 MB-nál kisebb értékre
 
-- Vagy használjon tömeges lapkamegközelítést a Polybase letiltásával
+- Vagy a tömeges beszúrási módszer használata a "Base" letiltásával
 
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Hibaüzenet: A HTTP feltételes fejléc(ek) használatával megadott feltétel nem teljesül.
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Hibaüzenet: a HTTP feltételes fejléc (ek) használatával megadott feltétel nem teljesül.
 
-- **Jelenségek**: Sql-lekérdezéssel adatokat kell lekérdezni az Azure SQL Data Warehouse-ból, és a következő hibaüzenetet használhatja:
+- **Tünetek**: az SQL-lekérdezéssel az adatok lekérése Azure SQL Data Warehouseről, a következő hiba miatt:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Ok:** Az Azure SQL Data Warehouse találati probléma lekérdezése a külső tábla az Azure Storage-ban.
+- **OK**: a Azure SQL Data Warehouse az Azure Storage-ban a külső tábla lekérdezésével kapcsolatos problémát észlelt.
 
-- **Megoldás**: Futtassa ugyanazt a lekérdezést az SSMS-ben, és ellenőrizze, hogy ugyanazt az eredményt látja-e. Ha igen, nyisson egy támogatási jegyet az Azure SQL Data Warehouse-hoz kapcsolódóan, és adja meg az SQL DW-kiszolgáló és az adatbázis nevét a további hibaelhárításhoz.
+- **Megoldás**: futtassa ugyanazt a LEKÉRDEZÉST a SSMS, és ellenőrizze, hogy ugyanazt az eredményt látja-e. Ha igen, nyisson egy támogatási jegyet az Azure SQL Data Warehouse-hoz kapcsolódóan, és adja meg az SQL DW-kiszolgáló és az adatbázis nevét a további hibaelhárításhoz.
             
 
 ## <a name="delimited-text-format"></a>Tagolt szöveg formátuma
@@ -423,26 +423,26 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 - **Üzenet**:`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Ok**: Amikor a tevékenységben a "firstRowAsHeader" beállítás van beállítva, az első sor lesz az oszlopnév. Ez a hiba azt jelenti, hogy az első sor üres értéket tartalmaz. Például: "ColumnA,,ColumnB".
+- **OK**: a "firstRowAsHeader" tevékenységben való beállításakor az első sor lesz az oszlop neve. Ez a hiba azt jelenti, hogy az első sor üres értéket tartalmaz. Például: ' columna,, ColumnB '.
 
-- **Javaslat**: Ellenőrizze az első sort, és rögzítse az értéket, ha üres érték van.
+- **Javaslat**: Ellenőrizze az első sort, és javítsa ki az értéket, ha üres érték van megadva.
 
 
 ### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Hibakód: DelimitedTextMoreColumnsThanDefined
 
 - **Üzenet**:`Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
-- **Ok**: A problémás sor oszlopszáma nagy, mint az első sor oszlopszáma. Ezt okozhatja az adatprobléma vagy a helytelen oszlophatároló/idézőjel beállításai.
+- **OK**: a problémás sor oszlopainak száma nagyobb, mint az első sor oszlopainak száma. Ennek oka az lehet, hogy az adatprobléma vagy a helytelen oszlop-határolójel/quota karakteres beállítások szerepelnek.
 
-- **Ajánlás**: Kérjük, olvassa el a sorok számát hibaüzenetben, ellenőrizze a sor oszlopát, és javítsa ki az adatokat.
+- **Javaslat**: a sorok számának lekérése a hibaüzenetben, ellenőrizze a sor oszlopát, és javítsa ki az adathalmazt.
 
-- **Ok:** Ha a várt oszlopszám "1" a hibaüzenetben, lehetséges, hogy helytelen tömörítési vagy formázási beállításokat adott meg, ami miatt az ADF helytelenül elemezte a fájlt(oka)t.
+- **OK**: Ha a várt oszlopok száma "1" a hibaüzenetben, lehetséges, hogy helytelen tömörítési vagy formázási beállításokat adott meg, ami azt eredményezte, hogy az ADF helytelenül elemezte a fájl (oka) t.
 
-- **Javaslat**: Ellenőrizze a formátumbeállításokat, hogy biztosan megegyezik-e a forrásfájl(ok)kal.
+- **Javaslat**: Ellenőrizze a formátum beállításait, és győződjön meg arról, hogy az megfelel a forrásfájl (ok) nak.
 
-- **Ok:** Ha a forrás mappa, lehetséges, hogy a megadott mappa alatti fájlok sémája eltérő.
+- **OK**: Ha a forrás egy mappa, lehetséges, hogy a megadott mappában található fájlok különböző sémával rendelkeznek.
 
-- **Javaslat**: Győződjön meg arról, hogy az adott mappában lévő fájlok azonos sémával rendelkeznek.
+- **Javaslat**: Győződjön meg arról, hogy a megadott mappában található fájlok azonos sémával rendelkeznek.
 
 
 ### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Hibakód: DelimitedTextIncorrectRowDelimiter
@@ -467,13 +467,13 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 - **Üzenet**:`This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
-- **Ok**: Ez egy átmeneti probléma a dynamics kiszolgáló oldalán.
+- **OK**: ez egy átmeneti probléma a Dynamics Server oldalán.
 
-- **Javaslat**: Futtassa újra a folyamatot. Ha folyamatosan nem sikerül, próbálja csökkenteni a párhuzamosság. Ha még mindig sikertelen, forduljon a Dynamics támogatási szolgálatához.
+- **Javaslat**: futtassa újra a folyamatot. Ha nem sikerül, próbálja meg csökkenteni a párhuzamosságot. Ha továbbra sem sikerül, forduljon a Dynamics ügyfélszolgálatához.
 
 
 
-## <a name="json-format"></a>JSON formátum
+## <a name="json-format"></a>JSON-formátum
 
 ### <a name="error-code--jsoninvalidarraypathdefinition"></a>Hibakód: JsonInvalidArrayPathDefinition
 
@@ -517,137 +517,137 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 - **Üzenet**:`An error occurred when invoking java, message: %javaException;.`
 
-- **Ok**: Ha a hibaüzenet a "java.lang.OutOfMemory", a "Java halomterület" és a "doubleCapacity" értéket tartalmazza, általában memóriakezelési probléma az integrációs futásidejű verzióban.
+- **OK**: Ha a hibaüzenetben a "Java. lang. OutOfMemory", a "Java heap Space" és a "doubleCapacity" szerepel, ez általában az integrációs modul régi verziójában található memória-kezelési probléma.
 
-- **Javaslat:** Ha önkiszolgáló integrációs futásidőt használ, és a verzió korábbi, mint a 3.20.7159.1, javasoljuk, hogy frissítsen a legújabb verzióra.
+- **Javaslat**: Ha saját üzemeltetésű Integration Runtime használ, és a verzió korábbi, mint a 3.20.7159.1, javasoljuk, hogy frissítsen a legújabb verzióra.
 
-- **Ok**: Ha a hibaüzenet a "java.lang.OutOfMemory" fájlt tartalmazza, az integrációs futásidejű nem rendelkezik elegendő erőforrással a fájl(ok) feldolgozásához.
+- **OK**: Ha a hibaüzenetben a "Java. lang. OutOfMemory" szerepel, az Integration Runtime nem rendelkezik elegendő erőforrással a fájl (ok) feldolgozásához.
 
-- **Javaslat**: Korlátozza az egyidejű futtatások az integrációs futásidejű. Az önkiszolgáló integrációs futásidejű, felskálázás egy nagy teljesítményű gép memóriája egyenlő vagy nagyobb, mint 8 GB.
+- **Javaslat**: az egyidejű futtatások korlátozása az Integration Runtime-ban. A saját üzemeltetésű Integration Runtime esetében akár 8 GB-nál nagyobb memóriával, akár egy olyan, nagy teljesítményű géppel is méretezhető.
 
-- **Ok**: Ha a hibaüzenet "NullPointerReference" üzenetet tartalmaz, akkor lehetséges, hogy átmeneti hiba.
+- **OK**: Ha a hibaüzenetben a "NullPointerReference" szöveg szerepel, ez egy átmeneti hiba.
 
-- **Javaslat**: Próbálkozzon újra. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
+- **Javaslat**: próbálkozzon újra. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
 
 
 ### <a name="error-code--parquetinvalidfile"></a>Hibakód: ParquetInvalidFile
 
 - **Üzenet**:`File is not a valid parquet file.`
 
-- **Ok**: Parkettafájl-probléma.
+- **OK**: a parketta-fájl hibája.
 
-- **Javaslat**: Ellenőrizze, hogy a bemenet érvényes parkettafájl-e.
+- **Javaslat**: Győződjön meg arról, hogy a bemenet érvényes parketta-fájl.
 
 
 ### <a name="error-code--parquetnotsupportedtype"></a>Hibakód: ParquetNotSupportedType
 
 - **Üzenet**:`Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
-- **Ok:** A parketta formátum nem támogatott az Azure Data Factory.
+- **OK**: a Azure Data Factory nem támogatja a parketta formátumát.
 
-- **Javaslat**: Ellenőrizze a forrásadatokat. Nézze meg a https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecsdoc: .
+- **Javaslat**: Ellenőrizze a forrásadatokat. Tekintse meg a doc https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs:.
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Hibakód: ParquetMissedDecimalPrecisionScale
 
 - **Üzenet**:`Decimal Precision or Scale information is not found in schema for column: %column;.`
 
-- **Ok:** Próbálja meg elemezni a szám pontosságát és léptékét, de ilyen információ nem áll rendelkezésre.
+- **OK**: próbálja meg elemezni a pontosságot és a skálázást, de nincs ilyen adat megadva.
 
-- **Javaslat**: A "forrás" nem ad vissza megfelelő pontosságot és skálát. Ellenőrizze a problémaoszlop pontosságát és léptékét.
+- **Javaslat**: a forrás nem ad vissza pontos pontosságot és méretezést. A probléma oszlopban keresse meg a pontosságot és a méretezést.
 
 
 ### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Hibakód: ParquetInvalidDecimalPrecisionScale
 
 - **Üzenet**:`Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
-- **Ok**: A séma érvénytelen.
+- **OK**: a séma érvénytelen.
 
-- **Javaslat**: Ellenőrizze a problémaoszlop pontosságát és léptékét.
+- **Javaslat**: a probléma oszlopban keresse meg a pontosságot és a méretezést.
 
 
 ### <a name="error-code--parquetcolumnnotfound"></a>Hibakód: ParquetColumnNotFound
 
 - **Üzenet**:`Column %column; does not exist in Parquet file.`
 
-- **Ok**: A forrásséma nem egyezik a fogadósével.
+- **OK**: a forrás sémája nem egyezik a fogadó sémával.
 
-- **Ajánlás**: Ellenőrizze a "leképezések" a "tevékenység". Győződjön meg arról, hogy a forrásoszlop leképezhető a jobb fogadó oszlopra.
+- **Javaslat**: a "tevékenység" the'mappings megkeresése. Győződjön meg arról, hogy a forrás oszlop képezhető le a megfelelő fogadó oszlopra.
 
 
 ### <a name="error-code--parquetinvaliddataformat"></a>Hibakód: ParquetInvalidDataFormat
 
 - **Üzenet**:`Incorrect format of %srcValue; for converting to %dstType;.`
 
-- **Ok**: Az adatok nem konvertálhatók a mappings.source-ban megadott típussá.
+- **OK**: az adattípusok nem alakíthatók át a leképezésekben megadott típusra. forrás
 
-- **Javaslat**: Ellenőrizze duplán a forrásadatokat, vagy adja meg az oszlop megfelelő adattípusát a másolási tevékenységoszlop-leképezésben. Nézze meg a https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecsdoc: .
+- **Javaslat**: Ellenőrizze a forrásadatokat, vagy adja meg a megfelelő adattípust ehhez az oszlophoz a másolási tevékenység oszlop-hozzárendelésében. Tekintse meg a doc https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs:.
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Hibakód: ParquetDataCountNotMatchColumnCount
 
 - **Üzenet**:`The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
-- **Ok**: A forrásoszlopok száma és a fogadóoszlopszám nem egyezik
+- **OK**: a forrás oszlopainak száma és a fogadó oszlopainak száma nem egyezik
 
-- **Javaslat:** A forrásoszlopok számának kettős ellenőrzése megegyezik a "leképezés" fogadóoszlopszámával.
+- **Javaslat**: a dupla ellenőrzési forrás oszlopainak száma ugyanaz, mint a "leképezés" fogadó oszlopainak száma.
 
 
 ### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Hibakód: ParquetDataTypeNotMatchColumnType
 
-- **Üzenet**: A(z) %srcType; nem egyezik a megadott oszloptípussal: %dstType; a következő oszlopban: "%columnIndex;".
+- **Üzenet**: a (z)% srcType; adattípus nem felel meg a megadott típusú oszlopnak (% dstType;). a (z)% columnIndex; oszlopban.
 
-- **Ok**: A forrásból származó adatok nem konvertálhatók a fogadóban definiált gépelt adatokká
+- **OK**: a forrásból származó adatok nem alakíthatók át a fogadóban definiált típusra
 
-- **Javaslat**: Adjon meg megfelelő típust a mapping.sink.Recommendation : Please specify a correct type in mapping.sink.
+- **Javaslat**: adjon meg egy megfelelő típust a Mapping. mosogatóban.
 
 
 ### <a name="error-code--parquetbridgeinvaliddata"></a>Hibakód: ParquetBridgeInvalidData
 
 - **Üzenet**:`%message;`
 
-- **Ok**: Az adatérték túllépési
+- **OK**: az adatérték a korlátozáson felül
 
-- **Javaslat**: Próbálkozzon újra. Ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba velünk.
+- **Javaslat**: próbálkozzon újra. Ha a probléma továbbra is fennáll, vegye fel velünk a kapcsolatot.
 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>Hibakód: ParquetUnsupportedInterpretation
 
 - **Üzenet**:`The given interpretation '%interpretation;' of parquet format is not supported.`
 
-- **Ok**: Nem támogatott forgatókönyv
+- **OK**: nem támogatott forgatókönyv
 
-- **Javaslat**: A "ParquetInterpretFor" nem lehet "sparkSql".
+- **Javaslat**: a "ParquetInterpretFor" nem lehet "sparkSql".
 
 
 ### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Hibakód: ParquetUnsupportFileLevelCompressionOption
 
 - **Üzenet**:`File level compression is not supported for Parquet.`
 
-- **Ok**: Nem támogatott forgatókönyv
+- **OK**: nem támogatott forgatókönyv
 
-- **Javaslat**: Távolítsa el a "CompressionType" a hasznos teher.
+- **Javaslat**: távolítsa el a fájba a hasznos adatok között.
 
 
 
-## <a name="general-copy-activity-error"></a>Általános másolási tevékenység hiba
+## <a name="general-copy-activity-error"></a>Általános másolási tevékenység hibája
 
 ### <a name="error-code--jrenotfound"></a>Hibakód: JreNotFound
 
 - **Üzenet**:`Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
-- **Ok:** A saját üzemeltetésű integrációs futásidejű nem találja a Java Runtime. A Java Runtime adott forrás olvasásához szükséges.
+- **OK**: a saját üzemeltetésű Integration Runtime nem találja a Java futtatókörnyezetet. A Java-futtatókörnyezet szükséges az adott forrás olvasásához.
 
-- **Javaslat**: Ellenőrizze az integrációs futásidejű környezetet, a referencia-dokumentum:https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+- **Javaslat**: az Integration Runtime-környezet, a dokumentációs dokumentum:https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
 
 
-### <a name="error-code--wildcardpathsinknotsupported"></a>Hibakód: A helyettesítő karakterhez való elérési karakternem támogatott
+### <a name="error-code--wildcardpathsinknotsupported"></a>Hibakód: WildcardPathSinkNotSupported
 
 - **Üzenet**:`Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 
-- **Ok:** A fogadó adatkészlet nem támogatja a helyettesítő karaktert.
+- **OK**: a fogadó adatkészlet nem támogatja a helyettesítő karaktert.
 
-- **Javaslat**: Ellenőrizze a fogadó adatkészletet, és javítsa ki a helyettesítő karakter érték nélküli elérési utat.
+- **Javaslat**: keresse meg a fogadó adatkészletet, és javítsa ki az elérési utat helyettesítő érték nélkül.
 
 
 ### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Hibakód: MappingInvalidPropertyWithEmptyValue
@@ -655,7 +655,7 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 - **Üzenet**:`One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
 
 
-### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Hibakód: MappingInvalidPropertyWithNamePathAndOrdinalal
+### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Hibakód: MappingInvalidPropertyWithNamePathAndOrdinal
 
 - **Üzenet**:`Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
 
@@ -672,12 +672,12 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 ## <a name="next-steps"></a>További lépések
 
-További hibaelhárítási segítségért próbálkozzon az alábbi forrásokkal:
+További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory szolgáltatáskérések](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Stack túlcsordulás fórum Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter információk a Data Factory-ról](https://twitter.com/hashtag/DataFactory)
+*  [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
             

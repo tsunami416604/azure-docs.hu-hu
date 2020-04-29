@@ -1,6 +1,6 @@
 ---
-title: Metaadatok és AC-k megőrzése másolási tevékenység használatával az Azure Data Factoryban
-description: Megtudhatja, hogyan őrizheti meg a metaadatokat és az ACL-eket az Azure Data Factory másolási tevékenységhasználatával történő másolási tevékenysége során.
+title: Metaadatok és ACL-ek megőrzése a másolási tevékenység használatával Azure Data Factory
+description: Tudnivalók a metaadatok és az ACL-ek megőrzéséről a másolási tevékenység Azure Data Factoryban való használata során.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,32 +12,32 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: jingwang
 ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414159"
 ---
-#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metaadatok és AC-k megőrzése másolási tevékenység használatával az Azure Data Factoryban
+#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metaadatok és ACL-ek megőrzése a másolási tevékenység használatával Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ha az Azure Data Factory másolási tevékenység segítségével másolja az adatokat a forrásból a fogadóba, a következő esetekben is megőrizheti a metaadatokat és a acl-k mentén.
+Ha Azure Data Factory másolási tevékenységet használ az adatok forrásról fogadóba való másolásához, az alábbi helyzetekben a metaadatokat és a hozzáférés-vezérlési listákat is megőrizheti.
 
-## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>A tavak áttelepítésének metaadatainak megőrzése
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>A Lake Migration metaadatainak megőrzése
 
-Amikor áttelepíti az adatokat az egyik adattótóból a másikba, beleértve [az Amazon S3,](connector-amazon-simple-storage-service.md) [az Azure Blob](connector-azure-blob-storage.md)és az Azure Data Lake Storage [Gen2](connector-azure-data-lake-storage.md)adatokat, kiválaszthatja, hogy a fájl metaadatait az adatokkal együtt őrizze meg.
+Amikor adatokat telepít át az egyik adattóból egy másikba, beleértve az [Amazon S3](connector-amazon-simple-storage-service.md)-t, az [Azure blobot](connector-azure-blob-storage.md)és a [Azure Data Lake Storage Gen2t](connector-azure-data-lake-storage.md), megtarthatja a fájl metaadatainak megőrzését az adatokkal együtt.
 
-A másolási tevékenység támogatja a következő attribútumok megőrzését az adatmásolás során:
+A másolási tevékenység a következő attribútumok megőrzését támogatja az Adatmásolás során:
 
-- **Az összes ügyfél által megadott metaadat** 
-- És a következő **öt adattár beépített rendszer tulajdonságai**: `contentType`, `contentEncoding` `contentDisposition` `cacheControl` `contentLanguage` (kivéve az Amazon S3), , , .
+- **Az ügyfél által megadott metaadatok** 
+- Valamint a következő **öt adattár beépített rendszertulajdonsága**: `contentType` `contentLanguage` (az Amazon S3 kivételével) `contentEncoding`,, `contentDisposition`,. `cacheControl`
 
-Ha az Amazon S3/Azure Data Lake Storage Gen2/Azure Blob fájljait bináris formátumban másolja az Amazon S3/Azure Data Lake Storage Gen2/Azure Blob rendszerbe, a > **Tevékenységbeállításainak** **másolása**lapon a Tevékenységkészítés hez vagy a Beállítások laphoz az Adatmásolás eszközben található **Megőrzése** lehetőséget találja. **Settings**
+Ha fájlokat másol az Amazon S3/Azure Data Lake Storage Gen2/Azure blobból a bináris formátumú Azure Data Lake Storage Gen2/Azure blobba, a **megőrzés** **lehetőséget a tevékenység** > -szerzői műveletek vagy a **Beállítások** lap adatok másolása eszközének**Beállítások lapján** tekintheti meg.
 
-![A tevékenységmegőrzés metaadatainak másolása](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
+![Másolási tevékenység megőrzése metaadatok](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
-Íme egy példa a JSON-konfiguráció `preserve`másolási tevékenységére (lásd): 
+Íme egy példa a másolási tevékenység JSON-konfigurációra `preserve`(lásd:): 
 
 ```json
 "activities":[
@@ -78,29 +78,29 @@ Ha az Amazon S3/Azure Data Lake Storage Gen2/Azure Blob fájljait bináris form�
 ]
 ```
 
-## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>A Data Lake Storage Gen1/Gen2-től a Gen2-ig tartó ACL-k megőrzése
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>ACL-ek megőrzése Data Lake Storage Gen1/Gen2 és Gen2 között
 
-Amikor az Azure Data Lake Storage Gen1-ről Gen2-re frissít, vagy adatokat másol az ADLS Gen2 között, megőrizheti a POSIX hozzáférés-vezérlési listákat (ACL-k) az adatfájlokkal együtt. A hozzáférés-vezérlésről további információt az [Azure Data Lake Storage Gen1 hozzáférés-vezérlése](../data-lake-store/data-lake-store-access-control.md) és az Azure Data Lake Storage [Gen2 hozzáférés-vezérléscímű témakörben talál.](../storage/blobs/data-lake-storage-access-control.md)
+Ha Azure Data Lake Storage Gen1ról frissít az adatok ADLS Gen2 között Gen2 vagy másol, megtarthatja a POSIX hozzáférés-vezérlési listákat (ACL-eket) az adatfájlokkal együtt. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) és [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](../storage/blobs/data-lake-storage-access-control.md).
 
-A másolási tevékenység támogatja a következő típusú ACL-ok megőrzését az adatmásolás során. Egy vagy több típust kiválaszthat:
+A másolási tevékenység támogatja a következő típusú ACL-ek megőrzését az Adatmásolás során. Kiválaszthat egy vagy több típust is:
 
-- **ACL**: PoSIX hozzáférés-vezérlési listák másolása és megőrzése fájlokon és könyvtárakon. It copies the full existing ACLs from source to sink. 
-- **Tulajdonos**: Másolja és őrizze meg a fájlok és könyvtárak tulajdonos felhasználóját. A Data Lake Storage Gen2-hez való rendszergazdai hozzáférés szükséges.
-- **Csoport**: Fájlok és könyvtárak tulajdonában lévő csoport másolása és megőrzése. A data lake storage gen2 vagy a tulajdonában lévő felhasználó (ha a tulajdonában lévő felhasználó is tagja a célcsoportnak) rendszergazdai hozzáférésszükséges.
+- **ACL**: a POSIX hozzáférés-vezérlési listák másolása és megőrzése fájlokon és címtárakon. A teljes meglévő ACL-eket a forrásról a fogadóra másolja. 
+- **Tulajdonos**: a fájlok és könyvtárak tulajdonos felhasználójának másolása és megőrzése. A felhasználók a fogadó Data Lake Storage Gen2hoz való hozzáférésre van szükség.
+- **Csoport**: fájlok és könyvtárak tulajdonosi csoportjának másolása és megőrzése. A felhasználó hozzáférése a fogadó Data Lake Storage Gen2hoz vagy a tulajdonos felhasználóhoz (ha a tulajdonos felhasználó a célcsoport tagja is) szükséges.
 
-Ha egy mappából szeretne másolni, a Data Factory replikálja az adott mappához tartozó `recursive` ACL-ket, valamint az alatta lévő fájlokat és könyvtárakat, ha igaz értékre van állítva. Ha egyetlen fájlból adja meg a másolást, a fájlba tartozó ACL-k másolásra kerülnek.
+Ha egy mappából történő másolást ad meg, Data Factory replikálja a megadott mappára és a benne lévő fájlokra és könyvtárakra vonatkozó ACL `recursive` -eket, ha az igaz értékre van állítva. Ha egyetlen fájlból történő másolást ad meg, a rendszer átmásolja a fájl ACL-jeit.
 
 >[!NOTE]
->Ha az ADF segítségével megőrzi az ACL-eket a Data Lake Storage Gen1/Gen2-től a Gen2-ig, a mosogató Gen2 megfelelő mappájában/fájlján lévő meglévő ACL-ok felülíródnak.
+>Ha a Data Lake Storage Gen1/Gen2 hozzáférés-vezérlési listáinak a Gen2-be való megőrzéséhez ADF-t használ, a rendszer felülírja a fogadó Gen2's tartozó meglévő ACL-eket a megfelelő mappában vagy fájlokban.
 
 >[!IMPORTANT]
->Ha úgy dönt, hogy megőrzi az ACL-eket, győződjön meg róla, hogy elegendő engedélyt ad a Data Factory-nak ahhoz, hogy a fogadó Data Lake Storage Gen2-fiókjával szemben működjön. Használja például a fiókkulcs-hitelesítést, vagy rendelje hozzá a Storage Blob Data Owner szerepkört az egyszerű szolgáltatáshoz vagy a felügyelt identitáshoz.
+>Ha úgy dönt, hogy megőrzi az ACL-eket, győződjön meg arról, hogy elég magas engedélyekkel rendelkezik ahhoz, hogy a Data Factory a fogadó Data Lake Storage Gen2-fiókjával működjenek. Használhatja például a fiók kulcsának hitelesítését, vagy hozzárendelheti a Storage blob-adatok tulajdonosi szerepkörét az egyszerű szolgáltatásnév vagy a felügyelt identitás számára.
 
-Ha a forrást bináris formátumú Data Lake Storage Gen1/Gen2 néven állítja be, és bináris formátumú Data Lake Storage Gen2 vagy bináris másolási lehetőségként, akkor a **Megőrzés** lehetőség megtalálható a **Beállítások** lapon az Adatmásolás eszközben vagy a **Tevékenység** > **beállításai** másolása lapon a tevékenység készítéshez.
+Ha a forrást bináris formátumú vagy bináris másolási lehetőséggel Data Lake Storage Gen1/Gen2 konfigurálja, és a fogadót bináris formátummal vagy a bináris másolási lehetőséggel Data Lake Storage Gen2, akkor a **megőrzési** beállítást a adatok másolása eszköz **Beállítások** lapján vagy a tevékenység-létrehozási **tevékenységek** > **beállításainak** másolása lapon találja.
 
-![Data Lake Storage Gen1/Gen2 a Gen2 Megőrzése ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+![Data Lake Storage Gen1/Gen2 a Gen2 megőrzése ACL-hez](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-Íme egy példa a JSON-konfiguráció `preserve`másolási tevékenységére (lásd): 
+Íme egy példa a másolási tevékenység JSON-konfigurációra `preserve`(lásd:): 
 
 ```json
 "activities":[
@@ -145,7 +145,7 @@ Ha a forrást bináris formátumú Data Lake Storage Gen1/Gen2 néven állítja 
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd a többi Másolási tevékenység cikkeket:
+Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Tevékenység másolása – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Másolási tevékenység teljesítménye](copy-activity-performance.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (korábban SQL DW) – gyakori kérdések
-description: Ez a cikk felsorolja az Azure Synapse Analytics (korábban SQL DW) kapcsolatos gyakori kérdéseket az ügyfelektől és fejlesztőktől
+title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
+description: Ez a cikk az Azure szinapszis Analytics (korábban SQL DW) ügyfelektől és fejlesztőktől származó gyakori kérdéseit sorolja fel.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,105 +11,105 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416074"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (korábban SQL DW) gyakori kérdések
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
 ## <a name="general"></a>Általános kérdések
 
 K. Mi az az Azure Synapse?
 
-A. Az Azure Synapse egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big Data-elemzéseket. Ez lehetővé teszi, hogy lekérdezze az adatokat a feltételek, akár kiszolgáló nélküli on-demand vagy kiépített erőforrások - nagy méretekben. Az Azure Synapse egyesíti ezt a két világot egy egységes felhasználói felülettel, amely lenyeli, előkészíti, kezeli és kiszolgálja az adatokat az azonnali BI és gépi tanulási igényekhez. További információ: [Mi az Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a saját feltételei szerint, kiszolgáló nélküli, igény szerinti vagy kiépített erőforrásokkal lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mi történt az Azure SQL Data Warehouse?Mi történt az Azure SQL Data Warehouse?
+K. Mi történt a Azure SQL Data Warehouse?
 
-A. Az Azure Synapse az Azure SQL Data Warehouse (SQL DW) fejlődött. Ugyanazt az iparágvezető adatraktárt a teljesítmény és a képességek egy teljesen új szintjére vittük. Folytathatja a meglévő adattárház-számítási feladatok futtatását éles környezetben az Azure Synapse segítségével, és automatikusan élvezheti az új képességek előnyeit, amelyek előzetes verzióban vannak. További információ: [Mi az Azure Synapse Analytics.](sql-data-warehouse-overview-what-is.md)
+A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Továbbra is futtathatja meglévő adattárház-számítási feladatait az Azure szinapszis szolgáltatással, és automatikusan kihasználhatja az előzetes verzióban elérhető új képességeket. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mi a Synapse SQL-készlet?
+K. Mi az a szinapszis SQL Pool?
 
-A. A Synapse SQL-készlet az Azure Synapse-val általánosan elérhető vállalati adattárház-funkciókra hivatkozik. További információ: [Mi az Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. A szinapszis SQL-készlet az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Hogyan kezdhetem el az Azure Synapse?
+K. Hogyan az Azure szinapszis megkezdése?
 
-A. További információkért ismerkedhet meg egy [ingyenes Azure-fiókkal,](https://azure.microsoft.com/free/sql-data-warehouse/) vagy [kapcsolatba léphet az értékesítéssel.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
+A. További információért forduljon az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/sql-data-warehouse/) , vagy [vegye fel a kapcsolatot az értékesítéssel](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
 
-K. Mit kínál az Azure Synapse az adatbiztonságért?
+K. Mit kínál az Azure szinapszis az adatbiztonsághoz?
 
-A. Az Azure Synapse számos megoldást kínál az adatok, például a TDE és a naplózás védelmére. További információ: [Security](sql-data-warehouse-overview-manage-security.md).
+A. Az Azure szinapszis számos megoldást kínál az adatok védelmére, például a TDE és a naplózásra. További információ: [Biztonság](sql-data-warehouse-overview-manage-security.md).
 
-K. Hol találhatom meg, hogy az Azure Synapse milyen jogi vagy üzleti szabványoknak felel meg?
+K. Honnan tudhatom meg, hogy az Azure szinapszis milyen jogi vagy üzleti szabványoknak felel meg?
 
-A. Látogasson el a [Microsoft megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) oldalára, ahol termékenkénti megfelelőségi ajánlatokat, például SOC-t és ISO-t keres.
-Először válasszon a Megfelelőségi cím szerint. Ezután bontsa ki az Azure-t a Microsoft hatókörön kívül lévő felhőszolgáltatások szakaszban a lap jobb oldalán, hogy milyen szolgáltatásoknak felelmeg az Azure Synapse.
+A. Tekintse meg a [Microsoft megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) oldalát, ahol különböző megfelelőségi ajánlatokat talál, például a SoC és az ISO terméket.
+Először válassza a megfelelőségi cím lehetőséget. Ezután bontsa ki az Azure-t az oldal jobb oldalán található Microsoft-hatókörű Cloud Services szakaszban, ahol megtekintheti, hogy mely szolgáltatások az Azure szinapszis-kompatibilisek.
 
-K. Csatlakoztatható a Power BI?
+K. Csatlakozhatok Power BIhoz?
 
-A. Igen! Bár a Power BI támogatja a közvetlen lekérdezést az Azure Synapse segítségével, nem nagyszámú felhasználó nak vagy valós idejű adatnak készült. A Power BI teljesítményének további optimalizálásához fontolja meg a Power BI használatát az Azure Analysis Services vagy az Analysis Service IaaS mellett.
+A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
 
-K. Mik a Synapse SQL-készlet kapacitáskorlátai?
+K. Mik a szinapszis SQL Pool kapacitási korlátai?
 
-A. Tekintse meg az aktuális [kapacitáskorlátok](sql-data-warehouse-service-capacity-limits.md) oldalt.
+A. Tekintse meg a jelenlegi [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md) lapot.
 
-K. Miért tart ilyen sokáig a Mérleg/Szünet/Önéletrajz?
+K. Miért van a méretezési/szüneteltetési vagy folytatási művelet?
 
-A. Számos tényező befolyásolhatja a számítási felügyeleti műveletek idejét. A hosszú ideig futó műveletek gyakori esete a tranzakciós visszaállítás. Méretezési vagy szüneteltetési művelet indításakor a rendszer minden bejövő munkamenetet blokkol, és a lekérdezéseket kiüríti. Annak érdekében, hogy a rendszer stabil állapotban legyen, a tranzakciókat vissza kell görgetni, mielőtt a művelet megkezdődhetne. Minél nagyobb a tranzakciók száma és nagyobb a naplómérete, annál hosszabb ideig tart a művelet a rendszer stabil állapotba való visszaállításának.
+A. Több tényező is befolyásolhatja a számítási felügyeleti műveletek idejét. A hosszú ideig futó műveletek esetében gyakori eset a tranzakciós visszaállítás. Ha egy méretezési vagy szüneteltetési műveletet kezdeményeznek, az összes bejövő munkamenet le lesz tiltva, és a rendszer leállítja a lekérdezéseket. Ahhoz, hogy a rendszer stabil állapotban maradjon, a tranzakciókat vissza kell állítani a művelet megkezdése előtt. Minél nagyobb a szám, és nagyobb a tranzakciók naplózási mérete, annál hosszabb a művelet, mert a rendszer stabil állapotba állítja vissza a műveletet.
 
 ## <a name="user-support"></a>Felhasználói támogatás
 
-K. Funkciókérésem van, hol küldhetem be?
+K. Van egy szolgáltatási kérésem, hová tudom elküldeni?
 
-A. Ha funkciókérése van, küldje el a [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) oldalunkon
+A. Ha van szolgáltatási kérése, küldje el a [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) oldalon
 
-K. Hogyan tudom x?
+K. Hogyan tehetek x-t?
 
-A. Ha segítségre van szüksége az Azure Synapse használatával kapcsolatos fejlesztéshez, kérdéseket tehet fel a [Veremtúlcsordulás](https://stackoverflow.com/questions/tagged/azure-sqldw) oldalon.
+A. Ha segítségre van szüksége az Azure Szinapszistal való fejlesztéshez, kérdéseket tehet fel [stack overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) oldalon.
 
-K. Hogyan küldhetek be támogatási jegyet?
+K. Hogyan támogatási jegyet küldeni?
 
-A. [Támogatási jegyek](sql-data-warehouse-get-started-create-support-ticket.md) az Azure Portalon keresztül is benyújthatók.
+A. A [támogatási jegyeket](sql-data-warehouse-get-started-create-support-ticket.md) Azure Portalon keresztül lehet benyújtani.
 
-## <a name="sql-languagefeature-support"></a>SQL nyelv/szolgáltatás támogatása
+## <a name="sql-languagefeature-support"></a>SQL nyelv/funkció támogatása
 
 K. Milyen adattípusok támogatottak?
 
-A. Lásd: [adattípusok](sql-data-warehouse-tables-data-types.md).
+A. Lásd [az adattípusokat](sql-data-warehouse-tables-data-types.md).
 
-K. Milyen táblázatfunkciókat támogat?
+K. Milyen funkciókat támogat?
 
-A. Számos funkció támogatott. A nem támogatott szolgáltatások a [nem támogatott táblaszolgáltatások](sql-data-warehouse-tables-data-types.md)ban találhatók.
+A. Számos funkció támogatott. A nem támogatott funkciók a nem támogatott [tábla-funkciókban](sql-data-warehouse-tables-data-types.md)találhatók.
 
-## <a name="tooling-and-administration"></a>Szerszámozás és adminisztráció
+## <a name="tooling-and-administration"></a>Eszközök és felügyelet
 
-K. A Synapse SQL-készlet támogatja a REST API-kat?
+K. Támogatja a szinapszis SQL Pool a REST API-kat?
 
-A. Igen. Az SQL Database-ben használható LEGTÖBB REST-funkció a Synapse SQL-készlettel is elérhető. Az API-információk a REST [dokumentációs](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)oldalain vagy az adatbázisokban találhatók.
+A. Igen. A SQL Database használatával használható legtöbb REST-funkció a szinapszis SQL-készlettel is elérhető. A REST dokumentációs oldalain vagy [adatbázisaiban](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)találhat API-információkat.
 
 ## <a name="loading"></a>Betöltése
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. A Synapse SQL-készlet illesztőprogram-támogatása megtalálható a [Kapcsolati karakterláncok](../sql/connection-strings.md) lapon
+A. A szinapszis SQL-készlet illesztőprogram-támogatása a [kapcsolatok karakterláncok](../sql/connection-strings.md) oldalán található.
 
-K: Milyen fájlformátumokat támogat a PolyBase?
+K: milyen fájlformátumokat támogat a Base?
 
-V: Ork, RC, Parketta és sík tagolt szöveg
+A: ork, RC, Parquet és laposan tagolt szöveg
 
-K: Milyen adatforrásokhoz csatlakozhatok a PolyBase használatával?
+K: milyen adatforrásokhoz csatlakozhatok a Base használatával?
 
-V: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) és Azure Storage [Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+A: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) és [Azure Storage-Blobok](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-K: Lehetséges a számítási leküldéses leküldéses leküldéses leküldéses leküldéses lehetőség az Azure Storage Blobs vagy az ADLS-hez való csatlakozáskor?
+K: az Azure Storage-Blobokhoz vagy-ADLS való csatlakozáskor lehetséges a számítási pushdown?
 
-A: Nem, a PolyBase csak a tárolóösszetevőkkel kommunikál.
+A: nem, a csak a Storage-összetevőkkel kommunikáló
 
-K: Csatlakozhatok a HDI-hez?
+K: csatlakozhatok a HDI szolgáltatáshoz?
 
-A: A HDI az ADLS vagy a WASB hdfs-rétegként használható. Ha van bármelyik a HDFS-réteg, betöltheti az adatokat egy Synapse SQL-készletbe. A HDI-példányhoz azonban nem hozhat létre leküldéses számítást.
+A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, az adatait egy szinapszis SQL-készletbe is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Synapse egészére vonatkozó további információkért tekintse meg [áttekintési oldalunkat.](sql-data-warehouse-overview-faq.md)
+Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés](sql-data-warehouse-overview-faq.md) oldalt.

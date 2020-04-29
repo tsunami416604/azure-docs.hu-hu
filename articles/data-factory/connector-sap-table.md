@@ -1,6 +1,6 @@
 ---
 title: Adatok másolása SAP-táblából
-description: Megtudhatja, hogyan másolhatja az adatokat egy SAP-táblából a támogatott fogadó adattárak egy Azure Data Factory-folyamat másolási tevékenység használatával.
+description: Megtudhatja, hogyan másolhat adatok egy SAP-táblából egy Azure Data Factory folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,88 +12,88 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
 ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415222"
 ---
-# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából az Azure Data Factory használatával
+# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolása egy SAP-táblából. További információt a [Tevékenység másolása – áttekintés című témakörben talál.](copy-activity-overview.md)
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok SAP-táblából való másolásához. További információ: [másolási tevékenység áttekintése](copy-activity-overview.md).
 
 >[!TIP]
->Ha meg szeretné tudni, hogy az ADF általános támogatást nyújt az SAP-adatintegrációs forgatókönyvhöz, tekintse meg az [SAP-adatok integrálását az Azure Data Factory használatával című tanulmányban,](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetéssel, összevetéssel és útmutatással.
+>Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez az SAP-táblaösszekötő a következő tevékenységek esetén támogatott:
+Ez az SAP Table Connector a következő tevékenységek esetében támogatott:
 
-- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keress tevékenységet](control-flow-lookup-activity.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az SAP-táblából adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
+Az adatok az SAP-táblázatokból bármilyen támogatott fogadó adattárba másolhatók. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Ez az SAP-táblaösszekötő kifejezetten a következőket támogatja:
+Az SAP Table Connector különösen a következőket támogatja:
 
-- Adatok másolása SAP-táblából:
+- Adatok másolása SAP-táblából a következőben:
 
-  - SAP ERP központi összetevő (SAP ECC) 7.01-es vagy újabb verziója (egy 2015 után kiadott legutóbbi SAP támogatási csomagveremben).
-  - SAP Business Warehouse (SAP BW) 7.01-es vagy újabb verziója (egy 2015 után kiadott legutóbbi SAP támogatási csomagveremben).
+  - SAP ERP központi összetevő (SAP ECC) 7,01-es vagy újabb verzió (az SAP-támogatási csomag egy, a 2015-es kiadás után kiadott új veremben).
+  - Az SAP Business Warehouse (SAP BW) 7,01-es vagy újabb verziója (egy, az 2015-es verzió után kiadott SAP-támogatási csomagban).
   - SAP S/4HANA.
-  - Egyéb termékek az SAP Business Suite 7.01-es vagy újabb verziójában (egy 2015 után kiadott legutóbbi SAP támogatási csomagveremben).
+  - Más termékek az SAP Business Suite 7,01-es vagy újabb verziójával (az SAP támogatási csomagjának a 2015 után kiadott legújabb verziójában).
 
-- Adatok másolása egy SAP transzparens táblából, egy készletezött táblából, egy fürtözött táblából és egy nézetből.
-- Adatok másolása alapfokú hitelesítéssel vagy biztonságos hálózati kommunikációval (SNC), ha az SNC konfigurálva van.
-- Sap-alkalmazáskiszolgálóhoz vagy SAP-üzenetkiszolgálóhoz való csatlakozás.
+- Adatok másolása egy SAP átlátszó táblából, egy készletezett táblából, egy fürtözött táblából és egy nézetből.
+- Adatok másolása egyszerű hitelesítéssel vagy biztonságos hálózati kommunikáció (SNC) használatával, ha a SNC konfigurálva van.
+- Csatlakozás SAP-alkalmazáskiszolgáló vagy SAP-üzenetkezelő kiszolgálóhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az SAP-táblaösszekötő használatához a következőket kell használnia:
+Az SAP Table Connector használatához a következőket kell tennie:
 
-- Saját üzemeltetésű integrációs futásidő beállítása (3.17-es vagy újabb verzió). További információt a [Saját üzemeltetésű integrációs futásidő létrehozása és konfigurálása című témakörben talál.](create-self-hosted-integration-runtime.md)
+- Saját üzemeltetésű integrációs modul (3,17-es vagy újabb verzió) beállítása. További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md).
 
-- Töltse le a 64 bites [SAP Connector for Microsoft .NET 3.0-t](https://support.sap.com/en/product/connectors/msnet.html) az SAP webhelyéről, és telepítse azt az önkiszolgáló integrációs futásidejű gépre. A telepítés során győződjön meg arról, hogy a **Választható beállítási lépések** ablakban a **Szerelések telepítése gac-ra** lehetőséget választotta.
+- Töltse le a 64 bites [SAP-összekötőt Microsoft .NET 3,0](https://support.sap.com/en/product/connectors/msnet.html) -re az SAP webhelyéről, és telepítse a saját üzemeltetésű Integration Runtime-gépre. A telepítés során győződjön meg arról, hogy az **opcionális telepítési lépések** ablakban a **szerelvények telepítése a GAC** -ba lehetőségre van kiválasztva.
 
-  ![Sap-összekötő telepítése .NET-hez](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  ![A .NET-hez készült SAP-összekötő telepítése](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- A Data Factory SAP-táblaösszekötőben használt SAP-felhasználónak a következő engedélyekkel kell rendelkeznie:
+- A Data Factory SAP Table connectorban használt SAP-felhasználónak a következő engedélyekkel kell rendelkeznie:
 
-  - Engedélyezés a távoli függvényhívás (RFC) célhelyének használatára.
-  - A S_SDSAUTH engedélyezési objektum végrehajtása tevékenységhez szükséges engedélyek.
+  - A Remote Function Call (RFC) célhelyek használatának engedélyezése.
+  - A S_SDSAUTH engedélyezési objektum végrehajtási tevékenységének engedélyei.
 
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok az SAP-táblaösszekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
+A következő szakaszokban részletesen ismertetjük az SAP Table connectorra jellemző Data Factory entitások definiálásához használt tulajdonságokat.
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az SAP BW Open Hub csatolt szolgáltatás a következő tulajdonságokat támogatja:
+A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a `SapTable`ikonra kell állítani. | Igen |
-| `server` | Annak a kiszolgálónak a neve, amelyen az SAP-példány található.<br/>Sap-alkalmazáskiszolgálóhoz való csatlakozáshoz használható. | Nem |
-| `systemNumber` | Az SAP-rendszer rendszerszáma.<br/>Sap-alkalmazáskiszolgálóhoz való csatlakozáshoz használható.<br/>Megengedett érték: Karakterláncként ábrázolt kétjegyű tizedesszám. | Nem |
-| `messageServer` | Az SAP-üzenetkiszolgáló állomásneve.<br/>Sap-üzenetkiszolgálóhoz való csatlakozáshoz használható. | Nem |
-| `messageServerService` | Az üzenetkiszolgáló szolgáltatásneve vagy portszáma.<br/>Sap-üzenetkiszolgálóhoz való csatlakozáshoz használható. | Nem |
-| `systemId` | Annak az SAP-rendszernek az azonosítója, amelyben a tábla található.<br/>Sap-üzenetkiszolgálóhoz való csatlakozáshoz használható. | Nem |
-| `logonGroup` | Az SAP-rendszer bejelentkezési csoportja.<br/>Sap-üzenetkiszolgálóhoz való csatlakozáshoz használható. | Nem |
-| `clientId` | Az ügyfél azonosítója az SAP-rendszerben.<br/>Megengedett érték: Karakterláncként ábrázolt háromjegyű tizedesszám. | Igen |
-| `language` | Az SAP-rendszer által használt nyelv.<br/>Az alapértelmezett `EN`érték a .| Nem |
+| `type` | A `type` tulajdonságot a következőre `SapTable`kell beállítani:. | Igen |
+| `server` | Annak a kiszolgálónak a neve, amelyen az SAP-példány található.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez. | Nem |
+| `systemNumber` | Az SAP-szolgáltatás rendszerszáma.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez.<br/>Engedélyezett érték: egy kétszámjegyű decimális szám, amely karakterláncként van megadva. | Nem |
+| `messageServer` | Az SAP-üzenet kiszolgálójának állomásneve.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| `messageServerService` | Az üzenet kiszolgálójának szolgáltatásnév vagy portszáma.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| `systemId` | Annak az SAP-rendszernek az azonosítója, amelyben a tábla található.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| `logonGroup` | Az SAP-rendszerhez tartozó bejelentkezési csoport.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| `clientId` | Az ügyfél azonosítója az SAP-rendszeren.<br/>Engedélyezett érték: egy háromjegyű decimális szám, amely karakterláncként van megadva. | Igen |
+| `language` | Az SAP-rendszer által használt nyelv.<br/>Az `EN`alapértelmezett érték:.| Nem |
 | `userName` | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
-| `password` | A felhasználó jelszava. Jelölje meg ezt `SecureString` a mezőt azzal a típussal, amely biztonságosan tárolja a Data Factory-ban, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
-| `sncMode` | Az SNC aktiválási jelzője az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Használja, ha az SNC-t szeretné használni az SAP-kiszolgálóhoz való csatlakozáshoz.<br/>Az engedélyezett `0` értékek (ki, `1` alapértelmezett) vagy (be) | Nem |
-| `sncMyName` | A kezdeményező SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor `sncMode` érvényes, ha be van kapcsolva. | Nem |
-| `sncPartnerName` | A kommunikációs partner SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor `sncMode` érvényes, ha be van kapcsolva. | Nem |
-| `sncLibraryPath` | A külső biztonsági termék könyvtára az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor `sncMode` érvényes, ha be van kapcsolva. | Nem |
-| `sncQop` | Az SNC protection minőségi szintje.<br/>Akkor `sncMode` érvényes, ha be van kapcsolva. <br/>Az engedélyezett `1` értékek `2` a következők: `3` (Hitelesítés), (integritás), (Adatvédelem), `8` (Alapértelmezett), `9` (Maximális). | Nem |
-| `connectVia` | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Saját üzemeltetésű integrációs futásidejűre van szükség, ahogy azt az Előfeltételek című részben korábban [említettük.](#prerequisites) |Igen |
+| `password` | A felhasználó jelszava. Adja meg ezt a mezőt `SecureString` úgy, hogy az biztonságosan tárolja Data Factoryban, vagy [hivatkozzon a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| `sncMode` | A SNC aktiválási jelzője annak az SAP-kiszolgálónak a eléréséhez, ahol a tábla található.<br/>Akkor használja, ha a SNC használatával szeretne csatlakozni az SAP-kiszolgálóhoz.<br/>Az engedélyezett értékek `0` : (kikapcsolva, alapértelmezett `1` ) vagy (bekapcsolva). | Nem |
+| `sncMyName` | A kezdeményező SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
+| `sncPartnerName` | A kommunikációs partner SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
+| `sncLibraryPath` | A külső biztonsági termék könyvtára, amely hozzáfér az SAP-kiszolgálóhoz, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
+| `sncQop` | Az alkalmazni kívánt védelmi szint SNC-minőség.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. <br/>Az `1` engedélyezett értékek: (hitelesítés) `2` , (integritás) `3` , (adatvédelem) `8` , (alapértelmezett) `9` , (maximum). | Nem |
+| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. A saját üzemeltetésű integrációs modulra van szükség, ahogy azt az [Előfeltételekben](#prerequisites)korábban említettük. |Igen |
 
-**1. példa: Csatlakozás SAP-alkalmazáskiszolgálóhoz**
+**1. példa: Kapcsolódás SAP Application Serverhez**
 
 ```json
 {
@@ -118,7 +118,7 @@ Az SAP BW Open Hub csatolt szolgáltatás a következő tulajdonságokat támoga
 }
 ```
 
-### <a name="example-2-connect-to-an-sap-message-server"></a>2. példa: Csatlakozás SAP-üzenetkiszolgálóhoz
+### <a name="example-2-connect-to-an-sap-message-server"></a>2. példa: Kapcsolódás SAP-üzenetkezelő kiszolgálóhoz
 
 ```json
 {
@@ -145,7 +145,7 @@ Az SAP BW Open Hub csatolt szolgáltatás a következő tulajdonságokat támoga
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>3. példa: Csatlakozás Az SNC használatával
+### <a name="example-3-connect-by-using-snc"></a>3. példa: a kapcsolat a SNC használatával
 
 ```json
 {
@@ -177,14 +177,14 @@ Az SAP BW Open Hub csatolt szolgáltatás a következő tulajdonságokat támoga
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásának szakaszainak és tulajdonságainak teljes listáját az Adatkészletek című [témakörben található.](concepts-datasets-linked-services.md) A következő szakasz az SAP-tábla adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához szükséges csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). A következő szakasz az SAP-táblázat adatkészletében támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az SAP BW Open Hub csatolt szolgáltatásból és az SAP BW Open Hub csatolt szolgáltatásba:
+Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a `SapTableResource`ikonra kell állítani. | Igen |
-| `tableName` | Az adatok másolni az SAP-tábla neve. | Igen |
+| `type` | A `type` tulajdonságot a következőre `SapTableResource`kell beállítani:. | Igen |
+| `tableName` | Annak az SAP-táblának a neve, amelyből az adatok másolása megtörténjen. | Igen |
 
 ### <a name="example"></a>Példa
 
@@ -207,33 +207,33 @@ Adatok másolása az SAP BW Open Hub csatolt szolgáltatásból és az SAP BW Op
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásának szakaszainak és tulajdonságainak teljes listáját a Folyamatok című [témakörben található.](concepts-pipelines-activities.md) A következő szakasz az SAP-táblaforrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálási szakaszainak és tulajdonságainak teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). A következő szakasz az SAP-táblázat forrása által támogatott tulajdonságokat tartalmazza.
 
-### <a name="sap-table-as-source"></a>SAP-tábla forrásként
+### <a name="sap-table-as-source"></a>SAP-táblázat forrásként
 
-Az SAP-táblából történő adatok másolásához a következő tulajdonságok támogatottak:
+Az adatok SAP-táblából történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság                         | Leírás                                                  | Kötelező |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | A `type` tulajdonságot a `SapTableSource`ikonra kell állítani.         | Igen      |
+| `type`                             | A `type` tulajdonságot a következőre `SapTableSource`kell beállítani:.         | Igen      |
 | `rowCount`                         | A beolvasandó sorok száma.                              | Nem       |
-| `rfcTableFields`                   | Az SAP-táblából másolandó mezők (oszlopok). Például: `column0, column1`. | Nem       |
-| `rfcTableOptions`                  | Az SAP-tábla sorainak szűrésére rendelkezésre áll. Például: `COLUMN0 EQ 'SOMEVALUE'`. Lásd még az SAP-lekérdezésoperátor tábla később ebben a cikkben. | Nem       |
-| `customRfcReadTableFunctionModule` | Egyéni RFC-függvénymodul, amely sap-táblából adatok olvasására használható.<br>Egy egyéni RFC-függvénymodul segítségével megadhatja, hogy az adatok at az SAP-rendszer, és visszaad a Data Factory. Az egyéni függvénymodulnak olyan felülettel kell rendelkeznie, amelyet `/SAPDS/RFC_READ_TABLE2`megvalósítottak (import, export, táblák), amely hasonló a hoz, amely a Data Factory által használt alapértelmezett felület. | Nem       |
-| `partitionOption`                  | Az SAP-táblából olvasandó partíciós mechanizmus. A támogatott lehetőségek a következők: <ul><li>`None`</li><li>`PartitionOnInt`(normál egész vagy egész értékek, balra nulla párnázattal, például `0000012345`)</li><li>`PartitionOnCalendarYear`(4 számjegy "ÉÉÉ" formátumban)</li><li>`PartitionOnCalendarMonth`(6 számjegy "ÉÉÉÉMm" formátumban)</li><li>`PartitionOnCalendarDate`(8 számjegy "ÉÉÉÉHHS" formátumban)</li></ul> | Nem       |
-| `partitionColumnName`              | Az adatok particionálásához használt oszlop neve.                | Nem       |
-| `partitionUpperBound`              | A particionálás folytatásához `partitionColumnName` a megadott oszlop maximális értéke. | Nem       |
-| `partitionLowerBound`              | Az oszlopban `partitionColumnName` megadott minimális érték a particionálás folytatásához lesz használva. (Megjegyzés: `partitionLowerBound` nem lehet "0", `PartitionOnInt`ha partíció opció ) | Nem       |
-| `maxPartitionsNumber`              | Az adatok felosztásához legfeljebb hány partícióra bontandó partíció.     | Nem       |
+| `rfcTableFields`                   | Az SAP-táblából Másolandó mezők (oszlopok). Például: `column0, column1`. | Nem       |
+| `rfcTableOptions`                  | Az SAP-tábla sorainak szűrésére szolgáló beállítások. Például: `COLUMN0 EQ 'SOMEVALUE'`. Tekintse meg a jelen cikk későbbi, a SAP-lekérdezés operátora című táblázatot is. | Nem       |
+| `customRfcReadTableFunctionModule` | Egyéni RFC-függvény modul, amely az adatok SAP-táblából való beolvasására használható.<br>Egyéni RFC-függvények modullal meghatározhatja az adatok lekérésének módját az SAP-rendszerből, és visszaküldheti őket a Data Factorynak. Az egyéni függvény moduljának olyan felülettel kell rendelkeznie (importálás, exportálás, táblák) `/SAPDS/RFC_READ_TABLE2`, amely hasonló a (Data Factory) által használt alapértelmezett interfészhez. | Nem       |
+| `partitionOption`                  | Az SAP-táblázatból beolvasott partíciós mechanizmus. A támogatott lehetőségek a következők: <ul><li>`None`</li><li>`PartitionOnInt`(normál egész szám vagy egész érték nulla kitöltéssel a bal oldalon, például `0000012345`)</li><li>`PartitionOnCalendarYear`(4 számjegy a következő formátumban: "éééé")</li><li>`PartitionOnCalendarMonth`(6 számjegy a következő formátumban: "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 számjegy a következő formátumban: "ÉÉÉÉHHNN")</li></ul> | Nem       |
+| `partitionColumnName`              | Az adatparticionáláshoz használt oszlop neve.                | Nem       |
+| `partitionUpperBound`              | A-ben `partitionColumnName` megadott oszlop maximális értéke a particionálás folytatásához lesz használva. | Nem       |
+| `partitionLowerBound`              | A-ben `partitionColumnName` megadott oszlop minimális értéke a particionálás folytatásához lesz használva. (Megjegyzés: `partitionLowerBound` nem lehet "0", ha a `PartitionOnInt`partíció lehetőség) | Nem       |
+| `maxPartitionsNumber`              | Az a partíciók maximális száma, amelybe az adatmennyiséget fel kell osztani.     | Nem       |
 
 >[!TIP]
->Ha az SAP-tábla nagy mennyiségű adatot tartalmaz, például több milliárd sort, használja, `partitionOption` és `partitionSetting` az adatok felosztása kisebb partíciókra. Ebben az esetben az adatok olvasása partíciónként, és minden adatpartíció lekérése az SAP-kiszolgálóról egyetlen RFC-híváson keresztül.<br/>
+>Ha az SAP-táblázat nagy mennyiségű adattal rendelkezik (például több milliárd sor), akkor `partitionOption` a `partitionSetting` és az az adatait kisebb partíciókra kell bontani. Ebben az esetben az adatok egy partíció alapján kerülnek beolvasásra, és az egyes adatpartíciók egyetlen RFC-hívással kérhetők le az SAP-kiszolgálóról.<br/>
 <br/>
->`partitionOption` Példaként `partitionOnInt` véve az egyes partíciók sorainak számát a következő képlettel `partitionUpperBound` számítjuk ki: (a sorok között és `partitionLowerBound`a )/`maxPartitionsNumber`között esik.<br/>
+>`partitionOption` `partitionUpperBound` `partitionLowerBound``maxPartitionsNumber`Például az egyes partíciókban lévő sorok számát a következő képlettel számítjuk ki: (a és a közötti összes sor)/. `partitionOnInt`<br/>
 <br/>
->Az adatpartíciók párhuzamos betöltéséhez a másolás felgyorsításához a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) párhuzamos mértéket a másolási tevékenység beállítása szabályozza. Ha például négyre állítva, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` az `parallelCopies` ingatlan értékének többszörösét tegye meg. Amikor adatokat másol fájlalapú adattárba, azt is megkell parancsolni, hogy több fájlként írjon egy mappába (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
+>Ha párhuzamosan szeretné betölteni az adatpartíciókat a másolás felgyorsításához, a párhuzamos mértéket a másolási tevékenység [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés az adatok egy részét kéri le az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` a `parallelCopies` tulajdonság értékének többszörösét végezze el. Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
-A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezésoperátorok segítségével szűrheti a sorokat:
+A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezési operátorokkal szűrheti a sorokat:
 
 | Művelet | Leírás |
 | :------- | :------- |
@@ -243,8 +243,8 @@ A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezésoper
 | `LE` | Kisebb vagy egyenlő |
 | `GT` | Nagyobb, mint |
 | `GE` | Nagyobb vagy egyenlő |
-| `IN` | Mint például`TABCLASS IN ('TRANSP', 'INTTAB')` |
-| `LIKE` | Mint például`LIKE 'Emma%'` |
+| `IN` | A következőképpen:`TABCLASS IN ('TRANSP', 'INTTAB')` |
+| `LIKE` | A következőképpen:`LIKE 'Emma%'` |
 
 ### <a name="example"></a>Példa
 
@@ -285,26 +285,26 @@ A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezésoper
 ]
 ```
 
-## <a name="data-type-mappings-for-an-sap-table"></a>SAP-tábla adattípus-leképezései
+## <a name="data-type-mappings-for-an-sap-table"></a>Az SAP-táblázat adattípus-hozzárendelései
 
-Amikor adatokat másol egy SAP-táblából, a következő leképezések az SAP-tábla adattípusaiból az Azure Data Factory köztes adattípusai. Ha meg szeretné tudni, hogy a másolási tevékenység hogyan rendeli le a forrássémát és az adattípust a fogadóhoz, olvassa el a [Séma- és adattípus-hozzárendelések című témakört.](copy-activity-schema-and-type-mapping.md)
+Az adatok SAP-táblából való másolása során a rendszer a következő leképezéseket használja az SAP Table adattípusokból a Azure Data Factory köztes adattípusokra. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
 
-| SAP ABAP-típus | Adatgyár köztes adattípusa |
+| SAP ABAP-típus | Data Factory időközi adattípus |
 |:--- |:--- |
-| `C`(Karakterlánc) | `String` |
-| `I`(Egész szám) | `Int32` |
-| `F`(Lebeg) | `Double` |
-| `D`(Dátum) | `String` |
-| `T`(Idő) | `String` |
-| `P`(BCD csomagolt, pénznem, decimális, mennyiség) | `Decimal` |
-| `N`(Numerikus) | `String` |
+| `C`Karakterlánc | `String` |
+| `I`Egész | `Int32` |
+| `F`Float | `Double` |
+| `D`Dátum | `String` |
+| `T`Idő | `String` |
+| `P`(BCD-csomag, pénznem, decimális, mennyiség) | `Decimal` |
+| `N`Numerikus | `String` |
 | `X`(Bináris és nyers) | `String` |
 
-## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
-A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Data Factory másolási tevékenysége által forrásként és fogadóként támogatott adattárak listáját a [Támogatott adattárak című témakörben tetszését.](copy-activity-overview.md#supported-data-stores-and-formats)
+A Azure Data Factoryban a másolási tevékenység által a forrásként és a nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,40 +1,40 @@
 ---
-title: Speciális alkalmazásfrissítési témakörök
-description: Ez a cikk a Service Fabric-alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
+title: Speciális alkalmazás-frissítési témakörök
+description: Ez a cikk a Service Fabric alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414498"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>A Service Fabric alkalmazásfrissítése: Speciális témakörök
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
 
-## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Szolgáltatástípusok hozzáadása vagy eltávolítása alkalmazásfrissítés közben
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Szolgáltatások típusának hozzáadása vagy eltávolítása az alkalmazás frissítése során
 
-Ha egy frissítés részeként egy közzétett alkalmazáshoz új szolgáltatástípust ad hozzá, akkor az új szolgáltatástípus hozzáadódik az üzembe helyezett alkalmazáshoz. Az ilyen frissítés nem érinti azokat a szolgáltatáspéldányokat, amelyek már az alkalmazás részét képezik, de létre kell hozni az új szolgáltatástípus aktívvá válásához hozzáadott szolgáltatástípus egy példányát (lásd: [New-ServiceFabricService).](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)
+Ha új szolgáltatástípus van hozzáadva egy közzétett alkalmazáshoz egy frissítés részeként, akkor a rendszer hozzáadja az új szolgáltatás típusát az üzembe helyezett alkalmazáshoz. Egy ilyen frissítés nem befolyásolja az alkalmazás részét képező szolgáltatási példányok egyikét sem, de a hozzáadott szolgáltatástípus egy példányát létre kell hozni ahhoz, hogy az új szolgáltatástípus aktív legyen (lásd: [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Hasonlóképpen a szolgáltatástípusok is eltávolíthatók az alkalmazásból a frissítés részeként. A frissítés folytatása előtt azonban el kell távolítani a eltávolítandó szolgáltatástípus összes szolgáltatáspéldányát [(lásd: Remove-ServiceFabricService).](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)
+Hasonlóképpen, a szolgáltatások típusai a frissítés részeként eltávolíthatók az alkalmazásokból. A frissítés folytatása előtt azonban el kell távolítani az összes szolgáltatás összes szolgáltatási példányát (lásd: [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Kerülje a kapcsolateséseket az állapotmentes szolgáltatás tervezett állásidejének elkerülése
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Az állapot nélküli szolgáltatás tervezett leállási idejének elkerülése
 
-A tervezett állapotmentes példány állásidők, például az alkalmazás/fürt frissítése vagy a csomópont-deaktiválás esetén a kapcsolatok megszakadhatnak a kitett végpont eltávolítása miatt a példány leállítása után, ami kényszerített kapcsolatlezárásokat eredményez.
+A tervezett állapot nélküli példányok esetében – például az alkalmazás/fürt verziófrissítése vagy a csomópont inaktiválása esetén – a rendszer eltávolítja a kapcsolatokat a megjelenő végpont eltávolítása után, ami kényszerített kapcsolat bezárását eredményezi.
 
-Ennek elkerülése érdekében konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást úgy, hogy egy *példány közeli késleltetési időtartamot* ad hozzá a szolgáltatáskonfigurációban, hogy lehetővé tegye a kiürítést, miközben a fürt más szolgáltatásaitól érkező kéréseket kap, és fordított proxyt használ, vagy az API feloldása értesítési modellt használ a végpontok frissítéséhez. Ez biztosítja, hogy az állapotnélküli példány által hirdetett végpontot a rendszer eltávolítja a késés megkezdése *előtt* a példány bezárása előtt. Ez a késleltetés lehetővé teszi, hogy a meglévő kérelmek kiürítése kecsesen, mielőtt a példány ténylegesen leáll. Az ügyfelek a késleltetés indításakor egy visszahívási függvény értesítik a végpont változásáról, hogy újra feloldhassák a végpontot, és elkerülhessék, hogy új kérelmeket küldjenek a leálló példánynak.
+Ennek elkerüléséhez konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást úgy, hogy a szolgáltatás konfigurációjában egy *példány záró késleltetési időtartamát* adja hozzá, amely lehetővé teszi a kiürítést, miközben a fürt más szolgáltatásaitól érkező kéréseket fogad, és fordított proxyt használ, vagy az API feloldása az értesítési modellel a végpontok frissítéséhez. Ez biztosítja, hogy a rendszer eltávolítja az állapot nélküli példány által hirdetett végpontot, *mielőtt* a késleltetés a példány bezárása előtt elindul. Ez a késleltetés lehetővé teszi, hogy a meglévő kérések zökkenőmentesen le legyenek ürítve, mielőtt a példány ténylegesen leáll. Az ügyfelek értesítést kapnak a végpont változásáról egy visszahívási függvény által a késés megkezdésének időpontjában, hogy újra fel tudják oldani a végpontot, és ne küldjön új kéréseket a lekérdezett példányra.
 
 ### <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
-A késés konfigurálása többféleképpen is konfigurálható a szolgáltatási oldalon.
+A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
 
- * **Új szolgáltatás létrehozásakor**adja `-InstanceCloseDelayDuration`meg a következőt:
+ * **Új szolgáltatás létrehozásakor**a `-InstanceCloseDelayDuration`következőket kell megadnia:
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
     ```
 
- * **A szolgáltatás nak az alkalmazásjegyzék alapértelmezett szakaszában történő definiálása kor**rendelje hozzá a `InstanceCloseDelayDurationSeconds` tulajdonságot:
+ * A **szolgáltatásnak az alkalmazás jegyzékfájljának Alapértelmezések szakaszában megadott meghatározása során**rendelje `InstanceCloseDelayDurationSeconds` hozzá a (z) tulajdonságot:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,7 +42,7 @@ A késés konfigurálása többféleképpen is konfigurálható a szolgáltatás
           </StatelessService>
     ```
 
- * **Meglévő szolgáltatás frissítésekor**adjon `-InstanceCloseDelayDuration`meg egy:
+ * **Meglévő szolgáltatás frissítésekor**a `-InstanceCloseDelayDuration`következőket kell megadnia:
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
@@ -50,12 +50,12 @@ A késés konfigurálása többféleképpen is konfigurálható a szolgáltatás
 
 ### <a name="client-configuration"></a>Ügyfél-konfiguráció
 
-Ha értesítést szeretne kapni egy végpont változásáról, az ügyfeleknek regisztrálniuk kell egy visszahívást a [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)témakörben.
-A változásértesítés azt jelzi, hogy a végpontok megváltoztak, az ügyfélnek újra fel kell oldania a végpontokat, és nem kell használnia azokat a végpontokat, amelyek már nem hirdetettek, mivel hamarosan lefognak menni.
+Ha értesítést szeretne kapni egy végpont megváltozásakor, az ügyfeleknek vissza kell regisztrálniuk a visszahívást, lásd: [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+A változási értesítés arra utal, hogy a végpontok megváltoztak, az ügyfélnek újra fel kell oldania a végpontokat, és nem szabad azokat a végpontokat használni, amelyek nem jelennek meg többé, mert hamarosan leállnak.
 
 ### <a name="optional-upgrade-overrides"></a>Választható frissítési felülbírálások
 
-A szolgáltatásonkénti alapértelmezett késleltetési időtartamok beállításán kívül az alkalmazás/fürt`InstanceCloseDelayDurationSec`frissítése során is felülbírálhatja a késleltetést ugyanazzal a ( ) beállítással:
+A szolgáltatás alapértelmezett késleltetési időtartamának beállítása mellett a késést is felülbírálhatja az alkalmazás/fürt frissítése során ugyanazzal a (`InstanceCloseDelayDurationSec`) kapcsolóval:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,46 +63,46 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-A kés és a késleltetés időtartama csak a meghívott frissítési példányra vonatkozik, és egyébként nem módosítja az egyes szolgáltatáskésleltetési konfigurációkat. Ezzel például megadhatja `0` a késést, hogy kihagyja az előre beállított frissítési késéseket.
+A késleltetés időtartama csak a meghívott frissítési példányra vonatkozik, és más módon nem változtatja meg az egyes szolgáltatás-késleltetési konfigurációkat. Ezzel a beállítással például késleltetheti `0` az előre konfigurált frissítési késések kihagyása érdekében.
 
 > [!NOTE]
-> A kérelmek kiürítése nem kerül a kérelmek az Azure Load balancer nem kerül betöltésére. A beállítás nem teljesül, ha a hívó szolgáltatás panaszalapú megoldást használ.
+> Az Azure Load balancertől érkező kérések nem teljesítik a kérelmek kiürítésének beállítását. A beállítás nem teljesül, ha a hívó szolgáltatás a panasztételi megoldáson alapuló feloldást használ.
 >
 >
 
 > [!NOTE]
-> Ez a szolgáltatás konfigurálható a meglévő szolgáltatások segítségével Update-ServiceFabricService parancsmag a fent említettek szerint, ha a fürtkód verziója 7.1.XXX vagy annál magasabb.
+> Ez a funkció a fentiekben említett, Update-ServiceFabricService parancsmagot használó meglévő szolgáltatásokban konfigurálható, ha a 7.1.XXX vagy annál újabb a fürt kódjának verziója.
 >
 >
 
-## <a name="manual-upgrade-mode"></a>Kézi frissítési mód
+## <a name="manual-upgrade-mode"></a>Manuális frissítési mód
 
 > [!NOTE]
-> A *figyelt* frissítési mód ajánlott minden Service Fabric-frissítések.
-> A *Nem figyelt manuális* frissítési módot csak sikertelen vagy felfüggesztett frissítések esetén kell figyelembe venni. 
+> A *figyelt* frissítési mód használata minden Service Fabric frissítéshez ajánlott.
+> A *UnmonitoredManual* frissítési módját csak a sikertelen vagy felfüggesztett verziófrissítések esetében érdemes figyelembe venni. 
 >
 >
 
-*Figyelt* módban a Service Fabric állapotházirendeket alkalmaz annak érdekében, hogy az alkalmazás kifogástalan állapotban legyen a frissítés előrehaladtával. Ha az állapotházirendek sérülnek, akkor a frissítés vagy fel van függesztve, vagy automatikusan visszaállítható a megadott *FailureAction függvényben.*
+*Figyelt* módban Service Fabric alkalmazza az állapot-szabályzatokat, hogy az alkalmazás kifogástalan állapotú legyen a frissítés folyamata során. Ha az Állapotházirendek megsértették, a rendszer felfüggeszti a frissítést, vagy automatikusan visszaállítja a megadott *FailureAction*függően.
 
-*Nem figyelt kézi* módban az alkalmazás rendszergazdája teljes mértékben szabályozhatja a frissítés előrehaladását. Ez a mód akkor hasznos, ha egyéni állapotértékelési szabályzatokat alkalmaz, vagy nem hagyományos frissítéseket hajt végre az állapotfigyelés teljes megkerülése érdekében (pl. az alkalmazás már adatvesztésben van). Az ebben a módban futó frissítés az egyes UD-ok befejezése után felfüggeszti magát, és explicit módon újra kell indítani a [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)használatával. Ha egy frissítés felfüggesztésre kerül, és készen áll a felhasználó általi folytatásra, a frissítési állapota *rollforwardPending* (lásd [UpgradeState)](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)jelenik meg.
+*UnmonitoredManual* módban az alkalmazás rendszergazdája teljes mértékben szabályozhatja a frissítés előrehaladását. Ez a mód akkor hasznos, ha egyéni állapot-értékelési házirendeket alkalmaz, vagy nem hagyományos frissítéseket végez az állapot figyelésének mellőzéséhez (például az alkalmazás már adatvesztésben van). Az ebben a módban futó frissítés az egyes UD befejezését követően felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)használatával explicit módon folytatnia kell azt. Ha a frissítés fel van függesztve, és készen áll a felhasználó folytatására, a frissítési állapota *RollforwardPending* fog megjelenni (lásd: [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
-Végül a *Nem figyelt automatikus* mód a szolgáltatásfejlesztés vagy tesztelés során a gyors frissítési ismétlések végrehajtásához hasznos, mivel nincs szükség felhasználói beavatkozásra, és nincs kiértékelt alkalmazásállapot-házirend.
+Végezetül a *UnmonitoredAuto* mód hasznos lehet a gyors verziófrissítési iterációk végrehajtásához a szolgáltatás fejlesztése vagy tesztelése során, mivel nincs szükség felhasználói beavatkozásra, és nincs kiértékelve az alkalmazás állapotára vonatkozó házirend.
 
 ## <a name="upgrade-with-a-diff-package"></a>Frissítés diff csomaggal
 
-A teljes alkalmazáscsomag kiépítése helyett a frissítések et is el lehet végezni olyan diff-csomagok kiépítésével, amelyek csak a frissített kód/konfigurációs/adatcsomagokat, valamint a teljes alkalmazásjegyzéket és a teljes szolgáltatásjegyzékeket tartalmazzák. A teljes alkalmazáscsomagok csak az alkalmazás fürtre történő kezdeti telepítéséhez szükségesek. A későbbi frissítések lehetnek teljes alkalmazáscsomagokból vagy diff-csomagokból.  
+A teljes alkalmazáscsomag kiépítés helyett a verziófrissítések olyan diff csomagok kitelepítésével is elvégezhetők, amelyek csak a frissített Code/config/adatcsomagokat tartalmazzák, valamint a teljes alkalmazás-jegyzékfájlt és a teljes szolgáltatási jegyzékfájlt. Az alkalmazáscsomag teljes telepítéséhez csak az alkalmazás fürtbe történő telepítésére van szükség. A következő frissítések lehetnek teljes alkalmazáscsomag vagy diff csomagok.  
 
-Az alkalmazásjegyzékben vagy a szolgáltatásjegyzékben lévő olyan diff-csomag hivatkozásait, amelyek nem találhatók meg az alkalmazáscsomagban, automatikusan lecseréli a jelenleg kiépített verzióra.
+A rendszer automatikusan lecseréli az alkalmazáscsomag egyik olyan diff-csomagjának az alkalmazási jegyzékfájljában vagy a szolgáltatás jegyzékfájljában szereplő hivatkozást, amely nem található az alkalmazás-csomagban.
 
-A különbözeti csomagok használatának forgatókönyvei a következők:
+A diff csomagok használatának forgatókönyvei a következők:
 
-* Ha olyan nagy alkalmazáscsomaggal rendelkezik, amely több szolgáltatásjegyzékfájlra és/vagy több kódcsomagra, konfigurációs csomagokra vagy adatcsomagokra hivatkozik.
-* Ha olyan központi telepítési rendszerrel rendelkezik, amely közvetlenül az alkalmazásösszeállítási folyamatból hozza létre a buildelrendezést. Ebben az esetben, annak ellenére, hogy a kód nem változott, az újonnan létrehozott szerelvények egy másik ellenőrzőösszeget kapnak. A teljes alkalmazáscsomag használata szükséges lenne a verzió frissítése az összes kódcsomagon. Egy diff csomag használatával csak a megváltozott fájlokat és a jegyzékfájlokat, ahol a verzió megváltozott.
+* Ha nagyméretű alkalmazáscsomag van, amely több szolgáltatás-jegyzékfájlra és/vagy több kódra, konfigurációs csomagra vagy adatcsomagra hivatkozik.
+* Ha van olyan központi telepítési rendszer, amely közvetlenül az alkalmazás-létrehozási folyamatból hozza létre az összeállítási elrendezést. Ebben az esetben annak ellenére, hogy a kód nem változott, az újonnan létrehozott szerelvények eltérő ellenőrzőösszeget kapnak. A teljes alkalmazáscsomag használatához frissítenie kell a verziót az összes programkód-csomagon. A diff csomag használata esetén csak a módosított fájlok és a verziószámot tartalmazó jegyzékfájlok adhatók meg.
 
-Amikor egy alkalmazást a Visual Studio használatával frissít, a rendszer automatikusan közzéteszi a különbözeti csomagot. A diff-csomag manuális létrehozásához az alkalmazásjegyzéket és a szolgáltatásjegyzékeket frissíteni kell, de csak a módosított csomagokat kell tartalmaznia a végleges alkalmazáscsomagban.
+Ha egy alkalmazás a Visual Studióval lett frissítve, a rendszer automatikusan közzétesz egy diff-csomagot. Ha manuálisan szeretne létrehozni egy diff csomagot, az alkalmazás-jegyzékfájlt és a szolgáltatás-jegyzékfájlokat frissíteni kell, de csak a módosított csomagokat kell belefoglalni a végső alkalmazáscsomagba.
 
-Kezdjük például a következő alkalmazással (a könnyebb megértés érdekében biztosított verziószámok):
+Tegyük fel például, hogy a következő alkalmazással (a könnyű megértéshez megadott verziószámokkal) kezdődik:
 
 ```text
 app1           1.0.0
@@ -114,7 +114,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Tegyük fel, hogy csak a szolgáltatás kódcsomagját1 szeretné frissíteni egy diff csomag használatával. A frissített alkalmazás a következő verzióváltozásokat használja:
+Tegyük fel, hogy a service1 csak a kód csomagját szeretné frissíteni a diff csomag használatával. A frissített alkalmazás a következő verziót módosítja:
 
 ```text
 app1           2.0.0      <-- new version
@@ -126,7 +126,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-Ebben az esetben frissíti az alkalmazás jegyzékfájl2.0.0 és a service1 szolgáltatás jegyzékfájlja, hogy tükrözze a kódcsomag frissítése. Az alkalmazáscsomag mappája a következő struktúrával rendelkezik:
+Ebben az esetben frissíti az alkalmazás-jegyzékfájlt a 2.0.0 és a service1 szolgáltatás jegyzékfájlját, hogy tükrözze a csomag frissítését. Az alkalmazáscsomag mappája a következő szerkezettel rendelkezhet:
 
 ```text
 app1/
@@ -134,11 +134,11 @@ app1/
     code/
 ```
 
-Más szóval hozzon létre egy teljes alkalmazáscsomagot a szokásos módon, majd távolítsa el azokat a kód/konfigurációs/adatcsomag mappákat, amelyek verziószáma nem változott.
+Más szóval hozzon létre egy teljes alkalmazáscsomag-csomagot, majd távolítsa el az összes olyan Code/config/adatcsomag-mappát, amelyhez a verzió nem változott.
 
-## <a name="upgrade-application-parameters-independently-of-version"></a>Alkalmazásparaméterek frissítése a verziótól függetlenül
+## <a name="upgrade-application-parameters-independently-of-version"></a>Alkalmazás paramétereinek frissítése a verziótól függetlenül
 
-Néha kívánatos, hogy módosítsa a paramétereket a Service Fabric-alkalmazás a jegyzékfájl-verzió módosítása nélkül. Ez kényelmesen elvégezhető a **-ApplicationParameter** jelző és a **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShell-parancsmag használatával. Tegyük fel, hogy egy Service Fabric-alkalmazás a következő tulajdonságokkal rendelkezik:
+Időnként érdemes módosítani egy Service Fabric alkalmazás paramétereit a jegyzékfájl verziójának módosítása nélkül. Ez kényelmesen elvégezhető a **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShell-parancsmaggal a **-ApplicationParameter** jelző használatával. Tegyük fel, hogy Service Fabric alkalmazás a következő tulajdonságokkal rendelkezik:
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -151,7 +151,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-Most frissítse az alkalmazást a **Start-ServiceFabricApplicationUpgrade** parancsmag használatával. Ebben a példában egy figyelt frissítés látható, de egy nem figyelt frissítés is használható. A parancsmag által elfogadott jelzők teljes leírását az [Azure Service Fabric PowerShell modulhivatkozásában](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters) olvassa el.
+Most frissítse az alkalmazást a **Start-ServiceFabricApplicationUpgrade** parancsmag használatával. Ez a példa egy figyelt frissítést mutat be, de a nem figyelt frissítés is használható. Ha meg szeretné tekinteni a parancsmag által elfogadott jelzők teljes leírását, tekintse meg az [Azure Service Fabric PowerShell-modul referenciáját](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters) .
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -174,21 +174,21 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="roll-back-application-upgrades"></a>Alkalmazásfrissítések visszaállítása
+## <a name="roll-back-application-upgrades"></a>Alkalmazások verziófrissítésének visszaállítása
 
-Míg a frissítések a három mód *(Figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual)* egyikében továbbíthatók, csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *Nem figyelt automatikus* módban történő visszaállítás ugyanúgy működik, mint a görgetés, azzal a kivétellel, hogy az *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke eltérő - [lásd: Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md). A *Nem figyeltkézi* módban történő visszaállítás ugyanúgy működik, mint a görgetés – a visszaállítás az egyes UD-k befejezése után felfüggeszti magát, és explicit módon újra kell indítani a [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával a visszaállítás folytatásához.
+A frissítések a három mód (*figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a visszaállítást.
 
-A visszaállításautomatikusan elindítható, ha egy figyelt módban a *visszaállítás* *műveletével* *rendelkező frissítés* állapotházirendjesérül (lásd: [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)) vagy explicit módon a [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps)parancsot használja.
+A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, a *FailureAction* *visszaállítással* rendelkező frissítés állapot-házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják a [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
-A visszaállítás során az *UpdateReplicaSetCheckTimeout* és a mód értéke bármikor módosítható az [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)segítségével.
+A visszaállítás során a *UpgradeReplicaSetCheckTimeout* és a mód értéke bármikor módosítható a [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)használatával.
 
 ## <a name="next-steps"></a>További lépések
-[Az alkalmazás Visual Studio használatával történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti az alkalmazás frissítésén a Visual Studió használatával.
+[Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
-[Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti a PowerShell használatával történő alkalmazásfrissítésen.
+[Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
-A frissítési paraméterek használatával szabályozhatja, hogy az alkalmazás hogyan [frissítsen.](service-fabric-application-upgrade-parameters.md)
+Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.
 
-Tegye kompatibilissé az alkalmazásfrissítéseket az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának elsajátításával.
+Az alkalmazások frissítését az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának megismerésével teheti meg.
 
-Az alkalmazásfrissítések gyakori problémáinak megoldása az [Alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md)című témakör lépéseire hivatkozva.
+Az alkalmazások frissítéseinek [hibaelhárításával](service-fabric-application-upgrade-troubleshooting.md)kapcsolatos gyakori problémák elhárítása.

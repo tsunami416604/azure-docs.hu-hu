@@ -1,27 +1,27 @@
 ---
-title: Service Fabric-alkalmazás központi telepítése rendszeráltal hozzárendelt hibajelzővel
-description: Ez a cikk bemutatja, hogyan rendelhet hozzá egy rendszer által hozzárendelt felügyelt identitást egy Azure Service Fabric-alkalmazáshoz
+title: Service Fabric alkalmazás üzembe helyezése rendszer által hozzárendelt MI
+description: Ez a cikk bemutatja, hogyan rendelhet hozzá egy rendszerhez rendelt felügyelt identitást egy Azure Service Fabric-alkalmazáshoz
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415653"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric-alkalmazás központi telepítése rendszeráltal hozzárendelt felügyelt identitással
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric alkalmazás központi telepítése rendszer által hozzárendelt felügyelt identitással
 
-Az Azure Service Fabric-alkalmazások felügyelt identitásfunkciójának eléréséhez először engedélyeznie kell a felügyelt identitásjogkivonat-szolgáltatást a fürtön. Ez a szolgáltatás felelős a Service Fabric-alkalmazások felügyelt identitások használatával történő hitelesítésért, valamint a hozzáférési jogkivonatok nevükben történő beszerzéséért. Ha a szolgáltatás engedélyezve van, láthatja, hogy a Service Fabric Explorer a **rendszer** szakaszban a bal oldali ablaktáblában, fut a neve **fabric:/System/ManagedIdentityTokenService** mellett más rendszerszolgáltatások.
+Az Azure Service Fabric-alkalmazások felügyelt identitás funkciójának eléréséhez először engedélyeznie kell a felügyelt Identity token szolgáltatást a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy az egyéb rendszerszolgáltatások mellett a **háló:/System/ManagedIdentityTokenService** néven fut.
 
 > [!NOTE] 
-> A Felügyelt identitású Service Fabric-alkalmazások telepítése `"2019-06-01-preview"`az API-verzióval kezdve támogatott. Ugyanazt az API-verziót is használhatja az alkalmazástípushoz, az alkalmazástípus-verzióhoz és a szolgáltatás-erőforrásokhoz. A minimálisan támogatott Service Fabric futásidő 6,5 CU2. Az additoin, a build / csomag környezetben is kell az SF .Net SDK a CU2 vagy magasabb
+> Service Fabric alkalmazások felügyelt identitásokkal való üzembe helyezése az API-verziótól `"2019-06-01-preview"`kezdődően támogatott. Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is. A Service Fabric futtatókörnyezet minimálisan támogatott 6,5 CU2. A additoin-ben a Build/Package környezetnek az SF .net SDK-t is meg kell adni a CU2 vagy újabb verziónál
 
-## <a name="system-assigned-managed-identity"></a>Rendszerhez rendelt felügyelt identitás
+## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
 ### <a name="application-template"></a>Alkalmazássablon
 
-A rendszer által hozzárendelt felügyelt identitással rendelkező alkalmazás engedélyezéséhez adja hozzá az **identitástulajdonságot** az alkalmazás-erőforráshoz, a **típus-rendszerhez rendelve** az alábbi példában látható módon:
+Ha egy rendszer által hozzárendelt felügyelt identitással szeretné engedélyezni az alkalmazást, adja hozzá az **Identity** tulajdonságot az alkalmazás-erőforráshoz az alábbi példában látható módon: **systemAssigned** .
 
 ```json
     {
@@ -43,11 +43,11 @@ A rendszer által hozzárendelt felügyelt identitással rendelkező alkalmazás
       }
     }
 ```
-Ez a tulajdonság deklarálja (az Azure Resource Manager, illetve a felügyelt identitás és a`system assigned`szolgáltatás háló erőforrás-szolgáltatók, illetve, hogy ez az erőforrás implicit ( ) felügyelt identitással kell rendelkeznie.
+Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt identitást és Service Fabric erőforrás-szolgáltatót, hogy az erőforrásnak implicit (`system assigned`) felügyelt identitással kell rendelkeznie.
 
-### <a name="application-and-service-package"></a>Alkalmazás- és szolgáltatáscsomag
+### <a name="application-and-service-package"></a>Alkalmazás-és szolgáltatáscsomag
 
-1. Frissítse az alkalmazásjegyzéket, hogy hozzáadjon egy **ManagedIdentity** elemet a **Rendszerelemek** szakaszban, amely egyetlen bejegyzést tartalmaz az alábbi módon:
+1. Frissítse az alkalmazás jegyzékfájlját egy **ManagedIdentity** elem hozzáadásához a **rendszerbiztonsági tag** szakaszban, amely egyetlen bejegyzést tartalmaz az alábbi ábrán látható módon:
 
     **ApplicationManifest.xml**
 
@@ -58,9 +58,9 @@ Ez a tulajdonság deklarálja (az Azure Resource Manager, illetve a felügyelt i
       </ManagedIdentities>
     </Principals>
     ```
-    Ez leképezi az alkalmazáshoz rendelt identitást erőforrásként egy rövid névhez, az alkalmazást alkotó szolgáltatások további hozzárendeléséhez. 
+    Ez leképezi az alkalmazáshoz rendelt identitást erőforrásként egy rövid névre, az alkalmazást tartalmazó szolgáltatásokhoz való további hozzárendeléshez. 
 
-2. A felügyelt identitáshoz rendelt szolgáltatásnak megfelelő **ServiceManifestImport** szakaszban adjon hozzá egy **IdentityBindingPolicy** elemet az alábbiak szerint:
+2. A felügyelt identitást hozzárendelő szolgáltatáshoz tartozó **ServiceManifestImport** szakaszban adjon hozzá egy **IdentityBindingPolicy** elemet az alábbiak szerint:
 
     **ApplicationManifest.xml**
 
@@ -72,9 +72,9 @@ Ez a tulajdonság deklarálja (az Azure Resource Manager, illetve a felügyelt i
         </ServiceManifestImport>
       ```
 
-    Ez az elem az alkalmazás identitását rendeli a szolgáltatáshoz; e hozzárendelés nélkül a szolgáltatás nem lesz képes hozzáférni az alkalmazás identitásához. A fenti kódrészletben `SystemAssigned` az identitás (amely fenntartott kulcsszó) a rövid név `WebAdmin`alatt a szolgáltatás definíciójára van leképezve.
+    Ez az elem az alkalmazás identitását rendeli hozzá a szolgáltatáshoz. a hozzárendelés nélkül a szolgáltatás nem fogja tudni elérni az alkalmazás identitását. A fenti kódrészletben az `SystemAssigned` identitás (amely egy foglalt kulcsszó) a szolgáltatás definíciójában van leképezve a rövid név `WebAdmin`alatt.
 
-3. Frissítse a szolgáltatásjegyzéket egy **ManagedIdentity** elem hozzáadásához az **Erőforrások** `ServiceIdentityRef` szakaszban `IdentityBindingPolicy` az alkalmazásjegyzékben lévő definíció értékének megfelelő névvel:
+3. Frissítse a szolgáltatás jegyzékfájlját egy **ManagedIdentity** elemnek az **erőforrások** szakaszban való hozzáadásához az alkalmazás jegyzékfájljának `ServiceIdentityRef` `IdentityBindingPolicy` definíciójában szereplő beállítás értékének megfelelő névvel:
 
     **ServiceManifest.xml**
 
@@ -86,12 +86,12 @@ Ez a tulajdonság deklarálja (az Azure Resource Manager, illetve a felügyelt i
         </ManagedIdentities>
       </Resources>
     ```
-    Ez az identitás egyenértékű leképezése egy szolgáltatáshoz a fent leírtak szerint, de a szolgáltatásdefiníció szempontjából. Az identitásra itt a rövid neve`WebAdmin`( ), az alkalmazásjegyzékben deklarált neve hivatkozik.
+    Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel (`WebAdmin`).
 
 ## <a name="next-steps"></a>Következő lépések
-* [Felügyelt identitástámogatás áttekintése](./concepts-managed-identity.md) az Azure Service Fabricben
-* [Új telepítés](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-fürt felügyelt identitástámogatással 
+* [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric
+* [Új telepítése](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-fürt felügyelt identitások támogatásával 
 * [Felügyelt identitás engedélyezése](./configure-existing-cluster-enable-managed-identity-token-service.md) meglévő Azure Service Fabric-fürtben
-* A Service Fabric-alkalmazások felügyelt identitásának kihasználása [a forráskódból](./how-to-managed-identity-service-fabric-app-code.md)
+* Service Fabric alkalmazás [felügyelt identitásának kihasználása a forráskódból](./how-to-managed-identity-service-fabric-app-code.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Azure Service Fabric-alkalmazás elérésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
+* [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)

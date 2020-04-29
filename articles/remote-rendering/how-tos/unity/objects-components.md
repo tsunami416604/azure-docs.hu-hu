@@ -1,30 +1,30 @@
 ---
-title: Unity játék tárgyak és alkatrészek
-description: A Távoli renderelési entitásokkal és összetevőkkel való együttműködésre szolgáló Unity-specifikus módszerek ismertetése.
+title: Unity game Objects és Components
+description: A távoli renderelési entitásokkal és összetevőkkel való együttműködéshez szükséges Unity-módszereket ismerteti.
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409859"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>A Unity játékobjektumainak és összetevőinek használata
 
-Az Azure remote rendering (ARR) nagy számú objektumra van optimalizálva [(lásd: Korlátozások).](../../reference/limits.md) Bár lehetséges a nagy és összetett hierarchiák kezelése a gazdagépen, az alacsony energiaellátású eszközökön a Unity-ben történő replikálása nem valósítható meg.
+Az Azure távoli renderelés (ARR) nagy mennyiségű objektumra van optimalizálva (lásd a [korlátozásokat](../../reference/limits.md)). Habár lehetséges a nagyméretű és összetett hierarchiák kezelése a gazdagépen, az összes, az alacsony teljesítményű eszközökre való replikálása nem valósítható meg.
 
-Ezért amikor egy modell be van töltve az állomásra, az Azure távoli renderelés tükrözi az ügyféleszközön lévő modellszerkezetre vonatkozó információkat (amely hálózati forgalmat fog kitölteni), de nem replikálja az objektumokat és az összetevőket a Unityben. Ehelyett elvárja, hogy manuálisan kérje a szükséges Unity játékobjektumokat és -összetevőket, így korlátozhatja a többletterhelést arra, amire ténylegesen szükség van. Így jobban szabályozhatja az ügyféloldali teljesítményt.
+Ezért, amikor egy modell be van töltve a gazdagépre, az Azure-alapú távoli renderelés a modell szerkezetére vonatkozó információkat az ügyfélszámítógépen (amely a hálózati forgalmat terheli), de nem replikálja az objektumokat és összetevőket az egységben. Ehelyett a szükséges Unity-játék-objektumok és-összetevők manuális igénylésére vár, így korlátozhatja a terhelést a ténylegesen szükségesnél. Így jobban kézben tarthatja az ügyféloldali teljesítményt.
 
-Következésképpen az Azure remote rendering unity integrációja további funkciókkal rendelkezik a távoli renderelési struktúra igény szerinti replikálásához.
+Ennek következtében az Azure-alapú távoli renderelés Unity-integrációja további funkciókkal rendelkezik a távoli renderelési struktúra igény szerinti replikálásához.
 
-## <a name="load-a-model-in-unity"></a>Modell betöltése unity
+## <a name="load-a-model-in-unity"></a>Modell betöltése Unity
 
-Amikor betölt egy modellt, a betöltött modell gyökérobjektumára mutató hivatkozást kap. Ez a hivatkozás nem egy Unity játék objektum, de lehet `Entity.GetOrCreateGameObject()`alakítani egy a kiterjesztés módszer . Ez a függvény egy `UnityCreationMode`típusú argumentumot vár. Ha átmegy `CreateUnityComponents`, az újonnan létrehozott Unity játékobjektum ezen felül lesz feltöltve az állomáson lévő összes távoli renderelési összetevő proxyösszetevőivel. Javasoljuk azonban, hogy inkább `DoNotCreateUnityComponents`, hogy tartsa a felső minimális.
+Modell betöltésekor a betöltött modell gyökerére mutató hivatkozás fog megjelenni. Ez a hivatkozás nem Unity game-objektum, de a bővítmény metódussal `Entity.GetOrCreateGameObject()`is kikapcsolható. Ez a függvény egy típusú `UnityCreationMode`argumentumot vár. Ha átadja `CreateUnityComponents`, az újonnan létrehozott Unity game objektum emellett a gazdagépen található összes távoli renderelési összetevőhöz tartozó proxy-összetevőkkel is feltöltve lesz. Ajánlott `DoNotCreateUnityComponents`azonban a minimális terhelés megtartása érdekében.
 
-### <a name="load-model-with-task"></a>Modell betöltése feladattal
+### <a name="load-model-with-task"></a>Modell betöltése a feladattal
 
 ```cs
 LoadModelAsync _pendingLoadTask = null;
@@ -50,7 +50,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>Terhelési modell Unity korutinokkal
+### <a name="load-model-with-unity-coroutines"></a>Modell betöltése Unity-munkarutinokkal
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +72,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>Betöltési modell a várt mintával
+### <a name="load-model-with-await-pattern"></a>Modell betöltése várakozási mintával
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,21 +82,21 @@ async void LoadModelWithAwait()
 }
 ```
 
-A fenti kódminták a modell betöltési útvonalát használták a SAS-on keresztül, mert a beépített modell be van töltve. A modell kezelése blob tárolók (használatával `LoadModelAsync` és `LoadModelParams`) teljes mértékben hasonlóan működik.
+A fenti kód a modellnek az SAS-n keresztüli elérési útját használta, mert a beépített modell be van töltve. A modell kezelése blob-tárolókkal ( `LoadModelAsync` a `LoadModelParams`és a használatával) teljesen analogously működik.
 
-## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject objektum
+## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Létrehozása Unity játék objektum implicit `RemoteEntitySyncObject` módon hozzáad egy összetevőt a játék objektumot. Ez az összetevő az entitásátalakítás kiszolgálóval való szinkronizálására szolgál. Alapértelmezés `RemoteEntitySyncObject` szerint a felhasználónak `SyncToRemote()` explicit módon kell hívnia a helyi Egység állapot nak a kiszolgálóval való szinkronizálásához. Az `SyncEveryFrame` engedélyezés automatikusan szinkronizálja az objektumot.
+Egy Unity game objektum létrehozása implicit módon hozzáadja egy `RemoteEntitySyncObject` összetevőt a game objektumhoz. Ezzel az összetevővel lehet szinkronizálni az entitás átalakítását a-kiszolgálóval. Alapértelmezés `RemoteEntitySyncObject` szerint a felhasználónak explicit módon meg kell hívnia `SyncToRemote()` , hogy szinkronizálja a helyi egység állapotát a-kiszolgálóval. Az `SyncEveryFrame` engedélyezéssel automatikusan szinkronizálja az objektumot.
 
-Az a `RemoteEntitySyncObject` objektummal rendelkező objektumok távoli gyermekeiket a Gyermekek **megjelenítése** gombon keresztül az Egység szerkesztőben példányosítottak és jeleníthetik meg.
+A-val `RemoteEntitySyncObject` rendelkező objektumok létrehozhatják a távoli gyermekeiket, és megjelennek az Unity Editorban a **gyermek megjelenítése** gomb használatával.
 
-![RemoteEntitySyncObject objektum](media/remote-entity-sync-object.png)
+![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
-## <a name="wrapper-components"></a>Burkoló alkatrészek
+## <a name="wrapper-components"></a>Burkoló összetevők
 
-[A](../../concepts/components.md) távoli renderelési entitásokhoz csatlakoztatott összetevők `MonoBehavior`proxykon keresztül vannak kitéve az Egységnek. Ezek a proxyk képviselik a távoli komponens egység, és továbbítja az összes módosítást a fogadó.
+A távoli renderelési entitásokhoz csatolt [összetevők](../../concepts/components.md) a proxyn `MonoBehavior`keresztül vannak kitéve az egységnek. Ezek a proxyk a távoli összetevőt képviselik az egységben, és minden módosítást továbbítanak a gazdagépnek.
 
-Proxy távleképezési összetevőinek `GetOrCreateArrComponent`létrehozásához használja a bővítménymódszert:
+A proxy távoli renderelési összetevőinek létrehozásához használja a `GetOrCreateArrComponent`következő kiterjesztési módszert:
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
@@ -104,11 +104,11 @@ var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteMa
 
 ## <a name="coupled-lifetimes"></a>Összekapcsolt élettartamok
 
-Egy távoli [entitás](../../concepts/entities.md) és egy Unity játékobjektum élettartama összekapcsolódik, miközben egy `RemoteEntitySyncObject`. Ha ilyen `UnityEngine.Object.Destroy(...)` játékobjektummal hív, a távoli entitás is eltávolításra kerül.
+A távoli [entitások](../../concepts/entities.md) élettartama és a Unity game objektum egymáshoz kötve van `RemoteEntitySyncObject`. Ha egy ilyen `UnityEngine.Object.Destroy(...)` game objektumot hív meg, akkor a távoli entitás is el lesz távolítva.
 
-A Unity játékobjektum megsemmisítéséhez, anélkül, hogy befolyásolná `Unbind()` a `RemoteEntitySyncObject`távoli entitást, először meg kell hívnia a .
+Ha el szeretné pusztítani a Unity game objektumot anélkül, hogy befolyásolná a távoli entitást, `Unbind()` először meg `RemoteEntitySyncObject`kell hívnia a következőt:.
 
-Ugyanez igaz az összes proxy összetevőre. Ha csak az ügyféloldali képviseletet szeretné `Unbind()` megsemmisíteni, először a proxyösszetevőt kell meghívnia:
+Ugyanez vonatkozik az összes proxy-összetevőre. Csak az ügyféloldali ábrázolás megsemmisítéséhez először meg kell hívnia `Unbind()` a proxy összetevőt:
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();
@@ -122,4 +122,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>További lépések
 
 * [A Remote Rendering beállítása a Unityben](unity-setup.md)
-* [Oktatóanyag: Távoli entitások együttműködése unityben](../../tutorials/unity/working-with-remote-entities.md)
+* [Oktatóanyag: távoli entitások használata az egységben](../../tutorials/unity/working-with-remote-entities.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Adatok átalakítása a Spark használatával az Azure Data Factoryban '
+title: 'Az adatátalakítás a Spark használatával Azure Data Factory '
 description: Ez az oktatóanyag lépésenkénti utasításokat biztosít az adatok átalakításához egy Spark-tevékenység az Azure Data Factoryban való használatával.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409089"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
@@ -30,14 +30,14 @@ Ebben az oktatóanyagban az Azure PowerShell segítségével hozhat létre egy D
 > * Folyamat futásának indítása
 > * A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Az Azure Storage-fiók.** Létrehoz egy Python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage-ba. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
-* **Az Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+* **Azure Storage-fiók**. Létrehoz egy Python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage-ba. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
+* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python-szkript feltöltése a Blob Storage-fiókba
@@ -66,7 +66,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://a
     if __name__ == "__main__":
         main()
     ```
-2. Cserélje le ** &lt;&gt; a storageAccountName-t** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
+2. Cserélje ** &lt;le&gt; az storageAccountName** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
 3. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
 4. Hozzon létre egy **spark** mappát.
 5. Hozzon létre egy **szkript** almappát a **spark** mappában. 
@@ -136,7 +136,7 @@ Frissítse a következő tulajdonságok értékeit a társított szolgáltatás 
 
 - **hostSubscriptionId**. Cserélje le a &lt;SubscriptionId&gt; kifejezést az Azure-előfizetés azonosítójára. Létrejön az igény szerinti HDInsight-fürt ebben az előfizetésben. 
 - **bérlő**. A &lt;tenantID&gt; helyére írja a saját Azure bérlőjének az azonosítóját. 
-- **servicePrincipalId**, **servicePrincipalKey**. A &lt;servicePrincipalID&gt; és a &lt;servicePrincipalKey&gt; helyére írja az Azure Active Directoryban használatos szolgáltatásneve azonosítóját és kulcsát. A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. Részletek: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Az **egyszerű szolgáltatásazonosító** egyenértékű az *alkalmazásazonosítóval,* és az **egyszerű szolgáltatáskulcs** megegyezik az *ügyféltitkos kulcs*értékével.
+- **servicePrincipalId**, **servicePrincipalKey**. A &lt;servicePrincipalID&gt; és a &lt;servicePrincipalKey&gt; helyére írja az Azure Active Directoryban használatos szolgáltatásneve azonosítóját és kulcsát. A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. Részletek: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Az **egyszerű szolgáltatásnév azonosítója** megegyezik az alkalmazás- *azonosítóval* , és az **egyszerű szolgáltatásnév kulcsa** megegyezik az *ügyfél titkos*kódjának értékével.
 - **clusterResourceGroup**. A &lt;resourceGroupOfHDICluster&gt; helyére írja annak az erőforráscsoportnak a nevét, amelyben a HDInsight-fürtöt létre kell hozni. 
 
 > [!NOTE]
@@ -191,7 +191,7 @@ Már létrehozta a társított szolgáltatást és a folyamat definícióját JS
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Adatgyár neve. Globálisan egyedinek kell lennie** 
+    **Data Factory neve. Globálisan egyedinek kell lennie** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -212,7 +212,7 @@ Már létrehozta a társított szolgáltatást és a folyamat definícióját JS
     ```powershell
     Get-AzSubscription
     ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **SubscriptionId** -t az Azure-előfizetés azonosítójával:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    

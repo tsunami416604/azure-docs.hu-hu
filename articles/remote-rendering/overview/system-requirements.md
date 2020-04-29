@@ -1,87 +1,87 @@
 ---
 title: Rendszerkövetelmények
-description: Az Azure távoli renderelés rendszerkövetelményeinek listája
+description: Az Azure távoli renderelés rendszerkövetelményeit sorolja fel
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411130"
 ---
 # <a name="system-requirements"></a>Rendszerkövetelmények
 
 > [!IMPORTANT]
-> **Az Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a fejezet az Azure *remote rendering* (ARR) használatával való munka minimális rendszerkövetelményeit sorolja fel.
+Ez a fejezet az *Azure Remote rendering* (ARR) használatával való együttműködés minimális rendszerkövetelményeit sorolja fel.
 
-## <a name="development-pc"></a>Fejlesztési PC
+## <a name="development-pc"></a>Fejlesztői számítógép
 
-* Windows 10 1903-as vagy újabb verzió.
+* Windows 10 1903-es vagy újabb verzió.
 * Naprakész grafikus illesztőprogramok.
-* Nem kötelező: H265 hardveres videodekóder, ha a távolról megjelenített tartalom helyi előnézetét szeretné használni (például unity).
+* Nem kötelező: H265 hardveres videó-dekóder, ha a távolról megjelenített tartalom helyi előnézetét szeretné használni (például Unity).
 
 > [!IMPORTANT]
-> A Windows update nem mindig biztosítja a legújabb GPU-illesztőprogramokat, ellenőrizze a GPU gyártójának webhelyét a legújabb illesztőprogramok:
+> A Windows Update nem mindig biztosítja a legújabb GPU-illesztőprogramokat, és a GPU gyártójának webhelyén találja a legújabb illesztőprogramokat:
 >
 > * [AMD-illesztőprogramok](https://www.amd.com/en/support)
-> * [Intel illesztőprogramok](https://www.intel.com/content/www/us/en/support/detect.html)
-> * [NVIDIA illesztőprogramok](https://www.nvidia.com/Download/index.aspx)
+> * [Intel-illesztőprogramok](https://www.intel.com/content/www/us/en/support/detect.html)
+> * [NVIDIA-illesztőprogramok](https://www.nvidia.com/Download/index.aspx)
 
-Az alábbi táblázat felsorolja, hogy mely GPU-k támogatják a H265 hardveres videodekódolást.
+Az alábbi táblázat felsorolja, hogy mely GPU-k támogatják a H265 hardveres videó-dekódolást.
 
 | GPU-gyártó | Támogatott modellek |
 |-----------|:-----------|
-| Nvidia | Ellenőrizze az **NVDEC támogatási mátrixot** [a lap alján](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix). A GPU-nak IGEN-re van szüksége a **H.265 4:2:0 8 bites** oszlopban. |
-| Amd | GPU-k legalább 6-os verziójú AMD [Unified Video Decoder](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6). |
-| Intel | Skylake és újabb CPU-k |
+| NVIDIA | A [lap alján](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)keresse meg a **NVDEC támogatási mátrixot** . A GPU-nak igen értékűnek kell lennie a **H. 265 4:2:0 8 bites** oszlopban. |
+| AMD | GPU-k az AMD [egyesített videó-dekóderének](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6)legalább 6-os verziójával. |
+| Intel | Skylake és újabb processzorok |
 
-Annak ellenére, hogy a megfelelő H265 kodek lehet telepítve, a biztonsági tulajdonságok a codec DLLs okozhat codec inicializálási hibákat. A [hibaelhárítási útmutató](../resources/troubleshoot.md#h265-codec-not-available) a probléma megoldásának lépéseit ismerteti. A DLL-probléma csak akkor fordulhat elő, ha a szolgáltatást asztali alkalmazásban, például unity ben használja.
+Annak ellenére, hogy a megfelelő H265-kodek is telepítve van, a kodek-DLL-ek biztonsági tulajdonságai a kodek inicializálási hibáit eredményezhetik. A [hibaelhárítási útmutató](../resources/troubleshoot.md#h265-codec-not-available) ismerteti a probléma megoldásának lépéseit. A DLL-probléma csak akkor fordulhat elő, ha egy asztali alkalmazásban használja a szolgáltatást, például az Unity-ban.
 
 ## <a name="devices"></a>Eszközök
 
-Az Azure Remote Rendering jelenleg csak a **HoloLens 2** és a Windows asztali rendszert támogatja céleszközként. Tekintse meg a [platform korlátozások](../reference/limits.md#platform-limitations) szakaszban.
+Az Azure távoli renderelés jelenleg csak a 2. és a Windows asztali **HoloLens** támogatja. Lásd a [platform korlátozásait](../reference/limits.md#platform-limitations) ismertető szakaszt.
 
-Fontos, hogy a legújabb HEVC kodek, az újabb verziók jelentős javulást a késés. Annak ellenőrzése, hogy melyik verzió van telepítve az eszközre:
+Fontos, hogy a legújabb HEVC-kodeket használja, mivel az újabb verziók jelentős mértékben javítják a késést. Az eszközön telepített verzió megkeresése:
 
-1. Indítsa el a **Microsoft Store áruházat**.
+1. Indítsa el a **Microsoft Store**.
 1. Kattintson a jobb felső sarokban található **"..."** gombra.
-1. Válassza **a Letöltések és frissítések lehetőséget.**
-1. Keressen a **HEVC videobővítmények listájában az eszköz gyártójától.**
-1. Győződjön meg arról, hogy a felsorolt kodek legalább **az 1.0.21821.0 verzióval**rendelkezik.
-1. Kattintson a **Frissítések beszedése** gombra, és várja meg a telepítését.
+1. Válassza **a letöltések és frissítések**lehetőséget.
+1. Keresse meg az **eszköz gyártójától származó HEVC-videók**listáját.
+1. Győződjön meg arról, hogy a felsorolt kodek legalább verziójú **1.0.21821.0**rendelkezik.
+1. Kattintson a **frissítések beolvasása** gombra, és várjon, amíg a telepítés megtörténik.
 
 ## <a name="network"></a>Network (Hálózat)
 
-A stabil, alacsony késleltetésű hálózati kapcsolat kritikus fontosságú a jó felhasználói élmény érdekében.
+A jó felhasználói élmény érdekében elengedhetetlen a stabil, kis késleltetésű hálózati kapcsolatok használata.
 
-Lásd a hálózati követelményeket című külön [fejezetet.](../reference/network-requirements.md)
+Tekintse meg a [hálózati követelmények](../reference/network-requirements.md)dedikált fejezetét.
 
-A hálózati problémák elhárításához olvassa el a [Hibaelhárítási útmutatót.](../resources/troubleshoot.md#unstable-holograms)
+Hálózati problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md#unstable-holograms).
 
 ## <a name="software"></a>Szoftverek
 
 A következő szoftvereket kell telepíteni:
 
-* A Visual **Studio 2019** legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* A **Visual Studio 2019** legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * **Windows SDK 10.0.18362.0** [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* **GIT** [(letöltés)](https://git-scm.com/downloads)
-* Nem kötelező: A videostream asztali számítógépen történő megtekintéséhez szükség van a **HEVC Video Extensions** [(Microsoft Store link) elemre.](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)
+* **Git** [(letöltés)](https://git-scm.com/downloads)
+* Nem kötelező: Ha a videó streamet szeretné megtekinteni egy asztali számítógépen lévő kiszolgálóról, szüksége lesz a **HEVC** [(Microsoft Store hivatkozás)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).
 
 ## <a name="unity"></a>Unity
 
-A Unity fejlesztéséhez telepítse a
+Az egységgel való fejlesztéshez telepítse a következőt:
 
 * Unity 2019.3.1 [(letöltés)](https://unity3d.com/get-unity/download)
-* Telepítse ezeket a modulokat unity:
-  * **UWP** – Univerzális Windows-platformbuild-támogatás
-  * **IL2CPP** – Windows buildtámogatás (IL2CPP)
+* Telepítse ezeket a modulokat az Unity-ben:
+  * **UWP** – univerzális Windows-platform-Build támogatása
+  * **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Modell renderelése unityvel](../quickstarts/render-model.md)
+* [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

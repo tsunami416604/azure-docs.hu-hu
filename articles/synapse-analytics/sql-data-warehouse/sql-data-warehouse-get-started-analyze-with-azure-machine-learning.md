@@ -1,6 +1,6 @@
 ---
 title: Adatok elemzése Azure Machine Learning segítségével
-description: Az Azure Machine Learning használatával prediktív gépi tanulási modellt hozhat létre az Azure Synapse-ban tárolt adatok alapján.
+description: A Azure Machine Learning használatával prediktív gépi tanulási modellt hozhat létre az Azure Szinapszisban tárolt adatszolgáltatások alapján.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
 ms.openlocfilehash: 74a6d1aecfc83ea68b9e30453056d231f4bf3e65
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416172"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
@@ -24,12 +24,12 @@ ms.locfileid: "81416172"
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-Ez az oktatóanyag az Azure Machine Learning segítségével hozhat létre egy prediktív gépi tanulási modellt az Azure Synapse-ban tárolt adatok alapján. Egy célzott marketingkampányt hozunk létre az Adventure Works kerékpáráruház számára, annak előre jelzése alapján, hogy egy vásárló valószínűleg megvesz-e egy kerékpárt vagy nem.
+Ez az oktatóanyag a Azure Machine Learning használatával hoz létre egy prediktív gépi tanulási modellt az Azure Szinapszisban tárolt adatszolgáltatások alapján. Egy célzott marketingkampányt hozunk létre az Adventure Works kerékpáráruház számára, annak előre jelzése alapján, hogy egy vásárló valószínűleg megvesz-e egy kerékpárt vagy nem.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -38,16 +38,16 @@ Ez az oktatóanyag az Azure Machine Learning segítségével hozhat létre egy p
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Az AdventureWorksDW mintaadatokkal előre betöltött SQL-készlet. Ennek létrehozásához [lásd: SQL-készlet létrehozása,](create-data-warehouse-portal.md) és válassza ki a mintaadatok betöltése. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti](load-data-from-azure-blob-storage-using-polybase.md).
+* Egy SQL-készlet előre betöltve a AdventureWorksDW-mintaadatok. Ennek kiépítéséhez lásd: [SQL-készlet létrehozása](create-data-warehouse-portal.md) és a mintaadatok betöltésének kiválasztása. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti](load-data-from-azure-blob-storage-using-polybase.md).
 
-## <a name="1-get-the-data"></a>1. Szerezd meg az adatokat
+## <a name="1-get-the-data"></a>1. az adatlekérdezés
 Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
 
 1. Jelentkezzen be az [Azure Machine Learning Studio](https://studio.azureml.net/) szolgáltatásba, majd kattintson a Saját kísérletek elemre.
-2. Kattintson a képernyő bal alsó sarkában a **+ÚJ** gombra, és válassza az **Üres kísérlet**lehetőséget .
+2. Kattintson a képernyő bal alsó sarkában található **+ új** elemre, majd válassza az **üres kísérlet**lehetőséget.
 3. Adjon nevet a Célzott marketing kísérletnek.
-4. Húzza az **Adatok importálása modult** az **Adatbevitel és kimenet** csoportban a modulok ablaktáblájáról a vászonra.
-5. Adja meg az SQL-készlet részleteit a Tulajdonságok ablaktáblán.
+4. Húzza az **adatok importálása** modult a modulok panel **adatbemenet és kimenet** területén a vászonra.
+5. Adja meg az SQL-készlet adatait a Tulajdonságok ablaktáblán.
 6. Adja meg az adatbázishoz a **lekérdezést** az Önt érdeklő adatok olvasásához.
 
 ```sql
@@ -78,10 +78,10 @@ A kísérlet futtatásának sikeres befejezése után kattintson az Olvasó modu
 
 ![Importált adatok megtekintése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png)
 
-## <a name="2-clean-the-data"></a>2. Tisztítsa meg az adatokat
+## <a name="2-clean-the-data"></a>2. az adatgyűjtés megtisztítása
 Az adatok megtisztításához el kell vetni néhány, a modell szempontjából érdektelen oszlopot. Ehhez tegye a következőket:
 
-1. Húzza az **Adatkészlet oszlopban oszlopok kijelölése** modult **az Adatátalakítás < a manipuláció csoportban** a vászonra. Csatlakoztassa ezt a modult az **Adatok importálása** modulhoz.
+1. Húzza a **Select Columns (oszlopok kiválasztása** ) modult az **adatátalakítási < manipuláció** a vászonra elemre. Kapcsolja össze ezt a modult az **adatimportálási** modulhoz.
 2. Kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra az elvetni kívánt oszlopok megadásához.
 
    ![Projektoszlopok](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
@@ -89,38 +89,38 @@ Az adatok megtisztításához el kell vetni néhány, a modell szempontjából �
 
    ![Felesleges oszlopok eltávolítása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png)
 
-## <a name="3-build-the-model"></a>3. Építsd meg a modellt
-80:20 arányban osztjuk fel az adatokat: az adatok 80 % -át a gépi tanulási modell tanításához, 20 %-át a modell teszteléséhez használjuk. A bináris osztályozási probléma "Kétosztályos" algoritmusait fogjuk használni.
+## <a name="3-build-the-model"></a>3. a modell összeállítása
+80:20 arányban osztjuk fel az adatokat: az adatok 80 % -át a gépi tanulási modell tanításához, 20 %-át a modell teszteléséhez használjuk. A bináris besorolási probléma "kétosztályos" algoritmusait fogjuk használni.
 
 1. Húzza a **Felosztás** modult a vászonra.
-2. A tulajdonságok ablaktáblán írja be a 0,8 értéket az első kimeneti adatkészlet sorok töredéke mezőbe.
+2. A Tulajdonságok ablaktáblán adja meg a 0,8 értéket az első kimeneti adatkészletben lévő sorok töredékének megadásához.
 
    ![Adatok felosztása tanítási és tesztelési adatkészletre](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png)
 3. Húzza a **Két osztályú súlyozott döntési fa** modult a vászonra.
-4. Húzza a **Betanítási modell** modult a vászonra, és adja meg a bemeneteket a **kétosztályos súlyozott döntési fához** (ML algoritmus) és a **Split** (adatok az algoritmus betanításához) modulokhoz csatlakoztatva. 
+4. Húzza a **betanítási modell** modult a vászonra, és a bemenetek megadásához csatlakoztassa a **kétosztályos kibővített döntési fához** (ml-algoritmushoz) és a **felosztott** (adatokat az algoritmus betanítása) modulokhoz. 
 
      ![Csatlakozás a Tanítási modell modulhoz](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png)
 5. Majd kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra. Válassza ki a **BikeBuyer** oszlopot előrejelzési oszlopként.
 
    ![Előrejelzési oszlop kiválasztása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png)
 
-## <a name="4-score-the-model"></a>4. Pontszám a modell
+## <a name="4-score-the-model"></a>4. a modell pontozása
 Most teszteljük, hogyan kezeli a modell a tesztadatokat. Az általunk választott algoritmust összehasonlítjuk egy másik algoritmussal, hogy megtudjuk, melyik teljesít jobban.
 
-1. Húzza **a Score Model** modult a vászonra, és csatlakoztassa a Modell **betanításához** és **az adatok felosztása** modulokhoz.
+1. Húzza a **pontszám modell** modult a vászonra, és kapcsolja össze a **modell betanítása** és a **felosztott** adatmodulok használatával.
 
    ![A modell pontozása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png)
 2. Húzza a **két osztályú Bayes pontozó gépet** a kísérlet vászonra. Összehasonlítjuk ennek az algoritmusnak a teljesítményét a Két osztályú súlyozott döntési fa teljesítményével.
 3. Másolja és illessze be a vászonra a Tanítási és Pontszám modelleket.
 4. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.
-5. **Futtassa** le a kísérletet.
+5. **Futtassa** a kísérletet.
 
    ![Kísérlet futtatása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png)
 6. Kattintson a Modell kiértékelése modul alsó részén található kimeneti portra, majd kattintson a Képi megjelenítés opcióra.
 
    ![Kiértékelés eredményeinek képi megjelenítése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png)
 
-A megadott mérőszámok a ROC-görbe, a pontosság-visszahívási diagram és a felemelésegörbe. A metrikák azt mutatják, hogy az első modell jobban teljesített, mint a második. Ha meg szeretné tekinteni, hogy az első modell mit jósolt, kattintson a score modell kimeneti portjára, és kattintson a Visualize gombra.
+A megadott metrikák a ROC görbe, a precíziós visszahívás diagram és a lift görbe. A metrikák azt mutatják, hogy az első modell jobban teljesített, mint a második. Ha szeretné megtekinteni az első modell előrejelzését, kattintson a pontszám modell kimeneti portjára, és kattintson a vizualizáció elemre.
 
 ![Pontszám modell eredményeinek képi megjelenítése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png)
 
@@ -129,7 +129,7 @@ Látni fogja, hogy a tesztelési adatkészletnél megjelent két új oszlop.
 * Pontozott valószínűség: annak valószínűsége, hogy az ügyfél kerékpárvásárló.
 * Pontozott címkék: a modell által elvégzett osztályozás – kerékpárvásárló (1) vagy sem (0). A címkézés valószínűségi küszöbértéke 50 százalékra van beállítva és módosítható.
 
-A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezután használhatja ezt a modellt, hogy előrejelzéseket az új ügyfelek számára, és tegye közzé ezt a modellt webszolgáltatásként, vagy írja az eredményeket vissza az Azure Synapse.
+A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja az új ügyfelek előrejelzéséhez, és közzéteheti a modellt webszolgáltatásként, vagy visszaállíthatja az eredményeket az Azure szinapszis szolgáltatásba.
 
 ## <a name="next-steps"></a>További lépések
 A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/) című részt.

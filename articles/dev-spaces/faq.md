@@ -1,101 +1,101 @@
 ---
-title: Gyakori kérdések az Azure dev spaces-ről
+title: Gyakran ismételt kérdések az Azure dev Spaces-ről
 services: azure-dev-spaces
 ms.date: 01/28/2020
 ms.topic: conceptual
-description: Válaszok az Azure Dev Spaces-sel kapcsolatos gyakori kérdésekre
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s '
+description: Válaszok az Azure dev Spaces használatával kapcsolatos gyakori kérdésekre
+keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414314"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakori kérdések az Azure dev spaces-ről
+# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakran ismételt kérdések az Azure dev Spaces-ről
 
-Ez az Azure Dev Spaces-sel kapcsolatos gyakori kérdéseket címek.
+Ez az Azure dev Spaces-re vonatkozó gyakori kérdéseket tárgyalja.
 
-## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>A Kubernetes mely verziói támogatottak az Azure dev spaces- ben?
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Milyen verziójú Kubernetes támogatottak az Azure dev Spaces szolgáltatásban?
 
-Az Azure Dev Spaces támogatja a [Kubernetes összes jelenleg támogatott általános rendelkezésre állási (GA) verzióját az AKS-ben.][aks-supported-k8s]
+Az Azure dev Spaces a [Kubernetes összes jelenleg támogatott általánosan elérhető verzióját támogatja az AK-ban][aks-supported-k8s].
 
-## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Mely Azure-régiók biztosítják jelenleg az Azure dev spaces-t?
+## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Mely Azure-régiók biztosítanak Azure dev Spaces-helyeket?
 
-Az elérhető régiók teljes listáját a [támogatott régiókban][supported-regions] láthatja.
+Az elérhető régiók teljes listájáért tekintse meg a [támogatott régiók][supported-regions] című témakört.
 
-## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Áttelepíthetem az AKS-fürtömet az Azure fejlesztői terezési területekkel egy másik régióba?
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Áttelepíthetem az AK-fürtöt az Azure dev Spaces használatával egy másik régióba?
 
-Igen, ha az AKS-fürtöt az Azure dev spaces-szel egy másik [támogatott régióba][supported-regions]szeretné áthelyezni, azt javasoljuk, hogy hozzon létre egy új fürtöt a másik régióban, majd telepítse és konfigurálja az Azure Dev Spaces-t, és telepítse az erőforrásokat és alkalmazásokat az új fürtre. Az AKS áttelepítésével kapcsolatos további információkért [lásd: Áttelepítés az Azure Kubernetes szolgáltatásba (AKS).][aks-migration]
+Igen, ha szeretné áthelyezni az AK-fürtöt az Azure dev Spaces-szel egy másik [támogatott régióba][supported-regions], javasoljuk, hogy hozzon létre egy új fürtöt a másik régióban, majd telepítse és konfigurálja az Azure dev Spaces-t, és helyezze üzembe az erőforrásokat és az alkalmazásokat az új fürtön. Az AK áttelepítésével kapcsolatos további információkért lásd: [áttelepítés az Azure Kubernetes Service (ak) szolgáltatásba][aks-migration].
 
-## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Használhatom az Azure dev spaces meglévő Dockerfiles vagy Helm diagramok?
+## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Használhatom az Azure dev Spaces szolgáltatást meglévő Dockerfiles vagy Helm-diagramok segítségével?
 
-Igen, ha a projekt már rendelkezik egy Dockerfile vagy egy Helm-diagrammal, használhatja ezeket a fájlokat az Azure Dev Spaces használatával. Futtatáskor `azds prep`használja a `--chart` paramétert, és adja meg a diagram helyét. Az Azure dev spaces továbbra is létrehoz egy *azds.yaml* és *Dockerfile.develop* fájlt, de nem helyettesíti vagy módosítja a meglévő Dockerfile vagy helm diagram. Előfordulhat, hogy módosítania kell az *azds.yaml* és *Dockerfile.develop* fájlokat, hogy `azds up`minden megfelelően működjön a meglévő alkalmazással futás közben.
+Igen, ha a projekt már rendelkezik egy Docker vagy egy Helm-diagrammal, ezeket a fájlokat használhatja az Azure dev Spaces használatával. A futtatásakor `azds prep`használja a `--chart` paramétert, és adja meg a diagram helyét. Az Azure dev Spaces továbbra is létrehozza a *azds. YAML* és a *Docker. fejlessze* a fájlt, de nem cseréli le és nem módosítja a meglévő Docker vagy a Helm diagramot. Előfordulhat, hogy módosítania kell a *azds. YAML* és a *Docker.* Files fájlt, hogy minden megfelelően működjön a meglévő alkalmazással, ha `azds up`fut.
 
-Ha saját Dockerfile vagy Helm diagramot használ, a következő korlátozások vannak:
-* Ha csak egy Docker-fájlt használ, tartalmaznia kell mindent, amire szüksége van a fejlesztési forgatókönyvek engedélyezéséhez, például az SDK nyelvét nem csak a futásidejű. Ha egy külön Docker-fájlt használ az Azure Dev Spaces, például egy Dockerfile.develop, mindent, amire szükség van a fejlesztési forgatókönyvek engedélyezéséhez szerepelnie kell a Docker-fájlban.
-* A Helm diagramnak támogatnia kell a *value.yaml*.
-* Ha módosítja a belső be- és a be- és bájt, frissítheti a Helm-diagramot az Azure Dev Spaces által biztosított be- ésbe- és bájkezelő megoldás használatához.
-* Ha az Azure [Dev Spaces által biztosított útválasztási lehetőségeket][dev-spaces-routing]szeretné használni, az egyes projektek hez tartozó összes szolgáltatásnak egyetlen Kubernetes névtérbe kell illeszkednie, és egyszerű elnevezéssel kell üzembe helyezni, például *service-a.* A szabványos Helm-diagramokban ez az elnevezési frissítés a *fullnameOverride* tulajdonság értékének megadásával végezhető el.
+Saját Docker vagy Helm-diagram használata esetén a következő korlátozások érvényesek:
+* Ha csak egy Docker használ, tartalmaznia kell mindazt, amire szüksége lehet a fejlesztési forgatókönyvek engedélyezéséhez, például a nyelvi SDK-t, nem csak a futtatókörnyezetet. Ha külön Docker használ az Azure dev Spaces szolgáltatáshoz, például egy Docker. fejlesszen, a fejlesztési forgatókönyvek engedélyezéséhez szükséges mindennek szerepelnie kell a Docker.
+* A Helm-diagramnak támogatnia kell a vagy a teljes képcímkét a Values *. YAML*értékének átadásával.
+* Ha bármit módosít a bejövő forgalomban, akkor a Helm diagramot is frissítheti az Azure dev Spaces által biztosított bejövő megoldás használatára.
+* Ha az [Azure dev Spaces által biztosított útválasztási funkciókat][dev-spaces-routing]szeretné használni, az egyes projektekhez tartozó összes szolgáltatásnak egyetlen Kubernetes-névtérben kell lennie, és egyszerű elnevezéssel kell rendelkeznie, például a *Service-a szolgáltatáshoz*. A standard Helm-diagramok esetében ez az elnevezési frissítés a *fullnameOverride* tulajdonság értékének megadásával végezhető el.
 
-Ha össze szeretné hasonlítani saját Docker-fájl- vagy Helm-diagramját egy azure dev spaces-szel működő meglévő verzióval, tekintse át a rövid útmutatóban létrehozott [fájlokat.][quickstart-cli]
+Ha össze szeretné hasonlítani a saját Docker vagy Helm-diagramját az Azure dev Spaces szolgáltatással működő meglévő verzióval, tekintse [át a gyors][quickstart-cli]útmutatóban létrehozott fájlokat.
 
 
-## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Módosíthatom az Azure Dev Spaces által létrehozott fájlokat?
+## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Módosíthatom az Azure dev Spaces által generált fájlokat?
 
-Igen, módosíthatja az Azure Dev Spaces által létrehozott *azds.yaml* fájlt, Dockerfile és Helm diagramot [a projekt előkészítésekor.][dev-spaces-prep] A fájlok módosítása megváltoztatja a projekt felépítését és futtatását.
+Igen, módosíthatja az [Azure dev Spaces által generált][dev-spaces-prep] *azds. YAML* fájlt, Docker és Helm diagramot a projekt előkészítésekor. A fájlok módosítása megváltoztatja a projekt felépítésének és futtatásának módját.
 
-## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Használhatom az Azure Dev Spaces-t nyilvános IP-cím nélkül?
+## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Használhatom nyilvános IP-cím nélkül az Azure dev Spaces szolgáltatást?
 
-Nem, nyilvános IP-cím nélkül nem építheti ki az Azure dev spaces-t egy AKS-fürtön. Az Azure Dev Spaces nyilvános IP-címre [van szükség az útválasztáshoz.][dev-spaces-routing]
+Nem, nyilvános IP-cím nélkül nem lehet Azure dev-helyeket kiépíteni egy AK-fürtön. Az [Azure dev Spaces for Routing][dev-spaces-routing]szolgáltatáshoz nyilvános IP-cím szükséges.
 
-## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Használhatom a saját be- ésémet az Azure dev spaces-szel?
+## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Használhatom a saját beáramlást az Azure dev Spaces szolgáltatással?
 
-Igen, konfigurálhatja a saját be- éséi a be- ésaz Azure Dev Spaces létrehozása mellett. Használhatja például [a traefik][ingress-traefik] vagy [az NGINX .][ingress-nginx]
+Igen, a bejövő Azure dev Spaces létrehozásával párhuzamosan is konfigurálhatja a belépőket. Használhatja például a [traefik][ingress-traefik] vagy az [NGINX][ingress-nginx]-et.
 
-## <a name="can-i-use-https-with-azure-dev-spaces"></a>Használhatom a HTTPS-t az Azure dev spaces-szel?
+## <a name="can-i-use-https-with-azure-dev-spaces"></a>Használhatom a HTTPS-t az Azure dev Spaces használatával?
 
-Igen, beállíthatja saját bejövő kapcsolatát HTTPS-lel [a traefik][ingress-https-traefik] vagy [az NGINX][ingress-https-nginx]használatával.
+Igen, a [traefik][ingress-https-traefik] vagy [NGINX][ingress-https-nginx]használatával konfigurálhatja saját bejövő adatait HTTPS-kapcsolaton keresztül.
 
-## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Használhatom az Azure Dev Spaces egy fürtön, amely használja a CNI helyett kubenet? 
+## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Használhatom az Azure dev Spaces szolgáltatást olyan fürtön, amely nem kubenet, hanem CNI használ? 
 
-Igen, használhatja az Azure Dev Spaces egy AKS-fürt, amely cni hálózati használatával. Használhatja például az Azure Dev Spaces-t egy Meglévő [Windows-tárolóval][windows-containers]rendelkező AKS-fürtön, amely cni-t használ a hálózatkezeléshez. A CNI azure dev spaces-alapú hálózatba való használatáról itt olvashat [bővebben.](configure-networking.md#using-azure-cni)
+Igen, használhatja az Azure dev Spaces szolgáltatást egy olyan AK-fürtön, amely CNI használ a hálózatkezeléshez. Használhatja például az Azure dev Spaces szolgáltatást egy AK-fürtön [meglévő Windows-tárolókkal][windows-containers], amelyek hálózati CNI használnak. A CNI és az Azure dev Spaces közötti hálózatkezeléssel kapcsolatos további információk [itt](configure-networking.md#using-azure-cni)érhetők el.
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Használhatom az Azure Dev Spaces-t Windows-tárolókkal?
+## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Használhatom az Azure dev Spaces szolgáltatást Windows-tárolókkal?
 
-Jelenleg az Azure Dev Spaces célja, hogy csak Linux podokon és csomópontokon fusson, de az Azure Dev Spaces futtatható egy Meglévő [Windows-tárolókkal][windows-containers]rendelkező AKS-fürtön.
+Jelenleg az Azure dev Spaces kizárólag Linux-hüvelyeken és-csomópontokon fut, de az Azure fejlesztői tárhelyeit egy AK-fürtön futtathatja [meglévő Windows-tárolók][windows-containers]használatával.
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Használhatom az Azure dev spaces-t aKS-fürtökön, ha az API-kiszolgáló engedélyezett IP-címtartományai engedélyezve vannak?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Használhatok Azure dev Spaces-et az AK-fürtökön, ha engedélyezve vannak az API Server által engedélyezett IP-címtartományok?
 
-Igen, használhatja az Azure Dev Spaces az AKS-fürtök [API-kiszolgáló engedélyezett IP-címtartományok][aks-auth-range] engedélyezve van. Az Azure Dev Spaces használatával engedélyezett API-kiszolgáló által engedélyezett IP-címtartományokkal rendelkező AKS-fürtök használatáról itt olvashat [bővebben.](configure-networking.md#using-api-server-authorized-ip-ranges)
+Igen, az Azure dev-szóközöket az AK-fürtökön használhatja az [API-kiszolgáló által engedélyezett IP-címtartományok][aks-auth-range] engedélyezésével. További információ az Azure dev Spaces szolgáltatással rendelkező, az API Server által engedélyezett IP-címtartományok használatával rendelkező AK-fürtök használatáról [itt](configure-networking.md#using-api-server-authorized-ip-ranges)található.
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Használhatom az Azure dev spaces-t korlátozott kimenő forgalommal rendelkező AKS-fürtökön a fürtcsomópontok számára?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Használhatom az Azure dev Spaces-t az AK-fürtökön a fürtcsomópontok korlátozott kimenő forgalmával?
 
-Igen, használhatja az Azure Dev Spaces aKS-fürtök [korlátozott kimenő forgalom fürtcsomópontok][aks-restrict-egress-traffic] engedélyezve, ha a megfelelő fqdns engedélyezve lett. Az Azure Dev Spaces szolgáltatással engedélyezett fürtcsomópontok korlátozott kimenő forgalommal rendelkező AKS-fürtök használatáról itt olvashat [bővebben.](configure-networking.md#ingress-and-egress-network-traffic-requirements)
+Igen, a megfelelő teljes tartománynevek engedélyezése után használhatja az Azure dev-szóközöket az AK-fürtökön a [korlátozott kimenő forgalommal rendelkező fürtcsomópontok esetében][aks-restrict-egress-traffic] . [Itt](configure-networking.md#ingress-and-egress-network-traffic-requirements)talál további információt arról, hogyan használhatók a korlátozott kimenő forgalommal rendelkező AK-fürtök az Azure dev Spaces szolgáltatással engedélyezett fürtcsomópontok esetében.
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Használhatom az Azure dev spaces-t RBAC-kompatibilis AKS-fürtökön?
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Használhatom az Azure dev Spaces szolgáltatást a RBAC-kompatibilis AK-fürtökön?
 
-Igen, használhatja az Azure Dev Spaces-t az AKS-fürtökön, rbac engedélyezve vagy anélkül.
+Igen, az Azure dev-szóközöket RBAC-alapú vagy anélkül is használhatja az AK-fürtökön.
 
-## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Mi történik, ha engedélyezem a projekthez való be- és bevitelt a Visual Studióban?
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Mi történik, ha engedélyezem a bejövő forgalmat a Visual Studióban?
 
-Ha a Visual Studio segítségével készíti elő a projektet, lehetősége van engedélyezni a szolgáltatás betöltését. A be- ésfürt engedélyezése nyilvános végpontot hoz létre a szolgáltatás eléréséhez, amikor az AKS-fürtön fut, ami nem kötelező. Ha nem engedélyezi a be- és énekbben, a szolgáltatás csak az AKS-fürtből érhető el.
+Ha a Visual studiót használja a projekt előkészítéséhez, lehetősége van engedélyezni a bejövő forgalmat a szolgáltatásban. A bejövő forgalom engedélyezése nyilvános végpontot hoz létre a szolgáltatás eléréséhez, ha az AK-fürtön fut, ami nem kötelező. Ha nem engedélyezi a bejövő forgalmat, a szolgáltatás csak az AK-fürtön belül érhető el.
 
-## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Használhatom pod felügyelt identitások az Azure dev spaces?
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Használhatok Pod felügyelt identitásokat az Azure dev Spaces szolgáltatásban?
 
-Igen, pod [felügyelt identitások][aks-pod-managed-id] az AKS-fürtök en az Azure Dev Spaces engedélyezve van, de vannak [további konfigurációs lépések,][dev-spaces-pod-managed-id-steps] miután engedélyezte az Azure Dev Spaces a fürtpod által felügyelt identitások. Ha telepítve van a pod által felügyelt identitások, és szeretné eltávolítani, további részleteket az [eltávolítási megjegyzésekben][aks-pod-managed-id-uninstall]talál.
+Igen, a pod által [felügyelt identitások][aks-pod-managed-id] használhatók az AK-fürtökön az Azure dev Spaces használatával, de [további konfigurációs lépések][dev-spaces-pod-managed-id-steps] is szükségesek, miután engedélyezte az Azure dev Spaces szolgáltatást a fürtön a pod által felügyelt identitásokkal. Ha telepítette a pod által felügyelt identitásokat, és el szeretné távolítani, további részleteket az [eltávolítási megjegyzések][aks-pod-managed-id-uninstall]között találhat.
 
-## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Használhatom az Azure Dev Spaces-t több mikroszolgáltatással egy alkalmazásban?
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Használhatok az Azure dev Spaces szolgáltatást több szolgáltatással is egy alkalmazásban?
 
-Igen, használhatja az Azure Dev Spaces egy alkalmazás több mikroszolgáltatások, de elő kell készítenie, és az egyes mikroszolgáltatások a gyökér. Az Azure Dev Spaces CLI, az Azure Dev Spaces VS Code bővítmény és a Visual Studio Azure Development számítási feladatok elvárják, hogy az *azds.yaml* fájl legyen a mikroszolgáltatás gyökere a futtatás és hibakeresés érdekében. Tekintse meg a [Bike Sharing mintaalkalmazás][bike-sharing] egy példa több mikroszolgáltatások egyetlen alkalmazásban.
+Igen, használhatja az Azure dev Spaces szolgáltatást egy olyan alkalmazásban, amelyben több szolgáltatás is található, de az egyes szolgáltatásait a gyökérkönyvtárában kell előkészítenie és futtatnia. Az Azure dev Spaces CLI, az Azure dev Spaces VS Code bővítmény és a Visual Studio Azure-fejlesztési számítási feladat elvárja, hogy a *azds. YAML* fájl a szolgáltatás gyökerében legyen a Futtatás és a hibakeresés érdekében. Tekintse meg a [Bike Sharing minta alkalmazást][bike-sharing] , amely egy adott alkalmazás több szolgáltatását is tartalmazza.
 
-A Visual Studio-kódban lehetőség van [külön projektek megnyitására egyetlen munkaterületen,][vs-code-multi-root-workspaces] és az Azure Dev Spaces-en keresztül külön-külön hibakeresésük. Minden projektnek önállónak kell lennie, és elő kell készítenie az Azure Dev Spaces számára.
+A Visual Studio Code-ban [egy különálló projekt is megnyitható egyetlen munkaterületen][vs-code-multi-root-workspaces] , és az Azure dev Spaces használatával külön is feloldhatók. Minden projektnek önállónak kell lennie, és fel kell készülnie az Azure dev Spaces szolgáltatásba.
 
-A Visual Studio-ban konfigurálható a .NET Core megoldások az Azure Dev Spaces-en keresztüli hibakereséshez.
+A Visual Studióban lehetősége van .NET Core-megoldások konfigurálására az Azure dev Spaces használatával.
 
-## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Használhatom az Azure Dev Spaces szolgáltatáshálóval?
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Használhatom az Azure dev Spaces szolgáltatást a Service Mesh segítségével?
 
-Jelenleg nem használhatja az Azure Dev Spaces szolgáltatást nyújtó szemekkel, például [Istio][istio] vagy [Linkerd.][linkerd] Futtathatja az Azure Dev Spaces és a szolgáltatásháló ugyanazon az AKS-fürtön, de nem lehet mind az Azure Dev Spaces és a szolgáltatás háló javunkra ugyanabban a névtérben.
+Jelenleg nem használhatja az Azure dev Spaces szolgáltatást olyan rácsvonalak használatával, mint például a [Istio][istio] vagy a [Linkerd][linkerd]. Az Azure dev Spaces és a Service Mesh ugyanazon az AK-fürtön is futtatható, de az Azure dev Spaces és a Service Mesh szolgáltatás nem használható ugyanabban a névtérben.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

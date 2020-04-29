@@ -1,6 +1,6 @@
 ---
-title: Folyamatfolyamat-tevékenység végrehajtása az Azure Data Factoryban
-description: Megtudhatja, hogyan használhatja a folyamatfuttatási tevékenység végrehajtása egy Data Factory folyamat meghívására egy másik Data Factory-folyamatból.
+title: Folyamat végrehajtása tevékenység Azure Data Factory
+description: Ebből a témakörből megtudhatja, hogy a folyamat végrehajtása tevékenység használatával hogyan hívhat meg egy Data Factory folyamatot egy másik Data Factory folyamatból.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415283"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamattevékenység végrehajtása az Azure Data Factoryban
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamat végrehajtása tevékenység Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -66,17 +66,17 @@ A Folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyam
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A végrehajtási folyamattevékenység neve. | Sztring | Igen
-type | A következőt kell beállítani: **ExecutePipeline**. | Sztring | Igen
-Csővezeték | A folyamat hivatkozása a függő folyamatra, amelyet ez a folyamat meghívja. A folyamat referenciaobjektumának két tulajdonsága van: **referenceName** és **type**. A referenceName tulajdonság a referencia-folyamat nevét adja meg. A típus tulajdonságot PipelineReference (PipelineReference) tulajdonságra kell állítani. | PipelineReference | Igen
-paraméterek | A meghívott folyamatnak átadandó paraméterek | JSON-objektum, amely paraméterneveket rendel argumentumértékekhez | Nem
-waitOnCompletion | Azt határozza meg, hogy a tevékenység végrehajtása megvárja-e a függő folyamat végrehajtásának befejezését. Az alapértelmezett érték a false (hamis). | Logikai | Nem
+név | A folyamat végrehajtása tevékenység neve. | Sztring | Igen
+type | A következő értékre kell állítani: **ExecutePipeline**. | Sztring | Igen
+folyamat | A folyamat által meghívott függő folyamathoz tartozó folyamatra mutató hivatkozás. A folyamat hivatkozási objektumának két tulajdonsága van: **hivatkozásnév** és **Type**. A hivatkozásnév tulajdonság a hivatkozási folyamat nevét adja meg. A Type tulajdonságot PipelineReference értékre kell beállítani. | PipelineReference | Igen
+paraméterek | A meghívott folyamatnak átadandó paraméterek | Egy JSON-objektum, amely a paraméterek nevét az argumentum értékére képezi. | Nem
+waitOnCompletion | Meghatározza, hogy a tevékenység-végrehajtás megvárja-e a függő folyamat végrehajtásának befejeződését. Az alapértelmezett érték a false (hamis). | Logikai | Nem
 
 ## <a name="sample"></a>Sample
-Ebben a forgatókönyvben két folyamat található:
+Ennek a forgatókönyvnek két folyamata van:
 
-- **Fő feldolgozási folyamat** – Ez a folyamat egy végrehajtási folyamat tevékenység, amely meghívja a meghívott folyamat. A fő folyamat két `masterSourceBlobContainer`paramétert vesz igénybe: . `masterSinkBlobContainer`.
-- **Meghívott folyamat** – Ez a folyamat rendelkezik egy másolási tevékenység, amely adatokat másol egy Azure Blob-forrásból az Azure Blob-fogadó. A meghívott folyamat két paramétert vesz igénybe: `sourceBlobContainer`. . `sinkBlobContainer`
+- **Főfolyamat** – ez a folyamat egyetlen végrehajtási folyamattal rendelkezik, amely meghívja a meghívott folyamatot. A fő folyamat két paramétert vesz `masterSourceBlobContainer`igénybe:, `masterSinkBlobContainer`.
+- **Meghívott folyamat** – ez a folyamat egy másolási tevékenységgel rendelkezik, amely egy Azure Blob-forrásból származó adatok másolását végzi az Azure Blob fogadóba. A meghívott folyamat két paramétert vesz `sourceBlobContainer`igénybe:, `sinkBlobContainer`.
 
 ### <a name="master-pipeline-definition"></a>Fő folyamat definíciója
 
@@ -222,7 +222,7 @@ Ebben a forgatókönyvben két folyamat található:
 
 ### <a name="running-the-pipeline"></a>A folyamat futtatása
 
-Ebben a példában a fő folyamat futtatásához a következő értékek et adják át a masterSourceBlobContainer és a masterSinkBlobContainer paramétereknek: 
+A fő folyamat ebben a példában való futtatásához a masterSourceBlobContainer és a masterSinkBlobContainer paraméterek a következő értékeket adja át: 
 
 ```json
 {
@@ -231,7 +231,7 @@ Ebben a példában a fő folyamat futtatásához a következő értékek et adj�
 }
 ```
 
-A fő folyamat továbbítja ezeket az értékeket a meghívott folyamatnak, ahogy az a következő példában látható: 
+A fő folyamat továbbítja ezeket az értékeket a meghívott folyamatnak az alábbi példában látható módon: 
 
 ```json
 {
@@ -257,7 +257,7 @@ A fő folyamat továbbítja ezeket az értékeket a meghívott folyamatnak, ahog
 
 ```
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevékenységeket: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)

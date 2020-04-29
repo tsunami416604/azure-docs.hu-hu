@@ -1,6 +1,6 @@
 ---
 title: Adatfolyam-parancsfájl leképezése
-description: A Data Factory adatfolyam-parancsfájl-háttér nyelvének áttekintése
+description: A Data Factory adatáramlási parancsfájl-kódjának áttekintése – a nyelv mögött
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413450"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatfolyam-parancsfájl (DFS) a kódolási nyelvhez hasonló mögöttes metaadat, amely a leképezési adatfolyamban szereplő átalakítások végrehajtására szolgál. Minden átalakítást olyan tulajdonságok sorozata képvisel, amelyek biztosítják a feladat megfelelő futtatásához szükséges információkat. A szkript látható és szerkeszthető az ADF-ből, ha a böngésző felhasználói felületének felső menüszalagján található "script" gombra kattint.
+Az adatáramlási parancsfájl (DFS) a kódolási nyelvhez hasonló, alapul szolgáló metaadatok, amely a leképezési adatfolyamban található átalakítások végrehajtásához használható. Minden átalakítást olyan tulajdonságok alkotnak, amelyek biztosítják a feladatok megfelelő futtatásához szükséges információkat. A szkript látható és szerkeszthető az ADF-ből a böngésző felhasználói felületének felső menüszalagján a "script" (szkript) gombra kattintva.
 
 ![Parancsfájl gomb](media/data-flow/scriptbutton.png "Parancsfájl gomb")
 
-Például `allowSchemaDrift: true,` egy forrás átalakítás a szolgáltatás azt mondja, hogy a forrás adatkészlet összes oszlopot az adatfolyamban akkor is, ha azok nem szerepelnek a séma vetülete.
+A forrás- `allowSchemaDrift: true,` átalakítás esetében például azt jelzi, hogy a szolgáltatás a forrás adatkészletből származó összes oszlopot tartalmazza, még akkor is, ha azokat nem tartalmazza a séma kivetítése.
 
 ## <a name="use-cases"></a>Használati esetek
-A DFS-t a felhasználói felület automatikusan előállítja. A Parancsfájl gombra kattintva megtekintheti és testreszabhatja a parancsfájlt. Parancsfájlokat is létrehozhat az ADF felhasználói felületén kívül, majd adja át a PowerShell-parancsmagba. Összetett adatfolyamok hibakeresésekor egyszerűbben szállhat meg a parancsfájl-kód mögött, ahelyett, hogy a folyamatok felhasználói felületének grafikonábrázolását utána lenne.
+Az elosztott fájlrendszert automatikusan a felhasználói felület állítja elő. A parancsfájl gombra kattintva megtekintheti és testreszabhatja a parancsfájlt. Parancsfájlokat az ADF felhasználói felületén kívül is létrehozhat, majd átadhatja a PowerShell-parancsmagnak. Az összetett adatfolyamatok hibakeresése során könnyebben áttekintheti a szkript kódját – a folyamatok felhasználói felületi diagramjának megjelenítése helyett.
 
-Íme néhány példa használati esetekre:
-- Programozott módon számos, meglehetősen hasonló adatáramlást hoz létre, azaz "kiirtja" az adatáramlásokat.
-- A felhasználói felületen nehezen kezelhető vagy érvényesítési problémákat okozó összetett kifejezések.
-- Hibakeresés és a végrehajtás során visszaadott különböző hibák jobb megértése.
+Íme néhány példa a használati esetekre:
+- A programozott módon számos olyan adatfolyamatot hoz létre, amelyek meglehetősen hasonlóak, például "kibélyegzés" típusú adatforgalom.
+- A felhasználói felületen nehezen kezelhető összetett kifejezések, amelyek érvényesítési problémákat eredményeznek.
+- Hibakeresés és a végrehajtás során visszaadott különféle hibák jobb megértése.
 
-Amikor létrehoz egy adatfolyam-parancsfájlt a PowerShell vagy egy API használatával, a formázott szöveget egyetlen sorba kell összecsuknia. A füleket és az új sorokat escape karakterként is megtarthatja. De a szöveget úgy kell formázni, hogy elférjen egy JSON tulajdonságban. Van egy gomb a script szerkesztő UI alján, amely formázza a forgatókönyvet, mint egy sort az Ön számára.
+Ha egy PowerShell-lel vagy API-val használandó adatfolyam-szkriptet hoz létre, a formázott szöveget egyetlen sorba kell összecsukni. A lapokat és a sortöréseket Escape-karakterként is megtarthatja. A szöveget azonban úgy kell formázni, hogy az illeszkedjen a JSON-tulajdonsághoz. A parancsfájl-szerkesztő felhasználói felületének alján egy gomb jelenik meg, amely a parancsfájlt egyetlen sorba formázza.
 
 ![a képernyő jobb oldalán található Másolás gombot](media/data-flow/copybutton.png "a képernyő jobb oldalán található Másolás gombot")
 
-## <a name="how-to-add-transforms"></a>Hogyan adjunk átalakítások
-Az átalakítások hozzáadása három alapvető lépést igényel: az alapvető átalakítási adatok hozzáadását, a bemeneti adatfolyam átirányítását, majd a kimeneti adatfolyam átirányítását. Ez látható a legegyszerűbb egy példában.
-Tegyük fel, hogy egy egyszerű forrással kezdjük az adatáramlás takarásához, mint például:
+## <a name="how-to-add-transforms"></a>Átalakítások hozzáadása
+Az átalakítások hozzáadásához három alapvető lépés szükséges: az alapvető átalakítási adatok hozzáadása, a bemeneti adatfolyam átirányítása, majd a kimeneti adatfolyam átirányítása. Ez a legkönnyebb példaként látható.
+Tegyük fel, hogy egy egyszerű forrással kezdi el az adatforgalom elfogadását, például az alábbihoz hasonló módon:
 
 ```
 source(output(
@@ -52,12 +52,12 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Ha úgy döntünk, hogy adjunk egy származtatás átalakítás, először meg kell teremteni a `upperCaseTitle`mag transzformációs szöveget, amely egy egyszerű kifejezés, hogy adjunk egy új nagybetűs oszlop neve:
+Ha úgy dönt, hogy hozzáad egy származtatott átalakítást, először létre kell hoznia az alaptranszformáció szövegét, amely egy egyszerű kifejezéssel adja hozzá az `upperCaseTitle`új nagybetűs oszlopot:
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
 
-Ezután fogjuk a meglévő DFS-t, és hozzáadjuk az átalakítást:
+Ezután megtesszük a meglévő DFS-t, és hozzáadjuk a transzformációt:
 ```
 source(output(
         movieId as string,
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-És most átirányítjuk a bejövő adatfolyamot, hogy azonosítjuk, melyik átalakulás `source1`után akarjuk az új átalakulást (ebben az esetben), és átmásoljuk az adatfolyam nevét az új átalakulásba:
+És most átirányítjuk a bejövő adatfolyamot úgy, hogy megismerjük, hogy melyik átalakítást szeretnénk az új átalakításra `source1`kitérni (ebben az esetben), és a stream nevét az új átalakításra másoljuk:
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Végül azonosítjuk az átalakulást, amelyet az új átalakulás után szeretnénk `sink1`eljönni, és a bemeneti adatfolyamot (ebben az esetben) az új átalakulás unk kimeneti adatfolyamának nevével helyettesítjük:
+Végül azonosítjuk az új átalakítást követően szeretnénk átalakulást, és lecseréljük a bemeneti streamet (ebben az `sink1`esetben) az új átalakítás kimeneti stream-nevével:
 ```
 source(output(
         movieId as string,
@@ -99,17 +99,17 @@ deriveTransformationName sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="dfs-fundamentals"></a>Dfs alapjai
-A DFS egy sor összekapcsolt átalakításból áll, beleértve a forrásokat, a fogadókat és számos más, amely új oszlopokat, szűrési adatokat, illesztési adatokat és még sok mást adhat hozzá. Általában a parancsfájl egy vagy több forrással kezdődik, amelyet számos átalakítás követ, és egy vagy több fogadóval végződik.
+## <a name="dfs-fundamentals"></a>Elosztott fájlrendszer alapjai
+Az elosztott fájlrendszer a csatlakoztatott átalakítások sorozatából áll, beleértve a forrásokat, a mosogatókat és számos más, az új oszlopokat, az adatszűrést, az adategyesítést és sok mást. Általában a parancsfájl egy vagy több forrással kezdődik, amelyet számos átalakítás követ, és egy vagy több mosogatóval végződik.
 
-Források mind ugyanaz az alapvető konstrukció:
+A források mindegyike ugyanazzal az alapszintű szerkezettel rendelkezik:
 ```
 source(
   source properties
 ) ~> source_name
 ```
 
-Például, egy egyszerű forrás három oszlop (movieId, cím, műfajok) lenne:
+Például egy egyszerű forrás három oszloppal (movieId, title, műfaj) a következő lenne:
 ```
 source(output(
         movieId as string,
@@ -120,21 +120,21 @@ source(output(
     validateSchema: false) ~> source1
 ```
 
-A forrásokon kívüli összes átalakítás alapszerkezete megegyezik:
+A forrásokon kívül minden átalakításnak ugyanaz az alapszintű szerkezete:
 ```
 name_of_incoming_stream transformation_type(
   properties
 ) ~> new_stream_name
 ```
 
-Például egy egyszerű származtatási transzformáció, amely egy oszlopot (címet) vesz fel, és nagybetűs verzióval felülírja, a következő:
+Például egy egyszerű származtatott átalakítás, amely egy oszlopot (címet) vesz fel, és felülírja egy nagybetűs változattal, a következő:
 ```
 source1 derive(
   title = upper(title)
 ) ~> derive1
 ```
 
-És a mosogató nem séma egyszerűen:
+És egy sémát nem tartalmazó fogadó egyszerűen:
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
@@ -142,20 +142,20 @@ derive1 sink(allowSchemaDrift: true,
 
 ## <a name="script-snippets"></a>Parancsfájl-kódrészletek
 
-A parancsfájlkódrészletek az adatfolyam-parancsfájl megosztható kódjai, amelyek segítségével megoszthatja az adatfolyamokat. Ez az alábbi videó aparancsfájlok kódrészletek használatáról és az adatfolyam-parancsfájl használatával másolja és illessze be a parancsfájl egyes részeit az adatfolyam-grafikonok mögé:
+A parancsfájl-kódrészletek adatáramlási parancsfájlok megosztható kódja, amelyet az adatfolyamatok közötti megosztáshoz használhat. Ebből a videóból megtudhatja, hogyan használhatók a szkriptek, és hogyan használhatja az adatfolyam-parancsfájlokat az adatáramlási diagramok mögötti szkriptek részeinek másolásához és beillesztéséhez:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
 
 
 ### <a name="aggregated-summary-stats"></a>Összesített összefoglaló statisztika
-Adjon hozzá egy összesített átalakítást az "SummaryStats" nevű adatfolyamhoz, majd illessze be az alábbi kódot a parancsfájl összesített függvényéhez, és cserélje le a meglévő SummaryStats-ot. Ez általános mintát biztosít az adatprofil-összefoglaló statisztikákhoz.
+Vegyen fel egy összesített átalakítást a "SummaryStats" nevű adatfolyamba, majd illessze be az alábbi kódot a parancsfájlban található összesítő függvénybe, és cserélje le a meglévő SummaryStats. Ez általános mintát biztosít az adatprofilok összegző statisztikáinak létrehozásához.
 
 ```
 aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
         each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
         each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
 ```
-Az alábbi mintával megszámolhatja az adatok egyedi és különálló sorainak számát is. Az alábbi példa beilleszthető egy adatfolyamba a ValueDistAgg nevű összesített transzformációval. Ez a példa a "title" nevű oszlopot használja. Ügyeljen arra, hogy cserélje le a "cím" a karakterlánc oszlop az adatokban, hogy szeretné használni, hogy az értékszám.
+Az alábbi minta használatával megszámolhatja az egyedi és a különböző sorok számát is az adataiban. Az alábbi példa beilleszthető egy olyan adatfolyamatba, amelyben a ValueDistAgg nevű összesített átalakítás szerepel. Ez a példa egy "title" nevű oszlopot használ. Ügyeljen arra, hogy a "title" értéket cserélje le az adatértékek megszerzéséhez használni kívánt karakterlánc-oszlopra.
 
 ```
 aggregate(groupBy(title),
@@ -164,16 +164,16 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
         numofdistinct = countDistinct(title)) ~> UniqDist
 ```
 
-### <a name="include-all-columns-in-an-aggregate"></a>Az összes oszlop felvétele összesítésbe
-Ez egy általános összesítő minta, amely bemutatja, hogyan őrizheti meg a kimeneti metaadatok fennmaradó oszlopait az összesítések létrehozásakor. Ebben az esetben a ```first()``` funkciót használjuk, hogy kiválasszuk az első értéket minden oszlopban, amelynek neve nem "film". Ehhez hozzon létre egy DistinctRows nevű összesítő átalakítást, majd illessze be ezt a parancsfájlba a meglévő DistinctRows összesítő parancsfájl fölé.
+### <a name="include-all-columns-in-an-aggregate"></a>Az összes oszlop belefoglalása egy összesítésbe
+Ez egy általános összesített minta, amely bemutatja, hogyan tarthatja meg a többi oszlopot a kimeneti metaadatokban az összesítések létrehozásakor. Ebben az esetben a ```first()``` függvény használatával választjuk ki az első értéket minden olyan oszlopban, amelynek a neve nem "Movie". Ennek használatához hozzon létre egy DistinctRows nevű összesített átalakítást, majd illessze be ezt a szkriptbe a meglévő DistinctRows összesített parancsfájl fölé.
 
 ```
 aggregate(groupBy(movie),
     each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
 ```
 
-### <a name="create-row-hash-fingerprint"></a>Sorkivonat-ujjlenyomat létrehozása 
-Ezzel a kóddal hozhat létre egy új ```DWhash``` származtatott oszlopot, amely három oszlopból álló kivonatot ```sha1``` hoz létre.
+### <a name="create-row-hash-fingerprint"></a>Sor kivonatoló ujjlenyomatának létrehozása 
+Használja ezt a kódot az adatfolyam-parancsfájlban egy új származtatott oszlop létrehozásához ```DWhash``` , amely három ```sha1``` oszlop kivonatát állítja elő.
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -181,4 +181,4 @@ derive(DWhash = sha1(Name,ProductNumber,Color))
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatfolyamok felfedezése az [adatfolyamok áttekintése című cikkvel](concepts-data-flow-overview.md) kezdve
+Az adatfolyamatok megismerése az [adatfolyamatok áttekintése című cikkben](concepts-data-flow-overview.md) leírtak szerint

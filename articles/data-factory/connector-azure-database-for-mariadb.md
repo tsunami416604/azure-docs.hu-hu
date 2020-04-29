@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a MariaDB Azure-adatbázisából
-description: Megtudhatja, hogyan másolhatja az adatokat az Azure Database for MariaDB támogatott fogadó adattárak egy Azure Data Factory-folyamat másolási tevékenység használatával.
+title: Adatok másolása Azure Database for MariaDBról
+description: Megtudhatja, hogyan másolhat adatok Azure Database for MariaDBból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,46 +12,46 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c433fc5d919a57476097257cac1b7176a9da598d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410690"
 ---
-# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Adatok másolása a MariaDB Azure Database szolgáltatásából az Azure Data Factory használatával 
+# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Adatok másolása Azure Database for MariaDB használatával Azure Data Factory 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása az Azure Database for MariaDB. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure Database for MariaDBból való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az Azure Database for MariaDB-összekötő a következő tevékenységek esetén támogatott:
 
-- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keress tevékenységet](control-flow-lookup-activity.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
  
-Az Azure Database for MariaDB-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
+Azure Database for MariaDB adatait átmásolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Az Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie egyetlen illesztőprogramot is ezzel az összekötővel.
+A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok az Azure Database for MariaDB-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
+A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek Data Factory Azure Database for MariaDB-összekötőhöz tartozó entitások definiálásához használatosak.
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok támogatottak az Azure Database for MariaDB kapcsolt szolgáltatáshoz:
+Azure Database for MariaDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A típustulajdonságot a következőre kell állítani: **AzureMariaDB** | Igen |
-| connectionString (kapcsolati karakterlánc) | A MariaDB Azure Database szolgáltatáshoz való csatlakozáshoz való kapcsolódási karakterlánc. Az Azure Portalon –> az Azure Database for MariaDB -> Connection strings -> ADO.NET egy. <br/> Az Azure Key Vaultban is felhelyezhet idúra, és kihúzhatja a `pwd` konfigurációt a kapcsolati karakterláncból. További részleteket az [Azure Key Vault-cikkben](store-credentials-in-key-vault.md) a következő minták és áruházi hitelesítő adatok című cikkben talál. | Igen |
-| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
+| type | A Type tulajdonságot a következőre kell beállítani: **AzureMariaDB** | Igen |
+| connectionString | Azure Database for MariaDBhoz való kapcsolódáshoz használandó kapcsolati karakterlánc. Megtalálhatja a Azure Portal-> az Azure Database for MariaDB-> kapcsolatok karakterláncait – > ADO.NET egyet. <br/> A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -69,7 +69,7 @@ A következő tulajdonságok támogatottak az Azure Database for MariaDB kapcsol
 }
 ```
 
-**Példa: jelszó tárolása az Azure Key Vaultban**
+**Példa: a Jelszó tárolása Azure Key Vault**
 
 ```json
 {
@@ -97,16 +97,16 @@ A következő tulajdonságok támogatottak az Azure Database for MariaDB kapcsol
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz az Azure Database for MariaDB adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Azure Database for MariaDB adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolásához az Azure Database for MariaDB-ből a következő tulajdonságok támogatottak:
+Az adatok Azure Database for MariaDBból történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **AzureMariaDBTable** | Igen |
-| tableName | A tábla neve. | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureMariaDBTable** | Igen |
+| tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Példa**
+**Például**
 
 ```json
 {
@@ -125,18 +125,18 @@ Adatok másolásához az Azure Database for MariaDB-ből a következő tulajdons
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az Azure Database for MariaDB forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Azure Database for MariaDB forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-database-for-mariadb-as-source"></a>A MariaDB Azure-adatbázisa forrásként
+### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB forrásként
 
-Adatok másolása az Azure Database for MariaDB-ből, a következő tulajdonságokat támogatja a másolási tevékenység **forrása** szakasz:
+Az adatok Azure Database for MariaDBból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **AzureMariaDBSource** | Igen |
-| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMariaDBSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -167,9 +167,9 @@ Adatok másolása az Azure Database for MariaDB-ből, a következő tulajdonság
     }
 ]
 ```
-## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
-A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
-A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.
+A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

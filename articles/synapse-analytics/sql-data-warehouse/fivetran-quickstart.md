@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Fivetran és adattárház'
-description: Ismerkedés a Fivetran és az Azure Synapse Analytics adattárházával.
+title: 'Gyors útmutató: Fivetran és adattárház'
+description: Ismerkedés a Fivetran és az Azure szinapszis Analytics adattárházával.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,43 +12,43 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414271"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>Rövid útmutató: Fivetran adattárház 
+# <a name="quickstart-fivetran-with-data-warehouse"></a>Gyors útmutató: Fivetran az adattárházban 
 
-Ez a rövid útmutató ismerteti, hogyan állíthat be egy új Fivetran-felhasználót egy SQL Poolnal kiosztott Azure Synapse Analytics adattárral való együttműködésre. A cikk feltételezi, hogy van egy meglévő adattárház.
+Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhasználót egy SQL-készlettel kiépített Azure szinapszis Analytics-adattárházhoz való együttműködéshez. A cikk feltételezi, hogy van egy meglévő adattárháza.
 
-## <a name="set-up-a-connection"></a>Kapcsolat beállítása
+## <a name="set-up-a-connection"></a>Kapcsolatok beállítása
 
-1. Keresse meg az adattárházhoz való csatlakozáshoz használt teljesen minősített kiszolgáló- és adatbázisnevet.
+1. Keresse meg az adattárházhoz való kapcsolódáshoz használt teljes kiszolgálónév és adatbázisnév nevét.
     
-    Ha segítségre van szüksége ezen információk megkereséséhez, olvassa el [a Csatlakozás az adattárházhoz című témakört.](../sql/connect-overview.md)
+    Ha segítségre van szüksége az információk megtalálásához, tekintse meg a [Kapcsolódás az adattárházhoz](../sql/connect-overview.md)című témakört.
 
-2. A beállítási varázslóban válassza ki, hogy közvetlenül vagy SSH-alagúthasználatával szeretné-e csatlakoztatni az adatbázist.
+2. A telepítővarázsló segítségével válassza ki, hogy közvetlenül vagy SSH-alagúton keresztül kívánja-e csatlakozni az adatbázist.
 
-   Ha úgy dönt, hogy közvetlenül csatlakozik az adatbázishoz, létre kell hoznia egy tűzfalszabályt a hozzáférés engedélyezéséhez. Ez a módszer a legegyszerűbb és legbiztonságosabb módszer.
+   Ha úgy dönt, hogy közvetlenül csatlakozik az adatbázishoz, létre kell hoznia egy tűzfalszabály használatát a hozzáférés engedélyezéséhez. Ez a legegyszerűbb és legbiztonságosabb módszer.
 
-   Ha úgy dönt, hogy SSH-alagúton keresztül csatlakozik, a Fivetran egy külön kiszolgálóhoz csatlakozik a hálózaton. A kiszolgáló SSH-alagutat biztosít az adatbázishoz. Ezt a módszert kell használnia, ha az adatbázis egy virtuális hálózaton nem elérhető alhálózatban van.
+   Ha úgy dönt, hogy SSH-alagúton keresztül csatlakozik, a Fivetran egy külön kiszolgálóhoz csatlakozik a hálózaton. A kiszolgáló egy SSH-alagutat biztosít az adatbázishoz. Ezt a módszert kell használnia, ha az adatbázis nem elérhető alhálózatban van egy virtuális hálózaton.
 
-3. Adja hozzá az **52.0.2.4** IP-címet a kiszolgálószintű tűzfalhoz, hogy a Fivetran bejövő kapcsolatot létesítsen az adattárház-példánysal.
+3. Adja hozzá az IP- **52.0.2.4** a kiszolgálói szintű tűzfallal, hogy engedélyezze a bejövő kapcsolatokat az adattárház-példányhoz a Fivetran.
 
-   További információt a [Kiszolgálószintű tűzfalszabály létrehozása](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)című témakörben talál.
+   További információ: [kiszolgálói szintű tűzfalszabály létrehozása](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
 ## <a name="set-up-user-credentials"></a>Felhasználói hitelesítő adatok beállítása
 
-1. Csatlakozzon az adattárházhoz az SQL Server Management Studio (SSMS) vagy a kívánt eszköz használatával. Jelentkezzen be kiszolgálófelügyeleti felhasználóként. Ezután futtassa a következő SQL-parancsokat a Fivetran felhasználójának létrehozásához:
+1. Kapcsolódjon az adattárházhoz SQL Server Management Studio (SSMS) vagy az Ön által előnyben részesített eszköz használatával. Jelentkezzen be kiszolgálói rendszergazda felhasználóként. Ezután futtassa a következő SQL-parancsokat a Fivetran felhasználó létrehozásához:
 
-    - A fő adatbázisban: 
+    - A Master adatbázisban: 
     
       ```sql
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - Az adattárház-adatbázisban:
+    - Az adatraktár-adatbázisban:
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -62,25 +62,25 @@ Ez a rövid útmutató ismerteti, hogyan állíthat be egy új Fivetran-felhaszn
     GRANT CONTROL to fivetran;
     ```
 
-    CONTROL engedély szükséges adatbázis-hatókörrel kapcsolatos hitelesítő adatok létrehozásához, amelyek akkor használatosak, amikor egy felhasználó fájlokat tölt be az Azure Blob storage-ból a PolyBase használatával.
+    A VEZÉRLÉSi engedély szükséges ahhoz, hogy adatbázis-hatókörű hitelesítő adatokat hozzon létre, amelyeket akkor használ a rendszer, ha a felhasználó a fájlok Azure Blob Storage-ból való betöltését végzi.
 
-3. Adjon hozzá egy megfelelő erőforrásosztályt a Fivetran felhasználóhoz. A használt erőforrásosztály az oszlopcentrikus index létrehozásához szükséges memóriától függ. Például a Marketo és a Salesforce termékekkel való integráció magasabb erőforrásosztályt igényel, mivel a termékek nagy számú oszlopot és nagyobb mennyiségű adatot használnak. Egy magasabb erőforrásosztály több memóriát igényel az oszlopcentrikus indexek létrehozásához.
+3. Adjon hozzá egy megfelelő erőforrás-osztályt a Fivetran-felhasználóhoz. A használt erőforrás-osztály a oszlopcentrikus index létrehozásához szükséges memóriától függ. Például a Marketo és a Salesforce termékekkel való integrációhoz nagyobb erőforrás-osztályra van szükség, mert a nagy számú oszlop és a termékek által használt nagyobb mennyiségű érték van. A magasabb szintű erőforrásokhoz több memória szükséges a oszlopcentrikus indexek létrehozásához.
 
-    Azt javasoljuk, hogy statikus erőforrásosztályokat használjon. Kezdheti az `staticrc20` erőforrásosztállyal. Az `staticrc20` erőforrásosztály 200 MB-ot foglal le minden felhasználó számára, függetlenül a használt teljesítményszinttől. Ha az oszlopcentrikus indexelés sikertelen a kezdeti erőforrásosztály szintjén, növelje az erőforrásosztályt.
+    Javasoljuk, hogy használjon statikus erőforrás-osztályokat. A kezdéshez használhatja az `staticrc20` erőforrás osztályt. Az `staticrc20` erőforrás osztály 200 MB-ot foglal le minden felhasználó számára, a használt teljesítményszinttól függetlenül. Ha a oszlopcentrikus indexelése sikertelen a kezdeti erőforrás-osztály szintjén, növelje az erőforrás osztályt.
 
     ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    További információt a [memória- és egyidejűségi korlátokról](memory-concurrency-limits.md) és [az erőforrásosztályokról](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)talál.
+    További információért olvassa el a [memória-és egyidejűségi korlátokkal](memory-concurrency-limits.md) és az [erőforrás-osztályokkal](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)kapcsolatos tudnivalókat.
 
 
-## <a name="connect-from-fivetran"></a>Csatlakozás a Fivetran-ról
+## <a name="connect-from-fivetran"></a>Kapcsolat a Fivetran
 
-Ha fivetran-fiókjából szeretne csatlakozni az adattárházhoz, adja meg az adattárház eléréséhez használt hitelesítő adatokat: 
+Ha a Fivetran-fiókból szeretne csatlakozni az adattárházhoz, adja meg az adatraktár eléréséhez használt hitelesítő adatokat: 
 
-* Állomás (a kiszolgáló neve).
+* Gazdagép (a kiszolgáló neve).
 * Port.
 * Adatbázis.
-* Felhasználó (a felhasználónév nek **\@öttran** server_name kell *lennie,* ahol server_name az Azure-állomás URI-jának része: ** _kiszolgálónév\__.database.windows.net).**
+* Felhasználó (a felhasználónévnek **server_name fivetran\@** kell lennie, ahol a *server_name* az Azure gazdagép URI-ja: ** _kiszolgálónév\__. database.Windows.net**).
 * Jelszó.

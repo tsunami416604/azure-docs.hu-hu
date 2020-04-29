@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a VSTS-hez
-description: Azure Synapse Analytics lekérdezése a Visual Studióval.
+title: Kapcsolat a VSTS
+description: Az Azure szinapszis Analytics lekérdezése a Visual Studióval.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416049"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Csatlakozás az Azure Synapse Analytics szolgáltatáshoz a Visual Studio és az SSDT segítségével
+# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás az Azure szinapszis Analyticshez a Visual Studióval és a SSDT
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-A Visual Studio segítségével néhány perc alatt lekérdezhet egy SQL-készletet az Azure Synapse-on belül. Ez a módszer az SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
+A Visual Studióval mindössze néhány perc alatt lekérdezheti az SQL-készletet az Azure szinapszison belül. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy meglévő SQL-készlet. A létrehozáshoz olvassa el az [SQL-készlet létrehozása című témakört.](create-data-warehouse-portal.md)
-* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studio-val, akkor valószínűleg már rendelkezik SSDT for Visual Studio-val. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Az adatok megkereséséhez olvassa el [a Csatlakozás az SQL-készlethez című témakört.](../sql/connect-overview.md)
+* Egy meglévő SQL-készlet. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
+* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik SSDT a Visual Studióval. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
+* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](../sql/connect-overview.md).
 
-## <a name="1-connect-to-your-sql-pool"></a>1. Csatlakozás az SQL-készlethez
-1. Nyissa meg a Visual Studio 2019-et.
-2. Nyissa meg az SQL Server Object Explorer megnyitását az**SQL Server Object Explorer** **megtekintése** > lehetőséget választva.
+## <a name="1-connect-to-your-sql-pool"></a>1. kapcsolódás az SQL-készlethez
+1. Nyissa meg a Visual Studio 2019 alkalmazást.
+2. SQL Server Object Explorer megnyitásához válassza a **nézet** > **SQL Server Object Explorer**lehetőséget.
    
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -49,7 +49,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
    
     ![Csatlakozás kiszolgálóhoz](./media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
-   * **Kiszolgáló neve**. Adja meg a korábban azonosított **kiszolgálónevet**.
+   * A **kiszolgáló neve**. Adja meg a korábban azonosított **kiszolgálónevet**.
    * **Hitelesítés**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
    * **Felhasználónév** és **Jelszó**. Amennyiben az SQL Server-hitelesítést választotta, adja meg felhasználónevét és jelszavát.
    * Kattintson a **Csatlakozás** gombra.
@@ -57,19 +57,19 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
    
     ![Az AdventureWorksDW áttekintése](./media/sql-data-warehouse-query-visual-studio/explore-sample.png)
 
-## <a name="2-run-a-sample-query"></a>2. Mintalekérdezés futtatása
+## <a name="2-run-a-sample-query"></a>2. minta lekérdezés futtatása
 Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekérdezést.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
 2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
    
     ![Új lekérdezés](./media/sql-data-warehouse-query-visual-studio/new-query2.png)
-3. Másolja a következő T-SQL lekérdezést a lekérdezésablakba:
+3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Futtassa a lekérdezést a zöld nyílra `CTRL` + `SHIFT` + `E`kattintva, vagy használja a következő parancsikont: .
+4. A lekérdezés futtatásához kattintson a zöld nyílra, vagy használja a következő `CTRL` + `SHIFT` + `E`billentyűparancsot:.
    
     ![A lekérdezés futtatása](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
@@ -77,6 +77,6 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ![Lekérdezés eredményei](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy csatlakozhat és lekérdezhet, próbálja meg [viziviziálni az adatokat a Power BI-val.](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-A környezet Azure Active Directory-hitelesítéshez való konfigurálásához olvassa el [a Hitelesítés az SQL-készletbe című témakört.](sql-data-warehouse-authentication.md)
+A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés az SQL-készlettel](sql-data-warehouse-authentication.md).

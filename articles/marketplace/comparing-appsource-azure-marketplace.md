@@ -1,6 +1,6 @@
 ---
-title: A Microsoft AppSource és az Azure Piactér összehasonlítása
-description: Ez a cikk ismerteti a Microsoft kereskedelmi piactér kirakatai – a Microsoft AppSource és az Azure Marketplace közötti különbségeket.
+title: Microsoft AppSource és az Azure Marketplace összehasonlítása
+description: Ez a cikk a Microsoft kereskedelmi piactérről származó kirakatok – Microsoft AppSource és az Azure Marketplace közötti különbségeket ismerteti.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
 ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414571"
 ---
-# <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>A Microsoft AppSource és az Azure Piactér összehasonlítása
+# <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource és az Azure Marketplace összehasonlítása
 
-A Microsoft kereskedelmi piactér tartalmazza a [Microsoft AppSource](https://appsource.microsoft.com) és [az Azure Marketplace .](https://azuremarketplace.microsoft.com) Minden kirakat egyedi ügyféligényeket és különböző célközönségeket szolgál ki, így meggyőződhet arról, hogy megoldása vagy szolgáltatása elérhető a megfelelő ügyfelek számára.
+A Microsoft kereskedelmi piactér [Microsoft AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en is elérhető. Minden kirakat egyedi ügyfél-követelményeket és különböző célközönségeket szolgál ki, így biztos lehet abban, hogy a megfelelő ügyfelek számára elérhető a megoldás vagy a szolgáltatás.
 
 ## <a name="understanding-the-differences-between-storefronts"></a>A kirakatok közötti különbségek megértése
 
-A kirakat kiválasztásához először azonosítsa az ajánlat célközönségét. Ha több kirakatban célozza meg a célközönségeket, egyszer közzéteheti a több kirakatban történő értékesítést.
+A kirakat kiválasztásához először azonosítsa az ajánlat célközönségét. Ha több kirakatban szeretne célközönséget megcélozni, egyszerre több kirakatban is közzéteheti az értékesítést.
 
 | Azure Piactér | AppSource |
 |:--- |:--- |
-| Informatikai szakemberek és fejlesztők | Üzleti felhasználók és üzleti döntéshozók |
+| INFORMATIKAI szakemberek és fejlesztők | Üzleti felhasználók és üzleti döntéshozók |
 
-Az alábbi táblázat a kirakat használatának előnyeit ismerteti:
+A következő táblázat ismerteti a kirakat használatának előnyeit:
 
 | Előnyök | Azure Piactér | AppSource |
 |:--- |:--- | :--- |
-| **Számlázásrugalmasság** | Az Azure Marketplace támogatja az ingyenes, próbaverziós, BYOL és tranzakciós ajánlattípusokat. A tranzakciós ajánlatok vagy fogyasztásalapúak, vagy előfizetésalapúak. A fogyasztásalapú ajánlatok számlázása óránkénti használat, és egy kezdeti ingyenes időszakot biztosít. Az előfizetéses szolgáltatások számlázása havonta vagy évente, ülőhelyenként vagy átalánydíjonként történik.| Az AppSource támogatja az ingyenes, próbaverziós, BYOL és tranzakciós ajánlattípusokat. A Transact ajánlatok előfizetés-alapú SaaS-termékek, amelyek havonta vagy évente számlázhatók egy ülőhelyenként vagy átalánydíjon. |
-|**Kapcsolatok más partnerekkel**  | Jelenleg nem kapcsolhat szolgáltatót vagy kézbesítési partnert az ajánlatához. | Független szoftverszállítókat, rendszerintegrátorokat és felügyelt szolgáltatókat kapcsol össze adott megvalósítási forgatókönyvekkel. Ön közösen eladni az új ügyfeleknek. |
-| **Automation** | Jelenleg nem kapcsolhat szolgáltatót vagy kézbesítési partnert az ajánlatához. Használja ki az automatikus szoftver szolgáltatásként (SaaS) a bővítmény kiépítése. Használja az Azure-alkalmazások: Megoldássablon közzétételi lehetőség saas-alapú adatgyűjtési és üzembe helyezési forgatókönyvek automatizálásához. | Független szoftverszállítókat, rendszerintegrátorokat és felügyelt szolgáltatókat kapcsol össze adott megvalósítási forgatókönyvekkel. Ön közösen eladni az új ügyfeleknek. |
-| **Több felhőtípus** | A következő típusok használatával a nyilvános felhőben és a helyszínen is közzétehet megoldásokat:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionális felhők, beleértve Kínát és Németországot</li></ul> | Jelenleg nem támogatja az Azure Stack, az Azure Government vagy a regionális felhők. |
-| **Környezetben bemutató az ügyfeleknek** | Tegye elérhetővé a megoldást az Azure portálon belüli környezetfüggő keresésben. Használja a virtuális gép és az Azure-alkalmazások: Megoldássablon közzétételi beállításokat. | Több ügyfelet érhet el a Microsoft-termékek , például a Dynamics 365, a Power BI és az Office 365 alkalmazáson belüli élményén keresztül. |
+| **Számlázási rugalmasság** | Az Azure Marketplace ingyenes, próbaverziós, BYOL és Transact típusú ajánlatokat is támogat. A Transact-ajánlatok fogyasztási vagy előfizetés-alapúak. A fogyasztáson alapuló ajánlatokat óradíjas használat alapján számítjuk fel, és egy kezdeti ingyenes időszakot biztosítunk. Az előfizetésen alapuló szolgáltatások számlázása havonta vagy évenként történik, munkaállomásonkénti vagy átalány alapján.| A AppSource támogatja az ingyenes, a próbaverziós, a BYOL és a Transact típusú ajánlatokat. A Transact-ajánlatok olyan, előfizetéses SaaS-termékek, amelyek havi vagy évenkénti számlázásra vagy átalányra vonatkoznak. |
+|**Kapcsolatok más partnerekkel**  | Jelenleg nem csatolhat szolgáltatót vagy kézbesítési partnert az ajánlatához. | A független szoftvergyártók, rendszerintegrátorok és felügyelt szolgáltatók összekapcsolása adott implementációs forgatókönyvekkel. Az új ügyfelek számára is lehetőség van a közös értékesítésre. |
+| **Automation** | Jelenleg nem csatolhat szolgáltatót vagy kézbesítési partnert az ajánlatához. Használja ki a szolgáltatásként nyújtott automatizált szoftver (SaaS) előnyeit a bővítmények kiépítés révén. Az Azure apps: megoldás sablonjának közzétételi lehetősége a SaaS-alapú adatgyűjtési és-telepítési forgatókönyvek automatizálására. | A független szoftvergyártók, rendszerintegrátorok és felügyelt szolgáltatók összekapcsolása adott implementációs forgatókönyvekkel. Az új ügyfelek számára is lehetőség van a közös értékesítésre. |
+| **Több Felhőbeli típus** | Tegye közzé a megoldásokat a nyilvános felhőben és a helyszínen is a következő típusok használatával:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionális felhők, köztük Kína és Németország</li></ul> | Jelenleg nem támogatja Azure Stack, Azure Government vagy regionális felhők használatát. |
+| **Az ügyfelek kontextusban történő bemutatása** | Tegye elérhetővé megoldását az Azure in-Portal felületén a kontextus szerinti kereséshez. Használja a virtuális gépet és az Azure-alkalmazásokat: megoldási sablon közzétételi beállításai. | Több ügyfelet érhet el a Microsoft-termékek, például a Dynamics 365, a Power BI és az Office 365 alkalmazáson belüli felületén. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [kereskedelmi piactér közzétételi útmutatóját.](./marketplace-publishers-guide.md)
+* Tekintse át a [kereskedelmi piactér közzétételi útmutatóját](./marketplace-publishers-guide.md).

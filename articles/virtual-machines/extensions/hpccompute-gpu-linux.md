@@ -1,6 +1,6 @@
 ---
-title: NVIDIA GPU illesztőprogram-bővítmény – Azure Linux os virtuális gépek
-description: Microsoft Azure Extension az NVIDIA GPU-illesztőprogramok Linuxot futtató N sorozatú számítási virtuális gépeken történő telepítéséhez.
+title: NVIDIA GPU illesztőprogram-bővítmény – Azure Linux rendszerű virtuális gépek
+description: Microsoft Azure bővítmény NVIDIA GPU-illesztőprogramok telepítéséhez Linux rendszeren futó N-sorozatú számítási virtuális gépeken.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
@@ -14,41 +14,41 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415790"
 ---
-# <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linuxra
+# <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény telepíti az NVIDIA GPU-illesztőprogramokat Linux N sorozatú virtuális gépekre. A virtuálisgép-családtól függően a bővítmény cuda- vagy GRID-illesztőprogramokat telepít. Ha ezzel a kiterjesztéssel telepíti az NVIDIA illesztőprogramokat, elfogadja és elfogadja az [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
+Ez a bővítmény az NVIDIA GPU-illesztőprogramokat telepíti a Linux N sorozatú virtuális gépeken. A virtuálisgép-családtól függően a bővítmény a CUDA vagy a GRID-illesztőprogramokat telepíti. Ha ezt a bővítményt használó NVIDIA-illesztőprogramokat telepít, elfogadja és elfogadja az [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
 
-Az illesztőprogramok kézi telepítésére és a jelenlegi támogatott verziókra vonatkozó utasítások [itt](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)találhatók.
-Az NVIDIA [GPU-illesztőprogramok Windows N sorozatú virtuális gépekre](hpccompute-gpu-windows.md)történő telepítéséhez is elérhető egy bővítmény.
+Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)érhetők el.
+A bővítmény az NVIDIA GPU [-illesztőprogramok Windows N sorozatú virtuális gépeken](hpccompute-gpu-windows.md)történő telepítéséhez is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Ez a bővítmény a következő operációsrendszer-distózisokat támogatja, attól függően, hogy az illesztőprogram támogatja-e az adott operációsrendszer-verziót.
+Ez a bővítmény a következő operációsrendszer-disztribúciókat támogatja, az adott operációsrendszer-verzióhoz tartozó illesztőprogram-támogatástól függően.
 
 | Disztribúció | Verzió |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
+| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
+| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Microsoft Azure-bővítmény NVIDIA GPU-illesztőprogramok megköveteli, hogy a cél virtuális gép csatlakozik az internethez, és hozzáféréssel rendelkezik.
+Az NVIDIA GPU-illesztőprogramok Microsoft Azure kiterjesztése megköveteli, hogy a célként megadott virtuális gép csatlakoztatva legyen az internethez, és hozzáférhessen.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a bővítmény sémáját mutatja.
+A következő JSON a bővítmény sémáját jeleníti meg.
 
 ```json
 {
@@ -72,22 +72,22 @@ A következő JSON a bővítmény sémáját mutatja.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name (Név) | Érték / Példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| közzétevő | Microsoft.HpcCompute | sztring |
+| közzétevő | Microsoft. HpcCompute | sztring |
 | type | NvidiaGpuDriverLinux | sztring |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
 
-Minden beállítás nem kötelező. Az alapértelmezett viselkedés az, hogy nem frissíti a kernelt, ha nem szükséges az illesztőprogram telepítéséhez, telepítse a legújabb támogatott illesztőprogramot és a CUDA eszközkészletet (adott esetben).
+Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedés nem frissíti a rendszermagot, ha az illesztőprogram telepítéséhez nem szükséges, telepítse a legújabb támogatott illesztőprogramot és a CUDA-eszközkészletet (a megfelelő módon).
 
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Frissítse a rendszermagot, még akkor is, ha nem szükséges az illesztőprogram telepítéséhez | hamis | igaz, hamis | logikai |
-| driverVersion | NV: GRID illesztőprogram verziója<br> NC/ND: CUDA eszközkészlet verzió. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
-| installCUDA telepítése | Telepítse a CUDA eszközkészletet. Csak nc/ND sorozatú virtuális gépek esetén releváns. | igaz | igaz, hamis | logikai |
+| updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | hamis | igaz, hamis | logikai |
+| driverVersion | NV: GRID-illesztőprogram verziója<br> NC/ND: CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
+| installCUDA | Telepítse a CUDA eszközkészletet. Csak az NC/ND sorozatú virtuális gépek esetében fontos. | igaz | igaz, hamis | logikai |
 
 
 ## <a name="deployment"></a>Üzembe helyezés
@@ -95,11 +95,11 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedés az, hogy nem
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon 
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonokkal telepíthetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek üzembe helyezés után konfigurációt igényelnek.
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a telepítés utáni konfigurációt igénylik.
 
-A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuálisgép-erőforrásba, vagy elhelyezhető egy Erőforrás-kezelő JSON-sablon gyökér- vagy legfelső szintjén. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információt a [Név és a gyermekerőforrások típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md)című témakörben talál. 
+A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-A következő példa feltételezi, hogy a bővítmény a virtuális gép erőforrásba van ágyazva. A bővítmény erőforrás beágyazásakor a `"resources": []` JSON a virtuális gép objektumába kerül.
+Az alábbi példa azt feltételezi, hogy a bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép `"resources": []` objektumára kerül.
 
 ```json
 {
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A következő példa tükrözi a fenti Azure Resource Manager és a PowerShell példákat, és egyéni beállításokat is hozzáad, például a nem alapértelmezett illesztőprogram-telepítéshez. Pontosabban, frissíti az operációs rendszer kernel és telepíti egy adott CUDA toolkit verziódriver.
+Az alábbi példa a fenti Azure Resource Manager és PowerShell-példákat tükrözi, és az egyéni beállításokat is hozzáadja példaként a nem alapértelmezett illesztőprogramok telepítéséhez. Pontosabban frissíti az operációs rendszer kernelét, és telepíti a CUDA Toolkit egy adott verziójának illesztőprogramját.
 
 ```azurecli
 az vm extension set \
@@ -153,11 +153,11 @@ az vm extension set \
   }'
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A bővítmény-üzembe helyezések állapotára vonatkozó adatok az Azure Portalról, valamint az Azure PowerShell és az Azure CLI használatával is lekérdezhetők. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa a következő parancsot.
+A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból, valamint a Azure PowerShell és az Azure CLI használatával. Egy adott virtuális gép bővítményeinek központi telepítési állapotának megtekintéséhez futtassa a következő parancsot.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -167,7 +167,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-A bővítmény-végrehajtási kimenet a következő fájlba kerül:
+A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ```bash
 /var/log/azure/nvidia-vmext-status
@@ -177,20 +177,20 @@ A bővítmény-végrehajtási kimenet a következő fájlba kerül:
 
 | Kilépési kód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
-| 0 | A művelet sikeres |
-| 1 | A kiterjesztés helytelen használata | Végrehajtási kimeneti napló ellenőrzése |
-| 10 | A Linux-integrációs szolgáltatások a Hyper-V-hez és az Azure-hoz nem érhetők el vagy nem telepíthetők | Az lspci kimenetének ellenőrzése |
-| 11 | Az NVIDIA GPU nem található ezen a virtuális gépméreten | Támogatott [virtuális gépméret és operációs rendszer használata](../linux/n-series-driver-setup.md) |
-| 12 | A képajánlat nem támogatott |
-| 13 | A virtuális gép mérete nem támogatott | N sorozatú virtuális gép használata az üzembe helyezéshez |
-| 14 | A művelet nem sikerült | Végrehajtási kimeneti napló ellenőrzése |
+| 0 | Sikeres művelet |
+| 1 | A bővítmény helytelen használata | Végrehajtás kimeneti naplójának keresése |
+| 10 | A Hyper-V és az Azure Linux-integrációs szolgáltatása nem érhető el vagy nincs telepítve | A lspci kimenetének ellenõrzése |
+| 11 | Az NVIDIA GPU nem található a virtuális gép méretén | [Támogatott VM-méret és operációs rendszer](../linux/n-series-driver-setup.md) használata |
+| 12 | A rendszerkép-ajánlat nem támogatott |
+| 13 | A virtuális gép mérete nem támogatott | Az N sorozatú virtuális gépek használata az üzembe helyezéshez |
+| 14 | Sikertelen művelet | Végrehajtás kimeneti naplójának keresése |
 
 
 ### <a name="support"></a>Támogatás
 
-Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/community/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni lehetőséget. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>További lépések
-A bővítményekről további információt a [Virtuálisgép-bővítmények és -szolgáltatások Linuxhoz](features-linux.md)című témakörben talál.
+További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).
 
-Az N sorozatú virtuális gépekről a [GPU-ra optimalizált virtuális gépméretek](../linux/sizes-gpu.md)című témakörben talál további információt.
+Az N sorozatú virtuális gépekkel kapcsolatos további információkért lásd: GPU-ra [optimalizált virtuálisgép-méretek](../linux/sizes-gpu.md).

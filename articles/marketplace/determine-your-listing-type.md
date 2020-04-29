@@ -1,6 +1,6 @@
 ---
-title: A közzétételi lehetőség meghatározása a Microsoft kereskedelmi piactér kirakataiban
-description: Ez a cikk ismerteti a jogosultsági feltételek és közzétételi követelmények a partnerek próbálják megérteni, hogyan tehet közzé alkalmazásokat a Microsoft AppSource és az Azure Marketplace-en.
+title: A közzétételi lehetőség meghatározása a Microsoft kereskedelmi piactér kirakatokban
+description: Ez a cikk a jogosultsági feltételeket és a közzétételi követelményeket ismerteti azoknak a partnereknek, akik az alkalmazások Microsoft AppSource és az Azure Marketplace-en való közzétételét szeretnék megismerni.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
 ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415739"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
-Az ajánlathoz kiválasztott közzétételi lehetőség közvetlenül kapcsolódik mind a jogosultsági követelményekhez, mind a kereskedelmi piac piacra vonatkozó GTM-előnyökhöz. Ennél is fontosabb, hogy a közzétételi lehetőség és az ajánlattípus kiválasztása határozza meg, hogy a felhasználók hogyan lépnek kapcsolatba a kereskedelmi piactér-ajánlattal.
+Az ajánlathoz választott közzétételi lehetőség közvetlenül a támogathatósági követelményekkel és a kereskedelmi piactér GTM kapcsolatos előnyökkel is jár. Még ennél is fontosabb, hogy a közzétételi lehetőség és az ajánlat típusa határozza meg, hogy a felhasználók hogyan fognak működni a kereskedelmi Piactéri ajánlatával.
 
-Az ajánlat konfigurálásához meg kell értenie a következő legfontosabb kereskedelmi piactér-fogalmakat: a közzétételi lehetőségeket, az ajánlattípusokat és a konfigurációt, valamint a cselekvésre való felhívásokat, amelyek szabályozzák, hogy az ajánlat hogyan és hol jelenjen meg a kereskedelmi piactér kirakataiban.
+Az ajánlat konfigurálásához meg kell ismernie a következő kulcsfontosságú kereskedelmi Marketplace-fogalmakat: a közzétételi lehetőségek, az ajánlatok típusai és a konfiguráció, valamint a hívások közötti művelet, amely szabályozza, hogy az ajánlat hogyan és hol jelenik meg a kereskedelmi piactéren.
 
 Ebben a cikkben a következőkkel ismerkedhet meg:
 
-- Hogyan állapítható meg a megoldásnak megfelelő kirakat?
-- Az egyes kirakatokban elérhetők a közzétételi lehetőségek és a cselekvésre való felhívások
-- Mely ajánlattípusok érhetők el az egyes közzétételi lehetőségekhez
+- A megoldás megfelelő kirakatának meghatározása
+- Az egyes kirakatokban elérhető közzétételi lehetőségek és hívások – művelet
+- Az egyes közzétételi lehetőségekhez elérhető ajánlati típusok
 
 ## <a name="commercial-marketplace-publishing-options"></a>Kereskedelmi piactér közzétételi lehetőségei
 
-Az alábbi táblázat a Microsoft AppSource és az Azure Marketplace ajánlattípusok közzétételi beállításait mutatja be.
+A következő táblázat a Microsoft AppSource és az Azure piactéren elérhető ajánlatok közzétételi lehetőségeit mutatja be.
 
-|   | **Lista (kapcsolattartó)**  | **Lista (próbaverzió)**  | **Ingyenes** | **BYOL** | **Transact**|
+|   | **Lista (kapcsolat)**  | **Lista (próbaverzió)**  | **Ingyenes** | **BYOL** | **Transact**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Virtuális gép** |  |  |  | Azure Piactér |  Azure Piactér |
-| **Azure-alkalmazások (többvirtuális gép)** |  |  | Azure Piactér | Azure Piactér | Azure Piactér  |
-| **Konténer képe** |  |  | Azure Piactér | Azure Piactér |   |
+| **Azure-alkalmazások (több virtuális gép)** |  |  | Azure Piactér | Azure Piactér | Azure Piactér  |
+| **Tároló képe** |  |  | Azure Piactér | Azure Piactér |   |
 | **IoT Edge modul** |  |  | Azure Piactér | Azure Piactér |   |
 | **Felügyelt szolgáltatások** |  |  |  | Azure Piactér |   |
 | **Tanácsadói szolgáltatások** | Mindkét kirakat |  |  |  |   |
-| **SaaS alkalmazás** | Mindkét kirakat | Mindkét kirakat | Mindkét kirakat |  | Mindkét kirakat* |
-| **Microsoft 365 alkalmazás** | AppSource | AppSource |  |  | Alkalmazásforrás**  |
+| **SaaS-alkalmazás** | Mindkét kirakat | Mindkét kirakat | Mindkét kirakat |  | Mindkét kirakat * |
+| **Microsoft 365 alkalmazás** | AppSource | AppSource |  |  | AppSource * *  |
 | **Dynamics 365 bővítmény** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
 
-&#42; SaaS app Transact kínál a Microsoft AppSource jelenleg hitelkártya csak.
+&#42; SaaS-alkalmazás Transact-ajánlatai Microsoft AppSource jelenleg csak bankkártyával rendelkeznek.
 
-&#42;&#42; Microsoft 365 ajánlatok ingyenesen telepíthetők, és a SaaS-ajánlaton keresztül licencelési szolgáltatásként felhasználhatók. További információt az [Office 365-bővítmény monetizálása a Microsoft kereskedelmi piactéren keresztül című témakörben talál.](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)
+A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-ajánlaton keresztül licencelési szolgáltatásként is megadhatók. További információkért tekintse [meg az Office 365-bővítmények a Microsoft kereskedelmi piactéren keresztüli bevételeit ismertető részt](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ## <a name="selecting-a-storefront"></a>Kirakat kiválasztása
 
-Mielőtt kiválasztaná a közzétételi lehetőséget, fontos, hogy megértse a kereskedelmi piactéri megoldások, alkalmazások és szolgáltatások kirakati jogosultsági követelményeit. Minden kirakat egyedi ügyféligényeket szolgál ki, és meghatározott közönségeket céloz meg. Az ajánlat típusa, a tranzakciós képességek és a kategória vagy az iparág határozza meg, hogy hol tegye közzé az ajánlatot.
+A közzétételi lehetőség kiválasztása előtt fontos megérteni a kereskedelmi Marketplace-megoldások,-alkalmazások és-szolgáltatások kirakat-alkalmazhatósági követelményeit. Az egyes kirakatok egyedi ügyfelekre vonatkozó követelményeket és meghatározott célközönségeket céloznak meg. Az ajánlat típusa, a Transact képességek, a kategória vagy az iparág határozza meg, hogy hol tegye közzé ajánlatát.
 
-**A Microsoft AppSource** alkalmazások olyan üzletági megoldások, amelyek az Azure-ra vagy a beépített megoldásokra épülnek: Dynamics 365, Office 365, Power BI vagy Power Apps. Az AppSource tanácsadási szolgáltatások olyan professzionális szolgáltatások, amelyek segítenek az ügyfeleknek a Dynamics 365 és a Power BI használatának megkezdésében vagy használatának felgyorsításában.
+**Microsoft AppSource** alkalmazások olyan üzletági megoldások, amelyek az Azure-ban vagy a következő beépített platformokon érhetők el: Dynamics 365, Office 365, Power bi vagy Power apps. A AppSource Consulting Services olyan Professional Services-ajánlatok, amelyek segítenek az ügyfeleknek a Dynamics 365 és Power BI használatának megkezdésében vagy felgyorsításában.
 
-**Az Azure Marketplace-alkalmazások** az Azure-ra vagy az Azure-ra épülő műszaki "építőelem" megoldások, amelyek et informatikai vagy fejlesztői közönségszámára szántak. Az Azure Marketplace tanácsadási szolgáltatásai olyan professzionális szolgáltatások, amelyek segítik az ügyfeleket az Azure használatának megkezdésében vagy használatának felgyorsításában.
+Az **Azure Marketplace** -alkalmazások olyan technikai jellegű "építőelemek", amelyek beépítettek vagy beépítettek az Azure-hoz, és az informatikai vagy fejlesztői közönség számára készültek. Az Azure Marketplace Consulting Services olyan professzionális szolgáltatásokat kínál, amelyek segítenek az ügyfeleknek az Azure használatának megkezdésében vagy felgyorsításában.
 
 >[!Note]
->Keresztlistázás (csak SaaS-alkalmazások esetén): ha egy lista vagy próbaalapú ajánlat megfelel mind a technikai, mind az üzleti felhasználói közönség feltételeinek, az ajánlat mindkét kirakatban megjelenik. További információ az alábbi közzétételi lehetőségekről.
+>Kereszthivatkozások (csak SaaS-alkalmazásokhoz): Ha egy lista vagy próbaverziós ajánlat megfelel a technikai és az üzleti felhasználókra vonatkozó feltételnek, az ajánlat mindkét kirakatban szerepel. További információ az alábbi közzétételi lehetőségekről.
 
-## <a name="choose-a-publishing-option"></a>Közzétételi beállítás kiválasztása
+## <a name="choose-a-publishing-option"></a>Közzétételi lehetőség kiválasztása
 
-A rendelkezésre álló közzétételi lehetőségek differenciált ügyfélelköteleződést biztosítanak, miközben hozzáférést biztosítanak az érdeklődőmegosztáshoz és a [kereskedelmi piachoz.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits) Figyelje meg a közzétételi lehetőségnek megfelelő cselekvésre való felhívásokat:
+A rendelkezésre álló közzétételi lehetőségek különböző ügyfél-összevonást biztosítanak, miközben hozzáférést biztosítanak a megosztási és [kereskedelmi Piactéri előnyökhöz](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Jegyezze fel a közzétételi lehetőségnek megfelelő meghívások közötti műveletet:
 
-| **Közzétételi beállítás**    | **Leírás**  |
+| **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
-| **Lista** | Az alkalmazás vagy szolgáltatás egyszerű listázása, amely lehetővé teszi, hogy egy kereskedelmi piactér-felhasználó kérje Önt, hogy kapcsolatba lépjen az ügyféllel a **Kapcsolatfelvételi** felhíváson keresztül. |
-| **Próba** | A kereskedelmi piactér segítségével javíthatja a megoldás próbaélményének felderíthetőségét, és automatizálhatja a megoldás kipróbálási élményének kiépítését, lehetővé téve a leendő felhasználók számára, hogy a SaaS, az IaaS vagy a Microsoft alkalmazáson belüli élményét vásárlás előtt korlátozott ideig díjmentesen használhassák. A próbaverziós közzétételi lehetőséghez használt cselekvésre való felhívások az **ingyenes próbaverzió** vagy a **tesztvezetés.** |
-| **BYOL** | A kereskedelmi piactér használatával javíthatja a felderíthetőséget és automatizálhatja a megoldás kiépítését, és külön végezheti el a pénzügyi tranzakciót. A BYOL ajánlattípusok ideálisak a helyszíni és a felhőalapú áttelepítéshez. A cselekvésre való felhívás **a Get it Now**.
-| **Transact** | Transact ajánlatok értékesítik a kereskedelmi piacon. A Microsoft felelős a számlázásért és a beszedésért. A cselekvésre való felhívás **a Get it Now**.|
+| **Listáját** | Az alkalmazás vagy szolgáltatás egyszerű listája, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználói **kapcsolatba lépjenek** az ügyféllel a Kapcsolatfelvétel a hívással művelettel. |
+| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próba-közzétételi lehetőséghez használt hívások közötti művelet az **ingyenes próbaverzió** vagy a **tesztelési meghajtó**. |
+| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A hívási művelet **most már elérhető**.
+| **Transact** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A hívási művelet **most már elérhető**.|
 
 > [!Note]
-> A Transact közzétételi lehetőség használatakor fontos, hogy az ajánlattípus kiválasztása és az ajánlat létrehozása előtt tisztában legyen az árképzési, számlázási, számlázási és kifizetési szempontokkal. További információért tekintse át a [Kereskedelmi piac kereskedelmi forgalom képességei című cikket.](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+> A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Miután úgy döntött, a közzétételi lehetőség, készen áll, hogy [válassza ki az ajánlat típusát,](./publisher-guide-by-offer-type.md) amely bemutatja az ajánlatot.
-- Tekintse át a jogosultsági követelményeket a közzétételi lehetőségek ajánlattípus szerint szakaszban az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez.
-- Tekintse át a közzétételi minták at kirakat példákat, hogyan a megoldás leképezése egy ajánlat típusát és konfigurációját.
+- A közzétételi lehetőség [kiválasztása után kiválaszthatja az](./publisher-guide-by-offer-type.md) ajánlat bemutatására használni kívánt ajánlat típusát.
+- Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
+- Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

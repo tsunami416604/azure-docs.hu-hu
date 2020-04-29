@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a MySQL Azure-adatbázisába és onnan
-description: Megtudhatja, hogyan másolhat adatokat az Azure Database for MySQL-be és onnan egy Azure Data Factory-folyamat másolási tevékenységhasználatával.
+title: Adatok másolása Azure Database for MySQL
+description: Megtudhatja, hogyan másolhat adatok Azure Database for MySQLba és onnan a Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,55 +12,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/25/2019
 ms.openlocfilehash: bbb4aed8ca10fcf7c15e7442ee7067b2e3f8087d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410713"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Adatok másolása a MySQL Azure-adatbázisába és onnan az Azure Data Factory használatával
+# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Adatok másolása Azure Database for MySQLba és onnan a Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása az Azure Database for MySQL. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure Database for MySQLból való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
-Ez az összekötő az [Azure Database for MySQL szolgáltatásra](../mysql/overview.md)specializálódott. Ha adatokat szeretne másolni a helyszínen vagy a felhőben található általános MySQL-adatbázisból, használja a [MySQL-összekötőt.](connector-mysql.md)
+Ez az összekötő [Azure Database for MySQL szolgáltatásra](../mysql/overview.md)specializálódott. A helyszínen vagy a felhőben található általános MySQL-adatbázisból származó adatok másolásához használja a [MySQL-összekötőt](connector-mysql.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az Azure Database for MySQL-összekötő a következő tevékenységek esetén támogatott:
 
-- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keress tevékenységet](control-flow-lookup-activity.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az Azure Database for MySQL-ből adatokat másolhat bármely támogatott fogadó adattárba. Vagy bármely támogatott forrásadat-tárból másolhat adatokat az Azure Database for MySQL-be. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
+Azure Database for MySQL adatait átmásolhatja bármely támogatott fogadó adattárba. Vagy bármilyen támogatott forrás adattárból is másolhat adatok Azure Database for MySQLba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Az Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie egyetlen illesztőprogramot is ezzel az összekötővel.
+A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok az Azure Database for MySQL-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
+A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek Data Factory Azure Database for MySQL-összekötőhöz tartozó entitások definiálásához használatosak.
 
-## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az Azure Database for MySQL csatolt szolgáltatás a következő tulajdonságokat támogatja:
+Azure Database for MySQL társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A típustulajdonságot a következőre kell állítani: **AzureMySql** | Igen |
-| connectionString (kapcsolati karakterlánc) | Adja meg a MySQL-példány azure-adatbázisához való csatlakozáshoz szükséges információkat. <br/> Az Azure Key Vaultban is felhelyezhet idúra, és kihúzhatja a `password` konfigurációt a kapcsolati karakterláncból. További részleteket az [Azure Key Vault-cikkben](store-credentials-in-key-vault.md) a következő minták és áruházi hitelesítő adatok című cikkben talál. | Igen |
-| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Használhatja az Azure-integrációs runtime vagy saját üzemeltetésű integrációs runtime (ha az adattár található magánhálózat). Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
+| type | A Type tulajdonságot a következőre kell beállítani: **AzureMySql** | Igen |
+| connectionString | Az Azure Database for MySQL-példányhoz való kapcsolódáshoz szükséges adatok meghatározása. <br/> A jelszót a Azure Key Vaultban is elhelyezheti, és `password` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-Egy tipikus kapcsolati karakterlánc a `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. További tulajdonságok, amelyeket a tokszerint állíthat be:
+Egy tipikus kapcsolatok karakterlánca `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`:. További tulajdonságok állíthatók be az egyes esetekben:
 
 | Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| SSLMode (SSLmode) | Ez a beállítás azt határozza meg, hogy az illesztőprogram TLS titkosítást és -ellenőrzést használ-e a MySQL-hez való csatlakozáskor. Például `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERÁLT (1) **(Alapértelmezett)** / KÖTELEZŐ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nem |
-| UseSystemTrustStore | Ez a beállítás határozza meg, hogy a hitelesítésszolgáltatói tanúsítványt a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból használja-e. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1) / Letiltva (0) **(alapértelmezett)** | Nem |
+| SSLMode | Ezzel a beállítással adható meg, hogy az illesztőprogram TLS titkosítást és ellenőrzést használ-e a MySQL-hez való kapcsolódáskor. Például `SSLMode=<0/1/2/3/4>`| Letiltva (0)/ELŐNYben részesített (1) **(alapértelmezett)** /kötelező (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nem |
+| UseSystemTrustStore | Ezzel a beállítással adható meg, hogy a rendszer egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ-e a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1)/Letiltva (0) **(alapértelmezett)** | Nem |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -78,7 +78,7 @@ Egy tipikus kapcsolati karakterlánc a `Server=<server>.mysql.database.azure.com
 }
 ```
 
-**Példa: jelszó tárolása az Azure Key Vaultban**
+**Példa: a Jelszó tárolása Azure Key Vault**
 
 ```json
 {
@@ -106,16 +106,16 @@ Egy tipikus kapcsolati karakterlánc a `Server=<server>.mysql.database.azure.com
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz az Azure Database által a MySQL-adatkészlethez támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Azure Database for MySQL adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Ha adatokat szeretne másolni az Azure Database for MySQL szolgáltatásból, állítsa az adatkészlet típustulajdonságát **az AzureMySqlTable beállításra.** A következő tulajdonságok támogatottak:
+Az adatok Azure Database for MySQLból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AzureMySqlTable**értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **AzureMySqlTable** | Igen |
-| tableName | A MySQL adatbázisban lévő tábla neve. | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureMySqlTable** | Igen |
+| tableName | A MySQL-adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Példa**
+**Például**
 
 ```json
 {
@@ -135,19 +135,19 @@ Ha adatokat szeretne másolni az Azure Database for MySQL szolgáltatásból, á
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az Azure Database for MySQL-forrás- és -fogadó által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Azure Database for MySQL forrás és a fogadó által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-database-for-mysql-as-source"></a>Azure Database for MySQL mint forrás
+### <a name="azure-database-for-mysql-as-source"></a>Azure Database for MySQL forrásként
 
-Az Azure Database for MySQL-ből történő adatok másolásához a következő tulajdonságokat támogatja a másolási tevékenység **forrása** szakasz:
+Az adatok Azure Database for MySQLból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **AzureMySqlSource** | Igen |
-| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
-| queryCommandTimeout | A lekérdezési kérelem előtti várakozási idő idővel idővel elévül. Az alapértelmezett érték 120 perc (02:00:00) | Nem |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMySqlSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| queryCommandTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 120 perc (02:00:00) | Nem |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -179,18 +179,18 @@ Az Azure Database for MySQL-ből történő adatok másolásához a következő 
 ]
 ```
 
-### <a name="azure-database-for-mysql-as-sink"></a>A MySQL Azure-adatbázisa fogadóként
+### <a name="azure-database-for-mysql-as-sink"></a>Azure Database for MySQL fogadóként
 
-Adatok másolásához az Azure Database for MySQL, a következő tulajdonságokat támogatja a másolási tevékenység **fogadó** szakaszban:
+Az adatAzure Database for MySQLba való másoláshoz a másolási tevékenység fogadója szakasz a **sink** következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A copy tevékenységfogadó típustulajdonságának a következőre kell beállítható: **AzureMySqlSink** | Igen |
-| preCopyScript | Adjon meg egy SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt minden futtatáskor adatokat írna az Azure Database for MySQL-be. Ezzel a tulajdonsággal megtisztíthatja az előre betöltött adatokat. | Nem |
-| writeBatchSize | Adatokat szúr be az Azure Database for MySQL táblába, amikor a puffer mérete eléri a writeBatchSize-ot.<br>Az engedélyezett érték egész szám, amely a sorok számát jelöli. | Nem (az alapértelmezett érték 10 000) |
-| writeBatchTimeout | Várjon időt a kötegbehelyezési művelet befejezésére, mielőtt az időtúljárna.<br>Az engedélyezett értékek timespan. Ilyen például a 00:30:00 (30 perc). | Nem (az alapértelmezett érték 00:00:30) |
+| type | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **AzureMySqlSink** | Igen |
+| preCopyScript | Adja meg a másolási tevékenység végrehajtásához szükséges SQL-lekérdezést, mielőtt az egyes futtatások Azure Database for MySQLbe írna. Ennek a tulajdonságnak a használatával törölheti az előre feltöltött adatkészleteket. | Nem |
+| writeBatchSize | Az Azure Database for MySQL táblázatba szúrja be az adatmennyiséget, amikor a puffer mérete eléri a writeBatchSize.<br>Az engedélyezett érték olyan egész szám, amely a sorok számát jelöli. | Nem (az alapértelmezett érték 10 000) |
+| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br>Az engedélyezett értékek a TimeSpan. Például 00:30:00 (30 perc). | Nem (az alapértelmezett érték 00:00:30) |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -223,15 +223,15 @@ Adatok másolásához az Azure Database for MySQL, a következő tulajdonságoka
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
-A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Adattípus-leképezés az Azure Database for MySQL-hez
+## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Azure Database for MySQL adattípusának leképezése
 
-Amikor adatokat másol az Azure Database for MySQL-ből, a következő leképezések a MySQL adattípusokból az Azure Data Factory köztes adattípusaiba kerülnek. A [Séma- és adattípus-hozzárendelések](copy-activity-schema-and-type-mapping.md) című témakörből megtudhatja, hogy a másolási tevékenység hogyan képezi le a forrássémát és az adattípust a fogadóhoz.
+Az adatok Azure Database for MySQLból való másolása során a rendszer a következő leképezéseket használja a MySQL-adattípusokból Azure Data Factory ideiglenes adattípusokhoz. A másolási tevékenység a forrás sémájának és adattípusának a fogadóba való leképezésével kapcsolatos tudnivalókat lásd: [séma-és adattípus-leképezések](copy-activity-schema-and-type-mapping.md) .
 
-| Azure Database a MySQL adattípushoz | Adatgyár köztes adattípusa |
+| Azure Database for MySQL adattípus | Az adatgyár átmeneti adattípusa |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -275,4 +275,4 @@ Amikor adatokat másol az Azure Database for MySQL-ből, a következő leképez�
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>További lépések
-A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.
+A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

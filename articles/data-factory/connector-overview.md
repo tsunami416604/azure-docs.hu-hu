@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory-összekötő – áttekintés
-description: Ismerje meg a támogatott összekötők a Data Factory.
+title: Azure Data Factory-összekötő áttekintése
+description: Ismerje meg Data Factory támogatott összekötőit.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410415"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő – áttekintés
+# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő áttekintése
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az Azure Data Factory a másolási, adatfolyam-, a look-up, a metaadatok bemásolása és a törlési tevékenységek révén támogatja a következő adattárakat és formátumokat. Kattintson az egyes adattáraira a támogatott képességek és a megfelelő konfigurációk részletes megismeréséhez.
+Azure Data Factory a következő adattárakat és formátumokat másolja a másolás, az adatfolyam, a keresés, a metaadatok beolvasása és a törlés tevékenységek használatával. Az egyes adattárokra kattintva megtudhatja a támogatott funkciókat és a megfelelő konfigurációkat a részletek között.
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
@@ -31,7 +31,7 @@ Az Azure Data Factory a másolási, adatfolyam-, a look-up, a metaadatok bemáso
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tevékenység másolása](copy-activity-overview.md)
+- [Másolási tevékenység](copy-activity-overview.md)
 - [Leképezési adatfolyam](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)

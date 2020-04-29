@@ -1,30 +1,30 @@
 ---
-title: Felügyelt identitástámogatás konfigurálása meglévő Service Fabric-fürtben
-description: Így engedélyezheti a felügyelt identitások támogatását egy meglévő Azure Service Fabric-fürtben
+title: Felügyelt identitás támogatásának konfigurálása meglévő Service Fabric-fürtben
+description: A következőképpen engedélyezheti a felügyelt identitások támogatását egy meglévő Azure Service Fabric-fürtben
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415693"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Felügyelt identitástámogatás konfigurálása meglévő Service Fabric-fürtben
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Felügyelt identitás támogatásának konfigurálása meglévő Service Fabric-fürtben
 
-Felügyelt [identitások használata az Azure-erőforrások a](../active-directory/managed-identities-azure-resources/overview.md) Service Fabric-alkalmazások, először engedélyezze a felügyelt *identitásjogkivonat-szolgáltatás* a fürtön. Ez a szolgáltatás felelős a Service Fabric-alkalmazások felügyelt identitások használatával történő hitelesítésért, valamint a hozzáférési jogkivonatok nevükben történő beszerzéséért. Ha a szolgáltatás engedélyezve van, láthatja, hogy a Service Fabric Explorer a **rendszer szakasza** a bal oldali ablaktáblában, néven futó **fabric:/System/ManagedIdentityTokenService**.
+Ha a Service Fabric-alkalmazásokban [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) szeretne használni az Azure-erőforrásokhoz, először engedélyezze a *felügyelt Identity token szolgáltatást* a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy a **háló:/System/ManagedIdentityTokenService**néven fut.
 
 > [!NOTE]
-> A Service Fabric 6.5.658.9590-es vagy újabb verziója szükséges a **felügyelt identitásjogkivonat-szolgáltatás**engedélyezéséhez.  
+> A **felügyelt Identity token szolgáltatás**engedélyezéséhez Service Fabric futtatókörnyezet 6.5.658.9590 vagy újabb verziója szükséges.  
 >
-> A fürt Service Fabric-verziója az Azure Portalon található a fürterőforrás megnyitásával és a **Service Fabric verziótulajdonságának** ellenőrzésével az **Essentials** szakaszban.
+> A fürt Service Fabric verzióját a Azure Portal megkeresheti a fürterőforrás megnyitásával és a **Service Fabric Version** tulajdonságának ellenőrzésével az **Essentials (alapvető** erőforrások) szakaszban.
 >
-> Ha a fürt **kézi** frissítési módban van, először frissítenie kell azt 6.5.658.9590 vagy újabb verzióra.
+> Ha a fürt **manuális** frissítési módban van, először frissítenie kell a 6.5.658.9590 vagy újabb verzióra.
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>*Felügyelt identitásjogkivonat-szolgáltatás* engedélyezése meglévő fürtben
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>*Felügyelt identitás-jogkivonat szolgáltatás* engedélyezése meglévő fürtben
 
-A felügyelt identitásjogkivonat-szolgáltatás meglévő fürtben való engedélyezéséhez két módosítást tartalmazó fürtfrissítést kell kezdeményeznie: (1) A felügyelt identitásjogkivonat-szolgáltatás engedélyezése és (2) az egyes csomópontok újraindítását. Először adja hozzá a következő részletet a fürt Azure Resource Manager sablon:
+Ha engedélyezni szeretné a felügyelt identitás-jogkivonat szolgáltatást egy meglévő fürtben, a fürt frissítését két módosítást kell megadnia: (1) a felügyelt identitási jogkivonat szolgáltatás engedélyezése, valamint (2) az egyes csomópontok újraindításának kérése. Először adja hozzá a következő kódrészletet a fürt Azure Resource Manager sablonhoz:
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ A felügyelt identitásjogkivonat-szolgáltatás meglévő fürtben való enged�
 ]
 ```
 
-Ahhoz, hogy a módosítások érvénybe lépjenek, a frissítési szabályzatot is módosítania kell, hogy a fürtön keresztül a frissítés előrehaladtával a Service Fabric futásidejű állapotának erőteljes újraindítását adja meg. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindul, és fut az egyes csomópontokon. Az alábbi kódrészletben `forceRestart` található az újraindítás engedélyezéséhez szükséges alapvető beállítás. A fennmaradó paraméterekhez használja az alább leírt értékeket, vagy használja a fürterőforráshoz már megadott meglévő egyéni értékeket. A Fabric frissítési szabályzat ('upgradeDescription') egyéni beállításai az Azure Portalról tekinthetők meg a Service Fabric-erőforrás vagy a resources.azure.com "Fabric-frissítések" lehetőség kiválasztásával. A frissítési házirend ('upgradeDescription') alapértelmezett beállításai nem tekinthetők meg a PowerShellből vagy a resources.azure.com. További információt a [ClusterUpgradePolicy című témakörben](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) talál.  
+Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítési házirendet, hogy az egyes csomópontokon a frissítés folyamata során az Service Fabric-futtatókörnyezet kényszerített újraindítását is megadja. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindult, és minden csomóponton fusson. Az alábbi kódrészletben az `forceRestart` az alapvető beállítás, amely lehetővé teszi az újraindítást. A többi paraméter esetében használja az alább ismertetett értékeket, vagy használja a fürterőforrás számára már megadott meglévő egyéni értékeket. A háló frissítési szabályzatának ("upgradeDescription") egyéni beállításai az Azure Portalon tekinthetők meg, ha a Service Fabric erőforráson vagy a resources.azure.com a "háló frissítése" lehetőséget választja. A frissítési szabályzat ("upgradeDescription") alapértelmezett beállításai nem tekinthetők meg a powershellből vagy a resources.azure.com. További információ: [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ Ahhoz, hogy a módosítások érvénybe lépjenek, a frissítési szabályzatot 
 ```
 
 > [!NOTE]
-> A frissítés sikeres befejezése után ne felejtse `forceRestart` el visszaállítani a beállítást, hogy minimalizálja a későbbi frissítések hatását. 
+> A frissítés sikeres befejezése után ne felejtse el visszaállítani a `forceRestart` beállítást, hogy csökkentse a további frissítések hatását. 
 
 ## <a name="errors-and-troubleshooting"></a>Hibák és hibaelhárítás
 
-Ha a központi telepítés sikertelen a következő üzenettel, az azt jelenti, hogy a fürt nem fut elég magas Service Fabric-verzión:
+Ha az üzembe helyezés a következő üzenettel meghiúsul, az azt jelenti, hogy a fürt nem elég magas Service Fabric-verzión fut:
 
 ```json
 {
@@ -71,5 +71,5 @@ Ha a központi telepítés sikertelen a következő üzenettel, az azt jelenti, 
 ## <a name="next-steps"></a>További lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [A Service Fabric-alkalmazások felügyelt identitásának kihasználása a szolgáltatáskódból](./how-to-managed-identity-service-fabric-app-code.md)
-* [Azure Service Fabric-alkalmazás elérésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
+* [Service Fabric alkalmazás felügyelt identitásának kihasználása a szolgáltatási kódból](./how-to-managed-identity-service-fabric-app-code.md)
+* [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
