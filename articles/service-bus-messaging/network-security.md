@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus hálózati biztonsága
-description: Ez a cikk a hálózati biztonsági szolgáltatásokat ismerteti, például a szolgáltatáscímkéket, az IP-tűzfalszabályokat, a szolgáltatásvégpontokat és a privát végpontokat.
+title: Azure Service Bus hálózati biztonsága
+description: Ez a cikk a hálózati biztonsági funkciókat, például a szolgáltatási címkéket, az IP-tűzfalszabályok, a szolgáltatási végpontokat és a magánhálózati végpontokat ismerteti.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -13,90 +13,90 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: aschhab
 ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479279"
 ---
-# <a name="network-security-for-azure-service-bus"></a>Az Azure Service Bus hálózati biztonsága 
-Ez a cikk a következő biztonsági funkciók azure Service Bus használatával ismertetjük: 
+# <a name="network-security-for-azure-service-bus"></a>Azure Service Bus hálózati biztonsága 
+Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Service Bus használatával: 
 
 - Szolgáltatáscímkék
-- IP tűzfal szabályai
-- Hálózati szolgáltatás végpontjai
+- IP-tűzfalszabályok
+- Hálózati szolgáltatási végpontok
 - Privát végpontok (előzetes verzió)
 
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
-A szolgáltatáscímke egy adott Azure-szolgáltatás IP-címelőtagjainak csoportját jelöli. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásaként, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatáscímkékről a [Szolgáltatáscímkék – áttekintés című témakörben olvashat bővebben.](../virtual-network/service-tags-overview.md)
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [szolgáltatási címkék áttekintése](../virtual-network/service-tags-overview.md).
 
-A szolgáltatáscímkék segítségével hálózati hozzáférés-vezérlést határozhat meg [a hálózati biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy az [Azure Firewall-en.](../firewall/service-tags.md) Biztonsági szabályok létrehozásakor a szolgáltatáscímkéket használjon adott IP-címek helyett. A szolgáltatáscímke nevének (például **ServiceBus)** megadásával a szabály megfelelő *forrás-* vagy *célmezőjében* engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **ServiceBus**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Cél | Használhatja a bejövő vagy kimenő? | Lehet regionális? | Használhatja az Azure Tűzfal? |
+| Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | A prémium szolgáltatási szintet használó Azure Service Bus-forgalom. | Kimenő | Igen | Igen |
+| **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
-Alapértelmezés szerint a Service Bus névterek érhetők el az internetről, amíg a kérelem érvényes hitelesítéssel és engedélyezéssel érkezik. Az IP-tűzfal lal tovább korlátozhatja a [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölésben lévő IPv4-címek vagy IPv4-címtartományok készletére.
+Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
-Ez a funkció olyan esetekben hasznos, amelyekben az Azure Service Bus csak bizonyos jól ismert helyekről érhető el. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekről származó forgalom fogadására. Ha például a Service Bus szolgáltatást [Azure Express Route][express-route] használatával használja, létrehozhat egy **tűzfalszabályt,** amely csak a helyszíni infrastruktúra IP-címeiből vagy egy vállalati NAT-átjáró címéről engedélyezi a forgalmat. 
+Ez a funkció olyan helyzetekben hasznos, amikor a Azure Service Bus csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például a Service Bus az [Azure Express Route] [Express-Route] használatával használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről vagy a vállalati NAT-átjáró címeiről érkező forgalmat engedélyezze. 
 
-Az IP-tűzfal szabályok a Service Bus névtér szintjén kerülnek alkalmazásra. Ezért a szabályok a támogatott protokollt használó ügyfelek összes kapcsolatára vonatkoznak. A Service Bus névterén engedélyezett IP-szabálynak nem megfelelő IP-címről érkező csatlakozási kísérlet nem engedélyezett. A válasz nem említi az IP-szabályt. Az IP-szűrőszabályok sorrendben kerülnek alkalmazásra, és az IP-címnek megfelelő első szabály határozza meg az elfogadási vagy elutasítási műveletet.
+Az IP-tűzfalszabályok a Service Bus névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Service Bus névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
-További információ: [Ip-tűzfal konfigurálása Service Bus-névtérhez](service-bus-ip-filtering.md)
+További információ: az [IP-tűzfal konfigurálása Service Bus névtérhez](service-bus-ip-filtering.md)
 
-## <a name="network-service-endpoints"></a>Hálózati szolgáltatás végpontjai
-A Service Bus [virtuális hálózati (VNet) szolgáltatásvégpontokkal](service-bus-service-endpoints.md) való integrációja lehetővé teszi a virtuális hálózatokhoz kötött számítási feladatokból, például a virtuális hálózatokhoz kötött virtuális gépekről származó üzenetküldési képességek biztonságos elérését, és a hálózati forgalom elérési útja mindkét végén biztonságos.
+## <a name="network-service-endpoints"></a>Hálózati szolgáltatási végpontok
+Service Bus és [Virtual Network (VNet) szolgáltatás-végpontok](service-bus-service-endpoints.md) integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja mindkét végén védett.
 
-Ha úgy van beállítva, hogy legalább egy virtuális hálózati alhálózati szolgáltatás végponthoz legyen kötve, a megfelelő Service Bus-névtér már nem fogadja el a forgalmat bárhonnan, csak az engedélyezett virtuális hálózat(ok)hoz. A virtuális hálózati perspektíva, a Service Bus névtér és a szolgáltatás végpontja konfigurálja egy elszigetelt hálózati alagút a virtuális hálózati alhálózat az üzenetküldő szolgáltatás.
+Ha úgy konfigurálták, hogy legalább egy virtuális hálózati alhálózat szolgáltatási végponthoz legyen kötve, a megfelelő Service Bus névtér többé nem fogadja el a forgalmat bárhonnan, de engedélyezett virtuális hálózat (ok) ból. A virtuális hálózat szempontjából a Service Bus névtér kötése egy szolgáltatási végponthoz egy elkülönített hálózati alagutat konfigurál a virtuális hálózat alhálózatáról az üzenetküldési szolgáltatáshoz.
 
-Az eredmény egy privát és elkülönített kapcsolat az alhálózathoz és a megfelelő Service Bus-névtérhez kötött munkaterhelések között, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe nyilvános IP-tartományban van.
+Az eredmény az alhálózathoz és a megfelelő Service Bus névtérhez kötött munkaterhelések közötti privát és elkülönített kapcsolat, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe egy nyilvános IP-tartományban van.
 
 > [!IMPORTANT]
-> A virtuális hálózatok csak [a Prémium szintű](service-bus-premium-messaging.md) Service Bus-névterekben támogatottak.
+> A virtuális hálózatok csak [prémium szintű](service-bus-premium-messaging.md) Service Bus névterek esetén támogatottak.
 > 
-> VNet szolgáltatásvégpontok használatakor a Service Bus, nem szabad engedélyezni ezeket a végpontokat az alkalmazásokban, amelyek keverik a standard és a prémium szintű Service Bus névterek. Mivel a standard szint nem támogatja a virtuális hálózatokat. A végpont csak a prémium szintű névterekre korlátozódik.
+> Ha a VNet szolgáltatásbeli végpontokat Service Bus használatával használja, ezeket a végpontokat nem ajánlott olyan alkalmazásokban engedélyezni, amelyek a standard és a prémium szintű Service Bus névtereket keverik. Mivel a standard szint nem támogatja a virtuális hálózatok. A végpont csak a prémium szintű névterek számára van korlátozva.
 
-### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A virtuális hálózat integrációja által engedélyezett speciális biztonsági forgatókönyvek 
+### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
-Olyan megoldások, amelyek szigorú és széttagolt biztonságot igényelnek, és ahol a virtuális hálózati alhálózatok biztosítják a széttagolt szolgáltatások közötti szegmentálást, általában továbbra is szükség van az ezekben a rekeszekben található szolgáltatások közötti kommunikációs útvonalakra.
+A szigorú és compartmentalized biztonságot igénylő megoldások, valamint a virtuális hálózatok alhálózatai biztosítják a compartmentalized szolgáltatások közötti szegmentálást, általánosságban továbbra is szükség van a kommunikációs útvonalakra az ezekben a rekeszekben található szolgáltatások között.
 
-A rekeszek közötti bármely közvetlen IP-útvonal, beleértve a TCP/IP-n keresztül https-t hordozókat is, magában hordozza a biztonsági rések kihasználásának kockázatát a hálózati rétegből felfelé. Az üzenetküldő szolgáltatások teljesen szigetelt kommunikációs útvonalakat biztosítanak, ahol az üzenetek et még a lemezekre is írják, amint a felek között áttérnek. Két különböző virtuális hálózat, amelyek ugyanahhoz a Service Bus-példányhoz vannak kötve, hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a megfelelő hálózati elkülönítési határ integritása megmarad.
+A rekeszek közötti közvetlen IP-útvonal, beleértve a TCP/IP protokollon keresztüli HTTPS-t is, a hálózati réteg biztonsági réseinak kiaknázásának kockázatát hordozza. Az üzenetkezelési szolgáltatások teljes mértékben szigetelt kommunikációs útvonalakat biztosítanak, ahol az üzenetek a felek közötti váltáskor lemezre is írhatók. Az ugyanahhoz a Service Bus-példányhoz kötött két különálló virtuális hálózatban a munkaterhelések hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a hálózat elkülönítési határának megfelelő integritása megmarad.
  
-Ez azt jelenti, hogy a biztonsági szempontból érzékeny felhőalapú megoldásai nem csak az Azure iparágvezető megbízható és skálázható aszinkron üzenetkezelési képességeihez férnek hozzá, hanem mostantól az üzenetküldés segítségével kommunikációs útvonalakat hozhatnak létre a biztonságos megoldási rekeszek között, amelyek eredendően biztonságosabbak, mint bármely peer-to-peer kommunikációs mód, beleértve a HTTPS-t és más TLS-vel védett szoftvercsatorna protokollokat.
+Ez azt jelenti, hogy a biztonsági szempontból bizalmas Felhőbeli megoldások nem csupán az Azure piacvezető megbízható és skálázható üzenetkezelési képességeihez férnek hozzá, de mostantól az üzenetküldés használatával kommunikációs útvonalakat hozhatnak létre a biztonságos Megoldási rekeszek között, amelyek eleve biztonságosabbak, mint bármely egyenrangú kommunikációs mód, beleértve a HTTPS-t és más TLS-védelemmel ellátott szoftvercsatorna-protokollokat is.
 
 ### <a name="bind-service-bus-to-virtual-networks"></a>Service Bus kötése virtuális hálózatokhoz
 
-*A virtuális hálózati szabályok* a tűzfal biztonsági szolgáltatása, amely azt szabályozza, hogy az Azure Service Bus-kiszolgáló fogadja-e a kapcsolatot egy adott virtuális hálózati alhálózatból.
+A *virtuális hálózati szabályok* a tűzfal biztonsági funkciója, amely azt szabályozza, hogy a Azure Service Bus-kiszolgáló egy adott virtuális hálózati alhálózat kapcsolatait fogadja-e.
 
-A Service Bus-névtér virtuális hálózathoz kötése kétlépésből áll. Először létre kell hoznia egy **virtuális hálózati szolgáltatás végpontját** egy virtuális hálózat alhálózaton, és engedélyeznie kell azt a **Microsoft.ServiceBus** számára a [szolgáltatás végpontjának áttekintése szerint.](service-bus-service-endpoints.md) Miután hozzáadta a szolgáltatásvégpontot, a Service Bus névterét **egy virtuális hálózati szabállyal**köti hozzá.
+A Service Bus névterek virtuális hálózathoz való kötése kétlépéses folyamat. Először létre kell hoznia egy **Virtual Network szolgáltatási végpontot** egy Virtual Network alhálózaton, és engedélyeznie kell azt a **Microsoft. ServiceBus** számára a [szolgáltatási végpont áttekintése című](service-bus-service-endpoints.md)részben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Service Bus névteret egy **virtuális hálózati szabállyal**kell kötnie.
 
-A virtuális hálózati szabály a Service Bus névtér és a virtuális hálózati alhálózat társítása. Amíg a szabály létezik, az alhálózathoz kötött összes számítási feladat hozzáférést kap a Service Bus névtérhez. A Service Bus maga soha nem hoz létre kimenő kapcsolatokat, nem kell hozzáférnie, és ezért soha nem kap hozzáférést az alhálózathoz, ha engedélyezi ezt a szabályt.
+A virtuális hálózati szabály a Service Bus névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Service Bus névtérhez. Service Bus maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kapnak hozzáférést az alhálózathoz.
 
-További információ: [Virtuális hálózati szolgáltatásvégpontok konfigurálása service bus-névtérhez](service-bus-service-endpoints.md)
+További információ: [virtuális hálózati szolgáltatási végpontok konfigurálása Service Bus névtérhez](service-bus-service-endpoints.md)
 
 ## <a name="private-endpoints"></a>Privát végpontok
 
-Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Service Bus, az Azure Storage és az Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat **egy privát végpontján** keresztül.
+Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Service Bus, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
 
-A privát végpont egy hálózati adapter, amely privát és biztonságos kapcsolatot biztosít az Azure Private Link által működtetett szolgáltatással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatáshoz irányuló összes forgalom átirányítható a privát végponton keresztül, így nincs szükség átjárókra, NAT-eszközökre, ExpressRoute- vagy VPN-kapcsolatokra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Csatlakozhat egy Azure-erőforrás egy példányához, így a legmagasabb szintű részletességet biztosíthatja a hozzáférés-vezérlésben.
+A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-További információ: [Mi az Azure Private Link?](../private-link/private-link-overview.md)
+További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
 > [!NOTE]
-> Ezt a funkciót az Azure Service Bus **prémium** szintje támogatja. A prémium szintről további információt a Service Bus Premium és a [Standard üzenetkezelési csomagok](service-bus-premium-messaging.md) cikkben talál.
+> Ez a funkció a Azure Service Bus **Premium** szintjével támogatott. A prémium szintű csomaggal kapcsolatos további információkért tekintse meg a [prémium és standard szintű üzenetkezelési szintek Service Busét](service-bus-premium-messaging.md) ismertető cikket.
 >
-> Ez a funkció jelenleg **előzetes verzióban érhető el.** 
+> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
 
 
-További információ: [Privát végpontok konfigurálása service bus-névtérhez](private-link-service.md)
+További információ: [privát végpontok konfigurálása Service Bus névtérhez](private-link-service.md)
 
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Az IP-tűzfal konfigurálása service bus-névtérhez](service-bus-ip-filtering.md)
-- [Virtuális hálózati szolgáltatás végpontjainak konfigurálása service bus-névtérhez](service-bus-service-endpoints.md)
-- [Privát végpontok konfigurálása service bus-névtérhez](private-link-service.md)
+- [Az IP-tűzfal konfigurálása Service Bus névtérhez](service-bus-ip-filtering.md)
+- [Virtuális hálózati szolgáltatási végpontok konfigurálása Service Bus névtérhez](service-bus-service-endpoints.md)
+- [Privát végpontok konfigurálása Service Bus névtérhez](private-link-service.md)

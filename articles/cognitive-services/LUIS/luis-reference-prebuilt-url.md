@@ -1,7 +1,7 @@
 ---
-title: URL előre összeállított entitások - LUIS
+title: URL-alapú előre összeépített entitások – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk az előzetes entitásadatokat tartalmazza a nyelvi ismeretek (LUIS) című témakörben.
+description: Ez a cikk a Language Understanding (LUIS) URL-címen előre felépített entitásokra vonatkozó információkat tartalmaz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270347"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás előre összeállított URL-címe
-Az URL-entitás tartománynevekkel vagy IP-címekkel bontja ki az URL-címeket. Mivel ez az entitás már be van tanítva, nem kell url-eket tartalmazó példautters hozzáadása az alkalmazáshoz. Az URL-entitás `en-us` csak a kulturális környezetben támogatott.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás URL-re épülő előkészített entitása
+URL-entitás kinyeri az URL-címeket tartománynevek vagy IP-címekkel. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például az alkalmazás URL-címeit tartalmazó hosszúságú kimondott szöveg. Az URL-entitás csak `en-us` a kulturális környezetekben támogatott.
 
-## <a name="types-of-urls"></a>Az URL-címek típusai
-Az URL-cím kezelése a [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub-tárházból történik
+## <a name="types-of-urls"></a>URL-típusok
+Az URL-cím a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) adattárból kezelhető
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Megoldás előre összeállított URL-entitáshoz
+## <a name="resolution-for-prebuilt-url-entity"></a>Az előre elkészített URL-entitás feloldása
 
-A következő entitásobjektumok at adják vissza a lekérdezéshez:
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON `verbose` paraméter a `false`következő:
+A következő JSON a `verbose` paraméter értéke: `false`
 
 ```json
 "entities": {
@@ -43,7 +43,7 @@ A következő JSON `verbose` paraméter a `false`következő:
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON `verbose` paraméter a `true`következő:
+A következő JSON a `verbose` paraméter értéke: `true`
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ A következő JSON `verbose` paraméter a `true`következő:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-A következő példa azt https://www.luis.ai mutatja, a felbontás a egy nagy kognitív szolgáltatások példája a mesterséges intelligencia
+A következő példa bemutatja, hogy az a https://www.luis.ai mesterséges intelligencia kiváló kognitív szolgáltatásainak példája
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ A következő példa azt https://www.luis.ai mutatja, a felbontás a egy nagy ko
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [szint,](luis-reference-prebuilt-ordinal.md) [a szám](luis-reference-prebuilt-number.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokról.
+További információ a [sorszámok](luis-reference-prebuilt-ordinal.md), a [számok](luis-reference-prebuilt-number.md)és a [hőmérsékleti](luis-reference-prebuilt-temperature.md) entitásokról.

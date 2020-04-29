@@ -1,7 +1,7 @@
 ---
-title: Előre összeállított tartományhivatkozás - LUIS
+title: Előre elkészített tartományi hivatkozás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Hivatkozás az előre összeállított tartományok, amelyek előre összeállított gyűjtemények szándékok és entitások a nyelv-ismeretek megértése intelligens szolgáltatások (LUIS).
+description: Az előre elkészített tartományokra mutató hivatkozásokat, amelyek az Language Understanding intelligens szolgáltatásokból (LUIS) származó szándékok és entitások előre összeépített gyűjteményei.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270615"
 ---
-# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre összeállított tartományhivatkozás a LUIS alkalmazáshoz
-Ez a hivatkozás az [előre összeállított tartományokról](luis-how-to-use-prebuilt-domains.md)nyújt információt, amelyek a LUIS által biztosított leképezések és entitások előre összeállított gyűjteményei.
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre elkészített tartományi referenciák a LUIS-alkalmazáshoz
+Ez a hivatkozás az [előre elkészített tartományokra](luis-how-to-use-prebuilt-domains.md)vonatkozó információkat tartalmaz, amelyek a Luis által kínált szándékok és entitások előre összeépített gyűjteményei.
 
-[Az egyéni tartományok](luis-how-to-start-new-app.md)ezzel szemben szándékok és modellek nélkül kezdődnek. Az egyéni modellhez hozzáadhat ja az előre összeállított tartományi leképezéseket és entitásokat.
+Az [Egyéni tartományok](luis-how-to-start-new-app.md)ezzel szemben a nem szándékok és modellek használatával kezdődnek. Hozzáadhat bármilyen előre elkészített tartományi leképezéseket és entitásokat egy egyéni modellhez.
 
-## <a name="custom-domains-per-language"></a>Egyéni tartományok nyelvenként
+## <a name="custom-domains-per-language"></a>Egyéni tartományok nyelv szerint
 
-Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az angol nyelv támogatása általában teljesebb, mint mások.
+Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az angol nyelvű támogatás általában teljesebb, mint mások.
 
-| Entitás típusa       | EN-US      | ZH-CN   | DE    | JK     | ES    | IT      | PT-BR |  JP  |      Ko |        NL |    TR |
+| Entitás típusa       | EN-US      | ZH-CN   | DE    | JK     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
 | Naptár  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 |Kommunikáció  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Otthoni automatizálás          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Megjegyzések     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Helyek   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Todo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Segédprogramok      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Időjárás        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
-Az előre összeállított tartományok **nem támogatottak:**
+Az előre elkészített tartományok **nem támogatottak** a ben:
 
 * Francia kanadai
 * Hindi
@@ -49,4 +49,4 @@ Az előre összeállított tartományok **nem támogatottak:**
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg az [egyszerű entitást.](reference-entity-simple.md)
+Ismerje meg az [egyszerű entitást](reference-entity-simple.md).

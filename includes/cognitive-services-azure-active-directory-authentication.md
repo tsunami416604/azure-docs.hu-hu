@@ -5,49 +5,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
 ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78262267"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
 > [!IMPORTANT]
-> 1. Jelenleg **csak** a Computer Vision API, Face API, Text Analytics API, Immersive Reader, Form Recognizer, Anomaly Detector és az összes Bing-szolgáltatás, kivéve a Bing egyéni keresés támogatás hitelesítése az Azure Active Directory (AAD) használatával.
-> 2. Az AAD-hitelesítést mindig együtt kell használni az Azure-erőforrás egyéni altartománynevével együtt. [A regionális végpontok](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nem támogatják az AAD-hitelesítést.
+> 1. Jelenleg **csak** a Computer Vision API, a Face API, a Text Analytics API, a teljes olvasó, az űrlap-felismerő, a anomália-detektor és az összes Bing-szolgáltatás Bing Custom Search támogatja a hitelesítést a Azure Active Directory (HRE) használatával.
+> 2. Az HRE-hitelesítést mindig az Azure-erőforrás egyéni altartománynevével együtt kell használni. A [regionális végpontok](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nem TÁMOGATJÁK a HRE-hitelesítést.
 
-Az előző szakaszokban megmutattuk, hogyan hitelesítheti magát az Azure Cognitive Services szolgáltatással egy szolgáltatásból vagy többszolgáltatásos előfizetési kulccsal. Bár ezek a kulcsok gyors és egyszerű utat biztosítanak a fejlesztés megkezdéséhez, a szerepköralapú hozzáférés-vezérlést igénylő összetettebb forgatókönyvekben elmaradnak. Vessünk egy pillantást, mi szükséges a hitelesítéshez az Azure Active Directory (AAD) használatával.
+Az előző szakaszokban bemutatjuk, hogyan végezheti el a hitelesítést az Azure Cognitive Services az egy vagy több szolgáltatást használó előfizetési kulccsal. Habár ezek a kulcsok gyors és egyszerű elérési utat biztosítanak a fejlesztés megkezdéséhez, azok a bonyolultabb forgatókönyvek, amelyek szerepköralapú hozzáférés-vezérlést igényelnek. Nézzük meg, mi szükséges a hitelesítéshez Azure Active Directory (HRE) használatával.
 
-A következő szakaszokban az Azure Cloud Shell-környezet vagy az Azure CLI használatával hozzon létre egy altartományt, rendeljen hozzá szerepköröket, és szerezzen be egy tulajdonosi jogkivonatot az Azure Cognitive Services hívásához. Ha elakad, az egyes szakaszokban hivatkozások találhatók az Azure Cloud Shell/Azure CLI minden egyes parancsához elérhető összes beállítással.
+A következő fejezetekben a Azure Cloud Shell vagy az Azure CLI használatával hozhat létre altartományokat, szerepköröket rendelhet hozzá, és beszerezhet egy tulajdonosi jogkivonatot az Azure-Cognitive Services meghívásához. Ha elakad, a rendszer a Azure Cloud Shell/Azure CLI-ben minden parancshoz elérhető összes lehetőséget tartalmazó hivatkozásokat tartalmaz.
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Erőforrás létrehozása egyéni altartománnyal
 
-Az első lépés egy egyéni altartomány létrehozása. Ha olyan meglévő Cognitive Services-erőforrást szeretne használni, amely nem rendelkezik egyéni altartománynévvel, kövesse a [Cognitive Services egyéni altartományok utasításait](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) az erőforrás egyéni altartományának engedélyezéséhez.
+Első lépésként hozzon létre egy egyéni altartományt. Ha olyan meglévő Cognitive Services-erőforrást szeretne használni, amely nem rendelkezik egyéni altartomány nevével, kövesse a [Cognitive Services egyéni altartományok](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) című témakör utasításait az erőforráshoz tartozó egyéni altartományok engedélyezéséhez.
 
-1. Kezdje az Azure Cloud Shell megnyitásával. Ezután [válasszon egy előfizetést:](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0)
+1. Először nyissa meg a Azure Cloud Shell. Ezután [válasszon ki egy előfizetést](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Ezután [hozzon létre egy Cognitive Services-erőforrást](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) egy egyéni altartománnyal. Az altartomány nevének globálisan egyedinek kell lennie, és nem tartalmazhat speciális karaktereket, például: ".","!"!", ",".
+2. Ezután [hozzon létre egy Cognitive Services erőforrást](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) egy egyéni altartománnyal. Az altartomány nevének globálisan egyedinek kell lennie, és nem tartalmazhat speciális karaktereket (például: ".", "!", ",").
 
    ```powershell-interactive
    New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
    ```
 
-3. Ha sikeres, a **végpontnak** meg kell jelennie az erőforrás egyedi altartománynevének.
+3. Ha a művelet sikeres, a **végpontnak** az erőforrás egyedi altartománynevét kell megjelenítenie.
 
 
-### <a name="assign-a-role-to-a-service-principal"></a>Szerepkör hozzárendelése egyszerű szolgáltatáshoz
+### <a name="assign-a-role-to-a-service-principal"></a>Szerepkör kiosztása egy egyszerű szolgáltatáshoz
 
-Most, hogy rendelkezik egy egyéni altartománnyal az erőforráshoz társítva, szerepkört kell rendelnie egy egyszerű szolgáltatáshoz.
+Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozzá kell rendelnie egy szerepkört egy egyszerű szolgáltatáshoz.
 
 > [!NOTE]
-> Ne feledje, hogy az AAD szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.
+> Ne feledje, hogy a HRE szerepkör-hozzárendelések akár öt percet is igénybe vehetnek.
 
-1. Először is regisztráljunk egy [AAD alkalmazást.](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)
+1. Először regisztráljon egy [HRE alkalmazást](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -55,37 +55,37 @@ Most, hogy rendelkezik egy egyéni altartománnyal az erőforráshoz társítva,
    New-AzADApplication -DisplayName <APP_DISPLAY_NAME> -IdentifierUris <APP_URIS> -Password $SecureStringPassword
    ```
 
-   Szüksége lesz az **ApplicationId-re** a következő lépésben.
+   A következő lépésben szüksége lesz a **ApplicationId** .
 
-2. Ezután létre kell [hoznia egy egyszerű szolgáltatás](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) az AAD-alkalmazáshoz.
+2. Ezután [létre kell hoznia egy szolgáltatásnevet](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) a HRE alkalmazáshoz.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
    ```
 
    >[!NOTE]
-   > Ha regisztrál egy alkalmazást az Azure Portalon, ez a lépés befejeződik az Ön számára.
+   > Ha a Azure Portalban regisztrál egy alkalmazást, ez a lépés az Ön számára lesz elvégezve.
 
-3. Az utolsó lépés az, hogy [rendelje hozzá a "Cognitive Services User" szerepkört](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) a szolgáltatásnévhez (hatóköre az erőforráshoz). Egy szerepkör hozzárendelésével egyszerű szolgáltatáshozzáférést biztosít ehhez az erőforráshoz. Ugyanazt a szolgáltatásalapú hozzáférést biztosíthatja az előfizetés több erőforrásához.
+3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
    >[!NOTE]
-   > A szolgáltatásnév ObjectId ja, nem az alkalmazás ObjectId azonosítója.
-   > A ACCOUNT_ID a létrehozott Cognitive Services-fiók Azure-erőforrásazonosítója lesz. Az Azure Portalon az Azure-portál "tulajdonságai" alapján megtalálhatja az Azure-erőforrás-azonosítót.
+   > Az egyszerű szolgáltatásnév ObjectId van használatban, nem az alkalmazás ObjectId.
+   > A ACCOUNT_ID a létrehozott Cognitive Services fiók Azure-erőforrás-azonosítója lesz. Az Azure Resource id-t a Azure Portal erőforrás "tulajdonságok" területén találja.
 
    ```azurecli-interactive
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"
    ```
 
-### <a name="sample-request"></a>Mintakérelem
+### <a name="sample-request"></a>Példa a kérelemre
 
-Ebben a példában egy jelszó a szolgáltatásnév hitelesítéséhez szolgál. A megadott jogkivonatezután a Computer Vision API hívására szolgál.
+Ebben a példában egy jelszót használunk az egyszerű szolgáltatás hitelesítéséhez. A rendszer a megadott jogkivonatot használja a Computer Vision API meghívásához.
 
-1. Szerezd meg **tenantId:**
+1. A **TenantId**beszerzése:
    ```powershell-interactive
    $context=Get-AzContext
    $context.Tenant.Id
    ```
 
-2. Token beszerezni:
+2. Token beszerzése:
    ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
@@ -93,11 +93,11 @@ Ebben a példában egy jelszó a szolgáltatásnév hitelesítéséhez szolgál.
    $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
    $token
    ```
-3. Hívja a Computer Vision API-t:
+3. Hívja meg a Computer Vision API:
    ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"
    $result = Invoke-RestMethod -Uri $url  -Method Get -Headers @{"Authorization"=$token.CreateAuthorizationHeader()} -Verbose
    $result | ConvertTo-Json
    ```
 
-Másik lehetőségként a szolgáltatásnév hitelesíthető egy tanúsítvánnyal. A szolgáltatásnév mellett a felhasználó egyszerű felhasználót is támogatja egy másik AAD-alkalmazáson keresztül delegált engedélyek. Ebben az esetben a jelszavak vagy tanúsítványok helyett a felhasználók kétfaktoros hitelesítést kérnek a jogkivonat beolvasásakor.
+Másik lehetőségként az egyszerű szolgáltatás hitelesítése tanúsítvánnyal végezhető el. Az egyszerű szolgáltatásnév mellett a felhasználói rendszerbiztonsági tag is támogatott azáltal, hogy egy másik HRE-alkalmazásban delegált engedélyekkel rendelkezik. Ebben az esetben a jelszavak vagy tanúsítványok helyett a felhasználókat a rendszer a token beszerzése során a kétfaktoros hitelesítésre kéri.

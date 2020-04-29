@@ -1,7 +1,7 @@
 ---
-title: Az inaktív adatok nyelvtudása szolgáltatástitkosítása
+title: Inaktív adatok Language Understanding szolgáltatás titkosítása
 titleSuffix: Azure Cognitive Services
-description: Nyelvismertetés identik az inaktív adatok szolgáltatástitkosítását.
+description: Az inaktív adatok Language Understanding szolgáltatás titkosítása.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,86 +10,86 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79372336"
 ---
-# <a name="language-understanding-service-encryption-of-data-at-rest"></a>Az inaktív adatok nyelvtudása szolgáltatástitkosítása
+# <a name="language-understanding-service-encryption-of-data-at-rest"></a>Inaktív adatok Language Understanding szolgáltatás titkosítása
 
-A Language Understanding szolgáltatás automatikusan titkosítja az adatokat, ha azok megmaradnak a felhőben. A Language Understanding szolgáltatás titkosítása védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
+A Language Understanding szolgáltatás automatikusan titkosítja az adatait, amikor a felhőben is megmarad. A Language Understanding szolgáltatás titkosítása védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
-## <a name="about-cognitive-services-encryption"></a>A Cognitive Services titkosítása
+## <a name="about-cognitive-services-encryption"></a>Tudnivalók a Cognitive Services titkosításról
 
-Az adatok titkosítása és visszafejtése [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) kompatibilis [256 bites AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítással történik. A titkosítás és a visszafejtés transzparens, ami azt jelenti, hogy a titkosítás és a hozzáférés kezelése az Ön számára. Az adatok alapértelmezés szerint biztonságosak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás előnyeinek kihasználásához.
+Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Alapértelmezés szerint az adatai biztonságban vannak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás kihasználása érdekében.
 
-## <a name="about-encryption-key-management"></a>Titkosítási kulcs kezelése –
+## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
-Az előfizetés alapértelmezés szerint Microsoft által felügyelt titkosítási kulcsokat használ. Lehetőség van arra is, hogy az előfizetést saját kulcsokkal kezelje. Az ügyfél által felügyelt kulcsok (CMK) nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlők létrehozásához, elforgatásához, letiltásához és visszavonásához. Az adatok védelmére használt titkosítási kulcsokat is naplózhatja.
+Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Lehetősége van arra is, hogy az előfizetését a saját kulcsaival kezelje. Az ügyfél által felügyelt kulcsok (CMK-EK) nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
-## <a name="customer-managed-keys-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok az Azure Key Vault segítségével
+## <a name="customer-managed-keys-with-azure-key-vault"></a>Felhasználó által kezelt kulcsok az Azure Key Vaulttal
 
-Lehetőség van arra is, hogy az előfizetést saját kulcsokkal kezelje. Az ügyfél által felügyelt kulcsok (CMK), más néven a Saját kulcs (BYOK) létrehozása, elforgatása, letiltása és visszavonása nagyobb rugalmasságot biztosít a hozzáférés-vezérlők létrehozásához, elforgatásához, letiltásához és visszavonásához. Az adatok védelmére használt titkosítási kulcsokat is naplózhatja.
+Lehetősége van arra is, hogy az előfizetését a saját kulcsaival kezelje. Az ügyfél által felügyelt kulcsok (CMK) – más néven saját kulcs használata (BYOK) – nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
-Az ügyfél által felügyelt kulcsok tárolásához az Azure Key Vault használatával kell tárolnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services-erőforrás és a key vault kell lennie ugyanabban a régióban és ugyanabban az Azure Active Directory (Azure AD) bérlőben, de lehetnek különböző előfizetések. Az Azure Key Vaultról a [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
-### <a name="customer-managed-keys-for-language-understanding"></a>Ügyfél által felügyelt kulcsai a nyelvismertetéshez
+### <a name="customer-managed-keys-for-language-understanding"></a>Ügyfél által felügyelt kulcsok Language Understanding
 
-Az ügyfél által kezelt kulcsok használatának kérelmezéséhez töltse ki és küldje el a [LUIS szolgáltatás ügyfélszolgálati ügyféláltal felügyelt kulcskérelem-űrlapát.](https://aka.ms/cogsvc-cmk) Körülbelül 3-5 munkanapba telik, hogy meghallgassa a kérés állapotát. Az igénytől függően előfordulhat, hogy várólistába kerül, és jóváhagyják, amint rendelkezésre áll a hely. Miután jóváhagyta a CMK és a LUIS használatát, létre kell hoznia egy új nyelvi megértési erőforrást az Azure Portalról, és az E0-t kell kiválasztania tarifacsomagként. Az új termékváltozat ugyanúgy fog működni, mint a cmk kivételével már elérhető F0 termékváltozat. A felhasználók nem tudnak frissíteni az F0-ről az új E0 termékváltozatra.
+Az ügyfél által felügyelt kulcsok használatának kérelmezéséhez töltse ki és küldje el a [Luis szolgáltatás ügyfél által felügyelt kulcs kérése űrlapot](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. Az új SKU ugyanúgy fog működni, mint a F0 SKU, amely a CMK kivételével már elérhető. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
 
-Az E0-erőforrások csak szerzői szolgáltatáshoz érhetők el, és az E0 szint kezdetben csak az USA nyugati régiójában támogatott.
+A E0-erőforrások csak authoring Service-ben érhetők el, és a E0-szintet kezdetben csak az USA nyugati régiójában lehet támogatni.
 
-![LUIS-előfizetés képe](../media/cognitive-services-encryption/luis-subscription.png)
+![LUIS-előfizetési rendszerkép](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az ügyfelek által felügyelt kulcsok jelenleg az **USA nyugati régiójában** érhetők el.
+Az ügyfél által felügyelt kulcsok jelenleg az **USA nyugati** régiójában érhetők el.
 
 ### <a name="limitations"></a>Korlátozások
 
-Az E0 szint meglévő/korábban létrehozott alkalmazásokkal való használata korként bizonyos korlátozások nak vannak kitöltése:
+A meglévő/korábban létrehozott alkalmazásokkal a E0 szinten vannak korlátozások:
 
-* Az E0 erőforrásra való áttérés le lesz tiltva. A felhasználók csak az F0-erőforrásokba telepíthetik át alkalmazásaikat. Miután áttelepített egy meglévő erőforrást az F0-be, létrehozhat egy új erőforrást az E0 rétegben. A migrációról itt olvashat [bővebben.](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)  
-* Az alkalmazások E0-erőforrásba vagy e0-erőforrásból való áthelyezése le lesz tiltva. A korlátozás megoldásához érdemes exportálni a meglévő alkalmazást, és e0-erőforrásként importálni.
-* A Bing helyesírás-ellenőrző szolgáltatás a nem támogatott.
+* A rendszer letiltja a E0-erőforrásba való áttelepítést. A felhasználók csak F0-erőforrásokra telepíthetik alkalmazásaikat. Miután áttelepített egy meglévő erőforrást a F0-ra, létrehozhat egy új erőforrást a E0 szinten. További információ az [áttelepítésről](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring).  
+* Az alkalmazások E0-erőforrásba vagy onnan történő áthelyezése le lesz tiltva. A korlátozásnak megfelelő megoldás a meglévő alkalmazás exportálása, és E0-erőforrásként való importálása.
+* A Bing Spell Check funkció nem támogatott.
 * A végfelhasználói forgalom naplózása le van tiltva, ha az alkalmazás E0.
-* A beszédfelismerési alapozási képesség az Azure Bot szolgáltatás nem támogatott az E0 rétegben lévő alkalmazások. Ez a funkció az Azure Bot Szolgáltatáson keresztül érhető el, amely nem támogatja a CMK-t.
-* A beszéd alapozási képesség a portálon igényel Azure Blob Storage. További információ: [Saját tárhely megtekintése.](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging)
+* Az Azure bot Service-ből származó Speech alapozó képesség nem támogatott a E0 szinten lévő alkalmazások esetében. Ez a funkció a Azure Bot Serviceon keresztül érhető el, amely nem támogatja a CMK.
+* A portál beszédfelismerési funkciójának használatához Azure Blob Storage szükséges. További információ: [saját tároló](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging)használata.
 
-### <a name="enable-customer-managed-keys"></a>Ügyfél által kezelt kulcsok engedélyezése
+### <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 
-Egy új Cognitive Services-erőforrás mindig titkosítva van a Microsoft által felügyelt kulcsok használatával. Az erőforrás létrehozásakor nem lehet engedélyezni az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcsok az Azure Key Vaultban tárolódnak, és a key vaultot olyan hozzáférési szabályzatokkal kell kiépíteni, amelyek kulcsengedélyeket adnak a Cognitive Services-erőforráshoz társított felügyelt identitáshoz. A felügyelt identitás csak a CMK tarifacsomag használatával történő létrehozása után érhető el.
+Egy új Cognitive Services erőforrás mindig Microsoft által felügyelt kulcsokkal van titkosítva. Az ügyfél által felügyelt kulcsokat nem lehet engedélyezni az erőforrás létrehozásának időpontjában. Az ügyfél által felügyelt kulcsok Azure Key Vault tárolódnak, és a kulcstárolót olyan hozzáférési házirendekkel kell kiépíteni, amelyek kulcsfontosságú engedélyeket biztosítanak a Cognitive Services erőforráshoz társított felügyelt identitásnak. A felügyelt identitás csak akkor érhető el, ha az erőforrást a CMK díjszabási szintje alapján hozták létre.
 
-Az ügyfél által felügyelt kulcsok azure Key Vault for Cognitive Services titkosítással való használatáról a következő témakört olvashatja:
+A következő témakörből megtudhatja, hogyan használhatja az ügyfél által felügyelt kulcsokat a Azure Key Vault Cognitive Services titkosításhoz:
 
-- [Ügyfél által felügyelt kulcsok konfigurálása a Cognitive Services key vaulttitkosításával az Azure Portalról](../Encryption/cognitive-services-encryption-keys-portal.md)
+- [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Cognitive Services titkosításhoz a Azure Portal](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-Az ügyfél által kezelt kulcsok engedélyezése lehetővé teszi a rendszer hez rendelt felügyelt identitás, az Azure AD egyik szolgáltatása. Miután a rendszer hez rendelt felügyelt identitás engedélyezve van, ez az erőforrás regisztrálva lesz az Azure Active Directoryban. A regisztráció után a felügyelt identitás hozzáférést kap az ügyfél által felügyelt kulcs beállítása során kiválasztott Key Vaulthoz. További információ a [felügyelt identitásokról.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-
-> [!IMPORTANT]
-> Ha letiltja a rendszer hez rendelt felügyelt identitások, a hozzáférést a key vault eltávolításra kerül, és az ügyfélkulcsokkal titkosított adatok a továbbiakban nem lesz elérhető. Az adatoktól függő funkciók nem fognak működni.
+Az ügyfél által felügyelt kulcsok engedélyezése lehetővé teszi a rendszerhez rendelt felügyelt identitások, az Azure AD funkciójának engedélyezését is. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, ez az erőforrás Azure Active Directory lesz regisztrálva. A regisztrálást követően a felügyelt identitás hozzáférést kap az ügyfél által felügyelt kulcs beállításakor kiválasztott Key Vaulthoz. További információ a [felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 > [!IMPORTANT]
-> A felügyelt identitások jelenleg nem támogatják a címtárközi forgatókönyveket. Amikor az Azure Portalon ügyfél által felügyelt kulcsokat konfigurál, a rendszer automatikusan hozzárendeli a felügyelt identitást a lefedések alatt. Ha ezt követően áthelyezi az előfizetést, erőforráscsoportot vagy erőforrást az egyik Azure AD-könyvtárból egy másikba, az erőforráshoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok már nem működnek. További információ: **Előfizetés átvitele az Azure AD-könyvtárak között** [gyakori kérdésekben és az Azure-erőforrások felügyelt identitásaival kapcsolatos ismert problémák.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)  
+> Ha letiltja a rendszerhez rendelt felügyelt identitásokat, a Key vaulthoz való hozzáférés el lesz távolítva, és az ügyfél kulcsaival titkosított összes adat már nem lesz elérhető. Az adatoktól függő funkciók nem fognak működni.
 
-### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása az Azure Key Vaultban
+> [!IMPORTANT]
+> A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy az erőforrást egy Azure AD-címtárból egy másikba, az erőforráshoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
 
-Az ügyfél által felügyelt kulcsok engedélyezéséhez egy Azure Key Vault használatával kell tárolnia a kulcsokat. Engedélyeznie kell mind a **soft delete,** mind a **Ne ürítse** ki a kulcstartót.
+### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása Azure Key Vault
 
-A Cognitive Services titkosítása csak a 2048-as méretű RSA-kulcsokat támogatja. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Kulcstároló-kulcsok** című témakörben talál.
+Az ügyfél által felügyelt kulcsok engedélyezéséhez Azure Key Vault kell használnia a kulcsok tárolásához. Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton.
 
-### <a name="rotate-customer-managed-keys"></a>Ügyfél által kezelt kulcsok elforgatása
+Csak a 2048 méretű RSA-kulcsok támogatottak Cognitive Services titkosítással. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
-Az azure-key vaultban az ügyfél által felügyelt kulcsot a megfelelőségi szabályzatok szerint forgathatja. A kulcs elforgatása esetén frissítenie kell a Cognitive Services erőforrást az új kulcs URI használatához. Ha meg szeretné tudni, hogyan frissítheti az erőforrást a kulcs új verziójának használatára az Azure Portalon, tekintse meg **a Kulcsverzió frissítése** című szakaszt az [Ügyfél által felügyelt kulcsok konfigurálása a Cognitive Services számára az Azure Portal használatával című szakaszban.](../Encryption/cognitive-services-encryption-keys-portal.md)
+### <a name="rotate-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok elforgatása
 
-A kulcs elforgatása nem indítja el az erőforrásban lévő adatok újratitkosítását. A felhasználótól nincs szükség további műveletre.
+A megfelelőségi szabályzatok alapján Azure Key Vault elforgathatja az ügyfél által felügyelt kulcsot. A kulcs elforgatásakor frissítenie kell a Cognitive Services erőforrást az új kulcs URI-azonosítójának használatához. Ha meg szeretné tudni, hogyan frissítheti az erőforrást úgy, hogy a kulcs új verzióját használja a Azure Portalban, tekintse meg a következő témakört: **az** [ügyfél által felügyelt kulcsok konfigurálása a Cognitive Serviceshoz a Azure Portal használatával](../Encryption/cognitive-services-encryption-keys-portal.md).
 
-### <a name="revoke-access-to-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonása
+A kulcs elforgatása nem aktiválja újra az erőforrásban lévő adattitkosítást. Nincs szükség további műveletre a felhasználótól.
 
-Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShell vagy az Azure CLI használatát. További információ: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) vagy [Azure Key Vault CLI.](https://docs.microsoft.com/cli/azure/keyvault) A hozzáférés visszavonása hatékonyan blokkolja a hozzáférést a Cognitive Services-erőforrás összes adatához, mivel a titkosítási kulcs nem érhető el a Cognitive Services számára.
+### <a name="revoke-access-to-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok hozzáférésének visszavonása
+
+Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) vagy [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Cognitive Services erőforrásban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs Cognitive Services nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-* [LUIS szolgáltatás ügyfélszolgálatáltal felügyelt kulcskérelem űrlapja](https://aka.ms/cogsvc-cmk)
-* [További információ az Azure Key Vaultról](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [LUIS szolgáltatás ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

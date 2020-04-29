@@ -1,7 +1,7 @@
 ---
 title: Erőforrás létrehozása a Modern olvasóhoz
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan hozhat létre egy új, magával ragadó reader-erőforrást egyéni altartománnyal, majd konfigurálhatja az Azure AD-t az Azure-bérlőben.
+description: Ez a cikk bemutatja, hogyan hozhat létre egy új, teljes értékű olvasó-erőforrást egy egyéni altartománnyal, majd hogyan konfigurálhatja az Azure AD-t az Azure-bérlőben.
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
 ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330719"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Magával ragadó olvasói erőforrás létrehozása és az Azure Active Directory-hitelesítés konfigurálása
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
-Ebben a cikkben egy parancsfájlt biztosítunk, amely létrehoz egy magával ragadó olvasó-erőforrást, és konfigurálja az Azure Active Directory (Azure AD) hitelesítést. Minden alkalommal, amikor egy magával ragadó olvasó erőforrás jön létre, akár ezzel a parancsfájllal, vagy a portálon, azt is be kell állítani az Azure AD-engedélyekkel. Ez a szkript segít ebben.
+Ebben a cikkben egy olyan parancsfájlt biztosítunk, amely egy teljes olvasó erőforrást hoz létre, és konfigurálja Azure Active Directory (Azure AD) hitelesítést. Minden alkalommal, amikor létrejön egy magára ejtő olvasó erőforrás, legyen az a parancsfájl vagy a portálon, az Azure AD-engedélyekkel is konfigurálni kell. Ez a szkript segítséget nyújt Önnek.
 
-A parancsfájl célja, hogy hozza létre és konfigurálja az összes szükséges Immersive Reader és az Azure AD-erőforrások az Ön számára minden egy lépésben. Azonban csak konfigurálhatja az Azure AD-hitelesítést egy meglévő Immersive Reader-erőforráshoz, ha például előfordulhat, hogy már létrehozott egyet az Azure Portalon.
+A szkript úgy van kialakítva, hogy az összes szükséges teljes olvasót és Azure AD-erőforrást egyetlen lépésben hozza létre és konfigurálja. Ugyanakkor az Azure AD-hitelesítést is konfigurálhatja egy meglévő, magával ragadó olvasó erőforráshoz, ha például már létrehozta az egyiket a Azure Portal.
 
-Egyes ügyfelek számára szükség lehet több Immersive Reader erőforrás létrehozására, a fejlesztés hez és a termeléshez, vagy talán több különböző régióhoz, ahol a szolgáltatás telepítve van. Ezekben az esetekben, akkor gyere vissza, és használja a parancsfájlt többször hozzon létre a különböző immersive Reader erőforrásokat, és azokat konfigurálva az Azure AD-engedélyeket.
+Egyes ügyfelek esetében szükség lehet több, a fejlesztéshez és a gyártáshoz, vagy akár több, a szolgáltatás üzembe helyezéséhez használt régióra is. Ilyen esetekben előfordulhat, hogy a parancsfájlt többször is felhasználhatja, hogy különböző, az olvasóhoz tartozó erőforrásokat hozzon létre, és az Azure AD-engedélyekkel konfigurálható legyen.
 
-A szkript célja, hogy rugalmas legyen. Először megkeresi a meglévő Immersive Reader és az Azure AD-erőforrásokat az előfizetésben, és csak szükség szerint hozza létre őket, ha még nem léteznek. Ha ez az első alkalom, hogy létrehoz egy magával ragadó reader erőforrást, a szkript mindent megtesz, amire szüksége van. Ha azt szeretné, hogy csak az Azure AD konfigurálásához egy meglévő, a portálon létrehozott Immersive Reader-erőforráshoz, azt is megteszi. Azt is fel lehet használni, hogy hozzon létre és konfigurálja több Alámerülés Reader források.
+A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a meglévő és az Azure AD-erőforrásokat fogja keresni, és csak akkor kell létrehoznia őket, ha még nem léteznek. Ha első alkalommal hozza létre az olvasói erőforrást, a szkript mindent megtesz, amire szüksége van. Ha azt szeretné, hogy az Azure AD-t egy meglévő, a portálon létrehozott, magától az olvasói erőforráshoz konfigurálja, azt is végrehajtja. Emellett több magával ragadó olvasó-erőforrás létrehozására és konfigurálására is használható.
 
 ## <a name="set-up-powershell-environment"></a>PowerShell-környezet beállítása
 
-1. Kezdje az [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)megnyitásával. Győződjön meg arról, hogy a felhőhéj a Bal felső `pwsh`legördülő menüben vagy a beírásban a PowerShell lesz állítva.
+1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Győződjön meg arról, hogy a Cloud Shell a PowerShell értékre van állítva a bal felső sarokban, `pwsh`vagy írja be a következőt:.
 
 1. Másolja és illessze be a következő kódrészletet a rendszerhéjba.
 
@@ -141,7 +141,7 @@ A szkript célja, hogy rugalmas legyen. Először megkeresi a meglévő Immersiv
     }
     ```
 
-1. Futtassa `Create-ImmersiveReaderResource`a függvényt, adja meg a paramétereket.
+1. Futtassa a függvényt `Create-ImmersiveReaderResource`, és szükség szerint adja meg a paramétereket.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -159,18 +159,18 @@ A szkript célja, hogy rugalmas legyen. Először megkeresi a meglévő Immersiv
 
     | Paraméter | Megjegyzések |
     | --- | --- |
-    | SubscriptionName |A Magával ragadó olvasóerőforráshoz használandó Azure-előfizetés neve. Az erőforrás létrehozásához előfizetéssel kell rendelkeznie. |
-    | ResourceName nevű erőforrásáról |  Alfanumerikusnak kell lennie, és tartalmazhat "-" értéket, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem haladhatja meg a 63 karaktert.|
-    | ResourceSubtartomány |A magával ragadó olvasó erőforráshoz egyéni altartomány szükséges. Az aldomaint az SDK használja, amikor a Immersive Reader szolgáltatást hívja az Olvasó elindításához. Az altartománynak globálisan egyedinek kell lennie. Az altartománynak alfanumerikusnak kell lennie, és tartalmazhat "-" értéket, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem haladhatja meg a 63 karaktert. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
-    | ResourceSKU |Beállítások: `S0`. Látogasson el a [Cognitive Services díjszabási oldalára,](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) ahol többet tudhat meg az egyes elérhető termékváltozatokról. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
-    | ResourceLocation |Lehetőségek: `eastus` `eastus2`, `southcentralus` `westus`, `westus2` `australiaeast`, `southeastasia` `centralindia`, `japaneast` `northeurope`, `uksouth` `westeurope`, , , , , , . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
-    | ResourceGroupName |Az erőforrások az előfizetéseken belüli erőforráscsoportokban jönnek létre. Adja meg egy meglévő erőforráscsoport nevét. Ha az erőforráscsoport még nem létezik, egy ilyen nevű új jön létre. |
-    | ResourceGroupLocation (Erőforráscsoport helye) |Ha az erőforráscsoport nem létezik, meg kell adnia egy helyet, ahol létre hozhatja a csoportot. A helyek listájának megkereséséhez futtassa a futtassa a futtassa a futtassa a futtassa a futtassa `az account list-locations` Használja a visszaadott eredmény *névtulajdonságát* (szóközök nélkül). Ez a paraméter nem kötelező, ha az erőforráscsoport már létezik. |
-    | AADAppDisplayName |Az Azure Active Directory-alkalmazás megjelenítendő neve. Ha egy meglévő Azure AD-alkalmazás nem található, egy új, ezzel a névvel jön létre. Ez a paraméter nem kötelező, ha az Azure AD-alkalmazás már létezik. |
-    | AADAppIdentifieruri között |Az Azure AD alkalmazás URI-ja. Ha egy meglévő Azure AD-alkalmazás nem található, egy újat hoz létre ezzel az URI-val. Például: `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |A létrehozott jelszó, amely et később a hitelesítéshez fog használni, amikor token beolvasásakor elindítja a Magával ragadó olvasót. A jelszónak legalább 16 karakter hosszúnak kell lennie, legalább 1 különleges karaktert kell tartalmaznia, és legalább 1 numerikus karaktert kell tartalmaznia. |
+    | SubscriptionName |Annak az Azure-előfizetésnek a neve, amelyet a magától elolvasó erőforráshoz kíván használni. Erőforrás létrehozásához előfizetés szükséges. |
+    | ResourceName nevű erőforrásáról |  Alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél.|
+    | ResourceSubdomain |Egy egyéni altartományra van szükség a magától elolvasó erőforráshoz. Az SDK ezt az altartományt használja, amikor meghívja az olvasót, hogy elindítsa a lebilincselő olvasó szolgáltatást. Az altartománynak globálisan egyedinek kell lennie. Az altartománynak alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
+    | ResourceSKU |Beállítások: `S0`. Az egyes rendelkezésre álló SKU-ra vonatkozó további információkért látogasson el [Cognitive Services díjszabási oldalára](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
+    | ResourceLocation |Beállítások: `eastus`, `eastus2` `southcentralus` `westus`,,, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
+    | ResourceGroupName |Erőforrások jönnek létre az előfizetésekben található erőforráscsoportok között. Adja meg egy meglévő erőforráscsoport nevét. Ha az erőforráscsoport még nem létezik, a rendszer létrehoz egy új nevet. |
+    | ResourceGroupLocation |Ha az erőforráscsoport nem létezik, meg kell adnia egy helyet, amelyben létre kívánja hozni a csoportot. A helyszínek listájának megkereséséhez futtassa `az account list-locations`a parancsot. Használja a visszaadott eredmény *Name* (szóközök nélkül) tulajdonságát. Ez a paraméter nem kötelező, ha az erőforráscsoport már létezik. |
+    | AADAppDisplayName |A Azure Active Directory alkalmazás megjelenített neve. Ha egy meglévő Azure AD-alkalmazás nem található, a rendszer létrehoz egy új nevet. Ez a paraméter nem kötelező, ha az Azure AD-alkalmazás már létezik. |
+    | AADAppIdentifierUri |Az Azure AD-alkalmazás URI-ja. Ha egy meglévő Azure AD-alkalmazás nem található, a rendszer létrehoz egy újat ezzel az URI-val. Például: `https://immersivereaderaad-mycompany`. |
+    | AADAppClientSecret |Az Ön által létrehozott jelszó, amelyet később a rendszer a token beszerzése során fog használni, hogy elindítsa az olvasót. A jelszónak legalább 16 karakterből kell állnia, és legalább 1 speciális karaktert kell tartalmaznia, és legalább 1 numerikus karaktert kell tartalmaznia. |
 
-1. Másolja a JSON-kimenetet egy szövegfájlba későbbi használatra. A kimenetnek a következőkre kell hasonlítania.
+1. Másolja a JSON-kimenetet egy szövegfájlba későbbi használatra. A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
     ```json
     {
@@ -183,10 +183,10 @@ A szkript célja, hogy rugalmas legyen. Először megkeresi a meglévő Immersiv
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [Node.js rövid útmutatót,](./quickstart-nodejs.md) hogy mi mást tehet a Magával ragadó Reader SDK segítségével Node.js
-* Tekintse meg a [Python oktatóanyag,](./tutorial-python.md) hogy mi mást tehet ünk a magával ragadó Reader SDK python használatával
-* Tekintse meg a [Swift bemutató,](./tutorial-ios-picture-immersive-reader.md) hogy mi mást tehetünk a magával ragadó Reader SDK swift
-* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](./reference.md)
+* Tekintse meg a [Node. js](./quickstart-nodejs.md) rövid útmutatóját, amelyből megtudhatja, hogy mit tehet a magával az olvasó SDK-val a Node. js használatával
+* Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg a [Swift-oktatóanyagot](./tutorial-ios-picture-immersive-reader.md) , amelyből megtudhatja, mit tehet a gyors
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 
 
 

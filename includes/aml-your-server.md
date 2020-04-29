@@ -10,19 +10,19 @@ ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
 ms.openlocfilehash: ff449626ce528cfe0218a95330a567303c547e5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79485988"
 ---
-1. Az Azure [Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) utasításainak használata az Azure Machine Learning SDK Pythonhoz történő telepítéséhez
+1. A Pythonhoz készült Azure Machine Learning SDK telepítéséhez [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -ban található utasításokat használhatja.
 
-1. Hozzon létre egy [Azure Machine Learning-munkaterületet.](../articles/machine-learning/how-to-manage-workspace.md)
+1. Hozzon létre egy [Azure Machine learning munkaterületet](../articles/machine-learning/how-to-manage-workspace.md).
 
-1. [Konfigurációs fájl írása](../articles/machine-learning/how-to-configure-environment.md#workspace) (**aml_config/config.json**).
+1. [Konfigurációs fájl](../articles/machine-learning/how-to-configure-environment.md#workspace) írása (**aml_config/config.JSON**).
 
-1. Klónozza [a GitHub-tárházat.](https://aka.ms/aml-notebooks)
+1. [A GitHub-tárház](https://aka.ms/aml-notebooks)klónozása.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git

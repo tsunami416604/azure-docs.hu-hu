@@ -1,7 +1,7 @@
 ---
-title: Ordinális V2 előre elkészített entitás - LUIS
+title: Sorszám v2 előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a V2-es csoportnak a nyelvi ismeretek (LUIS) előre összeállított entitásadatait tartalmazza.
+description: Ez a cikk a sorszámú, előre felépített entitások adatait tartalmazza Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270484"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás ordinális V2 előre elkészített entitása
-A ordinális V2 szám kibővíti [az Ordinal-t,](luis-reference-prebuilt-ordinal.md) hogy relatív hivatkozásokat adjon meg, mint `next`például a , `last`és `previous`a. Ezek nem kibontása a ordinális előre összeállított entitás használatával.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>A 2. sorszámú, előre elkészített entitás a LUIS-alkalmazáshoz
+A sorszám v2 sorszáma kibontja a [sorszámot](luis-reference-prebuilt-ordinal.md) , `next`hogy `last`relatív hivatkozásokat (például,, és `previous`) adjon meg. Ezeket a rendszer nem a sorszámmal elkészített, előre összeépített entitás használatával bontja ki.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Megoldás előre összeállított V2-es elrendelési entitáshoz
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Az előre létrehozott sorszám v2 entitás feloldása
 
-A következő entitásobjektumok at adják vissza a lekérdezéshez:
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
 `what is the second to last choice in the list`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON `verbose` paraméter a `false`következő:
+A következő JSON a `verbose` paraméter értéke: `false`
 
 ```json
 "entities": {
@@ -44,7 +44,7 @@ A következő JSON `verbose` paraméter a `false`következő:
 
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON `verbose` paraméter a `true`következő:
+A következő JSON a `verbose` paraméter értéke: `true`
 
 ```json
 "entities": {
@@ -73,7 +73,7 @@ A következő JSON `verbose` paraméter a `true`következő:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-A következő példa a **builtin.ordinalV2** entitás felbontását mutatja be.
+Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
 
 ```json
 "entities": [
@@ -93,6 +93,6 @@ A következő példa a **builtin.ordinalV2** entitás felbontását mutatja be.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [százalékos,](luis-reference-prebuilt-percentage.md) [telefonszám](luis-reference-prebuilt-phonenumber.md), és [a hőmérséklet](luis-reference-prebuilt-temperature.md) entitások.
+A [százalék](luis-reference-prebuilt-percentage.md), a [telefonszám](luis-reference-prebuilt-phonenumber.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitások ismertetése.
