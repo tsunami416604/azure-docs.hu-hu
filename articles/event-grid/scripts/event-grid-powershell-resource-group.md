@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – Feliratkozás erőforráscsoportra | Microsoft Docs
-description: Ez a cikk egy minta Azure PowerShell-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő egy erőforráscsoport Event Grid-eseményeire.
+description: Ez a cikk egy minta Azure PowerShell parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő az erőforráscsoport Event Grid eseményeire.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e285f628d1ec3afce55dc8fe4efa50a361dab5ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720806"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>Feliratkozás egy erőforráscsoport eseményeire a PowerShell-lel
@@ -24,7 +24,7 @@ Ez a szkript létrehoz egy Event Grid-előfizetést egy erőforráscsoport esem�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Az előzetes mintaparancsfájlhoz az Event Grid modul szükséges. A telepítéshez futtassa a`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa a következőt`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 ## <a name="sample-script---stable"></a>Példaszkript – stabil
 
@@ -32,7 +32,7 @@ Az előzetes mintaparancsfájlhoz az Event Grid modul szükséges. A telepítés
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-resource-group/subscribe-to-resource-group.ps1 "Subscribe to resource group")]
 
-## <a name="sample-script---preview-module"></a>Mintaparancsfájl - előnézeti modul
+## <a name="sample-script---preview-module"></a>Minta parancsfájl – előzetes verziójú modul
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
@@ -44,7 +44,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új-AzeventGridElőfizetés](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
+| [Új – AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>További lépések
 

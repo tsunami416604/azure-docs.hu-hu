@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linuxos virtuális gépek magas rendelkezésre állása az Azure-ban
+title: Oktatóanyag – magas rendelkezésre állás Linux rendszerű virtuális gépek számára az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure CLI-t magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
 documentationcenter: ''
 services: virtual-machines-linux
@@ -16,10 +16,10 @@ ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76277259"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure CLI-vel
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális gép létrehozása rendelkezésre állási csoportban
 > * Elérhető virtuálisgép-méretek ellenőrzése
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -92,7 +92,7 @@ A rendelkezésre állási csoport eloszlását megtekintheti a Portalon az Erőf
 
 ## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése
 
-Később további virtuális gépeket is hozzá lehet adni a rendelkezésre állási csoporthoz, ahol a virtuális gépek mérete rendelkezésre áll a hardveren. A [virtuális gép rendelkezésre állási készletének listaméretei](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) vel felsorolva a rendelkezésre állási csoport hardverfürtjének összes rendelkezésre álló méretét:
+Később további virtuális gépeket is hozzá lehet adni a rendelkezésre állási csoporthoz, ahol a virtuális gépek mérete rendelkezésre áll a hardveren. A rendelkezésre állási csoport számára elérhető összes méret listázásához használja az [az VM rendelkezésre állása-set List-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) lehetőséget:
 
 ```azurecli-interactive
 az vm availability-set list-sizes \
@@ -115,6 +115,6 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 > [!div class="nextstepaction"]
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
 
-* A rendelkezésre állási zónákról a [Rendelkezésre állási zónák dokumentációjában olvashat bővebben.](../../availability-zones/az-overview.md)
-* A rendelkezésre állási és a rendelkezésre állási zónákról további dokumentáció is [itt](./manage-availability.md)található.
-* A rendelkezésre állási zónák kipróbálásához látogasson el [a Linux os virtuális gép létrehozása egy rendelkezésre állási zónában az Azure CLI-vel című](./create-cli-availability-zone.md)
+* Ha többet szeretne megtudni a rendelkezésre állási zónákról, látogasson el a [Availability Zones dokumentációra](../../availability-zones/az-overview.md).
+* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció [is elérhető.](./manage-availability.md)
+* A rendelkezésre állási zónák kipróbálásához látogasson el a [linuxos virtuális gép létrehozása rendelkezésre állási zónába az Azure CLI-vel](./create-cli-availability-zone.md)

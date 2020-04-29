@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-minták – Event Grid | Microsoft Docs
-description: Ez a cikk egy táblázatot tartalmaz, amely tartalmazza az Azure parancssori felület (CLI) parancsfájlminták az Event Grid.
+description: Ez a cikk egy olyan táblázatot tartalmaz, amely a Event Grid Azure parancssori felületi (CLI) parancsfájlokra mutató hivatkozásokat tartalmaz.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 0cef3f5ae7c647236d52e4c571e5fc382e1560f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76514612"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Azure CLI-minták az Event Gridhez

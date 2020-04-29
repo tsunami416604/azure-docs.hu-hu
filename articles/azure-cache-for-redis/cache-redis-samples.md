@@ -1,63 +1,63 @@
 ---
 title: Azure Cache for Redis-minták
-description: 'Ismerje meg, hogyan használhatja az Azure Cache for Redis-t ezekkel a kódmintákkal: gyorsítótárhoz való csatlakozás, adatok olvasása és írása a gyorsítótárban, ASP.NET Azure Cache redis-szolgáltatók számára.'
+description: 'Ismerje meg, hogyan használhatja az Azure cache-t a Redis az alábbi mintakód-mintákkal: csatlakozás gyorsítótárhoz, gyorsítótárban lévő információk olvasása és írása, ASP.NET Azure cache a Redis-szolgáltatók számára.'
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: sample
 ms.date: 01/23/2017
 ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75433404"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
-Ez a témakör az Azure Cache redis-minták listáját tartalmazza, amely olyan forgatókönyveket tartalmaz, mint például a gyorsítótárhoz való csatlakozás, az adatok olvasása és írása egy gyorsítótárba, valamint a redis-szolgáltatók ASP.NET Azure-gyorsítótár használata. Egyes minták letölthető projektek, és néhány lépésről-lépésre útmutatást nyújt, és tartalmazza a kódrészleteket, de nem kapcsolódik egy letölthető projekthez.
+Ez a témakör felsorolja az Azure cache-t a Redis-mintákhoz, beleértve a gyorsítótárhoz való csatlakozást, az adatok olvasását és a gyorsítótárból történő írását, valamint a Redis-szolgáltatók ASP.NET Azure-gyorsítótárának használatát. Néhány minta letölthető projekt, és néhány lépésről lépésre útmutatást nyújt, és tartalmazza a kódrészleteket, de nem kapcsolódik egy letölthető projekthez.
 
-## <a name="hello-world-samples"></a>Hello világ minták
-Ebben a szakaszban a minták bemutatják az alapokat az Azure-gyorsítótár redis-példányhoz való csatlakozáshoz, valamint az adatok olvasásához és a gyorsítótárba való írásához különböző nyelvek és Redis-ügyfelek használatával.
+## <a name="hello-world-samples"></a>Hello World-minták
+Az ebben a szakaszban szereplő minták az Azure cache Redis-példányhoz való csatlakozásának alapjait mutatják be, valamint az adatgyorsítótárba való adatolvasást és-írást számos különböző nyelven és Redis-ügyféllel.
 
-A [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta bemutatja, hogyan hajthatja végre a különböző gyorsítótár-műveleteket a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) .NET ügyfél használatával.
+A [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta bemutatja, hogyan hajthat végre különböző gyorsítótárazási műveleteket a [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) .net-ügyfél használatával.
 
-Ez a minta bemutatja, hogyan:
+Ez a példa a következőket mutatja be:
 
-* Különböző csatlakozási beállítások használata
-* Objektumok olvasása és írása a gyorsítótárba és a gyorsítótárból szinkron és aszinkron műveletek használatával
-* A megadott kulcsok értékeinek visszaadására a Redis MGET/MSET parancsok használata
+* Különböző kapcsolatbeállításokat használhat
+* Objektumok olvasása és írása a gyorsítótárból a szinkron és aszinkron műveletek használatával
+* A megadott kulcsok értékeinek visszaadásához használja a Redis MGET/MSET parancsait.
 * Redis tranzakciós műveletek végrehajtása
-* Redis-listák és rendezett készletek munkája
-* .NET-objektumok tárolása JsonConvert szerializálókkal
-* A Címkézés megvalósítása Redis-készletek használatával
-* A Redis Cluster szolgáltatás sal
+* Redis-listák és rendezett készletek használata
+* .NET-objektumok tárolása JsonConvert-szerializálók használatával
+* Redis-készletek használata a címkézés megvalósításához
+* Redis-fürt használata
 
-További információ: [A StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) dokumentációa a GitHubon, és további használati forgatókönyvek a [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) egység tesztek.
+További információ: [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) dokumentáció a githubon, és további használati forgatókönyvek: [StackExchange. Redis. tesztek](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) egység tesztek.
 
-[Az Azure Cache for Redis használata a Pythonnal](cache-python-get-started.md) bemutatja, hogyan kezdheti el az Azure Cache for Redis python és a [redis-py](https://github.com/andymccurdy/redis-py) ügyfél használatával.
+Az [Azure cache használata a Redis-hez a Python](cache-python-get-started.md) segítségével megtudhatja, hogyan kezdheti el az Azure cache használatát a Redis a Python és a [Redis-a-](https://github.com/andymccurdy/redis-py) sel ügyfélprogram használatával.
 
-[A gyorsítótárban lévő .NET-objektumok használata](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) a .NET-objektumok szerializálásának egyik módját mutatja, így a Redis-példány Azure Cache-ből írhatja és olvashatja őket. 
+[A gyorsítótárban lévő .net-objektumok használatakor a .net-](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) objektumok szerializálásának egyik módja jelenik meg, így a Redis-példányhoz tartozó Azure cache-ből írhatók és olvashatók. 
 
-## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Az Azure Cache for Redis használata kibővített hátsíkként ASP.NET SignalR számára
-Az [Azure Cache for Redis, mint egy horizontális háttérsík ASP.NET SignalR-minta](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) bemutatja, hogyan használhatja az Azure Cache for Redis signalr backplane. A hátlapról további információt a [SignalR Scaleout with Redis című](https://www.asp.net/signalr/overview/performance/scaleout-with-redis)témakörben talál.
+## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Az Azure cache használata a Redis kibővíthető Hátlapként a ASP.NET-jelzőhöz
+Az [Azure cache használata a Redis-hez a ASP.net signaler minta kibővítő hátlapja](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) azt mutatja be, hogyan használható az Azure cache a Redis-hez. További információ a hátlapról: [a signaler horizontális felskálázás és a Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
-## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure-gyorsítótár a Redis ügyféllekérdezési mintájához
-Ez a minta bemutatja a gyorsítótárból származó adatok elérésének és az adatmegőrzési tárolóból való hozzáférés közötti összehasonlítási teljesítményt. Ez a minta két projektből rendelkezik.
+## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure cache a Redis ügyfél-lekérdezési mintához
+Ez a minta azt mutatja be, hogy összehasonlítja az adatok gyorsítótárból való elérésének és az adatmegőrzési tároló adatainak elérésének a teljesítményét. Ez a minta két projekttel rendelkezik.
 
-* [Bemutató, hogy az Azure Cache for Redis hogyan javíthatja a teljesítményt az adatok gyorsítótárazásával](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
-* [Az adatbázis és a gyorsítótár elmagossá tévő demójának magvetése](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
+* [Bemutató arról, hogy az Azure cache for Redis hogyan javíthatja a teljesítményt a gyorsítótárazási adataival](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
+* [A bemutató adatbázisának és gyorsítótárának elvetése](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
 
-## <a name="aspnet-session-state-and-output-caching"></a>ASP.NET munkamenet-állapot és kimeneti gyorsítótárazás
-A [Redis azure-gyorsítótárának használata ASP.NET SessionState és OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) minta tárolására bemutatja, hogyan használhatja az Azure Cache for Redis-t ASP.NET munkamenet- és kimeneti gyorsítótár ának tárolására a SessionState és outputCache-szolgáltatók redis-hez használatával.
+## <a name="aspnet-session-state-and-output-caching"></a>ASP.NET munkamenet-állapot és a kimeneti gyorsítótárazás
+Az [Azure cache használata az ASP.net-SessionState és OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) -minta tárolására a Redis-ben azt mutatja be, hogy az Azure cache hogyan használható a Redis-munkamenet és a kimeneti gyorsítótár tárolására a ASP.net SessionState és OutputCache-szolgáltatói használatával.
 
-## <a name="manage-azure-cache-for-redis-with-maml"></a>Az Azure Cache for Redis kezelése MAML-rel
-A [Redis manage Azure Cache for Redis](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) minta bemutatja, hogyan használhatja az Azure Management Libraries-t a gyorsítótár kezeléséhez – (Létrehozás/ frissítés/ törlés). 
+## <a name="manage-azure-cache-for-redis-with-maml"></a>Az Azure cache kezelése a Redis és a MAML szolgáltatással
+A [Redis Azure cache kezelése az Azure Management librarys használatával](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) minta azt mutatja be, hogyan használható az Azure felügyeleti kódtárak a gyorsítótár kezelésére – (létrehozás/frissítés/törlés). 
 
 ## <a name="custom-monitoring-sample"></a>Egyéni figyelési minta
-Az [Access Azure Cache for Redis monitoring adatminta](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) bemutatja, hogyan érheti el az Azure Cache for Redis figyelési adatait az Azure Portalon kívül.
+A [Redis-figyelési adatmintahoz való hozzáférés az Azure cache](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) -ben azt mutatja be, hogy hogyan férhet hozzá az Azure-gyorsítótárban az Azure-portálon kívüli Redis tartozó figyelési adataihoz.
 
-## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>A Twitter-stílusú klón php és Redis használatával írt
-A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis Hello World. Ez egy minimális Twitter-stílusú szociális hálózat klón írt redis és php segítségével [Predis kliens.](https://github.com/nrk/predis) A forráskód úgy van kialakítva, hogy nagyon egyszerű legyen, és ugyanakkor különböző Redis adatstruktúrákat jelenítsen meg.
+## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>A PHP és a Redis használatával írt Twitter-klón
+A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis "Helló világ!" alkalmazás. Ez egy minimális Twitter-stílusú közösségi hálózati klón, amelyet a Redis és a PHP használatával írt a [Predis](https://github.com/nrk/predis) -ügyfél használatával. A forráskód úgy lett kialakítva, hogy nagyon egyszerű és egyszerre jelenjen meg különböző Redis-adatstruktúrák.
 
 ## <a name="bandwidth-monitor"></a>Sávszélesség-figyelő
-A [Sávszélesség-figyelő](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) minta lehetővé teszi az ügyfélen használt sávszélesség figyelése. A sávszélesség méréséhez futtassa a mintát a gyorsítótár-ügyfélgépen, kezdeményezzen hívásokat a gyorsítótárba, és figyelje meg a sávszélesség-figyelő minta által jelentett sávszélességet.
+A [sávszélesség-figyelő](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) minta lehetővé teszi az ügyfélen használt sávszélesség figyelését. A sávszélesség méréséhez futtassa a mintát a gyorsítótár-ügyfélszámítógépen, hajtson végre hívásokat a gyorsítótárba, és figyelje meg a sávszélesség-figyelő minta által jelentett sávszélességet.

@@ -12,17 +12,17 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74420368"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
 A [rugalmas feladatok](sql-database-job-automation-overview.md#elastic-database-jobs-preview) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
 
-Ebben az oktatóanyagban megtudhatja, hogy mi szükséges a lekérdezés több adatbázisban való futtatásához:
+Ebben az oktatóanyagban megtudhatja, hogy milyen lépéseket kell végrehajtani a lekérdezések több adatbázishoz való futtatásához:
 
 > [!div class="checklist"]
 > * Rugalmasfeladat-ügynök létrehozása
@@ -36,13 +36,13 @@ Ebben az oktatóanyagban megtudhatja, hogy mi szükséges a lekérdezés több a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Elastic Database-feladatok frissített verziója rendelkezik egy új PowerShell-parancsmaggal az áttelepítés során használható. Ezek az új parancsmagok az összes meglévő feladathitelesítő adatokat, célokat (beleértve az adatbázisokat, kiszolgálókat, egyéni beszedéseket), a feladateseményindítókat, a feladatütemezéseket, a feladat tartalmát és a feladatokat egy új rugalmas feladatügynökre.
+A rugalmas adatbázis-feladatok frissített verziója a PowerShell-parancsmagok új készletét használja az áttelepítés során való használatra. Ezek az új parancsmagok az összes meglévő feladat hitelesítő adatait, célpontját (beleértve az adatbázisokat, a kiszolgálókat, az egyéni gyűjteményeket), a feladatok eseményindítóit, a feladatok ütemterveit, a feladatok tartalmát és a feladatokat egy új rugalmas feladat-ügynökre helyezik át.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Telepítse a legújabb Elastic Jobs parancsmagokat
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb rugalmas feladatok parancsmagjának telepítése
 
 Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladat megkezdése előtt.
 
-Telepítse az **Az.Sql** modult a legújabb rugalmas feladat parancsmagok beszerzéséhez. Futtassa a következő parancsokat a PowerShell-ben rendszergazdai hozzáféréssel.
+Telepítse az az **. SQL** modult a legújabb rugalmas feladatok parancsmagok beszerzéséhez. Futtassa a következő parancsokat a PowerShellben rendszergazdai hozzáféréssel.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-Az **Az.Sql** modul mellett ez az oktatóanyag is megköveteli az *SqlServer* PowerShell modul. További információt az [SQL Server PowerShell modul telepítése című témakörben](/sql/powershell/download-sql-server-ps-module)talál.
+Az az **. SQL** modulon kívül az oktatóanyaghoz a *SQLServer* PowerShell-modulra is szükség van. Részletekért lásd: [SQL Server PowerShell-modul telepítése](/sql/powershell/download-sql-server-ps-module).
 
 ## <a name="create-required-resources"></a>A szükséges erőforrások létrehozása
 
 A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](sql-database-job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség.
 
-Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. A második parancsfájl létrehoz egy második kiszolgálót két üres adatbázissal, amelyen feladatokat hajthat végre.
+Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. A második parancsfájl létrehoz egy második kiszolgálót két üres adatbázissal a feladatok végrehajtásához.
 
 A rugalmas feladatokhoz nem tartoznak külön elnevezési követelmények, így tetszőleges elnevezési konvenciót alkalmazhat, ha az megfelel [az Azure követelményeinek](/azure/architecture/best-practices/resource-naming).
 
@@ -124,7 +124,7 @@ $db2
 
 ## <a name="use-elastic-jobs"></a>Rugalmas feladatok használata
 
-Rugalmas feladatok használatához regisztrálja a funkciót az Azure-előfizetésben a következő parancs futtatásával. Ezt a parancsot egyszer futtatja az előfizetéshez, amelyben ki kívánja építeni a rugalmas feladat ügynök. Azokat az előfizetéseket, amelyek csak feladatcélokat tartalmazó adatbázisokat tartalmaznak, nem kell regisztrálni.
+Rugalmas feladatok használatához regisztrálja a szolgáltatást az Azure-előfizetésben a következő parancs futtatásával. Egyszer futtassa ezt a parancsot ahhoz az előfizetéshez, amelyben létre kívánja hozni a rugalmas feladatokhoz tartozó ügynököt. Azokat az előfizetéseket, amelyek csak a feladatütemezés adatbázisait tartalmazzák, nem kell regisztrálniuk.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 A rugalmasfeladat-ügynök a feladatok létrehozásához, futtatásához és kezeléséhez használt Azure-erőforrás. Az ügynök ütemezés szerint vagy egyszeri alkalommal hajtja végre a feladatokat.
 
-A **New-AzSqlElasticJobAgent** parancsmaghoz már léteznie kell egy Azure SQL-adatbázis, ezért a *resourceGroupName*, *serverName*és *databaseName* paramétereknek a meglévő erőforrásokra kell mutatniuk.
+A **New-AzSqlElasticJobAgent** parancsmaghoz egy Azure SQL Database-adatbázisra van szükség, így a *resourceGroupName*, a *serverName*és a *databaseName* paramétereknek mind a meglévő erőforrásokra kell mutatniuk.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -143,15 +143,15 @@ $jobAgent = $jobDatabase | New-AzSqlElasticJobAgent -Name $agentName
 $jobAgent
 ```
 
-### <a name="create-the-job-credentials"></a>A feladat hitelesítő adatainak létrehozása
+### <a name="create-the-job-credentials"></a>A feladatok hitelesítő adatainak létrehozása
 
-A feladatok az adatbázis hatókörrel rendelkező hitelesítő adatokat használnak a célcsoport által megadott céladatbázisokhoz való csatlakozáshoz a végrehajtás és a parancsfájlok végrehajtásakor. A rendszer szintén ezeket az adatbázishoz kötődő hitelesítő adatokat használja a master adatbázishoz való csatlakozáshoz, az adott kiszolgálón vagy rugalmas készletben lévő adatbázisok enumerálására, ha a célcsoporttagtípus ezek valamelyike.
+A feladatok adatbázis-hatókörrel rendelkező hitelesítő adatokat használnak a célcsoport által meghatározott cél adatbázisokhoz való csatlakozáshoz a végrehajtás és a parancsfájlok végrehajtása során. A rendszer szintén ezeket az adatbázishoz kötődő hitelesítő adatokat használja a master adatbázishoz való csatlakozáshoz, az adott kiszolgálón vagy rugalmas készletben lévő adatbázisok enumerálására, ha a célcsoporttagtípus ezek valamelyike.
 
 Az adatbázishoz kötődő hitelesítő adatokat a feladat-adatbázisban kell létrehozni. A feladat sikeres befejezéséhez minden céladatbázisnak rendelkeznie kell egy megfelelő engedélyeket tartalmazó bejelentkezési hozzáféréssel.
 
 ![Rugalmas feladatokhoz tartozó hitelesítő adatok](media/elastic-jobs-overview/job-credentials.png)
 
-A képen szereplő hitelesítő adatok áttekintésén kívül vegye figyelembe azt is, hogy az alábbi szkriptben **GRANT**-parancsok is szerepelnek. Ezek az engedélyek szükségesek a jelen példafeladathoz kiválasztott szkript számára. Mivel a példa új táblát hoz létre a megcélzott adatbázisokban, minden céladatbázisnak megfelelő engedélyekre van szüksége a sikeres futtatáshoz.
+A képen szereplő hitelesítő adatok áttekintésén kívül vegye figyelembe azt is, hogy az alábbi szkriptben **GRANT**-parancsok is szerepelnek. Ezek az engedélyek szükségesek a jelen példafeladathoz kiválasztott szkript számára. Mivel a példa egy új táblát hoz létre a megcélzott adatbázisokban, minden célként szükséges engedélyekkel kell rendelkeznie a sikeres futtatáshoz.
 
 A feladatokhoz tartozó hitelesítő adatok (feladat-adatbázisban történő) létrehozásához futtassa a következő szkriptet:
 
@@ -200,11 +200,11 @@ $jobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -Arg
 $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $jobCred
 ```
 
-### <a name="define-the-target-databases-to-run-the-job-against"></a>A feladat futtatásához.
+### <a name="define-the-target-databases-to-run-the-job-against"></a>A cél-adatbázisok megadása a feladatok futtatásához
 
 A [célcsoport](sql-database-job-automation-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva.
 
-A következő kódrészlet két célcsoportot hoz létre: *serverGroup*és *serverGroupExcludingDb2*. *a serverGroup* a kiszolgálón a végrehajtás időpontjában létező összes adatbázist, a *serverGroupExcludingDb2* pedig a kiszolgáló összes adatbázisát célozza meg, kivéve a *targetDb2 adatbázist:*
+A következő kódrészlet két célcsoportot hoz létre: *serverGroup*és *serverGroupExcludingDb2*. a *serverGroup* a kiszolgálón található összes adatbázist megcélozza a végrehajtás során, és a *serverGroupExcludingDb2* a kiszolgálón lévő összes adatbázist megcélozza, a *targetDb2*kivételével:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -218,9 +218,9 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerName -Database $db2.DatabaseName -Exclude
 ```
 
-### <a name="create-a-job-and-steps"></a>Feladat létrehozása és lépések
+### <a name="create-a-job-and-steps"></a>Feladatok és lépések létrehozása
 
-Ez a példa egy feladatot és két feladatlépést határoz meg a feladat futtatásához. Az első lépésben (*step1*) egy új táblát (*Step1Table*) hozunk létre a *ServerGroup* célcsoport összes adatbázisában. A második lépésben (*step2*) egy új táblát (*Step2Table*) hozunk létre a *TargetDb2* kivételével az összes adatbázisban, mivel a korábban meghatározott célcsoport esetében azt kizártuk.
+Ez a példa egy feladatot definiál, és két feladatot hajt végre a feladatok futtatásához. Az első lépésben (*step1*) egy új táblát (*Step1Table*) hozunk létre a *ServerGroup* célcsoport összes adatbázisában. A második lépésben (*step2*) egy új táblát (*Step2Table*) hozunk létre a *TargetDb2* kivételével az összes adatbázisban, mivel a korábban meghatározott célcsoport esetében azt kizártuk.
 
 ```powershell
 Write-Output "Creating a new job..."
@@ -250,7 +250,7 @@ A művelet sikeres befejezését követően két új tábla jelenik meg a Target
 
    ![az új táblák ellenőrzése az SSMS-ben](media/elastic-jobs-overview/job-execution-verification.png)
 
-A feladat későbbi futtatását is ütemezheti. A következő paranccsal ütemezheti az adott feladat futtatását egy későbbi időpontra:
+A feladatot később is ütemezheti. A következő paranccsal ütemezheti az adott feladat futtatását egy későbbi időpontra:
 
 ```powershell
 # run every hour starting from now
@@ -272,27 +272,27 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-Az alábbi táblázat a lehetséges feladat-végrehajtási állapotokat sorolja fel:
+A következő táblázat a lehetséges feladatok végrehajtásának állapotait sorolja fel:
 
 |Állapot|Leírás|
 |:---|:---|
-|**Létrehozva** | A feladat végrehajtása csak létre, és még nem folyamatban van.|
-|**Folyamatban** | A feladat végrehajtása folyamatban van.|
-|**Várakozás: Újrapróbálkozás** | A feladat végrehajtása nem tudta befejezni a műveletet, és arra vár, hogy újra megpróbálja.|
-|**Sikeres** | A feladat végrehajtása sikeresen befejeződött.|
-|**SucceededWithSkiped (Sikeres)** | A feladat végrehajtása sikeresen befejeződött, de néhány gyermeke kimaradt.|
-|**Nem sikerült** | A feladat végrehajtása sikertelen volt, és kimerítette az újrapróbálkozásokat.|
-|**Időd-kiállás** | A feladat végrehajtása időtelt.|
-|**Megszakítva** | A feladat végrehajtása megszakadt.|
-|**Kimarad** | A feladat végrehajtása kimarad, mert ugyanannak a feladatlépésnek egy másik végrehajtása már ugyanazon a célon futott.|
-|**WaitingForChildJobExecutions** | A feladat végrehajtása a gyermekkivégzések befejezésére vár.|
+|**Létrehozva** | A feladatok végrehajtása éppen létrejött, és még nincs folyamatban.|
+|**Folyamatban** | A feladatok végrehajtása jelenleg folyamatban van.|
+|**WaitingForRetry** | A feladat végrehajtása nem tudta befejezni a műveletet, és az újrapróbálkozásra vár.|
+|**Sikeres** | A feladatok végrehajtása sikeresen befejeződött.|
+|**SucceededWithSkipped** | A feladatok végrehajtása sikeresen befejeződött, de néhány gyermeke ki lett hagyva.|
+|**Sikertelen** | A feladatok végrehajtása sikertelen volt, és kimerítette az újrapróbálkozásait.|
+|**Időtúllépés** | A feladatok végrehajtása túllépte az időkorlátot.|
+|**Megszakítva** | A feladat végrehajtása meg lett szakítva.|
+|**Kimarad** | A rendszer kihagyta a feladatok végrehajtását, mert ugyanazon a feladattípusnak egy másik végrehajtása már fut ugyanazon a célhelyen.|
+|**WaitingForChildJobExecutions** | A feladatok végrehajtása a gyermek végrehajtásának befejeződésére vár.|
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A jelen oktatóanyagban létrehozott erőforrásokat az erőforráscsoport törlésével távolíthatja el.
 
 > [!TIP]
-> Ha továbbra is ezekkel a feladatokkal szeretne dolgozni, nem törli a cikkben létrehozott erőforrásokat.
+> Ha azt tervezi, hogy továbbra is együttműködik ezekkel a feladatokkal, akkor nem törli a cikkben létrehozott erőforrásokat.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

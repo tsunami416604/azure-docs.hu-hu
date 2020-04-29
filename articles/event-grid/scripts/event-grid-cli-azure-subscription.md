@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás Azure-előfizetésre | Microsoft Docs
-description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő az Azure Event Grid-eseményekre az Azure CLI használatával.
+description: Ez a cikk egy minta Azure CLI-szkriptet tartalmaz, amely bemutatja, hogyan fizethet elő Azure Event Grid eseményekre az Azure CLI használatával.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 9d40367c8d0f4f1250504c30fcd6c4846921a830
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720894"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Feliratkozás egy Azure-előfizetés eseményeire az Azure CLI-vel

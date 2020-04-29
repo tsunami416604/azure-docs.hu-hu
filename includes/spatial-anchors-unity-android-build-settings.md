@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: c3bc542ffaabdb307ebcecdb02ce29a5d8acfbdc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68562415"
 ---
-A **Build-beállítások** megnyitásához válassza a **Fájlösszeállítás** > **beállításai lehetőséget.**
+A **Build-beállítások** megnyitásához válassza a **fájl** > -**létrehozási beállítások**lehetőséget.
 
-A **Platform** szakaszban válassza az **Android**lehetőséget. Válassza **a Platform váltása** lehetőséget a platform **Androidra**való módosításához. A Unity kérheti az Android támogatási összetevőinek telepítését, ha hiányoznak.
+A **platform** szakaszban válassza az **Android**lehetőséget. Válassza a **platform váltása** lehetőséget a platform **Androidra**való módosításához. Ha hiányoznak, az Unity kérheti, hogy telepítse az Android támogatási összetevőit.
 
-![Unity buildbeállítások ablak](./media/spatial-anchors-unity/unity-android-build-settings.png)
+![Unity-létrehozási beállítások ablak](./media/spatial-anchors-unity/unity-android-build-settings.png)
 
-Zárja be a **Build Settings ablakot.**
+A **létrehozási beállítások** ablak bezárásához.
 

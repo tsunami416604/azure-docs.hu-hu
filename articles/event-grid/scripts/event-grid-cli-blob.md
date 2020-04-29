@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás Blob Storage-fiókra | Microsoft Docs
-description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő eseményekre egy Azure Blob Storage-fiókhoz.
+description: Ez a cikk egy Azure-beli Blob Storage-fiók eseményeire való előfizetést bemutató minta Azure CLI-parancsfájlt tartalmaz.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: b6cb60273b0fc3ac101eb03c55a3392bd9b942a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720860"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Feliratkozás egy Blob Storage-fiók eseményeire az Azure CLI-vel

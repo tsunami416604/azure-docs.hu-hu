@@ -9,10 +9,10 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67179050"
 ---
 Mielőtt létrehoznánk bármit is, tekintsük át a hatókör fogalmát. Az Azure négy felügyeleti szintet biztosít: felügyeleti csoportok, előfizetés, erőforráscsoport és erőforrás. A [felügyeleti csoportok](../articles/billing/billing-enterprise-mgmt-group-overview.md) szintje egyelőre előzetes verzióban érhető el. Az alábbi ábra ezekre a rétegekre mutat egy példát.
