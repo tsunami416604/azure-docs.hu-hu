@@ -1,7 +1,7 @@
 ---
 title: Mi a Bing Autosuggest?
 titleSuffix: Azure Cognitive Services
-description: A Bing Autosuggest API a keresési mezőben lévő részleges lekérdezési karakterlánc alapján adja vissza a javasolt lekérdezések listáját.
+description: A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448837"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
-Ha az alkalmazás lekérdezéseket küld a Bing Search api-k bármelyikének, a Bing automatikus javaslat API-jával javíthatja a felhasználók keresési élményét. A Bing Autosuggest API a keresési mezőben lévő részleges lekérdezési karakterlánc alapján adja vissza a javasolt lekérdezések listáját. A keresőmezőbe karakterek beírásakor a javaslatokat egy legördülő listában jelenítheti meg.
+Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a Bing Autosuggest API segítségével javíthatja a felhasználók keresési élményét. A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. Ahogy a karakterek bekerülnek a keresőmezőbe, a javaslatok a legördülő listában jelennek meg.
 
-## <a name="bing-autosuggest-api-features"></a>A Bing Autosuggest API szolgáltatásai
+## <a name="bing-autosuggest-api-features"></a>Bing Autosuggest API funkciók
 
 | Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Keresési kifejezések valós idejű felkínálása](concepts/get-suggestions.md) | Az Automatikus javaslat API használatával javíthatja az alkalmazásélmény ét, ha a beírás során megjeleníti a javasolt keresési kifejezéseket. |
+| [Keresési kifejezések valós idejű felkínálása](concepts/get-suggestions.md) | Az automatikus kiegészítési API használatával javíthatja az alkalmazásait, és megjelenítheti a javasolt keresési kifejezéseket. |
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Bing Autosuggest API egy RESTful webszolgáltatás, amely könnyen hívható bármely programozási nyelvről, amely http-kéréseket tud készíteni, és elemezheti a JSON-t. 
+A Bing Autosuggest API egy REST-alapú webszolgáltatás, amely bármilyen programozási nyelvről meghívható, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. 
 
 1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
-2. Küldjön egy kérelmet erre az API-ra minden alkalommal, amikor egy felhasználó új karaktert ad meg az alkalmazás keresőmezőjébe.
+2. Kérés küldése erre az API-ra minden alkalommal, amikor egy felhasználó új karaktert kér az alkalmazás keresési mezőjében.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert ad meg az alkalmazás keresőmezőjébe. Ahogy egyre több karaktert ad meg, az API relevánsabb javasolt keresési lekérdezéseket ad vissza. Például a javaslatok at the API `s` might return for a single `sail`are likely to be less relevant than ones for.
+Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert keres az alkalmazás keresési mezőjében. Ahogy egyre több karakter van megadva, az API több releváns javasolt keresési lekérdezést fog visszaadni. Előfordulhat `s` például, hogy az API által visszaadott javaslatok valószínűleg kevésbé lesznek érvényesek, mint a esetében `sail`.
 
-A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéseivel.
+A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéssel.
 
 ![Autosuggest legördülő keresőmező-lista](./media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-Amikor egy felhasználó kiválaszt egy javaslatot a legördülő listából, használhatja a bingkeresési API-k egyikével való keresés megkezdéséhez, vagy közvetlenül a Bing keresési eredménylapjára.
+Ha a felhasználó egy javaslatot választ ki a legördülő listából, a segítségével megkezdheti a keresést a Bing Search API-k valamelyikével, vagy közvetlenül a Bing Search Results oldalára léphet.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -49,9 +49,9 @@ Annak érdekében, hogy gyorsan nekiláthasson az első kérés létrehozásána
 
 Ismerkedjen meg a [Bing Autosuggest API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel a javasolt lekérdezési kifejezéseket és a válaszobjektumok definícióit kérheti le.
 
-Látogasson el a [Bing Search API-központ oldalára](../bing-web-search/search-the-web.md) a többi elérhető API-k felfedezéséhez.
+A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) .
 
 
-Megtudhatja, hogy miként kereshet az interneten a [Bing Web Search API használatával,](../bing-web-search/search-the-web.md)és hogyan fedezheti fel a többi Bing Keresési[API-t.](../bing-web-search/index.yml)
+Megtudhatja, hogyan keresheti meg a weben a [Bing Web Search API](../bing-web-search/search-the-web.md)segítségével, és hogyan böngészhet a többi[Bing Search API-k](../bing-web-search/index.yml).
 
 Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./useanddisplayrequirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.

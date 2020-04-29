@@ -1,15 +1,15 @@
 ---
-title: Rövid útmutató – A Hello World telepítése az Azure Service Fabric Mesh szolgáltatásba
+title: Gyors útmutató – "Helló világ!" alkalmazás üzembe helyezése az Azure Service Fabric Meshban
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Service Fabric Mesh-alkalmazást az Azure Service Fabric Meshben.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75458972"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
@@ -47,9 +47,9 @@ Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment cre
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Az előző parancs [linux.json sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)telepít egy Linux-alkalmazást. Ha Windows-alkalmazást szeretne telepíteni, használja a [windows.json sablont.](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json) A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
+Az előző parancs egy Linux-alkalmazást telepít [Linux. JSON sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha Windows-alkalmazást szeretne telepíteni, használja a [Windows. JSON sablont](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
-Ez a parancs az alábbiakban látható JSON-kódrészletet hoz létre. A ```outputs``` JSON kimenet szakasza alatt ```publicIPAddress``` másolja a tulajdonságot.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON ```outputs``` -kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -60,7 +60,7 @@ Ez a parancs az alábbiakban látható JSON-kódrészletet hoz létre. A ```outp
 }
 ```
 
-Ez az információ ```outputs``` az ARM sablon szakaszából származik. Az alábbiakban látható, ez a szakasz hivatkozik a Gateway erőforrás lekérése a nyilvános IP-címet. 
+Ez az információ az ARM ```outputs``` -sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {

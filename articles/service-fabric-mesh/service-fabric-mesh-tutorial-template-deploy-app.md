@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Alkalmazás üzembe helyezése az Azure Service Fabric Mesh szolgáltatásba
+title: Oktatóanyag – alkalmazás üzembe helyezése az Azure Service Fabric Meshban
 description: Ebből az oktatóanyagból megismerheti, hogyan helyezhet üzembe egy alkalmazást a Service Fabric Meshben egy sablonnal.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75494939"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
@@ -100,7 +100,7 @@ A regisztrációs adatbázis létrehozásakor a kimenet a következő példához
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Rendszerképek leküldése az Azure Container Registrybe
 
-Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. A [Service Fabric Mesh webalkalmazás létrehozása](service-fabric-mesh-tutorial-create-dotnetcore.md) című témakörben talál további információt az alkalmazás Visual Studióban való létrehozásáról. A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
+Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. A Visual Studióban történő alkalmazás létrehozásával kapcsolatos információkért lásd: [Service Fabric Mesh-Webalkalmazás létrehozása](service-fabric-mesh-tutorial-create-dotnetcore.md) . A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
 
 Ahhoz, hogy képet tudjon küldeni egy ACR-példányba, először szüksége van egy tárolólemezképre. Ha még nincs egy helyi tárolólemezképe sem, a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal kérje le a [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) képeit a Docker Hubból.
 
@@ -130,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Jelentkezzen be az Azure Container Registry.
+Jelentkezzen be a Azure Container Registryba.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -351,7 +351,7 @@ Az alkalmazás üzembe helyezéséhez futtassa a következő parancsot:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Ez a parancs az alábbiakban látható JSON-kódrészletet hoz létre. A ```outputs``` JSON kimenet szakasza alatt ```publicIPAddress``` másolja a tulajdonságot.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON ```outputs``` -kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -362,7 +362,7 @@ Ez a parancs az alábbiakban látható JSON-kódrészletet hoz létre. A ```outp
 }
 ```
 
-Ez az információ ```outputs``` az ARM sablon szakaszából származik. Az alábbiakban látható, ez a szakasz hivatkozik a Gateway erőforrás lekérése a nyilvános IP-címet. 
+Ez az információ az ARM ```outputs``` -sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {

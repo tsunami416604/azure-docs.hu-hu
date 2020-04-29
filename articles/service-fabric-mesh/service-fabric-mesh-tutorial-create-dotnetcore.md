@@ -1,5 +1,5 @@
 ---
-title: Többszolgáltatásos alkalmazás létrehozása, üzembe helyezése a Service Fabric Mesh alkalmazásba
+title: Több szolgáltatásból álló alkalmazás létrehozása, üzembe helyezése Service Fabric Meshban
 description: Ebben az oktatóanyagban létrehozhat egy ASP.NET Core-webhelyet tartalmazó, háttér-webszolgáltatással kommunikáló, többszolgáltatású Azure Service Fabric mesh-szolgáltatást, valamint azon helyi hibakeresést végezhet, majd közzéteheti az Azure-on.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75495183"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Oktatóanyag: Többszolgáltatású Service Fabric Meshben-alkalmazás létrehozása, hibaelhárítása, üzembe helyezése és frissítése
@@ -51,7 +51,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Service Fabric Mesh-projekt létrehozása Visual Studióban
 
-Futtassa a Visual Studio alkalmazást, és válassza az**Új** >  **projekt fájlja** > **lehetőséget...**
+Futtassa a Visual studiót, és válassza a **fájl** > **új** > **projekt elemet...**
 
 A **New Project** (Új projekt) párbeszédpanel fenti **Search** (Keresés) mezőjébe írja be a következőt: `mesh`. Válassza a **Service Fabric Mesh Application** (Service Fabric mesh-alkalmazás) sablont. Ha nem látja a sablont, győződjön meg róla, hogy telepítette a Mesh SDK-t és a VS-eszközök előzetes verzióját a [fejlesztési környezet beállításáról szóló szakaszban](service-fabric-mesh-howto-setup-developer-environment-sdk.md) ismertetett módon.  
 
@@ -79,13 +79,13 @@ Most már rendelkezik egy Service Fabric mesh-alkalmazással. Következő lépé
 
 ## <a name="create-the-to-do-items-model"></a>A feladatlista-modell létrehozása
 
-Az egyszerűség kedvéért a feladatlista elemei egy memórialistában találhatók. Hozzon létre egy osztálytárat a feladatlista elemeihez, valamint egy listát, amelyben tárolhatja őket. A Visual Studio programban, amelyjelenleg be van töltve a **todolistapp-megoldással,** válassza az**Új** **projekt fájlhozzáadása** > **Add** > lehetőséget.
+Az egyszerűség kedvéért a feladatlista elemei egy memórialistában találhatók. Hozzon létre egy osztálytárat a feladatlista elemeihez, valamint egy listát, amelyben tárolhatja őket. A Visual Studióban, amelyen jelenleg a **todolistapp** -megoldás be van töltve, válassza a **fájl** > **Add** > **új projekt**hozzáadása elemet.
 
-A felül lévő **Új projekt hozzáadása** **párbeszédpanelen** írja be a következőt: `C# .net core class` Válassza aki a **Class Library (.NET Core)** (Osztálytár [.Net Core]) sablont.
+Az **új projekt hozzáadása** **párbeszédpanel felső** részén írja be a következőt `C# .net core class`:. Válassza aki a **Class Library (.NET Core)** (Osztálytár [.Net Core]) sablont.
 
 A **Name** (Név) mezőbe írja a következőt: `Model`. Az osztálytár létrehozásához kattintson az **OK** gombra.
 
-A Megoldáskezelő **Model** (Modell) területén kattintson a jobb gombbal a **Class1.cs** elemre, és válassza a **Rename** (Átnevezés) lehetőséget. Nevezze át az osztályt **ToDoItem.cs** névre. Amikor megjelenik egy kérdés, amely az összes hivatkozás átnevezésének kérdésére vonatkozik, kattintson az **Igen**gombra.
+A Megoldáskezelő **Model** (Modell) területén kattintson a jobb gombbal a **Class1.cs** elemre, és válassza a **Rename** (Átnevezés) lehetőséget. Nevezze át az osztályt **ToDoItem.cs** névre. Ha megjelenik egy üzenet, amely rákérdez, hogy az összes hivatkozást átnevezi-e, kattintson az **Igen**gombra.
 
 Az üres `class ToDoItem` tartalmát cserélje a következőre:
 
@@ -115,7 +115,7 @@ public class ToDoItem
 }
 ```
 
-Ez az osztály tennivalókat jelöl.
+Ez az osztály a-do elemeket jelképezi.
 
 A feladatelemek listájának létrehozásához a Visual Studióban kattintson a jobb gombbal a **Model** (Modell) osztálytárra, majd az **Add** > **Class...** (Hozzáadás > Osztály...) lehetőségre. Megjelenik az **Add New Item** (Új elem hozzáadása) párbeszédpanel. A **Name** (Név) tulajdonságot állítsa `ToDoList.cs` értékre, és kattintson az **Add** (Hozzáadás) lehetőségre.
 
@@ -185,7 +185,7 @@ Ezután megjelenik az **New ASP.NET Core Web Application** (Új ASP.NET Core-web
 
 Mivel a háttérszolgáltatáshoz nem tartozik felhasználói felület, kapcsolja ki a szolgáltatás indulásakor elinduló böngésző beállítást. A **Solution Explorer** (Megoldáskezelő) ablakban kattintson a jobb gombbal a **ToDoService** elemre, és válassza a **Properties** (Tulajdonságok) lehetőséget. A megjelenő ablakban kattintson a bal oldali **Debug** (Hibakeresés) lapra, és törölje a jelölést a **Launch browser** (Böngésző indítása) jelölőnégyzetből. A módosítás mentéséhez nyomja le a **Ctrl+S** billentyűkombinációt.
 
-Mivel ez a szolgáltatás tartja fenn a feladatlista adatait, hozzá kell adnia egy referenciát a Model osztálytárjához. A Megoldáskezelőben kattintson a jobb gombbal a **ToDoService** elemre, majd válassza a**Hivatkozás hozzáadása...** **parancsot.** >  Megjelenik **a Referenciakezelő** párbeszédpanel.
+Mivel ez a szolgáltatás tartja fenn a feladatlista adatait, hozzá kell adnia egy referenciát a Model osztálytárjához. A megoldáskezelő kattintson a jobb gombbal a **ToDoService** elemre, majd válassza a hivatkozás **hozzáadása** > **...** lehetőséget. Ekkor megjelenik a **Reference Manager** párbeszédpanel.
 
 A **Reference Manager** párbeszédpanelen jelölje be a **Model** jelölőnégyzetét, majd kattintson az **OK** gombra.
 
@@ -268,7 +268,7 @@ Ez az oktatóanyag nem tartalmazza a hozzáadásról, törlésről és egyéb m�
 A háttérszolgáltatás implementálása után kódolnia kell a feladatlista elemeit megjelenítő webhelyet. A következő lépések a **WebFrontEnd** projektben végezendők el.
 
 A feladatlista elemeit megjelenítő weblapnak hozzáférésre van szüksége a **ToDoItem** osztályhoz és listához.
-A **Megoldáskezelőben**adjon hozzá hivatkozást a Modell projektre úgy, hogy a jobb gombbal a **WebFrontEnd** elemre kattint, és a Hivatkozás **hozzáadása parancsot választja...** > **Reference...** Megjelenik **a Referenciakezelő** párbeszédpanel.
+A **megoldáskezelő**adjon hozzá egy hivatkozást a modell projekthez úgy, hogy a jobb gombbal a **webfrontend** elemre kattint, és kiválasztja a hivatkozás **hozzáadása** > **... lehetőséget.** Ekkor megjelenik a **Reference Manager** párbeszédpanel.
 
 A **Reference Manager** (Referenciakezelő) párbeszédpanelen jelölje be a **Model** jelölőnégyzetét, majd kattintson az **OK** gombra.
 
@@ -304,7 +304,7 @@ Cserélje le a teljes fájl tartalmát a következő HTML-re, amely egy egyszer�
 </div>
 ```
 
-Kattintson az **Index.cshtml** fájl legördülő ikonjára a **Megoldáskezelőben,** majd nyissa meg **a Index.cshtml.cs**.
+Kattintson az **index. cshtml** fájl legördülő ikonjára a **megoldáskezelő** , majd nyissa meg a **index.cshtml.cs**.
 
 Az **Index.cshtml.cs** tetején adja hozzá a következőt: `using System.Net.Http;`
 
@@ -345,23 +345,23 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 Az URL-cím a szolgáltatás nevéből és a portból áll. Ezek az adatok megtalálhatók a **ToDoService** projekt service.yaml fájljában.
 
 > [!IMPORTANT]
-> A következő lépésekben a YAML-fájlok módosulnak.
-> A service.yaml fájl változóit szóközökkel, és nem tabulátorokkal kell behúzni, különben nem fognak működni. Előfordulhat, hogy a Visual Studio beszúr tabulátorokat a környezeti változók létrehozásakor. Ezeket cserélje szóközökre. Bár a buildhiba-hibakeresési kimenetben hibák jelennek meg, az alkalmazás továbbra is elindul, de addig nem, amíg a lapokat szóközökké alakítja és újra nem építi. **build** Annak érdekében, hogy a service.yaml fájlban ne legyenek lapok, a térközláthatóvá tehető a Visual Studio szerkesztőjében az  > **Irányított**  > nézet**szóköz** **szerkesztése**funkcióval.
-> Vegye figyelembe, hogy service.yaml fájlok feldolgozása az angol területi beállítással történik. Ha például tizedeselválasztót kell használnia, használjon pont helyett vesszőt.
+> A következő lépésekben a YAML-fájlok módosítva lesznek.
+> A service.yaml fájl változóit szóközökkel, és nem tabulátorokkal kell behúzni, különben nem fognak működni. Előfordulhat, hogy a Visual Studio beszúr tabulátorokat a környezeti változók létrehozásakor. Ezeket cserélje szóközökre. Bár hibák jelennek meg az **Build** debug kimenetében, az alkalmazás továbbra is elindul, de addig nem, amíg át nem alakítja a lapokat a szóközökbe és az újjáépítésbe. Annak biztosítása érdekében, hogy a Service. YAML fájlban ne legyenek tabulátorok, a Visual Studio szerkesztőben szóközöket láthat a**speciális**  > **nézet** **szerkesztése**  > területen.
+> Vegye figyelembe, hogy service.yaml fájlok feldolgozása az angol területi beállítással történik. Ha decimális elválasztót kell használnia, használjon vessző helyett egy pontot, például:.
 
 A **Solution Explorerben** lépjen a **ToDoService** projektre, és nyissa meg a **Service Resources** > **service.yaml** (Szolgáltatás-erőforrások > service.yaml) fájlt.
 
 ![1. ábra – A ToDoService service.yaml fájlja](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
- A szolgáltatás `ToDoService`neve , `services:` a fenti ábrán az 1.
+ A szolgáltatás neve `ToDoService`a fenti ábrán a `services:` lásd: (1) szakaszban található.
 
-* A port `80`, , `endpoints:` a fenti ábrán a Lásd (2) bekezdésben található. A projekt portszáma valószínűleg más lesz.
+* A port `80`a fenti ábrán a `endpoints:` lásd: (2) szakaszban található. A projekt portszáma valószínűleg eltérő lesz.
 
-Ezután meg kell határoznunk a webfrontend projekt szolgáltatásnevét és portszámát képviselő környezeti változókat, hogy megtudja hívni a háttérszolgáltatást.
+Ezután meg kell határoznia a szolgáltatás nevét és portszámát képviselő környezeti változókat a webfrontend-projektben, hogy meghívja a háttér-szolgáltatást.
 
 A **Solution Explorerben** lépjen a **WebFrontEnd** > **Service Resources** > **service.yaml** (WebFrontEnd > Szolgáltatás-erőforrások > service.yaml) területre a háttérszolgáltatás címét meghatározó változók definiálásához.
 
-A service.yaml fájlban adja hozzá `environmentVariables:` a következő változókat `#` a (Először el kell távolítania a megjegyzést) `environmentVariables:`A térköz `environmentVariables:`fontos, ezért igazítsa a hozzáadott változókat a többi változóhoz. Nagyon fontos, hogy az ApiHostPort értéke megegyezzen a ToDoServiceListener portértékével, amely korábban a ToDoService service.yaml fájljában volt látható.
+Adja hozzá a következő változókat a Service. YAML fájlhoz `environmentVariables:` (először el kell távolítania a- `#` et a törléshez `environmentVariables:`), hogy a térköz fontos legyen, és illessze be a hozzáadott változókat `environmentVariables:`a más változókkal. Nagyon fontos, hogy a ApiHostPort értéke egyezzen a ToDoServiceListener port értékével, amely korábban a ToDoService Service. YAML fájljában volt látható.
 
 ```yaml
 - name: ApiHostPort
@@ -371,10 +371,10 @@ A service.yaml fájlban adja hozzá `environmentVariables:` a következő válto
 ```
 
 > [!Tip]
-> Az érték kétféleképpen adható `ToDoServiceName`meg: 
-> - Csak a szolgáltatás nevét, amely megoldja mind a hibakeresési forgatókönyv a Windows 10, valamint a szolgáltatás üzembe helyezéseaz Azure Service Fabric Mesh.
-> - Teljesen szolgáltatásnév.alkalmazásnévnek minősül. Ez csak akkor működik, ha a Windows 10-en hibakeresést végez.
-> Célszerű csak a szolgáltatás nevét használni a szolgáltatás feloldása.
+> A következő `ToDoServiceName`két módon adható meg az érték: 
+> - Csak a szolgáltatás neve, amely a Windows 10 hibakeresési forgatókönyvében, valamint a szolgáltatás Azure Service Fabric Meshba való telepítésekor is feloldja a megoldást.
+> - Teljes mértékben minősített szolgáltatásnév. AppName. Ez csak akkor működik, ha a Windows 10 rendszeren hibakeresést végez.
+> Ajánlott a szolgáltatás nevének használata a szolgáltatás feloldásához.
 
 A **WebFrontEnd** projekt **service.yaml** fájljának ehhez hasonlónak kell lennie, bár a(z) `ApiHostPort` érték az Ön esetében valószínűleg eltérő lesz:
 

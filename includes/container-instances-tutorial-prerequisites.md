@@ -9,10 +9,10 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552417"
 ---
 Az oktatóanyag teljesítéséhez a következők szükségesek:
@@ -21,7 +21,7 @@ Az oktatóanyag teljesítéséhez a következők szükségesek:
 
 **Docker**: Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű `docker`-parancsokra vonatkozó alapvető ismeretekkel. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját][docker-get-started].
 
-**Docker:** Az oktatóanyag befejezéséhez helyileg kell telepítenie a Dockert. A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS][docker-mac], [Windows][docker-windows] és [Linux][docker-linux] rendszereken.
+**Docker**: az oktatóanyag elvégzéséhez helyileg kell telepíteni a Docker-t. A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS][docker-mac], [Windows][docker-windows] és [Linux][docker-linux] rendszereken.
 
 > [!IMPORTANT]
 > Mivel az Azure Cloud Shell nem tartalmazza a Docker-démont, ezért az oktatóanyag teljesítéséhez telepíteni *kell* a *helyi számítógépen* az Azure CLI-t és a Docker Engine-t. Ehhez az oktatóanyaghoz nem használható az Azure Cloud Shell.

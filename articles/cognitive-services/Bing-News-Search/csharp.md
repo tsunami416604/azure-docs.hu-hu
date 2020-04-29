@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Hírkeresés végrehajtása c# - Bing News Search REST API-val'
+title: 'Gyors útmutató: Hírek keresése C# használatával – Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak C# használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API C# használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448481"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírek keresése a C# és a Bing News Search REST API használatával
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a C# és a Bing News Search használatával REST API
 
-Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing News Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű C# alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az egyszerű C#-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)érhető el.
 
 Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/)bármely kiadása.
+* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
@@ -44,14 +44,14 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     using System.Collections.Generic;
     ```
 
-2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```csharp
     const string accessKey = "enter key here";
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Struct létrehozása a Bing News Search válasz formázásához
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>A Bing News Search-válasz formázására szolgáló struct létrehozása
 
 1. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
 
@@ -63,9 +63,9 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     }
     ```
 
-## <a name="create-and-handle-a-news-search-request"></a>Hírkeresési kérelem létrehozása és kezelése
+## <a name="create-and-handle-a-news-search-request"></a>Hírek keresési kérelmének létrehozása és kezelése
 
-Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A módszerben hajtsa végre a következő lépéseket:
+Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A metódusban hajtsa végre a következő lépéseket:
 
 1. Hozza létre a keresési kérés URI-ját. Tartsa észben, hogy a `toSearch` keresési kifejezést a sztringhez való hozzáfűzés előtt kell formáznia.
 
@@ -106,7 +106,7 @@ Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, ma
 
 ## <a name="process-the-response"></a>A válasz feldolgozása
 
-1. A fő metódusban hívja meg a `BingNewsSearch()` elemet, és tárolja a kapott választ. Ezután deszerializálja a JSON-fájlt egy objektumba. Ezután megtekintheti a válasz értékeit.
+1. A fő metódusban hívja meg a `BingNewsSearch()` elemet, és tárolja a kapott választ. Ezután deszerializálja a JSON-fájlt egy objektumba. Ekkor megtekintheti a válasz értékeit.
 
     ```csharp
     SearchResult result = BingNewsSearch(searchTerm);

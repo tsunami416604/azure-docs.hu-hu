@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Hírkeresés végrehajtása a Pythonnal és a Bing News Search REST API-val'
+title: 'Gyors útmutató: Hírek keresése a Pythonban és a Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak a Python használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API a Python használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448496"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírkeresés végrehajtása a Python és a Bing News Search REST API használatával
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Python és a Bing News Search használatával REST API
 
-Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing News Search API-t, és JSON-választ kaphat. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket. Bár ez az alkalmazás python nyelven íródott, az API egy RESTful webszolgáltatás kompatibilis a legtöbb programozási nyelvek.
+Ezzel a rövid útmutatóval megteheti az első hívását a Bing News Search API, és JSON-választ kap. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket. Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-Ezt a kódmintát Jupyter notebookként futtathatja a [MyBinder-en,](https://mybinder.org) ha rákattint az indító iratgyűjtő jelvényre: 
+Ezt a mintakód Jupyter jegyzetfüzetként is futtathatja a [MyBinder](https://mybinder.org) a következő hivatkozásra kattintva:. 
 
 [![Iratgyűjtő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
-A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)is elérhető.
+A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE-ben vagy szerkesztőjében, és importálja a kérelemmodult. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a kérelem modulját. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```python
 import requests
@@ -46,16 +46,16 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ### <a name="create-parameters-for-the-request"></a>Paraméterek létrehozása a kérelemhez
 
-1. Adja hozzá az előfizetési kulcsot `"Ocp-Apim-Subscription-Key"` egy új szótárhoz, kulcsként használva. Tegye ugyanezt a keresési paraméterekért is.
+1. Adja hozzá az előfizetési kulcsot egy új szótárhoz `"Ocp-Apim-Subscription-Key"` , a kulcsként használva. Tegye meg ugyanezt a keresési paramétereknél.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>Kérés küldése és válasz kérése
+## <a name="send-a-request-and-get-a-response"></a>Kérelem küldése és Válasz kérése
 
-1. A kérelmek tárában hívja meg a Bing Visual Search API-t az előfizetési kulcs használatával, és az utolsó lépésben létrehozott szótárobjektumokat.
+1. A kérelmek könyvtárával hívja meg a Bing Visual Search API az előfizetési kulccsal, valamint az utolsó lépésben létrehozott szótár-objektumokkal.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -63,7 +63,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results`az API válaszát JSON-objektumként tartalmazza. A válaszban szereplő cikkek leírásának elérése.
+2. `search_results`az API-ból származó választ JSON-objektumként tartalmazza. A válaszban szereplő cikkek leírásának elérése.
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]

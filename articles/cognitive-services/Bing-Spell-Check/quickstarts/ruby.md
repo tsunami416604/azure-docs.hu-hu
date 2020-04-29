@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Helyesírás-ellenőrzés a REST API-val és a Ruby - Bing helyesírás-ellenőrzéssel'
+title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és a Ruby-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval első lépések a Bing Helyesírás-ellenőrző REST API-val ellenőrizheti a helyesírást és a nyelvhelyességet.
+description: Ismerkedjen meg a Bing Spell Check REST API használatával a helyesírás és a nyelvtan ellenőrzéséhez ezzel a rövid útmutatóval.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448433"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rövid útmutató: Helyesírás-ellenőrzés a Bing helyesírás-ellenőrző REST API-val és a Ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a Ruby
 
-Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellenőrző REST API-t a Ruby használatával. Ez az egyszerű alkalmazás kérelmet küld az API-nak, és visszaadja a nem felismert szavak listáját, majd a javasolt javításokat. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Spell Check REST API a Ruby használatával. Ez az egyszerű alkalmazás egy kérelmet küld az API-nak, és visszaadja a nem felismerhető szavak listáját, amelyet a javasolt javítások követnek. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Ruby fájlt kedvenc szerkesztőjében vagy IDE-jében, és adja hozzá a következő követelményeket. 
+1. Hozzon létre egy új Ruby-fájlt a kedvenc szerkesztőjében vagy az IDE-ben, és adja hozzá az alábbi követelményeket. 
 
     ```ruby
     require 'net/http'
@@ -38,7 +38,7 @@ Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellen
     require 'json'
     ```
 
-2. Hozzon létre változókat az előfizetési kulcshoz, a végpont URI-hoz és az elérési úthoz. Hozza létre a kérelem paramétereit a paraméter nek a `mkt=` piachoz és `&mode` a `proof` próbaüzemmódhoz való hozzáfűzésével. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+2. Hozzon létre változókat az előfizetési kulcshoz, a végpont URI azonosítóhoz és elérési úthoz. Hozza létre a kérelmek paramétereit úgy, `mkt=` hogy hozzáfűzi a paramétert `&mode` a piacához, valamint a `proof` Proof módba. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -49,7 +49,7 @@ Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellen
 
 ## <a name="send-a-spell-check-request"></a>Helyesírás-ellenőrzési kérelem küldése
 
-1. Hozzon létre egy URI-t a gazdagép uri, elérési útján a paraméterek és a paraméterek karakterláncából. Állítsa be, hogy a lekérdezés tartalmazza a helyesírás-ellenőrzést.
+1. Hozzon létre egy URI-t a gazdagép URI-ja, elérési útja és paramétereinek karakterlánca alapján. Állítsa be a lekérdezést úgy, hogy tartalmazza a helyesírás-ellenőrzéshez használni kívánt szöveget.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -59,7 +59,7 @@ Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellen
    })
    ```
 
-2. Hozzon létre egy kérelmet a fent létrehozott URI használatával. Adja hozzá a `Ocp-Apim-Subscription-Key` kulcsot a fejléchez.
+2. Hozzon létre egy kérelmet a fent létrehozott URI használatával. Adja hozzá a kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -75,7 +75,7 @@ Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellen
     end
     ```
 
-4. Szerezd meg a JSON-választ, és nyomtassa ki a konzolra. 
+4. Kérje le a JSON-választ, és nyomtassa ki a konzolra. 
 
     ```ruby
     result = JSON.pretty_generate(JSON.parse(response.body))
@@ -84,9 +84,9 @@ Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Helyesírás-ellen
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Készítse el és futtassa a projektet.
+Hozza létre és futtassa a projektet.
 
-Ha a parancssort használja, az alkalmazás futtatásához használja a következő parancsot.
+Ha a parancssort használja, futtassa az alábbi parancsot az alkalmazás futtatásához.
 
 ```bash
 ruby <FILE_NAME>.rb

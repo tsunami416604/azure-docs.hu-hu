@@ -9,24 +9,24 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659872"
 ---
 >[!IMPORTANT]
->Használhatja a létrehozott erőforrások at előfeltételei más Azure Machine Learning-oktatóanyagok és útmutató cikkek.
+>A létrehozott erőforrásokat használhatja más Azure Machine Learning oktatóanyagok és útmutatók előfeltételeiként.
 
-### <a name="delete-everything"></a>Mindent töröljön
+### <a name="delete-everything"></a>Mindent törölni
 
-Ha nem tervezi, hogy bármit is létrehoz, törölje a teljes erőforráscsoportot, hogy ne kelljen fizetnie.
+Ha nem tervezi a létrehozott bármit használni, törölje a teljes erőforráscsoportot, így nem számítunk fel díjat.
 
-1. Az Azure Portalon válassza **erőforráscsoportok** az ablak bal oldalán.
+1. A Azure Portal az ablak bal oldalán válassza az **erőforráscsoportok** lehetőséget.
  
    ![Erőforráscsoport törlése az Azure Portalon](./media/aml-ui-cleanup/delete-resources.png)
 
-1. A listában jelölje ki a létrehozott erőforráscsoportot.
+1. A listából válassza ki a létrehozott erőforráscsoportot.
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
@@ -34,16 +34,16 @@ Az erőforráscsoport törlése a tervezőben létrehozott összes erőforrást 
 
 ### <a name="delete-individual-assets"></a>Egyedi eszközök törlése
 
-Abban a tervezőben, ahol létrehozta a kísérletet, törölje az egyes kellékeket, jelölje ki őket, majd válassza a **Törlés** gombot.
+A tervezőben, ahol létrehozta a kísérletet, törölje az egyes objektumokat úgy, hogy kiválasztja őket, majd a **Törlés** gombra kattint.
 
-Az itt létrehozott számítási cél *automatikusan automatikusan skálázza* a nulla csomópontok, ha nem használja. Ez a művelet a díjak minimalizálása érdekében történik.Ha törölni szeretné a számítási célt, tegye az alábbi lépéseket:
+Az itt létrehozott számítási cél *automatikusan automatikus méretezést* végez a nulla csomópontokra, amikor az nincs használatban. Ez a művelet a díjak minimalizálásához szükséges.Ha törölni szeretné a számítási célt, hajtsa végre a következő lépéseket:
 
 ![Eszközök törlése](./media/aml-ui-cleanup/delete-asset.png)
 
-Az adatkészletek regisztrációját a munkaterületről úgy oldhatja meg, hogy kijelöli az egyes adatkészleteket, majd a Regisztráció megszüntetése lehetőséget **választja.**
+Az adatkészletek regisztrációját a munkaterületről törölheti, ha kiválasztja az egyes adatkészleteket, és kiválasztja a **Regisztráció törlése**lehetőséget.
 
-![Adatkészlet regisztrációjának megszüntetése](./media/aml-ui-cleanup/unregister-dataset1225.png)
+![Adatkészlet regisztrációjának törlése](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
-Adatkészlet törléséhez nyissa meg a tárfiókot az Azure Portalon vagy az Azure Storage Explorer használatával, és manuálisan törölje ezeket az eszközöket.
+Az adatkészletek törléséhez nyissa meg a Storage-fiókot a Azure Portal vagy Azure Storage Explorer használatával, és manuálisan törölje ezeket az eszközöket.
 
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Keresési kérelem küldése a REST API-nak a Node.js használatával – Bing entitáskeresés'
+title: 'Gyors útmutató: keresési kérelem küldése a REST API Node. js használatával – Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API-nak C# használatával, és JSON-választ kaphat.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API C# használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448631"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyorsútmutató: Keresési kérelem küldése a Bing entitás keresési REST API-j használatával Node.js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API Node. js használatával
 
-Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Entity Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű JavaScript-alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js)
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű JavaScript-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
-Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolg
     let https = require ('https');
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -51,14 +51,14 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolg
     let q = 'italian restaurant near me';
     ```
 
-3. Fűzze hozzá a piaci és lekérdezési paramétereket egy karakterlánchoz, amelynek neve `query`. Ügyeljen arra, hogy url-kódolni a lekérdezést. `encodeURI()`
+3. Fűzze hozzá a piacot és a lekérdezési paramétereket `query`egy nevű karakterlánchoz. Ügyeljen arra, hogy URL-kódolással kódolja `encodeURI()`a lekérdezést.
     ```javascript 
     let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
     ```
 
 ## <a name="handle-and-parse-the-response"></a>A válasz kezelése és elemzése
 
-1. Adjon meg `response_handler` egy HTTP-hívást `response`, paraméterként használó függvényt. Ebben a funkcióban hajtsa végre a következő lépéseket:
+1. Definiáljon egy nevű `response_handler` függvényt, amely egy http `response`-hívást (paraméterként) használ. A függvényen belül hajtsa végre a következő lépéseket:
 
     1. Definiáljon egy változót, amely a JSON-válasz törzsét tartalmazza majd.  
         ```javascript
@@ -74,7 +74,7 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolg
         });
         ```
 
-    3. Ha egy **záró** jelző t jelez, elemezze a JSON-t, és nyomtassa ki.
+    3. Ha a rendszer jelzi a **záró** jelzőt, elemzi a JSON-t, majd kinyomtatja azt.
 
         ```javascript
         response.on ('end', function () {
@@ -85,10 +85,10 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolg
 
 ## <a name="send-a-request"></a>Kérés küldése
 
-1. Hozzon létre `Search` egy keresési kérelem küldésére hívott függvényt. Ebben hajtsa végre a következő lépéseket.
+1. Hozzon létre egy `Search` nevű függvényt a keresési kérelem elküldéséhez. Ebben az esetben hajtsa végre a következő lépéseket.
 
-   1. Hozzon létre egy JSON-objektumot, `Get` amely tartalmazza a kérelem paramétereit: használja a metódushoz, és adja meg a gazdagép és az elérési út adatait. Adja hozzá az `Ocp-Apim-Subscription-Key` előfizetési kulcsot a fejléchez. 
-   2. A `https.request()` kérelem elküldéséhez a korábban létrehozott válaszkezelővel és a keresési paraméterekkel küldheti el.
+   1. Hozzon létre egy JSON-objektumot, amely a `Get` kérelem paramétereit tartalmazza: használja a metódust, és adja hozzá a gazdagép és az elérési út adatait. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez. 
+   2. A `https.request()` paranccsal elküldheti a kérést a korábban létrehozott Response Handler és a keresési paraméterek alapján.
     
       ```javascript
       let Search = function () {
@@ -106,7 +106,7 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolg
       }
       ```
 
-2. Hívja `Search()` meg a függvényt.
+2. Hívja meg `Search()` a függvényt.
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
@@ -179,4 +179,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../overview.md )
-* [Bing entitáskeresési API– referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
