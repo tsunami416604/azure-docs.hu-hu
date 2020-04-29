@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 74031a8dbc9b64d6a09533789eed1296ff334d47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179780"
 ---
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre.
@@ -24,4 +24,4 @@ DNS-zóna Azure DNS-ben való létrehozásakor:
 > [!NOTE]
 > Nem kell ahhoz tartománynévvel rendelkeznie, hogy azzal a tartománynévvel létrehozzon egy DNS-zónát az Azure DNS-ben. Azonban ahhoz, hogy az Azure DNS névkiszolgálókat a tartománynév helyes névkiszolgálójaként konfigurálhassa a tartományregisztrálóhoz, birtokolnia kell a tartományt.
 > 
-> További információt a [Tartomány delegálása az Azure DNS-re](../articles/dns/dns-domain-delegation.md)című témakörben talál.
+> További információ: [tartomány delegálása Azure DNSra](../articles/dns/dns-domain-delegation.md).

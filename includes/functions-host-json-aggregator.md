@@ -8,13 +8,13 @@ ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 9c51ce726545d1c64d69c86c36fc69ea43c3b882
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279309"
 ---
-Megadja, hogy hány függvénymeghívás összesítve az [Application Insights metrikák számításakor.](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator) 
+Azt határozza meg, hogy hány függvényt kell összesíteni a [Application Insights metrikáinak kiszámításakor](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator). 
 
 ```json
 {
@@ -27,7 +27,7 @@ Megadja, hogy hány függvénymeghívás összesítve az [Application Insights m
 
 |Tulajdonság |Alapértelmezett  | Leírás |
 |---------|---------|---------| 
-|batchSize|1000|Az összesítésre vonatkozó kérelmek maximális száma.| 
-|kiürítés|00:00:30|Az összesítésre vonatkozó maximális időtartam.| 
+|batchSize|1000|Az összesíteni kívánt kérelmek maximális száma.| 
+|flushTimeout|00:00:30|Az összesíteni kívánt időszak maximális időtartama.| 
 
-A függvénymeghívások összesítése a két korlát közül az első elérésekor lesz összesítve.
+A függvény meghívásait a rendszer összesíti, ha eléri a két korlát első számát.

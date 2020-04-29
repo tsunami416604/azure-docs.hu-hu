@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179578"
 ---
-Ha bármilyen eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata ezt a csomagot használja a problémák elhárításához. Támogatási csomag létrehozásához kövesse az alábbi lépéseket:
+Ha bármilyen eszközzel kapcsolatos probléma merül fel, létrehozhat egy támogatási csomagot a rendszernaplókból. Microsoft ügyfélszolgálata ezt a csomagot használja a problémák elhárításához. Támogatási csomag létrehozásához kövesse az alábbi lépéseket:
 
-1. [Csatlakozzon az eszköz PowerShell-felületéhez.](#connect-to-the-powershell-interface)
-2. A `Get-HcsNodeSupportPackage` paranccsal hozzon létre egy támogatási csomagot. A parancsmag használata a következő:
+1. [Kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
+2. Támogatási csomag `Get-HcsNodeSupportPackage` létrehozásához használja a parancsot. A parancsmag használata a következő:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ Ha bármilyen eszközproblémákat tapasztal, létrehozhat egy támogatási csom
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    A parancsmag összegyűjti a naplókat az eszközről, és másolja azokat egy adott hálózatra vagy helyi megosztásra.
+    A parancsmag gyűjti a naplókat az eszközről, és átmásolja a naplókat egy megadott hálózati vagy helyi megosztásra.
 
-    Az alkalmazott paraméterek a következők:
+    A használt paraméterek a következők:
 
-    - `-Path`- Adja meg a hálózatot vagy a helyi elérési utat, amelybe a támogatási csomagot másolni szeretné. (kötelező)
-    - `-Credential`- Adja meg a védett elérési út eléréséhez szükséges hitelesítő adatokat.
-    - `-Zip`- Adja meg, hogy létrehoz egy zip fájlt.
-    - `-Include`- Adja meg, hogy tartalmazza a támogatási csomagban szerepeltetni kívánt összetevőket. Ha nincs megadva, `Default` a függvény feltételezi.
-    - `-IncludeArchived`- Adja meg, hogy tartalmazza az archivált naplókat a támogatási csomagban.
-    - `-IncludePeriodicStats`- Adja meg, hogy tartalmazza az időszakos stat naplók at a támogatási csomagban.
+    - `-Path`-Válassza a hálózatot vagy a helyi elérési utat a támogatási csomag másolásához. szükséges
+    - `-Credential`-A védett útvonal eléréséhez használandó hitelesítő adatok megadása.
+    - `-Zip`-A zip-fájl létrehozásához meg kell adni.
+    - `-Include`-Adja meg a támogatási csomagban szerepeltetni kívánt összetevőket. Ha nincs megadva, `Default` a rendszer feltételezi.
+    - `-IncludeArchived`-Adja meg, hogy az archivált naplók szerepeljenek a támogatási csomagban.
+    - `-IncludePeriodicStats`-Adja meg, hogy az időszakos stat naplókat tartalmazza a támogatási csomagban.
 
     

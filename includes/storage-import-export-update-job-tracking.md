@@ -9,21 +9,21 @@ ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179333"
 ---
-A lemezek szállítása után térjen vissza az **Importálás/exportálás** lapra az Azure Portalon. 
+A lemezek szállítása után térjen vissza az **Importálás/exportálás** lapra a Azure Portal. 
 
 > [!IMPORTANT] 
-> Ha a nyomon követési szám nem frissül a feladat létrehozását követő 2 héten belül, a feladat lejár. 
+> Ha a nyomkövetési szám nem frissül a feladatok létrehozása után 2 héten belül, a művelet lejár. 
 
-A követési szám frissítéséhez hajtsa végre az alábbi lépéseket.
+A nyomkövetési szám frissítéséhez hajtsa végre a következő lépéseket.
  
-1. Jelölje ki, és kattintson a feladatra.
-2. Kattintson **a Feladat állapotának és nyomon követési adatainak frissítése a meghajtók kiszállítása után lehetőségre.** 
-3. Jelölje be a Mark **as hipped (Megjelölés szállítottként) ellen jelölőnégyzetet.**
-4. Adja meg a **Szállító** és **a Követés számát.**
-5. A feladat előrehaladásának nyomon követése a portál irányítópultján. Az egyes feladatállapotok leírását a Feladat állapotának megtekintése lapon [tekintheti meg.](../articles/storage/common/storage-import-export-view-drive-status.md)
+1. Jelölje ki, majd kattintson a feladatokra.
+2. **A meghajtók szállítása után kattintson a feladatok állapotának frissítése és a nyomkövetési adatok**lehetőségre. 
+3. Jelölje be a **megjelölés leszállítottként**jelölőnégyzetet.
+4. Adja meg a **Szállítói** és a **követési számot**.
+5. Kövesse nyomon a feladatok előrehaladását a portál irányítópultján. Az egyes feladatok állapotának leírásához lépjen a [feladatok állapotának megtekintése](../articles/storage/common/storage-import-export-view-drive-status.md)elemre.

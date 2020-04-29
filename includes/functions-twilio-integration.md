@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178920"
 ---
-Ez a minta magában foglalja a [Twilio](https://www.twilio.com/) szolgáltatás segítségével SMS-üzenetek küldése egy mobiltelefonra. Az Azure Functions már támogatja a Twilio a [Twilio-kötés,](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)és a minta használja ezt a funkciót.
+Ez a minta a [Twilio](https://www.twilio.com/) szolgáltatás használatával SMS-üzeneteket küld a mobiltelefonjára. Azure Functions már támogatja a Twilio-t a [Twilio-kötésen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)keresztül, és a minta ezt a szolgáltatást használja.
 
-Az első dolog, amire szüksége van egy Twilio-fiók. Létrehozhat egyet ingyenesen https://www.twilio.com/try-twilioa. Miután rendelkezik fiókkal, adja hozzá a következő három **alkalmazásbeállítást** a függvényalkalmazáshoz.
+Az első dolog, amire szüksége van egy Twilio-fiók. Létrehozhat egy ingyenes at https://www.twilio.com/try-twilio. Ha már rendelkezik fiókkal, adja hozzá a következő három **alkalmazás-beállítást** a Function alkalmazáshoz.
 
-| Alkalmazásbeállítás neve | Érték leírása |
+| Alkalmazás-beállítás neve | Érték leírása |
 | - | - |
-| **TwilioAccountSid**  | A Twilio-fiók sid-je |
-| **TwilioAuthToken**   | A Twilio-fiók hitelesítési tokenje |
-| **TwilioPhoneNumber** | A Twilio-fiókhoz társított telefonszám. Ezzel sms-üzenetek küldésére szolgál. |
+| **TwilioAccountSid**  | A Twilio-fiókhoz tartozó SID |
+| **TwilioAuthToken**   | A Twilio-fiók hitelesítési jogkivonata |
+| **TwilioPhoneNumber** | A Twilio-fiókhoz társított telefonszám. Ez az SMS-üzenetek küldésére szolgál. |

@@ -9,18 +9,18 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67503381"
 ---
-A prémium szintű fájlok egy **FileStorage**nevű egyedi tárfiókot használnak. Ez a fióktípus nagy IOPS-alapú, nagy átviteli sebességű, konzisztens, alacsony késésű számítási feladatokhoz készült. Prémium szintű fájltárolási méretek a kiosztott megosztás méretével.
+A prémium szintű fájlok a **FileStorage**nevű egyedi Storage-fiókot használják. Ez a fióktípus nagy IOPS, nagy teljesítményű, konzisztens kis késésű számítási feladatokhoz lett tervezve. A Premium file Storage a kiosztott megosztási mérettel méretezhető.
 
 |Terület  |Cél  |
 |---------|---------|
-|Maximális annektált méret     |100 TiB     |
+|Maximális kiépített méret     |100 TiB     |
 |Megosztások   |Korlátlan  |
 |IOPS     |100 000    |
-|Bejövő forgalom|4,136 MiB/s     |
-|Kimenő forgalom|6,204 MiB/s |
+|Bejövő forgalom|4 136 MiB/s     |
+|Kimenő forgalom|6 204 MiB/s |

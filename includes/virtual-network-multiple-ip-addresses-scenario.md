@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179041"
 ---
 ## <a name="scenario"></a>Forgatókönyv
-Egyetlen hálózati adapterrel rendelkező virtuális gép jön létre, és egy virtuális hálózathoz csatlakozik. A virtuális gép három különböző *privát* IP-címet és két *nyilvános* IP-címet igényel. Az IP-címek a következő IP-konfigurációkhoz vannak rendelve:
+Egyetlen hálózati adapterrel rendelkező virtuális gép jön létre és csatlakozik egy virtuális hálózathoz. A virtuális gépnek három különböző *magánhálózati* IP-címet és két *nyilvános* IP-címet kell megadnia. Az IP-címek a következő IP-konfigurációkhoz vannak rendelve:
 
-* **IPConfig-1:** Statikus *privát* IP-címet és *statikus* nyilvános IP-címet rendel hozzá.
-* **IPConfig-2:** Statikus *privát* IP-címet és *statikus* nyilvános IP-címet rendel hozzá.
-* **IPConfig-3:** *Statikus* privát IP-címet rendel hozzá, nyilvános IP-címet nem.
+* **Ipconfig-1:** Egy *statikus* magánhálózati IP-címet és egy *statikus* nyilvános IP-címet rendel hozzá.
+* **Ipconfig-2:** Egy *statikus* magánhálózati IP-címet és egy *statikus* nyilvános IP-címet rendel hozzá.
+* **Ipconfig-3:** *Statikus* magánhálózati IP-címet rendel hozzá, és nincs nyilvános IP-cím.
   
     ![Több IP-cím](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-Az IP-konfigurációk vannak társítva a hálózati adapter, amikor a hálózati adapter jön létre, és a hálózati adapter csatlakozik a virtuális gép, amikor a virtuális gép jön létre. A forgatókönyvhöz használt IP-címek típusai illusztrációk. Bármilyen IP-címet és hozzárendeléstípust hozzárendelhet.
+A hálózati adapter létrehozásakor az IP-konfigurációk a hálózati adapterhez vannak társítva, és a virtuális gép létrehozásakor a hálózati adapter csatlakoztatva van a virtuális géphez. A forgatókönyvhöz használt IP-címek típusai illusztrációk. Bármilyen, Ön által igényelt IP-címet és hozzárendelési típust hozzárendelhet.
 
 > [!NOTE]
-> Bár a jelen cikkben leírt lépések az összes IP-konfigurációt egyetlen hálózati adapterhez rendelik hozzá, több IP-konfigurációt is hozzárendelhet bármely hálózati adapterhez egy több hálózati adapterben egy több hálózati adapterben. Ha meg szeretné tudni, hogyan hozhat létre virtuális gép több hálózati adapterek, olvassa el a [virtuális gép létrehozása több hálózati adapterek](../articles/virtual-machines/windows/multiple-nics.md) cikket.
+> Bár a cikkben ismertetett lépések az összes IP-konfigurációt egyetlen hálózati adapterhez rendelik, több IP-konfigurációt is hozzárendelhet egy több hálózati adapterrel rendelkező virtuális gép bármely hálózati adapteréhez. Ha többet szeretne megtudni arról, hogyan hozhat létre több hálózati adapterrel rendelkező virtuális gépet, olvassa el a [virtuális gép létrehozása több hálózati adapterrel](../articles/virtual-machines/windows/multiple-nics.md) című cikket.

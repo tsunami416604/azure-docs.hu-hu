@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66242209"
 ---
-Az alábbiakban a helyi webes felhasználói felületen támogatott webböngészők listája látható.
+Itt látható a helyi webes felhasználói felület által támogatott böngészők listája.
 
 | **Böngésző** | **Verziók** | **További követelmények/megjegyzések** |
 | --- | --- | --- |
-| Google Chrome |Legújabb verzió |Tesztelve a Chrome-mal|
+| Google Chrome |Legújabb verzió |Tesztelve a Chrome-ban|
 | Microsoft Edge |Legújabb verzió | |
-| Firefox | Legújabb verzió | Tesztelt FireFox|
-| Internet Explorer |Legújabb verzió |Ha nem tud bejelentkezni, ellenőrizze, hogy engedélyezve vannak-e a cookie-k és a Javascript. A felhasználói felület elérésének engedélyezéséhez adja hozzá az eszköz IP-címét az **adatvédelmi műveletekhez,** hogy az eszköz hozzáférhessen a cookie-khoz. |
+| FireFox | Legújabb verzió | Tesztelés a FireFoxmal|
+| Internet Explorer |Legújabb verzió |Ha nem tud bejelentkezni, ellenőrizze, hogy a cookie-k és a JavaScript engedélyezve van-e. A felhasználói felületi hozzáférés engedélyezéséhez adja hozzá az eszköz IP-címét az **adatvédelmi műveletekhez** , hogy az eszköz hozzáférhessen a cookie-khoz. |

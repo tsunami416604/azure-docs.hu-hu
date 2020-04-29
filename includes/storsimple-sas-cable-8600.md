@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179153"
 ---
-#### <a name="to-attach-the-sas-cables"></a>A SAS-kábelek csatlakoztatása
-1. Azonosítsa az elsődleges és az EBOD-házakat. A két burkolat a megfelelő hátsó síkok vizsgálatával azonosítható. Az alábbi képen útmutatást talál. 
+#### <a name="to-attach-the-sas-cables"></a>SAS-kábelek csatolása
+1. Azonosítsa az elsődleges és a EBOD-házakat. A két ház azonosítható a megfelelő hátsó síkok alapján. Útmutatásért tekintse meg az alábbi képet. 
    
-    ![Az elsődleges és az EBOD-házak hátsó síkja](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
+    ![Elsődleges és EBOD-házak háttérbeli síkja](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Az elsődleges és az EBOD-házak háttérnézete**
+    **Az elsődleges és a EBOD-házak háttérbeli nézete**
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Elsődleges burkolat |
+   | 1 |Elsődleges ház |
    | 2 |EBOD ház |
-2. Keresse meg a sorozatszámokat az elsődleges és az EBOD-házak. A sorozatszám matricát minden ház hátsó fülére rögzítik. A sorozatszámnak mindkét burkolaton azonosnak kell lennie. Ha a sorozatszámok nem egyeznek, azonnal forduljon a [Microsoft támogatási szolgálatához.](../articles/storsimple/storsimple-contact-microsoft-support.md) A sorozatszámok megkereséséhez lásd az alábbi ábrát.
+2. Keresse meg az elsődleges és a EBOD-házak sorozatszámait. A sorozatszám matrica az egyes házak hátoldalán található. A sorozatszámoknak azonosnak kell lenniük mindkét házban. Ha a sorozatszámok nem egyeznek, [forduljon azonnal Microsoft ügyfélszolgálata](../articles/storsimple/storsimple-contact-microsoft-support.md) . A sorozatszámok megkereséséhez tekintse meg az alábbi ábrát.
    
-    ![A ház hátsó nézete sorozatszámmal](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
+    ![Sorozatszámot ábrázoló ház hátsó nézete](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **A sorozatszámmatricán való elhelyezés**
+    **Sorozatszám-matrica helye**
    
    | Címke | Leírás |
    |:--- |:--- |
-   | 1 |A kamra füle |
-3. A mellékelt SAS-kábelek segítségével csatlakoztassa az EBOD házat az elsődleges házhoz az alábbiak szerint:
+   | 1 |A ház füle |
+3. A megadott SAS-kábelek használatával a következő módon csatlakoztathatja a EBOD-bekerítést az elsődleges házba:
    
-   1. Azonosítsa a négy SAS-portot az elsődleges házon és az EBOD-házon. A SAS-portok EBOD-ként vannak címkézve az elsődleges házon, és megfelelnek az EBOD-ház A portjának, ahogy az az alábbi SAS-kábelezési ábrán látható.
-   2. Használja a megadott SAS-kábeleket az EBOD port és az A port csatlakoztatásához.
-   3. A 0-as vezérlő EBOD-portját a 0 eBOD-vezérlő A portjához kell csatlakoztatni. Az 1-es vezérlő EBOD-portját az 1-es EBOD-vezérlő A portjához kell csatlakoztatni. Az útmutatást az alábbi ábrán talál. 
+   1. Azonosítsa a négy SAS-portot az elsődleges házban és a EBOD házban. Az SAS-portok az elsődleges házban található EBOD vannak megjelölve, és megfelelnek az a portnak a EBOD-házban, ahogyan az az alábbi SAS-kábelezési ábrán látható.
+   2. A megadott SAS-kábelek használatával csatlakoztathatja a EBOD-portot az A porthoz.
+   3. A EBOD-portnak a 0. vezérlőn kell csatlakoznia az a porthoz a 0. EBOD-vezérlőn. Az 1. vezérlő EBOD-portjának csatlakoznia kell az A porthoz az 1. EBOD-vezérlőn. Útmutatásért tekintse meg az alábbi ábrát. 
       
-      ![SAS-kábelezés a készülékhez](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
+      ![SAS-kábelek az eszközhöz](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
       **SAS kábelezés**
       
       | Címke | Leírás |
       |:--- |:--- |
-      | A |Elsődleges burkolat |
+      | A |Elsődleges ház |
       | B |EBOD ház |
       | 1 |Vezérlő 0 |
       | 2 |Vezérlő 1 |
       | 3 |EBOD vezérlő 0 |
-      | 4 |EBOD vezérlő 1 |
-      | 5, 6 |SAS-portok az elsődleges házon (eBOD címkével) |
-      | 7, 8 |SAS-portok az EBOD-házon (A port) |
+      | 4 |1. EBOD-vezérlő |
+      | 5, 6 |SAS-portok az elsődleges bekerítésen (címkézett EBOD) |
+      | 7, 8 |SAS-portok a EBOD ház (A port) |
 

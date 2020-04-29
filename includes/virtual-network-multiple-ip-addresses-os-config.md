@@ -9,15 +9,15 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76159424"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>IP-címek hozzáadása a virtuális gép operációs rendszeréhez
 
-Csatlakozzon és jelentkezzen be egy több privát IP-címmel létrehozott virtuális gépre. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Hajtsa végre a virtuális gép operációs rendszerének következő lépéseit.
+Kapcsolódjon, és jelentkezzen be egy több magánhálózati IP-címmel létrehozott virtuális gépre. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Hajtsa végre a virtuális gép operációs rendszerének következő lépéseit.
 
 ### <a name="windows"></a>Windows
 
@@ -30,16 +30,16 @@ Csatlakozzon és jelentkezzen be egy több privát IP-címmel létrehozott virtu
     * **IP-cím**: Adja meg az *elsődleges* magánhálózati IP-címet
     * **Alhálózati maszk**: Állítsa be az alhálózatának megfelelően. Például ha az alhálózat egy /24 alhálózat, akkor az alhálózati maszk 255.255.255.0.
     * **Alapértelmezett átjáró**: Az alhálózat első IP-címe. Ha az alhálózata 10.0.0.0/24, akkor az átjáró IP-címe 10.0.0.1.
-    * Válassza **a Használja a következő DNS-kiszolgálócímeket,** és adja meg a következő értékeket:
+    * Válassza **a következő DNS-kiszolgáló címek használata** lehetőséget, és adja meg a következő értékeket:
         * **Elsődleges DNS-kiszolgáló**: Ha nem a saját DNS-kiszolgálóját használja, adja meg a következőt: 168.63.129.16.  Ha a saját DNS-kiszolgálóját használja, adja meg a kiszolgáló IP-címét.
-    * Válassza a **Speciális gombot,** és adjon hozzá további IP-címeket. Adja hozzá az azure-i hálózati csatolóhoz egy előző lépésben hozzáadott másodlagos magánhálózati IP-címeket a Windows hálózati adapterhez, amely az Azure hálózati adapterhez rendelt elsődleges IP-címet rendeli hozzá.
+    * Válassza a **speciális** gombot, és adjon hozzá további IP-címeket. Adja hozzá az előző lépésben az Azure hálózati adapterhez hozzáadott másodlagos magánhálózati IP-címeket az Azure hálózati adapterhez rendelt elsődleges IP-címet hozzárendelő Windows hálózati adapterhez.
 
-        Soha ne rendelje hozzá manuálisan az Azure virtuális géphez rendelt nyilvános IP-címet a virtuális gép operációs rendszerén belül. Ha manuálisan állítja be az IP-címet az operációs rendszeren belül, győződjön meg arról, hogy az megegyezik az Azure [hálózati adapterhez](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)rendelt privát IP-címmel, vagy elveszítheti a virtuális géphez való kapcsolódást. További információ a [privát IP-címbeállításokról.](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) Soha ne rendeljen hozzá egy Azure nyilvános IP-címet az operációs rendszeren belül.
+        Soha ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt nyilvános IP-címet a virtuális gép operációs rendszerén belül. Ha az IP-címet manuálisan állítja be az operációs rendszeren belül, győződjön meg arról, hogy a cím megegyezik az Azure [hálózati adapterhez](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)rendelt magánhálózati IP-címmel, vagy megszakad a kapcsolat a virtuális géppel. További információ a [magánhálózati IP-címek](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) beállításairól. Soha ne rendeljen Azure nyilvános IP-címet az operációs rendszeren belül.
 
     * Kattintson az **OK** gombra a TCP/IP-beállításokból való kilépéshez, majd kattintson ismét az **OK** gombra az adapterbeállítások bezárásához. A rendszer újból létesíti az RDP-kapcsolatot.
 
 6. A parancssorba írja be az *ipconfig /all* parancsot. Megjelenik az összes hozzáadott IP-cím, és a DHCP ki van kapcsolva.
-7. Állítsa be a Windows-t úgy, hogy az elsődleges IP-konfiguráció privát IP-címét használja az Azure-ban a Windows elsődleges IP-címeként. A részleteket lásd: [Nincs internet-hozzáférés az Azure Windows virtuális gépről, amely több IP-címmel rendelkezik.](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) 
+7. Konfigurálja a Windows-t úgy, hogy az elsődleges IP-konfiguráció magánhálózati IP-címét használja az Azure-ban a Windows elsődleges IP-címeként. A részletekért lásd: [nincs internet-hozzáférés az Azure Windows virtuális gépről, amely több IP-címmel rendelkezik](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) . 
 
 ### <a name="validation-windows"></a>Ellenőrzés (Windows)
 
@@ -49,11 +49,11 @@ Ellenőrizze, hogy tud-e csatlakozni az internethez a másodlagos IP-konfigurác
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Másodlagos IP-konfigurációk esetén csak akkor pingelhet az interneten, ha a konfigurációhoz nyilvános IP-cím van társítva. Az elsődleges IP-konfigurációk esetében nem szükséges nyilvános IP-cím az interneten pingeléshez.
+>Másodlagos IP-konfigurációk esetén csak akkor lehet pingelni az internetet, ha a konfigurációhoz hozzá van rendelve egy nyilvános IP-cím. Az elsődleges IP-konfigurációk esetében a nyilvános IP-cím nem szükséges az internethez való pingeléshez.
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
-Javasoljuk, hogy nézze meg a Linux disztribúció legújabb dokumentációját. 
+Javasoljuk, hogy tekintse meg a Linux-disztribúció legújabb dokumentációját. 
 
 1. Nyisson meg egy terminálablakot.
 2. Győződjön meg arról, hogy Ön a gyökér szintű felhasználó. Ha nem Ön az, írja be a következő parancsot:
@@ -112,9 +112,9 @@ Javasoljuk, hogy nézze meg a Linux disztribúció legújabb dokumentációját.
 
    A listán meg kell jelennie a hozzáadott IP-címnek.
 
-### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
 
-Ubuntu 18.04 és a `netplan` fenti megváltozott az operációs rendszer hálózati kezelése. Javasoljuk, hogy nézze meg a Linux disztribúció legújabb dokumentációját. 
+`netplan` Az Ubuntu 18,04-es és újabb verziók esetében az operációs rendszer hálózatkezelése módosult. Javasoljuk, hogy tekintse meg a Linux-disztribúció legújabb dokumentációját. 
 
 1. Nyisson meg egy terminálablakot.
 2. Győződjön meg arról, hogy Ön a gyökér szintű felhasználó. Ha nem Ön az, írja be a következő parancsot:
@@ -123,13 +123,13 @@ Ubuntu 18.04 és a `netplan` fenti megváltozott az operációs rendszer hálóz
     sudo -i
     ```
 
-3. Hozzon létre egy fájlt a második felülethez, és nyissa meg egy szövegszerkesztőben:
+3. Hozzon létre egy fájlt a második felület számára, és nyissa meg egy szövegszerkesztőben:
 
     ```bash
     vi /etc/netplan/60-static.yaml
     ```
 
-4. Adja hozzá a következő sorokat a fájlhoz, és cserélje ki `10.0.0.6/24` az IP/netmask-ot:
+4. Adja hozzá a következő sorokat a fájlhoz, `10.0.0.6/24` és cserélje le az IP/hálózati maszkot:
 
     ```bash
     network:
@@ -146,16 +146,16 @@ Ubuntu 18.04 és a `netplan` fenti megváltozott az operációs rendszer hálóz
     :wq
     ```
 
-6. Tesztelje a módosításokat a [netplan segítségével](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) próbálja meg megerősíteni a szintaxist:
+6. A módosítások tesztelése a [netplan használatával próbálja](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) meg megerősíteni a szintaxist:
 
     ```bash
     netplan try
     ```
 
 > [!NOTE]
-> `netplan try`ideiglenesen alkalmazza a módosításokat, és 120 másodperc után visszagörgeti a módosításokat. Ha megszakadt a kapcsolat, várjon 120 másodpercet, majd csatlakozzon újra. Ekkor a módosítások vissza lesznek állítva.
+> `netplan try`a módosításokat átmenetileg alkalmazza, és 120 másodperc elteltével visszaállítja a módosításokat. Ha a kapcsolat elvesztése megszakad, várjon 120 másodpercet, majd kapcsolódjon újra. Ekkor a rendszer visszaállítja a módosításokat.
 
-7. Feltéve, `netplan try`hogy nincs probléma a, alkalmazza a konfigurációs módosításokat:
+7. Feltéve, hogy nincs `netplan try`probléma a alkalmazásban, alkalmazza a konfigurációs módosításokat:
 
     ```bash
     netplan apply
@@ -186,7 +186,7 @@ Ubuntu 18.04 és a `netplan` fenti megváltozott az operációs rendszer hálóz
         valid_lft forever preferred_lft forever
     ```
     
-### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS és mások)
+### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS és egyebek)
 
 1. Nyisson meg egy terminálablakot.
 2. Győződjön meg arról, hogy Ön a gyökér szintű felhasználó. Ha nem Ön az, írja be a következő parancsot:
@@ -254,7 +254,7 @@ Ellenőrizze, hogy tud-e csatlakozni az internethez a másodlagos IP-konfigurác
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Másodlagos IP-konfigurációk esetén csak akkor pingelhet az interneten, ha a konfigurációhoz nyilvános IP-cím van társítva. Az elsődleges IP-konfigurációk esetében nem szükséges nyilvános IP-cím az interneten pingeléshez.
+>Másodlagos IP-konfigurációk esetén csak akkor lehet pingelni az internetet, ha a konfigurációhoz hozzá van rendelve egy nyilvános IP-cím. Az elsődleges IP-konfigurációk esetében a nyilvános IP-cím nem szükséges az internethez való pingeléshez.
 
 Linux rendszerű virtuális gépek esetében a másodlagos hálózati adapterről kimenő kapcsolatok ellenőrzésekor szükség lehet a megfelelő útvonalak hozzáadására. Ezt többféleképpen teheti meg. Tekintse át a Linux-disztribúciójára vonatkozó megfelelő dokumentációt. Az egyik lehetséges módszer a következő:
 

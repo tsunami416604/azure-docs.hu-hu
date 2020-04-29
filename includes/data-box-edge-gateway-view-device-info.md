@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179579"
 ---
-1. [Csatlakozzon a PowerShell-kapcsolathoz.](#connect-to-the-powershell-interface)
-2. Használja `Get-HcsApplianceInfo` az információt az eszközhöz.
+1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
+2. Az eszközhöz tartozó információk beszerzéséhez használja a `Get-HcsApplianceInfo` következőt:.
 
     A következő példa a parancsmag használatát mutatja be:
 
@@ -43,16 +43,16 @@ ms.locfileid: "67179579"
     IsRegistered                  : False
     ```
 
-    Az alábbiakban egy táblázat ban összefoglalva néhány fontos eszközinformációkat:
+    Itt látható egy táblázat, amely az eszköz néhány fontos adatát összegzi:
     
     | Paraméter                             | Leírás                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | Rövid név                   | Az eszköz rövid neve, ahogy a helyi webes felhasználói felületen keresztül konfigurálva van az eszköz telepítése során. Az alapértelmezett rövid név az eszköz sorozatszáma.  |   |
+    | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |   |
     | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |   |
-    | Modell                          | A Data Box Edge vagy a Data Box Gateway eszköz modellje. A modell virtuális a Data Box Gateway és a fizikai Data Box Edge.                   |   |
-    | FriendlySoftwareVersion        | Az eszköz szoftververziójának megfelelő barátságos karakterlánc. A rendszer futó előnézet, a barátságos szoftver verzió lenne Data Box Edge 1902. |   |
-    | HcsVersion                     | A HCS szoftver verziója fut a készüléken. Például a Data Box Edge 1902-nek megfelelő HCS szoftververzió 1.4.771.324.            |   |
-    | LocalcapacityInMb              | A készülék teljes helyi kapacitása Megabits-ben.                                                                                                        |   |
-    | Regisztrált                   | Ez az érték azt jelzi, hogy az eszköz aktiválva van-e a szolgáltatással.                                                                                         |   |
+    | Modell                          | A Data Box Edge vagy Data Box Gateway eszköz modellje. A modell virtuális Data Box Gatewayhoz és fizikai Data Box Edgehoz.                   |   |
+    | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |   |
+    | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |   |
+    | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |   |
+    | IsRegistered                   | Ez az érték azt jelzi, hogy az eszköz aktiválva van-e a szolgáltatással.                                                                                         |   |
 
 

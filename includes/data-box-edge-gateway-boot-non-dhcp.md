@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 880b630ae48eda086f6454f0d7108d27d3403b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67179787"
 ---
-Ha nem DHCP-környezetben indítja el a rendszerindítást, az alábbi lépésekkel telepítheti a virtuális gépet a Data Box Gateway számára.
+Ha nem DHCP-környezetben hajtja végre a rendszerindítást, az alábbi lépésekkel telepítheti a virtuális gépet a Data Box Gateway számára.
 
-1. [Csatlakozzon az eszköz Windows PowerShell felületéhez.](#connect-to-the-powershell-interface)
-2. A `Get-HcsIpAddress` parancsmag segítségével sorolja fel a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
+1. [Kapcsolódjon az eszköz Windows PowerShell-felületéhez](#connect-to-the-powershell-interface).
+2. A `Get-HcsIpAddress` parancsmag használatával listázhatja a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
     A következő példa a parancsmag használatát mutatja be:
 

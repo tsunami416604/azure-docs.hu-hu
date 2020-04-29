@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Bus – Event Grid integráció áttekintése | Microsoft Docs
-description: Ez a cikk ismerteti, hogy az Azure Service Bus üzenetküldés hogyan integrálódik az Azure Event Griddel.
+description: Ez a cikk azt ismerteti, hogyan integrálható az Azure Service Bus üzenetkezelés a Azure Event Gridsal.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773478"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
@@ -38,7 +38,7 @@ A funkció engedélyezéséhez a következőkre van szüksége:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Győződjön meg arról, hogy rendelkezik közreműködői hozzáféréssel
-Nyissa meg a Service Bus névterét, majd válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, és válassza **a Szerepkör-hozzárendelések** lapot. 
+Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza a **szerepkör-hozzárendelések** lapot. Ellenőrizze, hogy rendelkezik-e a közreműködői hozzáféréssel a névtérhez. 
 
 ### <a name="events-and-event-schemas"></a>Események és eseménysémák
 
@@ -119,7 +119,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 * Az Azure Portalon
 * Az [Azure CLI](#azure-cli-instructions) használatával
-* A [PowerShell](#powershell-instructions) ben
+* A [PowerShellben](#powershell-instructions)
 
 ## <a name="azure-portal-instructions"></a>Azure-portálutasítások
 
@@ -138,7 +138,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy rendszergazdai engedélyekkel rendelkező új PowerShell-konzolt. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 
@@ -152,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Ha bash-t használ 
+Ha BASH-et használ 
 
 ## <a name="powershell-instructions"></a>PowerShell-utasítások
 

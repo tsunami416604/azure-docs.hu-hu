@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67178931"
 ---
-Prémium szintű gyorsítótár létrehozásához jelentkezzen be az [Azure Portalra,](https://portal.azure.com) és kattintson az **Erőforrás-adatbázisok** > **Databases** > **létrehozása Azure Cache for Redis**elemre.
+Prémium gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és kattintson**Databases** > az **erőforrás** > létrehozása**Azure cache-Redis**elemre.
 
 ![Gyorsítótár létrehozása](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. Az Azure-gyorsítótár redis-i gyorsítótárának létrehozásáról a [Gyorsítótár létrehozása című](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)témakörben talál további információt.
+> A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. A Redis készült Azure cache létrehozásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 > 
 > 
 
-A prémium funkciók konfigurálásához először válassza ki a prémium szintű tarifacsomagok egyikét a **díjszabási szint** legördülő listájában. Az egyes tarifacsomagokkal kapcsolatos további információkért kattintson **a Teljes tarifarészleteinek megtekintése** elemre, és válasszon ki egy tarifacsomagot a **Tarifacsomag kiválasztása** panelen.
+A prémium szintű funkciók konfigurálásához először válassza ki a prémium díjszabási szintek egyikét a **díjszabási szint** legördülő listában. Az egyes díjszabási csomagokkal kapcsolatos további információkért kattintson a **teljes díjszabás részleteinek megtekintése** lehetőségre, és válassza ki a díjszabási szintet a **díjszabási csomag kiválasztása** panelen.
 
 ![Tarifacsomag kiválasztása](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

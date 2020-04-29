@@ -9,22 +9,22 @@ ms.date: 05/21/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: bae66078a1bcb1d80f0798b1d501598fa785fb80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66241204"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 
-## <a name="get-the-managed-image"></a>A felügyelt lemezkép beszereznie
+## <a name="get-the-managed-image"></a>A felügyelt rendszerkép beolvasása
 
-A [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)segítségével megtekintheti az erőforráscsoportban elérhető képek listáját. Miután tudja a lemezkép nevét, és milyen `Get-AzImage` erőforráscsoportban van, újra lekaphatja a képobjektumot, és tárolhatja azt egy változóban, amelyet később használhat. Ez a példa egy *myImage* nevű képet kap a "myResourceGroup" erőforráscsoportból, és hozzárendeli azt a *változóhoz $managedImage.* 
+A [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)használatával megtekintheti az erőforráscsoporthoz elérhető rendszerképek listáját. Ha ismeri a rendszerkép nevét és a benne található erőforráscsoportot, akkor ismét használhatja `Get-AzImage` a rendszerkép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *myImage* nevű rendszerképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$managedImage*változóhoz. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -32,11 +32,11 @@ $managedImage = Get-AzImage `
    -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-an-image-gallery"></a>Képgaléria létrehozása 
+## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
 
-A képgaléria a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A Galéria nevének megengedett karakterei a nagy- vagy kisbetűk, számjegyek, pontszámok és pont. A gyűjtemény neve nem tartalmazhat kötőjeleket. A galérianeveknek egyedinek kell lenniük az előfizetésen belül. 
+A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket. A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
-Hozzon létre egy képgalériát a [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery)segítségével. A következő példa létrehoz egy *myGallery* nevű galériát a *myGalleryRG* erőforráscsoportban.
+Hozzon létre egy képtárat a [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery)használatával. A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG* -erőforráscsoporthoz.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -49,11 +49,11 @@ $gallery = New-AzGallery `
    -Description 'Shared Image Gallery for my organization'  
 ```
    
-## <a name="create-an-image-definition"></a>Képdefiníció létrehozása 
+## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása 
 
-A képdefiníciók logikai csoportosítást hoznak létre a képekhez. A bennük létrehozott lemezkép-verziók adatainak kezelésére szolgálnak. A képdefiníciós nevek nagy- vagy kisbetűkből, számjegyekből, pontokból, kötőjelekből és pontokból állhatnak. A képdefinícióhoz megadható értékekről a [Képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)című témakörben talál további információt.
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-Hozza létre a képdefiníciót a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)segítségével. Ebben a példában a galéria kép neve *myGalleryImage*.
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a katalógus rendszerképének neve *myGalleryImage*.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -69,13 +69,13 @@ $galleryImage = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>Képverzió létrehozása
+## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása
 
-Lemezkép-verzió létrehozása felügyelt lemezképből a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)segítségével. 
+Hozzon létre egy rendszerkép-verziót egy felügyelt rendszerképből a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
-A képverzió megengedett karakterei számok és időszakok. A számoknak a 32 bites egész szám tartományán belül kell lenniük. Formátum: *MajorVersion*. *MinorVersion*. *Patch*.
+A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-Ebben a példában a lemezkép verziója *1.0.0,* és replikálja mind *az USA nyugati középső régiója* és az USA déli középső *régiói* adatközpontok. A replikáció célterületeinek kiválasztásakor ne feledje, hogy a *forrásrégiót* is meg kell adnia a replikáció célként.
+Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer replikálja az *USA nyugati középső* régiójában és az *USA déli középső* régiójában. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a *forrás* régiót is meg kell adnia a replikálás céljának.
 
 
 ```azurepowershell-interactive
@@ -94,22 +94,22 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Eltarthat egy ideig, amíg a rendszerképet az összes célrégióra replikáljuk, ezért létrehoztunk egy feladatot, hogy nyomon követhessük a folyamatot. A feladat előrehaladásának megtekintéséhez `$job.State`írja be a következőt:
+Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt `$job.State`:.
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> Meg kell várnia, amíg a lemezkép-verzió teljesen befejeződik a létrehozás és a replikálás, mielőtt ugyanazt a felügyelt lemezképet használhatna egy másik lemezkép-verzió létrehozásához. 
+> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához. 
 >
-> A lemezkép-verziót a [Zónaredundáns tárolásban](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) is tárolhatja, ha a lemezkép-verzió létrehozásakor hozzáadja. `-StorageAccountType Standard_ZRS`
+> A rendszerkép verzióját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `-StorageAccountType Standard_ZRS` is tárolhatja a rendszerkép verziójának létrehozásakor.
 >
 
 
-## <a name="share-the-gallery"></a>A galéria megosztása
+## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Azt javasoljuk, hogy ossza meg a hozzáférést a képgaléria szintjén. Használjon egy e-mail címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmag a felhasználó objektumazonosítójának lekérni, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) segítségével hozzáférést biztosít a katalógushoz. Cserélje le a alinne_montes@contoso.com példa e-mailt ebben a példában, a saját adatait.
+Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. Használjon e-mail-címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot a felhasználó objektumazonosító beszerzéséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg nekik a katalógushoz való hozzáférést. Cserélje le a példában szereplő alinne_montes@contoso.com e-mailt a saját adataira.
 
 ```azurepowershell-interactive
 # Get the object ID for the user

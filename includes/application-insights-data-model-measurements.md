@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67178877"
 ---
-Egyéni mérések gyűjteménye. Ezzel a gyűjteménynel jelentheti a telemetriai elemhez társított, nevű mérést. A tipikus használati esetek a következők:
-- a függőségi telemetriai tartalom mérete
-- a Telemetriai kérelem által feldolgozott várólistaelemek száma
-- az az idő, amelyet az ügyfél a varázsló lépésének befejezéséhez szükséges lépés végrehajtásához szükséges idő, eseménytelemetria.
+Egyéni mérések gyűjteménye. Ezt a gyűjteményt a telemetria-elemmel társított mérések jelentésére használhatja. A tipikus használati esetek a következők:
+- a függőségi telemetria-tartalom mérete
+- a kérelem telemetria feldolgozott üzenetsor-elemek száma
+- az ügyfél által a varázsló lépésének befejezéséhez szükséges idő telemetria.
 
-Az Application Analytics alkalmazásban lekérdezheti az [egyéni méréseket:](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA2WLOw6DMAyGd07hZoLeoRPqyMaGGAL8aiPhGCV2kKoeHsHK%2Bj1myyr8LoiaqfrT%2FkUCzRft4LMl8OUeL3LuLLIx%2BxR%2BIF8%2BtcoiNq2o78vgWuFthQaJ1AeGGxt6UlBwKxa1qQ6EpLhAfQAAAA%3D%3D&timespan=PT24H)
+Az alkalmazás-elemzési szolgáltatásban [Egyéni méréseket](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA2WLOw6DMAyGd07hZoLeoRPqyMaGGAL8aiPhGCV2kKoeHsHK%2Bj1myyr8LoiaqfrT%2FkUCzRft4LMl8OUeL3LuLLIx%2BxR%2BIF8%2BtcoiNq2o78vgWuFthQaJ1AeGGxt6UlBwKxa1qQ6EpLhAfQAAAA%3D%3D&timespan=PT24H) lehet lekérdezni:
 
 ```
 customEvents
@@ -25,6 +25,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Az egyéni mérések a telemetriai elemhez vannak társítva, amelyhez tartoznak. Ezek a méréseket tartalmazó telemetriai elem mintavételezése tárgyát képezik. A más telemetriai típusoktól független értékkel rendelkező mérés nyomon követéséhez használja [a Metrika telemetriai adatokat.](../articles/azure-monitor/app/api-custom-events-metrics.md)
+ > Az egyéni mérések ahhoz a telemetria-elemmel vannak társítva, amelyhez tartoznak. Ezeket a mértékeket tartalmazó telemetria-elemmel mintavételezéssel kell elvégezniük. Más telemetria eltérő értékkel rendelkező mérések nyomon követéséhez használja a [metrikus telemetria](../articles/azure-monitor/app/api-custom-events-metrics.md).
 
-Maximális kulcshossz: 150
+Maximális kulcs hossza: 150

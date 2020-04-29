@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 4dd0182e5698c992e45afae183ef94c488b27e14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179088"
 ---
-1. Válassza ki a virtuális gép a portálon. A **DNS-név csoportban**kattintson a **Konfigurálás gombra.**
+1. Válassza ki a virtuális gépet a portálon. A **DNS-név**területen kattintson a **Konfigurálás**elemre.
    
-   ![Kattintson a Konfigurálás gombra a DNS-név alatt](./media/virtual-machines-common-portal-create-fqdn/configure.png)
+   ![Kattintson a konfigurálás a DNS-név alatt elemre.](./media/virtual-machines-common-portal-create-fqdn/configure.png)
 
-2. Adja meg a kívánt DNS-nevet, majd válassza a **Mentés gombot.**
+2. Adja meg a kívánt DNS-nevet, majd kattintson a **Mentés**gombra.
    
-   ![Adja meg a nyilvános IP-erőforrás DNS-névcímkéjét](./media/virtual-machines-common-portal-create-fqdn/configure-pane.png)
+   ![Adja meg a nyilvános IP-erőforráshoz tartozó DNS-név címkéjét](./media/virtual-machines-common-portal-create-fqdn/configure-pane.png)
 
 
-3. A virtuális gép áttekintése panel, zárja be a *nyilvános IP-cím* panel. Ellenőrizze, hogy a *DNS-név megjelenik-e.*
+3. Ha vissza szeretne térni a virtuális gép áttekintés paneljére, akkor a *nyilvános IP-cím* panelt is be kell jelentkeznie. Ellenőrizze, hogy a *DNS-név megjelenik-* e.
    
 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SignalR szolgáltatás korlátozza a táblát
-description: Az Azure SignalR-szolgáltatás rendszerkorlátainak ismertetése.
+title: Az Azure Signaler szolgáltatás korlátainak táblázata
+description: Az Azure Signaler szolgáltatás rendszerkorlátait ismerteti.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,21 +14,21 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179520"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát | 
 | --- | --- | --- |
-| Az Azure SignalR-szolgáltatás egységei példányonként az ingyenes szinthez |1 |1 |
-| Azure SignalR-szolgáltatás egységei példányonként a standard szintű szinten |100 |100 |
-| Az Azure SignalR-szolgáltatás egységei előfizetésenként régiónként az ingyenes csomaghoz|5 |5 |
-| Az Azure SignalR-szolgáltatás teljes egységszáma előfizetésenként régiónként |150 |Korlátlan |
-| Kapcsolatok egységenként naponta az ingyenes szinthez |20 |20 |
-| Kapcsolatok egységenként naponta a standard szinthez |1,000 |1,000|
-| Az ingyenes szinthez egységenkénti üzenetek|20000 |20000 |
-| A standard szintű szint hez naponta egységenkénti üzenetek|1,000,000 |1,000,000 |
+| Az Azure Signaler szolgáltatási egységei ingyenes szinten |1 |1 |
+| Az Azure Signaler szolgáltatási egységei a standard szintű csomag esetében |100 |100 |
+| Azure Signaler szolgáltatási egység/előfizetés régiónként az ingyenes szinten|5 |5 |
+| Az Azure Signaler szolgáltatás összes egységének számítása régiónként |150 |Korlátlan |
+| Kapcsolat/egység/nap az ingyenes szinten |20 |20 |
+| Kapcsolat/egység/nap a standard szinthez |1,000 |1,000|
+| Befoglalt üzenet/egység/nap ingyenes csomag esetén|20000 |20000 |
+| Befoglalt üzenetek/egység/nap a standard szinthez|1,000,000 |1,000,000 |
 
-Ha frissíteni szeretné az előfizetés alapértelmezett limitjeit, nyisson meg egy támogatási jegyet. 
+Ha frissítést szeretne kérni az előfizetés alapértelmezett korlátaihoz, nyisson meg egy támogatási jegyet. 

@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: ca2aed5689fe31f47166428503abb9483fc406b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179263"
 ---
-Ez a figyelési megoldás által gyűjtött adatok az Azure-portál on the Azure Monitor Overview (Az Azure-portál **áttekintése)** oldalon érhető el. Nyissa meg ezt a lapot az **Azure Monitor** menüben az Insights szakasz **Egyebek** szakasza További elemre kattintva. **Insights** Minden megoldást egy csempe jelöl. Kattintson a csempére a megoldás által gyűjtött részletesebb adatokért.
+A figyelési megoldás által gyűjtött adatok a Azure Portal Azure Monitor **Áttekintés** lapján érhetők el. Nyissa meg ezt a lapot a **Azure monitor** menüjéből, és kattintson a **továbbiak** elemre az **áttekintések** szakaszban. Minden megoldást egy csempe képvisel. Kattintson egy csempére az adott megoldás által gyűjtött részletesebb adatokhoz.

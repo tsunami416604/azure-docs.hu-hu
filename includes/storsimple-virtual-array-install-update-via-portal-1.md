@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179307"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Frissítések telepítése az Azure Portalon keresztül
@@ -21,11 +21,11 @@ ms.locfileid: "67179307"
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. Megjelenik a szoftverfrissítések elérhetőségét jelző üzenet. A frissítések kereséséhez a **Vizsgálat** gombot is használhatja. Jegyezze fel a futtatott szoftververziót. 
+3. Megjelenik a szoftverfrissítések elérhetőségét jelző üzenet. A frissítések kereséséhez a **Vizsgálat** gombot is használhatja. Jegyezze fel a futtatott szoftver verzióját. 
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate3m1.png)
 
-    A vizsgálat sikeres indításakor és befejezéséről értesítést kap.
+    A rendszer értesítést küld, amikor a vizsgálat elindul, és sikeresen befejeződik.
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate5m.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "67179307"
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. Az **Új frissítések** panelen tekintse át a kiadási megjegyzéseket. Azt is vegye figyelembe, hogy a frissítések letöltése után meg kell erősítenie a telepítést. Kattintson az **OK** gombra.
+5. Az **új frissítések** panelen tekintse át a kibocsátási megjegyzéseket. Azt is vegye figyelembe, hogy a frissítések letöltése után meg kell erősítenie a telepítést. Kattintson az **OK** gombra.
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 
@@ -57,11 +57,11 @@ ms.locfileid: "67179307"
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate15m1.png)
 
-    Ezzel a művelettel a **Frissítések telepítése** panelen lép fel. A feladatról részletes információt itt talál.
+    Ez a művelet a **frissítések telepítése** panelre lép. A feladatról részletes információt itt talál.
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate16m1.png)
 
-9. Ha a 0.6-os (10.0.10293.0) verziót futtató virtuális tömböt futtató virtuális tömböt futtató, akkor most az 1. Kihagyhatja a fennmaradó lépéseket. Ha a 0.6-os frissítés (10.0.10293.0) előtt szoftververziót futtató virtuális tömböt futtató virtuális tömböt a rendszer most a 0.6-os frissítésre frissíti. Megjelenik egy másik üzenet, amely jelzi, hogy a frissítések elérhetők. Ismételje meg a 4-8.
+9. Ha a 0,6-es (10.0.10293.0) szoftverfrissítés-verziót futtató virtuális tömböt futtat, akkor most már az 1. frissítést futtatja, és készen áll. A hátralévő lépéseket kihagyhatja. Ha a 0,6-es (10.0.10293.0) frissítés előtti verziót futtató virtuális tömbtel indult, a rendszer frissíti a 0,6-es frissítését. Megjelenik egy másik üzenet, amely jelzi, hogy a frissítések elérhetők. Ismételje meg az 4-8-es lépést az 1. frissítés telepítéséhez.
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate17.png)
 

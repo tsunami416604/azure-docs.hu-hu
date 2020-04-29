@@ -9,23 +9,23 @@ ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
 ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76961409"
 ---
-Ha azt tervezi, hogy folytatja a következő oktatóanyag, tartsa meg a létrehozott erőforrások ebben a rövid útmutató, hogy újra felhasználhatja őket.
+Ha azt tervezi, hogy folytatja a következő oktatóanyagot, az ebben a rövid útmutatóban létrehozott erőforrásokat megtarthatja, így újra felhasználhatja őket.
 
-Ha befejezte a rövid útmutató mintaalkalmazás, törölje az Azure-erőforrások at létrehozott ebben a rövid útmutatóban a költségek elkerülése érdekében.
+Ha elkészült a gyors üzembe helyezési minta alkalmazással, törölje az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne lévő összes erőforrás véglegesen törlődik. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a minta üzemeltetéséhez szükséges erőforrásokat egy megtartani kívánt erőforrásokat tartalmazó erőforráscsoporton belül hozta létre, az erőforráscsoport törlése helyett törölje az egyes erőforrásokat a megfelelő ablaktáblából.
+> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és az ahhoz tartozó összes erőforrás véglegesen törlődik. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a minta tárolására szolgáló erőforrásokat olyan erőforráscsoporthoz hozta létre, amely a megőrizni kívánt erőforrásokat tartalmazza, törölje az egyes erőforrásokat a megfelelő ablaktáblájából az erőforráscsoport törlése helyett.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok**lehetőséget.
-1. A **Név szerint szűrés** mezőbe írja be az erőforráscsoport nevét. 
-1. Az eredménylistában jelölje ki az erőforráscsoportot, és kattintson a jobb gombbal a sorra, vagy a **három pont** (**...**) gombbal nyissa meg a helyi menüt.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza az **erőforráscsoportok**lehetőséget.
+1. A **szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. 
+1. Az eredmény listából válassza ki az erőforráscsoportot, és kattintson a jobb gombbal a sorra, vagy használja a **három** pont (**...**) gombot a helyi menü megnyitásához.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. A rendszer az erőforráscsoport törlésének megerősítését kéri. Írja be a megerősítendő erőforráscsoport nevét, és válassza a **Törlés gombot.**
+1. A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-Néhány pillanat múlva az erőforráscsoport és annak összes erőforrása törlődik.
+Néhány pillanat elteltével a rendszer törli az erőforráscsoportot és az összes erőforrását.
