@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Képelemzésbe való betekintés a REST API és a Java használatával – Bing Visual Search'
+title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Java-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy miként tölthet fel képet a Bing Visual Search API-ba, és hogyan kaphat betekintést.
+description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446627"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Rövid útmutató: Képelemzésbe való betekintés a Bing Visual Search REST API-val és a Java-val
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: képelemzések lekérése a Bing Visual Search REST API és a Java használatával
 
-Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Visual Search API-t, és megtekintheti az eredményeket. Ez a Java alkalmazás feltölt egy képet az API-ba, és megjeleníti az általa visszaadott információkat. Bár ez az alkalmazás Java nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Java-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java Development Kit (JDK) 7 vagy 8](https://aka.ms/azure-jdks)
-* A [Gson Java könyvtár](https://github.com/google/gson)
+* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks)
+* A [Gson Java-könyvtára](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet kedvenc IDE-jében vagy szerkesztőjében, és importálja a következő könyvtárakat:
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.util.*;
@@ -52,7 +52,7 @@ Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Visual Search 
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a lemezkép elérési úthoz. `endpoint`lehet az alábbi globális végpont, vagy az erőforráshoz az Azure Portalon megjelenő [egyéni altartomány-végpont:](../../../cognitive-services/cognitive-services-custom-subdomains.md)
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. `endpoint`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Visual Search 
     ```
 
     
-    Helyi kép feltöltésekénél az űrlapadatoknak tartalmazniuk kell a `Content-Disposition` fejlécet. Be kell `name` állítania a paraméter "kép", `filename` és beállíthatja a paramétert bármilyen karakterláncot. Az űrlap tartalma tartalmazza a kép bináris adatait. A feltölthető maximális képméret 1 MB.
+    Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítania, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
     
     ```
     --boundary_1234-abcd
@@ -74,7 +74,7 @@ Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Visual Search 
 
 ## <a name="create-the-json-parser"></a>A JSON-elemző létrehozása
 
-Hozzon létre egy módszert, amely lehetővé teszi, `JsonParser`hogy a JSON-válasz az API-ból olvashatóbb legyen a következő vel:
+Hozzon létre egy metódust, amely a JSON-választ az API `JsonParser`-tól olvashatóbb módon teszi elérhetővé a következő használatával:
 
 ```java
 public static String prettify(String json_text) {
@@ -87,13 +87,13 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
-1. Az alkalmazás fő metódusában hozzon létre `HttpClientBuilder.create().build();`egy HTTP-ügyfélt a következő használatával:
+1. Az alkalmazás fő metódusában hozzon létre egy HTTP-ügyfelet `HttpClientBuilder.create().build();`a használatával:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Hozzon `HttpEntity` létre egy objektumot, amely feltölti a képet az API-ba:
+2. Hozzon `HttpEntity` létre egy objektumot, amellyel feltöltheti a rendszerképet az API-ba:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -112,14 +112,14 @@ public static String prettify(String json_text) {
 
 ## <a name="receive-and-process-the-json-response"></a>A JSON-válasz fogadása és feldolgozása
 
-1. A `HttpClient.execute()` metódus segítségével küldjön egy kérelmet az API-nak, és tárolja a választ egy `InputStream` objektumban:
+1. A `HttpClient.execute()` metódus használatával küldjön egy kérést az API-nak, és tárolja a választ egy `InputStream` objektumban:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. A JSON-karakterlánc tárolása és a válasz nyomtatása:
+2. Tárolja a JSON-karakterláncot, és nyomtassa ki a választ:
 
     ```java
     String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -130,4 +130,4 @@ public static String prettify(String json_text) {
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Visual Search egyoldalas webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

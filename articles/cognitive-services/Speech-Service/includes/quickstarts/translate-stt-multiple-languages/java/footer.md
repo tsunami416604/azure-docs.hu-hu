@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd fordítása több nyelvre, Java (Windows, Linux) – Beszédszolgáltatás'
+title: 'Gyors útmutató: beszéd fordítása több nyelvre, Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 2782a05342217ce62845b0520fa83b1eea336b9c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466747"
 ---
 > [!div class="nextstepaction"]
-> [Java-minták felfedezése a GitHubon](https://aka.ms/speech/github-java)
+> [A Java-minták megismerése a GitHubon](https://aka.ms/speech/github-java)

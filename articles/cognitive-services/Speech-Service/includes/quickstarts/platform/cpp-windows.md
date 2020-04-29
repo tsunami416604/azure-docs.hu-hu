@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Beszéd sdk C++ (Windows) platformbeállításhoz – Beszédszolgáltatás'
+title: 'Gyors útmutató: a C++ nyelvhez készült Speech SDK (Windows) platform beállítása – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Az útmutató segítségével a Windows Asztali C++ platformját a Beszédszolgáltatás SDK-val állíthatja be.
+description: Ezzel az útmutatóval beállíthatja a C++ platformját a Windows asztalon a Speech Service SDK használatával.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 856d3519ee614ac461cafd6a58417576164959ee
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75468063"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a [C++ beszédfelismerési SDK-t](~/articles/cognitive-services/speech-service/speech-sdk.md) a Windows asztali számítógépre.
+Ez az útmutató bemutatja, hogyan telepítheti a C++ [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t a Windows asztalon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,11 +25,11 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Visual Studio-projekt létrehozása és a beszédfelismerési SDK telepítése
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Visual Studio-projekt létrehozása és a Speech SDK telepítése
 
 [!INCLUDE [Quickstart C++ project](~/includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-Most továbbléphet az alábbi [következő lépésekre.](#next-steps)
+Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
 ## <a name="next-steps"></a>További lépések
 

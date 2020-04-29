@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Videók keresése a REST API és a PHP használatával – Bing videokeresés'
+title: 'Gyors útmutató: videók keresése a REST API és a PHP-Bing Video Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval videókeresési kérelmeket küldhet a Bing Video Search REST API-nak a PHP használatával
+description: Ezzel a rövid útmutatóval küldhet videó-keresési kéréseket a Bing Video Search REST API PHP használatával
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448360"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rövid útmutató: Videók keresése a Bing Video Search REST API és a PHP használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a PHP használatával
 
-Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás http-videokeresési lekérdezést küld az API-nak, és megjeleníti a választ. Míg ez az alkalmazás javascriptben íródott, és node.js-t használ, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 A mintakód úgy lett megírva, hogy PHP 5.6 alatt működjön.
 
 Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* PHP 5.6 vagy újabb
+* PHP 5,6 vagy újabb
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -37,7 +37,7 @@ A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-
 1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
-4. A `$accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra. `$endpoint`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
+4. A `$accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra. `$endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
 5. Futtassa a programot.
 
 ```php
