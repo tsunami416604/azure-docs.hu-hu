@@ -1,7 +1,7 @@
 ---
-title: Modell exportálása mobilra - Custom Vision Service
+title: Modell exportálása a Mobile-Custom Vision Serviceba
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan exportálhatja a modellt a mobilalkalmazások létrehozásához, vagy helyileg futtatható a valós idejű besoroláshoz.
+description: Ebből a cikkből megtudhatja, hogyan exportálhatja a modellt a mobil alkalmazások létrehozásához vagy a helyileg futtatott, valós idejű besoroláshoz való használatra.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -11,74 +11,74 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
 ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718947"
 ---
-# <a name="export-your-model-for-use-with-mobile-devices"></a>A modell exportálása mobileszközökkel való használatra
+# <a name="export-your-model-for-use-with-mobile-devices"></a>A modell exportálása mobileszközökön való használatra
 
-A Custom Vision Service lehetővé teszi az osztályozók offline futtatását. Az exportált osztályozót beágyazhatja egy alkalmazásba, és helyileg futtathatja egy eszközön a valós idejű besoroláshoz.
+Custom Vision Service lehetővé teszi az osztályozók exportálását offline állapotba. Az exportált besorolást beillesztheti egy alkalmazásba, és helyileg futtathatja egy eszközön a valós idejű besoroláshoz.
 
 ## <a name="export-options"></a>Exportálási beállítások
 
 A Custom Vision Service a következő exportálásokat támogatja:
 
-* __Tensorflow__ __Androidra__.
-* __CoreML__ __az iOS11 rendszerhez.__
-* __ONNX__ __for Windows ML__.
-* __[Vision AI fejlesztői készlet](https://azure.github.io/Vision-AI-DevKit-Pages/)__.
-* __Docker-tároló__ Windows, Linux vagy ARM architektúrához. A tároló tartalmaz egy Tensorflow-modellt és szolgáltatáskódot a Custom Vision API használatához.
+* __Tensorflow__ __Android__rendszerhez.
+* A __IOS11__ __CoreML__ .
+* __ONNX__ a __Windows ml__-hez.
+* A __[jövőkép AI fejlesztői csomagja](https://azure.github.io/Vision-AI-DevKit-Pages/)__.
+* __Docker-tároló__ Windows, Linux vagy ARM architektúrához. A tároló tartalmaz egy Tensorflow modellt és egy szolgáltatási kódot a Custom Vision API használatához.
 
 > [!IMPORTANT]
-> A Custom Vision Service csak __kompakt__ tartományokat exportál. A kompakt tartományok által létrehozott modellek a mobileszközökön a valós idejű besorolás korlátaira vannak optimalizálva. A kompakt tartománysal készült osztályozók kissé kevésbé pontosak lehetnek, mint az azonos mennyiségű betanítási adatokkal rendelkező szabványos tartomány.
+> Custom Vision Service csak a __kompakt__ tartományokat exportálja. A kompakt tartományok által generált modellek a mobileszközök valós idejű besorolásának korlátaira vannak optimalizálva. A kompakt tartománnyal létrehozott osztályozók valamivel kevésbé pontosak, mint egy standard tartomány, amely azonos mennyiségű betanítási adattal rendelkezik.
 >
-> Az osztályozók fejlesztéséről az [Osztályozó javítása](getting-started-improving-your-classifier.md) című dokumentumban talál további információt.
+> Az osztályozók fejlesztésével kapcsolatos információkért tekintse meg az [osztályozó dokumentum továbbfejlesztése](getting-started-improving-your-classifier.md) című témakört.
 
-## <a name="convert-to-a-compact-domain"></a>Konvertálás kompakt tartománysá
+## <a name="convert-to-a-compact-domain"></a>Átalakítás kompakt tartományba
 
 > [!NOTE]
-> Ebben a szakaszban a lépések csak akkor érvényesek, ha egy meglévő modell, amely nincs beállítva a kompakt tartomány.
+> Az ebben a szakaszban ismertetett lépések csak akkor érvényesek, ha már van olyan modellje, amely nem kompakt tartományra van beállítva.
 
-Meglévő modell tartományának konvertálásához tegye a következő lépéseket:
+Meglévő modell tartományának átalakításához hajtsa végre a következő lépéseket:
 
-1. Az [Egyéni látás webhelyén](https://customvision.ai)válassza a __Kezdőlap__ ikont a projektek listájának megtekintéséhez.
+1. Az [Egyéni jövőkép webhelyén](https://customvision.ai)válassza a __Kezdőlap__ ikont a projektek listájának megtekintéséhez.
 
-    ![Az otthoni ikon és a projektek listájának képe](./media/export-your-model/projects-list.png)
+    ![A Kezdőlap ikon és a projektek lista képe](./media/export-your-model/projects-list.png)
 
-1. Jelöljön ki egy projektet, majd válassza a __Gear__ ikont az oldal jobb felső részén.
+1. Válasszon ki egy projektet, majd kattintson a lap jobb felső sarkában található __fogaskerék__ ikonra.
 
-    ![A fogaskerék ikonja](./media/export-your-model/gear-icon.png)
+    ![A fogaskerék ikon képe](./media/export-your-model/gear-icon.png)
 
-1. A __Tartományok csoportban__ válasszon egyet a __kompakt__ tartományok közül. A módosítások mentéséhez válassza a __Módosítások mentése__ lehetőséget. 
+1. A __tartományok__ szakaszban válassza ki az egyik __kompakt__ tartományt. A módosítások mentéséhez kattintson a __módosítások mentése__ gombra. 
 
     > [!NOTE]
-    > Vision AI dev kit esetén a projektet az __Általános (Kompakt)__ tartománnyal kell létrehozni, és meg kell adnia a **Vision AI Fejlesztői készlet** beállítást az **Exportálási képességek** szakaszban.
+    > A jövőkép AI fejlesztői csomag esetében a projektet az __általános (Compact)__ tartománnyal kell létrehozni, és az **exportálási képességek** szakaszban meg kell adnia a **jövőkép AI fejlesztői csomag** lehetőséget.
 
-    ![A tartományok kijelölésének képe](./media/export-your-model/domains.png)
+    ![Tartományok kiválasztásának képe](./media/export-your-model/domains.png)
 
-1. A lap tetején válassza a __Betanítás__ az új tartomány használatával történő újratanítás lehetőséget.
+1. Az oldal tetején válassza a __betanítás__ az új tartomány használatával lehetőséget.
 
 ## <a name="export-your-model"></a>A modell exportálása
 
-Ha átképzés után szeretné exportálni a modellt, kövesse az alábbi lépéseket:
+A modell átképzés utáni exportálásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a **Teljesítmény** lapot, és válassza __az Exportálás__lehetőséget. 
+1. Lépjen a **teljesítmény** lapra, és válassza az __Exportálás__lehetőséget. 
 
-    ![Az exportálásikon képe](./media/export-your-model/export.png)
+    ![Az Exportálás ikon képe](./media/export-your-model/export.png)
 
     > [!TIP]
-    > Ha az __Exportálás__ bejegyzés nem érhető el, akkor a kijelölt iteráció nem használ tömörített tartományt. A lap __Iterációk__ szakaszában jelöljön ki egy kompakt tartományt használó ismétlést, majd válassza az __Exportálás__lehetőséget.
+    > Ha az __exportálási__ bejegyzés nem érhető el, akkor a kiválasztott iteráció nem használ kompakt tartományt. A lap __iterációk__ szakaszával olyan iterációt választhat ki, amely egy kompakt tartományt használ, majd válassza az __Exportálás__lehetőséget.
 
-1. Válassza ki a kívánt exportálási formátumot, majd a modell letöltéséhez válassza az __Exportálás__ lehetőséget.
+1. Válassza ki a kívánt exportálási formátumot, majd válassza az __Exportálás__ lehetőséget a modell letöltéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
 Integrálja az exportált modellt egy alkalmazásba az alábbi cikkek vagy minták egyikének feltárásával:
 
-* [A Tensorflow-modell használata pythonnal](export-model-python.md)
-* [Az ONNX-modell használata a Windows Machine Learning szolgáltatással](custom-vision-onnx-windows-ml.md)
-* Tekintse meg a mintát [coreML modell egy iOS-alkalmazás](https://go.microsoft.com/fwlink/?linkid=857726) valós idejű képbesorolás swift.
-* Tekintse meg a minta [Tensorflow modell egy Android-alkalmazás](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) valós idejű képbesorolás Androidon.
-* Tekintse meg a [xamarin-modellrel rendelkező CoreML-modell](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) mintáját a Xamarin iOS-alkalmazások valós idejű képbesorolásához.
+* [A Tensorflow-modell használata a Python használatával](export-model-python.md)
+* [A ONNX-modell használata a Windows Machine Learning](custom-vision-onnx-windows-ml.md)
+* Tekintse meg az [iOS-alkalmazásban a CoreML modellhez](https://go.microsoft.com/fwlink/?linkid=857726) készült mintát, amely valós idejű képbesorolást biztosít a Swift-mel.
+* Tekintse meg az Android [-alkalmazásokban a Tensorflow modellhez](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) készült mintát az androidos valós idejű képbesoroláshoz.
+* Tekintse meg a [CoreML modelt a Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) valós idejű képbesorolást biztosító modelljét egy Xamarin iOS-alkalmazásban.

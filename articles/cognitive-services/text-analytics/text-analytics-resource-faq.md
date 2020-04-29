@@ -1,7 +1,7 @@
 ---
-title: Gyakori kérdések a Szövegelemzés API-ról
+title: Gyakran ismételt kérdések a Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Válaszok az Azure Cognitive Services Text Analytics API-jával kapcsolatos fogalmakkal, kódokkal és forgatókönyvekkel kapcsolatos gyakori kérdésekre.
+description: Az Azure Cognitive Services Text Analytics API kapcsolatos fogalmakkal, kóddal és forgatókönyvekkel kapcsolatos gyakori kérdésekre adott válaszokat talál.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837126"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Gyakori kérdések a Text Analytics kognitív szolgáltatásról
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Gyakori kérdések (GYIK) a Text Analytics kognitív szolgáltatásról
 
- Válaszok a Microsoft Cognitive Services Text Analytics API-jához az Azure-ban kapcsolatos fogalmakkal, kódokkal és forgatókönyvekkel kapcsolatos gyakori kérdésekre.
+ Válaszok az Azure-beli Microsoft Cognitive Services Text Analytics API kapcsolatos fogalmakkal, kódokkal és forgatókönyvekkel kapcsolatos gyakori kérdésekre.
 
-## <a name="can-text-analytics-identify-sarcasm"></a>A Szövegelemzés azonosíthatja a szarkazmust?
+## <a name="can-text-analytics-identify-sarcasm"></a>Képes Text Analytics azonosítani a szarkazmust?
 
-Elemzés a pozitív-negatív hangulat helyett hangulatészlelése.
+Az elemzés a hangulat észlelése helyett a pozitív negatív hangulathoz hasonlít.
 
-Mindig van némi pontatlanság a hangulatelemzésben, de a modell akkor a leghasznosabb, ha nincs rejtett jelentés vagy a tartalom subtextje. Irónia, szarkazmus, humor, és hasonlóan árnyalt tartalom támaszkodnak a kulturális háttér és a normák közvetíteni szándék. Ez a fajta tartalom az egyik legnagyobb kihívást jelentő elemezni. Jellemzően az analizátor által készített adott pontszám és az ember szubjektív értékelése közötti legnagyobb eltérés az árnyalt jelentésű tartalom.
+Az érzelmek elemzése mindig bizonyos fokú pontatlanságot jelent, de a modell akkor is hasznos, ha nincs rejtett szó vagy alszöveg a tartalomhoz. Az irónia, a szarkazmus, a humor és a hasonló árnyalt tartalom a kulturális környezet és a normák alapján közvetíti a szándékot. Az ilyen típusú tartalom az elemzéshez leginkább felépülő kihívás. Általában az analizátor által előállított egy adott pontszám és az emberi tartalommal való szubjektív értékelés közötti legnagyobb eltérés az árnyalt jelentéssel rendelkező tartalmak esetében.
 
-## <a name="can-i-add-my-own-training-data-or-models"></a>Hozzáadhatok saját betanítási adatokat vagy modelleket?
+## <a name="can-i-add-my-own-training-data-or-models"></a>Hozzáadhatom a saját betanítási adataikat vagy modelljeiket?
 
-Nem, a modellek előre be vannak képezve. A feltöltött adatokon elérhető egyetlen műveletek a pontozás, a kulcskifejezések kinyerése és a nyelvfelismerés. Nem üzemeltetünk egyéni modelleket. Ha egyéni gépi tanulási modelleket szeretne létrehozni és üzemeltetni, fontolja meg a [Microsoft R Server gépi tanulási képességeit.](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)
+Nem, a modellek előképzés alatt állnak. A feltöltött adatokon csak a következő műveletek érhetők el: pontozás, fő kifejezés kinyerése és nyelvfelismerés. Nem üzemeltetünk egyéni modelleket. Ha egyéni gépi tanulási modellt szeretne létrehozni és üzemeltetni, vegye figyelembe a [gépi tanulási képességeit Microsoft R Serverban](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
 
-## <a name="can-i-request-additional-languages"></a>Kérhetek további nyelveket?
+## <a name="can-i-request-additional-languages"></a>Kérhetek további nyelveket is?
 
-A hangulatelemzés és a kulcskifejezések kinyerése bizonyos számú nyelven érhető [el.](text-analytics-supported-languages.md) A természetes nyelvi feldolgozás összetett, és jelentős tesztelést igényel az új funkciók kiadása előtt. Emiatt elkerüljük a támogatás előzetes bejelentését, hogy senki ne igényeljen olyan funkcióktól való függőséget, amelynek több időre van szüksége az érettséghez. 
+Az érzelmek elemzése és a kulcsfontosságú kifejezés kinyerése a [kiválasztott számú nyelven](text-analytics-supported-languages.md)érhető el. A természetes nyelvi feldolgozás összetett, és jelentős tesztelést igényel az új funkciók felszabadítása előtt. Ezért elkerüljük a támogatás előzetes bejelentését, hogy senki ne vegyen igénybe olyan funkciót, amelynek több időre van szüksége. 
 
-Annak érdekében, hogy rangsorolja, hogy mely nyelveken dolgozzunk a következő, szavazzon bizonyos nyelvekre a [User Voice -on.](https://cognitive.uservoice.com/forums/555922-text-analytics) 
+Annak érdekében, hogy a következő munkahelyeken Milyen nyelveket kell megkeresni, szavazzon a [felhasználói hangon](https://cognitive.uservoice.com/forums/555922-text-analytics)megadott nyelvekre. 
 
-## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Miért a kulcskifejezés-kivonás visszaad néhány szót, de másokat nem?
+## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Miért ad vissza a Key kifejezés kinyerése néhány szót, de másokat nem?
 
-A kulcskifejezések kinyerése kiküszöböli a nem alapvető fontosságú szavakat és az önálló mellékneveket. A melléknév-főnév kombinációk, mint például a "látványos kilátás" vagy a "ködös időjárás" együtt kerülnek visszaadásra.
+A fő kifejezés kinyerése kiküszöböli a nem alapvető szavakat és az önálló jelzőket. A melléknév-főnévi kombinációk, például a "látványos nézetek" vagy a "ködös időjárási viszonyok" együttesen lesznek visszaadva.
 
-A kimenet általában a mondat nagyszámaiból és objektumaiból áll. A kimenet fontossági sorrendben van felsorolva, az első mondat a legfontosabb. A fontosságot az alapján kell mérni, hogy hányszor említenek meg egy adott fogalmat, vagy hogy az elem milyen kapcsolatban áll a szöveg más elemeivel.
+A kimenet általában a mondatok és a mondat objektumaiból áll. A kimenet fontossági sorrendben jelenik meg, az első mondat pedig a legfontosabb. A fontosságot a rendszer egy adott fogalom megemlítése, illetve az elemnek a szöveg más elemeihez viszonyított aránya alapján méri.
 
-## <a name="why-does-output-vary-given-identical-inputs"></a>Miért változik a kimenet, azonos bemenetek szerint?
+## <a name="why-does-output-vary-given-identical-inputs"></a>Miért változik a kimenet, mivel azonos bemenetek vannak?
 
-A modellek és algoritmusok fejlesztéseit akkor jelentik be, ha a módosítás jelentős, vagy ha a frissítés kisebb, csendesen bekerül a szolgáltatásba. Idővel előfordulhat, hogy ugyanaz a szövegbevitel más hangulatpontszámot vagy kulcskifejezés-kimenetet eredményez. Ez egy normális és szándékos következménye a felügyelt gépi tanulási erőforrások a felhőben.
+A modellek és algoritmusok fejlesztése akkor jelent meg, ha a módosítás jelentős, vagy ha a frissítés kisebb, akkor a szolgáltatás csendesen slipstreamed. Az idő múlásával előfordulhat, hogy ugyanaz a szöveges bevitel egy másik hangulati pontszám vagy a kulcs kifejezésének kimenetét eredményezi. Ez a felügyelt gépi tanulási erőforrások Felhőbeli használatának normális és szándékos következménye.
 
 ## <a name="next-steps"></a>További lépések
 
-A kérdése hiányzik egy hiányzó funkcióról vagy funkcióról? Fontolja meg a [uservoice weboldalunkon](https://cognitive.uservoice.com/forums/555922-text-analytics)történő igénylést vagy szavazást.
+Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [UserVoice webhelyén](https://cognitive.uservoice.com/forums/555922-text-analytics)kérjen vagy szavazzon.
 
 ## <a name="see-also"></a>Lásd még
 
- [StackOverflow: Szövegelemzési API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Kognitív szolgáltatások](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

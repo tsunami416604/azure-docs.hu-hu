@@ -1,7 +1,7 @@
 ---
-title: Elemzés hozzáadása a Bing Web Search API-hoz
+title: Elemzés hozzáadása a Bing Web Search APIhoz
 titleSuffix: Azure Cognitive Services
-description: A Bing Statistics elemzést nyújt a Bing Image Search API-hoz. Az Analytics tartalmazza a hívásmennyiséget, a legnépszerűbb lekérdezési karakterláncokat, a földrajzi eloszlást és egyebeket.
+description: A Bing Statistics a Bing Image Search API elemzését teszi lehetővé. Az elemzésbe beletartozik a hívás mennyisége, a legnépszerűbb lekérdezési karakterláncok, a földrajzi eloszlás és sok más.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,95 +12,95 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68882773"
 ---
-# <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Keresési API-khoz
+# <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Search API-khoz
 
-A Bing Statistics a Bing Keresési API-k elemzését biztosítja. Ezek az elemzések közé tartozik a hívásmennyiséget, a legfelső lekérdezési karakterláncokat, a földrajzi eloszlást és egyebeket. Az [Azure Portalon](https://ms.portal.azure.com) engedélyezheti a Bing-statisztikákat, ha az Azure-erőforrásra navigál, és a **Bing-statisztika engedélyezése**elemre kattint.
+A Bing Statistics a Bing Search API-k elemzését biztosítja. Ezek az elemzések közé tartozik a hívás mennyisége, a legnépszerűbb lekérdezési karakterláncok, a földrajzi eloszlás és sok más. A Bing-statisztikákat a [Azure Portalban](https://ms.portal.azure.com) engedélyezheti az Azure-erőforráshoz való navigálás és a **Bing-statisztika engedélyezése**lehetőségre kattintva.
 
 > [!IMPORTANT]
-> * A Bing Statisztika nem érhető el ingyenes próba-előfizetések, vagy az ingyenes `F0` tarifacsomag erőforrásait.
-> * A Bing Statisztika irányítópultján elérhető adatokat nem használhatja fel harmadik felek számára terjeszthető alkalmazások létrehozásához.
-> * A Bing Statistics engedélyezése kissé megnöveli az előfizetési sebességet. A [részleteket](https://aka.ms/bingstatisticspricing) lásd az árakban.
+> * A Bing-statisztika nem érhető el ingyenes próbaverziós előfizetéssel vagy az `F0` ingyenes díjszabási szinten található erőforrásokkal.
+> * A Bing statisztikai irányítópulton keresztül nem használhat olyan adatokat, amelyek harmadik felek számára történő terjesztésre szolgáló alkalmazásokat hoznak létre.
+> * A Bing-statisztika engedélyezése némileg növeli az előfizetések arányát. A részletekért tekintse meg a [díjszabást](https://aka.ms/bingstatisticspricing) .
 
 
 Az alábbi képen az egyes Bing Search API-végpontok elérhető elemzései láthatók.
 
-![Terjesztés végponttámogatási mátrix szerint](./media/bing-statistics/bing-statistics-matrix.png)
+![Eloszlás végpont-támogatási mátrix alapján](./media/bing-statistics/bing-statistics-matrix.png)
 
-## <a name="access-your-analytics"></a>Az elemzések elérése
+## <a name="access-your-analytics"></a>Az elemzés elérése
 
-A Bing 24 óránként frissíti az elemzési adatokat, és akár 13 hónapos előzményeket is megőriz, amelyeket az [elemzési irányítópultról](https://bingapistatistics.com)érhet el. Győződjön meg arról, hogy ugyanazzal a Microsoft-fiókkal (MSA) jelentkezett be, mint amelyet a Bing-statisztika szolgáltatásra való regisztrációhoz használt.
+A Bing 24 óránként frissíti az elemzési adatok mennyiségét, és akár 13 hónapig is megőrzi az [elemzések irányítópultján](https://bingapistatistics.com)elérhető előzményeket. Győződjön meg arról, hogy ugyanazokkal a Microsoft-fiókokkal (MSA) jelentkezett be, mint a Bing-statisztikák regisztrálásához.
 
 > [!NOTE]  
-> * A metrikák az irányítópulton való megjelenése akár 24 órát is igénybe vehet. Az irányítópult on the date and date the data was last updated.  
-> * A mérőszámok attól az időponttól érhetők el, amikor engedélyezi a Bing statisztikái bővítményt.
+> * Akár 24 óráig is eltarthat, amíg a metrikák felszínre kerülnek az irányítópulton. Az irányítópult az adatok utolsó frissítésének dátumát és időpontját jeleníti meg.  
+> * A metrikák a Bing statisztikai bővítmény engedélyezésének időpontjában érhetők el.
 
-## <a name="filter-the-data"></a>Az adatok szűrése
+## <a name="filter-the-data"></a>Az Adatszűrés
 
-Alapértelmezés szerint a diagramok és grafikonok megjelenítik az összes olyan mutatót és adatot, amelyhez hozzáférése van. A diagramokon és grafikonokon látható adatok szűréséhez válassza ki az Önt érdeklő erőforrásokat, piacokat, végpontokat és jelentési időszakokat. A következő szűrőket módosíthatja:
+Alapértelmezés szerint a diagramok és a diagramok a hozzájuk tartozó összes mérőszámot és adatokat megjelenítik. A diagramokban és diagramokban megjelenő információk szűréséhez válassza ki azokat az erőforrásokat, piacokat, végpontokat és jelentési időszakot, amelyekre kíváncsi. A következő szűrők módosíthatók:
 
-- **Erőforrás-azonosító:** Az Azure-előfizetést azonosító egyedi erőforrás-azonosító. A lista több azonosítót tartalmaz, ha több Bing Search API-rétegre fizet elő. Alapértelmezés szerint az összes erőforrás ki van jelölve.  
+- **Erőforrás-azonosító**: az Azure-előfizetést azonosító egyedi erőforrás-azonosító. Ha egynél több Bing Search API-rétegre fizet elő, a lista több azonosítót is tartalmaz. Alapértelmezés szerint az összes erőforrás ki van választva.  
   
-- **Piacok**: Azok a piacok, ahonnan az eredmények származnak. Például en-us (angol, Egyesült Államok). Alapértelmezés szerint az összes piac ki van jelölve. A `en-WW` piac az a piac, amelyet a Bing akkor használ, ha a felhívás nem határoz meg piacot, és a Bing nem tudja meghatározni a felhasználó piacát.  
+- **Piacok**: azok a piacok, amelyeken az eredmények származnak. Például: en-us (angol, Egyesült Államok). Alapértelmezés szerint minden piac ki van választva. A `en-WW` piac az a piac, amelyet a Bing akkor használ, ha a hívás nem ad meg piacot, és a Bing nem tudja meghatározni a felhasználó piacát.  
   
-- **Végpontok**: A Bing Search API-végpontok. A lista tartalmazza az összes végpontot, amelyre fizetős előfizetéssel rendelkezik. Alapértelmezés szerint az összes végpont ki van jelölve.  
+- **Végpontok**: a Bing Search API-végpontok. A lista tartalmazza az összes olyan végpontot, amelyhez fizetős előfizetéssel rendelkezik. Alapértelmezés szerint az összes végpont ki van választva.  
 
-- **Időkeret**: A jelentési időszak. A következőket adhatja meg:
-  - **Összes**: Legfeljebb 13 hónapnyi adatot tartalmaz  
-  - **Elmúlt 24 óra**: Az elmúlt 24 óra analitikát tartalmazza  
-  - **Múlt hét**: Az előző hét nap analitikát tartalmazza  
-  - **Elmúlt hónap**: Az előző 30 nap analitikát tartalmazza  
-  - **Egyéni dátumtartomány:** A megadott dátumtartományból származó elemzéseket tartalmazza, ha elérhető  
+- **Időkeret**: a jelentési időszak. A következőket adhatja meg:
+  - **Összes**: legfeljebb 13 hónapig hasznos adatot tartalmaz  
+  - Az **elmúlt 24 óra**: az elmúlt 24 órában elemzést tartalmaz  
+  - **Múlt hét**: az elmúlt hét nap elemzését tartalmazza  
+  - Az **elmúlt hónapban**: az elmúlt 30 nap elemzését tartalmazza  
+  - **Egyéni dátumtartomány**: a megadott dátumtartomány elemzését tartalmazza, ha van ilyen.  
 
-## <a name="charts-and-graphs"></a>Diagramok és grafikonok
+## <a name="charts-and-graphs"></a>Diagramok és diagramok
 
-Az irányítópult a kiválasztott végponthoz elérhető metrikák diagramjait és grafikonjait jeleníti meg. Nem minden metrika érhető el az összes végponthoz. Az egyes végpontok diagramjai és grafikonjai statikusak (nem jelölheti ki a megjelenítendő diagramokat és grafikonokat). Az irányítópult csak azokat a diagramokat és grafikonokat jeleníti meg, amelyekhez adatok vannak.
+Az irányítópulton a kiválasztott végponthoz elérhető metrikák diagramjai és diagramjai láthatók. Nem minden metrika érhető el az összes végponthoz. Az egyes végpontok diagramjai és diagramjai statikusak (nem lehet kijelölni a megjelenítendő diagramokat és diagramokat). Az irányítópult csak azokat a diagramokat és diagramokat jeleníti meg, amelyekhez az adathalmazok vannak.
 
 <!--
 For example, if you don't include the User-Agent header in your calls, the dashboard will not include device-related graphs.
 -->
 
-A következőkben lehetséges metrikák és végpontkorlátozások.
+A következő lehetséges mérőszámok és végponti korlátozások.
 
-- **Hívásmennyisége**: A jelentéskészítési időszak alatt kezdeményezett hívások számát jeleníti meg. Ha a jelentési időszak egy napra szól, a diagram az óránkénti hívások számát mutatja. Ellenkező esetben a diagram a jelentési időszak naponta kezdeményezett hívásainak számát mutatja.  
+- **Hívási kötet**: a jelentési időszak során végrehajtott hívások számát jeleníti meg. Ha a jelentési időszak egy napra esik, a diagramon az óránkénti hívások száma látható. Ellenkező esetben a diagram a jelentési időszakon belül naponta végrehajtott hívások számát jeleníti meg.  
   
   > [!NOTE]
-  > A hívás mennyisége eltérhet a számlázási jelentésektől, amelyek általában csak a sikeres hívásokat tartalmazzák.
+  > A hívási kötet eltérhet a számlázási jelentéstől, amely általában csak a sikeres hívásokat tartalmazza.
 
-- **Leggyakoribb lekérdezések:** A leggyakoribb lekérdezéseket és az egyes lekérdezések előfordulásainak számát jeleníti meg a jelentéskészítési időszakban. Beállíthatja a megjelenített lekérdezések számát. Megjelenítheti például a 25, 50 vagy 75 legjobb lekérdezést. A leggyakoribb lekérdezések nem érhetők el a következő végpontokhoz:  
+- **Leggyakoribb lekérdezések**: a jelentéskészítési időszakban a leggyakoribb lekérdezéseket és az egyes lekérdezések előfordulásainak számát jeleníti meg. Beállíthatja a megjelenített lekérdezések számát. Megjelenítheti például az első 25, 50 vagy 75 lekérdezéseket. A leggyakoribb lekérdezések a következő végpontokhoz nem érhetők el:  
 
   - /images/trending
   - /images/details
   - /images/visualsearch
-  - /videók/felkapott
-  - /videos/részletek
-  - /hírek
-  - /hírek/trendingtopics
-  - /javaslatok  
+  - /videos/trending
+  - /videos/details
+  - /news
+  - /news/trendingtopics
+  - /suggestions  
   
   > [!NOTE]  
-  > Egyes lekérdezési kifejezések et el lehet nyomva a bizalmas információk, például e-mailek, telefonszámok, SSN stb.
+  > Bizonyos lekérdezési feltételek elhagyhatók a bizalmas információk, például az e-mailek, a telefonszámok, az SSN stb. eltávolításához.
 
-- **Földrajzi eloszlás**: Azok a piacok, ahonnan a keresési eredmények származnak. Például `en-us` (angol, Amerikai Egyesült Államok). A Bing `mkt` a lekérdezési paraméter segítségével határozza meg a piacot, ha meg van adva. Ellenkező esetben a Bing jeleket használ, például a hívó IP-címét a piac meghatározásához.
+- **Földrajzi eloszlás**: azok a piacok, ahol a keresési eredmények származnak. Például: `en-us` (angol, Egyesült Államok). A Bing a `mkt` lekérdezési paraméter használatával határozza meg a piacot, ha meg van adva. Ellenkező esetben a Bing olyan jeleket használ, mint például a hívó IP-címe a piac meghatározásához.
 
-- **Válaszkód elosztása**: A jelentési időszak alatt az összes hívás HTTP-állapotkódja.
+- **Válasz kód eloszlása**: az összes hívás HTTP-állapotkódok a jelentési időszak alatt.
 
-- **Hívás origin disztribúció**: A felhasználók által használt böngészőtípusok. Például microsoft edge, Chrome, Safari és FireFox. A böngészőn kívülről kezdeményezett hívások (például botok, postás vagy konzolalkalmazásból származó curl használata) a Könyvtárak csoportba vannak csoportosítva. A forrás meghatározása a kérelem User-Agent fejlécértékével történik. Ha a kérelem nem tartalmazza a User-Agent fejlécet, a Bing megpróbálja levezetni az eredetet más jelekből.  
+- **Forrás eloszlásának hívása**: a felhasználók által használt böngészők típusai. Például a Microsoft Edge, a Chrome, a Safari és a FireFox. A böngészőn kívüli hívások (például a robotok, a Poster vagy a curl használata a konzolból) a könyvtárak alatt vannak csoportosítva. A forrás meghatározása a kérelem felhasználói ügynök fejlécének értéke alapján történik. Ha a kérelem nem tartalmazza a felhasználói ügynök fejlécét, a Bing megpróbálja származtatni a forrást más jelekből.  
 
-- **Biztonságos keresési eloszlás**: A biztonságos keresési értékek eloszlása. Például, ki, mérsékelt, vagy szigorú. A `safeSearch` lekérdezési paraméter tartalmazza az értéket, ha meg van adva. Ellenkező esetben a Bing alapértelmezés szerint moderálja az értéket.  
+- **Biztonságos Keresés eloszlása**: a biztonságos keresési értékek eloszlása. Például: off, mérsékelt vagy szigorú. Ha `safeSearch` meg van adva, a lekérdezési paraméter tartalmazza az értéket. Ellenkező esetben a Bing a mérsékelt értékre írja az értéket.  
 
-- **Válaszok kért terjesztési:** A webes keresési API-válaszok, amit kért a `responseFilter` lekérdezési paraméter.  
+- **Válasz kért eloszlás**: a `responseFilter` lekérdezési paraméterben kért Web Search API-válaszok.  
 
-- **Válaszok terjesztési:** A válaszokat, hogy a Webes keresési API-t a válaszban.
+- **Válaszok visszaadása**: a válaszban Web Search API által visszaadott válaszok.
 
-- **Válaszkiszolgáló-elosztás:** Az API-kérelmeket kiszolgáló alkalmazáskiszolgáló. A lehetséges értékek Bing.com (az asztali és laptopeszközökről kiszolgált forgalom esetében) és Bing.com mobil (mobileszközökről kiszolgált forgalom esetén). A kiszolgáló meghatározása a kérelem User-Agent fejlécértékén történik. Ha a kérelem nem tartalmazza a User-Agent fejlécet, a Bing megpróbálja levezetni a kiszolgálót más jelekből.
+- **Válasz-kiszolgáló eloszlása**: az API-kérelmeket kézbesítő alkalmazáskiszolgáló. A lehetséges értékek a Bing.com (az asztali és hordozható eszközökről kiszolgált forgalom) és a Bing.com (a mobileszközök által kiszolgált forgalom esetében). A kiszolgáló a kérelem felhasználói ügynök fejlécének értéke alapján van meghatározva. Ha a kérelem nem tartalmazza a felhasználói ügynök fejlécét, a Bing megpróbálja a kiszolgálót más jelekből származtatni.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mik azok a Bing Search API-k?](bing-api-comparison.md)
+* [Mi a Bing Search API-k?](bing-api-comparison.md)
 * [Bing Search API – követelmények használata és megjelenítése](use-display-requirements.md)

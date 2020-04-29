@@ -1,7 +1,7 @@
 ---
-title: Támogatott típusok a névvel ellátott entitásfelismeréshez
+title: Megnevezett entitások felismeréséhez támogatott típusok
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a támogatott entitástípusokat a Text Analytics API-ban.
+description: Ismerje meg a Text Analytics API támogatott entitások típusait.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086883"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>A névvel ellátott entitásfelismerés 3-as verziójú támogatott típusai (előzetes verzió)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Megnevezett entitás-felismerési 3-as verzió (előnézet) támogatott típusai
 
-A Text Analytics API lehetővé teszi a szövegben található entitások azonosítását és félreérthetőségét. [Az elnevezett entitásfelismerés](how-tos/text-analytics-how-to-entity-linking.md) (NER) lehetővé teszi a különböző entitások azonosítását és előre meghatározott osztályokba sorolja.
+Az Text Analytics API lehetővé teszi a szövegben talált entitások azonosítását és egyértelműsítse. Az [elnevezett entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md) lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja.
 
 ## <a name="entity-types"></a>Entitástípusok
 
-A támogatott entitástípusok és altípusok (adott esetben) az alábbiak:
+A támogatott entitások típusai és altípusai (ahol vannak ilyenek) alább láthatók:
 
 #### <a name="general"></a>[Általános](#tab/general)
 
@@ -37,4 +37,4 @@ A támogatott entitástípusok és altípusok (adott esetben) az alábbiak:
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Named Entity Recognition használata a Text Analytics szolgáltatásban](how-tos/text-analytics-how-to-entity-linking.md)
+* [Elnevezett entitások felismerésének használata a Text Analyticsban](how-tos/text-analytics-how-to-entity-linking.md)

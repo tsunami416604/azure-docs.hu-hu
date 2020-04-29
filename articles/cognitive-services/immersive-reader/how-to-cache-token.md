@@ -1,7 +1,7 @@
 ---
 title: A hitelesítési jogkivonat gyorsítótárazása
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan lehet gyorsítótárazni a hitelesítési jogkivonatot.
+description: Ez a cikk bemutatja, hogyan gyorsítótárazhatja a hitelesítési tokent.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946165"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>A hitelesítési jogkivonat gyorsítótárazása
 
-Ez a cikk bemutatja, hogyan gyorsítótárazhatja a hitelesítési jogkivonatot az alkalmazás teljesítményének javítása érdekében.
+Ez a cikk bemutatja, hogyan gyorsítótárazhatja a hitelesítési tokent az alkalmazás teljesítményének növelése érdekében.
 
 ## <a name="using-aspnet"></a>A ASP.NET használata
 
-Importálja a **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet csomagot, amely a jogkivonat megszerzésére szolgál. Ezután a következő kód `AuthenticationResult`segítségével szerezzen be egy , a [Magával ragadó olvasó erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott hitelesítési értékek használatával.
+Importálja a **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet-csomagot, amely a jogkivonat beszerzésére szolgál. Ezután a következő kód használatával szerezzen be egy `AuthenticationResult`alkalmazást, amely a [magával ragadó olvasó erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott hitelesítési értékeket használja.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-Az `AuthenticationResult` objektum `AccessToken` rendelkezik egy tulajdonsággal, amely a tényleges token fogja használni, amikor elindítja a magával ragadó olvasó segítségével sdk. Ez is `ExpiresOn` birtokol egy tulajdonság, amely jelzi, amikor a jogkivonat lejár. A Magával ragadó olvasó elindítása előtt ellenőrizheti, hogy a jogkivonat lejárt-e, és csak akkor szerezhet be egy új jogkivonatot, ha lejárt.
+Az `AuthenticationResult` objektumhoz tartozik `AccessToken` egy olyan tulajdonság, amely a valós token, amelyet a rendszer az SDK használatával fog használni. Emellett van egy `ExpiresOn` tulajdonsága is, amely azt jelzi, hogy mikor jár le a jogkivonat. A lebilincselő olvasó elindítása előtt megtekintheti, hogy a jogkivonat lejárt-e, és csak akkor szerezzen be egy új jogkivonatot, ha lejárt.
 
-## <a name="using-nodejs"></a>A Node.JS használata
+## <a name="using-nodejs"></a>A Node. JS használata
 
-Adja hozzá a [**request**](https://www.npmjs.com/package/request) npm csomagot a projekthez. A következő kód segítségével szerezzen be egy jogkivonatot a [Immersive Reader erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott hitelesítési értékek használatával.
+Adja hozzá a [**kérelem**](https://www.npmjs.com/package/request) NPM-csomagját a projekthez. A következő kód használatával szerezheti be a jogkivonatot, és használhatja azokat a hitelesítési értékeket, amelyeket [az olvasói erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott.
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-A `expires_on` tulajdonság az a dátum és időpont, amikor a token lejár, az 1970. Ezzel az értékkel határozza meg, hogy a jogkivonat lejárt-e, mielőtt megpróbálna újat beszerezni.
+A `expires_on` tulajdonság az a dátum és időpont, amikor a jogkivonat lejár, a 1970 UTC óta eltelt másodpercek száma szerint. Ezzel az értékkel állapíthatja meg, hogy a jogkivonat lejárt-e, mielőtt megkísérelte egy új beszerzését.
 
 ```javascript
 async function getToken() {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [magával ragadó Reader SDK-referenciát](./reference.md)
+* Ismerje meg az [olvasói SDK-referenciát](./reference.md)

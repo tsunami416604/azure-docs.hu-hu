@@ -1,7 +1,7 @@
 ---
 title: Egyéni altartományok
 titleSuffix: Azure Cognitive Services
-description: Az egyes Cognitive Service-erőforrások egyéni altartománynevei az Azure Portalon, az Azure Cloud Shellen vagy az Azure CLI-n keresztül jönnek létre.
+description: Az egyes kognitív szolgáltatások erőforrásaihoz tartozó egyéni tartománynevek a Azure Portalon, Azure Cloud Shellon vagy az Azure CLI-n keresztül jönnek létre.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,67 +10,67 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647696"
 ---
-# <a name="custom-subdomain-names-for-cognitive-services"></a>Egyéni altartománynevek a Cognitive Services szolgáltatáshoz
+# <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
 
-Az Azure Cognitive Services egyéni altartományneveket használ az [Azure Portalon,](https://portal.azure.com)az [Azure Cloud Shellen](https://azure.microsoft.com/features/cloud-shell/)vagy az [Azure CLI-n](https://docs.microsoft.com/cli/azure/install-azure-cli)keresztül létrehozott minden egyes erőforráshoz. A regionális végpontokkal ellentétben, amelyek egy adott Azure-régió összes ügyfele számára gyakoriak voltak, az egyéni altartománynevek egyediek az erőforrásszámára. Egyéni altartománynevek szükségesek az Olyan funkciók engedélyezéséhez, mint az Azure Active Directory (Azure AD) a hitelesítéshez.
+Az Azure Cognitive Services a [Azure Portal](https://portal.azure.com), a [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával létrehozott összes erőforráshoz egyéni tartományneveket használhat. A regionális végpontok eltérően, amelyek egy adott Azure-régióban lévő összes ügyfél esetében közösek, az egyéni altartományok nevei egyediek az erőforrás számára. Az egyéni altartományok neve szükséges az olyan funkciók engedélyezéséhez, mint a Azure Active Directory (Azure AD) a hitelesítéshez.
 
-## <a name="how-does-this-impact-existing-resources"></a>Milyen hatással van ez a meglévő erőforrásokra?
+## <a name="how-does-this-impact-existing-resources"></a>Hogyan befolyásolja ez a meglévő erőforrásokat?
 
-2019. július 1-je előtt létrehozott Cognitive Services-erőforrások a társított szolgáltatás regionális végpontjait fogják használni. Ezek a végpontok a meglévő és az új erőforrásokkal fognak működni.
+A 2019. július 1. előtt létrehozott erőforrások Cognitive Services a társított szolgáltatás regionális végpontját fogják használni. Ezek a végpontok a meglévő és az új erőforrásokkal is működni fognak.
 
-Ha egy meglévő erőforrást szeretne áttelepíteni az egyéni altartománynevek kihasználásához, hogy engedélyezhesse az olyan funkciókat, mint az Azure AD, kövesse az alábbi utasításokat:
+Ha egy meglévő erőforrást szeretne áttelepíteni az egyéni altartománynevek kihasználása érdekében, hogy az Azure AD-hez hasonló szolgáltatásokat lehessen engedélyezni, kövesse az alábbi utasításokat:
 
-1. Jelentkezzen be az Azure Portalon, és keresse meg azt a Cognitive Services-erőforrást, amelyhez egyéni altartománynevet szeretne hozzáadni.
-2. Az **Áttekintés** panelen keresse meg és válassza **az Egyéni tartománynév létrehozása lehetőséget.**
-3. Ezzel megnyit egy panelt, amely utasításokat tartalmaz az erőforrás egyedi egyéni altartományának létrehozásához.
+1. Jelentkezzen be a Azure Portalba, és keresse meg azt a Cognitive Services-erőforrást, amelyhez hozzá szeretné adni az egyéni altartomány nevét.
+2. Az **Áttekintés** panelen keresse meg és válassza ki az **Egyéni tartománynév előállítása**lehetőséget.
+3. Ekkor megnyílik egy panel, amely útmutatást ad az erőforrás egyedi egyéni altartományának létrehozásához.
    > [!WARNING]
-   > Az egyéni altartománynév létrehozása után **nem** módosítható.
+   > Miután létrehozta az egyéni altartomány nevét, **nem** módosítható.
 
-## <a name="do-i-need-to-update-my-existing-resources"></a>Frissítenem kell a meglévő erőforrásokat?
+## <a name="do-i-need-to-update-my-existing-resources"></a>Frissíteni kell a meglévő erőforrásokat?
 
-Nem. A regionális végpont továbbra is működik az új és a meglévő Cognitive Services és az egyéni altartomány neve nem kötelező. Még ha egyéni altartománynevet is hozzáad, a területi végpont továbbra is működni fog az erőforrással.
+Nem. A regionális végpont továbbra is működni fog az új és a meglévő Cognitive Services, és az egyéni altartomány neve nem kötelező. Még akkor is, ha hozzá van adva egy egyéni altartomány neve, a regionális végpont továbbra is együttműködik az erőforrással.
 
-## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Mi a teendő, ha egy SDK megkérdezi, hogy a régió egy erőforrás?
+## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Mi a teendő, ha egy SDK megkérdezi a régiót egy erőforráshoz?
 
 > [!WARNING]
-> A beszédszolgáltatások **jelenleg nem** támogatják az egyéni altartományokat. Kérjük, használja a regionális végpontok a beszédszolgáltatások és a kapcsolódó SDK-k használatakor.
+> A Speech Services jelenleg **nem** támogatja az egyéni altartományokat. A Speech Services és a társított SDK-k használata esetén használja a regionális végpontokat.
 
-A regionális végpontok és az egyéni altartománynevek egyaránt támogatottak, és felcserélhetők. Azonban a teljes végpont szükséges.
+A regionális végpontok és az egyéni altartományok nevei egyaránt támogatottak, és használhatók szinonimaként. A teljes végpontot azonban kötelező megadni.
 
-A régióadatok az [Azure Portalon](https://portal.azure.com)az erőforrás **áttekintése** panelen érhetők el. A regionális végpontok teljes listájáért lásd: [Vannak regionális végpontok listája?](#is-there-a-list-of-regional-endpoints)
+A régióval kapcsolatos információk a [Azure Portal](https://portal.azure.com)erőforrásának **Áttekintés** paneljén érhetők el. A regionális végpontok teljes listájáért lásd: a [regionális végpontok listája?](#is-there-a-list-of-regional-endpoints)
 
-## <a name="are-custom-subdomain-names-regional"></a>Az egyéni altartománynevek regionálisak?
+## <a name="are-custom-subdomain-names-regional"></a>Az egyéni altartománynevek területi neve?
 
-Igen. Egyéni altartománynév használata nem módosítja a Cognitive Services-erőforrás egyik regionális aspektusát sem.
+Igen. Az egyéni altartománynevek használata nem változtatja meg a Cognitive Services erőforrás regionális aspektusait.
 
-## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Milyen követelmények vonatkoznak az egyéni altartománynevekre?
+## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Milyen követelmények vonatkoznak az egyéni altartomány nevére?
 
-Az egyéni altartománynév az erőforrás egyedi. A név csak alfanumerikus `-` karaktereket és karaktert tartalmazhat; 2 és 64 karakter közötti hosszúságúnak kell `-`lennie, és nem végződhet .
+Az erőforrás egyedi altartományának neve egyéni. A név csak alfanumerikus karaktereket és `-` karaktert tartalmazhat. az értéknek 2 és 64 karakter közöttinek kell lennie, és nem `-`végződhet a végződéssel.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Módosíthatom az egyéni tartománynevet?
 
-Nem. Egyéni altartománynév létrehozása és az erőforráshoz való hozzárendelése után nem módosítható.
+Nem. Egy egyéni altartomány nevének létrehozása és egy erőforráshoz való társítása után nem módosítható.
 
-## <a name="can-i-reuse-a-custom-domain-name"></a>Használhatom újra az egyéni tartománynevet?
+## <a name="can-i-reuse-a-custom-domain-name"></a>Felhasználhatok egy egyéni tartománynevet?
 
-Minden egyéni altartománynév egyedi, ezért a Cognitive Services-erőforráshoz rendelt egyéni altartománynév újbóli felhasználásához törölnie kell a meglévő erőforrást. Az erőforrás törlése után újra felhasználhatja az egyéni altartománynevet.
+Minden egyéni altartománynév egyedi, ezért a Cognitive Services erőforráshoz hozzárendelt egyéni altartománynév-név újbóli felhasználása érdekében törölnie kell a meglévő erőforrást. Az erőforrás törlése után újra felhasználhatja az egyéni altartomány nevét.
 
-## <a name="is-there-a-list-of-regional-endpoints"></a>Van lista a regionális végpontokról?
+## <a name="is-there-a-list-of-regional-endpoints"></a>Van a regionális végpontok listája?
 
-Igen. Ez a lista a regionális végpontok, amelyek az Azure Cognitive Services-erőforrásokkal használható.
+Igen. Az Azure Cognitive Services erőforrásaival használható regionális végpontok listája.
 
 > [!NOTE]
-> A Translator Text API és a Bing Search API-k globális végpontokat használnak.
+> A Translator Text API és a Bing Search API-k globális végpontokat használ.
 
 | Végpont típusa | Régió | Végpont |
 |---------------|--------|----------|
-| Nyilvános | Globális (fordítószöveg & Bing) | `https://api.cognitive.microsoft.com` |
+| Nyilvános | Globális (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
 | | Kelet-Ausztrália | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Dél-Brazília | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Közép-Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -84,7 +84,7 @@ Igen. Ez a lista a regionális végpontok, amelyek az Azure Cognitive Services-e
 | | Dél-Korea középső régiója | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA északi középső régiója | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Észak-Európa | `https://northeurope.api.cognitive.microsoft.com` |
-| | Dél-Afrika Észak-Afrika | `https://southafricanorth.api.cognitive.microsoft.com` |
+| | Dél-Afrika északi régiója | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | USA déli középső régiója | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Délkelet-Ázsia | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Az Egyesült Királyság déli régiója | `https://uksouth.api.cognitive.microsoft.com` |
@@ -93,10 +93,10 @@ Igen. Ez a lista a regionális végpontok, amelyek az Azure Cognitive Services-e
 | | USA nyugati régiója | `https://westus.api.cognitive.microsoft.com` |
 | | USA nyugati régiója, 2. | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
-| Kína | Kína Keleti 2 | `https://chinaeast2.api.cognitive.azure.cn` |
+| Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mik azok a Cognitive Services?](Welcome.md)
+* [Mi a Cognitive Services?](Welcome.md)
 * [Hitelesítés](authentication.md)

@@ -1,7 +1,7 @@
 ---
-title: Hogyan töltsünk fel egy dokumentumot - Egyéni fordító
+title: Dokumentum feltöltése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A dokumentumfeltöltési funkció párhuzamos dokumentumokat tölt fel a szolgáltatásba (két dokumentum, ahol az egyik az eredet, a másik pedig a fordítás).
+description: A dokumentum feltöltése funkció feltölti a párhuzamos dokumentumokat (két dokumentum, ahol az egyik a forrás, a másik pedig a fordítás) a szolgáltatásba.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,81 +10,81 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647382"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
 
-Az [Egyéni fordító](https://portal.customtranslator.azure.ai)ban párhuzamos dokumentumokat tölthet fel a fordítási modellek betanításához. [A párhuzamos dokumentumok](what-are-parallel-documents.md) olyan dokumentumok párjai, amelyek közül az egyik a másik fordítása. A pár egyik dokumentuma a forrásnyelven lévő mondatokat, a másik pedig ezeket a mondatokat a célnyelvre fordította.
+Az [Egyéni fordítóban](https://portal.customtranslator.azure.ai)párhuzamos dokumentumok tölthetők fel a fordítási modellek betanításához. A [párhuzamos dokumentumok](what-are-parallel-documents.md) olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
 
-A dokumentumok feltöltése előtt tekintse át a [dokumentumformátumokat és az elnevezési konvenciókra vonatkozó útmutatást,](document-formats-naming-convention.md) és győződjön meg arról, hogy a fájlformátum ot támogatja az Egyéni fordító.
+A dokumentumok feltöltése előtt tekintse át a [dokumentum formátumait és az elnevezési konvenció útmutatását, és](document-formats-naming-convention.md) győződjön meg arról, hogy a fájlformátum támogatott az egyéni fordítóban.
 
-## <a name="how-to-upload-document"></a>Hogyan lehet feltölteni a dokumentumot?
+## <a name="how-to-upload-document"></a>Hogyan tölthetők fel a dokumentumok?
 
-Az [Egyéni fordító](https://portal.customtranslator.azure.ai) portálon kattintson a "Dokumentumok" fülre a dokumentumok laphoz.
+A [Custom Translator](https://portal.customtranslator.azure.ai) Portalon kattintson a dokumentumok fülre a dokumentumok lapon.
 
 ![Dokumentum feltöltési hivatkozása](media/how-to/how-to-upload-1.png)
 
 
-1.  Kattintson a Dokumentumok oldal Fájlok feltöltése gombjára.
+1.  Kattintson a fájlok feltöltése gombra a dokumentumok lapon.
 
-    ![Dokumentumoldal feltöltése](media/how-to/how-to-upload-2.png)
+    ![Dokumentum feltöltése lap](media/how-to/how-to-upload-2.png)
 
-2.  A párbeszédpanelen töltse ki a következő adatokat:
+2.  A párbeszédpanelen adja meg a következő információkat:
 
     a.  Dokumentum típusa:
 
-    -  Oktatás: Ezek a dokumentumok(ok) lesznek használva a képzési készlet.
-    -  Hangolás: Ezek a dokumentum(oka)t fogja használni a hangolási készlet.
-    -  Tesztelés: Ezek a dokumentumok a tesztkészlethez lesznek használva.
-    -  Kifejezés szótár: Ezek a dokumentumok(ak) kifejezésszótárhoz lesznek használva.
-    -  Mondatszótár: Ezek a dokumentumok a mondatszótárban lesznek használva
+    -  Képzés: ezeket a dokumentumokat a betanítási készlethez fogjuk használni.
+    -  Hangolás: ezeket a dokumentumokat a hangolási készlethez fogjuk használni.
+    -  Tesztelés: a rendszer ezeket a dokumentumokat fogja használni a tesztelési készlethez.
+    -  Szótár kifejezése: ezeket a dokumentumokat a kifejezés szótárához fogjuk használni.
+    -  Mondat szótár: a rendszer ezeket a dokumentumokat fogja használni a mondat szótárához
 
     b.  Nyelvi pár
 
-    c.  Dokumentum felülírása, ha létezik: Jelölje be ezt a jelölőnégyzetet, ha felül szeretné írni az azonos nevű meglévő dokumentumokat.
+    c.  Felülbírálási dokumentum ha létezik: jelölje be ezt a jelölőnégyzetet, ha felül szeretné írni az azonos nevű meglévő dokumentumokat.
 
-    d.  Töltse ki a megfelelő szakaszt a párhuzamos adatok vagy a kombinált adatok szempontjából.
+    d.  Adja meg a megfelelő szakaszt párhuzamos vagy kombinált adattípushoz.
 
-    -  Párhuzamos adatok:
-        -  Forrásfájl: Válassza ki a forrásnyelvi fájlt a helyi számítógépről.
-        -  Célfájl: Válassza ki a célnyelvi fájlt a helyi számítógépről.
-        -  Dokumentumneve: Csak akkor használatos, ha párhuzamos fájlokat tölt fel.
+    -  Párhuzamos adatértékek:
+        -  Forrásfájl: válassza a forrás nyelvi fájl lehetőséget a helyi számítógépről.
+        -  Célfájl: válassza a cél nyelvi fájl lehetőséget a helyi számítógépen.
+        -  Dokumentum neve: csak akkor használható, ha párhuzamos fájlokat tölt fel.
 
-    - Kombinált adatok:
-        -  Kombinált fájl: Válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájl ban mind a forrás-, mind a célnyelvi mondatok vannak. [Az elnevezési konvenció](document-formats-naming-convention.md) fontos a kombinált fájlok esetében.
+    - Kombinált adatkészletek:
+        -  Kombinált fájl: válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájl a forrás-és a cél nyelvi mondatokkal is rendelkezik. Az [elnevezési konvenció](document-formats-naming-convention.md) a kombinált fájlok esetében fontos.
 
-    e.  Kattintson a Feltöltés gombra
+    e.  Kattintson a feltöltés gombra
 
     ![Dokumentum feltöltése párbeszédpanel](media/how-to/how-to-upload-dialog.png)
 
-3.  Ezen a ponton feldolgozzuk a dokumentumait, és megpróbáljuk kinyerni a mondatokat. A "Feltöltési folyamat megtekintése" gombra kattintva ellenőrizheti a dokumentumok állapotát a feldolgozás során.
+3.  Ezen a ponton dolgozunk fel dokumentumokat, és megpróbáljuk kinyerni a mondatokat. A "feltöltési folyamat megtekintése" lehetőségre kattintva megtekintheti a dokumentumok állapotát a folyamat során.
 
-    ![Dokumentumfeldolgozás feltöltése párbeszédpanel](media/how-to/how-to-upload-processing-dialog.png)
+    ![Dokumentum-feldolgozás feltöltése párbeszédpanel](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  Ezen az oldalon megjelenik az állapot, és az esetleges hibák minden fájlt a feltöltés. A feltöltési állapotot bármikor megtekintheti a "Feltöltési előzmények" fülre kattintva.
+4.  Ezen a lapon látható az állapot, valamint a feltöltésen belüli egyes fájlok hibái. A korábbi feltöltési állapotot bármikor megtekintheti, ha a "feltöltési előzmények" lapra kattint.
 
-    ![Dokumentumelőzmények feltöltése párbeszédpanel](media/how-to/how-to-upload-document-history.png)
+    ![Dokumentum előzményeinek feltöltése párbeszédpanel](media/how-to/how-to-upload-document-history.png)
 
 
 ## <a name="view-upload-history"></a>Feltöltési előzmények megtekintése
 
-A feltöltési előzmények oldalon megtekintheti az összes dokumentumfeltöltési adat előzményeit, például a dokumentum típusát, a nyelvpárt, a feltöltési állapotot stb.
+A feltöltési Előzmények lapon megtekintheti az összes dokumentum feltöltésének előzményeit, például a dokumentum típusát, a nyelvi párokat, a feltöltési állapotot stb.
 
-1. Az [Egyéni fordító](https://portal.customtranslator.azure.ai) portálon kattintson az Előzmények feltöltése fülre az előzmények megtekintéséhez.
+1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portálon kattintson az Előzmények lap feltöltés elemére az előzmények megtekintéséhez.
 
-    ![Az előzmények feltöltése lap](media/how-to/how-to-upload-history-1.png)
+    ![Feltöltési Előzmények lap](media/how-to/how-to-upload-history-1.png)
 
-2. Ezen az oldalon az összes korábbi feltöltés állapota látható. Megjeleníti a feltöltéseket a legutóbbitól a legkevésbé frissig. Minden feltöltésnél megjelenik a dokumentum neve, a feltöltési állapot, a feltöltés dátuma, a feltöltött fájlok száma, a feltöltött fájl típusa és a fájl nyelvi párja.
+2. Ezen a lapon látható az összes korábbi feltöltés állapota. A legújabbtól a legkorábbiig terjedő feltöltéseket jeleníti meg. Minden feltöltésnél megjelenik a dokumentum neve, a feltöltés állapota, a feltöltés dátuma, a feltöltött fájlok száma, a feltöltött fájl típusa és a fájl nyelvi párja.
 
-    ![Az előzmények feltöltése lap](media/how-to/how-to-document-history-2.png)
+    ![Feltöltési Előzmények lap](media/how-to/how-to-document-history-2.png)
 
-3. Kattints on any upload history record. A feltöltési előzmények részleteit oldalon megtekintheti a feltöltött fájlokat a feltöltés, a fájl feltöltött állapota, a fájl nyelve és a hibaüzenet részeként (ha hiba van a feltöltésben).
+3. Kattintson a feltöltési előzmények rekordra. A feltöltési előzmények részletei lapon megtekintheti a fájl feltöltése, feltöltött állapotának részeként feltöltött fájlokat, a fájl nyelvét és a hibaüzenetet (ha bármilyen hiba van a feltöltés során).
 
 ## <a name="next-steps"></a>További lépések
 
-- A [dokumentum részletei lapon](how-to-view-document-details.md) áttekintheti a kibontott mondatok listáját.
-- [Hogyan kell a vonat egy modell](how-to-train-model.md).
+- A kinyert mondatok listájának áttekintéséhez használja a [dokumentum részletei lapot](how-to-view-document-details.md) .
+- [Modell betanítása](how-to-train-model.md).

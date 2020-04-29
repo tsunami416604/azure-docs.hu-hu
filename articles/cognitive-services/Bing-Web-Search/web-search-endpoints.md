@@ -1,7 +1,7 @@
 ---
 title: Webes keresési végpont
 titleSuffix: Azure Cognitive Services
-description: A webes keresési eredmények `GET` lekéréséhez küldjön egy kérést a következő végpontra. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
+description: A webes keresési eredmények beszerzéséhez küldjön `GET` egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74111339"
 ---
-# <a name="web-search-endpoint"></a>Webes keresési végpont
+# <a name="web-search-endpoint"></a>Web Search végpont
 
-A **Web Search API** weblapokat, híreket, képeket, videókat és [entitásokat ad](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)vissza. Az entitások összegző információkkal rendelkeznek egy személyről, helyről vagy témakörről.
+A **Web Search API** weblapokat, híreket, képeket, videókat és [entitásokat](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)ad vissza. Az entitások összegző információkkal rendelkeznek egy személyről, helyről vagy témakörről.
 
 ## <a name="endpoint"></a>Végpont
 
-Ha a Bing API használatával szeretne `GET` webes keresési eredményeket kapni, küldjön egy kérést a következő végpontra. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
+Ha a Bing API használatával szeretné lekérni a webes keresési eredményeket `GET` , küldjön egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
 
-**Végpont**: A felhasználó által `?q=""`meghatározott keresési lekérdezéséhez kapcsolódó webes eredményeket ad eredményül.
+**Végpont**: olyan webes eredményeket ad vissza, amelyek az által `?q=""`definiált felhasználó keresési lekérdezésére vonatkoznak.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-Végpont: A fejlécekről, paraméterekről, piackódokról, válaszobjektumokról, hibákról és egyebekről a [Bing Web API v7-es](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) hivatkozása.
+Végpont: a fejlécek, a paraméterek, a piaci kódok, a válasz objektumok, a hibák és egyéb információk részleteiért tekintse meg a [Bing web API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) dokumentációját.
 
 ## <a name="response-json"></a>Válasz JSON
 
-A webes keresési kérelemre adott válasz tartalmazza az összes találatot JSON-objektumként. Az eredmény elemzéséhez olyan eljárásokra van szükség, amelyek kezelik az egyes típusok elemeit. Tekintse meg az [oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) és a [forráskód](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) példákat.
+A webes keresési kérelemre adott válasz a JSON-objektumok összes eredményét tartalmazza. Az eredmény elemzéséhez olyan eljárások szükségesek, amelyek az egyes típusok elemeit kezelik. Példákért tekintse meg az [oktatóanyagot](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) és a [forráskódot](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) .
 
 ## <a name="next-steps"></a>További lépések
 
-A **Bing** API-k támogatják azokat a keresési műveleteket, amelyek típusuk nak megfelelően adják vissza az eredményeket.Minden keresési végpont json válaszobjektumként adja vissza az eredményeket. Minden végpont támogatja azokat a lekérdezéseket, amelyek hosszúság, szélesség és keresési sugár szerint egy adott nyelvet és helyet adnak vissza.
+A **Bing** API-k olyan keresési műveleteket támogatnak, amelyek típusaik alapján adják vissza az eredményeket.A keresési végpontok az eredményeket JSON-válasz objektumokként adják vissza. Minden végpont támogatja a lekérdezéseket, amelyek adott nyelvet és helyet adnak vissza a földrajzi hosszúság, a szélesség és a keresési sugár alapján.
 
-Az egyes végpontok által támogatott paraméterekről az egyes típusok referenciaoldalain talál teljes körű tájékoztatást.
-A webes keresési API-t használó alapszintű kérelmekről a [Keresés a webes gyorsindítások](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web)című témakörben talál példákat.
+Az egyes végpontok által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes típusok hivatkozási oldalait.
+Példák a webes keresési API-t használó alapszintű kérelmekre: [Keresés a weben – gyors indítás](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web).

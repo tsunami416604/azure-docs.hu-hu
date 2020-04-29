@@ -1,7 +1,7 @@
 ---
-title: Az Anomáliadetektor API használata az idősorozat-adatokon
+title: A rendellenesség-Kiderítő API használata az idősorozat-adatain
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan észlelheti az adatokak anomáliákat kötegként vagy streamelési adatokon.
+description: Megtudhatja, hogyan észlelheti a rendellenességeket az adataiban kötegként vagy adatfolyamként.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71840222"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: Az anomáliadetektor API használata az idősorozat-adatokon  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: a rendellenesség-Kiderítő API használata az idősorozat-adatain  
 
-Az [anomáliadetektor API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) két anomáliadetektálási módszert biztosít. Észlelheti az anomáliákat kötegként az idősorozatban, vagy az adatok a legújabb adatpont anomáliaállapotának észlelésével. Az észlelési modell anomáliaeredményeket ad vissza az egyes adatpont várható értékével együtt, valamint a felső és alsó anomáliadetektálási határokat. Ezeket az értékeket használhatja a normál értékek tartományának és az adatok anomáliáinak megjelenítéséhez.
+Az [anomália-érzékelő API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) két módszert biztosít a anomáliák észlelésére. Észlelheti a rendellenességeket a Times-sorozat során, vagy az adatmennyiséget a legújabb adatpontok anomália állapotának észlelésével. Az észlelési modell a anomáliák eredményét adja vissza az egyes adatpontok várt értékével együtt, valamint a felső és az alsó anomália észlelési határait. ezekkel az értékekkel megjelenítheti a normál értékek tartományát és az adatokban mutatkozó rendellenességeket.
 
-## <a name="anomaly-detection-modes"></a>Anomáliadetektálási módok 
+## <a name="anomaly-detection-modes"></a>Anomáliák észlelési módjai 
 
-Az Anomáliadetektor API észlelési módokat biztosít: kötegelt és streamelési.
+Az anomália detektor API az észlelési módokat biztosítja: a Batch és a streaming.
 
 > [!NOTE]
-> A következő kérelem URL-címeket kell kombinálni a megfelelő végpontot az előfizetéshez. Például:`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> A következő kérelem URL-címeit össze kell kapcsolni az előfizetéséhez tartozó megfelelő végponttal. Például:`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
-### <a name="batch-detection"></a>Kötegfelismerés
+### <a name="batch-detection"></a>Kötegelt észlelés
 
-Ha egy adott időtartományon keresztül szeretné észlelni az adatpontok kötegében lévő rendellenességeket, használja a következő kérelem URI-t az idősorozat-adatokkal: 
+Egy adott időtartományon belüli adatpontok egy kötegében észlelt rendellenességek észleléséhez használja az alábbi kérelem URI-JÁT az idősoros adataival: 
 
 `/timeseries/entire/detect`. 
 
-Az idősorozat-adatok egyidejű elküldésével az API létrehoz egy modellt a teljes sorozat használatával, és elemzi az egyes adatsorokat.  
+Az idősorozat-adatok egyszerre történő elküldésével az API létrehoz egy modellt a teljes sorozat használatával, és elemzi az összes adatpontot.  
 
 ### <a name="streaming-detection"></a>Folyamatos átvitel észlelése
 
-A streamelési adatok anomáliáinak folyamatos észleléséhez használja a következő kérelem URI-t a legújabb adatponttal: 
+A folyamatos adatátviteli hibák észleléséhez használja a következő kérelem URI-JÁT a legújabb adatponttal: 
 
 `/timeseries/last/detect'`. 
 
-Ha új adatpontokat küld létrehozásukkor, valós időben figyelheti az adatokat. A rendszer egy modellt hoz létre az elküldött adatpontokkal, és az API meghatározza, hogy az idősorozat legújabb pontja anomália-e.
+Az új adatpontok létrehozásakor az adatok valós időben figyelhetők. A rendszer létrehoz egy modellt az elküldött adatpontokkal, és az API megállapítja, hogy az idősorozat utolsó pontja anomália-e.
 
-## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Az alsó és felső anomáliadetektálási határok beállítása
+## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alsó és felső anomáliák észlelési határainak módosítása
 
-Alapértelmezés szerint az anomáliadetektálás felső `expectedValue`és `upperMargin`alsó `lowerMargin`határait a program a , a és a használatával számítja ki. Ha különböző határokat szeretne, javasoljuk, `marginScale` `upperMargin` hogy `lowerMargin`a vagyoni kívánta. A határokat a következőképpen kell kiszámítani:
+Alapértelmezés szerint a rendszer a, `expectedValue` `upperMargin`és `lowerMargin`a használatával számítja ki a anomáliák észlelésének alsó és felső határát. Ha eltérő határokra van szüksége, javasoljuk, hogy `marginScale` `upperMargin` alkalmazzon `lowerMargin`a vagy a rendszerre. A határok kiszámítása a következőképpen történik:
 
 |Határ  |Számítás  |
 |---------|---------|
 |`upperBoundary` | `expectedValue + (100 - marginScale) * upperMargin`        |
 |`lowerBoundary` | `expectedValue - (100 - marginScale) * lowerMargin`        |
 
-Az alábbi példák egy anomáliadetektor API-eredményt mutatnak be különböző érzékenységek esetén.
+Az alábbi példákban egy anomália-detektor API-nak a különböző érzékenységi eredményei láthatók.
 
-### <a name="example-with-sensitivity-at-99"></a>Példa érzékenységgel 99-nél
+### <a name="example-with-sensitivity-at-99"></a>Példa érzékenységgel a 99
 
 ![Alapértelmezett érzékenység](../media/sensitivity_99.png)
 
-### <a name="example-with-sensitivity-at-95"></a>Példa érzékenységgel 95
+### <a name="example-with-sensitivity-at-95"></a>Példa érzékenységgel a 95
 
-![99 Érzékenység](../media/sensitivity_95.png)
+![99 érzékenység](../media/sensitivity_95.png)
 
-### <a name="example-with-sensitivity-at-85"></a>Példa 85-ös érzékenységgel
+### <a name="example-with-sensitivity-at-85"></a>Példa érzékenységgel a 85
 
-![85 Érzékenység](../media/sensitivity_85.png)
+![85 érzékenység](../media/sensitivity_85.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
-* [Rövid útmutató: Az anomáliadetektor REST API-jával észleli az idősorozat-adatok anomáliáinak anomáliáit](../quickstarts/detect-data-anomalies-csharp.md)
+* [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

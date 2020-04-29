@@ -1,7 +1,7 @@
 ---
-title: Egyszerű entitástípus - LUIS
+title: Egyszerű entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: Egy egyszerű entitás egyetlen fogalmat ír le a gép megtanult környezetből. Kifejezéslista hozzáadása egyszerű entitás használata esetén az eredmények javítása érdekében.
+description: Az egyszerű entitások a gépi megtanult környezet egyetlen koncepcióját írják le. Ha egyszerű entitást használ az eredmények javítására, vegyen fel egy kifejezést tartalmazó listát.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74894762"
 ---
 # <a name="simple-entity"></a>Egyszerű entitás
 
-Egy egyszerű entitás egy általános entitás, amely leírja az egyetlen fogalom, és a gép által tanult környezetben tanult. Mivel az egyszerű entitások általában nevek, például vállalatnevek, terméknevek vagy más névkategóriák, adjon hozzá egy [kifejezéslistát,](luis-concept-feature.md) ha egy egyszerű entitást használ a használt nevek jelének növelésére.
+Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy [kifejezési listát](luis-concept-feature.md) , ha egyszerű entitást használ a használt nevek jelzésének növelésére.
 
-**A gazdálkodó egység akkor illeszkedik, ha:**
+**Az entitás jól illeszkedik, ha:**
 
-* Az adatok nem következetesen formázva, de ugyanazt jelzik.
+* Az adat nem konzisztens formátumú, de ugyanazt a dolgot jelzi.
 
 ![egyszerű entitás](./media/luis-concept-entities/simple-entity.png)
 
-## <a name="example-json"></a>Példa JSON
+## <a name="example-json"></a>Példa JSON-ra
 
 `Bob Jones wants 3 meatball pho`
 
-Az előző utterance `Bob Jones` (kifejezés) egy `Customer` egyszerű entitás van címkézve.
+Az előző lemondás során `Bob Jones` egyszerű `Customer` entitásként van megjelölve.
 
-A végpontról visszaadott adatok közé tartozik az entitás neve, a felderített szöveg az utterance (kifejezés), a felderített szöveg helyét, és a pontszám:
+A végpont által visszaadott adatok között szerepel az entitás neve, a felderített szöveg a Kimondás után, a felderített szöveg helye és a pontszám:
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
 "entities": [
@@ -49,7 +49,7 @@ A végpontról visszaadott adatok közé tartozik az entitás neve, a felderíte
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
@@ -95,4 +95,4 @@ This is the JSON if `verbose=true` is set in the query string:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mintaszintaxis megismerése](reference-pattern-syntax.md)
+> [A minta szintaxisának megismerése](reference-pattern-syntax.md)

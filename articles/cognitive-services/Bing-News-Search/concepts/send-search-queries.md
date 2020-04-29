@@ -1,7 +1,7 @@
 ---
-title: Lekérdezések küldése a Bing News Search API-ba
+title: Lekérdezések küldése a Bing News Search API
 titleSuffix: Azure Cognitive Services
-description: A Bing News Search API lehetővé teszi, hogy a releváns híreket keressen az interneten. Ebből a cikkből további információ a keresési lekérdezések API-ba küldéséről.
+description: A Bing News Search API lehetővé teszi a releváns Hírek keresését a weben. Ebből a cikkből megtudhatja, hogyan küldhet keresési lekérdezéseket az API-nak.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75383719"
 ---
-# <a name="sending-queries-to-the-bing-news-search-api"></a>Lekérdezések küldése a Bing News Search API-ba
+# <a name="sending-queries-to-the-bing-news-search-api"></a>Lekérdezések küldése a Bing News Search API
 
-A Bing News Search API lehetővé teszi, hogy a releváns híreket keressen az interneten. Ebből a cikkből további információ a keresési lekérdezések API-ba küldéséről.
+A Bing News Search API lehetővé teszi a releváns Hírek keresését a weben. Ebből a cikkből megtudhatja, hogyan küldhet keresési lekérdezéseket az API-nak.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-## <a name="bing-news-search-api-response"></a>A Bing News Search API-ra adott válasza
+## <a name="bing-news-search-api-response"></a>Bing News Search API válasz
 
 Az alábbiakban az előző kérelemre adott válasz látható. A példában a válaszfejlécek is láthatók.
 
@@ -284,7 +284,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az a Bing News Search?](../search-the-web.md). 
-* [Szerezd meg a mai legfontosabb híreket](search-for-news.md#get-todays-top-news)
-* [Hírek kategória szerint](search-for-news.md#get-news-by-category)
-* [Get felkapott hírek](search-for-news.md#get-trending-news)
+* [Mi az Bing News Search?](../search-the-web.md) 
+* [A mai legfontosabb hírek beszerzése](search-for-news.md#get-todays-top-news)
+* [Hírek beolvasása kategóriánként](search-for-news.md#get-news-by-category)
+* [Trendek Hírek beolvasása](search-for-news.md#get-trending-news)

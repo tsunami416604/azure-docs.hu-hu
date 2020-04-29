@@ -1,7 +1,7 @@
 ---
-title: A képkategóriák taxonómia - Computer Vision
+title: Képkategóriák besorolása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Computer Vision API-jának 86 kategóriáját szerezheti be.
+description: Szerezze be az Azure-Cognitive Services Computer Vision API besorolási osztályának 86-kategóriáját.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68565777"
 ---
-# <a name="computer-vision-86-category-taxonomy"></a>Computer Vision 86-kategóriás taxonómia
+# <a name="computer-vision-86-category-taxonomy"></a>Computer Vision 86 – kategória besorolása
 
 abstract_
 

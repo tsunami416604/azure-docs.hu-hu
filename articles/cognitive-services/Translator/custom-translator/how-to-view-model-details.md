@@ -1,7 +1,7 @@
 ---
-title: Modell adatok megtekintése - Egyéni fordító
+title: Modell részleteinek megtekintése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Modellek lap alatt minden projekt megjeleníti az egyes modellek részleteit, mint például a modell neve, modell állapota, BLEU pontszám, betanítás, hangolás, tesztelési mondatszám.
+description: A modellek lap bármely projektben megjeleníti az egyes modellek részleteit, például a modell nevét, a modell állapotát, a BLEU pontszámát, a képzést, a hangolást, a tesztelési mondatok számát.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,87 +10,87 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595562"
 ---
 # <a name="view-model-details"></a>Modell részleteinek megtekintése
 
-A Projekt alatt található Modellek lap az adott projekt összes modelljét megjeleníti. Az adott projekthez betanított összes modell szerepel ezen a lapon.
+A Project alatti modellek lap a projekt összes modelljét megjeleníti. Ezen a lapon a projekthez betanított összes modell szerepel.
 
-A projekt minden egyes modelljéhez ezek az adatok jelennek meg.
+A projekt egyes modelljeinél ezek a részletek jelennek meg.
 
-1.  Modell neve: Egy adott modell modellnevét jeleníti meg.
+1.  Modell neve: egy adott modell modelljének nevét jeleníti meg.
 
-2.  Állapot: Egy adott modell állapotát jeleníti meg. Az új képzés állapota Elküldve, amíg el nem fogadják. Az állapot adatfeldolgozásra változik, miközben a szolgáltatás kiértékeli a dokumentumok tartalmát. Amikor a dokumentumok kiértékelése befejeződött, az állapot Futás állapotra változik, és láthatja a betanítás részét szolgáló mondatok számát, beleértve az automatikusan létrehozott hangolási és tesztelési készleteket is. Az alábbiakban a modellek állapotát leíró modellállapotot ismertetjük.
+2.  Állapot: egy adott modell állapotát jeleníti meg. Az új képzés a beküldött állapotba kerül, amíg el nem fogadják. Az állapot az adatfeldolgozásra változik, miközben a szolgáltatás kiértékeli a dokumentumok tartalmát. Ha a dokumentumok kiértékelése befejeződött, az állapot fut értékre változik, és megtekintheti a képzés részét képező mondatok számát, beleértve az automatikusan létrehozott hangolási és tesztelési csoportokat is. Alább látható a modellek állapotát leíró modell állapotának listája.
 
-    -  Elküldött: Megadja, hogy a háttér-háttérfeldolgozás a dokumentumokat az adott modellhez.
+    -  Elküldve: Megadja, hogy a háttérrendszer dolgozza fel a modell dokumentumait.
 
-    -  TrainingQueued: Itt adhatja meg, hogy a betanítás az adott modell MT-rendszeréhez kerül-e várólistára.
+    -  TrainingQueued: azt adja meg, hogy a betanítás várólistára kerüljön-e az MT rendszer számára a modell számára.
 
-    -  Futás: Megadja, hogy a betanítás az adott modell MT-rendszerében fut-e.
+    -  Futtatás: azt adja meg, hogy a képzés az MT rendszeren fut a modellhez.
 
-    -  Sikeres: Itt adhatja meg, hogy a betanítás sikeres volt-e az MT rendszerben, és rendelkezésre áll-e egy modell. Ebben az állapotban bleu pontszám jelenik meg az adott modellhez.
+    -  Sikeres: azt adja meg, hogy az MT rendszer sikeres betanítása és a modell elérhető. Ebben az állapotban az adott modellhez tartozó BLEU-pontszám jelenik meg.
 
-    -  Üzembe helyezett: Itt adhatja meg, hogy a sikeres betanított modell az MT-rendszerbe kerül-e üzembe helyezésre.
+    -  Üzembe helyezett: azt adja meg, hogy a sikeres betanított modellt az MT rendszer számára telepítse.
 
-    -  Telepítés kihelyezésének kihelyezése: Megadja, hogy az üzembe helyezett modell nem központitelepítés.
+    -  Központi telepítés: azt adja meg, hogy a telepített modell telepítése megtörténjen.
 
-    -  Nem feltett: Itt adhatja meg, hogy a modell leépítési folyamata sikeresen befejeződött.Undeployd: Specifies that the undeployment process of a model has been completed successfully.
+    -  Nem telepített: azt adja meg, hogy a modell központi telepítési folyamata sikeresen befejeződött.
 
-    -  Az oktatás sikertelen: Azt adja meg, hogy a betanítás nem sikerült. Ha betanítási hiba történik, próbálkozzon újra a betanítási feladat. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk. Ne törölje a hibás modellt.
+    -  A képzés sikertelen: a betanítás sikertelen volt. Ha betanítási hiba történik, próbálja megismételni a betanítási feladatot. Ha a hiba továbbra is fennáll, vegye fel velünk a kapcsolatot. Ne törölje a sikertelen modellt.
 
-    - DataProcessingFailed: Megadja, hogy az adatfeldolgozás sikertelen volt a modellhez tartozó egy vagy több dokumentum esetében.
+    - DataProcessingFailed: azt adja meg, hogy az adatfeldolgozás nem sikerült egy vagy több olyan dokumentumhoz, amely a modellhez tartozik.
 
-    - Telepítéssikertelenül: Megadja, hogy a modell központi telepítése sikertelen volt.
+    - DeploymentFailed: azt adja meg, hogy a modell központi telepítése sikertelen volt.
 
-    - MigratedDraft: Itt adhatja meg, hogy a modell a Hubról az egyéni fordítóra való áttelepítés után vázlat állapotban van-e.
+    - MigratedDraft: azt adja meg, hogy a modell vázlat állapotban van-e a hub-ról az egyéni fordítóra való Migrálás után.
 
-4.  BLEU pontszám: a modell BLEU (Kétnyelvű értékelés beugró) pontszámát mutatja, jelezve a fordítási rendszer minőségét. Ez a pontszám megmutatja, hogy a fordítási rendszer által végzett fordítások, amelyek ennek a betanításnak a szorosan megegyeznek a tesztadatkészlet referenciamondataival. A BLEU pontszám jelenik meg, ha a képzés sikeresen befejeződött. Ha a képzés nem teljes / sikertelen, akkor nem fog látni bleu pontszámot.
+4.  BLEU pontszáma: megmutatja a modell (a kétnyelvű próbaverzió) pontszámát, amely a fordítási rendszerek minőségét mutatja. Ez a pontszám azt mutatja be, hogy a fordítási rendszer milyen módon hajtja végre a betanítás eredményeként létrejövő, a tesztelési adatkészletben szereplő hivatkozási mondatokat. A BLEU pontszám akkor jelenik meg, ha a képzés sikeresen befejeződött. Ha a képzés nem fejeződött be/nem sikerült, a BLEU egyik pontszáma sem jelenik meg.
 
-5.  Képzési mondatok száma: Az edzéskészletként használt mondatok teljes számát jeleníti meg.
+5.  Betanítási mondatok száma: a betanítási készletként használt mondatok teljes számát jeleníti meg.
 
-6.  Hangolási mondatok száma: A hangolási készletként használt mondatok teljes számát jeleníti meg.
+6.  Hangolási mondatok száma: a hangolási készletként használt mondatok teljes számát jeleníti meg.
 
-7.  Betanítási mondatok száma: A tesztelési halmazként használt mondatok teljes számát jeleníti meg.
+7.  Betanítási mondatok száma: a tesztelési csoportként használt mondatok teljes számát jeleníti meg.
 
-8.  Mono Sentence count: A mono készletként használt mondatok teljes számát jeleníti meg.
+8.  Mono-mondatok száma: a Mono-készletként használt mondatok teljes számát jeleníti meg.
 
-9.  Művelet telepítése gomb: Egy sikeresen betanított modell, azt mutatja, "Üzembe helyezés" gombot, ha nincs telepítve. Ha egy modell telepítve van, egy "Undeploy" gomb jelenik meg.
+9.  Üzembe helyezési művelet gomb: a sikeresen betanított modell esetében az "üzembe helyezés" gomb jelenik meg, ha nincs telepítve. Ha egy modellt telepítenek, megjelenik a "telepítés megkerülés" gomb.
 
-10. Törlés: Ezt a gombot használhatja, ha törölni szeretné a modellt. A modell törlése nem törli a modell létrehozásához használt dokumentumokat.
+10. Törlés: ezt a gombot használhatja, ha törölni szeretné a modellt. A modell törlése nem törli a modell létrehozásához használt dokumentumokat.
 
     ![Modell részleteinek megtekintése](media/how-to/how-to-view-model-details.png)
 
 >[!Note]
->Az ugyanazon rendszerek egymást követő edzései összehasonlításához fontos, hogy a hangolási készlet és a tesztelési készlet állandó maradjon.
+>Ugyanazon rendszerek egymást követő betanításának összehasonlításához fontos, hogy megőrizze a hangolási készletet és a tesztelési készlet állandó értékét.
 
-## <a name="view-model-training-details"></a>Modellbetanítási részletek megtekintése
+## <a name="view-model-training-details"></a>Modell tanítási adatainak megtekintése
 
-Amikor a képzés befejeződött, áttekintheti a részleteket a képzés a részleteket oldalon. Jelöljön ki egy projektet, keresse meg és jelölje ki a modellek lapot, és válasszon egy modellt.
+A képzés befejezésekor a részletek oldalon áttekintheti a képzés részleteit. Válasszon ki egy projektet, keresse meg és válassza ki a modellek fület, és válassza ki a modellt.
 
-A modelloldal két lappal rendelkezik: A betanítás részletei és a Tesztelés.
+A modell lapon két lap található: képzés részletei és tesztelés.
 
-1.  **Képzési részletek:** Ez a lap a képzésben használt dokumentumok listáját jeleníti meg:
+1.  **Képzés részletei:** Ezen a lapon a képzésben használt dokumentum (ok) listája látható:
 
-    -  Bizonylatneve: Ebben a mezőben a dokumentum neve látható.
+    -  Dokumentumok neve: ebben a mezőben a dokumentum neve látható
 
-    -  Bizonylattípus: Ez a mező azt mutatja, hogy ez a dokumentum párhuzamos/mono.
+    -  Dokumentum típusa: ebben a mezőben látható, hogy a dokumentum párhuzamos/monó-e.
 
-    -  Mondatok száma forrásnyelven: Ez a mező a forrásnyelv részeként a mondatok számát mutatja.
+    -  Mondatok száma a forrás nyelvén: ebben a mezőben a mondatok száma látható a forrás nyelvének részeként.
 
-    -  Mondatok száma célnyelven: Ez a mező azt mutatja, hogy a célnyelv részeként több mondat található.
+    -  Mondatok száma a célnyelv mezőben: ebben a mezőben a mondatok száma látható a célnyelv részeként.
 
-    -  Igazított mondatok: Ez a mező azt mutatja, hogy az egyéni fordító a folyamat során több mondatot igazított.
+    -  Igazított mondatok: ebben a mezőben láthatók a mondatok számának igazítása az egyéni fordítóban az igazítási folyamat során.
 
-    -  Használt mondatok: Ez a mező azt mutatja, hogy az egyéni fordító a képzés során hány mondatot használt.
+    -  Használatban lévő mondatok: ebben a mezőben a mondatok számát jeleníti meg az egyéni fordító a képzés során.
 
-    ![Modellbetanítási részletek](media/how-to/how-to-model-training-details.png)
+    ![Modell képzésének részletei](media/how-to/how-to-model-training-details.png)
 
-2.  **Vizsgálat:** Ez a lap a sikeres betanítás tesztrészleteit jeleníti meg.
+2.  **Teszt:** Ezen a lapon látható a sikeres betanítási teszt részletei.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át [a teszteredményeket,](how-to-view-system-test-results.md) és elemezze a betanítási eredményeket.
+- Tekintse át a [teszteredmények](how-to-view-system-test-results.md) eredményeit, és elemezze a képzési eredményeket.

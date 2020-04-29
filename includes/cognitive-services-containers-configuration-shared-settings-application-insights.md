@@ -5,17 +5,17 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 046c5c5e32c71364e1bf54551989e19eec4937e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712431"
 ---
-A `ApplicationInsights` beállítás lehetővé teszi, hogy [az Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatást a tárolóba. Az Application Insights részletesen figyeli a tárolót. Könnyedén figyelheti a tároló rendelkezésre állását, teljesítményét és használatát. Gyorsan azonosíthatja és diagnosztizálhatja a tárolóban lévő hibákat is.
+A `ApplicationInsights` beállítás lehetővé teszi, hogy hozzáadja az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatását a tárolóhoz. Application Insights a tároló részletes figyelését teszi lehetővé. Egyszerűen figyelheti a tárolót a rendelkezésre állás, a teljesítmény és a használat érdekében. A tárolóban lévő hibák felismerése és diagnosztizálása is gyorsan elvégezhető.
 
-Az alábbi táblázat a `ApplicationInsights` szakaszban támogatott konfigurációs beállításokat ismerteti.
+A következő táblázat a `ApplicationInsights` szakasz által támogatott konfigurációs beállításokat ismerteti.
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
-|Nem| `InstrumentationKey` | Sztring | Az Application Insights-példány instrumentációs kulcsa, amelyhez a tároló telemetriai adatait küldi. További információ: [Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Példa:<br>`InstrumentationKey=123456789`|
+|Nem| `InstrumentationKey` | Sztring | Annak a Application Insights-példánynak a rendszerállapot-kulcsa, amelybe a rendszer a tárolóhoz tartozó telemetria-adatmennyiséget elküldi. További információ: [Application Insights ASP.net Corehoz](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Példa:<br>`InstrumentationKey=123456789`|
 

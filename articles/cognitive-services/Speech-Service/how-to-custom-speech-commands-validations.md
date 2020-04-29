@@ -1,7 +1,7 @@
 ---
-title: 'Útmutató: Érvényesítés hozzáadása az egyéni parancsparaméterekhez (előzetes verzió)'
+title: 'Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben bemutatjuk, hogyan adhat érvényesítéseket egy paraméterhez az Egyéni parancsokban.
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá érvényesítéseket egy paraméterhez egyéni parancsokban.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
 ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76156454"
 ---
-# <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Útmutató: Érvényesítés hozzáadása az egyéni parancsparaméterekhez (előzetes verzió)
+# <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan adhat hozzá érvényesítéseket a paraméterekhez, és hogyan kérheti a javítást.
+Ebből a cikkből megtudhatja, hogyan adhat hozzá érvényességi paramétereket a paraméterekhez, és megkérheti a javítást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-El kell végeznie az alábbi cikkekben leírt lépéseket:
+A következő cikkekben ismertetett lépéseket kell végrehajtania:
 
-- [Rövid útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
-- [Rövid útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
+- [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
 
-## <a name="create-a-settemperature-command"></a>SetTemperature parancs létrehozása
+## <a name="create-a-settemperature-command"></a>SetTemperature-parancs létrehozása
 
-Az érvényesítések bemutatásához hozzunk létre egy új parancsot, amely lehetővé teszi a felhasználó számára a hőmérséklet beállítását.
+Az érvényesítések megjelenítéséhez hozzon létre egy új parancsot, amely lehetővé teszi a felhasználó számára a hőmérséklet beállítását.
 
-1. A korábban létrehozott Egyéni parancsok alkalmazás megnyitása a [Speech Studióban](https://speech.microsoft.com/)
-1. Új **SetTemperature** parancs létrehozása
-1. Paraméter hozzáadása a célhőmérséklethez
-1. Érvényesítés hozzáadása a hőmérsékleti paraméterhez
+1. A korábban létrehozott egyéni parancsok alkalmazás megnyitása a [Speech Studióban](https://speech.microsoft.com/)
+1. Új **SetTemperature** -parancs létrehozása
+1. Paraméter hozzáadása a célként megadott hőmérséklethez
+1. Adja meg a hőmérséklet paraméter érvényesítését
    > [!div class="mx-imgBorder"]
-   > ![Tartomány-ellenőrzés hozzáadása](media/custom-speech-commands/validations-add-temperature.png)
+   > ![Tartomány érvényesítésének hozzáadása](media/custom-speech-commands/validations-add-temperature.png)
 
    | Beállítás           | Ajánlott érték                                          | Leírás                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Név              | Hőmérséklet                                              | A Parancs paraméter leíró neve                                                    |
-   | Kötelező          | igaz                                                     | Jelölőnégyzet, amely jelzi, hogy szükség van-e erre a paraméterre a parancs végrehajtása előtt |
-   | Válaszsablon | "- Milyen hőmérsékletet szeretne?"                     | A kérdés, hogy kérje az értékét ezt a paramétert, ha nem ismert                              |
-   | Típus              | Szám                                                   | A paraméter típusa, például Szám, Karakterlánc vagy Dátumidő                                      |
-   | Ellenőrzés        | Min Érték: 60, Maximális érték: 80                             | A Szám paraméterek esetében a paraméter megengedett értéktartománya                             |
-   | Válaszsablon | "- Sajnálom, én csak meg között 60 és 80 fok"      | A rendszer kéri a frissített értéket, ha az ellenőrzés sikertelen                                       |
+   | Name (Név)              | Hőmérséklet                                              | A parancs paraméterének leíró neve                                                    |
+   | Kötelező          | igaz                                                     | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
+   | Válasz sablonja | "– Milyen hőmérsékletet szeretne?                     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                              |
+   | Típus              | Szám                                                   | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                      |
+   | Ellenőrzés        | Minimális érték: 60, maximális érték: 80                             | A Number paraméterek esetében a paraméter értékének megengedett tartománya                             |
+   | Válasz sablonja | "– Sajnos csak 60 és 80 fok között lehet beállítani"      | Ha az ellenőrzés sikertelen, a rendszer kérni fogja a frissített érték megadását.                                       |
 
-1. Néhány mintamondat hozzáadása
+1. Néhány példa mondatok hozzáadása
 
    ```
    set the temperature to {Temperature} degrees
@@ -62,25 +62,25 @@ Az érvényesítések bemutatásához hozzunk létre egy új parancsot, amely le
    | Beállítás    | Ajánlott érték                                           | Leírás                                        |
    | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
    | Szabály neve  | Megerősítő üzenet                                      | A szabály célját leíró név          |
-   | Feltételek | Kötelező paraméter - Hőmérséklet                          | Feltételek, amelyek meghatározzák, hogy a szabály mikor futhat    |
-   | Műveletek    | SpeechResponse - "- Ok, beállítás {Hőmérséklet} fokra" | A szabályfeltétel igaz állapotában végrehajtandó művelet |
+   | Feltételek | Kötelező paraméter – hőmérséklet                          | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+   | Műveletek    | SpeechResponse-"-ok, beállítás: {hőmérséklet} fok" | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
 > [!TIP]
-> Ez a példa egy beszédválaszt használ az eredmény megerősítéséhez. A parancs ügyfélművelettel való kitöltésére vonatkozó példákat a következő témakörben talál: [Parancsok végrehajtása az ügyfélen a beszédfelismerési SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> Ez a példa egy beszédfelismerési választ használ az eredmény megerősítéséhez. Példák a parancs ügyfél-művelettel való végrehajtásához: útmutató: az [ügyfél parancsainak teljesítése a SPEECH SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
 
 ## <a name="try-it-out"></a>Próba
 
-Válassza ki a Teszt panelt, és próbáljon ki néhány interakciót.
+Válassza ki a teszt panelt, és próbálkozzon néhány interakcióval.
 
-- Bevitel: Állítsa be a hőmérsékletet 72 fokra
-- Kimenet: "Ok, 72 fokos beállítás"
+- Bemenet: a hőmérséklet beállítása 72 fokos értékre
+- Kimenet: "ok, beállítás 72 fok"
 
-- Bevitel: Állítsa be a hőmérsékletet 45 fokra
-- Kimenet: "Sajnáljuk, csak 60 és 80 fok között tudok beállítani"
-- Bemenet: legyen 72 fok helyett
-- Kimenet: "Ok, 72 fokos beállítás"
+- Bemenet: a hőmérséklet beállítása 45 fokos értékre
+- Kimenet: "sajnálom, csak 60 és 80 fok között lehet beállítani"
+- Bemenet: tegyük 72 fok helyett
+- Kimenet: "ok, beállítás 72 fok"
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató: Megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md)
+> [Útmutató: megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md)

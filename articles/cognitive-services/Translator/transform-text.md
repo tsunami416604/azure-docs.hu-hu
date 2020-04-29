@@ -1,5 +1,5 @@
 ---
-title: Szöveg átalakítása – Fordítószöveg API
+title: Szöveg átalakítása – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Szöveg átalakítása a Translator Text API használatával.
 services: cognitive-services
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68594909"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>A TransformText metódus használata
+# <a name="how-to-use-the-transformtext-method"></a>Az TransformText metódus használata
 
 > [!NOTE]
-> Ez a módszer elavult. Nem érhető el a Translator Text API 3.0-s verziójában.
+> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
 
-A TransformText metódus a közösségi média szövegnormalizálási függvénye, amely a bemenet normalizált formáját adja vissza. A módszer használható előfeldolgozási lépésként a gépi fordításban vagy más alkalmazásokban, amelyek tiszta bemeneti szöveget várnak, amely általában nem található meg a közösségi médiában vagy a felhasználó által létrehozott tartalomban. A függvény jelenleg csak angol nyelvű bevitellel működik.
+A TransformText metódus a közösségi média szöveges normalizáló funkciója, amely a bemenet normalizált formáját adja vissza. A metódus a gépi fordítás vagy más olyan alkalmazások előfeldolgozási lépéseként használható, amelyek olyan tiszta bemeneti szöveget várnak, amely nem szerepel általában a közösségi médiában vagy a felhasználó által létrehozott tartalomban. A függvény jelenleg csak angol nyelvű bemenettel működik.
 
-A módszer egy RESTful szolgáltatás, amely a GET http-n keresztül. Támogatja az egyszerű XML és JSON szerializálást.
+A metódus egy REST-alapú szolgáltatás, amely a GET over HTTP-t használja. Az egyszerű XML-és JSON-szerializálást is támogatja.
 
 ## <a name="parameters"></a>Paraméterek
 
 | Paraméter | Leírás |
 |:---|:---|
-| Engedélyezési fejléc | **Kötelező** Az alkalmazás azonosítására használt HTTP-fejléc. Használja a kulcsot: "Engedélyezés" és érték: "Tulajdonos" + " + hozzáférési jogkivonat. A részleteket, megy itt.|
-| language | **Kötelező** A nyelvkódot jelölő karakterlánc. Ez a paraméter csak az **en** nyelvnevet tartalmazó angol nyelvet támogatja.|
-| category | **Nem kötelező** A fordítás kategóriáját vagy tartományát tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett **általános**beállítást támogatja.|
-| Mondat | **Kötelező** Egy mondat, amit ki szeretne javítani. |
+| Engedélyezési fejléc | **Kötelező megadni** Az alkalmazás azonosítására használt HTTP-fejléc. A kulcs használata: "engedélyezés" és érték: "tulajdonos" + "" + hozzáférési jogkivonat. További részletekért látogasson el ide.|
+| language | **Kötelező megadni** A nyelvi kódot jelölő sztring. Ez **a paraméter** csak az angol nyelvet támogatja a nyelv neveként.|
+| category | Nem **kötelező** A fordítás kategóriáját vagy tartományát tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett **általános**beállítást támogatja.|
+| mondatot | **Kötelező megadni** A kijavítani kívánt mondat. |
 
 ## <a name="return-value"></a>Visszatérítési érték
 
-A visszatérési érték adja meg az átalakított mondatot.
+A visszatérési érték megadja az átalakított mondatot.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json

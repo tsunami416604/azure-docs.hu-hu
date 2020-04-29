@@ -1,7 +1,7 @@
 ---
-title: Gyakori kérdések - Computer Vision
+title: Gyakori kérdések – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Válaszok at kaphat az Azure Cognitive Services Computer Vision API-jával kapcsolatos gyakori kérdésekre.
+description: Választ kaphat az Azure Cognitive Services Computer Vision APIával kapcsolatos gyakori kérdésekre.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,63 +12,63 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68564592"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API – gyakori kérdések
+# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API gyakori kérdések
 
 > [!TIP]
-> Ha ebben a gyIKben nem talál választ a kérdéseire, próbálja meg megkérdezni a Computer Vision API-közösségét a [StackOverflow-n,](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) vagy lépjen kapcsolatba [a UserVoice súgójával és támogatásával.](https://cognitive.uservoice.com/)
+> Ha nem talál választ a kérdéseire ebben a GYIK-ban, próbálja meg megkérdezni a Computer Vision API Közösséget a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) -on, vagy forduljon [segítségért és támogatásért a UserVoice](https://cognitive.uservoice.com/)
 
 ---
 
-**Kérdés:** *Betaníthatom a Computer Vision API-t egyéni címkék használatára?  Például, Szeretnék -ni táplál -ban mozi -ból macska tenyészt -hoz ' vonat' a AI, akkor kap a tenyészt érték -ra egy AI kereslet.*
+**Kérdés**: *betanítható Computer Vision API egyéni címkék használatára?  Szeretném például, hogy a Cat-ból származó képeket a mesterséges intelligenciára ("Train"), majd egy AI-kérelemre kapják.*
 
-**Válasz**: Ez a funkció jelenleg nem érhető el. Mérnökeink azonban azon dolgoznak, hogy ezt a funkciót a Computer Vision-be vigyék.
-
----
-
-**Kérdés**: *Lehet Computer Vision használható helyben internetkapcsolat nélkül?*
-
-**Válasz:** Jelenleg nem kínálunk helyszíni vagy helyi megoldást.
+**Válasz**: Ez a függvény jelenleg nem érhető el. Mérnökeink azonban arra dolgozunk, hogy ezt a funkciót Computer Vision.
 
 ---
 
-**Kérdés**: *Használható-e a Computer Vision a rendszámtáblák olvasására?*
+**Kérdés**: *Computer Vision lehet helyileg használni internetkapcsolat nélkül?*
 
-**Válasz:** A Vision API jó szövegfelismerést kínál az OCR-rel, de jelenleg nincs rendszámtáblákra optimalizálva. Folyamatosan igyekszünk javítani szolgáltatásainkat, és az automatikus rendszámfelismeréshez szükséges OCR-t hozzáadtuk a funkciókérések listájához.
-
----
-
-**Kérdés**: *Milyen típusú írási felületek támogatottak a kézírás-felismeréshez?*
-
-**Válasz:** A technológia különböző felületekkel működik, beleértve a táblákat, a fehér papírt és a sárga öntapadó jegyzeteket.
+**Válasz**: jelenleg nem biztosítunk helyszíni vagy helyi megoldást.
 
 ---
 
-**Kérdés**: *Mennyi ideig tart a kézírás-felismerési művelet?*
+**Kérdés**: *Computer Vision használható a rendszámtábla olvasásához?*
 
-**Válasz**: A szöveg hosszától függ, hogy mennyi időt vesz igénybe. Hosszabb szövegek esetén akár néhány másodpercig is eltarthat. Ezért a Kézzel írt szöveg felismerése művelet befejezése után előfordulhat, hogy várnia kell, mielőtt a Kézzel írt szöveg művelet eredményének beolvasása művelettel lekérheti az eredményeket.
-
----
-
-**Kérdés:** *Hogyan kezeli a kézírás-felismerő technológia a sor közepén lévő beszúrással beszúrt szöveget?*
-
-**Válasz**: Az ilyen szöveget a kézírás-felismerési művelet külön sorként adja vissza.
+**Válasz**: a jövőkép API jó szöveges észlelést biztosít OCR-sel, de jelenleg nem optimalizálták a licencek lemezeit. Folyamatosan igyekszünk javítani a szolgáltatásainkat, és az Automatikus rendszámtábla-felismeréshez hozzáadott OCR-t is készítettünk a szolgáltatásra vonatkozó kérések listájára.
 
 ---
 
-**Kérdés**: *Hogyan kezeli a kézírás-felismerő technológia az áthúzott szavakat vagy sorokat?*
+**Kérdés**: *milyen típusú írási felületek támogatottak a kézírás-felismeréshez?*
 
-**Válasz:** Ha a szavakat több vonallal áthúzzák, hogy felismerhetetlenné tegyék őket, a kézírás-felismerési művelet nem veszi fel őket. Ha azonban a szavakat egyetlen vonal használatával húzzák át, az átkelészajként lesz kezelve, és a kézírás-felismerési művelet továbbra is felveszi a szavakat.
+**Válasz**: a technológia különböző típusú felületekkel működik, beleértve a táblákat, a tanulmányokat és a sárga ragacsos megjegyzéseket.
 
 ---
 
-**Kérdés**: *Milyen szövegorientáltságok támogatottak a kézírás-felismerő technológiához?*
+**Kérdés**: *mennyi ideig tart a kézírás-felismerési művelet?*
 
-**Válasz**: A kézírás-felismerési művelet akár 30-40 fokos szögben is eligazodó szöveget kaphat.
+**Válasz**: a szükséges idő a szöveg hosszától függ. Hosszabb szövegek esetében akár több másodpercig is eltarthat. Ezért, ha a kézzel írt szöveg felismerése művelet befejeződik, előfordulhat, hogy meg kell várnia az eredmények lekérését a kézzel írt szöveg műveleti eredményének beolvasása művelettel.
+
+---
+
+**Kérdés**: *hogyan kezeli a kézírás-felismerési technológia a Sortöréssel beszúrt szöveget egy vonal közepén?*
+
+**Válasz**: ezt a szöveget a kézírás-felismerési művelet külön sorban adja vissza.
+
+---
+
+**Kérdés**: *hogyan kezeli a kézírás-felismerési technológia a határokon átnyúló szavakat vagy sorokat?*
+
+**Válasz**: Ha a szavakat több sorral keresztezik, hogy felismerhetetlenek legyenek, a kézírás-felismerési művelet nem veszi fel őket. Ha azonban a szavakat egyetlen vonallal keresztezik, az átkelést a rendszer zajként kezeli, és a szavakat a kézírás-felismerési művelet továbbra is felveszi.
+
+---
+
+**Kérdés**: *milyen szöveg-tájolás támogatott a kézírás-felismerési technológia esetében?*
+
+**Válasz**: a kézírás-felismerési művelettel akár körülbelül 30 fokos, 40 fokos szögben elhelyezkedő szöveg is megadható.
 
 ---

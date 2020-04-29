@@ -5,20 +5,20 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 84cd8ed79281b005407b5a857398b5669635c072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68320487"
 ---
-Ha http-proxyt kell konfigurálnia a kimenő kérelmek hez, használja az alábbi két argumentumot:
+Ha HTTP-proxyt kell konfigurálnia a kimenő kérelmek végrehajtásához, használja a következő két argumentumot:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 |--|--|--|
-|HTTP_PROXY|sztring|A proxy használata, például,`http://proxy:8888`<br>`<proxy-url>`|
-|HTTP_PROXY_CREDS|sztring|A proxyn keresztüli hitelesítéshez szükséges hitelesítő adatok, például felhasználónév:jelszó.|
+|HTTP_PROXY|sztring|A használandó proxy, például:`http://proxy:8888`<br>`<proxy-url>`|
+|HTTP_PROXY_CREDS|sztring|A proxyn való hitelesítéshez szükséges hitelesítő adatok, például Felhasználónév: jelszó.|
 |`<proxy-user>`|sztring|A proxy felhasználója.|
-|`<proxy-password>`|sztring|A proxyhoz `<proxy-user>` társított jelszó.|
+|`<proxy-password>`|sztring|A proxyhoz tartozó `<proxy-user>` jelszó.|
 ||||
 
 

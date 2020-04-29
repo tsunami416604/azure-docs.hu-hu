@@ -1,7 +1,7 @@
 ---
-title: A tintafelismerő API nyelvi és régiótámogatása
+title: Nyelvi és területi támogatás a tinta-felismerő API-hoz
 titleSuffix: Azure Cognitive Services
-description: A Tintafelismerő API által támogatott természetes nyelvek listája.
+description: A tinta-felismerő API által támogatott természetes nyelvek listája.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67721736"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>A tintafelismerő API nyelvi és régiótámogatása
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Nyelvi és területi támogatás a tinta-felismerő API-hoz
 
-Ez a cikk ismerteti, hogy mely nyelvek támogatottak a tintafelismerő API-ban. Az alábbi nyelveken írt digitális tintatartalmat az API értelmezheti és feldolgozhatja.
+Ez a cikk ismerteti, hogy a tinta-felismerő API Milyen nyelveket támogat. Az API-k az alábbi nyelveken írt Digitális tinta-tartalmakat tudják értelmezni és feldolgozni.
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
@@ -53,24 +53,24 @@ Ez a cikk ismerteti, hogy mely nyelvek támogatottak a tintafelismerő API-ban. 
 | Ír                                      |     `ga-IE`     |
 | Olasz (Olaszország)                            |     `it-IT`     |
 | Japán                                   |     `ja-JP`     |
-| Kinyarwanda                                |     `rw-RW`     |
+| Kinyarvanda                                |     `rw-RW`     |
 | Kiswahili (Kenya)                          |     `sw-KE`     |
 | Koreai                                     |     `ko-KR`     |
 | Luxemburgi                              |     `lb-LU`     |
 | Maláj (Brunei Darussalam)                  |     `ms-BN`     |
 | Maláj (Malajzia)                           |     `ms-MY`     |
 | maori                                      |     `mi-NZ`     |
-| Norvég (Bokmal)                         |     `nb-NO`     |
+| Norvég (bokmal)                         |     `nb-NO`     |
 | norvég (nynorsk)                        |     `nn-NO`     |
 | Lengyel                                     |     `pl-PL`     |
 | Portugál (Brazília)                        |     `pt-BR`     |
 | Portugál (Portugália)                      |     `pt-PT`     |
-| Római                                    |     `rm-CH`     |
+| Réto                                    |     `rm-CH`     |
 | Román                                   |     `ro-RO`     |
 | Orosz                                    |     `ru-RU`     |
 | Skót gael                            |     `gd-GB`     |
-| Sesotho sa Leboa                           |    `nso-ZA`     |
-| Szerb (cirill, Bosznia-Hercegovina) |  `sr-Cyrl-BA`   |
+| Sesotho sa szoto                           |    `nso-ZA`     |
+| Szerb (cirill betűs, Bosznia-Hercegovina) |  `sr-Cyrl-BA`   |
 | Szerb (cirill betűs, Montenegró)             |  `sr-Cyrl-ME`   |
 | Szerb (cirill, Szerbia)                 |  `sr-Cyrl-RS`   |
 | Szerb (latin betűs, Bosznia-Hercegovina)    |  `sr-Latn-BA`   |
@@ -79,7 +79,7 @@ Ez a cikk ismerteti, hogy mely nyelvek támogatottak a tintafelismerő API-ban. 
 | Setswana (Dél-Afrika)                    |     `tn-ZA`     |
 | Szlovák                                     |     `sk-SK`     |
 | Szlovén                                  |     `sl-SI`     |
-| spanyol (argentínai)                        |     `es-AR`     |
+| Spanyol (Argentína)                        |     `es-AR`     |
 | Spanyol (Spanyolország)                            |     `es-ES`     |
 | Spanyol (Mexikó)                           |     `es-MX`     |
 | Svéd (Svédország)                           |     `sv-SE`     |
@@ -92,4 +92,4 @@ Ez a cikk ismerteti, hogy mely nyelvek támogatottak a tintafelismerő API-ban. 
 ## <a name="see-also"></a>Lásd még
 
 * [Mi az Ink Recognizer API?](overview.md)
-* [Digitális tintavonások küldése a Tintafelismerő API-ba](concepts/send-ink-data.md)
+* [Digitális tollvonások küldése a tinta-felismerő API-nak](concepts/send-ink-data.md)

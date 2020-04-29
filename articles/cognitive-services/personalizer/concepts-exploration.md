@@ -1,7 +1,7 @@
 ---
-title: Feltárás - Personalizer
+title: Feltárás – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: A feltárás, Personalizer képes folytatni a jó eredményeket, még akkor is, ha a felhasználói viselkedés megváltozik. A feltárási beállítás kiválasztása üzleti döntés a felhasználói interakciók arányáról, amelyekkel a modell javítása érdekében.
+description: A feltárással a személyre szabottan folytathatja a jó eredmények megvalósítását, még a felhasználói viselkedés változásaival is. A feltárási beállítások kiválasztása üzleti döntés a felhasználói interakciók arányos arányáról a modell tökéletesítése érdekében.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73490817"
 ---
-# <a name="exploration-and-exploitation"></a>Feltárás és kitermelés
+# <a name="exploration-and-exploitation"></a>Feltárás és kiaknázás
 
-A feltárás, Personalizer képes folytatni a jó eredményeket, még akkor is, ha a felhasználói viselkedés megváltozik.
+A feltárással a személyre szabottan folytathatja a jó eredmények megvalósítását, még a felhasználói viselkedés változásaival is.
 
-Amikor a Personalizer ranghívást kap, egy RewardActionID-t ad vissza, amely a következőket adja:
-* A használat az aktuális gépi tanulási modell alapján a legvalószínűbb felhasználói viselkedéshez használja.
-* Feltárást használ, amely nem egyezik meg azzal a művelettel, amelynek a legnagyobb valószínűsége van a rangsorban.
+Ha a megszemélyesítő hívást kap, egy olyan RewardActionID ad vissza, amely a következők egyikét adja meg:
+* A az aktuális Machine learning-modell alapján a legvalószínűbb felhasználói viselkedésnek megfelelő kiaknázást használja.
+* A feltárást használ, amely nem felel meg a rangsorban a legnagyobb valószínűséggel rendelkező műveletnek.
 
-Personalizer jelenleg használ nevű algoritmus *epsilon kapzsi* felfedezni. 
+A személyre szabott funkció jelenleg egy *epszilon mohó* nevű algoritmust használ a megismeréshez. 
 
 ## <a name="choosing-an-exploration-setting"></a>Feltárási beállítás kiválasztása
 
-Az Azure Portal Configuration page for Personalizer **konfigurációs** lapján konfigurálja a feltáráshoz használandó forgalom százalékos arányát. Ez a beállítás határozza meg a lekutatást végző ranghívások százalékos arányát. 
+A Azure Portal **Configuration** (személyre szabás) lapján konfigurálhatja a felderítéshez használandó forgalom százalékos arányát. Ez a beállítás határozza meg a feltárást végző rangsorolt hívások százalékos arányát. 
 
-A Personalizer határozza meg, hogy ezzel a valószínűséggel fedezze-e fel vagy használja-e ki ezt a valószínűséget minden rangsorolási hívásnál. Ez eltér a viselkedés egyes A/B keretrendszerek, amelyek zár a kezelés adott felhasználói azonosítók.
+A személyre szabhatja, hogy a rangsorban megjelenő valószínűséggel megvizsgálja vagy kihasználja ezt a valószínűséget. Ez különbözik az egyes olyan/B keretrendszerek működésének, amelyek adott felhasználói azonosítók kezelését zárolják.
 
-## <a name="best-practices-for-choosing-an-exploration-setting"></a>Gyakorlati tanácsok a feltárási beállítások kiválasztásához
+## <a name="best-practices-for-choosing-an-exploration-setting"></a>Ajánlott eljárások a feltárási beállítások kiválasztásához
 
-A feltárási beállítás kiválasztása üzleti döntés a felhasználói interakciók arányáról, amelyekkel a modell javítása érdekében. 
+A feltárási beállítások kiválasztása üzleti döntés a felhasználói interakciók arányos arányáról a modell tökéletesítése érdekében. 
 
-A nulla beállítás a Personalizer számos előnyét tagadja. Ezzel a beállítással a Personalizer nem használ felhasználói beavatkozást a jobb felhasználói interakciók felderítéséhez. Ez vezet a modell stagnálás, sodródás, és végső soron alacsonyabb teljesítményt.
+A nulla beállítás a személyre szabás számos előnyét cáfolja. Ezzel a beállítással a személyre szabás nem használ felhasználói interakciókat a jobb felhasználói interakciók felderítése érdekében. Ez az érték a stagnálás, a drift és a végső teljesítmény modellezését eredményezi.
 
-A túl magas beállítás tagadja a felhasználói viselkedésből való tanulás előnyeit. 100%-ra állítása állandó véletlenszerűséget jelent, és a felhasználók tól megtanult viselkedés nem befolyásolná az eredményt.
+A túl magas beállítás nem fogja megtagadni a felhasználói viselkedésből való tanulás előnyeit. Ha 100%-ra állítja be az állandó véletlenszerű működést, és a felhasználók által megszerzett bármilyen viselkedés nem befolyásolja az eredményt.
 
-Fontos, hogy ne változtassa meg az alkalmazás viselkedését attól függően, hogy látja-e, hogy a Personalizer felfedezi vagy kihasználja.It is important to not to change the application behavior based on whether you see if Personalizer is exploring or exploiting. Ez tanulási elfogultsághoz vezetne, ami végső soron csökkentené a potenciális teljesítményt.
+Fontos, hogy ne módosítsa az alkalmazás viselkedését attól függően, hogy látható-e a személyre szabás vagy a kihasználás. Ez olyan torzulásokat eredményezne, amelyek végső soron csökkentik a lehetséges teljesítményt.
 
 ## <a name="next-steps"></a>További lépések
 

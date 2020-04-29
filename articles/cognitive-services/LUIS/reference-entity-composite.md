@@ -1,7 +1,7 @@
 ---
-title: Összetett entitástípus - LUIS
+title: Összetett entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: Az összetett entitás más entitásokból áll, például előre összeállított entitásokból, egyszerű, reguláris kifejezésből és listaentitásokból. A különálló entitások egy egész entitást alkotnak.
+description: Az összetett entitások más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások egész entitást alkotnak.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71695165"
 ---
 # <a name="composite-entity"></a>Összetett entitás 
 
-Az összetett entitás más entitásokból áll, például előre összeállított entitásokból, egyszerű, reguláris kifejezésből és listaentitásokból. A különálló entitások egy egész entitást alkotnak. 
+Az összetett entitások más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások egész entitást alkotnak. 
 
-**Ez az entitás akkor illeszkedik, ha az adatok:**
+**Ez az entitás jó illeszkedést biztosít az adattartalomhoz:**
 
 * Kapcsolódnak egymáshoz. 
 * Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
-* Használjon különböző entitástípusokat.
-* Az ügyfélalkalmazásnak információegységként kell csoportosítania és feldolgoznia.
-* Számos felhasználói utterances, amelyek gépi tanulást igényelnek.
+* Többféle típusú entitást használhat.
+* Az ügyfélalkalmazás adategységként kell csoportosítani és feldolgoznia.
+* Különböző felhasználói hosszúságú kimondott szöveg kell rendelkeznie, amelyek gépi tanulást igényelnek.
 
 ![összetett entitás](./media/luis-concept-entities/composite-entity.png)
 
-## <a name="example-json"></a>Példa JSON
+## <a name="example-json"></a>Példa JSON-ra
 
-Fontolja meg egy összetett `number` `Location::ToLocation` entitás előre összeállított és a következő utterance (kifejezés):
+Vegye fontolóra az előre elkészített `number` és `Location::ToLocation` a következő kifejezéssel rendelkező összetett entitást:
 
 `book 2 tickets to cairo`
 
-Figyelje `2`meg, hogy `cairo`a szám és a tolok között olyan szavak vannak, amelyek nem részei egyik entitásnak sem. A zöld aláhúzás, a [LUIS-webhely](luis-reference-regions.md) feliratozott utterance (kifejezés) kifejezésében egy összetett entitást jelöl.
+Figyelje meg `2`, hogy a szám és `cairo`a ToLocation olyan szavakat tartalmaz, amelyek nem részei egyetlen entitásnak sem. A [Luis](luis-reference-regions.md) webhely címkével ellátott kifejezésében használt zöld aláhúzás egy összetett entitást jelöl.
 
 ![Összetett entitás](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Az összetett entitások `compositeEntities` egy tömbben jelennek meg, és `entities` az összetett ben lévő összes entitás is a tömbben jelenik meg:
+Az összetett entitások egy tömbben lesznek visszaadva, és a kompoziton belüli összes `compositeEntities` entitás `entities` a tömbben is megjelenik:
 
 ```JSON
   "entities": [
@@ -89,7 +89,7 @@ Az összetett entitások `compositeEntities` egy tömbben jelennek meg, és `ent
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
@@ -174,9 +174,9 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 |Adatobjektum|Entitás neve|Érték|
 |--|--|--|
-|Előre összeállított entitás - szám|"beépített.szám"|"2"|
-|Előre összeállított entitás - GeographyV2|"Hely::Hely"|"Kairó"|
+|Előre elkészített entitás – szám|"beépített szám"|2|
+|Előre elkészített entitás – GeographyV2|"Hely:: ToLocation"|Cairo|
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban](luis-tutorial-composite-entity.md)adjon hozzá egy **összetett entitást** a kinyert adatok kötegeléséhez különböző típusú egyetlen entitásba. Az adatok kötegelésével az ügyfélalkalmazás könnyen kinyerheti a kapcsolódó adatokat a különböző adattípusokban.
+Ebben az [oktatóanyagban](luis-tutorial-composite-entity.md)egy **összetett entitást** ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.

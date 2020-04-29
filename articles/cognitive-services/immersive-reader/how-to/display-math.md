@@ -1,7 +1,7 @@
 ---
-title: Matematikai megjelenítés a magával ragadó olvasóban
+title: Matematikai megjelenítés a magától megjelenő olvasóban
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk megmutatja, hogyan jelenítheti meg a matematikát a Magával ragadó olvasóban.
+description: Ez a cikk bemutatja, hogyan jelenítheti meg a matematikai elemeket a teljes olvasóban.
 author: pasta
 manager: guillasi
 ms.service: cognitive-services
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946121"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>Hogyan jeleníthető meg a matematika a magával ragadó olvasó
+# <a name="how-to-display-math-in-the-immersive-reader"></a>A matematika megjelenítése a lebilincselő olvasóban
 
-A Magával ragadó olvasó matematikai jelölőnyelv[(MathML)](https://developer.mozilla.org/docs/Web/MathML)formájában jeleníti meg a matematikát.
-A MIME típus a Immersive Reader [adattömbön](../reference.md#chunk)keresztül állítható be. További információt a [támogatott MIME-típusokban](../reference.md#supported-mime-types) talál.
+A magával ragadó olvasó matematikai Markup Language ([MathML](https://developer.mozilla.org/docs/Web/MathML)) formában jeleníti meg a matematikai elemeket.
+A MIME-típus a magától megtekinthető olvasó [chunk](../reference.md#chunk)adattömbökön állítható be. További információ: [támogatott MIME-típusok](../reference.md#supported-mime-types) .
 
-## <a name="send-math-to-the-immersive-reader"></a>Matematikai küldés a magával ragadó olvasónak
-Annak érdekében, hogy a matematikát elküldhesse a Magával ragadó ```application/mathml+xml```olvasónak, adja meg a MathML-et tartalmazó adattömböt, és állítsa a MIME típust a következőre:
+## <a name="send-math-to-the-immersive-reader"></a>Matematikai küldése a magára olvasónak
+Ha matematikai küldést szeretne küldeni a lebilincselő olvasónak, adjon meg egy MathML tartalmazó adathalmazt, és állítsa a ```application/mathml+xml```MIME-típust a következőre:;
 
-Ha például a tartalom a következő:
+Például ha a tartalom a következő volt:
 
 ```html
 <div id='ir-content'>
@@ -53,7 +53,7 @@ Ha például a tartalom a következő:
 </div>
 ```
 
-Ezután a következő JavaScript használatával jelenítheti meg a tartalmat.
+Ezután a következő JavaScript használatával jelenítheti meg a tartalmakat.
 
 ```javascript
 const data = {
@@ -67,10 +67,10 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-Amikor elindítja a Magával ragadó olvasót, látnia kell a következőket:
+A lebilincselő olvasó indításakor a következőket kell látnia:
 
-![Matematika magával ragadó olvasó](../media/how-tos/1-math.png)
+![Matematika a lebilincselő olvasóban](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](../reference.md)
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../reference.md)

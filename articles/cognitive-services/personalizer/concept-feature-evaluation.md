@@ -1,7 +1,7 @@
 ---
-title: Funkcióértékelés - Personalizer
+title: Szolgáltatások kiértékelése – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Amikor az Azure Portalon futtat egy kiértékelést a Personalizer erőforrásában, a Personalizer tájékoztatást nyújt arról, hogy a környezet és a műveletek milyen funkciói befolyásolják a modellt.
+description: Ha kiértékelést futtat a Azure Portal személyre szabott erőforrásában, a személyre szabott információval megtudhatja, hogy a rendszer milyen funkciókat és műveleteket befolyásol a modellben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70242414"
 ---
 # <a name="feature-evaluation"></a>Szolgáltatások értékelése
 
-Amikor az [Azure Portalon](https://portal.azure.com)futtat egy kiértékelést a Personalizer erőforrásban, a Personalizer tájékoztatást nyújt arról, hogy a környezet és a műveletek milyen funkciói befolyásolják a modellt. 
+Ha kiértékelést futtat a [Azure Portal](https://portal.azure.com)személyre szabott erőforrásában, a személyre szabott információval megtudhatja, hogy a rendszer milyen funkciókat és műveleteket befolyásol a modellben. 
 
-Ez a következők érdekében hasznos:
+Ez a következő esetekben hasznos:
 
-* Képzeld el, hogy további funkciókat is használhatsz, és ihletet meríthetsz amodell ben fontosabb funkciókból.
-* Tekintse meg, hogy milyen funkciók nem fontosak, és potenciálisan távolítsa el őket, vagy elemezze tovább, hogy mi befolyásolhatja a használatot.
-* Útmutatást nyújt szerkesztői vagy gyógyító csapatok nak az új tartalmakról vagy termékekről, amelyeket érdemes behozni a katalógusba.
-* Elháríthatja azokat a gyakori problémákat és hibákat, amelyek akkor fordulnak elő, amikor a szolgáltatásokat elküldi a Personalizer szolgáltatásnak.
+* Képzelje el, hogy további funkciókat is használhat, és megismerheti, hogy milyen funkciók fontosabbak a modellben.
+* Tekintse meg, hogy mely funkciók nem fontosak, és esetleg távolítsa el őket, vagy elemezze, hogy mi is befolyásolja a használatot.
+* Útmutatást nyújthat a szerkesztőknek és a kurátori csapatoknak a katalógusba bekerülő új tartalommal vagy termékekkel kapcsolatban.
+* A funkciók személyre szabásakor előforduló gyakori problémák és hibák elhárítása.
 
-A fontosabb funkciók erősebb súlyokkal rendelkeznek a modellben. Mivel ezek a funkciók erősebb súllyal, általában jelen vannak, amikor Personalizer szerez magasabb jutalmakat.
+A fontosabb funkciók nagyobb súlyokkal rendelkeznek a modellben. Mivel ezek a funkciók erősebb súlyt jelentenek, általában jelen lesznek, ha a személyre szabott előnyökkel rendelkezik.
 
-## <a name="getting-feature-importance-evaluation"></a>A funkciók fontossági értékelésének beszerzése
+## <a name="getting-feature-importance-evaluation"></a>A funkciók fontossági kiértékelésének beolvasása
 
-A szolgáltatásfontossági eredmények megtekintéséhez le kell futtatnia egy értékelést. A kiértékelés az értékelési időszak ban megfigyelt jellemzőnevek alapján hozza létre az ember által olvasható jellemzőcímkéket.
+A funkciók fontossági eredményeinek megjelenítéséhez próbaverziót kell futtatnia. A kiértékelés során a rendszer a próbaidőszak alatt megfigyelt szolgáltatások nevei alapján létrehoz egy emberi olvasási funkciót.
 
-Az eredményül kapott információ a szolgáltatás fontosságát képviseli az aktuális Personalizer online modell. Az értékelés elemzi jellemző fontosságát a modell mentett végén az értékelési időszak, miután átesett az összes képzés során végzett értékelés, a jelenlegi online tanulási politika. 
+A funkció fontosságával kapcsolatos információk a jelenlegi személyre szabott online modellt jelölik. A kiértékelés a kiértékelési időszak végén elmentett modell fontosságát elemzi, miután az értékelés során végzett összes betanítást elvégezte a jelenlegi online tanulási szabályzattal. 
 
-A szolgáltatás fontossági eredmények nem jelentenek más szabályzatokat és modelleket, amelyeket a kiértékelés során teszteltek vagy hoztak létre.  Az értékelés nem tartalmazza a Personalizer-nak az értékelési időszak lejárta után küldött funkciókat.
+A funkció fontossági eredményei nem jelentenek más, a kiértékelés során tesztelt vagy létrehozott szabályzatokat és modelleket.  A kiértékelés nem tartalmaz olyan szolgáltatásokat, amelyeket a rendszer a próbaidőszak lejárta után személyre Szabottnak küld.
 
-## <a name="how-to-interpret-the-feature-importance-evaluation"></a>A jellemzőfontosság kiértékelésének értelmezése
+## <a name="how-to-interpret-the-feature-importance-evaluation"></a>A funkció fontossági értékelésének értelmezése
 
-A Personalizer a funkciókat a hasonló jelentőségű funkciók "csoportjainak" létrehozásával értékeli ki. Az egyik csoport róluk azt lehet mondani, hogy összességében nagyobb jelentőséggel bírnak, mint mások, de a csoporton belül a funkciók sorrendje ábécésorrendben van.
+A személyre szabás kiértékeli a funkciókat úgy, hogy "csoportokat" hoz létre a hasonló fontosságú funkciókhoz. Az egyik csoport azt is elmondhatja, hogy az általános nagyobb fontossággal bír, mint mások, de a csoporton belül a funkciók sorrendje betűrendben van.
 
-Az egyes szolgáltatásokkal kapcsolatos információk a következők:
+Az egyes szolgáltatásokra vonatkozó információk a következők:
 
-* Azt jelzi, hogy a szolgáltatás környezetből vagy műveletekből származik-e.
-* Jellemzőkulcs és érték.
+* Azt határozza meg, hogy a szolgáltatás környezetből vagy műveletekből származik-e.
+* A szolgáltatás kulcsa és értéke.
 
-Egy fagylaltozó rendelési alkalmazás például nagyon fontos funkcióként láthatja a "Context.Weather:Hot" című alkalmazást.
+Egy Ice Cream Shop-rendezési alkalmazás például a "Context. Weather: Hot" kifejezést tekintheti meg nagyon fontos szolgáltatásként.
 
-A Personalizer olyan funkciók korrelációit jeleníti meg, amelyek együttes figyelembevételével magasabb jutalmakat eredményeznek.
+A személyre szabott funkció olyan funkciók korrelációit jeleníti meg, amelyek, ha együttesen vesznek figyelembe, magasabb szintű jutalmakat eredményeznek.
 
-Például a "Context.Weather:Hot *with* Action.MenuItem:IceCream" és a "Context.Weather:Cold *with* Action.MenuItem:WarmTea:
+Láthatja például, hogy "Context. Weather: Hot *with* Action. MENUITEM: jégkrém", valamint "Context. Weather: hideg *a* Action. MENUITEM: WarmTea:
 
-## <a name="actions-you-can-take-based-on-feature-evaluation"></a>A funkciókiértékelés alapján végrehajtható műveletek
+## <a name="actions-you-can-take-based-on-feature-evaluation"></a>A funkciók kiértékelése alapján elvégezhető műveletek
 
-### <a name="imagine-additional-features-you-could-use"></a>Képzeljen el további funkciókat, amelyeket használhat
+### <a name="imagine-additional-features-you-could-use"></a>Képzelje el, hogy milyen további funkciókat használhat
 
-Merítsen ihletet a modell fontosabb funkcióiból. Ha például egy videomobilalkalmazásban a "Context.MobileBattery:Low" jelenik meg, akkor azt gondolhatja, hogy a kapcsolat típusa arra is ráveheti az ügyfeleket, hogy egy videoklipet lássanak a másikkal szemben, majd a kapcsolat típusával és sávszélességével kapcsolatos funkciókat is hozzáadhat az alkalmazáshoz.
+Ismerkedjen meg a modell fontosabb szolgáltatásaival. Ha például a "Context. MobileBattery: Low" szöveg jelenik meg egy videós mobil alkalmazásban, akkor előfordulhat, hogy a kapcsolattípus azt is megteheti, hogy az ügyfelek egy videoklipet látnak egy másikhoz, majd a kapcsolat típusát és a sávszélességet az alkalmazásba is felvehetik.
 
-### <a name="see-what-features-are-not-important"></a>Nézze meg, milyen funkciók nem fontosak
+### <a name="see-what-features-are-not-important"></a>Ismerje meg, hogy mely funkciók nem fontosak
 
-Potenciálisan távolítsa el a lényegtelen funkciókat, vagy tovább elemezze, hogy mi befolyásolhatja a használatot. A funkciók több okból is alacsonyak lehetnek. Az egyik lehet, hogy valóban a funkció nem befolyásolja a felhasználói viselkedést. De ez azt is jelentheti, hogy a funkció nem nyilvánvaló, hogy a felhasználó. 
+Esetleg távolítsa el a nem fontos funkciókat, vagy elemezze, hogy mi befolyásolhatja a használatot. A funkciók számos okból is alacsonyak lehetnek. Az egyik lehetséges, hogy a funkció nem befolyásolja a felhasználói viselkedést. Azt is jelentheti, hogy a funkció nem látható a felhasználó számára. 
 
-Például egy videowebhely láthatja, hogy az "Action.VideoResolution=4k" egy alacsony fontosságú funkció, amely ellentmond a felhasználói kutatásoknak. Ennek oka lehet, hogy az alkalmazás nem is említi, vagy azt mutatják, a videó felbontása, így a felhasználók nem változtatják meg a viselkedésüket alapján.
+Egy videós webhely például láthatja, hogy a "Action. VideoResolution = 4k" egy kis jelentőségű funkció, amely ellentmond a felhasználói kutatásoknak. Ennek oka az lehet, hogy az alkalmazás még nem említi meg vagy nem jeleníti meg a videó felbontását, így a felhasználók nem változtatják meg a viselkedésük alapján.
 
-### <a name="provide-guidance-to-editorial-or-curation-teams"></a>Útmutatás a szerkesztői vagy a kurzorcsapatok számára
+### <a name="provide-guidance-to-editorial-or-curation-teams"></a>Útmutatás nyújtása a szerkesztői vagy kurátori csapatoknak
 
-Útmutatást nyújt az új tartalmakhoz vagy termékekhez, amelyeket érdemes behozni a katalógusba. Personalizer célja, hogy egy eszköz, amely növeli az emberi betekintést és a csapatok. Ennek egyik módja az, hogy tájékoztatást nyújt a szerkesztői csoportoknak arról, hogy mi ről szól a viselkedést meghajtó termékekről, cikkekről vagy tartalmakról. Például a videóalkalmazás-forgatókönyv azt mutathatja, hogy van egy fontos funkció, az "Action.VideoEntities.Cat:true", amely arra kéri a szerkesztői csapatot, hogy hozzanak be több macskás videót.
+Adja meg a katalógusba bekerülő új tartalommal vagy termékekkel kapcsolatos útmutatást. A személyre szabott megoldás olyan eszköz, amely kibővíti az emberi betekintést és a csapatokat. Ennek egyik módja az, ha információt nyújt a szerkesztői csoportoknak arról, hogy mi a helyzet a termékekkel, cikkekkel vagy tartalommal. Előfordulhat például, hogy a videó alkalmazás forgatókönyve azt mutatja, hogy a "Action. VideoEntities. Cat: true" nevű fontos funkció, amely felszólítja a szerkesztői csapatot, hogy több Cat-videót is bevigyen.
 
 ### <a name="troubleshoot-common-problems-and-mistakes"></a>Gyakori problémák és hibák elhárítása
 
-A gyakori problémákat és hibákat az alkalmazáskódjának módosításával lehet kijavítani, így az nem küld nem megfelelő vagy helytelenül formázott funkciókat a Personalizer-nek. 
+A gyakori problémákat és hibákat az alkalmazás kódjának módosításával lehet megjavítani, így nem küldi el a nem megfelelő vagy helytelenül formázott szolgáltatásokat a személyre szabáshoz. 
 
-A szolgáltatások küldésekor gyakori hibák a következők:
+A funkciók küldésével kapcsolatos gyakori hibák a következők:
 
-* Személyazonosításra alkalmas adatok küldése. Egy személyre jellemző személyazonosításra használt személy (például név, telefonszám, hitelkártyaszámok, IP-címek) nem használható a Personalizer segítségével. Ha az alkalmazásnak nyomon kell követnie a felhasználókat, használjon nem azonosító UUID azonosítót vagy más UserID számot. A legtöbb esetben ez is problematikus.
-* Nagy számú felhasználó esetében nem valószínű, hogy az egyes felhasználók interakciói nagyobb súlyt fognak mérni, mint a lakosság összes interakciója, így a felhasználói azonosítók küldése (még akkor is, ha nem személyazonosításra alkalmas adatok) valószínűleg nagyobb zajt ad a modellnek, mint érték.
-* Dátum-idő mezők küldése pontos időbélyegként a felvázolt időértékek helyett. A context.TimeStamp.Day=Monday vagy a "Context.TimeStamp.Hour"="13" funkciók hasznosabbak. Az egyes szolgáltatások legbőlegelhetően 7 vagy 24 jellemzőértékben lesznek. De "Context.TimeStamp":"1985-04-12T23:20:50.52Z" annyira pontos, hogy nem lesz módja annak, hogy tanulni belőle, mert soha nem fog megtörténni újra.
+* Személyes azonosításra alkalmas adatok küldése. A személyre szabott személyes adatok (például a név, a telefonszám, a hitelkártya-számok, az IP-címek) nem használhatók a megszemélyesítő használatával. Ha az alkalmazásnak nyomon kell követnie a felhasználókat, használjon nem azonosító UUID-t vagy más felhasználóazonosító-számot. A legtöbb esetben ez problematikus is.
+* Nagy számú felhasználó esetén nem valószínű, hogy az egyes felhasználók interakciója a népesség összes interakcióján kívül esik, így a felhasználói azonosítók (még akkor is, ha nem személyes adatok) elküldése valószínűleg nagyobb zajt eredményez, mint az érték a modellnél.
+* A dátum-idő mezők pontos időbélyegként való küldése a featurized időértékek helyett. Olyan funkciókkal rendelkezik, mint a Context. TimeStamp. Day = hétfő vagy a "Context. TimeStamp. Hour" = "13". Mindegyikhez legfeljebb 7 vagy 24 jellemző érték lesz. De a "Context. TimeStamp": "1985-04-12T23:20:50.52 Z" olyan pontos, hogy nem fog tudni tanulni belőle, mert soha nem fog megtörténni.
 
 ## <a name="next-steps"></a>További lépések
 
-A Personalizer segítségével [megismerheti a méretezhetőséget és](concepts-scalability-performance.md) a teljesítményt.
+A [méretezhetőség és a teljesítmény](concepts-scalability-performance.md) megértése a személyre szabással.
 

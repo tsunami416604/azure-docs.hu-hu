@@ -5,24 +5,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/08/2018
 ms.openlocfilehash: d8615d118421a4b8918738f8901307c4d0a917c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75383088"
 ---
 ## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
 
-Kezdje el használni a Bing News Search API-t az alábbi Azure-erőforrások egyikének létrehozásával.
+A Bing News Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
 
-* [Próba-erőforrás létrehozása:](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
     * Nincs szükség Azure-előfizetésre.
-    * Hét napig érvényes, ingyen. A regisztráció után egy próbakulcs és egy végpont lesz elérhető az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 
-* [Bing Search v7-es erőforrás létrehozása:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
-    * Az Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
-    * Az ingyenes tarifacsomag használatával próbálja ki a szolgáltatást, és frissítsen később egy fizetett szintre éles környezetben.
+* [Bing Search v7-erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
 
-* [Többszolgáltatásos erőforrás létrehozása:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
-    * Az Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
-    * Használja ugyanazt a kulcsot és végpontot az alkalmazásokhoz, több Cognitive Services-ben.
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

@@ -1,7 +1,7 @@
 ---
-title: Fordítószöveg API-nyelvek módszer
+title: Translator Text API languages metódus
 titleSuffix: Azure Cognitive Services
-description: A Nyelvek metódus leteszi a Translator Text API más műveletei által jelenleg támogatott nyelvek készletét.
+description: A languages metódus a Translator Text API egyéb műveletei által jelenleg támogatott nyelveket olvassa be.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73835831"
 ---
-# <a name="translator-text-api-30-languages"></a>Fordító szöveg API 3.0: Nyelvek
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3,0: nyelvek
 
-Leidegenszerzi a Translator Text API más műveletei által jelenleg támogatott nyelvek készletét. 
+A Translator Text API egyéb műveletei által jelenleg támogatott nyelvek készletének beolvasása. 
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-Kérés `GET` küldése a következő knek:
+`GET` Kérelem küldése a következőnek:
 ```HTTP
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Kérelem paraméterei
+## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-A lekérdezési karakterláncon átadott kérelemparaméterek a következők:
+A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
     <td>api-verzió</td>
-    <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API verziója. Az értéknek kell lennie. `3.0`</td>
+    <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie.</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>*Nem kötelező paraméter*.<br/>A visszaadandó nyelvek csoportját meghatározó, vesszővel tagolt névlista. Az engedélyezett csoportnevek `transliteration` `dictionary`a következők: `translation`, és . Ha nincs megadva hatókör, akkor az összes csoportot `scope=translation,transliteration,dictionary`visszaadja, ami egyenértékű a továbbadásával. Annak eldöntéséhez, hogy mely támogatott nyelvek felelnek meg a forgatókönyvnek, tekintse meg a [válaszobjektum leírását.](#response-body)</td>
+    <td>Nem *kötelező paraméter*.<br/>A visszaadni kívánt nyelvek csoportját meghatározó nevek vesszővel tagolt listája. Az engedélyezett csoportok nevei a `translation`következők `transliteration` : `dictionary`és. Ha nincs megadva hatókör, a rendszer az összes csoportot visszaadja, ami egyenértékű az átadással `scope=translation,transliteration,dictionary`. Annak eldöntéséhez, hogy melyik támogatott nyelvek megfelelőek a forgatókönyvhöz, tekintse meg a [Válasz objektum](#response-body)leírását.</td>
   </tr>
 </table> 
 
-A kérelemfejlécek a következők:
+A kérelem fejlécei:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
     <td>Accept-Language</td>
-    <td>*Választható kérelemfejléc*.<br/>A felhasználói felület sztringjeihez használni kívánt nyelv. A válasz mezői közül néhány a nyelvek vagy a régiók neve. Ezzel a paraméterrel határozhatja meg a nevek visszaadásának nyelvét. A nyelvet egy jól formázott BCP 47 nyelvi címke megadásával adja meg. Használja például az `fr` értéket a francia nevek `zh-Hant` kérelmezéséhez, vagy az érték használatával a hagyományos kínai nyelvben.<br/>A nevek angol nyelven vannak megadva, ha nincs megadva célnyelv, vagy ha a honosítás nem érhető el.
+    <td>A *kérelem fejléce nem kötelező*.<br/>A felhasználói felület sztringjeihez használni kívánt nyelv. A válasz mezői a nyelvek nevei vagy a régiók nevei. Ezzel a paraméterrel határozhatja meg, hogy a rendszer milyen nyelven adja vissza ezeket a neveket. A nyelvet úgy kell megadni, hogy megfelelően formázott BCP 47 nyelvi címkét adjon meg. Például a nevek francia nyelven `fr` való meghívásához használja az értéket, vagy használja `zh-Hant` a nevet a hagyományos kínai nyelven.<br/>A nevek az angol nyelven jelennek meg, ha a célként megadott nyelv nincs megadva, vagy ha a honosítás nem érhető el.
     </td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Választható kérelemfejléc*.<br/>Az ügyfél által létrehozott GUID a kérelem egyedi azonosítására.</td>
+    <td>X – ClientTraceId</td>
+    <td>A *kérelem fejléce nem kötelező*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához.</td>
   </tr>
 </table> 
 
-A nyelvi erőforrások lekért hitelesítése nem szükséges.
+A nyelvi erőforrások lekéréséhez nincs szükség hitelesítésre.
 
 ## <a name="response-body"></a>Választörzs
 
-Az ügyfél `scope` a lekérdezési paraméter segítségével határozza meg, hogy mely nyelvcsoportok érdeklik.
+Az ügyfél a `scope` lekérdezési paraméter segítségével határozza meg, hogy mely nyelvekhez érdekli a szolgáltatás.
 
-* `scope=translation`támogatott nyelveket biztosít a szöveg egyik nyelvről a másikra történő lefordításához;
+* `scope=translation`olyan nyelveket biztosít, amelyek támogatottak a szövegek egyik nyelvről egy másik nyelvre való fordításához.
 
-* `scope=transliteration`lehetővé teszi a szöveg egyik nyelven történő konvertálását egyik parancsfájlból a másikba;
+* `scope=transliteration`a lehetővé teszi, hogy a szöveg átalakítása egy parancsfájlból egy másik parancsfájlba;
 
-* `scope=dictionary`olyan nyelvpárokat `Dictionary` biztosít, amelyekhez a műveletek adatokat adnak vissza.
+* `scope=dictionary`nyelvi párokat biztosít, `Dictionary` amelyek esetében az adatok visszaadása.
 
-Az ügyfél egyszerre több csoportot is bekérhet, ha vesszővel tagolt névlistát ad meg. Például `scope=translation,transliteration,dictionary` az összes csoport támogatott nyelveit visszaadná.
+Egy ügyfél egyszerre több csoportot is beolvashat egy vesszővel tagolt nevek megadásával. Például `scope=translation,transliteration,dictionary` az összes csoport támogatott nyelveinek visszaadása.
 
-A sikeres válasz egy JSON-objektum, amely minden egyes kért csoporthoz egy tulajdonságot kap:
+A sikeres válasz egy JSON-objektum, amely egy tulajdonsággal rendelkezik az egyes kért csoportokhoz:
 
 ```json
 {
@@ -91,19 +91,19 @@ A sikeres válasz egy JSON-objektum, amely minden egyes kért csoporthoz egy tul
 }
 ```
 
-Az egyes tulajdonok értéke a következő.
+Az egyes tulajdonságok értéke a következő.
 
-* `translation`Tulajdonság
+* `translation`tulajdonság
 
-  A `translation` tulajdonság értéke a (kulcs, érték) párok szótára. Minden kulcs egy BCP 47 nyelvi címke. A kulcs azonosítja azt a nyelvet, amelyre a szöveg lefordítható vagy abból fordítható. A kulcshoz társított érték egy JSON-objektum, amelynek tulajdonságai leírják a nyelvet:
+  A `translation` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amelynek szövegét lefordíthatja vagy lefordíthatja. A kulcshoz társított érték egy JSON-objektum, amely a nyelvet leíró tulajdonságokkal rendelkezik:
 
-  * `name`: A nyelv megjelenítendő neve `Accept-Language` a fejlécen keresztül kért területi beállításban.
+  * `name`: A nyelvet a fejlécen keresztül `Accept-Language` kért területi beállításban jeleníti meg.
 
-  * `nativeName`: A nyelv megjelenítendő neve a nyelv hez használt honos nyelv területi beállításában.
+  * `nativeName`: Az adott nyelvhez tartozó natív területi beállítás nyelvének megjelenített neve.
 
-  * `dir`: Irányítottság, amely `rtl` jobbról balra író `ltr` nyelvekre vagy balról jobbra író nyelvekre szól.
+  * `dir`: Írásirányát, amely `rtl` jobbról balra író nyelvekhez vagy `ltr` balról jobbra írt nyelvekhez használható.
 
-  Egy példa a következő:
+  Példa:
           
   ```json
   {
@@ -119,27 +119,27 @@ Az egyes tulajdonok értéke a következő.
   }
   ```
 
-* `transliteration`Tulajdonság
+* `transliteration`tulajdonság
 
-  A `transliteration` tulajdonság értéke a (kulcs, érték) párok szótára. Minden kulcs egy BCP 47 nyelvi címke. A kulcs azonosítja azt a nyelvet, amelyhez a szöveg egyik parancsfájlból egy másik parancsfájlba konvertálható. A kulcshoz társított érték egy JSON-objektum, amelynek tulajdonságai leírják a nyelvet és a támogatott parancsfájlokat:
+  A `transliteration` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amelynek szövegét át lehet alakítani egy parancsfájlból egy másikra. A kulcshoz társított érték egy JSON-objektum, amely a nyelvet és a támogatott parancsfájlokat leíró tulajdonságokkal rendelkezik:
 
-  * `name`: A nyelv megjelenítendő neve `Accept-Language` a fejlécen keresztül kért területi beállításban.
+  * `name`: A nyelvet a fejlécen keresztül `Accept-Language` kért területi beállításban jeleníti meg.
 
-  * `nativeName`: A nyelv megjelenítendő neve a nyelv hez használt honos nyelv területi beállításában.
+  * `nativeName`: Az adott nyelvhez tartozó natív területi beállítás nyelvének megjelenített neve.
 
-  * `scripts`: A konvertálandó parancsfájlok listája. A `scripts` lista minden eleme rendelkezik tulajdonságokkal:
+  * `scripts`: A rendszerből konvertálandó parancsfájlok listája. A `scripts` lista egyes elemeinek tulajdonságai:
 
-    * `code`: A parancsfájlt azonosító kód.
+    * `code`: A szkriptet azonosító kód.
 
-    * `name`: A parancsfájl neve megjelenítése a `Accept-Language` fejlécen keresztül kért területi beállításban.
+    * `name`: A (z) fejlécen keresztül `Accept-Language` kért területi beállításban szereplő parancsfájl megjelenítendő neve.
 
-    * `nativeName`: A nyelv megjelenítendő neve a nyelv natív nyelvén.
+    * `nativeName`: A nyelv helyi natív nyelvének megjelenítendő neve.
 
-    * `dir`: Irányítottság, amely `rtl` jobbról balra író `ltr` nyelvekre vagy balról jobbra író nyelvekre szól.
+    * `dir`: Írásirányát, amely `rtl` jobbról balra író nyelvekhez vagy `ltr` balról jobbra írt nyelvekhez használható.
 
-    * `toScripts`: A szöveg átalakításához rendelkezésre álló parancsfájlok listája. A lista `toScripts` minden elemének `name` `nativeName`tulajdonságai `dir` `code`, , , és a korábban leírtak szerint.
+    * `toScripts`: A szöveg szöveggé alakításához elérhető parancsfájlok listája. `toScripts` A lista egyes elemeinek tulajdonságai `code`, `name`, `nativeName`és `dir` a korábban leírtak szerint.
 
-  Egy példa a következő:
+  Példa:
 
   ```json
   {
@@ -184,27 +184,27 @@ Az egyes tulajdonok értéke a következő.
   }
   ```
 
-* `dictionary`Tulajdonság
+* `dictionary`tulajdonság
 
-  A `dictionary` tulajdonság értéke a (kulcs, érték) párok szótára. Minden kulcs egy BCP 47 nyelvi címke. A kulcs azonosítja azt a nyelvet, amelyhez alternatív fordítások és visszafordítások állnak rendelkezésre. Az érték egy JSON-objektum, amely a forrásnyelvet és a rendelkezésre álló fordításokat tartalmazó célnyelveket írja le:
+  A `dictionary` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amellyel az alternatív fordítások és a háttér-fordítások elérhetők. Az érték egy JSON-objektum, amely leírja a forrás nyelvét és a megcélzott nyelveket az elérhető fordításokkal:
 
-  * `name`: A forrásnyelv megjelenítendő neve `Accept-Language` a fejlécen keresztül kért területi beállításban.
+  * `name`: A forrás nyelvének megjelenített neve a fejlécen keresztül `Accept-Language` kért területi beállításban.
 
-  * `nativeName`: A nyelv megjelenítendő neve a nyelv hez használt honos nyelv területi beállításában.
+  * `nativeName`: Az adott nyelvhez tartozó natív területi beállítás nyelvének megjelenített neve.
 
-  * `dir`: Irányítottság, amely `rtl` jobbról balra író `ltr` nyelvekre vagy balról jobbra író nyelvekre szól.
+  * `dir`: Írásirányát, amely `rtl` jobbról balra író nyelvekhez vagy `ltr` balról jobbra írt nyelvekhez használható.
 
-  * `translations`: A változó fordításokat tartalmazó nyelvek listája és a forrásnyelven kifejezett lekérdezés példái. A `translations` lista minden eleme rendelkezik tulajdonságokkal:
+  * `translations`: Azoknak a nyelveknek a listája, amelyeken a vértisztító fordítások és példák szerepelnek a forrás nyelvén kifejezett lekérdezéshez. A `translations` lista egyes elemeinek tulajdonságai:
 
-    * `name`: A célnyelv megjelenítendő neve `Accept-Language` a fejlécen keresztül kért területi beállításban.
+    * `name`: A cél nyelvének megjelenítendő neve a fejlécen keresztül `Accept-Language` kért területi beállításban.
 
-    * `nativeName`: A célnyelv megjelenítendő neve a célnyelv natív nyelvén.
+    * `nativeName`: A célnyelv megjelenítendő nyelvének megjelenített neve.
 
-    * `dir`: Irányítottság, amely `rtl` jobbról balra író `ltr` nyelvekre vagy balról jobbra író nyelvekre szól.
+    * `dir`: Írásirányát, amely `rtl` jobbról balra író nyelvekhez vagy `ltr` balról jobbra írt nyelvekhez használható.
     
-    * `code`: A célnyelvet azonosító nyelvkód.
+    * `code`: A célnyelv azonosítására szolgáló nyelvi kód.
 
-  Egy példa a következő:
+  Példa:
 
   ```json
   "es": {
@@ -222,9 +222,9 @@ Az egyes tulajdonok értéke a következő.
   },
   ```
 
-A válaszobjektum szerkezete nem változik az API verziójának módosítása nélkül. Az API ugyanazon verziójának esetében az elérhető nyelvek listája idővel változhat, mivel a Microsoft Translator folyamatosan bővíti a szolgáltatásai által támogatott nyelvek listáját.
+A válasz objektum szerkezete nem változik az API verziójának módosítása nélkül. Az API ugyanazon verziójában az elérhető nyelvek listája idővel változhat, mivel a Microsoft Translator folyamatosan bővíti a szolgáltatásai által támogatott nyelvek listáját.
 
-A támogatott nyelvek listája nem változik gyakran. A hálózati sávszélesség megtakarítása és a válaszidő javítása érdekében az ügyfélalkalmazásnak meg kell fontolnia a nyelvi erőforrások és a megfelelő entitáscímke ( gyorsítótárazását .`ETag`. Ezután az ügyfélalkalmazás rendszeres időközönként (például 24 óránként egyszer) lekérdezheti a szolgáltatást a támogatott nyelvek legújabb készletének lekéréséhez. Ha átadjuk az aktuális `ETag` értéket egy `If-None-Match` fejlécmezőben, a szolgáltatás optimalizálhatja a választ. Ha az erőforrás nem lett módosítva, a szolgáltatás 304-es állapotkódot és egy üres választörzset ad vissza.
+A támogatott nyelvek listája nem változik gyakran. Ha menteni szeretné a hálózati sávszélességet, és javítja a rugalmasságot, az ügyfélalkalmazás a nyelvi erőforrások gyorsítótárazását és a`ETag`megfelelő entitás címkéjét () kell figyelembe vennie. Ezután az ügyfélalkalmazás időnként (például 24 óránként) lekérdezi a szolgáltatást, hogy beolvassa a támogatott nyelvek legújabb készletét. Az aktuális `ETag` érték átadása `If-None-Match` egy fejléc mezőben lehetővé teszi, hogy a szolgáltatás optimalizálja a választ. Ha az erőforrás nem lett módosítva, a szolgáltatás a 304 állapotkódot és egy üres válasz törzsét fogja visszaadni.
 
 ## <a name="response-headers"></a>Válaszfejlécek
 
@@ -232,19 +232,19 @@ A támogatott nyelvek listája nem változik gyakran. A hálózati sávszéless�
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Etag</td>
-    <td>Az entitáscímke aktuális értéke a támogatott nyelvek kért csoportjaihoz. A későbbi kérések hatékonyabbá tétele `ETag` érdekében `If-None-Match` az ügyfél elküldheti az értéket egy fejlécmezőben.
+    <td>ETag</td>
+    <td>A támogatott nyelvek kért csoportjaihoz tartozó entitás címkéje aktuális értéke. A későbbi kérelmek hatékonyabbá tételéhez az ügyfél elküldheti az `ETag` értéket egy `If-None-Match` fejléc mezőjében.
     </td>
   </tr>
   <tr>
-    <td>X-RequestId azonosító</td>
-    <td>A szolgáltatás által a kérelem azonosítására létrehozott érték. Hibaelhárítási célokra használják.</td>
+    <td>X – kérelemazonosító</td>
+    <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Válasz állapotkódjai
+## <a name="response-status-codes"></a>Válasz-állapotkódok
 
-A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők. 
+A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők: 
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
@@ -255,31 +255,31 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők.
   </tr>
   <tr>
     <td>304</td>
-    <td>Az erőforrás nem módosult a kérelemfejlécek `If-None-Match`által megadott verzió óta.</td>
+    <td>Az erőforrás nem módosult a kérelem fejlécei `If-None-Match`által megadott verzió óta.</td>
   </tr>
   <tr>
     <td>400</td>
-    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa ki a kérelem paramétereit.</td>
+    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa a kérelmek paramétereit.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>A kiszolgáló elutasította a kérést, mert az ügyfél túllépte a kérelemkorlátot.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálkozzon újra a kéréssel. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérelem json-hibaválaszt is ad vissza. A hibakód egy 6 jegyű szám, amely a 3 jegyű HTTP-állapotkódot, majd egy 3 jegyű számot követ a hiba további kategorizálása érdekében. A gyakori hibakódok a [v3 Translator Text API referenciaoldalán](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Text API hivatkozási oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 
-A következő példa bemutatja, hogyan lehet beolvasni a szövegfordításhoz támogatott nyelveket.
+Az alábbi példa bemutatja, hogyan kérheti le a szöveg fordításához támogatott nyelveket.
 
 ```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

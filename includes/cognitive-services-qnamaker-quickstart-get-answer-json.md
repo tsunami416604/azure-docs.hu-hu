@@ -11,15 +11,15 @@ ms.custom: include file
 ms.date: 11/12/2018
 ms.author: diberry
 ms.openlocfilehash: fd6a4a4e2d779047d252fdc5e3eae8e3fba8b507
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67179419"
 ---
-## <a name="request-and-response-json"></a>Kérés és válasz JSON
+## <a name="request-and-response-json"></a>Kérelem és válasz JSON
 
-Példa JSON-formátumú kérdésre a REST API-hoz:
+Példa JSON formátumú kérdésre a REST API:
 
 ```json
 {
@@ -28,9 +28,9 @@ Példa JSON-formátumú kérdésre a REST API-hoz:
 }
 ```
 
-A kérdés tartalmaz egy ingatlant, hogy visszatérjen az első három választ. 
+A kérdés tartalmaz egy tulajdonságot, amely az első három választ visszaküldi. 
 
-A válasz egy JSON-objektumban ad vissza:
+A válasz egy JSON-objektumban lesz visszaadva:
 
 ```json
 {

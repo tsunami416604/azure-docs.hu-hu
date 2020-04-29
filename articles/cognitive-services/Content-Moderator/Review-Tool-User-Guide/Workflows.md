@@ -1,7 +1,7 @@
 ---
-title: Tartalom-munkafolyamatok definiálása és használata a Véleményezés eszköz - Tartalommoderátor segítségével
+title: Tartalom-munkafolyamatok definiálása és használata a felülvizsgálati eszközön – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Az Azure Content Moderator munkafolyamat-tervezője segítségével egyéni munkafolyamatokat és küszöbértékeket határozhat meg a tartalomszabályzatai alapján.
+description: Az Azure Content Moderator Munkafolyamat-tervezővel egyéni munkafolyamatokat és küszöbértékeket adhat meg a tartalmi szabályzatok alapján.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,76 +11,76 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
 ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72754256"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Moderálási munkafolyamatok definiálása és használata
 
-Ebből az útmutatóból megtudhatja, hogyan állíthatja be és használhatja a [munkafolyamatokat](../review-api.md#workflows) a [Véleményezés eszköz](https://contentmoderator.cognitive.microsoft.com) webhelyén. A munkafolyamatok felhőalapú, testre szabott szűrők, amelyek segítségével hatékonyabban kezelheti a tartalmat. A munkafolyamatok különböző szolgáltatásokhoz kapcsolódhatnak, hogy különböző módokon szűrjék a tartalmat, majd megtegyékeljék a megfelelő lépéseket. Ez az útmutató bemutatja, hogyan használhatja a Tartalommoderátor-összekötőt (amely alapértelmezés szerint szerepel) a tartalom szűrésére és az emberi vélemények beállítására egy tipikus moderálási forgatókönyvben.
+Ebből az útmutatóból megtudhatja, hogyan állíthatja be és használhatja a [munkafolyamatokat](../review-api.md#workflows) a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) webhelyén. A munkafolyamatok olyan felhőalapú testreszabott szűrők, amelyek segítségével hatékonyabban kezelheti a tartalmakat. A munkafolyamatok számos szolgáltatáshoz kapcsolódhatnak, hogy különböző módokon szűrje a tartalmakat, majd a megfelelő műveletet hajtsa végre. Ez az útmutató bemutatja, hogyan használhatja a Content Moderator-összekötőt (amely alapértelmezés szerint megtalálható) a tartalom szűréséhez és az emberi felülvizsgálatok egy tipikus moderálási forgatókönyvben való beállításához.
 
 ## <a name="create-a-new-workflow"></a>Új munkafolyamat létrehozása
 
-Nyissa meg a [Tartalommoderátor-ellenőrző eszközt,](https://contentmoderator.cognitive.microsoft.com/) és jelentkezzen be. A **Beállítások** lapon válassza a **Munkafolyamatok**lehetőséget.
+Lépjen a [Content moderator felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/) , és jelentkezzen be. A **Beállítások** lapon válassza a **munkafolyamatok**lehetőséget.
 
 ![Munkafolyamatok beállítása](images/2-workflows-0.png)
 
-A következő képernyőn válassza a **Munkafolyamat hozzáadása**lehetőséget.
+A következő képernyőn válassza a **munkafolyamat hozzáadása**elemet.
 
 ![Munkafolyamat hozzáadása](images/2-workflows-1.png)
 
-### <a name="assign-a-name-and-description"></a>Név és leírás hozzárendelése
+### <a name="assign-a-name-and-description"></a>Név és leírás kiosztása
 
-Nevezze el a munkafolyamatot, adjon meg egy leírást, és válassza ki, hogy a munkafolyamat kezeli-e a képeket vagy a szöveget.
+Nevezze el a munkafolyamatot, adjon meg egy leírást, és válassza ki, hogy a munkafolyamat képeket vagy szöveget fog-e kezelni.
 
 ![Munkafolyamat neve és leírása](images/image-workflow-create.PNG)
 
 ### <a name="define-evaluation-criteria"></a>Értékelési feltételek meghatározása
 
-A következő képernyőn lépjen az **If** szakaszra. A felső legördülő menüben válassza a **Feltétel lehetőséget.** Ez lehetővé teszi, hogy konfigurálja azt a feltételt, amelyre a munkafolyamat végrehajtja a műveletet. Ha több feltételt szeretne használni, válassza a **Kombináció** lehetőséget. 
+A következő képernyőn lépjen az **IF** szakaszra. A felső legördülő menüben válassza a **feltétel**elemet. Ez lehetővé teszi a munkafolyamat által végrehajtandó feltétel konfigurálását. Ha több feltételt szeretne használni, válassza a **kombináció** helyet. 
 
-Ezután jelöljön ki egy összekötőt. Ez a példa **a Tartalommoderátort**használja. A választott összekötőtől függően különböző adatkimeneti lehetőségeket kap. Tekintse meg az [Összekötők](./configure.md#connectors) szakasza a Felülvizsgálati eszköz beállításai útmutató, hogyan kell beállítani más összekötők.
+Ezután válasszon egy összekötőt. Ez a példa **Content moderator**használ. A választott összekötőtől függően különböző beállításokat fog kapni az adatkimenethez. További összekötők beállításának megismeréséhez tekintse meg az eszközök áttekintése című útmutató [Összekötők](./configure.md#connectors) szakaszát.
 
-![Munkafolyamat-összekötő kijelölése](images/image-workflow-connect-to.PNG)
+![Munkafolyamat-összekötő kiválasztása](images/image-workflow-connect-to.PNG)
 
-Válassza ki a használni kívánt kimenetet, és állítsa be a feltételeket, hogy ellenőrizze azt.
+Válassza ki a használni kívánt kimenetet, és adja meg a feltételeket, hogy ellenőrizni lehessen.
 
-![Munkafolyamat-feltétel meghatározása](images/image-workflow-condition.PNG)
+![Munkafolyamat-feltétel definiálása](images/image-workflow-condition.PNG)
 
-### <a name="define-the-action"></a>A művelet meghatározása
+### <a name="define-the-action"></a>A művelet megadása
 
-Nyissa meg az **Ezután** szakaszt, ahol kijelöl egy műveletet. A következő példa létrehoz egy képáttekintést, és hozzárendel egy címkét. Tetszés szerint hozzáadhat egy alternatív (Else) elérési utat, és ehhez is beállíthat egy műveletet.
+Lépjen a következő **szakaszra** , ahol kiválaszthat egy műveletet. Az alábbi példa egy rendszerkép-áttekintést hoz létre, és hozzárendel egy címkét. Opcionálisan hozzáadhat egy alternatív (más) útvonalat is, és beállíthat egy műveletet is.
 
 ![Munkafolyamat-művelet definiálása](images/image-workflow-action.PNG)
 
 ### <a name="save-the-workflow"></a>A munkafolyamat mentése
 
-Jegyezze fel a munkafolyamat nevét; a moderálási feladat munkafolyamat-API-val való indításához a névre van szükség (lásd alább). Végül mentse a munkafolyamatot a lap tetején található **Mentés** gombbal.
+Jegyezze fel a munkafolyamat nevét; a (z) munkafolyamat-API-val való moderálási feladatok elindításához a névnek kell megfelelnie (lásd alább). Végül mentse a munkafolyamatot a lap tetején található **Save (Mentés** ) gomb használatával.
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-Most, hogy definiált egy egyéni munkafolyamatot, tesztelje azt mintatartalommal. Nyissa meg a **Munkafolyamatok** lehetőséget, és válassza a megfelelő **Munkafolyamat végrehajtása** gombot.
+Most, hogy definiált egy egyéni munkafolyamatot, tesztelje a minta tartalmával. Nyissa meg a **munkafolyamatokat** , és válassza ki a megfelelő **végrehajtási munkafolyamat** gombot.
 
 ![Munkafolyamat-teszt](images/image-workflow-execute.PNG)
 
-Mentse ezt [a mintaképet](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) a helyi meghajtóra. Ezután válassza **a Fájl(ok) kiválasztása lehetőséget,** és töltse fel a képet a munkafolyamatba.
+Mentse a [mintaképet](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) a helyi meghajtóra. Ezután válassza a **fájl (ok) kiválasztása** lehetőséget, és töltse fel a rendszerképet a munkafolyamatba.
 
-![A futó egy idézet egymásra a kép](images/sample-text.jpg)
+![Egy, a képre kiszabott idézettel rendelkező Runner](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>Követés állapota
 
-A munkafolyamat előrehaladását a következő előugró ablakban tekintheti meg.
+A munkafolyamat állapotát a következő előugró ablakban tekintheti meg.
 
 ![Munkafolyamat-végrehajtás nyomon követése](images/image-workflow-job.PNG)
 
 ### <a name="verify-workflow-action"></a>Munkafolyamat-művelet ellenőrzése
 
-Nyissa meg a **Kép** lap **Véleményezés csoportját,** és ellenőrizze, hogy van-e újonnan létrehozott képellenőrzés.
+Lépjen a **képek** lapra az **Áttekintés** területen, és ellenőrizze, hogy van-e újonnan létrehozott rendszerkép-áttekintés.
 
 ![Rendszerképek felülvizsgálata](images/image-workflow-review.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban a [Tartalommoderátor-ellenőrzési eszközből](https://contentmoderator.cognitive.microsoft.com)tanulta meg, hogyan állíthatja be és használhatja a moderálási munkafolyamatokat. Ezután tekintse meg a [REST API-útmutatót,](../try-review-api-workflow.md) amelyből megtudhatja, hogyan hozhat létre programozott munkafolyamatokat.
+Ebből az útmutatóból megtudhatta, hogyan állíthatja be és használhatja a moderációs munkafolyamatokat a Content Moderator [felülvizsgálati eszközről](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-workflow.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon a munkafolyamatokat.

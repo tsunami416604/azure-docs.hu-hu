@@ -1,7 +1,7 @@
 ---
-title: BeszédbeszédSDK hangbemeneti adatfolyamának fogalmai
+title: Speech SDK hangbemeneti stream – fogalmak
 titleSuffix: Azure Cognitive Services
-description: A Speech SDK hangbemeneti API-jának képességeinek áttekintése.
+description: A Speech SDK hangbemeneti stream API funkcióinak áttekintése.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109937"
 ---
-# <a name="about-the-speech-sdk-audio-input-stream-api"></a>A Speech SDK hangbemeneti API-ja
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Tudnivalók a Speech SDK hangbemeneti stream API-ról
 
-A Speech SDK **audiobemeneti stream** API-ja lehetővé teszi a hang adatfolyamként való streamelését a felismerőknek a mikrofon vagy a bemeneti fájl API-jai nak használata helyett.
+A Speech SDK **hangbemeneti stream** API a mikrofon vagy a bemeneti fájl API-k használata helyett hangátvitelt biztosít a felismerők számára.
 
-A következő lépések szükségesek a hangbemeneti adatfolyamok használatakor:
+A hangbemeneti streamek használatakor a következő lépések szükségesek:
 
-- Azonosítsa a hangfolyam formátumát. A formátumot a beszédfelismerési SDK-nak és a Beszédfelismerés szolgáltatásnak támogatnia kell. Jelenleg csak a következő konfiguráció támogatott:
+- A hangadatfolyam formátumának meghatározása. A formátumnak a Speech SDK és a Speech szolgáltatás által támogatottnak kell lennie. Jelenleg csak a következő konfiguráció támogatott:
 
-  Hangminták PCM formátumban, egy csatorna, 16000 minta másodpercenként, 32000 bájt másodpercenként, két blokk igazítás (16 bit, beleértve a minta kitöltését), mintánként 16 bit.
+  Hangminták PCM formátumban, egy csatorna, 16000 minta/másodperc, 32000 bájt/másodperc, két blokk igazítása (16 bit a minta kitöltésével együtt), 16 bit/minta.
 
-  Az sdk megfelelő kódja az audioformátum létrehozásához így néz ki:
+  A hangformátum létrehozásához az SDK-ban található megfelelő kód a következőképpen néz ki:
 
   ```csharp
   byte channels = 1;
@@ -36,9 +36,9 @@ A következő lépések szükségesek a hangbemeneti adatfolyamok használatakor
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Győződjön meg arról, hogy a kód képes biztosítani a RAW hangadatokat ezen előírásoknak megfelelően. Ha a hangforrás-adatok nem egyeznek meg a támogatott formátumokkal, a hangot át kell kódolni a kívánt formátumra.
+- Győződjön meg arról, hogy a kód képes a nyers hangadatok megadására a specifikációk alapján. Ha a hangforrások adatai nem felelnek meg a támogatott formátumoknak, a hangot át kell kódolni a szükséges formátumba.
 
-- Hozzon létre saját hangbemeneti adatfolyam-osztályt a rendszerből. `PullAudioInputStreamCallback` Hajtsa `Close()` végre a és a `Read()` tagok. A pontos függvényaláírás nyelvfüggő, de a kód hasonló lesz ehhez a kódmintához:
+- Hozzon létre saját hangbemeneti stream-osztályt a következőből `PullAudioInputStreamCallback`származtatva:. A és `Read()` `Close()` a tagok implementálása. A pontos függvény aláírása nyelvtől függ, de a kód a következőhöz hasonlóan fog kinézni:
 
   ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ A következő lépések szükségesek a hangbemeneti adatfolyamok használatakor
    };
   ```
 
-- Hozzon létre egy hangkonfigurációt a hangformátum és a bemeneti adatfolyam alapján. A felismerő létrehozásakor adja át a szokásos beszéd- és hangbemeneti konfigurációt is. Példa:
+- Hozzon létre egy hangkonfigurációt a hang formátuma és a bemeneti adatfolyam alapján. A felismerő létrehozásakor adja meg a normál beszédfelismerési konfigurációt és a hangbemeneti konfigurációt. Például:
 
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -76,4 +76,4 @@ A következő lépések szükségesek a hangbemeneti adatfolyamok használatakor
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszéd felismerése C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

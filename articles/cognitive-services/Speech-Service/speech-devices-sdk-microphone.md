@@ -1,7 +1,7 @@
 ---
-title: Beszédeszközök SDK mikrofontömbjavaslatok
+title: Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 titleSuffix: Azure Cognitive Services
-description: Beszédeszközök SDK mikrofontömb javaslatok. Ezek a tömbgeometriák a Microsoft Audio Stack hez való használatra ajánlottak.
+description: Beszédfelismerési eszközök SDK mikrofon tömb ajánlásai. Ezek a tömb geometriái ajánlottak a Microsoft audio Stackhez való használatra.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77168140"
 ---
-# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédeszközök SDK mikrofontömbjének ajánlásai
+# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 
-Ebben a cikkben megtudhatja, hogyan tervezheti meg a beszédeszközök SDK mikrofontömbjét.
+Ebből a cikkből megtudhatja, hogyan tervezhet meg egy mikrofon-tömböt a Speech Devices SDK-hoz.
 
-A Beszédeszközök SDK a következő irányelvek nek megfelelően tervezett mikrofontömbökkel működik a legjobban, beleértve a mikrofon geometriáját és az alkatrészek kiválasztását. Iránymutatást adnak az integrációval és az elektromos megfontolásokkal kapcsolatos szempontokról is.
+A Speech Devices SDK a legjobban egy olyan mikrofonos tömbvel működik, amely az alábbi irányelvek szerint lett kialakítva, beleértve a mikrofon geometriáját és az összetevők kijelölését. Az integrációval és az elektromos szempontokkal kapcsolatos útmutatást is kaphat.
 
 ## <a name="microphone-geometry"></a>Mikrofon geometriája
 
-A következő tömbgeometriák használata ajánlott a Microsoft Audio Stack használatához. A hangforrások helye és a környezeti zaj elutasítása javul, mivel több mikrofon függ az egyes alkalmazásoktól, a felhasználói forgatókönyvektől és az eszköz formatényezőtől.
+A következő tömb-geometriák használata ajánlott a Microsoft audio Stacktel való használatra. A hangforrások helye és a környezeti zaj elutasítása nagyobb számú, meghatározott alkalmazásokkal, felhasználói forgatókönyvekkel és az eszköz űrlap-adattípussal kapcsolatos függőségekkel bővült.
 
 |     | Körkörös tömb |     | Lineáris tömb |     |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#Mikrofon | 7 | 4 | 4 | 2 |
-| Geometria | 6 Külső, 1 Középre, Sugár = 42,5 mm, egyenletesen elosztott | 3 Külső, 1 Középre, Sugár = 42,5 mm, egyenletesen elosztott | Hossz = 120 mm, térköz = 40 mm | Térköz = 40 mm |
+| Geometria | 6 külső, 1 központ, sugár = 42,5 mm, egyenletesen elhelyezkedő | 3 külső, 1 központ, sugár = 42,5 mm, egyenletesen elhelyezkedő | Hossz = 120 mm, térköz = 40 mm | Térköz = 40 mm |
 
-A mikrofoncsatornákat a fenti tömbök számozásának megfelelően kell megrendelni, 0-ról növelve. A Visszhang-megszakítás végrehajtásához a Microsoft Audio Stack további referenciaadatfolyamot igényel a hanglejátszáshoz.
+A mikrofon-csatornákat a fenti tömbben ábrázolt számozásnak megfelelően kell megrendelni, a 0-tól való növekedéssel. A Microsoft audio Stackhez a hanglejátszás további hivatkozása szükséges az ECHO lemondásának elvégzéséhez.
 
 ## <a name="component-selection"></a>Összetevő kiválasztása
 
-A mikrofon komponenseit úgy kell kiválasztani, hogy pontosan reprodukálják a zajtól és torzítástól mentes jelet.
+A mikrofon-összetevőket úgy kell kiválasztani, hogy pontosan reprodukálni lehessen a zaj és a torzítás nélküli jeleket.
 
-A mikrofonok kiválasztásakor ajánlott tulajdonságok a következők:
+A mikrofonok kiválasztásakor a javasolt tulajdonságok a következők:
 
 | Paraméter | Ajánlott |
 | --------- | ----------- |
-| Snr | \>= 65 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
-| Amplitúdó-egyeztetés | ± 1 dB @ 1 kHz |
-| Fázis egyeztetése | ± 2° @ 1 kHz |
-| Akusztikus túlterhelési pont (AOP) | \>= 120 dBSPL (THD = 10%) |
-| Bitsebesség | Minimum 24 bites |
-| Mintavételezési frekvencia | Legalább 16 kHz\* |
-| Frekvenciaválasz | ± 3 dB, 200-8000 Hz úszó maszk\* |
-| Megbízhatóság | Tárolási hőmérséklet tartomány -40°C és 70°C között<br />Üzemi hőmérséklet -20°C és 55°C között |
+| SNR | \>= 65 dB (1 kHz jel 94 dBSPL, A-súlyozott zaj) |
+| Amplitúdó egyeztetése | ± 1 dB @ 1 kHz |
+| Fázis egyeztetése | ± 2 ° @ 1 kHz |
+| Akusztikai túlterhelés pont (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Átviteli sebesség | Minimum 24 bites |
+| Mintavételezési frekvencia | Minimum 16 kHz\* |
+| Gyakorisági válasz | ± 3 dB, 200-8000 Hz-es úszó maszk\* |
+| Megbízhatóság | Tárolási hőmérséklet-tartomány – 40 °C – 70 °C<br />Működési hőmérséklet-tartomány – 20 °C – 55 °C |
 
-\*_A kiváló minőségű kommunikációs (VoIP) alkalmazásokhoz magasabb mintavételi arányokra vagy "szélesebb" frekvenciatartományokra lehet szükség_
+\*_A magas színvonalú kommunikációs (VoIP) alkalmazások esetében nagyobb mintavételi vagy "szélesebb" frekvenciatartományokra lehet szükség._
 
-A jó alkatrészválasztást jó elektroakusztikus integrációval kell párosítani a felhasznált alkatrészek teljesítményének romlásának elkerülése érdekében. Az egyedi használati esetek további követelményeket is szükségessé tehetnek (például: üzemi hőmérséklet-tartományok).
+A megfelelő összetevők kiválasztását megfelelő elektroakusztikus-integrációval kell párosítani a felhasznált összetevők teljesítményének elkerülése érdekében. Az egyedi használati esetek további követelményeket is szükségessé tehetnek (például működési hőmérsékleti tartományok).
 
-## <a name="microphone-array-integration"></a>Mikrofontömb integrációja
+## <a name="microphone-array-integration"></a>Mikrofonos tömb integrációja
 
-A mikrofontömb teljesítménye az eszközbe integrálva eltér az alkatrész specifikációjától. Fontos annak biztosítása, hogy a mikrofonok az integráció után jól illeszkedjenek. Ezért a rögzített nyereség vagy EQ után mért eszközteljesítménynek meg kell felelnie az alábbi ajánlásoknak:
+A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az összetevő-specifikációtól. Fontos, hogy a mikrofonok az integráció után is megfelelőek legyenek. Ezért az eszköz teljesítménye a rögzített nyereség vagy EQ után mérve a következő javaslatoknak kell megfelelnie:
 
 | Paraméter          | Ajánlott                                        |
 | ------------------ | -------------------------------------------------- |
-| Snr                | \>63 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
-| Kimeneti érzékenység | -26 dBFS/Pa @ 1 kHz (ajánlott)                  |
-| Amplitúdó-egyeztetés | ± 2 dB, 200–8000 Hz                                |
-| THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5.             |
-| Frekvenciaválasz | ± 6 dB, 200-8000 Hz úszó maszk\*\*              |
+| SNR                | \>63 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
+| Kimeneti érzékenység | -26 dBFS/PA @ 1 kHz (ajánlott)                  |
+| Amplitúdó egyeztetése | ± 2 dB, 200-8000 Hz                                |
+| THD\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5. sorrend             |
+| Gyakorisági válasz | ± 6 dB, 200-8000 Hz-es úszó maszk\*\*              |
 
-\*\*_A THD méréséhez alacsony torzítású hangszóró szükséges (pl. Neumann KH120)_
+\*\*_A THD méréséhez alacsony torzítású hangszóró szükséges (például Neumann KH120)_
 
-\*\*_A kiváló minőségű kommunikációs (VoIP) alkalmazásokhoz "szélesebb" frekvenciatartományokra lehet szükség_
+\*\*_A magas színvonalú kommunikációs (VoIP) alkalmazások esetében szükség lehet a "szélesebb" frekvenciatartományokra._
 
-## <a name="speaker-integration-recommendations"></a>A felszólalók integrációs javaslatai
+## <a name="speaker-integration-recommendations"></a>Beszélő integrációs javaslatok
 
-Mivel a hangszórókat tartalmazó beszédfelismerő eszközök esetében visszhangszűrésre van szükség, további javaslatok at tartalmaznak a hangszóró kiválasztásához és integrációjához.
+Mivel az ECHO-lemondás szükséges a beszélőket tartalmazó beszédfelismerési eszközökhöz, további javaslatok is elérhetők a hangszórók kiválasztásához és az integrációhoz.
 
 | Paraméter | Ajánlott |
 | --------- | ----------- |
-| Linearitási szempontok | Nincs nem lineáris feldolgozás a hangszóró hivatkozása után, ellenkező esetben hardveralapú visszacsatolási referencia-adatfolyamra van szükség |
-| Hangszóró visszacsatolás | Biztosított keresztül WASAPI, privát API-k, egyéni ALSA plug-in (Linux), vagy keresztül nyújtott firmware csatorna |
-| THD% | 3. Octave Zenekarok minimum 5. |
-| Echo csatlakozó mikrofonokhoz | \>-10 dB TCLw ITU-T G.122 B.4.<br />TCLw = TCLwmeasured \+ (mért szint - cél kimeneti érzékenység)<br />TCLw = TCLwmért \+ (mért szint - (-26)) |
+| A linearitás szempontjai | Nem lineáris feldolgozás a hangsugárzó-hivatkozás után, ellenkező esetben a hardveres visszacsatolási hivatkozási adatfolyam szükséges |
+| Beszélő visszacsatolása | WASAPI, privát API-k, egyéni ALSA beépülő modul (Linux) vagy belső vezérlőprogram-csatornán keresztül biztosított |
+| THD | 3rd oktáv-sávok minimális 5., 70 dBA lejátszás @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
+| Visszhangos csatlakozás a mikrofonokhoz | \>-10 dB TCLw-T használó ITU-T G. 122 melléklet B. 4 módszer, normalizálva a MIC szintjére<br />TCLw = TCLwmeasured \+ (mért szint – a cél kimenetének érzékenysége)<br />TCLw = TCLwmeasured \+ (mért szint – (-26)) |
 
 ## <a name="integration-design-architecture"></a>Integrációs tervezési architektúra
 
-A mikrofonok eszközbe való integrálásakor az alábbi architektúra-irányelvekszükségesek:
+A következő, architektúrára vonatkozó irányelvek szükségesek a mikrofonok eszközbe való integrálásakor:
 
 | Paraméter | Ajánlás |
 | --------- | -------------- |
-| Mikrofonport hasonlósága | Minden mikrofonport azonos hosszúságú a tömbben |
-| Mikrofonport méretei | Port mérete Ø0,8-1,0 mm. Port hossza / \< Port átmérője 2 |
-| Mikrofon tömítés         | Tömítő tömítések egységesen végre stack-up. Javasoljuk, \> 70% tömörítési arány hab tömítések |
-| Mikrofon megbízhatósága     | A por és a be- és beszivárgás megelőzésére hálót kell használni (az alsó portolt mikrofonok PCB-je és a tömítőtömítés/felső fedél között) |
-| Mikrofon szigetelése       | Gumitömítések és rezgésleválasztás a szerkezeten keresztül, különösen a vibrációs útvonalak elszigetelésére a beépített hangszóróknak köszönhetően |
-| Mintavételi óra      | A készülék hangjának alacsony sodródású vibrátormentesnek kell lennie |
-| Rögzítési képesség   | Az eszköznek képesnek kell lennie az egyes csatornanyers adatfolyamok egyidejű rögzítésére |
-| USB                 | Minden USB audiobemeneti eszköznek az [USB Audio Devices Rev3 spec](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
-| Mikrofon geometriája | Az illesztőprogramok megfelelően kell [implementáljanak a mikrofontömb geometriai leíróit](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
-| Felfedező     | Az eszközök nem rendelkezhetnek az eszközre/eszközről érkező, nem észlelhető vagy irányíthatatlan hardverrel, firmware-rel vagy külső szoftveralapú nem lineáris hangfeldolgozási algoritmussal. |
-| Rögzítési formátum      | A rögzítési formátumoknak legalább 16 kHz-es mintavételi sebességet és ajánlott 24 bites mélységet kell használniuk |
+| A MIC-portok hasonlósága | Az összes mikrofonos port azonos hosszúságú a tömbben |
+| MIC-portok méretei | A port mérete Ø 0,8-1,0 mm. Port hossz/port átmérő \< 2 |
+| MIC-lezárás         | A zárolásokat egységesen implementálva, egymás után kell végrehajtani. Ajánlott \> 70%-os tömörítési arány a hab tömítésekhez |
+| A MIC megbízhatósága     | A hálót a por és a bejövő forgalom megelőzésére kell használni (a PCB-k és az alsó beérkező mikrofonok között, valamint a tömítés/felső fedél) |
+| MIC elkülönítése       | Gumi tömítések és vibrációs leválasztás struktúrán keresztül, különösen az integrált hangszórók miatti vibrációs útvonalak elkülönítéséhez |
+| Mintavételi óra      | Az eszköz hangjának szabad vibrálása és eldobása alacsony driftgel |
+| Rögzítési képesség   | Az eszköznek képesnek kell lennie az egyes csatornán lévő nyers adatfolyamok egyidejű rögzítésére |
+| USB                 | Az összes USB hangbeviteli eszköznek az [USB-hangeszközök Rev3 specifikációjának](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) megfelelően kell beállítania a leírót. |
+| Mikrofon geometriája | Az illesztőprogramoknak helyesen kell bevezetniük a [mikrofon tömb geometriájának leíróit](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| Felfedező     | Az eszközök nem rendelkezhetnek a nem felderíthető vagy nem ellenőrizhető hardver-, belső vezérlőprogram-vagy harmadik féltől származó szoftveres, nem lineáris hangfeldolgozási algoritmusokkal az eszközre. |
+| Rögzítési formátum      | A rögzítési formátumoknak a minimális mintavételezési sebességet kell használniuk 16 kHz és ajánlott 24 bites mélység |
 
-## <a name="electrical-architecture-considerations"></a>Elektromos architektúra szempontok
+## <a name="electrical-architecture-considerations"></a>Az elektromos architektúra szempontjai
 
-Adott esetben a tömbök csatlakoztathatók usb-állomáshoz (például a Microsoft Audio Stacket futtató soc-hoz), valamint a beszédfelismerési szolgáltatásokhoz vagy más alkalmazásokhoz való kapcsolódási pontokhoz.
+Adott esetben a tömbök csatlakoztathatók USB-állomáshoz (például a Microsoft audio stacket futtató SoC-hez), valamint a Speech Services vagy más alkalmazások felületéhez.
 
-A hardverösszetevőknek, például a PDM–TDM átalakításnak biztosítaniuk kell, hogy a mikrofonok dinamikus tartománya és SNR-je megmaradjon az újramintavevőkben.
+A hardveres összetevők, például a PDM-TDM átalakításnak biztosítaniuk kell, hogy a mikrofonok dinamikus tartománya és SNR megmaradjon az ismételt mintavevők között.
 
-A nagy sebességű USB Audio Class 2.0-t minden audio MCU-n belül támogatni kell, hogy a szükséges sávszélességet akár hét csatornához is biztosítsa magasabb mintavételi sebességgel és bitmélységben.
+A nagy sebességű, 2,0-es USB-hangosztályt minden audio MCU támogatnia kell, hogy a szükséges sávszélességet akár hét csatornán, nagyobb mintavételi sebességgel és kis mélységgel lehessen biztosítani.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a beszédfelismerési eszközök SDK-járól](speech-devices-sdk.md)
+> [További információ a Speech Devices SDK-ról](speech-devices-sdk.md)

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72935957"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg ellenőrzése a C egyéni kifejezéslistájához #
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg keresése egy egyéni kifejezési listáról C-ben #
 
 Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
@@ -32,7 +32,7 @@ Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a 
 - Listaadatok szerkesztése.
 - Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse `AzureEndpoint` a `CMSubscriptionKey` és a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket az azure-portálon található erőforrás **Rövid útmutató** lapján találja.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse a `AzureEndpoint` és `CMSubscriptionKey` a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ Szövegek egy adott kifejezéslista alapján való szűrését a **ContentModera
 - Egy MIME-típus, amely lehet „text/html”, „text/xml”, „text/markdown” vagy „text/plain”.
 - Az átvizsgálandó szöveg.
 - Logikai érték. Ebben a mezőben adja meg az **igaz** értéket a szöveg automatikus javításához az átvizsgálást megelőzően.
-- Logikai érték. Állítsa ezt a mezőt **true** értékre a szövegben lévő személyes adatok észleléséhez.
+- Logikai érték. A mező értékét állítsa **igaz** értékre a szövegben tárolt személyes adatfelderítéshez.
 - A kifejezéslista azonosítója.
 
 További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
@@ -362,9 +362,9 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>A fő módszer összeállítása
+## <a name="compose-the-main-method"></a>A Main metódus összeállítása
 
-Adja hozzá a **Fő** metódusdefiníciót a **Kifejezéslisták**névtérhez , **osztályprogram**. Végül zárja be a **Program** osztályt és a **TermLists** névteret.
+Adja hozzá a **fő** metódus definícióját a Namespace **TermLists**, a Class **programhoz**. Végül zárjuk be a **program** osztályt és a **TermLists** névteret.
 
 ```csharp
 static void Main(string[] args)
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Futtassa az alkalmazást a kimenet megtekintéséhez
 
-A konzol kimenete a következőkre fog kinézni:
+A konzol kimenete az alábbihoz hasonlóan fog kinézni:
 
 ```console
 Creating term list.

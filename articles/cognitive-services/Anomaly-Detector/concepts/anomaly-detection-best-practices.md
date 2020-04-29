@@ -1,7 +1,7 @@
 ---
 title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az anomáliák észlelése az anomáliák észlelése az anomáliadetektor API-val kapcsolatos gyakorlati tanácsok.
+description: Ismerje meg az ajánlott eljárásokat az anomáliák észlelési API-val kapcsolatos rendellenességek észlelése során.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67721621"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Az Anomáliadetektor API használatának gyakorlati tanácsok
+# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
 
-Az anomáliadetektor API egy állapotnélküli anomáliadetektálási szolgáltatás. Eredményeinek pontosságára és teljesítményére a következők befolyásolhatják:
+Az anomália-detektor API állapot nélküli anomália-észlelési szolgáltatás. Az eredmények pontossága és teljesítménye az alábbiakra is hatással lehet:
 
-* Az idősorozat-adatok előkészítése.
-* A használt anomáliadetektor API-paraméterei.
-* Az API-kérelemben lévő adatpontok száma. 
+* Az idősorozat-adatsorok előkészítése.
+* A használatban lévő anomália-detektor API-paraméterei.
+* Az API-kérelemben szereplő adatpontok száma. 
 
-Ebből a cikkből megtudhatja, hogy miként lehet az API használatával kapcsolatban az adatokhoz legjobb eredményeket elérni. 
+Ebből a cikkből megtudhatja, hogyan használhatók az API-k a legjobb eredmények az adatkezeléshez. 
 
-## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Mikor kell használni a köteget (teljes) vagy a legújabb (utolsó) pontanomália detektáltsa
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Mikor kell használni a Batch (teljes) vagy a legutóbbi (utolsó) pont anomália észlelését
 
-Az Anomáliadetektor API kötegelt detektálási végpontja lehetővé teszi az anomáliák észlelését a teljes alkalommal adatsoradatokon keresztül. Ebben az észlelési módban egyetlen statisztikai modell jön létre és alkalmaz az adatkészlet minden pontjára. Ha az idősorozat az alábbi jellemzőkkel rendelkezik, javasoljuk, hogy használja a kötegelt észlelést az adatok egyetlen API-hívásban való előnézetének megtekintéséhez.
+A rendellenesség-érzékelő API batch észlelési végpontja lehetővé teszi a rendellenességek észlelését a teljes idősorozat-adatain keresztül. Ebben az észlelési módban létrejön egy statisztikai modell, amely az adathalmaz minden pontjára vonatkozik. Ha az idősorozat az alábbi jellemzőkkel rendelkezik, javasoljuk, hogy a Batch-észlelés használatával tekintse meg az adatait egy API-hívásban.
 
-* Szezonális idősorok, alkalmi anomáliákkal.
-* Egy lapos trend idősorozat, alkalmi tüskékkel/dipekkel. 
+* Egy szezonális idősorozat, alkalmanként anomáliák.
+* Egy, az alkalmi tüskékkel/dipstal rendelkező, lapos trend idősorozata. 
 
-Nem javasoljuk a kötegelt anomáliadetektálás valós idejű adatfigyeléshez, vagy olyan idősorozat-adatokon való használatot, amelyek nem rendelkeznek a fenti jellemzőkkel. 
+A rendszer nem javasolja a Batch-anomáliák észlelését a valós idejű adatfigyeléshez, vagy a fenti jellemzőkkel nem rendelkező idősorozat-adatok használatát. 
 
-* A kötegelt észlelés csak egy modellt hoz létre és alkalmaz, az egyes pontok észlelése a teljes sorozat kontextusában történik. Ha az idősorozat-adatok szezonalitás nélkül fel-le trendeket mutatnak, a modell kihagyhat bizonyos változási pontokat (az adatok beugrása és kiugrása). Hasonlóképpen előfordulhat, hogy az adatkészlet későbbi részeinél kevésbé jelentős módosítási pontok nem számítanak elég jelentősnek ahhoz, hogy beépüljenek a modellbe.
+* A Batch-észlelés csak egyetlen modellt hoz létre és alkalmaz, az egyes pontok észlelése a teljes sorozat kontextusában történik. Ha az idősoros adatsorozat-adatváltozás szezonálisan leáll, előfordulhat, hogy a modell nem hagyhatja ki a változások (dips és tüskék) bizonyos pontjait. Hasonlóképpen, előfordulhat, hogy néhány olyan változási pont, amely kevésbé jelentős, mint az adathalmaz később, nem számít elég jelentősnek a modellbe való beépítés során.
 
-* A kötegek észlelése lassabb, mint a legutóbbi pont anomáliaállapotának észlelése a valós idejű adatfigyelés során, az elemzett pontok száma miatt.
+* A kötegelt észlelés lassabb, mint a valós idejű adatfigyelés során a legutóbbi pont anomália állapotának észlelése, az elemzett pontok száma miatt.
 
-A valós idejű adatfigyeléshez azt javasoljuk, hogy csak a legújabb adatpont anomáliaállapotának észlelése. A legújabb pontészlelés folyamatos alkalmazásával a streamelési adatok figyelése hatékonyabban és pontosabban elvégezhető.
+A valós idejű adatfigyelés érdekében javasoljuk, hogy csak a legújabb adatpontok rendellenességi állapotát észlelje. A legfrissebb pontok észlelésének folyamatos alkalmazásával a folyamatos átviteli adatfigyelés hatékonyabban és pontosan is elvégezhető.
 
-Az alábbi példa bemutatja, hogy ezek az észlelési módok milyen hatással lehetnek a teljesítményre. Az első képen az anomália állapotának folyamatos észlelése a 28 korábban látott adatpont mentén. A piros pontok anomáliák.
+Az alábbi példa azt mutatja be, hogy az észlelési módok milyen hatással lehetnek a teljesítményre. Az első képen látható, hogy az anomália állapotának folyamatos észlelése milyen eredménnyel jár a 28 korábban látott adatpontok mentén. A vörös pontok rendellenességeket mutatnak.
 
-![Anomáliaészlelést megjelenítő kép a legújabb ponttal](../media/last.png)
+![A legújabb ponttal a anomália észlelését bemutató kép](../media/last.png)
 
-Az alábbiakban ugyanazt az adatkészletet használja kötegelt anomáliadetektálás. A művelethez épített modell figyelmen kívül hagyott számos anomáliát, téglalapokkal jelölve.
+Az alábbi érték ugyanaz az adathalmaz, amely a Batch anomália észlelését használja. A művelethez készült modell számos rendellenességet figyelmen kívül hagyott, téglalapok által megjelölve.
 
-![Atétel-módszerrel anomáliadetektálást megjelenítő kép](../media/entire.png)
+![A Batch metódust használó anomáliák észlelését bemutató kép](../media/entire.png)
 
 ## <a name="data-preparation"></a>Adatok előkészítése
 
-Az Anomáliadetektor API elfogadja a JSON-kérelemobjektumba formázott idősorozat-adatokat. Az idősorok tetszőleges számszerű adatok lehetnek, amelyeket az idő múlásával szekvenciális sorrendben rögzítenek. Az idősorozat-adatok ablakait elküldheti az Anomália-detektor API-végpontra az API teljesítményének javítása érdekében. A küldhető adatpontok minimális száma 12, a maximális érték pedig 8640 pont. [A részletesség](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) az a sebesség, amelyen az adatok mintavételezése történik. 
+Az anomália detektor API egy JSON-kérelem objektumba formázott idősorozat-adathalmazokat fogad el. Az idősorozatok tetszőleges számú, egymást követő sorrendben rögzített számadatok lehetnek. Az API-k teljesítményének növelése érdekében elküldheti az idősoros adat Windows-adatait a rendellenesség-érzékelő API-végpontjának. Az elküldhető adatpontok minimális száma 12, a maximális érték 8640 pont. A [részletesség](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) határozza meg, hogy az adatai milyen arányban kerülnek mintavételre. 
 
-Az Anomáliadetektor API-ba küldött adatpontoknak érvényes egyezményes világidő (UTC) időbélyegzővel és numerikus értékkel kell rendelkezniük. 
+Az anomália-detektor API-nak elküldett adatpontoknak érvényes, egyezményes világidő (UTC) időbélyegzővel és numerikus értékkel kell rendelkezniük. 
 
 ```json
 {
@@ -72,7 +72,7 @@ Az Anomáliadetektor API-ba küldött adatpontoknak érvényes egyezményes vil�
 }
 ```
 
-Ha az adatok mintavételezése nem szabványos időintervallumban történik, `customInterval` megadhatja az attribútum hozzáadásával a kérelemben. Ha például a sorozatból 5 percenként mintavételkészül, a következőt veheti fel a JSON-kérelemhez:
+Ha az adatait nem szabványos időintervallumban kell mintát venni, megadhatja a `customInterval` kérelemben szereplő attribútum hozzáadásával. Ha például az adatsorozat 5 percenként van mintavétel alatt, a következőt adhatja hozzá a JSON-kérelemhez:
 
 ```json
 {
@@ -83,25 +83,25 @@ Ha az adatok mintavételezése nem szabványos időintervallumban történik, `c
 
 ### <a name="missing-data-points"></a>Hiányzó adatpontok
 
-A hiányzó adatpontok gyakoriak az egyenletesen elosztott idősorozat-adatkészletekben, különösen a finom részletességűadatkészletekben (Egy kis mintavételi időköz). Például néhány percenként mintavételezett adatok). Ha az adatokban a várt számú pont kevesebb, mint 10%-át hiányzik, az nem gyakorolhat negatív hatást az észlelési eredményekre. Fontolja meg az adatok hiányosságainak kitöltését a jellemzői alapján, például egy korábbi időszak adatpontjainak helyettesítése, lineáris interpoláció vagy mozgóátlag.
+A hiányzó adatpontok közösek a egyenletesen elosztott idősorozat-adatkészletekben, különösen a részletes részletességgel (kis mintavételi intervallummal). Például az adatmintavétel néhány percenként történik.) Az adatpontok várt számának kevesebb, mint 10%-a nem befolyásolhatja negatívan az észlelés eredményét. Vegye figyelembe, hogy a hézagok az adatokon alapulnak, például az adatpontok korábbi időszakból, lineáris interpolációból vagy mozgó átlagból való helyettesítésével.
 
-### <a name="aggregate-distributed-data"></a>Elosztott adatok összesítése
+### <a name="aggregate-distributed-data"></a>Összesített elosztott adatforgalom
 
-Az Anomáliadetektor API egy egyenletesen elosztott idősorozaton működik a legjobban. Ha az adatok véletlenszerűen vannak elosztva, akkor egy időegységgel kell összesíteni, például percenkénti, óránkénti vagy napi, például.
+Az anomália-detektor API a legjobban egy egyenletesen elosztott idősorozaton működik. Ha az adatokat véletlenszerűen terjesztik, összesíteni kell egy adott időegységgel, például percenként, óránként vagy naponta, például.
 
-## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Anomáliakimutatás szezonális mintákat tartalmazó adatokon
+## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Az adatanomáliák észlelése szezonális mintázattal
 
-Ha tudja, hogy az idősorozat-adatok szezonális mintával rendelkeznek (amely rendszeres időközönként fordul elő), javíthatja a pontosságot és az API válaszidejét. 
+Ha tudja, hogy az idősorozat-adatok szezonális mintázattal rendelkeznek (amely rendszeres időközönként történik), akkor javíthatja a pontosságot és az API-válaszidőt. 
 
-`period` Ha megadja a JSON-kérelem összeállításakor, az anomáliadetektálási késés akár 50%-kal is csökkenhet. Az `period` egy egész szám, amely nagyjából megadja, hogy az idősorozat hány adatpontot vesz igénybe a minta megismétléséhez. Például egy naponta egy adatponttal rendelkező `period` idősorozatnak `7`minta , és egy óránként egy ponttal rendelkező idősorozat (azonos heti mintával) a . `7*24` `period` Ha nem biztos az adatok mintáiban, nem kell megadnia ezt a paramétert.
+A JSON- `period` kérés összeállításakor megadható, hogy a rendszer akár 50%-kal is csökkentheti a rendellenességek észlelésének késleltetését. A `period` egy egész szám, amely azt határozza meg, hogy az idősorozat hány adatpontja veszi át a mintát. A napi egy adatponttal rendelkező idősorozatok például `period` a következők `7`lehetnek:, és egy adott időponttal rendelkező idősorozat (ugyanazzal a heti mintával). `period` `7*24` Ha nem biztos benne, hogy az adatai mintáik, nem kell megadnia ezt a paramétert.
 
-A legjobb eredmény `period`érdekében adjon meg 4 adatpontot, plusz egy továbbiet. Például a fent leírt heti mintával rendelkező óránkénti adatoknak 673`7 * 24 * 4 + 1`adatpontot kell megadniuk a kérelemtörzsben ( ).
+A legjobb eredmények érdekében 4 `period`értékű adatpontot adjon meg, és egy másikat. Például a fentiekben leírtak szerint óránkénti adatbevitel esetén a kérelem törzsében (`7 * 24 * 4 + 1`) 673 adatpontot kell megadni.
 
-### <a name="sampling-data-for-real-time-monitoring"></a>Mintavételi adatok a valós idejű monitorozáshoz
+### <a name="sampling-data-for-real-time-monitoring"></a>Mintavételezési adatgyűjtés a valós idejű figyeléshez
 
-Ha a streamelési adatok mintavételezése rövid időközönként (például másodperc vagy perc), az ajánlott adatpontok küldése meghaladhatja az Anomáliadetektor API maximális anama(8640 adatpontok). Ha az adatok stabil szezonális mintát mutatnak, fontolja meg az idősorozat-adatok mintaelküldését nagyobb időintervallumban, például órákban. Az adatok ily módon való mintavételezése is észrevehetően javíthatja az API válaszidejét. 
+Ha a folyamatos átviteli adatokat rövid időn belül (például másodpercben vagy percben) mintavétel útján adja meg, az ajánlott számú adatpont elküldésével meghaladhatja a rendellenesség-érzékelő API megengedett maximális számát (8640 adatpont). Ha az adatok stabil szezonális mintát mutatnak, érdemes lehet az idősorozat-adatok egy mintáját egy nagyobb időintervallumban, például órákban elküldeni. Az ilyen módon mintavételezéssel az API-válaszidő is javítható. 
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
-* [Rövid útmutató: Az anomáliadetektor REST API-jával észleli az idősorozat-adatok anomáliáinak anomáliáit](../quickstarts/detect-data-anomalies-csharp.md)
+* [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

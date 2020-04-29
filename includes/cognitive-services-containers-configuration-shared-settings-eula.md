@@ -5,16 +5,16 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 98a0ddd828c3d72fdead0ccc2fb1daabf7548de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712397"
 ---
-A `Eula` beállítás azt jelzi, hogy elfogadta a tároló licencét. Meg kell adnia egy értéket ehhez a konfigurációs `accept`beállításhoz, és az értéket a értékre kell állítania.
+A `Eula` beállítás azt jelzi, hogy elfogadta a tároló licencét. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéket a értékre `accept`kell állítani.
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Eula` | Sztring | Licenc elfogadása<br><br>Példa:<br>`Eula=accept` |
 
-A Cognitive Services-tárolók licencelése az Azure használatára vonatkozó [megállapodás](https://go.microsoft.com/fwlink/?linkid=2018657) alapján történik. Ha nem rendelkezik az Azure használatára vonatkozó meglévő szerződéssel, akkor elfogadja, hogy az Azure használatára vonatkozó szerződése a [Microsoft online előfizetési szerződése,](https://go.microsoft.com/fwlink/?linkid=2018755)amely tartalmazza az [online szolgáltatásokra vonatkozó feltételeket.](https://go.microsoft.com/fwlink/?linkid=2018760) Az előzetes verziók esetében elfogadja a [Microsoft Azure előzetesverziók kiegészítő használati feltételeit](https://go.microsoft.com/fwlink/?linkid=2018815)is. A tároló használatával elfogadja ezeket a feltételeket.
+Cognitive Services tárolók az Azure használatát szabályozó [Szerződés](https://go.microsoft.com/fwlink/?linkid=2018657) keretében vannak engedélyezve. Ha nem rendelkezik az Azure használatára vonatkozó szerződéssel, Ön vállalja, hogy az Azure használatát szabályozó szerződése a [Microsoft Online előfizetői szerződés](https://go.microsoft.com/fwlink/?linkid=2018755), amely magában foglalja az [online szolgáltatások használati feltételeit](https://go.microsoft.com/fwlink/?linkid=2018760)is. Előzetes verziók esetén elfogadja a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://go.microsoft.com/fwlink/?linkid=2018815)is. Az Ön által megadott tároló használatával elfogadja a jelen feltételeket.

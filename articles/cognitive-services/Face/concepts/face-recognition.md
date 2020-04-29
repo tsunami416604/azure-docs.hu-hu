@@ -1,7 +1,7 @@
 ---
-title: Arcfelismerési fogalmak
+title: Arcfelismerés – fogalmak
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk ismerteti az Ellenőrzés, A hasonlóság keresése, a Csoport és az Arcfelismerő műveletek és az alapul szolgáló adatstruktúrák fogalmait.
+description: Ez a cikk az ellenőrzés, a hasonló, a csoport és az arcfelismerő műveletek, valamint az alapul szolgáló adatstruktúrák fogalmait ismerteti.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73743076"
 ---
-# <a name="face-recognition-concepts"></a>Arcfelismerési fogalmak
+# <a name="face-recognition-concepts"></a>Arcfelismerés – fogalmak
 
-Ez a cikk ismerteti az Ellenőrzés, A hasonlóság keresése, a Csoport és az Arcfelismerő műveletek és az alapul szolgáló adatstruktúrák fogalmait. A felismerés nagyjából két különböző arc összehasonlítását írja le annak megállapítására, hogy hasonlítanak-e ugyanahhoz a személyhez.
+Ez a cikk az ellenőrzés, a hasonló, a csoport és az arcfelismerő műveletek, valamint az alapul szolgáló adatstruktúrák fogalmait ismerteti. Széles körben az elismerés leírja a két különböző arc összehasonlításának feltételeit annak megállapításához, hogy hasonlók-e, vagy ugyanahhoz a személyhez tartoznak-e.
 
-## <a name="recognition-related-data-structures"></a>Elismeréssel kapcsolatos adatstruktúrák
+## <a name="recognition-related-data-structures"></a>Az elismeréssel kapcsolatos adatstruktúrák
 
-A felismerési műveletek elsősorban a következő adatstruktúrákat használják. Ezek az objektumok a felhőben tárolódnak, és az azonosító karakterláncaik kal hivatkozhatnak. Az azonosítókarakterláncok mindig egyediek az előfizetésen belül. A névmezők duplikálhatók.
+Az elismerési műveletek elsősorban a következő adatstruktúrákat használják. Ezek az objektumok a felhőben tárolódnak, és az azonosító sztringek hivatkozhatnak rájuk. Az azonosító sztringek mindig egyediek az előfizetésen belül. A név mezők többször is megadhatók.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |:--|:--|
-|DetectedFace (DetectedFace)| Ezt az egyarc-ábrázolást az [arcfelismerési](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) művelet olvassa be. Az azonosítója a létrehozása után 24 órával lejár.|
-|Megőrzött face| Ha detectedFace objektumok at adunk egy csoporthoz, például a FaceList vagy a Person, válnak PersistedFace objektumokká válnak. Ezek bármikor [visszakereshetők,](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) és nem járnak le.|
-|[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) vagy [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Ez az adatstruktúra a PersistedFace objektumok válogatott listája. A FaceList rendelkezik egy egyedi azonosítóval, egy névkarakterláncgal és opcionálisan egy felhasználói adatkarakterláncgal.|
-|[Személy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Ez az adatstruktúra az ugyanahhoz a személyhez tartozó PersistedFace objektumok listája. Egyedi azonosítóval, névkarakterlánccal és adott esetben felhasználói adatkarakterlánccal rendelkezik.|
-|[PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) vagy [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Ez az adatstruktúra a Személy objektumok válogatott listája. Egyedi azonosítóval, névkarakterlánccal és adott esetben felhasználói adatkarakterlánccal rendelkezik. A persongroup kell [képezni,](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) mielőtt használható a felismerési műveletek.|
+|DetectedFace| Az egyoldalas megjelenítést a [Arcfelismerés](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) művelet kéri le. Az azonosító 24 órával a létrehozása után lejár.|
+|PersistedFace| Ha a DetectedFace objektumokat egy csoportba, például FaceList vagy személyhez adja hozzá, akkor a rendszer PersistedFace-objektumokat vált ki. Ezeket bármikor [lekérhetik](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) , és nem járnak le.|
+|[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) vagy [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Ez az adatstruktúra a PersistedFace objektumok egy választékát tartalmazza. A FaceList egyedi AZONOSÍTÓval, névvel és opcionálisan egy felhasználói adatkarakterlánctal rendelkeznek.|
+|[Személy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Ez az adatstruktúra azoknak a PersistedFace-objektumoknak a listája, amelyek ugyanahhoz a személyhez tartoznak. Egyedi AZONOSÍTÓval, névvel és opcionálisan egy felhasználói adatsztringtel rendelkezik.|
+|[PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) vagy [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Ez az adatstruktúra a személy objektumok egy vegyes listája. Egyedi AZONOSÍTÓval, névvel és opcionálisan egy felhasználói adatsztringtel rendelkezik. Meg kell [tanítani](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) egy PersonGroup, mielőtt az felismerhető műveletekben felhasználható lenne.|
 
-## <a name="recognition-operations"></a>Elismerési műveletek
+## <a name="recognition-operations"></a>Felismerési műveletek
 
-Ez a szakasz részletezi, hogy a négy felismerési művelet hogyan használja a korábban leírt adatstruktúrákat. Az egyes felismerési műveletek átfogó leírását az Áttekintés című [témakörben találja.](../Overview.md)
+Ez a szakasz részletesen ismerteti, hogyan használja a négy felismerési művelet a korábban leírt adatstruktúrákat. Az egyes felismerési műveletek széles leírását az [Áttekintés](../Overview.md)című témakörben tekintheti meg.
 
 ### <a name="verify"></a>Ellenőrzés
 
-Az [Ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) művelet arcazonosítót vesz fel az DetectedFace vagy a PersistedFace vagy egy másik arcazonosító vagy egy személy objektumból, és meghatározza, hogy ugyanahhoz a személyhez tartoznak-e. Ha átmegy egy Személy objektumon, a teljesítmény javítása érdekében adott át egy olyan személycsoportban, amelyhez az adott személy tartozik.
+Az [ellenőrzési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) művelet a DetectedFace vagy a PersistedFace, illetve egy másik Arcfelismerés vagy egy személy objektum azonosítóját veszi figyelembe, és meghatározza, hogy ugyanahhoz a személyhez tartoznak-e. Ha egy személy objektumot továbbít, lehetősége van egy olyan PersonGroup átadására, amelyhez az adott személy a teljesítmény javításához tartozik.
 
 ### <a name="find-similar"></a>Hasonló keresése
 
-A [Hasonló keresése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) művelet arcazonosítót vesz igénybe az DetectedFace vagy a PersistedFace és egy FaceList vagy más arcazonosítók tömbjében. A FaceList segítségével az adott laphoz hasonló arcok kisebb FaceList-listáját adja vissza. Az arcazonosítók tömbjével hasonlóképpen egy kisebb tömböt ad vissza.
+A [hasonló művelet megkeresése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a DetectedFace vagy a PersistedFace, illetve a FaceList vagy más Arcfelismerés-azonosítók tömbjét veszi át. A FaceList egy kisebb FaceList ad vissza, amely hasonló az adott arc eléréséhez. Az arc-azonosítók tömbje hasonlóan kisebb tömböt ad vissza.
 
 ### <a name="group"></a>Csoport
 
-A [csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) művelet az DetectedFace vagy a PersistedFace rendszerkülönböző arcazonosítóinak tömbjét veszi fel, és ugyanazokat az azonosítókat adja vissza, amelyek több kisebb tömbbe vannak csoportosítva. Minden "csoport" tömb hasonló arcazonosítókat tartalmaz. Egyetlen "messyGroup" tömb olyan arcazonosítókat tartalmaz, amelyekhez nem találtak hasonlóságokat.
+A [csoportosítási](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) művelet a DetectedFace vagy a PersistedFace különböző számú arc-azonosítót használ, és ugyanazokat az azonosítókat adja vissza, amelyek több kisebb tömbbe vannak csoportosítva. Az egyes "csoportok" tömb olyan Arcfelismerés-azonosítókat tartalmaz, amelyek hasonlónak látszanak. Egyetlen "messyGroup" tömb tartalmaz olyan Arcfelismerés-azonosítókat, amelyekhez nem találhatók hasonlóságok.
 
 ### <a name="identify"></a>Azonosítani
 
-Az [Azonosítás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) művelet egy vagy több arcazonosítót vesz igénybe az DetectedFace vagy a PersistedFace és a PersistedFace és a PersonGroup rendszerből, és olyan személyobjektumok listáját adja vissza, amelyekhez az egyes arcok tartozhatnak. A visszaadott személy objektumok jelölt objektumokként vannak csomagolva, amelyek előrejelzési megbízhatósági értékkel rendelkeznek.
+Az [azonosítási](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) művelet egy vagy több Arcfelismerés a DetectedFace vagy a PersistedFace, valamint egy PersonGroup, és visszaadja azon személy objektumok listáját, amelyekhez az egyes arcok tartozhatnak. A visszaadott személyek a jelölt objektumként vannak becsomagolva, amelyek előrejelzési megbízhatósági értékkel rendelkeznek.
 
 ## <a name="input-data"></a>Bemeneti adatok
 
-Az alábbi tippek segítségével biztosíthatja, hogy a bemeneti képek a legpontosabb felismerési eredményeket nyújtsák:
+A következő tippek segítségével biztosíthatja, hogy a bemeneti képek a legpontosabb felismerési eredményeket adjanak:
 
-* A támogatott bemeneti képformátumok a Következők: JPEG, PNG, GIF (az első képkocka), BMP.
+* A támogatott bemeneti képformátumok a következők: JPEG, PNG, GIF (az első keret), BMP.
 * A képfájl mérete nem lehet nagyobb 4 MB-nál.
-* Személy objektumok létrehozásakor használjon különböző szögeket és megvilágítást tartalmazó fényképeket.
-* Előfordulhat, hogy egyes arcokat nem ismer fel a rendszer technikai kihívások miatt, például:
-  * Képek extrém világítás, például súlyos háttérvilágítás.
-  * Akadályok, amelyek elzárják az egyik vagy mindkét szemet.
-  * Különbségek a haj típusában vagy az arcszőrzetben.
-  * Változások az arc megjelenésében az életkor miatt.
-  * Extrém arckifejezések.
+* Ha személy objektumokat hoz létre, különféle nézőpontokat és megvilágítást használó képeket használhat.
+* Előfordulhat, hogy néhány arc nem ismerhető fel technikai kihívások miatt, például:
+  * Rendkívüli megvilágítás, például súlyos háttérvilágítású képek.
+  * Az egyik vagy mindkét szemet blokkoló akadály.
+  * A haj típusától vagy az arc szőrtől származó különbségek.
+  * Az arc megjelenése az életkor miatt változik.
+  * Szélsőséges arc kifejezéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri az arcfelismerési fogalmakat, ismerje meg, hogyan írhat olyan parancsfájlt, amely azonosítja az arcokat egy képzett személycsoport ellen.
+Most, hogy már ismeri az Arcfelismerés fogalmait, megtudhatja, hogyan írhat olyan parancsfájlt, amely azonosítja az arcokat egy betanított PersonGroup.
 
-* [Arcok azonosítása a képeken](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Képeken lévő arcok azonosítása](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)

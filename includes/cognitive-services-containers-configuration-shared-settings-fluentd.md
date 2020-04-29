@@ -5,21 +5,21 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712501"
 ---
-Fluentd egy nyílt forráskódú adatgyűjtő az egységes naplózás. A `Fluentd` beállítások kezelik a tároló kapcsolatát egy [fluentd](https://www.fluentd.org) kiszolgálóval. A tároló tartalmaz egy Fluentd naplózási szolgáltatót, amely lehetővé teszi a tároló naplók és adott esetben metrikaadatok írását egy Fluentd kiszolgálóra.
+A Fluent egy nyílt forráskódú adatgyűjtő az egyesített naplózáshoz. A `Fluentd` beállítások kezelik a tároló kapcsolódását egy [Fluent](https://www.fluentd.org) -kiszolgálóval. A tároló tartalmaz egy olyan, a rendszer által használt naplózási szolgáltatót, amely lehetővé teszi a tároló számára a naplók írását, és opcionálisan metrikus adatokat egy Fluent-kiszolgáló számára.
 
-Az alábbi táblázat a `Fluentd` szakaszban támogatott konfigurációs beállításokat ismerteti.
+A következő táblázat a `Fluentd` szakasz által támogatott konfigurációs beállításokat ismerteti.
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 |------|-----------|-------------|
-| `Host` | Sztring | A Fluentd kiszolgáló IP-címe vagy DNS-állomásneve. |
-| `Port` | Egész szám | A Fluentd szerver portja.<br/> Az alapértelmezett érték: 24224. |
-| `HeartbeatMs` | Egész szám | A szívverés időköze, ezredmásodpercben. Ha az időköz lejárta előtt nem lett eseményforgalom, a rendszer szívverést küld a Fluentd kiszolgálónak. Az alapértelmezett érték 60000 ezredmásodperc (1 perc). |
-| `SendBufferSize` | Egész szám | A küldési műveletekhez lefoglalt hálózati pufferterület bájtban. Az alapértelmezett érték 32768 bájt (32 kilobájt). |
-| `TlsConnectionEstablishmentTimeoutMs` | Egész szám | Az időtúllépés ezredmásodpercben a Fluentd kiszolgálóval való SSL/TLS-kapcsolat létrehozásához. Az alapértelmezett érték 10000 ezredmásodperc (10 másodperc).<br/> Ha `UseTLS` hamis értékre van állítva, a rendszer figyelmen kívül hagyja ezt az értéket. |
-| `UseTLS` | Logikai | Azt jelzi, hogy a tárolónak ssl/TLS-t kell-e használnia a Fluentd kiszolgálóval való kommunikációhoz. Az alapértelmezett érték a hamis. |
+| `Host` | Sztring | A Fluent-kiszolgáló IP-címe vagy DNS-állomásneve. |
+| `Port` | Egész szám | A Fluent-kiszolgáló portja.<br/> Az alapértelmezett érték a 24224. |
+| `HeartbeatMs` | Egész szám | A szívverési időköz (ezredmásodpercben). Ha az intervallum lejárta előtt nem küldték el az esemény forgalmát, a rendszer szívverést továbbít a Fluent-kiszolgálónak. Az alapértelmezett érték 60000 ezredmásodperc (1 perc). |
+| `SendBufferSize` | Egész szám | A küldési műveletek számára lefoglalt hálózati puffer mérete (bájt). Az alapértelmezett érték 32768 bájt (32 kilobájt). |
+| `TlsConnectionEstablishmentTimeoutMs` | Egész szám | Az SSL/TLS-kapcsolatnak a Fluent-kiszolgálóval való létesítéséhez szükséges időkorlát ezredmásodpercben. Az alapértelmezett érték 10000 ezredmásodperc (10 másodperc).<br/> Ha `UseTLS` a értéke false (hamis), akkor a rendszer figyelmen kívül hagyja ezt az értéket. |
+| `UseTLS` | Logikai | Azt jelzi, hogy a tárolónak SSL/TLS protokollt kell használnia a Fluent-kiszolgálóval való kommunikációhoz. Az alapértelmezett érték a hamis. |

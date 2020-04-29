@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás – Bing helyesírás-ellenőrző API
+title: Nyelvi támogatás – Bing Spell Check API
 titleSuffix: Azure Cognitive Services
-description: A Bing helyesírás-ellenőrző API által támogatott természetes nyelvek listája.
+description: A Bing Spell Check API által támogatott természetes nyelvek listája.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390168"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing helyesírás-ellenőrző API nyelvi és régiótámogatása
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvi és területi támogatása
 
-Ezeket a nyelveket a Bing Helyesírás-ellenőrző API támogatja (csak `spell` módban).
+Ezeket a nyelveket a Bing Spell Check API támogatja (csak a `spell` módban).
 
-Kérjük, vegye figyelembe, hogy `en-US`a `mkt` , a `Accept-Language` programon kívül más nyelven való munkavégzéshez be kell állítani, és vagy be `setLang` kell állítani, ahogy azt a Spell Check API [v7 referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne `en-US`dolgozni, `mkt` a t be kell állítani `Accept-Language` , `setLang` vagy vagy be kell állítani, mivel [Spell Check API v7-hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -58,8 +58,8 @@ Kérjük, vegye figyelembe, hogy `en-US`a `mkt` , a `Accept-Language` programon 
 | Portugál (Brazília)   | `pt-BR`|
 | Portugál (Portugália) | `pt-PT`|
 | Orosz     | `ru`          |
-| spanyol (argentínai)    | `es-AR`          |
-| spanyol (chilei)     | `es-CL`          |
+| Spanyol (Argentína)    | `es-AR`          |
+| Spanyol (Chile)     | `es-CL`          |
 | Spanyol (Mexikó)    | `es-MX`          |
 | Spanyol (Spanyolország)    | `es-ES`          |
 | Spanyol (Egyesült Államok)    | `es-US`          |

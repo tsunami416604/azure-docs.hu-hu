@@ -1,7 +1,7 @@
 ---
-title: Felkapott videók keresése az interneten a Bing Video Search API használatával
+title: A weben megkeresheti a videók trendjét a Bing Video Search API használatával
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy a Bing Video Search API-val hogyan kereshet népszerű videókat az interneten.
+description: Megtudhatja, hogyan használhatja a Bing Video Search API a webes kereséshez a videók trendjeinek megjelenítéséhez.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68500609"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Népszerű videók beszereznie a Bing Video Search API-val 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Trendek a Bing Video Search API 
 
-A Bing Video Search API lehetővé teszi, hogy megtalálja a mai népszerű videókat az interneten keresztül és különböző kategóriákban. 
+A Bing Video Search API lehetővé teszi, hogy megkeresse a mai trendek videóit a weben és különböző kategóriákban. 
 
-## <a name="get-request"></a>GET kérés
+## <a name="get-request"></a>Kérelem kérése
 
-Ha a Bing Video Search API-ból szeretné lekérni a mai felkapott videókat, küldje el a következő GET-kérelmet:  
+A következő GET kérelem elküldésével megtekintheti a mai trendek videóit a Bing Video Search APIból:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -37,25 +37,25 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="market-support"></a>Piaci támogatás
 
-A következő piacok támogatják a felkapott videókat.  
+A következő piacok támogatják a trendi videókat.  
  
--   en-AU (Angol, Ausztrália)  
+-   EN-AU (angol, Ausztrália)  
 -   en-CA (angol, Kanada)  
 -   en-GB (angol, Nagy-Britannia)  
--   en-ID (Angol, Indonézia)  
--   en-IE (angol, Írország)  
--   en-IN (angol, India)  
--   en-NZ (angol, Új-Zéland)  
--   en-PH (Angol, Fülöp-szigetek)  
--   en-SG (angol, szingapúri)  
--   en-US (English, Amerikai Egyesült Államok)  
--   en-WW (angol, világszerte összesített kód)  
--   en-ZA (angol, Dél-Afrikai Köztársaság)  
+-   EN-ID (angol, Indonézia)  
+-   EN-IE (angol, Írország)  
+-   EN-IN (angol, India)  
+-   EN-NZ (angol, Új-Zéland)  
+-   EN-PH (angol, Fülöp-szigetek)  
+-   EN-SG (angol, Szingapúr)  
+-   en-US (angol, Egyesült Államok)  
+-   EN-WW (angol, globális összesített kód)  
+-   EN-ZA (angol, Dél-Afrika)  
 -   zh-CN (kínai, Kína)
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra  
 
-A következő példa egy API-választ mutat be, amely felkapott videókat tartalmaz, amelyek kategória és alkategória szerint vannak felsorolva. A válasz banner videókat is tartalmaz, amelyek a legnépszerűbb felkapott videók, és egy vagy több kategóriából származhatnak.  
+Az alábbi példa egy API-választ mutat be, amely a kategória és az Alkategória szerint felsorolt trendi videókat tartalmaz. A válasz szalagcím-videókat is tartalmaz, amelyek a legnépszerűbb videók, és egy vagy több kategóriából is származhatnak.  
 
 ```json
 {  

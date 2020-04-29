@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68882676"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvi és területi támogatása
 
-A Bing Web Search API több mint három tucat országot vagy régiót támogat, amelyek közül sok több nyelvet is támogat. Ha egy országot vagy régiót lekérdezéssel ad meg, az ország vagy régiók érdeklődési körének megfelelően finomíthatja a keresési eredményeket. Az eredmények tartalmazhatnak bingre mutató hivatkozásokat, és ezek a hivatkozások a Bing felhasználói élményét a megadott országnak/régiónak vagy nyelvnek megfelelően honosíthatják.
+Az Bing Web Search API több mint három tucat országot vagy régiót támogat, több mint egy nyelvet. Ha egy olyan országot vagy régiót ad meg, amely egy lekérdezéssel segíti a keresési eredmények pontosítását az adott ország vagy régió érdekei alapján. Az eredmények tartalmazhatnak a Bingre mutató hivatkozásokat, és ezek a hivatkozások a megadott ország/régió vagy nyelv alapján honosítják meg a Bing felhasználói élményt.
 
-A `cc` lekérdezési paraméter rel megadhat egy országot vagy régiót. Ha egy ország vagy régió meg van adva, meg [ `Accept-Language` ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)kell adnia egy vagy több nyelvkódot a fejléccel. Használja a [Piacok táblázatot](#markets) az egyes piacokon támogatott nyelvek listájához.
+A `cc` lekérdezési paraméter segítségével megadhat egy országot vagy régiót. Ha meg van adva egy ország vagy régió, meg kell adnia egy vagy több, a [ `Accept-Language` fejlécet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)tartalmazó nyelvi kódot. Az egyes piacokon támogatott nyelvek listáját a [Markets (piacok) táblában](#markets) végezheti el.
 
-Másik lehetőségként megadhatja a `mkt` piacot a lekérdezési paraméterrel, és egy kódot a **Piacok** táblából. A piac egyidejű megadása egy országot vagy régiót és egy előnyben részesített nyelvet határoz meg. A nyelvet explicit módon beállíthatja a `setLang` lekérdezési paraméterrel.
+Másik lehetőségként megadhatja a piacot `mkt` a lekérdezési paraméterrel, valamint egy kódot a **piacok** táblából. A piac egyidejű megadása megadja az országot vagy régiót, valamint az előnyben részesített nyelvet. Explicit módon beállíthatja a nyelvet a `setLang` lekérdezési paraméterrel.
 
 ## <a name="countriesregions"></a>Országok/régiók
 
@@ -71,45 +71,45 @@ Másik lehetőségként megadhatja a `mkt` piacot a lekérdezési paraméterrel,
 |Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|Spanyol|es-AR|
-|Ausztrália|Angol|en-AU|
+|Ausztrália|Angol|EN-AU|
 |Ausztria|Német|de-AT|
 |Belgium|Holland|nl-BE|
 |Belgium|Francia|fr-BE|
 |Brazília|Portugál|pt-BR|
 |Kanada|Angol|en-CA|
-|Kanada|Francia|fr-CA|
-|Chile|Spanyol|es-CL|
+|Kanada|Francia|fr – CA|
+|Chile|Spanyol|es – CL|
 |Dánia|Dán|da-DK|
 |Finnország|Finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
-|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
-|India|Angol|en-IN|
-|Indonézia|Angol|en-ID|
+|Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
+|India|Angol|EN-IN|
+|Indonézia|Angol|EN-ID|
 |Olaszország|Olasz|it-IT|
 |Japán|Japán|ja-JP|
 |Dél-Korea|Koreai|ko-KR|
-|Malajzia|Angol|hu-ÉN|
+|Malajzia|Angol|EN-MY|
 |Mexikó|Spanyol|es-MX|
 |Hollandia|Holland|nl-NL|
-|Új-Zéland|Angol|en-NZ|
-|Norvégia|Norvég|no-NO|
+|Új-Zéland|Angol|EN-NZ|
+|Norvégia|Norvég|nem – nem|
 |Kína|Kínai|zh-CN|
 |Lengyelország|Lengyel|pl-PL|
 |Portugália|Portugál|pt-PT|
-|Fülöp-szigetek|Angol|en-PH|
+|Fülöp-szigetek|Angol|EN-PH|
 |Oroszország|Orosz|ru-RU|
 |Szaúd-Arábia|Arab|ar-SA|
-|Dél-afrikai Köztársaság|Angol|en-ZA|
+|Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
 |Svédország|Svéd|sv-SE|
-|Svájc|Francia|fr-CH|
+|Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|Török|tr-TR|
-|Egyesült Királyság|Angol|hu-GB|
+|Egyesült Királyság|Angol|en-GB|
 |Egyesült Államok|Angol|en-US|
-|Egyesült Államok|Spanyol|es-US|
+|Egyesült Államok|Spanyol|es – USA|
 
 ## <a name="next-steps"></a>További lépések
 

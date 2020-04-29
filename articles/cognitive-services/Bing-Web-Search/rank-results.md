@@ -1,7 +1,7 @@
 ---
-title: A rangsor használata a keresési eredmények megjelenítéséhez - Bing Web Search API
+title: A keresési eredmények megjelenítésére szolgáló rangsorok használata – Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogy miként jelenítheti meg a keresési eredményeket a Bing Web Search API-ból a rangsorolás segítségével.
+description: Ismerje meg, hogyan jelenítheti meg a keresési eredményeket a Bing Web Search API a rangsorolás használatával.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,29 +12,29 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390122"
 ---
-# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>A rangsorolás használata a Bing Web Search API eredményeinek megjelenítéséhez  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>A rangsor használata Bing Web Search API eredmények megjelenítéséhez  
 
-Minden keresési válasz tartalmaz egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely meghatározza, hogyan kell megjeleníteni a keresési eredményeket. A rangsorolási válasz a találatokat a hagyományos keresési eredményoldal fővonali tartalma és oldalsávtartalma szerint csoportosítja. Ha az eredményeket nem hagyományos fővonal- és oldalsáv formátumban jeleníti meg, akkor a fővonal tartalmát jobban át kell adnia, mint az oldalsáv tartalmát.  
+Minden keresési válasz tartalmaz egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely megadja, hogy a keresési eredményeket hogyan kell megjeleníteni. A rangsorolási válaszok egy hagyományos keresési eredmények oldalának fővonali tartalma és oldalsáv-tartalma eredményei. Ha nem jeleníti meg az eredményeket hagyományos fővonal-és oldalsáv-formátumban, meg kell adnia a fővonali tartalmat, mint az oldalsáv tartalma.  
 
-Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Elemek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja azt a sorrendet, amelyben a tartalomnak meg kell jelennie. Minden elem a következő két módon azonosítja az eredményt a válaszon belül.  
+Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) Array azonosítja azt a sorrendet, amelyben a tartalomnak szerepelnie kell. Az egyes elemek a következő két módszert biztosítják az eredmény azonosítására a válaszon belül.  
 
--   `answerType`és `resultIndex` – `answerType` A mező azonosítja a választ (például `resultIndex` weblapot vagy híreket), és a válaszban (például egy újságcikkben) azonosítja az eredményt. Az index nulla alapú.  
+-   `answerType`és `resultIndex` – a `answerType` mező azonosítja a választ (például a weboldalt vagy híreket) `resultIndex` , és a válaszon belül azonosítja az eredményeket (például egy újságcikket). Az index nulla alapú.  
 
--   `value`— `value` A mező olyan azonosítót tartalmaz, amely megegyezik a válasz vagy a válaszon belüli eredmény azonosítójával. A válasz vagy az eredmények tartalmazzák az azonosítót, de mindkettőt nem.  
+-   `value`– A `value` mező olyan azonosítót tartalmaz, amely a válasz vagy eredmény azonosítójának felel meg a válaszon belül. Vagy a válasz vagy az eredmény tartalmazza az azonosítót, de nem mindkettőt.  
 
-Az azonosító használata egyszerűbb, mert csak a rangsor azonosítóját kell egyeztetnie a válasz azonosítójával vagy annak egyik eredményével. Ha egy válaszobjektum `id` mezőt tartalmaz, jelenítse meg a válasz összes eredményét együtt. Ha például `News` az objektum `id` tartalmazza a mezőt, jelenítse meg az összes újságcikket együtt. Ha `News` az objektum nem `id` tartalmazza a mezőt, `id` akkor minden újságcikk tartalmaz egy mezőt, és a rangsorolási válasz összekeveri a híreket a többi válasz eredményeivel.  
+Az azonosító használata egyszerűbb, mert csak a válasz AZONOSÍTÓjának vagy az egyik eredményének kell megegyeznie. Ha egy válasz objektum tartalmaz egy `id` mezőt, a válasz összes eredményét együtt jeleníti meg. Ha például az `News` objektum tartalmazza a `id` mezőt, az összes újságcikk együtt jelenjen meg. Ha az `News` objektum nem tartalmazza a `id` mezőt, akkor minden újságcikk tartalmaz egy `id` mezőt, és a rangsorolási válasz összekeveri a híreket más válaszok eredményeivel.  
 
-Használata, `answerType` `resultIndex` és egy kicsit bonyolultabb. A `answerType` megjelenítendő eredményeket tartalmazó válasz azonosítására használható. Ezután indexelheti `resultIndex` a válasz eredményeit, hogy az eredmény megjelenjen. (Az `answerType` érték a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektum mezőjének neve.) Ha a válasz összes eredményét együtt kell megjelenítenie, a rangsorolási `resultIndex` válasz elem nem tartalmazza a mezőt.  
+A `answerType` és `resultIndex` a használata valamivel bonyolultabb. `answerType` A segítségével azonosíthatja a megjelenítendő eredményeket tartalmazó választ. `resultIndex` Ezután a válasz eredményei alapján indexelheti az eredményt, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza `resultIndex` a mezőt.  
 
-## <a name="ranking-response-example"></a>Példa rangsorolásra adott válaszra
+## <a name="ranking-response-example"></a>Rangsorolási válasz példája
 
-Az alábbiakban egy példa [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Mivel a webes válasz `id` nem tartalmaz mezőt, az összes weblapot külön-külön kell `id` megjeleníteni a rangsorolás alapján (minden weblap tartalmaz egy mezőt). Mivel a képekre, videókra és a `id` kapcsolódó keresésre adott válaszok tartalmazzák a mezőt, a válaszok eredményeit a rangsor alapján együtt jelenítheti meg.
+A következő példa egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)mutat be. Mivel a webes válasz nem tartalmaz `id` mezőt, a rangsorolás alapján egyenként jeleníti meg az összes weblapot (minden weblap tartalmaz egy `id` mezőt). Mivel a képek, videók és a kapcsolódó keresések választ adnak a `id` mezőre, az egyes válaszok eredményét a rangsorolás alapján fogja megjeleníteni.
 
 ```json
 {  
@@ -207,21 +207,21 @@ Az alábbiakban egy példa [RankingResponse](https://docs.microsoft.com/rest/api
 
 A rangsorolási válasz alapján a fővonal a következő keresési eredményeket jeleníti meg:  
 
--   Az első weboldal eredménye
--   Az összes kép  
--   A második és harmadik weboldal eredményei  
--   Az összes videó  
--   A 4., 5.  
+-   Az első weblap eredménye
+-   Minden rendszerkép  
+-   A második és a harmadik weblap eredményei  
+-   Minden videó  
+-   A 4., 5. és 6. weblap eredményei  
 
-És az oldalsáv a következő keresési eredményeket jeleníti meg:  
+Az oldalsáv pedig a következő keresési eredményeket jeleníti meg:  
 
 -   Az összes kapcsolódó keresés  
 
 
 ## <a name="next-steps"></a>További lépések
 
-A rangsorolatlan eredmények népszerűsítéséről a [nem rangsorolt válaszok népszerűsítése című témakörben talál.](./filter-answers.md#promoting-answers-that-are-not-ranked)
+További információ a nem rangsorolt eredmények előléptetéséről: [a nem rangsorolt válaszok előléptetése](./filter-answers.md#promoting-answers-that-are-not-ranked).
 
-A válaszban szereplő rangsorolt válaszok számának korlátozásáról a [Válaszban szereplő válaszok számának korlátozása](./filter-answers.md#limiting-the-number-of-answers-in-the-response)című témakörben talál.
+További információ a válaszban rangsorolt válaszok számának korlátozásáról: [a válaszban szereplő válaszok számának korlátozása](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
 
-Az eredmények megjelenítéséhez rangsorolást használó C# példát lásd: [C# ranking tutorial](./csharp-ranking-tutorial.md).
+Az eredmények megjelenítéséhez rangsort használó C#-példa: [C# ranking oktatóanyag](./csharp-ranking-tutorial.md).

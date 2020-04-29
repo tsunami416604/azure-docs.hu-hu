@@ -1,7 +1,7 @@
 ---
-title: Fordító szöveg API BreakSentence metódus
+title: Translator Text API BreakSentence metódus
 titleSuffix: Azure Cognitive Services
-description: A Translator Text API BreakSentence metódus azonosítja a mondathatárok elhelyezését egy szövegdarabban.
+description: A Translator Text API BreakSentence metódus azonosítja a mondatok határait egy szövegben.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76548118"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Fordító szöveg API 3.0: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3,0: BreakSentence
 
-A mondathatárok elhelyezését azonosítja egy szövegdarabban.
+Meghatározza a mondatok szegélyének elhelyezését egy szövegben.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-Kérés `POST` küldése a következő knek:
+`POST` Kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Kérelem paraméterei
+## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-A lekérdezési karakterláncon átadott kérelemparaméterek a következők:
+A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 | Lekérdezési paraméter | Leírás |
 | -------| ----------- |
-| api-verzió <img width=200/>   | **Kötelező lekérdezési paraméter**.<br/>Az ügyfél által kért API verziója. Az értéknek kell lennie. `3.0` |
-| language | **Nem kötelező lekérdezési paraméter**.<br/>A beviteli szöveg nyelvét azonosító nyelvi címke. Ha nincs megadva kód, a program automatikus nyelvfelismerést alkalmaz. |
-| szkriptet.    | **Nem kötelező lekérdezési paraméter**.<br/>A bemeneti szöveg által használt parancsfájlt azonosító parancsfájlcímke. Ha nincs megadva parancsfájl, a program a nyelv alapértelmezett parancsfájlját veszi alapul.  | 
+| api-verzió <img width=200/>   | **Szükséges lekérdezési paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie. |
+| language | **Opcionális lekérdezési paraméter**.<br/>A szövegbeviteli szöveg nyelvét azonosító nyelvi címke. Ha nincs megadva kód, az automatikus nyelvfelismerés lesz alkalmazva. |
+| szkriptet.    | **Opcionális lekérdezési paraméter**.<br/>A bemeneti szöveg által használt parancsfájlt azonosító szkript címkéje. Ha nincs megadva parancsfájl, a rendszer a nyelv alapértelmezett parancsfájlját fogja feltételezni.  | 
 
-A kérelemfejlécek a következőket tartalmazzák:
+A kérelem fejlécei a következők:
 
 | Fejlécek | Leírás |
 | ------- | ----------- |
-| Hitelesítési fejléc(ek) <img width=200/>  | **Kötelező kérelemfejléc**.<br/>Lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">A hitelesítéshez rendelkezésre álló lehetőségek.</a> |
-| Content-Type | **Kötelező kérelemfejléc**.<br/>Megadja a hasznos adat tartalom típusát. Lehetséges értékek: `application/json`. . |
-| Tartalom hossza    | **Kötelező kérelemfejléc**.<br/>A kérelem törzsének hossza.  | 
-| X-ClientTraceId   | **Nem kötelező**.<br/>Az ügyfél által létrehozott GUID a kérelem egyedi azonosítására. Ne feledje, hogy a fejlécet kihagyhatja, ha a nyomkövetési `ClientTraceId`azonosítót a lekérdezési karakterláncba a .  | 
+| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
+| Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:. |
+| Content-Length    | **Kötelező kérelem fejléce**<br/>A kérelem törzsének hossza  | 
+| X – ClientTraceId   | Nem **kötelező**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési `ClientTraceId`azonosító a nevű lekérdezési paraméter használatával.  | 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömbelem egy JSON-objektum, `Text`amelynek karakterlánc-tulajdonsága van. A mondathatárokat a tulajdonság értéke `Text` alapján számítja ki a függvény. Egy egy darab szöveget tartalmazó mintakérelem törzse így néz ki:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű `Text`JSON-objektum. A `Text` rendszer kiszámítja a mondatok határait a tulajdonság értékeként. A minta kérések törzse egy szöveggel így néz ki:
 
 ```json
 [
@@ -60,26 +60,26 @@ A kérelem törzse egy JSON-tömb. Minden tömbelem egy JSON-objektum, `Text`ame
 
 Az alábbi korlátozások érvényesek:
 
-* A tömb legbőlegelhető 100 elemet tartalmazhat.
-* A tömbelem szöveges értéke szóközökkel együtt nem haladhatja meg a 10 000 karaktert.
-* A kérelemben szereplő teljes szöveg nem haladhatja meg az 50 000 karaktert szóközökkel együtt.
-* Ha `language` a lekérdezési paraméter meg van adva, akkor minden tömbelemnek ugyanazon a nyelven kell lennie. Ellenkező esetben a nyelvi automatikus észlelés az egyes tömbelemekre egymástól függetlenül vonatkozik.
+* A tömb legfeljebb 100 elemet tartalmazhat.
+* Egy tömb elemének szöveges értéke nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
+* A kérelemben szereplő teljes szöveg nem lehet hosszabb 50 000 karakternél, beleértve a szóközöket is.
+* Ha a `language` lekérdezési paraméter meg van adva, akkor az összes tömb elemnek ugyanabban a nyelven kell lennie. Ellenkező esetben a rendszer minden egyes tömb elemhez külön alkalmazza a nyelv automatikus észlelését.
 
 ## <a name="response-body"></a>Választörzs
 
-A sikeres válasz egy JSON-tömb, amely a bemeneti tömb minden egyes karakterláncához egy-egy eredményt ad. Az eredményobjektum a következő tulajdonságokat tartalmazza:
+A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden karakterláncához. Az eredmény objektum a következő tulajdonságokat tartalmazza:
 
-  * `sentLen`: Egész számok ból álló tömb, amely a szövegelemmondatainak hosszát jelöli. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza. 
+  * `sentLen`: Egész számok tömbje, amely a mondatok hosszát jelképezi a szöveges elemben. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza. 
 
-  * `detectedLanguage`: Az észlelt nyelvet a következő tulajdonságokon keresztül leíró objektum:
+  * `detectedLanguage`: Az észlelt nyelvet leíró objektum a következő tulajdonságokkal:
 
      * `language`: Az észlelt nyelv kódja.
 
-     * `score`: Az eredmény megbízhatóságát jelző lebegőérték. A pontszám nulla és egy között van, és az alacsony pontszám alacsony magabiztosságot jelez.
+     * `score`: Egy lebegőpontos érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és egy, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
      
-    Vegye figyelembe, hogy a `detectedLanguage` tulajdonság csak akkor van jelen az eredményobjektumban, ha a nyelv automatikus észlelését kéri.
+    Vegye figyelembe, `detectedLanguage` hogy a tulajdonság csak akkor jelenik meg az eredmény objektumban, ha a rendszer automatikus észlelést kér.
 
-Egy példa JSON válasz:
+Példa JSON-válaszra:
 
 ```json
 [
@@ -99,14 +99,14 @@ Egy példa JSON válasz:
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X-RequestId azonosító</td>
-    <td>A szolgáltatás által a kérelem azonosítására létrehozott érték. Hibaelhárítási célokra használják.</td>
+    <td>X – kérelemazonosító</td>
+    <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Válasz állapotkódjai
+## <a name="response-status-codes"></a>Válasz-állapotkódok
 
-A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők. 
+A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők: 
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
@@ -117,35 +117,35 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők.
   </tr>
   <tr>
     <td>400</td>
-    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa ki a kérelem paramétereit.</td>
+    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa a kérelmek paramétereit.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>A kérés t nem lehetett hitelesíteni. Ellenőrizze, hogy a hitelesítő adatok meg vannak-e adva és érvényesek-e.</td>
+    <td>A kérést nem lehetett hitelesíteni. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>A kérés nem engedélyezett. Ellenőrizze a részleteket hibaüzenetet. Ez gyakran azt jelzi, hogy a próba-előfizetéssel rendelkező összes ingyenes fordítást felhasználták.</td>
+    <td>A kérés nincs engedélyezve. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>A kiszolgáló elutasította a kérést, mert az ügyfél túllépte a kérelemkorlátot.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálkozzon újra a kéréssel. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérelem json-hibaválaszt is ad vissza. A hibakód egy 6 jegyű szám, amely a 3 jegyű HTTP-állapotkódot, majd egy 3 jegyű számot követ a hiba további kategorizálása érdekében. A gyakori hibakódok a [v3 Translator Text API referenciaoldalán](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Text API hivatkozási oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 
-A következő példa bemutatja, hogyan lehet egyetlen mondathoz mondathatárokat szerezni. A szolgáltatás automatikusan felismeri a mondat nyelvét.
+Az alábbi példa bemutatja, hogyan szerezhet be mondatokat egy mondathoz. A szolgáltatás automatikusan észleli a mondat nyelvét.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

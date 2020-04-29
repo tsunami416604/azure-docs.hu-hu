@@ -1,7 +1,7 @@
 ---
-title: A Smart Labeler segítségével gyorsabban címkézi a képeket
+title: Gyorsabban címkézheti a képeket intelligens Labeler
 titleSuffix: Azure Cognitive Services
-description: Ebből az útmutatóból megtudhatja, hogyan hozhat létre javasolt címkéket a képekhez az Intelligens címkéző használatával. Ez lehetővé teszi, hogy a címkék nagy számú kép gyorsabban betanítása során a Custom Vision modell.
+description: Ebből az útmutatóból megtudhatja, hogyan használható az intelligens Labeler a javasolt címkék létrehozásához a képekhez. Ez lehetővé teszi, hogy a Custom Vision-modellek betanítása során gyorsabban címkézze fel a képek nagy számát.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647752"
 ---
-# <a name="label-images-faster-with-smart-labeler"></a>A Smart Labeler segítségével gyorsabban címkézi a képeket
+# <a name="label-images-faster-with-smart-labeler"></a>Gyorsabban címkézheti a képeket intelligens Labeler
 
-Ebből az útmutatóból megtudhatja, hogyan hozhat létre javasolt címkéket a képekhez az Intelligens címkéző használatával. Ez lehetővé teszi, hogy a címkék nagy számú kép gyorsabban betanítása során a Custom Vision modell.
+Ebből az útmutatóból megtudhatja, hogyan használható az intelligens Labeler a javasolt címkék létrehozásához a képekhez. Ez lehetővé teszi, hogy a Custom Vision-modellek betanítása során gyorsabban címkézze fel a képek nagy számát.
 
-Amikor egy Egyéni látásmodell lemezképeit címkézi, a szolgáltatás a modell legújabb betanított iterációját használja a címkézetlen képek címkéinek előrejelzéséhez. Ezután ezeket az előrejelzéseket javasolt címkékként jeleníti meg a kiválasztott megbízhatósági küszöbérték és az előrejelzési bizonytalanság alapján. Ezután megerősítheti vagy módosíthatja a javaslatokat, felgyorsítva a képek betanítási folyamatát.
+Ha Custom Vision modellhez címkéz képeket, a szolgáltatás a modell legújabb betanított iterációját használja a címkézetlen lemezképek címkéjének előrejelzéséhez. Ezután ezeket az előrejelzéseket javasolt címkékként jeleníti meg a kiválasztott megbízhatósági küszöb és az előrejelzési bizonytalanság alapján. Ezután megerősítheti vagy módosíthatja a javaslatokat, és felgyorsíthatja a képek manuális címkézésének folyamatát a betanításhoz.
 
-## <a name="when-to-use-smart-labeler"></a>Mikor kell használni a Smart Labeler-t?
+## <a name="when-to-use-smart-labeler"></a>Mikor kell használni az intelligens Labeler
 
-Tartsa szem előtt az alábbi korlátozásokat:
+Tartsa szem előtt a következő korlátozásokat:
 
-* Csak olyan képekhez kérjen javasolt címkéket, amelyek tartalma már egyszer be van tanítva. Ne kapjon javaslatot egy új címke, hogy éppen csak most kezdik a vonat.
+* Csak azokat a képeket ajánlott címkéket kérni, amelyek tartalmát már egyszer már betanítják. Ne kapjon olyan új címkére vonatkozó javaslatokat, amelyet most elkezd betanítani.
 
 > [!IMPORTANT]
-> A Smart Labeler funkció ugyanazt a [díjszabási modellt](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) használja, mint a rendszeres előrejelzések. Amikor először indítja el a képek egy készletének javasolt címkéit, ugyanaz t számítunk fel, mint az előrejelzési hívásokért. Ezt követően a szolgáltatás 30 napig tárolja a kiválasztott képek eredményeit egy adatbázisban, és ezen időszakon belül bármikor ingyenesen elérheti őket. 30 nap elteltével, akkor kell fizetnie, ha újra kéri a javasolt címkéket.
+> Az intelligens Labeler szolgáltatás ugyanazt az [árképzési modellt](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) használja, mint a normál előrejelzések. Amikor első alkalommal indítja el a javasolt címkéket egy adott rendszerképhez, az előrejelzési hívásokhoz hasonlóan kell fizetnie. Ezt követően a szolgáltatás 30 napig tárolja a kiválasztott lemezképek eredményeit egy adatbázisban, és bármikor elérhetővé teheti azokat az adott időszakon belül ingyenesen. 30 nap után díjat számítunk fel, ha újra kéri a javasolt címkéket.
 
-## <a name="smart-labeler-workflow"></a>Intelligens címkéző munkafolyamat
+## <a name="smart-labeler-workflow"></a>Intelligens Labeler-munkafolyamat
 
-A következő lépések bemutatják, hogyan használhatja a Smart Labeler-t:
+A következő lépések bemutatják, hogyan használható az intelligens Labeler:
 
-1. Töltse fel az összes betanítási képet a Custom Vision projektbe.
-1. Címkézze fel az adatkészlet egy részét, és válasszon egyenlő számú képet az egyes címkékhez.
+1. Töltse fel az összes betanítási lemezképet a Custom Vision projektbe.
+1. Címkézze fel az adatkészletet, és az egyes címkékhez azonos számú lemezképet választ.
     > [!TIP]
-    > Győződjön meg arról, hogy az összes olyan címkét használja, amelyre később javaslatokat szeretne tenni.
+    > Győződjön meg arról, hogy az összes olyan címkét használja, amelyhez később javaslatot szeretne tenni.
 1. Indítsa el a betanítási folyamatot.
-1. Ha a betanítás befejeződött, keresse meg a **Címkézetlen** nézetet, és válassza a **Javasolt címkék betöltése** gombot a bal oldali ablaktáblán.
+1. A képzés befejezésekor navigáljon a **címkézett** nézethez, és válassza a **javasolt címkék beolvasása** gombot a bal oldali ablaktáblán.
     > [!div class="mx-imgBorder"]
-    > ![A javasolt címkék gomb a címkézetlen képek lapon látható.](./media/suggested-tags/suggested-tags-button.png)
-1. A megjelenő előugró ablakban adja meg, hogy hány képhez szeretne javaslatokat tenni. A címkézetlen képek egy részéhez csak kezdeti címkejavaslatokat kell kapnia. Jobb címkejavaslatokat kap, amint végighalad ezen a folyamaton.
-1. Erősítse meg a javasolt címkéket, és javítsa ki a nem megfelelő címkéket.
+    > ![A javasolt címkék gomb a címkézetlen lemezképek lapon jelenik meg.](./media/suggested-tags/suggested-tags-button.png)
+1. A megjelenő előugró ablakban állítsa be, hogy hány lemezképet szeretne javasolni. A címkézetlen lemezképek egy részének csak a kezdeti címkével kapcsolatos javaslatok olvashatók be. A folyamat megismétlése után jobb címkézési javaslatokat kaphat.
+1. Erősítse meg a javasolt címkéket, javítsa ki azokat, amelyek nem megfelelőek.
     > [!TIP]
-    > A javasolt címkékkel rendelkező képek et előrejelzési bizonytalanságuk szerint rendezi a (az alacsonyabb értékek nagyobb bizalmat jeleznek). A rendezési sorrendet a Rendezés bizonytalanság szerint beállítással **módosíthatja.** Ha a sorrendet **magasra és alacsonyra**állítja, először kijavíthatja a nagy bizonytalansági előrejelzéseket, majd gyorsan megerősítheti az alacsony bizonytalanságot.
-    * A képbesorolási projektekben kijelölheti és megerősítheti a címkéket a kötegekben. Szűrje a nézetet egy adott javasolt címke szerint, törölje a helytelenül címkézett képek kijelölését, majd erősítse meg a többit egy kötegben.
+    > A javasolt címkékkel rendelkező lemezképek az előrejelzési bizonytalanság szerint vannak rendezve (az alacsonyabb értékek nagyobb megbízhatóságot jeleznek). A rendezési sorrendet a **Rendezés bizonytalansága** lehetőséggel módosíthatja. Ha a rendelést **magasról alacsonyra**állítja, akkor először javítsa ki a magas bizonytalansági előrejelzéseket, majd gyorsan erősítse meg az alacsony bizonytalanságot.
+    * A képbesorolási projektekben kiválaszthatja és jóváhagyhatja a címkéket a batchs szolgáltatásban. Egy adott javasolt címke alapján szűrheti a nézetet, törölje a helytelenül megjelölt rendszerképeket, majd erősítse meg a REST-t egy kötegben.
         > [!div class="mx-imgBorder"]
-        > ![A javasolt címkék kötegelt módban jelennek meg a szűrőkkel rendelkező IC esetében.](./media/suggested-tags/ic-batch-mode.png)
+        > ![A javasolt címkék kötegelt módban jelennek meg az IC szűrőkkel.](./media/suggested-tags/ic-batch-mode.png)
 
-        A javasolt címkéket az egyes képmódokban is használhatja, ha kiválaszt egy képet a galériából.
+        A javasolt címkéket egyéni rendszerkép módban is használhatja, ha kijelöl egy képet a katalógusból.
 
-        ![A javasolt címkék az IC egyedi képmódjában jelennek meg.](./media/suggested-tags/ic-individual-image-mode.png)
-    * Az objektumészlelési projektekben a kötegvisszaigazolások nem támogatottak, de a szervezettebb címkézési élmény érdekében továbbra is szűrheti és rendezheti a javasolt címkéket. A címkézetlen képek miniatűrjei a javasolt címkék helyét jelző határolókeret-átfedést jelenítenek meg. Ha nem jelöl ki javasolt címkeszűrőt, az összes címkézetlen kép a határolókeret átfedése nélkül jelenik meg.
+        ![A javasolt címkék az IC egyedi rendszerkép módban jelennek meg.](./media/suggested-tags/ic-individual-image-mode.png)
+    * Az objektum-észlelési projektekben a Batch-megerősítések nem támogatottak, de a javasolt címkék alapján továbbra is szűrhetők és rendezhetők a szervezett címkézési élmény. A címkézetlen képek miniatűrje megjeleníti a javasolt címkék helyét jelző, határoló mezők átfedését. Ha nem választ ki egy javasolt címke szűrőt, az összes címkézetlen kép megjelenik a határoló mezők átfedése nélkül.
         > [!div class="mx-imgBorder"]
-        > ![A javasolt címkék kötegelt módban jelennek meg a szűrőkkel rendelkező OD esetében.](./media/suggested-tags/od-batch-mode.png)
+        > ![A javasolt címkék kötegelt módban jelennek meg az OD és a szűrők használatával.](./media/suggested-tags/od-batch-mode.png)
 
-        Az objektumészlelési címkék megerősítéséhez a katalógus minden egyes képére alkalmaznia kell őket.
+        Az objektum-észlelési címkék megerősítéséhez ezeket a katalógusban szereplő egyes rendszerképekre kell alkalmaznia.
 
-        ![A javasolt címkék az OD egyes képmódjában jelennek meg.](./media/suggested-tags/od-individual-image-mode.png)
+        ![A javasolt címkék az OD egyedi rendszerkép módban jelennek meg.](./media/suggested-tags/od-individual-image-mode.png)
 1. Indítsa el újra a betanítási folyamatot.
-1. Ismételje meg az előző lépéseket, amíg meg nem elégszik a javaslat minőségével.
+1. Ismételje meg az előző lépéseket, amíg meg nem felel a javaslat minőségének.
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a rövid útmutatót a Custom Vision projektek létrehozásának és betanításának megkezdéséhez.
+Egy rövid útmutató segítségével megkezdheti a Custom Vision projektek létrehozását és betanítását.
 
 * [Tartalombesoroló létrehozása](getting-started-build-a-classifier.md)
 * [Objektumérzékelő készítése](get-started-build-detector.md)

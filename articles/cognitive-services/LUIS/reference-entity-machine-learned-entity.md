@@ -1,7 +1,7 @@
 ---
-title: Gép megtanult entitás típusa - LUIS
+title: Gépi megtanult entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: A gép megtanult entitás az előnyben részesített entitás luis alkalmazások létrehozásához.
+description: A géppel megtanult entitás a LUIS-alkalmazások létrehozásának előnyben részesített entitása.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75551998"
 ---
 # <a name="machine-learned-entity"></a>Gépi tanulással létrejött entitás
 
-A gép megtanult entitás az előnyben részesített entitás luis alkalmazások létrehozásához.
+A géppel megtanult entitás a LUIS-alkalmazások létrehozásának előnyben részesített entitása.
 
 
-## <a name="example-json"></a>Példa JSON
+## <a name="example-json"></a>Példa JSON-ra
 
-Tegyük fel, hogy az alkalmazás pizzarendeléseket készít, például a [lebomló entitás oktatóanyagát.](tutorial-machine-learned-entity.md) Minden megrendelés több különböző pizzát tartalmazhat, beleértve a különböző méreteket is.
+Tegyük fel, hogy az alkalmazás olyan pizzás rendeléseket tart, mint például a [dekomponálható entitások oktatóanyaga](tutorial-machine-learned-entity.md). Minden megrendelés tartalmazhat több különböző pizzát is, beleértve a különböző méreteket is.
 
 Példák kimondott szövegekre:
 
-|Példa kimondott szövega pizza alkalmazáshoz|
+|Példa a pizza-alkalmazás hosszúságú kimondott szöveg|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,11 +36,11 @@ Példák kimondott szövegekre:
 
 
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-Mivel egy gép megtanult entitás számos, kényszerekkel és leírókkal rendelkező alösszetevővel rendelkezhet, ez csak egy példa. Meg kell tekinteni egy útmutatót, amit a szervezet visszatér.
+Mivel a géppel megtanult entitások számos alösszetevővel rendelkezhetnek korlátozásokkal és leírókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
 
-Fontolja meg a lekérdezést:
+Vegye figyelembe a lekérdezést:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
@@ -341,13 +341,13 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Ez az entitás nem érhető el a V2 előrejelzési futásidejű.
+Ez az entitás nem érhető el a v2 előrejelzési futtatókörnyezetben.
 * * *
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a gép által megtanult entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [a fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [az útmutatót.](luis-how-to-add-entities.md#create-a-machine-learned-entity)
+További információ a géppel megtanult entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [útmutatókat](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
-További információ a [listaentitásról](reference-entity-list.md) és a [reguláris kifejezés](reference-entity-regular-expression.md) entitásról.
+Ismerje meg a [List](reference-entity-list.md) entitást és a [reguláris kifejezés](reference-entity-regular-expression.md) entitást.

@@ -1,7 +1,7 @@
 ---
-title: Arcok észlelése a képen - Arc
+title: Arcok észlelése egy képképpel
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató bemutatja, hogyan használhatja az arcfelismerést olyan attribútumok kinyerésére, mint a nem, az életkor vagy az adott képből való póz.
+description: Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76169878"
 ---
-# <a name="get-face-detection-data"></a>Arcfelismerési adatok beszereznie
+# <a name="get-face-detection-data"></a>Arcfelismerés-adatlekérdezés
 
-Ez az útmutató bemutatja, hogyan használhatja az arcfelismerést olyan attribútumok kinyerésére, mint a nem, az életkor vagy az adott képből való póz. Az ebben az útmutatóban szereplő kódrészletek C# nyelven vannak megírva az Azure Cognitive Services Face ügyfélkódtár használatával. Ugyanez a funkció érhető el a [REST API-n](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)keresztül is.
+Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok. Az útmutatóban szereplő kódrészletek a C# nyelven íródnak az Azure Cognitive Services Face ügyféloldali kódtár használatával. Ugyanez a funkció a [Rest APIon](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)keresztül érhető el.
 
-Ez az útmutató bemutatja, hogyan:
+Ez az útmutató a következőket mutatja be:
 
-- Az arcok helyeése és méretei a képen.
-- A különböző arcjellegzetes ségeket, például a tanulókat, az orrot és a szájat egy képen kaphatja meg.
-- Találd meg a nemét, korát, érzelmét és egyéb tulajdonságait az észlelt arc.
+- Az arcok helyeinek és méreteinek beolvasása egy képben.
+- Különböző arc-tereptárgyak (például tanulók, orr és száj) helyeinek beszerzése egy képben.
+- Kitalálhatja az észlelt arc nemet, korát, érzelemét és egyéb attribútumait.
 
 ## <a name="setup"></a>Telepítés
 
-Ez az útmutató feltételezi, hogy már készített `faceClient`egy [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) objektumot, amelynek neve Face-előfizetési kulccsal és végpont URL-címével rendelkezik. Innen használhatja az arcfelismerő funkciót a [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)( az ebben az útmutatóban használt ) vagy a [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)hívásával. A szolgáltatás beállításával kapcsolatos tudnivalókért kövesse az egyik rövid útmutatót.
+Ez az útmutató feltételezi, hogy már létrehozta a nevű `faceClient` [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -objektumot egy Face előfizetési kulccsal és egy végpont URL-címmel. Innen a Arcfelismerés funkciót az útmutatóban vagy a [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)használt [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)meghívásával is használhatja. A szolgáltatás beállításával kapcsolatos utasításokért kövesse az egyik rövid útmutatót.
 
-Ez az útmutató a hívás észlelése sajátosságaira összpontosít, például arra, hogy milyen argumentumokat adhat át, és mit tehet a visszaadott adatokkal. Azt javasoljuk, hogy csak a szükséges funkciókat keresse le. Minden művelet végrehajtásához több időre van szükség.
+Ez az útmutató az észlelési hívás sajátosságait mutatja be, például azt, hogy milyen argumentumokat adhat át, és hogy mit tehet a visszaadott adatmennyiséggel. Javasoljuk, hogy csak a szükséges szolgáltatásokat kérdezze le. Az egyes műveletek végrehajtása további időt vesz igénybe.
 
-## <a name="get-basic-face-data"></a>Alapvető arcadatok beszerezni
+## <a name="get-basic-face-data"></a>Alapszintű Face-adatok beolvasása
 
-Az arcok megkereséséhez és a helyük képbe való bekerüléséhez hívja meg a metódust úgy, hogy a _returnFaceId_ paraméter **értéke igaz**legyen. Ez az alapértelmezett beállítás.
+Az arcok megkereséséhez és a helyüknek a rendszerképben való lekéréséhez hívja meg a metódust az _returnFaceId_ paraméter **true**értékre állításával. Ez az alapértelmezett beállítás.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
 ```
 
-Lekérdezheti a visszaadott [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) objektumokat az egyedi azonosítóikról és egy téglalapról, amely megadja az arc képpontkoordinátáit.
+Lekérdezheti a visszaadott [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) objektumokat egyedi azonosítójuk és egy olyan négyszög között, amely az arc képpontjának koordinátáit adja meg.
 
 ```csharp
 foreach (var face in faces)
@@ -51,17 +51,17 @@ foreach (var face in faces)
 }
 ```
 
-Az arc helyének és méretének elemzésével kapcsolatos további tudnivalókért olvassa el a [FaceRectangle című témakört.](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet) Általában ez a téglalap tartalmazza a szemeket, a szemöldököt, az orrot és a szájat. A fej, a fül ek és az áll nem feltétlenül szerepelnek benne. Ha az arc téglalapjával egy teljes fejet vághat le, vagy egy közepes méretű portrét szeretne kapni, például fényképes azonosító típusú kép esetén, mindkét irányban kibonthatja a téglalapot.
+További információ az arc helyének és méreteinek elemzéséről: [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Ez a négyszög általában a szemet, a szemöldökét, az orrát és a száját tartalmazza. A fej, a fülek és az álla teteje nem feltétlenül szerepel. Ha a Face téglalapot szeretné használni egy teljes fej kivágásához vagy egy közép-shot portré létrehozásához, például egy fénykép-azonosító típusú képhez, kibonthatja a téglalapot az egyes irányokban.
 
-## <a name="get-face-landmarks"></a>Arctereptárgyak beszereznie
+## <a name="get-face-landmarks"></a>Face-tereptárgyak beolvasása
 
-[Face tereptárgyak](../concepts/face-detection.md#face-landmarks) egy sor könnyen megtalálható pontokat az arcon, mint például a diákok vagy az orr csúcsa. Az arctájéki mérföldkő adatainak lehívásához állítsa a _returnFaceLandmarks_ paramétert **true**értékre.
+Az [arc tereptárgyak](../concepts/face-detection.md#face-landmarks) könnyen megtalált pontok, például a tanulók és az orr hegye. A tereptárgyak beszerzéséhez állítsa a _returnFaceLandmarks_ paramétert **true (igaz**) értékre.
 
 ```csharp
 IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
 ```
 
-A következő kód bemutatja, hogyan lehet letölteni a helyét az orr és a diákok:
+A következő kód bemutatja, hogyan kérheti le az orr és a tanulók helyét:
 
 ```csharp
 foreach (var face in faces)
@@ -79,7 +79,7 @@ foreach (var face in faces)
 }
 ```
 
-A face tereptárgyak adataival pontosan kiszámíthatja a lap irányát. Megadhatja például az arc elforgatását vektorként a száj közepétől a szem középpontjáig. A következő kód kiszámítja ezt a vektort:
+A Face tereptárgyak adataival az arc irányának pontos kiszámításához is használható. Például megadhatja az arc elforgatását vektorként a száj közepétől a szem közepéig. A következő kód kiszámítja ezt a vektort:
 
 ```csharp
 var upperLipBottom = landmarks.UpperLipBottom;
@@ -101,13 +101,13 @@ Vector faceDirection = new Vector(
     centerOfTwoEyes.Y - centerOfMouth.Y);
 ```
 
-Ha ismeri az arc irányát, elforgathatja a téglalap alakú arckeretet, hogy megfelelőbb legyen. A kép lapjainak körülvágásához programozott módon elforgathatja a képet, hogy az arcok mindig függőlegesen jelenjenek meg.
+Ha ismeri az arc irányát, elforgathatja a téglalap alakú keretet úgy, hogy az megfelelően illeszkedjen. A képeken lévő arcok kivágásához programozott módon forgathatja el a képet úgy, hogy az arcok mindig egyenesen jelenjenek meg.
 
-## <a name="get-face-attributes"></a>Arcattribútumok beszereznie
+## <a name="get-face-attributes"></a>Arc attribútumainak beolvasása
 
-Az arctéglalapok és a tereptárgyak mellett az arcfelismerési API az arc több fogalmi jellemzőjének elemzésére is alkalmas. A teljes listát a [Face attribútumok](../concepts/face-detection.md#attributes) fogalmi szakaszában található.
+A Face észlelési API-k mellett az arc téglalapok és a tereptárgyak is elemezhetők az arc számos fogalmi attribútuma. A teljes listát a [Face attributes](../concepts/face-detection.md#attributes) fogalmi szakasza tartalmazza.
 
-A face attribútumok elemzéséhez állítsa be a _returnFaceAttributes_ paramétert a [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékek listájára.
+A Face attribútumok elemzéséhez állítsa a _returnFaceAttributes_ paramétert a [FaceAttributeType enumerálási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékek listájára.
 
 ```csharp
 var requiredFaceAttributes = new FaceAttributeType[] {
@@ -122,7 +122,7 @@ var requiredFaceAttributes = new FaceAttributeType[] {
 var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
 ```
 
-Ezután a visszaadott adatokra mutató hivatkozásokat kaphat, és az igényeinek megfelelően további műveleteket végez.
+Ezután szerezzen be a visszaadott adatokra mutató hivatkozásokat, és tegye meg az igényeinek megfelelő további műveleteket.
 
 ```csharp
 foreach (var face in faces)
@@ -138,16 +138,16 @@ foreach (var face in faces)
 }
 ```
 
-Az egyes attribútumokról az [Arcfelismerés és](../concepts/face-detection.md) az attribútumok fogalmi útmutatójában olvashat bővebben.
+Ha többet szeretne megtudni az egyes attribútumokról, tekintse meg a [arcfelismerés és attribútumok](../concepts/face-detection.md) fogalmi útmutatót.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megtanulta, hogyan használhatja az arcfelismerés különböző funkcióit. Ezután integrálja ezeket a funkciókat az alkalmazásba egy részletes oktatóanyag követésével.
+Ebben az útmutatóban megtanulta, hogyan használhatja a Arcfelismerés különböző funkcióit. Ezután integrálja ezeket a funkciókat az alkalmazásba egy részletes oktatóanyag követésével.
 
-- [Oktatóanyag: WpF-alkalmazás létrehozása a kép arcadatainak megjelenítéséhez](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Oktatóanyag: WPF-alkalmazás létrehozása az Arcfelismerés képeken való megjelenítéséhez](../Tutorials/FaceAPIinCSharpTutorial.md)
 - [Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [Referenciadokumentáció (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Referenciadokumentáció (.NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Dokumentáció (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+- [Hivatkozási dokumentáció (.NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

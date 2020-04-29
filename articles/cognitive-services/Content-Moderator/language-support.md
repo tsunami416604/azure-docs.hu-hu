@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás - Tartalommoderátor API
+title: Nyelvi támogatás – Content Moderator API
 titleSuffix: Azure Cognitive Services
-description: Ez az Azure Cognitive Services tartalommoderátor API által támogatott természetes nyelvek listája.
+description: Az Azure Cognitive Services Content Moderator API által támogatott természetes nyelvek listája.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73744362"
 ---
-# <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a tartalommoderátor API-hoz
+# <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API-hoz
 
 > [!NOTE]
-> A **nyelvi** paraméter, `eng` rendelje hozzá, vagy hagyja üresen, hogy a gép által támogatott **besorolási** válasz (előzetes funkció). **Ez a funkció csak az angol nyelvet támogatja.**
+> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
-> A **káromkodási kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját,](http://www-01.sil.org/iso639-3/codes.asp) vagy hagyja üresen.
+> A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
 
-| Nyelvfelismerés | Trágár kifejezések   | OCR    | Automatikus korrekció     |
+| Nyelvfelismerés | Trágár kifejezések   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
-| Arab (romaizált)   | búr   | Arab   | Arab |
+| Arab (római)   | búr   | Arab   | Arab |
 | Balinéz | albán | Kínai (egyszerűsített)    | Dán |
 | bengáli | Amhara | Kínai (hagyományos)     | Holland |
-| Buginese között | Arab | Cseh                     | Angol |
-| Buhid között | örmény | Dán                     | Finn |
-| Carian között | Asszámi | Holland                     | Francia |
+| Buginese | Arab | Cseh                     | Angol |
+| Buhid | örmény | Dán                     | Finn |
+| Carian | Asszámi | Holland                     | Francia |
 | Kínai (egyszerűsített) | Azerbajdzsáni | Angol  | Görög (modern) |
-| Kínai (hagyományos) | Bangla - Banglades | Finn  | Olasz |
-| Templom (szláv) | Bangla - India | Francia     | Koreai |
+| Kínai (hagyományos) | Bangla – Banglades | Finn  | Olasz |
+| Templom (szláv) | Bangla – India | Francia     | Koreai |
 | Kopt | Baszk | Német                      | Norvég |
 | Cseh |  belorusz | Görög (modern)         | Lengyel |
-| Dhivehi | Bosnyák - Cirill | Magyar      | Portugál |
-| Holland | Bosnyák - Latin | Olasz             | Román |
+| Dhivehi | Bosnyák – cirill betűs | Magyar      | Portugál |
+| Holland | Bosnyák – latin | Olasz             | Román |
 | Angol (kreol) | Breton [nem GeoPol] | Japán  | Orosz |
 | Perzsa | Bolgár | Koreai                        | Szlovák |
 | Francia | Katalán | Norvég                        | Spanyol |
 | Német | Közép-kurd | Lengyel        | Török |
-| Görög | Cherokee | Portugál | |
+| Görög | Cseroki | Portugál | |
 | Haiti | Kínai (egyszerűsített) | Román | |
-| Héber | Kínai (hagyományos) - Hongkong KKT | Orosz | |
-| Hindi | Kínai (hagyományos) - Tajvan | Szerb cirill | |
+| Héber | Kínai (hagyományos) – Hongkong (KKT) | Orosz | |
+| Hindi | Kínai (hagyományos) – Tajvan | Szerb cirill betűs | |
 | Hmong | Horvát | Szerb latin | |
 | Magyar | Cseh | Szlovák | |
 | Olasz | Dán | Spanyol | |
@@ -55,43 +55,43 @@ ms.locfileid: "73744362"
 | Koreai | Holland | Török | |
 | Kurd (arab) | Angol | | |
 | Kurd (latin betűs) | Észt | | |
-| Lepcha között | Filipino | | |
-| Limbu között | Finn | | |
+| Lepcha | Filipino | | |
+| Pauleczki | Finn | | |
 | Lu | Francia | | |
-| Lycian között | Gallego | | |
-| Lenid | grúz | | |
-| Mükéné (görög) | Német | | |
-| Nko között | Görög | | |
-| Norvég (Bokmal) | gudzsaráti | | |
-| norvég (nynorsk) |  Hausa | | |
+| Lycian | Gallego | | |
+| Lídiai | grúz | | |
+| Mycenaean (görög) | Német | | |
+| Nko | Görög | | |
+| Norvég (bokmal) | gudzsaráti | | |
+| norvég (nynorsk) |  Hausza | | |
 | Régi (perzsa) | Héber | | |
-| Pastu | Hindi | | |
+| Pasto | Hindi | | |
 | Lengyel | Magyar | | |
 | Portugál | Izlandi | | |
 | pandzsábi | Igbo | | |
-| Rejang között | Indonéz | | |
+| Rejang | Indonéz | | |
 | Orosz | Inuktitut | | |
-| Santali között | Ír | | |
-| Sasak között | isiXhosa között | | |
-| Saurashtra között | isiZulu | | |
+| Santali | Ír | | |
+| Sasak | isiXhosa | | |
+| Saurashtra | Zulu | | |
 | Szerb (cirill betűs) | Olasz | | |
 | Szerb (latin betűs) | Japán | | |
-| Singhalese | kannada | | |
+| Szingaléz | kannada | | |
 | Szlovén | Kazak | | |
 | Spanyol | Khmer | | |
-| Svéd | K'iche között | | |
-| Sylheti között | Kinyarwanda | | |
+| Svéd | Quiché | | |
+| Sylheti | Kinyarvanda | | |
 | Szír | Kiswahili | | |
-| Tagbanwa között | Konkani között | | |
+| Tagbanwa | Konkani | | |
 | Tai (Nua) | Koreai | | |
-| Tamashek között | kirgiz | | |
+| Tamashek | kirgiz | | |
 | Török | Lao | | |
-| Ugaritikus | Lett | | |
+| Ugariti | Lett | | |
 | üzbég (cirill betűs) | Litván | | |
 | Üzbég (latin betűs) | Luxemburgi | | |
 | Vai | Macedón | | |
 | Yi | Maláj | | |
-| Zhuang, Amerikai-, | malajálam | | |
+| Zhuang, leveles | malajálam | | |
 | | Máltai | | |
 | | maori | | |
 | | marathi | | |
@@ -99,27 +99,27 @@ ms.locfileid: "73744362"
 | | Nepáli | | |
 | | Norvég (bokmål) | | |
 | | norvég (nynorsk) | | |
-| | Odia között | | |
-| | Pastu | | |
+| | Odia | | |
+| | Pasto | | |
 | | perzsa | | |
 | | Lengyel | | |
 | | Portugál - Brazília | | |
 | | Portugál - Portugália | | |
-| | Pulaar között | | |
+| | Pulaar | | |
 | | pandzsábi | | |
-| | Pandzsábi (Pakisztán) | | |
+| | Pandzsábi (pakisztáni) | | |
 | | Kecsua (Peru) | | |
 | | Román | | |
 | | Orosz | | |
 | | Skót gael | | |
 | | Szerb (cirill betűs) | | |
-| | Szerb (cirill, Bosznia-Hercegovina) | | |
+| | Szerb (cirill betűs, Bosznia-Hercegovina) | | |
 | | Szerb (latin betűs) | | |
-| | Seshoto | | |
-| | Sesotho sa Leboa | | |
+| | Sesotho | | |
+| | Sesotho sa szoto | | |
 | | Setswana | | |
-| | Szindi | | |
-| | Singhalese | | |
+| | Szindhi | | |
+| | Szingaléz | | |
 | | Szlovák | | |
 | | Szlovén | | |
 | | Spanyol | | |
