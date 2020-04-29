@@ -1,6 +1,6 @@
 ---
-title: Irányítópult használata tantermi laborhoz az Azure Lab Servicesben | Microsoft dokumentumok
-description: Megtudhatja, hogyan használhatja az irányítópultot egy tantermi laborhoz az Azure Lab Servicesben.
+title: A Azure Lab Services-beli tantermi labor irányítópultjának használata | Microsoft Docs
+description: Megtudhatja, hogyan használhatja az irányítópultot egy osztálytermi laborhoz a Azure Lab Servicesban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77538940"
 ---
-# <a name="dashboard-for-classroom-labs"></a>Irányítópult tantermi laborokhoz
-Ez a cikk az Azure Lab Services tantermi laborjának irányítópult-nézetét ismerteti. 
+# <a name="dashboard-for-classroom-labs"></a>Az osztályterem Labs irányítópultja
+Ez a cikk a Azure Lab Services található osztálytermi labor irányítópult-nézetét ismerteti. 
 
 ![Irányítópult](../media/use-dashboard/dashboard.png)
 
-## <a name="costs-and-billing-tile"></a>Költségek és számlázáscsempe
-Ez a csempe a következő költségbecslési részleteket tartalmazza:
+## <a name="costs-and-billing-tile"></a>Költségek és számlázási csempe
+Ez a csempe a következő költségbecslés részleteit tartalmazza:
 
 | Beállítás | Érték | 
 | ------- | ----- | 
-| Kvótaórák | A felhasználó által az ütemezett órákon kívül a virtuális gép használható órák maximális száma. |
-| Ütemezett órák | A laborban beállított ütemezés alapján felmerülő órák. Ez az érték csak akkor érhető el, ha az összes ütemezési eseményhez be van állítva egy kezdő/záró dátum. |
-| Óra/felhasználó | A kvótaórák és az ütemezett órák összege. |
-| Felhasználók maximális | A tesztkörnyezetben lévő felhasználók maximális száma az összes igényelt virtuális gép alapján. |
-| Órák x felhasználók | Órák/felhasználó és a felhasználók számának szorzata. |
-| Helyesbített kvóta | Az adott felhasználókhoz hozzáadott kvótaórák összege. |
-| Összes óra * $/óra | Az óránkénti költség a kiválasztott virtuális gép mérete alapján. Ez alapján a rendszeres fizetés, ahogy megy ár. |
-| Teljes becsült költség | Ez a tesztkörnyezet maximális ára az aktuális beállítások alapján. |
+| Kvóta órája | Azon órák maximális száma, ameddig a felhasználó az ütemezett órákon kívül is használhatja a virtuális gépet. |
+| Ütemezett órák | A laborban beállított ütemterv alapján felmerülő órák. Ez az érték csak akkor érhető el, ha az összes ütemezett eseménynél be van állítva a kezdő/a dátum. |
+| Óra/felhasználó | A kvóta órája és az ütemezett órák összege. |
+| Felhasználók maximális száma | A tesztkörnyezetben lévő felhasználók maximális száma az összes igényelni kívánt virtuális gép alapján. |
+| Óra x felhasználó | Óra/felhasználó szorozva a felhasználók számával. |
+| Módosított kvóta | Az adott felhasználókhoz hozzáadott kvóta-munkaórák összege. |
+| Összes óra * $/óra | A kiválasztott virtuálisgép-méret alapján óránkénti díj. Ez a díjszabás alapján történik. |
+| Becsült költségek összesen | Ez a tesztkörnyezet maximális díja a jelenlegi beállítások alapján. |
 
 ## <a name="template-tile"></a>Sablon csempe
-A csempén a következő információk jelennek meg:
+A csempén az alábbi információk jelennek meg:
 
 - A sablon létrehozásának dátuma 
 - A sablon utolsó közzétételének dátuma 
 
-Azt is rendelkezik egy linket, hogy keresse meg a **sablon** lapot, ahol [kezelheti a sablon virtuális gép](how-to-create-manage-template.md) az osztályhoz. 
+Emellett megjelenik egy hivatkozás, amely megnyitja a **sablon** lapját, ahol [kezelheti a SABLONHOZ tartozó virtuális gépet](how-to-create-manage-template.md) a osztályhoz. 
 
-## <a name="virtual-machine-pool-tile"></a>Virtuális gépkészlet csempéje
+## <a name="virtual-machine-pool-tile"></a>Virtuálisgép-készlet csempe
 
-A csempén a következő információk jelennek meg:
+A csempén az alábbi információk jelennek meg:
 
-- Diákokhoz (felhasználókhoz) rendelt virtuális gépek száma
-- A diákokhoz még nem rendelt virtuális gépek száma
+- Tanulók (felhasználók) számára hozzárendelt virtuális gépek száma
+- Azoknak a virtuális gépeknek a száma, amelyek még nem lettek hozzárendelve a diákokhoz
 
-Azt is egy linket, hogy keresse meg a **virtuális gép készlet** lap, ahol kezelheti a virtuális gépek [a](how-to-set-virtual-machine-passwords.md) laborban. 
+Emellett megjelenik egy hivatkozás, amely a **virtuális gép készlet** lapjára mutat, ahol a laborban [kezelheti a virtuális gépek készletét](how-to-set-virtual-machine-passwords.md) . 
 
 ## <a name="users-tile"></a>Felhasználók csempe
 
-A csempén a következő információk jelennek meg:
+A csempén az alábbi információk jelennek meg:
 
-- Az osztályba regisztrált felhasználók száma
-- A laborba felvett, de az osztályba nem regisztrált felhasználók száma 
+- Az osztályban regisztrált felhasználók száma
+- A laborhoz hozzáadott, de az osztályban nem regisztrált felhasználók száma 
 
-Emellett egy hivatkozást is biztosít a **Felhasználók** lapra, ahol kezelheti a [tesztkörnyezet felhasználóit.](how-to-configure-student-usage.md) 
+Emellett egy hivatkozásra kattintva megnyithatja a **felhasználók** lapot, ahol a laborhoz tartozó [felhasználókat kezelheti](how-to-configure-student-usage.md) . 
 
-## <a name="schedules-tile"></a>Ütemezések csempe
-A csempén láthatja a tesztkörnyezet aktuális ütemezett eseményeit. Egy hivatkozással is navigálhat az **Ütemezés** lapra, ahol [ütemezéseket hozhat létre és kezelhet.](how-to-create-schedules.md) A csempén csak két ütemezett esemény adatait és a labor ban fennmaradó ütemezett események számát jeleníti meg. 
+## <a name="schedules-tile"></a>Ütemtervek csempe
+A Lab aktuális ütemezett eseményei megjelennek a csempén. Emellett egy hivatkozással is megnyithatja az **ütemterv** oldalt, ahol [ütemterveket hozhat létre és kezelhet](how-to-create-schedules.md). A csempe megjeleníti a csak két ütemezett esemény részleteit, valamint a labor hátralévő ütemezett eseményeinek számát. 
 
 ![Ütemezett események](../media/use-dashboard/scheduled-events.png)
 

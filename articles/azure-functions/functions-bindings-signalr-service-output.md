@@ -1,31 +1,31 @@
 ---
-title: Az Azure Functions SignalR szolgáltatás kimeneti kötése
-description: Ismerje meg, hogyan küldhet SignalR service üzeneteket az Azure Functions szolgáltatásból.
+title: Azure Functions szignáló szolgáltatás kimeneti kötése
+description: Útmutató a szignáló szolgáltatás üzeneteinek küldéséhez Azure Functionsról.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530249"
 ---
-# <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR-szolgáltatás kimeneti kötése az Azure Functions-hez
+# <a name="signalr-service-output-binding-for-azure-functions"></a>A signaler szolgáltatás kimeneti kötése Azure Functions
 
-A *SignalR* kimeneti kötés használatával egy vagy több üzenetet küldhet az Azure SignalR Szolgáltatás használatával. Az üzenetet a következő keincönöknek közvetítheti:
+A *signaler* kimeneti kötés használatával küldjön egy vagy több üzenetet az Azure Signaler szolgáltatással. A következő üzenetet küldheti el:
 
 - Minden csatlakoztatott ügyfél
-- Adott felhasználónak hitelesített csatlakoztatott ügyfelek
+- Megadott felhasználóhoz hitelesített csatlakoztatott ügyfelek
 
-A kimeneti kötés is lehetővé teszi a csoportok kezelését.
+A kimeneti kötés a csoportok kezelését is lehetővé teszi.
 
-A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](functions-bindings-signalr-service.md)olvashat.
+További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-signalr-service.md).
 
-## <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfélnek
+## <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-A következő példa egy olyan függvényt mutat be, amely a kimeneti kötés használatával üzenetet küld az összes csatlakoztatott ügyfélnek. A *cél* az egyes ügyfeleken meghívandó metódus neve. Az *Arguments* tulajdonság az ügyfélmetódusnak átadandó nulla vagy több objektum tömbje.
+Az alábbi példa egy olyan függvényt mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A *cél* az egyes ügyfeleken meghívott metódus neve. Az *argumentumok* tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -44,11 +44,11 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -60,7 +60,7 @@ Példa function.json:
 }
 ```
 
-Itt a C# Script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -79,11 +79,11 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -95,7 +95,7 @@ Példa function.json:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -108,9 +108,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -122,7 +122,7 @@ Példa function.json:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -153,9 +153,9 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-user"></a>Küldés felhasználónak
+## <a name="send-to-a-user"></a>Küldés felhasználó számára
 
-Csak olyan kapcsolatoknak küldhet üzenetet, amelyeket hitelesített egy felhasználó, ha a *Felhasználói azonosítót* a SignalR üzenetben állítja be.
+Csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet, ha beállítja a *felhasználói azonosítót* a jelző üzenetben.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -176,9 +176,9 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -190,7 +190,7 @@ Példa function.json:
 }
 ```
 
-Itt a C# Script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -211,9 +211,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -225,7 +225,7 @@ Példa function.json:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -240,9 +240,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -254,7 +254,7 @@ Példa function.json:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -288,9 +288,9 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-group"></a>Küldés csoportnak
+## <a name="send-to-a-group"></a>Küldés egy csoportba
 
-Csak a csoporthoz hozzáadott kapcsolatoknak küldhet üzenetet, ha a *csoport nevét* a SignalR üzenetben állítja be.
+Az üzenetet csak olyan kapcsolatokhoz küldheti, amelyeket a rendszer hozzáad egy csoporthoz a *csoport nevének* a jelző üzenetben való beállításával.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
@@ -311,9 +311,9 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -325,7 +325,7 @@ Példa function.json:
 }
 ```
 
-Itt a C# Script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -346,9 +346,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -360,7 +360,7 @@ Példa function.json:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -375,9 +375,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -389,7 +389,7 @@ Példa function.json:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -425,13 +425,13 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>Csoportkezelés
 
-A SignalR szolgáltatás lehetővé teszi a felhasználók csoportokhoz való hozzáadását. Ezután üzeneteket lehet küldeni egy csoportnak. A `SignalR` kimeneti kötés segítségével kezelheti a felhasználó csoporttagságát.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-A következő példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
 ```csharp
 [FunctionName("addToGroup")]
@@ -454,7 +454,7 @@ public static Task AddToGroup(
 
 ### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználót egy csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -476,15 +476,15 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> Annak érdekében, `ClaimsPrincipal` hogy a megfelelően kötött, konfigurálnia kell a hitelesítési beállításokat az Azure Functions.
+> A `ClaimsPrincipal` megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-A következő példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -496,7 +496,7 @@ Példa *function.json*
 }
 ```
 
-*Futtatás.csx*
+*Futtassa a. CSX*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -520,9 +520,9 @@ public static Task Run(
 
 ### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználót egy csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -534,7 +534,7 @@ Példa *function.json*
 }
 ```
 
-*Futtatás.csx*
+*Futtassa a. CSX*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -557,15 +557,15 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Annak érdekében, `ClaimsPrincipal` hogy a megfelelően kötött, konfigurálnia kell a hitelesítési beállításokat az Azure Functions.
+> A `ClaimsPrincipal` megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-A következő példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -577,7 +577,7 @@ Példa *function.json*
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -591,9 +591,9 @@ module.exports = async function (context, req) {
 
 ### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználót egy csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -605,7 +605,7 @@ Példa *function.json*
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -619,11 +619,11 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-A következő példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -635,7 +635,7 @@ Példa *function.json*
 }
 ```
 
-*\_\_init.py__*
+*\_\_init. py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -648,9 +648,9 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 ### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználót egy csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function.json*
+Példa *function. JSON*
 
 ```json
 {
@@ -662,7 +662,7 @@ Példa *function.json*
 }
 ```
 
-*\_\_init.py__*
+*\_\_init. py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -675,9 +675,9 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-### <a name="add-user-to-a-group"></a>Felhasználó hozzáadása csoporthoz
+### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
-A következő példa hozzáad egy felhasználót egy csoporthoz.
+A következő példa egy felhasználót egy csoportba helyez.
 
 ```java
 @FunctionName("addToGroup")
@@ -699,7 +699,7 @@ public SignalRGroupAction addToGroup(
 
 ### <a name="remove-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
-A következő példa eltávolítja a felhasználót egy csoportból.
+A következő példa egy felhasználót távolít el egy csoportból.
 
 ```java
 @FunctionName("removeFromGroup")
@@ -721,35 +721,35 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-Az alábbi táblázat a *function.json* fájlban és az `SignalRConnectionInfo` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `SignalRConnectionInfo` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus**| n/a | A beállításnak `signalRConnectionInfo`a beállítására kell beállítható.|
-|**direction**| n/a | A beállításnak `in`a beállítására kell beállítható.|
-|**név**| n/a | A kapcsolatinformáció-objektum függvénykódjában használt változónév. |
-|**hubName**|**HubName (Központneve)**| Ezt az értéket annak a SignalR hubnak a nevére kell beállítani, amelyhez a kapcsolati adatok létrejönnek.|
-|**Userid**|**Userid**| Nem kötelező: A felhasználói azonosító jogcím értékét kell beállítani a hozzáférési kulcs jogkivonatát. |
-|**connectionStringSetting**|**ConnectionStringSetting (Kapcsolatkarakterlánc-beállítás)**| A SignalR service kapcsolati karakterláncát tartalmazó alkalmazásbeállítás neve (alapértelmezés szerint "AzureSignalRConnectionString") |
+|**típusa**| n/a | Értékre kell állítani `signalRConnectionInfo`.|
+|**direction**| n/a | Értékre kell állítani `in`.|
+|**név**| n/a | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
+|**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
+|**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-Az alábbi táblázat a *function.json* fájlban és az `SignalR` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `SignalR` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus**| n/a | A beállításnak `signalR`a beállítására kell beállítható.|
-|**direction**| n/a | A beállításnak `out`a beállítására kell beállítható.|
-|**név**| n/a | A kapcsolatinformáció-objektum függvénykódjában használt változónév. |
-|**hubName**|**HubName (Központneve)**| Ezt az értéket annak a SignalR hubnak a nevére kell beállítani, amelyhez a kapcsolati adatok létrejönnek.|
-|**connectionStringSetting**|**ConnectionStringSetting (Kapcsolatkarakterlánc-beállítás)**| A SignalR service kapcsolati karakterláncát tartalmazó alkalmazásbeállítás neve (alapértelmezés szerint "AzureSignalRConnectionString") |
+|**típusa**| n/a | Értékre kell állítani `signalR`.|
+|**direction**| n/a | Értékre kell állítani `out`.|
+|**név**| n/a | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
+|**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- [A szolgáltatás végpontjának URL-címének és hozzáférési jogkivonatának a visszaadása (bemeneti kötés)](./functions-bindings-signalr-service-input.md)
+- [A szolgáltatási végpont URL-címének és hozzáférési jogkivonatának visszaadása (bemeneti kötés)](./functions-bindings-signalr-service-input.md)

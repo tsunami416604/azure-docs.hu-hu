@@ -1,6 +1,6 @@
 ---
-title: Az Azure Sentinel Azure Monitor-munkafüzetei alapján az adatok megjelenítése irányítópultok használatával | Microsoft dokumentumok
-description: Ebben az oktatóanyagban megtudhatja, hogyan jelenítheti meg az adatokat az Azure Sentinel ben található munkafüzeteken alapuló irányítópultok használatával.
+title: Az Azure Sentinel Azure Monitor-munkafüzetek alapján jeleníti meg az adatait az irányítópultok használatával | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg az adatait irányítópultok használatával az Azure Sentinelben található munkafüzetek alapján.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,79 +15,79 @@ ms.workload: na
 ms.date: 01/01/2020
 ms.author: yelevin
 ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585220"
 ---
-# <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: Az adatok megjelenítése és figyelése
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: az adatai megjelenítése és figyelése
 
 
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure Sentinelhez, az Azure Sentinel Azure Monitor-munkafüzetek használatával jelenítheti meg és figyelheti az adatokat, ami sokoldalúságot biztosít az egyéni irányítópultok létrehozásában. Bár a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet, ha megszeretné tekinteni, hogyan [hozhat létre interaktív jelentéseket az Azure Monitor munkafüzetekkel.](../azure-monitor/app/usage-workbooks.md) Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatok között, és beépített munkafüzetsablonokat is tartalmaz, amelyek lehetővé teszik, hogy gyorsan betekintést nyerjen az adatokba, amint egy adatforrást csatlakoztat.
+Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez, megjelenítheti és figyelheti az adatait az Azure Sentinel Azure monitor-munkafüzetek használatával történő bevezetésével, amely az egyéni irányítópultok létrehozásához nyújt sokoldalúságot. Míg a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 
-Ez az oktatóanyag segít az azure Sentinelben az adatok megjelenítésében.
+Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megjelenítéséhez.
 > [!div class="checklist"]
 > * Beépített munkafüzetek használata
 > * Új munkafüzetek létrehozása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Legalább munkafüzet-olvasóval vagy munkafüzet-közreműködői engedélyekkel kell rendelkeznie az Azure Sentinel-munkaterület erőforráscsoportjához.
+- Az Azure Sentinel munkaterület erőforráscsoporthoz legalább munkafüzet-olvasó vagy munkafüzet közreműködői engedélyekkel kell rendelkeznie.
 
 > [!NOTE]
-> Az Azure Sentinelben látható munkafüzetek az Azure Sentinel munkaterületi erőforráscsoportba kerülnek, és azok a munkaterület, amelyben létrehozták őket, címkézik őket.
+> Az Azure Sentinelben megtekinthető munkafüzeteket az Azure Sentinel munkaterület erőforráscsoporthoz menti a rendszer, és azokat a munkaterületet címkézi, amelyben létrehozták őket.
 
 ## <a name="use-built-in-workbooks"></a>Beépített munkafüzetek használata
 
-1. Lépjen a **munkafüzetek,** majd **a Sablonok** lehetőséget az Azure Sentinel beépített munkafüzetek teljes listájának megtekintéséhez. Ha meg szeretné tekinteni, hogy mely adattípusok hoz relevánsak, az egyes munkafüzetek **szükséges adattípusmezője** zöld pipa mellett jelenik meg, ha már releváns adatokat továbbít az Azure Sentinelbe.
-  ![ugrás munkafüzetekre](./media/tutorial-monitor-data/access-workbooks.png)
-1. Kattintson a **Munkafüzet megtekintése gombra** az adatokkal feltöltött sablon megtekintéséhez.
+1. Nyissa meg a **munkafüzetek** elemet, majd válassza a **sablonok** lehetőséget az Azure Sentinel beépített munkafüzetek teljes listájának megtekintéséhez. Ha szeretné megtekinteni, hogy mely információkra van szüksége a csatlakoztatott adattípusokhoz, az egyes munkafüzetek **kötelező adattípusok** mezője a zöld pipa melletti adattípust sorolja fel, ha már továbbít releváns adatokat az Azure Sentinel szolgáltatásnak.
+  ![Ugrás a munkafüzetekhez](./media/tutorial-monitor-data/access-workbooks.png)
+1. Kattintson a **munkafüzet megtekintése** elemre az adatokkal feltöltött sablon megtekintéséhez.
   
-1. A munkafüzet szerkesztéséhez válassza a **Mentés**lehetőséget, majd válassza ki azt a helyet, ahová a sablon jsonfájlját menteni szeretné. 
+1. A munkafüzet szerkesztéséhez válassza a **Mentés**lehetőséget, majd válassza ki azt a helyet, ahová menteni szeretné a sablon JSON-fájlját. 
 
    > [!NOTE]
-   > Ez létrehoz egy Azure-erőforrást a megfelelő sablon alapján, és a sablonT, a Json-fájlt menti, és nem az adatokat.
+   > Ez létrehoz egy Azure-erőforrást a megfelelő sablon alapján, és maga menti a sablon JSON-fájlját, és nem az adatokat.
 
 
-1. Válassza **a Munkafüzet megtekintése**lehetőséget. Ezután kattintson **a** szerkesztés gombra a tetején. Most már szerkesztheti a munkafüzetet, és igény szerint testreszabhatja. A munkafüzet testreszabásáról további információt az [Azure Monitor-munkafüzetekkel rendelkező interaktív jelentések létrehozása című témakörben talál.](../azure-monitor/app/usage-workbooks.md)
+1. Válassza a **munkafüzet megtekintése**lehetőséget. Ezután kattintson a felül található **Szerkesztés** gombra. Most már szerkesztheti a munkafüzetet, és igényei szerint testre is szabhatja. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával.
 ![munkafüzetek megtekintése](./media/tutorial-monitor-data/workbook-graph.png)
 1. A módosítások elvégzése után mentheti a munkafüzetet. 
 
-1. Klónozhatja a munkafüzetet is: Válassza a **Szerkesztés,** majd **a Mentés másként**lehetőséget, ügyelve arra, hogy azt egy másik névvel, ugyanazzal az előfizetéssel és erőforráscsoporttal mentse. Ezek a munkafüzetek a **Saját munkafüzetek** lap alatt jelennek meg.
+1. A munkafüzet klónozása is megtehető: válassza a **Szerkesztés** , majd a **Mentés másként**lehetőséget, hogy egy másik névvel mentse azt az előfizetéshez és az erőforráscsoporthoz. Ezek a munkafüzetek a **saját munkafüzetek** lapon jelennek meg.
 
 
 ## <a name="create-new-workbook"></a>Új munkafüzet létrehozása
 
-1. Nyissa meg **a Munkafüzetek lehetőséget,** és válassza **a Munkafüzet hozzáadása** lehetőséget, ha teljesen új munkafüzetet szeretne létrehozni.
-  ![ugrás munkafüzetekre](./media/tutorial-monitor-data/create-workbook.png)
+1. Nyissa meg a **munkafüzetek** elemet, majd válassza a **munkafüzet hozzáadása** lehetőséget, hogy új munkafüzetet hozzon létre a semmiből.
+  ![Ugrás a munkafüzetekhez](./media/tutorial-monitor-data/create-workbook.png)
 
-1. A munkafüzet szerkesztéséhez válassza a **Szerkesztés**lehetőséget, majd szükség szerint adjon hozzá szöveget, lekérdezéseket és paramétereket. A munkafüzet testreszabásáról további információt az [Azure Monitor-munkafüzetekkel rendelkező interaktív jelentések létrehozása című témakörben talál.](../azure-monitor/app/usage-workbooks.md) 
+1. A munkafüzet szerkesztéséhez válassza a **Szerkesztés**lehetőséget, majd szükség szerint adja hozzá a szöveget, a lekérdezéseket és a paramétereket. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. 
 
-1. Lekérdezés létrehozásakor állítsa be az **adatforrás** **naplók**, az **erőforrás típus** van beállítva **Log Analytics,** majd válassza ki a megfelelő munkaterület(ek). 
+1. Lekérdezés létrehozásakor állítsa be az **adatforrás** **naplókat**, az **Erőforrás típusa** pedig **log Analytics** , majd válassza ki a megfelelő munkaterületet (ka) t. 
 
-1. A munkafüzet létrehozása után mentse a munkafüzetet, és győződjön meg arról, hogy az Azure Sentinel-munkaterület előfizetési és erőforrás-csoportjában menti.
+1. Miután létrehozta a munkafüzetet, mentse a munkafüzetet, és mentse azt az Azure Sentinel munkaterület előfizetés és erőforráscsoport területén.
 
-1. Ha azt szeretné, hogy a szervezet többi tagja is használja a munkafüzetet, a Mentés csoportban válassza **a** **Megosztott jelentések**lehetőséget. Ha azt szeretné, hogy ez a munkafüzet csak Ön számára legyen elérhető, válassza a **Saját jelentések**lehetőséget.
+1. Ha azt szeretné, hogy a szervezeten belül mások is használhassák a munkafüzetet, a **Mentés** lehetőség alatt válassza a **megosztott jelentések**lehetőséget. Ha azt szeretné, hogy ez a munkafüzet csak Ön számára legyen elérhető, válassza **a saját jelentések**lehetőséget.
 
-1. Ha a munkaterületen lévő munkafüzetek között szeretne váltani, bármelyik munkafüzet felső](./media/tutorial-monitor-data/switch.png)ablaktáblájában **kiválaszthatja** ![a Munkafüzetek megnyitása lehetőséget. A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
+1. A munkaterületen lévő munkafüzetek **közötti váltáshoz** ![a munkafüzetek felső ablaktábláján válassza a](./media/tutorial-monitor-data/switch.png)váltás a munkafüzetben lehetőséget. A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
 
    ![Munkafüzetek váltása](./media/tutorial-monitor-data/switch-workbooks.png)
 
 
 ## <a name="how-to-delete-workbooks"></a>Munkafüzetek törlése
 
-Törölheti az Azure Sentinel-sablonból létrehozott munkafüzeteket. 
+Az Azure Sentinel-sablonból létrehozott munkafüzetek törölhetők. 
 
-Testreszabott munkafüzet törléséhez a Munkafüzetek lapon jelölje ki a törölni kívánt mentett munkafüzetet, és válassza a **Törlés**lehetőséget. Ezzel eltávolítja a mentett munkafüzetet.
+Testreszabott munkafüzet törléséhez a munkafüzetek lapon válassza ki a törölni kívánt mentett munkafüzetet, és válassza a **Törlés**lehetőséget. Ezzel törli a mentett munkafüzetet.
 
 > [!NOTE]
-> Ezzel eltávolítja az erőforrást, valamint a sablonon végzett módosításokat. Az eredeti sablon elérhető marad.
+> Ezzel eltávolítja az erőforrást, valamint a sablonon végrehajtott módosításokat is. Az eredeti sablon továbbra is elérhető marad.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg az adatokat az Azure Sentinelben.
+Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg adatait az Azure Sentinelben.
 
-A fenyegetésekre adott válaszok automatizálásáról az [Automatikus fenyegetésre adott válaszok beállítása az Azure Sentinelben című témakörben](tutorial-respond-threats-playbook.md)olvashat.
+A fenyegetésekre adott válaszok automatizálásával kapcsolatos további információkért lásd: [automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure sentinelben](tutorial-respond-threats-playbook.md).

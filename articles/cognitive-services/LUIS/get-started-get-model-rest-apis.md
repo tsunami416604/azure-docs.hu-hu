@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Leképezés rest API-kkal - LUIS'
+title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ebben a REST API-gyorsindításban egy elérhető nyilvános LUIS-alkalmazás segítségével határozza meg a felhasználó szándékát a társalgási szövegből.
+description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -13,15 +13,15 @@ ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 58f164f1522975faa2e7a7e7d7ed08145a6c5889
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77524648"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>Rövid útmutató: Modell módosítása REST API-kkal
+# <a name="quickstart-change-model-with-rest-apis"></a>Gyors útmutató: modell módosítása REST API-kkal
 
-Ebben a rövid útmutatóban adja hozzá a példakimondott szövegeket egy Utazási ügynök alkalmazáshoz, és tanítsa be az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+Ebben a rövid útmutatóban egy példa hosszúságú kimondott szöveg ad hozzá egy utazási ügynök alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]

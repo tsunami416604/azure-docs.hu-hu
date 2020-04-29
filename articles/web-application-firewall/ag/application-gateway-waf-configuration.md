@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás-tűzfal-kérelmek méretkorlátai és kizárási listái az Azure Application Gateway alkalmazásban – Azure portal
-description: Ez a cikk a webalkalmazás-tűzfal kérelem méretkorlátairól és kizárási listák konfigurációjáról tartalmaz információt az Azure Portalalkalmazás-átjáróban.
+title: Webalkalmazási tűzfalra vonatkozó kérelmek mérete és kizárási listája az Azure Application Gatewayban – Azure Portal
+description: Ez a cikk a webalkalmazási tűzfalakra vonatkozó kérelmek méretére vonatkozó korlátozásokkal és a kizárási listával kapcsolatos információkat tartalmaz Application Gateway a Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,61 +8,61 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77526790"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazás-tűzfal kérelemméret-korlátés kizárási listák
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
 
-Az Azure Application Gateway webalkalmazás-tűzfal (WAF) védelmet nyújt a webalkalmazások számára. Ez a cikk a WAF-kérelmek méretkorlátait és a kizárási listák konfigurációját ismerteti. Ezek a beállítások az alkalmazásátjáróhoz társított WAF-szabályzatban találhatók. Ha többet szeretne megtudni a WAF-szabályzatokról, olvassa el [az Azure Web Application Firewall on Azure Application Gateway](ag-overview.md) és a Create Web Application Firewall [házirendek létrehozása az alkalmazásátjáróhoz című témakört.](create-waf-policy-ag.md)
+Az Azure Application Gateway webalkalmazási tűzfal (WAF) védelmet biztosít a webalkalmazások számára. Ez a cikk a WAF kérelmek méretére és a kizárási listára vonatkozó konfigurációt ismerteti. Ezek a beállítások a Application Gatewayhoz társított WAF szabályzatban találhatók. Az WAF-szabályzatokkal kapcsolatos további tudnivalókért tekintse meg az Azure [webalkalmazási tűzfal az azure Application Gateway](ag-overview.md) és a [webalkalmazási tűzfal házirendjeinek létrehozása a Application Gateway](create-waf-policy-ag.md)
 
-## <a name="waf-exclusion-lists"></a>WAF kizárási listák
+## <a name="waf-exclusion-lists"></a>WAF kizárási listája
 
-![Kérelem méretkorlátai](../media/application-gateway-waf-configuration/waf-policy.png)
+![Kérelmek méretének korlátai](../media/application-gateway-waf-configuration/waf-policy.png)
 
-A WAF kizárási listák lehetővé teszik bizonyos kérésattribútumok kihagyását a WAF-kiértékelésből. Gyakori példa erre a hitelesítéshez vagy jelszómezőkhöz használt Active Directory beszúrt tokenek. Ezek az attribútumok hajlamosak olyan speciális karaktereket, amelyek hamis pozitív eredményt válthatnak ki a WAF-szabályokból. Miután egy attribútumot hozzáadtak a WAF-kizárási listához, azt egyetlen konfigurált és aktív WAF-szabály sem veszi figyelembe. A kizárási listák hatóköre globális.
+A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését. Gyakori példa Active Directory a hitelesítési vagy a jelszó mezőkhöz használt beszúrt tokenek. Ezek az attribútumok olyan speciális karaktereket tartalmaznak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. Miután hozzáadta az attribútumot a WAF kizárási listájához, nem számít semmilyen konfigurált és aktív WAF szabály. A kizárási listák globálisak a hatókörben.
 
-A kizárási listákhoz név szerint a következő attribútumok adhatók hozzá. A kiválasztott mező értékeit a rendszer nem értékeli ki a WAF-szabályok alapján, de a nevük még mindig fennáll (lásd az alábbi 1. példát, a User-Agent fejléc értéke ki van zárva a WAF-kiértékelésből). A kizárási listák megszüntetik a terület értékének ellenőrzését.
+A következő attribútumok adhatók hozzá a kizárási listához név szerint. A kiválasztott mező értékeit a rendszer nem értékeli ki a WAF-szabályok alapján, de a nevük továbbra is fennáll (lásd az alábbi 1. példát, a felhasználói ügynök fejlécének értékét a rendszer kizárja a WAF kiértékelése alól). A kizárási listán el kell távolítani a mező értékének ellenőrzését.
 
 * Kérelemfejlécek
 * Cookie-k kérése
-* A kérelem attribútumneve (args) kizárási elemként adható meg, például:
+* A kérelem attribútumának neve (ARG) kizárási elemként vehető fel, például:
 
    * Űrlapmező neve
    * XML-entitás
-   * JSON entitás
-   * URL-lekérdezési karakterlánc-argok
+   * JSON-entitás
+   * URL-lekérdezési karakterlánc argumentumai
 
-Megadhatja a pontos kérelem fejlécét, törzsét, cookie-ját vagy lekérdezési karakterlánc-attribútumegyezést.  Vagy megadhatja a részleges egyezéseket is. A kizárási szabályok globális hatályúak, és minden oldalra és szabályra vonatkoznak.
+Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési karakterlánc-attribútumát.  Másik lehetőségként megadhatja a részleges egyezéseket is. A kizárási szabályok globálisak a hatókörben, és minden oldalra és minden szabályra érvényesek.
 
-A támogatott egyezési feltételek operátorai a következők:
+A támogatott egyeztetési feltételek operátorai a következők:
 
-- **Egyenlő :** Ez az operátor pontos egyezéshez használatos. Például a **bearerToken**nevű fejléc kiválasztásához használja az egyenlő operátort, a választókészlettel **pedig a bearerToken.**
-- **A következővel kezdődik:** Ez az operátor a megadott választóértékkel kezdődő összes mezőt egyezteti.
-- **Végződés:** Ez az operátor a megadott választóértékkel végződő összes kérelemmezőnek megfelel.
-- **A következőket tartalmazza:** Ez az operátor megfelel a megadott választóértéket tartalmazó összes kérelemmezőnek.
-- **Egyenlő bármely**: Ez az operátor megfelel az összes kérelem mezőnek. * lesz a választó értéke.
+- **Egyenlő**: ez az operátor pontos egyezést használ. Például a **bearerToken**nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
+- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
+- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
+- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
+- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választók értéke lesz.
 
-Minden esetben az egyeztetés nem érzékeny a kis- és nagybetűk megkülönböztetésére, és a reguláris kifejezés nem engedélyezett választóként.
+Minden esetben a nem megkülönbözteti a kis-és nagybetűket, és a reguláris kifejezés nem engedélyezett választóként.
 
 > [!NOTE]
-> További információt és hibaelhárítási segítséget a [WAF hibaelhárítása](web-application-firewall-troubleshoot.md)című témakörben talál.
+> További információ és hibaelhárítási segítség: [WAF hibaelhárítás](web-application-firewall-troubleshoot.md).
 
 ### <a name="examples"></a>Példák
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az alábbi példák a kizárások alkalmazását mutatják be.
+Az alábbi példák a kizárások használatát mutatják be.
 
 #### <a name="example-1"></a>1. példa
 
-Ebben a példában ki szeretné zárni a user-agent fejlécet. A felhasználói ügynök kérelemfejléce tartalmaz egy jellemző karakterláncot, amely lehetővé teszi, hogy a hálózati protokoll társai azonosítsák a kérelmező szoftverfelhasználói ügynök alkalmazástípusát, operációs rendszerét, szoftvergyártóját vagy szoftververzióját. További információ: [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+Ebben a példában a felhasználói ügynök fejlécét szeretné kizárni. A felhasználói ügynök kérelmének fejléce egy jellemző karakterláncot tartalmaz, amely lehetővé teszi a hálózati protokoll társai számára, hogy azonosítsák a kérelmező szoftver felhasználói ügynökének alkalmazás típusát, operációs rendszerét, szoftveres gyártóját vagy szoftveres verzióját. További információ: [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
 
-A fejléc kiértékelésének letiltása számos oka lehet. Lehet, hogy egy karakterlánc, hogy a WAF látja, és feltételezi, hogy rosszindulatú. Például a klasszikus SQL támadás "x=x" egy karakterláncban. Bizonyos esetekben ez lehet a jogszerű forgalom. Ezért előfordulhat, hogy ki kell zárnia ezt a fejlécet a WAF-kiértékelésből.
+A fejléc kiértékelésének letiltása tetszőleges számú oka lehet. Lehetséges, hogy a WAF egy karakterláncot lát, és feltételezi, hogy rosszindulatú. Például a "x = x" klasszikus SQL-támadás egy karakterláncban. Bizonyos esetekben ez legitim forgalom lehet. Ezért előfordulhat, hogy ki kell zárnia ezt a fejlécet a WAF kiértékelése alól.
 
-A következő Azure PowerShell-parancsmag kizárja a felhasználói ügynök fejlécét a kiértékelésből:
+A következő Azure PowerShell parancsmag kizárja a User-Agent fejlécet a kiértékelésből:
 
 ```azurepowershell
 $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -72,9 +72,9 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 ```
 #### <a name="example-2"></a>2. példa
 
-Ez a példa kizárja a *felhasználói* paraméterben szereplő értéket, amely az URL-címen keresztül a kérelemben átkerül. Tegyük fel például, hogy a felhasználói mező ben gyakori, hogy a WAF által rosszindulatú tartalomként megtekintett karakterláncot tartalmaz, ezért blokkolja azt.  Ebben az esetben kizárhatja a felhasználói paramétert, hogy a WAF ne értékeljen ki semmit a mezőben.
+Ez a példa az URL-cím használatával kizárja a kérelemben átadott *felhasználói* paraméter értékét. Tegyük fel például, hogy az Ön környezetében gyakran előfordul, hogy a felhasználói mező olyan karakterláncot tartalmaz, amelyet a WAF kártékony tartalomként tekint meg, ezért blokkolja azt.  Ebben az esetben kizárhatja a felhasználói paramétereket, így a WAF nem értékel semmit a mezőben.
 
-A következő Azure PowerShell-parancsmag kizárja a felhasználói paramétert a kiértékelésből:
+A következő Azure PowerShell parancsmag kizárja a felhasználói paramétert a kiértékelésből:
 
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -82,25 +82,25 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Tehát, ha `http://www.contoso.com/?user%281%29=fdafdasfda` az URL-t átadják a WAF, akkor nem értékeli a string **fdafdasfda**, de továbbra is értékeli a paraméter nevét **user%281%29**. 
+Így ha az URL `http://www.contoso.com/?user%281%29=fdafdasfda` -címet átadja a WAF, nem értékeli ki a **fdafdasfda**karakterláncot, de továbbra is kiértékeli a **(z) %281 %29**nevű paramétert. 
 
-## <a name="waf-request-size-limits"></a>WAF-kérelem méretkorlátai
+## <a name="waf-request-size-limits"></a>WAF kérelmek méretének korlátai
 
 
 
-A WebApplication Firewall lehetővé teszi a kérelmek méretkorlátainak konfigurálását az alsó és felső határokon belül. A következő két méretkorlát-konfiguráció áll rendelkezésre:
+A webalkalmazási tűzfal lehetővé teszi, hogy az alsó és felső határokon belül konfigurálja a kérelmek méretére vonatkozó korlátozásokat. A következő két méretkorlát-konfiguráció érhető el:
 
-- A kérelem törzsének maximális mérete mező kilobájtban van megadva, és a fájlfeltöltések kivételével szabályozza a kérelem teljes méretkorlátját. Ez a mező legalább 1 KB és 128 KB maximális érték között lehet. A kérelemtörzs alapértelmezett értéke 128 KB.
-- A fájlfeltöltési korlát mező MB-ban van megadva, és a maximálisan megengedett fájlfeltöltési méretet szabályozza. Ez a mező minimális értéke 1 MB és a következő maximumok lehetnek:
+- A kérelem törzsének maximális mérete mezője kilobájtban van megadva, és a kérelmek teljes méretére vonatkozó korlátozásokat a fájlok feltöltése nélkül szabályozza. Ez a mező 1 KB-os minimum 128 – KB-os maximális értékre terjedhet. Az alapértelmezett érték a kérelem törzsének mérete 128 KB.
+- A fájlfeltöltés korlátozása mező a MB-ban van megadva, és a maximálisan megengedett fájlfeltöltés-méretet szabályozza. Ennek a mezőnek legalább 1 MB-nyi értéke lehet, a következő maximális értékekkel:
 
-   - 100 MB a v1 közepes WAF átjárók hoz
-   - 500 MB a v1 nagy WAF átjárók hoz
-   - 750 MB a v2 WAF átjárókhoz 
+   - 100 MB v1 közepes WAF-átjárók esetén
+   - 500 MB a v1 nagyméretű WAF-átjárók esetében
+   - 750 MB a v2 WAF-átjárók számára 
 
- A fájlfeltöltési korlát alapértelmezett értéke 100 MB.
+ A fájl feltöltési korlátjának alapértelmezett értéke 100 MB.
 
-A WAF egy konfigurálható gombot is kínál a kéréskaros vizsgálat be- vagy kikapcsolására. Alapértelmezés szerint a kérelem törzs ellenőrzése engedélyezve van. Ha a kérelem törzs ellenőrzése ki van kapcsolva, waf nem értékeli ki a HTTP-üzenet törzse tartalmát. Ilyen esetekben a WAF továbbra is kényszeríti a WAF-szabályokat a fejléceken, a cookie-kon és az URI-kon. Ha a kérelem törzs ellenőrzése ki van kapcsolva, majd a kérelem törzsméret mező nem alkalmazható, és nem állítható be. A kérelemtörzs ellenőrzésének kikapcsolása lehetővé teszi a 128 KB-nál nagyobb üzenetek WAF-nak történő küldését, de az üzenettörzset nem ellenőrzi a biztonsági rések szempontjából.
+A WAF egy konfigurálható gombot is kínál a kérelem törzsének be-és kikapcsolásához. Alapértelmezés szerint a kérelem törzsének ellenőrzése engedélyezve van. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a WAF nem értékeli ki a HTTP-üzenet törzsének tartalmát. Ilyen esetekben a WAF folytatja a WAF-szabályok betartatását a fejléceken, a cookie-kon és az URI-n. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a kérelem törzsének maximális mérete mezője nem alkalmazható, és nem állítható be. A kérelem törzsének kikapcsolásával a 128 KB-nál nagyobb üzenetek küldhetők a WAF, de az üzenettörzs nem kerül ellenőrzésre a biztonsági rések esetében.
 
 ## <a name="next-steps"></a>További lépések
 
-A WAF-beállítások konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információt az [Application Gateway diagnosztikája című témakörben talál.](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)
+A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).

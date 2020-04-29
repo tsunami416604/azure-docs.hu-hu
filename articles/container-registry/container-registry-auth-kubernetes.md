@@ -1,42 +1,42 @@
 ---
-title: Hitelesítés a Kubernetes-fürtről
-description: Megtudhatja, hogyan biztosíthat egy Kubernetes-fürt az Azure-tároló beállításjegyzékében lévő rendszerképekhez való hozzáférést egy egyszerű szolgáltatás használatával létrehozott lekéréses titok létrehozásával
+title: Hitelesítés a Kubernetes-fürtből
+description: Megtudhatja, hogyan biztosíthat Kubernetes-fürtöt az Azure Container registryben található rendszerképekhez egy egyszerű szolgáltatásnév használatával
 ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
 ms.date: 02/10/2020
 ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77154893"
 ---
-# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Lemezképek lekérése egy Azure-tároló beállításjegyzékéből egy Kubernetes-fürtbe
+# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Képek lekérése egy Azure Container registryből egy Kubernetes-fürtre
 
-Az Azure-tároló beállításjegyzékét bármely Kubernetes-fürthöz, beleértve a "helyi" Kubernetes-fürtöket, például [a minikube-t](https://minikube.sigs.k8s.io/) és a [kind-ot](https://kind.sigs.k8s.io/)tárolórendszerképek forrásaként használhatja. Ez a cikk bemutatja, hogyan hozhat létre egy Kubernetes lekéréses titkos azure-beli egyszerű azure-szolgáltatásnév alapján. Ezután a titkos kulcsot használja a rendszerképek lekérése egy Azure-tároló beállításjegyzékegy Kubernetes-telepítés.
+Az Azure Container Registry-t tároló lemezképek forrásaként bármely Kubernetes-fürthöz használhatja, beleértve a "helyi" Kubernetes-fürtöket, például a [minikube](https://minikube.sigs.k8s.io/) -t és a [fajtát](https://kind.sigs.k8s.io/)is. Ez a cikk bemutatja, hogyan hozhat létre egy Kubernetes-lekérési titkot egy Azure Active Directory egyszerű szolgáltatásnév alapján. Ezután a titok használatával lehívhatja a képeket egy Azure Container registryből egy Kubernetes-telepítésben.
 
 > [!TIP]
-> Ha a felügyelt [Azure Kubernetes-szolgáltatást](../aks/intro-kubernetes.md)használja, [integrálhatja a fürtöt](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) egy cél Azure-tároló beállításjegyzékkel a rendszerképlekérésekhez. 
+> Ha a felügyelt [Azure Kubernetes szolgáltatást](../aks/intro-kubernetes.md)használja, akkor a fürtöt a képek lekéréséhez a cél Azure Container Registry szolgáltatással is [integrálhatja](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) . 
 
-Ez a cikk feltételezi, hogy már létrehozott egy privát Azure-tároló beállításjegyzéket. Emellett egy Kubernetes-fürtnek is futnia `kubectl` kell, és a parancssori eszközön keresztül elérhetőnek kell lennie.
+Ez a cikk feltételezi, hogy már létrehozott egy privát Azure Container registryt. Emellett a `kubectl` parancssori eszközön keresztül is futnia kell egy Kubernetes-fürtnek, és elérhetőnek kell lennie.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-Ha nem menti vagy emlékszik az egyszerű szolgáltatásjelszóra, alaphelyzetbe állíthatja azt az [ad sp hitelesítő adatok visszaállítása][az-ad-sp-credential-reset] paranccsal:
+Ha nem menti vagy nem emlékszik az egyszerű szolgáltatásnév jelszavára, az az [ad SP hitelesítőadat-visszaállítási][az-ad-sp-credential-reset] paranccsal állíthatja vissza:
 
 ```azurecli
 az ad sp credential reset  --name http://<service-principal-name> --query password --output tsv
 ```
 
-Ez a parancs egy új, érvényes jelszót ad vissza a szolgáltatásnévhez.
+Ez a parancs egy új, érvényes jelszót ad vissza az egyszerű szolgáltatásnév számára.
 
-## <a name="create-an-image-pull-secret"></a>Képlekéréses titok létrehozása
+## <a name="create-an-image-pull-secret"></a>Rendszerkép-lekérési titok létrehozása
 
-A Kubernetes egy *képlekéréses titkos képet* használ a beállításjegyzékhitelesítéshez szükséges adatok tárolására. Az Azure-tároló beállításjegyzék lekéréses titkos kulcsának létrehozásához adja meg az egyszerű szolgáltatásazonosítót, a jelszót és a beállításjegyzék URL-címét. 
+A Kubernetes egy *rendszerkép-lekérési titok* használatával tárolja a beállításjegyzékben való hitelesítéshez szükséges adatokat. Az Azure Container registryhez tartozó lekérési titok létrehozásához adja meg az egyszerű szolgáltatás AZONOSÍTÓját, jelszavát és a beállításjegyzék URL-címét. 
 
-Hozzon létre egy képlekéréses titkos kulcsot a következő `kubectl` paranccsal:
+Hozzon létre egy rendszerképet a következő `kubectl` paranccsal:
 
 ```console
 kubectl create secret docker-registry <secret-name> \
@@ -49,15 +49,15 @@ ahol:
 
 | Érték | Leírás |
 | :--- | :--- |
-| `secret-name` | A kép neve lekéréses titok, például *acr-secret* |
-| `namespace` | Kubernetes névtér, hogy a titkos <br/> Csak akkor szükséges, ha a titkos kulcsot az alapértelmezett névtéren kívül más névtérbe szeretné helyezni. |
-| `container-registry-name` | Az Azure-tároló beállításjegyzékének neve |
-| `service-principal-ID` | A Kubernetes által a rendszerleíró adatbázis eléréséhez használt szolgáltatásnév azonosítója |
-| `service-principal-password` | Egyszerű szolgáltatás jelszó |
+| `secret-name` | A képkeresési titok neve, például *ACR-Secret* |
+| `namespace` | Kubernetes névtér, amely a titkot a következőre helyezi <br/> Csak akkor szükséges, ha a titkot az alapértelmezett névtértől eltérő névtérben kívánja elhelyezni. |
+| `container-registry-name` | Az Azure Container Registry neve |
+| `service-principal-ID` | Annak az egyszerű szolgáltatásnak az azonosítója, amelyet a Kubernetes a beállításjegyzék eléréséhez fog használni |
+| `service-principal-password` | Egyszerű szolgáltatásnév jelszava |
 
-## <a name="use-the-image-pull-secret"></a>A kép lekéréses titkos
+## <a name="use-the-image-pull-secret"></a>A rendszerkép lekérési titkának használata
 
-Miután létrehozta a rendszerkép lekéréses titkos, kubernetes podok és központi telepítések létrehozásához használhatja. Adja meg a titkos `imagePullSecrets` fájl alatt található titkos név nevét. Példa:
+Miután létrehozta a rendszerkép lekérésének titkát, használhatja Kubernetes-hüvelyek és-telepítések létrehozásához. Adja `imagePullSecrets` meg a titkos kulcs nevét a telepítési fájlban. Például:
 
 ```yaml
 apiVersion: v1
@@ -74,13 +74,13 @@ spec:
     - name: acr-secret
 ```
 
-Az előző példában `your-awesome-app:v1` a rendszerkép neve lekérése az Azure-tároló beállításjegyzékből, és `acr-secret` a neve a lekéréses titkos kulcsot a beállításjegyzék eléréséhez létrehozott. A pod telepítésekor a Kubernetes automatikusan lekéri a lemezképet a beállításjegyzékből, ha az még nem található meg a fürtön.
+Az előző példában `your-awesome-app:v1` a a rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és `acr-secret` a létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* A szolgáltatásnévi tagok és az Azure Container Registry használatával kapcsolatos további információkért tekintse meg az [Azure Container Registry hitelesítésszolgáltatás-felelősökkel című témakört.](container-registry-auth-service-principal.md)
-* További információ a képlekéréses titkokról a [Kubernetes dokumentációjában](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
+* Az egyszerű szolgáltatások és a Azure Container Registry használatáról további információt a következő témakörben talál: [Azure Container Registry hitelesítés egyszerű szolgáltatásokkal](container-registry-auth-service-principal.md)
+* További információ a képek lekérési titkairól a [Kubernetes dokumentációjában](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 
 
 <!-- IMAGES -->

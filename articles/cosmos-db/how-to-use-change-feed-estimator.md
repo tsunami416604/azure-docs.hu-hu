@@ -1,58 +1,58 @@
 ---
-title: A változáscsatorna-becslő használata - Azure Cosmos DB
-description: További információ a változáscsatorna-becslő használatával a változáscsatorna-processzor előrehaladásának elemzéséhez
+title: A Change feed kalkulátor használata – Azure Cosmos DB
+description: Ismerje meg, hogy miként elemezheti a változási hírcsatorna-feldolgozók állapotát a Change feed kalkulátor használatával
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585288"
 ---
-# <a name="use-the-change-feed-estimator"></a>A változáscsatorna-becslő használata
+# <a name="use-the-change-feed-estimator"></a>A módosítási hírcsatorna kalkulátor használata
 
-Ez a cikk azt ismerteti, hogyan figyelheti a [változáscsatorna-processzorpéldányok](./change-feed-processor.md) előrehaladását a módosítási hírcsatorna olvasása során.
+Ez a cikk azt ismerteti, hogyan figyelheti meg a [változási hírcsatorna processzor](./change-feed-processor.md) példányainak állapotát, ahogy beolvasták a változási csatornát.
 
-## <a name="why-is-monitoring-progress-important"></a>Miért fontos az előrehaladás nyomon követése?
+## <a name="why-is-monitoring-progress-important"></a>Miért fontos a figyelési folyamat?
 
-A változáscsatorna-processzor mutatóként működik, amely előrehalad a [módosítási hírcsatornában,](./change-feed.md) és végrehajtja a meghatalmazotti implementáció módosításait. 
+A Change feed processzor olyan mutatóként működik, amely a [változási csatornán](./change-feed.md) halad előre, és a delegált implementációban végez módosításokat. 
 
-A változáscsatorna-processzor központi telepítése a rendelkezésre álló erőforrások , például a processzor, a memória, a hálózat és így tovább alapján egy adott ütemben feltudja dolgozni a módosításokat.
+A módosítási hírcsatorna-feldolgozó üzembe helyezése az elérhető erőforrások, például a processzor, a memória, a hálózat stb. alapján feldolgozhatja a módosításokat egy adott sebességgel.
 
-Ha ez az arány lassabb, mint az Azure Cosmos-tárolóban végrehajtott módosítások aránya, a processzor lemarad.
+Ha ez a sebesség lassabb, mint a változásoknak az Azure Cosmos-tárolóban történt változásai, akkor a processzor elmarad.
 
-Ez a forgatókönyv azonosítása segít megérteni, ha a változáscsatorna-feldolgozó üzembe helyezését kell méreteznünk.
+Ennek a forgatókönyvnek az azonosítása segít megérteni, hogy szükség van-e a Change feed processzor üzembe helyezésének skálázására.
 
-## <a name="implement-the-change-feed-estimator"></a>A változáscsatorna-becslő végrehajtása
+## <a name="implement-the-change-feed-estimator"></a>A Change feed kalkulátor implementálása
 
-A [változásadagolási processzorhoz](./change-feed-processor.md)hasonlóan a változáscsatorna-becslő is leküldéses modellként működik. A becses méri az utolsó feldolgozott cikk (a bérlettároló állapota által meghatározott) és a tároló legutóbbi módosítása közötti különbséget, és lenyomja ezt az értéket delegáltnak. A mérés idében történő mérési időköz is testreszabható 5 másodperces alapértelmezett értékkel.
+A [change feed processzorhoz](./change-feed-processor.md)hasonlóan a Change feed kalkulátor leküldéses modellként működik. A kalkulátor méri a legutóbb feldolgozott elem (a címbérletek állapota által meghatározott) és a tároló legutóbbi változása közötti különbséget, és leküldi ezt az értéket egy delegált értékre. A mérés elvégzésének időköze az alapértelmezett 5 másodperces értékkel is testreszabható.
 
-Ha például a változáscsatorna-processzor a következőképpen van definiálva:
+Ha például a változási csatorna processzora a következőképpen van definiálva:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-A helyes módszer a becslő inicializálására annak mérésére, hogy a processzor a következőképpen lenne használva: `GetChangeFeedEstimatorBuilder`
+A becslések inicializálásának helyes módja, ha azt méri, hogy a processzor `GetChangeFeedEstimatorBuilder` a következőképpen fog kinézni:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Ha mind a feldolgozó, mind `leaseContainer` a becses ugyanaz a neve.
+Ahol a processzor és a kalkulátor is ugyanazt `leaseContainer` a nevet használja.
 
-A másik két paraméter a delegálás, amely egy számot kap, amely azt jelzi, hogy hány módosítás van függőben a processzor által **beolvasandó,** és milyen időintervallumban szeretné végrehajtani ezt a mérést.
+A másik két paraméter a delegált, amely egy számot fog kapni, amely azt jelzi, hogy hány **módosítást kell olvasni** a processzor, valamint azt az időintervallumot, amelyen a mérést el szeretné végezni.
 
-A becslést fogadó meghatalmazott például a következő:
+A becslést fogadó delegált példa:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
-Ezt a becslést elküldheti a figyelési megoldásnak, és felhasználhatja annak megértéséhez, hogyan viselkedik a folyamat az idő múlásával.
+Ezt a becslést elküldheti a figyelési megoldásnak, és azt is megtudhatja, hogyan viselkedik az előrehaladás az idő múlásával.
 
 > [!NOTE]
-> A változáscsatorna-becslőt nem kell a változáscsatorna-feldolgozó részeként telepíteni, és nem is lehet ugyanannak a projektnek a része. Lehet független, és egy teljesen más példányban futtatható. Csak ugyanazt a nevet és bérletkonfigurációt kell használnia.
+> A módosítási hírcsatorna-kalkulátor nem szükséges a módosítási csatorna processzorának részeként telepíteni, és nem lehet ugyanannak a projektnek a része. Független lehet, és egy teljesen más példányban futtatható. Csak ugyanazt a nevet és címbérleti konfigurációt kell használnia.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -60,7 +60,7 @@ Ezt a becslést elküldheti a figyelési megoldásnak, és felhasználhatja anna
 
 ## <a name="next-steps"></a>További lépések
 
-Most a következő cikkekben olvashat bővebben a hírcsatorna-feldolgozó módosításáról:
+A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
-* [A módosítási hírcsatorna-processzor áttekintése](change-feed-processor.md)
+* [A hírcsatorna-feldolgozó változásának áttekintése](change-feed-processor.md)
 * [Változáscsatorna-feldolgozó indításának időpontja](how-to-configure-change-feed-start-time.md)

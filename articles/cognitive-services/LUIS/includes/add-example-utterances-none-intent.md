@@ -11,25 +11,25 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279501"
 ---
-Az ügyfélalkalmazás tudnia kell, ha egy utterance (kifejezés) nem értelmes vagy megfelelő az alkalmazás számára. A **Nincs** szándék minden alkalmazáshoz hozzáadódik a létrehozási folyamat részeként annak meghatározásához, hogy az ügyfélalkalmazás nem válaszol-e egy utterance (kifejezés) kérdésre.
+Az ügyfélalkalmazásnak tudnia kell, hogy a Kimondás nem értelmezhető vagy nem megfelelő-e az alkalmazáshoz. A rendszer a létrehozási folyamat részeként hozzáadja az egyes alkalmazásokhoz a **nincs** szándékot annak megállapításához, hogy az ügyfélalkalmazás nem válaszol-e.
 
-Ha a LUIS visszaadja a **Nincs** szándék egy utterance (kifejezés) az ügyfélalkalmazás kérheti, ha a felhasználó szeretné befejezni a beszélgetést, vagy adjon több útvonalat a beszélgetés folytatásához.
+Ha LUIS a **none** szándékot adja vissza, az ügyfélalkalmazás megkérdezheti, hogy a felhasználó szeretné-e lemondani a beszélgetést, vagy további útmutatást ad a beszélgetés folytatásához.
 
-Ha üresen hagyja a **Nincs** szándékot, a tulajdonos tartományon kívül előre jelezendő utterance (kifejezés) előre jelzi a meglévő tulajdonostartomány-leképezések egyikét. Az eredmény az, hogy az ügyfélalkalmazás, például egy csevegőrobot helytelen előrejelzés alapján helytelen műveleteket hajt végre.
+Ha üresen hagyja a **none** leképezést, a rendszer a tulajdonos tartományon kívül várhatóan megjósolja, hogy az egyik meglévő tartományhoz tartozik-e. Ennek az az oka, hogy az ügyfélalkalmazás, például a csevegési robot helytelen előrejelzés alapján helytelen műveleteket hajt végre.
 
 1. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget.
 
-1. Válassza ki a **None** szándékot. Adjon hozzá három kimondott szöveget, amelyet a felhasználó megadhat, de nem releváns a Pizza rendelési alkalmazáshoz:
+1. Válassza ki a **None** szándékot. Vegyen fel három hosszúságú kimondott szöveg, amelyet a felhasználó megadhat, de nem vonatkozik a pizza-rendezési alkalmazásra:
 
-    |`None`példa kimondott szöveg|
+    |`None`Példa hosszúságú kimondott szöveg|
     |--|
     |`Barking dogs are annoying`|
     |`Penguins in the ocean`|
 
-    Ezek a példák nem használhatók a tárgytartományban `cheese` `crust`várt `pickup` `deliver`szavakkal, például `pizza`, , , .
+    Ezek a példák nem használnak olyan szavakat, amelyeket elvár a tulajdonos tartományában `cheese`, `crust`például `pickup` `deliver` `pizza`:,,.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure tűzfal-konfigurációk áttelepítése az Azure tűzfal házirendjébe (előzetes verzió) a PowerShell használatával
-description: Megtudhatja, hogy miként telepítheti át az Azure tűzfal-konfigurációkat az Azure tűzfalházirendbe (előzetes verzió)
+title: Azure Firewall konfigurációk migrálása Azure Firewall szabályzatba (előzetes verzió) a PowerShell használatával
+description: Megtudhatja, hogyan telepíthet át Azure Firewall konfigurációkat Azure Firewall házirendbe (előzetes verzió)
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77443108"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Az Azure tűzfal-konfigurációk áttelepítése az Azure Tűzfal-házirendbe (előzetes verzió) a Powershell használatával
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Azure Firewall konfigurációk migrálása Azure Firewall szabályzatba (előzetes verzió) a PowerShell használatával
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Egy Azure PowerShell-parancsfájl használatával áttelepítheti a meglévő Azure tűzfal-konfigurációk at egy Azure Firewall-házirend-erőforrás. Ezután az Azure Firewall Manager segítségével telepítheti a szabályzatot.
+Egy Azure PowerShell parancsfájl használatával áttelepítheti a meglévő Azure Firewall-konfigurációkat egy Azure Firewall házirend-erőforrásba. Ezután a Azure Firewall Manager használatával telepítheti a szabályzatot.
 
-A `AZFWMigrationScript.ps1` parancsfájl tűzfalházirendet hoz létre három RuleCollectionGroup objektummal az ApplicationRuleCollections, a NetworkRuleCollections és a NatRuleCollections számára. 
+A `AZFWMigrationScript.ps1` szkript létrehoz egy FirewallPolicy három RuleCollectionGroup objektummal a ApplicationRuleCollections, a NetworkRuleCollections és a NatRuleCollections. 
 
-A RuleCollectionGroup egy új felső szintű csoport szabálygyűjtemények jövőbeli bővíthetőség érdekében. A fenti alapértelmezések használata ajánlott, és automatikusan történik a portálról.
+A RuleCollectionGroup egy új, legfelső szintű csoportosítás a szabályok gyűjteményei számára a jövőbeli bővíthetőséghez. A fenti alapértelmezett beállítások használata ajánlott, és a portálon automatikusan történik.
 
-A parancsfájl kezdete határozza meg a forrástűzfal nevét és erőforráscsoportját, valamint a célházirend nevét és helyét. Módosítsa ezeket az értékeket a szervezetnek megfelelően.
+A parancsfájl elején definiálja a forrás tűzfal nevét és az erőforráscsoportot, valamint a célként megadott házirend nevét és helyét. Módosítsa ezeket az értékeket a szervezete igényeinek megfelelően.
 
 ## <a name="migration-script"></a>Áttelepítési parancsfájl
 
-A tűzfal-konfiguráció áttelepítéséhez módosítsa a következő parancsfájlt.
+Módosítsa a következő parancsfájlt a tűzfal konfigurációjának áttelepíthetővé tételéhez.
 
 ```azurepowershell
 #Input params to be modified as needed
@@ -161,4 +161,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Firewall Manager telepítéséről: [Az Azure Firewall Manager előzetes telepítési áttekintése](deployment-overview.md).
+További információ a Azure Firewall Manager telepítéséről: [Azure Firewall Manager előzetes verziójának üzembe helyezésének áttekintése](deployment-overview.md).

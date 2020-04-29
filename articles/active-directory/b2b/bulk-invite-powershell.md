@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a B2B együttműködési felhasználók tömeges meghívásához – Azure Active Directory | Microsoft dokumentumok
-description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja a PowerShellt és egy CSV-fájlt tömeges meghívók küldésére az Azure AD B2B együttműködési vendégfelhasználóknak.
+title: Oktatóanyag a B2B együttműködési felhasználók tömeges meghívásához – Azure Active Directory | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a PowerShellt és egy CSV-fájlt, hogy tömeges meghívásokat küldjön a külső Azure AD B2B együttműködési vendég felhasználói számára.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77172659"
 ---
-# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: A PowerShell használatával tömegesen hívja meg az Azure AD B2B együttműködési felhasználókat
+# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: az Azure AD B2B csoportmunka-felhasználók tömeges meghívása a PowerShell használatával
 
 Ha Azure Active Directory (Azure AD) B2B együttműködéssel dolgozik együtt külső partnerekkel, egyszerre több vendégfelhasználót meghívhat a szervezetébe. Ebben az oktatóanyagban megismerheti, hogyan küldhet külső felhasználók számára tömeges meghívókat a PowerShell használatával. A következőket fogja elvégezni:
 
@@ -27,7 +27,7 @@ Ha Azure Active Directory (Azure AD) B2B együttműködéssel dolgozik együtt k
 > * Meghívók küldése egy PowerShell-szkripttel
 > * A felhasználók címtárhoz való hozzáadásának ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,7 +126,7 @@ Annak ellenőrzésére, hogy a meghívott felhasználókat hozzáadták-e az Azu
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Meg kell jelennie a meghívott felhasználóknak a listában, egy egyszerű felhasználónévvel (UPN) az *e-mail cím*#EXT#\@*tartomány*formátumában. Például *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, ahol contoso.onmicrosoft.com az a szervezet, amelytől a meghívókat küldte.
+A meghívott felhasználókat a következő formátumban kell megjelennie: *EmailAddress*#EXT #\@*tartomány*. Például *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

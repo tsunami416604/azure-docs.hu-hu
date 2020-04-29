@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Szövegnyelv észlelése – Fordítószöveg API'
+title: 'Gyors útmutató: szöveg nyelvének észlelése – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtudhatja, hogyan észlelheti a megadott szöveg nyelvét a Translator Text REST API használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan derítheti fel a megadott szöveg nyelvét a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 3a7e8ef70f1dc1524de5d5b5908b7baee230df4a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525268"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Rövid útmutató: A Fordító szöveg API-jával észlelheti a szöveg nyelvét
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Gyors útmutató: a Translator Text API használata a szöveg nyelvének észleléséhez
 
-Ebben a rövid útmutatóban megtudhatja, hogyan észlelheti a megadott szöveg nyelvét a Translator Text REST API-val.
+Ebből a rövid útmutatóból megtudhatja, hogyan derítheti fel a megadott szöveg nyelvét a Translator Text REST API.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 

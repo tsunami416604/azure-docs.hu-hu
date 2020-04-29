@@ -1,7 +1,7 @@
 ---
 title: Mi az a munkaterület?
 titleSuffix: Azure Machine Learning
-description: A munkaterület az Azure Machine Learning legfelső szintű erőforrása. Megőrzi az összes betanítási futtatások előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezen információk segítségével határozza meg, hogy melyik betanítási futtatás állítja elő a legjobb modellt
+description: A munkaterület a Azure Machine Learning legfelső szintű erőforrása. Megőrzi az összes képzési folyamat előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,115 +10,115 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77505578"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning-munkaterület?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
-A munkaterület az Azure Machine Learning legfelső szintű erőforrása, amely központosított helyet biztosít az Azure Machine Learning használatasorán létrehozott összes összetevővel való munkához.  A munkaterület az összes betanítási futtatás előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezt az információt használja annak meghatározására, hogy melyik betanítási futtatás állítja elő a legjobb modellt.  
+A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központosított helyet biztosít a Azure Machine Learning használatakor létrehozott összes összetevővel való együttműködéshez.  A munkaterület megőrzi az összes betanítási Futtatás előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő.  
 
-Ha van egy önnek tetsző modell, regisztrálja azt a munkaterületen. Ezután a regisztrált modell és a pontozási parancsfájlok használatával üzembe helyezheti az Azure Container Instances, az Azure Kubernetes szolgáltatás, vagy egy mező-programozható kaputömb (FPGA) a REST-alapú HTTP-végpont. A modellt egy Azure IoT Edge-eszközre is telepítheti modulként.
+Ha egy modellt szeretne, regisztrálja azt a munkaterületen. Ezután a regisztrált modell-és pontozási szkriptekkel üzembe helyezheti az Azure Container Instances, az Azure Kubernetes Service-t vagy egy mezőre programozható Gate array (FPGA)-t REST-alapú HTTP-végpontként. A modellt egy Azure IoT Edge eszközre is üzembe helyezheti modulként.
 
-A díjszabás és a rendelkezésre álló funkciók attól függnek, hogy az [Alapszintű vagy a Nagyvállalati kiadás](overview-what-is-azure-ml.md#sku) ki van-e jelölve a munkaterülethez. A munkaterület létrehozásakor válassza ki [a kiadást.](#create-workspace)  Az Alapszintű verzióról az Enterprise kiadásra is [frissíthet.](#upgrade)
+Az elérhető díjszabás és szolgáltatások attól függnek, hogy az [alapszintű vagy a Enterprise kiadás](overview-what-is-azure-ml.md#sku) ki van-e választva a munkaterületen. A kiadást a [munkaterület létrehozásakor](#create-workspace)válassza ki.  Az alapszintű Enterprise kiadásra is [frissítheti](#upgrade) .
 
-## <a name="taxonomy"></a>Taxonómia 
+## <a name="taxonomy"></a>Elnevezési rendszert 
 
-A munkaterület taxonómiát az alábbi ábra szemlélteti:
+A munkaterület taxonómiaét az alábbi ábra szemlélteti:
 
-[![Munkaterületi taxonómia](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
+[![Munkaterület besorolása](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
-Az ábrán a munkaterület következő összetevői láthatók:
+A diagram a munkaterület következő összetevőit jeleníti meg:
 
-+ A munkaterület [azure Machine Learning számítási példányokat](concept-compute-instance.md)tartalmazhat, az Azure Machine Learning futtatásához szükséges Python-környezettel konfigurált felhőerőforrásokat.
++ A munkaterületek tartalmazhatnak [Azure Machine learning számítási példányokat](concept-compute-instance.md), a Azure Machine learning futtatásához szükséges Python-környezettel konfigurált Felhőbeli erőforrásokat.
 
-+ [A felhasználói szerepkörök](how-to-assign-roles.md) lehetővé teszik a munkaterület megosztását más felhasználókkal, csoportokkal vagy projektekkel.
-+ [A számítási célok](concept-azure-machine-learning-architecture.md#compute-targets) a kísérletek futtatásához használatosak.
-+ A munkaterület létrehozásakor a [kapcsolódó erőforrások](#resources) is létrejönnek.
-+ [A kísérletek](concept-azure-machine-learning-architecture.md#experiments) olyan képzési futtatások, amelyeket a modellek létrehozásához használ.  
-+ [A folyamatok](concept-azure-machine-learning-architecture.md#ml-pipelines) újrafelhasználható munkafolyamatok a modell betanításához és átképzéséhez.
-+ [Adatkészletek](concept-azure-machine-learning-architecture.md#datasets-and-datastores) támogatás a modellbetanításhoz és a folyamat létrehozásához használt adatok kezeléséhez.
-+ Miután egy modellt szeretne telepíteni, hozzon létre egy regisztrált modellt.
-+ A regisztrált modell és a pontozási parancsfájl segítségével hozzon létre egy [központi telepítési végpontot.](concept-azure-machine-learning-architecture.md#endpoints)
++ A [felhasználói szerepkörök](how-to-assign-roles.md) lehetővé teszik a munkaterület más felhasználókkal, csapatokkal vagy projektekkel való megosztását.
++ A kísérletek futtatásához [számítási célokat](concept-azure-machine-learning-architecture.md#compute-targets) kell használni.
++ A munkaterület létrehozásakor a [társított erőforrások](#resources) is létrejönnek Önnek.
++ A [kísérletek](concept-azure-machine-learning-architecture.md#experiments) olyan képzések, amelyeket a modellek létrehozásához használhat.  
++ A [folyamatok](concept-azure-machine-learning-architecture.md#ml-pipelines) újrafelhasználható munkafolyamatok a modell betanításához és átképzéséhez.
++ Az [adatkészletek](concept-azure-machine-learning-architecture.md#datasets-and-datastores) segítséget nyújtanak a modell betanításához és a folyamat létrehozásához használt adat kezeléséhez.
++ Ha már rendelkezik egy olyan modellel, amelyet telepíteni szeretne, hozzon létre egy regisztrált modellt.
++ Hozzon létre egy [telepítési végpontot](concept-azure-machine-learning-architecture.md#endpoints)a regisztrált modell és egy pontozási parancsfájl használatával.
 
-## <a name="tools-for-workspace-interaction"></a>Eszközök a munkaterülettel való interakcióhoz
+## <a name="tools-for-workspace-interaction"></a>A munkaterület-interakció eszközei
 
-A munkaterületet az alábbi módokon használhatja:
+A munkaterületet a következő módokon használhatja:
 
-+ Az interneten:
-    + [Azure Machine Learning stúdió](https://ml.azure.com) 
-    + [Azure Machine Learning designer (előzetes verzió)](concept-designer.md) – Csak [az Enterprise edition munkaterületeken](overview-what-is-azure-ml.md#sku) érhető el.
-+ Bármely Python-környezetben az [Azure Machine Learning SDK pythonhoz.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ Bármely R-környezetben az [Azure Machine Learning SDK r.](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
-+ A parancssorban az Azure Machine Learning [CLI bővítmény](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) használatával
++ A weben:
+    + [Azure Machine Learning Studio](https://ml.azure.com) 
+    + [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) – csak [Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterületeken érhető el.
++ Bármely Python-környezetben a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
++ Bármilyen R-környezetben az [r-hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)-val.
++ A parancssorban a Azure Machine Learning [CLI bővítmény](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) használatával
 
 ## <a name="machine-learning-with-a-workspace"></a>Gépi tanulás munkaterülettel
 
-A gépi tanulási feladatok összetevőkolvasása és/vagy írása a munkaterületre.
+A gépi tanulási feladatok beolvassák és/vagy leírják a munkaterületet.
 
-+ Kísérletezzen egy modell betanításához – a kísérlet futtatási eredményeit írja a munkaterületre.
-+ Automatikus ML használatával betanítja a modellt – beírja a betanítási eredményeket a munkaterületre.
++ Futtasson egy kísérletet a modell betanításához – a kísérlet futtatása az eredményeket a munkaterületre.
++ Az automatizált ML használatával betaníthatja a modelleket – a betanítási eredményeket a munkaterületre írja.
 + Modell regisztrálása a munkaterületen.
-+ Modell üzembe helyezése – a regisztrált modell segítségével hozzon létre egy központi telepítést.
++ Modell üzembe helyezése – a regisztrált modell használatával hozza létre a központi telepítést.
 + Újrafelhasználható munkafolyamatok létrehozása és futtatása.
 + Megtekintheti a gépi tanulási összetevőket, például a kísérleteket, a folyamatokat, a modelleket, a központi telepítéseket.
-+ Kövesse nyomon és figyelje a modelleket.
++ Modellek nyomon követése és figyelése.
 
 ## <a name="workspace-management"></a>Munkaterület-kezelés
 
-A munkaterület-felügyeleti feladatokat a következő tevékenységekkel is elvégezheti:
+A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 
-| Munkaterület-kezelési feladat   | Portál              | Studio | Python SDK / R SDK       | parancssori felület        |
+| Munkaterület-felügyeleti feladat   | Portál              | Studio | Python SDK/R SDK       | parancssori felület        |
 |---------------------------|---------|---------|------------|------------|
 | Munkaterület létrehozása        | **&check;**     | | **&check;** | **&check;** |
-| Munkaterületi hozzáférés kezelése    | **&check;**   || |  **&check;**    |
-| Frissítés az Enterprise edition verzióra    | **&check;** | **&check;**  | |     |
+| Munkaterület-hozzáférés kezelése    | **&check;**   || |  **&check;**    |
+| Frissítés a Enterprise Edition verzióra    | **&check;** | **&check;**  | |     |
 | Számítási erőforrások létrehozása és kezelése    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| Jegyzetfüzet virtuális gép létrehozása |   | **&check;** | |     |
+| Jegyzetfüzet-alapú virtuális gép létrehozása |   | **&check;** | |     |
 
 > [!WARNING]
-> Az Azure Machine Learning-munkaterület áthelyezése egy másik előfizetésre, vagy a tulajdonában lévő előfizetés áthelyezése egy új bérlőre, nem támogatott. Ez hibákat okozhat.
+> Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a>Munkaterület létrehozása
 
-Amikor létrehoz egy munkaterületet, eldöntheti, hogy [az Alapszintű vagy a Nagyvállalati kiadással](overview-what-is-azure-ml.md#sku)hozza-e létre. A kiadás határozza meg a munkaterületen elérhető szolgáltatásokat. Az Enterprise edition többek között hozzáférést biztosít az [Azure Machine Learning tervezőjéhez](concept-designer.md) és az automatizált gépi tanulási kísérletek készítésének stúdióverziójához. [automated machine learning experiments](tutorial-first-experiment-automated-ml.md)  További részletekért és díjszabási információkért lásd: [Azure Machine Learning díjszabása.](https://azure.microsoft.com/pricing/details/machine-learning/)
+Munkaterületek létrehozásakor eldöntheti, hogy [alapszintű vagy Enterprise kiadással](overview-what-is-azure-ml.md#sku)hozza-e létre. A kiadás meghatározza a munkaterületen elérhető szolgáltatásokat. A nagyvállalati kiadás többek között a [Azure Machine learning Designerhez](concept-designer.md) és az [automatizált gépi tanulási kísérletek](tutorial-first-experiment-automated-ml.md)létrehozásához szükséges Studio-verzióhoz biztosít hozzáférést.  További részletek és díjszabási információk: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
 
-A munkaterület létrehozásának többféle módja van:  
+Több módon is létrehozhat egy munkaterületet:  
 
-* Használja az [Azure Portalegy](how-to-manage-workspace.md) point-and-click felület végigvezeti az egyes lépéseket.
-* Az [Azure Machine Learning SDK python-hoz](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) segítségével hozzon létre egy munkaterületet menet közben Python-parancsfájlokból vagy Jupiter-jegyzetfüzetekből
-* Használjon [Egy Azure Resource Manager sablont](how-to-create-workspace-template.md) vagy az Azure Machine Learning [CLI-t,](reference-azure-machine-learning-cli.md) ha a létrehozást vállalati biztonsági szabványokkal kell automatizálnia vagy testre kell szabnia.
-* Ha a Visual Studio Kód alkalmazásában dolgozik, használja a [VS Code bővítményt.](tutorial-setup-vscode-extension.md)
-
-> [!NOTE]
-> A munkaterület neve nem i.
-
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Frissítés az Enterprise edition verzióra
-
-Az Azure Portal használatával [frissítheti munkaterületét Basic-ről Enterprise Edition-re.](how-to-manage-workspace.md#upgrade) Az Enterprise edition munkaterület nem minősíthető alapszintű kiadási munkaterületre. 
-
-## <a name="associated-resources"></a><a name="resources"></a>Kapcsolódó erőforrások
-
-Amikor új munkaterületet hoz létre, az automatikusan több Azure-erőforrást hoz létre, amelyeket a munkaterület használ:
-
-+ [Azure Container Registry:](https://azure.microsoft.com/services/container-registry/)Regisztrálja a docker-tárolók, amelyek a betanítás során, és amikor egy modell üzembe helyezésekor. A költségek minimalizálása érdekében az ACR **lusta, amíg** üzembe helyezési lemezképek jönnek létre.
-+ [Azure Storage-fiók:](https://azure.microsoft.com/services/storage/)A munkaterület alapértelmezett adattáraként használatos.  Az Azure Machine Learning számítási példányaihoz használt Jupyter-jegyzetfüzetek is itt tárolódnak.
-+ [Azure Application Insights:](https://azure.microsoft.com/services/application-insights/)A modellek figyelési adatait tárolja.
-+ [Azure Key Vault:](https://azure.microsoft.com/services/key-vault/)Tárolja a számítási célok és más bizalmas információk által használt titkos kulcsokat, amelyeket a munkaterület nek szüksége van.
+* A pont-és kattintási felület [Azure Portal](how-to-manage-workspace.md) az egyes lépések lépésein végezhető el.
+* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) használatával létrehozhat egy munkaterületet a Python-parancsfájlok vagy a Jupiter-jegyzetfüzetek segítségével
+* Ha automatizálni vagy testre szeretné szabni a vállalati biztonsági szabványokkal való létrehozást, használjon [Azure Resource Manager sablont](how-to-create-workspace-template.md) vagy a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) -t.
+* Ha a Visual Studio Code-ban dolgozik, használja a [vs Code bővítményt](tutorial-setup-vscode-extension.md).
 
 > [!NOTE]
-> Az új verziók létrehozása mellett a meglévő Azure-szolgáltatásokat is használhatja.
+> A munkaterület neve megkülönbözteti a kis-és nagybetűket.
+
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Frissítés a Enterprise Edition verzióra
+
+[A munkaterületet az alapszintű és a nagyvállalati verzióról is frissítheti](how-to-manage-workspace.md#upgrade) Azure Portal használatával. Az Enterprise Edition-munkaterületeket nem lehet alapszintű kiadási munkaterületre visszaminősíteni. 
+
+## <a name="associated-resources"></a><a name="resources"></a>Társított erőforrások
+
+Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-erőforrást, amelyet a munkaterület használ:
+
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): regisztrálja a betanítás során használt Docker-tárolókat, és amikor üzembe helyezi a modellt. A költségek csökkentése érdekében az ACR a telepítési lemezképek létrehozása előtt **betöltődik** .
++ [Azure Storage-fiók](https://azure.microsoft.com/services/storage/): a munkaterület alapértelmezett adattára.  A Azure Machine Learning számítási példányokhoz használt Jupyter-jegyzetfüzeteket is itt tárolja.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): a modellekkel kapcsolatos figyelési információkat tárolja.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): a számítási célok és a munkaterület által igényelt egyéb bizalmas információk által használt titkokat tárolja.
+
+> [!NOTE]
+> Az új verziók létrehozása mellett használhatja a meglévő Azure-szolgáltatásokat is.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Machine Learning első lépései:
+A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 
-+ [Az Azure Machine Learning áttekintése](overview-what-is-azure-ml.md)
++ [Azure Machine Learning áttekintése](overview-what-is-azure-ml.md)
 + [Munkaterület létrehozása](how-to-manage-workspace.md)
 + [Munkaterületek kezelése](how-to-manage-workspace.md)
-+ [Oktatóanyag: Első lépések a Python SDK-val végzett első ML-kísérlet létrehozásához](tutorial-1st-experiment-sdk-setup.md)
-+ [Oktatóanyag: Az Azure Machine Learning és az R SDK első lépései](tutorial-1st-r-experiment.md)
-+ [Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md) (csak [az Enterprise edition](overview-what-is-azure-ml.md#sku) munkaterületeken érhető el)
-+ [Oktatóanyag: Az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md) (csak [az Enterprise edition](overview-what-is-azure-ml.md#sku) munkaterületeken érhető el)
++ [Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)
++ [Oktatóanyag: az Azure Machine Learning első lépései az R SDK-val](tutorial-1st-r-experiment.md)
++ [Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md) (csak [Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterületeken érhető el)
++ [Oktatóanyag: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md) (csak [Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterületeken érhető el)

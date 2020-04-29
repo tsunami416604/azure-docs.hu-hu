@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egyéni analitikus szabályokat a gyanús fenyegetések észleléséhez az Azure Sentinel segítségével| Microsoft dokumentumok
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni analitikus szabályokat az Azure Sentinel gyanús fenyegetései észleléséhez.
+title: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez az Azure Sentinel használatával | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni analitikai szabályokat a gyanús fenyegetések észleléséhez az Azure Sentinel használatával.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,43 +15,43 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585107"
 ---
-# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: Hozzon létre egyéni analitikus szabályokat a gyanús fenyegetések észlelésére
+# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure Sentinelhez, létrehozhat egyéni szabályokat, amelyek megkereshetik a környezetben az adott feltételeket, és incidenseket generálhatnak, amikor a feltételek egyeznek, így kivizsgálhatja őket. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával a fenyegetések észleléséhez.
+Miután az [adatforrásokat](quickstart-onboard.md) az Azure sentinelhez csatlakoztatta, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre, amikor a feltételek teljesülnek, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
 
-Ez az oktatóanyag segít a fenyegetések észlelésének az Azure Sentinel használatával.
+Ez az oktatóanyag segítséget nyújt az Azure Sentinel-fenyegetések észlelésében.
 > [!div class="checklist"]
 > * Analitikus szabályok létrehozása
-> * A fenyegetésekre adott válaszok automatizálása
+> * Fenyegetési válaszok automatizálása
 
 ## <a name="create-custom-analytic-rules"></a>Egyéni analitikus szabályok létrehozása
 
-Egyéni analitikus szabályokat hozhat létre, amelyek segítségével megkeresheti a környezetében gyanús fenyegetések és anomáliák típusait. A szabály gondoskodik arról, hogy azonnal értesítést kapjon, így triage, vizsgálja ki, és a fenyegetések elhárítása.
+Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresheti a környezetben gyanús fenyegetések és rendellenességek típusát. A szabály ellenőrzi, hogy azonnal értesítést kap-e, hogy a fenyegetések osztályozását, kivizsgálását és szervizelését el tudja végezni.
 
-1. Az Azure Sentinel alatti Azure Portalon válassza az **Analytics**lehetőséget.
+1. Az Azure Sentinel alatti Azure Portal válassza az **elemzés**lehetőséget.
 
-1. A felső menüsorban válassza az **+Létrehozás** és **az Ütemezett lekérdezési szabály**lehetőséget. Ezzel megnyitja az **Analytics szabály varázslót**.
+1. A felső menüsorban válassza a **+ Létrehozás** lehetőséget, és válassza az **ütemezett lekérdezési szabályt**. Ekkor megnyílik az **elemzési szabály varázsló**.
 
     ![Ütemezett lekérdezés létrehozása](media/tutorial-detect-threats-custom/create-scheduled-query.png)
 
-1. Az **Általános** lapon adjon meg egy egyedi **nevet**és egy **Leírást.** A **Taktika** mezőben a támadások azon kategóriái közül választhat, amelyek szerint osztályozni szeretné a szabályt. Állítsa be a riasztás **súlyossága** szükség szerint. Amikor létrehozza a szabályt, **állapota** alapértelmezés szerint **engedélyezve** van, ami azt jelenti, hogy közvetlenül a létrehozás befejezése után fog futni. Ha nem szeretné, hogy azonnal fusson, válassza a **Letiltva**lehetőséget, és a szabály hozzáadódik az **Aktív szabályok** laphoz, és akkor engedélyezheti, amikor szüksége van rá.
+1. Az **általános** lapon adjon meg egy egyedi **nevet**és egy **leírást**. A **taktikák** mezőben választhat a támadási kategóriák közül, amelyek alapján osztályozni tudja a szabályt. Szükség szerint állítsa be a riasztás **súlyosságát** . A szabály létrehozásakor az **állapota** alapértelmezés szerint **engedélyezve** van, ami azt jelenti, hogy a létrehozás befejezését követően azonnal elindul. Ha nem szeretné, hogy azonnal fusson, válassza a **Letiltva**lehetőséget, és a szabály hozzá lesz adva az **aktív szabályok** laphoz, és szükség esetén is engedélyezheti.
 
     ![Egyéni analitikus szabály létrehozásának megkezdése](media/tutorial-detect-threats-custom/general-tab.png)
 
-1. A **Szabály logikabeállítása** lapon közvetlenül a Szabály **lekérdezési** mezőbe írhat lekérdezést, vagy létrehozhatja a lekérdezést a Log Analytics szolgáltatásban, majd másolhatja és beillesztheti azt.
+1. A **szabály logikájának beállítása** lapon közvetlenül is írhat egy lekérdezést a **szabály lekérdezése** mezőbe, vagy létrehozhatja a lekérdezést log Analytics, majd onnan másolhatja és beillesztheti.
  
    ![Lekérdezés létrehozása az Azure Sentinelben](media/tutorial-detect-threats-custom/settings-tab.png)
 
-   - Tekintse meg az **eredmények előnézeti** területen a jobb oldalon, ahol az Azure Sentinel megjeleníti az eredmények száma (naplóesemények) a lekérdezés generál, módosítása menet közben, alekérdezés írása és konfigurálása során. A grafikon a megadott időszak eredményeinek számát mutatja, amelyet a **Lekérdezés ütemezése** szakasz beállításai határoznak meg.
-    - Ha azt látja, hogy a lekérdezés túl sok vagy túl gyakori riasztást vált ki, beállíthatja az alaptervet a **Riasztási küszöbérték** szakaszban.
+   - Tekintse meg az **eredmények előnézetének** területét a jobb oldalon, ahol az Azure Sentinel megjeleníti a lekérdezés által generált eredmények (log Events) számát, és a lekérdezés írásakor és konfigurálásakor menet közben változik. A diagram a megadott időszakon belüli eredmények számát jeleníti meg, amelyet a **lekérdezés ütemezése** szakaszban megadott beállítások határoznak meg.
+    - Ha úgy látja, hogy a lekérdezés túl sok vagy túl gyakori riasztást vált ki, beállíthatja az alapkonfigurációt a **riasztási küszöbérték** szakaszban.
 
-      Az alábbiakban egy mintalekérdezést, amely figyelmezteti Önt, ha rendellenes számú erőforrás jön létre az Azure Activity.
+      Íme egy példa a lekérdezésre, amely riasztást küld, ha rendellenes számú erőforrás jön létre az Azure-tevékenységben.
 
       `AzureActivity
      \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
@@ -59,55 +59,55 @@ Egyéni analitikus szabályokat hozhat létre, amelyek segítségével megkeresh
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > A lekérdezés hosszának 1 és 10 000 karakter \*között kell \*lennie, és nem tartalmazhat "keresés" vagy "egyesítő" karaktereket.
+      > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és \*nem tartalmazhat "Search \*" vagy "Union" karaktert.
 
-    1. Az **entitások leképezése** szakasz segítségével összekapcsolhatja a lekérdezés eredményeinek paramétereit az Azure Sentinel által felismert entitásokkal. Ezek az entitások képezik a további elemzés alapját, beleértve a riasztások csoportosítását az incidensek besorolásához az **Incidens beállításai** lapon.
-    1. A **Lekérdezés ütemezése** szakaszban állítsa be a következő paramétereket:
+    1. A **leképezési entitások** szakasz segítségével a lekérdezési eredményekből származó paramétereket kapcsolhat az Azure Sentinel által elismert entitásokhoz. Ezek az entitások a további elemzés alapjául szolgálnak, beleértve az incidensek **beállításai** lapon lévő riasztások csoportosítását.
+    1. A **lekérdezés ütemezése** szakaszban adja meg a következő paramétereket:
 
-       1. Állítsa be **a Lekérdezés futtatása minden** szabályozni, hogy milyen gyakran fut a lekérdezés - olyan gyakran, mint 5 percenként, vagy olyan ritkán, mint naponta egyszer.
+       1. Az **összes lekérdezés futtatása** beállítással beállíthatja, hogy a lekérdezés milyen gyakran fusson – akár 5 percenként, akár ritkábban, akár naponta egyszer.
 
-       1. Állítsa be a lekérdezés által lefedett adatok aktuális időszakát **az utolsó ból származó lekérdezési adatok** beállításához – például lekérdezheti az elmúlt 10 perc adatot, vagy az elmúlt 6 órányi adatot.
+       1. A **legutóbbi keresési adatok** beállítása a lekérdezés által jelzett adatok időtartamának meghatározásához – például lekérdezheti az elmúlt 10 perc adatait, vagy az elmúlt 6 óra adatait.
 
        > [!NOTE]
-       > Ez a két beállítás egymástól független, egy bizonyos pontig. A lekérdezést rövid időközönként futtathatja, amely az intervallumnál hosszabb időtartamot fedle le (valójában egymást átfedő lekérdezésekkel), de nem futtathat lekérdezést olyan időközönként, amely meghaladja a fedezeti időszakot, ellenkező esetben a lekérdezés teljes lefedettségében hiányosságok lesznek.
+       > Ez a két beállítás egymástól független, egy pontra. A lekérdezéseket rövid idő alatt futtathatja, amely hosszabb időt is igénybe vehet az intervallumnál (egymást átfedő lekérdezésekkel), de nem futtathat lekérdezést olyan intervallumban, amely meghaladja a lefedettségi időt, ellenkező esetben a teljes lekérdezési lefedettség hiányában marad.
 
-    1. A **Riasztási küszöbérték** szakasz használatával definiálja az alaptervet. Állítsa be például a **Riasztás generálása lehetőséget, ha a lekérdezési eredmények száma** **nagyobb, mint a** 1000-es szám, és adja meg az 1000 számot, ha azt szeretné, hogy a szabály csak akkor hozzon létre riasztást, ha a lekérdezés minden futtatáskor több mint 1000 eredményt hoz létre. Mivel ez egy kötelező mező, ha nem szeretne alaptervet beállítani – azaz ha azt szeretné, hogy a riasztás minden eseményt regisztráljon – írja be a 0 értéket a szám mezőbe.
+    1. Az alapkonfiguráció meghatározásához használja a **riasztási küszöbérték** szakaszt. Például állítsa be a **riasztást, ha a lekérdezés eredményeinek száma** **nagyobb, mint** , és adja meg a 1000 számot, ha azt szeretné, hogy a szabály csak akkor hozzon létre riasztást, ha a lekérdezés több, mint 1000 eredményt hoz létre minden alkalommal, amikor fut. Mivel ez egy kötelező mező, ha nem szeretne beállítani egy alapkonfigurációt – azaz ha azt szeretné, hogy a riasztás minden eseményt regisztráljon – a 0 értéket adja meg a szám mezőben.
 
-    1. Az **Elnyomás szakaszban** a **Riasztás létrehozása után** a Futás leállítása **beállítást** bekapcsolhatja, ha a riasztás tkövetően a lekérdezési időközt meghaladó időtartamra fel szeretné függeszteni a szabály működését. Ha ezt bekapcsolja, a **Leállítási lekérdezést** legfeljebb 24 órára kell beállítania.
+    1. A **letiltási** szakaszban bekapcsolhatja a **futó lekérdezés leállítása a riasztás létrehozása után** beállítást, **On** ha a riasztást követően felfüggeszti a szabály működését egy olyan időszakra, amely meghaladja a lekérdezési időközt. Ha bekapcsolja ezt a beállítást, be kell állítania a **lekérdezés leállítása leállítását** azon időtartamra, ameddig a lekérdezésnek futnia kell, akár 24 óráig.
 
-1. Az **Incidensbeállítások** lapon megadhatja, hogy az Azure Sentinel a riasztásokat végrehajtható incidensekké alakítja-e, és ha azokat. Ha ez a lap egyedül marad, az Azure Sentinel egyetlen, különálló incidenst hoz létre minden egyes riasztástól. Az ezen a lapon található beállítások módosításával dönthet úgy, hogy nem hoz létre incidenseket, vagy több riasztást csoportosít egyetlen incidensbe.
+1. Az **incidens beállításai** lapon megadhatja, hogy az Azure Sentinel hogyan kapcsolja be a riasztásokat a gyakorlatban előforduló incidensekre. Ha ez a lap egyedül marad, az Azure Sentinel egyetlen, külön incidenst hoz létre minden riasztásból. Dönthet úgy, hogy nem hozott létre incidenseket, vagy egyetlen incidensbe csoportosítja a több riasztást. ehhez módosítsa az ezen a lapon található beállításokat.
 
-    1. Az **Incidensbeállítások** szakaszban az **elemzési szabály által aktivált riasztásokból incidensek létrehozása** alapértelmezés szerint **engedélyezve**van, ami azt jelenti, hogy az Azure Sentinel egyetlen, külön incidenst hoz létre a szabály által aktivált minden egyes riasztástól.<br></br>Ha nem szeretné, hogy ez a szabály incidensek létrehozását eredményezje (például ha ez a szabály csak további elemzéshez szükséges adatok gyűjtésére szolgál), állítsa ezt **letiltva**értékre.
+    1. Az **incidens beállításai** szakaszban az **ezen elemzési szabály által aktivált riasztásokból származó incidensek létrehozása** alapértelmezés szerint **engedélyezve**értékre van állítva, ami azt jelenti, hogy az Azure Sentinel egyetlen, külön incidenst hoz létre minden egyes, a szabály által aktivált riasztás alapján.<br></br>Ha nem szeretné, hogy ez a szabály bármilyen incidens létrehozását eredményezje (például ha ez a szabály csak a további elemzéshez szükséges adatok gyűjtésére szolgál), állítsa ezt a lehetőséget **Letiltva**értékre.
 
-    1. A **Riasztáscsoportosítás** szakaszban, ha azt szeretné, hogy egy incidens hasonló vagy ismétlődő riasztások egy csoportjából jön létre, állítsa be **a csoporthoz kapcsolódó riasztásokat, amelyeket ez az elemzési szabály vált ki, az incidensek** értékre, és állítsa be a következő paramétereket. **Enabled**
+    1. Ha a **riasztások csoportosítása** szakaszban egyetlen incidenst szeretne létrehozni hasonló vagy ismétlődő riasztások csoportjából, állítsa be a **csoporttal kapcsolatos riasztásokat, amelyeket ez az elemzési szabály aktivál** , és **engedélyezze**az incidenseket, és állítsa be a következő paramétereket.
 
-    1. **A csoport korlátozása a kiválasztott időkereten belül létrehozott riasztásokra:**<br></br> Határozza meg azt az időkeretet, amelyen belül a hasonló vagy ismétlődő riasztások csoportosítva lesznek. Az összes megfelelő riasztások ezen időkereten belül együttesen generál egy incidens vagy egy eseménycsoport (attól függően, hogy az alábbi csoportosítási beállításokat). Az ezen időkereten kívüli riasztások külön incidenst vagy incidenseket hoznak létre.
+    1. **A csoport korlátozása a kijelölt időkereten belül létrehozott riasztásokra**:<br></br> Határozza meg azt az időkeretet, amelyen belül a hasonló vagy ismétlődő riasztások együtt lesznek csoportosítva. Az adott időkereten belül az összes vonatkozó riasztás együttesen létrehoz egy incidenst vagy incidensek készletét (az alábbi csoportosítási beállításoktól függően). Az ebben az időkereten kívüli riasztások külön incidenst vagy incidenseket hoznak létre.
 
-    2. **Az elemzési szabály által kiváltott csoportriasztások egyetlen incidensbe kerülnek:** Válassza ki a riasztások csoportosításának alapját:
+    2. Az **elemzési szabály által aktivált riasztások csoportosítása egyetlen incidensre a következő módon**: válassza ki, hogy melyik alapján csoportosítsa a rendszer a riasztásokat:
 
-        - **A riasztásokat egyetlen incidensbe csoportosítja, ha az összes entitás megfelel:** <br></br>A riasztások akkor vannak csoportosítva, ha azonos értékekkel rendelkeznek az egyes leképezett entitásokhoz (a fenti Szabálylogika beállítása lapon definiálva). Ez az ajánlott beállítás.
+        - **Riasztások csoportosítása egyetlen incidensbe, ha az összes entitás egyezik**: <br></br>A riasztások együtt vannak csoportosítva, ha azonos értékekkel rendelkeznek a leképezett entitások mindegyikéhez (a fenti szabály logikája lapon van meghatározva). Ez az ajánlott beállítás.
 
-        - **A szabály által kiváltott összes riasztást egyetlen incidensbe csoportosítsa:** <br></br>A szabály által létrehozott összes riasztás csoportosítva van, még akkor is, ha nem azonos értékűek.
+        - A **szabály által aktivált riasztások csoportosítása egyetlen incidensbe**: <br></br>A szabály által létrehozott összes riasztás együtt van csoportosítva, még akkor is, ha azok nem azonos értékeket használnak.
 
-        - **A riasztásokat egyetlen incidensbe csoportosítja, ha a kiválasztott entitások egyeznek:** <br></br>A riasztások akkor vannak csoportosítva, ha azonos értékekkel rendelkeznek néhány leképezett entitáshoz (amelyek közül választhat a legördülő listából). Ezt a beállítást akkor érdemes használnia, ha például külön incidenseket szeretne létrehozni a forrás- vagy a cél IP-címek alapján.
+        - **Riasztások csoportosítása egyetlen incidensbe, ha a kiválasztott entitások egyeznek**: <br></br>A riasztások akkor vannak csoportosítva, ha azonos értékekkel rendelkeznek a leképezett entitások némelyikéhez (a legördülő listából választhat). Érdemes lehet ezt a beállítást használni, ha például különálló incidenseket szeretne létrehozni a forrás vagy a cél IP-címei alapján.
 
-    3. **Újra megnyitja a lezárt egyeztetési incidenseket:** Ha egy incidenst lezártak (ami azt jelenti, hogy az alapul szolgáló probléma megoldódott), és ezt követően egy másik riasztás jön létre, amely az adott incidensbe lett volna csoportosítva, állítsa ezt a beállítást **Engedélyezve,** ha azt szeretné, hogy a lezárt incidens újra megnyíljon, és **hagyja letiltva,** ha azt szeretné, hogy a riasztás új incidenst hozzon létre.
+    3. A **lezárt egyeztetési incidensek újbóli megnyitása**: Ha egy incidens **le** lett zárva (ami azt jelenti, hogy az alapul szolgáló probléma megoldódott), és ezt követően egy másik riasztás jön létre, amely az adott incidensbe lett csoportosítva. Ha azt szeretné, hogy a riasztás új incidenst hozzon létre, állítsa be **ezt a beállítást** .
 
-1. Az **Automatikus válaszok** lapon jelölje ki azokat a forgatókönyveket, amelyeket automatikusan szeretne futtatni, amikor az egyéni szabály riasztást hoz létre. A forgatókönyvek létrehozásáról és automatizálásáról a [Fenyegetések reválaszolása](tutorial-respond-threats-playbook.md)című témakörben talál további információt.
+1. Az **automatikus válaszok** lapon válassza ki azokat a forgatókönyveket, amelyeket automatikusan szeretne futtatni, ha az egyéni szabály létrehoz egy riasztást. A forgatókönyvek létrehozásával és automatizálásával kapcsolatos további információkért lásd: [válaszadás a fenyegetésekre](tutorial-respond-threats-playbook.md).
 
-1. Válassza a **Véleményezés és létrehozás** lehetőséget az új riasztási szabály összes beállításának áttekintéséhez, majd a **Létrehozás gombra a riasztási szabály inicializálásához.**
+1. Válassza a **felülvizsgálat és létrehozás** lehetőséget az új riasztási szabály összes beállításának áttekintéséhez, majd válassza a létrehozás lehetőséget a **riasztási szabály inicializálásához**.
   
-1. A riasztás létrehozása után az **Aktív szabályok**csoportban egy egyéni szabály kerül a táblába. Ebből a listából engedélyezheti, letilthatja vagy törölheti az egyes szabályokat.
+1. A riasztás létrehozása után a rendszer egy egyéni szabályt ad hozzá a táblához az **aktív szabályok**területen. Ebből a listából engedélyezheti, letilthatja vagy törölheti az egyes szabályokat.
 
-1. A létrehozott riasztási szabályok eredményeinek megtekintéséhez nyissa meg az **Incidensek** lapot, ahol osztályozást, [incidensek kivizsgálását](tutorial-investigate-cases.md)és a fenyegetések elhárítását.
+1. A létrehozott riasztási szabályok eredményeinek megtekintéséhez nyissa meg az **incidensek** lapot, ahol osztályozást készíthet, [kivizsgálhatja az incidenseket](tutorial-investigate-cases.md), és elháríthatja a fenyegetéseket.
 
 
 > [!NOTE]
-> Az Azure Sentinelben létrehozott riasztások a [Microsoft Graph Security](https://aka.ms/securitygraphdocs)szolgáltatáson keresztül érhetők el. További információt a [Microsoft Graph Biztonsági riasztások dokumentációjában](https://aka.ms/graphsecurityreferencebetadocs)talál.
+> Az Azure Sentinelben létrehozott riasztások [Microsoft Graph biztonságon](https://aka.ms/securitygraphdocs)keresztül érhetők el. További információ: [Microsoft Graph Security riasztások dokumentációja](https://aka.ms/graphsecurityreferencebetadocs).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan kezdheti el észlelni a fenyegetéseket az Azure Sentinel használatával.
+Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával.
 
-A fenyegetésekre adott válaszok automatizálásáról [az Automatikus fenyegetésre adott válaszok beállítása az Azure Sentinelben című dokumentumban.](tutorial-respond-threats-playbook.md)
+Ha szeretné megtudni, hogyan automatizálhatja a fenyegetésekre adott válaszokat, [állítson be automatizált fenyegetési válaszokat az Azure sentinelben](tutorial-respond-threats-playbook.md).
 

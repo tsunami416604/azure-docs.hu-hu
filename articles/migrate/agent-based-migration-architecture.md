@@ -1,128 +1,128 @@
 ---
-title: Ügynökalapú áttelepítés az Azure áttelepítési kiszolgálóáttelepítésében
-description: Áttekintést nyújt az ügynök-alapú VMware vm-áttelepítés az Azure Áttelepítése.
+title: Ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésekor
+description: Áttekintést nyújt az ügynök alapú VMware VM-Migrálás Azure Migrate-ben való áttelepítéséről.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77425857"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
 
-Ez a cikk áttekintést nyújt a VMware virtuális gépek ügynökalapú replikációjához az [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel használt architektúráról és folyamatokról.
+Ez a cikk áttekintést nyújt a VMware virtuális gépek ügynök alapú replikálásához használt architektúráról és folyamatokról a [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool eszközzel.
 
-Az Azure Áttelepítés: Kiszolgálóáttelepítés használatával néhány lehetőséggel replikálhatja a VMware virtuális gépeket:
+A Azure Migrate használatával: a kiszolgáló áttelepítése a VMware virtuális gépeket több lehetőséggel is replikálhatja:
 
-- Telepítse a virtuális gépeket ügynökalapú replikációval, a jelen cikkben leírtak szerint.
-- Telepítse a VMware virtuális gépeket ügynök nélküli replikációval. Ez áttelepíti a virtuális gépeket anélkül, hogy bármit is telepítenie kellene rájuk.
+- Telepítse át a virtuális gépeket az ügynök-alapú replikáció használatával a jelen cikkben leírtak szerint.
+- VMware virtuális gépek migrálása ügynök nélküli replikáció használatával. Ez áttelepíti a virtuális gépeket anélkül, hogy bármit telepítenie kellene rájuk.
 
-További információ a VMware virtuális gépek áttelepítési módszereinek [kiválasztásáról és összehasonlításáról.](server-migrate-overview.md) 
+További információ a VMware virtuális gépek áttelepítési módszereinek [kiválasztásáról és összehasonlításáról](server-migrate-overview.md) . 
 
 
-## <a name="agent-based-migration"></a>Ügynökalapú áttelepítés
+## <a name="agent-based-migration"></a>Ügynök alapú áttelepítés
 
-Az ügynökalapú áttelepítés a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba való áttelepítésére szolgál. Más helyszíni virtualizált kiszolgálók, valamint magán- és nyilvános felhőalapú virtuális gépek, beleértve az AWS-példányokat és a GCP virtuális gépeket is áttelepíthető. Ügynök-alapú áttelepítés az Azure Migrate használ néhány háttérfunkció az [Azure Site Recovery](../site-recovery/site-recovery-overview.md) szolgáltatás.
+Az ügynök-alapú áttelepítés a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő áttelepítésére szolgál. Más helyszíni virtualizált kiszolgálók, valamint magán-és nyilvános Felhőbeli virtuális gépek, például AWS-példányok és GCP virtuális gépek áttelepítésére is használható. Az ügynök-alapú áttelepítés Azure Migrate a [Azure site Recovery](../site-recovery/site-recovery-overview.md) szolgáltatás néhány háttérbeli funkcióját használja.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-Az ábra az ügynökalapú áttelepítés összetevőit mutatja be.
+A diagram az ügynök-alapú áttelepítés során érintett összetevőket ábrázolja.
 
 ![Architektúra](./media/agent-based-replication-architecture/architecture.png)
 
-A tábla összefoglalja az ügynökalapú áttelepítéshez használt összetevőket.
+A tábla összegzi az ügynök alapú áttelepítéshez használt összetevőket.
 
 **Összetevő** | **Részletek** | **Telepítés**
 --- | --- | ---
-**Replikációs berendezés** | A replikációs berendezés (konfigurációs kiszolgáló/folyamatkiszolgáló) egy helyszíni gép, amely hídként működik a helyszíni környezet és a Kiszolgáló áttelepítése között. A készülék felderíti a helyszíni gépleltárt, hogy a kiszolgáló áttelepítése koordinálhassa a replikációt és az áttelepítést. A készülék két összetevőből áll:<br/><br/> **Konfigurációs kiszolgáló**: Csatlakozik a kiszolgáló áttelepítéséhez, és koordinálja a replikációt.<br/> **Folyamatkiszolgáló**: Kezeli az adatreplikációt. A folyamatkiszolgáló fogadja a gép adatait, tömöríti és titkosítja azokat, és elküldi az Azure-ba. Az Azure-ban a Server Migration a felügyelt lemezekre írja az adatokat. | Alapértelmezés szerint a folyamatkiszolgáló a replikációs berendezés konfigurációs kiszolgálójával együtt van telepítve.
-**Mobilitási szolgáltatás** | A Mobilitás szolgáltatás egy olyan ügynök, amely minden replikálni és áttelepíteni kívánt számítógépre telepítve van. Replikációs adatokat küld a gépről a folyamatkiszolgálónak. | A Mobility szolgáltatás különböző verzióihoz szükséges telepítési fájlok a replikációs készüléken találhatók. Töltse le és telepítse a szükséges ügynököt, összhangban az operációs rendszer és a készülék replikálni kívánt verziója.
+**Replikációs berendezés** | A replikációs berendezés (konfigurációs kiszolgáló/folyamat kiszolgáló) egy helyszíni számítógép, amely hidat képez a helyszíni környezet és a kiszolgáló áttelepítése között. A készülék felfedi a helyszíni számítógép leltározását, így a kiszolgáló áttelepítése képes a replikáció és az áttelepítés koordinálására. A készülék két összetevőből áll:<br/><br/> **Konfigurációs kiszolgáló**: Kapcsolódás a kiszolgáló áttelepítéséhez és a replikáció koordinálása.<br/> **Process Server**: kezeli az adatreplikációt. A Process Server adatokat fogad, tömöríti és titkosítja, és elküldi az Azure-nak. Az Azure-ban a kiszolgáló áttelepítése felügyelt lemezekre írja az adatot. | Alapértelmezés szerint a Process Server a replikációs berendezés konfigurációs kiszolgálójával együtt települ.
+**Mobilitási szolgáltatás** | A mobilitási szolgáltatás egy olyan ügynök, amely minden replikálni és áttelepíteni kívánt gépre telepítve van. Replikációs adatokat küld a gépről a Process Server rendszernek. | A mobilitási szolgáltatás különböző verzióihoz tartozó telepítési fájlok a replikációs berendezésen találhatók. Töltse le és telepítse a szükséges ügynököt a replikálni kívánt gép operációs rendszerének és verziójának megfelelően.
 
 ## <a name="mobility-service-installation"></a>A mobilitási szolgáltatás telepítése
 
 A mobilitási szolgáltatást a következő módszerekkel telepítheti:
 
-- **Leküldéses telepítés**: A Mobilrendszer-kiszolgáló a folyamatkiszolgálón telepíti a mobilszolgáltatást, ha engedélyezi a számítógép védelmét. 
-- **Manuális telepítés**: A Mobilitás szolgáltatást manuálisan telepítheti minden számítógépre a felhasználói felületen vagy a parancssorban.
+- **Leküldéses telepítés**: a folyamat-kiszolgáló telepíti a mobilitási szolgáltatást, ha engedélyezi a gép védelmét. 
+- **Manuális telepítés**: a mobilitási szolgáltatást manuálisan is telepítheti az egyes gépeken a felhasználói felületen vagy a parancssorban.
 
-A Mobilitás szolgáltatás kommunikál a replikációs készülékkel és a replikált gépekkel. Ha a replikációs készüléken, a folyamatkiszolgálókon vagy a replikált gépeken víruskereső szoftver fut, a következő mappákat ki kell zárni a vizsgálatból:
+A mobilitási szolgáltatás kommunikál a replikációs berendezéssel és a replikált számítógépekkel. Ha a replikációs berendezésen fut a víruskereső szoftver, a kiszolgálókat vagy a replikált gépeket, a következő mappákat ki kell zárni a vizsgálatból:
 
 
-- C:\Program Files\Microsoft Azure helyreállítási szolgáltatások ügynöke
+- C:\Program Files\Microsoft Azure Recovery Services ügynök
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
-- C:\ProgramData\Microsoft Azure webhely helyreállítása
-- C:\Program Files (x86)\Microsoft Azure Site Recovery
-- C:\ProgramData\ASR\agent (olyan Windows-gépeken, amelyeken telepítve van a Mobility szolgáltatás)
+- C:\ProgramData\Microsoft Azure Site Recovery
+- C:\Program Files (x86) \Microsoft Azure Site Recovery
+- C:\ProgramData\ASR\agent (Windows rendszerű gépeken, amelyen telepítve van a mobilitási szolgáltatás)
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Ha engedélyezi a replikációt egy gép, az Azure-ba történő kezdeti replikáció kezdődik.
-2. A kezdeti replikáció során a Mobilitás szolgáltatás beolvassa az adatokat a számítógép lemezeiről, és elküldi azokat a folyamatkiszolgálónak.
-3. Ezeket az adatokat az Azure-előfizetésben a lemez egy példányának elültetéséhez használjuk. 
-4. A kezdeti replikáció befejezése után megkezdődik az Azure-ba történő különbözeti módosítások replikációja. A replikáció blokkszintű, és közel folyamatos.
-4. A Mobilitás szolgáltatás az operációs rendszer tárolóalrendszerével integrálva elfogja a lemezmemóriába történő írásokat. Ezzel a módszerrel elkerülhetők a lemez I/O-műveletei a replikálógépen a növekményes replikációhoz. 
-5. A rendszer a HTTPS 9443 bejövő porton küldi el a folyamatkiszolgálónak a számítógép nyomon követett módosításait. Ez a port módosítható. A folyamatkiszolgáló tömöríti és titkosítja, és elküldi az Azure-ba. 
+1. Amikor engedélyezi a replikációt egy gépen, az Azure-ba történő kezdeti replikáció megkezdődik.
+2. A kezdeti replikálás során a mobilitási szolgáltatás beolvassa az adatokat a gépi lemezekről, és elküldi azt a folyamat-kiszolgálónak.
+3. Ezek az adatmennyiségek a lemez egy példányának az Azure-előfizetésben való összevetésére szolgálnak. 
+4. A kezdeti replikálás befejeződése után a változásokat az Azure-ba replikálva megkezdődik. A replikáció blokk szintű, és közel folyamatos.
+4. A mobilitási szolgáltatás a lemez memóriába írását elfogja az operációs rendszer tárolási alrendszerének integrálásával. Ezzel a módszerrel elkerülhetők a replikálást végző gép lemezes I/O-műveletei a növekményes replikációhoz. 
+5. A gép nyomon követett módosításait a rendszer a HTTPS 9443 bejövő porton továbbítja a folyamat-kiszolgálónak. Ez a port módosítható. A Process Server tömöríti és titkosítja azt, és elküldi az Azure-nak. 
 
 ## <a name="ports"></a>Portok
 
 **Eszköz** | **Kapcsolat**
 --- | --- 
-**Replikáló gépek** | A virtuális gépeken futó mobilitási szolgáltatás kommunikál a HTTPS 443-as porton bejövő helyszíni replikációs eszközzel a replikáció kezeléséhez.<br/><br/> A gépek a HTTPS 9443 porton lévő folyamatkiszolgálóra küldik a replikációs adatokat. Ez a port módosítható.
-**Replikációs berendezés** | A replikációs berendezés vezényli a replikációt az Azure-ral HTTPS 443 kimenő porton keresztül.
-**Folyamatkiszolgáló** | A folyamatkiszolgáló fogadja a replikációs adatokat, optimalizálja és titkosítja azokat, és elküldi az Okat az Azure storage-ba a 443-as kimenő porton keresztül.
+**Gépek replikálása** | A virtuális gépeken futó mobilitási szolgáltatás a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel a replikálás kezeléséhez.<br/><br/> A számítógépek a HTTPS 9443 bejövő porton küldik el a replikációs adatküldést a folyamat kiszolgálójára. Ez a port módosítható.
+**Replikációs berendezés** | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
+**Folyamatkiszolgáló** | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
 
 
 ## <a name="performance-and-scaling"></a>Teljesítmény és skálázás
 
-Alapértelmezés szerint egyetlen replikációs berendezést telepít, amely a konfigurációs kiszolgálót és a folyamatkiszolgálót is futtatja. Ha csak néhány gépet replikál, ez a központi telepítés elegendő. Ha azonban több száz gépet replikál és telepít át, előfordulhat, hogy egyetlen folyamatkiszolgáló nem tudja kezelni az összes replikációs forgalmat. Ebben az esetben további horizontális felskálázási folyamatkiszolgálókat is telepíthet.
+Alapértelmezés szerint egyetlen replikációs berendezést telepít, amely a konfigurációs kiszolgálót és a Process Servert is futtatja. Ha csak néhány gépet replikál, akkor ez a központi telepítés elegendő. Ha azonban több száz gép replikálását és áttelepítését végzi, előfordulhat, hogy egyetlen folyamat-kiszolgáló nem tudja kezelni az összes replikációs forgalmat. Ebben az esetben telepíthet további, kibővíthető folyamat-kiszolgálókat is.
 
-### <a name="plan-vmware-deployment"></a>A VMware telepítésének megtervezése
+### <a name="plan-vmware-deployment"></a>A VMware üzembe helyezésének megtervezése
 
-VMware virtuális gépek replikálása esetén a [Site Recovery Deployment Planner for VMware](../site-recovery/site-recovery-deployment-planner.md)segítségével meghatározhatja a teljesítménykövetelményeket, beleértve a napi adatváltozási sebességet és a szükséges folyamatkiszolgálókat.
+Ha VMware virtuális gépeket replikál, használhatja a [VMware-hez készült Site Recovery Deployment Planner](../site-recovery/site-recovery-deployment-planner.md)a teljesítményre vonatkozó követelmények meghatározásához, beleértve a napi adatváltozási arányt és a szükséges folyamat-kiszolgálókat.
 
-### <a name="replication-appliance-capacity"></a>A replikációs berendezés kapacitása
+### <a name="replication-appliance-capacity"></a>Replikációs berendezés kapacitása
 
-A táblázatban szereplő értékek segítségével állapítsa meg, hogy szükség van-e további folyamatkiszolgálóra a központi telepítéshez.
+Az ebben a táblázatban szereplő értékek alapján megállapíthatja, hogy szüksége van-e egy további Process Serverre a telepítésben.
 
-- Ha a napi változási sebesség (lemorzsolódási arány) több mint 2 TB, telepítsen egy további folyamatkiszolgálót.
-- Ha több mint 200 gépet replikál, telepítsen egy további replikációs berendezést.
+- Ha a napi változási arány (a forgalom aránya) meghaladja a 2 TB-ot, helyezzen üzembe egy további kiszolgálót.
+- Ha több mint 200 gépet replikál, helyezzen üzembe egy további replikációs készüléket.
 
-**Cpu** | **Memory (Memória)** | **Szabad téradat-gyorsítótárazás** | **Lemorzsolódási arány** | **Replikációs korlátok**
+**CPU** | **Memory (Memória)** | **Szabad terület – az adatgyorsítótárazás** | **Adatforgalom aránya** | **Replikációs korlátok**
 --- | --- | --- | --- | ---
-8 vCPU (2 foglalat * \@ 4 mag 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép 
-12 vCPU (2 foglalat * \@ 6 mag 2,5 GHz) | 18 GB | 600 GB | 501 GB–1 TB | 100-150 gép.
-16 vCPU (2 foglalat * \@ 8 mag 2,5 GHz) | 32 G1 |  1 TB | 1 TB és 2 TB között | 151-200 gép.
+8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép 
+12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100-150 gép.
+16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB – 2 TB | 151-200 gép.
 
-### <a name="sizing-scale-out-process-servers"></a>Horizontális felskálázási folyamat kiszolgálóinak méretezése
+### <a name="sizing-scale-out-process-servers"></a>Méretezési Felskálázási folyamat kiszolgálói
 
-Ha horizontális felskálázási folyamatkiszolgálót kell telepítenie, ezzel a táblával kitalálja a kiszolgáló méretezését.
+Ha egy kibővíthető folyamat-kiszolgálót kell üzembe helyeznie, használja ezt a táblázatot, hogy kiderítse a kiszolgálók méretezését.
 
-**Folyamatkiszolgáló** | **Szabad terület az adatgyorsítótárazáshoz** | **Lemorzsolódási arány** | **Replikációs korlátok**
+**Folyamatkiszolgáló** | **Szabad terület az adatgyorsítótárazáshoz** | **Adatforgalom aránya** | **Replikációs korlátok**
 --- | --- | --- | --- 
-4 vCPU (2 foglalat * \@ 2 mag 2,5 GHz), 8 GB memória | 300 GB | 250 GB vagy kevesebb | Akár 85 gép 
-8 vCPU (2 foglalat * \@ 4 mag 2,5 GHz), 12 GB memória | 600 GB | 251 GB–1 TB    | 86-150 gép.
-12 vCPU (2 foglalat * \@ 6 mag 2,5 GHz), 24 GB-os memória | 1 TB | 1-2 TB | 151-225 gép.
+4 vCPU (2 szoftvercsatorna * 2 mag \@ 2,5 GHz), 8 GB memória | 300 GB | 250 GB vagy kevesebb | Akár 85 gép 
+8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz), 12 GB memória | 600 GB | 251 GB – 1 TB    | 86-150 gép.
+12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz), 24 GB memória | 1 TB | 1-2 TB | 151-225 gép.
 
-## <a name="throttle-upload-bandwidth"></a>Fojtószelep feltöltési sávszélessége.
+## <a name="throttle-upload-bandwidth"></a>Sávszélesség-feltöltés szabályozása.
 
-VMware-forgalom, amely replikálja az Azure-ba megy keresztül egy adott folyamatkiszolgálón keresztül. Korlátozhatja a feltöltési átviteli folyamatot a folyamatkiszolgálóként futó gépek sávszélességének szabályozásával. A beállításkulcs segítségével befolyásolhatja a sávszélességet:
+Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A feltöltési sebességet korlátozhatja a folyamat-kiszolgálóként futó gépek sávszélességének szabályozásával. A következő beállításkulcs használatával befolyásolhatja a sávszélességet:
 
-- A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM beállításjegyzék-érték a lemez adatátviteléhez (kezdeti vagy különbözeti replikációhoz) használt szálak számát adja meg. A nagyobb érték növeli a replikációhoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
-- Ezenkívül a folyamatkiszolgálón a sávszélességet az alábbiak szerint szabályozhatja:
+- A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
+- Emellett a következő módon szabályozhatja a sávszélességet a Process Server-gépen:
 
-    1. A folyamatkiszolgáló-gépen nyissa meg az Azure Backup MMC beépülő modult. Van egy parancsikon az asztalon vagy a C:\Program Files\Microsoft Azure Recovery Services Agent\bin mappában. 
+    1. A Process Server gépen nyissa meg az Azure Backup MMC beépülő modult. Parancsikon található az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
     2. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
-    3. A **Szabályozás területen**válassza az Internet **sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget. Állítsa be a munkaidő és a nem munkaidő korlátait. Az érvényes tartományok 512 Kb/s és 1023 Mb/s között mozognak.
+    3. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki [az ügynökalapú áttelepítést](tutorial-migrate-vmware-agent.md) a [VMware](tutorial-migrate-vmware-agent.md) vagy a [fizikai kiszolgálók](tutorial-migrate-physical-virtual-machines.md)számára.
+Próbálja ki a [VMware](tutorial-migrate-vmware-agent.md) vagy a [fizikai kiszolgálók](tutorial-migrate-physical-virtual-machines.md) [ügynök-alapú áttelepítését](tutorial-migrate-vmware-agent.md) .

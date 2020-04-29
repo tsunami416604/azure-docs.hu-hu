@@ -1,5 +1,5 @@
 ---
-title: Modell beszereznie REST-hívással Java-ban
+title: Modell lekérése REST-hívással Java-ban
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,32 +9,32 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368462"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Language Understanding – Authoring resource 32 karakterkulcs és szerzői végpont URL-címe. Hozzon létre az [Azure Portalon](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI-n](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)keresztül.
-* Importálja a [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) alkalmazást a cognitive-services-language-understanding GitHub-tárházból.
+* Azure Language Understanding – erőforrás 32 és a végpont URL-címének létrehozása. Hozzon létre a [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)használatával.
+* Importálja a [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) alkalmazást a kognitív-Services-Language-Understanding GitHub adattárba.
 * Az importált TravelAgent alkalmazás LUIS-alkalmazásazonosítója. Az alkalmazásazonosító az alkalmazás irányítópultján látható.
 * A kimondott szövegeket fogadó alkalmazáson belüli verzióazonosító. Az alapértelmezett azonosító a „0.1”.
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* [Visual Studio Kód](https://code.visualstudio.com/) vagy a kedvenc IDE
+* A [Visual Studio Code](https://code.visualstudio.com/) vagy a kedvenc ide
 
 ## <a name="example-utterances-json-file"></a>Kimondott példaszövegek JSON-fájlja
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Modell módosítása programozott módon
+## <a name="change-model-programmatically"></a>Modell programozott módosítása
 
-1. Készítsen egy alkönyvtárat, `lib` és másolja a következő java libs-be:
+1. Hozzon el egy nevű `lib` alkönyvtárat és másolja a következő Java könyvtárakba:
 
-    * [commons-fakitermelés-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [Commons-Logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Hozzon létre egy új fájlt `Model.java` néven. Adja hozzá a következő kódot:
 
@@ -128,23 +128,23 @@ ms.locfileid: "77368462"
     }
     ```
 
-1. Cserélje le a `YOUR-` saját értékeivel kezdődő értékeket.
+1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
     |Információ|Cél|
     |--|--|
-    |`YOUR-KEY`|A 32 karakteres szerzői kulcs.|
-    |`YOUR-ENDPOINT`| A szerzői URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Az erőforrás nevét az erőforrás létrehozásakor állította be.|
-    |`YOUR-APP-ID`| A LUIS-alkalmazásazonosító. |
+    |`YOUR-KEY`|Az 32 karakteres szerzői kulcs.|
+    |`YOUR-ENDPOINT`| Az authoring URL-végpontja. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
+    |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
 
-    A hozzárendelt kulcsok és erőforrások a LUIS-portálon, a Kezelés szakaszban, az **Azure-erőforrások** lapon láthatók. Az alkalmazásazonosító ugyanabban a Kezelés szakaszban, az **Alkalmazás beállítások** lapján érhető el.
+    A hozzárendelt kulcsok és erőforrások a LUIS portálon láthatók a kezelés szakasz Azure- **erőforrások** lapján. Az alkalmazás-azonosító az **Alkalmazásbeállítások** lapon, ugyanazon kezelés szakaszban érhető el.
 
-1. Ha a parancssorba ugyanabban a könyvtárban található, ahol a fájlt létrehozta, írja be a következő parancsot a Java fájl fordításához:
+1. Ha a parancssor ugyanabban a címtárban található, ahol a fájlt létrehozta, adja meg a következő parancsot a Java-fájl fordításához:
 
     ```console
     javac -cp ":lib/*" Model.java
     ```
 
-1. Futtassa a Java alkalmazást a parancssorból a következő szöveg megadásával a parancssorba:
+1. Futtassa a Java-alkalmazást a parancssorból a parancssorba írja be a következő szöveget:
 
     ```console
     java -cp ":lib/*" Model
@@ -152,9 +152,9 @@ ms.locfileid: "77368462"
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha befejezte ezt a rövid útmutatót, törölje a fájlt a fájlrendszerből.
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyakorlati tanácsok egy alkalmazáshoz](../luis-concept-best-practices.md)
+> [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

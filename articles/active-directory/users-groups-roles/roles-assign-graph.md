@@ -1,6 +1,6 @@
 ---
-title: Azure AD-rendszergazdai szerepkörök hozzárendelése a Microsoft Graph API-val | Microsoft dokumentumok
-description: Azure AD rendszergazdai szerepkörök hozzárendelése és eltávolítása az Azure Active DirectoryGraph-ban lévő Graph API-val
+title: Azure AD-rendszergazdai szerepkörök kiosztása Microsoft Graph API-val | Microsoft Docs
+description: Azure AD-rendszergazdai szerepkörök kiosztása és eltávolítása Graph APIekkel Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77559147"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök hozzárendelése az Azure Active DirectoryBan a Microsoft Graph API használatával 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása a Microsoft Graph API használatával Azure Active Directory 
 
-A Microsoft Graph API-val automatizálhatja, hogyan rendelhet szerepköröket a felhasználói fiókokhoz. Ez a cikk a szerepkör-hozzárendelések POST, GET és DELETE műveleteit ismerteti.
+Automatizálhatja, hogyan rendeljen hozzá szerepköröket a felhasználói fiókokhoz a Microsoft Graph API használatával. Ez a cikk a roleAssignments POST, GET és DELETE műveleteit ismerteti.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Csatlakozzon az Azure AD-bérlőhöz egy globális rendszergazdai fiókkal vagy emelt szintű identitással szerepkörök hozzárendeléséhez vagy eltávolításához.
+Kapcsolódjon az Azure AD-bérlőhöz egy globális rendszergazdai fiókkal vagy egy emelt szintű identitás-rendszergazdával szerepkörök hozzárendeléséhez vagy eltávolításához.
 
-## <a name="post-operations-on-roleassignment"></a>POST műveletek a Szerepkör-hozzárendelésen
+## <a name="post-operations-on-roleassignment"></a>RoleAssignment utáni műveletek
 
-HTTP-kérelem egy szerepkör-hozzárendelés létrehozásához egy felhasználó és egy szerepkör-definíció között.
+HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-hozzárendelés létrehozásához.
 
 POST
 
@@ -55,7 +55,7 @@ Válasz
 HTTP/1.1 201 Created
 ```
 
-HTTP-kérelem olyan szerepkör-hozzárendelés létrehozására, amelyben a fő vagy a szerepkör-definíció nem létezik
+HTTP-kérelem olyan szerepkör-hozzárendelés létrehozásához, amelyben a rendszerbiztonsági tag vagy szerepkör-definíció nem létezik
 
 POST
 
@@ -79,10 +79,10 @@ Válasz
 HTTP/1.1 404 Not Found
 ```
 
-HTTP-kérelem egyetlen erőforráshatókör-hozzárendelés létrehozására egy beépített szerepkör-definíción.
+HTTP-kérelem egyetlen erőforrás-hatókörű szerepkör-hozzárendelés létrehozásához egy beépített szerepkör-definícióban.
 
 > [!NOTE] 
-> A beépített szerepkörök ma már korlátozzák, hogy csak a "/" szervezet szintű hatókörre vagy az "/AU/*" hatókörre terjedjenek ki. Az egyerőforrás-hatókör nem működik a beépített szerepköröknél, de egyéni szerepköröknél is működik.
+> A beépített szerepkörök ma már rendelkeznek egy korlátozással, amely csak a "/" szervezeti hatókörre vagy a "/AU/*" hatókörre alkalmazható. Az egyetlen erőforrás-hatókör nem működik a beépített szerepkörök esetében, de egyéni szerepkörök esetén is működik.
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>GET műveletek a RoleAssignment-n
+## <a name="get-operations-on-roleassignment"></a>Műveletek beolvasása a RoleAssignment
 
-HTTP-kérelem egy adott főtag szerepkör-hozzárendelésének lekéréséhez
+HTTP-kérelem egy adott résztvevő szerepkör-hozzárendelésének beszerzéséhez
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-HTTP-kérelem egy adott szerepkör-definíció szerepkör-hozzárendelésének lekéréséhez.
+HTTP-kérelem egy adott szerepkör-definícióhoz tartozó szerepkör-hozzárendelés beszerzéséhez.
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-HTTP-kérelem szerepkör-hozzárendelés id szerint.
+HTTP-kérelem a szerepkör-hozzárendelés azonosító alapján való lekéréséhez.
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>DELETE műveletek a RoleAssignment-n
+## <a name="delete-operations-on-roleassignment"></a>Műveletek törlése a RoleAssignment
 
-HTTP-kérelem egy szerepkör-hozzárendelés törléséhez egy felhasználó és egy szerepkör-definíció között.
+HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-hozzárendelés törléséhez.
 
 DELETE
 
@@ -207,7 +207,7 @@ Válasz
 HTTP/1.1 204 No Content
 ```
 
-A MÁR nem létező szerepkör-hozzárendelés törlésére irányuló HTTP-kérelem
+HTTP-kérelem a már nem létező szerepkör-hozzárendelés törléséhez
 
 DELETE
 
@@ -221,7 +221,7 @@ Válasz
 HTTP/1.1 404 Not Found
 ```
 
-HTTP-kérelem az önálló és a beépített szerepkör-definíció közötti szerepkör-hozzárendelés törlésére
+HTTP-kérelem az önálló és a beépített szerepkör-definíció közötti szerepkör-hozzárendelés törléséhez
 
 DELETE
 
@@ -249,6 +249,6 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>További lépések
 
-* Nyugodtan ossza meg velünk az [Azure AD felügyeleti szerepkörök fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* A szerepkörökről és a Rendszergazdai szerepkör-hozzárendelésről a [Rendszergazdai szerepkörök hozzárendelése című témakörben](directory-assign-admin-roles.md)van további témakör.
-* Az alapértelmezett felhasználói engedélyeket [az alapértelmezett vendég- és tagjogosultságok összehasonlítása](../fundamentals/users-default-permissions.md)című témakörben olvashatja.
+* Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).
+* Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).

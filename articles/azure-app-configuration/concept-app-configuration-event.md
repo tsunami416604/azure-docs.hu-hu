@@ -1,6 +1,6 @@
 ---
-title: Reagálás az Azure App konfigurációs kulcsérték-eseményeire
-description: Az Azure Event Grid használatával előfizethet az alkalmazáskonfigurációs eseményekre.
+title: Reagálás az Azure app Configuration kulcs-érték eseményeire
+description: Azure Event Grid használata az alkalmazás-konfigurációs eseményekre való előfizetéshez.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
@@ -8,48 +8,48 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523798"
 ---
-# <a name="reacting-to-azure-app-configuration-events"></a>Reagálás az Azure App konfigurációs eseményeire
+# <a name="reacting-to-azure-app-configuration-events"></a>Az Azure-alkalmazás konfigurációs eseményeire való reagálás
 
-Az Azure App Configuration események lehetővé teszik, hogy az alkalmazások reagáljanak a kulcsértékek változásaira. Ez bonyolult kód vagy költséges és nem hatékony szavazási szolgáltatások nélkül történik. Ehelyett az események et az [Azure Event Grid-ön](https://azure.microsoft.com/services/event-grid/) keresztül az előfizetők, például [az Azure Functions,](https://azure.microsoft.com/services/functions/) [az Azure Logic Apps,](https://azure.microsoft.com/services/logic-apps/)vagy akár a saját egyéni http-figyelő. Kritikusan, csak akkor fizet, amit használ.
+Az Azure-alkalmazás konfigurációs eseményei lehetővé teszik az alkalmazások számára a Key-Values változásokra való reagálást. Ez bonyolult kód vagy költséges és nem hatékony lekérdezési szolgáltatások szükségessége nélkül történik. Ehelyett az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az előfizetők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni HTTP-figyelő számára is leküldik. Kritikus fontosságú, hogy csak a ténylegesen használt funkciókért kell fizetnie.
 
-Az Azure App Configuration események et az Azure Event Grid, amely megbízható kézbesítési szolgáltatásokat nyújt az alkalmazások gazdag újrapróbálkozási szabályzatok és a kézbesítési kézbesítés. További információ: [Event Grid üzenet kézbesítése és újra próbálkozás](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Az Azure-alkalmazás konfigurációs eseményeit a rendszer elküldi a Azure Event Grid, amely megbízható kézbesítési szolgáltatásokat biztosít az alkalmazásai számára a részletes újrapróbálkozási szabályzatok és a kézbesítetlen levelek kézbesítése révén. További információ: [Event Grid üzenet kézbesítése, és próbálkozzon újra](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-A gyakori alkalmazáskonfigurációs eseményforgatókönyvek közé tartozik az alkalmazáskonfiguráció frissítése, a központi telepítések vagy bármely konfigurációorientált munkafolyamat. Ha a módosítások ritkán fordulnak elő, de a forgatókönyv azonnali válaszidőt igényel, az eseményalapú architektúra különösen hatékony lehet.
+Az alkalmazások konfigurációjának gyakori forgatókönyvei közé tartozik például az alkalmazás konfigurációjának frissítése, a központi telepítések elindítása vagy bármely konfigurációs irányú munkafolyamat. Ha a módosítások nem ritkák, de a forgatókönyvnek azonnali reagálásra van szüksége, az eseményvezérelt architektúra különösen hatékony lehet.
 
-Vessen egy pillantást [a Route Azure App Konfigurációs események egy egyéni webes végpont - CLI](./howto-app-configuration-event.md) egy gyors példa. 
+Tekintse át az [Azure-alkalmazás konfigurációs eseményeinek átirányítását egy egyéni webes végpontra – a CLI-t](./howto-app-configuration-event.md) egy gyors példaként. 
 
-![Eseményrács-modell](./media/event-grid-functional-model.png)
+![Event Grid modell](./media/event-grid-functional-model.png)
 
-## <a name="available-azure-app-configuration-events"></a>Elérhető Azure App Konfigurációs események
-Az eseményrács [esemény-előfizetéseket](../event-grid/concepts.md#event-subscriptions) használ az eseményüzenetek előfizetőkhöz való irányításához. Az Azure App Configuration esemény-előfizetések kétféle eseményt tartalmazhatnak:  
+## <a name="available-azure-app-configuration-events"></a>Elérhető Azure-alkalmazás konfigurációs eseményei
+Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Az Azure-alkalmazás konfigurációs esemény-előfizetései két típusú eseményt tartalmazhatnak:  
 
 > |Esemény neve|Leírás|
 > |----------|-----------|
-> |`Microsoft.AppConfiguration.KeyValueModified`|Kulcsérték létrehozásakor vagy cseréjekor kilőve|
-> |`Microsoft.AppConfiguration.KeyValueDeleted`|Kulcsérték törlésekor kilőve|
+> |`Microsoft.AppConfiguration.KeyValueModified`|Kulcs-érték létrehozásakor vagy cseréjekor|
+> |`Microsoft.AppConfiguration.KeyValueDeleted`|Kulcs-érték törlése után|
 
 ## <a name="event-schema"></a>Eseményséma
-Az Azure App konfigurációs eseményei tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Az alkalmazáskonfigurációs eseményeket azonosíthatja, mert az eventType tulajdonság "Microsoft.AppConfiguration" néven kezdődik. Az Event Grid eseménytulajdonságainak használatáról további információt az [Event Grid eseménysémája](../event-grid/event-schema.md)dokumentál.  
+Az Azure-alkalmazás konfigurációs eseményei tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja az alkalmazás konfigurációs eseményeit, mert a eventType tulajdonság a "Microsoft. AppConfiguration" karakterlánccal kezdődik. Event Grid esemény tulajdonságainak használatáról további információt [Event Grid Event Schema](../event-grid/event-schema.md)dokumentációban olvashat.  
 
 > |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |témakör|sztring|Az eseményt kibocsátó alkalmazáskonfiguráció teljes Azure-erőforrás-kezelőazonosítója.|
-> |Tárgy|sztring|Az esemény tárgyát képező kulcsérték URI-ja.|
-> |eventTime|sztring|Az esemény létrehozásának dátuma/időpontja, ISO 8601 formátumban.|
-> |eventType|sztring|"Microsoft.AppConfiguration.KeyValueModified" vagy "Microsoft.AppConfiguration.KeyValueDeleted".|
+> |témakör|sztring|Az eseményt kibocsátó alkalmazás-konfiguráció teljes Azure Resource Manager azonosítója.|
+> |tulajdonos|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|
+> |eventTime|sztring|Az esemény létrehozásának dátuma és időpontja ISO 8601 formátumban.|
+> |eventType|sztring|"Microsoft. AppConfiguration. KeyValueModified" vagy "Microsoft. AppConfiguration. KeyValueDeleted".|
 > |Azonosító|sztring|Az esemény egyedi azonosítója.|
 > |dataVersion|sztring|Az adatobjektum sémaverziója.|
-> |metadataVersion|sztring|A legfelső szintű tulajdonságok sémaverziója.|
-> |data|objektum|Az Azure App konfigurációjának konkrét eseményadatainak gyűjtése|
-> |data.key|sztring|A módosított vagy törölt kulcsérték kulcsa.|
-> |data.label|sztring|A módosított vagy törölt kulcsérték címkéje(ha van).|
-> |data.etag|sztring|Az `KeyValueModified` új kulcs-érték e-címkéje esetén. A `KeyValueDeleted` törölt kulcsérték e-címkéje esetén.|
+> |metadataVersion|sztring|A legfelső szintű tulajdonságok sémájának verziója.|
+> |data|objektum|Az Azure-alkalmazások konfigurációjának adott eseményeinek gyűjteménye|
+> |adat. kulcs|sztring|A módosított vagy törölt kulcs-érték kulcsa.|
+> |a. label|sztring|A módosított vagy törölt kulcs-érték címkéje (ha van).|
+> |az ETAG.|sztring|`KeyValueModified` Az új kulcs-érték ETAG. `KeyValueDeleted` A törölt kulcs-érték ETAG.|
 
 Íme egy példa egy KeyValueModified eseményre:
 ```json
@@ -70,21 +70,21 @@ Az Azure App konfigurációs eseményei tartalmazzák az adatok változásaira v
 
 ```
 
-További információ: [Azure App Configuration events schema](../event-grid/event-schema-app-configuration.md).
+További információ: Azure- [alkalmazás konfigurációs eseményeinek sémája](../event-grid/event-schema-app-configuration.md).
 
-## <a name="practices-for-consuming-events"></a>Az események fogyasztásának gyakorlata
-Az alkalmazáskonfigurációs eseményeket kezelő alkalmazásoknak az alábbi ajánlott eljárásokat kell követniük:
+## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
+Az alkalmazás-konfigurációs eseményeket kezelő alkalmazásoknak az alábbi ajánlott eljárásokat kell követniük:
 > [!div class="checklist"]
-> * Több előfizetés konfigurálható úgy, hogy az eseményeket ugyanarra az eseménykezelőre irányítsa, ezért ne feltételezze, hogy az események egy adott forrásból származnak. Ehelyett ellenőrizze az üzenet témakörét, hogy az alkalmazáskonfigurációs példány küldje el az eseményt.
-> * Ellenőrizze az eventType,és nem feltételezik, hogy minden esemény kap lesz a várt típusú.
-> * Az etag mezők segítségével megtudhatja, hogy az objektumokkal kapcsolatos adatai továbbra is naprakészek-e.  
-> * A szekvenszer mezők segítségével megismerheti az adott objektum eseményeinek sorrendjét.
-> * A tárgy mező segítségével érheti el a módosított kulcsértéket.
+> * Több előfizetés is konfigurálható úgy, hogy az eseményeket ugyanahhoz az eseménykezelőhöz irányítsák, ezért ne Tételezzük fel, hogy az események egy adott forrásból származnak. Ehelyett ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az alkalmazás konfigurációs példánya küldi az eseményt.
+> * Tekintse meg a eventType, és ne Tételezzük fel, hogy minden kapott esemény a várt típus lesz.
+> * A ETAG mezőkkel megtudhatja, hogy az objektumok adatai továbbra is naprakészek-e.  
+> * Az események sorrendjének megismeréséhez használja a Sequencer mezőket az adott objektumon.
+> * A tulajdonos mező használatával férhet hozzá a módosított kulcs-értékhez.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet az Event Gridről, és próbálja ki az Azure App Konfigurációs eseményeit:
+További információ a Event Gridről és az Azure-alkalmazások konfigurációs eseményeinek megadásáról:
 
 - [Bevezetés az Event Grid használatába](../event-grid/overview.md)
-- [Az Azure App Konfigurációs eseményeinek irányítása egyéni webvégpontra](./howto-app-configuration-event.md)
+- [Azure-alkalmazás konfigurációs eseményeinek átirányítása egyéni webes végpontra](./howto-app-configuration-event.md)

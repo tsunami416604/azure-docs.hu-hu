@@ -1,71 +1,71 @@
 ---
-title: Az Azure Functions futásidejű verzióinak megcélzása
-description: Az Azure Functions a futásidejű több verzióját támogatja. Ismerje meg, hogyan adhatja meg az Azure-ban üzemeltetett függvényalkalmazás futásidejű verzióját.
+title: A Azure Functions futtatókörnyezet verzióinak megcélzása
+description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogyan határozhatja meg az Azure-ban üzemeltetett Function app futásidejű verzióját.
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77151955"
 ---
-# <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions futásidejű verzióinak megcélzása
+# <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
 
-Egy függvényalkalmazás az Azure Functions futásidejű egy adott verzióján fut. Három fő verzió létezik: [1.x, 2.x és 3.x](functions-versions.md). Alapértelmezés szerint a függvényalkalmazások a futásidejű 2.x-es verzióban jönnek létre. Ez a cikk bemutatja, hogyan konfigurálhat egy függvényalkalmazást az Azure-ban a kiválasztott verzión való futtatáshoz. A helyi fejlesztési környezet konfigurálásáról egy adott verzióhoz a [Code and test in Local in (Helyi verzió)](functions-run-local.md)című témakörben talál további információt.
+A Function alkalmazás a Azure Functions futtatókörnyezet egy adott verziójára fut. Három fő verzió létezik: [1. x, 2. x és 3. x](functions-versions.md). Alapértelmezés szerint a Function apps a futtatókörnyezet 2. x verziójában jön létre. Ez a cikk azt ismerteti, hogyan konfigurálható egy Function alkalmazás az Azure-ban a kiválasztott verzió futtatásához. A helyi fejlesztési környezet adott verzióra való konfigurálásával kapcsolatos információkért lásd: [kód-és tesztelési Azure functions helyileg](functions-run-local.md).
 
-## <a name="automatic-and-manual-version-updates"></a>Automatikus és manuális verziófrissítések
+## <a name="automatic-and-manual-version-updates"></a>Az automatikus és a manuális verzió frissítései
 
-Az Azure Functions lehetővé teszi, hogy a `FUNCTIONS_EXTENSION_VERSION` futásidejű egy adott verzióját célozza meg az alkalmazásbeállítás használatával egy függvényalkalmazásban. A függvényalkalmazás a megadott főverzión marad, amíg kifejezetten úgy nem dönt, hogy új verzióra lép.
+Azure Functions lehetővé teszi a futtatókörnyezet egy adott verziójának megcélzását a `FUNCTIONS_EXTENSION_VERSION` functions alkalmazásban lévő Alkalmazásbeállítások használatával. A Function alkalmazás a megadott főverzión marad, amíg explicit módon nem választ egy új verzióra.
 
-Ha csak a főverziót adja meg, a függvényalkalmazás automatikusan frissül a futásidejű új alverzióira, amikor azok elérhetővé válnak. Az új alverziók nem vezethetnek be törésmódosításokat. Ha egy alverziót (például "2.0.12345") ad meg, a függvényalkalmazás az adott verzióhoz van rögzítve, amíg kifejezetten meg nem változtatja azt.
+Ha csak a főverziót adta meg, akkor a rendszer automatikusan frissíti a Function alkalmazást a futtatókörnyezet új, az elérhetővé válására szolgáló másodlagos verzióira. Az új alverziók nem mutatják be a törési változásokat. Ha alverziót (például "2.0.12345") ad meg, a Function alkalmazás az adott verzióra van rögzítve, amíg explicit módon nem módosítja.
 
 > [!NOTE]
-> Ha az Azure Functions egy adott verziójára rögzít, majd a Visual Studio használatával próbál meg közzétenni az Azure-ban, megjelenik egy párbeszédpanelablak, amely a legújabb verzióra való frissítésre vagy a közzététel megszakítására kéri. Ennek elkerülése érdekében `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` adja `.csproj` hozzá a tulajdonságot a fájlhoz.
+> Ha a Azure Functions egy adott verziójához rögzít, majd megpróbál az Azure-ban közzétenni az Azure-ban a Visual Studióval, megnyílik egy párbeszédpanel, amely felszólítja, hogy frissítsen a legújabb verzióra, vagy szakítsa meg a közzétételt. Ennek elkerüléséhez adja hozzá a `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` tulajdonságot a `.csproj` fájlhoz.
 
-Ha egy új verzió nyilvánosan elérhető, a portálon lévő kérdés lehetőséget ad arra, hogy fellépjen az adott verzióra. Az új verzióra való áttérés után `FUNCTIONS_EXTENSION_VERSION` mindig használhatja az alkalmazásbeállítást az előző verzióra való visszatéréshez.
+Ha egy új verzió nyilvánosan elérhető, a portálon megjelenik egy üzenet, amely lehetővé teszi az adott verzióra való áttérést. Az új verzióra való áttérés után bármikor használhatja az `FUNCTIONS_EXTENSION_VERSION` alkalmazás beállítását, hogy visszalépjen egy korábbi verzióra.
 
-Az alábbi táblázat `FUNCTIONS_EXTENSION_VERSION` az egyes főverziók automatikus frissítések engedélyezéséhez szükséges értékeit mutatja be:
+Az alábbi táblázat az `FUNCTIONS_EXTENSION_VERSION` egyes főverziók értékeit mutatja be az automatikus frissítések engedélyezéséhez:
 
-| Főverzió | `FUNCTIONS_EXTENSION_VERSION`Érték |
+| Főverzió | `FUNCTIONS_EXTENSION_VERSION`érték |
 | ------------- | ----------------------------------- |
-| 3.x  | `~3` |
-| 2,x  | `~2` |
-| 1,x  | `~1` |
+| 3. x  | `~3` |
+| 2. x  | `~2` |
+| 1. x  | `~1` |
 
-A futásidejű verzió módosítása a függvényalkalmazás újraindítását okozza.
+A futtatókörnyezet verziójának módosítása a Function alkalmazás újraindítását eredményezi.
 
-## <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futásidejű verzió megtekintése és frissítése
+## <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése és frissítése
 
-Módosíthatja a függvényalkalmazás által használt futásidejű verziót. A módosítások esetleges megszakadása miatt csak a futásidejű verziót módosíthatja, mielőtt bármilyen függvényt létrehozott volna a függvényalkalmazásban. 
+Módosíthatja a Function alkalmazás által használt futtatókörnyezet verzióját. A módosítások megszakítása miatt a funkció alkalmazásban való létrehozása előtt csak a futásidejű verziót lehet módosítani. 
 
 > [!IMPORTANT]
-> Bár a futásidejű verzió `FUNCTIONS_EXTENSION_VERSION` határozza meg a beállítást, ezt a módosítást az Azure Portalon, és nem a beállítás közvetlen módosításával. Ennek az az oka, hogy a portál ellenőrzi a módosításokat, és szükség szerint egyéb kapcsolódó módosításokat hajt végre.
+> Bár a futásidejű verziót a `FUNCTIONS_EXTENSION_VERSION` beállítás határozza meg, ezt a módosítást a Azure Portalon kell megtennie, nem pedig közvetlenül a beállítás módosításával. Ennek az az oka, hogy a portál érvényesíti a módosításokat, és szükség szerint más kapcsolódó módosításokat hajt végre.
 
 ### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
-> Az Azure Portal használatával nem módosíthatja a függvényalkalmazás futásidejű verzióját, amely már tartalmaz függvényeket.
+> A Azure Portal használatával nem módosítható olyan Function alkalmazás futásidejű verziója, amely már tartalmaz függvényeket.
 
 ### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Az Azure CLI-ből
 
-Megtekintheti és beállíthatja `FUNCTIONS_EXTENSION_VERSION` az Azure CLI-ből.
+Az Azure CLI-ről is megtekintheti és beállíthatja az `FUNCTIONS_EXTENSION_VERSION` alkalmazást.
 
 >[!NOTE]
->Mivel a futásidejű verzió más beállításokat is érinthet, módosítania kell a verziót a portálon. A portál automatikusan elkészíti a többi szükséges frissítést, például a Node.js verziót és a futásidejű veremeket, amikor módosítja a futásidejű verziókat.  
+>Mivel előfordulhat, hogy a futásidejű verzió más beállításokat is érint, érdemes módosítani a verziót a portálon. A portál automatikusan elvégzi a többi szükséges frissítést, például a Node. js-verziót és a futásidejű veremet, amikor megváltoztatja a futásidejű verziókat.  
 
-Az Azure CLI használatával tekintse meg az aktuális futásidejű verziót az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
+Az Azure CLI használatával tekintse meg az aktuális futtatókörnyezet verzióját az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-Ebben a kódban cserélje le `<function_app>` a függvényalkalmazás nevét. Is `<my_resource_group>` cserélje ki a függvényalkalmazás erőforráscsoportjának nevét is. 
+Ebben a kódban cserélje le `<function_app>` a helyére a Function alkalmazás nevét. Cserélje le `<my_resource_group>` a függvényt a Function alkalmazás erőforráscsoport nevére is. 
 
-Az egyértelműség `FUNCTIONS_EXTENSION_VERSION` érdekében a következő kimenetlátható:
+A következő kimenet `FUNCTIONS_EXTENSION_VERSION` jelenik meg, amelyet az egyértelműség érdekében csonkolt:
 
 ```output
 [
@@ -90,7 +90,7 @@ Az egyértelműség `FUNCTIONS_EXTENSION_VERSION` érdekében a következő kime
 ]
 ```
 
-A beállítás `FUNCTIONS_EXTENSION_VERSION` frissíthető a függvényalkalmazásban az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
+A Function alkalmazásban `FUNCTIONS_EXTENSION_VERSION` található beállításokat az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal frissítheti.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -98,16 +98,16 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-Cserélje `<function_app>` le a függvényalkalmazás nevére. Is `<my_resource_group>` cserélje ki a függvényalkalmazás erőforráscsoportjának nevét is. Cserélje le `<version>` az 1.x futásidejű érvényes `~2` verziójára vagy a 2.x-es verzióra is.
+Cserélje `<function_app>` le a helyére a Function alkalmazás nevét. Cserélje le `<my_resource_group>` a függvényt a Function alkalmazás erőforráscsoport nevére is. Továbbá cserélje le `<version>` az 1. x futtatókörnyezet vagy `~2` a 2. x verzió érvényes verzióját.
 
-Ezt a parancsot az [Azure Cloud Shell](../cloud-shell/overview.md) az előző kódminta **Kipróbálása** lehetőséget választva futtathatja. Az [Azure CLI helyileg](/cli/azure/install-azure-cli) is futtathatja ezt a parancsot az [az bejelentkezés](/cli/azure/reference-index#az-login) végrehajtása után a bejelentkezéshez.
+Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A 2.0-s futásidő megcélzása a helyi fejlesztési környezetben](functions-run-local.md)
+> [Az 2,0 futtatókörnyezet megcélzása a helyi fejlesztési környezetben](functions-run-local.md)
 
 > [!div class="nextstepaction"]
-> [Lásd: Kibocsátási megjegyzések a futásidejű verziókhoz](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+> [Lásd a futásidejű verziók kibocsátási megjegyzéseit](https://github.com/Azure/azure-webjobs-sdk-script/releases)

@@ -1,30 +1,30 @@
 ---
-title: Az Azure Functions SignalR szolgáltatás bemeneti kötése
-description: Ismerje meg, hogy adja vissza a SignalR szolgáltatás végpont URL-címét és hozzáférési jogkivonatot az Azure Functionsben.
+title: Azure Functions szignáló szolgáltatás bemeneti kötése
+description: Megtudhatja, hogyan adhat vissza a Signaler szolgáltatás végpontjának URL-címét és a hozzáférési tokent Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530262"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>SignalR szolgáltatás bemeneti kötése az Azure Functionshez
+# <a name="signalr-service-input-binding-for-azure-functions"></a>A signaler szolgáltatás bemeneti kötése Azure Functions
 
-Ahhoz, hogy egy ügyfél csatlakozhatna az Azure SignalR szolgáltatáshoz, le kell kérnie a szolgáltatás végponturl-címét és egy érvényes hozzáférési jogkivonatot. A *SignalRConnectionInfo* bemeneti kötés létrehozza a SignalR service végpont URL-címét és egy érvényes jogkivonatot, amely a szolgáltatáshoz való csatlakozáshoz használatos. Mivel a jogkivonat időkorlátos, és egy adott felhasználó hitelesítésére használható egy kapcsolathoz, nem szabad gyorsítótárazni a jogkivonatot, és nem szabad megosztani a jogkivonatot az ügyfelek között. A kötést használó HTTP-eseményindítót az ügyfelek használhatják a kapcsolatadatainak beolvasására.
+Ahhoz, hogy az ügyfél csatlakozni tudjanak az Azure Signaler szolgáltatáshoz, le kell kérnie a szolgáltatási végpont URL-címét és egy érvényes hozzáférési tokent. A *SignalRConnectionInfo* bemeneti kötése létrehozza a signaler szolgáltatás végpontjának URL-címét és a szolgáltatáshoz való kapcsolódáshoz használt érvényes jogkivonatot. Mivel a jogkivonat időkorlátja korlátozott, és egy adott felhasználó egy kapcsolathoz való hitelesítésére használható, ne gyorsítótárazza a tokent, vagy ossza meg az ügyfelek között. A kötést használó HTTP-triggereket az ügyfelek használhatják a kapcsolati adatok lekérésére.
 
-Ha többet szeretne tudni arról, hogy ez a kötés hogyan használható a SignalR ügyfél SDK által felhasználható "egyeztetési" függvény létrehozásához, tekintse meg az [Azure Functions fejlesztési és konfigurációs cikkét](../azure-signalr/signalr-concept-serverless-development-config.md) a SignalR-szolgáltatás fogalmai dokumentációjában.
+Ha további információra van szükség arról, hogy ez a kötés hogyan használható a Signaler ügyféloldali SDK által felhasználható "egyeztetés" függvény létrehozásához, tekintse meg a következő témakört: [Azure functions fejlesztés és konfiguráció cikk](../azure-signalr/signalr-concept-serverless-development-config.md) a Signaler szolgáltatással kapcsolatos fogalmak dokumentációjában.
 
-A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](functions-bindings-signalr-service.md)olvashat.
+További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-signalr-service.md).
 
 ## <a name="example"></a>Példa
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely a bemeneti kötés használatával beszerzi a SignalR-kapcsolat adatait, és http-n keresztül adja vissza azt.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a bemeneti kötés használatával szerzi be a Signal-kapcsolati adatokat, és visszaadja a HTTP protokollon keresztül.
 
 ```cs
 [FunctionName("negotiate")]
@@ -36,13 +36,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A következő példa egy SignalR-kapcsolat ionbemeneti kötését mutatja be egy *function.json* fájlban, és egy [C# Script függvényt,](functions-reference-csharp.md) amely a kötést használja a kapcsolatadatainak adására.
+Az alábbi példa egy Signal-kapcsolati adatok bemeneti kötését mutatja be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -54,7 +54,7 @@ Példa function.json:
 }
 ```
 
-Itt a C# Script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,13 +66,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő példa egy SignalR-kapcsolat ionbemeneti bemeneti kötését mutatja be egy *function.json* fájlban, és egy [JavaScript függvényt,](functions-reference-node.md) amely a kötést használja a kapcsolatadatainak adására.
+Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja a kapcsolati adatok visszaadásához.
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -84,7 +84,7 @@ Példa function.json:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -94,11 +94,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A következő példa egy SignalR-kapcsolat info bemeneti kötését mutatja be egy *function.json* fájlban, és egy [Python függvényt,](functions-reference-python.md) amely a kötést használja a kapcsolatadatainak adására.
+Az alábbi példa egy Signal-kapcsolati adatbeviteli kötést mutat be egy *function. JSON* fájlban és egy [Python-függvényben](functions-reference-python.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
 
-A *function.json* fájlban az adatok kötése:
+Itt a *function. JSON* fájlban található kötési adat:
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -110,7 +110,7 @@ Példa function.json:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -125,7 +125,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-A következő példa egy [Java függvényt](functions-reference-java.md) mutat be, amely a bemeneti kötés használatával beszerzi a SignalR-kapcsolat adatait, és http-n keresztül adja vissza azt.
+Az alábbi példa egy [Java-függvényt](functions-reference-java.md) mutat be, amely a bemeneti kötés használatával szerzi be a jelző kapcsolati adatait, és visszaadja a HTTP protokollon keresztül.
 
 ```java
 @FunctionName("negotiate")
@@ -145,13 +145,13 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="authenticated-tokens"></a>Hitelesített tokenek
 
-Ha a függvényt egy hitelesített ügyfél váltja ki, hozzáadhat egy felhasználói azonosító jogcímet a létrehozott jogkivonathoz. Az [App Service-hitelesítés](../app-service/overview-authentication-authorization.md)segítségével egyszerűen hozzáadhat hitelesítést egy függvényalkalmazáshoz.
+Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-Az App Service-hitelesítés `x-ms-client-principal-id` beállítja a névvel ellátott HTTP-fejléceket, amelyek `x-ms-client-principal-name` tartalmazzák a hitelesített felhasználó ügyfélügyfél-egyszerű azonosítóját és nevét.
+App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét.
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A kötés `UserId` tulajdonságát a fejlécből a fejlécből állíthatja `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`be egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: vagy a .
+Megadhatja a `UserId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,11 +166,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A kötés `userId` tulajdonságát a fejlécből a fejlécből állíthatja `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`be egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: vagy a .
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -183,7 +183,7 @@ Példa function.json:
 }
 ```
 
-Itt a C# Script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,11 +197,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A kötés `userId` tulajdonságát a fejlécből a fejlécből állíthatja `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`be egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: vagy a .
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -214,7 +214,7 @@ Példa function.json:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -226,9 +226,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A kötés `userId` tulajdonságát a fejlécből a fejlécből állíthatja `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`be egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: vagy a .
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
-Példa function.json:
+Példa a function. JSON fájlra:
 
 ```json
 {
@@ -241,7 +241,7 @@ Példa function.json:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-A kötés `userId` tulajdonságát a fejlécből a fejlécből állíthatja `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`be egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: vagy a .
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>További lépések
 
-- [SignalR szolgáltatás üzenetek küldése (kimenetkötés)](./functions-bindings-signalr-service-output.md) 
+- [Szignáló szolgáltatás üzeneteinek küldése (kimeneti kötés)](./functions-bindings-signalr-service-output.md) 

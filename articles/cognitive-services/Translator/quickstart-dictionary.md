@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Szavak felkelőhelye kétnyelvű szótárral – Translator Text API'
+title: 'Gyors útmutató: szavak megkeresése a kétnyelvű szótárban – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtudhatja, hogyan kaphat alternatív fordításokat egy kifejezéshez, és használati példákat is az alternatív fordításokra a Translator Text API használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan lehet alternatív fordításokat lekérni egy kifejezésre, és hogyan használhatja ezeket a alternatív fordításokat a Translator Text API használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525158"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Rövid útmutató: Szavak kinézete kétnyelvű szótárral
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Gyors útmutató: szavak keresése kétnyelvű szótársal
 
-Ebben a rövid útmutatóban megtudhatja, hogyan kaphat alternatív fordításokat egy kifejezéshez, és használati példákat is az alternatív fordításokra a Translator Text API használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan lehet alternatív fordításokat lekérni egy kifejezésre, és hogyan használhatja ezeket a alternatív fordításokat a Translator Text API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 

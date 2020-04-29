@@ -9,17 +9,17 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77179133"
 ---
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 
 Első lépésként az Azure platform beépített hibatűrési képességei is bemutatják, amelyek segítenek a helyi hibák elleni védelemben. Ezután megbeszéljük azokat a katasztrófa-forgatókönyveket, amelyek nem teljes mértékben fedik a beépített funkciókat. Emellett több példát is mutatunk a munkaterhelés-forgatókönyvekre, amelyekben különböző biztonsági mentési és DR-megfontolások alkalmazhatók. Ezután áttekintjük a DR IaaS-lemezek lehetséges megoldásait.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Az Azure platform különféle módszereket használ a redundancia és a hibatűrés érdekében, hogy segítsen az ügyfeleknek a honosított hardverhiba elleni védelemben. A helyi hibák olyan Azure Storage Server-géppel kapcsolatos problémákat okozhatnak, amelyek az adott kiszolgálón lévő virtuális lemez vagy az SSD-k vagy HDD-k hibáinak egy részét tárolják. Az ilyen elszigetelt hardver-összetevők meghibásodása a normál műveletek során fordulhat elő.
 

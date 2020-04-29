@@ -1,6 +1,6 @@
 ---
-title: Az Azure Firewall központi kezelése
-description: További információ az Azure Firewall Manager központi felügyeletéről
+title: Azure Firewall központi felügyelet
+description: Tudnivalók a Azure Firewall Manager központi felügyeletéről
 author: vhorne
 ms.service: firewall
 services: firewall
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77444549"
 ---
-# <a name="azure-firewall-central-management"></a>Az Azure Firewall központi kezelése
+# <a name="azure-firewall-central-management"></a>Azure Firewall központi felügyelet
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Ha több tűzfalat kezel, akkor a folyamatosan változó tűzfalszabályok megnehezítik azok szinkronizálását. A központi informatikai csapatoknak szükségük van az alaptűzfal-házirendek definiálására és több részlegközötti kényszerítésükre. Ugyanakkor devops csapatok szeretné létrehozni a saját helyi származtatott tűzfal-házirendek a jobb mozgékonyság érdekében.
+Ha több tűzfalat is kezel, akkor tudja, hogy a tűzfalszabályok folyamatosan változnak, hogy megnehezítik a szinkronizálást. A központi informatikai csapatoknak meg kell határozniuk az alapszintű tűzfal házirendjeit, és ki kell kényszeríteni őket több üzleti egység között. Ugyanakkor a DevOps-csapatok saját helyi származtatott tűzfalszabályok létrehozására is szükségük van a jobb mozgékonyság érdekében.
 
-Az Azure Firewall Manager előzetes verziója segíthet a problémák megoldásában.
+A Azure Firewall Manager előzetes verziója segíthet megoldani ezeket a problémákat.
 
 
-## <a name="azure-firewall-manager-preview"></a>Az Azure firewall Manager előzetes verzió
+## <a name="azure-firewall-manager-preview"></a>Azure Firewall Manager – előzetes verzió
 
-Az Azure Firewall Manager Preview egy hálózati biztonságfelügyeleti szolgáltatás, amely központi biztonsági házirendet és útvonalkezelést biztosít a felhőalapú biztonsági peremterülethez. Megkönnyíti a vállalati informatikai csapatok számára, hogy központilag határozzák meg a hálózati és alkalmazásszintű szabályokat a forgalom szűréséhez több Azure Firewall-példányok között. Különböző Azure-régiókra és előfizetésekre is kiterjedhet a központi és küllős architektúrákban a forgalomszabályozás és -védelem érdekében. Emellett a DevOps-nak jobb agilitást biztosít a szervezetek között megvalósított származtatott helyi tűzfal-biztonsági házirendekkel.
+A Azure Firewall Manager előzetes verziója egy hálózati biztonsági felügyeleti szolgáltatás, amely központi biztonsági házirendet és útválasztási felügyeletet biztosít a felhőalapú biztonsági körzetek számára. Megkönnyíti a vállalati informatikai csapatok számára, hogy központilag határozzák meg a hálózati és az alkalmazási szintű szabályokat a több Azure Firewall példány közötti forgalom szűréséhez. Különböző Azure-régiókat és-előfizetéseket is kioszthat a középpontban és küllős architektúrákban a forgalmi irányítás és a védelem terén. Emellett jobb rugalmasságot biztosít a különböző szervezetek által megvalósított helyi tűzfal-biztonsági házirendek DevOps.
 
 ### <a name="firewall-policy"></a>Tűzfal házirendje
 
-A tűzfalszabályzat egy Azure-erőforrás, amely NAT- és alkalmazásszabály-gyűjteményeket és fenyegetésintelligencia-beállításokat tartalmaz. Ez egy globális erőforrás, amely több Azure Tűzfal-példányban használható *a biztonságos virtuális csomópontokban* és *a hub virtuális hálózatokban.* Új házirendek hozhatók létre a semmiből, vagy örökölt meglévő házirendek. Az öröklődés lehetővé teszi a DevOps számára, hogy helyi tűzfalházirendeket hozzon létre a szervezet által megbízott alapházirenden felül. A házirendek régiók és előfizetések között működnek.
+A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint veszélyforrások felderítési beállításait tartalmazzák. Ez egy globális erőforrás, amely a *biztonságos virtuális hubok* és a *hub virtuális hálózatok*több Azure Firewall példányára is használható. Új szabályzatok hozhatók létre a semmiből, vagy a meglévő szabályzatokból örökölhető. Az öröklés lehetővé teszi, hogy a DevOps helyi tűzfal-házirendeket hozzon létre a szervezethez kötött alapházirend alapján. A szabályzatok a régiók és az előfizetések között működnek.
  
-Tűzfalszabályzatot és társításokat hozhat létre az Azure Firewall Manager rel. Azonban rest API, sablonok, Azure PowerShell és CLI használatával is létrehozhat és kezelhet szabályzatot. Miután létrehozott egy házirendet, társíthatja azt egy virtuális WAN hub tűzfalához, így *biztonságos virtuális központ* és/vagy egy virtuális hálózat tűzfala, így hub virtuális *hálózat.*
+A Azure Firewall Managerrel hozhat létre tűzfal-házirendet és társításokat. A szabályzatokat azonban REST API, sablonok, Azure PowerShell és parancssori felület használatával is létrehozhatja és kezelheti. Miután létrehozta a szabályzatot, társíthatja azt egy virtuális WAN-központban található tűzfallal, így *biztonságos virtuális hubot* és/vagy tűzfalat hozhat létre egy virtuális hálózatban, amely az informatikai *központ Virtual Network*.
 
 ### <a name="pricing"></a>Díjszabás
 
-A házirendek számlázása tűzfaltársítások alapján történik. A nulla vagy egy tűzfalas társítással rendelkező házirend ingyenes. A több tűzfaltársítással rendelkező házirendet fix díjtétellel számlázunk. További információ: [Azure Firewall Manager Pricing](https://azure.microsoft.com/pricing/details/firewall-manager/).
+A szabályzatok a tűzfal-társítások alapján lesznek kiszámlázva. Egy nulla vagy egy tűzfal társítással rendelkező szabályzat díjmentes. A több tűzfallal foglalkozó szabályzatot rögzített díjszabás szerint számítjuk fel. További információ: [Azure Firewall Manager díjszabása](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
-## <a name="azure-firewall-management-partners"></a>Az Azure firewall management partnerei
+## <a name="azure-firewall-management-partners"></a>Azure Firewall felügyeleti partnerek
 
-A következő vezető külső megoldások támogatják az Azure Firewall központi felügyeletét a szabványos Azure REST API-k használatával. Mindegyik megoldásnak megvannak a maga egyedi jellemzői és jellemzői:
+A következő vezető harmadik féltől származó megoldások támogatják a standard Azure REST API-k használatával Azure Firewall központi felügyeletet. Mindegyik megoldás saját egyedi tulajdonságokkal és szolgáltatásokkal rendelkezik:
 
-- [AlgoSec felhőfolyamat](https://www.algosec.com/azure/) 
-- [Barracuda felhő biztonsági guardian](https://www.barracuda.com/products/cloudsecurityguardian/for_azure)
+- [AlgoSec CloudFlow](https://www.algosec.com/azure/) 
+- [Barracuda Cloud Security Guardian](https://www.barracuda.com/products/cloudsecurityguardian/for_azure)
 - [Tufin Orka](https://www.tufin.com/products/tufin-orca)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Firewall Manager előzetes verziójáról a [Mi az Azure Firewall Manager előzetes verzió?](../firewall-manager/overview.md)
+További információ a Azure Firewall Manager előzetes verziójáról: [Mi az a Azure Firewall Manager Preview?](../firewall-manager/overview.md)

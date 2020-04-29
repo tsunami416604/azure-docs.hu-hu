@@ -1,6 +1,6 @@
 ---
-title: Vállalati biztonsági irányelvek az Azure HDInsightban
-description: Néhány gyakorlati tanácsok, amelyek megkönnyítik a vállalati biztonsági csomag telepítését és kezelését.
+title: A vállalati biztonsági általános irányelvek az Azure HDInsight
+description: Néhány ajánlott eljárás, amely megkönnyíti a Enterprise Security Package üzembe helyezését és felügyeletét.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,160 +8,160 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77463205"
 ---
-# <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Vállalati biztonsági általános információk és irányelvek az Azure HDInsightban
+# <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>A vállalati biztonsági általános információk és irányelvek az Azure HDInsight
 
-Biztonságos HDInsight-fürt telepítésekor van néhány gyakorlati, amely megkönnyíti a központi telepítés és a fürtkezelés. Néhány általános információt és iránymutatást itt tárgyalunk.
+Ha biztonságos HDInsight-fürtöt helyez üzembe, néhány ajánlott eljárással egyszerűbben elvégezhető az üzembe helyezés és a fürt kezelése. Néhány általános információt és útmutatást itt talál.
 
 ## <a name="use-of-secure-cluster"></a>Biztonságos fürt használata
 
 ### <a name="recommended"></a>Ajánlott
 
-* A fürtöt egyszerre több felhasználó fogja használni.
-* A felhasználók különböző szintű hozzáféréssel rendelkeznek ugyanazokhoz az adatokhoz.
+* A fürtöt több felhasználó fogja használni egyszerre.
+* A felhasználók eltérő szintű hozzáféréssel rendelkeznek ugyanahhoz az adatelérési szinthez.
 
 ### <a name="not-necessary"></a>Nem szükséges
 
-* Csak automatizált feladatokat (például egyszemélyes felhasználói fiókot) fog futtatni, a szabványos fürt elég jó.
-* Az adatimportálást egy szabványos fürt használatával is elvégezheti, és ugyanazt a tárfiókot használhatja egy másik biztonságos fürtön, ahol a felhasználók elemzési feladatokat futtathatnak.
+* Csak az automatikus feladatokat (például egy felhasználói fiókot) fogja futtatni, a standard szintű fürt elég jó.
+* Az adatok importálását szabványos fürt használatával végezheti el, és ugyanazt a Storage-fiókot használhatja egy másik biztonságos fürtön, ahol a felhasználók elemzési feladatokat futtathatnak.
 
 ## <a name="use-of-local-account"></a>Helyi fiók használata
 
-* Ha megosztott felhasználói vagy helyi fiókot használ, nehéz lesz azonosítani, hogy ki használta a fiókot a konfiguráció vagy a szolgáltatás módosítására.
-* A helyi fiókok használata akkor problémás, ha a felhasználók már nem részei a szervezetnek.
+* Ha megosztott felhasználói fiókot vagy helyi fiókot használ, nehéz lesz azonosítani, hogy ki használta a fiókot a konfiguráció vagy a szolgáltatás módosításához.
+* A helyi fiókok használata nem jelent problémát, ha a felhasználók már nem részei a szervezetnek.
 
 ## <a name="ranger"></a>Ranger
 
 ### <a name="policies"></a>Házirendek
 
-* Alapértelmezés szerint a Ranger **a Megtagadás** házirendet használja.
+* Alapértelmezés szerint a Ranger a **Megtagadás** házirendet használja.
 
-* Ha az adathozzáférés olyan szolgáltatáson keresztül történik, ahol az engedélyezés engedélyezve van:
-  * A ranger engedélyezési bővítményt a kérelem hivatkozik, és a kérelem kontextusában.
-  * A Ranger a szolgáltatáshoz konfigurált házirendeket alkalmazza. Ha a Ranger házirendek sikertelenek, a hozzáférés-ellenőrzés a fájlrendszerre halasztódik. Egyes szolgáltatások, mint a MapReduce csak akkor ellenőrzi, ha a fájl / mappa tulajdonosa ugyanaz a felhasználó, aki benyújtja a kérelmet. Szolgáltatások, mint a Hive, ellenőrizze, hogy`rwx`a tulajdonjog egyezik-e vagy a megfelelő fájlrendszer-engedélyek ( ).
+* Az adathozzáférés olyan szolgáltatáson keresztül történik, amelyen engedélyezve van az engedélyezés:
+  * A rendszer meghívja a Ranger engedélyezési beépülő modulját, és a kérelem kontextusát adja meg.
+  * A Ranger a szolgáltatáshoz konfigurált szabályzatokat alkalmazza. Ha a Ranger-szabályzatok sikertelenek, a hozzáférés-ellenőrzését a fájlrendszerre késlelteti a rendszer. Néhány szolgáltatás, például a MapReduce, csak azt vizsgálja, hogy a fájlt vagy mappát a kérést küldő felhasználó birtokolja-e. Olyan szolgáltatások, mint a kaptár, keresse meg a tulajdonosi egyeztetés vagy`rwx`a megfelelő fájlrendszer-engedélyeket ().
 
-* A Hive, amellett, hogy az engedélyeket, hogy nem Létrehozása `rwx`/ Frissítése / törlése engedélyek, a felhasználónak rendelkeznie kell engedélyekkel a könyvtárban a tároló és az összes al könyvtárakat.
+* A kaptár esetében, a létrehozási/frissítési/törlési engedélyekhez szükséges engedélyek mellett a felhasználónak engedélyekkel kell `rwx`rendelkeznie a tárolón és az összes alkönyvtáron.
 
-* A házirendek egyének helyett csoportokra (előnyösebb) alkalmazhatók.
+* A szabályzatok az egyéni felhasználók helyett csoportokba (lehetőleg) is alkalmazhatók.
 
-* A Ranger authorizer minden kérésnél kiértékeli az adott szolgáltatás összes Ranger szabályzatát. Ez az értékelés hatással lehet a feladat vagy lekérdezés elfogadásához.
+* A Ranger-engedélyező minden egyes kérelem esetében kiértékeli az adott szolgáltatáshoz tartozó összes Ranger-házirendet. Ez a kiértékelés hatással lehet a feladatok vagy lekérdezések elfogadásának idejére.
 
-### <a name="storage-access"></a>Tárolási hozzáférés
+### <a name="storage-access"></a>Tárterület-hozzáférés
 
-* Ha a tárolási típus WASB, akkor nincs OAuth token.
-* Ha a Ranger végrehajtotta az engedélyezést, majd a tárolási hozzáférés a felügyelt identitás használatával történik.
-* Ha a Ranger nem végzett semmilyen hitelesítést, majd a tárolási hozzáférés a felhasználó OAuth token használatával történik.
+* Ha a tárolási típus WASB, akkor a rendszer nem vesz fel OAuth tokent.
+* Ha a Ranger végrehajtotta az engedélyt, a tárterület-hozzáférés a felügyelt identitás használatával történik.
+* Ha a Ranger nem hajtott végre semmilyen engedélyt, a tárterület-hozzáférés a felhasználó OAuth-jogkivonatával történik.
 
 ### <a name="hierarchical-name-space"></a>Hierarchikus névtér
 
-Ha a hierarchikus névköznincs engedélyezve:
+Ha a hierarchikus névtér nincs engedélyezve:
 
 * Nincsenek örökölt engedélyek.
-* Csak a fájlrendszer engedélye, amely működik storage **data XXXX** RBAC szerepkör, hozzá kell rendelni a felhasználó közvetlenül az Azure Portalon.
+* Csak a **Storage adat XXXX** RBAC szerepkörrel rendelkező fájlrendszerbeli engedélyek használhatók közvetlenül a Azure Portalhoz való hozzárendeléshez.
 
-### <a name="default-hdfs-permissions"></a>Alapértelmezett HDFS-engedélyek
+### <a name="default-hdfs-permissions"></a>Alapértelmezett HDFS engedélyek
 
-* Alapértelmezés szerint a felhasználók nem férnek hozzá a mappához a **/** HDFS (kell a storage blob tulajdonosi szerepkör a hozzáférés sikeres eléréséhez).
-* A mapreduce és mások átmeneti könyvtárához létrejön egy `sticky _wx` felhasználóspecifikus könyvtár, és engedélyeket biztosít. A felhasználók létrehozhatnak alatta fájlokat és mappákat, de más elemeket nem.
+* Alapértelmezés szerint a felhasználók nem férhetnek hozzá a **/** mappához a HDFS (a sikeres elérés érdekében a Storage blob tulajdonosi szerepkörben kell lenniük).
+* A MapReduce és mások előkészítési könyvtárához a rendszer létrehoz egy felhasználó-specifikus könyvtárat, és megadja `sticky _wx` az engedélyeket. A felhasználók az alatta lévő fájlokat és mappákat is létrehozhatnak, de nem nézhetnek meg más elemeket.
 
 ### <a name="url-auth"></a>URL-hitelesítés
 
-Ha az url auth engedélyezve van:
+Ha engedélyezve van az URL-cím hitelesítése:
 
-* A konfiguráció tartalmazni fogja, hogy milyen előtagok szerepelnek `adl://`az url auth (például ).
-* Ha a hozzáférés ehhez az url-hez van, akkor a Ranger ellenőrzi, hogy a felhasználó szerepel-e az engedélyezési listában.
-* A ranger nem ellenőrzi a finom szabályokat.
+* A konfiguráció tartalmazni fogja, hogy mely előtagokat tartalmazza az URL- `adl://`hitelesítés (például).
+* Ha a hozzáférés ehhez az URL-címhez van, akkor a Ranger azt vizsgálja, hogy a felhasználó szerepel-e az engedélyezési listán.
+* A Ranger nem vizsgálja meg a részletes szabályzatok egyikét sem.
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 
-Használjon új erőforráscsoportot minden fürthöz, hogy különbséget tehessen a fürt erőforrásai között.
+Minden fürthöz használjon egy új erőforráscsoportot, hogy a fürt erőforrásai megkülönböztethetők legyenek.
 
-## <a name="nsgs-firewalls-and-internal-gateway"></a>NSG-k, tűzfalak és belső átjárók
+## <a name="nsgs-firewalls-and-internal-gateway"></a>NSG, tűzfalak és belső átjáró
 
-* A virtuális hálózatok zárolásához használja a hálózati biztonsági csoportokat (NSG-k).
-* A kimenő hozzáférési házirendek kezeléséhez használjon tűzfalat.
-* Használja a nyilvános internetre nem nyitott belső átjárót.
+* A virtuális hálózatok zárolásához használjon hálózati biztonsági csoportokat (NSG).
+* A tűzfal használatával kezelheti a kimenő hozzáférési házirendeket.
+* Olyan belső átjárót használjon, amely nincs nyitva a nyilvános interneten.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-[Az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés-kezelési szolgáltatása.
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása.
 
 ### <a name="policies"></a>Házirendek
 
-* Tiltsa le a feltételes hozzáférési házirendet az IP-címalapú házirend használatával. Ehhez a szolgáltatásvégpontok engedélyezéséhez kell engedélyezni azon a Virtuálisfelhasználó-állomásokon, ahol a fürtök telepítve vannak. Ha az MFA-hoz (az AAD-től eltérő) külső szolgáltatást használ, az IP-címalapú házirend nem fog működni.
+* A feltételes hozzáférési szabályzat letiltása az IP-cím alapú házirend használatával. Ehhez engedélyezni kell a szolgáltatási végpontokat azon a virtuális hálózatok, amelyen a fürtök telepítve vannak. Ha olyan külső szolgáltatást használ az MFA-hoz (amely nem HRE), az IP-cím alapú házirend nem fog működni.
 
-* `AllowCloudPasswordValidation`az összevont felhasználók számára szükség van. Mivel a HDInsight közvetlenül használja a felhasználónevet/jelszót az Azure AD-ből származó jogkivonatok lekéréséhez, ezt a szabályzatot minden összevont felhasználó számára engedélyezni kell.
+* `AllowCloudPasswordValidation`az összevont felhasználók házirendje szükséges. Mivel a HDInsight a felhasználónevet és a jelszót használja közvetlenül az Azure AD-ből származó jogkivonatok beszerzéséhez, ezt a házirendet minden összevont felhasználó számára engedélyezni kell.
 
-* Engedélyezze a szolgáltatásvégpontokat, ha feltételes hozzáférés-megkerülésre van szüksége a megbízható IP-k használatával.
+* Engedélyezze a szolgáltatás-végpontokat, ha a megbízható IP-címek használatával feltételes hozzáférést szeretne megkerülni.
 
 ### <a name="groups"></a>Csoportok
 
-* A fürtöket mindig csoporton ként telepítse.
-* Az Azure AD segítségével kezelheti a csoporttagságokat (egyszerűbb, mint a fürt egyes szolgáltatásait kezelni).
+* A fürtöket mindig egy csoporttal telepítse.
+* Használja az Azure AD-t a csoporttagságok kezeléséhez (egyszerűbb, mint a fürtben lévő egyes szolgáltatások kezelése).
 
 ### <a name="user-accounts"></a>Felhasználói fiókok
 
-* Minden forgatókönyvhöz használjon egyedi felhasználói fiókot. Például használjon egy fiókot importáláshoz, használjon egy másikat lekérdezéshez vagy más feldolgozási feladatokhoz.
-* Az egyes házirendek helyett csoportalapú Ranger-házirendeket használjon.
-* Tervvel kell kezelnie azokat a felhasználókat, akiknek már nem kellene fürthöz hozzáférniük.
+* Minden forgatókönyvhöz használjon egyedi felhasználói fiókot. Használjon például egy fiókot az importáláshoz, egy másikat a lekérdezésekhez vagy más feldolgozási feladatokhoz.
+* Egyéni házirendek helyett használjon csoportos Ranger-házirendeket.
+* Tervezze meg, hogyan kezelheti a fürtöket többé nem rendelkező felhasználók kezeléséhez.
 
 ## <a name="azure-active-directory-domain-services"></a>Azure Active Directory tartományi szolgáltatások
 
-[Az Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md) (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, a könnyű címtár-hozzáférési protokoll (LDAP) és a Kerberos / NTLM-hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryval.
+[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, a Lightweight Directory Access Protocol (LDAP) és a KERBEROS/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel.
 
-Az Azure AD DS szükséges a biztonságos fürtök tartományhoz való csatlakozásához.
-A HDInsight nem függhet a helyszíni tartományvezérlőktől vagy egyéni tartományvezérlőktől, mivel túl sok hibapontot, hitelesítő adatok megosztását, DNS-engedélyeket és így tovább vezet be. További információ: [Azure AD DS GYIK](../../active-directory-domain-services/faqs.md).
+Az Azure AD DS szükséges a biztonságos fürtök tartományhoz való csatlakoztatásához.
+A HDInsight nem függhet a helyszíni tartományvezérlőkön vagy az egyéni tartományvezérlőkön, mert túl sok hibát mutat be, a hitelesítő adatok megosztását, a DNS-engedélyeket és így tovább. További információ: [Azure AD DS GYIK](../../active-directory-domain-services/faqs.md).
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS-példány
 
-* Hozza létre a `.onmicrosoft.com domain`példányt a segítségével. Így nem lesz több DNS-kiszolgáló, amely a tartományt szolgálja.
-* Hozzon létre egy önaláírt tanúsítványt az LDAPS-hez, és töltse fel az Azure AD DS-be.
-* Használjon társviszony-létesített virtuális hálózatot fürtök üzembe helyezéséhez (ha több csapat telepíti a HDInsight ESP-fürtöket, ez hasznos lesz). Ez biztosítja, hogy nem kell megnyitni a portokat (NSG-ket) a tartományvezérlővel rendelkező virtuális hálózaton.
-* Konfigurálja a VIRTUÁLIS HÁLÓZAT DNS-ét megfelelően (az Azure AD DS tartománynevének állomásfájl-bejegyzések nélkül kell feloldania).
-* Ha korlátozza a kimenő forgalmat, győződjön meg arról, hogy elolvasta a [tűzfal támogatását a HDInsightban](../hdinsight-restrict-outbound-traffic.md)
+* Hozza létre a példányt a `.onmicrosoft.com domain`paranccsal. Így nem lesz több DNS-kiszolgáló, amely a tartományt szolgálja ki.
+* Hozzon létre egy önaláírt tanúsítványt az LDAPs szolgáltatáshoz, és töltse fel az Azure AD DSba.
+* A fürtök üzembe helyezéséhez használjon egy összevont virtuális hálózatot (ha több csapat is telepít HDInsight ESP-fürtöket, ez hasznos lesz). Ez biztosítja, hogy a tartományvezérlővel nem kell megnyitnia a portokat (NSG) a virtuális hálózaton.
+* Konfigurálja megfelelően a virtuális hálózat DNS-t (az Azure AD DS tartománynevet a gazdagépek bejegyzései nélkül kell feloldania).
+* Ha korlátozza a kimenő forgalmat, ellenőrizze, hogy elolvasta-e a [tűzfal támogatását a HDInsight-ben](../hdinsight-restrict-outbound-traffic.md) .
 
-### <a name="properties-synced-from-azure-ad-to-azure-ad-ds"></a>Az Azure AD-ből az Azure AD DS-re szinkronizált tulajdonságok
+### <a name="properties-synced-from-azure-ad-to-azure-ad-ds"></a>Az Azure AD-ből az Azure-ba szinkronizált tulajdonságok AD DS
 
-* Az Azure AD a helyszíni szinkronizálásokat csatlakoztatja az Azure AD-hez.
-* Az Azure AD DS szinkronizálja az Azure AD-ből.
+* Az Azure AD-összekötő szinkronizál a helyszíni rendszerből az Azure AD-be.
+* Az Azure AD DS szinkronizál az Azure AD-ből.
 
-Az Azure AD DS rendszeres időközönként szinkronizálja az Azure AD-ből származó objektumokat. Az Azure AD DS panel az Azure Portalon megjeleníti a szinkronizálási állapot. A szinkronizálás minden szakaszában az egyedi tulajdonságok ütközésbe kerülhetnek, és átnevezhetők. Ügyeljen arra, hogy a tulajdonság-leképezés az Azure AD az Azure AD DS.
+Az Azure AD DS rendszeresen szinkronizálja az objektumokat az Azure AD-ből. Az Azure AD DS panel a Azure Portal megjeleníti a szinkronizálási állapotot. A szinkronizálás egyes szakaszaiban az egyedi tulajdonságok ütköznek és átnevezve lehetnek. Ügyeljen az Azure AD-ből az Azure AD DS-ra való hozzárendelésre.
 
-További információ: [Azure AD UserPrincipalName population](../../active-directory/hybrid/plan-connect-userprincipalname.md), and [How Azure AD DS synchronization works.](../../active-directory-domain-services/synchronization.md)
+További információ: [Azure ad userPrincipalName-populáció](../../active-directory/hybrid/plan-connect-userprincipalname.md), és [Hogyan működik az Azure AD DS szinkronizálása](../../active-directory-domain-services/synchronization.md).
 
-### <a name="password-hash-sync"></a>Jelszókivonat-szinkronizálás
+### <a name="password-hash-sync"></a>Jelszó kivonatának szinkronizálása
 
-* A jelszavak szinkronizálása a többi objektumtípustól eltérően lesz. Csak a nem visszafordítható jelszókimondottak vannak szinkronizálva az Azure AD és az Azure AD DS szolgáltatásban
-* Az Azure AD-nek a helyszínen történő használatát az AD Connect en keresztül kell engedélyezni
-* Az Azure AD AD DS-szinkronizálás automatikus (késések 20 perc alatt).
-* A jelszókihatárolások csak akkor lesznek szinkronizálva, ha megváltozott a jelszó. Ha engedélyezi a jelszókivonat-szinkronizálást, az összes meglévő jelszó nem szinkronizálódik automatikusan, mivel visszafordíthatatlanul tárolják őket. A jelszó módosításakor a rendszer szinkronizálja a jelszókimondottakat.
+* A jelszavak szinkronizálása más objektumtípusoktól eltérően történik. Az Azure AD-ben és az Azure-ban csak a nem visszafejthető jelszó-kivonatok vannak szinkronizálva AD DS
+* Az AD-kapcsolaton keresztül engedélyezni kell a helyszíni Azure AD-t
+* Az Azure AD és az Azure AD DS Sync automatikus (a késések 20 perc alatt vannak).
+* A jelszó-kivonatok szinkronizálása csak akkor történik meg, ha módosult a jelszó. Ha engedélyezi a jelszó-kivonatolási szinkronizálást, a rendszer az összes meglévő jelszót automatikusan nem szinkronizálja, mert a rendszer visszafordíthatatlan módon tárolja őket. A jelszó módosításakor a jelszó-kivonatok szinkronizálva vannak.
 
 ### <a name="computer-objects-location"></a>Számítógép-objektumok helye
 
-Minden fürt egyetlen szervezeti egységhez van társítva. Egy belső felhasználó van kiépítve a szervezeti egységben. Az összes csomópont tartomány csatlakozik ugyanahhoz a szervezeti egységhez.
+Minden fürt egyetlen szervezeti egységhez van társítva. Belső felhasználó van kiépítve a szervezeti egységben. Az összes csomópont ugyanahhoz a szervezeti egységhez van csatlakoztatva.
 
-### <a name="active-directory-administrative-tools"></a>Active Directory felügyeleti eszközei
+### <a name="active-directory-administrative-tools"></a>Active Directory felügyeleti eszközök
 
-Az Active Directory felügyeleti eszközeinek Windows Server virtuális gépre való telepítésével kapcsolatos tudnivalókat a Felügyeleti eszközök telepítése című témakörben [tismerteti.](../../active-directory-domain-services/tutorial-create-management-vm.md)
+A Active Directory felügyeleti eszközök Windows Server rendszerű virtuális gépen való telepítésének lépéseiért lásd: [felügyeleti eszközök telepítése](../../active-directory-domain-services/tutorial-create-management-vm.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="cluster-creation-fails-repeatedly"></a>A fürt létrehozása ismételten sikertelen
+### <a name="cluster-creation-fails-repeatedly"></a>A fürt létrehozása nem sikerül ismételten
 
 Leggyakoribb okok:
 
-* A DNS-konfiguráció nem megfelelő, a fürtcsomópontok tartományhoz való csatlakozása sikertelen.
-* Az NSG-k túl korlátozóak, így megakadályozzák a tartományhoz való csatlakozást.
-* A felügyelt identitás nem rendelkezik a megfelelő engedélyekkel.
-* A fürtnév nem egyedi az első hat karakternél (egy másik élő fürttel vagy egy törölt fürttel).
+* A DNS-konfiguráció nem megfelelő, a fürtcsomópontok tartományhoz való csatlakoztatása meghiúsul.
+* A NSG túlságosan korlátozóak, megakadályozva a tartományhoz való csatlakozást.
+* A felügyelt identitás nem rendelkezik megfelelő engedélyekkel.
+* A fürt neve nem egyedi az első hat karakternél (vagy egy másik élő fürttel, vagy egy törölt fürttel).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Vállalati biztonsági csomag konfigurációi az Azure Active Directory tartományi szolgáltatásokkal a HDInsightban](./apache-domain-joined-configure-using-azure-adds.md)
+* [Konfigurációk Enterprise Security Package Azure Active Directory Domain Services a HDInsight-ben](./apache-domain-joined-configure-using-azure-adds.md)
 
-* [Az Azure Active Directory felhasználóinak szinkronizálása EGY HDInsight-fürttel.](../hdinsight-sync-aad-users-to-cluster.md)
+* [Azure Active Directory felhasználók szinkronizálása egy HDInsight-fürttel](../hdinsight-sync-aad-users-to-cluster.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldások a CloudSimple től – Biztonságos magánfelhő
-description: Bemutatja, hogyan lehet biztonságossá tenni az Azure VMware-megoldásokat a CloudSimple Private Cloud szolgáltatásban
+title: Azure VMware-megoldások CloudSimple – biztonságos privát felhő
+description: Ismerteti, hogyan védheti meg az Azure VMware-megoldásokat a CloudSimple Private Cloud használatával
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -9,68 +9,68 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77565978"
 ---
-# <a name="how-to-secure-your-private-cloud-environment"></a>A privát felhőkörnyezet védelme
+# <a name="how-to-secure-your-private-cloud-environment"></a>Saját felhőalapú környezet biztonságossá tétele
 
-Szerepköralapú hozzáférés-vezérlés (RBAC) definiálása a CloudSimple szolgáltatáshoz, a CloudSimple portálhoz és az Azure-ból származó magánfelhőhöz.  A vCenter of Private Cloud eléréséhez a felhasználók, csoportok és szerepkörök a VMware SSO használatával vannak megadva.  
+Szerepköralapú hozzáférés-vezérlés (RBAC) definiálása a CloudSimple szolgáltatáshoz, a CloudSimple-portálhoz és az Azure-beli privát felhőhöz.  A vCenter eléréséhez szükséges felhasználók, csoportok és szerepkörök a VMware SSO használatával vannak megadva.  
 
 ## <a name="rbac-for-cloudsimple-service"></a>RBAC a CloudSimple szolgáltatáshoz
 
-A CloudSimple szolgáltatás létrehozásához **tulajdonosi** vagy **közreműködői** szerepkör szükséges az Azure-előfizetésben.  Alapértelmezés szerint minden tulajdonos és közreműködő létrehozhat egy CloudSimple szolgáltatást, és hozzáférhet a CloudSimple portálhoz a privát felhők létrehozásához és kezeléséhez.  Régiónként csak egy CloudSimple szolgáltatás hozható létre.  Ha bizonyos rendszergazdákra szeretné korlátozni a hozzáférést, kövesse az alábbi eljárást.
+A CloudSimple szolgáltatás létrehozásához **tulajdonosi** vagy **közreműködői** szerepkörre van szükség az Azure-előfizetésben.  Alapértelmezés szerint minden tulajdonos és közreműködő létrehoz egy CloudSimple szolgáltatást, és hozzáfér a CloudSimple-portálhoz a privát felhők létrehozásához és kezeléséhez.  Régiónként csak egy CloudSimple szolgáltatás hozható létre.  Az adott rendszergazdák hozzáférésének korlátozásához kövesse az alábbi eljárást.
 
-1. CloudSimple szolgáltatás létrehozása új **erőforráscsoportban** az Azure Portalon
-2. Adja meg az Erőforráscsoport RBAC-át.
-3. Csomópontok vásárlása és a CloudSimple szolgáltatással megegyező erőforráscsoport használata
+1. CloudSimple-szolgáltatás létrehozása új **erőforráscsoport** Azure Portal
+2. RBAC megadása az erőforráscsoporthoz.
+3. Csomópontok megvásárlása és ugyanazt az erőforráscsoportot használja, mint a CloudSimple szolgáltatás
 
-Csak azok a felhasználók, akik **tulajdonosi** vagy **közreműködői** jogosultsággal rendelkeznek az erőforráscsoportban, láthatják a CloudSimple szolgáltatást, és elindítják a CloudSimple portált.
+Csak azok a felhasználók láthatják a CloudSimple szolgáltatást, akik **tulajdonosi** vagy **közreműködői** jogosultsággal rendelkeznek az erőforráscsoport számára, és elindítják a CloudSimple-portált.
 
-Az RBAC-ról további információt [a Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz](../role-based-access-control/overview.md)című témakörben talál.
+További információ a RBAC: [Mi az Azure-erőforrások szerepköralapú hozzáférés-vezérlése (RBAC)](../role-based-access-control/overview.md).
 
-## <a name="rbac-for-private-cloud-vcenter"></a>RBAC a privát felhőbeli vCenterhez
+## <a name="rbac-for-private-cloud-vcenter"></a>RBAC a saját felhőalapú vCenter
 
-Egy alapértelmezett `CloudOwner@cloudsimple.local` felhasználó jön létre a vCenter SSO-tartományban, amikor egy privát felhő jön létre.  A CloudOwner-felhasználó rendelkezik a vCenter kezelésével kapcsolatos jogosultságokkal. További identitásforrások kerülnek a vCenter SSO-hoz a különböző felhasználók számára való hozzáférés megadásához.  Előre definiált szerepkörök és csoportok vannak beállítva a vCenter, amely további felhasználók hozzáadására használható.
+A rendszer létrehoz `CloudOwner@cloudsimple.local` egy alapértelmezett felhasználót a vCenter SSO-tartományban a saját felhő létrehozásakor.  A CloudOwner-felhasználó jogosultságokkal rendelkezik a vCenter kezeléséhez. A rendszer további identitási forrásokat ad hozzá a vCenter SSO-hoz a különböző felhasználókhoz való hozzáférés biztosítása érdekében.  Az előre definiált szerepkörök és csoportok a vCenter vannak beállítva, amelyek további felhasználók hozzáadására használhatók.
 
-### <a name="add-new-users-to-vcenter"></a>Új felhasználók hozzáadása a vCenterhez
+### <a name="add-new-users-to-vcenter"></a>Új felhasználók hozzáadása a vCenter
 
-1. A **CloudOwner\@cloudsimple.local** felhasználó [jogosultságai nak eszkalálása](escalate-private-cloud-privileges.md) a magánfelhőben.
-2. Jelentkezzen be a vCenterbe a **CloudOwner\@cloudsimple.local** használatával
-3. [VCenter single sign-on felhasználók hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
-4. Felhasználók hozzáadása a [vCenter egyszeri bejelentkezési csoportjaihoz.](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)
+1. A **CloudOwner\@cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a **vCenter\@CloudOwner cloudsimple. local** használatával
+3. [VCenter egyszeri bejelentkezési felhasználók hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
+4. Felhasználók hozzáadása az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
-Az előre definiált szerepkörökről és csoportokról a [VMware vCenter-cikk Felhőegyszerű magánfelhő-engedélyezési modelljében](learn-private-cloud-permissions.md) olvashat bővebben.
+Az előre definiált szerepkörökkel és csoportokkal kapcsolatos további információkért lásd: [CloudSimple Private Cloud Permission Model of VMware vCenter](learn-private-cloud-permissions.md) cikk.
 
-### <a name="add-new-identity-sources"></a>Új identitásforrások hozzáadása
+### <a name="add-new-identity-sources"></a>Új Identity sources hozzáadása
 
-További identitásszolgáltatókat adhat hozzá a privát felhő vCenter-sSO-tartományához.  Az identitásszolgáltatók hitelesítést biztosítanak, a vCenter SSO-csoportok pedig engedélyezést a felhasználók számára.
+További identitás-szolgáltatókat is hozzáadhat a privát felhő vCenter SSO-tartományához.  Az identitás-szolgáltatók hitelesítési és vCenter SSO-csoportokat biztosítanak a felhasználók számára.
 
-* [Használja az Active Directoryt identitásszolgáltatóként](set-vcenter-identity.md) a Private Cloud vCenter szolgáltatásban.
-* [Az Azure AD használata identitásszolgáltatóként](azure-ad.md) a Private Cloud vCenter szolgáltatásban
+* A [Active Directory identitás-szolgáltatóként használhatja](set-vcenter-identity.md) a saját Felhőbeli vCenter.
+* Az [Azure ad használata identitás-szolgáltatóként](azure-ad.md) a saját felhőalapú vCenter
 
-1. A **CloudOwner\@cloudsimple.local** felhasználó [jogosultságai nak eszkalálása](escalate-private-cloud-privileges.md) a magánfelhőben.
-2. Jelentkezzen be a vCenterbe a **CloudOwner\@cloudsimple.local** használatával
-3. Az identitásszolgáltatóból felhasználókat vehet fel a [vCenter egyszeri bejelentkezési csoportjaiba.](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)
+1. A **CloudOwner\@cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a **vCenter\@CloudOwner cloudsimple. local** használatával
+3. Adja hozzá a felhasználókat az identitás-szolgáltatótól az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
-## <a name="secure-network-on-your-private-cloud-environment"></a>Biztonságos hálózat a privát felhőkörnyezetben
+## <a name="secure-network-on-your-private-cloud-environment"></a>Biztonságos hálózat a saját felhőalapú környezetében
 
-A privát felhőkörnyezet hálózati biztonságát a hálózati hozzáférés biztosítása és az erőforrások közötti hálózati forgalom szabályozása szabályozza.
+A privát felhőalapú környezet hálózati biztonságát a hálózati hozzáférés biztonságossá tétele és az erőforrások közötti hálózati forgalom szabályozása vezérli.
 
-### <a name="access-to-private-cloud-resources"></a>Hozzáférés a magánfelhő erőforrásaihoz
+### <a name="access-to-private-cloud-resources"></a>Hozzáférés a saját felhőalapú erőforrásokhoz
 
-A Private Cloud vCenter és az erőforrások elérése biztonságos hálózati kapcsolaton keresztül történik:
+A saját felhőalapú vCenter és erőforrásaihoz való hozzáférés biztonságos hálózati kapcsolaton keresztül történik:
 
-* **[ExpressRoute-kapcsolat](on-premises-connection.md)**. Az ExpressRoute biztonságos, nagy sávszélességű, alacsony késésű kapcsolatot biztosít a helyszíni környezetből.  A kapcsolat használata lehetővé teszi, hogy a helyszíni szolgáltatások, hálózatok és a felhasználók hozzáférjenek a Private Cloud vCenter.
-* **[Helyek közötti VPN-átjáró](vpn-gateway.md)**. A helyek közötti VPN hozzáférést biztosít a magánfelhő erőforrásaihoz a helyszíni biztonságos alagúton keresztül.  Megadhatja, hogy mely helyszíni hálózatok küldhetnek és fogadhatnak hálózati forgalmat a magánfelhőbe.
-* **[Pont-hely VPN átjáró](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)**. A point-to-site VPN-kapcsolat segítségével gyors távoli hozzáférést biztosít a privát felhőbeli vCenterhez.
+* **[ExpressRoute-kapcsolatok](on-premises-connection.md)**. A ExpressRoute biztonságos, nagy sávszélességű, kis késleltetésű kapcsolattal rendelkezik a helyszíni környezettől.  A kapcsolat lehetővé teszi, hogy a helyszíni szolgáltatások, hálózatok és felhasználók hozzáférjenek a saját Felhőbeli vCenter.
+* **[Helyek közötti VPN-átjáró](vpn-gateway.md)**. A helyek közötti VPN a biztonságos alagúton keresztül hozzáférést biztosít a saját felhőalapú erőforrásaihoz a helyszínen.  Megadhatja, hogy mely helyszíni hálózatok küldhetnek és fogadhatnak hálózati forgalmat a saját felhőbe.
+* **[Pont – hely típusú VPN-átjáró](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)**. Pont – hely VPN-kapcsolat használata a saját felhőalapú vCenter való gyors távoli hozzáféréshez.
 
-### <a name="control-network-traffic-in-private-cloud"></a>A hálózati forgalom szabályozása a magánfelhőben
+### <a name="control-network-traffic-in-private-cloud"></a>A hálózati forgalom vezérlése a privát felhőben
 
-A tűzfaltáblák és -szabályok szabályozzák a hálózati forgalmat a magánfelhőben.  A tűzfaltábla lehetővé teszi a forráshálózat vagy IP-cím, valamint a célhálózat vagy IP-cím közötti hálózati forgalom szabályozását a táblázatban meghatározott szabályok kombinációja alapján.
+A tűzfal táblái és szabályai vezérlik a hálózati forgalmat a privát felhőben.  A tűzfal tábla lehetővé teszi a hálózati forgalom vezérlését a forrásoldali hálózat vagy az IP-cím, valamint a célként megadott hálózat vagy IP-cím között a táblázatban meghatározott szabályok kombinációja alapján.
 
-1. [Tűzfaltábla](firewall.md#add-a-new-firewall-table)létrehozása .
-2. [Adjon hozzá szabályokat](firewall.md#create-a-firewall-rule) a tűzfaltáblához.
-3. [Tűzfaltábla csatolása VLAN/alhálózathoz](firewall.md#attach-vlans-subnet).
+1. Hozzon létre egy [Tűzfalszabály-táblázatot](firewall.md#add-a-new-firewall-table).
+2. [Szabályok hozzáadása](firewall.md#create-a-firewall-rule) a tűzfal táblához.
+3. [Tűzfal-tábla csatolása VLAN-hoz vagy alhálózathoz](firewall.md#attach-vlans-subnet).

@@ -1,36 +1,36 @@
 ---
 title: Azure Spring Cloud CI/CD GitHub-műveletekkel
-description: CI/CD-munkafolyamat kiépítése az Azure Spring Cloud számára a GitHub-műveletekkel
+description: CI/CD-munkafolyamatok létrehozása az Azure Spring Cloud-hoz a GitHub-műveletekkel
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77538464"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
-A GitHub-műveletek támogatják az automatizált szoftverfejlesztési életciklus-munkafolyamatot. Az Azure Spring Cloud hoz létre munkafolyamatokat a GitHub-műveletek az Azure Tavaszi Felhőhöz használatával munkafolyamatokat hozhat létre az Azure-ban, tesztelheti, csomagolhatja, felszabadíthatja és üzembe helyezheti az Azure-ban. 
+A GitHub-műveletek egy automatizált szoftverfejlesztési életciklus-munkafolyamatot támogatnak. Az Azure Spring Cloud GitHub-műveleteivel munkafolyamatokat hozhat létre a tárházban az Azure-ban történő létrehozásához, teszteléséhez, csomagolásához, kiadásához és üzembe helyezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben a példában az [Azure CLI.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+Ehhez a példához az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)szükséges.
 
-## <a name="set-up-github-repository-and-authenticate"></a>A GitHub-tárház beállítása és hitelesítése
-Az Azure bejelentkezési művelet engedélyezéséhez szüksége van egy Azure-szolgáltatás elvi hitelesítő adataira. Azure-hitelesítő adatok beszerezéséhez hajtsa végre a következő parancsokat a helyi számítógépen:
+## <a name="set-up-github-repository-and-authenticate"></a>GitHub-adattár beállítása és hitelesítése
+Az Azure bejelentkezési műveletének engedélyezéséhez Azure-szolgáltatási elv szükséges. Azure-beli hitelesítő adatok beszerzéséhez hajtsa végre a következő parancsokat a helyi gépen:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
-Egy adott erőforráscsoporthoz való hozzáféréshez csökkentheti a hatókört:
+Egy adott erőforráscsoport eléréséhez csökkentheti a hatókört:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
-A parancsnak JSON-objektumot kell kiadnia:
+A parancsnak egy JSON-objektumot kell kiadnia:
 ```JSON
 {
     "clientId": "<GUID>",
@@ -41,31 +41,31 @@ A parancsnak JSON-objektumot kell kiadnia:
 }
 ```
 
-Ez a példa a [Piggy metrikák](https://github.com/Azure-Samples/piggymetrics) mintát használja a GitHubon.  Elágazás, nyissa meg a GitHub-tárház lapját, és kattintson a **Beállítások** fülre. **Titkok** megnyitása menüben kattintson **az Új titkos adat hozzáadása**parancsra:
+Ez a példa a [Piggy metrikai](https://github.com/Azure-Samples/piggymetrics) mintát használja a githubon.  Elágazás a minta, nyissa meg a GitHub-adattár lapot, majd kattintson a **Beállítások** fülre. Nyissa meg a **titkok** menüt, és kattintson **az új titkos kulcs hozzáadása**lehetőségre:
 
- ![Új titkos titok hozzáadása](./media/github-actions/actions1.png)
+ ![Új titok hozzáadása](./media/github-actions/actions1.png)
 
-Állítsa be a `AZURE_CREDENTIALS` titkos nevet, és annak értékét a JSON-karakterláncra, amelyet a *GitHub-tárház beállítása és hitelesítés*i do-cím alatt talált.
+Állítsa be a titkos nevet `AZURE_CREDENTIALS` és annak értékét a *GitHub-tárház beállítása és hitelesítése*fejléc alatt található JSON-karakterláncra.
 
- ![Titkos adatok beállítása](./media/github-actions/actions2.png)
+ ![Titkos adatértékek beállítása](./media/github-actions/actions2.png)
 
-Az Azure-bejelentkezési hitelesítő adatokat a Key Vault ból is beszerezheti a GitHub-műveletekben az [Azure Spring hitelesítése a Key Vaultsegítségével a GitHub-műveletekben](./spring-cloud-github-actions-key-vault.md)című részében leírtak szerint.
+Azt is megteheti, hogy az Azure-beli bejelentkezési hitelesítő adatokat Key Vault a GitHub-műveletekben, ahogy az az [Azure Spring hitelesítése Key Vault a GitHub-műveletekben](./spring-cloud-github-actions-key-vault.md).
 
-## <a name="provision-service-instance"></a>Szolgáltatáspéldány kiépítése
-Az Azure Spring Cloud szolgáltatáspéldány kiépítéséhez futtassa a következő parancsokat az Azure CLI használatával.
+## <a name="provision-service-instance"></a>Szolgáltatási példány kiépítése
+Az Azure Spring Cloud Service-példány kiépítéséhez futtassa az alábbi parancsokat az Azure CLI használatával.
 ```
 az extension add --name spring-cloud
 az group create --location eastus --name <resource group name>
 az spring-cloud create -n <service instance name> -g <resource group name>
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/piggymetrics --label config
 ```
-## <a name="build-the-workflow"></a>A munkafolyamat létrehozása
+## <a name="build-the-workflow"></a>A munkafolyamat összeállítása
 A munkafolyamat a következő beállításokkal van definiálva.
 
-### <a name="prepare-for-deployment-with-azure-cli"></a>Felkészülés az Azure CLI-vel való telepítésre
-A `az spring-cloud app create` parancs jelenleg nem idempotens.  Ezt a munkafolyamatot a meglévő Azure Spring Cloud-alkalmazások és-példányok esetén javasoljuk.
+### <a name="prepare-for-deployment-with-azure-cli"></a>Felkészülés az Azure CLI-vel való üzembe helyezésre
+A parancs `az spring-cloud app create` jelenleg nem idempotens.  Ezt a munkafolyamatot a meglévő Azure Spring Cloud-alkalmazásokon és-példányokon ajánljuk.
 
-A következő Azure CLI-parancsok at használhatja az előkészítéshez:
+Az előkészítéshez használja az alábbi Azure CLI-parancsokat:
 ```
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
@@ -74,8 +74,8 @@ az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
 
-### <a name="deploy-with-azure-cli-directly"></a>Üzembe helyezés közvetlenül az Azure CLI-vel
-Hozza `.github/workflow/main.yml` létre a fájlt a tárházban:
+### <a name="deploy-with-azure-cli-directly"></a>Üzembe helyezés az Azure CLI-vel közvetlenül
+Hozza létre `.github/workflow/main.yml` a fájlt a tárházban:
 
 ```
 name: AzureSpringCloud
@@ -117,13 +117,13 @@ jobs:
         az spring-cloud app deploy -n account-service --jar-path ${{ github.workspace }}/account-service/target/account-service.jar
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
-### <a name="deploy-with-azure-cli-action"></a>Üzembe helyezés az Azure CLI művelettel
-Az `run` az parancs az Azure CLI legújabb verzióját fogja használni. Ha vannak törésmódosítások, az Azure CLI egy adott verzióját is `action`használhatja az azure/CLI-vel. 
+### <a name="deploy-with-azure-cli-action"></a>Üzembe helyezés az Azure CLI-vel művelettel
+Az az `run` parancs az Azure CLI legújabb verzióját fogja használni. A változtatások megszakításakor az Azure CLI egy adott verzióját is használhatja az Azure/CLI `action`-vel. 
 
 > [!Note] 
-> Ez a parancs egy új `env` tárolóban fog futni, így nem fog működni, és a keresztműveletfájlok hoz való hozzáférés további korlátozásokkal rendelkezhet.
+> Ez a parancs egy új tárolóban fog futni, `env` ezért nem fog működni, és a Többműveletes fájlhoz való hozzáférés további korlátozásokkal rendelkezhet.
 
-Hozza létre a .github/workflow/main.yml fájlt a tárházban:
+Hozza létre a. GitHub/munkafolyamat/Main. YML fájlt az adattárban:
 ```
 name: AzureSpringCloud
 on: push
@@ -163,7 +163,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Üzembe helyezés a Maven beépülő modullal
-Egy másik lehetőség a [Maven Plugin](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) használata a Jar telepítéséhez és az alkalmazásbeállítások frissítéséhez. A `mvn azure-spring-cloud:deploy` parancs idempotens, és szükség esetén automatikusan létrehozza az alkalmazásokat. Nem kell előre létrehoznia a megfelelő alkalmazásokat.
+Egy másik lehetőség, hogy a [Maven beépülő modult](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) használja a jar üzembe helyezéséhez és az alkalmazás beállításainak frissítéséhez. A parancs `mvn azure-spring-cloud:deploy` idempotens, és szükség esetén automatikusan hozza létre az alkalmazásokat. Nem kell előre létrehoznia a megfelelő alkalmazásokat.
 
 ```
 name: AzureSpringCloud
@@ -198,17 +198,17 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>A munkafolyamat futtatása
-A GitHub-műveleteket automatikusan `.github/workflow/main.yml` engedélyezni kell, miután leküldéses A GitHub. **Actions** A művelet akkor aktiválódik, amikor új véglegesítést kezdeményez. Ha ezt a fájlt a böngészőben hozza létre, a műveletnek már futnia kellett volna.
+A GitHub- **műveleteket** automatikusan engedélyezni kell a githubra való leküldés `.github/workflow/main.yml` után. A művelet akkor aktiválódik, amikor új véglegesítet küld. Ha ezt a fájlt a böngészőben hozza létre, a műveletnek már futnia kell.
 
-Annak ellenőrzéséhez, hogy a művelet engedélyezve van-e, kattintson a GitHub-tárház lapján a **Műveletek** fülre:
+Annak ellenőrzéséhez, hogy engedélyezve van-e a művelet, kattintson a **műveletek** fülre a GitHub-adattár lapon:
 
- ![Engedélyezett művelet ellenőrzése](./media/github-actions/actions3.png)
+ ![A művelet engedélyezésének ellenőrzése](./media/github-actions/actions3.png)
 
-Ha a művelet hibásan fut, például ha nem állította be az Azure hitelesítő adatait, a hiba kijavítása után újra futtathatja az ellenőrzéseket. A GitHub-tárház lapján kattintson a **Műveletek**elemre, jelölje ki az adott munkafolyamat-feladatot, majd kattintson a **csekkek újrafuttatása** gombra az ellenőrzések újbóli futtatásához:
+Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli hitelesítő adatokat, akkor a hiba kijavítása után újrafuttathatja az ellenőrzéseket. A GitHub-adattár lapon kattintson a **műveletek**elemre, jelölje ki az adott munkafolyamat-feladatot, majd kattintson az **ellenőrzések újrafuttatása** gombra az ellenőrzések újrafuttatásához:
 
- ![Ellenőrzések ismétlése](./media/github-actions/actions4.png)
+ ![Ellenőrzések újrafuttatása](./media/github-actions/actions4.png)
 
 ## <a name="next-steps"></a>További lépések
-* [Key Vault a tavaszi felhőbeli GitHub-műveletekhez](./spring-cloud-github-actions-key-vault.md)
-* [Az Azure Active Directory egyszerű szolgáltatásai](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Key Vault a Spring Cloud GitHub-műveletekhez](./spring-cloud-github-actions-key-vault.md)
+* [Azure Active Directory egyszerű szolgáltatások](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub-műveletek az Azure-hoz](https://github.com/Azure/actions/)

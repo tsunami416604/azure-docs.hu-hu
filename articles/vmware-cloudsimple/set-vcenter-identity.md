@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – VCenter-identitásforrások beállítása magánfelhőben
-description: A szolgáltatás azt ismerteti, hogy miként állítható be a Private Cloud vCenter az Active Directory a VMware-rendszergazdák számára a vCenter eléréséhez való hitelesítéshez
+title: Azure VMware-megoldás CloudSimple – vCenter-identitások beállítása a privát felhőben
+description: Ismerteti, hogyan állítható be a saját Felhőbeli vCenter a vCenter való Active Directory hitelesítéshez a VMware-rendszergazdák számára a eléréséhez
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,125 +9,125 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564023"
 ---
-# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitásforrások beállítása az Active Directory használatára
+# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
-## <a name="about-vmware-vcenter-identity-sources"></a>A VMware vCenter identitásforrásai
+## <a name="about-vmware-vcenter-identity-sources"></a>A VMware vCenter Identity sources
 
-A VMware vCenter különböző identitásforrásokat támogat a vCenterhez hozzáférő felhasználók hitelesítéséhez.  A CloudSimple Private Cloud vCenter beállítható úgy, hogy hitelesítse magát az Active Directoryval a VMware-rendszergazdák számára a vCenter eléréséhez. Ha a telepítés befejeződött, a **felhőtulajdonos** felhasználó hozzáadhat felhasználókat az identitásforrásból a vCenterhez.  
+A VMware vCenter a vCenter-hez hozzáférő felhasználók hitelesítéséhez különböző identitás-forrásokat támogat.  A CloudSimple saját Felhőbeli vCenter úgy is beállítható, Active Directory hogy a VMware-rendszergazdák hozzáférhessenek a vCenter. Ha a telepítés befejeződött, a **cloudowner** felhasználó hozzáadhat felhasználókat az Identity forrásból a vCenter.  
 
-Az Active Directory tartományt és a tartományvezérlőket az alábbi módokon állíthatja be:
+A Active Directory tartománya és tartományvezérlői a következő módokon állíthatók be:
 
-* A helyszínen futó Active Directory-tartomány és tartományvezérlők
-* Az Azure-on virtuális gépként futó Active Directory-tartomány- és tartományvezérlők az Azure-előfizetésben
-* A magánfelhőben futó új Active Directory-tartomány és tartományvezérlők
+* A helyszínen futó tartomány-és tartományvezérlők Active Directory
+* Az Azure-ban virtuális gépekként működő tartomány-és tartományvezérlők Active Directory Azure-előfizetésében
+* A saját felhőben futó új Active Directory tartomány és tartományvezérlők
 * Azure Active Directory szolgáltatás
 
-Ez az útmutató ismerteti az Active Directory-tartomány és a helyszíni vagy virtuális gépként az előfizetésekben futó tartományvezérlők beállításának feladatait.  Ha az Azure AD-t szeretné identitásforrásként használni, tekintse meg az [Azure AD használata a vCenter identitásszolgáltatójaként a CloudSimple private cloud szolgáltatásban](azure-ad.md) című részletes útmutatást az identitásforrás beállításához.
+Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tartomány és tartományvezérlők állíthatók be a helyszíni vagy virtuális gépeken az előfizetésekben.  Ha az Azure AD-t identitás forrásaként szeretné használni, tekintse [meg az Azure ad-t identitás-szolgáltatóként a CloudSimple privát felhőben történő vCenter](azure-ad.md) című témakört, amely részletes útmutatást nyújt az Identity Source beállításához.
 
-[Identitásforrás hozzáadása](#add-an-identity-source-on-vcenter)előtt ideiglenesen [bővítse a vCenter-jogosultságokat.](escalate-private-cloud-privileges.md)
+[Az Identity forrás hozzáadása előtt átmenetileg megnövelheti](#add-an-identity-source-on-vcenter) [a vCenter-jogosultságokat](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Új felhasználókat csak a *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* vagy *cloud-global-vm-admin-group csoporthoz*kell hozzáadni.  A *Rendszergazdák* csoportba hozzáadott felhasználók automatikusan törlődnek.  Csak a szolgáltatásfiókokat kell hozzáadni *a Rendszergazdák* csoporthoz, és a szolgáltatásfiókok nem használhatók a vSphere webes felhasználói felületére való bejelentkezéshez.   
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.   
 
 
-## <a name="identity-source-options"></a>Identitásforrás-beállítások
+## <a name="identity-source-options"></a>Személyazonossági forrás beállításai
 
-* [Helyszíni Active Directory hozzáadása egyetlen bejelentkezési identitásforrásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [Új Active Directory beállítása magánfelhőben](#set-up-new-active-directory-on-a-private-cloud)
-* [Az Active Directory beállítása az Azure-ban](#set-up-active-directory-on-azure)
+* [Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
+* [Új Active Directory beállítása privát felhőben](#set-up-new-active-directory-on-a-private-cloud)
+* [Active Directory beállítása az Azure-ban](#set-up-active-directory-on-azure)
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitásforrásként
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként
 
-Ha a helyszíni Active Directoryt egyetlen bejelentkezési identitásforrásként szeretné beállítani, a következőkre van szükség:
+Ha a helyszíni Active Directory egyszeri bejelentkezési identitás forrásaként szeretné beállítani, a következőkre lesz szüksége:
 
-* [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni adatközpontból a magánfelhőbe.
-* A helyszíni DNS-kiszolgáló IP-címe hozzáadva a vCenter és a Platform Services Controller (PSC) szolgáltatáshoz.
+* [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni adatközpontból a saját felhőbe.
+* A helyszíni DNS-kiszolgáló IP-címe a vCenter és a platform Services-vezérlőhöz (PSC) lett hozzáadva.
 
-Az Active Directory-tartomány beállításakor használja az alábbi táblázatban található információkat.
+A Active Directory tartományának beállításakor használja az alábbi táblázatban szereplő információkat.
 
 | **Beállítás** | **Leírás** |
 |------------|-----------------|
-| **Név** | Az identitásforrás neve. |
-| **Alap DN felhasználók számára** | A felhasználók megkülönböztető neve. |
-| **Tartománynév** | A tartomány teljes tartományszáma, például example.com. Ebben a szövegmezőben ne adjon meg IP-címet. |
-| **Tartomány aliasa** | A tartomány NetBIOS-neve. SSPI-hitelesítések használata esetén adja hozzá az Active Directory tartomány NetBIOS-nevét az identitásforrás aliasaként. |
-| **Csoportok alap DN-jén** | A csoportok alap megkülönböztető neve. |
-| **Elsődleges kiszolgáló URL-címe** | Elsődleges tartományvezérlő LDAP-kiszolgálója a tartományhoz.<br><br>Használja a `ldap://hostname:port`  `ldaps://hostname:port`formátumot vagy a lehetőséget. A port általában 389 LDAP-kapcsolatok és 636 LDAPS kapcsolatok. Az Active Directory többtartományvezérlős telepítései esetén a port általában 3268 ldap és 3269 LDAPS esetén.<br><br>Az elsődleges vagy másodlagos LDAP-URL-címhez való használathoz olyan `ldaps://` tanúsítvány szükséges, amely megbízhatóságot hoz létre az Active Directory-kiszolgáló LDAPS-végpontja számára. |
-| **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlő LDAP-kiszolgálójának címe. |
-| **Tanúsítvány kiválasztása** | Ha az LDAPS-t az Active Directory LDAP-kiszolgálóval vagy az OpenLDAP-kiszolgáló `ldaps://` identitásforrásával szeretné használni, az URL-szövegmezőbe történő beírás után megjelenik a Tanúsítvány kiválasztása gomb. Másodlagos URL-cím nem szükséges. |
-| **Felhasználónév** | A tartomány azon felhasználójának azonosítója, aki legalább írásvédett hozzáféréssel rendelkezik a felhasználók és csoportok alap dn-jéhez. |
+| **Név** | Az Identity forrás neve. |
+| **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve. |
+| **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
+| **Tartomány aliasa** | A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
+| **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. |
+| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot `ldap://hostname:port` használja `ldaps://hostname:port`. A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az elsődleges vagy másodlagos LDAP URL-cím használata `ldaps://` esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+| **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
+| **Tanúsítvány kiválasztása** | Ha LDAPS-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor az URL-cím `ldaps://` szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+| **Username** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
-Ha rendelkezik az előző táblában szereplő adatokkal, hozzáadhatja a helyszíni Active Directoryt egyetlen bejelentkezési identitásforrásként a vCenteren.
+Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active Directory egyszeri bejelentkezési identitásként adhatja hozzá a vCenter-on.
 
 > [!TIP]
-> Az egyszeri bejelentkezés identitásforrásairól a [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)talál további információt.
+> A [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)találhat további információt az egyszeri bejelentkezési azonosítók forrásairól.
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Új Active Directory beállítása magánfelhőben
+## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Új Active Directory beállítása privát felhőben
 
-Beállíthat egy új Active Directory-tartományt a magánfelhőben, és használhatja azt az egyszeri bejelentkezés identitásforrásaként.  Az Active Directory tartomány lehet egy meglévő Active Directory-erdő része, vagy független erdőként is beállítható.
+Beállíthat egy új Active Directory tartományt a saját felhőben, és használhatja az egyszeri bejelentkezéshez használt identitási forrásként.  A Active Directory tartomány lehet egy meglévő Active Directory erdő része, vagy önálló erdőként is beállítható.
 
 ### <a name="new-active-directory-forest-and-domain"></a>Új Active Directory erdő és tartomány
 
-Új Active Directory erdő és tartomány beállításához a következőkre van szükség:
+Új Active Directory erdő és tartomány beállításához a következők szükségesek:
 
-* Egy vagy több, Microsoft Windows Server rendszert futtató virtuális gép az új Active Directory erdő és tartomány tartományvezérlőjeként való használatra.
-* Egy vagy több, DNS-szolgáltatást futtató virtuális gép névfeloldásra.
+* Egy vagy több, a Microsoft Windows Servert futtató virtuális gép tartományvezérlőként való használatára az új Active Directory erdő és tartomány számára.
+* Egy vagy több DNS-szolgáltatást futtató virtuális gép névfeloldáshoz.
 
-A részletes lépésekről a [Windows Server 2012 Active Directory erdő telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) című témakörben található.
+A részletes lépésekért lásd: [új Windows Server 2012 Active Directory erdő telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
 
 > [!TIP]
-> A szolgáltatások magas rendelkezésre állása érdekében azt javasoljuk, hogy több tartományvezérlőt és DNS-kiszolgálót is be kell jelölni.
+> A szolgáltatások magas rendelkezésre állása érdekében ajánlott több tartományvezérlő és DNS-kiszolgáló beállítása.
 
-Az Active Directory erdő és tartomány beállítása után [hozzáadhat egy identitásforrást az](#add-an-identity-source-on-vcenter) új Active Directory vCenter szolgáltatásához.
+A Active Directory erdő és tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter az azonosítóhoz](#add-an-identity-source-on-vcenter) .
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Új Active Directory-tartomány meglévő Active Directory-erdőben
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Új Active Directory tartomány egy meglévő Active Directory erdőben
 
-Ha új Active Directory-tartományt szeretne beállítani egy meglévő Active Directory-erdőben, a következőkre van szükség:
+Új Active Directory tartomány meglévő Active Directory erdőben való beállításához a következőkre lesz szüksége:
 
-* Helyek közötti VPN-kapcsolat az Active Directory erdőhelyével.
-* DNS-kiszolgáló a meglévő Active Directory-erdő nevének feloldásához.
+* Helyek közötti VPN-kapcsolat a Active Directory erdő helyére.
+* DNS-kiszolgáló a meglévő Active Directory erdő nevének feloldásához.
 
-A részletes lépésekről a [Windows Server 2012 Active Directory gyermek- vagy fatartományának telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) című témakörben található.
+A részletes lépésekért lásd: [új Windows Server 2012 Active Directory gyermek-vagy fatartomány telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
-Az Active Directory tartomány beállítása után [hozzáadhat egy identitásforrást az](#add-an-identity-source-on-vcenter) új Active Directory vCenter szolgáltatásához.
+A Active Directory tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter az identitás forrásához](#add-an-identity-source-on-vcenter) .
 
-## <a name="set-up-active-directory-on-azure"></a>Az Active Directory beállítása az Azure-ban
+## <a name="set-up-active-directory-on-azure"></a>Active Directory beállítása az Azure-ban
 
-Az Azure-ban futó Active Directory hasonló a helyszíni futó Active Directoryhoz.  Az Active Directory azure-beli futtatásához egyetlen bejelentkezési identitásforrásként a vCenter-en, a vCenter-kiszolgáló és a PSC hálózati kapcsolattal kell rendelkeznie az Azure virtuális hálózathoz, ahol az Active Directory-szolgáltatások futnak.  Ezt a kapcsolatot az Azure virtuális hálózati kapcsolat használatával az [ExpressRoute használatával](azure-expressroute-connection.md) hozhatja létre az Azure virtuális hálózatáról, ahol az Active Directory-szolgáltatások a CloudSimple private cloud szolgáltatásra futnak.
+Az Azure-on futó Active Directory hasonló a helyileg futó Active Directoryhoz.  Ha az Azure-ban futó Active Directoryt egyszeri bejelentkezési vCenter szeretné beállítani, akkor a vCenter-kiszolgálónak és a PSC-nek hálózati kapcsolattal kell rendelkeznie az Azure Virtual Network, ahol Active Directory szolgáltatások futnak.  Ezt a kapcsolatot az [azure Virtual Network kapcsolattal](azure-expressroute-connection.md) is létrehozhatja az Azure Virtual Network ExpressRoute használatával, ahol Active Directory szolgáltatások futnak a CloudSimple.
 
-A hálózati kapcsolat létrejötte után kövesse a [Helyszíni Active Directory hozzáadása egyetlen bejelentkezési identitásforrásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című, a helyszíni bejelentkezési azonosító forrásként című részben leírt lépéseket, és adja hozzá identitásforrásként.  
+A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Directory hozzáadása egyszeri bejelentkezési identitásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című témakör lépéseit, és adja hozzá az azonosító forrásként.  
 
-## <a name="add-an-identity-source-on-vcenter"></a>Identitásforrás hozzáadása a vCenteren
+## <a name="add-an-identity-source-on-vcenter"></a>Identity forrás hozzáadása a vCenter
 
-1. [A jogosultságok továbbmélyítése](escalate-private-cloud-privileges.md) a privát felhőben.
+1. Adja meg a [jogosultságokat](escalate-private-cloud-privileges.md) a saját felhőben.
 
-2. Jelentkezzen be a privát felhőhöz való vCenterbe.
+2. Jelentkezzen be a vCenter a saját felhőbe.
 
-3. Válassza **a Kezdőlap > felügyelet lehetőséget.**
+3. Válassza a **kezdőlap > felügyelet**lehetőséget.
 
-    ![Adminisztráció](media/OnPremAD01.png)
+    ![Felügyelet](media/OnPremAD01.png)
 
-4. Válassza **az Egyszeri bejelentkezés > konfiguráció lehetőséget.**
+4. Válassza **az egyszeri bejelentkezés > konfiguráció**lehetőséget.
 
     ![Egyszeri bejelentkezés](media/OnPremAD02.png)
 
-5. Nyissa **meg** az Identitásforrások **+** lapot, és kattintson ide egy új identitásforrás hozzáadásához.
+5. Nyissa meg az **Identity sources** fület, és kattintson rá **+** egy új Identity forrás hozzáadásához.
 
-    ![Identitásforrások](media/OnPremAD03.png)
+    ![Azonosító források](media/OnPremAD03.png)
 
-6. Válassza az **Active Directory LDAP-kiszolgálóként** lehetőséget, majd kattintson a **Tovább**gombra.
+6. Válassza ki a **Active Directory LDAP-kiszolgálóként** , majd kattintson a **tovább**gombra.
 
     ![Active Directory](media/OnPremAD04.png)
 
-7. Adja meg a környezet identitásforrás-paramétereit, majd kattintson a **Tovább**gombra.
+7. Adja meg a környezet Identity Source paramétereit, majd kattintson a **tovább**gombra.
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. Tekintse át a beállításokat, és kattintson a **Befejezés gombra.**
+8. Tekintse át a beállításokat, majd kattintson a **Befejezés**gombra.

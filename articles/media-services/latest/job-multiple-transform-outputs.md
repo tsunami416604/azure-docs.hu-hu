@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-feladat létrehozása több átalakítási kimenettel
-description: Ez a témakör bemutatja, hogyan hozhat létre egy Azure Media Services-feladatot több átalakítási kimenettel.
+title: Azure Media Services-feladatok létrehozása több átalakító kimenettel
+description: Ez a témakör bemutatja, hogyan hozhat létre több átalakítási kimenettel rendelkező Azure Media Services feladatot.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
 ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77563140"
 ---
-# <a name="create-a-job-with-multiple-transform-outputs"></a>Több átalakítási kimenettel rendelkező feladat létrehozása
+# <a name="create-a-job-with-multiple-transform-outputs"></a>Több átalakítási kimenettel rendelkező feladatok létrehozása
 
-Ez a témakör bemutatja, hogyan hozhat létre átalakítást két átalakítási kimenettel. Az első azt kéri, hogy a bemenetet adaptív sávszélességű streameléshez kell kódolni egy beépített [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) készlettel. A második kéri, hogy a bemeneti videóban lévő hangjelet az [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)segítségével dolgozzák fel. Az átalakítás létrehozása után elküldhetsz egy feladatot, amely ennek megfelelően dolgozza fel a videót. Mivel ebben a példában két átalakítási kimenetet adunk meg, két feladatkimenetet kell megadnunk. Választhat, hogy mindkét projektkimenetet ugyanarra az eszközre irányítja (ahogy az alább látható), vagy az eredményeket külön eszközökbe írhatja.
+Ez a témakör bemutatja, hogyan hozhat létre átalakítót két átalakítási kimenettel. Az első azt kéri, hogy a rendszer kódolja a bemenetet adaptív sávszélességű adatfolyamként egy beépített [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) -készlettel. A második egy a bemeneti videóban lévő hangjelzést hívja fel a [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)való feldolgozásra. Az átalakítás létrehozása után elküldheti azt a feladatot, amely ennek megfelelően dolgozza fel a videót. Mivel ebben a példában két átalakítási kimenetet adunk meg, két feladatot kell megadnia. Dönthet úgy is, hogy a feladatok kimenetét ugyanarra az objektumra irányítja (az alább látható módon), vagy az eredményeket külön egységekre is kiírja.
  
 
 > [!TIP]
-> A fejlesztés megkezdése előtt tekintse át [a Fejlesztés a Media Services v3 API-jával](media-services-apis-overview.md) című irányelveket (beleértve az API-k elérésére, elnevezési konvenciókra stb.)
+> A fejlesztés megkezdése előtt tekintse át [az Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztést (az API-k elérésére vonatkozó információkat, elnevezési konvenciókat stb.).
 
 ## <a name="create-a-transform"></a>Átalakítás létrehozása
 
-A következő kód bemutatja, hogyan hozhat létre egy átalakító, amely két kimenetet hoz létre.
+A következő kód bemutatja, hogyan hozhat létre olyan átalakítást, amely két kimenetet állít elő.
 
 ```csharp
 private static async Task<Transform> GetOrCreateTransformAsync(
@@ -65,9 +65,9 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
-## <a name="submit-a-job"></a>Feladat beküldése
+## <a name="submit-a-job"></a>Feladatok elküldése
 
-Hozzon létre egy feladatot egy HTTPS URL-bemenettel és két feladat kimenettel.
+Hozzon létre egy feladatot egy HTTPS URL-címmel, és két feladatból álló kimenettel.
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -131,8 +131,8 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 ```
 ## <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [Hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Media Services v3-as mintái a .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 
+[Azure Media Services v3-minták .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

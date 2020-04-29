@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368133"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták
@@ -26,7 +26,7 @@ Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban
 
 1. Készítse elő a .CSV-fájlt. Hozzon létre egy új CSV-fájlt, és adja neki az „invitations.csv” nevet. Ebben a példában a fájlt a C:\Data helyre mentjük, és a következő információkat tartalmazza:
   
-   Név                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
+   Name (Név)                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
    --------------------- | --------------------------
    Gmail B2B Invitee (Gmail B2B meghívott személy)     | b2binvitee@gmail.com
    Outlook B2B Invitee (Outlook B2B meghívott személy)   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ Ez a parancsmag meghívót küld az invitations.csv fájlban szereplő e-mail-c�
 - Üzenetek küldése másolat címzettjeinek vagy minden e-mail-üzenet blokkolása
 
 ## <a name="code-sample"></a>Kódminta
-Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mail http-ügyféllel is összeáll, így testre szabhatja a megjelenését, és elküldheti a Microsoft Graph API-n keresztül.
+Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mailek HTTP-ügyféllel is összeállíthatók, így testre szabhatja az Microsoft Graph API-val való megjelenését és küldését.
 
 ```csharp
 namespace SampleInviteApp

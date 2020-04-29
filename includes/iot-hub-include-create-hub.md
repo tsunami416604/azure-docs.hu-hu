@@ -9,59 +9,59 @@ ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77461861"
 ---
-Ez a szakasz bemutatja, hogyan hozhat létre egy IoT-központot az [Azure Portal](https://portal.azure.com)használatával.
+Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Az Azure kezdőlapján válassza a **+ Erőforrás létrehozása** gombot, majd írja be az *IoT Hub* kifejezést a **Piactér keresése** mezőben.
+1. Az Azure kezdőlapján kattintson a **+ erőforrás létrehozása** gombra, majd írja be a *IoT hub* **kifejezést a keresés a piactéren** mezőbe.
 
-1. Válassza az **IoT Hub** elemet a keresési eredmények között, majd válassza a **Létrehozás gombot.**
+1. Válassza a **IoT hub** elemet a keresési eredmények közül, majd válassza a **Létrehozás**lehetőséget.
 
-1. Az **Alapok** lapon töltse ki a mezőket az alábbiak szerint:
+1. Az **alapvető beállítások** lapon végezze el a következő mezőket:
 
-   - **Előfizetés**: Válassza ki a hubhoz használandó előfizetést.
+   - **Előfizetés**: válassza ki a hubhoz használni kívánt előfizetést.
 
-   - **Erőforráscsoport**: Jelöljön ki egy erőforráscsoportot, vagy hozzon létre egy újat. Új létrehozása, válassza **az Új létrehozása** és töltse ki a kívánt nevet. Meglévő erőforráscsoport használatához jelölje ki az adott erőforráscsoportot. További információt az [Azure Resource Manager erőforráscsoportok kezelése](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)című témakörben talál.
+   - **Erőforráscsoport**: válasszon ki egy erőforráscsoportot, vagy hozzon létre újat. Új létrehozásához válassza az **új létrehozása** elemet, és adja meg a használni kívánt nevet. Meglévő erőforráscsoport használatához válassza ki az erőforráscsoportot. További információ: [Azure Resource Manager erőforráscsoportok kezelése](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   - **Régió**: Válassza ki azt a régiót, amelyben a hubot el szeretné helyezni. Válassza ki az Önhöz legközelebb eső helyet. Egyes funkciók, például [az IoT Hub eszközstreamek](../articles/iot-hub/iot-hub-device-streams-overview.md), csak bizonyos régiókban érhetők el. Ezekhez a korlátozott funkciókhoz ki kell választania a támogatott régiók egyikét.
+   - **Régió**: válassza ki azt a régiót, amelyben el szeretné helyezni a hubot. Válassza ki az Önhöz legközelebb eső helyet. Egyes szolgáltatások, például az [IoT hub-adatfolyamok](../articles/iot-hub/iot-hub-device-streams-overview.md), csak bizonyos régiókban érhetők el. Ezen korlátozott funkciók esetében ki kell választania a támogatott régiók egyikét.
 
-   - **IoT Hub-név:** Adja meg a hub nevét. A névnek globálisan egyedinek kell lennie. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
+   - **IoT hub neve**: adja meg a hub nevét. A névnek globálisan egyedinek kell lennie. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Hub létrehozása az Azure Portalon](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   ![Hub létrehozása a Azure Portalban](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
-1. Válassza a **Tovább: Méret és méretezés** a hub létrehozásának folytatásához.
+1. Válassza a **Next (tovább): méret és méretezés** lehetőséget a központ létrehozásának folytatásához.
 
-   ![Új központ méretének és méretezésének beállítása az Azure Portal használatával](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   ![Egy új hub méretének és méretezésének beállítása a Azure Portal használatával](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-   Itt elfogadhatja az alapértelmezett beállításokat. Ha szükséges, az alábbi mezők bármelyikét módosíthatja: 
+   Itt elfogadhatja az alapértelmezett beállításokat. Ha szükséges, a következő mezők bármelyikét módosíthatja: 
 
-    - **Díjszabási és méretezési szint:** A kiválasztott szint. Több szint közül választhat, attól függően, hogy hány szolgáltatást szeretne, és naponta hány üzenetet küld a megoldáson keresztül. Az ingyenes szint tesztelésre és értékelésre szolgál. Lehetővé teszi 500 eszköz csatlakoztatását a hubhoz, és akár 8000 üzenetet naponta. Minden Azure-előfizetés létrehozhat egy IoT-központot az ingyenes csomagban. 
+    - **Díjszabás és méretezési szintek**: a kiválasztott csomag. Számos különböző szinten választhat, attól függően, hogy hány szolgáltatást szeretne, és hány üzenetet küld naponta a megoldáson keresztül. Az ingyenes szintet tesztelésre és kiértékelésre tervezték. Lehetővé teszi, hogy a 500-es eszközök naponta és legfeljebb 8 000 üzenetet csatlakoztassanak az elosztóhoz. Az egyes Azure-előfizetések az ingyenes szinten hozhatnak létre egy IoT hubot. 
 
-      Ha az IoT Hub-eszközstreamek rövid útmutatójában dolgozik, válassza ki az ingyenes szintet.
+      Ha IoT Hub-adatfolyamok számára készült rövid útmutatóban dolgozik, válassza az ingyenes szintet.
 
-    - **IoT Hub-egységek:** Az egy egységenként naponta engedélyezett üzenetek száma a központ tarifacsomagjátatól függ. Ha például azt szeretné, hogy a hub 700 000 üzenet be- és be- és be- és be- és be- és be- és be- és be- és átszállását támogassa, két S1-szintegységet kell választania.
-    A többi rétegbeállításokkal kapcsolatos további részletekért [olvassa el a megfelelő IoT Hub-szint kiválasztása című témakört.](../articles/iot-hub/iot-hub-scaling.md)
+    - **IoT hub egységek**: a napi egységenként engedélyezett üzenetek száma a központ díjszabási szintjétől függ. Ha például azt szeretné, hogy a központ támogassa a 700 000-es bejövő üzeneteket, két S1 szintű egységet választ.
+    További információ a többi lehetőségről: [a megfelelő IoT hub](../articles/iot-hub/iot-hub-scaling.md)-szinten való választás.
 
-    - **Azure Security Center:** Kapcsolja be ezt, hogy egy további réteg fenyegetésvédelmi IoT és az eszközök. Ez a beállítás nem érhető el az ingyenes szint hubjaihoz. A funkcióról további információt az [Azure Security Center for IoT című](https://docs.microsoft.com/azure/asc-for-iot/)témakörben talál.
+    - **Azure Security Center**: kapcsolja be ezt a beállítást, ha további veszélyforrások elleni védelmet szeretne hozzáadni a IoT és az eszközeihez. Ez a lehetőség az ingyenes szinten lévő hubok esetében nem érhető el. További információ erről a szolgáltatásról: [Azure Security Center a IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
-    - **Speciális beállítások** > **Eszközről felhőbe partíciók**: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számával kapcsolja össze. A legtöbb hubnak csak négy partícióra van szüksége.
+    - **Advanced Settings** > Az**eszközről a felhőbe**irányuló speciális beállítások: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
 
-1.  Válassza a **Tovább: Címkék lehetőséget** a következő képernyőre való továbblépéshez.
+1.  Kattintson a **Next (tovább** ) gombra, hogy a következő képernyőre folytassa a címkéket.
 
-    A címkék név-érték párok. Ugyanazt a címkét több erőforráshoz és erőforráscsoporthoz is hozzárendelheti az erőforrások kategorizálásához és a számlázás konszolidálásához. További információt az [Azure-erőforrások rendszerezéséhez címkék használata című](../articles/azure-resource-manager/management/tag-resources.md)témakörben talál.
+    A címkék név/érték párok. Ugyanazt a címkét több erőforráshoz és erőforráscsoporthoz is hozzárendelheti az erőforrások kategorizálása és a számlázás konszolidálása céljából. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Címkék hozzárendelése a központhoz az Azure Portal használatával](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Címkék kiosztása a hubhoz a Azure Portal használatával](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-1.  Válassza a **Tovább: Ellenőrzés + létrehozás lehetőséget** a lehetőségek áttekintéséhez. A képernyőhöz hasonló, de a hub létrehozásakor kiválasztott értékekkel együtt jelenik meg. 
+1.  Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet a választási lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg, de a hub létrehozásakor kiválasztott értékekkel. 
 
-    ![Az új központ létrehozásához szükséges információk áttekintése](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Tekintse át az új központ létrehozásával kapcsolatos információkat](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1.  Az új központ létrehozásához válassza a **Létrehozás** gombot. A hub létrehozása néhány percet vesz igénybe.
+1.  Válassza a **Létrehozás** lehetőséget az új központ létrehozásához. A hub létrehozása eltarthat néhány percig.

@@ -1,7 +1,7 @@
 ---
-title: A kisegítő lehetőségek használata a tervezőben (előzetes verzió)
+title: Kisegítő lehetőségek használata a Designerben (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg a tervezőben elérhető billentyűparancsokat és képernyőolvasó-kisegítő lehetőségeket.
+description: Ismerkedjen meg a Designerben elérhető billentyűparancsokkal és képernyőolvasó kisegítő lehetőségekkel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,73 +10,73 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77366194"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata az Azure Machine Learning designer használatához (előzetes verzió)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
 
-Ismerje meg, hogyan használhatja a billentyűzetet és a képernyőolvasót az Azure Machine Learning tervezőjének használatához. Az Azure Portalon mindenütt használható billentyűparancsok listáját az [Azure Portalon található billentyűparancsok című témakörben található.](../azure-portal/azure-portal-keyboard-shortcuts.md)
+Ismerje meg, hogyan használható a billentyűzet és a képernyőolvasó a Azure Machine Learning Designer használatához. A Azure Portalban mindenhol működő billentyűparancsok listáját a [Azure Portal billentyűparancsok](../azure-portal/azure-portal-keyboard-shortcuts.md) című témakörben találhatja meg.
 
-Ezt a munkafolyamatot a [Narrátor](https://support.microsoft.com/help/22798/windows-10-complete-guide-to-narrator) és a [JAWS](https://www.freedomscientific.com/products/software/jaws/)tesztelte, de más szabványos képernyőolvasókkal is működnie kell.
+Ezt a munkafolyamatot a [Narrátorral](https://support.microsoft.com/help/22798/windows-10-complete-guide-to-narrator) és az [állkapcsokkal](https://www.freedomscientific.com/products/software/jaws/)tesztelték, de más szabványos képernyőolvasókkal is működnie kell.
 
-## <a name="navigate-the-pipeline-graph"></a>Navigálás a folyamatdiagramon
+## <a name="navigate-the-pipeline-graph"></a>A folyamat gráfjának navigálása
 
-A folyamatdiagram beágyazott listaként van rendezve. A külső lista egy modullista, amely leírja a folyamatdiagram összes modulját. A belső lista egy kapcsolatlista, amely egy adott modul összes kapcsolatát leírja.  
+A folyamat gráfja beágyazott listaként van rendszerezve. A külső lista egy modul-lista, amely a folyamat gráfban található összes modult ismerteti. A belső lista egy kapcsolati lista, amely egy adott modul összes kapcsolatát ismerteti.  
 
-1. A modullistában a nyílbillentyűvel válthat a modulok között.
-1. A lapon nyissa meg a célmodul kapcsolatlistáját.
-1. A nyílbillentyűvel válthat a modul csatlakozási portjai között.
-1. Használja a "G" a célmodul.
+1. A modulok listájában a nyíl billentyűt használva válthat ki modulokat.
+1. A lap használatával nyissa meg a cél modulhoz tartozó kapcsolatok listáját.
+1. Használja a nyíl billentyűt a modulhoz tartozó kapcsolati portok közötti váltáshoz.
+1. A "G" használatával lépjen a cél modulra.
 
-## <a name="edit-the-pipeline-graph"></a>A folyamatdiagram szerkesztése
+## <a name="edit-the-pipeline-graph"></a>A folyamat gráfjának szerkesztése
 
-### <a name="add-a-module-to-the-graph"></a>Modul hozzáadása a diagramhoz
+### <a name="add-a-module-to-the-graph"></a>Modul hozzáadása a gráfhoz
 
-1. A Ctrl+F6 billentyűkombinációval váltson a fókuszt a vászonról a modulfára.
-1. Keresse meg a kívánt modult a modulfában a szabványos famegtekintési vezérlővel.
+1. A CTRL + F6 billentyűkombinációval válthat fókuszt a vászonról a modul fájára.
+1. Keresse meg a kívánt modult a modul fájában a standard TreeView vezérlő használatával.
 
 ### <a name="edit-a-module"></a>Modul szerkesztése
 
-Modul csatlakoztatása másik modulhoz:
+Modul összekötése egy másik modulhoz:
 
-1. A modullistájában lévő modul célzásakor használja a Ctrl + Shift + H billentyűkombinációt a kapcsolatsegítő megnyitásához.
-1. A modul csatlakozási portjainak szerkesztése.
+1. A kapcsolódási segítő megnyitásához használja a CTRL + SHIFT + H billentyűkombinációt a modul listájának megcélzásához.
+1. Szerkessze a modulhoz tartozó kapcsolatok portjait.
 
-A modul tulajdonságainak beállítása:
+A modul tulajdonságainak módosítása:
 
-1. A modul tulajdonságainak megnyitásához használja a Ctrl + Shift + E billentyűkombinációt a modul célzásához.
+1. Modul tulajdonságainak megnyitásához használja a CTRL + SHIFT + E billentyűkombinációt.
 1. A modul tulajdonságainak szerkesztése.
 
-## <a name="navigation-shortcuts"></a>Navigációs billentyűparancsok
+## <a name="navigation-shortcuts"></a>Navigációs hivatkozások
 
 | Billentyűleütés | Leírás |
 |-|-|
-| Ctrl + F6 | Fókusz váltása a vászon és a modulfa között |
-| Ctrl + F1   | Az információs kártya megnyitása, amikor egy csomópontra fókuszál a modulfában |
-| Ctrl + Shift + H | A kapcsolatsegítő megnyitása, ha a fókusz egy csomóponton van |
-| Ctrl + Shift + E | Modultulajdonságok megnyitása, ha a fókusz egy csomóponton van |
-| Ctrl + G | A fókusz áthelyezése az első sikertelen csomópontra, ha a folyamat futtatása sikertelen |
+| Ctrl + F6 | A vászon és a modul faszerkezete közötti fókusz váltása |
+| CTRL + F1   | Az információs kártya megnyitása a modul fáján lévő csomópontra fókuszálva |
+| CTRL + SHIFT + H | A kapcsolódási segítő megnyitása, ha a fókusz egy csomóponton van |
+| CTRL + SHIFT + E | Modul tulajdonságainak megnyitása, ha a fókusz egy csomóponton van |
+| CTRL + G | Fókusz áthelyezése az első sikertelen csomópontra, ha a folyamat futtatása nem sikerült |
 
-## <a name="action-shortcuts"></a>Műveletbillentyűparancsok
+## <a name="action-shortcuts"></a>Művelet parancsikonjai
 
-Használja az alábbi billentyűparancsokat a hozzáférési kulccsal. A hozzáférési kulcsokról további https://en.wikipedia.org/wiki/Access_keyinformációt a .
+Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférési kulcsokkal kapcsolatos további információkért lásd https://en.wikipedia.org/wiki/Access_key:.
 
 | Billentyűleütés | Műveletek |
 |-|-|
-| Hozzáférési kulcs + R | Futtassa a következőt: |
-| Hozzáférési kulcs + P | Közzététel |
-| Hozzáférési kulcs + C | Klónozás |
-| Hozzáférési kulcs + D | Üzembe helyezés |
-| Hozzáférési kulcs + I | Következtetési folyamat létrehozása/frissítése |
-| Hozzáférési kulcs + B | Kötegkövetkeztetési folyamat létrehozása/frissítése |
-| Hozzáférési kulcs + K | "Következtetéslétrehozása folyamat létrehozása" legördülő menü |
-| Hozzáférési kulcs + U | "A következtetési folyamat frissítése" legördülő menü |
-| Hozzáférési kulcs + M | Több(...) legördülő menü megnyitása |
+| Elérési kulcs + R | Futtassa a következőt: |
+| Elérési kulcs + P | Közzététel |
+| Elérési kulcs + C | Klónozás |
+| Elérési kulcs + D | Üzembe helyezés |
+| Elérési kulcs + I | Következtetési folyamat létrehozása/frissítése |
+| Elérési kulcs + B | Batch-következtetési folyamat létrehozása/frissítése |
+| Hozzáférési kulcs + K | A "következtetési folyamat létrehozása" legördülő menü megnyitása |
+| Elérési kulcs + U | "A következtetési folyamat frissítése" legördülő menü megnyitása |
+| Elérési kulcs + M | Továbbiak (...) legördülő lista megnyitása |
 
 ## <a name="next-steps"></a>További lépések
 
 - [Kontrasztos megjelenítés bekapcsolása és téma módosítása](../azure-portal/azure-portal-change-theme-high-contrast.md)
-- [Kisegítő lehetőségekkel kapcsolatos eszközök a Microsoftnál](https://www.microsoft.com/accessibility)
+- [Hozzáférhetőséggel kapcsolatos eszközök a Microsoftnál](https://www.microsoft.com/accessibility)

@@ -1,6 +1,6 @@
 ---
-title: Azure AD egyéni szerepkör konfigurálása – Kiemelt identitáskezelés (PIM)
-description: Az Azure AD egyéni szerepkörök konfigurálása a kiemelt identitáskezelésben (PIM)
+title: Egyéni Azure AD-szerepkör konfigurálása – Privileged Identity Management (PIM)
+description: Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Managementban (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,90 +17,90 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77498678"
 ---
-# <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Azure AD egyéni szerepkörök konfigurálása a kiemelt identitáskezelésben
+# <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Management
 
-A kiemelt szerepszintű rendszergazda módosíthatja a szerepkör-beállításokat, amelyek a felhasználóra vonatkoznak, amikor aktiválja a hozzárendelést egy egyéni szerepkörre, és más alkalmazás-rendszergazdák számára, akik egyéni szerepköröket rendelnek hozzá.
+A Kiemelt szerepkörű rendszergazdák megváltoztathatják a felhasználókra vonatkozó szerepkör-beállításokat, amikor a hozzárendelést egy egyéni szerepkörhöz és más, egyéni szerepköröket hozzárendelő alkalmazás-rendszergazdákhoz használják.
 
 > [!NOTE]
-> Az Azure AD egyéni szerepkörök nincsenek integrálva a beépített címtárszerepkörök előzetes verzió során. Ha a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök ben kerül sor. Ha a következő szalagcím jelenik meg, ezeket a szerepköröket [a beépített szerepkörök ben](pim-how-to-activate-role.md) kell kezelni, és ez a cikk nem vonatkozik:
+> Az Azure AD egyéni szerepkörei nincsenek integrálva az előzetes verzióban a beépített címtárbeli szerepkörökbe. Miután a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök felületén történik. Ha a következő szalagcím jelenik meg, ezeket a szerepköröket [a beépített szerepkörökkel kapcsolatos felhasználói élményben](pim-how-to-activate-role.md) kell kezelni, és ez a cikk nem alkalmazható:
 >
 > [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 
-Az alábbi lépésekkel nyissa meg az Azure AD-szerepkör beállításait.
+Kövesse az alábbi lépéseket egy Azure AD-szerepkör beállításainak megnyitásához.
 
-1. Jelentkezzen be a [kiemelt identitáskezelés](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) az Azure Portalon egy felhasználói fiókkal, amely hozzá van rendelve a kiemelt szerepkör-rendszergazdai szerepkörhöz.
-1. Válassza az **Azure AD egyéni szerepkörök (előzetes verzió)** lehetőséget.
+1. Jelentkezzen be [Privileged Identity Managementra](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) a Azure Portal egy olyan felhasználói fiókkal, amely hozzá van rendelve a Kiemelt szerepkörű rendszergazda szerepkörhöz.
+1. Válassza az **Egyéni Azure ad-szerepkörök (előzetes verzió)** lehetőséget.
 
-    ![Válassza ki az Azure AD egyéni szerepkörök előnézetét a jogosult szerepkör-hozzárendelések megtekintéséhez](./media/azure-ad-custom-roles-configure/settings-list.png)
+    ![A jogosult szerepkör-hozzárendelések megtekintéséhez válassza az Azure AD egyéni szerepkörök előzetes verzióját.](./media/azure-ad-custom-roles-configure/settings-list.png)
 
-1. A **Beállítások** lap megnyitásához válassza a **Beállítás** lehetőséget. Válassza ki a konfigurálni kívánt beállítások szerepkörét.
-1. A **Szerkesztés gombra** a **Szerepkör-beállítások** lap megnyitásához kattintson a Szerkesztés gombra.
+1. Válassza a **beállítás** lehetőséget a **Beállítások** lap megnyitásához. Válassza ki a konfigurálni kívánt beállítások szerepkörét.
+1. A **szerepkör-beállítások** lap megnyitásához válassza a **Szerkesztés** lehetőséget.
 
-    ![Az Azure AD egyéni szerepkör megnyitása a beállítások szerkesztéséhez](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![A beállítások szerkesztéséhez nyissa meg az Azure AD egyéni szerepkörét](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Szerepkör-beállítások
 
-Számos beállítás konfigurálható.
+Több beállítás is konfigurálható.
 
 ### <a name="assignment-duration"></a>Hozzárendelés időtartama
 
-A szerepkör beállításainak konfigurálásakor az egyes hozzárendeléstípusokhoz (jogosult vagy aktív) két hozzárendelés-időtartam-beállítás közül választhat. Ezek a beállítások lesznek az alapértelmezett maximális időtartam, ha egy tag van rendelve a szerepkör privilegizált identitáskezelés.
+A szerepkörök beállításainak konfigurálásakor két hozzárendelési időtartam közül választhat az egyes hozzárendelési típusoknál (jogosult vagy aktív). Ezek a lehetőségek lesznek az alapértelmezett maximális időtartam, amikor egy tag a szerepkörhöz van rendelve Privileged Identity Managementban.
 
-A *jogosult* hozzárendelés időtartamának egyik beállítását választhatja.
+Kiválaszthatja az alábbi *jogosult* hozzárendelések időtartamának beállításait.
 
-- **Állandó jogosult hozzárendelés engedélyezése**: A rendszergazdák állandó jogosult tagságot rendelhetnek hozzá.
-- **A jogosult hozzárendelés lejárata a következő után:** A rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelésnek meghatározott kezdési és befejezési dátummal kell rendelkeznie.
+- **Állandó jogosult hozzárendelés engedélyezése**: a rendszergazdák állandó jogosult tagságot rendelhetnek hozzá.
+- **Jogosult hozzárendelés lejárta**a következő után: a rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés rendelkezzen a megadott kezdési és befejezési dátummal.
 
-Az *aktív* hozzárendelés időtartamának egyik beállítását is megadhatja:
+Emellett az alábbi *aktív* hozzárendelések időtartamának beállításai közül is választhat:
 
-- **Állandó aktív hozzárendelés engedélyezése**: A rendszergazdák állandó aktív tagságot rendelhetnek hozzá.
-- **Az aktív hozzárendelés lejárata a következő után:** A rendszergazdák megkövetelhetik, hogy minden aktív hozzárendelésnek meghatározott kezdési és befejezési dátummal kell rendelkeznie.
+- **Állandó aktív hozzárendelés engedélyezése**: a rendszergazdák állandó aktív tagságot adhatnak hozzá.
+- **Aktív hozzárendelés lejárta**a következő után: a rendszergazdák megkövetelhetik, hogy az összes aktív hozzárendelés megadott kezdő és záró dátummal rendelkezzen.
 
-### <a name="require-azure-multi-factor-authentication"></a>Azure többtényezős hitelesítésének megkövetelése
+### <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication szükséges
 
-A kiemelt identitáskezelés az Azure többtényezős hitelesítés opcionális kényszerítése két különböző forgatókönyv esetén.
+A Privileged Identity Management két különböző forgatókönyv esetén az Azure Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
 
-- **Többtényezős hitelesítés megkövetelése aktív hozzárendelésesetén**
+- **Multi-Factor Authentication megkövetelése aktív hozzárendeléskor**
 
-  Ha csak rövid ideig (például egy napig) szeretne egy tagot egy szerepkörhöz rendelni, akkor túl lassú lehet a hozzárendelt tagoktól az aktiválás kérelmezése. Ebben a forgatókönyvben a kiemelt identitáskezelés nem kényszerítheti ki a többtényezős hitelesítést, amikor a felhasználó aktiválja a szerepkör-hozzárendelést, mert már aktívak a szerepkörben attól a pillanattól kezdve, hogy hozzá vannak rendelve. Annak érdekében, hogy a hozzárendelést teljesítő rendszergazda az legyen, akinek mondja magát, jelölje be a **Többtényezős hitelesítés megkövetelése az aktív hozzárendeléshez** jelölőnégyzetet.
+  Ha csak rövid ideig szeretné hozzárendelni egy tagot egy szerepkörhöz (például egy nap), előfordulhat, hogy túl lassú ahhoz, hogy a hozzárendelt tagok bekérjenek aktiválást. Ebben a forgatókönyvben a Privileged Identity Management nem tudja kikényszeríteni a többtényezős hitelesítést, ha a felhasználó aktiválja a szerepkör-hozzárendelést, mert már aktívak a szerepkörben a hozzárendelésük pillanatától kezdve. Annak biztosítása érdekében, hogy a hozzárendelést teljesítő rendszergazda ki mondja őket, jelölje be a **multi-Factor Authentication megkövetelése az aktív hozzárendeléshez** jelölőnégyzetet.
 
-- **Többtényezős hitelesítés megkövetelése aktiváláskor**
+- **Multi-Factor Authentication megkövetelése aktiváláskor**
 
-  Megkövetelheti, hogy egy szerepkörhöz hozzárendelt jogosult felhasználók regisztrálják az Azure többtényezős hitelesítést, mielőtt aktiválhatnák. Ez a folyamat biztosítja, hogy az aktiválást kérő felhasználó az, akinek azt mondják, hogy ésszerű bizonyossággal. A beállítás kényszerítése védi a kritikus szerepköröket olyan helyzetekben, amikor a felhasználói fiók biztonsága sérülhet. Ha azt szeretné, hogy egy jogosult tag futtassa az Azure többtényezős hitelesítést az aktiválás előtt, válassza **a Többtényezős hitelesítés megkövetelése az aktiváláskor** jelölőnégyzetet.
+  Megkövetelheti, hogy egy szerepkörhöz hozzárendelt jogosult felhasználók az aktiválás előtt regisztráljanak az Azure Multi-Factor Authenticationban. Ez a folyamat biztosítja, hogy az aktiválást kérő felhasználó számára ésszerű bizonyosságot biztosítson. Ha ezt a beállítást választja, akkor a kritikus fontosságú szerepkörök védelme olyan helyzetekben, amikor a felhasználói fiók biztonsága sérül. Ha az aktiválás előtt szeretné megkövetelni, hogy egy jogosult tag Azure Multi-Factor Authentication fusson, válassza a **multi-Factor Authentication megkövetelése aktiváláskor** jelölőnégyzetet.
 
-További információ: [Többtényezős hitelesítés és kiemelt identitáskezelés.](pim-how-to-require-mfa.md)
+További információ: [multi-Factor Authentication és Privileged Identity Management](pim-how-to-require-mfa.md).
 
 ### <a name="activation-maximum-duration"></a>Aktiválás maximális időtartama
 
-Az **Aktiválás maximális** időtartamcsúszkája segítségével beállíthatja azt a maximális időtartamot órákban, amerre egy szerepkör aktív marad, mielőtt lejárna. Ez az érték lehet 1 és 24 óra.
+Az **aktiválás maximális időtartama** csúszkával állíthatja be azt a maximális időtartamot (óra), ameddig a szerepkör aktív marad a lejárat előtt. Ez az érték a következő lehet:, 1 és 24 óra.
 
-### <a name="require-justification"></a>Sorkizárás megkövetelése
+### <a name="require-justification"></a>Indoklás megkövetelése
 
-Megkövetelheti, hogy a tagok adjanak meg indoklást az aktív hozzárendeléskor vagy az aktiváláskor. Ha sorkizárást szeretne igényelni, jelölje be a **Sorkizárás megkövetelése az aktív hozzárendelésnél** jelölőnégyzetet, vagy az **Igazítás megkövetelése aktiváláskor** jelölőnégyzetet.
+Megkövetelheti, hogy a tagok indoklást adjanak az aktív hozzárendeléshez vagy aktiváláskor. Az indoklás megköveteléséhez jelölje be az **aktív hozzárendelésre vonatkozó indoklás megkövetelése** jelölőnégyzetet, vagy a **szükséges indoklást az aktiválási** mezőben.
 
-### <a name="require-approval-to-activate"></a>Az aktiváláshoz jóváhagyás szükséges
+### <a name="require-approval-to-activate"></a>Jóváhagyás megkövetelése az aktiváláshoz
 
-Ha jóváhagyást szeretne igényelni egy szerepkör aktiválásához, kövesse az alábbi lépéseket.
+Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az alábbi lépéseket.
 
-1. Jelölje be az **Aktiváláshoz jóváhagyás megkövetelése** jelölőnégyzetet.
-1. Válassza **a Jóváhagyók kijelölése lehetőséget** a Tag vagy csoport **kijelölése** lista megnyitásához.
+1. Jelölje be a **jóváhagyás megkövetelése** jelölőnégyzetet.
+1. Válassza a **jóváhagyók kiválasztása** lehetőséget a **tag vagy csoport kiválasztása** lista megnyitásához.
 
-    ![Az Azure AD egyéni szerepkör megnyitása a beállítások szerkesztéséhez](./media/azure-ad-custom-roles-configure/select-approvers.png)
+    ![A beállítások szerkesztéséhez nyissa meg az Azure AD egyéni szerepkörét](./media/azure-ad-custom-roles-configure/select-approvers.png)
 
-1. Jelöljön ki legalább egy tagot vagy csoportot, majd kattintson a **Kijelölés gombra.** Legalább egy jóváhagyót ki kell jelölnie. Nincsenek alapértelmezett jóváhagyók. A kiválasztott jóváhagyók listájában megjelennek a beállítások.
-1. Miután megadta a szerepkör-beállításokat, a módosítások mentéséhez válassza a **Frissítés** lehetőséget.
+1. Válasszon ki legalább egy tagot vagy csoportot, majd kattintson a **kiválasztás**elemre. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók. A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
+1. A szerepkör-beállítások megadása után válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-activate.md)
-- [Azure AD egyéni szerepkör hozzárendelése](azure-ad-custom-roles-assign.md)
-- [Azure AD egyéni szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
+- [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
+- [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
 - [Szerepkör-definíciók az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md)

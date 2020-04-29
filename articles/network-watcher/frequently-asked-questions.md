@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések az Azure Network Watcherről | Microsoft dokumentumok
-description: Ez a cikk választ ad az Azure Network Watcher szolgáltatással kapcsolatos gyakori kérdésekre.
+title: Gyakran ismételt kérdések (GYIK) az Azure Network Watcherról | Microsoft Docs
+description: Ez a cikk az Azure Network Watcher szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,97 +14,97 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471856"
 ---
-# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakori kérdések az Azure Network Watcherről
-Az [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás egy eszközcsomagot biztosít az Azure virtuális hálózat erőforrásainak figyeléséhez, diagnosztizálásához, metrikák megtekintéséhez és a naplók engedélyezéséhez vagy letiltásához. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
+# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
+Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-network-watcher"></a>Mi az a Network Watcher?
-A Network Watcher az IaaS (Infrastructure-as-a-Service) összetevők hálózati állapotának figyelésére és javítására szolgál, beleértve a virtuális gépeket, virtuális hálózatokat, alkalmazásátjárókat, terheléselosztókat és az Azure virtuális hálózat egyéb erőforrásait. Nem megoldás a PaaS (Platform-as-a-Service) infrastruktúra figyelésére vagy web/mobil elemzés beszerzésére.
+Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) összetevőinek hálózati állapotát, beleértve a Virtual Machines, a virtuális hálózatokat, az alkalmazás-átjárókat, a terheléselosztó és az Azure-beli virtuális hálózatok egyéb erőforrásait. Nem megoldás a Péter (platform-szolgáltatás) infrastruktúrájának figyelésére, vagy a web/mobil Analitika beszerzésére.
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Milyen eszközöket biztosít a Network Watcher?
-A Network Watcher három fő képességkészletet biztosít
+Network Watcher a képességek három fő készletét biztosítja
 * Figyelés
-  * [A Topology nézet](https://docs.microsoft.com/azure/network-watcher/view-network-topology) a virtuális hálózat erőforrásait és a köztük lévő kapcsolatokat jeleníti meg.
-  * [A Kapcsolatfigyelő](https://docs.microsoft.com/azure/network-watcher/connection-monitor) lehetővé teszi a virtuális gép és egy másik hálózati erőforrás közötti kapcsolat és késés figyelése.
-  * [A hálózati teljesítményfigyelő](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) lehetővé teszi a kapcsolat és a késések figyelését a hibrid hálózati architektúrák, az Expressroute-áramkörök és a szolgáltatás/alkalmazás végpontok között.  
+  * A [topológia nézetben](https://docs.microsoft.com/azure/network-watcher/view-network-topology) a virtuális hálózat erőforrásai és a köztük lévő kapcsolatok láthatók.
+  * A [kapcsolat figyelője](https://docs.microsoft.com/azure/network-watcher/connection-monitor) lehetővé teszi a virtuális gép és egy másik hálózati erőforrás közötti kapcsolat és késés figyelését.
+  * A [Network Performance monitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) lehetővé teszi a kapcsolatok és a késések figyelését a hibrid hálózati architektúrák, a Expressroute áramkörök és a szolgáltatási/alkalmazási végpontok között.  
 * Diagnosztika
-  * [Az IP-folyamat ellenőrzése](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) lehetővé teszi a forgalomszűrési problémák virtuális gép szinten történő észlelését.
-  * [A Next Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) segítségével ellenőrizheti a forgalmi útvonalakat, és észlelheti az útválasztási problémákat.
-  * [A Kapcsolat hibaelhárítása](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) lehetővé teszi az egyszeri kapcsolat és a késés ellenőrzését egy virtuális gép és egy másik hálózati erőforrás között.
-  * [Packet Capture](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) lehetővé teszi, hogy rögzítse az összes forgalmat a virtuális gép a virtuális hálózatban.
-  * [A VPN hibaelhárítása](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) több diagnosztikai ellenőrzést futtat a VPN-átjárókon és kapcsolatokon a problémák hibakeresésének elősegítésére.
+  * Az [IP-forgalom ellenőrzése](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) lehetővé teszi, hogy a virtuális gép szintjén észlelje a forgalom szűrésével kapcsolatos problémákat.
+  * A [következő ugrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) segítséget nyújt a forgalmi útvonalak ellenőrzésében és az útválasztási problémák észlelésében.
+  * A [kapcsolati hibakeresés](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) lehetővé teszi a virtuális gép és egy másik hálózati erőforrás közötti egyszeri kapcsolódást és késést.
+  * A [csomagok rögzítése](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) lehetővé teszi a virtuális hálózatban lévő virtuális gépek forgalmának rögzítését.
+  * A [VPN-hibaelhárítás](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) több diagnosztikai ellenőrzést futtat a VPN-átjárón és a kapcsolatokon a hibák elhárítása érdekében.
 * Naplózás
-  * [Az NSG-folyamatnaplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) lehetővé teszik a [hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/security-overview) összes forgalmának naplózását
-  * [A Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) feldolgozza az NSG-folyamatnapló adatait, amelyek lehetővé teszik a hálózati forgalom megjelenítését, lekérdezését, elemzését és megértését.
+  * A [NSG flow-naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) lehetővé teszik a [hálózati biztonsági csoportok (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) összes forgalmának naplózását
+  * [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) dolgozza fel a NSG flow-napló adatait, így megjelenítheti, lekérdezheti, elemezheti és értelmezheti a hálózati forgalmat.
 
 
-További információt a [Hálózatfigyelő áttekintése lapon talál.](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+További részletekért tekintse meg az [Network Watcher áttekintése lapot](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
 
 
-### <a name="how-does-network-watcher-pricing-work"></a>Hogyan működik a Network Watcher árképzése?
-Látogasson el a Network Watcher összetevőinek és azok díjszabásának [díjszabási oldalára.](https://azure.microsoft.com/pricing/details/network-watcher/)
+### <a name="how-does-network-watcher-pricing-work"></a>Hogyan működik a Network Watcher díjszabása?
+Látogasson el a Network Watcher-összetevők [díjszabási oldalára](https://azure.microsoft.com/pricing/details/network-watcher/) , valamint azok díjszabására.
 
-### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Mely régiókban támogatott/elérhető a Network Watcher?
-A legfrissebb regionális elérhetőséget az [Azure-szolgáltatás rendelkezésre állási oldalán tekintheti meg.](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Mely régiók Network Watcher támogatott/elérhető?
+Az [Azure szolgáltatás rendelkezésre állási lapján](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) megtekintheti a legújabb regionális elérhetőséget.
 
-### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Milyen engedélyek szükségesek a Network Watcher használatához?
-Tekintse meg a [Network Watcher használatához szükséges RBAC-engedélyek](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listáját. Az erőforrások üzembe helyezéséhez közreműködői engedélyekre van szükség a NetworkWatcherRG-hez (lásd alább).
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Milyen engedélyekre van szükség a Network Watcher használatához?
+Tekintse meg a [Network Watcher használatához szükséges RBAC engedélyek](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listáját. Erőforrások üzembe helyezéséhez közreműködői engedélyekkel kell rendelkeznie a NetworkWatcherRG (lásd alább).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Hogyan engedélyezhetem a Network Watchert?
-A Network Watcher szolgáltatás [automatikusan engedélyezve](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) van minden előfizetéshez.
+A Network Watcher szolgáltatás minden előfizetéshez [automatikusan engedélyezve](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) van.
 
-### <a name="what-is-the-network-watcher-deployment-model"></a>Mi a Network Watcher telepítési modellje?
-A Network Watcher szülőerőforrás minden régióban egyedi példányban van telepítve. Elnevezési formátum: NetworkWatcher_RegionName. Példa: NetworkWatcher_centralus az "USA középső régió" hálózati figyelőerőforrása.
+### <a name="what-is-the-network-watcher-deployment-model"></a>Mi a Network Watcher üzembe helyezési modell?
+A Network Watcher szülő erőforrás minden régióban egyedi példánnyal van üzembe helyezve. Elnevezési formátum: NetworkWatcher_RegionName. Példa: a NetworkWatcher_centralus a "Central US" régió Network Watcher erőforrása.
 
-### <a name="what-is-the-networkwatcherrg"></a>Mi az a NetworkWatcherRG?
-Network Watcher források találhatók a rejtett **NetworkWatcherRG** erőforráscsoport, amely automatikusan létre. Például az NSG Flow Logs erőforrás a Network Watcher gyermekerőforrása, és engedélyezve van a NetworkWatcherRG-ben.
+### <a name="what-is-the-networkwatcherrg"></a>Mi a NetworkWatcherRG?
+Network Watcher erőforrások a rejtett **NetworkWatcherRG** -erőforráscsoport alatt találhatók, amely automatikusan létrejön. Például a NSG flow-napló erőforrás a Network Watcher gyermek erőforrása, és engedélyezve van a NetworkWatcherRG.
 
-### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Miért kell telepítenem a Network Watcher bővítményt? 
-A Network Watcher bővítmény szükséges minden olyan funkcióhoz, amelynek a virtuális gépről kell generálnia vagy elfognia a forgalmat. 
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Miért kell telepíteni a Network Watcher bővítményt? 
+A Network Watcher-bővítményt minden olyan szolgáltatáshoz meg kell adni, amely egy virtuális gépről érkező forgalmat kell előállítani vagy feltartóztatni. 
 
-### <a name="which-features-require-the-network-watcher-extension"></a>Mely funkciókhoz szükséges a Network Watcher bővítmény?
-A Csomagrögzítés, a kapcsolathiba elhárítása és a kapcsolatfigyelő szolgáltatásainak jelen kell lenniük a Hálózatfigyelő bővítményben.
+### <a name="which-features-require-the-network-watcher-extension"></a>Mely szolgáltatásokhoz szükséges a Network Watcher bővítmény?
+A csomagok rögzítése, a kapcsolati hibák és a kapcsolati figyelő funkcióinak jelen kell lennie a Network Watcher bővítménynek.
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Mik az erőforráskorlátok a Network Watcher számára?
-Tekintse meg a [Szolgáltatás korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) oldalon az összes korlátot.  
+### <a name="what-are-resource-limits-on-network-watcher"></a>Mik a Network Watcher erőforrás-korlátai?
+Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) lapon.  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egy példánya Network Watcher engedélyezett régiónként? 
-A Network Watcher csak egyszer kell engedélyezni az előfizetéshez, hogy a funkciói működjenek, ez nem szolgáltatáskorlát.
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egyetlen példányban engedélyezett Network Watcher régiónként? 
+Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése működjön, ez a szolgáltatás nem megengedett.
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hogyan kezelhetem a Network Watcher erőforrást? 
-A Network Watcher erőforrás a Network Watcher háttérszolgáltatását képviseli, és az Azure teljes körűen kezeli. Az ügyfeleknek nem kell kezelnie. Az olyan műveletek, mint az áthelyezés, nem támogatottak az erőforráson. Az erőforrás azonban [törölhető.](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal) 
+A Network Watcher erőforrás a Network Watcher háttér-szolgáltatást jelöli, és teljes mértékben az Azure felügyeli. Az ügyfeleknek nem kell kezelnie. Az olyan műveletek, mint az áthelyezés, nem támogatottak az erőforráson. [Az erőforrás azonban törölhető is](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
-## <a name="nsg-flow-logs"></a>NSG-folyamatnaplók
+## <a name="nsg-flow-logs"></a>NSG
 
-### <a name="what-does-nsg-flow-logs-do"></a>Mire történik az NSG-folyamatnaplók?
-Az Azure hálózati erőforrásai kombinálhatók és [kezelhetők a hálózati biztonsági csoportokon (NSG-k)](https://docs.microsoft.com/azure/virtual-network/security-overview)keresztül. Az NSG flow naplók lehetővé teszik az NSG-ken keresztüli összes forgalom 5-toldalékos folyamatinformációinak naplózását. A nyers folyamatnaplók egy Azure Storage-fiókba kerülnek, ahonnan további feldolgozás, elemzés, lekérdezés vagy exportálás.
+### <a name="what-does-nsg-flow-logs-do"></a>Mit jelentenek a NSG flow-naplók?
+Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview)segítségével lehet egyesíteni és felügyelni. A NSG flow-naplók lehetővé teszik az 5 rekordos adatfolyamok naplózását a NSG keresztüli összes forgalomról. A nyers flow-naplók egy Azure Storage-fiókba íródnak, ahonnan szükség szerint további feldolgozásra, elemzésre, lekérdezésre vagy exportálásra kerülhet sor.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Hogyan használhatom az NSG-folyamatnaplókat egy tűzfal mögötti tárfiókkal?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Hogyan használja a NSG a tűzfal mögötti Storage-fiókkal?
 
-Ha tűzfal mögött szeretne tárfiókot használni, meg kell adnia egy kivételt a Megbízható Microsoft Services szolgáltatással a tárfiók eléréséhez:
+Ha tűzfal mögötti Storage-fiókot szeretne használni, meg kell adnia egy kivételt a megbízható Microsoft-szolgáltatások számára a Storage-fiókhoz való hozzáféréshez:
 
-* Keresse meg a tárfiókot a tárfiók nevének beírásával a portálon vagy a [Tárfiókok lapon](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) végzett globális keresésben.
+* Navigáljon a Storage-fiókhoz úgy, hogy beírja a Storage-fiók nevét a portálon vagy a [Storage-fiókok lapon](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) található globális Keresés mezőbe.
 * A **BEÁLLÍTÁSOK** szakaszban válassza a **Tűzfalak és virtuális hálózatok** elemet
-* A "Hozzáférés engedélyezése innen" területen válassza ki a **Kijelölt hálózatokat**. Ezután a **Kivételek**területen jelölje be a **"Megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a tárfiókhoz" jelölőnégyzetet.** 
+* A "hozzáférés engedélyezése innen" területen válassza a **kiválasztott hálózatok**elemet. Ezután a **kivételek**alatt jelölje be a **"megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz"** jelölőnégyzetet. 
 * Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
-* Keresse meg a cél NSG-t az [NSG flow naplók áttekintése oldalon,](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) és engedélyezze az NSG-folyamatnaplókat a fenti tárfiók kiválasztásával.
+* Keresse meg a cél NSG a [NSG flow naplói – áttekintés oldalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) , és engedélyezze a NSG-folyamat naplóit a fenti Storage-fiók kiválasztásával.
 
 Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hogyan használhatom az NSG-folyamatnaplókat egy szolgáltatásvégpont mögötti tárfiókkal?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hogyan használja a NSG a szolgáltatási végpont mögötti Storage-fiókkal?
 
-Az NSG-folyamatnaplók kompatibilisek a szolgáltatás-végpontokkal anélkül, hogy további konfigurációra lenne szükség. Tekintse meg a [szolgáltatásvégpontok engedélyezéséről a](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) virtuális hálózatban.
+A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltatási végpontokkal. Tekintse meg a szolgáltatás-végpontok virtuális hálózatban való [engedélyezésével foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) .
 
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség az 1& 2-es folyamatnaplók verziói között?
-A Flow Logs 2-es verziója bevezeti a *Flow State* & a továbbított bájtok és csomagok adatait tárolja. [Tovább](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)- tovább .
+### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
+A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
 
 ## <a name="next-steps"></a>Következő lépések
- - A Network Watcher segítségével ismerkedés a [dokumentációt áttekintő oldalunkon](https://docs.microsoft.com/azure/network-watcher/) talál néhány oktatóanyagot.
+ - Néhány oktatóanyagért tekintse át a [dokumentáció áttekintését ismertető oldalt](https://docs.microsoft.com/azure/network-watcher/) , amellyel elsajátíthatja a Network Watcher.

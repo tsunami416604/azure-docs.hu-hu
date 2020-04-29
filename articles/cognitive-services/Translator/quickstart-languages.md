@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A támogatott nyelvek listájának beszereznie - Translator Text API'
+title: 'Gyors útmutató: a támogatott nyelvek listájának beolvasása – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Translator Text API használatával a fordításhoz, átíráshoz és szótár-keresménél támogatott nyelvek listáját kapja meg.
+description: Ebben a rövid útmutatóban a fordítás, az írás és a szótárak által támogatott nyelvek listáját kapja meg a Translator Text API használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525141"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Rövid útmutató: A Fordító szövegAPI-jával lekaphatja a támogatott nyelvek listáját
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Gyors útmutató: a Translator Text API használatával lekérheti a támogatott nyelvek listáját
 
-Ebben a rövid útmutatóban a Translator Text API használatával a fordításhoz, átíráshoz és szótár-keresménél támogatott nyelvek listáját kapja meg.
+Ebben a rövid útmutatóban a fordítás, az írás és a szótárak által támogatott nyelvek listáját kapja meg a Translator Text API használatával.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]

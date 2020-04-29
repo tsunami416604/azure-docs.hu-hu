@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus - üzenethalasztás
-description: Ez a cikk bemutatja, hogyan halasztja el az Azure Service Bus-üzenetek kézbesítését. Az üzenet az üzenetsorban vagy előfizetésben marad, de a rendszer félreteszi azt.
+title: Azure Service Bus – üzenet halasztása
+description: Ez a cikk elmagyarázza, hogyan késleltetheti Azure Service Bus üzenetek kézbesítését. Az üzenet az üzenetsorban vagy előfizetésben marad, de a rendszer félreteszi azt.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,36 +14,36 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77538396"
 ---
 # <a name="message-deferral"></a>Üzenetek halasztása
 
-Ha egy várólista- vagy előfizetés-ügyfél olyan üzenetet kap, amelyet hajlandó feldolgozni, de amelyhez az alkalmazáson belüli különleges körülmények miatt jelenleg nem lehetséges a feldolgozás, lehetősége van arra, hogy az üzenet lekérését egy későbbi pontra halassza el. Az üzenet az üzenetsorban vagy előfizetésben marad, de a rendszer félreteszi azt.
+Ha egy üzenetsor vagy előfizetés-ügyfél olyan üzenetet kap, amely készen áll a feldolgozásra, de az alkalmazáson belüli különleges körülmények miatt jelenleg nem lehetséges a feldolgozás, akkor az üzenet "késleltetve" lekérésének lehetősége egy későbbi pontra. Az üzenet az üzenetsorban vagy előfizetésben marad, de a rendszer félreteszi azt.
 
-A halasztás egy kifejezetten munkafolyamat-feldolgozási forgatókönyvekhez létrehozott szolgáltatás. A munkafolyamat-keretrendszerek bizonyos műveletek feldolgozását egy adott sorrendben követelhetik meg, és előfordulhat, hogy el kell halasztaniuk egyes fogadott üzenetek feldolgozását mindaddig, amíg más üzenetek által tájékoztatott előzetes munkát el nem végeznek.
+A halasztás a munkafolyamat-feldolgozási forgatókönyvekhez kifejezetten létrehozott szolgáltatás. A munkafolyamat-keretrendszerek megkövetelhetik bizonyos műveletek feldolgozását egy adott sorrendben, és előfordulhat, hogy el kell halasztania néhány fogadott üzenet feldolgozását, amíg a többi üzenet által nem tájékozott korábbi munkák nem teljesülnek.
 
-Egy egyszerű szemléltető példa egy olyan rendelésfeldolgozási folyamat, amelyben egy külső fizetési szolgáltató tól érkező fizetési értesítés jelenik meg a rendszerben, mielőtt az egyeztetési beszerzési rendelést propagálásra továbbítanák az üzlet elejéről a teljesítési rendszerre. Ebben az esetben a teljesítési rendszer elhalaszthatja a fizetési értesítés feldolgozását, amíg nincs olyan megrendelés, amelyhez hozzá lehet rendelni. A találkozási helyzetekben, ahol a különböző forrásokból származó üzenetek előreviszik a munkafolyamatot, a valós idejű végrehajtási sorrend valóban helyes lehet, de az eredményeket tükröző üzenetek sorrenden kívül eshetnek.
+Egy egyszerű szemléltető példa egy olyan sorrend-feldolgozási folyamat, amelyben a külső fizetési szolgáltatótól érkező fizetési értesítés egy rendszeren jelenik meg, mielőtt a rendszer a megfelelő beszerzési rendelést propagálta az áruházból a teljesítési rendszerre. Ebben az esetben a teljesítési rendszer elhalaszthatja a fizetési értesítés feldolgozását, amíg meg nem történik egy rendelés, amelyhez társítja. A Rendezvous-forgatókönyvek esetében, ahol a különböző forrásokból származó üzenetek egy munkafolyamatot továbbítanak, a valós idejű végrehajtási sorrend valóban helyes lehet, de az eredményeket tükröző üzenetek eltérhetnek a sorrendtől.
 
-Végső soron a halasztás segíti az üzenetek átrendezését az érkezési rendelésből olyan rendbe, amelyben fel dolgozhatók, miközben ezeket az üzeneteket biztonságosan hagyják az üzenettárolóban, amelynek feldolgozását el kell halasztani.
+Végső soron a késleltető támogatások az üzenetek érkezési sorrendjéből való átrendezésének sorrendjét a feldolgozható sorrendben, miközben az üzenetek biztonságosan elhagyják az üzenetet tárolóban, hogy melyik feldolgozást kell elhalasztani.
 
-## <a name="message-deferral-apis"></a>Üzenethalasztási API-k
+## <a name="message-deferral-apis"></a>Üzenet halasztási API-jai
 
-Az API [brokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) vagy [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) a .NET Framework ügyfélben, [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) a .NET Standard ügyfélben és [az IMessageReceiver.defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) vagy az [IMessageReceiver.deferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) a Java ügyfélben. 
+Az API az [BrokeredMessage. elhalaszt](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) vagy a [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) a .NET-keretrendszer ügyfelében, a [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) a .NET Standard ügyfélprogramban, valamint a [IMessageReceiver. elhalaszt](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) vagy [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) a Java-ügyfélen. 
 
-A késleltetett üzenetek a fő várólistában maradnak az összes többi aktív üzenettel együtt (ellentétben az alvárólistában élő kézbesítetlen levelek üzeneteivel), de a továbbiakban nem fogadhatók a normál Fogadási/Fogadási függvényekkel. A késleltetett üzenetek üzenetböngészés útján fedezhetők [fel,](message-browsing.md) ha egy alkalmazás elveszíti azokat.
+A késleltetett üzenetek a fő várólistában maradnak, az összes többi aktív üzenettel együtt (az alvárólistákban élő kézbesítetlen levelektől eltérően), de a normál fogadási/ReceiveAsync függvények már nem fogadhatók. A késleltetett üzeneteket az [üzenetek böngészésével](message-browsing.md) lehet felderíteni, ha egy alkalmazás elveszíti a nyomon követését.
 
-A késleltetett üzenet beolvasásához a tulajdonos felelős a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) megjegyzésért, amíg az elhalasztja azt. A halasztott üzenetek sorszámát ismerő fogadók később explicit módon `Receive(sequenceNumber)`fogadhatják az üzenetet a segítségével.
+A késleltetett üzenet lekéréséhez a tulajdonosa felelős a [sorszám](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) való emlékezésért. Minden olyan fogadó, amely ismeri a késleltetett üzenet sorszámát, később explicit módon megkapja az üzenetet `Receive(sequenceNumber)`.
 
-Ha egy üzenet nem dolgozható fel, mert egy adott erőforrás az üzenet kezeléséhez átmenetileg nem érhető el, de az üzenetfeldolgozást nem szabad röviden felfüggeszteni, az üzenet néhány percre történő félretétele a **SequenceNumber** egy néhány perc múlva feladott [ütemezett üzenetben](message-sequencing.md) való megjegyzése, és a halasztott üzenet újbóli beolvasása az ütemezett üzenet érkezésekor. Ha egy üzenetkezelő az összes művelet adatbázisátor függ, és az adatbázis átmenetileg nem érhető el, akkor ne használjon halasztást, hanem függessze fel a fogadási üzeneteket, amíg az adatbázis újra elérhetővé nem válik.
+Ha egy üzenet nem dolgozható fel, mert az üzenet kezelésére szolgáló adott erőforrás átmenetileg nem érhető el, de az üzenetek feldolgozását nem szabad összefoglalni, akkor a pár percen belül úgy helyezheti el az üzenetet, hogy egy [ütemezett üzenetben](message-sequencing.md) **sorszám** , hogy néhány percen belül megjelenjen a késleltetett üzenet, és újból lekéri az elhalasztott üzenetet az ütemezett üzenet érkezésekor. Ha egy üzenetkezelő egy adatbázistól függ az összes művelettől, és az adatbázis átmenetileg nem érhető el, akkor nem használhatja a késleltetést, hanem inkább felfüggeszti az üzenetek fogadását egészen addig, amíg az adatbázis újra elérhető nem lesz.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Service Bus üzenetküldéséről, olvassa el az alábbi témaköröket:
+Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)

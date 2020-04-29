@@ -1,6 +1,6 @@
 ---
-title: Tantermi laborok fogalmai - Azure Lab Services | Microsoft dokumentumok
-description: Ismerje meg a Lab Services alapfogalmait, és hogyan teheti lehetővé a laborok létrehozását és kezelését.
+title: Tantermi Labs-fogalmak – Azure Lab Services | Microsoft Docs
+description: Megismerheti a labor Services alapfogalmait, és azt, hogy miként hozhat létre és kezelhet laborokat.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
 ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77526229"
 ---
 # <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
 
-Az alábbi lista a Lab Services legfontosabb fogalmait és definícióit tartalmazza:
+A következő lista a Key Lab Services alapfogalmait és definícióit tartalmazza:
 
 ## <a name="quota"></a>Kvóta
 
-A kvóta az az időkorlát (órában), amelyet a tanár beállíthat egy tanuló számára a tesztkörnyezet virtuális gépének használatára. Beállítható 0-ra vagy meghatározott számú órára. Ha a kvóta 0-ra van állítva, a tanuló csak akkor használhatja a virtuális gépet, ha az ütemezés fut, vagy ha egy tanár manuálisan kapcsolja be a virtuális gépet a tanuló számára.  
+A kvóta az az időkorlátja (órában), ameddig a tanár beállíthatja, hogy a tanulók laboratóriumi virtuális gépet használjanak. A beállítás értéke 0 vagy adott számú óra lehet. Ha a kvóta 0 értékű, a tanulók csak akkor használhatják a virtuális gépet, ha egy ütemterv fut, vagy amikor egy tanár manuálisan bekapcsolja a tanuló virtuális gépét.  
 
-A kvótaórák akkor számítanak, amikor a tanuló saját maga indítja el a labor virtuális gépét.  Ha egy tanár manuálisan indítja el egy tanuló tesztlaborvirtuálisgépét, a kvótaórák at nem használja a rendszer az adott diákhoz.
+A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy tanár manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja az adott diákra vonatkozó kvóta-időt.
 
 ## <a name="schedules"></a>Ütemezések
 
-Az ütemezések azok az időrések, amelyeket a tanár létrehozhat az osztályhoz, így a tanuló virtuális gépek elérhetők az órai időhez.  Az ütemezések lehetnek egyszeriek vagy ismétlődőek.  A kvótaórák nem használatosak ütemezés futtatásakor.
+Az ütemtervek azt az időpontot jelentik, amelyet a tanár létrehozhat az osztály számára, így a tanuló virtuális gépek az osztály idejére elérhetők.  Az ütemtervek lehetnek egyszeri vagy ismétlődőek.  A kvóta órája nem használatos az ütemterv futtatásakor.
 
-Az ütemezéseknek három típusa van: Normál, Csak indítás és Csak a Leállítás.
+Az ütemtervek három típusa létezik: standard, csak indítás és leállítás.
 
-- **Standard .**  Ez az ütemezés elindítja az összes tanuló virtuális gép a megadott kezdési időpontban, és leállítja az összes diák virtuális gépek a megadott leállítási időpontban.
-- **Csak a indítás**.   Ez az ütemezés a megadott időpontban indítja el az összes tanuló virtuális gépet.  A tanulói virtuális gépek nem állnak le, amíg egy diák le nem állítja a virtuális gépet az Azure Lab Services portálon keresztül, vagy csak egy stop ütemezés történik.
-- **Csak megállítás**.  Ez az ütemezés leállítja az összes tanuló virtuális gép a megadott időpontban.  
+- **Standard**.  Ez az ütemterv elindítja az összes tanuló virtuális gépet a megadott kezdési időpontban, és leállítja az összes tanuló virtuális gépet a megadott leállítás időpontjában.
+- **Csak indítás**.   Ez az ütemterv az összes tanuló virtuális gépet a megadott időpontban indítja el.  A tanuló virtuális gépek nem állnak le, amíg egy tanuló leállítja a virtuális gépet a Azure Lab Services-portálon, vagy csak leállítási ütemezés történik.
+- **Csak leállítás**.  Ez az ütemterv az összes tanuló virtuális gépet leállítja a megadott időpontban.  
 
-## <a name="template-virtual-machine"></a>Sablon virtuális gép
+## <a name="template-virtual-machine"></a>Sablon virtuális gépe
 
-A sablon virtuális gép egy tesztkörnyezetben egy alap virtuálisgép-lemezkép, amelyből minden felhasználó virtuális gép jön létre. Oktatók / labor alkotók létre a sablon virtuális gép, és konfigurálja azt a szoftvert, hogy akarnak nyújtani a képzés résztvevői csinálni labs. Amikor közzétesz egy sablon virtuális gépet, az Azure Lab Services létrehozza vagy frissíti a lab virtuális gépeket a sablon virtuális gép alapján.
+A laborban található sablon virtuális gépe egy alapszintű virtuálisgép-rendszerkép, amelyből minden felhasználó virtuális gépe létrejött. A trénerek/labor-készítők beállítják a sablon virtuális gépet, és azt a szoftverrel konfigurálja, amelyet a résztvevők számára a laborok betanításához szeretne biztosítani. Amikor közzétesz egy sablon virtuális gépet, Azure Lab Services létrehozza vagy frissíti a laboratóriumi virtuális gépeket a sablon VM-je alapján.
 
 ## <a name="user-profiles"></a>Felhasználói profilok
 

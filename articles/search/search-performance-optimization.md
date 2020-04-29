@@ -1,7 +1,7 @@
 ---
 title: Teljesítményorientált skálázás
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg az Azure Cognitive Search teljesítményének finomhangolásához és az optimális méretezés konfigurálásához szükséges technikákat és gyakorlati tanácsokat.
+description: Ismerje meg az Azure Cognitive Search teljesítményének finomhangolásához és az optimális méretezés konfigurálásához szükséges technikákat és ajánlott eljárásokat.
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
@@ -10,120 +10,120 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77212386"
 ---
-# <a name="scale-for-performance-on-azure-cognitive-search"></a>Teljesítményméretezés az Azure Cognitive Search szolgáltatásban
+# <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
 
-Ez a cikk a méretezhetőség és a rendelkezésre állás kifinomult követelményeit alkalmazó speciális forgatókönyvek ajánlott eljárásokat ismerteti.
+Ez a cikk az ajánlott eljárásokat mutatja be a méretezhetőség és a rendelkezésre állás kifinomult követelményeit biztosító speciális forgatókönyvek esetében.
 
-## <a name="start-with-baseline-numbers"></a>Kezdés alaptervszámokkal
+## <a name="start-with-baseline-numbers"></a>Kezdés alapszámokkal
 
-Mielőtt egy nagyobb üzembe helyezési erőfeszítés, győződjön meg róla, hogy egy tipikus lekérdezési terhelés néz ki. Az alábbi irányelvek segíthetnek az alapszintű lekérdezési számok megérkezése érdekében.
+A nagyobb üzembe helyezési erőfeszítések elvégzése előtt győződjön meg arról, hogy tudja, mi a lekérdezés átlagos terhelése. Az alábbi irányelvek segítséget nyújtanak az alapkonfiguráció-lekérdezési számok megérkezéséhez.
 
-1. Válassza ki azt a célkésést (vagy maximális időtartamot), amelyet egy tipikus keresési kérelemnek teljesítenie kell.
+1. Válassza ki a cél késését (vagy a maximális időtartamot), amelyet egy tipikus keresési kérelem végrehajtásához el kell végezni.
 
-1. Hozzon létre és teszteljen egy valós számítási feladatot a keresési szolgáltatással egy reális adatkészlettel a késési arányok méréséhez.
+1. Valós számítási feladatok létrehozása és tesztelése reális adatkészlettel a keresési szolgáltatáshoz a késési arányok méréséhez.
 
-1. Kezdje a lekérdezések másodpercenkénti alacsony számával (QPS), majd fokozatosan növelje a tesztben végrehajtott aknak számát, amíg a lekérdezés késése az előre meghatározott cél alá nem csökken. Ez egy fontos viszonyítási alap, amely segít a méretezés megtervezésében, ahogy az alkalmazás használat növekszik.
+1. Kezdje a másodpercenkénti lekérdezések másodpercenkénti számát (QPS), majd fokozatosan növelje a teszt során végrehajtott számot, amíg a lekérdezés késése az előre definiált cél alá nem csökken. Ez egy fontos viszonyítási alap, amely segít a méretezés megtervezésében, mivel alkalmazása növekszik a használat során.
 
-1. Ahol csak lehetséges, használja fel újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy újra fel kell használnia egy példányt vagy a [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) példányt, és ha a REST API-t használja, újra fel kell használnia egyetlen HttpClient-t.
+1. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
 
-1. Módosíthatja a lekérdezési kérelmek tartalmát, hogy a keresés az index különböző részein történjen. A módosítás azért fontos, mert ha folyamatosan ugyanazokat a keresési kérelmeket hajtja végre, az adatok gyorsítótárazása a teljesítmény jobb megjelenését eredményezi, mint egy eltérő lekérdezéskészlet teljében.
+1. A lekérdezési kérések lényegének változása, hogy a Keresés az index különböző részein történjen. A változás azért fontos, mert ha folyamatosan hajtja végre ugyanazokat a keresési kéréseket, az adatgyorsítótárazás megkezdi, hogy a teljesítmény jobban nézzen ki, mint a több különböző lekérdezési készlet.
 
-1. A lekérdezési kérelmek szerkezetének változhat, így különböző típusú lekérdezéseket kaphat. Nem minden keresési lekérdezés hajt végre ugyanazon a szinten. Például egy dokumentum keresési vagy keresési javaslat általában gyorsabb, mint a lekérdezés jelentős számú aspektusait és szűrőit. A teszt összetétele különböző lekérdezéseket is tartalmaznia kell, nagyjából ugyanolyan arányban, mint az éles környezetben elvárná.  
+1. A lekérdezési kérelmek szerkezete változó, hogy különböző típusú lekérdezéseket kapjon. Nem minden keresési lekérdezés ugyanazon a szinten végezhető el. Például egy dokumentum keresési vagy keresési javaslata általában gyorsabb, mint egy jelentős számú dimenzióval és szűrőkkel rendelkező lekérdezés. A tesztelési összeállításnak különböző lekérdezéseket kell tartalmaznia, nagyjából azonos arányban, ahogy az éles környezetben várható.  
 
-A tesztszámítási feladatok létrehozása során az Azure Cognitive Search néhány jellemzőjét szem előtt kell tartania:
+A tesztelési feladatok létrehozásakor az Azure Cognitive Search néhány jellemzője van:
 
-+ Lehetséges, hogy túlterheli a szolgáltatást, ha egyszerre túl sok keresési lekérdezést lenyom. Amikor ez megtörténik, megjelenik a HTTP 503 válaszkódok. Az 503-as számú keresés elkerülése érdekében kezdje a keresési kérelmek különböző tartományaival, hogy a további keresési kérelmek hozzáadásakor láthassa a késési arányok közötti különbségeket.
++ A szolgáltatás túlterhelést okoz, ha egyszerre több keresési lekérdezést küld. Ebben az esetben a HTTP 503-válasz kódokat fogja látni. Ha a tesztelés során a 503-es számú keresési kérést szeretné elkerülni, a különböző keresési kérelmekkel kapcsolatos különbségeket a késési arányok között tekintheti meg.
 
-+ Az Azure Cognitive Search nem futtat indexelési feladatokat a háttérben. Ha a szolgáltatás egyidejűleg kezeli a lekérdezési és indexelési számítási feladatokat, vegye figyelembe ezt az indexelési feladatok bevezetésével a lekérdezési tesztekben, vagy az indexelési feladatok csúcsidőn kívüli futtatásának lehetőségeinek feltárásával.
++ Az Azure Cognitive Search nem futtat indexelési feladatokat a háttérben. Ha a szolgáltatás párhuzamosan kezeli a lekérdezési és indexelési feladatokat, ezt vegye figyelembe az indexelési feladatok bevezetésével a lekérdezési tesztekben, vagy az indexelési feladatok futtatásának időpontjában való futási lehetőségek feltárásával.
 
 > [!Tip]
-> Valósághű lekérdezési terhelést szimulálhat a terheléstesztelési eszközökkel. Próbálja ki [a betöltési tesztelést az Azure DevOps segítségével,](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) vagy használja az alábbi [alternatívák](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)egyikét.
+> A valós lekérdezési terhelést a Load Testing Tools használatával szimulálhatja. Próbálja meg [betölteni az Azure DevOps,](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) vagy használja az alábbi [alternatívák](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)egyikét.
 
-## <a name="scale-for-high-query-volume"></a>Nagy lekérdezési mennyiség méretezése
+## <a name="scale-for-high-query-volume"></a>Méretezés nagy lekérdezési kötethez
 
-A szolgáltatás túlterhelt, ha a lekérdezések túl sokáig tart, vagy amikor a szolgáltatás elindul a kérelmek eldobása. Ha ez történik, kétféleképpen oldhatja meg a problémát:
+A szolgáltatás túlterhelt, ha a lekérdezések túl sokáig tartanak, vagy amikor a szolgáltatás elkezdi a kérelmek eldobását. Ha ez történik, az alábbi két módszer egyikével kezelheti a problémát:
 
 + **Replikák hozzáadása**  
 
-  Minden replika az adatok másolata, amely lehetővé teszi a szolgáltatás számára, hogy több példányban betöltse az elosztási kérelmeket.  Minden terheléselosztás és az adatok replikálása az Azure Cognitive Search által kezelt, és bármikor módosíthatja a szolgáltatás számára lefoglalt replikák számát. Egy szabványos keresési szolgáltatásban legfeljebb 12 replikát és 3 replikát foglalhat le egy alapszintű keresési szolgáltatásban. A replikák az [Azure Portalon](search-create-service-portal.md) vagy a [PowerShellben](search-manage-powershell.md)módosíthatók.
+  Minden replika az adatai másolata, amely lehetővé teszi, hogy a szolgáltatás a kérelmeket több példányon is terheléselosztással ossza meg.  Az Azure Cognitive Search felügyeli az összes terheléselosztást és az adatreplikációt, és a szolgáltatáshoz lefoglalt replikák számát bármikor módosíthatja. Egy standard keresési szolgáltatásban legfeljebb 12 replikát, egy alapszintű keresési szolgáltatásban pedig 3 replikát foglalhat le. A replikák a [Azure Portal](search-create-service-portal.md) vagy a [PowerShell](search-manage-powershell.md)használatával módosíthatók.
 
-+ **Új szolgáltatás létrehozása magasabb szinten**  
++ **Új szolgáltatás létrehozása magasabb szintű szinten**  
 
-  Az Azure Cognitive Search [számos rétegben érkezik,](https://azure.microsoft.com/pricing/details/search/) és mindegyik különböző teljesítményszinteket kínál. Bizonyos esetekben előfordulhat, hogy olyan sok lekérdezések, hogy a réteg, amelyen van, nem tud elegendő átfutási idő, még akkor is, ha a replikák maxed ki. Ebben az esetben fontolja meg egy magasabb teljesítményű szint, például a standard S3 szint, amelynek célja a forgatókönyvek nagy számú dokumentum és rendkívül magas lekérdezési számítási feladatok.
+  Az Azure Cognitive Search [számos szinttel](https://azure.microsoft.com/pricing/details/search/) rendelkezik, és mindegyik különböző szintű teljesítményt nyújt. Bizonyos esetekben előfordulhat, hogy annyi lekérdezése van, hogy az Ön által használt keret nem tud elegendő fordulatot biztosítani, még akkor is, ha a replikák maxed ki. Ebben az esetben érdemes áthelyezni egy magasabb teljesítményű szintet, például a standard S3 szintet, amelyet nagy mennyiségű dokumentummal és rendkívül nagy lekérdezési számítási feladatokkal rendelkező forgatókönyvekhez terveztek.
 
-## <a name="scale-for-slow-individual-queries"></a>Méretezés lassú egyéni lekérdezésekhez
+## <a name="scale-for-slow-individual-queries"></a>A lassú egyéni lekérdezések méretezése
 
-A magas késési arány másik oka egyetlen lekérdezés, amely túl sokáig tart. Ebben az esetben a replikák hozzáadása nem segít. Két lehetséges lehetőség, amelyek segíthetnek a következők:
+A nagy késési arányok egy másik oka, hogy egy lekérdezés túl sok időt vesz igénybe. Ebben az esetben a replikák hozzáadása nem fog segíteni. Két lehetséges lehetőség, amely segíthet a következőkben:
 
-+ **Partíciók növelése**
++ **Partíciók bővítése**
 
-  A partíció felosztja az adatokat további számítási erőforrások között. Két partíció kettéosztja az adatokat, a harmadik partíció harmadokra osztja fel, és így tovább. Az egyik pozitív mellékhatása, hogy a lassabb lekérdezések néha gyorsabban teljesítenek a párhuzamos számítástechnikának köszönhetően. Az alacsony szelektivitású lekérdezések, például a sok dokumentumnak megfelelő lekérdezések vagy a nagyszámú dokumentum hozadékát biztosító metszenivalók párhuzamosságát észleltük. Mivel jelentős számításra van szükség a dokumentumok relevanciájának pontozásához vagy a dokumentumok számának kiszámításához, a további partíciók hozzáadása gyorsabban segít a lekérdezések teljesítésében.  
+  A partíciók feldarabolják az adategységeket A további számítástechnikai erőforrások között. A két partíció az adatmegosztást fél, a harmadik partíció pedig háromra osztja szét, és így tovább. Az egyik pozitív mellékhatás az, hogy a lassabb lekérdezések időnként gyorsabban futnak párhuzamos számítástechnika miatt. Megjegyezték, hogy az alacsony szelektivitású lekérdezések, például a sok dokumentumnak megfelelő lekérdezések, illetve a nagy számú dokumentumra vonatkozó párhuzamos. Mivel a dokumentumok relevanciájának kiszámításához, illetve a dokumentumok számának megszámlálásához jelentős számítási követelmény szükséges, a további partíciók hozzáadásával a lekérdezések gyorsabban elvégezhető.  
    
-  A Standard search szolgáltatásban legfeljebb 12 partíció, az alapszintű keresési szolgáltatásban pedig 1 partíció lehet. A partíciók az [Azure Portalon](search-create-service-portal.md) vagy a [PowerShellben](search-manage-powershell.md)módosíthatók.
+  A standard keresési szolgáltatásban legfeljebb 12 partíció lehet, az alapszintű keresési szolgáltatásban pedig 1 partíció található. A partíciók a [Azure Portal](search-create-service-portal.md) vagy a [PowerShell](search-manage-powershell.md)használatával módosíthatók.
 
-+ **Nagy számossági mezők korlátozása**
++ **Magas fokú kardinális mezők korlátozása**
 
-  A nagy számosságú mező egy olyan facetable vagy szűrhető mezőből áll, amely jelentős számú egyedi értékkel rendelkezik, és ennek eredményeképpen jelentős erőforrásokat használ fel az eredmények számításakor. Ha például egy Termékazonosítót vagy Leírás mezőt laptáblaként/szűrhetőként állít be, az nagy számosságnak számít, mivel a dokumentumtól a dokumentumig a legtöbb érték egyedi. Ahol csak lehetséges, korlátozza a magas számosságú mezők számát.
+  A magas kardinális mező egy olyan, jól látható vagy szűrhető mezőből áll, amely jelentős számú egyedi értékkel rendelkezik, és ennek eredményeképpen jelentős erőforrásokat használ a számítási eredmények alapján. Például ha a termék-azonosító vagy a Description mező úgy van beállítva, hogy a felszűrhető/szűrhető, a dokumentum a dokumentumból származó értékek nagy részét egyedinek számítja. Ahol csak lehetséges, korlátozza a magas kardinális mezők számát.
 
-+ **Keresési szint növelése**  
++ **Keresési szintek emelése**  
 
-  Egy magasabb Azure Cognitive Search szintre való áttérés egy másik módja lehet a lassú lekérdezések teljesítményének javításának. Minden magasabb szintű gyorsabb processzorokat és több memóriát biztosít, amelyek mindegyike pozitív hatással van a lekérdezés teljesítményére.
+  Akár egy magasabb szintű Azure Cognitive Search-szintet is használhat, így javíthatja a lassú lekérdezések teljesítményét. Minden magasabb szinten gyorsabb processzorok és több memória áll rendelkezésre, mindkettőnek pozitív hatása van a lekérdezési teljesítményre.
 
-## <a name="scale-for-availability"></a>Méretezés az elérhetőséghez
+## <a name="scale-for-availability"></a>Méretezés a rendelkezésre álláshoz
 
-Replikák nem csak segít csökkenteni a lekérdezés késését, de azt is lehetővé teszi a magas rendelkezésre állás. Egyetlen kópia esetén a szoftverfrissítések után a kiszolgáló újraindítása vagy más karbantartási események miatt időszakos állásidőre kell számítania. Ennek eredményeképpen fontos figyelembe venni, ha az alkalmazás megköveteli a keresések (lekérdezések) és az írási (indexelési események) magas rendelkezésre állását. Az Azure Cognitive Search sla-beállításokat kínál az összes fizetős keresési ajánlathoz, a következő attribútumokkal:
+A replikák nem csupán csökkentik a lekérdezés késését, de a magas rendelkezésre állást is lehetővé tehetik. Egyetlen replika esetén rendszeres állásidőt kell várnia, mert a kiszolgáló újraindul a szoftverfrissítések vagy egyéb karbantartási események után. Ennek eredményeképpen fontos figyelembe venni, hogy az alkalmazás magas rendelkezésre állást igényel-e a keresésekhez (lekérdezésekhez) és írásokhoz (az indexelési eseményekhez). Az Azure Cognitive Search SLA-beállításokat biztosít az összes fizetős keresési ajánlathoz a következő attribútumokkal:
 
-+ Két replikák magas rendelkezésre állású csak olvasható számítási feladatok (lekérdezések)
++ Két replika a csak olvasási terhelések magas rendelkezésre állásához (lekérdezések)
 
-+ Három vagy több kópia az írási és olvasási számítási feladatok magas rendelkezésre állásához (lekérdezések és indexelés)
++ Három vagy több replika az írási és olvasási feladatok (lekérdezések és indexelés) magas rendelkezésre állásához
 
-További részletekért látogasson el az [Azure Cognitive Search szolgáltatásiszint-szerződésre.](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
+További részletekért látogasson el az [Azure Cognitive Search szolgáltatói szerződésra](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-Mivel a replikák az adatok másolatai, több replikák lehetővé teszi az Azure Cognitive Search gép újraindítása és karbantartása egy replika, míg a lekérdezés végrehajtása folytatódik más replikákon. Ezzel szemben, ha a replikák el, akkor a lekérdezés teljesítményének romlása, feltételezve, hogy ezek a replikák voltak a kihasználatlan erőforrás.
+Mivel a replikák az adatai másolatai, több replikát is biztosít az Azure Cognitive Search a számítógép újraindítását és karbantartását az egyik replikán, míg a lekérdezés végrehajtása más replikákban folytatódik. Ezzel szemben, ha elvégzi a replikákat, a lekérdezési teljesítmény romlása merül fel, feltéve, hogy ezek a replikák egy kihasználatlan erőforrás.
 
-## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Méretezés földrajzilag elosztott számítási feladatokhoz és georedundancia
+## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Méretezés földrajzilag elosztott számítási feladatokhoz és geo-redundancia
 
-A földrajzilag elosztott számítási feladatok esetén a gazdaadatközponttól távol található felhasználók magasabb késési arányokkal rendelkeznek. Az egyik megoldás az, hogy több keresési szolgáltatást olyan régiókban, amelyek közelebb ezek hez a felhasználókhoz.
+A földrajzilag elosztott számítási feladatokhoz a gazdagép-adatközponttól távol lévő felhasználóknak nagyobb késési aránya lesz. Az egyik megoldás az, hogy több keresési szolgáltatást kell kiépíteni a régiókban, és ezek a felhasználók közelebb vannak egymáshoz.
 
-Az Azure Cognitive Search jelenleg nem biztosít automatizált módszert az Azure Cognitive Search-indexek régiók közötti georeplikálására, de vannak olyan technikák, amelyek segítségével ez a folyamat egyszerűen megvalósítható és kezelhető. Ezeket a következő néhány szakasz ismerteti.
+Az Azure Cognitive Search jelenleg nem biztosít automatizált módszert az Azure Cognitive Search indexek földrajzi replikálására a régiók között, de vannak olyan technikák is, amelyek a folyamat egyszerű megvalósításához és kezeléséhez használhatók. Ezeket a következő néhány szakaszban ismertetjük.
 
-A keresési szolgáltatások földrajzilag elosztott készletének célja, hogy két vagy több index érhető el két vagy több régióban, ahol a felhasználó az Azure Cognitive Search szolgáltatáshoz kerül, amely a példában látható legalacsonyabb késést biztosítja:
+A földrajzi eloszlású keresési szolgáltatások célja, hogy legalább két, két vagy több régióban rendelkezésre álló index legyen elérhető, ahol a felhasználó az Azure Cognitive Search szolgáltatáshoz van irányítva, amely az ebben a példában látható legalacsonyabb késést biztosítja:
 
-   ![Szolgáltatások keresztlapja régiónként][1]
+   ![Szolgáltatások közötti, régiónként][1]
 
-### <a name="keep-data-synchronized-across-multiple-services"></a>Az adatok szinkronizálásának megtartása több szolgáltatás között
+### <a name="keep-data-synchronized-across-multiple-services"></a>Több szolgáltatás között szinkronizálva marad az adatszinkronizálás
 
-Két lehetőség van az elosztott keresési szolgáltatások szinkronban tartására, amelyek az [Azure Cognitive Search Indexer](search-indexer-overview.md) vagy a Push API (más néven az [Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/)használatával állnak.  
+Az elosztott keresési szolgáltatások szinkronizálása két lehetőség közül választhat, amelyek az [azure Cognitive Search indexelő](search-indexer-overview.md) vagy a leküldéses API (más néven [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)) használatával állnak.  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelők használata több szolgáltatás tartalmának frissítéséhez
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelő használata több szolgáltatás tartalmának frissítéséhez
 
-Ha már használja az indexelőt egy szolgáltatáson, konfigurálhatja egy második indexelőt egy másik szolgáltatáson, hogy ugyanazt az adatforrás-objektumot használja, és adatokat vonjon le ugyanahelyről. Minden egyes régióban minden szolgáltatás rendelkezik saját indexelővel és célindexszel (a keresési index nincs megosztva, ami azt jelenti, hogy az adatok duplikálódnak), de minden indexelő ugyanarra az adatforrásra hivatkozik.
+Ha már használja az indexelő az egyik szolgáltatáson, a második indexelő is konfigurálható egy másik szolgáltatáson, hogy ugyanazt az adatforrás-objektumot használja, az adatok ugyanabból a helyről való kihúzásával. Az egyes régiókban található szolgáltatások saját indexelő és egy célként megadott indextel rendelkeznek (a keresési index nincs megosztva, ami azt jelenti, hogy az adatok duplikálva vannak), de minden indexelő ugyanarra az adatforrásra hivatkozik.
 
-Itt van egy magas szintű vizuális, hogy milyen lenne, hogy az építészet nézne ki.
+Itt látható egy magas szintű vizualizáció, hogy az architektúra milyen módon fog kinézni.
 
-   ![Egyetlen adatforrás elosztott indexelővel és szolgáltatáskombinációkkal][2]
+   ![Egyetlen adatforrás elosztott indexelő és szolgáltatási kombinációkkal][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>REST API-k használata több szolgáltatás tartalomfrissítéseinek lenyomásához
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>A REST API-k használata a tartalmi frissítések több szolgáltatásban való leküldéséhez
 
-Ha az Azure Cognitive Search REST API-t használja az [Azure Cognitive Search indexében lévő tartalom leküldéses leküldéses,](https://docs.microsoft.com/rest/api/searchservice/update-index)a különböző keresési szolgáltatások szinkronban tarthatja a különböző keresési szolgáltatások módosításait, amikor frissítésre van szükség. A kódban ügyeljen arra, hogy kezelje azokat az eseteket, amikor egy keresési szolgáltatás frissítése sikertelen, de más keresési szolgáltatások esetében sikeres.
+Ha az Azure Cognitive Search REST APIt használja az [azure Cognitive Search indexben lévő tartalmak leküldéséhez](https://docs.microsoft.com/rest/api/searchservice/update-index), a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
 
 ## <a name="leverage-azure-traffic-manager"></a>Az Azure Traffic Manager kihasználása
 
-[Az Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehetővé teszi, hogy a kérelmeket több földrajzi helyen lévő webhelyekre irányítsa, amelyeket ezután több keresési szolgáltatás támogat. A Traffic Manager egyik előnye, hogy az Azure Cognitive Search vizsgálata annak érdekében, hogy elérhető legyen, és a felhasználókat állásidő esetén alternatív keresési szolgáltatásokhoz irányíthatja. Emellett ha keresési kérelmeket küld az Azure-webhelyeken keresztül, az Azure Traffic Manager lehetővé teszi, hogy terheléselosztási esetekben, ahol a webhely fel, de nem az Azure Cognitive Search. Íme egy példa arra, hogy mi az architektúra, amely kihasználja a Traffic Manager.
+Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehetővé teszi, hogy a kérelmeket több, több keresési szolgáltatás által támogatott földrajzi helyen lévő webhelyre irányítsa. Az Traffic Manager egyik előnye, hogy az Azure-Cognitive Search mintavétele lehetővé teszi, hogy elérhető legyen, és a felhasználók átirányítása alternatív keresési szolgáltatásokra leállás esetén. Emellett, ha az Azure-webhelyeken keresztül irányítja a keresési kérelmeket, az Azure Traffic Manager lehetővé teszi a terheléselosztási esetek terhelését, ha a webhely fel van töltve, de nem az Azure Cognitive Search. Íme egy példa arra, hogy milyen architektúrát használ a Traffic Manager.
 
-   ![Szolgáltatások keresztlapja régiónként, központi forgalomkezelővel][3]
+   ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az egyes csomagok és szolgáltatások korlátairól, olvassa el a Szolgáltatáskorlátok című [témakört.](search-limits-quotas-capacity.md) A partíció- és replikakombinációkról a [Kapacitás megtervezése.](search-capacity-planning.md)
+Ha többet szeretne megtudni az egyes díjszabási csomagokról és szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [szolgáltatási korlátok](search-limits-quotas-capacity.md)című témakört. A partíció-és replika-kombinációkkal kapcsolatos további tudnivalókért tekintse meg [a kapacitás megtervezése](search-capacity-planning.md) című témakört.
 
-A jelen cikkben tárgyalt technikák teljesítményéről és bemutatásáról a következő videót olvashatja:
+Az ebben a cikkben tárgyalt módszerek teljesítményével és bemutatásával kapcsolatban tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

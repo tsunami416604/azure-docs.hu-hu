@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Mondathosszok beszereznie – Fordítószöveg API'
+title: 'Gyors útmutató: mondatok hosszának beolvasása – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtudhatja, hogyan határozhatja meg a mondat hosszát a Translator Text API használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan határozhatja meg a mondat hosszát a Translator Text API használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525112"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Rövid útmutató: A fordító szöveg API-jával határozhatja meg a mondat hosszát
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Gyors útmutató: a Translator Text API használata a mondat hosszának meghatározásához
 
-Ebben a rövid útmutatóban megtudhatja, hogyan határozhatja meg a mondatok hosszát a Translator Text API használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan határozhatja meg a mondatok hosszát a Translator Text API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
