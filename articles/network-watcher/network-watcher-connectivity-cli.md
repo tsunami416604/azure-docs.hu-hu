@@ -1,7 +1,7 @@
 ---
-title: Kapcsolatok – Azure CLI –
+title: Kapcsolatok hibáinak megoldása – Azure CLI
 titleSuffix: Azure Network Watcher
-description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolathibaelhárítási képességét az Azure CLI használatával.
+description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit az Azure CLI használatával.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,34 +14,34 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842886"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Az Azure Network Watcherrel létesített kapcsolatok – az Azure CLI használatával – problémamegoldás
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Az Azure Network Watcher kapcsolatának hibáinak megoldása az Azure CLI használatával
 
 > [!div class="op_single_selector"]
-> - [Powershell](network-watcher-connectivity-powershell.md)
+> - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Ismerje meg, hogyan használható a kapcsolathiba elhárítása annak ellenőrzésére, hogy létre lehet-e hozni egy közvetlen TCP-kapcsolatot egy virtuális gépről egy adott végpontra.
+Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy a következő erőforrásokkal rendelkezik:
+Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
-* A Hálózatfigyelő egy példánya abban a régióban, ahol el szeretné hárítani a kapcsolatot.
-* Virtuális gépek a kapcsolatok elhárításához.
+* Network Watcher egy példánya abban a régióban, ahol a kapcsolódást szeretné elhárítani.
+* Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolathiba elhárításához szükség van `AzureNetworkWatcherExtension` arra, hogy a virtuális gép, amelyről hibaelhárítási, telepítve van a virtuális gép bővítménye. A bővítmény Windows virtuális gépen történő telepítéséhez látogasson el az [Azure Network Watcher Agent windowsos](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és Linuxos virtuális gépbővítménybe, és látogasson el az [Azure Network Watcher Agent linuxos virtuálisgép-bővítménybe.](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) A bővítmény nem szükséges a célvégponton.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális gép csatlakoztatásának ellenőrzése
+## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
-Ez a példa a 80-as porton keresztül ellenőrzi a célvirtuális géphez való kapcsolódást.
+Ez a példa az 80-es porton keresztül ellenőrzi a cél virtuális géphez való kapcsolódást.
 
 ### <a name="example"></a>Példa
 
@@ -51,7 +51,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Válasz
 
-A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` **elérhetetlen**. Láthatja, hogy az összes elküldött szonda meghibásodott. A kapcsolat nem sikerült a virtuális készüléken, mert a felhasználó által konfigurált `NetworkSecurityRule` **UserRule_Port80**nevű , úgy van beállítva, hogy blokkolja a bejövő forgalmat a 80-as porton. Ez az információ használható a kapcsolódási problémák kutatására.
+A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy **UserRule_Port80**nevű `NetworkSecurityRule` felhasználó konfigurálta, amely a 80-es porton való bejövő forgalom blokkolására van konfigurálva. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```json
 {
@@ -122,7 +122,7 @@ Nic0/ipConfigurations/ipconfig1",
 
 ## <a name="validate-routing-issues"></a>Útválasztási problémák ellenőrzése
 
-Ez a példa ellenőrzi a virtuális gép és egy távoli végpont közötti kapcsolatot.
+Ez a példa egy virtuális gép és egy távoli végpont közötti kapcsolatot ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -132,7 +132,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Válasz
 
-A következő példában `connectionStatus` az **elérhetetlenként**jelenik meg. A `hops` részletekben látható, `issues` hogy a forgalom blokkolva `UserDefinedRoute`volt a .
+A következő példában a `connectionStatus` látható, hogy nem **érhető el**. A `hops` részletek között látható, `issues` hogy a forgalom le lett tiltva, mert egy. `UserDefinedRoute`
 
 ```json
 {
@@ -178,9 +178,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-website-latency"></a>Webhely késése
+## <a name="check-website-latency"></a>Webhely késésének keresése
 
-A következő példa ellenőrzi a kapcsolatot egy webhelyhez.
+A következő példa egy webhelyhez való kapcsolódást ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -190,7 +190,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Válasz
 
-A következő válaszban a `connectionStatus` műsorok **at elérhetőként láthatja.** Ha a kapcsolat sikeres, késési értékeket ad meg.
+A következő válaszban láthatja, hogy a `connectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
 ```json
 {
@@ -224,9 +224,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Tárolóvégpont-kapcsolat ellenőrzése
+## <a name="check-connectivity-to-a-storage-endpoint"></a>A tárolási végponttal létesített kapcsolat ellenőrzése
 
-A következő példa ellenőrzi a virtuális gép és a blogtárfiók közötti kapcsolatot.
+Az alábbi példa egy virtuális gép és egy blog Storage-fiók közötti kapcsolatot ellenőrzi.
 
 ### <a name="example"></a>Példa
 
@@ -236,7 +236,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Válasz
 
-A következő json az előző parancsmag futtatásából származó példaválasz. A csekk sikerességének `connectionStatus` sikerességéhez a tulajdonság **elérhetőként jelenik meg.**  A storage blob és a késés eléréséhez szükséges ugrások számát illetően.
+A következő JSON az előző parancsmag futtatásának példája. Az ellenőrzések sikeressége esetén a `connectionStatus` tulajdonság **elérhetőként**jelenik meg.  A tárolási blob és a késés eléréséhez szükséges ugrások számával kapcsolatos részletek.
 
 ```json
 {
@@ -271,6 +271,6 @@ A következő json az előző parancsmag futtatásából származó példaválas
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan automatizálhatja a csomagrögzítéseket a virtuálisgép-riasztások segítségével a [Riasztás aktivált csomagrögzítésének létrehozásával](network-watcher-alert-triggered-packet-capture.md)
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 
-Annak megállapítása, hogy bizonyos forgalom engedélyezett-e a virtuális gépbe vagy a virtuális gépből, az [IP-folyamat ellenőrzése című ellátogat.Find](diagnose-vm-network-traffic-filtering-problem.md) if certain traffic is allowed in or out in your VM by check IP flow verify
+Annak megállapítása, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md) meglátogatása esetén engedélyezett-e a virtuális gép bejövő vagy kimenő forgalma

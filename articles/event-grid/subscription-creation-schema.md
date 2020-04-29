@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid-előfizetésséma
-description: Ez a cikk ismerteti a tulajdonságok egy eseményre az Azure Event Grid használatával. Event Grid-előfizetésséma.
+title: Azure Event Grid előfizetési séma
+description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozás tulajdonságait ismerteti. Event Grid előfizetési séma.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,50 +8,50 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: babanisa
 ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720758"
 ---
-# <a name="event-grid-subscription-schema"></a>Event Grid-előfizetésséma
+# <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
 
-Event Grid-előfizetés létrehozásához küld egy kérelmet az Esemény-előfizetés létrehozása műveletnek. Használja az alábbi formátumot:
+Event Grid előfizetés létrehozásához küld egy kérést az esemény-előfizetés létrehozása művelethez. Használja az alábbi formátumot:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Ha például egy nevű erőforráscsoportban `examplestorage` nevű tárfiókhoz `examplegroup`szeretne esemény-előfizetést létrehozni, használja a következő formátumot:
+Ha például egy nevű `examplestorage` `examplegroup`erőforráscsoporthoz tartozó Storage-fiókhoz szeretne esemény-előfizetést létrehozni, használja a következő formátumot:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Az esemény-előfizetés nevének 3-64 karakter hosszúságúnak kell lennie, és csak a-z, A-Z, 0-9 és "-" karaktereket tartalmazhat. A cikk ismerteti a tulajdonságok és a séma a törzs a kérelem.
+Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak a-z, A-Z, 0-9 és a "-" karaktereket tartalmazhat. A cikk a kérelem törzsének tulajdonságait és sémáját ismerteti.
  
 ## <a name="event-subscription-properties"></a>Esemény-előfizetés tulajdonságai
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | destination | objektum | A végpontot meghatározó objektum. |
-| filter | objektum | Választható mező az eseménytípusok szűréséhez. |
+| filter | objektum | Egy választható mező az események típusának szűréséhez. |
 
 ### <a name="destination-object"></a>célobjektum
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| végponttípusa | sztring | Az előfizetés végpontjának típusa (webhook/HTTP, Event Hub vagy várólista). | 
-| endpointUrl | sztring | Az esemény-előfizetés eseményeinek cél URL-címe. | 
+| endpointType | sztring | Az előfizetés végpontjának típusa (webhook/HTTP, Event hub vagy üzenetsor). | 
+| endpointUrl | sztring | Az esemény-előfizetésben szereplő események céljának URL-címe. | 
 
-### <a name="filter-object"></a>szűrőobjektum
+### <a name="filter-object"></a>objektum szűrése
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| includedEventTypes | tömb | Egyezzen meg, ha az eseményüzenetben szereplő eseménytípus pontosan megegyezik az eseménytípus nevek egyikével. Hibát jelez, ha az esemény neve nem egyezik meg az eseményforrás regisztrált eseménytípusnevével. Az alapértelmezett érték minden eseménytípusnak megfelel. |
-| subjectBeginsWith | sztring | Előtag-egyezésszűrő az eseményüzenet tárgymezőjéhez. Az alapértelmezett vagy üres karakterlánc mindegyiknek megfelel. | 
-| subjectEndsWith | sztring | Utótag-egyezésszűrő az eseményüzenet tárgymezőjéhez. Az alapértelmezett vagy üres karakterlánc mindegyiknek megfelel. |
-| isSubjectCaseSensitive | sztring | Szabályozza a kis- és nagybetűk megkülönböztetését a szűrők esetében. |
+| includedEventTypes | tömb | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
+| subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 
+| subjectEndsWith | sztring | Utótag – az esemény üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. |
+| isSubjectCaseSensitive | sztring | A kis-és nagybetűk megkülönböztetését szabályozza a szűrőkhöz. |
 
 
 ## <a name="example-subscription-schema"></a>Példa előfizetési sémára
@@ -77,4 +77,4 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúságúnak kell lennie, é
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

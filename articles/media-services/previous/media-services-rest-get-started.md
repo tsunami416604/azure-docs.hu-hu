@@ -1,6 +1,6 @@
 ---
-title: A rest használatával igény szerinti tartalom kézbesítése | Microsoft dokumentumok
-description: Ez az oktatóanyag bemutatja az igény szerinti tartalomkézbesítési alkalmazás rest API-val történő megvalósításának lépéseit.
+title: Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával | Microsoft Docs
+description: Ez az oktatóanyag végigvezeti az igény szerinti tartalom-továbbítási alkalmazás megvalósításának lépésein, Azure Media Services a REST API használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773685"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Első lépések a tartalom igény szerinti kézbesítésével a REST használatával  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez a rövid útmutató bemutatja az Azure Media Services (AMS) REST API-k használatával megvalósított video-on-demand (VoD) tartalomkézbesítési alkalmazás megvalósításának lépéseit.
+Ez a rövid útmutató végigvezeti egy igény szerinti video-továbbítási alkalmazás megvalósításának lépésein Azure Media Services (AMS) REST API-k használatával.
 
-Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media Services-fejlesztéshez szükséges leggyakoribb programozási objektumokat és feladatokat. Az oktatóanyag befejezésekor streamelhet vagy fokozatosan letölthet egy feltöltött, kódolt és letöltött mintamédiafájlt.
+Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media Services-fejlesztéshez szükséges leggyakoribb programozási objektumokat és feladatokat. Az oktatóanyag befejezésekor lehetősége van adatfolyamként továbbítani vagy fokozatosan letölteni a feltöltött, kódolt és letöltött minta médiafájlokat.
 
 A következő kép a Media Services OData-modellen alapuló VoD-alkalmazásfejlesztések során leggyakrabban használt objektumok közül mutat be néhányat.
 
@@ -37,40 +37,40 @@ Kattintson a képre a teljes méretű megjelenítéshez.
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A következő előfeltételek szükségesek a rest API-kkal rendelkező Media Services szolgáltatással való fejlesztés megkezdéséhez.
+A REST API-kkal való Media Services fejlesztésének megkezdéséhez a következő előfeltételek szükségesek.
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* A Media Services REST API-val való fejlesztés ismertetése. További információt a [Media Services REST API – áttekintés című témakörben talál.](media-services-rest-how-to-use.md)
-* Az Ön által választott alkalmazás, amely HTTP-kérelmeket és válaszokat küldhet. Ez a bemutató használ [Fiddler](https://www.telerik.com/download/fiddler).
+* A Media Services REST API fejlesztésének megismerése. További információ: [Media Services REST API áttekintése](media-services-rest-how-to-use.md).
+* Az Ön által választott alkalmazás, amely HTTP-kéréseket és-válaszokat tud küldeni. Ez az oktatóanyag a [hegedűst](https://www.telerik.com/download/fiddler)használja.
 
-A következő feladatok ebben a rövid útmutatóban jelennek meg.
+Ebben a rövid útmutatóban a következő feladatok jelennek meg.
 
 1. A streamvégpont elindítása (az Azure Portal használatával).
-2. Csatlakozzon a Media Services-fiókhoz a REST API-val.
-3. Hozzon létre egy új eszközt, és töltsön fel egy videofájlt a REST API-val.
-4. Kódolja a forrásfájlt adaptív sávszélességű MP4-fájlokba REST API-val.
-5. Tegye közzé az eszközt, és kapjon streamelési és progresszív letöltési URL-eket a REST API-val.
+2. Kapcsolódjon a Media Services fiókhoz a REST API használatával.
+3. Hozzon létre egy új adategységet, és töltsön fel egy videofájl REST API.
+4. A forrásfájl kódolása adaptív sávszélességű MP4-fájlokba REST API.
+5. Tegye közzé az adategységet, és szerezze be a streaming és a progresszív letöltési URL-címeket REST API.
 6. Tartalom lejátszása
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Használja ugyanazt a házirend-azonosítót, ha mindig ugyanazokat a napokat / hozzáférési engedélyeket használja, például a helymeghatározókra vonatkozó házirendeket, amelyek hosszú ideig a helyükön maradnak (nem feltöltési házirendek). További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Használja ugyanazt a házirend-azonosítót, ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja, például olyan lokátorokra vonatkozó házirendeket, amelyek hosszú ideig maradnak érvényben (nem feltöltési szabályzatok). További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-A cikkben használt AMS REST-entitásokról az [Azure Media Services REST API-referencia című témakörben olvashat részletesen.](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) Lásd még az [Azure Media Services fogalmait.](media-services-concepts.md)
+A cikkben használt AMS REST-entitásokkal kapcsolatos részletekért tekintse meg a [Azure Media Services REST API-referenciát](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Lásd még: [Azure Media Services fogalmak](media-services-concepts.md).
 
 >[!NOTE]
->Amikor a Media Services entitásait éri el, meghatározott fejlécmezőket és értékeket kell beállítania a HTTP-kérelmekben. További információt a [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md)című témakörben talál.
+>A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>A streamvégpont elindítása az Azure Portal használatával
 
-Az Azure Media Services használatával való munka során az egyik leggyakoribb forgatókönyv a videó adaptív sávszélességű streamelésen keresztül történő kézbesítése. A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
+Azure Media Services használatakor az egyik leggyakoribb forgatókönyv a videó továbbítása az adaptív sávszélességű streaming használatával. A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
 
 >[!NOTE]
->Amikor az AMS-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
+>Az AMS-fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
 
 A streamvégpont elindításához tegye a következőket:
 
-1. Jelentkezzen be az [Azure Portalon.](https://portal.azure.com/)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/).
 2. Kattintson a Settings (Beállítások) ablak Streaming endpoints (Streamvégpontok) elemére.
 3. Kattintson az alapértelmezett streamvégpontra.
 
@@ -79,26 +79,26 @@ A streamvégpont elindításához tegye a következőket:
 4. Kattintson a Start ikonra.
 5. Mentse a módosításokat a Save (Mentés) gombra kattintva.
 
-## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>Csatlakozás a Media Services-fiókhoz REST API-val
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>Kapcsolódjon a Media Services fiókhoz a REST API
 
-Az AMS API-hoz való csatlakozásról az [Access the Azure Media Services API azure AD-hitelesítéssel című témakörben](media-services-use-aad-auth-to-access-ams-api.md)talál további információt. 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Új eszköz létrehozása és videofájl feltöltése rest API-val
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Új eszköz létrehozása és videofájl feltöltése REST API
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az **Eszköz** entitás tartalmazhat video-, hang-, kép-, miniatűr gyűjtemények, szöveges pályák és feliratfájlok (és a metaadatok ezekről a fájlokat.)  Miután feltöltötte a fájlokat az eszközbe, a tartalom biztonságosan tárolódik a felhőben további feldolgozás és streamelés céljából.
+A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az **eszköz** entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok az objektumba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
-Az eszköz létrehozásakor megadandó értékek egyike az eszközlétrehozási beállítások. A **Beállítások** tulajdonság egy olyan felsorolási érték, amely leírja azokat a titkosítási beállításokat, amelyekkel egy eszköz létrehozható. Az érvényes érték az alábbi lista egyik értéke, nem pedig a lista értékeinek kombinációja:
+Az eszközök létrehozásakor szükséges értékek egyike az eszköz létrehozási beállításai. A **Options** tulajdonság egy enumerálási érték, amely leírja az eszköz által létrehozható titkosítási beállításokat. Érvényes érték az alábbi listából származó értékek egyike, nem a lista értékeinek kombinációja:
 
-* **Nincs** = **0** – nincs titkosítás. Ha ezt a beállítást használja, a tartalom nem védett az átvitel vagy a tárolóban lévő nyugalmi helyen.
+* **Nincs** = **0** – a rendszer nem használ titkosítást. Ha ezt a beállítást használja, a tartalmat a rendszer nem védi az átvitelben vagy a tárolás során.
     Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
-* **StorageEncrypted** = **1** – Titkosítja a tiszta tartalom helyileg AES-256 bites titkosítással, majd feltölti azt az Azure Storage, ahol tárolja titkosítva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
-* **CommonEncryptionProtected** = **2** - Akkor használja ezt a beállítást, ha olyan tartalmat tölt fel, amelymár titkosítva van és közös titkosítással vagy PlayReady DRM-mel védett (például PlayReady DRM-mel védett sima streamelés).
-* **EnvelopeEncryptionProtected** = **4** – Akkor használja ezt az opciót, ha az AES-sel titkosított HLS-t tölti fel. A fájlokat a Transform Manager kódolhatja és titkosította.
+* **StorageEncrypted** = **1** . StorageEncrypted – titkosítja a tartalmakat az AES-256 bites titkosítás használatával helyileg, majd feltölti az Azure Storage-ba, ahol a tárolása titkosított állapotban van. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
+* **CommonEncryptionProtected** = **2** . CommonEncryptionProtected – ezt a lehetőséget akkor használja, ha olyan tartalmat tölt fel, amely már titkosítva van, és Common encryption vagy PlayReady DRM-mel védett (például a PlayReady DRM-mel védett Smooth streaming).
+* **EnvelopeEncryptionProtected** = **4** . EnvelopeEncryptionProtected – ezt a beállítást akkor használja, ha AES-titkosítással titkosított HLS tölt fel. A fájlokat kódolni és titkosítani kell az átalakító-kezelővel.
 
 ### <a name="create-an-asset"></a>Eszköz létrehozása
-Az eszköz a Media Services többtípusú vagy objektumkészletének tárolója, beleértve a video-, hang-, kép- és miniatűrgyűjteményeket, szöveges sávokat és feliratfájlokat. A REST API-ban egy eszköz létrehozásához postai kérelmet kell küldeni a Media Servicesnek, és az eszközre vonatkozó bármely tulajdonságinformációt a kérelem törzsébe kell tenni.
+Az eszköz a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
 
-A következő példa bemutatja, hogyan hozhat létre egy eszközt.
+Az alábbi példa bemutatja, hogyan hozhat létre egy eszközt.
 
 **HTTP-kérés**
 
@@ -119,7 +119,7 @@ A következő példa bemutatja, hogyan hozhat létre egy eszközt.
 
 **HTTP-válasz**
 
-Ha sikeres, a következő értéket adja vissza:
+Ha a művelet sikeres, a rendszer a következőt adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -149,10 +149,10 @@ Ha sikeres, a következő értéket adja vissza:
        "StorageAccountName":"storagetestaccount001"
     }
 
-### <a name="create-an-assetfile"></a>Eszközfájl létrehozása
-Az [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blobtárolóban tárolt video- vagy hangfájlt jelöl. Egy eszközfájl mindig egy eszközhöz van társítva, és egy eszköz egy vagy több AssetFiles-t tartalmazhat. A Media Services kódoló feladata sikertelen, ha egy eszközfájl-objektum nincs társítva egy blobtárolóban lévő digitális fájlhoz.
+### <a name="create-an-assetfile"></a>AssetFile létrehozása
+A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt videót vagy hangfájlt jelöl. Az adategységek mindig egy adott objektumhoz vannak társítva, és egy adott eszköz egy vagy több AssetFiles is tartalmazhat. A Media Services Encoder feladat meghiúsul, ha egy objektum nem egy blob-tárolóban lévő digitális fájllal van társítva.
 
-Miután feltöltötte a digitális médiafájlt egy blobtárolóba, a **MERGE** HTTP-kérelemmel frissíti az AssetFile fájlt a médiafájladataival (ahogy az a témakör későbbi részében látható).
+Miután feltöltötte a digitális médiafájlt egy blob-tárolóba, az **egyesítési** HTTP-kérelem segítségével frissítheti a AssetFile a médiafájl információit használva (a témakör későbbi részében látható).
 
 **HTTP-kérés**
 
@@ -211,10 +211,10 @@ Miután feltöltötte a digitális médiafájlt egy blobtárolóba, a **MERGE** 
     }
 
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Az AccessPolicy létrehozása írási engedéllyel
-Mielőtt bármilyen fájlt feltöltene a blobstorage-ba, állítsa be a hozzáférési szabályzat jogosultságait egy eszközíráshoz. Ehhez tegye közzé a HTTP-kérelmet az AccessPolicies entitáskészletnek. A létrehozáskor adjon meg egy DurationInMinutes értéket, vagy 500 belső kiszolgálói hibaüzenet jelenik meg válaszul. Az AccessPolicies programról további információt az [AccessPolicy című témakörben talál.](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)
+### <a name="creating-the-accesspolicy-with-write-permission"></a>A AccessPolicy létrehozása írási engedéllyel
+A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférési házirend jogosultságait az eszközre való íráshoz. Ehhez HTTP-kérelmet kell küldenie a AccessPolicies entitás számára. Hozzon létre egy DurationInMinutes értéket a létrehozáskor, vagy ha a rendszer visszaküldi a 500 belső kiszolgálóhiba-hibaüzenetet. További információ a AccessPolicies: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-A következő példa bemutatja, hogyan hozhat létre AccessPolicy-t:
+Az alábbi példa bemutatja, hogyan hozhat létre AccessPolicy:
 
 **HTTP-kérés**
 
@@ -233,7 +233,7 @@ A következő példa bemutatja, hogyan hozhat létre AccessPolicy-t:
 
 **HTTP-válasz**
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -259,9 +259,9 @@ Ha sikeres, a következő választ adja vissza:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>A feltöltési URL-cím beszerezni
+### <a name="get-the-upload-url"></a>A feltöltési URL-cím letöltése
 
-A tényleges feltöltési URL-cím fogadásához hozzon létre egy SAS-lokátort. A lokátorok határozzák meg a kapcsolat végpontjának kezdési idejét és típusát azon ügyfelek számára, akik egy eszközfájljait szeretnék elérni. Egy adott AccessPolicy és Eszközpárhoz több lokátorentitást is létrehozhat a különböző ügyfélkérelmek és igények kezeléséhez. Ezek a lokátorok mindegyike a StartTime-értéket és az AccessPolicy DurationInMinutes értékét használja az URL-cím használható időtartamának meghatározásához. További információ: [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+A tényleges feltöltési URL-cím megszerzéséhez hozzon létre egy SAS-lokátort. A lokátorok határozzák meg a kapcsolati végpont kezdési idejét és típusát azon ügyfelek számára, akik egy adott eszköz fájljait szeretnék elérni. Több lokátor entitást is létrehozhat egy adott AccessPolicy és egy adategységhez a különböző ügyfelek kéréseinek és igényeinek kezeléséhez. Ezen lokátorok mindegyike a kezdő és a AccessPolicy DurationInMinutes értékét használja az URL-cím használatának időtartamának meghatározásához. További információ: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
 A SAS URL-cím formátuma a következő:
 
@@ -269,11 +269,11 @@ A SAS URL-cím formátuma a következő:
 
 Vegye figyelembe a következőket:
 
-* Egy adott eszközhöz egyszerre legfeljebb öt egyedi lokátor társítható. 
-* Ha azonnal fel kell töltenie a fájlokat, állítsa be a StartTime értékét öt perccel az aktuális idő előtt. Ennek az az oka, hogy az ügyfélgép és a Media Services között óraeltérés lehet. A StartTime-értéknek a következő DateTime formátumban kell lennie: YYYY-MM-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").    
-* Előfordulhat, hogy a lokátor létrehozása után 30–40 másodperces késleltetés történik, amikor az elérhetővé válik. Ez a probléma a [SAS URL-címére](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) és az Origin Lokátorokra egyaránt vonatkozik.
+* Egyszerre legfeljebb öt egyedi lokátor társítható egy adott eszközhöz. 
+* Ha azonnal fel kell töltenie a fájlokat, az aktuális időpont előtt öt percre kell beállítania a kezdő időpontot. Ennek az az oka, hogy az ügyfélszámítógép és a Media Services között az óra változhat. Emellett a kezdő időpont értéke a következő DateTime formátumban kell, hogy legyen: éééé-hh-NNTÓÓ: PP: ssZ (például "2014-05-23T17:53:50Z").    
+* A lokátor létrehozása után 30-40 másodperces késleltetés is lehetséges, ha a szolgáltatás elérhetővé válik. Ez a probléma a [sas URL-címére](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) és a forrás-lokátorokra is vonatkozik.
 
-A következő példa bemutatja, hogyan hozhat létre egy SAS URL-lokátor, a kérelem törzsében a Type tulajdonság ("1" egy SAS-lokátor és "2" egy igény szerinti származási lokátor esetén) meghatározása szerint. A visszaadott **Path** tulajdonság tartalmazza a fájl feltöltéséhez használandó URL-címet.
+Az alábbi példa bemutatja, hogyan hozhat létre SAS URL-lokátort a kérelem törzsének Type tulajdonsága által meghatározott módon ("1" egy SAS-lokátorhoz, és "2" értéket egy igény szerinti Felderítőhöz). A visszaadott **path** tulajdonság tartalmazza azt az URL-címet, amelyet a fájl feltöltéséhez használnia kell.
 
 **HTTP-kérés**
 
@@ -298,7 +298,7 @@ A következő példa bemutatja, hogyan hozhat létre egy SAS URL-lokátor, a ké
 
 **HTTP-válasz**
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -328,18 +328,18 @@ Ha sikeres, a következő választ adja vissza:
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Fájl feltöltése blobtárolóba
-Miután beállította az AccessPolicy és a Locator készletet, a tényleges fájl feltöltése egy Azure Blob storage-tárolóba az Azure Storage REST API-k használatával. A fájlokat blokkblobként kell feltöltenie. Az Azure Media Services nem támogatja a lapblobokat.  
+### <a name="upload-a-file-into-a-blob-storage-container"></a>Fájl feltöltése blob Storage-tárolóba
+Miután beállította a AccessPolicy és a lokátort, a rendszer feltölti a tényleges fájlt egy Azure Blob Storage-tárolóba az Azure Storage REST API-kon keresztül. A fájlokat fel kell töltenie blokk blobként. Azure Media Services nem támogatja az oldal blobokat.  
 
 > [!NOTE]
-> Hozzá kell adnia a feltölteni kívánt fájl fájlnevét az előző szakaszban kapott Lokátor **elérési út** értékéhez. Például: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Fel kell vennie annak a fájlnak a fájlnevét, amelyet fel szeretne tölteni az előző szakaszban fogadott lokátor **path** értékre. Például: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
-Az Azure storage blobjainak használatával kapcsolatos további tudnivalókért olvassa el a [Blob Service REST API című témakört.](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)
+További információ az Azure Storage-Blobok használatáról: [blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Az eszközfájl frissítése
-Most, hogy feltöltötte a fájlt, frissítse a FileAsset-méret (és egyéb) adatokat. Példa:
+### <a name="update-the-assetfile"></a>A AssetFile frissítése
+Most, hogy feltöltötte a fájlt, frissítse a FileAsset méretét (és egyéb adatait). Például:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -362,12 +362,12 @@ Most, hogy feltöltötte a fájlt, frissítse a FileAsset-méret (és egyéb) ad
 
 **HTTP-válasz**
 
-Ha sikeres, a következő értéket adja vissza:
+Ha a művelet sikeres, a rendszer a következőt adja vissza:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="delete-the-locator-and-accesspolicy"></a>A lokátor és az AccessPolicy törlése
+## <a name="delete-the-locator-and-accesspolicy"></a>A lokátor és a AccessPolicy törlése
 **HTTP-kérés**
 
     DELETE https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -382,7 +382,7 @@ Ha sikeres, a következő értéket adja vissza:
 
 **HTTP-válasz**
 
-Ha sikeres, a következő értéket adja vissza:
+Ha a művelet sikeres, a rendszer a következőt adja vissza:
 
     HTTP/1.1 204 No Content
     ...
@@ -400,23 +400,23 @@ Ha sikeres, a következő értéket adja vissza:
 
 **HTTP-válasz**
 
-Ha sikeres, a következő értéket adja vissza:
+Ha a művelet sikeres, a rendszer a következőt adja vissza:
 
     HTTP/1.1 204 No Content
     ...
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>A forrásfájl kódolása adaptív sávszélességű MP4-fájlokba
 
-Miután betárolta az eszközöket a Media Services szolgáltatásba, az adathordozók kódolhatók, transzmuxálhatók, vízjellel jelölhetők, és így tovább, mielőtt az ügyfeleknek kézbesítenék. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük, és minden feladat atomi feladatokból áll, amelyek az eszközfájlon ténylegesen végzik a munkát (további információ: [Projekt](https://docs.microsoft.com/rest/api/media/operations/job), [Feladat](https://docs.microsoft.com/rest/api/media/operations/task) leírások).
+Az eszközök Media Servicesba való betöltését követően az adathordozók kódolva, transmuxed, vízjellel és így tovább, az ügyfeleknek való kézbesítés előtt. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük, és minden feladat olyan atomi feladatokból áll, amelyek végrehajtják a tényleges munkát az adategységen (További információ: [feladat](https://docs.microsoft.com/rest/api/media/operations/job), [feladat](https://docs.microsoft.com/rest/api/media/operations/task) leírása).
 
-Ahogy korábban említettük, az Azure Media Services használatával való munka során az egyik leggyakoribb forgatókönyv az adaptív sávszélességű streamelés az ügyfelek számára. A Media Services dinamikusan csomagolhat adaptív sávszélességű MP4-fájlokat a következő formátumok egyikébe: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Ahogy korábban is említettük, Azure Media Services az egyik leggyakoribb forgatókönyv esetén az adaptív sávszélességű adatfolyamot biztosít az ügyfeleknek. A Media Services az adaptív sávszélességű MP4-fájlok készletét az alábbi formátumokba tudja dinamikusan csomagolni: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
-A következő szakasz bemutatja, hogyan hozhat létre egy feladatot, amely egy kódolási feladatot tartalmaz. A feladat határozza meg, hogy a mezzanine fájlt adaptív sávszélességű MP4-ekhalmazába kódolja át a **Media Encoder Standard**használatával. A szakasz azt is bemutatja, hogyan figyelheti a feladat feldolgozási folyamatát. Ha a feladat befejeződött, akkor képes lesz arra, hogy hozzon létre lokátorok, amelyek szükségesek az eszközök eléréséhez.
+A következő szakasz bemutatja, hogyan hozhat létre egy olyan feladatot, amely egy kódolási feladatot tartalmaz. A feladat azt adja meg, hogy a köztes fájlt átkódolja adaptív sávszélességű MP4 **Media Encoder standard**használatával. A szakasz azt is bemutatja, hogyan lehet figyelni a feladatok feldolgozási folyamatát. A feladatok elvégzése után létrehozhatók olyan lokátorok, amelyek szükségesek az eszközeihez való hozzáféréshez.
 
-### <a name="get-a-media-processor"></a>Médiaprocesszor beszereznie
-A Media Services szolgáltatásban a médiaprocesszor olyan összetevő, amely egy adott feldolgozási feladatot kezel, például kódolást, formátumátalakítást, titkosítást vagy visszafejtést. Az oktatóanyagban látható kódolási feladathoz a Media Encoder Standard-ot fogjuk használni.
+### <a name="get-a-media-processor"></a>Adathordozó-feldolgozó letöltése
+Media Services a Media Processor egy olyan összetevő, amely egy adott feldolgozási feladatot kezel, például a kódolást, a konvertálást, a titkosítást vagy a médiatartalom visszafejtését. Az oktatóanyagban látható kódolási feladathoz a Media Encoder Standard fogjuk használni.
 
-A következő kód a kódoló azonosítóját kéri.
+A következő kód a kódoló azonosítóját kéri le.
 
 **HTTP-kérés**
 
@@ -460,9 +460,9 @@ A következő kód a kódoló azonosítóját kéri.
     }
 
 ### <a name="create-a-job"></a>Feladat létrehozása
-Minden feladatnak lehet egy vagy több feladata a végrehajtani kívánt feldolgozás típusától függően. A REST API-n keresztül a feladatok és a hozzájuk kapcsolódó feladatok kétféleképpen hozhatnak létre: A feladatok szövegközien definiálhatók a Feladatok navigációs tulajdonságon keresztül a Feladat entitásokon, vagy az OData kötegelt feldolgozáson keresztül. A Media Services SDK kötegelt feldolgozást használ. A cikkben szereplő kódpéldák olvashatósága érdekében azonban a feladatok szövegközimeghatározásra kerülnek. A kötegelt feldolgozással kapcsolatos információkért lásd: [Open Data Protocol (OData) Batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Minden feladathoz egy vagy több feladat tartozhat, attól függően, hogy milyen típusú feldolgozást szeretne elvégezni. A REST APIon a feladatok és a hozzájuk kapcsolódó feladatok kétféleképpen hozhatók létre: a feladatok a feladat entitások navigációs tulajdonságában vagy a OData kötegelt feldolgozáson keresztül is meghatározhatók. A Media Services SDK batch-feldolgozást használ. A cikkben szereplő példák olvashatósága érdekében azonban a feladatok beágyazottnak vannak meghatározva. További információ a Batch-feldolgozásról: [Open adatprotokoll (OData) batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-A következő példa bemutatja, hogyan hozhat létre és könyvelheti fel azt a feladatot, amelyen egy feladat van beállítva, és hogy egy videót egy adott felbontásban és minőségben kódoljon. A következő dokumentációs szakasz a Media Encoder Standard processzor által támogatott összes [feladatkészlet](https://msdn.microsoft.com/library/mt269960) listáját tartalmazza.  
+Az alábbi példa bemutatja, hogyan hozhat létre és küldhet el egy feladatot egy adott feladattal egy adott felbontás és minőség alapján. A következő dokumentációs szakasz tartalmazza a Media Encoder Standard processzor által támogatott összes [feladathoz tartozó beállításkészlet](https://msdn.microsoft.com/library/mt269960) listáját.  
 
 **HTTP-kérés**
 
@@ -498,7 +498,7 @@ A következő példa bemutatja, hogyan hozhat létre és könyvelheti fel azt a 
 
 **HTTP-válasz**
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -558,35 +558,35 @@ Ha sikeres, a következő választ adja vissza:
     }
 
 
-Van néhány fontos dolog, amit figyelembe kell venni minden álláskérésben:
+A feladatokra vonatkozó kérések néhány fontos Tudnivaló:
 
-* A TaskBody tulajdonságoknak literális XML-t kell használniuk a feladat által használt bemeneti vagy kimeneti eszközök számának meghatározásához. A Feladat cikk az XML XML-sémadefinícióját tartalmazza.
-* A TaskBody definícióban minden `<inputAsset>` belső `<outputAsset>` érték, és meg kell adni a JobInputAsset(érték) vagy JobOutputAsset(value).
-* Egy feladatnak több kimeneti eszköze is lehet. Egy JobOutputAsset(x) csak egyszer használható egy feladat kimeneteként egy feladatban.
-* Megadhatja jobinputasset vagy JobOutputAsset egy feladat bemeneti eszközeként.
-* A feladatok nem képeznek ciklust.
-* A JobInputAsset vagy JobOutputAsset értékparaméter egy eszköz indexértékét jelöli. A tényleges eszközök vannak definiálva az InputMediaAssets és OutputMediaAssets navigációs tulajdonságok a feladat entitás definíciója.
+* A TaskBody tulajdonságainak literál XML-t kell használniuk a feladat által használt bemeneti vagy kimeneti eszközök definiálásához. A feladat cikke tartalmazza az XML-séma XML-sémájának definícióját.
+* A TaskBody-definícióban minden belső értéknek `<inputAsset>` `<outputAsset>` JobInputAsset (Value) vagy JobOutputAsset (Value) értékűnek kell lennie.
+* Egy feladat több kimeneti eszközzel is rendelkezhet. Egy JobOutputAsset (x) csak egyszer használható egy feladat tevékenységének kimenetében.
+* A JobInputAsset vagy a JobOutputAsset megadható egy tevékenység bemeneti eszközeként.
+* A feladatok nem lehetnek ciklusok.
+* Az JobInputAsset vagy JobOutputAsset-re átadott Value paraméter az adott eszköz indexének értékét jelöli. A tényleges eszközök a InputMediaAssets és a OutputMediaAssets navigációs tulajdonságaiban vannak definiálva a feladatok entitásának definíciójában.
 
 > [!NOTE]
-> Mivel a Media Services az OData v3-ra épül, az InputMediaAssets és az OutputMediaAssets navigációs tulajdonsággyűjtemények egyes eszközeire egy "__metadata: uri" név-érték pár hivatkozik.
+> Mivel Media Services a OData v3-ra épül, a InputMediaAssets és a OutputMediaAssets navigációs tulajdonság gyűjteményében lévő egyedi eszközökre a "__metadata: URI" név-érték párok hivatkoznak.
 >
 >
 
-* Az InputMediaAssets leképezi a Media Services szolgáltatásban létrehozott egy vagy több eszközt. OutputMediaAssets jönlétre a rendszer. Nem hivatkoznak meglévő eszközre.
-* A OutputMediaAssets az assetName attribútum használatával nevezhető el. Ha ez az attribútum nincs jelen, akkor az OutputMediaAsset neve az `<outputAsset>` elem belső szöveges értékétől független, vagy a Feladat név érték vagy a Feladatazonosító érték utótaggal (abban az esetben, ha a Name tulajdonság nincs definiálva). Ha például az assetName értékét "Minta" értékre állítja, akkor az OutputMediaAsset Name tulajdonság "Minta" lesz. Ha azonban nem állított be értéket az assetName értékhez, de a feladat nevét "NewJob" értékre állította, akkor az OutputMediaAsset name "JobOutputAsset(value)_NewJob" lesz.
+* A InputMediaAssets egy vagy több olyan eszközre mutat, amelyet a Media Services hozott létre. A OutputMediaAssets a rendszer hozza létre. Nem hivatkoznak meglévő eszközre.
+* A OutputMediaAssets a assetName attribútum használatával nevezhető el. Ha ez az attribútum nem található, akkor a OutputMediaAsset neve megegyezik az `<outputAsset>` elem belső szöveges értékével, vagy a feladatnév értékének vagy a feladattípus értékének (abban az esetben, ha nincs megadva a Name tulajdonság) utótagja. Ha például a assetName értéket állítja be a "Sample" értékre, akkor a OutputMediaAsset Name tulajdonság értéke "Sample". Ha azonban nem adott meg értéket a assetName számára, de a feladatot "NewJob" értékre állította be, akkor a OutputMediaAsset neve "JobOutputAsset (Value) _NewJob" lesz.
 
-    A következő példa bemutatja, hogyan állíthatja be az assetName attribútumot:
+    Az alábbi példa bemutatja, hogyan állíthatja be a assetName attribútumot:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Feladatláncolás engedélyezése:
+* A feladatok láncolásának engedélyezése:
 
-  * Egy feladatnak legalább két feladatból kell rendelkeznie
+  * Egy feladatnak legalább két feladattal kell rendelkeznie
   * Legalább egy olyan feladatnak kell lennie, amelynek bemenete egy másik feladat kimenete a feladatban.
 
-További információt a [Kódolási feladat létrehozása a Media Services REST API-val című témakörben talál.](media-services-rest-encode-asset.md)
+További információ: Encoding- [feladatok létrehozása a Media Services REST API](media-services-rest-encode-asset.md).
 
-### <a name="monitor-processing-progress"></a>Figyelési folyamat
-A Feladat állapot az Állapot tulajdonság használatával érhető el, ahogy az a következő példában látható:
+### <a name="monitor-processing-progress"></a>A feldolgozási folyamat figyelése
+A feladatok állapotát az állapot tulajdonsággal kérheti le az alábbi példában látható módon:
 
 **HTTP-kérés**
 
@@ -603,7 +603,7 @@ A Feladat állapot az Állapot tulajdonság használatával érhető el, ahogy a
 
 **HTTP-válasz**
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -620,10 +620,10 @@ Ha sikeres, a következő választ adja vissza:
     {"d":{"State":2}}
 
 
-### <a name="cancel-a-job"></a>Feladat visszavonása
-A Media Services lehetővé teszi a futó feladatok megszakítását a Feladat törlése funkción keresztül. Ez a hívás 400-as hibakódot ad vissza, ha egy feladat megszakításakor, megszakításakor, hibájaként vagy befejezésénél próbál meg szakítani egy feladatot.
+### <a name="cancel-a-job"></a>Feladat megszakítása
+Media Services lehetővé teszi a futó feladatok megszakítását a CancelJob függvénnyel. Ez a hívás 400 hibakódot ad vissza, ha a feladat megszakítása, megszakítása, hibája vagy befejezése után megpróbál lemondani egy feladatot.
 
-A következő példa bemutatja, hogyan hívhatja meg a Feladat megszakítását.
+Az alábbi példa bemutatja, hogyan hívhatja meg a CancelJob.
 
 **HTTP-kérés**
 
@@ -637,15 +637,15 @@ A következő példa bemutatja, hogyan hívhatja meg a Feladat megszakítását.
     Host: wamsbayclus001rest-hs.net
 
 
-Ha sikeres, egy 204-es válaszkódot ad vissza az üzenet törzse nélkül.
+Ha a művelet sikeres, a rendszer egy 204-es hibakódot ad vissza, és az üzenettörzs nélkül jelenik meg.
 
 > [!NOTE]
-> A feladatazonosítót (általában nb:jid:UUID: somevalue) URL-kódolnikell, amikor a CancelJob paraméterként adja át.
+> Meg kell adnia az URL-címet – a feladattípust (általában NB: JID: UUID: érték1), ha a paraméterként CancelJob.
 >
 >
 
-### <a name="get-the-output-asset"></a>A kimeneti eszköz beszerzése
-A következő kód bemutatja, hogyan lehet a kimeneti eszköz azonosítója.
+### <a name="get-the-output-asset"></a>Kimeneti eszköz beolvasása
+A következő kód bemutatja, hogyan kérhető le a kimeneti eszköz azonosítója.
 
 **HTTP-kérés**
 
@@ -692,14 +692,14 @@ A következő kód bemutatja, hogyan lehet a kimeneti eszköz azonosítója.
        ]
     }
 
-## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Az eszköz közzététele és streamelési és progresszív letöltési URL-címek beszerzése rest API-val
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Az objektum közzététele és a folyamatos letöltési URL-címek lekérése REST API
 
 Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez. 
 
-Miután létrehozta a lokátorokat, létrehozhatja a fájlok streameléséhez vagy letöltéséhez használt URL-címeket.
+A lokátorok létrehozása után létrehozhatja a fájlok továbbításához vagy letöltéséhez használt URL-címeket.
 
 >[!NOTE]
->Amikor az AMS-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
+>Az AMS-fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
 
 Egy Smooth Streaming URL-címnek a következő formátumban kell lennie:
 
@@ -717,16 +717,16 @@ Egy fájlok letöltéséhez használt SAS URL-címnek a következő formátumban
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-Ez a szakasz bemutatja, hogyan hajthatja végre az eszközök "közzétételéhez" szükséges következő feladatokat.  
+Ez a szakasz bemutatja, hogyan végezheti el az eszközök közzétételéhez szükséges alábbi feladatokat.  
 
-* Az AccessPolicy létrehozása olvasási engedéllyel
-* SAS-URL létrehozása tartalom letöltéséhez
-* Élő tartalom forrásURL-jének létrehozása
+* A AccessPolicy létrehozása olvasási engedéllyel
+* SAS URL-cím létrehozása tartalom letöltéséhez
+* Forrás URL-cím létrehozása a streaming tartalomhoz
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Az AccessPolicy létrehozása olvasási engedéllyel
-A médiatartalmak letöltése vagy streamelése előtt először definiáljon olvasási engedélyekkel rendelkező AccessPolicy házirendet, és hozza létre a megfelelő Lokátor entitást, amely meghatározza az ügyfelek számára engedélyezni kívánt kézbesítési mechanizmus típusát. Az elérhető tulajdonságokról az [AccessPolicy entitás tulajdonságai című](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)témakörben talál további információt.
+### <a name="creating-the-accesspolicy-with-read-permission"></a>A AccessPolicy létrehozása olvasási engedéllyel
+A médiafájlok letöltése vagy továbbítása előtt először adjon meg egy olvasási engedéllyel rendelkező AccessPolicy, és hozza létre a megfelelő lokátor entitást, amely meghatározza az ügyfelek számára engedélyezni kívánt kézbesítési mechanizmus típusát. További információ az elérhető tulajdonságokról: AccessPolicy- [entitás tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
-A következő példa bemutatja, hogyan adható meg az AccessPolicy egy adott eszköz olvasási engedélyeit.
+Az alábbi példa bemutatja, hogyan határozhatja meg az adott eszköz olvasási engedélyeinek AccessPolicy.
 
     POST https://wamsbayclus001rest-hs.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json
@@ -741,15 +741,15 @@ A következő példa bemutatja, hogyan adható meg az AccessPolicy egy adott esz
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Ha sikeres, a rendszer egy 201-es sikereskódot ad vissza, amely leírja a létrehozott AccessPolicy entitást. Ezután az AccessPolicy-azonosítót a kézbesíteni kívánt fájlt (például kimeneti eszközt) tartalmazó eszköz eszközazonosítójával együtt a Lokátor entitás létrehozásához használja.
+Ha a művelet sikeres, a rendszer 201-as sikerességi kódot ad vissza, amely leírja a létrehozott AccessPolicy entitást. Ezután használja a AccessPolicy azonosítót és az eszköz azonosítóját, amely tartalmazza a kézbesíteni kívánt fájlt (például kimeneti eszközt) a lokátor entitás létrehozásához.
 
 > [!NOTE]
-> Ez az alapvető munkafolyamat ugyanaz, mint egy fájl feltöltése egy eszköz betöltésekénél (ahogy azt a témakör korábbi része is tárgyalta). A fájlok feltöltéséhez hasonlóan, ha Önnek (vagy az ügyfeleinek) azonnal hozzá kell férnie a fájlokhoz, állítsa a StartTime-értéket öt perccel az aktuális idő előtt. Erre a műveletre azért van szükség, mert lehet, hogy az ügyfél és a Media Services között óraeltérés van. A StartTime értéknek a következő DateTime formátumban kell lennie: YYYY-MM-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").
+> Ez az alapszintű munkafolyamat ugyanaz, mint amikor egy fájlt tölt fel egy eszköz betöltéséhez (ahogy azt a témakör korábbi részében tárgyalták). A fájlok feltöltésekor, ha Ön (vagy ügyfelei) azonnal el kell érnie a fájljait, állítsa a kezdő időpontot öt percre az aktuális időpont előtt. Ez a művelet azért szükséges, mert lehet, hogy az ügyfél és a Media Services között óra van elferdítve. A kezdő időpont értékének a következő DateTime formátumúnak kell lennie: éééé-hh-NNTÓÓ: PP: ssZ (például "2014-05-23T17:53:50Z").
 >
 >
 
-### <a name="creating-a-sas-url-for-downloading-content"></a>SAS-URL létrehozása tartalom letöltéséhez
-A következő kód bemutatja, hogyan szerezhet be egy URL-t, amely a korábban létrehozott és feltöltött médiafájl letöltésére használható. Az AccessPolicy olvasási engedélyekkel rendelkezik, és a lokátor elérési útja egy SAS letöltési URL-címre hivatkozik.
+### <a name="creating-a-sas-url-for-downloading-content"></a>SAS URL-cím létrehozása tartalom letöltéséhez
+A következő kód bemutatja, hogyan kérhet le egy olyan URL-címet, amely a korábban létrehozott és feltöltött médiafájlok letöltésére használható. A AccessPolicy rendelkezik olvasási engedélyekkel, és a lokátor elérési útja egy SAS letöltési URL-címre hivatkozik.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -764,7 +764,7 @@ A következő kód bemutatja, hogyan szerezhet be egy URL-t, amely a korábban l
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -806,22 +806,22 @@ Ha sikeres, a következő választ adja vissza:
        }
     }
 
-A visszaadott **elérési út** tulajdonság a SAS URL-címét tartalmazza.
+A visszaadott **elérési út** tulajdonság a sas URL-címet tartalmazza.
 
 > [!NOTE]
-> Ha a tároló titkosított tartalmat tölti le, manuálisan vissza kell fejtenie a leadás előtt, vagy a Storage Decryption MediaProcessor-t egy feldolgozási feladatban a feldolgozott fájlok kimenetére a clear-ben egy OutputAsset-be, majd le kell töltenie az adott eszközről. A feldolgozásról további információt a Kódolási feladat létrehozása a Media Services REST API-val című témakörben talál. Emellett a SAS URL-lokátorok nem frissíthetők létrehozásuk után. Nem használhatja fel például ugyanazt a lokátort egy frissített StartTime értékkel. Ennek oka a SAS-URL-ek létrehozásának módja. Ha egy lokátor lejárta után szeretne hozzáférni egy eszközhöz letöltésre, akkor újat kell létrehoznia egy új StartTime-mal.
+> Ha letölti a tároló titkosított tartalmát, manuálisan kell visszafejtenie azt a megjelenítése előtt, vagy egy feldolgozási feladat tároló-visszafejtési MediaProcessor kell használnia a feldolgozott fájlok kimenetre való exportálásához a OutputAsset, majd le kell tölteni az adott eszközről. A feldolgozásról további információt a kódolási feladatok létrehozása a Media Services REST API című témakörben talál. Emellett a SAS URL-lokátorok nem frissíthetők a létrehozásuk után. Nem használhatja például ugyanazt a lokátort egy frissített kezdő értékkel. Ennek oka az SAS URL-címeinek létrehozása. Ha a lokátor lejárta után szeretné elérni egy eszköz letöltését, új kezdéssel létre kell hoznia egy újat.
 >
 >
 
 ### <a name="download-files"></a>Fájlok letöltése
-Miután beállította az AccessPolicy és a Locator készletet, fájlokat tölthet le az Azure Storage REST API-k használatával.  
+Miután beállította a AccessPolicy és a lokátort, letöltheti a fájlokat az Azure Storage REST API-kon keresztül.  
 
 > [!NOTE]
-> Hozzá kell adnia a letölteni kívánt fájl fájlnevét az előző szakaszban kapott Lokátor **elérési út** értékéhez. Például: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Fel kell vennie annak a fájlnak a fájlnevét, amelyet le szeretne tölteni az előző szakaszban fogadott lokátor **path** értékre. Például: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
-Az Azure storage blobjainak használatával kapcsolatos további tudnivalókért olvassa el a [Blob Service REST API című témakört.](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)
+További információ az Azure Storage-Blobok használatáról: [blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-A korábban végrehajtott kódolási feladat (adaptive MP4-készletbe történő kódolás) eredményeként több MP4-fájlja van, amelyeket fokozatosan letölthet. Példa:    
+A korábban végrehajtott kódolási feladatoknak köszönhetően (az adaptív MP4-készletbe való kódolás) több MP4-fájl is van, amelyeket fokozatosan le is tölthet. Például:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -839,8 +839,8 @@ A korábban végrehajtott kódolási feladat (adaptive MP4-készletbe történő
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
-### <a name="creating-a-streaming-url-for-streaming-content"></a>Streamelési URL létrehozása a folyamatos átvitelű tartalomhoz
-A következő kód bemutatja, hogyan hozhat létre streamelési URL-lokátort:
+### <a name="creating-a-streaming-url-for-streaming-content"></a>Folyamatos átviteli URL-cím létrehozása streaming-tartalomhoz
+A következő kód bemutatja, hogyan hozhat létre streaming URL-lokátort:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -855,7 +855,7 @@ A következő kód bemutatja, hogyan hozhat létre streamelési URL-lokátort:
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-Ha sikeres, a következő választ adja vissza:
+Ha a művelet sikeres, a rendszer a következő választ adja vissza:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -897,15 +897,15 @@ Ha sikeres, a következő választ adja vissza:
        }
     }
 
-A folyamatos streamelés imént imasdáig egy streamelési médialejátszóban a Path tulajdonságot hozzá kell fűznie a Smooth Streaming jegyzékfájl nevéhez, amelyet a "/manifest" követ.
+Smooth Streaming eredetű URL-cím adatfolyamként való továbbításához a Path tulajdonságot a Smooth Streaming manifest-fájl nevével kell hozzáfűzni, amelyet a "/manifest" kifejezés követ.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-A HLS streameléséhez fűzz hozzá (format=m3u8-aapl) a "/manifest" után.
+A stream HLS a "/manifest" után fűzze hozzá a következőt: (Format = m3u8-AAPL).
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Az MPEG DASH streameléséhez fűzz hozzá (format=mpd-time-csf) a "/manifest" után.
+Az MPEG DASH stream eléréséhez fűzze hozzá a (Format = mpd-Time-CSF) karakterláncot a "/manifest" után.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
@@ -913,7 +913,7 @@ Az MPEG DASH streameléséhez fűzz hozzá (format=mpd-time-csf) a "/manifest" u
 ## <a name="play-your-content"></a><a id="play"></a>Tartalom lejátszása
 A videótovábbításhoz használja az [Azure Media Services Player](https://aka.ms/azuremediaplayer) lejátszót.
 
-A progresszív letöltés teszteléséhez illessze be az URL-t egy böngészőbe (például IE, Chrome, Safari).
+A progresszív letöltés teszteléséhez illesszen be egy URL-címet egy böngészőbe (például IE, Chrome, Safari).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

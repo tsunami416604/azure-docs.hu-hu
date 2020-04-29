@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services telemetriai adatainak konfigurálása REST-el| Microsoft dokumentumok
-description: Ez a cikk bemutatja, hogyan használhatja az Azure Media Services telemetriai rest API használatával..
+title: Azure Media Services telemetria konfigurálása REST-tel | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Media Services telemetria REST API használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774864"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Az Azure Media Services telemetriai adatainak konfigurálása REST szolgáltatással
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetria konfigurálása REST-tel
 
-Ez a témakör ismerteti az okat az általános lépéseket, amelyeket az Azure Media Services (AMS) telemetriai adatok REST API használatával történő konfigurálásakor tehet. 
+Ez a témakör azokat az általános lépéseket ismerteti, amelyeket a Azure Media Services (AMS) telemetria REST API használatával történő konfigurálásakor lehet végrehajtani. 
 
 >[!NOTE]
->Az AMS-telemetria részletes magyarázatát és felhasználását az [áttekintő témakörben](media-services-telemetry-overview.md) találja.
+>Az AMS telemetria és azok felhasználásának részletes ismertetését lásd az [Áttekintés](media-services-telemetry-overview.md) témakörben.
 
-A témakörben ismertetett lépések a következők:
+A jelen témakörben ismertetett lépések a következők:
 
-- A Media Services-fiókhoz társított tárfiók beszerzése
-- Az értesítési végpontok beszerzése
+- Media Services fiókhoz társított Storage-fiók beolvasása
+- Az értesítési végpontok beolvasása
 - Értesítési végpont létrehozása figyeléshez. 
 
-    Értesítési végpont létrehozásához állítsa az EndPointType-ot az AzureTable (2) és endPontAddress\/készletet a tárolótáblára (például https: /telemetryvalidationstore.table.core.windows.net/).
+    Értesítési végpont létrehozásához állítsa a EndPointType a AzureTable (2) értékre, a endPontAddress pedig a Storage táblára (például https:\//telemetryvalidationstore.table.Core.Windows.net/).
   
-- A figyelési konfigurációk beszereznie
+- A figyelési konfigurációk beolvasása
 
-    Hozzon létre figyelési konfigurációs beállításokat a figyelni kívánt szolgáltatásokhoz. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
+    Hozzon létre egy figyelési konfigurációs beállításokat a figyelni kívánt szolgáltatásokhoz. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
 
 - Figyelési konfiguráció hozzáadása
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>A Media Services-fiókhoz társított tárfiók beszereznie
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Media Services fiókhoz társított Storage-fiók beolvasása
 
 ### <a name="request"></a>Kérés
 
@@ -72,7 +72,7 @@ A témakörben ismertetett lépések a következők:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Az értesítési végpontok beszereznie
+## <a name="get-the-notification-endpoints"></a>Értesítési végpontok beolvasása
 
 ### <a name="request"></a>Kérés
 
@@ -105,7 +105,7 @@ A témakörben ismertetett lépések a következők:
         }
     }
  
-## <a name="create-a-notification-endpoint-for-monitoring"></a>Értesítési végpont létrehozása figyeléshez
+## <a name="create-a-notification-endpoint-for-monitoring"></a>Értesítési végpont létrehozása a figyeléshez
 
 ### <a name="request"></a>Kérés
 
@@ -126,7 +126,7 @@ A témakörben ismertetett lépések a következők:
     }
 
 > [!NOTE]
-> Ne felejtse el módosítani a\/"https: /telemetryvalidationstore.table.core.windows.net" értéket a tárfiókra.
+> Ne felejtse el módosítani a "https\/:/telemetryvalidationstore.table.Core.Windows.net" értéket a Storage-fiókra.
 
 ### <a name="response"></a>Válasz
 
@@ -147,7 +147,7 @@ A témakörben ismertetett lépések a következők:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>A figyelési konfigurációk beszereznie
+## <a name="get-the-monitoring-configurations"></a>A figyelési konfigurációk beolvasása
 
 ### <a name="request"></a>Kérés
 
@@ -233,9 +233,9 @@ A témakörben ismertetett lépések a következők:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Telemetriai adatok fogyasztása
+## <a name="consuming-telemetry-information"></a>Telemetria-adatok felhasználása
 
-A telemetriai adatok fogyasztásáról a jelen [témakörben](media-services-telemetry-overview.md) olvashat bővebben.
+További információ a telemetria-információk használatáról: [ebben a](media-services-telemetry-overview.md) témakörben.
 
 ## <a name="next-steps"></a>További lépések
 
