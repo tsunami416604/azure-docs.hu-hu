@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: A REST API és a Python használatával címkékkel való betanítása – űrlapfelismerő'
+title: 'Gyors útmutató: a betanítás a REST API és a Python-Form felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja a Form Recognizer címkézett adatfunkciót a REST API-val és a Pythonnal egy egyéni modell betanításához.
+description: Ismerje meg, hogyan használható az űrlap-felismerő címkézett adatszolgáltatása a REST API és a Python használatával egyéni modell betanításához.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,60 +10,60 @@ ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
 ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81531100"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlapfelismerő modell betanítása feliratokkal REST API és Python használatával
+# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
-Ebben a rövid útmutatóban a Form Recognizer REST API-t a Python nal fogja használni egy egyéni modell manuálisan címkézett adatokkal történő betanításához. Tekintse meg a [Vonat címkékkel](../overview.md#train-with-labels) szakaszaz áttekintés, hogy többet tudjon meg ezt a funkciót.
+Ebben a rövid útmutatóban az űrlap-felismerő REST API a Python használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához a következőkre van szüksége:
+A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
-- Legalább hat azonos típusú formaból áll. Ezeket az adatokat a modell betanításához és egy űrlap teszteléséhez fogja használni. Ehhez a rövid útmutatóhoz [mintaadatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) használhat. Töltse fel a betanítási fájlokat egy blob storage-tároló egy Azure Storage-fiók ban.
+- Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlapfelismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="set-up-training-data"></a>Betanítási adatok beállítása
+## <a name="set-up-training-data"></a>Betanítási adatértékek beállítása
 
-Ezután be kell állítania a szükséges bemeneti adatokat. A címkézett adatszolgáltatás az egyéni modell betanításához szükséges követelményeken túlmutató speciális beviteli követelményekkel rendelkezik. 
+Ezután be kell állítania a szükséges bemeneti adatokat. A címkével ellátott adatok funkció az egyéni modellek betanításához szükséges speciális bemeneti követelményekkel rendelkezik. 
 
-Győződjön meg arról, hogy az összes képzési dokumentum azonos formátumú. Ha az űrlapok több formátumban vannak, a közös formátum alapján rendezze őket almappákba. A betanításkor az API-t egy almappába kell irányítania.
+Győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha több formátumban is rendelkezik űrlapokkal, a közös formátum alapján rendezheti őket az almappákba. A betanítás során az API-t egy almappába kell irányítani.
 
-Annak érdekében, hogy a címkeadatok használatával modelleket tanítson be, a következő fájlokra lesz szüksége bemenetként az almappában. Az alábbiakban megtudhatja, hogyan hozhat létre ilyen fájlt.
+Ha címkével ellátott adatokkal kívánja betanítani a modellt, a következő fájloknak kell lennie bemenetként az almappában. Ebből a fájlból megtudhatja, hogyan hozhatja létre az alábbi fájlt.
 
-* **Forrásűrlapok** – az űrlapok, amelyekből adatokat lehet kinyerni. A támogatott típusok a JPEG, PNG, PDF vagy TIFF.
-* **OCR elrendezés fájlok** - JSON fájlokat, amelyek leírják a méretek és pozíciók minden olvasható szöveg minden forrás formában. Az adatok létrehozásához az Űrlapfelismerő elrendezés API-t fogja használni. 
-* **Címke fájlok** - JSON fájlokat, amelyek leírják adatcímkék, amelyek a felhasználó által megadott kézzel.
+* **Forrásoldali űrlapok** – az adatok kinyerésére szolgáló űrlapok. A támogatott típusok a következők: JPEG, PNG, PDF vagy TIFF.
+* **OCR-elrendezési fájlok** – JSON-fájlok, amelyek leírják az összes olvasható szöveg méretét és pozícióit az egyes forrás űrlapokon. Ezeket az adattípusokat az űrlap-felismerő elrendezési API-val fogja használni. 
+* **Címkézett fájlok** – a felhasználó által manuálisan megadott adatfeliratokat leíró JSON-fájlok.
 
-Az összes ilyen fájlnak ugyanazt az almappát kell elfoglalnia, és a következő formátumban kell lennie:
+Az összes fájlnak ugyanabban az almappájában kell lennie, és a következő formátumúnak kell lennie:
 
-* input_file1.pdf 
-* input_file1.pdf.ocr.json
-* input_file1.pdf.labels.json 
-* input_file2.pdf 
-* input_file2.pdf.ocr.json
-* input_file2.pdf.labels.json
+* input_file1. pdf 
+* input_file1. PDF. OCR. JSON
+* input_file1. PDF. labels. JSON 
+* input_file2. pdf 
+* input_file2. PDF. OCR. JSON
+* input_file2. PDF. labels. JSON
 * ...
 
 > [!TIP]
-> Ha az űrlapokat az Űrlapfelismerő [mintacímkéző eszközzel címkézi,](./label-tool.md)az eszköz automatikusan létrehozza ezeket a címke- és OCR-elrendezésfájlokat.
+> Ha az űrlap-felismerő [minta címkézési eszközzel](./label-tool.md)címkézi az űrlapokat, az eszköz automatikusan létrehozza ezeket a CÍMKÉKET és OCR-elrendezési fájlokat.
 
-### <a name="create-the-ocr-output-files"></a>Az OCR kimeneti fájlok létrehozása
+### <a name="create-the-ocr-output-files"></a>OCR kimeneti fájlok létrehozása
 
-OCR-eredményfájlokra van szükség ahhoz, hogy a szolgáltatás figyelembe vehesse a megfelelő bemeneti fájlokat a címkézett betanításhoz. Egy adott forrásűrlap OCR-eredményeinek eléréséhez kövesse az alábbi lépéseket:
+Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanításhoz tartozó bemeneti fájlokat, az OCR-találati fájlok szükségesek. Egy adott forrás űrlap OCR-eredményeinek beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Hívja meg az **[Elemzési elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolóban a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz Művelet-hely fejlécében található **azonosítót.**
-1. Hívja meg a **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t az előző lépés műveletazonosítójának használatával.
-1. A válasz beírása és a tartalom beírása egy fájlba. A megfelelő OCR-fájlhoz minden forrásűrlaphoz hozzá kell `.ocr.json`fűznie az eredeti fájlnevet. Az OCR JSON kimenetnek a következő formátummal kell rendelkeznie. Tekintse meg a [minta OCR fájlt](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) egy teljes példa. 
+1. Hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolójában a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz **műveleti helye** fejlécében található azonosítót.
+1. Hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t az előző lépés műveleti azonosítójának használatával.
+1. Kérje le a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json`. Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
 
     ```json
     {
@@ -114,13 +114,13 @@ OCR-eredményfájlokra van szükség ahhoz, hogy a szolgáltatás figyelembe veh
                     ...
     ```
 
-### <a name="create-the-label-files"></a>Címkefájlok létrehozása
+### <a name="create-the-label-files"></a>A címkefájl létrehozása
 
-A címkefájlok olyan kulcsérték-társításokat tartalmaznak, amelyeket a felhasználó manuálisan adott meg. Ezek szükségesek a címkézett adatbetanításhoz, de nem minden forrásfájlnak kell egy megfelelő címkefájlhoz. A címkék nélküli forrásfájlokat a rendszer rendes képzési dokumentumként kezeli. A megbízható betanításhoz öt vagy több címkézett fájlt ajánlunk.
+A címkézett fájlok olyan kulcs-érték társításokat tartalmaznak, amelyeket a felhasználó kézzel írt be. A címkével ellátott adatképzéshez szükségesek, de nem minden forrásfájl számára szükséges a megfelelő címkefájl. A címkék nélküli forrásfájlok általános betanítási dokumentumként lesznek kezelve. A megbízható képzéshez öt vagy több címkézett fájlt ajánlunk.
 
-Címkefájl létrehozásakor tetszés szerint&mdash;megadhatja a dokumentum értékeinek pontos helyét. Ez ad a képzés még nagyobb pontosságot. A területek formázása nyolc értékből áll, amelyek négy X,Y koordinátának felelnek meg: bal felső, jobb felső, jobb alsó és bal alsó érték. A koordinátaértékek nulla és egy között vannak, az oldal méreteinek méretére méretezve.
+A címkefájl létrehozásakor megadhatja, hogy az egyes régiók&mdash;pontosan milyen értékekkel rendelkeznek a dokumentumban. Ez a képzés még nagyobb pontosságot eredményez. A régiók formátuma nyolc értékből áll, amelyek megfelelnek a négy X, Y koordinátáknak: felülről balra, jobb felső sarok, jobb alsó és bal alsó. A koordináta-értékek nulla és egy, a lap méretei közé vannak méretezve.
 
-A megfelelő címkefájlhoz minden forrásűrlaphoz hozzá kell `.labels.json`fűzni az eredeti fájlnevet. A címkefájlnak a következő formátummal kell rendelkeznie. Tekintse meg a [mintacímke-fájlt](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) egy teljes példát.
+Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet fűzi hozzá a következőhöz: `.labels.json`. A címkefájl formátuma a következő lehet:. Tekintse meg a [minta címkefájl](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) teljes példáját.
 
 ```json
 {
@@ -188,16 +188,16 @@ A megfelelő címkefájlhoz minden forrásűrlaphoz hozzá kell `.labels.json`f�
 ```
 
 > [!NOTE]
-> Minden szövegelemre csak egy címke alkalmazható, és minden címke oldalanként csak egyszer alkalmazható. Jelenleg nem alkalmazhat címkét több oldalra.
+> Csak egy címkét alkalmazhat az egyes szöveges elemekre, és az egyes címkék csak egyszer használhatók fel oldalanként. Jelenleg nem alkalmazhat címkét több oldalra.
 
 
-## <a name="train-a-model-using-labeled-data"></a>Modell betanítása címkézett adatok használatával
+## <a name="train-a-model-using-labeled-data"></a>Modell betanítása címkézett adattal
 
-A modell címkézett adatokkal való betanításához hívja meg a **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t a következő python-kód futtatásával. A kód futtatása előtt hajtsa végre a következő módosításokat:
+Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az űrlapfelismerő erőforrás végpontjának URL-címét.
-1. Cserélje `<SAS URL>` le az Azure Blob storage tároló megosztott hozzáférésű aláírás (SAS) URL-címét. A SAS URL-címének beolvasásához nyissa meg a Microsoft Azure Storage Exploreralkalmazást, kattintson a jobb gombbal a tárolóra, és válassza **a Megosztott hozzáférésű aláírás beolvasása parancsot.** Ellenőrizze, hogy az **Olvasás** és **a Lista** engedélyek be vannak-e jelölve, majd kattintson a **Létrehozás gombra.** Ezután másolja az **URL-cím** szakasz értékét. Meg kell a `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`forma: .
-1. Cserélje `<Blob folder name>` le a mappa nevét a blob tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja `"prefix"` üresen ezt a mezőt, és távolítsa el a mezőt a HTTP-kérelem törzséből.
+1. Cserélje `<Endpoint>` le az értékét az űrlap-felismerő erőforrás végponti URL-címére.
+1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+1. A `<Blob folder name>` helyére írja be annak a mappának a nevét a blob-tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja üresen, és távolítsa el `"prefix"` a MEZŐT a HTTP-kérelem törzsében.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -240,9 +240,9 @@ except Exception as e:
     quit() 
 ```
 
-## <a name="get-training-results"></a>Képzési eredmények beszerezni
+## <a name="get-training-results"></a>Képzési eredmények beolvasása
 
-Miután elindította a vonat működését, a visszaadott azonosító segítségével kapja meg a művelet állapotát. Adja hozzá a következő kódot a Python-parancsfájl aljához. Ez egy új API-hívás betanítási hívásának azonosítóértékét használja. A betanítási művelet aszinkron, így ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg a betanítási állapot befejeződik. Javasoljuk, hogy egy másodperc vagy több időközt.
+A betanítási művelet elindítását követően a visszaadott AZONOSÍTÓval beolvashatja a művelet állapotát. Adja hozzá a következő kódot a Python-szkript aljához. Ez az azonosító értéket használja a betanítási hívásból egy új API-hívásban. A betanítási művelet aszinkron, így a parancsfájl rendszeres időközönként meghívja az API-t, amíg a betanítási állapot be nem fejeződik. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python 
 n_tries = 15
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Amikor a betanítási folyamat befejeződött, a json-tartalommal `201 (Success)` kapcsolatos választ kap, például az alábbiakat. A válasz az egyszerűség kedvéért rövidült.
+A betanítási folyamat befejeztével a következőhöz hasonló JSON `201 (Success)` -tartalommal kapcsolatos választ kap. A válasz lerövidítve lett az egyszerűség kedvéért.
 
 ```json
 { 
@@ -342,11 +342,11 @@ Amikor a betanítási folyamat befejeződött, a json-tartalommal `201 (Success)
 }
 ```
 
-Másolja `"modelId"` az értéket a következő lépésekbe.
+Másolja az `"modelId"` értéket a következő lépésekben való használatra.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Amikor a folyamat befejeződött, a `202 (Success)` JSON-tartalommal kapcsolatos választ kap a következő formátumban. A válasz az egyszerűség kedvéért rövidült. A fő kulcs/érték társítások a `"documentResults"` csomópontban találhatók. Az Elrendezés API-eredmények (a dokumentum teljes szövegének tartalma `"readResults"` és pozíciója) a csomóponton találhatók.
+Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos választ a következő formátumban fogja kapni. A válasz lerövidítve lett az egyszerűség kedvéért. A fő kulcs/érték társítások a `"documentResults"` csomóponton találhatók. Az elrendezési API eredményei (a dokumentumban lévő szöveg tartalma és pozíciói) a `"readResults"` csomóponton vannak.
 
 ```json
 { 
@@ -551,16 +551,16 @@ Amikor a folyamat befejeződött, a `202 (Success)` JSON-tartalommal kapcsolatos
 
 ## <a name="improve-results"></a>Az eredmények javítása
 
-Vizsgálja `"confidence"` meg az egyes kulcs/érték `"documentResults"` eredmény értékeit a csomópont alatt. Azt is meg kell néznie `"readResults"` a megbízhatósági pontszámok a csomópont, amely megfelel az elrendezés művelet. Az elrendezési eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményének megbízhatóságát, ezért mindkettőt ellenőrizze.
-* Ha az Elrendezés művelet megbízhatósági pontszámai alacsonyak, próbálja meg javítani a bemeneti dokumentumok minőségét [(lásd: Bemeneti követelmények).](../overview.md#input-requirements)
-* Ha a kulcs/érték kinyerési művelet megbízhatósági pontszámai alacsonyak, győződjön meg arról, hogy az elemzett dokumentumok azonos típusúak, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumai megjelenésük eltérő, fontolja meg a különböző mappákra való felosztásukat, és minden változathoz betanítási modellt.
+Vizsgálja meg `"confidence"` az egyes kulcsok/értékek eredményének értékét a `"documentResults"` csomópont alatt. Érdemes megtekinteni a `"readResults"` csomópontban található megbízhatósági pontszámokat is, amelyek az elrendezési műveletnek felelnek meg. Az elrendezés eredményének megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
+* Ha az elrendezési művelet megbízhatósági pontszáma alacsony, próbálja meg javítani a bemeneti dokumentumok minőségét (lásd a [bemeneti követelményeket](../overview.md#input-requirements)).
+* Ha a kulcs/érték kibontási műveletének megbízhatósági pontszáma alacsony, ügyeljen arra, hogy az elemzett dokumentumok ugyanolyan típusúak legyenek, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumaiban változások vannak kialakítva, érdemes lehet különböző mappákba bontani őket, és minden egyes változathoz egy modellt betanítani.
 
-### <a name="avoid-cluttered-labels"></a>Kerülje a zsúfolt címkéket
+### <a name="avoid-cluttered-labels"></a>Kerülje a felzsúfolt címkék elkerülését
 
-Néha, ha különböző címkéket alkalmaz ugyanazon a szövegsoron belül, a szolgáltatás ezeket a címkéket egyetlen mezőbe egyesítheti. Egy címben például a várost, az államot és az irányítószámot különböző mezőkként címkézheti, de az előrejelzés során ezeket a mezőket a rendszer nem ismeri fel külön.
+Esetenként, ha ugyanazon a sorban eltérő címkéket alkalmaz, a szolgáltatás egyesítheti ezeket a címkéket egyetlen mezőbe. Például egy címben a város, az állam és az irányítószám különböző mezőkként is címkézhető, de az előrejelzés során ezeket a mezőket nem ismeri fel külön.
 
-Megértjük, hogy ez a forgatókönyv alapvető fontosságú ügyfeleink számára, és dolgozunk ennek a jövőben immár fejlesztésén. Jelenleg azt javasoljuk a felhasználóknak, hogy több zsúfolt mezőt egy mezőként címkézze nek fel, majd különítse el a kifejezéseket a kibontási eredmények utófeldolgozásában.
+Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek számára, és a jövőben is dolgozunk. Jelenleg azt javasoljuk, hogy a felhasználók több zsúfolt mezőt is felcímkéznek egyetlen mezőként, majd elkülönítsék a feltételeket a kinyerési eredmények utólagos feldolgozásával.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Form Recognizer REST API-t a Pythonnal a modell manuálisan címkézett adatokkal történő betanításához. Ezután tekintse meg az [API referenciadokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) a Form Recognizer API részletesebb feltárásához.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az [API-referenciák dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) , amely részletesebben vizsgálja meg az űrlap-felismerő API-t.

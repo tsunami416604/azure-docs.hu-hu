@@ -9,45 +9,45 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678493"
 ---
-A konfigurálás megkezdése előtt telepítse és importálja a szükséges modulokat. A PowerShell ben a modulok telepítéséhez rendszergazdai jogosultságokra van szükség.
+A konfigurálás megkezdése előtt telepítse és importálja a szükséges modulokat. Rendszergazdai jogosultságokkal kell rendelkeznie a modulok PowerShellben való telepítéséhez.
 
-1. Telepítse és importálja az Az modult.
+1. Telepítse és importálja az az modult.
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. Telepítse és importálja az Az.Peering modult.
+1. Telepítse és importálja az az. peering modult.
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Ellenőrizze, hogy az importált modulok megfelelően importálva ezzel a paranccsal:
+1. A következő parancs használatával ellenőrizze, hogy a modulok megfelelően lettek-e importálva:
     ```powershell
     Get-Module
     ```
-1. Jelentkezzen be Azure-fiókjába ezzel a paranccsal:
+1. Jelentkezzen be az Azure-fiókjába a következő parancs használatával:
     ```powershell
     Connect-AzAccount
     ```
-1. Ellenőrizze a fiók előfizetéseit, és válassza ki azt az előfizetést, amelyben társviszony-létesítést szeretne létrehozni.
+1. Tekintse át a fiók előfizetéseit, és válassza ki azt az előfizetést, amelyben létre szeretné hozni a társítást.
     ```powershell
     Get-AzSubscription
     Select-AzSubscription -SubscriptionId "subscription-id"
     ```
-1. Ha még nem rendelkezik erőforráscsoporttal, létre kell hoznia egyet, mielőtt társviszony-létesítést hozna létre. Ezt a következő parancs futtatásával teheti meg:
+1. Ha még nem rendelkezik erőforráscsoporthoz, létre kell hoznia egyet a társítás létrehozása előtt. Ezt a következő parancs futtatásával teheti meg:
 
     ```powershell
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Ha még nem társította az ASN-t és az előfizetést, kövesse a [Társasa ASN társítása](../howto-subscription-association-powershell.md)című részben leírt lépéseket. Ez a művelet szükséges társviszony-létesítés kéréséhez.
+> Ha még nem társította az ASN-t és az előfizetést, kövesse a [peer ASN társítása](../howto-subscription-association-powershell.md)című témakör lépéseit. Ez a művelet a társítás igényléséhez szükséges.
 
 > [!NOTE]
-> Az erőforráscsoport helye független attól a helytől, ahol társviszony-létesítést szeretne beállítani.
+> Az erőforráscsoport helye független attól a helytől, ahol a társítást beállítja.
 &nbsp;

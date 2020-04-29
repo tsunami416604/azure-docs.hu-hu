@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics integrálása az Azure Machine Learningszolgáltatással
-description: Ez a cikk bemutatja, hogyan integrálható az Azure Stream Analytics-feladat az Azure Machine Learning-modellek.
+title: Azure Stream Analytics integrálása Azure Machine Learning
+description: Ez a cikk bemutatja, hogyan integrálhat egy Azure Stream Analytics feladatot Azure Machine Learning modellekkel.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -8,60 +8,60 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481973"
 ---
-# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Az Azure Stream Analytics integrálása az Azure Machine Learning (előzetes verzió) szolgáltatással
+# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
-Gépi tanulási modelleket valósíthat meg felhasználó által definiált függvényként (UDF) az Azure Stream Analytics-feladatokban, hogy valós idejű pontozási és előrejelzéseket hajtson végre a streamelési bemeneti adatokon. [Az Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) lehetővé teszi, hogy bármilyen népszerű nyílt forráskódú eszközt, például a Tensorflow- t, a scikit-learn-t vagy a PyTorch-ot használjon a modellek előkészítéséhez, betanításához és üzembe helyezéséhez.
+A gépi tanulási modelleket felhasználó által definiált függvényként (UDF) implementálhatja a Azure Stream Analytics-feladatokban, így valós idejű pontozást és előrejelzéseket végezhet a folyamatos átviteli bemeneti adatokon. A [Azure Machine learning](../machine-learning/overview-what-is-azure-ml.md) lehetővé teszi, hogy bármilyen népszerű, nyílt forráskódú eszközt, például Tensorflow, Scikit vagy PyTorch használjon a modellek előkészítéséhez, betanításához és üzembe helyezéséhez.
 
 > [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el. Ezt a funkciót az Azure Portalon csak a [Stream Analytics portál előzetes hivatkozásával](https://aka.ms/asaportalpreview)érheti el. Ez a funkció a [Visual Studio Stream Analytics eszközeinek](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)legújabb verziójában is elérhető.
+> Ez a funkció nyilvános előzetes verzióban érhető el. Ezt a funkciót csak a [stream Analytics portál előzetes](https://aka.ms/asaportalpreview)verziójának használatával érheti el a Azure Portal. Ez a funkció a [Visual studióhoz készült stream Analytics Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)legújabb verziójában is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt gépi tanulási modellt ad hozzá függvényként a Stream Analytics-feladathoz, hajtsa végre az alábbi lépéseket:
+A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása előtt végezze el a következő lépéseket:
 
-1. Az Azure Machine Learning használatával [webszolgáltatásként telepítheti a modellt.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+1. A Azure Machine Learning használatával [üzembe helyezheti a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. A pontozási [parancsfájlnak rendelkeznie kell mintabemenetekkel és kimenetekkel,](../machine-learning/how-to-deploy-and-where.md#example-entry-script) amelyeket az Azure Machine Learning egy sémaspecifikáció létrehozásához használ. A Stream Analytics a sémát használja a webszolgáltatás függvényaláírásának megértéséhez.
+2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását.
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 
-4. Telepítse a modellt az [Azure Kubernetes szolgáltatás](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy méretű éles környezetben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, a Stream Analytics-feladat teljesítménye leromlott, ami hatással van a késésre. Az Azure Container Instances-on telepített modellek ma nem támogatottak, de az elkövetkező hónapokban válnak elérhetővé.
+4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek jelenleg nem támogatottak, de az elkövetkező hónapokban elérhetővé válnak.
 
-## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladathoz
+## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladatokhoz
 
-Az Azure Machine Learning-függvényeket közvetlenül az Azure Portalon keresztül adhat hozzá a Stream Analytics-feladathoz.
+Azure Machine Learning függvényeket közvetlenül a Azure Portal lehet hozzáadni a Stream Analytics feladathoz.
 
-1. Nyissa meg a Stream Analytics-feladatot az Azure Portalon, és válassza a **Funkciók** lehetőséget a **Feladattopológia**területen. Ezután válassza az **Azure ML-szolgáltatás** a **+ Add** legördülő menüben.
+1. Navigáljon a Stream Analytics-feladathoz a Azure Portal, és válassza a **feladatok** lehetőséget a feladatok **topológiája**alatt. Ezután válassza ki az **Azure ml szolgáltatást** a **+** legördülő menüből.
 
    ![Azure ML UDF hozzáadása](./media/machine-learning-udf/add-azureml-udf.png)
 
-2. Töltse ki az **Azure Machine Learning Service függvényűrlapot** a következő tulajdonságértékekkel:
+2. Töltse ki a **Azure Machine learning Service Function** űrlapot a következő tulajdonságértékek megírásával:
 
-   ![Azure ML UDF konfigurálása](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Az Azure ML UDF konfigurálása](./media/machine-learning-udf/configure-azureml-udf.png)
 
-Az alábbi táblázat ismerteti az Azure ML-szolgáltatás függvényeinek egyes tulajdonságait a Stream Analytics ben.
+Az alábbi táblázat a Stream Analytics Azure ML Service functions egyes tulajdonságait ismerteti.
 
 |Tulajdonság|Leírás|
 |--------|-----------|
-|Függvény aliasa|Írjon be egy nevet a függvény meghívásához a lekérdezésben.|
-|Előfizetés|Az Azure-előfizetése..|
-|Azure ML-munkaterület|Az Azure Machine Learning-munkaterület, amelyet a modell webszolgáltatásként való üzembe helyezéséhez használt.|
-|Központi telepítés|A modellt üzemeltető webszolgáltatás.|
-|Függvény aláírása|A webszolgáltatás aláírása az API sémaspecifikációjából származik. Ha az aláírás nem töltődik be, ellenőrizze, hogy a pontozási parancsfájlban megadott-e mintabemenetet és kimenetet a séma automatikus létrehozásához.|
-|A párhuzamos kérelmek száma partíciónként|Ez egy speciális konfiguráció a nagy léptékű átviteli sebességgel való optimalizáláshoz. Ez a szám a feladat egyes partícióiról a webszolgáltatásnak küldött egyidejű kérelmeket jelöli. A hat streamelési egységgel (SU) és az alacsonyabb egy partícióval rendelkező feladatok hoz nak létre. A 12 SUs-szal rendelkező feladatok két partícióval rendelkeznek, 18 SUs három partícióval rendelkezik, és így tovább.<br><br> Például ha a feladat két partíciót, és ezt a paramétert négyre állítja, nyolc egyidejű kérelmek et a feladatból a webszolgáltatás. A nyilvános előzetes verzió ban ez az érték alapértelmezés szerint 20 lesz, és nem frissíthető.|
-|Kötegek maximális száma|Ez egy speciális konfiguráció a nagy léptékű átviteli sebességű optimalizálásához. Ez a szám a webszolgáltatásnak küldött egyetlen kérelemben kötegelt események maximális számát jelöli.|
+|Függvény aliasa|Adjon meg egy nevet a függvény meghívásához a lekérdezésben.|
+|Előfizetés|Azure-előfizetése...|
+|Azure ML-munkaterület|A modell webszolgáltatásként való üzembe helyezéséhez használt Azure Machine Learning munkaterület.|
+|Központi telepítés|A modellt működtető webszolgáltatás.|
+|Függvény aláírása|A webszolgáltatás aláírása az API sémájának specifikációja alapján lett kikövetkeztetve. Ha az aláírás nem töltődik be, ellenőrizze, hogy a pontozási parancsfájlban megadott minta bemenetet és kimenetet adott-e meg a séma automatikus létrehozásához.|
+|Párhuzamos kérelmek száma partíción|Ez egy speciális konfiguráció a nagy léptékű átviteli sebesség optimalizálása érdekében. Ez a szám a feladat egyes partíciói által a webszolgáltatásba küldött egyidejű kérelmeket jelöli. A hat folyamatos átviteli egységgel (SU) és eggyel alacsonyabb szintű feladatokhoz egy partíció tartozik. A 12 SUs-vel rendelkező feladatok két partícióval rendelkeznek, a 18 SUs pedig három partíciót és így tovább.<br><br> Ha például a feladatainak két partíciója van, és ezt a paramétert négyre állítja, a feladatokból nyolc egyidejű kérelem lesz a webszolgáltatásnak. A nyilvános előzetes verzióban ez az érték alapértelmezés szerint 20, és nem frissíthető.|
+|Kötegek maximális száma|Ez egy speciális konfiguráció a nagy léptékű átviteli sebesség optimalizálásához. Ez a szám azt jelöli, hogy az események maximális száma a webszolgáltatásnak elküldhető egyetlen kérelemben legyen egyesítve.|
 
 ## <a name="supported-input-parameters"></a>Támogatott bemeneti paraméterek
 
-Amikor a Stream Analytics-lekérdezés meghívja az Azure Machine Learning UDF-et, a feladat létrehoz egy JSON-szerializált kérelmet a webszolgáltatásszámára. A kérelem egy modell-specifikus sémán alapul. A [séma automatikus létrehozásához](../machine-learning/how-to-deploy-and-where.md)meg kell adnia egy mintabemenetet és kimenetet a pontozási parancsfájlban. A séma lehetővé teszi, hogy a Stream Analytics a JSON szerializált kérelmet bármely támogatott adattípusok, például numpy, pandák és PySpark létrehozásához. Több bemeneti események kötegelhető konként egyetlen kérelemben.
+Ha a Stream Analytics-lekérdezés egy Azure Machine Learning UDF-t hív meg, a feladatokhoz egy JSON-szerializált kérelem jön létre a webszolgáltatáshoz. A kérelem modell-specifikus sémán alapul. A pontozási parancsfájlban meg kell adnia egy minta bemenetet és kimenetet a [séma automatikus létrehozásához](../machine-learning/how-to-deploy-and-where.md). A séma lehetővé teszi, hogy Stream Analytics a JSON szerializált kérelmét a támogatott adattípusok, például a NumPy, a pandák és a PySpark számára. Egyszerre több bemeneti esemény is feldolgozható egyetlen kérelemben.
 
-A következő Stream Analytics-lekérdezés egy példa az Azure Machine Learning UDF meghívására:
+A következő Stream Analytics lekérdezés egy Azure Machine Learning UDF meghívását szemlélteti:
 
 ```SQL
 SELECT udf.score(<model-specific-data-structure>)
@@ -69,15 +69,15 @@ INTO output
 FROM input
 ```
 
-A Stream Analytics csak egy paraméter t támogatja az Azure Machine Learning-függvényekhez. Előfordulhat, hogy elő kell készítenie az adatokat, mielőtt átadná azt a gépi tanulási UDF bemenetként.
+A Stream Analytics csak Azure Machine Learning függvények esetében támogatja a Passing paramétert. Előfordulhat, hogy elő kell készítenie az adatokat, mielőtt bemenetként továbbítja azt a Machine learning UDF-nek.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Több bemeneti paraméter átadása az UDF-nek
 
-A gépi tanulási modellek bemeneteinek leggyakoribb példái a numpy tömbök és a DataFrames. JavaScript UDF használatával tömböt hozhat létre, és a `WITH` záradék kal jsonszerializált DataFrame-et hozhat létre.
+A gépi tanulási modellekbe való bemenetek leggyakoribb példái a NumPy tömbök és DataFrames. Létrehozhat egy tömböt JavaScript UDF használatával, és létrehozhat egy JSON-szerializált DataFrame a `WITH` záradék használatával.
 
 ### <a name="create-an-input-array"></a>Bemeneti tömb létrehozása
 
-Létrehozhat egy JavaScript UDF-et, amely elfogadja *az N* bemenetek számát, és létrehoz egy tömböt, amely az Azure Machine Learning UDF bemeneteként használható.
+Létrehozhat egy JavaScript UDF-t, amely *nagy* számú bemenetet fogad el, és létrehoz egy tömböt, amely a Azure Machine learning UDF bemenetként használható.
 
 ```javascript
 function createArray(vendorid, weekday, pickuphour, passenger, distance) {
@@ -87,7 +87,7 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 }
 ```
 
-Miután hozzáadta a JavaScript UDF-et a feladathoz, meghívhatja az Azure Machine Learning UDF-et a következő lekérdezéssel:
+Miután hozzáadta a JavaScript UDF-t a feladatokhoz, a következő lekérdezéssel hívhatja a Azure Machine Learning UDF-t:
 
 ```SQL
 SELECT udf.score(
@@ -97,7 +97,7 @@ INTO output
 FROM input
 ```
 
-A következő JSON egy példakérés:
+A következő JSON egy példa erre a kérelemre:
 
 ```JSON
 {
@@ -108,11 +108,11 @@ A következő JSON egy példakérés:
 }
 ```
 
-### <a name="create-a-pandas-or-pyspark-dataframe"></a>Pandák vagy PySpark DataFrame létrehozása
+### <a name="create-a-pandas-or-pyspark-dataframe"></a>Panda-vagy PySpark-DataFrame létrehozása
 
-A `WITH` záradék segítségével hozzon létre egy JSON szerializált DataFrame, amely átadható az Azure Machine Learning UDF az alábbiakszerint.
+A `WITH` záradék használatával LÉTREHOZHAT egy JSON szerializált DataFrame, amely a Azure Machine learning UDF bemenetként adható át az alábbi ábrán látható módon.
 
-A következő lekérdezés létrehoz egy DataFrame a szükséges mezők kiválasztásával, és a DataFrame az Azure Machine Learning UDF bemenetként használja.
+A következő lekérdezés létrehoz egy DataFrame a szükséges mezők kiválasztásával, és a DataFrame használja a Azure Machine Learning UDF bemenetként.
 
 ```SQL
 WITH 
@@ -126,7 +126,7 @@ INTO output
 FROM input
 ```
 
-A következő JSON egy példakérés az előző lekérdezésből:
+A következő JSON egy példa az előző lekérdezésből származó kérelemre:
 
 ```JSON
 {
@@ -147,27 +147,27 @@ A következő JSON egy példakérés az előző lekérdezésből:
 }
 ```
 
-## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Az Azure Machine Learning UDF-ek teljesítményének optimalizálása
+## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Azure Machine Learning UDF teljesítményének optimalizálása
 
-Amikor telepíti a modellt az Azure Kubernetes szolgáltatásra, [profilozhatja a modellt az erőforrás-kihasználtság meghatározásához.](../machine-learning/how-to-deploy-and-where.md#profilemodel) Engedélyezheti az [App Insights-ot az üzembe helyezésekhez a](../machine-learning/how-to-enable-app-insights.md) kérelmek és a válaszidők és a hibaarányok megértéséhez.
+Amikor üzembe helyezi a modellt az Azure Kubernetes Service-ben, [az erőforrás-használat meghatározásához profilokat állíthat be a modellben](../machine-learning/how-to-deploy-and-where.md#profilemodel). A [központi telepítések esetében is engedélyezheti az alkalmazás-bepillantást](../machine-learning/how-to-enable-app-insights.md) , hogy megértse a kérelmek sebességét, a válaszidőt és a meghibásodási arányt.
 
-Ha magas eseményátviteli sebességű forgatókönyvvel rendelkezik, előfordulhat, hogy módosítania kell a következő paramétereket a Stream Analytics-ben az optimális teljesítmény eléréséhez az alsó és teljes késleltetésű késésekkel:
+Ha magas szintű adatátviteli sebességgel rendelkezik, előfordulhat, hogy módosítania kell az alábbi paramétereket a Stream Analyticsban, hogy optimális teljesítményt érjen el az alacsony végpontok közötti késésekkel:
 
-1. Maximális kötegszám.
-2. A párhuzamos kérelmek száma partíciónként.
+1. Kötegek maximális száma.
+2. A párhuzamos kérelmek száma egy partíción.
 
-### <a name="determine-the-right-batch-size"></a>A megfelelő kötegméret meghatározása
+### <a name="determine-the-right-batch-size"></a>A köteg megfelelő méretének meghatározása
 
-Miután üzembe helyezte a webszolgáltatást, a különböző kötegelt méretekkel rendelkező mintakérelmet küld50-től kezdődően, és több száz nagyságrendű nagyságrenddel növeli azt. Például 200, 500, 1000, 2000 és így tovább. Észre fogja venni, hogy egy bizonyos kötegméret után a válasz késése nő. A válaszkéses növekedés ének a feladat maximális kötegszámának kell lennie.
+A webszolgáltatás üzembe helyezése után elküldheti a minta kérést, amely az 50-től kezdődően változó méretű kötegeket és több százat vesz igénybe. Például: 200, 500, 1000, 2000 és így tovább. Megfigyelheti, hogy egy adott köteg mérete után a válasz késése növekszik. Az a pont, amely után a válaszok száma növekszik, a feladatokhoz tartozó kötegek maximális száma.
 
-### <a name="determine-the-number-of-parallel-requests-per-partition"></a>A párhuzamos kérelmek partíciónkénti számának meghatározása
+### <a name="determine-the-number-of-parallel-requests-per-partition"></a>A párhuzamos kérelmek számának meghatározása partíción
 
-Optimális skálázás esetén a Stream Analytics-feladat képesnek kell lennie arra, hogy több párhuzamos kéréseket küldjön a webszolgáltatásnak, és néhány ezredmásodpercen belül választ kapjon. A webszolgáltatás válaszának késése közvetlenül befolyásolhatja a Stream Analytics-feladat késését és teljesítményét. Ha a feladatból a webszolgáltatáshoz érkező hívás hosszú időt vesz igénybe, valószínűleg a vízjel késleltetésének növekedését fogja látni, és az elmaradt bemeneti események számának növekedését is láthatja.
+Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos kérelmet kell küldenie a webszolgáltatásba, és néhány ezredmásodpercen belül választ kaphat. A webszolgáltatás válaszának késése közvetlenül befolyásolhatja Stream Analytics feladatának késését és teljesítményét. Ha a feladatból a webszolgáltatásba irányuló hívás hosszú időt vesz igénybe, akkor valószínű, hogy a vízjel késleltetése megnő, és a várakozó bemeneti eseményeinek számát is megnöveli.
 
-Az ilyen késés megelőzése érdekében győződjön meg arról, hogy az Azure Kubernetes-szolgáltatás (AKS) fürtje a [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Rendkívül fontos, hogy a webszolgáltatás magas rendelkezésre állású, és sikeres válaszokat ad vissza. Ha a feladat nem érhető el választ (503) kap a webszolgáltatástól, akkor folyamatosan újra próbálkozik exponenciális visszalépéssel. A sikeres (200) és a szolgáltatáson kívüli bármely válasz (503) hibás állapotba kerül.
+Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
-* [Stream Analytics-feladat méretezése az Azure Machine Learning Studio (klasszikus) funkcióval](stream-analytics-scale-with-machine-learning-functions.md)
+* [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)
 

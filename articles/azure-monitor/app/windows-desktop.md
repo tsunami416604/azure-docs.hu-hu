@@ -4,10 +4,10 @@ description: A windowsos asztali alkalmazások használatát és teljesítmény�
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537389"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
@@ -28,7 +28,7 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
    
     Az ApplicationInsights.config használatakor győződjön meg arról, hogy annak tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
 5. [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) telemetriai adatokat küldhet.
-6. Futtassa az alkalmazást, és tekintse meg a telemetriai adatokat az Azure Portalon létrehozott erőforrásban.
+6. Futtassa az alkalmazást, és tekintse meg a telemetria a Azure Portalban létrehozott erőforrásban.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Mintakód
 ```csharp
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>A számítógépnév tárolásának felülbírálása
+## <a name="override-storage-of-computer-name"></a>Számítógépnév tárolójának felülbírálása
 
-Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer telemetriáját kibocsátó rendszer nevét. A gyűjtemény felülbírálásához telemetriai inicializálót kell használnia:
+Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer-előállítók telemetria számítógép nevét. A gyűjtemény felülbírálásához telemetria inicializáló használata szükséges:
 
-**Írjon egyéni TelemettryInitializer az alábbiak szerint.**
+**Az alábbi módon írhat egyéni TelemetryInitializer.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Az inicializáló t `Program.cs` `Main()` az alábbi módszerrel hozza létre a műszerezési kulcsot:
+Hozza létre az inicializálást `Program.cs` `Main()` az alábbi metódusban a kialakítási kulcs beállításával:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

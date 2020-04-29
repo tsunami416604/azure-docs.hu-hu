@@ -1,7 +1,7 @@
 ---
 title: Adatredundancia
 titleSuffix: Azure Storage
-description: A Microsoft Azure Storage-fiókban lévő adatok replikálódnak a tartósság és a magas rendelkezésre állás érdekében. A redundanciakonfigurációk közé tartozik a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS), a georedundáns tárolás (GRS), az olvasási hozzáférésű georedundáns tárolás (RA-GRS), a geozóna redundáns tárolása (GZRS) (előzetes verzió) és az olvasási hozzáférésű geozónaredundáns tárolás (RA-GZRS) (előzetes verzió).
+description: A rendszer a Microsoft Azure Storage fiókjában lévő adatait a tartósság és a magas rendelkezésre állás érdekében replikálja. A redundancia-konfigurációk közé tartozik a helyileg redundáns tárolás (LRS), a zóna-redundáns tárolás (ZRS), a Geo-redundáns tárolás (GRS), a Read-Access geo-redundáns tárolás (RA-GRS), a Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) és az olvasási hozzáférésű geo-Zone-redundáns tárolás (RA-GZRS).
 services: storage
 author: tamram
 ms.service: storage
@@ -11,100 +11,100 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481941"
 ---
-# <a name="azure-storage-redundancy"></a>Az Azure Storage redundanciája
+# <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
-Az Azure Storage mindig tárolja az adatok több példányát, hogy védve legyenak a tervezett és nem tervezett eseményekkel szemben, beleértve az átmeneti hardverhibákat, a hálózati vagy áramkimaradásokat és a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a tárfiók még a hibák ellenére is megfeleljen az [Azure Storage szolgáltatásiszintű szerződésének (SLA).](https://azure.microsoft.com/support/legal/sla/storage/)
+Az Azure Storage mindig több példányban tárolja az adatait, így védve van a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardver meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a Storage-fiókja a meghibásodások előtt is teljesítse az [Azure Storage szolgáltatói szerződését (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) .
 
-Annak eldöntésekor, hogy melyik redundancia-beállítás a legjobb a forgatókönyvhöz, vegye figyelembe az alacsonyabb költségek és a magasabb rendelkezésre állás és tartósság közötti kompromisszumokat. A következő tényezők határozzák meg, hogy melyik redundanciabeállítást válassza:  
+Ha eldönti, hogy melyik redundancia-lehetőség a legmegfelelőbb a forgatókönyvéhez, vegye figyelembe az alacsonyabb költségek és a magasabb rendelkezésre állás és a tartósság közötti kompromisszumokat. Az alábbi tényezők segítenek meghatározni, hogy melyik redundancia-beállítást kell választania:  
 
-- Az adatok replikálásának oka az elsődleges régióban
-- Azt jelzi, hogy az adatok replikálása az elsődleges régiótól földrajzilag távoli második helyre történik-e a regionális katasztrófák elleni védelem érdekében
-- Azt jelzi, hogy az alkalmazás olvasási hozzáférést igényel-e a másodlagos régióban lévő replikált adatokhoz, ha az elsődleges régió bármilyen okból elérhetetlenné válik
+- Hogyan replikálódnak az adatai az elsődleges régióban
+- Azt jelzi, hogy a rendszer replikálja-e az adatait egy második helyre, amely földrajzilag az elsődleges régióban van, a regionális katasztrófák elleni védelem érdekében
+- Azt jelzi, hogy az alkalmazásnak van-e olvasási hozzáférése a másodlagos régióban lévő replikált értékekhez, ha az elsődleges régió bármilyen okból elérhetetlenné válik
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundancia az elsődleges régióban
 
-Az Azure Storage-fiókban lévő adatok mindig háromszor replikálódnak az elsődleges régióban. Az Azure Storage két lehetőséget kínál az adatok replikálásának módjára az elsődleges régióban:
+Az Azure Storage-fiókban lévő adategységek mindig háromszor replikálódnak az elsődleges régióba. Az Azure Storage két lehetőséget kínál az adatai replikálására az elsődleges régióban:
 
-- **A helyileg redundáns tárolás (LRS)** az adatokat szinkron módon háromszor másolja át egyetlen fizikai helyen az elsődleges régióban. Az LRS a legkevésbé költséges replikációs lehetőség, de nem ajánlott a magas rendelkezésre állást igénylő alkalmazások.
-- **Zónaredundáns tárolás (ZRS)** másolja az adatokat szinkron módon három Azure rendelkezésre állási zónák az elsődleges régióban. A magas rendelkezésre állást igénylő alkalmazások esetében a Microsoft a ZRS használatát javasolja az elsődleges régióban, és egy másodlagos régióra is replikálja.
+- A **helyileg redundáns tárolás (LRS)** az adatfeldolgozást az elsődleges régióban lévő egyetlen fizikai helyen belül háromszor másolja. A LRS a legkevésbé költséges replikálási lehetőség, de nem ajánlott magas rendelkezésre állást igénylő alkalmazásokhoz.
+- A **Zone-redundáns tárolás (ZRS)** az elsődleges régió három Azure-beli rendelkezésre állási zónájában szinkron módon másolja az adatait. A magas rendelkezésre állást igénylő alkalmazások esetében a Microsoft javasolja a ZRS használatát az elsődleges régióban, valamint egy másodlagos régióba való replikálást is.
 
 ### <a name="locally-redundant-storage"></a>Helyileg redundáns tárolás
 
-A helyileg redundáns tárolás (LRS) háromszor replikálja az adatokat egyetlen fizikai helyen belül az elsődleges régióban. Az LRS legalább 99,999999999999% (11 kilences) tartósságot biztosít a tárgyakszámára egy adott évben.
+A helyileg redundáns tárolás (LRS) háromszor replikálja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. A LRS legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben.
 
-Az LRS a legalacsonyabb költségű redundancia lehetőség, és a legkevésbé tartósságot kínálja más lehetőségekhez képest. Az LRS megvédi az adatokat a kiszolgálóállvány- és meghajtóhibáktól. Ha azonban egy katasztrófa, például a tűz vagy az árvíz történik az adatközponton belül, az LRS-t használó tárfiók összes replikája elveszhet vagy helyreállíthatatlan lehet. A kockázat csökkentése érdekében a Microsoft [zónaredundáns tárolás](#zone-redundant-storage) (ZRS), [georedundáns tárolás](#geo-redundant-storage) (GRS) vagy [geozónaredundáns tárolás (előzetes verzió) (GZRS)](#geo-zone-redundant-storage-preview) használatát javasolja.
+A LRS a legalacsonyabb árú redundancia-beállítás, és a lehető legkevesebb tartósságot kínálja a többi lehetőséghez képest. A LRS megvédi adatait a Server rack és a meghajtó meghibásodása ellen. Ha azonban az adatközponton belül egy sérülés, például a tűz vagy az árvíz történik, a LRS használó Storage-fiókok összes replikája elveszhet vagy helyreállíthatatlan lehet. A kockázat enyhítése érdekében a Microsoft a [zóna-redundáns](#zone-redundant-storage) tárolás (ZRS), a [geo-redundáns tárolás](#geo-redundant-storage) (GRS) vagy a [geo-zóna-redundáns tárolás (előzetes verzió)](#geo-zone-redundant-storage-preview) (GZRS) használatát javasolja.
 
-Az LRS-t használó tárfiók írási kérelme szinkron módon történik. Az írási művelet csak akkor ad vissza sikeresen, ha az adatok mindhárom replikába írásra került.
+A LRS-t használó Storage-fiókra vonatkozó írási kérelem szinkron módon történik. Az írási művelet csak akkor tér vissza sikeresen, ha az adatok mindhárom replikára íródnak.
 
-Az LRS jó választás a következő esetekben:
+A LRS jó választás a következő esetekben:
 
-- Ha az alkalmazás olyan adatokat tárol, amelyek adatvesztés esetén könnyen rekonstruálhatók, az LRS-t választhatja.
-- Ha az alkalmazás csak egy országon vagy régión belül replikálhatja az adatokat az adatkezelési követelmények miatt, választhatja az LRS-t. Bizonyos esetekben a párosított régiók, amelyeken keresztül az adatok georeplikált lehet egy másik országban vagy régióban. A párosított régiókról az [Azure-régiók](https://azure.microsoft.com/regions/)című témakörben talál további információt.
+- Ha az alkalmazás adatvesztés esetén könnyen újraépíthető adatait tárolja, a LRS is dönthet.
+- Ha az alkalmazás az adatirányítási követelmények miatt csak az országon vagy régión belül replikálja az adatreplikálást, a LRS is dönthet. Bizonyos esetekben előfordulhat, hogy a párosított régiók, amelyeken az adatföldrajzi hely replikálása megtörténik, egy másik országban vagy régióban lehet. A párosított régiókkal kapcsolatos további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
 ### <a name="zone-redundant-storage"></a>Zónaredundáns tárolás
 
-Zónaredundáns tárolás (ZRS) replikálja az Azure Storage-adatok szinkron módon három Azure rendelkezésre állási zónák az elsődleges régióban. Minden rendelkezésre állási zóna egy külön fizikai hely, független áramellátással, hűtéssel és hálózatépítéssel. A ZRS legalább 99,99999999999999%-os (12 9-es) tartósságot kínál az Azure Storage-adatobjektumokhoz egy adott évben.
+A Zone-redundáns tárolás (ZRS) az Azure Storage-adatait szinkron módon replikálja az elsődleges régió három Azure-beli rendelkezésre állási zónáján belül. Az egyes rendelkezésre állási zónák különálló, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott fizikai helyet foglalnak magukban. A ZRS az Azure Storage-adatobjektumok tartósságát kínálja legalább 99,9999999999%-ban (12 9) az adott évben.
 
-A ZRS-szel az adatok továbbra is elérhetők az olvasási és írási műveletekhez, még akkor is, ha egy zóna elérhetetlenné válik. Ha egy zóna elérhetetlenné válik, az Azure vállalja a hálózati frissítéseket, például a DNS újbóli rámutatását. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejezése előtt hozzáfér az adatokhoz. A ZRS-alkalmazások tervezésekor kövesse az átmeneti hibakezelés gyakorlatait, beleértve az újrapróbálkozási szabályzatok exponenciális visszalépéssel történő megvalósítását.
+A ZRS esetében az adatok továbbra is elérhetők olvasási és írási műveletekhez, még akkor is, ha egy zóna elérhetetlenné válik. Ha egy zóna elérhetetlenné válik, az Azure hálózati frissítéseket végez, például a DNS-re. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejeződése előtt hozzáférnek az adataihoz. A ZRS alkalmazások tervezésekor kövesse az átmeneti hibák kezelésének eljárásait, beleértve az újrapróbálkozási szabályzatok az exponenciális visszatartással történő megvalósítását.
 
-A ZRS-t használó tárfiókírási kérelem szinkron módon történik. Az írási művelet csak akkor ad vissza sikeresen, ha az adatok a három rendelkezésre állási zónában lévő összes replikába írásra kerül.
+A ZRS-t használó Storage-fiókra vonatkozó írási kérelem szinkron módon történik. Az írási művelet csak akkor ad eredményül, ha az adatok a három rendelkezésre állási zónában lévő összes replikára íródnak.
 
-A Microsoft azt javasolja, hogy a ZRS az elsődleges régióban olyan forgatókönyvek, amelyek konzisztenciát, tartósságot és magas rendelkezésre állást igénylő forgatókönyvek használata. A ZRS kiváló teljesítményt, alacsony késleltetést és rugalmasságot biztosít az adatok számára, ha átmenetileg elérhetetlenné válik. Előfordulhat azonban, hogy a ZRS önmagában nem védi meg az adatokat egy olyan regionális katasztrófa ellen, amely tartósan több zónát érint. A regionális katasztrófák elleni védelem érdekében a Microsoft a [geozóna-redundáns tárolás](#geo-zone-redundant-storage-preview) (GZRS) használatát javasolja, amely az elsődleges régióban használja a ZRS-t, és földrajzilag replikálja az adatokat egy másodlagos régióba.
+A Microsoft a ZRS használatát javasolja az elsődleges régióban olyan forgatókönyvek esetében, amelyek következetességet, tartósságot és magas rendelkezésre állást igényelnek. A ZRS kiváló teljesítményt, kis késleltetést és rugalmasságot biztosít az adatai számára, ha átmenetileg elérhetetlenné válik. A ZRS önmagában azonban nem nyújt védelmet az adatainak olyan regionális katasztrófák ellenében, ahol a rendszer több zónát tartósan érint. A regionális katasztrófák elleni védelem érdekében a Microsoft azt javasolja, hogy a [geo-Zone-redundáns tárolást](#geo-zone-redundant-storage-preview) (GZRS) használja, amely az elsődleges régióban lévő ZRS használja, és földrajzilag replikálja az adatait egy másodlagos régióba.
 
-Az alábbi táblázat bemutatja, hogy milyen típusú tárfiókok támogatják a ZRS-t, mely régiókban:
+A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok támogatják a ZRS, amelyekben a régiók:
 
 |    Tárfiók típusa    |    Támogatott régiók    |    Támogatott szolgáltatások    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika Észak-Afrika<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> Lapblobok<sup>2</sup><br /> Fájlmegosztások (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Nyugat-Európa<br /> USA keleti régiója    |    Csak a blobok blokkolása    |
-|    FileStorage (Fájltárolás)    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure-fájlok    |
+|    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
+|    <sup>1</sup> . BlockBlobStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
+|    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
-<sup>1</sup> Az archív szint jelenleg nem támogatott ZRS-fiókok esetén.<br />
-<sup>2</sup> A virtuális gépekhez azure-beli felügyelt lemezeket tartalmazó tárfiókok mindig LRS-t használnak. Az Azure nem felügyelt lemezek is lrs-t kell használnia. A GRS-t használó Azure nem felügyelt lemezek hez létrehozhat egy tárfiókot, de az aszinkron georeplikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek nem támogatják a ZRS-t vagy a GZRS-t. A felügyelt lemezekről további információt az [Azure által felügyelt lemezek díjszabása című témakörben talál.](https://azure.microsoft.com/pricing/details/managed-disks/)
+<sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
+<sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-AZSE-t támogató régiókról a **Szolgáltatások régiónkénti támogatása** a [Mik azok az Azure rendelkezésre állási zónák című témakörben találhatók.](../../availability-zones/az-overview.md)
+További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint** a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
 
-## <a name="redundancy-in-a-secondary-region"></a>Redundancia másodlagos régióban
+## <a name="redundancy-in-a-secondary-region"></a>Redundancia egy másodlagos régióban
 
-A magas rendelkezésre állást igénylő alkalmazások esetében dönthet úgy, hogy a tárfiókban lévő adatokat egy másodlagos régióba másolja, amely több száz mérföldre van az elsődleges régiótól. Ha a tárfiók egy másodlagos régióba másolva, majd az adatok tartós a teljes regionális kimaradás vagy katasztrófa, amelyben az elsődleges régió nem helyreállítható.
+A magas rendelkezésre állást igénylő alkalmazások esetében választhatja azt is, hogy a Storage-fiókban lévő adatok egy olyan másodlagos régióba másolható, amely több száz kilométerre van az elsődleges régiótól. Ha a Storage-fiókot egy másodlagos régióba másolják, akkor az adatai tartósak maradnak, még akkor is, ha egy teljes regionális leállás vagy egy olyan katasztrófa következik be, amelyben az elsődleges régió nem helyreállítható.
 
-Amikor létrehoz egy tárfiókot, válassza ki a fiók elsődleges régióját. A párosított másodlagos régió az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiókról az [Azure-régiók című témakörben](https://azure.microsoft.com/global-infrastructure/regions/)talál további információt.
+A Storage-fiók létrehozásakor ki kell választania a fiók elsődleges régióját. A párosított másodlagos régió az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiókkal kapcsolatos további információkért lásd: [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/).
 
-Az Azure Storage két lehetőséget kínál az adatok másodlagos régióba másolására:
+Az Azure Storage két lehetőséget kínál az adatok másodlagos régióba történő másolására:
 
-- **Georedundáns tárolás (GRS)** másolja az adatokat szinkronban háromszor egyetlen fizikai helyen az elsődleges régióban az LRS használatával. Ezután aszinkron módon másolja az adatokat a másodlagos régió egyetlen fizikai helyére.
-- **A geozóna redundáns tárolása (GZRS)** (előzetes verzió) szinkron módon másolja az adatokat három Azure-rendelkezésre állási zónába az elsődleges régióban a ZRS használatával. Ezután aszinkron módon másolja az adatokat a másodlagos régió egyetlen fizikai helyére.
+- A **geo-redundáns tárolás (GRS)** a LRS használatával háromszor másolja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
+- A **geo-Zone-redundáns tárolás (GZRS)** (előzetes verzió) az elsődleges régió három Azure-beli rendelkezésre állási zónájában szinkronizálja az adatait az ZRS használatával. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
 
-A GRS és a GZRS közötti elsődleges különbség az adatok replikálásának módját az elsődleges régióban. A másodlagos helyen belül az adatok mindig háromszor replikálódik az LRS használatával.
+A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos helyen a LRS használatával a rendszer mindig szinkron módon replikálja az adataikat.
 
-GrS vagy GZRS esetén a másodlagos helyen lévő adatok nem érhetők el olvasási vagy írási hozzáféréssel, kivéve, ha a másodlagos régió feladatátvétel. A másodlagos hely olvasási hozzáféréséhez konfigurálja úgy a tárfiókot, hogy olvasási hozzáférésű georedundáns tárolást (RA-GRS) vagy olvasási hozzáférésű geozónaredundáns tárolást (RA-GZRS) használjon. További információ: [Olvasási hozzáférés a másodlagos régióban lévő adatokhoz.](#read-access-to-data-in-the-secondary-region)
+A GRS vagy a GZRS esetében a másodlagos helyen lévő információk nem érhetők el olvasási vagy írási hozzáférés esetén, kivéve, ha feladatátvétel történik a másodlagos régióval. Ha olvasási hozzáférést szeretne adni a másodlagos helyhez, konfigurálja a Storage-fiókot az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) használatára. További információ: [olvasási hozzáférés az adatokhoz a másodlagos régióban](#read-access-to-data-in-the-secondary-region).
 
-Ha az elsődleges régió elérhetetlenné válik, dönthet úgy, hogy a másodlagos régióba (előzetes verzió) adja át a feladatátvételt. Miután a feladatátvétel befejeződött, a másodlagos régió lesz az elsődleges régió, és újra olvashatja és írhatja az adatokat. A vész-helyreállítási és a másodlagos régió feladatátvételi feladatátvételről további információt a [Vész-helyreállítás és a fiókfeladat-átvétel (előzetes verzió) című témakörben](storage-disaster-recovery-guidance.md)talál.
+Ha az elsődleges régió elérhetetlenné válik, dönthet úgy, hogy átadja a feladatátvételt a másodlagos régiónak (előzetes verzió). A feladatátvétel befejeződése után a másodlagos régió lesz az elsődleges régió, és újra elolvashatja és írhatja az adataikat. A vész-helyreállítással és a másodlagos régióba való feladatátvételsel kapcsolatos további információkért tekintse meg a vész- [helyreállítás és a fiók feladatátvétele (előzetes verzió)](storage-disaster-recovery-guidance.md)című témakört.
 
 > [!IMPORTANT]
-> Mivel az adatok aszinkron módon replikálódnak a másodlagos régióba, az elsődleges régiót érintő hiba adatvesztést okozhat, ha az elsődleges régió nem állítható helyre. Az elsődleges régióba írt legutóbbi írások és a másodlagos régióba történő utolsó írás közötti időközt helyreállításipont-célkitűzésnek (RPO) nevezzük. Az RPO azt az időpontot jelzi, amerre az adatok helyrevihetők. Az Azure Storage általában rendelkezik egy RPO kevesebb, mint 15 perc, bár jelenleg nincs SLA, hogy mennyi ideig tart az adatok replikálása a másodlagos régióba.
+> Mivel az adatreplikáció a másodlagos régióba aszinkron módon történik, az elsődleges régiót érintő hibák adatvesztést okozhatnak, ha az elsődleges régió nem állítható helyre. Az elsődleges régióba irányuló legutóbbi írások és a másodlagos régió utolsó írása közötti intervallum a helyreállítási pont célkitűzése (RPO). A RPO azt az időpontot jelöli, ameddig az Adathelyreállítás visszaállítható. Az Azure Storage szolgáltatásnak jellemzően 15 percnél rövidebb RPO van, bár jelenleg nem áll rendelkezésre SLA, hogy mennyi ideig tart az adatreplikálás a másodlagos régióba.
 
 ### <a name="geo-redundant-storage"></a>Georedundáns tárolás
 
-Georedundáns tárolás (GRS) másolja az adatokat szinkronban háromszor egyetlen fizikai helyen az elsődleges régióban az LRS használatával. Ezután aszinkron módon másolja az adatokat egyetlen fizikai helyre egy másodlagos régióban, amely több száz mérföldre van az elsődleges régiótól. A GRS legalább 99,9999999999999999999999999999999999999999999999999999999999999999999999/9%-os élettartamot biztosít az Azure Storage-adatobjektumok számára egy adott évben.
+A Geo-redundáns tárolás (GRS) a LRS használatával háromszor másolja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. Ezután aszinkron módon másolja az adatait egy olyan másodlagos régióba, amely több száz mérföld távolságra van az elsődleges régiótól. A GRS az Azure Storage-adatobjektumok tartósságát kínálja legalább 99.99999999999999%-ban (16 9) az adott évben.
 
-Az írási művelet először véglegesítve van az elsődleges helyre, és LRS használatával replikálódik. A frissítés ezután aszinkron módon replikálódik a másodlagos régióba. Amikor az adatok a másodlagos helyre vannak írva, az LRS használatával is replikálódik az adott helyen.
+A rendszer először egy írási műveletet véglegesít az elsődleges helyen, és replikálja a LRS használatával. A rendszer ezután aszinkron módon replikálja a frissítést a másodlagos régióba. Ha az adatírás a másodlagos helyre történik, a rendszer a LRS használatával is replikálja az adott helyen belül.
 
-### <a name="geo-zone-redundant-storage-preview"></a>Geozónaredundáns tárolás (előzetes verzió)
+### <a name="geo-zone-redundant-storage-preview"></a>Geo-Zone-redundáns tárolás (előzetes verzió)
 
-Geozóna-redundáns tárolás (GZRS) (előzetes verzió) egyesíti a magas rendelkezésre állási kapacitás a rendelkezésre állási zónák között a georeplikáció által biztosított regionális kimaradások elleni védelemmel kombinálható. A GZRS-tárfiókban lévő adatok az elsődleges régió három [Azure-rendelkezésre állási zónájában](../../availability-zones/az-overview.md) vannak átmásolva, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. A Microsoft azt javasolja, hogy a GZRS-t olyan alkalmazásokhoz használja, amelyek maximális konzisztenciát, tartósságot és rendelkezésre állást, kiváló teljesítményt és vészhelyreállítás rugalmasságát igénylik.
+A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) a rendelkezésre állási zónákon keresztüli redundancia által biztosított magas rendelkezésre állást ötvözi a földrajzi replikálás által biztosított regionális kimaradások elleni védelemmel. A GZRS-fiókban lévő adatok az elsődleges régióban három Azure-beli [rendelkezésre állási zónába](../../availability-zones/az-overview.md) másolódnak át, és a regionális katasztrófák elleni védelem érdekében a másodlagos földrajzi régióba is replikálódnak. A Microsoft a GZRS használatát javasolja a maximális következetességet, tartósságot és rendelkezésre állást, a kiváló teljesítményt és a vész-helyreállítási rugalmasságot igénylő alkalmazások számára.
 
-GZRS tárfiókkal folytathatja az adatok olvasását és írását, ha egy rendelkezésre állási zóna elérhetetlenné válik, vagy nem helyreállítható. Emellett az adatok is tartós a teljes regionális kimaradás vagy katasztrófa, amelyben az elsődleges régió nem helyreállítható. A GZRS-t úgy tervezték, hogy egy adott évben legalább 99,999999999999999999999999999%- os (16 9-es) tartósságot biztosítson.
+GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben.
 
-Csak az általános célú v2-es tárfiókok támogatják a GZRS-t és az RA-GZRS-t. A tárfiók-típusokról az [Azure storage-fiók áttekintése című témakörben olvashat bővebben.](storage-account-overview.md) A GZRS és a RA-GZRS támogatja a blokkblobokat, a lapblobokat (a Virtuális merevlemezek kivételével), a fájlokat, a táblákat és a várólistákat.
+Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, az oldal blobokat (kivéve a VHD-lemezeket), a fájlokat, a táblákat és a várólistákat.
 
-A GZRS és a RA-GZRS jelenleg a következő régiókban érhető el előzetes verzióban:
+A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő régiókban:
 
 - Délkelet-Ázsia
 - Észak-Európa
@@ -116,64 +116,64 @@ A GZRS és a RA-GZRS jelenleg a következő régiókban érhető el előzetes ve
 - USA középső régiója
 - USA 2. nyugati régiója
 
-A Microsoft továbbra is engedélyezi a GZRS-t és a RA-GZRS-t további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért rendszeresen tekintse meg az [Azure-szolgáltatások frissítései](https://azure.microsoft.com/updates/) lapot.
+A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 
-Az előzetes verzió díjszabásáról a [GZRS-előnézeti díjszabása a Blobok,](https://azure.microsoft.com/pricing/details/storage/blobs) [fájlok,](https://azure.microsoft.com/pricing/details/storage/files/) [várólisták](https://azure.microsoft.com/pricing/details/storage/queues/)és [táblázatok](https://azure.microsoft.com/pricing/details/storage/tables/)esetében.
+Az előzetes verzió díjszabásával kapcsolatos információkért tekintse meg a [Blobok](https://azure.microsoft.com/pricing/details/storage/blobs), [fájlok](https://azure.microsoft.com/pricing/details/storage/files/), [várólisták](https://azure.microsoft.com/pricing/details/storage/queues/)és [táblák](https://azure.microsoft.com/pricing/details/storage/tables/)GZRS előzetes verziójának díjszabását.
 
 > [!IMPORTANT]
-> A Microsoft azt javasolja, hogy ne használjon előzetes funkciókat az éles számítási feladatokhoz.
+> A Microsoft az előzetes verziójú funkciók használatát javasolja az éles számítási feladatokhoz.
 
-## <a name="read-access-to-data-in-the-secondary-region"></a>Olvasási hozzáférés az adatokhoz a másodlagos régióban
+## <a name="read-access-to-data-in-the-secondary-region"></a>Olvasási hozzáférés a másodlagos régióban lévő adatelérési ponthoz
 
-A georedundáns tárolás (GRS vagy GZRS segítségével) replikálja az adatokat a másodlagos régió egy másik fizikai helyére, hogy megvédje a regionális kimaradások elleni védelmet. Ezek az adatok azonban csak akkor olvashatók, ha az ügyfél vagy a Microsoft feladatátvételt kezdeményez az elsődleges és a másodlagos régió között. Ha engedélyezi az olvasási hozzáférést a másodlagos régióhoz, az adatok olvashatók lesznek, ha az elsődleges régió elérhetetlenné válik. Olvasási hozzáférés a másodlagos régió, engedélyezze az olvasási hozzáférés georedundáns tárolás (RA-GRS) vagy olvasási hozzáférés geozóna redundáns tárolás (RA-GZRS).
+A Geo-redundáns tárolás (GRS vagy GZRS) replikálja az adatait a másodlagos régió egy másik fizikai helyére a regionális kimaradások elleni védelem érdekében. Ezek az adatok azonban csak olvashatók, ha az ügyfél vagy a Microsoft feladatátvételt kezdeményez az elsődlegesről a másodlagos régióba. Ha engedélyezi az olvasási hozzáférést a másodlagos régióhoz, az adatai olvashatók lesznek, ha az elsődleges régió elérhetetlenné válik. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS).
 
-### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Tervezze meg alkalmazásait olvasási hozzáféréshez a másodlagos
+### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Alkalmazások tervezése a másodlagoshoz való olvasási hozzáféréshez
 
-Ha a tárfiók olvasási hozzáférésa a másodlagos régióhoz, majd úgy tervezheti meg az alkalmazásokat, hogy zökkenőmentesen váltson át a másodlagos régióból származó adatok olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. A másodlagos régió mindig elérhető olvasási hozzáférés, így tesztelheti az alkalmazást, hogy győződjön meg arról, hogy a másodlagos kimaradás esetén olvasni fog. Az alkalmazások magas rendelkezésre állásra való tervezéséről a magas [rendelkezésre állású alkalmazások tervezése olvasható georedundáns tárolással című](storage-designing-ha-apps-with-ragrs.md)témakörben olvashat bővebben.
+Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos régióhoz, akkor megtervezheti, hogy az alkalmazások zökkenőmentesen átálljanak a másodlagos régió adatainak olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. A másodlagos régió mindig olvasási hozzáféréshez érhető el, így tesztelheti az alkalmazást, és ellenőrizheti, hogy a másodlagos esemény leáll-e leállás esetén. További információ az alkalmazások magas rendelkezésre állásra való tervezéséről: [magas rendelkezésre állású alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással](storage-designing-ha-apps-with-ragrs.md).
 
-Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontról, valamint a tárfiók elsődleges végpontjáról is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– másodlagos* a fiók nevéhez. Ha például a Blob storage elsődleges `myaccount.blob.core.windows.net`végpontja a , `myaccount-secondary.blob.core.windows.net`majd a másodlagos végpont. A tárfiók fiókhozzáférési kulcsai megegyeznek az elsődleges és a másodlagos végpontok esetében is.
+Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontból és a Storage-fiók elsődleges végpontján is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net`, akkor a másodlagos végpont. `myaccount-secondary.blob.core.windows.net` A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
 ### <a name="check-the-last-sync-time-property"></a>Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
 
-Mivel az adatok aszinkron módon replikálódnak a másodlagos régióba, a másodlagos régió gyakran az elsődleges régió mögött van. Ha hiba történik az elsődleges régióban, valószínű, hogy az elsődleges írási műveletek még nem replikáltak a másodlagos.
+Mivel a rendszer aszinkron módon replikálja az adatfájlokat a másodlagos régióba, a másodlagos régió gyakran az elsődleges régió mögött van. Ha hiba történik az elsődleges régióban, akkor valószínű, hogy az elsődlegesnél az összes írás még nem lett replikálva a másodlagosra.
 
-Annak megállapításához, hogy mely írási műveletek lettek replikálva a másodlagos régióba, az alkalmazás ellenőrizheti a tárfiók **utolsó szinkronizálási ideje** tulajdonságát. Az utolsó szinkronizálási idő előtt az elsődleges régióba írt összes írási művelet sikeresen replikálva lett a másodlagos régióba, ami azt jelenti, hogy a másodlagosból olvashatók. Az elsődleges régióba az utolsó szinkronizálási idő után írt írási műveletek lehetnek replikálódva a másodlagos régióba, ami azt jelenti, hogy nem érhetők el olvasási műveletekhez.
+Annak megállapításához, hogy mely írási műveletek lettek replikálva a másodlagos régióba, az alkalmazás megtekintheti a Storage-fiók **utolsó szinkronizálási idő** tulajdonságát. Az elsődleges régióba az utolsó szinkronizálás időpontja előtt írt összes írási műveletet sikeresen replikálták a másodlagos régióba, ami azt jelenti, hogy elérhetők a másodlagos helyről való olvasáshoz. Az elsődleges régióba az utolsó szinkronizálás időpontja után írt írási műveletek nem replikálódtak a másodlagos régióra, ami azt jelenti, hogy nem lesznek elérhetők olvasási műveletekhez.
 
-Az Azure PowerShell, az Azure CLI vagy az Azure Storage-ügyfélkódtárak használatával lekérdezheti a **Last Sync Time** tulajdonság értékét. Az **Utolsó szinkronizálási idő** tulajdonság a GMT dátum/idő értéke. További információ: [Check the Last Sync Time tulajdonság egy tárfiókhoz.](last-sync-time-get.md)
+A **Legutóbbi szinkronizálási idő** tulajdonság értékét a Azure PowerShell, az Azure CLI vagy az Azure Storage ügyféloldali kódtárai használatával kérdezheti le. Az **utolsó szinkronizálás időpontja** tulajdonság egy GMT dátum/idő érték. További tudnivalókért tekintse [meg a Storage-fiók utolsó szinkronizálási idejének tulajdonságát](last-sync-time-get.md).
 
-## <a name="summary-of-redundancy-options"></a>A redundancialehetőségek összefoglalása
+## <a name="summary-of-redundancy-options"></a>Redundancia-beállítások összefoglalása
 
-Az alábbi táblázat bemutatja, hogy egy adott esetben mennyire tartósak és elérhetők az adatok, attól függően, hogy milyen típusú redundancia van érvényben a tárfiókhoz:
+Az alábbi táblázat azt mutatja be, hogy milyen tartós és elérhető az adatai egy adott helyzetben, attól függően, hogy milyen típusú redundancia van érvényben a Storage-fiókhoz:
 
 | Forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (előzetes verzió)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Az adatközponton belüli csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                  |
-| Egy teljes adatközpont (zónaszintű vagy nem zónaszintű) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen                                  | Igen                                  |
-| Az egész régióra kiterjedő kimaradás                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
-| Olvasási hozzáférés az adatokhoz a másodlagos régióban, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (RA-GRS-sel)                                   | Igen (RA-GZRS-szel)                                 |
-| Objektumok tartósságának százalékos százaléka egy adott<sup>évben 1</sup>                                          | legalább 99,99999999999% (11 9's) | legalább 99,9999999999999% (12 9's) | legalább 99,99999999999999999999% (16 9's) | legalább 99,99999999999999999999% (16 9's) |
-| Támogatott tárfiók-típusok<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
-| Rendelkezésre állási SLA olvasási kérelmekhez<sup>1</sup>  | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) | Legalább 99,9% (99% a hűvös hozzáférési szint esetében) grs esetén<br /><br />Legalább 99,99% (99,9% a hűvös hozzáférési szint esetében) ra-GRS esetén | Legalább 99,9% (99% a hűvös hozzáférési szinthez) a GZRS esetében<br /><br />Legalább 99,99% (99,9% a hűvös hozzáférési szint esetében) ra-GZRS esetén |
-| Rendelkezésre állási SLA az írási kérelmekhez<sup>1</sup>  | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) | Legalább 99,9% (99% a hűvös hozzáférési szint esetén) |
+| Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                  |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen                                  | Igen                                  |
+| Az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
+| Olvasási hozzáférés a másodlagos régióban lévő adateléréshez, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
+| Objektumok tartóssága az adott évben<sup>1</sup>                                          | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
+| Támogatott Storage-fiók típusai<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
+| Rendelkezésre állási SLA az olvasási kérelmekhez<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
+| Az írási kérelmek rendelkezésre állási SLA-ja<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
 
-<sup>1</sup> Az Azure Storage tartóssági és rendelkezésre állási garanciáiról az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)című témakörben talál.
+<sup>1</sup> az Azure Storage szolgáltatás tartósságának és rendelkezésre állásának garantálása érdekében az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)-ban talál további információt.
 
-<sup>2</sup> A tárfiók-típusokról a [Tárfiók áttekintése című témakörben](storage-account-overview.md)olvashat.
+<sup>2</sup> a Storage-fiókok típusaival kapcsolatos információkért lásd: a [Storage-fiók áttekintése](storage-account-overview.md).
 
-Minden típusú tárfiókok és [az összes réteg (beleértve az archívumot is)](../blobs/storage-blob-storage-tiers.md) összes adat másolása a tárfiók redundancia beállításának megfelelően kerül másolásra. A program átmásolja az objektumokat, például a blokkblobokat, a hozzáfűző blobokat, az oldalblobokat, a várólistákat, a táblázatokat és a fájlokat.
+A rendszer a Storage-fiókok redundancia beállításának megfelelően átmásolja a Storage-fiókok összes típusát és az [összes szintet (az archiválást is beleértve)](../blobs/storage-blob-storage-tiers.md) . Az objektumok, például a Blobok, a Blobok, a Blobok, a várólisták, a táblák és a fájlok másolása történik.
 
-Az egyes redundanciabeállítások díjszabási információkért lásd: [Azure Storage díjszabása.](https://azure.microsoft.com/pricing/details/storage/)
+Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/)ismertető cikk nyújt tájékoztatást.
 
 > [!NOTE]
-> Az Azure Premium Disk Storage jelenleg csak helyileg redundáns tárolást (LRS) támogat. A blokkblob-tárfiókok támogatják a helyileg redundáns tárolást (LRS) és a zónaredundáns tárolást (ZRS) bizonyos régiókban.
+> Az Azure Premium Disk Storage jelenleg csak a helyileg redundáns tárolást (LRS) támogatja. A blob Storage-fiókok nem támogatják a helyileg redundáns tárolást (LRS) és a Zone redundáns tárolást (ZRS) bizonyos régiókban.
 
 ## <a name="data-integrity"></a>Adatintegritás
 
-Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzésekkel (CRC) tárolt adatok integritását. Ha a rendszer adatsérülést észlel, a rendszer redundáns adatok kal javítja ki. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegeit is kiszámítja az adatcsomagok sérülésének észleléséhez az adatok tárolása vagy beolvasása során.
+Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (FCSF) használatával tárolt adatok integritását. Ha a rendszer az adatsérülést észleli, a redundáns adatvesztéssel kerül kijavításra. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegét is kiszámítja, hogy észlelje az adatcsomagok sérülését az adatok tárolása vagy beolvasása során.
 
 ## <a name="see-also"></a>Lásd még
 
-- [Tárfiók utolsó szinkronizálási ideje tulajdonságának ellenőrzése](last-sync-time-get.md)
-- [Tárfiók redundanciabeállításának módosítása](redundancy-migration.md)
-- [Magas rendelkezésre állású alkalmazások tervezése RA-GRS storage használatával](../storage-designing-ha-apps-with-ragrs.md)
-- [Vész-helyreállítási és fiókfeladat-átvétel (előzetes verzió)](storage-disaster-recovery-guidance.md)
+- [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
+- [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)
+- [Magasan elérhető alkalmazások tervezése RA-GRS Storage használatával](../storage-designing-ha-apps-with-ragrs.md)
+- [Vész-helyreállítás és fiók feladatátvétele (előzetes verzió)](storage-disaster-recovery-guidance.md)

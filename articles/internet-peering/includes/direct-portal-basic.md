@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 00c24212706555667ad4680c086ece24f15ca59a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678581"
 ---
-1. Válassza **az Erőforrás** > létrehozása**Az összes megtekintése lehetőséget.**
+1. Válassza az **erőforrás** > létrehozása az**összes**megjelenítése lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítés keresése](../media/setup-seeall.png)
+    > ![Keresés a társításban](../media/setup-seeall.png)
 
-1. Keressen rá a **társviszony-létesítésre** a keresőmezőben, és válassza az **Enter** elemet a billentyűzeten. Az eredmények közül válasszon egy **társviszony-létesítési erőforrást.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítés indítása](../media/setup-launch.png)
-
-1. A **társviszony-létesítés** megkezdése után tekintse át az oldalt a részletek megértéséhez. Ha készen áll, válassza a **Létrehozás gombot.**
+1. Keressen rá a **Keresés a keresőmezőbe** , és válassza az **ENTER billentyűt** a billentyűzeten. Az eredmények közül válasszon ki egy **egyenrangú** erőforrást.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony létesítéslétrehozása](../media/setup-create.png)
+    > ![Peering elindítása](../media/setup-launch.png)
 
-1. A **Társviszony-létesítés létrehozása** lap **Alapjai** lapján töltse ki az itt látható mezőket.
+1. A **társítás elindítása után** tekintse át a lapot a részletek megismeréséhez. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![A társviszony-létesítés alapjai lap](../media/setup-basics-tab.png)
+    > ![Peering létrehozása](../media/setup-create.png)
 
-    * Válassza ki az **Azure-előfizetést.**
-    * Az **Erőforráscsoport csoportban**választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az **Új létrehozása**lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
-    * **A név** megfelel az erőforrás nevének, és bármi lehet, amit csak választhat.
-    * **A terület** automatikusan ki van jelölve, ha meglévő erőforráscsoportot választott. Ha úgy döntött, hogy hozzon létre egy új erőforráscsoportot, akkor is ki kell választania az Azure-régióban, ahol az erőforrás t akarja, hogy.
+1. A társítás **létrehozása** oldalon az **alapok** lapon adja meg az itt látható mezőket.
+
+    > [!div class="mx-imgBorder"]
+    > ![A peering alapjai lap](../media/setup-basics-tab.png)
+
+    * Válassza ki az Azure- **előfizetését**.
+    * Az **erőforráscsoport**esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az **új létrehozása**lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
+    * A **név** megegyezik az erőforrás nevével, és bármi lehet, amit választ.
+    * Ha meglévő erőforráscsoportot választott, akkor a **régiót** a rendszer kijelöli. Ha úgy döntött, hogy új erőforráscsoportot hoz létre, ki kell választania azt az Azure-régiót, ahol az erőforrást tárolni szeretné.
 
         > [!NOTE]
-        > Az a régió, ahol egy erőforráscsoport található, független attól a helytől, ahol társviszony-létesítést szeretne létrehozni a Microsofttal. De ajánlott eljárás a társviszony-létesítési erőforrások at erőforráscsoportokon belül, amelyek a legközelebbi Azure-régiókban található. Például ashburni társviszony-létesítések esetén létrehozhat egy erőforráscsoportot az USA keleti részén vagy az USA keleti részén2.
+        > Az a régió, ahol az erőforráscsoport található, független attól a helytől, ahol a Microsofttal kívánja létrehozni a kapcsolatot. Az ajánlott eljárás azonban az, hogy a legközelebb eső Azure-régiókban található erőforráscsoportok között szervezzen egyenrangú erőforrásokat. Például a Ashburn-ben való társítások esetén létrehozhat egy erőforráscsoportot az USA keleti régiójában vagy a Kelet-RÉGIÓJA.
 
-    * Válassza ki az ASN-t a **Társ ASN** mezőben.
+    * Válassza ki az ASN-t a **társ ASN** mezőben.
 
         > [!IMPORTANT]
-        > * Csak társviszony-létesítési kérelem elküldése előtt választhat asn-t jóváhagyottként validationstate néven. Ha csak benyújtotta a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítás jóváhagyása. Ha a kiválasztott ASN érvényesítésre vár, hibaüzenet jelenik meg. 
-        > * Ha nem látja a választandó ASN-t, ellenőrizze, hogy a megfelelő előfizetést választotta-e. Ha igen, ellenőrizze, hogy már létrehozta-e a PeerAsn-t az [Azure-előfizetéshez](../howto-subscription-association-portal.md)társítva.
+        > * A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatja, mielőtt elküld egy kérést. Ha most elküldte a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítást jóvá szeretné hagyni. Ha a kiválasztott ASN-hitelesítés függőben van, hibaüzenet jelenik meg. 
+        > * Ha nem látja a kiválasztható ASN-t, ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. Ha igen, ellenőrizze, hogy már létrehozott-e PeerAsn az [Azure-előfizetéshez való társítási peer ASN](../howto-subscription-association-portal.md)használatával.
 
         > [!div class="mx-imgBorder"]
-        > ![Kitöltött társviszony-létesítési alapismeretek](../media/setup-direct-basics-filled-tab.png)
+        > ![A peering alapjai kitöltve](../media/setup-direct-basics-filled-tab.png)
 
-    * Válassza a **Tovább lehetőséget: A** folytatáshoz >.
+    * A folytatáshoz válassza a **következő lehetőséget: Configuration >** .

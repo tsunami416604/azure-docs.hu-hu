@@ -1,86 +1,86 @@
 ---
-title: Intelligens észlelés – hibaanomáliák az Application Insights ban | Microsoft dokumentumok
-description: Figyelmezteti a webalkalmazássikertelen kérelmek sebességének szokatlan változásaira, és diagnosztikai elemzést biztosít. Nincs szükség konfigurációra.
+title: Intelligens észlelés – meghibásodási rendellenességek, Application Insights | Microsoft Docs
+description: Riasztást küld a webalkalmazásnak küldött sikertelen kérelmek arányának szokatlan változásairól, és diagnosztikai elemzéseket is biztosít. Nincs szükség konfigurációra.
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536811"
 ---
-# <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibaanomáliák
-[Az Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan figyelmezteti Önt közel valós időben, ha a webalkalmazás a sikertelen kérelmek arányának rendellenes növekedését tapasztalja. Szokatlan ultrást észlel a sikertelenként jelentett HTTP-kérelmek vagy függőségi hívások arányában. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb válaszkódokkal rendelkeznek. A probléma osztályozása és diagnosztizálása érdekében a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése a riasztás részleteiben található. További diagnózis esetén az Application Insights-portálra mutató hivatkozások is találhatók. A szolgáltatásnem igényel sem beállítás, sem konfiguráció, mivel gépi tanulási algoritmusok segítségével előre jelzi a normál hibaarány.
+# <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
 
-Ez a funkció minden olyan webalkalmazáshoz működik, amely a felhőben vagy a saját kiszolgálóin üzemelteti az alkalmazáskérelmeket vagy függőségi adatokat. Ha például van egy feldolgozói szerepköre, amely [meghívja a TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy [a TrackDependency() ( trackdependency) ( trackdependency)](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)(
+Ez a funkció bármely, a felhőben vagy a saját kiszolgálókon üzemeltetett webalkalmazáshoz használható, amely alkalmazás-vagy függőségi adatait eredményezi. Ha például olyan feldolgozói szerepkörrel rendelkezik, amely meghívja a [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy a [TrackDependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)metódust.
 
-Az Application Insights beállítása a [projekthez](../../azure-monitor/app/app-insights-overview.md), és ha az alkalmazás létrehoz egy bizonyos minimális mennyiségű adatot, intelligens észlelése hiba anomáliák 24 órát vesz igénybe, hogy megtanulják a szokásos viselkedését az alkalmazás, mielőtt be van kapcsolva, és riasztásokat küldhet.
+Miután beállította [Application Insights a projekthez](../../azure-monitor/app/app-insights-overview.md), és ha az alkalmazás egy bizonyos minimális adatmennyiséget hoz létre, a hibák rendellenes észlelése 24 órát vesz igénybe az alkalmazás normál működésének megismerése előtt, és riasztásokat küldhet.
 
-Íme egy mintariasztás:
+Íme egy példa a riasztásra:
 
 [![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
 
-A riasztás részletei a következőket fogják mondani:
+A riasztás részletei a következőket közlik:
 
-* A hibaarány az alkalmazás normál viselkedéséhez képest.
-* Hány felhasználó érintett - így tudja, hogy mennyit kell aggódnia.
-* A hibákhoz kapcsolódó jellemző minta. Ebben a példában van egy adott válaszkód, kérelem neve (művelet) és az alkalmazás verziója. Ez azonnal megmondja, hol kezdje el keresni a kódot. Más lehetőségek lehetnek egy adott böngésző vagy ügyfél operációs rendszer.
-* A kivétel, a naplónyomkövetések és a függőségi hiba (adatbázisok vagy más külső összetevők), amelyek úgy tűnik, hogy a jellemzett hibákhoz vannak társítva.
-* Közvetlenül az Application Insights ban lévő adatokra vonatkozó keresésekre mutató hivatkozások.
+* A hiba aránya a normál alkalmazás működéséhez képest.
+* Hány felhasználót érintenek, hogy tudja, mennyit kell aggódnia.
+* A hibákhoz tartozó jellemző minta. Ebben a példában egy adott válasz kódja, a kérelem neve (művelet) és az alkalmazás verziója szerepel. Ezzel azonnal megtudhatja, hol kezdjen el keresni a kódban. Más lehetőségek lehetnek egy adott böngésző vagy ügyféloldali operációs rendszer.
+* A jellemző hibákkal társított kivételek, naplók és függőségi hibák (adatbázisok vagy más külső összetevők).
+* Közvetlenül a kapcsolódó keresésekre mutató hivatkozásokat Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Az intelligens észlelés előnyei
-A szokásos [metrikariasztások](../../azure-monitor/app/alerts.md) azt adják, hogy probléma lehet. De smart detection elindítja a diagnosztikai munkát az Ön számára, végző sok az elemzés egyébként meg kell csinálni magadnak. Ön kap az eredményeket szépen csomagolt, segít, hogy gyorsan a probléma gyökerét.
+A szokásos [metrikus riasztások](../../azure-monitor/app/alerts.md) jelzik, hogy probléma lehet. Az intelligens észlelés azonban elindítja a diagnosztikai munkát, és sok olyan elemzést hajt végre, amelyet egyébként el kellene végeznie. Az eredményeket szépen csomagolja, és segít a probléma gyökerének gyors megszerzésében.
 
 ## <a name="how-it-works"></a>Működés
-Az intelligens észlelés figyeli az alkalmazástól kapott adatokat, és különösen a hibaarányokat. Ez a szabály megszámolja `Successful request` azoknak a kérelmeknek a számát, amelyeknél a tulajdonság hamis, és a függőségi hívások számát, amelyekhez a `Successful call` tulajdonság hamis. A kérelmek, alapértelmezés `Successful request == (resultCode < 400)` szerint (kivéve, ha írt egyéni kódot, hogy [szűrje,](../../azure-monitor/app/api-filtering-sampling.md#filtering) vagy hozzon létre saját [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) hívások). 
+Az intelligens észlelés figyeli az alkalmazástól kapott adatokat, és különösen a hibák sebességét. Ez a szabály számolja a kérelmek számát, amelyekben `Successful request` a tulajdonság hamis, valamint azon függőségi hívások száma, amelyek esetében a `Successful call` tulajdonság hamis. Alapértelmezés szerint a kérelmek esetében `Successful request == (resultCode < 400)` (hacsak nem írt egyéni kódot a saját [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -hívások [szűréséhez](../../azure-monitor/app/api-filtering-sampling.md#filtering) vagy létrehozásához). 
 
-Az alkalmazás teljesítménye tipikus viselkedési mintával rendelkezik. Egyes kérések vagy függőségi hívások nagyobb valószínűségre lesznek kitéve a sikertelenségnek, mint mások; és a teljes hibaarány a terhelés növekedésével emelkedhet. Az intelligens detektálás gépi tanulással találja meg ezeket az anomáliákat.
+Az alkalmazás teljesítménye jellemző viselkedési mintázatot tartalmaz. Bizonyos kérelmek vagy függőségi hívások hajlamosabbak a többitől eltérő hibákra; a teljes meghibásodási arány pedig a terhelés növekedésével járhat. Az intelligens észlelés a gépi tanulás használatával keresi meg ezeket a rendellenességeket.
 
-Ahogy az adatok a webalkalmazásból kerülnek be az Application Insightsba, az intelligens észlelés összehasonlítja az aktuális viselkedést az elmúlt napokban látott mintákkal. Ha a korábbi teljesítményhez képest a sikertelenségi arány rendellenes növekedését észlelik, elemzés indul el.
+Ahogy az adatok bekerülnek Application Insights a webalkalmazásból, az intelligens észlelés összehasonlítja a jelenlegi viselkedést az elmúlt néhány napban látható mintákkal. Ha a korábbi teljesítményhez képest rendellenesen megnőtt a meghibásodási arány, a rendszer egy elemzést indít el.
 
-Elemzés aktiválásakor a szolgáltatás fürtelemzést hajt végre a sikertelen kérésen, hogy megpróbálja azonosítani a hibákat jellemző értékmintát. 
+Az elemzések indításakor a szolgáltatás a sikertelen kérelemhez tartozó fürt elemzését hajtja végre, hogy megpróbálja azonosítani a hibákat jellemző értékek mintáját. 
 
-A fenti példában az elemzés megállapította, hogy a legtöbb hiba egy adott eredménykódról, a kérelem névről, a kiszolgáló URL-állomásáról és a szerepkörpéldányról szól. 
+A fenti példában az elemzés felderítette, hogy a legtöbb hiba egy adott eredmény kódjára, a kérelem nevére, a kiszolgáló URL-címére és a szerepkör-példányra vonatkozik. 
 
-Amikor a szolgáltatás ezekkel a hívásokkal van instrumentálva, az analizátor megkeresi a kivételt és a függőségi hibát, amely az általa azonosított fürtben lévő kérelmekhez kapcsolódik, valamint egy példát a kérelmekhez társított nyomkövetési naplókra.
+Ha a szolgáltatás ezekkel a hívásokkal van kialakítva, az elemző kivételt és függőségi hibát keres az általa azonosított fürt kéréseivel kapcsolatban, valamint egy példát a kérelmekhez társított nyomkövetési naplókra.
 
-Az eredményül kapott elemzést a rendszer riasztásként küldi el Önnek, kivéve, ha úgy állította be, hogy ne.
+Az eredményül kapott elemzést riasztásként küldi el a rendszer, ha nem konfigurálta.
 
-A [manuálisan beállított riasztásokhoz](../../azure-monitor/app/alerts.md)hasonlóan a rendszer is megvizsgálhatja az elindított riasztás állapotát, amely a probléma megoldása esetén megoldható. Konfigurálja a riasztási szabályokat az Application Insights-erőforrás Riasztások lapján. Más riasztásoktól eltérően azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja, vagy módosíthatja a cél e-mail címét.
+A [manuálisan beállított riasztásokhoz](../../azure-monitor/app/alerts.md)hasonlóan megtekintheti a kilőtt riasztás állapotát, amely feloldható, ha a probléma kijavítva van. Adja meg a riasztási szabályokat a Application Insights erőforrás riasztások lapján. Más riasztásokkal ellentétben azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja vagy módosíthatja a cél e-mail-címeit.
 
 ### <a name="alert-logic-details"></a>Riasztási logika részletei
 
-A riasztások által aktivált saját gépi tanulási algoritmus, így nem tudjuk megosztani a pontos megvalósítási részleteket. Ezzel azt mondta, megértjük, hogy néha többet kell tudni arról, hogyan működik a mögöttes logika. Az elsődleges tényezők, amelyek értékelik annak megállapítására, hogy egy riasztást kell aktiválni a következők: 
+A riasztásokat a szabadalmaztatott gépi tanulási algoritmus váltja ki, így nem tudjuk megosztani a pontos megvalósítás részleteit. Ezzel megértettük, hogy néha többet kell tudnia az alapul szolgáló logikai működéséről. Az elsődleges tényezők, amelyekkel megállapítható, hogy a riasztást ki kell-e indítani: 
 
-* A kérelmek/függőségek hibaszázalékának elemzése 20 perces gördülő időablakban.
-* Az elmúlt 20 perc hibaszázalékának összehasonlítása az elmúlt 40 perc és az elmúlt hét nap arányával, és olyan jelentős eltéréseket keresve, amelyek meghaladják az X-szer ezt a szórást.
-* Adaptív korlát használata a minimális hiba százalék, amely az alkalmazás kérelmek/függőségek mennyiségétől függően változik.
-* Van logika, amely automatikusan megoldja az eltöltött riasztásfigyelő feltétel, ha a probléma már nem észlelhető 8-24 órán keresztül.
+* A kérelmek/függőségek sikertelen százalékos arányának elemzése 20 percen belül egy gördülő időablakban.
+* Az elmúlt 20 perc hibájának az elmúlt 40 percben és az elmúlt hét napban való összehasonlítása, valamint olyan jelentős eltérések keresése, amelyek meghaladják a szórást.
+* A minimális meghibásodási arányra vonatkozó adaptív korlát használata, amely az alkalmazás kérelmek/függőségek mennyisége alapján változik.
+* Létezik olyan logika, amely képes automatikusan feloldani a kilőtt riasztások figyelő feltételét, ha a probléma már nem észlelhető 8-24 órán keresztül.
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
-Letilthatja az intelligens észlelési riasztási szabályt a portálról vagy az Azure Resource Manager használatával ([lásd a sablonpéldát).](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)
+Az intelligens észlelési riasztási szabályt letilthatja a portálról vagy Azure Resource Manager használatával ([lásd a sablon példáját](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
 
-Ez a riasztási szabály egy "Application Insights Intelligens észlelés" nevű [társított műveletcsoporttal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) jön létre, amely e-mail- és webhook-műveleteket tartalmaz, és további műveletek indításához kiterjeszthető, amikor a riasztás aktiválódik.
+Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű társított [műveleti csoporttal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) jön létre, amely e-mail-és webhook-műveleteket tartalmaz, és kiterjeszthető további műveletek elindítására, ha a riasztás tüzet okoz.
 
 > [!NOTE]
-> Az ebből a riasztási szabályból küldött e-mail-értesítések alapértelmezés szerint az előfizetés figyelési olvasóés közreműködői szerepkörökhöz társított felhasználók számára kerülnek elküldésre. További információ erről [itt](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)érhető el .
-> Az ebből a riasztási szabályból küldött értesítések a [közös riasztási sémát követik.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)
+> Az ebből a riasztási szabályból küldött e-mail-értesítéseket a rendszer alapértelmezés szerint az előfizetés figyelési olvasójának és a közreműködő szerepkörök figyeléséhez társított felhasználók számára küldi el. Erről további információt [itt](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)talál.
+> A riasztási szabály által küldött értesítések a [Common Alert sémát](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)követik.
 >
 
-Nyissa meg a Riasztások lapot. Hiba anomáliák riasztási szabályok szerepelnek, valamint a manuálisan beállított riasztások, és láthatja, hogy jelenleg a riasztási állapotban van.
+Nyissa meg a riasztások lapot. A meghibásodási rendellenességek riasztási szabályai szerepelnek a manuálisan beállított riasztásokkal együtt, és láthatja, hogy jelenleg a riasztási állapotban van-e.
 
 [![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
 
-Kattintson a riasztásra a konfigurálásához.
+A beállításhoz kattintson a riasztásra.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Figyelje meg, hogy letilthatja vagy törölheti a hibaanomáliák riasztási szabályt, de nem hozhat létre egy másikat ugyanazon az Application Insights-erőforráson.
+Figyelje meg, hogy letilthatja vagy törölheti a hiba rendellenességét jelző riasztási szabályt, de nem hozhat létre egy másikat ugyanazon a Application Insights erőforráson.
 
-## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Példa a hibaanomáliák riasztáswebhook hasznos
+## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Hiba – példa a riasztások webhook-adatforgalmára
 
 ```json
 {
@@ -290,74 +290,74 @@ Figyelje meg, hogy letilthatja vagy törölheti a hibaanomáliák riasztási sza
 
 ## <a name="triage-and-diagnose-an-alert"></a>Riasztás osztályozása és diagnosztizálása
 
-A riasztás azt jelzi, hogy a sikertelen kérelmek arányának rendellenes növekedése észlelhető. Valószínű, hogy probléma van az alkalmazással vagy annak környezetével.
+A riasztás azt jelzi, hogy a sikertelen kérelmek arányának rendellenes növekedése észlelhető. Valószínű, hogy probléma merült fel az alkalmazással vagy a környezettel kapcsolatban.
 
-További vizsgálathoz kattintson a "Részletek megtekintése az Application Insights"-ban a linkeket ezen az oldalon fog egyenesen egy [keresési oldalra](../../azure-monitor/app/diagnostic-search.md) szűrve a vonatkozó kérelmek, kivétel, függőség, vagy nyomkövetés. 
+A további vizsgálathoz kattintson az "összes adat megtekintése Application Insights" elemre. az ezen a lapon található hivatkozások a megfelelő kérelmekre, kivételekre, függőségekre vagy nyomokra szűrt [keresési oldalra](../../azure-monitor/app/diagnostic-search.md) mutatnak. 
 
-Megnyithatja az [Azure Portalon,](https://portal.azure.com)keresse meg az alkalmazás hoz létre az Application Insights-erőforrást, és nyissa meg a Hibák lapot.
+A [Azure Portal](https://portal.azure.com)is megnyithatja, navigáljon az alkalmazás Application Insights erőforrásához, és nyissa meg a hibák lapot.
 
-A "Hibák diagnosztizálása" gombra kattintva további részleteket kaphat, és megoldhatja a problémát.
+A "hibák diagnosztizálása" gombra kattintva további részleteket tudhat meg, és elháríthatja a problémát.
 
 [![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
 
-A kérelmek százalékos arányából és az érintett felhasználók számából eldöntheti, hogy mennyire sürgős a probléma. A fenti példában a 78,5%-os hibaarány a 2,2%-os normál arányhoz képest azt jelzi, hogy valami rossz történik. Másrészt csak 46 felhasználót érintett. Ha ez az alkalmazás, akkor képes lenne felmérni, hogy mennyire komoly ez.
+A kérések és a felhasználók számának százalékos aránya alapján eldöntheti, hogy milyen sürgős a probléma. A fenti példában a 78,5%-os meghibásodási arány a normál 2,2%-os arányt hasonlítja össze, ami azt jelzi, hogy valami rossz történik. Másfelől azonban csak 46 felhasználót érintettek. Ha ez volt az alkalmazása, azt is megtudhatja, hogy mennyire súlyos ez a lehetőség.
 
-Sok esetben gyorsan diagnosztizálhatja a problémát a kérelem nevéből, a kivételből, a függőségi hibából és a megadott nyomkövetési adatokból.
+Sok esetben a probléma gyorsan diagnosztizálható a kérelem nevétől, a kivételtől, a függőségi hibáktól és a megadott nyomkövetési adatoktól.
 
-Ebben a példában volt egy kivétel az SQL-adatbázisból a kérelemkorlát elérése miatt.
+Ebben a példában az SQL-adatbázis kivételt okozott, mert elérte a kérelmekre vonatkozó korlátot.
 
 [![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 
 ## <a name="review-recent-alerts"></a>Legutóbbi riasztások áttekintése
 
-Kattintson **a Riasztások** az Application Insights erőforrás lapon a legutóbbi elindított riasztások:
+A legutóbbi kilőtt riasztások megtekintéséhez kattintson a **riasztások** elemre a Application Insights erőforrás lapon:
 
 [![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
 
-## <a name="whats-the-difference-"></a>Mi a különbség ...
-A hibaanomáliák intelligens észlelése kiegészíti az Application Insights más hasonló, de különálló szolgáltatásait.
+## <a name="whats-the-difference-"></a>Mi a különbség...
+A meghibásodási rendellenességek intelligens észlelése kiegészíti a Application Insights hasonló, de különböző funkcióit.
 
-* [Metrikariasztások](../../azure-monitor/app/alerts.md) vannak beállítva, és a metrikák széles skáláját figyelheti, például a CPU-kihasználtság, a kérelem aránya, oldal betöltési idő, és így tovább. Ezek segítségével figyelmeztetheti például, ha további erőforrásokat kell hozzáadnia. Ezzel szemben a hibaészlelések intelligens észlelése a kritikus metrikák (jelenleg csak sikertelen kérelmek aránya) egy kis tartományát fedi le, amelynek célja, hogy közel valós időben értesítse Önt, ha a webalkalmazás sikertelen kérelmek aránya növekszik a webalkalmazás normál viselkedéséhez képest. A metrikariasztásoktól eltérően az intelligens észlelési adatok automatikusan beállítják és frissíti a küszöbértékeket a viselkedés változásaiban. Az intelligens észlelés elindítja a diagnosztikai munkát is, így időt takaríthat meg a problémák megoldásában.
+* A [metrikai riasztásokat](../../azure-monitor/app/alerts.md) Ön állítja be, és a metrikák széles skáláját figyeli, például a CPU-kihasználtságot, a kérelmek sebességét, az oldal betöltési idejét stb. Ezekkel a riasztással figyelmeztetheti Önt, például ha további erőforrásokat kell hozzáadnia. Ezzel szemben a meghibásodási rendellenességek intelligens észlelése a kritikus mérőszámok kis tartományát fedi le (jelenleg csak a sikertelen kérelmek arányát), amely úgy lett kialakítva, hogy közel valós időben értesítse Önt, amint a webalkalmazás sikertelen kérelmének aránya a webalkalmazás normál viselkedéséhez képest növekszik. A metrikus riasztásokkal ellentétben az intelligens észlelés automatikusan beállítja és frissíti a küszöbértékeket a viselkedés változásakor. Az intelligens észlelés is elindítja a diagnosztikai munkát, így időt takaríthat meg a problémák megoldásában.
 
-* [A teljesítményanomáliák intelligens észlelése](proactive-performance-diagnostics.md) gépi intelligenciát is használ a metrikák szokatlan mintáinak felderítéséhez, és nincs szükség ön általi konfigurációra. A hibaanomáliák intelligens felismerésével ellentétben azonban a teljesítményanomáliák intelligens észlelése a használati sokpontos szegmensek olyan szegmenseinek megkeresése, amelyek rosszul kiszolgálásra kerülhetnek - például egy adott típusú böngésző bizonyos oldalai. Az elemzést naponta végezzük, és ha bármilyen eredményt talál, akkor valószínűleg sokkal kevésbé sürgős, mint egy riasztás. Ezzel szemben a hibaanomáliák elemzését a rendszer folyamatosan elvégzi a bejövő alkalmazásadatokon, és perceken belül értesítést kap, ha a kiszolgáló meghibásodási aránya a vártnál nagyobb.
+* A [teljesítménybeli rendellenességek intelligens észlelése](proactive-performance-diagnostics.md) a gépi intelligenciával észleli a mérőszámokban szokatlan mintákat, és nincs szükség konfigurációra. A meghibásodási rendellenességek intelligens észlelése miatt azonban a teljesítménybeli rendellenességek intelligens észlelésének célja, hogy megkeresse a használat sokrétű, esetlegesen kiszolgált szegmenseit, például egy adott böngésző adott lapjain. Az elemzés naponta történik, és ha bármilyen eredmény található, valószínűleg sokkal kevésbé sürgős, mint a riasztás. Ezzel szemben a hibákra vonatkozó rendellenességek elemzése folyamatosan történik a bejövő alkalmazásadatok esetében, és perceken belül értesítést kap, ha a kiszolgáló meghibásodási aránya nagyobb a vártnál.
 
 ## <a name="if-you-receive-a-smart-detection-alert"></a>Ha intelligens észlelési riasztást kap
-*Miért kaptam ezt a figyelmeztetést?*
+*Miért kaptam ezt a riasztást?*
 
-* A sikertelen kérelmek arányának rendellenes növekedését észleltük az előző időszak normál alapértékéhez képest. A hibák és a kapcsolódó alkalmazásadatok elemzése után úgy gondoljuk, hogy van egy probléma, amelyet meg kell vizsgálnia.
+* A sikertelen kérelmek arányának rendellenes emelkedését észlelte a korábbi időszak normál alapértékéhez képest. A hibák és a kapcsolódó alkalmazásadatok elemzése után úgy gondoljuk, hogy probléma merült fel.
 
-*Az értesítés azt jelenti, hogy határozottan problémám van?*
+*Az értesítésben feltétlenül probléma merült fel?*
 
-* Igyekszünk riasztást az alkalmazás zavara vagy leépülése, de csak ön tudja teljes mértékben megérteni a szemantika és az alkalmazásra vagy a felhasználókra gyakorolt hatás.
+* Megpróbálunk riasztást kapni az alkalmazások megszakadásával vagy romlásával kapcsolatban, de csak teljes mértékben tisztában lehet az alkalmazásra és a felhasználókra gyakorolt hatásokkal.
 
-*Szóval, a jelentkezési adataimat nézed?*
+*Így néz ki az alkalmazás adatai?*
 
-* Nem. A szolgáltatás teljesen automatikus. Csak ön kapja meg az értesítéseket. Az adatok [private](../../azure-monitor/app/data-retention-privacy.md)privátak.
+* Nem. A szolgáltatás teljesen automatikus. Csak Ön kapja meg az értesítéseket. Az adatai [magánjellegűek](../../azure-monitor/app/data-retention-privacy.md).
 
-*Elő kell fizetnem erre a riasztásra?*
+*Elő kell fizetnünk erre a riasztásra?*
 
-* Nem. Minden alkalmazás, amely elküldi a kérelem adatait rendelkezik az intelligens észlelési riasztási szabály.
+* Nem. Minden kérelem-adatokat küldő alkalmazás rendelkezik az intelligens észlelési riasztási szabállyal.
 
-*Leiratkozhatok, vagy helyette a munkatársaimnak küldhetem az értesítéseket?*
+*Lemondható vagy lekérhetem a munkatársaknak küldött értesítéseket?*
 
-* Igen, A riasztási szabályokban kattintson az intelligens észlelési szabálykonfigurálására. Letilthatja a riasztást, vagy módosíthatja a riasztás címzettjeit.
+* Igen, a riasztási szabályok területen kattintson az intelligens észlelési szabályra a konfigurálásához. Letilthatja a riasztást, vagy megváltoztathatja a riasztás címzettjeit.
 
-*Elvesztettem az e-mailt. Hol találom az értesítéseket a portálon?*
+*Elfelejtettem az e-mailt. Hol találhatók az értesítések a portálon?*
 
-* A tevékenységnaplókban. Az Azure-ban nyissa meg az Application Insights-erőforrást az alkalmazáshoz, majd válassza a Tevékenységnaplók lehetőséget.
+* A tevékenység naplófájljaiban. Az Azure-ban nyissa meg a Application Insights erőforrást az alkalmazáshoz, majd válassza a tevékenységek naplóit.
 
-*Néhány figyelmeztető jelzés ismert problémákról szól, és nem akarom megkapni őket.*
+*Néhány riasztás az ismert problémákról szól, és nem szeretném fogadni őket.*
 
-* Használhatja [a riasztási műveletszabályok](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) elnyomása funkciót.
+* Használhatja a [riasztás műveleti szabályok](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) elnyomása funkciót.
 
 ## <a name="next-steps"></a>További lépések
-Ezek a diagnosztikai eszközök segítenek az alkalmazásból származó adatok vizsgálatában:
+Ezek a diagnosztikai eszközök segítenek az alkalmazás adatainak vizsgálatában:
 
-* [Metrikus felfedező](../../azure-monitor/platform/metrics-charts.md)
-* [Kereséskezelő](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrika-kezelő](../../azure-monitor/platform/metrics-charts.md)
+* [Keresési ablak](../../azure-monitor/app/diagnostic-search.md)
+* [Analitika – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
 
-Az intelligens észlelések automatikusak. De talán szeretne még néhány riasztást beállítani?
+Az intelligens észlelések automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikariasztások](../../azure-monitor/app/alerts.md)
+* [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/app/alerts.md)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)

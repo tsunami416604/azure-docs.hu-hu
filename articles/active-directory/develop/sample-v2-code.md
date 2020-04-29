@@ -1,6 +1,6 @@
 ---
-title: Kódminták a Microsoft identity platformhoz
-description: Az elérhető Microsoft identity platform (2.0-s verzióbeli végpont) kódminták indexét tartalmazza forgatókönyv szerint rendezve.
+title: Kód minták a Microsoft Identity platformhoz
+description: A rendelkezésre álló Microsoft Identity platform (v 2.0 végpont) kód mintáinak indexét kínálja forgatókönyv szerint rendezve.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,120 +13,120 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535978"
 ---
-# <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft identity platformkódminták (2.0-s verziós végpont)
+# <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
-A Microsoft identity platform segítségével:
+A Microsoft Identity platformot a következő célra használhatja:
 
-- Adjon hozzá hitelesítést és engedélyezést a webes alkalmazásokhoz és webes API-khoz.
-- A védett webes API eléréséhez hozzáférési jogkivonat ot kell igényelni.
+- Adja hozzá a hitelesítést és az engedélyezést a webalkalmazásokhoz és a webes API-khoz.
+- Hozzáférési jogkivonat megkövetelése egy védett webes API eléréséhez.
 
-Ez a cikk röviden ismerteti, és a Microsoft identity platform végpontmintáira mutató hivatkozásokat tartalmaz. Ezek a minták bemutatják, hogyan kell ezt elvégezni, és az alkalmazásokban használható kódrészleteket is biztosít. A kódmintalapon részletes részletes részletes témaköröktalálhatók, amelyek segítenek a követelményekkel, a telepítéssel és a telepítéssel kapcsolatban. A kódon belüli megjegyzések segítenek megérteni a kritikus szakaszokat.
+Ez a cikk röviden leírja a Microsoft Identity platform végpontjának mintáit, és hivatkozásokat tartalmaz. Ezek a minták bemutatják, hogyan végezheti el, és az alkalmazásaiban használható kódrészleteket is megadhat. A kód mintája lapon a követelményekkel, a telepítéssel és a telepítéssel kapcsolatos részletes információkkal foglalkozó témaköröket talál. A kódban található megjegyzések segítenek megérteni a kritikus szakaszt.
 
 > [!NOTE]
-> Ha érdekli az 1.0-s v.0-s minták, lásd: [Azure AD-kód minták (v1.0 végpont)](../azuread-dev/sample-v1-code.md).
+> Ha érdeklik a 1.0-s példák, tekintse meg az [Azure ad Code Samples (v 1.0 Endpoint)](../azuread-dev/sample-v1-code.md)című témakört.
 
-Az egyes mintatípusok alapvető forgatókönyvének megértéséhez olvassa el [a Microsoft identity platform végpontalkalmazás-típusai című témakört.](v2-app-types.md)
+Az egyes típusok alapvető forgatókönyvének megismeréséhez tekintse meg [a Microsoft Identity platform végpontjának alkalmazás-típusai](v2-app-types.md)című témakört.
 
-A GitHubon is hozzájárulhat a mintákhoz. Ebből, hogy miként tájékozódhat a [Microsoft Azure Active Directory-mintákról és dokumentációról.](https://github.com/Azure-Samples?page=3&query=active-directory)
+Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Microsoft Azure Active Directory minták és dokumentáció](https://github.com/Azure-Samples?page=3&query=active-directory).
 
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
-Ezek a minták azt mutatják be, hogyan írhat egy egyoldalas alkalmazást a Microsoft identity platformmal védett. Ezek a minták használata az egyik ízek MSAL.js.
+Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást biztonságossá tennie a Microsoft Identity platformmal. Ezek a minták a MSAL. js egyik ízeit használják.
 
 | Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
-| ![Ezen a képen a](media/sample-v2-code/logo_js.png) JavaScript logo [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | A Microsoft Graph hívása |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-| ![Ezen a képen a](media/sample-v2-code/logo_js.png) JavaScript logo [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hívások B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Ezen a képen a](media/sample-v2-code/logo_js.png) JavaScript logo [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Saját webes API-hívások |[javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
-| ![Ez a kép a](media/sample-v2-code/logo_angular.png) Szögletes logo [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| A Microsoft Graph hívása  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
-| ![Ez a kép a](media/sample-v2-code/logo_angular.png) Szögletes logo [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | Hívások B2C |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![Ez a képen a JavaScript](media/sample-v2-code/logo_js.png) [-embléma JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hívások Microsoft Graph |[JavaScript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![Ez a képen a JavaScript](media/sample-v2-code/logo_js.png) [-embléma JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | B2C-hívások |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| ![Ez a képen a JavaScript](media/sample-v2-code/logo_js.png) [-embléma JavaScript (msal. js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Saját webes API meghívása |[JavaScript-singlepageapp-DotNet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
+| ![Ez a képen a szögletes embléma](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL szögletes) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Hívások Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-szögletes](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![Ez a képen a szögletes embléma](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL szögletes) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | B2C-hívások |[Active-Directory-B2C-JavaScript-szögletes-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 
 ## <a name="web-applications"></a>Webalkalmazások
 
-A következő minták a felhasználókat bejelentkező webalkalmazásokat szemléltetik. Egyes minták is bemutatják az alkalmazás hívása a Microsoft Graph, vagy a saját webes API-t a felhasználó identitását.
+Az alábbi példák bemutatják a felhasználók bejelentkezési webalkalmazásait. Néhány minta azt is bemutatja, hogy az alkalmazás meghívja a Microsoft Grapht, vagy a saját webes API-ját a felhasználó identitásával.
 
-| Platform | Csak jelek a felhasználókban | Jelek a felhasználókés kéri a Microsoft Graph |
+| Platform | Csak a felhasználókhoz tartozó jelek | A felhasználók és a hívások jelei Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Ezen a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [ASP.NET Core WebApp bejelentkezési felhasználóinak bemutatója](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.NET Core webapp hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis |
-| ![Ezen a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET – rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-korlátozott hatókörű-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-képzés-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
-| ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
-| ![Ezen a képen a Ruby embléma látható](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-képzés-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
+| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [ASP.NET Core WebApp Signs-in Users oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.net Core Web App calls Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázisban |
+| ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET gyors útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  |                   | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
+| ![Ez a képen a Ruby embléma látható](media/sample-v2-code/logo_ruby.png) |                   | [msgraph – képzés – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Asztali és mobil nyilvános ügyfélalkalmazások
 
-A következő minták a Microsoft Graph API-hoz vagy a saját webes API-hoz egy felhasználó nevében elérő nyilvános ügyfélalkalmazásokat (asztali vagy mobilalkalmazásokat) jelenítik meg. Ezek az ügyfélalkalmazások mindegyike Microsoft Authentication Library (MSAL) programot használ.
+Az alábbi példák olyan nyilvános ügyfélalkalmazások (asztali vagy mobil alkalmazások) megjelenítését mutatják be, amelyek hozzáférnek a Microsoft Graph API-hoz vagy a saját webes API-ját egy felhasználó nevében. Ezek az ügyfélalkalmazások a Microsoft Authentication Library (MSAL) alkalmazást használják.
 
-| Ügyfélalkalmazás | Platform | Folyamat/támogatás | A Microsoft Graph hívása | egy ASP.NET Core 2.0 webes API-t hív meg |
+| Ügyfélalkalmazás | Platform | Folyamat/támogatás | Hívások Microsoft Graph | Egy ASP.NET Core 2,0 webes API meghívása |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| Asztal (WPF)      | ![Ezen a képen a .NET/C# embléma látható](media/sample-v2-code/logo_NET.png) | [Interaktív](msal-authentication-flows.md#interactive)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
-| Asztal (konzol)   | ![Ezen a képen a .NET/C# (Desktop) embléma látható](media/sample-v2-code/logo_NET.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
-| Asztal (konzol)   | ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
-| Asztal (konzol)   | ![Ezen a képen a .NET/C# (Desktop) embléma látható](media/sample-v2-code/logo_NETcore.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| Asztal (konzol) WAM-mel  | ![Ezen a képen a .NET/C# (Desktop) embléma látható](media/sample-v2-code/logo_NETcore.png) | [interaktív a WAM-mal](msal-authentication-flows.md#interactive) |[dotnet-natív-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
-| Asztal (konzol)   | ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
-| Asztal (konzol)   | ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[ms-identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
-| Mobil (Android, iOS, UWP)   | ![Ezen a képen a .NET/C# (Xamarin) embléma látható](media/sample-v2-code/logo_xamarin.png) | [Interaktív](msal-authentication-flows.md#interactive) |[xamarin-natív-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
-| Mobil (iOS)       | ![Ezen a képen iOS/Objective-C vagy Swift](media/sample-v2-code/logo_iOS.png) | [Interaktív](msal-authentication-flows.md#interactive) |[ios-swift-objc-natív-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-natív-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| Asztal (macOS)       | macOS | [Interaktív](msal-authentication-flows.md#interactive) |[macOS-swift-objc-natív-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
-| Mobil (Android-Java)   | ![Ezen a képen az Android embléma látható](media/sample-v2-code/logo_Android.png) | [Interaktív](msal-authentication-flows.md#interactive) |  [android-Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
-| Mobil (Android-Kotlin)   | ![Ezen a képen az Android embléma látható](media/sample-v2-code/logo_Android.png) | [Interaktív](msal-authentication-flows.md#interactive) |  [android-Kotlin között](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
+| Asztali (WPF)      | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png) | [interaktív](msal-authentication-flows.md#interactive)| [DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| Asztal (konzol)   | ![Ez a rendszerkép a .NET/C# (asztali) emblémát jeleníti meg](media/sample-v2-code/logo_NET.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Asztal (konzol)   | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) |[MS-Identity-Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
+| Asztal (konzol)   | ![Ez a rendszerkép a .NET/C# (asztali) emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[dotnetcore – v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| Asztal (konzol) a WAM-vel  | ![Ez a rendszerkép a .NET/C# (asztali) emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | [interaktív a WAM-val](msal-authentication-flows.md#interactive) |[DotNet-Native-uwp-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
+| Asztal (konzol)   | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
+| Asztal (konzol)   | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Python-asztali](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
+| Mobil (Android, iOS, UWP)   | ![Ez a rendszerkép a .NET/C# (Xamarin) emblémát jeleníti meg](media/sample-v2-code/logo_xamarin.png) | [interaktív](msal-authentication-flows.md#interactive) |[xamarin – natív – v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
+| Mobil (iOS)       | ![A képen az iOS/Objective-C vagy a Swift látható](media/sample-v2-code/logo_iOS.png) | [interaktív](msal-authentication-flows.md#interactive) |[iOS-Swift-ObjC-Native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [iOS – natív-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
+| Asztali (macOS)       | macOS | [interaktív](msal-authentication-flows.md#interactive) |[macOS-Swift-ObjC-Native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
+| Mobile (Android – Java)   | ![Ez a rendszerkép az Android-emblémát jeleníti meg](media/sample-v2-code/logo_Android.png) | [interaktív](msal-authentication-flows.md#interactive) |  [Android – Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
+| Mobil (Android – Kotlin)   | ![Ez a rendszerkép az Android-emblémát jeleníti meg](media/sample-v2-code/logo_Android.png) | [interaktív](msal-authentication-flows.md#interactive) |  [Android – Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
-## <a name="daemon-applications"></a>Démonalkalmazások
+## <a name="daemon-applications"></a>Daemon-alkalmazások
 
-A következő minták egy olyan alkalmazást mutatnak be, amely saját identitásával (felhasználó nélkül) fér hozzá a Microsoft Graph API-hoz.
+A következő minták egy olyan alkalmazást mutatnak be, amely a saját identitásával fér hozzá a Microsoft Graph API-hoz (felhasználó nélkül).
 
-| Ügyfélalkalmazás | Platform | Folyamat/támogatás | A Microsoft Graph hívása |
+| Ügyfélalkalmazás | Platform | Folyamat/támogatás | Hívások Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
-| Konzol | ![Ezen a képen a .NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Webalkalmazás | ![Ezen a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [dotnet-démon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
-| Konzol | ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png) | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [ms-identity-java-démon](https://github.com/Azure-Samples/ms-identity-java-daemon) |
-| Konzol | ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png) | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [ms-identity-python-démon](https://github.com/Azure-Samples/ms-identity-python-daemon) |
+| Konzol | ![Ez a rendszerkép a .NET Core emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [dotnetcore-Daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
+| Webalkalmazás | ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [DotNet-Daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| Konzol | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [MS-Identity-Java-Daemon](https://github.com/Azure-Samples/ms-identity-java-daemon) |
+| Konzol | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png) | [Ügyfél hitelesítő adatai](msal-authentication-flows.md#client-credentials) | [MS-Identity-Python-Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) |
 
 ## <a name="headless-applications"></a>Fej nélküli alkalmazások
 
-A következő minta egy webböngésző nélküli eszközön futó nyilvános ügyfélalkalmazást mutat be. Az alkalmazás lehet parancssori eszköz, Linuxvagy Mac rendszeren futó alkalmazás vagy IoT-alkalmazás. A minta tartalmaz egy alkalmazást, amely hozzáfér a Microsoft Graph API-hoz, egy olyan felhasználó nevében, aki interaktívan bejelentkezik egy másik eszközre (például egy mobiltelefonra). Ez az ügyfélalkalmazás a Microsoft Authentication Library (MSAL) függvényt használja.
+Az alábbi példa egy, a webböngészőt nem használó eszközön futó nyilvános ügyfélalkalmazás. Az alkalmazás lehet egy parancssori eszköz, egy Linux vagy Mac rendszerű alkalmazás, vagy egy IoT-alkalmazás. A minta olyan alkalmazást tartalmaz, amely a Microsoft Graph API-t használja egy olyan felhasználó nevében, aki egy másik eszközön (például egy mobiltelefonon) interaktívan jelentkezik be. Ez az ügyfélalkalmazás a Microsoft Authentication Library (MSAL) szolgáltatást használja.
 
-| Ügyfélalkalmazás | Platform | Folyamat/támogatás | A Microsoft Graph hívása |
+| Ügyfélalkalmazás | Platform | Folyamat/támogatás | Hívások Microsoft Graph |
 | ------------------ | -------- |  ----------| ---------- |
-| Asztal (konzol)   | ![Ezen a képen a .NET/C# (Desktop) embléma látható](media/sample-v2-code/logo_NETcore.png) | [Eszközkód-áramlás](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
-| Asztal (konzol)   | ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png) | [Eszközkód-áramlás](msal-authentication-flows.md#device-code) |[ms-identity-java-devicecodeflow](https://github.com/Azure-Samples/ms-identity-java-devicecodeflow) |
-| Asztal (konzol)   | ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png) | [Eszközkód-áramlás](msal-authentication-flows.md#device-code) |[ms-identity-python-devicecodeflow](https://github.com/Azure-Samples/ms-identity-python-devicecodeflow) |
+| Asztal (konzol)   | ![Ez a rendszerkép a .NET/C# (asztali) emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | [Eszköz kódjának folyamata](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
+| Asztal (konzol)   | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [Eszköz kódjának folyamata](msal-authentication-flows.md#device-code) |[MS-Identity-Java-devicecodeflow](https://github.com/Azure-Samples/ms-identity-java-devicecodeflow) |
+| Asztal (konzol)   | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png) | [Eszköz kódjának folyamata](msal-authentication-flows.md#device-code) |[MS-Identity-Python-devicecodeflow](https://github.com/Azure-Samples/ms-identity-python-devicecodeflow) |
 
 ## <a name="web-apis"></a>Webes API-k
 
-A következő minták bemutatják, hogyan védheti meg a webes API-t a Microsoft identity platform végpont, és hogyan lehet meghívni egy alsóbb rétegbeli API-t a webes API-t.
+Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API-t a Microsoft Identity platform-végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
 
 | Platform | Sample |
 | -------- | ------------------- |
-| ![Ezen a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET [dotnet-native-aspnetcore-v2 core webes API-jának (szolgáltatásának)](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
-| ![Ezen a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | Web API (szolgáltatás) az [ms-identity-aspnet-webapi-onbehalfi](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
-| ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png) | Az [ms-identity-java-webapi webes API-ja (szolgáltatása)](https://github.com/Azure-Samples/ms-identity-java-webapi) |
-| ![Ezen a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png) | Az [active-directory-javascript-nodejs-webapi-v2 webes API-ja (szolgáltatása)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) |
-| ![Ezen a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png) | Az [active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) B2C webes API-ja |
+| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core web API (szolgáltatás) a [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | [MS-Identity-ASPNET-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) webes API (szolgáltatás) |
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [MS-Identity-Java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi) webes API (szolgáltatás) |
+| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png) | Az [Active Directory-JavaScript-NodeJS-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) webes API (szolgáltatás) |
+| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png) | B2C webes API (szolgáltatás) az [Active Directory-B2C-JavaScript-NodeJS-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) |
 
-## <a name="azure-functions-as-web-apis"></a>Az Azure-függvények webes API-kként
+## <a name="azure-functions-as-web-apis"></a>Azure Functions webes API-kként
 
-A következő minták bemutatják, hogyan védheti meg az Azure-függvényt a HttpTrigger használatával, és hogyan lehet egy webes API-t a Microsoft identity platform-végpontjával, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
+Az alábbi példák azt mutatják be, hogyan lehet védelemmel ellátni egy Azure-függvényt a HttpTrigger használatával, és hogyan tehetők elérhetővé a webes API-k a Microsoft Identity platform-végponttal, valamint hogyan hívható le egy alsóbb rétegbeli API
 
 | Platform | Sample |
 | -------- | ------------------- |
-| ![Ezen a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core web API (szolgáltatás) Azure-funkciója [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
-| ![Ezen a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [A NodeJS webAPI-ja (szolgáltatása) és az útlevél-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
-| ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) webAPI-ja (szolgáltatása) |
-| ![Ezen a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | A NodeJS web API-ja [(szolgáltatása) és az útlevél-azure-ad használata a](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core web API (szolgáltatás) Azure-függvény a [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS és Passport webes API-k (szolgáltatás) [– Azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) web API (szolgáltatás) |
+| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS és Passport-](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) alapú webes API (szolgáltatás) a következő nevében: |
 
-## <a name="other-microsoft-graph-samples"></a>Egyéb Microsoft Graph-minták
+## <a name="other-microsoft-graph-samples"></a>Egyéb Microsoft Graph minták
 
-A Microsoft Graph API különböző használati mintáit bemutató [mintákról](https://github.com/microsoftgraph/msgraph-community-samples/tree/master/samples#aspnet) és oktatóanyagokról, beleértve az Azure AD-vel való hitelesítést is, tekintse meg a [Microsoft Graph Community-minták & oktatóanyagok című témakört.](https://github.com/microsoftgraph/msgraph-community-samples)
+A Microsoft Graph API különböző használati mintáit bemutató [minták](https://github.com/microsoftgraph/msgraph-community-samples/tree/master/samples#aspnet) és oktatóanyagok megismeréséhez, beleértve az Azure ad-vel történő hitelesítést, tekintse meg a [Microsoft Graph közösségi példákat & oktatóanyagokat](https://github.com/microsoftgraph/msgraph-community-samples).
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Active Directory (1.0-s) fejlesztői útmutatója](../azuread-dev/v1-overview.md)
-- [A Microsoft Graph API fogalmi és hivatkozási fogalma](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)
+- [Azure Active Directory (v 1.0) fejlesztői útmutató](../azuread-dev/v1-overview.md)
+- [A Microsoft Graph API fogalma és referenciája](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)

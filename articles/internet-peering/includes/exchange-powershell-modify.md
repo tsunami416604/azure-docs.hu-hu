@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678670"
 ---
-Az Exchange társviszony-létesítése a következő módosítási műveleteket támogatja:
-* Exchange-társviszony-létesítési kapcsolatok hozzáadása.
-* Távolítsa el az Exchange-társviszony-létesítési kapcsolatokat.
-* IPv4- vagy IPv6-munkamenet hozzáadása aktív kapcsolatokhoz.
-* IPv4- vagy IPv6-munkamenet eltávolítása aktív kapcsolatokon.
+Exchange-társítás esetén a következő módosítási műveletek támogatottak:
+* Exchange-partneri kapcsolatok hozzáadása.
+* Az Exchange-társi kapcsolatok eltávolítása.
+* IPv4-vagy IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz.
+* IPv4-vagy IPv6-munkamenet eltávolítása az aktív kapcsolatokon.
 
 
-### <a name="add-exchange-peering-connections"></a>Exchange-társviszony-létesítési kapcsolatok hozzáadása
+### <a name="add-exchange-peering-connections"></a>Exchange-partneri kapcsolatok hozzáadása
 
-Ez a példa azt ismerteti, hogy miként lehet kapcsolatokat hozzáadni egy meglévő Exchange-társviszony-létesítéshez.
+Ez a példa azt ismerteti, hogyan lehet kapcsolatokat hozzáadni egy meglévő Exchange-társhoz.
 
 ```powershell
 
@@ -43,9 +43,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-exchange-peering-connections"></a>Exchange-társviszony-létesítési kapcsolatok eltávolítása
+### <a name="remove-exchange-peering-connections"></a>Exchange-társi kapcsolatok eltávolítása
 
-Ez a példa azt ismerteti, hogy miként távolítható el a meglévő Exchange-társviszony-létesítési kapcsolatok.
+Ez a példa azt ismerteti, Hogyan távolítható el a kapcsolatok egy meglévő Exchange-partneri kapcsolattal.
 
 ```powershell
 
@@ -53,7 +53,7 @@ $exchangePeering = Get-AzPeering -Name "SeattleExchangePeering" -ResourceGroupNa
 
 ```
 
-Tekintse meg az összes kapcsolatot, és jelölje ki az eltávolítani kívánt kapcsolatot. 
+Tekintse meg az összes kapcsolatot, és válassza ki az eltávolítani kívánt kapcsolatot. 
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-A következő parancsban 0 helyett írja be az eltávolítani kívánt kapcsolat indexszámát.
+A következő parancsban a 0 helyett adja meg az eltávolítani kívánt kapcsolatok indexének számát.
 
 ```powershell
 
@@ -85,9 +85,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4- vagy IPv6-munkamenet hozzáadása aktív kapcsolatokhoz
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4-vagy IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz
 
-Ez a példa azt ismerteti, hogy miként lehet IPv6-munkamenetet hozzáadni egy meglévő Exchange-kapcsolathoz.
+Ez a példa azt ismerteti, hogyan adhat hozzá IPv6-munkamenetet egy meglévő Exchange-kapcsolathoz.
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4- vagy IPv6-munkamenet eltávolítása aktív kapcsolatokon
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4-vagy IPv6-munkamenet eltávolítása az aktív kapcsolatokon
 
-Az IPv4- vagy IPv6-munkamenet ek eltávolítása egy meglévő kapcsolatból jelenleg nem támogatott a PowerShellben. További információért forduljon a [Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
+Egy IPv4-vagy IPv6-munkamenet meglévő kapcsolatból való eltávolítása jelenleg nem támogatott a PowerShellen. További információért forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).

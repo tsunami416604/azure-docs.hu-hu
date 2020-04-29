@@ -1,6 +1,6 @@
 ---
-title: A környezet méretezése – Azure Time Series Insights| Microsoft dokumentumok
-description: Ismerje meg, hogyan skálázhatja az Azure Time Series Insights-környezetet az Azure Portalon.
+title: A környezet skálázása – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg, hogyan méretezheti Azure Time Series Insights-környezetét a Azure Portal használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,46 +12,46 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640071"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
+# <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet skálázása
 
-Ez a cikk ismerteti, hogyan módosíthatja a Time Series Insights-környezet kapacitását az [Azure Portal](https://portal.azure.com)használatával. A kapacitás a kiválasztott termékváltozathoz kapcsolódó be- és tárolási kapacitásra alkalmazott szorzó.
+Ez a cikk azt ismerteti, hogyan módosítható a Time Series Insights-környezet kapacitása a [Azure Portal](https://portal.azure.com)használatával. A kapacitás a beáramlási sebességre, a tárolási kapacitásra és a kiválasztott SKU-ra vonatkozó díjakra érvényes szorzó.
 
-Az Azure Portal használatával növelheti vagy csökkentheti a kapacitást egy adott díjszabási termékváltozaton belül.
+A Azure Portal használatával növelheti vagy csökkentheti a kapacitást egy adott árképzési SKU-n belül.
 
-Azonban a tarifacsomag termékváltozat módosítása nem engedélyezett. Például egy s1-es árképzési termékváltozattal rendelkező környezet nem konvertálható S2-vé, vagy fordítva.
+Azonban a díjszabási csomag módosítása nem engedélyezett. Egy S1 árképzési SKU-val rendelkező környezet például nem konvertálható S2-re, vagy fordítva.
 
-## <a name="ga-limits"></a>GA határértékek
+## <a name="ga-limits"></a>GA-korlátok
 
 [!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
 ## <a name="change-the-capacity-of-your-environment"></a>A környezet kapacitásának módosítása
 
-1. Az Azure Portalon keresse meg és válassza ki a Time Series Insights-környezetet.
+1. A Azure Portalban keresse meg és válassza ki Time Series Insights-környezetét.
 
-1. A Time Series Insights környezet menüjében válassza a **Tároló konfigurációja lehetőséget.**
+1. A Time Series Insights-környezet menüjében válassza a **tárolási konfiguráció**elemet.
 
-   [![A Time Series Insights-kapacitás konfigurálása](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![A Time Series Insights kapacitásának konfigurálása](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
-1. Állítsa be a **Kapacitás** csúszkát, hogy kiválassza a be- és a be- és tárolási sebesség követelményeinek megfelelő kapacitást. Figyelje meg a **be- éstárolási arányt**, **a tárolási kapacitást**és a **becsült költség** frissítést dinamikusan a változás hatásának megjelenítéséhez.
+1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 
-   [![A környezet konfigurálása a kapacitáscsúszkával](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
+   [![A környezet konfigurálása a kapacitás csúszka használatával](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
-   Másik lehetőségként beírhatja a kapacitásszorzó számát a csúszka jobb oldalán lévő szövegmezőbe.
+   Másik lehetőségként beírhatja a kapacitás szorzójának számát a csúszka jobb oldalán található szövegmezőbe.
 
-1. A környezet méretezéséhez válassza a **Mentés** lehetőséget. A folyamatjelző a módosítás véglegesítéséig jelenik meg.
+1. A környezet méretezéséhez válassza a **Mentés** lehetőséget. A folyamatjelző addig jelenik meg, amíg a módosítás véglegesítése nem történik meg.
 
-1. Ellenőrizze, hogy az új kapacitás [elegendő-e a szabályozás megakadályozásához.](time-series-insights-diagnose-and-solve-problems.md)
+1. Győződjön meg arról, hogy az új kapacitás [elegendő a szabályozás megakadályozásához](time-series-insights-diagnose-and-solve-problems.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információért tekintse át a Megértés megőrzése a Time Series Insights alkalmazásban című [témakört.](time-series-insights-concepts-retention.md)
+- További információkért tekintse át [a Time Series Insights megőrzésének ismertetése](time-series-insights-concepts-retention.md)című témakört.
 
-- Ismerje meg [az adatmegőrzés konfigurálását az Azure Time Series Insightsban.](time-series-insights-how-to-configure-retention.md)
+- Tudnivalók az [adatmegőrzés konfigurálásáról Azure Time Series Insightsban](time-series-insights-how-to-configure-retention.md).
 
-- További információ [a környezet megtervezéséről.](time-series-insights-environment-planning.md)
+- Ismerje meg [a környezet megtervezését](time-series-insights-environment-planning.md).

@@ -1,7 +1,7 @@
 ---
 title: Automatikus kiegészítés és javaslatok
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag bemutatja az automatikus kiegészítést és a javaslatokat, hogy a legördülő listát használó felhasználók keresési kifejezésbevitelét gyűjtse össze. Egy meglévő szállodaprojektre épül.
+description: Ez az oktatóanyag azt mutatja be, hogy az automatikus kiegészítés és a javaslatok Hogyan gyűjthetik be a keresési kifejezéseket a felhasználóktól a legördülő lista használatával. Egy meglévő Hotels-projektre épül.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,40 +9,40 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81641075"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# oktatóanyag: Automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# oktatóanyag: automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search
 
-Megtudhatja, hogy miként valósíthatja meg az automatikus kiegészítést (typeahead lekérdezések és javasolt dokumentumok), amikor a felhasználó elkezd beírni egy keresőmezőbe. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és javaslatokeredményeit külön-külön, majd együtt jelenítjük meg. Előfordulhat, hogy a felhasználónak csak két vagy három karaktert kell beírnia az összes rendelkezésre álló eredmény megkereséséhez.
+Megtudhatja, hogyan implementálhat automatikus kiegészítést (typeahead-lekérdezéseket és javasolt dokumentumokat), amikor a felhasználó elkezd begépelni egy keresőmezőt. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és a javaslatok eredményeit külön, majd együtt fogjuk megjeleníteni. Egy felhasználónak csak két vagy három karaktert kell beírnia az összes elérhető eredmény megkereséséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Javaslatok hozzáadása
 > * Kiemelés hozzáadása a javaslatokhoz
 > * Automatikus kiegészítés hozzáadása
-> * Automatikus kiegészítés és javaslatok kombinálása
+> * Az autocomplete és a javaslatok egyesítése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag egy sorozat része, és a C# oktatóanyagban létrehozott lapozási projektre [épül: Keresési eredmények tördelése - Azure Cognitive Search](tutorial-csharp-paging.md).
+Ez az oktatóanyag egy sorozat részét képezi, és a C# oktatóanyagban létrehozott lapozási projektre épül [: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md).
 
-Másik lehetőségként letöltheti és futtathatja a megoldást ehhez az oktatóanyaghoz: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
+Azt is megteheti, hogy letölti és futtatja a megoldást ehhez a konkrét oktatóanyaghoz: [3 – Add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Javaslatok hozzáadása
 
-Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: a legördülő listát a javaslatokat.
+Kezdjük a legegyszerűbb esettel, ha alternatívákat ajánlunk fel a felhasználó számára: a javaslatok legördülő listája.
 
-1. Az index.cshtml fájlban `@id` módosítsa a **TextBoxFor** utasítást **azureautosuggest értékre.**
+1. Az index. cshtml fájlban módosítsa `@id` a **TextBoxFor** utasítást a **azureautosuggest**értékre.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Ezt követően a ** &lt;/div&gt;** billentyűvel a záró /div kapcsolót követően adja meg ezt a parancsfájlt. Ez a szkript a nyílt forráskódú jQuery felhasználói felületkönyvtárautomatikus [kiegészítési widgetjét](https://api.jqueryui.com/autocomplete/) használja a javasolt eredmények legördülő listájának bemutatásához. 
+2. Ezt az utasítást követve a záró ** &lt;/div&gt;** után adja meg ezt a parancsfájlt. Ez a szkript kihasználja az [automatikus kiegészítési widgetet](https://api.jqueryui.com/autocomplete/) a nyílt forráskódú jQuery UI könyvtárból, hogy bemutassa a javasolt eredmények legördülő listáját. 
 
     ```javascript
     <script>
@@ -57,11 +57,11 @@ Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: 
     </script>
     ```
 
-    Az "azureautosuggest" azonosító a fenti parancsfájlt a keresőmezőhöz kapcsolja. A widget forrásbeállítása egy Javaslat metódus, amely a Javaslat API-t két lekérdezési paraméterrel hívja meg: **kiemelések** és **fuzzy**, mindkettő hamis ebben az esetben. A keresés elindításához legalább két karakterre van szükség.
+    A "azureautosuggest" azonosító a fenti szkriptet csatlakoztatja a keresőmezőbe. A widget forrás opciója egy olyan javaslati metódusra van beállítva, amely meghívja az ajánlott API-t két lekérdezési paraméterrel: **kiemelések** és **fuzzy**, mindkettő hamis értékre van állítva ebben a példányban. Emellett a keresés indításához legalább két karakter szükséges.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hivatkozás hozzáadása jQuery parancsfájlokra a nézethez
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hivatkozások hozzáadása a jQuery-parancsfájlokhoz a nézethez
 
-1. A jQuery tár eléréséhez &lt;&gt; módosítsa a nézetfájl fejszakaszát a következő kódra:
+1. A jQuery-könyvtár eléréséhez módosítsa a &lt;nézet&gt; fájljának Head szakaszát a következő kódra:
 
     ```cs
     <head>
@@ -76,7 +76,7 @@ Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: 
     </head>
     ```
 
-2. Mivel egy új jQuery hivatkozást vezetünk be, el kell távolítanunk vagy ki kell megjegyzéselnünk az alapértelmezett jQuery hivatkozást a _Layout.cshtml fájlban (a **Nézetek/Megosztott** mappában). Keresse meg a következő sorokat, és fűzzön hozzá megjegyzést az első parancsfájlsorhoz az ábrán látható módon. Ezzel a módosítással elkerülhető a jQuery-re való hivatkozások összeütközése.
+2. Mivel egy új jQuery-referenciát vezetünk be, az alapértelmezett jQuery-hivatkozást is el kell távolítani a _Layout. cshtml fájlban (a **nézetek/megosztott** mappában). Keresse meg a következő sorokat, és tegye megjegyzésbe az első parancsfájlt az ábrán látható módon. Ez a változás megakadályozza a jQuery-re mutató hivatkozások összeütközését.
 
     ```html
     <environment include="Development">
@@ -86,11 +86,11 @@ Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: 
     </environment>
     ```
 
-    Most már használhatjuk az előre definiált Automatikus kiegészítés jQuery függvényeket.
+    Most már használhatjuk az előre definiált autocomplete jQuery-függvényeket.
 
-### <a name="add-the-suggest-action-to-the-controller"></a>A Javaslat művelet hozzáadása a vezérlőhöz
+### <a name="add-the-suggest-action-to-the-controller"></a>A javaslat művelet hozzáadása a vezérlőhöz
 
-1. Az otthoni vezérlőben adja hozzá a **Javaslat** műveletet (például az **Oldal** művelet után).
+1. A Kezdőlap vezérlőben adja hozzá a **javaslat** műveletet (azaz az **oldal** művelet után).
 
     ```cs
         public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
@@ -123,34 +123,34 @@ Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: 
         }
     ```
 
-    A **Legfelső** paraméter azt adja meg, hogy hány eredményt kell visszaadni (ha nincs megadva, az alapértelmezett érték 5). A _javaslatajánló_ az Azure-indexben van megadva, amely az adatok beállításakor történik, és nem egy ügyfélalkalmazás, például ez az oktatóanyag. Ebben az esetben a szuggesztív az úgynevezett "sg", és megkeresi a **HotelName** mezőben - semmi más. 
+    A **felső** paraméter azt határozza meg, hogy hány eredmény legyen visszaadva (ha nincs megadva, az alapértelmezett érték 5). A rendszer az Azure indexben adja meg a _javaslatot_ , amely akkor történik meg, ha az adatkészletet, és nem egy ügyfélalkalmazás, például az oktatóanyag. Ebben az esetben a javaslat neve "SG", és megkeresi a **pezsgő** mezőt – semmi más. 
 
-    Fuzzy megfelelő lehetővé teszi a "közeli hiányzik", hogy tartalmazza a kimenet, akár egy szerkesztési távolság. Ha a **kiemelési** paraméter értéke igaz, akkor a félkövér HTML-címkék hozzáadódnak a kimenethez. Ezt a két paramétert a következő szakaszban igazértékre állítjuk.
+    A zavaros megfeleltetés lehetővé teszi a "közelről lemaradt" beállítás használatát a kimenetben, legfeljebb egy szerkesztési távolságot. Ha a **Highlights** paraméter értéke TRUE (igaz), akkor a félkövér HTML-címkék hozzáadódnak a kimenethez. Ezt a két paramétert igaz értékre kell állítani a következő szakaszban.
 
-2. Előfordulhat, hogy szintaktikai hibákat észlel. Ha igen, adja hozzá a következő kettőt a fájl tetejére utasítások **használatával.**
+2. Előfordulhat, hogy szintaktikai hibákat talál. Ha igen, adja hozzá a következő két **using** utasítást a fájl elejéhez.
 
     ```cs
     using System.Collections.Generic;
     using System.Linq;
     ```
 
-3. Futtassa az alkalmazást. Kapsz egy sor lehetőséget, ha beírja a "po", például? Most próbáld a "pa"-t.
+3. Futtassa az alkalmazást. A "Po" beírásakor számos lehetőséget kap, például? Most próbálkozzon a "PA" kifejezéssel.
 
-    ![Gépelés "po" tárja fel a két javaslatot](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    ![A "Po" beírása két javaslatot mutat be](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
 
-    Figyelje meg, hogy a beírt betűknek el _kell_ kezdeniük egy szót, és nem egyszerűen bele kell foglalni a szóba.
+    Figyelje meg, hogy a beírt betűknek egy szót _kell_ elkezdeniük, és nem egyszerűen bele kell foglalni a szót.
 
-4. A nézetparancsfájlban állítsa **&intelligens értékre,** és futtassa újra az alkalmazást. Most írja be a "po"-t. Figyelje meg, hogy a keresés feltételezi, hogy van egy betű rossz!
+4. A View szkriptben állítsa a **&fuzzy** igaz értékre, majd futtassa újra az alkalmazást. Most írja be a "Po" kifejezést. Figyelje meg, hogy a keresés azt feltételezi, hogy egy levél nem megfelelő!
  
-    ![A "pa" beírása true-ra állítva](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    ![A "PA" kifejezés beírása az igaz értékre](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Ha érdekli, a [Lucene lekérdezés szintaxisa](https://docs.microsoft.com/azure/search/query-lucene-syntax) az Azure Cognitive Search részletesen ismerteti az intelligens keresések használt logika.
+    Ha érdekli, a [Lucene lekérdezési szintaxisa az Azure Cognitive Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) ismerteti a fuzzy keresésekben használt logikát.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Kiemelés hozzáadása a javaslatokhoz
 
-Javíthatjuk a javaslatok megjelenését a felhasználó számára, ha a **kiemelési** paramétert igazértékre állítjuk. Azonban először is hozzá kell adnunk néhány kódot a nézethez, hogy megjelenítsük a félkövér szöveget.
+Javíthatjuk a javaslatok megjelenését a felhasználó számára úgy, hogy a **Highlights** paramétert igaz értékre állítja. Először azonban hozzá kell adnia egy kódot a nézethez a félkövér szöveg megjelenítéséhez.
 
-1. A nézetben (index.cshtml), adja hozzá a következő parancsfájlután az **azureautosuggest** parancsfájl t a fent megadott.
+1. A View (index. cshtml) nézetben adja hozzá a következő parancsfájlt a fent megadott **azureautosuggest** -parancsfájl után.
 
     ```javascript
     <script>
@@ -179,25 +179,25 @@ Javíthatjuk a javaslatok megjelenését a felhasználó számára, ha a **kieme
     </script>
     ```
 
-2. Most változtassa meg a szövegdoboz azonosítóját, így a következőképpen szól.
+2. Most módosítsa a szövegmező AZONOSÍTÓját, hogy az a következőképpen legyen beolvasva.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresuggesthighlights" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Futtassa újra az alkalmazást, és a beírt szöveget félkövérrel kell látnia a javaslatokban. Próbáld meg beírni, hogy "apa".
+3. Futtassa újra az alkalmazást, és a javaslatok között a beírt szöveg félkövérrel jelenik meg. Tegyük fel, hogy beírja a "PA" kifejezést.
  
-    !["pa" beírása kiemeléssel](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    ![A "PA" beírása kiemeléssel](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
 
-4. A fenti kiemelő parancsfájlban használt logika nem üzembiztos. Ha olyan kifejezést ad meg, amely kétszer jelenik meg ugyanabban a névben, a félkövér eredmények nem egészen azok, amelyeket szeretne. Próbálja meg beírni a "mo" szót.
+4. A fenti kiemelési parancsfájlban használt logika nem üzembiztos. Ha egy olyan kifejezést ad meg, amely ugyanabban a névben kétszer jelenik meg, a félkövérrel szedett eredmények nem eléggé, amit szeretne. Próbálja beírni a "mo" kifejezést.
 
-    Az egyik kérdés a fejlesztő kell válaszolni, amikor egy script működik "elég jól", és mikor kell a hirtelen fordulat foglalkozni. Nem fogjuk figyelembe kiemelve tovább ebben a bemutatóban, de a pontos algoritmus megtalálása olyan dolog, amit figyelembe kell venni, ha a kiemelés nem hatékony az adatok számára. További információ: [Hit kiemelése](search-pagination-page-layout.md#hit-highlighting).
+    Ha a fejlesztőnek választ kell adni az egyik kérdésre, ha egy parancsfájl "elég jól" működik, és mikor kell megoldania a hirtelen fordulatot. Ebben az oktatóanyagban nem vesszük figyelembe a további lépéseket, de a pontos algoritmus megtalálásával azt érdemes figyelembe venni, hogy a kiemelés nem hatékony az adataihoz. További információ: [találatok kiemelése](search-pagination-page-layout.md#hit-highlighting).
 
 ## <a name="add-autocomplete"></a>Automatikus kiegészítés hozzáadása
 
-Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kiegészítés (más néven "type-ahead"), amely befejezi a lekérdezési kifejezést. Ismét a legegyszerűbb megvalósítással kezdjük, mielőtt javítanánk a felhasználói élményt.
+Egy másik változat, amely némileg eltér a javaslatoktól, az autocomplete (néha "type-Ahead"), amely egy lekérdezési kifejezést végez. A felhasználói élmény fokozása előtt a legegyszerűbb implementációval fogunk kezdeni.
 
-1. Írja be a következő parancsfájlt a nézetbe a korábbi parancsfájlok követésével.
+1. Adja meg a következő parancsfájlt a nézetbe az előző parancsfájlok követésével.
 
     ```javascript
     <script>
@@ -212,13 +212,13 @@ Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kie
     </script>
     ```
 
-2. Most változtassa meg a szövegdoboz azonosítóját, így a következőképpen szól.
+2. Módosítsa a szövegmező AZONOSÍTÓját, hogy az a következőképpen legyen beolvasva.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautocompletebasic" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Az otthoni vezérlőben be kell lépnünk az **Automatikus kiegészítés** műveletbe, például a **Javaslat** művelet alatt.
+3. A Home vezérlőben meg kell adnia az **automatikus kiegészítés** műveletet, azaz a **javasolt** művelet alatt.
 
     ```cs
         public async Task<ActionResult> AutoComplete(string term)
@@ -241,23 +241,23 @@ Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kie
         }
     ```
 
-    Figyeljük meg, hogy ugyanazt a *szuggesztív* funkciót használjuk, az úgynevezett "sg", az automatikus kiegészítéskeresésben, mint a javaslatokesetében (ezért csak a szállodanevek automatikus kiegészítését próbáljuk elérni).
+    Figyelje meg, hogy ugyanazt a *javaslati* funkciót használjuk, amelyet a "SG" néven használunk az automatikus kiegészítési keresésben, ahogy a javaslatok esetében tettük (ezért csak a szállodai nevek automatikus kiegészítését próbáljuk ki).
 
-    Számos **Automatikus kiegészítésmód-beállítás** létezik, és a **OneTermWithContext -t**használjuk. A további beállítások leírását az [Automatikus kiegészítés API-ban](https://docs.microsoft.com/rest/api/searchservice/autocomplete) található.
+    Számos **AutocompleteMode** -beállítás létezik, és **OneTermWithContext**használunk. További beállítások leírását az [automatikus kiegészítési API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) -ban találja.
 
-4. Futtassa az alkalmazást. Figyelje meg, hogy a legördülő listában megjelenő beállítások tartománya egyetlen szó. Próbálja meg beírni a "re" kezdetű szavakat. Figyelje meg, hogy a beállítások száma hogyan csökken, ahogy egyre több betűt ír be.
+4. Futtassa az alkalmazást. Figyelje meg, hogy a legördülő listában megjelenő beállítások köre egyetlen szó. Próbálja meg beírni a szavakat az "újra" kifejezéssel kezdődően. Figyelje meg, hogy a lehetőségek száma több karakter beírásával csökken.
 
-    ![Gépelés alapvető automatikus kiegészítéssel](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    ![Alapszintű autocomplete beírása](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
 
-    A jelenlegi állás szerint a korábban futtatott javaslatok parancsfájlvalószínűleg hasznosabb, mint ez az automatikus kiegészítési parancsfájl. Ahhoz, hogy az automatikus kiegészítés felhasználóbarátabb legyen, a legjobb, ha hozzáadja a javaslatkereséshez.
+    Ebben az esetben a korábban futtatott javaslatok szkriptje valószínűleg hasznosabb ennél az autocomplete parancsfájlnál. Ahhoz, hogy a lehető leghatékonyabban lehessen az autocomplete-t kihasználni, a legjobb megoldás a javaslat keresése.
 
-## <a name="combine-autocompletion-and-suggestions"></a>Automatikus kiegészítés és javaslatok kombinálása
+## <a name="combine-autocompletion-and-suggestions"></a>Az autocomplete és a javaslatok egyesítése
 
-Az automatikus kiegészítés és a javaslatok kombinálása a legösszetettebb lehetőségünk, és valószínűleg a legjobb felhasználói élményt nyújtja. Azt szeretnénk, hogy a beírt szöveggel összhangban az Azure Cognitive Search első számú választása legyen a szöveg automatikus kitöltéséhez. Is, szeretnénk egy sor javaslatot, mint egy legördülő lista.
+Az autocomplete és a javaslatok együttes használata a lehető legbonyolultabb lehetőség, és valószínűleg a legjobb felhasználói élményt nyújtja. Azt szeretnénk, hogy megjelenjen a begépelt szöveg, amely az első választás az Azure Cognitive Search számára a szöveg kitöltéséhez. Emellett számos javaslatot szeretnénk legördülő listaként használni.
 
-Vannak olyan könyvtárak, amelyek ezt a funkciót kínálják - gyakran "inline autocompletion"-nak vagy hasonló névnek nevezik. Azonban fogunk natívan végrehajtani ezt a funkciót, így láthatja, mi folyik itt. Ebben a példában először a vezérlőn kezdjük a munkát.
+Vannak olyan kódtárak, amelyek ezt a funkciót használják – gyakran "beágyazott autocomplete" néven vagy hasonló névvel. Ezzel a funkcióval azonban natív módon Implementáljuk ezt a funkciót, így láthatjuk, hogy mi történik. Ebben a példában először a vezérlőn fogunk dolgozni.
 
-1. Hozzá kell adnunk egy műveletet a vezérlőhöz, amely csak egy automatikus kiegészítési eredményt ad vissza, valamint egy adott számú javaslatot. Fogjuk hívni ezt a műveletet **AutocompleteAndSuggest**. Az otthoni vezérlőben adja hozzá a következő műveletet a többi új műveletet követve.
+1. Hozzá kell adnia egy műveletet a vezérlőhöz, amely csak egy autocomplete eredményt ad vissza, valamint megadott számú javaslatot. Ezt a műveletet **AutocompleteAndSuggest**fogjuk hívni. A Kezdőlap vezérlőben adja hozzá a következő műveletet a többi új művelet után.
 
     ```cs
         public async Task<ActionResult> AutocompleteAndSuggest(string term)
@@ -306,9 +306,9 @@ Vannak olyan könyvtárak, amelyek ezt a funkciót kínálják - gyakran "inline
         }
     ```
 
-    Egy automatikus kiegészítési lehetőség jelenik meg az **eredménylista** tetején, amelyet az összes javaslat követ.
+    Az **eredmények** listájának tetején egy autocomplete beállítást ad vissza, amelyet a javaslatok követnek.
 
-2. A nézetben először egy trükköt valósítunk meg, hogy a felhasználó által beírt, merészebb szöveg alatt egy világosszürke automatikus kiegészítési szó jelenik meg. A HTML tartalmazza az erre a célra szolgáló relatív pozicionálást. Változtassa meg a **TextBoxFor** &lt;utasítást (és a környező div&gt; nyilatkozatokat) a következőkre, megjegyezve, hogy egy második keresőmező, amely **alatt** található, közvetlenül a normál keresőmező alatt található, a keresőmező 39 pixeles lehúzásával az alapértelmezett helyéről!
+2. A nézetben először egy olyan trükköt teszünk elérhetővé, hogy egy világosszürke autocomplete szó közvetlenül a felhasználó által megadott merészebb-szöveg alatt legyen megjelenítve. A HTML relatív elhelyezést is tartalmaz erre a célra. Módosítsa a **TextBoxFor** utasítást (és a körülötte &lt;lévő&gt; div-utasításokat) a következőre, és ha úgy gondolja, hogy az **alatta** lévő második keresőmező közvetlenül a normál keresőmező alatt található, akkor a keresőmező 39 képpont kihúzásával állítsa le az alapértelmezett helyükről.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -319,9 +319,9 @@ Vannak olyan könyvtárak, amelyek ezt a funkciót kínálják - gyakran "inline
     </div>
     ```
 
-    Megjegyzés: az azonosítót ismét módosítjuk, hogy ebben az esetben **az azureautocomplete-ra** módosítsuk.
+    Figyelje meg, hogy a rendszer ismét megváltoztatja az azonosítót, hogy **azureautocomplete** ebben az esetben.
 
-3. Szintén a nézetben adja meg a következő szkriptet, miután az összes szkriptet beírt eddig. Elég sok minden van benne.
+3. A nézetben is adja meg a következő parancsfájlt, miután az eddig megadott összes parancsfájlt elvégezte. Nagyon sok mindent.
 
     ```javascript
     <script>
@@ -430,38 +430,38 @@ Vannak olyan könyvtárak, amelyek ezt a funkciót kínálják - gyakran "inline
     </script>
     ```
 
-    Figyeljük meg az okos használata **intervallum** funkció mind törölje az alapul szolgáló szöveget, ha már nem felel meg, amit a felhasználó írja, és azt is, hogy állítsa be ugyanazt az esetet (felső vagy alsó), mint a felhasználó gépelés (a "pa" megfelel "PA", "pA", "Pa" keresés kor), úgy, hogy a berakott szöveg ügyes.
+    Figyelje meg, hogy az **intervallum** függvény okosan használja a mögöttes szöveget, ha már nem egyezik meg a felhasználó által beírt szöveggel, és azt is, hogy a felhasználó beírásakor ugyanezt a kis-és nagybetűket (a "PA" a "PA", a "PA", a "PA" karakterláncot) adja meg, hogy az átfedett szöveg szép legyen.
 
-    Olvassa el a megjegyzéseket a forgatókönyvet, hogy egy teljesebb megértést.
+    Tekintse át a szkript megjegyzéseit, és ismerkedjen meg a teljes körű ismeretekkel.
 
-4. Végül, meg kell, hogy egy kisebb kiigazítást két HTML osztály, hogy azok átlátható. Adja hozzá a következő sort a **searchBoxForm** és **searchBox** osztályokhoz a hotels.css fájlban.
+4. Végezetül egy kisebb módosítást kell végezni két HTML-osztályon, hogy azok transzparensek legyenek. Adja hozzá a következő sort a **searchBoxForm** és a **searchBox** osztályhoz a Hotels. css fájlban.
 
     ```html
         background: rgba(0,0,0,0);
     ```
 
-5. Most futtassa az alkalmazást. Írja be a "pa" szót a keresőmezőbe. Ön kap "palota", mint az automatikus kiegészítés javaslatot, valamint két szálloda, amely tartalmazza a "pa"?
+5. Most futtassa az alkalmazást. Írja be a "PA" kifejezést a keresőmezőbe. Az automatikus kiegészítési javaslatként "Palace"-t kap, valamint két, "PA"-t tartalmazó szállodát?
 
-    ![Gépelés szövegközi automatikus kiegészítéssel és javaslatokkal](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    ![Bevitel beágyazott automatikus kiegészítéssel és javaslatok](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
 
-6. Próbálja meg a tabbing gombot, hogy elfogadja az automatikus kiegészítés javaslatot, és próbálja meg a javaslatokat a nyílbillentyűvel és a tabbillentyűvel, majd próbálkozzon újra az egérrel, és egyetlen kattintással. Ellenőrizze, hogy a parancsfájl kezeli-e ezeket a helyzeteket.
+6. Próbálja megismételni az automatikus kiegészítési javaslat elfogadását, majd próbálja meg kiválasztani a javaslatokat a nyílbillentyűkkel és a TAB billentyűvel, és próbálkozzon újra az egérrel és egyetlen kattintással. Győződjön meg arról, hogy a parancsfájl szépen kezeli az összes helyzetet.
 
-    Dönthet úgy, hogy egyszerűbb betölteni egy olyan könyvtárat, amely ezt a funkciót kínálja önnek, de most már legalább egy módot tud a beépített automatikus kiegészítés működéséhez!
+    Dönthet úgy, hogy egyszerűbb betölteni egy olyan könyvtárat, amely ezt a szolgáltatást kínálja Önnek, de most már tudja, hogy van-e legalább egy módszer a beágyazott automatikus kiegészítés működéséhez.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Vegye figyelembe a következő elvihető ételek ebből a projektből:
+Vegye figyelembe az alábbi elvihetőket a projektből:
 
-* Az automatikus kiegészítés (más néven "type-ahead") és a javaslatok lehetővé teszik, hogy a felhasználó csak néhány kulcsot gépeljen be, hogy pontosan megtalálja, amit akar.
-* Az automatikus kiegészítés és a közös munka javaslatok gazdag felhasználói élményt nyújthatnak.
-* Mindig tesztelje az automatikus kiegészítési funkciókat a bemenet minden formájával.
-* A **setInterval** függvény használata hasznos lehet a felhasználói felület elemeinek ellenőrzésében és javításában.
+* Az autocomplete (más néven "type-Ahead") és a javaslatok lehetővé tehetik, hogy a felhasználó csak néhány kulcsot írjon be, hogy pontosan mit szeretne.
+* Az autocomplete és a közös használatú javaslatok gazdag felhasználói élményt nyújtanak.
+* Mindig tesztelje az autocomplete függvényeket a bemenet összes formájával.
+* A **setInterval** függvény használata hasznos lehet a felhasználói felületi elemek ellenőrzése és javítása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő bemutatóban egy pillantást vetünk a felhasználói élmény javítására, a facets használatával egyetlen kattintással szűkítheti a kereséseket.
+A következő oktatóanyagban megvizsgáljuk a felhasználói élmény javításának egy másik módját, a dimenziók használatával szűkítheti a keresést egyetlen kattintással.
 
 > [!div class="nextstepaction"]
-> [C# oktatóanyag: A navigáció támogatásához használjon aspektusait - Azure Cognitive Search](tutorial-csharp-facets.md)
+> [C# oktatóanyag: dimenziók használata a navigáláshoz – Azure Cognitive Search](tutorial-csharp-facets.md)
 
 

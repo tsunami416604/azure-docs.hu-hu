@@ -1,68 +1,68 @@
 ---
 title: Azure Migrate-projektek hibaelhárítása
-description: Segít az Azure Migrate-projektek létrehozásával és kezelésével kapcsolatos problémák elhárítása.
+description: Segít a Azure Migrate projektek létrehozásával és kezelésével kapcsolatos problémák elhárításában.
 ms.topic: troubleshooting
 author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535400"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate-projektek hibaelhárítása
 
-Ez a cikk segítséget nyújt az [Azure Migrate-projektek](migrate-services-overview.md) létrehozása és kezelése során felmerülő problémák elhárításához.
+Ez a cikk a [Azure Migrate](migrate-services-overview.md) projektek létrehozásakor és kezelésekor felmerülő problémák megoldásában nyújt segítséget.
 
-## <a name="how-to-add-new-project"></a>Hogyan adjunk új projektet?
+## <a name="how-to-add-new-project"></a>Új projekt hozzáadása
 
-Több Azure Migrate-projektet is létrehozhat egy előfizetésben. [Megtudhatja, hogyan](how-to-add-tool-first-time.md) hozhat létre projektet első alkalommal, illetve hogyan [vehet fel további](create-manage-projects.md#create-additional-projects) projekteket.
+Egy előfizetéshez több Azure Migrate projekt is tartozhat. [Megtudhatja, hogyan](how-to-add-tool-first-time.md) hozhat létre egy projektet első alkalommal, illetve hogyan [adhat hozzá további](create-manage-projects.md#create-additional-projects) projekteket.
 
 ## <a name="what-azure-permissions-are-needed"></a>Milyen Azure-engedélyekre van szükség?
 
-Az Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekre van szüksége az előfizetésben.
+Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 
 ## <a name="cant-find-a-project"></a>Nem található projekt
 
-Egy meglévő Azure Migrate projekt keresése attól függ, hogy az Azure Migrate jelenlegi vagy régi verzióját használja-e. [Kövesse](create-manage-projects.md#find-a-project)a .
+Egy meglévő Azure Migrate projekt megkeresése attól függ, hogy a Azure Migrate aktuális vagy régi verzióját használja-e. [Kövesse a következőt](create-manage-projects.md#find-a-project):.
 
 
-## <a name="cant-find-a-geography"></a>Nem találom a földrajzot
+## <a name="cant-find-a-geography"></a>Nem található földrajz
 
-Létrehozhat egy Azure Migrate projektet támogatott földrajzi területeken [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
+Azure Migrate projektet a [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára támogatott földrajzi területeken hozhat létre.
 
-## <a name="what-are-vm-limits"></a>Mik azok a virtuális gép-korlátozások?
+## <a name="what-are-vm-limits"></a>Mik a virtuális gépek korlátai?
 
-Egyetlen projektben legfeljebb 35 000 VMware virtuális gépet vagy akár 35 000 Hyper-V virtuális gépet értékelhet. A projekt tartalmazhat VMware virtuális gépek és hyper-V virtuális gépek, az értékelési korlátokig.
+Egyetlen projektben akár 35 000 VMware virtuális gépet, akár 35 000 Hyper-V virtuális gépet is megvizsgálhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
 
 ## <a name="can-i-upgrade-old-project"></a>Frissíthetem a régi projektet?
 
-Az Azure Migrate korábbi verziójából származó projektek nem frissíthetők. Új [projektet](how-to-add-tool-first-time.md)kell létrehoznia, és eszközöket kell hozzáadnia hozzá.
+Azure Migrate korábbi verziójának projektjei nem frissíthetők. [Létre kell hoznia egy új projektet](how-to-add-tool-first-time.md), és hozzá kell adnia az eszközöket.
 
-## <a name="cant-create-a-project"></a>Nem lehet projektet létrehozni
+## <a name="cant-create-a-project"></a>Nem hozható létre projekt
 
-Ha projektet próbál létrehozni, és telepítési hibába ütközik:
+Ha egy projektet próbál létrehozni és üzembe helyezési hibát észlel:
 
-- Próbálja meg újra létrehozni a projektet, ha átmeneti hiba lenne. A **Központi telepítések**területen kattintson az **Újratelepítés gombra,** hogy újra próbálkozzon.
-- Ellenőrizze, hogy rendelkezik-e közreműködői vagy tulajdonosi engedélyekkel az előfizetésben.
-- Ha egy újonnan hozzáadott földrajzi területen telepíti, várjon egy rövid ideig, majd próbálkozzon újra.
-- Ha megjelenik a "Kérelmek felhasználói identitásfejléceket" hibaüzenet jelenik meg, ez azt jelezheti, hogy nem rendelkezik hozzáféréssel a szervezet Azure Active Directory (Azure AD) bérlőjéhez. Ebben az esetben:
-    - Amikor első alkalommal kerül hozzá egy Azure AD-bérlőhöz, e-mailben meghívást kap a bérlőhöz való csatlakozásra.
-    - Fogadja el a bérlőhöz hozzáadni szeretne meghívót.
-    - Ha nem látja az e-mailt, lépjen kapcsolatba a bérlőhöz hozzáféréssel rendelkező felhasználóval, és kérje meg, hogy [küldje el újra a meghívót.](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)
-    - Miután megkapta a meghívó e-mailt, nyissa meg, és válassza ki a hivatkozást, hogy elfogadja a meghívást. Ezután jelentkezzen ki az Azure Portalon, és jelentkezzen be újra. (a böngésző frissítése nem fog működni.) Ezután megkezdheti az áttelepítési projekt létrehozását.
+- Próbálja meg újra létrehozni a projektet abban az esetben, ha átmeneti hiba történt. A **központi telepítések**területen kattintson az **újbóli üzembe helyezés** elemre az újbóli próbálkozáshoz.
+- Győződjön meg arról, hogy közreműködői vagy tulajdonosi engedélyekkel rendelkezik az előfizetésben.
+- Ha újonnan felvett földrajzba végez üzembe helyezést, várjon egy rövid ideig, és próbálkozzon újra.
+- Ha a következő hibaüzenet jelenik meg: "a kérelmeknek felhasználói azonosítókat kell tartalmazniuk", ez azt jelezheti, hogy nincs hozzáférése a szervezet Azure Active Directory (Azure AD) bérlőhöz. Ebben az esetben:
+    - Amikor első alkalommal ad hozzá egy Azure AD-bérlőhöz, e-mailben meghívót kap a bérlőhöz való csatlakozáshoz.
+    - Fogadja el a bérlőhöz hozzáadandó meghívót.
+    - Ha nem látja az e-mailt, lépjen kapcsolatba a felhasználóval a bérlőhöz, és kérje meg őket, hogy küldje el újra [a meghívót](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users) .
+    - A meghívót tartalmazó e-mail fogadása után nyissa meg a meghívót, és válassza ki a hivatkozást a meghívás elfogadásához. Ezután jelentkezzen ki a Azure Portalból, és jelentkezzen be újra. (a böngésző frissítése nem fog működni.) Ezután megkezdheti az áttelepítési projekt létrehozását.
 
-## <a name="how-do-i-delete-a-project"></a>Hogyan törölhetek egy projektet?
+## <a name="how-do-i-delete-a-project"></a>Projekt törlése Hogyan
 
-A projekt törléséhez [kövesse az alábbi utasításokat.](create-manage-projects.md#delete-a-project) Vegye figyelembe, hogy a projekt törlésekor a projekt és a projektben felderített gépek metaadatai is törlődnek.
+A projektek törléséhez [kövesse az alábbi utasításokat](create-manage-projects.md#delete-a-project) . Vegye figyelembe, hogy amikor töröl egy projektet, a projektben és a felderített gépek metaadatait is törli a projektből.
 
 ## <a name="added-tools-dont-show"></a>A hozzáadott eszközök nem jelennek meg
 
-Győződjön meg arról, hogy a megfelelő projektet választotta ki. Az Azure Migrate hub **>-kiszolgálók** vagy **adatbázisok**ban kattintson a **Változás** a **projekt áttelepítése (változás)** elemre a képernyő jobb felső sarkában. Válassza ki a megfelelő előfizetési és projektnevet > **OK gombra**. A lapnak a kijelölt projekt hozzáadott eszközeivel kell frissülnie.
+Győződjön meg arról, hogy a megfelelő projekt van kiválasztva. A Azure Migrate hub > **kiszolgálók** vagy **adatbázisok**ablakban kattintson a **módosítás** gombra a **projekt migrálása (módosítás)** elemre a képernyő jobb felső sarkában. Válassza ki a megfelelő előfizetést és a projekt nevét > **az OK gombra**. A lapot frissíteni kell a kiválasztott projekt hozzáadott eszközeivel.
 
 ## <a name="next-steps"></a>További lépések
 
-[Értékelési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása az Azure Áttelepítési projektekhez.
+[Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

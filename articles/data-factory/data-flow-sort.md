@@ -1,6 +1,6 @@
 ---
-title: Transzformáció rendezése az adatfolyam leképezésében
-description: Azure-adat-előképezési adatok rendezésének átalakítása
+title: Átalakítás rendezése a leképezési adatfolyamban
+description: Azure Data Factory leképezési adatrendezési átalakítás
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606324"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>Transzformáció rendezése az adatfolyam leképezésében
+# <a name="sort-transformation-in-mapping-data-flow"></a>Átalakítás rendezése a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A rendezési transzformáció lehetővé teszi az aktuális adatfolyam bejövő sorainak rendezését. Kiválaszthatja az egyes oszlopokat, és növekvő vagy csökkenő sorrendbe rendezheti őket.
+A rendezési transzformáció lehetővé teszi a bejövő sorok rendezését az aktuális adatfolyamon. Az egyes oszlopokat kiválaszthatja, és sorba rendezheti őket növekvő vagy csökkenő sorrendben.
 
 > [!NOTE]
-> Az adatfolyamok leképezése szikrafürtökön történik, amelyek több csomópont és partíció között osztják el az adatokat. Ha úgy dönt, hogy egy későbbi átalakítás során újraparticionálja az adatokat, az adatok átrendezése miatt elveszhet a rendezés.
+> Az adatforgalom leképezése olyan Spark-fürtökön történik, amelyek több csomóponton és partíción keresztül terjesztik az adatforgalmat. Ha úgy dönt, hogy egy későbbi átalakítás során újraparticionálja az adatait, a rendezést elveszítheti az adatkeverés miatt.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-![Beállítások rendezése](media/data-flow/sort.png "Rendezés")
+![Rendezési beállítások](media/data-flow/sort.png "Rendezés")
 
-**A kis- és nagybetűk megkülönböztetése:** Azt jelzi, hogy figyelmen kívül hagyja-e a kis- és nagybetűket a karakterlánc- vagy szövegmezők rendezésekor
+**Kis-és nagybetűk megkülönböztetése:** Azt határozza meg, hogy nem kívánja-e figyelmen kívül hagyni az esetet karakterlánc vagy szöveges mezők rendezése során
 
-**Rendezés csak partíciókon belül:** Az adatfolyamok spark on futnak, minden adatfolyam partíciókra van osztva. Ez a beállítás csak a bejövő partíciókon belül rendezi az adatokat, nem pedig a teljes adatfolyamot. 
+**Csak a partíción belüli rendezés:** Mivel az adatfolyamatok a sparkon futnak, minden adatfolyam partícióra van osztva. Ez a beállítás csak a bejövő partíción belül rendezi az adatátvitelt, és nem rendezi a teljes adatfolyamot. 
 
-**Rendezési feltételek:** Válassza ki, hogy mely oszlopok szerint rendez, és milyen sorrendben történik a rendezés. A sorrend határozza meg a rendezési prioritást. Adja meg, hogy a null értékek megjelenjenek-e az adatfolyam elején vagy végén.
+**Rendezési feltételek:** Válassza ki a rendezés alapjául szolgáló oszlopokat, és hogy milyen sorrendben történjen a rendezés. A sorrend meghatározza a rendezési prioritást. Adja meg, hogy az adatfolyam elején vagy végén megjelenjenek-e nullák.
 
 ### <a name="computed-columns"></a>Számított oszlopok
 
-Ha a rendezés alkalmazása előtt módosítani vagy kibontani egy oszlopértéket, vigye az egérmutatót az oszlop fölé, és válassza a "számított oszlop" lehetőséget. Ezzel megnyitja a kifejezésszerkesztőt, hogy oszlopérték helyett kifejezést hozzon létre a rendezési művelethez.
+Egy oszlop értékének módosításához vagy kinyeréséhez a rendezés alkalmazása előtt vigye az egérmutatót az oszlop fölé, és válassza a "számított oszlop" lehetőséget. Ekkor megnyílik a Kifejezésszerkesztő, hogy a rendezési művelethez kifejezést hozzon létre az oszlop értékének használata helyett.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -53,9 +53,9 @@ Ha a rendezés alkalmazása előtt módosítani vagy kibontani egy oszlopérték
 
 ### <a name="example"></a>Példa
 
-![Beállítások rendezése](media/data-flow/sort.png "Rendezés")
+![Rendezési beállítások](media/data-flow/sort.png "Rendezés")
 
-A fenti rendezési konfiguráció adatfolyam-parancsfájlja az alábbi kódrészletben található.
+A fenti rendezési konfigurációhoz tartozó adatfolyam-szkript az alábbi kódrészletben található.
 
 ```
 BasketballStats sort(desc(PTS, true),
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>További lépések
 
-A rendezés után érdemes lehet az [Összesítő transzformációt](data-flow-aggregate.md)
+A rendezést követően érdemes lehet az [összesített átalakítást](data-flow-aggregate.md) használni

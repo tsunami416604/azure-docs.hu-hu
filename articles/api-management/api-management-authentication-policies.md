@@ -1,6 +1,6 @@
 ---
-title: Azure API-kezelés hitelesítési házirendjei | Microsoft dokumentumok
-description: Ismerje meg az Azure API Managementben használható hitelesítési szabályzatokat.
+title: Azure API Management hitelesítési házirendek | Microsoft Docs
+description: Ismerje meg az Azure API Management használható hitelesítési házirendeket.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473557"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-hitelesítési szabályzatok
-Ez a témakör a következő API Management-házirendek hivatkozási alapként szolgál. A házirendek hozzáadásáról és konfigurálásáról az [API-kezelés házirendjei](https://go.microsoft.com/fwlink/?LinkID=398186)című témakörben talál további információt.
+Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a>Hitelesítési házirendek
 
--   [Hitelesítés alapszintű](api-management-authentication-policies.md#Basic) - hitelesítés háttérszolgáltatással egyszerű hitelesítéssel.
+-   Egyszerű hitelesítéssel [hitelesítheti alapszintű](api-management-authentication-policies.md#Basic) hitelesítést a háttér-szolgáltatással.
 
--   [Hitelesítés ügyféltanúsítvánnyal](api-management-authentication-policies.md#ClientCertificate) – Hitelesítés háttérszolgáltatással az ügyféltanúsítványokkal.
+-   [Hitelesítés az ügyféltanúsítvány](api-management-authentication-policies.md#ClientCertificate) használatával – az Ügyféltanúsítványok segítségével végezzen hitelesítést egy háttér-szolgáltatással.
 
--   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) – Hitelesítse magát az API Management szolgáltatás [felügyelt identitásával.](../active-directory/managed-identities-azure-resources/overview.md)
+-   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) – hitelesítés a API Management szolgáltatás [felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md) .
 
-##  <a name="authenticate-with-basic"></a><a name="Basic"></a>Hitelesítés alapszintű sel
- A `authentication-basic` házirend segítségével hitelesítheti magát egy háttérszolgáltatás sal alapfokú hitelesítéssel. Ez a házirend hatékonyan beállítja a HTTP-engedélyezési fejlécet a házirendben megadott hitelesítő adatoknak megfelelő értékre.
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a>Hitelesítés alapszintű
+ Az alapszintű hitelesítést használó háttér-szolgáltatással történő hitelesítéshez használja a `authentication-basic` szabályzatot. Ez a házirend hatékonyan állítja be a HTTP-engedélyezési fejlécet a szabályzatban megadott hitelesítő adatoknak megfelelő értékre.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <authentication-basic username="username" password="password" />
@@ -48,28 +48,28 @@ Ez a témakör a következő API Management-házirendek hivatkozási alapként s
 
 ### <a name="elements"></a>Elemek
 
-|Név|Leírás|Kötelező|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|hitelesítés-alapszintű|Gyökérelem.|Igen|
+|hitelesítés – alapszintű|Gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Név|Leírás|Kötelező|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|felhasználónév|Megadja az alapszintű hitelesítő adatok felhasználónevét.|Igen|N/A|
-|jelszó|Megadja az alapszintű hitelesítő adatok jelszavát.|Igen|N/A|
+|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|N/A|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|N/A|
 
 ### <a name="usage"></a>Használat
- Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
--   **Házirendszakaszok:** bejövő
+-   **Házirend fejezetei:** bejövő
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a>Hitelesítés ügyféltanúsítvánnyal
- A `authentication-certificate` házirend segítségével hitelesítheti magát egy háttérszolgáltatással az ügyféltanúsítvány használatával. A tanúsítványt először telepíteni kell az [API Management be,](https://go.microsoft.com/fwlink/?LinkID=511599) és az ujjlenyomata azonosítja.
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a>Hitelesítés ügyféltanúsítvány használatával
+ Használja a `authentication-certificate` szabályzatot a háttér-szolgáltatással történő hitelesítéshez az ügyféltanúsítvány használatával. Először az [API Management kell telepíteni](https://go.microsoft.com/fwlink/?LinkID=511599) a tanúsítványt, és annak ujjlenyomata azonosítja.
 
-### <a name="policy-statement"></a>Politikai nyilatkozat
+### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
 <authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>
@@ -77,46 +77,46 @@ Ez a témakör a következő API Management-házirendek hivatkozási alapként s
 
 ### <a name="examples"></a>Példák
 
-Ebben a példában az ügyféltanúsítványt az ujjlenyomata azonosítja.
+Ebben a példában az ügyféltanúsítvány azonosítja az ujjlenyomatát.
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-Ebben a példában az ügyféltanúsítványt az erőforrás neve azonosítja.
+Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonosítható.
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
 
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítési tanúsítvány|Gyökérelem.|Igen|  
+|hitelesítés – tanúsítvány|Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|Ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|Vagy `thumbprint` `certificate-id` jelen kell lennie, vagy jelen kell lennie.|N/A|  
-|tanúsítvány-azonosító|A tanúsítványerőforrás neve.|Vagy `thumbprint` `certificate-id` jelen kell lennie, vagy jelen kell lennie.|N/A|  
+|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint` Vagy `certificate-id` kell lennie.|N/A|  
+|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint` Vagy `certificate-id` kell lennie.|N/A|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
   
--   **Házirendszakaszok:** bejövő  
+-   **Házirend fejezetei:** bejövő  
   
 -   **Házirend-hatókörök:** az összes hatókör  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Hitelesítés felügyelt identitással  
- A `authentication-managed-identity` házirend használatával hitelesítheti magát egy háttérszolgáltatás az API Management szolgáltatás felügyelt identitásával. Ez a szabályzat lényegében a felügyelt identitás t használja egy hozzáférési jogkivonatot az Azure Active Directoryból a megadott erőforrás eléréséhez. A jogkivonat sikeres beszerzése után a házirend a `Authorization` séma használatával állítja be a jogkivonat értékét a `Bearer` fejlécben.
+ A `authentication-managed-identity` szabályzat használatával a API Management szolgáltatás felügyelt identitásával hitelesítheti a háttér-szolgáltatást. Ez a szabályzat lényegében a felügyelt identitás használatával szerez hozzáférési jogkivonatot Azure Active Directoryről a megadott erőforrás eléréséhez. A jogkivonat sikeres beszerzését követően a szabályzat a `Authorization` fejlécben lévő jogkivonat értékét a `Bearer` séma alapján állítja be.
   
-### <a name="policy-statement"></a>Politikai nyilatkozat  
+### <a name="policy-statement"></a>Szabályzati utasítás  
   
 ```xml  
 <authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Példa  
-#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Felügyelt identitás használata a háttérszolgáltatással való hitelesítéshez
+#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Felügyelt identitás használata a háttér-szolgáltatással történő hitelesítéshez
 ```xml  
 <authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
@@ -136,7 +136,7 @@ Ebben a példában az ügyféltanúsítványt az erőforrás neve azonosítja.
 <authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
   
-#### <a name="use-managed-identity-in-send-request-policy"></a>Felügyelt identitás használata a küldési kérelem házirendben
+#### <a name="use-managed-identity-in-send-request-policy"></a>Felügyelt identitás használata a küldési kérelmek házirendjében
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
     <set-url>https://example.com/</set-url>
@@ -147,29 +147,29 @@ Ebben a példában az ügyféltanúsítványt az erőforrás neve azonosítja.
 
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítés-felügyelt identitás |Gyökérelem.|Igen|  
+|hitelesítés – felügyelt – identitás |Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|Erőforrás|Sztring. A célweb API (biztonságos erőforrás) alkalmazásazonosítója az Azure Active Directoryban.|Igen|N/A|  
-|kimeneti token-változó-név|Sztring. Annak a környezeti változónak a neve, `string`amely objektumtípusként kap tokenértéket. |Nem|N/A|  
-|ignore-hiba|Logikai. Ha a `true`beállítás, a házirend-folyamat akkor is folytatja a végrehajtást, ha nem szerez hozzáférési jogkivonatot.|Nem|hamis|  
+|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Igen|N/A|  
+|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként `string`fogja fogadni. |Nem|N/A|  
+|Mellőzés – hiba|Logikai. Ha a értékre `true`van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|hamis|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend a következő [házirendszakaszokban](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
   
--   **Házirendszakaszok:** bejövő  
+-   **Házirend fejezetei:** bejövő  
   
 -   **Házirend-hatókörök:** az összes hatókör
 
 ## <a name="next-steps"></a>További lépések
-A házirendekkel kapcsolatos további információkért lásd:
+További információ a házirendek használatáról:
 
-+ [Szabályzatok az API Managementben](api-management-howto-policies.md)
++ [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
-+ [Házirend-útmutató](api-management-policy-reference.md) a házirend-utasítások és beállításaik teljes listájához
-+ [Házirendminták](policy-samples.md)
++ Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
++ [Házirend-minták](policy-samples.md)

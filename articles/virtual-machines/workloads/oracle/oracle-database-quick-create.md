@@ -1,6 +1,6 @@
 ---
-title: Oracle-adatbázis létrehozása Azure-beli virtuális gépben | Microsoft dokumentumok
-description: Gyorsan beszerezhet idálkodhat az Oracle Database 12c adatbázissal az Azure-környezetben.
+title: Oracle-adatbázis létrehozása Azure-beli virtuális gépen | Microsoft Docs
+description: Gyorsan beszerezhet egy Oracle Database 12c-adatbázist az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683644"
 ---
-# <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle-adatbázis létrehozása Azure-beli virtuális gépben
+# <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
-Ez az útmutató az Azure CLI használatával egy Azure virtuális gép üzembe helyezéséhez az [Oracle piactér imázsa lemezkép](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c adatbázis létrehozása érdekében. A kiszolgáló telepítése után SSH-n keresztül csatlakozik az Oracle adatbázis konfigurálásához. 
+Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az Oracle Marketplace katalógusból a [lemezképből](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -41,9 +41,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Virtuális gép (VM) létrehozásához használja az [az vm create](/cli/azure/vm) parancsot. 
+Virtuális gép (VM) létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot. 
 
-Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. SSH-kulcsokat is létrehoz, ha azok még nem léteznek az alapértelmezett kulcshelyen. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
+Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. Emellett SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
 ```azurecli-interactive 
 az vm create \
@@ -55,7 +55,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása után az Azure CLI a következő példához hasonló információkat jelenít meg. Figyelje meg `publicIpAddress`a értékét. Ezzel a címmel érheti el a virtuális gép.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
 
 ```output
 {
@@ -72,7 +72,7 @@ A virtuális gép létrehozása után az Azure CLI a következő példához haso
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-SSH-munkamenet létrehozásához a virtuális gép, használja a következő parancsot. Cserélje le az `publicIpAddress` IP-címet a virtuális gép értékére.
+Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -80,9 +80,9 @@ ssh azureuser@<publicIpAddress>
 
 ## <a name="create-the-database"></a>Az adatbázis létrehozása
 
-Az Oracle szoftver már telepítve van a Marketplace-lemezképre. Hozzon létre egy mintaadatbázist az alábbiak szerint. 
+Az Oracle-szoftver már telepítve van a Piactéri rendszerképre. Hozzon létre egy minta-adatbázist az alábbiak szerint. 
 
-1.  Váltson az *Oracle* rendszergazda, majd inicializálja a figyelő naplózás:
+1.  Váltson az *Oracle* -rendszeradminisztrátorra, majd inicializálja a figyelőt a naplózáshoz:
 
     ```bash
     $ sudo su - oracle
@@ -117,7 +117,7 @@ Az Oracle szoftver már telepítve van a Marketplace-lemezképre. Hozzon létre 
     The command completed successfully
     ```
 
-2.  Az adatbázis létrehozása:
+2.  Hozza létre az adatbázist:
 
     ```bash
     dbca -silent \
@@ -141,16 +141,16 @@ Az Oracle szoftver már telepítve van a Marketplace-lemezképre. Hozzon létre 
 
     Az adatbázis létrehozása néhány percet vesz igénybe.
 
-3. Oracle változók beállítása
+3. Oracle-változók beállítása
 
-A csatlakozás előtt két környezeti változót kell beállítania: *ORACLE_HOME* és *ORACLE_SID*.
+A kapcsolódás előtt két környezeti változót kell beállítania: *ORACLE_HOME* és *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-A .bashrc fájlhoz ORACLE_HOME és ORACLE_SID változókat is hozzáadhat. Ezzel menti a környezeti változókat a jövőbeli bejelentkezések. Erősítse meg `~/.bashrc` a következő állításokat adtak hozzá a fájlhoz szerkesztő vel választott.
+Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Ellenőrizze, hogy az alábbi utasítások hozzá lettek- `~/.bashrc` e adva a fájlhoz az Ön által választott szerkesztőprogram használatával.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -159,23 +159,23 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1 
 ```
 
-## <a name="oracle-em-express-connectivity"></a>Oracle EM Express kapcsolat
+## <a name="oracle-em-express-connectivity"></a>Oracle EM Express-kapcsolat
 
-Az adatbázis felfedezéséhez használható grafikus felhasználói felület-kezelő eszköz beállítása az Oracle EM Express beállításával. Az Oracle EM Express szolgáltatáshoz való csatlakozáshoz először be kell állítania a portot az Oracle programban. 
+A grafikus felhasználói felülettel rendelkező felügyeleti eszközökhöz, amelyekkel megtekintheti az adatbázist, beállíthatja az Oracle EM Expresst. Az Oracle EM expresshez való csatlakozáshoz először be kell állítania a portot az Oracle-ben. 
 
-1. Csatlakozás az adatbázishoz az sqlplus használatával:
+1. Kapcsolódjon az adatbázishoz a SQLPlus használatával:
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. A csatlakozás után állítsa be az 5502-es portot az EM Express
+2. Ha csatlakoztatva van, állítsa be az 5502-es portot a EM expresshez.
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Nyissa meg a PDB1 tárolót, ha még nem nyitotta meg, de először ellenőrizze az állapotot:
+3. Nyissa meg a tároló PDB1, ha még nincs megnyitva, de először ellenőrizze az állapotot:
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
@@ -190,32 +190,32 @@ Az adatbázis felfedezéséhez használható grafikus felhasználói felület-ke
       3           PDB1                      MOUNT
     ```
 
-4. Ha a `PDB1` OPEN_MODE nem READ WRITE, majd futtassa a következő parancsokat a PDB1 megnyitásához:
+4. Ha a OPEN_MODE `PDB1` nem írható írás, akkor futtassa az alábbi PARANCSOKAT a PDB1 megnyitásához:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Az sqlplus `quit` munkamenet befejezéséhez be `exit` kell írnia, és be kell írnia az oracle-felhasználó kijelentkezéséhez.
+Be kell írnia `quit` a SQLPlus-munkamenet befejezéséhez, `exit` és be kell írnia az Oracle-felhasználó kijelentkezését.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Adatbázis indításának és leállításának automatizálása
 
-Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtuális gép újraindításakor. Az Oracle-adatbázis automatikus indításának beállításához először jelentkezzen be gyökérként. Ezután hozzon létre és frissítsen néhány rendszerfájlt.
+Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtuális gép újraindításakor. Az Oracle-adatbázis automatikus indításának beállításához először jelentkezzen be root-ként. Ezután hozzon létre és frissítsen néhány rendszerfájlt.
 
-1. Bejelentkezés gyökérként
+1. Bejelentkezés root-ként
 
     ```bash
     sudo su -
     ```
 
-2.  A kedvenc szerkesztőhasználatával szerkesztheti `/etc/oratab` a fájlt, `Y`és módosítsa az alapértelmezett értéket: `N`
+2.  A kedvenc szerkesztője segítségével szerkessze a `/etc/oratab` fájlt, és módosítsa `N` az `Y`alapértelmezett értéket:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Hozzon létre `/etc/init.d/dbora` egy nevű fájlt, és illessze be a következő tartalmat:
+3.  Hozzon létre egy `/etc/init.d/dbora` nevű fájlt, és illessze be a következő tartalmakat:
 
     ```bash
     #!/bin/sh
@@ -246,14 +246,14 @@ Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtu
     esac
     ```
 
-4.  Módosítsa a *chmod* fájlok engedélyeit az alábbiak szerint:
+4.  Módosítsa a fájlok engedélyeit a *chmod* paranccsal a következőképpen:
 
     ```bash
     chgrp dba /etc/init.d/dbora
     chmod 750 /etc/init.d/dbora
     ```
 
-5.  Szimbolikus hivatkozások létrehozása indításhoz és leállításhoz az alábbiak szerint:
+5.  Hozzon létre szimbolikus hivatkozásokat az indításhoz és a leállításhoz az alábbiak szerint:
 
     ```bash
     ln -s /etc/init.d/dbora /etc/rc.d/rc0.d/K01dbora
@@ -261,17 +261,17 @@ Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtu
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  A módosítások teszteléséhez indítsa újra a virtuális gép:
+6.  A módosítások teszteléséhez indítsa újra a virtuális gépet:
 
     ```bash
     reboot
     ```
 
-## <a name="open-ports-for-connectivity"></a>Nyitott portok a kapcsolathoz
+## <a name="open-ports-for-connectivity"></a>Portok megnyitása a kapcsolathoz
 
-A végső feladat néhány külső végpont konfigurálása. Az Azure Network Security Group, amely védi a virtuális gépet, először lépjen ki az SSH-munkamenet a virtuális gép (ki kellett volna rúgni az SSH újraindításakor az előző lépésben). 
+A végső feladat egy külső végpontok konfigurálása. A virtuális gépet védő Azure hálózati biztonsági csoport beállításához először lépjen ki az SSH-munkamenetből a virtuális gépen (az előző lépésben újraindításkor az SSH-val kell kiindulni). 
 
-1.  Az Oracle-adatbázis távoli eléréséhez használt végpont megnyitásához hozzon létre egy hálózati biztonsági csoport szabályt az [az network nsg szabállyal](/cli/azure/network/nsg/rule) az alábbiak szerint: 
+1.  Az Oracle-adatbázis távoli eléréséhez használt végpont megnyitásához hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az [az Network NSG Rule Create](/cli/azure/network/nsg/rule) paranccsal a következőképpen: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +283,7 @@ A végső feladat néhány külső végpont konfigurálása. Az Azure Network Se
         --destination-port-range 1521
     ```
 
-2.  Az Oracle EM Express távoli eléréséhez használt végpont megnyitásához hozzon létre egy hálózati biztonsági csoport szabályt [az az network nsg szabállyal](/cli/azure/network/nsg/rule) az alábbiak szerint:
+2.  Az Oracle EM Express távoli eléréséhez használt végpont megnyitásához hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az [az Network NSG Rule Create](/cli/azure/network/nsg/rule) paranccsal a következőképpen:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +295,7 @@ A végső feladat néhány külső végpont konfigurálása. Az Azure Network Se
         --destination-port-range 5502
     ```
 
-3. Ha szükséges, szerezze be a virtuális gép nyilvános IP-címét az [az hálózati nyilvános ip show-val](/cli/azure/network/public-ip) az alábbiak szerint:
+3. Ha szükséges, a virtuális gép nyilvános IP-címét az [az Network Public-IP show](/cli/azure/network/public-ip) paranccsal szerezheti be a következő módon:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -305,19 +305,19 @@ A végső feladat néhány külső végpont konfigurálása. Az Azure Network Se
         --output tsv
     ```
 
-4.  Csatlakoztassa az EM Express-t a böngészőjéről. Győződjön meg róla, hogy a böngésző kompatibilis az EM Express programmal (Flash telepítés szükséges): 
+4.  Az EM Express csatlakoztatható a böngészőből. Győződjön meg arról, hogy a böngésző kompatibilis az EM Express szolgáltatással (Flash install szükséges): 
 
     ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
-Az **SYS-fiókkal** jelentkezhet be, és bejelölheti a **sysdba jelölőnégyzetet.** Használja a telepítés során beállított **OraPasswd1** jelszót. 
+Jelentkezzen be a **sys** -fiók használatával, és jelölje be a **as SYSDBA** jelölőnégyzetet. Használja a telepítés során beállított jelszó **OraPasswd1** . 
 
-![Képernyőkép az Oracle OEM Express bejelentkezési lapjáról](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Az Oracle OEM Express bejelentkezési oldalának képernyőképe](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután befejezte az első Oracle-adatbázis feltárását az Azure-ban, és a virtuális gépre már nincs szükség, az [az csoport törlési](/cli/azure/group) parancsával eltávolíthatja az erőforráscsoportot, a virtuális gépés az összes kapcsolódó erőforrást.
+Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuális gép már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -325,6 +325,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [az Azure-beli Oracle-megoldásokról.](oracle-considerations.md) 
+Ismerkedjen meg az Azure-beli egyéb [Oracle-megoldásokkal](oracle-considerations.md). 
 
-Próbálja ki az [Oracle Automated Storage Management telepítése és konfigurálása](configure-oracle-asm.md) oktatóanyagot.
+Próbálja ki az [Oracle automatizált Storage kezelési oktatóanyag telepítését és konfigurálását](configure-oracle-asm.md) .

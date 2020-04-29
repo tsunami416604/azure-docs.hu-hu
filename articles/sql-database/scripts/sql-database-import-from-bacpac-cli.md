@@ -1,6 +1,6 @@
 ---
-title: CLI példa BACPAC-fájl importálására Azure SQL-adatbázis
-description: Az Azure CLI példaparancsfájlja BACPAC-fájl SQL-adatbázisba történő importálásához
+title: CLI-példa BACPAC-fájl importálása az Azure SQL Database-be
+description: Azure CLI-példa parancsfájl egy BACPAC-fájl SQL-adatbázisba való importálásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
 ms.openlocfilehash: f47d0ec2edf54aaa708c176e92a9e1026b446882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061836"
 ---
-# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>BACPAC-fájl importálása Azure SQL-adatbázisba CLI használatával
+# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>BACPAC-fájl importálása az Azure SQL Database-be a CLI használatával
 
-Ez az Azure CLI-parancsfájl-példa egy *.bacpac* fájlból származó adatbázist importál egy Azure SQL-adatbázisba.  
+Ez az Azure CLI-parancsfájl egy *. bacpac* -fájlból származó adatbázist importál egy Azure SQL Database-adatbázisba.  
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -36,20 +36,20 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Mintahivatkozás
+## <a name="sample-reference"></a>Minta leírása
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | | |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
-| [az sql db importálása](/cli/azure/sql/db#az-sql-db-import) | Adatbázis importálása parancs. |
+| [az SQL db import](/cli/azure/sql/db#az-sql-db-import) | Adatbázis-importálási parancs. |
 
 ## <a name="next-steps"></a>További lépések
 

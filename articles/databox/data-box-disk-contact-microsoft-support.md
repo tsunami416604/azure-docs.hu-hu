@@ -1,6 +1,6 @@
 ---
-title: Támogatási jegy vagy nyitott eset naplózása az Azure Data Box számára | Microsoft dokumentumok
-description: Megtudhatja, hogy miként naplózhatja a Data Box vagy a Data Box Disk rendelésekkel kapcsolatos támogatási kérelmeket.
+title: A támogatási jegy vagy a Azure Data Box nyitott esete a bejelentkezéshez | Microsoft Docs
+description: Megtudhatja, hogyan naplózhatja a támogatási kérelmet a Data Box vagy Data Box Disk megrendelésekkel kapcsolatos problémákhoz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461735"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása az Azure Data Box hoz
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása Azure Data Box
 
-Ez a cikk az Azure Data Boxra, az Azure Data Box Heavy-re és az Azure Data Box Disk-re vonatkozik, amelyek mindegyikét az Azure Data Box szolgáltatás kezeli. Ha bármilyen problémát tapasztal az Azure Data Box szolgáltatással kapcsolatban, létrehozhat egy szolgáltatáskérelmet a technikai támogatáshoz. Ez a cikk végigvezeti önt a következőkön:
+Ez a cikk a Azure Data Box szolgáltatás által felügyelt Azure Data Boxra, Azure Data Box Heavyra és Azure Data Box Diskre vonatkozik. Ha problémába ütközik a Azure Data Box szolgáltatásával kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. Ez a cikk végigvezeti a következő lépéseken:
 
 * Támogatási kérelem létrehozása.
-* Támogatási kérelem életciklusának kezelése a portálon belül.
+* Támogatási kérelmek életciklusának kezelése a portálon belülről.
 
 ## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
-Támogatási kérelem létrehozásához hajtsa végre az alábbi lépéseket:
+Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Data Box vagy a Data Box Disk rendelést. Nyissa meg a **SUPPORT + HIBAELHÁRÍTÁS szakaszt,** majd kattintson **az Új támogatási kérelem gombra.**
+1. Lépjen a Data Box vagy Data Box Disk sorrendbe. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd kattintson az **új támogatási kérelem**elemre.
 
     ![Új támogatási kérelem](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
 
-2. Az **Új támogatási kérelem**ben válassza az Alapok **lehetőséget.** Az **Alapok területen**tegye a következő lépéseket:
+2. Az **új támogatási kérelem**területen válassza az **alapismeretek**lehetőséget. Az **alapismeretek**területen hajtsa végre a következő lépéseket:
 
-    1. A **Problématípus** legördülő listában válassza a **Technical**lehetőséget.
+    1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget.
     2. Válassza ki az **Előfizetést**.
-    3. A **Szolgáltatás csoportban**jelölje be **a Minden szolgáltatás jelölőnégyzetet.** A legördülő listában válassza a **Data Box lehetőséget.** 
-    4. Adja meg a **támogatási csomagot.**
+    3. A **szolgáltatás**területen győződjön meg arról, hogy **az összes szolgáltatás**. A legördülő listából válassza a **Data Box**lehetőséget. 
+    4. Adja meg a **támogatási csomagot**.
     5. Kattintson a **Tovább** gombra.
 
         ![Alapvető beállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
-3. Az **Új támogatási kérelem**ben válassza a **2.** A **Probléma területen**tegye a következő lépéseket:
+3. Az **új támogatási kérelem**területen válassza a **2. lépéssel kapcsolatos problémát**. A **probléma megoldásához**hajtsa végre a következő lépéseket:
 
-    1. Válassza ki a **Súlyosság c** **- minimális hatás**. Támogatás frissíti, ha szükséges.
-    2. Válassza ki a **Probléma típust** a legördülő listából.
-    3. A kiválasztott problématípus alapján válassza ki a megfelelő **kategóriát.**
-    4. Adja meg **a** cím a kérdés, és további **részletek**.
+    1. Válassza ki a **súlyosságot** **C-minimális hatásként**. Ha szükséges, a támogatás frissülni fog.
+    2. Válassza ki a **probléma típusát** a legördülő listából.
+    3. A kiválasztott probléma típusa alapján válassza ki a megfelelő **kategóriát**.
+    4. Adja meg a probléma **címét** és további **részleteket**.
     5. Adja meg a probléma kezdő dátumát és időpontját.
-    6. A **Fájlfeltöltés ablakban**kattintson a mappa ikonra a feltölteni kívánt fájlok böngészéséhez.
-    7. Jelölje be **a Diagnosztikai információk megosztása jelölőnégyzetet.**
+    6. A fájlfeltöltés **területen kattintson**a mappa ikonra, és keresse meg a feltölteni kívánt fájlokat.
+    7. A **diagnosztikai adatok megosztásának**megadásához.
     8. Kattintson a **Tovább** gombra.
 
        ![Probléma](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. Az **Új támogatási kérelemben**kattintson **a 3.** A **Kapcsolattartási adatok csoportban**tegye a következő lépéseket:
+4. Az **új támogatási kérelemben**kattintson a **3. lépés kapcsolattartási adatok**elemre. A **kapcsolattartási adatok**területen hajtsa végre a következő lépéseket:
 
-   1. A **Kapcsolat opciók ban**adja meg a kívánt kapcsolattartási módot (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan kiválasztásra kerül az előfizetési csomag alapján.
-   2. A **Kapcsolattartási adatok**ban adja meg nevét, e-mail címét, választható kapcsolattartóját, országát/régióját. Válassza **a Névjegymódosítások mentése a jövőbeli támogatási kérelmekhez**lehetőséget.
-   3. Kattintson **a Létrehozás gombra.**
+   1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
+   2. A **kapcsolattartási adatok**területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Válassza **a kapcsolatfelvételi változások mentése a későbbi támogatási kérelmekhez**lehetőséget.
+   3. Kattintson a **Létrehozás**gombra.
 
        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-      A Microsoft támogatási szolgálata ezeket az információkat arra használja, hogy további információkért, diagnózisért és megoldásért forduljon Önhöz.
-      A kérelem elküldése után egy támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést.
+      Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás eléréséhez használja fel.
+      A kérés elküldése után a támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést.
 
 ## <a name="manage-a-support-request"></a>Támogatási kérelem kezelése
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
-#### <a name="to-manage-your-support-requests"></a>A támogatási kérelmek kezelése
+#### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. A súgó és támogatás lap megugrásához keresse meg **a Tallózás > súgó + támogatás**.
+1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
 
     ![Támogatási kérelmek kezelése](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
-2. A legutóbbi támogatási **kérelmek** táblázatos listája megjelenik a **Súgó + támogatás szolgáltatásban.**
+2. A **Súgó és támogatás**szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
 
     ![Támogatási kérelmek kezelése](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
-3. Jelöljön ki egy támogatási kérelmet, és kattintson rájuk. Megtekintheti a kérelem állapotát és részleteit. Kattintson **a + Új üzenet gombra,** ha nyomon szeretné követni ezt a kérést.
+3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [Data Box Disk lemezzel kapcsolatos problémák elhárításáról.](data-box-disk-troubleshoot.md)
-További információ az [Adatmezővel kapcsolatos problémák elhárításáról.](data-box-troubleshoot.md)
-További információ a [Data Box Blob tárterülettel kapcsolatos problémák elhárításáról.](data-box-troubleshoot-rest.md)
+Ismerje meg, hogyan lehet [elhárítani a Data Box Disk kapcsolatos problémákat](data-box-disk-troubleshoot.md).
+Ismerje meg, hogyan lehet [elhárítani a Data Box kapcsolatos problémákat](data-box-troubleshoot.md).
+Megtudhatja, hogyan lehet [elhárítani Data Box blob Storage-hoz kapcsolódó problémákat](data-box-troubleshoot-rest.md).

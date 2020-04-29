@@ -1,6 +1,6 @@
 ---
-title: WaF-házirendek áttelepítése az Azure Application Gateway alkalmazáshoz
-description: Ismerje meg, hogyan telepítheti át az Azure Web Application Firewall szabályzatait az Azure PowerShell használatával.
+title: WAF-szabályzatok migrálása az Azure Application Gateway
+description: Ismerje meg, hogyan telepítheti át az Azure webalkalmazási tűzfal házirendjeit Azure PowerShell használatával.
 services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
@@ -8,33 +8,33 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536624"
 ---
-# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webalkalmazás-tűzfal házirendek áttelepítése az Azure PowerShell használatával
+# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webalkalmazási tűzfal házirendjeinek migrálása Azure PowerShell használatával
 
-Ez a parancsfájl megkönnyíti a WAF-konfigurációról vagy a csak egyéni szabályokra vonatkozó WAF-házirendről a teljes WAF-házirendre való áttérést. Előfordulhat, hogy megjelenik egy figyelmeztetés a portálon, amely azt *mondja, hogy migráljon a WAF-házirendre,* vagy érdemes lehet az új nyilvános előzetes verziójú WAF-szolgáltatások, például a Geomatch egyéni szabályok, a webhelyenkénti és az URI-WAF-szabályzat, vagy a robotkockázat-csökkentési szabálykészlet. Ezen szolgáltatások bármelyikének használatához az alkalmazásátjáróhoz társított teljes WAF-házirendre van szükség. 
+Ez a szkript megkönnyíti az áttérést egy WAF-konfigurációból vagy egyéni szabályokból – csak a teljes WAF házirendre WAF. Előfordulhat, hogy megjelenik egy figyelmeztetés a portálon, amely a *WAF-házirendre való áttérést*írja elő, vagy ha szeretné, hogy az új nyilvános előzetes verziójú WAF-funkciók, például a Geomatch egyéni szabályok, a hely és az URI WAF házirendje, vagy a bot mérséklési szabályai. Ezen funkciók bármelyikének használatához az Application gatewayhez társított teljes WAF szabályzatra van szükség. 
 
-Az új WAF-házirend ek létrehozásáról a [Webalkalmazástűzfal-házirendek létrehozása az Application Gateway alkalmazáshoz](create-waf-policy-ag.md)című témakörben talál további információt. Az áttelepítésről az [Áttelepítés WAF-házirend című témakörben](create-waf-policy-ag.md#migrate-to-waf-policy)talál további információt.
+Az új WAF szabályzat létrehozásával kapcsolatos további információkért lásd: [webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz](create-waf-policy-ag.md). További információ az áttelepítésről: [Migrálás a WAF szabályzatba](create-waf-policy-ag.md#migrate-to-waf-policy).
 
-## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Áttelepítés waf-házirendre az áttelepítési parancsfájl használatával
+## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Migrálás a WAF-szabályzatba az áttelepítési parancsfájl használatával
 
 Az áttelepítési parancsfájl futtatásához kövesse az alábbi lépéseket: 
 
-1. Nyissa meg a következő felhőhéj-ablakot, vagy nyisson meg egyet a portálon belülről.
-2. Másolja a parancsfájlt a felhőhéj ablakába, és futtassa azt.
-3. A parancsfájl kéri az előfizetésazonosítót, az erőforráscsoport nevét, annak az alkalmazásátjárónak a nevét, amelyhez a WAF-konfiguráció társítva van, valamint a létrehozandó új WAF-házirend nevét. Miután megadta ezeket a bemeneteket, a parancsfájl fut, és létrehozza az új WAF-házirendet
-4. Társítsa az új WAF-szabályzatot az alkalmazásátjáróhoz. Nyissa meg a WAF-házirendet a portálon, és **Associate an Application Gateway** válassza a **Társított alkalmazásátjárók** lapot.
+1. Nyissa meg a következő felhőalapú rendszerhéj-ablakot, vagy nyisson meg egyet a portálon.
+2. Másolja a szkriptet a Cloud Shell ablakába, és futtassa.
+3. A parancsfájl kéri az előfizetés-azonosítót, az erőforráscsoport nevét, annak a Application Gateway a nevét, amelyhez a WAF-konfiguráció társítva van, valamint a létrehozandó új WAF-szabályzat nevét. Ha beírja ezeket a bemeneteket, a szkript lefut, és létrehozza az új WAF-házirendet.
+4. Társítsa az új WAF-házirendet az Application gatewayhez. Nyissa meg a WAF szabályzatot a portálon, és válassza a **társított Application Gateway átjárók** lapot. válassza a **Application Gateway társítása lehetőséget** , majd válassza ki azt a Application Gateway, amelyhez társítani szeretné a WAF-házirendet.
 
 > [!NOTE]
-> A parancsfájl nem hajt végre áttelepítést, ha a következő feltételek állnak fenn:
-> - Egy teljes szabály le van tiltva. Az áttelepítés befejezéséhez győződjön meg arról, hogy a teljes szabálycsoport nincs letiltva.
-> - Kizárási bejegyzés(ek) az *Egyenlő operátorokkal.* Az áttelepítés befejezéséhez győződjön meg arról, hogy a kizárási bejegyzések *egyenlő kkel minden* operátor nincs jelen.
+> A parancsfájl nem végez áttelepítést, ha a következő feltételek teljesülnek:
+> - Egy teljes szabály le van tiltva. Az áttelepítés befejezéséhez győződjön meg arról, hogy a teljes szerepkörcsoportot nincs letiltva.
+> - Egy kizárási bejegyzés (ek), amely az *egyenlő bármely* operátorral rendelkezik. Az áttelepítés befejezéséhez győződjön meg arról, hogy a kizárási bejegyzések nem jelennek meg az *egyenlő* operátorral.
 >
-> További információt a *parancsfájl ValidateInput* függvényében talál.
+> További információ: *ValidateInput* függvény a parancsfájlban.
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -219,4 +219,4 @@ Main
 ```
 ## <a name="next-steps"></a>További lépések
 
-További információ a [Web Application Firewall CRS szabálycsoportjairól és szabályairól.](application-gateway-crs-rulegroups-rules.md)
+További információ a [webalkalmazási tűzfalon keresztüli CRS-szabályok csoportjairól és szabályairól](application-gateway-crs-rulegroups-rules.md).

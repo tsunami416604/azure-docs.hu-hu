@@ -1,6 +1,6 @@
 ---
-title: Beviteli ellenőrzés - Microsoft Threat Modeling Tool - Azure | Microsoft dokumentumok
-description: a fenyegetésmodellezési eszközben elérhető fenyegetések enyhítése
+title: Bemeneti ellenőrzés – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: a Threat Modeling Toolban elérhető fenyegetések enyhítése
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,31 +16,31 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 712a0707826f97f29b015a2c5892f8d20577e41b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687896"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bevitelérvényesítés | Enyhítése 
+# <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: bemeneti ellenőrzés | Enyhítését 
 | Termék/szolgáltatás | Cikk |
 | --------------- | ------- |
-| **Webalkalmazás** | <ul><li>[XSLT-parancsfájlok letiltása az összes átalakításhoz nem megbízható stíluslapok használatával](#disable-xslt)</li><li>[Győződjön meg arról, hogy minden olyan oldal, amely a felhasználó által szabályozható tartalmat tartalmazhat, leiratkozik az automatikus MIME-szippantásról](#out-sniffing)</li><li>[XML-entitásfeloldás ának bekeményítése vagy letiltása](#xml-resolution)</li><li>[A http.sys-t használó alkalmazások URL-kanonizációs ellenőrzést végeznek](#app-verification)</li><li>[Győződjön meg arról, hogy megfelelő vezérlők vannak érvényben a felhasználóktól származó fájlok elfogadásakor](#controls-users)</li><li>[Annak ellenőrzése, hogy a webalkalmazásban a típusbiztos paraméterek et használja-e az adateléréshez](#typesafe)</li><li>[Külön modellkötési osztályok vagy kötésszűrő-listák használata az MVC tömeghozzárendelési biztonsági résének megelőzése érdekében](#binding-mvc)</li><li>[Nem megbízható webes kimenet kódolása renderelés előtt](#rendering)</li><li>[Beviteli ellenőrzés és szűrés végrehajtása az összes karakterlánctípus modelltulajdonságán](#typemodel)</li><li>[A fertőtlenítést olyan űrlapmezőkön kell alkalmazni, amelyek minden karaktert elfogadnak, pl. rich text szerkesztő](#richtext)</li><li>[Ne rendeljen DOM-elemeket olyan mosogatókhoz, amelyek nem rendelkeznek beépített kódolással](#inbuilt-encode)</li><li>[Az alkalmazáson belüli összes átirányítás ellenőrzése lezárva vagy biztonságosan elvégezhető](#redirect-safe)</li><li>[A Vezérlő metódusai által elfogadott összes karakterlánctípus-paraméter bemeneti érvényesítésének megvalósítása](#string-method)</li><li>[Állítsa be a reguláris kifejezések feldolgozásának felső határidejét, hogy megakadályozza a DoS-t a hibás regisztrakifejezések miatt](#dos-expression)</li><li>[Kerülje a Html.Raw használatát a Razor nézetekben](#html-razor)</li></ul> | 
-| **Adatbázis** | <ul><li>[Ne használjon dinamikus lekérdezéseket a tárolt eljárásokban](#stored-proc)</li></ul> |
-| **Webes API** | <ul><li>[Annak ellenőrzése, hogy a modell érvényesítése webes API-metódusokon történik-e](#validation-api)</li><li>[A webes API-metódusok által elfogadott összes karakterlánctípus-paraméter bemeneti érvényesítésének megvalósítása](#string-api)</li><li>[Annak ellenőrzése, hogy a webAPI-ban a típusbiztos paraméterek et használja-e az adatok eléréséhez](#typesafe-api)</li></ul> | 
-| **Azure Document DB** | <ul><li>[Paraméterezett SQL-lekérdezések használata az Azure Cosmos DB-hez](#sql-docdb)</li></ul> | 
-| **WCF** | <ul><li>[WCF bemeneti érvényesítéssé sémakötéssel](#schema-binding)</li><li>[WCF - Bemeneti ellenőrzés paraméterellenőrökön keresztül](#parameters)</li></ul> |
+| **Webalkalmazás** | <ul><li>[Az XSLT-parancsfájlok letiltása az összes átalakításhoz nem megbízható stíluslapok használatával](#disable-xslt)</li><li>[Győződjön meg arról, hogy minden olyan oldal, amely tartalmazhatja a felhasználó által ellenőrizhető tartalmat, az automatikus MIME-elemzést választja ki](#out-sniffing)</li><li>[XML-entitás feloldásának megerősítése vagy letiltása](#xml-resolution)</li><li>[Http. sys-t használó alkalmazások – URL-címek szabványosításának ellenőrzése](#app-verification)</li><li>[Győződjön meg arról, hogy a megfelelő vezérlők vannak érvényben a fájlok felhasználóktól való fogadásakor](#controls-users)</li><li>[Győződjön meg arról, hogy a Type-Safe paraméterek használatban vannak a webalkalmazásban adateléréshez](#typesafe)</li><li>[Az MVC tömeges hozzárendelési biztonsági rések elkerülése érdekében használjon külön modell kötési osztályokat vagy kötési szűrői listát](#binding-mvc)</li><li>[Nem megbízható webes kimenet kódolása a renderelés előtt](#rendering)</li><li>[A bemeneti ellenőrzés és a szűrés végrehajtása az összes karakterlánc típusú modell tulajdonságainál](#typemodel)</li><li>[A tisztítást olyan űrlapmezők kell alkalmazni, amelyek az összes karaktert elfogadják, például Rich Text Editor](#richtext)</li><li>[Ne rendeljen DOM-elemeket olyan mosogatóhoz, amelyek nem rendelkeznek beépített kódolással](#inbuilt-encode)</li><li>[Az alkalmazáson belüli összes átirányítás ellenőrzése bezárult, vagy biztonságosan történik](#redirect-safe)</li><li>[A bemeneti ellenőrzés megvalósítása a vezérlő metódusok által elfogadott összes karakterlánc típusú paraméternél](#string-method)</li><li>[A reguláris kifejezések feldolgozásának felső korlátjának beállítása, hogy a DoS ne legyen rossz reguláris kifejezés miatt](#dos-expression)</li><li>[Kerülje a HTML. Raw használatát a borotva nézeteiben](#html-razor)</li></ul> | 
+| **Adatbázis** | <ul><li>[Dinamikus lekérdezések használata a tárolt eljárásokban](#stored-proc)</li></ul> |
+| **Webes API** | <ul><li>[Győződjön meg arról, hogy a modell ellenőrzése a webes API-módszerekkel történik](#validation-api)</li><li>[A bemeneti ellenőrzés megvalósítása a webes API-metódusok által elfogadott összes karakterlánc típusú paraméternél](#string-api)</li><li>[Győződjön meg arról, hogy a típus-biztonságos paramétereket használják a webes API-ban az adatok eléréséhez](#typesafe-api)</li></ul> | 
+| **Azure Document DB** | <ul><li>[Paraméteres SQL-lekérdezések használata Azure Cosmos DBhoz](#sql-docdb)</li></ul> | 
+| **WCF** | <ul><li>[WCF-bemenet ellenőrzése séma kötésével](#schema-binding)</li><li>[WCF – bemeneti ellenőrzés paraméter-ellenőrök használatával](#parameters)</li></ul> |
 
-## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>XSLT-parancsfájlok letiltása az összes átalakításhoz nem megbízható stíluslapok használatával
+## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>Az XSLT-parancsfájlok letiltása az összes átalakításhoz nem megbízható stíluslapok használatával
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript tulajdonság](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Lépéseket** | Az XSLT támogatja a stíluslapokon belüli parancsfájlok futtatását az `<msxml:script>` elem használatával. Ez lehetővé teszi, hogy az egyéni függvények xslt transzformációban is használhatók legyenek. A parancsfájl végrehajtása az átalakítást végző folyamat környezetében történik. Az XSLT-parancsfájlt le kell tiltani, ha nem megbízható környezetben van, hogy megakadályozza a nem megbízható kód végrehajtását. *A .NET használata esetén:* Az XSLT-parancsfájlok alapértelmezés szerint le vannak tiltva; azonban meg kell győződnie arról, hogy `XsltSettings.EnableScript` nem volt kifejezetten engedélyezve a tulajdonságon keresztül.|
+| **Referencia**              | [XSLT-biztonság](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings. EnableScript tulajdonság](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **Lépéseket** | Az XSLT támogatja a stíluslapokon belüli parancsfájlok `<msxml:script>` használatát a elemmel. Ez lehetővé teszi az egyéni függvények használatát egy XSLT-átalakításban. A szkript az átalakítást végző folyamat kontextusában lesz végrehajtva. Az XSLT-szkriptet le kell tiltani, ha nem megbízható környezetben van a nem megbízható kód végrehajtásának megakadályozása. *.Net használata esetén:* Az XSLT-parancsfájlok alapértelmezés szerint le vannak tiltva; azonban gondoskodnia kell arról, hogy a `XsltSettings.EnableScript` tulajdonságon keresztül ne legyen explicit módon engedélyezve.|
 
 ### <a name="example"></a>Példa 
 
@@ -50,34 +50,34 @@ settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Példa
-MsXML 6.0 használata esetén az XSLT parancsfájlok alapértelmezés szerint le vannak tiltva; azonban meg kell győződnie arról, hogy nem volt kifejezetten engedélyezve az XML DOM objektum tulajdonság A AllowXsltScript. 
+Ha az MSXML 6,0-et használja, az XSLT-parancsfájlok alapértelmezés szerint le vannak tiltva; gondoskodnia kell azonban arról, hogy az nem lett explicit módon engedélyezve az XML DOM Object tulajdonság AllowXsltScript. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Példa
-Ha az MSXML 5 vagy az azt nem régi, az XSLT parancsfájlok alapértelmezés szerint engedélyezve vannak, és azt kifejezetten le kell tiltania. Állítsa az AllowXsltScript XML DOM objektumtulajdonságot false értékűre. 
+Ha az MSXML 5-öt vagy a-t használja, az XSLT-parancsfájlok alapértelmezés szerint engedélyezve vannak, ezért explicit módon le kell tiltani. Állítsa hamis értékre a AllowXsltScript XML DOM Object tulajdonságát. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
-## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>Győződjön meg arról, hogy minden olyan oldal, amely a felhasználó által szabályozható tartalmat tartalmazhat, leiratkozik az automatikus MIME-szippantásról
+## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>Győződjön meg arról, hogy minden olyan oldal, amely tartalmazhatja a felhasználó által ellenőrizhető tartalmat, az automatikus MIME-elemzést választja ki
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [IE8 Biztonsági V. rész – Átfogó védelem](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
-| **Lépéseket** | <p>Minden olyan lapon, amely a felhasználó által szabályozható `X-Content-Type-Options:nosniff`tartalmat tartalmazhat, a HTTP-fejlécet kell használnia. Ennek a követelménynek való megfelelés érdekében beállíthatja a szükséges fejlécoldalt csak azokra az oldalakra, amelyek felhasználó által szabályozható tartalmat tartalmazhatnak, vagy beállíthatja globálisan az alkalmazás összes lapjához.</p><p>A webkiszolgálóról szállított minden egyes fájltípushoz tartozik egy [MIME-típus](https://en.wikipedia.org/wiki/Mime_type) (más néven *tartalomtípus),* amely leírja a tartalom jellegét (azaz képet, szöveget, alkalmazást stb.)</p><p>Az X-Content-Type-Options fejléc egy HTTP-fejléc, amely lehetővé teszi a fejlesztők számára, hogy megadják, hogy a tartalmukat ne lehessen mime-szippantottnak. Ez a fejléc a MIME-szimatoló támadások csökkentésére szolgál. A fejléc támogatása az Internet Explorer 8 (IE8) böngészőben lett hozzáadva</p><p>Az X-Content-Type-Options csak az Internet Explorer 8 (IE8) felhasználói élvezhetik a kedvezmény előnyeit. Az Internet Explorer korábbi verziói jelenleg nem tartják tiszteletben az X-Content-Type-Options fejlécet</p><p>Az Internet Explorer 8 (és újabb verziói) az egyetlen főbb böngészők, amelyek megvalósítják a MIME-szippantás letiltási funkciót. Ha és amikor más nagy böngészők (Firefox, Safari, Chrome) hasonló funkciókat valósítanak meg, ez az ajánlás frissül, hogy tartalmazza a szintaxist az említett böngészőkszámára is</p>|
+| **Referencia**              | [IE8 biztonsági rész V – átfogó védelem](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
+| **Lépéseket** | <p>Minden olyan oldal esetében, amely tartalmazhatja a felhasználó által ellenőrizhető tartalmat, a HTTP-fejlécet `X-Content-Type-Options:nosniff`kell használnia. Ahhoz, hogy megfeleljen ennek a követelménynek, beállíthatja a szükséges fejléc oldalát csak azokhoz a lapokhoz, amelyek felhasználó által ellenőrizhető tartalmat tartalmazhatnak, vagy az alkalmazás összes lapjára vonatkozóan globálisan is megadható.</p><p>A webkiszolgálóról érkező minden fájltípushoz tartozik egy társított [MIME-típus](https://en.wikipedia.org/wiki/Mime_type) (más néven *Content-Type*), amely a tartalom természetét írja le (azaz a képet, a szöveget, az alkalmazást stb.).</p><p>Az X-Content-Type-Options fejléc egy HTTP-fejléc, amely lehetővé teszi a fejlesztők számára, hogy a tartalmuk ne legyenek MIME-szippantva. Ez a fejléc a MIME-szippantás elleni támadások enyhítésére szolgál. A fejléc támogatása az Internet Explorer 8 (IE8) szolgáltatásban lett hozzáadva</p><p>Csak az Internet Explorer 8 (IE8) felhasználói élvezhetik az X-Content-Type-Options előnyeit. Az Internet Explorer korábbi verziói jelenleg nem veszik figyelembe az X-Content-Type-Options fejlécet</p><p>Az Internet Explorer 8 (és újabb verziók) a MIME-szippantás letiltási funkciójának megvalósítására szolgáló egyetlen fő böngésző. Ha és ha más nagyobb böngészők (Firefox, Safari, Chrome) hasonló funkciókat valósítanak meg, a rendszer frissíti a javaslatot, hogy tartalmazza a böngészők szintaxisát is.</p>|
 
 ### <a name="example"></a>Példa
-Ha az alkalmazás összes lapjához globálisan engedélyezni szeretné a szükséges fejlécet, tegye az alábbiak egyikét: 
+Ha az alkalmazás összes oldalához globálisan szeretné engedélyezni a szükséges fejlécet, a következők egyikét teheti: 
 
-* Adja hozzá a fejlécet a web.config fájlhoz, ha az alkalmazást az Internet Information Services (IIS) 7 üzemelteti 
+* Adja hozzá a fejlécet a web. config fájlhoz, ha az alkalmazást Internet Information Services (IIS) 7 üzemelteti 
 
 ```
 <system.webServer> 
@@ -89,7 +89,7 @@ Ha az alkalmazás összes lapjához globálisan engedélyezni szeretné a szüks
 </system.webServer> 
 ```
 
-* A fejléc hozzáadása a\_globális Alkalmazás BeginRequest alkalmazáson keresztül 
+* A fejléc hozzáadása a globális alkalmazás\_BeginRequest 
 
 ``` 
 void Application_BeginRequest(object sender, EventArgs e)
@@ -98,7 +98,7 @@ void Application_BeginRequest(object sender, EventArgs e)
 } 
 ```
 
-* Egyéni HTTP-modul megvalósítása 
+* Egyéni HTTP-modul implementálása 
 
 ``` 
 public class XContentTypeOptionsModule : IHttpModule 
@@ -126,25 +126,25 @@ public class XContentTypeOptionsModule : IHttpModule
 
 ``` 
 
-* A szükséges fejlécet csak bizonyos oldalakhoz engedélyezheti, ha hozzáadja az egyes válaszokhoz: 
+* A szükséges fejlécet csak adott lapokon engedélyezheti, ha hozzáadja azt az egyes válaszokhoz: 
 
 ```
 this.Response.Headers[""X-Content-Type-Options""] = ""nosniff""; 
 ``` 
 
-## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>XML-entitásfeloldás ának bekeményítése vagy letiltása
+## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>XML-entitás feloldásának megerősítése vagy letiltása
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [XML entitásbővítés,](https://capec.mitre.org/data/definitions/197.html) [XML szolgáltatásmegtagadási támadások és védelem](https://msdn.microsoft.com/magazine/ee335713.aspx), [MSXML-biztonság – gyakorlati](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx)tanácsok az [MSXML-kód biztonságossá tétele ,](https://msdn.microsoft.com/library/ms759188(VS.85).aspx) [NSXMLParserDelegate protokollhivatkozás](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [külső hivatkozások feloldása](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
-| **Lépéseket**| <p>Bár nem széles körben használják, az XML-nek van egy olyan szolgáltatása, amely lehetővé teszi az XML-elemző számára, hogy kibontsa a makróentitásokat olyan értékekkel, amelyekértéke a dokumentumon belül vagy külső forrásokból van meghatározva. Előfordulhat például, hogy a dokumentum "cégnév" entitást definiál a "Microsoft" értékkel, így minden alkalommal, amikor a "&companyname;szöveg megjelenik a dokumentumban, automatikusan lecseréli a Microsoft szövegre. Vagy a dokumentum definiálhat egy "MSFTStock" entitást, amely egy külső webszolgáltatásra hivatkozik a Microsoft-készlet aktuális értékének lekéréséhez.</p><p>Ezután bármikor&MSFTStock;" " jelenik meg a dokumentumban, akkor automatikusan lecseréli az aktuális tőzsdei ár. Ezzel a funkcióval azonban vissza lehet élni a szolgáltatásmegtagadási (DoS) feltételek létrehozásához. A támadó több entitást is beágyazhat, hogy olyan exponenciális bővítő XML-bombát hozzon létre, amely a rendszer összes rendelkezésre álló memóriáját felhasználja. </p><p>Másik lehetőségként létrehozhat egy külső hivatkozást, amely végtelen mennyiségű adatot továbbít vissza, vagy egyszerűen lefagy a szál. Ennek eredményeképpen minden csapatnak teljesen le kell tiltania a belső és/vagy külső XML-entitás felbontását, ha az alkalmazás nem használja, vagy manuálisan korlátoznia kell az alkalmazás által entitásfeloldáshoz felhasználható memória és idő mennyiségét, ha ez a funkció feltétlenül szükséges. Ha az entitás feloldása nem szükséges az alkalmazás, majd tiltsa le. </p>|
+| **Referencia**              | [XML-entitások bővítése](https://capec.mitre.org/data/definitions/197.html), [XML-megtagadás a szolgáltatással kapcsolatos támadások és védelem](https://msdn.microsoft.com/magazine/ee335713.aspx), az [MSXML biztonsági áttekintése](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [ajánlott eljárások az MSXML-kód biztonságossá tételéhez](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [NSXMLParserDelegate protokoll-hivatkozás](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [külső hivatkozások feloldása](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
+| **Lépéseket**| <p>Bár a szolgáltatás nem széles körben használatos, az XML olyan funkciója, amely lehetővé teszi, hogy az XML-elemző kibontsa a saját dokumentumon belül vagy külső forrásokból definiált értékekkel rendelkező makró entitásokat. Előfordulhat például, hogy a dokumentum a "cégnév" nevű entitást definiálja a "Microsoft" értékkel, így minden alkalommal,&companyname;amikor a "" szöveg megjelenik a dokumentumban, a rendszer automatikusan lecseréli a Microsoft szövegére. Vagy a dokumentum definiálhat egy "MSFTStock" nevű entitást, amely egy külső webszolgáltatásra hivatkozik a Microsoft Stock aktuális értékének beolvasásához.</p><p>A dokumentumban bármikor megjelenik&MSFTStock;a "" üzenet, és a rendszer automatikusan lecseréli a jelenlegi tőzsdei árfolyamra. Azonban ez a funkció a szolgáltatásmegtagadási (DoS) feltételek létrehozására is felhasználható. Egy támadó több entitást is beágyazhat egy exponenciális expanziós XML-bomba létrehozására, amely az összes rendelkezésre álló memóriát felhasználja a rendszeren. </p><p>Azt is megteheti, hogy létrehoz egy külső hivatkozást, amely végtelen mennyiségű adatról küld vissza adatfolyamot, vagy egyszerűen lefagy a szálon. Ennek eredményeképpen minden csapatnak teljes mértékben le kell tiltania a belső és/vagy a külső XML-entitás feloldását, ha az alkalmazás nem használja, vagy manuálisan korlátozza a memória és az idő mennyiségét, amelyet az alkalmazás felhasználhat az entitás feloldásához, ha ez a funkció feltétlenül szükséges. Ha az alkalmazás nem igényli az entitások feloldását, tiltsa le azt. </p>|
 
 ### <a name="example"></a>Példa
-A .
+A .NET-keretrendszer kódjához a következő módszereket használhatja:
 
 ```csharp
 XmlTextReader reader = new XmlTextReader(stream);
@@ -159,10 +159,10 @@ XmlReaderSettings settings = new XmlReaderSettings();
 settings.DtdProcessing = DtdProcessing.Prohibit;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Ne feledje, `ProhibitDtd` hogy `XmlReaderSettings` az alapértelmezett `XmlTextReader` értéke igaz, de ez hamis. Ha xmlreadersettings- ot használ, nem kell explicit módon true-ra állítania a ProhibitDtd értéket, de biztonsági okokból ajánlott. Azt is vegye figyelembe, hogy az XmlDocument osztály alapértelmezés szerint lehetővé teszi az entitás felbontását. 
+Vegye figyelembe, hogy az alapértelmezett `ProhibitDtd` értéke `XmlReaderSettings` True (igaz), `XmlTextReader` de hamis. Ha a XmlReaderSettings-t használja, nem kell explicit módon beállítania a ProhibitDtd-t, de a biztonsági kedvéért ajánlott. Azt is vegye figyelembe, hogy a XmlDocument attribútummal osztály alapértelmezés szerint engedélyezi az entitások feloldását. 
 
 ### <a name="example"></a>Példa
-Az XmlDocuments entitásfelbontásának letiltásához használja a `XmlDocument.Load(XmlReader)` Betöltés metódus túlterhelését, és állítsa be a megfelelő tulajdonságokat az XmlReader argumentumban a megoldás letiltásához, amint azt a következő kód szemlélteti: 
+Az entitások XmlDocuments letiltásához használja a `XmlDocument.Load(XmlReader)` Load metódus túlterhelését, és állítsa be a megfelelő tulajdonságokat a XmlReader argumentumban a felbontás letiltásához, ahogyan az a következő kódban látható: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -173,7 +173,7 @@ doc.Load(reader);
 ```
 
 ### <a name="example"></a>Példa
-Ha az entitásfeloldás letiltása nem lehetséges az alkalmazásban, állítsa az XmlReaderSettings.MaxCharactersFromentityes tulajdonságot az alkalmazás igényeinek megfelelően ésszerű értékre. Ez korlátozza a lehetséges exponenciális terjeszkedési DoS-támadások hatását. A következő kód egy példát mutat be erre a megközelítésre: 
+Ha az entitások feloldásának letiltása nem lehetséges az alkalmazáshoz, az alkalmazás igényeinek megfelelően állítsa be az XmlReaderSettings. MaxCharactersFromEntities tulajdonságot ésszerű értékre. Ez korlátozza a potenciális exponenciális expanziós DoS-támadások hatását. A következő kód példát nyújt erre a megközelítésre: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Példa
-Ha fel kell oldania a szövegközi entitásokat, de nem kell feloldania a külső entitásokat, állítsa az XmlReaderSettings.XmlResolver tulajdonságot null értékre. Például: 
+Ha a beágyazott entitásokat fel kell oldania, de nem kell külső entitásokat feloldania, állítsa a XmlReaderSettings. XmlResolver tulajdonságot NULL értékre. Például: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -192,32 +192,32 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Ne feledje, hogy az MSXML6 alkalmazásban a ProhibitDTD értéke alapértelmezés szerint igaz (a DTD-feldolgozás letiltása). Az Apple OSX/iOS-kódokhoz két XML-elemző használható: Az NSXMLParser és a libXML2. 
+Vegye figyelembe, hogy a MSXML6 a ProhibitDTD értéke TRUE (a DTD-feldolgozás letiltása) alapértelmezés szerint. Az Apple OSX/iOS-kód esetében két XML-elemző használható: NSXMLParser és libXML2. 
 
-## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>A http.sys-t használó alkalmazások URL-kanonizációs ellenőrzést végeznek
+## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Http. sys-t használó alkalmazások – URL-címek szabványosításának ellenőrzése
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A http.sys-t használó alkalmazásoknak az alábbi irányelveket kell követniük:</p><ul><li>Az URL-cím hosszát legfeljebb 16 384 karakterre (ASCII vagy Unicode) korlátozhatja. Ez az alapértelmezett Internet Information Services (IIS) 6 beállítás alapján megadott abszolút maximális URL-hossz. A weboldalaknak törekedniük kell arra, hogy ez nél rövidebb legyen, ha lehetséges</li><li>Használja a szabványos .NET Framework fájl I/O osztályait (például a FileStream-et), mivel ezek kihasználják a .NET FX kanonizációs szabályait.</li><li>Az ismert fájlnevek engedélyezési listájának explicit módon létrehozása</li><li>Explicit elutasítja az ismert fájltípusoknem fogja kiszolgálni UrlScan elutasítja: exe, bat, cmd, com, htw, ida, idq, htr, idc, shtm[l], stm, nyomtató, ini, pol, dat fájlok</li><li>Fogja meg a következő kivételeket:<ul><li>System.ArgumentException (eszköznevekesetén)</li><li>System.NotSupportedException (adatfolyamok esetén)</li><li>System.IO.FileNotFoundException (érvénytelen escaped fájlnevek esetén)</li><li>System.IO.DirectoryNotFoundException (érvénytelen escaped dirs esetén)</li></ul></li><li>*Ne* hívja ki a Win32 fájl I/O API-kat. Egy érvénytelen URL-cím esetén szabályosan 400-as hibát ad vissza a felhasználónak, és naplózza a valós hibát.</li></ul>|
+| **Lépéseket** | <p>A http. sys protokollt használó alkalmazásoknak a következő irányelveket kell követniük:</p><ul><li>Az URL-cím hosszának legfeljebb 16 384 karakternél (ASCII vagy Unicode) való korlátozása. A maximális URL-cím hossza az alapértelmezett Internet Information Services (IIS) 6-os beállításán alapul. A webhelyeknek a lehető legrövidebbre kell törekedniük, ha lehetséges</li><li>Használja a .NET-keretrendszer szabványos I/O-osztályait (például FileStream), mivel ezek kihasználják a .NET FX szabványosítási szabályait</li><li>Az ismert fájlnevek engedélyezési listájának explicit létrehozása</li><li>Az ismert fájltípusok explicit elutasítása nem fogja kiszolgálni az UrlScan elutasításait: exe, bat, cmd, com, HTW, Ida, IDQ, HTR, IDC, shtm [l], STM, Printer, ini, pol, dat Files</li><li>A következő kivételek elfogása:<ul><li>System. ArgumentException (az eszközök neveihez)</li><li>System. NotSupportedException (adatfolyamok esetén)</li><li>System. IO. FileNotFoundException (érvénytelen Escape-fájlnevek esetén)</li><li>System. IO. DirectoryNotFoundException (érvénytelen Escape-dirs)</li></ul></li><li>*Ne hívja meg* a Win32-fájlok I/O-API-jait. Érvénytelen URL-cím esetén a rendszer egy 400-es hibát ad vissza a felhasználónak, és naplózza a valós hibát.</li></ul>|
 
-## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Győződjön meg arról, hogy megfelelő vezérlők vannak érvényben a felhasználóktól származó fájlok elfogadásakor
+## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Győződjön meg arról, hogy a megfelelő vezérlők vannak érvényben a fájlok felhasználóktól való fogadásakor
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Korlátlan fájlfeltöltés](https://www.owasp.org/index.php/Unrestricted_File_Upload), [Fájlaláírási táblázat](https://www.garykessler.net/library/file_sigs.html) |
-| **Lépéseket** | <p>A feltöltött fájlok jelentős kockázatot jelentenek az alkalmazásokra nézve.</p><p>Az első lépés a sok támadás, hogy néhány kódot a rendszer megtámadják. Akkor a támadásnak csak meg kell találnia a módját, hogy végrehajtsa a kódot. A fájlfeltöltés használata segít a támadónak az első lépés elvégzésében. A korlátlan fájlfeltöltés következményei eltérőek lehetnek, beleértve a teljes rendszerátvételt, a túlterhelt fájlrendszert vagy adatbázist, a támadások továbbítását a háttérrendszerekre, és az egyszerű defacement.</p><p>Ez attól függ, hogy az alkalmazás mit csinál a feltöltött fájlt, és különösen, ha tárolják. Hiányzik a fájlfeltöltések kiszolgálóoldali érvényesítése. A Fájlfeltöltés funkcióhoz a következő biztonsági ellenőrzéseket kell végrehajtani:</p><ul><li>Fájlkiterjesztés-ellenőrzés (csak érvényes, engedélyezett fájltípus-készletet kell elfogadni)</li><li>A fájlméret maximális korlátja</li><li>A fájlt nem szabad feltölteni a webroot programba; a helynek könyvtárnak kell lennie a nem rendszermeghajtón</li><li>Az elnevezési konvenciót úgy kell követni, hogy a feltöltött fájlnév véletlenszerű legyen, hogy megakadályozza a fájlfelülírásokat</li><li>A lemezre írás előtt meg kell vizsgálni a fájlok at anti-vírus</li><li>Győződjön meg arról, hogy a fájlnév és az egyéb metaadatok (pl. fájlelérési út) rosszindulatú karakterekre vannak érvényesítve</li><li>A fájlformátum-aláírást ellenőrizni kell, hogy a felhasználó ne tölthetne fel álarcosfájlt (pl. exe fájl feltöltése a kiterjesztés txt-re történő módosításával)</li></ul>| 
+| **Referencia**              | [Korlátlan](https://www.owasp.org/index.php/Unrestricted_File_Upload)fájlfeltöltés, [fájl aláírása tábla](https://www.garykessler.net/library/file_sigs.html) |
+| **Lépéseket** | <p>A feltöltött fájlok jelentős kockázatot jelentenek az alkalmazások számára.</p><p>A sok támadás első lépése, hogy a rendszer egy kódot kap a támadáshoz. Ezután a támadásnak csak meg kell találnia a kód végrehajtásának módját. A fájlfeltöltés használatával a támadó elvégezheti az első lépést. A nem korlátozott fájlfeltöltés következményei eltérőek lehetnek, beleértve a rendszer teljes átvételét, túlterhelt fájlrendszerét vagy adatbázisát, a támadásokat a háttérrendszer-rendszerekre, valamint az egyszerű megjelenítést.</p><p>Ez attól függ, hogy az alkalmazás mit tesz a feltöltött fájllal, és különösen hol tárolja. A fájlfeltöltés kiszolgálóoldali érvényesítése hiányzik. A fájlfeltöltés funkciójának megvalósításához a következő biztonsági ellenőrzéseknek kell megvalósulnia:</p><ul><li>Fájlkiterjesztés-ellenőrzés (csak az engedélyezett fájltípus érvényes készletét kell elfogadni)</li><li>Maximális fájlméret korlátja</li><li>A fájl nem tölthető fel a Webroot-ba; a helynek a nem rendszermeghajtón lévő könyvtárnak kell lennie</li><li>Az elnevezési konvenciót követni kell, hogy a feltöltött fájl neve véletlenszerű legyen, így elkerülhető legyen a fájlok felülírása.</li><li>A fájloknak a lemezre írás előtt meg kell vizsgálniuk a víruskeresőt</li><li>Győződjön meg arról, hogy a fájl neve és az egyéb metaadatok (például a fájl elérési útja) kártékony karakterekre vannak érvényesítve</li><li>Ha meg szeretné akadályozni, hogy a felhasználó feltöltsön egy álcázott fájlt (például egy exe-fájl feltöltését a txt kiterjesztésének módosításával), jelölje be a fájl formátumának aláírása jelölőnégyzetet.</li></ul>| 
 
 ### <a name="example"></a>Példa
-A fájlformátum-aláírás-ellenőrzéssel kapcsolatos utolsó pontot az alábbi osztályban találja a részletekért: 
+A fájlformátum-aláírás ellenőrzésével kapcsolatos utolsó pontnál a részletekért tekintse meg az alábbi osztályt: 
 
 ```csharp
         private static Dictionary<string, List<byte[]>> fileSignature = new Dictionary<string, List<byte[]>>
@@ -321,19 +321,19 @@ A fájlformátum-aláírás-ellenőrzéssel kapcsolatos utolsó pontot az alább
         }
 ```
 
-## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Annak ellenőrzése, hogy a webalkalmazásban a típusbiztos paraméterek et használja-e az adateléréshez
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Győződjön meg arról, hogy a Type-Safe paraméterek használatban vannak a webalkalmazásban adateléréshez
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>Ha a Paraméterek gyűjteményt használja, az SQL a bemenetet konstans értékként, nem pedig végrehajtható kódként kezeli. A Paraméterek gyűjtemény a bemeneti adatok típus- és hosszkorlátainak kényszerítésére használható. A tartományon kívüli értékek kivételt váltanak ki. Ha nem használ típusbiztos SQL-paramétereket, előfordulhat, hogy a támadók képesek végrehajtani a szűretlen bemenetbe ágyazott injektálási támadásokat.</p><p>Az SQL-lekérdezések létrehozásakor használjon típusbiztonsági paramétereket a szűretlen bevitellel esetlegesen előforduló SQL-injektálási támadások elkerülése érdekében. Típusbiztonsági paramétereket használhat a tárolt eljárásokkal és a dinamikus SQL utasításokkal. A paramétereket az adatbázis konstans értékként kezeli, nem pedig végrehajtható kódként. A paraméterek típusát és hosszát is ellenőrzik.</p>|
+| **Lépéseket** | <p>Ha a parameters (paraméterek) gyűjteményt használja, az SQL a bemenetet literál értékként adja meg a végrehajtható kód helyett. A paraméterek gyűjteménye a bemeneti adatok típusának és hosszának korlátozására használható. A tartományon kívüli értékek kivételt váltanak ki. Ha nem használja a Type-Safe SQL-paramétereket, a támadók képesek lehetnek a szűretlen bemenetbe ágyazott injekciós támadások végrehajtására.</p><p>SQL-lekérdezések létrehozásakor használjon biztonságos paramétereket, hogy elkerülje a nem szűrt bevitelsel esetlegesen fellépő lehetséges SQL-injektálási támadásokat. A biztonságos paramétereket tárolt eljárásokkal és dinamikus SQL-utasításokkal is használhatja. A paramétereket literál értékként kezeli az adatbázis, nem pedig végrehajtható kódként. A paramétereket a típus és a hossz is ellenőrzi.</p>|
 
 ### <a name="example"></a>Példa 
-A következő kód bemutatja, hogyan használhatja a típusbiztonsági paramétereket az SqlParameterCollection-vel egy tárolt eljárás hívásakor. 
+A következő kód azt mutatja be, hogyan használhatók a biztonságos paraméterek a SqlParameterCollection egy tárolt eljárás meghívásakor. 
 
 ```csharp
 using System.Data;
@@ -349,29 +349,29 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-Az előző kódpéldában a bemeneti érték nem lehet hosszabb 11 karakternél. Ha az adatok nem felelnek meg a paraméter által meghatározott típusnak vagy hossznak, az SqlParameter osztály kivételt okoz. 
+A fenti példában a bemeneti érték nem lehet hosszabb 11 karakternél. Ha az érték nem felel meg a paraméter által meghatározott típusnak vagy hossznak, a SqlParameter osztály kivételt jelez. 
 
-## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>Külön modellkötési osztályok vagy kötésszűrő-listák használata az MVC tömeghozzárendelési biztonsági résének megelőzése érdekében
+## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>Az MVC tömeges hozzárendelési biztonsági rések elkerülése érdekében használjon külön modell kötési osztályokat vagy kötési szűrői listát
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Metaadat-attribútumok](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [nyilvános kulcsbiztonsági biztonsági rés és kockázatcsökkentés](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [teljes útmutató a tömeges hozzárendelés ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Első lépések az EF segítségével MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Lépéseket** | <ul><li>**Mikor kell keresni a túlzott kiküldetés biztonsági rések?** A túlkönyvelési biztonsági rések minden olyan helyen előfordulhatnak, ahol a modellosztályokat a felhasználói bevitelből köti. Az MVC-hez hasonló keretrendszerek egyéni .NET osztályokban, például egyszerű régi CLR-objektumokban (POCOs) is képviselhetnek felhasználói adatokat. Az MVC automatikusan feltölti ezeket a modellosztályokat a kérelemből származó adatokkal, így kényelmes encikleket biztosít a felhasználói bevitel kezeléséhez. Ha ezek az osztályok olyan tulajdonságokat tartalmaznak, amelyeket a felhasználónak nem szabad beállítania, az alkalmazás ki lehet téve a túlküldési támadásoknak, amelyek lehetővé teszik az alkalmazás által soha nem kívánt adatok felhasználói vezérlését. Az MVC-modellkötéshez hasonlóan az adatbázis-hozzáférési technológiák, például az objektum/relációs leképezők, például az Entity Framework gyakran támogatják a POCO-objektumok használatát az adatbázisadatok ábrázolására. Ezek az adatmodell-osztályok ugyanolyan kényelmet biztosítanak az adatbázis-adatok kezelésében, mint az MVC a felhasználói bevitel kezelésében. Mivel mind az MVC, mind az adatbázis támogatja a hasonló modelleket, például a POCO objektumokat, úgy tűnik, hogy mindkét célra könnyen újra fellehet használni ugyanazokat az osztályokat. Ez a gyakorlat nem őrzi meg az aggodalmak elkülönítését, és ez egy olyan gyakori terület, ahol a nem kívánt tulajdonságok modellkötésnek vannak kitéve, ami lehetővé teszi a túlküldési támadásokat.</li><li>**Miért ne használjam a szűretlen adatbázismodell-osztályaimat az MVC-műveletem paramétereiként?** Mert az MVC modellkötés az adott osztályban bármit megköt. Még akkor is, ha az adatok nem jelennek meg a nézetben, a rosszindulatú felhasználó küldhet HTTP-kérelmet ezekkel az adatokkal, és az MVC örömmel köti meg, mert a művelet azt mondja, hogy az adatbázisosztály az az adatforma, amelyet el kell fogadnia a felhasználói bevitelhez.</li><li>**Miért érdekel ne érdekelne a modellkötéshez használt forma?** A ASP.NET MVC-modell kötés túlságosan széles modellek teszi ki az alkalmazás túlzott kiküldetés támadások. A túlküldés lehetővé teheti a támadók számára, hogy a fejlesztő által kívántnál is megváltoztassák az alkalmazásadatokat, például felülbírálják egy elem árát vagy egy fiók biztonsági jogosultságait. Az alkalmazásoknak műveletspecifikus kötési modelleket (vagy meghatározott engedélyezett tulajdonságszűrőlistákat) kell használniuk, hogy explicit szerződést biztosítsanak arra vonatkozóan, hogy milyen nem megbízható bemenetet engedélyezze a modellkötésen keresztül.</li><li>**A külön kötési modellek csak a kód másolása?** Nem, ez az aggodalmak szétválasztásának kérdése. Ha újra felhasználja az adatbázismodelleket a műveletmódszerekben, azt mondja, hogy az adott osztály bármely tulajdonságát (vagy altulajdonságát) a felhasználó beállíthat egy HTTP-kérelemben. Ha nem ezt szeretné, hogy az MVC megtegye, akkor szűrőlistára vagy külön osztályalakzatra van szüksége ahhoz, hogy megmutassa az MVC-nek, hogy milyen adatok származhatnak a felhasználói bevitelből.</li><li>**Ha külön kötési modellem van a felhasználói bevitelhez, meg kell kettőznem az összes adatjegyzet-attribútumomat?** Nem feltétlenül. Az adatbázismodell-osztály MetadataTypeAtattribútuma segítségével egy modellkötési osztály metaadataihoz csatolhat hivatkozást. Csak vegye figyelembe, hogy a MetadataTypeAttribute által hivatkozott típusnak a hivatkozástípus egy részhalmazának kell lennie (kevesebb tulajdonsággal rendelkezhet, de nem többel).</li><li>**A felhasználói beviteli modellek és az adatbázismodellek közötti adatmozgatás a felhasználó bemeneti modelljei és az adatbázis-modellek között fárasztó. Átmásolhatok az összes tulajdonságot a tükröződés segítségével? - Igen, az.** A kötési modellekben csak azok a tulajdonságok jelennek meg, amelyek ről úgy döntött, hogy biztonságosak a felhasználói bevitel szempontjából. Nincs olyan biztonsági ok, amely megakadályozza, hogy a tükröződés használatával másolja a két modell között közös összes tulajdonságot.</li><li>**Mi a helyzet a [Bind(Exclude ="â&euro;¦")] Használhatom ezt külön kötési modellek helyett? -** Ez a megközelítés nem ajánlott. A [Bind(Exclude ="â&euro;¦")] használata azt jelenti, hogy minden új tulajdonság alapértelmezés szerint kötelező. Új tulajdonság hozzáadásakor egy további lépéssel nem szabad a dolgokat biztonságban tartani, ahelyett, hogy a terv alapértelmezés szerint biztonságos lenne. Attól függően, hogy a fejlesztő ellenőrzi ezt a listát minden alkalommal, amikor egy tulajdonság hozzáadása kockázatos.</li><li>**A [Bind(Include&euro;="â ¦")] hasznos a szerkesztési műveletekhez? -** nem. [A Bind(Include&euro;="â ¦")] csak INSERT-stílusú műveletekhez alkalmas (új adatok hozzáadásához). UPDATE-stílusú műveletek (meglévő adatok felülvizsgálata), használjon egy másik megközelítést, például külön kötési modellek vagy átadása explicit listát az engedélyezett tulajdonságok UpdateModel vagy TryUpdateModel. A [Bind(Include ="â&euro;¦")] attribútum hozzáadása egy szerkesztési művelethez azt jelenti, hogy az MVC objektumpéldányt hoz létre, és csak a felsorolt tulajdonságokat állítja be, így az összes többi az alapértelmezett értéken marad. Ha az adatok megmaradnak, akkor teljes mértékben felülírja a meglévő entitást, és alaphelyzetbe állítja a kihagyott tulajdonságok értékeit az alapértelmezett értékekre. Ha például az IsAdmin ot kihagyta egy [Bind(Include ="â&euro;¦")] attribútum egy Szerkesztési műveletben, akkor minden olyan felhasználó, akinek a nevét ezzel a művelettel szerkesztették, visszaáll Az IsAdmin = false értékre (bármely szerkesztett felhasználó elveszíti a rendszergazdai státuszt). Ha meg szeretné akadályozni bizonyos tulajdonságok frissítését, használja a fenti módszerek egyikét. Vegye figyelembe, hogy az MVC eszközküldés egyes verziói&euro;a [Bind(Include ="â ¦")] vezérlőosztályokat hoznak létre a Műveletek szerkesztése kor, és azt sugallják, hogy egy tulajdonság eltávolítása a listáról megakadályozza a túlküldési támadásokat. A fentiekben leírtak szerint azonban ez a megközelítés nem a megfelelően működik, és ehelyett visszaállítja a kihagyott tulajdonságokban lévő adatokat az alapértelmezett értékekre.</li><li>**A műveletek létrehozása, vannak-e kikötések segítségével [Bind(Include ="â&euro;|")] helyett külön kötési modellek? -** igen. Először is ez a megközelítés nem működik a Szerkesztési forgatókönyvek, megkövetelése két külön megközelítések enyhítésére az összes túl-kiküldetés biztonsági réseket. Másodszor, külön kötési modellek érvényesíteni közötti aggodalmak közötti alakzat a felhasználói bevitel és az alakzat használt&euro;perzisztencia, valami [Bind(Include ="â ¦")] nem csinál. Harmadszor, vegye figyelembe, hogy [Bind(Include ="â&euro;¦")] csak a legfelső szintű tulajdonságokat tudja kezelni; nem engedélyezheti az attribútumban az altulajdonságoknak csak egy részét (például "Details.Name"). Végül, és talán a legfontosabb, a [Bind(Include ="â&euro;¦")] használatával hozzáad egy további lépést, amelyet minden alkalommal meg kell jegyezni, amikor az osztályt modellkötéshez használják. Ha egy új műveletmetódus közvetlenül kötődik az adatosztályhoz, és elfelejti a [Bind(Include ="â&euro;|")] attribútumot, akkor ki van&euro;téve a túlzott közzétételi támadásoknak, így a [Bind(Include ="â ¦")] megközelítés alapértelmezés szerint kevésbé biztonságos. Ha a [Bind(Include ="â&euro;¦")] értéket használja, mindig ügyeljen arra, hogy mindig adja meg azt minden alkalommal, amikor az adatosztályok műveletmetódus-paraméterekként jelennek meg.</li><li>**A Create műveletek, mi a helyzet&euro;a [Bind(Include ="â ¦")] attribútum elhelyezése a modellosztály maga? Ez a megközelítés nem kerüli el annak szükségességét, hogy emlékezzen az attribútum minden műveletmódszerre? -** Ez a megközelítés bizonyos esetekben működik. A [Bind(Include ="â&euro;¦")] használata a modelltípuson (nem pedig az osztályt használó műveletparamétereken) szükségtelenné&euro;teszi a [Bind(Include ="â |")] attribútum minden műveletmetódusba való belefoglalását. Az attribútum közvetlen használata közvetlenül az osztályon hatékonyan létrehoz egy külön felületet ennek az osztálynak a modellkötési célokra. Ez a megközelítés azonban modellosztályonként csak egy modellkötési alakzatot tesz lehetővé. Ha egy műveletmódszernek engedélyeznie kell egy mező (például egy csak rendszergazdai művelet, amely frissíti a felhasználói szerepköröket) és más műveleteknek lehetővé kell tenniük a mező modellkötését, ez a megközelítés nem fog működni. Minden osztálynak csak egy modellkötési alakzata lehet; ha a különböző műveletek különböző modellkötési alakzatokat igényelnek, akkor ezeket a különálló alakzatokat&euro;külön modellkötési osztályok vagy külön [Bind(Include ="â ¦")] attribútumok használatával kell ábrázolniuk a műveletmetódusokon.</li><li>**Mik azok a kötési modellek? Ugyanazok, mint a modellek megtekintése? -** Ez két kapcsolódó fogalom. A kötési modell kifejezés egy művelet paraméterlistájában használt modellosztályra utal (az MVC modellkötésből a műveletmetódushoz átadott alakzat). A nézetmodell kifejezés egy műveletmetódusból nézetbe átadott modellosztályra utal. A nézetspecifikus modell használata gyakori módszer az adatok műveletmetódusból nézetbe történő továbbítására. Gyakran előfordul, hogy ez az alakzat modellkötésre is alkalmas, és a nézetmodell kifejezés használható a mindkét helyen használt modell rereferenzésére. Hogy pontos legyek, ez az eljárás kifejezetten a kötelező modellekről beszél, a cselekvésnek átadott alakra összpontosítva, ami a tömeges kijelölés szempontjából fontos.</li></ul>| 
+| **Referencia**              | [Metaadat-attribútumok](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [nyilvános kulcsú biztonsági rések és enyhítés](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [teljes körű útmutató a TÖMEGES hozzárendeléshez a ASP.net MVC-ben](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx) [első lépések az EF-sel az MVC használatával](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **Lépéseket** | <ul><li>**Mikor érdemes megkeresni a túlzott közzétételi biztonsági réseket?-** A feladatátvétel során felmerülő biztonsági rések bármilyen helyet felhasználhatnak a felhasználói bemenetből származó modell-osztályok kötéséhez. Az MVC-hez hasonló keretrendszerek az egyéni .NET-osztályokban lévő felhasználói adathalmazokat, például a régi CLR-objektumokat (POCOs) is képviselik. Az MVC automatikusan kitölti ezeket a modell-osztályokat a kérelemből származó adatokkal, így kényelmes ábrázolást biztosít a felhasználói adatbevitelsel kapcsolatban. Ha ezek az osztályok olyan tulajdonságokat tartalmaznak, amelyeket a felhasználónak nem kell beállítania, az alkalmazás sebezhető lehet a túlzott közzétételi támadásokkal szemben, ami lehetővé teszi az alkalmazás által soha nem tervezett adatmennyiségek felhasználói vezérlését. Az MVC Model-kötésekhez hasonlóan az adatbázis-hozzáférési technológiák, például az objektum-vagy kapcsolati leképezések, például a Entity Framework gyakran támogatják a POCO-objektumok használatát az adatbázis-adathalmazok ábrázolásához. Ezek az adatmodell-osztályok ugyanazt a kényelmet nyújtják, mint az adatbázis-adatok MVC-vel való kezelése a felhasználói bevitel kezelése során. Mivel az MVC és az adatbázis egyaránt támogatja a hasonló modelleket, például a POCO-objektumokat, úgy tűnik, hogy az azonos osztályok mindkét célra való használata egyszerű. Ezzel a gyakorlattal nem lehet megőrizni a problémáinak elkülönítését, és ez egy olyan közös terület, ahol a nem szándékolt tulajdonságok a modell kötésének teszik lehetővé, így többek között a feladási támadásokat is.</li><li>**Miért érdemes a nem szűrt adatbázismodell-osztályokat paraméterként használni az MVC-műveletekhez?-** Mivel az MVC-modell kötése ehhez az osztályhoz is kötődik. Még ha az adatok nem jelennek meg a nézetben, a rosszindulatú felhasználók HTTP-kérést küldhetnek ezekkel az adatokkal, az MVC pedig szívesen kötődik, mivel a művelet azt mondja, hogy az adatbázis-osztály a felhasználói bevitelhez szükséges adatok formája.</li><li>**Miért érdemes érdekelni a modell kötéséhez használt alakzatot? –** A ASP.NET MVC-modell kötése a túlságosan széleskörű modellekkel lehetővé teszi, hogy egy alkalmazás több feladási támadást használjon. A túlzott közzététel lehetővé teheti a támadók számára, hogy megváltoztassák az alkalmazásadatok körét a fejlesztő által tervezett módon, például felülbírálják egy adott elem árát vagy a fiók biztonsági jogosultságait. Az alkalmazásoknak a műveletekre vonatkozó kötési modelleket (vagy a meghatározott engedélyezési tulajdonságokat tartalmazó listát) kell használniuk ahhoz, hogy explicit szerződést adjanak a nem megbízható bemenet számára a modell kötésének engedélyezéséhez.</li><li>**Külön kötési modellek vannak, csak a kód duplikálása?-** Nem, ez a probléma elkülönítése. Ha az adatbázis-modelleket újrahasznosítja a műveleti módszerekben, azt mondja, hogy az osztályban található bármely tulajdonság (vagy altulajdonság) a felhasználó által HTTP-kérelemben állítható be. Ha nem az a teendője, hogy az MVC-t szeretné elvégezni, akkor szükség van egy szűrési listára vagy egy különálló osztály alakzatra, amely azt mutatja, hogy a felhasználói adatbevitelből milyen adatok származhatnak.</li><li>**Ha a felhasználói adatbevitelhez külön kötési modellek vannak, akkor az összes adatom megjegyzése attribútumot kell duplikálni?-** Nem feltétlenül. A MetadataTypeAttribute az adatbázis-modell osztályban használhatja a modell kötési osztály metaadataihoz való hivatkozáshoz. Csak vegye figyelembe, hogy a MetadataTypeAttribute által hivatkozott típusnak a hivatkozó típus egy részhalmazának kell lennie (kevesebb tulajdonsággal rendelkezhet, de nem több).</li><li>**Az adatok visszahelyezése a felhasználói bemeneti modellek és az adatbázis-modellek között unalmas. Csak a reflexió használatával másolhatom az összes tulajdonságot? –** Igen. A kötési modellekben megjelenő tulajdonságok közül csak azokat a tulajdonságokat kell megadnia, amelyeket a felhasználói bevitel biztonsága érdekében határozott meg. Nincs olyan biztonsági ok, amely megakadályozza, hogy a rendszer átmásolja az összes olyan tulajdonságot, amely a közös két modell között létezik.</li><li>**Mi a helyzet [kötés (kizár = "&euro;â ¦")]. Használhatom külön kötési modellek helyett? –** Ez a megközelítés nem ajánlott. A (z) [kötés (kizárás&euro;= "β ¦")] használatával az új tulajdonság alapértelmezés szerint köthető. Ha új tulajdonságot ad hozzá, egy további lépésre van szüksége, hogy a rendszer ne legyen biztonságos, és ne kelljen alapértelmezetten megadnia a dolgokat. Attól függően, hogy a fejlesztő hogyan ellenőrzi a listát, minden alkalommal, amikor hozzáad egy tulajdonságot, kockázatos.</li><li>A **(z) [kötés (include&euro;= "β ¦")]] hasznos a szerkesztési műveletekhez?-** nem. [A kötés (Belefoglalás =&euro;"β ¦")] csak beszúrási stílusú műveletekhez használható (új adatok hozzáadása). FRISSÍTÉSI stílusú műveletekhez (meglévő adatok módosítása) használjon másik módszert, például külön kötési modelleket, vagy az engedélyezett tulajdonságok explicit listájának átadását UpdateModel vagy TryUpdateModel. A [kötés (include = "â&euro;¦]]] attribútum egy szerkesztési művelethez való hozzáadása azt jelenti, hogy az MVC létrehoz egy objektumot, és csak a felsorolt tulajdonságokat állítja be, így az összes többi alapértelmezett értékük is megmarad. Ha az adatok megmaradnak, a rendszer teljes mértékben lecseréli a meglévő entitást, és visszaállítja a kihagyott tulajdonságok értékeit az alapértelmezett értékekre. Ha például a IsAdmin egy [kötés (include = "ă&euro;¦")] attribútumból lett kihagyva egy szerkesztési művelethez, akkor minden olyan felhasználó, akinek a neve a művelettel lett szerkesztve, a isAdmin = false értékre lesz visszaállítva (bármely szerkesztett felhasználó elveszíti a rendszergazdai állapotot). Ha meg szeretné akadályozni bizonyos tulajdonságok frissítését, használja a fenti módszerek egyikét. Vegye figyelembe, hogy az MVC-eszközök egyes verziói a szerkesztési műveletekben a [kötés (include&euro;= "â ¦]]] nevű vezérlő osztályt hoznak létre, és azt is sugallják, hogy az adott listáról származó tulajdonságok eltávolításával elkerülhetők a túlzott közzétételi támadások. A fentiekben leírtak szerint azonban ez a megközelítés nem a kívánt módon működik, hanem visszaállítja a kihagyott tulajdonságok adatait az alapértelmezett értékekre.</li><li>**A létrehozási műveletekhez a (z) [bind (include = "β&euro;¦")] használatával kapcsolatos kikötések nem külön kötési modellek helyett?-** igen. Első lépésként ez a módszer nem működik szerkesztési forgatókönyvek esetén, és két külön megközelítés fenntartását igényli az összes túlzott biztonsági rések enyhítésére. Másodszor, külön kötési modellek kényszerítik a felhasználói bevitelhez használt alakzat és az adatmegőrzéshez használt alakzat közötti eltérések elkülönítését, ami [bind (include&euro;= "â ¦")] Harmadszor, vegye figyelembe, hogy [kötés (include =&euro;"â ¦")] csak a legfelső szintű tulajdonságokat tudja kezelni; az attribútum csak az altulajdonságok részeit (például "Details.Name") nem engedélyezheti. Végül, és talán a legfontosabb, hogy a [bind (include = "â&euro;¦)] használatával hozzáad egy extra lépést, amelyet minden alkalommal meg kell jegyeznünk, amikor az osztályt a modell kötéséhez használják. Ha egy új műveleti módszer közvetlenül az adatosztályhoz van kötve, és elfelejti a [kötés (include = "â&euro;¦")] attribútum hozzáadását, akkor sebezhető lehet a túlzott közzétételi támadásokkal szemben, így a [kötés (include = "&euro;β ¦")] a megközelítés valamivel kevésbé biztonságos az alapértelmezett módon. Ha [kötés (include = "β&euro;¦")] használatát használja, ügyeljen arra, hogy mindig jegyezze meg, hogy minden alkalommal, amikor az adatosztályok műveleti módszerként jelennek meg.</li><li>A **létrehozási műveletekhez, mi a helyzet a [kötés (include =&euro;"â ¦")] attribútumnak a modell osztályban való elhelyezésével? Nem ez a megközelítés megakadályozza, hogy az attribútumot minden egyes műveleti módszerre feljegyezze? –** Ez a megközelítés bizonyos esetekben működik. Ha a (z) [kötés (&euro;Belefoglalás = "β ¦")] értéket használja a modell típusához (nem az adott osztályt használó műveleti paramétereknél), akkor ne feledje, hogy ne kelljen megjegyeznünk&euro;a [kötés (include = "No =" " Ha közvetlenül az osztályban használja az attribútumot, a modell kötése érdekében az osztály egy különálló felületét hozza létre. Ez a megközelítés azonban csak egy modellhez tartozó kötési alakzat használatát teszi lehetővé modell osztályban. Ha egy műveleti metódusnak engedélyezni kell egy mezőhöz tartozó modell kötését (például egy csak rendszergazdai művelet, amely frissíti a felhasználói szerepköröket), és más műveleteknek is meg kell akadályoznia a mezőhöz való kötést, ez a megközelítés nem fog működni. Minden osztály csak egy modell kötési alakzattal rendelkezhet. Ha a különböző műveletekhez eltérő modell típusú kötési alakzatok szükségesek, akkor ezeket a különálló alakzatokat külön modell kötési osztályok vagy külön [bind (include = "&euro;β ¦")] attribútumok használatával kell elvégezniük a műveleti metódusokban.</li><li>**Mik azok a kötési modellek? Ugyanazok, mint a modellek megtekintése? -** Ez két kapcsolódó fogalom. A kötési modell kifejezés a művelet paramétereinek listájában használt modell osztályra hivatkozik (az MVC-modell kötése a műveleti metódusnak átadott alakzat). A kifejezés nézet modell a műveleti módszerből egy nézetbe átadott modell osztályra hivatkozik. A nézet-specifikus modell használata egy általános megközelítés, amely az adatok egy adott műveletből egy nézetbe való átadására szolgál. Ez az alakzat gyakran alkalmas a modell kötésére is, és a kifejezés nézet modellje mindkét helyen ugyanazt a modellt használhatja. Ahhoz, hogy pontosak legyenek, ez az eljárás kifejezetten a kötési modellekről beszél, a műveletnek átadott alakzatra koncentrálva, amely a tömeges hozzárendelések szempontjából fontos.</li></ul>| 
 
-## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Nem megbízható webes kimenet kódolása renderelés előtt
+## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Nem megbízható webes kimenet kódolása a renderelés előtt
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | Általános, Webes űrlapok, MVC5, MVC6 |
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | Általános, Web Forms, MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Hogyan lehet megakadályozni cross-site scripting ASP.NET](https://msdn.microsoft.com/library/ms998274.aspx), [Cross-site Scripting](https://cwe.mitre.org/data/definitions/79.html), [XSS (Cross Site Scripting) Megelőzés Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
-| **Lépéseket** | A helyek közötti parancsfájlok (rövidítve XSS-ként) az online szolgáltatások vagy bármely olyan alkalmazás/összetevő támadási vektora, amely az internetről származó adatokat használja fel. Az XSS biztonsági rései lehetővé tvehetik, hogy a támadó parancsfájlt hajtson végre egy másik felhasználó számítógépén egy sebezhető webalkalmazáson keresztül. A rosszindulatú parancsfájlok cookie-k ellopására és az áldozat gépének JavaScript-en keresztültörténő más módon történő manipulálására használhatók. Az XSS-t megakadályozza a felhasználói bevitel ellenőrzése, biztosítva, hogy jól formázott és kódolású legyen, mielőtt egy weboldalon megjelenne. A bemeneti érvényesítés és a kimeneti kódolás a Web Protection Library segítségével végezhető el. A Felügyelt kód\#(C, VB.NET stb.) esetében használjon egy vagy több megfelelő kódolási módszert a Web Protection (Anti-XSS) könyvtárból, attól függően, hogy a felhasználói bevitel melyik környezetben jelenik meg:| 
+| **Referencia**              | A [helyek közötti parancsfájlok megakadályozása a ASP.net-ben](https://msdn.microsoft.com/library/ms998274.aspx), a [helyek közötti parancsfájlkezelés](https://cwe.mitre.org/data/definitions/79.html), az [XSS (Cross Site Scripting) megelőzése – Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
+| **Lépéseket** | A helyek közötti parancsfájlok (általában az XSS-ként rövidítve) a online szolgáltatások vagy bármely olyan alkalmazás/összetevő támadási vektora, amely a webről érkező adatokat használja. Az XSS biztonsági rései lehetővé tehetik, hogy a támadók egy sebezhető webalkalmazáson keresztül hajtsák végre a parancsfájlokat egy másik felhasználó számítógépén. A rosszindulatú parancsfájlok a cookie-k lopására használhatók, és egyéb módon nem módosíthatók az áldozat gépén a JavaScript használatával. Az XSS megakadályozása a felhasználói adatok érvényesítésével, a megfelelő formátum és a kódolás megkezdése előtt, hogy a weblap megjeleníthető legyen. A bemeneti ellenőrzés és a kimeneti kódolás a web Protection Library használatával végezhető el. A felügyelt kód (\#C, VB.net stb.) esetében használjon egy vagy több megfelelő kódolási módszert a web Protection (anti-XSS) könyvtárból attól függően, hogy a felhasználói bevitel milyen kontextusban nyilvánul meg:| 
 
 ### <a name="example"></a>Példa
 
@@ -387,38 +387,38 @@ Az előző kódpéldában a bemeneti érték nem lehet hosszabb 11 karakternél.
 * Encoder.LdapEncode 
 ```
 
-## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>Beviteli ellenőrzés és szűrés végrehajtása az összes karakterlánctípus modelltulajdonságán
+## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>A bemeneti ellenőrzés és a szűrés végrehajtása az összes karakterlánc típusú modell tulajdonságainál
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános, MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Érvényesítés hozzáadása](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [modelladatok érvényesítése egy MVC alkalmazásban,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx) [az Ön ASP.NET MVC alkalmazások ra vonatkozó irányelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Lépéseket** | <p>Az alkalmazásban való használat előtt minden bemeneti paramétert ellenőrizni kell annak érdekében, hogy az alkalmazás védve legyen a rosszindulatú felhasználói bevitelekkel szemben. Ellenőrizze a bemeneti értékeket reguláris kifejezés-ellenőrzéssel a kiszolgálóoldalon egy engedélyezési lista érvényesítési stratégiával. A metódusoknak átadott nem fertőtlenített felhasználói bemenetek / paraméterek kódinjektálási biztonsági réseket okozhatnak.</p><p>Webes alkalmazások esetén a belépési pontok űrlapmezőket, QueryStrings-eket, cookie-kat, HTTP-fejléceket és webszolgáltatás-paramétereket is tartalmazhatnak.</p><p>A modellkötéskor a következő bemeneti érvényesítési ellenőrzéseket kell elvégezni:</p><ul><li>A modell tulajdonságokat regularexpression jegyzeteléssel kell eljegyzetálni az engedélyezett karakterek és a maximálisan megengedett hossz elfogadásához.</li><li>A vezérlőmetódusok nak modelstate érvényességet kell végrehajtaniuk</li></ul>|
+| **Referencia**              | [Érvényesítés hozzáadása](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), a [modell-adattípusok érvényesítése MVC-alkalmazásokban](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [a ASP.net MVC-alkalmazások irányadó alapelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Lépéseket** | <p>Az alkalmazásban való használat előtt az összes bemeneti paramétert ellenőrizni kell, hogy az alkalmazás védelmet biztosítson a rosszindulatú felhasználói adatbevitelek ellen. Érvényesítse a bemeneti értékeket a kiszolgáló oldalán található reguláris kifejezési érvényesítéssel, egy engedélyezési stratégiát használva. A nem fertőtlenített felhasználói bemenetek/a metódusoknak átadott paraméterek a kód injekciós biztonsági réseit okozhatják.</p><p>A webalkalmazások esetében a belépési pontok tartalmazhatnak űrlapmezőket, QueryStrings, cookie-kat, HTTP-fejléceket és webszolgáltatás-paramétereket is.</p><p>A következő bemeneti ellenőrzési ellenőrzéseket kell végrehajtani a modell kötése esetén:</p><ul><li>A modell tulajdonságait válaszban jegyzettel kell kiegészíteni, az engedélyezett karakterek fogadásához és a megengedett maximális hosszhoz.</li><li>A vezérlő módszereinek ModelState érvényességét kell végrehajtania</li></ul>|
 
-## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>A fertőtlenítést olyan űrlapmezőkön kell alkalmazni, amelyek minden karaktert elfogadnak, pl. rich text szerkesztő
+## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>A tisztítást olyan űrlapmezők kell alkalmazni, amelyek az összes karaktert elfogadják, például Rich Text Editor
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Nem biztonságos bevitel ,](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3)HTML [sanitizer kódolása](https://github.com/mganss/HtmlSanitizer) |
-| **Lépéseket** | <p>Azonosítsa az összes használni kívánt statikus jelölőcímkét. Általános gyakorlat, hogy a formázást biztonságos `<b>` HTML-elemekre `<i>` korlátozzák, például (félkövér) és (dőlt) elemekre.</p><p>Az adatok írása előtt html-kódolja azt. Ez minden rosszindulatú parancsfájlt biztonságossá tesz azáltal, hogy azt szövegként kezeli, nem pedig végrehajtható kódként.</p><ol><li>Tiltsa le ASP.NET a kérés érvényesítését a ValidateRequest="false" attribútum nak az \@ oldaldirektívához való hozzáadásával</li><li>A karakterlánc-bevitel kódolása a HtmlEncode metódussal</li><li>StringBuilder használatával hívja meg a Csere metódust, hogy szelektíven távolítsa el az engedélyezni kívánt HTML-elemek kódolását</li></ol><p>A hivatkozások oldalbe - letiltja ASP.NET `ValidateRequest="false"`a kérelmek érvényesítését a beállításával. Ez a HTML-kódolja a bemeneti és szelektíven lehetővé teszi a `<b>` és `<i>` alternatívaként, a .NET könyvtár HTML fertőtlenítés is használható.</p><p>A HtmlSanitizer egy .NET könyvtár, amely a HTML-töredékek és dokumentumok olyan konstrukciókból való tisztítására használható, amelyek XSS-támadásokhoz vezethetnek. Az AngleSharp segítségével elemzi, manipulálja és rendereli a HTML-t és a CSS-t. A HtmlSanitizer NuGet csomagként telepíthető, és a felhasználói bevitel átadható a megfelelő HTML vagy CSS fertőtlenítési módszereken, adott esetben a szerveroldalon. Kérjük, vegye figyelembe, hogy a fertőtlenítés, mint biztonsági ellenőrzés csak az utolsó lehetőségnek tekintendő.</p><p>A bemeneti ellenőrzés és a kimeneti kódolás jobb biztonsági ellenőrzésnek tekinthető.</p> |
+| **Referencia**              | Nem [biztonságos bemenet kódolása](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML-Sanitizer](https://github.com/mganss/HtmlSanitizer) |
+| **Lépéseket** | <p>Azonosítsa az összes használni kívánt statikus jelölő címkét. Gyakori eljárás a biztonságos HTML-elemek `<b>` (például félkövér) és `<i>` a (dőlt) formázásának korlátozása.</p><p>Az adatírás előtt HTML-kódolással kódolja. Így a rosszindulatú parancsfájlok biztonsága úgy történik, hogy azt szövegként, nem pedig végrehajtható programkódként kezeli.</p><ol><li>A ASP.NET-kérelem ellenőrzésének letiltása a ValidateRequest = "false" attribútum hozzáadásával \@ az oldal irányelvéhez</li><li>A karakterlánc bemenetének kódolása a HtmlEncode metódussal</li><li>Használjon StringBuilder, és hívja meg a Replace metódust az engedélyezni kívánt HTML-elemek kódolásának szelektív eltávolításához.</li></ol><p>A hivatkozásban szereplő lap letiltja a ASP.NET kérelmek érvényesítését a `ValidateRequest="false"`beállítással. HTML – kódolja a bemenetet, és szelektíven lehetővé `<b>` teszi `<i>` , hogy a .net-kódtár HTML-tisztítás is használható legyen.</p><p>A HtmlSanitizer egy .NET-kódtár, amely az XSS-támadásokhoz vezethet a HTML-töredékek és a szerkezetek dokumentumainak tisztításához. AngleSharp használ a HTML és a CSS elemzéséhez, kezeléséhez és megjelenítéséhez. A HtmlSanitizer NuGet-csomagként telepíthetők, és a felhasználói bevitel a megfelelő HTML-vagy CSS-tisztítási módszerekkel is továbbítható a kiszolgáló oldalán. Vegye figyelembe, hogy a tisztítást biztonsági ellenőrzésként csak utolsó lehetőségként kell figyelembe venni.</p><p>A bemeneti ellenőrzés és a kimeneti kódolás jobb biztonsági szabályozásnak minősül.</p> |
 
-## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>Ne rendeljen DOM-elemeket olyan mosogatókhoz, amelyek nem rendelkeznek beépített kódolással
+## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>Ne rendeljen DOM-elemeket olyan mosogatóhoz, amelyek nem rendelkeznek beépített kódolással
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Sok javascript függvény alapértelmezés szerint nem végez kódolást. Ha nem megbízható bemenetet rendel a DOM-elemekhez ilyen függvényeken keresztül, az a helyek közötti parancsfájlok (XSS) végrehajtását eredményezheti.| 
+| **Lépéseket** | A JavaScript-függvények többsége alapértelmezés szerint nem végez kódolást. Ha nem megbízható bevitelt ad hozzá a DOM-elemekhez ezen függvények használatával, előfordulhat, hogy a helyek közötti parancsfájl (XSS) végrehajtást eredményez.| 
 
 ### <a name="example"></a>Példa
 A következő példák nem biztonságosak: 
@@ -429,58 +429,58 @@ $("#userName").html(res.Name);
 return $('<div/>').html(value)
 $('body').append(resHTML);   
 ```
-Ne használja `innerHtml`a; helyette `innerText`használja . Hasonlóképpen, a `$("#elm").html()`helyett használja a`$("#elm").text()` 
+Ne használja `innerHtml`; Ehelyett használja `innerText`a parancsot. Hasonlóképpen, a helyett `$("#elm").html()`használja a`$("#elm").text()` 
 
-## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>Az alkalmazáson belüli összes átirányítás ellenőrzése lezárva vagy biztonságosan elvégezhető
+## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>Az alkalmazáson belüli összes átirányítás ellenőrzése bezárult, vagy biztonságosan történik
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Az OAuth 2.0 engedélyezési keretrendszer – Open Redirectors](https://tools.ietf.org/html/rfc6749#section-10.15) |
-| **Lépéseket** | <p>A felhasználó által megadott helyre történő átirányítást igénylő alkalmazástervnek a lehetséges átirányítási célokat egy előre meghatározott "biztonságos" helyek vagy tartományok listájára kell korlátoznia. Az alkalmazás ban lévő összes átirányítást le kell zárni/biztonságosnak kell lennie.</p><p>Ehhez tegye a következőket:</p><ul><li>Az összes átirányítás azonosítása</li><li>Valósítsa meg a megfelelő mérséklésminden átirányítás. A megfelelő megoldások közé tartozik az átirányítási engedélyezési lista vagy a felhasználó megerősítése. Ha egy nyitott átirányítási rést tartalmazó webhely vagy szolgáltatás Facebook/OAuth/OpenID identitásszolgáltatókat használ, a támadó ellophatja a felhasználó bejelentkezési jogkivonatát, és megszemélyesítheti a felhasználót. Ez az OAuth használatakor ez a kockázat, amelyet a 6749-es RFC "Az OAuth 2.0 engedélyezési keretrendszer" 10.15 szakasza " Open Redirects" Hasonlóképpen, a felhasználók hitelesítő adatait a nyílt átirányításokat használó adathalász támadások veszélyeztethetik.</li></ul>|
+| **Referencia**              | [A OAuth 2,0 engedélyezési keretrendszere – nyitott átirányítók](https://tools.ietf.org/html/rfc6749#section-10.15) |
+| **Lépéseket** | <p>A felhasználó által megadott helyre történő átirányítást igénylő alkalmazás-kialakításnak a lehetséges átirányítási célokat a helyek vagy tartományok előre meghatározott "biztonságos" listájára kell korlátoznia. Az alkalmazásban lévő összes átirányításnak zárt/biztonságosnak kell lennie.</p><p>Ehhez tegye a következőket:</p><ul><li>Az összes átirányítások azonosítása</li><li>Az egyes átirányítás megfelelő enyhítésének megvalósítása. A megfelelő enyhítések közé tartozik az átirányítási engedélyezési lista vagy a felhasználó megerősítése. Ha egy webhelynek vagy szolgáltatásnak nyílt átirányítási biztonsági rése a Facebook/OAuth/OpenID Identity Providers szolgáltatást használja, a támadó ellophatja a felhasználó bejelentkezési jogkivonatát, és megszemélyesítheti azt. Ez az OAuth használata során fennálló kockázat, amely a 6749-as számú RFC "The OAuth 2,0 engedélyezési keretrendszer" című szakaszban található, 10,15-as "nyitott átirányítások"</li></ul>|
 
-## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>A Vezérlő metódusai által elfogadott összes karakterlánctípus-paraméter bemeneti érvényesítésének megvalósítása
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>A bemeneti ellenőrzés megvalósítása a vezérlő metódusok által elfogadott összes karakterlánc típusú paraméternél
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános, MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [A modelladatok ellenőrzése egy MVC alkalmazásban,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx) [az Ön ASP.NET MVC alkalmazások ra vonatkozó irányelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Lépéseket** | A primitív adattípust csak a primitív adattípust, a modelleket argumentumként nem tartalmazó metódusok esetében a reguláris kifejezés használatával végzett bemeneti érvényesítést kell elvégezni. Itt Regex.IsMatch kell használni egy érvényes regex mintát. Ha a bemenet nem felel meg a megadott reguláris kifejezésnek, a vezérlés nem haladhat tovább, és megfelelő figyelmeztetést kell megjeleníteni az érvényesítési hibával kapcsolatban.| 
+| **Referencia**              | A [modell adatai egy MVC-alkalmazásban](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [a ASP.net MVC-alkalmazások irányadó alapelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Lépéseket** | Az olyan metódusok esetében, amelyek csak egyszerű adattípust fogadnak el, és nem a modell argumentumként, a normál kifejezéssel végzett bemeneti ellenőrzést kell elvégezni. Itt a regex. IsMatch érvényes regex-mintával kell használni. Ha a bemenet nem felel meg a megadott reguláris kifejezésnek, a vezérlő nem folytathatja a műveletet, és az érvényesítési hibákra vonatkozó megfelelő figyelmeztetést kell megjeleníteni.| 
 
-## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>Állítsa be a reguláris kifejezések feldolgozásának felső határidejét, hogy megakadályozza a DoS-t a hibás regisztrakifejezések miatt
+## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>A reguláris kifejezések feldolgozásának felső korlátjának beállítása, hogy a DoS ne legyen rossz reguláris kifejezés miatt
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | Általános, Webes űrlapok, MVC5, MVC6  |
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | Általános, Web Forms, MVC5, MVC6  |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [DefaultRegexMatchTimeout tulajdonság](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
-| **Lépéseket** | A szolgáltatásmegtagadási támadások biztosításához a rosszul létrehozott reguláris kifejezések ellen, amelyek sok visszakövetést okoznak, állítsa be a globális alapértelmezett időtúllépést. Ha a feldolgozási idő hosszabb időt vesz igénybe, mint a megadott felső korlát, akkor időtúllépési kivételt eredményez. Ha semmi sincs konfigurálva, az időkorlát végtelen lesz.| 
+| **Lépéseket** | A helytelenül létrehozott reguláris kifejezésekkel szembeni szolgáltatásmegtagadási támadások megelőzése érdekében, amely sok visszalépést okoz, állítsa be a globális alapértelmezett időkorlátot. Ha a feldolgozási idő hosszabb időt vesz igénybe, mint a megadott felső korlát, időtúllépési kivételt eredményezne. Ha semmi sincs konfigurálva, az időtúllépés végtelen lesz.| 
 
 ### <a name="example"></a>Példa
-A következő konfiguráció például egy RegexMatchTimeoutException-et hajt végre, ha a feldolgozás 5 másodpercnél tovább tart: 
+A következő konfiguráció például egy RegexMatchTimeoutException fog dobni, ha a feldolgozás 5 másodpercnél több időt vesz igénybe: 
 
 ```csharp
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
 ```
 
-## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Kerülje a Html.Raw használatát a Razor nézetekben
+## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Kerülje a HTML. Raw használatát a borotva nézeteiben
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webalkalmazás | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| Lépés | ASP.NET a weblapok (Razor) automatikus HTML-kódolást hajtanak végre. A beágyazott kódrögök (@ blokkok) által kinyomtatott összes karakterlánc automatikusan HTML-kódolású lesz. A metódus `HtmlHelper.Raw` meghívásakor azonban olyan jelölést ad vissza, amely nem HTML-kódolású. Ha `Html.Raw()` segítő módszert alkalmaznak, megkerüli a Razor által biztosított automatikus kódolási védelmet.|
+| Lépés | A ASP.NET weblapok (Razor) automatikus HTML-kódolást végeznek. A beágyazott Code Nuggets (@ Blocks) által kinyomtatott összes karakterlánc automatikusan HTML-kódolású. A `HtmlHelper.Raw` metódus meghívásakor azonban olyan korrektúrát ad vissza, amely nem HTML kódolású. Ha `Html.Raw()` a segítő módszert használja, az megkerüli a borotva által biztosított automatikus kódolási védelmet.|
 
 ### <a name="example"></a>Példa
 A következő egy nem biztonságos példa: 
@@ -494,21 +494,21 @@ A következő egy nem biztonságos példa:
         </div>
 </div>
 ```
-Csak akkor `Html.Raw()` használja, ha korrektúrát kell megjelenítenie. Ez a módszer implicit módon nem hajt végre kimeneti kódolást. Használjon más ASP.NET segítőt, pl.`@Html.DisplayFor()` 
+Csak akkor használja `Html.Raw()` , ha nem kell megjelenítenie a jelölést. Ez a metódus implicit módon nem hajtja végre a kimeneti kódolást. Használjon más ASP.NET-segítőket például:`@Html.DisplayFor()` 
 
-## <a name="do-not-use-dynamic-queries-in-stored-procedures"></a><a id="stored-proc"></a>Ne használjon dinamikus lekérdezéseket a tárolt eljárásokban
+## <a name="do-not-use-dynamic-queries-in-stored-procedures"></a><a id="stored-proc"></a>Dinamikus lekérdezések használata a tárolt eljárásokban
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>Az SQL-injektálási támadás kihasználja a bemeneti ellenőrzés biztonsági réseit, és tetszőleges parancsokat futtat az adatbázisban. Ez akkor fordulhat elő, ha az alkalmazás bemeneti adatokat használ a dinamikus SQL-utasítások létrehozásához az adatbázis eléréséhez. Ez akkor is előfordulhat, ha a kód olyan tárolt eljárásokat használ, amelyek nyers felhasználói bevitelt tartalmazó karakterláncokat tartalmaznak. Az SQL-injektálási támadás használatával a támadó tetszőleges parancsokat hajthat végre az adatbázisban. Minden SQL utasítást (beleértve a tárolt eljárásokban lévő SQL-utasításokat is) paraméteresíteni kell. A paraméterezett SQL-utasítások gond nélkül elfogadják azokat a karaktereket, amelyek nek különleges jelentése van az SQL számára (például az egyszeres idézőjelnek). |
+| **Lépéseket** | <p>Az SQL-injektálási támadás biztonsági réseket használ a bemeneti ellenőrzés során, hogy tetszőleges parancsokat futtasson az adatbázisban. Ez akkor fordulhat elő, ha az alkalmazás a bemenet használatával dinamikus SQL-utasításokat hoz létre az adatbázis eléréséhez. Akkor is előfordul, ha a kód olyan tárolt eljárásokat használ, amelyek nyers felhasználói bevitelt tartalmazó karakterláncokat adtak át. Az SQL-injektálási támadás használatával a támadó tetszőleges parancsokat futtathat az adatbázisban. Az összes SQL-utasítást (beleértve a tárolt eljárások SQL-utasításait is) paraméternek kell lennie. A paraméteres SQL-utasítások olyan karaktereket fogadnak el, amelyek speciális jelentéssel rendelkeznek az SQL-hez (például egy idézet), problémák nélkül, mert erősen vannak beírva. |
 
 ### <a name="example"></a>Példa
-Az alábbiakban egy példa a nem biztonságos dinamikus tárolt eljárás: 
+A következő példa a nem biztonságos dinamikus tárolt eljárást szemlélteti: 
 
 ```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteria]
@@ -536,7 +536,7 @@ AS
 ```
 
 ### <a name="example"></a>Példa
-Az alábbiakban ugyanazokat a tárolt eljárást hajtják végre biztonságosan: 
+A következő azonos tárolt eljárás biztonságosan implementálva van: 
 ```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteriaSecure]
 (
@@ -556,19 +556,19 @@ AS
        END
 ```
 
-## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Annak ellenőrzése, hogy a modell érvényesítése webes API-metódusokon történik-e
+## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Győződjön meg arról, hogy a modell ellenőrzése a webes API-módszerekkel történik
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Modellérvényesítés ASP.NET webes API-ban](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Lépéseket** | Amikor egy ügyfél adatokat küld egy webes API-nak, a feldolgozás előtt kötelező ellenőrizni az adatokat. A ASP.NET webes API-k, amelyek elfogadják modellek bemeneti, használja az adat-annotációk modellek a modell tulajdonságaira vonatkozó érvényesítési szabályok beállításához.|
+| **Referencia**              | [Modell érvényesítése a ASP.NET web API-ban](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Lépéseket** | Amikor egy ügyfél adatokat küld egy webes API-nak, a feldolgozás előtt kötelező ellenőrizni az adatokat. Olyan ASP.NET webes API-k esetében, amelyek bemenetként fogadják el a modelleket, adatjegyzeteket használhat a modelleken az érvényesítési szabályok beállításához a modell tulajdonságaiban.|
 
 ### <a name="example"></a>Példa
-A következő kód ugyanazt mutatja: 
+A következő kód ugyanezt mutatja be: 
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -589,7 +589,7 @@ namespace MyApi.Models
 ```
 
 ### <a name="example"></a>Példa
-Az API-vezérlők műveletmódszerében a modell érvényességét az alábbiak szerint explicit módon ellenőrizni kell: 
+Az API-vezérlők műveleti metódusában a modell érvényességét explicit módon be kell jelölni az alábbiak szerint: 
 
 ```csharp
 namespace MyApi.Controllers
@@ -613,30 +613,30 @@ namespace MyApi.Controllers
 }
 ```
 
-## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>A webes API-metódusok által elfogadott összes karakterlánctípus-paraméter bemeneti érvényesítésének megvalósítása
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>A bemeneti ellenőrzés megvalósítása a webes API-metódusok által elfogadott összes karakterlánc típusú paraméternél
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános, MVC 5, MVC 6 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [A modelladatok ellenőrzése egy MVC alkalmazásban,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx) [az Ön ASP.NET MVC alkalmazások ra vonatkozó irányelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Lépéseket** | A primitív adattípust csak a primitív adattípust, a modelleket argumentumként nem tartalmazó metódusok esetében a reguláris kifejezés használatával végzett bemeneti érvényesítést kell elvégezni. Itt Regex.IsMatch kell használni egy érvényes regex mintát. Ha a bemenet nem felel meg a megadott reguláris kifejezésnek, a vezérlés nem haladhat tovább, és megfelelő figyelmeztetést kell megjeleníteni az érvényesítési hibával kapcsolatban.|
+| **Referencia**              | A [modell adatai egy MVC-alkalmazásban](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [a ASP.net MVC-alkalmazások irányadó alapelvei](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Lépéseket** | Az olyan metódusok esetében, amelyek csak egyszerű adattípust fogadnak el, és nem a modell argumentumként, a normál kifejezéssel végzett bemeneti ellenőrzést kell elvégezni. Itt a regex. IsMatch érvényes regex-mintával kell használni. Ha a bemenet nem felel meg a megadott reguláris kifejezésnek, a vezérlő nem folytathatja a műveletet, és az érvényesítési hibákra vonatkozó megfelelő figyelmeztetést kell megjeleníteni.|
 
-## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Annak ellenőrzése, hogy a webAPI-ban a típusbiztos paraméterek et használja-e az adatok eléréséhez
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Győződjön meg arról, hogy a típus-biztonságos paramétereket használják a webes API-ban az adatok eléréséhez
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>Ha a Paraméterek gyűjteményt használja, az SQL a bemenetet konstans értékként, nem pedig végrehajtható kódként kezeli. A Paraméterek gyűjtemény a bemeneti adatok típus- és hosszkorlátainak kényszerítésére használható. A tartományon kívüli értékek kivételt váltanak ki. Ha nem használ típusbiztos SQL-paramétereket, előfordulhat, hogy a támadók képesek végrehajtani a szűretlen bemenetbe ágyazott injektálási támadásokat.</p><p>Az SQL-lekérdezések létrehozásakor használjon típusbiztonsági paramétereket a szűretlen bevitellel esetlegesen előforduló SQL-injektálási támadások elkerülése érdekében. Típusbiztonsági paramétereket használhat a tárolt eljárásokkal és a dinamikus SQL utasításokkal. A paramétereket az adatbázis konstans értékként kezeli, nem pedig végrehajtható kódként. A paraméterek típusát és hosszát is ellenőrzik.</p>|
+| **Lépéseket** | <p>Ha a parameters (paraméterek) gyűjteményt használja, az SQL a bemenetet literál értékként adja meg a végrehajtható kód helyett. A paraméterek gyűjteménye a bemeneti adatok típusának és hosszának korlátozására használható. A tartományon kívüli értékek kivételt váltanak ki. Ha nem használja a Type-Safe SQL-paramétereket, a támadók képesek lehetnek a szűretlen bemenetbe ágyazott injekciós támadások végrehajtására.</p><p>SQL-lekérdezések létrehozásakor használjon biztonságos paramétereket, hogy elkerülje a nem szűrt bevitelsel esetlegesen fellépő lehetséges SQL-injektálási támadásokat. A biztonságos paramétereket tárolt eljárásokkal és dinamikus SQL-utasításokkal is használhatja. A paramétereket literál értékként kezeli az adatbázis, nem pedig végrehajtható kódként. A paramétereket a típus és a hossz is ellenőrzi.</p>|
 
 ### <a name="example"></a>Példa
-A következő kód bemutatja, hogyan használhatja a típusbiztonsági paramétereket az SqlParameterCollection-vel egy tárolt eljárás hívásakor. 
+A következő kód azt mutatja be, hogyan használhatók a biztonságos paraméterek a SqlParameterCollection egy tárolt eljárás meghívásakor. 
 
 ```csharp
 using System.Data;
@@ -652,37 +652,37 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-Az előző kódpéldában a bemeneti érték nem lehet hosszabb 11 karakternél. Ha az adatok nem felelnek meg a paraméter által meghatározott típusnak vagy hossznak, az SqlParameter osztály kivételt okoz. 
+A fenti példában a bemeneti érték nem lehet hosszabb 11 karakternél. Ha az érték nem felel meg a paraméter által meghatározott típusnak vagy hossznak, a SqlParameter osztály kivételt jelez. 
 
-## <a name="use-parameterized-sql-queries-for-cosmos-db"></a><a id="sql-docdb"></a>Paraméterezett SQL-lekérdezések használata a Cosmos DB-hez
+## <a name="use-parameterized-sql-queries-for-cosmos-db"></a><a id="sql-docdb"></a>Paraméteres SQL-lekérdezések használata Cosmos DBhoz
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Document DB | 
-| **SDL fázis**               | Felépítés |  
+| **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Az SQL paraméterezés bejelentése az Azure Cosmos DB-ben](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| **Lépéseket** | Bár az Azure Cosmos DB csak csak az írásvédett lekérdezéseket támogatja, az SQL-injektálás továbbra is lehetséges, ha a lekérdezések felhasználói bevitellel való összefűzéssel készülnek. Előfordulhat, hogy a felhasználó hozzáférhet azokhoz az adatokhoz, amelyekhez nem férhetnek hozzá ugyanazon a gyűjteményen belül rosszindulatú SQL-lekérdezések létrehozásával. Paraméterezett SQL-lekérdezéseket használjon, ha a lekérdezések felhasználói bevitel alapján épülnek fel. |
+| **Referencia**              | [Az SQL-paraméterezés bejelentése Azure Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| **Lépéseket** | Habár a Azure Cosmos DB csak a csak olvasási lekérdezéseket támogatja, az SQL-injektálás továbbra is lehetséges, ha a lekérdezések a felhasználói adatbevitelsel való összefűzéssel jönnek létre. Előfordulhat, hogy a felhasználó olyan adatokhoz fér hozzá, amelyek nem érhetők el ugyanabban a gyűjteményben a rosszindulatú SQL-lekérdezések készítésével. Paraméteres SQL-lekérdezések használata, ha a lekérdezések felhasználói bevitel alapján vannak kiépítve. |
 
-## <a name="wcf-input-validation-through-schema-binding"></a><a id="schema-binding"></a>WCF bemeneti érvényesítéssé sémakötéssel
+## <a name="wcf-input-validation-through-schema-binding"></a><a id="schema-binding"></a>WCF-bemenet ellenőrzése séma kötésével
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | Általános, NET keret rendszer 3 |
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
-| **Lépéseket** | <p>Az érvényesítés hiánya különböző típusú injekciós támadásokhoz vezet.</p><p>Az üzenetérvényesítés egy védelmi vonalat jelent a WCF-alkalmazás védelmében. Ezzel a módszerrel sémák használatával érvényesítheti az üzeneteket a WCF-szolgáltatás műveletek rosszindulatú ügyfél általi támadásokkal szembeni védelme érdekében. Ellenőrizze az ügyfél által fogadott összes üzenetet, hogy megvédje az ügyfelet a rosszindulatú szolgáltatás általi támadástól. Az üzenetek érvényesítése lehetővé teszi az üzenetek érvényesítését, amikor a műveletek üzenetegyezményeket vagy adategyezményeket használnak fel, amelyek paraméter-érvényesítéssel nem végezhetők el. Az üzenetérvényesítés lehetővé teszi érvényesítési logika létrehozását a sémákon belül, ezáltal nagyobb rugalmasságot biztosítva és csökkentve a fejlesztési időt. A sémák újra felhasználhatók a szervezeten belüli különböző alkalmazásokközött, és szabványokat hozhatnak létre az adatábrázoláshoz. Emellett az üzenetek érvényesítése lehetővé teszi a műveletek védelmét, ha összetettebb adattípusokat használnak fel, amelyek üzleti logikát képviselő szerződéseket foglalnak magukban.</p><p>Az üzenetek érvényesítéséhez először hozzon létre egy sémát, amely a szolgáltatás műveleteit és a műveletek által felhasznált adattípusokat jelöli. Ezután hozzon létre egy .NET osztályt, amely egy egyéni ügyfélüzenet-felügyelőt és egyéni diszpécser üzenetellenőrt valósít meg a szolgáltatásba küldött/fogadott üzenetek érvényesítéséhez. Ezután egy egyéni végponti viselkedést valósít meg, amely lehetővé teszi az üzenetek érvényesítését mind az ügyfélen, mind a szolgáltatáson. Végül egy egyéni konfigurációs elemet valósít meg az osztályon, amely lehetővé teszi a kiterjesztett egyéni végpontviselkedés takarását a szolgáltatás vagy az ügyfél konfigurációs fájljában."</p>|
+| **Lépéseket** | <p>Az érvényesítés hiánya különböző típusú injekciós támadásokhoz vezet.</p><p>Az üzenet-ellenőrzés a WCF-alkalmazás védelmének egyik védelmi vonalát jelöli. Ezzel a megközelítéssel érvényesíti az üzeneteket sémák használatával a WCF szolgáltatási műveleteinek rosszindulatú ügyfél általi támadás általi biztosításához. Ellenőrizze, hogy az ügyfél által fogadott összes üzenet kártékony szolgáltatás általi támadás ellen védett-e. Az üzenet-ellenőrzés lehetővé teszi az üzenetek érvényesítését, amikor a műveletek üzenet-vagy adategyezményeket használnak, ami nem végezhető el a paraméterek ellenőrzésekor. Az üzenet-ellenőrzés lehetővé teszi, hogy ellenőrzési logikát hozzon létre a sémákban, így nagyobb rugalmasságot biztosít, és csökkenti a fejlesztési időt. A sémák újra felhasználhatók a szervezeten belüli különböző alkalmazásokban, az adatábrázolásra vonatkozó szabványok létrehozásával. Emellett az üzenetek ellenőrzése lehetővé teszi a műveletek védelme, ha összetettebb adattípusokat használnak az üzleti logikát képviselő szerződésekkel együtt.</p><p>Az üzenet-ellenőrzés végrehajtásához először olyan sémát kell létrehoznia, amely a szolgáltatás műveleteit és a műveletek által felhasznált adattípusokat jelöli. Ezután létrehoz egy .NET-osztályt, amely egy egyéni ügyfél-üzenetblokk és egy egyéni kézbesítő-üzenet ellenőrét implementálja a szolgáltatásnak küldött/fogadott üzenetek ellenőrzéséhez. Ezt követően egyéni végponti viselkedést kell megvalósítani, hogy az üzenetek ellenőrzése az ügyfélen és a szolgáltatáson is engedélyezve legyen. Végül egy egyéni konfigurációs elemet is megvalósíthat az osztályban, amely lehetővé teszi, hogy elérhetővé tegye a kiterjesztett egyéni végpont viselkedését a szolgáltatás vagy az ügyfél konfigurációs fájljában. "</p>|
 
-## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF - Bemeneti ellenőrzés paraméterellenőrökön keresztül
+## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF – bemeneti ellenőrzés paraméter-ellenőrök használatával
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
-| **Alkalmazható technológiák** | Általános, NET keret rendszer 3 |
+| **SDL-fázis**               | Felépítés |  
+| **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
-| **Lépéseket** | <p>A bemeneti és adatérvényesítés a WCF-alkalmazás védelmének egyik fontos védelmi vonalát jelenti. A szolgáltatás rosszindulatú ügyfél általi támadásokkal szembeni védelme érdekében ellenőrizze a WCF-szolgáltatás műveleteiben elérhetővé tett összes paramétert. Ezzel szemben az ügyfél által kapott összes visszatérési értéket is ellenőriznie kell, hogy megvédje az ügyfelet a rosszindulatú szolgáltatás általi támadástól.</p><p>A WCF különböző bővíthetőségi pontokat biztosít, amelyek lehetővé teszik a WCF futásidejű viselkedésének testreszabását egyéni bővítmények létrehozásával. Az üzenetellenőrök és a paraméterellenőrök két bővíthetőségi mechanizmus, amelyek az ügyfél és a szolgáltatás közötti adatok nagyobb ellenőrzésének megszerzésére szolgálnak. Csak akkor használjon paraméterellenőröket a bemeneti érvényesítéshez, és csak akkor használja az üzenetellenőröket, ha a teljes, a szolgáltatásból be- és kiáramló üzenetet meg kell vizsgálnia.</p><p>A bemeneti ellenőrzés végrehajtásához hozzon létre egy .NET osztályt, és valósítson meg egy egyéni paraméterellenőrt a szolgáltatásban lévő műveletek paramétereinek érvényesítéséhez. Ezután egy egyéni végpontviselkedést valósít meg, amely lehetővé teszi az érvényesítést mind az ügyfélen, mind a szolgáltatáson. Végül egy egyéni konfigurációs elemet valósít meg az osztályon, amely lehetővé teszi a kiterjesztett egyéni végpontviselkedés takarását a szolgáltatás vagy az ügyfél konfigurációs fájljában.</p>|
+| **Lépéseket** | <p>A bemenet és az adatok érvényesítése a WCF-alkalmazás védelmének egyik fontos védelmi vonalát jelenti. A WCF szolgáltatási műveletekben elérhető összes paramétert ellenőriznie kell a szolgáltatás rosszindulatú ügyfél általi támadása elleni védelem érdekében. Ezzel szemben az ügyfél által fogadott összes visszatérési értéket is ellenőriznie kell, hogy egy rosszindulatú szolgáltatás megóvja az ügyfelet a támadástól</p><p>A WCF különböző bővíthetőségi pontokat biztosít, amelyek lehetővé teszik a WCF futásidejű viselkedésének testreszabását egyéni bővítmények létrehozásával. Az üzenet-ellenőrök és a paraméter-ellenőrök két, az ügyfél és a szolgáltatás közötti adatátvitel nagyobb mértékű szabályozására szolgáló bővíthetőségi mechanizmus. A bemeneti ellenőrzéshez paraméter-ellenőröket kell használnia, és csak akkor használja az üzenőfalak használatát, ha meg kell vizsgálnia a szolgáltatáson belül és kívülről áramló teljes üzenetet.</p><p>A bemeneti ellenőrzés végrehajtásához hozzon létre egy .NET-osztályt, és hozzon létre egy egyéni paraméter-ellenőrzőt a szolgáltatás műveleteire vonatkozó paraméterek érvényesítéséhez. Ezután egy egyéni végponti viselkedést fog megvalósítani az érvényesítés engedélyezéséhez az ügyfélen és a szolgáltatáson is. Végül egy egyéni konfigurációs elemet fog megvalósítani az osztályban, amely lehetővé teszi, hogy elérhetővé tegye a kiterjesztett egyéni végpont viselkedését a szolgáltatás vagy az ügyfél konfigurációs fájljában.</p>|

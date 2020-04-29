@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integráció és kézbesítés az Azure Data Factoryban
-description: Ismerje meg, hogyan használhatja a folyamatos integrációt és kézbesítést a Data Factory-folyamatok egyik környezetből (fejlesztés, tesztelés, termelés) való áthelyezéséhez.
+title: Folyamatos integráció és kézbesítés Azure Data Factory
+description: Megtudhatja, hogyan használhatja a folyamatos integrációt és a szállítást, hogy Data Factory folyamatokat helyezzen át egy környezetből (fejlesztés, tesztelés, termelés) egy másikra.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,147 +12,147 @@ manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: 6aad01808ad155b745b614d8de6009386f0d2914
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687964"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés az Azure Data Factoryban
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-A folyamatos integráció az a gyakorlat, hogy a kódbázison végrehajtott minden egyes módosítást automatikusan és a lehető leghamarabb tesztel.A folyamatos kézbesítés a folyamatos integráció során bekövetkező tesztelést követi, és leküldi a módosításokat egy átmeneti vagy éles rendszerbe.
+A folyamatos integráció az a gyakorlat, amellyel a rendszer automatikusan és a lehető leghamarabb teszteli a kód egyes módosításait.A folyamatos teljesítés a folyamatos integráció során megjelenő tesztelést követi, és leküldi a módosításokat egy átmeneti vagy éles rendszerbe.
 
-Az Azure Data Factoryban a folyamatos integráció és kézbesítés (CI/CD) azt jelenti, hogy a Data Factory-folyamatok áthelyezése az egyik környezetből (fejlesztés, tesztelés, éles környezet) egy másikba. A Data Factory UX-integráció térhet el az Azure Resource Manager-sablonokkal ci/CD-vel.
+Azure Data Factory a folyamatos integráció és a szállítás (CI/CD) azt jelenti, hogy Data Factory folyamatokat az egyik környezetből (fejlesztési, tesztelési, éles) áthelyezi egy másikra. Data Factory UX-integrációt Azure Resource Manager-sablonokkal CI/CD-t használhat.
 
-A Data Factory ux-ben az **ARM template** legördülő menüből hozhat létre Erőforrás-kezelő sablont. Az **ARM-sablon exportálása**lehetőséget választva a portál létrehozza az adat-előállító Erőforrás-kezelő sablonját, valamint egy konfigurációs fájlt, amely tartalmazza az összes kapcsolati karakterláncot és egyéb paramétert. Ezután hozzon létre egy konfigurációs fájlt minden környezetben (fejlesztés, teszt, termelés). A fő Erőforrás-kezelő sablonfájl jatttsa az összes környezetben.
+A Data Factory UX-ben létrehozhat egy Resource Manager-sablont az ARM- **sablon** legördülő menüjéből. Ha az **ARM-sablon exportálása**lehetőséget választja, a portál létrehozza a Resource Manager-sablont az adatok előállítója számára, valamint egy olyan konfigurációs fájlt, amely tartalmazza az összes kapcsolódási karakterláncot és egyéb paramétert. Ezután hozzon létre egy konfigurációs fájlt az egyes környezetekhez (fejlesztés, tesztelés, éles környezet). A Resource Manager-sablonfájl fő fájlja az összes környezet esetében azonos marad.
 
-A funkció kilenc perces bemutatásához és bemutatóhoz tekintse meg ezt a videót:
+A funkció és a bemutató kilenc perces bemutatása esetén tekintse meg ezt a videót:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="cicd-lifecycle"></a>CI/CD életciklus
+## <a name="cicd-lifecycle"></a>CI/CD-életciklus
 
-Az alábbiakban egy minta áttekintést a CI/CD életciklusegy Azure-adat-előállító, amely konfigurálva az Azure Repos Git. A Git-tárház konfigurálásáról az [Azure Data Factory forrásvezérlése](source-control.md)című témakörben talál további információt.
+Alább látható egy példa az Azure Repos git szolgáltatással konfigurált Azure-beli adatgyár CI/CD-életciklusának áttekintésére. A git-adattárak konfigurálásával kapcsolatos további információkért lásd: [a verziókövetés a Azure Data Factory](source-control.md).
 
-1.  A fejlesztési adatok gyár jön létre, és konfigurálható az Azure Repos Git. Minden fejlesztőnek engedéllyel kell rendelkeznie a Data Factory-erőforrások, például a folyamatok és az adatkészletek szerzői engedélyezéséhez.
+1.  Egy fejlesztési célú adatelőállítót hoz létre és konfigurál az Azure Repos git szolgáltatással. Minden fejlesztőnek jogosultnak kell lennie Data Factory erőforrások, például folyamatok és adatkészletek létrehozásához.
 
-1.  Ahogy a fejlesztők módosításokat hajtanak végre a szolgáltatáságakban, hibakeresési folyamatuk a legutóbbi módosításokkal együtt fut. A folyamatfuttatások hibakereséséről további információt az [Iteratív fejlesztés és hibakeresés](iterative-development-debugging.md)az Azure Data Factory szolgáltatással című témakörben talál.
+1.  Ahogy a fejlesztők módosításokat hajtanak végre a szolgáltatási ágakban, hibakeresésük folyamata a legutóbbi módosításokkal együtt fut. A folyamatok futtatásának hibakeresésével kapcsolatos további információkért lásd: [iterációs fejlesztés és hibakeresés Azure Data Factory](iterative-development-debugging.md)használatával.
 
-1.  Miután a fejlesztők elégedettek a módosításokkal, létrehoznak egy lekéréses kérelmet a szolgáltatáságból a fő vagy együttműködési ághoz, hogy a módosításokat a társak ellenőrizzék.
+1.  Miután a fejlesztők elégedettek voltak a módosításaikkal, létrehozhatnak egy lekéréses kérelmet a szolgáltatási ágra a Master vagy az Collaboration ágban, hogy a társaik áttekintsék a módosításokat.
 
-1.  A lekéréses kérelem jóváhagyása és a módosítások egyesítése után a főágban a módosítások közzétehetők a fejlesztési gyárban.
+1.  A lekéréses kérelem jóváhagyása és a módosítások egyesítése a Master ág esetében a módosításokat közzéteheti a fejlesztői gyárban.
 
-1.  Amikor a csapat készen áll a módosítások üzembe helyezésére a tesztgyárban, majd a termelési gyárban, a csapat exportálja az Erőforrás-kezelő sablont a főágból.
+1.  Amikor a csapat készen áll a test Factory változásainak üzembe helyezésére, majd az üzemi gyárra, a csapat exportálja a Resource Manager-sablont a fő ágra.
 
-1.  Az exportált Erőforrás-kezelő sablon különböző paraméterfájlokkal van telepítve a tesztgyárba és a termelési gyárba.
+1.  Az exportált Resource Manager-sablon különböző paraméterekkel van telepítve a test Factory és az üzemi gyár számára.
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>Erőforrás-kezelő sablon létrehozása minden környezethez
+## <a name="create-a-resource-manager-template-for-each-environment"></a>Resource Manager-sablon létrehozása az egyes környezetekhez
 
-1. Az **ARM-sablon** listában válassza az **ARM-sablon exportálása** lehetőséget az adatgyár Erőforrás-kezelő sablonjának exportálásához a fejlesztői környezetben.
+1. Az **ARM-sablon** listában válassza az **ARM-sablon exportálása** lehetőséget, hogy a fejlesztési környezetben exportálja a Resource Manager-sablont az adatgyárhoz.
 
-   ![Erőforrás-kezelő sablon exportálása](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![Resource Manager-sablon exportálása](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-1. A teszt- és termelési adatgyárakban válassza **az ARM-sablon importálása lehetőséget.** Ez a művelet az Azure Portalra viszi, ahol importálhatja az exportált sablont. Válassza a Saját sablon létrehozása lehetőséget **a szerkesztőben** az Erőforráskezelő sablonszerkesztő megnyitásához.
+1. A tesztelési és éles adatgyárak területen válassza az **ARM-sablon importálása**lehetőséget. Ez a művelet elvégzi a Azure Portal, ahol importálhatja az exportált sablont. Válassza a **saját sablon létrehozása lehetőséget a szerkesztőben** a Resource Manager-sablon szerkesztőjének megnyitásához.
 
    ![Saját sablon létrehozása](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Válassza **a Fájl betöltése**lehetőséget, majd válassza ki a létrehozott Erőforrás-kezelő sablont. Ez az **arm_template 1.**
+1. Válassza a **fájl betöltése**lehetőséget, majd válassza ki a generált Resource Manager-sablont. Ez az 1. lépésben exportált. zip fájlban található **arm_template. JSON** fájl.
 
    ![Sablon szerkesztése](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
-1. A beállítások szakaszban adja meg a konfigurációs értékeket, például a csatolt szolgáltatás hitelesítő adatait. Ha elkészült, válassza a **Vásárlás** lehetőséget az Erőforrás-kezelő sablon telepítéséhez.
+1. A beállítások szakaszban adja meg a konfigurációs értékeket, például a társított szolgáltatás hitelesítő adatait. Ha elkészült, válassza a **vásárlás** lehetőséget a Resource Manager-sablon telepítéséhez.
 
    ![Beállítások szakasz](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ### <a name="connection-strings"></a>Kapcsolati sztringek
 
-A kapcsolati karakterláncok konfigurálásáról az összekötő cikkében olvashat. Az Azure SQL Database esetében például lásd: [Adatok másolása az Azure SQL Database-be vagy onnan az Azure Data Factory használatával.](connector-azure-sql-database.md) A kapcsolati karakterlánc ellenőrzéséhez nyissa meg az erőforrás kódnézetét a Data Factory UX-ben. Kódnézetben a kapcsolati karakterlánc jelszó- vagy fiókkulcs-része törlődik. A kódnézet megnyitásához jelölje ki az itt kiemelt ikont:
+A kapcsolódási karakterláncok konfigurálásával kapcsolatos információkért tekintse meg az összekötő cikkét. Azure SQL Database esetében például az [adatok másolása Azure SQL Databaseba vagy a Azure Data Factory használatával](connector-azure-sql-database.md)című részből tájékozódhat. A kapcsolódási karakterlánc ellenőrzéséhez megnyithatja az erőforráshoz tartozó kódot a Data Factory UX-ben. A kód nézetben a rendszer eltávolítja a kapcsolatok karakterláncának jelszavát vagy a fiók kulcsát. A kód nézet megnyitásához válassza ki a Kiemelt ikont:
 
-![Kódnézet megnyitása a kapcsolati karakterlánc megtekintéséhez](media/continuous-integration-deployment/continuous-integration-codeview.png)
+![A kapcsolódási karakterlánc megjelenítéséhez nyissa meg a kód nézetet](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
-## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>A folyamatos integráció automatizálása az Azure Pipelines-kiadások használatával
+## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>Folyamatos integráció automatizálása az Azure-folyamatok kiadásaival
 
-Az alábbiakban egy azure-folyamatkiadás beállításához, amely automatizálja az adatgyár üzembe helyezését több környezetben.
+Az alábbi útmutató az Azure-folyamatok kiadásának beállításához nyújt útmutatást, amely automatizálja az adatelőállítók több környezetbe való telepítését.
 
 ![Az Azure-folyamatokkal való folyamatos integráció diagramja](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Követelmények
 
--   A Visual Studio Team Foundation Server kiszolgálóhoz vagy az Azure-repókhoz kapcsolódó Azure-előfizetés, amely az [Azure Resource Manager szolgáltatásvégpontot](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)használja.
+-   A Visual Studio Team Foundation Serverhoz vagy az [Azure Resource Manager szolgáltatási végpontot](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)használó Azure reposhez kapcsolódó Azure-előfizetés.
 
--   Az Azure Repos Git-integrációval konfigurált adatgyár.
+-   Az Azure Repos git-integrációja által konfigurált adatelőállító.
 
--   Egy [Azure-kulcstartó,](https://azure.microsoft.com/services/key-vault/) amely tartalmazza az egyes környezetek titkos kulcsait.
+-   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , amely az egyes környezetek titkait tartalmazza.
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Azure-folyamatok kiadásának beállítása
 
-1.  Az [Azure DevOps](https://dev.azure.com/)alkalmazásban nyissa meg az adat-előállítóval konfigurált projektet.
+1.  Az [Azure DevOps](https://dev.azure.com/)nyissa meg az adatai-előállítóval konfigurált projektet.
 
-1.  A lap bal oldalán válassza a **Folyamatok**lehetőséget, majd a **Felengedések**lehetőséget.
+1.  A lap bal oldalán válassza a **folyamatok**, majd a **kiadások**elemet.
 
     ![Folyamatok, kiadások kiválasztása](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  Válassza az **Új folyamat lehetőséget,** vagy ha már rendelkezik meglévő folyamatokkal, válassza az **Új,** majd **az Új kiadási folyamat lehetőséget.**
+1.  Válassza az **új folyamat**lehetőséget, vagy ha meglévő folyamatokkal rendelkezik, válassza az **új** , majd az **új kiadási folyamat**lehetőséget.
 
-1.  Válassza az **Üres feladat** sablont.
+1.  Válassza ki az **üres** sablont.
 
-    ![Üres feladat kiválasztása](media/continuous-integration-deployment/continuous-integration-image13.png)
+    ![Üres feladatok kiválasztása](media/continuous-integration-deployment/continuous-integration-image13.png)
 
-1.  A **Színpad neve** mezőbe írja be a környezet nevét.
+1.  A **szakasz neve** mezőben adja meg a környezet nevét.
 
-1.  Válassza **a Műtermék hozzáadása**lehetőséget, majd válassza ki az adat-előállítóval konfigurált tárházat. Válassza ki az **alapértelmezett ág** **adf_publish.** Az **Alapértelmezett verzió**mezőben válassza a **Legújabb lehetőséget az alapértelmezett ágból**.
+1.  Válassza az összetevő **hozzáadása**lehetőséget, majd válassza ki az adattárakkal konfigurált tárházat. Válassza ki a **adf_publish** az **alapértelmezett ág**számára. Az **alapértelmezett verziónál**válassza a **legutóbbi lehetőséget az alapértelmezett ág**lehetőségnél.
 
     ![Összetevő hozzáadása](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  Azure Resource Manager telepítési feladat hozzáadása:
 
-    a.  A színpadnézetben válassza a **Színpadi feladatok megtekintése**lehetőséget.
+    a.  A fázis nézetben válassza a **fázis-feladatok megtekintése**lehetőséget.
 
-    ![Színpadnézet](media/continuous-integration-deployment/continuous-integration-image14.png)
+    ![Szakasz nézet](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Hozzon létre egy új feladatot. Keressen az Azure Resource Group Deployment ( Azure Resource Group Deployment ) **elemre,** majd válassza **a Hozzáadás**lehetőséget.
+    b.  Hozzon létre egy új feladatot. Keressen rá az **Azure erőforráscsoport-telepítésre**, majd válassza a **Hozzáadás**lehetőséget.
 
-    c.  A Központi telepítés feladatban válassza ki az előfizetést, az erőforráscsoportot és a céladat-előállító helyét. Szükség esetén adja meg a hitelesítő adatokat.
+    c.  A központi telepítési feladat területen válassza ki az előfizetést, az erőforráscsoportot és a célhelyet a cél adat-előállító számára. Szükség esetén adja meg a hitelesítő adatokat.
 
-    d.  A **Művelet** listában válassza az **Erőforráscsoport létrehozása vagy frissítése**lehetőséget.
+    d.  A **művelet** listában válassza az **erőforráscsoport létrehozása vagy frissítése**lehetőséget.
 
-    e.  Válassza a három pont gombot (**...**) a **Sablon** mező mellett. Keresse meg az Azure Resource Manager sablont, amelyet az **ARM-sablon importálása parancathasznál** hozott létre a [Cikk minden környezetéhez az Erőforrás-kezelő sablon létrehozása](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment) című szakaszban. Keresse meg ezt <FactoryName> a fájlt a adf_publish ág mappájában.
+    e.  Kattintson a három pont gombra (**...**) a **sablon** mező mellett. Keresse meg a jelen cikk [Resource Manager-sablon létrehozása az egyes környezetekhez](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment) című részében, az **import ARM sablonnal** létrehozott Azure Resource Manager-sablont. Keresse meg ezt a fájlt az <FactoryName> adf_publish ág mappájába.
 
-    f.  Válassza ki **a ...** a **Sablon paraméterek** mező mellett a paraméterfájl kiválasztásához. A választott fájl attól függ, hogy létrehozott-e másolatot, vagy az alapértelmezett ARMTemplateParametersForFactory.json fájlt használja.
+    f.  Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt. A kiválasztott fájl attól függ, hogy létrehozott-e egy másolatot, vagy az alapértelmezett fájlt, a ARMTemplateParametersForFactory. JSON-t használja.
 
-    g.  Válassza ki **a ...** a **Sablon paramétereinek felülbírálása** mező mellett, és adja meg a céladat-előállító adatait. Az Azure Key Vaultból származó hitelesítő adatokért adja meg a titkos kulcs nevét a dupla idézőjelek között. Ha például a titkos adatik, akkor írja be a **"$(cred1)"** értéket ehhez az értékhez.
+    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél adat-előállító adatait. Azure Key Vaultból származó hitelesítő adatok esetén adja meg a titkos kulcs nevét idézőjelek között. Ha például a titkos kód neve cred1, akkor adja meg a **"$ (cred1)"** értéket ehhez az értékhez.
 
-    h. Válassza a **Növekményes** lehetőséget a **központi telepítési módhoz.**
+    h. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz**.
 
     > [!WARNING]
-    > Ha a Telepítés módhoz a **Befejezés** lehetőséget **választja,** előfordulhat, hogy a meglévő erőforrások törlődnek, beleértve a célerőforrás-csoport minden olyan erőforrását, amely nincs definiálva az Erőforrás-kezelő sablonban.
+    > Ha a **Befejezés** lehetőséget választja a **központi telepítési módhoz**, a meglévő erőforrások törölhetők, beleértve a Resource Manager-sablonban nem definiált cél erőforráscsoport összes erőforrását.
 
-    ![Adatgyári termékkönyvelés](media/continuous-integration-deployment/continuous-integration-image9.png)
+    ![Gyártási Data Factory](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  Mentse a kiadási folyamatot.
+1.  A kiadási folyamat mentése.
 
-1. A kiadás aktiválásához válassza a **Kiadás létrehozása lehetőséget.**
+1. A kiadás elindításához válassza a **kiadás létrehozása**lehetőséget.
 
-   ![Válassza a Kiadás létrehozása lehetőséget.](media/continuous-integration-deployment/continuous-integration-image10.png)
+   ![Válassza a kiadás létrehozása lehetőséget](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 > [!IMPORTANT]
-> CI/CD-forgatókönyvekben az integrációs futásidejű (IR) típusnak különböző környezetekben azonosnak kell lennie. Ha például a fejlesztői környezetben saját üzemeltetett infravörös rendszerrel rendelkezik, akkor ugyanaznak az infravörös rendszernek más környezetekben, például tesztelési és éles környezetekben is saját üzemeltetett típusúnak kell lennie. Hasonlóképpen, ha több szakaszban osztja meg az integrációs futásidőket, az integrációs futásidőket minden környezetben, például a fejlesztésben, a tesztelésben és az éles környezetben összekapcsolt önálló üzemeltetésként kell konfigurálnia.
+> A CI/CD-helyzetekben a különböző környezetekben lévő Integration Runtime (IR) típusnak azonosnak kell lennie. Ha például saját üzemeltetésű integrációs modult használ a fejlesztési környezetben, akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell eltárolni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.
 
-### <a name="get-secrets-from-azure-key-vault"></a>Titkok beszerezése az Azure Key Vaultból
+### <a name="get-secrets-from-azure-key-vault"></a>Titkok beolvasása Azure Key Vault
 
-Ha egy Azure Resource Manager-sablonban titkos kulcsokat szeretne átadni, azt javasoljuk, hogy az Azure Key Vault ot használja az Azure Pipelines kiadásával.
+Ha Azure Resource Manager-sablonban titkos kulcsokkal rendelkezik, javasoljuk, hogy a Azure Key Vaultt az Azure-folyamatok kiadásával használja.
 
-A titkok kezelésének két módja van:
+A titkokat kétféleképpen kezelheti:
 
-1.  Adja hozzá a titkos kulcsokat a paraméterfájlhoz. További információ: [Az Azure Key Vault használata a biztonságos paraméter értékének a telepítés során történő átadásához](../azure-resource-manager/templates/key-vault-parameter.md)című témakörben talál.
+1.  Adja hozzá a titkokat a parameters (paraméterek) fájlhoz. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)átadására az üzembe helyezés során.
 
-    Hozzon létre egy másolatot a paraméterek fájl, amely feltöltötte a közzétételi ágba. Állítsa be a Key Vaultból beszerezni kívánt paraméterek értékeit a következő formátummal:
+    Hozzon létre egy másolatot a közzétételi ágra feltöltött Parameters fájlról. Adja meg azoknak a paramétereknek az értékeit, amelyeket Key Vault szeretne kapni a következő formátum használatával:
 
     ```json
     {
@@ -169,31 +169,31 @@ A titkok kezelésének két módja van:
     }
     ```
 
-    Ha ezt a módszert használja, a titkos kulcs automatikusan lekéri a key vault.
+    Ha ezt a módszert használja, a titkos kulcsot a rendszer automatikusan kihúzta a kulcstartóból.
 
-    A paraméterfájlnak a közzétételi ágban is meg kell lennie.
+    A paraméterek fájljának a közzétételi ágban is szerepelnie kell.
 
-1. Adjon hozzá egy [Azure Key Vault-feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager-telepítési feladat előtt:
+1. Az előző szakaszban ismertetett Azure Resource Manager központi telepítési feladat előtt adjon hozzá egy [Azure Key Vault feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) :
 
-    1.  A **Feladatok** lapon hozzon létre egy új feladatot. Keresse meg az **Azure Key Vault ot,** és adja hozzá.
+    1.  A **feladatok** lapon hozzon létre egy új feladatot. Keressen rá **Azure Key Vault** és vegye fel.
 
-    1.  A Key Vault feladatválassza ki az előfizetést, amelyben létrehozta a key vault. Adja meg a hitelesítő adatokat, ha szükséges, majd válassza ki a key vault.
+    1.  A Key Vault feladatban válassza ki azt az előfizetést, amelyben létrehozta a kulcstartót. Szükség esetén adja meg a hitelesítő adatokat, majd válassza ki a Key vaultot.
 
-    ![Key Vault-feladat hozzáadása](media/continuous-integration-deployment/continuous-integration-image8.png)
+    ![Key Vault feladat hozzáadása](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure Pipelines ügynöknek
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynökének
 
-Előfordulhat, hogy az Azure Key Vault-feladat sikertelen lehet egy Hozzáférés megtagadva hibával, ha a megfelelő engedélyek nincsenek beállítva. Töltse le a kiadások naplóit, és keresse meg a parancsot tartalmazó .ps1 fájlt, amely engedélyeket ad az Azure Pipelines ügynöknek. A parancs közvetlenül futtatható. Vagy másolhatja az egyszerű azonosítót a fájlból, és manuálisan hozzáadhatja a hozzáférési szabályzatot az Azure Portalon. `Get`és `List` a minimális anammindát a szükséges minimális engedélyeket.
+Ha a megfelelő engedélyek nincsenek beállítva, a Azure Key Vault feladat meghiúsulhat a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg azt a. ps1 fájlt, amely a parancsot tartalmazza az Azure-folyamatok ügynökének engedélyek megadásához. A parancsot közvetlenül is futtathatja. Vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. `Get`és `List` a minimálisan szükséges engedélyek.
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 
-Az üzembe helyezés sikertelen lehet, ha megpróbálja frissíteni az aktív eseményindítókat. Az aktív eseményindítók frissítéséhez manuálisan le kell állítania őket, majd újra kell indítania őket a telepítés után. Ezt egy Azure PowerShell-feladat használatával teheti meg:
+A központi telepítés meghiúsulhat, ha megpróbál frissíteni az aktív eseményindítókat. Az aktív eseményindítók frissítéséhez manuálisan kell leállítania azokat, majd újra kell indítania őket a telepítés után. Ezt egy Azure PowerShell feladat használatával teheti meg:
 
-1.  A **kiadás Feladatok** lapján adjon hozzá egy **Azure PowerShell-feladatot.** Válassza a feladat 4-es verzióját.*. 
+1.  A kiadás **feladatok** lapján adjon hozzá egy **Azure PowerShell** feladatot. Válassza a feladat 4-es verziója. * lehetőséget. 
 
 1.  Válassza ki azt az előfizetést, amelyben a gyár található.
 
-1.  Parancsfájlelérési **út kiválasztása** parancsfájltípusként. Ehhez a PowerShell-parancsfájlt a tárházban kell mentenie. A következő PowerShell-parancsfájl használható az eseményindítók leállításához:
+1.  Adja meg a **parancsfájl elérési útját** parancsfájl típusaként. Ehhez mentenie kell a PowerShell-szkriptet a tárházba. Az eseményindítók leállításához a következő PowerShell-parancsfájl használható:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -201,24 +201,24 @@ Az üzembe helyezés sikertelen lehet, ha megpróbálja frissíteni az aktív es
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-Hasonló lépéseket végezhet el `Start-AzDataFactoryV2Trigger` (a funkcióval) az eseményindítók üzembe helyezés után történő újraindításához.
+A hasonló lépések végrehajtásával (a `Start-AzDataFactoryV2Trigger` függvénnyel) újraindíthatja az eseményindítókat az üzembe helyezés után.
 
-### <a name="sample-pre--and-post-deployment-script"></a>A telepítés előtti és utáni parancsfájl minta
+### <a name="sample-pre--and-post-deployment-script"></a>Példa előtti és utáni parancsfájl
 
-A következő mintaparancsfájl használható az eseményindítók leállításához az üzembe helyezés előtt, majd ezután újraindítva. A parancsfájl tartalmazza az eltávolított erőforrások törlésére vonatkozó kódot is. Mentse a parancsfájlt egy Azure DevOps git-tárházba, és hivatkozzon rá egy Azure PowerShell-feladaton keresztül a 4-es verzió használatával.*.
+A következő minta-parancsfájl segítségével leállíthatja az eseményindítókat a telepítés előtt, és később újraindíthatja őket. A parancsfájl emellett kódot is tartalmaz az eltávolított erőforrások törléséhez. Mentse a parancsfájlt egy Azure DevOps git-tárházban, és hivatkozzon egy Azure PowerShell-feladaton keresztül a 4-es verziójú. * használatával.
 
-A központi telepítés előtti parancsfájl futtatásakor a **parancsfájl argumentumok** mezőben meg kell adnia a következő paraméterek egy változatát.
+Az üzembe helyezés előtti parancsfájl futtatásakor meg kell adnia a következő paraméterek variációját a **parancsfájl argumentumai** mezőben.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
 
 
-A telepítés utáni parancsfájl futtatásakor a **parancsfájl argumentumok** mezőben meg kell adnia a következő paraméterek egy változatát.
+Üzembe helyezés utáni parancsfájl futtatásakor meg kell adnia a következő paraméterek variációját a **parancsfájl argumentumai** mezőben.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-![Azure PowerShell-feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Itt van a szkript, amely használható az elő- és utótelepítés. A törölt erőforrásokat és erőforrás-hivatkozásokat figyelembe teszi.
+Itt látható az üzembe helyezés előtti és utáni telepítéshez használható szkript. A törölt erőforrásokhoz és erőforrás-hivatkozásokhoz tartozó fiókok.
 
 ```powershell
 param
@@ -484,35 +484,35 @@ else {
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata Resource Manager-sablonnal
 
-Ha GIT módban van, felülbírálhatja az Erőforrás-kezelő sablon alapértelmezett tulajdonságait a sablonban paraméterezett és a nehezen kódolt tulajdonságok beállításához. A következő esetekben érdemes felülírni az alapértelmezett paraméterezési sablont:
+Ha GIT módban van, felülbírálhatja a Resource Manager-sablonban található alapértelmezett tulajdonságokat a sablonban és a nehezen kódolt tulajdonságok által megadott tulajdonságok beállításához. A következő forgatókönyvekben érdemes lehet felülbírálni az alapértelmezett paraméterezés-sablont:
 
-* Automatikus CI/CD-t használ, és néhány tulajdonságot módosítani szeretne az Erőforrás-kezelő központi telepítése során, de a tulajdonságok alapértelmezés szerint nincsenek paraméterezve.
-* A gyár olyan nagy, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan engedélyezett paraméterek (256).
+* Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
+* A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Ilyen körülmények között az alapértelmezett paraméterezési sablon felülbírálásához hozzon létre egy **arm-template-parameters-definition.json** nevű fájlt az adatgyári git-integráció gyökérmappájaként megadott mappában. Pontosan ezt a fájlnevet kell használnia. A Data Factory ezt a fájlt az Azure Data Factory portálon jelenleg lévő ágból olvassa be, nem csak az együttműködési ágból. A fájlt létrehozhatja vagy szerkesztheti egy privát ágból, ahol a módosításokat a felhasználói felület **ARM-sablon exportálása** lehetőség kiválasztásával tesztelheti. Ezután egyesítheti a fájlt az együttműködési ágba. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
+Ilyen körülmények között az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy **ARM-template-Parameters-definition. JSON** nevű fájlt a adat-előállító git-integrációjának gyökérkönyvtárában megadott mappában. Pontosan ezt a fájlnevet kell használnia. Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
 
 > [!NOTE]
-> Az egyéni paraméterezési sablon nem módosítja az ARM sablon paraméterkori 256-os korlátját. Lehetővé teszi a paraméterezett tulajdonságok számának kiválasztását és csökkentését.
+> Az egyéni paraméterezés-sablonok nem változtatják meg az ARM-sablon 256-as korlátját. Lehetővé teszi a paraméteres tulajdonságok számának kiválasztását és csökkentését.
 
-### <a name="syntax-of-a-custom-parameters-file"></a>Egyéni paraméterfájl szintaxisa
+### <a name="syntax-of-a-custom-parameters-file"></a>Egyéni paraméterek fájljának szintaxisa
 
-Az alábbiakban az egyéni paraméterfájl létrehozásakor követendő néhány irányelvet kell követnie. A fájl minden entitástípushoz tartalmaz egy szakaszt: eseményindító, folyamat, csatolt szolgáltatás, adatkészlet, integrációs futásidő és így tovább.
-* Adja meg a tulajdonság elérési útját a megfelelő entitástípus alatt.
-* Ha egy tulajdonságnevet állít be, `*` azt jelzi, hogy az alatta lévő összes tulajdonságot paraméterezni szeretné (csak az első szintig, nem rekurzívan). A konfiguráció alól kivételeket is megadhat.
-* A tulajdonság értékének karakterláncként való beállítása azt jelzi, hogy paraméterezni szeretné a tulajdonságot. A formátum `<action>:<name>:<stype>`használata .
-   *  `<action>` lehet az alábbi karakterek egyike:
-      * `=` azt jelenti, hogy az aktuális értéket megtartja a paraméter alapértelmezett értékeként.
-      * `-` azt jelenti, hogy ne tartsa meg a paraméter alapértelmezett értékét.
-      * `|` egy különleges eset az Azure Key Vault ból származó kapcsolatok és kulcsok titkos titkait.
-   * `<name>` a paraméter neve. Ha üres, akkor az ingatlan nevét veszi fel. Ha az érték `-` karakterrel kezdődik, a név lerövidül. Például `AzureStorage1_properties_typeProperties_connectionString` a . `AzureStorage1_connectionString`
-   * `<stype>` a paraméter típusa. Ha `<stype>` üres, az alapértelmezett `string`típus a . `string`Támogatott értékek: `bool` `number`, `object`, `securestring`, , és .
-* Ha egy tömböt ad meg a definíciós fájlban, az azt jelzi, hogy a sablonban lévő megfelelő tulajdonság tömb. A Data Factory a tömb összes objektumát végighalad a tömb integrációs futásidejű objektumában megadott definíció használatával. A második objektum, a karakterlánc lesz a tulajdonság neve, amely az egyes ismétlések paraméterének neveként használatos.
-* A definíció nem lehet egy erőforrás-példányra jellemző. Minden meghatározás az adott típusú összes erőforrásra vonatkozik.
-* Alapértelmezés szerint minden biztonságos karakterláncok, például a Key Vault titkos kulcsait, és a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és jogkivonatok, paraméterezett.
+Az egyéni paraméterek fájljának létrehozásakor kövesse az alábbi irányelveket. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs futtatókörnyezet stb.
+* Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
+* A tulajdonságnév beállítása `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
+* Egy tulajdonság értékének karakterláncként való megadása azt jelzi, hogy meg kívánja parametrizálja a tulajdonságot. Használja a formátumot `<action>:<name>:<stype>`.
+   *  `<action>` a következő karakterek egyike lehet:
+      * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként tárolja.
+      * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
+      * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
+   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString`.
+   * `<stype>` a paraméter típusa. Ha `<stype>` a értéke üres, az alapértelmezett típus `string`:. Támogatott értékek: `string`, `bool` `number` `object`,, és `securestring`.
+* Egy tömb megadása a definíciós fájlban azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. Data Factory a tömbben lévő összes objektumon megismétli a tömböt az Integration Runtime objektumában megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
+* Egy definíció nem lehet egy adott erőforrás-példányra jellemző. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
+* Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok, valamint a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és tokenek paraméterei.
  
-### <a name="sample-parameterization-template"></a>Minta paraméterezési sablonja
+### <a name="sample-parameterization-template"></a>Minta paraméterezés-sablon
 
-Íme egy példa arra, hogyan nézhet ki egy paraméterezési sablon:
+Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan néznek ki:
 
 ```json
 {
@@ -573,35 +573,35 @@ Az alábbiakban az egyéni paraméterfájl létrehozásakor követendő néhány
     }
 }
 ```
-Íme egy magyarázat az előző sablon felépítésére, erőforrástípus szerinti bontásban.
+Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
 #### <a name="pipelines"></a>Folyamatok
     
-* Az elérési út `activities/typeProperties/waitTimeInSeconds` bármely tulajdonsága paraméterezett. A folyamat minden olyan tevékenysége, amelynek kódszintű tulajdonsága (például `waitTimeInSeconds` a `Wait` tevékenység) kódszintű tulajdonsággal van elnevezve, számként van paraméterezve, alapértelmezett névvel. De nem lesz alapértelmezett értéke az Erőforrás-kezelő sablonban. Kötelező bemenet lesz az Erőforrás-kezelő központi telepítése során.
-* Hasonlóképpen a (például egy `headers` `Web` tevékenységben) megnevezett tulajdonság `object` ot a típus (JObject) paraméterezi. Alapértelmezett értéke megegyezik a forrásgyár értékével.
+* Az elérési út `activities/typeProperties/waitTimeInSeconds` bármely tulajdonsága paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
+* Hasonlóképpen, egy nevű `headers` tulajdonság (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
 
-#### <a name="integrationruntimes"></a>Integrációs futtatási idők
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Az elérési út `typeProperties` alatti összes tulajdonság a megfelelő alapértelmezett értékekkel van paraméterezve. A típustulajdonságok alatt `IntegrationRuntimes` például két `computeProperties` `ssisProperties`tulajdonság található: és a . Mindkét tulajdonságtípus a saját alapértelmezett értékeivel és típusaival (Objektum) jön létre.
+* Az elérési út `typeProperties` alatti összes tulajdonság a megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és. `ssisProperties` Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
 #### <a name="triggers"></a>Eseményindítók
 
-* A `typeProperties`területen két tulajdonság paraméterezve. Az első `maxConcurrency`a , amely alapértelmezett értékkel rendelkezik`string`, és típusa van . Ez birtokol a `<entityName>_properties_typeProperties_maxConcurrency`hiba paraméter név .
-* A `recurrence` tulajdonság is paraméterezett. Alatta az ezen a szinten található összes tulajdonság karakterláncként van paraméterezve, alapértelmezett értékekkel és paraméternevekkel. Kivételt képez `interval` a tulajdonság, amely `number`típusként van paraméterezve. A paraméter neve a `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Hasonlóképpen a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterezve. A `freq` tulajdonság paraméterezése azonban alapértelmezett érték nélkül történik. A név rövidítésre és utótagra kerül. Például: `<entityName>_freq`.
+* A `typeProperties`rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency`, amely az alapértelmezett értékkel van megadva, és típusa`string`. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`.
+* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként `number`van paraméterként. A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>Csatolt szolgáltatások
+#### <a name="linkedservices"></a>LinkedServices
 
-* A csatolt szolgáltatások egyediek. Mivel a csatolt szolgáltatások és adatkészletek sokféle típussal rendelkeznek, típusspecifikus testreszabást is biztosíthat. Ebben a példában az összes `AzureDataLakeStore`kapcsolódó szolgáltatás típusára egy adott sablon kerül alkalmazásra. Az összes többi `*`(via) esetében egy másik sablon kerül alkalmazásra.
-* A `connectionString` tulajdonság paraméterezése `securestring` értékként lesz megadva. Nem lesz alapértelmezett értéke. Rövidített paraméterneve lesz, amely a . `connectionString`
-* A `secretAccessKey` tulajdonság történetesen egy `AzureKeyVaultSecret` (például egy Amazon S3 kapcsolt szolgáltatás). Automatikusan paraméterezi az Azure Key Vault titkos kulcsaként, és a konfigurált kulcstartóból lekéri. Azt is paraméterezheti a key vault is.
+* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában az összes típusú `AzureDataLakeStore`társított szolgáltatás esetében egy adott sablon lesz alkalmazva. Minden más (a szolgáltatáson keresztül `*`) egy másik sablon lesz alkalmazva.
+* A `connectionString` tulajdonság `securestring` értéke paraméterként fog megjelenni. Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a (z) utótaggal van ellátva `connectionString`.
+* A tulajdonság `secretAccessKey` egy `AzureKeyVaultSecret` (például egy Amazon S3-beli társított szolgáltatás) esetében történik. Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
 
 #### <a name="datasets"></a>Adathalmazok
 
-* Bár az adatkészletek típusspecifikus testreszabása elérhető, a konfigurációt \*explicit szintű konfiguráció nélkül is biztosíthatja. Az előző példában az összes `typeProperties` adatkészlet-tulajdonságok alatt paraméterezett.
+* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon \*nem lehet konfigurálni. Az előző példában az összes adatkészlet-tulajdonság paraméterrel `typeProperties` van elfoglalva.
 
-### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezési sablon
+### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezés-sablon
 
-A következőkben az aktuális alapértelmezett paraméterezési sablon látható. Ha csak néhány paramétert kell hozzáadnia, a sablon közvetlen szerkesztése jó ötlet lehet, mert nem veszíti el a meglévő paraméterezési struktúrát.
+A következő az aktuális alapértelmezett paraméterezés sablon. Ha csak néhány paramétert kell felvennie, a sablon közvetlen szerkesztése jó ötlet lehet, mivel nem fogja elveszíteni a meglévő paraméterezés-struktúrát.
 
 ```json
 {
@@ -711,7 +711,7 @@ A következőkben az aktuális alapértelmezett paraméterezési sablon láthat�
 }
 ```
 
-A következő példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezési sablonhoz. Csak egy meglévő Azure Databricks interaktív fürtazonosítót szeretnénk hozzáadni egy Databricks csatolt szolgáltatáshoz a paraméterfájlhoz. Ne feledje, hogy ez a fájl megegyezik `existingClusterId` az előző `Microsoft.DataFactory/factories/linkedServices`fájllal, kivéve a tulajdonságmező ben való hozzáadását.
+Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezés-sablonhoz. Csak egy meglévő Azure Databricks interaktív Databricks szeretnénk hozzáadni egy társított szolgáltatáshoz a Parameters fájlhoz. Vegye figyelembe, hogy ez a fájl ugyanaz, mint az előző fájl, kivéve a `existingClusterId` tulajdonságok mezőjének hozzáadásával `Microsoft.DataFactory/factories/linkedServices`.
 
 ```json
 {
@@ -822,65 +822,65 @@ A következő példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapé
 }
 ```
 
-## <a name="linked-resource-manager-templates"></a>Csatolt erőforrás-kezelő sablonok
+## <a name="linked-resource-manager-templates"></a>Társított Resource Manager-sablonok
 
-Ha ci/CD-t állított be az adatgyárakhoz, előfordulhat, hogy túllépi az Azure Resource Manager sablonkorlátait, ahogy a gyár nagyobblesz. Az egyik korlát például az Erőforrás-kezelő sablonban lévő erőforrások maximális száma. A nagy gyárak befogadásához a gyár teljes Resource Manager-sablonjának létrehozása közben a Data Factory most összekapcsolt Erőforrás-kezelő sablonokat hoz létre. Ezzel a funkcióval a teljes gyári hasznos adat több fájlra van bontva, így nem korlátozzák a korlátok.
+Ha beállította a CI/CD-t az adatgyárai számára, akkor előfordulhat, hogy túllépi a Azure Resource Manager-sablon korlátait, mivel a gyár nagyobb mértékben növekszik. Például az egyik korlát az erőforrások maximális száma egy Resource Manager-sablonban. Ha a gyár teljes Resource Manager-sablonjának létrehozásakor nagy gyárakat szeretne kiszolgálni, Data Factory mostantól társított Resource Manager-sablonokat hoz létre. Ezzel a szolgáltatással a teljes gyári adattartalom több fájlra van bontva, így nem korlátozza a korlátokat.
 
-Ha konfigurálta a Git-et, a csatolt sablonok a adf_publish ágteljes Erőforrás-kezelő sablonjai mellett jönnek létre és kerülnek mentésre egy új mappában, amelynek neve linkedTemplates:
+Ha a git-t konfigurálta, a csatolt sablonok a adf_publish ág teljes Resource Manager-sablonjai mellett jönnek létre és menthetők egy új, linkedTemplates nevű mappában:
 
-![Csatolt erőforrás-kezelő sablonok mappája](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+![Társított Resource Manager-sablonok mappája](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-A csatolt Erőforrás-kezelő sablonok általában egy fősablonból és a mesteroldalhoz kapcsolódó gyermeksablonokból állnak. A szülősablon neve ArmTemplate_master.json, és a gyermeksablonok neve a ArmTemplate_0.json, ArmTemplate_1.json és így tovább mintával. 
+A társított Resource Manager-sablonok általában egy fősablonból és egy, a főkiszolgálóhoz csatolt alárendelt sablonokból állnak. A fölérendelt sablon neve ArmTemplate_master. JSON, és a gyermek sablonok neve a következő mint ArmTemplate_0. JSON, ArmTemplate_1. JSON stb. 
 
-Ha a teljes Erőforrás-kezelő sablon helyett csatolt sablonokat szeretne használni, frissítse a CI/CD-feladatot úgy, hogy az ArmTemplateForFactory.json (a teljes Erőforrás-kezelő sablon) helyett ArmTemplate_master.jsonra mutasson. Az Erőforrás-kezelő azt is megköveteli, hogy a csatolt sablonokat egy tárfiókba töltse fel, hogy az Azure a központi telepítés során elérhesse őket. További információ: [Csatolt Erőforrás-kezelő sablonok telepítése VSTS-sel.](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)
+Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használni, frissítse a CI/CD-feladatot úgy, hogy a ArmTemplateForFactory. JSON helyett a ArmTemplate_master. JSON fájlra mutasson (a teljes Resource Manager-sablon). A Resource Manager emellett azt is megköveteli, hogy a csatolt sablonokat egy Storage-fiókba töltse fel, hogy az Azure az üzembe helyezés során is hozzáférhessen. További információ: [a társított Resource Manager-sablonok üzembe helyezése a vsts](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
-Ne felejtse el hozzáadni a Data Factory parancsfájlokat a CI/CD-folyamathoz a telepítési feladat előtt és után.
+Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üzembe helyezési feladat előtt és után.
 
-Ha nincs konfigurálva a Git, az **ARM-sablon exportálása** segítségével elérheti a csatolt sablonokat az **ARM sablon** listában.
+Ha nincs beállítva a git, a csatolt sablonokat az **ARM-sablonok** listájában, az **Exportálás ARM-sablon** használatával érheti el.
 
-## <a name="hotfix-production-branch"></a>Gyorsjavítás termelési ága
+## <a name="hotfix-production-branch"></a>Gyorsjavítások üzemi ága
 
-Ha üzembe helyez egy gyárat éles környezetben, és rájön, hogy van egy hiba, amelyet azonnal ki kell javítani, de nem tudja telepíteni az aktuális együttműködési ágat, előfordulhat, hogy telepítenie kell egy gyorsjavítást. Ez a megközelítés az úgynevezett gyorsjavítás-tervezés vagy QFE.
+Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal, amelyet azonnal meg kell oldani, de nem tudja telepíteni az aktuális együttműködési ágat, előfordulhat, hogy telepítenie kell egy gyorsjavítást. Ez a megközelítés a Quick-Fix Engineering vagy a QFE.
 
-1.    Az Azure DevOps-ban nyissa meg az éles környezetben üzembe helyezett kiadást. Keresse meg az utoljára telepített véglegesítést.
+1.    Az Azure DevOps nyissa meg az éles környezetben üzembe helyezett kiadást. A legutóbb telepített véglegesítő keresése.
 
-2.    A véglegesítési üzenetből lekell szereznie az együttműködési ág véglegesítési azonosítóját.
+2.    A véglegesítő üzenetből szerezze be az együttműködési ág véglegesítő AZONOSÍTÓját.
 
-3.    Hozzon létre egy új gyorsjavítás-ágat a véglegesítésből.
+3.    Hozzon létre egy új gyorsjavítási ágat ebből a véglegesítve.
 
-4.    Nyissa meg az Azure Data Factory felhasználói felületét, és váltson a gyorsjavítási ágra.
+4.    Lépjen a Azure Data Factory UX-re, és váltson a gyorsjavítási ágra.
 
-5.    Az Azure Data Factory UX használatával javítsa ki a hibát. Tesztelje a módosításokat.
+5.    A Azure Data Factory UX használatával javítsa ki a hibát. Tesztelje a módosításokat.
 
-6.    A javítás ellenőrzése után válassza az **ARM-sablon exportálása** lehetőséget a gyorsjavítás Erőforrás-kezelő sablonjának leigazolásához.
+6.    A javítás ellenőrzése után válassza az **ARM-sablon exportálása** lehetőséget a gyorsjavítási erőforrás-kezelő sablon beszerzéséhez.
 
-7.    Manuálisan ellenőrizze ezt a buildet a adf_publish ágba.
+7.    Ezt a buildet manuálisan is bejelölheti az adf_publish ágra.
 
-8.    Ha úgy állította be a kiadási folyamatot, hogy a bejelentkezések alapján automatikusan aktiválódjon adf_publish, automatikusan elindul egy új kiadás. Ellenkező esetben manuálisan sorakasztja fel a kiadást.
+8.    Ha úgy állította be a kiadási folyamatot, hogy adf_publish-bejelentkezések alapján automatikusan aktiválódik, egy új kiadás automatikusan elindul. Ellenkező esetben manuálisan kell várólistát adni a kiadáshoz.
 
-9.    Telepítse a gyorsjavítás kiadását a teszt- és termelési gyárakba. Ez a kiadás tartalmazza az előző termelési hasznos tartalmat, valamint az 5.
+9.    Telepítse a gyorsjavítási kiadást a tesztelési és a termelési gyárakba. Ez a kiadás tartalmazza az előző éles adattartalmat, valamint az 5. lépésben elvégzett javítást.
 
-10.    Adja hozzá a gyorsjavítás módosításait a fejlesztői ághoz, hogy a későbbi kiadások ne tartalmazzák ugyanazt a hibát.
+10.    Vegye fel a módosításokat a gyorsjavításból a fejlesztési ágra, hogy a későbbi kiadások ne tartalmazzanak ugyanazt a hibát.
 
-## <a name="best-practices-for-cicd"></a>Gyakorlati tanácsok a CI/CD-hez
+## <a name="best-practices-for-cicd"></a>Ajánlott eljárások CI/CD-hez
 
-Ha Git-integrációt használ az adatelőállítóval, és rendelkezik egy CI/CD-folyamattal, amely a módosításokat a fejlesztésről a tesztre, majd a termelésre helyezi át, az alábbi ajánlott eljárásokat javasoljuk:
+Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD-folyamattal, amely a változásokat a fejlesztésből teszteli, majd éles környezetbe helyezi, javasoljuk az alábbi ajánlott eljárásokat:
 
--   **Git integráció**. Csak a fejlesztési adatgyárat kell konfigurálnia a Git-integrációval. A tesztelés és az éles környezet módosításai CI/CD-n keresztül kerülnek üzembe helyezésre, és nincs szükség Git-integrációra.
+-   **Git-integráció**. A git-integrációval csak a fejlesztői adatgyárat kell konfigurálnia. A tesztelés és a gyártás változásai a CI/CD-n keresztül települnek, és nincs szükség git-integrációra.
 
--   **Data Factory CI/CD parancsfájl**. Mielőtt az Erőforrás-kezelő üzembe helyezési lépés a CI/CD-ben, el kell végeznie bizonyos feladatokat, például az eseményindítók leállítását és újraindítását, valamint a karbantartást. Javasoljuk, hogy a PowerShell-parancsfájlok használata a központi telepítés előtt és után. További információ: [Aktív eseményindítók frissítése](#update-active-triggers).
+-   **Data Factory CI/CD-szkriptet**. A CI/CD-ben a Resource Manager üzembe helyezési lépése előtt végre kell hajtania bizonyos feladatokat, például az eseményindítók leállítását és újraindítását, valamint a tisztítást végző műveletet. Javasoljuk, hogy az üzembe helyezés előtt és után használjon PowerShell-parancsfájlokat. További információ: az [aktív eseményindítók frissítése](#update-active-triggers).
 
--   **Integrációs futásidők és megosztás**. Az integrációs futásidők nem változnak gyakran, és hasonlóak a CI/CD minden szakaszában. Így a Data Factory elvárja, hogy ugyanazt a nevet és típusú integrációs futásidejű minden szakaszában a CI / CD. Ha szeretné megosztani az integrációs futtatási szakaszok minden szakaszában, fontolja meg egy háromsági gyár csak a megosztott integrációs futtatások. Ezt a megosztott gyárat az összes környezetben használhatja csatolt integrációs futásidejű típusként.
+-   **Integrációs modulok és megosztás**. Az integrációs modulok nem változnak gyakran, és a CI/CD minden fázisában hasonlóak. Így Data Factory az integrációs modul azonos nevét és típusát várja a CI/CD minden szakaszában. Ha az integrációs modulokat minden fázisban meg szeretné osztani, érdemes lehet egy Ternáris-gyárat használni, amely csak a megosztott integrációs modulokat tartalmazza. Ezt a megosztott gyárat az összes környezetében használhatja társított Integration Runtime-típusként.
 
--   **Key Vault**. Ha az Azure Key Vault alapú összekapcsolt szolgáltatásokat használ, további kihasználása ként külön kulcstartók at különböző környezetekben. Az egyes kulcstartókhoz külön jogosultsági szinteket is konfigurálhat. Előfordulhat például, hogy nem szeretné, hogy a csapattagok éles titkokhoz engedélyeket adjanak. Ha ezt a módszert követi, azt javasoljuk, hogy tartsa meg ugyanazokat a titkos neveket az összes szakaszban. Ha megtartja ugyanazokat a neveket, nem kell módosítania az Erőforrás-kezelő sablonjait ci/CD-környezetekben, mert az egyetlen változás a kulcstartó neve, amely az Erőforrás-kezelő sablon paramétereinek egyike.
+-   **Key Vault**. Ha Azure Key Vault alapján társított szolgáltatásokat használ, a különböző környezetekhez külön kulcstartók használatával kihasználhatja őket. Külön jogosultsági szinteket is beállíthat mindegyik kulcstartóhoz. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha követi ezt a megközelítést, javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a neveket, nem kell megváltoztatnia a Resource Manager-sablonokat CI/CD-környezetekben, mert az egyetlen dolog, ami megváltoztatja a Key Vault nevét, amely a Resource Manager-sablon paramétereinek egyike.
 
-## <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-- A Data Factory nem teszi lehetővé a véglegesítések cseresznyeszedését vagy az erőforrások szelektív közzétételét. A közzétételi adatok tartalmazzák az adat-előállítóban végrehajtott összes módosítást.
+- A tervezés szerint a Data Factory nem teszi lehetővé az erőforrások elküldését vagy szelektív közzétételét. A közzététel magában foglalja az adatelőállítóban végrehajtott összes módosítást is.
 
-    - Az adatfeldolgozó entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, a folyamatok pedig az adatkészletektől és más folyamatoktól függenek. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedésekhez és hibákhoz vezethet.
-    - Ritkán, amikor szelektív közzétételre van szüksége, fontolja meg egy gyorsjavítás használatát. További információ: [Hotfix termelési ág](#hotfix-production-branch).
+    - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
+    - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások üzemi ága](#hotfix-production-branch).
 
--   Privát fiókokból nem lehet közzétenni.
+-   Privát ágakból nem lehet közzétenni.
 
--   Jelenleg nem lehet projekteket üzemeltetni a Bitbucket-en.
+-   Jelenleg nem futtathat projekteket a bitbucket-on.

@@ -1,6 +1,6 @@
 ---
-title: Telepítési tervek – Azure Active Directory | Microsoft dokumentumok
-description: Teljes körű útmutatást számos Azure Active Directory-képességek üzembe helyezéséhez.
+title: Központi telepítési tervek – Azure Active Directory | Microsoft Docs
+description: A számos Azure Active Directory funkció üzembe helyezésének teljes körű útmutatója.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,86 +13,86 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81603352"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
-Teljes körű útmutatást keres az Azure Active Directory (Azure AD) képességeinek üzembe helyezéséhez? Az Azure AD üzembe helyezési tervei bemutatják az üzleti értéket, a tervezési szempontokat és a gyakori Azure AD-képességek sikeres üzembe helyezéséhez szükséges működési eljárásokat.
+Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
 
-A tervoldalak bármelyikén használja a böngésző Nyomtatás PDF formátumba funkcióját a dokumentáció naprakész offline verziójának létrehozásához.
-## <a name="include-the-right-stakeholders"></a>A megfelelő érdekelt felek felvétele
+A csomag bármelyik lapján a böngészőben a PDF-fájl nyomtatása lehetőséggel létrehozhat egy naprakész offline verziót a dokumentációban.
+## <a name="include-the-right-stakeholders"></a>A megfelelő résztvevők belefoglalása
 
-Az új képességek üzembe helyezésének megkezdésekor fontos, hogy a szervezet kulcsfontosságú érdekelt feleit is felhasználja. Javasoljuk, hogy azonosítsa és dokumentálja azt a személyt vagy személyeket, akik az alábbi szerepköröket teljesítik, és működjön együtt velük annak meghatározásában, hogy részt vettek-e a projektben.  
+Amikor megkezdi az üzembe helyezést egy új képesség megtervezése során, fontos, hogy a szervezeten belül kulcsfontosságú érdekelteket vegyen fel. Javasoljuk, hogy azonosítsa és dokumentálja azokat a személyeket vagy személyeket, akik a következő szerepköröket teljesítik, és működjenek együtt velük a projektben való részvételük meghatározásához.  
 
-A szerepkörök a következőket tartalmazhatják: 
+A szerepkörök a következők lehetnek: 
 
 |Szerepkör |Leírás |
 |-|-|
-|Végfelhasználói|A felhasználók reprezentatív csoportja, amelyre a képesség megvalósul. Gyakran előnézetben a változások egy kísérleti program.
-|Informatikai támogatási vezető|Informatikai támogatási szervezet képviselője, aki az ügyfélszolgálati szempontból tud hozzájárulni a módosítás támogathatóságához.  
-|Identity Architect vagy Az Azure globális rendszergazdája|Identitáskezelő csapat képviselője, aki annak meghatározásáért felelős, hogy ez a változás hogyan igazodik a szervezet alapvető identitáskezelési infrastruktúrájához.|
-|Alkalmazás tulajdonosának tulajdonosa |Az érintett alkalmazás(ok) teljes vállalkozástulajdonosa, amely magában foglalhatja a hozzáférés kezelését.A módosítás felhasználói élményét és hasznosságát is megadhata a végfelhasználó szemszögéből.
-|Biztonsági tulajdonos|A biztonsági csapat képviselője, aki aláírhatja, hogy a terv megfelel a szervezet biztonsági követelményeinek.|
-|Compliance Manager|A szervezeten belül a vállalati, ipari vagy kormányzati követelményeknek való megfelelés biztosításáért felelős személy.|
+|Végfelhasználó|Azoknak a felhasználóknak a reprezentatív csoportja, amelyekhez a képességet alkalmazni kívánja. Gyakran megtekinti a kísérleti program módosításait.
+|INFORMATIKAI támogatás kezelője|Támogatja a szervezeti képviselőt, aki megadhatja a változás támogatását a helpdesk szemszögéből.  
+|Identity Architect vagy Azure globális rendszergazda|Az Identitáskezelés csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management infrastruktúrához.|
+|Alkalmazás üzleti tulajdonosa |Az érintett alkalmazás (ok) általános üzleti tulajdonosa, amely magában foglalhatja a hozzáférés kezelését is.A felhasználói élmény és a változás hasznosságát is megadhatja a végfelhasználó szemszögéből.
+|Biztonsági tulajdonos|A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek.|
+|Compliance Manager|A szervezeten belül a vállalat, az iparág vagy a kormányzati követelmények teljesítésének biztosításáért felelős személy.|
 
-**A részvétel szintjei a következők lehetnek:**
+**A részvételi szintek a következők lehetnek:**
 
-- **A**projektterv és az eredmények végrehajtásához 
+- Az **R**esponsible a projekt tervének és eredményének megvalósításához 
 
-- **A**projektterv és az eredmény pprovalja 
+- **Pproval és**-eredmény 
 
-- **C**ontributor a projekttervhez és az eredményhez 
+- **C**ontributor a projekt tervéhez és eredményéhez 
 
-- **Én**nformed a projekt terv és az eredmény
+- **Nformed és**végeredmény
 
 
-## <a name="best-practices-for-a-pilot"></a>Legjobb gyakorlatok egy kísérleti
-A pilóta lehetővé teszi, hogy tesztelje egy kis csoport, mielőtt bekapcsolja a képesség mindenki számára. Győződjön meg arról, hogy a tesztelés részeként a szervezeten belüli minden egyes használati esetet alaposan tesztel. A legjobb, ha a kísérleti felhasználók egy adott csoportját célozza meg, mielőtt ezt a szervezet egészére kiküldené.
+## <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára
+Egy próba lehetővé teszi egy kis csoport tesztelését, mielőtt mindenki számára bekapcsolja a funkciót. Győződjön meg arról, hogy a tesztelés részeként a szervezeten belül minden használati esetet alaposan teszteltek. A legjobb megoldás, ha a kísérleti felhasználók egy adott csoportját szeretné megcélozni, mielőtt a szervezet egészét bevezeti.
 
-Az első hullámban célozza meg az informatikai, a használhatósági és más megfelelő felhasználókat, akik tesztelhetik és visszajelzést adhatnak. Ezt a visszajelzést a felhasználóknak küldött kommunikáció és utasítások továbbfejlesztésére, valamint a támogatási személyzet által tapasztalt problémák típusainak továbbfejlesztésére kell felhasználni. 
+Az első hullámban célozza meg, a használhatóságot és az egyéb megfelelő felhasználókat, akik kipróbálhatják és elküldhetik a visszajelzést. Ezzel a visszajelzéssel tovább fejlesztheti a felhasználóknak küldött kommunikációt és útmutatást, és betekintést nyerhet a támogatási munkatársak által látható problémák típusaiba. 
 
-A felhasználók nagyobb csoportjaira történő kiterjesztést a megcélzott csoport(ok) körének növelésével kell végrehajtani. Ez történhet [dinamikus csoporttagsággal,](../users-groups-roles/groups-dynamic-membership.md)vagy a felhasználók manuális hozzáadásával a megcélzott csoport(ok)hoz.
+A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../users-groups-roles/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
 
 
 ## <a name="deploy-authentication"></a>Hitelesítés telepítése
 
 | Képesség | Leírás|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adatokhoz és alkalmazásokhoz való hozzáférést, miközben kielégíti az egyszerű bejelentkezési folyamat iránti igényt. |
-| [Feltételes hozzáférés](../conditional-access/plan-conditional-access.md)| A Feltételes hozzáférés segítségével automatizált hozzáférés-vezérlési döntéseket hozhat arra vonatkozóan, hogy ki férhet hozzá a felhőalapú alkalmazásokhoz a feltételek alapján. |
-| [Új jelszó önkiszolgáló kérése](../authentication/howto-sspr-deployment.md)| Az önkiszolgáló jelszó-visszaállítás segítségével a felhasználók rendszergazdai beavatkozás nélkül, mikor és hol állíthatják vissza a jelszavukat. |
-| [Jelszó nélküli](../authentication/howto-authentication-passwordless-deployment.md) | Jelszó nélküli hitelesítés megvalósítása a Microsoft Authenticator alkalmazás vagy a FIDO2 biztonsági kulcsok használatával a szervezetben |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti. |
+| [Feltételes hozzáférés](../conditional-access/plan-conditional-access.md)| A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz. |
+| [Önkiszolgáló jelszóátállítás](../authentication/howto-sspr-deployment.md)| Az önkiszolgáló jelszó-visszaállítás segítségével a felhasználók rendszergazdai beavatkozás nélkül állíthatják vissza a jelszavukat, amikor és ahol szükségesek. |
+| [Jelszó nélküli](../authentication/howto-authentication-passwordless-deployment.md) | Jelszó-alapú hitelesítés implementálása a szervezet Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsaival |
 
-## <a name="deploy-application-management"></a>Alkalmazáskezelés telepítése
+## <a name="deploy-application-management"></a>Az alkalmazások felügyeletének központi telepítése
 
 | Képesség | Leírás|
 | -| - |
-| [Egyszeri bejelentkezés](../manage-apps/plan-sso-deployment.md)| Egyszeri bejelentkezéssel a felhasználók hozzáférhetnek az üzleti tevékenységhez szükséges alkalmazásokhoz és erőforrásokhoz, miközben csak egyszer jelentkeznek be. Miután bejelentkeztek, a Microsoft Office-tól a SalesForce-on át a Box-ba léphetnek anélkül, hogy másodszor is meg kell jenük adniuk a hitelesítő adatokat. |
-| [Hozzáférési panel](../manage-apps/access-panel-deployment-plan.md)| A felhasználók számára egyszerű központot kínálhat az összes alkalmazás felfedezéséhez és eléréséhez. Lehetővé teszi számukra, hogy hatékonyabban önkiszolgáló funkciókkal, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérésével, vagy az erőforrásokhoz való hozzáférés más nevében történő kezelésével hatékonyabbak legyenek. |
+| [Egyszeri bejelentkezés](../manage-apps/plan-sso-deployment.md)| Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók csak egyszer jelentkezzenek be az üzleti életbe lépésekhez szükséges alkalmazásokhoz és erőforrásokhoz. Miután bejelentkezett, a Microsoft Office SalesForce a belső alkalmazásokhoz, anélkül, hogy másodszor is meg kellene adniuk a hitelesítő adatokat. |
+| [Hozzáférési panel](../manage-apps/access-panel-deployment-plan.md)| Egy egyszerű központot biztosít a felhasználóknak az összes alkalmazás felderítéséhez és eléréséhez. Hatékonyabbá teheti őket az önkiszolgáló képességekkel, például az alkalmazásokhoz és csoportokhoz való hozzáférés kérelmezéséhez, illetve mások nevében az erőforrásokhoz való hozzáférés kezeléséhez. |
 
 
-## <a name="deploy-hybrid-scenarios"></a>Hibrid forgatókönyvek telepítése
+## <a name="deploy-hybrid-scenarios"></a>Hibrid forgatókönyvek üzembe helyezése
 
 | Képesség | Leírás|
 | -| -|
-| [ADFS a jelszókivonat-szinkronizáláshoz](../hybrid/plan-migrate-adfs-password-hash-sync.md)| A jelszókivonat-szinkronizálással a rendszer szinkronizálja a felhasználói jelszavak kivonatait a helyszíni Active Directoryból az Azure AD-be, így az Azure AD hitelesíti azokat a felhasználókat, akik nem tudnak interakciót a helyszíni Active Directoryval |
-| [ADFS az átmenő hitelesítéshez](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Az Azure AD áthaladási hitelesítése segít a felhasználóknak, hogy jelentkezzen be mind a helyszíni, mind a felhőalapú alkalmazásokba ugyanazokat a jelszavakat használva. Ez a funkció jobb felhasználói élményt nyújt a felhasználóknak – eggyel kevesebb jelszót kell megjegyezniük –, és csökkenti az informatikai ügyfélszolgálati költségeket, mivel a felhasználók kevésbé valószínű, hogy elfelejtik a bejelentkezésmódját. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat. |
-| [Azure AD alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. SaaS-alkalmazások eléréséhez a felhőben és a vállalati alkalmazások a helyszínen. Az Azure AD alkalmazásproxy lehetővé teszi ezt a robusztus hozzáférést költséges és összetett virtuális magánhálózatok (VPN) vagy demilitarizált zónák (DMZs) nélkül. |
-| [Közvetlen egyszeri bejelentkezés](../hybrid/how-to-connect-sso-quick-start.md)| Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetlen SSO) automatikusan bejelentkezteti a felhasználókat, ha azok a vállalati hálózatra csatlakozó vállalati eszközeiket használják. Ezzel a funkcióval a felhasználóknak nem kell beírniuk a jelszavukat az Azure AD-be való bejelentkezéshez, és általában nem kell megadniuk a felhasználónevüket. Ez a funkció egyszerű hozzáférést biztosít a jogosult felhasználók számára a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőkre lenne szükség. |
+| [ADFS a jelszókivonat-szinkronizáláshoz](../hybrid/plan-migrate-adfs-password-hash-sync.md)| A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja, így az Azure AD hitelesíti a felhasználókat a helyszíni Active Directoryekkel való interakció nélkül. |
+| [ADFS az átmenő hitelesítéshez](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Az Azure AD átmenő hitelesítéssel a felhasználók ugyanazzal a jelszóval jelentkezhetnek be mind a helyszíni, mind a felhőalapú alkalmazásokba. Ez a funkció jobb felhasználói élményt nyújt a felhasználóknak – eggyel kevesebb jelszót kell megjegyeznie – és csökkenti az informatikai támogatási szolgálat költségeit, mivel a felhasználók kevésbé valószínű, hogy bejelentkeznek. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat. |
+| [Azure-AD Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Az SaaS-alkalmazásokhoz a helyszíni felhőben és a vállalati alkalmazásokban is hozzá kell férniük. Az Azure AD-alkalmazásproxy lehetővé teszi, hogy ez a robusztus hozzáférés költséges és összetett virtuális magánhálózatok (VPN) vagy vagy demilitarizált zónák (DMZ) nélkül legyen elérhető. |
+| [Közvetlen egyszeri bejelentkezés](../hybrid/how-to-connect-sso-quick-start.md)| Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetlen SSO) automatikusan bejelentkezteti a felhasználókat, ha azok a vállalati hálózatra csatlakozó vállalati eszközeiket használják. Ezzel a funkcióval a felhasználóknak nem kell beírniuk a jelszavukat, hogy bejelentkezzenek az Azure AD-be, és általában nem kell megadniuk a felhasználónevét. Ez a funkció lehetővé teszi, hogy a jogosult felhasználók könnyen hozzáférhessenek a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőket kellene megadniuk. |
 
-## <a name="deploy-user-provisioning"></a>Felhasználói kiépítés telepítése
+## <a name="deploy-user-provisioning"></a>Felhasználói kiépítés központi telepítése
 
 | Képesség | Leírás|
 | -| -|
 | [Felhasználók regisztrálása](../app-provisioning/plan-auto-user-provisioning.md)| Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a felhőalapú (SaaS-) alkalmazásokban, például a Dropboxban, a Salesforce-ban vagy a ServiceNow-ban. |
-| [Felhőbeli HR-felhasználók kiépítése](../app-provisioning/plan-cloud-hr-provision.md)| Az Active Directoryba való felhőalapú HR-felhasználók kiépítése megteremti a folyamatos identitáskezelés alapjait, és javítja a mérvadó identitásadatokon alapuló üzleti folyamatok minőségét. A szolgáltatás felhőhr-termékkel, például a Workday vagy a Successfactors használatával zökkenőmentesen kezelheti az alkalmazottak és a függő dolgozók identitásának életciklusát, ha olyan szabályokat konfigurál, amelyek a Joiner-Mover-Leaver folyamatokat (például Új bérlet, Lefújás, Átvitel) informatikai kiépítési műveletekhez (például létrehozás, engedélyezés, letiltás) rendeli hozzá. |
+| [Felhőbeli HR-felhasználó kiépítés](../app-provisioning/plan-cloud-hr-provision.md)| A Felhőbeli HR-felhasználók kiépítése a Active Directory létrehoz egy alapot a folyamatos identitások irányításához, és javítja a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét. Ha ezt a szolgáltatást a Felhőbeli HR-termékkel, például a munkanapokkal vagy a SuccessFactors együtt használja, zökkenőmentesen kezelheti az alkalmazottak és a függőben lévők identitásának életciklusát úgy, hogy olyan szabályokat konfigurál, amelyekkel az asztalos küldési műveletek (például a létrehozás, az engedélyezés, a Letiltás) |
 
-## <a name="deploy-governance-and-reporting"></a>Irányítás és jelentéskészítés telepítése
+## <a name="deploy-governance-and-reporting"></a>Irányítás és jelentéskészítés üzembe helyezése
 
 | Képesség | Leírás|
 | -| -|
-| [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Az Azure AD emelt szintű identitáskezelés (PIM) segítségével kezelheti a kiemelt felügyeleti szerepköröket az Azure AD, az Azure-erőforrások és más Microsoft Online Services szolgáltatásban. A PIM olyan megoldásokat kínál, mint a just-in-time hozzáférés, a jóváhagyási munkafolyamatok kérése és a teljes mértékben integrált hozzáférési felülvizsgálatok, így valós időben azonosíthatja, felfedheti és megakadályozhatja a kiemelt szerepkörök rosszindulatú tevékenységeit. |
-| [Jelentéstétel és nyomon követés](../reports-monitoring/plan-monitoring-and-reporting.md)| Az Azure AD jelentéskészítési és figyelési megoldás ának kialakítása a jogi, biztonsági és működési követelményektől, valamint a meglévő környezettől és folyamatoktól függ. Ez a cikk bemutatja a különböző tervezési lehetőségeket, és végigvezeti a megfelelő telepítési stratégia. |
+| [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) segítségével felügyelheti az Azure AD, az Azure-erőforrások és más Microsoft Online Services Kiemelt felügyeleti szerepköreit. A PIM olyan megoldásokat kínál, mint az igény szerinti hozzáférés, a jóváhagyási munkafolyamatok kérése és a teljes körűen integrált hozzáférési felülvizsgálatok, amelyek segítségével valós időben azonosíthatja, feltárhatja és megakadályozhatja a Kiemelt szerepkörök rosszindulatú tevékenységeit. |
+| [Jelentéskészítés és figyelés](../reports-monitoring/plan-monitoring-and-reporting.md)| Az Azure AD jelentéskészítési és figyelési megoldásának kialakítása a jogi, biztonsági és üzemeltetési követelményektől, valamint a meglévő környezettől és folyamattól függ. Ez a cikk bemutatja a különböző kialakítási lehetőségeket, és végigvezeti Önt a megfelelő üzembe helyezési stratégiában. |

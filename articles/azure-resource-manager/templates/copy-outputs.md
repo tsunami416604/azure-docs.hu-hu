@@ -1,24 +1,24 @@
 ---
-title: Egy kimeneti érték több példányának definiálása
-description: Az Azure Resource Manager-sablonban használt másolási műveletet többször idoterészévé tetszetősítheti, amikor értéket ad vissza egy központi telepítésből.
+title: Egy kimeneti érték több példányának meghatározása
+description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételhető, amikor értéket ad vissza egy központi telepítésből.
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617837"
 ---
-# <a name="output-iteration-in-arm-templates"></a>Kimeneti ismétlés ARM sablonokban
+# <a name="output-iteration-in-arm-templates"></a>Kimeneti iteráció az ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez az Azure Resource Manager (ARM) sablonban. Ha hozzáadja a **másolási** elemet a sablon kimeneti szakaszához, dinamikusan visszaadhat néhány elemet a központi telepítés során.
+Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez a Azure Resource Manager (ARM) sablonban. Ha hozzáadja a **Másolás** elemet a sablon outputs (kimenet) szakaszához, az üzembe helyezés során több elemet is dinamikusan visszaállíthat.
 
-A [másolást erőforrásokkal](copy-resources.md), [erőforrások tulajdonságaival](copy-properties.md)és változókkal is [használhatja.](copy-variables.md)
+A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [változókkal](copy-variables.md)is elvégezheti.
 
-## <a name="outputs-iteration"></a>Kimeneti iteráció
+## <a name="outputs-iteration"></a>Kimenetek iterációja
 
-A másolási elem általános formátuma a következő:
+A másolási elem a következő általános formátumú:
 
 ```json
 "copy": {
@@ -27,11 +27,11 @@ A másolási elem általános formátuma a következő:
 }
 ```
 
-A **count** tulajdonság a kimeneti értékhez kívánt ismétlések számát adja meg.
+A **Count** tulajdonság megadja a kimeneti értékhez használni kívánt iterációk számát.
 
-A **bemeneti** tulajdonság határozza meg az ismétlődő tulajdonságokat. A **bemeneti** tulajdonság értékéből létrehozott elemek tömbjét hozza létre. Ez lehet egyetlen tulajdonság (például egy karakterlánc), vagy egy több tulajdonsággal rendelkező objektum.
+A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre. Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
 
-A következő példa változó számú tárfiókot hoz létre, és minden tárfiókhoz egy végpontot ad vissza:
+Az alábbi példa egy változó számú Storage-fiókot hoz létre, és az egyes Storage-fiókok végpontját adja vissza:
 
 ```json
 {
@@ -75,7 +75,7 @@ A következő példa változó számú tárfiókot hoz létre, és minden tárfi
 }
 ```
 
-Az előző sablon a következő értékekkel rendelkező tömböt ad vissza:
+Az előző sablon egy tömböt ad vissza a következő értékekkel:
 
 ```json
 [
@@ -84,7 +84,7 @@ Az előző sablon a következő értékekkel rendelkező tömböt ad vissza:
 ]
 ```
 
-A következő példa három tulajdonságot ad vissza az új tárfiókokból.
+A következő példa az új Storage-fiókok három tulajdonságát adja vissza.
 
 ```json
 {
@@ -132,7 +132,7 @@ A következő példa három tulajdonságot ad vissza az új tárfiókokból.
 }
 ```
 
-Az előző példa a következő értékekkel rendelkező tömböt ad vissza:
+Az előző példa egy tömböt ad vissza a következő értékekkel:
 
 ```json
 [
@@ -151,11 +151,11 @@ Az előző példa a következő értékekkel rendelkező tömböt ad vissza:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha egy oktatóanyagon szeretne átmenni, olvassa el [az Oktatóanyag: Több erőforráspéldány létrehozása ARM-sablonokkal című témakört.](template-tutorial-create-multiple-instances.md)
-* A másolási elem egyéb felhasználási ideje:
-  * [Erőforrás-ismétlés ARM-sablonokban](copy-resources.md)
-  * [Tulajdonság ismétlése ARM sablonokban](copy-properties.md)
-  * [Változó iteráció arm sablonokban](copy-variables.md)
-* Ha a sablonok szakaszairól szeretne többet megtudni, olvassa el [az ARM-sablonok készítése című témakört.](template-syntax.md)
-* A sablon üzembe helyezéséről az [Alkalmazás telepítése ARM sablonnal (Alkalmazás telepítése ARM sablonnal) témakörben](deploy-powershell.md)olvashat.
+* Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
+* A másolási elem egyéb felhasználási módjaiért lásd:
+  * [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
+  * [Tulajdonság-iteráció az ARM-sablonokban](copy-properties.md)
+  * [Változó iteráció az ARM-sablonokban](copy-variables.md)
+* Ha szeretne többet megtudni egy sablon fejezeteiről, tekintse meg a következő témakört: [ARM-sablonok készítése](template-syntax.md).
+* A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése ARM-sablonnal](deploy-powershell.md).
 

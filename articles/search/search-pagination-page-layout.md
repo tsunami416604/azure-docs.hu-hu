@@ -1,7 +1,7 @@
 ---
-title: A keresési eredmények kelvaló megoldása
+title: A keresési eredmények használata
 titleSuffix: Azure Cognitive Search
-description: A keresési eredmények strukturálása és rendezése, a dokumentumok számának leése, valamint a tartalomnavigáció hozzáadása a keresési eredményekhez az Azure Cognitive Search alkalmazásban.
+description: A keresési eredmények strukturálása és rendezése, a dokumentumok számának beolvasása, valamint a tartalom navigációjának hozzáadása az Azure Cognitive Search keresési eredményeihez.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641623"
 ---
-# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>A keresési eredmények működése az Azure Cognitive Search szolgáltatásban
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
-Ebből a cikkből megtudhatja, hogyan kaphat olyan lekérdezési választ, amely az egyező dokumentumok, a lapszámozott eredmények, a rendezett eredmények és a levédett kifejezések teljes számát adja vissza.
+Ez a cikk azt ismerteti, hogyan kérhet le egy lekérdezési választ, amely a megfelelő dokumentumok teljes számával, a többoldalas eredményekkel, a rendezett eredményekkel és a találatok kiemelésével kapcsolatos feltételeket tartalmaz.
 
-A válasz szerkezetét a lekérdezés paraméterei határozzák meg: [Keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a REST API-ban vagy [DocumentSearchResult osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) a .NET SDK-ban.
+A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a REST API vagy a [DocumentSearchResult OSZTÁLYBAN](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) a .net SDK-ban.
 
 ## <a name="result-composition"></a>Eredmény összetétele
 
-Bár a keresési dokumentum nagy számú mezőből állhat, általában csak néhányra van szükség ahhoz, hogy az egyes dokumentumokat az eredményhalmazban képviselje. Lekérdezési kérelem esetén `$select=<field list>` fűzze hozzá, hogy mely mezők jelenjenek meg a válaszban. Az eredménybe való bekerüléshez a mezőt az indexben **visszakereshetőként** kell hozzárendelni. 
+Míg a keresési dokumentumok nagy mennyiségű mezőt tartalmazhatnak, jellemzően csak néhányra van szükség az eredményhalmaz összes dokumentumának ábrázolásához. Egy lekérdezési kérelemnél hozzáfűzéssel `$select=<field list>` határozza meg, hogy mely mezők jelenjenek meg a válaszban. Egy mezőnek az indexben **beolvasható** értékként kell szerepelnie az eredményben. 
 
-A legjobban bevált mezők közé tartoznak azok, amelyek ellentétben állnak a dokumentumokkal, és megkülönböztetik őket, így elegendő információt szolgáltatnak ahhoz, hogy a felhasználó átkattintási választ adjon. Egy e-kereskedelmi webhelyen lehet terméknév, leírás, márka, szín, méret, ár és minősítés. A hotel-minta-index beépített minta, lehet, hogy mezők a következő példában:
+A legjobban megfelelő mezők közé tartoznak a dokumentumok közötti kontrasztos és megkülönböztethető elemek, így elegendő információ áll rendelkezésre a felhasználó részéről egy kattintásra adott válasz meghívásához. Az e-kereskedelmi webhelyeken a terméknév, a leírás, a márka, a szín, a méret, az ár és a minősítés lehet. A Hotel-Sample-index beépített mintája a következő példában szereplő mezőkből állhat:
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
@@ -37,64 +37,64 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 ```
 
 > [!NOTE]
-> Ha egy eredménybe, például egy termékfotóba vagy emblémába szeretne képfájlokat felvenni, tárolja őket az Azure Cognitive Search-en kívül, de vegyen fel egy mezőt az indexbe, amely a kép URL-címére hivatkozik a keresési dokumentumban. Minta-indexek, amelyek támogatják a képeket az eredmények közé tartozik a **realestate-sample-us** demo, szerepelt ebben a [rövid útmutató,](search-create-app-portal.md)és a [New York-i Jobs demo app.](https://aka.ms/azjobsdemo)
+> Ha a képfájlokat egy adott eredményben szeretné megadni, például egy termék fényképét vagy emblémáját, az Azure Cognitive Searchon kívül tárolja őket, de tartalmaz egy mezőt az indexben a keresési dokumentumban található kép URL-címére való hivatkozáshoz. Az eredményekben szereplő képeket támogató minta indexek közé tartozik a **Realestate-Sample-US** bemutató, amely a rövid útmutatóban [szerepel, a](search-create-app-portal.md) [New York City Jobs bemutató alkalmazásban](https://aka.ms/azjobsdemo).
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
-Alapértelmezés szerint a keresőmotor az első 50 egyezésig visszatér, akeresési pontszám szerint, ha a lekérdezés teljes szöveges keresés, vagy tetszőleges sorrendben a pontos egyezéses lekérdezésekhez.
+Alapértelmezés szerint a keresőmotor az első 50 egyezést adja vissza, amelyet a keresési pontszám határoz meg, ha a lekérdezés teljes szöveges keresést használ, vagy tetszőleges sorrendben a pontos egyezésű lekérdezésekhez.
 
-Ha más számú egyező `$top` dokumentumot szeretne visszaadni, adja hozzá és `$skip` adja meg a paramétereket a lekérdezési kérelemhez. Az alábbi lista ismerteti a logikát.
+Ha más számú egyező dokumentumot szeretne visszaadni, `$top` adja `$skip` hozzá a lekérdezési kérelemhez a és a paramétereket. A következő lista ismerteti a logikát.
 
-+ A `$count=true` Hozzáadás hoz a mutatón belüli egyező dokumentumok teljes számának leszámítása.
++ A `$count=true` Hozzáadás gombra kattintva megadhatja az indexen belüli egyező dokumentumok teljes számát.
 
-+ Az első 15 egyező dokumentumkészletet és az összes egyezésszámát adja vissza:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ A 15 egyező dokumentum első készletének visszaadása, valamint a teljes egyezések száma:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Vissza a második szett, kihagyva az első 15-hoz kap a következő 15: `$top=15&$skip=15`. Tegye ugyanezt a harmadik 15-ös készletesetében is:`$top=15&$skip=30`
++ Adja vissza a második készletet, kihagyva az első 15 értéket a következő `$top=15&$skip=15`15: érték beszerzéséhez. Tegye meg ugyanezt a 15. harmadik készletnél:`$top=15&$skip=30`
 
-A lapszámozott lekérdezések eredményei nem garantáltan stabilak, ha az alapul szolgáló index változik. A lapozás módosítja az egyes lapok értékét, `$skip` de minden lekérdezés független, és az adatok aktuális nézetében működik, ahogy az lekérdezéskor az indexben létezik (más szóval nincs gyorsítótárazás vagy pillanatkép az eredményekről, például egy általános célú adatbázisban).
+A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legyenek, ha az alapul szolgáló index változik. A lapozás megváltoztatja az egyes `$skip` lapok értékeit, de az egyes lekérdezések függetlenek, és az adatok aktuális nézetén működnek, mivel a lekérdezési időpontban már szerepel az indexben (vagyis nem áll rendelkezésre az eredmények gyorsítótárazása vagy pillanatképe, például egy általános célú adatbázisban található).
  
-Az alábbiakban egy példa látható arra, hogyan kaphat másolatokat. Tegyük fel, hogy egy index négy dokumentumot:
+Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumentummal rendelkező index feltételezése:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-Most tegyük fel, hogy az eredményeket egyszerre kettőre szeretné visszaadni, minősítés szerint rendezve. Ezt a lekérdezést az eredmények első `$top=2&$skip=0&$orderby=rating desc`oldalának lekérdezéséhez hajthatja végre: , a következő eredményeket hozva létre:
+Most tegyük fel, hogy az eredményeket a rendszer egy időben, a minősítés alapján rendezi. Ezt a lekérdezést kell végrehajtania az eredmények első oldalának beolvasásához: `$top=2&$skip=0&$orderby=rating desc`a következő eredmények előállításával:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum `{ "id": "5", "rating": 4 }`kerül az indexbe a lekérdezési hívások között: .  Nem sokkal ezután egy lekérdezést hajt `$top=2&$skip=2&$orderby=rating desc`végre a második oldal lekéréséhez: , és megkapja az alábbi eredményeket:
+A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum kerül a lekérdezési hívások közötti indexbe: `{ "id": "5", "rating": 4 }`.  Röviddel azután, hogy végrehajt egy lekérdezést a második lap beolvasásához: `$top=2&$skip=2&$orderby=rating desc`, és a következő eredményeket kapja:
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
  
-Figyelje meg, hogy a 2. Ennek az az oka, hogy az új 5 dokumentum nak nagyobb értéke van a minősítéshez, ezért a 2. Bár ez a viselkedés lehet váratlan, ez jellemző, hogy a keresőmotor viselkedik.
+Figyelje meg, hogy a 2. dokumentum kétszer van beolvasva. Ennek az az oka, hogy az 5. dokumentum új minősítési értéke nagyobb, ezért rendezi a 2. dokumentum és az első oldalon landolás előtt. Habár ez a viselkedés váratlan lehet, jellemző, hogy a keresőmotor hogyan viselkedik.
 
 ## <a name="ordering-results"></a>Az eredmények rendezése
 
-A teljes szöveges keresési lekérdezések esetében az eredmények automatikusan rangsorolva vannak a keresési pontszám alapján, amelyet a dokumentum kifejezésgyakorisága és közelsége alapján számítanak ki, és a magasabb pontszámok olyan dokumentumokhoz kerülnek, amelyek több vagy erősebb egyezést tartalmaznak egy keresési kifejezésen. 
+A teljes szöveges keresési lekérdezések esetében a találatok automatikusan egy keresési pontszám szerint vannak rangsorolva, a kifejezés gyakorisága és a dokumentum közelsége alapján számítva, és a keresési kifejezéssel több vagy erősebb egyezést eredményező dokumentumokat fog keresni. 
 
-A keresési pontszámok általános relevanciát közvetítenek, ami tükrözi az egyezés erősségét az azonos eredményhalmazban lévő többi dokumentumhoz képest. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a másikig, így a lekérdezésekkel végzett munka során kisebb eltéréseket észlelhet a keresési dokumentumok rendezési módjában. Számos magyarázat van arra, hogy ez miért fordulhat elő.
+A keresési eredmények általános jelentőséggel bírnak, amely az azonos eredményhalmaz más dokumentumaihoz képest az egyezés erősségét tükrözi. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor előfordulhat, hogy a keresési dokumentumok rendezésének módja kis eltéréseket észlel. A probléma oka több magyarázat is lehet.
 
 | Ok | Leírás |
 |-----------|-------------|
-| Adatvolatilitás | A tárgymutató tartalma a dokumentumok hozzáadásakor, módosításában és törlésében változik. A kifejezésgyakoriságok az indexfrissítések idővel való feldolgozásával változnak, ami hatással van az egyező dokumentumok keresési pontszámaira. |
-| Több kópia | A több replikát használó szolgáltatások esetében a lekérdezések párhuzamosan kerülnek kiadásra az egyes kópiákhoz. A keresési pontszám kiszámításához használt indexstatisztikák at replika alapon számítja ki a rendszer, az eredményeket egyesítve és a lekérdezési válaszban rendezve. A replikák többnyire egymás tükrei, de a statisztikák eltérhetnek az állapot kis különbségei miatt. Előfordulhat például, hogy az egyik kópia törölte a statisztikáikhoz hozzájáruló dokumentumokat, amelyeket más kópiákból egyesítettek. A replikastatisztikák közötti különbségek általában jobban észrevehetők a kisebb indexekben. |
-| Azonos pontszámok | Ha több dokumentum pontszáma megegyezik, akkor bármelyik ük jelenhet meg először.  |
+| Adatvolatilitás | Az indexelési tartalom a dokumentumok hozzáadása, módosítása vagy törlése során változik. A kifejezés gyakorisága módosul, mert az index frissítései időben lesznek feldolgozva, ami hatással van a megfelelő dokumentumok keresési pontjaira. |
+| Több replika | Több replikát használó szolgáltatások esetén a lekérdezéseket párhuzamosan kell kiadni az egyes replikákkal. A keresési pontszám kiszámításához használt index statisztikáit a rendszer replika alapon számítja ki, a lekérdezési válaszban egyesítve és elrendezve az eredményeket. A replikák többnyire egymást tükrözik, de a statisztikák eltérőek lehetnek az állami különbségek miatt. Előfordulhat például, hogy az egyik replika törölte a statisztikához hozzájáruló dokumentumokat, amelyek más replikából lettek egyesítve. A replikák statisztikái közötti különbségek jellemzően kisebb indexekben figyelhetők meg. |
+| Azonos pontszámok | Ha több dokumentum ugyanazzal a pontszámmal rendelkezik, akkor előfordulhat, hogy ezek közül bármelyik előbb megjelenik.  |
 
 ### <a name="consistent-ordering"></a>Konzisztens sorrend
 
-Tekintettel a rugalmas idő az eredmények sorrendje, érdemes lehet más lehetőségeket is, ha a konzisztencia egy alkalmazás követelmény. A legegyszerűbb módszer a mezőérték szerinti rendezés, például minősítés vagy dátum szerint. Olyan esetekben, amikor egy adott mező , például egy minősítés vagy dátum szerint szeretne rendezni, explicit módon definiálhat egy [ `$orderby` kifejezést,](query-odata-filter-orderby-syntax.md)amely bármely **rendezhető**mezőre alkalmazható.
+Ha az eredmények rendezésében a Flex szerepel, érdemes lehet más lehetőségeket is megvizsgálni, ha az egységesség egy alkalmazásra vonatkozó követelmény. A legegyszerűbb módszer a mezőérték, például a minősítés vagy a dátum szerinti rendezés. Olyan esetekben, ahol egy adott mező, például egy minősítés vagy dátum alapján szeretne rendezni, explicit módon meghatározhat egy [ `$orderby` kifejezést](query-odata-filter-orderby-syntax.md), amely a **rendezhető**indexelt bármely mezőre alkalmazható.
 
-Egy másik lehetőség [egy egyéni pontozási profil](index-add-scoring-profiles.md)használata. A pontozási profilok segítségével jobban szabályozhatja a keresési eredményekben szereplő elemek rangsorolását, és növelheti az adott mezőkben található egyezéseket. A további pontozási logika segíthet felülírni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumok keresési pontszámai távolabb vannak egymástól. Ehhez a megközelítéshez javasoljuk a [rangsorolási algoritmust.](index-ranking-similarity.md)
+Egy másik lehetőség [Egyéni pontozási profilt](index-add-scoring-profiles.md)használ. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását, és lehetővé teszi az egyes mezőkben található egyezések növelését. A további pontozási logika segíthet felülbírálni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumokhoz tartozó keresési pontszámok egymástól eltérőek lehetnek. Az ehhez a megközelítéshez tartozó [rangsorolási algoritmust](index-ranking-similarity.md) ajánljuk.
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
 
-A találatkiemelés az eredmény egyező kifejezésére alkalmazott szövegformázásra (például félkövér vagy sárga kiemelésre) utal, így könnyen kiszúrható az egyezés. A lekéréshez a [lekéréshez](https://docs.microsoft.com/rest/api/searchservice/search-documents)a lekéréshez a lekéréshez található a leemelési utasítások. A keresőmotor címkékbe foglalja az `highlightPreTag` `highlightPostTag`egyező kifejezést, és a kód kezeli a választ (például félkövér betűtípust alkalmaz).
+A találatok kiemelése olyan szövegformázást jelent (például félkövér vagy sárga kiemelés), amely a megfelelő kifejezésre vonatkozik, így könnyen megoldható a egyezés. A [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)a találatok kiemelésére vonatkozó utasításokat tartalmaz. A keresőmotor a címkében `highlightPreTag` `highlightPostTag`a megfelelő kifejezést, a kód pedig a választ (például félkövér betűtípus alkalmazása) kezeli.
 
-A formázás teljes kifejezéslekérdezésekre vonatkozik. A következő példában a leírás mezőben található "homokos", "homok", "strandok", "strand" kifejezések vannak megjelölve a kiemeléshez. Lekérdezések bővítése a motorban, mint például a fuzzy és a helyettesítő keresés, korlátozott mértékben támogatja a találat kiemelése.
+A formázás a teljes távú lekérdezésekre vonatkozik. A következő példában a Leírás mezőben a "Sandy", a "Sand", a "strandok", a "Beach" kifejezés a kiemeléshez van címkézve. Azok a lekérdezések, amelyek kiváltják a lekérdezés kiterjesztését a motorban, például a fuzzy és a helyettesítő karakteres keresés, korlátozott támogatást biztosítanak a találatok kiemeléséhez.
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
@@ -108,28 +108,28 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-### <a name="new-behavior-starting-july-15"></a>Új viselkedés (július 15-től)
+### <a name="new-behavior-starting-july-15"></a>Új viselkedés (július 1-től)
 
-A 2020. Az ezen időpont előtt létrehozott szolgáltatások nem változnak a kiemelési viselkedésükben. 
+A 2020. július 15. után létrehozott szolgáltatások eltérő kiemelési élményt nyújtanak. Az ezen dátum előtt létrehozott szolgáltatások nem változnak a kiemelési viselkedésben. 
 
-Az új viselkedés:
+Az új viselkedéssel:
 
-* A program csak a teljes kifejezéslekérdezésnek megfelelő kifejezéseket adja vissza. A lekérdezés "Super Bowl" visszatér kiemeli, mint ez:
+* A rendszer csak a teljes kifejezéses lekérdezésnek megfelelő kifejezéseket adja vissza. A "Super Bowl" lekérdezés a következőhöz hasonló csúcsfényeket ad vissza:
 
     ```html
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
-  Ne feledje, hogy a *kifejezés tál zseton* nincs kiemelve, mert nem felel meg a teljes mondat.
+  Vegye figyelembe, hogy a *zsetonok* nem rendelkeznek kiemeléssel, mert nem egyezik a teljes kifejezéssel.
   
-* A kiemeléshez visszaadott töredékméret is megadható. A töredék mérete karakterszámként van megadva (legfeljebb 1000 karakter).
+* Megadhatja a kiemelés során visszaadott töredék méretét. A darabolási méret a karakterek számaként van megadva (a maximális érték 1000 karakter).
 
-Amikor olyan ügyfélkódot ír, amely a leírás kiemelését valósítja meg, vegye figyelembe ezt a változást. Ne feledje, hogy ez nem lesz hatással, ha nem hoz létre egy teljesen új keresési szolgáltatást.
+Ha olyan állapotkódot ír, amely megvalósítja a találatok kiemelését, vegye figyelembe a változást. Vegye figyelembe, hogy ez csak akkor lesz hatással, ha teljesen új keresési szolgáltatást hoz létre.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha gyorsan szeretne keresési oldalt létrehozni az ügyfél számára, vegye figyelembe az alábbi lehetőségeket:
+Az ügyfél keresési oldalának gyors létrehozásához vegye figyelembe a következő lehetőségeket:
 
-+ Az Application Generator ( [alkalmazásgenerátor)](search-create-app-portal.md)a portálon létrehoz egy HTML-oldalt keresősávval, csiszolt navigációval és képeket tartalmazó találati területtel.
-+ [Hozza létre az első app c#](tutorial-csharp-create-first-app.md) egy oktatóanyag, amely épít egy funkcionális kliens. A mintakód a lapszámozott lekérdezéseket, a leütéskiemelését és a rendezést mutatja be.
++ Az [Application Generator](search-create-app-portal.md)a portálon egy olyan HTML-oldalt hoz létre, amelyben a keresősáv, a csiszolt navigálás és az eredmények területen képeket tartalmaz.
++ Az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-create-first-app.md) egy olyan oktatóanyag, amely egy funkcionális ügyfelet épít ki. A mintakód a többoldalas lekérdezéseket, a találatok kiemelését és a rendezést mutatja be.
 
-Számos kódminta tartalmaz egy webes előtér-felületet, amely itt található: [New York City Jobs demo app](https://aka.ms/azjobsdemo), [JavaScript mintakód egy élő demo site](https://github.com/liamca/azure-search-javascript-samples), és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Több mintakód is tartalmaz egy webes előtér-felületet, amely itt található: [New York City Jobs bemutató alkalmazás](https://aka.ms/azjobsdemo), [JavaScript-mintakód élő bemutató webhellyel](https://github.com/liamca/azure-search-javascript-samples)és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).

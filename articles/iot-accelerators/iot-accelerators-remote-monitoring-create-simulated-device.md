@@ -1,6 +1,6 @@
 ---
-title: Eszközszimuláció IoT távoli figyeléssel - Azure | Microsoft dokumentumok
-description: Ez az útmutató bemutatja, hogyan használhatja az eszközszimulátort a távoli figyelési megoldásgyorsítóval.
+title: Eszköz szimulálása IoT-alapú távoli figyeléssel – Azure | Microsoft Docs
+description: Ez a útmutató bemutatja, hogyan használhatja az eszközt a távoli figyelési megoldás-gyorsító használatával.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -10,54 +10,54 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682009"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
 
-A Távoli figyelési megoldás gyorsító lehetővé teszi a saját szimulált eszközök meghatározását. Ez a cikk bemutatja, hogyan definiáljon egy új szimulált villanykörte eszközt, majd tesztelje azt helyileg. A megoldásgyorsító szimulált eszközöket, például hűtőket és teherautókat tartalmaz. Azonban megadhatja a saját szimulált eszközök az IoT-megoldások teszteléséhez, mielőtt valódi eszközöket telepítene.
+A távoli figyelési megoldás gyorsítása lehetővé teszi saját szimulált eszközök definiálását. Ez a cikk bemutatja, hogyan határozhat meg egy új szimulált villanykörte-eszközt, majd hogyan tesztelheti helyileg. A megoldás-gyorsító olyan szimulált eszközöket tartalmaz, mint a hűtők és a teherautók. A valós eszközök üzembe helyezése előtt azonban megadhat saját szimulált eszközöket a IoT-megoldások teszteléséhez.
 
 > [!NOTE]
-> Ez a cikk az eszközszimulációs szolgáltatásban tárolt szimulált eszközök használatát ismerteti. Ha valódi eszközt szeretne létrehozni, olvassa el [Az eszköz csatlakoztatása a távfigyelési megoldás gyorsítóhoz című témakört.](iot-accelerators-connecting-devices.md)
+> Ez a cikk azt ismerteti, hogyan használhatók a szimulált eszközök a Device szimulációs szolgáltatásban. Ha valódi eszközt szeretne létrehozni, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldáshoz gyorssegédet](iot-accelerators-connecting-devices.md).
 
-Ez az útmutató bemutatja, hogyan szabhatja testre az eszközszimulációs mikroszolgáltatást. Ez a mikroszolgáltatás a távfigyelési megoldásgyorsító része. Az eszközszimulációs képességek megjelenítéséhez ez az útmutató két forgatókönyvet használ a Contoso IoT alkalmazásban:
+Ez az útmutató bemutatja, hogyan szabhatja testre az eszköz szimulációs szolgáltatását. Ez a szolgáltatás a távoli figyelési megoldáshoz tartozó gyorssegéd része. Az eszköz szimulációs képességeinek megjelenítéséhez ez a útmutató a contoso IoT alkalmazásban két forgatókönyvet használ:
 
-Az első forgatókönyvben egy új telemetriai típust ad hozzá a Contoso meglévő hűtőeszköztípusához. **Chiller**
+Az első forgatókönyvben új telemetria-típust ad hozzá a contoso meglévő, **Chiller** típusú eszközéhez.
 
-A második forgatókönyvben a Contoso egy új intelligens villanykörte eszközt szeretne tesztelni. A tesztek futtatásához hozzon létre egy új szimulált eszközt, amely a következő jellemzőkkel rendelkezik:
+A második forgatókönyvben a contoso egy új intelligens villanykörte-eszközt szeretne tesztelni. A tesztek futtatásához létre kell hoznia egy új szimulált eszközt a következő jellemzőkkel:
 
 *Tulajdonságok*
 
 | Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
-| Color                    | Fehér, Piros, Kék            |
-| Fényerő               | 0-tól 100-ig                    |
-| Becsült hátralévő élettartam | Visszaszámlálás 10 000 órától |
+| Color                    | Fehér, piros, kék            |
+| Fényerő               | 0 – 100                    |
+| Becsült hátralévő élettartam | Visszaszámlálás 10 000 órával |
 
 *Telemetria*
 
-Az alábbi táblázat azokat az adatokat mutatja be, amelyeket a villanykörte adatfolyamként jelent a felhőnek:
+Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a villanykörte jelent a felhőnek:
 
 | Name (Név)   | Értékek      |
 | ------ | ----------- |
-| status | "be", "ki" |
-| Hőmérséklet | F fok |
+| status | "on", "off" |
+| Hőmérséklet | Fok F |
 | online | igaz, hamis |
 
 > [!NOTE]
-> Az **online** telemetriai érték minden szimulált típuskötelező.
+> Az **online** telemetria értéke minden szimulált típus esetében kötelező.
 
 *Metódusok*
 
-Az alábbi táblázat az új eszköz által támogatott műveleteket mutatja be:
+A következő táblázat az új eszköz által támogatott műveleteket mutatja be:
 
 | Name (Név)        |
 | ----------- |
 | Bekapcsolás   |
-| Kapcsoljuk ki  |
+| Kikapcsolás  |
 
 *Kezdeti állapot*
 
@@ -68,81 +68,81 @@ Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 | Kezdeti szín            | Fehér  |
 | Kezdeti fényerő       | 75     |
 | Kezdeti hátralévő élettartam   | 10,000 |
-| Kezdeti telemetriai állapot | "be"   |
-| Kezdeti telemetriai hőmérséklet | 200   |
+| Kezdeti telemetria állapota | a   |
+| Kezdeti telemetria hőmérséklete | 200   |
 
-Az útmutató lépései végrehajtásához aktív Azure-előfizetésre van szükség.
+A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató követéséhez a következőkre van szükség:
+A útmutató követéséhez a következőkre lesz szüksége:
 
-* Visual Studio Code. A [Visual Studio Code for Mac, Linux és Windows alkalmazást letöltheti.](https://code.visualstudio.com/download)
-* .NET Core. A [.NET Core letölthető Mac, Linux és Windows rendszerre](https://www.microsoft.com/net/download).
+* Visual Studio Code. [A Visual Studio Code letölthető Mac, Linux és Windows rendszerekhez](https://code.visualstudio.com/download).
+* .NET Core. [A .net Core for Mac, Linux és Windows rendszerhez](https://www.microsoft.com/net/download)is letölthető.
 * [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postás. Letöltheti [postman Mac, Windows vagy Linux](https://www.getpostman.com/apps).
-* [Az Azure-előfizetésében üzembe helyezett IoT-központ.](../../articles/iot-hub/iot-hub-create-through-portal.md) Az útmutatóban ismertetett lépések végrehajtásához az IoT hub kapcsolati karakterláncára van szükség. A kapcsolati karakterlánc az Azure Portalon.
-* A Cosmos DB adatbázis, amely az SQL API-t használja, és amely [erős konzisztenciára](../../articles/cosmos-db/how-to-manage-database-account.md)van konfigurálva. A Cosmos DB adatbázis kapcsolati karakterláncának az útmutatóban leírt lépések végrehajtásához szükséges. A kapcsolati karakterlánc az Azure Portalon.
+* Postman. [A Poster letölthető Mac, Windows vagy Linux rendszerű számítógépekre](https://www.getpostman.com/apps).
+* Az [Azure-előfizetéshez üzembe helyezett IoT hub](../../articles/iot-hub/iot-hub-create-through-portal.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz az IoT hub kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
+* Egy Cosmos DB adatbázis, amely az SQL API-t használja, és [erős konzisztencia](../../articles/cosmos-db/how-to-manage-database-account.md)használatára van konfigurálva. A jelen útmutató lépéseinek elvégzéséhez szüksége lesz a Cosmos DB adatbázisához tartozó kapcsolódási karakterláncra. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
 
 ## <a name="prepare-your-development-environment"></a>A fejlesztőkörnyezet előkészítése
 
-A fejlesztői környezet előkészítéséhez hajtsa végre a következő feladatokat:
+A fejlesztési környezet előkészítéséhez végezze el a következő feladatokat:
 
-* Töltse le az eszközszimulációs mikroszolgáltatás forrását.
-* Töltse le a forrást a tárolóadapter mikroszolgáltatás.
-* Futtassa a tárolóadapter mikroszolgáltatását helyileg.
+* Töltse le az eszköz szimulációs szolgáltatásának forrását.
+* Töltse le a Storage adapter-szolgáltatás forrását.
+* Futtassa helyileg a Storage-adapter-szolgáltatást.
 
-A cikkben található utasítások feltételezik, hogy a Windows rendszert használja. Ha más operációs rendszert használ, előfordulhat, hogy a környezetének megfelelően módosítania kell néhány fájlelérési utat és parancsot.
+A cikkben szereplő utasítások feltételezik, hogy a Windowst használja. Ha másik operációs rendszert használ, előfordulhat, hogy módosítania kell néhány fájl elérési útját és parancsát a környezetének megfelelően.
 
-### <a name="download-the-microservices"></a>A mikroszolgáltatások letöltése
+### <a name="download-the-microservices"></a>A szervizcsomagok letöltése
 
-Töltse le és csomagolja ki a [távoli figyelési mikroszolgáltatásokat](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) a GitHubról a helyi számítógépen lévő megfelelő helyre. A cikk feltételezi, hogy a mappa neve **távoli-monitoring-services-dotnet-master**.
+Töltse le és csomagolja ki a [távoli monitorozási szolgáltatásokat](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) a githubról a helyi gépen található megfelelő helyre. A cikk azt feltételezi, hogy a mappa neve **távoli figyelés-Services-DotNet-Master**.
 
-Töltse le és csomagolja ki az [eszközszimulációs mikroszolgáltatást](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) a GitHubról a helyi számítógépen lévő megfelelő helyre. A cikk feltételezi, hogy a mappa neve **eszköz-szimuláció-dotnet-master**.
+Töltse le és csomagolja ki az [eszköz szimulációs szolgáltatását](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) a githubról egy megfelelő helyre a helyi gépen. A cikk feltételezi, hogy a mappa neve: **Device-szimulációs-DotNet-Master**.
 
-### <a name="run-the-storage-adapter-microservice"></a>A tárolóadapter mikroszolgáltatásának futtatása
+### <a name="run-the-storage-adapter-microservice"></a>A Storage-adapter szolgáltatásának futtatása
 
-Nyissa meg a **Remote-monitoring-services-dotnet-master\storage-adapter** mappát a Visual Studio-kódban. A **feloldatlan** függőségek javításához kattintson a Visszaállítás gombra.
+Nyissa meg a **Remote-Monitoring-Services-DotNet-master\storage-adapter** mappát a Visual Studio Code-ban. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **storage-adapter/WebService/appsettings.ini** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **documentDBConnectionString** változóhoz.
+Nyissa meg a **Storage-adapter/webszolgáltatás/appSettings. ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentDBConnectionString** változóhoz.
 
-A mikroszolgáltatás helyi futtatásához kattintson a **Hibakeresés > a Hibakeresés indítása gombra.**
+Ha helyileg szeretné futtatni a szolgáltatást, kattintson a **hibakeresés > a hibakeresés indítása**elemre.
 
-A Visual Studio-kód **Terminál** ablaka a futó mikroszolgáltatás kimenetét jeleníti [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)meg, beleértve a webszolgáltatás állapot-ellenőrzésének URL-címét: . Amikor erre a címre navigál, az állapotnak "OK: Él és virul" állapotnak kell lennie.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)-címét:. Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
 
-A következő lépések végrehajtásával hagyja futni a tárolóadapter mikroszolgáltatását a Visual Studio-kód ezen példányában.
+A következő lépések elvégzése után a Visual Studio Code ezen példányán ne futtassa a Storage-adapter-szolgáltatást.
 
 ## <a name="modify-the-chiller"></a>A hűtő módosítása
 
-Ebben a szakaszban egy új **belső hőmérséklet** telemetriai típust ad hozzá a meglévő **hűtőeszköz** típushoz:
+Ebben a szakaszban új **belső hőmérséklet** -telemetria-típust ad hozzá a meglévő **hűtő** típusú eszközhöz:
 
-1. Hozzon létre egy új **mappát C:\temp\devicemodels** a helyi számítógépen.
+1. Hozzon létre egy új mappát a **C:\temp\devicemodels** a helyi gépen.
 
-1. Másolja a következő fájlokat az új mappába az eszközszimulációs mikroszolgáltatás letöltött példányából:
+1. Másolja a következő fájlokat az új mappába az eszköz szimulációs szolgáltatásának letöltött példányáról:
 
     | Forrás | Cél |
     | ------ | ----------- |
-    | Szolgáltatások\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
-    | Szolgáltatások\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
-    | Szolgáltatások\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
-    | Szolgáltatások\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
-    | Szolgáltatások\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
-    | Szolgáltatások\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Nyissa meg a **C:\temp\devicemodels\chiller-01.json** fájlt.
+1. Nyissa meg a **C:\temp\devicemodels\chiller-01.JSON** fájlt.
 
-1. Az **InitialState** szakaszban adja hozzá a következő két definíciót:
+1. A **InitialState** szakaszban adja hozzá a következő két definíciót:
 
     ```json
     "internal_temperature": 65.0,
     "internal_temperature_unit": "F",
     ```
 
-1. A **Telemetriai** tömbben adja hozzá a következő definíciót:
+1. A **telemetria** tömbben adja hozzá a következő definíciót:
 
     ```json
     {
@@ -159,18 +159,18 @@ Ebben a szakaszban egy új **belső hőmérséklet** telemetriai típust ad hozz
     },
     ```
 
-1. Mentse a **C:\temp\devicemodels\chiller-01.json** fájlt.
+1. Mentse a **C:\temp\devicemodels\chiller-01.JSON** fájlt.
 
-1. Nyissa meg a **C:\temp\devicemodels\scripts\chiller-01-state.js** fájlt.
+1. Nyissa meg a **C:\temp\devicemodels\scripts\chiller-01-State.js** fájlt.
 
-1. Adja hozzá a **state** következő mezőket az állapotváltozóhoz:
+1. Adja hozzá a következő mezőket az **állapot** változóhoz:
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Frissítse a **fő** funkciót az alábbiak szerint:
+1. Frissítse a **fő** függvényt az alábbiak szerint:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -202,13 +202,13 @@ Ebben a szakaszban egy új **belső hőmérséklet** telemetriai típust ad hozz
     }
     ```
 
-1. Mentse a **C:\temp\devicemodels\scripts\chiller-01-state.js** fájlt.
+1. Mentse a **C:\temp\devicemodels\scripts\chiller-01-State.js** fájlt.
 
 ## <a name="create-the-lightbulb"></a>A villanykörte létrehozása
 
-Ebben a szakaszban új **villanykörte-eszköztípust** határoz meg:
+Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
 
-1. Hozzon létre egy **c:\temp\devicemodels\lightbulb-01.json** fájlt, és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\lightbulb-01.JSON** , és adja hozzá a következő tartalmat:
 
     ```json
     {
@@ -272,9 +272,9 @@ Ebben a szakaszban új **villanykörte-eszköztípust** határoz meg:
     }
     ```
 
-    Mentse a **C:\temp\devicemodels\lightbulb-01.json módosításait.**
+    Mentse a módosításokat a **C:\temp\devicemodels\lightbulb-01.JSON**.
 
-1. Hozzon létre egy **fájlt C:\temp\devicemodels\scripts\lightbulb-01-state.js** és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\lightbulb-01-State.js** , és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -361,9 +361,9 @@ Ebben a szakaszban új **villanykörte-eszköztípust** határoz meg:
     }
     ```
 
-    Mentse a **C:\temp\devicemodels\scripts\lightbulb-01-state.js módosításait.**
+    Mentse a módosításokat a **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
 
-1. Hozzon létre egy **C:\temp\devicemodels\scripts\SwitchOn-method.js** fájlt, és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOn-Method.js** , és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -387,9 +387,9 @@ Ebben a szakaszban új **villanykörte-eszköztípust** határoz meg:
     }
     ```
 
-    Mentse a **C:\temp\devicemodels\scripts\SwitchOn-method.js fájl módosításait.**
+    Mentse a módosításokat a **C:\temp\devicemodels\scripts\SwitchOn-Method.js**.
 
-1. Hozzon létre egy **C:\temp\devicemodels\scripts\SwitchOff-method.js** fájlt, és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOff-Method.js** , és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -413,19 +413,19 @@ Ebben a szakaszban új **villanykörte-eszköztípust** határoz meg:
     }
     ```
 
-    Mentse a **C:\temp\devicemodels\scripts\SwitchOff-method.js módosításait.**
+    Mentse a módosításokat a **C:\temp\devicemodels\scripts\SwitchOff-Method.js**.
 
-Most létrehozta a **Hűtő** eszköztípus testreszabott verzióját, és létrehozott egy új **villanykörte** eszköztípust.
+Ezzel létrehozta a **Chiller** -eszköz típusának testreszabott verzióját, és létrehozott egy új **villanykörte** típusú eszközt.
 
 ## <a name="test-the-devices"></a>Az eszközök tesztelése
 
-Ebben a szakaszban az előző szakaszokban létrehozott eszköztípusokat helyileg tesztelheti.
+Ebben a szakaszban az előző szakaszokban létrehozott típusú eszközök helyi tesztelését teszteli.
 
-### <a name="run-the-device-simulation-microservice"></a>Az eszközszimulációs mikroszolgáltatás futtatása
+### <a name="run-the-device-simulation-microservice"></a>Az eszköz szimulációs szolgáltatásának futtatása
 
-Nyissa meg a GitHubról letöltött **eszköz-szimulációs-dotnet-master** mappát a Visual Studio-kód új példányában. A **feloldatlan** függőségek javításához kattintson a Visszaállítás gombra.
+Nyissa meg a GitHubról letöltött **Device-szimulációs-DotNet-Master** mappát a Visual Studio Code új példányán. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **WebService/appsettings.ini** fájlt, rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **documentdb_connstring** változóhoz, és módosítsa a beállításokat az alábbiak szerint:
+Nyissa meg a **webszolgáltatási/appSettings. ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentdb_connstring** változóhoz, és módosítsa a beállításokat a következőképpen:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -433,17 +433,17 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-A mikroszolgáltatás helyi futtatásához kattintson a **Hibakeresés > a Hibakeresés indítása gombra.**
+Ha helyileg szeretné futtatni a szolgáltatást, kattintson a **hibakeresés > a hibakeresés indítása**elemre.
 
-A Visual Studio-kód **Terminál** ablaka a futó mikroszolgáltatás kimenetét jeleníti meg.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg.
 
-Hagyja futni az eszközszimulációs mikroszolgáltatást a Visual Studio-kód ezen példányában a következő lépések végrehajtásával.
+A következő lépések elvégzése után hagyja a Visual Studio Code ezen példányán futó Device szimulációs szolgáltatást.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Eszközesemények figyelőjének beállítása
+### <a name="set-up-a-monitor-for-device-events"></a>Figyelő beállítása az eszköz eseményeihez
 
-Ebben a szakaszban az Azure CLI használatával egy eseményfigyelő telemetriai adatok megtekintéséhez az IoT hubhoz csatlakoztatott eszközökről küldött telemetriai adatok megtekintéséhez.
+Ebben a szakaszban az Azure CLI-vel állít be egy eseményt figyelőt az IoT hub-hoz csatlakoztatott eszközökről érkező telemetria megtekintéséhez.
 
-A következő parancsfájl feltételezi, hogy az IoT hub neve **eszköz-szimuláció-teszt.**
+A következő parancsfájl feltételezi, hogy az IoT hub neve **Device-szimulációs-test**.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -453,54 +453,54 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Hagyja futni az eseményfigyelőt a szimulált eszközök tesztelése közben.
+A szimulált eszközök tesztelése közben hagyja futni az eseménynaplót.
 
-### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Szimuláció létrehozása a frissített hűtőeszköz-típussal
+### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Szimuláció létrehozása a frissített hűtő eszköz típusával
 
-Ebben a szakaszban a Postman eszközzel kérheti az eszközszimulációs mikroszolgáltatás a szimuláció futtatásához a frissített hűtőeszköz-típus használatával. Postman egy olyan eszköz, amely lehetővé teszi, hogy küldjön REST-kérelmek egy webszolgáltatás. A postás konfigurációs fájlokat, amire szüksége van a helyi példányát az **eszköz-szimuláció-dotnet** tárház.
+Ebben a szakaszban a Poster eszköz használatával kérheti le az eszköz szimulációs szolgáltatását, hogy futtasson egy szimulációt a frissített hűtő típusú eszköz használatával. A Poster egy olyan eszköz, amely lehetővé teszi a REST-kérések küldését egy webszolgáltatásnak. A szükséges Poster konfigurációs fájlok a **Device-szimulációs-DotNet** adattár helyi példányán találhatók.
 
-A Postman beállítása:
+Poster beállítása:
 
-1. Nyisd meg a postása a helyi gépen.
+1. Nyissa meg a Poster szolgáltatást a helyi gépen.
 
-1. Kattintson **a Fájl > importálása gombra.** Ezután kattintson **a Fájlok kiválasztása gombra.**
+1. Kattintson a **fájl > importálás**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
 
-1. Nyissa meg az **eszköz-szimuláció-dotnet-master/docs/postman** mappát. Válassza az **Azure IoT-eszközszimulációs megoldásgyorsítót.postman_collection** és **az Azure IoT-eszközszimulációs megoldásgyorsítót.postman_environment** és kattintson a **Megnyitás gombra.**
+1. Navigáljon a **Device-szimulációs-DotNet-Master/docs/Poster** mappába. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító. postman_collection** és az **Azure IoT-eszköz szimulációs megoldásának gyorsítása elemet. postman_environment** és kattintson a **Megnyitás**gombra.
 
-1. Bontsa ki az **Azure IoT-eszközszimulációs megoldásgyorsítót** a küldhető kérelmekre.
+1. Bontsa ki az **Azure IoT-eszköz szimulációs megoldásának Gyorssegédjét** a küldendő kérelmekre.
 
-1. Kattintson **a Nincs környezet elemre,** és válassza **az Azure IoT-eszközszimulációs megoldásgyorsítót.**
+1. Kattintson a **nincs környezet** elemre, és válassza az **Azure IoT-eszköz szimulációs megoldásának gyorsítása**elemet.
 
-Most már van egy gyűjtemény és környezet betöltve a Postman-munkaterület, amely segítségével az eszköz szimulációs mikroszolgáltatás.
-
-A szimuláció konfigurálása és futtatása:
-
-1. A Postman gyűjteményben válassza a **Módosított hűtőszimuláció létrehozása lehetőséget,** és kattintson a **Küldés**gombra. Ez a kérelem a szimulált hűtőeszköz-típus négy példányát hozza létre.
-
-1. Az Azure CLI ablakesemény-figyelő kimenete a szimulált eszközök telemetriai értékét jeleníti meg, beleértve az új **internal_temperature** értékeket is.
-
-A szimuláció leállításához válassza a **Szimuláció leállítása** kérést a Postman alkalmazásban, és kattintson a **Küldés**gombra.
-
-### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Szimuláció létrehozása a villanykörte eszköztípusával
-
-Ebben a szakaszban a Postman eszközzel kérheti az eszközszimulációs mikroszolgáltatás talizmáneszköz-típus használatával szimuláció futtatásához. Postman egy olyan eszköz, amely lehetővé teszi, hogy küldjön REST-kérelmek egy webszolgáltatás.
+Most már betöltött egy gyűjteményt és egy környezetet a Poster-munkaterületen, amely az eszköz-szimulációs szolgáltatással való kommunikációhoz használható.
 
 A szimuláció konfigurálása és futtatása:
 
-1. A Postman gyűjteményben válassza a **Villanykörte szimuláció létrehozása lehetőséget,** és kattintson a **Küldés**gombra. Ez a kérés a szimulált villanykörte eszköztípus két példányát hozza létre.
+1. A Poster-gyűjteményben válassza a **módosított Chiller-szimuláció létrehozása** elemet, majd kattintson a **Küldés**gombra. Ez a kérelem a szimulált hűtő típusú eszköz négy példányát hozza létre.
 
-1. Az Azure CLI ablakesemény-figyelő kimenete a szimulált izzók telemetriai adatokat jeleníti meg.
+1. Az Eseménynapló kimenete az Azure CLI-ablakban a szimulált eszközök telemetria jeleníti meg, beleértve az új **internal_temperature** értékeket is.
 
-A szimuláció leállításához válassza a **Szimuláció leállítása** kérést a Postman alkalmazásban, és kattintson a **Küldés**gombra.
+A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
+
+### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Szimuláció létrehozása a villanykörte-eszköz típusával
+
+Ebben a szakaszban a Poster eszköz használatával kéri az eszköz szimulációs szolgáltatását, hogy futtasson egy szimulációt a villanykörte eszköz típusával. A Poster egy olyan eszköz, amely lehetővé teszi a REST-kérések küldését egy webszolgáltatásnak.
+
+A szimuláció konfigurálása és futtatása:
+
+1. A Poster-gyűjteményben válassza a **villanykörte-szimuláció létrehozása** elemet, majd kattintson a **Küldés**gombra. Ez a kérelem a szimulált villanykörte típusú eszköz két példányát hozza létre.
+
+1. Az Eseménynapló kimenete az Azure CLI-ablakban a szimulált izzók telemetria jeleníti meg.
+
+A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Leállíthatja a két helyileg futó mikroszolgáltatásokat a Visual Studio-kódpéldányaikban (**Hibakeresés > a Hibakeresés leállítása**).
+A két helyileg futó Service-t leállíthatja a Visual Studio Code-példányaiban (**hibakeresés > hibakeresés leállítása**).
 
-Ha már nincs szüksége az IoT Hub és a Cosmos DB-példányokra, törölje őket az Azure-előfizetésből a szükségtelen díjak elkerülése érdekében.
+Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azokat az Azure-előfizetésből a szükségtelen költségek elkerülése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az útmutató bemutatja, hogyan hozhat létre egyéni szimulált eszköztípusokat, és hogyan tesztelheti őket az eszközszimulációs mikroszolgáltatás helyi futtatásával.
+Ez az útmutató bemutatja, hogyan hozhat létre egyéni szimulált eszközöket, és hogyan tesztelheti őket az eszköz-szimulációs szolgáltatás helyi futtatásával.
 
-A javasolt következő lépés az egyéni szimulált eszköztípusok központi telepítésének megismerése a [Távoli figyelési megoldás gyorsítójára.](iot-accelerators-remote-monitoring-deploy-simulated-device.md)
+A következő lépés az, hogy megtudja, hogyan helyezheti üzembe az egyéni szimulált eszközök típusát a [távoli figyelési megoldás-gyorsító](iot-accelerators-remote-monitoring-deploy-simulated-device.md)eszközön.

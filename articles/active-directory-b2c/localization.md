@@ -1,6 +1,6 @@
 ---
 title: Honosítás – Azure Active Directory B2C
-description: Adja meg egy egyéni szabályzat honosítási elemét az Azure Active Directory B2C-ben.
+description: A Azure Active Directory B2C egyéni szabályzatának honosítási elemének megadásához.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,20 +11,20 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681417"
 ---
 # <a name="localization"></a>Honosítás
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **Honosítás** i elem lehetővé teszi, hogy több területi beállítás vagy nyelv támogatását is lehetővé tegye a felhasználói utak házirendjében. A házirendek honosítási támogatása lehetővé teszi a következőket:
+A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz tartozó szabályzatban több területi beállítást vagy nyelvet támogasson. A házirendek honosítási támogatása a következőket teszi lehetővé:
 
-- Állítsa be a támogatott nyelvek explicit listáját egy házirendben, és válasszon egy alapértelmezett nyelvet.
-- Adjon meg nyelvspecifikus karakterláncokat és gyűjteményeket.
+- Állítsa be a szabályzat támogatott nyelveinek explicit listáját, és válasszon ki egy alapértelmezett nyelvet.
+- Adja meg a nyelvspecifikus karakterláncokat és gyűjteményeket.
 
 ```XML
 <Localization Enabled="true">
@@ -37,84 +37,84 @@ A **Honosítás** i elem lehetővé teszi, hogy több területi beállítás vag
   ...
 ```
 
-A **Honosítási** elem a következő attribútumokat tartalmazza:
+A **honosítási** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Engedélyezve | Nem | Lehetséges `true` értékek: `false`vagy . |
+| Engedélyezve | Nem | Lehetséges értékek: `true` vagy `false`. |
 
-A **Honosítási** elem a következő XML-elemeket tartalmazza
+A **honosítási** elem a következő XML-elemeket tartalmazza
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Támogatott nyelvek | 1:n | A támogatott nyelvek listája. |
-| Honosított erőforrások | 0:n | Honosított erőforrások listája. |
+| SupportedLanguages | 1: n | A támogatott nyelvek listája. |
+| LocalizedResources | 0: n | A honosított erőforrások listája. |
 
-## <a name="supportedlanguages"></a>Támogatott nyelvek
+## <a name="supportedlanguages"></a>SupportedLanguages
 
 A **SupportedLanguages** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Igen | A honosított erőforrások alapértelmezett nyelve. |
-| MergeBehavior (Körviselkedés) | Nem | Az azonos azonosítóval rendelkező szülőházirendben található bármely ClaimType-al egyesített értékek felsorolási értékei. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges `Append`értékek: `Prepend`, `ReplaceAll`vagy . Az `Append` érték azt adja meg, hogy a jelen lévő adatok gyűjtését hozzá kell fűzni a szülőházirendben megadott gyűjtemény végéhez. Az `Prepend` érték azt adja meg, hogy a jelen lévő adatok gyűjtését a szülőházirendben megadott gyűjtemény előtt hozzá kell adni. Az `ReplaceAll` érték azt adja meg, hogy a szülőházirendben definiált adatok gyűjtését figyelmen kívül kell hagyni, ehelyett az aktuális házirendben meghatározott adatokat használva. |
+| DefaultLanguage | Igen | A honosított erőforrások alapértelmezettként használandó nyelve. |
+| MergeBehavior | Nem | Olyan értékek enumerálási értékei, amelyek össze vannak egyesítve egy olyan ClaimType, amely ugyanabban az azonosítóban szerepel egy szülő házirendben. Ezt az attribútumot akkor használja, ha az alapházirendben megadott jogcímet felülírja. Lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. Az `Append` érték azt határozza meg, hogy az aktuális adatgyűjteményt a szülő házirendben megadott gyűjtemény végéhez kell fűzni. Az `Prepend` érték azt határozza meg, hogy a rendszer a szülő házirendben megadott gyűjtemény előtt hozzá lehessen adni a jelen lévő adatgyűjteményt. Az `ReplaceAll` érték azt határozza meg, hogy a fölérendelt házirendben definiált adatgyűjtést figyelmen kívül kell hagyni, ehelyett az aktuális házirendben definiált adatmennyiséget kell használnia. |
 
-### <a name="supportedlanguages"></a>Támogatott nyelvek
+### <a name="supportedlanguages"></a>SupportedLanguages
 
 A **SupportedLanguages** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Támogatott nyelv | 1:n | Az 5646-os számú RFC-dokumentumra vonatkozó nyelvi címkének megfelelő tartalmat jelenít meg – Címkék a nyelvek azonosítására. |
+| SupportedLanguage | 1: n | Megjeleníti az RFC 5646-címkék nyelvi címkéjének megfelelő tartalmat a nyelvek azonosításához. |
 
-## <a name="localizedresources"></a>Honosított erőforrások
+## <a name="localizedresources"></a>LocalizedResources
 
 A **LocalizedResources** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A honosított erőforrások egyedi azonosítására használt azonosító. |
+| Azonosító | Igen | Egy azonosító, amely a honosított erőforrások egyedi azonosítására szolgál. |
 
-A **Honosított erőforrások** elem a következő elemeket tartalmazza:
+A **LocalizedResources** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Honosított gyűjtemények | 0:n | Meghatározza a teljes gyűjtemények különböző kultúrákban. A gyűjtemény különböző számú elemet és különböző karakterláncokat tartalmazhat a különböző kultúrákhoz. Gyűjtemények például a jogcímtípusokban megjelenő felsorolások. Például egy ország/régió lista jelenik meg a felhasználó számára egy legördülő listában. |
-| Honosított karakterláncok | 0:n | Meghatározza az összes karakterláncot, kivéve azokat a karakterláncokat, amelyek különböző kultúrákban jelennek meg. |
+| LocalizedCollections | 0: n | Meghatározza a különböző kultúrákban található teljes gyűjteményeket. A gyűjtemények különböző számú elemet és különböző sztringeket tartalmazhatnak különböző kultúrákban. Ilyen gyűjtemény például a jogcím-típusokban megjelenő enumerálások. Például egy ország/régió lista jelenik meg a felhasználó számára egy legördülő listában. |
+| LocalizedStrings | 0: n | Meghatározza az összes karakterláncot, kivéve a gyűjteményekben megjelenő karakterláncokat különböző kultúrákban. |
 
-### <a name="localizedcollections"></a>Honosított gyűjtemények
+### <a name="localizedcollections"></a>LocalizedCollections
 
 A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Honosítottgyűjtemény | 1:n | A támogatott nyelvek listája. |
+| LocalizedCollection | 1: n | A támogatott nyelvek listája. |
 
-#### <a name="localizedcollection"></a>Honosítottgyűjtemény
+#### <a name="localizedcollection"></a>LocalizedCollection
 
 A **LocalizedCollection** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Elemtípusa | Igen | A házirendfájlban egy ClaimType elemre vagy egy felhasználói felületelemre hivatkozik. |
-| ElementId | Igen | Olyan karakterlánc, amely a ClaimsSchema szakaszban már definiált jogcímtípusra mutató hivatkozást tartalmaz, ha az **ElementType** jogcímtípusra van állítva. |
-| Célgyűjtemény | Igen | A célgyűjtemény. |
+| ElementType | Igen | Egy ClaimType elemre vagy egy felhasználói felületi elemre hivatkozik a házirend fájljában. |
+| ElementId | Igen | A ClaimsSchema szakaszban már definiált jogcím-típusra mutató hivatkozást tartalmazó karakterlánc, amely akkor használatos, ha a **ElementType** claimType van beállítva. |
+| TargetCollection | Igen | A célhely gyűjteménye. |
 
 A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Elem | 0:n | Meghatározza azt a rendelkezésre álló lehetőséget, amelyet a felhasználó a felhasználói felületen egy jogcímhez, például egy legördülő lista értékéhez választhat. |
+| Elem | 0: n | Meghatároz egy elérhető lehetőséget, amellyel a felhasználó kiválaszthat egy jogcímet a felhasználói felületen, például egy értéket a legördülő menüben. |
 
-Az **Elem** elem a következő attribútumokat tartalmazza:
+Az **Item** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Szöveg | Igen | A felhasználóbarát megjelenítési karakterlánc, amelyet a felhasználónak meg kell jelenítenie a felhasználói felületen ehhez a beállításhoz. |
-| Érték | Igen | A beállítás kiválasztásához társított karakterlánc-jogcímérték. |
-| SelectByDefault (Alapértelmezett beállítás) | Nem | Azt jelzi, hogy ezt a beállítást alapértelmezés szerint be kell-e jelölni a felhasználói felületen. Lehetséges értékek: Igaz vagy Hamis. |
+| Szöveg | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjeleníteni kívánt felhasználóbarát megjelenítési karakterlánc. |
+| Érték | Igen | A beállítás kiválasztásához társított karakterlánc-jogcím értéke. |
+| SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
 
-A következő példa a **LocalizedCollections** elem használatát mutatja be. Két **LocalizedCollection** elemet tartalmaz, az egyik az angol, a másik a spanyol. Mindkettő a `Gender` **jogcím korlátozási** gyűjteményét angol és spanyol nyelvű elemek listájával állítja be.
+A következő példa a **LocalizedCollections** elem használatát mutatja be. Két **LocalizedCollection** elemet tartalmaz, amelyek közül az egyik az angol, a másik pedig a spanyol. Állítsa be a jogcím `Gender` **korlátozási** gyűjteményét az angol és a spanyol nyelvű elemek listájával.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -134,41 +134,41 @@ A következő példa a **LocalizedCollections** elem használatát mutatja be. K
 </LocalizedCollections>
 ```
 
-### <a name="localizedstrings"></a>Honosított karakterláncok
+### <a name="localizedstrings"></a>LocalizedStrings
 
 A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Honosított karakterlánc | 1:n | Honosított karakterlánc. |
+| LocalizedString | 1: n | Honosított karakterlánc. |
 
 A **LocalizedString** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Elemtípusa | Igen | Lehetséges értékek: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [Predikátum](#predicate), [InputValidation](#inputvalidation)vagy [UxElement](#uxelement).   | 
-| ElementId | Igen | Ha az **ElementType** `Predicate`beállítása `InputValidation` `ClaimType`a , vagy , ez az elem a ClaimsSchema szakaszban már definiált jogcímtípusra mutató hivatkozást tartalmaz. |
-| Karakterlánc-azonosító | Igen | Ha az **ElementType** `ClaimType`beállítása, akkor ez az elem egy jogcímtípusú attribútumra mutató hivatkozást tartalmaz. Lehetséges `DisplayName`értékek: `AdminHelpText`, `PatternHelpText`vagy . Az `DisplayName` érték a jogcím megjelenítési nevének beállítására szolgál. Az `AdminHelpText` érték a jogcímfelhasználó súgószövegnevének beállítására szolgál. Az `PatternHelpText` érték a jogcímminta súgószövegének beállítására szolgál. Ha az **ElementType** beállítása `UxElement`a beállítás, akkor ez az elem egy felhasználói felületelem attribútumára mutató hivatkozást tartalmaz. Ha az **ElementType** `ErrorMessage`érték, akkor ez az elem egy hibaüzenet azonosítóját adja meg. Az azonosítók teljes listáját a [Honosítási karakterlánc-azonosítók](localization-string-ids.md) című témakörben található. `UxElement`|
+| ElementType | Igen | Lehetséges értékek: [ClaimsProvider](#claimsprovider), [claimType](#claimtype), [errorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikátum](#predicate), [InputValidation](#inputvalidation)vagy [UxElement](#uxelement).   | 
+| ElementId | Igen | Ha a **ElementType** értéke `ClaimType`, `Predicate`, vagy `InputValidation`, ez az elem a ClaimsSchema szakaszban már definiált jogcím-típusra mutató hivatkozást tartalmaz. |
+| Elemtípusú | Igen | Ha a **ElementType** beállítás értéke `ClaimType`, ez az elem egy jogcím típusú attribútumra mutató hivatkozást tartalmaz. Lehetséges értékek: `DisplayName`, `AdminHelpText`, vagy `PatternHelpText`. Az `DisplayName` érték a jogcím megjelenítendő nevének megadására szolgál. Az `AdminHelpText` érték a jogcím felhasználójának Súgó szövegének megadására szolgál. Az `PatternHelpText` érték a jogcím mintájának Súgó szövegének megadására szolgál. Ha a **ElementType** értéke `UxElement`, ez az elem egy felhasználói felületi elem attribútumára mutató hivatkozást tartalmaz. Ha a **ElementType** értéke `ErrorMessage`, akkor ez az elem egy hibaüzenet azonosítóját adja meg. Az `UxElement` azonosítók teljes listájáért tekintse meg a [honosítási karakterlánc-azonosítókat](localization-string-ids.md) .|
 
-## <a name="elementtype"></a>Elemtípusa
+## <a name="elementtype"></a>ElementType
 
-Az ElementType hivatkozás a honosítandó házirend ben egy jogcímtípusra, egy jogcímátalakításra vagy egy felhasználói felületelemre.
+A ElementType, a jogcím-átalakításra vagy a házirend felhasználói felületi elemére való hivatkozás honosítható.
 
-| Honosításra keresztelt elem | Elemtípusa | ElementId |Karakterlánc-azonosító |
+| Honosított elem | ElementType | ElementId |Elemtípusú |
 | --------- | -------- | ----------- |----------- |
-| Identitásszolgáltató neve |`ClaimsProvider`| | A ClaimsExchange elem azonosítója|
-| Jogcímtípus-attribútumok|`ClaimType`|A jogcímtípus neve| A honosítandó jogcím attribútuma. Lehetséges `AdminHelpText`értékek: `DisplayName` `PatternHelpText`, `UserHelpText`, és .|
+| Identitás-szolgáltató neve |`ClaimsProvider`| | A ClaimsExchange elem azonosítója|
+| Jogcím típusának attribútumai|`ClaimType`|A jogcím típusának neve| A honosítani kívánt jogcím attribútuma. Lehetséges értékek: `AdminHelpText`, `DisplayName` `PatternHelpText`,, és `UserHelpText`.|
 |Hibaüzenet|`ErrorMessage`||A hibaüzenet azonosítója |
-|Lokalizált karakterláncok másolása jogcímekké|`GetLocalizedStringsTra nsformationClaimType`||A kimeneti jogcím neve|
-|Predikátumfelhasználói üzenet|`Predicate`|Az állítmány neve| A lokalizálandó predikátum attribútuma. Lehetséges értékek: `HelpText`.|
-|Predikátumcsoport felhasználói üzenete|`InputValidation`|A PredicateValidation elem azonosítója.|A PredicateGroup elem azonosítója. Az alapcsoportnak az ElementId-ben meghatározott predikátum validációs elem gyermekének kell lennie.|
-|Felhasználó felület elemei |`UxElement` | | A honizálandó felhasználói felületelem azonosítója.|
+|Honosított karakterláncok másolása jogcímekre|`GetLocalizedStringsTra nsformationClaimType`||A kimeneti jogcím neve|
+|Predikátum felhasználói üzenet|`Predicate`|A predikátum neve| A honosítani kívánt predikátum attribútuma. Lehetséges értékek: `HelpText`.|
+|Predikátum-csoport felhasználói üzenete|`InputValidation`|A PredicateValidation elem azonosítója.|A PredicateGroup elem azonosítója. A predikátum-csoportnak a predikátum-ellenőrzési elem gyermekének kell lennie a ElementId definiált módon.|
+|Felhasználó felület elemei |`UxElement` | | A honosítani kívánt felhasználói felületi elem azonosítója.|
 
 ## <a name="examples"></a>Példák
 
-### <a name="claimsprovider"></a>Jogcímszolgáltató
+### <a name="claimsprovider"></a>ClaimsProvider
 
-A ClaimsProvider érték a jogcímszolgáltatók egyikének megjelenítendő nevének honosítására szolgál. 
+A ClaimsProvider érték az egyik jogcím-szolgáltató megjelenített nevének honosítására szolgál. 
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -182,7 +182,7 @@ A ClaimsProvider érték a jogcímszolgáltatók egyikének megjelenítendő nev
 
 ```
 
-A következő példa bemutatja, hogyan honosíthatja a jogcímszolgáltatók megjelenítendő nevét.
+Az alábbi példa bemutatja, hogyan honosíthatja meg a jogcím-szolgáltatók megjelenítendő nevét.
 
 ```xml
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
@@ -190,9 +190,9 @@ A következő példa bemutatja, hogyan honosíthatja a jogcímszolgáltatók meg
 <LocalizedString ElementType="ClaimsProvider" StringId="LinkedInExchange">LinkedIn</LocalizedString>
 ```
 
-### <a name="claimtype"></a>Jogcímtípus
+### <a name="claimtype"></a>ClaimType
 
-A ClaimType érték a jogcímattribútumok egyikének honosítására szolgál. 
+A ClaimType érték az egyik jogcím-attribútum honosítására szolgál. 
 
 ```xml
 <ClaimType Id="email">
@@ -203,7 +203,7 @@ A ClaimType érték a jogcímattribútumok egyikének honosítására szolgál.
 </ClaimType>
 ```
 
-A következő példa bemutatja, hogyan honalkazhatja az e-mail jogcímtípus DisplayName, UserHelpText és PatternHelpText attribútumait.
+Az alábbi példa azt szemlélteti, hogyan honosítható meg az e-mail-jogcím típusának DisplayName, UserHelpText és PatternHelpText attribútuma.
 
 ```XML
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
@@ -211,9 +211,9 @@ A következő példa bemutatja, hogyan honalkazhatja az e-mail jogcímtípus Dis
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
 ```
 
-### <a name="errormessage"></a>ErrorMessage üzenet
+### <a name="errormessage"></a>ErrorMessage
 
-Az ErrorMessage érték az egyik rendszerhibaüzenet honosítására szolgál. 
+A ErrorMessage érték a rendszerüzenetek egyikének honosítására szolgál. 
 
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -225,7 +225,7 @@ Az ErrorMessage érték az egyik rendszerhibaüzenet honosítására szolgál.
 </TechnicalProfile>
 ```
 
-A következő példa bemutatja, hogyan honalizálhatja a UserMessageIfClaimsPrincipalAlreadyExists hibaüzenetet.
+Az alábbi példa bemutatja, hogyan honosíthatja meg a UserMessageIfClaimsPrincipalAlreadyExists hibaüzenetét.
 
 
 ```XML
@@ -234,7 +234,7 @@ A következő példa bemutatja, hogyan honalizálhatja a UserMessageIfClaimsPrin
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
 
-A GetLocalizedStringsTransformationClaimType érték a honosított karakterláncok jogcímekbe másolására szolgál. További információ: [GetLocalizedStringsTransformation jogcímek átalakítása](string-transformations.md#getlocalizedstringstransformation)
+A GetLocalizedStringsTransformationClaimType érték a honosított karakterláncok jogcímbe másolására szolgál. További információ: [GetLocalizedStringsTransformation jogcímek átalakítása](string-transformations.md#getlocalizedstringstransformation)
 
 
 ```xml
@@ -248,7 +248,7 @@ A GetLocalizedStringsTransformationClaimType érték a honosított karakterlánc
 </ClaimsTransformation>
 ```
 
-A következő példa bemutatja, hogyan honosíthatja a GetLocalizedStringsTransformation jogcímek átalakításának kimeneti jogcímeket.
+Az alábbi példa bemutatja, hogyan lehet honosítani a GetLocalizedStringsTransformation jogcímek átalakításának kimeneti jogcímeit.
 
 ```xml
 <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
@@ -259,7 +259,7 @@ A következő példa bemutatja, hogyan honosíthatja a GetLocalizedStringsTransf
 
 ### <a name="predicate"></a>Predikátum
 
-A Predikátum érték az egyik [predikátumhibaüzenet honosítására](predicates.md) szolgál. 
+A predikátum értéke a [predikátumok](predicates.md) egyik hibaüzenetének honosítására szolgál. 
 
 ```xml
 <Predicates>
@@ -282,7 +282,7 @@ A Predikátum érték az egyik [predikátumhibaüzenet honosítására](predicat
 </Predicates>
 ```
 
-A következő példa bemutatja, hogyan honosíthatja a predikátumok súgószövegét.
+Az alábbi példa bemutatja, hogyan honosítható meg a predikátumok súgó szövege.
 
 ```xml
 <LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
@@ -290,9 +290,9 @@ A következő példa bemutatja, hogyan honosíthatja a predikátumok súgószöv
 <LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
 ```
 
-### <a name="inputvalidation"></a>InputValidation (InputValidation)
+### <a name="inputvalidation"></a>InputValidation
 
-Az InputValidation érték a [PredicateValidation](predicates.md) csoport egyik hibaüzenetének honosítására szolgál. 
+A InputValidation érték a [PredicateValidation](predicates.md) csoport egyik hibaüzenetének honosítására szolgál. 
 
 ```xml
 <PredicateValidations>
@@ -317,15 +317,15 @@ Az InputValidation érték a [PredicateValidation](predicates.md) csoport egyik 
 </PredicateValidations>
 ```
 
-A következő példa bemutatja, hogyan honosíthatja a predikátum ellenőrzési csoport súgószöveg.
+Az alábbi példa bemutatja, hogyan lehet honosítani egy predikátum-ellenőrzési csoportot segítő szöveget.
 
 ```XML
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
-### <a name="uxelement"></a>UxElem
+### <a name="uxelement"></a>UxElement
 
-Az UxElement érték a felhasználói felület egyik elemének honosítására szolgál. A következő példa bemutatja, hogyan honalkazhatja a folytatást és a megszakításgombot.
+A UxElement érték a felhasználói felület egyik elemének honosítására szolgál. Az alábbi példa bemutatja, hogyan honosítható a folytatás és a Mégse gomb.
 
 ```XML
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
@@ -334,7 +334,7 @@ Az UxElement érték a felhasználói felület egyik elemének honosítására s
 
 ## <a name="next-steps"></a>További lépések
 
-A honosítási példákat az alábbi cikkekben talál:
+A honosítási példákat a következő cikkekben találja:
 
-- [Nyelvi testreszabás egyéni szabályzattal az Azure Active Directory B2C-ben](custom-policy-localization.md)
-- [Nyelvi testreszabás felhasználói folyamatokkal az Azure Active Directory B2C-ben](user-flow-language-customization.md)
+- [Nyelvi Testreszabás egyéni házirenddel Azure Active Directory B2C](custom-policy-localization.md)
+- [Nyelvi Testreszabás felhasználói folyamatokkal Azure Active Directory B2C](user-flow-language-customization.md)

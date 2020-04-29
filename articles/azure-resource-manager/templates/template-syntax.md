@@ -1,24 +1,24 @@
 ---
 title: Sablon szerkezete és szintaxisa
-description: Az Azure Resource Manager-sablonok szerkezetét és tulajdonságait ismerteti deklaratív JSON-szintaxissal.
+description: Ismerteti Azure Resource Manager sablonok felépítését és tulajdonságait a deklaratív JSON-szintaxis használatával.
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687866"
 ---
-# <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM sablonok szerkezetének és szintaxisának megismerése
+# <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
 
-Ez a cikk egy Azure Resource Manager (ARM) sablon szerkezetét ismerteti. Bemutatja a sablon különböző szakaszait és az ezekben a szakaszokban elérhető tulajdonságokat.
+Ez a cikk egy Azure Resource Manager-(ARM-) sablon szerkezetét ismerteti. Bemutatja a sablon különböző részeit és az ezekben a részekben elérhető tulajdonságokat.
 
-Ez a cikk azoknak a felhasználóknak készült, akik ismerik az ARM sablonokat. Részletes információkat nyújt a sablon szerkezetéről. A sablon létrehozásának folyamatát végigvezető részletes oktatóanyagról az [Oktatóanyag: Az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md)című témakörben olvashat.
+Ez a cikk olyan felhasználók számára készült, akik jól ismerik az ARM-sablonokat. Részletes információkat tartalmaz a sablon struktúrájáról. A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 
 ## <a name="template-format"></a>Sablon formátuma
 
-A legegyszerűbb struktúrában a sablon a következő elemekkel rendelkezik:
+A legegyszerűbb struktúrájában a sablon a következő elemekből áll:
 
 ```json
 {
@@ -35,22 +35,22 @@ A legegyszerűbb struktúrában a sablon a következő elemekkel rendelkezik:
 
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
-| $schema |Igen |A sablonnyelv verzióját leíró JSON-sémafájl helye. A használt verziószám a központi telepítés hatókörétől és a JSON-szerkesztőtől függ.<br><br>Ha a VS Code szolgáltatást [használja az Azure Resource Manager eszközbővítményével,](use-vs-code-to-create-template.md)használja a legújabb verziót az erőforráscsoport-telepítésekhez:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Előfordulhat, hogy más szerkesztők (beleértve a Visual Studio-t is) nem tudják feldolgozni ezt a sémát. Azok számára, szerkesztők, használja:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Az előfizetések központi telepítéséhez használja a következőket:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>A felügyeleti csoport központi telepítéseihez használja a következőket:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Bérlői telepítések esetén használja a következőket:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
-| contentVersion |Igen |A sablon verziója (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Erőforrások sablon használatával történő telepítésekor ez az érték biztosíthatja, hogy a megfelelő sablont használja. |
-| apiProfile (apiProfile) |Nem | Egy API-verzió, amely az erőforrástípusok API-verzióinak gyűjteményeként szolgál. Ezzel az értékkel elkerülheti, hogy a sablon minden egyes erőforrásához API-verziókat kelljen megadnia. Amikor megad egy API-profil verziót, és nem ad meg API-verziót az erőforrástípushoz, az Erőforrás-kezelő a profilban definiált erőforrástípus API-verzióját használja.<br><br>Az API-profil tulajdonság különösen hasznos, ha egy sablont különböző környezetekben, például az Azure Stack és a globális Azure üzembe helyezésekor. Az API-profil verziója segítségével győződjön meg arról, hogy a sablon automatikusan használja a mindkét környezetben támogatott verziókat. Az aktuális API-profilverziók és a profilban definiált erőforrások API-verzióinak listáját az [API-profil című témakörben tetszetős.](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)<br><br>További információ: [Verziók nyomon követése API-profilok használatával.](templates-cloud-consistency.md#track-versions-using-api-profiles) |
-| [Paraméterek](#parameters) |Nem |Az erőforrások központi telepítésének testreszabásához a központi telepítés végrehajtásakor megadott értékek. |
-| [Változók](#variables) |Nem |JSON-töredékként használt értékek a sablonnyelvi kifejezések egyszerűsítése érdekében. |
-| [Funkciók](#functions) |Nem |A sablonon belül elérhető, felhasználó által definiált függvények. |
-| [Erőforrások](#resources) |Igen |Erőforráscsoportokban vagy előfizetésekben üzembe helyezett vagy frissített erőforrástípusok. |
-| [Kimenetek](#outputs) |Nem |A telepítés után visszaadott értékek. |
+| $schema |Igen |A sablon nyelvének verzióját leíró JSON-sémafájl helye. A használt verziószám az üzemelő példány és a JSON-szerkesztő hatókörén múlik.<br><br>Ha [a vs Code-ot használja a Azure Resource Manager Tools bővítménnyel](use-vs-code-to-create-template.md), használja a legújabb verziót az erőforráscsoport-telepítésekhez:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Előfordulhat, hogy más szerkesztők (például a Visual Studio) nem tudják feldolgozni ezt a sémát. Az ilyen szerkesztők esetében használja a következőt:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Az előfizetés központi telepítéséhez használja a következőt:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>A felügyeleti csoportok központi telepítéséhez használja a következőt:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Bérlői központi telepítések esetén használja a következőt:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| contentVersion |Igen |A sablon verziója (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e. |
+| apiProfile |Nem | Egy API-verzió, amely az erőforrástípusok API-verzióinak gyűjteménye szolgál. Ezzel az értékkel nem kell megadnia az API-verziókat a sablon egyes erőforrásaihoz. Ha megad egy API-profil verzióját, és nem ad meg API-verziót az erőforrás típushoz, a Resource Manager a profilban definiált erőforrástípus API-verzióját használja.<br><br>Az API-profil tulajdonság különösen hasznos lehet egy sablon különböző környezetekben, például a Azure Stack és a globális Azure-ban való telepítésekor. Az API-profil verziójának használatával győződjön meg arról, hogy a sablon automatikusan használ mindkét környezetben támogatott verziót. Az API-profilok aktuális verzióinak és a profilban definiált erőforrások API-verzióinak listáját lásd: [API-profil](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>További információ: [verziók nyomon követése az API-profilokkal](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| [paraméterek](#parameters) |Nem |A központi telepítés végrehajtásakor megadott értékek az erőforrás-telepítés testreszabásához. |
+| [változók](#variables) |Nem |A sablonban JSON-töredékként használt értékek a sablon nyelvi kifejezésének egyszerűsítése érdekében. |
+| [funkciók](#functions) |Nem |A sablonon belül elérhető, felhasználó által definiált függvények. |
+| [erőforrások](#resources) |Igen |Erőforráscsoport vagy előfizetés által központilag telepített vagy frissített erőforrástípusok. |
+| [kimenetek](#outputs) |Nem |Az üzembe helyezés után visszaadott értékek. |
 
-Minden elemnek van általa beállítható tulajdonsága. Ez a cikk részletesebben ismerteti a sablon szakaszait.
+Minden elemnek van beállítható tulajdonsága. Ez a cikk részletesebben ismerteti a sablon szakaszait.
 
 ## <a name="parameters"></a>Paraméterek
 
-A sablon paraméterek szakaszában megadhatja, hogy mely értékeket adhatja meg az erőforrások üzembe helyezésekor. Egy sablonban legfeljebb 256 paraméter tetsző. A paraméterek számát csökkentheti a több tulajdonságot tartalmazó objektumok használatával.
+A sablon paraméterek szakaszában megadhatja, hogy az erőforrások telepítésekor milyen értékeket adhat meg. Egy sablonban legfeljebb 256 paramétert használhat. A paraméterek számát a több tulajdonságot tartalmazó objektumok használatával csökkentheti.
 
-Egy paraméter elérhető tulajdonságai a következők:
+A paraméterek elérhető tulajdonságai a következők:
 
 ```json
 "parameters": {
@@ -71,35 +71,35 @@ Egy paraméter elérhető tulajdonságai a következők:
 
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
-| paraméter-név |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
-| type |Igen |A paraméterérték típusa. Az engedélyezett típusok és értékek a következők: **karakterlánc**, **securestring**, **int**, **bool**, **object**, **secureObject**és **array**. Lásd: [Adattípusok](#data-types). |
-| defaultValue |Nem |A paraméter alapértelmezett értéke, ha nincs megadva érték a paraméterhez. |
-| allowedValues (engedélyezett értékek) |Nem |A paraméter engedélyezett értékeinek tömbje, hogy megbizonyosodjon arról, hogy a megfelelő érték van megadva. |
-| minValue |Nem |Az int type paraméterek minimális értéke, ez az érték tartalmazza. |
-| maxValue érték |Nem |Az int type paraméterek maximális értéke, ez az érték tartalmazza. |
-| Minlength |Nem |A karakterlánc, a biztonságos karakterlánc és a tömbtípus paramétereinek minimális hossza, ez az érték tartalmazza. |
-| Maxlength |Nem |A karakterlánc, a biztonságos karakterlánc és a tömbtípus paramétereinek maximális hossza, ez az érték tartalmazza. |
-| leírás |Nem |A portálon keresztül a felhasználók számára megjelenített paraméter leírása. További információt a Megjegyzések a sablonokban című [témakörben talál.](#comments) |
+| paraméter – név |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
+| type |Igen |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**és **Array**. Lásd [az adattípusokat](#data-types). |
+| defaultValue |Nem |A paraméter alapértelmezett értéke, ha a paraméterhez nincs megadva érték. |
+| allowedValues |Nem |A paraméter számára engedélyezett értékek tömbje, hogy meggyőződjön arról, hogy a megfelelő érték van megadva. |
+| minValue |Nem |Az int Type paraméterek minimális értéke, ez az érték tartalmazza a befogadó értéket. |
+| maxValue |Nem |Az int Type paraméterek maximális értéke, ez az érték tartalmazza a befogadó értéket. |
+| minLength |Nem |A karakterlánc, a biztonságos karakterlánc és a tömb típusú paraméterek minimális hossza, ez az érték a következő: inclusive. |
+| maxLength |Nem |A karakterlánc, a biztonságos karakterlánc és a tömb típusú paraméterek maximális hossza, ez az érték a következő: inclusive. |
+| leírás |Nem |A felhasználók számára a portálon megjelenő paraméter leírása. További információ: [Megjegyzések a sablonokban](#comments). |
 
-A paraméterek használatára vonatkozó példákat az [Azure Resource Manager-sablonok paraméterei (Paraméterek az Azure Resource Manager-sablonok) témakörben talál.](template-parameters.md)
+Példák a paraméterek használatára: [Azure Resource Manager sablonokban található paraméterek](template-parameters.md).
 
 ### <a name="data-types"></a>Adattípusok
 
-Szövegközi paraméterekként átadott egész számok esetén az értékek tartományát korlátozhatja a telepítéshez használt SDK vagy parancssori eszköz. Ha például a PowerShell használatával telepít egy sablont, egész típusú lehet -2147483648 és 2147483647. A korlátozás elkerülése érdekében adjon meg nagy egész értékeket egy [paraméterfájlban.](parameter-files.md) Az erőforrástípusok saját korlátokat alkalmaznak az egész tulajdonságokra.
+A beágyazott paraméterekként átadott egész számok esetében az értékek tartományát az SDK vagy az üzembe helyezéshez használt parancssori eszköz korlátozza. Ha például a PowerShell használatával telepít egy sablont, az egész szám típusú érték-2147483648 és 2147483647 között lehet. Ha el szeretné kerülni ezt a korlátozást, adjon meg nagyméretű egész értékeket egy [paraméter fájljában](parameter-files.md). Az erőforrástípusok a saját korlátait alkalmazzák az egész tulajdonságok esetében.
 
-Amikor logikai és egész értékeket ad meg a sablonban, ne vegye körül az értéket idézőjelekkel. A karakterláncok kezdő és záró értékei idézőjelek közé.
+Ha a sablonban logikai és egész értékeket ad meg, ne adja meg idézőjelek közé az értéket. Kezdő és záró karakterlánc-értékek dupla idézőjelekkel.
 
-A tárgyak bal merevítővel kezdődnek, és jobb merevítővel végződnek. A tömbök bal oldali zárójelben kezdődnek, és a jobb oldali zárójelben végződnek.
+Az objektumok bal oldali kapcsos zárójelmel kezdődnek, és egy jobb oldali kapcsos zárójelet mutatnak. A tömbök bal oldali szögletes zárójeltel kezdődnek, és jobb oldali szögletes zárójelet mutatnak.
 
-A biztonságos karakterláncok és a biztonságos objektumok nem olvashatók az erőforrások üzembe helyezése után.
+Az erőforrás-telepítés után a biztonságos karakterláncok és a biztonságos objektumok nem olvashatók be.
 
-Az adattípusok mintáiról a [Paramétertípus-formátumok (Paramétertípus-formátumok) (Paramétertípus-formátumok) (Paramétertípus-formátumok) (Paramétertípus-formátumok) (Paramétertípus-formátumok](parameter-files.md#parameter-type-formats)
+Az adattípusok formázására szolgáló minták esetében lásd: [Paraméterek formátuma](parameter-files.md#parameter-type-formats).
 
 ## <a name="variables"></a>Változók
 
-A változók szakaszban olyan értékeket hozhat létre, amelyek a sablonban használhatók. Nem kell változókat definiálnia, de gyakran leegyszerűsítik a sablont az összetett kifejezések csökkentésével.
+A változók szakaszban a sablonban használható értékeket hozhat létre. Nem kell megadnia a változókat, de gyakran egyszerűsíti a sablont a komplex kifejezések csökkentésével.
 
-A következő példa a változók definiálásának rendelkezésre álló lehetőségeit mutatja be:
+A következő példa egy változó definiálásához elérhető lehetőségeket mutatja be:
 
 ```json
 "variables": {
@@ -126,20 +126,20 @@ A következő példa a változók definiálásának rendelkezésre álló lehet�
 }
 ```
 
-A változók `copy` több értékének létrehozásáról a [Változó ismétlés](copy-variables.md)című témakörben talál további információt.
+További információ a változó `copy` értékének a használatával történő létrehozásáról: [változó iteráció](copy-variables.md).
 
-A változók használatára vonatkozó példákat az [Azure Resource Manager változók sablonja ismerteti.](template-variables.md)
+Példák a változók használatára: [változók Azure Resource Manager sablonban](template-variables.md).
 
 ## <a name="functions"></a>Functions
 
-A sablonon belül létrehozhatja saját funkcióit. Ezek a funkciók a sablonban használhatók. Általában olyan bonyolult kifejezéseket definiál, amelyeket nem szeretne megismételni a sablonban. A felhasználó által definiált függvényeket a sablonokban támogatott kifejezésekből és [függvényekből](template-functions.md) hozhatja létre.
+A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Jellemzően olyan bonyolult kifejezéseket határozhat meg, amelyeket nem szeretne megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által támogatott kifejezésekből és [függvényekből](template-functions.md) hozza létre.
 
-A felhasználói függvény ek meghatározásakor vannak bizonyos korlátozások:
+A felhasználói függvények meghatározásakor bizonyos korlátozások vonatkoznak:
 
-* A függvény nem tud hozzáférni a változókhoz.
-* A függvény csak a függvényben definiált paramétereket használhatja. Ha a [paraméterek függvényt](template-functions-deployment.md#parameters) egy felhasználó által definiált függvényen belül használja, akkor az adott függvény paramétereire van korlátozva.
-* A függvény nem hívhat meg más felhasználó által definiált függvényeket.
-* A függvény nem tudja használni a [referenciafüggvényt.](template-functions-resource.md#reference)
+* A függvény nem fér hozzá a változókhoz.
+* A függvény csak a függvényben definiált paramétereket tudja használni. Ha a [Parameters függvényt](template-functions-deployment.md#parameters) egy felhasználó által definiált függvényen belül használja, akkor a függvény paraméterei vannak korlátozva.
+* A függvény nem hívhat meg más, felhasználó által definiált függvényeket.
+* A függvény nem tudja használni a [Reference függvényt](template-functions-resource.md#reference).
 * A függvény paraméterei nem rendelkezhetnek alapértelmezett értékekkel.
 
 ```json
@@ -166,20 +166,20 @@ A felhasználói függvény ek meghatározásakor vannak bizonyos korlátozások
 
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
-| névtér |Igen |Névtér az egyéni függvényekhez. Ezzel elkerülheti a sablonfüggvényekkel való elnevezési ütközéseket. |
-| függvénynév |Igen |Az egyéni függvény neve. A függvény hívásakor kombinálja a függvény nevét a névtérrel. Ha például egy uniqueName nevű függvényt szeretne meghívni `"[contoso.uniqueName()]"`a contoso névtérben, használja a programot. |
-| paraméter-név |Nem |Az egyéni függvényben használandó paraméter neve. |
-| paraméter-érték |Nem |A paraméterérték típusa. Az engedélyezett típusok és értékek a következők: **karakterlánc**, **securestring**, **int**, **bool**, **object**, **secureObject**és **array**. |
-| kimeneti típus |Igen |A kimeneti érték típusa. A kimeneti értékek ugyanazokat a típusokat támogatják, mint a függvénybemeneti paraméterek. |
-| kimeneti érték |Igen |A rendszer kiértékeli és visszaadja a függvényből a sablon nyelvi kifejezést. |
+| névtér |Igen |Az egyéni függvények névterét. A használatával elkerülhető a sablon függvényekkel való névütközés. |
+| függvény – név |Igen |Az egyéni függvény neve. A függvény meghívásakor egyesítse a függvény nevét a névtérrel. Ha például egy uniqueName nevű függvényt szeretne meghívni a contoso névtérben, `"[contoso.uniqueName()]"`használja a következőt:. |
+| paraméter – név |Nem |Az egyéni függvényben használandó paraméter neve. |
+| paraméter – érték |Nem |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**és **Array**. |
+| kimeneti típus |Igen |A kimeneti érték típusa A kimeneti értékek ugyanazokat a típusokat támogatják, mint a függvény bemeneti paraméterei. |
+| kimenet – érték |Igen |A függvény által kiértékelt és visszaadott sablon nyelvi kifejezése. |
 
-Az egyéni függvények használatára vonatkozó példákat az [Azure Resource Manager sablon Felhasználó által definiált függvények (Felhasználó által definiált) témakörben talál.](template-user-defined-functions.md)
+Az egyéni függvények használatáról további példákat a [felhasználó által definiált függvények a Azure Resource Manager sablonban](template-user-defined-functions.md)című témakörben talál.
 
 ## <a name="resources"></a>További források
 
-Az erőforrások szakaszban megadhatja az üzembe helyezett vagy frissített erőforrásokat.
+Az erőforrások szakaszban megadhatja a telepített vagy frissített erőforrásokat.
 
-Az erőforrásokat a következő struktúrával határozhatja meg:
+Az erőforrásokat az alábbi struktúrával definiálhatja:
 
 ```json
 "resources": [
@@ -237,24 +237,24 @@ Az erőforrásokat a következő struktúrával határozhatja meg:
 
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
-| Feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás lesz-e kiépítve a központi telepítés során. Amikor `true`az erőforrás jön létre a telepítés során. Ha `false`a program kihagyja az erőforrást a központi telepítéshez. Lásd [a feltételt.](conditional-resource-deployment.md) |
-| type |Igen |Az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrástípusnak (például **Microsoft.Storage/storageAccounts)** kombinációja. A rendelkezésre álló értékek meghatározásáról a [sablon hivatkozása](/azure/templates/)oldalon olvashat. Egy gyermek erőforrás esetében a típus formátuma attól függ, hogy a szülő erőforrásba van-e ágyazva, vagy a szülőerőforráson kívül van definiálva. Lásd: [Név és típus beállítása a gyermekerőforrásokhoz](child-resource-name-type.md). |
-| apiVersion |Igen |A REST API-t az erőforrás létrehozásához használandó verzió. A rendelkezésre álló értékek meghatározásáról a [sablon hivatkozása](/azure/templates/)oldalon olvashat. |
-| név |Igen |Az erőforrás neve. A névnek követnie kell az RFC3986-ban meghatározott URI-összetevőkre vonatkozó korlátozásokat. Az Azure-szolgáltatások, amelyek az erőforrás nevét külső felek számára ellenőrzik a nevet, hogy megbizonyosodjon arról, hogy nem egy kísérlet egy másik identitás meghamisítására. Egy gyermek erőforrás esetében a név formátuma attól függ, hogy a szülő erőforrásba van-e ágyazva, vagy a szülőerőforráson kívül van definiálva. Lásd: [Név és típus beállítása a gyermekerőforrásokhoz](child-resource-name-type.md). |
-| Hozzászólások |Nem |A sablonban lévő erőforrások dokumentálásához szükséges jegyzetek. További információt a Megjegyzések a sablonokban című [témakörben talál.](template-syntax.md#comments) |
-| location |Változó |A megadott erőforrás támogatott földrajzi helyei. Bármelyik rendelkezésre álló helyet kiválaszthatja, de általában célszerű olyat választani, amely közel áll a felhasználókhoz. Általában érdemes az egymással egymással kapcsolatba lépő erőforrásokat ugyanabban a régióban elhelyezni. A legtöbb erőforrástípushoz hely szükséges, de bizonyos típusok (például szerepkör-hozzárendelés) nem igényelnek helyet. Lásd: [Erőforrás helyének beállítása](resource-location.md). |
-| dependsOn |Nem |Az erőforrás üzembe helyezése előtt üzembe helyezendő erőforrások. Az Erőforrás-kezelő kiértékeli az erőforrások közötti függőségeket, és a megfelelő sorrendben telepíti azokat. Ha az erőforrások nem függnek egymástól, akkor párhuzamosan vannak telepítve. Az érték lehet egy erőforrásnevek vagy erőforrás-egyedi azonosítók vesszővel tagolt listája. Csak a sablonban üzembe helyezett erőforrásokat sorolja fel. A sablonban nem definiált erőforrásoknak már létezniük kell. Kerülje a felesleges függőségek hozzáadását, mivel lelassíthatják a központi telepítést, és körkörös függőségeket hozhatnak létre. A függőségek beállításával kapcsolatos útmutatásért olvassa [el a Függőségek definiálása az Azure Resource Manager-sablonokban](define-resource-dependency.md). |
-| címkét |Nem |Az erőforráshoz társított címkék. Címkék alkalmazása az erőforrások előfizetésen kénti logikai rendszerezéséhez. |
-| Sku | Nem | Egyes erőforrások lehetővé teszik a termékváltozatot meghatározó értékek üzembe helyezését. Megadhatja például egy tárfiók redundanciájának típusát. |
-| Fajta | Nem | Egyes erőforrások olyan értéket engedélyeznek, amely meghatározza a telepített erőforrás típusát. Megadhatja például a létrehozandó Cosmos DB típusát. |
-| Másol |Nem |Ha egynél több példányra van szükség, a létrehozandó erőforrások száma. Az alapértelmezett mód párhuzamos. Adja meg a soros módot, ha nem szeretné, hogy az összes vagy az erőforrások egyszerre legyenek telepítve. További információt az [Erőforrások több példányának létrehozása az Azure Resource Managerben](copy-resources.md)című témakörben talál. |
-| Terv | Nem | Egyes erőforrások lehetővé teszik a tervet meghatározó értékek üzembe helyezését. Megadhatja például egy virtuális gép piactéri lemezképét. |
-| properties |Nem |Erőforrás-specifikus konfigurációs beállítások. A tulajdonságok értékei megegyeznek az erőforrás létrehozásához a REST API-művelet (PUT metódus) kérelemtörzsében megadott értékekkel. Egy tulajdonság több példányának létrehozásához is megadhat másolati tömböt. A rendelkezésre álló értékek meghatározásáról a [sablon hivatkozása](/azure/templates/)oldalon olvashat. |
-| resources |Nem |A definiált erőforrástól függő gyermekerőforrások. Csak olyan erőforrástípusokat adjon meg, amelyeket a szülő erőforrás sémája engedélyez. A szülő erőforrástól való függőség nem hallgatólagos. Ezt a függőséget explicit módon meg kell határoznia. Lásd: [Név és típus beállítása a gyermekerőforrásokhoz](child-resource-name-type.md). |
+| feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás a telepítés során lesz-e kiépítve. Amikor `true`az erőforrás létrejön az üzembe helyezés során. Ha `false`az erőforrás ki van hagyva ehhez a központi telepítéshez. Lásd a [feltételt](conditional-resource-deployment.md). |
+| type |Igen |Az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrás típusának (például a **Microsoft. Storage/storageAccounts**) a kombinációja. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). Gyermek erőforrás esetén a típus formátuma attól függ, hogy a szülő erőforráson belül van-e beágyazva, vagy a szülő erőforráson kívül van-e definiálva. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
+| apiVersion |Igen |Az erőforrás létrehozásához használandó REST API verziója. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |
+| név |Igen |Az erőforrás neve. A névnek követnie kell a RFC3986-ben definiált URI-összetevők korlátozásait. Azok az Azure-szolgáltatások, amelyek az erőforrás nevét külső feleknek teszik elérhetővé, érvényesítik a nevet, hogy a rendszer ne Próbálkozzon másik identitás hamisításával. Gyermek erőforrás esetén a név formátuma attól függ, hogy a szülő erőforráson belül van-e beágyazva, vagy a szülő erőforráson kívül van-e definiálva. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
+| Megjegyzések |Nem |A sablon erőforrásainak dokumentálására szolgáló megjegyzései. További információ: [Megjegyzések a sablonokban](template-syntax.md#comments). |
+| location |Változó |A megadott erőforrás támogatott földrajzi helyei. Bármelyik elérhető helyet kiválaszthatja, de általában érdemes lehet a felhasználókhoz közelebbi választ adni. Általában az is fontos, hogy olyan erőforrásokat helyezzen el, amelyek egymással együttműködnek ugyanabban a régióban. A legtöbb erőforrástípus egy helyet igényel, de bizonyos típusok (például a szerepkör-hozzárendelés) nem igényelnek helyet. Lásd az [erőforrás helyének beállítása](resource-location.md)című témakört. |
+| dependsOn |Nem |Az erőforrás üzembe helyezése előtt telepítendő erőforrások. A Resource Manager kiértékeli az erőforrások közötti függőségeket, és a megfelelő sorrendben telepíti őket. Ha az erőforrások nem függnek egymástól, párhuzamosan lesznek üzembe helyezve. Az érték lehet az erőforrásnevek vagy az erőforrás egyedi azonosítóinak vesszővel tagolt listája. Csak a sablonban üzembe helyezett erőforrások listázása. A sablonban nem definiált erőforrásoknak már léteznie kell. Kerülje a szükségtelen függőségek hozzáadását, és lassíthatja az üzembe helyezést, és körkörös függőségeket hozhat létre. A függőségek beállításával kapcsolatos útmutatásért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md). |
+| címkét |Nem |Az erőforráshoz társított címkék. Címkék alkalmazása az erőforrások logikai rendszerezéséhez az előfizetésen belül. |
+| SKU | Nem | Egyes erőforrások lehetővé teszik a telepítendő SKU-t meghatározó értékek használatát. Megadhatja például, hogy milyen típusú redundancia van egy Storage-fiókhoz. |
+| típusú | Nem | Egyes erőforrások lehetővé teszik egy olyan érték használatát, amely meghatározza a telepített erőforrás típusát. Megadhatja például a létrehozandó Cosmos DB típusát. |
+| másolja |Nem |Ha több példányra van szükség, a létrehozandó erőforrások száma. Az alapértelmezett üzemmód párhuzamos. Ha nem szeretné, hogy az összes vagy az erőforrások egyszerre legyenek telepítve, akkor a soros módot kell megadnia. További információ: az [erőforrások több példányának létrehozása Azure Resource Managerban](copy-resources.md). |
+| csomag | Nem | Egyes erőforrások lehetővé teszik az olyan értékek használatát, amelyek meghatározzák az üzembe helyezési tervet. Megadhatja például a virtuális gép Marketplace-rendszerképét. |
+| properties |Nem |Erőforrás-specifikus konfigurációs beállítások. A tulajdonságok értékei megegyeznek a REST API művelet (PUT metódus) által a kérelem törzsében megadott értékekkel az erőforrás létrehozásához. Egy másolási tömböt is megadhat egy tulajdonság több példányának létrehozásához. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |
+| resources |Nem |A definiált erőforrástól függő alárendelt erőforrások. Csak a szülő erőforrás sémája által engedélyezett erőforrástípusok megadása. A fölérendelt erőforrástól való függőség nincs befoglalva. Explicit módon meg kell határoznia ezt a függőséget. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Kimenetek
 
-A Kimenetek szakaszban adja meg az üzembe helyezésből visszaadott értékeket. Általában értékeket ad vissza az üzembe helyezett erőforrásokból.
+A kimenetek szakaszban adja meg az üzemelő példányból visszaadott értékeket. Jellemzően az üzembe helyezett erőforrások értékeit kell visszaadnia.
 
 A következő példa egy kimeneti definíció szerkezetét mutatja be:
 
@@ -274,26 +274,26 @@ A következő példa egy kimeneti definíció szerkezetét mutatja be:
 
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
-| kimeneti név |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
-| Feltétel |Nem | Logikai érték, amely azt jelzi, hogy a rendszer visszaadja-e ezt a kimeneti értéket. Ha `true`az érték szerepel a központi telepítés kimenetében. Amikor `false`a kimeneti érték kimarad ehhez a központi telepítéshez. Ha nincs megadva, az `true`alapértelmezett érték . |
-| type |Igen |A kimeneti érték típusa. A kimeneti értékek ugyanazokat a típusokat támogatják, mint a sablonbemeneti paraméterek. Ha megadja a **biztonságos karakterláncot** a kimeneti típushoz, az érték nem jelenik meg a központi telepítési előzményekben, és nem olvasható be egy másik sablonból. Ha egynél több sablonban szeretne titkos értéket használni, tárolja a titkos kulcsot egy Key Vaultban, és hivatkozzon a titkos kulcsra a paraméterfájlban. További információ: [Az Azure Key Vault használata a biztonságos paraméter értékének a telepítés során történő átadásához](key-vault-parameter.md)című témakörben található. |
-| érték |Nem |Sablonnyelvi kifejezés, amely kiértékelésre kerül, és kimeneti értékként ad vissza. Adja meg **az értéket** vagy **a másolást.** |
-| Másol |Nem | Egy kimenet egynél több értékének a visszaadására szolgál. Adja meg **az értéket** vagy **a másolást.** További információ: [Output iteráció in Azure Resource Manager templates](copy-outputs.md). |
+| kimenet – név |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
+| feltétel |Nem | Logikai érték, amely jelzi, hogy a rendszer visszaadja-e ezt a kimeneti értéket. Ha `true`a érték szerepel a központi telepítés kimenetében. `false`Ekkor a rendszer kihagyja a kimeneti értéket a központi telepítéshez. Ha nincs megadva, az alapértelmezett érték: `true`. |
+| type |Igen |A kimeneti érték típusa A kimeneti értékek ugyanazokat a típusokat támogatják, mint a sablon bemeneti paraméterei. Ha a kimeneti típushoz **SecureString** ad meg, az érték nem jelenik meg a telepítési előzményekben, és nem kérhető le másik sablonból. Ha egy titkos értéket több sablonban szeretne használni, tárolja a titkot egy Key Vaultban, és hivatkozzon a titkos kulcsra a paraméter fájljában. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során. |
+| érték |Nem |A sablon nyelvi kifejezése, amelyet a rendszer kiértékel, és kimeneti értékként ad vissza. Adjon meg **értéket** vagy **másolatot**. |
+| másolja |Nem | Egy kimenet egynél több értékének visszaküldésére szolgál. **Érték** vagy **Másolás**megadása. További információ: [a kimenet iterációja Azure Resource Manager-sablonokban](copy-outputs.md). |
 
-A kimenetek használatára vonatkozó példákat az [Azure Resource Manager-sablon kimenetei .For](template-outputs.md)examples of how to use outputs, for outputs, for outputs, for outputs for Azure Resource Manager template .
+Példák a kimenetek használatára: [Azure Resource Manager sablon kimenetei](template-outputs.md).
 
 <a id="comments" />
 
 ## <a name="comments-and-metadata"></a>Megjegyzések és metaadatok
 
-Néhány lehetősége van arra, hogy megjegyzéseket és metaadatokat adjon a sablonhoz.
+Van néhány lehetőség, amelyekkel megjegyzéseket és metaadatokat adhat hozzá a sablonhoz.
 
 ### <a name="comments"></a>Megjegyzések
 
-Szövegközi megjegyzések esetén használhatja `//` `/* ... */` vagy használhatja, de ez a szintaxis nem működik minden eszközzel. A portálsablon-szerkesztő nem használható szövegközi megjegyzésekkel rendelkező sablonokon való munkára. Ha hozzáadja ezt a stílust, győződjön meg róla, hogy a használt eszközök támogatják a beépített JSON megjegyzéseket.
+A beágyazott megjegyzésekhez használhatja a `//` vagy `/* ... */` a parancsot, de ez a szintaxis nem működik az összes eszközzel. A portál sablon-szerkesztője nem használható beágyazott megjegyzésekkel rendelkező sablonokon való működéshez. Ha ezt a megjegyzést adja hozzá, győződjön meg arról, hogy az eszköz támogatja a beágyazott JSON-megjegyzéseket.
 
 > [!NOTE]
-> A sablonok üzembe helyezéséhez megjegyzéseket az Azure CLI 2.3.0-s vagy régebbi verzióval, a `--handle-extended-json-format` kapcsolót kell használnia.
+> A sablonok megjegyzésekkel történő üzembe helyezéséhez az Azure CLI és a 2.3.0 verziójának használatával a `--handle-extended-json-format` kapcsolót kell használnia.
 
 ```json
 {
@@ -307,13 +307,13 @@ Szövegközi megjegyzések esetén használhatja `//` `/* ... */` vagy használh
   ],
 ```
 
-A Visual Studio-kódban az [Azure Resource Manager Tools bővítmény](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automatikusan felismeri az Erőforrás-kezelő sablont, és ennek megfelelően módosítja a nyelvi módot. Ha az **Azure Resource Manager-sablon** a VS-kód jobb alsó sarkában jelenik meg, használhatja a szövegközi megjegyzéseket. A szövegközi megjegyzések már nem érvénytelenként vannak megjelölve.
+A Visual Studio Code-ban a [Azure Resource Manager Tools bővítmény](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automatikusan képes azonosítani a Resource Manager-sablont, és ennek megfelelően módosíthatja a nyelvi módot. Ha a VS Code jobb alsó sarkában **Azure Resource Manager sablon** látható, akkor használhatja a beágyazott megjegyzéseket. A beágyazott megjegyzések már nem érvénytelenként vannak megjelölve.
 
-![Visual Studio Code Azure Resource Manager sablonmód](./media/template-syntax/resource-manager-template-editor-mode.png)
+![Visual Studio Code Azure Resource Manager sablon üzemmód](./media/template-syntax/resource-manager-template-editor-mode.png)
 
 ### <a name="metadata"></a>Metaadatok
 
-A sablonban `metadata` szinte bárhol hozzáadhat egy objektumot. Az Erőforrás-kezelő figyelmen kívül hagyja az objektumot, de a JSON-szerkesztő figyelmeztetheti, hogy a tulajdonság érvénytelen. Az objektumban adja meg a szükséges tulajdonságokat.
+A sablonhoz szinte `metadata` bárhol hozzáadhat objektumokat. A Resource Manager figyelmen kívül hagyja az objektumot, de a JSON-szerkesztő figyelmeztetni lehet, ha a tulajdonság érvénytelen. Az objektumban adja meg a szükséges tulajdonságokat.
 
 ```json
 {
@@ -325,7 +325,7 @@ A sablonban `metadata` szinte bárhol hozzáadhat egy objektumot. Az Erőforrás
   },
 ```
 
-Paraméterek **parameters**esetén adjon `metadata` hozzá egy `description` tulajdonsággal rendelkező objektumot.
+**Paraméterek**esetén adjon hozzá egy `metadata` objektumot egy `description` tulajdonsággal.
 
 ```json
 "parameters": {
@@ -337,11 +337,11 @@ Paraméterek **parameters**esetén adjon `metadata` hozzá egy `description` tul
   },
 ```
 
-Amikor a sablont a portálon keresztül telepíti, a leírásban megadott szöveg automatikusan tippként szolgál az adott paraméterhez.
+A sablonnak a portálon keresztüli üzembe helyezése során a leírásban megadott szöveget a rendszer automatikusan tippként használja a paraméterhez.
 
-![Paramétertipp megjelenítése](./media/template-syntax/show-parameter-tip.png)
+![Paraméteres tipp megjelenítése](./media/template-syntax/show-parameter-tip.png)
 
-**Erőforrásokhoz**adjon `comments` hozzá egy elemet vagy metaadat-objektumot. A következő példa egy megjegyzéselemet és egy metaadat-objektumot is bemutat.
+**Erőforrások**esetén adjon hozzá egy `comments` elemet vagy egy metaadat-objektumot. Az alábbi példa egy Megjegyzés elemet és egy metaadat-objektumot mutat be.
 
 ```json
 "resources": [
@@ -367,7 +367,7 @@ Amikor a sablont a portálon keresztül telepíti, a leírásban megadott szöve
 ]
 ```
 
-**Kimenetek**esetén adjon hozzá egy metaadat-objektumot a kimeneti értékhez.
+A **kimenetek**esetében adjon hozzá egy metaadat-objektumot a kimeneti értékhez.
 
 ```json
 "outputs": {
@@ -380,11 +380,11 @@ Amikor a sablont a portálon keresztül telepíti, a leírásban megadott szöve
   },
 ```
 
-Metaadat-objektum nem adhat hozzá metaadat-objektumot a felhasználó által definiált függvényekhez.
+Nem adhat hozzá metaadat-objektumot felhasználó által definiált függvényekhez.
 
 ## <a name="multi-line-strings"></a>Többsoros karakterláncok
 
-A karakterláncokat több sorra is felbonthatja. Lásd például a helytulajdonságot és a következő JSON-példában található megjegyzések egyikét.
+A sztringeket több sorba is lehet bontani. Például tekintse meg a Location (hely) tulajdonságot, és az alábbi JSON-példa egyik megjegyzését.
 
 ```json
 {
@@ -404,12 +404,12 @@ A karakterláncokat több sorra is felbonthatja. Lásd például a helytulajdons
   ],
 ```
 
-A sablonok üzembe helyezéséhez többsoros karakterláncok használatával Azure CLI 2.3.0-s `--handle-extended-json-format` vagy újabb verzióval, a kapcsolót kell használnia.
+Ha többsoros karakterláncokkal szeretné telepíteni a sablonokat az Azure CLI és a 2.3.0 verziójának használatával, akkor a `--handle-extended-json-format` kapcsolót kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
-* A sablonokon belül használható függvényekről az [Azure Resource Manager sablonfüggvényei](template-functions.md)című témakörben olvashat részletesen.
-* Ha több sablont szeretne kombinálni a telepítés során, olvassa el [a Csatolt sablonok használata az Azure Resource Manager rel](linked-templates.md)című témakört.
-* A sablonok létrehozásával kapcsolatos javaslatokért tekintse meg az [Azure Resource Manager sablonokkal kapcsolatos gyakorlati tanácsait.](template-best-practices.md)
-* A Resource Manager-sablonok létrehozásával kapcsolatos javaslatokat, amelyeket az összes Azure-környezetben és az Azure Stackben használhat, olvassa el [az Azure Resource Manager-sablonok fejlesztése a felhőkonzisztenciához](templates-cloud-consistency.md)című témakört.
+* A sablonon belül használható függvények részleteiért lásd: [Azure Resource Manager template functions](template-functions.md).
+* Ha több sablont szeretne egyesíteni az üzembe helyezés során, olvassa el a [csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
+* A sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
+* Az összes Azure-környezetben és Azure Stackban használható Resource Manager-sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager-sablonok fejlesztése a felhő konzisztenciája érdekében](templates-cloud-consistency.md).

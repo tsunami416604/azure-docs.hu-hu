@@ -1,6 +1,6 @@
 ---
-title: Adatfolyam leképezése Ablakátalakítás
-description: Azure Data Factory leképezési adatfolyam-átalakítása
+title: Az adatfolyam-ablak átalakításának leképezése
+description: Azure Data Factory leképezési adatfolyam ablakának átalakítása
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606226"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Az Azure Data Factory ablakának átalakítása
+# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory ablak átalakítása
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az ablakátalakítás az a hely, ahol az adatfolyamok oszlopainak ablakalapú összesítését definiálhatja. A Kifejezésszerkesztőben különböző típusú összesítéseket határozhat meg, amelyek adatokon vagy időablakokon (SQL OVER záradék) alapulnak, például LEAD, LAG, NTILE, CUMEDIST, RANK stb.). A kimenetben egy új mező jön létre, amely tartalmazza ezeket az összesítéseket. Választható csoportonkénti mezőket is megadhat.
+Az ablak transzformációja az oszlopok ablakos összesítéseit fogja meghatározni az adatfolyamokban. A Kifejezésszerkesztő különböző típusú összesítéseket határozhat meg, amelyek az adat-vagy időablakokon alapulnak (SQL OVER záradék), például az ólom, a LAG, a NTILE, a CUMEDIST, a RANK stb.). A rendszer létrehoz egy új mezőt a kimenetben, amely tartalmazza ezeket az összesítéseket. A választható csoportosítási mezőket is felveheti.
 
-![Ablakbeállítások](media/data-flow/windows1.png "windows 1")
+![Ablak beállításai](media/data-flow/windows1.png "Windows 1")
 
-## <a name="over"></a>Felett
-Állítsa be az ablakátalakítás oszlopadatainak particionálását. Az SQL-egyenérték az ```Partition By``` SQL Over záradéka. Ha számításokat szeretne létrehozni, vagy a particionáláshoz használandó kifejezést szeretne létrehozni, ezt úgy teheti meg, hogy az oszlop neve fölé viszi az egérmutatót, és kiválasztja a "számított oszlop" lehetőséget.
+## <a name="over"></a>Keresztül
+Állítsa be az oszlopok adatparticionálását az ablak átalakításához. Az SQL ```Partition By``` -EKVIVALENS az SQL-ben az over záradékban található. Ha létre szeretne hozni egy számítást, vagy létre szeretne hozni egy kifejezést a particionáláshoz, akkor az oszlop neve fölé húzva, majd a "számított oszlop" lehetőséget kell választania.
 
-![Ablakbeállítások](media/data-flow/windows4.png "windows 4")
+![Ablak beállításai](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Rendezés
-Az Over záradék másik része ```Order By```a . Ezzel beállítja az adatok rendezési sorrendjét. Ebben az oszlopmezőben a rendezéshez kifejezést is létrehozhat egy számítási értékhez.
+Az over záradék egy másik része a ```Order By```értékét állítja be. Ezzel az adatrendezési sorrendet fogja beállítani. Ebben az oszlopban is létrehozhat egy kifejezést a rendezéshez.
 
-![Ablakbeállítások](media/data-flow/windows5.png "windows 5")
+![Ablak beállításai](media/data-flow/windows5.png "Windows 5")
 
-## <a name="range-by"></a>Tartomány szerint
-Ezután állítsa az ablakkeretet Határtalan vagy kötött. Kötetlen ablakkeret beállításához állítsa a csúszkát mindkét végén határtalan ra. Ha a Nem kötött és az Aktuális sor közötti beállítást választja, akkor be kell állítania az Eltolás kezdő és záró értékét. Mindkét érték pozitív egész szám lesz. Az adatokból relatív számokat vagy értékeket használhat.
+## <a name="range-by"></a>Tartomány:
+Ezután állítsa az ablakkeret keret nélküliként vagy korlátként. A nem kötött ablakkeret beállításához állítsa a csúszkát úgy, hogy mindkét végén fel legyen kötve. Ha a nem kötött és az aktuális sor közötti beállítást választja, akkor a kezdő és a záró értékeket kell megadnia. Mindkét érték pozitív egész szám lesz. Az adatokból relatív számokat vagy értékeket is használhat.
 
-Az ablakcsúszkának két értéket kell beállítania: az aktuális sor előtti értékeket és az aktuális sor utáni értékeket. A Kezdő és záró eltolás megegyezik a csúszka két választójával.
+Az ablak csúszka két beállított értékkel rendelkezik: az aktuális sor előtti értékek és az aktuális sor utáni értékek. A kezdő és a záró eltolás megegyezik a csúszkán található két választóval.
 
-![Ablakbeállítások](media/data-flow/windows6.png "windows 6")
+![Ablak beállításai](media/data-flow/windows6.png "Windows 6")
 
-## <a name="window-columns"></a>Ablakoszlopok
-Végül a Kifejezésszerkesztő vel definiálja az adatablakokkal használni kívánt összesítéseket, például RANK, COUNT, MIN, MAX, DENSE RANK, LEAD, LAG stb.
+## <a name="window-columns"></a>Ablak oszlopai
+Végül a Kifejezésszerkesztő segítségével definiálhatja azokat az összesítéseket, amelyeket használni szeretne az Adatablakok, például a RANK, a COUNT, a MIN, a MAX, a SŰRŰ rang, az ólom, a késés stb. alapján.
 
-![Ablakbeállítások](media/data-flow/windows7.png "windows 7")
+![Ablak beállításai](media/data-flow/windows7.png "Windows 7")
 
-Az ADF adatfolyam-kifejezési nyelvében a Kifejezésszerkesztőn keresztül használható összesítési és analitikus függvények teljes listája a következő: https://aka.ms/dataflowexpressions.
+A kifejezés-szerkesztőben az ADF adatáramlás kifejezésének nyelvén használható összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha egyszerű csoportosulást keres, használja az [Összesítő transzformációt](data-flow-aggregate.md)
+Ha egy egyszerű csoportosítási összesítést keres, használja az [összesített transzformációt](data-flow-aggregate.md)

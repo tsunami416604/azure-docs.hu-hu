@@ -1,60 +1,60 @@
 ---
 title: Az Azure FarmBeats telepítése
-description: Ez a cikk bemutatja, hogyan telepítheti az Azure FarmBeats-t az Azure-előfizetésében
+description: Ez a cikk az Azure-FarmBeats Azure-előfizetésben való telepítését ismerteti
 author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479559"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
 
-Ez a cikk ismerteti, hogyan telepítheti az Azure FarmBeats az Azure-előfizetésben.
+Ez a cikk azt ismerteti, hogyan telepítheti az Azure FarmBeats az Azure-előfizetésében.
 
-Az Azure FarmBeats egy olyan vállalkozáson belüli ajánlat, amely elérhető az Azure Piactéren. Lehetővé teszi a mezőgazdasági adatkészletek összesítését a szolgáltatók között, és a perelhető elemzések létrehozását. Az Azure FarmBeats ezt úgy éri el, hogy lehetővé teszi mesterséges intelligencia (AI) vagy gépi tanulási (ML) modellek készítését az olvasztott adatkészletek alapján. Az Azure FarmBeats két fő összetevője a következő:
+Az Azure FarmBeats egy, az Azure Marketplace-en elérhető üzleti célú ajánlat. Lehetővé teszi a mezőgazdasági adatkészletek összevonását a szolgáltatók között, és a gyakorlatban hasznosítható elemzések létrehozását. Az Azure FarmBeats ezt teszi lehetővé azáltal, hogy a mesterséges intelligencia (AI) és a Machine learning (ML) modellek összeolvasztott adatkészletek alapján történő összeállítását végzi. Az Azure FarmBeats két fő összetevője a következők:
 
-- **Datahub:** Olyan API-réteg, amely lehetővé teszi a különböző mezőgazdasági adatkészletek összesítését, normalizálását és környezetnyelvi vétését a különböző szolgáltatók között.
+- **Datahub**: olyan API-réteg, amely lehetővé teszi különböző mezőgazdasági adatkészletek összesítését, normalizálása és contextualization különböző szolgáltatók között.
 
-- **Gyorsító**: A Datahubra épülő webalkalmazás. Ez ugrás-elindítja a modell fejlesztése és vizualizációja. A gyorsító az Azure FarmBeats API-kat használja a bevitt érzékelőadatok diagramként való vizualizációjának és a modellkimenet térképként való megjelenítésének bemutatására.
+- **Accelerator**: webalkalmazás, amely a Datahub-re épül. Ez a lépés elindítja a modell fejlesztését és vizualizációját. A Gyorssegéd az Azure FarmBeats API-kkal mutatja be a betöltött szenzorok adatmegjelenítését diagramokként és a modell kimenetének megjelenítésekor térképként.
 
 ## <a name="general-information"></a>Általános információk
 
 ### <a name="components-installed"></a>Telepített összetevők
 
-Az Azure FarmBeats telepítésekor a következő erőforrások vannak kiépítve az Azure-előfizetésben:
+Az Azure FarmBeats telepítésekor a következő erőforrások vannak kiépítve az Azure-előfizetésében:
 
-| Telepített Azure-erőforrások  | Azure FarmBeats összetevő  |
+| Telepített Azure-erőforrások  | Azure FarmBeats-összetevő  |
 |---------|---------|
 | Application Insights   |      Datahub & gyorsító      |
 | App Service     |     Datahub & gyorsító     |
 | App Service-csomag   | Datahub & gyorsító  |
-| API-kapcsolat    |  Datahub (Adatközpont)       |
-| Azure Cache for Redis       | Datahub (Adatközpont)      |
-| Azure Cosmos DB   |  Datahub (Adatközpont)       |
+| API-kapcsolatok    |  Datahub       |
+| Azure Cache for Redis       | Datahub      |
+| Azure Cosmos DB   |  Datahub       |
 | Azure Data Factory V2       |     Datahub & gyorsító      |
-| Azure Batch-fiók    | Datahub (Adatközpont)   |
+| Azure Batch-fiók    | Datahub   |
 | Azure Key Vault |  Datahub & gyorsító        |
-| Azure Maps-fiók       |     Gyorsító    |
-| Eseményközpont-névtér    |     Datahub (Adatközpont)      |
-| Logikai alkalmazás      |  Datahub (Adatközpont)       |
+| Azure Maps fiók       |     Accelerator    |
+| Event hub-névtér    |     Datahub      |
+| Logikai alkalmazás      |  Datahub       |
 | Tárfiók      |     Datahub & gyorsító      |
-| Time Series Insights     |    Datahub (Adatközpont)    |
+| Time Series Insights     |    Datahub    |
 
-### <a name="costs-incurred"></a>Felmerült költségek
+### <a name="costs-incurred"></a>Felmerülő költségek
 
-Az Azure FarmBeats költsége az alapul szolgáló Azure-szolgáltatások költségének összesítése. Az Azure-szolgáltatások díjszabási információi a [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator)segítségével számítható ki. A teljes telepítés tényleges költsége a használattól függően változik. A két összetevő állandósult állapotának költsége:
+Az Azure FarmBeats díja a mögöttes Azure-szolgáltatások díjszabásának összessége. Az Azure-szolgáltatásokra vonatkozó díjszabás a [díjszabási számológép](https://azure.microsoft.com/pricing/calculator)használatával számítható ki. A teljes telepítés tényleges költsége a használattól függően változhat. A két összetevő állandó állapotának díja a következő:
 
-- Datahub - kevesebb, mint $10 naponta
-- Gyorsító - kevesebb, mint $ 2 naponta
+- Datahub – kevesebb, mint $10/nap
+- Gyorsító – kevesebb, mint $2/nap
 
 ### <a name="regions-supported"></a>Támogatott régiók
 
-Jelenleg az Azure FarmBeats a következő régiókban támogatott nyilvános felhőalapú környezetekben:
+Az Azure FarmBeats jelenleg a következő régiókban támogatja a nyilvános Felhőbeli környezetekben:
 
 - Kelet-Ausztrália
 - USA középső régiója
@@ -67,56 +67,56 @@ Jelenleg az Azure FarmBeats a következő régiókban támogatott nyilvános fel
 - Kelet-Ázsia
 - Délkelet-Ázsia
 
-### <a name="time-taken"></a>Elvett idő
+### <a name="time-taken"></a>Szükséges idő
 
-Az Azure FarmBeats teljes beállítása, beleértve az előkészítést és a telepítést, kevesebb mint egy órát vesz igénybe.
+Az Azure FarmBeats teljes telepítése, beleértve az előkészítést és a telepítést is, kevesebb mint egy órát vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure FarmBeats tényleges telepítésének megkezdése előtt el kell végeznie a következő lépéseket:
+Az Azure FarmBeats tényleges telepítésének megkezdése előtt végre kell hajtania a következő lépéseket:
 
 ### <a name="verify-permissions"></a>Engedélyek ellenőrzése
 
-Az Azure FarmBeats telepítéséhez a következő engedélyekre lesz szüksége az Azure-bérlőben:
+Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek az Azure-bérlőben:
 
-- Bérlő – AAD-alkalmazás készítője
-- Előfizetés - Tulajdonos
-- Erőforráscsoport, amelyben a FarmBeats telepítve van - Tulajdonos
+- Bérlő – HRE alkalmazás létrehozója
+- Előfizetés – tulajdonos
+- Az erőforráscsoport, amelyben a FarmBeats telepítve van – tulajdonos
 
-Az első két engedély szükséges [az AAD-alkalmazáslépés létrehozásához.](#create-an-aad-application) Szükség esetén beszerezhet valakit, aki rendelkezik az AAD-alkalmazás létrehozásához szükséges engedélyekkel.
+Az első két engedélyre van szükség a [HRE alkalmazás létrehozásának lépéseinek létrehozásához](#create-an-aad-application) . Ha szükséges, a HRE-alkalmazás létrehozásához a megfelelő engedélyekkel rendelkező személyt is beszerezhet.
 
-A FarmBeats-telepítést a piactérről futtató személynek annak az erőforráscsoportnak a tulajdonosának kell lennie, amelyben a FarmBeats telepítve van. Az előfizetés-tulajdonosok esetében ez automatikusan megtörténik az Erőforráscsoport létrehozásakor. Mások számára kérjük, hogy hozza létre előre az erőforráscsoportot, és kérje meg az Előfizetés tulajdonosát, hogy az Erőforráscsoport tulajdonosát tegye.
+A FarmBeats-telepítést futtató személynek azon erőforráscsoport tulajdonosának kell lennie, amelyben a FarmBeats telepítve van. Az előfizetési tulajdonosok esetében ez automatikusan megtörténik az erőforráscsoport létrehozásakor. Mások számára hozza létre előre az erőforráscsoportot, és kérje meg az előfizetés tulajdonosát, hogy az erőforráscsoport tulajdonosa legyen.
 
-A hozzáférési engedélyeket az Azure Portalon a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access)vonatkozó utasításokat követve ellenőrizheti.
+A Azure Portal a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access)vonatkozó utasításokat követve ellenőrizheti a hozzáférési engedélyeit.
 
-### <a name="decide-subscription-and-region"></a>Előfizetés és régió tájékánsának döntése
+### <a name="decide-subscription-and-region"></a>Előfizetés és régió kiválasztása
 
-Szüksége lesz az Azure-előfizetés-azonosítóra és arra a régióra, ahol telepíteni szeretné az Azure FarmBeats-t. Válasszon egyet a Régiók [támogatott szakaszban](#regions-supported) felsorolt régiók közül.
+Szüksége lesz az Azure-előfizetés AZONOSÍTÓJÁRA és arra a régióra, ahová az Azure FarmBeats telepíteni kívánja. Válassza ki az egyik régiót, amely a [támogatott régiók](#regions-supported) szakaszban szerepel.
 
-Jegyezze fel az **Azure-előfizetés-azonosítót** és az **Azure-régiót.**
+Jegyezze fel az Azure- **előfizetés azonosítóját** és az **Azure-régiót**.
 
-### <a name="create-an-aad-application"></a>AAD-alkalmazás létrehozása
+### <a name="create-an-aad-application"></a>HRE-alkalmazás létrehozása
 
-Az Azure FarmBeats megköveteli az Azure Active Directory-alkalmazások létrehozását és regisztrációját. Az AAD létrehozási parancsfájl sikeres futtatásához a következő engedélyekszükségesek:
+Az Azure-FarmBeats Azure Active Directory alkalmazások létrehozását és regisztrálását igénylik. A HRE-létrehozási parancsfájl sikeres futtatásához a következő engedélyek szükségesek:
 
-- Bérlő – AAD-alkalmazás készítője
-- Előfizetés - Tulajdonos
+- Bérlő – HRE alkalmazás létrehozója
+- Előfizetés – tulajdonos
 
-Futtassa a következő lépéseket egy Cloud Shell-példányban a PowerShell-környezetben. Az első alkalommal a felhasználók nak ki kell választaniuk egy előfizetést, és létre kell hozniuk egy tárfiókot. Végezze el a telepítést az utasításoknak megfelelően.
+Futtassa az alábbi lépéseket egy Cloud Shell-példányban a PowerShell-környezettel. A rendszer első alkalommal kéri a felhasználókat, hogy válasszon ki egy előfizetést, és hozzon létre egy Storage-fiókot. Végezze el a telepítést a megadott utasítások szerint.
 
-1. Az [AAD alkalmazásgenerátor-parancsfájl](https://aka.ms/FarmBeatsAADScript) letöltése
+1. A [HRE app Generator parancsfájl](https://aka.ms/FarmBeatsAADScript) letöltése
 
     ```azurepowershell-interactive
         wget -q https://aka.ms/FarmBeatsAADScript -O ./create_aad_script.ps1
     ```
 
-2. Alapértelmezés szerint a program letölti a fájlt a kezdőkönyvtárba. Keresse meg a könyvtárat.
+2. Alapértelmezés szerint a rendszer letölti a fájlt a saját könyvtárába. Navigáljon a címtárhoz.
 
     ```azurepowershell-interactive
         cd
     ```
 
-3. Az AAD-parancsfájl futtatása
+3. A HRE parancsfájl futtatása
 
     ```azurepowershell-interactive
         ./create_aad_script.ps1
@@ -124,88 +124,88 @@ Futtassa a következő lépéseket egy Cloud Shell-példányban a PowerShell-kö
 
 4. A parancsfájl a következő három bemenetet kéri:
 
-    - **FarmBeats webhely neve**: Ez az egyedi URL-előtag a FarmBeats webalkalmazáshoz. Abban az esetben, ha az előtag már megtörtént, a parancsfájl hiba ki. A telepítés után a FarmBeats központi\<telepítése elérhető lesz https:// FarmBeats-website-name>.azurewebsites.net\<és a swagger API-k lesz nek https:// FarmBeats-website-name>-api.azurewebsites.net
+    - **FarmBeats-webhely neve**: Ez a FarmBeats-webalkalmazás egyedi URL-előtagja. Ha az előtag már használatban van, a parancsfájl kikerül a hibába. A telepítés után a FarmBeats üzemelő példánya elérhető lesz\<a https://FarmBeats-websites-Name>. azurewebsites.net és a hencegő API-\<k a következő címen lesznek: https://FarmBeats-website-Name>-API.azurewebsites.net
 
-    - **Azure bejelentkezési azonosító:** Adja meg az Azure bejelentkezési azonosítóját a farmbeats-rendszergazdaként hozzáadni kívánt felhasználó számára. Ez a felhasználó ezután hozzáférést biztosíthat a FarmBeats webalkalmazás eléréséhez más felhasználók számára. A bejelentkezési azonosító általában a john.doe@domain.comforma . Az Azure UPN is támogatott.
+    - **Azure bejelentkezési azonosító**: adja meg az Azure bejelentkezési azonosítót azon felhasználó számára, akit hozzá kíván adni a FarmBeats-rendszergazdaként. Ez a felhasználó ezután hozzáférést biztosíthat a FarmBeats webalkalmazásokhoz más felhasználók számára. A bejelentkezési azonosító általában az űrlap john.doe@domain.com. Az Azure UPN is támogatott.
 
-    - **Előfizetés-azonosító:** Ez annak az előfizetésnek az azonosítója, amelyben telepíteni szeretné az Azure FarmBeats-t
+    - **Előfizetés azonosítója**: Ez annak az előfizetésnek az azonosítója, amelyben telepíteni szeretné az Azure FarmBeats
 
-5. Az AAD parancsfájl futtatása körülbelül 2 percet vesz igénybe, és az értékeket a képernyőn, valamint egy json fájlt ugyanabban a könyvtárban adja ki. Ha valaki más futtatta a parancsfájlt, kérje meg, hogy ossza meg önnel ezt a kimenetet.
+5. A HRE parancsfájl körülbelül 2 percet vesz igénybe, és megjeleníti a képernyőn látható értékeket, valamint egy ugyanabban a könyvtárban található JSON-fájlt. Ha valaki más futtatta a szkriptet, kérje meg őket, hogy ossza meg Önnel ezt a kimenetet.
 
 ### <a name="create-sentinel-account"></a>Sentinel-fiók létrehozása
 
-Az Azure FarmBeats beállítása lehetővé teszi, hogy műholdas képeket kapjon az Európai Űrügynökség [Sentinel-2](https://scihub.copernicus.eu/) műholdas küldetéséről a farmjára. A telepítés konfigurálásához Sentinel-fiókra van szükség.
+Az Azure FarmBeats telepítője lehetővé teszi, hogy az Európai Űrügynökség [Sentinel-2](https://scihub.copernicus.eu/) Satellite Missziójában műholdas képeket kapjon a farmhoz. A beállítás konfigurálásához Sentinel-fiókra van szükség.
 
-Kövesse a lépéseket, hogy hozzon létre egy ingyenes fiókot Sentinel:
+Kövesse a következő lépéseket egy ingyenes fiók létrehozásához a Sentinel használatával:
 
-1. Lépjen a hivatalos [regisztrációs](https://aka.ms/SentinelRegistration) oldalra.
-2. Adja meg a szükséges adatokat (utónév, vezetéknév, felhasználónév, jelszó és e-mail azonosító), és töltse ki az űrlapot.
-3. A regisztrált e-mail-azonosítóhoz ellenőrző hivatkozást küldünk. Válassza ki az e-mailben megadott hivatkozást, és végezze el az ellenőrzést.
+1. Nyissa meg a hivatalos [regisztrációs](https://aka.ms/SentinelRegistration) oldalt.
+2. Adja meg a szükséges adatokat (keresztnév, vezetéknév, Felhasználónév, jelszó és e-mail azonosító), és fejezze be az űrlapot.
+3. A rendszer egy ellenőrző hivatkozást küld a regisztrált e-mail-AZONOSÍTÓba. Válassza ki az e-mailben megadott hivatkozást, és fejezze be az ellenőrzést.
 
-A regisztrációs folyamat befejeződött. Jegyezd fel **Sentinel felhasználónevedet** és **Sentinel jelszavadat,** amint az ellenőrzés is befejeződött.
+A regisztrációs folyamat befejeződött. Jegyezze fel a **Sentinel felhasználónevét** és a **Sentinel-jelszavát**, ha az ellenőrzés is befejeződött.
 
 ## <a name="install"></a>Telepítés
 
-Most már készen áll a FarmBeats telepítésére. A telepítés megkezdéséhez kövesse az alábbi lépéseket:
+Most már készen áll a FarmBeats telepítésére. A telepítés elindításához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure portálra. Válassza ki a fiókját a jobb felső sarokban, és váltson az Azure AD-bérlőre, ahol telepíteni szeretné az Azure FarmBeats-t.
+1. Jelentkezzen be az Azure portálra. Válassza ki a fiókját a jobb felső sarokban, és váltson arra az Azure AD-bérlőre, ahol az Azure FarmBeats-t szeretné telepíteni.
 
-2. Nyissa meg az Azure Marketplace-t a portálon, és keresse meg az **Azure FarmBeats-t** a Marketplace-en.
+2. Nyissa meg az Azure Marketplace-t a portálon, és keresse meg az **Azure FarmBeats** a piactéren.
 
-3. Megjelenik egy új ablak az Azure FarmBeats áttekintésével. Kattintson a **Létrehozás** gombra.
+3. Megjelenik egy új ablak, amely áttekintést nyújt az Azure FarmBeats. Kattintson a **Létrehozás** gombra.
 
-4. Ekkor megjelenik egy új ablak. Fejezze be a regisztrációs folyamatot a megfelelő előfizetés, erőforráscsoport és hely kiválasztásával, amelyre telepíteni szeretné az Azure FarmBeats-t.
+4. Ekkor megjelenik egy új ablak. A regisztrációs folyamat befejezéséhez válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet, amelyre telepíteni szeretné az Azure-FarmBeats.
 
-5. Adja meg az e-mail címet, amely megkapja az Azure FarmBeats-hez kapcsolódó szolgáltatási riasztásokat a **FarmBeats szolgáltatásriasztások** szakaszban. A lap alján válassza a **Tovább** gombot a **Függőségek** lapra lépéshez.
+5. Adja meg azt az e-mail-címet, amelynek az Azure FarmBeats kapcsolatos riasztásokat kell kapnia a **FarmBeats szolgáltatás riasztások** szakaszában. A lap alján található **tovább** gombra kattintva lépjen a **függőségek** lapra.
 
-    ![Alapok lap](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+    ![Alapbeállítások lap](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
-6. Másolja az egyes bejegyzéseket az [AAD-parancsfájl](#create-an-aad-application) kimenetéből az AAD alkalmazásszakasz bemeneteibe.
+6. Másolja az egyes bejegyzéseket a [HRE szkript](#create-an-aad-application) kimenetéről a HRE-alkalmazás bemenetei szakaszba.
 
-7. Add meg a [Sentinel fiók](#create-sentinel-account) felhasználónevét és jelszavát a Sentinel-fiók részben. Válassza a **Tovább** gombot a **Véleményezés + Létrehozás** lapra lépéshez.
+7. Adja meg a [Sentinel-fiók](#create-sentinel-account) felhasználónevét és jelszavát a Sentinel-fiók szakaszban. Kattintson a **tovább** gombra a **felülvizsgálat + létrehozás** lapra való áttéréshez.
 
     ![Függőségek lap](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. A megadott adatok érvényesítése után válassza az **OK gombot.** Megjelenik a Használati feltételek oldal. Tekintse át a feltételeket, és a telepítés elindításához válassza a **Létrehozás** gombot. A program átirányítja arra az oldalra, ahol követheti a telepítés előrehaladását.
+8. A beírt részletek ellenőrzése után válassza **az OK gombot**. Megjelenik a Használati feltételek lap. Tekintse át a feltételeket, és válassza a **Létrehozás** lehetőséget a telepítés elindításához. A rendszer átirányítja az oldalra, ahol követheti a telepítési folyamatot.
 
-Miután a telepítés befejeződött, ellenőrizheti a telepítést, és elkezdheti használni a\<FarmBeats portált, ha a telepítés során megadott webhelynévre navigál: https:// FarmBeats-website-name>.azurewebsites.net. Meg kell jelennie FarmBeats felhasználói felület egy lehetőséget, hogy hozzon létre Farms.
+A telepítés befejezése után ellenőrizheti a telepítést, és megkezdheti a FarmBeats-portál használatát, ha a telepítés során megadott webhely nevére navigál: https://\<FarmBeats-website-Name>. azurewebsites.net. A farmok létrehozásához a FarmBeats felhasználói felületét kell megtekinteni.
 
-**A Datahub** a\<https:// FarmBeats-website-name>-api.azurewebsites.net/swagger címen található. Itt láthatja a különböző FarmBeats API-objektumokat, és REST-műveleteket hajthat végre az API-kon.
+A **Datahub** a következő címen érhető\<el: https://FarmBeats-web-Name>-API.azurewebsites.net/Swagger. Itt látni fogja a különböző FarmBeats API-objektumokat, és REST-műveleteket hajt végre az API-kon.
 
 ## <a name="upgrade"></a>Frissítés
 
-A FarmBeats frissítése a legújabb verzióra, futtassa a következő lépéseket a Cloud Shell-példány ban a PowerShell-környezetben. A felhasználónak annak az előfizetésnek a tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
+A FarmBeats legújabb verzióra való frissítéséhez futtassa a következő lépéseket egy Cloud Shell példányban a PowerShell-környezet használatával. A felhasználónak azon előfizetés tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
 
-Az első alkalommal a felhasználók nak ki kell választaniuk egy előfizetést, és létre kell hozniuk egy tárfiókot. Végezze el a telepítést az utasításoknak megfelelően.
+A rendszer első alkalommal kéri a felhasználókat, hogy válasszon ki egy előfizetést, és hozzon létre egy Storage-fiókot. Végezze el a telepítést a megadott utasítások szerint.
 
-1. A [frissítési parancsfájl](https://aka.ms/FarmBeatsUpgradeScript) letöltése
+1. A [Frissítési parancsfájl](https://aka.ms/FarmBeatsUpgradeScript) letöltése
 
     ```azurepowershell-interactive
         wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./upgrade-farmbeats.ps1
     ```
 
-2. Alapértelmezés szerint a program letölti a fájlt a kezdőkönyvtárba. Keresse meg a könyvtárat.
+2. Alapértelmezés szerint a rendszer letölti a fájlt a saját könyvtárába. Navigáljon a címtárhoz.
 
     ```azurepowershell-interactive
         cd
     ```
 
-3. A frissítési parancsfájl futtatása
+3. A Frissítési parancsfájl futtatása
 
     ```azurepowershell-interactive
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Az input.json fájl elérési útja nem kötelező. Ha nincs megadva, a parancsfájl kérni fogja az összes szükséges bemenetet. A frissítés körülbelül 30 perc alatt befejeződik.
+A input. JSON fájl elérési útja nem kötelező. Ha nincs megadva, a parancsfájl kérni fogja az összes szükséges bemenetet. A frissítés körülbelül 30 percen belül befejeződik.
 
 ## <a name="uninstall"></a>Eltávolítás
 
-Az Azure FarmBeats Datahub vagy gyorssegéd eltávolításához hajtsa végre az alábbi lépéseket:
+Az Azure FarmBeats Datahub vagy Accelerator eltávolításához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az Azure Portalra, és **törölje azokat az erőforráscsoportokat,** amelyekben ezek az összetevők telepítve vannak.
+1. Jelentkezzen be a Azure Portalba, és **törölje azokat az erőforráscsoportot** , amelyekben ezek az összetevők telepítve vannak.
 
-2. Nyissa meg az Azure Active Directoryt, & törölje az Azure FarmBeats-telepítéshez kapcsolódó **Azure AD-alkalmazást.**
+2. Nyissa meg Azure Active Directory & törölje az Azure FarmBeats-telepítéshez kapcsolódó **Azure ad-alkalmazást** .
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulta, hogyan telepítheti az Azure FarmBeats-t az Azure-előfizetésében. Most megtudhatja, hogyan [adhat hozzá felhasználókat](manage-users-in-azure-farmbeats.md#manage-users) az Azure FarmBeats-példányhoz.
+Megtanulta, hogyan telepítheti az Azure FarmBeats az Azure-előfizetésében. Most megtudhatja, hogyan [adhat hozzá felhasználókat](manage-users-in-azure-farmbeats.md#manage-users) az Azure FarmBeats-példányához.

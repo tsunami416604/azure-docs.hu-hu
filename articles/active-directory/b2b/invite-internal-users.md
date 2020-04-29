@@ -1,6 +1,6 @@
 ---
-title: Belső felhasználók meghívása a B2B együttműködésre - Azure AD
-description: Ha belső felhasználói fiókkal rendelkezik a partnerek, forgalmazók, szállítók, szállítók és más vendégek számára, az Azure AD B2B-együttműködésre válthat, ha meghívja őket, hogy jelentkezzenek be saját külső hitelesítő adataikkal vagy bejelentkezéssel. Használja a PowerShellt vagy a Microsoft Graph meghívási API-t.
+title: Belső felhasználók meghívása a B2B-együttműködésbe – Azure AD
+description: Ha rendelkezik belső felhasználói fiókkal a partnerek, a terjesztők, a szállítók, a szállítók és az egyéb vendégek számára, az Azure AD B2B együttműködésre való meghívásával meghívja őket, hogy jelentkezzenek be a saját külső hitelesítő adataikkal vagy bejelentkezéssel. Használja a PowerShellt vagy a Microsoft Graph meghívó API-t.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,52 +12,52 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680175"
 ---
-# <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása a B2B együttműködésre
+# <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B együttműködésre
 
 |     |
 | --- |
-| A belső felhasználók meghívása a B2B együttműködés használatára az Azure Active Directory nyilvános előzetes verzióbeli szolgáltatása. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
+| A belső felhasználók meghívása a B2B együttműködés használatára a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
 |     |
 
-Az Azure AD B2B együttműködés rendelkezésre állása előtt a szervezetek együttműködhetnek a forgalmazókkal, a beszállítókkal, a szállítókkal és más vendégfelhasználókkal a belső hitelesítő adatok beállításával. Ha ilyen belső vendégfelhasználókkal rendelkezik, megkérheti őket a B2B-együttműködés használatára, hogy kihasználhassa az Azure AD B2B előnyeit. A B2B vendégfelhasználók saját identitásuk és hitelesítő adataik segítségével jelentkezhetnek be, és önnek nem kell jelszót fenntartania vagy kezelnie a fiók életciklusát.
+Az Azure AD B2B-együttműködés rendelkezésre állása előtt a szervezetek a belső hitelesítő adatok beállításával együttműködhetnek a forgalmazókkal, a szállítókkal, a szállítókkal és a többi vendég felhasználóval. Ha ilyen belső vendég felhasználókkal rendelkezik, meghívhatja őket a B2B-együttműködés használatára, így kihasználhatja az Azure AD B2B előnyeinek előnyeit is. A B2B vendég felhasználói saját identitásuk és hitelesítő adataik használatával jelentkezhetnek be, és nem kell megtartania a jelszavakat, és nem kell kezelnie a fiókok életciklusát.
 
-Meghívó küldése egy meglévő belső fiókba lehetővé teszi a felhasználó objektumazonosítójának, upn-, csoporttagságának és alkalmazás-hozzárendelésének megőrzését. Nem kell manuálisan törölnie és újra meghívnia a felhasználót, vagy újra hozzárendelnie az erőforrásokat. A felhasználó meghívásához a meghívó API-t fogja használni a belső felhasználói objektum és a vendégfelhasználó e-mail-címének és a meghívónak a továbbadására. Amikor a felhasználó elfogadja a meghívást, a B2B szolgáltatás a meglévő belső felhasználói objektumot B2B-felhasználóra módosítja. A jövőben a felhasználónak be kell jelentkeznie a felhőalapú erőforrás-szolgáltatásokba a B2B hitelesítő adataival. Továbbra is használhatják a belső hitelesítő adatokat a helyszíni erőforrások eléréséhez, de ezt megakadályozhatja a belső fiók jelszavának alaphelyzetbe állításával vagy módosításával.
-
-> [!NOTE]
-> A meghívás egyirányú. Belső felhasználókat meghívhat a B2B-együttműködés használatára, de a B2B hitelesítő adatok at nem távolíthatja el, miután hozzáadták őket. Ha a felhasználót csak belső felhasználóra szeretné visszaváltani, törölnie kell a felhasználói objektumot, és létre kell hoznia egy újat.
-
-A nyilvános előzetes verzióban a jelen cikkben ismertetett módszer, amely belső felhasználókat hív meg a B2B-együttműködésre, a következő esetekben nem használható:
-
-- A belső felhasználóhoz már hozzá van rendelve Exchange-licenc.
-- A felhasználó olyan tartományból származik, amely a címtárban közvetlen összevonásra van beállítva.
-- A belső felhasználó csak felhőalapú fiók, és a fő fiók nem az Azure AD-ben.
-
-Ezekben az esetekben, ha a belső felhasználót B2B-felhasználóra kell módosítani, törölnie kell a belső fiókot, és meghívót kell küldenie a felhasználónak a B2B együttműködésre.
-
-**Helyszíni szinkronizált felhasználók:** A helyszíni és a felhő közötti szinkronizálásra kijelölt felhasználói fiókok esetében a helyszíni címtár marad a hitelesítésforrás, miután felkérték őket a B2B-együttműködés használatára. A helyszíni fiókon végzett módosítások szinkronizálódnak a felhőfiókkal, beleértve a fiók letiltását vagy törlését. Ezért nem akadályozhatja meg, hogy a felhasználó bejelentkezik a helyszíni fiókjukba, miközben megtartja a felhőbeli fiókját egyszerűen a helyszíni fiók törlésével. Ehelyett beállíthatja a helyszíni fiók jelszavát egy véletlenszerű GUID vagy más ismeretlen értékre.
-
-## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Hogyan lehet meghívni a belső felhasználókat a B2B együttműködésre?
-
-A PowerShell vagy a meghívó API segítségével b2B meghívót küldhet a belső felhasználónak. Győződjön meg arról, hogy a meghívóhoz használni kívánt e-mail cím a belső felhasználói objektum külső e-mail címeként van beállítva.
-
-- Csak felhőalapú felhasználók esetén használja a User.OtherMails tulajdonságban található e-mail címet a meghívóhoz.
-- Egy helyszíni szinkronizált felhasználó esetén a User.Mail tulajdonság értékét kell használnia a meghívóhoz.
-- A felhasználó Mail tulajdonságában lévő tartománynak meg kell egyeznie azzal a fiókkal, amelyet a bejelentkezéshez használnak. Ellenkező esetben egyes szolgáltatások, például a Teams, nem tudják hitelesíteni a felhasználót.
-
-Alapértelmezés szerint a meghívó e-mailt küld a felhasználónak, amely tudatja velük, hogy meghívták őket, de letilthatja ezt az e-mailt, és elküldheti a sajátját.
+Egy meglévő belső fiókra irányuló Meghívás küldése lehetővé teszi a felhasználó objektumazonosító, UPN, csoporttagság és alkalmazás-hozzárendelések megőrzését. Nem kell manuálisan törölnie és újból meghívnia a felhasználót, vagy újra hozzá kell rendelnie az erőforrásokat. A felhasználó meghívásához a meghívó API-val át kell adni a belső felhasználói objektumot és a vendég felhasználó e-mail-címét a meghívóval együtt. Ha a felhasználó elfogadja a meghívót, a VÁLLALATKÖZI szolgáltatás megváltoztatja a meglévő belső felhasználói objektumot egy B2B-felhasználóhoz. A jövőben a felhasználónak a B2B hitelesítő adataival kell bejelentkeznie a felhőalapú erőforrások szolgáltatásaiba. Továbbra is használhatják a belső hitelesítő adataikat a helyszíni erőforrásokhoz való hozzáféréshez, de ezt megakadályozhatja a belső fiók jelszavának alaphelyzetbe állításával vagy módosításával.
 
 > [!NOTE]
-> Saját e-mail vagy más kommunikáció küldéséhez használhatja a New-AzureADMSInvitation with -SendInvitationMessage:$false segítségével a felhasználókat csendben meghívja, majd elküldheti saját e-mail üzenetét a konvertált felhasználónak. Lásd: [Azure AD B2B együttműködési API és testreszabás.](customize-invitation-api.md)
+> A meghívás egyirányú. Meghívhatja a belső felhasználókat a B2B együttműködés használatára, de a hozzáadásuk után nem távolíthatja el a B2B hitelesítő adatokat. Ha a felhasználót csak belső felhasználónak szeretné módosítani, törölnie kell a felhasználói objektumot, és létre kell hoznia egy újat.
 
-## <a name="use-powershell-to-send-a-b2b-invitation"></a>B2B-meghívó küldése a PowerShell használatával
+Nyilvános előzetes verzióban a belső felhasználók VÁLLALATKÖZI együttműködésre való meghívásához a jelen cikkben ismertetett módszer nem használható ezekben a példányokban:
 
-A következő paranccsal meghívhatja a felhasználót a B2B együttműködésre:
+- A belső felhasználóhoz már hozzá van rendelve egy Exchange-licenc.
+- A felhasználó olyan tartományból származik, amely közvetlen összevonás beállítására van beállítva a címtárban.
+- A belső felhasználó csak felhőalapú fiók, a fő fiókjuk pedig nem az Azure AD-ben.
+
+Ezekben a példányokban, ha a belső felhasználót egy B2B-felhasználóra kell módosítani, törölje a belső fiókot, és küldje el a felhasználónak a B2B-együttműködésre vonatkozó meghívót.
+
+Helyszíni **szinkronizált felhasználók**: a helyszíni és a felhő között szinkronizált felhasználói fiókok esetében a helyszíni címtár a szolgáltató forrása marad, miután meghívást kapnak a B2B együttműködés használatára. A helyszíni fiók módosításai szinkronizálva lesznek a Felhőbeli fiókkal, beleértve a fiók letiltását vagy törlését is. Ezért nem akadályozhatja meg, hogy a felhasználó bejelentkezzen a helyszíni fiókjába, miközben a Felhőbeli fiókját egyszerűen törli a helyszíni fiókból. Ehelyett beállíthatja a helyszíni fiók jelszavát véletlenszerű GUID azonosítóra vagy más ismeretlen értékre.
+
+## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B-együttműködésre
+
+A PowerShell vagy a meghívó API használatával VÁLLALATKÖZI meghívást küldhet a belső felhasználónak. Győződjön meg arról, hogy a meghívóhoz használni kívánt e-mail-cím a belső felhasználói objektum külső e-mail-címe.
+
+- Csak felhőalapú felhasználó esetén használja a meghívóhoz tartozó user. OtherMails tulajdonságban található e-mail-címet.
+- Helyszíni szinkronizált felhasználó esetén a meghívóhoz tartozó user. mail tulajdonság értékét kell használnia.
+- A felhasználó mail tulajdonságában szereplő tartománynak meg kell egyeznie a bejelentkezéshez használt fiókkal. Ellenkező esetben előfordulhat, hogy egyes szolgáltatások, például a csapatok nem fogják tudni hitelesíteni a felhasználót.
+
+Alapértelmezés szerint a meghívás elküldi a felhasználónak egy e-mailt, amely arról tájékoztatja őket, hogy meghívást kaptak, de ezt az e-mailt elhagyhatja, és elküldheti saját helyette.
+
+> [!NOTE]
+> Saját e-mail-cím vagy más kommunikáció elküldéséhez használhatja a New-AzureADMSInvitation with-SendInvitationMessage: $falset a felhasználók csendes meghívásához, majd küldje el a saját e-mail-üzenetét az átalakított felhasználónak. Lásd: [Az Azure ad B2B együttműködési API és a Testreszabás](customize-invitation-api.md).
+
+## <a name="use-powershell-to-send-a-b2b-invitation"></a>B2B-Meghívás küldése a PowerShell használatával
+
+A következő parancs használatával meghívhatja a felhasználót a B2B együttműködésre:
 
 ```powershell
 Uninstall-Module AzureADPreview
@@ -67,9 +67,9 @@ $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGra
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```
 
-## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>B2B-meghívó küldése a meghívó API-val
+## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>B2B-Meghívás küldése a meghívót használó API-val
 
-Az alábbi minta bemutatja, hogyan hívja meg a meghívásos API-t egy belső felhasználó meghívására B2B felhasználóként.
+Az alábbi minta azt szemlélteti, hogyan hívhatja meg a meghívó API-t egy belső felhasználó B2B-felhasználóként való meghívásához.
 
 ```json
 POST https://graph.microsoft.com/v1.0/invitations
@@ -97,8 +97,8 @@ ContentType: application/json
 }
 ```
 
-Az API-ra adott válasz ugyanaz a válasz, amelyet akkor kap, amikor új vendégfelhasználót hív meg a címtárba.
+Az API-ra adott válasz ugyanazt a választ kapja, amikor új vendég felhasználót hív meg a címtárban.
 
 ## <a name="next-steps"></a>További lépések
 
-- [B2B együttműködési meghívás visszaváltás](redemption-experience.md)
+- [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)

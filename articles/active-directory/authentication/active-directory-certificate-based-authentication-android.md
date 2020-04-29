@@ -1,6 +1,6 @@
 ---
-title: Android tanúsítványalapú hitelesítés – Azure Active Directory
-description: Ismerje meg a támogatott forgatókönyveket és a tanúsítványalapú hitelesítés konfigurálásának követelményeit az Android-eszközökkel rendelkező megoldásokban
+title: Androidos tanúsítványalapú hitelesítés – Azure Active Directory
+description: Ismerje meg a támogatott forgatókönyveket és a tanúsítványalapú hitelesítés konfigurálásának követelményeit Android-eszközökkel rendelkező megoldásokban
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,72 +12,72 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680214"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory tanúsítványalapú hitelesítés Androidon
+# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Tanúsítványalapú hitelesítés Azure Active Directory az Androidon
 
-Az Android-eszközök tanúsítványalapú hitelesítés (CBA) segítségével hitelesíthetik magukat az Azure Active Directory ban az eszközükön lévő ügyféltanúsítvány használatával, amikor a következőkhöz csatlakoznak:
+Az Android-eszközök tanúsítványalapú hitelesítést (CBA) használhatnak a Azure Active Directory hitelesítéséhez az eszközön lévő ügyféltanúsítványt használva a következőhöz való csatlakozáskor:
 
-* Office mobilalkalmazások, például a Microsoft Outlook és a Microsoft Word
-* Exchange ActiveSync (EAS) ügyfelek
+* Office Mobile-alkalmazások, például a Microsoft Outlook és a Microsoft Word
+* Exchange ActiveSync-(EAS-) ügyfelek
 
-A szolgáltatás konfigurálásával nincs szükség felhasználónév és jelszó kombináció megadására bizonyos levelezési és Microsoft Office-alkalmazásokban a mobileszközön.
+A szolgáltatás konfigurálásával nem kell megadnia a Felhasználónév és a jelszó kombinációját bizonyos levelezési és Microsoft Office alkalmazásokban a mobileszközön.
 
-Ez a témakör ismerteti a CBA androidos eszközön történő konfigurálásának követelményeit és támogatott forgatókönyveit az Office 365 Enterprise, Business, Education, US Government, China és Germany csomagok bérlői számára.
+Ez a témakör az Office 365 Enterprise, a Business, az Education, az USA Government, a China és a Germany csomagokban lévő bérlők felhasználói számára készült Android-eszközökre vonatkozó követelményeket és támogatott forgatókönyveket ismerteti.
 
-Ez a funkció előzetes verzióban érhető el az Office 365-beli egyesült államokbeli kormányzati védelmi és szövetségi csomagokban.
+Ez a funkció előzetes verzióban érhető el az Office 365 US government Defense és Federal tervekben.
 
-## <a name="microsoft-mobile-applications-support"></a>A Microsoft mobilalkalmazás-támogatása
+## <a name="microsoft-mobile-applications-support"></a>Microsoft Mobile-alkalmazások támogatása
 
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Azure Information Protection alkalmazás |![Az alkalmazás támogatásának jelzése][1] |
-| Intune Vállalati portál |![Az alkalmazás támogatásának jelzése][1] |
-| Microsoft Teams |![Az alkalmazás támogatásának jelzése][1] |
-| OneNote |![Az alkalmazás támogatásának jelzése][1] |
-| OneDrive |![Az alkalmazás támogatásának jelzése][1] |
-| Outlook |![Az alkalmazás támogatásának jelzése][1] |
-| Power BI |![Az alkalmazás támogatásának jelzése][1] |
-| Skype Vállalati verzió |![Az alkalmazás támogatásának jelzése][1] |
-| Word / Excel / PowerPoint |![Az alkalmazás támogatásának jelzése][1] |
-| Yammer |![Az alkalmazás támogatásának jelzése][1] |
+| Azure Information Protection alkalmazás |![Pipa jelzi az alkalmazás támogatását][1] |
+| Intune Vállalati portál |![Pipa jelzi az alkalmazás támogatását][1] |
+| Microsoft Teams |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneNote |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneDrive |![Pipa jelzi az alkalmazás támogatását][1] |
+| Outlook |![Pipa jelzi az alkalmazás támogatását][1] |
+| Power BI |![Pipa jelzi az alkalmazás támogatását][1] |
+| Skype Vállalati verzió |![Pipa jelzi az alkalmazás támogatását][1] |
+| Word/Excel/PowerPoint |![Pipa jelzi az alkalmazás támogatását][1] |
+| Yammer |![Pipa jelzi az alkalmazás támogatását][1] |
 
-### <a name="implementation-requirements"></a>Végrehajtási követelmények
+### <a name="implementation-requirements"></a>Megvalósítási követelmények
 
-A készülék operációs rendszerének Android 5.0 (Lollipop) és újabb verziónak kell lennie.
+Az eszköz operációsrendszer-verziójának Android 5,0 (nyalóka) vagy újabb verziójúnak kell lennie.
 
-Az összevonási kiszolgálót konfigurálni kell.
+Konfigurálni kell egy összevonási kiszolgálót.
 
-Ahhoz, hogy az Azure Active Directory visszavonjon egy ügyféltanúsítványt, az ADFS-jogkivonatnak a következő jogcímekkel kell rendelkeznie:
+Az ügyféltanúsítványok visszavonásához az ADFS-tokennek a következő jogcímeket kell tartalmaznia Azure Active Directory:
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(Az ügyféltanúsítvány sorozatszáma)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(Az ügyféltanúsítvány kibocsátójának karakterlánca)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(Az ügyféltanúsítvány kiállítójának karakterlánca)
 
-Az Azure Active Directory hozzáadja ezeket a jogcímeket a frissítési jogkivonathoz, ha azok elérhetők az ADFS-jogkivonatban (vagy bármely más SAML-jogkivonatban). Ha a frissítési jogkivonatot érvényesíteni kell, ezt az információt használja a visszavonás ellenőrzése.
+Azure Active Directory hozzáadja ezeket a jogcímeket a frissítési jogkivonathoz, ha az ADFS-tokenben (vagy bármely más SAML-jogkivonatban) elérhetők. Ha a frissítési tokent ellenőrizni kell, a rendszer ezt az információt használja a visszavonás ellenőrzéséhez.
 
-Ajánlott eljárásként frissítenie kell a szervezet ADFS-hibalapjait a következő információkkal:
+Ajánlott eljárásként frissítenie kell a szervezet ADFS-hibájának lapjait a következő információkkal:
 
-* A Microsoft Hitelesítő Android-alapú telepítésének követelménye.
-* Útmutató a felhasználói tanúsítvány bekésezéséhez.
+* A Microsoft Authenticator telepítésének követelménye Android rendszeren.
+* Útmutató felhasználói tanúsítvány beszerzéséhez.
 
-További információt [az AD FS bejelentkezési lapok testreszabása című témakörben talál.](https://technet.microsoft.com/library/dn280950.aspx)
+További információ: [AD FS bejelentkezési lapok testreszabása](https://technet.microsoft.com/library/dn280950.aspx).
 
-Egyes Office-alkalmazások (modern hitelesítés engedélyezve) kérésükben elküldik a '*prompt=login ' (prompt=login'* üzenetet az Azure AD-nek. Alapértelmezés szerint az Azure AD lefordítja a '*prompt=login*' a kérelemben az ADFS-hez "*wauth=usernamepassworduri*' (kéri az ADFS-t, hogy tegye meg az U/P Auth- t) és a '*wfresh=0*' (kéri az ADFS-t, hogy figyelmen kívül hagyja az SSO-állapotot, és végezze el a friss hitelesítést). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítania kell az azure-beli AD alapértelmezett viselkedését. Állítsa a '*PromptLoginBehavior*' beállítást az összevont tartomány beállításaiban a '*Letiltva*' értékre.
-Az [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmag segítségével hajthatja végre a feladatot:
+Egyes Office-alkalmazások (amelyeken engedélyezve van a modern hitelesítés) a kérésben a "*prompt = login*" üzenetet küldik az Azure ad-nek. Alapértelmezés szerint az Azure AD az ADFS-kérelemben*az "**wauth = usernamepassworduri*" (az U/P hitelesítésének megkövetelése) és a "*wfresh = 0*" (az ADFS-t az SSO-állapot mellőzése és a friss hitelesítés elvégzése érdekében kéri). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítania kell az Azure AD alapértelmezett viselkedését. Állítsa a "*PromptLoginBehavior*" beállítást az összevont tartomány beállításai között a "*Letiltva*" értékre.
+A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmagot használhatja:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Az Exchange ActiveSync-ügyfelek támogatása
+## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync-ügyfelek támogatása
 
-Bizonyos Exchange ActiveSync alkalmazások Android 5.0 (Lollipop) vagy újabb rendszeren támogatottak. Annak megállapításához, hogy a levelezőalkalmazás támogatja-e ezt a funkciót, forduljon az alkalmazás fejlesztőjéhez.
+Bizonyos Exchange ActiveSync-alkalmazások az Android 5,0 (nyalóka) vagy újabb verziókban támogatottak. Annak megállapításához, hogy az e-mail-alkalmazás támogatja-e ezt a funkciót, forduljon az alkalmazás-fejlesztőhöz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a környezetében tanúsítványalapú hitelesítést szeretne konfigurálni, olvassa el az [Útmutató az Android tanúsítványalapú hitelesítéshez](active-directory-certificate-based-authentication-get-started.md) című témakört.
+Ha tanúsítványalapú hitelesítést szeretne konfigurálni a környezetében, olvassa el a következő témakört: a [tanúsítványalapú hitelesítés első lépései Androidon](active-directory-certificate-based-authentication-get-started.md) .
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

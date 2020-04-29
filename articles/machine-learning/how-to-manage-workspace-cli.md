@@ -1,7 +1,7 @@
 ---
 title: Munkaterületek létrehozása az Azure CLI-vel
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning-munkaterületet az Azure CLI használatával.
+description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning munkaterületet az Azure CLI használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,45 +10,45 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617777"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása az Azure Machine Learning számára az Azure CLI-vel
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan hozhat létre egy Azure Machine Learning-munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A CLI gépi tanulási bővítménye parancsokat biztosít az Azure Machine Learning-erőforrások kal való munkához.
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning erőforrásainak használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Azure-előfizetés**. Ha nem rendelkezik ilyen, próbálja ki az [Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-* A **helyi környezetből**származó CLI-parancsok használatához a helyi környezetből kell használnia a [CLI parancsot.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-re.
 
-    Ha az [Azure Cloud Shell,](https://azure.microsoft.com//features/cloud-shell/)a CLI érhető el a böngészőn keresztül, és él a felhőben.
+    Ha a [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)használja, a CLI a böngészőn keresztül érhető el, és a felhőben él.
 
-## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI csatlakoztatása Azure-előfizetéséhez
+## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI összekötése az Azure-előfizetéssel
 
 > [!IMPORTANT]
-> Ha az Azure Cloud Shell, kihagyhatja ezt a szakaszt. A felhőrendszerhéj automatikusan hitelesíti Önt az Azure-előfizetésébe bejelentkező fiók használatával.
+> Ha a Azure Cloud Shell használja, akkor kihagyhatja ezt a szakaszt. A Cloud Shell automatikusan hitelesíti Önt az Azure-előfizetésében bejelentkezett fiók használatával.
 
-Számos módon hitelesítheti magát az Azure-előfizetésa a CLI-ből. A legalapvetőbb az, hogy interaktívan hitelesíti a böngésző segítségével. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
+Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületről. A legalapvetőbb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
 
 ```azurecli-interactive
 az login
 ```
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssorban található utasításokat. Az utasítások az [https://aka.ms/devicelogin](https://aka.ms/devicelogin) engedélyezési kód böngészését és megadását foglalják magukban.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások egy engedélyezési kód [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és beírását foglalják magukban.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-A hitelesítés egyéb módszereiről a [Bejelentkezés az Azure CLI-vel (Bejelentkezés az Azure CLI-vel) témakörben](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)található.
+A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-## <a name="install-the-machine-learning-extension"></a>A gépi tanulási bővítmény telepítése
+## <a name="install-the-machine-learning-extension"></a>A Machine learning-bővítmény telepítése
 
-A gépi tanulási bővítmény telepítéséhez használja a következő parancsot:
+A Machine learning-bővítmény telepítéséhez használja a következő parancsot:
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -56,31 +56,31 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Az Azure Machine Learning-munkaterület a következő Azure-szolgáltatásokra vagy entitásokra támaszkodik:
+A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra vagy-entitásokra támaszkodik:
 
 > [!IMPORTANT]
-> Ha nem ad meg egy meglévő Azure-szolgáltatást, a munkaterület létrehozása során automatikusan létrejön egy. Mindig meg kell adnia egy erőforráscsoportot.
+> Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot.
 
-| Szolgáltatás | Meglévő példány megadásának paramétere |
+| Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
-| **Azure storage-fiók** | `--storage-account <service-id>` |
+| **Azure Storage-fiók** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure Machine Learning-munkaterületet egy erőforráscsoporton belül kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az erőforráscsoporthoz használandó névvel. Cserélje `<location>` le az erőforráscsoporthoz használandó Azure-régióra:
+Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
 
 > [!TIP]
-> Ki kell választania egy régiót, ahol az Azure Machine Learning elérhető. További információt a [Régiónként elérhető Termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)című témakörben talál.
+> Ki kell választania egy régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
 ```
 
-A parancs válasza hasonló a következő JSON-hoz:
+A parancs válasza hasonló a következő JSON-fájlhoz:
 
 ```json
 {
@@ -96,23 +96,23 @@ A parancs válasza hasonló a következő JSON-hoz:
 }
 ```
 
-Az erőforráscsoportokkal való munkáról az [az csoport című](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)témakörben talál további információt.
+További információ az erőforráscsoportok használatáról: [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
 
-### <a name="automatically-create-required-resources"></a>A szükséges erőforrások automatikus létrehozása
+### <a name="automatically-create-required-resources"></a>Szükséges erőforrások automatikus létrehozása
 
-Ha olyan új munkaterületet szeretne létrehozni, ahol a __szolgáltatások automatikusan létrejönnek,__ használja a következő parancsot:
+Ha új munkaterületet szeretne létrehozni, amelyben a __szolgáltatások automatikusan létrejönnek__, használja a következő parancsot:
 
 > [!TIP]
-> Az ebben a szakaszban található parancsok egy alapszintű kiadású munkaterületet hoznak létre. Vállalati munkaterület létrehozásához használja `--sku enterprise` a kapcsolót a `az ml workspace create` paranccsal. Az Azure Machine Learning-kiadásokról a [Mi az Azure Machine Learning](overview-what-is-azure-ml.md#sku)című témakörben talál további információt.
+> Az ebben a szakaszban található parancsok alapszintű kiadási munkaterületet hoznak létre. Vállalati munkaterület létrehozásához használja a `--sku enterprise` kapcsolót a `az ml workspace create` paranccsal. Azure Machine Learning kiadásokkal kapcsolatos további információkért lásd: [Mi az Azure Machine learning](overview-what-is-azure-ml.md#sku).
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
 
 > [!NOTE]
-> A munkaterület neve nem i.
+> A munkaterület neve megkülönbözteti a kis-és nagybetűket.
 
-A parancs kimenete hasonló a következő JSON-hoz:
+A parancs kimenete a következő JSON-hoz hasonló:
 
 ```json
 {
@@ -137,57 +137,57 @@ A parancs kimenete hasonló a következő JSON-hoz:
 
 ### <a name="use-existing-resources"></a>Meglévő erőforrások használata
 
-Meglévő erőforrásokat használó munkaterület létrehozásához meg kell adnia az erőforrások azonosítóját. A következő parancsokkal szerezheti be a szolgáltatások azonosítójait:
+Meglévő erőforrásokat használó munkaterület létrehozásához meg kell adnia az erőforrások AZONOSÍTÓját. A szolgáltatások AZONOSÍTÓjának beszerzéséhez használja a következő parancsokat:
 
 > [!IMPORTANT]
-> Nem kell megadnia az összes meglévő erőforrást. Megadhat egy vagy több. Például megadhat egy meglévő tárfiókot, és a munkaterület létrehozza a többi erőforrást.
+> Nem kell megadnia az összes meglévő erőforrást. Megadhat egyet vagy többet is. Megadhat például egy meglévő Storage-fiókot, és a munkaterület létrehozza a többi erőforrást is.
 
-+ **Azure storage-fiók:**`az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage-fiók**:`az storage account show --name <storage-account-name> --query "id"`
 
-    A parancs válasza hasonló a következő szöveghez, és a tárfiók azonosítója:
+    A parancs válasza az alábbi szöveghez hasonló, és a Storage-fiók azonosítója:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
-+ **Azure-alkalmazáselemzési adatok:**
++ **Azure Application Insights**:
 
-    1. Telepítse az alkalmazáselemzési bővítményt:
+    1. Telepítse az Application Insight bővítményt:
 
         ```azurecli-interactive
         az extension add -n application-insights
         ```
 
-    2. Az alkalmazásbetekintési szolgáltatás azonosítójának beszerezni:
+    2. Szerezze be az Application Insight szolgáltatás AZONOSÍTÓját:
 
         ```azurecli-interactive
         az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"
         ```
 
-        A parancs válasza hasonló a következő szöveghez, és az alkalmazáselemzési szolgáltatás azonosítója:
+        A parancs válasza az alábbi szöveghez hasonló, és az Application Insight szolgáltatás azonosítója:
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault:**`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**:`az keyvault show --name <key-vault-name> --query "ID"`
 
-    A parancs válasza hasonló a következő szöveghez, és a kulcstartó azonosítója:
+    A parancs válasza az alábbi szöveghez hasonló, és a Key Vault azonosítója:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container-beállításjegyzék:**`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
-    A parancs válasza hasonló a következő szöveghez, és a tárolóbeállításjegyzék azonosítója:
+    A parancs válasza az alábbi szöveghez hasonló, és a tároló-beállításjegyzék azonosítója:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > A tároló beállításjegyzékben engedélyezni kell a [rendszergazdai fiók](/azure/container-registry/container-registry-authentication#admin-account) engedélyezve van, mielőtt egy Azure Machine Learning-munkaterülettel használható lenne.
+    > A tároló beállításjegyzékének az Azure Machine Learning munkaterülettel való használata előtt engedélyeznie kell a [rendszergazdai fiókot](/azure/container-registry/container-registry-authentication#admin-account) .
 
-Miután rendelkezik a munkaterülettel használni kívánt erőforrás(ok) azonosítóival, használja `az workspace create -w <workspace-name> -g <resource-group-name>` az alapparancsot, és adja hozzá a meglévő erőforrások paramétereit és azonosítóit. A következő parancs például létrehoz egy munkaterületet, amely egy meglévő tárolóbeállítás-jegyzéket használ:
+Miután megtörtént a munkaterülethez használni kívánt erőforrás (ok) azonosítóinak azonosítója, használja az `az workspace create -w <workspace-name> -g <resource-group-name>` alapparancst, és adja hozzá a meglévő erőforrások paraméter (eke) t és azonosítóját. A következő parancs például egy meglévő tároló-beállításjegyzéket használó munkaterületet hoz létre:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-A parancs kimenete hasonló a következő JSON-hoz:
+A parancs kimenete a következő JSON-hoz hasonló:
 
 ```json
 {
@@ -212,13 +212,13 @@ A parancs kimenete hasonló a következő JSON-hoz:
 
 ## <a name="list-workspaces"></a>Munkaterületek listázása
 
-Az Azure-előfizetés összes munkaterületének listázásához használja a következő parancsot:
+Az Azure-előfizetéshez tartozó összes munkaterület listázásához használja az alábbi parancsot:
 
 ```azurecli-interactive
 az ml workspace list
 ```
 
-A parancs kimenete hasonló a következő JSON-hoz:
+A parancs kimenete a következő JSON-hoz hasonló:
 
 ```json
 [
@@ -235,17 +235,17 @@ A parancs kimenete hasonló a következő JSON-hoz:
 ]
 ```
 
-További információt az [az ml munkaterületi lista dokumentációjában](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) talál.
+További információ: az [ml Workspace List](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) dokumentációja.
 
-## <a name="get-workspace-information"></a>Munkaterületi információk beszerezni
+## <a name="get-workspace-information"></a>Munkaterület adatainak beolvasása
 
-Munkaterületről a következő paranccsal kaphat információt:
+A munkaterületekkel kapcsolatos információk beszerzéséhez használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace show -w <workspace-name> -g <resource-group-name>
 ```
 
-A parancs kimenete hasonló a következő JSON-hoz:
+A parancs kimenete a következő JSON-hoz hasonló:
 
 ```json
 {
@@ -268,7 +268,7 @@ A parancs kimenete hasonló a következő JSON-hoz:
 }
 ```
 
-További információt az [az ml munkaterület bemutató](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) dokumentációjában talál.
+További információ: az [ml Workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) dokumentációja.
 
 ## <a name="update-a-workspace"></a>Munkaterület frissítése
 
@@ -278,7 +278,7 @@ Munkaterület frissítéséhez használja a következő parancsot:
 az ml workspace update -w <workspace-name> -g <resource-group-name>
 ```
 
-A parancs kimenete hasonló a következő JSON-hoz:
+A parancs kimenete a következő JSON-hoz hasonló:
 
 ```json
 {
@@ -301,50 +301,50 @@ A parancs kimenete hasonló a következő JSON-hoz:
 }
 ```
 
-További információt az [az ml munkaterület frissítési](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) dokumentációjában talál.
+További információt az az [ml Workspace Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) dokumentációjában talál.
 
-## <a name="share-a-workspace-with-another-user"></a>Munkaterület megosztása másik felhasználóval
+## <a name="share-a-workspace-with-another-user"></a>Munkaterület megosztása egy másik felhasználóval
 
-Ha egy munkaterületet meg szeretne osztani egy másik felhasználóval az előfizetésében, használja a következő parancsot:
+Ha egy munkaterületet egy másik felhasználóval szeretne megosztani az előfizetésében, használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-A szerepköralapú hozzáférés-vezérlésről (RBAC) az Azure Machine Learningszolgáltatással kapcsolatos további információkért [lásd: Felhasználók és szerepkörök kezelése.](how-to-assign-roles.md)
+A szerepköralapú hozzáférés-vezérléssel (RBAC Azure Machine Learning) kapcsolatos további információkért lásd: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-További információt az [az ml munkaterületmegosztási](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) dokumentációban talál.
+További információ: az [ml Workspace Share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) dokumentáció.
 
-## <a name="sync-keys-for-dependent-resources"></a>Függő erőforrások kulcsainak szinkronizálása
+## <a name="sync-keys-for-dependent-resources"></a>Függő erőforrások szinkronizálási kulcsai
 
-Ha módosítja a munkaterület által használt erőforrások egyikének hozzáférési kulcsait, az alábbi paranccsal szinkronizálhatja az új kulcsokat a munkaterülettel:
+Ha módosítja a munkaterület által használt egyik erőforrás elérési kulcsait, a következő paranccsal szinkronizálhatja az új kulcsokat a munkaterülettel:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 ```
 
-A kulcsok módosításáról a [Tároló-hozzáférési kulcsok újragenerálása](how-to-change-storage-access-key.md)című témakörben talál további információt.
+A kulcsok módosításával kapcsolatos további információkért lásd: [tároló-hozzáférési kulcsok újragenerálása](how-to-change-storage-access-key.md).
 
-További információt az [az ml munkaterület szinkronizálási kulcsok](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) dokumentációjában talál.
+További információ: az [ml Workspace Sync-Keys](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) dokumentáció.
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 
-Ha a munkaterületet a következő parancs alkalmazásával szeretné törölni, miután már nincs rá szükség, használja a következő parancsot:
+Ha már nincs szüksége a munkaterületek törlésére, használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace delete -w <workspace-name> -g <resource-group-name>
 ```
 
 > [!IMPORTANT]
-> A munkaterület törlése nem törli a munkaterület által használt alkalmazásbetekintést, tárfiókot, kulcstartót vagy tárolóbeállításjegyzéket.
+> A munkaterület törlése nem törli a munkaterület által használt alkalmazás-betekintést, a Storage-fiókot, a Key vaultot vagy a tároló-beállításjegyzéket.
 
-Törölheti az erőforráscsoportot is, amely törli a munkaterületet és az összes többi Azure-erőforrást az erőforráscsoportban. Az erőforráscsoport törléséhez használja a következő parancsot:
+Törölheti az erőforráscsoportot is, amely törli a munkaterületet és az erőforráscsoport összes többi Azure-erőforrását. Az erőforráscsoport törléséhez használja a következő parancsot:
 
 ```azurecli-interactive
 az group delete -g <resource-group-name>
 ```
 
-További információt az [az ml munkaterület törlési](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) dokumentációjában talál.
+További információ: az [ml Workspace delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) dokumentációja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -355,14 +355,14 @@ További információt az [az ml munkaterület törlési](https://docs.microsoft
 ### <a name="moving-the-workspace"></a>A munkaterület áthelyezése
 
 > [!WARNING]
-> Az Azure Machine Learning-munkaterület áthelyezése egy másik előfizetésre, vagy a tulajdonában lévő előfizetés áthelyezése egy új bérlőre, nem támogatott. Ez hibákat okozhat.
+> Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
-### <a name="deleting-the-azure-container-registry"></a>Az Azure Container-beállításjegyzék törlése
+### <a name="deleting-the-azure-container-registry"></a>A Azure Container Registry törlése
 
-Az Azure Machine Learning-munkaterület bizonyos műveletekhez az Azure Container Registry (ACR) szolgáltatást használja. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége van rá.
+A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Registry (ACR) használ. Automatikusan létrehoz egy ACR-példányt, amikor először szüksége lesz rá.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure CLI-bővítmény gépi tanuláshoz további információkért tekintse meg az [az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) dokumentációt.
+A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) dokumentációt.

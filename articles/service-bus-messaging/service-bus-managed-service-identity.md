@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitások az Azure-erőforrásokhoz a Service Bus segítségével
-description: Ez a cikk ismerteti, hogyan használható felügyelt identitások eléréséhez az Azure Service Bus entitások (várólisták, témakörök és előfizetések) eléréséhez.
+title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
+description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,48 +14,48 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461616"
 ---
-# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése az Azure Active Directoryval az Azure Service Bus erőforrásainak eléréséhez
-[Felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-közi funkció, amely lehetővé teszi, hogy hozzon létre egy biztonságos identitást társított központi telepítés, amely alatt az alkalmazáskód fut. Ezután társíthatja az identitást olyan hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adnak az alkalmazás által igényelt speciális Azure-erőforrások eléréséhez.
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
+Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
 
-Felügyelt identitások használatával az Azure platform kezeli ezt a futásidejű identitást. Nem kell tárolnia és védenie a hozzáférési kulcsokat az alkalmazáskódban vagy konfigurációban, sem magához az identitáshoz, sem az eléréshez szükséges erőforrásokhoz. Az Azure App Service-alkalmazáson belül vagy az Azure-erőforrások támogatásához engedélyezett felügyelt entitásokkal rendelkező virtuális gépen futó Service Bus-ügyfélalkalmazásnak nem kell kezelnie a SAS-szabályokat és -kulcsokat, illetve bármely más hozzáférési jogkivonatot. Az ügyfélalkalmazásnak csak a Service Bus Messaging névtér végpontcímére van szüksége. Amikor az alkalmazás csatlakozik, a Service Bus a felügyelt entitás környezetét az ügyfélhez köti egy olyan műveletben, amely a cikk későbbi részében egy példában látható. Miután egy felügyelt identitáshoz van társítva, a Service Bus-ügyfél minden engedélyezett műveletet elvégezhet. Az engedélyt egy felügyelt entitás Service Bus-szerepkörökkel való társítása adják meg. 
+A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű identitást. Az alkalmazás kódjában vagy konfigurációjában nem kell tárolnia és védelemmel ellátnia a hozzáférési kulcsokat, vagy magát az identitást, vagy a hozzáféréshez szükséges erőforrásokat. Egy Azure App Service alkalmazáson belül vagy az Azure-erőforrások támogatását engedélyező felügyelt entitásokkal rendelkező virtuális gépen futó Service Bus ügyfélalkalmazás nem szükséges az SAS-szabályok és-kulcsok, illetve más hozzáférési jogkivonatok kezeléséhez. Az ügyfélalkalmazás csak az Service Bus üzenetküldési névtér végpontjának megfelelőre van szüksége. Amikor az alkalmazás csatlakozik, a Service Bus a cikk későbbi részében ismertetett művelettel köti össze a felügyelt entitás környezetét az ügyfélhez. Ha egy felügyelt identitáshoz van társítva, az Service Bus-ügyfél elvégezheti az összes jóváhagyott műveletet. Az engedélyezést egy felügyelt entitás Service Bus szerepkörökkel való társításával biztosítjuk. 
 
 ## <a name="overview"></a>Áttekintés
-Amikor egy rendszerbiztonsági tag (egy felhasználó, csoport vagy alkalmazás) megpróbál hozzáférni egy Service Bus entitáshoz, a kérelmet engedélyezni kell. Az Azure AD-vel az erőforráshoz való hozzáférés két lépésből áll. 
+Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
 
- 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és egy OAuth 2.0-s jogkivonatot ad vissza. A jogkivonat ot kérő `https://servicebus.azure.net`erőforrás neve a.
- 1. Ezután a jogkivonat a Service Bus szolgáltatásnak a megadott erőforráshoz való hozzáférés engedélyezésére irányuló kérelem részeként kerül átadásra.
+ 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent kérő erőforrás neve `https://servicebus.azure.net`.
+ 1. Ezután a jogkivonat a Service Bus szolgáltatásnak küldött kérelem részeként a megadott erőforráshoz való hozzáférés engedélyezéséhez lesz átadva.
 
-A hitelesítési lépés megköveteli, hogy egy alkalmazáskérelem tartalmazzon egy OAuth 2.0 hozzáférési jogkivonatot futásidőben. Ha egy alkalmazás fut egy Azure-entitás, például egy Azure virtuális gép, egy virtuális gép méretezési csoport, vagy egy Azure Function-alkalmazás, egy felügyelt identitás használatával hozzáférhet az erőforrásokhoz. 
+A hitelesítési lépés megköveteli, hogy egy alkalmazás-kérelem OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Function-alkalmazáson belül fut, akkor a felügyelt identitás használatával férhet hozzá az erőforrásokhoz. 
 
-Az engedélyezési lépés megköveteli, hogy egy vagy több RBAC szerepkörök legyenek hozzárendelve a rendszerbiztonsági taghoz. Az Azure Service Bus rbac-szerepköröket biztosít, amelyek a Service Bus-erőforrások engedélykészleteit foglalják magukban. A rendszerbiztonsági taghoz rendelt szerepkörök határozzák meg a rendszerbiztonsági tag engedélyeit. Ha többet szeretne tudni az RBAC-szerepkörök Azure Service Bushoz való hozzárendeléséről, olvassa [el a Beépített RBAC-szerepkörök az Azure Service Bushoz című témakört.](#built-in-rbac-roles-for-azure-service-bus) 
+Az engedélyezési lépés megköveteli, hogy egy vagy több RBAC-szerepkört hozzá lehessen rendelni a rendszerbiztonsági tag számára. A Azure Service Bus olyan RBAC-szerepköröket biztosít, amelyek magukban foglalják Service Bus erőforrásokra vonatkozó engedélyek készleteit. A rendszerbiztonsági tag számára hozzárendelt szerepkörök határozzák meg, hogy a résztvevő milyen engedélyeket fog tartalmazni. Ha többet szeretne megtudni a RBAC szerepköreinek Azure Service Bushoz való hozzárendeléséről, tekintse meg a [Azure Service Bus beépített RBAC-szerepkörei](#built-in-rbac-roles-for-azure-service-bus)című témakört. 
 
-Natív alkalmazások és webalkalmazások, amelyek kéréseket a Service Bus is engedélyezheti az Azure AD.Native applications and web applications that make requests to Service Bus can also authorize with Azure AD. Ez a cikk bemutatja, hogyan kérhet egy hozzáférési jogkivonatot, és használja a Service Bus-erőforrások ra vonatkozó kérelmek engedélyezéséhez. 
+A Service Busra irányuló kérelmeket használó natív alkalmazások és webalkalmazások is engedélyezhetik az Azure AD-t. Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot, és hogyan engedélyezheti a kérelmeket Service Bus erőforrásokhoz. 
 
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>RBAC-szerepkörök hozzárendelése hozzáférési jogokhoz
-Az Azure Active Directory (Azure AD) [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md)révén engedélyezi a védett erőforrásokhoz való hozzáférési jogokat. Az Azure Service Bus egy beépített RBAC-szerepkörkészletet határoz meg, amely a Service Bus-entitások eléréséhez használt közös engedélykészleteket foglalja magában, és egyéni szerepköröket is definiálhat az adatok eléréséhez.
+## <a name="assigning-rbac-roles-for-access-rights"></a>RBAC-szerepkörök kiosztása hozzáférési jogosultságokhoz
+Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Azure Service Bus olyan beépített RBAC-szerepköröket határoz meg, amelyek a Service Bus entitások eléréséhez használt engedélyek közös készleteit foglalják magukban, és egyéni szerepköröket is meghatározhat az adatokhoz való hozzáféréshez.
 
-Ha egy RBAC-szerepkör egy Azure AD rendszerbiztonsági taghoz van rendelve, az Azure hozzáférést biztosít ezekhez az erőforrásokhoz az adott rendszerbiztonsági tag számára. Az Access hatóköre az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére terjed ki. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt identitás az Azure-erőforrások.
+Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt identitás az Azure-erőforrásokhoz.
 
-## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Beépített RBAC-szerepkörök az Azure Service Bushoz
-Az Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás kezelése az Azure Portalon és az Azure erőforrás-kezelési API-n keresztül már védett a *szerepköralapú hozzáférés-vezérlési* (RBAC) modell használatával. Az Azure az alábbi beépített RBAC-szerepköröket biztosítja a Service Bus-névtérhez való hozzáférés engedélyezéséhez:
+## <a name="built-in-rbac-roles-for-azure-service-bus"></a>A Azure Service Bus beépített RBAC szerepkörei
+Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés-vezérlési* (RBAC) modell használatával. Az Azure az alábbi beépített RBAC szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
 
-- [Azure Service Bus-adatok tulajdonosa:](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)Lehetővé teszi az adatok elérését a Service Bus névtér és annak entitásai (várólisták, témakörök, előfizetések és szűrők)
-- [Azure Service Bus data sender:](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)ezzel a szerepkörrel küldési hozzáférést biztosít a Service Bus névtér és az entitások.
-- [Azure Service Bus-adatfogadó:](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)Ezzel a szerepkörrel fogadási hozzáférést biztosít a Service Bus névtér és az entitások. 
+- [Azure Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): lehetővé teszi az adathozzáférést Service Bus névterek és az entitások számára (várólisták, témakörök, előfizetések és szűrők)
+- [Azure Service Bus adatfeladó](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): ezt a szerepkört használva hozzáférést biztosíthat a Service Bus névtérhez és az entitásokhoz.
+- [Azure Service Bus adatfogadó](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): használja ezt a szerepkört, hogy fogadja a hozzáférést Service Bus névtérhez és az entitásokhoz. 
 
 ## <a name="resource-scope"></a>Erőforrás hatóköre 
-Mielőtt rbac szerepkört rendelne egy rendszerbiztonsági taghoz, határozza meg a rendszerbiztonsági tag hozzáférési tartományát. A legjobb gyakorlatok azt diktálják, hogy mindig a legjobb, ha csak a lehető legszűkebb hatókört adja meg.
+Mielőtt RBAC-szerepkört rendeljen egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférésének hatókörét. Az ajánlott eljárások azt diktálják, hogy mindig csak a lehető legszűkebb hatókört adja meg.
 
-Az alábbi lista azokat a szinteket ismerteti, amelyeken a legszűkebb hatókörtől kezdve a Service Bus-erőforrásokhoz való hozzáférést hatókörbe lehet érni:
+Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforrásaihoz férhet hozzá, a legszűkebb hatókörtől kezdve:
 
-- **Várólista**, **témakör**vagy **előfizetés:** A szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. Jelenleg az Azure Portal nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését a Service Bus RBAC-szerepkörökhöz az előfizetés szintjén. Íme egy példa az Azure CLI parancs használatára: [az-szerepkör-hozzárendelés-létrehozás](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) egy identitás hozzárendeléséhez egy Service Bus RBAC szerepkörhöz: 
+- **Üzenetsor**, **témakör**vagy **előfizetés**: a szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. Jelenleg a Azure Portal nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten lévő Service Bus RBAC-szerepkörökhöz. Íme egy példa az Azure CLI-parancs használatára: [az-role-hozzárendelés-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) , hogy identitást rendeljen egy Service Bus RBAC szerepkörhöz: 
 
     ```azurecli
     az role assignment create \
@@ -63,90 +63,90 @@ Az alábbi lista azokat a szinteket ismerteti, amelyeken a legszűkebb hatókör
         --assignee $assignee_id \
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
-- **Service Bus névtér:** Szerepkör-hozzárendelés a teljes topológia a Service Bus a névtér és a hozzá társított fogyasztói csoport.
-- **Erőforráscsoport**: A szerepkör-hozzárendelés az erőforráscsoport összes Service Bus erőforrására vonatkozik.
-- **Előfizetés:** A szerepkör-hozzárendelés az előfizetés összes erőforráscsoportjában lévő összes Service Bus-erőforrásra vonatkozik.
+- **Service Bus névtér**: a szerepkör-hozzárendelés a névtér és a hozzá társított fogyasztói csoport teljes Service Bus topológiáját fedi le.
+- **Erőforráscsoport**: a szerepkör-hozzárendelés az erőforráscsoport összes Service Bus erőforrására vonatkozik.
+- **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Service Bus erőforrására vonatkozik.
 
 > [!NOTE]
-> Ne feledje, hogy az RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet. 
+> Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 
-A beépített szerepkörök definiálásáról a [Szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations)című témakörben talál további információt. Az egyéni RBAC-szerepkörök létrehozásáról az [Egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérléshez című](../role-based-access-control/custom-roles.md)témakörben talál további információt.
+További információ a beépített szerepkörök meghatározásáról: a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../role-based-access-control/custom-roles.md)című témakört.
 
-## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése virtuális számítógépen
-Mielőtt az Azure Resources felügyelt identitások használatával engedélyezheti a Service Bus-erőforrásokat a virtuális gépről, először engedélyeznie kell az Azure Resources felügyelt identitásait a virtuális gépen. Ha tudni szeretné, hogyan engedélyezheti az Azure Resources felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
+## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése egy virtuális gépen
+Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuális gép Service Bus erőforrásainak engedélyezéséhez, először engedélyeznie kell az Azure-erőforrások felügyelt identitásait a virtuális gépen. Ha szeretné megtudni, hogyan engedélyezheti az Azure-erőforrások felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
 - [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager ügyféltárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager ügyféloldali kódtárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitáshoz az Azure AD-ben
-Ha engedélyezni szeretne egy kérelmet a Service Bus szolgáltatásegy felügyelt identitás az alkalmazásban, először konfigurálja a szerepköralapú hozzáférés-vezérlési (RBAC) beállításokat, hogy a felügyelt identitás. Az Azure Service Bus olyan RBAC-szerepköröket határoz meg, amelyek a Service Busból történő küldéshez és olvasáshoz szükséges engedélyeket foglalják magukban. Ha az RBAC szerepkör egy felügyelt identitáshoz van rendelve, a felügyelt identitás hozzáférést kap a Service Bus-entitásokhoz a megfelelő hatókörön.
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitásnak az Azure AD-ben
+Ha az alkalmazásban felügyelt identitással kívánja engedélyezni a Service Bus szolgáltatást, először konfigurálja a felügyelt identitáshoz tartozó szerepköralapú hozzáférés-vezérlés (RBAC) beállításait. Azure Service Bus meghatározza azokat a RBAC-szerepköröket, amelyek a Service Bus küldésére és olvasására vonatkozó engedélyeket foglalnak magukban. Ha a RBAC szerepkör felügyelt identitáshoz van rendelve, a felügyelt identitás hozzáférést kap a Service Bus entitásokhoz a megfelelő hatókörben.
 
-Az RBAC-szerepkörök hozzárendeléséről a Hitelesítés és engedélyezés az Azure Active Directoryval című témakörben talál a [Service Bus-erőforrásokhoz való hozzáféréshez.](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)
+A RBAC szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hitelesítés és engedélyezés Azure Active Directory Service Bus erőforrásokhoz való hozzáféréshez](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus).
 
-## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>A Service Bus használata felügyelt identitásokkal az Azure-erőforrásokhoz
-A Service Bus felügyelt identitásokkal való használatához hozzá kell rendelnie az identitást a szerepkörhöz és a megfelelő hatókörhöz. Az ebben a szakaszban szereplő eljárás egy egyszerű alkalmazást használ, amely felügyelt identitás alatt fut, és hozzáfér a Service Bus erőforrásaihoz.
+## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Service Bus használata felügyelt identitásokkal az Azure-erőforrásokhoz
+Ha a Service Bus felügyelt identitásokkal szeretné használni, hozzá kell rendelnie a szerepkört és a megfelelő hatókört. Az ebben a szakaszban szereplő eljárás egy olyan egyszerű alkalmazást használ, amely felügyelt identitás alatt fut, és Service Bus erőforrásokhoz fér hozzá.
 
-Itt az [Azure App Service-ben](https://azure.microsoft.com/services/app-service/)üzemeltetett mintawebalkalmazást használjuk. A webalkalmazások létrehozásának lépésenkénti útmutatója: [ASP.NET Core webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-dotnet.md)
+Itt egy [Azure app Service](https://azure.microsoft.com/services/app-service/)-ban üzemeltetett minta webalkalmazást használunk. A webalkalmazások létrehozásával kapcsolatos részletes útmutatásért lásd: [ASP.net Core Webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-dotnet.md)
 
 Az alkalmazás létrehozása után kövesse az alábbi lépéseket: 
 
-1. Nyissa meg a **Beállítások lapot,** és válassza **az Identitás**lehetőséget. 
-1. Válassza ki a bekapcsolt **állapotot.** **Status** 
+1. Lépjen a **Beállítások** menüpontra, és válassza az **identitás**elemet. 
+1. Válassza ki a **bekapcsolni**kívánt **állapotot** . 
 1. A beállítás mentéséhez kattintson a **Mentés** gombra. 
 
-    ![Felügyelt identitás egy webalkalmazáshoz](./media/service-bus-managed-service-identity/identity-web-app.png)
+    ![Webalkalmazás felügyelt identitása](./media/service-bus-managed-service-identity/identity-web-app.png)
 
-Miután engedélyezte ezt a beállítást, egy új szolgáltatásidentitás jön létre az Azure Active Directoryban (Azure AD), és az App Service-gazdagépkonfigurálása.
+Ha engedélyezte ezt a beállítást, a rendszer létrehoz egy új szolgáltatás-identitást a Azure Active Directory (Azure AD), és az App Service gazdagépre van konfigurálva.
 
-Most rendelje hozzá ezt a szolgáltatásidentitást a Service Bus-erőforrások szükséges hatókörében lévő szerepkörhöz.
+Most rendeljen hozzá egy szerepkörhöz a szolgáltatás identitását a Service Bus erőforrásaihoz szükséges hatókörben.
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>RBAC-szerepkörök hozzárendelése az Azure Portalhasználatával
-Ha szerepkört szeretne hozzárendelni egy Service Bus-névtérhez, keresse meg a névteret az Azure Portalon. Jelenítse meg az erőforrás hozzáférés-vezérlési (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>RBAC szerepkörök kiosztása a Azure Portal használatával
+Ha egy szerepkört Service Bus névtérhez szeretne rendelni, akkor navigáljon a Azure Portal névtérhez. Jelenítse meg az erőforrás Access Control (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
 
 > [!NOTE]
-> A következő lépések egy szolgáltatásidentitás-szerepkört rendelnek a Service Bus-névterekhez. Ugyanezeket a lépéseket hajthatja végre a szerepkör hozzárendeléséhez más támogatott hatókörökhöz (erőforráscsoport hoz és előfizetéshez). 
+> A következő lépések szolgáltatás-identitási szerepkört rendelnek a Service Bus névterekhez. Ugyanezeket a lépéseket követve rendelhet hozzá szerepköröket más támogatott hatókörökhöz (erőforráscsoport és előfizetés). 
 > 
-> [Hozzon létre egy Service Bus Messaging névteret,](service-bus-create-namespace-portal.md) ha nem rendelkezik ilyensel. 
+> Ha nem rendelkezik ilyennel, [hozzon létre egy Service Bus üzenetküldési névteret](service-bus-create-namespace-portal.md) . 
 
-1. Az Azure Portalon keresse meg a Service Bus-névteret, és **jelenítse meg** a névtér áttekintése. 
-1. A service bus névtér hozzáférés-vezérlési beállításainak megjelenítéséhez válassza a bal oldali menü **hozzáférés-vezérlési (IAM)** parancsát.
-1.  A **szerepkör-hozzárendelések** listájának megtekintéséhez válassza a Szerepkör-hozzárendelések lapot.
+1. A Azure Portal navigáljon a Service Bus névtérhez, és jelenítse meg a névtér **áttekintését** . 
+1. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget a Service Bus névtér hozzáférés-vezérlési beállításainak megjelenítéséhez.
+1.  Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 3.  Új szerepkör hozzáadásához válassza a **Hozzáadás** lehetőséget.
-4.  A **Szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Azure Service Bus-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatásidentitást.
+4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Azure Service Bus-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
-    ![Szerepkör-hozzárendelés hozzáadása lap](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Kattintson a **Mentés** gombra. A szerepkörhöz rendelt identitás megjelenik a szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása rendelkezik az Azure Service Bus Data tulajdonosa.
+    ![Szerepkör-hozzárendelési lap hozzáadása](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
+5.  Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Azure Service Bus adattulajdonost tartalmaz.
     
     ![Szerepkörhöz rendelt identitás](./media/service-bus-managed-service-identity/role-assigned.png)
 
-Miután hozzárendelte a szerepkört, a webalkalmazás hozzáférhet a Service Bus entitások a megadott hatókör alatt. 
+Miután hozzárendelte a szerepkört, a webalkalmazás hozzáfér a megadott hatókörben lévő Service Bus entitásokhoz. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most módosítsa a létrehozott ASP.NET alkalmazás alapértelmezett lapját. Használhatja a webalkalmazás kódját ebből a [GitHub-tárházból.](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)  
+Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A webalkalmazás kódját a [GitHub-adattárból](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)is használhatja.  
 
-A Default.aspx oldal a céloldal. A kód megtalálható a Default.aspx.cs fájlban. Az eredmény egy minimális webalkalmazás néhány beviteli mezők, és **a küldési** és **fogadási** gombok, amelyek kapcsolódnak a Service Bus üzenetek küldéséhez vagy fogadásához.
+Az alapértelmezett. aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a **küldési** és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
 
-Figyelje meg, hogyan inicializálódik a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató használata helyett a kód `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` létrehoz egy jogkivonat-szolgáltatót a felügyelt identitáshoz a hívással. Mint ilyen, nincsenek titkok megőrzése és használata. A felügyelt identitás környezetben a Service Bus és az engedélyezési kézfogás automatikusan kezeli a jogkivonat-szolgáltató. Ez egy egyszerűbb modell, mint a SAS használata.
+Figyelje meg, hogy a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálva van. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató használata helyett a kód létrehoz egy jogkivonat-szolgáltatót a felügyelt identitáshoz `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` a hívással. Így nem kell megőrizni és használni a titkokat. A felügyelt identitás környezetének Service Busre való áramlását, valamint az engedélyezési kézfogást a jogkivonat-szolgáltató automatikusan kezeli. Ez egy egyszerűbb modell, mint az SAS használata.
 
-A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A megfelelő közzétételi adatokat egyszerűen beszerezheti, ha letölt egy közzétételi profilt a Visual Studio alkalmazásban:
+A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A Visual Studióban a közzétételi profil letöltésével és importálásával egyszerűen hozzájuthat a megfelelő közzétételi adatokhoz:
 
-![Közzétételi profil beszereznie](./media/service-bus-managed-service-identity/msi3.png)
+![Közzétételi profil beolvasása](./media/service-bus-managed-service-identity/msi3.png)
  
-Üzenetek küldéséhez és fogadásához adja meg a névtér nevét és a létrehozott entitás nevét. Ezután kattintson a **Küldés** vagy **fogadás gombra.**
+Üzenetek küldéséhez vagy fogadásához adja meg a névtér nevét és a létrehozott entitás nevét. Ezután kattintson a **Küldés** vagy a **fogadás**lehetőségre.
 
 
 > [!NOTE]
-> - A felügyelt identitás csak az Azure-környezetben, az alkalmazásszolgáltatásokon, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet csomag által használt Microsoft.Azure.Services.AppAuthentication könyvtár absztrakciót biztosít ezen a protokollon keresztül, és támogatja a helyi fejlesztési élményt. Ez a könyvtár azt is lehetővé teszi, hogy tesztelje a kódot helyileg a fejlesztői gépen, a Visual Studio, az Azure CLI 2.0 vagy az Active Directory integrált hitelesítés felhasználói fiókjának használatával. A tár helyi fejlesztési lehetőségeiről a [Szolgáltatás-szolgáltatás hitelesítés az Azure Key Vault számára a .NET használatával című](../key-vault/general/service-to-service-authentication.md)témakörben található.  
+> - A felügyelt identitás csak az Azure-környezetben, az App Servicesben, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet-csomag által használt Microsoft. Azure. Services. AppAuthentication függvénytár egy absztrakciót biztosít a protokollhoz, és támogatja a helyi fejlesztési élményt. Ez a könyvtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen a Visual studióból, az Azure CLI 2,0-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeivel kapcsolatos további információkért lásd: [szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával](../key-vault/general/service-to-service-authentication.md).  
 > 
-> - A felügyelt identitások jelenleg nem működnek az App Service központi telepítési helyekkel.
+> - A felügyelt identitások jelenleg nem működnek App Service üzembe helyezési pontokkal.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Service Bus üzenetküldéséről, olvassa el az alábbi témaköröket:
+Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)

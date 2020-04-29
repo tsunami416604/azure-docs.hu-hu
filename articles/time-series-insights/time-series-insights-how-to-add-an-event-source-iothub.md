@@ -1,6 +1,6 @@
 ---
-title: IoT hub-eseményforrás hozzáadása – Azure Time Series Insights | Microsoft dokumentumok
-description: Megtudhatja, hogyan adhat hozzá egy IoT hub-eseményforrást a Time Series Insights-környezethez.
+title: IoT hub-eseményforrás hozzáadása – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá egy IoT hub-eseményforrás a Time Series Insights-környezethez.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a0a2f703d9224b8b9dd77c80b2b6a7faee70f5bb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538103"
 ---
-# <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT-központ eseményforrás hozzáadása a Time Series Insights-környezethez
+# <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-esemény forrásának hozzáadása a Time Series Insights-környezethez
 
-Ez a cikk ismerteti, hogyan használhatja az Azure Portalon egy eseményforrás, amely beolvassa az adatokat az Azure IoT Hub az Azure Time Series Insights-környezetben.
+Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményforrás hozzáadásához, amely adatokat olvas be az Azure IoT Hubból a Azure Time Series Insights környezetbe.
 
 > [!NOTE]
-> A cikkben található utasítások az Azure Time Series Insights GA-ra és a Time Series Insights előzetes verziójú környezetekre egyaránt vonatkoznak.
+> A cikkben szereplő utasítások a Azure Time Series Insights GA-ra és az előzetes verziójú környezetek Time Series Insightsra vonatkoznak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy [Azure Time Series Insights-környezetet.](time-series-insights-update-create-environment.md)
-* Hozzon létre egy [IoT-központot az Azure Portal használatával.](../iot-hub/iot-hub-create-through-portal.md)
-* Az IoT hub kell aktív üzenet események küldése.
-* Hozzon létre egy dedikált fogyasztói csoportot az IoT-központban a Time Series Insights-környezetben, amelyből felhasználható. Minden Time Series Insights eseményforrásnak saját dedikált fogyasztói csoporttal kell rendelkeznie, amely nincs megosztva más fogyasztókkal. Ha több olvasó használja fel az ugyanabból a fogyasztói csoportból származó eseményeket, akkor valószínűleg minden olvasó hibát mutat. További részletekért olvassa el az [Azure IoT Hub fejlesztői útmutatóját.](../iot-hub/iot-hub-devguide.md)
+* Hozzon létre egy [Azure Time Series Insights környezetet](time-series-insights-update-create-environment.md).
+* Hozzon létre egy [IoT hubot a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md).
+* Az IoT hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie.
+* Hozzon létre egy dedikált fogyasztói csoportot az IoT hub-ban ahhoz a Time Series Insights-környezethez, amelyről a alkalmazást használni szeretné. Minden Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Részletekért olvassa el az [Azure IoT hub fejlesztői útmutatóját](../iot-hub/iot-hub-devguide.md).
 
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>Fogyasztói csoport hozzáadása az IoT-központhoz
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>Fogyasztói csoport hozzáadása az IoT hub-hoz
 
-Az alkalmazások fogyasztói csoportok használatával adatokat kérnek le az Azure IoT Hubból. Az IoT-központból származó adatok megbízható olvasásához adjon meg egy dedikált fogyasztói csoportot, amelyet csak ez a Time Series Insights-környezet használ.
+Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból való lekéréséhez. Ha megbízhatóan szeretné beolvasni az IoT hub adatait, adjon meg egy dedikált fogyasztói csoportot, amelyet csak ez a Time Series Insights-környezet használ.
 
-Új fogyasztói csoport hozzáadása az IoT-központhoz:
+Új fogyasztói csoport hozzáadása az IoT hub-hoz:
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg és nyissa meg az IoT-központot.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az IoT hubot.
 
-1. A **Beállítások csoportban**válassza **a Beépített végpontok**lehetőséget, majd válassza az **Események** végpontot.
+1. A **Beállítások**területen válassza a **beépített végpontok**lehetőséget, majd válassza ki az **események** végpontot.
 
-   [![A beépített végpontok lapon válassza az Események gombot](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png#lightbox)
+   [![A beépített végpontok lapon kattintson az események gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png#lightbox)
 
-1. A **Fogyasztói csoportok**csoportban adja meg a fogyasztói csoport egyedi nevét. Új eseményforrás létrehozásakor használja ugyanezt a nevet a Time Series Insights-környezetben.
+1. A **fogyasztói csoportok**területen adjon meg egy egyedi nevet a fogyasztói csoport számára. Az új eseményforrás létrehozásakor használja ugyanazt a nevet a Time Series Insights-környezetben.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -54,62 +54,62 @@ Az alkalmazások fogyasztói csoportok használatával adatokat kérnek le az Az
 
 1. A bal oldali menüben válassza ki a **Minden erőforrás** elemet. Válassza ki az Azure Time Series Insights-környezetet.
 
-1. A **Beállítások csoportban**válassza **az Eseményforrások**lehetőséget, majd a **Hozzáadás**lehetőséget.
+1. A **Beállítások**területen válassza az **eseményforrás**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 
-   [![Válassza az Eseményforrások lehetőséget, majd kattintson a Hozzáadás gombra](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
+   [![Válassza az eseményforrás lehetőséget, majd kattintson a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 
-1. Az **Új esemény** forrásablaktáblájában **az Esemény forrásnevéhez**adja meg a Time Series Insights környezetben egyedi nevet. Írja be például **az eseményfolyamot.**
+1. Az **új eseményforrás** ablaktáblán az **eseményforrás neve**mezőben adjon meg egy egyedi nevet a Time Series Insights környezetben. Adja meg például az **Event-stream**értéket.
 
-1. A **Forrás csoportban**válassza az **IoT Hub lehetőséget.**
+1. A **forrás**mezőben válassza a **IoT hub**lehetőséget.
 
-1. Válasszon egy értéket az **Importálás beállításhoz:**
+1. Válassza ki az **importálási beállítás**értékét:
 
-   * Ha már rendelkezik egy IoT hub az egyik előfizetésében, válassza az **IoT Hub használata az elérhető előfizetések.** Ez a lehetőség a legegyszerűbb megközelítés.
+   * Ha az egyik előfizetésében már van egy IoT hub, válassza a **IoT hub használata az elérhető előfizetések közül**lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
    
-     [![Beállítások megadása az Új eseményforrás ablaktáblán](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png#lightbox)
+     [![Válassza ki a beállításokat az új esemény forrása ablaktáblán](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png#lightbox)
 
-    * Az alábbi táblázat ismerteti azokat a tulajdonságokat, amelyek szükségesek az **IoT Hub használata elérhető előfizetésekből** beállítás:
+    * A következő táblázat azokat a tulajdonságokat ismerteti, amelyek szükségesek az **elérhető előfizetések IoT Hubának használata az elérhető előfizetések közül** :
 
-       [![Új eseményforrás-ablaktábla – Az Elérhető előfizetésekből az IoT Hub használata beállításban beállított tulajdonságok](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
-
-       | Tulajdonság | Leírás |
-       | --- | --- |
-       | Előfizetés | Az előfizetés, amelyhez a kívánt iot hub tartozik. |
-       | IoT-központ neve | A kijelölt iot hub neve. |
-       | IoT hub házirend neve | Válassza ki a megosztott hozzáférési szabályzatot. A megosztott hozzáférési szabályzat az IoT hub beállítások lapon található. Minden megosztott hozzáférési házirendrendelkezik névvel, a beállított engedélyekkel és hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési szabályzatának **szolgáltatáscsatlakozási** engedélyekkel *kell* rendelkeznie. |
-       | IoT hub házirendkulcs | A kulcs előre ki van töltve. |
-
-    * Ha az IoT hub az előfizetésein kívül található, vagy ha speciális beállításokat szeretne választani, válassza **az IoT Hub beállításainak manuális megadása lehetőséget.**
-
-      Az alábbi táblázat az **IoT Hub-beállítások manuális megadása**szükséges tulajdonságait ismerteti:
+       [![Új eseményforrás ablaktábla – a IoT Hub használata az elérhető előfizetések között beállításban megadott tulajdonságok](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
        | Tulajdonság | Leírás |
        | --- | --- |
-       | Előfizetés azonosítója | Az előfizetés, amelyhez a kívánt iot hub tartozik. |
-       | Erőforráscsoport | Az erőforráscsoport neve, amelyben az IoT hub jött létre. |
-       | IoT-központ neve | Az IoT hub neve. Az IoT hub létrehozásakor megadta az IoT hub nevét. |
-       | IoT hub házirend neve | A megosztott hozzáférési szabályzat. A megosztott hozzáférési szabályzat az IoT hub beállítások lapon. Minden megosztott hozzáférési házirendrendelkezik névvel, a beállított engedélyekkel és hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési szabályzatának **szolgáltatáscsatlakozási** engedélyekkel *kell* rendelkeznie. |
-       | IoT hub házirendkulcs | A megosztott hozzáférési kulcs, amely az Azure Service Bus névtérhez való hozzáférés hitelesítésére szolgál. Itt adhatja meg az elsődleges vagy másodlagos kulcsot. |
+       | Előfizetés | Az előfizetés, amelyhez a kívánt IOT hub tartozik. |
+       | IoT hub neve | A kiválasztott IOT hub neve. |
+       | IoT hub-házirend neve | Válassza ki a megosztott elérési házirendet. A megosztott hozzáférési szabályzatot az IoT hub beállításai lapon találja. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési házirendjének rendelkeznie *kell* a **szolgáltatás csatlakozási** engedélyeivel. |
+       | IoT hub-házirend kulcsa | A kulcs előre van feltöltve. |
 
-    * Mindkét lehetőség a következő konfigurációs lehetőségeket osztja meg:
+    * Ha az IoT hub kívül esik az előfizetéseken, vagy ha a speciális beállításokat szeretné választani, válassza a **IoT hub beállítások manuális**megadása lehetőséget.
+
+      A következő táblázat ismerteti a **IoT hub beállítások manuális**megadása kötelező tulajdonságait:
 
        | Tulajdonság | Leírás |
        | --- | --- |
-       | IoT hub fogyasztói csoport | A fogyasztói csoport, amely beolvassa az eseményeket az IoT hubból. Javasoljuk, hogy egy dedikált fogyasztói csoportot használjon az eseményforráshoz. |
-       | Eseményszerializációs formátum | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az eseményüzeneteknek ebben a formátumban kell lenniük, különben nem olvashatók adatok. |
-       | Időbélyeg-tulajdonság neve | Ennek az értéknek a meghatározásához meg kell értenie az IoT hubnak küldött üzenetadatok üzenetformátumát. Ez az érték az eseményidőbélyegként használni kívánt üzenetadatokadott eseménytulajdonságának **neve.** Az érték nem a di. Ha üresen hagyja, az **esemény enqueue idő** az esemény forrásában az esemény időbélyegként lesz használva. |
+       | Előfizetés azonosítója | Az előfizetés, amelyhez a kívánt IOT hub tartozik. |
+       | Erőforráscsoport | Az erőforráscsoport neve, amelyben az IoT hub létrejött. |
+       | IoT hub neve | Az IoT hub neve. Az IoT hub létrehozásakor meg kell adni az IoT hub nevét. |
+       | IoT hub-házirend neve | A megosztott elérési házirend. A megosztott hozzáférési szabályzatot az IoT hub beállításai lapon hozhatja létre. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési házirendjének rendelkeznie *kell* a **szolgáltatás csatlakozási** engedélyeivel. |
+       | IoT hub-házirend kulcsa | A Azure Service Bus névtér hozzáférésének hitelesítéséhez használt megosztott elérési kulcs. Itt adhatja meg az elsődleges vagy a másodlagos kulcsot. |
+
+    * Mindkét beállítás a következő konfigurációs beállításokat használja:
+
+       | Tulajdonság | Leírás |
+       | --- | --- |
+       | IoT hub fogyasztói csoport | Az IoT hub eseményeinek olvasására szolgáló fogyasztói csoport. Javasoljuk, hogy használjon egy dedikált fogyasztói csoportot az eseményforrás számára. |
+       | Eseményszerializációs formátum | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az esemény üzeneteinek ebben a formátumban kell lenniük, vagy egyetlen adattal sem lehet olvasni. |
+       | Időbélyeg-tulajdonság neve | Az érték meghatározásához meg kell ismernie az IoT hub számára küldött üzenet formátumát. Ez az érték annak az üzenetnek a **neve** , amelyet az esemény időbélyegzőként használni kíván. Az érték megkülönbözteti a kis-és nagybetűket. Ha üresen hagyja, a rendszer az eseményforrás **sorba helyezni időt** használja az esemény időbélyegzője. |
 
 
-1. Adja hozzá a dedikált Time Series Insights fogyasztói csoport nevét, amely et az IoT hubhoz adott hozzá.
+1. Adja hozzá az IoT hub-hoz hozzáadott dedikált Time Series Insights fogyasztói csoport nevét.
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. Az eseményforrás létrehozása után a Time Series Insights automatikusan elindítja az adatok streamelését a környezetbe.
+1. Az eseményforrás létrehozása után a Time Series Insights automatikusan elindítja az adatfolyamot a környezetbe.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az adatok védelméhez határozza meg az [adatelérési házirendeket.](time-series-insights-data-access.md)
+* [Adathozzáférési szabályzatok definiálása](time-series-insights-data-access.md) az adatvédelme érdekében.
 
-* [Események küldése](time-series-insights-send-events.md) az eseményforrásra.
+* [Események küldése](time-series-insights-send-events.md) az esemény forrásának.
 
-* A [Time Series Insights felfedezőjében](https://insights.timeseries.azure.com)érheti el környezetét.
+* A környezet elérése a [Time Series Insights Explorerben](https://insights.timeseries.azure.com).

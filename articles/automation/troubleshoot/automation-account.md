@@ -1,6 +1,6 @@
 ---
 title: Automation-fiók hibaelhárítása
-description: Ismerje meg, hogyan háríthatja el és oldhatja meg az Azure-fiókkal kapcsolatos problémákat.
+description: Útmutató az Azure-fiókkal kapcsolatos problémák elhárításához és megoldásához.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679382"
 ---
-# <a name="troubleshoot-the-automation-account"></a>Az Automation-fiók hibáinak hibáinak elhárítása
+# <a name="troubleshoot-the-automation-account"></a>Az Automation-fiók hibáinak megoldása
 
-Ez a cikk az Automation-fiók használata során felmerülő problémák megoldásait ismerteti. A következő szakaszok konkrét hibaüzeneteket és lehetséges megoldásokat emelnek ki mindegyikhez. Az Automation-fiókokról az [Azure-fiók létrehozása című](../automation-quickstart-create-account.md)témakörben talál általános tudnivalókat.
+Ez a cikk az Automation-fiók használatakor felmerülő problémák megoldásait ismerteti. Az alábbi részekben a konkrét hibaüzenetek és a lehetséges megoldások jelennek meg. Az Automation-fiókokkal kapcsolatos általános információkért lásd: [Azure-fiók létrehozása](../automation-quickstart-create-account.md).
 
-## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Eset: Nem lehet regisztrálni az automation erőforrás-szolgáltatót az előfizetésekhez
+## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Forgatókönyv: nem sikerült regisztrálni az Automation erőforrás-szolgáltatót az előfizetésekhez
 
 ### <a name="issue"></a>Probléma
 
-Amikor felügyeleti megoldásokkal dolgozik az Automation-fiókban, a következő hibába ütközik:
+Ha az Automation-fiókban felügyeleti megoldásokkal dolgozik, a következő hibaüzenet jelenik meg:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions:
@@ -35,22 +35,22 @@ Az Automation erőforrás-szolgáltató nincs regisztrálva az előfizetésben.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az Automation Erőforrás-szolgáltató regisztrálásához kövesse az alábbi lépéseket az Azure Portalon:
+Az Automation erőforrás-szolgáltató regisztrálásához kövesse az alábbi lépéseket a Azure Portalban:
 
-1. A böngészőből nyissa meg az [Azure Portalt.](https://portal.azure.com)
+1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
 
-2. Nyissa meg az **Előfizetések** lapot, és válassza ki az előfizetését az Előfizetések lapon.   
+2. Navigáljon az **előfizetések** lapra, és válassza ki az előfizetését az előfizetések lapon.   
 
-3. A **Beállítások csoportban**válassza **az Erőforrás-szolgáltatók**lehetőséget.
+3. A **Beállítások**területen válassza az **erőforrás-szolgáltatók**elemet.
 
-4. Az erőforrás-szolgáltatók listájából ellenőrizze, hogy a **Microsoft.Automation** erőforrás-szolgáltató regisztrálva van-e.
+4. Az erőforrás-szolgáltatók listájában ellenőrizze, hogy a **Microsoft. Automation** erőforrás-szolgáltató regisztrálva van-e.
 
-5. Ha a szolgáltató nem szerepel a listán, regisztrálja az [erőforrás-szolgáltató regisztrációjának hibáinak elhárítása](/azure/azure-resource-manager/resource-manager-register-provider-errors)című részben leírtak szerint.
+5. Ha a szolgáltató nem szerepel a listáján, regisztrálja az [erőforrás-szolgáltatói regisztráció hibáinak elhárítása](/azure/azure-resource-manager/resource-manager-register-provider-errors)című témakörben leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a fenti probléma nem jelenik meg, vagy nem tudja megoldani a problémát, próbálkozzon az alábbi csatornák egyikével további támogatásért:
+Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
-* Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport)kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
-* Az Azure-támogatási incidens fájlja. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+* Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
+* Az Azure [@AzureSupport](https://twitter.com/azuresupport)-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

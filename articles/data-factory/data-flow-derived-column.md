@@ -1,6 +1,6 @@
 ---
-title: Származtatott oszlopátalakítása az adatfolyam leképezésében
-description: Ismerje meg, hogyan alakíthatja át az adatokat nagy méretekben az Azure Data Factory-ban a leképezési adatfolyam származtatott oszlop átalakítása.
+title: Származtatott oszlop átalakítása a leképezési adatfolyamban
+description: Megtudhatja, hogyan alakíthatja át az adatmennyiséget a Azure Data Factory a leképezési adatfolyam származtatott oszlopainak átalakításával.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,35 +8,35 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606506"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlopátalakítása az adatfolyam leképezésében
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A származtatott oszlopátalakítással új oszlopokat hozhat létre az adatfolyamban, vagy módosíthatja a meglévő mezőket.
+A származtatott oszlop átalakításával új oszlopokat hozhatja ki az adatfolyamban, vagy módosíthatja a meglévő mezőket.
 
-## <a name="derived-column-settings"></a>Származtatott oszlopbeállításai
+## <a name="derived-column-settings"></a>Származtatott oszlop beállításai
 
-Meglévő oszlop felülbírálásához jelölje ki azt az oszlop legördülő menün keresztül. Ellenkező esetben használja az oszlopkijelölő mezőt szövegdobozként, és írja be az új oszlop nevét. A származtatott oszlop kifejezésének létrehozásához kattintson az "Enter expression" mezőre az [Adatfolyam-kifejezésszerkesztő](concepts-data-flow-expression-builder.md)megnyitásához.
+Meglévő oszlop felülbírálásához válassza ki azt az oszlop legördülő listából. Ellenkező esetben használja az oszlop kijelölése mezőt a szövegmezőbe, és írja be az új oszlop nevét. A származtatott oszlop kifejezésének létrehozásához kattintson a "kifejezés beírása" mezőre az adatfolyam- [kifejezés-szerkesztő](concepts-data-flow-expression-builder.md)megnyitásához.
 
-![Származtatott oszlopbeállításai](media/data-flow/dc1.png "Származtatott oszlopbeállításai")
+![Származtatott oszlop beállításai](media/data-flow/dc1.png "Származtatott oszlop beállításai")
 
-További származtatott oszlopok hozzáadásához mutasson egy meglévő származtatott oszlopra, és kattintson a plusz ikonra. Válassza az **Oszlop hozzáadása** vagy **az Oszlopminta hozzáadása lehetőséget.** Az oszlopminták akkor jöhetnek hasznosak, ha az oszlopnevek változóak a forrásokból. További információ: [Column Patterns](concepts-data-flow-column-pattern.md).
+További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő származtatott oszlop fölé, és kattintson a plusz ikonra. Válassza az **oszlop hozzáadása** vagy az **oszlop hozzáadása mintát**. Az oszlop mintái hasznosak lehetnek, ha az oszlopnevek a forrásokból származó változók. További információ: [Column Patterns](concepts-data-flow-column-pattern.md).
 
-![Új származtatott oszlopkijelölés](media/data-flow/columnpattern.png "Új származtatott oszlopkijelölés")
+![Új származtatott oszlop kiválasztása](media/data-flow/columnpattern.png "Új származtatott oszlop kiválasztása")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Sémák létrehozása a kimeneti séma ablaktáblában
+## <a name="build-schemas-in-output-schema-pane"></a>Sémák összeállítása a kimeneti séma ablaktáblán
 
-A sémához módosítandó és hozzáadandó oszlopok a Kimeneti séma ablaktáblában jelennek meg. Itt interaktívan egyszerű és összetett adatstruktúrákat hozhat létre. További mezők hozzáadásához válassza az **Oszlop hozzáadása**lehetőséget. Hierarchiák létrehozásához válassza **az Aloszlop hozzáadása**lehetőséget.
+A módosítani kívánt oszlopok és a séma hozzáadása a kimeneti séma ablaktáblán látható. Itt interaktív módon hozhat létre egyszerű és összetett adatstruktúrákat. További mezők hozzáadásához válassza az **oszlop hozzáadása**lehetőséget. Hierarchiák létrehozásához válassza az **aloszlop hozzáadása**elemet.
 
 ![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
 
-Az adatfolyam összetett típusainak kezeléséről a [JSON-kezelés az adatfolyam leképezése című témakörben talál](format-json.md#mapping-data-flow-properties)további információt.
+Az összetett típusok az adatforgalomban való kezelésével kapcsolatos további információkért lásd: [JSON-kezelés a leképezési folyamatokban](format-json.md#mapping-data-flow-properties).
 
 ![Összetett oszlop hozzáadása](media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
 
@@ -59,13 +59,13 @@ Az adatfolyam összetett típusainak kezeléséről a [JSON-kezelés az adatfoly
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `CleanData` származtatott oszlop `MoviesYear` neve, amely egy bejövő adatfolyamot vesz fel, és két származtatott oszlopot hoz létre. Az első származtatott oszlop lecseréli az oszlopot `Rating` a Rating egész típusként i rating értékére. A második származtatott oszlop egy olyan minta, amely minden olyan oszlopnak megfelel, amelynek neve "filmek" kezdetével kezdődik. Minden egyező oszlophoz létrehoz `movie` egy olyan oszlopot, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
+Az alábbi példa egy nevű `CleanData` származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear` használ, és két származtatott oszlopot hoz létre. Az első származtatott oszlop a minősítés `Rating` értékének egész típusként való lecserélése az oszlopra. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlop esetében egy olyan oszlopot `movie` hoz létre, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
 
-A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
 ![Példa származtatása](media/data-flow/derive-script1.png "Példa származtatása")
 
-Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
+Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
 ```
 MoviesYear derive(
@@ -79,4 +79,4 @@ MoviesYear derive(
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Adatfolyam leképezése kifejezés nyelvéről.](data-flow-expression-functions.md)
+- További információ a [leképezési adatfolyam kifejezésének nyelvéről](data-flow-expression-functions.md).

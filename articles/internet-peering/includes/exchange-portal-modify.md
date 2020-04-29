@@ -9,41 +9,41 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e06b5261ca6923e158c818d236a30cf6ebff189b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680935"
 ---
-Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási műveleteket a közvetlen társviszony-létesítéshez.
+Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási műveleteket a közvetlen társításhoz.
 
-### <a name="add-exchange-peering-connections"></a>Exchange-társviszony-létesítési kapcsolatok hozzáadása
+### <a name="add-exchange-peering-connections"></a>Exchange-partneri kapcsolatok hozzáadása
 
-1. Válassza a **+ Kapcsolatok hozzáadása** gombot, és állítson be egy új társviszony-létesítési kapcsolatot.
+1. Válassza a **+ kapcsolatok hozzáadása** gombot, és konfigurálja az új társ-létesítési kapcsolatot.
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás nézete](../media/setup-exchange-modify-addconnection.png)
-1. Töltse ki az **Exchange társviszony-létesítési kapcsolat képernyőt,** és válassza a **Mentés gombot.** A társviszony-létesítési kapcsolatok konfigurálásával kapcsolatos segítségért tekintse át a "Közvetlen társviszony-létesítés létrehozása és kiépítése" című szakasz lépéseit.
+    > ![Egyenrangú erőforrás nézet](../media/setup-exchange-modify-addconnection.png)
+1. Töltse ki az **Exchange-társi kapcsolatok** űrlapot, és kattintson a **Mentés**gombra. A társ-létesítési kapcsolatok konfigurálásával kapcsolatos segítségért tekintse át a "közvetlen társítás létrehozása és kiépítése" című szakasz lépéseit.
     > [!div class="mx-imgBorder"]
-    > ![Exchange-társviszony-létesítési kapcsolat képernyő](../media/setup-exchange-modify-savenewconnection.png)
+    > ![Exchange-partneri kapcsolatok űrlapja](../media/setup-exchange-modify-savenewconnection.png)
 
-### <a name="remove-exchange-peering-connections"></a>Exchange-társviszony-létesítési kapcsolatok eltávolítása
+### <a name="remove-exchange-peering-connections"></a>Exchange-társi kapcsolatok eltávolítása
 
-1. Jelölje ki a törölni kívánt társviszony-létesítési kapcsolatot, majd válassza **a ...**  >  **Kapcsolat törlése**.
+1. Válassza ki a törölni kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **kapcsolatok törlése**.
     > [!div class="mx-imgBorder"]
-    > ![Kapcsolat törlése gomb](../media/setup-exchange-modify-deleteconnection.png)
-1. Írja be az erőforrás-azonosítót a **Törlés megerősítése** mezőbe, és válassza a **Törlés**gombot.
+    > ![Kapcsolatok törlése gomb](../media/setup-exchange-modify-deleteconnection.png)
+1. A **Törlés megerősítése** mezőbe írja be az erőforrás-azonosítót, és válassza a **Törlés**lehetőséget.
     > [!div class="mx-imgBorder"]
-    > ![Megerősítés törlése](../media/setup-exchange-modify-deleteconnectionconfirm.png)
+    > ![Törlés megerősítése](../media/setup-exchange-modify-deleteconnectionconfirm.png)
 
-### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4- vagy IPv6-munkamenet hozzáadása aktív kapcsolatokhoz
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4-vagy IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz
 
-1. Jelölje ki a módosítani kívánt társviszony-létesítési kapcsolatot, majd válassza **a ...**  >  **Kapcsolat szerkesztése**.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése**.
     > [!div class="mx-imgBorder"]
-    > ![Kapcsolat szerkesztése gomb](../media/setup-exchange-modify-editconnection.png)
-1. Adja hozzá **az IPv4-címet** vagy az **IPv6-címadatokat,** és válassza a **Mentés gombot.**
+    > ![A kapcsolatok szerkesztése gomb](../media/setup-exchange-modify-editconnection.png)
+1. Adja meg az **IPv4-cím** vagy az **IPv6-cím** adatait, majd kattintson a **Mentés**gombra.
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési kapcsolatok módosításai](../media/setup-exchange-modify-editconnectionsettings.png)
+    > ![Társ-létrehozási kapcsolatok módosításai](../media/setup-exchange-modify-editconnectionsettings.png)
 
-### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4- vagy IPv6-munkamenet eltávolítása aktív kapcsolatokon
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4-vagy IPv6-munkamenet eltávolítása az aktív kapcsolatokon
 
-Az IPv4- vagy IPv6-munkamenet eltávolítása meglévő kapcsolatból jelenleg nem támogatott a portálon. További információért forduljon a [Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
+Egy IPv4-vagy IPv6-munkamenet meglévő kapcsolatból való eltávolítása jelenleg nem támogatott a portálon. További információért forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).

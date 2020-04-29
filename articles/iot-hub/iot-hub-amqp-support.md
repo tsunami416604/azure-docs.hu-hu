@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub AMQP-támogatásának ismertetése | Microsoft dokumentumok
-description: Fejlesztői útmutató – az IoT Hub-eszköz- és szolgáltatásnéző végpontokhoz az AMQP protokoll használatával csatlakozó eszközök támogatása. Az Azure IoT-eszköz SDK-k beépített AMQP-támogatásával kapcsolatos információkat tartalmazza.
+title: Az Azure IoT Hub AMQP-támogatás ismertetése | Microsoft Docs
+description: Fejlesztői útmutató – a AMQP protokoll használatával a IoT Hub eszközre irányuló és a szolgáltatáshoz kapcsolódó végpontokhoz csatlakozó eszközök támogatása. Az Azure IoT Device SDK-k beépített AMQP-támogatásával kapcsolatos információkat tartalmaz.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -11,32 +11,32 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730755"
 ---
-# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikáció az IoT-központtal az AMQP protokoll használatával
+# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikáció az IoT hub használatával a AMQP protokoll segítségével
 
-Az Azure IoT Hub támogatja [az OASIS Advanced Message Queuing Protocol (AMQP) 1.0-s verzióját,](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf) hogy az eszközre néző és a szolgáltatásfelé irányuló végpontokon keresztül számos funkciót biztosítson. Ez a dokumentum ismerteti az AMQP-ügyfelek használatát egy IoT hubhoz való csatlakozáshoz az IoT Hub funkcióinak használatához.
+Az Azure IoT Hub támogatja az [OASIS Advanced Message Queueing Protocol (AMQP) 1,0](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf) -es verzióját, hogy különféle funkciókat nyújtson az eszközre irányuló és a szolgáltatással szemben elérhető végpontokon keresztül. Ez a dokumentum azt ismerteti, hogyan használhatók a AMQP-ügyfelek az IoT hub-hoz való kapcsolódáshoz IoT Hub funkció használatához.
 
 ## <a name="service-client"></a>Szolgáltatási ügyfél
 
-### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>Csatlakozás és hitelesítés IoT-központhoz (szolgáltatásügyfélhez)
+### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>Kapcsolódás és hitelesítés IoT hub-ban (szolgáltatási ügyfél)
 
-Ha Az AMQP használatával szeretne csatlakozni egy IoT-központhoz, az ügyfél használhatja a [jogcímalapú biztonsági (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) vagy [az egyszerű hitelesítési és biztonsági réteg (SASL) hitelesítést.](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)
+Ha a AMQP használatával szeretne csatlakozni egy IoT hubhoz, az ügyfél használhatja a [jogcímbarát biztonsági (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) vagy a [egyszerű hitelesítési és biztonsági réteg (SASL) hitelesítést](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer).
 
-A szolgáltatásügyfélhez a következő adatok szükségesek:
+A szolgáltatás ügyfelének a következő információkat kell megadnia:
 
 | Információ | Érték |
 |-------------|--------------|
-| IoT hub állomásneve | `<iot-hub-name>.azure-devices.net` |
+| IoT hub-állomásnév | `<iot-hub-name>.azure-devices.net` |
 | Kulcs neve | `service` |
 | Hozzáférési kulcs | A szolgáltatáshoz társított elsődleges vagy másodlagos kulcs |
-| Közös hozzáférésű jogosultságkód | Rövid ideig tartó közös hozzáférésű aláírás `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`a következő formátumban: . Az aláírás létrehozásához a Hozzáférés [szabályozása az IoT Hubhoz című](./iot-hub-devguide-security.md#security-token-structure)témakörben található.
+| Közös hozzáférésű jogosultságkód | Egy rövid életű közös hozzáférésű aláírás a következő formátumban: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Az aláírás létrehozásához szükséges kód beszerzéséhez tekintse meg a [IoT hub hozzáférésének szabályozása](./iot-hub-devguide-security.md#security-token-structure)című témakört.
 
-A következő kódrészlet a [Python uAMQP-függvénytárát](https://github.com/Azure/azure-uamqp-python) használja az IoT-központhoz való csatlakozáshoz egy feladói hivatkozáson keresztül.
+A következő kódrészlet a [Python uAMQP könyvtárát](https://github.com/Azure/azure-uamqp-python) használja a IoT hubhoz való csatlakozáshoz a küldő hivatkozásán keresztül.
 
 ```python
 import uamqp
@@ -64,16 +64,16 @@ send_client = uamqp.SendClient(uri, debug=True)
 receive_client = uamqp.ReceiveClient(uri, debug=True)
 ```
 
-### <a name="invoke-cloud-to-device-messages-service-client"></a>Felhőből az eszközre irányuló üzenetek meghívása (szolgáltatásügyfél)
+### <a name="invoke-cloud-to-device-messages-service-client"></a>Felhőből az eszközre irányuló üzenetek meghívása (szolgáltatás-ügyfél)
 
-A szolgáltatás és az IoT hub, valamint az eszköz és az IoT hub közötti felhőből az eszközre irányuló üzenetváltásról az [IoT-központból küldött üzenetek küldése](iot-hub-devguide-messages-c2d.md)című témakörben olvashat. A szolgáltatásügyfél két hivatkozást használ az üzenetek küldésére és az eszközökről korábban küldött üzenetekre vonatkozó visszajelzésfogadására, az alábbi táblázatban leírtak szerint:
+A szolgáltatás és az IoT hub, valamint az eszköz és az IoT hub között a felhőből az eszközre irányuló üzenetváltásról további információt a [felhőből az eszközre irányuló üzenetek küldése az IoT hubhoz](iot-hub-devguide-messages-c2d.md)című témakörben talál. A szolgáltatás-ügyfél két hivatkozást használ az üzenetek küldésére és visszajelzések fogadására a korábban elküldött üzenetekről az eszközökről, az alábbi táblázatban leírtak szerint:
 
 | Létrehozta: | Hivatkozás típusa | Hivatkozás elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
-| Szolgáltatás | Feladó hivatkozása | `/messages/devicebound` | Az eszközökre szánt felhőből az eszközre irányuló üzeneteket a szolgáltatás erre a hivatkozásra küldi. A hivatkozáson keresztül `To` küldött üzenetek tulajdonsága a céleszköz `/devices/<deviceID>/messages/devicebound`címzettjének kapcsolati útvonalára van állítva, . |
-| Szolgáltatás | Vevő hivatkozása | `/messages/serviceBound/feedback` | A szolgáltatás által ezen a kapcsolaton fogadott eszközökről érkező kitöltési, elutasítási és elhagyási visszajelzési üzenetek. A visszajelzési üzenetekről további információt a [Felhőből az eszközre irányuló üzenetek küldése IoT-központból](./iot-hub-devguide-messages-c2d.md#message-feedback)című témakörben talál. |
+| Szolgáltatás | Feladó hivatkozása | `/messages/devicebound` | Az eszközökre szánt, felhőből eszközre irányuló üzeneteket a szolgáltatás elküldi erre a hivatkozásra. A hivatkozáson keresztül küldött üzeneteknek `To` a tulajdonsága a cél eszköz fogadó hivatkozásának elérési `/devices/<deviceID>/messages/devicebound`útjára van beállítva. |
+| Szolgáltatás | Fogadó hivatkozása | `/messages/serviceBound/feedback` | Az ezen a hivatkozáson keresztül fogadott eszközökről érkező, a küldéssel, elutasítással és törléssel kapcsolatos visszajelzési üzenetek. További információ a visszajelzési üzenetekről: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
-A következő kódrészlet bemutatja, hogyan hozhat létre felhőből eszközre irányuló üzenetet, és hogyan küldheti el egy eszközre a [Python uAMQP-könyvtárával.](https://github.com/Azure/azure-uamqp-python)
+A következő kódrészlet bemutatja, hogyan hozhat létre egy felhőből az eszközre irányuló üzenetet, és hogyan küldheti el azt egy eszközre a [Python uAMQP könyvtárának](https://github.com/Azure/azure-uamqp-python)használatával.
 
 ```python
 import uuid
@@ -96,7 +96,7 @@ results = send_client.send_all_messages()
 send_client.close()
 ```
 
-A visszajelzés fogadásához a szolgáltatásügyfél létrehoz egy vevőkapcsolatot. A következő kódrészlet bemutatja, hogyan hozhat létre hivatkozást a [Python uAMQP könyvtárának](https://github.com/Azure/azure-uamqp-python)használatával:
+Ha visszajelzést szeretne kapni, a szolgáltatás ügyfél létrehoz egy fogadó hivatkozást. A következő kódrészlet azt mutatja be, hogyan hozható létre hivatkozás a [Python uAMQP könyvtárának](https://github.com/Azure/azure-uamqp-python)használatával:
 
 ```python
 import json
@@ -129,29 +129,29 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-Ahogy az előző kódban is látható, a felhőből az eszközre irányuló visszajelzési üzenetek *alkalmazás-/vnd.microsoft.iothub.feedback.json*tartalomtípussal rendelkeznek. Az üzenet JSON-törzsében található tulajdonságok segítségével következtethet az eredeti üzenet kézbesítési állapotára:
+Ahogy az előző kódban is látható, a felhőből az eszközre irányuló visszajelzési üzenet az *Application/vnd. microsoft. iothub. feedback. JSON*tartalomtípusú. Az üzenet JSON-törzsének tulajdonságainak használatával következtetheti ki az eredeti üzenet kézbesítési állapotát:
 
-* A `statusCode` visszajelzési törzs kulcsának a következő értékei vannak: *Sikeres*, *Lejárt*, *DeliveryCountExceeded*, *Elutasítva*vagy *Törölve.*
+* A `statusCode` visszajelzés törzsében található kulcs a következő értékek egyikével rendelkezik: *sikeres*, *lejárt*, *DeliveryCountExceeded*, *visszautasított*vagy *kiürített*.
 
-* A `deviceId` visszacsatolási törzs kulcsa rendelkezik a céleszköz azonosítójával.
+* A `deviceId` visszajelzés törzsében található kulcs rendelkezik a céleszköz azonosítójával.
 
-* A `originalMessageId` visszajelzési törzs kulcsa rendelkezik a szolgáltatás által küldött eredeti felhőből eszközre küldött üzenet azonosítójával. Ezzel a kézbesítési állapottal korrelálhatja a visszajelzést a felhőből az eszközre irányuló üzenetekhez.
+* A `originalMessageId` visszajelzés törzsében található kulcs a szolgáltatás által küldött, az eredeti felhőből az eszközre irányuló üzenet azonosítóját kapja. Ezt a kézbesítési állapotot használhatja a felhőből az eszközre irányuló üzenetek visszajelzésének összekapcsolásához.
 
-### <a name="receive-telemetry-messages-service-client"></a>Telemetriai üzenetek fogadása (szolgáltatásügyfél)
+### <a name="receive-telemetry-messages-service-client"></a>Telemetria üzenetek fogadása (szolgáltatási ügyfél)
 
-Alapértelmezés szerint az IoT hub tárolja a bevitt eszköz telemetriai üzeneteket egy beépített eseményközpontban. A szolgáltatásügyfél az AMQP protokoll segítségével fogadhatja a tárolt eseményeket.
+Alapértelmezés szerint az IoT hub a betöltött eszköz telemetria-üzeneteit egy beépített Event hub tárolja. A szolgáltatás ügyfele a AMQP protokollt használva fogadhatja a tárolt eseményeket.
 
-Erre a célra a szolgáltatás-ügyfél először csatlakoznia kell az IoT hub végponthoz, és kap egy átirányítási címet a beépített eseményközpontokhoz. A szolgáltatásügyfél ezután a megadott címet használja a beépített eseményközponthoz való csatlakozáshoz.
+Erre a célra a szolgáltatás ügyfelének először csatlakoznia kell az IoT hub-végponthoz, és el kell fogadnia egy átirányítási címeket a beépített esemény-hubhoz. A szolgáltatási ügyfél ezután a megadott címen csatlakozik a beépített Event hubhoz.
 
-Az ügyfélnek minden lépésben a következő információkat kell bemutatnia:
+Az ügyfélnek minden lépésben be kell mutatnia a következő információkat:
 
-* Érvényes szolgáltatáshitelesítő adatok (szolgáltatás megosztott hozzáférésű jogosultságjegy-token).
+* Érvényes szolgáltatás hitelesítő adatai (a szolgáltatás közös hozzáférési aláírási jogkivonata).
 
-* A fogyasztói csoport partíciójának jól formázott elérési útja, amelyről üzeneteket kíván lekérni. Egy adott fogyasztói csoport és partíció azonosítója esetén `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` az elérési út `$Default`formátuma a következő: (az alapértelmezett fogyasztói csoport a ).
+* A fogyasztói csoport partíciójának jól formázott elérési útja, amelyből üzeneteket kíván lekérdezni. Az adott fogyasztói csoport és partíciós azonosító esetében az elérési út formátuma a `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` következő: (az alapértelmezett fogyasztói `$Default`csoport).
 
-* Egy választható szűrési predikátum a partíció egy kezdőpontjának kijelöléséhez. Ez a predikátum lehet sorszám, eltolás vagy várólistára helyezett időbélyeg.
+* Egy nem kötelező szűrési predikátum, amely kijelöl egy kiindulási pontot a partícióban. Ez a predikátum sorszám, eltolás vagy várólistán lévő timestamp formátumú lehet.
 
-A következő kódrészlet a [Python uAMQP-könyvtárát](https://github.com/Azure/azure-uamqp-python) használja az előző lépések bemutatására:
+A következő kódrészlet a [Python uAMQP könyvtárát](https://github.com/Azure/azure-uamqp-python) használja az előző lépések bemutatására:
 
 ```python
 import json
@@ -215,23 +215,23 @@ for msg in batch:
     print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
 ```
 
-Egy adott eszközazonosító esetén az IoT hub az eszközazonosító kivonatát használja annak meghatározására, hogy melyik partícióban tárolja az üzeneteket. Az előző kódrészlet bemutatja, hogyan érkeznek meg az események egyetlen ilyen partícióról. Azonban vegye figyelembe, hogy egy tipikus alkalmazás gyakran kell letölteni az összes eseményközpont-partícióktárolt eseményeket.
+Egy adott eszköz AZONOSÍTÓjának esetében az IoT hub az eszköz AZONOSÍTÓjának kivonatát használja annak meghatározására, hogy melyik partíció tárolja az üzeneteit a alkalmazásban. Az előző kódrészlet azt mutatja be, hogy az események hogyan érkeznek egyetlen ilyen partícióból. Vegye figyelembe azonban, hogy egy tipikus alkalmazásnak gyakran kell lekérnie az Event hub összes partíciójában tárolt eseményeket.
 
-## <a name="device-client"></a>Eszközügyfél
+## <a name="device-client"></a>Eszköz ügyfele
 
-### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>Csatlakozás és hitelesítés IoT-elosztóhoz (eszközügyfélhez)
+### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>Kapcsolódás és hitelesítés IoT hub-ban (eszköz-ügyfél)
 
-Ha Az AMQP használatával szeretne csatlakozni egy IoT-központhoz, az eszköz [jogcímalapú biztonsági (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) vagy [egyszerű hitelesítési és biztonsági réteg (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) hitelesítést használhat.
+Ha a AMQP használatával szeretne csatlakozni egy IoT hubhoz, az eszköz használhat [jogcímek alapú biztonsági (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) vagy [egyszerű hitelesítési és biztonsági réteg (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) hitelesítést.
 
-Az eszközügyfélhez a következő adatok szükségesek:
+Az eszköz ügyfelének a következő információkat kell megadnia:
 
 | Információ | Érték |
 |-------------|--------------|
-| IoT hub állomásneve | `<iot-hub-name>.azure-devices.net` |
+| IoT hub-állomásnév | `<iot-hub-name>.azure-devices.net` |
 | Hozzáférési kulcs | Az eszközhöz társított elsődleges vagy másodlagos kulcs |
-| Közös hozzáférésű jogosultságkód | Rövid ideig tartó közös hozzáférésű aláírás `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`a következő formátumban: . Az aláírás létrehozásához a Hozzáférés [szabályozása az IoT Hubhoz című](./iot-hub-devguide-security.md#security-token-structure)témakörben található.
+| Közös hozzáférésű jogosultságkód | Egy rövid életű közös hozzáférésű aláírás a következő formátumban: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Az aláírás létrehozásához szükséges kód beszerzéséhez tekintse meg a [IoT hub hozzáférésének szabályozása](./iot-hub-devguide-security.md#security-token-structure)című témakört.
 
-A következő kódrészlet a [Python uAMQP-függvénytárát](https://github.com/Azure/azure-uamqp-python) használja az IoT-központhoz való csatlakozáshoz egy feladói hivatkozáson keresztül.
+A következő kódrészlet a [Python uAMQP könyvtárát](https://github.com/Azure/azure-uamqp-python) használja a IoT hubhoz való csatlakozáshoz a küldő hivatkozásán keresztül.
 
 ```python
 import uamqp
@@ -260,19 +260,19 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 send_client = uamqp.SendClient(uri, debug=True)
 ```
 
-Az alábbi hivatkozási útvonalak eszközműveletekként támogatottak:
+A következő hivatkozás elérési útjai támogatottak az eszköz műveleteiként:
 
 | Létrehozta: | Hivatkozás típusa | Hivatkozás elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
-| Eszközök | Vevő hivatkozása | `/devices/<deviceID>/messages/devicebound` | Az eszközökre szánt felhőből az eszközre irányuló üzeneteket ezen a kapcsolaton az egyes céleszközök fogadják. |
-| Eszközök | Feladó hivatkozása | `/devices/<deviceID>/messages/events` | Az eszközről küldött eszközről felhőbe irányuló üzeneteket a rendszer ezen a hivatkozáson keresztül küldi el. |
-| Eszközök | Feladó hivatkozása | `/messages/serviceBound/feedback` | Az eszközök által ezen a kapcsolaton keresztül a szolgáltatásnak küldött felhőről eszközre küldött üzenetek visszajelzései. |
+| Eszközök | Fogadó hivatkozása | `/devices/<deviceID>/messages/devicebound` | Az eszközökre szánt, felhőből az eszközre irányuló üzenetek fogadása ezen a hivatkozáson keresztül történik minden céleszköz esetében. |
+| Eszközök | Feladó hivatkozása | `/devices/<deviceID>/messages/events` | Az eszközről a felhőbe küldött üzenetek küldése ezen a hivatkozáson keresztül történik. |
+| Eszközök | Feladó hivatkozása | `/messages/serviceBound/feedback` | A felhőből az eszközre küldött üzenetek visszajelzése a szolgáltatásnak ezen a hivatkozáson keresztül, eszközökön keresztül. |
 
-### <a name="receive-cloud-to-device-commands-device-client"></a>Felhőből az eszközre irányuló parancsok fogadása (eszközügyfél)
+### <a name="receive-cloud-to-device-commands-device-client"></a>A felhőből az eszközre irányuló parancsok fogadása (eszköz-ügyfél)
 
-Az eszközökre küldött felhőből az eszközre `/devices/<deviceID>/messages/devicebound` küldött parancsok egy hivatkozásra érkeznek. Az eszközök kötegekben fogadhatják ezeket az üzeneteket, és szükség szerint használhatják az üzenetadatok hasznos adatát, az üzenet tulajdonságait, a jegyzeteket vagy az alkalmazás tulajdonságait.
+Az eszközöknek egy `/devices/<deviceID>/messages/devicebound` hivatkozáson keresztül továbbított, a felhőből az eszközre irányuló parancsok. Az eszközök a kötegekben fogadhatják ezeket az üzeneteket, és igény szerint használhatják az üzenet adattartalmát, az üzenet tulajdonságait, a jegyzeteket vagy az alkalmazás tulajdonságait.
 
-A következő kódrészlet a [Python uAMQP-könyvtárát](https://github.com/Azure/azure-uamqp-python)használja a felhőből az eszközre irányuló üzenetek eszközről az eszközre való fogadásához.
+A következő kódrészlet a [Python uAMQP könyvtárát](https://github.com/Azure/azure-uamqp-python)használja a felhőből az eszközre irányuló üzenetek fogadására egy eszközön.
 
 ```python
 # ...
@@ -318,11 +318,11 @@ while True:
               str(msg.annotations['x-opt-sequence-number']))
 ```
 
-### <a name="send-telemetry-messages-device-client"></a>Telemetriai üzenetek küldése (eszközügyfél)
+### <a name="send-telemetry-messages-device-client"></a>Telemetria üzenetek küldése (eszköz ügyfélprogramja)
 
-Telemetriai üzeneteket is küldhet egy eszközről az AMQP használatával. Az eszköz opcionálisan megadhat egy szótárat az alkalmazás tulajdonságairól vagy különböző üzenettulajdonságokról, például az üzenetazonosítóról.
+A AMQP használatával is küldhet telemetria-üzeneteket egy eszközről. Az eszköz opcionálisan megadhatja az alkalmazás tulajdonságait, illetve az üzenetek különböző tulajdonságait, például az üzenet AZONOSÍTÓját.
 
-A következő kódrészlet a [Python uAMQP-könyvtárát](https://github.com/Azure/azure-uamqp-python) használja az eszközről a felhőbe irányuló üzenetek küldéséhez.
+A következő kódrészlet a [Python uAMQP könyvtárát](https://github.com/Azure/azure-uamqp-python) használja az eszközről a felhőbe irányuló üzenetek küldéséhez az eszközről.
 
 ```python
 # ...
@@ -365,16 +365,16 @@ for result in results:
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* Az AMQP-kapcsolatok hálózati hiba vagy a (kódban létrehozott) hitelesítési jogkivonat lejárata miatt megszakadhatnak. A szolgáltatásügyfélnek kezelnie kell ezeket a körülményeket, és szükség esetén helyre kell állítania a kapcsolatot és a kapcsolatokat. Ha egy hitelesítési jogkivonat lejár, az ügyfél elkerülheti a kapcsolat csökkenését azáltal, hogy proaktív módon megújítja a jogkivonatot annak lejárta előtt.
+* Előfordulhat, hogy a AMQP-kapcsolatok hálózati hiba miatt megszakadnak, vagy a hitelesítési jogkivonat lejárata (amely a kódban lett létrehozva). A szolgáltatás ügyfelének ezeket a körülményeket kell kezelnie, és szükség esetén újra létre kell hoznia a kapcsolatot és a hivatkozásokat. Ha egy hitelesítési jogkivonat lejár, az ügyfél elkerülheti a kapcsolat csökkenését a jogkivonat proaktív megújításával a lejárat előtt.
 
-* Az ügyfélnek időnként képesnek kell lennie a hivatkozás-átirányítások megfelelő kezelésére. Egy ilyen művelet megértéséhez tekintse meg az AMQP-ügyfél dokumentációját.
+* Az ügyfélnek időnként képesnek kell lennie helyesen kezelni a hivatkozások átirányítását. Az ilyen műveletek megismeréséhez tekintse meg a AMQP-ügyfél dokumentációját.
 
 ## <a name="next-steps"></a>További lépések
 
-Az AMQP protokollról az [AMQP 1.0-s v.0-s specifikációjában olvashat bővebben.](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)
+Ha többet szeretne megtudni az AMQP protokollról, tekintse meg a [AMQP v 1.0 specifikációját](https://www.amqp.org/sites/amqp.org/files/amqp.pdf).
 
-Ha többet szeretne megtudni az IoT Hub-üzenetküldésről, olvassa el a következő témakört:
+Az IoT Hub üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következőt:
 
-* [Felhőből eszközre irányuló üzenetek](./iot-hub-devguide-messages-c2d.md)
+* [Felhőből az eszközre irányuló üzenetek](./iot-hub-devguide-messages-c2d.md)
 * [További protokollok támogatása](iot-hub-protocol-gateway.md)
-* [A Message Queuing telemetriai átviteli (MQTT) protokoll támogatása](./iot-hub-mqtt-support.md)
+* [A Message Queuing telemetria Transport (MQTT) protokoll támogatása](./iot-hub-mqtt-support.md)

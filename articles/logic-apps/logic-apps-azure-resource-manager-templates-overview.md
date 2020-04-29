@@ -1,51 +1,51 @@
 ---
-title: Áttekintés – Az Azure Logic Apps üzembe helyezésének automatizálása
-description: Ismerje meg az Azure Resource Manager-sablonokat az Azure Logic Apps üzembe helyezésének automatizálásához
+title: Áttekintés – az üzembe helyezés automatizálása Azure Logic Apps
+description: Ismerkedjen meg Azure Resource Manager-sablonokkal a Azure Logic Apps üzembe helyezésének automatizálásához
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641814"
 ---
-# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: Az Azure Logic Apps üzembe helyezésének automatizálása az Azure Resource Manager-sablonok használatával
+# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
-Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager-sablonba.](../azure-resource-manager/management/overview.md) Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és a logikai alkalmazás kiépítéséhez és üzembe helyezéséhez szükséges egyéb információkat. A központi telepítéskor változó értékek paramétereinek meghatározásával , más néven *paraméterezés,* többször és következetesen telepítheti a logikai alkalmazásokat a különböző telepítési igények alapján.
+Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/management/overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing*) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
 
-Ha például fejlesztési, tesztelési és éles környezetekben telepíti a környezeteket, valószínűleg minden környezethez különböző kapcsolati karakterláncokat használ. Deklarálhatja a különböző kapcsolati karakterláncokat fogadó sablonparamétereket, majd ezeket a karakterláncokat külön [paraméterfájlban](../azure-resource-manager/templates/parameter-files.md)tárolhatja. Így módosíthatja ezeket az értékeket anélkül, hogy frissítenie és újratelepítenie kellene a sablont. Olyan esetekben, ahol a paraméterértékek, amelyek bizalmasak, vagy biztonságosnak kell lennie, például a jelszavak és a titkos kulcsok, tárolhatja ezeket az értékeket [az Azure Key Vaultban,](../azure-resource-manager/templates/key-vault-parameter.md) és a paraméterek fájl beolvasni ezeket az értékeket. Ezekben a forgatókönyvekben azonban az aktuális értékek beolvasása érdekében újratelepíti.
+Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
 
-Ez az áttekintés az Erőforrás-kezelő sablon attribútumait ismerteti, amelyek logikai alkalmazás munkafolyamat-definícióját tartalmazzák. Mind a sablon, mind a munkafolyamat-definíció JSON-szintaxist használ, de vannak különbségek, mert a munkafolyamat-definíciós definíciós [nyelvsémát](../logic-apps/logic-apps-workflow-definition-language.md)is követi. A sablonkifejezések és a munkafolyamat-definíciós kifejezések például különböznek a [paraméterekhivatkozás](#parameter-references) módjától és az általuk elfogadható értékektől.
+Ez az Áttekintés egy Resource Manager-sablon azon attribútumait ismerteti, amelyek tartalmazzák a logikai alkalmazás munkafolyamatának definícióját. A sablon és a munkafolyamat-definíció JSON-szintaxist használ, de néhány eltérés létezik, mert a munkafolyamat-definíció a [munkafolyamat-definíció nyelvi sémáját](../logic-apps/logic-apps-workflow-definition-language.md)is követi. Például a sablonok kifejezései és a munkafolyamat-definíciós kifejezések különböznek a paraméterek és az általuk elfogadható értékek [függvényében](#parameter-references) .
 
 > [!TIP]
-> A legegyszerűbb módja annak, hogy egy érvényes paraméterezett logikai alkalmazás sablon, amely többnyire készen áll a telepítésre, használja a Visual Studio (ingyenes közösségi kiadás vagy újabb) és az Azure Logic Apps Tools for Visual Studio. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban,](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) vagy [megkeresheti és letöltheti az Azure-ból a Visual Studióba egy meglévő tanológiai alkalmazást.](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools használatával lehet megszerezni az érvényes paraméteres logikai alkalmazás sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy [megkeresheti és letöltheti az Azure-ból egy meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
 >
-> Vagy létrehozhat logikai alkalmazássablonokat [az Azure PowerShell használatával a LogicAppTemplate modullal.](../logic-apps/logic-apps-create-azure-resource-manager-templates.md#azure-powershell)
+> Emellett létrehozhat logikai alkalmazások sablonjait is [Azure PowerShell használatával a LogicAppTemplate modullal](../logic-apps/logic-apps-create-azure-resource-manager-templates.md#azure-powershell).
 
-Ebben a témakörben a példaként szereplő logikai alkalmazás egy [Office 365 Outlook-eseményindítót](/connectors/office365/) használ, amely új e-mail érkezésekor aktiválódik, és egy [Azure Blob Storage-műveletet,](/connectors/azureblob/) amely létrehoz egy blobot az e-mail törzséhez, és feltölti a blobot egy Azure-tárolóba. A példák azt is bemutatják, hogyan paraméterezhet értékeket, amelyek a központi telepítés során eltérőek.
+A jelen témakörben szereplő logikai alkalmazás egy [Office 365 Outlook-eseményindítót](/connectors/office365/) használ, amely új e-mailek érkezésekor, valamint egy [Azure Blob Storage művelet](/connectors/azureblob/) , amely létrehoz egy blobot az e-mail törzséhez, és feltölti a blobot egy Azure Storage-tárolóba. A példák azt is bemutatják, hogyan parametrizálja a telepítéskor változó értékek.
 
-Az Erőforrás-kezelő sablonjairól az alábbi témakörökben olvashat bővebben:
+A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [Az Azure Resource Manager sablonszerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
 * [Ajánlott eljárások az Azure Resource Manager-sablonokhoz](../azure-resource-manager/templates/template-best-practices.md)
 * [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
-Mintalogikai alkalmazássablonokról az alábbi példákban olvashat:
+A minta logikai alkalmazások sablonjai a következő példákban találhatók:
 
-* [A](#full-example-template) témakör példáihoz használt teljes sablon
-* [Minta rövid útmutató logikai alkalmazássablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) a GitHubon
+* A témakörben szereplő példákhoz használt [teljes sablon](#full-example-template)
+* [Minta rövid útmutató Logic app-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) a githubban
 
-A logikai alkalmazásokra, az integrációs fiókokra és az integrációs fiók összetevőire vonatkozó sablonerőforrás-információkat a [Microsoft.Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)című témakörben talál.
+A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
 
 <a name="template-structure"></a>
 
 ## <a name="template-structure"></a>Sablonszerkezet
 
-A legfelső szinten egy Resource Manager-sablon követi ezt a struktúrát, amelyet teljes körűen ismertet az [Azure Resource Manager sablonszerkezete és szintaktikai témaköre:](../azure-resource-manager/templates/template-syntax.md)
+A legfelső szinten egy Resource Manager-sablon követi ezt a struktúrát, amely teljes mértékben a [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md) című témakörben olvasható:
 
 ```json
 {
@@ -59,34 +59,34 @@ A legfelső szinten egy Resource Manager-sablon követi ezt a struktúrát, amel
 }
 ```
 
-Logikai alkalmazássablon esetén elsősorban a következő sablonobjektumokkal dolgozik:
+A Logic app-sablonok esetében elsősorban a következő sablon-objektumok használhatók:
 
 | Attribútum | Leírás |
 |-----------|-------------|
-| `parameters` | Deklarálja a [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) az Azure-beli üzembe helyezéshez használt értékek elfogadásához. Ezek a paraméterek például elfogadják a logikai alkalmazás nevének és helyének, kapcsolatainak és a központi telepítéshez szükséges egyéb erőforrásoknak az értékeit. Ezeket a paraméterértékeket egy [paraméterfájlban](#template-parameter-files)tárolhatja, amelyet a témakör későbbi részében ismertetünk le. Az általános részleteket a [Paraméterek – Erőforrás-kezelő sablonszerkezete és szintaxisa (Paraméterek – Erőforrás-kezelő) sablonszerkezete és szintaxisa témakörben találja.](../azure-resource-manager/templates/template-syntax.md#parameters) |
-| `resources` | Meghatározza az Azure-erőforráscsoporthoz, például a logikai alkalmazáshoz, a kapcsolatokhoz, az Azure storage-fiókokhoz és így tovább történő létrehozásához, frissítéséhez és üzembe helyezéséhez szükséges [erőforrásokat.](../azure-resource-manager/templates/template-syntax.md#resources) Az általános részleteket az [Erőforrások – Erőforrás-kezelő sablonszerkezet e.](../azure-resource-manager/templates/template-syntax.md#resources) |
+| `parameters` | A [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) deklarálja az Azure-ban üzembe helyezett erőforrások létrehozásakor és testreszabásakor használandó értékek elfogadásához. Ezek a paraméterek például elfogadják a logikai alkalmazás nevének és helyének, kapcsolatainak és az üzembe helyezéshez szükséges egyéb erőforrásoknak az értékeit. Ezeket a [paramétereket egy paraméter-fájlban](#template-parameter-files)tárolhatja, amelyet a témakör későbbi részében talál. Az általános részleteket lásd: [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters). |
+| `resources` | Meghatározza az Azure-erőforráscsoport létrehozásához vagy frissítéséhez és üzembe helyezéséhez szükséges [erőforrásokat](../azure-resource-manager/templates/template-syntax.md#resources) , például a logikai alkalmazást, a kapcsolatokat, az Azure Storage-fiókokat stb. Az általános részleteket lásd: [erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
-A logikai alkalmazássablon ezt a fájlnévformátumot használja:
+A logikai alkalmazás sablonja a következő formátumnév-formátumot használja:
 
-**<*logikai alkalmazás-név*>.json**
+**<*Logic-app-name*>. JSON**
 
 > [!IMPORTANT]
-> A sablon szintaxisa a kis- és nagybetűket is figyelembe teszi, ezért ügyeljen arra, hogy egységes burkolatot használjon. 
+> A sablon szintaxisa megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy konzisztens burkolatot használjon. 
 
 <a name="template-parameters"></a>
 
 ## <a name="template-parameters"></a>Sablon paraméterei
 
-A logikai alkalmazássablon több `parameters` objektumot tartalmaz, amelyek különböző szinteken léteznek, és különböző funkciókat hajtanak végre. A legfelső szinten például deklarálhatja az okat az [értékeket,](../azure-resource-manager/templates/template-syntax.md#parameters) amelyeket az Azure-beli erőforrások létrehozásakor és üzembe helyezésekor el kell fogadni és használni, például:
+A logikai alkalmazások sablonja több `parameters` , különböző szinteken található objektummal rendelkezik, és különböző funkciókat hajt végre. Például a legfelső szinten deklarálhatja a [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) , amelyeket az Azure-beli erőforrások létrehozásakor és üzembe helyezéskor a telepítéskor elfogad és használhat, például:
 
 * A logikai alkalmazás
-* A logika által más szolgáltatások és rendszerek [felügyelt összekötőkön](../connectors/apis-list.md) keresztül történő eléréséhez használt kapcsolatok
-* A logikai alkalmazás nak a központi telepítéshez szükséges egyéb erőforrásai
+* Kapcsolatok, amelyeket a logikája a [felügyelt összekötők](../connectors/apis-list.md) használatával más szolgáltatásokhoz és rendszerekhez való hozzáféréshez használ
+* A logikai alkalmazás által az üzembe helyezéshez szükséges egyéb erőforrások
 
-  Ha például a logikai alkalmazás [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használ a vállalkozások közötti (B2B) `parameters` forgatókönyvekhez, a sablon legfelső szintű objektuma deklarálja azt a paramétert, amely elfogadja az adott integrációs fiók erőforrás-azonosítóját.
+  Ha például a logikai alkalmazás egy [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használ a vállalatközi (B2B) forgatókönyvekhez, a sablon legfelső szintű `parameters` objektuma deklarálja azt a paramétert, amely elfogadja az adott integrációs fiók erőforrás-azonosítóját.
 
-Itt van az általános szerkezet és szintaxis egy paraméterdefinícióhoz, amelyet teljes mértékben a [Paraméterek - Erőforrás-kezelő sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters)ír le:
+Itt látható egy paraméter definíciójának általános szerkezete és szintaxisa, amelyet a [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters)teljes egészében ismertet:
 
 ```json
 "<parameter-name>": {
@@ -99,10 +99,10 @@ Itt van az általános szerkezet és szintaxis egy paraméterdefinícióhoz, ame
 },
 ```
 
-Ez a példa csak az erőforrások Azure-beli létrehozásához és üzembe helyezéséhez használt értékek sablonparamétereit mutatja be:
+Ez a példa az Azure-beli erőforrások létrehozásához és üzembe helyezéséhez használt értékek sablonjának paramétereit mutatja be:
 
 * A logikai alkalmazás neve és helye
-* A logikai alkalmazáshoz kapcsolódó integrációs fiókhoz használandó azonosító
+* A logikai alkalmazáshoz csatolt integrációs fiókhoz használandó azonosító
 
 ```json
 {
@@ -143,52 +143,52 @@ Ez a példa csak az erőforrások Azure-beli létrehozásához és üzembe helye
 }
 ```
 
-A bizalmas vagy biztonságos értékeket kezelő paraméterek , például a felhasználónevek, a jelszavak és `defaultValue` a titkos kulcsok kivételével ezek a paraméterek attribútumokat tartalmaznak, bár bizonyos esetekben az alapértelmezett értékek üres értékek. A sablonparaméterekhez használandó központi telepítési értékeket a témakör későbbi részében ismertetett [mintaparaméter-fájl](#template-parameter-files) biztosítja.
+A bizalmas vagy védeni kívánt értékeket (például felhasználóneveket, jelszavakat és titkokat) kezelő paraméterek kivételével az összes paraméternek tartalmaznia `defaultValue` kell az attribútumokat, bár bizonyos esetekben az alapértelmezett értékek üres értékek. A sablon paramétereinek használatára szolgáló központi telepítési értékeket a jelen témakör későbbi részében ismertetett példa [paraméterrel rendelkező fájl](#template-parameter-files) tartalmazza.
 
-A sablonparaméterek védelméről az alábbi témakörökben olvashat bővebben:
+A sablon paramétereinek biztonságossá tételével kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [Biztonsági javaslatok a sablonparaméterekhez](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [A sablonparaméterek biztonságának növelése](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Biztonságos paraméterértékek átadhatók az Azure Key Vault segítségével](../azure-resource-manager/templates/key-vault-parameter.md)
+* [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
+* [A sablon paramétereinek biztonságának javítása](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-Más sablonobjektumok gyakran hivatkoznak a sablon paramétereire, hogy használhassák a sablonparamétereken áthaladó értékeket, például:
+Más sablon-objektumok gyakran hivatkoznak a sablon paramétereinek használatára, így például a sablon paraméterei között továbbított értékeket használhatják, például:
 
-* A [sablon erőforrás-objektuma](#template-resources), amelyet a témakör későbbi részében ismertetett, meghatározza az Azure-ban létrehozni és telepíteni kívánt erőforrásokat, például a [logikai alkalmazás erőforrás-definícióját.](#logic-app-resource-definition) Ezek az erőforrások gyakran használnak sablonparaméter-értékeket, például a logikai alkalmazás nevét, valamint helyét és kapcsolati adatait.
+* A sablon a jelen témakör későbbi részében ismertetett [erőforrás-objektuma](#template-resources)meghatározza az Azure-ban létrehozni és telepíteni kívánt összes erőforrást, például a [logikai alkalmazás erőforrás-definícióját](#logic-app-resource-definition). Ezek az erőforrások gyakran használják a sablon paramétereinek értékeit, például a logikai alkalmazás nevét, helyét és a kapcsolatok adatait.
 
-* A logikai alkalmazás erőforrás-definíciójának mélyebb szintjén a [munkafolyamat-definíció paraméterobjektum](#workflow-definition-parameters) deklarálja a logikai alkalmazás futásidejében használandó értékek paramétereit. Deklarálhatja például annak a felhasználónévnek és jelszónak a munkafolyamat-definíciós paramétereit, amelyet egy HTTP-eseményindító a hitelesítéshez használ. A munkafolyamat-definíciós paraméterek értékeinek `parameters` megadásához használja azt az objektumot, amely kívül esik a munkafolyamat-definícióján, de továbbra is a logikai alkalmazás erőforrás-definícióján *belül* van. *outside* Ebben a `parameters` külső objektumban hivatkozhat a korábban deklarált sablonparaméterekre, amelyek a telepítéskor értékeket fogadhatnak el egy paraméterfájlból.
+* A logikai alkalmazás erőforrás-definíciójának mélyebb szintjén a [munkafolyamat-definíció Parameters objektuma](#workflow-definition-parameters) deklarálja a logikai alkalmazás futtatókörnyezetében használandó értékek paramétereit. Deklarálhatja például a munkafolyamat-definíció paramétereit arra a felhasználónévre és jelszóra vonatkozóan, amelyet egy HTTP-trigger használ a hitelesítéshez. A munkafolyamat-definíciós paraméterek értékeinek megadásához `parameters` használja a munkafolyamat-definíción *kívüli* objektumot, de a logikai alkalmazás erőforrás-definícióján *belül* maradjon. Ebben a külső `parameters` objektumban hivatkozhat a korábban deklarált sablon-paraméterekre, amelyek a paraméter-fájlból való üzembe helyezéskor elfogadják az értékeket.
 
-Paraméterekre való hivatkozáskor a sablonkifejezések és -függvények eltérő szintaxist használnak, és a munkafolyamat-definíciós kifejezésektől és függvényektől eltérően viselkednek. Ezekről a különbségekről a témakör későbbi, [a paraméterekre mutató hivatkozások](#parameter-references) című témakörben olvashat bővebben.
+Ha a paraméterekre hivatkozik, a sablon kifejezései és a függvények eltérő szintaxist használnak, és eltérően viselkednek a munkafolyamat-definíciós kifejezések és függvények alapján. További információ ezekről a különbségekről: [hivatkozás a paraméterekre](#parameter-references) a témakör későbbi részében.
 
 <a name="best-practices-template-parameters"></a>
 
-## <a name="best-practices---template-parameters"></a>Gyakorlati tanácsok - sablonparaméterek
+## <a name="best-practices---template-parameters"></a>Ajánlott eljárások – sablon paraméterei
 
-Íme néhány gyakorlati tanács a paraméterek meghatározásához:
+Íme néhány ajánlott eljárás paraméterek definiálásához:
 
-* Csak a telepítési igényektől függően változó értékek paramétereinek deklarációja. Ne deklarálja a paramétereket olyan értékekhez, amelyek a különböző telepítési követelmények között azonosak maradnak.
+* A paramétereket csak olyan értékeknél deklarálhatja, amelyek a központi telepítési igények alapján változnak. Ne deklaráljon paramétereket olyan értékekhez, amelyek a különböző központi telepítési követelményeknél azonosak maradnak.
 
-* Adja `defaultValue` meg az attribútumot, amely üres értékeket adhat meg az összes paraméterhez, kivéve azokat az értékeket, amelyek bizalmasak vagy biztonságosak. Mindig használjon biztonságos paramétereket a felhasználónevekhez, jelszavakhoz és titkos kulcsokhoz. A bizalmas paraméterértékek elrejtéséhez vagy védelméhez kövesse az alábbi témakörökben található útmutatást:
+* Adja meg `defaultValue` az attribútumot, amely üres értékeket adhat meg az összes paraméterhez, kivéve a bizalmas vagy a védeni kívánt értékeket. Mindig használjon biztonságos paramétereket a felhasználónevek, jelszavak és titkos kódok számára. A bizalmas paraméterek értékeinek elrejtéséhez vagy kivédéséhez kövesse az alábbi témakörökben található útmutatást:
 
-  * [Biztonsági javaslatok a sablonparaméterekhez](../azure-resource-manager/templates/template-best-practices.md#parameters)
+  * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [A sablonparaméterek biztonságának növelése](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [A sablon paramétereinek biztonságának javítása](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Biztonságos paraméterértékek átadhatók az Azure Key Vault segítségével](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* Ha meg szeretné különböztetni a sablonparaméterneveket a munkafolyamat-definícióparamétereinek nevétől, használhat leíró sablonparaméter-neveket, például:`TemplateFabrikamPassword`
+* A sablon-paraméterek neveinek a munkafolyamat-definíciós paraméterek neveiből való megkülönböztetéséhez használhatja a leíró sablon paraméterének nevét, például:`TemplateFabrikamPassword`
 
-A sablonokkal kapcsolatos gyakorlati tanácsokért olvassa el [a sablonparaméterek gyakorlati tanácsait.](../azure-resource-manager/templates/template-best-practices.md#parameters)
+További sablon ajánlott eljárásai: [ajánlott eljárások a sablon paramétereinek](../azure-resource-manager/templates/template-best-practices.md#parameters)megtekintéséhez.
 
 <a name="template-parameter-files"></a>
 
-## <a name="template-parameters-file"></a>Sablon paraméterfájlja
+## <a name="template-parameters-file"></a>Sablon paramétereinek fájlja
 
-A sablonparaméterek értékeinek megadásához tárolja ezeket az értékeket egy [paraméterfájlban.](../azure-resource-manager/templates/parameter-files.md) Így különböző paramétereket használhat a központi telepítési igények alapján. Itt van a fájlnév formátuma használata:
+A sablon paramétereinek értékeinek megadásához tárolja ezeket az értékeket egy [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md). Így a telepítési igények alapján különböző paraméterekkel rendelkező fájlokat használhat. Itt látható a használni kívánt Fájlnév formátuma:
 
-* Logikai alkalmazássablon fájlneve: ** < *logikai alkalmazásnév*>.json**
-* Paraméterek fájlneve: ** < *logikai alkalmazás-név*>.parameters.json**
+* Logic app-sablon fájlneve: ** < *Logic-app-Name*>. JSON**
+* Parameters Fájlnév: ** < *Logic-app-Name*>. Parameters. JSON**
 
-Itt van a szerkezet a paraméterfájlon belül, amely egy key vault-hivatkozást tartalmaz [egy biztonságos paraméterérték átadásához az Azure Key Vault segítségével:](../azure-resource-manager/templates/key-vault-parameter.md)
+Itt látható a (z) paraméterek fájljának struktúrája, amely tartalmaz egy Key Vault-referenciát a [biztonságos paraméterek értékének átadásához Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -215,7 +215,7 @@ Itt van a szerkezet a paraméterfájlon belül, amely egy key vault-hivatkozást
 }
 ```
 
-Ez a példa paraméterfájlja a témakör korábbi, deklarált sablonparamétereinek értékeit adja meg:
+Ez a példa paraméter a jelen témakör korábbi részében deklarált sablon-paraméterek értékeit adja meg:
 
 ```json
 {
@@ -237,7 +237,7 @@ Ez a példa paraméterfájlja a témakör korábbi, deklarált sablonparamétere
 
 ## <a name="template-resources"></a>Sablonerőforrások
 
-A sablon `resources` rendelkezik egy objektummal, amely egy tömb, amely tartalmazza az azure-ban létrehozandó és üzembe helyezendő erőforrások definícióit, például a [logikai alkalmazás erőforrás-definícióját,](#logic-app-resource-definition)a [kapcsolati erőforrás-definíciókat](#connection-resource-definitions)és a logikai alkalmazás üzembe helyezéséhez szükséges egyéb erőforrásokat.
+A sablon tartalmaz egy `resources` objektumot, amely egy olyan tömb, amely az Azure-ban létrehozandó és üzembe helyezett erőforrások definícióit tartalmazza, például a [logikai alkalmazás erőforrás-definícióját](#logic-app-resource-definition), a [kapcsolati erőforrások definícióit](#connection-resource-definitions)és minden olyan erőforrást, amelyet a logikai alkalmazásnak üzembe kell helyeznie.
 
 ```json
 {
@@ -263,12 +263,12 @@ A sablon `resources` rendelkezik egy objektummal, amely egy tömb, amely tartalm
 ```
 
 > [!NOTE]
-> A sablonok több logikai alkalmazás erőforrás-definícióit is tartalmazhatják, ezért győződjön meg arról, hogy a logikai alkalmazás erőforrásai ugyanazt az Azure-erőforráscsoportot határozzák meg. Amikor a sablont egy Azure-erőforráscsoportba telepíti a Visual Studio használatával, a rendszer megkérdezi, hogy melyik logikai alkalmazást szeretné megnyitni. Emellett az Azure erőforráscsoport-projekt több sablont is tartalmazhat, ezért győződjön meg arról, hogy a megfelelő paraméterek fájl kiválasztása, amikor a rendszer kéri.
+> A sablonok több logikai alkalmazáshoz is tartalmazhatnak erőforrás-definíciókat, ezért ügyeljen arra, hogy a logikai alkalmazás összes erőforrása ugyanazt az Azure-erőforráscsoportot adja meg. Amikor a Visual Studióval üzembe helyezi a sablont egy Azure-erőforráscsoporthoz, a rendszer felszólítja, hogy melyik logikai alkalmazást szeretné megnyitni. Emellett az Azure erőforráscsoport-projekt több sablont is tartalmazhat, ezért ügyeljen arra, hogy a megfelelő paramétereket tartalmazó fájlt válassza ki, ha a rendszer kéri.
 
-A sablonerőforrásokról és azok jellemzőiről az alábbi témakörökben olvashat:
+A sablonok erőforrásaival és attribútumaival kapcsolatos általános információkért tekintse meg a következő témaköröket:
 
-* [Erőforrások – Erőforrás-kezelő sablonszerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources)
-* [Gyakorlati tanácsok a sablon-erőforrásokhoz](../azure-resource-manager/templates/template-best-practices.md#resources)
+* [Erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Ajánlott eljárások a sablonok erőforrásaihoz](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -276,11 +276,11 @@ A sablonerőforrásokról és azok jellemzőiről az alábbi témakörökben olv
 
 A logikai alkalmazás erőforrás-definíciója az `properties` objektummal kezdődik, amely tartalmazza ezt az információt:
 
-* A logikai alkalmazás állapota a telepítés során
-* A logikai alkalmazás által használt integrációs fiók azonosítója
+* A logikai alkalmazás állapota az üzembe helyezéskor
+* A logikai alkalmazás által használt bármely integrációs fiók azonosítója
 * A logikai alkalmazás munkafolyamat-definíciója
-* Olyan `parameters` objektum, amely futásidőben beállítja az értékeket
-* A logikai alkalmazás egyéb erőforrásadatai, például név, típus, hely és így tovább
+* Egy `parameters` objektum, amely a futásidőben használandó értékeket állítja be
+* A logikai alkalmazással kapcsolatos egyéb információforrások, például a név, a típus, a hely stb.
 
 ```json
 {
@@ -317,32 +317,32 @@ A logikai alkalmazás erőforrás-definíciója az `properties` objektummal kezd
 }
 ```
 
-Az alábbiakban a logikai alkalmazás erőforrás-definíciójára jellemző attribútumokat ismertetik:
+A logikai alkalmazás erőforrás-definíciójának attribútumai a következők:
 
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| `state` | Igen | Sztring | A logikai alkalmazás állapota `Enabled` a központi telepítés, `Disabled` ahol azt jelenti, hogy a logikai alkalmazás élő, és azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás éles, de szeretné telepíteni a `Disabled` piszkozatverzió, használhatja a lehetőséget. |
-| `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely tárolja a gazdik `id` a vállalkozások közötti (B2B) forgatókönyvek, ez az objektum tartalmazza az attribútumot, amely megadja az integrációs fiók azonosítóját. |
-| `definition` | Igen | Objektum | A logikai alkalmazás alapjául szolgáló munkafolyamat-definíciója, amely ugyanaz az objektum, amely kódnézetben jelenik meg, és teljes körűen ismertet és a [Munkafolyamat-definíció nyelve témakör Séma hivatkozása](../logic-apps/logic-apps-workflow-definition-language.md) ismerteti. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a logikai alkalmazások futásidejű értékeit. További információt a [Munkafolyamat definíciója és paraméterei című témakörben talál.](#workflow-definition-parameters) <p><p>A logikai alkalmazás munkafolyamat-definíciójában szereplő attribútumok megtekintéséhez váltson a "tervező nézetről" a "kódnézetre" az Azure Portalon vagy a Visual Studio-ban, vagy egy olyan eszköz használatával, mint az [Azure Resource Explorer.](https://resources.azure.com) |
-| `parameters` | Nem | Objektum | A [munkafolyamat-definíció paraméterértékei](#workflow-definition-parameters) a logikai alkalmazások futásidejében. Ezeknek az értékeknek a paraméterdefiníciói a [munkafolyamat-definíció paraméterobjektumában](#workflow-definition-parameters)jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ más szolgáltatások `$connections` és rendszerek eléréséhez, ez az objektum tartalmaz egy objektumot, amely beállítja a kapcsolat idotartamán használható kapcsolatok értékeit. |
-| `accessControl` | Nem | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az IP-hozzáférés korlátozásához a kérelem-eseményindítókhoz vagy az előzménybemenetek és kimenetek futtatásához. További információ: [Biztonságos hozzáférés a logikai alkalmazásokhoz.](../logic-apps/logic-apps-securing-a-logic-app.md) |
+| `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor `Enabled` azt jelenti, hogy a logikai alkalmazás `Disabled` él, és azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a vázlat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
+| `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
+| `definition` | Igen | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban `parameters` az objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
+| `parameters` | Nem | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez `$connections` az objektum tartalmaz egy objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
+| `accessControl` | Nem | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-A logikai alkalmazásokra, az integrációs fiókokra és az integrációs fiók összetevőire vonatkozó sablonerőforrás-információkat a [Microsoft.Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)című témakörben talál.
+A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
 
 <a name="workflow-definition-parameters"></a>
 
 ## <a name="workflow-definition-and-parameters"></a>Munkafolyamat-definíció és paraméterek
 
-A logikai alkalmazás munkafolyamat-definíciója megjelenik `definition` az `properties` objektumban, amely a logikai alkalmazás erőforrás-definíciójában lévő objektumban jelenik meg. Ez `definition` az objektum ugyanaz az objektum, amely kódnézetben jelenik meg, és teljes körűleírása a [Munkafolyamat-definíció nyelve témakör Séma hivatkozásában](../logic-apps/logic-apps-workflow-definition-language.md) található. A munkafolyamat-definíció `parameters` tartalmaz egy belső deklarációs objektumot, ahol meghatározhatja az új paramétereket, vagy szerkesztheti a munkafolyamat-definíció által futásidőben használt értékek meglévő paramétereit. Ezután hivatkozhat ezekre a paraméterekre az eseményindítón vagy a munkafolyamatban lévő műveleteken belül. Ez az `parameters` objektum alapértelmezés szerint üres, kivéve, ha a logikai alkalmazás [felügyelt összekötőkön](../connectors/apis-list.md)keresztül kapcsolatot hoz létre más szolgáltatásokkal és rendszerekkel.
+A logikai alkalmazás munkafolyamat-definíciója megjelenik az `definition` objektumban, amely a `properties` logikai alkalmazás erőforrás-definíciójában megjelenő objektumban jelenik meg. Ez `definition` az objektum ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. A munkafolyamat-definíció egy belső `parameters` deklarációs objektumot tartalmaz, ahol megadhat új vagy szerkesztheti a meglévő paramétereket a munkafolyamat-definíció által futásidőben használt értékekhez. Ezeket a paramétereket a munkafolyamat triggerén vagy műveletein belül is hivatkozhat. Alapértelmezés szerint ez `parameters` az objektum üres, hacsak a logikai alkalmazás nem hoz létre kapcsolatokat más szolgáltatásokkal és rendszerekkel a [felügyelt összekötők](../connectors/apis-list.md)segítségével.
 
-A munkafolyamat-definíciós paraméterek értékeinek `parameters` beállításához használja azt az objektumot, amely kívül esik a munkafolyamat-definícióján, de még mindig a logikai alkalmazás erőforrás-definícióján *belül* van. *outside* Ebben a `parameters` külső objektumban hivatkozhat a korábban deklarált sablonparaméterekre, amelyek a telepítéskor értékeket fogadhatnak el egy paraméterfájlból.
+A munkafolyamat-definíciós paraméterek értékeinek megadásához `parameters` használja a munkafolyamat-definíción *kívüli* objektumot, *de még a* logikai alkalmazás erőforrás-definíciójában is. Ebben a külső `parameters` objektumban a korábban deklarált sablon paramétereit is felhasználhatja, amelyek a paraméter-fájlból való üzembe helyezéskor elfogadják az értékeket.
 
 > [!TIP]
 >
-> Ajánlott eljárásként ne hivatkozzon közvetlenül a sablon paraméterekre, amelyeket a telepítéskor kiértékelnek a munkafolyamat-definíción belülről. Ehelyett deklarálegy munkafolyamat-definíciós paramétert, amelyet `parameters` amunkafolyamat-definíción *kívül* eső, de a logikai alkalmazás erőforrás-definíciójában továbbra is *tartalmazó* objektumban állíthat be. További információ: [Hivatkozások a paraméterekre](#parameter-references).
+> Ajánlott eljárásként ne hivatkozzon közvetlenül a sablon paramétereit, amelyek kiértékelése az üzembe helyezéskor történik a munkafolyamat-definíción belül. Ehelyett deklaráljon egy munkafolyamat-definíciós paramétert, amelyet aztán beállíthat a `parameters` munkafolyamat-definíción *kívüli* objektumon, de *még a* logikai alkalmazás erőforrás-definíciójában is. További információ: [hivatkozások a paraméterekre](#parameter-references).
 
-Ez a szintaxis azt mutatja, hogy hol deklarálhatja a paramétereket mind a sablon, mind a munkafolyamat-definíció szintjén, valamint azt, hogy a sablon- és munkafolyamat-definíciós paraméterekre hivatkozva hol állíthatja be ezeket a paraméterértékeket:
+Ez a szintaxis azt mutatja be, hogy hol deklarálhatja a paramétereket a sablon és a munkafolyamat-definíció szintjén, valamint azt is, hogy hol állíthatók be a paraméterek értékei a sablonra és a munkafolyamat-definíciós paraméterekre való hivatkozással:
 
 ```json
 {
@@ -407,17 +407,17 @@ Ez a szintaxis azt mutatja, hogy hol deklarálhatja a paramétereket mind a sabl
 
 <a name="secure-workflow-definition-parmameters"></a>
 
-### <a name="secure-workflow-definition-parameters"></a>Munkafolyamat-definíciós paraméterek biztonságossá tétele
+### <a name="secure-workflow-definition-parameters"></a>Biztonságos munkafolyamat-definíciós paraméterek
 
-A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kulcsokat futásidőben kezelő munkafolyamat-definíciós `secureobject` paraméter esetén deklarálja vagy szerkeszti a paramétert a vagy a `securestring` paramétertípus használatához. Erre a paraméterre hivatkozhat a munkafolyamat-definíció egészében és azon belül. A sablon legfelső szintjén deklaráljon egy olyan paramétert, amely nek ugyanolyan típusú a központi telepítésekor ez az információ ja.
+Egy munkafolyamat-definíciós paraméter esetében, amely bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kódokat kezel futásidőben, deklarálja vagy szerkessze `securestring` a `secureobject` paramétert a vagy a paraméter típusának használatára. Ezt a paramétert a munkafolyamat-definíciójában és a teljes munkafolyamaton belül is hivatkozhat. A sablon legfelső szintjén deklaráljon egy olyan paramétert, amely ugyanolyan típusú, mint az üzembe helyezéskor szükséges adatok kezelése.
 
-A munkafolyamat-definícióparaméter értékének beállításához `parameters` használja azt az objektumot, amely kívül esik a munkafolyamat-definícióján, de még mindig a logikai alkalmazás erőforrás-definícióján *belül* van a sablonparaméterre való hivatkozáshoz. *outside* Végül adja át az értéket a sablon paraméter üzembe helyezéskor tárolja ezt az értéket az [Azure Key Vaultban,](../azure-resource-manager/templates/key-vault-parameter.md) és hivatkozzon a key vault a [paraméterek fájl,](#template-parameter-files) amely a sablon által használt üzembe helyezéskor.
+A munkafolyamat-definíciós paraméter értékének megadásához használja `parameters` a munkafolyamat-definíción *kívüli* objektumot, *de továbbra is a logikai* alkalmazás erőforrás-definíciójában a sablon paraméterre való hivatkozáshoz. Végül, ha az értéket át szeretné adni a sablon paraméterének az üzembe helyezéskor, tárolja az értéket a [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md) , és hivatkozzon a Key vaultra a sablon által a telepítéskor használt [Paraméterek fájlban](#template-parameter-files) .
 
-Ez a példasablon bemutatja, hogyan hajthatja végre ezeket a feladatokat, ha szükséges, biztonságos paramétereket határoz meg, hogy az azure-beli key vaultban tárolhassa értékeiket:
+Ez a példa azt mutatja be, hogyan végezheti el ezeket a feladatokat a biztonságos paraméterek meghatározásával, ha szükséges, hogy az értékeket a Azure Key Vaultban lehessen tárolni:
 
-* A hozzáférés hitelesítéséhez használt értékek biztonságos paramétereinek deklarálása.
-* Használja ezeket az értékeket mind a sablon, mind a munkafolyamat-definíció szintjén.
-* Adja meg ezeket az értékeket egy paraméterfájl használatával.
+* Deklaráljon biztonságos paramétereket a hozzáférés hitelesítéséhez használt értékekhez.
+* Ezeket az értékeket a sablon és a munkafolyamat-definíció szintjén is használhatja.
+* Adja meg ezeket az értékeket a parameters (paraméterek) fájl használatával.
 
 **Sablon**
 
@@ -514,7 +514,7 @@ Ez a példasablon bemutatja, hogyan hajthatja végre ezeket a feladatokat, ha sz
 }
 ```
 
-**Paraméterek fájl**
+**Parameters fájl**
 
 ```json
 {
@@ -548,27 +548,27 @@ Ez a példasablon bemutatja, hogyan hajthatja végre ezeket a feladatokat, ha sz
 
 <a name="best-practices-workflow-definition-parameters"></a>
 
-## <a name="best-practices---workflow-definition-parameters"></a>Gyakorlati tanácsok – munkafolyamat-definíciós paraméterek
+## <a name="best-practices---workflow-definition-parameters"></a>Ajánlott eljárások – munkafolyamat-definíciós paraméterek
 
-Annak érdekében, hogy a Logic App Designer megfelelően tudja megjeleníteni a munkafolyamat-definícióparamétereit, kövesse az alábbi gyakorlati tanácsokat:
+Az alábbi ajánlott eljárásokkal gondoskodhat arról, hogy a Logic app Designer helyesen tudja megjeleníteni a munkafolyamat-definíciós paramétereket:
 
-* Adja `defaultValue` meg az attribútumot, amely üres értékeket adhat meg az összes paraméterhez, kivéve azokat az értékeket, amelyek bizalmasak vagy biztonságosak.
+* Adja meg `defaultValue` az attribútumot, amely üres értékeket adhat meg az összes paraméterhez, kivéve a bizalmas vagy a védeni kívánt értékeket.
 
-* Mindig használjon biztonságos paramétereket a felhasználónevekhez, jelszavakhoz és titkos kulcsokhoz. A bizalmas paraméterértékek elrejtéséhez vagy védelméhez kövesse az alábbi témakörökben található útmutatást:
+* Mindig használjon biztonságos paramétereket a felhasználónevek, jelszavak és titkos kódok számára. A bizalmas paraméterek értékeinek elrejtéséhez vagy kivédéséhez kövesse az alábbi témakörökben található útmutatást:
 
-  * [Biztonsági javaslatok a műveletparaméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)
+  * [Biztonsági javaslatok a műveleti paraméterekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-  * [Biztonsági javaslatok a munkafolyamat-definíciók paramétereihez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
+  * [A paraméterek biztonsági javaslatai a munkafolyamat-definíciókban](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Biztonságos paraméterértékek átadhatók az Azure Key Vault segítségével](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-A munkafolyamat-definíciós paraméterekről további információt a [Paraméterek - Munkafolyamat-definíció nyelve című témakörben talál.](../logic-apps/logic-apps-workflow-definition-language.md#parameters)
+A munkafolyamat-definíciós paraméterekkel kapcsolatos további információkért lásd: [Paraméterek – munkafolyamat-definíciós nyelv](../logic-apps/logic-apps-workflow-definition-language.md#parameters).
 
 <a name="connection-resource-definitions"></a>
 
-## <a name="connection-resource-definitions"></a>Kapcsolati erőforrás-definíciók
+## <a name="connection-resource-definitions"></a>A kapcsolatok erőforrás-definíciói
 
-Amikor a logikai alkalmazás más szolgáltatásokkal és rendszerekkel létesít és `resources` használ [kapcsolatokat felügyelt összekötők](../connectors/apis-list.md)használatával, a sablon objektuma tartalmazza a kapcsolatok erőforrás-definícióit.
+Ha a logikai alkalmazás [felügyelt összekötők](../connectors/apis-list.md)használatával hoz létre és használ kapcsolatokat más szolgáltatásokhoz és rendszerekhez, `resources` a sablon objektuma tartalmazza a kapcsolatok erőforrás-definícióit.
 
 ```json
 {
@@ -593,9 +593,9 @@ Amikor a logikai alkalmazás más szolgáltatásokkal és rendszerekkel létesí
 }
 ```
 
-A kapcsolati erőforrás-definíciók a sablon felső szintű paramétereire hivatkoznak az értékeikhez, ami azt jelenti, hogy ezeket az értékeket paraméterfájl használatával biztosíthatja a központi telepítéskor. Győződjön meg arról, hogy a kapcsolatok ugyanazt az Azure-erőforráscsoportot és helyet használják, mint a logikai alkalmazás.
+A kapcsolódási erőforrás-definíciók a sablon legfelső szintű paramétereit használják az értékekhez, ami azt jelenti, hogy ezeket az értékeket egy paraméter-fájl használatával adhatja meg a központi telepítésben. Győződjön meg arról, hogy a kapcsolatok ugyanazt az Azure-erőforráscsoportot és-helyet használják, mint a logikai alkalmazás.
 
-Íme egy példa az Office 365 Outlook-kapcsolat erőforrás-definíciójára és a megfelelő sablonparaméterekre:
+Az alábbi példa egy Office 365 Outlook-kapcsolat és a hozzá tartozó sablon paramétereinek egy példáját határozza meg:
 
 ```json
 {
@@ -648,15 +648,15 @@ A kapcsolati erőforrás-definíciók a sablon felső szintű paramétereire hiv
 }
 ```
 
-A logikai alkalmazás erőforrás-definíciója a következő módokon is működik a kapcsolati erőforrás-definíciókkal:
+A logikai alkalmazás erőforrás-definíciója a következő módokon is együttműködik a kapcsolati erőforrás-definíciókkal:
 
-* A munkafolyamat-definíción `parameters` belül az `$connections` objektum deklarálja a kapcsolati értékek logikai alkalmazás futásidejű használata paraméterét. A kapcsolatot létrehozó eseményindító vagy művelet a megfelelő értékeket használja, amelyek áthaladnak ezen a `$connections` paraméteren.
+* A munkafolyamat-definícióban az `parameters` objektum deklarál egy `$connections` paramétert a Logic app Runtime-ban használandó kapcsolati értékekhez. Emellett a kapcsolat létrehozásához használt trigger vagy művelet a `$connections` paraméteren keresztül továbbított megfelelő értékeket használja.
 
-* A munkafolyamat-definíción *kívül,* de még mindig `parameters` a logikai alkalmazás erőforrás-definícióján `$connections` *belül,* egy másik objektum a megfelelő sablonparaméterekre hivatkozva állítja be a paraméter futásidőben használandó értékeit. Ezek az értékek sablonkifejezéseket használnak olyan erőforrásokhivatkozására, amelyek biztonságosan tárolják a kapcsolatok metaadatait a logikai alkalmazásban.
+* A munkafolyamat-definíción *kívül* , de továbbra is a logikai alkalmazás erőforrás `parameters` -definícióján *belül* , egy másik objektum állítja be `$connections` a futásidőben használandó értékeket a paraméterhez a megfelelő sablon paramétereinek hivatkozásával. Ezek az értékek a sablon kifejezéseit használják a logikai alkalmazásban található kapcsolatok metaadatait biztonságosan tároló erőforrásokra.
 
-  A metaadatok közé tartozhatnak például a kapcsolati karakterláncok és a hozzáférési jogkivonatok, amelyeket az [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md)tárolhat. Ha ezeket az értékeket a sablon paraméterei, hivatkozzon, hogy a key vault a [paraméterek fájlban,](#template-parameter-files) amely a sablon által használt központi telepítés. A paraméterek hivatkozása közötti különbségekről a témakör későbbi, [a paraméterekre mutató hivatkozások](#parameter-references) című témakörben olvashat bővebben.
+  A metaadatok tartalmazhatnak például kapcsolati karakterláncokat és hozzáférési jogkivonatokat, amelyeket [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)tárolhat. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik. A hivatkozó paraméterekkel kapcsolatos különbségekről a témakör későbbi, a [paraméterekre mutató hivatkozások](#parameter-references) című részében olvashat bővebben.
 
-  Amikor megnyitja a logikai alkalmazás munkafolyamat-definícióját kódnézetben az `$connections` Azure Portalon vagy a Visual Studio-n keresztül, az objektum a munkafolyamat-definíción kívül, de ugyanazon a szinten jelenik meg. Ez a rendezés kódnézetben megkönnyíti a hivatkozást a munkafolyamat-definíció manuális frissítésekénél:
+  Ha a logikai alkalmazás munkafolyamat-definícióját kód nézetben nyitja meg a Azure Portal vagy a Visual Studio használatával `$connections` , az objektum a munkafolyamat-definíción kívül, de ugyanazon a szinten jelenik meg. A kód nézetben megjelenő rendezés megkönnyíti ezeket a paramétereket a munkafolyamat-definíció manuális frissítésekor:
 
   ```json
   {
@@ -665,9 +665,9 @@ A logikai alkalmazás erőforrás-definíciója a következő módokon is műkö
   }
   ```
 
-* A logikai alkalmazás erőforrás-definíciója rendelkezik egy `dependsOn` objektummal, amely meghatározza a logikai alkalmazás által használt kapcsolatok függőségeit.
+* A logikai alkalmazás erőforrás-definíciója egy `dependsOn` olyan objektummal rendelkezik, amely meghatározza a logikai alkalmazás által használt kapcsolatok függőségeit.
 
-Minden létrehozott kapcsolat egyedi névvel rendelkezik az Azure-ban. Ha több kapcsolatot hoz létre ugyanahhoz a szolgáltatáshoz vagy rendszerhez, a rendszer minden kapcsolatnevét egy `office365`számmal fűzi hozzá, amely minden létrehozott új kapcsolathoz , például a , `office365-1`és így tovább növekszik.
+A létrehozott kapcsolatok egyedi névvel rendelkeznek az Azure-ban. Ha ugyanahhoz a szolgáltatáshoz vagy rendszerhez több kapcsolatot hoz létre, az egyes kapcsolatok neve egy számmal lesz hozzáfűzve, amely minden létrehozott új kapcsolattal növekszik, például `office365` `office365-1`:, stb.
 
 Ez a példa a logikai alkalmazás erőforrás-definíciója és az Office 365 Outlook kapcsolati erőforrás-definíciója közötti interakciókat mutatja be:
 
@@ -744,13 +744,13 @@ Ez a példa a logikai alkalmazás erőforrás-definíciója és az Office 365 Ou
 
 <a name="secure-connection-parameters"></a>
 
-### <a name="secure-connection-parameters"></a>Biztonságos kapcsolati paraméterek
+### <a name="secure-connection-parameters"></a>Biztonságos kapcsolatok paramétereinek megadása
 
-A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kulcsokat kezelő kapcsolatparaméter esetén a kapcsolat erőforrás-definíciója tartalmaz egy `parameterValues` objektumot, amely név-érték pár formátumban határozza meg ezeket az értékeket. Az adatok elrejtéséhez deklarálhatja vagy szerkesztheti ezeknek `securestring` `secureobject` az értékeknek a sablonparamétereit a vagy a paramétertípusok használatával. Ezeket az adatokat ezután tárolhatja az [Azure Key Vaultban.](../azure-resource-manager/templates/key-vault-parameter.md) Ha ezeket az értékeket a sablon paraméterei, hivatkozzon, hogy a key vault a [paraméterek fájlban,](#template-parameter-files) amely a sablon által használt központi telepítés.
+A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kódokat kezelő kapcsolati paraméter esetén a kapcsolat erőforrás-definíciója `parameterValues` egy olyan objektumot tartalmaz, amely név-érték párok formátumban adja meg ezeket az értékeket. Ezen információk elrejtéséhez a (z) és `securestring` `secureobject` a (z) paraméterek használatával deklarálhatja vagy szerkesztheti a sablon paramétereit ezekhez az értékekhez. Ezt az információt Ezután [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)tárolhatja. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik.
 
-Íme egy példa, amely megadja a fiók nevét és a hozzáférési kulcsot egy Azure Blob Storage-kapcsolathoz:
+Az alábbi példa egy Azure Blob Storage-kapcsolathoz tartozó fiók nevét és elérési kulcsát adja meg:
 
-**Paraméterek fájl**
+**Parameters fájl**
 
 ```json
 {
@@ -910,9 +910,9 @@ A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kulcsokat
 
 ### <a name="authenticate-connections"></a>Kapcsolatok hitelesítése
 
-Üzembe helyezés után a logikai alkalmazás működik, végpontok között érvényes paraméterekkel. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-scenarios.md)azonban engedélyeznie kell az OAuth-kapcsolatokat. További információt az [OAuth-kapcsolatok engedélyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)című témakörben talál.
+Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-scenarios.md)azonban továbbra is engedélyezni kell minden OAuth-kapcsolatot, hogy érvényes hozzáférési jogkivonatokat állítson elő. További információ: OAuth- [kapcsolatok engedélyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
 
-Egyes kapcsolatok támogatják az Azure Active Directory (Azure AD) [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) használatával az [Azure AD-ben regisztrált](../active-directory/develop/quickstart-register-app.md)logikai alkalmazások kapcsolatainak engedélyezéséhez. Ez az Azure Data Lake-kapcsolaterőforrás-definíció például bemutatja, hogyan hivatkozzon az egyszerű szolgáltatás adatait kezelő sablonparaméterekre, és hogyan deklarálja a sablon ezeket a paramétereket:
+Néhány kapcsolat támogatja az [Azure ad-ben regisztrált](../active-directory/develop/quickstart-register-app.md)logikai alkalmazások kapcsolatainak engedélyezését Azure Active Directory (Azure ad) [egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md) használatával. Ez a Azure Data Lake kapcsolati erőforrás-definíció például azt mutatja be, hogyan lehet hivatkozni az egyszerű szolgáltatásnév adatait kezelő sablon-paraméterekre, valamint arról, hogy a sablon hogyan deklarálja ezeket a paramétereket:
 
 **Kapcsolati erőforrás definíciója**
 
@@ -940,15 +940,15 @@ Egyes kapcsolatok támogatják az Azure Active Directory (Azure AD) [egyszerű s
 
 | Attribútum | Leírás |
 |-----------|-------------|
-| `token:clientId` | A szolgáltatásnévhez társított alkalmazás vagy ügyfélazonosító |
-| `token:clientSecret` | Az egyszerű szolgáltatáshoz társított kulcsérték |
-| `token:TenantId` | Az Azure AD-bérlő címtárazonosítója |
-| `token:grantType` | A kért támogatás típusa, `client_credentials`amelynek meg kell lennie. További információt a [Microsoft identity platform és az OAuth 2.0 ügyfélhitelesítő adatok folyamatában talál.](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) |
+| `token:clientId` | Az egyszerű szolgáltatáshoz társított alkalmazás vagy ügyfél-azonosító |
+| `token:clientSecret` | Az egyszerű szolgáltatáshoz társított kulcs értéke |
+| `token:TenantId` | Az Azure AD-bérlő címtár-azonosítója |
+| `token:grantType` | A kért engedélyezési típus, amelynek a következőnek kell lennie `client_credentials`:. További információ: [Microsoft Identity platform és a OAuth 2,0 Client hitelesítő adatok folyamata](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). |
 |||
 
-**Sablonparaméter-definíciói**
+**Sablon paraméterének definíciói**
 
-A sablon legfelső szintű `parameters` objektuma deklarálja a példakapcsolat paramétereit:
+A sablon legfelső szintű `parameters` objektuma deklarálja ezeket a paramétereket a példában szereplő kapcsolatban:
 
 ```json
 {
@@ -1003,41 +1003,41 @@ A sablon legfelső szintű `parameters` objektuma deklarálja a példakapcsolat 
 }
 ```
 
-A szolgáltatástagok kal való együttműködésről az alábbi témakörökben olvashat bővebben:
+Az egyszerű szolgáltatásokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [Egyszerű szolgáltatás létrehozása az Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Egyszerű Azure-szolgáltatás létrehozása az Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
-* [Egyszerű szolgáltatás létrehozása tanúsítvánnyal az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Azure-szolgáltatásnév létrehozása Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Egyszerű szolgáltatás létrehozása tanúsítvánnyal Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>
 
-## <a name="references-to-parameters"></a>Hivatkozások paraméterekre
+## <a name="references-to-parameters"></a>Paraméterekre mutató hivatkozások
 
-A sablonparaméterekre való hivatkozáshoz sablonkifejezéseket használhat [sablonfüggvényekkel,](../azure-resource-manager/templates/template-functions.md)amelyeket a rendszer a telepítéskor kiértékel. A sablonkifejezések szögletes zárójeleket használnak (**[]**):
+A sablon paramétereinek hivatkozásához használhatja a Template [functions](../azure-resource-manager/templates/template-functions.md)kifejezést a telepítéskor kiértékelt sablon-kifejezésekkel. A sablon kifejezései szögletes zárójeleket használnak (**[]**):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-A munkafolyamat-definíciós paraméterekre való hivatkozáshoz [munkafolyamat-definíciós nyelvi kifejezéseket és függvényeket](../logic-apps/workflow-definition-language-functions-reference.md)használhat, amelyeket a program futásidőben értékel ki. Előfordulhat, hogy egyes sablonfüggvények és munkafolyamat-definíciós függvények neve megegyezik. A munkafolyamat-definíciós kifejezések az "at" szimbólummal (**@**):
+A munkafolyamat-definíciós paraméterekre való hivatkozáshoz a [munkafolyamat-definíciós nyelv kifejezéseit és függvényeit](../logic-apps/workflow-definition-language-functions-reference.md)használhatja, amelyek kiértékelése futásidőben történik. Észreveheti, hogy a Template függvények és a munkafolyamat-definíciós függvények neve azonos. A munkafolyamat-definíciós kifejezések a "at" szimbólummal kezdődnek (**@**):
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 
-Sablonparaméter-értékeket adhat át a munkafolyamat-definíciónak a logikai alkalmazás futásidőben való használatához. Kerülje azonban a sablonparaméterek, -kifejezések és -szintaxis használatát a munkafolyamat-definícióban, mert a Logic App Designer nem támogatja a sablonelemeket. A sablon szintaxisa és kifejezései bonyolíthatják a kódot a kifejezések kiértékelésekorban fennálló különbségek miatt.
+A sablon paramétereinek értékeit átadhatja a logikai alkalmazás futtatásához használt munkafolyamat-definícióba. Ne használja azonban a sablon paramétereit, kifejezéseit és szintaxisát a munkafolyamat-definícióban, mert a Logic app Designer nem támogatja a sablon elemeit. Emellett a sablon szintaxisa és kifejezései a kifejezések kiértékelése során felhasználható különbségek miatt megnehezítik a kódokat.
 
-Ehelyett kövesse ezeket az általános lépéseket a futásidőben használandó munkafolyamat-definíciós paraméterek deklarálásához és hivatkozásához, deklaráljon és hivatkozzon a központi telepítéssorán használandó sablonparaméterekre, és adja meg azokat az értékeket, amelyeket a telepítéssorán paraméterfájl használatával továbbít. A részletes részleteket a [témakör korábbi, a Munkafolyamat-definíció és -paraméterek](#workflow-definition-parameters) című szakaszában találja.
+Ehelyett kövesse az alábbi általános lépéseket a munkafolyamat-definíciós paraméterek futtatásához és a futásidőben való használatra való hivatkozáshoz, deklarálja és hivatkozzon a telepítéskor használni kívánt sablon-paraméterekre, és adja meg a központi telepítéshez a paraméter-fájl használatával átadandó értékeket. A részletekért tekintse meg a jelen témakör korábbi, [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters) szakaszát.
 
-1. Hozza létre a sablont, és deklarálja a központi telepítéskor elfogadandó és használandó értékek sablonparamétereit.
+1. Hozza létre a sablont, és deklarálja a sablon paramétereit az elfogadáshoz és a használathoz a telepítéskor használandó értékekhez.
 
-1. A munkafolyamat-definícióban deklarálja az elfogadandó és futásidőben használandó értékek paramétereit. Ezután hivatkozhat ezekre az értékekre a munkafolyamat-definíció ban és azon belül.
+1. A munkafolyamat-definícióban deklarálja az elfogadásra és a futásidőben használni kívánt értékek paramétereit. Ezeket az értékeket az egész és a munkafolyamat-definícióban is hivatkozhatjuk.
 
-1. A `parameters` munkafolyamat-definíción *kívül,* de a logikai alkalmazás erőforrás-definícióján *belül* lévő objektumban állítsa be a munkafolyamat-definíciós paraméterek értékeit a megfelelő sablonparaméterekre hivatkozva. Így sablonparaméter-értékeket adhat át a munkafolyamat-definícióparamétereinek.
+1. A `parameters` munkafolyamat-definíción *kívüli* , *de még a* logikai alkalmazás erőforrás-definíciójában lévő objektumban állítsa be a munkafolyamat-definíciós paraméterek értékeit a megfelelő sablon paramétereinek hivatkozásával. Ily módon átadhatja a sablon paramétereinek értékeit a munkafolyamat-definíciós paraméterekbe.
 
-1. A paraméterfájlban adja meg a sablon központi telepítéskor használandó értékeit.
+1. A parameters (paraméterek) fájlban adja meg a sablonnak az üzembe helyezéskor használandó értékeit.
 
 <a name="full-example-template"></a>
 
-## <a name="full-example-template"></a>Teljes példasablon
+## <a name="full-example-template"></a>Teljes példa sablonra
 
-Az alábbiakban a témakör példái által használt paraméterezett mintasablon látható:
+Itt látható a témakörben ismertetett paraméteres minta sablon, amelyet a következő példa használ:
 
 ```json
 {

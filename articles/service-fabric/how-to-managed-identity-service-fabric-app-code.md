@@ -1,48 +1,48 @@
 ---
 title: Felügyelt identitás használata alkalmazással
-description: Felügyelt identitások használata az Azure Service Fabric alkalmazáskódjában az Azure Services eléréséhez.
+description: Felügyelt identitások használata az Azure Service Fabric alkalmazás kódjában az Azure-szolgáltatások eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461565"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>A Service Fabric-alkalmazások felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
-A Service Fabric-alkalmazások kihasználhatják a felügyelt identitásokat az Azure Active Directory-alapú hitelesítést támogató azure-erőforrások eléréséhez. Az alkalmazások beszerezhetnek egy [hozzáférési jogkivonatot,](../active-directory/develop/developer-glossary.md#access-token) amely az identitását képviseli, amely rendszer- vagy felhasználó-hozzárendelt lehet, és "tulajdonosi" jogkivonatként használhatják egy másik szolgáltatás , más néven [védett erőforrás-kiszolgáló](../active-directory/develop/developer-glossary.md#resource-server)hitelesítéséhez. A jogkivonat a Service Fabric-alkalmazáshoz rendelt identitást jelöli, és csak az azure-erőforrásoknak (beleértve az SF-alkalmazásokat is) lesz kiadva, amelyek megosztják az identitást. A [felügyelt identitások részletes](../active-directory/managed-identities-azure-resources/overview.md) leírását, valamint a rendszerhez rendelt és a felhasználó által hozzárendelt identitások közötti különbséget a felügyelt identitások részletes leírását olvassa el. A cikkben egy felügyelt identitás-alapú Service Fabric-alkalmazást fogunk az [ügyfélalkalmazásként](../active-directory/develop/developer-glossary.md#client-application) hivatkozni.
-
-> [!IMPORTANT]
-> A felügyelt identitás egy Azure-erőforrás és egy egyszerű szolgáltatás közötti társítást jelöli az erőforrást tartalmazó előfizetéshez társított megfelelő Azure AD-bérlőben. Mint ilyen, a Service Fabric környezetében felügyelt identitások csak az Azure-erőforrásokként üzembe helyezett alkalmazások támogatottak. 
+Service Fabric alkalmazások a felügyelt identitásokat használhatják a Azure Active Directory-alapú hitelesítést támogató egyéb Azure-erőforrások eléréséhez. Egy alkalmazás olyan [hozzáférési jogkivonatot](../active-directory/develop/developer-glossary.md#access-token) szerezhet be, amely az identitását jelképezi, amely lehet rendszer által hozzárendelt vagy felhasználó által hozzárendelt, és "tulajdonos" tokenként használva hitelesíti magát egy másik szolgáltatásnak – más néven [védett erőforrás-kiszolgálónak](../active-directory/develop/developer-glossary.md#resource-server)–. A jogkivonat a Service Fabric alkalmazáshoz rendelt identitást jelöli, és csak az adott identitást használó Azure-erőforrások (például SF-alkalmazások) számára lesz kibocsátva. Tekintse át a felügyelt [identitások áttekintő](../active-directory/managed-identities-azure-resources/overview.md) dokumentációját a felügyelt identitások részletes leírását, valamint a rendszer által hozzárendelt és a felhasználó által hozzárendelt identitások megkülönböztetését. Ebben [a cikkben](../active-directory/develop/developer-glossary.md#client-application) a felügyelt identitás-kompatibilis Service Fabric alkalmazásra fogunk hivatkozni.
 
 > [!IMPORTANT]
-> A Service Fabric-alkalmazás felügyelt identitásának használata előtt az ügyfélalkalmazásnak hozzáférést kell biztosítani a védett erőforráshoz. Tekintse meg az [Azure-szolgáltatások listáját, amelyek támogatják az Azure AD-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) a támogatás ellenőrzéséhez, majd a megfelelő szolgáltatás dokumentációját a szükséges erőforrásokhoz való identitás-hozzáférés engedélyezéséhez szükséges konkrét lépésekért. 
+> A felügyelt identitás az erőforrást tartalmazó előfizetéshez társított Azure AD-bérlőben az Azure-erőforrás és egy egyszerű szolgáltatásnév közötti társítást jelöli. A Service Fabric kontextusában a felügyelt identitások csak az Azure-erőforrásként üzembe helyezett alkalmazások esetében támogatottak. 
+
+> [!IMPORTANT]
+> A Service Fabric alkalmazás felügyelt identitásának használata előtt az ügyfélalkalmazás számára hozzáférést kell biztosítani a védett erőforráshoz. Tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listáját a támogatás megkereséséhez, majd a megfelelő szolgáltatás dokumentációjában, amely alapján az identitás hozzáférést biztosít a fontos erőforrásokhoz. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Hozzáférési jogkivonat beszerzése REST API használatával
-A felügyelt identitásra engedélyezett fürtökben a Service Fabric futásidejű egy localhost-végpontot tesz elérhetővé, amelyet az alkalmazások hozzáférési jogkivonatok beszerzésére használhatnak. A végpont a fürt minden csomópontján elérhető, és az adott csomópont összes entitása számára elérhető. A jogosult hívók hozzáférési jogkivonatokat kaphatnak a végpont hívásával és egy hitelesítési kód bemutatásával; a kódot a Service Fabric futásideje hozza létre minden egyes egyes egyes szolgáltatáskód-csomag aktiválásához, és az adott szolgáltatáskódcsomagot üzemeltető folyamat élettartamához van kötve.
+A felügyelt identitáshoz engedélyezett fürtökön a Service Fabric futtatókörnyezet elérhetővé teszi a localhost végpontot, melyet az alkalmazások használhatnak a hozzáférési tokenek beszerzéséhez. A végpont a fürt minden csomópontján elérhető, és elérhető az adott csomóponton lévő összes entitás számára. A jogosult hívók a végpont meghívásával és egy hitelesítési kód bemutatásával kaphatnak hozzáférési jogkivonatokat. a kódot a Service Fabric futtatókörnyezet hozza létre az egyes különböző szervizcsomag-csomagok aktiválásakor, és a szolgáltatási kód csomagjait futtató folyamat élettartamára van kötve.
 
-Pontosabban a felügyelt identitás-kompatibilis Service Fabric-szolgáltatás környezete a következő változókkal lesz elmezve:
-- 'IDENTITY_ENDPOINT': a szolgáltatás felügyelt identitásának megfelelő localhost végpont
-- 'IDENTITY_HEADER': a szolgáltatást az aktuális csomóponton jelölő egyedi hitelesítési kód
-- 'IDENTITY_SERVER_THUMBPRINT': A szolgáltatásháló felügyelt identitáskiszolgálójának ujjlenyomata
+A felügyelt identitás-kompatibilis Service Fabric szolgáltatás környezetét a következő változók szerint kell kiszámítani:
+- "IDENTITY_ENDPOINT": a szolgáltatás felügyelt identitásának megfelelő localhost végpont
+- "IDENTITY_HEADER": egy egyedi hitelesítési kód, amely az aktuális csomóponton lévő szolgáltatást jelképezi
+- "IDENTITY_SERVER_THUMBPRINT": a Service Fabric felügyelt identitás-kiszolgáló ujjlenyomata
 
 > [!IMPORTANT]
-> Az alkalmazáskódnak bizalmas adatként kell tekintenie a "IDENTITY_HEADER" környezeti változó értékét – nem szabad naplózni vagy más módon terjeszteni. A hitelesítési kód nem rendelkezik értékkel a helyi csomóponton kívül, vagy a szolgáltatás tői a szolgáltatás által üzemeltetett folyamat leállítása után, de a Service Fabric szolgáltatás identitását képviseli, és így ugyanolyan óvintézkedéseket kell kezelni, mint maga a hozzáférési jogkivonat.
+> Az alkalmazás kódjának figyelembe kell vennie a "IDENTITY_HEADER" környezeti változó értékét bizalmas adatokként – nem szabad naplózni vagy egyéb módon terjeszteni. A hitelesítési kód nem rendelkezik a helyi csomóponton kívüli értékkel, vagy a szolgáltatást futtató folyamat megszakadt, de a Service Fabric szolgáltatás identitását jelöli, ezért a hozzáférési jogkivonattal azonos óvintézkedésekkel kell kezelni.
 
-Jogkivonat beszerzéséhez az ügyfél a következő lépéseket hajtja végre:
-- URI-t hoz, ha összefűzi a felügyelt identitásvégpontot (IDENTITY_ENDPOINT érték) az API-verzióval és a jogkivonathoz szükséges erőforrással (közönséggel).
-- get http(s) kérelmet hoz létre a megadott URI-hoz
-- hozzáadja a megfelelő kiszolgálói tanúsítvány-ellenőrzési logikát
-- hozzáadja a hitelesítési kódot (IDENTITY_HEADER értéket) fejlécként a kérelemhez
-- benyújtja a kérelmet
+A jogkivonat beszerzéséhez az ügyfél a következő lépéseket hajtja végre:
+- egy URI-t képez a felügyelt identitás végpontjának (IDENTITY_ENDPOINT érték) összefűzésével a tokenhez szükséges API-verzióval és erőforrással (célközönséggel).
+- http (s) kérelem létrehozása a megadott URI-hoz
+- a megfelelő kiszolgálói tanúsítvány érvényesítési logikájának beadása
+- hozzáadja a hitelesítési kódot (IDENTITY_HEADER értéket) a kérelem fejlécéhez.
+- elküldi a kérést
 
-A sikeres válasz egy JSON-hasznos adatot tartalmaz, amely az eredményül kapott hozzáférési jogkivonatot, valamint az azt leíró metaadatokat tartalmaz. A sikertelen válasz a hiba magyarázatát is tartalmazza. A hibakezelésről az alábbiakban olvashat.
+A sikeres válasz tartalmazni fog egy JSON-adattartalmat, amely az eredményül kapott hozzáférési jogkivonatot, valamint az azt leíró metaadatokat tartalmazza. A sikertelen válasz a hiba magyarázatát is tartalmazni fogja. A hibák kezelésével kapcsolatos további részletekért lásd alább.
 
-A hozzáférési jogkivonatokat a Service Fabric különböző szinteken (csomópont, fürt, erőforrás-szolgáltató szolgáltatás) gyorsítótárazja, így a sikeres válasz nem feltétlenül jelenti azt, hogy a jogkivonat közvetlenül a felhasználói alkalmazás kérésére lett kiadva. A jogkivonatok élettartamuknál rövidebb ideig lesznek gyorsítótárazva, így egy alkalmazás garantáltan kap egy érvényes jogkivonatot. Javasoljuk, hogy az alkalmazáskód gyorsítótárazza magát minden általa beszerzett hozzáférési jogkivonatot; a gyorsítótárazási kulcsnak tartalmaznia kell (a közönség származtatását). 
+A hozzáférési jogkivonatokat a rendszer a különböző szinteken (csomópont, fürt, erőforrás-szolgáltatói szolgáltatás) Service Fabric gyorsítótárazza, így a sikeres válasz nem feltétlenül jelenti azt, hogy a tokent közvetlenül a felhasználói alkalmazás kérelmére adta ki. A rendszer gyorsítótárazza a tokeneket, hogy az élettartamuk kevesebb legyen, és hogy egy alkalmazás érvényes jogkivonatot kapjon. Azt javasoljuk, hogy az alkalmazás kódja gyorsítótárazza az általa beszerzett hozzáférési jogkivonatokat. a gyorsítótárazási kulcsnak tartalmaznia kell a célközönséget (a). 
 
-Mintakérelem:
+Példa a kérelemre:
 ```http
 GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
@@ -50,14 +50,14 @@ ahol:
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `GET` | A HTTP-művelet, amely azt jelzi, hogy adatokat szeretne beolvasni a végpontból. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
-| `https://localhost:2377/metadata/identity/oauth2/token` | A Service Fabric-alkalmazások felügyelt identitásvégpontja, amelyet a IDENTITY_ENDPOINT környezeti változó n keresztül biztosít. |
-| `api-version` | Egy lekérdezési karakterlánc-paraméter, amely a felügyelt identitástoken-szolgáltatás API-verzióját adja meg; jelenleg az egyetlen `2019-07-01-preview`elfogadott érték a , és változhat. |
-| `resource` | A lekérdezési karakterlánc paraméter, amely a célerőforrás alkalmazásazonosítóuri-ját jelzi. Ez a kiadott jogkivonat `aud` (közönség) jogcímének lesz a megfelelő jogcím. Ebben a példában egy jogkivonatot kér az Azure Key\/Vault eléréséhez, amelynek alkalmazásazonosító URI-ja https: /vault.azure.net/. |
-| `Secret` | Egy HTTP-kérelem fejléce mező, amelyet a Service Fabric felügyelt identitásjogkivonat-szolgáltatás a Service Fabric-szolgáltatások a hívó hitelesítéséhez szükséges. Ezt az értéket az SF futásidejű IDENTITY_HEADER környezeti változón keresztül biztosítja. |
+| `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
+| `https://localhost:2377/metadata/identity/oauth2/token` | A felügyelt identitás végpontja Service Fabric alkalmazásokhoz, amelyeket a IDENTITY_ENDPOINT környezeti változón keresztül adnak meg. |
+| `api-version` | Egy lekérdezési karakterlánc paraméter, amely megadja a felügyelt Identity token szolgáltatás API-verzióját; jelenleg az egyetlen elfogadott érték a `2019-07-01-preview`, és a változás változhat. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a kiállított jogkivonat `aud` (célközönség) jogcímeként jelenik meg. Ez a példa jogkivonatot kér a Azure Key Vault eléréséhez, amelynek az alkalmazás-azonosító\/URI-ja https:/Vault.Azure.net/. |
+| `Secret` | Egy HTTP-kérelem fejlécének mezője, amelyet a Service Fabric felügyelt Identity jogkivonat szolgáltatás igényel Service Fabric-szolgáltatásokhoz a hívó hitelesítéséhez. Ezt az értéket az SF Runtime IDENTITY_HEADER környezeti változón keresztül kapja meg. |
 
 
-Mintaválasz:
+Példa a válaszra:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -72,14 +72,14 @@ ahol:
 
 | Elem | Leírás |
 | ------- | ----------- |
-| `token_type` | A token típusa; ebben az esetben a "tulajdonos" hozzáférési jogkivonat, ami azt jelenti, hogy a jogkivonat előadója ("tulajdonos") a jogkivonat tervezett tárgya. |
-| `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívása kor a `Authorization` jogkivonat "tulajdonosi" jogkivonatként van beágyazva a kérelem fejlécmezőjébe, lehetővé téve az API számára a hívó hitelesítését. | 
-| `expires_on` | A hozzáférési jogkivonat lejárati időbélyege; az "1970-01-01T0:0:0Z UTC" között eltelt másodpercek számaként jelenik meg, és megfelel a jogkivonat jogcímének. `exp` Ebben az esetben a token 2019-08-08T06:10:11+00:00 (Az RFC 3339-ben) lejár|
-| `resource` | Az az erőforrás, amelyhez a hozzáférési `resource` jogkivonatot kiadták, a kérelem lekérdezési karakterlánc-paraméterén keresztül megadott; megfelel a token "aud" követelésének. |
+| `token_type` | A jogkivonat típusa; Ebben az esetben egy "tulajdonos" hozzáférési token, ami azt jelenti, hogy a token tulajdonosa ("birtokosa") a jogkivonat tárgya. |
+| `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívásakor a jogkivonat a `Authorization` kérelem fejléc mezőjébe ágyazva "tulajdonos" tokenként van beágyazva, ami lehetővé teszi, hogy az API hitelesítse a hívót. | 
+| `expires_on` | A hozzáférési token lejárati időbélyegzője; a (z) "1970-01-01T0:0: 0Z UTC" számú másodpercet jelöli, és megfelel `exp` a jogkivonat jogcímenek. Ebben az esetben a jogkivonat a 2019-08-08T06:10:11 + 00:00 (az RFC 3339-ben) lejár|
+| `resource` | Az erőforrás, amelyhez a hozzáférési jogkivonat ki lett állítva, a kérelem `resource` lekérdezési karakterlánc paraméterén keresztül lett megadva; megfelel a jogkivonat "AUD" jogcímének. |
 
 
-## <a name="acquiring-an-access-token-using-c"></a>Hozzáférési jogkivonat beszerzése C használatával #
-A fenti lesz, a C #:
+## <a name="acquiring-an-access-token-using-c"></a>Hozzáférési jogkivonat beszerzése a C használatával #
+A fentiek a C# nyelvben:
 
 ```C#
 namespace Azure.ServiceFabric.ManagedIdentity.Samples
@@ -172,8 +172,8 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
     } // class AccessTokenAcquirer
 } // namespace Azure.ServiceFabric.ManagedIdentity.Samples
 ```
-## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>A Key Vault elérése egy Service Fabric-alkalmazásból felügyelt identitás használatával
-Ez a minta a fentiekből épül fel a key vaultban felügyelt identitás használatával tárolt titkos kulcs elérésének bemutatására.
+## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Key Vault elérése Service Fabric alkalmazásban felügyelt identitás használatával
+Ez a minta a fentiekben a felügyelt identitás használatával mutatja be egy Key Vault tárolt titok elérését.
 
 ```C#
         /// <summary>
@@ -321,59 +321,59 @@ Ez a minta a fentiekből épül fel a key vaultban felügyelt identitás haszná
 ```
 
 ## <a name="error-handling"></a>Hibakezelés
-A HTTP-válasz fejlécének "állapotkód" mezője a kérelem sikeres állapotát jelzi; a "200 OK" állapot sikeresnek számít, és a válasz tartalmazza a fent leírt hozzáférési jogkivonatot. A következőkben a lehetséges hibaválaszok rövid felsorolása szerepel.
+A HTTP-válasz fejlécének Állapotkód mezőjében a kérelem sikerességi állapota látható. a "200 OK" állapot jelzi a sikerességet, és a válasz a fent leírtak szerint tartalmazza a hozzáférési jogkivonatot. Az alábbiakban a lehetséges hibák rövid enumerálása látható.
 
-| Állapotkód | Hiba oka | Hogyan kell kezelni |
+| Állapotkód | Hiba oka | Kezelés |
 | ----------- | ------------ | ------------- |
-| 404 Nem található. | Ismeretlen hitelesítési kód, vagy az alkalmazáshoz nem volt felügyelt identitás rendelve. | Helyesbítse az alkalmazás beállítását vagy a tokenbeszerzési kódot. |
-| 429 Túl sok kérés. |  Elérte az AAD vagy az SF által bevezetett fojtószelep-korlátot. | Próbálkozzon újra exponenciális visszalépéssel. Lásd az alábbi útmutatást. |
-| 4xx Hiba kérésre. | Egy vagy több kérelemparaméter helytelen volt. | Ne próbálkozzon újra.  További információkért vizsgálja meg a hiba részleteit.  A 4xx hibák tervezési idejű hibák.|
-| 5xx Hiba a szolgáltatásból. | A felügyelt identitásalrendszer vagy az Azure Active Directory átmeneti hibát adott vissza. | Ez biztos, hogy próbálja meg újra egy rövid idő után. Az újrapróbálkozáskor a fojtási állapot (429) is előfordulhat.|
+| 404 nem található. | Ismeretlen hitelesítési kód, vagy az alkalmazás nem rendelt hozzá felügyelt identitást. | Helyesbítse az alkalmazás telepítőjét vagy a jogkivonat-beszerzési kódot. |
+| 429 túl sok kérés. |  Elérte a szabályozási korlátot, amely HRE vagy SF alapján lett kiszabva. | Próbálja megismételni az exponenciális leállítási. Lásd az alábbi útmutatást. |
+| 4xx hiba a kérelemben. | Egy vagy több kérelem paramétere helytelen volt. | Ne próbálkozzon újra.  További információért tekintse meg a hiba részleteit.  a 4xx hibák a tervezési idejű hibák.|
+| 5xx hiba a szolgáltatástól. | A felügyelt identitás alrendszer vagy Azure Active Directory átmeneti hibát adott vissza. | Rövid idő múlva nyugodtan próbálkozhat. Az újrapróbálkozáskor a szabályozás feltételeit (429) is elérheti.|
 
-Hiba esetén a megfelelő HTTP-választörzs egy JSON-objektumot tartalmaz a következő hibarészleteivel:
+Ha hiba történik, a megfelelő HTTP-válasz törzse tartalmaz egy JSON-objektumot, amely a hiba részleteit tartalmazza:
 
 | Elem | Leírás |
 | ------- | ----------- |
 | code | Hibakód. |
 | correlationId | A hibakereséshez használható korrelációs azonosító. |
-| message | A hiba részletes leírása. **A hibaleírások bármikor változhatnak. Ne függj magától a hibaüzenettől.**|
+| message | Hiba részletes leírása. **A hibákkal kapcsolatos leírások bármikor megváltoztathatók. A nem függ magától a hibaüzenettől.**|
 
-Mintahiba:
+Minta hiba:
 ```json
 {"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
 
-Az alábbiakban a felügyelt identitásokra jellemző tipikus Service Fabric-hibák listája látható:
+A következő lista a felügyelt identitásokra jellemző jellemző Service Fabric hibák listáját tartalmazza:
 
 | Kód | Üzenet | Leírás | 
 | ----------- | ----- | ----------------- |
-| SecretHeaderNemFound | Titkos titok nem található a kérelem fejlécében. | A hitelesítési kód nem lett megadva a kérelemhez. | 
-| ManagedIdentityNemFound | A felügyelt identitás nem található a megadott alkalmazásállomáshoz. | Az alkalmazás nem rendelkezik identitással, vagy a hitelesítési kód ismeretlen. |
-| ArgumentNullOrEmpty | Az "erőforrás" paraméter nem lehet null vagy üres karakterlánc. | Az erőforrás (közönség) nem lett megadva a kérelemben. |
-| InvalidApiVersion | Az api-version '' nem támogatott. A támogatott verzió a "2019-07-01-preview". | Hiányzó vagy nem támogatott API-verzió a kérelem URI-jában megadva. |
-| InternalServerError | Hiba történt. | Hiba történt a felügyelt identitás alrendszerben, valószínűleg a Service Fabric-veremen kívül. A legvalószínűbb ok az erőforráshoz megadott helytelen érték (ellenőrizze, hogy nincs-e záró "/"?) | 
+| SecretHeaderNotFound | A titkos kód nem található a kérelem fejlécében. | A hitelesítési kódot nem adta meg a kérelem. | 
+| ManagedIdentityNotFound | Nem található felügyelt identitás a megadott alkalmazás-gazdagéphez. | Az alkalmazás nem rendelkezik identitással, vagy a hitelesítési kód ismeretlen. |
+| ArgumentNullOrEmpty | Az "erőforrás" paraméter nem lehet null értékű vagy üres karakterlánc. | A kérelemben nincs megadva az erőforrás (célközönség). |
+| InvalidApiVersion | A (z) "" API-verzió nem támogatott. A támogatott verzió: "2019-07-01-Preview". | Hiányzó vagy nem támogatott API-verzió van megadva a kérelem URI azonosítójában. |
+| InternalServerError | Hiba történt. | Hiba történt a felügyelt identitás alrendszerében, valószínűleg a Service Fabric veremön kívül. A legvalószínűbb ok az erőforráshoz megadott helytelen érték (a záró "/" jelölést kell megadnia?) | 
 
 ## <a name="retry-guidance"></a>Újrapróbálkozási útmutató 
 
-Az egyetlen újrapróbálható hibakód általában 429 (túl sok kérés); belső szerver hibák/5xx hibakódok újrapróbálkozásra lehetnek, bár az ok állandó lehet. 
+Általában az egyetlen újrapróbálkozást lehetővé tevő hibakód 429 (túl sok kérés); a belső kiszolgálói hibák/5xx-hibakódok valószínűleg újrapróbálkoznak, de az ok lehet állandó. 
 
-A sávszélesség-szabályozási korlátok a felügyelt identitás alrendszer – különösen a "upstream" függőségek (a felügyelt identitás Azure-szolgáltatás vagy a biztonságos jogkivonat-szolgáltatás) kezdeményezett hívások száma vonatkoznak. A Service Fabric gyorsítótárazza a jogkivonatokat a folyamat különböző szintjein, de az érintett összetevők elosztott jellege miatt a hívó inkonzisztens szabályozási válaszokat tapasztalhat (azaz egy alkalmazás egyetlen csomópontján/példányán szabályozást kap, de nem egy másik csomóponton, miközben jogkivonatot kér ugyanarra az identitásra.) Ha a szabályozási feltétel be van állítva, az ugyanabból az alkalmazásból származó további kérelmek sikertelenek lehetnek a 429-es HTTP-állapotkóddal (túl sok kérelem), amíg a feltétel nincs törölve.  
+A szabályozás korlátozásai a felügyelt identitási alrendszerre irányuló hívások számára vonatkoznak – konkrétan a "felsőbb rétegbeli" függőségek (felügyelt identitás Azure szolgáltatás vagy a biztonságos jogkivonat szolgáltatás). Service Fabric gyorsítótárazza a tokeneket a folyamat különböző szintjein, de az érintett összetevők elosztott jellege miatt előfordulhat, hogy a hívó inkonzisztens szabályozási válaszokat észlel (például lekéri az alkalmazás egy csomópontján/példányán, de nem egy másik csomóponton, miközben az azonos identitáshoz tartozó jogkivonatot kér).) Ha a szabályozási feltétel be van állítva, az azonos alkalmazásból érkező további kérések meghiúsulnak az 429-as HTTP-állapotkód (túl sok kérés), amíg a feltétel nem törlődik.  
 
-A szabályozás miatt sikertelen kérelmek et exponenciális visszalépéssel érdemes újra megpróbálni, az alábbiak szerint: 
+Azt javasoljuk, hogy a sávszélesség-szabályozás miatti kérelmeket az alábbi módon próbálja megismételni egy exponenciális leállítási: 
 
-| Hívási index | A fogadásra vonatkozó intézkedés 429 | 
+| Hívási index | Művelet a 429-es fogadáshoz | 
 | --- | --- | 
 | 1 | Várjon 1 másodpercet, és próbálkozzon újra |
-| 2 | Várjon 2 másodpercet, majd próbálkozzon újra |
+| 2 | Várjon 2 másodpercet, és próbálkozzon újra |
 | 3 | Várjon 4 másodpercet, és próbálkozzon újra |
 | 4 | Várjon 8 másodpercet, és próbálkozzon újra |
 | 4 | Várjon 8 másodpercet, és próbálkozzon újra |
 | 5 | Várjon 16 másodpercet, és próbálkozzon újra |
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
-Tekintse meg az [Azure-hitelesítést támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-msi.md) az Azure AD-t támogató erőforrások listáját és a megfelelő erőforrás-azonosítókat.
+Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-msi.md) az Azure ad-t támogató erőforrások listáját, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
 ## <a name="next-steps"></a>További lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Azure Service Fabric-alkalmazás elérésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
+* [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)

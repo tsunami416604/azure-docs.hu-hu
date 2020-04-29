@@ -1,20 +1,20 @@
 ---
-title: Az Azure Media Player rövid útmutatója
-description: Ismerje meg az Azure Media Player beállításának alapvető lépéseit.
+title: Azure Media Player rövid útmutató
+description: Ismerje meg a Azure Media Player beállításának alapvető lépéseit.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
 ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726465"
 ---
-# <a name="azure-media-player-quickstart"></a>Az Azure Media Player rövid útmutatója
-Az Azure Media Player könnyen beállítható. Csak néhány percet vesz igénybe a médiatartalmak Azure Media Services-fiókjából történő alapvető lejátszása. Ez a szakasz nagy vonalakban ismerteti az alapvető lépéseket. Az alábbi szakaszok az Azure Media Player beállításának és konfigurálásának konkrétumait ismertetik.  Egyszerűen adja hozzá a következőket a dokumentum `<head>` eleméhez:
+# <a name="azure-media-player-quickstart"></a>Az Azure Media Player gyorsútmutatója
+A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Azure Media Services-fiókjából. Ez a szakasz nagy vonalakban ismerteti az alapvető lépéseket. Az alábbi szakaszokban a Azure Media Player beállításával és konfigurálásával kapcsolatos konkrét tudnivalókat talál.  Egyszerűen adja hozzá a következőket a dokumentum `<head>` eleméhez:
 
 ```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
@@ -22,11 +22,11 @@ Az Azure Media Player könnyen beállítható. Csak néhány percet vesz igényb
 ```
 
 > [!IMPORTANT]
-> **Ne** használja a `latest` verziót éles környezetben, mivel ez igény szerint változhat. Cserélje `latest` le az Azure Media Player egy verziójára; például `latest` cserélje `1.0.0`ki . Az Azure Media Player verziói [innen](azure-media-player-changelog.md)kérdezhetők le.
+> A `latest` verziót **ne** használja éles környezetben, mert az igény szerint változhat. Cserélje `latest` le a Azure Media Player egy verziójára; például cserélje le `latest` a `1.0.0`következőt:. Azure Media Player verziók lekérdezése [innen](azure-media-player-changelog.md)lehetséges.
 
-## <a name="use-the-video-element"></a>A videoelem használata
+## <a name="use-the-video-element"></a>A videó elem használata
 
-Ezután egyszerűen `<video>` használja az elemet, ahogy `data-setup` szokott, de egy további attribútummal, amely minden lehetőséget tartalmaz. Ezek a beállítások bármely Azure Media Services-beállítást tartalmazhatnak egy érvényes JSON-objektumban.
+Ezután egyszerűen használja az `<video>` elemet úgy, ahogy a szokásos módon tenné, de egy `data-setup` további, tetszőleges beállításokat tartalmazó attribútummal. Ezek a beállítások bármilyen Azure Media Services lehetőséget tartalmazhatnak egy érvényes JSON-objektumban.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" poster="poster.jpg" data-setup='{"nativeControlsForTouch": false}'>
@@ -37,7 +37,7 @@ Ezután egyszerűen `<video>` használja az elemet, ahogy `data-setup` szokott, 
     </video>
 ```
 
-Ha nem szeretné használni az automatikus telepítést, kihagyhatja az `data-setup` attribútumot, és manuálisan inicializálhatja a videoelemet.
+Ha nem szeretné az automatikus telepítést használni, kihagyhatja az `data-setup` attribútumot, és manuálisan is inicializálhatja a videó elemet.
 
 ```html
     var myPlayer = amp('vid1', { /* Options */
@@ -63,4 +63,4 @@ Ha nem szeretné használni az automatikus telepítést, kihagyhatja az `data-se
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

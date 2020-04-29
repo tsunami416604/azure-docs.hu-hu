@@ -1,60 +1,60 @@
 ---
-title: Regionális redundancia és feladatátvétel az Azure HPC-gyorsítótárral
-description: Az Azure HPC-gyorsítótárral való vész-helyreállítási feladatátvételi képességek biztosításának technikái
+title: Regionális redundancia és feladatátvételi helyreállítás az Azure HPC cache-vel
+description: Az Azure HPC cache-vel való vész-helyreállítási feladatátvételi képességeket biztosító technikák
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 21074ae6bc4959da031bc7065cd7d0639ec2a14f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537270"
 ---
-# <a name="use-multiple-caches-for-regional-failover-recovery"></a>Több gyorsítótár használata a regionális feladatátvételi helyreállításhoz
+# <a name="use-multiple-caches-for-regional-failover-recovery"></a>Több gyorsítótár használata a regionális feladatátvétel helyreállításához
 
-Minden Egyes Azure HPC-gyorsítótár-példány egy adott előfizetésen belül és egy régióban fut. Ez azt jelenti, hogy a gyorsítótár-munkafolyamat esetleg megszakadhat, ha a régió teljes kimaradás.
+Minden egyes Azure HPC cache-példány egy adott előfizetésen belül és egy régióban fut. Ez azt jelenti, hogy a gyorsítótár munkafolyamata valószínűleg megszakadhat, ha a régió teljes leállás miatt leáll.
 
-Ez a cikk egy stratégiát ismerteti a munkamegszakítás kockázatának csökkentésére egy második régió használatával a gyorsítótár feladatátvételhez.
+Ez a cikk a gyorsítótár-feladatátvétel második régiójának használatával csökkenti a munkahelyi fennakadások kockázatát.
 
-A kulcs a több régióból elérhető háttértároló használata. Ez a tárterület lehet egy helyszíni NAS-rendszer megfelelő DNS-támogatással, vagy az Azure Blob storage, amely a gyorsítótártól egy másik régióban található.
+A kulcs olyan háttérbeli tárterületet használ, amely több régióból is elérhető. Ez a tároló lehet a megfelelő DNS-támogatással rendelkező helyszíni NAS-rendszer, vagy az Azure Blob Storage, amely egy másik régióban található a gyorsítótárból.
 
-Ahogy a munkafolyamat folytatódik az elsődleges régióban, az adatok a régión kívüli hosszú távú tárolóba kerülnek. Ha a gyorsítótár-régió elérhetetlenné válik, létrehozhat egy duplikált Azure HPC-gyorsítótár-példányt egy másodlagos régióban, csatlakozhat ugyanahhoz a tárolóhoz, és folytathatja a munkát az új gyorsítótárból.
+Ahogy a munkafolyamat az elsődleges régióban folytatja, az adatait a régión kívüli hosszú távú tárolóba menti a rendszer. Ha a gyorsítótár-régió elérhetetlenné válik, létrehozhat egy duplikált Azure HPC cache-példányt egy másodlagos régióban, csatlakozhat ugyanahhoz a tárolóhoz, és folytathatja a munkát az új gyorsítótárból.
 
-## <a name="planning-for-regional-failover"></a>A regionális feladatátvétel tervezése
+## <a name="planning-for-regional-failover"></a>Regionális feladatátvétel tervezése
 
 A lehetséges feladatátvételre előkészített gyorsítótár beállításához kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a háttértároló elérhető egy második régióban.
-1. Az elsődleges gyorsítótár-példány létrehozásának tervezésekor a második régióban is elő kell készítenie a telepítési folyamat replikálására. Tartalmazza a következő elemeket:
+1. Győződjön meg arról, hogy a háttérbeli tárterület egy második régióban is elérhető.
+1. Az elsődleges gyorsítótár-példány létrehozásának tervezésekor elő kell készítenie a telepítési folyamat replikálását a második régióban is. Elemek belefoglalása:
 
-   1. Virtuális hálózat és alhálózat szerkezete
+   1. Virtuális hálózat és alhálózati struktúra
    1. Gyorsítótár kapacitása
-   1. A tárolási cél adatok, nevek és névtérelérési utak
-   1. Az ügyfélgépek részletei, ha ugyanabban a régióban találhatók, mint a gyorsítótár
-   1. Mount parancs a gyorsítótár-ügyfelek általi használatra
+   1. Tárolási cél részletei, nevek és névtér elérési útjai
+   1. Az ügyfélgépek adatai, ha azok ugyanabban a régióban találhatók, mint a gyorsítótár
+   1. Csatlakoztatási parancs gyorsítótár-ügyfelek általi használatra
 
    > [!NOTE]
-   > Az Azure HPC-gyorsítótár programozott módon hozható létre, akár egy [Azure Resource Manager-sablonon](../azure-resource-manager/templates/overview.md) keresztül, akár az API közvetlen elérésével. A részletekért forduljon az Azure HPC cache csapatához.
+   > Az Azure HPC cache programozott módon hozható létre [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) vagy közvetlenül az API-hoz való hozzáféréssel. Részletekért forduljon az Azure HPC cache csapatához.
 
-## <a name="failover-example"></a>Például feladatátvételi példa
+## <a name="failover-example"></a>Példa feladatátvételre
 
-Például képzelje el, hogy meg szeretné keresni az Azure HPC-gyorsítótárat az Azure USA keleti régiójában. A helyszíni adatközpontban tárolt adatokhoz fog hozzáférni.
+Tegyük fel például, hogy az Azure HPC-gyorsítótárát szeretné megkeresni az Azure USA keleti régiójában. A szolgáltatás a helyszíni adatközpontban tárolt adataihoz fog hozzáférni.
 
-Az USA nyugati régiójában lévő gyorsítótárat feladatátvételi biztonsági másolatként használhatja.
+A gyorsítótár az USA 2. nyugati régiójában feladatátvételi biztonsági mentésként használható.
 
-A gyorsítótár létrehozásakor az USA keleti részén készítsen elő egy második gyorsítótárat az USA nyugati részén 2. Parancsfájlok vagy sablonok segítségével automatizálhatja ezt a készítményt.
+Ha a gyorsítótárat az USA keleti régiójában hozza létre, készítse el a második gyorsítótárat az USA 2. nyugati régiójában. Az előkészítés automatizálásához parancsfájlokat vagy sablonokat használhat.
 
-Abban az esetben, ha az USA keleti régiójában az egész régióra kiterjedő hiba történik, hozza létre az USA nyugati régiójában készített gyorsítótárat.
+Ha az USA keleti régiójában nem sikerül az egész régióra kiterjedő meghibásodás, hozza létre az USA 2. nyugati régiójában előkészített gyorsítótárat.
 
-A gyorsítótár létrehozása után adjon hozzá olyan tárolási célokat, amelyek ugyanarra a helyszíni adattárakra mutatnak, és ugyanazokat az összesített névtérútvonalakat használja, mint a régi gyorsítótár tárolási tárolói.
+A gyorsítótár létrehozása után adja hozzá azokat a tárolási célokat, amelyek ugyanarra a helyszíni adattárakra mutatnak, és ugyanazokat az összesített névtereket használják, mint a régi gyorsítótár tárolási céljait.
 
-Ha az eredeti ügyfelek érintettek, hozzon létre új ügyfeleket az USA nyugati régiójában az új gyorsítótárral való használatra.
+Ha az eredeti ügyfelek érintettek, hozzon létre új ügyfeleket az USA 2. nyugati régiójában az új gyorsítótárral való használatra.
 
-Minden ügyfélnek csatlakoztatnia kell az új gyorsítótárat, még akkor is, ha az ügyfeleket nem érintette a régió kimaradása. Az új gyorsítótár különböző csatlakoztatási címekkel rendelkezik, mint a régi.
+Minden ügyfélnek csatlakoztatnia kell az új gyorsítótárat, még akkor is, ha az ügyfeleket nem befolyásolta a régió meghibásodása. Az új gyorsítótár a régitől eltérő csatlakoztatási címmel rendelkezik.
 
 ## <a name="learn-more"></a>Részletek
 
-Az Azure-alkalmazásarchitektúra útmutató további információt tartalmaz [arról, hogyan lehet helyreállítani egy régiószintű szolgáltatáskimaradás.](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)
+Az Azure-alkalmazás architektúrájának útmutatója további információkat tartalmaz arról, hogyan lehet [helyreállítani az egész régióra kiterjedő szolgáltatás megszakadását](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).

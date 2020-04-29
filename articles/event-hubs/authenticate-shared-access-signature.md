@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs-hoz való hozzáférés hitelesítése megosztott hozzáférésű aláírásokkal
-description: Ez a cikk bemutatja, hogyan hitelesítheti az Event Hubs-erőforrásokhoz való hozzáférést megosztott hozzáférésű aláírások használatával.
+title: Az Azure Event Hubshoz való hozzáférés hitelesítése közös hozzáférési aláírásokkal
+description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrásokhoz való hozzáférést közös hozzáférési aláírások használatával.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676359"
 ---
-# <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Az Event Hubs-erőforrásokhoz való hozzáférés hitelesítése megosztott hozzáférésű aláírásokkal (SAS)
-A megosztott hozzáférésű aláírás (SAS) segítségével részletesen szabályozhatja a megosztott hozzáférés-aláírással rendelkező ügyfelek számára nyújtott hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
+# <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
+A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
 
-- Az az időtartam, amely alatt a SAS érvényes, beleértve a kezdési és lejárati időt.
-- A SAS által megadott engedélyek. Például egy SAS egy Event Hubs névtér adhat a figyelési engedélyt, de nem a küldési engedélyt.
-- Csak az érvényes hitelesítő adatokat tartalmazó ügyfelek küldhetnek adatokat egy eseményközpontba.
-- Egy ügyfél nem személyesíthet meg egy másik ügyfelet.
-- Egy engedélyezetlen ügyfél letiltható az adatok küldése egy eseményközpontba.
+- Az az intervallum, ameddig az SAS érvényes, beleértve a kezdési időt és a lejárati időt.
+- Az SAS által megadott engedélyek. Egy Event Hubs-névtér SAS-je például megadhatja a figyelési engedélyt, a küldési engedélyt azonban nem.
+- Csak az érvényes hitelesítő adatokat tartalmazó ügyfelek küldhetnek adatokat az Event hub-nak.
+- Az ügyfél nem tud megszemélyesíteni egy másik ügyfelet.
+- Egy támadó ügyfél blokkolható az adatoknak az Event hub szolgáltatásba való küldéséhez.
 
-Ez a cikk az Event Hubs-erőforrások sas-i erőforrásokhoz való hozzáférés hitelesítését ismerteti. Ha többet szeretne tudni arról, hogy **miként engedélyezi** az Event Hubs-erőforrásokhoz való hozzáférést a SAS használatával, olvassa el [ezt a cikket.](authorize-access-shared-access-signature.md) 
+Ez a cikk a Event Hubs erőforrásokhoz való hozzáférésnek a SAS használatával történő hitelesítését ismerteti. Ha többet szeretne megtudni a Event Hubs erőforrásokhoz való hozzáférés **engedélyezéséről** az SAS használatával, tekintse meg [ezt a cikket](authorize-access-shared-access-signature.md). 
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait, ha lehetséges, a biztonsági ajánlott eljárás, ahelyett, hogy a megosztott hozzáférésű aláírások, amelyek könnyebben sérülhet. Bár továbbra is használhatja a megosztott hozzáférésű aláírások (SAS) az Event Hubs-erőforrások részletes eléréséhez való hozzáférés biztosításához, az Azure AD hasonló képességeket kínál anélkül, hogy kezelnie kellene a SAS-jogkivonatokat, vagy aggódnia kellene a sérült SAS visszavonása miatt.
+> A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait a közös hozzáférésű aláírások használata helyett ajánlott biztonsági eljárásként használni, ami könnyebben feltörhető lehet. Habár továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Event Hubs erőforrásaihoz való részletes hozzáférés biztosításához, az Azure AD hasonló képességeket kínál anélkül, hogy SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonása miatt.
 > 
-> Az Azure AD-integrációról az Azure Event Hubs szolgáltatásban további információt az [Event Hubs-hoz való hozzáférés engedélyezése](authorize-access-azure-active-directory.md)az Azure AD használatával című témakörben talál. 
+> További információ az Azure AD-integrációról az Azure Event Hubsban: [hozzáférés engedélyezése Event Hubs az Azure ad](authorize-access-azure-active-directory.md)-vel. 
 
 
-## <a name="configuring-for-sas-authentication"></a>SAS-hitelesítés konfigurálása
-Konfigurálhatja az EventHubs megosztott hozzáférés-engedélyezési szabály egy Event Hubs névtér, vagy egy entitás (eseményközpont-példány vagy Kafka topic egy eseményközpontban). A megosztott hozzáférés engedélyezési szabályának konfigurálása egy fogyasztói csoporton jelenleg nem támogatott, de a névtéren vagy entitáson konfigurált szabályok segítségével biztonságos hozzáférést biztosíthat a fogyasztói csoporthoz. 
+## <a name="configuring-for-sas-authentication"></a>Konfigurálás SAS-hitelesítéshez
+Konfigurálhatja a EventHubs megosztott hozzáférés-engedélyezési szabályát egy Event Hubs névtérben vagy egy entitáson (Event hub-példányon vagy Kafka-témakörben). A megosztott hozzáférés engedélyezési szabályának konfigurálása egy fogyasztói csoportban jelenleg nem támogatott, de a névtérben vagy entitásban konfigurált szabályokkal biztonságossá teheti a felhasználói csoportokhoz való hozzáférést. 
 
-Az alábbi képen látható, hogyan vonatkoznak az engedélyezési szabályok a mintaentitásokra. 
+Az alábbi képen látható, hogyan vonatkoznak az engedélyezési szabályok a minta entitásokra. 
 
 ![Engedélyezési szabály konfigurálása](./media/authenticate-shared-access-signature/configure-sas-authorization-rule.png)
 
-Ebben a példában a minta Event Hubs névtér (ExampleNamespace) két entitást rendelkezik: eh1 és topic1. Az engedélyezési szabályok mind az entitás szintjén, mind a névtér szintjén vannak definiálva.  
+Ebben a példában a minta Event Hubs névtér (ExampleNamespace) két entitással rendelkezik: a EH1 és a topic1. Az engedélyezési szabályok az entitás szintjén és a névtér szintjén is definiálva vannak.  
 
-A manageRuleNS, sendRuleNS és listenRuleNS engedélyezési szabályok az eh1 eseményközpont-példányra és a t1 témakörre egyaránt vonatkoznak. A listenRule-eh és sendRule-eh engedélyezési szabályok csak az event hub-példányeh1 és sendRuleT engedélyezési szabály csak a témakör témakör1. 
+A manageRuleNS, a sendRuleNS és a listenRuleNS engedélyezési szabályok az Event hub-példány EH1 és a T1-es témakörre egyaránt érvényesek. A listenRule-EH és a sendRule-eh engedélyezési szabályok csak az Event hub-példány EH1 vonatkoznak, és a sendRuleT-engedélyezési szabály csak a témakör topic1 vonatkozik. 
 
-SendRuleNS engedélyezési szabály használata esetén az ügyfélalkalmazások az eh1 és a topic1 számára is küldhetnek. SendRuleT engedélyezési szabály használata esetén csak a témakör1 részletes hozzáférését kényszeríti ki, ezért a szabályt használó ügyfélalkalmazások most már nem küldhetnek eh1-nek, hanem csak a témakörhöz1.
+SendRuleNS-engedélyezési szabály használatakor az ügyfélalkalmazások a EH1 és a topic1 is küldhetnek. A sendRuleT-engedélyezési szabály használatakor a rendszer csak a topic1 részletes hozzáférését kényszeríti ki, ezért az ezt a szabályt használó ügyfélalkalmazások nem küldhetnek el EH1, hanem csak topic1.
 
-## <a name="generate-a-shared-access-signature-token"></a>Megosztott hozzáférésű aláírási jogkivonat létrehozása 
-Minden olyan ügyfél, amely hozzáfér egy engedélyezési szabály nevének és az egyik aláíró kulcsának nevéhez, sas-jogkivonatot hozhat létre. A jogkivonat egy karakterlánc a következő formátumban történő létrehozásával jön létre:
+## <a name="generate-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása 
+Minden olyan ügyfél létrehozhat egy SAS-jogkivonatot, amely egy engedélyezési szabály nevének és az egyik aláíró kulcsnak a nevéhez fér hozzá. A jogkivonat a következő formátumú sztringek létrehozásával jön létre:
 
-- `se`– Token lejárati azonnali. 1970. január 1-jén 00:00:00 UTC időpont óta eltelt másodpercek egész szám (UNIX-korszak), amikor a token lejár
-- `skn`– Az engedélyezési szabály neve, azaz a SAS-kulcs neve.
-- `sr`– Az elérésben lévő erőforrás URI-ja.
-- `sig`– Aláírás.
+- `se`– A jogkivonat lejárati ideje azonnali. Egész szám, amely a (z) 00:00:00 UTC szerint 1 – 1970 (UNIX-kor) időszakon belül, a jogkivonat lejárata után.
+- `skn`– Az engedélyezési szabály neve, amely az SAS-kulcs neve.
+- `sr`– Az elérni kívánt erőforrás URI-ja.
+- `sig`Aláírás.
 
-Az aláírás-karakterlánc az erőforrás URI-n (az előző szakaszban leírtak szerint hatókörön) számított SHA-256-os kivonat, valamint a crlf által elválasztott jogkivonat lejárati pillanatának karakterlánc-ábrázolása.
+Az aláírás-karakterlánc az erőforrás URI-ja alapján kiszámított SHA-256 kivonat (a hatókör az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati CRLF által elválasztott karakterlánc-ábrázolása.
 
-A kivonatszámítás a következő pszeudokódhoz hasonlóan néz ki, és 256 bites/32 bájtos kivonatértéket ad vissza. 
+A kivonatoló számítás a következő pszeudo-kódhoz hasonlóan néz ki, és egy 256 bites/32 bájtos kivonatoló értéket ad vissza. 
 
 ```
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-A jogkivonat tartalmazza a nem kivonatolt értékeket, így a címzett újraszámíthatja a kivonatot ugyanazzal a paraméterrel, ellenőrizve, hogy a kibocsátó rendelkezik-e érvényes aláíró kulccsal.
+A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kiszámíthatja a kivonatot ugyanazzal a paraméterekkel, és ellenőrizheti, hogy a kiállító rendelkezik-e érvényes aláíró kulccsal.
 
-Az erőforrás URI-je annak a Service Bus-erőforrásnak a teljes URI-ja, amelyhez a hozzáférés igényelt. Például http://<namespace>.servicebus.windows.net/,<entityPath> vagy `sb://<namespace>.servicebus.windows.net/<entityPath>;` ez, `http://contoso.servicebus.windows.net/eventhubs/eh1`.
+Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. <namespace>Például: http://.<entityPath> servicebus.Windows.net/vagy `sb://<namespace>.servicebus.windows.net/<entityPath>;` ,. `http://contoso.servicebus.windows.net/eventhubs/eh1`
 
-Az URI-t százalékkódolással kell elkönyvelni.
+Az URI-nak százalékos kódolással kell rendelkeznie.
 
-Az aláíráshoz használt megosztott hozzáférés engedélyezési szabályát az uri által megadott entitáson vagy annak egyik hierarchikus szülőjében kell konfigurálni. Például, `http://contoso.servicebus.windows.net/eventhubs/eh1` `http://contoso.servicebus.windows.net` vagy az előző példában.
+Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például `http://contoso.servicebus.windows.net/eventhubs/eh1` vagy `http://contoso.servicebus.windows.net` az előző példában.
 
-A SAS-jogkivonat az aláírási <resourceURI> karakterláncban használt összes erőforrásra érvényes.
+A SAS-token az aláírás-karakterláncban <resourceURI> használt összes erőforráshoz előtaggal érvényes.
 
 > [!NOTE]
-> A megosztott hozzáférési szabályzat használatával létrehoz egy hozzáférési jogkivonatot az Event Hubs számára. További információt a Megosztott hozzáférés engedélyezési házirendje című [témakörben talál.](authorize-access-shared-access-signature.md#shared-access-authorization-policies)
+> A Event Hubs hozzáférési jogkivonatot hoz majd a megosztott hozzáférési házirend használatával. További információ: [megosztott hozzáférés engedélyezési házirendje](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 
-### <a name="generating-a-signaturetoken-from-a-policy"></a>Aláírás(token) létrehozása házirendből 
-A következő szakasz egy SAS-jogkivonat létrehozása megosztott hozzáférésű aláírási házirendek használatával,
+### <a name="generating-a-signaturetoken-from-a-policy"></a>Aláírás (token) létrehozása egy házirendből 
+A következő szakasz bemutatja, hogyan hozhat létre SAS-tokent a közös hozzáférésű aláírási szabályzatok használatával.
 
 #### <a name="nodejs"></a>NodeJS
 
@@ -95,7 +95,7 @@ function createSharedAccessToken(uri, saName, saKey) {
         encodeURIComponent(hash) + '&se=' + ttl + '&skn=' + saName; 
 ```
 
-#### <a name="java"></a>Java
+#### <a name="java"></a>JAVA
 
 ```java
 private static String GetSASToken(String resourceUri, String keyName, String key)
@@ -178,19 +178,19 @@ private static string createToken(string resourceUri, string keyName, string key
 }
 ```
 
-## <a name="authenticating-event-hubs-publishers-with-sas"></a>Az Event Hubs megjelenítőinek hitelesítése a SAS-szel 
-Az eseményközzétevő virtuális végpontot határoz meg egy eseményközponthoz. A közzétevő csak arra használható, hogy üzeneteket küldjön egy eseményközpontba, és ne fogadjon üzeneteket.
+## <a name="authenticating-event-hubs-publishers-with-sas"></a>Event Hubs-közzétevők hitelesítése SAS használatával 
+Egy esemény-közzétevő definiál egy virtuális végpontot az Event hub számára. A közzétevő csak akkor használható, ha üzeneteket küld az Event hubhoz, és nem fogad üzeneteket.
 
-Általában egy eseményközpont ügyfelenként egy közzétevőt alkalmaz. Az eseményközpont bármely közzétevőjének küldött összes üzenet az adott eseményközpontban van várólistára. A közzétevők lehetővé teszik a részletes hozzáférés-vezérlést.
+Az Event hub jellemzően egy közzétevőt alkalmaz egy ügyfélen. Az Event hub bármelyik közzétevője számára küldött összes üzenet az várólistán lévő belül van. A kiadók részletes hozzáférés-vezérlést tesznek lehetővé.
 
-Minden Event Hubs-ügyfél egyedi jogkivonatot kap, amely az ügyfélre van feltöltve. A jogkivonatok úgy készülnek, hogy minden egyes egyedi jogkivonat hozzáférést biztosít a különböző egyedi közzétevőkhöz. A jogkivonatot tartalmazó ügyfél csak egy közzétevőnek küldhet, más közzétevőnek nem. Ha több ügyfél osztozik ugyanazon a jogkivonaton, akkor mindegyikük megosztja a közzétevőt.
+Minden Event Hubs ügyfélhez egy egyedi token van rendelve, amely fel van töltve az ügyfélre. A jogkivonatok úgy jönnek létre, hogy mindegyik egyedi jogkivonat különböző egyedi közzétevőhöz biztosít hozzáférést. A jogkivonatot birtokló ügyfelek csak egyetlen közzétevőnek küldhetnek, és nem rendelkezhetnek más közzétevővel. Ha több ügyfél ugyanazt a jogkivonatot használja, akkor mindegyik megosztja a közzétevőt.
 
-Minden jogkivonat SAS-kulcsokkal van hozzárendelve. Általában minden jogkivonat ugyanazzal a kulccsal van aláírva. Az ügyfelek nincsenek tisztában a kulcs, amely megakadályozza, hogy az ügyfelek a tokenek gyártása. Az ügyfelek ugyanazokon a jogkivonatokon működnek, amíg le nem járnak.
+Minden token SAS-kulccsal van társítva. Általában minden token ugyanazzal a kulccsal van aláírva. Az ügyfelek nem ismerik a kulcsot, ami megakadályozza az ügyfelek számára a gyártási jogkivonatokat. Az ügyfelek ugyanazon jogkivonatokon működnek, amíg lejárnak.
 
-Ha például az engedélyezési szabályokat csak az Event Hubs-ba küldésre/közzétételre szeretné megadni, meg kell határoznia egy küldési engedélyezési szabályt. Ez történhet névtér szinten, vagy adjon részletesebb hatókört egy adott entitásnak (eseményközpontok példánya vagy egy témakör). Az ilyen részletes hozzáféréssel rendelkező ügyfél vagy alkalmazás neve Event Hubs közzétevő. Ehhez kövesse az alábbi lépéseket:
+Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatározni, hogy csak az Event Hubs küldésére vagy közzétételére legyen szükség, meg kell határoznia egy küldési engedélyezési szabályt. Ezt névtér szintjén lehet elvégezni, vagy részletesebb hatókört adhat egy adott entitásnak (Event hubok-példány vagy témakör). Az ilyen szemcsés eléréssel hatókörbe tartozó ügyfelet vagy alkalmazást Event Hubs közzétevőnek nevezzük. Ehhez kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy SAS-kulcsot a közzétenni kívánt entitáson a **küldési** hatókör hozzárendeléséhez. További információt a Megosztott hozzáférés engedélyezési házirendjei című [témakörben talál.](authorize-access-shared-access-signature.md#shared-access-authorization-policies)
-2. Hozzon létre egy SAS-jogkivonatot egy adott közzétevő lejárati idejével az 1.
+1. Hozzon létre egy SAS-kulcsot a közzétenni kívánt entitáson a **küldési** hatókör hozzárendeléséhez. További információ: [megosztott hozzáférés engedélyezési házirendjei](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
+2. Az 1. lépés-ben generált kulcs használatával egy adott közzétevőhöz tartozó lejárati idővel rendelkező SAS-tokent hozhat létre.
 
     ```csharp
     var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
@@ -201,37 +201,37 @@ Ha például az engedélyezési szabályokat csak az Event Hubs-ba küldésre/k�
                 "sas-key",
                 TimeSpan.FromMinutes(30));
     ```
-3. Adja meg a jogkivonatot a közzétevő-ügyfélnek, amely csak az entitásnak és a jogkivonatot biztosító közzétevőnek küldhet.
+3. Adja meg a jogkivonatot a közzétevő ügyfelének, amely csak az entitásnak küldhető el, és azt a közzétevőt, amely számára a jogkivonat hozzáférést biztosít.
 
-    A jogkivonat lejárta után az ügyfél elveszíti az entitásnak történő küldéshez/közzétételhez való hozzáférését. 
+    A jogkivonat lejárta után az ügyfél elveszíti a hozzáférést az entitáshoz való küldéshez vagy közzétételhez. 
 
 
 > [!NOTE]
-> Bár nem ajánlott, lehetőség van az eszközök olyan jogkivonatokkal való felszerelésére, amelyek hozzáférést biztosítanak egy eseményközponthoz vagy egy névtérhez. Minden olyan eszköz, amely rendelkezik ezzel a jogkivonattal, üzeneteket küldhet közvetlenül az eseményközpontba. Továbbá az eszköz nem feketelistára az adott eseményközpontba való küldéstől.
+> Bár ez nem ajánlott, az eszközök olyan jogkivonatokkal is felhasználhatók, amelyek hozzáférést biztosítanak az Event hub-hoz vagy a névtérhez. Minden olyan eszköz, amelyik ezt a jogkivonatot tárolja, közvetlenül is küldhet üzeneteket az adott Event hub-nak. Emellett az eszköz nem lehet feketelistára állítani az adott Event hubhoz való küldéssel.
 > 
-> Mindig ajánlott, hogy konkrét és részletes hatókörök.
+> A konkrét és a részletes hatóköröket mindig ajánlott megadni.
 
 > [!IMPORTANT]
-> A jogkivonatok létrehozása után minden ügyfél kivan építve a saját egyedi jogkivonattal.
+> A jogkivonatok létrehozása után minden ügyfél saját egyedi jogkivonattal van kiépítve.
 >
-> Amikor az ügyfél adatokat küld egy eseményközpontba, a kérést a jogkivonattal címkézi. Annak megakadályozása érdekében, hogy a támadó lehallgatja és ellopja a jogkivonatot, az ügyfél és az eseményközpont közötti kommunikációnak titkosított csatornán keresztül kell történnie.
+> Amikor az ügyfél adatokat küld egy Event hubhoz, a kérelmét a jogkivonattal címkézi. Ha meg szeretné akadályozni, hogy a támadók lehallgatják és ellopják a tokent, akkor az ügyfél és az Event hub közötti kommunikációnak titkosított csatornán kell történnie.
 > 
-> Ha egy támadó ellop egy tokent, a támadó megszemélyesítheti azt az ügyfelet, akinek a tokenjét ellopták. A közzétevő feketelistára tétele használhatatlanná teszi az ügyfelet, amíg nem kap egy új jogkivonatot, amely egy másik közzétevőt használ.
+> Ha egy támadó ellopja a jogkivonatot, a támadó megszemélyesítheti az ügyfelet, amelynek a jogkivonatát ellopták. A közzétevők feketelistára állítása az ügyfél használhatatlanul jelenik meg, amíg nem kap egy másik közzétevőt használó új jogkivonatot.
 
 
-## <a name="authenticating-event-hubs-consumers-with-sas"></a>Az Event Hubs-felhasználók hitelesítése a SAS-szel 
-Az Event Hubs-gyártók által létrehozott adatokból felhasznált háttéralkalmazások hitelesítéséhez az Event Hubs tokenhitelesítéshez az ügyfeleknek rendelkezniük kell az Event Hubs névteréhez vagy eseményközpont-példányához vagy témaköréhez rendelt **figyelési** jogosultságokkal. **listen** Az adatokat az Event Hubs fogyasztói csoportok használatával használja fel. Míg a SAS-házirend részletes hatókört biztosít, ez a hatókör csak az entitás szintjén van definiálva, és nem a fogyasztói szinten. Ez azt jelenti, hogy a névtér szintjén vagy az eseményközpont-példány vagy -témakör szintjén meghatározott jogosultságok az entitás fogyasztói csoportjaira lesznek alkalmazva.
+## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 
+A Event Hubs gyártók által generált adatokból felhasznált háttérbeli alkalmazások hitelesítéséhez Event Hubs jogkivonat-hitelesítéshez az szükséges, hogy az ügyfelek rendelkezzenek a **felügyeleti jogokkal vagy** a Event Hubs névtér vagy az Event hub-példányhoz vagy a témakörhöz rendelt **figyelési** jogosultságokkal. Az adatok felhasználása Event Hubs fogyasztói csoportok használatával történik. Míg a SAS-szabályzat részletes hatókört biztosít, ez a hatókör csak az entitás szintjén van meghatározva, és nem a fogyasztói szinten. Ez azt jelenti, hogy a névtér szintjén vagy az Event hub-példányon vagy a témakör szintjén megadott jogosultságok az adott entitás fogyasztói csoportjaira lesznek alkalmazva.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [A SAS használatának engedélyezése](authenticate-shared-access-signature.md)
-- [Szerepkör-alap hozzáférés-vezérlés engedélyezése (RBAC) használata](authenticate-shared-access-signature.md)
-- [További információ az Eseményközpontokról](event-hubs-about.md)
+- [Engedélyezés SAS használatával](authenticate-shared-access-signature.md)
+- [Engedélyezés a szerepköralapú hozzáférés-vezérlés (RBAC) használatával](authenticate-shared-access-signature.md)
+- [További információ a Event Hubs](event-hubs-about.md)
 
-Lásd a következő kapcsolódó cikkeket:
+Tekintse meg a következő kapcsolódó cikkeket:
 
-- [Az Azure-eseményközpontoknak az Azure Active Directory használatával történő hitelesítése](authenticate-application.md)
-- [Felügyelt identitás hitelesítése az Azure Active Directoryval az Event Hubs-erőforrások eléréséhez](authenticate-managed-identity.md)
-- [Hozzáférés engedélyezése az Event Hubs-erőforrásokhoz az Azure Active Directory használatával](authorize-access-azure-active-directory.md)
-- [Hozzáférés engedélyezése az Event Hubs-erőforrásokhoz megosztott hozzáférési aláírásokkal](authorize-access-shared-access-signature.md)
+- [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)
+- [Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez](authenticate-managed-identity.md)
+- [Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával](authorize-access-azure-active-directory.md)
+- [Hozzáférés engedélyezése Event Hubs erőforrásokhoz közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md)

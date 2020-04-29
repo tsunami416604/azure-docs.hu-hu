@@ -1,6 +1,6 @@
 ---
-title: Meglévő játékosok használata a tartalom lejátszásához - Azure | Microsoft dokumentumok
-description: Ez a cikk azokat a meglévő játékosokat sorolja fel, amelyek segítségével lejátszhatja a tartalmat.
+title: Meglévő játékosok használata a tartalom lejátszásához – Azure | Microsoft Docs
+description: Ez a cikk felsorolja azokat a meglévő játékosokat, amelyeket a tartalom lejátszásához használhat.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,52 +15,52 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686927"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A tartalom lejátszása meglévő lejátszókkal
-Az Azure Media Services számos népszerű streamelési formátumot támogat, például a sima streamelést, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör a meglévő játékosokra mutat, akik segítségével tesztelheted az adatfolyamokat.
+A Azure Media Services számos népszerű streaming formátumot támogat, például a Smooth Streaming, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör egy meglévő, a streamek tesztelésére használható játékost mutat be.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Az Azure Portal Media Services tartalomlejátszója
-Az **Azure** Portal egy tartalomlejátszót biztosít, amely segítségével tesztelheti a videót.
+### <a name="the-azure-portal-media-services-content-player"></a>A tartalom lejátszó Azure Portal Media Services
+Az **Azure** Portal egy tartalommal rendelkező lejátszót biztosít, amellyel tesztelheti a videót.
 
-Kattintson a kívánt videóra (győződjön meg róla, hogy [közzétették),](media-services-portal-publish.md)és kattintson a **lejátszás** gombra a portál alján.
+Kattintson a kívánt videóra (Győződjön meg róla, hogy [közzé lett téve](media-services-portal-publish.md)), majd kattintson a portál alján található **Lejátszás** gombra.
 
 Vegye figyelembe a következőket:
 
-* A **MEDIA SERVICES CONTENT PLAYER** (Media Services tartalomlejátszó) az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, használjon másik lejátszót. Például az [Azure Media Player](https://aka.ms/azuremediaplayer).
+* A **MEDIA SERVICES CONTENT PLAYER** (Media Services tartalomlejátszó) az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, használjon másik lejátszót. Például [Azure Media Player](https://aka.ms/azuremediaplayer).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
-Az [Azure Media Player](https://aka.ms/azuremediaplayer) segítségével lejátszhatja a tartalmat (tiszta vagy védett) az alábbi formátumok bármelyikében:
+A következő formátumok bármelyikében használhatja a [Azure Media Player](https://aka.ms/azuremediaplayer) a tartalom (tiszta vagy védett) lejátszásához:
 
 * Smooth Streaming
 * MPEG DASH
 * HLS
 * Progresszív MP4
 
-### <a name="flash-player"></a>Flash lejátszó
+### <a name="flash-player"></a>Flash-lejátszó
 
-#### <a name="playready-with-token"></a>PlayReady és token
+#### <a name="playready-with-token"></a>PlayReady Tokenrel
 
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>DASH lejátszók
+### <a name="dash-players"></a>DASH-lejátszók
 
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Egyéb
-A HLS URL-ek teszteléséhez a következőket is használhatja:
+A HLS URL-címek teszteléséhez használhatja a következőket is:
 
 * **Safari** iOS-eszközön vagy
-* **3ivx HLS Player** Windows rendszeren.
+* **3IVX HLS-lejátszó** Windows rendszeren.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

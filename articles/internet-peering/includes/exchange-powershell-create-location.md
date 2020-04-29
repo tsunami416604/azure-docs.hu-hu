@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678623"
 ---
-A **Get-AzPeeringLocation PowerShell-parancsmag** a kötelező paraméterrel `Kind`rendelkező társviszony-létesítési helyek listáját adja vissza, amelyet a későbbi lépésekben fog használni.
+A **Get-AzPeeringLocation PowerShell-** parancsmag a kötelező paraméterrel `Kind`adja vissza a társítási helyszínek listáját, amelyet a későbbi lépésekben fog használni.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-Az Exchange társviszony-létesítési helyei a következő mezőket tartalmazzák:
-* ExchangeName (ExchangeName)
-* Társviszony-létesítési hely
+Az Exchange-társítási helyszínek a következő mezőket tartalmazzák:
+* ExchangeName
+* PeeringLocation
 * Ország
-* PeeringDBFacilityId azonosító
+* PeeringDBFacilityId
 * PeeringDBFacilityLink
-* MicrosoftIPv4Cím
-* MicrosoftIPv6Cím
+* MicrosoftIPv4Address
+* MicrosoftIPv6Address
 
-Ellenőrizze, hogy jelen van-e a kívánt társviszony-létesítési lehetőségben a [Társviszony-létesítési lehetőségre](https://wwww.peeringdb.com)hivatkozva.
+Győződjön meg arról, hogy a kívánt társi létesítményben jelen van a [PeeringDB](https://wwww.peeringdb.com).
 
-Ez a példa azt mutatja be, hogyan használható Seattle társviszony-létesítési helytársviszony-létesítési helyként.
+Ebből a példából megtudhatja, hogyan használható a Seattle a társas hely létrehozásához.
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

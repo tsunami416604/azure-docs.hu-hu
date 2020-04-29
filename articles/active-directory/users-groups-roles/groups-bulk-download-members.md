@@ -1,6 +1,6 @@
 ---
-title: Tömeges enletöltő csoporttagsági lista – Azure Active Directory portál | Microsoft dokumentumok
-description: Felhasználók tömeges hozzáadása az Azure Felügyeleti központban.
+title: Csoportos tagságok listájának tömeges letöltése – Azure Active Directory portál | Microsoft Docs
+description: A felhasználók tömeges hozzáadása az Azure felügyeleti központban.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,36 +14,36 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81533680"
 ---
-# <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Csoport tömeges letöltése az Azure Active Directoryban
+# <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Csoport tagjainak tömeges letöltése Azure Active Directory
 
-Az Azure Active Directory (Azure AD) portál használatával tömegesen letöltheti a szervezet egy csoportjának tagjait egy vesszővel tagolt értékfájlba (CSV).
+A Azure Active Directory (Azure AD) portál használatával tömegesen töltheti le a szervezet egy csoportjának tagjait vesszővel tagolt (CSV) fájlba.
 
 ## <a name="to-bulk-download-group-membership"></a>Csoporttagság tömeges letöltése
 
-1. Jelentkezzen be [az Azure Portalon](https://portal.azure.com) egy felhasználói rendszergazdai fiókkal a szervezetben. A csoporttulajdonosok tömegesen is letölthetik a saját csoporttagjaikat.
-1. Az Azure AD-ben válassza **a Csoportok** > **minden csoport lehetőséget.**
-1. Nyissa meg azt a csoportot, amelynek tagságát le szeretné tölteni, majd válassza a **Tagok**lehetőséget.
-1. A **Tagok** lapon válassza a **Tagok letöltése** lehetőséget a csoporttagokat felsoroló CSV-fájl letöltéséhez.
+1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjait is tömegesen tölthetik le.
+1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Nyissa meg azt a csoportot, amelynek tagságát le szeretné tölteni, majd válassza a **tagok**lehetőséget.
+1. A **tagok** lapon válassza a **tagok letöltése** lehetőséget, hogy letöltse a csoporttagokat felsoroló CSV-fájlt.
 
-   ![A Tagok letöltése parancs a csoport profillapján található](./media/groups-bulk-download-members/download-panel.png)
+   ![A tagok letöltése parancs a csoport profil lapján található.](./media/groups-bulk-download-members/download-panel.png)
 
-## <a name="check-download-status"></a>Letöltési állapot ellenőrzése
+## <a name="check-download-status"></a>Letöltés állapotának keresése
 
-Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredménylapján láthatja.**
+Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
 [![](media/groups-bulk-download-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download-members/bulk-center.png#lightbox)
 
-## <a name="bulk-download-service-limits"></a>Tömeges letöltési szolgáltatás korlátai
+## <a name="bulk-download-service-limits"></a>Szolgáltatási korlátok tömeges letöltése
 
-A csoporttagok listájának letöltéséhez minden tömeges tevékenység legfeljebb egy órán át futhat. Ez lehetővé teszi, hogy letölt egy listát legalább 500.000 tagja van.
+A csoporttagok listájának letöltéséhez minden tömeges tevékenység legfeljebb egy óráig futhat. Ez lehetővé teszi, hogy letöltse legalább 500 000 tag listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tömeges importálási csoport tagjai](groups-bulk-import-members.md)
+- [Csoporttagok tömeges importálása](groups-bulk-import-members.md)
 - [Csoporttagok tömeges eltávolítása](groups-bulk-download-members.md)

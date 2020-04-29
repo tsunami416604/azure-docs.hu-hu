@@ -1,27 +1,27 @@
 ---
-title: 'Rövid útmutató: Java webapp-elemzés az Azure Application Insights segítségével'
+title: 'Gyors útmutató: Java Web App Analytics az Azure Application Insights'
 description: 'Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. '
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537508"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: Az Application Insights első lépései java webes projektben
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
-Ebben a rövid útmutatóban az Application Insights segítségével automatikusan instrument request, nyomon követheti a függőségek, és gyűjtse a teljesítményszámlálók, diagnosztizálni a teljesítményproblémák és kivételek, és írjon kódot, hogy nyomon kövesse, mit csinálnak a felhasználók az alkalmazással.
+Ebben a rövid útmutatóban a Application Insights használatával automatikusan kérheti a kérelmeket, nyomon követheti a függőségeket, és összegyűjtheti a teljesítményszámlálókat, diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket, és kódot írhat az alkalmazással kapcsolatos felhasználók nyomon követéséhez.
 
 Az Application Insights egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalmazásokat támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Egy működő Java alkalmazás.
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Működő Java-alkalmazás.
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights-kialakítási kulcs beszerzése
 
@@ -38,7 +38,7 @@ Az Application Insights egy bővíthető elemzési szolgáltatás a webfejleszt�
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-Ha a projekt már be van állítva a Maven buildelésre való használatára, egyesítse a következő kódot a *pom.xml* fájllal.
+Ha a projekt már be van állítva a Maven for Build használatára, egyesítse a következő kódot a *Pom. XML* fájlba.
 
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
 
@@ -56,7 +56,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
 
 # <a name="gradle"></a>[Gradle](#tab/gradle)
 
-Ha a projekt már be van állítva a Gradle buildelésre való használatára, egyesítse a következő kódot a *build.gradle* fájllal.
+Ha a projekt már be van állítva a Gradle for Build használatára, egyesítse a következő kódot a *Build. Gradle* fájlba.
 
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
 
@@ -75,21 +75,21 @@ Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsigh
 ---
 
 ### <a name="questions"></a>Kérdések
-* *Milyen kapcsolat van a `-web-auto` `-web` és `-core` az összetevő között?*
-  * `applicationinsights-web-auto`olyan metrikákat biztosít, amelyek nyomon követik a HTTP servlet kérelmek számát és a válaszidőket az Application Insights servlet szűrő futásidőben történő automatikus regisztrálásával.
-  * `applicationinsights-web`is ad metrikák, amelyek nyomon követik a HTTP servlet kérelmek száma és a válaszidők, de manuális regisztrációt igényel az Application Insights servlet szűrő az alkalmazásban.
-  * `applicationinsights-core`csak a csupasz API-t adja, például ha az alkalmazás nem servlet-alapú.
+* *Mi a kapcsolat a `-web-auto` `-web` és `-core` az összetevők között?*
+  * `applicationinsights-web-auto`olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, ha automatikusan regisztrálja a Application Insights servlet szűrőt futásidőben.
+  * `applicationinsights-web`olyan metrikákat is biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, de az alkalmazásban manuálisan kell regisztrálni az Application Insights servlet-szűrőt.
+  * `applicationinsights-core`csak az operációs rendszer nélküli API-t biztosítja, például ha az alkalmazás nem servlet-alapú.
   
 * *Hogyan frissíthetek az SDK legújabb verziójára?*
-  * Ha Gradle-t vagy Mavent használsz...
-    * Frissítse a buildfájlt a legújabb verzió megadásához.
+  * Ha Gradle vagy Mavent használ...
+    * Frissítse a Build-fájlt, és adja meg a legújabb verziót.
   * Ha manuálisan kezeli a függőségeket...
     * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket. A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
 
-## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* fájl hozzáadása
-Adja hozzá az *ApplicationInsights.xml fájlt* a projekt erőforrásmappájához, vagy győződjön meg arról, hogy az hozzáadódik a projekt telepítési osztályának elérési útvonalához. Másolja bele a következő XML-t.
+## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights. XML* fájl hozzáadása
+Vegye fel a *ApplicationInsights. xml fájlt* a projekt erőforrások mappájába, vagy győződjön meg arról, hogy a projekt üzembe helyezési osztályának elérési útjához van adva. Másolja bele a következő XML-t.
 
-Cserélje le a műszerezési kulcsot az Azure Portalról kapottra.
+Cserélje le a kialakítási kulcsot arra a típusra, amelyet a Azure Portal kapott.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -118,18 +118,18 @@ Cserélje le a műszerezési kulcsot az Azure Portalról kapottra.
 </ApplicationInsights>
 ```
 
-Szükség esetén a konfigurációs fájl az alkalmazás számára elérhető bármely helyen lehet.  A rendszertulajdonság `-Dapplicationinsights.configurationDirectory` az *ApplicationInsights.xml*fájlt tartalmazó könyvtárat adja meg. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
+Opcionálisan a konfigurációs fájl bármely, az alkalmazás számára elérhető helyen lehet.  A System tulajdonság `-Dapplicationinsights.configurationDirectory` megadja a *ApplicationInsights. xml fájlt*tartalmazó könyvtárat. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
-* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott minden egyes kérelemhez. Ezután hozzáadja ezt az azonosítót tulajdonságként a telemetria minden eleméhez, mint a tulajdonság "Operation.Id". Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnostic].
+* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez. Ezután hozzáadja ezt az azonosítót tulajdonságként a telemetria minden eleméhez, mint a "Operation.Id" tulajdonságot. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>A kialakítási kulcs beállításának egyéb módjai
 Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
 
-1. Rendszertulajdonság: -DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
+1. System tulajdonság:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
 2. Környezeti változó: APPINSIGHTS_INSTRUMENTATIONKEY
-3. Konfigurációs fájl: *ApplicationInsights.xml*
+3. Konfigurációs fájl: *ApplicationInsights. XML*
 
 [Beállíthatja a programkódban](../../azure-monitor/app/api-custom-events-metrics.md#ikey) is:
 
@@ -144,7 +144,7 @@ Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
 
 ## <a name="add-agent"></a>Ügynök hozzáadása
 
-[Telepítse a Java-ügynököt a](java-agent.md) kimenő HTTP-hívások, jdbc-lekérdezések, alkalmazásnaplózás és jobb műveletelnevezés rögzítéséhez.
+[Telepítse a Java-ügynököt](java-agent.md) a kimenő HTTP-hívások, a JDBC-lekérdezések, az alkalmazások naplózása és a jobb működés elnevezésének rögzítéséhez.
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 Futtassa hibakeresés módban a fejlesztési számítógépén, vagy tegye közzé a kiszolgálóján.
@@ -154,13 +154,13 @@ Térjen vissza az Application Insights-erőforráshoz a [Microsoft Azure Portalo
 
 A HTTP-kérelemadatok az áttekintési panelen jelennek meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
 
-![Áttekintést kapó mintaadatok képernyőképe](./media/java-get-started/overview-graphs.png)
+![A mintaadatok áttekintését bemutató képernyőkép](./media/java-get-started/overview-graphs.png)
 
 [További információk a metrikákról.][metrics]
 
 Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
-![Az Application Insights hibáinak ablaktáblája diagramokkal](./media/java-get-started/006-barcharts.png)
+![Application Insights hibák panel diagramokkal](./media/java-get-started/006-barcharts.png)
 
 <!--
 [TODO update image with 2.5.0 operation naming provided by agent]
@@ -169,7 +169,7 @@ Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 ### <a name="instance-data"></a>Példányadatok
 Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.
 
-![Részletezés egy adott mintanézetbe](./media/java-get-started/007-instance.png)
+![Részletezés egy adott minta nézetbe](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Elemzés: Erőteljes lekérdezési nyelv
 Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok összegzéséhez és egyéni példányok megkereséséhez is.  Az [elemzés](../../azure-monitor/app/analytics.md) erőteljes eszköz a teljesítmény és a használat megértéséhez és diagnosztikai célokra is.
@@ -192,9 +192,9 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
 
     (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service konfiguráció (tavaszi rendszerindítás)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring boot)
 
-A Windows rendszeren futó tavaszi rendszerindítási alkalmazások további konfigurációt igényelnek az Azure App Services futtatásához. Módosítsa a **web.config fájlt,** és adja hozzá a következő konfigurációt:
+A Windows rendszeren futó Spring boot-alkalmazások további konfigurálást igényelnek az Azure App Services-on való futtatáshoz. Módosítsa a **web. config** fájlt, és adja hozzá a következő konfigurációt:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -210,30 +210,30 @@ A Windows rendszeren futó tavaszi rendszerindítási alkalmazások további kon
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
-A nem kezelt kivételeket és a kérési hibákat automatikusan gyűjti az Application Insights webszűrő.
+A nem kezelt kivételeket és a kérelmekkel kapcsolatos hibákat a Application Insights webes szűrő automatikusan gyűjti.
 
-Más kivételekre vonatkozó adatok gyűjtéséhez [a kódba beillesztheti a trackException() hívásokat.][apiexceptions]
+Ha más kivételekkel szeretne adatokat gyűjteni, a [kódban trackException () hívásokat is beszúrhat][apiexceptions].
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Metódushívások és külső függőségek megfigyelése
 [Telepítse a Java ügynököt](java-agent.md) a megadott belső módszerek és a JDBC-n keresztül végzett hívások naplózásához, időzítési adatokkal.
 
-És az automatikus működés elnevezéséhez.
+És automatikus művelet-elnevezéssel.
 
 ## <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetés
 
-Az Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést.](https://w3c.github.io/trace-context/)
+A Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést](https://w3c.github.io/trace-context/).
 
-A bejövő SDK konfigurációt a [korrelációról](correlation.md)szóló cikkünk ismerteti.
+A bejövő SDK konfigurációját a [korrelációról](correlation.md)szóló cikkben ismertetjük.
 
-A kimenő SDK-konfiguráció az [AI-Agent.xml](java-agent.md) fájlban van definiálva.
+A kimenő SDK-konfiguráció a [AI-Agent. XML](java-agent.md) fájlban van definiálva.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-A **Teljesítményszámlálók**tartományának megtekintéséhez nyissa meg a Vizsgálat , **Metrikák**.
+Nyissa meg a **vizsgálat**, **mérőszámok**lehetőséget, és tekintse meg a teljesítményszámlálók tartományát.
 
-![Képmutató a metrikák ablaktábláról a kijelölt folyamat-privát bájtokkal](./media/java-get-started/011-perf-counters.png)
+![Képernyőfelvétel a metrikák panelről a folyamat saját bájtjainak kiválasztásával](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Teljesítményszámláló-gyűjtemény testreszabása
-A szabványos teljesítményszámlálók gyűjteményének letiltásához adja hozzá a következő kódot az *ApplicationInsights.xml* fájl gyökércsomópontja alá:
+A teljesítményszámlálók szabványos készlete gyűjtésének letiltásához adja hozzá a következő kódot a *ApplicationInsights. XML* fájl gyökeréhez:
 
 ```XML
     <PerformanceCounters>
@@ -258,7 +258,7 @@ További gyűjtendő teljesítményszámlálókat határozhat meg.
 * `displayName`– Az Application Insights portálon megjelenő név.
 * `objectName`– A JMX objektum neve.
 * `attribute`– A JMX objektum nevének lehívni kívánt attribútuma
-* `type`(nem kötelező) - A JMX objektum attribútumának típusa:
+* `type`(nem kötelező) – a JMX objektum attribútumának típusa:
   * Alapértelmezett: egyszerű típus, például int vagy long.
   * `composite`: a teljesítményszámláló-adatok az „Attribútum.Adat” formátumban szerepelnek
   * `tabular`: a teljesítményszámláló-adatok táblázatsor formájában szerepelnek

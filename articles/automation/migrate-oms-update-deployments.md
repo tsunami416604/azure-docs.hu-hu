@@ -1,77 +1,77 @@
 ---
-title: Az OMS-frissítési központi telepítések áttelepítése az Azure-ba
-description: Ez a cikk bemutatja, hogyan telepítheti át a meglévő OMS-frissítési központi telepítéseket az Azure-ba
+title: OMS-frissítés telepítése az Azure-ba
+description: Ez a cikk azt ismerteti, hogyan telepítheti át meglévő OMS-frissítésének üzembe helyezését az Azure-ba
 services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680003"
 ---
-# <a name="migrate-your-oms-update-deployments-to-azure"></a>Az OMS-frissítési telepítések áttelepítése az Azure-ba
+# <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS-frissítés telepítése az Azure-ba
 
-Az Operations Management Suite (OMS) portál [elavult.](../azure-monitor/platform/oms-portal-transition.md) Az OMS-portál frissítéskezeléshez elérhető összes funkció elérhető az Azure Portalon az Azure Monitor naplóin keresztül. Ez a cikk az Azure Portalra való áttelepítéshez szükséges információkat tartalmazza.
+Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platform/oms-portal-transition.md). A OMS-portálon Update Management összes funkciója elérhető a Azure Portalban Azure Monitor naplókon keresztül. Ez a cikk azokat az információkat tartalmazza, amelyeket át kell telepíteni a Azure Portalra.
 
 ## <a name="key-information"></a>Legfontosabb információk
 
-* A meglévő telepítések továbbra is működni fognak. Miután újra létrehozta a központi telepítést az Azure-ban, törölheti a régi üzembe helyezést az OMS-ből.
-* Az OMS-ben már meglévő összes funkció elérhető az Azure-ban, ha többet szeretne megtudni az Update Management szolgáltatásról, olvassa [el az Update Management áttekintéscímű témakört.](automation-update-management.md)
+* A meglévő telepítések továbbra is működni fognak. Miután újra létrehozta az üzembe helyezést az Azure-ban, törölheti a régi üzembe helyezést a OMS-ből.
+* A OMS összes meglévő funkciója elérhető az Azure-ban, hogy többet tudjon meg a Update Managementről: [Update Management áttekintése](automation-update-management.md).
 
 ## <a name="access-the-azure-portal"></a>Az Azure Portal elérése
 
-Az OMS-munkaterületen kattintson **a Megnyitás az Azure-ban**gombra. Ez a beállítás az OMS által használt Log Analytics-munkaterületre kerül.
+A OMS munkaterületen kattintson a **Megnyitás az Azure-ban**lehetőségre. Ez a kijelölés a OMS által használt Log Analytics munkaterületre navigál.
 
-![Megnyitás az Azure-ban - OMS portál](media/migrate-oms-update-deployments/link-to-azure-portal.png)
+![Megnyitás az Azure-OMS portálon](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
-Az Azure Portalon kattintson az **Automation-fiók elemre.**
+A Azure Portal kattintson az **Automation-fiók** elemre.
 
 ![Azure Monitor-naplók](media/migrate-oms-update-deployments/log-analytics.png)
 
-Az Automation-fiókban kattintson **a Frissítéskezelés gombra.**
+Az Automation-fiókban kattintson a **Update Management**elemre.
 
 ![Frissítéskezelés](media/migrate-oms-update-deployments/azure-automation.png)
 
-Az Azure Portalon válassza az **Automation-fiókok** lehetőséget az **Összes szolgáltatás csoportban.** 
+A Azure Portal az **összes szolgáltatás**területen válassza az **Automation-fiókok** lehetőséget. 
 
-A **Felügyeleti eszközök csoportban**válassza ki a megfelelő Automation-fiókot, majd kattintson **a Frissítéskezelés gombra.**
+A **felügyeleti eszközök**területen válassza ki a megfelelő Automation-fiókot, majd kattintson a **Update Management**elemre.
 
-## <a name="recreate-existing-deployments"></a>Meglévő telepítések újbóli létrehozása
+## <a name="recreate-existing-deployments"></a>Meglévő központi telepítések újbóli létrehozása
 
-Az OMS-portálon létrehozott összes frissítési központi telepítés nek van egy [mentett keresése,](../azure-monitor/platform/computer-groups.md) amelyet számítógépcsoportnak is neveznek, és amelynek neve megegyezik a létező frissítésközponti telepítés nevével. A mentett keresés a frissítés központi telepítésében ütemezett gépek listáját tartalmazza.
+A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/platform/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
 
 ![Frissítéskezelés](media/migrate-oms-update-deployments/oms-deployment.png)
 
 A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
-Új központi telepítés létrehozásához nyissa meg az Azure Portalt, válassza ki a használt Automation-fiókot, és kattintson a **Frissítéskezelés gombra.** Kattintson **a Frissítés telepítésének ütemezése gombra.**
+Új frissítés központi telepítésének létrehozásához nyissa meg a Azure Portal, válassza ki a használt Automation-fiókot, majd kattintson az **Update Management**elemre. Kattintson a **frissítés központi telepítésének ütemezett frissítése**elemre.
 
-![Frissítés telepítésének ütemezése](media/migrate-oms-update-deployments/schedule-update-deployment.png)
+![Frissítés központi telepítésének ütemezett időpontja](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-Megnyílik az Új frissítés központi telepítése ablaktábla. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás gombra:**
+Megnyílik az új frissítés központi telepítése panel. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás**gombra:
 
-A **gépek frissítéséhez**válassza ki a meglévő OMS-telepítés által használt mentett keresést.
+A **frissíteni kívánt gépek**esetében válassza ki a meglévő OMS-telepítés által használt mentett keresést.
 
 | Tulajdonság | Leírás |
 | --- | --- |
 |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-|Operációs rendszer| Válassza a **Linux** vagy **a Windows**lehetőséget.|
-|Frissíthető gépek |Jelöljön ki egy Mentett keresést, importált csoportot, vagy válassza a Gép elemet a legördülő menüből, és válassza ki az egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok létrehozásának különböző módszereiről az Azure Monitor naplóiban a [Számítógépcsoportok az Azure Monitor naplóiban című témakörben olvashat.](../azure-monitor/platform/computer-groups.md) |
-|Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást. A CentOS ezt nem támogatja a dobozból.|
-|Kizárandó frissítések|Adja meg a kizárandó frissítéseket. Windows esetén írja be a tudásbáziscikket a **tudásbáziselőtag** nélkül. Linux esetén írja be a csomag nevét, vagy használjon helyettesítő karaktert.  |
-|Ütemezési beállítások|Válassza ki az indítási időt, majd válassza az **Egyszer** vagy az **Ismétlődés lehetőséget** az ismétlődéshez. | 
-| Karbantartási ablak |A frissítésekhez beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc vagy 6 óránál. |
-| Újraindítás vezérlése| Meghatározza az újraindítások kezelésének módját.</br>Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
+|Operációs rendszer| Válassza a **Linux** vagy a **Windows**lehetőséget.|
+|Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
+|Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást. A CentOS nem támogatja ezt a jelölőnégyzetet.|
+|Kizárási frissítések|Adja meg a kizárni kívánt frissítéseket. Windows esetén **a KB-os előtag nélkül** adja meg a tudásbázist. Linux esetén adja meg a csomag nevét, vagy használjon helyettesítő karaktert.  |
+|Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, majd válassza ki az ismétlődést **egyszer** vagy **ismétlődően** . | 
+| Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc vagy több mint 6 óra. |
+| Vezérlő újraindítása| Meghatározza az újraindítások kezelését.</br>Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
-Kattintson **az Ütemezett frissítés központi telepítései** elemre az újonnan létrehozott frissítési központi telepítés állapotának megtekintéséhez.
+Az újonnan létrehozott frissítés központi telepítésének állapotának megtekintéséhez kattintson az **ütemezett frissítések központi telepítések** elemre.
 
-![új frissítés központi telepítése](media/migrate-oms-update-deployments/new-update-deployment.png)
+![új frissítés telepítése](media/migrate-oms-update-deployments/new-update-deployment.png)
 
-Mint korábban említettük, miután az új üzemelő példányok konfigurálása az Azure Portalon keresztül, a meglévő központi telepítések eltávolíthatók az OMS-portálról.
+Amint azt korábban említettük, az új központi telepítések a Azure Portal használatával konfigurálhatók, a meglévő központi telepítések eltávolíthatók a OMS-Portálról.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni az Azure-beli frissítéskezelésről, olvassa el [a Frissítéskezelés témakört.](automation-update-management.md)
+További információ az Azure-beli Update Managementről: [Update Management](automation-update-management.md).

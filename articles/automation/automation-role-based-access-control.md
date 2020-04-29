@@ -7,320 +7,320 @@ ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535570"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
-A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az [RBAC](../role-based-access-control/overview.md)használatával elkülönítheti a feladatokat a csapaton belül, és csak a feladatok elvégzéséhez szükséges felhasználók, csoportok és alkalmazások elérésének mennyiségét biztosíthatja. Szerepköralapú hozzáférést adhat a felhasználóknak az Azure Portalon, az Azure parancssori eszközein vagy az Azure Management API-kon keresztül.
+A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. A [RBAC](../role-based-access-control/overview.md)segítségével elkülönítheti a feladatait a csapaton belül, és csak a felhasználókhoz, csoportokhoz és alkalmazásokhoz férhet hozzá, amelyekre szükségük van a feladatok elvégzéséhez. Szerepköralapú hozzáférést biztosíthat a felhasználóknak a Azure Portal, az Azure parancssori eszközei vagy az Azure felügyeleti API-k használatával.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
-## <a name="roles-in-automation-accounts"></a>Szerepkörök az Automation-fiókokban
+## <a name="roles-in-automation-accounts"></a>Az Automation-fiókok szerepkörei
 
 Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szerepkörök rendelhetők az Automation-fiók tartományában lévő felhasználókhoz, csoportokhoz és alkalmazásokhoz. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:
 
 | **Szerepkör** | **Leírás** |
 |:--- |:--- |
-| Tulajdonos |A Tulajdonos szerepkör lehetővé teszi a hozzáférést az Automation-fiókon belüli összes erőforráshoz és művelethez, beleértve a hozzáférést más felhasználók, csoportok és alkalmazások számára az Automation-fiók kezeléséhez. |
+| Tulajdonos |A tulajdonosi szerepkör lehetővé teszi az Automation-fiókon belüli összes erőforrás és művelet elérését, beleértve az Automation-fiók kezeléséhez szükséges más felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést is. |
 | Közreműködő |A közreműködői szerepkör segítségével minden elemet kezelhet, csak más felhasználók Automation-fiókokra vonatkozó hozzáférési jogosultságait nem módosíthatja. |
 | Olvasó |Az olvasói szerep lehetővé teszi az összes erőforrás megtekintését egy Automation-fiókban, de módosítás nem hajtható vele végre. |
-| Automation-operátor |Az Automation Operator szerepkör lehetővé teszi a runbook oktatásának és tulajdonságainak megtekintését, valamint az Automation-fiók összes runbookjának létrehozását és kezelését. Ez a szerepkör akkor hasznos, ha meg szeretné védeni az Automation-fiók erőforrásait, például a hitelesítő adatokat és a runbookokat a megtekintéstől vagy a módosítástól, de továbbra is lehetővé teszi a szervezet tagjai számára, hogy végrehajtsák ezeket a runbookokat. |
-|Automatizálási feladat operátor|Az Automation-feladat operátor szerepkör lehetővé teszi, hogy hozzon létre és kezelje a feladatokat az összes runbookok egy Automation-fiókban.|
-|Automatizálási runbook-operátor|Az Automation Runbook Operator szerepkör lehetővé teszi a runbook nevének és tulajdonságainak megtekintését.|
-| Log Analytics közreműködő | A Log Analytics közreműködői szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuális gép bővítmény virtuális gépekhez való hozzáadását, a tárfiók kulcsainak olvasását az Azure storage-ból származó naplók gyűjteményének konfigurálásához, az Automation-fiókok létrehozásához és konfigurálásához, a megoldások hozzáadását és az Azure-diagnosztika konfigurálását az összes Azure-erőforráshoz.|
-| Log Analytics olvasó | A Log Analytics-olvasó szerepkör lehetővé teszi az összes figyelési adat megtekintését és keresését, valamint a figyelési beállítások megtekintését. Ez magában foglalja az Azure-diagnosztika konfigurációjának megtekintését az összes Azure-erőforráson. |
-| Közreműködő figyelése | A figyelésközreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások frissítését.|
-| Monitoring olvasó | A Figyelési olvasó szerepkör lehetővé teszi az összes figyelési adat olvasását. |
+| Automation-operátor |Az Automation-operátori szerepkör lehetővé teszi a runbook nevének és tulajdonságainak megtekintését, valamint feladatok létrehozását és kezelését egy Automation-fiókban lévő összes runbookok. Ez a szerepkör akkor hasznos, ha az Automation-fiók erőforrásait, például a hitelesítő adatokat és a runbookok szeretné megtekinteni vagy módosítani, de továbbra is lehetővé teszi, hogy a szervezet tagjai végrehajtsák ezeket a runbookok. |
+|Automation-feladatok operátora|Az Automation-feladat operátori szerepkör lehetővé teszi feladatok létrehozását és kezelését egy Automation-fiókban lévő összes runbookok.|
+|Automation Runbook operátor|Az Automation Runbook-kezelő szerepkör lehetővé teszi a Runbook nevének és tulajdonságainak megtekintését.|
+| Log Analytics közreműködő | A Log Analytics közreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását, a Storage-fiók kulcsainak beolvasását, amelyekkel konfigurálhatja az Azure Storage-ból származó naplók gyűjtését, automatizálhatja és konfigurálhatja az Automation-fiókokat, valamint megoldásokat adhat hozzá, és|
+| Log Analytics olvasó | A Log Analytics olvasó szerepkör lehetővé teszi az összes figyelési adat megtekintését és keresését, valamint a figyelési beállítások megtekintését. Ez magában foglalja az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. |
+| Közreműködő figyelése | A figyelési közreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások frissítését.|
+| Figyelő olvasó | A figyelési olvasó szerepkör lehetővé teszi az összes figyelési adat olvasását. |
 | Felhasználói hozzáférés rendszergazdája |A felhasználói hozzáférés rendszergazdájának szerepköre lehetővé teszi, hogy kezelje a felhasználói hozzáférést az Azure Automation-fiókokhoz. |
 
 ## <a name="role-permissions"></a>Szerepkör-engedélyek
 
-Az alábbi táblázatok az egyes szerepkörhöz megadott engedélyeket ismertetik. Ez magában foglalhatja a műveleteket, amelyek engedélyeket adnak, és a NotActions, amelyek korlátozzák őket.
+A következő táblázatok ismertetik az egyes szerepkörökhöz adott engedélyeket. Ebbe beletartozhatnak olyan műveletek, amelyek az engedélyeket és a nem megfelelő jogosultságokat biztosítanak.
 
 ### <a name="owner"></a>Tulajdonos
 
-A tulajdonos mindent kezelhet, beleértve a hozzáférést is. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+A tulajdonosok mindent kezelhetnek, beleértve a hozzáférést is. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |Műveletek|Leírás|
 |---|---|
-|Microsoft.Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése.|
+|Microsoft. Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése.|
 
 ### <a name="contributor"></a>Közreműködő
 
-A közreműködő a hozzáférés kivételével mindent kezelhet. Az alábbi táblázat a szerepkörhöz megadott és elutasított engedélyeket mutatja be:
+A közreműködők A hozzáférés kivételével mindent kezelhetnek. A következő táblázat a szerepkörhöz megadott és megtagadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése|
+|Microsoft. Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése|
 |**Nem műveletek**||
-|Microsoft.Authorization/*/Delete| Szerepkörök és szerepkör-hozzárendelések törlése.       |
-|Microsoft.Authorization/*/Írás     |  Szerepkörök és szerepkör-hozzárendelések létrehozása.       |
-|Microsoft.Authorization/eevateAccess/Action    | Megtagadja a felhasználói hozzáférés rendszergazdájának létrehozását.       |
+|Microsoft. Authorization/*/delete| Szerepkörök és szerepkör-hozzárendelések törlése.       |
+|Microsoft. Authorization/*/Write     |  Szerepkörök és szerepkör-hozzárendelések létrehozása.       |
+|Microsoft. Authorization/elevateAccess/művelet    | Megtagadja a felhasználói hozzáférés rendszergazdájának létrehozását.       |
 
 ### <a name="reader"></a>Olvasó
 
-Az olvasó megtekintheti az Automation-fiók összes erőforrását, de nem módosíthatja azerőforrásokat.
+Az olvasó megtekintheti egy Automation-fiók összes erőforrását, de nem végezhet módosításokat.
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/read|Az összes erőforrás megtekintése egy Automation-fiókban. |
+|Microsoft. Automation/automationAccounts/READ|Egy Automation-fiók összes erőforrásának megtekintése. |
 
 ### <a name="automation-operator"></a>Automation-operátor
 
-Az Automation Operátor képes feladatokat létrehozni és kezelni, és olvasni a runbookok nevét és tulajdonságait az Automation-fiók összes runbookja számára.  Megjegyzés: Ha szabályozni szeretné az operátorok hozzáférését az egyes runbookokhoz, akkor ne állítsa be ezt a szerepkört, hanem használja az "Automation Job Operator" és az "Automation Runbook Operator" szerepköröket. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+Az Automation-operátorok feladatokat hozhatnak létre és kezelhetnek, valamint runbook-neveket és-tulajdonságokat olvashatnak az Automation-fiókokban lévő összes runbookok.  Megjegyzés: Ha a kezelőt egyéni runbookok szeretné vezérelni, akkor ne állítsa be ezt a szerepkört, hanem használja az "Automation-feladat operátora" és az "Automation Runbook operátor" szerepkört. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|Microsoft.Authorization/*/olvasás|Olvassa be az engedélyt.|
-|Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|Olvassa el a hibrid Runbook feldolgozó erőforrások.|
-|Microsoft.Automation/automationAccounts/jobs/read|A runbook feladatainak listázása.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Szüneteltetett feladat folytatása.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Folyamatban lévő feladat megszakítása.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Olvassa el a feladatstreamek és kimenet.|
-|Microsoft.Automation/automationAccounts/jobs/output/read|Szerezd meg a kimenet egy munkát.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Folyamatban lévő feladat szüneteltetése.|
-|Microsoft.Automation/automationAccounts/jobs/write|Munkahelyeket teremt.|
-|Microsoft.Automation/automationAccounts/jobSchedules/read|Azure Automation-feladatütemezés beszerezni.|
-|Microsoft.Automation/automationAccounts/jobSchedules/write|Hozzon létre egy Azure Automation-feladatütemezést.|
-|Microsoft.Automation/automationAccounts/linkedWorkspace/read|Az Automation-fiókhoz kapcsolódó munkaterület beszerezni.|
-|Microsoft.Automation/automationAccounts/read|Szerezzen be egy Azure Automation-fiókot.|
-|Microsoft.Automation/automationAccounts/runbooks/read|Szerezzen be egy Azure Automation-runbookot.|
-|Microsoft.Automation/automationAccounts/schedules/read|Szerezzen be egy Azure Automation-ütemezési eszközt.|
-|Microsoft.Automation/automationAccounts/schedules/write|Hozzon létre vagy frissítsen egy Azure Automation-ütemezési eszközt.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |A szerepkörök és a szerepkör-hozzárendelések olvasása.         |
-|Microsoft.Resources/deployments/*      |Erőforráscsoport-telepítések létrehozása és kezelése.         |
-|Microsoft.Insights/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
-|Microsoft.Támogatás/* |Támogatási jegyek létrehozása és kezelése.|
+|Microsoft. Authorization/*/READ|Olvasási engedély.|
+|Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/READ|Hibrid Runbook Worker-erőforrások olvasása.|
+|Microsoft. Automation/automationAccounts/feladatok/olvasás|A runbook feladatok listázása.|
+|Microsoft. Automation/automationAccounts/feladatok/folytatás/művelet|Szüneteltetett feladat folytatása.|
+|Microsoft. Automation/automationAccounts/feladatok/leállítás/művelet|Feladat megszakítása folyamatban.|
+|Microsoft. Automation/automationAccounts/feladatok/streamek/olvasás|Olvassa el a feladatok adatfolyamait és kimenetét.|
+|Microsoft. Automation/automationAccounts/feladatok/kimenet/olvasás|A feladatok kimenetének beolvasása.|
+|Microsoft. Automation/automationAccounts/Jobs/felfüggesztés/művelet|Feladat felfüggesztése folyamatban.|
+|Microsoft. Automation/automationAccounts/feladatok/írás|Hozzon létre feladatokat.|
+|Microsoft. Automation/automationAccounts/jobSchedules/READ|Azure Automation-feladatütemezés beolvasása.|
+|Microsoft. Automation/automationAccounts/jobSchedules/Write|Azure Automation feladatok ütemtervének létrehozása|
+|Microsoft. Automation/automationAccounts/linkedWorkspace/READ|Az Automation-fiókhoz kapcsolódó munkaterület beolvasása.|
+|Microsoft. Automation/automationAccounts/READ|Azure Automation fiók beszerzése.|
+|Microsoft. Automation/automationAccounts/runbookok/READ|Azure Automation runbook beolvasása.|
+|Microsoft. Automation/automationAccounts/ütemezett/beolvasás|Azure Automation ütemezett eszköz beolvasása.|
+|Microsoft. Automation/automationAccounts/ütemterv/írás|Azure Automation ütemezett eszköz létrehozása vagy frissítése.|
+|Microsoft. Resources/Subscriptions/resourceGroups/READ      |Szerepkörök és szerepkör-hozzárendelések olvasása.         |
+|Microsoft. Resources/üzemelő példány/*      |Erőforráscsoport-telepítések létrehozása és kezelése.         |
+|Microsoft. bepillantások/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
+|Microsoft. support/* |Támogatási jegyek létrehozása és kezelése.|
 
-### <a name="automation-job-operator"></a>Automatizálási feladat operátor
+### <a name="automation-job-operator"></a>Automation-feladatok operátora
 
-Automation-feladat operátori szerepkör az Automation-fiók hatókörén van megadva.Ez lehetővé teszi, hogy az operátor engedélyeket hozzon létre és kezeljen a fiók összes runbookja számára. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
-
-|**Műveletek**  |**Leírás**  |
-|---------|---------|
-|Microsoft.Authorization/*/olvasás|Olvassa be az engedélyt.|
-|Microsoft.Automation/automationAccounts/jobs/read|A runbook feladatainak listázása.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Szüneteltetett feladat folytatása.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Folyamatban lévő feladat megszakítása.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Olvassa el a feladatstreamek és kimenet.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Folyamatban lévő feladat szüneteltetése.|
-|Microsoft.Automation/automationAccounts/jobs/write|Munkahelyeket teremt.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |  A szerepkörök és a szerepkör-hozzárendelések olvasása.       |
-|Microsoft.Resources/deployments/*      |Erőforráscsoport-telepítések létrehozása és kezelése.         |
-|Microsoft.Insights/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
-|Microsoft.Támogatás/* |Támogatási jegyek létrehozása és kezelése.|
-
-### <a name="automation-runbook-operator"></a>Automatizálási runbook-operátor
-
-Automation Runbook operátor szerepkör a Runbook hatókörén. Az Automation Runbook Operátor megtekintheti a runbook nevét és tulajdonságait.Ez a szerepkör az "Automation Job Operator" szerepkörrel kombinálva lehetővé teszi az operátor számára, hogy a runbookhoz is hozzon létre és kezeljen feladatokat. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+Az Automation-feladatok operátori szerepköre az Automation-fiók hatókörében adható meg.Ez lehetővé teszi, hogy az operátor engedélyeket hozzon létre és kezeljen a fiók összes runbookok. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/runbooks/read     | Sorolja fel a runbookokat.        |
-|Microsoft.Authorization/*/olvasás      | Olvassa be az engedélyt.        |
-|Microsoft.Resources/subscriptions/resourceGroups/read      |A szerepkörök és a szerepkör-hozzárendelések olvasása.         |
-|Microsoft.Resources/deployments/*      | Erőforráscsoport-telepítések létrehozása és kezelése.         |
-|Microsoft.Insights/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
-|Microsoft.Támogatás/*      | Támogatási jegyek létrehozása és kezelése.        |
+|Microsoft. Authorization/*/READ|Olvasási engedély.|
+|Microsoft. Automation/automationAccounts/feladatok/olvasás|A runbook feladatok listázása.|
+|Microsoft. Automation/automationAccounts/feladatok/folytatás/művelet|Szüneteltetett feladat folytatása.|
+|Microsoft. Automation/automationAccounts/feladatok/leállítás/művelet|Feladat megszakítása folyamatban.|
+|Microsoft. Automation/automationAccounts/feladatok/streamek/olvasás|Olvassa el a feladatok adatfolyamait és kimenetét.|
+|Microsoft. Automation/automationAccounts/Jobs/felfüggesztés/művelet|Feladat felfüggesztése folyamatban.|
+|Microsoft. Automation/automationAccounts/feladatok/írás|Hozzon létre feladatokat.|
+|Microsoft. Resources/Subscriptions/resourceGroups/READ      |  Szerepkörök és szerepkör-hozzárendelések olvasása.       |
+|Microsoft. Resources/üzemelő példány/*      |Erőforráscsoport-telepítések létrehozása és kezelése.         |
+|Microsoft. bepillantások/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
+|Microsoft. support/* |Támogatási jegyek létrehozása és kezelése.|
+
+### <a name="automation-runbook-operator"></a>Automation Runbook operátor
+
+A Runbook-hatókörben az Automation Runbook operátori szerepkört kell megadni. Az Automation Runbook-kezelők megtekinthetik a Runbook nevét és tulajdonságait.Ez a szerepkör az "Automation Job Operator" szerepkörrel együtt lehetővé teszi, hogy az operátor a runbook is hozzon létre és kezeljen feladatokat. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
+
+|**Műveletek**  |**Leírás**  |
+|---------|---------|
+|Microsoft. Automation/automationAccounts/runbookok/READ     | A runbookok listázása.        |
+|Microsoft. Authorization/*/READ      | Olvasási engedély.        |
+|Microsoft. Resources/Subscriptions/resourceGroups/READ      |Szerepkörök és szerepkör-hozzárendelések olvasása.         |
+|Microsoft. Resources/üzemelő példány/*      | Erőforráscsoport-telepítések létrehozása és kezelése.         |
+|Microsoft. bepillantások/alertRules/*      | Riasztási szabályok létrehozása és kezelése.        |
+|Microsoft. support/*      | Támogatási jegyek létrehozása és kezelése.        |
 
 ### <a name="log-analytics-contributor"></a>Log Analytics közreműködő
 
-A Log Analytics közreműködője leolvashatja az összes figyelési adatot, és szerkesztheti a figyelési beállításokat. A figyelési beállítások szerkesztése magában foglalja a virtuális gépbővítmény virtuális gépekhez való hozzáadását; a tárfiók kulcsainak olvasása az Azure Storage-ból származó naplók gyűjteményének konfigurálásához; Automatizálási fiókok létrehozása és konfigurálása; megoldások hozzáadása; és konfigurálja az Azure-diagnosztikát az összes Azure-erőforráson. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+Egy Log Analytics közreműködő az összes figyelési és a figyelési beállítások szerkesztésével képes olvasni. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/olvasás|A titkok kivételével minden típusú erőforrást elkell olvasni.|
-|Microsoft.Automation/automationAccounts/*|Automatizálási fiókok kezelése.|
-|Microsoft.ClassicCompute/virtualMachines/extensions/*|Virtuálisgép-bővítmények létrehozása és kezelése.|
-|Microsoft.ClassicStorage/storageAccounts/listKeys/action|Klasszikus tárfiók kulcsok listázása.|
-|Microsoft.Compute/virtualMachines/extensions/*|Klasszikus virtuálisgép-bővítmények létrehozása és kezelése.|
-|Microsoft.Insights/alertRules/*|Olvasási/írási/törlési figyelmeztetési szabályok.|
-|Microsoft.Insights/diagnosticSettings/*|Diagnosztikai beállítások olvasása/írása/törlése.|
-|Microsoft.OperationalInsights/*|Az Azure Monitor naplóinak kezelése.|
-|Microsoft.OperationsManagement/*|Megoldások kezelése a munkaterületeken.|
-|Microsoft.Resources/deployments/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
-|Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
-|Microsoft.Storage/storageAccounts/listKeys/action|A tárfiók kulcsainak listázása.|
-|Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése.|
+|*/read|Az összes típusú erőforrás beolvasása, kivéve a titkokat.|
+|Microsoft. Automation/automationAccounts/*|Automation-fiókok kezelése.|
+|Microsoft. ClassicCompute/virtualMachines/Extensions/*|Virtuálisgép-bővítmények létrehozása és kezelése.|
+|Microsoft. ClassicStorage/storageAccounts/Listkeys műveletének beolvasása/művelet|Klasszikus Storage-fiók kulcsainak listázása.|
+|Microsoft. számítás/virtualMachines/Extensions/*|Klasszikus virtuálisgép-bővítmények létrehozása és kezelése.|
+|Microsoft. bepillantások/alertRules/*|Riasztási szabályok olvasása/írása/törlése.|
+|Microsoft. bepillantások/diagnosticSettings/*|Diagnosztikai beállítások olvasása/írása/törlése.|
+|Microsoft. OperationalInsights/*|Azure Monitor naplók kezelése.|
+|Microsoft. OperationsManagement/*|Megoldások kezelése a munkaterületeken.|
+|Microsoft. Resources/üzemelő példány/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
+|Microsoft. Resources/Subscriptions/resourcegroups/Deployments/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
+|Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet|A Storage-fiók kulcsainak listázása.|
+|Microsoft. support/*|Támogatási jegyek létrehozása és kezelése.|
 
 ### <a name="log-analytics-reader"></a>Log Analytics olvasó
 
-A Log Analytics-olvasó megtekintheti és keresheti az összes figyelési adatot, valamint megtekintheti a figyelési beállításokat, beleértve az Azure-diagnosztika konfigurációjának megtekintését az összes Azure-erőforráson. Az alábbi táblázat a szerepkörhöz megadott vagy elutasított engedélyeket mutatja be:
+Egy Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. A következő táblázat a szerepkörhöz megadott vagy megtagadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/olvasás|A titkok kivételével minden típusú erőforrást elkell olvasni.|
-|Microsoft.OperationalInsights/munkaterületek/elemzés/lekérdezés/művelet|Lekérdezések kezelése az Azure Monitor naplóiban.|
-|Microsoft.OperationalInsights/munkaterületek/keresés/művelet|Keresés az Azure Monitor naplóadatai között.|
-|Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése.|
+|*/read|Az összes típusú erőforrás beolvasása, kivéve a titkokat.|
+|Microsoft. OperationalInsights/munkaterületek/elemzés/lekérdezés/művelet|Azure Monitor naplókban lévő lekérdezések kezelése.|
+|Microsoft. OperationalInsights/munkaterületek/keresés/művelet|Keressen Azure Monitor naplózási adatként.|
+|Microsoft. support/*|Támogatási jegyek létrehozása és kezelése.|
 |**Nem műveletek**| |
-|Microsoft.OperationalInsights/munkaterületek/sharedKeys/read|Nem lehet olvasni a megosztott hozzáférési kulcsokat.|
+|Microsoft. OperationalInsights/munkaterületek/sharedKeys/olvasás|Nem sikerült beolvasni a közös hozzáférési kulcsokat.|
 
 ### <a name="monitoring-contributor"></a>Közreműködő figyelése
 
-A figyelési közreműködő leolvashatja az összes figyelési adatot, és frissítheti a figyelési beállításokat. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+Egy figyelő közreműködői beolvashatja az összes figyelési és frissítési figyelési beállítást. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/olvasás|A titkok kivételével minden típusú erőforrást elkell olvasni.|
-|Microsoft.AlertsManagement/alerts/*|Riasztások kezelése.|
-|Microsoft.AlertsManagement/alertsÖsszefoglaló/*|A Riasztás irányítópult kezelése.|
-|Microsoft.Insights/AlertRules/*|Riasztási szabályok kezelése.|
-|Microsoft.Insights/components/*|Az Application Insights-összetevők kezelése.|
-|Microsoft.Insights/DiagnosticSettings/*|Diagnosztikai beállítások kezelése.|
-|Microsoft.Insights/eventtypes/*|Tevékenységnapló-események (felügyeleti események) listázása egy előfizetésben. Ez az engedély a tevékenységnaplóhoz való programozott és portálos hozzáférésre is vonatkozik.|
-|Microsoft.Insights/LogDefinitions/*|Ez az engedély szükséges azoknak a felhasználóknak, akiknek a portálon keresztül hozzáférésre van szükségük a tevékenységnaplókhoz. A naplókategóriák listázása a Tevékenységnaplóban.|
-|Microsoft.Insights/MetricDefinitions/*|Metrikadefiníciók olvasása (egy erőforrás elérhető metrikatípusainak listája).|
-|Microsoft.Insights/Metrics/*|Egy erőforrás metrikáinak olvasása.|
-|Microsoft.Insights/Register/Action|Regisztrálja a Microsoft.Insights-szolgáltatót.|
-|Microsoft.Insights/webtests/*|Az Application Insights webes tesztjeinek kezelése.|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Az Azure Monitor naplóinak kezelése megoldáscsomagok.|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Az Azure Monitor naplóinak kezelése a mentett kereséseken.|
-|Microsoft.OperationalInsights/munkaterületek/keresés/művelet|Keresés a Naplóelemzési munkaterületeken.|
-|Microsoft.OperationalInsights/munkaterületek/megosztottkulcsok/művelet|A Log Analytics-munkaterület kulcsainak listázása.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Az Azure Monitor naplóinak kezelése a tárolási betekintési konfigurációkban.|
-|Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése.|
-|Microsoft.WorkloadMonitor/workloads/*|Számítási feladatok kezelése.|
+|*/read|Az összes típusú erőforrás beolvasása, kivéve a titkokat.|
+|Microsoft. AlertsManagement/riasztások/*|Riasztások kezelése.|
+|Microsoft. AlertsManagement/alertsSummary/*|A riasztási irányítópult kezelése.|
+|Microsoft. bepillantások/AlertRules/*|Riasztási szabályok kezelése.|
+|Microsoft. bepillantások/összetevők/*|Application Insights-összetevők kezelése.|
+|Microsoft. bepillantások/DiagnosticSettings/*|Diagnosztikai beállítások kezelése.|
+|Microsoft. bepillantások/eventtypes/*|Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában.|
+|Microsoft. bepillantások/LogDefinitions/*|Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. A műveletnapló kategóriáinak listázása a tevékenység naplójában.|
+|Microsoft. bepillantások/MetricDefinitions/*|A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása.|
+|Microsoft. bepillantások/mérőszámok/*|Erőforrás metrikáinak olvasása.|
+|Microsoft. elemzések/regisztráció/művelet|Regisztrálja a Microsoft. bepillantások szolgáltatóját.|
+|Microsoft. bepillantások/webteszt/*|Application Insights webes tesztek kezelése.|
+|Microsoft. OperationalInsights/munkaterületek/intelligencepacks/*|Kezelheti Azure Monitor naplók megoldásának csomagjait.|
+|Microsoft. OperationalInsights/munkaterületek/savedSearches/*|Azure Monitor naplókat mentett keresések kezelése.|
+|Microsoft. OperationalInsights/munkaterületek/keresés/művelet|Keressen Log Analytics munkaterületeket.|
+|Microsoft. OperationalInsights/munkaterületek/sharedKeys/művelet|Log Analytics munkaterület kulcsainak listázása.|
+|Microsoft. OperationalInsights/munkaterületek/storageinsightconfigs/*|A Azure Monitor naplózza a tárolási Insight-konfigurációkat.|
+|Microsoft. support/*|Támogatási jegyek létrehozása és kezelése.|
+|Microsoft. WorkloadMonitor/munkaterhelések/*|Munkaterhelések kezelése.|
 
-### <a name="monitoring-reader"></a>Monitoring olvasó
+### <a name="monitoring-reader"></a>Figyelő olvasó
 
-A figyelési olvasó képes olvasni az összes figyelési adatot. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+A figyelési olvasó az összes figyelési adattal képes olvasni. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/olvasás|A titkok kivételével minden típusú erőforrást elkell olvasni.|
-|Microsoft.OperationalInsights/munkaterületek/keresés/művelet|Keresés a Naplóelemzési munkaterületeken.|
-|Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése|
+|*/read|Az összes típusú erőforrás beolvasása, kivéve a titkokat.|
+|Microsoft. OperationalInsights/munkaterületek/keresés/művelet|Keressen Log Analytics munkaterületeket.|
+|Microsoft. support/*|Támogatási jegyek létrehozása és kezelése|
 
 ### <a name="user-access-administrator"></a>Felhasználói hozzáférés rendszergazdája
 
-A felhasználói hozzáférés rendszergazdája kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést. Az alábbi táblázat a szerepkörhöz megadott engedélyeket mutatja be:
+A felhasználói hozzáférés rendszergazdája az Azure-erőforrásokhoz való felhasználói hozzáférést is képes kezelni. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|*/olvasás|Az összes forrás elolvasása|
-|Microsoft.Authorization/*|Engedélyezés kezelése|
-|Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése|
+|*/read|Az összes erőforrás olvasása|
+|Microsoft. Authorization/*|Engedélyezés kezelése|
+|Microsoft. support/*|Támogatási jegyek létrehozása és kezelése|
 
 ## <a name="onboarding-permissions"></a>Bevezetési engedélyek
 
-A következő szakaszok ismertetik a minimálisan szükséges engedélyeket a virtuális gépek bevezetéséhez a változáskövetési vagy frissítéskezelési megoldásokhoz.
+A következő szakaszok azokat a minimálisan szükséges engedélyeket írják le, amelyek szükségesek a virtuális gépek a Change Tracking vagy az Update Management megoldásokhoz való bevezetéséhez.
 
-### <a name="permissions-for-onboarding-from-a-vm"></a>A virtuális gépről történő bevezetés engedélyei
+### <a name="permissions-for-onboarding-from-a-vm"></a>VIRTUÁLIS gépről való bevezetéshez szükséges engedélyek
 
-|**Művelet**  |**Engedély**  |**Minimális hatály**  |
+|**Művelet**  |**Engedély**  |**Minimális hatókör**  |
 |---------|---------|---------|
-|Új központi telepítés írása      | Microsoft.Resources/deployments/*          |Előfizetés          |
-|Új erőforráscsoport írása      | Microsoft.Resources/subscriptions/resourceGroups/write        | Előfizetés          |
-|Új alapértelmezett munkaterület létrehozása      | Microsoft.OperationalInsights/munkaterületek/írás         | Erőforráscsoport         |
-|Új fiók létrehozása      |  Microsoft.Automation/automationAccounts/write        |Erőforráscsoport         |
-|Munkaterület és fiók csatolása      |Microsoft.OperationalInsights/munkaterületek/írás</br>Microsoft.Automation/automationAccounts/read|Munkaterület</br>Automation-fiók
-|MMA-bővítmény létrehozása      | Microsoft.Compute/virtualMachines/write         | Virtuális gép         |
-|Mentett keresés létrehozása      | Microsoft.OperationalInsights/munkaterületek/írás          | Munkaterület         |
-|Hatókör-konfiguráció létrehozása      | Microsoft.OperationalInsights/munkaterületek/írás          | Munkaterület         |
-|Bevezetési állapot ellenőrzése – Munkaterület olvasása      | Microsoft.OperationalInsights/workspaces/read         | Munkaterület         |
-|Bevezetési állapot ellenőrzése – A fiók csatolt munkaterületi tulajdonságának olvasása     | Microsoft.Automation/automationAccounts/read      | Automation-fiók        |
-|Bevezetési állapot-ellenőrzés - Olvassa el a megoldást      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Megoldás         |
-|Bevezetési állapot ellenőrzése - Virtuális gép olvasása      | Microsoft.Compute/virtualMachines/read         | Virtuális gép         |
-|Bevezetési állapot ellenőrzése - Olvasási fiók      | Microsoft.Automation/automationAccounts/read  |  Automation-fiók   |
-| A virtuális gép<sup>1-es</sup> gépéna bevezetési munkaterület-ellenőrzés       | Microsoft.OperationalInsights/workspaces/read         | Előfizetés         |
-| A Log Analytics-szolgáltató regisztrálása |Microsoft.Insights/register/action | Előfizetés|
+|Új központi telepítés írása      | Microsoft. Resources/üzemelő példány/*          |Előfizetés          |
+|Új erőforráscsoport írása      | Microsoft. Resources/Subscriptions/resourceGroups/Write        | Előfizetés          |
+|Új alapértelmezett munkaterület létrehozása      | Microsoft. OperationalInsights/munkaterületek/írás         | Erőforráscsoport         |
+|Új fiók létrehozása      |  Microsoft. Automation/automationAccounts/írás        |Erőforráscsoport         |
+|Munkaterület és fiók összekapcsolása      |Microsoft. OperationalInsights/munkaterületek/írás</br>Microsoft. Automation/automationAccounts/READ|Munkaterület</br>Automation-fiók
+|MMA-bővítmény létrehozása      | Microsoft. számítás/virtualMachines/írás         | Virtuális gép         |
+|Mentett keresés létrehozása      | Microsoft. OperationalInsights/munkaterületek/írás          | Munkaterület         |
+|Hatókör-konfiguráció létrehozása      | Microsoft. OperationalInsights/munkaterületek/írás          | Munkaterület         |
+|Bevezetési állapot-ellenőrzési munkaterület      | Microsoft. OperationalInsights/munkaterületek/olvasás         | Munkaterület         |
+|Bevezetési állapot – a fiók csatolt munkaterület-tulajdonságának beolvasása     | Microsoft. Automation/automationAccounts/READ      | Automation-fiók        |
+|Bevezetési állapot-ellenőrzési megoldás      | Microsoft. OperationalInsights/munkaterületek/intelligencepacks/olvasás          | Megoldás         |
+|Bevezetési állapot-ellenőrzési virtuális gép      | Microsoft. számítás/virtualMachines/olvasás         | Virtuális gép         |
+|Bevezetési állapot-ellenőrzési fiók      | Microsoft. Automation/automationAccounts/READ  |  Automation-fiók   |
+| Az<sup>1</sup> . virtuális gép előkészítési munkaterületének keresése       | Microsoft. OperationalInsights/munkaterületek/olvasás         | Előfizetés         |
+| A Log Analytics-szolgáltató regisztrálása |Microsoft. elemzések/regisztráció/művelet | Előfizetés|
 
-<sup>1</sup> Ez az engedély szükséges a virtuális gép portálfelületén keresztül történő fedélzetre.
+<sup>1</sup> ez az engedély szükséges a virtuálisgép-portál felületén.
 
-### <a name="permissions-for-onboarding-from-automation-account"></a>Az Automation-fiókból történő bevezetés engedélyei
+### <a name="permissions-for-onboarding-from-automation-account"></a>Az Automation-fiókból való bevezetéshez szükséges engedélyek
 
 |**Művelet**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
-|Új telepítés létrehozása     | Microsoft.Resources/deployments/*        | Előfizetés         |
-|Új erőforráscsoport létrehozása     | Microsoft.Resources/subscriptions/resourceGroups/write         | Előfizetés        |
-|AutomationOnboarding panel – Új munkaterület létrehozása     |Microsoft.OperationalInsights/munkaterületek/írás           | Erőforráscsoport        |
-|AutomationOnboarding panel - csatolt munkaterület olvasása     | Microsoft.Automation/automationAccounts/read        | Automation-fiók       |
-|AutomationOnboarding penge - olvasási megoldás     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Megoldás        |
-|AutomationOnboarding panel - munkaterület olvasása     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Munkaterület        |
-|Hivatkozás létrehozása munkaterülethez és fiókhoz     | Microsoft.OperationalInsights/munkaterületek/írás        | Munkaterület        |
-|A cipősdoboz számláinak írása      | Microsoft.Automation/automationAccounts/write        | Fiók        |
-|Mentett keresés létrehozása/szerkesztése     | Microsoft.OperationalInsights/munkaterületek/írás        | Munkaterület        |
-|Hatókör konfigurációjának létrehozása/szerkesztése     | Microsoft.OperationalInsights/munkaterületek/írás        | Munkaterület        |
-| A Log Analytics-szolgáltató regisztrálása |Microsoft.Insights/register/action | Előfizetés|
-|**2. lépés - Több virtuális gép beépített**     |         |         |
-|VMOnboarding panel – MMA-bővítmény létrehozása     | Microsoft.Compute/virtualMachines/write           | Virtuális gép        |
-|Mentett keresés létrehozása /szerkesztése     | Microsoft.OperationalInsights/munkaterületek/írás           | Munkaterület        |
-|Hatókör konfigurációjának létrehozása/szerkesztése  | Microsoft.OperationalInsights/munkaterületek/írás   | Munkaterület|
+|Új központi telepítés létrehozása     | Microsoft. Resources/üzemelő példány/*        | Előfizetés         |
+|Új erőforráscsoport létrehozása     | Microsoft. Resources/Subscriptions/resourceGroups/Write         | Előfizetés        |
+|AutomationOnboarding panel – Új munkaterület létrehozása     |Microsoft. OperationalInsights/munkaterületek/írás           | Erőforráscsoport        |
+|AutomationOnboarding panel – csatolt munkaterület olvasása     | Microsoft. Automation/automationAccounts/READ        | Automation-fiók       |
+|AutomationOnboarding panel – olvasási megoldás     | Microsoft. OperationalInsights/munkaterületek/intelligencepacks/olvasás         | Megoldás        |
+|AutomationOnboarding panel – munkaterület olvasása     | Microsoft. OperationalInsights/munkaterületek/intelligencepacks/olvasás        | Munkaterület        |
+|Munkaterület és fiók hivatkozásának létrehozása     | Microsoft. OperationalInsights/munkaterületek/írás        | Munkaterület        |
+|Shoebox-fiók írása      | Microsoft. Automation/automationAccounts/írás        | Fiók        |
+|Mentett keresés létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás        | Munkaterület        |
+|Hatókör-konfiguráció létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás        | Munkaterület        |
+| A Log Analytics-szolgáltató regisztrálása |Microsoft. elemzések/regisztráció/művelet | Előfizetés|
+|**2. lépés – több virtuális gép előkészítése**     |         |         |
+|VMOnboarding panel – MMA-bővítmény létrehozása     | Microsoft. számítás/virtualMachines/írás           | Virtuális gép        |
+|Mentett keresés létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás           | Munkaterület        |
+|Hatókör-konfiguráció létrehozása/szerkesztése  | Microsoft. OperationalInsights/munkaterületek/írás   | Munkaterület|
 
 ## <a name="update-management-permissions"></a>Felügyeleti engedélyek frissítése
 
-A frissítéskezelés több szolgáltatáson keresztül is elérhető a szolgáltatás biztosítása érdekében. Az alábbi táblázat a frissítéskezelési telepítések kezeléséhez szükséges engedélyeket mutatja be:
+Az Update Management több szolgáltatásra is kiterjed a szolgáltatás nyújtásához. A következő táblázat az Update Management-telepítések kezeléséhez szükséges engedélyeket mutatja be:
 
 |**Erőforrás**  |**Szerepkör**  |**Hatókör**  |
 |---------|---------|---------|
 |Automation-fiók     | Log Analytics közreműködő       | Automation-fiók        |
-|Automation-fiók    | Virtuális gépek közreműködője        | A fiók erőforráscsoportja        |
+|Automation-fiók    | Virtuális gépek közreműködője        | A fiókhoz tartozó erőforráscsoport        |
 |Log Analytics-munkaterület     | Log Analytics közreműködő| Log Analytics-munkaterület        |
 |Log Analytics-munkaterület |Log Analytics olvasó| Előfizetés|
 |Megoldás     |Log Analytics közreműködő         | Megoldás|
 |Virtuális gép     | Virtuális gépek közreműködője        | Virtuális gép        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Az RBAC konfigurálása az Automation-fiókhoz
+## <a name="configure-rbac-for-your-automation-account"></a>Az Automation-fiók RBAC konfigurálása
 
-Az alábbi szakasz bemutatja, hogyan konfigurálhatja az RBAC-ot az Automation-fiókon az [Azure Portalon](#configure-rbac-using-the-azure-portal) és a [PowerShellen](#configure-rbac-using-powershell)keresztül.
+A következő szakasz bemutatja, hogyan konfigurálhatja az Automation-fiók RBAC az [Azure Portal](#configure-rbac-using-the-azure-portal) és a [PowerShell](#configure-rbac-using-powershell)használatával.
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Az RBAC konfigurálása az Azure Portal használatával
+### <a name="configure-rbac-using-the-azure-portal"></a>RBAC konfigurálása a Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok lapról.
-2. Kattintson a **hozzáférés-vezérlésre (IAM)** a Hozzáférés-vezérlés (IAM) lap megnyitásához. Ezen a lapon új felhasználókat, csoportokat és alkalmazásokat vehet fel az Automation-fiók kezeléséhez és az Automation-fiókhoz konfigurálható meglévő szerepkörök megtekintéséhez.
+2. Kattintson a **hozzáférés-vezérlés (iam)** elemre a hozzáférés-vezérlés (iam) lap megnyitásához. Ezen a lapon hozzáadhat új felhasználókat, csoportokat és alkalmazásokat az Automation-fiók kezeléséhez, és megtekintheti az Automation-fiókhoz konfigurálható meglévő szerepköröket.
 3. Kattintson a **Szerepkör-hozzárendelések** fülre.
 
    ![Hozzáférés gomb](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Új felhasználó hozzáadása és szerepkör hozzárendelése
 
-1. A Hozzáférés-vezérlés (IAM) lapon kattintson **a + Szerepkör-hozzárendelés hozzáadása gombra.** Ez a művelet megnyitja a Szerepkör-hozzárendelés hozzáadása lapot, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, és hozzárendelhet egy megfelelő szerepkört.
+1. A hozzáférés-vezérlés (IAM) lapon kattintson a **+ szerepkör-hozzárendelés hozzáadása**lehetőségre. Ez a művelet megnyitja a szerepkör-hozzárendelés hozzáadása lapot, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, és hozzárendelheti a megfelelő szerepkört.
 
-2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Az Automation-fiók által támogatott rendelkezésre álló beépített szerepkörök bármelyikét kiválaszthatja, vagy bármely egyéni szerepkört, amelyet definiált.
+2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Kiválaszthatja az Automation-fiók által támogatott elérhető beépített szerepköröket, illetve az Ön által definiált egyéni szerepkört is.
 
-3. Írja be annak a felhasználónak a nevét, amelyiknek engedélyeket szeretne adni a **Kijelölés** mezőbe. Válassza ki a felhasználót a listából, és kattintson a **Mentés gombra.**
+3. Írja be annak a felhasználónak a nevét, akinek engedélyeket szeretne adni a **Select** mezőben. Válassza ki a felhasználót a listából, és kattintson a **Mentés**gombra.
 
    ![Felhasználók hozzáadása](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   Most látnia kell a felhasználót a Felhasználók laphoz, a kijelölt szerepkör hozzárendelésével.
+   Most meg kell jelennie a felhasználók lapjához hozzáadott felhasználónak, és a kiválasztott szerepkör hozzá van rendelve.
 
    ![Felhasználók listázása](media/automation-role-based-access-control/automation-05-list-users.png)
 
    A felhasználóhoz a Szerepkörök lapról is hozzárendelhet szerepkört.
-4. A Szerepkörök lap megnyitásához kattintson a Hozzáférés-vezérlés (IAM) lapon a Szerepkörök lapon a **Szerepkörök** (IAM) elemre. Megtekintheti a szerepkör nevét, valamint a szerepkörhöz rendelt felhasználók és csoportok számát.
+4. Kattintson a **szerepkörök** elemre a hozzáférés-vezérlés (iam) lapon a szerepkörök lap megnyitásához. Megtekintheti a szerepkör nevét, valamint a szerepkörhöz rendelt felhasználók és csoportok számát.
 
     ![Szerepkör hozzárendelése a Felhasználók lapról](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
    > [!NOTE]
-   > Csak az Automation-fiók hatókörén állíthatja be a szerepköralapú hozzáférés-vezérlést, és az Automation-fiók alatt egyetlen erőforrásnál sem.
+   > A szerepköralapú hozzáférés-vezérlést csak az Automation-fiók hatókörében állíthatja be, és nem az Automation-fiók alatti erőforrásokhoz.
 
 #### <a name="remove-a-user"></a>Felhasználó eltávolítása
 
-Eltávolíthatja egy olyan felhasználó hozzáférési engedélyét, aki nem kezeli az Automation-fiókot, vagy aki már nem dolgozik a szervezetnél. Alább láthatók egy felhasználó eltávolításának lépései:
+Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem kezeli az Automation-fiókot, vagy akik már nem működnek a szervezeten belül. Alább láthatók egy felhasználó eltávolításának lépései:
 
-1. A Hozzáférés-vezérlés (IAM) lapon jelölje ki az eltávolítani kívánt felhasználót, és kattintson az **Eltávolítás gombra.**
+1. A hozzáférés-vezérlés (IAM) lapon válassza ki az eltávolítandó felhasználót, és kattintson az **Eltávolítás**gombra.
 2. A hozzárendelés részleteit megjelenítő lapon kattintson az **Eltávolítás** gombra.
 3. Az **Igen** gombra kattintva erősítse meg az eltávolítást.
 
    ![Felhasználók eltávolítása](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>Az RBAC konfigurálása a PowerShell használatával
+### <a name="configure-rbac-using-powershell"></a>RBAC konfigurálása a PowerShell használatával
 
-Szerepköralapú hozzáférést is konfigurálhat egy Automation-fiókhoz a következő [Azure PowerShell-parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával:
+Az Automation-fiókokhoz a következő [Azure PowerShell parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával is konfigurálhat szerepköralapú hozzáférést:
 
-[A Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmalapot `Name` a paraméterrel együtt használhatja az adott szerepkör által végrehajtható összes művelet listázásához.
+A [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
 ```
 
-A következő a példa kimenet:
+A következő példában a kimenet látható:
 
 ```azurepowershell
 Name             : Automation Operator
@@ -333,15 +333,15 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[A Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) az Azure AD RBAC szerepkör-hozzárendeléseket sorolja fel a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés alatt végrehajtott összes szerepkör-hozzárendelést adja vissza. A `ExpandPrincipalGroups` paraméter segítségével listázza a megadott felhasználó hozzáférési hozzárendeléseit, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+A [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure ad-RBAC szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
-**Példa:** A következő parancsmag segítségével sorolja fel az összes felhasználót és azok szerepköreit egy Automation-fiókban.
+**Példa:** A következő parancsmag használatával listázhatja az összes felhasználót és azok szerepkörét egy Automation-fiókon belül.
 
 ```azurepowershell-interactive
 Get-AzRoleAssignment -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-A következő a példa kimenet:
+A következő példában a kimenet látható:
 
 ```powershell
 RoleAssignmentId   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Automation/automationAccounts/myAutomationAccount/provid
@@ -355,15 +355,15 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[A New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) segítségével hozzáférést rendelhet egy adott hatókörhöz a felhasználókhoz, csoportokhoz és alkalmazásokhoz.
+A [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) használatával a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést egy adott hatókörhöz rendelheti hozzá.
     
-**Példa:** A következő paranccsal rendelheti hozzá az "Automation Operator" szerepkört egy felhasználóhoz az Automation-fiók hatókörében.
+**Példa:** A következő parancs használatával rendelje hozzá az Automation-operátor szerepkört egy felhasználóhoz az Automation-fiók hatókörében.
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-A következő a példa kimenet:
+A következő példában a kimenet látható:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/Providers/Microsoft.Automation/automationAccounts/myAutomationAccount/provid
@@ -377,25 +377,25 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Az Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával eltávolíthatja egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
+A [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával távolíthatja el egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
 
-**Példa:** A következő paranccsal eltávolíthatja a felhasználót az Automation Operátor szerepkörből az Automation-fiók hatókörében.
+**Példa:** A következő parancs használatával távolítsa el a felhasználót az Automation-operátori szerepkörből az Automation-fiók hatókörében.
 
 ```azurepowershell-interactive
 Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Az előző példában `sign-in ID of a user you wish to remove` `SubscriptionID`cserélje `Resource Group Name`le `Automation account name` a , , és a fiók adatait. Válassza **az igen** lehetőséget, amikor a rendszer a felhasználói szerepkör-hozzárendelések eltávolításának folytatása előtt megerősítést kér.
+`sign-in ID of a user you wish to remove`Az előző példában cserélje le `SubscriptionID` `Resource Group Name`a, a, és `Automation account name` a fiók adatait. Ha a rendszer kéri, válassza az **Igen** lehetőséget, mielőtt továbblépne a felhasználói szerepkör-hozzárendelések eltávolítására.
 
-### <a name="user-experience-for-automation-operator-role---automation-account"></a>Felhasználói élmény az Automation Operator szerepkörhöz – Automatizálási fiók
+### <a name="user-experience-for-automation-operator-role---automation-account"></a>Az Automation-kezelő szerepkör-Automation-fiók felhasználói felülete
 
-Ha az Automation-fiók hatókörének Automation Operator szerepköréhez rendelt felhasználó megtekinti azt az Automation-fiókot, amelyhez hozzá van rendelve, a felhasználó csak az Automation-fiókban létrehozott runbookok, runbook-feladatok és ütemezések listáját tekintheti meg. Ez a felhasználó nem tekintheti meg ezeknek az elemeknek a definícióit. A felhasználó elindíthatja, leállíthatja, felfüggesztheti, folytathatja vagy ütemezheti a runbook-feladatot. A felhasználó azonban nem fér hozzá más Automation-erőforrásokhoz, például konfigurációkhoz, hibrid munkavégző csoportokhoz vagy DSC-csomópontokhoz.
+Ha az Automation-fiók hatókörében az Automation-operátori szerepkörhöz hozzárendelt felhasználó megtekinti azt az Automation-fiókot, amelyhez hozzá van rendelve, a felhasználó csak az Automation-fiókban létrehozott runbookok, runbook és ütemezett feladatok listáját jeleníti meg. Ez a felhasználó nem tekintheti meg az elemek definícióit. A felhasználó elindíthatja, leállíthatja, felfüggesztheti, folytathatja vagy ütemezheti a runbook feladatot. A felhasználónak azonban nincs hozzáférése más Automation-erőforrásokhoz, például konfigurációkhoz, hibrid feldolgozói csoportokhoz vagy DSC-csomópontokhoz.
 
-![Nincs hozzáférés az erőforrásokhoz](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
+![Nincs hozzáférése az erőforrásokhoz](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>RBAC konfigurálása runbookokhoz
+## <a name="configure-rbac-for-runbooks"></a>A runbookok RBAC konfigurálása
 
-Az Azure Automation lehetővé teszi, hogy rBAC-t rendeljen adott runbookokhoz. Ehhez futtassa a következő parancsfájlt, hogy egy felhasználót vegyen fel egy adott runbookhoz. A parancsfájl t az automation-fiók rendszergazdája vagy a bérlői rendszergazda is futtathatja.
+Azure Automation lehetővé teszi a RBAC adott runbookok való hozzárendelését. Ehhez futtassa a következő szkriptet egy felhasználó adott runbook való hozzáadásához. Egy Automation-fiók rendszergazdája vagy egy Bérlői rendszergazda futtathatja ezt a parancsfájlt.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -416,18 +416,18 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Opera
 New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Miután a parancsfájl futott, a felhasználó jelentkezzen be az Azure Portalon, és válassza az **Összes erőforrás**lehetőséget. A listában a felhasználó láthatja a runbookot, amelyhez automation Runbook operátorként lett hozzáadva.
+A parancsfájl futtatása után a felhasználó bejelentkezhet a Azure Portalba, és kiválaszthatja az **összes erőforrást**. A listán a felhasználó láthatja azokat a runbook, amelyekhez Automation Runbook-kezelőként hozzá lett adva.
 
 ![Runbook RBAC a portálon](./media/automation-role-based-access-control/runbook-rbac.png)
 
-### <a name="user-experience-for-automation-operator-role---runbook"></a>Felhasználói élmény az Automation operátori szerepkörhöz - Runbook
+### <a name="user-experience-for-automation-operator-role---runbook"></a>Felhasználói élmény az Automation-operátori szerepkörhöz – Runbook
 
-Ha a Runbook-hatókör Automation Operator szerepköréhez rendelt felhasználó egy hozzárendelt runbookot tekint meg, a felhasználó csak a runbookot és a Runbook-feladatokat tudja megtekinteni.
+Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendelt felhasználó egy hozzárendelt Runbook jelenít meg, a felhasználó csak a Runbook indítható el, és megtekintheti a Runbook-feladatokat.
 
 ![Csak az indításhoz van hozzáférése](media/automation-role-based-access-control/automation-only-start.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Az RBAC Azure Automation-hez való konfigurálásának módjairól az [RBAC kezelése az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)című dokumentumban talál.
-* A runbookok indításának módjairól a [Runbook indítása című témakörben](automation-starting-a-runbook.md)talál.
-* A runbook-típusokról az [Azure Automation runbook-típusai](automation-runbook-types.md)című dokumentumban tájékozódhat.
+* A Azure Automation RBAC konfigurálásának módjával kapcsolatos további információkért tekintse meg a [RBAC és a Azure PowerShell kezelését](../role-based-access-control/role-assignments-powershell.md)ismertető témakört.
+* A runbook elindításának módjával kapcsolatos részletekért lásd: [Runbook elindítása](automation-starting-a-runbook.md).
+* A runbook-típusokkal kapcsolatos információkért tekintse meg [Azure Automation runbook típusait](automation-runbook-types.md).

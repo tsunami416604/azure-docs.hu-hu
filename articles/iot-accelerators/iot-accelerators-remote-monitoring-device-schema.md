@@ -1,6 +1,6 @@
 ---
-title: Eszközséma a távoli figyelési megoldásban - Azure | Microsoft dokumentumok
-description: Ez a cikk a JSON-sémát ismerteti, amely egy szimulált eszközt határoz meg a távoli figyelési megoldásban.
+title: Eszköz sémája a távoli figyelési megoldásban – Azure | Microsoft Docs
+description: Ez a cikk azt a JSON-sémát ismerteti, amely egy szimulált eszközt definiál a távoli figyelési megoldásban.
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -12,37 +12,37 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683744"
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszközmodell sémájának megismerése
 
-A távoli figyelési megoldásban szimulált eszközök keltheti a viselkedését. A távoli figyelési megoldás tartalmaz egy eszközszimulációs szolgáltatást szimulált eszközök futtatásához. A távoli figyelési megoldás telepítésekor a szimulált eszközök gyűjteménye automatikusan kiépítésre kerül. Testreszabhatja a meglévő szimulált eszközöket, vagy létrehozhat sajátot.
+A távoli figyelési megoldásban szimulált eszközöket használhat a működésének teszteléséhez. A távoli figyelési megoldás tartalmaz egy eszköz-szimulációs szolgáltatást a szimulált eszközök futtatásához. A távoli figyelési megoldás telepítésekor a rendszer automatikusan kiépíti a szimulált eszközök gyűjteményét. Testreszabhatja a meglévő szimulált eszközöket, vagy létrehozhat sajátt is.
 
-Ez a cikk az eszközmodell sémáját ismerteti, amely egy szimulált eszköz képességeit és viselkedését határozza meg. Az eszközmodell jsonfájlban van tárolva.
+Ez a cikk a szimulált eszköz képességeit és viselkedését meghatározó eszköz-modell sémát ismerteti. Az eszköz modelljét egy JSON-fájlban tárolja a rendszer.
 
 > [!NOTE]
-> Ez az eszközmodell-séma csak az eszközszimulációs szolgáltatásban tárolt szimulált eszközökre szolgál. Ha valódi eszközt szeretne létrehozni, olvassa el [Az eszköz csatlakoztatása a távfigyelési megoldás gyorsítóhoz című témakört.](iot-accelerators-connecting-devices.md)
+> Ez az eszköz-modell séma csak a Device szimulációs szolgáltatásban üzemeltetett szimulált eszközök esetében használható. Ha valódi eszközt szeretne létrehozni, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldáshoz gyorssegédet](iot-accelerators-connecting-devices.md).
 
 A következő cikkek kapcsolódnak az aktuális cikkhez:
 
-* [Valósítsa meg az eszközmodell viselkedését,](iot-accelerators-remote-monitoring-device-behavior.md) amely a szimulált eszközök viselkedésének megvalósításához használt JavaScript-fájlokat írja le.
-* [Hozzon létre egy új szimulált eszközt,](iot-accelerators-remote-monitoring-create-simulated-device.md) amely mindent összeállít, és megmutatja, hogyan helyezhet üzembe egy új szimulált eszköztípust a megoldásra.
+* [Az eszköz modellje működésének megvalósítása](iot-accelerators-remote-monitoring-device-behavior.md) a szimulált eszköz viselkedésének megvalósításához használt JavaScript-fájlokat ismerteti.
+* [Hozzon létre egy új szimulált eszközt](iot-accelerators-remote-monitoring-create-simulated-device.md) , és bemutatjuk, hogyan helyezhet üzembe egy új szimulált eszközt a megoldásban.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 >[!div class="checklist"]
-> * Szimulált eszközmodell definiálása JSON-fájl használatával
+> * Szimulált eszköz modellének meghatározása JSON-fájllal
 > * A szimulált eszköz tulajdonságainak megadása
-> * Adja meg a szimulált eszköz által küldött telemetriai adatokat
-> * Adja meg azokat a felhőből az eszközre irányuló metódusokat, amelyekre az eszköz válaszol
+> * A szimulált eszköz által küldött telemetria meghatározása
+> * Adja meg az eszköz által válaszoló felhőből eszközre irányuló módszereket
 
-## <a name="the-parts-of-the-device-model-schema"></a>Az eszközmodell sémájának részei
+## <a name="the-parts-of-the-device-model-schema"></a>Az eszköz modell sémájának részei
 
-Minden eszközmodell, például egy hűtő vagy teherautó meghatározza, hogy a szimulációs szolgáltatás milyen típusú eszközt szimulálhat. Minden eszközmodell egy JSON-fájlban van tárolva a következő legfelső szintű sémával:
+Az egyes eszközök, például a hűtő vagy a teherautó, a szimulációs szolgáltatás által szimulálható eszköz típusát határozzák meg. Minden eszköz modelljét egy JSON-fájlban tárolja a rendszer a következő legfelső szintű sémával:
 
 ```json
 {
@@ -67,33 +67,33 @@ Minden eszközmodell, például egy hűtő vagy teherautó meghatározza, hogy a
 }
 ```
 
-Megtekintheti az alapértelmezett szimulált eszközök sémafájljait a GitHub [devicemodels mappájában.](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels)
+A [devicemodels mappában](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) megtekintheti az alapértelmezett szimulált eszközökhöz tartozó sémafájl-fájlokat a githubon.
 
-Az alábbi táblázat a legfelső szintű sémabejegyzéseket ismerteti:
+A következő táblázat a legfelső szintű sémák bejegyzéseit ismerteti:
 
-| Sémabejegyzés | Leírás |
+| Séma bejegyzése | Leírás |
 | -- | --- |
-| `SchemaVersion` | A séma verziója `1.0.0` mindig a fájl formátumára jellemző. |
-| `Id` | Az eszközmodell egyedi azonosítója. |
-| `Version` | Az eszközmodell verzióját azonosítja. |
-| `Name` | Az eszközmodell rövid neve. |
-| `Description` | Az eszközmodell leírása. |
-| `Protocol` | Az eszköz által használt kapcsolati protokoll. Lehet az `AMQP`, `MQTT`és `HTTP`a . |
+| `SchemaVersion` | A séma verziószáma mindig `1.0.0` a fájl formátumára vonatkozik. |
+| `Id` | Az eszköz modelljéhez tartozó egyedi azonosító. |
+| `Version` | Az eszköz modelljének verzióját azonosítja. |
+| `Name` | Az eszköz modelljének felhasználóbarát neve. |
+| `Description` | Az eszköz modelljének leírása. |
+| `Protocol` | Az eszköz által használt kapcsolati protokoll. A, `AMQP` `MQTT`a és `HTTP`az egyike lehet. |
 
-A következő szakaszok a JSON-séma többi szakaszát ismertetik:
+A következő szakaszok a JSON-séma további szakaszait ismertetik:
 
 ## <a name="simulation"></a>Szimuláció
 
-A `Simulation` szakaszban megadhatja a szimulált eszköz belső állapotát. Az eszköz által küldött telemetriai értékeknek az eszköz állapotának részét kell, hogy legyenek.
+A `Simulation` szakaszban megadhatja a szimulált eszköz belső állapotát. Az eszköz által eljuttatott összes telemetria-értéknek az eszköz állapotának kell lennie.
 
-Az eszközállapot definíciójának két eleme van:
+Az eszköz állapotának definíciója két elemet tartalmaz:
 
-* `InitialState`az eszközállapot-objektum összes tulajdonságának kezdeti értékeit határozza meg.
-* `Script`azonosítja az eszközállapotának frissítéséhez ütemezett JavaScript-fájlt. Ezzel a parancsfájlfájllal véletlenszerűen az eszköz által küldött telemetriai értékeket.
+* `InitialState`meghatározza az eszköz állapot objektumának összes tulajdonságának kezdeti értékeit.
+* `Script`egy ütemezett JavaScript-fájlt azonosít, amely frissíti az eszköz állapotát. Ezt a parancsfájlt használhatja az eszköz által eljuttatott telemetria-értékek véletlenszerű megadására.
 
-Ha többet szeretne megtudni az eszközállapot-objektumot szerkesztő JavaScript-fájlról, [olvassa el Az eszközmodell viselkedésének ismertetése című témakört.](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)
+További információ az eszköz állapot objektumát frissítő JavaScript-fájlról: [az eszköz modellje működésének megismerése](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-A következő példa az eszközállapot-objektum definícióját mutatja be egy szimulált hűtőeszközhöz:
+Az alábbi példa egy szimulált hűtő eszköz eszköz állapot objektumának definícióját mutatja be:
 
 ```json
 "Simulation": {
@@ -115,11 +115,11 @@ A következő példa az eszközállapot-objektum definícióját mutatja be egy 
 }
 ```
 
-A szimulációs szolgáltatás öt másodpercenként futtatja a **chiller-01-state.js** fájlt az eszköz állapotának frissítéséhez. A GitHub [parancsfájlmappájában](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) láthatja az alapértelmezett szimulált eszközök JavaScript-fájljait. Konvenció szerint ezek a JavaScript-fájlok utótag **-állapottal** rendelkeznek, hogy megkülönböztessék őket a metódusviselkedést megvalósító fájloktól.
+A szimulációs szolgáltatás öt másodpercenként futtatja a **Chiller-01-State. js** fájlt az eszköz állapotának frissítéséhez. Az alapértelmezett szimulált eszközök JavaScript-fájljait a GitHub [Scripts mappájában](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) tekintheti meg. Az ilyen JavaScript-fájlok az utótag **-állapot** alapján különböztetik meg a metódus viselkedését megvalósító fájlokból.
 
 ## <a name="properties"></a>Tulajdonságok
 
-A `Properties` séma szakasza határozza meg az eszköz által a megoldásnak jelentéseknek adott tulajdonságértékeket. Például:
+A `Properties` séma szakasza határozza meg, hogy az eszköz milyen tulajdonságot ad a megoldásnak. Például:
 
 ```json
 "Properties": {
@@ -130,13 +130,13 @@ A `Properties` séma szakasza határozza meg az eszköz által a megoldásnak je
 }
 ```
 
-Amikor a megoldás elindul, lekérdezi az összes szimulált eszközt, hogy a felhasználói felületen használandó `Type` értékek listáját építse fel. A megoldás `Latitude` a `Longitude` és a tulajdonságok segítségével adja hozzá az eszköz helyét az irányítópulton lévő térképhez.
+A megoldás indításakor a rendszer lekérdezi az összes szimulált eszközt, hogy felépítse a felhasználói felületen használandó `Type` értékek listáját. A megoldás a és `Latitude` `Longitude` a tulajdonságok használatával adja hozzá az eszköz helyét a térképhez az irányítópulton.
 
 ## <a name="telemetry"></a>Telemetria
 
-A `Telemetry` tömb felsorolja az összes telemetriai típust, amelyet a szimulált eszköz küld a megoldásnak.
+A `Telemetry` tömb felsorolja a szimulált eszköz által a megoldásnak küldött összes telemetria-típust.
 
-A következő példa 10 másodpercenként json telemetriai üzenetet küld `floor`a , `vibration`és `temperature` adatokat küld a lift érzékelőiből:
+Az alábbi példa egy JSON telemetria üzenetet küld 10 másodpercenként a `floor`, `vibration`a és `temperature` a felvonó érzékelőkből származó adatokkal:
 
 ```json
 "Telemetry": [
@@ -158,21 +158,21 @@ A következő példa 10 másodpercenként json telemetriai üzenetet küld `floo
 ]
 ```
 
-`MessageTemplate`meghatározza a szimulált eszköz által küldött JSON-üzenet szerkezetét. A helyőrzők `MessageTemplate` a `${NAME}` szintaxist használják, ahol `NAME` az [eszközállapot-objektum](#simulation)kulcsa. A karakterláncokat meg kell adni, a számokat nem.
+`MessageTemplate`meghatározza a szimulált eszköz által küldött JSON-üzenet szerkezetét. A helyőrzői a `MessageTemplate` következő szintaxist `${NAME}` használják `NAME` , ahol az az [eszköz állapot objektumának](#simulation)egyik kulcsa. A sztringeket idézőjelbe kell állítani, a számoknak nem kell szerepelniük.
 
-`MessageSchema`meghatározza a szimulált eszköz által küldött üzenet sémáját. Az üzenetséma is közzé van téve az IoT Hub, hogy a háttér-alkalmazások újra felhasználják az információkat a bejövő telemetriai adatok értelmezéséhez.
+`MessageSchema`meghatározza a szimulált eszköz által küldött üzenet sémáját. Az üzenet sémája IoT Hub is közzé van téve, hogy a háttérbeli alkalmazások újra felhasználhassa az adatokat a bejövő telemetria értelmezéséhez.
 
-Jelenleg csak JSON-üzenetsémák at használhatja. A sémában felsorolt mezők a következő típusúak lehetnek:
+Jelenleg csak a JSON-üzenetek sémái használhatók. A sémában felsorolt mezők a következő típusokból állhatnak:
 
-* Objektum - szerializálva a JSON használatával
-* Bináris - szerializált a base64 használatával
+* Objektum – szerializált JSON használatával
+* Bináris – Base64 használatával szerializált
 * Szöveg
 * Logikai
 * Egész szám
 * Double
 * DateTime
 
-Telemetriai üzenetek küldéséhez különböző időközönként, adjon hozzá `Telemetry` több telemetriai típusok a tömbhöz. A következő példa 10 másodpercenként küldi a hőmérséklet- és páratartalom-adatokat, és percenként jelzi a fény állapotát:
+Ha a telemetria üzeneteket különböző időközönként szeretné elküldeni, adjon hozzá több telemetria- `Telemetry` típust a tömbhöz. Az alábbi példa 10 másodpercenként küld hőmérséklet-és páratartalom-adatokat, valamint a fény állapotát percenként:
 
 ```json
 "Telemetry": [
@@ -204,18 +204,18 @@ Telemetriai üzenetek küldéséhez különböző időközönként, adjon hozzá
 ],
 ```
 
-## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods (Felhőalapúeszköz-metódusok)
+## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-A szimulált eszköz válaszolhat az IoT hubról hívott felhőből az eszközre metódusokra. Az `CloudToDeviceMethods` eszközmodell sémafájljának szakasza:
+Egy szimulált eszköz válaszolhat az IoT hub által hívott felhőből eszközre irányuló metódusokra. Az `CloudToDeviceMethods` eszköz modellje séma fájljának szakasza:
 
-* Azokat a módszereket határozza meg, amelyekre a szimulált eszköz válaszolhat.
-* Azonosítja a végrehajtandó logikát tartalmazó JavaScript-fájlt.
+* A szimulált eszköz által válaszolható metódusok meghatározása.
+* A végrehajtandó logikát tartalmazó JavaScript-fájlt azonosítja.
 
-A szimulált eszköz elküldi az általa támogatott metódusok listáját az IoT hubhoz, amelyhez csatlakozik.
+A szimulált eszköz elküldi az általa támogatott metódusok listáját az IoT hub számára, amelyhez csatlakoztatva van.
 
-Ha többet szeretne megtudni az eszköz működését megvalósító JavaScript-fájlról, [olvassa el Az eszközmodell viselkedésének ismertetése](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)című témakört.
+Ha többet szeretne megtudni az eszköz viselkedését megvalósító JavaScript-fájlról, olvassa el [az eszköz modell működésének megismerése](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)című témakört.
 
-A következő példa három támogatott módszert és a metódusokat megvalósító JavaScript-fájlokat adja meg:
+Az alábbi példa három támogatott módszert és a metódusokat megvalósító JavaScript-fájlokat határozza meg:
 
 ```json
 "CloudToDeviceMethods": {
@@ -234,22 +234,22 @@ A következő példa három támogatott módszert és a metódusokat megvalósí
 }
 ```
 
-A GitHub [parancsfájlmappájában](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) láthatja az alapértelmezett szimulált eszközök JavaScript-fájljait. Konvenció szerint ezek a JavaScript-fájlok az utótag **-módszer** megkülönböztetni őket a fájlokat, amelyek végre állapot viselkedését.
+Az alapértelmezett szimulált eszközök JavaScript-fájljait a GitHub [Scripts mappájában](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) tekintheti meg. Az ilyen JavaScript **-** fájlok a következő utótaggal vannak elkülönítve: az állapotot megvalósító fájlokból kioszthatják azokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk ismerteti, hogyan hozhat létre saját egyéni szimulált eszköz modell. Ez a cikk megmutatta, hogyan:
+Ez a cikk azt ismerteti, hogyan hozhatja létre saját egyéni szimulált eszköz modelljét. Ez a cikk a következőket mutatja be:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Szimulált eszközmodell definiálása JSON-fájl használatával
+> * Szimulált eszköz modellének meghatározása JSON-fájllal
 > * A szimulált eszköz tulajdonságainak megadása
-> * Adja meg a szimulált eszköz által küldött telemetriai adatokat
-> * Adja meg azokat a felhőből az eszközre irányuló metódusokat, amelyekre az eszköz válaszol
+> * A szimulált eszköz által küldött telemetria meghatározása
+> * Adja meg az eszköz által válaszoló felhőből eszközre irányuló módszereket
 
-Most, hogy tudomást szerzett a JSON-sémáról, a javasolt következő lépés [a szimulált eszköz viselkedésének megvalósítása.](iot-accelerators-remote-monitoring-device-behavior.md)
+Most, hogy megismerte a JSON-sémát, a javasolt következő lépés a [szimulált eszköz viselkedésének megvalósítását](iot-accelerators-remote-monitoring-device-behavior.md)ismerteti.
 
-A távoli figyelési megoldással kapcsolatos fejlesztői információk a következő témakörben találhatóak:
+A távoli figyelési megoldással kapcsolatos további információkért lásd:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor tankönyvek szövegparaméterei
-description: Az előre összeállított és egyéni paraméterezett munkafüzetekkel egyszerűsítheti az összetett jelentéseket. További információ a munkafüzet szövegparamétereiről.
+title: Azure Monitor munkafüzetek szöveges paraméterei
+description: Egyszerűsítse a komplex jelentéskészítést előre összeépített és egyéni paraméteres munkafüzetekkel. További információ a munkafüzet szövegének paramétereivel kapcsolatban.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,45 +10,45 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687325"
 ---
-# <a name="workbook-text-parameters"></a>Munkafüzet szövegparaméterei
+# <a name="workbook-text-parameters"></a>Munkafüzet szövegének paraméterei
 
-A Szövegdoboz paraméterei egyszerű módot kínálnak a munkafüzet-felhasználók szöveges bevitelének összegyűjtésére. Akkor használatosak, ha nem célszerű legördülő menüt használni a bemenetek összegyűjtéséhez (például egy tetszőleges küszöbértéket vagy általános szűrőket). A munkafüzetek lehetővé teszik a szerzők számára, hogy a szövegdoboz alapértelmezett értékét lekérdezésből szerezzék be. Ez lehetővé teszi az érdekes forgatókönyvek, például az alapértelmezett küszöbérték beállítása a metrika p95 alapján.
+A szövegmező paraméterei egyszerű módszert biztosítanak a munkafüzet felhasználóitól érkező szövegbeviteli adatok gyűjtésére. Akkor használhatók, ha nem célszerű legördülő listát használni a bevitel összegyűjtéséhez (például egy tetszőleges küszöbértéket vagy általános szűrőket). A munkafüzetek lehetővé teszik a szerzők számára a szövegmező alapértelmezett értékének lekérését egy lekérdezésből. Ez olyan érdekes forgatókönyveket tesz lehetővé, mint például az alapértelmezett küszöbérték beállítása a metrika p95 alapján.
 
-A szövegdobozok gyakori használata más munkafüzetvezérlők által használt belső változók. Ez úgy történik, hogy kihasználva a lekérdezés az alapértelmezett értékeket, és így a bemeneti vezérlő láthatatlan olvasási módban. Előfordulhat például, hogy egy felhasználó egy képletből (nem egy felhasználóból) szeretne egy küszöbértéket, majd a küszöbértéket a későbbi lekérdezésekben használni.
+A szövegmezők gyakori használata olyan belső változó, amelyet más munkafüzetek vezérlői használnak. Ez a lekérdezés alapértelmezett értékekre való kihasználása, valamint a bemeneti vezérlő olvasási módban való láthatatlanná tétele révén történik. Előfordulhat például, hogy egy felhasználó egy képletből (nem egy felhasználóból) származó küszöbértéket szeretne használni, majd a küszöbértéket a későbbi lekérdezésekben.
 
-## <a name="creating-a-text-parameter"></a>Szövegparaméter létrehozása
-1. Kezdje üres munkafüzettel szerkesztési módban.
-2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben lévő hivatkozásokból.
-3. Kattintson a kék _Add Parameter_ gombra.
-4. Az új paraméter ablaktáblán, amely megjelenik adja meg a következőt:
+## <a name="creating-a-text-parameter"></a>Szöveges paraméter létrehozása
+1. Kezdés egy üres munkafüzettel szerkesztési módban.
+2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
+3. Kattintson a kék _paraméter hozzáadása_ gombra.
+4. A felugró új paraméter panelen írja be a következőket:
     1. Paraméter neve:`SlowRequestThreshold`
     2. Paraméter típusa:`Text`
-    3. Szükséges:`checked`
-    4. Alapértelmezett érték beszereznie a lekérdezésből:`unchecked`
-5. A paraméter létrehozásához válassza a "Mentés" lehetőséget az eszköztáron.
+    3. Szükséges`checked`
+    4. Alapértelmezett érték beolvasása a lekérdezésből:`unchecked`
+5. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
-    ![Szövegparaméter létrehozását bemutató kép](./media/workbooks-text/text-create.png)
+    ![Egy szöveges paraméter létrehozását bemutató kép](./media/workbooks-text/text-create.png)
 
-Így fog kinézni a munkafüzet olvasási módban.
+A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 
-![Szövegparamétert ábrázoló kép olvasási módban](./media/workbooks-text/text-readmode.png)
+![Egy szöveges paramétert olvasási módban ábrázoló kép](./media/workbooks-text/text-readmode.png)
 
-## <a name="referencing-a-text-parameter"></a>Hivatkozás szöveges paraméterre
-1. Vegyen fel egy lekérdezésvezérlőt a `Add query` munkafüzetbe a kék hivatkozás kiválasztásával és egy Application Insights-erőforrás kiválasztásával.
-2. A KQL mezőben adja hozzá ezt a kódrészletet:
+## <a name="referencing-a-text-parameter"></a>Egy szöveges paraméterre hivatkozik
+1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe úgy `Add query` , hogy kiválasztja a kék hivatkozást, és kiválaszt egy Application Insights erőforrást.
+2. A KQL mezőben adja meg a következő kódrészletet:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= {SlowRequestThreshold}) by name
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-3. Ha a szöveges paramétert 500-as értékkel, a lekérdezésvezérlővel együtt használja, akkor az alábbi lekérdezést hatékonyan futtatja:
+3. A 500 értékkel rendelkező Text paraméterrel párosítva a lekérdezés vezérlővel, amely az alábbi lekérdezést ténylegesen futtatja:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= 500) by name
@@ -57,35 +57,35 @@ A szövegdobozok gyakori használata más munkafüzetvezérlők által használt
     ```
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
-    ![KQL-ben hivatkozott szövegparamétert ábrázoló kép](./media/workbooks-text/text-reference.png)
+    ![A KQL-ben hivatkozott szöveges paramétert ábrázoló kép](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> A fenti példában egy egész értéket `{SlowRequestThreshold}` jelöl. Ha egy karakterláncot, mint `{ComputerName}` akkor módosítania kell a Kusto `"{ComputerName}"` lekérdezést, hogy adjunk idézőjelek annak érdekében, hogy a paraméter mező egy accept input idézőjelek nélkül.
+> A fenti példában az egész `{SlowRequestThreshold}` értéket jelöli. Ha olyan karakterláncot kérdez le, mint például `{ComputerName}` , módosítania kell a Kusto-lekérdezést úgy, hogy `"{ComputerName}"` idézőjeleket adjon hozzá, hogy a paraméter mezőben idézőjelek nélkül fogadja el a bemenetet.
 
 ## <a name="setting-default-values"></a>Alapértelmezett értékek beállítása
-1. Kezdje üres munkafüzettel szerkesztési módban.
-2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben lévő hivatkozásokból.
-3. Kattintson a kék _Add Parameter_ gombra.
-4. Az új paraméter ablaktáblán, amely megjelenik adja meg a következőt:
+1. Kezdés egy üres munkafüzettel szerkesztési módban.
+2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
+3. Kattintson a kék _paraméter hozzáadása_ gombra.
+4. A felugró új paraméter panelen írja be a következőket:
     1. Paraméter neve:`SlowRequestThreshold`
     2. Paraméter típusa:`Text`
-    3. Szükséges:`checked`
-    4. Alapértelmezett érték beszereznie a lekérdezésből:`checked`
-5. A KQL mezőben adja hozzá ezt a kódrészletet:
+    3. Szükséges`checked`
+    4. Alapértelmezett érték beolvasása a lekérdezésből:`checked`
+5. A KQL mezőben adja meg a következő kódrészletet:
     ```kusto
     requests
     | summarize round(percentile(duration, 95), 2)
     ```
-    Ez a lekérdezés a szövegmező alapértelmezett értékét az alkalmazás összes kérésének 95.
+    Ez a lekérdezés beállítja a szövegmező alapértelmezett értékét az alkalmazásban lévő összes kérelem 95. percentilis százalékának időtartamára.
 6. Lekérdezés futtatása az eredmény megtekintéséhez
-7. A paraméter létrehozásához válassza a "Mentés" lehetőséget az eszköztáron.
+7. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
-    ![A KQL alapértelmezett értékkel rendelkező szöveges paramétert megjelenítő kép](./media/workbooks-text/text-default-value.png)
+    ![Az KQL alapértelmezett értékkel rendelkező szöveges paramétert ábrázoló kép](./media/workbooks-text/text-default-value.png)
 
 > [!NOTE]
-> Bár ez a példa az Application Insights-adatoklekérdezésére szolgál, a megközelítés bármely naplóalapú adatforráshoz használható – Log Analytics, Azure Resource Graph stb.
+> Habár ez a példa Application Insightsi az adatlekérdezéseket, a módszer használható bármilyen log-alapú adatforráshoz – Log Analytics, Azure Resource Graph stb.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés a](workbooks-visualizations.md) munkafüzetekkel, számos gazdag vizualizációs lehetőséggel.
-* [Szabályozhatja](workbooks-access-control.md) és megoszthatja a munkafüzet erőforrásaihoz való hozzáférést.
+* [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

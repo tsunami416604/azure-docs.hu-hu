@@ -1,7 +1,7 @@
 ---
-title: Az MSAL használata az Azure Active Directory B2CLearn szolgáltatással | Azure
+title: A MSAL használata a Azure Active Directory B2CLearn használatával | Azure
 titleSuffix: Microsoft identity platform
-description: A Microsoft Authentication Library for JavaScript (MSAL.js) lehetővé teszi, hogy az alkalmazások együttműködjenek az Azure AD B2C-vel, és jogkivonatokat szerezzenek be a biztonságos webes API-k hívásához. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, mások webes API-i vagy saját webes API-k.
+description: A JavaScripthez készült Microsoft Authentication Library (MSAL. js) lehetővé teszi, hogy az alkalmazások működjenek a Azure AD B2C, és jogkivonatokat szerezzenek a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,53 +14,53 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534482"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Az Azure Active Directory B2C szolgáltatással való munka a JavaScript hez tartozó Microsoft Authentication Library for JavaScript használatával
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure Active Directory B2C
 
-[A Microsoft Authentication Library for JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy az [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)segítségével hitelesítsék a felhasználókat a közösségi és helyi identitással. Az Azure AD B2C identitáskezelési szolgáltatásként való használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezzenek be és kezeljék a profiljukat az alkalmazások használata során.
+[A Microsoft Authentication Library for JavaScript (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy [Azure Active Directory B2C (Azure ad B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal. A Azure AD B2C identitás-kezelési szolgáltatásként való használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor.
 
-Az Azure AD B2C lehetővé teszi az alkalmazások felhasználói felületének márkajelzését és testreszabását a hitelesítési folyamat során, hogy zökkenőmentes élményt nyújtson ügyfeleinek.
+A Azure AD B2C lehetővé teszi, hogy az alkalmazások felhasználói felületét a hitelesítési folyamat során kialakítsa és testreszabja, hogy zökkenőmentes élményt nyújtson ügyfeleinek.
 
-Ez a cikk bemutatja, hogyan használhatja az MSAL.js azure AD B2C használatával, és összefoglalja a legfontosabb pontokat, amelyeket ismernie kell. A teljes körű vita és oktatóanyag, kérjük, olvassa el [az Azure AD B2C dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/overview).
+Ez a cikk bemutatja, hogyan használható a MSAL. js a Azure AD B2C és a fontos pontok összefoglalásához, amelyekről tisztában kell lennie. A teljes vitát és oktatóanyagot a [Azure ad B2C dokumentációjában](https://docs.microsoft.com/azure/active-directory-b2c/overview)tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem hozta létre a saját [Azure AD B2C-bérlő,](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)kezdje létre most (is használhatja a meglévő Azure AD B2C bérlő, ha már rendelkezik).
+Ha még nem hozott létre saját [Azure ad B2C bérlőt](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), kezdjen el létrehozni egyet most (ha már rendelkezik ilyennel, használhat meglévő Azure ad B2C bérlőt is).
 
 Ez a bemutató két részből áll:
 
-- hogyan védheti meg a webes API-t.
-- hogyan regisztrálhat egy egyoldalas alkalmazást a *webes* API hitelesítéséhez és hívásához.
+- webes API-k elleni védelem.
+- egy egyoldalas alkalmazás regisztrálása hitelesítéshez és *a webes API* meghívásához.
 
 ## <a name="nodejs-web-api"></a>NODE.js webes API
 
 > [!NOTE]
-> Ebben a pillanatban, MSAL.js a Node még fejlesztés alatt áll (lásd az [ütemtervet](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). Addig is javasoljuk, hogy használja [a Passport-azure-ad,](https://github.com/AzureAD/passport-azure-ad)a Microsoft által kifejlesztett és támogatott Node.js hitelesítési könyvtárhasználatát.
+> Jelenleg a Node-hoz készült MSAL. js még fejlesztés alatt áll (lásd az [ütemtervet](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). Addig is javasoljuk, hogy használja a [Passport-Azure-ad](https://github.com/AzureAD/passport-azure-ad)-t, a Microsoft által fejlesztett és támogatott Node. js-hez készült hitelesítési könyvtárat.
 
-A következő lépések bemutatják, hogyan használhatja egy **webes API az** Azure AD B2C-t saját maga védelmére és a kiválasztott hatókörök ügyfélalkalmazások számára való elérhetővé tétele érdekében.
+A következő lépések bemutatják, hogyan használhatják a **webes API** a Azure ad B2Ct saját maga elleni védelemre, és hogy a kijelölt hatókörök elérhetők legyenek egy ügyfélalkalmazás számára.
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
-A webes API védelme az Azure AD B2C, először regisztrálnia kell azt. Részletes lépésekért [lásd az alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) című témakört.
+A webes API-k Azure AD B2C-mel való ellátásához először regisztrálnia kell. Lásd: [az alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) a részletes lépésekhez.
 
-### <a name="step-2-download-the-sample-application"></a>2. lépés: A mintaalkalmazás letöltése
+### <a name="step-2-download-the-sample-application"></a>2. lépés: a minta alkalmazás letöltése
 
-Töltse le a mintát zip-fájlként, vagy klónozza a GitHubról:
+Töltse le a mintát zip-fájlként, vagy klónozást a GitHubról:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
 
-### <a name="step-3-configure-authentication"></a>3. lépés: Hitelesítés konfigurálása
+### <a name="step-3-configure-authentication"></a>3. lépés: a hitelesítés konfigurálása
 
-1. Nyissa `config.js` meg a mintát a fájlt.
+1. Nyissa `config.js` meg a fájlt a mintában.
 
-2. Konfigurálja a mintát az alkalmazás korábbi, az alkalmazás regisztrálása során beszerzett hitelesítő adatokkal. Módosítsa a következő kódsorokat az értékek ügyfélazonosító, állomás, tenantId és házirend nevének lecserélésével.
+2. Konfigurálja a mintát az alkalmazás regisztrálásakor korábban beszerzett hitelesítő adatokkal. Módosítsa az alábbi kódrészleteket úgy, hogy lecseréli az értékeket a clientID, a gazdagépre, a tenantId és a házirend nevére.
 
 ```JavaScript
 const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
@@ -69,36 +69,36 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-További információért tekintse meg ezt a [Node.js B2C webes API-mintát.](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+További információkért tekintse meg ezt a [Node. js B2C webes API-mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
 ---
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
-A következő lépések bemutatják, hogy egy **egyoldalas alkalmazás** hogyan használhatja az Azure AD B2C-t a regisztrációhoz, a bejelentkezéshez és a védett webes API-k hívásához.
+A következő lépések bemutatják, hogyan használható egy **egyoldalas alkalmazás** a Azure ad B2C a regisztrációhoz, a bejelentkezéshez és a védett webes API meghívásához.
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
-A hitelesítés megvalósításához először regisztrálnia kell az alkalmazást. Részletes lépésekért [lásd az alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) című témakört.
+A hitelesítés megvalósításához először regisztrálnia kell az alkalmazást. Lásd: [az alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) a részletes lépésekhez.
 
-### <a name="step-2-download-the-sample-application"></a>2. lépés: A mintaalkalmazás letöltése
+### <a name="step-2-download-the-sample-application"></a>2. lépés: a minta alkalmazás letöltése
 
-Töltse le a mintát zip-fájlként, vagy klónozza a GitHubról:
+Töltse le a mintát zip-fájlként, vagy klónozást a GitHubról:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>3. lépés: Hitelesítés konfigurálása
+### <a name="step-3-configure-authentication"></a>3. lépés: a hitelesítés konfigurálása
 
-Az alkalmazás konfigurálása két szempontból érdekes:
+Az alkalmazás konfigurálása két fontos szempontot mutat be:
 
-- API-végpontok és elérhető hatókörök konfigurálása
-- Hitelesítési paraméterek és tokenhatókörök konfigurálása
+- API-végpont és elérhető hatókörök konfigurálása
+- Hitelesítési paraméterek és jogkivonat-hatókörök konfigurálása
 
-1. Nyissa `apiConfig.js` meg a mintát a fájlt.
+1. Nyissa `apiConfig.js` meg a fájlt a mintában.
 
-2. Konfigurálja a mintát a korábban a webes API regisztrálása során kapott paraméterekkel. Módosítsa a következő kódsorokat az értékek nek a webes API és a kitett hatókörök címére való lecserélésével.
+2. Konfigurálja a mintát a webes API regisztrálása során korábban beszerzett paraméterekkel. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a webes API-ra és a feltehetően elérhető hatókörökre.
 
    ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -108,9 +108,9 @@ Az alkalmazás konfigurálása két szempontból érdekes:
     };
    ```
 
-3. Nyissa `authConfig.js` meg a mintát a fájlt.
+3. Nyissa `authConfig.js` meg a fájlt a mintában.
 
-4. Konfigurálja a mintát az egyoldalas alkalmazás regisztrálása során korábban kapott paraméterekkel. Módosítsa a következő kódsorokat az értékek ügyfélazonosítóval, a hatóságmetaadatokkal és a tokenkérelem-hatókörekkel való lecserélésével.
+4. Konfigurálja a mintát az egyoldalas alkalmazás regisztrálása során korábban beszerzett paraméterekkel. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a ClientId, a szolgáltatói metaadatok és a jogkivonat-kérelmek hatókörével.
 
    ```javascript
     // Config object to be passed to Msal on creation.
@@ -132,7 +132,7 @@ Az alkalmazás konfigurálása két szempontból érdekes:
     };
    ```
 
-További információért, kijelenti magát ez [JavaScript B2C egyoldalas alkalmazás minta](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
+További információkért tekintse meg ezt a [JavaScript B2C egyoldalas alkalmazás mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 
 ---
 

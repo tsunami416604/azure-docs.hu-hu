@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs névtér áthelyezése másik régióba | Microsoft dokumentumok
-description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs névteret az aktuális régióból egy másik régióba.
+title: Azure Event Hubs-névtér áthelyezése másik régióba | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs-névteret az aktuális régióból egy másik régióba.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -10,46 +10,46 @@ ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
 ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606807"
 ---
-# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs névterének áthelyezése másik régióba
-Vannak különböző forgatókönyvek, amelyekben szeretné áthelyezni a meglévő Event Hubs névtér egyik régióból a másikba. Előfordulhat például, hogy ugyanazzal a konfigurációval rendelkező névteret szeretne létrehozni a teszteléshez. Előfordulhat, hogy egy másodlagos névteret is létre szeretne hozni egy másik régióban a [vész-helyreállítási tervezés](event-hubs-geo-dr.md#setup-and-failover-flow)részeként.
+# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs-névtér áthelyezése másik régióba
+Különböző helyzetekben érdemes áthelyezni a meglévő Event Hubs névteret az egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy névteret ugyanazzal a konfigurációval a teszteléshez. A vész- [helyreállítási tervezés](event-hubs-geo-dr.md#setup-and-failover-flow)részeként másodlagos névteret is létre kell hoznia egy másik régióban.
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan exportálhat egy Azure Resource Manager-sablont egy meglévő Event Hubs névtérhez, majd a sablon használatával hozzon létre egy névteret ugyanazzal a konfigurációs beállításokkal egy másik régióban. Ez a folyamat azonban nem mozgatja a még fel nem dolgozott eseményeket. A törlés előtt fel kell dolgoznia az eseményeket az eredeti névtérből.
+> Ez a cikk bemutatja, hogyan exportálhat egy Azure Resource Manager sablont egy meglévő Event Hubs névtérbe, majd a sablonnal létrehozhat egy másik régióban azonos konfigurációs beállításokkal rendelkező névteret. Azonban ez a folyamat nem helyezi át a még nem feldolgozott eseményeket. A törlés előtt fel kell dolgoznia az eseményeket az eredeti névtérből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy a fiók által használt szolgáltatások és funkciók támogatottak a célrégióban.
-- Az előzetes verziójú funkciók hoz győződjön meg arról, hogy az előfizetés a célrégióban szerepel.
-- Ha a névtérben engedélyezve van a **rögzítési funkció** az eseményközpontokhoz, helyezze át az Azure Storage vagy az [Azure Data Lake Store Gen 2](../storage/common/storage-account-move.md) vagy az Azure Data Lake Store Gen [1](../data-lake-store/data-lake-store-migration-cross-region.md) fiókokat az Event Hubs névtér áthelyezése előtt. A storage- és az Event Hubs-névtereket is tartalmazó erőforráscsoportot áthelyezheti a másik régióba a jelen cikkben ismertetettekhez hasonló lépések végrehajtásával. 
-- Ha az Event Hubs névtér egy **Eseményközpontok-fürtben**található, [hozzon létre egy dedikált fürtöt](event-hubs-dedicated-cluster-create-portal.md) a **célrégióban,** mielőtt a cikk lépéseit végigmenne. 
+- Győződjön meg arról, hogy a fiók által használt szolgáltatások és szolgáltatások támogatottak a célként megadott régióban.
+- Az előzetes verziójú funkciók esetében győződjön meg arról, hogy az előfizetése engedélyezett a célként megadott régióban.
+- Ha az Event hubok esetében engedélyezve van a **rögzítési funkció** a névtérben, helyezze át az [Azure Storage-t vagy Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) vagy [Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) fiókot az Event Hubs névtér áthelyezése előtt. A tárolót és a Event Hubs névtereket is tartalmazó erőforráscsoportot áthelyezheti a másik régióba a jelen cikkben ismertetett lépésekhez hasonló módon. 
+- Ha a Event Hubs névtér egy Event Hubs- **fürtben**található, [hozzon létre egy dedikált fürtöt](event-hubs-dedicated-cluster-create-portal.md) a **célként megadott régióban** , mielőtt átugorja a jelen cikkben ismertetett lépéseket. 
 
 ## <a name="prepare"></a>Előkészítés
-Első lépésekhez exportáljon egy Erőforrás-kezelő sablont. Ez a sablon az Event Hubs névterét leíró beállításokat tartalmazza.
+Első lépésként exportáljon egy Resource Manager-sablont. Ez a sablon a Event Hubs névteret leíró beállításokat tartalmaz.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza **az Összes erőforrás** lehetőséget, majd válassza ki az Eseményközpontok névterét.
+2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Event Hubs névteret.
 
-3. Válassza > **Beállítások** > **exportálása sablont.**
+3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
 
-4. Válassza a **Letöltés** gombot a **Sablon exportálása** lapon.
+4. A **sablon exportálása** lapon kattintson a **Letöltés** elemre.
 
-    ![Erőforrás-kezelő sablon letöltése](./media/move-across-regions/download-template.png)
+    ![Resource Manager-sablon letöltése](./media/move-across-regions/download-template.png)
 
-5. Keresse meg a portálról letöltött .zip fájlt, és csomagolja ki a fájlt egy ön által választott mappába.
+5. Keresse meg a portálról letöltött. zip fájlt, és bontsa ki a fájlt egy tetszőleges mappába.
 
-   Ez a zip-fájl tartalmazza a sablont és a sablon tüzembe helyezéséhez szükséges parancsfájlokat tartalmazó .json fájlokat.
+   Ez a zip-fájl tartalmazza azokat a. JSON fájlokat, amelyek tartalmazzák a sablont és a parancsfájlokat a sablon telepítéséhez.
 
 
 ## <a name="move"></a>Áthelyezés
 
-Telepítse a sablont egy Eseményközpont-névtér létrehozásához a célrégióban. 
+A sablon üzembe helyezésével hozzon létre egy Event Hubs névteret a célként megadott régióban. 
 
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
@@ -62,56 +62,56 @@ Telepítse a sablont egy Eseményközpont-névtér létrehozásához a célrégi
 
 5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
 
-6. Válassza **a Fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template.json** fájl betöltéséhez.
+6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
 
-7. A sablon mentéséhez válassza a **Mentés** gombot. 
+7. A sablon mentéséhez válassza a **Mentés** lehetőséget. 
 
-8. Az **Egyéni telepítés** lapon hajtsa végre az alábbi lépéseket: 
+8. Az **Egyéni telepítés** lapon kövesse az alábbi lépéseket: 
 
-    1. Válasszon egy **Azure-előfizetést.** 
+    1. Válasszon ki egy Azure- **előfizetést**. 
 
-    2. Jelöljön ki egy meglévő **erőforráscsoportot,** vagy hozzon létre egyet. Ha a forrásnévtér egy Eseményközpont-fürtben volt, jelölje ki a célrégióban fürtöt tartalmazó erőforráscsoportot. 
+    2. Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egyet. Ha a forrás névtere egy Event Hubs fürtben volt, válassza ki azt az erőforráscsoportot, amely a célként megadott régióban található fürtöt tartalmazza. 
 
-    3. Válassza ki a **célhelyet** vagy -régiót. Ha meglévő erőforráscsoportot választott, ez a beállítás írásvédett. 
+    3. Válassza ki a **célhelyet vagy** régiót. Ha kiválasztott egy meglévő erőforráscsoportot, ez a beállítás csak olvasható. 
 
-    4. A **BEÁLLÍTÁSOK szakaszban** tegye a következő lépéseket:
+    4. A **Beállítások** szakaszban hajtsa végre a következő lépéseket:
     
         1. adja meg az új **névtér nevét**. 
 
-            ![Erőforrás-kezelő sablon telepítése](./media/move-across-regions/deploy-template.png)
+            ![Resource Manager-sablon üzembe helyezése](./media/move-across-regions/deploy-template.png)
 
-        2. Ha a forrásnévtér **egy Eseményközpont-fürtben**volt, adja meg az **erőforráscsoport** és az **Eseményközpontok fürt** nevét **a külső azonosító**részeként. 
+        2. Ha a forrás névtere egy **Event Hubs fürtben**volt, írja be az **erőforráscsoport** nevét és a **Event Hubs-fürtöt** a **külső azonosító**részeként. 
 
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Ha a névtérben lévő eseményközpont egy storage-fiókot használ az események `StorageAccounts_<original storage account name>_external` rögzítéséhez, adja meg az erőforráscsoport nevét és a mező tárfiókját. 
+        3. Ha a névtérben az Event hub Storage-fiókot használ az események rögzítéséhez, adja meg az erőforráscsoport nevét és a Storage `StorageAccounts_<original storage account name>_external` -fiókot a (z) mezőben. 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>
             ```    
-    5. Válassza az **Elfogadom a fenti feltételeket** jelölőnégyzetet. 
+    5. Jelölje be az **Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet. 
     
-    6. Most válassza **a Vásárlás lehetőséget** a telepítési folyamat elindításához. 
+    6. Most válassza a **vásárlás lehetőséget** a telepítési folyamat elindításához. 
 
-## <a name="discard-or-clean-up"></a>Selejtezés vagy tisztítás
-A telepítés után, ha szeretné elölről kezdeni, törölheti a **cél eseményközpontok névterét,** és megismételheti a cikk [Előkészítés](#prepare) és [áthelyezés](#move) szakaszában ismertetett lépéseket.
+## <a name="discard-or-clean-up"></a>Elvetés vagy tisztítás
+Ha az üzembe helyezést követően el szeretné indítani a műveletet, törölheti a **cél Event Hubs névteret**, és megismételheti a cikk [előkészítés](#prepare) és [Áthelyezés](#move) szakaszában ismertetett lépéseket.
 
-A módosítások véglegesítéséhez és az Event Hubs névtér áthelyezésének befejezéséhez törölje a **forráseseményközpontok névterét.** A névtér törlése előtt győződjön meg arról, hogy a névtér összes eseményét feldolgozta. 
+Ha véglegesíteni szeretné a módosításokat, és egy Event Hubs névtér áthelyezését hajtja végre, törölje a **forrás Event Hubs névteret**. A névtér törlése előtt győződjön meg arról, hogy a névtérben lévő összes eseményt feldolgozta. 
 
-Az Event Hubs-névtér (forrás vagy cél) törlése az Azure Portal használatával:
+Event Hubs névtér (forrás vagy cél) törlése a Azure Portal használatával:
 
-1. Az Azure Portal tetején található keresési ablakban írja be az **Event Hubs parancsot,** és a keresési eredmények közül válassza **az Eseményközpontok lehetőséget.** Az Event Hubs névterek egy listában jelennek meg.
+1. A Azure Portal tetején található Keresés ablakban írja be a **Event Hubs**kifejezést, és válassza a **Event Hubs** lehetőséget a keresési eredmények közül. A listában megjelenik a Event Hubs névterek listája.
 
-2. Jelölje ki a törölni kívánt célnévteret, és válassza az eszköztár **Törlés parancsát.** 
+2. Válassza ki a törölni kívánt cél névteret, és válassza a **Törlés** lehetőséget az eszköztárból. 
 
-    ![Névtér törlése - gomb](./media/move-across-regions/delete-namespace-button.png)
+    ![Névtér törlése – gomb](./media/move-across-regions/delete-namespace-button.png)
 
-3. Az **Erőforrások törlése*** lapon ellenőrizze a kijelölt erőforrásokat, és erősítse meg a törlést az **igen**beírással, majd kattintson a **Törlés gombra.** 
+3. Az **erőforrások törlése*** lapon ellenőrizze a kiválasztott erőforrásokat, és erősítse meg a törlést az **Igen**érték beírásával, majd válassza a **Törlés**lehetőséget. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban áthelyezett egy Azure Event Hubs névteret egyik régióból a másikba, és megtisztította a forráserőforrásokat.  Ha többet szeretne tudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vészhelyreállításról:
+Ebben az oktatóanyagban egy Azure Event Hubs névteret helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 
 
 - [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

@@ -1,6 +1,6 @@
 ---
-title: Helyettesítő kulcs átalakítása az adatfolyam leképezésében
-description: Az Azure Data Factory leképezési adatfolyamának helyettesítőkulcs-átalakítása a szekvenciális kulcsértékek létrehozásához
+title: Helyettes kulcs átalakítása a leképezési adatfolyamban
+description: A Azure Data Factory leképezési adatforgalmának helyettes kulcs-átalakításának használata szekvenciális kulcsok értékének létrehozásához
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606298"
 ---
-# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Helyettesítő kulcs átalakítása az adatfolyam leképezésében 
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Helyettes kulcs átalakítása a leképezési adatfolyamban 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A helyettesítő kulcs átalakításával minden adatsorhoz hozzáadhat egy növekménykulcs-értéket. Ez akkor hasznos, ha dimenziótáblákat tervez csillagséma analitikus adatmodellben. A csillagsémában a dimenziótáblák minden tagjának szüksége van egy egyedi kulcsra, amely nem üzleti kulcs.
+A helyettesítő kulcs átalakításával adja hozzá a növekményes kulcs értékét az egyes adatsorokhoz. Ez akkor hasznos, ha dimenziós táblákat tervez kialakítani egy Star Schema analitikai adatmodellben. A Star-sémákban a dimenziós táblázatok egyes tagjainak olyan egyedi kulcsra van szükségük, amely nem üzleti kulcs.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-![Helyettesítő kulcs átalakítása](media/data-flow/surrogate.png "Helyettesítő kulcs átalakítása")
+![Helyettes kulcs átalakítása](media/data-flow/surrogate.png "Helyettes kulcs átalakítása")
 
-**Kulcsoszlop:** A létrehozott helyettesítő kulcs oszlop neve.
+**Kulcs oszlopa:** A generált helyettesítő kulcs oszlopának neve.
 
-**Kezdő érték:** A létrehozandó legalacsonyabb kulcsérték.
+**Kezdő érték:** A legkisebb kulcs értéke, amelyet a rendszer generál.
 
-## <a name="increment-keys-from-existing-sources"></a>Meglévő forrásokból származó növekménykulcsok
+## <a name="increment-keys-from-existing-sources"></a>Kulcsok növelése meglévő forrásokból
 
-Ha a sorozatot egy forrásban létező értékből szeretné elindítani, a helyettesítő kulcs átalakítását követő származtatott oszlopátalakítással adja hozzá a két értéket:
+Ha a sorozatot egy olyan értékről szeretné elindítani, amely egy adott forrásban létezik, a helyettesítő kulcs átalakítását követően hozzon létre egy származtatott oszlop-átalakítást a két érték együttes hozzáadásához:
 
-![SK hozzáadása Max](media/data-flow/sk006.png "Helyettesítő kulcs átalakítása Max hozzáadása")
+![SK maximális hozzáadása](media/data-flow/sk006.png "Helyettes kulcs átalakításának hozzáadása max.")
 
 ### <a name="increment-from-existing-maximum-value"></a>Növekmény a meglévő maximális értéktől
 
-A kulcsérték az előző max értékkel történő magzatához két olyan módszer van, amelyet a forrásadatok helye alapján használhat.
+Ha a kulcs értékét az előző max. módszerrel szeretné kiosztani, két olyan módszert használhat, amelyet a forrásadatok alapján lehet használni.
 
 #### <a name="database-sources"></a>Adatbázis-források
 
-Sql-lekérdezési beállítással válassza ki a MAX() elemet a forrásból. Például,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Például:`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
-![Helyettesítő kulcs lekérdezése](media/data-flow/sk002.png "Helyettesítő kulcs átalakítási lekérdezése")
+![Helyettes kulcs lekérdezése](media/data-flow/sk002.png "Helyettes kulcs transzformációs lekérdezése")
 
-#### <a name="file-sources"></a>Fájlforrások
+#### <a name="file-sources"></a>Fájlok forrásai
 
-Ha az előző maximális érték egy `max()` fájlban van, az összesített átalakítás függvényével kapja meg az előző maximális értéket:
+Ha az előző maximális érték egy fájlban található, az összesített transzformációban az előző maximális érték beszerzéséhez használja a `max()` függvényt:
 
-![Helyettesítő kulcsfájl](media/data-flow/sk008.png "Helyettesítő kulcsfájl")
+![Helyettesítő kulcs fájlja](media/data-flow/sk008.png "Helyettesítő kulcs fájlja")
 
-Mindkét esetben csatlakoznia kell a bejövő új adatokhoz az előző maximális értéket tartalmazó forrással együtt.
+Mindkét esetben csatlakoztatnia kell a bejövő új adatait az előző maximális értéket tartalmazó forrással együtt.
 
-![Helyettesítő kulcs illesztése](media/data-flow/sk004.png "Helyettesítő kulcs illesztése")
+![Helyettes kulcs illesztése](media/data-flow/sk004.png "Helyettes kulcs illesztése")
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -69,7 +69,7 @@ Mindkét esetben csatlakoznia kell a bejövő új adatokhoz az előző maximáli
 
 ### <a name="example"></a>Példa
 
-![Helyettesítő kulcs átalakítása](media/data-flow/surrogate.png "Helyettesítő kulcs átalakítása")
+![Helyettes kulcs átalakítása](media/data-flow/surrogate.png "Helyettes kulcs átalakítása")
 
 A fenti helyettesítő kulcs konfigurációjának adatfolyam-parancsfájlja az alábbi kódrészletben található.
 
@@ -83,4 +83,4 @@ AggregateDayStats
 
 ## <a name="next-steps"></a>További lépések
 
-Ezek a példák az [Illesztés](data-flow-join.md) és [a Származtatott oszlop](data-flow-derived-column.md) átalakításokat használják.
+Ezek a példák a [JOIN](data-flow-join.md) és a [származtatott oszlop](data-flow-derived-column.md) átalakításokat használják.

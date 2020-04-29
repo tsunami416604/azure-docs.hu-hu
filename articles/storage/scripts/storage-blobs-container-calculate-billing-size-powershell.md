@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-parancsfájlminta – Egy blobtároló teljes számlázási méretének kiszámítása | Microsoft dokumentumok
-description: Számítsa ki egy tároló teljes méretét az Azure Blob storage-ban számlázási célokra.
+title: Azure PowerShell parancsfájl-minta – a blob-tárolók teljes számlázási méretének kiszámítása | Microsoft Docs
+description: Egy tároló teljes méretének kiszámítása az Azure Blob Storage-ban számlázási célokra.
 services: storage
 author: fhryo-msft
 ms.service: storage
@@ -10,32 +10,32 @@ ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
 ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067109"
 ---
-# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob-tároló teljes számlázási méretének kiszámítása
+# <a name="calculate-the-total-billing-size-of-a-blob-container"></a>BLOB-tároló teljes számlázási méretének kiszámítása
 
-Ez a parancsfájl kiszámítja egy tároló méretét az Azure Blob storage-ban a számlázási költségek becslése céljából. A parancsfájl összegzi a tárolóban lévő blobok méretét.
+Ez a szkript kiszámítja egy tároló méretét az Azure Blob Storage-ban a számlázási költségek becslése céljából. A parancsfájl a tárolóban lévő Blobok méretét összesíti.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> Ez a PowerShell-parancsfájl számlázási célokra kiszámítja a tároló méretét. Ha más célokra számítja ki a tárolóméretét, olvassa [el a Blob-tároló teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-powershell.md) című témakört egy becslést tartalmazó egyszerűbb parancsfájlhoz.
+> Ez a PowerShell-parancsfájl számlázási célokra kiszámítja a tároló méretét. Ha más célra szeretné kiszámítani a tároló méretét, tekintse meg [a blob Storage-tárolók teljes méretét](../scripts/storage-blobs-container-calculate-size-powershell.md) egy becslést biztosító egyszerűbb parancsfájlhoz.
 
-## <a name="determine-the-size-of-the-blob-container"></a>A blobtároló méretének meghatározása
+## <a name="determine-the-size-of-the-blob-container"></a>A blob-tároló méretének meghatározása
 
-A blob tároló teljes mérete magában foglalja a tároló méretét, és a tároló alatt lévő összes blob méretét.
+A blob-tároló teljes mérete magában foglalja a tároló méretét, valamint a tárolóban lévő összes blob méretét.
 
-A következő szakaszok ismerteti, hogyan számítja ki a tárolási kapacitás blob tárolók és blobok.A következő szakaszban a Len(X) a karakterláncban szereplő karakterek számát jelenti.
+A következő szakasz ismerteti, hogyan számítja ki a tárolási kapacitást a blob-tárolók és a Blobok számára.A következő szakaszban a len (X) a karakterláncban szereplő karakterek számát jelenti.
 
-### <a name="blob-containers"></a>Blob-tárolók
+### <a name="blob-containers"></a>BLOB-tárolók
 
-A következő számítás bemutatja, hogyan becsülhető meg a blobtárolónként felhasznált tárterület mennyiségét:
+A következő számítás azt ismerteti, hogyan lehet megbecsülni a blob-tárolók által felhasznált tárterület méretét:
 
 ```
 48 bytes + Len(ContainerName) * 2 bytes +
@@ -43,20 +43,20 @@ For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
 For-Each Signed Identifier[512 bytes]
 ```
 
-A következőkben a bontás:
-* Az egyes tárolók 48 bájtnyi többletterhelése tartalmazza az utolsó módosítás időpontját, az Engedélyeket, a Nyilvános beállításokat és néhány rendszermetaadatot.
+A következő részletezés:
+* 48 bájt az egyes tárolók esetében az utolsó módosítás időpontja, az engedélyek, a nyilvános beállítások és néhány rendszer-metaadat szerepel.
 
-* A tároló neve Unicode formátumban van tárolva, ezért vegye ki a karakterek számát, és szorozza meg kettővel.
+* A tároló nevét Unicode-ként tárolja a rendszer, ezért a karakterek számát és a szorzást két értékre kell helyezni.
 
-* A blobtároló minden tárolt metaadat-blokkja esetében a név (ASCII) hosszát és a karakterlánc-érték hosszát tároljuk.
+* A blob-tárolók összes tárolt metaadata esetében a név (ASCII) hosszát, valamint a karakterlánc értékének hosszát tárolja.
 
-* Az aláírt azonosítónkénti 512 bájt tartalmazza az aláírt azonosító nevét, kezdési idejét, lejárati idejét és engedélyeit.
+* A 512 bájt/aláírt azonosító tartalmazza az aláírt azonosító nevét, a kezdési időt, a lejárati időt és az engedélyeket.
 
 ### <a name="blobs"></a>Blobok
 
-A következő számítások bemutatják, hogyan becsülje meg a blobonként felhasznált tárterület mennyiségét.
+A következő számítások azt mutatják be, hogyan lehet megbecsülni a Blobok által felhasznált tárterület mennyiségét.
 
-* Blokkblob (alapblob vagy pillanatkép):
+* BLOB blokkolása (alap blob vagy pillanatkép):
 
    ```
    124 bytes + Len(BlobName) * 2 bytes +
@@ -66,7 +66,7 @@ A következő számítások bemutatják, hogyan becsülje meg a blobonként felh
    SizeInBytes(data in uncommitted data blocks)
    ```
 
-* Lapblob (alapblob vagy pillanatkép):
+* Oldal blobja (alap blob vagy pillanatkép):
 
    ```
    124 bytes + Len(BlobName) * 2 bytes +
@@ -75,40 +75,40 @@ A következő számítások bemutatják, hogyan becsülje meg a blobonként felh
    SizeInBytes(data in unique pages stored)
    ```
 
-A következőkben a bontás:
+A következő részletezés:
 
-* 124 bájt rezsi a blobhoz, amely a következőket tartalmazza:
+* 124 bájt terhelés a blobhoz, amely a következőket tartalmazza:
     - Utolsó módosítás időpontja
     - Méret
     - Gyorsítótár-vezérlés
     - Content-Type
-    - Tartalomnyelv
-    - Tartalomkódolás
-    - Tartalom-MD5
+    - Tartalom nyelve
+    - Content-Encoding
+    - Content-MD5
     - Engedélyek
     - Pillanatkép-információk
-    - Bérleti
+    - Lízing
     - Egyes rendszermetaadatok
 
-* A blob neve Unicode formátumban van tárolva, ezért vegye ki a karakterek számát, és szorozza meg kettővel.
+* A blob nevét Unicode-ként tárolja a rendszer, ezért a karakterek számát és a szorzást két értékkel kell elvégeznie.
 
-* Minden tárolt metaadat-blokkhoz adja hozzá a név hosszát (ASCII-ként tárolva), valamint a karakterlánc-érték hosszát.
+* A tárolt metaadatok mindegyik blokkja esetében adja hozzá a név (ASCII-ként tárolt) hosszát, valamint a karakterlánc értékének hosszát.
 
-* A blokkblobok esetében:
-  * 8 bájt a tiltólistához.
-  * A blokkazonosító méretének szorzata i. blokkok száma bájtban.
-  * Az összes véglegesített és nem véglegesített blokk adatainak mérete.
-
-    >[!NOTE]
-    >Pillanatképek használata esetén ez a méret csak az alapja vagy pillanatkép blob egyedi adatait tartalmazza. Ha a nem véglegesített blokkokat egy hét után nem használja, akkor a szemetet gyűjtik. Ezután nem számítanak bele a számlázásba.
-
-* Lapblobok esetén:
-  * A 12 bájtban lévő adattartományokkal rendelkező nem egymást követő oldaltartományok száma. Ez a **GetPageRanges** API hívásakor látható egyedi oldaltartományok száma.
-
-  * Az összes tárolt oldal bájtban lévő adatainak mérete.
+* A blokk Blobok esetén:
+  * 8 bájt a tiltási listához.
+  * A blokk AZONOSÍTÓjának mérete bájtban megadva.
+  * Az összes véglegesített és nem véglegesített blokkban lévő adatméret.
 
     >[!NOTE]
-    >Pillanatképek használata esetén ez a méret csak az alapblob vagy a megszámlált pillanatképblob egyedi lapjait tartalmazza.
+    >Pillanatképek használata esetén ez a méret csak az alap-vagy pillanatkép-blob egyedi adatait tartalmazza. Ha a nem véglegesített blokkokat egy hét után nem használják, a rendszer a szemetet gyűjti. Ezt követően nem számítanak bele a számlázás felé.
+
+* Oldal Blobok esetén:
+  * A nem egymást követő oldalak tartományának száma 12 bájtos adatidővel. Az **GetPageRanges** API meghívásakor megjelenő egyedi oldalak tartományának száma.
+
+  * Az összes tárolt oldal bájtjainak mérete bájtban kifejezve.
+
+    >[!NOTE]
+    >A pillanatképek használata esetén ez a méret csak az alap blob egyedi lapjait, vagy a jelenleg megszámolt pillanatkép-blobot tartalmazza.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -116,10 +116,10 @@ A következőkben a bontás:
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [Blob storage-tároló teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-powershell.md) egy egyszerű parancsfájlhoz, amely a tároló méretének becslését tartalmazza.
+- Lásd: [a blob Storage-tárolók teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-powershell.md) egy egyszerű parancsfájlhoz, amely a tároló méretére vonatkozó becslést biztosít.
 
-- Az Azure Storage-számlázásról a [Windows Azure Storage-számlázás ismertetése című](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)témakörben talál további információt.
+- Az Azure Storage számlázási szolgáltatásával kapcsolatos további információkért lásd: a [Windows Azure Storage szolgáltatás számlázásának ismertetése](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Az Azure PowerShell-modulról az [Azure PowerShell dokumentációjában](https://docs.microsoft.com/powershell/azure/overview)olvashat bővebben.
+- További információ a Azure PowerShell modullal kapcsolatban: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/azure/overview).
 
-- További PowerShell-parancsfájlmintákat találhat az [Azure Storage PowerShell-mintáiban.](../blobs/storage-samples-blobs-powershell.md)
+- Az [Azure Storage](../blobs/storage-samples-blobs-powershell.md)-hoz készült PowerShell-minták további Storage PowerShell-parancsfájlokat is találhatnak.

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub eszközfelügyelettel (Node) | Microsoft dokumentumok
-description: Az IoT Hub eszközfelügyeleti használata távoli eszköz újraindításának kezdeményezéséhez. Az Azure IoT SDK node.js használatával valósíthat meg egy szimulált eszközalkalmazást, amely közvetlen metódust és egy közvetlen metódust meghívó szolgáltatásalkalmazást tartalmaz.
+title: Ismerkedés az Azure IoT Hub-eszközkezelés (node) szolgáltatással | Microsoft Docs
+description: Távoli eszköz újraindításának kezdeményezése IoT Hub-eszközkezelés használatával. A Node. js-hez készült Azure IoT SDK használatával olyan szimulált eszköz alkalmazást alkalmazhat, amely tartalmaz egy közvetlen metódust és egy olyan szolgáltatásalkalmazás-alkalmazást, amely a közvetlen metódust hívja meg.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,43 +10,43 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732330"
 ---
-# <a name="get-started-with-device-management-nodejs"></a>Az eszközkezelés első lépései (Node.js)
+# <a name="get-started-with-device-management-nodejs"></a>Ismerkedés az Eszközkezelővel (node. js)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Az [Azure Portalhasználatával](https://portal.azure.com) hozzon létre egy IoT Hubot, és hozzon létre egy eszközidentitást az IoT-központban.
+* A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy IoT hub, és hozzon létre egy eszköz-identitást az IoT hub-ban.
 
-* Hozzon létre egy szimulált eszközalkalmazást, amely közvetlen metódust tartalmaz, amely újraindítja az eszközt. A közvetlen metódusok meghívása a felhőből történik.
+* Hozzon létre egy szimulált eszköz alkalmazást, amely egy közvetlen metódust tartalmaz, amely újraindítja az eszközt. A közvetlen metódusok meghívása a felhőből történik.
 
-* Hozzon létre egy Node.js konzolalkalmazást, amely meghívja az újraindítás közvetlen metódusát a szimulált eszközalkalmazásban az IoT hubon keresztül.
+* Hozzon létre egy Node. js-konzol alkalmazást, amely a szimulált eszközön a IoT hub használatával hívja meg a közvetlen újraindítási módszert.
 
-Az oktatóanyag végén két Node.js konzolalkalmazás található:
+Az oktatóanyag végén két Node. js-konzollal rendelkező alkalmazás található:
 
-* **dmpatterns_getstarted_device.js**, amely csatlakozik az IoT hub az eszköz identitása korábban létrehozott, kap egy újraindítás közvetlen metódust, szimulálja a fizikai újraindítás, és jelenti az időt az utolsó újraindítás.
+* **dmpatterns_getstarted_device. js**, amely a korábban létrehozott eszköz identitásával csatlakozik az IoT hubhoz, a rendszer újraindítási közvetlen metódust kap, szimulál egy fizikai újraindítást, és az utolsó újraindítás idejét jelenti.
 
-* **dmpatterns_getstarted_service.js**, amely meghívja a szimulált eszközalkalmazásban egy közvetlen metódust, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
+* **dmpatterns_getstarted_service. js**, amely közvetlen metódust hív meg a szimulált eszköz alkalmazásban, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Node.js 10.0.x vagy újabb verzió. [A fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Node.js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -56,9 +56,9 @@ Ebben a szakaszban:
 
 * Egy Node.js-konzolalkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol
 
-* Szimulált eszköz újraindításának aktiválása
+* Szimulált eszköz újraindításának elindítása
 
-* A jelentett tulajdonságok használatával engedélyezheti az ikereszközök lekérdezéseit az eszközök azonosítására és az utolsó újraindításukkor
+* A jelentett tulajdonságok használatával engedélyezheti az eszköz kettős lekérdezéseit az eszközök azonosításához és a legutóbbi újraindításkor
 
 1. Hozzon létre egy **manageddevice** nevű üres mappát.  A **manageddevice** mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba.  Fogadja el az összes alapértelmezett beállítást:
 
@@ -66,15 +66,15 @@ Ebben a szakaszban:
     npm init
     ```
 
-2. A **felügyelt eszköz** mappában lévő parancssorból futtassa a következő parancsot az **azure-iot-device** SDK csomag és az **azure-iot-device-mqtt** csomag telepítéséhez:
+2. A **manageddevice** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device** eszközoldali SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_device.js** fájlt a **manageddevice** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device. js** fájlt a **manageddevice** mappában.
 
-4. A **dmpatterns_getstarted_device.js** fájl elején adja hozzá a következő "szükséges" utasításokat:
+4. Adja hozzá a következő "require" utasítást a **dmpatterns_getstarted_device. js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -83,14 +83,14 @@ Ebben a szakaszban:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje `{yourdeviceconnectionstring}` le a helyőrző értéket a korábban másolt eszközkapcsolati karakterláncra [az IoT hub új eszköz regisztrálása című részben.](#register-a-new-device-in-the-iot-hub)  
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje le `{yourdeviceconnectionstring}` a helyőrző értékét a korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során átmásolt eszköz-csatlakoztatási karakterláncra.  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Adja hozzá a következő funkciót a közvetlen metódus eszközre való implementzásához
+6. Adja hozzá a következő függvényt a közvetlen metódus megvalósításához az eszközön
 
     ```javascript
     var onReboot = function(request, response) {
@@ -132,7 +132,7 @@ Ebben a szakaszban:
     };
     ```
 
-7. Nyissa meg a kapcsolatot az IoT hub, és indítsa el a közvetlen metódus figyelője:
+7. Nyissa meg a IoT hub-beli kapcsolódást, és indítsa el a közvetlen metódus-figyelőt:
 
     ```javascript
     client.open(function(err) {
@@ -145,36 +145,36 @@ Ebben a szakaszban:
     });
     ```
 
-8. Mentse és zárja be a **dmpatterns_getstarted_device.js** fájlt.
+8. Mentse és zárjuk be a **dmpatterns_getstarted_device. js** fájlt.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például exponenciális visszamaradást) kell megvalósítania, ahogy azt a cikk, [átmeneti hibakezelés](/azure/architecture/best-practices/transient-faults)című cikk ben javasolt.
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például egy exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Távoli újraindítás aktiválása az eszközön közvetlen módszerrel
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Távoli újraindítás indítása az eszközön közvetlen módszer használatával
 
-Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távoli újraindítást kezdeményez egy eszközön egy közvetlen metódus használatával. Az alkalmazás az eszköz ikerlekérdezéseit használja az eszköz utolsó újraindítási idejének felderítéséhez.
+Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy távoli újraindítást kezdeményez egy eszközön egy közvetlen metódus használatával. Az alkalmazás az eszköz kettős lekérdezéseit használva észleli az adott eszköz utolsó újraindításának idejét.
 
-1. Hozzon létre egy **triggerrebootondevice**nevű üres mappát. Az **triggerrebootondevice** mappában hozzon létre egy package.json fájlt a következő paranccsal a parancssorból. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy **triggerrebootondevice**nevű üres mappát. A **triggerrebootondevice** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával. Fogadja el az összes alapértelmezett beállítást:
 
     ```cmd/sh
     npm init
     ```
 
-2. A parancssorból az **triggerrebootondevice** mappában futtassa a következő parancsot az **azure-iothub** device SDK-csomag és az **azure-iot-device-mqtt** csomag telepítéséhez:
+2. A **triggerrebootondevice** mappában a parancssorban futtassa a következő parancsot az **Azure-iothub** Device SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_service.js** fájlt a **triggerrebootondevice** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service. js** fájlt a **triggerrebootondevice** mappában.
 
-4. A **dmpatterns_getstarted_service.js** fájl elején adja hozzá a következő "szükséges" utasításokat:
+4. Adja hozzá a következő "require" utasítást a **dmpatterns_getstarted_service. js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -183,7 +183,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     var Client = require('azure-iothub').Client;
     ```
 
-5. Adja hozzá a következő változódeklarációkat, és cserélje le a `{iothubconnectionstring}` helyőrző értéket az IoT hub kapcsolati karakterláncával, amelyet korábban másolt az [IoT hub kapcsolati karakterláncának bekérése kor:](#get-the-iot-hub-connection-string)
+5. Adja hozzá a következő változó deklarációkat, és `{iothubconnectionstring}` cserélje le a helyőrző értékét a korábban átmásolt IoT hub-karakterláncra a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -192,7 +192,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     var deviceToReboot = 'myDeviceId';
     ```
 
-6. Adja hozzá a következő függvényt az eszközmetódus meghívásához a céleszköz újraindításához:
+6. Adja hozzá a következő függvényt az eszköz metódusának meghívásához a cél eszköz újraindításához:
 
     ```javascript
     var startRebootDevice = function(twin) {
@@ -215,7 +215,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     };
     ```
 
-7. Adja hozzá a következő függvényt az eszköz lekérdezéséhez, és az utolsó újraindítási időpontot kapja:
+7. Adja hozzá a következő függvényt az eszköz lekérdezéséhez és az utolsó újraindítás időpontjának lekéréséhez:
 
     ```javascript
     var queryTwinLastReboot = function() {
@@ -236,39 +236,39 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     };
     ```
 
-8. Adja hozzá a következő kódot a közvetlen újraindítást kiváltó függvények és lekérdezés hívásához az utolsó újraindítási időponthoz:
+8. Adja hozzá a következő kódot a reboot Direct metódust indító függvények meghívásához, valamint az utolsó újraindítás időpontjának lekérdezéséhez:
 
     ```javascript
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
 
-9. Mentse és zárja be a **dmpatterns_getstarted_service.js** fájlt.
+9. Mentse és zárjuk be a **dmpatterns_getstarted_service. js** fájlt.
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A **manageddevice** mappában lévő parancssorból futtassa a következő parancsot az újraindítási közvetlen metódus figyeléséhez.
+1. A **manageddevice** mappában a parancssorban futtassa a következő parancsot, hogy megkezdje az újraindítási közvetlen metódus figyelését.
 
     ```cmd/sh
     node dmpatterns_getstarted_device.js
     ```
 
-2. A **triggerrebootondevice** mappában lévő parancssorból futtassa a következő parancsot a távoli újraindítás elindításához, és az ikereszköz lekérdezésével keresse meg az utolsó újraindítási időt.
+2. A **triggerrebootondevice** mappában található parancssorban futtassa a következő parancsot a Távoli újraindítás és a lekérdezés elindításához a Twin eszközre, és keresse meg az utolsó újraindítási időt.
 
     ```cmd/sh
     node dmpatterns_getstarted_service.js
     ```
 
-3. Megjelenik az eszköz válasza az újraindítás közvetlen metódusára és az újraindítás állapota a konzolon.
+3. Megjelenik az eszköz válasza a Direct reboot metódusra és az újraindítás állapotra a konzolon.
 
-   A következőkben látható a szolgáltatás által küldött újraindítási közvetlen metódusra adott válasz:
+   Az alábbi ábrán látható az eszköz válasza a szolgáltatás által küldött újraindítási közvetlen metódusra:
 
-   ![manageddevice alkalmazás kimenete](./media/iot-hub-node-node-device-management-get-started/device.png)
+   ![manageddevice-alkalmazás kimenete](./media/iot-hub-node-node-device-management-get-started/device.png)
 
-   A következő azt mutatja, hogy a szolgáltatás elindítja az újraindítást, és lekérdezi az eszközt iker az utolsó újraindítás ia.
+   Az alábbi táblázatban látható, hogy a szolgáltatás aktiválja az újraindítást, és lekérdezi az eszköz ikerét az utolsó újraindítás időpontjában:
 
-   ![triggerrebootondevice alkalmazás kimenete](./media/iot-hub-node-node-device-management-get-started/service.png)
+   ![triggerrebootondevice-alkalmazás kimenete](./media/iot-hub-node-node-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

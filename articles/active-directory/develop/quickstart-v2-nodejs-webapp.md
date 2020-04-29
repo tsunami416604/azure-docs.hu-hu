@@ -1,6 +1,6 @@
 ---
-title: OIDC-bejelentkezés hozzáadása node.js webalkalmazáshoz – Microsoft identity platform | Azure
-description: Megtudhatja, hogy miként valósíthat meg hitelesítést egy Node.js webalkalmazásban az OpenID Connect használatával.
+title: OIDC-bejelentkezés hozzáadása egy Node. js-webalkalmazáshoz – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan valósítható meg a hitelesítés egy Node. js-webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,63 +12,63 @@ ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536063"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása az OpenID Connect használatával egy Node.js webalkalmazáshoz
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával egy Node. js-webalkalmazáshoz
 
-Ebben a rövid útmutatóban megtudhatja, hogyan állíthatja be az OpenID Connect hitelesítést a Node.js with Express használatával létrehozott webalkalmazásban. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
+Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Connect-hitelesítést egy Node. js-vel létrehozott webalkalmazásban az Express használatával. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához a következőkre lesz szükség:
+A minta futtatásához a következőkre lesz szüksége:
 
-* Node.js telepítése innen:http://nodejs.org/
+* A Node. js telepítése innen:http://nodejs.org/
 
-* [Microsoft-fiók](https://www.outlook.com) vagy [Office 365 fejlesztői program](/office/developer-program/office-365-developer-program)
+* Vagy egy [Microsoft-fiók](https://www.outlook.com) vagy [Office 365 fejlesztői program](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. Ha a fiók több Azure AD-bérlőben is jelen van:
-    - Válassza ki a profilját a lap jobb felső sarkában lévő menüből, majd **a Könyvtár váltása**lehetőséget.
-    - Módosítsa a munkamenetet az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
+    - Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
+    - Módosítsa a munkamenetet arra az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
 
-1. Az alkalmazás regisztrálásához keresse meg az [Azure Active Directory > alkalmazásregisztrációkat.](https://go.microsoft.com/fwlink/?linkid=2083908)
+1. Az alkalmazás regisztrálásához navigáljon [Azure Active Directory > Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
-1. Válassza az **Új regisztráció lehetőséget.**
+1. Válassza az **új regisztráció lehetőséget.**
 
-1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-    - A **Név szakaszban** adjon meg egy értelmes nevet, amely megjelenik az alkalmazás felhasználói számára. Például: MyWebApp
-    - A **Támogatott fióktípusok** csoportban válassza a **Fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban (pl. Skype, Xbox, Outlook.com).**
+1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
+    - A **név** szakaszban adjon meg egy értelmes nevet, amely megjelenik az alkalmazás felhasználói számára. Például: MyWebApp
+    - A **támogatott fióktípus** szakaszban válassza a fiókok lehetőséget a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)**.
 
-    Ha egynél több átirányítási URI-k vannak, ezeket később hozzá kell **adnia** a Hitelesítés lapról, miután az alkalmazás sikeresen létrejött.
+    Ha egynél több átirányítási URI van, ezeket az alkalmazás sikeres létrehozása után később hozzá kell adnia a **hitelesítés** lapon.
 
-1. Az alkalmazás létrehozásához válassza a **Regisztráció** lehetőséget.
+1. Az alkalmazás létrehozásához válassza a **regisztráció** lehetőséget.
 
-1. Az alkalmazás **áttekintése** lapon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és rögzítse későbbre. Erre az értékre szüksége lesz az alkalmazás konfigurálásához a projekt későbbi részében.
+1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Erre az értékre szüksége lesz ahhoz, hogy az alkalmazást később konfigurálja a projektben.
 
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-    - Az **Irányított URI-k átirányítása** csoportban válassza a **Web** elemet a kombinált lista területén, és írja be a következő átirányítási URI-t:`http://localhost:3000/auth/openid/return`
-    - A **Speciális beállítások** csoportban állítsa `http://localhost:3000`a **Kijelentkezés URL-címét** a-ra.
-    - A **Speciális beállítások > Implicit támogatás** szakaszban ellenőrizze az azonosító **jogkivonatokat,** mivel ez a minta megköveteli, hogy az [Implicit támogatási folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezve legyen a felhasználó bejelentkezéséhez.
+    - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t:`http://localhost:3000/auth/openid/return`
+    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `http://localhost:3000`következőre:.
+    - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
 
 1. Kattintson a **Mentés** gombra.
 
-1. A **Tanúsítványok & titkos kulcsok** lap **Ügyféltitkos kulcsok** szakaszában válassza az Új **ügyféltitok**lehetőséget.
-    - Adjon meg egy kulcs leírást (például alkalmazástitkos kulcsot).
-    - Válasszon egy kulcsfontosságú időtartamot: 1 **év, 2 év** vagy **Soha nem jár le.**
-    - Amikor a **Hozzáadás** gombra kattint, a kulcs értéke megjelenik. Másolja a kulcs értékét, és mentse biztonságos helyre.
+1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet.
+    - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
+    - Válassza ki a kulcs időtartamát **1 év vagy 2 év között,** vagy **Soha ne járjon le**.
+    - A **Hozzáadás** gombra kattintva megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre.
 
-    Az alkalmazás konfigurálásához később szüksége lesz erre a kulcsra. Ez a kulcsérték nem jelenik meg újra, és nem visszakereshető más módon, így rögzítse, amint látható az Azure Portalon.
+    Az alkalmazás konfigurálásához később szüksége lesz erre a kulcsra. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
 
-## <a name="download-the-sample-application-and-modules"></a>A mintaalkalmazás és a modulok letöltése
+## <a name="download-the-sample-application-and-modules"></a>A minta alkalmazás és modulok letöltése
 
-Ezután klónozza a minta-tárhét, és telepítse az NPM modulokat.
+Ezután a minta-tárház klónozása és a NPM-modulok telepítése.
 
-A rendszerhéjból vagy a parancssorból:
+A rendszerhéjból vagy parancssorból:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -76,41 +76,41 @@ vagy
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-A projekt gyökérkönyvtárából futtassa a következő parancsot:
+A projekt gyökérkönyvtárában futtassa a következő parancsot:
 
 `$ npm install`
 
 ## <a name="configure-the-application"></a>Az alkalmazás konfigurálása
 
-Adja meg a `exports.creds` paramétereket a config.js fájlban az utasításoknak megfelelően.
+Adja meg a paramétereket `exports.creds` a config. js fájlban a utasítások szerint.
 
-* Frissítse `<tenant_name>` `exports.identityMetadata` ni az Azure AD-bérlő nevét \*.onmicrosoft.com.
-* Frissítés `exports.clientID` az alkalmazásregisztrációból származó alkalmazásazonosítóval.
-* Frissítse `exports.clientSecret` az alkalmazás regisztrációja során észlelt alkalmazástitkost.
-* Frissítés `exports.redirectUrl` az alkalmazásregisztrációból észlelt átirányítási URI-val.
+* Frissítse `<tenant_name>` a `exports.identityMetadata` -t az Azure ad-bérlő neve. \*onmicrosoft.com formátumban.
+* Frissítse `exports.clientID` az alkalmazás-regisztráció során feljegyzett alkalmazás-azonosítóval.
+* Frissítse `exports.clientSecret` az alkalmazás-regisztráció során feljegyzett alkalmazási titokkal.
+* Frissítse `exports.redirectUrl` az alkalmazás regisztrációja során feljegyzett átirányítási URI-val.
 
-**Választható konfiguráció éles alkalmazásokhoz:**
+**Az üzemi alkalmazások opcionális konfigurációja:**
 
-* Frissítse `exports.destroySessionUrl` nitoncikó.js, ha `post_logout_redirect_uri`azt szeretnénk, hogy egy másik .
+* Frissítse `exports.destroySessionUrl` a config. js fájlban, ha másikat `post_logout_redirect_uri`szeretne használni.
 
-* Állítsa `exports.useMongoDBSessionStore` a config.js fájlban igaz értékre, ha [a mongoDB-t](https://www.mongodb.com) vagy más [kompatibilis munkamenet-áruházakat](https://github.com/expressjs/session#compatible-session-stores)szeretné használni.
-A minta alapértelmezett munkamenet-tárolója a `express-session`. Az alapértelmezett munkamenet-tároló nem alkalmas éles környezetben.
+* Ha `exports.useMongoDBSessionStore` [mongoDB](https://www.mongodb.com) vagy más [kompatibilis munkamenet-tárolót](https://github.com/expressjs/session#compatible-session-stores)szeretne használni, állítsa be a config. js fájlt True értékre.
+A példában szereplő alapértelmezett munkamenet-tároló `express-session`. Az alapértelmezett munkamenet-tároló nem alkalmas az éles környezetben való használatra.
 
-* Frissítse `exports.databaseUri`a mongoDB munkamenet-tárolót és egy másik adatbázis URI-t.
+* Frissítsen `exports.databaseUri`, ha a mongoDB munkamenet-áruházat és egy másik adatbázis-URI-t szeretne használni.
 
-* Frissítés `exports.mongoDBSessionMaxAge`. Itt adhatja meg, hogy mennyi ideig szeretné megtartani a munkamenetet a mongoDB-ban. Az egység második(a).
+* Frissítés `exports.mongoDBSessionMaxAge`. Itt adhatja meg, hogy mennyi ideig szeretné megőrizni a munkamenetet a mongoDB. Az egység másodperc (ek).
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-Indítsa el a mongoDB szolgáltatást. Ha mongoDB munkamenet-áruházat használ ebben az alkalmazásban, telepítenie kell a [mongoDB-t,](http://www.mongodb.org/) és először el kell indítania a szolgáltatást. Ha az alapértelmezett munkamenet-tárolót használja, kihagyhatja ezt a lépést.
+Indítsa el a mongoDB szolgáltatást. Ha ebben az alkalmazásban a mongoDB munkamenet-tárolót használja, először [telepítenie](http://www.mongodb.org/) kell a mongoDB-t, és előbb el kell indítania a szolgáltatást. Ha az alapértelmezett munkamenet-tárolót használja, akkor kihagyhatja ezt a lépést.
 
-Futtassa az alkalmazást a következő paranccsal a parancssorból.
+Futtassa az alkalmazást a parancssorból a következő parancs használatával.
 
 ```
 $ node app.js
 ```
 
-**A kiszolgáló kimenete nehezen érthető?:** Ezt `bunyan` a mintát használjuk a bejelentkezéshez. A konzol nem lesz sok értelme, hogy ha nem is telepíteni bunyan és fuss a szerver, mint a fenti, de cső keresztül bunyan bináris:
+**Nehezen érthető a kiszolgáló kimenete?:** Ennek a `bunyan` mintának a naplózására használjuk. A konzol nem fog sok értelmet adni Önnek, ha nem is telepíti a Bunyan-t, és nem futtatja a fentieket, hanem a Bunyan bináris fájlon keresztül átadja a kiszolgálót:
 
 ```
 $ npm install -g bunyan
@@ -120,11 +120,11 @@ $ node app.js | bunyan
 
 ### <a name="youre-done"></a>Ennyi az egész!
 
-Sikeresen fut a kiszolgáló. `http://localhost:3000`
+A `http://localhost:3000`kiszolgáló sikeresen fut.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-További információ a Microsoft identitáskezelési platform által támogatott webalkalmazás-forgatókönyvről:
+További információ a Microsoft Identity platform által támogatott Web App-forgatókönyvről:
 > [!div class="nextstepaction"]
-> [A felhasználók forgatókönyvében bejelentkező webalkalmazás](scenario-web-app-sign-user-overview.md)
+> [Felhasználói forgatókönyvet használó webalkalmazás](scenario-web-app-sign-user-overview.md)

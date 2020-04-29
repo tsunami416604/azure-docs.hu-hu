@@ -1,6 +1,6 @@
 ---
-title: Átalakítás elszíneződése az adatfolyam leképezésében
-description: Ismerje meg, hogyan konfigurálhatja a fogadó átalakítása az adatfolyam leképezése.
+title: Fogadó átalakítás a leképezési adatfolyamban
+description: Megtudhatja, hogyan konfigurálhat egy fogadó transzformációt a leképezési folyamatokban.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -10,62 +10,62 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
 ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605969"
 ---
-# <a name="sink-transformation-in-mapping-data-flow"></a>Átalakítás elszíneződése az adatfolyam leképezésében
+# <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatok átalakítása után az adatokat egy céladatkészletbe süllyesztheti. Minden adatfolyam hoz legalább egy fogadó átalakítás, de írhat annyi fogadók, mint szükséges az átalakítási folyamat befejezéséhez. További fogadókba való íráshoz hozzon létre új adatfolyamokat új ágakés feltételes felosztások segítségével.
+Az adatátalakítást követően az adatokat egy célként megadott adatkészletbe lehet elosztani. Minden adatfolyamhoz szükség van legalább egy fogadó átalakításra, de az átalakítási folyamat befejezéséhez annyi süllyedés szükséges, amennyit csak lehet. További mosogatók írásához hozzon létre új streameket új ágak és feltételes felosztások segítségével.
 
-Minden fogadó átalakítás van társítva pontosan egy Data Factory adatkészlet. Az adatkészlet határozza meg azoknak az adatoknak az alakját és helyét, amelyekbe írni szeretne.
+Minden fogadó transzformáció pontosan egy Data Factory adatkészlethez van társítva. Az adatkészlet meghatározza a írni kívánt adat alakját és helyét.
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Támogatott fogadóösszekötők az adatfolyam leképezésében
+## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Támogatott fogadó összekötők a leképezési adatfolyamban
 
-Jelenleg a következő adatkészletek használhatók a fogadó átalakítása:
+Jelenleg a következő adatkészletek használhatók a fogadó átalakításban:
     
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Szöveg, Parketta)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Szöveg, Parketta)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Szöveg, Parketta)
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
 * [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
 * [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Az összekötőkre vonatkozó beállítások a **Beállítások** lapon találhatók. 
+Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. ezekkel a beállításokkal kapcsolatos információk az összekötő dokumentációjában találhatók. 
 
-Az Azure Data Factory több mint [90 natív összekötőhöz](connector-overview.md)fér hozzá. Ha az adatfolyamból szeretne adatokat írni ezekre a más forrásokba, a Másolási tevékenység segítségével töltse be az adatokat a támogatott átmeneti területek egyikéről az adatfolyam befejezése után.
+Azure Data Factory több mint [90 natív összekötőhöz](connector-overview.md)férhet hozzá. Ha az adatfolyamatból más forrásoknak is szeretne adatírást készíteni, a másolási tevékenységgel betöltheti az adatfolyamat befejezése után a támogatott átmeneti területekről származó adatok egyikét.
 
 ## <a name="sink-settings"></a>Fogadó beállításai
 
-Miután hozzáadta a fogadót, konfigurálja a **Fogadó** lapon keresztül. Itt választhatja ki vagy hozhatja létre azt az adatkészletet, amelybe a fogadó írja. Az alábbiakban egy videó elmagyarázza számos különböző Sink lehetőségek szöveges tagolt fájltípusok:
+Miután hozzáadta a fogadót, konfigurálja a fogadó **lapon.** Itt kiválaszthatja vagy létrehozhatja azt az adatkészletet, amelyet a fogadó ír. Az alábbi videó számos különböző fogadó lehetőséget mutat be a szöveges tagolt fájltípusok esetében:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![Fogadó beállításai](media/data-flow/sink-settings.png "Fogadó beállításai")
 
-**Sémaeltolódás:** [Sémadrift](concepts-data-flow-schema-drift.md) az adatgyár azon képességét, hogy natív módon kezelje a rugalmas sémák az adatfolyamok anélkül, hogy explicit módon oszlopmódosításokat. **Engedélyezze, hogy a sémaeltolódás engedélyezése** további oszlopokat írjon a fogadó adatsémájában megadott oszlopokra.
+**Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait. Engedélyezze a séma eltolásának engedélyezése **lehetőséget** a fogadó adatsémában definiált további oszlopok írására.
 
-**Séma ellenőrzése:** Ha a séma ellenőrzése van kiválasztva, az adatfolyam sikertelen lesz, ha a bejövő forrásséma valamelyik oszlopa nem található a forrásvetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti, hogy a forrásadatok megfeleljenek a megadott vetítésszerződésnek. Az adatbázis-forrásesetekben nagyon hasznos annak jelzésére, hogy az oszlopnevek vagy -típusok megváltoztak.
+**Séma ellenőrzése:** Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha a bejövő forrás sémájának bármely oszlopa nem található a forrás kivetítésben, vagy ha az adattípusok nem egyeznek. Ezzel a beállítással kényszerítheti ki, hogy a forrásadatok megfelelnek a megadott leképezési szerződésnek. Az adatbázis-forrás forgatókönyvekben nagyon hasznos az oszlopnevek vagy típusok megváltozásának jelzése.
 
 ## <a name="field-mapping"></a>Mezőleképezés
 
-A Select átalakításhoz hasonlóan a **fogadó Leképezés** lapján eldöntheti, hogy mely bejövő oszlopok lesznek megírva. Alapértelmezés szerint az összes bemeneti oszlop, beleértve az elsodródott oszlopokat is, le van képezve. Ezt automatikus **leképezésnek nevezzük.**
+A kiválasztott átalakításhoz hasonlóan a fogadó **leképezés** lapján eldöntheti, hogy a bejövő oszlopok milyen módon lesznek írva. Alapértelmezés szerint a rendszer az összes bemeneti oszlopot leképezi, beleértve az elsodródott oszlopokat is. Ez az úgynevezett **automatikus leképezés**.
 
-Ha kikapcsolja az automatikus leképezést, lehetősége van rögzített oszlopalapú vagy szabályalapú hozzárendelések hozzáadására. A szabályalapú leképezések lehetővé teszik a mintaegyeztetéssel rendelkező kifejezések írását, míg a rögzített leképezés logikai és fizikai oszlopneveket képez le. A szabályalapú leképezésről az [adatfolyam leképezésének oszlopmintái](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)című témakörben talál további információt.
+Ha kikapcsolja az automatikus leképezést, lehetőség van a rögzített oszlop alapú hozzárendelések vagy a szabály alapú leképezések hozzáadására. A szabályokon alapuló leképezések lehetővé teszik, hogy a mintázat egyezésének megfelelő kifejezéseket írjon a logikai és fizikai oszlopnevek. A szabályokon alapuló leképezéssel kapcsolatos további információkért lásd: az [adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
-## <a name="custom-sink-ordering"></a>Egyéni mosogató rendelés
+## <a name="custom-sink-ordering"></a>Egyéni fogadó rendelés
 
-Alapértelmezés szerint az adatok nem determinisztikus sorrendben több fogadóba vannak írva. A végrehajtási motor az átalakítási logika befejeződésével párhuzamosan írja az adatokat, és a fogadó sorrendje minden futtatáskor változhat. A fogadó sorrendjének megadásához és pontos rendezéséhez engedélyezze az **egyéni fogadós sorrendet** az adatfolyam általános lapján. Ha engedélyezve van, a fogadók sorrendben lesznek írva növekvő sorrendben.
+Alapértelmezés szerint az determinált sorrendben több mosogatóba történik az adatgyűjtés. A végrehajtó motor párhuzamosan fogja írni az Adatátalakítási logikát, és az egyes futtatások esetében a fogadó sorrend eltérő lehet. A fogadó rendezésének megadásához és pontos elfogadásához engedélyezze az **Egyéni fogadó megrendelését** az adatfolyam Általános lapján. Ha ez a beállítás engedélyezve van, a mosogatók egymás után, növekvő sorrendben lesznek írva.
 
-![Egyéni mosogató rendelés](media/data-flow/custom-sink-ordering.png "Egyéni mosogató rendelés")
+![Egyéni fogadó rendelés](media/data-flow/custom-sink-ordering.png "Egyéni fogadó rendelés")
 
-## <a name="data-preview-in-sink"></a>Adatelőnézet a fogadóban
+## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 
-Ha hibakeresési fürtön lehív egy adatelőnézetet, a rendszer nem ír adatokat a fogadóba. Az adatok megjelenéséről készült pillanatkép visszakerül, de semmi nem lesz az úti célhoz írva. Ha tesztelni szeretné az adatokat a fogadóba, futtasson egy folyamathibakeresést a folyamatvászonról.
+Amikor egy hibakeresési fürtön beolvas egy előnézetet, a rendszer nem írja le az adatait a fogadóba. Egy pillanatkép arról, hogy az adatok milyen módon lesznek visszaadva, de semmi sem kerül a célhelyre. Az adatok a fogadóba való írásának teszteléséhez futtasson egy folyamat-hibakeresést a folyamat vásznon.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozta az adatfolyamot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz.](concepts-data-flow-overview.md)
+Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

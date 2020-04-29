@@ -1,27 +1,27 @@
 ---
-title: Példák az Azure Monitor naplólekérdezési példái | Microsoft dokumentumok
-description: Példák a naplólekérdezések az Azure Monitor a Kusto lekérdezési nyelv használatával.
+title: Példák a Azure Monitor log lekérdezésre | Microsoft Docs
+description: Példák a Azure Monitor a Kusto lekérdezési nyelvét használó naplózási lekérdezésekre.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480283"
 ---
-# <a name="azure-monitor-log-query-examples"></a>Példák az Azure Monitor naplólekérdezési példái
-Ez a cikk különböző példákat tartalmaz a [Kusto lekérdezési nyelvet](/azure/kusto/query/) használó [lekérdezések](log-query-overview.md) különböző típusú naplóadatok lekéréséhez az Azure Monitorból. Az adatok konszolidálására és elemzésére különböző módszerek et alkalmaznak, így ezekkel a mintákkal azonosíthatja a saját igényeihez használható különböző stratégiákat.  
+# <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
+Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  
 
-A mintákban használt különböző kulcsszavakról a [Kusto nyelvi referencia című](https://docs.microsoft.com/azure/kusto/query/) témakörben talál részleteket. Az Azure Monitor újabb használatával kapcsolatos [leckével megbeszélheti a lekérdezések létrehozását.](get-started-queries.md)
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új Azure monitor.
 
 ## <a name="events"></a>Események
 
-### <a name="search-application-level-events-described-as-cryptographic"></a>"Kriptográfiai" néven leírt alkalmazásszintű események keresése
-Ez a példa olyan rekordokat keres az **Események** táblában, amelyekben az **EventLog** _alkalmazás_ és **a RenderedDescription** _kriptográfiai elemeket_tartalmaz. Az elmúlt 24 óra rekordjait tartalmazza.
+### <a name="search-application-level-events-described-as-cryptographic"></a>"Titkosítási"-ként leírt alkalmazás szintű események keresése
+Ez a példa az **Events (események** ) táblában keres olyan rekordokat, amelyekben az **Eseménynapló** _alkalmazás_ -és **RenderedDescription** _titkosítási_adatokat tartalmaz. Az elmúlt 24 órában nyilvántartott rekordokat tartalmazza.
 
 ```Kusto
 Event
@@ -30,8 +30,8 @@ Event
 | where RenderedDescription contains "cryptographic"
 ```
 
-### <a name="search-events-related-to-unmarshaling"></a>Átadás-előkészítéshez kapcsolódó keresési események
-Keresés az **Esemény** és **a SecurityEvents** táblákban az _átnemelő metódust megemlítő_rekordokért.
+### <a name="search-events-related-to-unmarshaling"></a>Az átadással kapcsolatos események keresése
+Az átadást _megemlítő_rekordok keresése a táblák **esemény** -és **SecurityEvents** .
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -39,9 +39,9 @@ search in (Event, SecurityEvent) "unmarshaling"
 
 ## <a name="heartbeat"></a>Szívverés
 
-### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Heti nézet diagramja az adatokat küldő számítógépek számáról
+### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Az adatokat küldő számítógépek számának hetente több mint hét nézetét ábrázoló diagram
 
-A következő példa a szívveréseket küldő különböző számítógépek számát ábrázolja minden héten.
+Az alábbi példa a szívverést küldő különálló számítógépek számát, hetente.
 
 ```Kusto
 Heartbeat
@@ -51,7 +51,7 @@ Heartbeat
 
 ### <a name="find-stale-computers"></a>Elavult számítógépek keresése
 
-A következő példa azokat a számítógépeket találja, amelyek az utolsó napon aktívak voltak, de nem küldtek szívverést az elmúlt órában.
+A következő példa megkeresi az elmúlt nap során aktív számítógépeket, de az elmúlt órában nem küldött szívveréseket.
 
 ```Kusto
 Heartbeat
@@ -61,18 +61,18 @@ Heartbeat
 | where LastHeartbeat < ago(1h)
 ```
 
-### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>A legfrissebb szívveréses rekord beszerezni e számítógépenkénti IP-cím
+### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>A legújabb szívverési rekord beszerzése számítógépes IP-címen
 
-Ez a példa az egyes számítógép IP-címének utolsó szívverésrekordját adja vissza.
+Ez a példa az összes számítógép IP-címének utolsó szívverési rekordját adja vissza.
 ```Kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by ComputerIP
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotrekordok egyeztetése szívveréses rekordokkal
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotüzenetek egyeztetése szívverési rekordokkal
 
-Ez a példa megkeresi a kapcsolódó védelmi állapotrekordokat és a szívverési rekordokat, amelyek a számítógépen és az időben egyeztetve vannak.
-Megjegyzés: az időmező a legközelebbi percre lesz kerekítve. Ehhez futásidejű raktárhely számítást `round_time=bin(TimeGenerated, 1m)`használtunk: .
+Ez a példa a kapcsolódó védelmi állapotokra vonatkozó rekordokat és szívverési rekordokat talál, amelyek a számítógép és az idő szerint egyeznek.
+Figyelje meg, hogy a Time mező a legközelebbi percre van kerekítve. A futásidejű raktárhely számítását a következőre használtuk `round_time=bin(TimeGenerated, 1m)`:.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -84,8 +84,8 @@ protection_data | join (heartbeat_data) on Computer, round_time
 
 ### <a name="server-availability-rate"></a>Kiszolgáló rendelkezésre állási aránya
 
-A kiszolgáló rendelkezésre állási arányának kiszámítása szívverési rekordok alapján. Az elérhetőség meghatározása: "legalább 1 szívverés óránként".
-Tehát, ha egy kiszolgáló 100 órából 98-at volt elérhető, a rendelkezésre állási arány 98%.
+A kiszolgáló rendelkezésre állási arányának kiszámítása szívverési rekordok alapján. A rendelkezésre állás a "legalább 1 szívverés/óra" értékkel van meghatározva.
+Tehát, ha egy kiszolgáló 100 óra 98-es rendelkezésre áll, a rendelkezésre állási arány 98%.
 
 ```Kusto
 let start_time=startofday(datetime("2018-03-01"));
@@ -102,8 +102,8 @@ Heartbeat
 
 ## <a name="multiple-data-types"></a>Több adattípus
 
-### <a name="chart-the-record-count-per-table"></a>Táblázatonkénti rekordszám diagramja
-A következő példa az elmúlt öt óra összes táblájának összes rekordját összegyűjti, és megszámolja, hogy hány rekord volt az egyes táblákban. Az eredmények egy idődiagramon jelennek meg.
+### <a name="chart-the-record-count-per-table"></a>Diagram – a rekordok száma táblázat szerint
+Az alábbi példa az elmúlt öt órában az összes tábla összes rekordját gyűjti, és megszámolja, hogy hány rekord volt az egyes táblákban. Az eredmények egy idődiagramját jelennek meg.
 
 ```Kusto
 union withsource=sourceTable *
@@ -112,8 +112,8 @@ union withsource=sourceTable *
 | render timechart
 ```
 
-### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Az elmúlt órában összegyűjtött összes napló megszámlálása típus szerint
-A következő példa az elmúlt órában jelentett adatokat keresi meg, és **típus**szerint számolja az egyes táblarekordokat. Az eredmények sávdiagramon jelennek meg.
+### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Az elmúlt órában gyűjtött összes napló száma típus szerint
+Az alábbi példa az elmúlt órában megjelenő összes jelentést keresi, és az egyes táblák rekordjait **típus**szerint számolja. Az eredmények sáv diagramon jelennek meg.
 
 ```Kusto
 search *
@@ -124,8 +124,8 @@ search *
 
 ## <a name="azurediagnostics"></a>AzureDiagnostics
 
-### <a name="count-azure-diagnostics-records-per-category"></a>Az Azure diagnosztikai rekordjainak megszámlálása kategóriánként
-Ez a példa az egyes egyedi kategóriák összes Azure diagnosztikai rekordját megszámolja.
+### <a name="count-azure-diagnostics-records-per-category"></a>Az Azure Diagnostics-rekordok száma kategóriánként
+Ez a példa az összes Azure Diagnostics-rekordot megszámolja mindegyik egyedi kategóriához.
 
 ```Kusto
 AzureDiagnostics 
@@ -133,8 +133,8 @@ AzureDiagnostics
 | summarize count() by Category
 ```
 
-### <a name="get-a-random-record-for-each-unique-category"></a>Véletlenszerű rekord beírása minden egyes egyedi kategóriához
-Ebben a példában egyetlen véletlenszerű Azure diagnosztikai rekordot kap minden egyes egyedi kategóriához.
+### <a name="get-a-random-record-for-each-unique-category"></a>Véletlenszerű rekord beolvasása minden egyes egyedi kategóriához
+Ebben a példában egyetlen véletlenszerű Azure Diagnostics-rekordot kap minden egyes egyedi kategóriához.
 
 ```Kusto
 AzureDiagnostics
@@ -142,8 +142,8 @@ AzureDiagnostics
 | summarize any(*) by Category
 ```
 
-### <a name="get-the-latest-record-per-category"></a>A legfrissebb rekord beszerezni kategóriánként
-Ebben a példában az egyes egyedi kategóriákban a legújabb Azure diagnosztikai rekordot kapja meg.
+### <a name="get-the-latest-record-per-category"></a>A legújabb rekord/kategória beszerzése
+Ez a példa minden egyes egyedi kategóriában beolvassa az Azure Diagnostics legújabb rekordját.
 
 ```Kusto
 AzureDiagnostics
@@ -153,8 +153,8 @@ AzureDiagnostics
 
 ## <a name="network-monitoring"></a>Hálózatfigyelés
 
-### <a name="computers-with-unhealthy-latency"></a>Nem kifogástalan késleltetéssel rendelkező számítógépek
-Ez a példa a nem kifogástalan késéssel rendelkező különálló számítógépek listáját hozza létre.
+### <a name="computers-with-unhealthy-latency"></a>Sérült késéssel rendelkező számítógépek
+Ez a példa olyan különálló számítógépek listáját hozza létre, amelyek nem megfelelő állapotú késéssel rendelkeznek.
 
 ```Kusto
 NetworkMonitoring 
@@ -165,8 +165,8 @@ NetworkMonitoring
 
 ## <a name="performance"></a>Teljesítmény
 
-### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>Számítógép-perf rekordok összeadása a memória és a processzor korrelációjához
-Ez a példa korrelálja egy adott számítógép **perf** rekordjait, és két idődiagramot hoz létre, az átlagos PROCESSZORt és a maximális memóriát.
+### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>A memória és a processzor összekapcsolásához csatlakoztassa a számítógépekhez tartozó Perf-rekordokat
+Ez a példa egy adott számítógép **perf** -rekordjait kapcsolja össze, és két idődiagramot hoz létre, az átlagos CPU-t és a maximális memóriát.
 
 ```Kusto
 let StartTime = now()-5d;
@@ -185,8 +185,8 @@ Perf
 | render timechart
 ```
 
-### <a name="perf-cpu-utilization-graph-per-computer"></a>Perf CPU-kihasználtsági grafikon számítógépenként
-Ez a példa kiszámítja és ábrázolja a _Contoso-val_kezdődő számítógépek processzorkihasználtságát.
+### <a name="perf-cpu-utilization-graph-per-computer"></a>Teljesítményfigyelő CPU-kihasználtsági gráfja számítógépenként
+Ez a példa a _contoso_-vel KEZDŐDŐ számítógépek CPU-kihasználtságának kiszámítását és diagramokat számítja ki.
 
 ```Kusto
 Perf
@@ -197,10 +197,10 @@ Perf
 | render timechart
 ```
 
-## <a name="protection-status"></a>Védelem állapota
+## <a name="protection-status"></a>Védelmi állapot
 
-### <a name="computers-with-non-reporting-protection-status-duration"></a>Nem jelentett védelmi állapotú számítógépek
-Ez a példa azokat a számítógépeket sorolja fel, amelyek nem _jelentett_ védelmi állapotúak, és az ebben az állapotukban lévő időtartamot.
+### <a name="computers-with-non-reporting-protection-status-duration"></a>Nem jelentéskészítési védelmi állapottal rendelkező számítógépek
+Ez a példa azokat a számítógépeket sorolja fel, amelyek védelmi állapota _nem jelentett_ , és az adott állapotban lévő időtartam.
 
 ```Kusto
 ProtectionStatus
@@ -211,9 +211,9 @@ ProtectionStatus
 | extend durationNotReporting = endNotReporting - startNotReporting
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotrekordok egyeztetése szívveréses rekordokkal
-Ez a példa megkeresi a kapcsolódó védelmi állapotrekordokat és a szívverési rekordokat a számítógépés az idő egyaránt.
-Az időmező takarásban a legközelebbi percre kerekítve jelenik **meg.**
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotüzenetek egyeztetése szívverési rekordokkal
+Ez a példa a kapcsolódó védelmi állapot rekordokat és a szívverési rekordokat is megkeresi a számítógép és az idő alapján.
+Az időmezőt a rendszer a legközelebbi percre kerekíti a **bin**használatával.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -224,13 +224,13 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ```
 
 
-## <a name="security-records"></a>Biztonsági nyilvántartások
+## <a name="security-records"></a>Biztonsági rekordok
 
-### <a name="count-security-events-by-activity-id"></a>Biztonsági események számlálása tevékenységazonosító szerint
+### <a name="count-security-events-by-activity-id"></a>Biztonsági események száma tevékenység azonosítója szerint
 
 
-Ez a példa a **Tevékenység** oszlop rögzített \<szerkezetére támaszkodik:\>-\<Azonosító neve\>.
-A **Tevékenység** értéket két új oszlopra elemzi, és megszámolja az egyes **tevékenységazonosítók előfordulását.**
+Ez a példa a **tevékenység** oszlopának rögzített struktúrájára támaszkodik: \<azonosító\>-\<neve\>.
+Elemzi a **tevékenység** értékét két új oszlopra, és megszámolja az egyes **tevékenységazonosító**előfordulását.
 
 ```Kusto
 SecurityEvent
@@ -240,8 +240,8 @@ SecurityEvent
 | summarize count() by activityID
 ```
 
-### <a name="count-security-events-related-to-permissions"></a>Engedélyekhez kapcsolódó biztonsági események megszámlálása
-Ez a példa a **securityEvent** rekordok számát mutatja, amelyekben a **Tevékenység** oszlop az _Engedélyek_teljes kifejezést tartalmazza. A lekérdezés az elmúlt 30 percben létrehozott rekordokra vonatkozik.
+### <a name="count-security-events-related-to-permissions"></a>Az engedélyekkel kapcsolatos biztonsági események száma
+Ebben a példában a **securityEvent** rekordok száma látható, amelyekben a **tevékenység** oszlop a teljes kifejezésre _vonatkozó engedélyeket_tartalmazza. A lekérdezés az elmúlt 30 percben létrehozott rekordokra vonatkozik.
 
 ```Kusto
 SecurityEvent
@@ -249,8 +249,8 @@ SecurityEvent
 | summarize EventCount = countif(Activity has "Permissions")
 ```
 
-### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Olyan fiókok keresése, amelyek nem tudtak bejelentkezni biztonsági észleléssel rendelkező számítógépekről
-Ez a példa megkeresi és megszámolja azokat a fiókokat, amelyek nem tudtak bejelentkezni olyan számítógépekről, amelyeken biztonsági észlelést azonosítunk.
+### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Olyan fiókok keresése, amelyek nem tudnak biztonsági észleléssel bejelentkezni a számítógépekről
+Ez a példa megkeresi és megszámolja azokat a fiókokat, amelyek nem tudnak bejelentkezni a biztonsági észlelést észlelő számítógépekről.
 
 ```Kusto
 let detections = toscalar(SecurityDetection
@@ -261,7 +261,7 @@ SecurityEvent
 ```
 
 ### <a name="is-my-security-data-available"></a>Elérhetők a biztonsági adataim?
-Az adatok feltárásának megkezdése gyakran az adatok rendelkezésre állásának ellenőrzésével kezdődik. Ez a példa a **SecurityEvent** rekordok számát mutatja az elmúlt 30 percben.
+Az adatfeltárás megkezdése gyakran az adatrendelkezésre állás-ellenőrzési szolgáltatással kezdődik. Ez a példa a **SecurityEvent** -rekordok számát mutatja az elmúlt 30 percben.
 
 ```Kusto
 SecurityEvent 
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Elemzési tevékenység neve és azonosítója
-Az alábbi két példa a **Tevékenység** oszlop \<rögzített\>-\<szerkezetére támaszkodik: Azonosító neve\>. Az első példa az **elemzési** operátor segítségével két új oszlophoz rendel értékeket: **activityID** és **activityDesc**.
+Az alábbi két példa a **tevékenység** oszlopának rögzített struktúrájára támaszkodik: \<azonosító\>-\<neve\>. Az első példa az **elemzési** operátort használja az értékek két új oszlophoz való hozzárendeléséhez: **tevékenységazonosító** és **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -279,7 +279,7 @@ SecurityEvent
 | parse Activity with activityID " - " activityDesc
 ```
 
-Ez a példa a **felosztásos** operátort használja egy különálló értékekből álló tömb létrehozásához.
+Ez a példa a **felosztott** operátort használja különálló értékek tömb létrehozásához.
 ```Kusto
 SecurityEvent
 | take 100
@@ -288,8 +288,8 @@ SecurityEvent
 | project Activity , activityArr, activityId=activityArr[0]
 ```
 
-### <a name="explicit-credentials-processes"></a>Explicit hitelesítő adatok folyamatai
-A következő példa azokat a folyamatokat mutatja be, amelyek explicit hitelesítő adatokat használtak az elmúlt héten
+### <a name="explicit-credentials-processes"></a>Explicit hitelesítő adatok feldolgozása
+Az alábbi példa egy tortadiagramot mutat be, amely az elmúlt héten explicit hitelesítő adatokat használt.
 
 ```Kusto
 SecurityEvent
@@ -300,9 +300,9 @@ SecurityEvent
 | render piechart 
 ```
 
-### <a name="top-running-processes"></a>A legnépszerűbb futó folyamatok
+### <a name="top-running-processes"></a>Leggyakrabban futó folyamatok
 
-A következő példa az elmúlt három nap öt leggyakoribb folyamatának tevékenységi vonalát mutatja be.
+Az alábbi példa egy idővonalat mutat be az öt leggyakoribb folyamathoz az elmúlt három napban.
 
 ```Kusto
 // Find all processes that started in the last three days. ID 4688: A new process has been created.
@@ -323,9 +323,9 @@ RunProcesses
 ```
 
 
-### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Ismétlődő sikertelen bejelentkezési kísérletek keresése ugyanannál a fióktól a különböző IP-kből
+### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Ismétlődő sikertelen bejelentkezési kísérletek megkeresése ugyanazzal a fiókkal különböző IP-címekről
 
-A következő példa az elmúlt hat órában több mint öt különböző IP-ből származó, ugyanazon fiók sikertelen bejelentkezési kísérleteit találja meg.
+Az alábbi példa megkeresi a sikertelen bejelentkezési kísérleteket ugyanazzal a fiókkal az elmúlt hat órában több mint öt különböző IP-címről.
 
 ```Kusto
 SecurityEvent 
@@ -335,8 +335,8 @@ SecurityEvent
 | sort by IPCount desc
 ```
 
-### <a name="find-user-accounts-that-failed-to-log-in"></a>A bejelentkezést nem sikerült felhasználói fiókok keresése 
-A következő példa azokat a felhasználói fiókokat azonosítja, amelyek az utolsó nap során több mint ötször nem tudtak bejelentkezni, és mikor próbáltak utoljára bejelentkezni.
+### <a name="find-user-accounts-that-failed-to-log-in"></a>Azon felhasználói fiókok keresése, amelyek nem tudnak bejelentkezni 
+Az alábbi példa azokat a felhasználói fiókokat azonosítja, amelyek az elmúlt nap során ötnél többször nem voltak bejelentkezve, és amikor utoljára próbáltak bejelentkezni.
 
 ```Kusto
 let timeframe = 1d;
@@ -348,7 +348,7 @@ SecurityEvent
 | project-away Account1
 ```
 
-Az **illesztés**használatával ellenőrizhetjük, **hogy** ugyanazok a gyanús fiókok tudtak-e később sikeresen bejelentkezni.
+A **JOIN**és a **let** utasítások segítségével ellenőrizhető, hogy ugyanazok a gyanús fiókok később sikeresen be tudnak-e jelentkezni.
 
 ```Kusto
 let timeframe = 1d;
@@ -375,11 +375,11 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Használat
 
-Az `Usage` adattípus segítségével nyomon követheti a bevitt adatmennyiséget megoldás vagy adattípus szerint. A bevitt adatkötetek [számítógépes](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) vagy [Azure-előfizetéssel, erőforráscsoportokkal vagy erőforrásokkal](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)történő tanulmányozására más módszerek is léteznek.
+Az `Usage` adattípus segítségével nyomon követheti a betöltött adatmennyiséget megoldás vagy adattípus alapján. A betöltött adatmennyiségeket a [számítógép](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) vagy az [Azure-előfizetés, az erőforráscsoport vagy az erőforrás](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)alapján is megvizsgálhatja.
 
 #### <a name="data-volume-by-solution"></a>Adatmennyiség megoldásonként
 
-A számlázható adatmennyiség megoldásonkénti megtekintéséhez használt lekérdezés az elmúlt hónapban (az utolsó részleges nap kivételével) a következő:
+A számlázható adatmennyiségnek az előző hónapban a megoldással való megtekintésére használt lekérdezés (az utolsó részleges nap kivételével) a következő:
 
 ```kusto
 Usage 
@@ -389,11 +389,11 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Vegye figyelembe, `where IsBillable = true` hogy a záradék kiszűri az adattípusokat bizonyos megoldásokból, amelyeknél nincs betöltési díj.  A záradék `TimeGenerated` is csak annak biztosítása érdekében, hogy a lekérdezési élmény az Azure Portalon az alapértelmezett 24 órán túl. A Használati adattípus `StartTime` használatakor, és `EndTime` azokat az időkategóriákat jelöli, amelyekhez az eredmények megjelennek. 
+Vegye figyelembe, hogy `where IsBillable = true` a záradék kiszűri az adattípusokat bizonyos olyan megoldásokból, amelyekhez nincs betöltési díj.  Emellett a záradéka `TimeGenerated` csak annak biztosítása érdekében, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is visszatekinthető legyen. A használati adatok típusának használatakor `StartTime` , `EndTime` valamint az eredmények megjelenítéséhez használt időgyűjtők. 
 
 #### <a name="data-volume-by-type"></a>Adatmennyiség típus szerint
 
-Tovább részletezve megtekintheti az adattrendekadat-típusok alapján:
+További részletezéssel tekintheti meg az adattípussal kapcsolatos adattrendeket:
 
 ```kusto
 Usage 
@@ -403,7 +403,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-Vagy ha meg szeretne látni egy táblázatot megoldás és az elmúlt hónapban,
+Vagy megtekintheti az előző hónapra vonatkozó táblát megoldás és típus szerint.
 
 ```kusto
 Usage 
@@ -415,12 +415,12 @@ Usage
 ```
 
 > [!NOTE]
-> A Használati adattípus néhány mezője, miközben még a sémában van, elavult, és értékeik már nem lesznek feltöltve. Ezek **a következők: Számítógép,** valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**.
+> A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**).
 
 ## <a name="updates"></a>Frissítések
 
-### <a name="computers-still-missing-updates"></a>A számítógépek még mindig hiányoznak a frissítésekből
-Ez a példa azoknak a számítógépeknek a listáját jeleníti meg, amelyek néhány nappal ezelőtt egy vagy több kritikus frissítésből hiányoztak, és amelyekről még mindig hiányoznak a frissítések.
+### <a name="computers-still-missing-updates"></a>A számítógépek még mindig hiányoznak a frissítések
+Ez a példa azoknak a számítógépeknek a listáját jeleníti meg, amelyek néhány nappal ezelőtt hiányoznak egy vagy több kritikus frissítésből, és még mindig hiányoznak a frissítések.
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
@@ -437,5 +437,5 @@ Update
 
 ## <a name="next-steps"></a>További lépések
 
-- A nyelvvel kapcsolatos részleteket a [Kusto nyelvi hivatkozásban](/azure/kusto/query) találja.
-- A [naplólekérdezések azure Monitorban történő írásával kapcsolatos leckében](get-started-queries.md)átkell mennie.
+- A nyelvre vonatkozó részletekért tekintse meg a [Kusto nyelvi referenciáját](/azure/kusto/query) .
+- Végigvezeti a [Azure monitorban található naplók írására szolgáló leckén](get-started-queries.md).

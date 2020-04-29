@@ -1,64 +1,64 @@
 ---
-title: Intelligens észlelés az Azure Application Insightsban | Microsoft dokumentumok
-description: Az Application Insights automatikus anam-es mélyelemzést végez az alkalmazástelemetriai adatokról, és figyelmezteta lehetséges problémákra.
+title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
+description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536794"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
- Az intelligens észlelés automatikusan figyelmezteti a webes alkalmazás lehetséges teljesítményproblémáira és hibaproblémáira. Proaktív elemzést végez az alkalmazás által az Application Insightsnak küldött telemetriai [adatokról.](../../azure-monitor/app/app-insights-overview.md) Ha a hibaarányok hirtelen emelkednek, vagy rendellenes minták jelennek meg az ügyfél vagy a kiszolgáló teljesítményében, riasztást kap. Ennek a szolgáltatásnak nincs szüksége konfigurációra. Akkor működik, ha az alkalmazás elegendő telemetriai adatokat küld.
+ Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](../../azure-monitor/app/app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.
 
-Az Intelligens észlelés által kiadott észleléseket mind a kapott e-mailekből, mind az Intelligens észlelés panelről elérheti.
+A Smart Detection által kiadott észleléseket elérheti a kapott e-mailekkel, és az intelligens észlelés panelen is.
 
 ## <a name="review-your-smart-detections"></a>Az intelligens észlelések áttekintése
-Az észleléseket kétféleképpen fedezheti fel:
+Két módon derítheti fel az észleléseket:
 
-* **E-mailt kap** az Application Insightstól. Íme egy tipikus példa:
+* **E-mailt kap** Application Insights. Íme egy tipikus példa:
   
-    ![E-mail értesítés](./media/proactive-diagnostics/03.png)
+    ![E-mail riasztás](./media/proactive-diagnostics/03.png)
   
-    Kattintson a nagy gombra, hogy további részleteket nyisson meg a portálon.
-* **Az intelligens észlelési panel** az Application Insightsban. Válassza az **Intelligens észlelés** lehetőséget a **Vizsgálat** menüben a legutóbbi észlelések listájának megtekintéséhez.
+    Kattintson a Big (nagy) gombra, és nyissa meg részletesebben a portálon.
+* **Az intelligens észlelés** panel Application Insights. A legutóbbi észlelések listájának megtekintéséhez válassza a **vizsgálat** menü **intelligens felismerés** elemét.
 
 ![Legutóbbi észlelések megtekintése](./media/proactive-diagnostics/04.png)
 
-A részletek megtekintéséhez jelöljön ki egy észlelést.
+Válasszon ki egy észlelést a részletek megtekintéséhez.
 
-## <a name="what-problems-are-detected"></a>Milyen problémákat észlel?
-Az intelligens észlelés számos problémát észlel és ad a következőkről, például:
+## <a name="what-problems-are-detected"></a>Milyen problémák észlelhetők?
+Az intelligens észlelés észleli és értesíti a különböző problémákról, például a következőkről:
 
-* [Intelligens észlelés - Hibaanomáliák](../../azure-monitor/app/proactive-failure-diagnostics.md). A gépi tanulás t, hogy állítsa be a várt sebessége sikertelen kérelmek az alkalmazás, korrelál a terhelés és egyéb tényezők. Ha a hibaarány kívül esik a várt borítékon, riasztást küldünk.
-* [Intelligens észlelés - Teljesítményanomáliák](../../azure-monitor/app/proactive-performance-diagnostics.md). Értesítést kap, ha egy művelet vagy a függőség időtartama válaszidő lelassul a korábbi alapkonfigurációhoz képest, vagy ha rendellenes mintát azonosítunk a válaszidő vagy az oldal betöltési ideje szerint.   
-* Általános degradációk és problémák, mint például [a nyomkövetés,](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity) [a memóriavesztés](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [a kivétel mennyiségének rendellenes növekedése](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) és a biztonsági [minták.](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)
+* [Intelligens észlelés – hibák rendellenességei](../../azure-monitor/app/proactive-failure-diagnostics.md). A gépi tanulás segítségével megadhatja az alkalmazáshoz való sikertelen kérelmek várható arányát, a terhelést és más tényezőket. Ha a hiba aránya a várt borítékon kívül esik, riasztást küldünk.
+* [Intelligens észlelés – teljesítménybeli rendellenességek](../../azure-monitor/app/proactive-performance-diagnostics.md). Értesítéseket kaphat, ha egy művelet vagy függőségi időtartam válaszideje lelassul a korábbi alapkonfigurációhoz képest, vagy ha rendellenes mintázatot azonosít a válaszidő vagy az oldal betöltési ideje alapján.   
+* Az általános romlások és problémák, például a [nyomkövetés romlása](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), a [memória szivárgása](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), a kivételek és a [biztonság elleni](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack) [eltérések rendellenes növekedése](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) .
 
-(Az egyes értesítésekben található súgóhivatkozások a vonatkozó cikkekre mutatnak.)
+(A Súgó hivatkozásai az egyes értesítésekben a megfelelő cikkekre mutatnak.)
 
-## <a name="smart-detection-email-notifications"></a>Intelligens észlelési e-mail értesítések
+## <a name="smart-detection-email-notifications"></a>E-mail-értesítések intelligens észlelése
 
-Az _előzetes verzióként_megjelölt szabályok kivételével az összes intelligens észlelési szabály alapértelmezés szerint úgy van beállítva, hogy az észlelések észlelések esetén e-mail értesítéseket küldjön.
+Az _előzetes_verzióként megjelölt szabályok kivételével az összes intelligens észlelési szabály alapértelmezés szerint e-mail-értesítések küldésére szolgál az észlelések észlelésekor.
 
-Az e-mail értesítések konfigurálása egy adott intelligens észlelési szabályhoz az Intelligens észlelési **beállítások** panel megnyitásával és a szabály kiválasztásával végezhető el, amely megnyitja a **Szerkesztési szabály** panelt.
+Az e-mail-értesítések egy adott intelligens észlelési szabályhoz való konfigurálásához nyissa meg az intelligens észlelési **Beállítások** panelt, és válassza ki azt a szabályt, amely megnyitja a **szabály szerkesztése** panelt.
 
-Másik lehetőségként módosíthatja a konfigurációt az Azure Resource Manager-sablonok használatával. További részletekért [tekintse meg az Application Insights intelligens észlelési szabályainak kezelése az Azure Resource Manager-sablonok használatával.](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)
+Azt is megteheti, hogy Azure Resource Manager-sablonok használatával módosítja a konfigurációt. További részletekért [lásd: Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>További lépések
-Ezek a diagnosztikai eszközök segítenek az alkalmazástelemetria imitálatának vizsgálatában:
+Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
-* [Metrikus felfedező](../../azure-monitor/platform/metrics-charts.md)
-* [Kereséskezelő](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrika-kezelő](../../azure-monitor/platform/metrics-charts.md)
+* [Keresési ablak](../../azure-monitor/app/diagnostic-search.md)
+* [Analitika – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
 
-Az intelligens észlelés teljesen automatikus. De talán szeretne még néhány riasztást beállítani?
+Az intelligens észlelés teljesen automatikus. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikariasztások](../../azure-monitor/app/alerts.md)
+* [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/app/alerts.md)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) 
 

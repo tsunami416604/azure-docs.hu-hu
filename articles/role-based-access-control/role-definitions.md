@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-definíciók megismerése az Azure-erőforrásokrBAC-jában | Microsoft dokumentumok
-description: Ismerje meg a szerepkör-definíciók szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások részletes hozzáférés-kezelése.
+title: A RBAC for Azure-erőforrások szerepkör-definícióinak megismerése | Microsoft Docs
+description: A szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör-definícióinak megismerése az Azure-erőforrások részletes hozzáférés-kezeléséhez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,15 +16,15 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641379"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>Az Azure-erőforrások szerepkör-definícióinak ismertetése
+# <a name="understand-role-definitions-for-azure-resources"></a>Az Azure-erőforrások szerepkör-definícióinak megismerése
 
-Ha megpróbálja megérteni, hogyan működik egy szerepkör, vagy ha saját egyéni szerepkört hoz létre az [Azure-erőforrásokhoz,](custom-roles.md)hasznos megérteni, hogyan vannak definiálva a szerepkörök. Ez a cikk ismerteti a szerepkör-definíciók részleteit, és néhány példát tartalmaz.
+Ha meg szeretné ismerni, hogyan működik a szerepkör, vagy ha saját [Egyéni szerepkört hoz létre az Azure-erőforrásokhoz](custom-roles.md), hasznos lehet megérteni a szerepkörök definiálásának módját. Ez a cikk a szerepkör-definíciók részleteit ismerteti, és példákat is tartalmaz.
 
 ## <a name="role-definition"></a>Szerepkör-definíció
 
@@ -44,35 +44,35 @@ AssignableScopes []
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| `Name` | A szerepkör megjelenítendő neve. |
+| `Name` | A szerepkör megjelenített neve. |
 | `Id` | A szerepkör egyedi azonosítója. |
-| `IsCustom` | Azt jelzi, hogy ez egyéni szerepkör-e. Egyéni `true` szerepkörökhöz. |
+| `IsCustom` | Azt jelzi, hogy ez egy egyéni szerepkör-e. `true` Egyéni szerepkörökre beállítva. |
 | `Description` | A szerepkör leírása. |
-| `Actions` | Karakterláncok tömbje, amely megadja a szerepkör által lehetővé tesz felügyeleti műveleteket. |
-| `NotActions` | Karakterláncok tömbje, amely megadja azengedélyezett rendszerből kizárt `Actions`felügyeleti műveleteket. |
-| `DataActions` | Karakterláncok tömbje, amely megadja azokat az adatműveleteket, amelyeket a szerepkör lehetővé tesz az objektumon belüli adatokon. |
-| `NotDataActions` | Karakterláncok tömbje, amely megadja az engedélyezett ből kizárt `DataActions`adatműveleteket. |
-| `AssignableScopes` | Karakterláncok tömbje, amely megadja a szerepkör hozzárendeléshez rendelkezésre álló hatóköreit. |
+| `Actions` | Karakterláncok tömbje, amely meghatározza, hogy a szerepkör milyen kezelési műveleteket hajtson végre. |
+| `NotActions` | Karakterláncok tömbje, amely meghatározza az engedélyezetttől `Actions`kizárt felügyeleti műveleteket. |
+| `DataActions` | Karakterláncok tömbje, amely meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. |
+| `NotDataActions` | Karakterláncok tömbje, amely az engedélyezetttől `DataActions`kizárt adatműveleteket határozza meg. |
+| `AssignableScopes` | Karakterláncok tömbje, amely meghatározza azokat a hatóköröket, amelyekhez a szerepkör elérhető a hozzárendeléshez. |
 
-### <a name="operations-format"></a>Műveletek formátuma
+### <a name="operations-format"></a>Működési formátum
 
 A műveletek a következő formátumú karakterláncokkal vannak megadva:
 
 - `{Company}.{ProviderName}/{resourceType}/{action}`
 
-A `{action}` műveleti karakterlánc része határozza meg az erőforrástípuson végrehajtható műveletek típusát. A következő részkarakterláncok például a `{action}`következő ben jelennek meg:
+A `{action}` műveleti karakterláncok része az erőforrástípus által elvégezhető műveletek típusát határozza meg. Például a következő alsztringek jelennek meg a ben `{action}`:
 
-| Művelet részkarakterlánca    | Leírás         |
+| Művelet alkarakterlánca    | Leírás         |
 | ------------------- | ------------------- |
-| `*` | A helyettesítő karakter hozzáférést biztosít a karakterláncnak megfelelő összes művelethez. |
-| `read` | Lehetővé teszi az olvasási műveleteket (GET). |
-| `write` | Írási műveletek engedélyezése (PUT vagy PATCH). |
-| `action` | Engedélyezi az egyéni műveleteket, például a virtuális gépek újraindítását (POST). |
-| `delete` | Engedélyezi a törlési műveleteket (DELETE). |
+| `*` | A helyettesítő karakter a sztringnek megfelelő összes művelethez hozzáférést biztosít. |
+| `read` | Olvasási műveletek (GET) engedélyezése. |
+| `write` | Írási műveletek (PUT vagy javítás) engedélyezése. |
+| `action` | Engedélyezi az olyan egyéni műveleteket, mint például a virtuális gépek újraindítása (POST). |
+| `delete` | Engedélyezi a törlési műveleteket (Törlés). |
 
-### <a name="role-definition-example"></a>Példa szerepkör-definícióra
+### <a name="role-definition-example"></a>Példa a szerepkör-definícióra
 
-Itt a [Közreműködői](built-in-roles.md#contributor) szerepkör definíciója JSON formátumban. Az `Actions``*` helyettesítő karakterének művelete azt jelzi, hogy a szerepkörhöz rendelt szolgáltatásnév minden műveletet elvégezhet, azaz mindent kezelhet. Ez az Azure által hozzáadott új erőforrástípusokkal együtt a jövőben meghatározott műveletekre is vonatkozik. A `NotActions` műveleteit kivonjuk az `Actions` elemből. A [Contributor](built-in-roles.md#contributor) szerepkör esetében a `NotActions` eltávolítja a szerepkör erőforrások hozzáférésének kezelésére, valamint megadására vonatkozó engedélyét.
+Itt látható a [közreműködő](built-in-roles.md#contributor) szerepkör definíciója JSON formátumban. Az `Actions``*` helyettesítő karakterének művelete azt jelzi, hogy a szerepkörhöz rendelt szolgáltatásnév minden műveletet elvégezhet, azaz mindent kezelhet. Ez az Azure által hozzáadott új erőforrástípusokkal együtt a jövőben meghatározott műveletekre is vonatkozik. A `NotActions` műveleteit kivonjuk az `Actions` elemből. A [Contributor](built-in-roles.md#contributor) szerepkör esetében a `NotActions` eltávolítja a szerepkör erőforrások hozzáférésének kezelésére, valamint megadására vonatkozó engedélyét.
 
 ```json
 {
@@ -96,25 +96,25 @@ Itt a [Közreműködői](built-in-roles.md#contributor) szerepkör definíciója
 }
 ```
 
-## <a name="management-and-data-operations"></a>Irányítási és adatkezelési műveletek
+## <a name="management-and-data-operations"></a>Kezelési és adatműveletek
 
-A felügyeleti műveletek szerepköralapú hozzáférés-vezérlése `Actions` a `NotActions` szerepkör-definíció és tulajdonságai között van megadva. Íme néhány példa az Azure-beli felügyeleti műveletekre:
+A felügyeleti műveletek szerepköralapú hozzáférés-vezérlése a szerepkör-definíció `Actions` és `NotActions` tulajdonságaiban van megadva. Íme néhány példa az Azure-beli felügyeleti műveletekre:
 
-- Tárfiókhoz való hozzáférés kezelése
-- Blob-tároló létrehozása, frissítése vagy törlése
+- Storage-fiókhoz való hozzáférés kezelése
+- BLOB-tároló létrehozása, frissítése vagy törlése
 - Erőforráscsoport és az összes erőforrás törlése
 
-A felügyeleti hozzáférés nem öröklődik az adatokból, feltéve, hogy a tárolóhitelesítési módszer "Azure AD felhasználói fiók" és nem "Hozzáférési kulcs" lesz. Ez a szétválasztás megakadályozza,`*`hogy a helyettesítő karakterekkel ( ) rendelkező szerepkörök korlátlan hozzáféréssel rendelkezzenek az adatokhoz. Ha például egy felhasználó [rendelkezik egy előfizetésreaderi](built-in-roles.md#reader) szerepkörrel, akkor megtekintheti a tárfiókot, de alapértelmezés szerint nem tekintheti meg az alapul szolgáló adatokat.
+A felügyeleti hozzáférés nem örökli az adatait, ha a tároló hitelesítési módszere "Azure AD felhasználói fiók", és nem "hozzáférési kulcs". Ez az elkülönítés megakadályozza, hogy a helyettesítő`*`karakterrel rendelkező szerepkörök () ne legyenek korlátozott hozzáférésük az adatokhoz. Ha például egy felhasználó rendelkezik egy előfizetéshez tartozó [olvasó](built-in-roles.md#reader) szerepkörrel, akkor megtekintheti a Storage-fiókot, de alapértelmezés szerint nem tekinthetik meg az alapul szolgáló adatokat.
 
-Korábban a szerepköralapú hozzáférés-vezérlés nem volt használva az adatműveletekhez. Az adatműveletek engedélyezése erőforrás-szolgáltatók között eltérő volt. A felügyeleti műveletekhez használt szerepköralapú hozzáférés-vezérlési engedélyezési modell t ki bővült az adatműveletekre is.
+Korábban a szerepköralapú hozzáférés-vezérlést nem használták adatműveletekhez. Az adatműveletek hitelesítése az erőforrás-szolgáltatókon keresztül változhat. A felügyeleti műveletekhez használt szerepköralapú hozzáférés-vezérlési hitelesítési modell kibővült az adatműveletekre.
 
-Az adatműveletek támogatásához új adattulajdonságok lettek hozzáadva a szerepkör-definícióhoz. Az adatműveletek a `DataActions` és `NotDataActions` tulajdonságokban mennek végbe. Ezekkel az adattulajdonságokkal a felügyelet és az adatok elkülönítése megmarad. Az aktuális, helyettesítő karakterekkel (`*`) történő szerepkör-hozzárendelések így nem kaphatnak hirtelen hozzáférést az adatokhoz. A `DataActions` és `NotDataActions` elemekben többek között a következő adatműveletek adhatók meg:
+Az adatműveletek támogatásához új Adattulajdonságok lettek hozzáadva a szerepkör-definícióhoz. Az adatműveletek a `DataActions` és `NotDataActions` tulajdonságokban mennek végbe. Ezen Adattulajdonságok hozzáadásával a rendszer megőrzi a felügyelet és az adatkezelés közötti elkülönítést. Az aktuális, helyettesítő karakterekkel (`*`) történő szerepkör-hozzárendelések így nem kaphatnak hirtelen hozzáférést az adatokhoz. A `DataActions` és `NotDataActions` elemekben többek között a következő adatműveletek adhatók meg:
 
 - Egy tároló bloblistájának olvasása
 - Tárolóblob írása egy tárolóban
 - Egy üzenetsor üzenetének törlése
 
-Itt a [Storage Blob Data Reader](built-in-roles.md#storage-blob-data-reader) szerepkör-definíciója, `Actions` amely `DataActions` tartalmazza a műveleteket mind a és a tulajdonságok. Ez a szerepkör lehetővé teszi a blobtároló és az alapul szolgáló blobadatok olvasását.
+Itt látható a [Storage blob Adatolvasó](built-in-roles.md#storage-blob-data-reader) szerepkör-definíciója, amely a és `Actions` `DataActions` a tulajdonságok között is tartalmaz műveleteket. Ez a szerepkör lehetővé teszi a blob-tároló és a mögöttes blob-adat olvasását.
 
 ```json
 {
@@ -136,107 +136,107 @@ Itt a [Storage Blob Data Reader](built-in-roles.md#storage-blob-data-reader) sze
 }
 ```
 
-A `DataActions` és `NotDataActions` tulajdonsághoz csak adatműveletek adhatók hozzá. Az erőforrás-szolgáltatók a `isDataAction` tulajdonság beállításával azonosítják, `true`hogy mely műveletek adatműveletek. A műveletek helyének megtekintéséhez `isDataAction` `true`tekintse meg az [Erőforrás-szolgáltató műveletei című témakört.](resource-provider-operations.md) Az adatműveleteket nem tartalmazó szerepköröknek `DataActions` `NotDataActions` és a szerepkör-definíción belüli tulajdonságoknak nem kell rendelkezniük.
+A `DataActions` és `NotDataActions` tulajdonsághoz csak adatműveletek adhatók hozzá. Az erőforrás-szolgáltatók határozzák meg, hogy mely műveletek legyenek adatműveletek, ha `isDataAction` `true`a tulajdonságot értékre állítja. A következő műveletek `isDataAction` listájának megtekintéséhez lásd: erőforrás `true`- [szolgáltatói műveletek](resource-provider-operations.md). Azok a szerepkörök, amelyek nem rendelkeznek adatműveletekkel, nem `DataActions` szükségesek a szerepkör-definícióban lévő és `NotDataActions` a tulajdonságok eléréséhez.
 
-Az összes felügyeleti művelet API-hívásának engedélyezését az Azure Resource Manager kezeli. Az adatüzemeltetési API-hívások engedélyezését erőforrás-szolgáltató vagy az Azure Resource Manager kezeli.
+Az összes felügyeleti művelet API-hívásának hitelesítését Azure Resource Manager kezeli. Az adatműveleti API-hívások engedélyezését vagy erőforrás-szolgáltató vagy Azure Resource Manager kezeli.
 
-### <a name="data-operations-example"></a>Példa adatműveletekre
+### <a name="data-operations-example"></a>Adatműveletek – példa
 
-A felügyeleti és adatműveletek működésének jobb megértéséhez vegyünk egy konkrét példát. Alice az előfizetés hatókörében van [hozzárendelve](built-in-roles.md#owner) a tulajdonos szerepkör. Bob a Storage [Blob Data Contributor](built-in-roles.md#storage-blob-data-contributor) szerepkört egy tárfiók hatókörén kapta. Az alábbi ábra ezt a példát mutatja be.
+A kezelési és az adatműveletek működésének jobb megismeréséhez Vegyünk egy konkrét példát. Alice hozzá lett rendelve a [tulajdonosi](built-in-roles.md#owner) szerepkörhöz az előfizetés hatókörében. Bob hozzárendelte a [Storage blob adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkört egy Storage-fiók hatókörében. Az alábbi ábrán látható példa.
 
-![A szerepköralapú hozzáférés-vezérlés ki lett bővítve a felügyeleti és az adatműveletek támogatására](./media/role-definitions/rbac-management-data.png)
+![A szerepköralapú hozzáférés-vezérlés ki van terjesztve a felügyeleti és az adatműveletek támogatására is](./media/role-definitions/rbac-management-data.png)
 
-Az Alice [tulajdonosi](built-in-roles.md#owner) szerepköre és a [Zsemleárd tárolási blobadat-közreműködői](built-in-roles.md#storage-blob-data-contributor) szerepköre a következő műveletekkel rendelkezik:
+Az Alice [tulajdonosi](built-in-roles.md#owner) szerepköre és a [Storage blob adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepköre a következő műveletekkel rendelkezik:
 
 Tulajdonos
 
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Storage Blob-adatközreműködő
+Storage blob adatközreműködői
 
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;DataActions (Adatműveletek)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Mivel Az Alice rendelkezik egy helyettesítő ( )`*`művelet egy előfizetési hatókörben, az engedélyek öröklik le, hogy azok az összes felügyeleti műveletek végrehajtása. Alice tud olvasni, írni és törölni a tárolókat. Alice azonban további lépések nélkül nem hajthat végre adatműveleteket. Alapértelmezés szerint például Az Anna nem tudja olvasni a tárolón belüli blobokat. A blobok olvasásához Alice kellett volna letölteni a tárolási hozzáférési kulcsokat, és használja őket a blobok eléréséhez.
+Mivel Alice egy helyettesítő karakter (`*`) művelettel rendelkezik egy előfizetési hatókörben, az engedélyeik öröklik az összes felügyeleti művelet végrehajtását. Alice képes a tárolók olvasására, írására és törlésére. Alice azonban nem végezheti el az adatműveleteket további lépések végrehajtása nélkül. Alapértelmezés szerint például Alice nem tudja beolvasni a blobokat egy tárolón belül. A Blobok olvasásához Alice-nek le kell kérnie a tároló-hozzáférési kulcsokat, és a Blobok eléréséhez használnia kell őket.
 
-Bob engedélyei csak a `Actions` storage `DataActions` blob [adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkörben vannak megadva. A szerepkör alapján Bob felügyeleti és adatműveleteket is végrehajthat. Például Bob olvashat, írhat és törölhet tárolókat a megadott tárfiókban, és olvashatja, írhatja és törölheti a blobokat.
+A Bob engedélyei a `Actions` [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkörben csak a és `DataActions` a értékre korlátozódnak. A Bob szerepkör alapján a felügyeleti és az adatműveletek is elvégezhetők. Például Bob elolvashatja, írhatja és törölheti a tárolókat a megadott Storage-fiókban, valamint elolvashatja, írhatja és törölheti is a blobokat.
 
-A felügyeleti és adatsíkok biztonságáról az [Azure Storage biztonsági útmutatójában](../storage/blobs/security-recommendations.md)talál további információt.
+A tárolással kapcsolatos felügyelettel és adatsíkokkal kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](../storage/blobs/security-recommendations.md).
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>Milyen eszközök támogatják az RBAC használatát az adatműveletekhez?
+### <a name="what-tools-support-using-rbac-for-data-operations"></a>Milyen eszközök támogatják a RBAC használatát az adatműveletekhez?
 
-Az adatműveletek megtekintéséhez és kezeléséhez az eszközök vagy SDK-k megfelelő verzióival kell rendelkeznie:
+Az adatműveletek megtekintéséhez és használatához az eszközök vagy SDK-k megfelelő verzióját kell megadnia:
 
 | Eszköz  | Verzió  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 vagy újabb |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 vagy újabb |
-| [Azure a .NET-hez](/dotnet/azure/) | 2.8.0-preview vagy újabb |
+| [Azure .NET-hez](/dotnet/azure/) | 2.8.0 – előzetes verzió vagy újabb |
 | [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 vagy újabb |
-| [Java-alapú Azure](/java/azure/) | 1.9.0 vagy újabb |
+| [Azure Java-hoz](/java/azure/) | 1.9.0 vagy újabb |
 | [Azure Pythonhoz](/azure/python/) | 0.40.0 vagy újabb |
 | [Rubyhoz készült Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 vagy újabb |
 
-A REST API-ban az adatműveletek megtekintéséhez és használatához az **api-version** paramétert a következő vagy újabb verzióra kell állítania:
+Az REST APIban lévő adatműveletek megtekintéséhez és használatához az **API-Version** paramétert az alábbi vagy újabb verzióra kell beállítani:
 
 - 2018-07-01
 
 ## <a name="actions"></a>Műveletek
 
-Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyeket a szerepkör lehetővé tesz. Ez egy olyan műveleti karakterláncok gyűjteménye, amelyek azonosítják az Azure-erőforrás-szolgáltatók biztonságos műveleteit. Íme néhány példa a kezelési műveletekre, `Actions`amelyek a ban használhatók.
+Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyeket a szerepkör engedélyez. Ez a műveleti karakterláncok gyűjteménye, amelyek az Azure-erőforrás-szolgáltatók biztonságos műveleteit azonosítják. Íme néhány példa a szolgáltatásban használható felügyeleti műveletekre `Actions`.
 
 > [!div class="mx-tableFixed"]
-> | Műveleti karakterlánc    | Leírás         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
-> | `*/read` | Hozzáférést biztosít az olvasási műveletekhez az összes Azure-erőforrás-szolgáltató összes erőforrástípusához.|
-> | `Microsoft.Compute/*` | Hozzáférést biztosít a Microsoft.Compute erőforrás-szolgáltató összes erőforrástípusának összes műveletéhez.|
-> | `Microsoft.Network/*/read` | Hozzáférést biztosít olvasási műveletekhez a Microsoft.Network erőforrás-szolgáltató összes erőforrástípusához.|
-> | `Microsoft.Compute/virtualMachines/*` | Hozzáférést biztosít a virtuális gépek és a gyermekerőforrás-típusok összes műveletéhez.|
+> | `*/read` | Olvasási műveletekhez való hozzáférést biztosít az összes Azure-erőforrás-szolgáltató összes erőforrás-típusához.|
+> | `Microsoft.Compute/*` | Hozzáférést biztosít minden művelethez a Microsoft. számítási erőforrás-szolgáltató összes erőforrás-típusához.|
+> | `Microsoft.Network/*/read` | Olvasási műveletekhez való hozzáférést biztosít a Microsoft. Network erőforrás-szolgáltató összes erőforrás-típusához.|
+> | `Microsoft.Compute/virtualMachines/*` | Hozzáférést biztosít a virtuális gépek összes műveletéhez és annak alárendelt erőforrásaihoz.|
 > | `microsoft.web/sites/restart/Action` | Hozzáférést biztosít egy webalkalmazás újraindításához.|
 
 ## <a name="notactions"></a>NotActions
 
-Az `NotActions` engedély azokat a felügyeleti műveleteket határozza `Actions`meg, amelyek ki vannak zárva az engedélyezett ből. Használja `NotActions` az engedélyt, ha az engedélyezni kívánt műveletek készlete könnyebben definiálható a korlátozott műveletek kizárásával. A szerepkör által biztosított hozzáférés (hatályos engedélyek) a `NotActions` műveletek kivonásával számítja ki a `Actions` műveleteket.
+Az `NotActions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek ki vannak zárva az `Actions`engedélyezetttől. Akkor használja `NotActions` az engedélyt, ha az engedélyezni kívánt műveletek csoportja a korlátozott műveletek kizárásával könnyebben definiálható. A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával `NotActions` `Actions` történik.
 
 > [!NOTE]
-> Ha egy felhasználóhoz olyan szerepkör van rendelve, amely kizárja a műveletet a alkalmazásban, `NotActions`és egy második szerepkört kap, amely hozzáférést biztosít ugyanahhoz a művelethez, a felhasználó végrehajthatja a műveletet. `NotActions`nem megtagadási szabály – ez egyszerűen egy kényelmes módja annak, hogy hozzon létre egy sor engedélyezett műveletek, ha bizonyos műveleteket ki kell zárni.
+> Ha a felhasználó olyan szerepkört rendel hozzá, amely kizár egy műveletet `NotActions`a alkalmazásban, és olyan második szerepkörhöz van rendelve, amely hozzáférést biztosít ugyanahhoz a művelethez, a felhasználó számára engedélyezett a művelet végrehajtása. `NotActions`nem megtagadási szabály – egyszerűen egy kényelmes módszer, amely lehetővé teszi, hogy az egyes műveleteket ki kell zárni.
 >
 
-## <a name="dataactions"></a>DataActions (Adatműveletek)
+## <a name="dataactions"></a>DataActions
 
-Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a szerepkör lehetővé tesz az adott objektumon belüli adatokon. Például ha egy felhasználó olvasási blob adathozzáférés egy tárfiókhoz, majd olvashatják a blobok az adott tárfiókon belül. Íme néhány példa a rendszerben használható `DataActions`adatműveletekre.
+Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha például egy felhasználó beolvasta a blob-adathozzáférést egy Storage-fiókhoz, akkor az adott Storage-fiókban található blobokat is elolvashatja. Íme néhány példa a szolgáltatásban használható adatműveletekre `DataActions`.
 
 > [!div class="mx-tableFixed"]
-> | Műveleti karakterlánc    | Leírás         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
-> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blobot vagy blobok listáját adja vissza. |
-> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Blob írásának eredményét adja vissza. |
-> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read` | Üzenetet ad vissza. |
-> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | Üzenetet vagy üzenet írásának vagy törlésének eredményét adja vissza. |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blobot vagy Blobok listáját adja vissza. |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Egy blob írásának eredményét adja vissza. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read` | Egy üzenetet ad vissza. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | Egy üzenetet vagy egy üzenet írásának vagy törlésének eredményét adja vissza. |
 
 ## <a name="notdataactions"></a>NotDataActions
 
-Az `NotDataActions` engedély azokat az adatműveleteket határozza `DataActions`meg, amelyek ki vannak zárva az engedélyezett alkalmazásból. A szerepkör által biztosított hozzáférés (hatályos engedélyek) a `NotDataActions` műveletek kivonásával számítja ki a `DataActions` műveleteket. Minden erőforrás-szolgáltató biztosítja a megfelelő API-készletét az adatműveletek teljesítéséhez.
+Az `NotDataActions` engedély meghatározza azokat az adatműveleteket, amelyek ki vannak zárva `DataActions`az engedélyezett tartományból. A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával `NotDataActions` `DataActions` történik. Mindegyik erőforrás-szolgáltató biztosítja az API-k megfelelő készletét az adatműveletek teljesítéséhez.
 
 > [!NOTE]
-> Ha egy felhasználóhoz olyan szerepkör van rendelve, amely kizárja az adatműveletet a alkalmazásban, `NotDataActions`és egy második szerepkört kap, amely hozzáférést biztosít ugyanahhoz az adatművelethez, a felhasználó végrehajthatja az adatműveletet. `NotDataActions`nem megtagadási szabály – ez egyszerűen egy kényelmes módja annak, hogy hozzon létre egy sor engedélyezett adatműveletek, ha bizonyos adatműveleteket ki kell zárni.
+> Ha egy felhasználó olyan szerepkört kap, amely kizár egy adatműveletet `NotDataActions`a alkalmazásban, és olyan második szerepkört rendel hozzá, amely ugyanahhoz az adatművelethez hozzáférést biztosít, akkor a felhasználó elvégezheti az adatműveletet. `NotDataActions`nem megtagadási szabály – egyszerűen csak egy kényelmes módszer, amely lehetővé teszi az adatműveletek egy készletének kizárását, ha bizonyos adatműveleteket ki kell zárni.
 >
 
-## <a name="assignablescopes"></a>Hozzárendelhető ható körök
+## <a name="assignablescopes"></a>AssignableScopes
 
-A `AssignableScopes` tulajdonság meghatározza azokat a hatóköröket (felügyeleti csoportokat, előfizetéseket vagy erőforráscsoportokat), amelyek rendelkeznek ezzel a szerepkör-definícióval. A szerepkört csak az azt igénylő felügyeleti csoportokban, előfizetésekben vagy erőforráscsoportokban teheti elérhetővé hozzárendeléshez. Legalább egy felügyeleti csoportot, előfizetést vagy erőforráscsoportot kell használnia.
+A `AssignableScopes` tulajdonság határozza meg, hogy mely hatókörök (felügyeleti csoportok, előfizetések vagy erőforráscsoportok) érhetők el ehhez a szerepkör-definícióhoz. A szerepkört csak azokhoz a felügyeleti csoportokhoz, előfizetésekhez vagy erőforráscsoportokhöz lehet hozzárendelni, amelyekhez szükség van. Legalább egy felügyeleti csoportot, előfizetést vagy erőforráscsoportot kell használnia.
 
-A beépített szerepkörök a gyökérhatókörre ( `AssignableScopes` `"/"`) vannak beállítva. A gyökérhatókör azt jelzi, hogy a szerepkör minden hatókörben elérhető hozzárendeléshez. Példák az érvényes hozzárendelhető hatókörökre:
+A beépített szerepkörök a gyökérszintű `AssignableScopes` hatókörre (`"/"`) vannak beállítva. A gyökérszintű hatókör azt jelzi, hogy a szerepkör minden hatókörben elérhető a hozzárendeléshez. Érvényes hozzárendelhető hatókörök például a következők:
 
 > [!div class="mx-tableFixed"]
-> | A szerepkör hozzárendeléshez elérhető | Példa |
+> | A szerepkör hozzárendelésre elérhető | Példa |
 > |----------|---------|
 > | Egy előfizetés | `"/subscriptions/{subscriptionId1}"` |
 > | Két előfizetés | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
@@ -245,10 +245,10 @@ A beépített szerepkörök a gyökérhatókörre ( `AssignableScopes` `"/"`) va
 > | Felügyeleti csoport és előfizetés | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | Minden hatókör (csak a beépített szerepkörökre vonatkozik) | `"/"` |
 
-Az egyéni `AssignableScopes` szerepkörökről az [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)című témakörben talál további információt.
+További információ `AssignableScopes` az egyéni szerepkörökről: [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)
 * [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-* [Az Azure Resource Manager erőforrás-szolgáltatóműveletei](resource-provider-operations.md)
+* [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)

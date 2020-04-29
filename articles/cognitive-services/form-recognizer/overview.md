@@ -1,7 +1,7 @@
 ---
 title: Mi a Form Recognizer?
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services űrlapfelismerő lehetővé teszi kulcs-és értékpárok és táblázatadatok azonosítását és kinyerését űrlapdokumentumokból.
+description: Az Azure Cognitive Services űrlap-felismerő lehetővé teszi a kulcs/érték párok és a táblák adatainak azonosítását és kinyerését az űrlap dokumentumaiból.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,98 +10,98 @@ ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81529892"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Form Recognizer egy kognitív szolgáltatás, amely gépi tanulási technológiát használ a szöveg, a kulcs/érték párok és az űrlapdokumentumok táblázatadatainak azonosítására és kinyerésére. Az űrlapokszöveget beadja, és strukturált adatokat ad ki, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Gyorsan kap pontos eredményeket, amelyek az adott tartalomhoz igazodnak, nehéz manuális beavatkozás vagy kiterjedt adatelemzési szakértelem nélkül. A Formafelismerő egyéni modellekből, az előre összeállított bevételezési modellből és az elrendezési API-ból áll. A FORM Recognizer modelleket rest API használatával hívhatja meg, hogy csökkentse az összetettséget, és integrálja azokat a munkafolyamatba vagy alkalmazásba.
+Az Azure Form felismerő egy olyan kognitív szolgáltatás, amely gépi tanulási technológiával azonosítja és Kinyeri a szöveges, kulcs/érték párokat és a táblák adatait az űrlap dokumentumaiból. Betölti a szöveget az űrlapokból, és olyan strukturált adatokat ad eredményül, amelyek tartalmazzák az eredeti fájl kapcsolatait. Az adott tartalomra szabott pontos eredményeket gyorsan, nehéz manuális beavatkozás vagy kiterjedt adatelemzési szakértelem nélkül érheti el. Az űrlap-felismerő egyéni modellből, az előre elkészített beérkezési modellből és az elrendezési API-ból áll. Az űrlap-felismerő modelleket egy REST API használatával hívhatja meg, hogy csökkentse a bonyolultságot, és integrálja azt a munkafolyamatba vagy alkalmazásba.
 
-A Formafelismerő a következő szolgáltatásokból áll:
-* **Egyéni modellek** – Kulcs-/értékpárok és táblaadatok kinyerése űrlapokról. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokhoz vannak igazítva.
-* **Előre összeállított bevételezési modell** – Adatok kinyerése az USA értékesítési nyugtáiból egy előre összeállított modell használatával.
-* **Elrendezési API** – Szöveg- és táblázatszerkezetek kinyerése a határolókeret koordinátáival együtt a dokumentumokból.
+Az űrlap-felismerő a következő szolgáltatásokból áll:
+* **Egyéni modellek** – a kulcs/érték párok és a táblák adatainak kinyerése az űrlapokból. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokra vannak szabva.
+* Előre összevont **beérkezési modell** – az USA értékesítési bevételeiből származó adatok kinyerése egy előre elkészített modell használatával.
+* **Elrendezési API** – szöveg-és táblázatos struktúrák kinyerése a dokumentumokból a határolókeret koordinátáival együtt.
 
 <!-- add diagram -->
 
 ## <a name="custom-models"></a>Egyéni modellek
 
-A Form Recognizer egyéni modelljei betanítása a saját adataira, és csak öt mintabeviteli űrlapra van szükség a kezdéshez. A betanított modell olyan strukturált adatokat adhat ki, amelyek tartalmazzák az eredeti űrlapdokumentumban lévő kapcsolatokat. A modell betanítása után tesztelheti és újrataníthatja, és végül használhatja azt, hogy megbízhatóan kinyerje az adatokat több űrlapról az Igényeinek megfelelően.
+Az űrlap-felismerő egyéni modelljeinek a saját adataihoz kell betanítania, és a kezdéshez csak öt minta bemeneti űrlapra van szükség. A betanított modell olyan strukturált adatokat tud kialakítani, amelyek tartalmazzák az eredeti dokumentum kapcsolatait. A modell betanítása után tesztelheti és áttaníthatja, és végül a használatával megbízhatóan kinyerheti az adatokból az igényeknek megfelelő további formákat.
 
-Egyéni modellek betanításakor a következő lehetőségek közül választhat: betanítás címkézett adatokkal és címkézett adatok nélkül.
+Az egyéni modellek betanításakor a következő lehetőségek állnak rendelkezésére: képzés címkézett és címkézett adatbevitel nélkül.
 
-### <a name="train-without-labels"></a>Vonat címkék nélkül
+### <a name="train-without-labels"></a>Betanítás címkék nélkül
 
-Alapértelmezés szerint az Űrlapfelismerő felügyelet nélküli tanulással érti az űrlapok mezői és bejegyzései közötti elrendezést és kapcsolatokat. A bemeneti űrlapok elküldésekor az algoritmus típus szerint csoportosítja az űrlapokat, felderíti, hogy milyen kulcsok és táblák vannak jelen, és értékeket társít a kulcsokhoz és a táblák bejegyzéseihez. Ehhez nincs szükség manuális adatcímkézésre vagy intenzív kódolásra és karbantartásra, ezért azt javasoljuk, hogy először próbálja ki ezt a módszert.
+Alapértelmezés szerint az űrlap-felismerő nem felügyelt tanulást használ az űrlapok mezőinek és bejegyzéseinek elrendezésére és kapcsolatainak megismerésére. Ha beküldi a bemeneti űrlapokat, az algoritmus a következő típus szerint állítja be az űrlapokat, felfedi a kulcsokat és táblákat, és értékeket társít a kulcsokhoz és bejegyzésekhez a táblákhoz. Ehhez nincs szükség kézi adatcímkézésre vagy intenzív kódolásra és karbantartásra, és azt javasoljuk, hogy először próbálja meg ezt a módszert.
 
-### <a name="train-with-labels"></a>Vonat címkékkel
+### <a name="train-with-labels"></a>Tanítás címkékkel
 
-A címkézett adatokkal való betanításkor a modell felügyelt tanulással kinyeri az érdeklődési értékeket a megadott címkézett űrlapok használatával. Ez jobban teljesítő modelleket eredményez, és olyan modelleket képes előállítani, amelyek összetett űrlapokkal vagy kulcsok nélküli értékeket tartalmazó űrlapokkal dolgoznak.
+Ha címkével ellátott adatokkal látja el a képzést, a modell felügyeli a tanulást, hogy az Ön által megadott címkézett űrlapok használatával kinyerje a kívánt értékeket. Ez jobb teljesítményű modelleket eredményez, és olyan modelleket hozhat létre, amelyek olyan összetett űrlapokkal vagy űrlapokkal működnek, amelyek kulcsok nélkül tartalmaznak értékeket.
 
-A Formafelismerő az [Elrendezés API-t](#layout-api) használja a nyomtatott és kézzel írt szövegelemek várható méretének és helyének megismerésére. Ezután a felhasználó által megadott címkéket használja a dokumentumokkulcs/érték társítások megismeréséhez. Azt javasoljuk, hogy öt manuálisan címkézett azonos típusú űrlapok az első lépések hez, amikor egy új modell betanítása, és adjunk hozzá további címkézett adatokat, ha szükséges, hogy javítsa a modell pontosságát.
+Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja meg a nyomtatott és a kézírásos szöveges elemek várt méretét és pozícióit. Ezután a felhasználó által megadott címkéket használja a dokumentumok kulcs/érték társításának megismeréséhez. Azt javasoljuk, hogy az új modell betanítása és a modell pontosságának javítása érdekében a típus öt kézzel címkézett formáját használja az első lépésekhez.
 
-## <a name="prebuilt-receipt-model"></a>Előre összeállított bevételezési modell
+## <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
 
-A Form Recognizer egy modellt is tartalmaz az&mdash;Egyesült Államokból származó angol értékesítési nyugták olvasására az éttermek, benzinkutak, kiskereskedelmi és így tovább[(mintabevételezés)](./media/contoso-receipt-small.png)típusra. Ez a modell olyan kulcsfontosságú információkat nyer ki, mint a tranzakció időpontja és dátuma, a kereskedői adatok, az adók és az összegek összege stb. Emellett az előre összeállított bevételezési modell be van tanítva a bevételezés teljes szövegének felismerésére és visszaküldésére.
+Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok&mdash;az éttermek, a benzinkutak, a kiskereskedelmi és így tovább ([minta](./media/contoso-receipt-small.png)) által használt típusokból olvassa be az angol nyelvű értékesítési nyugtákat. Ez a modell kigyűjti a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adókat és az összegeket, valamint egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva.
 
 ## <a name="layout-api"></a>Elrendezési API
 
-Az Űrlapfelismerő nagy felbontású optikai karakterfelismerés (OCR) segítségével szöveget és táblázatszerkezetet (a szöveghez társított sor- és oszlopszámokat) is kinyerheti.
+Az űrlap-felismerő a szöveg és a tábla szerkezetét is kinyerheti (a szöveghez társított sorok és oszlopok száma) a nagy felbontású optikai karakterfelismerés (OCR) használatával.
 
 ## <a name="get-started"></a>Bevezetés
 
-Rövid útmutatóként ismerkedjen meg az űrlapokból való adatok kinyerésével. Javasoljuk, hogy használja az ingyenes szolgáltatást, amikor a technológia tanulását tanulja. Ne feledje, hogy az ingyenes oldalak száma havonta legfeljebb 500 lehet.
+Egy rövid útmutató segítségével megkezdheti az űrlapok adatainak kinyerését. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
 * Egyéni – modell betanítása az űrlapokra
-  * Vonat címkék nélkül
-    * [Rövid útmutató: Űrlapfelismerő modell betanítása és űrlapadatok kinyerése a REST API cURL használatával](quickstarts/curl-train-extract.md)
-    * [Rövid útmutató: Űrlapfelismerő modell betanítása és űrlapadatok kinyerése a REST API pythonnal való használatával](quickstarts/python-train-extract.md)
-  * Vonat címkékkel
-    * [Űrlapfelismerő modell betanítása címkékkel a mintacímkéző eszközzel](quickstarts/label-tool.md)
-    * [Űrlapfelismerő modell betanítása feliratokkal REST API és Python használatával](quickstarts/python-labeled-data.md)
-* Előre összeállított bevételezések - adatok kinyerése az USA értékesítési bevételeiből
-  * [Rövid útmutató: Nyugtaadatok kinyerése cURL használatával](quickstarts/curl-receipts.md)
-  * [Rövid útmutató: Bevételezési adatok kinyerése python használatával](quickstarts/python-receipts.md)
-* Elrendezés – szöveg és táblázat szerkezetének kibontása űrlapokból
-  * [Rövid útmutató: Elrendezési adatok kinyerése python használatával](quickstarts/python-layout.md)
+  * Betanítás címkék nélkül
+    * [Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával](quickstarts/curl-train-extract.md)
+    * [Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával](quickstarts/python-train-extract.md)
+  * Tanítás címkékkel
+    * [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](quickstarts/label-tool.md)
+    * [Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával](quickstarts/python-labeled-data.md)
+* Előre elkészített visszaigazolások – adatok kinyerése az USA értékesítési bevételeiből
+  * [Gyors útmutató: bevételezési adatok kinyerése a cURL használatával](quickstarts/curl-receipts.md)
+  * [Gyors útmutató: bevételezési adatok kinyerése a Python használatával](quickstarts/python-receipts.md)
+* Elrendezés – szöveg és tábla szerkezetének kinyerése űrlapokból
+  * [Gyors útmutató: elrendezési adatok kinyerése a Python használatával](quickstarts/python-layout.md)
 
 ### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
 
-A következő API-k at fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
+A következő API-kat fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
 
 |Name (Név) |Leírás |
 |---|---|
-| **Egyéni modell betanítása**| Új modell betanítása az űrlapok elemzéséhez öt azonos típusú űrlap használatával. Állítsa be a _useLabelFile_ paramétert `true` a manuálisan címkézett adatokkal való betanításhoz. |
-| **Űrlap elemzése** |Elemezze az adatfolyamként átadott egyetlen dokumentumot, és bontsa ki a szöveget, a kulcs-/értékpárokat és a táblázatokat az űrlapról az egyéni modellel.  |
-| **Bevételezés elemzése** |Egyetlen bevételezési bizonylat elemzése a legfontosabb információk és egyéb bevételezési szöveg kinyeréséhez.|
-| **Elrendezés elemzése** |Az űrlap elrendezésének elemzése a szöveg és a táblázat szerkezetének kibontásához.|
+| **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert `true` beállíthatja úgy, hogy a manuálisan címkézett adatként legyen betanítva. |
+| **Űrlap elemzése** |Egyetlen dokumentum elemzése, amely streamként lett átadva szöveg-, kulcs/érték párok és táblák kinyeréséhez az űrlapról az egyéni modellel.  |
+| **Visszaigazolás elemzése** |Egyetlen bevételezési dokumentum elemzése a legfontosabb információk és a többi bevételezési szöveg kinyeréséhez.|
+| **Elrendezés elemzése** |Egy űrlap elrendezésének elemzése szöveg és tábla szerkezetének kinyeréséhez.|
 
-További információkért tekintse meg a [REST API referenciadokumentációját.](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) Ha ismeri az API egy korábbi verzióját, tekintse meg az [Újdonságok](./whats-new.md) című cikket a legutóbbi változásokról.
+További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
 
 ## <a name="input-requirements"></a>Bemeneti követelmények
 ### <a name="custom-model"></a>Egyéni modell
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Előre összeállított bevételezési modell
+### <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
 
-A bevételezési modell bemeneti követelményei némileg eltérnek.
+A beérkezési modellhez tartozó bemeneti követelmények némileg eltérőek.
 
-* A formátumnak JPEG, PNG, PDF (szöveg vagy beolvasott) vagy TIFF formátumnak kell lennie.
+* A formátumnak JPEG, PNG, PDF (Text vagy beszkennelt) vagy TIFF formátumúnak kell lennie.
 * A fájlméretnek 20 MB-nál kisebbnek kell lennie.
-* A kép méretének 50 x 50 és 10000 x 10000 képpont között kell lennie.
-* A PDF-méretek legbőlegelhetőek lehetnek 17 x 17 hüvelyk, amely jogi vagy A3-as papírméretnek felel meg, és kisebbek.
-* PDF és TIFF esetén csak az első 200 oldal feldolgozása történik (ingyenes szintű előfizetéssel csak az első két oldal lesz feldolgozva).
+* A képdimenziónak 50 x 50 képpont és 10000 x 10000 képpont közé kell esnie.
+* A PDF-dimenzióknak legfeljebb 17 x 17 hüvelyknek kell lenniük, amely a jogi vagy az A3-as papírméretnek felel meg, és kisebb.
+* A PDF és a TIFF esetében csak az első 200 oldal lesz feldolgozva (ingyenes rétegbeli előfizetéssel csak az első két oldal feldolgozása történik).
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 
-Ez a szolgáltatás az [Online szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)értelmében egy Azure-szolgáltatás előzetes [verziójaként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhető el. Mint minden kognitív szolgáltatás, a Form Recognizer szolgáltatást használó fejlesztőknek is tisztában kell lenniük az ügyféladatokra vonatkozó Microsoft-irányelvekkel. További információért tekintse meg a [Cognitive Services lapot](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a Microsoft Adatvédelmi központban.
+Ezt a szolgáltatást az [online szolgáltatási feltételekben](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)elérhető Azure-szolgáltatás [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verziója kínálja. Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
 ## <a name="next-steps"></a>További lépések
 
-Az [űrlapfelismerő API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)első lépésekhez rövid [útmutatót](quickstarts/curl-train-extract.md) kell végeznie.
+Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.

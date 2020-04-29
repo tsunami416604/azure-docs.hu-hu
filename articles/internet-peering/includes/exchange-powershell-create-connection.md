@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678632"
 ---
-A következő példa bemutatja, hogyan hozhat létre Exchange-kapcsolatot a seattle-i Equinix Internet Exchange-ben. Ha más szolgáltatót és más beállításokat használ, ezt az információt a kérés benyújtásakor helyettesítse.
+Az alábbi példa bemutatja, hogyan hozhat létre Exchange-kapcsolatot a Equinix internetes Exchange-ben Seattle-ben. Ha más szolgáltatót használ, és különböző beállításokkal rendelkezik, akkor a kérés végrehajtásakor cserélje le ezt az információt.
 
-A **PowerShell-parancsmag használatával New-AzPeeringExchangeConnectionObject** powershell-kapcsolat objektumok, amelyek az új társviszony-létesítési kérelem létrehozásához használt.
+A **New-AzPeeringExchangeConnectionObject PowerShell-** parancsmag használatával hozzon létre PowerShell-kapcsolódási objektumokat, amelyeket a rendszer az új egyenrangú kérelem létrehozásához használ majd.
 
-Ez a példa bemutatja, hogyan hozhat létre Exchange-kapcsolatot.
+Ebből a példából megtudhatja, hogyan hozhat létre Exchange-kapcsolatokat.
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Hozzon létre egy másik kapcsolatot arra az esetre, ha redundanciára lenne szüksége az adott társviszony-létesítési helyen.
+Hozzon létre egy másik kapcsolatot arra az esetre, ha redundancia szükséges a megadott egyenrangú helyen.
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-A PowerShell **új Társviszony-létesítési** parancsmagja használható az új Exchange-társviszony-létesítéshez.
+A **New-AzPeering PowerShell-** parancsmag használatával új Exchange-társítás hozható létre.
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Ez a példaválasz azt mutatja, hogy a kérés végrehajtása egy kapcsolat használatával történt.
+Ez a példa azt mutatja, hogy mikor hajtották végre a kérést egy adott kapcsolatban.
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> A Microsoft megkezdi a kért `ConnectionState` társviszony-létesítést, és tükrözi az előrehaladást.
-> A kiépítéssel kapcsolatos lépésekről az [Exchange-társviszony-létesítési forgatókönyvben](../walkthrough-exchange-all.md)talál további információt.
+> A Microsoft elindítja a kért társítás üzembe helyezését, és `ConnectionState` az előrehaladást tükrözi.
+> További információ az üzembe helyezéssel kapcsolatos lépésekről: [Exchange-partneri útmutató](../walkthrough-exchange-all.md).
 
-Ellenőrizheti a kapcsolat állapotát, ahogy az itt látható.
+Az itt látható módon megtekintheti a kapcsolatok állapotát.
 
 ```powershell
 

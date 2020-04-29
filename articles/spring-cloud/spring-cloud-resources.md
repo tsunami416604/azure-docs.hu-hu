@@ -1,27 +1,27 @@
 ---
-title: Erőforrások az Azure Spring Cloud szolgáltatáshoz | Microsoft dokumentumok
-description: Az Azure Spring Cloud erőforráslistája
+title: Az Azure Spring Cloud erőforrásai | Microsoft Docs
+description: Azure Spring Cloud-erőforrások listája
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
 ms.openlocfilehash: 36e9b272bb4648853829364b22881ab8bec1ff70
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733040"
 ---
-# <a name="azure-spring-cloud-developer-resources"></a>Az Azure Spring Cloud fejlesztői erőforrásai
+# <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud fejlesztői erőforrások
 
-Fejlesztőként hasznosnak találhatja a következő Azure Spring Cloud-erőforrásokat:
+Fejlesztőként a következő Azure Spring Cloud-erőforrások hasznosak lehetnek:
 
-* [Azure-útiterv](https://azure.microsoft.com/updates)
+* [Azure-ütemterv](https://azure.microsoft.com/updates)
 * [Gyakori kérdések](spring-cloud-faq.md)
 * [Hibaelhárítási útmutató](spring-cloud-troubleshoot.md)
-* [MSDN Fórum](https://social.msdn.microsoft.com/Forums/home)
-* [A Java Spring Cloud honlapja](https://spring.io/)
-* [Tavaszi keret](https://cloud.spring.io/spring-cloud-azure/)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home)
+* [Java Spring Cloud webhely](https://spring.io/)
+* [Rugós keretrendszer](https://cloud.spring.io/spring-cloud-azure/)
 * [A Spring az Azure-on](https://docs.microsoft.com/azure/developer/java/spring-framework/)
-* [Spring Cloud mikroszolgáltatások architektúrája a Pivotal szerint](https://docs.pivotal.io/spring-cloud-services/1-5/common/index.html)
+* [Spring Cloud Service-architektúra Pivotal](https://docs.pivotal.io/spring-cloud-services/1-5/common/index.html)

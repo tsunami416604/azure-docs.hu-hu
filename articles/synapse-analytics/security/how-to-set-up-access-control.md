@@ -1,6 +1,6 @@
 ---
-title: A Szinapsze-munkaterület védelme (előzetes verzió)
-description: Ez a cikk bemutatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek és az adatokhoz való hozzáférés szabályozásához a Synapse-munkaterületen.
+title: A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek vezérléséhez és a szinapszis munkaterület adataihoz való hozzáféréshez.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -10,165 +10,165 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606003"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>A Szinapsze-munkaterület védelme (előzetes verzió)
+# <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek és az adatokhoz való hozzáférés vezérléséhez. Az alábbi utasításokat követve az Azure Synapse Analytics hozzáférés-vezérlése egyszerűsödik. Csak felhasználókat kell hozzáadnia és eltávolítania a három biztonsági csoport egyikéhez.
+Ez a cikk bemutatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek vezérléséhez és az adateléréshez. Ezeket az utasításokat követve az Azure szinapszis Analytics hozzáférés-vezérlése egyszerűsített. A felhasználókat csak három biztonsági csoport egyikére kell felvennie és eltávolítania.
 
 ## <a name="overview"></a>Áttekintés
 
-A Synapse-munkaterület (előzetes verzió) védelméhez a következő elemek konfigurálásának mintáját kell követnie:
+A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez kövesse az alábbi elemek konfigurálásának mintáját:
 
-- Azure-szerepkörök (például a beépített szerepkörök, például tulajdonos, közreműködő stb.)
-- Szinapszis szerepkörök – ezek a szerepkörök egyediek a Szinapsz, és nem alapulnak Azure-szerepkörök. A következő szerepek közül három létezik:
-  - Szinapszis munkaterület-rendszergazda
+- Azure-szerepkörök (például a beépítettek, mint a tulajdonos, közreműködő stb.)
+- Szinapszis-szerepkörök – ezek a szerepkörök egyediek a szinapszisok számára, és nem az Azure szerepkörein alapulnak. A szerepkörök közül három:
+  - Szinapszis-munkaterület rendszergazdája
   - Szinapszis SQL-rendszergazda
-  - Synapse Spark-rendszergazda
-- Hozzáférés-vezérlés az adatok az Azure Data Lake Storage Gen 2 (ADLSGEN2).
-- Hozzáférés-vezérlés a Synapse SQL és Spark-adatbázisokhoz
+  - Szinapszis Spark-rendszergazda
+- Azure Data Lake Storage Gen 2 (ADLSGEN2) adathozzáférés-vezérlése.
+- A szinapszis SQL és a Spark adatbázisok hozzáférés-vezérlése
 
-## <a name="steps-to-secure-a-synapse-workspace"></a>A Szinapsze-munkaterület védelmének lépései
+## <a name="steps-to-secure-a-synapse-workspace"></a>A szinapszis-munkaterület biztonságossá tételének lépései
 
-Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítése érdekében. Cserélje le őket bármilyen nevet, amelyet választott.
+Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
 |Beállítás | Példaérték | Leírás |
 | :------ | :-------------- | :---------- |
-| **Szinapszis munkaterület** | WS1 |  A Synapse-munkaterület neve. |
-| **ADLSGEN2-fiók** | STG1 (1. sz.) | A munkaterülettel használandó ADLS-fiók. |
-| **Konténer** | CNT1 | Az STG1 tárolója, amelyet a munkaterület alapértelmezés szerint használni fog. |
-| **Active directory bérlője** | contoso | az active directory bérlői nevét.|
+| **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
+| **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
+| **Tároló** | CNT1 | A STG1 azon tárolója, amelyet a munkaterület alapértelmezés szerint fog használni. |
+| **Active Directory-bérlő** | contoso | az Active Directory-bérlő neve.|
 ||||
 
-## <a name="step-1-set-up-security-groups"></a>1. LÉPÉS: Biztonsági csoportok beállítása
+## <a name="step-1-set-up-security-groups"></a>1. lépés: biztonsági csoportok beállítása
 
-Három biztonsági csoport létrehozása és feltöltése a munkaterülethez:
+Hozza létre és töltse fel a munkaterület három biztonsági csoportját:
 
-- **WS1\_WSAdmins** – azoknak a felhasználóknak, akiknek teljes ellenőrzésre van szükségük a munkaterület felett
-- **WS1\_SparkAdmins** – azoknak a felhasználóknak, akiknek teljes körű ellenőrzésre van szükségük a munkaterület Spark-aspektusai felett
-- **WS1\_SQLAdmins** – azoknak a felhasználóknak, akiknek teljes ellenőrzésre van szükségük a munkaterület SQL-aspektusai felett
-- **\_WS1 WSAdmins** hozzáadása a **\_WS1 SQLAdmins szolgáltatáshoz**
-- **\_WS1 WSAdmins** hozzáadása a **\_WS1 SparkAdmins szolgáltatáshoz**
+- **WS1\_WSAdmins** – azon felhasználók számára, akiknek teljes körű vezérlésre van szükségük a munkaterületen
+- **WS1\_SparkAdmins** – azoknak a felhasználóknak, akik a munkaterület Spark-szempontjainak teljes körű vezérlését szeretnék végezni
+- **WS1\_SQLAdmins** – azon felhasználók számára, akiknek teljes körű vezérlésre van SZÜKSÉGük a munkaterület SQL-szempontjai felett
+- **WS1\_-WSAdmins** hozzáadása a **WS1\_SQLAdmins**
+- **WS1\_-WSAdmins** hozzáadása a **WS1\_SparkAdmins**
 
-## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. lépés: A Data Lake Storage Gen2 fiók előkészítése
+## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. lépés: a Data Lake Storage Gen2-fiók előkészítése
 
-Azonosítsa a tárhelyre vonatkozó adatokat:
+A tárterülettel kapcsolatos információk azonosítása:
 
-- A munkaterülethez használandó ADLSGEN2 fiók. Ez a dokumentum STG1-nek hívja.  Az STG1 a munkaterület "elsődleges" tárfiókának számít.
-- A WS1-en belüli tároló, amelyet a Szinapsze-munkaterület alapértelmezés szerint használni fog. Ez a dokumentum CNT1-nek hívja.  Ez a tároló a következőkre szolgál:
-  - A háttéradatfájlok tárolása Spark-táblákhoz
+- A munkaterülethez használni kívánt ADLSGEN2-fiók. Ez a dokumentum meghívja a STG1.  A STG1 a munkaterület "elsődleges" Storage-fiókjának minősül.
+- A WS1 belüli tároló, amelyet a szinapszis-munkaterület alapértelmezés szerint fog használni. Ez a dokumentum meghívja a CNT1.  Ez a tároló a következőhöz használható:
+  - A Spark-táblák biztonsági mentésére szolgáló adatfájlok tárolása
   - Végrehajtási naplók a Spark-feladatokhoz
 
-- Az Azure Portal használatával rendelje hozzá a biztonsági csoportok a következő szerepkörök cnt1
+- A Azure Portal használatával rendelje hozzá a biztonsági csoportokat a következő szerepkörökhöz a CNT1
 
-  - **WS1\_WSAdminok hozzárendelése** a **Storage Blob Data Contributor** szerepkörhöz
-  - **WS1\_SparkAdminok hozzárendelése** a **Storage Blob Data Contributor** szerepkörhöz
-  - **WS1\_SQLAdminok hozzárendelése** a **Storage Blob Data Contributor** szerepkörhöz
+  - **\_WS1-WSAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
+  - **\_WS1-SparkAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
+  - **\_WS1-SQLAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
 
-## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. LÉPÉS: A Szinapszis-munkaterület létrehozása és konfigurálása
+## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. lépés: a szinapszis-munkaterület létrehozása és konfigurálása
 
-Az Azure Portalon hozzon létre egy Synapse-munkaterületet:
+A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 
-- A munkaterület elnevezése WS1
-- Válassza az STG1 lehetőséget a Storage-fiókhoz
-- Válassza a CNT1 lehetőséget a "fájlrendszerként" használt tárolóhoz.
-- Ws1 megnyitása a Synapse Stúdióban
-- Válassza a**Hozzáférés-vezérlés** **kezelése** > lehetőséget, és rendelje hozzá a biztonsági csoportokat a következő Szinapsze szerepkörökhöz.
-  - **WS1\_WSAdminok hozzárendelése** a Synapse-munkaterület rendszergazdáihoz
-  - **WS1\_SparkAdmins hozzárendelése** a Synapse Spark-rendszergazdákhoz
-  - **WS1\_SQLAdminok hozzárendelése** a Synapse SQL-rendszergazdákhoz
+- A munkaterület WS1 neve
+- STG1 kiválasztása a Storage-fiókhoz
+- Válassza a CNT1 lehetőséget a tárolóhoz, amelyet "fájlrendszerként" használ.
+- WS1 megnyitása a szinapszis Studióban
+- Válassza a **kezelés** > **Access Control** a biztonsági csoportok társítása a következő szinapszis-szerepkörökhöz lehetőséget.
+  - **WS1\_-WSAdmins** társítása a szinapszis-munkaterület rendszergazdái számára
+  - **WS1\_-SparkAdmins** kiosztása az szinapszis Spark-rendszergazdáknak
+  - **WS1\_-SQLAdmins** kiosztása a szinapszis SQL-rendszergazdáknak
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. LÉPÉS: A Data Lake Storage Gen2 konfigurálása a Synapse munkaterület számára
+## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. lépés: a Data Lake Storage Gen2 konfigurálása a szinapszis munkaterület általi használatra
 
-A Synapse munkaterületnek hozzá kell férnie az STG1-hez és a CNT1-hez, hogy futófolyamatokat futtathasson és rendszerfeladatokat hajthat végre.
+A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes legyen a folyamatok futtatására és rendszerfeladatok végrehajtására.
 
-- Az Azure-portál megnyitása
+- A Azure Portal megnyitása
 - STG1 megkeresése
-- Navigálás a CNT1-re
-- Győződjön meg arról, hogy a WS1 MSI -je (felügyelt szolgáltatásidentitása) hozzá van-e rendelve az **Azure Blob adatközreműködői** szerepkörhöz a CNT1-en
-  - Ha nem látja hozzárendelve, rendelje hozzá.
-  - Az MSI neve megegyezik a munkaterület nevével. Ebben az esetben lenne &quot;WS1&quot;.
+- Navigáljon a CNT1
+- Győződjön meg arról, hogy a WS1 MSI-fájlja (Managed Service Identity) hozzá van rendelve az **Azure Blob-adatközreműködői** szerepkörhöz a CNT1
+  - Ha nem látja a hozzárendelést, rendelje hozzá.
+  - Az MSI neve megegyezik a munkaterülettel. Ebben az esetben a &quot;WS1&quot;lenne.
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. LÉPÉS: Rendszergazdai hozzáférés konfigurálása SQL-készletekhez
+## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. lépés: rendszergazdai hozzáférés konfigurálása SQL-készletekhez
 
-- Az Azure-portál megnyitása
-- Navigálás a WS1-re
-- A **Beállítások csoportban**kattintson az **SQL Active Directory rendszergazdája** elemre.
-- Kattintson **a Rendszergazda** \_beállítása gombra, és válassza a WS1 SQLAdmins lehetőséget.
+- A Azure Portal megnyitása
+- Navigáljon a WS1
+- A **Beállítások**területen kattintson az **SQL Active Directory-rendszergazda** lehetőségre.
+- Kattintson a **rendszergazda beállítása** elemre\_, és válassza a WS1 SQLAdmins
 
-## <a name="step-6-maintaining-access-control"></a>6. LÉPÉS: Hozzáférés-vezérlés fenntartása
+## <a name="step-6-maintaining-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
 
-A konfiguráció befejeződött.
+A konfigurálás befejeződött.
 
-Most a felhasználók hozzáférésének kezeléséhez hozzáadhat és eltávolíthat felhasználókat a három biztonsági csoporthoz.
+A felhasználók hozzáférésének kezeléséhez mostantól felhasználókat adhat hozzá és távolíthat el a három biztonsági csoporthoz.
 
-Bár manuálisan rendelhet felhasználókat a Szinapszszerepkörökhöz, ha igen, akkor nem fogja következetesen konfigurálni a dolgokat. Ehelyett csak felhasználókat vegyen fel vagy távolítson el a biztonsági csoportokhoz.
+Bár a felhasználók manuálisan is hozzárendelhetők a szinapszis-szerepkörökhöz, ha igen, az nem konfigurálja a dolgokat folyamatosan. Ehelyett csak felhasználókat adhat hozzá vagy távolíthat el a biztonsági csoportokhoz.
 
-## <a name="step-7-verify-access-for-users-in-the-roles"></a>7. LÉPÉS: Hozzáférés ellenőrzése a szerepkörökben lévő felhasználók számára
+## <a name="step-7-verify-access-for-users-in-the-roles"></a>7. lépés: a szerepkörökhöz tartozó felhasználók hozzáférésének ellenőrzése
 
-Az egyes szerepkörekben lévő felhasználóknak a következő lépéseket kell végrehajtaniuk:
+Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kell végrehajtaniuk:
 
 |   | Lépés | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- | --- |
-| 1 | Parkettafájl feltöltése a CNT1 programba | IGEN | IGEN | IGEN |
-| 2 | A parkettafájl olvasása igény szerinti SQL használatával | IGEN | NO | IGEN |
+| 1 | Parquet-fájl feltöltése a CNT1-be | IGEN | IGEN | IGEN |
+| 2 | A Parquet-fájl olvasása igény szerint, SQL használatával | IGEN | NO | IGEN |
 | 3 | Spark-készlet létrehozása | IGEN [1] | IGEN [1] | NO  |
-| 4 | A füzettel rendelkező parkettafájl beolvasása | IGEN | IGEN | NO |
-| 5 | Folyamat létrehozása a jegyzetfüzetből, és a folyamat futtatása most | IGEN | NO | NO |
-| 6 | SQL-készlet létrehozása és SQL-parancsfájl, például &quot;SELECT 1 futtatása&quot; | IGEN [1] | NO | IGEN[1] |
+| 4 | A Parquet-fájl beolvasása jegyzetfüzettel | IGEN | IGEN | NO |
+| 5 | Hozzon létre egy folyamatot a jegyzetfüzetből, és indítsa el a folyamatot most | IGEN | NO | NO |
+| 6 | Hozzon létre egy SQL-készletet, és futtasson egy SQL-parancsfájlt, például válassza az &quot;1 elemet&quot; | IGEN [1] | NO | IGEN [1] |
 
 > [!NOTE]
-> [1] SQL- vagy Spark-készletek létrehozásához a felhasználónak legalább közreműködői szerepkörrel kell rendelkeznie a Szinapsze-munkaterületen.
+> [1] SQL-vagy Spark-készletek létrehozásához a felhasználónak legalább közreműködő szerepkörrel kell rendelkeznie a szinapszis munkaterületen.
 > [!TIP]
 >
-> - A szerepkörtől függően egyes lépések szándékosan nem engedélyezettek.
-> - Ne feledje, hogy egyes feladatok sikertelenek lehetnek, ha a biztonság nincs teljesen konfigurálva. Ezeket a feladatokat a táblázat ban feljegyezzük.
+> - A szerepkörtől függően bizonyos lépések szándékosan nem engedélyezettek.
+> - Ne feledje, hogy bizonyos feladatok sikertelenek lehetnek, ha a biztonság nem volt teljesen konfigurálva. Ezeket a feladatokat a táblázatban kell feltüntetni.
 
-## <a name="step-8-network-security"></a>8. LÉPÉS: Hálózati biztonság
+## <a name="step-8-network-security"></a>8. lépés: hálózati biztonság
 
-A munkaterülettűzfal, a virtuális hálózat és a [Privát kapcsolat konfigurálása.](../../sql-database/sql-database-private-endpoint-overview.md)
+A munkaterület tűzfalának, a virtuális hálózatnak és a [privát kapcsolatnak](../../sql-database/sql-database-private-endpoint-overview.md)a konfigurálásához.
 
-## <a name="step-9-completion"></a>9. LÉPÉS: Befejezés
+## <a name="step-9-completion"></a>9. lépés: Befejezés
 
-A munkaterület most már teljesen konfigurálva és biztonságos.
+A munkaterület mostantól teljesen konfigurálva van és biztonságos.
 
-## <a name="how-roles-interact-with-synapse-studio"></a>Hogyan hatnak a szerepkörök a Synapse Studio-ra?
+## <a name="how-roles-interact-with-synapse-studio"></a>A szerepkörök interakciója a szinapszis Studióval
 
-A Synapse Studio a felhasználói szerepkörök alapján eltérően fog játszani. Egyes elemek rejtettek vagy le vannak tiltva, ha a felhasználó nincs hozzárendelve a megfelelő hozzáférést adó szerepkörökhöz. Az alábbi táblázat a Synapse Studio-ra gyakorolt hatást foglalja össze.
+A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog működni. Előfordulhat, hogy egyes elemek el lesznek rejtve vagy le vannak tiltva, ha a felhasználó nincs olyan szerepkörhöz rendelve, amely megfelelő hozzáférést biztosít. A következő táblázat összefoglalja a szinapszis Studióra gyakorolt hatást.
 
 | Tevékenység | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- |
-| Nyitott Synapse Studio | IGEN | IGEN | IGEN |
-| Otthoni központ megtekintése | IGEN | IGEN | IGEN |
+| A szinapszis Studio megnyitása | IGEN | IGEN | IGEN |
+| Kezdőlap hub megtekintése | IGEN | IGEN | IGEN |
 | Adatközpont megtekintése | IGEN | IGEN | IGEN |
-| Data Hub / Lásd csatolt ADLSGen2 fiókok és tárolók | IGEN [1] | IGEN[1] | IGEN[1] |
-| Data Hub / Lásd adatbázisok | IGEN | IGEN | IGEN |
-| Data Hub / Objektumok megtekintése adatbázisokban | IGEN | IGEN | IGEN |
-| Data Hub / Access-adatok SQL-készlet-adatbázisokban | IGEN   | NO   | IGEN   |
-| Data Hub / Access adatok az SQL igény szerinti adatbázisaiban | IGEN [2]  | NO  | IGEN [2]  |
-| Data Hub / Access-adatok a Spark-adatbázisokban | IGEN [2] | IGEN [2] | IGEN [2] |
-| A Fejlesztés központ használata | IGEN | IGEN | IGEN |
-| Hub/ author SQL-parancsfájlok fejlesztése | IGEN | NO | IGEN |
-| Hub/ author Spark-feladatdefiníciók fejlesztése | IGEN | IGEN | NO |
-| Hub / author notebookok fejlesztése | IGEN | IGEN | NO |
-| Hub/ author dataflows fejlesztése | IGEN | NO | NO |
-| Az Orchestrate hub használata | IGEN | IGEN | IGEN |
-| Orchestrate hub / folyamatok használata | IGEN | NO | NO |
-| A Kezelő központ használata | IGEN | IGEN | IGEN |
-| Hub/ SQL-készletek kezelése | IGEN | NO | IGEN |
-| Hub/ Spark-készletek kezelése | IGEN | IGEN | NO |
-| Hub kezelése / Eseményindítók | IGEN | NO | NO |
-| Hub/ Csatolt szolgáltatások kezelése | IGEN | IGEN | IGEN |
-| Hub/Access Control kezelése (felhasználók hozzárendelése a Szinapszis munkaterületi szerepkörökhöz) | IGEN | NO | NO |
-| Hub/ Integrációs runtimes kezelése | IGEN | IGEN | IGEN |
+| Adatközpont/lásd a társított ADLSGen2-fiókokat és-tárolókat | IGEN [1] | IGEN [1] | IGEN [1] |
+| Adatközpont/adatbázis-információk | IGEN | IGEN | IGEN |
+| Adatközpont/objektumok megjelenítése az adatbázisokban | IGEN | IGEN | IGEN |
+| Adatközpont/hozzáférési információ az SQL-készlet adatbázisaiban | IGEN   | NO   | IGEN   |
+| Adatközpont/hozzáférés az SQL igény szerinti adatbázisaihoz | IGEN [2]  | NO  | IGEN [2]  |
+| Adatközpont/hozzáférési információ a Spark-adatbázisokban | IGEN [2] | IGEN [2] | IGEN [2] |
+| A fejlesztés központ használata | IGEN | IGEN | IGEN |
+| Hub/Author SQL-parancsfájlok fejlesztése | IGEN | NO | IGEN |
+| Hub/Author Spark-feladatdefiníciók fejlesztése | IGEN | IGEN | NO |
+| Hub/Author notebookok fejlesztése | IGEN | IGEN | NO |
+| Hub/Author adatfolyamok fejlesztése | IGEN | NO | NO |
+| A hangszerelő központ használata | IGEN | IGEN | IGEN |
+| Hubok összehangolása/folyamatok használata | IGEN | NO | NO |
+| A Manage hub használata | IGEN | IGEN | IGEN |
+| Hub/SQL-készletek kezelése | IGEN | NO | IGEN |
+| Hub/Spark-készletek kezelése | IGEN | IGEN | NO |
+| Hub/triggerek kezelése | IGEN | NO | NO |
+| Hub/társított szolgáltatások kezelése | IGEN | IGEN | IGEN |
+| Hub/Access Control kezelése (felhasználók társítása a szinapszis-munkaterület szerepköreihez) | IGEN | NO | NO |
+| Hub/Integration Runtimes kezelése | IGEN | IGEN | IGEN |
 
 > [!NOTE]
-> [1] A tárolókban lévő adatokhoz való hozzáférés az ADLSGen2 [2] SQL OD-tábláinak hozzáférés-vezérlésétől függ, és a Spark-táblák az ADLSGen2-ben tárolják az adataikat, és a hozzáféréshez megfelelő engedélyek szükségesek az ADLSGen2-hez.
+> [1] a tárolókban lévő adatokhoz való hozzáférés a ADLSGen2 [2] SQL OD-táblák és a Spark-táblázatok hozzáférés-vezérlésének függvénye, amely a ADLSGen2 és a hozzáféréshez szükséges engedélyeket tárolja a ADLSGen2.
 
 ## <a name="next-steps"></a>További lépések
 
-[Szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
+Szinapszis- [munkaterület](../quickstart-create-workspace.md) létrehozása

@@ -1,7 +1,7 @@
 ---
-title: Hogyan kezeljük a SameSite cookie-változásokat a Chrome böngészőben | Azure
+title: A SameSite-cookie-változások kezelése a Chrome böngészőben | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan kezelhető a SameSite cookie-k változásai a Chrome böngészőben.
+description: Ismerje meg, hogyan kezelheti a SameSite-cookie-módosításokat a Chrome böngészőben.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,78 +14,78 @@ ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534601"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookie-k változásainak kezelése a Chrome böngészőben
 
 ## <a name="what-is-samesite"></a>Mi az a SameSite?
 
-`SameSite`egy olyan tulajdonság, amely beállítható a HTTP cookie-kban, hogy megakadályozza a webhelyek közötti kérelem hamisítás (CSRF) támadásokat a webes alkalmazásokban:
+`SameSite`a egy olyan tulajdonság, amely HTTP-cookie-kon állítható be, hogy megakadályozza a helyek közötti kérelmek hamisításának (CSRF) támadásait a webalkalmazásokban:
 
-- Ha `SameSite` a **rendszer Lax,** a cookie-t küldi kérelmek ugyanazon a helyszínen, és a GET kérelmek más oldalakon. Nem küldi el a GET-kérelmek, amelyek domainek közötti.
-- A **Strict** értéke biztosítja, hogy a cookie-kat csak ugyanazon a webhelyen küldje el a rendszer.
+- Ha `SameSite` a értéke **LAX**, a cookie-t a rendszer ugyanazon a helyen és a más helyekről érkező kérésekre küldött kérelmekben továbbítja. A rendszer nem fogadja el a tartományok közötti GET kérésekben.
+- A **szigorú** érték biztosítja, hogy a cookie-t csak ugyanazon a helyen belül küldje el a rendszer a kérelmekben.
 
-Alapértelmezés szerint `SameSite` az érték nincs beállítva a böngészőkben, és ezért nincsenek korlátozások a kérésekben küldött cookie-kra. Egy alkalmazásnak a CSRF-védelemre való jelentkezést a **Lax** vagy **a Strict** beállításával kell engedélyeznie.
+Alapértelmezés szerint az érték `SameSite` nincs beállítva a böngészőkben, ezért a rendszer nem korlátozza a kérésekben a cookie-k küldésére vonatkozó korlátozásokat. Egy alkalmazásnak a CSRF-védelemre kell kattintania a **LAX** vagy **szigorú** beállításával.
 
-## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite változások és hatása a hitelesítésre
+## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite változások és a hitelesítés hatása
 
-A [SameSite szabványainak](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) legújabb frissítései az alkalmazások védelmét `SameSite` javasolják azáltal, hogy az alapértelmezett viselkedést, ha nincs értéke lax. Ez a megoldás azt jelenti, hogy a cookie-k at a HTTP-kérések korlátozzák, kivéve a más webhelyekről származó GET-t. Ezenkívül a **Nincs** érték érték kerül bevezetésre az elküldött cookie-kra vonatkozó korlátozások megszüntetéséhez. Ezek a frissítések hamarosan megjelennek a Chrome böngésző közelgő verziójában.
+[A SameSite vonatkozó szabványok legújabb frissítései](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) az alkalmazások védelmének biztosítását teszik elérhetővé azáltal `SameSite` , hogy az alapértelmezett viselkedés az, ha nincs megadva érték a LAX értékre. Ez a megoldás azt jelenti, hogy a cookie-k a HTTP-kérelmekre korlátozottak lesznek, kivéve a más helyekről történő letöltést. Emellett a **none** érték nem lesz bevezetve az elküldött cookie-k korlátozásának eltávolításához. Ezek a frissítések hamarosan a Chrome böngésző egy későbbi verziójában jelennek meg.
 
-Amikor a webalkalmazások a "form_post" válaszmód használatával hitelesítik magukat a Microsoft Identity platformmal, a bejelentkezési kiszolgáló http-post használatával válaszol az alkalmazásra a tokenek vagy az auth kód elküldéséhez. Mivel ez a kérés egy domainek közötti kérés `login.microsoftonline.com` `https://contoso.com/auth`(például a tartományodból ), az alkalmazás által beállított cookie-k most már a Chrome új szabályai alá tartoznak. A cookie-kat, amelyeket használni kell a több webhely forgatókönyvek cookie-kat, amelyek az *állam* és *a nonce* értékeket, amelyek szintén küldött a bejelentkezési kérelmet. Vannak más cookie-k eldobott Az Azure AD a munkamenet megtartása.
+Ha a webalkalmazások a "form_post" válasz mód használatával hitelesítik a Microsoft Identity platformot, a bejelentkezési kiszolgáló egy HTTP-POST használatával válaszol az alkalmazásra, hogy elküldje a jogkivonatokat vagy az hitelesítési kódot. Mivel ez a kérelem egy tartományok közötti kérelem ( `login.microsoftonline.com` a tartományból `https://contoso.com/auth`), az alkalmazás által beállított cookie-k már a Chrome új szabályai alá tartoznak. A helyek közötti forgatókönyvekben használandó cookie-k az *állapotot* *és az* egyszer használatos értékeket tartalmazó cookie-k, amelyeket a rendszer a bejelentkezési kérelemben is elküld. Az Azure AD más cookie-kat is eldobott a munkamenet tárolására.
 
-Ha nem frissíti a webalkalmazásokat, ez az új viselkedés hitelesítési hibákat eredményez.
+Ha nem frissíti a webalkalmazásokat, ez az új viselkedés a hitelesítési hibákhoz vezet.
 
-## <a name="mitigation-and-samples"></a>Mérséklés és minták
+## <a name="mitigation-and-samples"></a>Enyhítés és minták
 
-A hitelesítési hibák leküzdése érdekében a Microsoft identity `SameSite` platformmal hitelesítő webalkalmazások beállíthatják a tulajdont a tartományok közötti helyzetekben használt `None` cookie-khoz, amikor a Chrome böngészőben futnak.
-Más böngészők [(lásd itt](https://www.chromium.org/updates/same-site/incompatible-clients) a teljes listát) `SameSite` követik a korábbi `SameSite=None` viselkedését, és nem tartalmazza a cookie-kat, ha be van állítva.
-Ezért a több böngészőhitelesítés támogatásához a webalkalmazásoknak `SameSite` `None` csak a Chrome-on kell beállítaniuk az értéket, és üresen kell hagyniuk az értéket más böngészőkben.
+A hitelesítési hibák elhárítása érdekében a Microsoft Identity platformmal hitelesítő webalkalmazások megadhatják `SameSite` a `None` tulajdonságot a tartományok közötti forgatókönyvekben használt cookie-k számára a Chrome böngészőben történő futtatáskor.
+Más böngészők [(lásd a](https://www.chromium.org/updates/same-site/incompatible-clients) teljes listát) kövesse a korábbi viselkedését, `SameSite` és ha `SameSite=None` be van állítva, a cookie-k nem tartalmazzák.
+Ezért a több böngészőből álló webalkalmazások hitelesítésének támogatásához `SameSite` `None` csak a Chrome-ra kell beállítani az értéket, és más böngészőkben üresen kell hagyni az értéket.
 
-Ezt a megközelítést az alábbi kódmintáink mutatják be.
+Ezt a módszert az alábbi kódrészletek szemléltetik.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Az alábbi táblázat bemutatja a lekéréses kérelmeket, amelyek a SameSite változások körül működtek a ASP.NET és ASP.NET Core mintákban.
+Az alábbi táblázat azokat a lekéréses kérelmeket mutatja be, amelyek a SameSite megváltoztak a ASP.NET és a ASP.NET Core mintákban.
 
 | Sample | Lekéréses kérelem |
 | ------ | ------------ |
-|  [ASP.NET Core webalkalmazás növekményes oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Ugyanaz a webhely cookie fix #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ASP.NET MVC webalkalmazás mintája](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Ugyanaz a webhely cookie fix #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
-|  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Ugyanaz az oldal cookie fix #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
+|  [ASP.NET Core Web App növekményes oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Ugyanazon a helyen lévő cookie-javítás #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ASP.NET MVC webalkalmazás minta](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Ugyanazon a helyen lévő cookie-javítás #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [Active-Directory-DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Ugyanazon a helyen lévő cookie-javítás #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
-A SameSite cookie-k ASP.NET és ASP.NET Core-ban való kezelésével kapcsolatos részletekért lásd még:
+a SameSite-cookie-k ASP.NET és ASP.NET Core való kezelésével kapcsolatos részletekért lásd még:
 
-- [SameSite cookie-k ASP.NET Core.](https://docs.microsoft.com/aspnet/core/security/samesite)
-- [ASP.NET Blog a SameSite kérdés](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
+- [SameSite-cookie-k használata ASP.net Coreban](https://docs.microsoft.com/aspnet/core/security/samesite) .
+- [ASP.NET blog a SameSite-probléma megoldásához](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)
 
 | Sample |
 | ------ |
-|  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
+|  [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Sample | Lekéréses kérelem |
 | ------ | ------------ |
-|  [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Ugyanaz az oldal cookie fix #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
-|  [ms-identity-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Ugyanaz a webhely cookie fix #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
+|  [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Ugyanazon a helyen lévő cookie-javítás #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
+|  [MS-Identity-Java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Ugyanazon a helyen lévő cookie-javítás #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a SameSite és a webalkalmazás forgatókönyvéről:
+További információ a SameSite és a webalkalmazási forgatókönyvről:
 
 > [!div class="nextstepaction"]
-> [A Google Chrome GYIK ugyanazon webhelyen](https://www.chromium.org/updates/same-site/faq)
+> [Google Chrome GYIK a SameSite-on](https://www.chromium.org/updates/same-site/faq)
 
 > [!div class="nextstepaction"]
-> [Chromium SameSite oldal](https://www.chromium.org/updates/same-site)
+> [Króm SameSite lapja](https://www.chromium.org/updates/same-site)
 
 > [!div class="nextstepaction"]
-> [Eset: A felhasználókban bejelentkező webalkalmazás](scenario-web-app-sign-user-overview.md)
+> [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](scenario-web-app-sign-user-overview.md)

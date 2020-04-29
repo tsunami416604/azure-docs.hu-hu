@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple-től – A 2.
-description: Ez a témakör azt ismerteti, hogy miként állítható be 2.
+title: Azure VMware-megoldás CloudSimple – 2. rétegbeli hálózat kinyújtása a saját felhőbe
+description: Útmutató a 2. rétegbeli VPN beállításához a NSX-T egy CloudSimple privát felhőben és egy helyszíni önálló NSX Edge-ügyfélen
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -9,173 +9,173 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81602688"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
-Ebben az útmutatóban megtudhatja, hogyan használhatja a Layer 2 VPN -t (L2VPN) a Layer 2 hálózat nyújtásához a helyszíni környezetből a CloudSimple private cloud-ra. Ez a megoldás lehetővé teszi a helyszíni VMware-környezetben futó számítási feladatok áttelepítését az Azure magánfelhőbe ugyanazon az alhálózati címterületen belül anélkül, hogy újra el kellene osztania a számítási feladatokat.
+Ebből az útmutatóból megtudhatja, hogyan használható a 2. rétegbeli VPN (L2VPN) a 2. rétegbeli hálózat kiépítéséhez a helyszíni környezetből a CloudSimple saját felhőbe. Ez a megoldás lehetővé teszi a helyszíni VMware-környezetben futó számítási feladatok áttelepítését az Azure-beli privát felhőbe ugyanazon az alhálózaton belül, anélkül, hogy újra kellene telepíteni a munkaterheléseket.
 
-L2VPN alapú nyújtása Layer 2 hálózatok működhet, vagy anélkül NSX-alapú hálózatok a helyszíni VMware környezetben. Ha nem rendelkezik NSX-alapú hálózatokkal a helyszíni számítási feladatokhoz, használhat önálló NSX Edge Services Gateway-t.
+A 2. rétegbeli hálózatok L2VPN-alapú nyújtásával a helyszíni VMware-környezet NSX-alapú hálózatokkal vagy anélkül is működhet. Ha nem rendelkezik NSX-alapú hálózatokkal a helyszíni számítási feladatokhoz, használhat egy önálló NSX Edge Services-átjárót.
 
 > [!NOTE]
-> Ez az útmutató ismerteti a forgatókönyvet, ahol a helyszíni és a magánfelhő-adatközpontok kapcsolódnak a helyek közötti VPN-en keresztül.
+> Ez az útmutató azt a forgatókönyvet ismerteti, amelyben a helyszíni és a privát felhőalapú adatközpontok helyek közötti VPN-kapcsolaton keresztül csatlakoznak.
 
 ## <a name="deployment-scenario"></a>Központi telepítési forgatókönyv
 
-A helyszíni hálózat L2VPN használatával történő nyújtásához konfigurálnia kell egy L2VPN-kiszolgálót (cél NSX-T Tier0 útválasztó) és egy L2VPN ügyfelet (forrás önálló ügyfél).  
+A helyszíni hálózat L2VPN használatával történő kiépítéséhez konfigurálnia kell egy L2VPN-kiszolgálót (cél NSX-T Tier0 útválasztó) és egy L2VPN-ügyfelet (forrás önálló ügyfél).  
 
-Ebben a telepítési forgatókönyvben a privát felhő a helyszíni környezethez csatlakozik egy helyek közötti VPN-alagúton keresztül, amely lehetővé teszi a helyszíni felügyelet és a vMotion alhálózatok számára a privát felhőfelügyeleti és a vMotion-alhálózatokkal való kommunikációt. Ez az elrendezés szükséges cross vCenter vMotion (xVC-vMotion). Az NSX-T Tier0 útválasztó l2VPN-kiszolgálóként van telepítve a magánfelhőben.
+Ebben az üzembe helyezési forgatókönyvben a privát felhő egy helyek közötti VPN-alagúton keresztül csatlakozik a helyszíni környezethez, amely lehetővé teszi a helyszíni felügyeleti és vMotion alhálózatok számára, hogy kommunikáljanak a saját felhőalapú felügyeleti és vMotion alhálózatokkal. Ez a megoldás a vCenter vMotion (xVC-vMotion) esetében szükséges. A NSX-T Tier0 útválasztó L2VPN-kiszolgálóként van telepítve a privát felhőben.
 
-Az önálló NSX Edge l2VPN-ügyfélként van telepítve a helyszíni környezetben, majd párosítva van az L2VPN-kiszolgálóval. A GRE-alagút végpont mindkét oldalon létrejön, és úgy van beállítva, hogy "kinyújtja" a helyszíni Layer 2 hálózatot a magánfelhőhöz. Ez a konfiguráció az alábbi ábrán látható.
+Az önálló NSX Edge üzembe helyezése a helyszíni környezetben L2VPN-ügyfélként történik, és ezt követően a L2VPN-kiszolgálóval párosítva. A GRE-alagút végpontja mindkét oldalon létrejön, és úgy van konfigurálva, hogy "stretch" értékűre állítsa a helyszíni 2. rétegbeli hálózatot a saját felhőbe. Ezt a konfigurációt az alábbi ábra mutatja be.
 
 ![Központi telepítési forgatókönyv](media/l2vpn-deployment-scenario.png)
 
-Az L2 VPN használatával történő áttelepítésről a [Virtuális magánhálózatok](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) című témakörben olvashat bővebben a VMware dokumentációjában.
+Az L2 VPN használatával történő áttelepítéssel kapcsolatos további tudnivalókért tekintse meg a VMware dokumentációjában található [virtuális](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) magánhálózatok című témakört.
 
 ## <a name="prerequisites-for-deploying-the-solution"></a>A megoldás üzembe helyezésének előfeltételei
 
-A megoldás telepítése és konfigurálása előtt ellenőrizze, hogy az alábbiak vannak-e érvényben:
+A megoldás telepítése és konfigurálása előtt győződjön meg arról, hogy a következők vannak érvényben:
 
-* A helyszíni vSphere verzió 6.7U1+ vagy 6.5P03+.
-* A helyszíni vSphere licenc az Enterprise Plus szintjén van (vSphere distributed switch esetén).
-* Azonosítsa a réteg 2-es hálózatának a privát felhőhöz nyújtandó munkaterhelését.
-* Azonosítsa a Layer 2 hálózatot a helyszíni környezetben az L2VPN-ügyfélberendezés üzembe helyezéséhez.
-* [A magánfelhő már létrejött.](create-private-cloud.md)
-* Az önálló NSX-T Edge készülék verziója kompatibilis a privát felhőkörnyezetben használt NSX-T Manager verzióval (NSX-T 2.3.0).
-* A helyszíni vCenterben létrehozott egy törzsport-csoport, amelyengedélyezve van a hamisított átvitelek engedélyezésével.
-* Nyilvános IP-cím van fenntartva az NSX-T önálló ügyfél uplink IP-címéhez, és 1:1 NAT van érvényben a két cím közötti fordításhoz.
-* A DNS-továbbítás a helyszíni DNS-kiszolgálókon van beállítva, hogy a az.cloudsimple.io tartomány a magánfelhő DNS-kiszolgálóira mutasson.
-* RtT késés kisebb vagy egyenlő, mint 150 ms, ahogy a vMotion dolgozni a két helyen.
+* A helyszíni vSphere verziója 6,7 U1 + vagy 6.5 P03 +.
+* A helyszíni vSphere-licenc az Enterprise Plus (vSphere Distributed switch) szintjén érhető el.
+* Azonosítsa a munkaterhelési réteg 2 hálózatát, amelyet a saját felhőbe kíván nyújtani.
+* Azonosítson egy 2. rétegbeli hálózatot a helyszíni környezetben a L2VPN-ügyfél üzembe helyezéséhez.
+* [Már létrejött egy privát felhő](create-private-cloud.md).
+* Az önálló NSX-T Edge készülék verziója kompatibilis a saját felhőalapú környezetében használt NSX-T Manager-verzióval (NSX-T 2.3.0).
+* A rendszer létrehozta a helyszíni vCenter a hamis továbbítások engedélyezése után.
+* Egy nyilvános IP-cím van fenntartva a NSX-T önálló ügyfél kimenő IP-címéhez, és 1:1 NAT van érvényben a két cím közötti fordításhoz.
+* A DNS-továbbítás beállítása a az.cloudsimple.io tartományhoz tartozó helyszíni DNS-kiszolgálókon a privát Felhőbeli DNS-kiszolgálókra mutat.
+* A RTT késése 150 MS-nál kisebb vagy azzal egyenlő, ahogy az a két helyen való működéshez szükséges vMotion.
 
 ## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
 
-Az alábbi táblázat a támogatott vSphere-verziókat és hálózati adaptertípusokat sorolja fel.  
+A következő táblázat a támogatott vSphere-verziókat és hálózati adapterek típusait sorolja fel.  
 
-| vSphere verzió | Forrás vSwitch típusa | Virtuális NIC-illesztőprogram | Cél vSwitch típusa | Támogatott? |
+| vSphere verziója | Forrás vSwitch típusa | Virtuális hálózati adapter illesztőprogramja | Cél vSwitch típusa | Támogatott? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Összes | Dvs | Összes | Dvs | Igen |
-| vSphere 6.7UI vagy újabb, 6.5P03 vagy magasabb | Dvs | VMXNET3 | N-VD-k | Igen |
-| vSphere 6.7UI vagy újabb, 6.5P03 vagy magasabb | Dvs | E1000 | N-VD-k | [VWware nem támogatott](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI vagy 6.5P03, NSX-V vagy NSX-T2.2, 6.5P03 vagy újabb verziók | Összes | Összes | N-VD-k | [VWware nem támogatott](https://kb.vmware.com/s/article/56991) |
+| Összes | DVS | Összes | DVS | Igen |
+| vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | VMXNET3 | N-VDS | Igen |
+| vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | E1000 | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI vagy 6.5 P03, NSX-V vagy Versions, NSX-T 2.2, 6.5 P03 vagy újabb verziók | Összes | Összes | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
 
-A VMware NSX-T 2.3 kiadástól:
+A VMware NSX-T 2,3 kiadástól kezdve:
 
-* A logikai kapcsoló a Private Cloud oldalon, amely a helyszíni L2VPN felett nem irányítható egyszerre. A kifeszített logikai kapcsoló nem csatlakoztatható logikai útválasztóhoz.
-* Az L2VPN és az útvonalalapú IPSEC VPN-ek csak API-hívások használatával konfigurálhatók.
+* A saját Felhőbeli oldalon a helyszíni L2VPN-re mutató logikai kapcsoló nem irányítható egyszerre. A kifeszített logikai kapcsoló nem csatlakoztatható logikai útválasztóhoz.
+* A L2VPN és az Útválasztás-alapú IPSEC VPN-ek csak API-hívásokkal konfigurálhatók.
 
-További információt a [Virtuális magánhálózatok](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) a VMware dokumentációjában talál.
+További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware dokumentáció.
 
-### <a name="sample-l2-vpn-deployment-addressing"></a>Minta L2 VPN-telepítés címzése
+### <a name="sample-l2-vpn-deployment-addressing"></a>Példa L2 VPN üzembe helyezési címzésre
 
-### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Helyszíni hálózat, ahol az önálló ESG (L2 VPN-ügyfél) telepítve van
+### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Helyszíni hálózat, amelyben az önálló ESG TANULMÁNYA (L2 VPN-ügyfél) telepítve van
 
 | **Elem** | **Érték** |
 |------------|-----------------|
 | Hálózati név | MGMT_NET_VLAN469 |
-| Vlan | 469 |
-| Cidr| 10.250.0.0/24 |
-| Önálló Edge készülék IP-címe | 10.250.0.111 |
-| Önálló Edge készülék NAT IP-címe | 192.227.85.167 |
+| VLAN | 469 |
+| CIDR| 10.250.0.0/24 |
+| Önálló peremhálózati berendezés IP-címe | 10.250.0.111 |
+| Önálló peremhálózati berendezés NAT IP-címe | 192.227.85.167 |
 
-### <a name="on-premises-network-to-be-stretched"></a>A helyszíni hálózat kinyújtandó
+### <a name="on-premises-network-to-be-stretched"></a>A helyszíni hálózat kifeszíthető
 
 | **Elem** | **Érték** |
 |------------|-----------------|
-| Vlan | 472 |
-| Cidr| 10.250.3.0/24 |
+| VLAN | 472 |
+| CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Privát felhőalapú IP-séma Az NSX-T Tier0 útválasztóhoz (L2 VPN-szolgáltatás)
+### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Saját felhőalapú IP-séma a NSX-T Tier0-útválasztóhoz (L2 VPN Serve)
 
 | **Elem** | **Érték** |
 |------------|-----------------|
 | Visszacsatolási felület | 192.168.254.254/32 |
-| Alagút kapcsolódási pontja | 5.5.5.1/29 |
-| Logikai kapcsoló (feszített) | Stretch_LS |
-| Visszacsatolási illesztő (NAT IP-cím) | 104.40.21.81 |
+| Bújtatási interfész | 5.5.5.1/29 |
+| Logikai kapcsoló (kifeszített) | Stretch_LS |
+| Visszacsatolási felület (NAT IP-címe) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>A magánfelhő-hálózat leképezése a kifeszített hálózatra
+### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>A kifeszített hálózathoz hozzárendelni kívánt privát felhőalapú hálózat
 
 | **Elem** | **Érték** |
 |------------|-----------------|
-| Vlan | 712 |
-| Cidr| 10.200.15.0/24 |
+| VLAN | 712 |
+| CIDR| 10.200.15.0/24 |
 
-## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Az L2VPN-hez szükséges logikai útválasztó-azonosító beolvasása
+## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>A L2VPN számára szükséges logikai útválasztó AZONOSÍTÓjának beolvasása
 
-A következő lépések bemutatják, hogyan lehet lekérni az IPsec és l2VPN szolgáltatások 0. A logikai-útválasztó azonosítója később szükséges az L2VPN megvalósításakor.
+A következő lépések bemutatják, hogyan lehet beolvasni a Tier0 DR logikai útválasztó példányának logikai útválasztó-AZONOSÍTÓját az IPsec és a L2VPN szolgáltatáshoz. A logikai útválasztó AZONOSÍTÓját később kell végrehajtani a L2VPN megvalósításakor.
 
-1. Jelentkezzen be az NSX-T `https://*nsx-t-manager-ip-address*` kezelőbe, és válassza a **Hálózati** > **útválasztók** > **szolgáltató-LR** > **áttekintése lehetőséget.** **Magas rendelkezésre állás módban**válassza az **Aktív-Készenlét**lehetőséget. Ez a művelet megnyit egy előugró ablakot, amely azt az edge virtuális gépet jeleníti meg, amelyen a Tier0 útválasztó jelenleg aktív.
+1. Jelentkezzen be a NSX-T `https://*nsx-t-manager-ip-address*` Managerbe, és válassza a **hálózati** > **útválasztók** > **szolgáltatója – LR** > **Áttekintés**elemet. **Magas rendelkezésre állású mód**esetén válassza az **aktív-készenlét**lehetőséget. Ezzel a művelettel megnyílik egy előugró ablak, amely megjeleníti azt a peremhálózati virtuális gépet, amelyen a Tier0-útválasztó éppen aktív.
 
-    ![Aktív készenléti állapot kiválasztása](media/l2vpn-fetch01.png)
+    ![Aktív – készenléti állapot kiválasztása](media/l2vpn-fetch01.png)
 
-2. Válassza **a Szövetcsomópontok** > **szélei** > **lehetőséget.** Jegyezze fel az előző lépésben azonosított aktív edge virtuális gép (Edge VM1) felügyeleti IP-címét.
+2. Válassza ki a **háló** > **csomópontjainak** > **szegélyét**. Jegyezze fel az előző lépésben azonosított aktív peremhálózati virtuális gép (Edge-VM1) felügyeleti IP-címét.
 
-    ![Megjegyzéskezelés IP-címe](media/l2vpn-fetch02.png)
+    ![Megjegyzés: felügyeleti IP-cím](media/l2vpn-fetch02.png)
 
-3. Nyisson meg egy SSH-munkamenetet az Edge virtuális gép felügyeleti IP-címéhez. Futtassa a ```get logical-router``` parancsot felhasználónév **admin** és jelszó **CloudSimple 123!**.
+3. Nyisson meg egy SSH-munkamenetet a peremhálózati virtuális gép felügyeleti IP-címével. Futtassa a ```get logical-router``` parancsot a Felhasználónév- **rendszergazda** és a jelszó **CloudSimple 123!**.
 
-    ![logikai-útválasztó kimenet bekése](media/l2vpn-fetch03.png)
+    ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch03.png)
 
 4. Ha nem látja a "DR-Provider-LR" bejegyzést, hajtsa végre az alábbi lépéseket.
 
-5. Hozzon létre két átfedés-háttérített logikai kapcsolót. Egy logikai kapcsoló van nyújtva a helyszíni, ahol az áttelepített számítási feladatok találhatók. Egy másik logikus kapcsoló egy dummy kapcsoló. További információt a [Logikai kapcsoló létrehozása](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) a VMware dokumentációjában című témakörben talál.
+5. Hozzon létre két átfedésben lévő logikai kapcsolót. A rendszer egy logikai kapcsolót helyez el a helyszíni helyre, ahol az áttelepített munkaterhelések találhatók. Egy másik logikai kapcsoló egy dummy kapcsoló. Útmutatásért lásd: [logikai kapcsoló létrehozása](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) a VMware-dokumentációban.
 
     ![Logikai kapcsoló létrehozása](media/l2vpn-fetch04.png)
 
-6. Csatlakoztassa a dummy kapcsolót a Tier1 útválasztóhoz egy helyi IP-címmel vagy a helyszíni vagy a magánfelhőből származó, nem átfedő alhálózattal. Lásd: [Downlink port hozzáadása 1.](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)
+6. Csatlakoztassa a próbabábu kapcsolót a Tier1-útválasztóhoz egy hivatkozás helyi IP-címével vagy a helyszíni vagy a saját felhőben nem átfedő alhálózattal. Lásd: a [Antennalevezetés-Port hozzáadása egy 1. rétegbeli logikai útválasztón](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) a VMware-dokumentációban.
 
-    ![Dummy kapcsoló csatlakoztatása](media/l2vpn-fetch05.png)
+    ![Dummy kapcsoló csatolása](media/l2vpn-fetch05.png)
 
-7. Futtassa újra a `get logical-router` parancsot az Edge virtuális gép SSH munkamenetében. Megjelenik a "DR-Provider-LR" logikai útválasztó UUID azonosítója. Jegyezze fel az UUID-t, amely az L2VPN konfigurálásakor szükséges.
+7. Futtassa újra `get logical-router` a parancsot a peremhálózati virtuális gép SSH-munkamenetén. Megjelenik a "DR-Provider-LR" logikai útválasztó UUID azonosítója. Jegyezze fel az UUID-t, amely a L2VPN konfigurálásakor szükséges.
 
-    ![logikai-útválasztó kimenet bekése](media/l2vpn-fetch06.png)
+    ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch06.png)
 
-## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Az L2VPN-hez szükséges logikai kapcsoló azonosító jának beolvasása
+## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>A L2VPN számára szükséges logikai kapcsoló AZONOSÍTÓjának beolvasása
 
-1. Jelentkezzen be az [NSX-T kezelőbe.](https://nsx-t-manager-ip-address)
-2. Válassza **a Hálózati** > **kapcsolóváltás** > ** \><\Logikai****Switches**  >  kapcsoló > **– áttekintés lehetőséget.**
-3. Jegyezze fel a stretch logikai kapcsoló UUID azonosítóját, amely az L2VPN konfigurálásakor szükséges.
+1. Jelentkezzen be a [NSX-T kezelőjébe](https://nsx-t-manager-ip-address).
+2. Válassza a **hálózatkezelés** > **Switching** > kapcsolói**kapcsolók**  >  **<\>\Logical kapcsoló** > **áttekintése**lehetőséget.
+3. Jegyezze fel a stretch logikai kapcsoló UUID-azonosítóját, amely a L2VPN konfigurálásakor szükséges.
 
-    ![logikai-útválasztó kimenet bekése](media/l2vpn-fetch-switch01.png)
+    ![logikai útválasztó kimenetének beolvasása](media/l2vpn-fetch-switch01.png)
 
-## <a name="routing-and-security-considerations-for-l2vpn"></a>Útválasztás és biztonsági szempontok az L2VPN-hez
+## <a name="routing-and-security-considerations-for-l2vpn"></a>A L2VPN útválasztási és biztonsági szempontjai
 
-Az NSX-T Tier0 útválasztó és az önálló NSX Edge-ügyfél közötti IPsec útvonalalapú VPN létrehozásához az NSX-T Tier0 útválasztó visszacsatolási felületének képesnek kell lennie az 500/4500-as SZÁMÚ NSX-ügyfél nyilvános IP-címével való kommunikációra.
+Az NSX-T Tier0-útválasztó és az önálló NSX Edge-ügyfél közötti IPsec-útválasztási VPN-kapcsolat létrehozásához a NSX-T Tier0 útválasztó visszacsatolási felületének képesnek kell lennie kommunikálni a helyszíni NSX önálló ügyfelének nyilvános IP-címével a 500/4500-as UDP-n keresztül.
 
-### <a name="allow-udp-5004500-for-ipsec"></a>UdP 500/4500 engedélyezése IPsec esetén
+### <a name="allow-udp-5004500-for-ipsec"></a>Az UDP 500/4500 engedélyezése az IPsec számára
 
-1. [Hozzon létre egy nyilvános IP-címet](public-ips.md) az NSX-T Tier0 visszacsatolási felülethez a CloudSimple portálon.
+1. [Hozzon létre egy nyilvános IP-címet](public-ips.md) az NSX-T Tier0 visszacsatolási interfészhez a CloudSimple-portálon.
 
-2. [Hozzon létre egy tűzfaltáblát](firewall.md) állapotalapú szabályokkal, amelyek lehetővé teszik az UDP 500/ 4500 bejövő forgalmat, és csatolja a tűzfaltáblát az NSX-T HostTransport alhálózathoz.
+2. [Hozzon létre egy](firewall.md) , az UDP 500/4500 bejövő forgalmat engedélyező állapot-nyilvántartó szabályokkal rendelkező tűzfal táblát, és csatolja a tűzfal TÁBLÁT a NSX-T HostTransport alhálózathoz.
 
-### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>A visszacsatolási kapcsolat IP-címének hirdetése az alávetítési hálózatra
+### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>A visszacsatolási felület IP-címének reklámozása az alátét-hálózaton
 
-1. Null útvonal létrehozása a visszacsatolási illesztőhálózathoz. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Útválasztási** > **statikus útvonalak lehetőséget.** Kattintson a **Hozzáadás** parancsra. A **Hálózat**mezőbe írja be a visszacsatolási csatoló IP-címét. A **Next Hops**esetében kattintson a **Hozzáadás**gombra, adja meg a "Null" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a Felügyeleti távolság mezőben.
+1. Hozzon létre egy NULL útvonalat a visszacsatolási csatoló hálózata számára. Jelentkezzen be a NSX-T kezelőjébe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztó** > **szolgáltató – LR** > **útválasztási** > **statikus útvonalak**lehetőséget. Kattintson a **Hozzáadás** parancsra. A **hálózat**mezőben adja meg a visszacsatolási kapcsolat IP-címét. A **következő ugrások**esetében kattintson a **Hozzáadás**gombra, adja meg a "NULL" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a rendszergazdai távolság számára.
 
     ![Statikus útvonal hozzáadása](media/l2vpn-routing-security01.png)
 
-2. IP-előtaglista létrehozása. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **útválasztási** > **IP-előtaglistáit.** Kattintson a **Hozzáadás** parancsra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson a **Hozzáadás** kétszer gombra. Az első sorban írja be a "0.0.0.0/0" értéket a **Hálózat** és a "Megtagadás" értéket a **Művelet**mezőbe. A második sorban válassza a **Bármely** lehetőséget a **Hálózat** és a Cselekvési **Engedély** **beállításhoz**lehetőséget.
-3. Az IP-előtaglista csatolása mindkét BGP-szomszédhoz (TOR). Ha az IP-előtaglistát a BGP-szomszédhoz csatolja, akkor az alapértelmezett útvonal a BGP-ben a TOR-kapcsolókhoz nem lesz meghirdetve. Azonban minden más útvonal, amely tartalmazza a null útvonalat, meghirdeti a visszacsatolási kapcsolat IP-címét a TOR kapcsolóknak.
+2. Hozzon létre egy IP-előtagot tartalmazó listát. Jelentkezzen be a NSX-T kezelőjébe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztók** > **szolgáltatója – LR** > **útválasztási** > **IP-előtagok listáját**. Kattintson a **Hozzáadás** parancsra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson kétszer a **Hozzáadás** gombra. Az első sorban adja meg a "0.0.0.0/0" értéket a **hálózat** és a "megtagadás" **művelethez**. A második sorban válassza a **bármely** a **hálózat** számára lehetőséget, és **engedélyezze** a **műveletet**.
+3. Csatolja az IP-előtag listáját a BGP-szomszédokhoz (TOR). Ha az IP-előtag listáját a BGP-szomszédhoz csatolja, azzal meggátolja, hogy az alapértelmezett útvonal a BGP-ben meghirdessen a TOR-kapcsolókra. Azonban minden más útvonal, amely tartalmazza a null útvonalat, meghirdeti a visszacsatolási felület IP-címét a TOR-kapcsolók számára.
 
-    ![IP-előtaglista létrehozása](media/l2vpn-routing-security02.png)
+    ![IP-előtag-lista létrehozása](media/l2vpn-routing-security02.png)
 
-4. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Routing** > **BGP** > szomszédok**lehetőséget.** Válassza ki az első szomszédot. Kattintson a Címcsaládok **szerkesztése** > **gombra.** Az IPv4-család esetében adja meg a **Kiszűrő oszlopot,** és jelölje ki a létrehozott IP-előtaglistát. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszéd.
+4. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Routing** > **BGP** > -**szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a**címtartomány** **szerkesztése** > elemre. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszédnál.
 
-    ![IP-előtaglista](media/l2vpn-routing-security03.png) ![csatolása 1 IP-előtaglista csatolása 2](media/l2vpn-routing-security04.png)
+    ![IP-előtagi lista](media/l2vpn-routing-security03.png) ![csatolása 1. IP-előtag csatolása 2. lista](media/l2vpn-routing-security04.png)
 
-5. A null statikus útvonal újraelosztása a BGP-ben. A visszacsatolási kapcsolat útvonalának az alávetítéshez való hirdetéséhez újra el kell osztania a null statikus útvonalat a BGP-ben. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Útválasztási** > útvonal**újraelosztási** > szomszédok**lehetőséget.** Válassza **a Provider-LR-Route_Redistribution lehetőséget,** majd kattintson **a Szerkesztés gombra.** Jelölje be a **Statikus** jelölőnégyzetet, és kattintson a **Mentés gombra.**
+5. Terjessze újra a null értékű statikus útvonalat a BGP-be. Ha a visszacsatolási felületet szeretné reklámozni az alátéthez, újra kell terjesztenie a null statikus útvonalat a BGP-be. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztó** > **szolgáltató – LR** > **útválasztási** > **útvonal újraelosztási** > **szomszédok**lehetőséget. Válassza a **Provider-LR-Route_Redistribution** elemet, majd kattintson a **Szerkesztés**gombra. Jelölje be a **statikus** jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 
-    ![Null statikus útvonal újraelosztása a BGP-ben](media/l2vpn-routing-security05.png)
+    ![NULL Statikus útvonal újraterjesztése a BGP-be](media/l2vpn-routing-security05.png)
 
-## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Útvonalalapú VPN konfigurálása az NSX-T Tier0 útválasztón
+## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Route-alapú VPN konfigurálása a NSX-T Tier0-útválasztón
 
-Az alábbi sablon segítségével töltse ki az összes részletet az útvonalalapú VPN konfigurálásához az NSX-T Tier0 útválasztón. Az UUID-k minden POST hívás szükséges a következő POST hívások. Az L2VPN visszacsatolási és bújtatási összeköttetéseinek IP-címei egyediek lehetnek, és nem lehetnek átfedésben a helyszíni vagy a magánfelhő-hálózatokkal.
+A következő sablonnal megtudhatja, hogyan konfigurálhat egy Route-alapú VPN-T az NSX-T Tier0-útválasztón. Az egyes POST-hívásokhoz tartozó UUID-ket a következő POST-hívásokhoz kell megadni. A L2VPN tartozó visszacsatolási és bújtatási adapterek IP-címeinek egyedinek kell lenniük, és nem lehetnek átfedésben a helyszíni vagy a saját felhőalapú hálózatokkal.
 
-Az L2VPN-hez használt visszacsatolási és bújtatási összeköttetéshez választott IP-címeknek egyedinek kell lenniük, és nem lehetnek átfedésben a helyszíni vagy a magánfelhő-hálózatokkal. A visszacsatolási illesztőhálózatnak mindig /32-nek kell lennie.
+A L2VPN használt visszacsatolási és bújtatási interfészek IP-címeinek egyedinek kell lenniük, és nem lehetnek átfedésben a helyszíni vagy a saját felhőalapú hálózatokkal. A visszacsatolási csatoló hálózatának mindig/32-nek kell lennie.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -195,9 +195,9 @@ Logical-Port ID :
 Peer Code :
 ```
 
-Az alábbi API-hívások mindegyikénál cserélje le az IP-címet az NSX-T-Kezelő IP-címére. Ezeket az API-hívásokat futtathatja a `curl` POSTMAN ügyféltől vagy parancsok használatával.
+A következő API-hívások esetén cserélje le az IP-címet a NSX-T Manager IP-címére. Az összes ilyen API-hívást futtathatja a POSTer-ügyfélen vagy `curl` parancsok használatával.
 
-### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Az IPSec VPN-szolgáltatás engedélyezése a logikai útválasztón
+### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Az IPSec VPN szolgáltatás engedélyezése a logikai útválasztón
 
 ```
 POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Profilok létrehozása: Alagút
+### <a name="create-profiles-tunnel"></a>Profilok létrehozása: alagút
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -277,7 +277,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
 }
 ```
 
-### <a name="create-a-peer-endpoint"></a>Társvégpont létrehozása
+### <a name="create-a-peer-endpoint"></a>Társ-végpont létrehozása
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
@@ -297,7 +297,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
 }
 ```
 
-### <a name="create-a-route-based-vpn-session"></a>Útvonalalapú VPN-munkamenet létrehozása
+### <a name="create-a-route-based-vpn-session"></a>Route-alapú VPN-munkamenet létrehozása
 
 ```
 POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
@@ -323,9 +323,9 @@ POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
 }
 ```
 
-## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>Az L2VPN konfigurálása NSX-T Tier0 útválasztón
+## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>L2VPN konfigurálása a NSX-T Tier0 útválasztón
 
-Minden POST-hívás után töltse ki a következő információkat. A későbbi POST-hívásokban az azonosítók szükségesek.
+Minden POST hívás után adja meg a következő információkat. Az azonosítók a későbbi POST-hívásokhoz szükségesek.
 
 ```
 L2VPN Service ID:
@@ -333,7 +333,7 @@ L2VPN Session ID:
 Logical Port ID:
 ```
 
-### <a name="create-the-l2vpn-service"></a>Az L2VPN szolgáltatás létrehozása
+### <a name="create-the-l2vpn-service"></a>A L2VPN szolgáltatás létrehozása
 
 A következő GET parancs kimenete üres lesz, mert a konfiguráció még nem fejeződött be.
 
@@ -352,9 +352,9 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 }
 ```
 
-### <a name="create-the-l2vpn-session"></a>Az L2VPN munkamenet létrehozása
+### <a name="create-the-l2vpn-session"></a>A L2VPN-munkamenet létrehozása
 
-A következő POST parancs esetében az L2VPN szolgáltatás azonosítója az id, amelyet most kapott, és az IPsec VPN-munkamenet-azonosító az előző szakaszban kapott azonosító.
+A következő POST parancs esetében a L2VPN szolgáltatás azonosítója az imént beszerzett azonosító, az IPsec VPN-munkamenet azonosítója pedig az előző szakaszban beszerzett azonosító.
 
 ```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
@@ -368,7 +368,7 @@ POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 }
 ```
 
-Ezek a hívások egy GRE-alagút végpontot hoznak létre. Az állapot ellenőrzéséhez futtassa a következő parancsot.
+Ezek a hívások GRE-alagút végpontot hoznak létre. Az állapot ellenõrzéséhez futtassa a következő parancsot.
 
 ```
 edge-2> get tunnel-port
@@ -391,7 +391,7 @@ REMOTE      : 192.168.140.156
 ENCAP       : GENEVE
 ```
 
-### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Logikai port létrehozása a megadott alagútazonosítóval
+### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Logikai port létrehozása a megadott bújtatási AZONOSÍTÓval
 
 ```
     POST https://192.168.110.201/api/v1/logical-ports/
@@ -412,70 +412,70 @@ ENCAP       : GENEVE
         }
 ```
 
-## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Szerezze be az L2VPN társkódját az NSX-T oldalon
+## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Szerezze be a L2VPN tartozó társ-kódot a NSX-T oldalon
 
-Szerezze be az NSX-T végpont társkódját. A társkód szükséges a távoli végpont konfigurálásakor. Az L2VPN <session-id> az előző szakaszból szerezhető be. További információt az [NSX-T 2.3 API Guide című témakörben talál.](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)
+Szerezze be a NSX-T végpont egyenrangú kódját. A társ kód megadása a távoli végpont konfigurálásakor szükséges. A L2VPN <munkamenet-azonosító> az előző szakaszból szerezhető be. További információ: [NSX-T 2,3 API-útmutató](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 ```
 
-## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Az NSX-T önálló ügyfél telepítése (helyszíni)
+## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>A NSX-T önálló ügyfél (helyszíni) üzembe helyezése
 
-A telepítés előtt ellenőrizze, hogy a helyszíni tűzfalszabályok engedélyezik-e a bejövő és kimenő UDP 500/4500 forgalmat/a CloudSimple nyilvános IP-címére, amely korábban az NSX-T0 útválasztó visszacsatolási összeköttetéséhez volt fenntartva. 
+A telepítés előtt ellenőrizze, hogy a helyszíni tűzfalszabályok engedélyezik-e a bejövő és kimenő UDP 500/4500-forgalmat a NSX-T T0 útválasztó visszacsatolási felületéhez korábban lefoglalt CloudSimple nyilvános IP-címről. 
 
-1. [Az önálló NSX Edge-ügyfél letöltése](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF és a fájlok kibontása a letöltött csomagból egy mappába.
+1. [Az önálló NSX Edge-ügyfél letöltése](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF és csomagolja ki a fájlokat a letöltött kötegből egy mappába.
 
     ![Önálló NSX Edge-ügyfél letöltése](media/l2vpn-deploy-client01.png)
 
-2. Nyissa meg az összes kibontott fájlt tartalmazó mappát. Válassza ki az összes vmdks (NSX-l2t-client-large.mf és NSX-l2t-client-large.ovf a nagy készülék mérete vagy NSX-l2t-client-Xlarge.mf és NSX-l2t-client-Xlarge.ovf extra nagy méretű készülék mérete). Kattintson a **Tovább** gombra.
+2. Nyissa meg a mappát az összes kibontott fájllal. Válassza ki az összes VMDK (NSX-l2t-Client-Large. MF és NSX-l2t-client-large. OVF nagyméretű berendezés méretéhez vagy NSX-l2t-Client-XLarge. MF és NSX-l2t-client-Xlarge. OVF a nagy méretű készülék méretéhez). Kattintson a **Tovább** gombra.
 
-    ![Sablon](media/l2vpn-deploy-client02.png) ![kiválasztása Sablon kijelölése](media/l2vpn-deploy-client03.png)
+    ![](media/l2vpn-deploy-client02.png) ![Sablon kijelölése sablon kiválasztása](media/l2vpn-deploy-client03.png)
 
-3. Adja meg az NSX-T önálló ügyfél nevét, és kattintson a **Tovább**gombra.
+3. Adja meg a NSX-T önálló ügyfél nevét, és kattintson a **tovább**gombra.
 
-    ![Sablon nevének megadása](media/l2vpn-deploy-client04.png)
+    ![Adja meg a sablon nevét](media/l2vpn-deploy-client04.png)
 
-4. Kattintson a **Tovább** gombra az adattár beállításainak eléréséhez. Válassza ki a megfelelő adattanyájt az NSX-T önálló ügyfélhez, és kattintson a **Tovább**gombra.
+4. Az adattár beállításainak eléréséhez kattintson a **tovább** gombra. Válassza ki a megfelelő adattárat a NSX-T önálló ügyfél számára, és kattintson a **tovább**gombra.
 
-    ![Adattár kijelölése](media/l2vpn-deploy-client06.png)
+    ![Adattár kiválasztása](media/l2vpn-deploy-client06.png)
 
-5. Válassza ki a megfelelő portcsoportokat trunk (Trunk PG), Public (Uplink PG) és HA felület (Uplink PG) az NSX-T önálló ügyfél. Kattintson a **Tovább** gombra.
+5. Válassza ki a megfelelő portokat a Trunk (Trunk PG), a Public (kimenő PG) és a HA Interface (kimenő PG) számára a NSX-T különálló ügyfélhez. Kattintson a **Tovább** gombra.
 
-    ![Portcsoportok kijelölése](media/l2vpn-deploy-client07.png)
+    ![Porttartomány kiválasztása](media/l2vpn-deploy-client07.png)
 
-6. Töltse ki az alábbi részleteket a **Sablon testreszabása** képernyőn, és kattintson a **Tovább**gombra:
+6. Adja meg a következő adatokat a **sablon testreszabása** képernyőn, majd kattintson a **tovább**gombra:
 
     L2T kibontása:
 
-    * **Társcíme**. Adja meg az Azure CloudSimple portálon az NSX-T Tier0 visszacsatolási felülethez fenntartott IP-címet.
-    * **Társkód .** Illessze be az L2VPN-kiszolgáló telepítésének utolsó lépéséből beszerzett társkódot.
-    * **Sub interfaces VLAN (Tunnel ID)**. Adja meg a megnyújtandó VLAN-azonosítót. Zárójelben (írja be a korábban konfigurált bújtatási azonosítót).
+    * **Társ címe**. Adja meg az Azure CloudSimple-portálon az NSX-T Tier0 visszacsatolási felület számára fenntartott IP-címet.
+    * **Társ-kód**. Illessze be a L2VPN-kiszolgáló telepítésének utolsó lépése alapján beszerzett társ-kódot.
+    * **Alinterfészek VLAN (alagút azonosítója)**. Adja meg a feszíteni kívánt VLAN-azonosítót. A zárójelek () mezőben adja meg a korábban konfigurált bújtatási azonosítót.
 
-    A kapcsolati kapcsolat felületének kibontása:
+    Kimenő kapcsolat kibontása:
 
-    * **DNS IP-cím**. Adja meg a helyszíni DNS-IP-címet.
-    * **Alapértelmezett átjáró**.  Adja meg a VLAN alapértelmezett átjáróját, amely az ügyfél alapértelmezett átjárójaként fog működni.
-    * **IP-cím**. Adja meg az önálló ügyfél kapcsolati IP-címét.
-    * **Előtag hossza**. Adja meg az uplink VLAN/alhálózat előtaghosszát.
-    * **CLI admin / enable / root felhasználói jelszó**. Állítsa be a jelszót admin /enable /root account.
+    * **DNS IP-címe**. Adja meg a helyszíni DNS IP-címét.
+    * **Alapértelmezett átjáró**.  Adja meg a virtuális helyi hálózat alapértelmezett átjáróját, amely alapértelmezett átjáróként fog működni ehhez az ügyfélhez.
+    * **IP-cím**. Adja meg az önálló ügyfél kimenő IP-címét.
+    * **Előtag hossza** Adja meg a kimenő VLAN/alhálózat előtagjának hosszát.
+    * **CLI-rendszergazda/engedélyezés/gyökér felhasználói jelszó**. Állítsa be a rendszergazdai/Enable/root-fiók jelszavát.
 
       ![Sablon](media/l2vpn-deploy-client08.png)
-      ![testreszabása Sablon testreszabása – további](media/l2vpn-deploy-client09.png)
+      ![testreszabása sablon testreszabása – további](media/l2vpn-deploy-client09.png)
 
-7. Tekintse át a beállításokat, és kattintson a **Befejezés gombra.**
+7. Tekintse át a beállításokat, majd kattintson a **Befejezés**gombra.
 
-    ![Teljes konfiguráció](media/l2vpn-deploy-client10.png)
+    ![Konfigurálás befejezése](media/l2vpn-deploy-client10.png)
 
-## <a name="configure-an-on-premises-sink-port"></a>Helyszíni fogadóport konfigurálása
+## <a name="configure-an-on-premises-sink-port"></a>Helyszíni fogadó port konfigurálása
 
-Ha az egyik VPN-hely nem rendelkezik NSX-el, konfigurálhat egy L2 VPN-t egy önálló NSX Edge telepítésével az adott helyen. Az önálló NSX Edge egy OVF-fájl használatával van telepítve egy olyan állomáson, amelyet nem az NSX kezel. Ez egy NSX Edge Services Gateway-berendezést telepít, amely L2 VPN-ügyfélként működik.
+Ha az egyik VPN-hely nem rendelkezik telepített NSX, beállíthatja az L2 VPN-t úgy, hogy egy önálló NSX-szegélyt helyez üzembe az adott helyen. Az önálló NSX Edge egy OVF-fájl használatával van telepítve egy olyan gazdagépen, amelyet nem a NSX felügyel. Ez üzembe helyez egy NSX Edge Services Gateway-berendezést, amely L2 VPN-ügyfélként működik.
 
-Ha egy önálló él törzs vNIC csatlakozik egy vSphere elosztott kapcsoló, vagy válogatás nélkül mód, vagy egy mosogató port van szükség az L2 VPN-funkció. A válogatásos mód használata ismétlődő pingeket és ismétlődő válaszokat okozhat. Ezért használja a fogadóport módot az L2 VPN önálló NSX Edge konfigurációjában. Tekintse meg a [Fogadóport konfigurálása](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) a VMware dokumentációban.
+Ha egy különálló peremhálózati törzs vNIC egy vSphere elosztott kapcsolóhoz csatlakozik, akkor az L2 VPN-függvényhez nem kell kevert módot vagy fogadó portot megadni. A kevert mód használatával duplikált pingelések és ismétlődő válaszok is megadhatók. Ezért használja a fogadó port módot az L2 VPN önálló NSX Edge-konfigurációjában. Tekintse meg a fogadó [port konfigurálása](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) a VMware dokumentációban című témakört.
 
-## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN és L2VPN-ellenőrzés
+## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN-és L2VPN-ellenőrzés
 
-A következő parancsokkal ellenőrizheti az IPsec és l2VPN munkameneteket az önálló NSX-T Edge-ből.
+A következő parancsokkal ellenőrizheti az IPsec-és a L2VPN-munkameneteket az önálló NSX-T Edge-ből.
 
 ```
 nsx-l2t-edge> show service ipsec
@@ -502,7 +502,7 @@ SITENAME                       IPSECSTATUS          VTI                  GRE
 1ecb00fb-a538-4740-b788-c9049e8cb6c6 UP                   vti-100              l2t-1
 ```
 
-Az alábbi parancsokkal ellenőrizheti az NSX-T Tier0 útválasztó IPsec és L2VPN munkameneteit.
+A következő parancsokkal ellenőrizheti az IPsec-és a L2VPN-munkameneteket a NSX-T Tier0-útválasztóról.
 
 ```
 edge-2> get ipsecvpn session
@@ -531,7 +531,7 @@ IPSEC Session : 1ecb00fb-a538-4740-b788-c9049e8cb6c6
 Status        : UP
 ```
 
-A következő parancsokkal ellenőrizze a fogadóportot az ESXi gazdagépen, ahol az NSX-T önálló ügyfél virtuális gép a helyszíni környezetben található.
+A következő parancsokkal ellenőrizheti a fogadó portot az ESXi-gazdagépen, ahol a NSX-T különálló ügyfél virtuális gép a helyszíni környezetben található.
 
 ```
  [root@esxi02:~] esxcfg-vswitch -l |grep NSX

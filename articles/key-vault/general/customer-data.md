@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault ügyféladat-szolgáltatásai – Azure Key Vault | Microsoft dokumentumok
-description: Tudnivalók az ügyféladatokról a Key Vaultban
+title: Azure Key Vault ügyféladatok funkciói – Azure Key Vault | Microsoft Docs
+description: Ismerkedjen meg a Key Vault vásárlói adatait
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,56 +10,56 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617891"
 ---
-# <a name="azure-key-vault-customer-data-features"></a>Az Azure Key Vault ügyféladat-szolgáltatásai
+# <a name="azure-key-vault-customer-data-features"></a>Az ügyféladatok funkcióinak Azure Key Vault
 
-Az Azure Key Vault ügyféladatokat kap a tárolók, kulcsok, titkos kulcsok, tanúsítványok és felügyelt tárfiókok létrehozása vagy frissítése során. Ezek az ügyféladatok közvetlenül láthatók az Azure Portalon és a REST API-n keresztül. Az ügyféladatok szerkeszthetők vagy törölhetők az adatokat tartalmazó objektum frissítésével vagy törlésével.
+A Azure Key Vault a tárolók, kulcsok, titkok, tanúsítványok és felügyelt Storage-fiókok létrehozása vagy frissítése során fogadja az ügyféladatokat. Ez az ügyféladatok közvetlenül látható a Azure Portalban és a REST APIon keresztül. Az ügyféladatokat szerkesztheti vagy törölheti az azokat tartalmazó objektum frissítésével vagy törlésével.
 
-A rendszerhozzáférési naplók akkor jönnek létre, amikor egy felhasználó vagy alkalmazás hozzáfér a Key Vaulthoz. Részletes hozzáférési naplók érhetők el az Azure Insights használatával az ügyfelek számára.
+A rendszer-hozzáférési naplók akkor jönnek létre, amikor egy felhasználó vagy alkalmazás hozzáfér Key Vaulthoz. A részletes hozzáférési naplók az Azure-elemzéseket használó ügyfelek számára érhetők el.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Az ügyféladatok azonosítása
+## <a name="identifying-customer-data"></a>Ügyféladatok azonosítása
 
-A következő adatok azonosítják az ügyféladatokat az Azure Key Vaultban:
+Az alábbi információk a Azure Key Vaulton belüli ügyféladatokat azonosítják:
 
-- Az Azure Key Vault hozzáférési szabályzatai felhasználókat, csoportokat vagy alkalmazásokat képviselő objektumazonosítókat tartalmaznak
-- A tanúsítvány tulajdonosai tartalmazhatnak e-mail címeket vagy más felhasználói vagy szervezeti azonosítókat
-- A tanúsítvány-partnerek felhasználói e-mail címeket, neveket vagy telefonszámokat tartalmazhatnak
-- A tanúsítvány kibocsátói tartalmazhatnak e-mail címeket, neveket, telefonszámokat, fiókhitelesítő adatokat és szervezeti adatokat.
-- Tetszőleges címkéket lehet alkalmazni az objektumok az Azure Key Vaultban. Ezek az objektumok közé tartoznak a tárolók, kulcsok, titkos kulcsok, tanúsítványok és tárfiókok. A használt címkék személyes adatokat tartalmazhatnak
-- Az Azure Key Vault hozzáférési naplói objektumazonosítókat, [UPN-eket](../../active-directory/hybrid/plan-connect-userprincipalname.md)és IP-címeket tartalmaznak minden REST API-híváshoz
-- Az Azure Key Vault diagnosztikai naplói objektumazonosítókat és IP-címeket tartalmazhatnak a REST API-hívásokhoz
+- A Azure Key Vault vonatkozó hozzáférési szabályzatok a felhasználókat, csoportokat vagy alkalmazásokat képviselő objektum-azonosítókat tartalmaznak.
+- A tanúsítvány tárgya tartalmazhat e-mail-címeket vagy más felhasználói vagy szervezeti azonosítókat
+- A tanúsítványhoz tartozó névjegyek felhasználói e-mail-címeket, neveket és telefonszámokat tartalmazhatnak.
+- A tanúsítvány-kiállítók tartalmazhatnak e-mail-címeket, neveket, telefonszámokat, a fiók hitelesítő adatait és a szervezeti adatokat.
+- A Azure Key Vaultban lévő objektumokra tetszőleges címkéket alkalmazhat. Ezek az objektumok a tárak, kulcsok, titkok, tanúsítványok és Storage-fiókok közé tartoznak. A használt címkék személyes adattartalmakat is tartalmazhatnak
+- Azure Key Vault hozzáférési naplók az egyes REST API hívásokhoz tartalmazhatnak objektum-azonosítókat, [UPN](../../active-directory/hybrid/plan-connect-userprincipalname.md)-ket és IP-címeket.
+- Azure Key Vault diagnosztikai naplók tartalmazhatnak objektum-azonosítókat és IP-címeket REST API hívásokhoz
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 
-Ugyanazok a REST API-k, portálélmény és SDK-k, amelyek et tárolók, kulcsok, titkos kulcsok, tanúsítványok és felügyelt tárfiókok létrehozásához használnak, szintén frissíthetik és törölhetik ezeket az objektumokat.
+Ugyanezek a REST API-k, portálok és a tárolók, kulcsok, titkok, tanúsítványok és felügyelt Storage-fiókok létrehozásához használt SDK-k is képesek frissíteni és törölni ezeket az objektumokat.
 
-A helyreállítható törlés lehetővé teszi a törölt adatok helyreállítását a törlésután 90 napig. A helyreállítható törlés használata esetén az adatok véglegesen törölhetők a 90 napos megőrzési időszak lejárta előtt egy kiürítési művelet végrehajtásával. Ha a tároló vagy az előfizetés úgy van konfigurálva, hogy blokkolja a kiürítési műveleteket, nem lehet véglegesen törölni az adatokat, amíg az ütemezett megőrzési időszak le nem telt.
+A Soft-delete lehetővé teszi a törölt adatok helyreállítását a törlés után 90 nappal. A helyreállítható törlés használatakor az adatok véglegesen törlődnek a 90 napos megőrzési időszak lejárta előtt, a törlési művelet végrehajtásával. Ha a tár vagy előfizetés úgy lett konfigurálva, hogy blokkolja a kiürítési műveleteket, nem lehet véglegesen törölni az adattárolást, amíg az ütemezett megőrzési időszak el nem telik.
 
-## <a name="exporting-customer-data"></a>Vevői adatok exportálása
+## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 
-Ugyanazok a REST API-k, portálélmény és SDK-k, amelyek tárolók, kulcsok, titkos kulcsok, tanúsítványok és felügyelt tárfiókok létrehozásához használatosak, lehetővé teszik ezen objektumok megtekintését és exportálását is.
+Ugyanazok a REST API-k, portálok és SDK-k, amelyek a tárolók, kulcsok, titkos kódok, tanúsítványok és felügyelt tárolási fiókok létrehozásához használatosak, lehetővé teszik ezen objektumok megtekintését és exportálását is.
 
-Az Azure Key Vault hozzáférés naplózása egy opcionális funkció, amely be kapcsolható naplók létrehozásához minden REST API-hívás. Ezek a naplók átkerülnek egy tárfiókba az előfizetésben, ahol alkalmazza a szervezet követelményeinek megfelelő adatmegőrzési szabályzatot.
+Azure Key Vault hozzáférés naplózása egy opcionális funkció, amely bekapcsolható a naplók létrehozásához az egyes REST API hívásokhoz. Ezek a naplók egy olyan Storage-fiókba lesznek továbbítva az előfizetésben, amelyben a szervezet igényeinek megfelelő adatmegőrzési szabályt alkalmazza.
 
-A személyes adatokat tartalmazó Azure Key Vault diagnosztikai naplók a Felhasználói adatvédelem portálon történő exportálási kérelemmel lekérdezhetők. Ezt a kérelmet a bérlői rendszergazdának kell benyújtania.
+Azure Key Vault személyes adatokat tartalmazó diagnosztikai naplókat az exportálási kérelem a felhasználói adatvédelmi portálon történő beolvasásával lehet lekérni. Ezt a kérelmet a bérlői rendszergazdának kell elvégeznie.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure key vault naplózása](logging.md))
+- [Azure Key Vault naplózás](logging.md))
 
 - [Azure Key Vault: a helyreállítható törlés áttekintése](soft-delete-cli.md)
 
-- [Az Azure Key Vault kulcsműveletei](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault kulcsfontosságú műveletek](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
-- [Az Azure Key Vault titkos műveletei](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault titkos műveletek](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault-tanúsítványok és -szabályzatok](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Tanúsítványok és házirendek Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
 
-- [Az Azure Key Vault tárfiók-műveletei](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault Storage-fiók műveletei](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

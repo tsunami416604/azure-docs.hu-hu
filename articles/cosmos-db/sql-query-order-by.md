@@ -1,21 +1,21 @@
 ---
-title: ORDER BY záradék az Azure Cosmos DB-ben
-description: Ismerje meg az Azure Cosmos DB SQL ORDER BY záradékát. Az SQL használata Azure Cosmos DB JSON lekérdezési nyelvként.
+title: ORDER BY záradék Azure Cosmos DB
+description: Az SQL ORDER BY záradék megismerése Azure Cosmos DB. Az SQL használata Azure Cosmos DB JSON-lekérdezési nyelvként.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: tisande
 ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641401"
 ---
-# <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék az Azure Cosmos DB-ben
+# <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
 
-A `ORDER BY` választható záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét adja meg.
+A választható `ORDER BY` záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét határozza meg.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,34 +29,34 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Megadja azt a tulajdonságot vagy kifejezést, amely alapján rendezni szeretné a lekérdezés eredményhalmazát. A rendezési oszlop névként vagy tulajdonságaliasként is megadható.  
+   Megadja azt a tulajdonságot vagy kifejezést, amelyen a lekérdezési eredményhalmaz rendezése történik. A rendezési oszlop nevet vagy tulajdonság-aliasként is megadható.  
   
-   Több tulajdonság is megadható. A tulajdonságneveknek egyedinek kell lenniük. A rendezési tulajdonságok sorrendje határozza `ORDER BY` meg a rendezett eredményhalmaz t. Ez azt, hogy az eredményhalmaz az első tulajdonság szerint van rendezve, majd a rendezett lista a második tulajdonság szerint van rendezve, és így tovább.  
+   Több tulajdonság is megadható. A tulajdonságok nevének egyedinek kell lennie. A rendezési tulajdonságok sorrendje a `ORDER BY` záradékban a rendezett eredményhalmaz szervezetét határozza meg. Ez azt jelenti, hogy az eredményhalmaz az első tulajdonság szerint van rendezve, és a rendezett listát a második tulajdonság rendezi, és így tovább.  
   
-   A `ORDER BY` záradékban hivatkozott tulajdonságneveknek vagy a választólistában szereplő tulajdonságnak, vagy a `FROM` záradékban meghatározott gyűjteményben meghatározott tulajdonságnak kell megfelelniük, anélkül, hogy bármilyen kétértelműség lenne.  
+   A `ORDER BY` záradékban hivatkozott tulajdonságnév a kiválasztási listán szereplő tulajdonságnak vagy a `FROM` záradékban megadott gyűjteményben, kétértelműség nélkül definiált tulajdonságnak kell lennie.  
   
 - `<sort_expression>`  
   
-   Egy vagy több tulajdonságot vagy kifejezést ad meg, amelyek alapján rendezni szeretné a lekérdezés eredményhalmazát.  
+   Egy vagy több olyan tulajdonságot vagy kifejezést ad meg, amelyeken a lekérdezési eredményhalmaz sorba rendezésére kerül sor.  
   
 - `<scalar_expression>`  
   
-   A részleteket a [Skaláris kifejezések](sql-query-scalar-expressions.md) című szakaszban találja.  
+   A részletekért tekintse meg a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
   
 - `ASC | DESC`  
   
-   Itt adható meg, hogy a megadott oszlopértékeit növekvő vagy csökkenő sorrendben kell rendezni. `ASC`a legalacsonyabb értéktől a legmagasabb értékig. `DESC`a legmagasabb értéktől a legalacsonyabb értékig. `ASC`az alapértelmezett rendezési sorrend. A null értékeket a lehető legalacsonyabb értékként kezeli a függvény.  
+   Megadja, hogy a megadott oszlopban szereplő értékeket növekvő vagy csökkenő sorrendbe kell rendezni. `ASC`a legalacsonyabb értékről a legmagasabb értékre rendezi a rendszer. `DESC`a legmagasabb értékről a legalacsonyabb értékre rendezi a rendszer. `ASC`az alapértelmezett rendezési sorrend. A null értékeket a lehető legalacsonyabb értékként kezeli a rendszer.  
   
 ## <a name="remarks"></a>Megjegyzések  
   
-   A `ORDER BY` záradék megköveteli, hogy az indexelési házirend tartalmazzon indexet a rendezve lévő mezőkhöz. Az Azure Cosmos DB lekérdezési futásidejű támogatja a tulajdonság név és nem számított tulajdonságok rendezését. Az Azure Cosmos `ORDER BY` DB több tulajdonságot is támogat. Ahhoz, hogy több ORDER BY tulajdonsággal rendelkező lekérdezést futtasson, [összetett indexet](index-policy.md#composite-indexes) kell definiálnia a rendezve lévő mezőkön.
+   A `ORDER BY` záradék megköveteli, hogy az indexelési házirend tartalmazzon egy indexet a rendezés alatt álló mezőkhöz. A Azure Cosmos DB lekérdezési futtatókörnyezet támogatja a tulajdonságok neve szerinti rendezést, és nem a számított tulajdonságokkal. Azure Cosmos DB több `ORDER BY` tulajdonságot is támogat. Ha több SORRENDet tartalmazó lekérdezést szeretne futtatni, definiálnia kell egy [összetett indexet](index-policy.md#composite-indexes) a rendezés alatt álló mezőkben.
 
 > [!Note]
-> Ha a rendezendő tulajdonságok egyes dokumentumokesetében nem definiálhatók, és egy ORDER BY lekérdezésben szeretné beolvasni őket, akkor ezt az elérési utat kifejezetten fel kell tüntetnie az indexben. Az alapértelmezett indexelési házirend nem teszi lehetővé azoknak a dokumentumoknak a lekérését, amelyeknél a rendezési tulajdonság nincs definiálva. [Tekintse át a hiányzó mezőkkel rendelkező dokumentumokra vonatkozó példalekérdezéseket.](#documents-with-missing-fields)
+> Ha a rendezés alatt álló tulajdonságok egyes dokumentumok esetében nem definiálhatók, és lekérdezési sorrendben szeretné lekérni őket, explicit módon fel kell vennie ezt az útvonalat az indexbe. Az alapértelmezett indexelési házirend nem engedélyezi a dokumentumok lekérését, ha a rendezési tulajdonság nincs definiálva. [Tekintse át például a dokumentumok lekérdezéseit néhány hiányzó mezővel](#documents-with-missing-fields).
 
 ## <a name="examples"></a>Példák
 
-Az alábbiakban például egy olyan lekérdezést olvashat be, amely a helyi város nevének növekvő sorrendjében olvassa be a családokat:
+Például itt egy olyan lekérdezés, amely a családokat a rezidens város nevének növekvő sorrendjében kéri le:
 
 ```sql
     SELECT f.id, f.address.city
@@ -79,7 +79,7 @@ Az eredmény a következő:
     ]
 ```
 
-A következő lekérdezés `id`az elemek létrehozásának dátuma szerint olvassa be a családsakat. A `creationDate` cikk az *1970.*
+A következő lekérdezés lekéri a `id`családot az elemek létrehozási dátumának megfelelően. Az `creationDate` elem az a szám, amely az *időpontot*jelöli, vagy az eltelt idő a Jan. 1, 1970 másodpercben.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -102,7 +102,7 @@ Az eredmény a következő:
     ]
 ```
 
-Emellett több tulajdonság alapján is rendelhet. A több tulajdonság szerint rendelésre leadott lekérdezéshez [összetett indexszükséges.](index-policy.md#composite-indexes) Tekintse meg a következő lekérdezést:
+Emellett több tulajdonság is megrendelhető. A több tulajdonság által megrendelt lekérdezéseknek [összetett indexre](index-policy.md#composite-indexes)van szükségük. Tekintse meg a következő lekérdezést:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -110,13 +110,13 @@ Emellett több tulajdonság alapján is rendelhet. A több tulajdonság szerint 
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Ez a lekérdezés `id` a városnevének növekvő sorrendjében olvassa be a családot. Ha több elem nek ugyanaz a városneve, `creationDate` a lekérdezés csökkenő sorrendben lesz megrendezve.
+Ez a lekérdezés a város nevének `id` növekvő sorrendjében kérdezi le a családot. Ha több elem neve megegyezik a város nevével, a lekérdezés sorrendjét csökkenő `creationDate` sorrendbe kell rendezni.
 
-## <a name="documents-with-missing-fields"></a>Hiányzó mezőkkel rendelkező dokumentumok
+## <a name="documents-with-missing-fields"></a>Hiányzó mezőket tartalmazó dokumentumok
 
-`ORDER BY` Az alapértelmezett indexelési házirenddel rendelkező tárolókon futtatott lekérdezések nem adnak vissza olyan dokumentumokat, ahol a rendezési tulajdonság nincs definiálva. Ha olyan dokumentumokat szeretne felvenni, amelyeknél a rendezési tulajdonság nincs definiálva, akkor ezt a tulajdonságot kifejezetten vegye fel az indexelési házirendbe.
+Azok a `ORDER BY` lekérdezések, amelyek az alapértelmezett indexelési házirenddel rendelkező tárolók ellen futnak, nem adnak vissza olyan dokumentumokat, amelyekben a rendezés tulajdonság nincs meghatározva. Ha olyan dokumentumokat szeretne szerepeltetni, amelyekben a rendezési tulajdonság nincs meghatározva, explicit módon fel kell vennie ezt a tulajdonságot az indexelési házirendbe.
 
-Például az itt egy olyan indexelési házirenddel rendelkező tároló, `"/*"`amely nem tartalmaz kifejezetten elérési utakat a következők mellett:
+Például itt található egy olyan indexelési szabályzattal rendelkező tároló, amely nem tartalmaz explicit módon olyan elérési `"/*"`utakat, mint a következő:
 
 ```json
 {
@@ -131,9 +131,9 @@ Például az itt egy olyan indexelési házirenddel rendelkező tároló, `"/*"`
 }
 ```
 
-Ha olyan lekérdezést `lastName` futtat, `Order By` amely a záradékban szerepel, `lastName` az eredmények csak olyan dokumentumokat tartalmaznak, amelyektulajdonsága definiálva van. Nem határoztunk meg explicit módon `lastName` mellékelt elérési `lastName` utat, így a nélkül özve lévő dokumentumok nem jelennek meg a lekérdezés eredményében.
+Ha olyan lekérdezést futtat, amely tartalmazza `lastName` a `Order By` záradékot, akkor az eredmények csak azokat a `lastName` dokumentumokat tartalmazzák, amelyeken a tulajdonság definiálva van. Nem határoztak meg explicit módon megadott elérési `lastName` utat, hogy a- `lastName` t nem tartalmazó dokumentumok ne jelenjenek meg a lekérdezés eredményei között.
 
-Itt van egy lekérdezés, amely két dokumentum ravatalozott, `lastName` amelyek közül az egyiknem rendelkezik `lastName` definiált:
+Az alábbi két dokumentum alapján rendezi `lastName` a lekérdezéseket, amelyek közül az egyiknek nincs `lastName` definiálva:
 
 ```sql
     SELECT f.id, f.lastName
@@ -152,9 +152,9 @@ Az eredmények csak a definiált `lastName`dokumentumot tartalmazzák:
     ]
 ```
 
-Ha frissítjük a tároló indexelési szabályzatát, `lastName`hogy explicit módon tartalmazza a elérési útját, akkor a lekérdezés eredményében egy nem definiált rendezési tulajdonsággal rendelkező dokumentumokat is tartalmazni fogunk. Explicit módon meg kell határoznia azt az elérési utat, amely a skaláris értékhez vezet (és nem azon túl). Az indexelési házirendben az `?` elérési út definíciójában lévő karaktert `lastName` kell használnia annak érdekében, hogy explicit módon indexelje a tulajdonságot, és ne legyen rajta túl további beágyazott elérési út. Ha `Order By` a lekérdezés [összetett indexet](index-policy.md#composite-indexes)használ, az eredmények mindig tartalmazni fogják a nem definiált rendezési tulajdonsággal rendelkező dokumentumokat a lekérdezés eredményében.
+Ha a tároló indexelési házirendjét úgy frissítjük `lastName`, hogy explicit módon tartalmazzon egy elérési utat, a lekérdezés eredményei között a nem definiált rendezési tulajdonsággal rendelkező dokumentumok is szerepelni fognak. Explicit módon meg kell határozni az elérési utat a skaláris értékhez (és nem a fentiekhez képest). Az indexelési házirendben az `?` elérésiút-definícióban szereplő karaktert kell használnia, így biztosítva, hogy explicit `lastName` módon indexelje a tulajdonságot, és ne legyenek további beágyazott útvonalak. Ha a `Order By` lekérdezés [összetett indexet](index-policy.md#composite-indexes)használ, az eredmények mindig tartalmazzák a lekérdezés eredményeiben a nem definiált rendezési tulajdonsággal rendelkező dokumentumokat.
 
-Az alábbiakban egy mintaindexelési házirend et `lastName` olvashat, amely lehetővé teszi, hogy a nem definiált dokumentumok megjelenjenek a lekérdezés eredményében:
+Itt látható egy minta indexelési házirend, amely lehetővé teszi, hogy a nem definiált `lastName` dokumentumok megjelenjenek a lekérdezés eredményei között:
 
 ```json
 {
@@ -172,7 +172,7 @@ Az alábbiakban egy mintaindexelési házirend et `lastName` olvashat, amely leh
 }
 ```
 
-Ha ismét futtatja ugyanazt a `lastName` lekérdezést, a hiányzó dokumentumok jelennek meg először a lekérdezés eredményében:
+Ha ugyanezt a lekérdezést is futtatja, akkor a hiányzó `lastName` dokumentumok először a lekérdezés eredményeiben jelennek meg:
 
 ```sql
     SELECT f.id, f.lastName
@@ -194,7 +194,7 @@ Az eredmény a következő:
 ]
 ```
 
-Ha a rendezési `DESC`sorrendet a `lastName` , a hiányzó dokumentumok jelennek meg utoljára a lekérdezés eredménye:
+Ha módosítja a rendezési sorrendet `DESC`, a hiányzó `lastName` dokumentumok a lekérdezés eredményei között utolsóként jelennek meg:
 
 ```sql
     SELECT f.id, f.lastName
@@ -220,4 +220,4 @@ Az eredmény a következő:
 
 - [Első lépések](sql-query-getting-started.md)
 - [Az Azure Cosmos DB indexelési szabályzatai](index-policy.md)
-- [OFFSET LIMIT záradék](sql-query-offset-limit.md)
+- [ELTOLÁSi korlát záradéka](sql-query-offset-limit.md)

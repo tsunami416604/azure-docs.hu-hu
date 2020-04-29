@@ -1,43 +1,43 @@
 ---
-title: Kiszolgálóparaméterek konfigurálása - Azure portal – Azure Database for MariaDB
-description: Ez a cikk ismerteti, hogyan konfigurálhatja a MariaDB-kiszolgáló paramétereit az Azure Database for MariaDB-ben az Azure Portal használatával.
+title: Kiszolgáló paramétereinek konfigurálása – Azure Portal-Azure Database for MariaDB
+description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a MariaDB Server-paramétereket a Azure Database for MariaDB a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/16/2020
 ms.openlocfilehash: f39e9450fb922e5b93d7b4b809df73cf5ab007c1
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81602405"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Kiszolgálóparaméterek konfigurálása a MariaDB Azure Database szolgáltatásában az Azure Portal használatával
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MariaDBban a Azure Portal használatával
 
-A MariaDB Azure Database támogatja egyes kiszolgálóparaméterek konfigurálását. Ez a cikk ismerteti, hogyan konfigurálhatja ezeket a paramétereket az Azure Portal használatával. Nem minden kiszolgálóparaméter állítható be.
+Azure Database for MariaDB támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigálás a kiszolgálóparamétereire az Azure Portalon
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigáljon a kiszolgálói paraméterek Azure Portal
 
-1. Jelentkezzen be az Azure Portalon, majd keresse meg az Azure Database for MariaDB-kiszolgálót.
-2. A **BEÁLLÍTÁSOK csoportban** kattintson a **Kiszolgáló paraméterei** elemre az Azure Database for MariaDB kiszolgáló kiszolgálói paramétereinek megnyitásához.
-![Az Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Keresse meg a módosítani kívánt beállításokat. Tekintse át a **Leírás** oszlopot a cél és az engedélyezett értékek megértéséhez.
-![Legördülő menü számbavétele](./media/howto-server-parameters/3-toggle_parameter.png)
-4. A módosítások mentéséhez kattintson a **Mentés** gombra.
+1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MariaDB-kiszolgálót.
+2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MariaDB kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
+![Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Keresse meg a módosítani kívánt beállításokat. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
+![Számbavétel legördülő lista](./media/howto-server-parameters/3-toggle_parameter.png)
+4. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
-5. Ha új értékeket mentett a paraméterekhez, akkor mindig visszaállíthatja az összeset az alapértelmezett értékekre, ha az **Összes visszaállítása lehetőséget választja az alapértelmezettre**lehetőségre.
-![Az összes visszaállítása az alapértelmezettre](./media/howto-server-parameters/5-reset_parameters.png)
+5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
+![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Konfigurálható kiszolgálóparaméterek listája
+## <a name="list-of-configurable-server-parameters"></a>Konfigurálható kiszolgálói paraméterek listája
 
-A támogatott kiszolgálóparaméterek listája folyamatosan növekszik. Az Azure Portal kiszolgálóparaméterei lapon lejuthat a definícióra, és konfigurálhatja a kiszolgálóparamétereit az alkalmazáskövetelményei alapján.
+A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure Portal Server parameters (kiszolgálói paraméterek) lapján megtekintheti a definíciót és konfigurálhatja a kiszolgálói paramétereket az alkalmazás követelményei alapján.
 
-## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálóparaméterek
+## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálói paraméterek
 
-Az InnoDB pufferkészlet és a maximális kapcsolatok nem konfigurálhatók, és a [tarifacsomaghoz](concepts-pricing-tiers.md)vannak kötve.
+A InnoDB-puffer és a maximális kapcsolatok nem konfigurálhatók, és az [árképzési szintjéhez](concepts-pricing-tiers.md)vannak kötve.
 
-|**Árképzési szint**| **virtuális mag(k)**|**InnoDB pufferkészlet (MB)**|
+|**Díjszabási csomag**| **Virtuális mag (ok)**|**InnoDB puffer készlete (MB)**|
 |---|---|---|
 |Basic| 1| 1024|
 |Basic| 2| 2560|
@@ -53,33 +53,33 @@ Az InnoDB pufferkészlet és a maximális kapcsolatok nem konfigurálhatók, és
 |Memóriaoptimalizált| 16| 62464|
 |Memóriaoptimalizált| 32| 125952|
 
-Ezek a további kiszolgálóparaméterek nem konfigurálhatók a rendszerben:
+Ezek a további kiszolgálói paraméterek nem konfigurálhatók a rendszeren:
 
 |**Paraméter**|**Rögzített érték**|
 | :------------------------ | :-------- |
-|innodb_file_per_table alapszinten|KI|
+|alapszintű innodb_file_per_table|KI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|256 MB|
+|innodb_log_file_size|256MB|
 |innodb_log_files_in_group|2|
 
-Az itt nem felsorolt egyéb kiszolgálóparaméterek a [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/)beépített alapértelmezett értékeire vannak beállítva.
+Az itt felsorolt egyéb kiszolgálói paraméterek a [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/)alapértelmezett értékeit adják meg a MariaDB.
 
-## <a name="working-with-the-time-zone-parameter"></a>Az időzóna paraméterrel való együttműködés
+## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
-### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblázatok feltöltése
+### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblák feltöltése
 
-A kiszolgálón lévő időzóna-táblák feltölthetők a `mysql.az_load_timezone` tárolt eljárás hívásával egy eszközről, például a MySQL parancssorból vagy a MySQL Workbench-ből.
+A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MySQL parancssor vagy a MySQL Workbench.
 
 > [!NOTE]
-> Ha a parancsot a MySQL Workbench-ből futtatja, előfordulhat, hogy először ki kell kapcsolnia a `mysql.az_load_timezone` csökkentett frissítési módot a használatával. `SET SQL_SAFE_UPDATES=0;`
+> Ha a MySQL Workbenchből `mysql.az_load_timezone` futtatja a parancsot, előfordulhat, hogy először ki kell kapcsolnia a biztonságos frissítési `SET SQL_SAFE_UPDATES=0;`módot a használatával.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Az időzóna-táblák megfelelő feltöltéséhez indítsa újra a kiszolgálót. A kiszolgáló újraindításához használja az [Azure Portalt](howto-restart-server-portal.md) vagy a [CLI-t.](howto-restart-server-cli.md)
+> Indítsa újra a kiszolgálót az időzóna-táblák megfelelő kitöltésének biztosításához. A kiszolgáló újraindításához használja a [Azure Portal](howto-restart-server-portal.md) vagy a [parancssori](howto-restart-server-cli.md)felületet.
 A rendelkezésre álló időzóna-értékek megtekintéséhez futtassa a következő parancsot:
 
 ```sql
@@ -88,19 +88,19 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>A globális szintű időzóna beállítása
 
-A globális szintű időzóna az Azure Portal **Kiszolgálóparaméterei** lapjáról állítható be. Az alábbi beállítás a globális időzónát az "US/Pacific" értékre állítja be.
+A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi beállítás a globális időzónát az "USA/csendes-óceáni" értékre állítja be.
 
 ![Időzóna-paraméter beállítása](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>A munkamenetszint időzónájának beállítása
+### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
-A munkamenet-szint időzónája beállítható a `SET time_zone` parancs futtatásával egy eszközről, például a MySQL parancssorból vagy a MySQL Workbench-ből. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
+A munkamenet-szint időzónája beállítható úgy, `SET time_zone` hogy a parancsot egy olyan eszközről futtatja, mint a MySQL parancssor vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-A [Dátum- és időfüggvények](https://mariadb.com/kb/en/library/convert_tz/)című dokumentumban a MariaDB dokumentációjában olvashat.
+A [dátum-és Időfüggvényekhez](https://mariadb.com/kb/en/library/convert_tz/)tekintse meg a MariaDB dokumentációját.
 
 <!--
 ## Next steps

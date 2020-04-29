@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680748"
 ---
-A következő példa bemutatja, hogyan hozhat létre egy 10 Gbit/s-os közvetlen társviszony-létesítés seattle-i.
+Az alábbi példa bemutatja, hogyan hozhat létre egy 10 GB/s-os közvetlen társas kapcsolatot Seattle-ben.
 
-A PowerShell **Új-AzPeeringDirectConnectionObject** parancsmagjával hozzon létre directconnection-objektumokat, amelyeket az új társviszony-létesítési kérelemben kell használni.
+A **New-AzPeeringDirectConnectionObject PowerShell-** parancsmaggal hozzon létre olyan DirectConnection-objektumokat, amelyeket használni szeretne az új egyenrangú kérelemben.
 
-Ez a példa bemutatja, hogyan hozhat létre DirectConnection objektumot.
+Ebből a példából megtudhatja, hogyan hozhat létre egy DirectConnection objektumot.
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> Az előző <index>példában **$peeringLocation[]** <index> értéke meg kell egyeznie az Ön által választott társviszony-létesítési helynek.
+> Az előző példában <index>szereplő **$peeringLocation []** <index> értékének meg kell egyeznie az Ön által választott egyenrangú hellyel.
 
-Hozzon létre egy másik kapcsolatot arra az esetre, ha redundanciára lenne szüksége egy adott társviszony-létesítési helyen.
+Hozzon létre egy másik kapcsolatot abban az esetben, ha redundancia szükséges egy adott összevonási helyen.
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-A PowerShell új **társviszony-létesítési** parancsmagjával hozzon létre egy új közvetlen társviszony-létesítést. Ehhez a parancshoz ASN-erőforrás-azonosító szükséges, amely az itt látható módon beolvasható.
+Új közvetlen társítás létrehozásához használja a **New-AzPeering PowerShell-** parancsmagot. Ehhez a parancshoz szükség van egy ASN erőforrás-AZONOSÍTÓra, amely az itt látható módon kérhető le.
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Ez a példa a kérés sikeres feldolgozásának válaszát mutatja be.
+Ez a példa a kérelem sikeres feldolgozásakor a választ mutatja.
 
 ```powershell
 
@@ -78,4 +78,4 @@ Ez a példa a kérés sikeres feldolgozásának válaszát mutatja be.
     Tags                 : {}
 
 ```
-Vegye figyelembe, hogy a **kimenet {subscriptionId}** helyett a tényleges előfizetés-azonosító jelenik meg.
+Vegye figyelembe, hogy ebben a kimenetben **{subscriptionId}** helyett a tényleges előfizetés-azonosító fog megjelenni.

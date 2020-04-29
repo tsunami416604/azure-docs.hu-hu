@@ -13,17 +13,17 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537202"
 ---
-# <a name="scenario-protected-web-api"></a>Eset: Védett webes API
+# <a name="scenario-protected-web-api"></a>Forgatókönyv: védett webes API
 
-Ebben a forgatókönyvben megtudhatja, hogyan teheti elérhetővé a webes API-t. Azt is megtudhatja, hogyan védheti meg a webes API-t, hogy csak a hitelesített felhasználók férhessenek hozzá.
+Ebből a forgatókönyvből megtudhatja, hogyan teheti elérhetővé a webes API-t. Azt is megtudhatja, hogyan védhető a webes API, hogy csak a hitelesített felhasználók férhessenek hozzá.
 
-A webes API használatához engedélyeznie kell a hitelesített felhasználókat munkahelyi és iskolai fiókkal, vagy engedélyeznie kell a Microsoft személyes fiókjait.
+A webes API használatához engedélyeznie kell a hitelesített felhasználókat a munkahelyi és az iskolai fiókkal, vagy engedélyeznie kell a személyes Microsoft-fiókokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,10 +31,10 @@ A webes API használatához engedélyeznie kell a hitelesített felhasználókat
 
 ## <a name="specifics"></a>Sajátosságai
 
-Itt vannak olyan konkrét információk, amelyeket ismernie kell a webes API-k védelme érdekében:
+Itt találja a webes API-k elleni védelemhez szükséges információkat:
 
-- Az alkalmazásregisztrációnak legalább egy hatókört meg kell tennie. A webes API által elfogadott token verzió a bejelentkezési közönségtől függ.
-- A webes API kódkonfigurációjának ellenőriznie kell a webes API meghívásakor használt jogkivonatot.
+- Az alkalmazás regisztrációja legalább egy hatókört ki kell mutatnia. A webes API által elfogadott jogkivonat-verzió a bejelentkezési közönségtől függ.
+- A webes API-kód konfigurációjának ellenőriznie kell a webes API meghívásakor használt jogkivonatot.
 
 ## <a name="next-steps"></a>További lépések
 
