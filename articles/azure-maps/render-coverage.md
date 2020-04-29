@@ -1,6 +1,6 @@
 ---
-title: Renderelési lefedettség | Microsoft Azure Maps
-description: Ebből a cikkből megismerést olvashat a Microsoft Azure Maps által lefedett lefedettséggel rendelkező régiókról, valamint a megjelenített részletek szintjéről.
+title: Megjelenítési lefedettség | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a régiókat Microsoft Azure Maps-lefedettséggel együtt a megjelenített részletek szintjével.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -9,30 +9,30 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536751"
 ---
-# <a name="azure-maps-render-coverage"></a>Az Azure Maps renderelési lefedettsége
+# <a name="azure-maps-render-coverage"></a>Azure Maps megjelenítési lefedettség
 
-Az Azure Maps rasztermozaikokat és vektorcsempéket is használ a térképek létrehozásához. A legalacsonyabb felbontás, az egész világ elfér egy cserép. A legnagyobb felbontásban egyetlen csempe 38 négyzetmétert képvisel. A térkép nagyításakor további részleteket láthat a kontinensekről, régiókról, városokról és az egyes utcákról. A csempékről a [Szintek és a mozaikrács nagyítása című témakörben](zoom-levels-and-tile-grid.md)talál további információt.
+A Azure Maps raszteres csempéket és vektoros csempéket használ a térképek létrehozásához. A legalacsonyabb felbontásban a teljes világ egyetlen csempén illeszkedik. A legnagyobb felbontásban az egyetlen csempe 38 négyzetmétert jelöl. A Térkép nagyítása során további részleteket láthat a kontinensekről, régiókról, városokról és az egyes utcákról. További információ a csempék használatáról: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű információval és pontossággal. Az alábbi táblázatok részletesen ismertetik az egyes régiókra vonatkozóan megjelenhető információk szintjét.
+A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes régióban. Az alábbi táblázatok részletezik az egyes régiókban megjeleníthető információk szintjét.
 
 ## <a name="legend"></a>Jelmagyarázat
 
 | Szimbólum | Jelentés |
 |--------|---------|
-| ✓ | A régió részletes adatokkal jelenik meg.   |
-| Ø | A terület egyszerűsített adatokkal jelenik meg. |
+| ✓ | A régió részletes információkat jelenít meg.   |
+| Ø | A régió egyszerűsített adatként van ábrázolva. |
 
 
 ## <a name="africa"></a>Afrika 
 
 
-| Ország/régió | Rasztermozaikok egységes | Vektormozaikok egységes |
+| Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
 | Algéria                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -74,7 +74,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Nigéria                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Ruanda                           | ✓ | ✓ |
-| Szent Ilona, Mennybemenetel és Tristan da Cunha | ✓ | Ø |
+| Szent Ilona, Ascension és Tristan da Cunha | ✓ | Ø |
 | São Tomé és Príncipe            | ✓ | Ø |
 | Szenegál                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
@@ -92,7 +92,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 
 ## <a name="americas"></a>Amerika
 
-| Ország/régió | Rasztermozaikok egységes | Vektormozaikok egységes |
+| Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua és Barbuda       | ✓ | ✓ |
@@ -102,7 +102,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
 | Bermuda                   | ✓ | ✓ |
-| Bolívia plurinemzeti állama | ✓ | ✓ |
+| Bolívia többnemzetiségű állapota | ✓ | ✓ |
 | Bonaire, Sint Eustatius és Saba | ✓ | ✓ |
 | Brazília                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
@@ -115,7 +115,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Dominika                  | ✓ | ✓ |
 | Dominikai Köztársaság        | ✓ | ✓ |
 | Ecuador                   | ✓ | ✓ |
-| Falkland-szigetek (Malvinas) | ✓ | ✓ |
+| Falkland-szigetek (Malvin-szigetek) | ✓ | ✓ |
 | Francia Guyana             | ✓ | ✓ |
 | Grönland                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
@@ -135,11 +135,11 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Peru                      | ✓ | ✓ |
 | Puerto Rico               | ✓ | ✓ |
 | Quebec (Kanada)           | ✓ | ✓ |
-| Szent Barthélemy          | ✓ | ✓ |
+| Saint Barthélemy          | ✓ | ✓ |
 | Saint Kitts és Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint Martin (francia)     | ✓ | ✓ |
-| Saint Pierre és Miquelon | ✓ | ✓ |
+| Saint-Pierre és Miquelon | ✓ | ✓ |
 | Saint Vincent és Grenadine-szigetek | ✓ | ✓ |
 | Sint Maarten (holland)      | ✓ | ✓ |
 | Dél-Georgia és Déli-Sandwich-szigetek | ✓ | ✓ |
@@ -154,7 +154,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 
 ## <a name="asia"></a>Ázsia 
 
-| Ország/régió | Rasztermozaikok egységes | Vektormozaikok egységes |
+| Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
 | Afganisztán               |   | Ø |
 | Bahrein                   | ✓ | ✓ |
@@ -201,14 +201,14 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Timor-Leste               |   | Ø |
 | Türkmenisztán              |   | Ø |
 | Egyesült Arab Emírségek      | ✓ | ✓ |
-| Egyesült Államok kisebb külső szigetek |   | Ø |
+| Egyesült Államok kisebb kifelé húzódó szigetek |   | Ø |
 | Üzbegisztán                |   | Ø |
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
 ## <a name="oceania"></a>Óceánia
 
-| Ország/régió | Rasztermozaikok egységes | Vektormozaikok egységes |
+| Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
 | Amerikai Szamoa            |   | ✓ |
 | Ausztrália                 | ✓ | ✓ |
@@ -238,7 +238,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 
 ## <a name="europe"></a>Európa
 
-| Ország/régió | Rasztermozaikok egységes | Vektormozaikok egységes |
+| Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
 | Albánia                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
@@ -288,7 +288,7 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Szerbia                    | ✓ | ✓ |
 | Szlovákia                  | ✓ | ✓ |
 | Szlovénia                  | ✓ | ✓ |
-| Dél-Kurils           | ✓ | ✓ |
+| Déli Kurils           | ✓ | ✓ |
 | Spanyolország                     | ✓ | ✓ |
 | Svalbard                  | ✓ | ✓ |
 | Svédország                    | ✓ | ✓ |
@@ -296,10 +296,10 @@ A Térképek azonban nem rendelkezik minden régióra vonatkozó azonos szintű 
 | Törökország                    | ✓ | ✓ |
 | Ukrajna                   | ✓ | ✓ |
 | Egyesült Királyság            | ✓ | ✓ |
-| Vatikán              | ✓ | ✓ |
+| Vatikáni Városállam              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Maps rendereléséről a [Nagyítási szintek és a csemperács](zoom-levels-and-tile-grid.md)című témakörben talál további információt.
+További információ a Azure Maps megjelenítéséről: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-Ismerje meg [a Térképek útválasztási szolgáltatás lefedettségi területeit.](routing-coverage.md) 
+Ismerje meg a [Maps Routing szolgáltatás lefedettségi területeit](routing-coverage.md). 

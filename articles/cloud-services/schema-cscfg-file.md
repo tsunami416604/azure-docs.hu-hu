@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services-definíciós séma (.cscfg fájl) | Microsoft dokumentumok
-description: A szolgáltatáskonfigurációs (.cscfg) fájl azt határozza meg, hogy az egyes szerepkörökhöz, konfigurációs értékekhez és tanúsítványujjlenyomatokhoz hány szerepkört kell telepíteni.
+title: Azure Cloud Services definíciós séma (. cscfg fájl) | Microsoft Docs
+description: A szolgáltatás-konfigurációs (. cscfg) fájl azt adja meg, hogy a szerepkörök, a konfigurációs értékek és a tanúsítványok ujjlenyomatai megfelelnek hány szerepkör-példány legyen üzembe helyezhető.
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -10,23 +10,23 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534745"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services konfigurációs sémája (.cscfg fájl)
-A szolgáltatáskonfigurációs fájl határozza meg a szolgáltatás egyes szerepköreihez telepítandó szerepkörpéldányok számát, a konfigurációs beállítások értékeit és a szerepkörhöz társított tanúsítványok ujjlenyomatait. Ha a szolgáltatás egy virtuális hálózat része, a hálózat konfigurációs adatait a szolgáltatás konfigurációs fájljában, valamint a virtuális hálózati konfigurációs fájlban kell megadni. A szolgáltatáskonfigurációs fájl alapértelmezett kiterjesztése .cscfg.
+# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services konfigurációs séma (. cscfg fájl)
+A szolgáltatás konfigurációs fájlja meghatározza a szolgáltatás egyes szerepköreihez telepítendő szerepkör-példányok számát, a konfigurációs beállítások értékeit, valamint a szerepkörhöz társított tanúsítványok ujjlenyomatai megfelelnek. Ha a szolgáltatás egy Virtual Network része, a hálózat konfigurációs adatait meg kell adni a szolgáltatás konfigurációs fájljában, valamint a virtuális hálózat konfigurációs fájljában. A szolgáltatás konfigurációs fájljának alapértelmezett kiterjesztése a. cscfg.
 
-A szolgáltatásmodellt a [felhőszolgáltatás (klasszikus) definíciós séma írja](schema-csdef-file.md)le.
+A szolgáltatási modellt a [Cloud Service (klasszikus) definíciós sémája](schema-csdef-file.md)írja le.
 
-Alapértelmezés szerint az Azure Diagnostics konfigurációs sémafájl telepítve van a `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` könyvtárba. Cserélje `<version>` le az [Azure SDK telepített verziójára.](https://azure.microsoft.com/downloads/)
+Alapértelmezés szerint a rendszer a Azure Diagnostics konfigurációs sémafájl fájlját telepíti a `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` könyvtárba. Cserélje `<version>` le az helyére az [Azure SDK](https://azure.microsoft.com/downloads/)telepített verzióját.
 
-A szerepkörök szolgáltatásban való konfigurálásáról a [Mi a Felhőszolgáltatás-modell](cloud-services-model-and-package.md)című témakörben talál további információt.
+A szerepkörök szolgáltatásban való konfigurálásával kapcsolatos további információkért lásd: [Mi a Cloud Service-modell](cloud-services-model-and-package.md).
 
-## <a name="basic-service-configuration-schema"></a>Alapszintű szolgáltatáskonfigurációs séma
-A szolgáltatáskonfigurációs fájl alapformátuma a következő.
+## <a name="basic-service-configuration-schema"></a>Alapszintű szolgáltatás konfigurációs sémája
+A szolgáltatás konfigurációs fájljának alapszintű formátuma a következő.
 
 ```xml
 <ServiceConfiguration serviceName="<service-name>" osFamily="<osfamily-number>" osVersion="<os-version>" schemaVersion="<schema-version>">
@@ -42,25 +42,25 @@ A szolgáltatáskonfigurációs fájl alapformátuma a következő.
 </ServiceConfiguration>
 ```
 
-## <a name="schema-definitions"></a>Sémadefiníciók
-Az alábbi témakörök az `ServiceConfiguration` elem sémáját ismertetik:
+## <a name="schema-definitions"></a>Séma-definíciók
+A következő témakörök a `ServiceConfiguration` elem sémáját írják le:
 
 - [Szerepkörséma](schema-cscfg-role.md)
 - [NetworkConfiguration-séma](schema-cscfg-networkconfiguration.md)
 
-## <a name="service-configuration-namespace"></a>Szolgáltatáskonfigurációs névtér
-A szolgáltatás konfigurációs fájljának `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`XML-névtere: .
+## <a name="service-configuration-namespace"></a>Szolgáltatás konfigurációs névtere
+A szolgáltatás konfigurációs fájljának XML-névtere a következő `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`:.
 
-##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>Szolgáltatáskonfiguráció s.
-Az `ServiceConfiguration` elem a szolgáltatáskonfigurációs fájl legfelső szintű eleme.
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>ServiceConfiguration elem
+Az `ServiceConfiguration` elem a szolgáltatás konfigurációs fájljának legfelső szintű eleme.
 
-Az alábbi táblázat az `ServiceConfiguration` elem attribútumait ismerteti. Minden attribútumérték karakterlánctípus.
+Az alábbi táblázat az `ServiceConfiguration` elem attribútumait ismerteti. Minden attribútum értéke karakterlánc típusú.
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-|szolgáltatásneve|Kötelező. A felhőszolgáltatás neve. Az itt megadott névnek meg kell egyeznie a szolgáltatásdefiníciós fájlban megadott névvel.|
-|osFamily között|Választható. Megadja a vendég operációs rendszert, amely a felhőszolgáltatás szerepkörpéldányain fog futni. A támogatott vendég operációsrendszer-kiadásokról az [Azure Vendég operációsrendszer-kiadások és az SDK-kompatibilitási mátrix című](cloud-services-guestos-update-matrix.md)témakörben talál.<br /><br /> Ha nem ad `osFamily` meg értéket, és `osVersion` nem állította be az attribútumot egy adott vendég operációsrendszer-verzióra, a rendszer 1-es alapértelmezett értéket használ.|
-|osVersion|Választható. A vendég operációs rendszer azon verzióját adja meg, amely a felhőszolgáltatás szerepkörpéldányain fog futni. A vendég operációsrendszer-verziókról az [Azure Vendég operációsrendszer-kiadások és az SDK-kompatibilitási mátrix című](cloud-services-guestos-update-matrix.md)témakörben talál további információt.<br /><br /> Megadhatja, hogy a vendég operációs rendszer automatikusan frissüljön a legújabb verzióra. Ehhez állítsa az `osVersion` attribútum értékét a `*`értékére. Ha a `*`beállítás, a szerepkörpéldányok a megadott operációsrendszer-család vendég operációs rendszerének legújabb verziójával kerülnek üzembe helyezésre, és a vendég operációs rendszer új verzióinak megjelenésekor automatikusan frissülnek.<br /><br /> Adott verzió manuális megadásához `Configuration String` használja a tábla az [Azure Vendég operációsrendszer-kiadások és az SDK-kompatibilitási mátrix](cloud-services-guestos-update-matrix.md) **jövőbeli, jelenlegi és átmeneti vendég operációsrendszer-verziói** szakaszának.<br /><br /> Az `osVersion` attribútum alapértelmezett értéke `*`a .|
-|sémaverzió|Választható. A Szolgáltatáskonfiguráció séma verzióját adja meg. A sémaverzió lehetővé teszi a Visual Studio számára, hogy kiválassza a séma-ellenőrzéshez használandó megfelelő SDK-eszközöket, ha az SDK több verziója van telepítve egymás mellett. A séma- és verziókompatibilitásról az [Azure Vendég operációsrendszer-kiadások és az SDK-kompatibilitási mátrix című](cloud-services-guestos-update-matrix.md) témakörben talál további információt.|
+|serviceName|Kötelező. A felhőalapú szolgáltatás neve. Az itt megadott névnek egyeznie kell a szolgáltatás definíciós fájljában megadott névvel.|
+|osFamily|Választható. Meghatározza azt a vendég operációs rendszert, amely a felhőalapú szolgáltatásban a szerepkör példányain fog futni. A támogatott vendég operációs rendszer kiadásaival kapcsolatos információkért lásd: az [Azure vendég operációs rendszer kiadásai és az SDK kompatibilitási mátrixa](cloud-services-guestos-update-matrix.md).<br /><br /> Ha nem tartalmaz `osFamily` értéket, és nem állította be az `osVersion` attribútumot egy adott vendég operációsrendszer-verzióra, a rendszer az alapértelmezett 1 értéket használja.|
+|osVersion|Választható. Megadja a vendég operációs rendszernek azt a verzióját, amely a felhőalapú szolgáltatásban a szerepkör példányain fog futni. A vendég operációs rendszer verziójával kapcsolatos további információkért lásd: az [Azure vendég operációs rendszer kiadásai és az SDK kompatibilitási mátrixa](cloud-services-guestos-update-matrix.md).<br /><br /> Megadhatja, hogy a vendég operációs rendszer automatikusan a legújabb verzióra legyen frissítve. Ehhez állítsa az `osVersion` attribútum értékét a következőre: `*`. Ha a értékre `*`van állítva, a rendszer telepíti a szerepkör példányait a vendég operációs rendszer legújabb verziójára a megadott operációsrendszer-családra vonatkozóan, és a rendszer automatikusan frissíti a vendég operációs rendszer új verzióinak kiadásakor.<br /><br /> Egy adott verzió manuális megadásához használja az `Configuration String` [Azure vendég operációs rendszer kiadásainak és az SDK-kompatibilitási mátrixának](cloud-services-guestos-update-matrix.md) **jövőbeli, aktuális és átmeneti vendég operációsrendszer-verziók** szakaszát.<br /><br /> Az `osVersion` attribútum alapértelmezett értéke: `*`.|
+|sémaverzióval|Választható. Megadja a szolgáltatás konfigurációs sémájának verzióját. A séma verziója lehetővé teszi a Visual Studio számára, hogy kiválassza a séma-ellenőrzéshez használandó megfelelő SDK-eszközöket, ha az SDK több verziója is telepítve van egymás mellett. További információ a séma és a verziók kompatibilitásáról: az [Azure vendég operációs rendszer kiadásai és az SDK kompatibilitási mátrixa](cloud-services-guestos-update-matrix.md)|
 
-A szolgáltatáskonfigurációs fájlnak egy `ServiceConfiguration` elemet kell tartalmaznia. Az `ServiceConfiguration` elem tetszőleges számú `Role` elemet és `NetworkConfiguration` nullát vagy 1 elemet tartalmazhat.
+A szolgáltatás konfigurációs fájljának egyetlen `ServiceConfiguration` elemet kell tartalmaznia. Az `ServiceConfiguration` elem tetszőleges számú `Role` elemet és nulla vagy 1 `NetworkConfiguration` elemet tartalmazhat.

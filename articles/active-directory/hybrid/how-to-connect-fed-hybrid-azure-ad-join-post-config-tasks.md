@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Hibrid Azure AD csatlakozás utáni konfigurációs feladatok | Microsoft dokumentumok'
-description: Ez a dokumentum részletezi a hibrid Azure AD-csatlakozás végrehajtásához szükséges konfigurációs feladatokat
+title: 'Azure AD Connect: hibrid Azure AD JOIN post konfigurációs feladatok | Microsoft Docs'
+description: Ez a dokumentum részletesen ismerteti a hibrid Azure AD-csatlakozás befejezéséhez szükséges konfigurációs feladatokat.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,84 +17,84 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049666"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
-Miután futtatta az Azure AD Connectet a szervezet hibrid Azure AD-csatlakozáshoz való konfigurálásához, néhány további lépést kell végrehajtania a beállítás véglegesítéséhez.  Csak az eszközökre vonatkozó lépéseket hajtsa végre.
+Miután futtatta a Azure AD Connectt a hibrid Azure AD-csatlakozáshoz való konfigurálásához, néhány további lépést is végre kell hajtania a beállítás véglegesítéséhez.  Csak azokat a lépéseket hajtsa végre, amelyek alkalmazhatók az eszközökre.
 
-## <a name="1-configure-controlled-rollout-optional"></a>1. Az ellenőrzött bevezetés konfigurálása (nem kötelező)
-A Windows 10 és a Windows Server 2016 rendszert futtató összes tartományhoz csatlakozó eszköz automatikusan regisztrál az Azure AD-vel, amint az összes konfigurációs lépés befejeződött. Ha az automatikus regisztráció helyett egy ellenőrzött bevezetést szeretne, a csoportházirend segítségével szelektíven engedélyezheti vagy letilthatja az automatikus bevezetést.  Ezt a csoportházirendet a többi konfigurációs lépés megkezdése előtt be kell állítani:
-* Hozzon létre egy csoportházirend-objektumot az Active Directoryban.
-* Nevezze el (ex- hibrid Azure AD-csatlakozás).
-* Szerkesztés és ugrás: Számítógép-konfigurációs > házirendek > felügyeleti sablonok > windows-összetevők > eszközregisztráció.
+## <a name="1-configure-controlled-rollout-optional"></a>1. szabályozott bevezetés konfigurálása (nem kötelező)
+A Windows 10 és a Windows Server 2016 rendszerű összes tartományhoz csatlakoztatott eszköz automatikusan regisztrálja az Azure AD-t az összes konfigurációs lépés befejezése után. Ha az automatikus regisztráció helyett inkább az ellenőrzött bevezetést részesíti előnyben, a csoportházirend segítségével szelektív módon engedélyezheti vagy letilthatja az automatikus bevezetést.  Ezt a csoportházirendet a további konfigurációs lépések megkezdése előtt be kell állítani:
+* Hozzon létre egy csoportházirend-objektumot a Active Directory.
+* Nevezze el (a hibrid Azure AD-csatlakozás).
+* Szerkesztés és ugrás: Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása.
 
 >[!NOTE]
->A 2012R2 esetében a házirend-beállítások a **Számítógép konfigurációja > házirendjei > felügyeleti sablonok > a Windows-összetevők > a munkahelyi csatlakozás > Az ügyfélszámítógépek automatikus csatlakoztatása > automatikus munkahely**
+>A 2012R2 a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakozás ügyfélszámítógépeken**
 
-* Engedélyezze ezt a beállítást: Regisztrálja a tartományhoz csatlakozó számítógépeket eszközként.
+* A beállítás engedélyezése: tartományhoz csatlakoztatott számítógépek regisztrálása eszközként.
 * Alkalmazza, és kattintson az OK gombra.
-* Kapcsolja össze a csoportházirend-kiszolgálót az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy az összes eszköz tartománya).
+* Csatolja a GPO-t az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy a tartományhoz az összes eszköz esetében).
 
-## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Hálózat konfigurálása eszközregisztrációs végpontokkal
-Győződjön meg arról, hogy a következő URL-címek érhetők el a szervezeti hálózaton belüli számítógépekről az Azure AD-re való regisztrációhoz:
+## <a name="2-configure-network-with-device-registration-endpoints"></a>2. a hálózat konfigurálása az eszköz regisztrációs végpontokkal
+Győződjön meg arról, hogy az alábbi URL-címek elérhetők a szervezeti hálózaton belüli számítógépekről az Azure AD-ba való regisztráláshoz:
 
 * `https://enterpriseregistration.windows.net`
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com` 
 
-## <a name="3-implement-wpad-for-windows-10-devices"></a>3. A WPAD implementálja A Windows 10-es eszközökhöz
-Ha a szervezet egy kimenő proxyn keresztül fér hozzá az internethez, valósítsa meg a Web Proxy Auto-Discovery (WPAD) alkalmazást, hogy a Windows 10-es számítógépek regisztrálhassanak az Azure AD-re.
+## <a name="3-implement-wpad-for-windows-10-devices"></a>3. WPAD implementálása Windows 10-es eszközökhöz
+Ha a szervezet kimenő proxyn keresztül éri el az internetet, implementálja a webproxy automatikus felderítését (WPAD) a Windows 10-es számítógépek Azure AD-ba való regisztrálásának engedélyezéséhez.
 
-## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Konfigurálja az SCP-t minden olyan erdőben, amelyet nem az Azure AD Connect konfigurált 
+## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. konfigurálja az SCP-t bármely olyan erdőben, amelyet nem Azure AD Connect konfiguráltak 
 
-A szolgáltatás csatlakozási pont (SCP) tartalmazza az Azure AD-bérlői adatokat, amelyeket az eszközök az automatikus regisztrációhoz fog használni.  Futtassa az Azure AD Connectről letöltött PowerShell-parancsfájlt, a ConfigureSCP.ps1 kódot.
+A szolgáltatáskapcsolódási pont (SCP) tartalmazza az Azure AD-bérlői adatait, amelyeket az eszközök az automatikus regisztrációhoz fognak használni.  Futtassa a ConfigureSCP. ps1 PowerShell-parancsfájlt, amelyet a Azure AD Connectról töltött le.
 
-## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Konfiguráljon minden olyan összevonási szolgáltatást, amelyet nem az Azure AD Connect konfigurált
+## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. konfigurálja a Azure AD Connect által nem konfigurált összevonási szolgáltatásokat
 
-Ha a szervezet egy összevonási szolgáltatást használ az Azure AD-be való bejelentkezéshez, az Azure AD függő entitás megbízhatóságának jogcímszabályainak engedélyezniük kell az eszköz hitelesítését. Ha az AD FS-sel összevonást használ, a jogcímszabályok létrehozásához lépjen az [AD FS súgójára.](https://aka.ms/aadrptclaimrules) Ha nem a Microsoft tól deszkaalapú összevonási megoldást használ, kérjen útmutatást a szolgáltatótól.  
+Ha a szervezete összevonási szolgáltatást használ az Azure AD-be való bejelentkezéshez, az Azure AD függő entitás megbízhatóságának jogcím-szabályainak engedélyeznie kell az eszköz hitelesítését. Ha AD FS-vel való összevonást használ, lépjen a [AD FS súgóba](https://aka.ms/aadrptclaimrules) a jogcím-szabályok létrehozásához. Ha nem a Microsofttól származó összevonási megoldást használ, útmutatásért forduljon a szolgáltatóhoz.  
 
 >[!NOTE]
->Ha windowsos down-level eszközökkel rendelkezik, a szolgáltatásnak támogatnia kell a hitelesítési módszer és a wiaormultiauthn jogcímek kiadását az Azure AD megbízhatósági kapcsolatoknak érkező kérelmek fogadásakor. Az AD FS-ben olyan kiállításátalakítási szabályt kell hozzáadnia, amely átmegy a hitelesítési módszeren.
+>Ha a Windows leállási szintű eszközei vannak, a szolgáltatásnak támogatnia kell a AuthenticationMethod és a wiaormultiauthn jogcímek kiállítását az Azure AD-megbízhatóságra irányuló kérések fogadásakor. AD FS egy olyan kiállítási átalakítási szabályt kell hozzáadnia, amely áthalad a hitelesítési módszeren.
 
-## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Az Azure AD zökkenőmentes egyszeri bejelentkezésének engedélyezése windowsos down-level eszközökhöz
+## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. az Azure AD zökkenőmentes egyszeri bejelentkezésének engedélyezése a Windows rendszerű eszközökön
 
-Ha a szervezet jelszókivonat-szinkronizálást vagy átadó hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD seamless sso-t ezzel a bejelentkezési módszerrel a Windows lefelé irányuló eszközök hitelesítéséhez: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Ha a szervezete jelszó-kivonatoló szinkronizálást vagy átmenő hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD zökkenőmentes SSO-t a bejelentkezési módszerrel a Windows Down-szintű eszközök https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ssohitelesítéséhez:. 
 
-## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Azure AD-házirend beállítása a Windows down-level eszközökhöz
+## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Állítsa be az Azure AD-szabályzatot a Windows rendszerű eszközökön.
 
-A Windows-alapú lefelé simuló eszközök regisztrálásához győződjön meg arról, hogy az Azure AD-szabályzat lehetővé teszi a felhasználók számára az eszközök regisztrálását. 
+A Windows Down szintű eszközök regisztrálásához meg kell győződnie arról, hogy az Azure AD-házirend lehetővé teszi a felhasználóknak az eszközök regisztrálását. 
 
-* Jelentkezzen be a fiókjába az Azure Portalon.
-* Ugrás: Az Azure Active Directory > eszközök > eszközbeállításai
-* Állítsa a "Felhasználók regisztrálhatják eszközeiket az Azure AD"-val az ALL.
+* Jelentkezzen be a fiókjába a Azure Portal.
+* Ugrás: Azure Active Directory > eszközök > eszközbeállítások
+* A "felhasználók regisztrálhatják eszközeiket az Azure AD-ben" értékre.
 * Kattintson a Save (Mentés) gombra.
 
-## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-végpont hozzáadása a Windows down-szintű eszközeihez
+## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-végpont hozzáadása a Windows régebbi eszközökhöz
 
-Adja hozzá az Azure AD-eszköz hitelesítési végpontját a windowsos alsószintű eszközök helyi intranetzónáihoz, hogy elkerülje a tanúsítványkéréseket az eszközök hitelesítésekénte:`https://device.login.microsoftonline.com` 
+Adja hozzá az Azure AD-alapú hitelesítési végpontot a Windows Down-szintű eszközök helyi intranetes zónájához, hogy elkerülje a tanúsítvány kérését az eszközök hitelesítése során:`https://device.login.microsoftonline.com` 
 
-Ha zökkenőmentes [egyszeri bejelentkezést](how-to-connect-sso.md)használ, engedélyezze az "Állapotsor-frissítések engedélyezése parancsfájlon keresztül" lehetőséget az adott zónában, és adja hozzá a következő végpontot:`https://autologon.microsoftazuread-sso.com` 
+Ha [zökkenőmentes SSO](how-to-connect-sso.md)-t használ, a zónában engedélyezze az "állapotjelző sáv frissítéseinek engedélyezése" lehetőséget is, és adja hozzá a következő végpontot:`https://autologon.microsoftazuread-sso.com` 
 
-## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. A Microsoft Workplace Join telepítése Windows-alapú lefelé néző eszközökre
+## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Telepítse a Microsoft Workplace Joint a Windows rendszerű eszközökön.
 
-Ez a telepítő egy ütemezett feladatot hoz létre az eszközrendszeren, amely a felhasználó környezetében fut. A feladat akkor indul el, amikor a felhasználó bejelentkezik a Windows rendszerbe. A feladat az integrált Windows-hitelesítés használatával történő hitelesítés után az Azure AD-vel csendesen csatlakozik az eszközhöz a felhasználói hitelesítő adatokkal. A letöltőközpont https://www.microsoft.com/download/details.aspx?id=53554a . 
+Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezetében futó eszköz rendszeren. A feladat akkor aktiválódik, amikor a felhasználó bejelentkezik a Windowsba. A feladat csendesen csatlakoztatja az eszközt az Azure AD-vel a felhasználói hitelesítő adatokkal az integrált Windows-hitelesítés használatával végzett hitelesítés után. A letöltőközpontban a következő címen https://www.microsoft.com/download/details.aspx?id=53554érhető el:. 
 
-## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. A csoportházirend konfigurálása az eszközregisztráció engedélyezéséhez
+## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurálja a csoportházirendet az eszközök regisztrálásának engedélyezéséhez
 
-* Hozzon létre egy csoportházirend-objektumot az Active Directoryban – ha még nem jött létre.
-* Nevezze el (ex- hibrid Azure AD-csatlakozás).
-* Szerkesztés & a következő: Számítógép konfigurációs > házirendek > felügyeleti sablonok > Windows-összetevők > eszközregisztráció
-* Engedélyezés: Tartományhoz csatlakozó számítógépek regisztrálása eszközként
+* Hozzon létre egy csoportházirend-objektumot a Active Directoryban – ha még nincs létrehozva.
+* Nevezze el (a hibrid Azure AD-csatlakozás).
+* Szerkesztés & ugrás: Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása
+* Engedélyezés: tartományhoz csatlakoztatott számítógépek regisztrálása eszközként
 * Alkalmazza, és kattintson az OK gombra.
-* Kapcsolja össze a csoportházirend-kiszolgálót az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy az összes eszköz tartománya).
+* Csatolja a GPO-t az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy a tartományhoz az összes eszköz esetében).
 
 >[!NOTE]
->A 2012R2 esetében a házirend-beállítások a **Számítógép konfigurációja > házirendjei > felügyeleti sablonok > a Windows-összetevők > a munkahelyi csatlakozás > Az ügyfélszámítógépek automatikus csatlakoztatása > automatikus munkahely**
+>A 2012R2 a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakozás ügyfélszámítógépeken**
 
 ## <a name="next-steps"></a>További lépések
-[Eszközvisszaírás konfigurálása](how-to-connect-device-writeback.md)
+[Az eszköz visszaírási konfigurálása](how-to-connect-device-writeback.md)

@@ -1,7 +1,7 @@
 ---
 title: Kísérletek megjelenítése a TensorBoard használatával
 titleSuffix: Azure Machine Learning
-description: Indítsa el a TensorBoard ot a kísérletfuttatási előzmények megjelenítéséhez, és azonosítsa a hiperparaméter-hangolás és átképzés lehetséges területeit.
+description: Indítsa el a TensorBoard a kísérleti futtatási előzmények megjelenítéséhez, és azonosítsa a hiperparaméter hangolásának és átképzésének lehetséges területeit.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,58 +10,58 @@ author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
 ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78195379"
 ---
-# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A TensorBoard és az Azure Machine Learning segítségével vizualizálhatja a kísérletfuttatásokat és a mérőszámokat
+# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A kísérlet futtatásának és metrikáinak megjelenítése TensorBoard és Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan tekintheti meg a kísérlet futtatások és metrikák tensorboard [a csomag `tensorboard` ](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) használatával a fő Azure Machine Learning SDK. Miután megvizsgálta a kísérlet fut, jobban hangolhatja és újrataníthatja a gépi tanulási modellek.
+Ebből a cikkből megtudhatja, hogyan tekintheti meg a kísérlet futtatását és mérőszámait a TensorBoard a fő Azure Machine Learning SDK-ban található [ `tensorboard` csomag](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) használatával. Miután megtekintette a kísérlet futtatását, jobban beállíthatja és áttaníthatja a gépi tanulási modelleket.
 
-[A TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) egy webes alkalmazáscsomag a kísérlet szerkezetének és teljesítményének ellenőrzésére és megértésére.
+A [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) egy webalkalmazás-csomag, amely a kísérlet szerkezetének és teljesítményének vizsgálatára és megismerésére szolgál.
 
-A TensorBoard indítása az Azure Machine Learning-kísérletekkel a kísérlet típusától függ:
-+ Ha a kísérlet natív módon olyan naplófájlokat ad ki, amelyek a TensorBoard által fogyaszthatóak, például a PyTorch, a Chainer és a TensorFlow kísérleteket, akkor [a TensorBoardot közvetlenül a](#direct) kísérlet futtatási előzményeiből indíthatja el. 
+A TensorBoard Azure Machine Learning kísérletekkel való elindításának módja a kísérlet típusától függ:
++ Ha a kísérlet natív módon kiírja a TensorBoard által felhasználható naplófájlokat, például a PyTorch, a Láncolter és a TensorFlow kísérleteket, akkor a [TensorBoard közvetlenül](#direct) a kísérlet futtatási előzményeiből indítható el. 
 
-+ Olyan kísérletekhez, amelyek nem natív módon aTensorBoard fogyóeszközökfájljait, például a Scikit-learn vagy az Azure Machine Learning-kísérleteket, [a módszerrel `export_to_tensorboard()` ](#export) exportálhatja a futtatási előzményeket TensorBoard-naplókként, és onnan indíthatja el a TensorBoardot. 
++ Olyan kísérletek esetén, amelyek nem rendelkeznek natív módon kimeneti TensorBoard (például a Scikit-Learn vagy a Azure Machine Learning kísérletekkel [ `export_to_tensorboard()` ), a](#export) futtatási előzményeket TensorBoard-naplókként és a TensorBoard indításával exportálhatja. 
 
 > [!TIP]
-> A jelen dokumentumban szereplő információk elsősorban adatszakértők és fejlesztők számára készült, akik a modell betanítási folyamatát szeretnék figyelni. Ha ön az Azure Machine Learning erőforrás-használatának és eseményeinek figyelése iránt érdeklődő rendszergazda, például kvóták, befejezett képzési futtatások vagy befejezett modelltelepítések, olvassa el [az Azure Machine Learning figyelése.](monitor-azure-machine-learning.md)
+> A jelen dokumentumban található információk elsősorban olyan adatszakértők és fejlesztők számára készültek, akik figyelni szeretnék a modell betanítási folyamatát. Ha Ön olyan rendszergazda, aki az Azure Machine learning erőforrás-felhasználásának és eseményeinek figyelését érdekli, például a kvótákat, a befejezett képzések futtatását vagy az elkészült modell üzembe helyezését, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A TensorBoard elindításához és a kísérletfuttatási előzmények megtekintéséhez a kísérleteknek korábban engedélyezniük kell a naplózást a mérőszámok és a teljesítmény nyomon követéséhez.  
+* A TensorBoard elindításához és a kísérlet futtatási előzményeinek megtekintéséhez a kísérleteknek előzőleg engedélyeznie kell a naplózást, hogy nyomon kövessék a metrikákat és a teljesítményt.  
 
-* A dokumentumban lévő kód az alábbi környezetekben futtatható: 
+* A dokumentumban szereplő kód a következő környezetek bármelyikében futtatható: 
 
     * Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
 
-        * Töltse ki az [oktatóanyag: Telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) hozzon létre egy dedikált notebook-kiszolgáló előre betöltött az SDK és a mintatár.
+        * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
 
-        * A jegyzetfüzet-kiszolgáló mintamappájában két kitöltött és kibontott jegyzetfüzetet kereshet az alábbi könyvtárakra navigálva:
-            * **how-to-use-azureml > képzés-with-deep-learning > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
+        * A notebook-kiszolgáló Samples (minták) mappájában keresse meg a két befejezett és kibontott jegyzetfüzetet a következő könyvtárakra való navigálás során:
+            * **útmutató – azureml > képzés – mélyreható tanulás > export-Run-History-to-tensorboard > exportálás-futtatási előzmények és tensorboard. ipynb**
 
-            * **how-to-use-azureml > track-and-monitor-kísérletek > tensorboard.ipynb**
+            * **útmutató – a azureml > nyomon követése és monitorozása – kísérletek > tensorboard. ipynb**
 
-    * Saját Juptyer notebook szerver
-       * [Telepítse az Azure Machine Learning SDK-t](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) az `tensorboard` extra
-        * [Hozzon létre egy Azure Machine Learning-munkaterületet.](how-to-manage-workspace.md)  
-        * [Munkaterület-konfigurációs fájl létrehozása](how-to-configure-environment.md#workspace).
+    * Saját Juptyer notebook-kiszolgáló
+       * [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -t `tensorboard` a további
+        * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md).  
+        * [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
 
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>1. lehetőség: A futtatási előzmények közvetlen megtekintése a TensorBoardban
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>1. lehetőség: közvetlenül a futtatási előzmények megtekintése a TensorBoard-ben
 
-Ez a beállítás olyan kísérletekhez használható, amelyek natív módon a TensorBoard által elhasználható naplófájlokat, például a PyTorch, a Chainer és a TensorFlow kísérleteket adja ki. Ha nem ez a kísérlet esete, használja inkább [ `export_to_tensorboard()` a módszert.](#export)
+Ez a beállítás olyan kísérletekhez használható, amelyek natív módon kimeneti naplófájlokat TensorBoard, például PyTorch, láncolási és TensorFlow kísérletek. Ha ez nem igaz a kísérletre, használja helyette [a `export_to_tensorboard()` metódust](#export) .
 
-A következő példakód a TensorFlow tárházából származó [MNIST bemutatókísérletet](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) használja egy távoli számítási célban, az Azure Machine Learning Compute-ban. Ezután betanítjuk a modellt az SDK egyéni [TensorFlow-becslésével,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)majd elindítjuk a TensorBoard-ot ezzel a TensorFlow kísérlettel, azaz egy kísérlettel, amely natív módon adja ki a TensorBoard eseményfájljait.
+Az alábbi mintakód a [MNIST demo kísérletet](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) használja a TensorFlow adattárában egy távoli számítási célpontban, Azure Machine learning a számítást. Ezután betanítjuk a modellt az SDK egyéni TensorFlow- [kalkulátorával](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), majd elkezdjük a TensorBoard a TensorFlow-kísérlettel, vagyis egy olyan kísérlettel, amely natív módon kimenetet ad a TensorBoard.
 
-### <a name="set-experiment-name-and-create-project-folder"></a>Kísérlet nevének beállítása és projektmappa létrehozása
+### <a name="set-experiment-name-and-create-project-folder"></a>A kísérlet nevének beállítása és a Project mappa létrehozása
 
-Itt nevezzük el a kísérletet, és hozzuk létre a mappát. 
+Itt nevezjük el a kísérletet, és létrehozjuk a mappát. 
  
 ```python
 from os import path, makedirs
@@ -75,9 +75,9 @@ if not path.exists(exp_dir):
 
 ```
 
-### <a name="download-tensorflow-demo-experiment-code"></a>A TensorFlow bemutatókísérlet kódjának letöltése
+### <a name="download-tensorflow-demo-experiment-code"></a>TensorFlow demo-kísérlet kódjának letöltése
 
-A TensorFlow adattára mnist demóval rendelkezik, kiterjedt TensorBoard műszerekkel. Nem módosítjuk és nem is kell módosítani a bemutató kódját ahhoz, hogy az Azure Machine Learningtel működjön. A következő kódban letöltjük az MNIST kódot, és az újonnan létrehozott kísérleti mappába mentjük.
+A TensorFlow adattárának MNIST-bemutatója kiterjedt TensorBoard-kialakítással rendelkezik. Nem kell módosítania a bemutató kódját, hogy működjön a Azure Machine Learning. A következő kódban letöltjük a MNIST-kódot, és elmentjük az újonnan létrehozott kísérlet mappájába.
 
 ```python
 import requests
@@ -87,14 +87,14 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-Az Egész MNIST kód fájl, mnist_with_summaries.py, észre, `tf.summary.histogram()` `tf.summary.FileWriter()` hogy vannak vonalak, hogy hívja `tf.summary.scalar()`, , stb Ezek a módszerek csoportosítják, naplózzák és címkézik a kísérletek kulcsfontosságú mutatóit a futtatási előzményekbe. A `tf.summary.FileWriter()` különösen fontos, mivel szerializálja a naplózott kísérlet metrikáiból származó adatokat, ami lehetővé teszi a TensorBoard számára, hogy vizualizációkat hozzon létre róluk.
+A MNIST-programkódban mnist_with_summaries. a. a....... `tf.summary.scalar()`. `tf.summary.histogram()`. `tf.summary.FileWriter()` sorban láthatja, hogy vannak-e a hívások. Ezek a metódusok a kísérletek csoport, napló és címke kulcs mérőszámait futtatják a futtatási előzményekben. `tf.summary.FileWriter()` Ez különösen fontos, mivel a naplózott kísérleti mérőszámokból származó adatokat szerializálja, ami lehetővé teszi a TensorBoard számára a vizualizációk létrehozását.
 
  ### <a name="configure-experiment"></a>Kísérlet konfigurálása
 
-A következőkben konfiguráljuk a kísérletet, és könyvtárakat állítunk be a naplókhoz és az adatokhoz. Ezek a naplók lesznek feltöltve a műtermék szolgáltatás, amely TensorBoard később hozzáfér.
+A következőben konfiguráljuk a kísérletet, és beállítja a címtárakat a naplókhoz és az adatkezeléshez. A rendszer feltölti ezeket a naplókat az összetevő-szolgáltatásba, amelyet később TensorBoard is elérhet.
 
 >[!Note]
-> Ebben a TensorFlow-példában telepítenie kell a TensorFlow-t a helyi számítógépre. Továbbá a TensorBoard modulnak (azaz a TensorFlow-hoz mellékelt modulnak) elérhetőnek kell lennie a jegyzetfüzet kernele számára, mivel a helyi számítógép futtatja a TensorBoardot.
+> Ehhez a TensorFlow-példához telepítenie kell a TensorFlow-t a helyi gépre. A TensorBoard modulnak (azaz a TensorFlow-nek is) elérhetőnek kell lennie a notebook kerneléhez, mivel a helyi gép a TensorBoard-t futtatja.
 
 ```Python
 import azureml.core
@@ -121,7 +121,7 @@ exp = Experiment(ws, experiment_name)
 ```
 
 ### <a name="create-a-cluster-for-your-experiment"></a>Fürt létrehozása a kísérlethez
-Létrehozunk egy AmlCompute fürtet ehhez a kísérlethez, azonban a kísérletek bármilyen környezetben létrehozhatók, és továbbra is elindíthatja a TensorBoardot a kísérlet futtatási előzményei ellen. 
+Létrehozunk egy AmlCompute-fürtöt a kísérlethez, de a kísérletek bármilyen környezetben létrehozhatók, és továbbra is elindítható a TensorBoard a kísérlet futtatási előzményeivel. 
 
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -148,9 +148,9 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 # print(compute_target.get_status().serialize())
 ```
 
-### <a name="submit-run-with-tensorflow-estimator"></a>Futtatás beküldése a TensorFlow-becslővel
+### <a name="submit-run-with-tensorflow-estimator"></a>Futtatás a TensorFlow kalkulátorral
 
-A TensorFlow-becslés egyszerű módot biztosít a TensorFlow képzési feladat elindítására egy számítási célon. Ez az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatására használható. Az általános becslést használó betanítási modellekről további információt az [Azure Machine Learning használatával a becsléssel rendelkező modellek betanítása című](how-to-train-ml-models.md) témakörben talál.
+A TensorFlow kalkulátor egyszerű módszert kínál a TensorFlow-betanítási feladatok számítási célra való elindítására. Ez az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -164,11 +164,11 @@ tf_estimator = TensorFlow(source_directory=exp_dir,
 run = exp.submit(tf_estimator)
 ```
 
-### <a name="launch-tensorboard"></a>A TensorBoard elindítása
+### <a name="launch-tensorboard"></a>TensorBoard elindítása
 
-A TensorBoard ot futás közben vagy befejezése után is elindíthatja. A következőkben létrehozunk egy TensorBoard `tb`objektumpéldányt, amely a `run`kísérlet futtatási előzményeit betölti a , majd elindítja a TensorBoard-ot a `start()` metódussal. 
+A TensorBoard a Futtatás vagy a befejezés után indítható el. A következő példában létrehozunk egy TensorBoard, `tb`amely végrehajtja a kísérlet futtatási előzményeit a `run`alkalmazásban, majd elindítja a TensorBoard a `start()` metódussal. 
   
-A [TensorBoard konstruktor](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) vesz egy tömb fut, ezért győződjön meg róla, és adja át, mint egy elemtömb.
+A [TensorBoard konstruktora](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) futtatja a futtatások tömbjét, ezért ne feledje, hogy egyetlen elemből álló tömbként adja át azt.
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -183,18 +183,18 @@ tb.stop()
 ```
 
 >[!Note]
- Bár ebben a példában a TensorFlow-t használta, a TensorBoard ugyanolyan könnyen használható a PyTorch vagy Chainer modellekkel. A TensorFlow-nak elérhetőnek kell lennie a TensorBoard-ot futtató gépen, de nem szükséges a PyTorch vagy Chainer számításokat végző gépen. 
+ Habár ez a példa a TensorFlow-t használta, a TensorBoard könnyen használható a PyTorch-vagy a Láncer-modellekhez. A TensorFlow-nek elérhetőnek kell lennie a TensorBoard-t futtató gépen, de nem szükséges a PyTorch vagy a láncolási számításokat végző gépen. 
 
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>2. lehetőség: Exportálási előzmények naplóként a TensorBoard ban való megtekintéshez
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>2. lehetőség: előzmények exportálása naplóként a TensorBoard megtekintéséhez
 
-A következő kód beállít egy mintakísérletet, megkezdi a naplózási folyamatot az Azure Machine Learning futtatási előzmények API-jai használatával, és exportálja a kísérlet futtatási előzményeit a TensorBoard által vizualizációra fogyasztható naplókba. 
+A következő kód egy minta-kísérletet állít be, megkezdi a naplózási folyamatot a Azure Machine Learning futtatási előzmények API-k használatával, és a kísérleti futtatási előzményeket a vizualizációk számára a TensorBoard által használt naplókba exportálja. 
 
 ### <a name="set-up-experiment"></a>Kísérlet beállítása
 
-A következő kód új kísérletet állít `root_run`be, és megnevezi a futtatási könyvtárat. 
+A következő kód egy új kísérletet állít be, és a futtatási könyvtárat `root_run`nevezi. 
 
 ```python
 from azureml.core import Workspace, Experiment
@@ -207,7 +207,7 @@ exp = Experiment(ws, experiment_name)
 root_run = exp.start_logging()
 ```
 
-Itt töltjük be a diabétesz adatkészletet - egy beépített kis adatkészletet, amely scikit-learn-el érkezik, és teszt- és edzéskészletekre osztja fel.
+Itt betöltjük a diabétesz-adathalmazt – egy beépített, kis adatkészletet, amely a scikit-Learn szolgáltatáshoz tartozik, és a teszt-és betanítási csoportokra osztja azokat.
 
 ```Python
 from sklearn.datasets import load_diabetes
@@ -223,9 +223,9 @@ data = {
 }
 ```
 
-### <a name="run-experiment-and-log-metrics"></a>Kísérlet futtatása és naplómetrikák futtatása
+### <a name="run-experiment-and-log-metrics"></a>Kísérlet és naplók metrikáinak futtatása
 
-Ehhez a kódhoz lineáris regressziós modellt és naplókulcs-mutatókat, az `alpha` `mse`alfa-együtthatót és az átlagos négyzetes hibát tanítunk be a futtatási előzményekben.
+Ebben a kódban egy lineáris regressziós modellt és a log Key mérőszámokat, az Alpha együtthatót `alpha`, és az azt jelenti `mse`, hogy a futtatási előzményekben.
 
 ```Python
 from tqdm import tqdm
@@ -247,11 +247,11 @@ for alpha in tqdm(alphas):
    root_run.log("mse", mse)
 ```
 
-### <a name="export-runs-to-tensorboard"></a>Futtatások exportálása a TensorBoard ba
+### <a name="export-runs-to-tensorboard"></a>A futtatások exportálása a TensorBoard
 
-Az SDK [export_to_tensorboard()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) módszerével exportálhatjuk az Azure gépi tanulási kísérletének futtatási előzményeit a TensorBoard naplóiba, így a TensorBoardon keresztül tekinthetjük meg őket.  
+Az SDK [export_to_tensorboard ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) metódusával exportálhatja az Azure Machine learning-kísérlet futtatási előzményeit a tensorboard-naplókba, így megtekintheti őket a tensorboard-on keresztül.  
 
-A következő kódban hozzuk `logdir` létre a mappát a jelenlegi munkakönyvtárunkban. Ez a mappa az a hely, ahol `root_run` exportálni fogjuk a kísérleti futtatási előzményeket és naplókat, majd megjelöljük, hogy a futtatás befejeződöttként fusson. 
+A következő kódban létrehozjuk a mappát `logdir` az aktuális munkakönyvtárban. Ebben a mappában fogjuk exportálni a kísérlet futtatási előzményeit és `root_run` naplóit, majd megjelölik a futtatást befejezettként. 
 
 ```Python
 from azureml.tensorboard.export import export_to_tensorboard
@@ -272,10 +272,10 @@ root_run.complete()
 ```
 
 >[!Note]
- Egy adott futtatást a TensorBoard-ba is exportálhat, ha megadja a futtatás nevét.`export_to_tensorboard(run_name, logdir)`
+ Egy adott futtatást TensorBoard is exportálhat a Futtatás nevének megadásával.`export_to_tensorboard(run_name, logdir)`
 
-### <a name="start-and-stop-tensorboard"></a>TensorBoard indítása és leállítása
-Miután a kísérlet futtatási előzményeit exportáltuk, elindíthatjuk a TensorBoard-ot a [start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) módszerrel. 
+### <a name="start-and-stop-tensorboard"></a>TensorBoard elindítása és leállítása
+A kísérlet futtatási előzményeinek exportálása után a TensorBoard a [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) metódussal indítható el. 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -287,7 +287,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-Ha elkészült, győződjön meg róla, hogy hívja meg a TensorBoard objektum [stop()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--) metódusát. Ellenkező esetben a TensorBoard addig fog futni, amíg le nem állítja a jegyzetfüzetkernelt. 
+Ha elkészült, győződjön meg arról, hogy a TensorBoard objektum [Leállítás ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--) metódusát hívja meg. Ellenkező esetben a TensorBoard továbbra is futni fog, amíg le nem állítja a notebook kernelét. 
 
 ```python
 tb.stop()
@@ -295,7 +295,7 @@ tb.stop()
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a how-to you, létrehozott két kísérletet, és megtanulta, hogyan kell indítani TensorBoard ellen fut történelem azonosítani területek potenciális tuning és átképzés. 
+Ebben az útmutatóban két kísérletet hozott létre, és megtanulta, hogyan indíthat el TensorBoard a futtatási előzményekkel a lehetséges hangolási és újraképzési területek azonosítása érdekében. 
 
-* Ha elégedett a modell, feje fölött a [mi Hogyan kell telepíteni a modell](how-to-deploy-and-where.md) cikket. 
-* További információ a [hiperparaméter-hangolásról.](how-to-tune-hyperparameters.md) 
+* Ha elégedett a modellel, látogasson el a [modell üzembe helyezésével](how-to-deploy-and-where.md) foglalkozó cikkre. 
+* További információ a [hiperparaméter hangolásáról](how-to-tune-hyperparameters.md). 

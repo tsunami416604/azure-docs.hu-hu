@@ -1,6 +1,6 @@
 ---
-title: Analytics az SQL Data Warehouse-on a T-SQL, Python - Team Data Science Process segítségével
-description: Példák, amelyek végigvezetik az SQL Data Warehouse prediktív elemzések használatával.
+title: Analitika SQL Data Warehouse a T-SQL, Python-Team adatelemzési folyamattal
+description: Példák az SQL Data Warehouse használatára a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128170"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>SQL Data Warehouse adatelemzési forgatókönyvek a T-SQL és a Python használatával az Azure-ban
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Adatelemzési útmutató SQL Data Warehouse a T-SQL és a Python használatával az Azure-ban
 
-Ezek a forgatókönyvek az SQL Data Warehouse prediktív elemzéseket használnak. A csapatadat-elemzési folyamatban ismertetett lépéseket követik. A csapatadat-elemzési folyamat áttekintését az [Adatelemzési folyamat című](overview.md)témakörben találja. Az SQL Data Warehouse bemutatása: [Mi az Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Ezek a forgatókönyvek a prediktív elemzések elvégzéséhez SQL Data Warehouse használatát ismertetik. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A SQL Data Warehouse bemutatása: [Mi az Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-További adatelemzési forgatókönyvek, amelyek végrehajtják a csapat adatelemzési folyamat az általuk használt **platform** szerint vannak csoportosítva. Lásd: [A csapatadat-elemzési folyamatot végrehajtó forgatókönyvek](walkthroughs.md) a példák részletezéséhez.
+A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Taxitippek előrejelzése a T-SQL és az IPython-jegyzetfüzetek használatával az SQL Data Warehouse segítségével
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>A taxi tippek előrejelzése T-SQL-és IPython-jegyzetfüzetek használatával SQL Data Warehouse
 
-[Az SQL Data Warehouse használata forgatókönyv](sqldw-walkthrough.md) bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolási és regressziós modelleket az SQL Data Warehouse (SQL DW) használatával.  Az adatok egy nyilvánosan elérhető NYC taxi út és a viteldíj adatkészlet.
+A [Use SQL Data Warehouse útmutató](sqldw-walkthrough.md) bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolást és regressziós modelleket SQL Data WAREHOUSE (SQL DW) használatával.  Az adat egy nyilvánosan elérhető NYC taxi Trip és fare adatkészlet.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A csapatadat-elemzési folyamatot alkotó legfontosabb összetevőkről a [Csapat adatelemzési folyamatának áttekintése című témakörben olvashat.](overview.md)
+A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
 
-A csapatadat-elemzési folyamat életciklusának témakörét a [Csapatadat-elemzési folyamat életciklusa című témakörben közöld.](lifecycle.md) Ez az életciklus ismerteti azokat a lépéseket, az elejétől a végéig, amelyeket a projektek általában a végrehajtáskor követnek. 
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 

@@ -1,41 +1,41 @@
 ---
-title: Webalkalmazás létrehozása a Service Management Connector számára
-description: Hozzon létre egy Service Manager webalkalmazást egy automatikus parancsfájl használatával az Azure-beli IT Service Management Connector-hoz való csatlakozáshoz, és központilag figyelheti és kezelheti az ITSM munkaelemeket.
+title: Webalkalmazás létrehozása a Service Management-összekötőhöz
+description: Hozzon létre egy Service Manager webalkalmazást automatikus parancsfájl használatával az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz, valamint a ITSM munkaelemek központi figyeléséhez és kezeléséhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
 ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054855"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager webalkalmazás létrehozása az automatikus parancsfájl használatával
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
-A következő parancsfájl segítségével hozza létre a Webappot a Service Manager-példányhoz. A Service Manager-kapcsolatról itt olvashat [bővebben: Service Manager Web app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Futtassa a parancsfájlt a következő szükséges adatok megadásával:
+Futtassa a szkriptet a következő szükséges részletek megadásával:
 
-- Az Azure-előfizetés részletei
+- Azure-előfizetés részletei
 - Erőforráscsoport neve
 - Hely
-- A Szolgáltatáskezelő kiszolgálójának adatai (kiszolgálónév, tartomány, felhasználónév és jelszó)
-- A webalkalmazás webhelynév-előtagja
-- ServiceBus névtér.
+- Service Manager kiszolgáló adatai (kiszolgáló neve, tartomány, Felhasználónév és jelszó)
+- A webalkalmazás helynév-előtagja
+- ServiceBus-névtér.
 
-A parancsfájl a megadott névvel hozza létre a webalkalmazást (néhány további karakterlánccal együtt, hogy egyedivé tegye). Létrehozza a **webalkalmazás URL-címét**, **az ügyfélazonosítót**és **az ügyféltitkos kulcsot.**
+A szkript létrehozza a webalkalmazást a megadott névvel (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót**és az **ügyfél titkos kulcsát**.
 
-Mentse ezeket az értékeket, szüksége lesz ezekre az értékekre, amikor kapcsolatot hoz létre az IT Service Management Connector-szal.
+Mentse ezeket az értékeket, ha IT-szolgáltatásmenedzsmenti csatoló-vel létesített kapcsolatokat hoz létre.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- Windows Management Framework 5.0 vagy újabb rendszer.
-A Windows 10 alapértelmezés szerint 5.1-es. Letöltheti a keret [itt:](https://www.microsoft.com/download/details.aspx?id=50395)
+ Windows Management Framework 5,0 vagy újabb verzió.
+A Windows 10 alapértelmezett értéke 5,1. A keretrendszert [innen](https://www.microsoft.com/download/details.aspx?id=50395)töltheti le:
 
 Használja a következő parancsfájlt:
 

@@ -1,143 +1,143 @@
 ---
-title: Adatok megjelenítése az Azure Monitorból | Microsoft dokumentumok
-description: Az Azure Monitorban tárolt metrika- és naplóadatok megjelenítéséhez rendelkezésre álló módszerek összegzését tartalmazza.
+title: Adatok megjelenítése Azure Monitorból | Microsoft Docs
+description: A Azure Monitorban tárolt metrika és naplózási adatok megjelenítéséhez elérhető módszerek összegzését tartalmazza.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535369"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
-Ez a cikk az Azure Monitorban tárolt napló- és metrikaadatok megjelenítésére rendelkezésre álló módszerek összegzését tartalmazza.
+# <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése Azure Monitorból
+Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
 
-A vizualizációk, például a diagramok és a grafikonok segítségével elemezheti a figyelési adatokat a problémák leásása és a minták azonosítása érdekében. A használt eszköztől függően lehetősége van arra is, hogy a vizualizációkat a szervezeten belüli és kívüli más felhasználókkal is megossza.
+A vizualizációk, például a diagramok és a diagramok segítségével elemezheti a figyelési adatait a problémák részletezése és a minták azonosítása érdekében. A használt eszköztől függően lehetősége van a vizualizációk megosztására is a szervezeten belül és kívül más felhasználókkal.
 
 ## <a name="workbooks"></a>Munkafüzetek
-[A munkafüzetek](../azure-monitor/app/usage-workbooks.md) olyan interaktív dokumentumok, amelyek betekintést nyújtanak az adatokba, a vizsgálatba és a csapaton belüli együttműködésbe. Konkrét példák, ahol a munkafüzetek hasznosak a hibaelhárítási útmutatók és az incidens postmortem.
+A [munkafüzetek](../azure-monitor/app/usage-workbooks.md) olyan interaktív dokumentumok, amelyek részletesen betekintést nyújtanak az adataiba, a nyomozásba és a csapaton belüli együttműködésbe. Konkrét példák, ahol a munkafüzetek hasznosak a hibaelhárítási útmutatók és az incidens utáni események.
 
 ![Munkafüzet](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Előnyök
-- Támogatja a metrikák és a naplók.
-- Támogatja az interaktív jelentéseket engedélyező paramétereket, ahol egy tábla elemének kijelölése dinamikusan frissíti a kapcsolódó diagramokat és vizualizációkat.
-- Dokumentumszerű folyamat.
-- Lehetőség személyes vagy megosztott munkafüzetekhez.
-- Egyszerű, együttműködésen alapuló szerzői élmény.
-- A sablonok támogatják a nyilvános GitHub-alapú sablongyűjteményt.
+- A a metrikákat és a naplókat is támogatja.
+- A támogatja azokat a paramétereket, amelyek interaktív jelentéseket tesznek lehetővé, ahol a táblázatban lévő elemek kiválasztásával dinamikusan frissülnek a társított diagramok és vizualizációk.
+- Dokumentumhoz hasonló folyamat.
+- Személyes vagy megosztott munkafüzetekhez tartozó lehetőség.
+- Egyszerű, együttműködő-barátságos szerzői élmény.
+- A sablonok támogatják a nyilvános GitHub-alapú sablon-gyűjteményt.
 
 ### <a name="limitations"></a>Korlátozások
 - Nincs automatikus frissítés.
-- Nincs olyan sűrű elrendezés, mint az irányítópultok, amelyek a munkafüzeteket egyetlen üvegtáblaként kevésbé hasznossá teszik. Célja, hogy mélyebb betekintést nyújtson.
+- Nincsenek olyan sűrű elrendezések, mint az irányítópultok, amelyek a munkafüzetek számára kevésbé hasznosak, mint az üvegek. További részletek a mélyebb elemzések biztosításához.
 
 
 ## <a name="azure-dashboards"></a>Azure-irányítópultok
-[Az Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azure elsődleges irányítópult-technológiája. Különösen hasznosak az Azure-infrastruktúrán és -szolgáltatásokon keresztül egyetlen üvegtábla biztosításában, amely lehetővé teszi a fontos problémák gyors azonosítását.
+Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azure elsődleges irányítópult-technológiái. Különösen hasznosak lehetnek az Azure-infrastruktúra és-szolgáltatások egyetlen ablaktáblájának biztosításában, amely lehetővé teszi a fontos problémák gyors azonosítását.
 
 ![Irányítópult](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Előnyök
-- Mély integráció az Azure-ba. A vizualizációk több Azure-lapról, például a Metrics Explorer, a Log Analytics és az Application Insights irányítópultjaira rögzíthetők.
-- Támogatja a metrikák és a naplók.
-- Több forrásból származó adatokat egyesíthet, például [a metrikakezelőből,](platform/metrics-charts.md) [a lekérdezések naplózásából,](log-query/log-query-overview.md)valamint a [térképekből](app/app-map.md) és az Application Insights ban való rendelkezésre állásból származó adatokat.
-- Lehetőség személyes vagy megosztott irányítópultokhoz. Integrálva az Azure [szerepköralapú hitelesítésével (RBAC).](../role-based-access-control/overview.md)
-- Automatikus frissítés. A metrikák frissítése legalább öt perc időtartománytól függ. A naplók óránként frissülnek, igény szerint manuális frissítési lehetőséggel, ha egy adott vizualizáció "frissítés" ikonjára kattintanak, vagy frissítik a teljes irányítópultot.
-- Parametrizált metrikák irányítópultok időbélyeggel és egyéni paraméterekkel.
-- Rugalmas elrendezési lehetőségek.
-- Teljes képernyős módban.
+- Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például Metrikaböngésző, Log Analytics és Application Insights.
+- A a metrikákat és a naplókat is támogatja.
+- Több forrásból származó adatok egyesítése, beleértve a [metrikák Explorer](platform/metrics-charts.md), a [naplók](log-query/log-query-overview.md)és a [leképezések](app/app-map.md) kimenetét Application Insightsban.
+- Személyes vagy megosztott irányítópultok beállítása. Integrálva van az Azure [szerepköralapú hitelesítéssel (RBAC)](../role-based-access-control/overview.md).
+- Automatikus frissítés. A metrikák frissítése az időtartománytól függ, amely legalább öt percet vesz igénybe. A naplók óránként frissülnek, az adott vizualizáción található "frissítés" ikonra kattintva vagy a teljes irányítópult frissítésével igény szerint manuális frissítési lehetőséggel.
+- Parametrized metrikai irányítópultok timestamp és egyéni paraméterekkel.
+- Rugalmas elrendezési beállítások.
+- Teljes képernyős mód.
 
 
 ### <a name="limitations"></a>Korlátozások
-- A naplóvizualizációk korlátozott vezérlése adattáblák támogatása nélkül. Az adatsorok teljes száma 10-re korlátozódik, és további adatsorok egy _másik_ gyűjtő alá vannak csoportosítva.
-- A naplódiagramok nem támogatják az egyéni paramétereket.
-- A naplódiagramok az elmúlt 30 napra korlátozódnak.
-- A naplódiagramok csak megosztott irányítópultokhoz rögzíthetők.
-- Nincs interaktivitás az irányítópult adataival.
+- Az adattáblákat nem támogató naplózási vizualizációk korlátozott vezérlése. Az adatsorozatok teljes száma legfeljebb 10, a további adatsorozatok pedig egy _másik_ gyűjtő alatt vannak csoportosítva.
+- Nincsenek egyéni paraméterek a naplózási diagramokhoz.
+- A naplózási diagramok az elmúlt 30 napban vannak korlátozva.
+- A naplózási diagramokat csak megosztott irányítópultokra lehet rögzíteni.
+- Nincs interaktivitás az irányítópult-adatkezeléssel.
 - Korlátozott környezetfüggő részletezés.
 
 
 ## <a name="power-bi"></a>Power BI
-A [Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos az üzleti központú irányítópultok és jelentések létrehozásához, valamint a hosszú távú KPI-trendek elemzéséhez. A [naplólekérdezés eredményeit importálhatja egy](platform/powerbi.md) Power BI-adatkészletbe, így kihasználhatja annak funkcióit, például a különböző forrásokból származó adatok kombinálását és a jelentések megosztását az interneten és a mobileszközökön.
+[Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos az üzleti központú irányítópultok és jelentések létrehozásához, valamint a hosszú távú KPI-trendek elemzését szolgáló jelentésekhez. [A naplók eredményét importálhatja](platform/powerbi.md) egy Power bi adatkészletbe, így kihasználhatja az olyan funkciók előnyeit, mint például a különböző forrásokból származó adatok egyesítése és a jelentések megosztása a webes és a mobil eszközökön.
 
 ![Power BI](media/visualizations/power-bi.png)
 
 ### <a name="advantages"></a>Előnyök
-- Gazdag képi megjelenítések.
-- Kiterjedt interaktivitás, beleértve a nagyítást és a keresztszűrést.
-- Könnyen megosztható az egész szervezetben.
-- Integráció több adatforrásból származó más adatokkal.
-- Jobb teljesítmény a kockában gyorsítótárazott eredményekkel.
+- Sokoldalú vizualizációk.
+- Széleskörű interaktivitás, beleértve a nagyítást és a szűrést.
+- Könnyen megosztható a szervezeten belül.
+- Integráció más adatokkal több adatforrásból.
+- Jobb teljesítmény az adatkockában gyorsítótárazott eredményekkel.
 
 
 ### <a name="limitations"></a>Korlátozások
-- Támogatja a naplókat, de a metrikákat nem.
-- Nincs Azure-integráció. Az Azure Resource Manager segítségével nem lehet kezelni az irányítópultokat és a modelleket.
-- A beállításokhoz a lekérdezési eredményeket importálni kell a Power BI-modellbe. Az eredmény méretének és frissítésének korlátozása.
-- Korlátozott adatfrissítés naponta nyolc alkalommal.
+- Támogatja a naplókat, de nem metrikákat.
+- Nincs Azure-integráció. Az irányítópultok és modellek nem kezelhetők Azure Resource Manageron keresztül.
+- A lekérdezési eredményeket a konfiguráláshoz Power BI modellbe kell importálni. Az eredmény méretének és frissítésének korlátozása.
+- Korlátozott Adatfrissítés naponta 8 alkalommal.
 
 
 ## <a name="grafana"></a>Grafana
-[A Grafana](https://grafana.com/) egy nyílt platform, amely kiemelkedik az operatív irányítópultokon. Különösen hasznos a működési események észleléséhez, elkülönítéséhez és osztályozásáért. A [Grafana Azure Monitor adatforrás-beépülő modult](platform/grafana-plugin.md) hozzáadhatja az Azure-előfizetéséhez, hogy vizualizálja az Azure-metrikák adatait.
+A [Grafana](https://grafana.com/) egy nyílt platform, amely kiemelkedik az operatív irányítópultokon. Ez különösen hasznos az operatív incidensek észleléséhez és elkülönítéséhez, illetve osztályozásakor. Az Azure-előfizetéshez hozzáadhat [Grafana Azure monitor adatforrási beépülő modult](platform/grafana-plugin.md) , amely az Azure-metrikák adatait jeleníti meg.
 
 ![Grafana](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Előnyök
-- Gazdag képi megjelenítések.
+- Sokoldalú vizualizációk.
 - Az adatforrások gazdag ökoszisztémája.
-- Adatinteraktivitás, beleértve a nagyítást.
+- Adatinteraktivitás, beleértve a nagyítást is.
 - Támogatja a paramétereket.
 
 ### <a name="limitations"></a>Korlátozások
-- Nincs Azure-integráció. Az Azure Resource Manager segítségével nem lehet kezelni az irányítópultokat és a modelleket.
-- A Grafana infrastruktúra további támogatásának költsége vagy a Grafana Cloud többletköltsége.
+- Nincs Azure-integráció. Az irányítópultok és modellek nem kezelhetők Azure Resource Manageron keresztül.
+- A Grafana-felhő további Grafana-infrastruktúrájának vagy további díjainak támogatásához.
 
 
 ## <a name="build-your-own-custom-application"></a>Saját egyéni alkalmazás létrehozása
-Az Azure Monitorban a napló- és metrikaadatokhoz bármely REST-ügyfél használatával hozzáférhet a napló- és metrikaadatokhoz, így saját egyéni webhelyeket és alkalmazásokat hozhat létre.
+A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n keresztül férhet hozzá a REST-ügyfél használatával, amely lehetővé teszi saját egyéni webhelyek és alkalmazások létrehozását.
 
 ### <a name="advantages"></a>Előnyök
 - Teljes rugalmasság a felhasználói felületen, a vizualizációban, az interaktivitásban és a funkciókban.
-- A mérőszámok és a naplóadatok kombinálása más adatforrásokkal.
+- Metrikák és adatok naplózása más adatforrásokkal.
 
 ### <a name="disadvantages"></a>Hátrányok
-- Jelentős mérnöki erőfeszítésre van szükség.
+- Jelentős mérnöki tevékenység szükséges.
 
 
-## <a name="azure-monitor-views"></a>Azure figyelőnézetek
+## <a name="azure-monitor-views"></a>Azure Monitor nézetek
 
 > [!IMPORTANT]
-> A nézetek elavultak. Tekintse meg az [Azure Monitor nézet tervezője a munkafüzetek átmeneti útmutató](platform/view-designer-conversion-overview.md) útmutatást konvertáló nézetek munkafüzetek.
+> A nézetek elavultak. Tekintse meg a munkafüzetekhez kapcsolódó nézetek konvertálásával kapcsolatos útmutatót a [Azure monitor View Designer a munkafüzetek](platform/view-designer-conversion-overview.md) számára című témakörben.
 
-[Az Azure Monitor nézetei](platform/view-designer.md) lehetővé teszik, hogy egyéni vizualizációkat hozzon létre a naplóadatokkal. Ezeket [a felügyeleti megoldások](insights/solutions.md) segítségével használják az általuk gyűjtött adatok bemutatására.
+[A Azure monitor nézetei](platform/view-designer.md) lehetővé teszik, hogy egyéni vizualizációkat hozzon létre a naplózási adattal. Ezeket a [figyelési megoldások](insights/solutions.md) használják a gyűjtött adatok bemutatására.
 
 
 ![Nézet](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Előnyök
-- A naplóadatok bővített vizualizációi.
-- Nézetek exportálása és importálása más erőforráscsoportokba és előfizetésekbe való átviteléhez.
-- Integrálható az Azure Monitor felügyeleti modelljébe munkaterületekkel és figyelési megoldásokkal.
-- [Szűrők](platform/view-designer-filters.md) egyéni paraméterekhez.
-- Interaktív, támogatja a többszintű részletezést (egy másik nézetben fúródó nézet)
+- Rich vizualizációk a naplózási adatmegjelenítéshez.
+- A nézetek exportálásával és importálásával továbbíthatja azokat más erőforráscsoportok és előfizetések számára.
+- Integrálható Azure Monitor felügyeleti modellbe munkaterületekkel és figyelési megoldásokkal.
+- Egyéni paraméterek [szűrői](platform/view-designer-filters.md) .
+- Interaktív, támogatja a többszintű részletezést (ez a nézet egy másik nézetre is kiterjed)
 
 ### <a name="limitations"></a>Korlátozások
-- Támogatja a naplókat, de a metrikákat nem.
-- Nincs személyes véleményem. A munkaterülethez hozzáféréssel rendelkező összes felhasználó számára elérhető.
+- Támogatja a naplókat, de nem metrikákat.
+- Nincs személyes nézet. Minden olyan felhasználó számára elérhető, aki hozzáféréssel rendelkezik a munkaterülethez.
 - Nincs automatikus frissítés.
-- Korlátozott elrendezési lehetőségek.
-- Nem támogatja a több munkaterületen vagy az Application Insights-alkalmazások ban lekérdezés.
-- A lekérdezések válaszmérete 8 MB és a lekérdezés 110 másodperces végrehajtási ideje korlátozott.
+- Korlátozott elrendezési beállítások.
+- Nem támogatott több munkaterület vagy Application Insights alkalmazások lekérdezése.
+- A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg az [Azure Monitor által gyűjtött adatokat.](platform/data-platform.md)
-- További információ [az Azure-irányítópultokról.](../azure-portal/azure-portal-dashboards.md)
-- További információ [az Azure Monitor nézeteiről.](platform/view-designer.md)
-- További információ [a munkafüzetekről.](../azure-monitor/app/usage-workbooks.md)
-- További információ [a naplóadatok Power BI-ba történő importálásáról.](../azure-monitor/platform/powerbi.md)
-- További információ a [Grafana Azure Monitor adatforrásbeépülő modulról.](../azure-monitor/platform/grafana-plugin.md)
+- Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
+- Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
+- A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.
+- További tudnivalók a [munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatáról.
+- További információ a [naplózási adatainak az Power BIba való importálásáról](../azure-monitor/platform/powerbi.md).
+- Ismerkedjen meg a [Grafana Azure monitor adatforrás beépülő modullal](../azure-monitor/platform/grafana-plugin.md).
 

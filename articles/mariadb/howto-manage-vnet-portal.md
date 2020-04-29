@@ -1,63 +1,63 @@
 ---
-title: Virtuálishálózati végpontok kezelése – Azure portal – Azure Database for MariaDB
-description: Azure-adatbázis létrehozása és kezelése a MariaDB virtuálishálózat-szolgáltatás végpontjaihoz és szabályaihoz az Azure Portal használatával
+title: VNet-végpontok kezelése – Azure Portal-Azure Database for MariaDB
+description: Azure Database for MariaDB VNet-szolgáltatási végpontok és szabályok létrehozása és kezelése a Azure Portal használatával
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 61a8337536f55ceda9bef5b7eaa67a37644d2aca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530597"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása és kezelése a MariaDB virtuálishálózat-szolgáltatás végpontjaihoz és virtuálishálózat-szabályaihoz az Azure Portal használatával
+# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure Database for MariaDB VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése a Azure Portal használatával
 
-A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MariaDB-kiszolgálóra. Az Azure Database for MariaDB VNet szolgáltatásvégpontok áttekintését, beleértve a korlátozásokat, az [Azure Database for MariaDB Server VNet szolgáltatásvégpontjai című témakörben olvashat.](concepts-data-access-security-vnet.md) A VNet-szolgáltatás végpontjai a MariaDB-hez való Azure Database összes támogatott régiójában elérhetők.
+A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MariaDB-kiszolgálóra. Az Azure Database for MariaDB VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for MariaDB Server VNet Service-végpontok](concepts-data-access-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for MariaDB összes támogatott régiójában elérhetők.
 
 > [!NOTE]
-> A Virtuálishálózat-szolgáltatás végpontjainak támogatása csak általános célú és memóriaoptimalizált kiszolgálókhoz érhető el.
+> A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
 
-## <a name="create-a-vnet-rule-and-enable-service-endpoints"></a>Virtuálishálózati szabály létrehozása és szolgáltatásvégpontok engedélyezése
+## <a name="create-a-vnet-rule-and-enable-service-endpoints"></a>VNet-szabály létrehozása és szolgáltatási végpontok engedélyezése
 
-1. A MariaDB kiszolgálólapján a Beállítások fejléc alatt kattintson a **Kapcsolatbiztonság** elemre a MariaDB Azure Database kapcsolatbiztonsági ablaktáblájának megnyitásához.
+1. A MariaDB-kiszolgáló lapon, a beállítások fejléc alatt kattintson a **kapcsolatbiztonsági** elemre a Azure Database for MariaDB kapcsolódási biztonsági paneljének megnyitásához.
 
-2. Győződjön meg arról, hogy az Azure-szolgáltatások hoz való hozzáférés engedélyezése vezérlő **je off -ra**van állítva.
+2. Győződjön meg arról, hogy az Azure-szolgáltatások hozzáférésének engedélyezése beállítás **ki van kapcsolva**.
 
 > [!Important]
-> Ha be állítja, az Azure MariaDB adatbázis-kiszolgáló elfogadja a kommunikációt bármely alhálózatból. Ha a vezérlőt be állítja BE-re, biztonsági szempontból túlzott hozzáférés lehet. A Microsoft Azure Virtual Network szolgáltatás végpontja, az Azure Database for MariaDB virtuális hálózati szabályszolgáltatásával együttműködve együttesen csökkentheti a biztonsági felületet.
+> Ha be értékre állítja be, az Azure MariaDB adatbázis-kiszolgáló bármely alhálózatról fogadja a kommunikációt. Ha a vezérlőt a be értékre állítja, előfordulhat, hogy a biztonsági szempontból túlságosan nagy a hozzáférés. A Microsoft Azure Virtual Network szolgáltatási végpont funkciója, amely a Azure Database for MariaDB virtuális hálózati szabály funkciójával együttműködve csökkenti a biztonsági felületét.
 
-3. Ezután kattintson a **+ Meglévő virtuális hálózat hozzáadása**elemre. Ha nem rendelkezik meglévő virtuális hálózattal, a **+ Új virtuális hálózat létrehozása** elemre kattintva hozhat létre egyet. Lásd: [Rövid útmutató: Virtuális hálózat létrehozása az Azure Portalhasználatával](../virtual-network/quick-create-portal.md)
+3. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**lehetőségre. Ha nem rendelkezik meglévő VNet, kattintson az **+ új virtuális hálózat létrehozása** lehetőségre egy létrehozásához. Lásd [: gyors útmutató: virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/quick-create-portal.md)
 
-   ![Azure Portal – kattintson a Kapcsolatbiztonság elemre](./media/howto-manage-vnet-portal/1-connection-security.png)
+   ![Azure Portal – kattintson a kapcsolatbiztonsági lehetőségre](./media/howto-manage-vnet-portal/1-connection-security.png)
 
-4. Adja meg a virtuális hálózat szabály nevét, jelölje ki az előfizetést, a virtuális hálózatot és az alhálózat nevét, majd kattintson az **Engedélyezés gombra.** Ez automatikusan engedélyezi a Virtuálishálózat-szolgáltatás végpontjait az alhálózaton a **Microsoft.SQL** szolgáltatáscímke használatával.
+4. Adja meg a VNet szabály nevét, válassza ki az előfizetést, a virtuális hálózatot és az alhálózatot, majd kattintson az **Engedélyezés**gombra. Ez automatikusan engedélyezi a VNet szolgáltatási végpontok használatát az alhálózaton a **Microsoft. SQL** szolgáltatás címkével.
 
-   ![Azure Portal - a virtuális hálózat konfigurálása](./media/howto-manage-vnet-portal/2-configure-vnet.png)
+   ![Azure Portal – VNet konfigurálása](./media/howto-manage-vnet-portal/2-configure-vnet.png)
 
    A fióknak rendelkeznie kell a megfelelő engedélyekkel egy virtuális hálózat és egy szolgáltatásvégpont létrehozásához.
 
-   A szolgáltatásvégpontokat a virtuális hálózatokon egymástól függetlenül konfigurálhatja a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználó.
+   A szolgáltatási végpontok egymástól függetlenül konfigurálhatók virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól.
     
-   Az Azure-szolgáltatás erőforrásainak virtuális hálózathoz való biztonságossá tétele érdekében a felhasználónak engedéllyel kell rendelkeznie a "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" használatára a hozzáadott alhálózatok hoz. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
+   Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a "Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/" jogosultsággal a hozzáadott alhálózatokhoz. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
     
    További információk a [beépített szerepkörökről](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) és a bizonyos engedélyek [egyéni szerepkörökhöz](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) való hozzárendeléséről.
     
-   A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatás erőforrásai különböző előfizetésekben vannak, az erőforrásoknak ugyanahhoz az Active Directory (AD) bérlőhöz kell tartozniuk. Győződjön meg arról, hogy mindkét előfizetés rendelkezik a **Microsoft.Sql** erőforrás-szolgáltató regisztrálva. További információkért lásd [az erőforrás-kezelő-regisztrációt][resource-manager-portal]
+   A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a VNet és az Azure-szolgáltatási erőforrások különböző előfizetésekben találhatók, akkor az erőforrásoknak ugyanahhoz a Active Directory (AD) bérlőhöz kell tartozniuk. Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
 
    > [!IMPORTANT]
-   > A szolgáltatásvégpontok konfigurálása előtt ajánlott elolvasni ezt a cikket a szolgáltatásvégpontok konfigurációjáról és szempontokról. **Virtuális hálózat szolgáltatás végpontja:** A [virtuális hálózati szolgáltatás végpontja](../virtual-network/virtual-network-service-endpoints-overview.md) egy alhálózat, amelynek tulajdonságértékei egy vagy több hivatalos Azure-szolgáltatástípus-neveket tartalmaznak. A VNet-szolgáltatások végpontjai a **Microsoft.Sql**szolgáltatástípust használják, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatáscímke az Azure SQL Database, az Azure Database for MariaDB, a PostgreSQL és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, ha a **Microsoft.Sql** szolgáltatáscímke egy virtuális hálózat szolgáltatás végpontja konfigurálja a szolgáltatás végpontforgalmát az összes Azure Database-szolgáltatások, beleértve az Azure SQL-adatbázis, az Azure Database for PostgreSQL, az Azure Database for MariaDB és az Azure Database for MySQL-kiszolgálók az alhálózaton.
+   > Javasoljuk, hogy a szolgáltatási végpontok konfigurálása előtt olvassa el ezt a cikket a szolgáltatás-végponti konfigurációkkal és szempontokkal kapcsolatban. **Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont](../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. A VNet Services-végpontok a **Microsoft. SQL**nevű szolgáltatástípus-nevet használják, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatási címke a Azure SQL Databasera, a Azure Database for MariaDBra, a PostgreSQL-re és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, hogy amikor a **Microsoft. SQL** szolgáltatás címkéjét egy VNet szolgáltatási végpontra alkalmazza, a szolgáltatás végponti forgalmát konfigurálja az összes Azure Database-szolgáltatáshoz, beleértve az alhálózaton Azure SQL Database, Azure Database for PostgreSQL, Azure Database for MariaDB és Azure Database for MySQL kiszolgálókat.
    > 
 
-5. Ha engedélyezve van, kattintson **az OK** gombra, és látni fogja, hogy a virtuális hálózat szolgáltatás végpontjai engedélyezve vannak egy virtuális hálózati szabállyal együtt.
+5. Ha engedélyezve van, kattintson **az OK** gombra, és látni fogja, hogy a VNet szolgáltatás-végpontok engedélyezve vannak a VNet szabállyal együtt.
 
-   ![Virtuális hálózat szolgáltatásvégpontjai engedélyezve vannak, és a virtuális hálózat szabálya létrehozva](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![VNet szolgáltatás-végpontok engedélyezve és VNet szabály létrehozva](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>További lépések
-- További információ az [SSL konfigurálásáról a MariaDB Azure Database szolgáltatásában](howto-configure-ssl.md)
-- Hasonlóképpen parancsfájlt is parancsfájlt használhat [a Virtuálishálózati szolgáltatás végpontjainak engedélyezéséhez, és létrehozhat egy VNET-szabályt az Azure Database for MariaDB számára az Azure CLI használatával.](howto-manage-vnet-cli.md)
+- További információ az [SSL konfigurálásáról Azure Database for MariaDB](howto-configure-ssl.md)
+- Ehhez hasonlóan parancsfájlt is [engedélyezhet a VNet szolgáltatás végpontjai számára, és létrehozhat egy VNet-szabályt az Azure CLI-vel való Azure Database for MariaDBhoz](howto-manage-vnet-cli.md).
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -1,54 +1,54 @@
 ---
-title: Biztonság – Azure-adatbázis a MariaDB-hez
-description: A MariaDB Azure Database biztonsági funkcióinak áttekintése.
+title: Biztonság – Azure Database for MariaDB
+description: A Azure Database for MariaDB biztonsági funkcióinak áttekintése.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527826"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Biztonság az Azure Database for MariaDB-ben
 
-Több biztonsági réteg áll rendelkezésre az Azure Database for MariaDB-kiszolgálón lévő adatok védelmére. Ez a cikk ismerteti ezeket a biztonsági beállításokat.
+Több biztonsági réteg is rendelkezésre áll, amelyek a Azure Database for MariaDB-kiszolgálón lévő adatvédelmet biztosítanak. Ez a cikk ezeket a biztonsági beállításokat ismerteti.
 
-## <a name="information-protection-and-encryption"></a>Információvédelem és titkosítás
+## <a name="information-protection-and-encryption"></a>Adatvédelem és titkosítás
 
-### <a name="in-transit"></a>Szállítás közbeni szállítás
-A MariaDB Azure Database biztonságossá teszi az adatokat azáltal, hogy titkosítja az adatokat a Transport Layer Security segítségével. A titkosítás (SSL/TLS) kényszerítése alapértelmezés szerint történik.
+### <a name="in-transit"></a>Átvitel közben
+A Azure Database for MariaDB az adatátvitelt a Transport Layer Security segítségével titkosítja. A titkosítás (SSL/TLS) alapértelmezés szerint ki van kényszerítve.
 
-### <a name="at-rest"></a>Nyugalmi
-Az Azure Database for MariaDB szolgáltatás a FIPS 140-2 érvényesített kriptográfiai modult használja az inaktív adatok tárolásának titkosításához. Az adatok, beleértve a biztonsági másolatokat is, titkosítva vannak a lemezen, kivéve a lekérdezések futtatása közben létrehozott ideiglenes fájlokat. A szolgáltatás az Azure storage titkosításában található AES 256 bites titkosítást használja, és a kulcsok rendszeráltal felügyeltek. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
+### <a name="at-rest"></a>Nyugalmi állapotban
+A Azure Database for MariaDB szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
 
 ## <a name="network-security"></a>Hálózati biztonság
-A MariaDB-kiszolgálóazure-adatbázisával létesített kapcsolatok először egy regionális átjárón keresztül kerülnek átirányítva. Az átjáró nyilvánosan elérhető IP-címmel rendelkezik, miközben a kiszolgáló IP-címei védettek. Az átjáróval kapcsolatos további információkért látogasson el a [kapcsolódási architektúra cikkre.](concepts-connectivity-architecture.md)  
+A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok először egy regionális átjárón keresztül irányíthatók. Az átjáró nyilvánosan elérhető IP-címmel rendelkezik, a kiszolgáló IP-címei pedig védettek. Az átjáróval kapcsolatos további információkért tekintse meg a [kapcsolati architektúra című cikket](concepts-connectivity-architecture.md).  
 
-Egy újonnan létrehozott Azure Database for MariaDB-kiszolgáló tűzfallal rendelkezik, amely blokkolja az összes külső kapcsolatot. Bár elérik az átjárót, nem csatlakozhatnak a kiszolgálóhoz. 
+Az újonnan létrehozott Azure Database for MariaDB-kiszolgáló rendelkezik egy tűzfallal, amely blokkolja az összes külső kapcsolatot. Az átjáró elérése azonban nem engedélyezett a kiszolgálóhoz való kapcsolódáshoz. 
 
-### <a name="ip-firewall-rules"></a>IP tűzfalszabályai
-Az IP-tűzfal szabályai hozzáférést biztosítanak a kiszolgálókhoz az egyes kérelmek eredeti IP-címe alapján. További információt a [tűzfalszabályok áttekintésében](concepts-firewall-rules.md) talál.
+### <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítanak hozzáférést a kiszolgálókhoz. További információért tekintse meg a [Tűzfalszabályok áttekintését](concepts-firewall-rules.md) .
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
-A virtuális hálózati szolgáltatás végpontjai kiterjesztik a virtuális hálózati kapcsolatot az Azure gerinchálózatán keresztül. Virtuális hálózati szabályok használatával engedélyezheti az Azure Database for MariaDB-kiszolgáló számára a virtuális hálózat kiválasztott alhálózataiból származó kapcsolatok engedélyezését. További információt a [virtuális hálózati szolgáltatás végpontjának áttekintésében talál.](concepts-data-access-security-vnet.md)
+A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for MariaDB-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-security-vnet.md)című témakörben talál.
 
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
-A MariaDB-kiszolgáló Azure-adatbázisának létrehozásakor hitelesítő adatokat adhat meg egy rendszergazdai felhasználónak. Ezzel a rendszergazdával további MariaDB-felhasználókat hozhat létre.
+A Azure Database for MariaDB-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további MariaDB-felhasználókat hozhat létre.
 
 
-## <a name="threat-protection"></a>Fenyegetések elleni védelem
+## <a name="threat-protection"></a>Veszélyforrások elleni védelem
 
-Engedélyezheti az [Advanced Threat Protection szolgáltatást,](concepts-data-access-and-security-threat-protection.md) amely észleli a szokatlan és potenciálisan káros kiszolgálók elérésére vagy kihasználására irányuló kísérleteket jelző rendellenes tevékenységeket.
+A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-threat-protection.md) bekapcsolásával olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek a kiszolgálók eléréséhez vagy kiaknázásához.
 
-[A naplózás](concepts-audit-logs.md) az adatbázisokban végzett tevékenységek nyomon követésére érhető el. 
+A [naplózás elérhető](concepts-audit-logs.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
 
 ## <a name="next-steps"></a>További lépések
-- Tűzfalszabályok engedélyezése [IP-hálózatokhoz](concepts-firewall-rules.md) vagy [virtuális hálózatokhoz](concepts-data-access-security-vnet.md)
+- Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-security-vnet.md)

@@ -1,28 +1,28 @@
 ---
 title: Linuxos virtuális merevlemez létrehozása és feltöltése
-description: Ismerje meg, hogy hozzon létre és töltsön fel egy Azure virtuális merevlemezt (VHD), amely egy Linux operációs rendszert tartalmaz.
+description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066763"
 ---
-# <a name="information-for-non-endorsed-distributions"></a>A nem jóváhagyott felosztásokra vonatkozó információk
+# <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
 
-Az Azure platform SLA csak akkor vonatkozik a Linux operációs rendszert futtató virtuális gépekre, ha a [jóváhagyott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) egyikét használják. Ezek a jóváhagyott disztribúciók előre konfigurált Linux-lemezképek az Azure Marketplace-en.
+Az Azure platform SLA-ja csak akkor érvényes a Linux operációs rendszert futtató virtuális gépekre, ha az egyik [támogatott disztribúciót](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használja. Ezen támogatott disztribúciók esetében az előre konfigurált Linux-lemezképek az Azure piactéren érhetők el.
 
-* [Linux az Azure-ban - Jóváhagyott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Linuxos lemezképek támogatása a Microsoft Azure-ban](https://support.microsoft.com/kb/2941892)
+* [Linux az Azure-ban – támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux-rendszerképek támogatása a Microsoft Azureban](https://support.microsoft.com/kb/2941892)
 
-Az Azure-on futó összes disztribúciónak számos előfeltétele van. Ez a cikk nem lehet átfogó, mivel minden disztribúció más. Még akkor is, ha megfelel az alábbi kritériumoknak, előfordulhat, hogy jelentősen módosítania kell a Linux rendszert, hogy megfelelően működjön.
+Az Azure-on futó összes disztribúciónak számos előfeltétele van. Ez a cikk nem lehet átfogó, mivel minden eloszlás eltérő. Előfordulhat, hogy az alábbi feltételek teljesülése esetén is jelentős mértékben kell megcsípni a Linux rendszerét, hogy megfelelően fusson.
 
-Azt javasoljuk, hogy kezdje az Egyik Linux az [Azure által támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az alábbi cikkek bemutatják, hogyan készítheti el az Azure-ban támogatott különböző jóváhagyott Linux-disztribúciákat:
+Javasoljuk, hogy kezdje az [Azure által támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)egyikével. A következő cikkek bemutatják, hogyan készítheti elő az Azure-ban támogatott különböző támogatott Linux-disztribúciókat:
 
 * **[CentOS-alapú disztribúciók](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -31,54 +31,54 @@ Azt javasoljuk, hogy kezdje az Egyik Linux az [Azure által támogatott disztrib
 * **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Ez a cikk az Azure-beli Linux-disztribúció futtatásához adott általános útmutatásra összpontosít.
+Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli futtatásához.
 
-## <a name="general-linux-installation-notes"></a>Általános Linux telepítési megjegyzések
-* A Hyper-V virtuális merevlemez (VHDX) formátumnem támogatott az Azure-ban, csak *a rögzített virtuális merevlemez.*  A lemezt A Hyper-V Manager vagy a [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) parancsmag segítségével virtuális merevlemez-formátumra konvertálhatja. A VirtualBox használata esetén a lemez létrehozásakor válassza a **Rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalva) helyett.
-* Az Azure támogatja a Gen1 (BIOS-rendszerindítás) & Gen2 (UEFI rendszerindítás) virtuális gépek.
-* A virtuális merevlemez maximális mérete 1023 GB.
-* A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötetkezelő (LVM) helyett szabványos partíciókat használjon, ami sok telepítés alapértelmezett beállítása. A szabványos partíciók használatával elkerülhető lvm-név ütközik a klónozott virtuális gépek, különösen akkor, ha egy operációs rendszer lemez valaha is csatlakozik egy másik azonos virtuális gép hibaelhárításhoz. [Az LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [a RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
-* Kernel támogatása szerelési UDF fájlrendszerek szükséges. Az Azure-ban a kiépítési konfiguráció első indításkor a linuxos virtuális gép a vendéghez csatlakoztatott UDF-formátumú adathordozóhasználatával kerül átadásra. Az Azure Linux-ügynök csatlakoztatnia kell az UDF fájlrendszert a konfiguráció olvasásához és a virtuális gép kiépítéséhez.
-* Linux kernel verziók korábbi, mint 2.6.37 nem támogatja a NUMA a Hyper-V nagyobb virtuális gép mérete. Ez a probléma elsősorban az upstream Red Hat 2.6.32 kernelt használó régebbi disztribúciákat érinti, és a Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) verzióban lett rögzítve. A 2.6.37-nél régebbi egyéni kerneleket vagy 2.6.32-504-nél régebbi RHEL-alapú kerneleket futtató rendszereknek be kell állítaniuk a boot paramétert `numa=off` a grub.conf kernel parancssorában. További információ: [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
-* Ne konfiguráljon lapozópartíciót az operációs rendszer lemezén. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforráslemezen hozzon létre egy lapozófájlt, a következő lépéseknek megfelelően.
-* Az Azure-beli virtuális hálózat minden virtuális d-jének 1 MB-hoz igazított virtuális mérettel kell rendelkeznie. Nyers lemezről virtuális merevlemezre történő konvertáláskor győződjön meg arról, hogy a nyers lemez mérete a konvertálás előtt 1 MB többszöröse, a következő lépésekben leírtak szerint.
+## <a name="general-linux-installation-notes"></a>Általános linuxos telepítési megjegyzések
+* A Hyper-V virtuális merevlemez (VHDX) formátuma nem támogatott az Azure-ban, csak a *rögzített VHD*.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ha a VirtualBox-t használja, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalt) helyett.
+* Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
+* A VHD számára engedélyezett maximális méret 1 023 GB.
+* A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
+* Szükség van az UDF-fájlrendszerek csatlakoztatásához szükséges kernel-támogatásra. Az Azure-ban az első indításkor a kiépítési konfigurációt a rendszer a vendéghez csatolt UDF formátumú adathordozó használatával továbbítja a linuxos virtuális géphez. Az Azure Linux-ügynöknek csatlakoztatnia kell az UDF fájlrendszert a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
+* A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504) rögzített. A 2.6.37-nál régebbi egyéni kerneleket futtató rendszerek vagy a 2.6.32-504 RHEL-alapú kernelek esetében a rendszerindítási `numa=off` paramétert a grub. conf fájlban lévő kernel parancssorban kell beállítani. További információ: [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
+* Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök konfigurálható úgy, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén az alábbi lépésekben leírtak szerint.
+* Minden Azure-beli virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor győződjön meg arról, hogy a nyers lemez mérete 1 MB-nál több, a konverzió előtt, az alábbi lépések szerint.
 
-### <a name="installing-kernel-modules-without-hyper-v"></a>Kernel modulok telepítése Hyper-V nélkül
-Az Azure a Hyper-V hipervizoron fut, ezért a Linux bizonyos kernelmodulok futtatásához az Azure-ban. Ha a Virtuális gép a Hyper-V-n kívül lett létrehozva, előfordulhat, hogy a Linux-telepítők nem tartalmazzák a Hyper-V illesztőprogramjait a kezdeti ramdiskben (initrd vagy initramfs), kivéve, ha a virtuális gép észleli, hogy Hyper-V környezetben fut. Ha egy másik virtualizációs rendszer (például VirtualBox, KVM, és így tovább), hogy előkészítse a Linux-lemezkép, előfordulhat, hogy újra kell építeni az initrd, hogy legalább a hv_vmbus és hv_storvsc kernel modulok állnak rendelkezésre a kezdeti ramdisk.  Ez az ismert probléma az upstream Red Hat disztribúción alapuló rendszerekre, és esetleg másokra is.
+### <a name="installing-kernel-modules-without-hyper-v"></a>Kernel-modulok telepítése Hyper-V nélkül
+Az Azure a Hyper-V hypervisoron fut, így a Linux bizonyos kernel modulokat igényel az Azure-ban való futtatáshoz. Ha olyan virtuális gépet használ, amely a Hyper-V-n kívül lett létrehozva, akkor előfordulhat, hogy a Linux-telepítők nem tartalmazzák a Hyper-V illesztőprogramjait a kezdeti Ramdisk-ben (initrd vagy initramfs), kivéve, ha a virtuális gép nem észleli, hogy egy Hyper-V környezetben fut. Ha más virtualizációs rendszert (például VirtualBox, KVM stb.) használ a Linux-rendszerkép előkészítéséhez, előfordulhat, hogy újra kell építenie a initrd, hogy legalább a hv_vmbus és hv_storvsc kernel-modulok elérhetők legyenek a kezdeti Ramdisk-ben.  Ez az ismert probléma a felsőbb rétegbeli Red Hat-disztribúción alapuló rendszerek, és esetleg mások számára is lehetséges.
 
-Az initrd vagy initramfs kép újjáépítésének mechanizmusa a disztribúciótól függően változhat. A megfelelő eljárásról a disztribúció dokumentációjában vagy támogatásban olvashat.  Íme egy példa az initrd újjáépítésére `mkinitrd` a segédprogram használatával:
+A initrd vagy initramfs-rendszerkép újraépítési mechanizmusa a terjesztéstől függően változhat. A megfelelő eljáráshoz olvassa el a disztribúció dokumentációját vagy támogatását.  Íme egy példa arra, hogyan lehet a initrd újraépíteni `mkinitrd` a segédprogram használatával:
 
-1. A meglévő initrd kép biztonsági másolatot kell kapnia:
+1. A meglévő initrd-rendszerkép biztonsági mentése:
 
     ```
     cd /boot
     sudo cp initrd-`uname -r`.img  initrd-`uname -r`.img.bak
     ```
 
-2. Építse újra az initrdet a hv_vmbus és hv_storvsc kernelmodulokkal:
+2. Hozza létre újra a initrd a hv_vmbus és hv_storvsc kernel-modulokkal:
 
     ```
     sudo mkinitrd --preload=hv_storvsc --preload=hv_vmbus -v -f initrd-`uname -r`.img `uname -r`
     ```
 
-### <a name="resizing-vhds"></a>Virtuális gépek átméretezése
-Az Azure-beli virtuális merevlemez-lemezképeknek 1 MB-hoz igazított virtuális mérettel kell rendelkezniük.  A Hyper-V használatával létrehozott Virtuális központi és gépi azonosítók általában megfelelően vannak igazítva.  Ha a virtuális merevlemez nincs megfelelően igazítva, a következőhöz hasonló hibaüzenet jelenhet meg, amikor megpróbál létrehozni egy képet a virtuális merevlemezről.
+### <a name="resizing-vhds"></a>Virtuális merevlemezek átméretezése
+Az Azure-beli VHD-lemezképeknek egy 1 MB-ra igazított virtuális mérettel kell rendelkezniük.  A Hyper-V használatával létrehozott virtuális merevlemezek általában megfelelően vannak igazítva.  Ha a virtuális merevlemez nem megfelelően van igazítva, az alábbihoz hasonló hibaüzenet jelenhet meg, amikor megpróbál létrehozni egy rendszerképet a VHD-ből.
 
-* A Virtuális merevlemez\//\<http: mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd nem támogatott virtuális mérete 21475270656 bájt. A méretnek egész számnak kell lennie (MU-kban).
+* A VHD http:\//\<mystorageaccount>. blob.Core.Windows.net/VHDs/MyLinuxVM.vhd virtuális mérete (21475270656 bájt) nem támogatott. A méretnek egész számnak kell lennie (MB-ban).
 
-Ebben az esetben méretezze át a virtuális gép segítségével vagy a Hyper-V Manager konzol vagy a [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell-parancsmag használatával.  Ha nem Windows-környezetben fut, azt `qemu-img` javasoljuk, hogy (ha szükséges) konvertáljon és méretezze át a virtuális merevlemezt.
+Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](https://technet.microsoft.com/library/hh848535.aspx) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, hogy a használatával `qemu-img` alakítsa át (ha szükséges), és méretezze át a VHD-t.
 
 > [!NOTE]
-> Van egy [ismert hiba qemu-img](https://bugs.launchpad.net/qemu/+bug/1490611) verziók >=2.2.1, hogy az eredmények egy helytelenül formázott Virtuális merevlemez. A probléma ki lett javítva a QEMU 2.6-ban. Javasoljuk a `qemu-img` 2.2.0 vagy az alacsonyabb, illetve a 2.6 vagy újabb használatát.
+> Létezik egy [ismert hiba a qemu-IMG](https://bugs.launchpad.net/qemu/+bug/1490611) verzióban >= 2.2.1, amely egy nem megfelelően formázott VHD-t eredményez. A probléma a QEMU 2,6-es verziójában lett kijavítva. Javasoljuk, hogy a `qemu-img` 2.2.0 vagy az alacsonyabb, vagy a 2,6 vagy újabb rendszer használatát javasolja.
 > 
 
-1. A virtuális merevlemez átméretezése közvetlenül `vbox-manage` olyan eszközökkel, például, vagy `qemu-img` vezethet egy nem indítható virtuális merevlemez.  Javasoljuk, hogy először konvertálja a virtuális merevlemezt RAW lemezképpé.  Ha a virtuálisgép-lemezképet RAW lemezképként hozták létre (ez az alapértelmezett érték néhány hipervizor, például a KVM esetében), akkor kihagyhatja ezt a lépést.
+1. A virtuális merevlemez átméretezése közvetlenül olyan eszközökkel `qemu-img` történhet `vbox-manage` , mint a vagy egy nem indítható virtuális merevlemez.  Javasoljuk, hogy először konvertálja a VHD-t egy nyers lemezképre.  Ha a virtuálisgép-lemezkép nyers lemezképként lett létrehozva (egyes hypervisorok alapértelmezett értéke, például KVM), akkor kihagyhatja ezt a lépést.
  
     ```
     qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
     ```
 
-1. Számítsa ki a lemezkép szükséges méretét úgy, hogy a virtuális méret 1 MB-ra legyen igazítva.  A következő bash `qemu-img info` shell parancsfájl segítségével határozza meg a virtuális mérete a lemezkép, majd kiszámítja a méretet a következő 1 MB.
+1. Kiszámítja a lemezkép szükséges méretét úgy, hogy a virtuális méret 1 MB-ra legyen igazítva.  A következő bash rendszerhéj-parancsfájl `qemu-img info` a lemezkép virtuális méretének meghatározásához használja, majd a következő 1 MB-ra kiszámítja a méretet.
 
     ```bash
     rawdisk="MyLinuxVM.raw"
@@ -93,31 +93,31 @@ Ebben az esetben méretezze át a virtuális gép segítségével vagy a Hyper-V
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Méretezze át `$rounded_size` a nyers lemezt a fent meghatározott módon.
+3. Méretezze át a nyers lemezt `$rounded_size` a fent megadott módon.
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
     ```
 
-4. Most konvertálja vissza a RAW lemezt rögzített méretű virtuális merevlemezre.
+4. Most alakítsa vissza a nyers lemezt egy rögzített méretű VHD-re.
 
     ```bash
     qemu-img convert -f raw -o subformat=fixed -O vpc MyLinuxVM.raw MyLinuxVM.vhd
     ```
 
-   Vagy, a qemu változat 2.6 `force_size` +, tartalmazza a lehetőséget.
+   Vagy a qemu 2.6 + verziójában adja meg a `force_size` kapcsolót.
 
     ```bash
     qemu-img convert -f raw -o subformat=fixed,force_size -O vpc MyLinuxVM.raw MyLinuxVM.vhd
     ```
 
-## <a name="linux-kernel-requirements"></a>Linux kernel követelmények
+## <a name="linux-kernel-requirements"></a>Linux kernel-követelmények
 
-A Hyper-V és az Azure Linux integrációs szolgáltatások (LIS) illesztőprogramjai közvetlenül hozzájárulnak a upstream Linux kernelhez. Számos disztribúció, amely tartalmazza a legújabb Linux kernel verzió (például 3.x) rendelkezik ezekkel az illesztőprogramokkal már elérhető, vagy más módon biztosítbackported változatai ezen illesztőprogramok a kernelek.  Ezek az illesztőprogramok folyamatosan frissülnek az upstream kernelben új javításokkal és funkciókkal, ezért ha lehetséges, javasoljuk, hogy futson egy [jóváhagyott disztribúciót,](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) amely tartalmazza ezeket a javításokat és frissítéseket.
+A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok közvetlenül a felsőbb rétegbeli linuxos kernelhez járulnak hozzá. Számos, a Linux kernel legújabb verzióját (például 3. x) tartalmazó disztribúció már rendelkezik ezekkel az illesztőprogramokkal, vagy egyéb módon biztosítja ezeknek az illesztőprogramoknak a backported-verzióit a rendszermagban.  Ezek az illesztőprogramok folyamatosan frissülnek a felsőbb rétegbeli kernelben új javításokkal és szolgáltatásokkal, így ha lehetséges, javasoljuk, hogy futtasson egy [támogatott disztribúciót](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely tartalmazza ezeket a javításokat és frissítéseket.
 
-Ha a Red Hat Enterprise Linux 6.0-6.3-as verzióját futtatja, akkor telepítenie kell a [Hyper-V legújabb LIS-illesztőprogramjait.](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409) Az RHEL 6.4+ (és származékai) kezdetével a LIS illesztőprogramok már szerepelnek a kernelben, így nincs szükség további telepítőcsomagokra.
+Ha a 6,0-es és a 6,3-es Red Hat Enterprise Linux-es verziójú változatot futtatja, akkor telepítenie kell a [Hyper-V legújabb lis-illesztőprogramjait](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). A RHEL 6.4 + (és a származtatott) verziótól kezdődően az LIS-illesztőprogramok már szerepelnek a rendszermagban, így nincs szükség további telepítési csomagokra.
 
-Ha egyéni rendszermagra van szükség, javasoljuk a legújabb kernelverziót (például 3.8+). A saját rendszermagot fenntartó disztribúciók vagy szállítók esetében rendszeresen vissza kell portolnia a LIS-illesztőprogramokat az upstream kernelről az egyéni kernelre.  Még akkor is, ha már egy viszonylag új kernel verziót futtat, javasoljuk, hogy kövesse nyomon a LIS-illesztőprogramok upstream javításait, és szükség szerint visszaportálja őket. A LIS illesztőprogram forrásfájljainak helyei a Linux kernel forrásfájában található [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) fájlban vannak megadva:
+Ha egyéni kernelre van szükség, javasoljuk, hogy a legújabb kernel-verziót (például a 3.8 +-ot). A saját kernelt fenntartó disztribúciók vagy szállítók esetében rendszeresen vezetnie kell az LIS-illesztőprogramokat a felsőbb rétegbeli kernelből az egyéni rendszermagba.  Még ha már fut egy viszonylag új kernel-verzió is, javasoljuk, hogy kövesse nyomon az összes felsőbb rétegbeli javítást az LIS-illesztőprogramokban, és szükség szerint vezetnie azokat. A LIS-illesztőprogram forrásfájljait a [karbantartók](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) fájlban kell megadni a Linux kernel forrás fájában:
 ```
     F:    arch/x86/include/asm/mshyperv.h
     F:    arch/x86/include/uapi/asm/hyperv.h
@@ -131,46 +131,46 @@ Ha egyéni rendszermagra van szükség, javasoljuk a legújabb kernelverziót (p
     F:    include/linux/hyperv.h
     F:    tools/hv/
 ```
-A következő javításokat kell tartalmaznia a kernelben. Ez a lista nem lehet teljes minden disztribúcióesetében.
+A következő javításokat kell tartalmazniuk a kernelben. Ez a lista nem fejezhető be az összes disztribúcióhoz.
 
-* [ata_piix: alapértelmezés szerint a lemezeket a Hyper-V-illesztőprogramok között elhalasztja](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc: A visszanem küldött csomagok fiókja a RESET elérési úton](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
-* [storvsc: ne használjon WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc: Disable WRITE SAME raid és virtuális gazdaadapter illesztőprogramok](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc: NULL mutató dereference fix](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
-* [storvsc: a gyűrűpuffer meghibásodása I/O-lefagyást eredményezhet](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
-* [scsi_sysfs: véd a kettős végrehajtás __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
+* [ata_piix: a lemezek elhalasztása a Hyper-V-illesztőprogramok számára alapértelmezés szerint](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
+* [storvsc: fiók továbbítása az átviteli útvonalon az átvitt csomagoknál](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc: a WRITE_SAME használatának elkerülése](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
+* [storvsc: a RAID és a virtuális gazdagép adapter-illesztőprogramjaihoz tartozó írás letiltása](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc: NULL mutató hivatkozásának kijavítása](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: a gyűrűs puffer meghibásodása I/O-lefagyást eredményezhet](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
+* [scsi_sysfs: a __scsi_remove_device kettős végrehajtásának elleni védelem](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
-## <a name="the-azure-linux-agent"></a>Az Azure Linux ügynök
-Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux virtuális gépet az Azure-ban. Beszerezheti a legújabb verziót, a fájlproblémákat, vagy lekéréses kérelmeket küldhet a [Linux Agent GitHub tártárán.](https://github.com/Azure/WALinuxAgent)
+## <a name="the-azure-linux-agent"></a>Az Azure Linux-ügynök
+Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux rendszerű virtuális gépet foglal le az Azure-ban. A legújabb verziót, a fájlokkal kapcsolatos problémákat vagy a lekéréses kérelmeket a [Linux-ügynök GitHub](https://github.com/Azure/WALinuxAgent)-tárházában szerezheti be.
 
-* A Linux ügynök az Apache 2.0 licenc alatt jelenik meg. Számos disztribúció már biztosít RPM vagy .deb csomagokat az ügynök számára, és ezek a csomagok könnyen telepíthetők és frissíthetők.
-* Az Azure Linux-ügynök python-v2.6+-t igényel.
-* Az ügynök is megköveteli a python-pyasn1 modul. A legtöbb disztribúció külön csomagként biztosítja ezt a modult.
-* Bizonyos esetekben előfordulhat, hogy az Azure Linux-ügynök nem kompatibilis a NetworkManager. A disztribúciók által biztosított RPM/deb csomagok közül sok a NetworkManagert a waagent csomag ütközéseként konfigurálja. Ezekben az esetekben eltávolítja a NetworkManager-t a Linux-ügynökcsomag telepítésekor.
-* Az Azure Linux-ügynöknek a [minimálisan támogatott verzióval](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)vagy annál magasabbnak kell lennie.
+* A Linux-ügynököt az Apache 2,0 licenc alatt bocsátjuk ki. Számos disztribúció már biztosít RPM vagy. deb csomagokat az ügynök számára, és ezeket a csomagokat egyszerűen telepítheti és frissítheti.
+* Az Azure Linux-ügynökhöz a Python v 2.6 + verzió szükséges.
+* Az ügynöknek a Python-pyasn1 modulra is szüksége van. A legtöbb disztribúció külön csomagként biztosítja ezt a modult a telepítéshez.
+* Bizonyos esetekben előfordulhat, hogy az Azure Linux-ügynök nem kompatibilis a hálózatkezelő. A disztribúciók által biztosított RPM/deb csomagok többsége a hálózatkezelő-t a waagent-csomagba ütközőként konfigurálja. Ezekben az esetekben a Linux-ügynök csomag telepítésekor a rendszer eltávolítja a hálózatkezelő.
+* Az Azure Linux-ügynöknek a [minimális támogatott verziónál](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)nagyobbnak vagy magasabbnak kell lennie.
 
-## <a name="general-linux-system-requirements"></a>Általános Linux rendszerkövetelmények
+## <a name="general-linux-system-requirements"></a>Általános Linux rendszerre vonatkozó követelmények
 
-1. Módosítsa a GRUB vagy A GRUB2 kernel rendszerindító sorát úgy, hogy az tartalmazza a következő paramétereket, hogy az összes konzolüzenet az első soros portra kerülhessen. Ezek az üzenetek segítséget nyújthatnak az Azure-támogatásnak a problémák hibakeresésében.
+1. Módosítsa a kernel rendszerindítási sorát a GRUB-ban vagy a GRUB2, hogy tartalmazza a következő paramétereket, hogy az összes konzolos üzenet el legyen küldve az első soros portra. Ezek az üzenetek segítséget nyújthatnak az Azure-támogatásban az esetleges problémák hibakeresése érdekében.
     ```  
     console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
     ```
-    Azt is *javasoljuk, hogy távolítsa el* a következő paramétereket, ha léteznek.
+    Javasoljuk továbbá, hogy ha vannak ilyenek, *távolítsa* el a következő paramétereket.
     ```  
     rhgb quiet crashkernel=auto
     ```
-    Grafikus és csendes rendszerindítás nem hasznos egy felhőkörnyezetben, ahol azt akarjuk, hogy minden naplót küldeni a soros portra. A `crashkernel` beállítás szükség esetén konfigurálható maradhat, de vegye figyelembe, hogy ez a paraméter legalább 128 MB-tal csökkenti a virtuális gép ben rendelkezésre álló memória mennyiségét, ami a kisebb virtuálisgép-méretek számára problémát okozhat.
+    A grafikus és a csendes rendszerindítás nem hasznos felhőalapú környezetben, ahol a soros portra érkező összes naplót szeretnénk használni. Ha `crashkernel` szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter kevesebb, mint 128 MB-tal csökkenti a virtuális gép rendelkezésre álló memóriájának mennyiségét, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
-1. Telepítse az Azure Linux-ügynök.
+1. Telepítse az Azure Linux-ügynököt.
   
-    Az Azure Linux-ügynök az Azure-on egy Linux-lemezkép kiépítéséhez szükséges.  Számos disztribúció rpm vagy .deb csomagként biztosítja az ügynököt (a csomagot általában WALinuxAgent vagy walinuxagent-nek nevezik).  Az ügynök manuálisan is telepíthető a [Linux Agent Guide](../extensions/agent-linux.md)lépéseit követve.
+    A Linux-rendszerkép Azure-beli üzembe helyezéséhez az Azure Linux-ügynök szükséges.  Számos disztribúció biztosítja az ügynököt RPM vagy. deb csomagként (a csomagot általában WALinuxAgent vagy WALinuxAgent nevezik).  Az ügynököt manuálisan is telepítheti a [Linux-ügynök útmutatójának](../extensions/agent-linux.md)lépéseit követve.
 
-1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve van, és úgy van beállítva, hogy indításkor induljon el.  Ez a konfiguráció általában az alapértelmezett.
+1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve van, és úgy van konfigurálva, hogy indításkor induljon el.  Ez a konfiguráció általában az alapértelmezett.
 
-1. Ne hozzon létre csereterületet az operációs rendszer lemezén.
+1. Ne hozzon létre lapozófájlt az operációsrendszer-lemezen.
   
-    Az Azure Linux-ügynök automatikusan konfigurálhatja a csereterület a helyi erőforráslemez, amely csatlakozik a virtuális géphez kiépítése után az Azure-ban. A helyi erőforráslemez egy *ideiglenes* lemez, és lehet, hogy kiüríti, ha a virtuális gép kiürül. Az Azure Linux-ügynök telepítése után (a fenti 2. lépés) szükség szerint módosítsa a következő paramétereket az /etc/waagent.conf fájlban.
+    Az Azure Linux-ügynök automatikusan konfigurálhatja a lapozófájlt a virtuális géphez az Azure-ban való üzembe helyezést követően csatlakozó helyi erőforrás lemez használatával. A helyi erőforrás lemez egy *ideiglenes* lemez, és előfordulhat, hogy a virtuális gép kiépítésekor ki van ürítve. Az Azure Linux-ügynök telepítése után (2. lépés) szükség szerint módosítsa a következő paramétereket a/etc/waagent.conf.
     ```  
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -178,7 +178,7 @@ Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux virt
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-1. Futtassa a következő parancsokat a virtuális gép kiirtásához.
+1. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez.
   
      ```
      sudo waagent -force -deprovision
@@ -186,7 +186,7 @@ Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux virt
      logout
      ```  
    > [!NOTE]
-   > A Virtualbox lehet látni a `waagent -force -deprovision` következő `[Errno 5] Input/output error`hiba futtatása után, hogy azt mondja . Ez a hibaüzenet nem kritikus, ezért figyelmen kívül hagyható.
+   > A VirtualBox-on a következő hibaüzenet jelenhet meg a `waagent -force -deprovision` Futtatás után `[Errno 5] Input/output error`:. Ez a hibaüzenet nem kritikus, és figyelmen kívül hagyható.
 
-* Állítsa le a virtuális gépet, és töltse fel a virtuális merevlemezt az Azure-ba.
+* Állítsa le a virtuális gépet, és töltse fel a VHD-t az Azure-ba.
 

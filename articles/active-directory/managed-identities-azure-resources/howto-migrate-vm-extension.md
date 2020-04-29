@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
 ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049064"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése

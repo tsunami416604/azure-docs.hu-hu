@@ -1,6 +1,6 @@
 ---
-title: Útválasztási és címkekifejezések az Azure Értesítési központokban
-description: Ismerje meg, hogyan irányíthat és címkézhet kifejezéseket az Azure Értesítési központokhoz.
+title: Útválasztási és címkézési kifejezések az Azure Notification Hubs
+description: Megtudhatja, hogyan irányíthatja és címkézheti az Azure Notification Hubs kifejezéseit.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,37 +17,37 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062315"
 ---
-# <a name="routing-and-tag-expressions"></a>Útválasztás és címkekifejezések
+# <a name="routing-and-tag-expressions"></a>Útválasztási és címkézési kifejezések
 
 ## <a name="overview"></a>Áttekintés
 
-A címkekifejezések lehetővé teszik, hogy meghatározott eszközcsoportokat, pontosabban a regisztrációkat célozza meg, amikor leküldéses értesítést küld az értesítési központokon keresztül.
+A címkézési kifejezések lehetővé teszik meghatározott eszközök vagy pontosabb regisztrációk megcélzását, amikor leküldéses értesítést küld Notification Hubs.
 
-## <a name="targeting-specific-registrations"></a>Adott regisztrációk célzása
+## <a name="targeting-specific-registrations"></a>Konkrét regisztrációk megcélzása
 
-Az egyetlen módja annak, hogy célzott konkrét értesítési regisztrációk társítani címkéket velük, majd a cél ezeket a címkéket. A [regisztrációkezelés](notification-hubs-push-notification-registration-management.md), a leküldéses értesítések fogadásához az alkalmazásnak regisztrálnia kell egy eszközleírót egy értesítési központban. Miután az alkalmazás létrehoz egy regisztrációt egy értesítési központban, az alkalmazás háttérrendszer leküldéses értesítéseket küldhet hozzá. Az alkalmazás háttérrendszer kiválaszthatja a regisztrációk a cél egy adott értesítést a következő módokon:
+A konkrét értesítési regisztrációk célzásának egyetlen módja, ha címkéket társít velük, majd megcélozja ezeket a címkéket. A [regisztráció kezelése](notification-hubs-push-notification-registration-management.md)című cikkben leírtak szerint a leküldéses értesítések fogadásához az alkalmazásnak regisztrálnia kell egy eszköz-kezelőt az értesítési központban. Miután az alkalmazás létrehoz egy regisztrációs üzenetet egy értesítési Központon, az alkalmazás háttere leküldéses értesítéseket küldhet. Az alkalmazás-háttérrendszer a következő módokon választhatja ki, hogy mely regisztrációkat kívánja megcélozni egy adott értesítéssel:
 
-1. **Broadcast**: az értesítési központban található összes regisztráció megkapja az értesítést.
-2. **Címke**: minden olyan regisztráció, amely tartalmazza a megadott címkét, megkapja az értesítést.
-3. **Címkekifejezés:** minden olyan regisztráció, amelynek címkék készlete megfelel a megadott kifejezésnek, megkapja az értesítést.
+1. **Szórás**: az értesítési központban minden regisztráció megkapja az értesítést.
+2. **Címke**: a megadott címkét tartalmazó összes regisztráció megkapja az értesítést.
+3. **Címke kifejezése**: minden olyan regisztráció, amelynek a címkéi a megadott kifejezésnek felelnek meg, megkapják az értesítést.
 
 ## <a name="tags"></a>Címkék
 
-A címke lehet bármilyen legfeljebb 120 karakterből álló karakterlánc, amely alfanumerikus`_`és a`@`következő`#`nem alfanumerikus karaktereket tartalmazza: ' ' ' ' ' ' ' ' ' ' ' ', '`.`' ' ' ', '`:`', ', '`-`' A következő példa egy olyan alkalmazást mutat be, amelyből bejelentési értesítéseket kaphat bizonyos zenei csoportokról. Ebben a forgatókönyvben az értesítések egyszerű módja a regisztrációk címkézése a különböző sávokat reprezentatot képező címkékkel, az alábbi ábrán:
+A címke lehet bármilyen karakterlánc, legfeljebb 120 karakter, amely alfanumerikus karaktereket és a`_`következő nem alfanumerikus karaktereket tartalmazza: "", "`@`"`#``.`, "", ",`:`" ","`-`". Az alábbi példa egy olyan alkalmazást mutat be, amelyről bejelentési értesítéseket kaphat az adott zenei csoportokról. Ebben az esetben az értesítések továbbításának egyszerű módja a különböző sávokat jelölő címkékkel rendelkező regisztrációk címkézése, az alábbi ábrán látható módon:
 
 ![Címkék – áttekintés](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-Az ábrán a **Beatles-szel** jelölt üzenet csak azt a táblagépet éri el, amely a **Beatles**címkével van regisztrálva.
+Az ábrán a **beatlesrel** megcímkézett üzenet csak a **Beatles**címkével regisztrált tablettát éri el.
 
-A címkék regisztrációinak létrehozásáról a [Regisztrációkezelés című](notification-hubs-push-notification-registration-management.md)témakörben talál további információt.
+A címkék regisztrációjának létrehozásával kapcsolatos további információkért lásd: [regisztráció kezelése](notification-hubs-push-notification-registration-management.md).
 
-Értesítéseket küldhet a címkéknek az `Microsoft.Azure.NotificationHubs.NotificationHubClient` osztály küldési értesítési módszereivel a Microsoft Azure [Értesítési központok](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK-ban. Használhatja a Node.js vagy a Leküldéses értesítések REST API-kat is.  Íme egy példa az SDK használatával.
+Értesítéseket küldhet a címkékre a `Microsoft.Azure.NotificationHubs.NotificationHubClient` [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK osztály küldési értesítések metódusának használatával. A Node. js-t vagy a leküldéses értesítések REST API-jait is használhatja.  Íme egy példa az SDK használatával.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -63,42 +63,42 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-A címkéket nem szabad előre kiépíteni, és több alkalmazásspecifikus fogalomra hivatkozhat. Például, a felhasználók ebben a példában alkalmazás megjegyzést zenekarok és szeretné megkapni pirítós, nem csak a megjegyzéseket a kedvenc zenekarok, hanem az összes megjegyzést a barátok, függetlenül attól, hogy a zenekar, amelyen azok kommentálják. Az alábbi ábra egy példát mutat be erre a forgatókönyvre:
+A címkéket nem szabad előre kiépíteni, és több alkalmazás-specifikus fogalomra is hivatkozhat. Például az alkalmazás felhasználói megjegyzéseket fűzhet a sávokhoz, és nem csak a kedvenc bandájuk megjegyzéseit, hanem a barátaik megjegyzéseit is szeretnék fogadni, függetlenül attól, hogy milyen sávban vannak észrevételeket. Az alábbi ábrán egy példa látható erre a forgatókönyvre:
 
-![Címkék barátok](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
+![Címkék barátai](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-Ebben a példában Alice érdeklődik a Beatles frissítései iránt, Bob pedig a Wailers frissítései iránt. Bob is érdekli Charlie észrevételeit, és Charlie érdekli a Wailers. Amikor értesítést küld Charlie-nak a Beatleshez fűzött megjegyzéséhez, az Értesítési központok elküldik alice-nek és Bobnak is.
+Ebben a példában Alice a Beatles frissítései iránt érdeklődik, és Bob a Wailers frissítései érdeklik. Bob a Charlie megjegyzéseit is érdekli, és Charlie-t érdekli a Wailers. Amikor értesítést küld a Charlie megjegyzéséhez a Beatlesben, Notification Hubs elküldi azt az Alice és a Bob számára is.
 
-Bár a címkékben több probléma is kódolható (például vagy `band_Beatles` `follows_Charlie`), a címkék egyszerű karakterláncok, nem pedig értékekkel rendelkező tulajdonságok. A regisztráció csak egy adott címke jelenlétében vagy hiányában egyezik meg.
+Míg a címkékben több szempontot is kódolhat (például `band_Beatles` vagy `follows_Charlie`), a címkék egyszerű karakterláncok, és nem az értékekkel rendelkező tulajdonságok. A regisztráció csak adott címke jelenlétére vagy hiányára vonatkozik.
 
-A címkék érdeklődési csoportoknak való küldésére vonatkozó teljes részletes oktatóanyagról a [Breaking News (Hírek)](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)témakörben található.
+Ha részletes oktatóanyagot szeretne arról, hogyan használhatók a címkék az érdeklődési csoportokba való küldéshez, tekintse meg a [legfrissebb híreket](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 > [!NOTE]
-> Az Azure Notification Hubs regisztrációnként legfeljebb 60 címkét támogat.
+> Az Azure Notification Hubs regisztráció esetén legfeljebb 60 címkét támogat.
 
-## <a name="using-tags-to-target-users"></a>Címkék használata a felhasználók megcélzására
+## <a name="using-tags-to-target-users"></a>Címkék használata a felhasználók megcélzásához
 
-A címkék használatának másik módja az adott felhasználóhoz társított összes eszköz azonosítása. A regisztrációt megcímkézheti egy felhasználói azonosítót tartalmazó címkével, az alábbi ábrán látható módon:
+A címkék használatának egy másik módja az adott felhasználóhoz társított összes eszköz azonosítása. A felhasználói azonosítót tartalmazó címkével címkézheti a regisztrációt, az alábbi ábrán látható módon:
 
 ![Felhasználók címkézése](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Az ábrán a `user_Alice` címkével ellátott üzenet `user_Alice`a .
+Az ábrán a címkével `user_Alice` ellátott `user_Alice`összes eszköz eléri a címkét.
 
-## <a name="tag-expressions"></a>Címkekifejezések
+## <a name="tag-expressions"></a>Címkézési kifejezések
 
-Vannak olyan esetek, amikor az értesítéseknek olyan regisztrációkat kell megcélozniuk, amelyeket nem egyetlen címke, hanem címkéket használó logikai kifejezés azonosít.
+Vannak olyan esetek, amikor az értesítéseknek olyan regisztrációk halmazát kell megcéloznia, amelyeket egyetlen címke sem azonosít, de a címkéket használó logikai kifejezéssel.
 
-Vegyünk egy sport alkalmazás, amely küld egy emlékeztetőt, hogy mindenki bostoni egy játék között a Red Sox és a Cardinals. Ha az ügyfélalkalmazás regisztrálja a csoportok és a hely iránti érdeklődésre vonatkozó címkéket, akkor az értesítést minden olyan bostoni nak meg kell céloznia, akit érdekel a Red Sox vagy a Cardinals. Ez a feltétel a következő logikai kifejezéssel fejezhető ki:
+Vegyünk egy olyan sport-alkalmazást, amely egy, a Red Sox és a Cardinals közötti játékra emlékeztetőt küld a Bostonban mindenki számára. Ha az ügyfélalkalmazás a csoportok és a hely iránti érdeklődésre vonatkozó címkéket regisztrál, akkor az értesítéseket mindenki számára meg kell célozni, akik a Red Sox vagy a Cardinals érdeklik. Ezt az állapotot a következő logikai kifejezéssel lehet kifejezni:
 
 ```csharp
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![Címkekifejezések](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
+![Címkézési kifejezések](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-A címkekifejezések támogatják a közös `AND` `&&`logikai operátorokat, például `OR` ( )`||`( ) és `NOT` (`!`) zárójeleket is tartalmazhatnak. A csak `OR` operátorokat használó címkekifejezések 20 címkére hivatkozhatnak; kifejezés `AND` operátorokkal, `OR` de operátorok nem hivatkozhatnak 10 címkére; ellenkező esetben a címkekifejezések legfeljebb 6 címke lehet.
+A címkézési `AND` kifejezések támogatják a közös logikai operátorokat, például (`&&`), `NOT` `!` `OR` (`||`) és (); Emellett zárójeleket is tartalmazhatnak. A csak a kezelőket használó kifejezések legfeljebb `OR` 20 címkét hivatkozhatnak. az operátorok kifejezése, de az `AND` operátorok nem `OR` hivatkozhatnak 10 címkére; Ellenkező esetben a címkézési kifejezések legfeljebb 6 címkével rendelkeznek.
 
-Íme egy példa az SDK használatával címkekifejezésekkel rendelkező értesítések küldésére:
+Íme egy példa arra, hogy az SDK használatával hogyan küldhet értesítéseket címkézési kifejezésekkel:
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

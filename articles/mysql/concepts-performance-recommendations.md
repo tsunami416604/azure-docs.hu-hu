@@ -1,23 +1,23 @@
 ---
-title: Teljesítményre vonatkozó javaslatok – Azure Database for MySQL
-description: Ez a cikk a Teljesítményajánlás szolgáltatás t ismerteti az Azure Database for MySQL-ben
+title: Teljesítménnyel kapcsolatos javaslatok – Azure Database for MySQL
+description: Ez a cikk a Azure Database for MySQL Performance ajánlási funkcióját ismerteti
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c7779d82ddd6e5fd1bf7fcd983937ea6c10dab1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537074"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for MySQL-ben
 
-**A következőkre vonatkozik:** Azure-adatbázis a MySQL 5.7-hez
+**A következőkre vonatkozik:** Azure Database for MySQL 5,7
 
-A Teljesítményjavaslatok szolgáltatás elemzi az adatbázisokat, és személyre szabott javaslatokat hoz létre a jobb teljesítmény érdekében. A javaslatok létrehozásához az elemzés különböző adatbázis-jellemzőket, köztük sémát vizsgál. Engedélyezze a [query store-t](concepts-query-store.md) a kiszolgálón a teljesítményjavaslatok szolgáltatás teljes kihasználásához. Ha a teljesítményséma ki van kapcsolva, a Query Store bekapcsolása lehetővé teszi, hogy performance_schema és a szolgáltatáshoz szükséges teljesítményséma-eszközök egy részhalmazát. Bármely teljesítményajánlás végrehajtása után tesztelje a teljesítményt a módosítások hatásának kiértékeléséhez.
+A teljesítményre vonatkozó javaslatok szolgáltatás elemzi az adatbázisokat, hogy testreszabott javaslatokat hozzon létre a jobb teljesítmény érdekében. A javaslatok létrehozásához az elemzés különböző adatbázis-jellemzőket vizsgál, beleértve a sémát. Engedélyezze a [lekérdezési tárolót](concepts-query-store.md) a kiszolgálón a teljesítményre vonatkozó javaslatok szolgáltatás teljes körű kihasználásához. Ha a teljesítmény sémája ki van kapcsolva, a lekérdezés-tároló bekapcsolása lehetővé teszi a performance_schema és a szolgáltatáshoz szükséges teljesítmény-séma eszközök egy részhalmazát. A teljesítményre vonatkozó javaslat megvalósítása után tesztelje a teljesítményt a változások hatásának kiértékeléséhez.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -27,25 +27,25 @@ A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **T
 
 A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) funkció elemzi a szerveren futó számítási feladatokat a potenciálisan javítható teljesítményű indexek azonosításához.
 
-A MySQL-kiszolgáló azure portaloldalán található menüsor **intelligens teljesítmény** szakaszából származó **teljesítményjavaslatok** megnyitása.
+Nyissa meg a **teljesítményre vonatkozó javaslatokat** a MySQL-kiszolgáló Azure Portal lapjának menüsorának **intelligens teljesítmény** szakaszában.
 
 ![A Teljesítménnyel kapcsolatos javaslatok kezdőlapja](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Válassza **az Elemzés** lehetőséget, és válasszon egy adatbázist, amely megkezdi az elemzést. A számítási feladatoktól függően az elemzés több percet is igénybe vehet. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés. Az elemzés az adatbázis alapos vizsgálatát végzi. Azt javasoljuk, hogy csúcsidőn kívüli időszakokban végezzen elemzést.
+Válassza **az elemzés lehetőséget, és válasszon** egy adatbázist, amely megkezdi az elemzést. A munkaterheléstől függően az elemzés több percet is igénybe vehet. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés. Az elemzés az adatbázis mélyreható vizsgálatát végzi. Javasoljuk, hogy az elemzést az időszakon kívüli időszakok alatt végezze el.
 
-A **Javaslatok** ablakban megjelenik a javaslatok listája, ha bármelyik megtalálható, és a kapcsolódó lekérdezésazonosító, amely létrehozta ezt a javaslatot. A lekérdezésazonosító segítségével a [mysql.query_store](concepts-query-store.md#mysqlquery_store) nézetben többet megtudhat a lekérdezésről.
+A **javaslatok** ablak a javaslatok listáját jeleníti meg, valamint a kapcsolódó lekérdezés azonosítóját, amely a javaslatot generálta. A lekérdezés AZONOSÍTÓjának használatával a [MySQL. query_store](concepts-query-store.md#mysqlquery_store) nézetet használhatja a lekérdezés további megismeréséhez.
 
-![Teljesítményjavaslatok új lap](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Teljesítményre vonatkozó javaslatok – új oldal](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-A javaslatok nem kerülnek automatikusan alkalmazásra. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyféltől. Ne felejtse el tesztelni és figyelni az ajánlás kiértékeléséhez.
+A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni.
 
-## <a name="recommendation-types"></a>Javaslattípusok
+## <a name="recommendation-types"></a>Javaslatok típusai
 
-Jelenleg csak *index létrehozása* javaslatok támogatottak.
+Jelenleg csak az *indexek létrehozásával* kapcsolatos javaslatok támogatottak.
 
-### <a name="create-index-recommendations"></a>Indexjavaslatok létrehozása
+### <a name="create-index-recommendations"></a>Tárgymutató-javaslatok létrehozása
 
-*Indexjavaslatok létrehozása* azt javasolják, hogy új indexek gyorsítsák fel a munkaterhelés leggyakrabban futtatott vagy időigényes lekérdezéseit. Ehhez a javaslattípushoz engedélyezni kell a [Query Store szolgáltatást.](concepts-query-store.md) A Query Store összegyűjti a lekérdezési adatokat, és biztosítja a részletes lekérdezési futásidejű és gyakorisági statisztikákat, amelyeket az elemzés a javaslat hoz.
+Az indexelési javaslatok alapján új indexek *hozhatók létre* , amelyek felgyorsítják a számítási feladatok leggyakrabban futtatott vagy időigényes lekérdezéseit. Ehhez az ajánlási típushoz engedélyezni kell a [query Store](concepts-query-store.md) -t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
 
 ## <a name="next-steps"></a>További lépések
-- További információ az Azure Database for MySQL [figyeléséről és hangolásáról.](concepts-monitoring.md)
+- További információ a Azure Database for MySQL [figyeléséről és hangolásáról](concepts-monitoring.md) .

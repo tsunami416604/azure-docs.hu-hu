@@ -1,6 +1,6 @@
 ---
-title: Az Azure-tevékenység adatainak összekapcsolása az Azure Sentinelhez | Microsoft dokumentumok
-description: Ismerje meg, hogyan kapcsolhatja össze az Azure-tevékenység adatait az Azure Sentinelhez.
+title: Azure-Tevékenységnaplók összekapcsolása az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók az Azure-tevékenységek az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
 ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80124986"
 ---
-# <a name="connect-data-from-azure-activity-log"></a>Adatok csatlakoztatása az Azure-tevékenységnaplóból
+# <a name="connect-data-from-azure-activity-log"></a>Adatok összekapcsolása az Azure-beli tevékenység naplójából
 
-Egyetlen kattintással streamelheti a naplókat az [Azure-tevékenységnaplóból](../azure-monitor/platform/platform-logs-overview.md) az Azure Sentinelbe. A tevékenységnapló egy előfizetési napló, amely rögzíti és megjeleníti az azure-beli előfizetési szintű eseményeket, az Azure Resource Manager működési adataitól a Service Health-események frissítéseiig. A tevékenységnapló segítségével meghatározhatja az előfizetés erőforrásain végrehajtott "mit, ki és mikor" műveletet az előfizetés erőforrásain végrehajtott írási műveletekhez. Azt is megtudhatja, a művelet állapotát és más releváns tulajdonságokat. A tevékenységnapló nem tartalmazza a klasszikus/"RDFE" modellt használó erőforrások olvasási (GET) műveleteit vagy műveleteit. 
+Egyetlen kattintással továbbíthatja a naplókat az Azure-beli [tevékenységek naplójából](../azure-monitor/platform/platform-logs-overview.md) az Azure sentinelbe. A műveletnapló egy előfizetési napló, amely az Azure-on keresztül rögzíti és megjeleníti az előfizetési szintű eseményeket, Azure Resource Manager operatív adatokat Service Health események frissítéseire. A műveletnapló használatával meghatározhatja a "mit, ki és mikor" minden írási művelethez (PUT, POST, DELETE) az előfizetéséhez tartozó erőforrásokon. Megtudhatja a művelet állapotát és az egyéb kapcsolódó tulajdonságokat is. A műveletnapló nem tartalmaz olvasási (GET) műveleteket vagy műveleteket a klasszikus/"RDFE" modellt használó erőforrásokhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A felhasználónak közreműködői engedélyekkel kell rendelkeznie a Log Analytics-munkaterülethez.
-- A felhasználónak reader-engedélyekkel kell rendelkeznie minden olyan előfizetéshez, amelynek naplóit az Azure Sentinelbe szeretné streamelni.
+- A felhasználónak közreműködői engedélyekkel kell rendelkeznie a Log Analytics munkaterülethez.
+- A felhasználónak rendelkeznie kell Reader-engedéllyel minden olyan előfizetéshez, amelynek naplóit át szeretné venni az Azure Sentinelbe.
 
-## <a name="set-up-the-azure-activity-connector"></a>Az Azure-tevékenység összekötő beállítása
+## <a name="set-up-the-azure-activity-connector"></a>Az Azure Activity-összekötő beállítása
 
-1. Az Azure Sentinel navigációs menüjében válassza az **Adatösszekötők**lehetőséget. Az összekötők listájában kattintson az **Azure Activity**, majd az **Összekötő lap megnyitása** gombra a jobb alsó sarokban.
+1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget. Az összekötők listájában kattintson az **Azure-tevékenység**elemre, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra.
 
-2. A **Utasítások** lapon kattintson az **Azure-tevékenységnaplók konfigurálása >** hivatkozásra.
+2. Az **utasítások** lapon kattintson az Azure- **tevékenység naplófájljainak konfigurálása >** hivatkozásra.
 
-3. Az **Azure-tevékenység naplóablakában** válassza ki azokat az előfizetéseket, amelyek naplóit az Azure Sentinelbe szeretné streamelni. 
+3. Az **Azure-tevékenység napló** paneljén válassza ki azokat az előfizetéseket, amelyek naplóit az Azure Sentinel szolgáltatásba kívánja továbbítani. 
 
-4. A jobb oldalon megnyíló előfizetési ablaktáblán kattintson a **Csatlakozás gombra.**
+4. A jobb oldalon megnyíló előfizetés ablaktáblán kattintson a **Kapcsolódás**elemre.
 
-5. Ha a megfelelő sémát szeretné használni az Azure-tevékenységriasztási naplóban, írja be `AzureActivity` a lekérdezési ablakot.
+5. Ha a megfelelő sémát szeretné használni Log Analytics az Azure-tevékenység riasztásai esetében, írja be `AzureActivity` a következőt: lekérdezési ablak.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakozhat az Azure-tevékenységnaplóhoz az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- A [beépített](tutorial-detect-threats-built-in.md) vagy [egyéni](tutorial-detect-threats-custom.md) szabályok használatával első lépések észlelheti a fenyegetéseket az Azure Sentinel segítségével.
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az Azure-tevékenység naplója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats-built-in.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

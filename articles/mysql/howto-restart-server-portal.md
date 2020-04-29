@@ -1,51 +1,51 @@
 ---
-title: Kiszolgáló újraindítása - Azure portal – Azure Database for MySQL
-description: Ez a cikk ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL-kiszolgáló az Azure Portalhasználatával.
+title: Kiszolgáló újraindítása – Azure Portal – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL kiszolgálót a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: d7e158124347b302492364df46ccf5b5e78e75c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063297"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>A MySQL-kiszolgáló Azure-adatbázisának újraindítása az Azure Portal használatával
-Ez a témakör azt ismerteti, hogyan indíthatja újra az Azure Database for MySQL-kiszolgálót. Előfordulhat, hogy karbantartási okokból újra kell indítania a kiszolgálót, ami rövid leállást okoz, mivel a kiszolgáló végrehajtja a műveletet.
+# <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure Database for MySQL kiszolgáló újraindítása Azure Portal használatával
+Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
 
-A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Például a szolgáltatás lehet, hogy egy korábban kért műveletet dolgoz fel, például a virtuális magok méretezése.
+A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Előfordulhat például, hogy a szolgáltatás feldolgoz egy korábban kért műveletet, például a skálázási virtuális mag.
 
-Az újraindítás befejezéséhez szükséges idő a MySQL helyreállítási folyamatátattól függ. Az újraindítási idő csökkentése érdekében azt javasoljuk, hogy minimalizálja a kiszolgálón az újraindítás előtt előforduló tevékenység mennyiségét.
+Az újraindítás befejezéséhez szükséges idő a MySQL helyreállítási folyamattól függ. Az újraindítási idő csökkentése érdekében javasoljuk, hogy csökkentse a kiszolgálón előforduló tevékenységek mennyiségét az újraindítás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató befejezéséhez a következőkre van szükség:
-- [Azure-adatbázis a MySQL-kiszolgálóhoz](quickstart-create-mysql-server-database-using-azure-portal.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Kiszolgáló újraindításának végrehajtása
+## <a name="perform-server-restart"></a>Kiszolgáló újraindítása
 
-A következő lépések újraindítják a MySQL szervert:
+A következő lépések újraindítják a MySQL-kiszolgálót:
 
-1. Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgáló.
+1. A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót.
 
-2. A kiszolgáló **áttekintése** lap eszköztárán kattintson az **Újraindítás gombra.**
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán kattintson az **Újraindítás**elemre.
 
-   ![Azure Database for MySQL – Áttekintés – Újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for MySQL – áttekintés – Újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
 
-3. Kattintson az **Igen** gombra a kiszolgáló újraindításának megerősítéséhez.
+3. A kiszolgáló újraindításának megerősítéséhez kattintson az **Igen** gombra.
 
-   ![Azure Database for MySQL – Újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MySQL – újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Figyelje meg, hogy a kiszolgáló állapota "Újraindítás" állapotra változik.
+4. Figyelje meg, hogy a kiszolgáló állapota "újraindítás" értékűre változik.
 
-   ![Azure Database for MySQL – Újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MySQL – újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Ellenőrizze, hogy a kiszolgáló újraindítása sikeres-e.
+5. A kiszolgáló újraindításának megerősítése sikeres volt.
 
-   ![Azure Database for MySQL – Sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MySQL – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[Rövid útmutató: Azure-adatbázis létrehozása a MySQL-kiszolgálóhoz az Azure Portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Gyors útmutató: Azure Database for MySQL kiszolgáló létrehozása Azure Portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)

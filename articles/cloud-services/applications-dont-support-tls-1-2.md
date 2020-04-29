@@ -1,6 +1,6 @@
 ---
-title: A TLS 1.2-t nem támogató alkalmazások által okozott hibák elhárítása | Microsoft dokumentumok
-description: A TLS 1.2-t nem támogató alkalmazások által okozott hibák elhárítása
+title: A TLS 1,2-et nem támogató alkalmazások által okozott hibák elhárítása | Microsoft Docs
+description: A TLS 1,2-et nem támogató alkalmazások által okozott hibák elhárítása
 services: cloud-services
 documentationcenter: ''
 author: mimckitt
@@ -15,30 +15,30 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053759"
 ---
-# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1.2-t nem támogató alkalmazások hibaelhárítása
-Ez a cikk bemutatja, hogyan engedélyezheti a régebbi TLS protokollokat (TLS 1.0 és 1.1), valamint régebbi rejtjel-csomagokat alkalmazhat a Windows Server 2019 felhőszolgáltatás webes és feldolgozói szerepkörei ben a további protokollok támogatására. 
+# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1,2-et nem támogató alkalmazások hibaelhárítása
+Ez a cikk bemutatja, hogyan engedélyezheti a régebbi TLS protokollokat (TLS 1,0 és 1,1), valamint az örökölt titkosítási csomagok alkalmazását a Windows Server 2019 Cloud Service webes és feldolgozói szerepköreinek további protokolljainak támogatásához. 
 
-Megértjük, hogy miközben lépéseket teszünk a TLS 1.0 és a TLS 1.1 elavulttá tétele érdekében, ügyfeleinknek szükségük lehet a régebbi protokollok és titkosítási csomagok támogatására, amíg meg nem tervezik az evevesztésüket.  Bár nem javasoljuk, hogy újra engedélyezzük ezeket az örökölt értékeket, útmutatást nyújtunk az ügyfelek nek. Javasoljuk az ügyfeleknek, hogy a cikkben ismertetett módosítások végrehajtása előtt értékeljék a regresszió kockázatát. 
+Tisztában vagyunk vele, hogy a TLS 1,0 és a TLS 1,1 elavult lépéseinek elvégzése közben ügyfeleinknek a régebbi protokollokat és a titkosítási csomagokat is támogatniuk kell, amíg meg nem tervezik az elavult műveleteket.  Habár nem javasoljuk a régi értékek újbóli engedélyezését, útmutatást nyújtunk az ügyfeleknek. Javasoljuk, hogy a jelen cikkben ismertetett módosítások végrehajtása előtt értékelje a regresszió kockázatát. 
 
 > [!NOTE]
-> Vendég OS Family 6 kiadás kényszeríti TLS 1.2 explicit letiltásával TLS 1.0 és 1.1, és meghatározza egy adott készlet rejtjelező csomagok. További információ a vendég operációsrendszer-családokról: [Vendég operációsrendszer-kiadási hírek](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> A vendég operációsrendszer-család 6 kiadásának kikényszeríti a TLS 1,2-et a TLS 1,0 és 1,1 explicit módon történő letiltásával, valamint a titkosítási csomagok meghatározott készletének definiálásával. A vendég operációsrendszer-családokkal kapcsolatos további információkért lásd: [vendég operációs rendszer kiadási hírei](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
 
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>A TLS 1.0, TLS 1.1 és régebbi titkosítási csomagok támogatásának visszadobása 
-A kategóriájában legjobb titkosítás használatára vonatkozó kötelezettségvállalásunk alátámasztására a Microsoft bejelentette, hogy 2017 júniusában elindítja az áttelepítést a TLS 1.0-ról és az 1.1-ről.   A kezdeti bejelentés óta a Microsoft bejelentette, hogy 2020 első felében alapértelmezés szerint le tiltja a Transport Layer Security (TLS) 1.0 és 1.1-es verzióját a Microsoft Edge és az Internet Explorer 11 támogatott verzióiban.  Az Apple, a Google és a Mozilla hasonló bejelentései jelzik az iparág irányát.   
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>A TLS 1,0, a TLS 1,1 és a régebbi titkosítási csomagok támogatásának eldobása 
+A legjobb titkosítást támogató elkötelezettségünk támogatásával a Microsoft bejelentette, hogy a TLS 1,0-es és 1,1-es verzióról az 2017-i júniustól kezdődően elindítják az áttelepítést.   Ez a kezdeti bejelentés óta a Microsoft bejelentette, hogy a Microsoft Edge és az Internet Explorer 11 támogatott verzióiban alapértelmezés szerint letiltjuk a Transport Layer Security (TLS) 1,0-es és 1,1-es verzióját a 2020 első felében.  Az Apple, a Google és a Mozilla hasonló hirdetményei jelzik az iparág irányát.   
 
-További információ: [Felkészülés a TLS 1.2-re a Microsoft Azure-ban](https://azure.microsoft.com/updates/azuretls12/)
+További információ: [felkészülés a TLS 1,2-re a Microsoft Azure-ben](https://azure.microsoft.com/updates/azuretls12/)
 
 ## <a name="tls-configuration"></a>TLS-konfiguráció  
-A Windows Server 2019 felhőkiszolgáló-lemezképe a Beállításjegyzék szintjén le van tiltva a TLS 1.0 és a TLS 1.1 beállításjegyzék-szinten. Ez azt jelenti, hogy a Windows ezen verziójára telepített és a Windows verem tls-egyeztetéshez nem teszik lehetővé a TLS 1.0 és a TLS 1.1 kommunikációt.   
+A Windows Server 2019 Cloud Server rendszerképet a beállításjegyzék szintjén le van tiltva a TLS 1,0 és a TLS 1,1. Ez azt jelenti, hogy a Windows ezen verziójára telepített alkalmazások és a Windows stack for TLS egyeztetés használata nem teszi lehetővé a TLS 1,0 és a TLS 1,1 kommunikációt.   
 
-A szerver is jön-val egy korlátozott sor rejtjelező suites: 
+A kiszolgáló a titkosítási csomagok korlátozott készletét is tartalmazza: 
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -51,9 +51,9 @@ A szerver is jön-val egy korlátozott sor rejtjelező suites:
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>1. lépés: A PowerShell-parancsfájl létrehozása a TLS 1.0 és a TLS 1.1 engedélyezéséhez 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>1. lépés: a PowerShell-szkript létrehozása a TLS 1,0 és a TLS 1,1 engedélyezéséhez 
 
-Használja a következő kódot példaként egy parancsfájl létrehozásához, amely lehetővé teszi a régebbi protokollok és titkosítási csomagok. Ennek a dokumentációnak az alkalmazásában ez a parancsfájl neve: **TLSsettings.ps1**. Tárolja ezt a parancsfájlt a helyi asztalon, hogy a későbbi ekben könnyen elérhesse. 
+A következő kód példaként használható olyan parancsfájl létrehozásához, amely lehetővé teszi a régebbi protokollok és titkosítási csomagok használatát. A jelen dokumentációban a szkript neve: **TLSsettings. ps1**. A parancsfájlt a helyi asztalon tárolja a későbbi lépésekben való egyszerű hozzáférés érdekében. 
 
 
 ```Powershell
@@ -273,9 +273,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>2. lépés: Parancsfájl létrehozása 
+## <a name="step-2-create-a-command-file"></a>2. lépés: hozzon létre egy parancsfájlt 
 
-Hozzon létre egy **RunTLSSettings.cmd** nevű CMD-fájlt az alábbi használatával. Tárolja ezt a parancsfájlt a helyi asztalon, hogy a későbbi ekben könnyen elérhesse. 
+Hozzon létre egy **RunTLSSettings. cmd** nevű cmd-fájlt az alábbi paranccsal. A parancsfájlt a helyi asztalon tárolja a későbbi lépésekben való egyszerű hozzáférés érdekében. 
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -300,9 +300,9 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>3. lépés: Az indítási feladat hozzáadása a szerepkör szolgáltatásdefiníciójához (csdef) 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>3. lépés: az indítási feladat hozzáadása a szerepkör Service Definition (csdef) szolgáltatásához 
 
-Adja hozzá a következő kódrészletet a meglévő szolgáltatásdefiníciós fájlhoz. 
+Adja hozzá a következő kódrészletet a meglévő szolgáltatási definíciós fájlhoz. 
 
 ```
     <Startup> 
@@ -311,7 +311,7 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatásdefiníciós 
     </Startup> 
 ```
 
-Íme egy példa, amely bemutatja mind a feldolgozói szerepkört, mind a webes szerepkört. 
+Íme egy példa, amely a feldolgozói szerepkört és a webes szerepkört is megjeleníti. 
 
 ```
 <?xmlversion="1.0"encoding="utf-8"?> 
@@ -341,27 +341,27 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatásdefiníciós 
 </ServiceDefinition> 
 ```
 
-## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>4. lépés: A parancsfájlok hozzáadása a felhőszolgáltatáshoz 
+## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>4. lépés: a szkriptek hozzáadása a felhőalapú szolgáltatáshoz 
 
-1) A Visual Studióban kattintson a jobb gombbal a WebRole vagy a WorkerRole elemre
-2) Válassza a **Hozzáadás lehetőséget**
-3) **Meglévő elem kijelölése**
-4) A fájlkezelőben keresse meg azt az asztalt, ahol a **TLSsettings.ps1** és a **RunTLSSettings.cmd** fájlokat tárolta. 
-5) Válassza ki azt a két fájlt, amelyet hozzá szeretne adni a Cloud Services projekthez
+1) A Visual Studióban kattintson a jobb gombbal a webszerepkörre vagy a WorkerRole
+2) **Hozzáadás** kiválasztása
+3) **Meglévő elem** kijelölése
+4) A Fájlkezelőben navigáljon az asztalra, ahol a **TLSsettings. ps1** és a **RunTLSSettings. cmd** fájlt tárolta 
+5) Válassza ki a két fájlt a Cloud Services projekthez való hozzáadáshoz
 
-## <a name="step-5-enable-copy-to-output-directory"></a>5. lépés: Másolás engedélyezése a kimeneti könyvtárba
+## <a name="step-5-enable-copy-to-output-directory"></a>5. lépés: a másolás engedélyezése a kimeneti könyvtárba
 
-Annak érdekében, hogy a parancsfájlok feltöltése a Visual Studio minden frissítésével együtt legyen feltöltve, a *Copy to Output Directory* beállítást a Mindig *másolása* beállításra kell állítani.
+Annak biztosítása érdekében, hogy a szkriptek feltöltése a Visual studióból leküldhető összes frissítéssel megtörténjen, a *Másolás a kimeneti könyvtárba* beállításnak *mindig a másolásra* kell állítania
 
-1) A WebRole vagy workerrole alatt kattintson a jobb gombbal a RunTLSSettings.cmd elemre
-2) **Tulajdonságok kijelölése**
-3) A Tulajdonságok lapon módosítsa a *Másolás kimeneti könyvtárba* *a Mindig másolása "*
-4) Ismételje meg a **TLSsettings.ps1 művelet** lépéseit
+1) A webrole vagy a WorkerRole alatt kattintson a jobb gombbal a RunTLSSettings. cmd fájlra.
+2) **Tulajdonságok** kiválasztása
+3) A Tulajdonságok lapon módosítsa a *Másolás a kimeneti könyvtárba* a *mindig* lehetőséget.
+4) A **TLSsettings. ps1** lépéseinek megismétlése
 
-## <a name="step-6-publish--validate"></a>6. lépés: Közzététel & érvényesítése
+## <a name="step-6-publish--validate"></a>6. lépés: &-ellenőrzés közzététele
 
-Most, hogy a fenti lépések befejeződtek, tegye közzé a frissítést a meglévő Felhőszolgáltatásban. 
+Most, hogy a fenti lépések befejeződik, tegye közzé a frissítést a meglévő Cloud Service-ben. 
 
-[Az SSLLabs](https://www.ssllabs.com/) segítségével ellenőrizheti a végpontok TLS-állapotát 
+Az [SSLLabs](https://www.ssllabs.com/) használatával ellenőrizheti a végpontok TLS-állapotát 
 
  

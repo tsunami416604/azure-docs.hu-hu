@@ -1,6 +1,6 @@
 ---
-title: In-Memory OLTP javítja az SQL txn perf
-description: Memóriabeli OLTP elfogadása a tranzakciós teljesítmény javítása érdekében egy meglévő SQL-adatbázisban.
+title: A memóriában tárolt OLTP javítja az SQL tranzakció Teljesítményfigyelőt
+description: A memóriában tárolt OLTP használatával javíthatja a tranzakciós teljesítményt egy meglévő SQL-adatbázisban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,53 +10,53 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: 653ed75341d5d56ecbe06cb59f0efafa1e68aa0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067269"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>A memórián belüli OLTP használata az alkalmazások teljesítményének növeléséhez az SQL Database-ben
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>A memóriában tárolt OLTP használatával javíthatja az alkalmazások teljesítményét SQL Database
 
-[A memórián belüli OLTP](sql-database-in-memory.md) a prémium [és üzleti legkritikusabb szintű](sql-database-service-tiers-vcore.md) adatbázisokban a tranzakciófeldolgozás, az adatbetöltés és az átmeneti adatforgatókönyvek teljesítményének javítására használható anélkül, hogy növelné a tarifacsomagot. 
+A [memóriában tárolt OLTP](sql-database-in-memory.md) felhasználható a tranzakciók feldolgozásának, az adatok betöltésének és az átmeneti adatkörnyezetek teljesítményének javítására, [prémium és üzletileg kritikus rétegbeli](sql-database-service-tiers-vcore.md) adatbázisokban, az árképzési szint növelése nélkül. 
 
 > [!NOTE] 
-> Ismerje meg, hogyan [duplázza meg a Quorum a kulcsadatbázis munkaterhelését, miközben 70%-kal csökkenti a DTU-t az SQL Database segítségével](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Ismerje meg [, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
-Kövesse az alábbi lépéseket a memórián belüli OLTP alkalmazásával a meglévő adatbázisban.
+Kövesse az alábbi lépéseket a memóriában lévő OLTP a meglévő adatbázisban való elfogadásához.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, hogy prémium és üzleti legkritikusabb szintű adatbázist használ
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, hogy prémium és üzletileg kritikus szintű adatbázist használ
 
-A memórián belüli OLTP csak prémium szintű és üzleti legkritikusabb szintű adatbázisokban támogatott. A memóriában támogatott, ha a visszaadott eredmény 1 (nem 0):
+A memóriában tárolt OLTP csak prémium és üzletileg kritikus rétegbeli adatbázisokban támogatott. A memóriában tárolt érték akkor támogatott, ha a visszaadott eredmény 1 (nem 0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 ```
 
-*Az XTP* az *Extreme Transaction Processing rövidítése*
+*Xtp* a *szélsőséges tranzakció-feldolgozáshoz*
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: Azonosítsa az okat, amelyeket át szeretne telepíteni a memórián belüli OLTP-ra
-Az SSMS tartalmaz egy **tranzakcióteljesítmény-elemzési áttekintésjelentést,** amely et aktív munkaterheléssel rendelkező adatbázison futtathat. A jelentés azonosítja azokat a táblákat és tárolt eljárásokat, amelyek a memórián belüli OLTP-ra való áttelepítésre jelöltek.
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: az áttelepíteni kívánt objektumok azonosítása a memóriában lévő OLTP
+A SSMS tartalmaz egy **tranzakciós teljesítmény-elemzési áttekintő** jelentést, amelyet egy aktív számítási feladattal rendelkező adatbázison lehet futtatni. A jelentés azokat a táblákat és tárolt eljárásokat azonosítja, amelyeket a rendszer a memóriában lévő OLTP való áttelepítésre jelöltek.
 
-Az SSMS-ben a jelentés létrehozása:
+A SSMS-ben a jelentés létrehozásához:
 
-* Az **Objektumkezelőben**kattintson a jobb gombbal az adatbáziscsomópontra.
-* Kattintson **a Jelentések** > **– szokásos jelentések** > **tranzakcióteljesítmény-elemzése – áttekintés parancsra.**
+* A **Object Explorer**kattintson a jobb gombbal az adatbázis-csomópontra.
+* Kattintson a **jelentések** > **szabványos jelentések** > **tranzakciók teljesítményének elemzése áttekintés**elemre.
 
-További [információ: Annak meghatározása, hogy egy táblát vagy tárolt eljárást át kell-e portolni a memórián belüli OLTP-re.](https://msdn.microsoft.com/library/dn205133.aspx)
+További információ: annak [meghatározása, hogy egy tábla vagy tárolt eljárás a memóriában lévő OLTP legyen-e portolva](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: Hasonló tesztadatbázis létrehozása
-Tegyük fel, hogy a jelentés azt jelzi, hogy az adatbázis rendelkezik egy táblával, amely számára előnyös lenne, ha memóriaoptimalizált táblává konvertálná. Javasoljuk, hogy először tesztelje a javallatot teszteléssel.
+## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: összehasonlítható tesztelési adatbázis létrehozása
+Tegyük fel, hogy a jelentés azt jelzi, hogy az adatbázis egy olyan táblát tartalmaz, amely kihasználhatja a memóriára optimalizált táblára való átalakítás előnyeit. Javasoljuk, hogy az első teszteléssel erősítse meg a jelzést teszteléssel.
 
-Szüksége van egy tesztmásolatra az éles adatbázisból. A tesztadatbázisnak ugyanazon a szolgáltatási szintszinten kell lennie, mint az éles adatbázisnak.
+Szüksége lesz az éles adatbázis tesztelési példányára. A tesztelési adatbázisnak ugyanazon a szolgáltatási szint szintjén kell lennie, mint az éles adatbázisnak.
 
-A tesztelés megkönnyítése érdekében a tesztadatbázist az alábbiak szerint kell módosítani:
+A teszteléshez a következő módon csípést tehet a teszt-adatbázison:
 
-1. Csatlakozzon a tesztadatbázishoz az SSMS segítségével.
-2. A LEKÉRDEZÉSEK WITH (SNAPSHOT) beállításának elkerülése érdekében állítsa be az adatbázis beállítást a következő T-SQL utasításban látható módon:
+1. Kapcsolódjon a tesztelési adatbázishoz a SSMS használatával.
+2. Ha nem szeretné, hogy a WITH (SNAPSHOT) lehetőség megjelenjen a lekérdezésekben, állítsa az adatbázis lehetőséget az alábbi T-SQL-utasításban látható módon:
    
    ```
    ALTER DATABASE CURRENT
@@ -64,39 +64,39 @@ A tesztelés megkönnyítése érdekében a tesztadatbázist az alábbiak szerin
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>4. lépés: Táblák áttelepítése
-Létre kell hoznia és fel kell népesítenie a tesztelni kívánt tábla memóriaoptimalizált másolatát. A következő konkra dulaktissza:
+## <a name="step-4-migrate-tables"></a>4. lépés: táblák átmigrálása
+Létre kell hoznia és fel kell töltenie a tesztelni kívánt tábla memóriára optimalizált másolatát. A következőkkel hozható létre:
 
-* A praktikus memória optimalizálása varázsló SSMS.
+* A SSMS-ben a hasznos memória optimalizálása varázsló.
 * Kézi T-SQL.
 
-#### <a name="memory-optimization-wizard-in-ssms"></a>Memóriaoptimalizálás varázsló az SSMS-ben
-Az áttelepítési beállítás használata:
+#### <a name="memory-optimization-wizard-in-ssms"></a>Memória-optimalizálási varázsló a SSMS-ben
+Az áttelepítési lehetőség használata:
 
-1. Csatlakozzon a tesztadatbázishoz az SSMS segítségével.
-2. Az **Objektumkezelőben**kattintson a jobb gombbal a asztalra, majd kattintson a **Memóriaoptimalizálási tanácsadó parancsra.**
+1. Kapcsolódjon a test adatbázishoz a SSMS használatával.
+2. A **Object Explorer**kattintson a jobb gombbal a táblára, majd kattintson a **memória-optimalizálási tanácsadó**elemre.
    
-   * Megjelenik **a Táblamemória-optimalizáló tanácsadó** varázsló.
-3. A varázslóban kattintson az **Áttelepítés érvényesítése** (vagy a **Tovább** gomb) gombra annak megtekintéséhez, hogy a táblázat rendelkezik-e olyan nem támogatott szolgáltatásokkal, amelyek nem támogatottak a memóriaoptimalizált táblázatokban. További információkért lásd:
+   * Megjelenik a **tábla memória-optimalizáló tanácsadó** varázslója.
+3. A varázslóban kattintson az áttelepítés ellenőrzése elemre (vagy a **tovább** gombra) annak **ellenőrzéséhez** , hogy a tábla rendelkezik-e olyan nem támogatott funkciókkal, amelyek nem támogatottak a memóriára optimalizált táblákban. További információkért lásd:
    
-   * A *memóriaoptimalizálási ellenőrzőlista* a [Memóriaoptimalizálási Tanácsadóban.](https://msdn.microsoft.com/library/dn284308.aspx)
-   * [A Transact-SQL konstrukciókat nem támogatja a memórián belüli OLTP.](https://msdn.microsoft.com/library/dn246937.aspx)
-   * [Átáttelepítés a memórián belüli OLTP-re.](https://msdn.microsoft.com/library/dn247639.aspx)
-4. Ha a tábla nem rendelkezik nem támogatott funkciókkal, a tanácsadó eltudja végezni a tényleges sémát és az adatok áttelepítését.
+   * Memória- *optimalizálási ellenőrzőlista* a [memória-optimalizálási tanácsadóban](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [A Transact-SQL-szerkezetek a memóriában tárolt OLTP nem támogatottak](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrálás a memóriában tárolt OLTP](https://msdn.microsoft.com/library/dn247639.aspx).
+4. Ha a tábla nem rendelkezik nem támogatott funkciókkal, az Advisor a tényleges sémát és az adatáttelepítést is elvégezheti Önnek.
 
 #### <a name="manual-t-sql"></a>Kézi T-SQL
-Az áttelepítési beállítás használata:
+Az áttelepítési lehetőség használata:
 
-1. Csatlakozzon a tesztadatbázishoz az SSMS (vagy egy hasonló segédprogram) segítségével.
-2. Szerezze be a teljes T-SQL-parancsfájlt a táblához és az indexekhez.
+1. Kapcsolódjon a test-adatbázishoz a SSMS (vagy egy hasonló segédprogram) használatával.
+2. Szerezze be a teljes T-SQL-szkriptet a táblához és az indexekhez.
    
-   * Az SSMS-ben kattintson a jobb gombbal az asztalcsomópontra.
-   * Kattintson **a Parancsfájl létrehozása az** > új**lekérdezésablakba** > **parancsra.**
-3. A parancsfájlablakban adja hozzá a WITH (MEMORY_OPTIMIZED = ON) értéket a CREATE TABLE utasításhoz.
-4. Ha van fürtözött index, módosítsa nonclustered.If there is an clustered index, change it to NONCLUSTERED.
+   * A SSMS kattintson a jobb gombbal a tábla csomópontjára.
+   * Kattintson a **parancsfájl** > **-** > táblázat létrehozása**új lekérdezési ablakként**lehetőségre.
+3. A parancsfájl ablakban adja hozzá a (MEMORY_OPTIMIZED = ON) parancsot a CREATE TABLE utasításhoz.
+4. FÜRTÖZÖTT index esetén módosítsa azt nem FÜRTÖZÖTT értékre.
 5. Nevezze át a meglévő táblát SP_RENAME használatával.
-6. A szerkesztett CREATE TABLE parancsfájl futtatásával hozza létre a tábla új, memóriare optimalizált példányát.
-7. Másolja az adatokat a memóriaoptimalizált táblázatba az INSERT... VÁLASSZA A * INTO LEHETŐSÉGET:
+6. Hozza létre a tábla új, memóriára optimalizált példányát a szerkesztett CREATE TABLE szkript futtatásával.
+7. Másolja az adatait a memóriára optimalizált táblába INSERT... VÁLASSZA KI A * ELEMET:
 
 ```
 INSERT INTO <new_memory_optimized_table>
@@ -104,19 +104,19 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>5. lépés (nem kötelező): Tárolt eljárások áttelepítése
-A memórián belüli szolgáltatás a jobb teljesítmény érdekében módosíthatja a tárolt eljárást is.
+## <a name="step-5-optional-migrate-stored-procedures"></a>5. lépés (nem kötelező): tárolt eljárások migrálása
+A memórián belüli szolgáltatás a jobb teljesítmény érdekében a tárolt eljárások módosítására is képes.
 
-### <a name="considerations-with-natively-compiled-stored-procedures"></a>A natívan összeállított tárolt eljárásokkal kapcsolatos szempontok
-A natívan összeállított tárolt eljárásnak a következő beállításokkal kell rendelkeznie a T-SQL WITH záradékon:
+### <a name="considerations-with-natively-compiled-stored-procedures"></a>A natív módon lefordított tárolt eljárásokkal kapcsolatos megfontolások
+A natív módon lefordított tárolt eljárásoknak az alábbi beállításokkal kell rendelkezniük a T-SQL WITH záradékban:
 
 * NATIVE_COMPILATION
-* SCHEMABINDING: olyan táblák, amelyekben a tárolt eljárás nem módosíthatja az oszlopdefiníciókat olyan módon, amely hatással lenne a tárolt eljárásra, hacsak el nem dobja a tárolt eljárást.
+* SCHEMABINDING: azokat a táblákat, amelyekben a tárolt eljárás nem módosítható az oszlop definíciói szerint, ami hatással lehet a tárolt eljárásra, hacsak nem dobja el a tárolt eljárást.
 
-A natív modulnak egy nagy [ATOMIC-blokkot](https://msdn.microsoft.com/library/dn452281.aspx) kell használnia a tranzakciókezeléshez. Explicit BEGIN TRANSACTION vagy ROLLBACK TRANSACTION nem szerepkör. Ha a kód egy üzleti szabály megsértését észleli, az atomblokkot [egy THROW](https://msdn.microsoft.com/library/ee677615.aspx) utasítással szüntetheti meg.
+A natív modulnak egy Big [Atomic blokkot](https://msdn.microsoft.com/library/dn452281.aspx) kell használnia a tranzakciók kezeléséhez. Explicit BEGIN TRANSACTION vagy VISSZAÁLLÍTÁSi tranzakció esetében nincs szerepkör. Ha a kód egy üzleti szabály megsértését észleli, az atomi blokkot egy [THROW](https://msdn.microsoft.com/library/ee677615.aspx) utasítással vonhatja le.
 
-### <a name="typical-create-procedure-for-natively-compiled"></a>Tipikus CREATE ELJÁRÁS Natív fordításhoz
-Általában a T-SQL létrehozása natívan lefordított tárolt eljárás hasonló a következő sablon:
+### <a name="typical-create-procedure-for-natively-compiled"></a>Tipikus LÉTREHOZÁSi eljárás natív módon lefordítva
+A natív módon lefordított tárolt eljárások létrehozása általában a T-SQL használatával történik a következő sablonhoz hasonló módon:
 
 ```
 CREATE PROCEDURE schemaname.procedurename
@@ -131,43 +131,43 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* A TRANSACTION_ISOLATION_LEVEL a SNAPSHOT a natívan lefordított tárolt eljárás leggyakoribb értéke. A többi érték egy részhalmaza azonban is támogatott:
+* A TRANSACTION_ISOLATION_LEVEL a PILLANATKÉP a natív módon lefordított tárolt eljárás leggyakoribb értéke. Azonban a többi érték egy részhalmaza is támogatott:
   
   * ISMÉTELHETŐ OLVASÁS
-  * Szerializálható
-* A NYELV értéknek meg kell jelennie a sys.languages nézetben.
+  * SZERIALIZÁLHATÓ
+* A nyelvi értéknek jelen kell lennie a sys. languages nézetben.
 
-### <a name="how-to-migrate-a-stored-procedure"></a>Tárolt eljárás áttelepítése
+### <a name="how-to-migrate-a-stored-procedure"></a>Tárolt eljárás áttelepítésének módja
 Az áttelepítési lépések a következők:
 
-1. Szerezze be a CREATE PROCEDURE parancsfájlt a normál értelmezett tárolt eljáráshoz.
-2. Írja át a fejlécet, hogy megfeleljen az előző sablonnak.
-3. Győződjön meg arról, hogy a tárolt eljárás T-SQL-kód olyan szolgáltatásokat használ-e, amelyek nem támogatottak a natívmódon lefordított tárolt eljárásokhoz. Szükség esetén alkalmazzon kerülő megoldásokat.
+1. Szerezze be az eljárás létrehozása parancsfájlt a szabályos értelmezésű tárolt eljáráshoz.
+2. Írja át a fejlécét az előző sablonnak megfelelően.
+3. Győződjön meg arról, hogy a T-SQL-kód tárolt eljárása olyan funkciókat használ, amelyek nem támogatottak a natív módon lefordított tárolt eljárásokhoz. Szükség esetén hajtsa végre a megkerülő megoldásokat.
    
-   * További információt a [Natívmódon összeállított tárolt eljárások áttelepítésével kapcsolatos problémák értendők meg.](https://msdn.microsoft.com/library/dn296678.aspx)
-4. Nevezze át a régi tárolt eljárást SP_RENAME használatával. Vagy egyszerűen dobd el.
-5. Futtassa a szerkesztett CREATE PROCEDURE T-SQL parancsfájlt.
+   * Részletekért lásd: [a natív módon lefordított tárolt eljárások áttelepítési problémái](https://msdn.microsoft.com/library/dn296678.aspx).
+4. Nevezze át a régi tárolt eljárást SP_RENAME használatával. Vagy egyszerűen dobja el.
+5. Futtassa a szerkesztett CREATE PROCEDURE T-SQL-szkriptet.
 
-## <a name="step-6-run-your-workload-in-test"></a>6. lépés: A számítási feladatok futtatása a tesztben
-Futtasson egy számítási feladatot a tesztadatbázisban, amely hasonló az éles adatbázisban futó számítási feladathoz. Ez felfedi a táblák és a tárolt eljárások memóriabeli funkciójának használatával elért teljesítménynövekedést.
+## <a name="step-6-run-your-workload-in-test"></a>6. lépés: a számítási feladatok futtatása a tesztben
+Futtasson munkaterhelést a tesztelési adatbázisban, amely hasonló az éles adatbázisban futó munkaterheléshez. Ez azt mutatja be, hogy milyen teljesítményt érhet el a memóriában lévő szolgáltatás használata a táblák és a tárolt eljárások esetében.
 
-A munkaterhelés főbb jellemzői a következők:
+A számítási feladatok fő attribútumai a következők:
 
-* Egyidejű kapcsolatok száma.
+* Az egyidejű kapcsolatok száma.
 * Olvasási/írási arány.
 
-A tesztterhelés személyre szabásához és futtatásához érdemes megfontolni a praktikus ostress.exe eszköz használatát, amely [az itt](sql-database-in-memory.md)látható .
+A tesztelési feladatok testre szabásához és futtatásához érdemes lehet használni a Handy ostress. exe eszközt, amely [itt](sql-database-in-memory.md)látható.
 
-A hálózati késés minimalizálása érdekében futtassa a tesztet ugyanabban az Azure-földrajzi régióban, ahol az adatbázis létezik.
+A hálózati késés csökkentése érdekében futtassa a tesztet ugyanabban az Azure földrajzi régióban, ahol az adatbázis létezik.
 
-## <a name="step-7-post-implementation-monitoring"></a>7. lépés: A végrehajtás utáni ellenőrzés
-Fontolja meg a memórián belüli implementációk teljesítményhatásainak figyelését éles környezetben:
+## <a name="step-7-post-implementation-monitoring"></a>7. lépés: a megvalósítás utáni figyelés
+Gondolja át a memóriában lévő megvalósítások teljesítménybeli hatásait az éles környezetben:
 
-* [Monitor a memóriában tárolt .](sql-database-in-memory-oltp-monitoring.md)
+* [Memóriabeli tárolás figyelése](sql-database-in-memory-oltp-monitoring.md).
 * [Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Memórián belüli OLTP (memórián belüli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
-* [Bevezetés a natívan összeállított tárolt eljárásokba](https://msdn.microsoft.com/library/dn133184.aspx)
-* [Memóriaoptimalizálási tanácsadó](https://msdn.microsoft.com/library/dn284308.aspx)
+* [Memóriában tárolt OLTP (memórián belüli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
+* [A natív módon lefordított tárolt eljárások bemutatása](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Memória-optimalizálási tanácsadó](https://msdn.microsoft.com/library/dn284308.aspx)
 

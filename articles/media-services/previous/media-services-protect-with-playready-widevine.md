@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78199495"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady és/vagy Widevine Dynamic Common Encryption használata
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2-höz nem ad nak hozzá új szolgáltatásokat vagy funkciókat. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>Áttekintés
@@ -43,7 +43,7 @@ További információkért lásd az integrációt az [Axinom](media-services-axi
 
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelyek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services a [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) és a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú jogkivonatokat támogatja. 
 
-További információt [a Tartalomkulcs engedélyezési házirendjének konfigurálása](media-services-protect-with-aes128.md#configure_key_auth_policy)című témakörben talál.
+További információ: [a tartalmi kulcs engedélyezési házirendjének konfigurálása](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
 A dinamikus titkosítás által nyújtott előnyök kihasználásához többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektumra van szükség. Ezenfelül be kell állítania az objektumhoz tartozó továbbítási szabályzatokat is (ennek módját a témakör későbbi részében írjuk le). Ezt követően az igényalapú streamelési kiszolgáló a streamelési URL-címben megadott formátumnak megfelelően gondoskodik arról, hogy a rendszer a kiválasztott protokollal továbbítsa a streamet. Ennek eredményeképpen csak egyetlen tárolási formátumban tárolja a fájlokat és fizet a tárolásukért. A Media Services elkészíti és kiszolgálja az ügyféltől érkező kéréseknek megfelelő HTTP-választ.
 
@@ -98,12 +98,12 @@ A dinamikus titkosítás segítségével egy többszörös sávszélességű MP4
 
 A kódolással kapcsolatos utasításokért lásd: [Objektum kódolása a Media Encoder Standard használatával](media-services-dotnet-encode-with-media-encoder-standard.md).
 
-## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Tartalomkulcs létrehozása és társítása a kódolt eszközzel
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Hozzon létre egy tartalmi kulcsot, és társítsa a kódolt objektumhoz
 A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítására használható kulcsot.
 
 További információkat a [tartalomkulcs létrehozásával](media-services-dotnet-create-contentkey.md) foglalkozó témakör tartalmaz.
 
-## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>A tartalomkulcs engedélyezési házirendjének konfigurálása
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek (lejátszó) meg kell felelnie a szabályzatnak, mielőtt megkapná a kulcsot. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is.
 
 További információkért lásd a [tartalomkulcs-hitelesítési szabályzat konfigurálásával](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption) foglalkozó témakört.
@@ -607,7 +607,7 @@ namespace DynamicEncryptionWithDRM
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="next-steps"></a>További lépések
 

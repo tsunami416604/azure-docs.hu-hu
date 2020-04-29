@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Edge, az Azure Data Box Gateway támogatási jegyeinaplózási jegye | Microsoft dokumentumok
-description: Ismerje meg, hogyan naplózhatja a Data Box Edge vagy a Data Box Gateway rendelésekkel kapcsolatos problémák támogatási kérelmét.
+title: Azure Data Box Edge, Azure Data Box Gateway támogatási jegyének naplózása | Microsoft Docs
+description: Megtudhatja, hogyan naplózhatja a támogatási kérelmet a Data Box Edge vagy Data Box Gateway megrendelésekkel kapcsolatos problémákhoz.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,95 +9,95 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: c93a2e2f3162891e72cf6d57f3df6c3ceaf0c7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064975"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása az Azure Data Box Edge és az Azure Data Box Gateway számára
+# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Data Box Edge és Azure Data Box Gateway
 
-Ez a cikk az Azure Data Box Edge és az Azure Data Box Gateway egyaránt az Azure Data Box Edge/Azure Data Box Gateway szolgáltatás által kezelt. Ha bármilyen probléma merül fel a szolgáltatással kapcsolatban, létrehozhat egy technikai támogatási kérelmet. Ez a cikk végigvezeti önt a következőkön:
+Ez a cikk a Azure Data Box Edge/Azure Data Box Gateway szolgáltatás által felügyelt Azure Data Box Edgeekre és Azure Data Box Gatewayokra vonatkozik. Ha problémák merülnek fel a szolgáltatással kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. Ez a cikk végigvezeti a következő lépéseken:
 
 * Támogatási kérelem létrehozása.
-* Támogatási kérelem életciklusának kezelése a portálon belül.
+* Támogatási kérelmek életciklusának kezelése a portálon belülről.
 
 ## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
-Támogatási kérelem létrehozásához hajtsa végre az alábbi lépéseket:
+Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Data Box Edge vagy a Data Box Gateway sorrendet. Nyissa meg a **Támogatás + hibaelhárítás szakaszt,** és válassza az **Új támogatási kérelem**lehetőséget.
+1. Lépjen a Data Box Edge vagy Data Box Gateway sorrendbe. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem**lehetőséget.
    
-2. Az **Új támogatási kérelem**lap Új támogatási kérelem csoportjában **hajtsa** végre az alábbi lépéseket:
+2. Az **új támogatási kérelemben**az **alapok** lapon végezze el a következő lépéseket:
     
-    1. A **Problématípus** legördülő listában válassza a **Technical**lehetőséget.
+    1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget.
     2. Válassza ki az **Előfizetést**.
-    3. A **Szolgáltatás csoportban**jelölje be **a Saját szolgáltatások**jelölőnégyzetet. A legördülő listában válassza a **Data Box Edge és a Data Box Gateway lehetőséget.**
-    4. Válassza ki az **erőforrást.** Ez megegyezik a megrendelés nevével.
-    5. Röviden **összegezheti** a tapasztalt problémát. 
+    3. A **szolgáltatás**alatt keresse meg **a saját szolgáltatások**szolgáltatást. A legördülő listából válassza a **Data Box Edge és Data Box Gateway**lehetőséget.
+    4. Válassza ki az **erőforrást**. Ez megfelel a megrendelés nevének.
+    5. Adja meg a tapasztalt probléma rövid **összefoglalását** . 
     6. Válassza ki a **probléma típusát**.
-    7. A kiválasztott problématípus alapján válassza ki a megfelelő **probléma altípust.**
-    8. Válassza a **Tovább: Megoldások >>** lehetőséget.
+    7. A kiválasztott probléma típusa alapján válasszon ki egy megfelelő **problémát altípust**.
+    8. Válassza a **tovább lehetőséget: megoldások >>**.
 
         ![Alapvető beállítások](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
-3. A **Részletek** lapon hajtsa végre az alábbi lépéseket:
+3. A **részletek** lapon hajtsa végre a következő lépéseket:
     
     1. Adja meg a probléma kezdő dátumát és időpontját.
-    2. Adja meg a probléma **leírását.**
-    3. A **Fájlfeltöltés**ablakban jelölje ki a mappa ikonját a feltölteni kívánt fájlok böngészéséhez.
-    4. Jelölje be **a Diagnosztikai információk megosztása jelölőnégyzetet.**
-    5. Az előfizetés alapján a **támogatási csomag** automatikusan kitöltődik.
-    6. A legördülő listában válassza a **Súlyosság lehetőséget.**
-    7. Adja meg **az Előnyben részesített névjegymódszert**.
-    8. A **válaszórák** automatikusan kiválasztásra kerülnek az előfizetési csomag alapján.
-    9. Adja meg a támogatást előnyben részesítő nyelvet.
-    10. A **Kapcsolattartási adatok**ban adja meg nevét, e-mail címét, telefonját, választható kapcsolattartóját, országát/régióját. A Microsoft támogatási szolgálata ezeket az információkat arra használja, hogy további információkért, diagnózisért és megoldásért forduljon Önhöz. 
-    11. Válassza a **Tovább lehetőséget: Véleményezés + >>létrehozása **.
+    2. Adja meg a probléma **leírását** .
+    3. A **fájl feltöltése**lapon válassza a mappa ikont a feltölteni kívánt fájlok tallózásához.
+    4. A **diagnosztikai adatok megosztásának**megadásához.
+    5. Az előfizetés alapján a rendszer automatikusan kitölti a **támogatási csomagot** .
+    6. A legördülő listából válassza ki a **súlyosságot**.
+    7. Válasszon ki egy **előnyben részesített kapcsolattartási módszert**.
+    8. Az előfizetési terv alapján a rendszer automatikusan kiválasztja a **válaszidőt** .
+    9. Adja meg a kívánt nyelvet a támogatáshoz.
+    10. A **kapcsolattartási adatok**területen adja meg a nevét, e-mail-címét, telefonszámát, nem kötelező elérhetőségét, országát/régióját. Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás eléréséhez használja fel. 
+    11. Válassza a **Tovább: Áttekintés + >>létrehozása **elemet.
 
         ![Probléma](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. A **Véleményezés + Létrehozás** lapon tekintse át a támogatási jeggyel kapcsolatos információkat. Kattintson a **Létrehozás** gombra. 
+4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Kattintson a **Létrehozás** gombra. 
 
     ![Probléma](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
-    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést.
+    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést.
 
-## <a name="get-hardware-support"></a>Hardvertámogatás beszereznie
+## <a name="get-hardware-support"></a>Hardveres támogatás beszerzése
 
-Ez az információ csak a Data Box Edge eszközre vonatkozik. A hardverproblémák jelentésének folyamata a következő:
+Ez az információ csak Data Box Edge eszközre vonatkozik. A hardveres problémák jelentésének folyamata a következő:
 
-1. Nyisson meg egy támogatási jegyet az Azure Portalon egy hardverprobléma esetén. A **Probléma típusa csoportban**válassza a **Data Box Edge Hardware (Adatdoboz széle) hardver lehetőséget.** Válassza a **Probléma altípust** **hardverhibaként**. 
+1. Hardveres probléma esetén nyisson meg egy támogatási jegyet a Azure Portal. A **probléma típusa**területen válassza a **Data Box Edge hardver**lehetőséget. Válassza ki a **probléma altípusát** **hardverhibaként**. 
 
-    ![Hardverprobléma](./media/data-box-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
+    ![Hardveres probléma](./media/data-box-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést. 
+    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést. 
 
-2. Ha a Microsoft támogatási szolgálata megállapítja, hogy ez egy hardverprobléma, akkor az alábbi műveletek egyike következik be: 
+2. Ha Microsoft ügyfélszolgálata megállapítja, hogy ez egy hardveres probléma, akkor a következő műveletek egyike történik: 
 
-    - A rendszer mezőpótló egységet (FRU) küld a sikertelen hardverrészhez. Jelenleg a tápegység az egyetlen támogatott FRU. 
-    - Bármely más alkatrész-hiba esetén a Microsoft teljes rendszercserét (FSR) vagy eszközcserét végez.
+    - A rendszer elküldje egy mező típusú helyettesítő egységet a meghibásodott hardver részhez. Jelenleg a tápegység csak az egyetlen támogatott cserélhető egység. 
+    - Bármely más rész meghibásodása esetén a Microsoft teljes rendszercserét (FSR) vagy egy eszköz cseréjét végez.
 
-3. Ha egy támogatási jegy helyi idő szerint 16:30 előtt (hétfőtől péntekig) kerül elő, a helyszíni technikust a következő munkanapon kiküldik az Ön tartózkodási helyére, hogy végre hajtson egy FRU-t vagy egy teljes eszközcserét.
+3. Ha a támogatási jegyet a helyi idő szerint (hétfőtől péntekig) 4:30 óráig emelik ki, akkor a helyszíni technikus a következő munkanapon elküldi azt a helyet, amely egy cserélhető eszköz vagy teljes eszköz cseréjét hajt végre.
 
 ## <a name="manage-a-support-request"></a>Támogatási kérelem kezelése
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
-#### <a name="to-manage-your-support-requests"></a>A támogatási kérelmek kezelése
+#### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. A súgó és támogatás lap megugrásához keresse meg **a Tallózás > súgó + támogatás**.
+1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
 
     ![Támogatási kérelmek kezelése](./media/data-box-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
 
-2. A legutóbbi támogatási **kérelmek** táblázatos listája megjelenik a **Súgó + támogatás szolgáltatásban.**
+2. A **Súgó és támogatás**szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
 
     <!--[Manage support requests](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)--> 
 
-3. Jelöljön ki egy támogatási kérelmet, és kattintson rájuk. Megtekintheti a kérelem állapotát és részleteit. Kattintson **a + Új üzenet gombra,** ha nyomon szeretné követni ezt a kérést.
+3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
    
 ## <a name="next-steps"></a>További lépések
 
-További információ a [Data Box Edge-el kapcsolatos problémák elhárításáról.](data-box-edge-troubleshoot.md)
-További információ a [Data Box Gateway-szel kapcsolatos problémák elhárításáról.](data-box-gateway-troubleshoot.md)
+Ismerje meg, hogyan lehet [elhárítani a Data Box Edge kapcsolatos problémákat](data-box-edge-troubleshoot.md).
+Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](data-box-gateway-troubleshoot.md).

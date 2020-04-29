@@ -1,7 +1,7 @@
 ---
 title: Adatelemzés kezdőknek
 titleSuffix: ML Studio (classic) - Azure
-description: Data Science kezdőknek tanítja az alapvető fogalmak at 5 rövid videók, kezdve az 5 kérdések Adattudomány válaszok. Az Azure Machine Learningből.
+description: Az adatelemzés kezdőknek 5 rövid videóban alapfogalmakat tanítunk, és az adatelemzés 5 kérdésével kezdődik. Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,129 +11,129 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204443"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
-Az *adattudomány kezdőknek* című rövid videóban, öt rövid adattudóstól kaphat be rövid bevezetőt az adatelemzésbe. Ezek a videók alapvető, de hasznos, hogy érdekli az adattudomány, vagy dolgozik adatszakértőkkel.
+Gyors bevezetést nyerhet az adatelemzésből az adatelemzésből a *kezdők számára* öt rövid videóban egy legfontosabb adattudóstól. Ezek a videók alapszintű, de hasznosak, függetlenül attól, hogy az adatelemzést vagy az adatszakértőkkel való munkát érdekli.
 
-Ez az első videó arról szól, hogy milyen kérdésekre, hogy az adattudomány tud válaszolni. Ahhoz, hogy a legtöbbet hozza ki a sorozat, nézd meg őket. [Ugrás a videók listájára](#other-videos-in-this-series)
+Ez az első videó arról szól, hogy milyen típusú kérdésekre tud válaszolni az adatelemzés. Ha ki szeretné próbálni a sorozatot, tekintse meg őket. [Ugrás a videók listájára](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Egyéb videók ebben a sorozatban
-*Data Science kezdőknek* egy gyors bevezetés az adattudomány körülbelül 25 perc összesen. Nézze meg mind az öt videót:
+## <a name="other-videos-in-this-series"></a>További videók ebben a sorozatban
+Az *adatelemzés kezdőknek* gyors bevezetést biztosítanak az adatelemzésből, így összesen 25 percet vesz igénybe. Tekintse meg az öt videót:
 
-* 1. videó: Az 5 kérdés adatelemzési válaszok
-* 2. videó: [Készen áll az adatok az adatelemzésre?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 mp)*
-* 3. videó: [Olyan kérdés feltehet ő: adatokkal válaszolhat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
-* 4. videó: [Válasz előrejelzése egy egyszerű modellel](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 mp)*
-* 5. videó: [Mások munkájának másolása adatelemzéshez](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 mp)*
+* 1. videó: az adatelemzés 5 kérdésre adott válaszok
+* 2. videó: [készen áll](data-science-for-beginners-is-your-data-ready-for-data-science.md) az adatelemzésre? *(4 perc 56 mp)*
+* 3. videó: [Kérdezzen rá az adatválaszra](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 mp)*
+* 4. videó: [Válasz Megjósolása egy egyszerű modellel](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 mp)*
+* 5. videó: [a többi személy munkájának másolása az adatelemzéshez](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 mp)*
 
-## <a name="transcript-the-5-questions-data-science-answers"></a>Átirat: Az 5 kérdés adatelemzési válaszok
-Hello! Üdvözöljük a videó sorozat *Data Science kezdőknek*.
+## <a name="transcript-the-5-questions-data-science-answers"></a>Átirat: az adatelemzés 5 kérdésre adott válasz
+Hello! Köszönti a *kezdőknek szóló*Video Series-adatelemzés.
 
-Adattudomány lehet megfélemlítő, úgyhogy be az alapokat itt nélkül egyenletek vagy számítógépes programozási zsargon.
+Az adatelemzés megfélemlítő lehet, ezért az alapismereteket itt mutatjuk be egyenletek vagy számítógépes programozási zsargon nélkül.
 
-Ebben az első videóban az "5 kérdés adattudományi válaszáról" fogunk beszélni.
+Ebben az első videóban az "5 kérdés adatelemzési válasz" kifejezésre fogunk beszélni.
 
 Az adatelemzés számokat és neveket (más néven kategóriákat vagy címkéket) használ a kérdésekre adott válaszok előrejelzéséhez.
 
-Lehet, hogy meglepi, de *már csak öt kérdés, hogy az adatok tudomány választ:*
+Lehet, hogy meglepő, de az *adattudományi válaszok közül csak öt kérdés*:
 
-* Ez a "A" vagy a B?
-* Nem furcsa ez?
-* Mennyi - vagy - mennyi?
-* Hogy szervezik ezt meg?
+* Ez A vagy B?
+* Ez fura?
+* Mennyit – vagy – hány?
+* Hogyan történik ez a rendszerezés?
 * Mi a teendő ezután?
 
-Ezek a kérdések mindegyike választ egy külön család gépi tanulási módszerek, az úgynevezett algoritmusok.
+A kérdések mindegyikét egy különálló gépi tanulási módszer, az algoritmusok nevezik.
 
-Hasznos lehet egy algoritmust receptként, az adatokat pedig összetevőként gondolni. Egy algoritmus megmondja, hogyan kell kombinálni és keverni az adatokat annak érdekében, hogy választ kapjon. A számítógépek olyanok, mint egy turmixgép. Ők a legtöbb kemény munka az algoritmus az Ön számára, és ők elég gyorsan.
+Hasznos lehet olyan algoritmust meggondolni, amely egy Receptként és az Ön által használt összetevőkből áll. Egy algoritmus azt mutatja be, hogyan egyesítheti és keverheti össze az adattípusokat, hogy választ kapjon. A számítógépek olyanok, mint a turmixgép. Az algoritmus nagy része az Ön számára, és nagyon gyorsan elvégezhető.
 
-## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>1. kérdés: Ez A vagy B? osztályozási algoritmusokat használ
-Kezdjük azzal a kérdéssel: Ez a következő A vagy B?
+## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>1. kérdés: ez A vagy B? besorolási algoritmusokat használ
+Kezdjük a kérdést: ez A vagy B?
 
-![Besorolási algoritmusok: Ez Az A vagy B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
+![Besorolási algoritmusok: ez A vagy B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
-Ezt az algoritmuscsaládot kétosztályos besorolásnak nevezzük.
+Az algoritmusok ezt a családját kétosztályos besorolásnak nevezzük.
 
-Ez hasznos minden olyan kérdésre, amely csak két lehetséges választ.
+Minden olyan kérdés esetében hasznos, amely csak két lehetséges választ tartalmaz.
 
-Példa:
+Például:
 
-* Vajon ez a gumiabroncs nem a következő 1000 mérföld: Igen vagy nem?
-* Amely több ügyfelet hoz: egy $5 kupont vagy egy 25% kedvezményt?
+* A gumiabroncs sikertelen lesz a következő 1 000 mérföldben: Igen vagy nem?
+* Mely több ügyfelet tartalmaz: egy $5 kupont vagy 25%-os kedvezményt?
 
-Ez a kérdés is lehet átfogalmazni, hogy több mint két lehetőség: Ez az A vagy B vagy C vagy D, stb?  Ezt többosztályos besorolásnak nevezzük, és akkor hasznos, ha több – vagy több ezer – lehetséges válasza van. A többosztályos besorolás a legvalószínűbbet választja.
+Ezt a kérdést úgy is megteheti, hogy több mint két lehetőséget is tartalmaz: ez A vagy B vagy C vagy D, stb.?  Ezt nevezzük többosztályos besorolásnak, és akkor hasznos, ha több – vagy több ezer – lehetséges válasz van. A többosztályos besorolás a legvalószínűbbet választja.
 
-## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>2. kérdés: Ez furcsa? anomáliadetektálási algoritmusokat használ
-A következő kérdés adattudomány tud válaszolni: Van ez furcsa? Erre a kérdésre az anomáliadetektálásnak nevezett algoritmuscsalád válaszol.
+## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>2. kérdés: ez fura? anomália-észlelési algoritmusokat használ
+A következő kérdés adattudománya választ kaphat: ez fura? Ezt a kérdést a rendellenesség észlelése nevű algoritmusok egyike válaszolja meg.
 
-![Anomália detektálás algoritmusok: Ez furcsa?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
+![Rendellenesség-észlelési algoritmusok: ez fura?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-Ha van hitelkártyája, már részesült az anomáliaészlelés előnyeiből. A hitelkártya-kibocsátó elemzi a vásárlási mintákat, hogy figyelmeztesse Önt az esetleges csalásokra. A "furcsa" költségek lehetnek olyan üzletekben történő vásárlás, ahol általában nem vásárolsz vagy vásárolsz szokatlanul drága terméket.
+Ha rendelkezik bankkártyával, már előnyben részesült a anomáliák észlelése során. A bankkártya vállalata elemzi a vásárlási mintákat, így riasztást kaphat a lehetséges csalásról. A "fura" díjat olyan áruházban lehet vásárolni, amely nem általában a szokásos áron vásárolja meg és nem vásárolja meg.
 
-Ez a kérdés sok szempontból hasznos lehet. Ilyenek például a következők:
+Ez a kérdés számos módon hasznos lehet. Ilyenek például a következők:
 
-* Ha van egy autó nyomásmérők, érdemes tudni: Ez a nyomásmérő normális?
-* Ha az internetet figyeli, tudni szeretné: Ez az üzenet az internetről tipikus?
+* Ha van egy, a nyomásmérővel rendelkező autó, érdemes tudnia: Ez a nyomásmérő a normál módon olvas?
+* Ha az internetet figyeli, érdemes tudnia, hogy ez az üzenet jellemző az internetről?
 
-Az anomáliadetektálás váratlan vagy szokatlan eseményeket vagy viselkedéseket jelöl. Ez ad nyomokat, hogy hol kell keresni a problémákat.
+Nem várt vagy szokatlan eseményeket vagy viselkedést jelző anomáliák észlelése. Megadja a problémák keresésének helyét.
 
-## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>3. kérdés: Mennyibe kerül? vagy hány? regressziós algoritmusokat használ
-Gépi tanulás is megjósolni a választ, hogy mennyi? vagy hány? A kérdést megválaszoló algoritmuscsaládot regressziónak nevezzük.
+## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>3. kérdés: mennyit? vagy hány? regressziós algoritmusokat használ
+A gépi tanulás is megjósolhatja a választ, hogy mennyit? vagy hány? Az ezt a kérdést megválaszoló algoritmus családjának neve regresszió.
 
-![Regressziós algoritmusok: Mennyi? vagy hány?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
+![Regressziós algoritmusok: mennyit? vagy hány?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
-A regressziós algoritmusok numerikus előrejelzéseket tesznek, például:
+A regressziós algoritmusok numerikus előrejelzéseket tesznek elérhetővé, például:
 
-* Mennyi lesz a hőmérséklet jövő kedden?  
-* Mi lesz a negyedik negyedéves eladásaim?
+* Milyen hőmérséklet lesz a jövő kedden?  
+* Mi lesz a negyedik negyedéves értékesítés?
 
-Segítenek megválaszolni minden olyan kérdést, amely egy számot kér.
+Segítenek bármilyen olyan kérdés megválaszolásában, amely egy számot kér.
 
-## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>4. kérdés: Hogyan szervezik ezt? fürtözési algoritmusokat használ
+## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>4. kérdés: Hogyan történik ez a rendszerezés? fürtözési algoritmusokat használ
 Most az utolsó két kérdés egy kicsit fejlettebb.
 
-Néha szeretné megérteni az adatkészlet szerkezetét - Hogyan rendszerezhető ez? Ehhez a kérdéshez nincsenek olyan példák, amelyekről már ismeri az eredményeket.
+Néha szeretné megismerni az adathalmazok szerkezetét – hogyan történik ez a rendszerezés? Ebben a kérdésben nem rendelkezik olyan példákkal, amelyekkel már ismeri a eredményeit.
 
-Sok módja van, hogy kötekedik ki az adatok szerkezetét. Az egyik megközelítés a fürtözés. Az adatokat természetes "csomókra" bontja, a könnyebb értelmezés érdekében. A klaszterek, nincs egy helyes válasz.
+Az adatszerkezetnek számos módja van. Az egyik módszer a fürtözés. A könnyebb értelmezés érdekében elkülöníti az adathalmazokat természetes "csoportokba". A fürtözéssel kapcsolatban nincs egyetlen helyes válasz.
 
-![Fürtözési algoritmusok: Hogyan rendszerezhető ez?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
+![Csoportosítási algoritmusok: Hogyan történik ez a rendezés?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
-Gyakori példák a fürtözési kérdésekre:
+A fürtözési kérdések gyakori példái a következők:
 
-* Melyik néző szereti az azonos típusú filmeket?
-* Mely nyomtatómodellek nem felelnek meg ugyanúgy?
+* Mely megjelenítők hasonlóan azonos típusú filmek?
+* Mely nyomtatási modellek nem egyeznek meg a módszerrel?
 
-Az adatok rendszerezésének megértésével jobban megértheti – és előre jelezheti – a viselkedéseket és az eseményeket.  
+Az adatszervezés módjának megismerésével jobban megismerheti és megjósolhatja a viselkedést és az eseményeket.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5. kérdés: Most mit tegyek? megerősítési tanulási algoritmusokat használ
-Az utolsó kérdés - Mit tegyek most? – használ egy család algoritmusok úgynevezett megerősítése tanulás.
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5. kérdés: mit tegyek most? megerősítő tanulási algoritmusokat használ
+Az utolsó kérdés – mi a teendő? – a megerősítő tanulás nevű családot használja.
 
-Megerősítése tanulás ihlette, hogy az agy a patkányok és az emberek reagálnak a büntetés és a jutalom. Ezek az algoritmusok tanulnak az eredményekből, és döntenek a következő műveletről.
+A megerősítő tanulást azzal inspirálta, hogy a patkányok és az emberek agyai hogyan reagálnak a büntetésre és a juttatásokra. Ezek az algoritmusok az eredményekből tanulnak, és döntenek a következő műveletről.
 
-Jellemzően, megerősíttanulás van egy jó roham részére gyorsbüfé rendszereket amit kell -hoz csinál egy halom kicsi döntés nélkül emberi irányítás.
+A megerősítő tanulás általában jól illeszkedik az olyan automatizált rendszerekhez, amelyeknek emberi útmutatás nélkül kell meghozniuk a sok kis döntést.
 
-![Megerősítés tanulási algoritmusok: Mi a következő teendő?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
+![Megerősítő tanulási algoritmusok: mit tegyek tovább?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
-A válaszok mindig arról szólnak, hogy milyen lépéseket kell tenni - általában egy gép vagy egy robot által. Példák:
+A választ tartalmazó kérdések mindig arról szólnak, hogy milyen műveleteket kell végrehajtani – általában egy géppel vagy egy robottal. Példák:
 
-* Ha én vagyok a hőmérséklet-szabályozó rendszer egy ház: Állítsa be a hőmérsékletet, vagy hagyja, hogy hol van?  
-* Ha én vagyok az önvezető autó: A sárga fény, fék vagy felgyorsítása?  
-* Robotporszívó esetén: Porszívózás közben, vagy menjen vissza a töltőállomásra?
+* Ha hőmérséklet-vezérlési rendszer van egy ház számára: állítsa be a hőmérsékletet, vagy hagyja ott, ahol van?  
+* Ha önkiszolgáló autót használok: sárga fénnyel, fék vagy felgyorsítva?  
+* Robot vákuum esetén: tartsa a vákuumot, vagy térjen vissza a töltési állomáshoz?
 
-A megerősítési tanulási algoritmusok menet közben gyűjtenek adatokat, tanulva a próbaverzióból és a hibákból.
+A megerősítő tanulási algoritmusok adatokat gyűjtenek, a próbaverziótól és a hibáktól tanulva.
 
-Tehát ennyi - Az 5 kérdés adattudomány tud válaszolni.
+Tehát az az 5 kérdés, hogy az adatelemzés válaszolni tud.
 
 ## <a name="next-steps"></a>További lépések
-* [Próbálja ki az első adatelemzési kísérletet a Machine Learning Studio-val (klasszikus)](create-experiment.md)
-* [Bevezetés a Microsoft Azure-alapú gépi tanulásba](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
+* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

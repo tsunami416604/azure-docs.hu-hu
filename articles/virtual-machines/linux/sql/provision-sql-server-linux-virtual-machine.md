@@ -12,10 +12,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 43ba4eed4dcfd6d8e86c21f1ee5214108c44a8c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060227"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
@@ -24,82 +24,82 @@ ms.locfileid: "80060227"
 > * [Linux](provision-sql-server-linux-virtual-machine.md)
 > * [Windows](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 
-Ebben a rövid útmutatóban az Azure Portal on hozzon létre egy Linux virtuális gépet az SQL Server 2017 telepítve.
+Ebben a rövid útmutatóban a Azure Portal használatával hozzon létre egy Linux rendszerű virtuális gépet, amelyen telepítve van a SQL Server 2017-es verzió.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * [Linux rendszerű SQL-virtuálisgép létrehozása a katalógusból](#create)
 * [Csatlakozás az új virtuális géphez ssh használatával](#connect)
-* [A sa jelszó módosítása](#password)
+* [Az SA-jelszó módosítása](#password)
 * [Konfigurálás távoli kapcsolatokhoz](#remote)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> Linux rendszerű, telepített SQL Serverrel rendelkező virtuális gép létrehozása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 
-1. Az **Erőforrás létrehozása** ablaktáblán válassza **a Számítás**lehetőséget.
+1. Az **erőforrás létrehozása** panelen válassza a **számítás**lehetőséget.
 
-1. Válassza a **Kiemelt** címsor melletti **Mind** megtekintése lehetőséget.
+1. Válassza az **összes** megjelenítése lehetőséget a **Kiemelt** fejléc mellett.
 
    ![Az összes virtuálisgép-rendszerkép megjelenítése](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. A keresőmezőbe írja be az **SQL Server 2019**parancsot, és a keresés elindításához válassza az **Enter** lehetőséget.
+1. A keresőmezőbe írja be a **SQL Server 2019**kifejezést, majd a keresés indításához válassza az **ENTER billentyűt** .
 
-1. Korlátozza a keresési eredmények kiválasztásával **operációs rendszer** > **Redhat**.
+1. Korlátozza a keresési eredményeket az **operációs rendszer** > **RedHat**kiválasztásával.
 
-    ![Sql Server 2019 virtuálisgép-lemezképek keresési szűrője](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![SQL Server 2019 virtuálisgép-lemezképek keresési szűrője](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. Válasszon ki egy SQL Server 2019 Linux-lemezképet a keresési eredmények közül. Ez az oktatóanyag **az SQL Server 2019-et használja az RHEL74 rendszeren.**
+1. Válasszon ki egy SQL Server 2019 Linux-rendszerképet a keresési eredmények közül. Ez az oktatóanyag **SQL Server 2019**-et használ a RHEL74-on.
 
    > [!TIP]
-   > A Fejlesztői kiadás lehetővé teszi az Enterprise edition szolgáltatásainak tesztelését vagy fejlesztését, de az SQL Server licencelési költségei nélkül. Csak a Linux rendszerű virtuális gép futtatásával járó költségeket kell kifizetnie.
+   > A fejlesztői kiadással tesztelheti vagy fejlesztheti a vállalati kiadás szolgáltatásait, de nem SQL Server licencelési költségeket. Csak a Linux rendszerű virtuális gép futtatásával járó költségeket kell kifizetnie.
 
 1. Kattintson a **Létrehozás** gombra. 
 
 
-### <a name="set-up-your-linux-vm"></a>A Linux virtuális gép beállítása
+### <a name="set-up-your-linux-vm"></a>Linux rendszerű virtuális gép beállítása
 
-1. Az **Alapok** lapon válassza ki az **Előfizetés** és **erőforráscsoport lehetőséget.** 
+1. Az **alapvető beállítások** lapon válassza ki az **előfizetést** és az **erőforráscsoportot**. 
 
     ![Alapvető beállítások ablak](./media/provision-sql-server-linux-virtual-machine/basics.png)
 
-1. A **virtuális gép neve**mezőbe írja be az új Linux virtuális gép nevét.
+1. A **virtuális gép neve**mezőbe írja be az új linuxos virtuális gép nevét.
 1. Ezután írja be vagy válassza ki a következő értékeket:
-   * **Régió**: Válassza ki az Önnek megfelelő Azure-régiót.
-   * **Elérhetőségi lehetőségek:** Válassza ki az alkalmazásoknak és adatoknak leginkább megfelelő elérhetőségi és redundanciai beállítást.
-   * **Méret módosítása**: Válassza ezt a lehetőséget a gépméretének kiválasztásához, és ha elkészült, válassza **a Kijelölés lehetőséget.** A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
+   * **Régió**: válassza ki az Ön számára legmegfelelőbb Azure-régiót.
+   * **Rendelkezésre állási lehetőségek**: válassza ki az alkalmazásaihoz és adataihoz leginkább megfelelő rendelkezésre állási és redundancia-beállítást.
+   * **Méret módosítása**: válassza ezt a lehetőséget a gép méretének kiválasztásához, és ha elkészült, válassza a **kiválasztás**elemet. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
 
      ![Virtuális gép méretének kiválasztása](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
-   > A fejlesztés és a funkcionális tesztelés, használja a virtuális gép mérete **DS2** vagy magasabb. A teljesítményteszteléshez használjon **DS13** vagy nagyobb méretet.
+   > A fejlesztéshez és a működéshez való teszteléshez használjon **DS2** vagy magasabb virtuálisgép-méretet. A teljesítményteszteléshez használjon **DS13** vagy nagyobb méretet.
 
-   * **Hitelesítés típusa**: Válassza az **SSH nyilvános kulcsot.**
+   * **Hitelesítés típusa**: válassza az **SSH nyilvános kulcs**lehetőséget.
 
      > [!Note]
      > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
-   * **Felhasználónév**: Adja meg a virtuális gép rendszergazdai nevét.
-   * **SSH nyilvános kulcs:** Adja meg az RSA nyilvános kulcsát.
-   * **Nyilvános bejövő portok:** Válassza a **Kijelölt portok engedélyezése lehetőséget,** és válassza az **SSH (22)** portot a **Nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés az SQL Server-konfiguráció csatlakoztatásához és befejezéséhez szükséges. Ha távolról szeretne csatlakozni az SQL Server kiszolgálóhoz, manuálisan kell engedélyeznie a forgalmat a Microsoft SQL Server által a virtuális gép létrehozása után az interneten keresztüli kapcsolatokhoz használt alapértelmezett portra (1433).
+   * **Username (Felhasználónév**): adja meg a virtuális gép rendszergazdájának nevét.
+   * **Nyilvános SSH-kulcs**: adja meg az RSA nyilvános kulcsát.
+   * **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza ki az **SSH (22)** portot a **nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés szükséges a SQL Server konfigurációjának összekapcsolásához és befejezéséhez. Ha távolról szeretne csatlakozni a SQL Serverhoz, akkor a virtuális gép létrehozása után manuálisan engedélyeznie kell a forgalmat a Microsoft SQL Server által használt alapértelmezett portra (1433).
 
      ![Bejövő portok](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
-1. A következő további lapok beállításait módosíthatja, vagy megtarthatja az alapértelmezett beállításokat.
+1. Végezze el a kívánt módosításokat a következő lapokon található beállításokban, vagy tartsa meg az alapértelmezett beállításokat.
     * **Lemezek**
     * **Hálózat**
     * **Felügyelet**
-    * **Vendég config**
+    * **Vendég konfigurációja**
     * **Címkék**
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
-1. A **Véleményezés + létrehozás** ablaktáblán válassza a **Létrehozás lehetőséget.**
+1. A **felülvizsgálat + létrehozás** ablaktáblán válassza a **Létrehozás**lehetőséget.
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Kapcsolódás a Linux rendszerű virtuális géphez
 
@@ -113,7 +113,7 @@ A virtuális gép IP-címét az Azure Portalon találhatja meg.
 
 ![IP-cím az Azure Portalon](./media/provision-sql-server-linux-virtual-machine/vmproperties.png)
 
-Ha Windows rendszeren fut, és nem rendelkezik BASH rendszerhéjjal, telepítsen egy SSH-ügyfelet, például a PuTTY-t.
+Ha Windows rendszert használ, és nem rendelkezik BASH-rendszerhéjral, telepítsen egy SSH-ügyfelet, például a PuTTY-t.
 
 1. [Töltse le és telepítse a PuTTY-t](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -121,16 +121,16 @@ Ha Windows rendszeren fut, és nem rendelkezik BASH rendszerhéjjal, telepítsen
 
 1. A PuTTY konfigurációs képernyőjén adja meg a virtuális gép nyilvános IP-címét.
 
-1. Válassza **a Megnyitás** gombot, és írja be a felhasználónevét és jelszavát a felkérésekközött.
+1. Válassza a **Megnyitás** lehetőséget, majd adja meg a felhasználónevet és a jelszót az üzenetekben.
 
 A Linux rendszerű virtuális gépekhez való csatlakozásról további információt a [Linux rendszerű virtuális gép az Azure-ban a Portal használatával történő létrehozását](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal) ismertető cikkben talál.
 
 > [!Note]
-> Ha a rendszer a puty biztonsági riasztást lát arról, hogy a kiszolgáló gazdakulcsa nincs gyorsítótárazva a beállításjegyzékben, válasszon az alábbi lehetőségek közül. Ha megbízik ebben az állomásban, válassza az **Igen** lehetőséget a kulcs putty gyorsítótárhoz való hozzáadásához és a csatlakozás folytatásához. Ha csak egyszer szeretné folytatni a csatlakozást anélkül, hogy a kulcsot hozzáadná a gyorsítótárhoz, válassza a **Nem**lehetőséget. Ha nem bízik meg az állomásban, válassza **a Mégse** lehetőséget a kapcsolat megszüntetéséhez.
+> Ha a kiszolgáló gazdagép-kulcsát nem gyorsítótárazza a beállításjegyzékben, a következő lehetőségek közül választhat: Putty biztonsági riasztás. Ha megbízik a gazdagépen, válassza az **Igen** lehetőséget a kulcs a PuTTY gyorsítótárba való felvételéhez és a csatlakozás folytatásához. Ha csak egyszer szeretné csatlakoztatni a csatlakozást, anélkül, hogy a kulcsot a gyorsítótárba venné, válassza a **nem**lehetőséget. Ha nem bízik meg a gazdagépen, kattintson a **Mégse** gombra a kapcsolat megszakításához.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> Az SA-jelszó módosítása
 
-Az új virtuális gép egy véletlenszerű SA-jelszóval telepíti az SQL Servert. Állítsa alaphelyzetbe ezt a jelszót, mielőtt csatlakozna az SQL Server szolgáltatáshoz a rendszerösszekötővel.
+Az új virtuális gép egy véletlenszerű SA-jelszóval telepíti az SQL Servert. A jelszó alaphelyzetbe állítása, mielőtt a SA-bejelentkezéssel csatlakozik SQL Serverhoz.
 
 1. A Linux rendszerű virtuális géphez való csatlakozás után nyisson meg egy új parancsterminált.
 
@@ -169,8 +169,8 @@ Ha távolról kell csatlakoznia az Azure-beli virtuális gépen futó SQL Server
 > Ha a kiépítés során kiválasztotta az **MS SQL (1433)** bejövő portot, a rendszer már elvégezte ezeket a módosításokat. Továbbléphet a következő szakaszra, amely a tűzfal konfigurálásával foglalkozik.
 
 1. A portálon válassza a **Virtuális gépek** elemet, és válassza ki az SQL Server-t tartalmazó virtuális gépet.
-1. A bal oldali navigációs ablak **Beállítások területén**válassza a **Hálózat**lehetőséget.
-1. A Hálózat ablakban válassza a **Bejövő port hozzáadása** lehetőséget a Bejövő **portszabályok csoportban.**
+1. A bal oldali navigációs ablaktábla **Beállítások**területén válassza a **hálózatkezelés**lehetőséget.
+1. A hálózatkezelés ablakban válassza a bejövő **port hozzáadása** a **bejövő portra vonatkozó szabályok**lehetőséget.
 
    ![Bejövőport-szabályok](./media/provision-sql-server-linux-virtual-machine/networking.png)
 
@@ -197,6 +197,6 @@ Ez az oktatóanyag egy Red Hat Enterprise Linux (RHEL) rendszerű virtuális gé
 
 Most, hogy van egy SQL Server 2017-es virtuális gépe az Azure-ban, helyileg csatlakozhat az **sqlcmd** használatával, és Transact-SQL-lekérdezéseket futtathat.
 
-Ha az Azure virtuális gép távoli SQL Server-kapcsolatok, képesnek kell lennie arra, hogy távolról. A Windows rendszerről egy Linuxon futó SQL Serverhez való csatlakozásra láthat egy példát a [Linuxon futó SQL Serverhez egy Windowson futó SSMS használatával történő csatlakozást](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms) ismertető cikkben is. A Visual Studio Code használatával való csatlakozás részleteiről további információt a [Transact-SQL-szkriptek SQL Serverhez a Visual Studio Code használatával történő létrehozását és futtatását](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode) ismertető cikkben talál.
+Ha az Azure-beli virtuális gépet a távoli SQL Server kapcsolatokhoz konfigurálta, akkor távolról is csatlakozhat. A Windows rendszerről egy Linuxon futó SQL Serverhez való csatlakozásra láthat egy példát a [Linuxon futó SQL Serverhez egy Windowson futó SSMS használatával történő csatlakozást](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms) ismertető cikkben is. A Visual Studio Code használatával való csatlakozás részleteiről további információt a [Transact-SQL-szkriptek SQL Serverhez a Visual Studio Code használatával történő létrehozását és futtatását](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode) ismertető cikkben talál.
 
-A Linux rendszeren lévő SQL Server ről további általános [tudnivalókat az SQL Server 2017 linuxos áttekintése című](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)témakörben talál. További információkat a Linux rendszerű SQL Server 2017-es virtuális gépek használatáról az [SQL Server 2017-es Azure-beli virtuális gépek áttekintésében](sql-server-linux-virtual-machines-overview.md) talál.
+További általános információ a SQL Server on Linuxről: a [Linuxon futó SQL Server 2017 áttekintése](https://docs.microsoft.com/sql/linux/sql-server-linux-overview). További információkat a Linux rendszerű SQL Server 2017-es virtuális gépek használatáról az [SQL Server 2017-es Azure-beli virtuális gépek áttekintésében](sql-server-linux-virtual-machines-overview.md) talál.

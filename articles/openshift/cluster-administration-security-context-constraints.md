@@ -1,6 +1,6 @@
 ---
-title: Biztonsági környezetkorlátainak kezelése az Azure Red Hat OpenShift ben | Microsoft dokumentumok
-description: Az Azure Red Hat OpenShift fürtrendszergazdáinak biztonsági környezetkorlátai
+title: Biztonsági környezeti korlátozások kezelése az Azure Red Hat OpenShift | Microsoft Docs
+description: Biztonsági környezeti korlátozások az Azure Red Hat OpenShift-fürt rendszergazdái számára
 services: container-service
 author: troy0820
 ms.author: b-trconn
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063178"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Biztonsági környezetkorlátainak kezelése az Azure Red Hat OpenShift ben 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Biztonsági környezeti korlátozások kezelése az Azure Red Hat OpenShift 
 
-A biztonsági környezet megkötései (SCC-k) lehetővé teszik a fürtrendszergazdák számára a podok engedélyeinek vezérlését. Az API-típusról az [SCC-k architektúrájának dokumentációjában olvashat bővebben.](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) A CLI használatával a példányban lévő SCC-ket normál API-objektumként kezelheti.
+A biztonsági környezeti megkötések (SCCs) lehetővé teszik a fürt rendszergazdái számára a hüvely engedélyeinek vezérlését. Ha többet szeretne megtudni erről az API-típusról, tekintse meg a [SCCs architektúrájának dokumentációját](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). A SCCs a példányban a CLI használatával a szokásos API-objektumokként kezelheti.
 
-## <a name="list-security-context-constraints"></a>Biztonsági környezetmegkötések listázása
+## <a name="list-security-context-constraints"></a>Biztonsági környezeti megkötések listázása
 
-Az SCC-k aktuális listájának leéséhez használja a következő parancsot: 
+A SCCs aktuális listájának beszerzéséhez használja a következő parancsot: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Objektum biztonsági környezetbeli megkötéseinek vizsgálata
+## <a name="examine-an-object-for-security-context-constraints"></a>Egy objektum vizsgálata biztonsági környezeti megkötések esetén
 
-Egy adott SCC vizsgálatához használja `oc get`a , `oc describe`vagy `oc edit`a .  A **korlátozott** SCC vizsgálatához például használja a következő parancsot:
+Egy adott SCC vizsgálatához használja `oc get` `oc describe`a következőt: `oc edit`, vagy.  Például a **korlátozott** SCC vizsgálatához használja a következő parancsot:
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

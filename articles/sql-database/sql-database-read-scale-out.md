@@ -1,6 +1,6 @@
 ---
-title: Kópiák lekérdezéseinek olvasása
-description: Az Azure SQL Database lehetővé teszi, hogy csak olvasható számítási feladatok terheléselosztása az írásvédett replikák kapacitása használatával – az úgynevezett olvasási horizontális felskálázás.
+title: Replika-lekérdezések olvasása
+description: A Azure SQL Database a csak olvasható replikák kapacitásával képes a csak olvasási terhelések terheléselosztására – az olvasási Felskálázási szolgáltatással.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,49 +12,49 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206945"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Csak olvasható tevékenységprofil terheléselosztása csak olvasható replikák használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A magas [rendelkezésre állású architektúra részeként](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)a prémium szintű és az üzleti legkritikusabb szolgáltatási szint minden adatbázisa automatikusan kivan építve egy elsődleges replika és több másodlagos replika. A másodlagos replikák az elsődleges replikával megegyező számítási mérettel vannak kiépítve. Az **Olvasási horizontális felskálázás** szolgáltatás lehetővé teszi az SQL Database csak olvasható számítási feladatok terhelését az írásvédett kópiák kapacitása használatával az írás-olvasási replika megosztása helyett. Ezzel a módszerrel a csak olvasható számítási feladat elkülönül a fő olvasási és írási számítási feladattól, és nem befolyásolja annak teljesítményét. A szolgáltatás olyan alkalmazásokhoz készült, amelyek logikailag elkülönített írásvédett számítási feladatokat, például elemzéseket tartalmaznak. A prémium szintű és üzleti legkritikusabb szolgáltatási szinteken az alkalmazások további költségek nélkül teljesítményelőnyöket érhetnek el ezzel a további kapacitással.
+A [magas rendelkezésre állású architektúra](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)részeként a prémium és üzletileg kritikus szolgáltatási szint minden adatbázisa automatikusan egy elsődleges replikával és több másodlagos replikával van kiépítve. A másodlagos replikákat ugyanazzal a számítási mérettel kell kiépíteni, mint az elsődleges replikát. Az **olvasási Felskálázási** funkció lehetővé teszi, hogy terheléselosztást SQL Database csak olvasható munkaterheléseket az írásvédett replikák egyikének kapacitásával az írható-olvasható replika megosztása helyett. Ezzel a módszerrel a csak olvasható számítási feladat elkülönül a fő olvasási és írási számítási feladattól, és nem befolyásolja annak teljesítményét. A szolgáltatás olyan alkalmazások számára készült, amelyek logikailag elkülönített, csak olvasható számítási feladatokat tartalmaznak, például az elemzést. A prémium és üzletileg kritikus szolgáltatási szinten az alkalmazások a további kapacitás nélkül vehetik igénybe a teljesítmény előnyeit.
 
-A **Leolvasási horizontális felskálázás** szolgáltatás is elérhető a nagy kapacitású szolgáltatási szint, ha legalább egy másodlagos replika jön létre. Több másodlagos replikák is használható, ha csak olvasható számítási feladatok igényelnek több erőforrást, mint a rendelkezésre álló egy másodlagos replika. Az alapszintű, a standard és az általános célú szolgáltatási szintek magas rendelkezésre állású architektúrája nem tartalmaz replikákat. A **Leolvasási horizontális felskálázás** funkció nem érhető el ezekben a szolgáltatási szintekben.
+Az **olvasási kibővítő** funkció a nagy kapacitású szolgáltatási rétegében is elérhető, ha legalább egy másodlagos replika létrejön. Több másodlagos replika is használható, ha az írásvédett munkaterhelések több erőforrást igényelnek, mint amennyi egy másodlagos replikán elérhető. Az alapszintű, standard és általános célú szolgáltatási rétegek magas rendelkezésre állású architektúrája nem tartalmaz replikákat. Az **olvasási Felskálázási** funkció nem érhető el ezekben a szolgáltatási rétegekben.
 
-Az alábbi ábra egy üzleti legkritikusabb adatbázis használatával szemlélteti.
+A következő ábra egy üzletileg kritikus-adatbázis használatát szemlélteti.
 
-![Csak olvasható kópiák](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
+![Írásvédett replikák](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-A Leolvasási horizontális felskálázás funkció alapértelmezés szerint engedélyezve van az új prémium szintű, üzleti legkritikusabb és nagy méretű adatbázisokban. A Nagykapacitás esetében alapértelmezés szerint egy másodlagos replika jön létre az új adatbázisokhoz. Ha az SQL-kapcsolati `ApplicationIntent=ReadOnly`karakterlánc konfigurálva van, az alkalmazást az átjáró átirányítja az adatbázis csak olvasható replikájára. A tulajdonság használatáról `ApplicationIntent` az [Alkalmazásleképezés megadása című](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)témakörben talál további információt.
+Az olvasási Felskálázási funkció alapértelmezés szerint engedélyezve van az új Premium-, üzletileg kritikus-és nagy kapacitású-adatbázisokon. A nagy kapacitású esetében az új adatbázisokhoz alapértelmezés szerint egy másodlagos replika jön létre. Ha az SQL `ApplicationIntent=ReadOnly`-alapú kapcsolódási karakterlánca konfigurálva van, az alkalmazást az átjáró átirányítja az adatbázis írásvédett replikájának. További információ a tulajdonság használatáról: `ApplicationIntent` az [alkalmazás szándékának megadása](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
-Ha biztosítani szeretné, hogy az alkalmazás az SQL-kapcsolati karakterlánc `ApplicationIntent` ban lévő beállítástól függetlenül csatlakozzon az elsődleges kópiához, az adatbázis létrehozásakor vagy a konfiguráció módosításakor explicit módon le kell tiltania az olvasási horizontális felskálázást. Ha például az adatbázist normál vagy általános célú szintről prémium, üzleti legkritikusabb vagy nagy kapacitású szintre frissíti, és biztosítani szeretné, hogy az összes kapcsolat továbbra is az elsődleges replika legyen, tiltsa le az Olvasási horizontális felskálázást. A letiltásáról az [Olvasási kicsinyítés engedélyezése és letiltása](#enable-and-disable-read-scale-out)témakörben olvashat.
+Ha biztosítani szeretné, hogy az alkalmazás az SQL-kapcsolati sztring `ApplicationIntent` beállításától függetlenül az elsődleges replikához kapcsolódjon, explicit módon le kell tiltania az olvasási méretezést az adatbázis létrehozásakor vagy a konfigurációjának módosításakor. Ha például az adatbázist standard vagy általános célú szintről prémium, üzletileg kritikus vagy nagy kapacitású szintre frissíti, és biztosítani szeretné, hogy az összes kapcsolat továbbra is az elsődleges replikára lépjen, tiltsa le az olvasási felskálázást. A letiltásával kapcsolatos további információkért lásd: az [olvasási felskálázás engedélyezése és letiltása](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> A Query Data Store, a Extended Events és az SQL Profiler szolgáltatások nem támogatottak az írásvédett replikákon.
+> A lekérdezési adattár, a bővített események és az SQL Profiler-funkciók nem támogatottak a csak olvasható replikák esetében.
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
-A replikák egyik előnye, hogy a replikák mindig tranzakcióskonzisztens állapotban vannak, de különböző időpontokban előfordulhat, hogy a különböző replikák között kis késés van. A Read Scale-Out támogatja a munkamenet-szintű konzisztenciát. Ez azt jelenti, hogy ha az írásvédett munkamenet a replika elérhetetlensége által okozott csatlakozási hiba után újracsatlakozik, előfordulhat, hogy átirányítja egy olyan replikára, amely nem 100%-osan naprakész az írás-olvasás i replikával. Hasonlóképpen, ha egy alkalmazás írási és írási és olvasási munkamenet használatával írja az adatokat, és azonnal beolvassa azt egy csak olvasható munkamenet használatával, lehetséges, hogy a legújabb frissítések nem azonnal látható a replika. A késést egy aszinkron tranzakciónapló-ismétlési művelet okozza.
+A replikák egyik előnye, hogy a replikák mindig tranzakciós szempontból konzisztens állapotban vannak, de a különböző időpontokban előfordulhat, hogy a különböző replikák között kis késés van. Az olvasási felskálázás támogatja a munkamenet-szintű konzisztenciát. Ez azt jelenti, hogy ha a csak olvasási munkamenet újracsatlakozik a replika nem rendelkezésre állása okozta kapcsolódási hiba után, a rendszer átirányítja egy olyan másodpéldányra, amely nem 100%-kal naprakész az írható-olvasható replikával. Hasonlóképpen, ha egy alkalmazás egy írható-olvasható munkamenet használatával ír adatokat, és azonnal beolvassa azt egy írásvédett munkamenettel, akkor lehetséges, hogy a legújabb frissítések nem láthatók azonnal a replikán. A késést egy aszinkron tranzakciónapló-ismétlési művelet okozta.
 
 > [!NOTE]
 > A régión belüli replikációs késések alacsonyak, és ez a helyzet ritka.
 
-## <a name="connect-to-a-read-only-replica"></a>Csatlakozás írásvédett kópiához
+## <a name="connect-to-a-read-only-replica"></a>Kapcsolódás írásvédett replikához
 
-Ha engedélyezi az olvasási horizontális felskálázást egy adatbázishoz, az `ApplicationIntent` ügyfél által biztosított kapcsolati karakterláncban megadott beállítás határozza meg, hogy a kapcsolat az írási kópiához vagy egy írásvédett kópiához kerül-e. Ha az `ApplicationIntent` érték (az alapértelmezett érték) a `ReadWrite` kapcsolat az adatbázis írás-olvasási replikájára lesz irányítva. Ez megegyezik a meglévő viselkedéssel. Ha `ApplicationIntent` az `ReadOnly`érték a , a kapcsolat egy írásvédett kópiához lesz irányítva.
+Ha engedélyezi az olvasási felskálázást egy adatbázishoz, az `ApplicationIntent` ügyfél által megadott kapcsolódási karakterláncban szereplő beállítás azt határozza meg, hogy a rendszer átirányítja-e a kapcsolódást az írási replikára vagy egy írásvédett replikára. Pontosabban, ha `ApplicationIntent` az érték `ReadWrite` (az alapértelmezett érték), a rendszer átirányítja a kapcsolódást az adatbázis írható-olvasható replikájának. Ez megegyezik a meglévő viselkedéssel. Ha az `ApplicationIntent` érték `ReadOnly`, a rendszer a kapcsolódást egy írásvédett replikához irányítja.
 
-Például a következő kapcsolati karakterlánc az ügyfelet egy írásvédett kópiához kapcsolja (a szögletes zárójelben lévő elemeket a környezetnek megfelelő értékekre cseréli, és eldobja a szögletes zárójeleket):
+A következő kapcsolati karakterlánc például összekapcsolja az ügyfelet egy írásvédett replikával (a szögletes zárójelben lévő elemeket az adott környezet megfelelő értékeivel és a szögletes zárójelek eldobásával):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-Az alábbi kapcsolati karakterláncok bármelyike egy írás-olvasási kópiához kapcsolja az ügyfelet (a szögletes zárójelben lévő elemeket a környezetnek megfelelő értékekre cseréli, és eldobja a szögletes zárójeleket):
+A következő kapcsolati karakterláncok valamelyike az-ügyfelet egy írható-olvasható replikához csatlakoztatja (a szögletes zárójelben lévő elemeket a környezet megfelelő értékeivel és a szögletes zárójelek eldobásával helyettesíti):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -62,59 +62,59 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Annak ellenőrzése, hogy a kapcsolat írásvédett kópiához kapcsolódik-e
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Annak ellenőrzése, hogy a kapcsolódás írásvédett replikához van-e
 
-A következő lekérdezés futtatásával ellenőrizheti, hogy kapcsolódik-e írásvédett kópiához. Írásvédett kópiához való csatlakozáskor READ_ONLY ad vissza.
+A következő lekérdezés futtatásával ellenőrizheti, hogy csatlakozik-e egy írásvédett replikához. READ_ONLYt ad vissza, ha egy írásvédett replikához csatlakozik.
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 > [!NOTE]
-> Adott időpontban csak az AlwaysON replikák egyike érhető el a Csak olvasható munkamenetek által.
+> Az írásvédett munkamenetek csak az egyik AlwaysON replikát érhetik el.
 
 ## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Írásvédett replika figyelése és hibaelhárítása
 
-Ha csak olvasható kópiához csatlakozik, a teljesítménymutatók at a `sys.dm_db_resource_stats` DMV használatával érheti el. A lekérdezési terv statisztikáinak `sys.dm_exec_query_plan` `sys.dm_exec_sql_text` eléréséhez használja a és a `sys.dm_exec_query_stats`DMV-ket.
+Ha egy írásvédett replikához csatlakozik, a teljesítmény mérőszámait a `sys.dm_db_resource_stats` DMV használatával érheti el. A lekérdezési terv statisztikáinak eléréséhez `sys.dm_exec_query_stats`használja `sys.dm_exec_query_plan` a `sys.dm_exec_sql_text` és a DMV.
 
 > [!NOTE]
-> A logikai `sys.resource_stats` főadatbázisban lévő DMV az elsődleges replika processzorhasználati és tárolási adatait adja vissza.
+> A logikai `sys.resource_stats` Master adatbázisban található DMV az elsődleges replika CPU-használati és tárolási adatait adja vissza.
 
-## <a name="enable-and-disable-read-scale-out"></a>Lehetővé teszi és letiltja az olvasási horizontális felskálázást
+## <a name="enable-and-disable-read-scale-out"></a>Az olvasási felskálázás engedélyezése és letiltása
 
-Az olvasási horizontális felskálázás alapértelmezés szerint engedélyezve van a prémium, üzleti kritikus és nagy kapacitású szolgáltatási szinteken. Az olvasási horizontális felskálázás nem engedélyezhető alapszintű, szabványos vagy általános célú szolgáltatási szinteken. A 0 kópiával konfigurált nagy méretű adatbázisokon az olvasási horizontális felskálázás automatikusan le van tiltva.
+Az olvasási felskálázás alapértelmezés szerint engedélyezve van a Premium, a üzletileg kritikus és a nagy kapacitású szolgáltatás szintjein. Az olvasási felskálázás nem engedélyezhető alapszintű, standard vagy általános célú szolgáltatási szinteken. Az olvasási felskálázás automatikusan le van tiltva a 0 replikával konfigurált nagy kapacitású-adatbázisokban.
 
-Letilthatja és újra engedélyezheti a lekicsidlés letiltását egyetlen adatbázisokban és rugalmas készletadatbázisokon a prémium szintű vagy az üzleti legkritikusabb szolgáltatási szinten az alábbi módszerekkel.
+A következő módszerekkel letilthatja és újból engedélyezheti az olvasási felskálázást az önálló adatbázisok és a rugalmas készlet adatbázisaiban prémium vagy üzletileg kritikus szolgáltatási szinten.
 
 > [!NOTE]
-> A leolvasási kicsinyítés letiltása a visszamenőleges kompatibilitás érdekében biztosított.
+> A visszamenőleges kompatibilitás érdekében letilthatja az olvasási felskálázást.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
-Az Adatbázis **konfigurálása** panelen kezelheti a Leolvasási horizontális felskálázás beállítást.
+Az olvasási Felskálázási beállítást az adatbázis **konfigurálása** panelen kezelheti.
 
 ### <a name="powershell"></a>PowerShell
 
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-Az Azure PowerShellben az olvasási horizontális felskálázás kezeléséhez a 2016 decemberi Azure PowerShell-kiadásra vagy újabb ra van szükség. A legújabb PowerShell-kiadásról az [Azure PowerShell című témakörben van.](https://docs.microsoft.com/powershell/azure/install-az-ps)
+Azure PowerShell az olvasási felskálázás kezelése a december 2016 Azure PowerShell vagy újabb verzióra van szükség. A legújabb PowerShell-kiadást itt tekintheti meg: [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Letilthatja vagy újra engedélyezheti a lekicsizés olvasását az Azure PowerShellben a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) `Disabled` parancsmag meghívásával és a `-ReadScale` kívánt érték – `Enabled` vagy -- paraméter átadásával.
+A [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsmag meghívásával letilthatja vagy újból engedélyezheti az olvasási felskálázást Azure PowerShell a `Enabled` `Disabled` `-ReadScale` paraméterhez a kívánt értékre (vagy –).
 
-Az olvasási horizontális felskálázás letiltása meglévő adatbázisban (a szögletes zárójelekben lévő elemek cseréje a környezetnek megfelelő értékekre, valamint a szögletes zárójelek eldobása):
+Ha le szeretné tiltani az olvasási felskálázást egy meglévő adatbázison (a szögletes zárójelben lévő elemek cseréje a környezet megfelelő értékeire, és a szögletes zárójelek eldobása):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
 
-Az olvasási horizontális felskálázás letiltása egy új adatbázisban (a szögletes zárójelekben lévő elemek cseréje a környezetnek megfelelő értékekre, valamint a szögletes zárójelek eldobása):
+Ha le szeretné tiltani az olvasási felskálázást egy új adatbázison (a szögletes zárójelben lévő elemek cseréje a környezet megfelelő értékeire, és a szögletes zárójelek eldobása):
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
-A leolvasási horizontális felskálázás újbóli engedélyezése egy meglévő adatbázisban (a szögletes zárójelben lévő elemek cseréje a környezetnek megfelelő értékekre, valamint a szögletes zárójelek eldobása):
+Ha újra engedélyezni szeretné az olvasási felskálázást egy meglévő adatbázison (a szögletes zárójelben lévő elemek cseréje a környezet megfelelő értékeire, és a szögletes zárójelek eldobása):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
@@ -122,7 +122,7 @@ Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName
 
 ### <a name="rest-api"></a>REST API
 
-Ha le tiltott olvasási kibővített adatbázist szeretne létrehozni, vagy módosítani szeretné egy `readScale` meglévő adatbázis `Enabled` `Disabled` beállítását, használja a következő módszert úgy, hogy a tulajdonság az alábbi mintakérelemben vagy az alábbi módon van beállítva.
+Ha olyan adatbázist szeretne létrehozni, amelynél le van tiltva az olvasási felskálázás, vagy egy meglévő adatbázis beállítását szeretné módosítani, használja az `readScale` alábbi metódust `Enabled` az `Disabled` alábbi módon, vagy a következővel:.
 
 ```rest
 Method: PUT
@@ -134,19 +134,19 @@ Body: {
 }
 ```
 
-További információt az [Adatbázisok – Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)című témakörben talál.
+További információ: [adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
 
-## <a name="using-tempdb-on-read-only-replica"></a>A TempDB használata írásvédett kópián
+## <a name="using-tempdb-on-read-only-replica"></a>A TempDB használata írásvédett replikán
 
-A TempDB-adatbázis nem replikálódik az írásvédett replikákra. Minden kópia saját TempDB-adatbázis-verzióval rendelkezik, amely a kópia létrehozásakor jön létre. Ez biztosítja, hogy a TempDB frissíthető, és a lekérdezés végrehajtása során módosítható. Ha az írásvédett munkaterhelés a TempDB-objektumok használatától függ, ezeket az objektumokat a lekérdezési parancsfájl részeként kell létrehozni.
+A TempDB-adatbázis nem replikálódik a csak olvasható replikára. Minden replika rendelkezik a TempDB adatbázisának saját verziójával, amely a replika létrehozásakor jön létre. Biztosítja, hogy a TempDB frissíthető legyen, és a lekérdezés végrehajtása során módosítható legyen. Ha az írásvédett számítási feladatok a TempDB-objektumok használatával függenek, ezeket az objektumokat a lekérdezési parancsfájl részeként kell létrehoznia.
 
-## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Leolvasási horizontális felskálázás georeplikált adatbázisokkal
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Az olvasási méretezés földrajzilag replikált adatbázisokkal
 
-Ha olvasási horizontális felskálázást használ a csak földrajzilag replikált adatbázis olvasási számítási feladatainak terheléselosztásához (például egy feladatátvételi csoport tagjaként), győződjön meg arról, hogy az olvasási horizontális felskálázás engedélyezve van az elsődleges és a georeplikált másodlagos adatbázisokban is. Ez a konfiguráció biztosítja, hogy ugyanaz a terheléselosztási élmény folytatódik, amikor az alkalmazás a feladatátvétel után csatlakozik az új elsődlegeshez. Ha a georeplikált másodlagos adatbázishoz csatlakozik olvasási skálával `ApplicationIntent=ReadOnly` engedélyezve, a munkamenetek az egyik replikához leszirányítva, ugyanúgy, ahogy az elsődleges adatbázisban lévő kapcsolatokat továbbítjuk.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` lesz irányítva az elsődleges replikája a georeplikált másodlagos, amely szintén csak olvasható. Mivel a georeplikált másodlagos adatbázis végpontja eltér az elsődleges adatbázistól, a másodlagos adatbázis `ApplicationIntent=ReadOnly`eléréséhez korábban nem volt szükség a beállításhoz. A visszamenőleges kompatibilitás `sys.geo_replication_links` biztosítása érdekében `secondary_allow_connections=2` a DMV megjelenik (bármilyen ügyfélkapcsolat engedélyezett).
+Ha olvasási felskálázást használ a csak olvasási feladatok terheléselosztásához egy földrajzilag replikált adatbázison (például egy feladatátvételi csoport tagjaként), akkor ügyeljen arra, hogy az olvasási felskálázás engedélyezve legyen mind az elsődleges, mind a földrajzilag replikált másodlagos adatbázison. Ez a konfiguráció biztosítja, hogy ugyanaz a terheléselosztási élmény akkor is folytatódjon, ha az alkalmazás az új elsődleges feladatátvétel után csatlakozik. Ha a földrajzilag replikált másodlagos adatbázishoz csatlakozik, és az olvasási méretezés engedélyezve van, a- `ApplicationIntent=ReadOnly` munkamenetek az egyik replikához lesznek irányítva, ugyanúgy, ahogy az elsődleges adatbázison keresztül irányítjuk a kapcsolatokat.  A munkamenetek `ApplicationIntent=ReadOnly` nem lesznek átirányítva a földrajzilag replikált másodlagos másodlagos replika elsődleges replikájának, amely szintén írásvédett. Mivel a földrajzilag replikált másodlagos adatbázis eltérő végponttal rendelkezik, mint az elsődleges adatbázis, a másodlagoshoz való hozzáférés nem szükséges a `ApplicationIntent=ReadOnly`beállításhoz. A visszamenőleges kompatibilitás érdekében `sys.geo_replication_links` a DMV `secondary_allow_connections=2` a következőt jeleníti meg: (minden ügyfél-kapcsolódás engedélyezett).
 
 > [!NOTE]
-> Ciklikus multiplexelés vagy bármely más terheléselosztásos útválasztás a másodlagos adatbázis helyi replikái között nem támogatott.
+> A másodlagos adatbázis helyi replikái közötti ciklikus multiplexelés vagy más terheléselosztási útválasztás nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az SQL Database nagy kapacitású ajánlatáról a [Nagykapacitású szolgáltatási szint](./sql-database-service-tier-hyperscale.md)című témakörben talál további információt.
+- További információ a SQL Database nagy kapacitású-ajánlatról: [nagy kapacitású szolgáltatási szintje](./sql-database-service-tier-hyperscale.md).

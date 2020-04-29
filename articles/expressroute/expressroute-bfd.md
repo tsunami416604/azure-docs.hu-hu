@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: A BFD konfigurálása'
-description: Ez a cikk a BFD (Kétirányú továbbítás észlelése) konfigurálásának módját ismerteti az ExpressRoute-kapcsolatexpressroute-kapcsolatain.
+title: 'Azure-ExpressRoute: a BFD konfigurálása'
+description: Ez a cikk útmutatást nyújt arról, hogyan konfigurálhatja a BFD (kétirányú továbbítás észlelése) egy ExpressRoute-áramkör privát társának használatával.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
 ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064842"
 ---
-# <a name="configure-bfd-over-expressroute"></a>A BFD konfigurálása az ExpressRoute-on keresztül
+# <a name="configure-bfd-over-expressroute"></a>BFD konfigurálása a ExpressRoute-en keresztül
 
-Az ExpressRoute támogatja a kétirányú továbbítás észlelését (BFD) mind a magán-, mind a Microsoft társviszony-létesítésén. A BFD ExpressRoute-on keresztüli engedélyezésével felgyorsíthatja a kapcsolathibák észlelését a Microsoft Enterprise edge (MSEE) eszközök és azon útválasztók között, amelyeken megszakítja az ExpressRoute-áramkört (CE/PE). Az ExpressRoute-ot az Ügyfél peremhálózati útválasztási eszközökön vagy a Partner Edge útválasztási eszközökön keresztül is lemondhatja (ha a felügyelt Layer 3 kapcsolatszolgáltatással ment). Ez a dokumentum végigvezeti a BFD szükségességén, és a BFD ExpressRoute-on keresztüli engedélyezésének módját.
+A ExpressRoute támogatja a kétirányú továbbítási észlelést (BFD) a magán-és a Microsoft-partnereknél. A BFD ExpressRoute-en keresztüli engedélyezésével felgyorsíthatja a Microsoft Enterprise Edge-(MSEE-) eszközök és a ExpressRoute-áramkör (CE/PE) leállítására szolgáló útválasztók közötti kapcsolódási hibák észlelését. A ExpressRoute lemondhatja az ügyfél peremhálózati útválasztási eszközein vagy a partner peremhálózati útválasztási eszközein (ha a felügyelt 3. rétegbeli kapcsolat szolgáltatással járt). Ez a dokumentum részletesen ismerteti a BFD szükségességét, valamint azt, hogy hogyan engedélyezhető a BFD a ExpressRoute-en keresztül.
 
-## <a name="need-for-bfd"></a>A BFD szükségessége
+## <a name="need-for-bfd"></a>BFD szükséges
 
-A következő ábra a BFD expressroute-áramkörön keresztüli engedélyezésének előnyeit mutatja be: [![1]][1]
+A következő ábra a BFD engedélyezésének előnyeit mutatja be a ExpressRoute-áramkörön keresztül: [![1]][1]
 
-Az ExpressRoute-áramkört Layer 2 vagy felügyelt Layer 3-kapcsolatok segítségével engedélyezheti. Mindkét esetben, ha egy vagy több Layer-2 eszköz van az ExpressRoute-kapcsolat útvonalán, az elérési úton lévő kapcsolathibák észlelésének felelőssége a fedő BGP feladata.
+A ExpressRoute áramkört a 2. rétegbeli kapcsolatok vagy a felügyelt 3. rétegbeli kapcsolatok is lehetővé teszik. Mindkét esetben, ha egy vagy több 2. rétegbeli eszköz van a ExpressRoute-kapcsolat elérési útjában, az elérési úton fennálló kapcsolati hibák észlelésének felelőssége a túlterhelt BGP.
 
-Az MSEE-eszközökön a BGP életben tartás és a tartásidő általában 60, illetve 180 másodpercre van konfigurálva. Ezért a kapcsolat meghibásodása után akár három percet is igénybe vehet a kapcsolatmeghibásodás észlelése és a forgalom váltása alternatív kapcsolatra.
+A MSEE-eszközökön a BGP életben tartása és a tartási idő általában 60-as és 180 másodpercen belül van konfigurálva. Ezért a kapcsolódási hiba után akár három percet is igénybe vehet a kapcsolódási hibák észlelése és a forgalom másik kapcsolatra váltásakor.
 
-A BGP-időzítők vezérléséhez állítsa be az alacsonyabb BGP keepalive és hold-idő az ügyfél szélén társviszony-létesítő eszközön. Ha a BGP-időzítők nem egyeznek össze a két társviszony-létesítő eszköz között, a társak közötti BGP-munkamenet az alacsonyabb időzítőértéket fogja használni. A BGP keepalive lehet állítani olyan alacsony, mint három másodperc, és a hold-idő, hogy a tíz másodperc. A BGP-időzítők agresszív beállítása azonban kevésbé előnyös, mivel a protokoll folyamatigényes.
+A BGP-időzítők szabályozásához konfigurálja az alacsonyabb BGP-t és a megtartási időt az ügyfél peremhálózati partneri eszközén. Ha a BGP-időzítők nem egyeznek a két társ eszköz között, a társak közötti BGP-munkamenet az alsó időzítő értéket fogja használni. A BGP életben tartása legfeljebb három másodpercre állítható be, a tartási idő pedig több tízezer másodperc. A BGP-időzítők agresszív beállítása azonban kevésbé előnyösebb, mert a protokoll intenzív folyamat.
 
-Ebben a forgatókönyvben a BFD segíthet. A BFD alacsony szintű kapcsolathiba-észlelést biztosít egy másodperc alatti időintervallumban. 
+Ebben az esetben a BFD segíthet. A BFD alacsony terhelésű kapcsolati hibák észlelését teszi lehetővé egy másodperces időintervallumban. 
 
 
-## <a name="enabling-bfd"></a>A BFD engedélyezése
+## <a name="enabling-bfd"></a>BFD engedélyezése
 
-A BFD alapértelmezés szerint az MSEE-k összes újonnan létrehozott ExpressRoute privát társviszony-létesítő felülete alatt van konfigurálva. Ezért a BFD engedélyezéséhez csak konfigurálnia kell a BFD-t a számítógép-biztonsági és -eken (mind az elsődleges, mind a másodlagos eszközökön). A BFD konfigurálása kétlépésből áll: konfigurálnia kell a BFD-t a kapcsolaton, majd csatolnia kell a BGP-munkamenethez.
+A BFD alapértelmezés szerint a Msee összes újonnan létrehozott ExpressRoute-társítási felületén van konfigurálva. Ezért a BFD engedélyezéséhez egyszerűen konfigurálnia kell a BFD-t a CEs/PEs-ben (mindkettő az elsődleges és a másodlagos eszközön egyaránt). A BFD konfigurálása kétlépéses folyamat: be kell állítania a BFD a csatolón, majd csatolni kell a BGP-munkamenethez.
 
-Az alábbiakban egy CE/PE (Cisco IOS XE) konfigurációt mutatunk be. 
+Alább látható például a CE/PE (Cisco IOS XE használatával) konfiguráció. 
 
     interface TenGigabitEthernet2/0/0.150
        description private peering to Azure
@@ -55,26 +55,26 @@ Az alábbiakban egy CE/PE (Cisco IOS XE) konfigurációt mutatunk be.
        exit-address-family
 
 >[!NOTE]
->A BFD engedélyezése egy már meglévő privát társviszony-létesítés alatt; vissza kell állítania a társviszony-létesítést. Lásd: [ExpressRoute-társviszony-létesítések visszaállítása][ResetPeering]
+>A BFD engedélyezése már meglévő privát társak között; alaphelyzetbe kell állítania a társítást. Lásd: ExpressRoute-társítások [alaphelyzetbe állítása][ResetPeering]
 >
 
 ## <a name="bfd-timer-negotiation"></a>BFD időzítő egyeztetése
 
-A BFD-partnerek között a két társ lassabbsebessége határozza meg az átviteli sebességet. A BFD-k átviteli/fogadási időköze300 ezredmásodpercre van állítva. Bizonyos esetekben az időköz magasabb, 750 ezredmásodperces értékben állítható be. Magasabb értékek beállításával kényszerítheti ezeket az intervallumokat hosszabbra; de nem rövidebb.
+A BFD-partnerek között a két partner lassabban határozzák meg az átviteli sebességet. A Msee BFD átviteli/fogadási intervallumai 300 ezredmásodpercre vannak beállítva. Bizonyos esetekben az intervallum értéke 750 ezredmásodpercnél nagyobb lehet. A magasabb értékek beállításával az intervallumok hosszabbak lehetnek. de nem rövidebb.
 
 >[!NOTE]
->Ha georedundáns ExpressRoute-áramköröket konfigurált, vagy a helyek közötti IPSec VPN-kapcsolatot használja biztonsági másolatként; a BFD engedélyezése gyorsabb feladatátvételt tesz lehetővé az ExpressRoute-kapcsolat hibája esetén. 
+>Ha a Geo-redundáns ExpressRoute-áramköröket konfigurálta, vagy a helyek közötti IPSec VPN-kapcsolatot használja biztonsági mentésként; a BFD engedélyezése a ExpressRoute kapcsolódási hibája után gyorsabban segít a feladatátvételben. 
 >
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkért vagy segítségért tekintse meg az alábbi hivatkozásokat:
+További információért és segítségért tekintse meg az alábbi hivatkozásokat:
 
 - [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]
 - [ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD felgyorsítja kapcsolat hiba levonási idő"
+[1]: ./media/expressroute-bfd/BFD_Need.pnga "BFD meggyorsítja a kapcsolati hibák levonásának idejét"
 
 <!--Link References-->
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 

@@ -1,7 +1,7 @@
 ---
 title: Munkaterület létrehozása
 titleSuffix: ML Studio (classic) - Azure
-description: Az Azure Machine Learning Studio (klasszikus) használatához machine learning-stúdió (klasszikus) munkaterülettel kell rendelkeznie. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
+description: Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,93 +11,93 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 1a391a7a061d1382b5e07b45625c44fc0f5dec54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204460"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Az Azure Machine Learning Studio (klasszikus) használatához machine learning-stúdió (klasszikus) munkaterülettel kell rendelkeznie. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
+Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
-## <a name="create-a-studio-classic-workspace"></a>Stúdió (klasszikus) munkaterület létrehozása
+## <a name="create-a-studio-classic-workspace"></a>Studio (klasszikus) munkaterület létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/)
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
     > [!NOTE]
-    > A bejelentkezéshez és a Studio (klasszikus) munkaterület létrehozásához Azure-előfizetés-rendszergazdának kell lennie. 
+    > A bejelentkezéshez és a Studio (klasszikus) munkaterület létrehozásához Azure-előfizetés rendszergazdájának kell lennie. 
     >
     > 
 
-2. Kattintson **a +Új gombra**
+2. Kattintson az **+ új** elemre
 
-3. A keresőmezőbe írja be a **Machine Learning Studio (klasszikus) munkaterületet,** és jelölje ki a megfelelő elemet. Ezután kattintson a lap alján található **Létrehozás** gombra.
+3. A keresőmezőbe írja be a **Machine learning Studio (klasszikus) munkaterületet** , és válassza ki a megfelelő elemet. Ezután válassza a lap alján található **Létrehozás** elemet.
 
 4. Adja meg a munkaterület adatait:
 
-   - A *munkaterület neve* legfeljebb 260 karakter lehet, és nem ér véget szóközben. A név nem tartalmazhat ilyen karaktereket:`< > * % & : \ ? + /`
-   - A kiválasztott (vagy létrehozott) *webszolgáltatási csomag,* valamint a kiválasztott társított *tarifacsomag,* akkor használatos, ha webszolgáltatásokat telepít erről a munkaterületről.
+   - A *munkaterület neve* legfeljebb 260 karakter hosszú lehet. A név nem tartalmazhatja a következő karaktereket:`< > * % & : \ ? + /`
+   - A *webszolgáltatások* ezen a munkaterületen való üzembe helyezéséhez a kiválasztott (vagy létrehozás) webszolgáltatás-csomagot, valamint a társított *díjszabási szintet* kell használni.
 
      ![Új Studio (klasszikus) munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson **a Létrehozás gombra.**
+5. Kattintson a **Létrehozás**gombra.
 
 > [!NOTE]
-> Machine Learning Studio (klasszikus) támaszkodik egy Azure storage-fiók, amely biztosítja a köztes adatok mentése során a munkafolyamat végrehajtása. A munkaterület létrehozása után, ha a tárfiókot törlik, vagy ha a hozzáférési kulcsok módosulnak, a munkaterület leáll, és a munkaterületen lévő összes kísérlet sikertelen lesz.
-Ha véletlenül törli a tárfiókot, hozza létre újra a tárfiókot ugyanazzal a névvel, mint a törölt tárfiókot, és szinkronizálja újra a hozzáférési kulcsot. Ha módosította a tárfiók hozzáférési kulcsát, az Azure Portal használatával szinkronizálja újra a hozzáférési kulcsot a munkaterületen.
+> A Machine Learning Studio (klasszikus) egy Azure Storage-fiókra támaszkodik, amelyet Ön a munkafolyamatok végrehajtásakor a köztes adattároláshoz biztosít. A munkaterület létrehozása után, ha a Storage-fiókot törölték, vagy ha a hozzáférési kulcsok módosulnak, a munkaterület működése leáll, és a munkaterület összes kísérlete sikertelen lesz.
+Ha véletlenül törölte a Storage-fiókot, hozza létre újra a Storage-fiókot ugyanabban a régióban, mint a törölt Storage-fiókot, és szinkronizálja újra a hozzáférési kulcsot. Ha módosította a tárfiók hozzáférési kulcsát, az Azure Portal használatával szinkronizálja újra a hozzáférési kulcsot a munkaterületen.
 
-A munkaterület üzembe helyezése után megnyithatja a Machine Learning Studio (klasszikus).
+Miután telepítette a munkaterületet, megnyithatja azt Machine Learning Studio (klasszikus).
 
-1. Keresse meg a Machine Learning [https://studio.azureml.net/](https://studio.azureml.net/)Studio (klasszikus) a .
+1. Tallózással keresse meg Machine Learning Studio (klasszikus [https://studio.azureml.net/](https://studio.azureml.net/)) a következő címen:.
 
 2. Válassza ki munkaterületét a jobb felső sarokban.
 
     ![Munkaterület kiválasztása](./media/create-workspace/open-workspace.png)
 
-3. Kattintson **a kísérleteimre.**
+3. Kattintson **a saját kísérletek**elemre.
 
     ![Kísérletek megnyitása](./media/create-workspace/my-experiments.png)
 
-A Studio (klasszikus) munkaterület kezeléséről az [Azure Machine Learning Studio (klasszikus) munkaterület kezelése](manage-workspace.md)című témakörben talál további információt.
-Ha problémát tapasztal a munkaterület létrehozásakor, olvassa el a [Hibaelhárítási útmutató: Gépi tanulási stúdió (klasszikus) munkaterület létrehozása és csatlakoztatása című témakört.](troubleshooting-creating-ml-workspace.md)
+A Studio (klasszikus) munkaterület kezelésével kapcsolatos információkért lásd: [Azure Machine learning Studio (klasszikus) munkaterületek kezelése](manage-workspace.md).
+Ha probléma merül fel a munkaterület létrehozásakor, olvassa el a [hibaelhárítási útmutató: Machine learning Studio (klasszikus) munkaterület létrehozása és kapcsolódása](troubleshooting-creating-ml-workspace.md)című témakört.
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület megosztása
-A Machine Learning Studio (klasszikus) munkaterület létrehozása után meghívhat felhasználókat a munkaterületre, hogy megosszák a munkaterülethez és annak minden kísérletéhez, adatkészletéhez, jegyzetfüzetéhez stb. Két szerepkör egyikében adhat hozzá felhasználókat:
+Miután létrehozta a Machine Learning Studio (klasszikus) munkaterületet, meghívhatja a felhasználókat a munkaterületre, hogy megosszák a hozzáférést a munkaterülethez, valamint az összes kísérletet, adatkészletet, jegyzetfüzetet stb. A felhasználókat a két szerepkör egyikében adhatja hozzá:
 
-* **Felhasználó** – A munkaterület-felhasználók kísérleteket, adatkészleteket stb.
-* **Tulajdonos** – A tulajdonos meghívhat és eltávolíthat felhasználókat a munkaterületen, a felhasználó által megtehető adatokon kívül.
+* **Felhasználó** – a munkaterület felhasználója létrehozhat, megnyithat, módosíthat és törölhet kísérleteket, adatkészleteket stb. a munkaterületen.
+* **Tulajdonos** – a felhasználók meghívhatják és eltávolíthatják a munkaterületen lévő felhasználókat, a felhasználó által elvégezhető műveletek mellett.
 
 > [!NOTE]
-> A munkaterületet létrehozó rendszergazdai fiók automatikusan hozzáadódik a munkaterülethez munkaterület-tulajdonosként. Az előfizetés más rendszergazdái vagy felhasználói azonban nem kapnak automatikusan hozzáférést a munkaterülethez – explicit módon meg kell hívnia őket.
+> A munkaterületet létrehozó rendszergazdai fiók automatikusan hozzá lesz adva a munkaterülethez a munkaterület tulajdonosaként. Azonban az adott előfizetéshez tartozó más rendszergazdák vagy felhasználók nem kapnak automatikusan hozzáférést a munkaterülethez – ezeket explicit módon meg kell hívnia.
 > 
 > 
 
-### <a name="to-share-a-studio-classic-workspace"></a>Stúdió (klasszikus) munkaterület megosztása
+### <a name="to-share-a-studio-classic-workspace"></a>Studio (klasszikus) munkaterület megosztása
 
-1. Bejelentkezés a Machine Learning Studio-ba (klasszikus)[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Jelentkezzen be Machine Learning Studio (klasszikus)[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. A bal oldali panelen kattintson a **BEÁLLÍTÁSOK**
+2. A bal oldali panelen kattintson a **Beállítások** elemre.
 
-3. Kattintson a **FELHASZNÁLÓK** fülre
+3. Kattintson a **felhasználók** lapra
 
-4. Kattintson **a További felhasználók meghívása** gombra az oldal alján
+4. Kattintson a lap alján található **további felhasználók meghívása** elemre.
 
-    ![Stúdió beállításai](./media/create-workspace/settings.png)
+    ![Studio-beállítások](./media/create-workspace/settings.png)
 
-5. Adjon meg egy vagy több e-mail címet. A felhasználóknak érvényes Microsoft-fiókra vagy szervezeti fiókra van szükségük (az Azure Active Directoryból).
+5. Írjon be egy vagy több e-mail-címet. A felhasználóknak érvényes Microsoft-fiók vagy szervezeti fiókra van szükségük (Azure Active Directory).
 
-6. Válassza ki, hogy a felhasználókat tulajdonosként vagy felhasználóként kívánja-e hozzáadni.
+6. Válassza ki, hogy tulajdonosként vagy felhasználóként kívánja-e hozzáadni a felhasználókat.
 
 7. Kattintson az **OK** pipa gombra.
 
-Minden hozzáadott felhasználó kap egy e-mailt a megosztott munkaterületre való bejelentkezéssel kapcsolatos utasításokkal.
+Minden hozzáadott felhasználó kap egy e-mailt, amely útmutatást ad a megosztott munkaterületre való bejelentkezéshez.
 
 > [!NOTE]
-> Ahhoz, hogy a felhasználók ezen a munkaterületen telepíthessék vagy kezelhessék a webszolgáltatásokat, közreműködőknek vagy rendszergazdának kell lenniük az Azure-előfizetésben. 
+> Ahhoz, hogy a felhasználók képesek legyenek a webszolgáltatások üzembe helyezésére vagy kezelésére ezen a munkaterületen, az Azure-előfizetésben közreműködőnek vagy rendszergazdának kell lennie. 
 
 
 

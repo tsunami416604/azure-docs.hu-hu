@@ -1,43 +1,43 @@
 ---
-title: Környezetenkénti konfiguráció használata
+title: Környezeti konfiguráció használata
 titleSuffix: Azure App Configuration
-description: Címkék használata környezetenkénti konfigurációs értékek megadásához
+description: Címkék használata a környezethez tartozó konfigurációs értékek biztosításához
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
 ms.openlocfilehash: d1a3323154fc73b453e041a064cfcd36299b8a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80056801"
 ---
-# <a name="use-labels-to-enable-different-configurations-for-different-environments"></a>Címkék használata különböző konfigurációk engedélyezéséhez különböző környezetekben
+# <a name="use-labels-to-enable-different-configurations-for-different-environments"></a>Különböző konfigurációk engedélyezése címkék használatával különböző környezetekben
 
-Számos alkalmazásnak különböző konfigurációkat kell használnia a különböző környezetekben. Tegyük fel, hogy egy alkalmazás konfigurációs értékkel rendelkezik, amely meghatározza a háttéradatbázishoz használandó kapcsolati karakterláncot. Az alkalmazás fejlesztői az éles környezetben használtadatbázistól eltérő adatbázist használnak. Az alkalmazás által használt adatbázis-kapcsolati karakterláncnak meg kell változnia, ahogy az alkalmazás a fejlesztésről az éles környezetre vált.
+Számos alkalmazásnak különböző konfigurációkat kell használnia a különböző környezetekhez. Tegyük fel, hogy egy alkalmazás olyan konfigurációs értékkel rendelkezik, amely meghatározza a háttér-adatbázishoz használandó kapcsolati karakterláncot. Az alkalmazás fejlesztői az éles környezetben használt másik adatbázist használnak. Az alkalmazás által használt adatbázis-kapcsolódási sztringnek meg kell változnia, mivel az alkalmazás a fejlesztéstől a Termelésig mozog.
 
-Az Azure App konfigurációja, *címkék* használatával különböző értékeket határozhat meg ugyanahhoz a kulcshoz. Megadhat például egyetlen kulcsot különböző értékekkel a *Fejlesztés* és *a Termelés*területén. Megadhatja, hogy melyik címkét (ek) kell betölteni, amikor csatlakozik az alkalmazás konfigurációjához.
+Az Azure-alkalmazások konfigurációjában a *címkék* használatával különböző értékeket határozhat meg ugyanahhoz a kulcshoz. Megadhat például egy olyan kulcsot, amely különböző értékekkel rendelkezik a *fejlesztéshez* és a *gyártáshoz*. Megadhatja, hogy mely címkéket kell betölteni az alkalmazás-konfigurációhoz való csatlakozáskor.
 
-Ennek a funkciónak a bemutatásához módosítjuk a rövid útmutatóban létrehozott [webalkalmazást: Hozzon létre egy ASP.NET Core alkalmazást az Azure App Configuration alkalmazással,](./quickstart-aspnet-core-app.md) hogy különböző konfigurációs beállításokat használjon a fejlesztéshez és az éles környezethez. A folytatás előtt fejezze be a rövid útmutatót.
+A funkció bemutatásához módosítani fogjuk a gyors útmutatóban létrehozott webalkalmazást [: hozzon létre egy ASP.net Core alkalmazást az Azure-alkalmazás konfigurációjában](./quickstart-aspnet-core-app.md) , hogy különböző konfigurációs beállításokat használjon a fejlesztéshez és a termeléshez. A folytatás előtt végezze el a gyors üzembe helyezést.
 
 ## <a name="specify-a-label-when-adding-a-configuration-value"></a>Címke megadása konfigurációs érték hozzáadásakor
 
-Az Azure Portalon lépjen be a **Configuration Explorer** be, és keresse meg a *TestApp:Settings:FontColor* kulcsot, amelyet a rövid útmutatóban hozott létre. Válassza ki a helyi menüt, majd kattintson az **Érték hozzáadása parancsra.**
+A Azure Portal lépjen a **Configuration Explorerbe** , és keresse meg a *TestApp: Settings: FontColor* kulcsot, amelyet a rövid útmutatóban hozott létre. Válassza ki a helyi menüt, majd kattintson az **érték hozzáadása**gombra.
 
 > [!div class="mx-imgBorder"]
-> ![Érték hozzáadása menüelem](media/labels-add-value.png)
+> ![Érték menüpont hozzáadása](media/labels-add-value.png)
 
-A **Hozzáadott érték** képernyőn írjon be egy **piros** **értéket** és egy **fejlesztési** **címkét.** Hagyja üresen **a Tartalomtípust.** Kattintson az **Alkalmaz** gombra.
+Az **érték hozzáadása** képernyőn adja meg a **vörös** és a **fejlesztési** **címke** **értékét** . Hagyja üresen a **tartalom típusát** . Kattintson az **Alkalmaz** gombra.
 
-## <a name="loading-configuration-values-with-a-specified-label"></a>Konfigurációs értékek betöltése megadott címkével
+## <a name="loading-configuration-values-with-a-specified-label"></a>Megadott címkével rendelkező konfigurációs értékek betöltése
 
-Alapértelmezés szerint az Azure App Konfigurációs csak betölti a konfigurációs értékek címke nélkül. Ha címkéket adott meg a konfigurációs értékekhez, akkor meg kell adnia az alkalmazáskonfigurációhoz való csatlakozáskor használandó címkét(eke-ket).
+Alapértelmezés szerint az Azure app Configuration csak a címke nélküli konfigurációs értékeket tölti be. Ha meghatározta a konfigurációs értékek címkéit, meg kell adnia az alkalmazás-konfigurációhoz való csatlakozáskor használni kívánt címkét (ka) t.
 
-Az utolsó szakaszban létrehozott egy másik *konfigurációs* értéket a fejlesztési környezethez. A `HostingEnvironment.EnvironmentName` változó segítségével dinamikusan meghatározhatja, hogy az alkalmazás jelenleg melyik környezetben fut. További információ: [Több környezet használata ASP.NET Core alkalmazásban](/aspnet/core/fundamentals/environments)című témakörben olvashat.
+Az utolsó szakaszban létrehozott egy másik konfigurációs értéket a *fejlesztési* környezethez. A `HostingEnvironment.EnvironmentName` változó használatával dinamikusan meghatározhatja, hogy az alkalmazás jelenleg milyen környezetben fut. További információ: [több környezet használata ASP.net Coreban](/aspnet/core/fundamentals/environments).
 
-Töltse be a konfigurációs értékeket az aktuális környezetnek `Select` megfelelő címkével a környezet nevének átadva a metódusba:
+Az aktuális környezetnek megfelelő címkével töltse be a konfigurációs értékeket a környezet nevének a `Select` metódusba való átadásával:
 
 ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -59,30 +59,30 @@ Töltse be a konfigurációs értékeket az aktuális környezetnek `Select` meg
 ```
 
 > [!IMPORTANT]
-> A fenti kódrészlet betölti az alkalmazáskonfigurációs kapcsolati karakterláncot egy környezeti változóból, amelyet úgy hívnak, hogy. `AppConfigConnectionString` Győződjön meg arról, hogy ez a környezeti változó megfelelően van beállítva.
+> A fenti kódrészlet egy nevű `AppConfigConnectionString`környezeti változóból tölti be az alkalmazás konfigurációs kapcsolatok sztringjét. Ügyeljen arra, hogy a környezeti változó megfelelően legyen beállítva.
 
-A `Select` metódus neve kétszer. Az első alkalommal címke nélküli konfigurációs értékeket tölt be. Ezután betölti a konfigurációs értékeket az aktuális környezetnek megfelelő címkével. Ezek a környezetspecifikus értékek felülírják a megfelelő értékeket címke nélkül. Nem kell minden kulcshoz környezetspecifikus értékeket megadnia. Ha egy kulcs nem rendelkezik az aktuális környezetnek megfelelő címkével rendelkező értékkel, akkor a címke nélküli értéket használja a program.
+A `Select` metódust kétszer kell meghívni. Az első alkalommal a címke nélküli konfigurációs értékeket tölti be. Ezután betölti a konfigurációs értékeket az aktuális környezetnek megfelelő címkével. Ezek a környezet-specifikus értékek felülbírálják a címkével nem rendelkező megfelelő értékeket. Nem kell meghatároznia a környezettel kapcsolatos értékeket minden kulcshoz. Ha egy kulcs nem rendelkezik olyan értékkel, amely az aktuális környezetnek megfelelő címkével rendelkezik, akkor a címke nélküli értéket használja a rendszer.
 
 ## <a name="testing-in-different-environments"></a>Tesztelés különböző környezetekben
 
-A különböző konfigurációs értékek `launchSettings.json` teszteléséhez `Properties` nyissa meg a könyvtár alatti fájlt. Keresse `config` meg `profiles`a bejegyzést a alatt. A `environmentVariables` szakaszban állítsa `ASPNETCORE_ENVIRONMENT` a `Production`változót a-ra.
+A különböző konfigurációs értékek teszteléséhez nyissa meg `launchSettings.json` a fájlt a `Properties` könyvtár alatt. Keresse meg `config` a bejegyzést `profiles`a alatt. A `environmentVariables` szakaszban állítsa be a `ASPNETCORE_ENVIRONMENT` változót a `Production`következőre:.
 
-Az új értékek beállítása, az alkalmazás létrehozása és futtatása.
+Az új értékek beállítása után hozza létre és futtassa az alkalmazást.
 
 ```dotnetcli
 dotnet build
 dotnet run
 ```
 
-Keresse meg a böngészőt a alkalmazáshoz. `http://localhost:5000` Észre fogod venni, hogy a betűszín fekete.
+Webböngészővel navigáljon a következőhöz: `http://localhost:5000`. Figyelje meg, hogy a betűszín fekete színű.
 
 ![Éles konfigurációval futó webalkalmazás](media/labels-website-prod.png)
 
-Most `launchSettings.json` frissítse a `ASPNETCORE_ENVIRONMENT` változó `Development`beállítását . Futtassa ismét az `dotnet run` parancsot. Észre fogod venni, hogy a betűszín most piros. Ennek az az oka, `TestApp:Settings:FontColor` hogy az `Development` alkalmazás most a címkével ellátott értékét használja. Az összes többi konfigurációs érték ugyanaz marad, mint a termelési értékeik.
+Most frissítse `launchSettings.json` a `ASPNETCORE_ENVIRONMENT` változó értékét a következőre: `Development`. Futtassa ismét az `dotnet run` parancsot. Megfigyelheti, hogy a betűszín most piros színnel jelenik meg. Ennek az az oka, `TestApp:Settings:FontColor` hogy az alkalmazás már használja a `Development` címkével ellátott értéket. Az összes többi konfigurációs érték ugyanaz marad, mint a termelési értékük.
 
 ![Fejlesztői konfigurációval futó webalkalmazás](media/labels-website-dev.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Konfiguráció ASP.NET Core-ban](/aspnet/core/fundamentals/configuration/)
+> [Konfiguráció a ASP.NET Coreban](/aspnet/core/fundamentals/configuration/)

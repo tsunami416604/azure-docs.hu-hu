@@ -1,6 +1,6 @@
 ---
-title: Élő közvetítés áttekintése az Azure Media Services v3 szolgáltatással | Microsoft dokumentumok
-description: Ez a cikk áttekintést nyújt az Azure Media Services v3 használatával történő élő streamelésről.
+title: Az élő közvetítés áttekintése Azure Media Services v3-vel | Microsoft Docs
+description: Ez a cikk áttekintést nyújt az élő közvetítésről Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,121 +14,121 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: e2c4e5b6c10b06d82a1933962cb2d97e031876a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068028"
 ---
-# <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés az Azure Media Services v3-as oldalával
+# <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
-Az Azure Media Services lehetővé teszi, hogy élő eseményeket biztosítson ügyfeleinek az Azure-felhőben. Az élő események Media Services szolgáltatással való streameléséhez a következőkre van szükség:  
+A Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az élő események Media Servicessal való továbbításához a következőkre lesz szüksége:  
 
-- Az élő esemény rögzítésére használt kamera.<br/>A beállítási ötletek, nézd meg [egyszerű és hordozható esemény video gear setup]( https://link.medium.com/KNTtiN6IeT).
+- Az élő esemény rögzítésére szolgáló kamera.<br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
 
-    Ha nem fér hozzá a fényképezőgéphez, az olyan eszközök, mint a [Telestream Wirecast,](https://www.telestream.net/wirecast/overview.htm) élő hírfolyamot hozhatnak létre egy videofájlból.
-- Élő videokódoló, amely a kamerából (vagy más eszközről, például laptopról) érkező jeleket a Media Services szolgáltatásnak küldött hozzájárulási hírcsatornává alakítja. A hozzájárulási hírcsatorna tartalmazhat hirdetésekhez kapcsolódó jeleket, például SCTE-35 jelölőket.<br/>Az ajánlott élő streamelési kódolók listáját az [élő streamelési kódolók között láthatja.](recommended-on-premises-live-encoders.md) Is, nézd meg ezt a blogot: [Élő streaming termelés OBS](https://link.medium.com/ttuwHpaJeT).
-- A Media Services összetevői, amelyek lehetővé teszik az élő esemény betöltését, előnézetét, csomagolását, rögzítését, titkosítását és közvetítését az ügyfeleknek, vagy egy CDN-nek további terjesztés céljából.
+    Ha nem rendelkezik hozzáféréssel egy kamerához, az eszközök (például a [Wirecast](https://www.telestream.net/wirecast/overview.htm) ) segítségével élő hírcsatornát hozhatnak elő a videofájl használatával.
+- Egy élő videó kódoló, amely egy kamerából (vagy egy másik eszközről, például egy laptopból) származó jeleket alakít át egy Media Servicesba küldendő közreműködői adatcsatornába. A hozzájárulási hírcsatorna tartalmazhat a hirdetésekkel kapcsolatos jeleket, például a SCTE-35 jelölőket.<br/>A javasolt élő adatfolyam-kódolók listáját lásd: [élő adatfolyam-kódolók](recommended-on-premises-live-encoders.md). Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
+- A Media Services összetevői, amelyek lehetővé teszik az élő események betöltését, beolvasását, becsomagolását, rögzítését, titkosítását és továbbítását az ügyfelek számára, illetve a CDN-t további terjesztés céljából.
 
-Ez a cikk áttekintést és útmutatást nyújt a Media Services szolgáltatással való élő közvetítésről és más releváns cikkekre mutató hivatkozásokról.
+Ez a cikk áttekintést nyújt az élő közvetítésről Media Services és más kapcsolódó cikkekre mutató hivatkozásokat tartalmaz.
  
 > [!NOTE]
-> Az Azure [Portal](https://portal.azure.com/) segítségével kezelheti a v3-as [élő eseményeket,](live-events-outputs-concept.md)tekintse meg a v3 [Assets nézetet,](assets-concept.md)és információkat kaphat az API-k eléréséről. Az összes többi felügyeleti feladathoz (például átalakítások és feladatok) használja a [REST API-t,](https://docs.microsoft.com/rest/api/media/)a [CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ## <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
-A Media Services segítségével kihasználhatja a [Dinamikus csomagolás](dynamic-packaging-overview.md)előnyeit, amely lehetővé teszi az élő közvetítések előnézetét és közvetítését [MPEG DASH, HLS és Smooth Streaming formátumokban](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a szolgáltatásnak küldött hozzájárulási hírcsatornából. A megtekintők lejátszhatják az élő közvetítést bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszóval. Az [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) segítségével webes vagy mobilalkalmazásokban is közvetítheti az adatfolyamot a protokollok bármelyikében.
+A Media Services segítségével kihasználhatja a [dinamikus csomagolás](dynamic-packaging-overview.md)előnyeit, így az élő streameket az MPEG Dash-ben [, a HLS-ban Smooth streaming és](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a szolgáltatásba küldött közreműködői adatcsatornán keresztül is megtekintheti és közvetítheti. A megtekintők az élő streamet bármilyen HLS, KÖTŐJELtel vagy Smooth Streaming kompatibilis játékossal játszhatják fel. A webes vagy mobil alkalmazásaiban [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) használhatja az adatfolyam továbbítására ezen protokollok bármelyikében.
 
 ## <a name="dynamic-encryption"></a>Dinamikus titkosítás
 
-A dinamikus titkosítás lehetővé teszi, hogy dinamikusan titkosítsa élő vagy igény szerinti tartalmait az AES-128 vagy a három fő digitális jogkezelési (DRM) rendszer bármelyikével: a Microsoft PlayReady, a Google Widevine és az Apple FairPlay rendszerekkel. A Media Services szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek hivatalos ügyfelek nek történő kézbesítéséhez. További információ: [Dinamikus titkosítás](content-protection-overview.md).
+A dinamikus titkosítás lehetővé teszi, hogy az élő vagy igény szerinti tartalmakat az AES-128 vagy a három jelentős digitális jogkezelési (DRM) rendszerű rendszeren keresztül dinamikusan titkosítsa: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. További információ: [dinamikus titkosítás](content-protection-overview.md).
 
 > [!NOTE]
-> A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="dynamic-manifest"></a>Dinamikus jegyzékfájl
 
-A dinamikus szűrés a játékosoknak küldött számok, formátumok, bitráták és bemutatóidő-ablakok számának szabályozására szolgál. További információt a [szűrők és a dinamikus jegyzékek című témakörben talál.](filters-dynamic-manifest-overview.md)
+A dinamikus szűréssel szabályozható a játékosok számára eljuttatott zeneszámok, formátumok, bitráták és a megjelenítési idő Windows-száma. További információ: [szűrők és dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md).
 
-## <a name="live-event-types"></a>Élő eseménytípusok
+## <a name="live-event-types"></a>Élő események típusai
 
-Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Az élő esemény beállítható *áthaladásra* (egy helyszíni élő kódoló több bitráta-adatfolyamot küld) vagy *élő kódolásra* (a helyszíni élő kódoló egyetlen átviteli adatfolyamot küld). A Media Services v3-as verzióját élő közvetítésével kapcsolatos részletek az [Élő események és az Élő kimenetek témakörben talál.](live-events-outputs-concept.md)
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A Media Services v3 élő közvetítésével kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Továbbítás
 
 ![átmenő típusú](./media/live-streaming/pass-through.svg)
 
-Az átmenő **élő esemény**használatakor a helyszíni élő kódolóra támaszkodva több bitráta-videoadat-adatfolyamot hozhat létre, és azt az élő eseményhez való hozzájárulásként (RTMP vagy töredezett MP4 bemeneti protokoll használatával) küldi el. Az élő esemény ezután további átkódolás nélkül továbbítja a bejövő videostreameket a dinamikus csomagolóba (Streaming Endpoint). Az ilyen átmenő élő esemény hosszú ideig futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. 
+A továbbítás **élő eseményének**használatakor a helyszíni élő kódoló több bitráta-videó stream létrehozásához és az élő eseményhez való hozzájáruláshoz (RTMP vagy darabolt MP4 bemeneti protokoll használatával) küldje el. Az élő esemény ezután a bejövő videó streameket a dinamikus csomagolóba (streaming Endpoint) továbbítja a további átkódolás nélkül. Egy ilyen átmenő élő esemény a hosszan futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
 ![live encoding](./media/live-streaming/live-encoding.svg)
 
-Ha felhőalapú kódolást használ a Media Services szolgáltatással, konfigurálja a helyszíni élő kódolót úgy, hogy egyetlen bitráta-videót küldjön a live esemény (RTMP vagy töredezett MP4 bemeneti protokoll) hozzájárulási hírcsatornájaként (legfeljebb 32 Mbps összesítés). A Live Event átkódolja a bejövő egybitrát stream [több bitráta videó stream](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) különböző felbontásban, hogy javítsa a kézbesítést, és elérhetővé teszi a lejátszáseszközök keresztül ipari szabvány protokollok, mint az MPEG-DASH, Apple HTTP Live Streaming (HLS), és a Microsoft Smooth Streaming. 
+Ha Media Services használatával Felhőbeli kódolást használ, a helyszíni élő kódolót úgy kell konfigurálnia, hogy egyetlen bitráta-videót küldjön az élő eseményhez (az RTMP vagy a darabolt MP4 bemeneti protokoll használatával). Az élő esemény átkódolja a bejövő egyszeri sávszélességű adatfolyamot [több bitrátás videó streamre](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) , különböző felbontások mellett, és így elérhetővé teszi a lejátszási eszközök számára az iparági szabványnak megfelelő protokollok, például az MPEG-Dash, az Apple http Live Streaming (HLS) és a Microsoft Smooth streaming használatával. 
 
 ### <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
-Az élő transzkripció olyan funkció, amelyet olyan élő eseményekkel használhat, amelyek átmenő vagy élő kódolásúak. További információ: [live transcription](live-transcription.md). Ha ez a funkció engedélyezve van, a szolgáltatás a Cognitive Services [Beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) szolgáltatását használja a bejövő hang kimondott szavainak szöveggé történő átírásához. Ez a szöveg ezután elérhetővé válik a videó és audió mpeg-DASH és HLS protokollokban történő kézbesítésre.
+Az élő átírás egy olyan szolgáltatás, amellyel áteresztő vagy élő kódolású élő eseményeket lehet használni. További információ: [élő átírás](live-transcription.md). Ha ez a szolgáltatás engedélyezve van, a szolgáltatás a Cognitive Services [beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) funkciója segítségével átmásolja a beérkező szövegben szereplő szóbeli szavakat. Ezt a szöveget ezután elérhetővé kell tenni a videóval és hanggal együtt az MPEG-DASH és a HLS protokollok esetében.
 
 > [!NOTE]
-> Jelenleg az élő átírás az USA nyugati részén 2 előzetes funkcióként érhető el.
+> Az élő átírás jelenleg az USA 2. nyugati régiójában érhető el előzetes verziójú szolgáltatásként.
 
-## <a name="live-streaming-workflow"></a>Élő közvetítési munkafolyamat
+## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
 
-A Media Services 3-as v3-as szolgáltatásának élő streamelési munkafolyamatának megértéséhez először át kell tekintenie és meg kell értenie az alábbi fogalmakat: 
+Az Media Services v3 élő közvetítési munkafolyamatának megismeréséhez először tekintse át és Ismerje meg a következő fogalmakat: 
 
-- [Végpontok streamelése](streaming-endpoint-concept.md)
+- [Streamvégpontok](streaming-endpoint-concept.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
-- [Streamelési lokátorok](streaming-locators-concept.md)
+- [Streamelési lokátor](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Általános lépések
 
-1. A Media Services-fiókban győződjön meg arról, hogy a **streamelési végpont** (Origin) fut. 
-2. Élő [esemény](live-events-outputs-concept.md)létrehozása . <br/>Az esemény létrehozásakor megadhatja az automatikus indítást. Azt is megteheti, hogy elindítja az eseményt, amikor készen áll a streamelés megkezdésére.<br/> Ha az automatikus indítás értéke igaz, az élő esemény közvetlenül a létrehozás után indul el. A számlázás akkor kezdődik, amikor az élő esemény elindul. A további számlázás leállításához kifejezetten meg kell hívnia a Stop on the Live Event erőforrást. További információt az [Élő esemény állapotaés a számlázás](live-event-states-billing.md)című témakörben talál.
-3. A betöltési URL-cím(ek) betöltése és a helyszíni kódoló konfigurálása az URL-cím használatával a hozzájárulási hírcsatorna küldéséhez.<br/>Lásd [az ajánlott élő kódolókat](recommended-on-premises-live-encoders.md).
-4. Az előnézeti URL-cím beérkezésével ellenőrizheti, hogy a kódoló bemenete ténylegesen meg érkezett-e.
-5. Hozzon **Asset** létre egy új eszközobjektumot. 
+1. Győződjön meg arról, hogy a Media Services-fiókban fut a **folyamatos átviteli végpont** (forrás). 
+2. Hozzon létre egy [élő eseményt](live-events-outputs-concept.md). <br/>Az esemény létrehozásakor megadhatja az automatikus indítást. Azt is megteheti, hogy elindíthatja az eseményt, amikor készen áll a folyamatos átvitelre.<br/> Ha az Automatikus indítás értéke TRUE (igaz), akkor az élő esemény a létrehozás után rögtön elindul. A számlázás azonnal elindul, amint az élő esemény elindul. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. További információ: [élő események állapota és számlázása](live-event-states-billing.md).
+3. Töltse le a betöltési URL-címeket, és konfigurálja a helyszíni kódolót úgy, hogy az URL-cím használatával küldje el a hozzájárulási csatornát.<br/>Lásd: [ajánlott élő kódolók](recommended-on-premises-live-encoders.md).
+4. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a kódolóból érkező adatok fogadása ténylegesen megtörténik-e.
+5. Hozzon létre **egy új objektum** objektumot. 
 
-    Minden élő kimenet egy eszközhöz van társítva, amelyet a videó rögzítésére használ a társított Azure blob storage tárolóba. 
-6. Hozzon létre egy **élő kimenetet,** és használja a létrehozott eszköznevet, hogy az adatfolyam archiválható legyen az eszközbe.
+    Minden élő kimenet egy adategységhez van társítva, amelyet a videó a társított Azure Blob Storage-tárolóba való rögzítéséhez használ. 
+6. Hozzon létre egy **élő kimenetet** , és használja a létrehozott eszköz nevét, hogy az adatfolyam archiválható legyen az objektumba.
 
-    Az élő kimenetek létrehozásakor kezdődnek, és törléskor leállnak. Az élő kimenet törlésekor nem törli a mögöttes eszközt és tartalmat az eszközben.
-7. Hozzon létre egy **streamelési lokátort** a [beépített streamelési házirend-típusokkal.](streaming-policy-concept.md)
+    Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. Ha törli az élő kimenetet, nem törli az objektum mögöttes eszközét és tartalmát.
+7. Hozzon létre egy **streaming-keresőt** a [beépített folyamatos átviteli házirend-típusokkal](streaming-policy-concept.md).
 
-    Az élő kimenet közzétételéhez létre kell hoznia egy streamelési lokátort a társított eszközhöz. 
-8. Sorolja fel az elérési utakat a **streamelési lokátor,** hogy visszaszerezze az URL-eket használni (ezek determinisztikus).
-9. A **streamelési végpont** (Origin) állomásnevének beszereznie, amelyből streamelni szeretne.
-10. Kombinálja a 8.
-11. Ha le szeretné állítani az **élő esemény** láthatóvá tételét, le kell állítania az esemény streamelését, és törölnie kell a **Streamelési lokátort.**
+    Az élő kimenet közzétételéhez létre kell hoznia egy folyamatos átviteli lokátort a társított objektumhoz. 
+8. A **streaming-lokátor** elérési útjának listázása a használni kívánt URL-címek visszaszerzéséhez (ezek a determinisztikus).
+9. Szerezze be annak a **streaming-végpontnak** (forrásnak) az állomásnevét, amelyről a streamet szeretné továbbítani.
+10. A teljes URL-cím lekéréséhez kombinálja a 8. lépésből származó URL-címet a 9. lépésben szereplő állomásnévvel.
+11. Ha szeretné megszüntetni az **élő esemény** megkeresését, le kell állítania az eseményt, és törölnie kell a **folyamatos átviteli lokátort**.
 12. Ha befejezte az esemény streamelését, és törölni szeretné a korábban kiosztott erőforrásokat, kövesse az alábbi eljárást.
 
     * Állítsa le a stream továbbítását a kódolóban.
-    * Állítsa le az élő eseményt. Az élő esemény leállítása után nem számítunk fel díjat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
+    * Állítsa le az élő eseményt. Az élő esemény leállítását követően nem számítunk fel díjat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
     * A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. Ha az élő esemény leállított állapotban van, nem számítunk fel díjat.
 
-Az az eszköz, amelyaz élő kimenet archiválása, automatikusan igény szerinti eszközlesz, amikor az élő kimenet törlődik. Az élő események leállítása előtt törölnie kell az összes élő kimenetet. Használhatja a választható [jelzőremoveOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) automatikusan eltávolítja az élő kimenetek stop. 
+Az az objektum, amelyet az élő kimenet archivál, automatikusan egy igény szerinti eszközvé válik az élő kimenet törlésekor. Az élő események leállításához minden élő kimenetet törölnie kell. A nem kötelező jelző [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) használatával automatikusan eltávolíthatja az élő kimeneteket a leállítás után. 
 
 > [!TIP]
-> Lásd: [Élő streamelési oktatóanyag](stream-live-tutorial-with-api.md), a cikk megvizsgálja a kódot, amely megvalósítja a fent leírt lépéseket.
+> Lásd: [élő közvetítés oktatóanyaga](stream-live-tutorial-with-api.md), a cikk megvizsgálja a fent ismertetett lépéseket megvalósító kódot.
 
 ## <a name="other-important-articles"></a>Egyéb fontos cikkek
 
 - [Ajánlott élő kódolók](recommended-on-premises-live-encoders.md)
 - [Egy felhőalapú DVR használata](live-event-cloud-dvr.md)
-- [Az Élő eseménytípusok jellemzőinek összehasonlítása](live-event-types-comparison.md)
+- [Élő események típusai szolgáltatás összehasonlítása](live-event-types-comparison.md)
 - [Állapotok és számlázás](live-event-states-billing.md)
 - [Késés](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Tekintse meg a [gyakran ismételt kérdésekről szóló](frequently-asked-questions.md#live-streaming) cikket.
+Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming) című cikket.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
-Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
+Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Élő közvetítés – rövid útmutató] (live-events-wirecast-quickstart.md(
-* [Élő közvetítésoktató anyaga](stream-live-tutorial-with-api.md)
-* [Áttelepítési útmutató a Media Services 2-es v3-as ról a 3-as vagy a 3-as](migrate-from-v2-to-v3.md)
+* [Élő közvetítés – gyors üzembe helyezés] (live-events-wirecast-quickstart.md (
+* [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
+* [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-from-v2-to-v3.md)

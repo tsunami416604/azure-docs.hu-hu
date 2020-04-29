@@ -1,7 +1,7 @@
 ---
 title: Algoritmusok optimalizálása
 titleSuffix: ML Studio (classic) - Azure
-description: Bemutatja, hogyan választhatja ki az optimális paraméterkészletet egy algoritmushoz az Azure Machine Learning Studio (klasszikus) alkalmazásban.
+description: A cikk azt ismerteti, hogyan választhatja ki az algoritmushoz beállított optimális paramétereket Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,67 +11,67 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218268"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához az Azure Machine Learning Studio-ban (klasszikus)
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ez a témakör ismerteti, hogyan válassza ki a megfelelő hiperparaméter-készlet egy algoritmus az Azure Machine Learning Studio (klasszikus). A legtöbb gépi tanulási algoritmusok paramétereket kell beállítani. Modell betanításakor meg kell adnia a paraméterek értékeit. A betanított modell hatékonysága a választott modellparaméterektől függ. Az optimális paraméterkészlet megtalálásának folyamatát *modellválasztásnak*nevezzük.
+Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparaméter-készletet Azure Machine Learning Studio (klasszikus) algoritmushoz. A legtöbb gépi tanulási algoritmushoz paraméterek vannak beállítva. A modellek betanításakor meg kell adnia a paraméterek értékeit. A betanított modell hatékonysága a választott modell-paraméterektől függ. A paraméterek optimális készletének megkeresésének folyamata modell- *kiválasztás*néven ismert.
 
 
 
-A modellválasztást többféleképpen is el lehet végezni. A gépi tanulásban a keresztérvényesítés az egyik legszélesebb körben használt módszer a modellkiválasztásához, és ez az alapértelmezett modellkiválasztási mechanizmus az Azure Machine Learning Studio (klasszikus) alkalmazásban. Mivel az Azure Machine Learning Studio (klasszikus) támogatja az R és a Python, mindig megvalósíthatja a saját modell kiválasztási mechanizmusok segítségével R vagy Python használatával.
+A modell kiválasztásának számos módja van. A gépi tanulásban a kereszt-ellenőrzés az egyik legszélesebb körben használt módszer a modell kiválasztásához, és ez az alapértelmezett modell-kiválasztási mechanizmus a Azure Machine Learning Studio (klasszikus). Mivel a Azure Machine Learning Studio (klasszikus) az R és a Python használatát is támogatja, az R vagy a Python használatával mindig saját modell-kiválasztási mechanizmusokat alkalmazhat.
 
-A legjobb paraméterkészlet megtalálásának folyamatában négy lépés ből áll:
+A legjobb beállításhalmaz megkeresésének folyamata négy lépésből áll:
 
-1. **Adja meg a paraméterterületet:** Az algoritmusesetében először döntse el a figyelembe venni kívánt paraméterértékeket.
-2. **Adja meg a keresztérvényesítési beállításokat:** Döntse el, hogyan válassza ki az adatkészlet keresztérvényesítési hajtásait.
-3. **Adja meg a metrikát:** Döntse el, hogy milyen metrikát kell használni a legjobb paraméterek meghatározásához, például a pontossághoz, a gyöker átlagszögű négyzetes hibához, pontossághoz, visszahíváshoz vagy f-pontszámhoz.
-4. **Betanítás, kiértékelés és összehasonlítás:** A paraméterértékek minden egyes egyedi kombinációjához a keresztellenőrzést a megadott hibametrika végzi el, és azok alapján. Az értékelés és az összehasonlítás után kiválaszthatja a legjobban teljesítő modellt.
+1. **Adja meg a paraméter területét**: az algoritmushoz először döntse el, hogy pontosan milyen paramétereket szeretne figyelembe venni.
+2. **Az átellenőrzési beállítások megadása**: döntse el, hogy az adatkészlethez hogyan kell kiválasztania a több érvényesítést.
+3. **A metrika meghatározása**: döntse el, hogy melyik mérőszámot kell használni a legjobb paraméterek meghatározásához, például a pontosságot, a legfelső szintű négyzetes hibát, a pontosságot, a visszahívás vagy az f-score értékét.
+4. **Betanítási, kiértékelési és összehasonlítási**lehetőségek: a paraméterek értékeinek minden egyedi kombinációja esetén a rendszer az Ön által megadott hiba alapján hajtja végre a kereszt-érvényesítést. A kiértékelés és az összehasonlítás után kiválaszthatja a legjobban teljesítő modellt.
 
-Az alábbi képen bemutatja, hogyan érhető el ez az Azure Machine Learning Studio (klasszikus).
+Az alábbi ábrán látható, hogyan érhető el a Azure Machine Learning Studio (klasszikus).
 
-![A legjobb paraméterkészlet megkeresése](./media/algorithm-parameters-optimize/fig1.png)
+![A legjobb beállításhalmaz megkeresése](./media/algorithm-parameters-optimize/fig1.png)
 
-## <a name="define-the-parameter-space"></a>A paramétertér meghatározása
-A modell inicializálási lépésénél megadhatja a paraméterkészletet. Az összes gépi tanulási algoritmus paraméterablaktábláján két oktatómód található: *Egy paraméter* és *paramétertartomány*. Válassza a Paramétertartomány módot. Paramétertartomány módban minden paraméterhez több értéket is megadhat. A szövegmezőbe vesszővel tagolt értékeket írhat be.
+## <a name="define-the-parameter-space"></a>A paraméter területének megadása
+Megadhatja a paramétert a modell inicializálási lépése lépésnél. A gépi tanulási algoritmusok paraméter panelje két oktatói móddal rendelkezik: *egyetlen paraméter és egy* *paraméter tartománya*. Válassza a paraméter tartomány mód lehetőséget. A paraméter tartománya módban több értéket is megadhat az egyes paraméterekhez. Vesszővel tagolt értékeket is megadhat a szövegmezőben.
 
-![Kétosztályos kiemelt döntési fa, egyetlen paraméter](./media/algorithm-parameters-optimize/fig2.png)
+![Kétosztályos, megnövelt döntési fa, egyetlen paraméter](./media/algorithm-parameters-optimize/fig2.png)
 
- Másik lehetőségként megadhatja a rács maximális és minimális pontjait, valamint a **Tartományszerkesztővel**létrehozandó pontok teljes számát. Alapértelmezés szerint a paraméterértékek lineáris skálán jönnek létre. Ha azonban a **Log Scale** be van jelölve, az értékek a log léptékben jönnek létre (azaz a szomszédos pontok aránya állandó a különbség helyett). Egész paraméterekhez kötőjellel határozhat meg tartományt. Például az "1-10" azt jelenti, hogy az 1 és 10 közötti egész számok (mindkettő bezárólag) alkotják a paraméterkészletet. A vegyes mód is támogatott. Az "1-10, 20, 50" paraméterkészlet például 1–10, 20 és 50 egész számokat tartalmaz.
+ Másik lehetőségként megadhatja a rács maximális és minimális pontjait, valamint a **használati tartomány-szerkesztővel**előállított pontok teljes számát. Alapértelmezés szerint a paraméterek értékei lineáris skálán jönnek létre. Ha azonban a **naplózási skála be** van jelölve, az értékek a naplózási skálán jönnek létre (azaz a szomszédos pontok aránya állandó a különbség helyett). Az egész szám paraméterek esetében kötőjel használatával adhat meg tartományt. Például a "1-10" érték azt jelenti, hogy az 1 és 10 közötti egész szám (a kettőt is beleértve) a beállított paramétert alkotják. Vegyes mód is támogatott. Például a "1-10, 20, 50" set paraméter a következő egész számot tartalmazza: 1-10, 20 és 50.
 
-![Kétosztályos kiemelt döntési fa, paramétertartomány](./media/algorithm-parameters-optimize/fig3.png)
+![Kétosztályos növelt döntési fa, paraméter-tartomány](./media/algorithm-parameters-optimize/fig3.png)
 
-## <a name="define-cross-validation-folds"></a>Keresztérvényesítési ráncok meghatározása
-A [Partíció és a Minta][partition-and-sample] modul segítségével véletlenszerűen rendelhet idát az adatokhoz. A modul következő mintakonfigurációjában öt redőt határozunk meg, és véletlenszerűen hozzárendelünk egy hajtásszámot a mintapéldányokhoz.
+## <a name="define-cross-validation-folds"></a>Több érvényesítési hajtogatás megadása
+A [partíció és a minta][partition-and-sample] modul használatával véletlenszerűen lehet kiosztani az adategységeket. A modul következő példájának konfigurációjában öt kiosztást definiálunk, és véletlenszerűen rendelünk hozzá egy hajtogatási számot a minta példányokhoz.
 
 ![Partíció és minta](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>A metrika meghatározása
-A [Tune Model Hyperparameters][tune-model-hyperparameters] modul támogatja az empirikusan egy adott algoritmus és adatkészlet legjobb paraméterkészletének kiválasztását. A modell betanításával kapcsolatos egyéb információk mellett a modul **Tulajdonságok** ablaktáblája tartalmazza a legjobb paraméterkészlet meghatározásához szükséges metrikát is. Két különböző legördülő listával rendelkezik a besorolási és regressziós algoritmusokhoz. Ha a vizsgált algoritmus egy besorolási algoritmus, a regressziós metrika figyelmen kívül hagyja, és fordítva. Ebben a konkrét példában a metrika a **Pontosság**.   
+A [Tune Model hiperparaméterek beállítása][tune-model-hyperparameters] modul támogatást nyújt az adott algoritmus és adatkészlet legjobb paramétereinek kiválasztásához. A modell betanításával kapcsolatos egyéb információk mellett a modul **Tulajdonságok** ablaktáblája tartalmazza a mérőszámot, amely meghatározza a legjobb paraméter-készletet. Két különböző legördülő listát tartalmaz a besorolási és regressziós algoritmusokhoz. Ha a megfontolás alatt álló algoritmus egy besorolási algoritmus, a regressziós metrika figyelmen kívül lesz hagyva, és fordítva. Ebben az adott példában a metrika **pontossággal**van elfoglalva.   
 
-![Söprési paraméterek](./media/algorithm-parameters-optimize/fig5.png)
+![Megtakarítási paraméterek](./media/algorithm-parameters-optimize/fig5.png)
 
-## <a name="train-evaluate-and-compare"></a>Vonat, értékelés és összehasonlítás
-Ugyanaz [a Tune Model Hyperparameters][tune-model-hyperparameters] modul betanítja az összes modellt, amely megfelel a paraméterkészletnek, kiértékeli a különböző metrikákat, majd létrehozza a legjobban betanított modellt a kiválasztott metrika alapján. Ez a modul két kötelező bemenettel rendelkezik:
+## <a name="train-evaluate-and-compare"></a>Képzések betanítása, kiértékelése és összehasonlítása
+Ugyanez a [hiperparaméterek beállítása][tune-model-hyperparameters] -modul az összes olyan modellt betanítja, amelyek megfelelnek a beállított paramétereknek, kiértékeli a különböző metrikákat, majd a kiválasztott mérőszám alapján létrehoz egy legjobban képzett modellt. Ez a modul két kötelező bemenettel rendelkezik:
 
-* A képzetlen tanuló
+* A nem betanított tanuló
 * Az adatkészlet
 
-A modul is rendelkezik egy opcionális adatkészlet bemenet. Csatlakoztassa az adatkészletet a hajtásadatokkal a kötelező adatkészlet-bevitelhez. Ha az adatkészlet hez nincs hozzárendelve hajtásinformáció, akkor alapértelmezés szerint a rendszer automatikusan végrehajtja a 10-szeres keresztérvényesítést. Ha a hajtás-hozzárendelés nem történik meg, és egy érvényesítési adatkészlet et biztosít a választható adatkészletport, majd egy betanítási-teszt módot választ, és az első adatkészletet használja a modell betanításához minden paraméterkombinációhoz.
+A modul is tartalmaz egy opcionális adatkészlet-bemenetet. Kapcsolja össze az adathalmazt a betöltési információkkal a kötelező adatkészlet-bemenethez. Ha az adatkészlet nem kap semmilyen hajtogatási információt, a rendszer alapértelmezés szerint automatikusan végrehajtja a 10 szoros átellenőrzést. Ha a fold-hozzárendelés nem lett elvégezve, és egy érvényesítési adatkészlet van megadva a választható adatkészlet-porton, akkor a rendszer kijelöl egy vonat-tesztelési módot, és az első adatkészletet használja a modell betanításához az egyes paraméterek kombinációjára.
 
-![Kiemelt döntési faosztályozó](./media/algorithm-parameters-optimize/fig6a.png)
+![Megnövelt döntési fa osztályozó](./media/algorithm-parameters-optimize/fig6a.png)
 
-A modell ezután kiértékeli az érvényesítési adatkészletet. A modul bal oldali kimeneti portja különböző metrikákat jelenít meg a paraméterértékek függvényeiként. A megfelelő kimeneti port adja a betanított modell, amely megfelel a legjobban teljesítő modell szerint a kiválasztott metrika (**pontosság** ebben az esetben).  
+Ezt követően a modell kiértékelése az ellenőrzési adatkészlet alapján történik. A modul bal oldali kimeneti portja különböző mérőszámokat jelenít meg a paraméterek értékeinek függvényében. A megfelelő kimeneti port biztosítja a betanított modellt, amely megfelel a legjobban teljesítő modellnek a kiválasztott metrika (ebben az esetben a**pontosság** ) szerint.  
 
-![Érvényesítési adatkészlet](./media/algorithm-parameters-optimize/fig6b.png)
+![Ellenőrzési adatkészlet](./media/algorithm-parameters-optimize/fig6b.png)
 
-A megfelelő kimeneti port megjelenítésével megtekintheti a kiválasztott pontos paramétereket. Ez a modell használható egy tesztkészlet vagy egy működőképes webszolgáltatás mentés után egy betanított modell.
+A pontos paramétereket a megfelelő kimeneti port megjelenítésével lehet megtekinteni. Ez a modell egy tesztelési készletben vagy egy működőképes webszolgáltatásban használható a betanított modellként való mentés után.
 
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/

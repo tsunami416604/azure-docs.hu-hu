@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services Def. NetworkTrafficRules séma | Microsoft dokumentumok
-description: Ismerje meg a NetworkTrafficRules, amely korlátozza a szerepkörök, amelyek hozzáférhetnek a belső végpontok egy szerepkör. Egy szolgáltatásdefiníciós fájlszerepkörökkel kombinálva.
+title: Azure Cloud Services def. NetworkTrafficRules séma | Microsoft Docs
+description: Ismerje meg a NetworkTrafficRules, amely korlátozza azokat a szerepköröket, amelyek hozzáférhetnek egy szerepkör belső végpontokhoz. Egy szolgáltatás-definíciós fájlban lévő szerepkörökkel kombinálja.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,22 +14,22 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534728"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Az Azure Cloud Services definíciója HálózatiTrafficRules séma
-A `NetworkTrafficRules` csomópont a szolgáltatásdefiníciós fájl egy választható eleme, amely meghatározza, hogy a szerepkörök hogyan kommunikálnak egymással. Korlátozza, hogy mely szerepkörök férhetnek hozzá az adott szerepkör belső végpontjaihoz. Az `NetworkTrafficRules` nem önálló elem; egy szolgáltatásdefiníciós fájlban két vagy több szerepkörrel kombinálódik.
+# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules séma
+A `NetworkTrafficRules` csomópont egy opcionális elem a szolgáltatás-definíciós fájlban, amely megadja, hogy a szerepkörök hogyan kommunikáljanak egymással. Ez korlátozza, hogy mely szerepkörök férhetnek hozzá az adott szerepkör belső végpontjaihoz. A `NetworkTrafficRules` nem önálló elem; egy szolgáltatás-definíciós fájl két vagy több szerepkörével együtt.
 
-A szolgáltatásdefiníciós fájl alapértelmezett kiterjesztése .csdef.
+A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
 
 > [!NOTE]
->  A `NetworkTrafficRules` csomópont csak az Azure SDK 1.3-as vagy újabb verziójával érhető el.
+>  A `NetworkTrafficRules` csomópont csak az Azure SDK 1,3-es vagy újabb verziójának használatával érhető el.
 
-## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Alapvető szolgáltatásdefiníciós séma a hálózati forgalmi szabályokhoz
-A hálózati forgalom definícióit tartalmazó szolgáltatásdefiníciós fájl alapformátuma a következő.
+## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Alapszintű szolgáltatás-definíciós séma a hálózati forgalom szabályaihoz
+A hálózati forgalmi definíciókat tartalmazó szolgáltatási definíciós fájlok alapformátuma a következő.
 
 ```xml
 <ServiceDefinition …>
@@ -47,14 +47,14 @@ A hálózati forgalom definícióit tartalmazó szolgáltatásdefiníciós fájl
 </ServiceDefinition>
 ```
 
-## <a name="schema-elements"></a>Sémaelemek
-A `NetworkTrafficRules` szolgáltatásdefiníciós fájl csomópontja tartalmazza ezeket az elemeket, amelyeket a témakör későbbi szakaszai részletesen ismertetett:
+## <a name="schema-elements"></a>Séma elemei
+A `NetworkTrafficRules` szolgáltatás definíciós fájljának csomópontja tartalmazza ezeket az elemeket, amelyeket a jelen témakör következő részeiben talál:
 
 [NetworkTrafficRules elem](#NetworkTrafficRules)
 
 [OnlyAllowTrafficTo elem](#OnlyAllowTrafficTo)
 
-[Úti célok elem](#Destinations)
+[Célhelyek elem](#Destinations)
 
 [RoleEndpoint elem](#RoleEndpoint)
 
@@ -65,41 +65,41 @@ AllowAllTraffic elem
 [FromRole elem](#FromRole)
 
 ##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules elem
-Az `NetworkTrafficRules` elem határozza meg, hogy mely szerepkörök kommunikálhatnak egy másik szerepkör melyik végpontjával. Egy szolgáltatás egy `NetworkTrafficRules` definíciót tartalmazhat.
+Az `NetworkTrafficRules` elem határozza meg, hogy mely szerepkörök kommunikálhatnak egymással egy másik szerepkörhöz tartozó végponttal. Egy szolgáltatás egy `NetworkTrafficRules` definíciót is tartalmazhat.
 
 ##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo elem
-Az `OnlyAllowTrafficTo` elem a célvégpontok és a velük kommunikáló szerepkörök gyűjteményét írja le. Több `OnlyAllowTrafficTo` csomópontot is megadhat.
+Az `OnlyAllowTrafficTo` elem ismerteti a cél végpontok gyűjteményét, valamint azokat a szerepköröket, amelyek kommunikálni tudnak velük. Több `OnlyAllowTrafficTo` csomópontot is megadhat.
 
-##  <a name="destinations-element"></a><a name="Destinations"></a>Úti célok elem
-Az `Destinations` elem a RoleEndpoints gyűjteményét írja le, mint amivel kommunikálható.
+##  <a name="destinations-element"></a><a name="Destinations"></a>Célhelyek elem
+Az `Destinations` elem a RoleEndpoints gyűjteményét írja le, amely a használatával kommunikálhat.
 
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint elem
-Az `RoleEndpoint` elem egy szerepkör végpontját írja le, amely lehetővé teszi a kommunikációt. Több `RoleEndpoint` elemet is megadhat, ha egynél több végpont van a szerepkörben.
+Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, amely lehetővé teszi a kommunikációt a szolgáltatással. Több `RoleEndpoint` elemet is megadhat, ha a szerepkörhöz több végpont is van.
 
 | Attribútum      | Típus     | Leírás |
 | -------------- | -------- | ----------- |
-| `endpointName` | `string` | Kötelező. Annak a végpontnak a neve, amelybe a forgalmat engedélyezni szeretné.|
-| `roleName`     | `string` | Kötelező. A kommunikációt engedélyezni lehetővé lehetővé.|
+| `endpointName` | `string` | Kötelező. Annak a végpontnak a neve, amely engedélyezi a forgalmat.|
+| `roleName`     | `string` | Kötelező. Annak a webes szerepkörnek a neve, amely lehetővé teszi a kommunikációt.|
 
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic elem
-Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, `Destinations` hogy minden szerepkör kommunikáljon a csomópontban meghatározott végpontokkal.
+Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, hogy az összes szerepkör kommunikáljon a `Destinations` csomópontban definiált végpontokkal.
 
 ##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource elem
-Az `WhenSource` elem a szerepkörök gyűjteményét írja le, mint `Destinations` a csomópontban definiált végpontokkal való kommunikáció.
+Az `WhenSource` elem olyan szerepkörök gyűjteményét írja le, amelyek nem tudnak kommunikálni a `Destinations` csomópontban definiált végpontokkal.
 
 | Attribútum | Típus     | Leírás |
 | --------- | -------- | ----------- |
-| `matches` | `string` | Kötelező. Megadja a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes `AnyRule`érték jelenleg .|
+| `matches` | `string` | Kötelező. Meghatározza a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes érték jelenleg `AnyRule`.|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole elem
-Az `FromRole` elem határozza meg azokat a szerepköröket, `Destinations` amelyek kommunikálhatnak a csomópontban definiált végpontokkal. Több `FromRole` elemet is megadhat, ha egynél több olyan szerepkör van, amely képes kommunikálni a végpontokkal.
+Az `FromRole` elem meghatározza azokat a szerepköröket, amelyek kommunikálhatnak a `Destinations` csomópontban definiált végpontokkal. Több `FromRole` elemet is megadhat, ha több olyan szerepkör is van, amely képes kommunikálni a végpontokkal.
 
 | Attribútum  | Típus     | Leírás |
 | ---------- | -------- | ----------- |
-| `roleName` | `string` | Kötelező. A kommunikációt engedélyező szerepkör neve.|
+| `roleName` | `string` | Kötelező. Annak a szerepkörnek a neve, amelyről engedélyezni szeretné a kommunikációt.|
 
 ## <a name="see-also"></a>Lásd még:
-[Felhőszolgáltatás (klasszikus) definícióséma](schema-csdef-file.md)
+[Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md)
 
 
 

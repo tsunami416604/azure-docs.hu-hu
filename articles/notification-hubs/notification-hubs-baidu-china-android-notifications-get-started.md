@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536989"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
@@ -39,10 +39,10 @@ Az oktatóanyaghoz a következőkre lesz szükség:
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
 
-Első lépésekhez tegye a következőket:
+Első lépésként tegye a következőket:
 
-1. Hozzon létre egy Baidu fiókot.
-2. Hozzon létre egy Baidu felhőleküldéses projektet, és jegyezze fel az API-kulcsot és a titkos kulcsot.
+1. Hozzon létre egy Baidu-fiókot.
+2. Hozzon létre egy felhőalapú Baidu-értesítés projektet, és jegyezze fel az API-kulcsot és a titkos kulcsot.
 
 ## <a name="configure-a-new-notification-hub"></a>Új értesítési központ konfigurálása
 
@@ -68,7 +68,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 
 2. Adjon meg egy alkalmazásnevet, és győződjön meg arról, hogy a Minimum Required SDK (minimális SDK-követelmény) verziószáma API 16: Android 4.1. **Győződjön meg arról is, hogy a csomagnév (应用包名) megegyezik a felhőalapú Baidu-értesítési portálon szereplővel**
 
-    ![Azure értesítési központok – Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure értesítési központok – Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Kattintson a Next (Tovább) gombra, majd folytassa a varázsló használatát, amíg a Create Activity (Tevékenység létrehozása) ablak meg nem jelenik. Győződjön meg arról, hogy az Empty Activity (Üres tevékenység) lehetőség van kiválasztva, majd válassza a Finish (Befejezés) lehetőséget egy új Android-alkalmazás létrehozásához.
 
@@ -93,7 +93,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
     }
     ```
 
-    A Lista ütközés elkerülése érdekében adja hozzá `Manifest.xml` a következő kódot a projekt fájljába:
+    A lista ütközésének elkerülése érdekében adja hozzá a következő kódot a projekt `Manifest.xml` fájljában:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -112,11 +112,11 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 
     ![Azure Notification Hubs – Baidu SDK kódtárak](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. A projekt mappájában `libs` kattintson a `pushervice-x.y.z.jar` jobb gombbal a fájlra; válassza a **Hozzáadás tárként** jelölőnégyzetet, ha a műsortárat is beszeretné tenni a projektbe.
+7. A projekt `libs` mappájában kattintson a jobb gombbal a `pushervice-x.y.z.jar` fájlra; Válassza a **Hozzáadás könyvtárként** lehetőséget, hogy a könyvtár a projektben is legyen.
 
     ![Azure Notification Hubs – Baidu, hozzáadás kódtárként](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Nyissa meg az `AndroidManifest.xml` Android-projekt fájlját, és adja hozzá a Baidu SDK által igényelt engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
+8. Nyissa meg az Android `AndroidManifest.xml` -projekt fájlját, és adja hozzá a Baidu SDK számára szükséges engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -425,7 +425,7 @@ Az egyszerűség kedvéért ez az oktatóanyag konzolalkalmazással mutatja be, 
 Íme néhány megközelítés az értesítések küldéséhez:
 
 * **REST-felület**: A [REST-felület](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja az értesítéseket.
-* **Microsoft Azure Notification Hubs .NET SDK**: A Nuget Csomagkezelő a Visual Studio számára futtatása a [Microsoft.Azure.NotificationHubs telepítési csomag futtatása.](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
+* **Microsoft Azure Notification Hubs .net SDK**: a Visual studióhoz készült Nuget csomagkezelő segédprogramban futtassa a [Microsoft. Azure. NotificationHubs Install-Package csomagot](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 * **Node.js**: [A Notification Hubs használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: A [Leküldéses értesítések hozzáadása Mobile Apps-alkalmazáshoz](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) témakörben találhat példát arra, hogy hogyan küldhetők értesítések a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttéralkalmazásból.
 * **Java/PHP**: „A Notification Hubs használata Javából/PHP-ből” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) témakörben találhat példát arra, hogyan küldhetők értesítések a REST API-k használatával.
@@ -485,5 +485,5 @@ Tesztértesítést az [Azure Portal] hibakeresési lapjáról küldhet. Ha a .NE
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure-portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

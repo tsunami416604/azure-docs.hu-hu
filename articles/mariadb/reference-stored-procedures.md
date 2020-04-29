@@ -1,48 +1,48 @@
 ---
-title: Tárolt eljárások kezelése – Azure-adatbázis a MariaDB-hez
-description: Ismerje meg, hogy mely tárolt eljárások at Azure Database for MariaDB hasznos az adatok replikációjának konfigurálásához, az időzóna beállításához és a lekérdezések leállításához.
+title: Felügyeleti tárolt eljárások – Azure Database for MariaDB
+description: Megtudhatja, hogy az Azure Database for MariaDB tárolt eljárásai hasznosak-e az adatreplikáció konfigurálásához, az időzóna és a lekérdezési lekérdezések megadásához.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529990"
 ---
-# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB management tárolt eljárások
+# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB felügyelet tárolt eljárásai
 
-A tárolt eljárások elérhetők az Azure Database for MariaDB-kiszolgálókon a MariaDB-kiszolgáló kezeléséhez. Ez magában foglalja a kiszolgáló kapcsolatainak, lekérdezéseinek és az adatreplikáció beállításának kezelését.  
+A tárolt eljárások Azure Database for MariaDB-kiszolgálókon érhetők el a MariaDB-kiszolgáló kezelésének elősegítése érdekében. Ide tartozik a kiszolgáló kapcsolatainak kezelése, a lekérdezések és a felhőbe irányuló replikálás beállítása.  
 
-## <a name="data-in-replication-stored-procedures"></a>Tárolt adatreplikációs eljárások
+## <a name="data-in-replication-stored-procedures"></a>Tárolt eljárások felhőbe irányuló replikálás
 
 A beérkező adatokra épülő replikáció lehetővé teszi, hogy szinkronizálja egy helyszínen, virtuális gépeken vagy más felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatásokban futó MariaDB-kiszolgáló adatait az Azure Database for MariaDB-szolgáltatásba.
 
-A következő tárolt eljárások segítségével állítsa be vagy távolítsa el a replikát és a kópia közötti adatreplikációt.
+A következő tárolt eljárások a főkiszolgálók és a replikák közötti felhőbe irányuló replikálás beállítására és eltávolítására szolgálnak.
 
-|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati megjegyzés**|
+|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N/A|Az SSL-módban történő adatátvitelhez adja át a hitelesítésszolgáltatói tanúsítvány környezetét a master_ssl_ca paraméterbe. </br><br>Ha SSL nélküli adatátvitelhez üres karakterláncot szeretne átadni a master_ssl_ca paraméterbe.|
-|*mysql.az_replication _start*|N/A|N/A|Elindítja a replikációt.|
-|*mysql.az_replication _stop*|N/A|N/A|Leállítja a replikációt.|
-|*mysql.az_replication _remove_master*|N/A|N/A|Eltávolítja a főkiszolgáló és a replika közötti replikációs kapcsolatot.|
-|*mysql.az_replication_skip_counter*|N/A|N/A|Kihagy egy replikációs hibát.|
+|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N/A|Az adatok SSL-móddal történő átviteléhez adja át a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezetét a master_ssl_ca paraméternek. </br><br>Az adatok SSL nélküli átviteléhez adjon meg egy üres karakterláncot a master_ssl_ca paraméternek.|
+|*MySQL. az_replication _start*|N/A|N/A|Elindítja a replikálást.|
+|*MySQL. az_replication _stop*|N/A|N/A|Leállítja a replikálást.|
+|*MySQL. az_replication _remove_master*|N/A|N/A|Eltávolítja a replikálási kapcsolatot a fő és a replika között.|
+|*MySQL. az_replication_skip_counter*|N/A|N/A|Egy replikációs hiba kihagyása.|
 
-A főkiszolgáló és a kópia közötti adatreplikáció beállításához olvassa el az Adatreplikáció konfigurálását az Azure Database for [MariaDB-ben.](howto-data-in-replication.md)
+A Azure Database for MariaDB a Master és a replika közötti felhőbe irányuló replikálás beállításához tekintse meg a [felhőbe irányuló replikálás konfigurálását ismertető témakört](howto-data-in-replication.md).
 
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
-A következő tárolt eljárások érhetők el az Azure Database for MariaDB a kiszolgáló kezeléséhez.
+A következő tárolt eljárások érhetők el Azure Database for MariaDB a kiszolgáló kezeléséhez.
 
-|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati megjegyzés**|
+|**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*mysql.az_kill*|processlist_id|N/A|Egyenértékű [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) a parancs. Megszakítja a megadott processlist_id kapcsolódó kapcsolatot a kapcsolat által futtatott bármely utasítás megszüntetése után.|
-|*mysql.az_kill_query*|processlist_id|N/A|Egyenértékű [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) a parancs. Megszakítja a kapcsolat által jelenleg végrehajtó utasítást. Életben hagyja magát a kapcsolatot.|
-|*mysql.az_load_timezone*|N/A|N/A|Időzóna-táblák betöltése, hogy a `time_zone` paraméter elnevezett értékekre legyen állítva (pl. "US/Pacific").|
+|*MySQL. az_kill*|processlist_id|N/A|Egyenértékű a [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja a megadott processlist_idhoz társított kapcsolatokat, miután leállította a kapcsolatok végrehajtásának utasításait.|
+|*MySQL. az_kill_query*|processlist_id|N/A|Egyenértékű a [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
+|*MySQL. az_load_timezone*|N/A|N/A|Betölti az időzóna-táblákat, hogy a `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
 
 ## <a name="next-steps"></a>További lépések
-- Az [adatreplikáció](howto-data-in-replication.md) beállítása
-- Az [időzóna-táblák](howto-server-parameters.md#working-with-the-time-zone-parameter) használatának elsajátítása
+- További információ a [felhőbe irányuló replikálás](howto-data-in-replication.md) beállításáról
+- Az [időzóna-táblázatok](howto-server-parameters.md#working-with-the-time-zone-parameter) használatának ismertetése

@@ -14,58 +14,58 @@ ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
 ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481959"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
 > [!TIP]
-> 2020 márciusától az Azure Security Center identitás- és hozzáférési javaslatai az ingyenes tarifacsomag összes előfizetésében megtalálhatók. Ha előfizetései vannak az ingyenes szinten, a rendszer érinti a biztonságos pontszámukat, mivel korábban nem értékelték őket identitásuk és hozzáférésük biztonsága miatt. 
+> Március 2020-én a Azure Security Center identitás-és hozzáférési javaslatai szerepelnek az ingyenes díjszabási szinten található összes előfizetésben. Ha van előfizetése az ingyenes szinten, a rendszer a biztonságos pontszámot fogja érinteni, mivel azokat korábban nem értékelték a személyazonosságuk és a hozzáférésük biztonsága szempontjából. 
 
-Amikor a Security Center potenciális biztonsági réseket azonosít, javaslatokat készít, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán az erőforrások megkeményedése és védelme érdekében.
+Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-A biztonsági határ hálózatpereméről identitáshatárra változott. A biztonság kevésbé szól a hálózat védelméről, hanem az adatok védelméről, valamint az alkalmazások és felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
+A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. A biztonság kevesebb információt nyújt a hálózat védelméről és az adatai védelméről, valamint az alkalmazások és a felhasználók biztonságának kezeléséről. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
 
-Az identitáskezelési tevékenységek figyelésével proaktív műveleteket tehet az incidens előtt, vagy reaktív műveleteket tehet a támadási kísérlet leállításához. Például a Security Center megjelölheti elavult fiókok (fiókok, amelyek már nincs szükség, és blokkolja a bejelentkezést az Azure Active Directory) az eltávolítás. 
+Az Identity tevékenységek figyelésével proaktív műveleteket hajthat végre az incidensek megkezdése előtt, vagy a támadási kísérlet leállítására irányuló reaktív műveletekkel. Előfordulhat például, hogy Security Center elavult fiókokat (fiókokat, amelyek már nem szükségesek, és Azure Active Directory) való bejelentkezéskor blokkolva van. 
 
-Példák az Azure Security Center **identitás- és** hozzáférés-erőforrás-biztonsági szakaszában látható javaslatokra:
+Példák a Azure Security Center az **identitás és hozzáférés erőforrás-** biztonság szakaszában esetlegesen megjelenő javaslatokra:
 
-- Az MFA-t engedélyezni kell az előfizetéstulajdonosi engedélyekkel rendelkező fiókokban
+- Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
-- Az olvasási engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az elavult fiókokat el kell távolítani az előfizetésből
 
-Ezekről a javaslatokról, valamint az itt látható javaslatok teljes listájáról az [Identitás- és hozzáférési javaslatok című témakörben olvashat](recommendations-reference.md#recs-identity)bővebben.
+A javaslatokkal kapcsolatos további információkért, valamint az itt megjelenő javaslatok teljes listájáért tekintse meg az [identitás-és hozzáférési javaslatok](recommendations-reference.md#recs-identity)című témakört.
 
 > [!NOTE]
-> Ha az előfizetés több mint 600 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitásjavaslatokat az előfizetésen. A nem futtatott javaslatok az alábbi "nem elérhető értékelések" alatt találhatók.
-A Security Center nem tudja futtatni az identitásjavaslatokat egy felhőszolgáltató (CSP) partner felügyeleti ügynökei ellen.
+> Ha az előfizetése több mint 600-fiókkal rendelkezik, Security Center nem tudja futtatni az identitással kapcsolatos ajánlásokat az előfizetésében. A nem futtatott javaslatok az alábbi "nem elérhető értékelések" alatt találhatók.
+A Security Center nem tudja futtatni az identitásra vonatkozó javaslatokat a Cloud Solution Provider (CSP) partner rendszergazdai ügynökeit.
 >
 
 
-Az identitás- és hozzáférési javaslatok mindegyike a **Javaslatok** lap két biztonsági vezérlőjében érhető el:
+Az összes identitási és hozzáférési javaslat a **javaslatok** oldalon két biztonsági vezérlőn belül érhető el:
 
 - Hozzáférés és engedélyek kezelése 
 - MFA engedélyezése
 
-![A két biztonsági ellenőrzés az identitásra és a hozzáférésre vonatkozó ajánlásokkal](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
+![A két biztonsági ellenőrzés az identitással és hozzáféréssel kapcsolatos javaslatokkal](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
 
-## <a name="enable-multi-factor-authentication-mfa"></a>Többtényezős hitelesítés engedélyezése (MFA)
+## <a name="enable-multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA) engedélyezése
 
-Az MFA engedélyezéséhez [az Azure Active Directory (AD) bérlői engedélyei](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)re van szükség. 
+Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)szükségesek. 
 
-- Ha az AD prémium kiadása van, engedélyezze az MFA-t [feltételes hozzáféréssel.](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- Ha prémium szintű AD-kiadással rendelkezik, a [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)használatával engedélyezze az MFA-t.
 
-- Az AD ingyenes kiadás felhasználói engedélyezhetik a **biztonsági alapértelmezett beállításokat** az Azure Active Directoryban az [AD dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) leírtak szerint, de a Security Center mfa engedélyezésére vonatkozó javaslat továbbra is megjelenik.
+- Az AD Free Edition felhasználói az [ad-dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) leírtak szerint engedélyezhetik a Azure Active Directory **biztonsági alapértelmezéseit** , de az MFA engedélyezésére vonatkozó Security Center-javaslat továbbra is megjelenik.
 
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a más Azure-erőforrástípusokra vonatkozó javaslatokról, olvassa el az alábbi cikkeket:
+Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:
 
 - [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-- [Az Azure SQL-szolgáltatás és az adatok védelme az Azure Security Centerben](security-center-sql-service-recommendations.md)
+- [Az Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md)

@@ -1,33 +1,33 @@
 ---
-title: Kiszolgáló újraindítása - Azure CLI - Azure Database for MySQL
-description: Ez a cikk ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL-kiszolgáló az Azure CLI használatával.
+title: Kiszolgáló újraindítása – Azure CLI – Azure Database for MySQL
+description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL kiszolgálót az Azure CLI használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c1fd688fbfd892e3d0dfc3ebb1712dd931e0ed39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063505"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Indítsa újra a MySQL-kiszolgáló Azure-adatbázisát az Azure CLI használatával
-Ez a témakör azt ismerteti, hogyan indíthatja újra az Azure Database for MySQL-kiszolgálót. Előfordulhat, hogy karbantartási okokból újra kell indítania a kiszolgálót, ami rövid leállást okoz, mivel a kiszolgáló végrehajtja a műveletet.
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Azure Database for MySQL kiszolgáló újraindítása az Azure CLI használatával
+Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MySQL-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
 
-A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Például a szolgáltatás lehet, hogy egy korábban kért műveletet dolgoz fel, például a virtuális magok méretezése.
+A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Előfordulhat például, hogy a szolgáltatás feldolgoz egy korábban kért műveletet, például a skálázási virtuális mag.
 
-Az újraindítás befejezéséhez szükséges idő a MySQL helyreállítási folyamatátattól függ. Az újraindítási idő csökkentése érdekében azt javasoljuk, hogy minimalizálja a kiszolgálón az újraindítás előtt előforduló tevékenység mennyiségét.
+Az újraindítás befejezéséhez szükséges idő a MySQL helyreállítási folyamattól függ. Az újraindítási idő csökkentése érdekében javasoljuk, hogy csökkentse a kiszolgálón előforduló tevékenységek mennyiségét az újraindítás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató befejezéséhez a következőkre van szükség:
-- [Azure-adatbázis a MySQL-kiszolgálóhoz](quickstart-create-server-up-azure-cli.md)
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for MySQL-kiszolgáló](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Ez az útmutató megköveteli, hogy az Azure CLI 2.0-s vagy újabb verzióját használja. A verzió megerősítéséhez írja be az Azure `az --version`CLI parancssorába a . A telepítéshez vagy frissítéshez olvassa [el az Azure CLI telepítése]( /cli/azure/install-azure-cli)című témakört.
+> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában adja meg `az --version`a következőt:. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 
 ## <a name="restart-the-server"></a>Kiszolgáló újraindítása
@@ -40,4 +40,4 @@ az mysql server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [a paraméterek beállításáról az Azure Database for MySQL-ben](howto-configure-server-parameters-using-cli.md)
+Útmutató [Paraméterek beállításához a Azure Database for MySQL](howto-configure-server-parameters-using-cli.md)

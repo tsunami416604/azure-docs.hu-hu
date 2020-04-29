@@ -1,6 +1,6 @@
 ---
-title: Nagyítási szintek és mozaikrács | Microsoft Azure Maps
-description: Ebben a cikkben a Microsoft Azure Maps nagyítási szintjeiről és csemperácsáról olvashat.
+title: Nagyítási szintek és csempék rácsa | Microsoft Azure térképek
+description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 01/22/2020
@@ -9,68 +9,68 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530291"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
-Az Azure Maps a gömb mercator vetítési koordináta-rendszert (EPSG: 3857) használja. A vetület az a matematikai modell, amely a gömbgömbet egy lapos térképté alakítja. A Gömb mercator vetülete a pólusoknál lévő térképet egy négyzetalakú térkép létrehozásához nyújtja. Ez a vetület jelentősen torzítja a térkép léptékét és területének méretét, de két fontos tulajdonsága van, amelyek meghaladják ezt a torzítást:
+Azure Maps használja a gömb Mercator vetítési koordináta-rendszerrel (EPSG: 3857). A kivetítés az a matematikai modell, amellyel a gömb alakú földgömb átalakítható egy egyszerű térképre. A gömb Mercator-vetítése a pólusok térképét kiterjesztve egy szögletes térképet hoz létre. Ez a kivetítés jelentősen torzítja a Térkép méretét és területét, de két fontos tulajdonsága van, amely meghaladja a torzítást:
 
-- Ez egy konform vetület, ami azt jelenti, hogy megőrzi a viszonylag kis tárgyak alakját. A kis tárgyak alakjának megőrzése különösen fontos a légi felvételek megjelenítésekor. Például el akarjuk kerülni az épületek alakjának torzítását. A négyzetes épületeknek négyzet alakúnak kell lenniük, nem téglalap alakúnak.
-- Ez egy hengeres kivetítés. Észak és dél mindig fel és le, és a nyugati és a keleti mindig balra és jobbra. 
+- Ez egy megfelelőségi vetület, ami azt jelenti, hogy megőrzi a viszonylag kis objektumok alakját. A kis objektumok alakjának megőrzése különösen fontos a légi felvételek megjelenítésekor. Tegyük fel például, hogy el szeretné kerülni az épületek alakjának torzítását. A négyzet alakú épületeknek szögletesnek kell lenniük, nem derékszögben.
+- Ez egy hengeres kivetítés. Az Észak-és Dél-a mindig felfelé és lefelé, a nyugati és a keleti régió pedig mindig balra és jobbra van. 
 
-A térképvisszakeresés és -megjelenítés teljesítményének optimalizálása érdekében a térkép négyzetalakú csempékre van osztva. Az Azure Maps SDK 512 x 512 képpont méretű, a műholdas képekhez pedig kisebb, 256 x 256 képpont méretű csempéket használ. Az Azure Maps raszteres és vektorcsempéket biztosít 23, 0 és 22 között számozott nagyítási szinthez. A 0-s nagyítási szinten az egész világ egyetlen csempére illeszkedik:
-
-<center>
-
-![Világtérkép csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
-
-Zoom szinten 1 használ négy csempe teszi a világot: a 2 x 2 négyzet
+A Térkép lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a Térkép szögletes csempére van osztva. A Azure Maps SDK olyan csempét használ, amelynek mérete 512 x 512 képpont, valamint kisebb 256 x 256 képpont a műholdas képekhez. A Azure Maps raszteres és vektoros csempéket biztosít 23 nagyítási szinthez, 0 és 22 közötti számmal. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik:
 
 <center>
 
-![2x2 térképcsempe elrendezése](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+![Globális Térkép csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
-Minden további nagyítási szint négyválasztja el az előző csempéit, és 2 zoom x 2<sup>nagyításból</sup> álló rácsot hoz létre.<sup>zoom</sup> Zoom szint 22 egy rács 2<sup>22</sup> x 2<sup>22</sup>, vagy 4.194.304 x 4.194.304 csempe (17.592.186.044.416 csempe összesen).
+A nagyítási szint 1 négy csempét használ a világ megjelenítéséhez: 2 x 2 négyzet
 
-Az Azure Maps interaktív térképvezérlők webes és Android-alapú támogatja a 25 nagyítási szint, számozott 0-24. Bár az útadatok csak akkor lesznek elérhetők a nagyítási szinteken, amikor a csempék rendelkezésre állnak.
+<center>
 
-Az alábbi táblázat az 512 képpont négyzetes színszögű nagyítási szintek értékeinek teljes listáját tartalmazza:
+![2x2-es Térkép csempe elrendezése](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-|Nagyítási szint|Méter/képpont|Méter/csempe oldala|
+Minden további nagyítási szint quad – elosztja az előző csempéket, és létrehoz egy 2.<sup>zoom</sup> x 2<sup>nagyítású</sup>rácsot. A 22-es nagyítási szint a 2<sup>22</sup> x 2<sup>22</sup>vagy 4 194 304 x 4 194 304 csempe (17 592 186 044 416 csempék összesen).
+
+Azure Maps a web és Android rendszerhez készült interaktív térkép-vezérlőelemek 25 nagyítási szintet (0 – 24) támogatnak. Bár a közúti adatmennyiség csak a csempék elérhető nagyítási szintjein lesz elérhető.
+
+Az alábbi táblázat a nagyítási szintek azon értékeinek teljes listáját tartalmazza, amelyekben a csempe mérete 512 képpont:
+
+|Nagyítási szint|Mérőműszer/képpont|Méter/csempe oldal|
 |--- |--- |--- |
 |0|156543|40075008|
-|1|78271.5|20037504|
-|2|39135.8|10018764.8|
-|3|19567.9|5009382.4|
-|4|9783.9|2504678.4|
+|1|78271,5|20037504|
+|2|39135,8|10018764,8|
+|3|19567,9|5009382,4|
+|4|9783,9|2504678,4|
 |5|4892|1252352|
 |6|2446|626176|
 |7|1223|313088|
-|8|611.5|156544|
-|9|305.7|78259.2|
-|10|152.9|39142.4|
-|11|76.4|19558.4|
-|12|38.2|9779.2|
-|13|19.1|4889.6|
-|14|9.6|2457.6|
-|15|4.8|1228.8|
-|16|2.4|614.4|
-|17|1.2|307.2|
-|18|0,6|152.8|
-|19|0.3|76.4|
-|20|0,15|38.2|
-|21|0.075|19.1|
-|22|0.0375|9.55|
-|23|0.01875|4.775|
-|24|0.009375|2.3875|
+|8|611,5|156544|
+|9|305,7|78259,2|
+|10|152,9|39142,4|
+|11|76,4|19558,4|
+|12|38,2|9779,2|
+|13|19,1|4889,6|
+|14|9.6|2457,6|
+|15|4,8|1228,8|
+|16|2.4|614,4|
+|17|1.2|307,2|
+|18|0,6|152,8|
+|19|0.3|76,4|
+|20|0,15|38,2|
+|21|0,075|19,1|
+|22|0,0375|9,55|
+|23|0,01875|4,775|
+|24|0,009375|2,3875|
 
-## <a name="pixel-coordinates"></a>Képpont koordináták
+## <a name="pixel-coordinates"></a>Képpontok koordinátái
 
-Miután kiválasztottuk a vetítést és a skálát, hogy minden nagyítási szinten használhassuk, a földrajzi koordinátákat pixel koordinátákká alakíthatjuk. A világ térképképének teljes képpontszélességét és magasságát a következőképpen számítja ki a program:
+Miután kiválasztotta a kivetítést és a méretezést, amelyet minden nagyítási szinten használni szeretne, a földrajzi koordinátákat képpontos koordinátákba alakíthatja. Egy adott nagyítási szinthez tartozó Térkép képének teljes képpont szélességét és magasságát a következőképpen számítjuk ki:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -78,15 +78,15 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Mivel a térkép szélessége és magassága minden nagyítási szinten eltérő, a képpontkoordináták is eltérőek. A térkép bal felső sarkában lévő képpontbal mindig pixelkoordinátákat (0, 0) rendelkezik. A térkép jobb alsó sarkában lévő képpont képpontkoordinátákat *(szélesség-1, magasság-1)* vagy az előző szakasz egyenleteire hivatkozva *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)*. Ha például 512 négyzetalakú csempét használ a 2.
+Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)*, vagy az előző szakaszban szereplő egyenletekre utalnak *(tileSize \* 2<sup>Nagyítás</sup>– 1, tileSize \* 2<sup>Nagyítás</sup>– 1)*. Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
 
 <center>
 
-![Képpontméreteket megjelenítő térkép](media/zoom-levels-and-tile-grid/map-width-height.png)
+![Képpont dimenziókat ábrázoló Térkép](media/zoom-levels-and-tile-grid/map-width-height.png)
 
 </center>
 
-Adott szélességi és hosszúsági fokok, valamint a részletességi szint alapján az XY képpont koordinátáit a következőképpen kell kiszámítani:
+A szélességi és a hosszúsági fok, valamint a részletesség szintje a képpont XY koordinátáit a következőképpen számítja ki:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -96,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-A szélességi és hosszúsági értékek a WGS 84-es adaton vannak. Annak ellenére, hogy az Azure Maps gömbvetést használ, fontos, hogy az összes földrajzi koordinátát egy közös adattá alakítsa. A WGS 84 a kiválasztott adat. A hosszúsági értéket -180 fok és +180 fok között kell elsorolni, a szélességi értéket pedig -85,05112878 és 85,05112878 között kell levágni. Ezeknek az értékeknek a betapadva elkerülhető a pólusok szingularitása, és biztosítja, hogy a kivetített térkép négyzet alakú legyen.
+A szélességi és a hosszúsági értékeket a WGS 84 Datum értékre kell feltételezni. Bár a Azure Maps gömb-kivetítést használ, fontos, hogy az összes földrajzi koordinátákat egy közös adatmennyiségre alakítsa át. A WGS 84 a kiválasztott adat. A hosszúsági értéket a-180 fok és a + 180 fok közé kell állítani, és a szélességi értéket a-85,05112878 és 85,05112878 közötti tartományba kell nyírni. Ezeknek az értékeknek a betartásával elkerülhető egy szingularitás a pólusoknál, és biztosítja, hogy a tervezett Térkép négyzet alakú legyen.
 
-## <a name="tile-coordinates"></a>Mozaikkoordináták
+## <a name="tile-coordinates"></a>Csempe koordinátái
 
-A térképlekérés és -megjelenítés teljesítményének optimalizálása érdekében a renderelt térkép mozaikokká lesz vágva. A képpontok száma és a csempék száma minden egyes nagyítási szinten eltérő:
+A leképezés lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a renderelt Térkép csempére kerül. A képpontok száma és a csempék száma minden nagyítási szinten eltér:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -108,13 +108,13 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Minden csempe XY koordinátákat kap a bal felső sarokban (0, 0) és *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* között a jobb alsó sarokban. A 2-es nagyítási szinten például a csempe koordinátái (0, 0) és (7, 7) között mozognak az alábbiak szerint:
+Az egyes csempék a bal felső sarokban (0, 0) kezdve az XY koordinátákat adják meg *(2<sup>Nagyítás</sup>– 1, 2<sup>Nagyítás</sup>– 1)* a jobb alsó sarokban. A 2. nagyítási szint esetében például a csempe a következőtől kezdve a (0, 0) és a (7, 7) közötti tartomány koordinátáit követi:
 
 <center>
 
-![Csempekoordináták térképe](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![Csempe koordinátáinak térképe](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
-Adott egy pár XY képpont koordinátáival, könnyen meghatározhatja az adott képpontot tartalmazó csempe XY koordinátáit:
+A képpont XY koordinátáinak pár pontja alapján könnyedén meghatározható az adott képpontot tartalmazó csempe XY koordinátái:
 
 ```javascript
 var tileX = Math.floor(pixelX / tileSize);
@@ -122,30 +122,30 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-A csempéket nagyítási szintnek nevezzük. Az x és y koordináták megfelelnek a csempe helyének a rácson az adott nagyítási szinten.
+A csempéket a nagyítási szint hívja meg. Az x és y koordináták megfelelnek a rácsnak az adott nagyítási szinthez tartozó pozíciójának.
 
-Annak meghatározásakor, hogy melyik nagyítási szintet használja, ne feledje, hogy az egyes helyeken rögzített helyzetben vannak a csempén. Ennek eredményeképpen az adott terület megjelenítéséhez szükséges csempék száma a nagyítási rács nak a világtérképen való konkrét elhelyezésétől függ. Ha például két pont 900 méterre van egymástól, *akkor* csak három mozaik kell ahhoz, hogy a közöttük lévő útvonal at 17-es nagyítási szinten jelenjen meg. Azonban, ha a nyugati pont a jobb oldalon a csempe, és a keleti pont a bal oldalon a csempe, akkor lehet, hogy négy csempe:
-
-<center>
-
-![Demó léptéknagyítása](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
-
-A nagyítási szint meghatározása után az x és az y értékek kiszámíthatók. A bal felső mozaik minden nagyítási rácsx=0, y=0; a jobb alsó mozaik x=2<sup>zoom-1</sup>, y=2<sup>zoom-1</sup>.
-
-Itt van a zoom rács zoom szinten 1:
+A használni kívánt nagyítási szint meghatározásakor ügyeljen arra, hogy az egyes helyek rögzített pozícióban legyenek a csempén. Ennek eredményeképpen az adott kiterjedésű terület megjelenítéséhez szükséges csempék száma a globális Térkép nagyítási rácsának adott elhelyezésén múlik. Ha például két pont 900 méter távolságra van, akkor csak három csempével *lehet* megjeleníteni a 17. nagyítási szinten közöttük lévő útvonalat. Ha azonban a nyugati pont a csempe jobb oldalán található, a csempe bal oldalán lévő keleti pont pedig négy csempét tartalmazhat:
 
 <center>
 
-![Nagyítási rács az 1.-es nagyításhoz](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+![Nagyítási bemutató méretezése](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
-## <a name="quadkey-indices"></a>Négykulcsos indexek
+A nagyítási szint meghatározása után az x és az y értékeket is kiszámíthatja. Az egyes nagyítási rácsok bal felső csempe x = 0, y = 0; a jobb alsó csempe x = 2<sup>Nagyítás-1</sup>, y = 2<sup>zoom-1</sup>.
 
-Egyes leképezési platformok indexelési `quadkey` elnevezési konvenciót használnak, amely `quadtree` a `quadkeys` ZY koordinátákat egy dimenziós karakterláncba, a kulcsokba vagy röviden egyesíti. Mindegyik `quadkey` egyedileg azonosít egy adott csempét egy adott részletességi szinten, és kulcsként használható a közös adatbázis B-fa indexekben. Az Azure Maps SDK-k támogatják a `quadkey` csemperétegek átfedését, amelyek elnevezési konvenciókat használnak a [mozaikréteg hozzáadása](map-add-tile-layer.md) dokumentumban dokumentált egyéb elnevezési konvenciók mellett.
+Itt látható az 1. nagyítási szint nagyítási rácsa:
+
+<center>
+
+![1. nagyítási szint nagyítási rácsa](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+
+## <a name="quadkey-indices"></a>Quadkey indexek
+
+Egyes leképezési platformok olyan `quadkey` indexelési elnevezési konvenciót használnak, amely a következő csempe-koordinátákat egyesíti `quadtree` egy kulcsok `quadkeys` vagy rövid dimenzióval rendelkező egydimenziós karakterláncban. Mindegyik `quadkey` egyedi módon azonosít egy csempét egy adott részletességi szinten, és kulcsként használható a "B" általános adatbázis-indexekben. A Azure Maps SDK-k támogatják az elnevezési konvenciót használó `quadkey` csempe-rétegek átfedését az egyéb elnevezési konvenciók mellett, a [csempék hozzáadása rétegbeli](map-add-tile-layer.md) dokumentum dokumentációjában leírtaknak megfelelően.
 
 > [!NOTE]
-> Az `quadkeys` elnevezési konvenció csak egy vagy nagyobb nagyítási szintek esetén működik. Az Azure Maps SDK 0-s támogatási nagyítási szintje, amely egyetlen térképcsempe az egész világ számára. 
+> Az `quadkeys` elnevezési konvenció csak egy vagy több nagyítási szint esetén működik. A Azure Maps SDK támogatja a 0. méretet, amely a teljes világ egyetlen Térkép csempéje. 
 
-A csempekoordináták a `quadkey`formátumba történő konvertálásához az Y és X koordináták bitjei átvannak alakítva, és az eredmény base-4 számként lesz értelmezve (a kezdő nullák megmaradva), és karakterláncgá alakul. Például, adott csempe XY koordináták (3, 5) szinten 3, a `quadkey` következőképpen határozzák meg:
+A csempe koordinátáinak `quadkey`a értékre való átalakításához az Y és az X koordinátáinak bitei összekapcsolva lesznek, és az eredmény egy alap-4 számként lesz értelmezve (a vezető nullákkal megőrzött), és egy karakterlánccá konvertálva. Ha például a csempe XY koordinátáit (3, 5) a 3. szinten adja meg `quadkey` , a a következőképpen van meghatározva:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,17 +155,17 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`számos érdekes tulajdonsággal rendelkezik. Először is, `quadkey` a hossza (a számjegyek száma) megegyezik a zoom szinten a megfelelő csempe. Másodszor, `quadkey` a minden csempe `quadkey` kezdődik a szülő csempe (a tartalmazó csempe az előző szinten). Amint az alábbi példában látható, a 2-es csempe a 20-23-as csempék szülője:
+`Qquadkeys`több érdekes tulajdonsága van. Első lépésként a `quadkey` (számjegyek száma) a megfelelő csempe nagyítási szintjét egyenlővé kell tennie. Másodszor, a `quadkey` csempék a szülő csempével `quadkey` kezdődnek (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
 
 <center>
 
-![Négykulcsos csempepiramis](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![Quadkey csempe piramis](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Végül `quadkeys` adjon meg egy egydimenziós indexkulcsot, amely általában megőrzi a csempék közelségét az XY térben. Más szóval, két csempe, amelyek a közeli `quadkeys` XY koordináták általában viszonylag közel vannak egymáshoz. Ez fontos az adatbázis teljesítményének optimalizálása szempontjából, mivel a szomszédos csempéket gyakran csoportokban kérik, és kívánatos, hogy ezek a csempék ugyanazon a lemezblokkon maradjanak, hogy minimálisra csökkentsék a lemezolvasások számát.
+Végül `quadkeys` adjon meg egy egydimenziós index-kulcsot, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, az XY koordinátákat tartalmazó csempének általában viszonylag közel kell `quadkeys` lennie egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
 
-## <a name="tile-math-source-code"></a>Mozaikmatematika forráskódja
+## <a name="tile-math-source-code"></a>Csempe matematikai forráskódja
 
-A következő mintakód bemutatja, hogyan valósítható meg a jelen dokumentumban leírt függvények. Ezek a funkciók szükség szerint könnyen lefordíthatók más programozási nyelvekre.
+Az alábbi mintakód a jelen dokumentumban ismertetett függvények megvalósítását szemlélteti. A függvények igény szerint egyszerűen lefordíthatók más programozási nyelvekre.
 
 #### <a name="c"></a>[C #](#tab/csharp)
 
@@ -948,23 +948,23 @@ module AzureMaps {
 * * *
 
 > [!NOTE]
-> Az Azure Maps SDK-k interaktív térképvezérlői segítő funkciókkal rendelkeznek a térinformatikai pozíciók és a nézetablak-képpontok közötti konvertáláshoz. 
-> - [Web SDK: Képpont- és pozíciószámítások leképezése](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> A Azure Maps SDK interaktív térképének vezérlői a térinformatikai pozíciók és a nézetablak képpontja közötti átalakításra szolgáló segítő függvényekből állnak. 
+> - [Web SDK: Térkép képpontban és pozícióban számítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>További lépések
 
-Közvetlenül elérheti a térképcsempéket az Azure Maps REST-szolgáltatásokból:
+A Azure Maps REST-szolgáltatásokból közvetlenül elérhetők a Térkép csempéi:
 
 > [!div class="nextstepaction"]
-> [Térképcsempék beszereznie](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [Térkép csempék lekérése](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Forgalmi csempék beszereznie](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Forgalmi flow csempék beolvasása](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Forgalmi incidensek csempéinek beszereznie](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Forgalmi incidens csempék beolvasása](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
 
 További információ a térinformatikai fogalmakról:
 
 > [!div class="nextstepaction"]
-> [Az Azure Maps szószedete](glossary.md)
+> [Szószedet Azure Maps](glossary.md)

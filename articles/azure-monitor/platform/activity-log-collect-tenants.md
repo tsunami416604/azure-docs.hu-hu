@@ -1,49 +1,49 @@
 ---
-title: Több-bérlős Azure-tevékenységnaplók az Azure Monitorban
-description: Az Event Hubs és a Logic Apps segítségével adatokat gyűjthet az Azure-tevékenységnaplóból, és elküldheti azokat egy másik bérlőben lévő Azure-figyelő log analytics-munkaterületére.
+title: Több-bérlős Azure-beli tevékenység-naplók Azure Monitor
+description: Event Hubs és Logic Apps használatával gyűjthet adatokat az Azure-tevékenység naplójából, és elküldheti azt egy másik bérlő Azure Monitor egy Log Analytics munkaterületére.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
 ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055747"
 ---
-# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-tevékenységnaplók gyűjtése az Azure Monitorban az Azure Active Directory-bérlők között (örökölt)
+# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-beli tevékenységek naplóinak gyűjtése a Azure Monitor Azure Active Directory-bérlők között (örökölt)
 
 > [!NOTE]
-> Ez a cikk ismerteti az azure-tevékenység napló konfigurálása az Azure-bérlők egy Log Analytics-munkaterületen kell gyűjteni az örökölt módszer konfigurálása az Azure-bérlők között.  Most már összegyűjtheti a tevékenységnaplót egy Log Analytics-munkaterületen egy olyan diagnosztikai beállítás használatával, amely hasonló az erőforrásnaplók gyűjtéséhez. Lásd: [Azure-tevékenységnaplók gyűjtése és elemzése a Log Analytics-munkaterületen az Azure Monitorban.](activity-log-collect.md)
+> Ez a cikk azt ismerteti, hogyan konfigurálható az Azure-beli tevékenységek naplója az Azure-beli bérlők között Log Analytics munkaterületen.  Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](activity-log-collect.md).
 
 
-Ez a cikk az Azure-tevékenységnaplók gyűjtésére szolgáló módszert hajt végre az Azure Monitor Log Analytics-munkaterületére az Azure Log Analytics-adatgyűjtő-összekötő logic apps használatával. Használja a folyamat ebben a cikkben, ha szüksége van a naplók küldése egy munkaterületre egy másik Azure Active Directory-bérlő. Például ha felügyelt szolgáltatást kínál, előfordulhat, hogy tevékenységnaplókat szeretne gyűjteni az egyik ügyfél előfizetéséből, és a saját előfizetése Log Analytics-munkaterületén szeretné tárolni azokat.
+Ez a cikk a Logic Apps Azure Log Analytics adatgyűjtő összekötőjét használó Azure Azure Monitor-beli tevékenységek naplóinak egy Log Analytics munkaterületre való gyűjtésének módszerét ismerteti. A cikkben ismertetett eljárást akkor érdemes használni, ha egy másik Azure Active Directory bérlő munkaterületére kell naplókat küldenie. Például ha felügyelt szolgáltatást kínál, előfordulhat, hogy tevékenységnaplókat szeretne gyűjteni az egyik ügyfél előfizetéséből, és a saját előfizetése Log Analytics-munkaterületén szeretné tárolni azokat.
 
-Ha a Log Analytics-munkaterület ugyanabban az Azure-előfizetésben, vagy egy másik előfizetésben, de ugyanabban az Azure Active Directoryban található, kövesse az [Azure-tevékenységnaplók gyűjtését és elemzését az Azure-figyelő ben az Azure-tevékenységnaplók](activity-log-collect.md) gyűjtéséhez és elemzéséhez az Azure-tevékenységnaplók gyűjtéséhez.
+Ha a Log Analytics munkaterület ugyanabban az Azure-előfizetésben van, vagy egy másik előfizetésben, de ugyanabban a Azure Active Directoryban, akkor az Azure-Tevékenységnaplók összegyűjtéséhez használja az Azure-beli [log Analytics munkaterület összegyűjtése és elemzése](activity-log-collect.md) című témakör lépéseit Azure monitor.
 
 ## <a name="overview"></a>Áttekintés
 
 A forgatókönyvben alkalmazott stratégia az, hogy az Azure-tevékenységnapló eseményeket küld egy [eseményközpontnak](../../event-hubs/event-hubs-about.md), ahol egy [logikai alkalmazás](../../logic-apps/logic-apps-overview.md) továbbítja azokat a Log Analytics-munkaterületnek. 
 
-![A tevékenységnaplóból a Log Analytics-munkaterületbe vezető adatfolyam képe](media/collect-activity-logs-subscriptions/data-flow-overview.png)
+![a tevékenység naplójából Log Analytics munkaterületre irányuló adatforgalom képe](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
 A módszer többek között a következő előnyöket kínálja:
-- Kis késéssel jár, mivel a rendszer az eseményközpontba streameli az Azure-tevékenységnaplót.  A logikai alkalmazás ezután aktiválódik, és az adatokat a munkaterületre teszi közzé. 
+- Kis késéssel jár, mivel a rendszer az eseményközpontba streameli az Azure-tevékenységnaplót.  Ekkor a rendszer elindítja a logikai alkalmazást, és a munkaterületre könyveli azokat. 
 - Csak minimális mennyiségű kódra van szükség, és nem kell kiszolgálói infrastruktúrát üzembe helyezni.
 
 A cikk a következőket mutatja be:
 1. Eseményközpont létrehozása. 
 2. Tevékenységnaplók eseményközpontba való exportálása az Azure-tevékenységnapló exportálási profiljának használatával.
-3. Hozzon létre egy logikai alkalmazást, amelyet az Event Hubról olvashat, és eseményeket küld a Log Analytics-munkaterületre.
+3. Hozzon létre egy logikai alkalmazást az Event hub-ról való olvasáshoz, és küldjön eseményeket Log Analytics munkaterületre.
 
 ## <a name="requirements"></a>Követelmények
 A forgatókönyvben használt Azure-erőforrások az alábbi követelményekkel rendelkeznek.
 
 - Az eseményközpont névterének nem muszáj ugyanabban az előfizetésben lennie, mint a naplókat kibocsátó előfizetésnek. A beállítást konfiguráló felhasználónak megfelelő hozzáférési engedélyekkel kell rendelkeznie mindkét előfizetéshez. Ha több előfizetéssel is rendelkezik egy Azure Active Directoryban, az összes előfizetés tevékenységnaplóját elküldheti ugyanabba az eseményközpontba.
 - A logikai alkalmazás más előfizetésben is lehet, mint az eseményközpont, és nem kell ugyanabban az Azure Active Directoryban lennie. A logikai alkalmazás az eseményközpont megosztott elérési kulcsával olvas az eseményközpontból.
-- A Log Analytics-munkaterületnek nem kell ugyanabban az előfizetésben és Azure Active Directoryban lennie, mint a logikai alkalmazásnak, de az egyszerűség kedvéért javasoljuk, hogy azonos előfizetésben legyenek. A logikai alkalmazás a Log Analytics munkaterület-azonosítóés kulcs használatával küldi el a munkaterületre.
+- A Log Analytics-munkaterületnek nem kell ugyanabban az előfizetésben és Azure Active Directoryban lennie, mint a logikai alkalmazásnak, de az egyszerűség kedvéért javasoljuk, hogy azonos előfizetésben legyenek. A logikai alkalmazás a Log Analytics munkaterület AZONOSÍTÓjának és kulcsának használatával küldi el a munkaterületet.
 
 
 
@@ -51,7 +51,7 @@ A forgatókönyvben használt Azure-erőforrások az alábbi követelményekkel 
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../../event-hubs/event-hubs-create.md) to create your event hub. -->
 
-1. Az Azure Portalon válassza az > **Erőforrás-internet létrehozása** >  **Create a resource****eseményközpontok**lehetőséget.
+1. A Azure Portal válassza az **erőforrás** > létrehozása**eszközök internetes hálózata** > **Event Hubs**lehetőséget.
 
    ![Piactér – új eseményközpont](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
@@ -78,7 +78,7 @@ A tevékenységnapló streamelésének engedélyezéséhez válasszon ki egy ese
 
 Olyan eseményközpont-névteret is használhat, amely más előfizetésben van, mint a naplókat kibocsátó előfizetés, az előfizetéseknek viszont ugyanabban az Azure Active Directoryban kell lenniük. A beállítást konfiguráló felhasználónak a megfelelő szerepköralapú hozzáférés-vezérléssel kell rendelkeznie ahhoz, hogy mindkét előfizetéshez hozzáférhessen. 
 
-1. Az Azure Portalon válassza a**Tevékenységnapló** **figyelése** > lehetőséget.
+1. A Azure Portal válassza a **figyelő** > **tevékenység naplója**lehetőséget.
 3. Kattintson a lap tetején található **Exportálás** gombra.
 
    ![az Azure Monitor képe navigáció közben](media/collect-activity-logs-subscriptions/activity-log-blade.png)
@@ -94,13 +94,13 @@ Olyan eseményközpont-névteret is használhat, amely más előfizetésben van,
 
 ## <a name="step-3---create-logic-app"></a>3. lépés – Logikai alkalmazás létrehozása
 
-Miután a tevékenységnaplók írásban az eseményközpontba, hozzon létre egy logikai alkalmazást, amely összegyűjti a naplókat az eseményközpontból, és írja őket a Log Analytics-munkaterületre.
+Miután a tevékenység naplókat ír az Event hubhoz, létrehoz egy logikai alkalmazást, amely összegyűjti a naplókat az Event hub-ból, és beírja azokat a Log Analytics munkaterületre.
 
 A logikai alkalmazás a következőket tartalmazza:
 - Egy [Eseményközpont-összekötő](https://docs.microsoft.com/connectors/eventhubs/) eseményindítót az eseményközpontból való olvasáshoz.
 - Egy [JSON elemzése műveletet](../../logic-apps/logic-apps-content-type.md) a JSON-események kinyeréséhez.
 - Egy [Összeállítás műveletet](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) a JSON objektummá való átalakításához.
-- A [Log Analytics adatösszekötőt küld](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) az adatok közzétételéhez a Log Analytics-munkaterületre.
+- Az [adatösszekötő log Analytics küldése](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) az adatLog Analytics munkaterületre való közzétételhez.
 
    ![eseményközpont-eseményindító Logic Appsben való hozzáadásának képe](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -116,7 +116,7 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
 
 ### <a name="create-a-new-blank-logic-app"></a>Új üres logikai alkalmazás létrehozása
 
-1. Az Azure Portalon válassza az Erőforrás > létrehozása**vállalati integrációs** > **logikai alkalmazás** **lehetőséget.**
+1. A Azure Portal válassza az **erőforrás** > létrehozása**Vállalati integráció** > **logikai alkalmazás**lehetőséget.
 
     ![Piactér – új logikai alkalmazás](media/collect-activity-logs-subscriptions/marketplace-new-logic-app.png)
 
@@ -126,11 +126,11 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
 
    |Beállítás | Leírás  |
    |:---|:---|
-   | Név           | A logikai alkalmazás egyedi neve. |
+   | Name (Név)           | A logikai alkalmazás egyedi neve. |
    | Előfizetés   | Válassza ki azt az Azure-előfizetést, amely a logikai alkalmazást tartalmazni fogja. |
    | Erőforráscsoport | Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat a logikai alkalmazás számára. |
    | Hely       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
-   | Log Analytics  | Jelölje be, ha a logikai alkalmazás minden egyes futtatásának állapotát egy Log Analytics-munkaterületen szeretné naplózni.  |
+   | Log Analytics  | Válassza ki, hogy szeretné-e naplózni a logikai alkalmazás egyes futtatásainak állapotát egy Log Analytics munkaterületen.  |
 
     
 3. Kattintson a **Létrehozás** gombra. Amikor megjelenik a **Sikeres üzembe helyezés** értesítés, kattintson az **Erőforrás megnyitása** lehetőségre a logikai alkalmazás megnyitásához.
@@ -161,9 +161,9 @@ A Logic Apps Designerben most az elérhető összekötők és azok eseményindí
 
 ### <a name="add-parse-json-action"></a>JSON elemzése művelet hozzáadása
 
-Az eseményközpont kimenete JSON-hasznosadatokat tartalmaz, egy rekordokból álló tömbbel. A [Parse JSON-művelet](../../logic-apps/logic-apps-content-type.md) csak a Log Analytics-munkaterületre való küldéshez szükséges rekordok tömbjének kibontására szolgál.
+Az eseményközpont kimenete JSON-hasznosadatokat tartalmaz, egy rekordokból álló tömbbel. A [JSON-elemzés](../../logic-apps/logic-apps-content-type.md) művelettel csak a rekordok tömbjét lehet kibontani log Analytics munkaterületre történő küldéshez.
 
-1. Kattintson **az Új lépés** > **Művelet hozzáadása parancsra.**
+1. Kattintson az **új lépés** > **művelet hozzáadása** elemre.
 2. A keresőmezőbe írja be szűrőként a *json elemezése* kifejezést. Válassza ki a következő műveletet: **Adatműveletek – JSON elemzése**.
 
    ![JSON elemzése művelet hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-add-parse-json-action.png)
@@ -275,7 +275,7 @@ Az eseményközpont kimenete JSON-hasznosadatokat tartalmaz, egy rekordokból á
 ### <a name="add-compose-action"></a>Összeállítás műveletet hozzáadása
 Az [Összeállítás](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) művelet a JSON-kimenet segítségével létrehoz egy objektumot, amelyet a Log Analytics művelet használni tud.
 
-1. Kattintson **az Új lépés** > **Művelet hozzáadása parancsra.**
+1. Kattintson az **új lépés** > **művelet hozzáadása** elemre.
 2. Írja be szűrőként az *összeállítás* kifejezést, majd válassza ki az **Adatműveletek – Összeállítás** műveletet.
 
     ![Összeállítás műveletet hozzáadása](media/collect-activity-logs-subscriptions/logic-apps-add-compose-action.png)
@@ -284,14 +284,14 @@ Az [Összeállítás](../../logic-apps/logic-apps-workflow-actions-triggers.md#c
 
 
 ### <a name="add-log-analytics-send-data-action"></a>Log Analytics adatküldési művelet hozzáadása
-Az [Azure Log Analytics-adatgyűjtő](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) művelet az objektumot a Compose műveletből, és elküldi azt a Log Analytics munkaterületre.
+Az [Azure log Analytics adatgyűjtő](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) művelet végrehajtja az objektumot az összeállítási műveletből, és elküldi azt egy log Analytics munkaterületre.
 
-1. Kattintson **az Új lépés** > **Művelet hozzáadása parancsra.**
+1. Kattintson az **új lépés** > **művelet hozzáadása** elemre.
 2. Írja be szűrőként a *log analytics* kifejezést, majd válassza ki az **Azure Log Analytics Data Collector – Adatküldés** műveletet.
 
    ![Naplóelemzési adatküldési művelet hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Írja be a kapcsolat nevét, majd illessze be a Log Analytics-munkaterülethez tartozó **munkaterület-azonosítót** és **munkaterületkulcsot**.  Kattintson **a Létrehozás gombra.**
+3. Írja be a kapcsolat nevét, majd illessze be a Log Analytics-munkaterülethez tartozó **munkaterület-azonosítót** és **munkaterületkulcsot**.  Kattintson a **Létrehozás**gombra.
 
    ![naplóelemzési kapcsolat hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -302,7 +302,7 @@ Az [Azure Log Analytics-adatgyűjtő](https://docs.microsoft.com/connectors/azur
    |Beállítás        | Érték           | Leírás  |
    |---------------|---------------------------|--------------|
    |JSON-kérelem törzse  | Az **Összeállítás** művelet **kimenete** | Lekéri a rekordokat az Összeállítás művelet törzséből. |
-   | Egyéni napló neve | AzureActivity | A Log Analytics-munkaterületen az importált adatok tárolására létrehozott egyéni naplótábla neve. |
+   | Egyéni napló neve | AzureActivity | A Log Analytics munkaterületen létrehozandó egyéni napló tábla neve, amely az importált adatmennyiséget tárolni fogja. |
    | Time-generated-field | time | Ne válassza ki a **time** JSON-mezőt, csak írja be a „time” szót. Ha kiválasztja a JSON-mezőt, a tervező egy **For each** iterációba helyezi az *Adatküldés* műveletet, amely nem felel meg a szándékainak. |
 
 
@@ -327,7 +327,7 @@ Az utolsó lépés a Log Analytics-munkaterület ellenőrzése, hogy meggyőződ
 3.  Válassza a **Naplóbeli keresés** csempét, és a Naplóbeli keresés panel lekérdezési mezőjében adja meg a `AzureActivity_CL` típust, majd nyomja le az Enter billentyűt, vagy kattintson a lekérdezési mezőtől jobbra található Keresés gombra. Ha az egyéni napló neve nem *AzureActivity*, írja be a választott nevet és fűzze hozzá a `_CL` tagot.
 
 >[!NOTE]
-> Az első alkalommal, amikor egy új egyéni naplót küld a Log Analytics munkaterületre, akár egy órát is igénybe vehet, amíg az egyéni napló kereshető lesz.
+> Amikor a rendszer első alkalommal új egyéni naplót kap a Log Analytics munkaterületre, akkor akár egy óráig is eltarthat, amíg az egyéni napló kereshetővé válik.
 
 >[!NOTE]
 > A rendszer egy egyéni táblába írja a tevékenységnaplókat, és azok nem jelennek meg a [tevékenységnapló-megoldásban](./activity-log-collect.md).
@@ -337,7 +337,7 @@ Az utolsó lépés a Log Analytics-munkaterület ellenőrzése, hogy meggyőződ
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy logikai alkalmazást az Azure-tevékenységnaplók olvasásához egy Eseményközpontból, és elküldi őket a Log Analytics-munkaterületelemzésre. Ha többet szeretne megtudni az adatok munkaterületi megjelenítéséről, beleértve az irányítópultok létrehozását is, tekintse át a Visualize-adatok oktatóanyagát.
+Ebben a cikkben létrehozott egy logikai alkalmazást, amely az Azure-beli tevékenységek naplóit olvassa be az Event hub-ból, és elküldi őket a Log Analytics munkaterületre elemzés céljából. Ha többet szeretne megtudni a munkaterület adatainak megjelenítéséről, beleértve az irányítópultok létrehozását, tekintse át az információk megjelenítésére szolgáló oktatóanyagot.
 
 > [!div class="nextstepaction"]
 > [Naplókeresési adatok vizualizációja – oktatóanyag](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

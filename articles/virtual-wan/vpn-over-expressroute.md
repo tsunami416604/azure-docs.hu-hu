@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059302"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz

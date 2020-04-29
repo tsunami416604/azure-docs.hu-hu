@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuálisgép-méretezési készletekhez csatolt adatlemezek
-description: Ismerje meg, hogyan használhatja a csatlakoztatott adatlemezeket a virtuálisgép-méretezési készletekkel a konkrét használati esetek vázlatain keresztül.
+title: Az Azure Virtual Machine Scale Sets csatolt adatlemezei
+description: Megtudhatja, hogyan használhatja a csatlakoztatott adatlemezeket a virtuálisgép-méretezési csoportokkal meghatározott használati esetekből.
 author: avirishuv
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: avverma
 ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123379"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
@@ -86,12 +86,12 @@ Ha Linux-fürtön szeretné automatikusan előkészíteni az adatlemez(eke)t, ad
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Adatokkal előre feltöltött adatlemezek hozzáadása már létező méretezési csoporthoz
-A méretezésicsoport-modellben megadott adatlemezek mindig üresek. Csatolhat azonban meglévő adatlemezt egy méretezési csoport meghatározott virtuális gépéhez. Ha a méretezési csoport összes virtuális gépén szeretné terjeszteni az adatokat, duplikálhatja az adatlemezt, és csatolhatja azokat a méretezési csoport minden egyes virtuális gépéhez, vagy létrehozhat egy egyéni lemezképet, amely tartalmazza az adatokat, és kiépítheti az egyéni lemezkép méretezési készletét , vagy használhatja az Azure Files vagy egy hasonló adattárolási ajánlat.
+A méretezésicsoport-modellben megadott adatlemezek mindig üresek. Csatolhat azonban meglévő adatlemezt egy méretezési csoport meghatározott virtuális gépéhez. Ha a méretezési csoport összes virtuális gépén át szeretné terjeszteni az adatait, duplikálhatja az adatlemezt, és csatolhatja azt a méretezési csoportba tartozó egyes virtuális gépekhez, vagy létrehozhat egy egyéni rendszerképet, amely tartalmazza az adatait, és kiépíti a méretezési készletet ebből az egyéni lemezképből, vagy használhat Azure Files vagy egy hasonló adattárolási ajánlatot.
 
 
 ## <a name="additional-notes"></a>További megjegyzések
 Az Azure Managed Disks, valamint a csatlakoztatott adatlemezzel rendelkező méretezési csoportok támogatása elérhető a Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) és újabb verzióiban.
 
-Az Azure Portal támogatja a csatlakoztatott adatlemezek méretezési csoportok korlátozott. A követelményektől függően Azure-sablonok, a parancssori felület, a PowerShell, SDK-k és a REST API használatával is kezelheti a csatlakoztatott lemezeket.
+A méretezési csoportokban lévő csatlakoztatott adatlemezek Azure Portal támogatása korlátozott. A követelményektől függően Azure-sablonok, a parancssori felület, a PowerShell, SDK-k és a REST API használatával is kezelheti a csatlakoztatott lemezeket.
 
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services áttekintése | Microsoft Docs
-description: Microsoft Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. Ez a cikk áttekintést nyújt az Azure Media Servicesről.
+description: Microsoft Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. Ez a cikk áttekintést nyújt a Azure Media Servicesról.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78197504"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
-> [!div class="op_single_selector" title1="Válassza ki a Media Services használt verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [3-as verzió](../latest/media-services-overview.md)
 > * [2-es verzió](media-services-overview.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog újabb funkciókkal bővülni. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog újabb funkciókkal bővülni. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -36,11 +36,11 @@ A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létr
 
 ## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
 
-Fontos emlékeztetőként be kell tartania az Azure Media Services használatával kapcsolatos összes vonatkozó jogszabályt, és nem használhatja a Media Servicest vagy bármely Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy amely másokra nézve káros lehet.
+Fontos megjegyezni, hogy be kell tartania az összes vonatkozó törvényt a Azure Media Services használatára vonatkozóan, és Ön nem használhatja Media Services vagy bármely Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy amelyek károsak lehetnek mások számára.
 
-Mielőtt bármilyen videót/képet feltöltene a Media Servicesszolgáltatásba, önnek rendelkeznie kell a videó/kép használatához szükséges összes joggal, beleértve – amennyiben a törvény előírja – az egyének (ha vannak ilyen) összes szükséges hozzájárulását a videóban/képen, adataik media servicesben és Azure-ban történő felhasználásához, feldolgozásához és tárolásához. Egyes joghatóságok különleges jogi követelményeket írhatnak elő bizonyos adatkategóriák, például biometrikus adatok gyűjtésére, online feldolgozására és tárolására vonatkozóan. Mielőtt a Media Servicest és az Azure-t speciális jogi követelmények hatálya alá tartozó adatok feldolgozására és tárolására használná, gondoskodnia kell az Önre vonatkozó ilyen jogi követelmények betartásáról.
+A videók vagy rendszerképek Media Servicesba való feltöltése előtt minden megfelelő jogosultsággal kell rendelkeznie a videó/rendszerkép használatához, beleértve a törvény által előírt jogokat, a videóban/képben, az adatok felhasználásához, feldolgozásához és tárolásához szükséges összes hozzájárulást a Media Services és az Azure-ban. Bizonyos joghatóságok bizonyos adatkategóriák, például biometrikus adatok gyűjtésére, online feldolgozására és tárolására vonatkozó különleges jogi követelményeket állapíthatnak meg. Mielőtt a Media Services és az Azure-t használja a különleges jogi követelmények hatálya alá eső bármilyen adat feldolgozásához és tárolásához, meg kell győződnie arról, hogy megfelel az Ön számára esetlegesen felmerülő jogi követelményeknek.
 
-A Media Services megfelelőségével, adatvédelmével és biztonságával kapcsolatos további tudnivalókért keresse fel a Microsoft [Adatvédelmi központot.](https://www.microsoft.com/trust-center/?rtc=1) A Microsoft adatvédelmi kötelezettségeivel, adatkezelési és adatmegőrzési gyakorlatával kapcsolatban, beleértve az adatok törlésének módját is, olvassa el a Microsoft [adatvédelmi nyilatkozatát,](https://privacy.microsoft.com/PrivacyStatement)az [online szolgáltatási feltételeket](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") és [az adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). A Media Services használatával Ön elfogadja, hogy magára nézve kötelezőnek fogadja el az OST, a DPA és az Adatvédelmi nyilatkozat.
+A megfelelőség, az adatvédelem és a biztonság megismeréséhez Media Services látogasson el a Microsoft [adatvédelmi központba](https://www.microsoft.com/trust-center/?rtc=1). A Microsoft adatvédelmi kötelezettségei, az adatkezelési és adatmegőrzési eljárások, beleértve az adatok törlésének módját is, tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Media Services használatával Ön vállalja, hogy az OST, a DPA és az adatvédelmi nyilatkozat köti.
  
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +59,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 * [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Az elérhető ügyféloldali SDK-k valamelyike:
-    * Az Azure Media Services SDK a .
+    * A .NET-hez készült Azure Media Services SDK
     
         * [NuGet-csomag](https://www.nuget.org/packages/windowsazure.mediaservices/)
         * [GitHub forráskódja](https://github.com/Azure/azure-sdk-for-media-services)
@@ -67,7 +67,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
     * [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
 * Meglévő eszközök:
-    * [Azure-portál](https://portal.azure.com/)
+    * [Azure Portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
 
 > [!NOTE]
