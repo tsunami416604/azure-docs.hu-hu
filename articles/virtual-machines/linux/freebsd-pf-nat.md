@@ -1,6 +1,6 @@
 ---
-title: Tűzfal létrehozása a FreeBSD csomagszűrőjének használatával az Azure-ban
-description: További információ aRról, hogyan telepíthet NAT tűzfalat a FreeBSD PF használatával az Azure-ban.
+title: Azure-beli tűzfal létrehozása a FreeBSD csomagszűrő használatával
+description: Ismerje meg, hogyan helyezhet üzembe NAT-tűzfalat a FreeBSD PF használatával az Azure-ban.
 author: KylieLiang
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -9,32 +9,32 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
 ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945110"
 ---
-# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>A FreeBSD csomagszűrőjének használata biztonságos tűzfal létrehozásához az Azure-ban
-Ez a cikk bemutatja, hogyan telepíthet NAT tűzfalat a FreeBSD Packer Filter segítségével az Azure Resource Manager sablonon keresztül a gyakori webkiszolgálói forgatókönyvhöz.
+# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Biztonságos tűzfal létrehozása az Azure-ban a FreeBSD csomagszűrő használatával
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy NAT-tűzfalat a FreeBSD Packer-szűrő segítségével Azure Resource Manager sablon használatával a gyakori webkiszolgálói forgatókönyvhöz.
 
 ## <a name="what-is-pf"></a>Mi az a PF?
-Pf (Packet Filter, szintén írt pf) egy BSD licencelt állapotalapú csomagszűrő, egy központi szoftver tűzfal. Pf azóta gyorsan fejlődött, és most már számos előnye van a többi rendelkezésre álló tűzfalak. A hálózati címfordítás (NAT) az első naptól kezdve PF-ben van, majd a csomagütemező és az aktív várólista-kezelés integrálva lett a PF-be az ALTQ integrálásával és a PF konfigurációján keresztül konfigurálhatóvá tételével. Az olyan funkciók, mint a pfsync és carp a feladatátvételhez és a redundanciához, az authpf a munkamenet-hitelesítéshez és az ftp-proxy a nehéz FTP protokoll tűzfalazásának megkönnyítése érdekében szintén kiterjesztették a PF-et. Röviden, PF egy erős és funkciókban gazdag tűzfal. 
+A PF (csomagszűrő, szintén írásos PF) egy BSD licenccel rendelkező állapot-nyilvántartó csomagszűrő, egy központi szoftver a tűzfalak számára. A PF azóta gyorsan fejlődött, és mostantól számos előnnyel jár a többi elérhető tűzfallal szemben. A hálózati címfordítás (NAT) a PF-ben van, mivel az első nap, majd a csomagütemező és az aktív üzenetsor-kezelés integrálva lett a PF-ba, a ALTQ integrálásával és a PF konfigurációján keresztül történő konfigurálásával. Az olyan funkciók, mint például a pfsync segítségével és a CARP a feladatátvételhez és a redundancia, a munkamenet-hitelesítés Authpf, valamint az FTP-proxy a nehéz FTP protokoll tűzfalának megkönnyítéséhez, a PF-t is kiterjesztette. Röviden, a PF egy hatékony és sokoldalú tűzfal. 
 
 ## <a name="get-started"></a>Bevezetés
-Ha biztonságos tűzfalat szeretne létrehozni a felhőben a webkiszolgálói számára, akkor kezdjük el. Az Azure Resource Manager-sablonban használt parancsfájlokat is alkalmazhatja a hálózati topológia beállításához.
-Az Azure Resource Manager sablon olyan FreeBSD virtuális gépet állított be, amely a Hálózati címlet /átirányítás tanusítást és két FreeBSD virtuális gépet használ, a Nginx webkiszolgáló telepítésével és konfigurálásával. A hálózati fordítás két webkiszolgáló kimenő forgalma mellett a NAT/átirányítás virtuális gép elfogja a HTTP-kérelmeket, és ciklikus multiplexelési módon átirányítja azokat a két webkiszolgálóra. A virtuális hálózat a 10.0.0.2/24 privát, nem irányítható IP-címteret használja, és módosíthatja a sablon paramétereit. Az Azure Resource Manager-sablon egy útvonaltáblát is definiál a teljes virtuális hálózathoz, amely az Azure alapértelmezett útvonalainak a cél IP-címe alapján történő felülbírálására használt egyes útvonalak gyűjteménye. 
+Ha szeretne egy biztonságos tűzfalat beállítani a felhőben a webkiszolgálók számára, akkor kezdjük. A Azure Resource Manager sablonban használt parancsfájlokat alkalmazhatja a hálózati topológia beállításához is.
+A Azure Resource Manager sablon egy olyan FreeBSD-alapú virtuális gépet állít be, amely a PF-t és két virtuális gépet a telepített és konfigurált Nginx-webkiszolgálón keresztül hajtja végre a NAT-/Redirection. A NAT-ot a két webkiszolgáló kimenő forgalmán kívül a NAT/átirányítási virtuális gép elfogja a HTTP-kéréseket, és átirányítja őket a két webkiszolgálóra ciklikus multiplexelés esetén. A VNet a privát, nem irányítható IP-címtartomány 10.0.0.2/24-et használja, és módosíthatja a sablon paramétereit. A Azure Resource Manager sablon egy útválasztási táblázatot is definiál a teljes VNet, amely az Azure-beli alapértelmezett útvonalaknak a cél IP-cím alapján való felülbírálásához használt egyes útvonalak gyűjteménye. 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
-A legújabb [Azure CLI-t](/cli/azure/install-az-cli2) telepítenie kell, és be kell jelentkeznie egy Azure-fiókba [az a bejelentkezéssel.](/cli/azure/reference-index) Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz `myResourceGroup` egy `West US` erőforráscsoport nevét a helyen.
+Az az [login](/cli/azure/reference-index)használatával telepítenie kell a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és be kell jelentkeznie egy Azure-fiókba. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy erőforráscsoport- `myResourceGroup` nevet a `West US` helyen.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Ezután telepítse a [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) sablont az [az csoport központi telepítésével](/cli/azure/group/deployment). Töltse le [az azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) fájlt ugyanazon elérési `adminPassword`út `networkPrefix`alatt, és adja meg a saját erőforrásértékeit, például a , és `domainNamePrefix`a. 
+Ezután telepítse a [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Töltse le az [azuredeploy. Parameters. JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) fájlt ugyanazon az elérési úton, és adja meg a `adminPassword`saját `networkPrefix`erőforrás- `domainNamePrefix`értékeit, például,, és. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -42,15 +42,15 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Körülbelül öt perc múlva, akkor `"provisioningState": "Succeeded"`kap az információkat . Ezután ssh az előtér virtuális gép (NAT) vagy a Nginx webkiszolgáló egy böngészőben a nyilvános IP-cím vagy fqdn az előtér virtuális gép (NAT). A következő példa az erőforráscsoportban az előtér-virtuális géphez (NAT) `myResourceGroup` rendelt teljes tartománynév- és nyilvános IP-címet sorolja fel. 
+Körülbelül öt perc elteltével a következő információkat kapja: `"provisioningState": "Succeeded"`. Ezt követően SSH-t használhat a frontend VM (NAT) vagy az Nginx webkiszolgáló eléréséhez egy böngészőben a virtuális gép (NAT) nyilvános IP-címét vagy teljes tartománynevét használva. Az alábbi példa felsorolja az `myResourceGroup` erőforráscsoport felületi virtuális GÉPHEZ (NAT) HOZZÁRENDELT teljes tartománynevet és nyilvános IP-címet. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>További lépések
-Szeretné beállítani saját NAT-ját az Azure-ban? Nyílt forráskódú, ingyenes, de erős? Akkor pf egy jó választás. A [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)sablon használatával mindössze öt percre van szükségünk ahhoz, hogy a FreeBSD PF használatával ciklikus multiplexeléses terheléselosztással rendelkező NAT tűzfalat állítsunk be az Azure-ban a közös webkiszolgáló-forgatókönyvekhez. 
+Be szeretné állítani saját NAT-adatait az Azure-ban? Nyílt forráskódú, ingyenes, de hatékony? Ezt követően a PF jó választás. A " [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)" sablon használatával mindössze öt percet kell beállítania a NAT-tűzfal ciklikus időszeleteléses terheléselosztással történő beállításához az Azure-beli FreeBSD PF használatával a gyakori webkiszolgálói forgatókönyvhöz. 
 
-Ha meg szeretnénk ismerni a FreeBSD ajánlatát az Azure-ban, [olvassa el az Azure-ban található FreeBSD bevezetést.](freebsd-intro-on-azure.md)
+Ha szeretné megismerni a FreeBSD Azure-beli ajánlatát, tekintse meg az Azure-beli [FreeBSD bemutatása](freebsd-intro-on-azure.md)című témakört.
 
-Ha többet szeretnénk tudni a PF-ről, látod a [FreeBSD kézikönyvét](https://www.freebsd.org/doc/handbook/firewalls-pf.html) vagy [a PF-User's Guide-ot.](https://www.freebsd.org/doc/handbook/firewalls-pf.html)
+Ha többet szeretne megtudni a PF-ről, tekintse meg a [FreeBSD kézikönyvét](https://www.freebsd.org/doc/handbook/firewalls-pf.html) vagy a [PF-User útmutatóját](https://www.freebsd.org/doc/handbook/firewalls-pf.html).

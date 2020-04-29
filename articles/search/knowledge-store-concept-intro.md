@@ -1,7 +1,7 @@
 ---
-title: Bevezetés a tudástárolóba (előzetes verzió)
+title: A Knowledge Store bemutatása (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: A bővített dokumentumokat az Azure Storage-ba küldheti, ahol megtekintheti, átformálhatja és felhasználhatja a bővített dokumentumokat az Azure Cognitive Search szolgáltatásban és más alkalmazásokban. Ez a funkció nyilvános előzetes verzióban érhető el.
+description: Gazdagított dokumentumokat küldhet az Azure Storage-ba, ahol megtekintheti, átalakíthatja és felhasználhatja a dúsított dokumentumokat az Azure Cognitive Search és más alkalmazásokban. Ez a funkció nyilvános előzetes verzióban érhető el.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942995"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Bevezetés a tudástárolókba az Azure Cognitive Search szolgáltatásban
+# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
 
 > [!IMPORTANT] 
-> A tudástároló jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió funkció szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) A [REST API 2019-05-06-preview verziója](search-api-preview.md) előnézeti funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-A tudástároló az Azure Cognitive Search olyan szolgáltatása, amely független elemzés vagy későbbi feldolgozás esetén megőrzi [az AI-dúsítási folyamat](cognitive-search-concept-intro.md) kimenetét. A *bővített dokumentum* egy folyamat kimenete, amely olyan tartalomból jön létre, amelyet AI-folyamatokkal kinyert, strukturált és elemzett. Egy szabványos AI-folyamatban a bővített dokumentumok átmenetiek, csak indexelés során használatosak, majd elvetik őket. A tudástárolóval a bővített dokumentumok megőrződnek. 
+A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy mesterséges elemzésre vagy az alsóbb rétegbeli feldolgozásra szolgáló AI-bővítési [folyamat](cognitive-search-concept-intro.md) kimenetét őrzi meg. A *dúsított dokumentum* egy folyamat kimenete, amely az AI-folyamatokkal kinyert, strukturált és elemzett tartalomból készült. A standard AI-folyamatokban a dúsított dokumentumok átmenetiek, csak indexelés során használhatók, majd elvetették őket. A Knowledge Store-ban a dúsított dokumentumok megmaradnak. 
 
-Ha a múltban kognitív képességeket használt, már tudja, hogy a *skillsets* áthelyezi a dokumentumot a dúsítások sorozatán keresztül. Az eredmény lehet egy keresési index, vagy (új ebben az előzetes verzióban) előrejelzések egy tudástárolóban. A két kimenet, a keresési index és a tudástároló ugyanannak a folyamatnak a termékei; ugyanabból a bemenetből származnak, de olyan kimenetet eredményeznek, amely strukturált, tárolt és nagyon eltérő módon használható.
+Ha korábban már használta a kognitív képességeket, már tudja, hogy a *szakértelmével* a bővítési folyamaton keresztül helyezi át a dokumentumot. Az eredmény lehet keresési index, vagy (ebben az előzetes verzióban új) vetítések egy Tudásbázisban. A két kimenet, a keresési index és a Knowledge Store azonos folyamat termékei. azonos bemenetből származtatva, de az olyan kimenetet eredményez, amely strukturált, tárolt és nagyon különböző módokon használható.
 
-Fizikailag a tudástároló az [Azure Storage,](https://docs.microsoft.com/azure/storage/common/storage-account-overview)vagy az Azure Table storage, az Azure Blob storage vagy mindkettő. Az Azure Storage-hoz csatlakoztatható bármely eszköz vagy folyamat felhasználhatja a tudástároló tartalmát.
+Fizikailag a Knowledge Store az [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), az Azure Table Storage, az Azure Blob Storage vagy mindkettő. Minden olyan eszköz vagy folyamat, amely képes az Azure Storage-hoz kapcsolódni, felhasználhatja a Tudásbázis tartalmát.
 
-![Tudástároló a folyamatábrán](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Tudástároló a folyamatábrán")
+![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Knowledge Store a folyamat ábráján")
 
-## <a name="benefits-of-knowledge-store"></a>A tudástároló előnyei
+## <a name="benefits-of-knowledge-store"></a>A Knowledge Store előnyei
 
-A tudástároló strukturálható, környezetet és tényleges tartalmat biztosít – strukturálatlan és félig strukturált adatfájlokból, például blobokból, elemzésen átesett képfájlokból vagy akár strukturált adatokból, új űrlapokká alakítva. Egy [lépésről lépésre forgatókönyv](knowledge-store-create-rest.md)ben láthatja első kézből, hogy egy sűrű JSON-dokumentum van felosztva alstruktúrák, új struktúrákká alakítva, és egyébként elérhetővé downstream folyamatok, például a gépi tanulás és az adatelemzési számítási feladatok.
+A Knowledge Store strukturálatlan és félig strukturált adatfájlok, például a Blobok, a képfájlok, illetve az elemzésen átesett, vagy akár strukturált adatok összegyűjtését is lehetővé teszi új űrlapokra. Egy [lépésenkénti útmutatóban](knowledge-store-create-rest.md)megtekintheti, hogy egy sűrű JSON-dokumentum hogyan osztható ki alstruktúrákba, új struktúrákba felépítve, és egyéb módon elérhetővé válik az alárendelt folyamatokhoz, például a gépi tanuláshoz és az adatelemzési feladatokhoz.
 
-Bár hasznos látni, hogy az AI-dúsítási folyamat mire képes, a tudástároló ban rejlő valódi potenciál az adatok átformálásának lehetősége. Előfordulhat, hogy egy alapvető skillset, majd iterálni rajta, hogy adjunk növekvő szintű struktúra, amely ezután kombinálni új struktúrák, fogyó eszközök más alkalmazásokban kívül az Azure Cognitive Search.
+Bár hasznos lehet megtekinteni, hogy mit hozhat létre a mesterséges intelligencia-bővítési folyamat, a Knowledge Store valódi potenciálja az Adatátalakítási képesség. Érdemes lehet egy alapszintű készségkészlet, majd megismételni a szerkezet növelését, amelyet később új struktúrákba, más alkalmazásokban pedig az Azure Cognitive Search is használhat.
 
-Számba vétele, az előnyök a tudás tárolására a következők:
+Enumerált, a Knowledge Store előnyei a következők:
 
-+ A bővített dokumentumokat a keresésen [kívüli elemzési és jelentéskészítő eszközökben](#tools-and-apps) használhatja fel. A Power BI power queryvel lenyűgöző választás, de az Azure Storage-hoz csatlakozni képes bármely eszköz vagy alkalmazás lehívhat egy ön által létrehozott tudástárolóból.
++ A kereséstől eltérő [elemzési és jelentéskészítő eszközökön](#tools-and-apps) a dúsított dokumentumokat használhatja. A Power BI a Power Query vonzó választás, de az Azure Storage-hoz csatlakoztatható bármely eszköz vagy alkalmazás lehívható a létrehozott Tudásbázisból.
 
-+ Finomítsa az AI-indexelési folyamatot hibakeresés közben, és a skillset-definíciók. A tudástároló egy ai-indexelési folyamat egy skillset definíciójának termékét jeleníti meg. Ezeket az eredményeket használhatja egy jobb skillset megtervezéséhez, mert pontosan láthatja, hogy néznek ki a dúsítások. A [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) használatával az Azure Storage egy tudástároló tartalmát tekintheti meg.
++ Egy AI-indexelési folyamat pontosítása a lépések és a készségkészlet-definíciók hibakeresése közben. A Tudásbázis egy AI-indexelési folyamat készségkészlet-definíciójának termékét jeleníti meg. Ezeket az eredményeket a jobb készségkészlet kialakításához használhatja, mert láthatja, hogy pontosan mit néz ki a gazdagítás. Az Azure Storage [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) használatával megtekintheti a Tudásbázis tartalmát.
 
-+ Alakítsa az adatokat új űrlapokká. Az átalakításkodik skillsets, de a lényeg az, hogy a skillset most már ezt a képességet. Az Azure Cognitive Search [Shaper-készsége](cognitive-search-skill-shaper.md) ki lett bővítve a feladat befogadására. Az átformálás lehetővé teszi olyan vetület definiálását, amely igazodik az adatok tervezett felhasználásához, miközben megőrzi a kapcsolatokat.
++ Az új űrlapokra alakítja az adathalmazt. Az átformálás a szakértelmével-ben kodifikált, de a lényeg az, hogy egy készségkészlet most már megadhatja ezt a képességet. A feladathoz való igazodás érdekében a [shapeer-képesség](cognitive-search-skill-shaper.md) az Azure Cognitive Search kiterjeszthető. Az átformálás lehetővé teszi, hogy olyan leképezést határozzon meg, amely igazodik az adatfelhasználáshoz a kapcsolatok megőrzése mellett.
 
 > [!Note]
-> Új a ai gazdagodás és a kognitív képességek? Az Azure Cognitive Search integrálja a Cognitive Services Vision és Language funkciók kivonat, és gazdagíthatja a forrásadatok optikai karakterfelismerés (OCR) képfájlok, entitásfelismerés és a kulcskifejezések kinyerése szöveges fájlokból, és így tovább. További információ: [AI dúsítása az Azure Cognitive Search.](cognitive-search-concept-intro.md)
+> Újdonságok a mesterséges intelligencia és a kognitív képességek terén? Az Azure Cognitive Search Cognitive Services látási és nyelvi funkciókkal integrálható és gazdagíthatja a forrásadatokat az optikai karakterfelismerés (OCR) révén a képfájlok, az entitások felismerése és a szöveges fájlokból kinyert kulcsfontosságú kifejezések használatával. További információ: [AI-bővítés az Azure Cognitive Searchban](cognitive-search-concept-intro.md).
 
-## <a name="physical-storage"></a>Fizikai tárolás
+## <a name="physical-storage"></a>Fizikai tárterület
 
-A tudástároló fizikai kifejeződése `projections` a Skillset `knowledgeStore` definíciójának elemén keresztül van kifejezve. A vetület úgy határozza meg a kimenet szerkezetét, hogy az megegyezik a tervezett felhasználással.
+A Tudásbázis fizikai kifejezése egy Készségkészlet `projections` `knowledgeStore` definíciójának elemein keresztül van megfogalmazva. A leképezés a kimenet szerkezetét határozza meg, hogy az megfeleljen a kívánt felhasználásnak.
 
-A kivetítések táblázatként, objektumként vagy fájlként tagolhatók.
+A vetítések táblázatként, objektumként vagy fájlként is megadhatók.
 
 ```json
 "knowledgeStore": { 
@@ -67,93 +67,93 @@ A kivetítések táblázatként, objektumként vagy fájlként tagolhatók.
         }
 ```
 
-Az ebben a struktúrában megadott vetülettípus határozza meg a tudástároló által használt tároló típusát.
+Az ebben a struktúrában megadott leképezés típusa határozza meg, hogy milyen típusú tárterületet használ a rendszer a Knowledge Store-ban.
 
-+ A táblatároló a `tables`definiáláskor használatos. Táblázatvetés definiálása, ha táblázatos jelentési struktúrákra van szüksége az analitikus eszközökbemenetekhez, vagy adatkeretekként más adattárakba exportálhat. A bővített `tables` dokumentumok részhalmazának vagy keresztmetszetének leéséhez több is megadható. Ugyanazon a vetítési csoporton belül a táblakapcsolatok megmaradnak, így mindegyikkel dolgozhat.
++ A tábla tárterületét a rendszer a `tables`definiálásakor használja. Definiáljon egy táblázatos leképezést, ha táblázatos jelentéskészítési struktúrákra van szüksége az analitikai eszközökbe való bemenetekhez vagy az adatkeretek más adattárakba való exportálásához. Több `tables` lehetőséget is megadhat a dúsított dokumentumok részhalmazának vagy keresztmetszetének lekéréséhez. Ugyanabban a kivetítési csoportban a tábla kapcsolatai megmaradnak, így dolgozhat együtt.
 
-+ A blobtároló a `objects` vagy `files`a definiálásakor használatos. A fizikai ábrázolása `object` egy hierarchikus JSON-struktúra, amely egy bővített dokumentumot képvisel. A `file` egy dokumentumból kinyert, a Blob storage-ba átvitt kép.
++ A blob Storage a vagy `objects` `files`a definiálásakor használatos. Az an `object` fizikai ábrázolása egy hierarchikus JSON-struktúra, amely egy dúsított dokumentumot jelöl. A `file` egy dokumentumból kinyert, érintetlenül továbbított rendszerkép a blob Storage-ba.
 
-Egyetlen vetítési `tables`objektum egy `objects`, `files`, , és számos esetben elegendő lehet egy vetítés létrehozása. 
+Egyetlen kivetítési objektum a,, `tables`, `objects`és `files`számos forgatókönyvhöz tartalmaz egy leképezést, ami elég lehet. 
 
-Azonban lehetőség van több vetületkészlet `table` - `object` - `file` létrehozására, és ezt megteheti, ha különböző adatkapcsolatokat szeretne. Egy készleten belül az adatok kapcsolódnak, feltéve, hogy ezek a kapcsolatok léteznek, és észlelhetők. Ha további készleteket hoz létre, az egyes csoportokban lévő dokumentumok soha nem kapcsolódnak egymáshoz. Több vetítési csoport használatára is példa lehet, ha ugyanazokat az adatokat szeretné előre jeltetni az online rendszerrel való használatra, és egy adott módon kell ábrázolni, akkor ugyanazokat az adatokat is ki szeretné jeleníteni egy olyan adatelemzési folyamatban, amely megjelenik Másképp.
+`table` - `object` - Azonban több `file` kivetítési készlet is létrehozható, és ha más adatkapcsolatokra van szüksége, akkor lehetséges. Egy készleten belül az adat kapcsolódik, feltéve, hogy ezek a kapcsolatok léteznek és észlelhetők. Ha további készleteket hoz létre, az egyes csoportokban lévő dokumentumok soha nem kapcsolódnak egymáshoz. Több vetületi csoport használatára például akkor lehet szükség, ha ugyanazt az adatmennyiséget szeretné használni az online rendszerhez, és egy adott módszert kell megjelenítenie, és ugyanazokat az adatelemzési folyamatokat kívánja használni, amelyeket más néven is tartalmaz.
 
 ## <a name="requirements"></a>Követelmények 
 
-[Az Azure Storage](https://docs.microsoft.com/azure/storage/) szükséges. Ez biztosítja a fizikai tárolás. Használhatja a Blob storage, Table storage vagy mindkettő. Blob storage érintetlen bővített dokumentumok, általában akkor, amikor a kimenet megy az alsóbb rétegbeli folyamatok. A táblázattárolás a bővített dokumentumok szeleteihez használható, amelyeket gyakran használnak elemzésre és jelentéskészítésre.
+Az [Azure Storage](https://docs.microsoft.com/azure/storage/) -t kötelező megadni. Fizikai tárterületet biztosít. A blob Storage-t, a Table Storage-t vagy mindkettőt használhatja. A blob Storage a nem ép, dúsított dokumentumokhoz használatos, általában akkor, ha a kimenet az alsóbb rétegbeli folyamatokra fog irányulni. A Table Storage az elemzéshez és jelentéskészítéshez gyakran használt, dúsított dokumentumokból álló szeletekhez használható.
 
-[Skillset](cognitive-search-working-with-skillsets.md) van szükség. Tartalmazza a `knowledgeStore` definíciót, és meghatározza a bővített dokumentum szerkezetét és összetételét. Nem hozhat létre tudástárolót üres skillset használatával. Legalább egy képességgel kell rendelkeznie egy skillsetben.
+A [készségkészlet](cognitive-search-working-with-skillsets.md) megadása kötelező. Tartalmazza a `knowledgeStore` definíciót, és meghatározza a dúsított dokumentumok szerkezetét és összeállítását. Nem hozhat létre a Knowledge Store-t üres készségkészlet használatával. A készségkészlet legalább egy képességgel rendelkeznie kell.
 
-[Indexelő](search-indexer-overview.md) szükséges. A skillset egy indexelő által meghívott, amely a végrehajtást. Indexelők jönnek a saját követelmények és attribútumok. E tulajdonságok közül több közvetlen hatással van a tudástárolóra:
+Az [Indexelő](search-indexer-overview.md) megadása kötelező. A készségkészlet egy indexelő hívja meg, amely a végrehajtást hajtja végre. Az indexelő a követelmények és attribútumok saját készletével rendelkeznek. Ezen attribútumok közül több közvetlen hatással van a Knowledge Store-ra:
 
-+ Az indexelők [nek egy támogatott Azure-adatforrásra](search-indexer-overview.md#supported-data-sources) van szükségük (a tudástárolót végső soron létrehozó folyamat az Azure-beli támogatott forrásból származó adatok lekérése). 
++ Az indexelő egy [támogatott Azure-adatforrást](search-indexer-overview.md#supported-data-sources) igényelnek (ez a folyamat, amely végső soron létrehozza a Knowledge Store-t, az Azure-ban támogatott forrásból származó adatok kihúzásával kezdődik). 
 
-+ Az indexelők keresési indexet igényelnek. Az indexelő megköveteli, hogy indexsémát adjon meg, még akkor is, ha soha nem tervezi használni. A minimális index egy karakterláncmezővel rendelkezik, amelyet kulcsként jelölnek meg.
++ Az indexelő keresési indexre van szükségük. Az indexelő megköveteli, hogy adjon meg egy index sémát, még akkor is, ha nem tervezi használni. A minimális indexnek egy sztring mezője van, amely kulcsként van kijelölve.
 
-+ Az indexelők opcionális mezőleképezéseket biztosítanak, amelyek a forrásmezők célmezőhöz való aliasaként szolgálnak. Ha az alapértelmezett mezőleképezést módosítani kell (más nevet vagy típust kell használni), létrehozhat egy [mezőleképezést](search-indexer-field-mappings.md) az indexelőn belül. A tudástároló kimenete esetén a cél lehet egy mező egy blob objektumban vagy táblában.
++ Az indexelő nem kötelező mező-hozzárendeléseket biztosít, amelyek a forrás mezőnek a cél mezőhöz való aliasához használatosak. Ha az alapértelmezett mező-hozzárendelést módosítani kell (más nevet vagy típust kell használnia), létrehozhat egy [mező-hozzárendelést](search-indexer-field-mappings.md) az indexelő alkalmazásban. A Knowledge Store kimenete esetében a cél lehet egy blob-objektum vagy-tábla mezője.
 
-+ Indexelők ütemezések és egyéb tulajdonságok, például a különböző adatforrások által biztosított változásészlelési mechanizmusok, is alkalmazható a tudástárolóban. A tartalom frissítéséhez például rendszeres időközönként [ütemezheti](search-howto-schedule-indexers.md) a dúsítást. 
++ Az indexelő olyan ütemtervekkel és egyéb tulajdonságokkal rendelkezik, mint például a különböző adatforrások által biztosított változások észlelési mechanizmusai, szintén alkalmazhatók egy Tudásbázisban. A tartalom frissítését például rendszeres időközönként is [beütemezhetjük](search-howto-schedule-indexers.md) . 
 
-## <a name="how-to-create-a-knowledge-store"></a>Hogyan hozzunk létre egy tudás tárolására
+## <a name="how-to-create-a-knowledge-store"></a>Tudásbázis létrehozása
 
-Tudástár létrehozásához használja a portált vagy`api-version=2019-05-06-Preview`az előzetes REST API - ).
+A Knowledge Store létrehozásához használja a portált vagy az előzetes verziójú`api-version=2019-05-06-Preview`REST API ().
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Az **Adatok importálása** varázsló tudástároló létrehozásának lehetőségeit tartalmazza. A kezdeti feltáráshoz [hozza létre az első tudástárolót négy lépésben.](knowledge-store-connect-power-bi.md)
+Az **adat importálása** varázsló a Tudásbázis létrehozási lehetőségeit tartalmazza. A kezdeti feltáráshoz [négy lépésben hozza létre első tudásbázisát](knowledge-store-connect-power-bi.md).
 
-1. Jelöljön ki egy támogatott adatforrást.
+1. Válasszon egy támogatott adatforrást.
 
-1. Adja meg a dúsítást: erőforrás csatolása, képzettségek kiválasztása és tudástár megadása. 
+1. Adja meg a dúsítást: csatoljon egy erőforrást, válassza a képességek lehetőséget, és adjon meg egy tudásbázist. 
 
-1. Indexséma létrehozása. A varázsló megköveteli, és következtetni az egyik az Ön számára.
+1. Hozzon létre egy index sémát. A varázslónak szüksége van rá, és következtetni tud az Ön számára.
 
-1. Futtassa a varázslót. A kibontás, a dúsítás és a tárolás ebben az utolsó lépésben történik.
+1. Futtassa a varázslót. A kinyerési, bővítési és tárolási művelet az utolsó lépésben történik.
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>A Szakértelem-készlet létrehozása és az előzetes REST API használata
+### <a name="use-create-skillset-and-the-preview-rest-api"></a>Használja a Create Készségkészlet és az előnézet REST API
 
-Az `knowledgeStore` a egy [skillset-en](cognitive-search-working-with-skillsets.md)belül van meghatározva , amelyet viszont egy [indexelő](search-indexer-overview.md)hív meg . A bővítés során az Azure Cognitive Search létrehoz egy helyet az Azure Storage-fiókban, és a bővített dokumentumokat blobként vagy táblákba vetíti ki, a konfigurációtól függően.
+`knowledgeStore` A definiálva van egy [készségkészlet](cognitive-search-working-with-skillsets.md)belül, amelyet egy [Indexelő](search-indexer-overview.md)hív meg. A dúsítás során az Azure Cognitive Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a konfigurációtól függően blobként vagy táblázatként adja meg.
 
-Jelenleg az előzetes REST API az egyetlen mechanizmus, amellyel programozott módon hozhat létre tudástárolót. Egy egyszerű módja annak, hogy tárja [fel, hogy hozza létre az első tudás tárolására segítségével Postman és a REST API.](knowledge-store-create-rest.md)
+Jelenleg az előzetes verzió REST API az egyetlen olyan mechanizmus, amellyel programozott módon hozhat létre egy Knowledge Store-t. A könnyebben felderíthető megoldás az [első Knowledge áruház létrehozása a Poster és a REST API használatával](knowledge-store-create-rest.md).
 
-Az előzetes verziójú szolgáltatás referenciatartalma a cikk [API-referenciaszakaszában](#kstore-rest-api) található. 
+Az előzetes verziójú szolgáltatásra vonatkozó hivatkozási tartalom a jelen cikk [API-hivatkozás](#kstore-rest-api) szakaszában található. 
 
 <a name="tools-and-apps"></a>
 
-## <a name="how-to-connect-with-tools-and-apps"></a>Hogyan lehet csatlakozni az eszközökhöz és az alkalmazásokhoz
+## <a name="how-to-connect-with-tools-and-apps"></a>Kapcsolódás eszközökhöz és alkalmazásokhoz
 
-Miután a dúsítások léteznek a tárolóban, az Azure Blobhoz vagy a Table storage-hoz csatlakozó eszközök vagy technológiák felhasználhatók a tartalom feltárására, elemzésére vagy felhasználására. A következő lista a kezdet:
+Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table Storage-hoz kapcsolódó bármilyen eszköz vagy technológia használható a tartalmak feltárására, elemzésére és felhasználására. A következő lista a kezdete:
 
-+ [A Storage Explorer](knowledge-store-view-storage-explorer.md) a bővített dokumentumszerkezet és -tartalom megtekintéséhez. Tekintsük ezt a tudástároló tartalmának megtekintésére szolgáló alapeszköznek.
++ [Storage Explorer](knowledge-store-view-storage-explorer.md) a dúsított dokumentum-struktúra és-tartalom megtekintéséhez. Tekintse meg ezt az alapkonfigurációként szolgáló eszközként a Knowledge Store-tartalmak megtekintéséhez.
 
-+ [Power BI](knowledge-store-connect-power-bi.md) jelentéskészítéshez és elemzéshez. 
++ Jelentéskészítés és elemzés [Power bi](knowledge-store-connect-power-bi.md) . 
 
-+ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) további manipuláció.
++ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) a további manipulációhoz.
 
 <a name="kstore-rest-api"></a>
 
 ## <a name="api-reference"></a>API-referencia
 
-REST API-verzió `2019-05-06-Preview` tudástárolására további definíciók révén skillsets. A hivatkozás mellett lásd: [Tudástár létrehozása postán az](knowledge-store-create-rest.md) API-k hívásának részleteiért.
+A REST API `2019-05-06-Preview` verziója a szakértelmével további definíciói alapján biztosítja a Knowledge Store-t. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
 
-+ [Skillset létrehozása (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [Skillset frissítése (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Készségkészlet létrehozása (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Készségkészlet frissítése (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A tudástároló a bővített dokumentumok megőrzését kínálja, hasznos egy skillset tervezésekor, vagy új struktúrák és tartalmak létrehozása az Azure Storage-fiók elérésére képes ügyfélalkalmazások számára.
+A Knowledge Store az Azure Storage-fiókokhoz való hozzáférésre alkalmas bármely ügyfélalkalmazás által a készségkészlet tervezésekor hasznosnak tartja a dúsított dokumentumok megőrzését, illetve az új struktúrák és tartalmak felhasználását.
 
-A bővített dokumentumok létrehozásának legegyszerűbb módja [a portálon keresztül](knowledge-store-create-portal.md)történik, de használhatja a Postman és a REST API-t is, ami hasznosabb, ha betekintést szeretne kapni az objektumok létrehozásának és hivatkozásának módjába.
-
-> [!div class="nextstepaction"]
-> [Tudástár létrehozása postás és rest használatával](knowledge-store-create-rest.md)
-
-Ha többet szeretne megtudni az előrejelzésekről, a képességekről és arról, hogyan [definiálja őket egy skillsetben](knowledge-store-projection-overview.md)
+A bővített dokumentumok létrehozásának legegyszerűbb megközelítése [a portálon keresztül](knowledge-store-create-portal.md)történik, de a Poster és a REST API is használható, ami akkor hasznos, ha az objektumok létrehozásának és hivatkozásának módját szeretné megtekinteni.
 
 > [!div class="nextstepaction"]
-> [Előrejelzések egy tudástárban](knowledge-store-projection-overview.md)
+> [Knowledge Store létrehozása a Poster és a REST használatával](knowledge-store-create-rest.md)
 
-A speciális vetítések fogalmait lefedő oktatóanyag, mint a szeletelés, a szövegközi formázás és a kapcsolatok, kezdje [a tudástárolóban lévő kivetítések meghatározásával](knowledge-store-projections-examples.md)
+További információ a kivetítésekről, a képességekről és a [készségkészlet való definiálásáról](knowledge-store-projection-overview.md)
 
 > [!div class="nextstepaction"]
-> [Vetületek definiálása tudástárolóban](knowledge-store-projections-examples.md)
+> [Kivetítések a Knowledge Store-ban](knowledge-store-projection-overview.md)
+
+A speciális kivetítésekkel kapcsolatos fogalmakkal, például a szeleteléssel, a beágyazott formázással és a kapcsolatokkal, a [kivetítések meghatározása a Tudásbázisban](knowledge-store-projections-examples.md) című oktatóanyagban
+
+> [!div class="nextstepaction"]
+> [Kivetítések meghatározása a Knowledge Store-ban](knowledge-store-projections-examples.md)

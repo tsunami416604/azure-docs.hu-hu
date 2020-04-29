@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943881"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
@@ -37,7 +37,7 @@ Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiók
 Néhány dolog, amire az alkalmazás futtatásához szüksége lesz:
 
 * A Node.js 8-as vagy újabb verziója
-* A Bing Search API előfizetési kulcsa. Ha még nem rendelkezik ilyen, [Hozzon létre egy Bing Search v7 erőforrást.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) Próbakulcsot is [trial key](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)használhat.
+* A Bing Search API-hoz tartozó előfizetési kulcs. Ha még nem rendelkezik ilyennel, [hozzon létre egy Bing Search v7-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)is.
 ## <a name="get-the-source-code-and-install-dependencies"></a>A forráskód és a telepítési függőségek beszerzése
 
 Az első lépés az adattár klónozása a mintaalkalmazás forráskódjával.
@@ -127,7 +127,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amelykét állapotból áll: `strict` vagy `moderate`.
+A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amely két állapottal rendelkezik: `strict` vagy `moderate`.
 
 Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `promote` paraméter használata mellett az `answerCount` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
 > [!NOTE]

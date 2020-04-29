@@ -1,6 +1,6 @@
 ---
-title: C# IoT Edge modul az Azure Data Box Edge-hez | Microsoft dokumentumok
-description: Ismerje meg, hogyan fejleszthet egy C# IoT Edge-modult, amely telepíthető a Data Box Edge-en.
+title: C# IoT Edge modul Azure Data Box Edgehoz | Microsoft Docs
+description: Megtudhatja, hogyan fejleszthet egy C# IoT Edge modult, amely telepíthető a Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,122 +9,122 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942549"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>C# IoT Edge modul fejlesztése a Data Box Edge fájljainak áthelyezéséhez
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Data Box Edgeba való áthelyezéséhez
 
-Ez a cikk bemutatja, hogyan hozhat létre egy IoT Edge-modult a Data Box Edge-eszközzel való üzembe helyezéshez. Az Azure Data Box Edge egy olyan tárolási megoldás, amelynek használatával adatokat dolgozhat fel, majd egy hálózaton keresztül elküldheti azokat az Azure-ba.
+Ez a cikk bemutatja, hogyan hozhat létre IoT Edge modult a Data Box Edge eszközzel történő üzembe helyezéshez. Az Azure Data Box Edge egy olyan tárolási megoldás, amelynek használatával adatokat dolgozhat fel, majd egy hálózaton keresztül elküldheti azokat az Azure-ba.
 
-Az Azure IoT Edge-modulokat a Data Box Edge-tel együtt az Azure-ba való áthelyezéssorán átalakíthatja. A jelen cikkben használt modul megvalósítja a logikát, hogy egy fájlt egy helyi megosztásról egy felhőmegosztásra másolja a Data Box Edge-eszközön.
+Az Azure-ba való áttelepítése során Azure IoT Edge modulokat is használhat a Data Box Edge. A cikkben használt modul azt a logikát valósítja meg, hogy egy helyi megosztásból származó fájlt egy Felhőbeli megosztásra másoljon a Data Box Edge eszközön.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Hozzon létre egy tároló beállításjegyzék et a modulok (Docker-rendszerképek) tárolására és kezelésére.
-> * Hozzon létre egy IoT Edge-modult a Data Box Edge-eszközön való üzembe helyezéshez.
+> * Hozzon létre egy tároló-beállításjegyzéket a modulok tárolásához és kezeléséhez (Docker-lemezképek).
+> * Hozzon létre egy IoT Edge modult a Data Box Edge eszközön való üzembe helyezéshez.
 
 
-## <a name="about-the-iot-edge-module"></a>Az IoT Edge modul
+## <a name="about-the-iot-edge-module"></a>Tudnivalók a IoT Edge modulról
 
-A Data Box Edge-eszköz telepítheti és futtathatja az IoT Edge-modulokat. Peremhálózati modulok lényegében Docker-tárolók, amelyek egy adott feladatot hajtanak végre, például egy üzenetet egy eszközről, átalakítegy üzenetet, vagy üzenetet küldeni egy IoT Hub. Ebben a cikkben létrehoz egy modult, amely fájlokat másol egy helyi megosztásról egy felhőmegosztásra a Data Box Edge-eszközön.
+A Data Box Edge eszközön IoT Edge modulokat telepíthet és futtathat. Az Edge-modulok lényegében olyan Docker-tárolók, amelyek egy adott feladatot hajtanak végre, például üzeneteket töltenek le egy eszközről, átalakítanak egy üzenetet, vagy üzeneteket küldenek egy IoT Hubnak. Ebben a cikkben egy olyan modult fog létrehozni, amely egy helyi megosztásból másol fájlokat egy felhőalapú megosztásra a Data Box Edge eszközön.
 
-1. A fájlok a Data Box Edge eszköz helyi megosztására kerülnek.
-2. A fájlesemény-generátor létrehoz egy fájleseményt a helyi megosztásra írt minden fájlhoz. A fájlesemények akkor is létrejönnek, amikor egy fájlt módosítanak. A fájlesemények ezután elküldésre kerülnek az IoT Edge Hubba (az IoT Edge futásidejű).
-3. Az IoT Edge egyéni modul feldolgozza a fájleseményt egy fájlesemény-objektum létrehozásához, amely a fájl relatív elérési útját is tartalmazza. A modul abszolút elérési utat hoz létre a relatív fájlelérési út használatával, és másolja a fájlt a helyi megosztásról a felhőmegosztásra. A modul ezután törli a fájlt a helyi megosztásról.
+1. A fájlok a Data Box Edge eszköz helyi megosztására íródnak.
+2. A fájl esemény-előállítója létrehoz egy fájl eseményt a helyi megosztásba írt minden fájlhoz. A fájlra vonatkozó eseményeket a rendszer a fájl módosításakor is létrehozza. A rendszer ezután elküldi a fájl eseményeit IoT Edge hubhoz (IoT Edge futtatókörnyezetben).
+3. A IoT Edge egyéni modul feldolgozza a fájl eseményt, hogy létrehozzon egy fájl-esemény objektumot, amely a fájl relatív elérési útját is tartalmazza. A modul egy abszolút elérési utat generál a fájl relatív elérési útjával, és átmásolja a fájlt a helyi megosztásról a Felhőbeli megosztásra. A modul ezután törli a fájlt a helyi megosztásról.
 
-![Hogyan működik az Azure IoT Edge modul a Data Box Edge-en?](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge modul működése Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
-Miután a fájl a felhőmegosztásban van, automatikusan feltölti az Azure Storage-fiókjába.
+Ha a fájl a Felhőbeli megosztásban van, a rendszer automatikusan feltölti az Azure Storage-fiókjába.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- A Data Box Edge eszköz, amely fut.
+- Egy rendszert futtató Data Box Edge eszköz.
 
-    - Az eszköz is rendelkezik egy társított IoT Hub-erőforrás.
-    - Az eszköz Edge számítási szerepkör konfigurálva van.
-    További információ: [A számítási beállítás](data-box-edge-deploy-configure-compute.md#configure-compute) a Data Box Edge-hez című területen.
+    - Az eszközhöz hozzá van rendelve IoT Hub erőforrás is.
+    - Az eszközön van konfigurált peremhálózati számítási szerepkör.
+    További információért látogasson el a Data Box Edge [számításának beállítása](data-box-edge-deploy-configure-compute.md#configure-compute) című témakörre.
 
-- A következő fejlesztési források:
+- A következő fejlesztői erőforrások:
 
-    - [Visual Studio kód](https://code.visualstudio.com/).
+    - [Visual Studio Code](https://code.visualstudio.com/).
     - [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-    - [Azure IoT Edge-bővítmény a Visual Studio-kódhoz.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+    - [Azure IoT Edge bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)-hoz.
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Előfordulhat, hogy a szoftver letöltéséhez és telepítéséhez fiókot kell létrehoznia.
+    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Előfordulhat, hogy létre kell hoznia egy fiókot a szoftver letöltéséhez és telepítéséhez.
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker-beállításjegyzék-szolgáltatás az Azure Container Registry és a Docker Hub. Ez a cikk a tárolóbeállítás-nyilvántartást használja.
+Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
-1. Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
-2. Válassza **az Erőforrás > tárolók > tárolók beállításjegyzékének létrehozása lehetőséget.** Kattintson **a Létrehozás gombra.**
-3. Adja meg:
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás**gombra.
+3. Nyújt
 
-   1. Az Azure-on belüli egyedi **rendszerleíró adatbázis név,** amely 5–50 alfanumerikus karaktert tartalmaz.
-   2. **Válasszon egy előfizetést**.
-   3. Hozzon létre új vagy válasszon egy meglévő **erőforráscsoportot**.
-   4. Válasszon egy **helyet**. Azt javasoljuk, hogy ez a hely megegyezik a Data Box Edge erőforrástársított.
+   1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
+   2. Válasszon egy **előfizetést**.
+   3. Hozzon létre egy új csoportot, vagy válasszon ki egy meglévő **erőforráscsoportot**.
+   4. Válasszon egy **helyet**. Azt javasoljuk, hogy ez a hely azonos legyen a Data Box Edge erőforráshoz társított hellyel.
    5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-   6. Állítsa a **termékváltozatot Alapszintűre.**
+   6. Az SKU beállítása **alapszintű**értékre.
 
       ![Tárolóregisztrációs adatbázis létrehozása](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Kattintson a **Létrehozás** gombra.
 5. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet.
 
-    ![Hozzáférési kulcsok beszerezése](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
+    ![Hozzáférési kulcsok beolvasása](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
  
-6. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezeket az értékeket később a Docker-rendszerkép közzétételére a beállításjegyzékben, és adja hozzá a rendszerleíró hitelesítő adatokat az Azure IoT Edge futásidejű.
+6. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezekkel az értékekkel később közzéteheti a Docker-rendszerképet a beállításjegyzékben, és hozzáadhatja a beállításjegyzékbeli hitelesítő adatokat a Azure IoT Edge Runtime szolgáltatáshoz.
 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 
-A következő lépések a .NET Core 2.1 SDK alapján ioT Edge modulprojektet hoznak létre. A projekt a Visual Studio-kódot és az Azure IoT Edge bővítményt használja.
+A következő lépésekkel hozzon létre egy IoT Edge modul-projektet a .NET Core 2,1 SDK alapján. A projekt a Visual Studio Code és a Azure IoT Edge bővítményt használja.
 
 ### <a name="create-a-new-solution"></a>Új megoldás létrehozása
 
 Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. A Visual Studio-kódban válassza **a > parancspaletta megtekintése** lehetőséget a VS Code parancspaletta megnyitásához.
+1. A Visual Studio Code-ban válassza a **megtekintés > parancs paletta** elemet a vs Code parancs paletta megnyitásához.
 2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
     1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni.
     2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
     
-        ![Új megoldás létrehozása 1](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
+        ![1. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
 
-    3. Válassza a **C# modul** modulsablont.
-    4. Cserélje le az alapértelmezett modulnevet a hozzárendelni kívánt névre, ebben az esetben a **FileCopyModule**.
+    3. Válassza a **C# modult** modul sablonként.
+    4. Cserélje le az alapértelmezett modul nevét a hozzárendelni kívánt névre, ebben az esetben ez a **FileCopyModule**.
     
         ![Új megoldás létrehozása 2](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
 
-    5. Adja meg az előző szakaszban létrehozott tárolóbeállításjegyzéket az első modul képtárházaként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
+    5. Adja meg az előző szakaszban létrehozott tároló-beállításjegyzéket az első modul rendszerkép-tárháza. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
 
-        Az utolsó karakterlánc `<Login server name>/<Module name>`így néz ki. Ebben a példában a `mycontreg2.azurecr.io/filecopymodule`karakterlánc a következő: .
+        A végső sztring így néz `<Login server name>/<Module name>`ki. Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule`.
 
-        ![Új megoldás létrehozása 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
+        ![3. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
-4. Nyissa meg **a Fájl > Mappa megnyitása .**
+4. **Nyissa meg a fájl > Megnyitás mappát**.
 
-    ![Új megoldás létrehozása 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
+    ![4. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Tallózással és mutasson a korábban létrehozott **EdgeSolution** mappára. A VS Code ablak betölti az IoT Edge-megoldás munkaterületét az öt legfelső szintű összetevővel. A cikkben szereplő **.vscode,** **.gitignore** fájl, **.env** fájl és **deployment.template.json** nem szerkeszti.
+5. Tallózással keresse meg a korábban létrehozott **EdgeSolution** mappát, és mutasson rá. A VS Code ablak az öt legfelső szintű összetevővel tölti be IoT Edge megoldás munkaterületét. Ebben a cikkben nem módosítja a **. vscode** mappát, a **. gitignore** fájlt, az **. env** fájlt és a **Deployment. template. JSON** fájlt.
     
-    Az egyetlen módosított összetevő a modulok mappája. Ez a mappa rendelkezik a modul C# kódjával és a Docker-fájlokkal a modul tárolórendszerképként való létrehozásához.
+    Az egyetlen módosítható összetevő a modulok mappa. Ez a mappa a modul és a Docker-fájlok C# kódját adja meg a modul tároló képként való felépítéséhez.
 
     ![Új megoldás létrehozása 5](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A VS Code explorer ben nyissa meg **a FileCopyModule > > modulokat Program.cs**.
-2. A **FileCopyModule névtér**tetején adja hozzá a következőket a később használt típusok utasításainak használatával. **A Microsoft.Azure.Devices.Client.Transport.Mqtt** egy protokoll az IoT Edge Hubnak történő üzenetek küldésére.
+1. A VS Code Explorerben nyissa meg a **modules > FileCopyModule > program.cs**.
+2. A **FileCopyModule névtér**tetején adja hozzá a következő using utasításokat a később használt típusokhoz. A **Microsoft. Azure. Devices. Client. Transport. Mqtt** egy protokoll, amely üzeneteket küld IoT Edge hubhoz.
 
     ```
     namespace FileCopyModule
@@ -132,7 +132,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
         using Microsoft.Azure.Devices.Client.Transport.Mqtt;
         using Newtonsoft.Json;
     ```
-3. Adja hozzá az **InputFolderPath** és **a OutputFolderPath** változót a Program osztályhoz.
+3. Adja hozzá a **InputFolderPath** és a **OutputFolderPath** változót a program osztályhoz.
 
     ```
     class Program
@@ -142,7 +142,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Közvetlenül az előző lépés után adja hozzá a **FileEvent** osztályt az üzenet törzsének meghatározásához.
+4. Közvetlenül az előző lépés után adja hozzá a **FileEvent** osztályt az üzenet törzsének definiálásához.
 
     ```
     /// <summary>
@@ -158,7 +158,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-5. Az **Init metódusban**a kód létrehoz és konfigurál egy **ModuleClient** objektumot. Ez az objektum lehetővé teszi, hogy a modul csatlakozzon a helyi Azure IoT Edge futásidő mqtt protokoll használatával üzenetek küldésére és fogadására. Az Init metódusban használt kapcsolati sztringet az IoT Edge-futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívási üzenetek fogadására egy IoT Edge hub a **bemeneti1** végponton keresztül. Cserélje le az **Init metódust** a következő kódra.
+5. Az **init metódusban**a kód egy **ModuleClient** objektumot hoz létre és konfigurál. Ez az objektum lehetővé teszi, hogy a modul az üzenetek küldéséhez és fogadásához a helyi Azure IoT Edge futtatókörnyezethez kapcsolódjon MQTT protokoll használatával. Az Init metódusban használt kapcsolati sztringet az IoT Edge-futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívást, hogy üzeneteket fogadjon egy IoT Edge hubhoz az **input1** -végponton keresztül. Cserélje le az **init metódust** a következő kódra.
 
     ```
     /// <summary>
@@ -180,7 +180,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-6. Távolítsa el a **PipeMessage metódus** kódját, és a helyére szúrja be a **FileCopy**kódot.
+6. Távolítsa el a **PipeMessage metódus** kódját, és helyezze be a helyére a **FileCopy**kódot.
 
     ```
         /// <summary>
@@ -238,42 +238,42 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     ```
 
 7. Mentse el ezt a fájlt.
-8. A [projekthez meglévő kódmintát is letölthet.](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) Ezután ellenőrizheti a mintában szereplő **program.cs** fájllal mentett fájlt.
+8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a minta **program.cs** fájljában mentett fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
-Az előző szakaszban létrehozott egy IoT Edge-megoldást, és kódot adott hozzá a FileCopyModule-hoz a helyi megosztásból a felhőmegosztásba fájlok másolásához. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
+Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a FileCopyModule, hogy fájlokat másoljon a helyi megosztásból a Felhőbeli megosztásba. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. A VSCode-ban nyissa meg az új Visual Studio Code integrált terminált > új Visual Studio Code integrált terminálmegnyitásához.
-2. Jelentkezzen be a Dockerbe a következő parancs beírásával az integrált terminálon.
+1. A VSCode-ben nyissa meg a Terminal > New Terminal új Visual Studio Code integrált terminál megnyitásához.
+2. Jelentkezzen be a Docker-be a következő parancs beírásával az integrált terminálon.
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Használja a tároló beállításjegyzékéből másolt bejelentkezési kiszolgálót és felhasználónevet.
+    Használja a tároló-beállításjegyzékből másolt bejelentkezési kiszolgálót és felhasználónevet.
 
-    ![IoT Edge megoldás létrehozása és leküldése](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
+    ![IoT Edge-megoldás létrehozása és leküldése](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 
-2. Amikor a rendszer jelszót kér, adja meg a jelszót. A bejelentkezési kiszolgáló, a felhasználónév és a jelszó értékeit is lekérheti az Azure Portal tárolóbeállításában lévő **access keys** ből.
+2. Ha a rendszer jelszót kér, adja meg a jelszót. A bejelentkezési kiszolgáló, a Felhasználónév és a jelszó értékeit a Azure Portal tároló beállításjegyzékének **hozzáférési kulcsaiból** is lekérheti.
  
-3. Miután a hitelesítő adatok at megadott, leküldéses a modul lemezképet az Azure-tároló beállításjegyzékbe. A VS Code Explorerben kattintson a jobb gombbal a **module.json** fájlra, és válassza **az IoT Edge-megoldás összeállítása és leküldése lehetőséget.**
+3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **Module. JSON** fájlra, és válassza a **IoT Edge megoldás kiépítése és leküldése**lehetőséget.
 
-    ![IoT Edge megoldás létrehozása és leküldése](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![IoT Edge-megoldás létrehozása és leküldése](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
-    Amikor azt mondja a Visual Studio Code-nak a megoldás létrehozásához, két parancsot futtat az integrált terminálon: a docker build et és a docker push-ot. A két parancs létrehozza a kódot, tárolóba helyezi a CSharpModule.dll fájlt, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba.
+    Ha közli a Visual Studio Code-ot a megoldás létrehozásával, az integrált terminálon két parancsot futtat: a Docker Build és a Docker push. A két parancs létrehozza a kódot, tárolóba helyezi a CSharpModule.dll fájlt, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba.
 
-    A rendszer kérni fogja a modulplatform kiválasztását. Válassza ki a Linuxnak megfelelő *amd64* lehetőséget.
+    A rendszer kérni fogja a modul platformjának kiválasztását. Válassza ki a Linux rendszernek megfelelő *amd64* elemet.
 
     ![Platform kiválasztása](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
     > Csak a Linux-modulok támogatottak.
 
-    A következő figyelmeztetés jelenhet meg, amelyet figyelmen kívül hagyhat:
+    A következő figyelmeztetést láthatja, amelyet figyelmen kívül hagyhat:
 
-    *Program.cs(77,44): figyelmeztetés CS1998: Ez az aszinkron módszer nem rendelkezik "await" operátorokkal, és szinkronmódon fog futni. Fontolja meg a "await" operátor használatával a nem blokkoló API-hívások megvárására, vagy a "await Task.Run(...)" (Feladathoz kötött) futtatási(...) - a háttérszálon végzett CPU-kötésű munka elvégzéséhez.*
+    *Program. cs (77, 44): figyelmeztetési CS1998: ez az aszinkron metódus nem rendelkezik "várakozási" operátorral, és szinkronban fog futni. Érdemes lehet a "várakozás" operátort használni, hogy a nem blokkoló API-hívásokat, vagy a "várakozási feladat. Run (...)" metódust használja a CPU-kötésű működéshez a háttérben futó szálon.*
 
-4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcím a module.json fájlban található , a `<repository>:<version>-<platform>`formátumú információból épül fel. Ebben a cikkben így `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`kell kinéznie.
+4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a Module. JSON fájlban található, formátummal `<repository>:<version>-<platform>`ellátott információ alapján építették. Ehhez a cikkhez hasonlóan `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`kell kinéznie.
 
 ## <a name="next-steps"></a>További lépések
 
-A modul Data Box Edge-en történő üzembe helyezéséhez és futtatásához olvassa el a [Modul hozzáadása](data-box-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.
+A modul Data Box Edgeon való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](data-box-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.

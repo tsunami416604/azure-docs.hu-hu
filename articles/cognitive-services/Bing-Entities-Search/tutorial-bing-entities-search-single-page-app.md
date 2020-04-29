@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Bing Entity Search egyoldalas webalkalmazás'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan használhatja a Bing Entity Search API-t egyegyoldalas webalkalmazásban.
+description: Ez az oktatóanyag bemutatja, hogyan használható a Bing Entity Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943137"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
@@ -58,7 +58,7 @@ Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag követéséhez előfizetési kulcsokra van szükség a Bing Search API-hoz és a Bing Maps API-hoz. Ha nem rendelkezik velük, használhat [próbakulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és [egy egyszerű Bing Térképek-kulcsot.](https://www.microsoft.com/maps/create-a-bing-maps-key)
+Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz és a Bing Maps API-hoz. Ha nem rendelkezik ezekkel, használhat egy [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapszintű Bing Maps-kulcsot](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 
@@ -90,7 +90,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 
 Annak érdekében, hogy a Bing Search és a Bing Térképek API előfizetői kulcsait ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk a kulcsokat. Ha a rendszer nem tárolta valamelyik kulcsot, akkor rákérdezünk, és tároljuk későbbi használatra. Ha az API később elutasítja a kulcsot, akkor érvénytelenítjük a tárolt kulcsot, ezért a következő keresésnél újra rá kell kérdeznünk a felhasználónál.
 
-Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```javascript
 // cookie names for data we store
@@ -167,7 +167,7 @@ A `bingSearchOptions()` nem kezeli a `mapquery` mezőt, mert a rendszer ezt a Bi
 
 ## <a name="obtaining-a-location"></a>Hely koordinátáinak beszerzése
 
-A Bing Maps [ `locationQuery` ](//msdn.microsoft.com/library/ff701711.aspx)API egy módszert kínál, amelyet a felhasználó által megadott hely szélességének és hosszúságának megtalálására használunk. Ezeket a koordinátákat ezután a Bing Entity Search API-nak továbbítjuk a felhasználó kérésével együtt. A keresési eredmények a fontossági sorrendben előbbre helyezik azokat a helyeket, amelyek a megadott helyhez közel találhatók.
+A Bing Maps API egy [ `locationQuery` metódust](//msdn.microsoft.com/library/ff701711.aspx)kínál, amelyet a felhasználó által megadott hely szélességének és hosszúságának megkeresésére használunk. Ezeket a koordinátákat ezután a Bing Entity Search API-nak továbbítjuk a felhasználó kérésével együtt. A keresési eredmények a fontossági sorrendben előbbre helyezik azokat a helyeket, amelyek a megadott helyhez közel találhatók.
 
 A Bing Térképek API nem érhető el egy átlagos `XMLHttpRequest` lekérdezéssel egy webalkalmazásban, mert a szolgáltatás nem támogatja az eltérő eredetű lekérdezéseket. Szerencsére viszont támogatja a JSONP-t (a „P” a „padded”, azaz kitöltött szót jelöli). A JSONP-válasz egy függvényhívásba ágyazott, átlagos JSON-válasz. A kérelem létrehozásához a rendszer egy `<script>` címkét szúr be a dokumentumba. (A szkriptek betöltését nem befolyásolják a böngésző biztonsági szabályzatai.)
 

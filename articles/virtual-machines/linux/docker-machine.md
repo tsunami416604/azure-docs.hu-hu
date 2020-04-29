@@ -1,6 +1,6 @@
 ---
-title: Linux-gazdagépek létrehozása a Docker Machine segítségével
-description: Bemutatja, hogyan hozhat létre Docker-gazdagépeket a Docker-gép használatával az Azure-ban.
+title: Linux-gazdagépek létrehozása a Docker Machine használatával
+description: Ismerteti, hogyan hozhat létre Docker-gazdagépeket az Azure-ban a Docker Machine használatával.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.devlang: multiple
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968805"
 ---
-# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>A Docker Machine használata gazdagépek létrehozásához az Azure-ban
-Ez a cikk részletezi, hogyan hozhat létre állomásokat a [Docker Machine](https://docs.docker.com/machine/) használatával az Azure-ban. A `docker-machine` parancs létrehoz egy Linux virtuális gépet (VM) az Azure-ban, majd telepíti a Dockert. Ezután kezelheti a Docker-állomások at Az Azure-ban ugyanazokat a helyi eszközöket és munkafolyamatokat. A docker-machine windows 10-ben való használatához Linux bash-t kell használnia.
+# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Gazdagépek létrehozása az Azure-ban a Docker Machine használatával
+Ebből a cikkből megtudhatja, hogyan hozhat létre gazdagépeket az Azure-ban a [Docker Machine](https://docs.docker.com/machine/) használatával. A `docker-machine` parancs létrehoz egy linuxos virtuális GÉPET (VM) az Azure-ban, majd telepíti a Docker-t. Ezután az Azure-beli Docker-gazdagépeket ugyanazzal a helyi eszközökkel és munkafolyamatokkal kezelheti. A Windows 10-es Docker-Machine használatához Linux bash-t kell használnia.
 
-## <a name="create-vms-with-docker-machine"></a>Virtuális gépek létrehozása a Docker-géppel
-Először szerezze be az Azure-előfizetés-azonosítóját [az az-fiókkal](/cli/azure/account) az alábbiak szerint:
+## <a name="create-vms-with-docker-machine"></a>Virtuális gépek létrehozása Docker-géppel
+Először szerezze be az Azure-előfizetés AZONOSÍTÓját az [az Account show](/cli/azure/account) paranccsal az alábbiak szerint:
 
 ```azurecli
 sub=$(az account show --query "id" -o tsv)
 ```
 
-Docker-gazdagépeket hozhat létre `docker-machine create` az Azure-ban az *azure-illesztőprogramként* való megadásával. További információt a [Docker Azure Driver dokumentációjában](https://docs.docker.com/machine/drivers/azure/) talál.
+Az Azure-ban az *Azure* -t kell `docker-machine create` megadnia illesztőprogramként a Docker-gazdagépek létrehozásához. További információt a [Docker Azure-illesztőprogram dokumentációjában](https://docs.docker.com/machine/drivers/azure/) talál.
 
-A következő példa létrehoz egy *myVM*nevű virtuális gép , a "Standard D2 v2" csomag alapján, létrehoz egy *azureuser*nevű felhasználói fiókot, és megnyitja a *80-as* portot a gazdagép virtuális gépen. Kövesse az utasításokat az Azure-fiókjába való bejelentkezéshez, és adjon engedélyt a Docker Machine-nek az erőforrások létrehozásához és kezeléséhez.
+Az alábbi példa egy *myVM*nevű virtuális gépet hoz létre a "standard D2 v2" csomag alapján, létrehoz egy *azureuser*nevű felhasználói fiókot, és megnyitja a *80* -as portot a gazdagép virtuális gépén. Az Azure-fiókba való bejelentkezéshez és az erőforrások létrehozásához és kezeléséhez a Docker Machine-engedélyek megadásához kövesse az utasításokat.
 
 ```bash
 docker-machine create -d azure \
@@ -71,7 +71,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 ```
 
 ## <a name="configure-your-docker-shell"></a>A Docker-rendszerhéj konfigurálása
-Ha csatlakozni szeretne a Docker-állomáshoz az Azure-ban, adja meg a megfelelő kapcsolatbeállításokat. Ahogy azt a kimenet végén is megjegyeztük, tekintse meg a Docker-gazdagép kapcsolati adatait az alábbiak szerint: 
+Ha a Docker-gazdagéphez szeretne csatlakozni az Azure-ban, adja meg a megfelelő kapcsolatbeállításokat. A kimenet végén látható módon tekintse meg a Docker-gazdagéphez tartozó kapcsolatok adatait a következőképpen: 
 
 ```bash
 docker-machine env myvm
@@ -88,10 +88,10 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-A kapcsolatbeállításainak meghatározásához futtassa a`eval $(docker-machine env myvm)`javasolt konfigurációs parancsot ( ), vagy manuálisan is beállíthatja a környezeti változókat. 
+A kapcsolódási beállítások megadásához futtassa a javasolt konfigurációs parancsot (`eval $(docker-machine env myvm)`), vagy manuálisan is beállíthatja a környezeti változókat. 
 
 ## <a name="run-a-container"></a>Tároló futtatása
-Ha működés közben szeretne egy tárolót látni, futtasson egy alapvető NGINX webkiszolgálót. Hozzon létre `docker run` egy tárolót, és tegye elérhetővé a 80-as portot a webes forgalomszámára az alábbiak szerint:
+Ha működés közben szeretné megtekinteni egy tárolót, lehetővé teszi egy alapszintű NGINX-webkiszolgáló futtatását. Az alábbiak szerint hozzon létre egy tárolót, `docker run` és tegye elérhetővé a 80-as portot a webes forgalom számára:
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -110,24 +110,24 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-A futó `docker ps`tárolók megtekintése a segítségével. A következő példa kimeneta a 80-as porttal működő NGINX-tárolót mutatja:
+Futó tárolók megtekintése `docker ps`a rel. A következő példa kimenetében a 80-as porton futó NGINX-tároló látható:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES
 d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes    0.0.0.0:80->80/tcp, 443/tcp    festive_mirzakhani
 ```
 
-## <a name="test-the-container"></a>A tartály tesztelése
-Szerezze be a Docker-állomás nyilvános IP-címét az alábbiak szerint:
+## <a name="test-the-container"></a>A tároló tesztelése
+Szerezze be a Docker-gazdagép nyilvános IP-címét a következőképpen:
 
 
 ```bash
 docker-machine ip myvm
 ```
 
-A tároló működés közbeni megtekintéséhez nyisson meg egy webböngészőt, és adja meg az előző parancs kimenetében megadott nyilvános IP-címet:
+A tároló működés közbeni megtekintéséhez nyisson meg egy webböngészőt, és adja meg az előző parancs kimenetében feljegyzett nyilvános IP-címet:
 
 ![Ngnix-tároló futtatása](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>További lépések
-A Docker Compose használatával kapcsolatos példákat a [Docker és a Compose azure-ban való használatának első lépései.](docker-compose-quickstart.md)
+A Docker-összeállítás használatával kapcsolatos Példákért lásd: a [Docker használatának első lépései és az Azure-beli összeállítás](docker-compose-quickstart.md).

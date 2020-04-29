@@ -1,25 +1,25 @@
 ---
-title: Az Azure Cosmos DB bemeneti kötése a Functions 2.x-hez
-description: Ismerje meg az Azure Cosmos DB bemeneti kötés használatát az Azure Functionsben.
+title: A 2. x függvények bemeneti kötésének Azure Cosmos DB
+description: Megtudhatja, hogyan használhatja a Azure Functions Azure Cosmos DB bemeneti kötését.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943426"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Az Azure Cosmos DB bemeneti kötése az Azure Functions 2.x-hez
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Functions 2. x Azure Cosmos DB bemeneti kötésének megadása
 
 Az Azure Cosmos DB bemeneti adatkötése az SQL API-t használja egy vagy több Azure Cosmos DB-dokumentum lekérésére, majd átadja ezeket a függvény bemeneti paraméterének. A dokumentumazonosítót vagy lekérdezési paramétereket a függvényt meghívó eseményindító alapján lehet meghatározni.
 
-A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](./functions-bindings-cosmosdb-v2.md)olvashat.
+További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-cosmosdb-v2.md).
 
 > [!NOTE]
-> Ha a gyűjtemény [particionálva](../cosmos-db/partition-data.md#logical-partitions)van, a kapcsolatfelvételi műveleteknek meg kell adniuk a partíciókulcs értékét is.
+> Ha a gyűjtemény [particionálva](../cosmos-db/partition-data.md#logical-partitions)van, a keresési műveleteknek meg kell adniuk a partíciós kulcs értékét is.
 >
 
 <a id="example" name="example"></a>
@@ -28,14 +28,14 @@ A beállítással és a konfigurációval kapcsolatos részletekről az [átteki
 
 Ez a szakasz a következő példákat tartalmazza:
 
-* [Várólista-eseményindító, a JSON azonosítójának megnézése](#queue-trigger-look-up-id-from-json-c)
-* [HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból](#http-trigger-look-up-id-from-route-data-c)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból az SqlQuery használatával](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
-* [HTTP-eseményindító, több dokumentum beszereznie az SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c)
-* [HTTP-eseményindító, több dokumentum beszereznie a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c)
+* [Üzenetsor-trigger, Keresés azonosító a JSON-ből](#queue-trigger-look-up-id-from-json-c)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-c)
+* [HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
+* [HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c)
+* [HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c)
 
-A példák egy `ToDoItem` egyszerű típusra hivatkoznak:
+A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -51,9 +51,9 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-look-up-id-from-json-c"></a>
 
-### <a name="queue-trigger-look-up-id-from-json"></a>Várólista-eseményindító, a JSON azonosítójának megnézése 
+### <a name="queue-trigger-look-up-id-from-json"></a>Üzenetsor-trigger, Keresés azonosító a JSON-ből 
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy JSON-objektumot tartalmazó üzenetsor-üzenet váltja ki. A várólista-eseményindító a JSON-t egy típusú `ToDoItemLookup`objektumba elemzi, amely tartalmazza a kikeresni az azonosítót és a partíciókulcs értékét. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan üzenetsor-üzenet indítja el, amely egy JSON-objektumot tartalmaz. A várólista-trigger elemzi a JSON-t egy típusú `ToDoItemLookup`objektumba, amely tartalmazza az azonosító és a partíció kulcs értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -104,12 +104,12 @@ namespace CosmosDBSamplesV2
 
 <a id="http-trigger-look-up-id-from-query-string-c"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
 >[!NOTE]
->A HTTP-lekérdezési karakterlánc paraméter a kis- és nagybetűk et is figyelembe kell.
+>A HTTP-lekérdezési karakterlánc paraméter megkülönbözteti a kis-és nagybetűket.
 >
 
 ```cs
@@ -154,9 +154,9 @@ namespace CosmosDBSamplesV2
 
 <a id="http-trigger-look-up-id-from-route-data-c"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely útvonaladatok segítségével adja meg a megkeresni kívánt azonosítót és partíciókulcs-értéket. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan HTTP-kérelem indítja el, amely az útválasztási adat használatával megkeresi az azonosítót és a partíciós kulcs értékét. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -200,14 +200,14 @@ namespace CosmosDBSamplesV2
 
 <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból az SqlQuery használatával
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely útvonaladatokat használ a megkeresni kívánt azonosító megadásához. Ez az azonosító a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használható.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan HTTP-kérelem indítja el, amely az útválasztási adat használatával megkeresi az azonosítót. Ez az azonosító a megadott adatbázisból `ToDoItem` és gyűjteményből származó dokumentumok beolvasására szolgál.
 
-A példa bemutatja, hogyan kell `SqlQuery` használni egy kötési kifejezést a paraméterben. Az útvonaladatokat az `SqlQuery` ábrán látható módon továbbíthatja a paraméternek, de jelenleg [nem tud lekérdezési karakterlánc-értékeket átadni.](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583)
+A példa bemutatja, hogyan használható egy kötési kifejezés a `SqlQuery` paraméterben. Átadhatja az útvonal adatait a `SqlQuery` paraméternek, ahogy az ábrán látható, de jelenleg [nem adhat meg lekérdezési karakterlánc-értékeket](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 > [!NOTE]
-> Ha csak az azonosítóval kell lekérdeznie, ajánlott az előző [példákhoz](#http-trigger-look-up-id-from-query-string-c)hasonlóan felkeresni, mivel kevesebb [kérésegységet](../cosmos-db/request-units.md)fog használni. A pontolvasási műveletek [more efficient](../cosmos-db/optimize-cost-queries.md) (GET) hatékonyabbak, mint az azonosítóval végzett lekérdezések.
+> Ha csak az azonosító alapján kell lekérdezni, ajánlott megkeresni az [előző példákhoz](#http-trigger-look-up-id-from-query-string-c)hasonlóan, mivel kevesebb [kérési egységet](../cosmos-db/request-units.md)fog használni. A pont olvasási műveletei (GET) [hatékonyabbak, mint a](../cosmos-db/optimize-cost-queries.md) lekérdezések azonosító alapján.
 >
 
 ```cs
@@ -247,9 +247,9 @@ namespace CosmosDBSamplesV2
 
 <a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
 
-### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-eseményindító, több dokumentum beszereznie az SqlQuery használatával
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely beolvassa a dokumentumok listáját. A függvényt egy HTTP-kérelem váltja ki. A lekérdezés az `SqlQuery` attribútumtulajdonságban van megadva.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem indítja el. A lekérdezés az `SqlQuery` attribútum tulajdonságban van megadva.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -290,12 +290,12 @@ namespace CosmosDBSamplesV2
 
 <a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
 
-### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-eseményindító, több dokumentum beszereznie a DocumentClient használatával
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely beolvassa a dokumentumok listáját. A függvényt egy HTTP-kérelem váltja ki. A kód `DocumentClient` az Azure Cosmos DB-kötés által biztosított példányt használja a dokumentumok listájának olvasásához. A `DocumentClient` példány írási műveletekhez is használható.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem indítja el. A kód a Azure Cosmos DB `DocumentClient` kötés által megadott példányt használja a dokumentumok listájának olvasásához. A `DocumentClient` példány írási műveletekhez is használható.
 
 > [!NOTE]
-> Az [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) felület segítségével is megkönnyítheti a tesztelést.
+> A [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) felületet is használhatja a tesztelés megkönnyítésére.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -353,18 +353,18 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
 Ez a szakasz a következő példákat tartalmazza:
 
-* [Várólista-eseményindító, azonosító kinézete a karakterláncból](#queue-trigger-look-up-id-from-string-c-script)
-* [Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c-script)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból](#http-trigger-look-up-id-from-route-data-c-script)
-* [HTTP-eseményindító, több dokumentum beszereznie az SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP-eseményindító, több dokumentum beszereznie a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c-script)
+* [Üzenetsor-trigger, azonosító megkeresése sztringből](#queue-trigger-look-up-id-from-string-c-script)
+* [Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-c-script)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-c-script)
+* [HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával](#http-trigger-get-multiple-docs-using-documentclient-c-script)
 
-A HTTP-eseményindító példák egy egyszerű `ToDoItem` típusra hivatkoznak:
+A HTTP-triggerek példái egy `ToDoItem` egyszerű típusra vonatkoznak:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -379,11 +379,11 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-look-up-id-from-string-c-script"></a>
 
-### <a name="queue-trigger-look-up-id-from-string"></a>Várólista-eseményindító, azonosító kinézete a karakterláncból
+### <a name="queue-trigger-look-up-id-from-string"></a>Üzenetsor-trigger, azonosító megkeresése sztringből
 
-A következő példa egy Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [C# parancsfájl függvényt,](functions-reference-csharp.md) amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
+Az alábbi példa egy Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -397,9 +397,9 @@ A *function.json* fájlban a kötési adatok:
     "direction": "in"
 }
 ```
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
     using System;
@@ -413,13 +413,13 @@ Itt a C# script kód:
 
 <a id="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [C# parancsfájl függvényt,](functions-reference-csharp.md) amely a kötést használja. A függvény egy SQL-lekérdezés által megadott több dokumentumot olvas be, egy várólista-eseményindítóval a lekérdezési paraméterek testreszabásához.
+Az alábbi példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény több, egy SQL-lekérdezés által megadott dokumentumot kér le, a várólista-trigger használatával testreszabva a lekérdezési paramétereket.
 
-A várólista-eseményindító paramétert `departmentId`ad meg. A várólista-üzenet `{ "departmentId" : "Finance" }` visszaadja a pénzügyi részleg összes rekordját.
+A várólista-trigger paramétert `departmentId`biztosít. Egy üzenetsor-üzenet `{ "departmentId" : "Finance" }` , amely a pénzügyi részleg összes rekordját visszaküldi.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -433,9 +433,9 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```csharp
     public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -454,11 +454,11 @@ Itt a C# script kód:
 
 <a id="http-trigger-look-up-id-from-query-string-c-script"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa egy [C# parancsfájlfüggvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -493,7 +493,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
 using System.Net;
@@ -517,11 +517,11 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 <a id="http-trigger-look-up-id-from-route-data-c-script"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa egy [C# parancsfájlfüggvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely útvonaladatok segítségével adja meg a megkeresni kívánt azonosítót és partíciókulcs-értéket. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan HTTP-kérelem indítja el, amely az útválasztási adat használatával megkeresi az azonosítót és a partíciós kulcs értékét. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -557,7 +557,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
 using System.Net;
@@ -581,11 +581,11 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 <a id="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-eseményindító, több dokumentum beszereznie az SqlQuery használatával
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa egy [C# parancsfájlfüggvényt](functions-reference-csharp.md) mutat be, amely beolvassa a dokumentumok listáját. A függvényt egy HTTP-kérelem váltja ki. A lekérdezés az `SqlQuery` attribútumtulajdonságban van megadva.
+Az alábbi példa egy [C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem indítja el. A lekérdezés az `SqlQuery` attribútum tulajdonságban van megadva.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -619,7 +619,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
 using System.Net;
@@ -639,11 +639,11 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 
 <a id="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>
 
-### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-eseményindító, több dokumentum beszereznie a DocumentClient használatával
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-trigger, több dokumentum beolvasása a DocumentClient használatával
 
-A következő példa egy [C# parancsfájlfüggvényt](functions-reference-csharp.md) mutat be, amely beolvassa a dokumentumok listáját. A függvényt egy HTTP-kérelem váltja ki. A kód `DocumentClient` az Azure Cosmos DB-kötés által biztosított példányt használja a dokumentumok listájának olvasásához. A `DocumentClient` példány írási műveletekhez is használható.
+Az alábbi példa egy [C# parancsfájl-függvényt](functions-reference-csharp.md) mutat be, amely a dokumentumok listáját kéri le. A függvényt egy HTTP-kérelem indítja el. A kód a Azure Cosmos DB `DocumentClient` kötés által megadott példányt használja a dokumentumok listájának olvasásához. A `DocumentClient` példány írási műveletekhez is használható.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -676,7 +676,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -716,22 +716,22 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Ez a szakasz a következő példákat tartalmazza, amelyek egyetlen dokumentumot olvasnak különböző forrásokból származó azonosítóérték megadásával:
+Ez a szakasz az alábbi példákat tartalmazza, amelyek egyetlen dokumentumot olvasnak be a különböző forrásokból származó azonosító érték megadásával:
 
-* [Várólista-eseményindító, a JSON azonosítójának megnézése](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból](#http-trigger-look-up-id-from-route-data-javascript)
-* [Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+* [Üzenetsor-trigger, Keresés azonosító a JSON-ből](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-javascript)
+* [Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
 <a id="queue-trigger-look-up-id-from-json-javascript"></a>
 
-### <a name="queue-trigger-look-up-id-from-json"></a>Várólista-eseményindító, a JSON azonosítójának megnézése
+### <a name="queue-trigger-look-up-id-from-json"></a>Üzenetsor-trigger, Keresés azonosító a JSON-ből
 
-A következő példa egy Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [JavaScript függvényt,](functions-reference-node.md) amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
+Az alábbi példa egy Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -756,9 +756,9 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
     // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
@@ -771,11 +771,11 @@ Itt a JavaScript-kód:
 
 <a id="http-trigger-look-up-id-from-query-string-javascript"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -810,7 +810,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -830,11 +830,11 @@ module.exports = function (context, req, toDoItem) {
 
 <a id="http-trigger-look-up-id-from-route-data-javascript"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely útvonaladatok segítségével adja meg a megkeresni kívánt azonosítót és partíciókulcs-értéket. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy [JavaScript-függvényt](functions-reference-node.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan HTTP-kérelem indítja el, amely az útválasztási adat használatával megkeresi az azonosítót és a partíciós kulcs értékét. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -870,7 +870,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -890,13 +890,13 @@ module.exports = function (context, req, toDoItem) {
 
 <a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
 
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [JavaScript-függvényt,](functions-reference-node.md) amely a kötést használja. A függvény egy SQL-lekérdezés által megadott több dokumentumot olvas be, egy várólista-eseményindítóval a lekérdezési paraméterek testreszabásához.
+Az alábbi példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény több, egy SQL-lekérdezés által megadott dokumentumot kér le, a várólista-trigger használatával testreszabva a lekérdezési paramétereket.
 
-A várólista-eseményindító paramétert `departmentId`ad meg. A várólista-üzenet `{ "departmentId" : "Finance" }` visszaadja a pénzügyi részleg összes rekordját.
+A várólista-trigger paramétert `departmentId`biztosít. Egy üzenetsor-üzenet `{ "departmentId" : "Finance" }` , amely a pénzügyi részleg összes rekordját visszaküldi.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -910,9 +910,9 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
     module.exports = function (context, input) {
@@ -927,20 +927,20 @@ Itt a JavaScript-kód:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ez a szakasz a következő példákat tartalmazza, amelyek egyetlen dokumentumot olvasnak különböző forrásokból származó azonosítóérték megadásával:
+Ez a szakasz az alábbi példákat tartalmazza, amelyek egyetlen dokumentumot olvasnak be a különböző forrásokból származó azonosító érték megadásával:
 
-* [Várólista-eseményindító, a JSON azonosítójának megnézése](#queue-trigger-look-up-id-from-json-python)
-* [HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-python)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból](#http-trigger-look-up-id-from-route-data-python)
-* [Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-python)
+* [Üzenetsor-trigger, Keresés azonosító a JSON-ből](#queue-trigger-look-up-id-from-json-python)
+* [HTTP-trigger, keresési azonosító lekérdezési karakterláncból](#http-trigger-look-up-id-from-query-string-python)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-python)
+* [Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával](#queue-trigger-get-multiple-docs-using-sqlquery-python)
 
 <a id="queue-trigger-look-up-id-from-json-python"></a>
 
-### <a name="queue-trigger-look-up-id-from-json"></a>Várólista-eseményindító, a JSON azonosítójának megnézése
+### <a name="queue-trigger-look-up-id-from-json"></a>Üzenetsor-trigger, Keresés azonosító a JSON-ből
 
-A következő példa egy Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [Python-függvényt,](functions-reference-python.md) amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
+Az alábbi példa egy Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény egyetlen dokumentumot olvas be, és frissíti a dokumentum szöveges értékét.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -965,9 +965,9 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 import azure.functions as func
@@ -982,11 +982,11 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 <a id="http-trigger-look-up-id-from-query-string-python"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-eseményindító, azonosító kinézete a lekérdezési karakterláncból
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-trigger, keresési azonosító lekérdezési karakterláncból
 
-A következő példa egy [Python-függvényt](functions-reference-python.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy olyan [Python-függvényt](functions-reference-python.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -1022,7 +1022,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 import logging
@@ -1041,11 +1041,11 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 <a id="http-trigger-look-up-id-from-route-data-python"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa egy [Python-függvényt](functions-reference-python.md) mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely útvonaladatok segítségével adja meg a megkeresni kívánt azonosítót és partíciókulcs-értéket. Az azonosító és a partíciókulcs értéke `ToDoItem` a megadott adatbázisból és gyűjteményből származó dokumentumok lekéréséhez használatos.
+Az alábbi példa egy olyan [Python-függvényt](functions-reference-python.md) mutat be, amely egyetlen dokumentumot kér le. A függvényt egy olyan HTTP-kérelem indítja el, amely az útválasztási adat használatával megkeresi az azonosítót és a partíciós kulcs értékét. Az azonosító és a partíciós kulcs értékét a rendszer a `ToDoItem` megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja.
 
-Itt a *function.json* fájl:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -1082,7 +1082,7 @@ Itt a *function.json* fájl:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 import logging
@@ -1100,13 +1100,13 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 <a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
 
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Várólista-eseményindító, több dokumentum bekésezése az SqlQuery használatával
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Üzenetsor-trigger, több dokumentum beolvasása a SqlQuery használatával
 
-A következő példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function.json* fájlban és egy [Python-függvényt,](functions-reference-python.md) amely a kötést használja. A függvény egy SQL-lekérdezés által megadott több dokumentumot olvas be, egy várólista-eseményindítóval a lekérdezési paraméterek testreszabásához.
+Az alábbi példa egy Azure Cosmos DB bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény több, egy SQL-lekérdezés által megadott dokumentumot kér le, a várólista-trigger használatával testreszabva a lekérdezési paramétereket.
 
-A várólista-eseményindító paramétert `departmentId`ad meg. A várólista-üzenet `{ "departmentId" : "Finance" }` visszaadja a pénzügyi részleg összes rekordját.
+A várólista-trigger paramétert `departmentId`biztosít. Egy üzenetsor-üzenet `{ "departmentId" : "Finance" }` , amely a pénzügyi részleg összes rekordját visszaküldi.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -1120,9 +1120,9 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-A [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 import azure.functions as func
@@ -1136,13 +1136,13 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 
 Ez a szakasz a következő példákat tartalmazza:
 
-* [HTTP-eseményindító, azonosító megkeresése a lekérdezési karakterláncból - Karakterlánc paraméter](#http-trigger-look-up-id-from-query-string---string-parameter-java)
-* [HTTP-eseményindító, azonosító kiírása a lekérdezési karakterláncból - POJO paraméter](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból](#http-trigger-look-up-id-from-route-data-java)
-* [HTTP-eseményindító, azonosító kinézete az útvonaladatokból az SqlQuery használatával](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
-* [HTTP-eseményindító, több dokumentum bekésezése az útvonaladatokból az SqlQuery használatával](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+* [HTTP-trigger, Keresés azonosító a lekérdezési karakterláncból – karakterlánc paraméter](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [HTTP-trigger, Keresés azonosító a lekérdezési karakterláncból – POJO paraméter](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján](#http-trigger-look-up-id-from-route-data-java)
+* [HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP-trigger, több dokumentum beolvasása az útvonal adataiból, SqlQuery használatával](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
 
-A példák egy `ToDoItem` egyszerű típusra hivatkoznak:
+A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
 
 ```java
 public class ToDoItem {
@@ -1167,9 +1167,9 @@ public class ToDoItem {
 
 <a id="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string---string-parameter"></a>HTTP-eseményindító, azonosító megkeresése a lekérdezési karakterláncból - Karakterlánc paraméter
+### <a name="http-trigger-look-up-id-from-query-string---string-parameter"></a>HTTP-trigger, Keresés azonosító a lekérdezési karakterláncból – karakterlánc paraméter
 
-A következő példa egy Java függvényt mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke a megadott adatbázisból és gyűjteményből származó dokumentumok string formában történő beolvasására szolgál.
+Az alábbi példa egy Java-függvényt mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értéke a megadott adatbázisból és gyűjteményből származó dokumentum lekérésére szolgál karakterlánc formájában.
 
 ```java
 public class DocByIdFromQueryString {
@@ -1211,13 +1211,13 @@ public class DocByIdFromQueryString {
 }
  ```
 
-A [Java függvények futásidejű függvénytárban](/java/api/overview/azure/functions/runtime)használja a notnotation a `@CosmosDBInput` függvényparamétereket, amelyek értéke származna Cosmos DB.  Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@CosmosDBInput` a megjegyzések a függvény azon paramétereit, amelyek értéke Cosmos DBból származik.  Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>`.
 
 <a id="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>
 
-### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter"></a>HTTP-eseményindító, azonosító kiírása a lekérdezési karakterláncból - POJO paraméter
+### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter"></a>HTTP-trigger, Keresés azonosító a lekérdezési karakterláncból – POJO paraméter
 
-A következő példa egy Java függvényt mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy lekérdezési karakterláncot használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Ez az azonosító és a partíciókulcs értéke a dokumentum nak a megadott adatbázisból és gyűjteményből való lekéréséhez. A dokumentum ezután a ```ToDoItem``` korábban létrehozott POJO egy példányává alakul át, és argumentumként átkerül a függvénybe.
+Az alábbi példa egy Java-függvényt mutat be, amely egyetlen dokumentumot kér le. A függvényt egy lekérdezési karakterláncot használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. A megadott adatbázisból és gyűjteményből származó dokumentum lekéréséhez használt azonosító és partíciós kulcs értéke. A dokumentumot ezután a rendszer a ```ToDoItem``` korábban létrehozott POJO egy példányára konvertálja, és argumentumként adta át a függvénynek.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1259,9 +1259,9 @@ public class DocByIdFromQueryStringPojo {
 
 <a id="http-trigger-look-up-id-from-route-data-java"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, azonosító megkeresése az útvonal adatainak alapján
 
-A következő példa egy Java függvényt mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy útvonalparamétert használ a megkeresni kívánt azonosító és partíciókulcs értékének megadásához. Az azonosító és a partíciókulcs értéke a dokumentum nak a megadott adatbázisból ```Optional<String>```és gyűjteményből való beolvasására szolgál, és azt .
+Az alábbi példa egy Java-függvényt mutat be, amely egyetlen dokumentumot kér le. A függvényt egy Route paramétert használó HTTP-kérelem indítja el, amely megadja az azonosító és a partíció kulcsának értékét a kereséshez. Az azonosító és a partíciós kulcs értékét a rendszer a megadott adatbázisból és gyűjteményből származó dokumentum lekérésére használja ```Optional<String>```.
 
 ```java
 public class DocByIdFromRoute {
@@ -1306,12 +1306,12 @@ public class DocByIdFromRoute {
 
  <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>
 
-### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-eseményindító, azonosító kinézete az útvonaladatokból az SqlQuery használatával
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-trigger, keresés az útvonal adatai alapján, SqlQuery használatával
 
-A következő példa egy Java függvényt mutat be, amely egyetlen dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ki, amely egy útvonalparamétert használ a megkeresni kívánt azonosító megadásához. Ez az azonosító a megadott adatbázisból és gyűjteményből származó dokumentumok beolvasására szolgál, és az eredményhalmazt egy ```ToDoItem[]```-re konvertálja, mivel a lekérdezési feltételektől függően számos dokumentum is visszaadható.
+Az alábbi példa egy Java-függvényt mutat be, amely egyetlen dokumentumot kér le. A függvényt egy Route paramétert használó HTTP-kérelem indítja el, amely megadja a megkeresni kívánt azonosítót. Ez az azonosító a megadott adatbázisból és gyűjteményből származó dokumentum lekérésére, az eredményhalmaz a ```ToDoItem[]```-re való átalakítására szolgál, mivel a lekérdezési feltételektől függően sok dokumentum visszaadásra kerül.
 
 > [!NOTE]
-> Ha csak az azonosítóval kell lekérdeznie, ajánlott az előző [példákhoz](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)hasonlóan felkeresni, mivel kevesebb [kérésegységet](../cosmos-db/request-units.md)fog használni. A pontolvasási műveletek [more efficient](../cosmos-db/optimize-cost-queries.md) (GET) hatékonyabbak, mint az azonosítóval végzett lekérdezések.
+> Ha csak az azonosító alapján kell lekérdezni, ajánlott megkeresni az [előző példákhoz](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)hasonlóan, mivel kevesebb [kérési egységet](../cosmos-db/request-units.md)fog használni. A pont olvasási műveletei (GET) [hatékonyabbak, mint a](../cosmos-db/optimize-cost-queries.md) lekérdezések azonosító alapján.
 >
 
 ```java
@@ -1354,9 +1354,9 @@ public class DocByIdFromRouteSqlQuery {
 
  <a id="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>
 
-### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP-eseményindító, több dokumentum bekésezése az útvonaladatokból az SqlQuery használatával
+### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP-trigger, több dokumentum beolvasása az útvonal adataiból, SqlQuery használatával
 
-A következő példa egy Java függvényt mutat be, amely több dokumentumot olvas be. A függvényt egy HTTP-kérelem váltja ```desc``` ki, amely egy útvonalparamétert használ a ```description``` mezőben keresandó karakterlánc megadásához. A keresési kifejezés a megadott adatbázisból és gyűjteményből származó dokumentumok gyűjteményének beolvasására szolgál, az eredményhalmaz a-ra ```ToDoItem[]``` konvertálására és argumentumként a függvénybe való átadásával.
+Az alábbi példa egy Java-függvényt mutat be, amely több dokumentumot kér le. A függvényt egy Route paramétert ```desc``` használó HTTP-kérelem indítja el, amely megadja a ```description``` mezőben keresendő karakterláncot. A keresési kifejezés a megadott adatbázisból és gyűjteményből származó dokumentumok gyűjteményének lekérésére, ```ToDoItem[]``` valamint az eredményhalmaz és a függvény argumentumként való átadására szolgál.
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1402,44 +1402,44 @@ public class DocsFromRouteSqlQuery {
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A [C# osztálykönyvtárakban](functions-dotnet-class-library.md)használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot.
+A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot.
 
-Az attribútum konstruktora felveszi az adatbázis nevét és a gyűjtemény nevét. A beállításokról és a konfigurálható egyéb tulajdonságokról [a következő konfigurációs szakaszban](#configuration)olvashat.
+Az attribútum konstruktora az adatbázis nevét és a gyűjtemény nevét veszi át. Ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról [a következő konfigurációs szakaszban](#configuration)tájékozódhat.
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az attribútumokat a C# script nem támogatja.
+A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az attribútumokat a Python nem támogatja.
+A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java függvények futásidejű függvénytár,](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja a `@CosmosDBOutput` jegyzet a paramétereket, amelyek írásban Cosmos DB. A jegyzetparaméter típusának `OutputBinding<T>`a `T` : -nak kell lennie, ahol natív Java-típus vagy POJO.
+A [Java functions futtatókörnyezet könyvtárában](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja a `@CosmosDBOutput` jegyzetet a Cosmos DBba írni kívánt paraméterekhez. A Megjegyzés paraméterének a következőnek `OutputBinding<T>`kell lennie:, ahol `T` egy natív Java-típus vagy egy POJO.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function.json* fájlban és az `CosmosDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `CosmosDB` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus**     | n/a | A beállításnak `cosmosDB`a beállítására kell beállítható.        |
-|**direction**     | n/a | A beállításnak `in`a beállítására kell beállítható.         |
-|**név**     | n/a | A függvényben lévő dokumentumot jelölő kötési paraméter neve.  |
-|**adatbázisneve** |**DatabaseName** |A dokumentumot tartalmazó adatbázis.        |
-|**Lekérdezés_neve** |**CollectionName** | A dokumentumot tartalmazó gyűjtemény neve. |
-|**id**    | **Id** | A beolvasandó dokumentum azonosítója. Ez a tulajdonság támogatja a [kötési kifejezéseket.](./functions-bindings-expressions-patterns.md) Ne állítsa be `id` mind a mind az **sqlQuery** tulajdonságokat. Ha egyiket sem állítja be, a rendszer a teljes gyűjteményt beolvassa. |
-|**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos DB SQL-lekérdezés több dokumentum beolvasásához használt. A tulajdonság támogatja a futásidejű kötéseket, `SELECT * FROM c where c.departmentId = {departmentId}`mint például ebben a példában: . Ne állítsa be `id` mind `sqlQuery` a tulajdonságokat. Ha egyiket sem állítja be, a rendszer a teljes gyűjteményt beolvassa.|
-|**connectionStringSetting**     |**ConnectionStringSetting (Kapcsolatkarakterlánc-beállítás)**|Az Azure Cosmos DB kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. |
-|**partíciókulcs**|**PartitionKey**|Megadja a válaszkulcs értékét. Tartalmazhat kötési paramétereket. A [particionált](../cosmos-db/partition-data.md#logical-partitions) gyűjtemények keres.|
-|**preferredLocations (elsődleges helyek)**| **PreferredLocations (PreferredLocations)**| (Nem kötelező) Az Azure Cosmos DB szolgáltatás georeplikált adatbázis-fiókjainak előnyben részesített helyeit (régióit) határozza meg. Az értékeket vesszővel kell elválasztani. Például: "USA keleti régiója, USA déli középső régiója, Észak-Európa". |
+|**típusa**     | n/a | Értékre kell állítani `cosmosDB`.        |
+|**direction**     | n/a | Értékre kell állítani `in`.         |
+|**név**     | n/a | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**databaseName** |**DatabaseName** |A dokumentumot tartalmazó adatbázis.        |
+|**collectionName** |**CollectionName** | A dokumentumot tartalmazó gyűjtemény neve. |
+|**id**    | **ID** | A lekérdezni kívánt dokumentum azonosítója. Ez a tulajdonság támogatja a [kötési kifejezéseket](./functions-bindings-expressions-patterns.md). Ne állítsa be a `id` és a **sqlQuery** tulajdonságot is. Ha nem állítja be az egyiket, a rendszer lekéri a teljes gyűjteményt. |
+|**sqlQuery**  |**SqlQuery**  | Több dokumentum beolvasására szolgáló Azure Cosmos DB SQL-lekérdezés. A tulajdonság támogatja a futásidejű kötéseket, az alábbi példában látható `SELECT * FROM c where c.departmentId = {departmentId}`módon:. Ne állítsa be a `id` és `sqlQuery` a tulajdonságokat is. Ha nem állítja be az egyiket, a rendszer lekéri a teljes gyűjteményt.|
+|**connectionStringSetting**     |**ConnectionStringSetting**|Az Azure Cosmos DB-kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. |
+|**partitionKey**|**PartitionKey**|Meghatározza a keresés partíciós kulcsának értékét. Tartalmazhat kötési paramétereket. A [particionált](../cosmos-db/partition-data.md#logical-partitions) gyűjtemények esetében szükséges a keresés.|
+|**preferredLocations**| **PreferredLocations**| Választható Meghatározza a földrajzilag replikált adatbázis-fiókok előnyben részesített helyét (régióit) a Azure Cosmos DB szolgáltatásban. Az értékeket vesszővel kell elválasztani. Például: "az USA keleti régiója, az USA déli középső régiója, Észak-Európa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1447,27 +1447,27 @@ Az alábbi táblázat a *function.json* fájlban és az `CosmosDB` attribútumba
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-Amikor a függvény sikeresen kilép, a bemeneti dokumentum névvel ellátott bemeneti paramétereken keresztül végrehajtott módosításai automatikusan megmaradnak.
+Ha a függvény sikeresen kilép, az elnevezett bemeneti paramétereken keresztül végrehajtott módosítások automatikusan megmaradnak.
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Amikor a függvény sikeresen kilép, a bemeneti dokumentum névvel ellátott bemeneti paramétereken keresztül végrehajtott módosításai automatikusan megmaradnak.
+Ha a függvény sikeresen kilép, az elnevezett bemeneti paramétereken keresztül végrehajtott módosítások automatikusan megmaradnak.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A frissítések nem lesznek automatikusan a funkció kilépésekor. Ehelyett `context.bindings.<documentName>In` használja, `context.bindings.<documentName>Out` és a frissítéseket. Lásd a JavaScript példa.
+A rendszer nem végez automatikusan frissítéseket a függvény kilépése után. Ehelyett használja `context.bindings.<documentName>In` a és `context.bindings.<documentName>Out` a parancsot a frissítéshez. Tekintse meg a JavaScript példáját.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az adatok egy `DocumentList` paraméteren keresztül érhetők el a függvény számára. A dokumentumon végrehajtott módosítások nem maradnak meg automatikusan.
+Az adat a függvény számára elérhetővé válik egy `DocumentList` paraméter használatával. A dokumentumban végrehajtott módosítások nem maradnak meg automatikusan.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java függvények futásidejű függvénytárából](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)a [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) jegyzet cosmos DB-adatokat ad ki a függvénynek. Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
+A [Java functions futtatókörnyezet könyvtárában](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)a [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) jegyzet kiteszi Cosmos db adatait a függvénynek. Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>`.
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egy függvény futtatása, ha egy Azure Cosmos DB-dokumentum jön létre vagy módosul (Trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
-- [Az Azure Cosmos DB-dokumentum módosításának mentése (kimeneti kötés)](./functions-bindings-cosmosdb-v2-output.md)
+- [Függvény futtatása Azure Cosmos DB dokumentum létrehozásakor vagy módosításakor (trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
+- [Azure Cosmos DB dokumentum módosításainak mentése (kimeneti kötés)](./functions-bindings-cosmosdb-v2-output.md)

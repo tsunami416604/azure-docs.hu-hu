@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszédfelolvasás fordítása, Python – beszédszolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési beszéd – beszédfelismerés, Python – beszédfelismerési szolgáltatás'
 description: TBD
 services: cognitive-services
 author: chlandsi
@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
 ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925998"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=python)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -78,17 +78,17 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](../../../../regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Mentse a módosításokat. `quickstart.py`
+1. Mentse a végrehajtott módosításokat `quickstart.py`.
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Futtassa a mintát a konzolról vagy az IDE-ből:
+1. Futtassa a mintát a konzolról vagy az IDE-ben:
 
    ```
    python quickstart.py
    ```
 
-2. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a beszéd szolgáltatás, amely lefordítja és átírja a szöveget (ebben az esetben, a német). A beszédszolgáltatás ezután elküldi a szöveget az alkalmazásnak megjelenítésre.
+2. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech szolgáltatásnak, amely szöveget (ebben az esetben a németre) fordítja le és írja át. A beszédfelismerési szolgáltatás ezután visszaküldi a szöveget az alkalmazásnak a megjelenítéshez.
 
    ````
    Say something...

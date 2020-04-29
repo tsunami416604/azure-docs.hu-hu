@@ -1,7 +1,7 @@
 ---
-title: Scikit-learn gépi tanulási modellek betanítása
+title: Scikit betanítása – a gépi tanulási modellek megismerése
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan futtathatja scikit-learn képzési parancsfájljait nagyvállalati méretekben az Azure Machine Learning SKlearn estimator osztály használatával. A példaszkriptek osztályozzák az íriszvirág-képeket, hogy a scikit-learn írisz-adatkészlete alapján gépi tanulási modellt hozzanak létre.
+description: Ismerje meg, hogyan futtathatja a scikit – Ismerje meg nagyvállalati szinten a Azure Machine Learning SKlearn kalkulátor osztály használatával. A példaként szolgáló szkriptek írisz virág-képeket osztályoznak a gépi tanulási modellek scikit-Learn Iris-adatkészleten alapuló létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,41 +11,41 @@ author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942263"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-learn modelleket hozhat létre nagy méretekben az Azure Machine Learning segítségével
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan futtathatja a scikit-learn képzési parancsfájlok nagyvállalati méretekben az Azure Machine Learning [SKlearn estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztály használatával. 
+Ebből a cikkből megtudhatja, hogyan futtathatja a scikit – Ismerje meg nagyvállalati szinten a Azure Machine Learning [SKlearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztály használatával. 
 
-A cikkben szereplő példaparancsfájlok az íriszvirág-képek osztályozására szolgálnak, hogy a scikit-learn [írisz-adatkészletén](https://archive.ics.uci.edu/ml/datasets/iris)alapuló gépi tanulási modellt hozzanak létre.
+Az ebben a cikkben ismertetett parancsfájlok az írisz virág-rendszerképek besorolására szolgálnak a gépi tanulási modellek scikit-Learn [Iris-adatkészleten](https://archive.ics.uci.edu/ml/datasets/iris)alapuló létrehozásához.
 
-Akár egy gépi tanulási scikit-learn modellt próbál beképezni az alapoktól kezdve, akár egy meglévő modellt hoz a felhőbe, az Azure Machine Learning segítségével kioszthatja a nyílt forráskódú betanítási feladatokat rugalmas felhőalapú számítási erőforrások használatával. Az Azure Machine Learning használatával éles szintű modelleket hozhat létre, helyezhet üzembe, és figyelhet.
+Legyen szó akár a gépi tanulás scikit, akár a modellről, akár egy meglévő modellt hoz létre a felhőben, a Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Futtassa ezt a kódot az alábbi környezetek valamelyikén:
+Futtassa ezt a kódot ezen környezetek bármelyikén:
  - Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
 
-    - Töltse ki az [oktatóanyag: Telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) hozzon létre egy dedikált notebook-kiszolgáló előre betöltött az SDK és a mintatár.
-    - A minták képzési mappában a notebook-kiszolgálón, keressen egy kitöltött és kibontott jegyzetfüzetet a címtárba navigálva: **hogyan lehet használni-azureml > ml-keretrendszerek, > scikit-learn > betanítási > a vonat-hiperparaméter-tune-deploy-with-sklearn** mappát.
+    - Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
+    - A notebook-kiszolgáló minták betanítási mappájában keresse meg a befejezett és kibontott jegyzetfüzetet, ehhez a következő könyvtárra navigálva: **How-to-use-azureml > ml-keretrendszerek > scikit-learn > training > Train-hiperparaméter-Tune-Deploy-a-sklearn** mappában.
 
- - Saját Jupyter Notebook szerver
+ - Saját Jupyter Notebook-kiszolgáló
 
-    - [Telepítse az Azure Machine Learning SDK-t.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-    - [Munkaterület-konfigurációs fájl létrehozása](how-to-configure-environment.md#workspace).
-    - Az adatkészlet és a mintaparancsfájl letöltése 
-        - [írisz adatkészlet](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [train_iris.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - Az útmutató elkészült [Jupyter Notebook-verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) is megtalálhatja a GitHub minták lapján. A jegyzetfüzet tartalmaz egy kibővített szakaszt, amely intelligens hiperparaméter-hangolási és a legjobb modell elsődleges metrikák által történő lekérése.
+    - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
+    - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
+    - Az adatkészlet és a minta parancsfájl letöltése 
+        - [Írisz-adatkészlet](https://archive.ics.uci.edu/ml/datasets/iris)
+        - [train_iris.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+    - Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz egy kibővített szakaszt, amely az intelligens hiperparaméter hangolását és a legjobb modell elsődleges metrikák általi beolvasását ismerteti.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
-Ez a szakasz úgy állítja be a betanítási kísérletet, hogy betölti a szükséges python-csomagokat, inicializálja a munkaterületet, létrehoz egy kísérletet, és feltölti a betanítási adatokat és a betanítási parancsfájlokat.
+Ez a szakasz a betanítási kísérletet a szükséges Python-csomagok betöltésével, egy munkaterület inicializálásával, egy kísérlet létrehozásával, valamint a betanítási adat és a betanítási parancsfájlok feltöltésével állítja be.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
@@ -66,9 +66,9 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-Az [Azure Machine Learning-munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Ez biztosítja az Ön számára egy központosított hely, ahol az összes létrehozott műtermék. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterületi összetevőket.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
-Hozzon létre egy `config.json` munkaterületi objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
+Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
 ```Python
 ws = Workspace.from_config()
@@ -76,7 +76,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-machine-learning-experiment"></a>Machine Learning-kísérlet létrehozása
 
-Hozzon létre egy kísérletet és egy mappát a betanítási parancsfájlok tárolására. Ebben a példában hozzon létre egy "sklearn-iris" nevű kísérletet.
+Hozzon létre egy kísérletet és egy mappát a betanítási szkriptek tárolásához. Ebben a példában hozzon létre egy "sklearn-Iris" nevű kísérletet.
 
 ```Python
 project_folder = './sklearn-iris'
@@ -85,26 +85,26 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="prepare-training-script"></a>Betanítási parancsfájl előkészítése
+### <a name="prepare-training-script"></a>Betanítási szkript előkészítése
 
-Ebben az oktatóanyagban a **train_iris.py** betanítási parancsfájl már biztosított. A gyakorlatban képesnek kell lennie arra, hogy bármilyen egyéni betanítási parancsfájlt, ahogy van, és futtassa az Azure ML-vel anélkül, hogy módosítania kell a kódot.
+Ebben az oktatóanyagban már meg van biztosítva a **train_iris. a.** a betanítási szkript. A gyakorlatban a kód módosítása nélkül is elvégezheti az egyéni betanítási szkriptek futtatását, és futtathatja azt az Azure ML-ben.
 
-Az Azure ML-követés és metrikák képességeinek használatához adjon hozzá egy kis mennyiségű Azure ML-kódot a betanítási parancsfájlban.  A **train_iris.py** betanítási parancsfájl bemutatja, hogyan naplózhat bizonyos metrikákat az Azure ML-futás a `Run` parancsfájlon belüli objektum használatával.
+Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **train_iris.** a betanítási szkript azt mutatja be, hogyan lehet naplózni néhány mérőszámot az `Run` Azure ml-re a szkripten belüli objektum használatával.
 
-A megadott betanítási parancsfájl `iris = datasets.load_iris()` a függvény ből származó példaadatokat használ.  A saját adatok, előfordulhat, hogy olyan lépéseket kell [használnia, mint az adatkészlet feltöltése és a parancsfájlok,](how-to-train-keras.md#data-upload) hogy az adatok elérhetővé a betanítás során.
+A megadott betanítási parancsfájl példákat használ `iris = datasets.load_iris()` a függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#data-upload) , hogy az adatok elérhetők legyenek a képzés során.
 
-Másolja a **train_iris.py** betanítási parancsfájlt a projektkönyvtárába.
+Másolja a **train_iris.** Copy betanítási szkriptet a projekt könyvtárába.
 
 ```
 import shutil
 shutil.copy('./train_iris.py', project_folder)
 ```
 
-## <a name="create-or-get-a-compute-target"></a>Számítási cél létrehozása vagy bekésezése
+## <a name="create-or-get-a-compute-target"></a>Számítási cél létrehozása vagy beszerzése
 
-Hozzon létre egy számítási célt a scikit-learn feladat futtatásához. Scikit-learn csak támogatja az egyetlen csomópont, CPU-számítástechnika.
+Hozzon létre egy számítási célt a scikit-Learn-feladatok futtatásához. Scikit – a csak egyetlen csomópontot támogat, a CPU-számítástechnikaot.
 
-A következő kód létrehoz egy Azure Machine Learning felügyelt számítási (AmlCompute) a távoli betanítási számítási erőforrás. Az AmlCompute létrehozása körülbelül 5 percet vesz igénybe. Ha az AmlCompute ezzel a névvel már a munkaterületen, ez a kód kihagyja a létrehozási folyamatot.
+A következő kód létrehoz egy Azure Machine Learning felügyelt számítást (AmlCompute) a távoli képzési számítási erőforráshoz. A AmlCompute létrehozása körülbelül 5 percet vesz igénybe. Ha az adott névvel rendelkező AmlCompute már szerepel a munkaterületen, akkor ez a kód kihagyja a létrehozási folyamatot.
 
 ```Python
 cluster_name = "cpu-cluster"
@@ -122,13 +122,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-A számítási célokról további információt a [számítási célcikkben](concept-compute-target.md) talál.
+A számítási célokkal kapcsolatos további információkért tekintse meg a [Mi az a számítási cél](concept-compute-target.md) című cikket.
 
-## <a name="create-a-scikit-learn-estimator"></a>Scikit-learn becslő létrehozása
+## <a name="create-a-scikit-learn-estimator"></a>Scikit létrehozása – Learn kalkulátor
 
-A [scikit-learn estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egy egyszerű módja annak, hogy indítson egy scikit-learn képzési munkát a számítási cél. Ez az [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósul meg, amely egycsomópontos CPU-betanításának támogatására használható.
+A [scikit-Learn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) egyszerű módszert kínál a scikit képzési feladatok számítási célra való elindítására. Ez az [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) osztályon keresztül valósul meg, amely az egycsomópontos CPU-képzések támogatásához használható.
 
-Ha a betanítási parancsfájl további pip- vagy conda-csomagokfuttatásához szükséges, a csomagok at az `pip_packages` `conda_packages` eredményül kapott docker-rendszerképre telepítheti, ha átadja a nevüket a és az argumentumokat.
+Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat `pip_packages` , `conda_packages` ha a és az argumentumokat át szeretné adni a nevüknek.
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -147,32 +147,32 @@ estimator = SKLearn(source_directory=project_folder,
 ```
 
 
-A Python-környezet testreszabásáról további információt a [Környezetek létrehozása és kezelése betanításhoz és üzembe helyezéshez című témakörben talál.](how-to-use-environments.md) 
+A Python-környezet testreszabásával kapcsolatos további információkért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md). 
 
-## <a name="submit-a-run"></a>Futtatás beküldése
+## <a name="submit-a-run"></a>Futtatás küldése
 
-A [Futtatás objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a kapcsolatot a futtatási előzményekhez a feladat futása közben és befejezése után.
+A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = experiment.submit(estimator)
 run.wait_for_completion(show_output=True)
 ```
 
-A futtatás végrehajtásakor a következő szakaszokon megy keresztül:
+A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Előkészítés:** A Docker-rendszerkép a TensorFlow-becslés nek megfelelően jön létre. A rendszerképet a rendszer feltölti a munkaterület tárolójának rendszerleíró adatbázisába, és gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók is streamelt a futtatási előzmények, és megtekinthető konkretizált a folyamat figyelése érdekében.
+- **Előkészítés**: a Docker-rendszerkép létrehozása a TensorFlow-kalkulátor alapján történik. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők.
 
-- **Méretezés**: A fürt megkísérli a felskálázást, ha a Batch AI-fürtnek a jelenleg rendelkezésre állónál több csomópontra van szüksége a futtatás végrehajtásához.
+- **Skálázás**: a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futtatás:** A parancsfájlmappában lévő összes parancsfájl feltöltésre kerül a számítási célba, az adattárak csatlakoztatva vagy másolva, és a entry_script végrehajtása. Az stdout és a ./logs mappa kimenetei a futtatási előzményekbe kerülnek, és a futtatás figyelésére használhatók.
+- **Futtatás**: a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és a entry_script végre lesz hajtva. Az stdout és a./Logs mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utófeldolgozás:** A futtatás ./outputok mappája átkerül a futtatási előzményekbe.
+- **Utómunka**: a Futtatás./outputs mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="save-and-register-the-model"></a>A modell mentése és regisztrálása
 
-Miután betanította a modellt, mentheti és regisztrálhatja azt a munkaterületre. A modellregisztráció lehetővé teszi a modellek tárolását és verziózását a munkaterületen a [modellkezelés és -telepítés egyszerűsítése érdekében.](concept-model-management-and-deployment.md)
+A modell kiképzése után mentheti és regisztrálhatja azt a munkaterületen. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
 
-Adja hozzá a következő kódot a betanítási parancsfájlhoz , train_iris.py, a modell mentéséhez. 
+A modell mentéséhez adja hozzá a következő kódot a betanítási parancsfájlhoz, train_iris. 
 
 ``` Python
 import joblib
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Regisztrálja a modellt a munkaterületre a következő kóddal. A paraméterek megadásával `model_framework` `model_framework_version`, `resource_configuration`és a , no-code modell központi telepítés elérhetővé válik. Ez lehetővé teszi, hogy közvetlenül üzembe helyezze a [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) modellt webszolgáltatásként a regisztrált modellből, és az objektum határozza meg a webszolgáltatás számítási erőforrását.
+Regisztrálja a modellt a munkaterületen a következő kóddal. A paraméterek `model_framework`, `model_framework_version`a és `resource_configuration`a, a kód nélküli üzembe helyezés lehetőség megadásával elérhetővé válik. Ez lehetővé teszi a modell közvetlen üzembe helyezését webszolgáltatásként a regisztrált modellből, és az [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) objektum meghatározza a webszolgáltatás számítási erőforrását.
 
 ```Python
 from azureml.core import Model
@@ -193,19 +193,19 @@ model = run.register_model(model_name='sklearn-iris',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
-Az imént regisztrált modell ugyanúgy telepíthető, mint bármely más regisztrált modell az Azure Machine Learningben, függetlenül attól, hogy melyik betanítási becslést használta. Az üzembe helyezési útmutató tartalmaz egy szakaszt a modellek regisztrálása, de közvetlenül átugorhatja [a számítási cél](how-to-deploy-and-where.md#choose-a-compute-target) létrehozása a központi telepítéshez, mivel már rendelkezik egy regisztrált modell.
+A korábban regisztrált modell ugyanúgy helyezhető üzembe, mint bármely más regisztrált modell Azure Machine Learningban, függetlenül attól, hogy milyen kalkulátort használt a betanításhoz. Az üzembe helyezési útmutató egy szakaszt tartalmaz a modellek regisztrálásához, de közvetlenül kihagyhatja a központi telepítéshez szükséges [számítási cél létrehozását](how-to-deploy-and-where.md#choose-a-compute-target) , mivel már rendelkezik regisztrált modellel.
 
-### <a name="preview-no-code-model-deployment"></a>(Előzetes verzió) Kód nélküli modell központi telepítése
+### <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
 
-Ahelyett, hogy a hagyományos központi telepítési útvonal, használhatja a kód nélküli központi telepítési szolgáltatás (előzetes)scikit-learn. No-code modell központi telepítés minden beépített scikit-learn modelltípusok támogatott. A modell regisztrálásával a fent `model_framework` `model_framework_version`látható `resource_configuration` a , és a [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) paramétereket, egyszerűen használja a statikus függvényt a modell üzembe helyezéséhez.
+A hagyományos üzembe helyezési útvonal helyett a scikit-Learn kód nélküli üzembe helyezési funkció (előzetes verzió) is használható. Az összes beépített scikit-modell típushoz nem használható a kód modell üzembe helyezése. Ha a fentiekben látható módon regisztrálja a modellt `model_framework`, `model_framework_version`és `resource_configuration` a paramétereket is használja, egyszerűen használhatja a [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) statikus függvényt a modell üzembe helyezéséhez.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
 ```
 
-MEGJEGYZÉS: Ezek a függőségek az előre elkészített scikit-learn következtetéstárolóban találhatók.
+Megjegyzés: ezeket a függőségeket az előre elkészített scikit-Learn következtetési tároló tartalmazza.
 
 ```yaml
     - azureml-defaults
@@ -214,13 +214,13 @@ MEGJEGYZÉS: Ezek a függőségek az előre elkészített scikit-learn következ
     - numpy
 ```
 
-A teljes [útmutató](how-to-deploy-and-where.md) részletesebben ismerteti az Azure Machine Learning üzembe helyezését.
+A teljes körű [útmutató](how-to-deploy-and-where.md) a Azure Machine learning nagyobb részletességgel történő üzembe helyezését ismerteti.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben betanított és regisztrált egy scikit-learn modellt, és megismerkedett a telepítési lehetőségekkel. Tekintse meg ezeket az egyéb cikkeket, ha többet szeretne megtudni az Azure Machine Learningről.
+Ebben a cikkben a scikit-Learn modell betanítását és regisztrálását, valamint az üzembe helyezési lehetőségek megismerését ismertetjük. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 
-* [Futási mérőszámok nyomon követése edzés közben](how-to-track-experiments.md)
+* [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
-* [Referenciaarchitektúra az elosztott mélytanulási képzéshez az Azure-ban](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Az Azure-ban elosztott Deep learning-képzés hivatkozási architektúrája](/azure/architecture/reference-architectures/ai/training-deep-learning)

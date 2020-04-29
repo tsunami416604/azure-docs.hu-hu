@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Anomália-észlelés az Azure Databricks használatával történő adatfolyam-adatfolyamokon'
+title: 'Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja az Anomália-detektor API-t és az Azure Databricks-t az adatok anomáliáinak figyeléséhez.
+description: Megtudhatja, hogyan használhatja a anomália-Kiderítő API-t és a Azure Databricks az adataiban észlelt rendellenességek figyelésére.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402668"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Anomália-észlelés az Azure Databricks használatával történő adatfolyam-adatfolyamokon
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
-[Az Azure Databricks](https://azure.microsoft.com/services/databricks/) egy gyors, egyszerű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Azure Cognitive Services részét, az Anomáliadetektor API segítségével figyelheti az idősorozat-adatokat. Az oktatóanyag használatával anomáliafelismerést közel valós időben futtatja egy adatfolyamon az Azure Databricks használatával. A Twitter-adatokat az Azure Event Hubs használatával fogja bebetöltésre, és importálja őket az Azure Databricks-be a Spark Event Hubs-összekötő használatával. Ezt követően az API-t fogja használni az adatfolyamon lévő adatok anomáliák észlelésére. 
+A [Azure Databricks](https://azure.microsoft.com/services/databricks/) egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Az Azure Cognitive Services részét képező rendellenesség-Kiderítő API lehetővé teszi az idősoros adatai figyelését. Ez az oktatóanyag egy közel valós idejű adatstreamen futtatja a anomáliák észlelését Azure Databricks használatával. A Twitter-adatbevitelt az Azure Event Hubs használatával végezheti el, és importálhatja őket a Azure Databricks a Spark Event Hubs-összekötő használatával. Ezt követően az API használatával észlelheti az adatfolyamban lévő adatvesztést. 
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
-![Azure Databricks az Event Hubs és a Cognitive Services szolgáltatással](../media/tutorials/databricks-cognitive-services-tutorial.png "Azure Databricks az Event Hubs és a Cognitive Services szolgáltatással")
+![Azure Databricks Event Hubs és Cognitive Services](../media/tutorials/databricks-cognitive-services-tutorial.png "Azure Databricks Event Hubs és Cognitive Services")
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -34,38 +34,38 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Twitter-alkalmazás létrehozása a streamadatok eléréséhez
 > * Jegyzetfüzetek létrehozása az Azure Databricksben
 > * Kódtárak csatlakoztatása az Event Hubshoz és a Twitter API-hoz
-> * Anomáliadetektor-erőforrás létrehozása és a hozzáférési kulcs beolvasása
+> * Anomália-detektor erőforrás létrehozása és a hozzáférési kulcs lekérése
 > * Tweetek küldése az Event Hubsnak
 > * Tweetek beolvasása az Event Hubsról
-> * Anomáliaészlelés futtatása tweeteken
+> * Anomáliák észlelésének futtatása tweeteken
 
 > [!Note]
-> * Ez az oktatóanyag bemutatja az anomáliadetektor API ajánlott [megoldásarchitektúrájának](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) megvalósítását.
-> * Ez az oktatóanyag nem hajtható végre az Anomaly Detector API vagy az Azure Databricks ingyenes próbaverziójával. 
+> * Ez az oktatóanyag bemutatja, hogyan lehet megvalósítani a rendellenesség-Kiderítő API ajánlott [megoldási architektúráját](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) .
+> * Ez az oktatóanyag nem hajtható végre ingyenes próbaverzióval az anomália-érzékelő API-hoz, vagy Azure Databricks. 
 
-Hozzon létre egy [Azure-előfizetést,](https://azure.microsoft.com/free/) ha nem rendelkezik ilyensel.
+Ha még nem rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/free/) , hozzon létre egyet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [Azure Event Hubs névtér](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) és az eseményközpont.
+- Egy [Azure Event Hubs névtér](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) és Event hub.
 
-- Az [connection string](../../../event-hubs/event-hubs-get-connection-string.md) Event Hubs névtér eléréséhez. A kapcsolati karakterláncnak a következőhöz hasonló formátumúnak kell lennie:
+- A Event Hubs névtér eléréséhez használt [kapcsolati karakterlánc](../../../event-hubs/event-hubs-get-connection-string.md) . A kapcsolódási karakterláncnak hasonló formátumúnak kell lennie a következőhöz:
 
     `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
 
-- Az Event Hubs megosztott hozzáférési házirendneve és házirendkulcsa.
+- A Event Hubs megosztott hozzáférési szabályzatának neve és házirend-kulcsa.
 
-Tekintse meg az Azure Event Hubs [rövid útmutató](../../../event-hubs/event-hubs-create.md) a névtér és az eseményközpont létrehozásáról.
+A névtér és az Event hub létrehozásával kapcsolatos információkért tekintse [meg az](../../../event-hubs/event-hubs-create.md) Azure Event Hubs rövid útmutatót.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
-Ebben a szakaszban hozzon létre egy Azure Databricks-munkaterületet az [Azure Portal](https://portal.azure.com/)használatával.
+Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Portal](https://portal.azure.com/)használatával.
 
-1. Az Azure Portalon válassza az**Analytics** > Erőforrás > létrehozása**Azure Databricks** **lehetőséget.**
+1. A Azure Portal válassza az **erőforrás** > létrehozása**elemzési** > **Azure Databricks**lehetőséget.
 
-    ![Databricks az Azure Portalon](../media/tutorials/azure-databricks-on-portal.png "Databricks az Azure Portalon")
+    ![Databricks Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks Azure Portal")
 
-3. Az **Azure Databricks Service alatt**adja meg a következő értékeket a Databricks-munkaterület létrehozásához:
+3. A **Azure Databricks szolgáltatás**területen adja meg a következő értékeket egy Databricks-munkaterület létrehozásához:
 
 
     |Tulajdonság  |Leírás  |
@@ -73,8 +73,8 @@ Ebben a szakaszban hozzon létre egy Azure Databricks-munkaterületet az [Azure 
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/management/overview.md). |
-    |**Helyen**     | Válassza **az USA keleti régiója 2** vagy bármely más rendelkezésre álló régió egyikét. Tekintse meg a [régiónként elérhető Azure-szolgáltatásokat](https://azure.microsoft.com/regions/services/) a régió elérhetőségéhez.        |
-    |**Árképzési szint**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza **a Próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Hely**     | Válassza ki az **USA 2. keleti** régióját vagy egy másik elérhető régiót. Tekintse meg a [régiók számára elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/) elérhetőségét.        |
+    |**Díjszabási csomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza a **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Kattintson a **Létrehozás** gombra.
 
@@ -84,22 +84,22 @@ Ebben a szakaszban hozzon létre egy Azure Databricks-munkaterületet az [Azure 
 
 1. Az Azure Portalon lépjen a létrehozott Databricks-munkaterülethez, majd válassza a **Munkaterület indítása** elemet.
 
-2. A rendszer átirányítja az Azure Databricks-portálra. A portálon válassza az **Új fürt**lehetőséget.
+2. A rendszer átirányítja a Azure Databricks portálra. A portálon válassza az **új fürt**lehetőséget.
 
     ![Databricks az Azure-ban](../media/tutorials/databricks-on-azure.png "Databricks az Azure-ban")
 
-3. Az **Új fürt** lapon adja meg a fürt létrehozásához megadott értékeket.
+3. Az **új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
     ![Databricks Spark-fürt létrehozása az Azure-ban](../media/tutorials/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
    * Adjon egy nevet a fürtnek.
-   * Ebben a cikkben hozzon létre egy fürtöt **5.2-es** futásidejű. NE válassza az **5.3-as** futásidőt.
-   * Győződjön meg arról, hogy a **Percek \_ \_ utáni inaktivitás** jelölőnégyzet be van jelölve. Adjon meg egy időtartamot (percben) a fürt leállításához, ha a fürt nincs használatban.
+   * Ehhez a cikkhez hozzon létre egy **5,2** futtatókörnyezettel rendelkező fürtöt. Ne válassza a **5,3** futtatókörnyezetet.
+   * Győződjön meg arról, hogy a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
 
      Válassza a **Fürt létrehozása** lehetőséget. 
-4. A fürt létrehozása néhány percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+4. A fürt létrehozása több percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -107,76 +107,76 @@ A tweetstream fogadásához létre kell hoznia egy alkalmazást a Twitteren. Kö
 
 1. Egy webböngészőben nyissa meg a [Twitter Application Management](https://apps.twitter.com/) oldalt, és válassza az **Új alkalmazás létrehozása** elemet.
 
-    ![Twitter alkalmazás létrehozása](../media/tutorials/databricks-create-twitter-app.png "Twitter alkalmazás létrehozása")
+    ![Twitter-alkalmazás létrehozása](../media/tutorials/databricks-create-twitter-app.png "Twitter-alkalmazás létrehozása")
 
 2. Az **Alkalmazás létrehozása** oldalon adja meg az új alkalmazás adatait, majd válassza a **Twitter-alkalmazás létrehozása** parancsot.
 
-    ![Twitter alkalmazás részletei](../media/tutorials/databricks-provide-twitter-app-details.png "Twitter alkalmazás részletei")
+    ![Twitter-alkalmazás részletei](../media/tutorials/databricks-provide-twitter-app-details.png "Twitter-alkalmazás részletei")
 
 3. Az alkalmazás oldalán válassza a **Kulcsok és hozzáférési tokenek** fület, és másolja a **Fogyasztói kulcs** és a **Fogyasztói titkos kulcs** mezők értékeit. Ezenkívül válassza a **Saját hozzáférési token létrehozása** lehetőséget a hozzáférési tokenek létrehozásához. Másolja a **Hozzáférési token** és a **Hozzáférési token titkos kulcsa** mező értékeit.
 
-    ![Twitter alkalmazás részletei](../media/tutorials/twitter-app-key-secret.png "Twitter alkalmazás részletei")
+    ![Twitter-alkalmazás részletei](../media/tutorials/twitter-app-key-secret.png "Twitter-alkalmazás részletei")
 
 Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi részében szüksége lesz rájuk.
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Kódtárak csatolása Spark-fürthöz
 
-Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. Az alábbi utasítások bemutatják, hogyan veheti fel a tárakat a munkaterület **megosztott** mappájába.
+Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. Az alábbi utasítások azt mutatják be, hogyan adhatók hozzá a kódtárak a **megosztott** mappához a munkaterületen.
 
-1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a Tár **létrehozása parancsot.** > **Library**
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása** > **Library**lehetőséget.
 
-   ![Tár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Tár hozzáadása párbeszédpanel")
+   ![Kódtár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
-2. Az Új könyvtár lapon a **Forrás** területen válassza a **Maven**lehetőséget. A **Koordináták**mezőbe írja be a hozzáadni kívánt csomag koordinátáta. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
+2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. A **koordináták**mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Maven koordináták megadására](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven koordináták megadására")
+     ![Maven-koordináták megadása](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
 
 3. Kattintson a **Létrehozás** gombra.
 
 4. Válassza ki a mappát, amelyhez hozzáadta a kódtárat, majd válassza ki a kódtár nevét.
 
-    ![A hozzáadni kívánt tár kiválasztása](../media/tutorials/select-library.png "A hozzáadni kívánt tár kiválasztása")
+    ![Válassza ki a hozzáadni kívánt tárat](../media/tutorials/select-library.png "Válassza ki a hozzáadni kívánt tárat")
 
-5. Ha a tárlapnem található fürt, válassza a Fürtök lehetőséget, és **futtassa** a létrehozott fürtöt. Várjon, amíg az állapot a "Futás" jelenik meg, majd lépjen vissza a könyvtár lapra.
-A tár lapon jelölje ki azt a fürtöt, amelyben használni szeretné a tárat, majd kattintson a **Telepítés gombra.** Miután a tár sikeresen társítva lett a fürthöz, az állapot azonnal Telepített állapotra **változik.**
+5. Ha nincs fürt a könyvtár lapon, válassza a **fürtök** lehetőséget, és futtassa a létrehozott fürtöt. Várjon, amíg az állapot megjelenik a "Running", majd térjen vissza a könyvtár lapra.
+A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni szeretné, majd válassza a **telepítés**lehetőséget. Miután sikeresen hozzárendelte a kódtárat a fürthöz, az állapot azonnal **települ**.
 
-    ![Tár telepítése fürtre](../media/tutorials/databricks-library-attached.png "Tár telepítése fürtre")
+    ![Függvénytár telepítése fürtre](../media/tutorials/databricks-library-attached.png "Függvénytár telepítése fürtre")
 
 6. Ismételje meg ezeket a lépéseket a Twitter-csomag (`twitter4j-core:4.0.7`) esetében is.
 
 ## <a name="get-a-cognitive-services-access-key"></a>Cognitive Services hozzáférési kulcs beszerzése
 
-Ebben az oktatóanyagban az [Azure Cognitive Services anomáliadetektor API-k](../overview.md) használatával közel valós időben futtathatja az anomáliaészlelést a tweetek adatfolyamán. Az API-k használata előtt létre kell hoznia egy anomáliadetektor-erőforrást az Azure-ban, és be kell olvasnia egy hozzáférési kulcsot az Anomália-detektor API-k használatához.
+Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API](../overview.md) -k használatával futtathatja a anomáliák észlelését egy közel valós idejű tweetek streamen. Az API-k használata előtt létre kell hoznia egy rendellenesség-Kiderítő erőforrást az Azure-ban, és be kell szereznie egy hozzáférési kulcsot az anomália detektor API-k használatához
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
-3. Az Azure Piactér csoportban válassza az **AI + Machine Learning** > **lehetőséget az összes** > **kognitív szolgáltatás – további** > **anomáliadetektor megtekintése.** Vagy használhatja [ezt a hivatkozást,](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) hogy közvetlenül a **Létrehozás** párbeszédpanelre lépjen.
+3. Az Azure Marketplace területen válassza az **AI + Machine learning** > az**összes** > **Cognitive Services – több** > **anomália-detektor**elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
 
-    ![Anomáliadetektor-erőforrás létrehozása](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomáliadetektor-erőforrás létrehozása")
+    ![Rendellenesség-Kiderítő erőforrás létrehozása](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Rendellenesség-Kiderítő erőforrás létrehozása")
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
     |Érték |Leírás  |
     |---------|---------|
-    |Név     | Az Anomáliadetektor erőforrás neve.        |
-    |Előfizetés     | Az erőforráshoz tartozó Azure-előfizetéshez lesz társítva.        |
-    |Hely     | Egy Azure-hely.        |
-    |Tarifacsomag     | A szolgáltatás tarifacsomagja. Az Anomáliadetektor oktatásáról további információt az [árképzési oldalon](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)talál.        |
-    |Erőforráscsoport     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt kíván-e kijelölni.        |
+    |Name (Név)     | Az anomália-detektor erőforrásának neve.        |
+    |Előfizetés     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
+    |Hely     | Egy Azure-beli hely.        |
+    |Tarifacsomag     | A szolgáltatás díjszabási szintje. További információ az anomália-detektor díjszabásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
+    |Erőforráscsoport     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne kijelölni.        |
 
 
      Kattintson a **Létrehozás** gombra.
 
-5. Az erőforrás létrehozása után az **Áttekintés** lapon másolja és mentse a **végpont** URL-címét, ahogy az a képernyőképen látható. Ezután válassza **a Hozzáférési kulcsok megjelenítése lehetőséget.**
+5. Az erőforrás létrehozása után az **Áttekintés** lapon másolja és mentse a **végpont** URL-címét a képernyőképen látható módon. Ezután válassza a **hozzáférési kulcsok megjelenítése**lehetőséget.
 
     ![Hozzáférési kulcsok megjelenítése](../media/tutorials/cognitive-services-get-access-keys.png "Hozzáférési kulcsok megjelenítése")
 
-6. A **Billentyűk**csoportban jelölje ki a másolásikont a használni kívánt kulcson. Mentse a hozzáférési kulcsot.
+6. A **kulcsok**területen válassza a másolás ikont a használni kívánt kulcshoz. Mentse a hozzáférési kulcsot.
 
     ![Hozzáférési kulcsok másolása](../media/tutorials/cognitive-services-copy-access-keys.png "Hozzáférési kulcsok másolása")
 
@@ -185,13 +185,13 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomáliadetektor API-k](.
 Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen a következő nevekkel
 
 - **SendTweetsToEventHub** – Előállítói jegyzetfüzet a tweetek beszerzésére a Twitterről, majd azok streamelésére az Event Hubsnak.
-- **AnalyzeTweetsFromEventHub** - Egy fogyasztói notebook segítségével olvassa el a tweets az Event Hubs és anomália észlelése.
+- **AnalyzeTweetsFromEventHub** – egy fogyasztói jegyzetfüzet, amellyel beolvashatja a tweeteket Event Hubs és futtathatja a anomáliák észlelését.
 
-1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** a bal oldali ablaktáblában. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
+1. A Azure Databricks munkaterületen válassza a **munkaterület** lehetőséget a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](../media/tutorials/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-2. A **Jegyzetfüzet létrehozása** párbeszédpanelen írja be **a SendTweetsToEventHub** nevet, válassza a **Scala** nyelvet, és válassza ki a korábban létrehozott Spark-fürtöt.
+2. A **Jegyzetfüzet létrehozása** párbeszédpanelen írja be a **SendTweetsToEventHub** nevet, válassza a **Scala** nyelvet, és válassza ki a korábban létrehozott Spark-fürtöt.
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](../media/tutorials/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
@@ -201,7 +201,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
 ## <a name="send-tweets-to-event-hubs"></a>Tweetek küldése az Event Hubsnak
 
-A **SendTweetsToEventHub** notebook, illessze be a következő kódot, és cserélje le a helyőrző értékeket az Event Hubs névtér és a Twitter alkalmazás, amely korábban létrehozott. Ez a jegyzetfüzet kivonja a létrehozási időt és a "Like" számú tweetek a kulcsszó "Azure", és streameli azokat, mint események Event Hubs valós időben.
+Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőt a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet kinyeri az "Azure" kulcsszóval rendelkező tweetek létrehozási idejét és "Like" s számát, és valós időben továbbítja azokat az események Event Hubsba.
 
 ```scala
 //
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. A kimenet minden esemény időbélyegének és az Event Hubs-ba betöltött "Like" számának kombinációja.
+A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. A kimenetben szereplő minden egyes esemény az időbélyegek és a Event Hubsba betöltött "Like" s szám kombinációja.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -321,9 +321,9 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweetek beolvasása az Event Hubsról
 
-Az **AnalyzeTweetsFromEventHub** jegyzetfüzetbe illessze be a következő kódot, és cserélje le a helyőrzőt a korábban létrehozott Anomaly Detector erőforrás értékeire. Ez a jegyzetfüzet beolvassa a tweeteket, amelyeket korábban az Event Hubsba streamelt a **SendTweetsToEventHub** jegyzetfüzet segítségével.
+Illessze be a következő kódot a **AnalyzeTweetsFromEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőt a korábban létrehozott anomália-detektor erőforrásához tartozó értékekre. Ez a jegyzetfüzet beolvassa a tweeteket, amelyeket korábban az Event Hubsba streamelt a **SendTweetsToEventHub** jegyzetfüzet segítségével.
 
-Először írjon egy ügyfelet az Anomáliadetektor hívásához. 
+Először írjon egy ügyfelet a anomália-detektor meghívásához. 
 ```scala
 
 //
@@ -434,7 +434,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
     defined class AnomalyBatchResponse
     defined object AnomalyDetector
 
-Ezután készítsen elő egy összesítési függvényt a későbbi használatra.
+Ezután készítse elő az összesítési függvényt a jövőbeli használatra.
 ```scala
 //
 // User Defined Aggregation Function for Anomaly Detection
@@ -501,7 +501,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-Ezután töltse be az adatokat az eseményközpontból az anomáliadetektáláshoz. Cserélje le a helyőrzőt a korábban létrehozott Azure Event Hubs értékeire.
+Ezután töltse be az Event hub adatait az anomáliák észleléséhez. Cserélje le a helyőrzőt a korábban létrehozott Azure-Event Hubs értékeire.
 
 ```scala
 //
@@ -539,18 +539,18 @@ display(msgStream)
 
 ```
 
-A kimenet most hasonlít az alábbi képre. Vegye figyelembe, hogy a táblázatban szereplő dátum eltérhet az oktatóanyagban szereplő dátumtól, mivel az adatok valós idejűek.
-![Adatok betöltése az eseményközpontból](../media/tutorials/load-data-from-eventhub.png "Adatok betöltése az eseményközpontból")
+A kimenet most az alábbi képhez hasonlít. Vegye figyelembe, hogy a táblázatban szereplő dátum ettől eltérő lehet az oktatóanyagban szereplő dátumtól, mert az adatok valós időben jelennek meg.
+![Adatok betöltése az Event hub-ból](../media/tutorials/load-data-from-eventhub.png "Adatok betöltése az Event hub-ból")
 
-Az Azure Event Hubs-ból az Azure Databricks-be közel valós időben streamelte az adatokat az Apache Spark Event Hubs-összekötőhasználatával. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
+Mostantól közel valós időben áramlott Azure Databricks be az Azure Event Hubsból származó adatok az Event Hubs-összekötővel Apache Sparkhoz. A Spark Event Hubs-összekötőinek használatáról az [összekötő dokumentációjában](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs) talál további információt.
 
 
 
-## <a name="run-anomaly-detection-on-tweets"></a>Anomáliaészlelés futtatása tweeteken
+## <a name="run-anomaly-detection-on-tweets"></a>Anomáliák észlelésének futtatása tweeteken
 
-Ebben a szakaszban anomáliaészlelést futtat az Anomáliadetektor API-val kapott tweeteken. Ebben a szakaszban a kódrészleteket fogja hozzáadni ugyanazon **AnalyzeTweetsFromEventHub** jegyzetfüzethez.
+Ebben a szakaszban az anomáliák észlelése API használatával elküldött tweetek anomáliát futtatja. Ebben a szakaszban a kódrészleteket fogja hozzáadni ugyanazon **AnalyzeTweetsFromEventHub** jegyzetfüzethez.
 
-Az anomáliadetektáláshoz először a metrikák számát óránként kell összesítenie.
+A anomáliák észleléséhez először összesíteni kell a metrikák darabszámát óránként.
 ```scala
 //
 // Aggregate Metric Count by Hour
@@ -566,7 +566,7 @@ groupStream.printSchema
 
 display(groupStream)
 ```
-A kimenet most hasonlít a következő kódrészletek.
+A kimenet mostantól az alábbi kódrészletekhez hasonlít.
 ```
 groupTime                       average
 2019-04-23T04:00:00.000+0000    24
@@ -578,8 +578,8 @@ groupTime                       average
 
 ```
 
-Ezután az összesített kimeneti eredmény a Delta. Mivel az anomáliadetektálás hosszabb előzményablakot igényel, a Delta segítségével őrizzük meg a észlelni kívánt pont előzményadatait. Cserélje le a "[Helyőrző: tábla neve]" szót egy létrehozandó delta tábla nevére (például "tweet"). Cserélje le az "[Placeholder: folder name for checkpoints]" karakterlánc-értéket, amely minden alkalommal egyedi, amikor ezt a kódot futtatja (például "etl-from-eventhub-20190605").
-Ha többet szeretne megtudni a Delta-tó az Azure Databricks, kérjük, olvassa el a [Delta Lake Guide](https://docs.azuredatabricks.net/delta/index.html)
+Ezután szerezze be az összesített kimeneti eredményt a Delta értékre. Mivel a anomáliák észlelése már egy korábbi előzményi időszakot igényel, a Delta használatával megtarthatja az észlelni kívánt pont előzményeit. Cserélje le a "[helyőrző: táblanév]" nevet a létrehozandó, minősített Delta Table (például "tweetek") névre. Cserélje le a "[helyőrző: mappa neve az ellenőrzőpontokhoz]" karakterlánc értékét, amely minden alkalommal, amikor futtatja ezt a kódot (például "ETL-from-eventhub-20190605").
+Ha többet szeretne megtudni a Azure Databricks Delta Lake-ről, tekintse meg a [Delta Lake útmutatót](https://docs.azuredatabricks.net/delta/index.html)
 
 
 ```scala
@@ -595,7 +595,7 @@ groupStream.writeStream
 
 ```
 
-Cserélje le a ([Helyőrző: tábla neve]" táblát a fent kiválasztott Delta táblanévre.
+Cserélje le a "[helyőrző: Table Name]" kifejezést a fent kiválasztott különbözeti táblázat nevére.
 ```scala
 //
 // Show Aggregate Result
@@ -609,7 +609,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-A kimenet az alábbiak szerint: 
+Az alábbi kimenet: 
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -622,7 +622,7 @@ groupTime                       average
 
 ```
 
-Most az összesített idősorozat-adatok folyamatosan a Deltába kerülnek. Ezután ütemezhet egy óránkénti feladatot a legutóbbi pont anomáliájának észleléséhez. Cserélje le a ([Helyőrző: tábla neve]" táblát a fent kiválasztott Delta táblanévre.
+Most az összesített idősoros adatokat folyamatosan betölti a rendszer a Különbözetbe. Ezután ütemezhet egy óránkénti feladatot a legutóbbi pont rendellenességének észlelésére. Cserélje le a "[helyőrző: Table Name]" kifejezést a fent kiválasztott különbözeti táblázat nevére.
 
 ```scala
 //
@@ -671,20 +671,20 @@ Eredmény az alábbiak szerint:
 +--------------------+-------+
 ```
 
-Ennyi az egész! Az Azure Databricks használatával sikeresen streamelte az adatokat az Azure Event Hubs-ba, felhasználta az adatfolyam-adatokat az Event Hubs-összekötő használatával, majd közel valós időben futtatta az anomáliafelismerést a streamelési adatokon.
-Bár ebben az oktatóanyagban a részletesség óránként imitátum, bármikor módosíthatja a granularitást, hogy megfeleljen az Ön igényének. 
+Ennyi az egész! A Azure Databricks használatával sikeresen továbbította az adatátvitelt az Azure Event Hubsba, a stream-adatmennyiséget az Event Hubs-összekötő használatával használta fel, majd közel valós időben futtatta az adatátviteli rendellenességek észlelését.
+Habár ebben az oktatóanyagban a részletesség óránként történik, bármikor módosíthatja a részletességet, hogy megfeleljen a szükséges követelményeknek. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Databricks munkaterületen válassza **a fürtök** a bal oldali ablaktáblából. A lezárni kívánt fürt esetében vigye a kurzort a **műveletek** oszlop három pontra, majd kattintson a **Leállítás** ikonra, majd a **Megerősítés gombra.**
+Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Databricks munkaterületen válassza a **fürtök** lehetőséget a bal oldali ablaktáblán. A leállítani kívánt fürtnél vigye az egérmutatót a **műveletek** **oszlopban található három** pont fölé, majd válassza a Leállítás ikont, majd válassza a **megerősítés**lehetőséget.
 
 ![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem szakítja meg manuálisan a fürtöt, akkor automatikusan leáll, feltéve, hogy a fürt létrehozásakor bejelölte a **Percek \_ \_ utáni inaktivitás** után jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. A következő oktatóanyagra lépve megtudhatja, hogyan hívhatja meg az Anomália-detektor API-t, és hogyan jelenítheti meg az anomáliákat a Power BI desktop használatával. 
+Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hívhatja meg a rendellenesség-Kiderítő API-t, és hogyan jeleníthet meg rendellenességeket Power BI 
 
 > [!div class="nextstepaction"]
->[Kötegelt anomáliaészlelés a Power BI desktopsegítségével](batch-anomaly-detection-powerbi.md)
+>[A Batch anomália észlelése Power BI asztallal](batch-anomaly-detection-powerbi.md)

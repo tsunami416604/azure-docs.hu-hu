@@ -1,6 +1,6 @@
 ---
-title: 'Virtuális WAN: Virtuális központ útvonaltáblájának létrehozása az NVA-hoz: Azure portal'
-description: Virtual WAN virtuális központi útvonaltábla a forgalmat egy hálózati virtuális berendezésa portál használatával.
+title: 'Virtuális WAN: virtuális központ útválasztási táblázatának létrehozása a NVA: Azure Portal'
+description: Virtuális WAN virtuális központ útválasztási táblázata, amely a portál használatával irányítja át a forgalmat egy hálózati virtuális berendezésre.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,88 +9,88 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402949"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Virtuális WAN-központ útvonaltáblájának létrehozása nem-
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Hozzon létre egy virtuális WAN hub útválasztási táblázatot a NVA: Azure Portal
 
-Ez a cikk bemutatja, hogyan irányíthatja a forgalmat egy ág (helyszíni hely) csatlakozik a virtuális WAN hub egy küllővirtuális hálózat (VNet) egy hálózati virtuális berendezés (NVA) keresztül.
+Ebből a cikkből megtudhatja, hogyan irányíthatja át a forgalmat egy olyan ág (helyszíni hely) felé, amely a virtuális WAN-hubhoz csatlakozik egy küllős virtuális hálózaton (VNet) keresztül egy hálózati virtuális berendezésen (NVA) keresztül.
 
 ![Virtuális WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze, hogy teljesítette-e az alábbi feltételeket:
+Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
 
-*  Hálózati virtuális készülék (NVA) van. A hálózati virtuális berendezés egy harmadik féltől származó szoftver, amely általában az Azure Marketplace-en egy virtuális hálózatban van kiépítve.
+*  Rendelkezik egy hálózati virtuális berendezéssel (NVA). A hálózati virtuális berendezés egy olyan külső gyártótól származó szoftver, amelyet általában az Azure Marketplace-en kell kiépíteni egy virtuális hálózaton.
 
-    * Az NVA hálózati adapterhez magánhálózati IP-címet kell rendelni.
+    * A NVA hálózati adapterhez hozzá kell rendelni egy magánhálózati IP-címet.
 
-    * Az NVA nincs telepítve a virtuális központban. Külön virtuális hálózatban kell telepíteni.
+    * A NVA nincs telepítve a virtuális központban. Ezt külön virtuális hálózatban kell telepíteni.
 
-    *  Lehet, hogy az NVA virtuális hálózathoz egy vagy több virtuális hálózat csatlakozik. Ebben a cikkben az NVA virtuális hálózatot "közvetett küllős virtuális hálózatként" hivatkozunk. Ezek a virtuális hálózatok virtuális hálózathoz virtuális társviszony-létesítés használatával csatlakoztathatók. A virtuális hálózatok társviszony-létesítési hivatkozásait fekete nyilak ábrázolják a fenti ábrán a VNet 1, a VNet 2 és az NVA virtuális hálózat között.
-*  Két virtuális hálózatot hozott létre. Ezeket küllős virtuális hálózatként fogják használni.
+    *  Előfordulhat, hogy a NVA virtuális hálózat egy vagy több virtuális hálózattal van csatlakoztatva. Ebben a cikkben a NVA virtuális hálózatot "közvetett küllős VNet"-ként tekintjük át. Ezek a virtuális hálózatok a VNet-társítás használatával csatlakoztathatók a NVA VNet. A VNet-társítási hivatkozásokat fekete nyilak ábrázolják a fenti ábrán a VNet 1, VNet 2 és NVA VNet között.
+*  Két virtuális hálózatot hozott létre. A rendszer küllős virtuális hálózatok fogja használni őket.
 
-    * A vnet küllős címterek a következők: VNet1: 10.0.2.0/24 és VNet2: 10.0.3.0/24. Ha információra van szüksége a virtuális hálózat létrehozásáról, olvassa el [a Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört.
+    * A VNet küllős címei a következők: VNet1:10.0.2.0/24 és VNet2:10.0.3.0/24. Ha a virtuális hálózat létrehozásával kapcsolatos információkra van szüksége, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört.
 
     * Győződjön meg arról, hogy nincsenek virtuális hálózati átjárók a virtuális hálózatok egyikében sem.
 
-    * A virtuális hálózatok nem igényelnek átjáró-alhálózatot.
+    * A virtuális hálózatok nem igényel átjáró-alhálózatot.
 
-## <a name="1-sign-in"></a><a name="signin"></a>1. Bejelentkezés
+## <a name="1-sign-in"></a><a name="signin"></a>1. bejelentkezés
 
 Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2. Hozzon létre egy virtuális WAN
+## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2. virtuális WAN létrehozása
 
-Hozzon létre egy virtuális WAN.Create a virtual WAN. Használja a következő példaértékeket:
+Hozzon létre egy virtuális WAN-t. Használja a következő példában szereplő értékeket:
 
-* **Virtuális WAN név:** myVirtualWAN
+* **Virtuális WAN neve:** myVirtualWAN
 * **Erőforráscsoport:** testRG
-* **Helyszín:** USA nyugati
+* **Hely:** USA nyugati régiója
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="3-create-a-hub"></a><a name="hub"></a>3. Hub létrehozása
+## <a name="3-create-a-hub"></a><a name="hub"></a>3. hub létrehozása
 
-Hozza létre a központot. Használja a következő példaértékeket:
+Hozza létre a hubot. Használja a következő példában szereplő értékeket:
 
-* **Helyszín:** USA nyugati
+* **Hely:** USA nyugati régiója
 * **Név:** westushub
-* **Hub privát címtér:** 10.0.1.0/24
+* **Központi magánhálózati címtartomány:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4. Hub útvonaltábla létrehozása és alkalmazása
+## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4. hub-útválasztási táblázat létrehozása és alkalmazása
 
-Frissítse a hubot egy központi útvonaltáblával. Használja a következő példaértékeket:
+Frissítse a hubot egy hub útválasztási táblázattal. Használja a következő példában szereplő értékeket:
 
-* **Küllős virtuális hálózat címterei:** (VNet1 és VNet2) 10.0.2.0/24 és 10.0.3.0/24
-* **DMZ NVA hálózati adapter privát IP-címe:** 10.0.4.5
+* **Küllős VNet:** (VNet1 és VNet2) 10.0.2.0/24 és 10.0.3.0/24
+* **DMZ NVA hálózati adapter magánhálózati IP-címe:** 10.0.4.5
 
-1. Keresse meg a virtuális WAN-t.
-2. Kattintson arra a hubra, amelyhez útvonaltáblát szeretne létrehozni.
-3. Kattintson a **...**, majd a **Virtuális központ szerkesztése parancsra.**
-4. A **Virtuális központi központ szerkesztése** lapon görgessen le, és jelölje be a **Tábla használata útválasztáshoz**jelölőnégyzetet.
-5. Az **Ha a cél előtag oszlopban** adja hozzá a címtereket. A **Küldés** a következő ugrásra oszlopban adja hozzá a DMZ NVA hálózati adapter magánIP-címét.
-6. Kattintson a **Megerősítés** gombra a hub-erőforrás nak az útvonaltábla beállításaival való frissítéséhez.
+1. Navigáljon a virtuális WAN-ra.
+2. Kattintson arra a hubhoz, amelyhez útválasztási táblázatot kíván létrehozni.
+3. Kattintson a **...**, majd a **virtuális központ szerkesztése**elemre.
+4. A **virtuális központ szerkesztése** lapon görgessen le, és jelölje be a **tábla használata az útválasztáshoz**jelölőnégyzetet.
+5. A **Ha cél előtagja** oszlopban adja hozzá a Címterület mezőt. A **Küldés a következő ugrásra** oszlopba adja hozzá a DMZ NVA hálózati adapter magánhálózati IP-címét.
+6. Kattintson a **Confirm (megerősítés** ) gombra a központ erőforrásának az útválasztási táblázat beállításaival való frissítéséhez.
 
-## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. A virtuális hálózat kapcsolatainak létrehozása
+## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. hozza létre az VNet-kapcsolatokat
 
-Hozzon létre egy virtuális hálózati kapcsolatot minden közvetett küllővirtuális hálózat (VNet1 és VNet2) a hubhoz. Ezeket a virtuális hálózati kapcsolatokat a fenti ábrán látható kék nyilak ábrázolják. Ezután hozzon létre egy virtuális hálózat kapcsolatot az NVA virtuális hálózatról a hubra (fekete nyíl az ábrán).
+Hozzon létre egy virtuális hálózati kapcsolatokat az egyes közvetett küllős VNet (VNet1 és VNet2) a hubhoz. Ezek a virtuális hálózati kapcsolatok a fenti ábrán látható kék nyilak szerint jelennek meg. Ezután hozzon létre egy VNet-kapcsolódást a NVA VNet az ábrán látható fekete nyílra.
 
- Ehhez a lépéshez a következő értékeket használhatja:
+ Ebben a lépésben a következő értékeket használhatja:
 
 | Virtuális hálózat neve| Kapcsolat neve|
 | --- | --- |
-| VNet1 | tesztkapcsolat1 |
-| VNet2 | tesztkapcsolat2 |
-| NVAVNet | tesztkapcsolat3 |
+| VNet1 | testconnection1 |
+| VNet2 | testconnection2 |
+| NVAVNet | testconnection3 |
 
-Ismételje meg az alábbi eljárást minden csatlakoztatni kívánt virtuális hálózaton.
+Ismételje meg az alábbi eljárást minden olyan virtuális hálózat esetében, amelyhez csatlakozni szeretne.
 
 1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolatok** elemre.
 2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
@@ -100,7 +100,7 @@ Ismételje meg az alábbi eljárást minden csatlakoztatni kívánt virtuális h
     * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.
     * **Előfizetés** – Ellenőrizze az előfizetést.
     * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval.
-4. A kapcsolat létrehozásához kattintson az **OK** gombra.
+4. A kapcsolódás létrehozásához kattintson **az OK** gombra.
 
 ## <a name="next-steps"></a>További lépések
 

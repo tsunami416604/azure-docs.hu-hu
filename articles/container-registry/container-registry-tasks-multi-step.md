@@ -1,53 +1,53 @@
 ---
-title: Többlépéses feladat létrehozása, tesztelése & patch kép
-description: Bevezetés a többlépéses feladatok, az ACR-feladatok szolgáltatás az Azure Container Registry, amely feladatalapú munkafolyamatok létrehozásához, teszteléséhez és javításához tárolóképek a felhőben.
+title: Több lépésből álló feladat felépítés, tesztelés & patch-rendszerkép
+description: A többlépéses feladatok bemutatása, amely a Azure Container Registry ACR-feladatok egyik funkciója, amely feladaton alapuló munkafolyamatokat biztosít a felhőben található tároló-lemezképek létrehozásához, teszteléséhez és javításához.
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399698"
 ---
-# <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Többlépéses buildelési, tesztelési és javítási feladatok futtatása ACR-feladatokban
+# <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban
 
-A többlépéses feladatok többlépéses, többtárolós munkafolyamatokkal bővítik az ACR-feladatok egyetlen képépítési és leküldéses képességét. Többlépéses feladatokkal több képet hozhat létre és nyomtasson le sorozatban vagy párhuzamosan. Ezután futtassa ezeket a képeket parancsként egyetlen feladatfuttatáson belül. Minden lépés definiálja a tárolórendszerkép-összeállítási vagy leküldéses műveletet, és egy tároló végrehajtását is meghatározhatja. A többlépéses feladatok minden lépése egy tárolót használ végrehajtási környezetként.
+A többlépéses feladatok több lépésből álló, többtárolós alapú munkafolyamatokkal bővítik az ACR-feladatok egyetlen Rendszerképbeli Build-és leküldéses képességeit. Több lépésből álló feladatok használatával több lemezképet hozhat létre és küldhet le sorozatos vagy párhuzamosan. Ezután futtassa a lemezképeket parancsként egyetlen feladat futtatásával. Az egyes lépések egy tároló-rendszerkép létrehozási vagy leküldéses műveletét határozzák meg, valamint meghatározhatják egy tároló végrehajtását is. A többlépéses tevékenységek minden lépése egy tárolót használ végrehajtási környezetként.
 
 > [!IMPORTANT]
 > Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
 
 Futtathat például egy feladatot olyan lépésekkel, amelyek automatizálják a következő logikát:
 
-1. Webalkalmazás-lemezkép létrehozása
+1. Webalkalmazás-rendszerkép összeállítása
 1. A webalkalmazás-tároló futtatása
-1. Webalkalmazás-tesztkép létrehozása
-1. Futtassa a webalkalmazás-teszttárolót, amely teszteket hajt végre a futó alkalmazástárolón
-1. Ha a tesztek megfelelnek, hozzon létre egy Helm chart archív csomagot
-1. Az `helm upgrade` új Helm-diagram archívumcsomag használatával történő művelet
+1. Webalkalmazás-tesztelési rendszerkép összeállítása
+1. Futtassa a webalkalmazás-teszt tárolót, amely teszteket hajt végre a futó alkalmazás tárolóján
+1. Ha a tesztek sikeresek, hozzon létre egy Helm diagram archiválási csomagot
+1. Az új `helm upgrade` Helm chart Archive csomag használata
 
-Minden lépés az Azure-on belül történik, a munka azure-beli számítási erőforrásokra való kiszervezésével és az infrastruktúra-kezelés alóli felszabadításával. Az Azure container-beállításjegyzék mellett csak a használt erőforrásokért kell fizetnie. A díjszabásról az Azure Container [Registry díjszabásának][pricing] **Tárolóösszeállítás** szakaszában talál.
+Az Azure-on belül minden lépés elvégezhető, és kiszervezi a munkát az Azure számítási erőforrásaira, és felszabadítja az infrastruktúra felügyeletét. Az Azure Container Registry mellett csak a felhasznált erőforrásokért kell fizetnie. A díjszabással kapcsolatos információkért tekintse meg a **tároló-összeállítás** szakaszt [Azure Container Registry díjszabását][pricing].
 
 
-## <a name="common-task-scenarios"></a>Gyakori feladatforgatókönyvek
+## <a name="common-task-scenarios"></a>Gyakori feladatok forgatókönyvei
 
 A többlépéses feladatok a következő logikához hasonló forgatókönyveket tesznek lehetővé:
 
-* Egy vagy több tárolórendszerképet hozhat létre, címkézhet meg és nyomtasson le sorozatban vagy párhuzamosan.
-* Az egységteszt és a kódlefedettség eredményeinek futtatása és rögzítése.
-* Futtasson és rögzítsen funkcionális teszteket. Az ACR-feladatok több tároló futtatását is támogatják, és egy sor kérést hajtanak végre közöttük.
-* Feladatalapú végrehajtás végrehajtása, beleértve a tárolórendszerkép-összeállítás előtti/utáni lépéseit is.
-* Telepítsen egy vagy több tárolót a kedvenc üzembe helyezési motorjával a célkörnyezetbe.
+* Egy vagy több tároló lemezképének létrehozása, címkézése és leküldése sorozatos vagy párhuzamosan.
+* Az egység tesztelése és a kód lefedettségi eredményeinek futtatása és rögzítése.
+* Funkcionális tesztek futtatása és rögzítése. Az ACR-feladatok több tároló futtatását is lehetővé teszi, és ezek között több kérést hajtanak végre.
+* Feladat-alapú végrehajtás végrehajtása, beleértve a tárolók rendszerképének létrehozása előtti/utáni lépéseket is.
+* Helyezzen üzembe egy vagy több tárolót a kedvenc telepítési motorján a célként megadott környezetben.
 
-## <a name="multi-step-task-definition"></a>Többlépéses feladatdefiníció
+## <a name="multi-step-task-definition"></a>Több lépésből álló feladat definíciója
 
-Az ACR-feladatok többlépéses feladatait a YAML-fájllépései sorozataként definiálja. Minden lépés megadhat függőségeket egy vagy több korábbi lépés sikeres elvégzésétől. A következő feladatlépés-típusok érhetők el:
+Az ACR-feladatok több lépésből álló feladatai egy YAML-fájlban lévő lépések sorozata. Az egyes lépések egy vagy több előző lépés sikeres befejezésére vonatkozó függőségeket is meghatározhatnak. A következő feladathoz tartozó lépések típusai érhetők el:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Hozzon létre egy `docker build` vagy több tárolólemezképet ismerős szintaxissal, sorozatban vagy párhuzamosan.
-* [`push`](container-registry-tasks-reference-yaml.md#push): A beépített lemezképek leküldése egy tároló beállításjegyzékébe. A privát beállításjegyzékek, például az Azure Container Registry támogatottak, csakúgy, mint a nyilvános Docker Hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Futtasson egy tárolót úgy, hogy az a futó feladat környezetében függvényként működjön. Paramétereket adhat át a tároló `[ENTRYPOINT]`, és adja meg a tulajdonságokat, mint env, leválasztás, és más ismerős `docker run` paramétereket. A `cmd` lépéstípusa lehetővé teszi az egység- és funkcionális tesztelést, egyidejű tárolóvégrehajtással.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Hozzon létre egy vagy több tárolót `docker build` a jól ismert szintaxissal, sorozatban vagy párhuzamosan.
+* [`push`](container-registry-tasks-reference-yaml.md#push): Kiépített lemezképek leküldése egy tároló-beállításjegyzékbe. A privát beállításjegyzékek, például a Azure Container Registry támogatottak, csakúgy, mint a nyilvános Docker hub.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Futtasson egy tárolót úgy, hogy az a futó feladat kontextusában is működhet. Paramétereket adhat át a tárolóhoz `[ENTRYPOINT]`, és meghatározhatja a tulajdonságokat, például az ENV, a leválasztás `docker run` és az egyéb ismerős paramétereket. A `cmd` lépés típusa lehetővé teszi az egység és a funkcionális tesztelést a tárolók párhuzamos végrehajtásával.
 
-A következő kódrészletek bemutatják, hogyan kombinálható ezek a tevékenységlépéstípusok. A többlépéses feladatok olyan egyszerűek lehetnek, mint egyetlen lemezkép létrehozása egy Docker-fájlból, és a rendszerleíró adatbázisba való lenyomása a következőhöz hasonló YAML-fájllal:
+A következő kódrészletek azt mutatják be, hogyan egyesítheti ezeket a feladattípus-típusokat. A többlépéses feladatok olyan egyszerűek lehetnek, mint a Docker egyetlen rendszerképének létrehozása és a beállításjegyzékbe való továbbítása, a következőhöz hasonló YAML-fájllal:
 
 ```yml
 version: v1.1.0
@@ -56,7 +56,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-Vagy bonyolultabb, mint például ez a fiktív többlépéses definíció, amely tartalmazza a lépéseket a build, teszt, helm csomag, és helm üzembe helyezése (tároló rendszerleíró adatbázis és Helm tárház konfiguráció nem jelenik meg):
+Vagy összetettebb, például ez a fiktív többlépéses definíció, amely tartalmazza a Build, a test, a Helm Package és a Helm üzembe helyezésének lépéseit (a Container Registry és a Helm adattár konfigurációja nem látható):
 
 ```yml
 version: v1.1.0
@@ -79,21 +79,21 @@ steps:
   - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
-Tekintse meg a [feladat példák](container-registry-tasks-samples.md) at többlépéses feladat YAML-fájlok és Dockerfiles több forgatókönyv esetén.
+Számos forgatókönyv esetén tekintse meg a több lépésből álló YAML-fájlok és-Dockerfiles kapcsolatos [példákat](container-registry-tasks-samples.md) .
 
-## <a name="run-a-sample-task"></a>Mintafeladat futtatása
+## <a name="run-a-sample-task"></a>Minta feladat futtatása
 
-A feladatok támogatják mind a manuális végrehajtást, az úgynevezett "gyors futtatást", mind az automatikus végrehajtást a Git véglegesítése vagy az alaprendszerkép frissítése esetén.
+A feladatok a manuális végrehajtást, a "gyors futtatást" és az automatikus végrehajtást támogatják a git-véglegesítő vagy az alaprendszerkép frissítése során.
 
-Egy feladat futtatásához először definiálja a feladat lépéseit egy YAML-fájlban, majd végrehajtja az Azure CLI parancsot [az acr run][az-acr-run].
+Feladat futtatásához először meg kell adnia a feladat lépéseit egy YAML-fájlban, majd végre kell hajtania az Azure CLI-parancsot az [ACR Run][az-acr-run]paranccsal.
 
-Íme egy példa az Azure CLI parancs, amely egy feladatot futtat egy mintafeladat YAML-fájl használatával. A lépéseket építeni, majd nyomja meg a képet. Frissítse `\<acrName\>` a saját Azure-tároló beállításjegyzék ének nevével a parancs futtatása előtt.
+Íme egy példa egy Azure CLI-parancsra, amely egy feladatot futtat egy YAML-fájl használatával. A lépései felépítve, majd leküldenek egy képet. A `\<acrName\>` parancs futtatása előtt frissítse az Azure Container Registry nevét.
 
 ```azurecli
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-A feladat futtatásakor a kimenetnek meg kell jelenlennie a YAML-fájlban definiált egyes lépések előrehaladásáról. A következő kimenetben a `acb_step_0` lépések `acb_step_1`a és a .
+A feladat futtatásakor a kimenetnek a YAML fájlban meghatározott egyes lépések előrehaladását kell megjelenítenie. A következő kimenetben a lépések a következőképpen `acb_step_0` jelennek `acb_step_1`meg: és.
 
 ```azurecli
 az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -146,15 +146,15 @@ The following dependencies were found:
 Run ID: yd14 was successful after 19s
 ```
 
-A Git véglegesítése vagy az alaprendszerkép-frissítés automatikus buildjeiről további információt a [Lemezkép-buildek automatizálása](container-registry-tutorial-build-task.md) és az [Alapképfrissítés oktatóanyag-készítési](container-registry-tutorial-base-image-update.md) cikkeinek automatizálása című témakörben talál.
+További információ a git-véglegesítő vagy az alaprendszerkép-frissítés automatizált buildekről: a [rendszerkép-buildek automatizálása](container-registry-tutorial-build-task.md) és az [alaprendszerkép frissítése](container-registry-tutorial-base-image-update.md) című oktatóanyag cikkei.
 
 ## <a name="next-steps"></a>További lépések
 
-A többlépéses feladathivatkozást és a példákat itt találja:
+A többlépéses feladatok hivatkozását és a példákat itt találja:
 
-* [Feladathivatkozás](container-registry-tasks-reference-yaml.md) – Tevékenységlépés-típusok, tulajdonságaik és használatuk.
-* [Feladatpéldák](container-registry-tasks-samples.md) `task.yaml` – Példa és Docker-fájlok több forgatókönyvhöz, egyszerűen összetett.
-* [Cmd repo](https://github.com/AzureCR/cmd) – tárolók gyűjteménye az ACR-feladatok parancsaiként.
+* [Feladat leírása](container-registry-tasks-reference-yaml.md) – a feladat lépésének típusai, tulajdonságai és használata.
+* Példa a [példákra](container-registry-tasks-samples.md) `task.yaml` és a Docker-fájlokra több forgatókönyv esetén – egyszerű és összetett.
+* [Cmd](https://github.com/AzureCR/cmd) -tárház – a tárolók gyűjteménye az ACR-feladatok parancsaiként.
 
 <!-- IMAGES -->
 

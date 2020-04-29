@@ -1,64 +1,64 @@
 ---
-title: PyTorch-modell üzembe helyezése Azure Functions-alkalmazásként
-description: Egy előre betanított ResNet 18 mély neurális hálózat pytorch az Azure Functions rendelni 1 1000 ImageNet címkék egy lemezképhez.
+title: PyTorch-modell üzembe helyezése Azure Functions alkalmazásként
+description: A PyTorch-mel Azure Functions rendelkező, előre képzett ResNet 18 Deep neurális hálózat használatával 1 1000 ImageNet-címkét rendelhet egy képhez.
 author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.openlocfilehash: 17acb7e351d5f1c009a6a8a14717e987fae3e895
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78379898"
 ---
-# <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Oktatóanyag: Üzembe helyezhet egy előre betanított rendszerkép-besorolási modellt az Azure Functions ben a PyTorch segítségével
+# <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Oktatóanyag: előre betanított rendszerkép-besorolási modell üzembe helyezése a PyTorch-vel való Azure Functions
 
-Ebben a cikkben megtudhatja, hogyan használhatja a Python, A PyTorch és az Azure Functions egy előre betanított modell betöltéséhez egy kép a tartalma alapján. Mivel minden munkát helyileg, és nem hoz létre Azure-erőforrásokat a felhőben, nincs költség az oktatóanyag befejezéséhez.
+Ebből a cikkből megtudhatja, hogyan használhatja a Pythont, a PyTorch-t és a Azure Functions-t egy előre betanított modell betöltéséhez, amely a képeknek a tartalma alapján történő besorolására használható. Mivel minden helyileg működik, és nem hoz létre Azure-erőforrásokat a felhőben, az oktatóanyag elvégzéséhez nem kell fizetnie.
 
 > [!div class="checklist"]
-> * Inicializáljon egy helyi környezetet az Azure Functions pythonban való fejlesztéséhez.
-> * Előre betanított PyTorch gépi tanulási modell importálása egy függvényalkalmazásba.
-> * Kiszolgáló nélküli HTTP API-t hozhat létre, amely a lemezképet az 1000 ImageNet-osztály egyikébe [sorolja.](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)
-> * Használja fel az API-t egy webalkalmazásból.
+> * Helyi környezet inicializálása a Python-Azure Functions fejlesztéséhez.
+> * Előre betanított PyTorch Machine learning-modell importálása egy Function alkalmazásba.
+> * Hozzon létre egy kiszolgáló nélküli HTTP API-t, amely a rendszerképek egyikét 1000 ImageNet [osztályba](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sorolja.
+> * Használja az API-t egy webalkalmazásból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python 3.7.4 vagy újabb](https://www.python.org/downloads/release/python-374/). (A Python 3.8.x és a Python 3.6.x is ellenőrizhető az Azure Functions szolgáltatással.)
-- Az [Azure Functions alapvető eszközei](functions-run-local.md#install-the-azure-functions-core-tools)
-- Kódszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python-3.7.4 vagy újabb](https://www.python.org/downloads/release/python-374/)verzió. (A Python 3.8. x és a Python 3.6. x is ellenőrizve van Azure Functions.)
+- A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
 
-### <a name="prerequisite-check"></a>Előfeltétel-ellenőrzés
+### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
-1. Egy terminál- vagy parancsablakban futtassa `func --version` annak ellenőrzéséhez, hogy az Azure Functions Core Tools 2.7.1846-os vagy újabb verziójú-e.
-1. Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) a Python 3.7.x verziójelentések ellenőrzéséhez.
+1. A terminál vagy a parancssorablakban futtassa `func --version` a parancsot az Azure functions Core Tools 2.7.1846 vagy újabb verziójának megadásához.
+1. Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) a Python-verzió jelentéseinek 3.7. x-ben való vizsgálatához.
 
-## <a name="clone-the-tutorial-repository"></a>Klónozza a bemutató tárházat
+## <a name="clone-the-tutorial-repository"></a>Az oktatóanyag-adattár klónozása
 
-1. Terminál- vagy parancsablakban klónozza a következő tárházat a Git használatával:
+1. Egy terminál vagy parancssori ablakban a következő adattár klónozásával a git használatával:
 
     ```
     git clone https://github.com/Azure-Samples/functions-python-pytorch-tutorial.git
     ```
 
-1. Navigáljon a mappába, és vizsgálja meg annak tartalmát.
+1. Navigáljon a mappához, és vizsgálja meg a tartalmát.
 
     ```
     cd functions-python-pytorch-tutorial
     ```
 
-    - *start* a munka mappát a tutorial.
-    - *vége* a végső eredmény és a teljes végrehajtás az Ön referencia.
-    - *erőforrások* tartalmazzák a gépi tanulási modell és segítő könyvtárak.
-    - *előtétoldal* egy olyan webhely, amely meghívja a függvényalkalmazást.
+    - a *Start* a munkahelyi mappa az oktatóanyaghoz.
+    - a *Befejezés* a hivatkozás végső eredménye és teljes megvalósítása.
+    - az *erőforrások* a Machine learning-modellt és a segítő könyvtárakat tartalmazzák.
+    - a *frontend* egy olyan webhely, amely meghívja a Function alkalmazást.
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Python virtuális környezet létrehozása és aktiválása
 
-Nyissa meg a *start* mappát, és futtassa `.venv`a következő parancsokat a nevű virtuális környezet létrehozásához és aktiválásához.
+Navigáljon a *Start* mappára, és futtassa a következő parancsokat a nevű `.venv`virtuális környezet létrehozásához és aktiválásához.
 
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 cd start
@@ -66,7 +66,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Ha a Python nem telepítette a venv csomagot a Linux disztribúcióra, futtassa a következő parancsot:
+Ha a Python nem telepítette a venv csomagot a Linux-disztribúcióban, futtassa a következő parancsot:
 
 ```bash
 sudo apt-get install python3-venv
@@ -90,53 +90,53 @@ py -m venv .venv
 
 ---
 
-Az összes további parancsot ebben az aktivált virtuális környezetben futtatja. (A virtuális környezetből `deactivate`való kilépéshez futtassa a .)
+Az összes további parancsot futtatja ebben az aktivált virtuális környezetben. (A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate`.)
 
 
-## <a name="create-a-local-functions-project"></a>Helyi függvényprojekt létrehozása
+## <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
 
-Az Azure Functions egy függvényprojekt egy tároló egy vagy több egyedi függvények, amelyek mindegyike reagál egy adott eseményindító. A projekt összes függvénye azonos helyi és üzemeltetési konfigurációval rendelkezik. Ebben a szakaszban hozzon létre egy függvényprojektet, amely egyetlen sablonfüggvényt tartalmaz, `classify` amely HTTP-végpontot biztosít. Egy későbbi szakaszban további kódot adhat hozzá.
+Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy olyan Function-projektet hoz létre, amely egy nevű `classify` és egy http-végpontot biztosító kiosztási függvényt tartalmaz. Egy későbbi szakaszban további speciális kódokat adhat hozzá.
 
-1. A *kezdőképernyő* mappában az Azure Functions Core Tools használatával inicializáljon egy Python függvényalkalmazást:
+1. A *Start* mappában használja a Azure functions Core Tools egy Python-függvény alkalmazásának inicializálásához:
 
     ```
     func init --worker-runtime python
     ```
 
-    Az inicializálás után a *kezdőmappa* különböző fájlokat tartalmaz a projekthez, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és [host.json](functions-host-json.md)nevű konfigurációs fájlokat. Mivel *a local.settings.json* tartalmazhat az Azure-ból letöltött titkokat, a fájl alapértelmezés szerint ki van zárva a forrásvezérlésből a *.gitignore* fájlban.
+    Az inicializálás után a *Start* mappa különböző fájlokat tartalmaz a projekthez, beleértve a [Local. Settings. JSON](functions-run-local.md#local-settings-file) és a [Host. JSON](functions-host-json.md)nevű konfigurációs fájlokat. Mivel a *Local. Settings. JSON* az Azure-ból letöltött titkos kulcsokat tartalmazhat, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
 
     > [!TIP]
-    > Mivel egy függvényprojekt egy adott futásidőhöz van kötve, a projekt összes függvényét ugyanazzal a nyelvvel kell írni.
+    > Mivel a Function projekt egy adott futtatókörnyezethez van kötve, a projekt összes funkcióját ugyanazzal a nyelvvel kell írni.
 
-1. Adjon hozzá egy függvényt a projekthez `--name` a következő paranccsal, ahol `--template` az argumentum a függvény egyedi neve, és az argumentum megadja a függvény eseményindítóját. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének megfelelő kódfájlt tartalmazó függvénynévnek, valamint egy *function.json*nevű konfigurációs fájlt.
+1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol `--name` az argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *osztályozza*a . Ebben a mappában két fájl található: * \_ \_\_\_init .py*, amely a függvénykódot tartalmazza, és a *function.json*, amely leírja a függvény eseményindítóját, valamint bemeneti és kimeneti kötéseit. A fájlok tartalmáról a [Fájl tartalmának vizsgálata a](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) Python rövid útmutatójában című témakörben talál.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: * \_ \_az\_\_init.* a (z), amely tartalmazza a függvény kódját és a *function. JSON*fájlt, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-1. Indítsa el a funkciót a helyi Azure Functions futásidejű állomás elindításával a *start* mappában:
+1. Indítsa el a függvényt úgy, hogy elindítja a helyi Azure Functions futtatókörnyezet-gazdagépet a *Start* mappában:
 
     ```
     func start
     ```
 
-1. Ha megjelenik `classify` a végpont a kimenetben, keresse ```http://localhost:7071/api/classify?name=Azure```meg az URL-címet, . A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
+1. Ha megjelenik a `classify` végpont a kimenetben, keresse meg az URL-címet ```http://localhost:7071/api/classify?name=Azure```. A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
 
-1. A **Ctrl C billentyűvel**-**C** állítsa le az állomást.
+1. A gazdagép leállításához használja a CTRL**C** **billentyűt**-.
 
 
-## <a name="import-the-pytorch-model-and-add-helper-code"></a>A PyTorch modell importálása és segítőkód hozzáadása
+## <a name="import-the-pytorch-model-and-add-helper-code"></a>A PyTorch-modell importálása és a segítő kód hozzáadása
 
-Ha módosítani `classify` szeretné a függvényt, hogy a rendszerkép tartalma alapján osztályozzon, egy előre betanított [ResNet-modellt](https://arxiv.org/abs/1512.03385) kell használnia. Az előre betanított modell, amely a [PyTorch-ból](https://pytorch.org/hub/pytorch_vision_resnet/)származik, egy képet 1/1000 [ImageNet osztályba](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sorolja. Ezután hozzáad néhány segítő kódot és függőséget a projekthez.
+Ha módosítani szeretné `classify` a függvényt, hogy a tartalmaik alapján osztályozza a rendszerképet, egy előre betanított [ResNet](https://arxiv.org/abs/1512.03385) modellt kell használnia. A [PyTorch](https://pytorch.org/hub/pytorch_vision_resnet/)-ből származó, előre betanított modell a 1000 [ImageNet osztályba](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sorolja fel a képet. Ezután hozzáadhat egy segítő kódot és függőségeket a projekthez.
 
-1. A *start* mappában futtassa a következő parancsot az előrejelzési kód és címkék átmásolásához a *besorolási* mappába.
+1. A *Start* mappában futtassa a következő parancsot az előrejelzési kód és a címkék *osztályozás* mappájába való másolásához.
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash
     cp ../resources/predict.py classify
@@ -159,9 +159,9 @@ Ha módosítani `classify` szeretné a függvényt, hogy a rendszerkép tartalma
 
     ---
 
-1. Ellenőrizze, hogy a *besorolási* mappa *tartalmaz-e predict.py* és *labels.txt*nevű fájlokat. Ha nem, ellenőrizze, hogy futtatta-e a parancsot a *start* mappában.
+1. Ellenőrizze, hogy a *besorolási* mappa tartalmazza-e a *Predict.py* és a *labels. txt*nevű fájlokat. Ha nem, ellenőrizze, hogy a parancsot futtatta-e a *Start* mappában.
 
-1. Nyissa *meg a start/requirements.txt fájlt* egy szövegszerkesztőben, és adja hozzá a segítő kód által igényelt függőségeket, amelyek a következőképpen néznek ki:
+1. Nyissa meg a *Start/követelmények. txt fájlt* egy szövegszerkesztőben, és adja hozzá a segítő kód által igényelt függőségeket, amelynek a következőhöz hasonlóan kell kinéznie:
 
     ```txt
     azure-functions
@@ -176,20 +176,20 @@ Ha módosítani `classify` szeretné a függvényt, hogy a rendszerkép tartalma
     torchvision==0.5.0
     ```
 
-1. Mentse *a requirements.txt*fájlt, majd futtassa a következő parancsot a *kezdőmappából* a függőségek telepítéséhez.
+1. Mentse a *követelmények. txt fájlt*, majd futtassa a következő parancsot a *Start* mappából a függőségek telepítéséhez.
 
 
     ```
     pip install --no-cache-dir -r requirements.txt
     ```
 
-A telepítés eltarthat néhány percig, amely idő alatt folytathatja a funkció módosítását a következő szakaszban.
+A telepítés néhány percet is igénybe vehet, amely alatt a következő szakaszban folytathatja a függvény módosítását.
 > [!TIP]
-> >Windows rendszerben a következő hibaüzenet jelenhet meg: "Nem lehetett csomagokat telepíteni egy EnvironmentError miatt: [Errno 2] Nincs ilyen fájl vagy könyvtár:" majd egy hosszú elérési út egy olyan fájlhoz, mint *a sharded_mutable_dense_hashtable.cpython-37.pyc*. Ez a hiba általában azért fordul elő, mert a mappaelérési út mélysége túl hosszú lesz. Ebben az esetben állítsa `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` be `1` a beállításkulcsot a hosszú elérési utak engedélyezéséhez. Másik lehetőségként ellenőrizze, hogy hol van telepítve a Python-értelmező. Ha a hely elérési útja hosszú, próbálja meg újratelepíteni egy rövidebb elérési úttal rendelkező mappába.
+> >Windows rendszeren a következő hibaüzenet jelenhet meg: "nem sikerült telepíteni a csomagokat egy EnvironmentError miatt: [errno 2] nincs ilyen fájl vagy könyvtár:", majd egy olyan fájlhoz, mint például *sharded_mutable_dense_hashtable. CPython-37. pyc*. Ez a hiba általában azért fordul elő, mert a mappa elérési útjának mélysége túl hosszú lesz. Ebben az esetben állítsa a beállításkulcsot `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` a hosszú elérési utak engedélyezéséhez. Másik lehetőségként győződjön meg arról, hogy a Python-tolmács hol van telepítve. Ha a hely hosszú elérési úttal rendelkezik, próbálja meg újratelepíteni egy rövidebb elérési úttal rendelkező mappába.
 
-## <a name="update-the-function-to-run-predictions"></a>A függvény frissítése előrejelzések futtatásához
+## <a name="update-the-function-to-run-predictions"></a>A függvény frissítése az előrejelzések futtatásához
 
-1. Nyissa *meg\_\_a\_\_classify/ init .py* fájlt egy `import` szövegszerkesztőben, és adja hozzá a következő sorokat a meglévő utasítások után a szabványos JSON-könyvtár és a *gyorssegédek importálásához:*
+1. Nyissa meg a *besorolás/\_\_\_\_init.* másolt egy szövegszerkesztőben, és adja hozzá a `import` következő sorokat a meglévő utasítások után a szabványos JSON-könyvtár és a *prediktív* segítők importálásához:
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="1-6" highlight="5-6":::
 
@@ -197,38 +197,38 @@ A telepítés eltarthat néhány percig, amely idő alatt folytathatja a funkci�
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="8-19":::
 
-    Ez a függvény egy kép URL-címét `img`kapja egy lekérdezési karakterlánc nevű paraméterben. Ezután `predict_image_from_url` felhívja a segítő könyvtárból a lemezkép letöltését és besorolását a PyTorch modell használatával. A függvény ezután http-választ ad vissza az eredményekkel.
+    Ez a függvény egy nevű `img`lekérdezési karakterlánc-paraméterben fogadja a rendszerkép URL-címét. Ezután meghívja `predict_image_from_url` a segítő könyvtárát, hogy letöltse és osztályozza a rendszerképet a PyTorch-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel.
 
     > [!IMPORTANT]
-    > Mivel ezt a HTTP-végpontot egy másik tartományban üzemeltetett `Access-Control-Allow-Origin` weblap nevezi meg, a válasz tartalmaz egy fejlécet, amely megfelel a böngésző eredetközi erőforrás-megosztási (CORS) követelményeinek.
+    > Mivel ezt a HTTP-végpontot egy másik tartományban található weblap hívja meg, a válasz tartalmaz egy `Access-Control-Allow-Origin` fejlécet, amely megfelel a böngésző eltérő eredetű erőforrás-megosztási (CORS) követelményeinek.
     >
-    > Éles alkalmazásban a `*` nagyobb biztonság érdekében módosítsa a weboldal konkrét eredetét.
+    > Éles alkalmazásban váltson `*` a weblap speciális forrására a további biztonság érdekében.
 
-1. Mentse a módosításokat, majd feltételezve, hogy a függőségek `func start`telepítése befejeződött, indítsa újra a helyi függvényállomást a segítségével. Ügyeljen arra, hogy futtassa a fogadó a *start* mappában a virtuális környezet aktiválva. Ellenkező esetben az állomás elindul, de a függvény meghívásakor hibák jelennek meg.
+1. Mentse a módosításokat, és feltételezve, hogy a függőségek telepítése befejeződött, indítsa el újra a `func start`helyi függvény gazdagépét a következővel:. Győződjön meg arról, hogy a gazdagépet a *Start* mappában futtatja, és a virtuális környezet aktiválva van. Ellenkező esetben a gazdagép elindul, de hibaüzeneteket fog látni a függvény meghívásakor.
 
     ```
     func start
     ```
 
-1. A böngészőben nyissa meg a következő URL-t, hogy meghívja a függvényt egy Berni Hegyi kutya kép URL-jével, és erősítse meg, hogy a visszaadott JSON a képet Berni hegyi kutyaként osztályozta.
+1. Egy böngészőben nyissa meg a következő URL-címet, hogy meghívja a függvényt egy Berni Mountain Dog-rendszerkép URL-címével, és erősítse meg, hogy a visszaadott JSON a képet Berni-hegyi kutyának minősíti.
 
     ```
     http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/Bernese-Mountain-Dog-Temperament-long.jpg
     ```
 
-1. Tartsa futtassa az állomást, mert a következő lépésben használja.
+1. Tartsa a gazdagépet, mert a következő lépésben használja.
 
-### <a name="run-the-local-web-app-front-end-to-test-the-function"></a>A helyi webalkalmazás előtérének futtatása a funkció teszteléséhez
+### <a name="run-the-local-web-app-front-end-to-test-the-function"></a>A függvény teszteléséhez futtassa a helyi webalkalmazás előtér-összetevőjét
 
-A függvényvégpont egy másik webalkalmazásból történő meghívásának teszteléséhez van egy egyszerű alkalmazás a tárház *előtérmappájában.*
+Ha tesztelni szeretné a függvény végpontját egy másik webalkalmazásból, egy egyszerű alkalmazás található az adattár előtér *-mappájában* .
 
-1. Nyisson meg egy új terminált vagy parancssort, és aktiválja a virtuális környezetet (amint azt korábban a [Python virtuális környezet létrehozása és aktiválása című csoportban](#create-and-activate-a-python-virtual-environment)leírtuk).
+1. Nyisson meg egy új terminált vagy parancssort, és aktiválja a virtuális környezetet (a [Python virtuális környezet létrehozása és aktiválása](#create-and-activate-a-python-virtual-environment)című szakaszban leírtak szerint).
 
-1. Keresse meg a tárház *előtér-mappáját.*
+1. Navigáljon az adattár előtér *-mappájához* .
 
-1. HTTP-kiszolgáló indítása pythonnal:
+1. HTTP-kiszolgáló elindítása a Pythonmal:
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash
     python -m http.server
@@ -246,31 +246,31 @@ A függvényvégpont egy másik webalkalmazásból történő meghívásának te
     py -m http.server
     ```
 
-1. A böngészőben keresse `localhost:8000`meg a taurát, majd írja be az alábbi fényképURL-ek egyikét a szövegmezőbe, vagy használja a nyilvánosan elérhető képek URL-címét.
+1. Egy böngészőben nyissa `localhost:8000`meg a címet, majd adja meg az alábbi fénykép URL-címek egyikét a szövegmezőbe, vagy használja a nyilvánosan elérhető rendszerképek URL-címét.
 
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/Bernese-Mountain-Dog-Temperament-long.jpg`
     - `https://github.com/Azure-Samples/functions-python-pytorch-tutorial/blob/master/resources/assets/bald-eagle.jpg?raw=true`
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg`
 
-1. Válassza **a Küldés** lehetőséget a függvényvégpont meghívásához a lemezkép besorolásához.
+1. Válassza a **Submit (Küldés** ) lehetőséget a függvény végpontjának meghívásához a rendszerkép besorolásához.
 
-    ![A kész projekt képernyőképe](media/machine-learning-pytorch/screenshot.png)
+    ![A befejezett projekt képernyőképe](media/machine-learning-pytorch/screenshot.png)
 
-    Ha a böngésző hibát jelez a kép URL-címének elküldésekor, ellenőrizze azt a terminált, amelyben a függvényalkalmazást futtatja. Ha olyan hibaüzenetet lát, mint a "Nincs modul található "PIL", akkor előfordulhat, hogy a *start* mappában indította el a függvényalkalmazást anélkül, hogy először aktiválta volna a korábban létrehozott virtuális környezetet. Ha továbbra is hibákat lát, futtassa `pip install -r requirements.txt` újra a virtuális környezet aktiválásával, és keresse meg a hibákat.
+    Ha a böngésző hibát jelez a rendszerkép URL-címének elküldésekor, ellenőrizze azt a terminált, amelyben a Function alkalmazást futtatja. Ha olyan hibaüzenetet lát, mint a "nem található modul" PIL ", lehet, hogy elindította a Function alkalmazást a *Start* mappában anélkül, hogy először aktiválja a korábban létrehozott virtuális környezetet. Ha továbbra is megjelenik a hibák `pip install -r requirements.txt` , futtassa újra a virtuális környezetet, és keressen hibákat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Mivel az oktatóanyag teljes egészében helyileg fut a gépen, nincsenek Azure-erőforrások vagy szolgáltatások karbantartása.
+Mivel az oktatóanyag teljes egészében helyileg fut a gépen, nincs szükség Azure-erőforrásokra vagy-szolgáltatásokra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre és szabhat testre egy HTTP API-végpontot az Azure Functions segítségével a lemezképek pytorch-modell használatával történő besorolásához. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból. Az oktatóanyagban szereplő technikák segítségével bármilyen összetettségű API-kat hozhat létre, miközben az Azure Functions által biztosított kiszolgáló nélküli számítási modellen fut.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és szabhat testre egy HTTP API-végpontot a Azure Functions használatával a rendszerképek PyTorch-modell használatával történő besorolásához. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból. Az oktatóanyagban található technikák használatával bármilyen bonyolultságú API-t építhet ki, miközben a Azure Functions által biztosított kiszolgáló nélküli számítási modellen fut.
 
 Lásd még:
 
-- [Telepítse a függvényt az Azure-ba a Visual Studio Code használatával.](https://code.visualstudio.com/docs/python/tutorial-azure-functions)
-- [Az Azure Functions Python fejlesztői útmutatója](./functions-reference-python.md)
+- [A függvény üzembe helyezése az Azure-ban a Visual Studio Code használatával](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
+- [Azure Functions Python fejlesztői útmutató](./functions-reference-python.md)
 
 
 > [!div class="nextstepaction"]
-> [A függvény üzembe helyezése az Azure Functions szolgáltatásba az Azure CLI-útmutató használatával](./functions-run-local.md#publish)
+> [A függvény üzembe helyezése Azure Functions az Azure CLI útmutatójának használatával](./functions-run-local.md#publish)

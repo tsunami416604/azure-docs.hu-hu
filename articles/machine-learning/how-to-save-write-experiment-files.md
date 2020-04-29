@@ -1,7 +1,7 @@
 ---
-title: A & az írási kísérletfájljainak mentési helye
+title: Honnan menthetők a & írási kísérlet fájljai
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy hová mentheti a kísérlet bemeneti fájljait, és hol írhat kimeneti fájlokat a tárolási korlátozási hibák és a kísérlet késésének megelőzése érdekében.
+description: Megtudhatja, hová mentse a kísérlet bemeneti fájljait, és hova írhat kimeneti fájlokat a tárolási korlátozási hibák és a kísérletek késleltetésének megakadályozása érdekében.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -13,68 +13,68 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79078431"
 ---
-# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Hol lehet fájlokat menteni és írni az Azure Machine Learning-kísérletekhez?
+# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogy hová kell menteni a bemeneti fájlokat, és hol kell írni a kimeneti fájlokat a kísérletekből a tárolási korlát hibák és a kísérlet késésének megelőzése érdekében.
+Ebből a cikkből megtudhatja, hová mentse a bemeneti fájlokat, és hová írja a kísérletek kimeneti fájljait, hogy megakadályozza a tárolási korlátokkal kapcsolatos hibákat és a kísérlet késését.
 
-A [betanításindításakor egy számítási cél,](how-to-set-up-training-targets.md)el vannak különítve a külső környezetekben. E terv célja a kísérlet reprodukálhatóságának és hordozhatóságának biztosítása. Ha ugyanazt a parancsfájlt kétszer futtatja, ugyanazon vagy egy másik számítási célon, ugyanazokat az eredményeket kapja. Ezzel a kialakítással állapot nélküli számítási erőforrásokként kezelheti a számítási célokat, amelyek mindegyike nem kapcsolódik a befejezésután futó feladatokhoz.
+A képzés indításakor a [számítási célra](how-to-set-up-training-targets.md)elkülönített környezetek el vannak különítve. Ennek a kialakításnak a célja a kísérlet reprodukálhatóságának és hordozhatóságának biztosítása. Ha ugyanazt a parancsfájlt kétszer futtatja, akkor ugyanazon vagy egy másik számítási célra ugyanazt az eredményt kapja. Ezzel a kialakítással a számítási célokat állapot nélküli számítási erőforrásokként kezelheti, amelyek mindegyike nem rendelkezik affinitással a befejezésük után futó feladatokhoz.
 
-## <a name="where-to-save-input-files"></a>A bemeneti fájlok mentésének helye
+## <a name="where-to-save-input-files"></a>Honnan menthetők a bemeneti fájlok
 
-Mielőtt kísérletet kezdeményezhetne egy számítási célon vagy a helyi gépen, gondoskodnia kell arról, hogy a szükséges fájlok elérhetők legyenek az adott számítási cél számára, például a függőségi fájlok és az adatfájlok, amelyeket a kódnak futtatnia kell.
+Mielőtt kísérletet kezdeményezzen egy számítási célra vagy a helyi gépre, gondoskodnia kell arról, hogy a szükséges fájlok elérhetők legyenek a számítási cél számára, például a függőségi fájlok és az adatfájlok, amelyeket a kódnak futtatnia kell.
 
-Az Azure Machine Learning a teljes parancsfájl-mappa másolásával futtatja a képzési parancsfájlokat a célszámítási környezetbe, majd pillanatképet készít. A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
+Azure Machine Learning futtatja a betanítási parancsfájlokat úgy, hogy a teljes parancsfájl-mappát átmásolja a cél számítási környezetbe, majd pillanatképet készít. A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
 
-Ezért a következőket ajánljuk:
+Ezért javasoljuk, hogy:
 
-* **Fájlok tárolása egy Azure Machine [Learning-adattárban.](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)** Ez megakadályozza a kísérlet késési problémák, és az okkal rendelkezik az adatok elérése egy távoli számítási cél, ami azt jelenti, hitelesítés és szerelés az Azure Machine Learning által kezelt. További információ arról, hogy miként adhat meg egy adattárat forráskönyvtárként, és fájlokat tölthet fel az adattárba az [adattárból származó Access-adatok című](how-to-access-data.md) cikkben.
+* **Fájlok tárolása egy Azure Machine Learning [adattárban](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Ez meggátolja a kísérletek késésével kapcsolatos problémákat, és a távoli számítási céltól származó adatok elérésének előnyeit biztosítja, ami azt jelenti, hogy a hitelesítést és a csatlakoztatást Azure Machine Learning kezeli. További információ az adattár forrásként való megadásáról és a fájlok az adattárba való feltöltéséről az [adattárolók című cikk hozzáférési adataiban](how-to-access-data.md) .
 
-* **Ha csak néhány adatfájlra és függőségi parancsfájlra van szüksége, és nem tudja használni az adattárat,** helyezze a fájlokat ugyanabba a mappába, mint a betanítási parancsfájl. Adja meg ezt `source_directory` a mappát közvetlenül a betanítási parancsfájlban, vagy a betanítási parancsfájlt meghívja kódot.
+* **Ha csak pár adatfájlra és függőségi parancsfájlra van szüksége, és nem tud adattárt használni,** helyezze a fájlokat ugyanabba a mappába, mint a betanítási parancsfájlt. Adja meg ezt a mappát `source_directory` közvetlenül a betanítási parancsfájlban, vagy a betanítási parancsfájlt meghívó kódban.
 
 <a name="limits"></a>
 
-### <a name="storage-limits-of-experiment-snapshots"></a>A kísérletpillanatképek tárolási korlátai
+### <a name="storage-limits-of-experiment-snapshots"></a>A kísérleti Pillanatképek tárolási korlátai
 
-A kísérletek, az Azure Machine Learning automatikusan elkészíti a kísérlet pillanatképét a kód alapján a könyvtárat, amelyet a futtatás konfigurálásakor. Ez a maximális korlát 300 MB és / vagy 2000 fájlokat. Ha túllépi ezt a korlátot, a következő hibaüzenet jelenik meg:
+A kísérletek esetében a Azure Machine Learning automatikusan létrehoz egy kísérletet a kód alapján a Futtatás konfigurálásakor javasolt címtár alapján. Ez a teljes korlátja 300 MB és/vagy 2000 fájl. Ha túllépi ezt a korlátot, a következő hibaüzenet jelenik meg:
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-A hiba megoldásához tárolja a kísérleti fájlokat egy adattárban. Ha nem tud használni egy adattár, az alábbi táblázat ban lehetséges alternatív megoldásokat kínál.
+A hiba megoldásához tárolja a kísérlet fájljait egy adattárban. Ha nem tud adattárt használni, az alábbi táblázat a lehetséges alternatív megoldásokat kínálja.
 
 Kísérlet&nbsp;leírása|Tárolási korlát megoldás
 ---|---
-Kevesebb, mint 2000 fájl, & nem tudnak adattancentrikust használni| Pillanatképméret-korlát felülbírálása <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Ez a fájlok számától és méretétől függően több percet is igénybe vehet.
-Adott parancsfájlkönyvtárat kell használnia| Készítsen `.amlignore` olyan fájlt, amely kizárja azokat a fájlokat a kísérlet pillanatképéből, amelyek nem részei a forráskódnak. Adja hozzá a `.amlignore` fájlneveket a fájlhoz, és helyezze a betanítási parancsfájllal azonos könyvtárba. A `.amlignore` fájl ugyanazt a [szintaxist és mintázatot](https://git-scm.com/docs/gitignore) használja, mint a `.gitignore` fájl.
-Folyamat|Minden lépéshez használjon másik alkönyvtárat
-Jupyter-notebookok| Hozzon `.amlignore` létre egy fájlt, vagy helyezze át a jegyzetfüzetet egy új, üres alkönyvtárba, és futtassa újra a kódot.
+Kevesebb mint 2000 fájl & nem használhat adattárt| A pillanatképek maximális méretének felülbírálása <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Ez a fájlok számától és méretétől függően több percet is igénybe vehet.
+Adott parancsfájl-könyvtárat kell használnia| Hozzon `.amlignore` ki egy fájlt, és zárja ki azokat a kísérlet-pillanatképből származó fájlokat, amelyek nem részei a forráskódnak. Adja hozzá a fájlneveket a `.amlignore` fájlhoz, és helyezze azt a betanítási parancsfájlt tartalmazó könyvtárba. A `.amlignore` fájl ugyanazt a [szintaxist és mintázatot](https://git-scm.com/docs/gitignore) használja `.gitignore` , mint egy fájl.
+Folyamat|Egy másik alkönyvtár használata az egyes lépésekhez
+Jupyter-notebookok| Hozzon `.amlignore` létre egy fájlt, vagy helyezze át a jegyzetfüzetet egy új, üres, alkönyvtárba, és futtassa újra a kódot.
 
-## <a name="where-to-write-files"></a>Hol írjon fájlokat
+## <a name="where-to-write-files"></a>Hová kell írni a fájlokat
 
-A betanítási kísérletek elkülönítése miatt a futtatások során végrehajtott fájlok módosításai nem feltétlenül maradnak meg a környezeten kívül. Ha a parancsfájl módosítja a helyi számítási fájlokat, a módosítások nem maradnak meg a következő kísérlet futtatásakor, és nem lesznek automatikusan propagálva az ügyfélgépre. Ezért az első kísérlet során végrehajtott módosítások nem érintik és nem is befolyásolhatják a második ban végrehajtottakat.
+A betanítási kísérletek elkülönítése miatt a Futtatás során megjelenő fájlok módosításai nem feltétlenül maradnak meg a környezeten kívül. Ha a parancsfájl módosítja a helyi fájlokat a számításhoz, a módosítások nem maradnak meg a következő kísérlet futtatásakor, és a rendszer nem továbbítja automatikusan az ügyfélszámítógépre. Ezért az első kísérlet során végrehajtott módosítások nem működnek, és nem érinthetik a másodikban.
 
-A módosítások írásakor azt javasoljuk, hogy fájlokat írjon egy Azure Machine Learning-adattárba. Lásd: [Access-adatok az adattárakból.](how-to-access-data.md)
+A módosítások írásakor ajánlott fájlokat írni egy Azure Machine Learning adattárba. Lásd [Az adattárolók adatainak elérését](how-to-access-data.md)ismertető témakört.
 
-Ha nincs szüksége adattárra, írjon `./outputs` fájlokat `./logs` az és/vagy mappába.
+Ha nincs szüksége adattárra, írja a fájlokat a `./outputs` és/vagy `./logs` mappába.
 
 >[!Important]
-> Két mappa, *kimenetek* és *naplók,* különleges bánásmódban részesülnek az Azure Machine Learning. A betanítás során,`./outputs` amikor`./logs` fájlokat ír a mappákba és mappákba, a fájlok automatikusan feltöltődnek a futtatási előzményekbe, így a futtatás befejezése után hozzáférhet hozzájuk.
+> Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során fájlokat`./outputs` és`./logs` mappákat ír, a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférjenek hozzájuk.
 
-* **Kimenet, például állapotüzenetek vagy pontozási eredmények** `./outputs` esetén írjon fájlokat a mappába, így a futtatási előzményekben összetevőkként maradnak meg. Vegye figyelembe a mappába írt fájlok számát és méretét, mivel a tartalom feltöltésekor késés léphet fel az előzmények futtatásához. Ha a késés aggodalomra ad okot, a fájlok írása egy adattárba ajánlott.
+* **A kimenetek, például állapotüzenetek vagy pontozási eredmények esetén** fájlokat írhat a `./outputs` mappába, így azok a futtatási előzményekben szereplő összetevőkként megmaradnak. Legyen szem előtt tartva a mappába írt fájlok számát és méretét, mivel a tartalom a futtatási előzményekbe való feltöltésekor késést eredményezhet. Ha a késés aggodalomra ad okot, ajánlott a fájlok adattárba való írása.
 
-* **Ha az írott fájlt naplóként szeretné menteni a futtatási előzményekben,** írjon fájlokat a mappába. `./logs` A naplók feltöltése valós időben történik, így ez a módszer alkalmas élő frissítések távoli futtatásból történő streamelésére.
+* **Ha az írott fájlt naplófájlként szeretné menteni a futtatási előzményekben,** írja a fájlokat a `./logs` mappába. A naplók valós időben lesznek feltöltve, így ez a módszer alkalmas az élő frissítések távoli futtatásból való továbbítására.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [adattárakból származó adatok eléréséről.](how-to-access-data.md)
+* További információ az [adattárolók adatainak eléréséről](how-to-access-data.md).
 
-* További információ [a képzési célok beállításáról.](how-to-set-up-training-targets.md)
+* További információ a [betanítási célok beállításáról](how-to-set-up-training-targets.md).

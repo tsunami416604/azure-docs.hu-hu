@@ -1,110 +1,110 @@
 ---
 title: Üzembehelyezési adatok titkosítása
-description: Információ a tárolópéldány-erőforrások on-mailben megőrzött adatok titkosításáról és az adatok ügyfél által felügyelt kulccsal való titkosításáról
+description: Ismerje meg a tároló-példány erőforrásainak megőrzött adatainak titkosítását, valamint az adattitkosítást az ügyfél által felügyelt kulccsal
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79080360"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
-Az Azure Container Instances (ACI) erőforrások felhőben futtatásakor az ACI-szolgáltatás gyűjti és megőrzi a tárolókhoz kapcsolódó adatokat. Az ACI automatikusan titkosítja ezeket az adatokat, ha azok megmaradnak a felhőben. Ez a titkosítás védi az adatokat, hogy segítsen teljesíteni a szervezet biztonsági és megfelelőségi kötelezettségvállalásait. Az ACI azt is lehetővé teszi, hogy ezeket az adatokat saját kulccsal titkosítsa, így nagyobb ellenőrzést biztosít az ACI-telepítésekkel kapcsolatos adatok felett.
+Amikor a felhőben Azure Container Instances (ACI) erőforrásait futtatja, az ACI szolgáltatás összegyűjti és megőrzi a tárolókkal kapcsolatos adatokat. Az ACI automatikusan titkosítja ezeket az adatfájlokat, amikor a felhőben is megmarad. Ezzel a titkosítással megvédheti adatait, hogy megfeleljen a szervezete biztonsági és megfelelőségi kötelezettségvállalásainak. Az ACI lehetővé teszi az adatok saját kulccsal történő titkosítását is, így az ACI-környezetekhez kapcsolódó adatok nagyobb mértékben szabályozhatók.
 
-## <a name="about-aci-data-encryption"></a>Az ACI adattitkosítása 
+## <a name="about-aci-data-encryption"></a>Tudnivalók az ACI-adattitkosításról 
 
-Az ACI-ban lévő adatok at 256 bites AES titkosítással titkosítják és visszafejtik. Minden ACI-telepítéshez engedélyezve van, és nem kell módosítania a központi telepítést vagy a tárolókat a titkosítás előnyeinek kihasználásához. Ez magában foglalja a központi telepítésmetaadatait, a környezeti változókat, a tárolókba átadott kulcsokat és a tárolók leállítása után megőrzött naplókat, így továbbra is láthatja őket. A titkosítás nincs hatással a tárolócsoport teljesítményére, és nincs további titkosítási költség.
+Az ACI-ban tárolt adatai titkosítva vannak, és a 256 bites AES-titkosítással lettek visszafejtve. Az összes ACI üzemelő példány esetében engedélyezve van, és nem kell módosítania az üzemelő példányt vagy tárolókat a titkosítás kihasználása érdekében. Ez magában foglalja az üzembe helyezésre vonatkozó metaadatokat, a környezeti változókat, a tárolókban átadott kulcsokat, valamint a tárolók leállítása után megőrzött naplókat, így továbbra is megtekintheti őket. A titkosítás nem befolyásolja a tároló csoport teljesítményét, és a titkosításhoz nincs további díj.
 
-## <a name="encryption-key-management"></a>Titkosítási kulcs kezelése
+## <a name="encryption-key-management"></a>Titkosítási kulcsok kezelése
 
-A tárolóadatok titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy kezelheti a titkosítást a saját kulcsaival. Az alábbi táblázat a következő beállításokat hasonlítja össze: 
+A Microsoft által felügyelt kulcsokat a tároló adatai titkosítására használhatja, vagy a titkosítást a saját kulcsaival is kezelheti. A következő táblázat összehasonlítja ezeket a beállításokat: 
 
 |    |    Microsoft által felügyelt kulcsok     |     Felhasználó által kezelt kulcsok     |
 |----|----|----|
 |    Titkosítási/visszafejtési műveletek    |    Azure    |    Azure    |
-|    Kulcstárolás    |    Microsoft kulcstároló    |    Azure Key Vault    |
-|    A legfontosabb rotációs felelősség    |    Microsoft    |    Ügyfél    |
-|    Kulcshozzáférés    |    Csak Microsoft    |    Microsoft, Ügyfél    |
+|    Kulcstároló    |    Microsoft Key Store    |    Azure Key Vault    |
+|    Kulcs rotációs felelőssége    |    Microsoft    |    Ügyfél    |
+|    Kulcs elérése    |    Csak Microsoft    |    Microsoft, ügyfél    |
 
-A dokumentum további része az ACI központi telepítési adatainak kulcs (ügyfél által felügyelt kulcs) titkosításához szükséges lépéseket ismerteti. 
+A dokumentum többi része ismerteti azokat a lépéseket, amelyek szükségesek az ACI üzembe helyezési adatoknak a kulccsal való titkosításához (az ügyfél által felügyelt kulcs). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="encrypt-data-with-a-customer-managed-key"></a>Adatok titkosítása ügyfél által kezelt kulccsal
+## <a name="encrypt-data-with-a-customer-managed-key"></a>Az adattitkosítás ügyfél által felügyelt kulccsal
 
-### <a name="create-service-principal-for-aci"></a>Egyszerű szolgáltatás létrehozása az ACI-hoz
+### <a name="create-service-principal-for-aci"></a>Egyszerű szolgáltatásnév létrehozása az ACI-hoz
 
-Az első lépés annak biztosítása, hogy az [Azure-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) rendelkezik egy egyszerű szolgáltatás az Azure Container Instances szolgáltatás engedélyek megadásához rendelt. 
+Első lépésként győződjön meg arról, hogy az [Azure-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) rendelkezik a Azure Container instances szolgáltatás engedélyeinek megadásához hozzárendelt egyszerű szolgáltatással. 
 
 > [!IMPORTANT]
-> A következő parancs futtatásához és egy egyszerű szolgáltatás sikeres létrehozásához győződjön meg arról, hogy rendelkezik-e a bérlőben szolgáltatásnév létrehozásához szükséges engedélyekkel.
+> A következő parancs futtatásához és az egyszerű szolgáltatás létrehozásához ellenőrizze, hogy rendelkezik-e jogosultsággal a szolgáltatásbeli egyszerű szolgáltatások létrehozásához a bérlőben.
 >
 
-A következő CLI parancs az ACI SP-t állítja be az Azure-környezetben:
+Az alábbi CLI-parancs beállítja az ACI SP-t az Azure-környezetben:
 
 ```azurecli-interactive
 az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
-A parancs futtatásának kimenete egy egyszerű szolgáltatást jelenít meg, amely a "displayName" beállítással van beállítva: "Azure Container Instance Service".
+A parancs futtatásának kimenete olyan egyszerű szolgáltatásnevet mutat be, amely a "displayName": "Azure Container instance Service" beállítással lett beállítva.
 
-Abban az esetben, ha nem tudja sikeresen létrehozni a szolgáltatásnév:
-* erősítse meg, hogy rendelkezik-e erre vonatkozó engedélyekkel a bérlőben
-* ellenőrizze, hogy létezik-e már egyszerű szolgáltatás a bérlőben az ACI-ra való üzembe helyezéshez. Ezt úgy teheti `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` meg, hogy futtatja és használja azt a szolgáltatásnév
+Ha nem tudja sikeresen létrehozni a szolgáltatásnevet:
+* Ellenőrizze, hogy rendelkezik-e engedéllyel a bérlőn
+* Ellenőrizze, hogy már létezik-e egy egyszerű szolgáltatásnév a bérlőben az ACI-hoz való üzembe helyezéshez. Ezt az egyszerű szolgáltatásnév futtatásával `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` és használatával teheti meg.
 
-### <a name="create-a-key-vault-resource"></a>Key Vault-erőforrás létrehozása
+### <a name="create-a-key-vault-resource"></a>Key Vault erőforrás létrehozása
 
-Hozzon létre egy Azure Key Vault az [Azure Portalon,](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) [CLI,](https://docs.microsoft.com/azure/key-vault/quick-create-cli)vagy [PowerShell.](https://docs.microsoft.com/azure/key-vault/quick-create-powershell) 
+Hozzon létre egy Azure Key Vaultt a [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), a [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)vagy a [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)használatával. 
 
-A kulcstartó tulajdonságaihoz kövesse az alábbi irányelveket: 
+A Key Vault tulajdonságaihoz használja a következő irányelveket: 
 * Név: Egy egyedi nevet kell megadnia. 
 * Előfizetés: Válassza ki az előfizetést.
-* Az Erőforráscsoport csoportban válasszon egy meglévő erőforráscsoportot, vagy hozzon létre újat, és adjon meg egy erőforráscsoport nevét.
+* Az erőforráscsoport területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre újat, és adjon meg egy erőforráscsoport-nevet.
 * A Hely legördülő menüből válassza ki a helyet.
-* A többi beállítást az alapértelmezett beállításokra hagyhatja, vagy további követelmények alapján választhat.
+* A többi beállítást az alapértelmezett értékekre vagy a további követelmények alapján is elhagyhatja.
 
 > [!IMPORTANT]
-> Ha az Ügyfél által felügyelt kulcsok at titkosítja az ACI központi telepítési sablon, ajánlott, hogy a következő két tulajdonság van beállítva a key vault, Ideiglenes törlés és A Ne ürítés. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, de egy új vagy meglévő kulcstartón a PowerShell vagy az Azure CLI használatával engedélyezhetők.
+> Ha ügyfél által felügyelt kulcsokat használ egy ACI-telepítési sablon titkosításához, akkor a következő két tulajdonságot érdemes beállítani a kulcstartón, a Soft delete parancsot, és ne törölje a kiürítést. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, de a PowerShell vagy az Azure CLI használatával is engedélyezhető egy új vagy meglévő kulcstartón.
 
 ### <a name="generate-a-new-key"></a>Új kulcs létrehozása 
 
-A kulcstartó létrehozása után keresse meg az erőforrást az Azure Portalon. Az erőforráspanel bal oldali navigációs menüjének Beállítások csoportban kattintson a **Kulcsok gombra.** A "Kulcsok" nézetben kattintson a "Létrehozás/importálás" gombra az új kulcs létrehozásához. A kulcshoz bármilyen egyedi nevet és egyéb beállításokat használhat az Ön igényei alapján. 
+Miután létrehozta a kulcstartót, navigáljon a Azure Portal található erőforráshoz. Az erőforrás panel bal oldali navigációs menüjének beállítások területén kattintson a **kulcsok**elemre. A "kulcsok" nézetben kattintson a "Létrehozás/Importálás" lehetőségre új kulcs létrehozásához. A kulcs egyedi nevét és egyéb beállításait a követelmények alapján használhatja. 
 
 ![Új kulcs létrehozása](./media/container-instances-encrypt-data/generate-key.png)
 
-### <a name="set-access-policy"></a>Hozzáférési házirend beállítása
+### <a name="set-access-policy"></a>Hozzáférési szabályzat beállítása
 
-Hozzon létre egy új hozzáférési szabályzatot, amely lehetővé teszi az ACI-szolgáltatás számára a kulcs elérését.
+Hozzon létre egy új hozzáférési szabályzatot, amely lehetővé teszi, hogy az ACI szolgáltatás hozzáférjen a kulcshoz.
 
-* A kulcs létrehozása után a kulcstároló erőforráspaneljének Beállítások területén kattintson az **Access Policies**elemre.
-* A kulcstartó "Hozzáférési házirendek" lapján kattintson a **Hozzáférési házirend hozzáadása gombra.**
-* A *kulcsengedélyek* beállítása a **Kulcskészlet bekerülési** és **kicsomagolása** ![kulcsengedélyekre](./media/container-instances-encrypt-data/set-key-permissions.png)
-* Az *Egyszerű kijelölés e*esetben válassza az Azure Container Instance Service **lehetőséget.**
-* Kattintson alul a **Hozzáadás** gombra. 
+* Miután létrehozta a kulcsot, a Key Vault erőforrás-paneljén a beállítások területen kattintson a **hozzáférési házirendek**elemre.
+* A Key vaulthoz tartozó hozzáférési szabályzatok lapon kattintson a **hozzáférési házirend hozzáadása**lehetőségre.
+* Adja meg a kulcs *engedélyeit* a **beolvasás** és **kicsomagolás kulcs** ![beállítása kulcs engedélyeinek befoglalásához](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Válassza ki a *rendszerbiztonsági tag*lehetőséget, majd válassza az **Azure Container instance Service** elemet.
+* Kattintson a **Hozzáadás** gombra a lap alján 
 
-A hozzáférési szabályzat most meg kell jelennie a kulcstartó hozzáférési szabályzatok.
+A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáférési házirendjeiben.
 
 ![Új hozzáférési szabályzat](./media/container-instances-encrypt-data/access-policy.png)
 
 ### <a name="modify-your-json-deployment-template"></a>A JSON-telepítési sablon módosítása
 
 > [!IMPORTANT]
-> A központi telepítési adatok ügyfél által felügyelt kulccsal történő titkosítása a jelenleg bevezetésre kerülő legújabb API-verzióban (2019-12-01) érhető el. Adja meg ezt az API-verziót a központi telepítési sablonban. Ha bármilyen problémája van ezzel, kérjük, forduljon az Azure-támogatáshoz.
+> A központi telepítési adatai ügyfél által felügyelt kulccsal történő titkosítása a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg ki van vezetve. Adja meg ezt az API-verziót a telepítési sablonban. Ha problémája merül fel, forduljon az Azure ügyfélszolgálatához.
 
-Miután beállította a key vault-kulcsot és a hozzáférési szabályzatot, adja hozzá a következő tulajdonságokat az ACI központi telepítési sablonjához. További információ az ACI-erőforrások sablonnal történő központi telepítéséről az [oktatóanyagban: Többtárolós csoport telepítése Erőforrás-kezelő sablon használatával.](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group) 
-* A `resources`területen `apiVersion` `2019-12-01`a beállítás a.
-* A telepítési sablon tárolócsoport tulajdonságai szakasza `encryptionProperties`alatt adjon hozzá egy t, amely a következő értékeket tartalmazza:
-  * `vaultBaseUrl`: a kulcstartó DNS-neve a Portal key vault erőforrásának áttekintő paneljén található
-  * `keyName`: a korábban létrehozott kulcs neve
-  * `keyVersion`: a kulcs aktuális verziója. Ez megtalálható kattintva a kulcs maga (a "Kulcsok" a Beállítások szakaszban a key vault erőforrás)
-* A tárolócsoport tulajdonságai alatt `sku` adjon `Standard`hozzá egy értékű tulajdonságot. A `sku` tulajdonság szükséges az API 2019-12-01-es verziójában.
+A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* A `resources`alatt állítsa `apiVersion` be `2019-12-01`a következőt:.
+* A telepítési sablon tároló csoport tulajdonságai szakaszában adja `encryptionProperties`meg a következő értékeket tartalmazó értéket:
+  * `vaultBaseUrl`: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
+  * `keyName`: a korábban generált kulcs neve
+  * `keyVersion`: a kulcs jelenlegi verziója. Ez úgy érhető el, ha magára a kulcsra kattint (a Key Vault-erőforrás beállítások szakaszában a "kulcsok" alatt)
+* A tároló csoport tulajdonságai területen adjon hozzá egy `sku` tulajdonságot értékkel `Standard`. A `sku` tulajdonságot az 2019-12-01-os API-verzióban kell megadni.
 
-A következő sablonkódrészlet a telepítési adatok titkosításához a következő további tulajdonságokat jeleníti meg:
+A következő kódrészlet ezeket a további tulajdonságokat jeleníti meg a központi telepítési információk titkosításához:
 
 ```json
 [...]
@@ -129,7 +129,7 @@ A következő sablonkódrészlet a telepítési adatok titkosításához a köve
 ]
 ```
 
-A következőkben egy teljes sablon t, amely az oktatóanyag sablonjából lett kiigazítva: [Többtárolós csoport telepítése Erőforrás-kezelő sablon használatával.](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group) 
+A következő egy teljes sablon, amely a sablon alapján van adaptálva [: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
 ```json
 {
@@ -225,7 +225,7 @@ A következőkben egy teljes sablon t, amely az oktatóanyag sablonjából lett 
 
 ### <a name="deploy-your-resources"></a>Az erőforrások üzembe helyezése
 
-Ha létrehozta és szerkesztette a sablonfájlt az asztalon, feltöltheti azt a Cloud Shell könyvtárába, ha a fájlt belehúzza. 
+Ha létrehozta és szerkesztette a sablonfájlt az asztalon, feltöltheti azt a Cloud Shell könyvtárba a fájl húzásával. 
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal.
 
@@ -233,13 +233,13 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Telepítse a sablont az [az csoport telepítési létrehozási][az-group-deployment-create] parancsával.
+Telepítse a sablont az az [Group Deployment Create][az-group-deployment-create] paranccsal.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát. A központi telepítés befejezése után az ACI-szolgáltatás által megőrzött összes hozzá kapcsolódó adat a megadott kulccsal lesz titkosítva.
+Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát. Miután az üzembe helyezés befejeződött, az ACI szolgáltatás által megőrzött összes adat titkosítva lesz a megadott kulccsal.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

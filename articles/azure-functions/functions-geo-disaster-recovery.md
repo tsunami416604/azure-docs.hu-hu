@@ -1,58 +1,58 @@
 ---
-title: Az Azure Functions geokatasztrófa-helyreállításés magas rendelkezésre állás
-description: Földrajzi régiók használata redundancia és feladatátvétel az Azure Functionsben.
+title: Azure Functions geo-vész-helyreállítás és magas rendelkezésre állás
+description: A földrajzi régiók használata a redundancia és a feladatátvétel során a Azure Functionsban.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79080232"
 ---
-# <a name="azure-functions-geo-disaster-recovery"></a>Az Azure Functions geokatasztrófa-helyreállítása
+# <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
 
-Ha teljes Azure-régiók vagy adatközpontok leállást tapasztalnak, a számítási folyamat egy másik régióban történő feldolgozás folytatása érdekében elengedhetetlen.  Ez a cikk ismerteti néhány, a stratégiák, amelyek segítségével a funkciók üzembe helyezését, hogy a vész-helyreállítási.
+Ha a teljes Azure-régiók vagy-adatközpontok leállást tapasztalnak, kritikus fontosságú a számítási feladatok egy másik régióban való feldolgozásának folytatásához.  Ebből a cikkből megtudhatja, milyen stratégiákat alkalmazhat a funkciók üzembe helyezéséhez a vész-helyreállítás engedélyezéséhez.
 
 ## <a name="basic-concepts"></a>Alapfogalmak
 
-Az Azure Functions egy adott régióban fut.  A magasabb rendelkezésre állás érdekében ugyanazokat a függvényeket több régióra is telepítheti.  Ha több régióban lehet, hogy a függvények fut az *aktív /aktív* minta vagy *aktív/passzív* minta.  
+A Azure Functions egy adott régióban futnak.  A magasabb rendelkezésre állás érdekében több régióban is telepítheti ugyanezeket a funkciókat.  Több régióban a függvények *aktív/aktív* mintában vagy *aktív/passzív* mintában is futhatnak.  
 
-* Aktív/aktív. Mindkét régió aktív és eseményekfogadása (ismétlődő vagy rotációs). Aktív/aktív ajánlott HTTPS-függvények az Azure bejárati ajtajával együtt.
-* Aktív/passzív. Az egyik régió aktív és események fogadása, míg a másodlagos tétlen.  Ha feladatátvételre van szükség, a másodlagos régió aktiválódik, és átveszi a feldolgozást.  Ez nem HTTP-funkciók, például a Service Bus és az Event Hubs esetén ajánlott.
+* Aktív/aktív. Mindkét régió aktív és eseményeket fogad (ismétlődő vagy rotációs). Az aktív/aktív funkció a HTTPS-függvények esetében ajánlott az Azure bejárati ajtóval együtt.
+* Aktív/passzív. Az egyik régió aktív és fogad eseményeket, míg a másodlagos üresjáratban van.  Ha feladatátvételre van szükség, a másodlagos régió aktiválva lesz, és átveszi a feldolgozást.  Ez olyan nem HTTP-függvények esetén ajánlott, mint a Service Bus és a Event Hubs.
 
-Olvassa el, hogyan [futtathat alkalmazásokat több régióban](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) a több régióra kiterjedő telepítésekkel kapcsolatos további információkért.
+További információ a többrégiós környezetekről: [alkalmazások futtatása több régióban](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
 
-## <a name="activeactive-for-https-functions"></a>Aktív/aktív HTTPS-függvényekhez
+## <a name="activeactive-for-https-functions"></a>Aktív/aktív HTTPS-függvények esetén
 
-A függvények aktív/aktív üzembe helyezéséhez olyan összetevőre van szükség, amely képes koordinálni az eseményeket a két régió között.  A HTTPS-függvények esetében ez a koordináció az [Azure Bejárati ajtajával](../frontdoor/front-door-overview.md)történik.  Az Azure Front Door több regionális függvény között is irányíthat és ciklikus multiplexeléses HTTPS-kérelmeket irányíthat.  Emellett rendszeresen ellenőrzi az egyes végpontok állapotát.  Ha egy regionális függvény nem válaszol az állapot-ellenőrzésekre, az Azure Front Door kiveszi a rotációból, és csak a forgalmat továbbítja a kifogástalan állapotú függvények.  
+A függvények aktív/aktív üzembe helyezéséhez olyan összetevőre van szükség, amely képes a két régió közötti események koordinálására.  A HTTPS-függvények esetében ez a koordináció az [Azure bejárati ajtaján](../frontdoor/front-door-overview.md)keresztül valósítható meg.  Az Azure bejárati ajtói több regionális függvény között is átirányíthatók és ciklikusan lekerekített HTTPS-kérelmek.  Emellett rendszeres időközönként ellenőrzi az egyes végpontok állapotát.  Ha egy regionális függvény nem válaszol az állapot-ellenőrzésekre, az Azure bejárati ajtaja kikerül a forgásból, és csak az egészséges funkciók felé továbbítja a forgalmat.  
 
-![Architektúra az Azure bejárati ajtajához és funkciójához](media/functions-geo-dr/front-door.png)  
+![Architektúra az Azure bejárati ajtó és funkció számára](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>Aktív/aktív nem HTTPS-függvényekhez
+## <a name="activeactive-for-non-https-functions"></a>Aktív/aktív a nem HTTPS függvények esetében
 
-Továbbra is elérheti az aktív/aktív központi telepítések nem HTTPS-függvények.  Meg kell azonban vizsgálnia, hogy a két régió hogyan fog együttműködni vagy egyeztetni egymással.  Ha ugyanazt a függvényalkalmazást két régióra telepítette, amelyek mindegyike ugyanazon a Service Bus-várólistán aktiválódik, akkor a várólistán való várólistán kívül helyezésekor versengő fogyasztókként működnek.  Bár ez azt jelenti, hogy minden egyes üzenetet csak az egyik példány dolgoz fel, ez azt is jelenti, hogy még mindig egyetlen hibapont van az egyetlen Service Bus-on.  Ha két Service Bus-várólistát telepít (egyet egy elsődleges régióban, egyet egy másodlagos régióban), és a két függvényalkalmazás a régióvárólistájukra mutat, a kihívás most a várólista-üzenetek két régió közötti elosztásának módjában jelentkezik.  Ez gyakran azt jelenti, hogy minden közzétevő megkísérli közzétenni az üzenetet *mindkét* régióban, és minden üzenetet mindkét aktív függvényalkalmazás feldolgoz.  Bár ez létrehoz egy aktív/aktív mintát, más kihívásokat hoz létre a számítási adatok megkettőzése és az adatok összevonásának időpontjával és módjával kapcsolatban.  Ezen okok miatt ajánlott a nem HTTPS-eseményindítók az aktív/passzív minta használata.
+A nem HTTPS függvények esetében továbbra is aktív/aktív üzemelő példányok érhetők el.  Azonban érdemes megfontolnia, hogy a két régió hogyan kommunikáljon egymással, illetve hogyan koordinálja őket egymással.  Ha ugyanezt a függvényt két régióba telepítette, az egyes aktiválások ugyanarra a Service Bus várólistára kerülnek, akkor azok versengő fogyasztóként működhetnek a várólistán.  Ez azt jelenti, hogy az egyes üzeneteket csak az egyik példány dolgozza fel, ez azt is jelenti, hogy az adott Service Buson továbbra is egyetlen meghibásodási pont van.  Ha két Service Bus várólistát helyez üzembe (egyet egy elsődleges régióban, egy másodlagos régióban), és a két Function-alkalmazás a régiók várólistájára mutat, a kérdés most a két régió között a várólista-üzenetek terjesztésének módját mutatja be.  Ez gyakran azt jelenti, hogy minden közzétevő megpróbál *mindkét* régióba közzétenni egy üzenetet, és az egyes üzeneteket az aktív Function apps is dolgozza fel.  Míg ez aktív/aktív mintát hoz létre, a számítási feladatok ismétlődését, valamint az adatok összesítésének időpontját és módját is létrehozhatja.  Ezen okok miatt ajánlott a nem HTTPS-eseményindítók használata az aktív/passzív minta használatára.
 
-## <a name="activepassive-for-non-https-functions"></a>Aktív/passzív nem HTTPS-függvényekhez
+## <a name="activepassive-for-non-https-functions"></a>Aktív/passzív a nem HTTPS függvények esetében
 
-Az aktív/passzív csak egyetlen függvény számára biztosítja az egyes üzenetek feldolgozását, de egy mechanizmust biztosít egy másodlagos régióba katasztrófa esetén a feladatok átvételéhez.  Az Azure Functions az [Azure Service Bus geo-helyreállítási](../service-bus-messaging/service-bus-geo-dr.md) és [az Azure Event Hubs geo-helyreállítási](../event-hubs/event-hubs-geo-dr.md)funkcióival együtt működik.
+Az aktív/passzív mód lehetővé teszi, hogy csak egyetlen függvény dolgozza fel az egyes üzeneteket, azonban egy olyan mechanizmust biztosít, amely egy másodlagos régióba kerül át, vészhelyzet esetén.  A Azure Functions [Azure Service Bus geo-helyreállítási](../service-bus-messaging/service-bus-geo-dr.md) és [Azure Event Hubs geo-helyreállítási funkció](../event-hubs/event-hubs-geo-dr.md)mellett működik.
 
-Az Azure Event Hubs eseményindítók példaként, az aktív/passzív minta a következőket foglalja magában:
+Az Azure Event Hubs Triggerek használata például az aktív/passzív minta a következőket vonja maga után:
 
-* Az Azure Event Hub egy elsődleges és másodlagos régióban egyaránt telepítve van.
-* Geo-katasztrófa engedélyezve az elsődleges és másodlagos Event Hub párosítása.  Ez egy "aliast" is létrehoz, amelynek segítségével az eseményközpontokhoz csatlakozhat, és a kapcsolatadatainak módosítása nélkül válthat az elsődlegesről a másodlagosra.
-* Az elsődleges és másodlagos régióban egyaránt telepített függvényalkalmazások.
-* A függvényalkalmazások a megfelelő eseményközpont *közvetlen* (nem alias) kapcsolati karakterláncán aktiválódnak. 
-* Az eseményközpont közzétevőinek közzé kell tenniük az alias kapcsolati karakterláncban. 
+* Az Azure Event hub egy elsődleges és egy másodlagos régióban is üzembe lett helyezve.
+* Földrajzi katasztrófa engedélyezve az elsődleges és a másodlagos Event hub párosításához.  Ez létrehoz egy "aliast" is, amellyel csatlakozhat az Event hubokhoz, és átválthat az elsődlegesről a másodlagosra a kapcsolati adatok módosítása nélkül.
+* Az elsődleges és a másodlagos régióra telepített alkalmazások.
+* A Function apps a *közvetlen* (nem alias) kapcsolati sztringet indítja el a megfelelő Event hub esetében. 
+* Az Event hub közzétevői számára közzé kell tenni az alias kapcsolati karakterláncát. 
 
-![Aktív-passzív példaarchitektúra](media/functions-geo-dr/active-passive.png)
+![Aktív – passzív példa architektúra](media/functions-geo-dr/active-passive.png)
 
-A feladatátvétel előtt a megosztott aliasra küldő közzétevők az elsődleges eseményközpontba kerülnek.  Az elsődleges függvényalkalmazás kizárólag az elsődleges eseményközpontot figyeli.  A másodlagos függvényalkalmazás passzív és tétlen lesz.  Afeladat-átvétel megkezdéseután a megosztott aliasra küldő közzétevők most átirányítanak a másodlagos eseményközpontba.  A másodlagos függvényalkalmazás most aktívvá válik, és automatikusan elindul.  A másodlagos régió hatékony feladatátvétele teljes mértékben az eseményközpontból hajtható le, és a függvények csak akkor válnak aktívvá, ha az adott eseményközpont aktív.
+A feladatátvétel előtt a megosztott aliasnak küldött közzétevők átirányítják az elsődleges esemény központját.  Az elsődleges Function alkalmazás kizárólag az elsődleges Event hub-t figyeli.  A másodlagos Function alkalmazás passzív és tétlen lesz.  Amint a feladatátvételt kezdeményezik, a megosztott aliasra küldött közzétevők most a másodlagos esemény központját fogják irányítani.  A másodlagos Function alkalmazás mostantól aktív lesz, és automatikusan elindítja az indítást.  A másodlagos régióra történő hatékony feladatátvétel kizárólag az Event hub-ból hajtható végre, és csak akkor válik aktívvá a függvények, ha a megfelelő Event hub aktív.
 
-További információ a [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az eseményközpontok feladatátvételével kapcsolatos információkról és [szempontokról.](../event-hubs/event-hubs-geo-dr.md)
+A feladatátvételsel kapcsolatos tudnivalókat és szempontokat a [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)című témakörben olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure bejárati ajtajának létrehozása](../frontdoor/quickstart-create-front-door.md)
-* [Az Eseményközpontok feladatátvételi szempontjai](../event-hubs/event-hubs-geo-dr.md#considerations)
+* [Azure-beli bejárati ajtó létrehozása](../frontdoor/quickstart-create-front-door.md)
+* [Event Hubs feladatátvételi megfontolások](../event-hubs/event-hubs-geo-dr.md#considerations)

@@ -1,7 +1,7 @@
 ---
-title: Adatbetöltési beállítások
+title: Adatfeldolgozási beállítások
 titleSuffix: Azure Machine Learning
-description: Ismerje meg a gépi tanulási modellek betanítására vonatkozó adatbetöltési lehetőségeket.
+description: Ismerkedjen meg a gépi tanulási modellek betanítására szolgáló adatfeldolgozási lehetőségekkel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79086879"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Adatok betöltése az Azure Machine Learningben
+# <a name="data-ingestion-in-azure-machine-learning"></a>Adatfeldolgozás a Azure Machine Learningban
 
-Ebben a cikkben az Azure Machine Learning ben elérhető alábbi adatbetöltési lehetőségek előnyeit és hátrányait ismerheti meg. 
+Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal jár együtt a Azure Machine Learning a következő adatfeldolgozási lehetőségek közül. 
 
 1. [Azure Data Factory](#use-azure-data-factory) folyamatok
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+2. [Python SDK Azure Machine Learning](#use-the-python-sdk)
 
-Az adatok betöltése az a folyamat, amelyben strukturálatlan adatok at egy vagy több forrásból nyernek ki, majd előkészítik a gépi tanulási modellek betanításához. Ez is időigényes, különösen akkor, ha manuálisan történik, és ha nagy mennyiségű adat több forrásból származik. Ennek az erőfeszítésnek az automatizálása erőforrásokat szabadít fel, és biztosítja, hogy a modellek a legfrissebb és a megfelelő adatokat használják.
+Az adatfeldolgozás az a folyamat, amelyben a strukturálatlan adatok kinyerése egy vagy több forrásból történik, majd a gépi tanulási modellek előkészítése. Az is időigényes, különösen ha kézzel történik, és ha nagy mennyiségű adattal rendelkezik több forrásból. A tevékenység automatizálása felszabadítja az erőforrásokat, és gondoskodik arról, hogy a modellek a legfrissebb és a vonatkozó adatait használják.
 
-Az Azure Data Factory (ADF) kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült, azonban a Python SDK segítségével egyéni kódmegoldást fejleszthet az alapvető adatbetöltési feladatokhoz. Ha egyik sem egészen mire van szüksége, az ADF és a Python SDK együttes használatával létrehozhat egy átfogó adatbetöltési munkafolyamatot, amely megfelel az igényeinek. 
+A Azure Data Factory (ADF) kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült, azonban a Python SDK segítségével egyéni kódú megoldást fejleszthet az alapszintű adatfeldolgozási feladatokhoz. Ha egyik sem elég, amire szüksége van, az ADF-t és a Python SDK-t is használhatja egy átfogó adatfeldolgozási munkafolyamat létrehozásához, amely megfelel az igényeinek. 
 
 ## <a name="use-azure-data-factory"></a>Az Azure Data Factory használata
 
-[Az Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) natív támogatást nyújt az adatforrás-figyeléshez és az adatbetöltési folyamatok eseményindítóihoz.  
+A [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) natív támogatást nyújt az adatfeldolgozási folyamatokhoz használt adatforrás-figyeléshez és-eseményindítóhoz.  
 
-Az alábbi táblázat összefoglalja az Azure Data Factory adatbetöltési munkafolyamatokhoz való használatának előnyeit és hátrányait.
+Az alábbi táblázat összefoglalja az adatfeldolgozási munkafolyamatok Azure Data Factory használatának előnyeit és hátrányait.
 
 |Előnyök|Hátrányok
 ---|---
-Kifejezetten az adatok kinyerésére, betöltésére és átalakítására tervezték.|Jelenleg az Azure Data Factory folyamatkezelési feladatainak korlátozott készletét kínálja 
-Lehetővé teszi, hogy adatközpontú munkafolyamatokat hozzon létre az adatmozgatás és az átalakítások nagy méretekben történő vezényléséhez.|Drága megépíteni és karbantartani. További információkért tekintse meg az Azure Data Factory [díjszabási oldalát.](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-Integrálva a különböző Azure-eszközökkel, például [az Azure Databricks-szel](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) és az [Azure Functions-szel](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Nem natív módon futtat parancsfájlokat, hanem külön számítási parancsfájlfuttatásokra támaszkodik 
-Natív módon támogatja az adatforrás által kiváltott adatbetöltést| 
-Az adatok előkészítése és a modellbetanítási folyamatok különállóak.|
-Beágyazott adatvonal-funkció az Azure Data Factory adatfolyamaihoz|
-Alacsony kódélményt biztosít a [nem](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) parancsfájlalapú megközelítésekhez |
+Kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült.|A jelenleg korlátozott számú Azure Data Factory folyamattal kapcsolatos feladatot biztosít 
+Lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés és az átalakítások méretezése érdekében.|Költséges a létrehozás és a karbantartás. További információért tekintse meg Azure Data Factory [díjszabási lapját](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
+Különböző Azure-eszközökkel integrált, például [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) és [Azure functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | A parancsfájlok nem futnak natív módon, hanem külön számítási feladatokra támaszkodnak a parancsfájlok futtatásához. 
+Natív módon támogatja az adatforráshoz indított adatfeldolgozást| 
+Az adatelőkészítési és-modell-betanítási folyamatok elkülönül.|
+Beágyazott adatbányászati képesség Azure Data Factory adatfolyamok|
+Alacsony kódú [felhasználói felületet](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) biztosít a nem parancsfájl-kezelési módszerekhez |
 
-Ezek a lépések és az alábbi ábra az Azure Data Factory adatbetöltési munkafolyamatát szemlélteti.
+Ezek a lépések és a következő ábra a Azure Data Factory adatfeldolgozási munkafolyamatát szemlélteti.
 
 1. Az adatok lekérése a forrásaiból
-1. Az adatok átalakítása és mentése egy kimeneti blobtárolóba, amely az Azure Machine Learning adattárolójaként szolgál
-1. Az előkészített adatok tárolásával az Azure Data Factory-folyamat meghívja a betanítási Machine Learning-folyamatot, amely megkapja az előkészített adatokat a modell betanításához
+1. Alakítsa át és mentse az adatokat egy kimeneti blob-tárolóba, amely adattárolóként szolgál Azure Machine Learning
+1. Az előkészített adattárolással a Azure Data Factory folyamat meghívja a képzési Machine Learning folyamatot, amely a modell betanításához felkészített adatfeldolgozást fogadja.
 
 
-    ![ADF adatok betöltése](media/concept-data-ingestion/data-ingest-option-one.svg)
+    ![ADF-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-one.svg)
     
-Ismerje meg, hogyan hozhat létre adatbetöltési folyamatot a Machine Learning számára az [Azure Data Factory segítségével.](how-to-data-ingest-adf.md)
+Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a [Azure Data Factory](how-to-data-ingest-adf.md)Machine Learninghoz.
 
 ## <a name="use-the-python-sdk"></a>A Python SDK használata 
 
-A [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)segítségével az adatok betöltési feladatok at egy [Azure Machine Learning-folyamat](how-to-create-your-first-pipeline.md) lépés.
+A [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
 
-Az alábbi táblázat összefoglalja az SDK és az adatbetöltési feladatok hibakezelési lépésének profiit és kontráit.
+Az alábbi táblázat összefoglalja az SDK-t és az adatfeldolgozási feladatokhoz szükséges ML folyamatokat.
 
 Előnyök| Hátrányok
 ---|---
-Saját Python-parancsfájlok konfigurálása | Nem támogatja natív módon az adatforrások módosítását. Logikai alkalmazás vagy Azure-függvény implementációit igényli
-Adatok előkészítése minden modell betanítási végrehajtásának részeként|Az adatbetöltési parancsfájl létrehozásához fejlesztési készségekre van szükség
-Támogatja az adat-előkészítési parancsfájlokat a különböző számítási célokon, beleértve az [Azure Machine Learning számítási](concept-compute-target.md#azure-machine-learning-compute-managed) |Nem biztosít felhasználói felületet a betöltési mechanizmus létrehozásához
+Saját Python-parancsfájlok konfigurálása | A nem támogatja natív módon az adatforrás módosításának aktiválását. Logic app-vagy Azure-függvények megvalósításához szükséges
+Az adatelőkészítés az összes modell betanításának részeként|Fejlesztési ismereteket igényel az adatfeldolgozási parancsfájlok létrehozásához
+Támogatja az adatelőkészítési parancsfájlokat különböző számítási céloknál, beleértve a [Azure Machine learning számítást](concept-compute-target.md#azure-machine-learning-compute-managed) is |Nem biztosít felhasználói felületet a betöltési mechanizmus létrehozásához.
 
-A következő ábrán az Azure Machine Learning-folyamat két lépésből áll: adatbetöltés és modell betanítása. Az adatbetöltési lépés olyan feladatokat foglal magában, amelyek python-kódtárak és a Python SDK használatával elvégezhetők, például adatok helyi/webes forrásokból történő kinyerését és alapvető adatátalakításokat, például a hiányzó értékimputálást. A betanítási lépés ezután az előkészített adatokat használja a betanítási parancsfájl bemeneteként a gépi tanulási modell betanításához. 
+A következő ábrán a Azure Machine Learning folyamat két lépésből áll: az adatfeldolgozás és a modell betanítása. Az adatfeldolgozási lépés magában foglalja a Python-kódtárak és a Python SDK használatával elvégezhető feladatokat, például az adatok helyi/webes forrásokból való kinyerését, valamint az alapvető adatátalakításokat, például a hiányzó imputálási. A betanítási lépés ezután az előkészített adatokat bemenetként használja a betanítási szkriptnek a gépi tanulási modell betanításához. 
 
-![Azure-folyamat + SDK-adatok betöltése](media/concept-data-ingestion/data-ingest-option-two.png)
+![Azure-folyamat + SDK-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-two.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan hozhat létre adatbetöltési folyamatot a Machine Learning hez az [Azure Data Factory segítségével](how-to-data-ingest-adf.md)
-* Ismerje meg, hogyan automatizálhatja és kezelheti az azure-beli folyamatokkal az adatbetöltési folyamatok fejlesztési [életciklusát.](how-to-cicd-data-ingestion.md)
+* Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a Machine Learninghoz [Azure Data Factory](how-to-data-ingest-adf.md)
+* Ismerje meg, hogyan automatizálhatja és kezelheti az adatfeldolgozási folyamatokat az Azure- [folyamatokkal](how-to-cicd-data-ingestion.md).

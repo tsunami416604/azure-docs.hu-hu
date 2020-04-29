@@ -1,31 +1,31 @@
 ---
-title: Linux os virtuális merevlemez letöltése az Azure-ból
-description: Töltsön le egy Linux-virtuális merevlemezt az Azure CLI és az Azure Portal használatával.
+title: Linuxos virtuális merevlemez letöltése az Azure-ból
+description: Töltsön le egy linuxos virtuális merevlemezt az Azure CLI és a Azure Portal használatával.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968801"
 ---
-# <a name="download-a-linux-vhd-from-azure"></a>Linux os virtuális merevlemez letöltése az Azure-ból
+# <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
-Ebben a cikkben megtudhatja, hogyan tölthet le egy Linux-alapú virtuális merevlemez-fájlt (VHD) az Azure CLI és az Azure Portal használatával. 
+Ebből a cikkből megtudhatja, hogyan tölthet le egy linuxos virtuális merevlemezt (VHD-fájlt) az Azure-ból az Azure CLI és a Azure Portal használatával. 
 
-Ha még nem tette meg, telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)alkalmazást.
+Ha még nem tette meg, telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)-t.
 
 ## <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-A virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatolva. Le kell állítania a virtuális gép a virtuális merevlemez letöltéséhez. Ha egy virtuális merevlemezt szeretne [lemezképként](tutorial-custom-images.md) használni más virtuális gépek létrehozásához új lemezekkel, meg kell szüntetnie és általánosítania kell a fájlban található operációs rendszert, és le kell állítania a virtuális gépet. A virtuális merevlemez lemezként való használatához egy meglévő virtuális gép vagy adatlemez új példányához csak le kell állítania és fel kell osztania a virtuális gép.
+Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatlakoztatva. A virtuális merevlemez letöltéséhez le kell állítania a virtuális gépet. Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné létrehozni más virtuális gépek új lemezekkel való létrehozásához, meg kell szüntetnie és általánosítani a fájlban található operációs rendszert, és le kell állítania a virtuális gépet. Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, csak le kell állítania és felszabadítani kell a virtuális gépet.
 
-Ha a virtuális merevlemezt lemezképként szeretné használni más virtuális gépek létrehozásához, hajtsa végre az alábbi lépéseket:
+Ha a virtuális merevlemezt képként szeretné használni más virtuális gépek létrehozásához, hajtsa végre a következő lépéseket:
 
-1. Használja az SSH-t, a fiók nevét és a virtuális gép nyilvános IP-címét, hogy csatlakozzon hozzá, és megszüntetheti azt. Megtalálható a nyilvános IP-címet [az az hálózati public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). A +user paraméter eltávolítja az utolsó kiépített felhasználói fiókot is. Ha a virtuális gépfiók hitelesítő adatait sütés közben használja, hagyja ki ezt a +user paramétert. A következő példa eltávolítja az utoljára kiépített felhasználói fiókot:
+1. Használja az SSH-t, a fiók nevét és a virtuális gép nyilvános IP-címét, hogy csatlakozhasson hozzá, és kiépítse azt. A nyilvános IP-címet az [az Network Public-IP show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show)paranccsal érheti el. A + User paraméter eltávolítja az utolsó kiosztott felhasználói fiókot is. Ha a fiók hitelesítő adatait a virtuális gépre veszi fel, hagyja ki ezt a + felhasználói paramétert. Az alábbi példa eltávolítja az utolsó kiépített felhasználói fiókot:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -33,50 +33,50 @@ Ha a virtuális merevlemezt lemezképként szeretné használni más virtuális 
     exit 
     ```
 
-2. Jelentkezzen be Azure-fiókjába [az az bejelentkezéssel.](https://docs.microsoft.com/cli/azure/reference-index)
-3. Állítsa le és szabadítsa fel a virtuális gép felszabadítását.
+2. Jelentkezzen be az Azure-fiókjába az [az login](https://docs.microsoft.com/cli/azure/reference-index)paranccsal.
+3. Állítsa le és szabadítsa fel a virtuális gépet.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-4. Általánosítsa a virtuális gép. 
+4. A virtuális gép általánosítása. 
 
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példányához, hajtsa végre az alábbi lépéseket:
+Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, hajtsa végre a következő lépéseket:
 
-1.  Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2.  A bal oldali menüben válassza a **Virtuális gépek**lehetőséget.
-3.  Válassza ki a virtuális gép a listából.
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2.  A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
+3.  Válassza ki a virtuális gépet a listából.
 4.  A virtuális gép lapján válassza a **Leállítás**lehetőséget.
 
     ![VM leállítása](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>SAS-URL létrehozása
+## <a name="generate-sas-url"></a>SAS URL-cím előállítása
 
-A VHD-fájl letöltéséhez [létre](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell hoznia egy sas-url-címet. Az URL-cím létrehozásakor a lejárati idő hozzá van rendelve az URL-hez.
+A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
 
-1.  A virtuális gép lapmenüjében válassza a **Lemezek**lehetőséget.
-2.  Jelölje ki a virtuális gép operációsrendszer-lemezét, majd válassza a **Lemezexportálás lehetőséget.**
-3.  Válassza **az URL létrehozása**lehetőséget.
+1.  A virtuális gép oldalának menüjében válassza a **lemezek**lehetőséget.
+2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd válassza a **lemez exportálása**lehetőséget.
+3.  Válassza az **URL-cím előállítása**lehetőséget.
 
-    ![URL létrehozása](./media/download-vhd/export-generate.png)
+    ![URL-cím előállítása](./media/download-vhd/export-generate.png)
 
-## <a name="download-vhd"></a>A VHD letöltése
+## <a name="download-vhd"></a>VHD letöltése
 
-1.  A létrehozott URL-cím alatt válassza **a VHD fájl letöltése**lehetőséget.
+1.  A létrehozott URL-cím alatt válassza **a VHD-fájl letöltése**lehetőséget.
 **
-    ![A VHD letöltése](./media/download-vhd/export-download.png)
+    ![VHD letöltése](./media/download-vhd/export-download.png)
 
-2.  Előfordulhat, hogy a letöltés elindításához a **Mentés** a böngészőben lehetőséget kell választania. A virtuális merevlemez-fájl alapértelmezett neve *abcd*.
+2.  Előfordulhat, hogy a letöltés indításához a böngésző **Mentés** elemét kell választania. A VHD-fájl alapértelmezett neve *ABCD*.
 
-    ![Válassza a Mentés a böngészőben lehetőséget](./media/download-vhd/export-save.png)
+    ![Válassza a mentés lehetőséget a böngészőben](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [tölthet fel és hozhat létre Linux virtuális gépet egyéni lemezről az Azure CLI segítségével.](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
-- [Az Azure-lemezek kezelése az Azure CLI.](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- Megtudhatja, hogyan [tölthet fel és hozhat létre Linux rendszerű virtuális gépet egyéni lemezről az Azure CLI-vel](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- [Azure-lemezek kezelése az Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-vel.
 

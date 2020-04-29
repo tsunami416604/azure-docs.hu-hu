@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Beszéd-szöveg fordítása, Java (Windows, Linux) – beszédszolgáltatás'
+title: 'Gyors útmutató: beszéd-szöveg, Java (Windows, Linux) – beszédfelismerési szolgáltatás fordítása'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b181c810d15695f72e73ef8a3359396686e77a1b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78924935"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdene, győződjön meg arról, hogy:
+Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza az**Új** > **osztály** **fájlja** > lehetőséget.
+1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl** > **új** > **osztály**elemet.
 
 1. A **New Java Class** (Új Java-osztály) ablakban írja be a **speechsdk.quickstart** kifejezést a **Package** (Csomag), a **Main** (Fő) kifejezést pedig a **Név** mezőbe.
 
@@ -128,9 +128,9 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az F11 billentyűt, vagy válassza**a Debug futtatása** **lehetőséget.** > 
+Nyomja le az F11 billentyűt, vagy válassza a**hibakeresés** **futtatása** > lehetőséget.
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a beszéd szolgáltatás, amely lefordítja és átírja a szöveget (ebben az esetben, a német). A beszédszolgáltatás ezután elküldi a szöveget az alkalmazásnak megjelenítésre.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech szolgáltatásnak, amely szöveget (ebben az esetben a németre) fordítja le és írja át. A beszédfelismerési szolgáltatás ezután visszaküldi a szöveget az alkalmazásnak a megjelenítéshez.
 
 ````
 Say something...

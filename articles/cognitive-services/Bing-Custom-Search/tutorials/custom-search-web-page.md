@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Custom Search-weboldal létrehozása – Bing Custom Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan konfigurálhat egyéni Bing-keresési példányt, és hogyan integrálhatja azt egy weblapba ezzel az oktatóanyaggal.
+description: Megtudhatja, hogyan konfigurálhat egyéni Bing Search-példányt, és hogyan integrálhatja azt egy weblapra az oktatóanyag használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943907"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
@@ -34,8 +34,8 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Kulcs beszerezéséhez [hozzon létre egy Bing egyéni keresési erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) az Azure Portalon. próbakulcsot is [trial key](https://azure.microsoft.com/try/cognitive-services)használhat.
-- Ha még nincs telepítve a Visual Studio 2017-es vagy újabb verzió, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/)
+- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  A kulcs lekéréséhez [hozzon létre egy Bing Custom Search erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) a Azure Portalban. használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services)is.
+- Ha még nem rendelkezik a Visual Studio 2017-es vagy újabb verziójával, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 
@@ -45,9 +45,9 @@ Bing Custom Search-példány létrehozása:
   
 2. Navigáljon a Custom Search [portálra](https://customsearch.ai).  
   
-3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA-val, kattintson **a Microsoft-fiók létrehozása gombra.** Ha ez az első alkalom, hogy használja a portált, engedélyt kér az adatok hoz való hozzáféréshez. Kattintson **az Igen gombra.**  
+3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása**elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson az **Igen**gombra.  
   
-4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. Az **Új egyéni keresési példány létrehozása** ablakban adjon meg egy értelmes nevet, és írja le a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
+4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. Az **új egyéni keresési példány létrehozása** ablakban adjon meg egy értelmes nevet, és írja le a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
    ![A Create a new custom search (Új Custom Search-példány) mező képernyőképe](../media/newCustomSrch.png)  
   
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Ha egy adott weblapot a keresési eredmények tetejére szeretne rögzíteni, adja hozzá a weblapot és a lekérdezési kifejezést a **Rögzített** laphoz. A **Rögzített** lap tartalmazza a weblap- és lekérdezési kifejezéspárok listáját, amelyek egy adott lekérdezés legfelső eredményeként megjelenő weblapot adják meg. A weblap csak akkor kerül rögzítésre, ha a felhasználó lekérdezési karakterlánca a pin egyezési feltétele alapján megegyezik a pin lekérdezési karakterláncának. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
+Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A weblap rögzítése csak akkor történik meg, ha a felhasználó lekérdezési karakterlánca a PIN-kód egyeztetési feltétele alapján egyezik a PIN-kód lekérdezési karakterláncával. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   

@@ -1,6 +1,6 @@
 ---
-title: IBM DB2 pureScale az Azure-ban
-description: Ebben a cikkben egy IBM DB2 pureScale környezet azure-beli futtatásához egy architektúrát jelenítünk meg.
+title: IBM DB2-pureScale az Azure-ban
+description: Ebben a cikkben egy olyan architektúrát mutatunk be, amely egy IBM DB2 pureScale-környezetet futtat az Azure-ban.
 author: njray
 manager: edprice
 editor: edprice
@@ -11,98 +11,98 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945057"
 ---
-# <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale az Azure-ban
+# <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
-Az IBM DB2 pureScale környezet magas rendelkezésre állású és méretezhető linuxos operációs rendszereken magas rendelkezésre állású és méretezhető adatbázis-fürtöt biztosít az Azure számára. Ez a cikk a DB2 pureScale azure-beli futtatásához egy architektúrát jelenít meg.
+Az IBM DB2 pureScale-környezet az Azure-hoz készült adatbázis-fürtöt biztosít magas rendelkezésre állással és méretezhetőséggel a Linux operációs rendszereken. Ez a cikk egy olyan architektúrát mutat be, amely az Azure-beli DB2-pureScale futtatására használható.
 
 ## <a name="overview"></a>Áttekintés
 
-A vállalatok régóta használják a hagyományos relációs adatbázis-kezelő rendszer (RDBMS) platformokat, hogy kielégítsék online tranzakciófeldolgozási (OLTP) igényeiket. Ezekben a napokban sokan a nagyszámítógép-alapú adatbázis-környezetek az Azure-ba, mint egy módja annak, hogy bővítse a kapacitást, a költségek csökkentése, és fenntartani a folyamatos működési költségszerkezet. A migráció gyakran az első lépés az örökölt platform modernizálásában. 
+A vállalatok régóta használják a hagyományos kapcsolati adatbázis-kezelő rendszer (RDBMS) platformokat az online tranzakció-feldolgozási (OLTP) igények kielégítésére. Manapság sok a nagyszámítógép-alapú adatbázis-környezetek áttelepítése az Azure-ba a kapacitás bővítése, a költségek csökkentése és a folyamatos üzemeltetési költségek fenntartása érdekében. Az áttelepítés gyakran a régi platform korszerűsítésének első lépése. 
 
-A közelmúltban egy vállalati ügyfél újraüzemeltette a z/OS rendszeren futó IBM DB2 környezetét az IBM DB2 pureScale-nek az Azure-on. A Db2 pureScale adatbázis-fürt megoldás magas rendelkezésre állást és méretezhetőséget biztosít Linux operációs rendszereken. Az ügyfél a Db2-t sikeresen futtatta önálló, felskálázási példányként egyetlen virtuális gépen (VM) egy nagy méretű azure-beli hálózaton a Db2 pureScale telepítése előtt. 
+Az utóbbi időben a nagyvállalati ügyfelek a z/OS-ben üzemeltetett IBM DB2-környezetet az Azure-ban az IBM DB2 pureScale-be működtették. A DB2 pureScale adatbázis-fürt megoldás magas rendelkezésre állást és méretezhetőséget biztosít a Linux operációs rendszereken. Az ügyfél a DB2-pureScale telepítése előtt egyetlen virtuális gépen (VM) önálló, Felskálázási példányként futtatta a DB2-t. 
 
-Bár nem azonos az eredeti környezettel, az IBM DB2 pureScale Linuxon hasonló magas rendelkezésre állású és méretezhetőségi funkciókat kínál, mint az IBM DB2 for z/OS, amely párhuzamos Sysplex konfigurációban fut a nagyszámítógépen. Ebben az esetben a fürt iSCSI-n keresztül egy megosztott tárolófürthöz csatlakozik. A GlusterFS fájlrendszert használtuk, egy ingyenes, skálázható, nyílt forráskódú elosztott fájlrendszert, amely kifejezetten a felhőalapú tárolásra van optimalizálva. Az IBM azonban már nem támogatja ezt a megoldást. Az IBM támogatásának fenntartásához támogatott iSCSI-kompatibilis fájlrendszert kell használnia. A Microsoft a Közvetlen tárolóhelyeket (S2D) kínálja
+Bár az eredeti környezet nem azonos, az IBM DB2 pureScale Linux rendszeren hasonló magas rendelkezésre állási és méretezhetőségi funkciókat biztosít, mint az IBM DB2 a z/OS-ben, amely párhuzamos Sysplex konfigurációban fut a nagyszámítógépeken. Ebben az esetben a fürt iSCSI-kapcsolaton keresztül csatlakozik egy megosztott tároló fürthöz. A GlusterFS fájlrendszert, egy ingyenes, méretezhető, nyílt forráskódú elosztott fájlrendszert használunk, amely kifejezetten a felhőalapú tároláshoz van optimalizálva. Az IBM azonban már nem támogatja ezt a megoldást. Az IBM támogatásának fenntartása érdekében egy támogatott iSCSI-kompatibilis fájlrendszert kell használnia. A Microsoft a Közvetlen tárolóhelyek (S2D) lehetőséget kínálja
 
-Ez a cikk ismerteti az Azure-migrálás hoz használt architektúra. Az ügyfél a Red Hat Linux 7.4-et használta a konfiguráció teszteléséhez. Ez a verzió az Azure Piactérről érhető el. Mielőtt linuxos disztribúciót választana, ellenőrizze a jelenleg támogatott verziókat. További információt az [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) és [GlusterFS dokumentációjában talál.](https://docs.gluster.org/en/latest/)
+Ez a cikk az Azure áttelepítéshez használt architektúrát ismerteti. Az ügyfél a Red Hat Linux 7,4-et használta a konfiguráció teszteléséhez. Ez a verzió az Azure piactéren érhető el. A Linux-disztribúció kiválasztása előtt ellenőrizze a jelenleg támogatott verziókat. Részletekért tekintse meg az [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) és a [GlusterFS](https://docs.gluster.org/en/latest/)dokumentációját.
 
-Ez a cikk a DB2 végrehajtási terv kiindulópontja. Az üzleti követelmények eltérőek lesznek, de ugyanaz az alapvető minta vonatkozik. Ezt az architekturális mintát az Azure-beli online analitikus feldolgozási (OLAP) alkalmazásokhoz is használhatja.
+Ez a cikk a DB2-megvalósítási terv kiindulási pontja. Az üzleti igények eltérőek lesznek, de ugyanaz az alapszintű minta is érvényes. Ezt az építészeti mintát használhatja az Azure-beli online analitikus feldolgozási (OLAP) alkalmazásokhoz is.
 
-Ez a cikk nem foglalkozik a különbségek és a lehetséges áttelepítési feladatok áthelyezéséhez ibm DB2 z/OS adatbázis IBM DB2 pureScale Linuxon futó. És nem biztosít méretezési becsléseket és munkaterhelés-elemzéseket a DB2 z/OS-ről a DB2 pureScale-re való áttéréshez. 
+Ez a cikk nem fedi le az IBM DB2 for z/OS adatbázisnak a Linux rendszeren futó IBM DB2 pureScale való áthelyezésével kapcsolatos különbségeket és lehetséges áttelepítési feladatokat. És nem biztosítja a méretezési becsléseket és a számítási feladatok elemzését a DB2 z/OS-ről a DB2-pureScale való áttéréshez. 
 
-Annak érdekében, hogy segítsen eldönteni, hogy a legjobb DB2 pureScale architektúra a környezetben, azt javasoljuk, hogy teljes mértékben becsülje meg a méretezést, és egy hipotézist. A forrásrendszeren vegye figyelembe a DB2 z/OS párhuzamos Sysplex adatmegosztási architektúrával, a kapcsolóberendezés konfigurációjával és az elosztott adatlevelemekkel (DDF) kapcsolatos használati statisztikákat.
+A környezet legjobb DB2 pureScale architektúrájának meghatározásához javasoljuk, hogy teljes mértékben becsülje meg a méretezést, és hozzon ki egy hipotézist. A forrásrendszer esetében ügyeljen arra, hogy a DB2 z/OS párhuzamos Sysplex az adatmegosztási architektúra, a csatlakozási lehetőség konfigurációja és az elosztott adatközpont (DDF) használati statisztikái alapján vegye figyelembe.
 
 > [!NOTE]
-> Ez a cikk a DB2-áttelepítés egyik megközelítését ismerteti, de vannak mások is. A DB2 pureScale például virtualizált helyszíni környezetekben is futtatható. Az IBM támogatja a DB2-t a Microsoft Hyper-V-n különböző konfigurációkban. További információ: [DB2 pureScale virtualization architecture](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) in the IBM Knowledge Center.
+> Ez a cikk az DB2-Migrálás egyik módszerét ismerteti, de mások is vannak. A DB2-pureScale például virtualizált helyszíni környezetekben is futhatnak. Az IBM számos konfigurációban támogatja a DB2 használatát Microsoft Hyper-V. További információ: [DB2 pureScale Virtualization Architecture](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) az IBM Knowledge Centerben.
 
 ## <a name="architecture"></a>Architektúra
 
-A magas rendelkezésre állás és a méretezhetőség az Azure-ban, használhatja a kibővített, megosztott adatarchitektúra DB2 pureScale. Az ügyfél áttelepítése a következő példaarchitektúrát használta.
+Az Azure magas rendelkezésre állásának és méretezhetőségének támogatásához kibővített, közös adatarchitektúrát használhat a DB2-pureScale. Az ügyfél áttelepítése a következő példa architektúrát használta.
 
-![DB2 pureScale az Azure virtuális gépein, amelyek tárolót és hálózatot mutatnak](media/db2-purescale-on-azure/pureScaleArchitecture.png "DB2 pureScale az Azure virtuális gépein, amelyek tárolót és hálózatot mutatnak")
+![DB2-pureScale az Azure Virtual Machines szolgáltatásban tárolás és hálózatkezelés](media/db2-purescale-on-azure/pureScaleArchitecture.png "DB2-pureScale az Azure Virtual Machines szolgáltatásban tárolás és hálózatkezelés")
 
 
-Az ábra a DB2 pureScale fürthöz szükséges logikai rétegeket mutatja. Ezek közé tartoznak az ügyfél, a felügyelet, a gyorsítótárazás, az adatbázis-motor és a megosztott tárolás virtuális gépei. 
+Az ábrán egy DB2 pureScale-fürthöz szükséges logikai rétegek láthatók. Ilyenek például a virtuális gépek egy ügyfélhez, a felügyelethez, a gyorsítótárazáshoz, az adatbázismotor és a megosztott tároláshoz. 
 
-Az adatbázis-motor csomópontjain kívül az ábra két csomópontot is tartalmaz, amelyeket fürtgyorsítótárazási létesítményekhez (C-khez) használnak. Legalább két csomópontot használ magának az adatbázis-motornak. A pureScale fürthöz tartozó DB2-kiszolgálót tagnak nevezzük. 
+Az adatbázismotor csomópontjain kívül a diagram két, a fürt gyorsítótárazási létesítményeihez (CFs) használt csomópontot is tartalmaz. Maga az adatbázismotor legalább két csomópontot használ. A pureScale-fürthöz tartozó DB2-kiszolgáló neve tag. 
 
-A fürt iSCSI-n keresztül csatlakozik egy három csomópontos megosztott tárolófürthöz, hogy kibővített tárolót és magas rendelkezésre állást biztosítson. A DB2 pureScale linuxos Azure virtuális gépekre van telepítve.
+A fürt iSCSI-kapcsolaton keresztül csatlakozik egy három csomópontos megosztott tárolási fürthöz, hogy kibővíthető tárterületet és magas rendelkezésre állást biztosítson. A DB2 pureScale a Linux rendszerű Azure-beli virtuális gépekre van telepítve.
 
-Ez a megközelítés egy sablon, amely módosíthatja a mérete és mérete a szervezet. A következőkön alapul:
+Ez a módszer egy olyan sablon, amelyet a szervezet méretének és méretezésének módosításához módosíthat. A következőkön alapul:
 
--   Két vagy több adatbázis-tag legalább két CF-csomóponton van kombinálva. A csomópontok globális pufferkészletet (GBP) kezelnek a megosztott memória és a globális zároláskezelő (GLM) szolgáltatások számára a megosztott hozzáférés szabályozásához és az aktív tagok versengésének zárolásához. Az egyik CF-csomópont elsődleges, a másik pedig másodlagos, feladatátvételi CF-csomópontként működik. A környezet egyetlen meghibásodási pontjának elkerülése érdekében a DB2 pureScale fürtlegalább négy csomópontot igényel.
+-   Két vagy több adatbázis-tag legalább két CF-csomóponttal van egyesítve. A csomópontok a közös memóriához és a Global Lock Manager-(GLM-) szolgáltatásokhoz tartozó globális puffert (GBP) kezelik a megosztott hozzáférés szabályozása érdekében, és az aktív tagoktól származó tartalom zárolását. Egy CF-csomópont elsődlegesként, a másik pedig másodlagos, feladatátvételi CF-csomópontként működik. A környezet egyetlen meghibásodási pontjának elkerülése érdekében a DB2 pureScale-fürtökhöz legalább négy csomópont szükséges.
 
--   Nagy teljesítményű megosztott tároló (a diagram p30-as méretével látható). Minden csomópont ezt a tárolót használja.
+-   Nagy teljesítményű megosztott tároló (az ábrán a P30 méretben látható). Mindegyik csomópont ezt a tárolót használja.
 
--   Nagy teljesítményű hálózatkezelés az adattagok és a megosztott tárolás számára.
+-   Nagy teljesítményű hálózatkezelés az adattagok és a megosztott tároló számára.
 
-### <a name="compute-considerations"></a>Számítási szempontok
+### <a name="compute-considerations"></a>Számítási megfontolások
 
-Ez az architektúra az alkalmazás-, tárolási és adatrétegeket futtatja az Azure virtuális gépeken. A [központi telepítési telepítési parancsfájlok](https://aka.ms/db2onazure) a következőket hozzák létre:
+Ez az architektúra az Azure-beli virtuális gépeken futtatja az alkalmazások, a tárolók és az adatszinteket. A [telepítés telepítési parancsfájljai](https://aka.ms/db2onazure) a következőket hozza létre:
 
--   DB2 pureScale fürt. Az Azure-ban szükséges számítási erőforrások típusa a beállítástól függ. Általában két módszert használhat:
+-   Egy DB2 pureScale-fürt. Az Azure-ban szükséges számítási erőforrások típusa a beállítástól függ. Általánosságban elmondható, hogy két módszert használ:
 
-    -   Használjon többcsomópontos, nagy teljesítményű (HPC) stílusú hálózatot, ahol a kis- és közepes méretű példányok közös tárolóhoz férnek hozzá. Ehhez a HPC-konfigurációtípushoz az Azure memóriaoptimalizált E-sorozatú vagy tárolási optimalizált L sorozatú [virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) biztosítják a szükséges számítási teljesítményt.
+    -   Többcsomópontos, nagy teljesítményű számítástechnikai (HPC) stílusú hálózat használata, ahol kis-és közepes méretű példányok férnek hozzá a megosztott tárolóhoz. Ebben a HPC-típusú konfigurációban az Azure memóriára optimalizált E-sorozat-vagy Storage-optimalizált L sorozatú [virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) biztosítják a szükséges számítási teljesítményt.
 
-    -   Kevesebb nagy virtuálisgép-példányt használjon az adatmotorokhoz. Nagy példányokban a legnagyobb memóriaoptimalizált [M sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuális gépek ideálisak a nagy memórián belüli munkaterhelésekhez. Előfordulhat, hogy a DB2 futtatásához használt logikai partíció (LPAR) méretétől függően egy dedikált példányra van szükség.
+    -   Használjon kevesebb nagyméretű virtuálisgép-példányt az adatkezelők számára. Nagyméretű példányok esetén a legnagyobb memóriára optimalizált [M sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuális gépek ideálisak a nagy mennyiségű memóriabeli számítási feladatokhoz. A DB2 futtatásához használt logikai partíció (LPAR) méretétől függően szükség lehet egy dedikált példányra.
 
--   A DB2 CF memóriaoptimalizált virtuális gépeket használ, például E- vagy L-sorozatú gépeket.
+-   A DB2 CF Memória-optimalizált virtuális gépeket használ, például az E-sorozatot vagy az L-sorozatot.
 
--   A megosztott tárolófürt,\_amely\_szabványos DS4 v2 virtuális gépek Linux ot használ.
+-   A Linux rendszerű standard\_DS4\_v2 virtuális gépeket használó megosztott tárolóhelyek fürtje.
 
--   A felügyeleti jumpbox\_egy Linux\_ot futtató szabványos DS2 v2 virtuális gép.  Egy másik lehetőség az Azure Bastion, egy szolgáltatás, amely biztonságos RDP/SSH élményt biztosít a virtuális hálózat összes virtuális gépéhez.
+-   A felügyeleti Jumpbox egy Linux\_rendszerű\_standard DS2 v2 virtuális gép.  Egy másik lehetőség az Azure Bastion, amely biztonságos RDP/SSH-élményt biztosít a virtuális hálózatban lévő összes virtuális gép számára.
 
--   Az ügyfél egy\_windows\_os szabványos DS3 v2 virtuális gép (tesztelésre szolgál).
+-   Az ügyfél egy Windows\_rendszerű\_standard DS3 v2 virtuális gép (teszteléshez használatos).
 
--   *Nem kötelező*. Egy tanú szerver. Erre csak a Db2 pureScale bizonyos korábbi verzióinál van szükség. Ebben a példában egy linuxos (DB2 pureScale- hez használt) szabványos\_DS3 v2\_virtuális gépet használ.
+-   Nem *kötelező*. Tanúsító kiszolgáló. Erre csak a DB2-pureScale egyes korábbi verzióira van szükség. Ez a példa egy standard\_DS3\_v2 virtuális gépet használ, amely a Linux rendszert futtatja (a DB2-pureScale esetében használatos).
 
 > [!NOTE]
-> A DB2 pureScale fürt legalább két DB2-példányt igényel. Gyorsítótár-példányt és zároláskezelői példányt is igényel.
+> A DB2 pureScale-fürtök legalább két DB2-példányt igényelnek. Szükség van egy gyorsítótár-példányra és egy Lock Manager-példányra is.
 
 ### <a name="storage-considerations"></a>A tárterülettel kapcsolatos szempontok
 
-Az Oracle RAC-hoz hasonlóan a DB2 pureScale is egy nagy teljesítményű i/o-blokk, kibővített adatbázis. Javasoljuk, hogy a legnagyobb [Azure prémium szintű SSD-beállítást](disks-types.md) használja, amely megfelel az igényeinek. Kisebb tárolási lehetőségek alkalmas lehet a fejlesztési és tesztelési környezetekben, míg az éles környezetekben gyakran több tárolási kapacitást igényel. A példa architektúra [p30-at](https://azure.microsoft.com/pricing/details/managed-disks/) használ az IOPS és a méret és az ár aránya miatt. Mérettől függetlenül használja a prémium szintű tárhelyet a legjobb teljesítmény érdekében.
+Az Oracle RAC-hoz hasonlóan a DB2 pureScale egy nagy teljesítményű blokk I/O-, kibővíthető adatbázis. Javasoljuk, hogy az igényeinek megfelelő legnagyobb [Azure Premium SSD](disks-types.md) -beállítást használja. A kisebb tárolási lehetőségek a fejlesztési és tesztelési környezetekhez megfelelőek lehetnek, míg az éles környezetekben gyakran több tárolókapacitásra van szükség. A példában szereplő architektúra a [P30](https://azure.microsoft.com/pricing/details/managed-disks/) -t használja a IOPS és az ár méretének arányában. A mérettől függetlenül használja a Premium Storage a legjobb teljesítmény érdekében.
 
-A DB2 pureScale egy mindent megosztott architektúrát használ, ahol az összes adat elérhető az összes fürtcsomópontról. A prémium szintű tárhelyet több példányban is meg kell osztani, akár igény szerint, akár dedikált példányokon.
+A DB2-pureScale egy megosztott – minden olyan architektúrát használ, ahol az összes adatok elérhetők az összes fürtcsomóponton. A Premium Storage-ot több példányban kell megosztani, akár igény szerint, akár dedikált példányokon.
 
-Egy nagy DB2 pureScale fürt 200 terabájt (TB) vagy több prémium szintű megosztott tárterületet igényelhet, 100 000 IOPS-értékkel. A DB2 pureScale támogatja az Azure-ban használható iSCSI blokkfelületet. Az iSCSI-csatolóhoz olyan megosztott tárolófürtre van szükség, amelyet S2D-vel vagy más eszközzel valósíthat meg. Ez a fajta megoldás létrehoz egy virtuális tárolóhálózati (vSAN) eszközt az Azure-ban. A DB2 pureScale a vSAN-t használja a fürtözött fájlrendszer telepítéséhez, amely az adatok virtuális gépek közötti megosztására szolgál.
+A nagyméretű DB2 pureScale-fürtök 200 terabájt (TB) vagy több prémium szintű megosztott tárterületet igényelhetnek, 100 000-IOPS. A DB2 pureScale támogatja az Azure-ban használható iSCSI-blokk felületet. Az iSCSI-felülethez olyan megosztott S2D szükséges, amelyet egy másik eszközzel lehet megvalósítani. Ez a típusú megoldás létrehoz egy Virtual Storage Network (vSAN) eszközt az Azure-ban. A DB2 pureScale a vSAN használatával telepíti az adatmegosztáshoz használt fürtözött fájlrendszert a virtuális gépek között.
 
 ### <a name="networking-considerations"></a>Hálózati megfontolások
 
-Az IBM az InfiniBand hálózatkezelést ajánlja a DB2 pureScale fürt minden tagja számára. A DB2 pureScale távoli közvetlen memória-hozzáférést (RDMA) is használ, ahol elérhető, a cf-ekhez.
+Az IBM a InfiniBand hálózatkezelést javasolja egy DB2 pureScale-fürt összes tagjához. A DB2 pureScale a távoli közvetlen memória-hozzáférést (RDMA) is használja, ahol elérhető, a CFs számára.
 
-A telepítés során hozzon létre egy [Azure-erőforráscsoportot,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) amely tartalmazza az összes virtuális gépet. Az erőforrásokat általában az élettartamuk és azok kezelése alapján csoportosíthatja. Az architektúra virtuális gépei [gyorsított hálózatkezelést igényelnek.](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) Ez egy Azure-szolgáltatás, amely egységes, ultraalacsony hálózati késést biztosít egygyökeres I/O-virtualizáción (SR-IOV) keresztül egy virtuális gépre.
+A telepítés során létre kell hoznia egy Azure- [erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , amely tartalmazza az összes virtuális gépet. Általánosságban elmondható, hogy az erőforrásokat az élettartamuk alapján csoportosítják, és ki fogják kezelni őket. Az architektúrában található virtuális gépek [gyorsított hálózatkezelést](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)igényelnek. Ez egy olyan Azure-szolgáltatás, amely egységes, rendkívül alacsony hálózati késést biztosít egy virtuális gép számára egy gyökérszintű I/O-virtualizálás (SR-IOV) használatával.
 
-Minden Azure virtuális gép egy virtuális hálózatba van telepítve, amely alhálózatokkal rendelkezik: fő, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl is létrehozza az elsődleges [hálózati adapterek](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) a fő alhálózatban lévő virtuális gépeken.
+Minden Azure-beli virtuális gép üzembe helyezése egy alhálózattal rendelkező virtuális hálózatban történik: Main, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl az elsődleges hálózati [adaptereket](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) is létrehozza a fő alhálózatban lévő virtuális gépeken.
 
-A [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) segítségével korlátozhatja a hálózati forgalmat a virtuális hálózaton belül, és elkülönítheti az alhálózatokat.
+Használjon [hálózati biztonsági csoportokat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) a virtuális hálózaton belüli hálózati forgalom korlátozására és az alhálózatok elkülönítésére.
 
-Az Azure-ban a DB2 pureScale-nek a TCP/IP-t kell használnia a tárolási hálózati kapcsolatként.
+Az Azure-ban a DB2-pureScale a TCP/IP protokollt kell használnia hálózati kapcsolódásként a tároláshoz.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Edge kezelheti a felhasználókat | Microsoft dokumentumok
-description: Bemutatja, hogyan használhatja az Azure Portalt a felhasználók kezelésére az Azure Data Box Edge-en.
+title: Azure Data Box Edge felhasználók kezelése | Microsoft Docs
+description: Ismerteti, hogyan használható a Azure Portal a felhasználók felügyeletéhez a Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78946137"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Az Azure-portál használata az Azure Data Box Edge felhasználóinak kezeléséhez
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>A Azure Portal segítségével kezelheti a felhasználókat a Azure Data Box Edge
 
-Ez a cikk ismerteti, hogyan kezelheti a felhasználókat az Azure Data Box Edge. Az Azure Data Box Edge az Azure Portalon keresztül vagy a helyi webes felhasználói felületen keresztül kezelhető. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
+Ez a cikk ismerteti, hogyan kezelheti a felhasználókat a Azure Data Box Edgeon. A Azure Data Box Edge a Azure Portal vagy a helyi webes felületen keresztül felügyelheti. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -33,15 +33,15 @@ A felhasználók csak olvasási vagy teljes körű jogosultsággal rendelkezhetn
  - **Teljes körű jogosultsággal rendelkező felhasználó** – Teljes körű hozzáféréssel rendelkező helyi felhasználó.
  - **Csak olvasási jogosultsággal rendelkező felhasználó** – Csak olvasási hozzáféréssel rendelkező helyi felhasználó. Ezek a felhasználók csak olvasási műveleteket megengedő megosztásokhoz vannak társítva.
 
-A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A megosztásszintű engedélyek módosítása jelenleg nem támogatott.
+A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A megosztási szintű engedélyek módosítása jelenleg nem támogatott.
 
 ## <a name="add-a-user"></a>Felhasználó hozzáadása
 
 Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Portalon.
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrást, majd nyissa **meg az Áttekintés > felhasználók lehetőséget.** Válassza a **+ Felhasználó hozzáadása** lehetőséget a parancssávon.
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget. Válassza a **+ felhasználó hozzáadása** elemet a parancssorban.
 
-    ![Felhasználó hozzáadása kiválasztása](media/data-box-edge-manage-users/add-user-1.png)
+    ![Válassza a felhasználó hozzáadása elemet.](media/data-box-edge-manage-users/add-user-1.png)
 
 2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, és válassza a **Hozzáadás**lehetőséget.
 
@@ -50,7 +50,7 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
     > [!IMPORTANT] 
     > A következő rendszer által lefoglalt felhasználók nem használhatóak: Rendszergazda, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Vendég.  
 
-3. Egy értesítés jelenik meg, amikor a felhasználó létrehozása elindul, és befejeződött. A felhasználó létrehozása után a parancssávon válassza a **Frissítés** lehetőséget a frissített felhasználói lista megtekintéséhez.
+3. Egy értesítés jelenik meg, amikor a felhasználó létrehozása megkezdődik és befejeződött. A felhasználó létrehozása után a parancssorból válassza a **frissítés** lehetőséget a felhasználók frissített listájának megtekintéséhez.
 
 
 ## <a name="modify-user"></a>Felhasználó módosítása
@@ -65,13 +65,13 @@ A felhasználó létrehozását követően lehetőség van a hozzá tartozó jel
 Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrást, majd nyissa **meg az Áttekintés > felhasználók lehetőséget.**
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget.
 
-    ![A törölni kívánt felhasználó kiválasztása](media/data-box-edge-manage-users/delete-user-1.png)
+    ![Válassza ki a törölni kívánt felhasználót](media/data-box-edge-manage-users/delete-user-1.png)
 
-2. Jelöljön ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés**lehetőséget.  
+2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés**lehetőséget.  
 
-   ![Törlés kijelölése](media/data-box-edge-manage-users/delete-user-2.png)
+   ![Törlés kiválasztása](media/data-box-edge-manage-users/delete-user-2.png)
 
 3. A rendszer kérésére erősítse meg a törlést. 
 
@@ -79,7 +79,7 @@ Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Por
 
 A törlés végrehajtása után annak megfelelően frissül a felhasználók listája.
 
-![Frissített felhasználók listája](media/data-box-edge-manage-users/delete-user-4.png)
+![A felhasználók frissített listája](media/data-box-edge-manage-users/delete-user-4.png)
 
 
 ## <a name="next-steps"></a>További lépések

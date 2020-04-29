@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Az ACR használata Azure DC/OS-fürttel
+title: ELAVULT Az ACR használata Azure DC/OS-fürttel
 description: Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402069"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ELAVULT) Az ACR használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ELAVULT Az ACR használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -127,7 +127,7 @@ Hozzon létre egy tárolót az Ubuntu-rendszerképből.
 docker run ubuntu --name base-image
 ```
 
-Most rögzítése a tárolót egy új rendszerképbe. A lemezkép nevének `loginServer` tartalmaznia kell a tárolóbeállítás-jegyzék `loginServer/imageName`nevét.
+Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének tartalmaznia kell a tároló `loginServer` -beállításjegyzék nevét a következő formátumban: `loginServer/imageName`.
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo

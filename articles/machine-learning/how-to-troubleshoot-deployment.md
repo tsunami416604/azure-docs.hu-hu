@@ -1,7 +1,7 @@
 ---
 title: Üzembehelyezési hibaelhárítási útmutató
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan gazdálkodhat, oldhat meg és háríthat el általános Docker-telepítési hibákat az Azure Kubernetes-szolgáltatásés az Azure Machine Learning használatával az Azure Machine Learning használatával.
+description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani a Common Docker-telepítési hibákat az Azure Kubernetes szolgáltatással, és Azure Container Instances a Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,47 +12,47 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399684"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes-szolgáltatás és az Azure Container Instances üzembe helyezésének hibaelhárítása
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
-Ismerje meg, hogyan kerüli meg vagy oldhatja meg a Docker gyakori telepítési hibáit az Azure Container Instances (ACI) és az Azure Kubernetes Service (AKS) használatával az Azure Machine Learning használatával.
+Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) a Azure Machine Learning használatával.
 
-Amikor egy modellt telepít az Azure Machine Learningben, a rendszer számos feladatot hajt végre.
+Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
 
-A modell üzembe helyezésének ajánlott és legnaprakészebb megközelítése a [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-n keresztül [történik, amely egy környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot használ bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap docker-rendszerképet az üzembe helyezési szakaszban, és a szükséges modelleket egy hívásban csatlakoztatja. Az alapvető telepítési feladatok a következők:
+Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
 
-1. Regisztrálja a modellt a munkaterületmodell beállításjegyzékében.
+1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
 
-2. Következtetési konfiguráció definiálása:
-    1. Hozzon létre egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot a környezetben megadott yaml fájl alapján, vagy használja az egyik beszerzett környezetünket.
-    2. Hozzon létre egy következtetési konfigurációt (InferenceConfig objektum) a környezet és a pontozási parancsfájl alapján.
+2. Következtetési konfiguráció meghatározása:
+    1. Hozzon létre egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
+    2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
 
-3. Telepítse a modellt az Azure Container Instance (ACI) szolgáltatásvagy az Azure Kubernetes service (AKS) szolgáltatásba.
+3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
 
-Erről a folyamatról a [Modellkezelés](concept-model-management-and-deployment.md) bevezetésben olvashat bővebben.
+További információ a folyamatról a [modellkezelés](concept-model-management-and-deployment.md) bevezetésében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Azure-előfizetés**. Ha nem rendelkezik ilyen, próbálja ki az [Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
-* Az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Az [Azure Machine Learning CLI-bővítménye.](reference-azure-machine-learning-cli.md)
-* A helyi hibakereséshez a helyi rendszeren működő Docker-telepítéssel kell rendelkeznie.
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
+* Helyi hibakereséshez rendelkeznie kell egy működő Docker-telepítéssel a helyi rendszeren.
 
-    A Docker telepítésének ellenőrzéséhez `docker run hello-world` használja a parancsot egy terminálról vagy parancssorból. A Docker telepítéséről és a Docker-hibák elhárításáról a [Docker dokumentációjában](https://docs.docker.com/)olvashat.
+    A Docker-telepítés ellenőrzéséhez használja a parancsot `docker run hello-world` egy terminálról vagy parancssorból. A Docker telepítésével vagy a Docker-hibák elhárításával kapcsolatos információkért tekintse meg a [Docker dokumentációját](https://docs.docker.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha bármilyen probléma lép fel, az első teendő az, hogy a telepítési feladat (előző leírt) lebontása a probléma elkülönítéséhez szükséges egyes lépésekre.
+Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helyezési feladatot (előző Leírás) a probléma elkülönítése érdekében egyedi lépésekbe bontsa.
 
-Feltéve, hogy az új/ajánlott üzembe helyezési módszert használja a [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-n keresztül [egy környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektummal bemeneti paraméterként, a kód három fő lépésre bontható fel:
+Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
 
-1. Regisztrálja a modellt. Itt van néhány minta kód:
+1. Regisztrálja a modellt. Íme néhány mintakód:
 
     ```python
     from azureml.core.model import Model
@@ -65,7 +65,7 @@ Feltéve, hogy az új/ajánlott üzembe helyezési módszert használja a [Model
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. A központi telepítéshez a következtetéskonfiguráció meghatározása:
+2. Következtetési konfiguráció megadása a központi telepítéshez:
 
     ```python
     from azureml.core.model import InferenceConfig
@@ -93,16 +93,16 @@ Feltéve, hogy az új/ajánlott üzembe helyezési módszert használja a [Model
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-Miután a telepítési folyamatot különálló feladatokra bontotta, megvizsgálhatjuk a leggyakoribb hibákat.
+Miután megszakította az üzembe helyezés folyamatát az egyes feladatokra, megvizsgáljuk a leggyakoribb hibákat.
 
-## <a name="debug-locally"></a>Hibakeresés helyileg
+## <a name="debug-locally"></a>Helyi hibakeresés
 
-Ha problémákat tapasztal egy modell aci vagy AKS üzembe helyezésével, próbálja meg helyi webszolgáltatásként telepíteni. A helyi webszolgáltatás használata megkönnyíti a problémák elhárítását. A modellt tartalmazó Docker-rendszerkép letöltődik, és elindul a helyi rendszeren.
+Ha olyan problémák merülnek fel, amelyek a modell ACI-vagy AK-beli üzembe helyezésével kapcsolatosak, próbálja meg helyi webszolgáltatásként telepíteni. A helyi webszolgáltatás használatával egyszerűbbé válik a problémák elhárítása. A modellt tartalmazó Docker-rendszerkép le van töltve, és elindult a helyi rendszeren.
 
 > [!WARNING]
-> A helyi webszolgáltatás-telepítések nem támogatottak éles környezetben.
+> A helyi webszolgáltatások üzembe helyezése éles környezetben nem támogatott.
 
-Helyi telepítéshez módosítsa a kódot, `LocalWebservice.deploy_configuration()` hogy hozzon létre egy központi telepítési konfigurációt. Ezután `Model.deploy()` használja a szolgáltatás üzembe helyezéséhez. A következő példa helyi webszolgáltatásként telepít egy modellt (a modellváltozóban található):
+A helyileg történő üzembe helyezéshez módosítsa a kód `LocalWebservice.deploy_configuration()` használatát a telepítési konfiguráció létrehozásához. Ezután a `Model.deploy()` használatával telepítheti a szolgáltatást. A következő példa egy modellt helyez üzembe a modell változójában helyi webszolgáltatásként:
 
 ```python
 from azureml.core.environment import Environment
@@ -124,9 +124,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Kérjük, vegye figyelembe, hogy ha saját conda specifikációt, YAML-t határoz meg, akkor az azureml-defaults-t >= 1.0.45 verzióval kell felsorolnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
+Vegye figyelembe, hogy ha saját Conda-specifikációs YAML határoz meg, akkor a azureml alapértelmezett értékeit kell megadnia, amelyek a >= 1.0.45 verzióban pip-függőségként szerepelnek. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
 
-Ezen a ponton a szokásos módon dolgozhat a szolgáltatással. A következő kód például bemutatja az adatok küldését a szolgáltatásnak:
+Ezen a ponton a megszokott módon dolgozhat a szolgáltatással. Az alábbi kód például a szolgáltatásnak küldött adatokat mutatja be:
 
 ```python
 import json
@@ -142,14 +142,14 @@ prediction = service.run(input_data=test_sample)
 print(prediction)
 ```
 
-A Python-környezet testreszabásáról további információt a [Környezetek létrehozása és kezelése betanításhoz és üzembe helyezéshez című témakörben talál.](how-to-use-environments.md) 
+A Python-környezet testreszabásával kapcsolatos további információkért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md). 
 
 ### <a name="update-the-service"></a>A szolgáltatás frissítése
 
-Előfordulhat, hogy a helyi tesztelés `score.py` során frissítenie kell a fájlt a naplózás hozzáadásához, vagy meg kell kísérelnie a felfedezett problémák megoldását. A fájl módosítási `score.py` módosításának `reload()`újratöltéséhez használja a használatát. Például a következő kód újratölti a szolgáltatás parancsfájlját, majd adatokat küld neki. Az adatok pontozott a `score.py` frissített fájl:
+A helyi tesztelés során előfordulhat, hogy frissítenie kell `score.py` a fájlt a naplózás hozzáadásához, vagy a felderített problémák megoldására tett kísérletet. A fájl módosításainak újratöltéséhez `score.py` használja `reload()`a következőt:. A következő kód például újratölti a szolgáltatáshoz tartozó parancsfájlt, majd adatokat küld neki. Az adatgyűjtés a frissített `score.py` fájllal történik:
 
 > [!IMPORTANT]
-> A `reload` metódus csak helyi telepítések esetén érhető el. A központi telepítés másik számítási célra történő frissítéséről a [Telepítési modellek](how-to-deploy-and-where.md#update)frissítési szakaszában talál tájékoztatást.
+> A `reload` metódus csak helyi központi telepítések esetén érhető el. További információ a központi telepítés más számítási célra való frissítéséről: a [modellek üzembe helyezésének](how-to-deploy-and-where.md#update)frissítése szakasz.
 
 ```python
 service.reload()
@@ -157,9 +157,9 @@ print(service.run(input_data=test_sample))
 ```
 
 > [!NOTE]
-> A parancsfájl újratöltődik a `InferenceConfig` szolgáltatás által használt objektum által megadott helyről.
+> A parancsfájl a szolgáltatás által használt `InferenceConfig` objektum által megadott helyről lesz újratöltve.
 
-A modell, a Conda-függőségek vagy a központi telepítési konfiguráció módosításához használja a [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)( frissítés) szolgáltatást. A következő példa frissíti a szolgáltatás által használt modellt:
+A modell, a Conda-függőségek vagy a telepítési konfiguráció módosításához használja az [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)t. A következő példa frissíti a szolgáltatás által használt modellt:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -167,11 +167,11 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>A szolgáltatás törlése
 
-A szolgáltatás törléséhez használja a [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)parancsot.
+A szolgáltatás törléséhez használja a [delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)t.
 
-### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a>A Docker-napló vizsgálata
+### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a>A Docker-napló ellenőrzése
 
-A szolgáltatásobjektumból részletes Docker-motornapló-üzeneteket nyomtathat ki. Megtekintheti az ACI, Az AKS és a Helyi központi telepítések naplóját. A következő példa bemutatja, hogyan kell kinyomtatni a naplókat.
+A Service objektumból kinyomtathatja a Docker-motor részletes naplófájljait. Megtekintheti az ACI-, AK-és helyi központi telepítések naplóját. Az alábbi példa bemutatja, hogyan lehet kinyomtatni a naplókat.
 
 ```python
 # if you already have the service object handy
@@ -183,13 +183,13 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="service-launch-fails"></a>A szolgáltatás indítása sikertelen
 
-A lemezkép sikeres létrehozása után a rendszer megkísérli elindítani a tárolót a központi telepítési konfiguráció használatával. A tároló indítási folyamatának `init()` részeként a rendszer a pontozási parancsfájl ban lévő függvényt hívja meg. Ha a függvényben nincsenek `init()` kivételek, a hibaüzenetben **a CrashLoopBackOff** hiba jelenhet meg.
+A rendszerkép sikeres felépítése után a rendszer megkísérli a tároló indítását a telepítési konfiguráció alapján. A tároló indítási folyamatának részeként a rendszer meghívja a `init()` pontozási parancsfájl függvényét. Ha a `init()` függvény nem észlelt kivételeket tartalmaz, előfordulhat, hogy a **CrashLoopBackOff** hiba jelenik meg a hibaüzenetben.
 
-Használja a [Docker-napló vizsgálata](#dockerlog) szakaszban található információkat a naplók ellenőrzéséhez.
+A naplók ellenőrzéséhez használja a [Docker-napló vizsgálata](#dockerlog) szakaszban található információkat.
 
-## <a name="function-fails-get_model_path"></a>A függvény sikertelen: get_model_path()
+## <a name="function-fails-get_model_path"></a>A függvény sikertelen: get_model_path ()
 
-Gyakran előfordul, `init()` hogy a függvény a pontozási parancsfájl, [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) függvény hívják, hogy keresse meg a modell fájlt, vagy egy mappát a modell fájlokat a tárolóban. Ha a modellfájl vagy mappa nem található, a függvény sikertelen lesz. A hiba hibakeresésének legegyszerűbb módja az alábbi Python-kód futtatása a tárolóhéjban:
+Gyakran előfordul, hogy `init()` a pontozási parancsfájl függvényében a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) függvényt egy modell fájljának vagy a tárolóban található Model Files mappa megkeresésére hívja meg. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
 
 ```python
 from azureml.core.model import Model
@@ -198,13 +198,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Ez a példa kinyomtatja a `/var/azureml-app`helyi elérési utat (ehhez viszonyítva) abban a tárolóban, ahol a pontozási parancsfájl a modellfájl vagy -mappa megtalálását várja. Ezután ellenőrizheti, hogy a fájl vagy mappa valóban ott van-e, ahol várható.
+Ez a példa megjeleníti a helyi elérési utat ( `/var/azureml-app`ahhoz képest) a tárolóban, ahol a pontozási parancsfájl a modell fájljának vagy mappájának megkeresésére vár. Ezt követően ellenőrizheti, hogy a fájl vagy mappa valóban a várt-e.
 
-Ha a naplózási szintet DEBUG-ra állítja, további információk naplózása lehet, ami hasznos lehet a hiba azonosításához.
+Ha a naplózási szint HIBAKERESÉSét állítja be, akkor további információk is naplózhatók, ami hasznos lehet a hiba azonosításához.
 
-## <a name="function-fails-runinput_data"></a>A függvény sikertelen: run(input_data)
+## <a name="function-fails-runinput_data"></a>A függvény sikertelen: Futtatás (input_data)
 
-Ha a szolgáltatás telepítése sikeresen megtörtént, de összeomlik, amikor adatokat küld a pontozási `run(input_data)` végpontra, hozzáadhat hibabefogási utasítást a függvényben, hogy az részletes hibaüzenetet adjon vissza. Példa:
+Ha a szolgáltatás sikeresen telepítve van, de összeomlik a pontozási végpontba való adatküldés során, a `run(input_data)` függvényben hozzáadhat egy Error befogási utasítást, hogy a részletes hibaüzenetet adja vissza helyette. Például:
 
 ```python
 def run(input_data):
@@ -219,30 +219,30 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Megjegyzés:** A `run(input_data)` hívásból származó hibaüzenetek visszaadása csak hibakereséscéljából történhet. Biztonsági okokból éles környezetben nem szabad ilyen módon hibaüzeneteket visszaadni.
+**Megjegyzés**: Ha a `run(input_data)` hívásból hibaüzeneteket ad vissza, csak hibakeresési célokat kell végrehajtania. Biztonsági okokból az éles környezetben nem adhat vissza hibaüzeneteket.
 
 ## <a name="http-status-code-502"></a>HTTP-állapotkód 502
 
-Az 502-es állapotkód azt jelzi, hogy a `run()` szolgáltatás kivételt tett, vagy összeomlott a score.py fájl metódusában. A cikkben található információk segítségével hibakeresést folytatanak a fájlban.
+A 502 állapotkód azt jelzi, hogy a szolgáltatás kivételt okozott, vagy összeomlott a `run()` score.py fájl metódusában. A cikkben található információk segítségével a fájl hibakeresését folytathatja.
 
 ## <a name="http-status-code-503"></a>HTTP-állapotkód 503
 
-Az Azure Kubernetes-szolgáltatás központi telepítései támogatják az automatikus skálázást, amely lehetővé teszi a replikák hozzáadását a további terhelés támogatásához. Az automatikus méretező azonban a terhelés **fokozatos** változásainak kezelésére szolgál. Ha másodpercenként nagy ugrásokat kap a kérelmekben, az ügyfelek 503-as HTTP-állapotkódot kaphatnak.
+Az Azure Kubernetes szolgáltatás központi telepítései támogatják az automatikus skálázást, amely lehetővé teszi a replikák hozzáadását a további terhelések támogatásához. Az automatikus skálázás azonban úgy van kialakítva, hogy kezelje a terhelés **fokozatos** változásait. Ha a kérések másodpercenként nagy számú tüskéket kapnak, az ügyfelek a 503-as HTTP-állapotkódot kapják meg.
 
-Két dolog segíthet megelőzni az 503-as állapotkódokat:
+Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
 
-* Módosítsa azt a kihasználtsági szintet, amelyen az automatikus skálázás új replikákat hoz létre.
+* Módosítsa a kihasználtsági szintet, amelynél az automatikus skálázás új replikákat hoz létre.
     
-    Alapértelmezés szerint az automatikus skálázás célkihasználtság van beállítva 70%, ami azt jelenti, hogy a szolgáltatás képes kezelni a kérelmek másodpercenkénti (RPS) legfeljebb 30%-os kiugrások. A kihasználtsági célt alacsonyabb `autoscale_target_utilization` értékre állításával állíthatja be.
+    Alapértelmezés szerint az automatikus skálázási cél kihasználtsága 70%-ra van állítva, ami azt jelenti, hogy a szolgáltatás legfeljebb 30%-os terhelést képes kezelni a másodpercenkénti kérésekben (RPS). A kihasználtsági célt úgy állíthatja be, `autoscale_target_utilization` hogy alacsonyabb értéket állít be.
 
     > [!IMPORTANT]
-    > Ez a módosítás nem eredményezi a kópiák *gyorsabb*létrehozását. Ehelyett alacsonyabb kihasználtsági küszöbértékkel jönnek létre. Ahelyett, hogy megvárná, amíg a szolgáltatás 70%-os kihasználása, az érték módosítása 30%-os okoz replikák jön létre, ha 30%-os kihasználtság történik.
+    > Ez a változás nem eredményezi a replikák *gyorsabb*létrehozását. Ehelyett alacsonyabb kihasználtsági küszöbértékben jönnek létre. Ahelyett, hogy megvárná, amíg a szolgáltatás 70%-ot nem használ, az érték 30%-ra való módosítása a replikákat a 30%-os kihasználtság esetén hozza létre.
     
-    Ha a webszolgáltatás már használja az aktuális maximális replikákat, és még `autoscale_max_replicas` mindig 503 állapotkódokat lát, növelje az értéket a replikák maximális számának növeléséhez.
+    Ha a webszolgáltatás már használja a jelenlegi maximális replikákat, és továbbra is a 503-es állapotkódot látja, növelje `autoscale_max_replicas` az értéket a replikák maximális számának növeléséhez.
 
-* Módosítsa a kópiák minimális számát. A minimális replikák növelése nagyobb készletet biztosít a bejövő csúcsok kezeléséhez.
+* Módosítsa a replikák minimális számát. A minimális replikák növelése nagyobb készletet biztosít a bejövő tüskék kezeléséhez.
 
-    A replikák minimális számának `autoscale_min_replicas` növeléséhez állítsa magasabb értékre. A szükséges replikákat a következő kód dal számíthatja ki, amely a projektre jellemző értékekre cseréli az értékeket:
+    A replikák minimális számának növeléséhez állítsa `autoscale_min_replicas` magasabb értékre. A szükséges replikák kiszámításához használja a következő kódot, és cserélje le az értékeket a projekthez tartozó értékekre:
 
     ```python
     from math import ceil
@@ -262,40 +262,40 @@ Két dolog segíthet megelőzni az 503-as állapotkódokat:
     ```
 
     > [!NOTE]
-    > Ha az új minimális replikák által kezelhetőnél nagyobb kérési csúcsokat kap, előfordulhat, hogy ismét 503-as tanéveket kap. Például a szolgáltatás forgalmának növekedésével szükség lehet a minimális replikák növelésére.
+    > Ha az új minimális replikánál nagyobb kérelmeket kap, akkor a 503s újra megjelenhet. Ha például a szolgáltatás felé irányuló forgalom növekszik, akkor előfordulhat, hogy növelnie kell a minimális replikákat.
 
-A `autoscale_target_utilization`beállítással és `autoscale_max_replicas`az `autoscale_min_replicas` [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modul hivatkozási útmutatójával kapcsolatos további információkért.
+A és `autoscale_target_utilization` `autoscale_min_replicas` a for beállításával `autoscale_max_replicas`kapcsolatos további információkért tekintse meg a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) -modul referenciáját.
 
-## <a name="http-status-code-504"></a>HTTP 504-es állapotkód
+## <a name="http-status-code-504"></a>HTTP-állapotkód 504
 
-Az 504-es állapotkód azt jelzi, hogy a kérelem időkimenőt ért. Az alapértelmezett időhosszabbítás 1 perc.
+A 504 állapotkód azt jelzi, hogy a kérelem túllépte az időkorlátot. Az alapértelmezett időkorlát 1 perc.
 
-Növelheti az időtúllépést, vagy megpróbálhatja felgyorsítani a szolgáltatást a score.py módosításával a szükségtelen hívások eltávolításához. Ha ezek a műveletek nem oldják meg a problémát, a cikkben található információk alapján hibakeresésre használja a score.py fájlt. A kód lehet lógott állapotban vagy végtelen ciklusban.
+A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. Előfordulhat, hogy a kód lefagyott állapotban vagy végtelen hurokban van.
 
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
-Bizonyos esetekben előfordulhat, hogy interaktívan hibakeresést kell, hogy a modell központi telepítésében található Python-kódot. Ha például a bejegyzésparancsfájl hibás, és az ok nem határozható meg további naplózással. A Visual Studio Code és a Python Tools for Visual Studio (PTVSD) használatával csatolhatja a Docker-tárolóban futó kódot.
+Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A Visual Studio Code és a Python Tools for Visual Studio (PTVSD) használatával csatlakoztathatja a Docker-tárolón belül futó kódot.
 
 > [!IMPORTANT]
-> Ez a hibakeresési módszer nem `Model.deploy()` működik `LocalWebservice.deploy_configuration` a modell helyi használata és telepítése során. Ehelyett létre kell hoznia egy lemezképet a [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) metódushasználatával.
+> Ez a hibakeresési módszer nem működik helyi modell `Model.deploy()` használatakor és `LocalWebservice.deploy_configuration` üzembe helyezése esetén. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
 
-A helyi webszolgáltatás-telepítések a helyi rendszeren működő Docker-telepítést igényelnek. A Docker használatával kapcsolatos további információkért tekintse meg a [Docker dokumentációját.](https://docs.docker.com/)
+A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-1. A Python Tools for Visual Studio (PTVSD) telepítéséhez a helyi VS Code fejlesztői környezetben a következő paranccsal:
+1. A Python Tools for Visual Studio (PTVSD) a helyi VS Code-fejlesztési környezetbe való telepítéséhez használja a következő parancsot:
 
     ```
     python -m pip install --upgrade ptvsd
     ```
 
-    A PTVSD VS-kóddal való használatáról a [Távoli hibakeresés](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)című témakörben talál további információt.
+    További információ a PTVSD és a VS Code használatával kapcsolatban: [távoli hibakeresés](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
 
-1. Ha a VS Code-ot a Docker-lemezképpel való kommunikációra szeretné konfigurálni, hozzon létre egy új hibakeresési konfigurációt:
+1. Ha a VS Code-t úgy szeretné konfigurálni, hogy kommunikáljon a Docker-lemezképpel, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS-kód lapon válassza a __Debug menüt,__ majd a __Konfigurációk megnyitása parancsot.__ Megnyílik __egy launch.json__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __Launch. JSON__ nevű fájl.
 
-    1. Az __launch.json__ fájlban keresse meg `"configurations": [`a tartalmazó sort, és utána szúrja be a következő szöveget:
+    1. A __Launch. JSON__ fájlban keresse meg a tartalmazó `"configurations": [`sort, majd szúrja be a következő szöveget:
 
         ```json
         {
@@ -314,15 +314,15 @@ A helyi webszolgáltatás-telepítések a helyi rendszeren működő Docker-tele
         ```
 
         > [!IMPORTANT]
-        > Ha a konfigurációk szakaszban már vannak más bejegyzések, a beszúrt kód után adjon hozzá vesszőt (,) .
+        > Ha már vannak más bejegyzések a konfigurációk szakaszban, adjon hozzá egy vesszőt (,) a beszúrt kód után.
 
-        Ez a szakasz az 5678-as port használatával csatlakozik a Docker-tárolóhoz.
+        Ez a szakasz a Docker-tárolóhoz csatlakozik a 5678-es porton keresztül.
 
-    1. Mentse a __launch.json__ fájlt.
+    1. Mentse a __Launch. JSON__ fájlt.
 
-### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD-t tartalmazó kép létrehozása
+### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD tartalmazó rendszerkép létrehozása
 
-1. Módosítsa a központi telepítés conda-környezetét, hogy az tartalmazza a PTVSD-t. A következő példa bemutatja `pip_packages` a hozzáadást a paraméter használatával:
+1. Módosítsa az üzemelő példány Conda-környezetét, hogy az tartalmazza a PTVSD-t. Az alábbi példa a paraméterrel való `pip_packages` hozzáadását mutatja be:
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
@@ -338,7 +338,7 @@ A helyi webszolgáltatás-telepítések a helyi rendszeren működő Docker-tele
         f.write(myenv.serialize_to_string())
     ```
 
-1. A PTVSD indításához és a kapcsolatra való várakozáshoz a `score.py` szolgáltatás indításakor adja hozzá a következőt a fájl tetejére:
+1. A PTVSD elindításához és a szolgáltatás indításakor várjon, ha a következőt adja hozzá a `score.py` fájl elejéhez:
 
     ```python
     import ptvsd
@@ -349,10 +349,10 @@ A helyi webszolgáltatás-telepítések a helyi rendszeren működő Docker-tele
     print("Debugger attached...")
     ```
 
-1. Hozzon létre egy lemezképet a környezet definíciója alapján, és húzza le a lemezképet a helyi beállításjegyzékbe. A hibakeresés során előfordulhat, hogy a lemezképfájljait újra meg kell változtatnia anélkül, hogy újra létre kellene hoznia azokat. Ha egy szövegszerkesztőt (vim) szeretne telepíteni `Environment.docker.base_image` a `Environment.docker.base_dockerfile` Docker-lemezképbe, használja a és a tulajdonságokat:
+1. Hozzon létre egy rendszerképet a környezeti definíció alapján, és kérje le a rendszerképet a helyi beállításjegyzékbe. A hibakeresés során érdemes lehet módosításokat végezni a rendszerképben anélkül, hogy újból létre kellene hoznia. A Docker-rendszerképben a (z) `Environment.docker.base_image` és `Environment.docker.base_dockerfile` a (z) tulajdonságok segítségével telepíthet egy szövegszerkesztőt (VIM):
 
     > [!NOTE]
-    > Ebben a példában feltételezi, hogy `ws` az Azure `model` Machine Learning-munkaterületre mutat, és ez az üzembe helyezett modell. A `myenv.yml` fájl az 1.
+    > Ez a példa azt feltételezi, hogy `ws` az Azure Machine learning munkaterületre `model` mutat, és ez az üzembe helyezett modell. A `myenv.yml` fájl tartalmazza az 1. lépésben létrehozott Conda-függőségeket.
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies
@@ -369,72 +369,72 @@ A helyi webszolgáltatás-telepítések a helyi rendszeren működő Docker-tele
     package.pull()
     ```
 
-    A lemezkép létrehozása és letöltése után a kép elérési útja (beleértve a tárházat, a nevet és a címkét, amely ebben az esetben egyben kivonata is) a következőhöz hasonló üzenetben jelenik meg:
+    A rendszerkép létrehozása és letöltése után a rendszerkép elérési útja (tartalmazza az adattárat, a nevet és a címkét is, amely ebben az esetben a kivonata is) a következőhöz hasonló üzenetben jelenik meg:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. A képpel való munka megkönnyítése érdekében a következő paranccsal adjon hozzá címkét. Cserélje `myimagepath` le az előző lépés helyértékére.
+1. Ahhoz, hogy könnyebben működjön a rendszerképpel, a következő paranccsal adhat hozzá egy címkét. Cserélje `myimagepath` le az elemet az előző lépésben megadott Location értékre.
 
     ```bash
     docker tag myimagepath debug:1
     ```
 
-    A további lépésekhez a helyi lemezképre `debug:1` hivatkozhat a teljes kép elérési útja helyett.
+    A többi lépésnél a teljes rendszerkép elérési útja `debug:1` helyett a helyi rendszerképre is hivatkozhat.
 
-### <a name="debug-the-service"></a>Hibakeresés a szolgáltatásban
+### <a name="debug-the-service"></a>A szolgáltatás hibakeresése
 
 > [!TIP]
-> Ha időtúllépést állít be a PTVSD-kapcsolathoz a fájlban, az `score.py` időtúllépés lejárta előtt csatlakoztatnia kell a VS Code-ot a hibakeresési munkamenethez. Indítsa el a VS-kódot, nyissa meg a helyi példányát, `score.py`állítson be egy töréspontot, és állítsa készen az indulásra, mielőtt az ebben a szakaszban leírt lépéseket használná.
+> Ha a `score.py` FÁJLBAN a PTVSD-kapcsolat időtúllépését állítja be, akkor az időkorlát lejárta előtt csatlakoztatnia kell a vs Code-ot a hibakeresési munkamenethez. Indítsa el a VS Code-ot, nyissa meg a helyi példányát `score.py`, állítson be egy töréspontot, és készen áll arra, hogy az ebben a szakaszban ismertetett lépések használata előtt folytassa.
 >
-> A hibakeresésről és a töréspontok beállításáról a [Hibakeresés](https://code.visualstudio.com/Docs/editor/debugging)című témakörben talál további információt.
+> A töréspontok hibakeresésével és beállításával kapcsolatos további információkért lásd: [hibakeresés](https://code.visualstudio.com/Docs/editor/debugging).
 
-1. Ha docker-tárolót szeretne elindítani a rendszerkép használatával, használja a következő parancsot:
+1. Ha egy Docker-tárolót a rendszerkép használatával szeretne elindítani, használja a következő parancsot:
 
     ```bash
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Ha a VS-kódot a tárolón belül szeretné csatolni a PTVSD-hez, nyissa meg a VS Code-ot, és használja az F5 gombot, vagy válassza a __Debug__lehetőséget. Amikor a rendszer kéri, válassza ki az __Azure Machine Learning: Docker Debug__ konfiguráció. Az oldalsávon is kiválaszthatja a hibakeresési ikont, az __Azure Machine Learning: Docker Debug__ bejegyzést a Hibakeresési legördülő menüből, majd a zöld nyíllal csatolhatja a hibakeresőt.
+1. Ha a VS Code-t a tárolón belül PTVSD szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, __vagy válassza a__ Ha a rendszer kéri, válassza ki a __Azure Machine learning: Docker hibakeresési__ konfigurációját. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávban, a __Azure Machine learning: Docker debug__ bejegyzést a hibakeresés legördülő menüből, majd a zöld nyíl használatával csatlakoztathatja a hibakeresőt.
 
-    ![A hibakeresési ikon, a hibakeresés indítása gomb és a konfigurációválasztó](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    ![A hibakeresés ikon, a hibakeresés elindítása gomb és a konfigurációs választó](./media/how-to-troubleshoot-deployment/start-debugging.png)
 
-Ezen a ponton a VS-kód csatlakozik a PTVSD-hez a Docker-tárolón belül, és megáll a korábban beállított töréspontnál. Most már lépésben a kódot, mert fut, változók megtekintése, stb.
+Ezen a ponton a VS Code a Docker-tárolón belül csatlakozik a PTVSD-hez, és a korábban megadott törésponton leáll. Most már megkezdheti a kód futtatását, megtekintheti a változókat stb.
 
-A VS Code python-hibakereséssel kapcsolatos további tudnivalókért olvassa el [a Python-kód hibakeresése című témakört.](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)
+A VS Code a Python hibakereséséhez való használatával kapcsolatos további információkért lásd [a Python-kód hibakeresését](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)ismertető témakört.
 
 <a id="editfiles"></a>
-### <a name="modify-the-container-files"></a>A tárolófájlok módosítása
+### <a name="modify-the-container-files"></a>A tároló fájljainak módosítása
 
-A lemezképfájljainak módosításához csatolhatja a futó tárolóhoz, és végrehajthatja a bash rendszerhéjat. Innen a vim segítségével szerkesztheti a fájlokat:
+A rendszerképben lévő fájlok módosításához csatolhatja a futó tárolót, és végrehajthat egy bash-rendszerhéjat. Innen a Vim használatával szerkesztheti a fájlokat:
 
-1. A futó tárolóhoz való csatlakozáshoz és a tárolóban lévő bash rendszerhéj elindításához használja a következő parancsot:
+1. A futó tárolóhoz való kapcsolódáshoz és egy bash-rendszerhéj a tárolóban történő indításához használja a következő parancsot:
 
     ```bash
     docker exec -it debug /bin/bash
     ```
 
-1. A szolgáltatás által használt fájlok megkereséséhez használja a következő parancsot a tárolóban `/var/azureml-app`lévő bash rendszerhéjból, ha az alapértelmezett könyvtár eltér a következőtől:
+1. A szolgáltatás által használt fájlok megkereséséhez használja a következő parancsot a tárolóban található bash-rendszerhéjból, ha az alapértelmezett könyvtár eltér a `/var/azureml-app`következőktől:
 
     ```bash
     cd /var/azureml-app
     ```
 
-    Innen a vim segítségével szerkesztheti `score.py` a fájlt. A vim használatával kapcsolatos további tudnivalókért olvassa el a Vim szerkesztő használata című [témakört.](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)
+    Innen a Vim használatával szerkesztheti a `score.py` fájlt. A Vim használatával kapcsolatos további információkért lásd: [a Vim-szerkesztő használata](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
 
-1. A tároló módosításai általában nem maradnak meg. A módosítások mentéséhez használja a következő parancsot, mielőtt kilépne a fenti lépésből (azaz egy másik héjban) megkezdett rendszerhéjból:
+1. A tároló módosításai általában nem maradnak meg. A módosítások mentéséhez használja a következő parancsot, mielőtt kilép a fenti lépésben elindított rendszerhéjból (azaz egy másik rendszerhéjban):
 
     ```bash
     docker commit debug debug:2
     ```
 
-    Ez a parancs létrehoz `debug:2` egy új, a szerkesztéseket tartalmazó képet.
+    Ez a parancs létrehoz egy nevű `debug:2` új rendszerképet, amely tartalmazza a módosításokat.
 
     > [!TIP]
-    > A módosítások életbe lépése előtt le kell állítania az aktuális tárolót, és el kell kezdenie használni az új verziót.
+    > A módosítások érvénybe léptetéséhez le kell állítania az aktuális tárolót, és meg kell kezdenie az új verzió használatát.
 
-1. Ügyeljen arra, hogy a tárolóban lévő fájlokon végzett módosítások szinkronban maradjanak a VS Code által használt helyi fájlokkal. Ellenkező esetben a hibakereső-élmény nem a várt módon fog működni.
+1. Ügyeljen arra, hogy a tárolóban lévő fájlok módosításai szinkronban legyenek a VS Code által használt helyi fájlokkal. Ellenkező esetben a hibakereső felhasználói felülete nem a várt módon fog működni.
 
 ### <a name="stop-the-container"></a>A tároló leállítása
 
@@ -448,5 +448,5 @@ docker stop debug
 
 További információk az üzembe helyezésről:
 
-* [Hogyan és hol kell telepíteni](how-to-deploy-and-where.md)
-* [Oktatóanyag: A & a modellek üzembe helyezése](tutorial-train-models-with-aml.md)
+* [Üzembe helyezés és hol](how-to-deploy-and-where.md)
+* [Oktatóanyag: a betanítási & modellek üzembe helyezése](tutorial-train-models-with-aml.md)

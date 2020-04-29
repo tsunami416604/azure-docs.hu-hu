@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása a Bing News Search API-val'
+title: 'Oktatóanyag: egyoldalas Webalkalmazás létrehozása a Bing News Search API használatával'
 titleSuffix: Azure Cognitive Services
-description: Az oktatóanyag mal egyoldalas webalkalmazást hozhat létre, amely keresési lekérdezéseket küldhet a Bing News API-nak, és az eredményeket a weblapon belül jelenítheti meg.
+description: Ezzel az Oktatóanyaggal létrehozhat egy egyoldalas webalkalmazást, amely képes keresési lekérdezéseket küldeni a Bing News API-nak, és megjeleníti az eredményeket a weboldalon belül.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943118"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás létrehozása
+# <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: egylapos webes alkalmazás létrehozása
 
-A Bing News Search API lehetővé teszi az interneten való keresést és a keresési lekérdezésnek megfelelő hírtípus szerinti eredmények lekérését. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing News Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)
+A Bing News Search API lehetővé teszi az interneten való keresést és a keresési lekérdezésnek megfelelő hírtípus szerinti eredmények lekérését. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing News Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -43,7 +43,7 @@ Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag követéséhez előfizetési kulcsokra van szükség a Bing Search API-hoz. Ha nem rendelkezik velük, használhat [próbakulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és [egy egyszerű Bing Térképek-kulcsot.](https://www.microsoft.com/maps/create-a-bing-maps-key)
+Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz. Ha nem rendelkezik ezekkel, használhat egy [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapszintű Bing Maps-kulcsot](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
@@ -67,7 +67,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 
 Annak érdekében, hogy a Bing Search API előfizetői azonosítóját ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk az azonosítót. Mielőtt az azonosítót eltárolnánk, elkérjük a felhasználó azonosítóját. Ha az azonosítót később elutasítja az API, érvénytelenítjük a tárolt azonosítót, ezért a felhasználótól újra el kell kérnünk az övét.
 
-Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amelyet nem minden böngésző támogat), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó azonosítójának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amelyet nem minden böngésző támogat), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó azonosítójának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ``` javascript
 // Cookie names for data we store
@@ -403,7 +403,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxy válasza `Access-Control-Expose-Headers` fejléccel rendelkezik, amely lehetővé teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz `Access-Control-Expose-Headers` fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

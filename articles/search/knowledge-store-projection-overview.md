@@ -1,7 +1,7 @@
 ---
-title: Kivetítések egy tudástárolóban (előzetes verzió)
+title: Kivetítések a Knowledge Store-ban (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: Mentse és alakítsa a bővített adatokat az AI-dúsítási indexelési folyamatból egy tudástárolóba, amelyet a teljes szöveges kereséstől eltérő esetekben is használhat. A tudástároló jelenleg nyilvános előzetes verzióban érhető el.
+description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -9,77 +9,77 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942974"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Előrejelzések egy tudástárolóban az Azure Cognitive Search-ben
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések az Azure-beli Tudásbázisban Cognitive Search
 
 > [!IMPORTANT] 
-> A tudástároló jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió funkció szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) A [REST API 2019-05-06-preview verziója](search-api-preview.md) előnézeti funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-Az Azure Cognitive Search lehetővé teszi a tartalom gazdagítását a beépített kognitív készségek és egyéni képességek az indexelés részeként. A dúsítások olyan új információkat hoznak létre, amelyek korábban nem léteztek: információk kinyerése képekből, hangulatok, kulcskifejezések és entitások felismerése a szövegből, hogy csak néhányat említsünk. A dúsítások a nem differenciált szöveget is felépítik. Mindezek a folyamatok olyan dokumentumokat eredményeznek, amelyek hatékonyabbá teszik a teljes szöveges keresést. Sok esetben a bővített dokumentumok nem a kereséshez, például a tudásbányászathoz használhatók.
+Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A dúsítások olyan új adatokat hoznak létre, ahol még nem létezett adatok: információk kinyerése a képekből, az érzelmek észlelése, a legfontosabb kifejezések és a szövegből származó entitások, hogy csak néhányat említsünk. A dúsítás a nem differenciált szöveghez is felveszi a struktúrát. Ezen folyamatok mindegyike olyan dokumentumokat eredményez, amelyek a teljes szöveges keresést hatékonyabbá teszik. Számos esetben a bővített dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
 
-Az előrejelzések, amelyek a [tudástároló](knowledge-store-concept-intro.md)részét képezik, a bővített dokumentumok nézetei, amelyek et tudásbányászati célokra fizikai tárolásra lehet menteni. A vetítés lehetővé teszi, hogy az adatokat olyan alakzattá "vetítse ki", amely megfelel az igényeinek, megőrizve a kapcsolatokat, hogy az olyan eszközök, mint a Power BI, további erőfeszítés nélkül olvashassák az adatokat.
+A kivetítések, a [Knowledge Store](knowledge-store-concept-intro.md)egy összetevője, a kibővített dokumentumok nézetei, amelyek a fizikai tárterületre menthetők a tudás-bányászati célokra. A kivetítés lehetővé teszi, hogy az adatai egy olyan alakzatba kerüljenek, amely igazodik az igényeihez, és megőrzi a kapcsolatokat, hogy az eszközök, például a Power BI további erőfeszítés nélkül is beolvassák az adatait.
 
-A vetítések lehetnek táblázatos, az Azure Table storage soraiban és oszlopaiban tárolt adatokkal, vagy az Azure Blob storage-ban tárolt JSON-objektumokkal. A dúsítás adatként több kivetítést is definiálhat az adatokból. Több vetület akkor hasznos, ha ugyanazokat az adatokat eltérő en szeretné formálna az egyes használati esetekhez.
+A vetítés táblázatos lehet, az Azure Table Storage-ban sorokban és oszlopokban tárolt adatokat, illetve az Azure Blob Storage-ban tárolt JSON-objektumokat. Több kivetítést is megadhat az adataihoz, mivel azok gazdagítva vannak. Több kivetítés is hasznos lehet, ha ugyanazokat az adatszerkezeteket szeretné eltérő módon használni az egyes használati esetekben.
 
-A tudástároló háromféle vetületet támogat:
+A Tudásbázis háromféle típusú kivetítést támogat:
 
-+ **Táblázatok**: A sorok és oszlopok leginkább ábrázolt adatok esetén a táblavetések lehetővé teszik, hogy sémassza el az alakzatot vagy a vetületet a Table storage alkalmazásban. Csak érvényes JSON-objektumok vetíthetők ki táblaként, a bővített dokumentum tartalmazhat olyan csomópontokat, amelyek nem JSON-objektumok, és az objektumok kivetítésekor hozzon létre egy érvényes JSON-objektumot shaper szakértelemmel vagy szövegközi formázással.
++ **Táblák**: a táblázatos kivetítések lehetővé teszik a sematikus-alakzat vagy-leképezés megadását a táblázatos tárolóban. Csak az érvényes JSON-objektumokat lehet táblázatként kiszolgálni, a dúsított dokumentum olyan csomópontokat tartalmazhat, amelyek neve nem JSON-objektum, és az objektumok kivetítése során hozzon létre egy érvényes JSON-objektumot egy formáló képességgel vagy egy beágyazott formázással.
 
-+ **Objektumok:** Ha az adatok json-ábrázolására és a dúsításokra van szüksége, az objektumvetületek blobként kerülnek mentésre. Csak érvényes JSON-objektumok vetíthetők ki objektumként, a bővített dokumentum tartalmazhat olyan csomópontokat, amelyek nem JSON-objektumok, és az objektumok kivetítésekor hozzon létre egy érvényes JSON-objektumot shaper szakértelemmel vagy szövegközi formázással.
++ **Objektumok**: Ha az adatai és a bővítések JSON-ábrázolására van szüksége, az objektum-vetítések blobként lesznek mentve. Csak az érvényes JSON-objektumok állíthatók be objektumként, a dúsított dokumentum olyan csomópontokat tartalmazhat, amelyek neve nem JSON-objektum, és az objektumok kivetítése során hozzon létre egy érvényes JSON-objektumot egy formáló képességgel vagy beágyazott kialakítással.
 
-+ **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájlvetések lehetővé teszik a normalizált képek mentését a blob storage-ba.
++ **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájl-kivetítések lehetővé teszik a normalizált képek mentését a blob Storage-ba.
 
-A környezetben definiált előrejelzések megtekintéséhez lépjen végig [a Tudástár létrehozása a REST-ben című témakörben.](knowledge-store-create-rest.md)
+Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, lépjen [a Knowledge Store létrehozása a REST-ben](knowledge-store-create-rest.md)című lépésre.
 
-## <a name="projection-groups"></a>Vetítési csoportok
+## <a name="projection-groups"></a>Kivetítési csoportok
 
-Bizonyos esetekben a bővített adatokat különböző formákban kell kivetítenie a különböző célok eléréséhez. A tudástároló lehetővé teszi az előrejelzések több csoportjának definiálását. A vetítési csoportok a kölcsönös kizárólagosság és rokonság következő fő jellemzőivel rendelkeznek.
+Bizonyos esetekben különböző alakzatokban kell kibővíteni a dúsított adatait, hogy azok megfeleljenek a különböző célkitűzéseknek. A Tudásbázis segítségével több kivetítési csoportot is meghatározhat. A kivetítési csoportok az alábbi fő jellemzőkkel rendelkeznek a kölcsönös kizárólagosság és a kapcsolódó jelleg tekintetében.
 
 ### <a name="mutual-exclusivity"></a>Kölcsönös kizárólagosság
 
-Az egy csoportba vetített összes tartalom független a más vetítési csoportokba vetített adatoktól.
-Ez a függetlenség azt jelenti, hogy ugyanazokat az adatokat másképp alakíthatja, mégis megismételheti az egyes vetítési csoportokban.
+Az egyetlen csoportba tartozó összes tartalom független a többi kivetítési csoportba tervezett adatokat.
+Ez a függetlenség azt feltételezi, hogy ugyanazokat az adatszerkezeteket kell megismételni, amelyeket az egyes leképezési csoportokban még meg is ismétlik.
 
 ### <a name="relatedness"></a>Rokonság
 
-A vetítési csoportok mostantól lehetővé teszik a dokumentumok vetítési típusokra való kivetítését, miközben megőrzi a vetítési típusok közötti kapcsolatokat. Az egyetlen vetítési csoporton belül kivetített összes tartalom megőrzi az adatokon belüli kapcsolatokat a vetítési típusok között. A táblákon belül a kapcsolatok egy létrehozott kulcson alapulnak, és minden gyermekcsomópont megtartja a szülőcsomópontra mutató hivatkozást. A különböző típusok (táblák, objektumok és fájlok) között a kapcsolatok megmaradnak, ha egyetlen csomópontot vetítanek ki különböző típusok között. Vegyünk például egy olyan forgatókönyvet, amelyben képeket és szöveget tartalmazó dokumentummal rendelkezik. A szöveget táblákra vagy objektumokra vetítheti, a képeket pedig olyan fájlokra vetítheti, ahol a táblák vagy objektumok oszlopa/tulajdonsága tartalmazza a fájl URL-címét.
+A kivetítési csoportok mostantól lehetővé teszik a dokumentumok kivetítését a leképezési típusok között, miközben megőrzi a különböző leképezési típusok közötti kapcsolatokat. Az egyetlen kivetítési csoporton belül megjelenő összes tartalom megőrzi az adatokat a leképezési típusok közötti kapcsolaton belül. A táblákon belül a kapcsolatok egy generált kulcson alapulnak, és minden alárendelt csomópont megőrzi a szülő csomópontra mutató hivatkozást. A különböző típusok (táblák, objektumok és fájlok) között a kapcsolatok megmaradnak, ha egyetlen csomópontot terveznek a különböző típusok között. Vegyünk például egy olyan forgatókönyvet, amelyben van egy kép és szöveg tartalmú dokumentum. A szöveget táblázatokra vagy objektumokra, valamint azokra a fájlokra is felhasználhatja, amelyekben a táblák vagy objektumok a fájl URL-címét tartalmazó oszlop/tulajdonsággal rendelkeznek.
 
-## <a name="input-shaping"></a>Beviteli formázás
+## <a name="input-shaping"></a>Bevitel kialakítása
 
-Az adatok megfelelő alakzatba vagy szerkezetbe való beszerzése kulcsfontosságú a hatékony használathoz, legyen szó táblákról vagy objektumokról. Az adatok kialakításának vagy strukturálásának lehetősége a hozzáférés és használat során a skillset-en belül **shaper** szakértelemként elérhető kulcsfontosságú képesség.  
+Az adatai megfelelő formában vagy struktúrában való beolvasása kulcsfontosságú a hatékony használathoz, legyen az a tábla vagy az objektum. Az adatelemzési és-használati lehetőségek alapján úgy alakíthatja ki és alakíthatja át az adatait, hogy az a készségkészlet belüli **formáló** képességként elérhetővé válik.  
 
-Az előrejelzések könnyebben meghatározhatóak, ha a dúsítási fában olyan objektum található, amely megfelel a vetítés sémájának. A frissített [Shaper szakértelem](cognitive-search-skill-shaper.md) lehetővé teszi, hogy a dúsítási fa különböző csomópontjaiból származó objektumokat összeállítson, és egy új csomópont alatt szülőként szolgáljon. A **Shaper** szakértelem lehetővé teszi, hogy összetett típusokat definiáljon beágyazott objektumokkal.
+A kivetítések könnyebben definiálhatók, ha olyan objektum szerepel a dúsítási fában, amely megfelel a leképezés sémájának. A frissített [formáló képességgel](cognitive-search-skill-shaper.md) egy objektumot hozhat létre a dúsítási fa különböző csomópontjaiból, és egy új csomópont alatt megadhatja őket. A **formáló** képesség lehetővé teszi, hogy beágyazott objektumokkal rendelkező összetett típusokat határozzon meg.
 
-Ha egy új alakzat van definiálva, amely tartalmazza a kivetítéshez szükséges összes elemet, akkor ezt az alakzatot használhatja a kivetítések forrásaként vagy egy másik szakértelem beviteleként.
+Ha egy olyan új alakzat van definiálva, amely tartalmazza a kivetítéshez szükséges összes elemet, ezt az alakzatot már használhatja a kivetítések forrásaként, vagy egy másik képességbe bemenetként is.
 
-## <a name="projection-slicing"></a>Vetítési szeletelés
+## <a name="projection-slicing"></a>Leképezések szeletelése
 
-Vetítési csoport definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblára vagy objektumra vágható. Ha egy meglévő vetítés gyermekének forráselérési útját tartalmazó vetítést ad hozzá, a gyermekcsomópontot kivágja a szülőcsomópontból, és az új, mégis kapcsolódó táblába vagy objektumba vetíti. Ez a módszer lehetővé teszi, hogy egyetlen csomópontot definiáljon egy formázó-szakértelemben, amely az összes kivetítés forrása lehet.
+A kivetítési csoport definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblába vagy objektumba is feldarabolható. Ha olyan forrás elérési úttal rendelkező leképezést ad hozzá, amely egy meglévő leképezés gyermeke, akkor a gyermek csomópont ki lesz darabolva a szülő csomópontból, és az új, még kapcsolódó táblába vagy objektumba kerül. Ez a módszer lehetővé teszi, hogy egyetlen csomópontot határozzon meg egy olyan alakzatban, amely az összes kivetítés forrása lehet.
 
-## <a name="table-projections"></a>Táblázat előrejelzések
+## <a name="table-projections"></a>Táblázatos előrejelzések
 
-Mivel megkönnyíti az importálást, javasoljuk, hogy a Power BI segítségével táblavetéseket készítsen az adatok feltárásához. Ezenkívül a tábla-előrejelzések lehetővé teszik a táblakapcsolatok számosságának módosítását. 
+Mivel megkönnyíti az importálást, javasoljuk, hogy a Power BIekkel való adatfeltáráshoz táblázatos előrejelzéseket ajánlson. Emellett a tábla-kivetítések lehetővé teszik a tábla kapcsolatai közötti különbségek módosítását. 
 
-Az indexben lévő egyetlen dokumentumot több táblába is kivetítheti, megőrizve a kapcsolatokat. Ha több táblára vetíti a projektet, a teljes alakzat minden táblába kilesz vetítve, kivéve, ha a gyermekcsomópont egy másik tábla forrása ugyanazon a csoporton belül.
+Az indexben egyetlen dokumentumot is létrehozhat több táblázatba, és megőrizheti a kapcsolatokat. Több táblázatra való kivetítéskor a teljes alakzat az egyes táblákba kerül, kivéve, ha egy alárendelt csomópont egy másik tábla forrása egy adott csoporton belül.
 
-### <a name="defining-a-table-projection"></a>Táblázatvetítés meghatározása
+### <a name="defining-a-table-projection"></a>Tábla kivetítésének meghatározása
 
-Amikor egy tábla vetületet definiál a `knowledgeStore` skillset elemén belül, kezdje a dúsítási fa csomópontjának hozzárendelésével a táblaforráshoz. Ez a csomópont általában egy **Shaper** szakértelem kimenete, amelyet hozzáadott a képzettségek listájához egy adott alakzat létrehozásához, amelyet táblákba kell kivetítenie. A projektáltal kiválasztott csomópont több táblára is szeletelhető. A táblák definíciója a kivetíteni kívánt táblák listája.
+A készségkészlet `knowledgeStore` elemében a táblázat kivetítésének meghatározásakor először egy csomópontot kell hozzárendelni a dúsítási fában a tábla forrásához. Ez a csomópont általában egy olyan **formáló** képesség kimenete, amelyet a szaktudás listájához adott hozzá, hogy egy adott alakzatot hozzon létre a táblázatokban való projekthez. A projekthez kiválasztott csomópont több táblázatba is feldarabolható a projektbe. A táblák definíciója a projekthez használni kívánt táblák listáját tartalmazza.
 
-Minden táblázathoz három tulajdonság ra van szükség:
+Minden táblázathoz három tulajdonság szükséges:
 
-+ tableName: A tábla neve az Azure Storage-ban.
++ Táblanév: a tábla neve az Azure Storage-ban.
 
-+ generatedKeyName: A sort egyedileg azonosító kulcs oszlopneve.
++ generatedKeyName: a kulcs oszlopának neve, amely egyedileg azonosítja ezt a sort.
 
-+ forrás: A dúsító fa csomópontja, amelyből a dúsításokat szerzi be. Ez a csomópont általában egy formázó kimenete, de bármelyik szakértelem kimenete lehet.
++ Forrás: a dúsítási fában lévő csomópont, amelyből a dúsítást beadja. Ez a csomópont általában egy formáló kimenete, de a képességek bármelyikének kimenete lehet.
 
-Íme egy példa a tábla kivetítések.
+Íme egy példa a tábla-kivetítésekre.
 
 ```json
 {
@@ -112,11 +112,11 @@ Minden táblázathoz három tulajdonság ra van szükség:
 }
 ```
 
-Amint azt ebben a példában is mutatja, a kulcskifejezések és entitások különböző táblákba vannak modellezve, és minden sorhoz visszamutató hivatkozást tartalmaznak a szülőre (MainTable).
+Ahogy az ebben a példában is látható, a legfontosabb kifejezések és entitások különböző táblákba vannak modellezve, és az egyes sorokhoz tartozó szülőre (MainTable) mutató hivatkozást tartalmaznak.
 
-## <a name="object-projections"></a>Tárgyvetítések
+## <a name="object-projections"></a>Objektum-kivetítések
 
-Az objektum-kivetítések a dúsítási fa JSON-ábrázolásai, amelyek bármely csomópontról beszerezhetők. Sok esetben ugyanaz a **Shaper** szakértelem, amely táblavetületet hoz létre, objektumvetület létrehozásához használható. 
+Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek bármely csomópontból származnak. Sok esetben ugyanaz a **shapeer** -képesség, amely létrehoz egy tábla-kivetítést egy objektum-kivetítés létrehozásához. 
 
 ```json
 {
@@ -150,14 +150,14 @@ Az objektum-kivetítések a dúsítási fa JSON-ábrázolásai, amelyek bármely
 }
 ```
 
-Objektumvetület létrehozásához néhány objektumspecifikus attribútumra van szükség:
+Az objektumok leképezésének létrehozásához néhány objektum-specifikus attribútumra van szükség:
 
-+ storageContainer: A blob tároló, ahol az objektumok mentésre kerülnek
-+ forrás: A dúsító fa csomópontjának elérési útja, amely a vetület gyökere
++ storageContainer: a blob tároló, ahová a rendszer menti az objektumokat
++ Forrás: a kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja
 
-## <a name="file-projection"></a>Fájlvetés
+## <a name="file-projection"></a>Fájl kivetítése
 
-A fájlvetések hasonlóak az objektum-kivetítésekhez, és csak a `normalized_images` gyűjteményre hatnak. Az objektumvetületekhez hasonlóan a fájlvetések is a blobtárolóba kerülnek a dokumentumazonosító base64 kódolású értékének mappaelőtaggal. A fájlvetések nem osztozhatnak ugyanazon a tárolón, mint az objektum-kivetítések, és egy másik tárolóba kell kivetíteni őket.
+A fájl-kivetítések hasonlóak az objektum-kivetítésekhez `normalized_images` , és csak a gyűjteményen működnek. Az objektumok kivetítéséhez hasonlóan a fájl-kivetítések a blob tárolóban lesznek mentve a dokumentum-azonosító Base64 kódolású értékének mappa előtaggal. A fájl-kivetítések nem oszthatják meg ugyanazt a tárolót, mint az objektum-kivetítéseket, és egy másik tárolóba kell őket betervezni.
 
 ```json
 {
@@ -191,28 +191,28 @@ A fájlvetések hasonlóak az objektum-kivetítésekhez, és csak a `normalized_
 }
 ```
 
-## <a name="projection-lifecycle"></a>Vetítési életciklus
+## <a name="projection-lifecycle"></a>Leképezési életciklus
 
-Az előrejelzések életciklusa az adatforrás forrásadataihoz van kötve. Az adatok frissítésekor és újraindexelése kor az előrejelzések frissülnek a dúsítások eredményeivel, biztosítva, hogy az előrejelzések végül konzisztensek legyenek az adatforrásban lévő adatokkal. A kivetítések öröklik az indexhez beállított törlési házirendet. Az előrejelzések nem törlődnek, ha az indexelő vagy maga a keresési szolgáltatás is törlődik.
+Az előrejelzések olyan életciklussal rendelkeznek, amely az adatforrás adatforrásához van kötve. Ahogy az adatai frissülnek és újraindexelve vannak, a rendszer frissíti a kivetítéseket a kivetítéseket biztosító bővítések eredményeivel, és az adatforrásban lévő összes adattal összhangban van. A kivetítések öröklik az indexhez konfigurált törlési szabályzatot. A kivetítések nem törlődnek, ha az indexelő vagy a keresési szolgáltatás törlődik.
 
-## <a name="using-projections"></a>Vetületek használata
+## <a name="using-projections"></a>Kivetítések használata
 
-Az indexelő futtatása után olvashatja a vetített adatokat a megadott tárolókban vagy táblákban a vetítések.
+Az indexelő futtatása után a kivetítésen keresztül megadott tárolókban vagy táblákban is elolvashatja a tervezett adatértékeket.
 
-Az elemzésekhez a Power BI feltárása olyan egyszerű, mint az Azure Table storage beállítása, mint az adatforrás. A különböző kapcsolatok segítségével egyszerűen létrehozhat vizualizációkat az adatokon.
+Az elemzéshez a Power BI felderítése olyan egyszerű, mint az Azure Table Storage beállítása adatforrásként. A-ban található kapcsolatokkal könnyedén hozhat létre vizualizációkat az adataihoz.
 
-Másik lehetőségként, ha a bővített adatokat egy adatelemzési folyamatban kell használnia, [betöltheti a blobok adatait egy Pandas DataFrame-be.](../machine-learning/team-data-science-process/explore-data-blob.md)
+Ha a dúsított adatok adatelemzési folyamatokban való használatát szeretné használni, akkor a [blobokból származó adatok egy Panda DataFrame tölthetők](../machine-learning/team-data-science-process/explore-data-blob.md)be.
 
-Végül, ha az adatokat a tudástárolóból kell exportálnia, az Azure Data Factory összekötőkkel rendelkezik az adatok exportálásához és az Ön által választott adatbázisba való beírásához. 
+Végül, ha a Knowledge Store-ból kell exportálnia az adatait, Azure Data Factory rendelkezik összekötővel az adatok exportálásához és az Ön által választott adatbázisban való tárolásához. 
 
 ## <a name="next-steps"></a>További lépések
 
-Következő lépésként hozza létre az első tudástárolót mintaadatok és utasítások használatával.
+A következő lépésként hozza létre az első Knowledge Store-t mintaadatok és utasítások használatával.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy tudástárolót a REST-ben.](knowledge-store-create-rest.md)
+> [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md).
 
-A speciális vetítések fogalmait lefedő oktatóanyag, mint a szeletelés, a szövegközi formázás és a kapcsolatok, kezdje [a tudástárolóban lévő kivetítések meghatározásával](knowledge-store-projections-examples.md)
+A speciális kivetítésekkel kapcsolatos fogalmakkal, például a szeleteléssel, a beágyazott formázással és a kapcsolatokkal, a [kivetítések meghatározása a Tudásbázisban](knowledge-store-projections-examples.md) című oktatóanyagban
 
 > [!div class="nextstepaction"]
-> [Vetületek definiálása tudástárolóban](knowledge-store-projections-examples.md)
+> [Kivetítések meghatározása a Knowledge Store-ban](knowledge-store-projections-examples.md)

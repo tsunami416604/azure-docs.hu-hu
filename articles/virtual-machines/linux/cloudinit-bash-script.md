@@ -1,40 +1,40 @@
 ---
-title: A cloud-init használatával bash-parancsfájlt futtategy Linux os virtuális gépen az Azure-ban
-description: Hogyan használható a cloud-init egy bash szkript futtatásához egy Linux virtuális gép létrehozása során az Azure CLI
+title: A Cloud-init használatával bash-szkriptet futtathat egy Linux rendszerű virtuális gépen az Azure-ban
+description: A Cloud-init használata bash-szkript futtatásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
 author: rickstercdn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969217"
 ---
-# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>A felhőalapú init használatával bash-parancsfájlt futtategy Linux os virtuális gépben az Azure-ban
-Ez a cikk bemutatja, hogyan használhatja a [cloud-init](https://cloudinit.readthedocs.io) egy meglévő bash-parancsfájl linuxos virtuális gépen (VM) vagy virtuálisgép-méretezési készletek (VMSS) kiépítése kor az Azure-ban. Ezek a felhőalapú init-parancsfájlok az azure-beli erőforrások kiépítése után futnak az első rendszerindításkor. Ha többet szeretne tudni arról, hogy a cloud-init hogyan működik natívan az Azure-ban és a támogatott Linux-disztribúciókban, tekintse meg a [cloud-init áttekintését.](using-cloud-init.md)
+# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>A Cloud-init használata bash-szkript futtatásához Linux rendszerű virtuális gépen az Azure-ban
+Ez a cikk bemutatja, hogyan használható a [Cloud-init](https://cloudinit.readthedocs.io) egy meglévő bash-szkript futtatásához Linux rendszerű virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokon (VMSS) az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
 
-## <a name="run-a-bash-script-with-cloud-init"></a>Bash-parancsfájl futtatása felhőalapú init
-A cloud-init nem kell átalakítani a meglévő parancsfájlok egy felhő-config, cloud-init fogad el több bemeneti típusok, amelyek közül az egyik egy bash script.
+## <a name="run-a-bash-script-with-cloud-init"></a>Bash-szkript futtatása a Cloud-init használatával
+A Cloud-init esetében nem kell konvertálnia a meglévő parancsfájlokat egy felhő-konfigurációba, a Cloud-init több bemeneti típust is elfogad, amelyek közül az egyik egy bash-szkript.
 
-Ha a Linux egyéni parancsfájl Azure-bővítményt használja a parancsfájlok futtatásához, áttelepítheti őket a felhőalapú init használatához. Azonban az Azure Extensions integrált jelentéskészítési riasztást parancsfájl hibák, a felhő-init rendszerkép központi telepítése nem fog sikerülni, ha a parancsfájl sikertelen lesz.
+Ha a Linux egyéni parancsfájl Azure-bővítményét használja a parancsfájlok futtatásához, áttelepítheti őket a Cloud-init használatára. Az Azure-bővítmények azonban integrált jelentéskészítéssel figyelmeztetnek a parancsfájlok hibáira, a Cloud-init rendszerkép központi telepítése nem fog sikerülni, ha a parancsfájl meghibásodik.
 
-Ha működés közben szeretné látni ezt a funkciót, hozzon létre egy egyszerű bash-parancsfájlt tesztelésre. A felhő-init `#cloud-config` fájlhoz hasonlóan ez a parancsfájl helyi, ahol az AzureCLI-parancsokat fogja futtatni a virtuális gép kiépítése.  Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor simple_bash.sh` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki #1 a **nanoszerkesztő** használatához. Győződjön meg arról, hogy a teljes felhő-init fájl másolása helyesen, különösen az első sorban.  
+A funkció működés közbeni megtekintéséhez hozzon létre egy egyszerű bash-szkriptet a teszteléshez. A Cloud-init `#cloud-config` fájlhoz hasonlóan a parancsfájlnak helyinek kell lennie, ahol a virtuális gép kiépítéséhez a AzureCLI parancsokat fogja futtatni.  Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor simple_bash.sh` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-A lemezkép telepítése előtt létre kell hoznia egy erőforráscsoportot az [az csoport létrehozása](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gép [az vm létrehozása,](/cli/azure/vm) és adja meg a bash `--custom-data simple_bash.sh` parancsfájlt az alábbiak szerint:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és adja meg `--custom-data simple_bash.sh` a bash parancsfájlt a következő módon:
 
 ```azurecli-interactive 
 az vm create \
@@ -44,23 +44,23 @@ az vm create \
   --custom-data simple_bash.sh \
   --generate-ssh-keys 
 ```
-## <a name="verify-bash-script-has-run"></a>A bash parancsfájl futásának ellenőrzése
-SSH a virtuális gép nyilvános IP-címét az előző parancs kimenetén látható. Adja meg saját **nyilvánosIpAddress** az alábbiak szerint:
+## <a name="verify-bash-script-has-run"></a>A bash-parancsfájl futtatásának ellenőrzése
+SSH-t az előző parancs kimenetében látható virtuális gép nyilvános IP-címére. Adja meg saját **publicIpAddress** a következőképpen:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Módosítsa a **/tmp** könyvtárat, és ellenőrizze, hogy létezik-e myScript.txt fájl, és benne van-e a megfelelő szöveg.  Ha nem, akkor ellenőrizze a **/var/log/cloud-init.log** további részletekért.  Keresse meg a következő bejegyzést:
+Váltson a **/tmp** könyvtárra, és ellenőrizze, hogy létezik-e a myScript. txt fájl, és hogy van-e benne a megfelelő szöveg.  Ha nem, további részletekért tekintse meg a **/var/log/Cloud-init.log** .  Keresse meg a következő bejegyzést:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
 ## <a name="next-steps"></a>További lépések
-A konfigurációs módosításokra vonatkozó további felhőalapú init példákat az alábbi témakörben talál:
+További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
-- [További Linux-felhasználó hozzáadása a virtuális géphez](cloudinit-add-user.md)
-- [Csomagkezelő futtatása meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
-- [A virtuális gép helyi állomásnevének módosítása](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok befecskendezése](tutorial-automate-vm-deployment.md)
+- [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)
+- [Csomagkezelő futtatása a meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
+- [Virtuális gép helyi gazdagépének módosítása](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok behelyezése](tutorial-automate-vm-deployment.md)

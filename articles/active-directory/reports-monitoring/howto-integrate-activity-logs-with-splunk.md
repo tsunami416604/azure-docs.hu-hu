@@ -1,6 +1,6 @@
 ---
-title: Splunk integrálása az Azure Monitor használatával | Microsoft dokumentumok
-description: Megtudhatja, hogy miként integrálható az Azure Active Directory-naplók a SumoLogic szolgáltatással az Azure Monitor használatával
+title: Splunk integrálása a Azure Monitor használatával | Microsoft Docs
+description: Ismerje meg, hogyan integrálhatja Azure Active Directory-naplókat a SumoLogic a Azure Monitor használatával
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,44 +18,44 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968712"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Útmutató: Az Azure Active Directory-naplók integrálása a Splunk szolgáltatással az Azure Monitor használatával
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Útmutató: Azure Active Directory-naplók integrálása a splunk a Azure Monitor használatával
 
-Ebben a cikkben megtudhatja, hogyan integrálhatja az Azure Active Directory (Azure AD) naplók splunk az Azure Monitor használatával. Először átirányítja a naplókat egy Azure-eseményközpontba, majd integrálja az eseményközpontot a Splunk-kal.
+Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Active Directory-(Azure AD-) naplókat a splunk a Azure Monitor használatával. Először az Azure Event hub-ba irányítja a naplókat, majd az Event hub-t integrálja a splunk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A szolgáltatás használatához a következőkre lesz szüksége:
 
-- Az Azure-eseményközpont, amely tartalmazza az Azure AD-tevékenységnaplók. Megtudhatja, hogyan [streamelheti a tevékenységnaplókat egy eseményközpontba.](quickstart-azure-monitor-stream-logs-to-event-hub.md) 
+- Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 
--  A [Microsoft Azure add on for Splunk](https://splunkbase.splunk.com/app/3757/). 
+-  A [Microsoft Azure add on splunk](https://splunkbase.splunk.com/app/3757/). 
 
-## <a name="integrate-azure-active-directory-logs"></a>Az Azure Active Directory-naplók integrálása 
+## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory naplók integrálása 
 
-1. Nyissa meg a Splunk példányt, és válassza **az Adatok összegzése**lehetőséget.
+1. Nyissa meg a splunk-példányt, és válassza **az adatösszegzés**lehetőséget.
 
-    ![Az "Adatok összegzése" gomb](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
+    ![Az "adatösszegzés" gomb](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Válassza a **Forrástípusok** lapot, majd az **aadal:audit lehetőséget.**
+2. Válassza a **Sourcetypes** lapot, majd válassza az **Adorján: Aadal: audit** lehetőséget.
 
-    ![Az Adatösszegzet forrástípusai lap](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Az adatösszegzés Sourcetypes lapja](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 
-    Az Azure AD-tevékenységnaplók az alábbi ábrán láthatók:
+    Az Azure AD-tevékenységek naplói az alábbi ábrán láthatók:
 
     ![Tevékenységnaplók](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
 
 > [!NOTE]
-> Ha nem tud telepíteni egy bővítményt a Splunk példányban (például ha proxyt használ, vagy a Splunk Cloud-on fut), továbbíthatja ezeket az eseményeket a Splunk HTTP Event Collector-nek. Ehhez használja ezt az [Azure-függvényt,](https://github.com/Microsoft/AzureFunctionforSplunkVS)amelyet az eseményközpontban az új üzenetek váltanak ki. 
+> Ha nem telepíthet bővítményt a splunk-példányban (például ha proxyt használ, vagy a splunk-felhőben fut), továbbíthatja ezeket az eseményeket a splunk HTTP-esemény gyűjtője számára. Ehhez használja ezt az Azure- [függvényt](https://github.com/Microsoft/AzureFunctionforSplunkVS), amelyet az Event hub új üzenetei indítanak. 
 >
 
 ## <a name="next-steps"></a>További lépések
 
-* [Naplónaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
+* [A naplózási naplók sémájának értelmezése Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
 * [Gyakori kérdések és ismert hibák](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

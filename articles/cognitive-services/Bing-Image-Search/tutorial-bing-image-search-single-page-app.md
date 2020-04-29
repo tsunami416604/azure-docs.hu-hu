@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943891"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
@@ -34,13 +34,13 @@ Az oktatóanyaghoz tartozó teljes forráskód elérhető a [GitHubon](https://g
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/) legújabb verziója.
-* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési utasításai a GitHub mintareadme fájlban érhetők el.
+* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési utasításai a GitHub-minta readme fájlban érhetők el.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Felhasználó előfizetési kulcsainak kezelése és tárolása
 
-Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból. Ez a minta a globális végpontot használja. Az azure portalon az erőforráshoz megjelenített [egyéni altartomány-végpontot](../../cognitive-services/cognitive-services-custom-subdomains.md) is használhatja.
+Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból. Ez a példa a globális végpontot használja. Használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
 
 
 Definiálja a `storeValue` és a `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amennyiben a böngésző ezt támogatja), vagy cookie-kat.
@@ -386,7 +386,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxy válasza `Access-Control-Expose-Headers` fejléccel rendelkezik, amely lehetővé teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz `Access-Control-Expose-Headers` fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 

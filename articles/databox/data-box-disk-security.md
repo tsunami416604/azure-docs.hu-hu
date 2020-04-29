@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure Data Box Disk biztonsági szolgáltatásai | Microsoft Dokumentumok az adatokban
-description: Az Azure Data Box Disk felhőalapú megoldásához megvalósított biztonsági funkciók ismertetése, amely lehetővé teszi nagy mennyiségű adat átvitelét az Azure-ba
+title: Microsoft Azure Data Box Disk biztonsági funkciók | AdatMicrosoft Docs
+description: A Azure Data Box Disk által megvalósított biztonsági szolgáltatásokat ismerteti, amelyek lehetővé teszik nagy mennyiségű adatok átvitelét az Azure-ba
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117269"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Az Azure Data Box Disk biztonsága és adatvédelem
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Disk
 
 A cikk az Azure Data Box Disk biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és bennük tárolt adatoknak a védelme. 
 

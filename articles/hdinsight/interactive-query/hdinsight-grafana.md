@@ -1,6 +1,6 @@
 ---
-title: A Grafana használata az Azure HDInsightban
-description: Ismerje meg, hogyan érheti el a Grafana irányítópultot az Apache Hadoop-fürtökkel az Azure HDInsightban
+title: A Grafana használata az Azure HDInsight
+description: Ismerje meg, hogyan érheti el a Grafana-irányítópultot Apache Hadoop-fürtökkel az Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,45 +8,45 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79082863"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>A Grafana elérése az Azure HDInsightban
 
-[Grafana](https://grafana.com/) egy népszerű, nyílt forráskódú grafikon és műszerfal építő. Grafana funkciókban gazdag; nem csak lehetővé teszi a felhasználók számára, hogy testre szabható és megosztható irányítópultokat hozzanak létre, hanem sablonos / parancsfájlalapú irányítópultokat, LDAP integrációt, több adatforrást és egyebeket is kínál.
+A [Grafana](https://grafana.com/) egy népszerű, nyílt forráskódú gráf-és irányítópult-szerkesztő. A Grafana funkció gazdag; nem csupán azt teszi lehetővé, hogy a felhasználók testre szabható és megosztható irányítópultokat hozzanak létre, valamint a sablonban szereplő/megírt irányítópultokat, az LDAP-integrációt, több adatforrást és egyebeket is kínál.
 
-Jelenleg az Azure HDInsightban a Grafana a Spark, a HBase, a Kafka és az Interactive Query fürttípusokkal támogatott. Az Enterprise Security Pack engedélyezve van fürtök esetében nem támogatott.
+Jelenleg az Azure HDInsight-ben a Grafana a Spark, a HBase, a Kafka és az interaktív lekérdezési fürtök esetében támogatott. A vállalati biztonsági csomaggal rendelkező fürtök esetén nem támogatott.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop-fürt létrehozása
 
-Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon.](../hdinsight-hadoop-create-linux-clusters-portal.md) **Fürttípus**esetén válassza a **Spark**, **Kafka**, **HBase**vagy **Interaktív lekérdezés lehetőséget.**
+Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md). A **fürt típusa**beállításnál válassza a **Spark**, **Kafka**, **HBase**vagy **interaktív lekérdezés**lehetőséget.
 
-## <a name="access-the-grafana-dashboard"></a>A Grafana irányítópultjának elérése
+## <a name="access-the-grafana-dashboard"></a>Hozzáférés a Grafana irányítópulthoz
 
-1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net/grafana/` meg a CLUSTERNAME helyhez a fürt nevét.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/grafana/` oda, ahol a CLUSTERNAME a fürt neve.
 
 1. Adja meg a Hadoop-fürt felhasználói hitelesítő adatait.
 
-1. A Grafana irányítópult jelenik meg, és így néz ki:
+1. Megjelenik a Grafana irányítópultja, amely a következő példához hasonlóan néz ki:
 
-    ![HDInsight Grafana webes irányítópult](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana irányítópult")
+    ![HDInsight Grafana webes irányítópult](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-irányítópult")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem fogja tovább használni ezt az alkalmazást, törölje a következő lépésekkel létrehozott fürtöt:
+Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. A felső **keresőmezőbe** írja be a **HDInsight kifejezést.**
+1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 
-1. Válassza a **HDInsight-fürtök et a** **Szolgáltatások csoportban.**
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 
-1. A megjelenő HDInsight-fürtök listájában válassza ki a létrehozott fürt melletti **...** elemet.
+1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre a létrehozott fürt mellett.
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen** lehetőséget.
 
@@ -54,8 +54,8 @@ Ha nem fogja tovább használni ezt az alkalmazást, törölje a következő lé
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
 
-* [Az Apache Hive használata a HDInsight segítségével.](../hadoop/hdinsight-use-hive.md)
+* [Apache Hive használata a HDInsight](../hadoop/hdinsight-use-hive.md).
 
-* [A MapReduce használata a HDInsight](../hadoop/hdinsight-use-mapreduce.md)segítségével.
+* [A MapReduce használata a HDInsight használatával](../hadoop/hdinsight-use-mapreduce.md).
 
-* [Ismerkedés a VISUAL Studio Hadoop HDInsight-eszközökkel.](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* Ismerkedés [a Visual Studio Hadoop-eszközök HDInsight való használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).

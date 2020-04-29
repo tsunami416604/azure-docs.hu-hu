@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Speech SDK C++ (Linux) platform beállítása – Beszédszolgáltatás'
+title: 'Gyors útmutató: Speech SDK C++ (Linux) platform beállítása – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platform C++ Linuxon a beszédszolgáltatás SDK.
+description: Ezzel az útmutatóval beállíthatja a Linux rendszeren futó C++ platformot a Speech Service SDK használatával.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78383965"
 ---
-Ez az útmutató bemutatja, hogyan kell telepíteni a [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) linuxos
+Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához a következőkre van szükség:
+A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-* A támogatott Linux platformokon`libssl` bizonyos könyvtárak at kell `libasound2` telepíteni (a biztonságos aljzatok réteg támogatásához és a hangtámogatáshoz). Az alábbi terjesztésben tájékatosan tájékasztok a könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért.
+* A támogatott linuxos platformokhoz telepíteni kell bizonyos kódtárakat (`libssl` a Secure Sockets Layer `libasound2` támogatásához és a hangalapú támogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
 
-   * Ubuntu:On Ubuntu:
+   * Ubuntu rendszeren:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * A Debian 9-en:
+   * Debian 9 rendszeren:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * A RHEL/CentOS 8-on:
+   * RHEL/CentOS 8 rendszeren:
 
      ```sh
      sudo yum update
@@ -56,11 +56,11 @@ A rövid útmutató végrehajtásához a következőkre van szükség:
      ```
 
 > [!NOTE]
-> Az RHEL/CentOS 8 rendszeren kövesse az [OpenSSL linuxos beállítására](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)vonatkozó utasításokat.
+> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 ## <a name="install-speech-sdk"></a>A Speech SDK telepítése
 
-A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges tárak és fejlécfájlok kátrányfájlként tölthetők le a programból. https://aka.ms/csspeech/linuxbinary
+A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a-ből tölthetők le tar https://aka.ms/csspeech/linuxbinary-fájlként.
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
@@ -93,7 +93,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-Most továbbléphet az alábbi [következő lépésekre.](#next-steps)
+Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
 ## <a name="next-steps"></a>További lépések
 

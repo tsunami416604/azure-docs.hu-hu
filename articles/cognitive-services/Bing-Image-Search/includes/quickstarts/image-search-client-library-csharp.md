@@ -1,5 +1,5 @@
 ---
-title: Bing Képkereső C# ügyfélkönyvtár – rövid útmutató
+title: Bing Image Search C# ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 9e74742858c5de2abf56b80ea4e4f275bc2c9b23
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899572"
 ---
-Ezzel a rövid útmutatóval első képkeresést tehet a Bing Image Search ügyfélkódtárhasználatával, amely az API burkolója, és ugyanazokat a funkciókat tartalmazza. Ez az egyszerű C#-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű C#-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A [Visual Studio 2017-es vagy újabb verzióinak](https://visualstudio.microsoft.com/vs/whatsnew/)bármely kiadása.
+* A [Visual Studio 2017 vagy újabb](https://visualstudio.microsoft.com/vs/whatsnew/)verziójának bármely kiadása.
 * A [Cognitive Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/).
 
-A Bing Image Search ügyféltár Visual Studio-ban való telepítéséhez használja a **NuGet csomagok kezelése** lehetőséget a **Solution Explorer**ből.
+Ha a Visual Studióban szeretné telepíteni a Bing Image Search ügyféloldali kódtárat, használja a **NuGet-csomagok kezelése** lehetőséget a **megoldáskezelő**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Lásd még: [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 

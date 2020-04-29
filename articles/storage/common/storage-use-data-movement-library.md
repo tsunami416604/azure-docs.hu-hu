@@ -11,10 +11,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942909"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Adatok átvitele az adatátviteli kódtárral
@@ -37,7 +37,7 @@ Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és mac
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Egy [Azure-tárfiók](storage-account-create.md)
 
-## <a name="setup"></a>Setup
+## <a name="setup"></a>Telepítés
 
 1. A .net Core telepítéséhez látogasson el a [.net Core telepítési útmutatóba](https://www.microsoft.com/net/core) . A környezet kiválasztásakor válassza a parancssori kapcsolót.
 2. A parancssorból hozzon létre egy könyvtárat a projekthez. Navigáljon a címtárba, majd `dotnet new console -o <sample-project-name>` írja be a következőt: C# Console-projekt létrehozása.

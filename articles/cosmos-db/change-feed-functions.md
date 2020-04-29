@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB módosítási hírcsatornájának használata az Azure Functions segítségével
-description: Az Azure Functions használatával csatlakozhat az Azure Cosmos DB módosítási hírcsatornához. Később hozhat létre reaktív Azure-függvények, amelyek minden új esemény.
+title: Azure Cosmos DB változási hírcsatorna használata a Azure Functions
+description: Azure Functions használata a Azure Cosmos DB változási csatornához való kapcsolódáshoz. Később létrehozhat olyan reaktív Azure-függvényeket, amelyek minden új eseménynél aktiválva vannak.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78851373"
 ---
-# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményalapú architektúrák az Azure Cosmos DB-vel és az Azure Functions funkcióval
+# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményvezérelt architektúrák Azure Cosmos DB és Azure Functions
 
-Az Azure Functions a legegyszerűbb módja a [módosítási hírcsatornához](change-feed.md)való csatlakozásnak. Létrehozhat kis reaktív Azure-függvényeket, amelyek automatikusan aktiválódnak az Azure Cosmos-tároló módosítási hírcsatornájában minden új eseményen.
+A Azure Functions biztosítja a legegyszerűbb módot a [változási csatornához](change-feed.md)való kapcsolódásra. Létrehozhat olyan kis reaktív Azure Functions, amelyek automatikusan aktiválódik az Azure Cosmos-tároló változási csatornájának minden új eseményén.
 
-![Kiszolgáló nélküli eseményalapú függvények, amelyek a Cosmos DB Azure Functions eseményindítójával dolgoznak](./media/change-feed-functions/functions.png)
+![A kiszolgáló nélküli eseményvezérelt függvények a Azure Functions eseményindítóval működnek Cosmos DB](./media/change-feed-functions/functions.png)
 
-A [Cosmos DB Azure Functions eseményindítójával](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)kihasználhatja a [Változáscsatorna-feldolgozó](./change-feed-processor.md)méretezését és a megbízható eseményészlelési funkciót anélkül, hogy bármilyen [feldolgozói infrastruktúrát](./change-feed-processor.md)kellene fenntartania. Csak összpontosítson az Azure-függvény logikájára anélkül, hogy aggódnia kellene az eseményforrás-forrásfolyamat többi része miatt. Az eseményindítót más [Azure Functions-kötésekkel is keverheti.](../azure-functions/functions-triggers-bindings.md#supported-bindings)
+A [Cosmos DB Azure functions eseményindítójának](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)használatával a feldolgozó [infrastruktúra](./change-feed-processor.md)karbantartásának szükségessége nélkül kihasználhatja a [változási csatorna](./change-feed-processor.md)méretezését és a megbízható események észlelési funkcióját. Csak az Azure-függvény logikáját kell összpontosítania anélkül, hogy aggódnia kellene az Event-beszerzés folyamat többi részével. Az triggert más [Azure functions kötésekkel](../azure-functions/functions-triggers-bindings.md#supported-bindings)is összekeverheti.
 
 > [!NOTE]
-> Jelenleg az Azure Functions eseményindító a Cosmos DB csak a Core (SQL) API-val használható.
+> A Cosmos DB Azure Functions triggere jelenleg csak a Core (SQL) API-val használható.
 
 ## <a name="requirements"></a>Követelmények
 
-Kiszolgáló nélküli eseményalapú folyamat megvalósításához a következőkre van szükség:
+Kiszolgáló nélküli eseményvezérelt folyamat megvalósításához a következők szükségesek:
 
-* **A figyelt tároló:** A figyelt tároló az Azure Cosmos-tároló figyelt, és tárolja az adatokat, amelyekből a változáscsatorna jön létre. A figyelt tároló minden lapka, a figyelt tároló frissítései a tároló módosítási hírcsatornájában jelennek meg.
-* **A bérleti tároló:** A bérleti tároló több és dinamikus kiszolgáló nélküli Azure-függvénypéldányok állapotát tartja fenn, és lehetővé teszi a dinamikus skálázást. Ez a bérleti tároló manuálisan vagy automatikusan létrehozható az Azure Functions eseményindító a Cosmos DB. A címbérlet-tároló automatikus létrehozásához állítsa be a *CreateLeaseCollectionIfNotExists* jelzőt a [konfigurációban.](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) Particionált címbérlet-tárolók van szükség, hogy egy `/id` partíciókulcs-definíció.
+* **A figyelt tároló**: a figyelt tároló a figyelt Azure Cosmos-tároló, amely a változási csatornát generáló adatok tárolására szolgál. A figyelt tárolóban lévő összes Beszúrás a tároló változási csatornáján jelenik meg.
+* **A bérlet**tárolója: a címbérleti tároló több és dinamikus kiszolgáló nélküli Azure functions-példányon tárolja az állapotot, és lehetővé teszi a dinamikus skálázást. Ez a címbérleti tároló manuálisan vagy automatikusan hozható létre a Cosmos DB Azure Functions triggerrel. A bérlet tárolójának automatikus létrehozásához állítsa be a *CreateLeaseCollectionIfNotExists* jelzőt a [konfigurációban](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration). Particionált bérletű tárolók szükségesek a `/id` partíciós kulcs definíciójának létrehozásához.
 
-## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Az Azure Functions eseményindító létrehozása a Cosmos DB számára
+## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Hozza létre a Azure Functions triggert a Cosmos DB
 
-Az Azure-függvény létrehozása a Cosmos DB Azure Functions eseményindítójával mostantól az összes Azure Functions IDE- és CLI-integrációban támogatott:
+Az Azure-függvény létrehozása egy Azure Functions triggerrel Cosmos DB mostantól támogatott az összes Azure Functions IDE és CLI-integráción keresztül:
 
-* [Visual Studio-bővítmény](../azure-functions/functions-develop-vs.md) Visual Studio-felhasználók számára.
-* [Visual Studio kódbővítmény](/azure/javascript/tutorial-vscode-serverless-node-01) visual studio-kód felhasználók számára.
-* És végül [Core CLI szerszámozás](../azure-functions/functions-run-local.md#create-func) egy cross-platform IDE agnosztikus élményt.
+* Visual Studio- [bővítmény](../azure-functions/functions-develop-vs.md) a Visual Studio-felhasználók számára.
+* [Visual Studio Code-bővítmény](/azure/javascript/tutorial-vscode-serverless-node-01) a Visual Studio Code-felhasználók számára.
+* És végül a [CLI-eszközök alapszintű](../azure-functions/functions-run-local.md#create-func) , többplatformos ide-alapú felhasználói élményhez.
 
-## <a name="run-your-trigger-locally"></a>Az eseményindító helyi futtatása
+## <a name="run-your-trigger-locally"></a>Trigger helyi futtatása
 
-Az [Azure-függvényt helyileg](../azure-functions/functions-develop-local.md) futtathatja az [Azure Cosmos DB-emulátorral,](./local-emulator.md) hogy azure-előfizetés nélkül hozhassa létre és fejlessze a kiszolgáló nélküli eseményalapú folyamatokat, illetve költségekkel járjon.
+Az [Azure-függvényt helyileg](../azure-functions/functions-develop-local.md) is futtathatja a [Azure Cosmos db emulátor](./local-emulator.md) használatával, amely Azure-előfizetés nélkül hozhat létre és fejleszthet kiszolgáló nélküli eseményvezérelt folyamatokat, vagy költségekkel jár.
 
-Ha szeretné tesztelni az élő forgatókönyvek a felhőben, [kipróbálhatja cosmos DB ingyenes](https://azure.microsoft.com/try/cosmosdb/) hitelkártya vagy Azure-előfizetés szükséges nélkül.
+Ha élő forgatókönyveket szeretne tesztelni a felhőben, akkor [ingyenesen kipróbálhatja a Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) bankkártyás vagy Azure-előfizetés nélkül.
 
 ## <a name="next-steps"></a>További lépések
 
-A módosítási hírcsatornáról a következő cikkekben olvashat bővebben:
+A következő cikkekben továbbra is megismerheti a hírcsatornák változását:
 
-* [A módosítási hírcsatorna áttekintése](change-feed.md)
-* [A módosítási hírcsatorna olvasásának módjai](read-change-feed.md)
-* [A módosítási hírcsatorna-kódtár használata](change-feed-processor.md)
-* [A módosítási hírcsatorna-processzorkönyvtár használata](change-feed-processor.md)
-* [Kiszolgáló nélküli adatbázis-számítástechnika az Azure Cosmos DB és az Azure Functions használatával](serverless-computing-database.md)
+* [A hírcsatorna változásának áttekintése](change-feed.md)
+* [A módosítási csatorna olvasási módjai](read-change-feed.md)
+* [A hírcsatorna-feldolgozó függvénytárának módosítása](change-feed-processor.md)
+* [A Change feed Processor Library használata](change-feed-processor.md)
+* [Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával](serverless-computing-database.md)

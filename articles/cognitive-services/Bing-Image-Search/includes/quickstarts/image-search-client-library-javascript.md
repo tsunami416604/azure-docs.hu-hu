@@ -1,5 +1,5 @@
 ---
-title: Bing Image Search JavaScript-ügyféltár – rövid útmutató
+title: Bing Image Search JavaScript ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899586"
 ---
-Ezzel a rövid útmutatóval első képkeresést tehet a Bing Image Search ügyfélkódtárhasználatával, amely az API burkolója, és ugyanazokat a funkciókat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
-A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) további hibakezeléssel és jegyzetekkel.
+A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) , és további hibákat és megjegyzéseket is biztosít.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

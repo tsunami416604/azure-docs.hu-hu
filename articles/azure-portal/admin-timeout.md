@@ -1,8 +1,8 @@
 ---
-title: Címtárszintű inaktivitás-időmeghosszabbítás beállítása az Azure Portal felhasználói számára | Microsoft dokumentumok
-description: A rendszergazdák a munkamenet kijelentkezése előtt kikényszeríthetik a maximális tétlen időt. Az inaktivitás idő-megtagandátházirend a könyvtár szintjén van beállítva.
+title: A Azure Portal felhasználói számára a címtár szintű inaktivitás időkorlátjának beállítása | Microsoft Docs
+description: A rendszergazdák a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési házirendje a címtár szintjén van beállítva.
 services: azure-portal
-keywords: beállítások, időmeghosszabbítás
+keywords: beállítások, időtúllépés
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096608"
 ---
-# <a name="set-directory-level-inactivity-timeout"></a>Címtárszintű inaktivitás-időmeghosszabbítás beállítása
+# <a name="set-directory-level-inactivity-timeout"></a>A címtár szintű inaktivitás időkorlátjának beállítása
 
-Az inaktivitás időelintézési beállítása segít megvédeni az erőforrásokat a jogosulatlan hozzáféréstől, ha a felhasználók elfelejtik biztosítani a munkaállomásukat. Ha egy felhasználó már egy ideje tétlen, az Azure Portal-munkamenet automatikusan kijelentkezik. A globális [rendszergazdai szerepkör](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) rendszergazdái a munkamenet kijelentkezése előtt kényszeríthetik a maximális tétlen időt. Az inaktivitás időkitöltési beállítása a címtár szintjén érvényes. A könyvtárakról az Active Directory tartományi szolgáltatások – áttekintés című témakörben olvashat [bővebben.](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)
+Az inaktivitás időtúllépési beállítása segít megvédeni az erőforrásokat a jogosulatlan hozzáféréstől, ha a felhasználók elfelejtik a munkaállomás védelmét. Ha egy felhasználó egy ideig inaktív, akkor a Azure Portal-munkamenet automatikusan kijelentkezik. A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési beállítása a könyvtár szintjén érvényes. További információ a címtárakról: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
-## <a name="configure-the-inactive-timeout-setting"></a>Az inaktív időtúltöltés ibeállítása
+## <a name="configure-the-inactive-timeout-setting"></a>Az inaktív időtúllépési beállítás konfigurálása
 
-Ha Ön globális rendszergazda, és az Azure Portal összes felhasználójára vonatkozóan egy tétlen időtúllépést szeretne érvényesíteni, kövesse az alábbi lépéseket:
+Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának üresjárati időtúllépési beállítását szeretné kényszeríteni, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza a **beállítások lehetőséget** a globális oldalfejlécből.
-3. Jelölje be a hivatkozás szövegét **Könyvtárszint-időeltetés konfigurálása**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A globális oldal fejlécében válassza a **Beállítások** lehetőséget.
+3. Válassza ki a hivatkozás szövegét a **könyvtár szintjének időtúllépése beállításnál**.
 
-    ![Képernyőkép a kijelölt hivatkozásszöveggel rendelkező portálbeállításokról](./media/admin-timeout/settings.png)
+    ![A portál beállításainak megjelenítése a hivatkozás szövegének kiemelésével](./media/admin-timeout/settings.png)
 
-4. Megnyílik egy új lap. A **Címtárszint inaktivitás idő-nyitva** állásának konfigurálása lapon válassza **a Címtárszintű tétlen időmegt/ a beállítás bekapcsolásához lehetőség könyvtárszintű tétlen időmeg,** válassza.
-5. Ezután adja meg az **Órák** és **percek értéket** arra a maximális időre, amaddig, amíg a felhasználó a munkamenet automatikus kijelentkezése előtt tétlen lehet.
+4. Megnyílik egy új lap. A **könyvtár szintjének inaktivitásának beállítása** lapon jelölje be **a címtár szintjének üresjárati időkorlátjának engedélyezése a Azure Portal** számára jelölőnégyzetet a beállítás bekapcsolásához.
+5. Ezután adja meg az **órákat** és a **perceket** azon maximális időtartamig, ameddig a felhasználó tétlen lehet, mielőtt a munkamenet automatikusan kijelentkezett.
 6. Kattintson az **Alkalmaz** gombra.
 
-    ![Képernyőkép a címtárszintű inaktivitás időidejének beállításához](./media/admin-timeout/configure.png)
+    ![A címtár-szintű inaktivitás időtúllépésének beállítására szolgáló lap képernyőképe](./media/admin-timeout/configure.png)
 
-Annak ellenőrzéséhez, hogy az inaktivitás időszüntetési házirendje megfelelően van-e beállítva, válassza az **Értesítések** lehetőséget a globális oldalfejlécből. Ellenőrizze, hogy szerepel-e sikerességi értesítés a listában.
+Annak ellenőrzéséhez, hogy az inaktivitás időtúllépési szabályzata helyesen van-e beállítva, válassza az **értesítések** elemet a globális oldal fejlécében. Ellenőrizze, hogy megjelenik-e a sikeres értesítések listája.
 
-  ![A címtárszintű inaktivitás időtúllépésének sikeres értesítési üzenetéről készült képernyőkép](./media/admin-timeout/confirmation.png)
+  ![A címtár szintű inaktivitás időkorlátjának sikeres értesítési üzenetét bemutató képernyőkép](./media/admin-timeout/confirmation.png)
 
-A beállítás új munkamenetek esetén lép érvénybe. Nem vonatkozik azonnal azokra a felhasználókra, akik már be vannak jelentkezve.
+A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra.
 
 > [!NOTE]
-> Ha egy globális rendszergazda konfigurált egy címtárszintű időtúllépési beállítást, a felhasználók felülbírálhatják a házirendet, és beállíthatják saját inaktív kijelentkezési időtartamukat. A felhasználónak azonban olyan időintervallumot kell választania, amely kisebb, mint amit a globális rendszergazda a címtár szintjén beállított.
+> Ha egy globális rendszergazda konfigurált egy címtár-szintű időtúllépési beállítást, a felhasználók felülbírálják a szabályzatot, és saját inaktív kijelentkezési időtartamot állíthatnak be. A felhasználónak azonban olyan időintervallumot kell választania, amely kisebb, mint a globális rendszergazda által a címtár szintjén beállított érték.
 >
 
 ## <a name="next-steps"></a>További lépések
