@@ -9,31 +9,31 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82072637"
 ---
 ### <a name="general-query-limits"></a>Általános lekérdezési korlátok
 
 | Korlát | Leírás |
 |:---|:---|
-| Lekérdezés nyelve | Az Azure Monitor ugyanazt a [Kusto lekérdezési nyelvet](/azure/kusto/query/) használja, mint az Azure Data Explorer. Tekintse meg az [Azure Monitor naplózási lekérdezési nyelvi különbségek](../articles/azure-monitor/log-query/data-explorer-difference.md) a KQL nyelvi elemek nem támogatott az Azure Monitor. |
-| Azure-régiók | A naplólekérdezések túlzott terhelést tapasztalhatnak, ha az adatok több Azure-régióban is átnyúlnak a Log Analytics-munkaterületeken. A részleteket a [Lekérdezési korlátok](../articles/azure-monitor/log-query/scope.md#query-limits) ban találja. |
-| Erőforrásközi lekérdezések | Az Application Insights-erőforrások és a Log Analytics-munkaterületek maximális száma egyetlen, 100-ra korlátozott lekérdezésben.<br>A Nézettervező nem támogatja az erőforrásközi lekérdezést.<br>Az új scheduledQueryRules API támogatja az erőforrások közötti lekérdezést a naplóriasztásokban.<br>A részletekért lásd az [erőforrásközi lekérdezési korlátokat.](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) |
+| Lekérdezés nyelve | Azure Monitor ugyanazt a [Kusto-lekérdezési nyelvet](/azure/kusto/query/) használja, mint az Azure adatkezelő. Lásd: [Azure monitor a naplózási lekérdezés nyelvi eltérései](../articles/azure-monitor/log-query/data-explorer-difference.md) a KQL nyelvi elemeihez Azure monitor nem támogatottak. |
+| Azure-régiók | A naplók lekérdezése túlzott terhelést jelenthet, ha az adatLog Analytics több Azure-régióban lévő munkaterületek is átnyúlnak. Részletekért lásd a [lekérdezési korlátokat](../articles/azure-monitor/log-query/scope.md#query-limits) . |
+| Több erőforrás lekérdezése | Application Insights erőforrások és Log Analytics munkaterületek maximális száma egyetlen lekérdezésben 100-ra korlátozva.<br>Az erőforrások közötti lekérdezés nem támogatott a Tervező nézetében.<br>Az új scheduledQueryRules API támogatja a naplózási riasztásokban lévő erőforrás-lekérdezések közötti lekérdezést.<br>További részletekért lásd: [erőforrások közötti lekérdezési korlátok](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |
 
 ### <a name="user-query-throttling"></a>Felhasználói lekérdezés szabályozása
-Az Azure Monitor számos szabályozási korlátot, hogy megvédje a felhasználók túlzott számú lekérdezések küldése. Az ilyen viselkedés potenciálisan túlterhelheti a rendszer háttérerőforrásait, és veszélyeztetheti a szolgáltatás válaszképességét. A következő korlátozások célja, hogy megvédjék az ügyfeleket a megszakításoktól, és biztosítsák a konzisztens szolgáltatási szintet. A felhasználó szabályozása és a korlátok úgy vannak kialakítva, hogy csak a szélsőséges használati forgatókönyv, és nem lehet releváns a tipikus használat.
+Azure Monitor több szabályozási korláttal rendelkezik a túlzott számú lekérdezést küldő felhasználók elleni védelemhez. Az ilyen viselkedés potenciálisan túlterhelheti a rendszerháttér-erőforrásokat, és veszélyeztetheti a szolgáltatás érzékenységét. A következő korlátok úgy vannak kialakítva, hogy az ügyfelek számára biztosítható legyen a megszakítások és a konzisztens szolgáltatási szint. A felhasználói szabályozás és a korlátok kizárólag a szélsőséges használati forgatókönyvek hatására vannak kialakítva, és nem feltétlenül relevánsak a szokásos használathoz.
 
 
-| Measure | Korlát felhasználónként | Leírás |
+| Measure | Felhasználónként korlátozva | Leírás |
 |:---|:---|:---|
-| Egyidejű lekérdezések | 5 | Ha már 5 lekérdezés fut a felhasználó számára, minden új lekérdezés egy felhasználónkénti egyidejűségi várólistába kerül. Amikor az egyik futó lekérdezés befejeződik, a következő lekérdezés lekéri a várólistából, és elindul. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
-| Idő az egyidejűségi várólistában | 2,5 perc | Ha egy lekérdezés 2,5 percnél tovább ül a várólistában indítás nélkül, akkor a rendszer a 429-es kódú HTTP-hibaválaszt kap. |
-| Összes lekérdezés az egyidejűségi várólistában | 40 | Ha a várólistában lévő lekérdezések száma eléri a 40-et, a további lekérdezéseket a 429-es HTTP-hibakóddal elutasítva utasítják el. Ez a szám az egyidejűleg futtatható 5 lekérdezésen kívül található. |
-| Lekérdezési arány | 200 lekérdezés 30 másodpercenként | Ez az a teljes sebesség, amelyet egyetlen felhasználó küldhet el az összes munkaterületre.  Ez a korlát a vizualizációs részek, például az Azure-irányítópultok és a Log Analytics munkaterület-összefoglaló lap által kezdeményezett programozott lekérdezésekre vagy lekérdezésekre vonatkozik. |
+| Egyidejű lekérdezések | 5 | Ha a felhasználó számára már 5 lekérdezés fut, minden új lekérdezés egy felhasználónkénti egyidejűségi sorba kerül. Ha az egyik futó lekérdezés véget ér, a rendszer a következő lekérdezést fogja lekérni a várólistából, és elindítja azt. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
+| A párhuzamossági várólistán lévő idő | 2,5 perc | Ha egy lekérdezés több mint 2,5 percet vesz igénybe a várólistán anélkül, hogy el kellene indítani, a rendszer a 429-es kóddal megszakítja a HTTP-hibaüzenetet. |
+| Összes lekérdezés a egyidejűségi várólistában | 40 | Ha a várólistán lévő lekérdezések száma eléri a 40-et, a további lekérdezések elutasítása a 429-es HTTP-hibakód alapján történik. Ez a szám a egyszerre futtatható 5 lekérdezésen kívül esik. |
+| Lekérdezési arány | 200-lekérdezések száma 30 másodpercenként | Ez az általános mérték, amellyel a lekérdezéseket egyetlen felhasználó elküldheti az összes munkaterülethez.  Ez a korlát a vizualizációs részek, például az Azure-irányítópultok és a Log Analytics munkaterület összefoglalás lapja által kezdeményezett programozott lekérdezésekre és lekérdezésekre vonatkozik. |
 
-- Optimalizálja a lekérdezéseket az [Azure Monitor naplólekérdezéseinek optimalizálása](../articles/azure-monitor/log-query/query-optimization.md)című részben leírtak szerint.
-- Az irányítópultok és munkafüzetek több lekérdezést is tartalmazhatnak egyetlen nézetben, amelyek minden betöltéskor vagy frissítéskor lekérdezéssorozatot generálnak. Fontolja meg a felosztása őket több nézetek, amelyek terhelés igény szerint. 
-- A Power BI-ban fontolja meg csak az összesített eredmények kibontását a nyers naplók helyett.
+- Optimalizálja a lekérdezéseket a [Azure monitorban található naplók optimalizálása](../articles/azure-monitor/log-query/query-optimization.md)című témakörben leírtak szerint.
+- Az irányítópultok és a munkafüzetek egyetlen nézetben több lekérdezést is tartalmazhatnak, amelyek minden betöltéskor vagy frissítéskor feltört lekérdezéseket hoznak. Érdemes lehet több, igény szerinti terheléssel rendelkező nézetet feltörni. 
+- Power BI a nyers naplók helyett csak összesített eredményeket kell kinyerni.

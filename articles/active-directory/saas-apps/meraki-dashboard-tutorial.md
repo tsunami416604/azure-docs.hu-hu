@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Meraki irányítópultjával | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Meraki irányítópult között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Meraki-irányítópulttal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Meraki irányítópult között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,188 +16,188 @@ ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82084141"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Meraki irányítópultjával
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Meraki-irányítópulttal
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Meraki irányítópultot az Azure Active Directoryval (Azure AD). Ha integrálja a Meraki irányítópultot az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Meraki-irányítópultot Azure Active Directory (Azure AD) használatával. Ha az Meraki-irányítópultot az Azure AD-vel integrálja, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Meraki irányítópulthoz.
-* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve legyenek a Meraki irányítópultra az Azure AD-fiókjukkal.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A Meraki-irányítópulthoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az irányítópultra az Azure AD-fiókjával való Meraki.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Meraki Dashboard egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Meraki-irányítópult egyszeri bejelentkezéses (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Meraki Dashboard támogatja az **IDP** által kezdeményezett sso-t
-* A Meraki irányítópult konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* A Meraki-irányítópult támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* Miután konfigurálta a Meraki-irányítópultot, kikényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-meraki-dashboard-from-the-gallery"></a>Meraki irányítópult hozzáadása a galériából
+## <a name="adding-meraki-dashboard-from-the-gallery"></a>Meraki-irányítópult hozzáadása a gyűjteményből
 
-A Meraki-irányítópult Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Meraki irányítópultot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Meraki-irányítópult Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Meraki-irányítópultot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **Meraki irányítópultot** a keresőmezőbe.
-1. Válassza a **Meraki irányítópult lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Meraki Dashboard** kifejezést a keresőmezőbe.
+1. Válassza az **Meraki-irányítópult** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a Meraki irányítópulthoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Meraki irányítópultján
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Meraki irányítópultjával egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Meraki irányítópulton.
+Konfigurálja és tesztelje az Azure AD SSO-t a Meraki-irányítópulttal egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Meraki-irányítópulton.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Meraki irányítópulton hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Meraki irányítópultjának konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a Meraki Dashboard Egyszeri bejelentkezést](#configure-meraki-dashboard-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    1. **[Hozzon létre Meraki dashboard teszt felhasználó](#create-meraki-dashboard-test-user)** - egy megfelelője B.Simon a Meraki irányítópulton, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Meraki-irányítópult egyszeri bejelentkezésének konfigurálása](#configure-meraki-dashboard-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy Meraki-irányítópultot](#create-meraki-dashboard-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon Meraki-irányítópulton található.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Meraki irányítópult alkalmazásintegrációs** lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **Meraki-irányítópult** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
      
-    A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
     > [!NOTE]
-    > A Válasz URL-értéke nem valós. Frissítse ezt az értéket a tényleges Válasz URL-értékkel, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címének értékével, amelyet az oktatóanyag későbbi részében ismertet.
 
 1. Kattintson a **Mentés** gombra.
 
-1. A Meraki Dashboard alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Meraki irányítópult-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a Meraki Dashboard alkalmazás azt várja, hogy néhány további attribútumot kell visszaadni az SAML válaszban, amelyek az alábbiakban láthatók. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmények nek megfelelően.
+1. A fentieken kívül a Meraki irányítópult-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name (Név) | Forrás attribútuma|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------- |
-    | `https://dashboard.meraki.com/saml/attributes/username` | user.userprincipalname |
-    | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
+    | `https://dashboard.meraki.com/saml/attributes/username` | User. userPrincipalName |
+    | `https://dashboard.meraki.com/saml/attributes/role` | User. assignedroles |
 
     > [!NOTE]
-    > A szerepkörök Azure AD-ben való konfigurálásának megértéséhez [lásd itt.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
+    > A szerepkörök Azure AD-ben való konfigurálásának megismeréséhez lásd [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
+1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
-1. Az **SAML aláíró tanúsítvány szakaszban** másolja a **hüvelykujj értékét,** és mentse a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre.
 
-    ![Ujjlenyomat másolása érték](common/copy-thumbprint.png)
+    ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
 
-1. A **Meraki irányítópult beállítása csoportban** másolja a kijelentkezés URL-címét, és mentse a számítógépre.
+1. A **Meraki-irányítópult beállítása** szakaszban másolja ki a kijelentkezési URL-címet, és mentse a számítógépre.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t meraki irányítópult hozzáférést biztosít.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Meraki-irányítópulthoz.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Meraki irányítópult lehetőséget.**
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Meraki-irányítópult**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-meraki-dashboard-sso"></a>A Meraki irányítópult sso-jának konfigurálása
+## <a name="configure-meraki-dashboard-sso"></a>Meraki-irányítópult egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a meraki irányítópultra rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Meraki-irányítópultra.
 
-1. Keresse meg a **Szervezeti beállítások** -> **lapot.**
+1. Navigáljon a **szervezeti** -> **Beállítások**elemre.
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure1.png)
 
-1. A Hitelesítés csoportban módosítsa **az SAML SSO-t** **SAML SSO-ra.**
+1. A hitelesítés területen módosítsa az **SAML SSO** -t az **SAML SSO**-ra engedélyezve.
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure2.png)
 
-1. Kattintson **az SAML-azonosító hozzáadása gombra.**
+1. Kattintson **a SAML-identitásszolgáltató hozzáadása**lehetőségre.
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure3.png)
 
-1. Illessze be a **ujjlenyomat-értéket,** amelyet az Azure Portalról másolt az **X.590 cert SHA1** ujjlenyomat-szövegdobozába. Ezután kattintson a **Mentés gombra.** A mentés után megjelenik a fogyasztói URL.After saving, the Consumer URL will show. Másolja a fogyasztói URL-értéket, és illessze be ezt a **Válasz URL-cím** beszövegbe az Azure Portal **alapszintű SAML konfigurációs szakaszában.**
+1. Illessze be az **ujjlenyomat** értékét, amelyet a Azure Portal az **X. 590 CERT SHA1 ujjlenyomat** szövegmezőbe másolt. Ezután kattintson a **Mentés**gombra. A mentés után megjelenik a fogyasztói URL-cím. Másolja a fogyasztói URL-címet, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció szakaszában** .
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure4.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure4.png)
 
-### <a name="create-meraki-dashboard-test-user"></a>A Meraki irányítópult tesztfelhasználójának létrehozása
+### <a name="create-meraki-dashboard-test-user"></a>Meraki-irányítópult tesztelési felhasználójának létrehozása
 
-1. Egy másik böngészőablakban jelentkezzen be a meraki irányítópultra rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Meraki-irányítópultra.
 
-1. Keresse meg a **Szervezeti** -> **rendszergazdák lehetőséget.**
+1. Navigáljon a **szervezet** -> **rendszergazdái**számára.
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/user1.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/user1.png)
 
-1. Az SAML rendszergazdai szerepkörök csoportban kattintson az **SAML szerepkör hozzáadása** gombra.
+1. Az SAML rendszergazdai szerepkörök szakaszban kattintson az SAML- **szerepkör hozzáadása** gombra.
 
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/user2.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/user2.png)
 
-1. Írja be a szerepkör **meraki_full_admin,** jelölje meg **a szervezeti hozzáférést** **teljesként,** és kattintson a Szerepkör **létrehozása gombra.** Ismételje meg a folyamatot **a meraki_readonly_admin**, ezúttal jelölje meg a **szervezeti hozzáférést** **írásvédettként.**
+1. Adja meg a szerepkört **meraki_full_admin**, a **szervezeti hozzáférés** megjelölése **teljesként** , majd kattintson a **szerepkör létrehozása**lehetőségre. Ismételje meg a folyamatot **meraki_readonly_admin**, ez az idő **csak olvasható** mezőként való megjelölése a **szervezet** számára.
  
-    ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/user3.png)
+    ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/user3.png)
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Meraki irányítópult csempére kattint, automatikusan be kell jelentkeznie a Meraki irányítópultra, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Meraki-irányítópult csempére kattint, automatikusan be kell jelentkeznie a Meraki-irányítópultra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Meraki irányítópultot az Azure AD-vel](https://aad.portal.azure.com/)
+- [Meraki-irányítópult kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A Meraki műszerfal védelme fejlett láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Meraki-irányítópultok védetté tétele speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

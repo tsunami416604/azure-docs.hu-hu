@@ -1,6 +1,6 @@
 ---
-title: Operációs rendszerlemez felcserélése Egy Azure-beli virtuális géphez a PowerShell segítségével"
-description: Módosítsa az Azure virtuális gép által használt operációsrendszer-lemezt a PowerShell használatával.
+title: Azure-beli virtuális gép rendszerlemezének cseréje PowerShell-lel
+description: Az Azure-beli virtuális gépek által használt operációsrendszer-lemez módosítása a PowerShell használatával.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -8,29 +8,29 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: 566347414ffe707b1d68a61b00ba21d19ff2b1eb
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869389"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Az Azure virtuális gép által használt operációsrendszer-lemez módosítása a PowerShell használatával
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása a PowerShell használatával
 
-Ha rendelkezik egy meglévő virtuális gép, de szeretné cserélni a lemezt egy biztonsági másolat lemez vagy egy másik operációs rendszer lemez, az Azure PowerShell segítségével felcserélheti az operációs rendszer lemezek. Nem kell törölnie, és újra létre kell hoznia a virtuális gép. Egy felügyelt lemezt is használhat egy másik erőforráscsoportban, feltéve, hogy az még nincs használatban.
+Ha rendelkezik meglévő virtuális géppel, de a lemezét egy biztonsági mentési lemez vagy egy másik operációsrendszer-lemez esetében szeretné cserélni, a Azure PowerShell használatával cserélheti le az operációsrendszer-lemezeket. Nem kell törölnie és újból létrehoznia a virtuális gépet. Akár felügyelt lemezt is használhat egy másik erőforráscsoporthoz, ha még nincs használatban.
 
  
 
-A virtuális gép nem kell állítani\felszabadított, majd az erőforrás-azonosító a felügyelt lemez lehet cserélni az erőforrás-azonosító egy másik felügyelt lemez.
+A virtuális gépnek stopped\deallocated kell lennie, a felügyelt lemez erőforrás-AZONOSÍTÓját lecserélheti egy másik felügyelt lemez erőforrás-azonosítójával.
 
-Győződjön meg arról, hogy a virtuális gép mérete és a tároló típusa kompatibilis a csatlakoztatni kívánt lemezzel. Ha például a használni kívánt lemez a prémium szintű storage-ban van, akkor a virtuális gépnek képesnek kell lennie a prémium szintű storage-ra (például egy DS-sorozat méretére). Mindkét lemeznek azonos méretűnek kell lennie.
+Győződjön meg arról, hogy a virtuális gép mérete és a tároló típusa kompatibilis-e a csatolni kívánt lemezzel. Ha például a használni kívánt lemez Premium Storage, akkor a virtuális gépnek képesnek kell lennie Premium Storage (például egy DS-sorozat méretének). Mindkét lemeznek azonos méretűnek kell lennie.
 
-Erőforráscsoport lemezeinek listájának beszereznie a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) segítségével
+Egy erőforráscsoport lemezei listájának lekérése a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) használatával
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Ha rendelkezik a használni kívánt lemez nevével, állítsa be azt a virtuális gép operációs rendszerlemezeként. Ez a példa stop\felszabadítja a virtuális gép nevű *myVM* és hozzárendeli a lemez nevű *newDisk* az új operációs rendszer lemez. 
+Ha rendelkezik a használni kívánt lemez nevével, állítsa be, hogy a virtuális gép operációsrendszer-lemeze legyen. Ez a példa a *myVM* nevű virtuális gépet stop\deallocates, és az új operációsrendszer-lemezként rendeli hozzá a *newDisk* nevű lemezt. 
  
 ```azurepowershell-interactive 
 # Get the VM 
@@ -55,4 +55,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 **További lépések**
 
-Lemez másolatának létrehozásához olvassa el [a Lemez pillanatképe](snapshot-copy-managed-disk.md)című témakört.
+Lemez másolatának létrehozásához tekintse meg a [lemez pillanatképe](snapshot-copy-managed-disk.md)című témakört.

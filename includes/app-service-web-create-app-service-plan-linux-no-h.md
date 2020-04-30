@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085330"
 ---
-A Cloud Shell hozzon létre egy App Service-csomagot az erőforráscsoportban a [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) paranccsal.
+A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz a [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) paranccsal.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-A következő példa létrehoz egy `myAppServicePlan` App Service-csomagot,`--sku F1`amelyet az **ingyenes** tarifacsomagban ( ) és egy Linux-tárolóban (`--is-linux`neveznek meg.
+A következő példában `myAppServicePlan` létrehozunk egy nevű app Service csomagot az **ingyenes** díjszabási szinten`--sku F1`() és egy Linux-tárolóban (`--is-linux`).
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux

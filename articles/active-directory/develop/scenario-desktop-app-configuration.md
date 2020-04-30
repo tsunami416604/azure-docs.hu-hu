@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat hívó asztali alkalmazások konfigurálása – Microsoft identity platform | Azure
-description: A webes API-kat meghívjaó asztali alkalmazások kódjának konfigurálása
+title: Webes API-kat meghívó asztali alkalmazások konfigurálása – Microsoft Identity platform | Azure
+description: Útmutató a webes API-kat meghívó asztali alkalmazások kódjának konfigurálásához
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,47 +12,47 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869014"
 ---
-# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívjaó asztali alkalmazás: Kódkonfiguráció
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó asztali alkalmazás: kód konfigurálása
 
 Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a kódot az alkalmazás koordinátáival.
 
-## <a name="microsoft-authentication-libraries"></a>Microsoft hitelesítést árak
+## <a name="microsoft-authentication-libraries"></a>Microsoft hitelesítési kódtárak
 
-A következő Microsoft authentication libraries (MSALs) támogatja az asztali alkalmazásokat.
+A következő Microsoft Authentication librarys (MSALs) támogatja az asztali alkalmazásokat.
 
   Microsoft Authentication Library | Leírás
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások készítését több platformon, például Linux, Windows és macOS rendszerben.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Támogatja az asztali alkalmazások több platformon történő készítését.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Támogatja az asztali alkalmazások több platformon történő készítését.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Támogatja a csak macOS rendszeren futó asztali alkalmazásokat.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások több platformon, például a Linux, a Windows és a macOS rendszerben történő létrehozását.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A támogatja az asztali alkalmazások több platformon történő összeállítását.
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | A csak macOS rendszeren futó asztali alkalmazásokat támogatja.
 
 ## <a name="public-client-application"></a>Nyilvános ügyfélalkalmazás
 
-Kódszempontjából az asztali alkalmazások nyilvános ügyfélalkalmazások. A konfiguráció egy kicsit más lesz attól függően, hogy interaktív hitelesítést használ-e vagy sem.
+A kód szempontjából az asztali alkalmazások nyilvános ügyfélalkalmazások. A konfiguráció egy kicsit különbözik attól függően, hogy interaktív hitelesítést használ-e, vagy sem.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Meg kell építeni, és manipulálni `IPublicClientApplication`MSAL.NET .
+Létre kell hoznia és módosítania kell a `IPublicClientApplication`MSAL.net.
 
-![IPublicClientAlkalmazás](media/scenarios/public-client-application.png)
+![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>Kizárólag kód szerint
+### <a name="exclusively-by-code"></a>Kizárólag kód alapján
 
-A következő kód egy nyilvános ügyfélalkalmazást hoz össze, és bejelentkezik a felhasználókba a Microsoft Azure nyilvános felhőben egy munkahelyi vagy iskolai fiókkal vagy egy személyes Microsoft-fiókkal.
+A következő kód egy nyilvános ügyfélalkalmazás példányát és a Microsoft Azure nyilvános felhőben lévő felhasználók munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók való bejelentését írja elő.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Ha interaktív hitelesítést vagy eszközkód-áramlást kíván használni, ahogy azt korábban láthatta, használja a `.WithRedirectUri` módosítót.
+Ha a korábban látott interaktív hitelesítést vagy az eszköz kódját szeretné használni, használja a `.WithRedirectUri` módosítót.
 
 ```csharp
 IPublicClientApplication app;
@@ -63,7 +63,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="use-configuration-files"></a>Konfigurációs fájlok használata
 
-A következő kód egy nyilvános ügyfélalkalmazást hoz végre egy konfigurációs objektumból, amely programozott módon kitölthető vagy egy konfigurációs fájlból olvasható.
+A következő kód egy nyilvános ügyfélalkalmazás példányát egy konfigurációs objektumból hozza létre, amely programozott módon vagy egy konfigurációs fájlból is kitölthető.
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -74,7 +74,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="more-elaborated-configuration"></a>Részletesebb konfiguráció
 
-Az alkalmazásépületet számos módosító hozzáadásával fejtheti ki. Ha például azt szeretné, hogy az alkalmazás több-bérlős alkalmazás legyen egy nemzeti felhőben, például az Egyesült Államok kormánya itt látható, akkor a következőket írhatja:
+Az alkalmazás kiépítése több módosítóval is kiegészíthető. Ha például azt szeretné, hogy az alkalmazás egy nemzeti felhőben több-bérlős alkalmazás legyen, például az USA kormánya itt látható, akkor a következőket írhatja:
 
 ```csharp
 IPublicClientApplication app;
@@ -85,7 +85,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET active Directory összevonási szolgáltatások 2019-es módosítóját is tartalmazza:
+A MSAL.NET Active Directory összevonási szolgáltatások (AD FS) 2019-es módosítót is tartalmaz:
 
 ```csharp
 IPublicClientApplication app;
@@ -94,7 +94,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Végül, ha egy Azure Active Directory (Azure AD) B2C-bérlő jogkivonatait szeretné beszerezni, adja meg a bérlőt a következő kódrészletben látható módon:
+Végül, ha az Azure Active Directory (Azure AD) B2C-bérlőhöz jogkivonatokat szeretne beszerezni, adja meg a bérlőt az alábbi kódrészletben látható módon:
 
 ```csharp
 IPublicClientApplication app;
@@ -105,14 +105,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Részletek
 
-Ha többet szeretne megtudni az asztali MSAL.NET alkalmazások konfigurálásáról:
+További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
-- A lapon `PublicClientApplicationBuilder`elérhető összes módosító listáját a [PublicClientApplicationBuilder referenciadokumentációban találja.](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- A programban elérhető `PublicClientApplicationOptions`összes beállítás leírását a hivatkozási dokumentáció [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) című részében találja.
+- Az összes elérhető módosító listájának megtekintéséhez tekintse `PublicClientApplicationBuilder`meg a Reference dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- A alkalmazásban `PublicClientApplicationOptions`elérhető összes beállítás leírását lásd a [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) című témakörben.
 
-### <a name="complete-example-with-configuration-options"></a>Teljes példa konfigurációs beállításokkal
+### <a name="complete-example-with-configuration-options"></a>Példa teljes konfigurációs beállításokkal
 
-Képzeljen el egy .NET Core `appsettings.json` konzolalkalmazást, amely a következő konfigurációs fájlt rendelkezik:
+Képzeljünk el egy .NET Core Console-alkalmazást, amely `appsettings.json` a következő konfigurációs fájllal rendelkezik:
 
 ```json
 {
@@ -128,7 +128,7 @@ Képzeljen el egy .NET Core `appsettings.json` konzolalkalmazást, amely a köve
 }
 ```
 
-Kevés kódot kell olvasnia ebben a fájlban a segítségével. NET által biztosított konfigurációs keretrendszer:
+Ennek a fájlnak a használatával kevés kódot kell beolvasnia. NET által biztosított konfigurációs keretrendszer:
 
 ```csharp
 public class SampleConfiguration
@@ -171,7 +171,7 @@ public class SampleConfiguration
 }
 ```
 
-Most, hogy hozzon létre az alkalmazást, írja be a következő kódot:
+Az alkalmazás létrehozásához írja be a következő kódot:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -180,11 +180,11 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-A metódus hívása előtt felülbírálhatja a `.Build()` konfigurációt `.WithXXX` metódusok hívásaival, ahogy azt korábban láthatta.
+A `.Build()` metódus hívása előtt felülbírálhatja a konfigurációt metódusok hívásával, `.WithXXX` ahogy azt korábban is láttuk.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az MSAL Java fejlesztési mintákban használt osztály a minták konfigurálásához: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+A MSAL Java-fejlesztési mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -205,13 +205,13 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-A következő kód egy nyilvános ügyfélalkalmazást hoz össze, és bejelentkezik a felhasználókba a Microsoft Azure nyilvános felhőben egy munkahelyi vagy iskolai fiókkal vagy egy személyes Microsoft-fiókkal.
+A következő kód egy nyilvános ügyfélalkalmazás példányát és a Microsoft Azure nyilvános felhőben lévő felhasználók munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók való bejelentését írja elő.
 
-### <a name="quick-configuration"></a>Gyors konfiguráció
+### <a name="quick-configuration"></a>Gyors konfigurálás
 
-C célkitűzés:
+Objective-C:
 
 ```objc
 NSError *msalError = nil;
@@ -220,7 +220,7 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift:
+Swift
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
@@ -228,9 +228,9 @@ if let application = try? MSALPublicClientApplication(configuration: config){ /*
 
 ### <a name="more-elaborated-configuration"></a>Részletesebb konfiguráció
 
-Az alkalmazásépületet számos módosító hozzáadásával fejtheti ki. Ha például azt szeretné, hogy az alkalmazás több-bérlős alkalmazás legyen egy nemzeti felhőben, például az Egyesült Államok kormánya itt látható, akkor a következőket írhatja:
+Az alkalmazás kiépítése több módosítóval is kiegészíthető. Ha például azt szeretné, hogy az alkalmazás egy nemzeti felhőben több-bérlős alkalmazás legyen, például az USA kormánya itt látható, akkor a következőket írhatja:
 
-C célkitűzés:
+Objective-C:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -249,7 +249,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift:
+Swift
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -262,4 +262,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Token beszerzése asztali alkalmazáshoz](scenario-desktop-acquire-token.md)
+> [Jogkivonat beszerzése asztali alkalmazáshoz](scenario-desktop-acquire-token.md)

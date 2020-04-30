@@ -1,6 +1,6 @@
 ---
-title: Közös interfészek – IoT Plug and Play Preview | Microsoft dokumentumok
-description: Az IoT Plug and Play fejlesztők közös felületeinek leírása
+title: Általános felületek – IoT Plug and Play előzetes verzió | Microsoft Docs
+description: A IoT Plug and Play-fejlesztőknek készült általános interfészek leírása
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770490"
 ---
-# <a name="iot-plug-and-play-preview-common-interfaces"></a>Az IoT Plug and Play előzetes verzió közös interfészei
+# <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play előzetes verzió általános felületek
 
-Az összes IoT Plug and Play eszköznek bizonyos közös felületeket kell megvalósítania. A gyakori felületek az IoT-megoldások számára előnyösek, mivel konzisztens funkcionalitást biztosítanak. [A hitelesítéshez](tutorial-build-device-certification.md) az eszköznek több közös felületet kell megvalósítania. A nyilvános modelltárházból lekérheti a közös felületdefiníciókat.
+Minden IoT-Plug and Play eszköznek várhatóan végre kell hajtania néhány gyakori felületet. A közös interfészek előnyben IoT a megoldásokat, mivel konzisztens funkciókat biztosítanak. A [minősítés](tutorial-build-device-certification.md) megköveteli, hogy az eszköz több közös felületet implementáljon. A Common Interface-definíciókat a nyilvános modell tárházból kérheti le.
 
-## <a name="summary-of-common-interfaces"></a>A közös kapcsolódási pontok összefoglalása
+## <a name="summary-of-common-interfaces"></a>Általános felületek összefoglalása
 
-| Name (Név) | ID (Azonosító) | Leírás | Az Azure IoT SDK implementált | A képességmodellben deklarálni kell |
+| Name (Név) | ID (Azonosító) | Leírás | Az Azure IoT SDK implementálja | Be kell jelenteni a képesség modellben |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| Modell információk | urn:azureiot:ModelDiscovery:Modellinformáció:1 | Az eszközök deklarálják a képességmodell azonosítóját és interfészeit. Minden IoT Plug and Play eszközhöz szükséges. | Igen | Nem |
-| Digitális ikerügyfél SDK-információk | urn:azureiot:Ügyfél:SDKInformáció:1 | Ügyfél SDK az eszköz azure-hoz való csatlakoztatásához. A [hitelesítéshez](tutorial-build-device-certification.md) szükséges | Igen | Nem |
-| Eszközadatok | urn:azureiot:DeviceManagement:DeviceInformation:1 | Hardver- és operációsrendszer-információk az eszközről. A [hitelesítéshez](tutorial-build-device-certification.md) szükséges | Nem | Igen |
-| Modell definíciója | urn:azureiot:ModelDiscovery:Modelldefiníció:1 | Az eszközök számára, hogy deklarálja a teljes definíciót a képességi modell és interfészek. Akkor kell végrehajtani, ha a modelldefiníciók nem egy modelltárházban vannak tárolva. | Nem | Igen |
-| Digital Twin | urn:azureiot:ModelDiscovery:DigitalTwin:1 | A megoldás fejlesztők számára, hogy lekérje a képesség modell azonosítóés felület azonosítók egy digitális iker. Ezt a felületet nem deklarálja vagy valósítja meg egy IoT Plug and Play eszköz. | Nem | Nem |
+| Modell adatai | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Az eszközök számára, hogy deklarálják a képesség modell AZONOSÍTÓját és felületeit. Minden IoT Plug and Play eszközhöz szükséges. | Igen | Nem |
+| Digitális Twin Client SDK-információk | urn: azureiot: ügyfél: SDKInformation: 1 | Az eszközt az Azure-hoz csatlakoztató ügyfél-SDK. A [minősítéshez](tutorial-build-device-certification.md) szükséges | Igen | Nem |
+| Eszköz adatai | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Hardver-és operációsrendszer-információk az eszközről. A [minősítéshez](tutorial-build-device-certification.md) szükséges | Nem | Igen |
+| Modell definíciója | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Az eszközök számára, hogy deklarálják a képességeinek modelljét és felületét teljes definícióját. Akkor kell megvalósítani, ha a modell-definíciók nem találhatók meg a modell-tárházban. | Nem | Igen |
+| Digital Twin | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | A megoldás fejlesztői számára a Digital Twin modell AZONOSÍTÓjának és illesztőfelület-azonosítóinak beolvasása. Ez az illesztőfelület nincs deklarálva vagy implementálva egy IoT Plug and Play eszközön. | Nem | Nem |
 
-- Az Azure IoT SDK által megvalósított – függetlenül attól, hogy az Azure IoT SDK megvalósítja-e a felületeken deklarált képességeket. Az Azure IoT SDK-t használó IoT Plug and Play eszközöknek nem kell megvalósítaniuk ezt a felületet.
-- A képességmodellben deklarálni kell – Ha "igen", `"implements":` ezt az összeköttetést az IoT Plug and Play eszköz eszközképességi modelljének szakaszán belül kell deklarálni.
+- Az Azure IoT SDK által implementálva – azt határozza meg, hogy az Azure IoT SDK implementálja-e az illesztőfelületekben deklarált képességeket. Az Azure IoT SDK-t használó eszközök Plug and Play IoT nem kell megvalósítani ezt a felületet.
+- Szerepelnie kell a (z) képesség-modellben – ha az igen, akkor ezt a `"implements":` felületet a IoT Plug and Play eszközön található eszköz-képesség modell szakaszában kell deklarálni.
 
-## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Illesztőkapcsolatok definícióinak lekérése a nyilvános tárházból
+## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Illesztőfelület-definíciók beolvasása a nyilvános tárházból
 
 ### <a name="cli"></a>parancssori felület
 
-Az Azure CLI Azure IoT-bővítmény használatával lekérheti a közös felületeket a nyilvános modelltárházból.
+Az Azure IoT bővítményét használhatja az Azure CLI-hez az általános felületek a nyilvános modell tárházból való lekéréséhez.
 
 ```azurecli
 az iot pnp interface show --interface {InterfaceID}
@@ -47,18 +47,18 @@ az iot pnp capability-model show --model {ModelID}
 
 ### <a name="vs-code"></a>VS Code
 
-1. A parancspaletta megnyitásához használja a **Ctrl+Shift+P** billentyűkombinációt.
+1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Írja be a **Plug and Play parancsot,** majd válassza az **IoT Plug and Play: Open Model Repository parancsot.** Válassza **a Nyilvános tárház lehetőséget.** A nyilvános modell tárház a VS-kódban nyílik meg.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT Plug and Play: Nyissa meg a Model repository** parancsot. Válassza a **nyilvános tárház**lehetőséget. A nyilvános modell tárháza a VS Code-ban nyílik meg.
 
-1. A nyilvános modelltárházba írja be a kapcsolat nevét a keresőmezőbe.
+1. A nyilvános modell adattárában adja meg a felület nevét a keresőmezőbe.
 
-1. A felület helyi példányának létrehozásához jelölje ki azt a keresési eredmények között, majd kattintson a **Letöltés gombra.**
+1. Az interfész helyi másolatának létrehozásához válassza ki azt a keresési eredmények között, majd válassza a **Letöltés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett a gyakori felületekkel, az alábbiakban további forrásokat olvashat:
+Most, hogy megismerte az általános interfészeket, néhány további erőforrást is talál:
 
-- [Digitális ikerdefiníciós nyelv (DTDL)](https://aka.ms/DTDL)
+- [Digital Twin Definition Language (DTDL)](https://aka.ms/DTDL)
 - [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

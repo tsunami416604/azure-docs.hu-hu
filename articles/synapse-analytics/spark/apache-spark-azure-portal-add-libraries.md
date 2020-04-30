@@ -1,6 +1,6 @@
 ---
-title: Tárak hozzáadása és kezelése az Apache Sparkhoz az Azure Synapse Analytics szolgáltatásban
-description: Ismerje meg, hogyan vehet fel és kezelhet az Apache Spark által használt tárakat az Azure Synapse Analytics szolgáltatásban.
+title: Könyvtárak hozzáadása és kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
+description: Megtudhatja, hogyan veheti fel és kezelheti a Apache Spark által használt könyvtárakat az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,33 +10,33 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870361"
 ---
-# <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Tárak hozzáadása és kezelése az Apache Sparkhoz az Azure Synapse Analytics szolgáltatásban
+# <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Könyvtárak hozzáadása és kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
-Az Apache Spark számos könyvtártól függ a funkciók biztosításához. Ezek a könyvtárak bővíthetők vagy helyettesíthetők további könyvtárakkal vagy a régebbiek frissített verzióival.
+A Apache Spark számos könyvtártól függ, hogy funkciókat biztosítson. Ezek a kódtárak kiegészíthető vagy lecserélhetők további könyvtárakkal, illetve régebbi verziókkal is.
 
-Python-csomagok a Spark-készlet (előzetes verzió) szintjén adhatók hozzá, és a .jar alapú csomagok a Spark feladatdefiníciós szintjén adhatók hozzá.
+Python-csomagok a Spark-készlet (előzetes verzió) szintjén adhatók hozzá, a. jar-alapú csomagok pedig a Spark-feladatdefiníció szintjén adhatók hozzá.
 
 ## <a name="adding-or-updating-python-libraries"></a>Python-kódtárak hozzáadása vagy frissítése
 
-Az Apache Spark az Azure Synapse Analytics teljes Anacondas telepítésével és további kódtárakkal rendelkezik. A teljes könyvtárak listája megtalálható az [Apache Spark verziótámogatás.](apache-spark-version-support.md)
+Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md).
 
-Amikor egy Spark-példány elindul, egy új virtuális környezet jön létre ezzel a telepítéssel, mint az alap. Ezenkívül a *requirements.txt* fájl (a `pip freeze` parancs kimenete) használható a virtuális környezet frissítéséhez. Az ebben a fájlban telepítési vagy frissítésre szánt csomagok a fürt indításakor töltődnek le a PyPi alkalmazásról. Ez a követelményfájl minden alkalommal használatos, amikor egy Spark-példány jön létre aspark-készletből.
+A Spark-példány indításakor új virtuális környezet jön létre, amely a telepítést használja alapként. Emellett a *követelmények. txt* fájl (a `pip freeze` parancs kimenete) a virtuális környezet frissítésére is használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a fürt indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
 
 > [!IMPORTANT]
 >
-> - Ha a telepíti a csomagot nagy, vagy hosszú időt vesz igénybe a telepítés, ez hatással van a Spark-példány indítási ideje.
-> - A telepítéskor fordítói támogatást igénylő csomagok, például a GCC, nem támogatottak.
-> - A csomagok nem minősíthetők vissza, csak hozzáadhatók vagy frissíthetők.
+> - Ha a telepített csomag nagy méretű, vagy hosszú ideig tart a telepítés, ez hatással van a Spark-példány indítási idejére.
+> - A fordítási támogatást igénylő csomagok, például a GCC, nem támogatottak.
+> - A csomagokat nem lehet leértékelni, csak a Hozzáadás vagy a frissítés lehetőségre.
 
 ### <a name="requirements-format"></a>Követelmények formátuma
 
-A következő kódrészlet a követelményfájl formátumát mutatja be. A PyPi csomag neve a pontos verzióval együtt jelenik meg. Ez a fájl a [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) referenciadokumentációban leírt formátumot követi. Ez a példa egy adott verziót tűz ki. Ebben a fájlban megadhatja a "nem nagyobb" és a "kisebb, mint" verziókat is.
+A következő kódrészlet a követelmények fájl formátumát mutatja. A PyPi-csomag neve a pontos verzióval együtt jelenik meg. Ez a fájl a [pip Freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) Reference dokumentációjában ismertetett formátumot követi. Ez a példa egy adott verziót PIN-kódra mutat. Ebben a fájlban a "nem nagyobb, mint" és a "kisebb, mint" verziót is megadhatja.
 
 ```
 absl-py==0.7.0
@@ -46,17 +46,17 @@ adal==1.2.1
 alabaster==0.7.10
 ```
 
-### <a name="python-library-user-interface"></a>Python-könyvtár felhasználói felülete
+### <a name="python-library-user-interface"></a>Python-függvénytár felhasználói felülete
 
-A tárak hozzáadásához a felhasználói felület az Azure Portalon az **Apache Spark-készlet létrehozása** lap További **beállítások** lapján található.
+A kódtárak hozzáadására szolgáló felhasználói felület a Azure Portal **Apache Spark készlet létrehozása** lapjának **További beállítások** lapján található.
 
-Töltse fel a környezet konfigurációs fájlját a lap **Csomagok** szakaszában található fájlkijelölő vel.
+Töltse fel a környezet konfigurációs fájlját a lap **csomagok** területén található fájl-választó használatával.
 
-![Python-tárak hozzáadása](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python-tárak hozzáadása")
+![Python-kódtárak hozzáadása](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Python-kódtárak hozzáadása")
 
-### <a name="verifying-installed-libraries"></a>Telepített tárak ellenőrzése
+### <a name="verifying-installed-libraries"></a>Telepített kódtárak ellenőrzése
 
-Annak ellenőrzése, hogy a megfelelő könyvtárak megfelelő verziói vannak-e telepítve, futtassa a következő kódot
+A következő kód futtatásával ellenőrizheti, hogy telepítve vannak-e a megfelelő kódtárak megfelelő verziói
 
 ```python
 import pip #needed to use the pip functions

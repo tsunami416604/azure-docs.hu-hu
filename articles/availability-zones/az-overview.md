@@ -1,6 +1,6 @@
 ---
-title: Mik azok az Azure rendelkezésre állási zónák?
-description: Magas rendelkezésre állású és rugalmas alkalmazások létrehozásához az Azure-ban, a rendelkezésre állási zónák fizikailag különálló helyeket biztosítanak, amelyek segítségével futtathatja az erőforrásokat.
+title: Mi a Azure Availability Zones?
+description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozhatók létre, Availability Zones biztosítanak fizikailag különálló helyet, amellyel erőforrásokat futtathat.
 author: cynthn
 ms.service: azure
 ms.topic: article
@@ -8,32 +8,32 @@ ms.date: 10/17/2019
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: e7ba62a96a6fc76ad63960cfe57f5b1f85589c32
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085042"
 ---
-# <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
-A rendelkezésre állási zónák egy magas rendelkezésre állású ajánlat, amely megvédi az alkalmazásokat és az adatokat az adatközponti hibáktól. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található. A rendelkezésre állási zónák fizikai elkülönítése egy régión belül védi az alkalmazásokat és az adatokat az adatközpont-hibáktól. A zónaredundáns szolgáltatások replikálják az alkalmazásokat és az adatokat a rendelkezésre állási zónák között, hogy megvédjék az egypontosokat. A rendelkezésre állási zónákkal az Azure az iparág legjobb 99,99%-os virtuálisgép-rendelkezésre állási SLA-ját kínálja. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
+# <a name="what-are-availability-zones-in-azure"></a>Mi Availability Zones az Azure-ban?
+A Availability Zones egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében. Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
-Egy Azure-régióban rendelkezésre állási zóna egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre egy Azure-régió három zónája között, a virtuális gépek hatékonyan oszlanak el három tartalék tartomány és három frissítési tartomány között. Az Azure platform felismeri ezt a terjesztési frissítési tartományok között, hogy győződjön meg arról, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyszerre.
+Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
 
-Magas rendelkezésre állást építhet be az alkalmazásarchitektúrába a számítási, tárolási, hálózati és adaterőforrások zónán belüli közös helymeghatározásával és más zónákban való replikálásával. A rendelkezésre állási zónákat támogató Azure-szolgáltatások két kategóriába sorolhatók:
+Magas rendelkezésre állást építhet ki az alkalmazás-architektúrába a számítási, tárolási, hálózatkezelési és adaterőforrások egy zónán belüli és más zónákban való replikálásával. A rendelkezésre állási zónákat támogató Azure-szolgáltatások két kategóriába sorolhatók:
 
-- **Zónaszintű szolgáltatások** – az erőforrást egy adott zónához (például virtuális gépekhez, felügyelt lemezekhez, szabványos IP-címekhez) vagy
+- **Zónákra vonatkozó szolgáltatások** – az erőforrást egy adott zónához (például virtuális gépekhez, felügyelt lemezekhez, szabványos IP-címekhez) rögzítheti, vagy
 - **Zónaredundáns szolgáltatások** – a platform automatikusan több zónában replikálódik (például zónaredundáns tárolás és SQL Database).
 
-Az Azure átfogó üzletmenet-folytonosságának elérése érdekében az alkalmazásarchitektúrát a rendelkezésre állási zónák és az Azure régiópárok kombinációjával hozhatja létre. Az azure-régión belüli rendelkezésre állási zónák használatával szinkron módon replikálhatja alkalmazásait és adatait a magas rendelkezésre állás érdekében, és aszinkron módon replikálhatja az Azure-régiók között a vész-helyreállítási védelem érdekében.
+Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure region Pairs Availability Zones kombinációját használva hozza létre az alkalmazás-architektúrát. Az alkalmazásokat és az adatait szinkron módon replikálhatja az Azure-régión belüli Availability Zones használatával, hogy magas rendelkezésre állást biztosítson, és aszinkron módon replikálja az Azure-régiókat a vész-helyreállítási védelem érdekében.
  
-![Egy régióban lehaladó zóna fogalmi nézete](./media/az-overview/az-graphic-two.png)
+![egy régió egy zónájának elméleti nézete](./media/az-overview/az-graphic-two.png)
 
 > [!IMPORTANT]
-> A rendelkezésre állási zóna azonosítók (a fenti képen 1, 2 és 3 szám) logikailag le vannak képezve az egyes előfizetések tényleges fizikai zónáihoz egymástól függetlenül. Ez azt jelenti, hogy egy adott előfizetés 1. rendelkezésre állási zóna előfordulhat, hogy egy másik fizikai zóna, mint a rendelkezésre állási zóna 1 egy másik előfizetésben. Ennek következtében azt javasoljuk, hogy ne támaszkodjon a rendelkezésre állási zóna azonosítók különböző előfizetések virtuális gépek elhelyezése között.
+> A rendelkezésre állási zónák azonosítói (a fenti képen az 1, 2 és 3 számok) logikai módon vannak leképezve az egyes előfizetések tényleges fizikai zónájához, egymástól függetlenül. Ez azt jelenti, hogy egy adott előfizetéshez tartozó rendelkezésre állási 1. zóna eltérő fizikai zónára hivatkozhatnak, mint a rendelkezésre állás 1. zóna egy másik előfizetésben. Ezért javasoljuk, hogy a rendelkezésre állási zónák azonosítóit ne használja a virtuális gépek elhelyezésére szolgáló különböző előfizetések között.
 
 ## <a name="services-support-by-region"></a>Szolgáltatások támogatása régiónként
 
-Az Azure-szolgáltatások és a rendelkezésre állási zónákat támogató régiók kombinációi a következők:
+A Availability Zones támogató Azure-szolgáltatások és-régiók kombinációi a következők:
 
 
 |                                 |Amerika |              |           |           | Európa |              |          |              | Ázsia és a Csendes-óceáni térség |                 |                |
@@ -43,53 +43,53 @@ Az Azure-szolgáltatások és a rendelkezésre állási zónákat támogató ré
 | Linux rendszerű virtuális gépek          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Windows rendszerű virtuális gépek        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
-| Az Azure App Service-környezetek ILB | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Azure App Service környezetek ILB | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Azure Kubernetes Service        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | **Storage**   |            |              |           |           |                |              |          |             |            |                |                |
 | Felügyelt lemezek                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
-| Zónaredundáns tárolás          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Zóna – redundáns tárolás          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | **Hálózat**                     |            |              |           |           |                |              |          |             |            |                |                |
-| Normál IP-cím        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
-| Standard terheléselosztó     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Szabványos IP-cím        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| standard Load Balancer     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | VPN Gateway            | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |                |
 | ExpressRoute-átjáró   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |                |
-| Alkalmazásátjáró(V2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |                |
+| Application Gateway (v2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |                |
 | Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
 | **Adatbázisok**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Azure Data Explorer                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |                |
-| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;(Előzetes verzió) | &#10003;       | &#10003;(Előzetes verzió)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
+| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003; (előzetes verzió) | &#10003;       | &#10003; (előzetes verzió)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
 | Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |                |
 | **Elemzés**                       |            |              |           |           |                |              |          |             |            |                |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |                |
 | **Integráció**                     |            |              |           |           |                |              |          |             |            |                |                |
-| Service Bus (csak prémium szint) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
+| Service Bus (csak prémium szint esetén) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
 | **Identitás**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
 
 ## <a name="services-resiliency"></a>Szolgáltatások rugalmassága
-Minden Azure felügyeleti szolgáltatások úgy vannak kitervezve, hogy rugalmas a régiószintű hibák. A hibák spektrumában egy vagy több rendelkezésre állási zóna hibák egy régión belül egy kisebb hibasugarat, mint egy teljes régió hiba. Az Azure a régión belüli vagy egy másik Azure-régióban lévő felügyeleti szolgáltatások zónaszintű meghibásodása után helyreállítható. Az Azure kritikus karbantartást végez egy zónában egy régión belül, hogy megakadályozza a régión belüli rendelkezésre állási zónákban üzembe helyezett ügyfél-erőforrásokat befolyásoló hibákat.
+Az összes Azure-beli felügyeleti szolgáltatás a régió szintű hibáktól való ellenálló képességnek számít. A hibák spektrumában egy vagy több rendelkezésre állási zónának a régión belüli meghibásodása kisebb meghibásodási sugarú, mint a teljes régió meghibásodása. Az Azure a régióban vagy egy másik Azure-régión belüli felügyeleti szolgáltatások zóna szintű meghibásodásával állítható helyre. Az Azure a régión belül egyszerre végzi el a kritikus karbantartást, így megakadályozva, hogy az adott régión belül üzembe helyezett felhasználói erőforrásokkal kapcsolatos hibák ne legyenek Availability Zones.
 
 ## <a name="pricing"></a>Díjszabás
-A rendelkezésre állási zónában üzembe helyezett virtuális gépek nem járnak többletköltséggel. A virtuális gépek 99,99%-os rendelkezésre állási sla-ja akkor érhető el, ha két vagy több virtuális gép van telepítve két vagy több rendelkezésre állási zónában egy Azure-régióban. Lesz további rendelkezésre állási zóna virtuális gép-virtuális gép adatátviteli díjakat. További információért tekintse át a [Sávszélesség díjszabási](https://azure.microsoft.com/pricing/details/bandwidth/) oldalát.
+A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem kell további díjat fizetni. 99,99%-os virtuálisgép-üzemidőt biztosító SLA-t akkor ajánljuk, ha legalább két virtuális GÉPET telepítenek két vagy több Availability Zones egy Azure-régión belül. A virtuális gépek és a virtuális gépek közötti adatátviteli díjak további rendelkezésre állási zónában lesznek. További információkért tekintse át a [sávszélesség díjszabását](https://azure.microsoft.com/pricing/details/bandwidth/) ismertető oldalt.
 
 
-## <a name="get-started-with-availability-zones"></a>A rendelkezésre állási zónák – első lépések
+## <a name="get-started-with-availability-zones"></a>Ismerkedés a Availability Zones
 - [Virtuális gép létrehozása](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Felügyelt lemez hozzáadása a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Zónaredundáns virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Terheléselosztási virtuális gépek zónák között, zónaredundáns előtérrel rendelkező standard terheléselosztó használatával](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Zónaszintű előtér-előtér-előtér-előtérrel rendelkező standard terheléselosztót használó virtuális gépek terheléselosztási virtuális gépek](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zónában redundáns virtuálisgép-méretezési csoport létrehozása](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
 - [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [Event Hubs georeplikációs vészhelyreállítás](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus georeplikációs vészhelyreállítás](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Zónaredundáns régió hozzáadása az Azure Cosmos DB-hez](../cosmos-db/high-availability.md#availability-zone-support)
-- [Első lépések az Azure-gyorsítótára a Redis rendelkezésre állási zónáihoz](https://aka.ms/redis/az/getstarted)
+- [Zóna redundáns régiójának hozzáadása Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
+- [Azure cache Első lépések Redis Availability Zones](https://aka.ms/redis/az/getstarted)
 - [Azure Active Directory Domain Services-példány létrehozása](../active-directory-domain-services/tutorial-create-instance.md)
-- [Azure Kubernetes-szolgáltatás (AKS) fürt létrehozása, amely rendelkezésre állási zónákat használ](../aks/availability-zones.md)
+- [Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása](../aks/availability-zones.md)
 
 ## <a name="next-steps"></a>További lépések
 - [Gyorsindítási sablonok](https://aka.ms/azqs)

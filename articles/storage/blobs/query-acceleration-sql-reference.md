@@ -1,7 +1,7 @@
 ---
-title: Lekérdezésgyorsítás SQL nyelvi hivatkozás (előzetes verzió)
+title: A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
 titleSuffix: Azure Storage
-description: További információ a lekérdezésgyorsítás sql szintaxisának használatáról.
+description: Ismerje meg, hogyan használható a lekérdezési gyorsítás SQL-szintaxisa.
 services: storage
 author: normesta
 ms.service: storage
@@ -11,44 +11,44 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81772118"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Lekérdezésgyorsítás SQL nyelvi hivatkozás (előzetes verzió)
+# <a name="query-acceleration-sql-language-reference-preview"></a>A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
 
-A lekérdezésgyorsítás támogatja az ANSI SQL-szerű nyelvet a blobtartalmakkal kapcsolatos lekérdezések kifejezéséhez.  A lekérdezés gyorsítása SQL dialektus az ANSI SQL egy részhalmaza, amely a támogatott adattípusok, operátorok stb. 
+A lekérdezési gyorsítás egy ANSI SQL-szerű nyelvet támogat a blob-tartalmakon keresztüli lekérdezések kifejezésére.  A lekérdezés-gyorsítási SQL-dialektus az ANSI SQL egy részhalmaza, amely korlátozott számú támogatott adattípust, operátort stb., de az ANSI SQL-ben is kibővül, hogy támogassa a többtényezős, félig strukturált adatformátumokat, például a JSON-t. 
 
 > [!NOTE]
-> A lekérdezésgyorsítási szolgáltatás nyilvános előzetes verzióban érhető el, és a Kanadai Közép- és Franciaország-középrégiókban érhető el. A korlátozások áttekintéséhez olvassa el az [Ismert problémák](data-lake-storage-known-issues.md) című cikket. Az előnézetbe való regisztráláshoz tekintse meg [ezt az űrlapot.](https://aka.ms/adls/qa-preview-signup) 
+> A lekérdezési gyorsítási funkció nyilvános előzetes verzióban érhető el, és a közép-Kanada középső régiójában és Közép-Franciaországban található. A korlátozások áttekintéséhez tekintse meg az [ismert problémákkal foglalkozó](data-lake-storage-known-issues.md) cikket. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adls/qa-preview-signup). 
 
-## <a name="select-syntax"></a>SELECT szintaxis
+## <a name="select-syntax"></a>Szintaxis kiválasztása
 
-A lekérdezésgyorsítás által támogatott egyetlen SQL utasítás a SELECT utasítás. Ez a példa minden olyan sort ad vissza, amelynek a kifejezésigaz értéket ad vissza.
+A lekérdezési gyorsítás által támogatott egyetlen SQL-utasítás a SELECT utasítás. Ez a példa minden olyan sort ad vissza, amelynél a kifejezés igaz értéket ad vissza.
 
 ```sql
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-CsV formátumú adatok esetén a `BlobStorage` *táblázatnak* a legyen .  Ez azt jelenti, hogy a lekérdezés a REST-hívásban megadott blobon fut.
-A JSON-formátumú adatok esetében a *tábla* egy "táblaleíró".   Lásd a [cikk Táblázatleírók](#table-descriptors) című részét.
+CSV formátumú adat esetén a *táblának* a következőnek kell lennie `BlobStorage`:.  Ez azt jelenti, hogy a lekérdezés a REST-hívásban megadott blobon fog futni.
+JSON formátumú adat esetén a *tábla* a "táblázat leírója".   Lásd a jelen cikk [táblázatos descripters](#table-descriptors) című szakaszát.
 
-A következő példában minden olyan soresetében, amelyre a WHERE *kifejezés* igaz értéket ad vissza, ez az utasítás egy új sort ad vissza, amely az egyes vetítési kifejezések kiértékeléséből áll.
+Az alábbi példában minden olyan sorra, amelynél a WHERE *kifejezés* igaz értéket ad vissza, ez az utasítás egy új sort fog visszaadni, amely az egyes leképezési kifejezések kiértékelésével készül.
 
 
 ```sql
 SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-A következő példa egy összesített számítást ad vissza (például egy adott oszlop átlagértéke) minden olyan sorban, amelyre a *kifejezés* igaz értéket ad vissza. 
+Az alábbi példa egy összesített számítást ad vissza (például egy adott oszlop átlagos értékét) az egyes sorokon, amelyek esetében a *kifejezés* igaz értéket ad vissza. 
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-A következő példa megfelelő eltolásokat ad vissza a CSV-formátumú blob felosztásához.  Tekintse meg a [cikk Sys.Split](#sys-split) című részét.
+A következő példa egy CSV-formátumú blob felosztására alkalmas eltolásokat ad vissza.  Tekintse meg a jelen cikk [sys. Split](#sys-split) című szakaszát.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -60,21 +60,21 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 |Adattípus|Leírás|
 |---------|-------------------------------------------|
-|INT      |64 bites aláírt egész szám.                     |
-|Úszó    |64 bites ("dupla pontosságú") lebegőpontos.|
-|Karakterlánc   |Változó hosszúságú Unicode karakterlánc.            |
-|Időbélyeg|Egy pont az időben.                           |
-|Logikai  |TRUE (igaz) vagy FALSE (hamis).                             |
+|INT      |64 bites előjeles egész szám.                     |
+|FLOAT    |64 bites ("dupla pontosságú") lebegőpontos pont.|
+|KARAKTERLÁNC   |Változó hosszúságú Unicode-karakterlánc.            |
+|IDŐBÉLYEG|Egy adott időpontban.                           |
+|LOGIKAI  |TRUE (igaz) vagy FALSE (hamis).                             |
 
-A CSV-formátumú adatok értékeinek olvasásakor az összes érték karakterláncként lesz olvasható.  A karakterlánc-értékek cast kifejezésekkel más típusokká is konvertálhatók.  Az értékek implicit módon a környezettől függően más típusokra is leadhatók. További információ: [Adattípus-elsőbbség (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
 ## <a name="expressions"></a>Kifejezések
 
-### <a name="referencing-fields"></a>Mezőkre való hivatkozás
+### <a name="referencing-fields"></a>Viszonyítási mezők
 
-A JSON-formátumú adatok, illetve a fejlécsorral rendelkező CSV-formátumú adatok esetében a mezők név szerint is hivatkozhatók.  A mezőnevek et lehet idézni vagy nem idézni. Az idézett mezőnevek idézőjelek közé vannak bezárva ("), szóközöket tartalmazhatnak, és a kis- és nagybetűket is érzékenyen befolyásolják.  A nem idézett mezőnevek nem különböznek a kis- és nagybetűktől, és nem tartalmazhatnak speciális karaktereket.
+A JSON-formátumú adat vagy a CSV formátumú, fejléctel formázott adat esetén a mezőket név alapján lehet hivatkozni.  A mezőnevek idézőjelek vagy nem idézőjelek lehetnek. Az idézőjeles mezők neve idézőjelek közé (") van lefoglalva, tartalmazhat szóközt, és megkülönbözteti a kis-és nagybetűket.  A nem jegyzett mezők neve kis-és nagybetűk megkülönböztetése, és nem tartalmazhat speciális karaktereket.
 
-A CSV-formátumú adatokban a mezőkre sorszámmal is lehet hivatkozni, aláhúzásjellel (_) előtaggal.  Az első mezőre például _1, a tizenegyedik mezőre (_1) lehet hivatkozni.  A mezők sorszámonkénti hivatkozása olyan CSV-formátumú adatok esetében hasznos, amelyek nem tartalmaznak fejlécsort, ebben az esetben egy adott mezőre csak sorszámmal lehet hivatkozni.
+CSV-formázott adat esetén a mezőket a sorszám alapján is hivatkozhatjuk, aláhúzás (_) karakterrel.  Előfordulhat például, hogy az első mező _1-ként hivatkozik, vagy a tizenegyedik mező _11 néven hivatkozik rá.  A mezők sorszám szerinti hivatkozási értéke olyan CSV-formázott adatok esetében hasznos, amelyek nem tartalmaznak fejlécsort, ebben az esetben az egyetlen lehetőség, hogy egy adott mezőre hivatkozzon a sorszám.
 
 ### <a name="operators"></a>Operátorok
 
@@ -82,19 +82,19 @@ A következő szabványos SQL-operátorok támogatottak:
 
 ``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
 
-Ha az operátor bal és jobb oldalán lévő adattípusok eltérőek, akkor az automatikus konvertálás az itt megadott szabályok szerint történik: [Adattípus-elsőbbség (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
-A lekérdezés gyorsítása SQL nyelv támogatja csak egy nagyon kis részét az adattípusok tárgyalt a cikkben.  Lásd a cikk [Adattípusok](#data-types) című részét.
+A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok nagyon kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
-### <a name="casts"></a>Vet
+### <a name="casts"></a>Típuskonverziók
 
-A lekérdezés gyorsítása SQL nyelv támogatja a CAST operátor, a szabályok szerint itt: [Adattípus átalakítása (Database Engine)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+A lekérdezés gyorsításának SQL-nyelve támogatja a CAST operátort a szabályoknak megfelelően: [adattípus-átalakítás (adatbázismotor)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
 
-A lekérdezés gyorsítása SQL nyelv támogatja csak egy kis része az adattípusok tárgyalt a cikkben.  Lásd a cikk [Adattípusok](#data-types) című részét.
+A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
 ### <a name="string-functions"></a>Sztringfüggvények
 
-A lekérdezésgyorsítás SQL-nyelv e következő szabványos SQL-karakterlánc-függvényeket támogatja:
+A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakterlánc-függvényeket támogatja:
 
 ``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
 
@@ -109,7 +109,7 @@ A lekérdezésgyorsítás SQL-nyelv e következő szabványos SQL-karakterlánc-
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-A [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) funkció segít a minta keresésében. Íme néhány példa, hogy használja a [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) funkciót ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``keresni az adatkarakterlánc .
+A [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvény segítségével megkeresheti a mintázatot. Íme néhány példa, amely a [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvényt használja az adatkarakterlánc ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``kereséséhez.
 
 |Lekérdezés|Példa|
 |--|--|
@@ -121,15 +121,15 @@ A [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sq
 
 ### <a name="date-functions"></a>Dátumfüggvények
 
-A következő szabványos SQL dátumfüggvények támogatottak:
+A következő szabványos SQL Date függvények támogatottak:
 
 ``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
 
-Jelenleg konvertálni az összes [dátum formátumok szabványos IS08601](https://www.w3.org/TR/NOTE-datetime). 
+Jelenleg a [szabványos IS08601 összes dátumformátum-formátumát](https://www.w3.org/TR/NOTE-datetime)konvertáljuk. 
 
 #### <a name="date_add-function"></a>DATE_ADD függvény
 
-A lekérdezés gyorsítása SQL nyelv támogatja év, hónap, ``DATE_ADD`` nap, óra, perc, második a függvény.
+A lekérdezés gyorsításának SQL nyelve az ``DATE_ADD`` év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja.
 
 Példák:
 
@@ -140,16 +140,16 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF függvény
 
-A lekérdezés gyorsítása SQL nyelv támogatja év, hónap, ``DATE_DIFF`` nap, óra, perc, második a függvény.
+A lekérdezés gyorsításának SQL nyelve az ``DATE_DIFF`` év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
 DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00') 
 ```
 
-#### <a name="extract-function"></a>KIVONÁS függvény
+#### <a name="extract-function"></a>Kinyerési függvény
 
-A ``DATE_ADD`` függvényhez támogatott dátumrésztől eltérő KIBONTÁS esetén a lekérdezésgyorsítás SQL-nyelve támogatja a timezone_hour és a timezone_minute dátumrészként.
+A ``DATE_ADD`` függvény által támogatott, a Date résztől eltérő Kibontás esetén a lekérdezési gyorsítás SQL nyelve a timezone_hour és az timezone_minutet is támogatja.
 
 Példák:
 
@@ -167,41 +167,41 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-Ez a táblázat azokat a karakterláncokat ismerteti, ``TO_STRING`` amelyek segítségével megadhatja a függvény kimeneti formátumát.
+Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a ``TO_STRING`` függvény kimeneti formátumának megadásához használhat.
 
-|Karakterlánc formázása    |Kimenet                               |
+|Formázó sztring    |Kimenet                               |
 |-----------------|-------------------------------------|
-|éé               |Év 2 számjegyű formátumban – 1999 mint "99"|
+|éé               |Év 2 számjegyű formátumban – 1999 as "99"|
 |é                |Év 4 számjegyű formátumban               |
 |éééé             |Év 4 számjegyű formátumban               |
-|M                |Az év hónapja – 1                    |
+|M                |Év hónapja – 1                    |
 |MM               |Nulla párnázott hónap – 01               |
-|MMM              |Abbr. év hónapja -JAN            |
+|MMM              |Abbr. Év hónapja – JAN            |
 |MMMM             |Teljes hónap – május                      |
-|n                |A hónap napja (1-31)                  |
-|nn               |A hónap nulla párnázott napja (01-31)     |
-|a                |AM vagy PM                             |
-|ó                |A nap órája (1-12)                   |
+|n                |Hónap napja (1-31)                  |
+|nn               |Nulla (nap) – hónap (01-31)     |
+|a                |AM vagy du                             |
+|ó                |Nap órája (1-12)                   |
 |óó               |Nulla párnázott óra od nap (01-12)     |
-|H                |A nap órája (0-23)                   |
-|HH               |Nulla párnázott napóra (00-23)      |
-|m                |Óraperc (0-59)                |
+|H                |Nap órája (0-23)                   |
+|HH               |Nulla párnázott óra (00-23)      |
+|m                |Perc/óra (0-59)                |
 |hh               |Nulla párnázott perc (00-59)           |
-|s                |Perc második (0-59)             |
+|s                |Percek másodpercben (0-59)             |
 |mm               |Nulla párnázott másodperc (00-59)          |
-|S                |Másodperctört (0,1-0,9)        |
-|SS               |Másodperctört (0,01-0,99)      |
-|Éer              |Másodperctört (0.001-0.999)    |
+|S                |Másodpercek hányada (0,1-0.9)        |
+|SS               |Másodpercek hányada (0.01-0,99)      |
+|ÉER              |Másodpercek hányada (0,001-0.999)    |
 |X                |Eltolás órában                      |
-|XX vagy XXXX       |Eltolás órában és percben (+0430)  |
-|XXX vagy XXXXX     |Eltolás órában és percben (-07:00) |
+|XX vagy XXXX       |Eltolás óra és percben (+ 0430)  |
+|XXX vagy XXXXX     |Eltolás óra és percben (-07:00) |
 |x                |Eltolás órában (7)                  |
-|xx vagy xxxx       |Eltolás órában és percben (+0530)    |
-|Xxx vagy xxxxx     |Eltolás órában és percben (+05:30)   |
+|XX vagy XXXX       |Eltolás óra és perc között (+ 0530)    |
+|XXX vagy XXXXX     |Eltolás óra és perc között (+ 05:30)   |
 
 #### <a name="to_timestamp-function"></a>TO_TIMESTAMP függvény
 
-Csak IS08601 formátumok támogatottak.
+Csak IS08601-formátumok támogatottak.
 
 Példák:
 
@@ -211,49 +211,49 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> A ``UTCNOW`` funkció segítségével is lehetővé teheti a rendszeridőt.
+> A rendszeridőt a ``UTCNOW`` függvény használatával is lekérheti.
 
 
 ## <a name="aggregate-expressions"></a>Összesítő kifejezések
 
-A SELECT utasítás egy vagy több vetítési kifejezést vagy egyetlen összesítő kifejezést tartalmazhat.  A következő összesítő kifejezések támogatottak:
+A SELECT utasítás tartalmazhat egy vagy több leképezési kifejezést, vagy egyetlen összesítő kifejezést is.  A következő összesített kifejezések támogatottak:
 
 |Kifejezés|Leírás|
 |--|--|
-|[DARAB(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |A predikátumkifejezésnek megfelelő rekordok számát adja eredményül.|
-|[DARAB(kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Azon rekordok számát adja eredményül, amelyek kifejezése nem null értékű.|
-|[ÁTLAG(kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |A kifejezés nem null értékű értékeinek átlagát adja eredményül.|
-|[MIN(kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |A kifejezés minimális nem null értékét adja eredményül.|
-|[MAX(kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15)    |A kifejezés maximális nem null értékét adja eredményül.|
-|[SZUM(kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |A kifejezés összes nem null értékének összegét adja eredményül.|
+|[DARABSZÁM (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |A predikátum kifejezésének megfelelő rekordok számát adja vissza.|
+|[DARABSZÁM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Azon rekordok számát adja vissza, amelyek esetében a kifejezés nem null értékű.|
+|[ÁTLAG (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |A kifejezés null értéktől eltérő értékeinek átlagát adja vissza.|
+|[MIN (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |A kifejezés minimális nem null értékű értékét adja vissza.|
+|[Max (kifejezés](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |A kifejezés nem null értékű maximális értékét adja vissza.|
+|[SUM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |A kifejezés összes nem null értékének összegét adja vissza.|
 
-### <a name="missing"></a>Hiányzó
+### <a name="missing"></a>HIÁNYZÓ
 
-Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezésgyorsítás SQL-nyelv támogat.  JSON-adatok esetén, ha egy mező hiányzik egy ``IS MISSING`` adott bemeneti rekordból, a kifejezésmező értéke igaz.
+Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezés GYORSÍTÁSának SQL-nyelve támogat.  JSON-adatok esetén, ha egy mező hiányzik egy adott bemeneti rekordból, a kifejezés mező ``IS MISSING`` az igaz logikai értéket fogja kiértékelni.
 
 <a id="table-descriptors" />
 
-## <a name="table-descriptors"></a>Táblaleírók
+## <a name="table-descriptors"></a>Tábla leírói
 
-CsV-adatok esetén a tábla `BlobStorage`neve mindig .  Például:
+CSV-adatként a tábla neve mindig `BlobStorage`.  Például:
 
 ```sql
 SELECT * FROM BlobStorage
 ```
 
-A JSON-adatok kal kapcsolatban további lehetőségek állnak rendelkezésre:
+A JSON-információk esetében további lehetőségek érhetők el:
 
 ```sql
 SELECT * FROM BlobStorage[*].path
 ```
 
-Ez lehetővé teszi a JSON-adatok részhalmazai lekérdezéseit.
+Ez lehetővé teszi, hogy a lekérdezések a JSON-adat alkészletei felett legyenek.
 
-JSON-lekérdezések esetén az elérési utat a FROM záradék egy részében is megemlítheti. Ezek az elérési utak segítenek a JSON-adatok részhalmazának elemzésében. Ezek az elérési utak jsontömb- és objektumértékekre hivatkozhatnak.
+A JSON-lekérdezések esetében a FROM záradék részét képező elérési utat is megemlítheti. Ezek az elérési utak segítenek a JSON-adathalmazok elemzésében. Ezek az elérési utak a JSON-tömbre és az objektumok értékére is hivatkozhatnak.
 
-Vegyünk egy példát, hogy megértsük ezt részletesebben.
+Vegyük például ezt részletesebben.
 
-Ezek a mintaadataink:
+Ez a mintaadatok:
 
 ```json
 {
@@ -279,50 +279,50 @@ Ezek a mintaadataink:
 }
 ```
 
-Lehet, hogy csak `warehouses` a fenti adatokból származó JSON-objektum érdekli. Az `warehouses` objektum JSON-tömbtípus, így ezt a FROM záradékban is megemlítheti. A mintalekérdezés valahogy így nézhet ki.
+Lehet, hogy csak a fenti adatokból származó `warehouses` JSON-objektum érdekli. Az `warehouses` objektum egy JSON-tömb típusa, ezért ezt a FROM záradékban lehet megemlíteni. A mintául szolgáló lekérdezés valahogy így néz ki.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
 ```
 
-A lekérdezés beszerzi az összes mezőt, de csak a szélességi fokot választja ki.
+A lekérdezés lekérdezi az összes mezőt, de csak a földrajzi szélességet választja.
 
-Ha csak a `dimensions` JSON-objektum értékét szeretné elérni, akkor a lekérdezésben hivatkozhat az objektumra. Például:
+Ha csak a `dimensions` JSON-objektum értékének elérését szeretné elérni, a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Például:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-Ez korlátozza az `dimensions` objektum tagjaihoz való hozzáférést is. Ha a JSON-mezők más tagjait és a JSON-objektumok belső értékeit szeretné elérni, akkor a következő példában látható lekérdezéseket is használhatja:
+Ez korlátozza a hozzáférést az `dimensions` objektum tagjaihoz is. Ha a JSON-mezők más tagjait és a JSON-objektumok belső értékeit is el szeretné érni, akkor olyan lekérdezéseket használhat, mint például az alábbi példában látható:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> A BlobStorage és\*a BlobStorage[ ] egyaránt a teljes objektumra hivatkozik. Ha azonban van egy elérési út a FROM záradékban, akkor\*a BlobStorage[ ].path
+> A BlobStorage és a\*BlobStorage [] mindkettő a teljes objektumra vonatkozik. Ha azonban a FROM záradékban van egy elérési út, akkor a következőt kell használnia:\*BlobStorage []. Path
 
 <a id="sys-split" />
 
-## <a name="syssplit"></a>Sys.Split
+## <a name="syssplit"></a>Sys. Split
 
-Ez a SELECT utasítás speciális formája, amely csak CSV-formátumú adatok esetén érhető el.
+Ez a SELECT utasítás speciális formája, amely csak a CSV-formátumú adatokhoz érhető el.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-Használja ezt az utasítást azokban az esetekben, amikor le szeretné tölteni, majd kötegekben fel szeretné dolgozni a CSV-adatrekordokat. Így a rekordokat párhuzamosan dolgozhatja fel ahelyett, hogy egyszerre kellene letöltenie az összes rekordot. Ez az utasítás nem ad vissza rekordokat a CSV-fájlból. Ehelyett kötegméretek gyűjteményét adja vissza. Ezután az egyes kötegek mérete segítségével lekérheti az adatrekordok kötegét. 
+Használja ezt az utasítást azokban az esetekben, amikor le szeretné tölteni, majd feldolgozza a CSV-adatrekordokat a kötegekben. Így párhuzamosan feldolgozhatja a rekordokat ahelyett, hogy egyszerre le kellene töltenie az összes rekordot. Ez az utasítás nem ad vissza rekordokat a CSV-fájlból. Ehelyett a Batch-méretek gyűjteményét adja vissza. Ezután az egyes batch-méretekkel lekérheti az adatrekordok kötegét. 
 
-A *split_size* paraméterrel megadhatja, hogy az egyes kötegek hány bájtot tartalmazzanak. Ha például egyszerre csak 10 MB adatot szeretne feldolgozni, akkor az utasítás `SELECT sys.split(10485760)FROM BlobStorage` így fog kinézni: mivel a 10 MB 10 485 760 bájtnak felel meg. Minden köteg annyi rekordot tartalmaz, amennyi elfér a 10 MB-ba. 
+A *split_size* paraméterrel adhatja meg, hogy hány bájtot szeretne használni a kötegek. Ha például egyszerre csak 10 MB-nyi adat feldolgozását szeretné feldolgozni, akkor a következőhöz hasonló utasítást kell kinéznie `SELECT sys.split(10485760)FROM BlobStorage` : mivel a 10 mb értéke 10 485 760 bájt. Minden köteg annyi rekordot fog tartalmazni, amelyek elférnek a 10 MB-ban. 
 
-A legtöbb esetben az egyes kötegek mérete valamivel nagyobb lesz, mint a megadott szám. Ennek az az oka, hogy egy köteg nem tartalmazhat részleges rekordot. Ha egy köteg utolsó rekordja a küszöbérték vége előtt kezdődik, a köteg nagyobb lesz, így a teljes rekordot is tartalmazhatja. Az utolsó köteg mérete valószínűleg kisebb lesz, mint a megadott méret.
+A legtöbb esetben az egyes kötegek mérete valamivel nagyobb lesz, mint a megadott szám. Ennek oka, hogy egy köteg nem tartalmazhat részleges rekordot. Ha egy köteg utolsó rekordja a küszöb vége előtt indul el, a köteg nagyobb lesz, hogy a teljes rekordot is tartalmazza. Az utolsó köteg mérete valószínűleg kisebb lesz, mint a megadott méret.
 
 >[!NOTE]
-> A split_size legalább 10 MB-nak (10485760) kell lennie.
+> A split_sizenak legalább 10 MB (10485760) méretűnek kell lennie.
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Data Lake Storage lekérdezésgyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
-- [Adatok szűrése az Azure Data Lake Storage lekérdezésgyorsításával (előzetes verzió)](data-lake-storage-query-acceleration-how-to.md)
+- [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
+- [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)](data-lake-storage-query-acceleration-how-to.md)
 

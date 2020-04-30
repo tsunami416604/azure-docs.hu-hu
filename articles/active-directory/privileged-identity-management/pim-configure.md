@@ -1,6 +1,6 @@
 ---
-title: Mi a kiemelt identitáskezelés? - Azure AD | Microsoft dokumentumok
-description: Áttekintést nyújt az Azure AD kiemelt identitáskezelés (PIM).
+title: Mi az Privileged Identity Management? – Azure AD | Microsoft Docs
+description: Áttekintést nyújt Azure AD Privileged Identity Management (PIM) szolgáltatásról.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,60 +15,60 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81867450"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
-Az Azure Active Directory (Azure AD) privilegizált identitáskezelése (PIM) egy olyan szolgáltatás, amely lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD, az Azure és más Microsoft Online Services, például az Office 365 vagy a Microsoft Intune erőforrásait tartalmazzák.
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szolgáltatás lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban, például az Office 365-ben vagy Microsoft Intuneban található erőforrások.
 
-## <a name="reasons-to-use"></a>A használat okai
+## <a name="reasons-to-use"></a>Használat okai
 
-A szervezetek minimálisra szeretnék csökkenteni a biztonságos adatokhoz vagy erőforrásokhoz hozzáférő személyek számát, mivel ez csökkenti annak az esélyét, hogy egy rosszindulatú szereplő hozzáférjen a hozzáféréshez, vagy egy jogosult felhasználó véletlenül hatással van egy bizalmas erőforrásra. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. A vállalatoknak lehetőségük van arra, hogy igény szerinti (JIT) emelt szintű hozzáférést adjanak a felhasználóknak olyan Azure-erőforrásokhoz, mint az Azure AD. Szükség van a felügyelet, amit ezek a felhasználók csinálnak a rendszergazdai jogosultságokat.
+A szervezetek szeretnék csökkenteni azon személyek számát, akiknek hozzáférésük van az információkhoz vagy az erőforrásokhoz, mivel ez csökkenti annak az esélyét, hogy egy rosszindulatú szereplő hozzáfér az adott hozzáféréshez, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. A vállalatoknak lehetőségük van arra, hogy igény szerinti (JIT) emelt szintű hozzáférést adjanak a felhasználóknak olyan Azure-erőforrásokhoz, mint az Azure AD. Szükség van arra, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat.
 
-## <a name="what-does-it-do"></a>Mire jó ez?
+## <a name="what-does-it-do"></a>Mit csinál?
 
-A Kiemelt identitáskezelés időalapú és jóváhagyási szerepkör-aktiválást biztosít a túlzott, szükségtelen vagy a megfelelő hozzáféréssel rendelkező erőforrásokhoz való hozzáférési engedélyek kockázatának csökkentése érdekében. Íme néhány a kiemelt identitáskezelés legfontosabb jellemzői:
+A Privileged Identity Management időalapú és jóváhagyási alapú szerepkör-aktiválást biztosít az Ön számára fontos erőforrásokra vonatkozó túlzott, szükségtelen vagy nem használt hozzáférési engedélyek kockázatának csökkentése érdekében. A Privileged Identity Management főbb funkciói:
 
-- **Just-in-time** kiemelt hozzáférést biztosít az Azure AD és az Azure-erőforrások
-- **Időhöz kötött** hozzáférés hozzárendelése erőforrásokhoz kezdő és záró dátummal
-- **Jóváhagyás** szükséges a kiemelt szerepkörök aktiválásához
-- **Többtényezős hitelesítés kényszerítése** bármely szerepkör aktiválásához
-- Indoklás **justification** használata annak megértéséhez, hogy a felhasználók miért aktiválják
-- **Értesítések betöltése** a kiemelt szerepkörök aktiválásáról
-- **Hozzáférés-felülvizsgálatok lefolytatása** annak érdekében, hogy a felhasználóknak továbbra is szükségük legyen szerepkörökre
-- Naplózási **előzmények** letöltése belső vagy külső naplózáshoz
+- Az Azure AD-hez és **Az Azure-** erőforrásokhoz való, igény szerinti, Kiemelt jogosultságokkal rendelkező hozzáférés biztosítása
+- Az erőforrásokhoz való **időhöz kötött** hozzáférés kiosztása a kezdő és a záró dátumok használatával
+- **Jóváhagyás** megkövetelése a Kiemelt szerepkörök aktiválásához
+- A **többtényezős hitelesítés** betartatása bármely szerepkör aktiválásához
+- **Indoklás** használata a felhasználók aktiválásának megértéséhez
+- **Értesítések** beszerzése a Kiemelt szerepkörök aktiválása esetén
+- **Hozzáférési felülvizsgálatok** végrehajtása annak biztosításához, hogy a felhasználóknak továbbra is szükségük van
+- **Naplózási előzmények** letöltése belső vagy külső naplózáshoz
 
-## <a name="what-can-i-do-with-it"></a>Mit csináljak vele?
+## <a name="what-can-i-do-with-it"></a>Mire használhatom?
 
-A Kiemelt identitáskezelés beállítása után a bal oldali navigációs menüben a **Feladatok,** **a Kezelés**és a **Tevékenység** beállítások láthatók. Rendszergazdaként az **Azure AD-szerepkörök** és az **Azure-erőforrás-szerepkörök** kezelése között választhat. Ha kiválasztja a kezelni kívánt szerepkörök típusát, az adott szerepkörtípushoz hasonló beállítások jelennek meg.
+A Privileged Identity Management beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés**és a **tevékenységek** beállításai. Rendszergazdaként választhatja az **Azure ad-szerepkörök** és az Azure- **erőforrások** szerepköreinek kezelését. Ha kiválasztja a felügyelni kívánt szerepkörök típusát, az adott szerepkör típusához hasonló beállítások jelennek meg.
 
-![Képernyőkép a kiemelt identitáskezelésről az Azure Portalon](./media/pim-configure/pim-quickstart.png)
+![A Azure Portal Privileged Identity Management képernyőképe](./media/pim-configure/pim-quickstart.png)
 
-## <a name="who-can-do-what"></a>Ki mire képes?
+## <a name="who-can-do-what"></a>Ki teheti?
 
-Az Azure AD-szerepkörök privilegizált identitáskezelés, csak a kiemelt szerepkör-rendszergazdai vagy globális rendszergazdai szerepkörben lévő felhasználó kezelheti a hozzárendelések más rendszergazdák számára. A [kiemelt identitáskezelés kezeléséhez más rendszergazdák](pim-how-to-give-access-to-pim.md)is hozzáférhetnek. A globális rendszergazdák, a biztonsági rendszergazdák, a globális olvasók és a biztonsági olvasók is megtekinthetik az Azure AD-szerepkörök hozzárendeléseit a kiemelt identitáskezelésben.
+Privileged Identity Management Azure AD-szerepkörök esetében csak a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai szerepkörrel rendelkező felhasználók kezelhetik a többi rendszergazda hozzárendeléseit. A [Privileged Identity Management kezeléséhez hozzáférést biztosíthat más rendszergazdáknak](pim-how-to-give-access-to-pim.md). A globális rendszergazdák, a biztonsági rendszergazdák, a globális olvasók és a biztonsági olvasók is megtekinthetik Privileged Identity Management Azure AD szerepköreinek hozzárendeléseit.
 
-A kiemelt identitáskezelés ben az Azure-erőforrás-szerepkörök esetében csak egy előfizetés-rendszergazda, egy erőforrás-tulajdonos vagy egy erőforrás-felhasználói hozzáférés-rendszergazda kezelheti a más rendszergazdák hozzárendeléseit. A kiemelt szerepkör-rendszergazdák, biztonsági rendszergazdák vagy biztonsági olvasók alapértelmezés szerint nem rendelkeznek hozzáféréssel az Azure-erőforrás-szerepkörök hozzárendeléseinek megtekintéséhez a kiemelt identitáskezelésben.
+Privileged Identity Management Azure-beli erőforrás-szerepköreihez csak az előfizetés rendszergazdája, az erőforrás tulajdonosa, vagy egy erőforrás felhasználói hozzáférés-rendszergazdája kezelheti a többi rendszergazda hozzárendeléseit. Azok a felhasználók, akik Kiemelt szerepkörű rendszergazdák, biztonsági rendszergazdák vagy biztonsági olvasók, nem rendelkeznek hozzáféréssel az Azure-beli erőforrás-szerepkörök hozzárendeléseinek megtekintéséhez Privileged Identity Managementban.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
 A Privileged Identity Management a következő forgatókönyveket támogatja:
 
-### <a name="privileged-role-administrator-permissions"></a>Kiemelt szerepkör-rendszergazdai engedélyek
+### <a name="privileged-role-administrator-permissions"></a>Kiemelt szerepkörű rendszergazdai jogosultságok
 
 - Jóváhagyás engedélyezése speciális szerepkörökhöz
-- Jóváhagyó felhasználók vagy csoportok megadása a kérelmek jóváhagyásához
+- Jóváhagyó felhasználók vagy csoportok meghatározása a kérelmek jóváhagyásához
 - Speciális szerepkörökhöz tartozó kérelmek és jóváhagyások előzményeinek megtekintése
 
-### <a name="approver-permissions"></a>Jóváhagyó engedélyei
+### <a name="approver-permissions"></a>Jóváhagyói engedélyek
 
 - Függőben lévő jóváhagyások (kérelmek) megtekintése
-- Szerepkör-emelési kérelmek jóváhagyása vagy elutasítása (egyszeri és tömeges)
-- Jóváhagyásom vagy elutasításom indoklása
+- Szerepkör-jogosultságszint-emelési kérések jóváhagyása vagy elutasítása (egyetlen és tömeges)
+- Jóváhagyás vagy elutasítás indoklásának megadása
 
 ### <a name="eligible-role-user-permissions"></a>Jogosult szerepkör felhasználói engedélyei
 
@@ -78,30 +78,30 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 
 ## <a name="terminology"></a>Terminológia
 
-A kiemelt identitáskezelés és a dokumentáció jobb megértéséhez tekintse át az alábbi feltételeket.
+A Privileged Identity Management és a dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
 | Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Leírás |
 | --- | --- | --- |
-| Támogatható | Típus | Olyan szerepkör-hozzárendelés, amelya szerepkör használatához egy vagy több műveletet kell végrehajtania. Ha egy felhasználó jogosulttá vált egy szerepkörre, ez azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell végrehajtania. Nincs különbség a hozzáférés adott valaki egy állandó versus jogosult szerepkör-hozzárendelés. Az egyetlen különbség az, hogy néhány ember nem kell, hogy a hozzáférés minden alkalommal. |
-| Aktív | Típus | Olyan szerepkör-hozzárendelés, amely nem igényel felhasználótól semmilyen műveletet a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz rendelt jogosultságokkal. |
-| aktiválás |  | Egy vagy több művelet végrehajtása egy olyan szerepkör használatára, amelyre a felhasználó jogosult. A műveletek közé tartozhat a többtényezős hitelesítés (MFA) ellenőrzése, az üzleti indoklás megadása vagy a kijelölt jóváhagyók jóváhagyásának kérése. |
-| Hozzárendelt | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználó. |
-| Aktivált | Állapot | Olyan felhasználó, aki jogosult szerepkör-hozzárendeléssel rendelkezik, végrehajtotta a szerepkör aktiválásához szükséges műveleteket, és most aktív.  Aktiválásután a felhasználó használhatja a szerepkört egy előre konfigurált időszak-of-time, mielőtt újra aktiválnia kell. |
-| állandó támogatható | Időtartam | Szerepkör-hozzárendelés, ahol a felhasználó mindig jogosult a szerepkör aktiválására. |
-| állandó aktív | Időtartam | Szerepkör-hozzárendelés, ahol a felhasználó mindig használhatja a szerepkört anélkül, hogy bármilyen műveletet. |
-| lejár jogosult | Időtartam | Olyan szerepkör-hozzárendelés, amelyben a felhasználó jogosult a szerepkör aktiválására egy megadott kezdési és befejezési dátumon belül. |
-| lejárat aktív | Időtartam | Olyan szerepkör-hozzárendelés, amelyben a felhasználó anélkül használhatja a szerepkört, hogy bármilyen műveletet végrehajtana egy megadott kezdési és befejezési dátumon belül. |
-| just-in-time (JIT) hozzáférés |  | Olyan modell, amelyben a felhasználók ideiglenes engedélyeket kapnak a kiemelt feladatok végrehajtására, ami megakadályozza, hogy rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek az engedélyek lejárta után. A hozzáférés csak akkor érhető el, ha a felhasználóknak szükségük van rá. |
-| a legkisebb jogosultsághoz való hozzáférés elve |  | Ajánlott biztonsági gyakorlat, amelyben minden felhasználó csak a feladatok elvégzéséhez szükséges minimális jogosultságokkal rendelkezik. Ez a gyakorlat minimálisra csökkenti a globális rendszergazdák számát, és ehelyett bizonyos esetekben adott rendszergazdai szerepköröket használ. |
+| támogatható | Típus | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
+| Active | Típus | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |
+| aktiválás |  | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
+| rendelt | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználó. |
+| aktivált | Állapot | A jogosult szerepkör-hozzárendeléssel rendelkező felhasználók elvégezték a szerepkör aktiválásához szükséges műveleteket, és most aktívak.  Az aktiválás után a felhasználó használhatja a szerepkört egy előre konfigurált időszakra, mielőtt újra aktiválni kellene. |
+| állandó jogosultság | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználó mindig jogosult a szerepkör aktiválásához. |
+| állandó aktív | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználók minden művelet végrehajtása nélkül bármikor használhatják a szerepkört. |
+| jogosultság lejárata | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználó jogosult a szerepkör aktiválására a megadott kezdési és befejezési dátumon belül. |
+| aktív lejárat | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználó a megadott kezdési és befejezési dátumon belüli műveletek végrehajtása nélkül használhatja a szerepkört. |
+| igény szerinti (JIT) hozzáférés |  | Olyan modell, amelyben a felhasználók ideiglenes engedélyeket kapnak a Kiemelt feladatok végrehajtásához, ami megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek az engedélyek lejárta után. A hozzáférés csak akkor adható meg, ha a felhasználóknak szüksége van rá. |
+| a minimális jogosultsági szintű hozzáférés elve |  | Ajánlott biztonsági eljárás, amelyben minden felhasználó csak a végrehajtásra jogosult feladatok végrehajtásához szükséges minimális jogosultságokkal rendelkezik. Ez a gyakorlat lekicsinyíti a globális rendszergazdák számát, és bizonyos helyzetekben adott rendszergazdai szerepköröket használ. |
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-A felhasználók licenceiről a [Kiemelt identitáskezelés licenckövetelményei](subscription-requirements.md)című témakörben talál további információt.
+További információ a felhasználók licencéről: a [Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [A kiemelt identitáskezelés használatára vonatkozó licenckövetelmények](subscription-requirements.md)
+- [A Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [A Privileged Identity Management üzembe helyezése](pim-deployment-plan.md)

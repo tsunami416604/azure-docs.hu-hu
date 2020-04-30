@@ -1,6 +1,6 @@
 ---
-title: Tanácsadási szolgáltatási ajánlat létrehozása a Partnerközpontban – Azure Piactér
-description: Megtudhatja, hogyan tehet közzé tanácsadási szolgáltatási ajánlatot az Azure Marketplace-en vagy az AppSource-ban a PartnerCenter használatával.
+title: Tanácsadási szolgáltatási ajánlat létrehozása a partner Centerben – Azure Marketplace
+description: Ismerje meg, hogyan tehet közzé egy tanácsadói szolgáltatást az Azure Marketplace-en vagy a AppSource a partner Center használatával.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,221 +8,221 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869797"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat létrehozása
 
 > [!IMPORTANT]
-> Tanácsadói szolgáltatási ajánlatainak kezelését áthelyezzük a Cloud Partner Portal-ról a Partner Centerre. Az ajánlatok áttelepítéséig kövesse az Azure és a [Dynamics 365 tanácsadási szolgáltatásajánlatának](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) utasításait a Cloud Partner Portal számára az ajánlatok kezeléséhez.
+> A tanácsadási szolgáltatási ajánlatok felügyeletét a Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok migrálása előtt kövesse az [Azure-ban és a Dynamics 365 Consulting Service-ajánlatban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) található utasításokat az ajánlatok kezeléséhez Cloud Partner Portal.
 
-Ez a cikk azt ismerteti, hogy miként tehet közzé tanácsadási szolgáltatási ajánlatot az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) vagy az [AppSource-on.](https://appsource.microsoft.com/) A List Consulting szolgáltatásajánlatai a Microsoft [Dynamics 365](https://dynamics.microsoft.com/) és az AppSource Power Platform platformon alapulnak. A Microsoft Azure-on alapuló Tanácsadási szolgáltatásajánlatok listázása az Azure Marketplace-en.
+Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadói szolgáltatást az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy a [AppSource](https://appsource.microsoft.com/). A Microsoft [Dynamics 365](https://dynamics.microsoft.com/) -es és a AppSource-on futó Power platformon alapuló tanácsadói szolgáltatási ajánlatokat sorolja fel. Az Azure Marketplace-en Microsoft Azureon alapuló tanácsadói szolgáltatási ajánlatok listázása.
 
-Ha az Azure Marketplace-en vagy az AppSource Consulting-szolgáltatásokban szeretne tanácsadási szolgáltatási ajánlatot létrehozni, először rendelkeznie kell [egy közzétevői fiókkal a Partnerközpontban,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)és fiókját be kell vonni a kereskedelmi piactér programba. Az ajánlat létrehozása előtt tekintse át a [Tanácsadási szolgáltatás előfeltételeit.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)
+Ha az Azure Marketplace-en vagy a AppSource Consulting Servicesben szeretne tanácsadói szolgáltatási ajánlatot létrehozni, először [rendelkeznie kell egy kiadói fiókkal a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), és a fiókját regisztrálni kell a kereskedelmi piactér programban. Az ajánlat létrehozása előtt tekintse át az előfeltételeket a [tanácsadási szolgáltatás előfeltételei](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)című cikkben.
 
 ## <a name="publishing-benefits"></a>Közzétételi előnyök
 
-A kereskedelmi piacon való közzététel előnyei:
+A kereskedelmi piactéren való közzététel előnyei:
 
-- Népszerűsítse vállalatát a Microsoft márkanév használatával.
-- Potenciálisan több mint 100 millió Office 365- és Dynamics 365-felhasználót érhet el az AppSource-on, és több mint 200 000 szervezetet az Azure Marketplace-en keresztül.
-- Szerezzen kiváló minőségű érdeklődőket ezekről a piacterekről.
-- A szolgáltatások népszerűsítése a Microsoft helyszíni és távértékesítési csapatai által
+- Népszerűsítse vállalatát a Microsoft Brand használatával.
+- Az Azure Marketplace-en több mint 100 000 000 Office 365-és Dynamics 365-felhasználó érhető el AppSource és több mint 200 000 szervezeten keresztül.
+- Kiváló minőségű érdeklődőket fogadhat ezekből a Piactérről.
+- A szolgáltatásait a Microsoft és a kereskedelmi csapatok népszerűsítik
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
-A fent leírt követelmények teljesítése után kövesse az alábbi lépéseket a tanácsadási szolgáltatási ajánlat létrehozásához.
+A fent ismertetett követelmények teljesítése után kövesse az alábbi lépéseket a tanácsadói szolgáltatási ajánlat létrehozásához.
 
-1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com), majd válassza a felső menü **Irányítópult** parancsát.
-2. A bal oldali navigációs sávon válassza a **Kereskedelmi piactér**lehetőséget, majd az **Áttekintés**lehetőséget.
+1. Jelentkezzen be a [partner Center](https://partner.microsoft.com)webhelyre, majd válassza az **irányítópult** lehetőséget a felső menüben.
+2. A bal oldali navigációs sávon válassza a **kereskedelmi piactér**lehetőséget, majd az **Áttekintés**lehetőséget.
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="A kereskedelmi piactér menüjének szemléltetése":::
+    :::image type="content" source="media/cs-menu-overview.png" alt-text="A kereskedelmi Piactéri menü bemutatása":::
 
-3. Válassza a **+ Új ajánlat**lehetőséget, majd a Consulting service **lehetőséget.**
+3. Válassza az **+ új ajánlat**, majd a **tanácsadási szolgáltatás**elemet.
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="Új ajánlat létrehozásához a gombot mutatja be.":::
+    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="Egy új ajánlat létrehozásához ábrázolja a gombot.":::
 
-4. Adja meg **az ajánlatazonosítót.** Ez a fiókban lévő minden egyes ajánlat egyedi azonosítója.
+4. Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
-    - Ez az azonosító látható az ügyfelek számára a piactéri ajánlat webcímében.
-    - Csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket használjon, szóközöket azonban nem. A hossz legfeljebb 50 karakter ből állhat. Ha például beírja az **1-es tesztajánlatot,** az ajánlat URL-címe a . `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
-    - Az ajánlatazonosító&#39;nem módosítható, miután kiválasztotta a **Létrehozás lehetőséget.**
+    - Ez az azonosító a Piactéri ajánlathoz tartozó webcímek ügyfelei számára látható.
+    - Csak kisbetűket, számokat, kötőjeleket és aláhúzást használjon, de nem tartalmazhat szóközt. A hossz legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat URL-címe `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`a következő lesz:.
+    - Az ajánlat azonosítója a **create (létrehozás**) gombra kattintva módosítható&#39;t.
 
-5. Adja meg **az ajánlat aliasát**. Ez a név a Partnerközpontban található ajánlatra vonatkozik.
+5. Adjon meg egy **ajánlat-aliast**. Ez az ajánlat a partner Centerben való hivatkozásához használt név.
 
-    - Ez a név nem&#39;a piactéren. Ez&#39;eltér az ajánlat nevét és egyéb értékeket, amelyek megjelennek az ügyfelek számára. Ebben a mezőben olyan nevet rendelhet az ajánlathoz, amely hasznosabb az ajánlat belső azonosításához; nem jelenik meg az ügyfelek számára.
-    - Az ajánlatalias&#39;nem módosítható a **Létrehozás (Létrehozás) választógombot.**
+    - Ezt a nevet nem&#39;t használja a piactéren. Az ajánlat neve és az ügyfelek számára megjelenített egyéb értékek eltérnek.&#39; Ennek a mezőnek a használatával olyan nevet rendelhet az ajánlathoz, amely hasznos lehet az ajánlat belső azonosításához; nem jelenik meg az ügyfelek számára.
+    - Az ajánlat aliasa&#39;t a **create (létrehozás**) lehetőség kiválasztása után módosítható.
 
-Miután megadta ezt a két értéket, válassza a **Létrehozás** gombot az **Ajánlat beállítási** lapján való folytatáshoz.
+A két érték megadása után a **Létrehozás** gombra kattintva folytathatja az **ajánlat beállítása** lapot.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-Miután megadta az ajánlatazonosítót és az ajánlataliast, a PartnerKözpont létrehoz egy ajánlattervezetet, és megjeleníti az **Ajánlat beállítási** oldalát. Az ajánlat beállításához kövesse az alábbi lépéseket.
+Az ajánlat-azonosító és az ajánlati alias megadása után a partner Center létrehoz egy draft-ajánlatot, és megjeleníti az **ajánlat beállítása** lapot. Az ajánlat beállításához kövesse az alábbi lépéseket.
 
-### <a name="connect-lead-management"></a>Csatlakoztassa az érdeklődőkezelést
+### <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
-Amikor az ajánlatot a Partnerközponttal teszi közzé a piactéren, csatlakoztatnia _kell_ azt egy ügyfélkapcsolat-kezelőhöz (CRM) vagy marketingautomatizálási rendszerhez. Ez lehetővé teszi, hogy megkapja az ügyfél elérhetőségi adatait, amint valaki érdeklődést mutat vagy használja a terméket.
+Ha az ajánlatot a piactéren, a partner centeren keresztül teszi közzé, csatlakoznia _kell_ az Ügyfélkapcsolat-kezelési (CRM) vagy a Marketing Automation rendszerhez. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket.
 
-1. Válassza a **Csatlakozás** lehetőséget, ha meg szeretné adni, hogy hová küldjük az ügyfélérdeklődőket. A Partnerközpont a következő rendszereket támogatja:
+1. Válassza a **Kapcsolódás** lehetőséget, és adja meg, hová szeretné elküldeni a felhasználói érdeklődőket. A partner Center a következő rendszereket támogatja:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) az ügyfelek elköteleződése érdekében
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Ha a CRM-rendszer&#39;a fenti felsorolásban nem szerepel, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) segítségével tárolja az ügyfél érdeklődői adatait, majd exportálja az adatokat a CRM-rendszerbe.
+    > Ha a CRM rendszer nem a fent felsorolt&#39;t, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM rendszerbe.
 
-2. A Partnerközpontban történő közzétételkor csatlakoztassa az ajánlatot az érdeklődő célhelyéhez.
-3. Ellenőrizze, hogy az érdeklődő célállomásához való csatlakozás megfelelően van-e konfigurálva. Miután közzétette a Partnerközpontban,&#39;érvényesítjük a kapcsolatot, és elküldjük Önnek a tesztérdeklődőt. Amíg megtekinti az ajánlat előnézeti verzióját, tesztelheti az érdeklődőkapcsolatot is, ha megpróbálja megvásárolni az ajánlatot az előzetes verzióban.
-4. Győződjön meg arról, hogy az érdeklődő célállomásához való kapcsolat naprakész marad, hogy ne&#39;veszítse el az érdeklődőket.
+2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
+3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben,&#39;ll érvényesíteni a kapcsolatot, és elküld egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
+4. Győződjön meg arról, hogy a vezető célhely kapcsolata frissítve marad, így nem&#39;el az érdeklődőket.
 
-Íme néhány további érdeklődőkezelési erőforrás:
+Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Érdeklődőkezelés – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Érdeklődőkezelés – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Győződjön meg arról, hogy az előugró ablakok blokkolása ki van kapcsolva)
+- Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 
-Válassza **a Vázlat mentése lehetőséget,** mielőtt a következő szakaszhoz, tulajdonságokhoz lépne.
+A következő szakaszra, a Tulajdonságok elemre kattintva válassza a **Piszkozat mentése** elemet.
 
 ### <a name="properties"></a>Tulajdonságok
 
-Ezen az oldalon beállíthatja azt az elsődleges terméket, amelyet a Consulting szolgáltatás a legjobban kínál, beállíthatja a Tanácsadás szolgáltatás típusát, és kiválaszthatja a megfelelő termékeket.
+Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadási szolgáltatás a legjobban fedez, a tanácsadási szolgáltatások típusának beállítása és a megfelelő termékek kiválasztása.
 
-1. Válasszon egy **elsődleges terméket** a legördülő listából.
-2. Válasszon **egy tanácsadó szolgáltatástípust** a legördülő listából:
+1. Válasszon ki egy **elsődleges terméket** a legördülő listából.
+2. Válassza ki a **tanácsadási szolgáltatás típusát** a legördülő listából:
 
-    - **Értékelés** : Az ügyfél&#39;környezetének értékelése a megoldás alkalmazhatóságának meghatározásához, valamint a költségek és az időzítés becsléséhez.
-    - **Eligazítás** : Bevezetés egy megoldásba vagy egy tanácsadási szolgáltatásba, amely keretrendszerek, demók és ügyfélpéldák használatával felkelti az ügyfelek érdeklődését.
-    - **Megvalósítás** : Teljes körű telepítés, amely egy teljesen működő megoldást eredményez. Legfeljebb két hét alatt valósítható meg megoldások.
-    - **A koncepció igazolása** : Korlátozott hatókörű megvalósítás annak megállapítására, hogy egy megoldás megfelel-e az ügyféligényeinek.
-    - **Workshop** : Interaktív elkötelezettség, amelyet az ügyfél&#39;telephelyén. Ez magában foglalhatja a képzés, tájékoztatók, értékelések, vagy demók épül az ügyfél&#39;s adatok vagy környezet.
+    - **Értékelés** : egy ügyfél&#39;s környezet kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a költséghatékony és az időzítési becslés megadásához.
+    - **Tájékoztatás** : egy megoldás vagy egy tanácsadói szolgáltatás bevezetése, amely az ügyfelek érdeklődését keretrendszerek, bemutatók és felhasználói példák használatával hívja meg.
+    - **Implementáció** : teljes telepítés, amely teljesen működőképes megoldást eredményez. Legfeljebb két hétig vagy kevesebbben megvalósítható megoldásokra lehet korlátozni.
+    - A **koncepció igazolása** : korlátozott hatókörű implementáció annak megállapítására, hogy A megoldás megfelel-e az ügyfél igényeinek.
+    - **Workshop** : az ügyfél&#39;s telephelyén folytatott interaktív részvétel. Olyan képzéseket, tájékoztatókat, értékeléseket és bemutatókat tartalmazhat, amelyek az ügyfél&#39;s-ra vagy környezetre épülnek.
 
-1. Ha az **Azure**elsődleges termékét választotta, legfeljebb három **megoldási területet**választhat ki. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megkeresését. Ha nem&#39;az Azure-t választotta, hagyja ki ezt a lépést.
-2. Ha az Azure-tól _eltérő_ elsődleges terméket választott, legfeljebb három **alkalmazható terméket**választhat ki. Ezek megkönnyítik az AppSource ügyfelei számára az ajánlat megtalálását. További információt a Microsoft AppSource Consulting Service Listing Guidelines (PDF) [című témakörben talál.](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)
-3. Legfeljebb hat iparágat választhat **ki,** amelyekre az ajánlatvonatkozik. Ez megkönnyíti az ügyfelek számára, hogy megtalálják az ajánlatot.
-4. Akár három **kompetenciát** is hozzáadhat, amelyeket a vállalata szerzett, hogy megjelenjen a Consulting szolgáltatásajánlat-hirdetésben. Legalább egy kompetencia szükséges, kivéve az Azure Expert MSP&#39;s és az Azure Networking MSP&#39;s.
+1. Ha az **Azure**elsődleges termékét választotta, válasszon ki legfeljebb három **megoldási területet**. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha az Azure-t választja&#39;helytelen, hagyja ki ezt a lépést.
+2. Ha az Azure-tól _eltérő_ elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+3. Válasszon ki legfeljebb hat **iparágat** , amelyre az ajánlat vonatkozik. Ez megkönnyíti az ügyfelek számára az ajánlat megtalálását.
+4. Akár három olyan **kompetenciát** is felvehet, amelyet a vállalat a tanácsadási szolgáltatás ajánlatában jelenít meg. Legalább egy kompetenciára van szükség, kivéve az Azure szakértői MSP&#39;s és az Azure hálózati MSP&#39;s-t.
 
-Válassza **a Vázlat mentése lehetőséget,** mielőtt a következő szakaszra lépne, az Ajánlat listaelem.
+Válassza a **Piszkozat mentése** lehetőséget, mielőtt továbblépne a következő szakaszra.
 
-## <a name="offer-listing"></a>Ajánlat lista
+## <a name="offer-listing"></a>Ajánlati lista
 
-Itt&#39;határozza meg a piactéren megjelenő ajánlat részleteit. Ez magában foglalja az ajánlat nevét, leírását, képeit és így tovább. Ügyeljen arra, hogy kövesse a [Microsoft&#39;szabályzati lapján](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) részletezett irányelveket az ajánlat konfigurálása kor.
+Itt&#39;ll megadnia a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik az ajánlat neve, leírása, képei és így tovább. Győződjön meg arról, hogy az ajánlat konfigurálása során a [Microsoft&#39;s Policy oldalon](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) részletesen ismertetett szabályzatok jelennek meg.
 
 > [!NOTE]
-> Ajánlat részletei nem&#39;, hogy az angol, ha az &quot;ajánlat leírása kezdődik a mondat, Ez az alkalmazás csak akkor érhető el [nem angol nyelven]. &quot; Az is&#39;, hogy hasznos linket ad meg, hogy olyan nyelven kínáljon tartalmat, amely&#39;eltér az Ajánlat lista részleteiben használttól.
+> Az ajánlat részleteit nem&#39;t kell angol nyelven megadnia, ha az ajánlat leírása a &quot;kifejezéssel kezdődik, ez az alkalmazás csak [nem angol nyelven] érhető el. &quot; A&#39;s is rendben van, hogy hasznos hivatkozást biztosítson, hogy olyan nyelven kínálja a tartalmat,&#39;amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
 ### <a name="name"></a>Name (Név)
 
-Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az **Ajánlat alias** mezőjében az ajánlat létrehozásakor megadott szöveggel. A nevet később módosíthatja.
+Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
 A név:
 
-- Védjeggyel védhető (és védjegy- vagy szerzői jogi szimbólumokat is tartalmazhat).
-- Nem lehet&#39;50 karakternél hosszúabb.
-- Nem&#39;tartalmazhat emojikat.
+- Védjeggyel is rendelkezhet (és a védjegyek és a szerzői jogi szimbólumok is szerepelhetnek).
+- Legfeljebb 50 karakter hosszú lehet&#39;.
+- A&#39;hangulatjelek is tartalmazhat.
 
 ### <a name="search-results-summary"></a>Keresési eredmények összegzése
 
-Adja meg az ajánlat rövid leírását. Ez legfeljebb 100 karakter hosszú lehet, és a piactér keresési eredményei között használatos.
+Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
 ### <a name="description"></a>Leírás
 
-Adjon meg hosszabb leírást az ajánlatról, akár 3000 karakterig. Ez jelenik meg az ügyfelek számára a piactéri lista áttekintése.
+Adja meg az ajánlat hosszabb leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a Piactéri listák áttekintésében.
 
-A leírásban szerepeljen az alábbiak közül egy vagy több:
+A leírásban vegyen fel egyet vagy többet a következők közül:
 
-- Az ajánlat értékét és legfontosabb előnyeit
-- Kategória vagy iparági szövetségek, vagy mindkettő
+- Az ajánlat által biztosított érték és kulcs előnye
+- Kategória-vagy iparági társulások, vagy mindkettő
 - Alkalmazáson belüli vásárlási lehetőségek
 - Minden szükséges közzététel
 
-Íme néhány tipp az írás a leírás:
+Íme néhány tipp a Leírás írásához:
 
-- Egyértelműen írja le az ajánlat értékét a leírás első néhány mondatában. Adja meg a következő elemeket:
+- A Leírás első néhány mondatában egyértelműen ismertesse az ajánlat értékét. Adja meg a következő elemeket:
   - Az ajánlat leírása.
-  - Az ajánlat előnyeit élvező felhasználó típusa.
-  - Az ügyfél igényeinek megfelelően vagy az ajánlat címeinek kérdésén.
-- Ne feledje, hogy az első néhány mondat megjelenhet a keresési eredmények között.
-- Ne&#39;a termék értékesítéséhez szükséges funkciókra és funkciókra támaszkodjon. Ehelyett összpontosítson az ajánlat által nyújtott értékre.
-- Próbálja meg használni az iparág-specifikus szókincs vagy előny-alapú megfogalmazás.
+  - Az ajánlat által előnyben részesülő felhasználó típusa.
+  - Az ügyfélnek szüksége van vagy kiadja az ajánlat címét.
+- Ne feledje, hogy az első néhány mondat a keresési eredmények között jelenhet meg.
+- Nem&#39;t a termék értékesítéséhez szükséges funkciókra és funkciókra támaszkodhat. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
+- Az iparágra jellemző szókincset vagy juttatáson alapuló szövegezést érdemes használni.
 
-Ahhoz, hogy a leírás vonzóbbá, használja a Rich Text szerkesztő formázni a leírást. A Rich Text szerkesztő lehetővé teszi számok, felsorolásjelek, félkövér, dőlt betűk és behúzások hozzáadását, hogy a leírás olvashatóbb legyen.
+Annak érdekében, hogy a Leírás jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást. A Rich Text Editor lehetővé teszi számok, felsorolásjelek, félkövér, dőlt és behúzások hozzáadását, hogy a Leírás olvashatóbb legyen.
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="A Rich Text szerkesztőt mutatja be az ajánlat leírásának megírásához." border="false":::
+:::image type="content" source="media/cs-rich-text-editor.png" alt-text="Bemutatja a Rich Text Editort az ajánlat leírásának írásához." border="false":::
 
 ### <a name="keywords"></a>Kulcsszavak
 
-Legfeljebb három olyan keresési kulcsszót adjon meg, amelyek relevánsak az elsődleges termék- és tanácsadási szolgáltatás szempontjából. Ezek megkönnyítik az ajánlat megtalálását.
+Adjon meg legfeljebb három olyan keresési kulcsszót, amely az elsődleges termékhez és a tanácsadási szolgáltatáshoz kapcsolódik. Így könnyebben megtalálhatja az ajánlatát.
 
 ### <a name="duration"></a>Időtartam
 
-Állítsa be az ügyféllel való elköteleződés várható időtartamát.
+Állítsa be a részvétel várható időtartamát az ügyféllel.
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 
-Meg kell adnia az **elsődleges** és másodlagos kapcsolattartó nevét, e-mail címét és **telefonszámát.** Ez az információ nem&#39;jelenik meg az ügyfeleknek. A Microsoft rendelkezésére áll, és a Felhőszolgáltató (CSP) partnerei számára is elérhető.
+Meg kell adnia egy **elsődleges** és egy **másodlagos kapcsolat**nevét, e-mail-címét és telefonszámát. Ez az információ nem&#39;t mutat az ügyfeleknek. A Microsoft számára elérhető, és a Cloud Solution Provider (CSP) partnerei számára is biztosítható.
 
-### <a name="supporting-documents"></a>Igazoló dokumentumok
+### <a name="supporting-documents"></a>Támogató dokumentumok
 
-Legfeljebb három (de legalább egy) támogató PDF-dokumentum hozzáadása az ajánlathoz.
+Akár három (de legalább egy) támogató PDF-dokumentumot is hozzáadhat az ajánlatához.
 
-### <a name="marketplace-images"></a>Marketplace-képek
+### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
-Adjon meg emblémákat és képeket az ajánlatához. Minden képnek .png formátumúnak kell lennie. Az elmosódott képek elutasításra kerülnek.
+Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!Note]
->Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
 
-#### <a name="store-logos"></a>Áruházi emblémák
+#### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg .png fájlokat az ajánlathoz&#39;s embléma az alábbi képpontméretekben:
+Adja meg az ajánlathoz tartozó. png fájlokat&#39;s emblémát a következő képpont méretek mindegyikében:
 
 - **Kicsi (48 x 48)**
-- **Nagy (216 x 216)**
+- **Nagyméretű (216 x 216)**
 
-Minden embléma kötelező, és használják a különböző helyeken a piactér i.
+Az összes emblémát meg kell adni, és a Piactéri lista különböző helyein használják.
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 
-Adjon hozzá legfeljebb öt képernyőképet, amelyek megmutatják, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és .png formátumúnak kell lennie.
+Akár öt képernyőképet is felvehet, amelyek bemutatják, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és. png formátumúnak kell lennie.
 
 #### <a name="videos-optional"></a>Videók (nem kötelező)
 
-Akár négy videót is hozzáadhatsz, amelyek bemutatják az ajánlatodat. Adja meg a videó&#39;nevét, annak webcímét (URL-címét) és a videó miniatűr .png képét 1280 x 720 képpont méretűen.
+Akár négy videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a videó&#39;s nevét, a webcímet (URL) és a videó miniatűr. png képét 1280 x 720 képpont méretben.
 
-Válassza **a Vázlat mentése lehetőséget,** mielőtt folytatná a következő szakaszt, az Árak és az elérhetőség szakaszt.
+A következő szakasz, a díjszabás és a rendelkezésre állás folytatása előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
-Itt olyan elemeket határozhat meg, mint az árképzés, a piac és a személyes kulcs.
+Itt olyan elemeket határozhat meg, mint például a díjszabás, a piac és a titkos kulcs.
 
-1. **Piac:** Állítsa be a piacon az ajánlat lesz elérhető. Ajánlatonként csak egy piacot választhat ki.
-    1. Az Egyesült Államok vagy Kanada piacain válassza **az Államok szerkesztése** (vagy **tartományok)** lehetőséget, hogy megadja, hol lesz elérhető az ajánlat.
-2. **Célközönség előnézete**: Konfigurálja az **elrejtési kulcsot,** amely az ajánlat privát közönségének beállításához használatos.
-3. **Árképzés:** Adja meg, hogy az ajánlat **ingyenes** vagy **fizetős** ajánlat-e.
+1. **Piac**: állítsa be, hogy az ajánlata milyen piacon lesz elérhető. Ajánlat esetén csak egy piacot választhat ki.
+    1. A Egyesült Államok vagy a Canada piacain válassza az **állapotok módosítása** (vagy **tartományok**) lehetőséget annak megadásához, hogy az ajánlat hol lesz elérhető.
+2. **Előnézet célközönsége**: konfigurálja az ajánlat privát célközönségének beállításához használt **elrejtési kulcsot** .
+3. **Díjszabás**: adja meg, hogy az ajánlat **ingyenes** vagy **fizetős** ajánlat-e.
 
     > [!NOTE]
-    > A tanácsadási szolgáltatások csak a hirdetésre szolgálnak. Minden tranzakció közvetlenül, a kereskedelmi piacon kívül történik.
+    > A tanácsadási szolgáltatás ajánlata kizárólag a listázásra szolgál. Minden tranzakció közvetlenül, a kereskedelmi piactéren kívül fog történni.
 
-4. Fizetős ajánlat esetén adja meg az Árat és a **pénznemet,** valamint azt, hogy az ár **Rögzített** vagy **Becsült.** Ha a Becsült érték, a leírásban meg kell adnia, hogy milyen tényezők befolyásolják az árat.
-5. Válassza **a Vázlat mentése**lehetőséget.
+4. Fizetős ajánlat esetén határozza meg az **árat és a pénznemet** , valamint azt, hogy az ár **rögzített** vagy **becsült**. Ha a becsült érték van megadva, a leírásban meg kell adnia, hogy milyen tényezők befolyásolják a díjszabást.
+5. Válassza a **Piszkozat mentése**lehetőséget.
 
-## <a name="review-and-publish"></a>Véleményezés és közzététel
+## <a name="review-and-publish"></a>Áttekintés és közzététel
 
-Miután elvégezte az ajánlat összes szükséges szakaszát, elküldheti az ajánlatot az ellenőrzésre és a közzétételre.
+Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánlatát az áttekintéshez és a közzétételhez.
 
-1. Ha készen áll a Tanácsadási szolgáltatásajánlat közzétételére, kattintson a **Véleményezés gombra, és tegye közzé.**
-2. Tekintse át a részleteket a végső benyújtási oldalon.
-3. Ha szükséges, írjon egy megjegyzést a minősítő csapatnak, ha úgy gondolja, hogy az ajánlat bármely részletét magyarázatot igényel.
-4. Ha készen áll, válassza a **Küldés lehetőséget.**
-5. Az **Ajánlat áttekintése** lap bemutatja, hogy milyen közzétételi szakaszban van az ajánlat.
+1. Ha készen áll a tanácsadási szolgáltatás ajánlatának közzétételére, kattintson **a felülvizsgálat és közzététel**elemre.
+2. Tekintse át a végső beküldési oldal részleteit.
+3. Ha szükséges, jegyezze fel a minősítési csapatot, ha úgy véli, hogy az ajánlat bármely részlete magyarázatot kér.
+4. Ha elkészült, válassza a **Küldés**lehetőséget.
+5. Az **ajánlat áttekintése** oldalon látható, hogy az ajánlat mely közzétételi fázisban található.
 
-Ha többet szeretne tudni arról, hogy mennyi ideig várható az ajánlat az egyes közzétételi fázisokban, [olvassa el A Kereskedelmi piactér ajánlatközzétételi állapotának ellenőrzése című témakört.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)
+Ha további információra van szüksége arról, hogy mennyi ideig számíthat az ajánlat az egyes közzétételi fázisokban való használatra, tekintse [meg a kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzését](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)ismertető szakaszt.
 
-## <a name="update-your-existing-consulting-service-offers"></a>Meglévő tanácsadási szolgáltatási ajánlatok frissítése
+## <a name="update-your-existing-consulting-service-offers"></a>Meglévő tanácsadói szolgáltatási ajánlatok frissítése
 
-- [Meglévő ajánlat frissítése a kereskedelmi piacon](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

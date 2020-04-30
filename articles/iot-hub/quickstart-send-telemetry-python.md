@@ -13,33 +13,33 @@ ms.custom:
 - mqtt
 ms.date: 10/17/2019
 ms.openlocfilehash: 6346b305889c6cb6d33e15c156423ed9702dbaec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770009"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Rövid útmutató: Telemetriai adatok küldése egy eszközről egy IoT-központba, és olvassa el egy háttéralkalmazással (Python)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-Ebben a rövid útmutatóban telemetriai adatokat küld egy szimulált eszközalkalmazásból az Azure IoT Hubon keresztül egy háttéralkalmazásba feldolgozásra. Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ez a rövid útmutató egy előre megírt Python-alkalmazást használ a telemetriai adatok és a CLI-segédprogram a telemetriai adatok olvasásához a hubról. Mielőtt futtatja ezt a két alkalmazást, hozzon létre egy IoT Hubot, és regisztráljon egy eszközt a hubon.
+Ebben a rövid útmutatóban egy szimulált eszközről küld telemetria egy Azure IoT Hubon keresztül a feldolgozásra szolgáló háttérbeli alkalmazáshoz. Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ez a rövid útmutató egy előre megírt Python-alkalmazást használ a telemetria és egy CLI-segédprogram elküldéséhez, hogy beolvassa a telemetria a központból. Mielőtt futtatja ezt a két alkalmazást, hozzon létre egy IoT Hubot, és regisztráljon egy eszközt a hubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.7+](https://www.python.org/downloads/). A Python más támogatott verzióiról az [Azure IoT-eszközszolgáltatások című témakörben található.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)
+* [Python 3.7 +](https://www.python.org/downloads/). A Python más verziói esetében lásd: az [Azure IoT eszköz funkciói](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
 
-* [A minta Python projekt](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
+* [Egy példa Python-projekt](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
 
-* A 8883-as port megnyílik a tűzfalon. A rövid útmutatóban szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+* A 8883-es port megnyitható a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
-Futtassa a következő parancsot, és adja hozzá a Microsoft Azure IoT-bővítményt az Azure CLI-hez a Cloud Shell-példányhoz. Az IoT-bővítmény hozzáadja az IoT Hub, az IoT Edge és az IoT-eszközlétesítési szolgáltatás (DPS) adott parancsokat az Azure CLI-hez.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -55,19 +55,19 @@ az extension add --name azure-iot
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa a következő parancsot az Azure Cloud Shellben az eszközidentitás létrehozásához.
+1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-    **YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz választott névvel.
+    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-    **MyPythonDevice**: Ez a regisztráló eszköz neve. Javasoljuk, hogy használja a **MyPythonDevice-t** az ábrán látható módon. Ha más nevet választ az eszközhöz, akkor ezt a nevet is használnia kell a cikkben, és frissítenie kell az eszköz nevét a mintaalkalmazásokban, mielőtt futtatna őket.
+    **MyPythonDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyPythonDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. Futtassa a következő parancsot az Azure Cloud Shellben a regisztrált eszköz _eszközkapcsolati karakterláncának_ lekérni:
+1. Futtassa a következő parancsot Azure Cloud Shell a regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-    **YourIoTHubName:** Cserélje le ezt a helyőrzőt az IoT hubhoz választott névvel.
+    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
@@ -77,7 +77,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Ezt az értéket később fogja használni a rövid útmutatóban.
+    Ezt az értéket később a gyors útmutatóban fogja használni.
 
 ## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
 
@@ -87,7 +87,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 1. Nyissa meg a **SimulatedDevice.py** fájlt egy tetszőleges szövegszerkesztőben.
 
-    Cserélje le a `CONNECTION_STRING` változó értékét arra az eszközkapcsolati karakterláncra, amelyről korábban feljegyzést készített. Ezután mentse a módosításokat **a SimulatedDevice.py.**
+    Cserélje le a `CONNECTION_STRING` változó értékét a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice.py**.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges kódtárak telepítéséhez:
 
@@ -126,7 +126,7 @@ A következő képernyőképen az a kimenet látható, amikor a bővítmény fog
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy IoT hubot hoz létre, regisztrált egy eszközt, szimulált telemetriai adatokat küldött a hubnak egy Python-alkalmazás használatával, és egy egyszerű háttéralkalmazás használatával elolvassa a telemetriai adatokat a hubról.
+Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldve a hubhoz egy Python-alkalmazás használatával, valamint egy egyszerű háttérbeli alkalmazás használatával olvassa be a telemetria.
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 

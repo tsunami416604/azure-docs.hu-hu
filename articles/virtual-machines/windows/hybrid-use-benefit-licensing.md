@@ -1,6 +1,6 @@
 ---
 title: Azure Hybrid Benefit Windows Serverhez
-description: Megtudhatja, hogy miként maximalizálhatja a Windows frissítési garanciával kapcsolatos előnyeit, hogy helyszíni licenceket hozhasson az Azure-ba
+description: Ismerje meg, hogyan maximalizálhatja a Windows-frissítési garanciát a helyszíni licencek Azure-ba való bekapcsolásához
 author: xujing-ms
 ms.service: virtual-machines-windows
 ms.topic: how-to
@@ -8,41 +8,41 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869568"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
-A Frissítési Garanciával rendelkező ügyfelek számára az Azure Hybrid Benefit for Windows Server lehetővé teszi a helyszíni Windows Server-licencek használatát és a Windows virtuális gépek futtatását az Azure-ban csökkentett költséggel. Az Azure Hybrid Benefit for Windows Server segítségével új virtuális gépeket telepíthet a Windows operációs rendszerrel. Ez a cikk bemutatja az új virtuális gépek üzembe helyezésének lépéseit az Azure Hybrid Benefit for Windows Server használatával, és hogyan frissítheti a meglévő futó virtuális gépeket. Az Azure Hybrid Benefit for Windows Server licenceléséről és költségmegtakarításáról az [Azure Hybrid Benefit for Windows Server licencelési lapján talál](https://azure.microsoft.com/pricing/hybrid-use-benefit/)további információt.
+A frissítési garanciával rendelkező ügyfelek számára a Windows Server Azure Hybrid Benefit lehetővé teszi a helyszíni Windows Server-licencek használatát, és a Windows rendszerű virtuális gépek futtatását az Azure-ban csökkentett költségek mellett. A Windows Server Azure Hybrid Benefit használatával telepíthet új virtuális gépeket Windows operációs rendszerre. Ez a cikk áttekinti az új virtuális gépek Windows Serverre Azure Hybrid Benefit való üzembe helyezésének lépéseit, valamint azt, hogy miként frissítheti a meglévő futó virtuális gépeket. A Windows Server licenceléssel és a költségmegtakarítással Azure Hybrid Benefitával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit a Windows Server licencelése lapon](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-Minden kétprocesszoros licenc vagy 16 magos licenckészlet két, legfeljebb 8 magból álló példányra vagy egy legfeljebb 16 magból álló példányra jogosult. Az Azure Hybrid Benefit standard kiadású licencek csak akkor használható, ha a helyszínen vagy az Azure-ban. A Datacenter Edition előnyei lehetővé teszik a helyszíni és az Azure-beli egyidejű használatot.
+A kétprocesszoros licencek vagy a 16 Magos licencek minden készlete legfeljebb 8 magos példányra jogosult, vagy egy legfeljebb 16 maggal rendelkező példányra. A Standard Edition-licencek Azure Hybrid Benefit csak egyszer használható a helyszínen vagy az Azure-ban. A Datacenter Edition előnyei lehetővé teszik a helyszíni és az Azure-ban való egyidejű használatot.
 
-Az Azure Hybrid Benefit for Windows Server használata a Windows Server operációs rendszert futtató virtuális gépeken már minden régióban támogatott, beleértve a további szoftverekkel, például az SQL Server vagy a külső piactéri szoftverrel rendelkező virtuális gépeket is. 
+A Windows Server operációs rendszert futtató virtuális gépekkel való Azure Hybrid Benefit használata mostantól minden régióban támogatott, beleértve a további szoftverrel rendelkező virtuális gépeket, például a SQL Server vagy a harmadik féltől származó piactér szoftverét. 
 
 
 ## <a name="classic-vms"></a>A klasszikus virtuális gépeket
 
-A klasszikus virtuális gépek, csak üzembe helyezése új virtuális gép a helyszíni egyéni rendszerképek támogatott. A cikkben támogatott képességek kihasználásához először át kell telepítenie a klasszikus virtuális gépeket az Erőforrás-kezelő modellbe.
+A klasszikus virtuális gépek esetében csak az új virtuális gép üzembe helyezése a helyszíni egyéni lemezképekben támogatott. A cikkben támogatott képességek kihasználásához először át kell telepítenie a klasszikus virtuális gépeket a Resource Manager-modellbe.
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
-## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Az Azure Hybrid Benefit for Windows Server használatának módjai
-Az Azure Hybrid Benefit használatával kevés lehetőség van a Windows virtuális gépek használatára:
+## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>A Windows Server Azure Hybrid Benefit használatának módjai
+A Windows rendszerű virtuális gépeket többféleképpen is használhatja a Azure Hybrid Benefit:
 
-1. Virtuális gépeket telepíthet a megadott Windows Server-lemezképek egyikéről az Azure Piactéren
-2. Feltölthet egy egyéni virtuális gép, és üzembe helyezheti egy Resource Manager sablon vagy az Azure PowerShell
-3. Válthat és konvertálhat meglévő virtuális gépeket az Azure Hybrid Benefit használatával való futtatás vagy a Windows Server igény szerinti költsége között
-4. Az Azure Hybrid Benefit for Windows Server szolgáltatást virtuálisgép-méretezési csoporton is alkalmazhatja
+1. Az Azure Marketplace-en telepítheti a virtuális gépeket az egyik megadott Windows Server-rendszerképből
+2. Feltölthet egy egyéni virtuális gépet, és üzembe helyezheti egy Resource Manager-sablonnal vagy Azure PowerShell
+3. A meglévő virtuális gépeket az Azure Hybrid Benefit vagy a Windows Serverre vonatkozó igény szerinti fizetési díj használatával válthat és alakíthatja át.
+4. A Windows Server rendszerhez Azure Hybrid Benefit is alkalmazhat a virtuálisgép-méretezési csoporton is
 
 
-## <a name="create-a-vm-with-azure-hybrid-benefit-for-windows-server"></a>Virtuális gép létrehozása az Azure Hybrid Benefit for Windows Server alkalmazással
-Az Azure Hybrid Benefit for Windows Server minden Windows Server operációs rendszeralapú lemezkép támogatott. Használhatja az Azure platform támogatási lemezképeit, vagy feltöltheti saját egyéni Windows Server-lemezképeit. 
+## <a name="create-a-vm-with-azure-hybrid-benefit-for-windows-server"></a>Virtuális gép létrehozása Azure Hybrid Benefit a Windows Serverhez
+A Windows Server operációs rendszerhez készült összes Windows Server-alapú rendszerkép támogatott a Azure Hybrid Benefit. Használhatja az Azure platform támogatási lemezképeit, vagy feltöltheti saját Windows Server-lemezképeit. 
 
 ### <a name="portal"></a>Portál
-Ha virtuális gép létrehozása az Azure Hybrid Benefit for Windows Server, használja a kapcsoló t "Pénzmegtakarítás" szakaszban.
+Ha Azure Hybrid Benefit for Windows Server rendszerű virtuális gépet szeretne létrehozni, használja a váltás a "pénz mentése" szakaszban.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -66,7 +66,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Sablon
-Az Erőforrás-kezelő sablonokon belül `licenseType` meg kell adni egy további paramétert. Az [Azure Resource Manager-sablonok szerzőiről](../../resource-group-authoring-templates.md) további információ
+A Resource Manager-sablonokon belül meg kell `licenseType` adni egy további paramétert. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -75,18 +75,18 @@ Az Erőforrás-kezelő sablonokon belül `licenseType` meg kell adni egy tovább
     }
 ```
 
-## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Meglévő virtuális gép konvertálása az Azure Hybrid Benefit for Windows Server használatával
-Ha rendelkezik egy meglévő virtuális gép, amely szeretné átalakítani, hogy kihasználják az Azure Hybrid Benefit for Windows Server, frissítheti a virtuális gép licenctípusát az alábbi utasításokat követve.
+## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Meglévő virtuális gép konvertálása a Windows Server Azure Hybrid Benefit használatával
+Ha rendelkezik olyan meglévő virtuális géppel, amelyet át szeretne alakítani, hogy kihasználhassa a Windows Server Azure Hybrid Benefit előnyeit, az alábbi utasításokat követve frissítheti a virtuális gép licencének típusát.
 
 > [!NOTE]
-> A virtuális gép licenctípusának módosítása nem okozza a rendszer újraindítását vagy szolgáltatás-interuption-et.  Ez egyszerűen egy metaadat-jelző frissítése.
+> A licenc típusának módosítása a virtuális gépen nem okozza a rendszer újraindítását vagy a szolgáltatás interuption okát.  Ez egyszerűen egy metaadat-jelző frissítése.
 > 
 
 ### <a name="portal"></a>Portál
-A portálos virtuálisgép-panelről frissítheti a virtuális gép használatát az Azure Hybrid Benefit használatához a "Konfiguráció" lehetőség kiválasztásával, és válthat az "Azure hibrid juttatás" lehetőségközött.
+A portál virtuálisgép-paneljén frissítheti a virtuális gépet a Azure Hybrid Benefit használatára, ha kiválasztja a "konfiguráció" lehetőséget, és bekapcsolja az "Azure Hybrid Benefit" lehetőséget.
 
 ### <a name="powershell"></a>PowerShell
-- Meglévő Windows Server-virtuális gépek átalakítása Azure Hybrid Benefit for Windows Server alkalmazásba
+- Meglévő Windows Server-alapú virtuális gépek konvertálása Azure Hybrid Benefit Windows Serverre
 
     ```powershell
     $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
@@ -94,7 +94,7 @@ A portálos virtuálisgép-panelről frissítheti a virtuális gép használatá
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-- A juttatással rendelkező Windows Server virtuális gépek konvertálása felosztó-kirendelt) fizetésre
+- A Windows Server rendszerű virtuális gépek átalakítása az utólagos elszámolású
 
     ```powershell
     $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
@@ -103,20 +103,20 @@ A portálos virtuálisgép-panelről frissítheti a virtuális gép használatá
     ```
     
 ### <a name="cli"></a>parancssori felület
-- Meglévő Windows Server-virtuális gépek átalakítása Azure Hybrid Benefit for Windows Server alkalmazásba
+- Meglévő Windows Server-alapú virtuális gépek konvertálása Azure Hybrid Benefit Windows Serverre
 
     ```azurecli
     az vm update --resource-group myResourceGroup --name myVM --set licenseType=Windows_Server
     ```
 
-### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>Hogyan ellenőrizheti, hogy a virtuális gép a licencelési előny felhasználásával
-Miután üzembe helyezte a virtuális gép vagy PowerShell, Resource Manager sablon vagy portál, ellenőrizheti a beállítást a következő módszerekben.
+### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>Annak ellenőrzése, hogy a virtuális gép használja-e a licencelési juttatást
+Miután telepítette a virtuális gépet a PowerShell, a Resource Manager-sablon vagy-portál használatával, ellenőrizheti a beállítást a következő módszerekkel.
 
 ### <a name="portal"></a>Portál
-A portális virtuális gép panelen megtekintheti az Azure Hybrid Benefit for Windows Server kapcsolóját a "Konfiguráció" fül kiválasztásával.
+A portál virtuálisgép-paneljén a "Konfigurálás" lapon megtekintheti a Windows Server rendszerhez tartozó Azure Hybrid Benefit váltógomb.
 
 ### <a name="powershell"></a>PowerShell
-A következő példa egyetlen virtuális gép licenctípusát mutatja be
+Az alábbi példa egy adott virtuális gép licencének típusát mutatja be
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
@@ -128,7 +128,7 @@ Location                 : westus
 LicenseType              : Windows_Server
 ```
 
-Ez a kimenet ellentétben áll az Azure Hybrid Benefit for Windows Server licencelés e nélkül telepített következő virtuális gépekkel:
+Ez a kimenet ellentétben áll a következő, a Windows Server licencelési Azure Hybrid Benefit nélkül üzembe helyezett virtuális géppel:
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
 Location                 : westus
@@ -141,14 +141,14 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Wind
 ```
 
 > [!NOTE]
-> A virtuális gép licenctípusának módosítása nem okozza a rendszer újraindítását vagy szolgáltatás-interuption-et. Csak metaadat-licencelési jelző.
+> A licenc típusának módosítása a virtuális gépen nem okozza a rendszer újraindítását vagy a szolgáltatás interuption okát. Csak metaadat-licencelési jelző.
 >
 
-## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Az összes virtuális gép listázása az Azure Hybrid Benefit for Windows Server alkalmazással előfizetésben
-Az Azure Hybrid Benefit for Windows Server alkalmazással telepített összes virtuális gép megtekintéséhez és megszámlálásához futtassa a következő parancsot az előfizetéséből:
+## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>A Windows Serverhez Azure Hybrid Benefit rendelkező összes virtuális gép listázása egy előfizetésben
+Az Azure Hybrid Benefit for Windows Serverrel telepített összes virtuális gép megtekintéséhez és számának megadásához futtassa az alábbi parancsot az előfizetésből:
 
 ### <a name="portal"></a>Portál
-A virtuális gép vagy a virtuális gép méretezési készletek erőforrás panel, megtekintheti az összes virtuális gép és a licencelési típus a tábla oszlop konfigurálásával az "Azure Hybrid Benefit". A virtuális gép beállítása lehet "Engedélyezve", "Nem engedélyezve" vagy "Nem támogatott" állapotban.
+A virtuális gép vagy a virtuálisgép-méretezési készletek erőforrás paneljén megtekintheti az összes virtuális gép (ek) és licencelési típus listáját úgy, hogy a tábla oszlopot úgy konfigurálja, hogy tartalmazza a "Azure Hybrid Benefit" értéket. A virtuális gép beállítása "engedélyezve", "nincs engedélyezve" vagy "nem támogatott" állapotban lehet.
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
@@ -161,10 +161,10 @@ $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name
 az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Virtuálisgép-méretezési készlet üzembe helyezése az Azure Hybrid Benefit for Windows Server alkalmazással
-A virtuális gép méretezési készletében Erőforrás-kezelő sablonok, egy további paramétert `licenseType` kell megadni a VirtualMachineProfile tulajdonság. Ezt a méretezési csoport létrehozása vagy frissítése során arm sablon, PowerShell, Azure CLI vagy REST keresztül.
+## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Virtuálisgép-méretezési csoport üzembe helyezése Azure Hybrid Benefit a Windows Serverhez
+A virtuálisgép-méretezési csoport Resource Manager-sablonjain belül egy `licenseType` további paramétert is meg kell adni a VirtualMachineProfile tulajdonságban. Ezt a méretezési csoport létrehozása vagy frissítése során a ARM-sablon, a PowerShell, az Azure CLI vagy a REST használatával teheti meg.
 
-A következő példa ARM-sablont használ Windows Server 2016 Datacenter-lemezképpel:
+Az alábbi példa egy ARM-sablont használ egy Windows Server 2016 Datacenter-lemezképpel:
 ```json
 "virtualMachineProfile": {
     "storageProfile": {
@@ -185,12 +185,12 @@ A következő példa ARM-sablont használ Windows Server 2016 Datacenter-lemezk�
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-A rról is többet is megtudhat, hogyan [módosíthatja a virtuálisgép-méretezési készletet](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) a méretezési csoport frissítésének további módjairól.
+Azt is megtudhatja, hogyan [módosíthatja a virtuálisgép-méretezési csoportokat](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) a méretezési csoport frissítésének további módjaira.
 
 ## <a name="next-steps"></a>További lépések
-- További információ [arról, hogyan takaríthat meg pénzt az Azure Hybrid Benefit használatával](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
-- További információ az [Azure Hybrid Benefit kel kapcsolatos gyakori kérdésekről](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- További információ az [Azure Hybrid Benefit for Windows Server licenceléséről részletes útmutatás](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
-- További információ az [Azure Hybrid Benefit for Windows Server és az Azure Site Recovery alkalmazásokkal kapcsolatban, amelyek még költséghatékonyabbá teszik az alkalmazások Azure-ba való áttelepítését](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
-- További információ az [Azure-beli Windows 10-ről a több-bérlős üzemeltetési jog](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- További információ az [Erőforrás-kezelő sablonok használatáról](../../azure-resource-manager/management/overview.md)
+- További információ arról, [Hogyan lehet pénzt megtakarítani a Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+- További információ a [Azure Hybrid Benefit gyakori kérdéseiről](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
+- További információ a [Windows Server licencelésének részletes útmutatója Azure Hybrid Benefit](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
+- Tudjon meg többet a [Windows Server Azure Hybrid Benefitéről, és Azure site Recovery az alkalmazások áttelepítése az Azure-ba még](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) költséghatékonyabb
+- További információ az Azure-beli Windows 10-ről a több- [bérlős üzemeltetési jogosultsággal](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+- További információ a [Resource Manager-sablonok használatáról](../../azure-resource-manager/management/overview.md)

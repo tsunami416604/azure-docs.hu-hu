@@ -1,7 +1,7 @@
 ---
-title: Az Azure VMware-megoldás CloudSimple általi felügyeletének legfontosabb fogalmai
+title: Alapvető fogalmak az Azure VMware-megoldás CloudSimple általi felügyeletéhez
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Az Azure VMware-megoldások CloudSimple általi felügyeletének legfontosabb fogalmai
+description: Az Azure VMware-megoldások CloudSimple általi felügyeletének főbb fogalmait ismerteti
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
@@ -10,43 +10,43 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869028"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Az Azure VMware-megoldások CloudSimple általi felügyeletének legfontosabb fogalmai
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Alapvető fogalmak az Azure VMware-megoldások CloudSimple általi felügyeletéhez
 
-Az Azure VMware-megoldások CloudSimple általi felügyeletéhez az alábbi fogalmak megértésére van szükség:
+Az Azure VMware-megoldások CloudSimple általi felügyelete a következő fogalmak ismeretét igényli:
 
-* CloudSimple szolgáltatás, amely a CloudSimple Által Azure VMware-megoldásokként jelenik meg - Szolgáltatás
-* CloudSimple csomópont, amely a CloudSimple Által Azure VMware-megoldásokként jelenik meg - Csomópont
-* CloudSimple magánfelhő
-* Szolgáltatás hálózata
-* CloudSimple virtuális gép, amely a CloudSimple Azure VMware-megoldásaként jelenik meg - Virtuális gép
+* CloudSimple szolgáltatás, amely Azure VMware-megoldásként jelenik meg a CloudSimple-Service-ben
+* CloudSimple csomópont, amely Azure VMware-megoldásként jelenik meg a CloudSimple-Node alapján
+* CloudSimple privát felhő
+* Szolgáltatás hálózatkezelése
+* CloudSimple virtuális gép, amely Azure VMware-megoldásként jelenik meg a CloudSimple-Virtual Machine használatával
 
 ## <a name="cloudsimple-service"></a>CloudSimple szolgáltatás
 
-A CloudSimple szolgáltatással létrehozhatja és kezelheti a CloudSimple vmware-megoldásaihoz kapcsolódó összes erőforrást az Azure Portalról. Hozzon létre egy szolgáltatási erőforrást minden régióban, ahol használni kívánja a szolgáltatást.
+A CloudSimple szolgáltatással a VMware-megoldásokhoz társított összes erőforrást létrehozhatja és kezelheti az Azure Portal CloudSimple. Hozzon létre egy szolgáltatási erőforrást minden olyan régióban, ahol használni szeretné a szolgáltatást.
 
-További információ a [CloudSimple szolgáltatásról.](cloudsimple-service.md)
+További információ a [CloudSimple szolgáltatásról](cloudsimple-service.md).
 
 ## <a name="cloudsimple-node"></a>CloudSimple csomópont
 
-A CloudSimple csomópont egy dedikált, csupasz fém, hyperconverged számítási és tárolási gazdagép, amelybe a VMware ESXi hipervizor telepítve van. Ez a csomópont ezután beépül a VMware vSphere, vCenter, vSAN és NSX platformokba. A CloudSimple hálózati szolgáltatások és a peremhálózati szolgáltatások is engedélyezve vannak. Minden csomópont számítási és tárolási kapacitásegységként szolgál, amelyet [a CloudSimple magánfelhők](cloudsimple-private-cloud.md)létrehozásához építhet ki. Olyan régióban, ahol a CloudSimple szolgáltatás érhető el, csomópontokat létesít vagy foglal le.
+A CloudSimple csomópont egy dedikált, operációs rendszer nélküli, hiperkonvergens számítási és tárolási gazdagép, amelybe a VMware ESXi hypervisor telepítve van. Ezt a csomópontot ezután beépítjük a VMware vSphereba, a vCenter, a vSAN és a NSX platformba. A CloudSimple hálózatkezelési szolgáltatásai és a peremhálózati hálózati szolgáltatások is engedélyezve vannak. Az egyes csomópontok számítási és tárolókapacitási egységként szolgálnak, amelyet létrehozhat a [CloudSimple privát felhők](cloudsimple-private-cloud.md)létrehozásához. A csomópontokat olyan régióban kell kiépíteni vagy fenntartani, ahol a CloudSimple szolgáltatás elérhető.
 
-További információ a [CloudSimple csomópontjairól.](cloudsimple-node.md)
+További információ a [CloudSimple-csomópontokról](cloudsimple-node.md).
 
-## <a name="cloudsimple-private-cloud"></a>CloudSimple magánfelhő
+## <a name="cloudsimple-private-cloud"></a>CloudSimple privát felhő
 
-A CloudSimple magánfelhő egy elkülönített VMware veremkörnyezet, amelyet egy vCenter-kiszolgáló saját felügyeleti tartományában kezel. A VMware verem tartalmazza esxi gazdagépek, vSphere, vCenter, vSAN és NSX. A verem dedikált csomópontokon fut (dedikált és elkülönített csupasz fém hardver), és a felhasználók által használt natív VMware eszközök, amelyek magukban foglalják a vCenter és az NSX Manager. A dedikált csomópontok az Azure-helyeken vannak telepítve, és az Azure kezeli őket. Minden magánfelhő menthető és védhető hálózati szolgáltatások, például VLAN-ok, alhálózatok és tűzfaltáblák használatával. A helyszíni környezethez és az Azure-hálózathoz való kapcsolatok biztonságos, privát VPN- és Azure ExpressRoute-kapcsolatok használatával jönnek létre.
+A CloudSimple privát felhő egy elkülönített VMware stack-környezet, amelyet egy vCenter-kiszolgáló felügyel a saját felügyeleti tartományában. A VMware-verem ESXi-gazdagépeket, vSphere, vCenter, vSAN és NSX tartalmaz. A verem dedikált csomópontokon fut (dedikált és elkülönített operációs rendszer nélküli hardver), és a felhasználók a vCenter és a NSX Managert is tartalmazó natív VMware-eszközökkel használják. A dedikált csomópontok üzembe helyezése az Azure-beli helyszíneken történik, és az Azure kezeli őket. Az egyes privát felhőket a hálózati szolgáltatások, például a VLAN-ok, az alhálózatok és a tűzfalak használatával szegmentálhatja és biztonságossá teheti. A helyszíni környezettel és az Azure-hálózattal létesített kapcsolatok biztonságos, privát VPN-és Azure ExpressRoute-kapcsolatok használatával jönnek létre.
 
-További információ a [CloudSimple magánfelhőről.](cloudsimple-private-cloud.md)
+További információ a [CloudSimple privát felhőről](cloudsimple-private-cloud.md).
 
-## <a name="service-networking"></a>Szolgáltatás hálózata
+## <a name="service-networking"></a>Szolgáltatás hálózatkezelése
 
-A CloudSimple szolgáltatás régiónként biztosít egy hálózatot, ahol a CloudSimple szolgáltatás telepítve van. A hálózat egyetlen TCP Layer 3 címterület, ahol az útválasztás alapértelmezés szerint engedélyezve van. Az ebben a régióban létrehozott összes privát felhő és alhálózat további konfiguráció nélkül kommunikál egymással. A vCenteren elosztott portcsoportokat hoz létre a VLAN-ok használatával. A következő hálózati szolgáltatásokkal konfigurálhatja és biztonságossá teheti a számítási feladatok erőforrásait a magánfelhőben:
+A CloudSimple szolgáltatás olyan hálózatot biztosít régiónként, ahol a CloudSimple szolgáltatás telepítve van. A hálózat egy olyan TCP-rétegbeli 3 címtartomány, amelynek alapértelmezés szerint engedélyezve van az Útválasztás. Az ebben a régióban létrehozott privát felhők és alhálózatok további beállítások nélkül kommunikálnak egymással. A VLAN-ok használatával elosztott vCenter hozhat létre a virtuális helyi hálózatokon. A következő hálózati szolgáltatások használatával konfigurálhatja és biztonságossá teheti a számítási feladatok erőforrásait a saját felhőben:
 
 * [Virtuális helyi hálózatok és alhálózatok](cloudsimple-vlans-subnets.md)
 * [Tűzfaltáblák](cloudsimple-firewall-tables.md)
@@ -56,9 +56,9 @@ A CloudSimple szolgáltatás régiónként biztosít egy hálózatot, ahol a Clo
 
 ## <a name="cloudsimple-virtual-machine"></a>CloudSimple virtuális gép
 
-A CloudSimple szolgáltatással kezelheti a VMware virtuális gépeket az Azure Portalról. Egy vagy több fürtök vagy erőforráskészletek a vSphere-környezetből leképezhető az előfizetés, amelyen a szolgáltatás jön létre.
+A CloudSimple szolgáltatással felügyelheti a VMware virtuális gépeket a Azure Portal. A vSphere-környezetből egy vagy több fürt vagy erőforráskészlet képezhető le ahhoz az előfizetéshez, amelyen a szolgáltatást létrehozták.
 
 További információk:
 
 * [CloudSimple virtuális gépek](cloudsimple-virtual-machines.md)
-* [Azure-előfizetés-leképezés](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [Azure-előfizetés leképezése](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

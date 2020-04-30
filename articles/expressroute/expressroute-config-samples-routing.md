@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Útválasztó konfigurációs mintái'
-description: Ez az oldal router konfigurációs mintákat biztosít a Cisco és a Juniper útválasztók számára.
+title: 'Azure ExpressRoute: útválasztó-konfigurációs minták'
+description: Ez az oldal a Cisco és a Juniper útválasztók útválasztó-konfigurációs mintáit tartalmazza.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,52 +8,52 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
 ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024812"
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Útválasztó konfigurációs mintái az útválasztás beállításához és kezeléséhez
-Ez a lap az Azure ExpressRoute használata során a Cisco IOS-XE és a Juniper MX sorozatú útválasztók kapcsolati és útválasztási konfigurációs mintáit tartalmazza.
+# <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Útválasztó-konfigurációs minták az Útválasztás beállításához és kezeléséhez
+Ez az oldal a Cisco IOS-XE és Juniper MX sorozatú útválasztók felületi és útválasztási konfigurációs mintáit tartalmazza az Azure ExpressRoute használatakor.
 
 > [!IMPORTANT]
-> Az ezen az oldalon található minták kizárólag útmutatást szolgálnak. A gyártó értékesítési/műszaki csapatával és a hálózati csapattal együtt kell működnie, hogy megtalálja az igényeinek megfelelő konfigurációkat. A Microsoft nem támogatja az ezen a lapon felsorolt konfigurációkkal kapcsolatos problémákat. Támogatási problémákesetén forduljon az eszköz forgalmazójához.
+> Az ezen a lapon található minták kizárólag útmutatást nyújtanak. A gyártó értékesítési/technikai csapatával és a hálózati csapatával együttműködve találja meg az igényeinek megfelelő konfigurációkat. A Microsoft nem támogatja az ezen a lapon felsorolt konfigurációkhoz kapcsolódó problémákat. Támogatási problémák megoldásához forduljon az eszköz gyártójához.
 > 
 > 
 
-## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>MTU- és TCP MSS-beállítások az útválasztó-összeköttetéseken
-Az ExpressRoute-kapcsolat maximális átviteli egysége (MTU) az 1500, amely az útválasztó Ethernet-összeköttetésének tipikus alapértelmezett MTU-ja. Ha az útválasztó alapértelmezés szerint nem rendelkezik másik MTU-val, nincs szükség érték megadására az útválasztó-kapcsolaton.
+## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>MTU-és TCP MSS-beállítások az útválasztó-adaptereken
+A ExpressRoute felület maximális átviteli egysége (MTU) a 1500, amely az útválasztó Ethernet-adapterének tipikus alapértelmezett MTU-ja. Ha az útválasztó alapértelmezés szerint eltérő MTU-értékkel rendelkezik, nem kell értéket megadnia az útválasztó felületen.
 
-Az Azure VPN-átjáróval ellentétben az ExpressRoute-kapcsolatoni tcp-szegmensméretet (MSS) nem kell megadni.
+Az Azure VPN gatewaytől eltérően a ExpressRoute áramkörhöz tartozó TCP-szegmensek maximális méretét (MSS) nem kell megadni.
 
-A cikkben szereplő útválasztó-konfigurációs minták az összes társviszony-létesítésre vonatkoznak. Tekintse át [az ExpressRoute-társviszony-létesítési](expressroute-circuit-peerings.md) és [expressroute-útválasztási követelményeket](expressroute-routing.md) az útválasztástovábbi részleteiért.
+A cikkben szereplő útválasztó-konfigurációs minták minden társra érvényesek. Az útválasztással kapcsolatos további részletekért tekintse át a [ExpressRoute](expressroute-circuit-peerings.md) -társítások és a [ExpressRoute útválasztási követelményeit](expressroute-routing.md) .
 
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE alapú útválasztók
-Az ebben a szakaszban szereplő minták az IOS-XE operációs rendszercsaládot futtató útválasztókra vonatkoznak.
+Az ebben a szakaszban szereplő minták az IOS-XE operációsrendszer-családot futtató összes útválasztóra érvényesek.
 
-### <a name="configure-interfaces-and-subinterfaces"></a>Összeköttetések és alillesztők konfigurálása
-Minden útválasztóban, amelyhez a Microsofthoz csatlakozik, társviszonyonként egy alfelületre lesz szüksége. Az alfelület VLAN-azonosítóval vagy vlan-azonosítók halmozott párjával és IP-címmel azonosítható.
+### <a name="configure-interfaces-and-subinterfaces"></a>Felületek és alkapcsolatok konfigurálása
+Minden olyan útválasztón, amelyhez a Microsofthoz csatlakozik, egy alkapcsolatra van szüksége. Az alhálózati adapterek egy VLAN-AZONOSÍTÓval vagy egy halmozott VLAN-azonosítóval vagy egy IP-címmel azonosíthatók.
 
-**Dot1Q illesztő definíciója**
+**Dot1Q interfész definíciója**
 
-Ez a minta egyetlen VLAN-azonosítóval rendelkező alfelület alfelület-definícióját tartalmazza. A VLAN-azonosító társviszony-lemunkálásonként egyedi. Az IPv4-cím utolsó oktettje mindig páratlan szám lesz.
+Ez a példa egy VLAN-AZONOSÍTÓval rendelkező alcsatoló alkapcsolati definícióját tartalmazza. A VLAN-azonosító társítása egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <VLAN_ID>
      ip address <IPv4_Address><Subnet_Mask>
 
-**QinQ-csatoló definíciója**
+**QinQ interfész definíciója**
 
-Ez a minta két VLAN-azonosítóval rendelkező alfelület alfelület-definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használják, ugyanaz marad az összes társviszony-létesítések. A belső VLAN-azonosító (c-tag) társviszony-létesítésenként egyedi. Az IPv4-cím utolsó oktettje mindig páratlan szám lesz.
+Ez a minta a két VLAN-azonosítóval rendelkező alinterfész alfelületi definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használatban van, változatlan marad az összes csomóponton. A belső VLAN-azonosító (c-tag) egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-munkamenetek beállítása
-Minden társviszony-létesítéshez be kell állítania egy BGP-munkamenetet a Microsofttal. BGP-munkamenet beállítása az alábbi minta használatával. Ha az alkapcsolathoz használt IPv4-cím a.b.c.d volt, akkor a BGP-szomszéd (Microsoft) IP-címe a.b.c.d+1 lesz. A BGP-szomszéd IPv4-címének utolsó oktettje mindig páros szám lesz.
+Minden egyes társi kapcsolathoz be kell állítania egy BGP-munkamenetet a Microsofttal. Hozzon létre egy BGP-munkamenetet a következő minta használatával. Ha az alkapcsolathoz használt IPv4-cím volt a. b. c. d, akkor a BGP-szomszéd (Microsoft) IP-címe az a. b. c. d + 1 lesz. A BGP-szomszéd IPv4-címeinek utolsó oktettje mindig páros szám lesz.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -64,8 +64,8 @@ Minden társviszony-létesítéshez be kell állítania egy BGP-munkamenetet a M
      exit-address-family
     !
 
-### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkameneten keresztül hirdetendő előtagok beállítása
-Konfigurálja úgy az útválasztót, hogy a következő minta segítségével hirdesse a microsoftos előtagokat.
+### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkamenetben meghirdetett előtagok beállítása
+Konfigurálja úgy az útválasztót, hogy a következő minta használatával hirdesse a Microsoft számára az előtagok kiválasztását.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -77,8 +77,8 @@ Konfigurálja úgy az útválasztót, hogy a következő minta segítségével h
      exit-address-family
     !
 
-### <a name="route-maps"></a>Útvonaltérképek
-Útvonalleképezések és előtagok listáinak használatával szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtaglisták vannak beállítva.
+### <a name="route-maps"></a>Útvonalak leképezése
+Az útvonal-és előtag-listát használva szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtag-listát beállította.
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -94,9 +94,9 @@ Konfigurálja úgy az útválasztót, hogy a következő minta segítségével h
      match ip address prefix-list <MS_Prefixes>
     !
 
-### <a name="configure-bfd"></a>Bfd konfigurálása
+### <a name="configure-bfd"></a>BFD konfigurálása
 
-A BFD-t két helyen kell konfigurálni: az egyik a kapcsolat szintjén, a másik bgp szinten. A példa itt a QinQ felület. 
+A BFD két helyen konfigurálhatja: egyet az illesztőfelület szintjén, egy másikat pedig a BGP szintjén. Ez a példa a QinQ interfészre mutat. 
 
     interface GigabitEthernet<Interface_Number>.<Number>
      bfd interval 300 min_rx 300 multiplier 3
@@ -115,13 +115,13 @@ A BFD-t két helyen kell konfigurálni: az egyik a kapcsolat szintjén, a másik
 
 
 ## <a name="juniper-mx-series-routers"></a>Juniper MX sorozatú útválasztók
-Az ebben a szakaszban szereplő minták minden Juniper MX sorozatú útválasztóra vonatkoznak.
+Az ebben a szakaszban szereplő minták minden Juniper MX sorozatú útválasztóra érvényesek.
 
-### <a name="configure-interfaces-and-subinterfaces"></a>Összeköttetések és alillesztők konfigurálása
+### <a name="configure-interfaces-and-subinterfaces"></a>Felületek és alkapcsolatok konfigurálása
 
-**Dot1Q illesztő definíciója**
+**Dot1Q interfész definíciója**
 
-Ez a minta egyetlen VLAN-azonosítóval rendelkező alfelület alfelület-definícióját tartalmazza. A VLAN-azonosító társviszony-lemunkálásonként egyedi. Az IPv4-cím utolsó oktettje mindig páratlan szám lesz.
+Ez a példa egy VLAN-AZONOSÍTÓval rendelkező alcsatoló alkapcsolati definícióját tartalmazza. A VLAN-azonosító társítása egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
     interfaces {
         vlan-tagging;
@@ -136,9 +136,9 @@ Ez a minta egyetlen VLAN-azonosítóval rendelkező alfelület alfelület-defin�
     }
 
 
-**QinQ-csatoló definíciója**
+**QinQ interfész definíciója**
 
-Ez a minta két VLAN-azonosítóval rendelkező alfelület alfelület-definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használják, ugyanaz marad az összes társviszony-létesítések. A belső VLAN-azonosító (c-tag) társviszony-létesítésenként egyedi. Az IPv4-cím utolsó oktettje mindig páratlan szám lesz.
+Ez a minta a két VLAN-azonosítóval rendelkező alinterfész alfelületi definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használatban van, változatlan marad az összes csomóponton. A belső VLAN-azonosító (c-tag) egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
     interfaces {
         <Interface_Number> {
@@ -153,7 +153,7 @@ Ez a minta két VLAN-azonosítóval rendelkező alfelület alfelület-definíci�
     }                           
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-munkamenetek beállítása
-Minden társviszony-létesítéshez be kell állítania egy BGP-munkamenetet a Microsofttal. BGP-munkamenet beállítása az alábbi minta használatával. Ha az alkapcsolathoz használt IPv4-cím a.b.c.d volt, akkor a BGP-szomszéd (Microsoft) IP-címe a.b.c.d+1 lesz. A BGP-szomszéd IPv4-címének utolsó oktettje mindig páros szám lesz.
+Minden egyes társi kapcsolathoz be kell állítania egy BGP-munkamenetet a Microsofttal. Hozzon létre egy BGP-munkamenetet a következő minta használatával. Ha az alkapcsolathoz használt IPv4-cím volt a. b. c. d, akkor a BGP-szomszéd (Microsoft) IP-címe az a. b. c. d + 1 lesz. A BGP-szomszéd IPv4-címeinek utolsó oktettje mindig páros szám lesz.
 
     routing-options {
         autonomous-system <Customer_ASN>;
@@ -168,8 +168,8 @@ Minden társviszony-létesítéshez be kell állítania egy BGP-munkamenetet a M
         }                                   
     }
 
-### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkameneten keresztül hirdetendő előtagok beállítása
-Konfigurálja úgy az útválasztót, hogy a következő minta segítségével hirdesse a microsoftos előtagokat.
+### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkamenetben meghirdetett előtagok beállítása
+Konfigurálja úgy az útválasztót, hogy a következő minta használatával hirdesse a Microsoft számára az előtagok kiválasztását.
 
     policy-options {
         policy-statement <Policy_Name> {
@@ -194,8 +194,8 @@ Konfigurálja úgy az útválasztót, hogy a következő minta segítségével h
     }
 
 
-### <a name="route-policies"></a>Útvonalházirendek
-Az útvonalleképezések és előtagok listái segítségével szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtaglisták be vannak állítva.
+### <a name="route-policies"></a>Útvonal-házirendek
+Az útválasztási leképezések és az előtag-listák segítségével szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtag-listát beállította.
 
     policy-options {
         prefix-list MS_Prefixes {
@@ -224,8 +224,8 @@ Az útvonalleképezések és előtagok listái segítségével szűrheti a hál�
         }                                   
     }
 
-### <a name="configure-bfd"></a>Bfd konfigurálása
-Csak a BGP protokoll szakaszban konfigurálja a BFD-t.
+### <a name="configure-bfd"></a>BFD konfigurálása
+Konfigurálja az BFD-t csak a protokoll BGP szakasza alatt.
 
     protocols {
         bgp { 

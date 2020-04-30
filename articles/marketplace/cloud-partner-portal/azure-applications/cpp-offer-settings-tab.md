@@ -1,6 +1,6 @@
 ---
-title: Az Azure alkalmazásajánlat beállításai | Azure Piactér
-description: Konfigurálja az Azure-alkalmazásajánlat ajánlatbeállításait.
+title: Azure-alkalmazások ajánlatának beállításai | Azure piactér
+description: Egy Azure-alkalmazás ajánlati beállításainak konfigurálása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
 ms.openlocfilehash: 3150c3498cb3f0c87b74f86179f552c56d580c12
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870149"
 ---
-# <a name="azure-application-offer-settings-tab"></a>Az Azure alkalmazás ajánlatának beállításai lap
+# <a name="azure-application-offer-settings-tab"></a>Azure-alkalmazás ajánlat beállításai lap
 
-A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja az Azure-alkalmazásajánlatok létrehozását és kezelését. Ehelyett ezt a funkciót áthelyezték a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információ: [Create an Azure application offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja az Azure-alkalmazások létrehozásának és felügyeletének támogatását. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információ: Azure- [alkalmazási ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).
 
-Mielőtt új Azure-alkalmazásajánlatot hozna létre, olvassa el [a Partnerközpont-fiók létrehozása című témakört,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) majd nyissa meg a [Kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) az **Áttekintés** lap kiválasztásával. Kövesse az [Azure-alkalmazásajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) az ajánlat létrehozásához kövesse az utasításokat.
+Új Azure-alkalmazás létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [Azure-alkalmazás létrehozásával kapcsolatos ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) című témakör utasításait.

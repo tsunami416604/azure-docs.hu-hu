@@ -1,6 +1,6 @@
 ---
-title: Szerepkörök hozzárendelése és listázása felügyeleti egység hatókörrel (előzetes verzió) – Azure Active Directory | Microsoft dokumentumok
-description: Felügyeleti egységek használata az Azure Active Directory szerepkör-hozzárendeléseinek hatókörének korlátozására
+title: Szerepkörök kiosztása és listázása a felügyeleti egység hatókörével (előzetes verzió) – Azure Active Directory | Microsoft Docs
+description: Felügyeleti egységek használata a szerepkör-hozzárendelések hatókörének korlátozásához a Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,40 +15,40 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3af281846e2bd1a39e691d84e964d8a8f780a6f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870421"
 ---
-# <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök hozzárendelése felügyeleti egységhez
+# <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök társítása egy felügyeleti egységhez
 
-Az Azure Active Directoryban (Azure AD) a felhasználók at rendelhet egy Azure AD-szerepkörhöz, amelynek hatóköre egy vagy több felügyeleti egységre (AUs) korlátozódik a részletesebb felügyeleti vezérléshez.
+A Azure Active Directory (Azure AD) segítségével felhasználókat rendelhet egy Azure AD-szerepkörhöz, amely egy vagy több felügyeleti egységre (AUs) korlátozódik részletesebb felügyeleti felügyeletre.
 
-A PowerShell és a Microsoft Graph felügyeleti egységkezeléshez való használatának előkészítésére vonatkozó lépésekről az [Első lépések ( Első lépések) témakörben található.](roles-admin-units-manage.md#get-started)
+A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való előkészítésének lépéseiért lásd: első [lépések](roles-admin-units-manage.md#get-started).
 
 ## <a name="roles-available"></a>Elérhető szerepkörök
 
 Szerepkör  |  Leírás
 ----- |  -----------
-Hitelesítési rendszergazda  |  Hozzáféréssel rendelkezik a hitelesítési módszer adatainak megtekintéséhez, beállításához és alaphelyzetbe állításához minden nem rendszergazda felhasználó számára a hozzárendelt felügyeleti egységben.
-Csoportok rendszergazdája  |  A csoportok és csoportok beállításainak minden aspektusát kezelheti, például a név- és elévülési házirendeket csak a hozzárendelt felügyeleti egységben.
-Ügyfélszolgálati rendszergazda  |  Csak a hozzárendelt felügyeleti egységben lévő nem rendszergazdák és ügyfélszolgálati rendszergazdák jelszavait állíthatja vissza.
-Licencrendszergazda  |  Csak a felügyeleti egységen belül rendelhet hozzá, távolíthat el és frissíthet licenc-hozzárendeléseket.
-Jelszó-rendszergazda  |  Csak a hozzárendelt felügyeleti egységen belül állíthatja vissza a nem rendszergazdák és a jelszórendszergazdák jelszavait.
-Felhasználói rendszergazda  |  A felhasználók és csoportok minden aspektusát kezelheti, beleértve a jelszavak alaphelyzetbe állítását a korlátozott rendszergazdák számára a hozzárendelt felügyeleti egységen belül.
+Hitelesítés rendszergazdája  |  A csak a hozzárendelt felügyeleti egységben lévő nem rendszergazda felhasználók számára biztosít hozzáférést a hitelesítési módszer megtekintéséhez, beállításához és visszaállításához.
+Csoportok rendszergazdája  |  A a csoportok és csoportok beállításait, például a névadási és lejárati házirendeket csak a hozzárendelt felügyeleti egységben tudja kezelni.
+Segélyszolgálat rendszergazdája  |  A nem rendszergazdák és az ügyfélszolgálati rendszergazdák jelszavait alaphelyzetbe állíthatja a hozzárendelt felügyeleti egységben.
+Licenc rendszergazdája  |  Csak a felügyeleti egységen belül lehet hozzárendelni, eltávolítani és frissíteni a licenc-hozzárendeléseket.
+Jelszó-rendszergazda  |  A csak a hozzárendelt felügyeleti egységen belül állíthatja alaphelyzetbe a nem rendszergazdák és a jelszó-rendszergazdák jelszavát.
+Felhasználói rendszergazda  |  A a felhasználók és csoportok minden aspektusát képes kezelni, beleértve a korlátozott rendszergazdák jelszavainak alaphelyzetbe állítását a hozzárendelt felügyeleti egységen belül.
 
-## <a name="assign-a-scoped-role"></a>Hatókörrel megbízott szerepkör hozzárendelése
+## <a name="assign-a-scoped-role"></a>Hatókörrel rendelkező szerepkör kiosztása
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Nyissa meg az **Azure AD > felügyeleti egységek** a portálon. Válassza ki azt a felügyeleti egységet, amelyfelett a szerepkört egy felhasználóhoz szeretné rendelni. A bal oldali ablaktáblában válassza a Szerepkörök és rendszergazdák lehetőséget az összes elérhető szerepkör listázásához.
+Nyissa meg az **Azure AD > felügyeleti egységeket** a portálon. Válassza ki azt a felügyeleti egységet, amelyhez hozzá szeretné rendelni a szerepkört egy felhasználóhoz. A bal oldali ablaktáblán válassza a szerepkörök és rendszergazdák lehetőséget az összes elérhető szerepkör listázásához.
 
-![A szerepkörhatókör módosításához válasszon egy felügyeleti egységet](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
+![Válasszon ki egy felügyeleti egységet a szerepkör hatókörének módosításához](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-Jelölje ki a hozzárendelendő szerepkört, majd válassza **a Hozzárendelések hozzáadása**lehetőséget. Ezzel megnyit egy panelt a jobb oldalon, ahol kiválaszthatja a szerepkörhöz rendelni kívánt egy vagy több felhasználót.
+Válassza ki a hozzárendelni kívánt szerepkört, majd válassza a **hozzárendelések hozzáadása**lehetőséget. Ekkor megnyílik egy panel a jobb oldalon, ahol kiválaszthat egy vagy több felhasználót, amelyet hozzá szeretne rendelni a szerepkörhöz.
 
-![Jelölje ki a hatókörhöz tartozó szerepkört, majd válassza a Hozzárendelések hozzáadása lehetőséget.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
+![Válassza ki a hatókörhöz tartozó szerepkört, majd válassza a hozzárendelések hozzáadása elemet.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -57,7 +57,7 @@ Jelölje ki a hozzárendelendő szerepkört, majd válassza **a Hozzárendelése
     $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
     Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
 
-A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosítható.
+A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -72,18 +72,18 @@ A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosít
       }
     }
 
-## <a name="list-the-scoped-admins-on-an-au"></a>A hatókörrel kapcsolatos rendszergazdák listázása AU-n
+## <a name="list-the-scoped-admins-on-an-au"></a>A hatókörrel rendelkező rendszergazdák listázása egy AU-on
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A felügyeleti egység hatókörével végzett összes szerepkör-hozzárendelés megtekinthető az [Azure AD Felügyeleti egységek szakaszában.](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit) Nyissa meg az **Azure AD > felügyeleti egységek** a portálon. Válassza ki a listát a felsorolni kívánt szerepkör-hozzárendelések felügyeleti egységét. Válassza a **Szerepkörök és rendszergazdák lehetőséget,** és nyisson meg egy szerepkört a felügyeleti egység hozzárendelései megtekintéséhez.
+A felügyeleti egység hatókörével végzett összes szerepkör-hozzárendelést az [Azure ad felügyeleti egységek szakaszában](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)tekintheti meg. Nyissa meg az **Azure AD > felügyeleti egységeket** a portálon. Válassza ki a listázni kívánt szerepkör-hozzárendelések felügyeleti egységét. Válassza a **szerepkörök és rendszergazdák** lehetőséget, és nyisson meg egy szerepkört a hozzárendelések megtekintéséhez a felügyeleti egységben.
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
 
-A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosítható.
+A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -94,4 +94,4 @@ A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosít
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felügyeleti egységek hibaelhárítása és gyakori kérdések](roles-admin-units-faq-troubleshoot.md)
+- [Felügyeleti egységek – hibaelhárítás és gyakori kérdések](roles-admin-units-faq-troubleshoot.md)

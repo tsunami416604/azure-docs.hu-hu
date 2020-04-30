@@ -13,17 +13,17 @@ ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
 ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770045"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
 Ebben az oktatóanyagban az Azure IoT Hub portál eszközeivel és az Azure CLI parancsaival teszteli az eszközkapcsolatot. Az oktatóanyag emellett egy egyszerű eszközszimulátort is használ, amelyet az asztali gépén futtat.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -44,7 +44,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. Szüksége van node.js v10.x.x vagy újabb a fejlesztői gépen.
+Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -56,7 +56,7 @@ node --version
 
 Töltse le a Node.js eszközszimulátor mintaprojektjét a https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
 
-Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. Az oktatóanyagban szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -82,9 +82,9 @@ A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az esz
 
 A **MyTestDevice** által az IoT hubnak küldött telemetria szimulálásához futtassa a Node.js szimulálteszköz-alkalmazást, amelyet korábban letöltött.
 
-A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután keresse meg az **iot-hub\Tutorials\ConnectivityTests** mappát.
+A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Tutorials\ConnectivityTests** mappát.
 
-Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához. Használja az eszköz kapcsolati karakterláncot, amelyet feljegyezte, amikor felvette az eszközt a portálon.
+Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához. Az eszköznek a portálon való hozzáadásakor jegyezze fel az eszközhöz tartozó kapcsolódási karakterláncot.
 
 ```cmd/sh
 npm install
@@ -129,7 +129,7 @@ Ezúttal hitelesítési hibát lát, amikor az alkalmazás csatlakozni próbál:
 
 Ha az eszköze az IoT Hub egyik eszköz SDK-ját használja, az SDK kódtár kódja hozza létre a hubbal való hitelesítéshez használt SAS-jogkivonatot. A SAS-jogkivonat a hubja nevéből, az eszköze nevéből és az eszközkulcsból jön létre.
 
-Bizonyos esetekben előfordulhat, például egy felhő protokollátjárójában vagy egy egyéni hitelesítési séma részeként, hogy saját kezűleg kell létrehoznia a SAS-jogkivonatot. A SAS-generálási kóddal kapcsolatos problémák elhárításához hasznos egy ismert en-jó SAS-jogkivonatot létrehozni a tesztelés során.
+Bizonyos esetekben előfordulhat, például egy felhő protokollátjárójában vagy egy egyéni hitelesítési séma részeként, hogy saját kezűleg kell létrehoznia a SAS-jogkivonatot. Az SAS-létrehozási kóddal kapcsolatos problémák elhárításához hasznos lehet egy ismert, jó SAS-token létrehozása a tesztelés során.
 
 > [!NOTE]
 > A SimulatedDevice-2.js az SAS-jogkivonat SDK-val és SDK nélkül történő létrehozására is tartalmaz példákat.
@@ -142,7 +142,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 Jegyezze fel a létrehozott SAS-jogkivonat teljes szövegét. A SAS-jogkivonatok a következőképpen néznek ki: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután keresse meg az **iot-hub\Tutorials\ConnectivityTests** mappát.
+A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Tutorials\ConnectivityTests** mappát.
 
 Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához:
 
@@ -183,7 +183,7 @@ Először kérje le a szimulált eszköz aktuális kapcsolati sztringjét a köv
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Ha üzeneteket küldő szimulált eszközt szeretne futtatni, keresse meg a letöltött kód **iot-hub\Oktatóanyagok\ConnectivityTests** mappáját.
+Az üzeneteket küldő szimulált eszköz futtatásához navigáljon a letöltött kód **IOT-hub\Tutorials\ConnectivityTests** mappájába.
 
 Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához:
 
@@ -196,7 +196,7 @@ A terminálablak információkat jelenít meg, miközben telemetriát küld a hu
 
 ![A szimulált eszköz üzeneteket küld](media/tutorial-connectivity/sim-3-sending.png)
 
-**Metrikák** a portálon, ellenőrizze, hogy a telemetriai üzenetek elérik az IoT hub. Válassza ki az IoT Hubot az **Erőforrás** legördülő menüből, válassza az **Elküldött telemetriai üzeneteket** metrikaként, majd állítsa az időtartományt az **Elmúlt óra** lehetőségre. A diagram a szimulált eszköz által elküldött üzenetek összegzett darabszámát jeleníti meg:
+A portál **metrikái** segítségével ellenőrizheti, hogy a telemetria üzenetek elérik-e az IoT hubot. Válassza ki az IoT Hubot az **Erőforrás** legördülő menüből, válassza az **Elküldött telemetriai üzeneteket** metrikaként, majd állítsa az időtartományt az **Elmúlt óra** lehetőségre. A diagram a szimulált eszköz által elküldött üzenetek összegzett darabszámát jeleníti meg:
 
 ![IoT Hub metrikáinak megjelenítése](media/tutorial-connectivity/metrics-portal.png)
 

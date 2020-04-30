@@ -1,6 +1,6 @@
 ---
-title: Adatlemez leválasztása Windows virtuális gépről – Azure
-description: Az Azure-beli virtuális gépről az Erőforrás-kezelő telepítési modelljével leválaszthat egy adatlemezt.
+title: Adatlemez leválasztása Windows rendszerű virtuális gépről – Azure
+description: Adatlemez leválasztása az Azure-beli virtuális gépről a Resource Manager-alapú üzemi modell használatával.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: disks
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: cynthn
 ms.openlocfilehash: c93bb5fd3e92c6a947fe997b58207b87b2717fd5
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082764"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Adatlemez leválasztása Windows rendszerű virtuális gépről
@@ -20,7 +20,7 @@ ms.locfileid: "82082764"
 Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ezzel eltávolítja a lemezt a virtuális gépről, de nem távolítja el a tárolóból.
 
 > [!WARNING]
-> Ha leválaszt egy lemezt, az nem törlődik automatikusan. Ha előfizetett a Prémium szintű tárhelyre, továbbra is tárolási díjat kell fizetnie a lemezért. További információ: [Díjszabás és számlázás a Prémium szintű storage használata esetén.](disks-types.md#billing)
+> Ha leválaszt egy lemezt, nem törlődik automatikusan. Ha prémium szintű tárterületre iratkozott fel, akkor továbbra is a lemez tárolási díjait számítjuk fel. További információkért tekintse meg a [díjszabást és a számlázást Premium Storage használatakor](disks-types.md#billing).
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.
 
@@ -28,9 +28,9 @@ Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ug
 
 ## <a name="detach-a-data-disk-using-powershell"></a>Adatlemez leválasztása a PowerShell használatával
 
-A PowerShell használatával *gyorsan* eltávolíthatja az adatlemezeket, de győződjön meg arról, hogy semmi sem használja aktívan a lemezt, mielőtt leválasztja azt a virtuális gépről.
+Az adatlemezeket a PowerShell *használatával is* elvégezheti, de ügyeljen arra, hogy a virtuális gép leválasztása előtt ne használja aktívan a lemezt.
 
-Ebben a példában eltávolítjuk a **myDisk** nevű lemezt a virtuális gép **myVM-ből** a **myResourceGroup** erőforráscsoportból. Először távolítsa el a lemezt az [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) parancsmag használatával. Ezután frissíti a virtuális gép állapotát az [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) parancsmag használatával az adatlemez eltávolításának befejezéséhez.
+Ebben a példában eltávolítjuk a **myDisk** nevű lemezt a **myResourceGroup** erőforráscsoport virtuálisgép- **myVM** . Először távolítsa el a lemezt a [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) parancsmag használatával. Ezután frissítse a virtuális gép állapotát az [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) parancsmag használatával az adatlemez eltávolítási folyamatának befejezéséhez.
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM `
@@ -44,21 +44,21 @@ Update-AzVM `
    -VM $VirtualMachine
 ```
 
-A lemez a tárolóban marad, de már nem csatlakozik a virtuális géphez.
+A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
 
-A *gyorsan* eltávolíthatja az adatlemezt, de győződjön meg arról, hogy semmi sem használja aktívan a lemezt, mielőtt leválasztja azt a virtuális gépről.
+Elvégezheti az adatlemezek *eltávolítását* , de a virtuális gépről való leválasztása előtt győződjön meg arról, hogy a lemez nem használja aktívan a lemezt.
 
-1. A bal oldali menüben válassza a **Virtuális gépek**lehetőséget.
-1. Válassza ki azt a virtuális gépet, amely rendelkezik a leválasztani kívánt adatlemezzel.
+1. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
+1. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található.
 1. A **Beállítások** alatt válassza a **Lemezek** lehetőséget.
-1. A **Lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-1. A **Lemezek** ablaktáblán, a leválasztani kívánt adatlemez jobb széléről válassza a **Leválasztás**lehetőséget.
-1. A módosítások mentéséhez válassza a lap tetején a **Mentés** gombot.
+1. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
+1. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a **Leválasztás**lehetőségre.
+1. A módosítások mentéséhez kattintson a lap tetején található **Mentés** gombra.
 
-A lemez a tárolóban marad, de már nem csatlakozik a virtuális géphez.
+A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja egy másik virtuális géphez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .

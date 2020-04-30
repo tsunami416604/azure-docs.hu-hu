@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép központi telepítése C# és Erőforrás-kezelő sablon használatával
-description: Ismerje meg, hogyan használhatja a C# és a Resource Manager-sablon azure-beli virtuális gép üzembe helyezéséhez.
+title: Virtuális gép üzembe helyezése C# használatával és Resource Manager-sablonnal
+description: Ismerje meg, hogyan helyezhet üzembe egy Azure-beli virtuális gépet a C# és egy Resource Manager-sablon használatával.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082917"
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Azure virtuális gép üzembe helyezése C# és Erőforrás-kezelő sablon használatával
+# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Azure-beli virtuális gép üzembe helyezése C# használatával és Resource Manager-sablonnal
 
-Ez a cikk bemutatja, hogyan telepíthet egy Azure Resource Manager-sablont a C#használatával. A létrehozott sablon egyetlen, Windows Server rendszert futtató virtuális gépet telepít egyetlen alhálózattal rendelkező új virtuális hálózatban.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont a C# használatával. A létrehozott sablon egy Windows Server rendszert futtató virtuális gépet telepít egyetlen alhálózattal rendelkező új virtuális hálózatban.
 
-A virtuálisgép-erőforrás részletes leírását az [Azure Resource Manager-sablonban található virtuális gépek című témakörben olvashatja.](template-description.md) A sablonösszes erőforrásáról az Azure [Resource Manager sablonforgatókönyv-forgatókönyve című témakörben olvashat bővebben.](../../azure-resource-manager/resource-manager-template-walkthrough.md)
+A virtuális gép erőforrásának részletes ismertetését lásd: [virtuális gépek egy Azure Resource Manager sablonban](template-description.md). További információ a sablon összes erőforrásáról: [Azure Resource Manager template walkthrough](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Ezeket a lépéseket körülbelül 10 percalatt elkell végezni.
+Ezek a lépések körülbelül 10 percet vesznek igénybe.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-Ebben a lépésben győződjön meg arról, hogy a Visual Studio telepítve van, és hozzon létre egy konzolalkalmazást a sablon központi telepítéséhez.
+Ebben a lépésben meg kell győződnie arról, hogy a Visual Studio telepítve van, és létrehoz egy, a sablon üzembe helyezéséhez használt konzol alkalmazást.
 
-1. Ha még nem tette meg, telepítse a [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)alkalmazást. A Számítási feladatok lapon válassza a **.NET asztal fejlesztését,** majd kattintson a **Telepítés gombra.** Az összegzésben láthatja, hogy a **.NET Framework 4 - 4.6 fejlesztői eszközök** automatikusan kiválasztásra kerülnek. Ha már telepítette a Visual Studio alkalmazást, a .NET-számítási feladatot hozzáadhatja a Visual Studio launcher használatával.
-2. A Visual Studio programban kattintson az**Új** > **projekt** **fájlja** > gombra.
-3. A Templates Visual C# **(Sablonok vizuális** >  **Console App (.NET Framework)****csz.** *myDotnetProject* **OK**
+1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). A munkaterhelések lapon válassza ki a **.net Desktop Development** elemet, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **.NET-keretrendszer 4 – 4,6 fejlesztői eszközei** automatikusan ki vannak választva. Ha már telepítette a Visual studiót, a .NET-munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
+2. A Visual Studióban kattintson a **fájl** > **új** > **projekt**elemre.
+3. A **sablonok** > **Visual C#**-ban válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, írja be a *myDotnetProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
 ## <a name="install-the-packages"></a>A csomagok telepítése
 
-A NuGet csomagok a legegyszerűbb módja a lépések végrehajtásához szükséges könyvtárak telepítésének. A Visual Studio alkalmazásban szükséges könyvtárak leeléréséhez tegye a következő lépéseket:
+A NuGet csomagok a legegyszerűbben a lépések végrehajtásához szükséges kódtárak telepítésére szolgálnak. A Visual Studióban szükséges kódtárak beszerzéséhez hajtsa végre a következő lépéseket:
 
-1. Kattintson **az Eszközök** > **Nuget csomagkezelő ikonra,** majd a **Csomagkezelő konzol parancsra.**
+1. Kattintson az **eszközök** > **Nuget csomagkezelő**elemre, majd a **Package Manager konzol**elemre.
 2. Írja be ezeket a parancsokat a konzolba:
 
     ```powershell
@@ -45,11 +45,11 @@ A NuGet csomagok a legegyszerűbb módja a lépések végrehajtásához szüksé
 
 ## <a name="create-the-files"></a>A fájlok létrehozása
 
-Ebben a lépésben létrehoz egy sablonfájlt, amely telepíti az erőforrásokat és egy paraméterfájlt, amely paraméterértékeket ad a sablonnak. Az Azure Resource Manager-műveletek végrehajtásához használt engedélyezési fájlt is létrehozhat.
+Ebben a lépésben létrehoz egy sablonfájlt, amely központilag telepíti az erőforrásokat és a paramétereket tartalmazó fájlt, amely a sablonhoz paramétereket szolgáltat. Emellett Azure Resource Manager műveletek végrehajtásához használt engedélyezési fájlt is létrehoz.
 
-### <a name="create-the-template-file"></a>A sablonfájl létrehozása
+### <a name="create-the-template-file"></a>Sablonfájl létrehozása
 
-1. A Megoldáskezelőben kattintson a jobb gombbal *a myDotnetProject* > **Új elem****hozzáadása** > elemre, majd válassza a **Szövegfájl parancsot** a *Visual C# elemekben.* Nevezze el a *CreateVMTemplate.json*fájlt, majd kattintson a **Hozzáadás**gombra.
+1. A Megoldáskezelőban kattintson a jobb gombbal a *myDotnetProject* > **Add** > **új elem**hozzáadása lehetőségre, majd válassza a **szövegfájl** *elemet a Visual C# elemekben*. Nevezze el az *CreateVMTemplate. JSON*fájlt, majd kattintson a **Hozzáadás**gombra.
 2. Adja hozzá ezt a JSON-kódot a létrehozott fájlhoz:
 
     ```json
@@ -155,13 +155,13 @@ Ebben a lépésben létrehoz egy sablonfájlt, amely telepíti az erőforrásoka
     }
     ```
 
-3. Mentse a CreateVMTemplate.json fájlt.
+3. Mentse a CreateVMTemplate. JSON fájlt.
 
-### <a name="create-the-parameters-file"></a>A paraméterfájl létrehozása
+### <a name="create-the-parameters-file"></a>A Parameters fájl létrehozása
 
-A sablonban az erőforrás-paraméterek értékeinek megadásához hozzon létre egy paraméterfájlt, amely tartalmazza az értékeket.
+A sablonban lévő erőforrás-paraméterek értékének megadásához létre kell hoznia egy paramétereket tartalmazó fájlt, amely tartalmazza az értékeket.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal *a myDotnetProject* > **Új elem****hozzáadása** > elemre, majd válassza a **Szövegfájl parancsot** a *Visual C# elemekben.* Nevezze el a *fájlt Parameters.json fájlnak,* majd kattintson a **Hozzáadás gombra.**
+1. A Megoldáskezelőban kattintson a jobb gombbal a *myDotnetProject* > **Add** > **új elem**hozzáadása lehetőségre, majd válassza a **szövegfájl** *elemet a Visual C# elemekben*. Nevezze el a file *Parameters. JSON*fájlt, majd kattintson a **Hozzáadás**gombra.
 2. Adja hozzá ezt a JSON-kódot a létrehozott fájlhoz:
 
     ```json
@@ -175,14 +175,14 @@ A sablonban az erőforrás-paraméterek értékeinek megadásához hozzon létre
     }
     ```
 
-4. Mentse a Parameters.json fájlt.
+4. Mentse a Parameters. JSON fájlt.
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-Mielőtt telepítene egy sablont, győződjön meg arról, hogy rendelkezik hozzáféréssel egy [Active Directory egyszerű szolgáltatáshoz.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) Az egyszerű szolgáltatásból beszerezhet egy jogkivonatot az Azure Resource Manager kérelmek hitelesítéséhez. Az engedélyezési fájlban rögzítenie kell az alkalmazásazonosítót, a hitelesítési kulcsot és a szükséges bérlői azonosítót is.
+A sablon üzembe helyezése előtt győződjön meg arról, hogy van hozzáférése egy [Active Directory egyszerű szolgáltatáshoz](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Az egyszerű szolgáltatástól kapott tokent a kérelmek Azure Resource Manager való hitelesítéséhez. Jegyezze fel az alkalmazás AZONOSÍTÓját, a hitelesítési kulcsot és a bérlő AZONOSÍTÓját is, amelyet az engedélyezési fájlban kell megadnia.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal *a myDotnetProject* > **Új elem****hozzáadása** > elemre, majd válassza a **Szövegfájl parancsot** a *Visual C# elemekben.* Nevezze el a fájlt *azureauth.properties*, majd kattintson **a Hozzáadás gombra.**
-2. Adja hozzá ezeket az engedélyezési tulajdonságokat:
+1. A Megoldáskezelőban kattintson a jobb gombbal a *myDotnetProject* > **Add** > **új elem**hozzáadása lehetőségre, majd válassza a **szövegfájl** *elemet a Visual C# elemekben*. Nevezze el a *azureauth. properties*fájlt, majd kattintson a **Hozzáadás**gombra.
+2. Adja hozzá az alábbi engedélyezési tulajdonságokat:
 
     ```
     subscription=<subscription-id>
@@ -195,10 +195,10 @@ Mielőtt telepítene egy sablont, győződjön meg arról, hogy rendelkezik hozz
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le ** &lt;az&gt; előfizetés-id-t** az előfizetés-azonosítóra, ** &lt;az alkalmazásazonosítót&gt; ** az Active Directory alkalmazásazonosítóra, ** &lt;&gt; ** a hitelesítési kulcsot az alkalmazáskulcsra és ** &lt;a bérlőazonosítót&gt; ** a bérlői azonosítóra.
+    Cserélje le ** &lt;az előfizetés&gt; -azonosítót** az előfizetési azonosítóra, ** &lt;az Application-ID&gt; -** t a Active Directory alkalmazás-azonosítóra, ** &lt;a hitelesítési kulcsot&gt; ** az alkalmazás kulcsára, és ** &lt;&gt; a bérlő azonosítóját** a bérlő azonosítójával.
 
-3. Mentse az azureauth.properties fájlt.
-4. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a Windows rendszerben a létrehozott engedélyezési fájl teljes elérési útjával, például a következő PowerShell-paranccsal:
+3. Mentse a azureauth. properties fájlt.
+4. Állítsa be az AZURE_AUTH_LOCATION nevű környezeti változót a létrehozott hitelesítési fájl teljes elérési útjával, például használhatja a következő PowerShell-parancsot:
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -208,7 +208,7 @@ Mielőtt telepítene egy sablont, győződjön meg arról, hogy rendelkezik hozz
 
 ## <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa meg a létrehozott projekt Program.cs fájlját. Ezután adja hozzá ezeket a fájl tetején lévő utasításokhoz a következő utasítások használatával:
+1. Nyissa meg a létrehozott projekthez tartozó Program.cs-fájlt. Ezután adja hozzá a következő utasításokat a fájl elejéhez a meglévő utasításokhoz:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -220,7 +220,7 @@ Mielőtt telepítene egy sablont, győződjön meg arról, hogy rendelkezik hozz
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-2. A felügyeleti ügyfél létrehozásához adja hozzá ezt a kódot a fő metódushoz:
+2. A felügyeleti ügyfél létrehozásához adja hozzá ezt a kódot a Main metódushoz:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -235,7 +235,7 @@ Mielőtt telepítene egy sablont, győződjön meg arról, hogy rendelkezik hozz
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az alkalmazás értékeinek megadásához adjon kódot a Fő metódushoz:
+Az alkalmazás értékeinek megadásához adja hozzá a kódot a Main metódushoz:
 
 ```csharp
 var groupName = "myResourceGroup";
@@ -248,9 +248,9 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A sablon és a paraméterek az Azure-beli tárfiókból vannak telepítve. Ebben a lépésben hozza létre a fiókot, és töltse fel a fájlokat. 
+A sablon és a paraméterek üzembe helyezése egy Azure-beli Storage-fiókból történik. Ebben a lépésben létrehozza a fiókot, és feltölti a fájlokat. 
 
-A fiók létrehozásához adja hozzá ezt a kódot a Fő metódushoz:
+A fiók létrehozásához adja hozzá ezt a kódot a Main metódushoz:
 
 ```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
@@ -288,9 +288,9 @@ paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Telepítse a sablont és a paramétereket a létrehozott tárfiókból. 
+Telepítse a sablont és a paramétereket a létrehozott Storage-fiókból. 
 
-A sablon központi telepítéséhez adja hozzá ezt a kódot a fő metódushoz:
+A sablon üzembe helyezéséhez adja hozzá ezt a kódot a Main metódushoz:
 
 ```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
@@ -305,11 +305,11 @@ Console.WriteLine("Press enter to delete the resource group...");
 Console.ReadLine();
 ```
 
-## <a name="delete-the-resources"></a>Az erőforrások törlése
+## <a name="delete-the-resources"></a>Erőforrások törlése
 
-Mivel az Azure-ban használt erőforrásokért díjat számítunk fel, mindig ajánlott törölni azokat az erőforrásokat, amelyekre már nincs szükség. Nem kell minden erőforrást az erőforráscsoporttól elkülönítve törölnie. Törölje az erőforráscsoportot, és az összes erőforrása automatikusan törlődik. 
+Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes törölni a már nem szükséges erőforrásokat. Nem kell minden erőforrást külön törölni az erőforráscsoporthoz. Törölje az erőforráscsoportot, és minden erőforrását automatikusan törli a rendszer. 
 
-Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Fő metódushoz:
+Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódushoz:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -317,13 +317,13 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Körülbelül öt percet vesz igénybe, amíg ez a konzolalkalmazás teljesen elindul az elejétől a végéig. 
+Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. 
 
-1. A konzolalkalmazás futtatásához kattintson a **Start**gombra.
+1. A konzol alkalmazás futtatásához kattintson a **Start**gombra.
 
-2. Mielőtt az **Enter** billentyű lenyomásával megszeretné kezdeni az erőforrások törlését, eltarthat néhány percet az erőforrások létrehozásának ellenőrzése az Azure Portalon. Kattintson a központi telepítés állapotára a központi telepítéssel kapcsolatos információk megtekintéséhez.
+2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha problémák merültek fel a központi telepítéssel kapcsolatban, a következő lépés az [Azure Resource Manager gyakori Azure-telepítési hibák elhárítása című](../../resource-manager-common-deployment-errors.md)témakörben található.
-* Ismerje meg, hogyan helyezhet üzembe egy virtuális gépet és a támogató erőforrásokat [az Azure virtuális gép c# használatával történő üzembe helyezése áttekintésével.](csharp.md)
+* Ha probléma merült fel az üzembe helyezés során, a következő lépés az [Azure telepítési hibáinak elhárítása a Azure Resource Manager](../../resource-manager-common-deployment-errors.md)használatával.
+* Megtudhatja, hogyan helyezhet üzembe egy virtuális gépet és annak támogató erőforrásait az Azure-beli [virtuális gépek C# használatával történő üzembe helyezésének](csharp.md)áttekintésével.

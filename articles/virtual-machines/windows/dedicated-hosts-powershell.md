@@ -1,6 +1,6 @@
 ---
-title: Az Azure dedikált állomásainak üzembe helyezése az Azure PowerShell használatával
-description: Telepítse a virtuális gépeket dedikált állomásokra az Azure PowerShell használatával.
+title: Az Azure dedikált gazdagépek üzembe helyezése a Azure PowerShell használatával
+description: A virtuális gépeket a Azure PowerShell használatával dedikált gazdagépekre helyezheti üzembe.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -9,32 +9,32 @@ ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082849"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek telepítése dedikált állomásokra az Azure PowerShell használatával
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
-Ez a cikk végigvezeti, hogyan hozhat létre egy Azure [dedikált gazdagépet](dedicated-hosts.md) a virtuális gépek (Virtuális gépek) üzemeltetéséhez. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
-Győződjön meg arról, hogy telepítette az Azure PowerShell 2.8.0-s `Connect-AzAccount`vagy újabb verzióját, és be van jelentkezve egy Azure-fiókba a alkalmazásban. 
+Győződjön meg arról, hogy telepítette a Azure PowerShell 2.8.0-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a-ben `Connect-AzAccount`. 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A virtuálisgép-méretezési csoportok jelenleg nem támogatottak dedikált állomásokon.
-- A dedikált gazdagépek számára elérhető méretek és hardvertípusok régiónként eltérőek lehetnek. További információ a gazdagép [díjszabási oldalán.](https://aka.ms/ADHPricing)
+- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
+- A dedikált gazdagépek számára elérhető méretek és hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
-## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása
+## <a name="create-a-host-group"></a>Gazda csoport létrehozása
 
-A **gazdagépcsoport** olyan erőforrás, amely dedikált gazdagépek gyűjteményét képviseli. Hozzon létre egy gazdagépcsoportot egy régióban és egy rendelkezésre állási zónát, és adjon hozzá állomásokat. A magas rendelkezésre állás tervezésekor további lehetőségek is rendelkezésre állnak. Az alábbi lehetőségek egyikét vagy mindkettőt használhatja a dedikált gazdagépekkel: 
-- Több rendelkezésre állási zónára is kiterjedjen. Ebben az esetben minden használni kívánt zónában rendelkeznie kell egy gazdagépcsoporttal.
-- Több tartalék tartományban, amelyek fizikai állványokra vannak leképezve. 
+A **gazda-csoport** egy olyan erőforrás, amely dedikált gazdagépek gyűjteményét jelöli. Egy adott régióban és egy rendelkezésre állási zónában hozhat létre egy gazdagépet, és hozzáadhat gazdagépeket. A magas rendelkezésre állás tervezése során további lehetőségek is rendelkezésre állnak. A dedikált gazdagépekhez a következő lehetőségek közül választhat: 
+- Több rendelkezésre állási zónára kiterjedő span. Ebben az esetben minden használni kívánt zónában rendelkeznie kell egy gazdagép-csoporttal.
+- Több tartalék tartomány között, amelyek fizikai állványokra vannak leképezve. 
  
-Mindkét esetben meg kell adnia a gazdagépcsoport tartaléktartomány-számát. Ha nem szeretné span tartalék tartományok a csoportban, használja a tartalék tartomány száma 1. 
+Mindkét esetben meg kell adnia a gazdagép-csoport tartalék tartományának darabszámát. Ha nem szeretné a csoportban lévő tartalék tartományokat kivonni, használja az 1. számú tartalék tartományt. 
 
-Dönthet úgy is, hogy a rendelkezésre állási zónákat és a tartalék tartományokat is használja. Ez a példa létrehoz egy állomáscsoportot az 1. 
+Dönthet úgy is, hogy a rendelkezésre állási zónákat és a tartalék tartományokat is használja. Ez a példa egy gazdagép csoportot hoz létre az 1. zónában, 2 tartalék tartománnyal. 
 
 
 ```azurepowershell-interactive
@@ -50,13 +50,13 @@ $hostGroup = New-AzHostGroup `
    -Zone 1
 ```
 
-## <a name="create-a-host"></a>Állomás létrehozása
+## <a name="create-a-host"></a>Gazdagép létrehozása
 
-Most hozzunk létre egy dedikált gazdagép a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a termékváltozatot is az állomásszámára. A gazdatermékváltozat rögzíti a támogatott virtuális gép sorozat, valamint a hardver-generálás a dedikált gazdagép.
+Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.
 
-A gazdagép számos szolgáltatásáról és díjszabásáról az [Azure dedikált gazdagépdíj-szabása](https://aka.ms/ADHPricing)című témakörben talál további információt.
+A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 
-Ha tartalék tartományszámot állít be a gazdagépcsoporthoz, a rendszer megkéri, hogy adja meg a gazdagép tartalék tartományát. Ebben a példában az állomás tartalék tartományát 1-re állítjuk.
+Ha a gazdagéphez a tartalék tartományokat állítja be, a rendszer megkéri, hogy adja meg a gazdagép tartalék tartományát. Ebben a példában a gazdagép tartalék tartományát 1-re állítja.
 
 
 ```azurepowershell-interactive
@@ -73,7 +73,7 @@ $dHost = New-AzHost `
 
 Hozzon létre egy virtuális gépet a dedikált gazdagépen. 
 
-Ha a gazdagépcsoport létrehozásakor megadott egy rendelkezésre állási zónát, akkor ugyanazt a zónát kell használnia a virtuális gép létrehozásakor. Ebben a példában, mivel a gazdagépcsoport az 1 zónában van, létre kell hoznunk a virtuális gép 1 zónában.  
+Ha a rendelkezésre állási zónát a gazda csoport létrehozásakor adta meg, akkor ugyanazt a zónát kell használnia a virtuális gép létrehozásakor. Ebben a példában, mert a gazda csoport az 1. zónában van, létre kell hoznia a virtuális gépet az 1. zónában.  
 
 
 ```azurepowershell-interactive
@@ -90,11 +90,11 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> Ha olyan gazdagépen hoz létre virtuális gépet, amely nem rendelkezik elegendő erőforrással, a virtuális gép sikertelen állapotban jön létre. 
+> Ha olyan gazdagépen hoz létre virtuális gépet, amely nem rendelkezik elegendő erőforrással, a virtuális gép hibás állapotban lesz létrehozva. 
 
-## <a name="check-the-status-of-the-host"></a>Az állomás állapotának ellenőrzése
+## <a name="check-the-status-of-the-host"></a>A gazdagép állapotának keresése
 
-Ellenőrizheti a gazdagép állapotát, és hány virtuális gépet továbbra is telepíthet a [getazhost](/powershell/module/az.compute/get-azhost) használatával a `-InstanceView` paraméterrel.
+Megtekintheti a gazdagép állapotának állapotát, valamint azt, hogy hány virtuális gépet telepíthet a gazdagépre a [GetAzHost](/powershell/module/az.compute/get-azhost) használatával `-InstanceView` a paraméterrel.
 
 ```azurepowershell-interactive
 Get-AzHost `
@@ -104,7 +104,7 @@ Get-AzHost `
    -InstanceView
 ```
 
-A kimenet így fog kinézni:
+A kimenet a következőhöz hasonlóan fog kinézni:
 
 ```
 ResourceGroupName      : myDHResourceGroup
@@ -167,13 +167,13 @@ Tags                   : {}
 
 ## <a name="add-an-existing-vm"></a>Meglévő virtuális gép hozzáadása 
 
-Hozzáadhat egy meglévő virtuális gép egy dedikált gazdagép, de a virtuális gép először le kell állítani\Felszabadított. Mielőtt áthelyezne egy virtuális gép egy dedikált gazdagép, győződjön meg arról, hogy a virtuális gép konfigurációja támogatott:
+Hozzáadhat egy meglévő virtuális gépet egy dedikált gazdagéphez, de a virtuális gépnek először Stop\Deallocated. kell lennie. Mielőtt áthelyezi a virtuális gépet egy dedikált gazdagépre, győződjön meg arról, hogy a virtuális gép konfigurációja támogatott:
 
-- A virtuális gép méretének ugyanolyan méretűnek kell lennie, mint a dedikált gazdagépnek. Például ha a dedikált gazdagép DSv3, majd a virtuális gép mérete lehet Standard_D4s_v3, de nem lehet Standard_A4_v2. 
-- A virtuális gép nek ugyanabban a régióban kell lennie, mint a dedikált gazdagép.
-- A virtuális gép nem lehet része a közelség elhelyezési csoport. Távolítsa el a virtuális gép a közelség elhelyezési csoport, mielőtt áthelyezi egy dedikált gazdagép. További információ: [Virtuális gép áthelyezése a közelségelhelyezési csoportból](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
-- A virtuális gép nem lehet egy rendelkezésre állási csoportban.
-- Ha a virtuális gép egy rendelkezésre állási zónában van, akkor a gazdagépcsoportokkal azonos rendelkezésre állási zónának kell lennie. A virtuális gép és a gazdagépcsoport rendelkezésre állási zóna beállításainak egyezniük kell.
+- A virtuális gép méretének azonos méretűnek kell lennie, mint a dedikált gazdagépnek. Ha például a dedikált gazdagép DSv3, akkor a virtuális gép mérete Standard_D4s_v3, de nem lehet Standard_A4_v2. 
+- A virtuális gépnek ugyanabban a régióban kell lennie, ahol a dedikált gazdagép található.
+- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- A virtuális gép nem lehet rendelkezésre állási készletben.
+- Ha a virtuális gép egy rendelkezésre állási zónában van, akkor a gazdagép-csoporttal megegyező rendelkezésre állási zónának kell lennie. A virtuális gép rendelkezésre állási zónájának beállításai és a gazdagép csoportjának egyeznie kell.
 
 Cserélje le a változók értékeit a saját adataira.
 
@@ -213,27 +213,27 @@ Start-AzVM `
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Akkor is díjat számítunk fel a dedikált gazdagépekért, ha nincsenek üzembe helyezve virtuális gépek. Törölje azokat a gazdagépeket, amelyeket jelenleg nem használ a költségek megtakarítására.  
+A dedikált gazdagépekre akkor is díjat számítunk fel, ha nincsenek virtuális gépek üzembe helyezése. Minden olyan gazdagépet törölni kell, amelyet jelenleg nem használ a költségek megtakarítására.  
 
-Csak akkor törölheti az állomást, ha már nincsenek olyan virtuális gépek, amelyek azt használják. Törölje a virtuális gépeket az [Remove-AzVM](/powershell/module/az.compute/remove-azvm)használatával.
+Csak akkor törölhet egy gazdagépet, ha már nem használja a virtuális gépeket. Törölje a virtuális gépeket a [Remove-AzVM](/powershell/module/az.compute/remove-azvm)használatával.
 
 ```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-A virtuális gépek törlése után törölheti az állomást az [Remove-AzHost](/powershell/module/az.compute/remove-azhost)használatával.
+A virtuális gépek törlése után törölheti a gazdagépet a [Remove-AzHost](/powershell/module/az.compute/remove-azhost)használatával.
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Miután törölte az összes állomást, törölheti a gazdagépcsoportot az [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
+Miután törölte az összes gazdagépet, törölheti a gazdagépet a [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)használatával. 
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)paranccsal a teljes erőforráscsoportot törölheti is egyetlen parancsban. Ezzel törli a csoportban létrehozott összes erőforrást, beleértve az összes virtuális gépet, állomást és gazdagépcsoportot.
+A [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával egyetlen parancsban is törölheti a teljes erőforráscsoportot. Ezzel törli a csoportban létrehozott összes erőforrást, beleértve az összes virtuális gépet, gazdagépet és gazdagépet is.
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -242,6 +242,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>További lépések
 
-- Van egy mintasablon, amely zónákat és tartalék tartományokat is használ a maximális rugalmasság érdekében egy régióban. [here](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)
+- [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
 
-- Dedikált állomásokat is üzembe helyezhet az [Azure Portal használatával.](dedicated-hosts-portal.md)
+- A [Azure Portal](dedicated-hosts-portal.md)használatával dedikált gazdagépeket is üzembe helyezhet.
