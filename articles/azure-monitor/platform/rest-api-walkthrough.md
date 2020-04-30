@@ -1,31 +1,31 @@
 ---
-title: Azure Monitoring REST API forgatókönyve
-description: A kérelmek hitelesítése és az Azure Monitor REST API használata a rendelkezésre álló metrika-definíciók és metrikaértékek lekéréséhez.
+title: Azure monitoring REST API útmutató
+description: Kérelmek hitelesítése és a Azure Monitor REST API használata az elérhető metrika-definíciók és metrikai értékek lekéréséhez.
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687417"
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitoring REST API forgatókönyve
+# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan hajthatja végre a hitelesítést, hogy a kód használhassa a [Microsoft Azure Monitor REST API-referencia .](https://docs.microsoft.com/rest/api/monitor/)
+Ez a cikk bemutatja, hogyan végezheti el a hitelesítést, hogy a kód használhassa a [Microsoft Azure Monitor REST API-referenciát](https://docs.microsoft.com/rest/api/monitor/).
 
-Az Azure Monitor API lehetővé teszi a rendelkezésre álló alapértelmezett metrika-definíciók, részletesség és metrikaértékek programozott lekérését. Az adatok menthetők egy külön adattárban, például az Azure SQL Database, az Azure Cosmos DB vagy az Azure Data Lake. Innen szükség szerint további elemzést lehet végezni.
+A Azure Monitor API lehetővé teszi az elérhető alapértelmezett metrikai definíciók, részletességi és metrikai értékek programozott beolvasását. Az adattárak külön adattárba menthetők, például Azure SQL Database, Azure Cosmos DB vagy Azure Data Lake. A további elemzések igény szerint elvégezhetők.
 
-A különböző metrikaadat-pontok on-val végzett munka mellett a Figyelő API lehetővé teszi a riasztási szabályok listázását, a tevékenységnaplók megtekintését és még sok más. Az elérhető műveletek teljes listáját a [Microsoft Azure Monitor REST API-kézikönyvében található.](https://docs.microsoft.com/rest/api/monitor/)
+A különböző metrikai adatpontok használata mellett a figyelő API is lehetővé teszi a riasztási szabályok listázását, a tevékenységek naplóinak megtekintését és sok más további munkát. Az elérhető műveletek teljes listáját a [Microsoft Azure Monitor REST API-referenciája](https://docs.microsoft.com/rest/api/monitor/)című témakörben tekintheti meg.
 
-## <a name="authenticating-azure-monitor-requests"></a>Az Azure Monitor-kérelmek hitelesítése
+## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor kérelmek hitelesítése
 
 Az első lépés a kérelem hitelesítése.
 
-Az Azure Monitor API-val végrehajtott összes feladat az Azure Resource Manager hitelesítési modelljét használja. Ezért minden kérelmet hitelesíteni kell az Azure Active Directory (Azure AD) segítségével. Az ügyfélalkalmazás hitelesítésének egyik módszere egy Azure AD egyszerű szolgáltatás létrehozása és a hitelesítési (JWT) jogkivonat lekérése. A következő mintaparancsfájl bemutatja egy Azure AD egyszerű szolgáltatás létrehozása a PowerShellen keresztül. Részletesebb útmutatásért tekintse meg az Azure [PowerShell használatával az erőforrások eléréséhez egyszerű szolgáltatás létrehozásáról szóló dokumentációt.](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps) Lehetőség van [egy egyszerű szolgáltatás létrehozása az Azure Portalon keresztül.](../../active-directory/develop/howto-create-service-principal-portal.md)
+A Azure Monitor API-val végrehajtott összes feladat a Azure Resource Manager hitelesítési modellt használja. Ezért az összes kérelmet hitelesíteni kell Azure Active Directory (Azure AD). Az ügyfélalkalmazás hitelesítésének egyik módja az, ha létrehoz egy Azure AD-szolgáltatásnevet, és lekéri a hitelesítési (JWT) jogkivonatot. Az alábbi példa azt mutatja be, hogyan hozható létre egy Azure AD-szolgáltatásnév a PowerShell használatával. Részletesebb útmutatásért tekintse meg a dokumentációt, amely a [Azure PowerShell használatával hoz létre egy egyszerű szolgáltatásnevet az erőforrásokhoz való hozzáféréshez](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). [A Azure Portal használatával is létrehozhat egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -54,7 +54,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Az Azure Monitor API lekérdezéséhez az ügyfélalkalmazásnak a korábban létrehozott egyszerű szolgáltatáshitelesítést kell használnia. A következő példa PowerShell-parancsfájl egy megközelítést mutat be, az [Active Directory hitelesítési tár](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) használatával a JWT hitelesítési jogkivonat beszerzéséhez. A JWT-jogkivonat egy HTTP-engedélyezési paraméter részeként kerül átadásra az Azure Monitor REST API-ba irányuló kérelmekben.
+A Azure Monitor API lekérdezéséhez az ügyfélalkalmazás a korábban létrehozott egyszerű szolgáltatást használja a hitelesítéshez. Az alábbi PowerShell-szkript egy megközelítést mutat be, amely a [Active Directory-hitelesítési tár](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) használatával szerzi be a JWT hitelesítési tokent. Az JWT token egy HTTP-engedélyezési paraméter részeként kerül átadásra a Azure Monitor REST API kérelmekben.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -78,25 +78,25 @@ $authHeader = @{
 }
 ```
 
-A hitelesítés után a lekérdezések ezután végrehajthatók az Azure Monitor REST API-val. Két hasznos lekérdezés van:
+A hitelesítés után a lekérdezések végrehajthatók a Azure Monitor REST API. Két hasznos lekérdezés létezik:
 
-1. Egy erőforrás metrikadefinícióinak felsorolása
-2. A metrikaértékek lekérése
+1. Erőforrás metrika-definícióinak listázása
+2. Metrika értékeinek beolvasása
 
 > [!NOTE]
-> Az Azure REST API-val való hitelesítésről az [Azure REST API-val kapcsolatos referencia](https://docs.microsoft.com/rest/api/azure/)című további tudnivalókat további tudnivalókat talál.
+> Az Azure REST API való hitelesítéssel kapcsolatos további információkért tekintse meg az [azure REST API-referenciát](https://docs.microsoft.com/rest/api/azure/).
 >
 >
 
-## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Metrikadefiníciók lekérése (többdimenziós API)
+## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Metrika-definíciók beolvasása (többdimenziós API)
 
-Az [Azure Monitor metrikadefiníciók REST API-t](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) a szolgáltatás hoz rendelkezésre álló metrikák listájának eléréséhez.
+A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) .
 
-**Módszer**: GET
+**Metódus**: Get
 
-**Kérelem URI**:\/\/https: management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Kérelem URI-ja**:\/\/https: Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
-Például egy Azure Storage-fiók metrikadefinícióinak lekéréséhez a kérés a következőképpen jelenik meg:
+Ha például egy Azure Storage-fiók metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
@@ -110,11 +110,11 @@ Invoke-RestMethod -Uri $request `
 ```
 
 > [!NOTE]
-> Metrikadefiníciók beolvasásához a többdimenziós Azure Monitor metrikák REST API használatával, használja a "2018-01-01" API-verzió.
+> Ha a többdimenziós Azure Monitor REST API metrikák használatával szeretné lekérni a metrika-definíciókat, használja az "2018-01-01" API-verziót.
 >
 >
 
-Az eredményül kapott JSON-választörzs hasonló lenne a következő példához: (Vegye figyelembe, hogy a második metrika dimenziókkal rendelkezik)
+Az eredményül kapott JSON-válasz a következő példához hasonló lenne: (vegye figyelembe, hogy a második metrika dimenziókkal rendelkezik)
 
 ```json
 {
@@ -225,22 +225,22 @@ Az eredményül kapott JSON-választörzs hasonló lenne a következő példáho
 }
 ```
 
-## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Dimenzióértékek beolvasása (többdimenziós API)
+## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Dimenzió értékének beolvasása (többdimenziós API)
 
-Miután a rendelkezésre álló metrikadefiníciók ismertek, előfordulhat, hogy bizonyos metrikák, amelyek dimenziók. A metrika lekérdezése előtt érdemes lehet felderíteni, hogy egy dimenzió milyen értéktartományt tartalmaz. Ezek alapján a dimenzióértékek, majd választhat, hogy a szűrés vagy szegmentálás a metrikák alapján dimenzióértékek lekérdezése közben a metrikák.  Ennek eléréséhez használja az [Azure Monitor Metrics REST API-t.](https://docs.microsoft.com/rest/api/monitor/metrics)
+Ha a rendelkezésre álló metrika-definíciók ismertek, lehet, hogy vannak olyan mérőszámok, amelyek dimenziókkal rendelkeznek. A metrika lekérdezése előtt érdemes lehet felderíteni, hogy mi az értékek tartománya a dimenzióban. Ezek alapján a dimenzióértékeket kiválasztva szűrheti vagy szegmentálhatja a mérőszámokat a dimenzió értékei alapján a metrikák lekérdezése során.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) .
 
-A mérőszám "value" (nem a 'localizedvalue' ) nevét használja a szűrési kérelmekhez. Ha nincs megadva szűrő, a rendszer az alapértelmezett metrikát adja vissza. Az API használata csak lehetővé teszi, hogy egy dimenzió helyettesítő karakterrel rendelkezik.
+A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez. Ha nincsenek megadva szűrők, a rendszer az alapértelmezett metrikát adja vissza. Ennek az API-nak a használata lehetővé teszi, hogy az egyik dimenzióban legyen helyettesítő szűrő.
 
 > [!NOTE]
-> Dimenzióértékek beolvasásához az Azure Monitor REST API használatával használja a "2018-01-01" API-verzió.
+> A dimenzió értékének a Azure Monitor REST API használatával történő beolvasásához használja az "2018-01-01" értéket API-verzióként.
 >
 >
 
-**Módszer**: GET
+**Metódus**: Get
 
-**URI kérése**\:: https //management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api={apiVersion}*{apiVersion}*
+**Kérelem URI**-ja\:: https//Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}*/*{erőforrás-típus*/*} {Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrikus}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&resultType = metaadatok&API-Version =*{apiVersion}*
 
-Ha például a "Transactions" metrikához az "API-név dimenzió" számára kibocsátott dimenzióértékek listáját szeretné beolvasni, ahol a GeoType dimenzió = "Elsődleges" a megadott időtartományban, a kérés a következő:
+Ha például le szeretné kérdezni a "Transactions" metrika "API-név dimenziója" számára kibocsátott dimenzióértékeket, ahol a GeoType dimenzió = "elsődleges" érték szerepel a megadott időtartományban, a kérelem a következő lesz:
 
 ```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
@@ -252,7 +252,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-Az eredményül kapott JSON választörzs hasonló lenne a következő példához:
+Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
 ```json
 {
@@ -298,22 +298,22 @@ Az eredményül kapott JSON választörzs hasonló lenne a következő példáho
 }
 ```
 
-## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrikus értékek beolvasása (többdimenziós API)
+## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrikai értékek beolvasása (többdimenziós API)
 
-Miután a rendelkezésre álló metrikadefiníciók és a lehetséges dimenzióértékek ismertek, akkor lehetséges a kapcsolódó metrikaértékek beolvasása.  Ennek eléréséhez használja az [Azure Monitor Metrics REST API-t.](https://docs.microsoft.com/rest/api/monitor/metrics)
+Ha a rendelkezésre álló metrika-definíciók és a lehetséges dimenzió értékek ismertek, akkor lehetséges, hogy beolvassa a kapcsolódó metrikai értékeket.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) .
 
-Használja a metrika "érték" (nem a "localizedValue") bármilyen szűrési kérelmek. Ha nincs megadva dimenziószűrő, a rendszer a ggregált metrikát adja vissza. Ha egy metrikalekérdezés több idősorozatot ad vissza, akkor a "Top" és az "OrderBy" lekérdezési paraméterek használatával korlátozott rendezett idősorok listáját adhat vissza.
+A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez. Ha nincsenek megadva dimenzió szűrők, a rendszer az összegzett összesített metrikát adja vissza. Ha egy metrika-lekérdezés több idősor ad vissza, akkor a "Top" és a "OrderBy" lekérdezési paraméterekkel lehet visszaadni a idősor korlátozott sorrendű listáját.
 
 > [!NOTE]
-> Többdimenziós metrikaértékek beolvasása az Azure Monitor REST API használatával használja a "2018-01-01" API-verzió.
+> A többdimenziós metrika értékének a Azure Monitor REST API használatával történő lekéréséhez használja az "2018-01-01" értéket API-verzióként.
 >
 >
 
-**Módszer**: GET
+**Metódus**: Get
 
-**Kérelem URI**:\/https: /management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} /providers/microsoft.insights/metrics?metricnames=**{metric}*&timespan=*{starttime/endtime}* $filter&=*{filter}*&interval=*{apiVersion}* *{timeGrain}*&aggregation=*{aggreation&*
+**Kérelem URI-ja**:\/https:/Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}*/*{erőforrás-típus}*/*{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrika}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&intervallum =*{timeGrain}*&aggregációs =*{aggreation}*&API-Version =*{apiVersion}*
 
-Ha például a 3 első API-t csökkenő értékben szeretné lekérni egy 5 méteres tartományban a "Tranzakciók" számával, ahol a GeotType "Elsődleges" volt, a kérés a következő lesz:
+Ha például az első 3 API-t csökkenő értékben szeretné lekérdezni, a "tranzakciók" száma egy 5 perces tartományban, ahol a GeotType "elsődleges" volt, a kérelem a következő lesz:
 
 ```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
@@ -325,7 +325,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-Az eredményül kapott JSON választörzs hasonló lenne a következő példához:
+Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
 ```json
 {
@@ -384,15 +384,15 @@ Az eredményül kapott JSON választörzs hasonló lenne a következő példáho
 }
 ```
 
-## <a name="retrieve-metric-definitions"></a>Metrikadefiníciók lekérése
+## <a name="retrieve-metric-definitions"></a>Metrika-definíciók beolvasása
 
-Az [Azure Monitor metrikadefiníciók REST API-t](https://msdn.microsoft.com/library/mt743621.aspx) a szolgáltatás hoz rendelkezésre álló metrikák listájának eléréséhez.
+A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](https://msdn.microsoft.com/library/mt743621.aspx) .
 
-**Módszer**: GET
+**Metódus**: Get
 
-**Kérelem URI**:\/\/https: management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Kérelem URI-ja**:\/\/https: Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
-Például egy Azure Logic-alkalmazás metrikadefinícióinak lekéréséhez a kérés a következőképpen jelenik meg:
+Ha például egy Azure logikai alkalmazás metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01"
@@ -405,11 +405,11 @@ Invoke-RestMethod -Uri $request `
 ```
 
 > [!NOTE]
-> Metrikadefiníciók lekérése az Azure Monitor REST API használatával, használja a "2016-03-01" API-verzió.
+> A metrikai definíciók a Azure Monitor REST API használatával történő beolvasásához használja az "2016-03-01" API-verziót.
 >
 >
 
-Az eredményül kapott JSON választörzs hasonló lenne a következő példához:
+Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
 ```json
 {
@@ -450,22 +450,22 @@ Az eredményül kapott JSON választörzs hasonló lenne a következő példáho
 }
 ```
 
-További információkért tekintse [meg a tekintse meg a metrika definíciók listájában egy erőforrás az Azure Monitor REST API dokumentációjában.](https://msdn.microsoft.com/library/azure/mt743621.aspx)
+További információkért tekintse meg az [erőforrás metrikai definícióinak listáját Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentációban.
 
-## <a name="retrieve-metric-values"></a>Metrikus értékek lekérése
+## <a name="retrieve-metric-values"></a>Metrikai értékek beolvasása
 
-Miután a rendelkezésre álló metrikadefiníciók ismertek, akkor lehetséges a kapcsolódó metrikaértékek beolvasása. Használja a metrika "érték" (nem a "localizedValue") minden szűrési kérelmek (például a "CpuTime" és a "Kérések" metrikus adatpontok). Ha nincs megadva szűrő, a rendszer az alapértelmezett metrikát adja vissza.
+Ha a rendelkezésre álló metrika-definíciók ismertek, akkor lehetséges, hogy beolvassa a kapcsolódó metrikai értékeket. Használja a metrika "value" (nem a "localizedValue") nevét a szűrési kérelmekhez (például a "CpuTime" és a "requests" metrikai adatpontok lekérése). Ha nincsenek megadva szűrők, a rendszer az alapértelmezett metrikát adja vissza.
 
 > [!NOTE]
-> Metrikaértékek beolvasása az Azure Monitor REST API használatával, használja a "2016-09-01" API-verzió.
+> A metrikai értékek a Azure Monitor REST API használatával történő beolvasásához használja az "2016-09-01" értéket API-verzióként.
 >
 >
 
-**Módszer**: GET
+**Metódus**: Get
 
-**Uri kérése**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Kérelem URI-ja**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
-Például a Futtatott metrika adatpontjainak beolvasásához az adott időtartományra és egy 1 órás idősécerre vonatkozóan a kérelem a következő:
+Ha például a megadott időtartományhoz tartozó RunsSucceeded metrikai adatpontokat szeretné lekérni, és egy órán belül egy órát, akkor a kérelem a következő lesz:
 
 ```powershell
 $filter = "(name.value eq 'RunsSucceeded') and aggregationType eq 'Total' and startTime eq 2017-08-18T19:00:00 and endTime eq 2017-08-18T23:00:00 and timeGrain eq duration'PT1H'"
@@ -477,7 +477,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-Az eredményül kapott JSON választörzs hasonló lenne a következő példához:
+Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
 ```json
 {
@@ -513,7 +513,7 @@ Az eredményül kapott JSON választörzs hasonló lenne a következő példáho
 }
 ```
 
-Több adat vagy összesítési pont lekéréséhez adja hozzá a metrikadefiníció-neveket és az aggregációs típusokat a szűrőhöz, ahogy az a következő példában látható:
+Több adat vagy összesítési pont lekéréséhez adja hozzá a metrika-definíciók nevét és az összesítési típusokat a szűrőhöz, az alábbi példában látható módon:
 
 ```powershell
 $filter = "(name.value eq 'ActionsCompleted' or name.value eq 'RunsSucceeded') and (aggregationType eq 'Total' or aggregationType eq 'Average') and startTime eq 2017-08-18T21:00:00 and endTime eq 2017-08-18T21:30:00 and timeGrain eq duration'PT1M'"
@@ -525,7 +525,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-Az eredményül kapott JSON választörzs hasonló lenne a következő példához:
+Az eredményül kapott JSON-válasz törzse a következő példához hasonló lenne:
 
 ```json
 {
@@ -576,62 +576,62 @@ Az eredményül kapott JSON választörzs hasonló lenne a következő példáho
 }
 ```
 
-### <a name="use-armclient"></a>ArmClient használata
+### <a name="use-armclient"></a>ARMClient használata
 
-További megközelítés az [ARMClient](https://github.com/projectkudu/armclient) használata a Windows-számítógépen. ArmClient kezeli az Azure AD-hitelesítés (és az eredményül kapott JWT-token) automatikusan kezeli. A következő lépések az ARMClient használatát ismertetik a metrikaadatok beolvasásához:
+Egy további módszer a [ARMClient](https://github.com/projectkudu/armclient) használata a Windows rendszerű gépen. A ARMClient automatikusan kezeli az Azure AD-hitelesítést (és a létrejövő JWT-jogkivonatot). A következő lépések körvonalazzák a ARMClient használatát a metrikus adatok beolvasásához:
 
-1. Telepítse [a Chocolatey](https://chocolatey.org/) és [az ARMClient alkalmazást.](https://github.com/projectkudu/armclient)
-2. A terminálablakba írja be az *armclient.exe bejelentkezést.* Ezzel kéri, hogy jelentkezzen be az Azure-ba.
-3. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
-4. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01*
+1. A [chocolatey](https://chocolatey.org/) és a [ARMClient](https://github.com/projectkudu/armclient)telepítése.
+2. A terminál ablakban írja be a *armclient. exe bejelentkezési nevet*. Ezzel megkéri, hogy jelentkezzen be az Azure-ba.
+3. Írja be a következőt: *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/metricdefinitions? API-Version = 2016-03-01*
+4. Írja be a következőt: *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/Metrics? API-Version = 2016-09-01*
 
-Egy adott logikai alkalmazás metrikadefinícióinak beolvasásához például adja ki a következő parancsot:
+Ha például egy adott logikai alkalmazás metrika-definícióit szeretné lekérni, adja ki a következő parancsot:
 
 ```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
-## <a name="retrieve-the-resource-id"></a>Az erőforrás-azonosító lekérése
+## <a name="retrieve-the-resource-id"></a>Erőforrás-azonosító lekérése
 
-A REST API használata valóban segíthet megérteni a rendelkezésre álló metrika-definíciókat, a részletességet és a kapcsolódó értékeket. Ez az információ az [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx)használatakor hasznos.
+A REST API használatával valóban megismerheti az elérhető metrikák definícióit, részletességét és kapcsolódó értékeit. Ez az információ az [Azure felügyeleti könyvtárának](https://msdn.microsoft.com/library/azure/mt417623.aspx)használatakor hasznos.
 
-Az előző kód esetében a használni kívánt Azure-erőforrás teljes elérési útja a használandó erőforrás azonosítója. Például egy Azure Web App lekérdezéséhez az erőforrás-azonosító a következő:
+Az előző kód esetében a használandó erőforrás-azonosító a kívánt Azure-erőforrás teljes elérési útja. Ha például egy Azure-webalkalmazásra szeretne lekérdezni, az erőforrás-azonosító a következő lesz:
 
 */subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{site-name}/*
 
-Az alábbi lista néhány példát tartalmaz a különböző Azure-erőforrások erőforrás-azonosító formátumaira:
+Az alábbi lista néhány példát tartalmaz a különböző Azure-erőforrások erőforrás-azonosító formátumára:
 
-* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **Rugalmas SQL-készlet** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
-* **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers}*{server-name}*/databases}*{database-name}*
-* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
-* **Virtuálisgép-méretezési készletek** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
-* **Virtuális gépek** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
-* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **IoT hub** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Devices/IotHubs/*{IoT-hub-Name}*
+* **Rugalmas SQL-készlet** –*/Subscriptions/{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.SQL/Servers/*{Pool-db}*/elasticpools/*{SQL-Pool-Name}*
+* **SQL Database (V12)** –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{kiszolgálónév}*/Databases/*{adatbázis neve}*
+* **Service Bus** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.ServiceBus/*{névtér}*/*{ServiceBus-Name}*
+* **Virtuálisgép-méretezési** csoportok –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Compute/virtualMachineScaleSets/*{VM-Name}*
+* **Virtuális gépek** –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Compute/virtualMachines/*{VM-Name}*
+* **Event Hubs** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.EventHub/Namespaces/*{EventHub-Namespace}*
 
-Az erőforrás-azonosító lekéréséhez alternatív módszerek is léteznek, például az Azure Resource Explorer használata, a kívánt erőforrás megtekintése az Azure Portalon, valamint a PowerShellen vagy az Azure CLI-n keresztül.
+Az erőforrás-azonosító lekérésének alternatív módszerei vannak, beleértve a Azure Erőforrás-kezelő használatát, a kívánt erőforrás megtekintését a Azure Portal, a PowerShell vagy az Azure CLI segítségével.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
-A kívánt erőforrás erőforrás-azonosító megkereséséhez egy hasznos megközelítés az [Azure Resource Explorer](https://resources.azure.com) eszköz használata. Keresse meg a kívánt erőforrást, majd nézze meg a megjelenített azonosítót, ahogy az alábbi képernyőképen látható:
+A kívánt erőforrás erőforrás-AZONOSÍTÓjának megkereséséhez az egyik hasznos módszer az [Azure erőforrás-kezelő](https://resources.azure.com) eszköz használata. Navigáljon a kívánt erőforráshoz, és tekintse meg a megjelenő azonosítót, ahogy az alábbi képernyőképen is látható:
 
-![Alt "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
+![ALT "Azure Erőforrás-kezelő"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az erőforrás-azonosító az Azure Portalon is beszerezhető. Ehhez keresse meg a kívánt erőforrást, és válassza a Tulajdonságok lehetőséget. Az erőforrás-azonosító a Tulajdonságok szakaszban jelenik meg, ahogy az a következő képernyőképen látható:
+Az erőforrás-azonosító a Azure Portal is beszerezhető. Ehhez keresse meg a kívánt erőforrást, majd válassza a tulajdonságok lehetőséget. Az erőforrás-azonosító a tulajdonságok szakaszban jelenik meg, ahogy az alábbi képernyőképen látható:
 
-![Alt "Erőforrás-azonosító jelenik meg a Tulajdonságok panelen az Azure Portalon"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
+![ALT "erőforrás-azonosító megjelenik a Azure Portal tulajdonságok paneljén"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az erőforrás-azonosító azure PowerShell-parancsmagokkal is lehívható. Például egy Azure Logic App erőforrás-azonosítójának beszerzéséhez hajtsa végre a Get-AzureLogicApp-parancsmag, mint a következő példában:
+Az erőforrás-azonosító Azure PowerShell parancsmagok használatával is lekérhető. Ha például egy Azure logikai alkalmazás erőforrás-AZONOSÍTÓját szeretné beolvasni, hajtsa végre a Get-AzureLogicApp parancsmagot az alábbi példában látható módon:
 
 ```powershell
 Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
-Az eredménynek hasonlónak kell lennie a következő példához:
+Az eredménynek az alábbi példához hasonlónak kell lennie:
 
 ```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
@@ -653,13 +653,13 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure Storage-fiók erőforrás-azonosítójának lekéréséhez az `az storage account show` Azure CLI használatával hajtsa végre a parancsot, ahogy az a következő példában látható:
+Ha az Azure CLI használatával szeretné lekérni az Azure Storage-fiók erőforrás-AZONOSÍTÓját `az storage account show` , hajtsa végre a parancsot az alábbi példában látható módon:
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
-Az eredménynek hasonlónak kell lennie a következő példához:
+Az eredménynek az alábbi példához hasonlónak kell lennie:
 
 ```json
 {
@@ -698,13 +698,13 @@ Az eredménynek hasonlónak kell lennie a következő példához:
 ```
 
 > [!NOTE]
-> Az Azure Logic Apps még nem érhető el az Azure CLI-n keresztül, így az előző példában megjelenik egy Azure Storage-fiók.
+> Azure Logic Apps még nem érhető el az Azure CLI-n keresztül, így az előző példában egy Azure Storage-fiók jelenik meg.
 >
 >
 
-## <a name="retrieve-activity-log-data"></a>Tevékenységnapló adatainak beolvasása
+## <a name="retrieve-activity-log-data"></a>Műveletnapló-adatlekérdezés
 
-A metrikadefiníciók és a kapcsolódó értékek mellett az Azure Monitor REST API-val is lekérheti az Azure-erőforrásokhoz kapcsolódó további érdekes elemzéseket. Például lehetőség van a [tevékenységnapló](https://msdn.microsoft.com/library/azure/dn931934.aspx) adatainak lekérdezésére. A következő minta bemutatja az Azure Monitor REST API használatával a tevékenységnapló-adatok lekérdezéséhez egy Azure-előfizetés adott dátumtartományán belül:
+A mérőszám-definíciók és a kapcsolódó értékek mellett a Azure Monitor REST API is használható az Azure-erőforrásokkal kapcsolatos további érdekes információk lekéréséhez. Példaként lehetséges a [tevékenységi naplóban](https://msdn.microsoft.com/library/azure/dn931934.aspx) tárolt adatlekérdezés. Az alábbi minta azt mutatja be, hogyan használható a Azure Monitor REST API a tevékenységek naplózási adatai lekérdezéséhez egy adott Dátumtartomány alapján egy Azure-előfizetés esetében:
 
 ```powershell
 $apiVersion = "2015-04-01"
@@ -718,7 +718,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át [a monitoring áttekintését.](../../azure-monitor/overview.md)
-* Tekintse meg a [támogatott metrikákat az Azure Monitorsegítségével.](metrics-supported.md)
-* Tekintse át a [Microsoft Azure Monitor REST API-referencia.](https://msdn.microsoft.com/library/azure/dn931943.aspx)
-* Tekintse át az [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+* Tekintse át a [figyelés áttekintését](../../azure-monitor/overview.md).
+* A [támogatott metrikák megtekintése Azure monitor](metrics-supported.md).
+* Tekintse át a [Microsoft Azure figyelő REST API referenciát](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+* Tekintse át az [Azure felügyeleti könyvtárát](https://msdn.microsoft.com/library/azure/mt417623.aspx).

@@ -1,47 +1,47 @@
 ---
-title: Tervrajzok importálása és exportálása a PowerShell használatával
-description: Ismerje meg, hogyan dolgozhat a tervezetdefiníciók kódként. Megoszthatja, megszerezheti és kezelheti őket az exportálási és importálási parancsokkal.
+title: Tervrajzok importálása és exportálása a PowerShell-lel
+description: Megtudhatja, hogyan dolgozhat a terv-definíciók kóddal. Az exportálási és importálási parancsok használatával megoszthatja, vezérelheti és felügyelheti őket.
 ms.date: 09/03/2019
 ms.topic: how-to
 ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686840"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Tervezetdefiníciók importálása és exportálása a PowerShell használatával
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Terv-definíciók importálása és exportálása a PowerShell-lel
 
-Az Azure Blueprints teljes körűen kezelhető az Azure Portalon keresztül. Ahogy a szervezetek előre az Azure Blueprints használata, el kell kezdeniük gondolkodni tervezetdefiníciók felügyelt kódként. Ezt a fogalmat gyakran nevezik infrastruktúra kódnak (IaC). A tervezetdefiníciók kódként való kezelése további előnyöket kínál az Azure Portal által kínált lehetőségeken túl. Ezek az előnyök a következők:
+Az Azure-tervezetek teljes mértékben kezelhetők Azure Portalon keresztül. Ahogy a szervezetek az Azure-tervrajzok használatát is megkezdik, a tervekben szereplő definíciókat felügyelt kódra kell kezdeni. Ezt a koncepciót gyakran a Code (IaC) infrastruktúrának nevezzük. A tervrajz-definíciók kódjaként való kezelése további előnyökkel jár, mint a Azure Portal kínálata. Ezek az előnyök a következők:
 
-- Tervdefiníciók megosztása
-- A tervezetdefiníciók biztonsági mentése
-- Tervdefiníciók újrafelhasználása különböző bérlőkben vagy előfizetésekben
-- A tervezetdefiníciók elhelyezése a forrásvezérlőben
-  - A tervezetdefiníciók automatizált tesztelése tesztkörnyezetekben
-  - Folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) csővezetékek támogatása
+- Tervezet-definíciók megosztása
+- A terv definícióinak biztonsági mentése
+- Tervrajz-definíciók újrafelhasználása különböző bérlők vagy előfizetések esetén
+- A terv definícióinak elhelyezése a forrás vezérlőelemben
+  - Tervrajz-definíciók automatizált tesztelése tesztkörnyezetben
+  - Folyamatos integráció és folyamatos üzembe helyezés (CI/CD) folyamatok támogatása
 
-Bármi legyen is az oka, kezelése a tervezet definíciók kódként előnyökkel jár. Ez a cikk bemutatja, hogyan kell használni a `Import-AzBlueprintWithArtifact` és `Export-AzBlueprintWithArtifact` a parancsokat az [Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modulban.
+Az Ön igényeinek megfelelően a tervrajz-definíciók kódként való kezelésének előnyei is vannak. Ez a cikk bemutatja, hogyan használhatja `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact` és a parancsokat az az [. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modulban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk az Azure Blueprints mérsékelt munkaismeretet feltételezi. Ha még nem tette meg, a következő cikkeket kell átdolgoznia:
+Ez a cikk az Azure-tervezetek mérsékelt munkaismeretét feltételezi. Ha még nem tette meg, végezze el a következő cikkeket:
 
-- [Tervrajz létrehozása a portálon](../create-blueprint-portal.md)
-- További információ a [telepítési szakaszokról](../concepts/deployment-stages.md) és [a terv életciklusáról](../concepts/lifecycle.md)
-- [Tervdefiníciók](../create-blueprint-powershell.md) és hozzárendelések létrehozása és [kezelése](./manage-assignments-ps.md) a PowerShell használatával
+- [Terv létrehozása a portálon](../create-blueprint-portal.md)
+- További információ az [üzembe helyezési szakaszokról](../concepts/deployment-stages.md) és [a terv életciklusáról](../concepts/lifecycle.md)
+- Tervrajz-definíciók és-hozzárendelések [létrehozása](../create-blueprint-powershell.md) és [kezelése](./manage-assignments-ps.md) a PowerShell-lel
 
-Ha még nincs telepítve, kövesse [az Az.Blueprint modul hozzáadása az Az.Blueprint modul](./manage-assignments-ps.md#add-the-azblueprint-module) telepítéséhez és érvényesítéséhez az **Az.Blueprint** modult a PowerShell-galériából.
+Ha még nincs telepítve, kövesse az [az. Blueprint modul hozzáadása](./manage-assignments-ps.md#add-the-azblueprint-module) című témakör utasításait az az **. Blueprint** modul telepítéséhez és ellenőrzéséhez a PowerShell-Galéria.
 
-## <a name="folder-structure-of-a-blueprint-definition"></a>Tervrajzdefiníció mappaszerkezete
+## <a name="folder-structure-of-a-blueprint-definition"></a>Tervrajz definíciójának mappastruktúrát
 
-Mielőtt megvizsgálna a tervrajzok exportálását és importálását, nézzük meg, hogyan épülnek fel a tervmeghatározást kialakító fájlok. A tervezetdefiníciót a saját mappájában kell tárolni.
+A tervrajzok exportálásának és importálásának megkezdése előtt nézzük meg, hogyan épülnek fel a terv definícióját alkotó fájlok. A terv definícióját a saját mappájába kell menteni.
 
 > [!IMPORTANT]
-> Ha a rendszer nem **Name** ad `Import-AzBlueprintWithArtifact` értéket a parancsmag Név paraméterének, a rendszer annak a mappának a nevét használja, amelyben a tervezetdefiníció tárolódik.
+> Ha nem ad át értéket a `Import-AzBlueprintWithArtifact` parancsmag **Name** paraméterének, a rendszer a terv definícióját tároló mappa nevét használja.
 
-A tervezet definíciójával együtt, `blueprint.json`amelyet meg kell nevezni, azok a műtárgyak, amelyekből a tervezet definíciója áll. Minden műnek a . `artifacts`
-Összerakni, a szerkezet a tervezet meghatározása JSON fájlok mappákban kell kinéznie a következő:
+A terv definíciójának, amelynek a neve `blueprint.json`, a terv definíciója. Minden összetevőnek szerepelnie kell a nevű `artifacts`almappában.
+Együttesen a terv definíciójának struktúráját a mappákban található JSON-fájloknak a következőképpen kell kinéznie:
 
 ```text
 .
@@ -56,20 +56,20 @@ A tervezet definíciójával együtt, `blueprint.json`amelyet meg kell nevezni, 
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>A tervezetdefiníció exportálása
+## <a name="export-your-blueprint-definition"></a>A terv definíciójának exportálása
 
-A tervezetdefiníció exportálásának lépései egyszerűek. A tervezetdefiníció exportálása hasznos lehet a megosztáshoz, a biztonsági mentéshez vagy a forrásellenőrzésbe való behelyezéshez.
+A terv definíciójának exportálásának lépései egyszerűek. A terv definíciójának exportálása hasznos lehet a forrás-vezérlőelemek megosztására, biztonsági mentésére vagy behelyezésére.
 
-- **Tervrajz** [kötelező]
-  - Megadja a tervezet definícióját
-  - A `Get-AzBlueprint` referenciaobjektum lefoglalásának használata
+- **Terv** [kötelező]
+  - Meghatározza a terv definícióját
+  - A `Get-AzBlueprint` hivatkozási objektum beolvasásához használja
 - **OutputPath** [kötelező]
-  - Megadja a json-definíciós json-fájlok mentési útvonalát
-  - A kimeneti fájlok egy almappában vannak, amelynek neve a tervezet definíciója
+  - Megadja azt az elérési utat, amellyel a terv-definíció JSON-fájljait menteni kell
+  - A kimeneti fájlok egy olyan almappában találhatók, amely a terv definíciójának nevét adja meg
 - **Verzió** (nem kötelező)
-  - Megadja a kimeneti verziót, ha a **Blueprint** referenciaobjektum egynél több verzióra mutató hivatkozásokat tartalmaz.
+  - Megadja a kimeneti verziót, ha a **terv** hivatkozási objektuma több verzióra mutató hivatkozásokat tartalmaz.
 
-1. Hivatkozás a tervezet definíciójára, amelyet a `{subId}`következőként ábrázolt előfizetésből exportál:
+1. Tekintse át az előfizetésből az alábbiak szerint `{subId}`exportált terv definícióját:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ A tervezetdefiníció exportálásának lépései egyszerűek. A tervezetdefiní
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. A `Export-AzBlueprintWithArtifact` parancsmag segítségével exportálhatja a megadott tervezetdefiníciót:
+1. A `Export-AzBlueprintWithArtifact` parancsmag használatával exportálja a megadott terv definícióját:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>A tervezetdefiníció importálása
+## <a name="import-your-blueprint-definition"></a>A terv definíciójának importálása
 
-Miután egy [exportált tervezet definíciója,](#export-your-blueprint-definition) vagy egy manuálisan létrehozott tervezet definíciója a [szükséges mappastruktúra,](#folder-structure-of-a-blueprint-definition)importálhatja, hogy a tervezet definícióját egy másik felügyeleti csoport vagy előfizetés.
+Ha az [exportált terv definíciója](#export-your-blueprint-definition) vagy manuálisan létrehozott terv definíciója szerepel a [szükséges mappák struktúrájában](#folder-structure-of-a-blueprint-definition), akkor importálhatja a terv definícióját egy másik felügyeleti csoportba vagy előfizetésbe.
 
-A beépített tervezetdefiníciók példáit az [Azure Blueprint GitHub-tárházban talál.](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)
+A beépített tervrajzok leírását a [Azure Blueprint GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)-tárházban találhatja meg.
 
 - **Név** [kötelező]
-  - Megadja az új tervezetdefiníció nevét.
+  - Megadja az új terv definíciójának nevét
 - **InputPath** [kötelező]
-  - Megadja azt az elérési utat, amelyből a tervezetdefiníció t
-  - Meg kell egyeznie a [szükséges mappastruktúrával](#folder-structure-of-a-blueprint-definition)
+  - Meghatározza a terv definíciójának létrehozási útvonalát a következőből:
+  - Meg kell egyeznie a [szükséges mappastruktúrát](#folder-structure-of-a-blueprint-definition)
 - **ManagementGroupId** (nem kötelező)
-  - A felügyeleti csoport azonosítója a tervezetdefiníció mentéséhez, ha nem az aktuális környezet alapértelmezett
-  - Meg kell adni **a ManagementGroupId** vagy **az SubscriptionId** azonosítót.
+  - A felügyeleti csoport azonosítója, amelybe menteni szeretné a terv definícióját, hogy ha nem az aktuális környezeti hiba
+  - Meg kell adni a **ManagementGroupId** vagy a **SubscriptionId** értéket.
 - **SubscriptionId** (nem kötelező)
-  - A tervezetdefiníció mentéséhez szükséges előfizetésazonosító, ha nem az aktuális környezet alapértelmezett
-  - Meg kell adni **a ManagementGroupId** vagy **az SubscriptionId** azonosítót.
+  - Az előfizetés-azonosító a terv definíciójának mentéséhez, ha nem az aktuális környezet alapértelmezett értéke
+  - Meg kell adni a **ManagementGroupId** vagy a **SubscriptionId** értéket.
 
-1. A `Import-AzBlueprintWithArtifact` parancsmag segítségével importálhatja a megadott tervezetdefiníciót:
+1. A `Import-AzBlueprintWithArtifact` parancsmag segítségével importálja a megadott terv definícióját:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,14 +110,14 @@ A beépített tervezetdefiníciók példáit az [Azure Blueprint GitHub-tárház
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-A tervezetdefiníció importálása után [rendelje hozzá a PowerShellhez.](./manage-assignments-ps.md#create-blueprint-assignments)
+A terv definíciójának importálása után [rendelje hozzá a PowerShell](./manage-assignments-ps.md#create-blueprint-assignments)-lel.
 
-A speciális tervezetdefiníciók létrehozásáról az alábbi cikkekben talál további információt:
+A speciális tervrajz-definíciók létrehozásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-- Használjon [statikus és dinamikus paramétereket](../concepts/parameters.md).
-- A [tervezet szekvenálási sorrendjének](../concepts/sequencing-order.md)testreszabása.
-- A központi telepítések védelme [a tervezet erőforrás-zárolásával.](../concepts/resource-locking.md)
-- [Tervrajzok kezelése kódként](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+- [Statikus és dinamikus paraméterek](../concepts/parameters.md)használata.
+- Szabja testre a [terv sorrendjét](../concepts/sequencing-order.md).
+- Az üzembe helyezések elleni védelem a [terv erőforrás-zárolásával](../concepts/resource-locking.md).
+- [A tervrajzokat kódként kezelheti](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Adatfolyam leképezése Kimutatás-transzformáció feloldása
-description: Azure Data Factory leképezési adatfolyam kimutatási transzformációja
+title: Adatforgalom leképezése az átalakításhoz
+description: Azure Data Factory leképezési adatfolyamok kibontásának átalakítása
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606251"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Az Azure Data Factory kimutatásfeloldási átalakítása
+# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory unpivot átalakítás
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az ADF-hozzárendelési adatfolyamban a Kimutatás feloldása segítségével normalizáltabb verzióvá alakíthatja a nem normalizált adatkészletet azáltal, hogy egyetlen rekord több oszlopából származó értékeket több rekordra bontja ki, és ugyanazt az értéket egy oszlopban.
+A nem normalizált adatkészletek egy normalizált verzióban való kibontásához használja az ADF-leképezési adatfolyamatot úgy, hogy egy rekord több oszlopának értékeit több, egyetlen oszlopban szereplő értékkel rendelkező rekordba bővíti.
 
-![Transzformformának feloldása](media/data-flow/unpivot1.png "A kimutatási beállítások 1.")
+![Az átalakítás unpivot](media/data-flow/unpivot1.png "Kibontási beállítások 1")
 
-## <a name="ungroup-by"></a>Csoportbontás
+## <a name="ungroup-by"></a>Csoportosítás bontása
 
-![Transzformformának feloldása](media/data-flow/unpivot5.png "A kimutatás idiklékének feloldása 2")
+![Az átalakítás unpivot](media/data-flow/unpivot5.png "Kibontási beállítások 2")
 
-Először állítsa be azoszlopokat, amelyek szerint a pivot összesítéséhez csoportosítani szeretné. Állítson be egy vagy több oszlopot a csoportosítás bontásához úgy, hogy az oszloplista mellett a + jel jelenjen meg.
+Először állítsa be azokat az oszlopokat, amelyeket a kimutatás összesítéséhez szeretne csoportosítani. Állítson be egy vagy több oszlopot a csoportosítás kibontásához az oszlopok listája melletti + jelre.
 
-## <a name="unpivot-key"></a>Kulcs kioldásának feloldása
+## <a name="unpivot-key"></a>Kulcs elforgatása
 
-![Transzformformának feloldása](media/data-flow/unpivot6.png "A kimutatási beállítások feloldása 3")
+![Az átalakítás unpivot](media/data-flow/unpivot6.png "Kibontási beállítások 3")
 
-A kimutatáskulcs az az oszlop, amelyet az ADF sorról oszlopra fordít. Alapértelmezés szerint a mező adatkészletének minden egyedi értéke oszlopra kerül. Tetszés szerint azonban megadhatja az oszlopértékekre fordítani kívánt adatkészlet értékeit.
+A pivot kulcs az az oszlop, amelyet az ADF a sor és az oszlop között fog kimutatni. Alapértelmezés szerint a mezőhöz tartozó adatkészlet minden egyedi értéke egy oszlopra mutat. Azonban megadhatja az adatkészletből azokat az értékeket, amelyeket meg szeretne adni az oszlop értékeinek.
 
-## <a name="unpivoted-columns"></a>Elnemti oszlopok kinemírt oszlopai
+## <a name="unpivoted-columns"></a>Nem csuklós oszlopok
 
-![Transzformformának feloldása](media/data-flow//unpivot7.png "4. beállítás feloldási beállításai")
+![Az átalakítás unpivot](media/data-flow//unpivot7.png "Kibontási beállítások 4")
 
-Végül válassza ki azt az összesítést, amelyet a kimutatásértékekhez kíván használni, és azt, hogy miként szeretné megjeleníteni az oszlopokat az átalakítás új kimeneti vetületében.
+Végül válassza ki a tagolt értékekhez használni kívánt összesítést, és azt, hogy az oszlopok hogyan jelenjenek meg a transzformáció új kimeneti vetületében.
 
-(Nem kötelező) Beállíthat egy elnevezési mintát előtaggal, középső vel és utótaggal, amelyet a sorértékekből minden új oszlopnévhez hozzá kell adni.
+Választható Megadhat egy elnevezési mintát egy előtaggal, egy középtel és egy utótaggal, amelyet a rendszer minden új oszlopnév számára hozzáadhat a sorok értékeiből.
 
-Például az "Értékesítés" a "Régió" szerint elforgatással egyszerűen új oszlopértékeket adna az egyes értékesítési értékekből. Például: "25", "50", "1000", ... Ha azonban "Értékesítés" előtagértéket állít be, akkor az "Értékesítés" előtag az értékekhez lesz rögzítve.
+Ha például a "Sales" (értékesítés) kifejezést a "régió" értékre szeretné kimutatni, egyszerűen csak új oszlop értékeket adhat meg az egyes értékesítési értékektől. Például: "25", "50", "1000",... Ha azonban a "Sales" előtag értékét állítja be, akkor az "értékesítés" érték az értékekre lesz feloldva.
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-Ha az Oszlopelrendezést "Normál" értékre állítja, az összes elforgatott oszlopot csoportosítja az összesített értékekkel. Az oszlopok elrendezésének "Oldalirányú" értékre állítása az oszlop és az érték között váltakozik.
+Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az összes elforgatott oszlopot összesítse. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor az oszlop és az érték között váltakozik.
 
-![Transzformformának feloldása](media/data-flow//unpivot7.png "A kimutatás idiklékének feloldása 5")
+![Az átalakítás unpivot](media/data-flow//unpivot7.png "Kibontási beállítások 5")
 
-A végleges kibontatlan adathalmaz az oszlopok összesítéseit mutatja, amelyek most már külön sorértékekre vannak átbontva.
+A végleges, nem felváltott adateredményhalmaz azt mutatja, hogy az oszlopok összesítései mostantól külön sorba vannak bontva.
 
 ## <a name="next-steps"></a>További lépések
 
-A [Pivot átalakítássegítségével](data-flow-pivot.md) a sorokat oszlopokba forgatja.
+Sorok oszlopokra való kimutatásához használja a [pivot transzformációt](data-flow-pivot.md) .

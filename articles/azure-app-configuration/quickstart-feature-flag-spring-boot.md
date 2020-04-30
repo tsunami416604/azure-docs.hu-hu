@@ -1,63 +1,63 @@
 ---
-title: Rövid útmutató a szolgáltatásjelzők tavaszi rendszerindításhoz való hozzáadásához az Azure App Konfigurációjával
-description: Funkciójelzők hozzáadása a tavaszi rendszerindítási alkalmazásokhoz és kezelésük az Azure App Konfigurációja szolgáltatással
+title: Rövid útmutató szolgáltatás-jelzők hozzáadásához az Azure app Configuration használatával
+description: Szolgáltatás-jelzők hozzáadása Spring boot-alkalmazásokhoz és kezelésük az Azure app Configuration használatával
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81687365"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rövid útmutató: Szolgáltatásjelzők hozzáadása tavaszi rendszerindítási alkalmazáshoz
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
-Ebben a rövid útmutatóban az Azure App Configuration alkalmazást egy tavaszi rendszerindítási webalkalmazásba építheti be a szolgáltatáskezelés teljes körű megvalósításának létrehozásához. Az Alkalmazáskonfigurációs szolgáltatás segítségével központilag tárolhatja az összes funkciójelzőt, és szabályozhatja azok állapotát.
+Ebben a rövid útmutatóban beépítheti az Azure-alkalmazások konfigurációját egy Spring boot-webalkalmazásba, amely a szolgáltatások felügyeletének teljes körű megvalósítását hozza létre. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat.
 
-A tavaszi rendszerindítási szolgáltatáskezelő kódtárak átfogó funkciójelző-támogatással bővítik a keretrendszert. Ezek a könyvtárak **nem** függ az Azure-kódtárak. Zökkenőmentesen integrálhatók az alkalmazáskonfigurációval a Spring Boot konfigurációs szolgáltatón keresztül.
+A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik a keretrendszert a szolgáltatás teljes körű támogatásával. Ezek a kódtárak **nem** függnek az Azure-könyvtáraktól. Zökkenőmentesen integrálva vannak az alkalmazások konfigurációjával a Spring boot-konfiguráció szolgáltatóján keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Egy támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) 8-as verzióval.
-* [Apache Maven](https://maven.apache.org/download.cgi) 3.0-s vagy újabb verzió.
+* Támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) a 8-as verzióval.
+* Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
 
-## <a name="create-an-app-configuration-instance"></a>Alkalmazáskonfigurációs példány létrehozása
+## <a name="create-an-app-configuration-instance"></a>Alkalmazás-konfigurációs példány létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A **Szolgáltatáskezelő** > **+Hozzáadás** lehetőséget `Beta`választva hozzáadhat egy szolgáltatásjelzőt.
+6. Válassza a **funkció-kezelő** > **+ Hozzáadás** elemet a szolgáltatáshoz `Beta`tartozó jelző hozzáadásához.
 
     > [!div class="mx-imgBorder"]
-    > ![Béta nevű szolgáltatásjelző engedélyezése](media/add-beta-feature-flag.png)
+    > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
-    Egyelőre hagyja `label` meg határozatlanul.
+    Most `label` hagyja meg a nem definiált lehetőséget.
 
-## <a name="create-a-spring-boot-app"></a>Tavaszi rendszerindítási alkalmazás létrehozása
+## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
-A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet hozhat létre.
+A [Spring inicializáló](https://start.spring.io/) használatával hozzon létre egy új Spring boot-projektet.
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
 1. Adja meg a következő beállításokat:
 
    * Hozzon létre egy **Maven** projektet **Javával**.
-   * Adjon meg egy 2.0-s vagy annál nagyobb **tavaszi rendszerindítási** verziót.
-   * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a `com.example` `demo`cikk a és a .
-   * Adja hozzá a **tavaszi webes** függőséget.
+   * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
+   * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk `com.example` a `demo`és a használatát ismerteti.
+   * Adja hozzá a **rugó webes** függőségét.
 
-1. Miután megadta az előző beállításokat, válassza **a Projekt létrehozása lehetőséget.** Amikor a rendszer kéri, töltse le a projektet a helyi számítógépre.
+1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
-## <a name="add-feature-management"></a>Szolgáltatáskezelés hozzáadása
+## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
-1. Miután kibontja a fájlokat a helyi rendszeren, a Spring Boot alkalmazás készen áll a szerkesztésre. Keresse meg a *pom.xml fájlt* az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. xml fájlt* az alkalmazás gyökérkönyvtárában.
 
-1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, `<dependencies>`és vegye fel a következőket a következő kreába:
+1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt `<dependencies>`a listájához:
 
-    **Tavaszi felhő 1.1.x**
+    **Spring Cloud 1.1. x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     </dependency>
     ```
 
-    **Tavaszi felhő 1.2.x**
+    **Spring Cloud 1.2. x**
 
     ```xml
     <dependency>
@@ -96,21 +96,21 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     ```
 
 > [!Note]
-> Van egy nem webes szolgáltatáskezelő könyvtár, amely nem függ a tavaszi webtől. A különbségeket a GitHub [dokumentációjában](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) találja.
+> A nem webes szolgáltatások felügyeleti könyvtára nem függ a Spring-web-től. A különbségekről a GitHub [dokumentációjában](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) tájékozódhat.
 
-## <a name="connect-to-an-app-configuration-store"></a>Csatlakozás alkalmazáskonfigurációs tárolóhoz
+## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Nyissa meg `resources` az alkalmazás könyvtárát, és nyissa meg a alkalmazást. `bootstrap.properties`  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
+1. Navigáljon az `resources` alkalmazás könyvtárába, és nyissa `bootstrap.properties`meg a következőt:.  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. A config store alkalmazáskonfigurációs portálján válasszon `Access keys` az oldalsávból. Válassza az Írásvédett billentyűk lapot.
+1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon válassza `Access keys` a lehetőséget az oldalsávon. Válassza a csak olvasható kulcsok lapot. másolja az elsődleges kapcsolatok karakterláncának értékét.
 
-1. Adja hozzá az elsődleges kapcsolati karakterláncot `APP_CONFIGURATION_CONNECTION_STRING`környezeti változóként a változó nevével.
+1. Adja hozzá az elsődleges kapcsolatok karakterláncát környezeti változóként a változó neve `APP_CONFIGURATION_CONNECTION_STRING`alapján.
 
-1. Nyissa meg a fő alkalmazás `@EnableConfigurationProperties` Java fájlt, és hozzá, hogy ezt a funkciót.
+1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
 
     ```java
     package com.example.demo;
@@ -130,7 +130,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     }
     ```
 
-1. Hozzon létre egy *MessageProperties.java* nevű új Java-fájlt az alkalmazás csomagkönyvtárában.
+1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába.
 
     ```java
     package com.example.demo;
@@ -153,7 +153,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     }
     ```
 
-1. Hozzon létre egy *HelloController.java* nevű új Java-fájlt az alkalmazás csomagkönyvtárában.
+1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába.
 
     ```java
     package com.example.demo;
@@ -184,7 +184,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     }
     ```
 
-1. Hozzon létre egy *welcome.html* nevű új HTML-fájlt az alkalmazás sablonkönyvtárában.
+1. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára.
 
     ```html
     <!DOCTYPE html>
@@ -241,7 +241,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
 
     ```
 
-1. Hozzon létre egy új `static` mappát nevű CSS alatt és belül egy új CSS fájl nevű *main.css*.
+1. Hozzon létre egy új, CSS `static` nevű mappát a és annak belsejében egy *Main. css*nevű CSS-fájl.
 
     ```css
     html {
@@ -283,19 +283,19 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     mvn spring-boot:run
     ```
 
-1. Nyisson meg egy böngészőablakot, `http://localhost:8080/welcome`és nyissa meg az URL-címet: .
+1. Nyisson meg egy böngészőablakot, és lépjen a következő URL `http://localhost:8080/welcome`-címre:.
 
-    ![A gyorsindítási alkalmazás helyi indítása](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Az Alkalmazáskonfigurációs portálon válassza a **Szolgáltatáskezelő**lehetőséget, és módosítsa a Béta kulcs állapotát **Be :(A) csoportban.** **Beta**
+1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
     | Kulcs | Állapot |
     |---|---|
     | Beta | Bekapcsolva |
 
-1. Frissítse a böngészőlapot az új konfigurációs beállítások megtekintéséhez.
+1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
-    ![A gyorsindítási alkalmazás helyi indítása](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -303,8 +303,8 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új App Configuration store-t, és arra használta, hogy kezelje a tavaszi rendszerindítási webalkalmazások funkcióit a [Szolgáltatáskezelési kódtárakon](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
 
-* További információ a [szolgáltatáskezelésről.](./concept-feature-management.md)
-* [A szolgáltatásjelzők kezelése](./manage-feature-flags.md).
-* [A Spring Boot Core alkalmazásban használja a szolgáltatásjelzőket.](./use-feature-flags-spring-boot.md)
+* További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
+* [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
+* [A Feature Flags szolgáltatást egy Spring boot Core-alkalmazásban használhatja](./use-feature-flags-spring-boot.md).

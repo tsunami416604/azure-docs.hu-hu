@@ -1,6 +1,6 @@
 ---
-title: Az Azure Image Builder használata windowsos virtuális gépek képgalériájával (előzetes verzió)
-description: Hozzon létre Azure megosztott galéria képverziók at Azure Image Builder és az Azure PowerShell használatával.
+title: Az Azure rendszerkép-készítő használata Windows rendszerű virtuális gépekhez készült rendszerkép-katalógussal (előzetes verzió)
+description: Hozzon létre Azure Shared Gallery-rendszerképeket az Azure rendszerkép-készítő és a Azure PowerShell használatával.
 author: cynthn
 ms.author: cynthn
 ms.date: 01/14/2020
@@ -8,44 +8,44 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: 48eff11facf0f1432534d61f003f61e6755caf33
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869523"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-lemezkép létrehozása és terjesztése megosztott képtárban 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
-Ez a cikk bemutatja, hogyan használhatja az Azure Image Builder, és az Azure PowerShell, egy lemezkép-verzió létrehozása a [megosztott képtárban,](shared-image-galleries.md)majd a lemezkép globális terjesztése. Ezt az Azure CLI használatával is [megteheti.](../linux/image-builder-gallery.md)
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure-rendszerkép-szerkesztőt, Azure PowerShell és hogyan hozhat létre egy rendszerkép-verziót egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, majd globálisan terjesztheti a rendszerképet. Ezt az [Azure CLI](../linux/image-builder-gallery.md)használatával is elvégezheti.
 
-A lemezkép konfigurálásához .json sablont fogunk használni. Az általunk használt .json fájl itt van: [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). A sablon helyi verzióját fogjuk letölteni és szerkeszteni, így ez a cikk a helyi PowerShell-munkamenet használatával íródott.
+A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [armTemplateWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). A sablon helyi verziójának letöltése és szerkesztése folyamatban van, ezért ez a cikk a helyi PowerShell-munkamenet használatával íródik.
 
-A kép megosztott képtárba való terjesztéséhez a sablon a `distribute` [sharedImage-et](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a sablon szakaszának értékeként.
+A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
 
-Az Azure Image Builder automatikusan futtatja a sysprep-et a lemezkép általánosításához, ez egy általános sysprep parancs, amelyet szükség esetén [felülbírálhat.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) 
+Az Azure rendszerkép-készítő automatikusan futtatja a Sysprep programot a rendszerkép általánosítása érdekében, ez egy általános Sysprep-parancs, amelyet szükség esetén [felül lehet bírálni](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
-Ne feledje, hogy hányszor rétegezi a testreszabásokat. A Sysprep parancs akár 8 alkalommal is futtatható egyetlen Windows-lemezképen. A Sysprep 8-szor imitált futtatása után újra létre kell hoznia a Windows-lemezképet. További információt a [Sysprep futtatásának korlátozása](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)című témakörben talál. 
+Vegye figyelembe, hogy a réteg testreszabása hányszor történik. A Sysprep parancsot akár 8 alkalommal is futtathatja egyetlen Windows-rendszerképben. A Sysprep 8 alkalommal történő futtatása után újra létre kell hoznia a Windows-rendszerképet. További információ: [korlátozások a Sysprep futtatásának](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)hányszor. 
 
 > [!IMPORTANT]
-> Az Azure Image Builder jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>A funkciók regisztrálása
-Az Azure Image Builder az előzetes verzióban való használatához regisztrálnia kell az új funkciót.
+## <a name="register-the-features"></a>A szolgáltatások regisztrálása
+Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
 
 ```powershell
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Ellenőrizze a szolgáltatás regisztrációjának állapotát.
+A szolgáltatás regisztrációjának állapotát vizsgálja meg.
 
 ```powershell
 Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Várjon, amíg `RegistrationState` van, `Registered` mielőtt a következő lépésre.
+Várjon, `RegistrationState` amíg `Registered` meg nem történik a következő lépésre való áttérés.
 
-Ellenőrizze a szolgáltató regisztrációit. Győződjön meg `Registered`róla, hogy minden visszatér .
+Keresse meg a szolgáltató regisztrációját. Győződjön meg róla, `Registered`hogy minden visszaadott érték.
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
@@ -54,7 +54,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Prop
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Ha nem térnek vissza, `Registered`a szolgáltatók regisztrálásához használja az alábbiakat:
+Ha nem adnak vissza `Registered`, a következő paranccsal regisztrálhatók a szolgáltatók:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
@@ -65,7 +65,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 ## <a name="create-variables"></a>Változók létrehozása
 
-Mi lesz használ néhány információt többször, így hozunk létre néhány változótárolják ezt az információt. Cserélje le a változók `username` értékeit, például és `vmpassword`a t.
+Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni. Cserélje le a változókat, például a `username` és `vmpassword`a értékeket a saját adataival.
 
 ```powershell
 # Get existing context
@@ -95,7 +95,7 @@ $runOutputName="winclientR01"
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot, és adjon engedélyt az Azure Image Builder-nek az adott erőforráscsoportban lévő erőforrások létrehozásához.
+Hozzon létre egy erőforráscsoportot, és adja meg az Azure rendszerkép-szerkesztőnek, hogy erőforrásokat hozzon létre az adott erőforráscsoporthoz.
 
 ```powershell
 New-AzResourceGroup `
@@ -109,11 +109,11 @@ New-AzRoleAssignment `
 
 
 
-## <a name="create-the-shared-image-gallery"></a>A megosztott képtár létrehozása
+## <a name="create-the-shared-image-gallery"></a>A megosztott Képtár létrehozása
 
-Ha megosztott képgalériával szeretné használni a Képszerkesztőt, rendelkeznie kell egy meglévő képgalériával és képdefinícióval. A Képszerkesztő nem hozza létre a képgalériát és a képdefiníciót.
+Ha közös rendszerkép-katalógussal szeretné használni a képszerkesztőt, rendelkeznie kell egy meglévő képtárat és képdefiníciót tartalmazó képpel. A rendszerkép-szerkesztő nem hozza létre az Ön számára a rendszerkép-gyűjteményt és a rendszerkép definícióját.
 
-Ha még nem rendelkezik katalógus- és képdefinícióval, először hozza létre őket. Először hozzon létre egy képgalériát.
+Ha még nem rendelkezik a használni kívánt gyűjtemény-és képdefinícióval, először hozza létre őket. Először hozzon létre egy képtárat.
 
 ```powershell
 # Image gallery name
@@ -148,7 +148,7 @@ New-AzGalleryImageDefinition `
 
 ## <a name="download-and-configure-the-template"></a>A sablon letöltése és konfigurálása
 
-Töltse le a .json sablont, és konfigurálja a változókkal.
+Töltse le a. JSON sablont, és konfigurálja a változókkal.
 
 ```powershell
 
@@ -177,9 +177,9 @@ Invoke-WebRequest `
 ```
 
 
-## <a name="create-the-image-version"></a>A lemezkép verziójának létrehozása
+## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
 
-A sablont el kell küldeni a szolgáltatásnak, ez letölti a függő összetevőket, például a parancsfájlokat, és tárolja őket az *IT_* előtaggal ellátott átmeneti erőforráscsoportban.
+A sablont el kell küldenie a szolgáltatásnak, ezzel letölti az összes függő összetevőt, például a parancsfájlokat, és tárolja azokat az átmeneti erőforráscsoporthoz, a *IT_* előtaggal.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,7 +190,7 @@ New-AzResourceGroupDeployment `
    -svclocation $location
 ```
 
-A lemezkép létrehozásához meg kell hívnia a "Futtatás" metódust a sablonon.
+A "Run" meghívásához szükséges rendszerkép létrehozásához a sablonon.
 
 ```powershell
 Invoke-AzResourceAction `
@@ -201,16 +201,16 @@ Invoke-AzResourceAction `
    -Action Run
 ```
 
-A lemezkép létrehozása és replikálása mindkét régióban eltarthat egy ideig. Várjon, amíg ez a rész befejeződik, mielőtt a virtuális gép létrehozása.
+A rendszerkép létrehozása és replikálása mindkét régióban eltarthat egy ideig. Várjon, amíg ez a rész be nem fejeződik a virtuális gép létrehozásához való továbblépés előtt.
 
-A lemezkép-összeállítási állapot automatizálási lehetőségeiről a GitHubon található Sablon [hoz készült képhez című témakörben](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) olvashat.
+A rendszerkép-Build állapotának automatizálására vonatkozó beállításokkal kapcsolatos további információkért tekintse meg a sablonhoz tartozó [Readme fájlt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) a githubon.
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gép a lemezkép-verzió, amely az Azure Image Builder által létrehozott.
+Hozzon létre egy virtuális gépet az Azure-rendszerkép-szerkesztő által létrehozott rendszerkép-verzióból.
 
-A létrehozott lemezkép-verzió beszerezni.
+Szerezze be a létrehozott rendszerkép-verziót.
 ```powershell
 $imageVersion = Get-AzGalleryImageVersion `
    -ResourceGroupName $imageResourceGroup `
@@ -218,7 +218,7 @@ $imageVersion = Get-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefName
 ```
 
-Hozza létre a virtuális gép a második régióban, amely a rendszerkép replikált.
+Hozza létre a virtuális gépet a második régióban, melyet a rendszerkép replikált.
 
 ```powershell
 $vmResourceGroup = "myResourceGroup"
@@ -254,31 +254,31 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
 ```
 
-## <a name="verify-the-customization"></a>A testreszabás ellenőrzése
-Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel a virtuális gép létrehozásakor megadott felhasználónév és jelszó használatával. A virtuális gépbelsejében nyisson meg egy cmd-s kérdést, és írja be a következőt:
+## <a name="verify-the-customization"></a>A Testreszabás ellenőrzése
+Hozzon létre egy Távoli asztal-csatlakozást a virtuális géphez a virtuális gép létrehozásakor beállított Felhasználónév és jelszó használatával. A virtuális gépen nyisson meg egy parancssort, és írja be a következőt:
 
 ```console
 dir c:\
 ```
 
-A lemezkép testreszabása során létrehozott könyvtárnak `buildActions` meg kell jelennie.
+Ekkor megjelenik egy nevű `buildActions` könyvtár, amely a rendszerkép testreszabása során jött létre.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha most újra szeretné testreszabni a lemezkép-verziót ugyanannak a lemezképnek az új verziójának létrehozásához, hagyja ki ezt a **lépést,** és folytassa az [Azure Image Builder használatával egy másik lemezkép-verzió létrehozásához.](image-builder-gallery-update-image-version.md)
+Ha most újra testre szeretné szabni a rendszerkép verzióját, hogy ugyanazon rendszerkép új verzióját hozza létre, **hagyja ki ezt a lépést** , és folytassa az [Azure rendszerkép-készítő használatával egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md).
 
 
-Ezzel törli a létrehozott lemezképet az összes többi erőforrásfájllal együtt. Győződjön meg arról, hogy befejezte ezt a központi telepítést az erőforrások törlése előtt.
+Ezzel törli a létrehozott rendszerképet, valamint az összes többi erőforrás-fájlt is. Az erőforrások törlése előtt ellenőrizze, hogy befejeződött-e az üzemelő példány.
 
-Először törölje az erőforráscsoport sablont, különben az AIB által használt átmeneti erőforráscsoport (*IT_*) nem lesz törölve.
+Először törölje az erőforráscsoport-sablont, ellenkező esetben a AIB által használt átmeneti erőforráscsoport (*IT_*) nem lesz törölve.
 
-A lemezképsablon ResourceID azonosítójának beszereznie. 
+A Képsablon ResourceID beolvasása. 
 
 ```powerShell
 $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Képsablon törlése.
+Sablon törlése.
 
 ```powerShell
 Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
@@ -292,4 +292,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Következő lépések
 
-A létrehozott lemezkép-verzió frissítésének módjáról az [Azure Image Builder használata egy másik lemezkép-verzió létrehozásához című](image-builder-gallery-update-image-version.md)témakörben olvashat.
+Ha szeretné megtudni, hogyan frissítheti a létrehozott rendszerkép-verziót, tekintse meg az [Azure rendszerkép-készítő használata egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md)című témakört.

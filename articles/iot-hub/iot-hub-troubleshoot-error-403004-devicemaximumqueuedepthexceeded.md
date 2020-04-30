@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub 403004-es deviceMaximumQueueDepthexceeded(A) eszközmaximális várólistájának megoldása
-description: A 403004-es deviceMaximumQueueDepthExceeded(DeviceMaximumQueueDepthExceeded) hiba javítása
+title: Az Azure IoT Hub hibáinak elhárítása 403004 DeviceMaximumQueueDepthExceeded
+description: Ismerje meg, hogyan javíthatja a 403004-es hibát a DeviceMaximumQueueDepthExceeded
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -12,30 +12,30 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758753"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
-Ez a cikk a **403004 DeviceMaximumQueueDepthExceedt** hibák okait és megoldásait ismerteti.
+Ez a cikk a **403004 DeviceMaximumQueueDepthExceeded** -hibák okait és megoldásait ismerteti.
 
 ## <a name="symptoms"></a>Probléma
 
-Amikor felhőből eszközre irányuló üzenetet próbál küldeni, a kérelem **a 403004** vagy a **DeviceMaximumQueueDepthExceeded**hibával sikertelen.
+A felhőből az eszközre irányuló üzenetek küldésére tett kísérlet során a kérelem meghiúsul a **403004** -as vagy a **DeviceMaximumQueueDepthExceeded**-es hibával.
 
 ## <a name="cause"></a>Ok
 
-Ennek oka az, hogy az eszközhöz várólistára helyezett üzenetek száma meghaladja a [várólista-korlátot (50)](./iot-hub-devguide-quotas-throttling.md#other-limits).
+A mögöttes ok az, hogy az eszköz várólistán lévő száma meghaladja a [várólista korlátját (50)](./iot-hub-devguide-quotas-throttling.md#other-limits).
 
-A legvalószínűbb oka annak, hogy fut be ezt a korlátot, mert https-t `ReceiveAsync`használ az üzenet fogadásához, ami folyamatos lekérdezéshez vezet a használatával, ami azt eredményezi, hogy az IoT Hub szabályozza a kérelmet.
+Ennek a korlátnak a legvalószínűbb oka az, hogy a HTTPS használatával fogadja az üzenetet, ami folyamatos lekérdezéseket eredményez a használatával `ReceiveAsync`, ami IoT hub a kérés szabályozását.
 
 ## <a name="solution"></a>Megoldás
 
-A HTTPS protokollt használó, a felhőből az eszközre irányuló üzenetek támogatott mintája időnként csatlakoztatott eszközök, amelyek ritkán (kevesebb mint 25 percenként) ellenőrzik az üzeneteket. A várólistakorlátba való befutás valószínűségének csökkentése érdekében váltson AMQP vagy MQTT-re a felhőből az eszközre irányuló üzenetekhez.
+A HTTPS-alapú felhőből az eszközre irányuló üzenetek támogatott mintája időnként olyan eszközökhöz csatlakozik, amelyek ritkán keresik az üzeneteket (kevesebb, mint 25 percenként). Ha csökkenteni szeretné a várólista-korláton való futás valószínűségét, váltson át a AMQP vagy a MQTT elemre a felhőből az eszközre irányuló üzenetekhez.
 
-Másik lehetőségként javíthatja az eszközoldali logikát a várólistán lévő üzenetek gyors befejezéséhez, elutasításához vagy elhagyásához, lerövidítheti az életidőt, vagy fontolja meg kevesebb üzenet küldését. Lásd [a C2D-üzenetek élettartamával foglalkozó részt](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
+Azt is megteheti, hogy kibővíti az eszköz oldalának logikáját a várólistára helyezett üzenetek gyors elvégzéséhez, elutasításához vagy kivonásához, lerövidíti az élettartamot vagy kevesebb üzenetet Lásd [a C2D-üzenetek élettartamával foglalkozó részt](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
 
-Végül fontolja meg a [Várólista kiürítése API-t](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) a függőben lévő üzenetek rendszeres kiürítéséhez a korlát elérése előtt.
+Végül érdemes lehet a [törlési várólista API](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) -t használni a függőben lévő üzenetek rendszeres tisztításához a korlát elérésekor.

@@ -1,67 +1,67 @@
 ---
-title: Az Azure Automation Update Management frissítési felméréseinek megtekintése
-description: Ez a cikk a frissítési központi telepítések frissítési felmérései megtekintését ismerteti.
+title: Azure Automation Update Management frissítési felmérések megtekintése
+description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni a frissítési központi telepítések frissítési értékeléseit.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617396"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Az Azure Automation Update Management frissítési felméréseinek megtekintése
+# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Automation Update Management frissítési felmérések megtekintése
 
-Az Azure Automation-fiókban válassza **a Frissítéskezelés lehetőséget** a gépek állapotának megtekintéséhez.
+A Azure Automation fiókjában válassza a **Update Management** lehetőséget a gépek állapotának megtekintéséhez.
 
-Ez a nézet a gépekről, a hiányzó frissítésekről, a központi telepítések frissítéséről és az ütemezett frissítési központi telepítésekről nyújt tájékoztatást. A **MEGFELELŐSÉG** oszlopban láthatja a gép legutóbbi értékelésének idejét. Az **UPDATE AGENT READINESS** oszlopban láthatja a frissítési ügynök állapotát. Ha probléma merül fel, válassza ki a hivatkozást a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
+Ez a nézet a gépekre, a hiányzó frissítésekre, a frissítések telepítésére és az ütemezett frissítések telepítésére vonatkozó információkat tartalmaz. A **megfelelőség** oszlopban láthatja, hogy mikor történt a gép utolsó értékelése. A **frissítési ügynök készültségi** oszlopában láthatja a frissítési ügynök állapotát. Ha probléma merül fel, kattintson a hivatkozásra a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
 
-Ha olyan naplókeresést szeretne futtatni, amely a gépről, frissítésről vagy központi telepítésről ad vissza információkat, válassza ki a megfelelő elemet a listában. Megnyílik a Naplókeresés ablaktábla a kijelölt elem lekérdezésével.
+Ha olyan naplót szeretne futtatni, amely adatokat ad vissza a gépre, a frissítésre vagy a központi telepítésre vonatkozóan, válassza ki a megfelelő elemet a listában. Megnyílik a napló keresése ablaktábla a kiválasztott elem lekérdezésével.
 
-![A kezelés frissítése alapértelmezett nézet](media/automation-update-management/update-management-view.png)
+![Update Management alapértelmezett nézet](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
 
-Válassza **a Hiányzó frissítések** lehetőséget a gépekről hiányzó frissítések listájának megtekintéséhez. Minden frissítés megjelenik, és kiválasztható. A frissítést igénylő gépek számáról, az operációs rendszer részleteiről és a további információkra mutató hivatkozásról tájékoztató információk jelennek meg. A Naplókeresés ablaktábla a frissítésekkel kapcsolatos további részleteket is megjelenít.
+Válassza a **hiányzó frissítések** lehetőséget a gépekből hiányzó frissítések listájának megtekintéséhez. Minden frissítés szerepel a listáján, és kiválasztható. Információ arról, hogy hány gép szükséges a frissítéshez, az operációs rendszer részleteit, valamint egy hivatkozást a további információkhoz. A naplók keresése ablaktáblán további részleteket is láthat a frissítésekről.
 
 ![Hiányzó frissítések](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 
-Az alábbi táblázatok az Update Management támogatott frissítési besorolásait sorolják fel, az egyes besorolásokhoz egy-egy definícióval.
+Az alábbi táblázat a Update Management támogatott frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
 
 ### <a name="windows"></a>Windows
 
 |Osztályozás  |Leírás  |
 |---------|---------|
-|Kritikus frissítések     | A kritikus, nem biztonsági jellegű hibákat orvosolja a konkrét problémák frissítései.        |
-|Biztonsági frissítések     | Termékspecifikus, biztonsággal kapcsolatos problémák frissítései.        |
-|Kumulatív frissítések     | Az egyszerű telepítés érdekében összecsomagolt gyorsjavítások készletei.        |
-|Funkciócsomagok     | A termékkiadáson kívül terjesztett új termékfunkciók.        |
-|Szervizcsomagok     | Az alkalmazásra alkalmazott gyorsjavítások készletei.        |
-|Definíciófrissítések     | Vírus- vagy más definíciós fájlok frissítései.        |
-|Eszközök     | Segédprogramok vagy szolgáltatások, amelyek segítenek egy vagy több feladat elvégzésében.        |
+|Kritikus frissítések     | Frissítések a kritikus, nem biztonsági hibákkal kapcsolatos problémák megoldásához.        |
+|Biztonsági frissítések     | A termékre vonatkozó, biztonsággal kapcsolatos problémák frissítései.        |
+|Kumulatív frissítések     | Az egyszerű üzembe helyezéshez együtt csomagolt gyorsjavítások készletei.        |
+|Funkciócsomagok     | A termék kiadásán kívül terjesztett új termék-szolgáltatások.        |
+|Szervizcsomagok     | Egy alkalmazásra alkalmazott gyorsjavítások készletei.        |
+|Definíciófrissítések     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
+|Eszközök     | Segédprogramok vagy szolgáltatások, amelyek egy vagy több feladat elvégzésére nyújtanak segítséget.        |
 |Frissítések     | A jelenleg telepített alkalmazások vagy fájlok frissítései.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
 |Osztályozás  |Leírás  |
 |---------|---------|
-|Kritikus vagy biztonsági frissítések     | Frissítések egy adott problémára vagy egy termékspecifikus, biztonsággal kapcsolatos problémára.         |
-|Egyéb frissítések     | Minden más olyan frissítés, amely nem kritikus jellegű, vagy nem biztonsági frissítés.        |
+|Kritikus vagy biztonsági frissítések     | Adott probléma vagy termékspecifikus, biztonsággal kapcsolatos probléma frissítései.         |
+|Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |
 
-Linux esetén az Update Management különbséget tud tenni a kritikus frissítések és a biztonsági frissítések között a felhőben, miközben értékelési adatokat jelenít meg. (Ez a részletesség a felhőben az adatok gazdagítása miatt lehetséges.) A javításhoz az Update Management a számítógépen elérhető besorolási adatokra támaszkodik. Más disztribúciókkal ellentétben a CentOS nem rendelkezik ezekkel az információkkal a termék RTM verzióiban. Ha a Következő parancs biztonsági adatainak visszaadására van konfigurálva a CentOS-gépek, az Update Management a besorolások alapján javíthat:
+A Linux esetében Update Management a kritikus frissítések és a biztonsági frissítések a felhőben való megkülönböztetését az értékelési információk megjelenítése során. (Ez a részletesség a Felhőbeli adatgazdagítás miatt lehetséges.) A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal a termék RTM-verzióiban. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, Update Management besorolások alapján lehet javítani:
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Jelenleg nincs támogatott módszer a natív besorolási adatok rendelkezésre állásának engedélyezésére a CentOS rendszeren. Jelenleg csak a legjobb támogatást nyújtjuk azoknak az ügyfeleknek, akik önállóan engedélyezték ezt a funkciót.
+Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást biztosítja azoknak az ügyfeleknek, akik saját maguk engedélyezték ezt a funkciót.
 
-A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-security bővítményt. A Red Hat Enterprise Linux 7-en a plugin már része a yumnak, nincs szükség a telepítésre. További információt a Red Hat [következő tudásbáziscikkében](https://access.redhat.com/solutions/10021)talál.
+A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
 ## <a name="next-steps"></a>További lépések
 
-A frissítési értékelések megtekintése után ütemezheti a frissítések központi telepítését az [Azure-beli virtuális gépek frissítéseinek és javításainak kezelésécímű](automation-tutorial-update-management.md)lépések ben leírt lépésekkel.
+A frissítési felmérések megtekintése után az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)lépéseit követve ütemezhet egy frissítés központi telepítését.

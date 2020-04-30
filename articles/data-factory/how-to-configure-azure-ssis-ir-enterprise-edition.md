@@ -1,6 +1,6 @@
 ---
-title: Enterprise Edition kiépítése az Azure-SSIS-integrációs futásórához
-description: Ez a cikk ismerteti az Enterprise Edition szolgáltatásait az Azure-SSIS integrációs futásidejűhez, és hogyan építheti ki
+title: Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára
+description: Ez a cikk a Azure-SSIS Integration Runtime Enterprise Edition funkcióit és a kiépítésének módját ismerteti
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,44 +11,44 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606157"
 ---
-# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Enterprise Edition kiépítése az Azure-SSIS-integrációs futásórához
+# <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az Azure-SSIS-integrációs futásidő Enterprise Edition szolgáltatása lehetővé teszi a következő speciális és prémium funkciók használatát:
--   Adatrögzítési (CDC) összetevők módosítása
--   Oracle, Teradata és SAP BW-összekötők
--   SQL Server Analysis Services (SSAS) és Az Azure Analysis Services (AAS) összekötők és átalakítások
--   Fuzzy csoportosítás és fuzzy lookup átalakítások
--   Kifejezéskinyerési és kifejezés-keresgazokat
+A Azure-SSIS Integration Runtime Enterprise kiadása a következő speciális és prémium funkciók használatát teszi lehetővé:
+-   Az adatváltozások rögzítése (CDC) összetevői
+-   Oracle-, Teradata-és SAP BW-összekötők
+-   SQL Server Analysis Services (SSAS) és Azure Analysis Services (AAS) összekötők és átalakítások
+-   Fuzzy csoportosítás és fuzzy keresési átalakítások
+-   A kinyerési és kifejezési keresési átalakítások kifejezése
 
-Néhány ilyen funkciók megkövetelik, hogy további összetevőket telepíteni az Azure-SSIS IR testreszabásához. További összetevők telepítéséről az [Azure-SSIS-integrációs futásidejű egyéni beállítás című témakörben](how-to-configure-azure-ssis-ir-custom-setup.md)talál további információt.
+Ezeknek a szolgáltatásoknak a használatához további összetevőket kell telepíteni a Azure-SSIS IR testreszabásához. További információ a további összetevők telepítéséről: [Az Azure SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ## <a name="enterprise-features"></a>Vállalati funkciók
 
-| **Vállalati szolgáltatások** | **Leírások** |
+| **Vállalati funkciók** | **Leírások** |
 |---|---|
-| CDC alkatrészek | A CDC-forrás, a vezérlőfeladat és az osztóátalakítás elő van telepítve az Azure-SSIS IR Enterprise Edition-en. Az Oracle-hez való csatlakozáshoz telepítenie kell a CDC Designer and Service szolgáltatást egy másik számítógépre is. |
-| Oracle csatlakozók | Az Oracle Connection Manager, Source és Destination előtelepített az Azure-SSIS IR Enterprise Edition. Telepítenie kell az Oracle Call Interface (OCI) illesztőprogramját is, és szükség esetén konfigurálnia kell az Oracle Transport Network Substrate (TNS) hálózatot az Azure-SSIS IR-en. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Teradata-összekötők | Telepítenie kell a Teradata Connection Manager, Source és Destination, valamint a Teradata párhuzamos átvitel (TPT) API-t és a Teradata ODBC illesztőprogramot az Azure-SSIS IR Enterprise Edition-re. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| SAP BW csatlakozók | Az SAP BW Connection Manager, Source és Destination előtelepített az Azure-SSIS IR Enterprise Edition. Az SAP BW-illesztőprogramot is telepítenie kell az Azure-SSIS IR-re. Ezek az összekötők támogatják az SAP BW 7.0 vagy korábbi verziókat. Az SAP BW vagy más SAP-termékek későbbi verzióihoz való csatlakozáshoz megvásárolhatja és telepítheti az SAP-összekötőket külső független szoftverszállítóktól az Azure-SSIS IR-n. További összetevők telepítéséről az [Azure-SSIS-integrációs futásidejű egyéni beállítás című témakörben](how-to-configure-azure-ssis-ir-custom-setup.md)talál további információt. |
-| Analysis Services összetevői               | Az adatbányászati modell képzési cél, a dimenziófeldolgozási cél, és a partíciófeldolgozási cél, valamint az adatbányászati lekérdezés átalakítása, előtelepített az Azure-SSIS IR Enterprise Edition. Ezek az összetevők mindegyike támogatja az SQL Server Analysis Services (SSAS), de csak a partíciófeldolgozási cél támogatja az Azure Analysis Services (AAS). Az SSAS-hez való csatlakozáshoz a Windows hitelesítési hitelesítő adatait is [konfigurálnia kell az SSISDB rendszerben.](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) Ezeken az összetevőkön kívül az Analysis Services DDL-feladat végrehajtása, az Analysis Services Processing Task és az Adatbányászati lekérdezési feladat is elő van telepítve az Azure-SSIS IR Standard/Enterprise Edition.In addition to these components, the Analysis Services Execute DDL Task, the Analysis Services Processing Task, and the Data Mining Query Task is preinstalled on the Azure-SSIS IR Standard/Enterprise Edition. |
-| Fuzzy csoportosítás és fuzzy lookup átalakítások  | A Fuzzy csoportosítás és a Fuzzy Lookup átalakítások előre telepítve vannak az Azure-SSIS IR Enterprise Edition. Ezek az összetevők támogatják az SQL Server és az Azure SQL Database számára a referenciaadatok tárolását. |
-| Kifejezéskinyerési és kifejezés-keresgazokat | A kifejezés kinyerése és a kifejezéskeresés átalakítások elővannak telepítve az Azure-SSIS IR Enterprise Edition. Ezek az összetevők támogatják az SQL Server és az Azure SQL Database számára a referenciaadatok tárolását. |
+| CDC-összetevők | A CDC forrása, a vezérlési feladat és a Splitter átalakító előre telepítve van a Azure-SSIS IR Enterprise kiadásban. Az Oracle-hez való kapcsolódáshoz is telepítenie kell a CDC designert és a szolgáltatást egy másik számítógépre. |
+| Oracle-összekötők | Az Oracle-Csatlakozáskezelő, a forrás és a cél a Azure-SSIS IR Enterprise kiadásban van előtelepítve. Telepítenie kell az Oracle Call Interface (OCI) illesztőprogramot is, és szükség esetén konfigurálnia kell az Oracle Transport Network szubsztrátot (TNS) a Azure-SSIS IR. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Teradata-összekötők | Telepítenie kell a Teradata Csatlakozáskezelőt, a forrást és a célhelyet, valamint a Teradata párhuzamos Transporter (TPT) API-t és az Teradata ODBC-illesztőt a Azure-SSIS IR Enterprise kiadásban. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| SAP BW összekötők | A SAP BW Csatlakozáskezelő, a forrás és a cél a Azure-SSIS IR Enterprise kiadásban van előtelepítve. A SAP BW illesztőprogramot is telepítenie kell a Azure-SSIS IR. Ezek az összekötők támogatják a SAP BW 7,0-es vagy korábbi verzióit. A SAP BW vagy más SAP-termékek újabb verzióihoz való csatlakozáshoz vásárolhat és telepíthet SAP-összekötőket külső szoftvergyártók által a Azure-SSIS IR. További információ a további összetevők telepítéséről: [Az Azure SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md). |
+| Összetevők Analysis Services               | Az adatbányászati modell betanítási célját, a dimenzió feldolgozásának célját, valamint a partíció feldolgozási célját, valamint az adatbányászati lekérdezés átalakítását a Azure-SSIS IR Enterprise kiadásban előtelepítik. Ezek az összetevők támogatják a SQL Server Analysis Services (SSAS), de csak a partíció-feldolgozási cél támogatja a Azure Analysis Services (AAS). A SSAS-hez való kapcsolódáshoz a [Windows-hitelesítés hitelesítő adatait is konfigurálnia kell a SSISDB-ben](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Ezen összetevők mellett a Analysis Services DDL végrehajtása feladat, a Analysis Services feldolgozási feladat és az adatbányászati lekérdezési feladat is előre telepítve van a Azure-SSIS IR standard/Enterprise kiadásban. |
+| Fuzzy csoportosítás és fuzzy keresési átalakítások  | A rendszer a Azure-SSIS IR Enterprise kiadásban előre telepíti a fuzzy csoportosítási és a homályos keresési átalakításokat. Ezek az összetevők a SQL Server és a Azure SQL Database is támogatják a hivatkozási adattároláshoz. |
+| A kinyerési és kifejezési keresési átalakítások kifejezése | A kinyerési és kifejezési keresési átalakítások a Azure-SSIS IR Enterprise kiadásban előre telepítve vannak. Ezek az összetevők a SQL Server és a Azure SQL Database is támogatják a hivatkozási adattároláshoz. |
 
 ## <a name="instructions"></a>Utasítások
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1.  Töltse le és telepítse [az Azure PowerShellt.](/powershell/azure/install-az-ps)
+1.  [Azure PowerShell](/powershell/azure/install-az-ps)letöltése és telepítése.
 
-2.  Amikor kiépíti vagy újrakonfigurálja az Azure-SSIS IR-t a PowerShell használatával, futtassa `Set-AzDataFactoryV2IntegrationRuntime` az **Enterprise-t** az **Azure-SSIS** IR indítása előtt az Edition paraméter értékeként. Itt van egy minta script:
+2.  A Azure-SSIS IR PowerShell-lel való kiépítésekor vagy újrakonfigurálásakor a Azure-SSIS IR elindítása előtt futtassa `Set-AzDataFactoryV2IntegrationRuntime` a with **Enterprise** értéket a **kiadás** paraméter értékeként. Íme egy példa a parancsfájlra:
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
@@ -65,6 +65,6 @@ Néhány ilyen funkciók megkövetelik, hogy további összetevőket telepíteni
 
 ## <a name="next-steps"></a>További lépések
 
--   [Egyéni beállítás az Azure-SSIS integrációs futásórához](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Az Azure-SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [Fizetős vagy licencelt egyéni összetevők fejlesztése az Azure-SSIS integrációs futásidejéhez](how-to-develop-azure-ssis-ir-licensed-components.md)
+-   [Fizetett vagy licencelt egyéni összetevők fejlesztése az Azure-SSIS Integration Runtime számára](how-to-develop-azure-ssis-ir-licensed-components.md)
