@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az Perception United States (Non-UltiPro) szolgáltatással | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Perception United States (Nem UltiPro) között.
+title: 'Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államokokkal (nem UltiPro) | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és észlelési Egyesült Államok (nem UltiPro) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,222 +16,222 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67094835"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Az Azure Active Directory integrációja az Perception United States (Non-UltiPro) rendszerrel
+# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államok (nem UltiPro)
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Észlelés I. Államok (Nem UltiPro) integrálását az Azure Active Directoryval (Azure AD).
-Az Észlelés Egyesült Államok (Non-UltiPro) integrálása az Azure AD-vel a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az észlelési Egyesült Államok (nem UltiPro) a Azure Active Directory (Azure AD) szolgáltatással.
+Az észlelési Egyesült Államok (nem UltiPro) integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Perception United States (Non-UltiPro).
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve perception Egyesült Államok (Non-UltiPro) (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az észlelési Egyesült Államokhoz (nem UltiPro).
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Egyesült Államok (nem UltiPro) (egyszeri bejelentkezés) Azure AD-fiókjával való észlelésére.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához a Perception United States (Non-UltiPro) alkalmazáshoz a következő elemekre van szükség:
+Az Azure AD-integráció az észlelési Egyesült Államokával (nem UltiPro) való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* Perception Egyesült Államok (Non-UltiPro) egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Észlelési Egyesült Államok (nem UltiPro) egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Perception Egyesült Államok (Non-UltiPro) támogatja **az IDP** által kezdeményezett Egyszeri
+* Észlelési Egyesült Államok (nem UltiPro) támogatja a **identitásszolgáltató** kezdeményezett SSO-t
 
-## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Az Perception United States (Non-UltiPro) hozzáadása a galériából
+## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Észlelési Egyesült Államok hozzáadása (nem UltiPro) a katalógusból
 
-Az Perception United States (Non-UltiPro) Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az Perception United States (Non-UltiPro) alkalmazást a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az észlelési Egyesült Államok (nem UltiPro) Azure AD-ba való integrálásának konfigurálásához fel kell vennie az észlelési Egyesült Államok (nem UltiPro) a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Ha hozzá szeretné adni az Perception United States (Non-UltiPro) képet a galériából, hajtsa végre a következő lépéseket:**
+**Ha az észlelési Egyesült Államok (nem UltiPro) szeretné hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **Perception United States (Non-UltiPro)** kifejezést, válassza az **Észlelés Egyesült Államok (Nem UltiPro)** lehetőséget az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **észlelési Egyesült Államok (nem UltiPro)**, válassza az **észlelés Egyesült Államok (nem UltiPro)** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Perception Egyesült Államok (Non-UltiPro) az eredmények listájában](common/search-new-app.png)
+     ![Észlelés Egyesült Államok (nem UltiPro) az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését az Perception United States (Non-UltiPro) szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó között a Perception United States (Nem UltiPro) közötti kapcsolat létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést úgy konfigurálja és teszteli, hogy az észlelési Egyesült Államok (nem UltiPro) egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az észlelési Egyesült Államok (nem UltiPro) közötti kapcsolati kapcsolat létrehozása szükséges.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az Észlelés Egyesült Államok (Nem UltiPro) segítségével a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem UltiPro) konfigurálásához és teszteléséhez a következő építőelemeket kell elvégeznie:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Állítsa be a Perception United States (Non-UltiPro) Single Sign-On](#configure-perception-united-states-non-ultipro-single-sign-on)** beállítást – az alkalmazás oldalon az egyszeri bejelentkezés beállításainak konfigurálásához.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre Perception United States (Non-UltiPro) tesztfelhasználót](#create-perception-united-states-non-ultipro-test-user)** – hogy a Britta Simon in Perception United States (Non-UltiPro) megfelelője, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. Az **[észlelési Egyesült Államok konfigurálása (nem UltiPro) egyszeri bejelentkezés](#configure-perception-united-states-non-ultipro-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre egy észlelési Egyesült Államok (nem UltiPro) tesztelési felhasználót](#create-perception-united-states-non-ultipro-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez kapcsolódó, az észlelési Egyesült Államok (nem UltiPro).
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához a Perception United States (Non-UltiPro) szolgáltatással hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem UltiPro) konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Perception United States (Non-UltiPro) alkalmazásintegrációs** lapon válassza az Egyszeri **bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **észlelési Egyesült Államok (nem UltiPro)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon hajtsa végre az alábbi lépéseket:
+4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    ![Perception Egyesült Államok (Non-UltiPro) Domain és URL-ek egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![Észlelési Egyesült Államok (nem UltiPro) tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet:`https://perception.kanjoya.com/sp`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://perception.kanjoya.com/sp`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. A **Perception United States (Non-UltiPro)** alkalmazás megköveteli az Azure **AD-azonosító** értéke, mint <entity_id>, amelyet kap a **Set up Perception Egyesült Államok (Nem UltiPro)** szakasz, uri kódolt. Az uri kódolású érték benyomásához használja **http://www.url-encode-decode.com/** az alábbi hivatkozást: .
+    c. Az **észlelési Egyesült Államok (nem UltiPro)** alkalmazáshoz az **Azure ad-azonosító** értékének <entity_id>nek kell lennie, amelyet a **set up Perception Egyesült Államok (nem UltiPro)** szakaszból kap, amely URI-kódolású lesz. Az URI-kódolású érték beszerzéséhez használja a következő hivatkozást **http://www.url-encode-decode.com/**:.
 
-    d. Után szerzés a uri kódolt érték összeköt ez -val a **Válasz URL** mint említett alul-
+    d. Az URI-kódolású érték beolvasása után a **Válasz URL-címével** kombinálja azt a lent említett módon:
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     
-    e. Illessze be a fenti értéket a **Válasz URL-cím** mezőbe.
+    e. Illessze be a fenti értéket a **Válasz URL-címe** szövegmezőbe.
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Set up Perception United States (Non-UltiPro) (Beállítás: Észlelés I. Államok ( Non-UltiPro)** című szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. Az **észlelési Egyesült Államok beállítása (nem UltiPro)** szakaszban adja meg a megfelelő URL (eke) t a követelménynek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Hirdetés-azonosító
+    b. Azure AD-azonosító
 
-    c. Kijelentkezés URL-címe   
+    c. Kijelentkezési URL-cím   
 
-### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Az Észlelés Egyesült Államok (Nem UltiPro) egyszeri bejelentkezéskonfigurálása
+### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Észlelési Egyesült Államok konfigurálása (nem UltiPro) egyszeri bejelentkezés
 
-1. Egy másik böngészőablakban jelentkezzen be az Perception United States (Non-UltiPro) vállalati webhelyére rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be az észlelési Egyesült Államok (nem UltiPro) vállalati webhelyre rendszergazdaként.
 
-2. A fő eszköztáron kattintson a **Fiókbeállítások gombra.**
+2. A fő eszköztáron kattintson a **Fiókbeállítások**lehetőségre.
 
-    ![Perception Egyesült Államok (Non-UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Észlelési Egyesült Államok (nem UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
-3. A **Fiókbeállítások** lapon hajtsa végre az alábbi lépéseket:
+3. A **Fiókbeállítások** oldalon hajtsa végre a következő lépéseket:
 
-    ![Perception Egyesült Államok (Non-UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
+    ![Észlelési Egyesült Államok (nem UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. A **Vállalat neve** mezőbe írja be a **Vállalat**nevét.
+    a. A **Vállalat neve** szövegmezőbe írja be a **vállalat**nevét.
     
-    b. A **Fióknév** mezőbe írja be a **Fiók**nevét.
+    b. A **fiók neve** szövegmezőbe írja be a **fiók**nevét.
 
-    c. Az **Alapértelmezett válaszküldéses e-mail** mezőbe írja be az érvényes **e-mailt.**
+    c. Az **alapértelmezett válasz – e-mail** szövegmezőbe írja be az érvényes **e-mailt**.
 
-    d. Válassza az **SSO-identitásszolgáltatót** **SAML 2.0**néven.
+    d. Válassza ki az **SSO-identitás szolgáltatóját** **SAML 2,0**-ként.
 
-4. Az **SSO-konfiguráció** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri bejelentkezés konfigurálása** lapon hajtsa végre a következő lépéseket:
 
-    ![Perception Egyesült Államok (Non-UltiPro) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
+    ![Észlelési Egyesült Államok (nem UltiPro) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. Válassza **az SAML NameID típust** **e-mailként.**
+    a. Válassza ki az **SAML-NameID típust** **e-mailben**.
 
-    b. Az **SSO konfigurációneve** mezőbe írja be a **konfiguráció**nevét.
+    b. Az **SSO-konfiguráció neve** szövegmezőbe írja be a **konfiguráció**nevét.
     
-    c. Az **Identitásszolgáltató neve** szövegmezőbe illessze be az **Azure AD-azonosító**értékét, amelyet az Azure Portalról másolt. 
+    c. Az **identitás-szolgáltató neve** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt. 
 
-    d. Az **SAML tartomány mezőbe**írja @contoso.combe a tartományt a hoz hasonlóan.
+    d. Az **SAML-tartomány szövegmezőbe**írja be a @contoso.comtartományt, például:.
 
-    e. A **Metaadat XML-fájl** feltöltéséhez kattintson a **Feltöltés gombra.**
+    e. Kattintson a **feltöltés** gombra a **metaadatok XML-** fájljának feltöltéséhez.
 
     f. Kattintson a **Frissítés** parancsra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t engedve a Perception United States (Non-UltiPro) hozzáférést biztosít.
+Ebben a szakaszban az Azure-beli egyszeri bejelentkezést az észlelési Egyesült Államokhoz (nem UltiPro) való hozzáférés biztosításával engedélyezi a Britta Simon számára.
 
-1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **Észlelés I. Államok (Nem UltiPro) lehetőséget.**
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **észlelési Egyesült Államok (nem UltiPro)** lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza az **Észlelés Egyesült Államok (Nem-UltiPro) lehetőséget.**
+2. Az alkalmazások listában válassza az **észlelés Egyesült Államok (nem UltiPro)** lehetőséget.
 
-    ![Az Perception United States (Non-UltiPro) hivatkozás a Jelentkezések listában](common/all-applications.png)
+    ![Az észlelési Egyesült Államok (nem UltiPro) hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-perception-united-states-non-ultipro-test-user"></a>Create Perception Egyesült Államok (Non-UltiPro) teszt felhasználó
+### <a name="create-perception-united-states-non-ultipro-test-user"></a>Észlelési Egyesült Államok (nem UltiPro) tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az Észlelés Egyesült Államokban (Nem UltiPro). Együttműködve [Perception United States (Non-UltiPro) támogatási csapatával,](https://www.ultimatesoftware.com/Contact/ContactUs) hogy hozzáadja a felhasználókat az Perception United States (Non-UltiPro) platformon.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az észlelési Egyesült Államok (nem UltiPro). Az észlelési [Egyesült Államok (nem UltiPro) támogatási csapatával](https://www.ultimatesoftware.com/Contact/ContactUs) felveheti a felhasználókat az észlelési Egyesült Államok (nem UltiPro) platformon.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a Hozzáférési panelen az Észlelés Az Egyesült Államok (Nem UltiPro) csempére kattint, automatikusan be kell jelentkeznie az Észlelés Magyarország (Nem UltiPro) rendszerbe, amelyhez beállította az Egyszeri bejelentkezés t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a észlelési Egyesült Államok (nem UltiPro) csempére kattint, automatikusan be kell jelentkeznie az észlelési Egyesült Államok (nem UltiPro), amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

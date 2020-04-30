@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Kantega SSO for Bamboo szolgáltatással | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Kantega SSO for Bamboo között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Bamboo Kantega SSO-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Bamboo Azure Active Directory és a Kantega SSO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,139 +16,139 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 8c951d7f5f1629447b1b5c1fc6e8a1c202246d74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67099107"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Oktatóanyag: Az Azure Active Directory integrációja a Kantega SSO for Bamboo szolgáltatással
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Oktatóanyag: Azure Active Directory integráció a Bamboo Kantega SSO-val
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Kantega SSO for Bamboo szolgáltatást az Azure Active Directoryval (Azure AD).
-A Kantega SSO for Bamboo és az Azure AD integrálása a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Bamboo Kantega SSO-t a Azure Active Directory (Azure AD) használatával.
+A Kantega SSO for Bamboo integrációja az Azure AD-val a következő előnyöket nyújtja:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Kantega SSO for Bamboo.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve kantegai egyszeri szolgáltatás bambuszhoz (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Bamboo Kantega SSO-hoz.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Bamboo (egyszeri bejelentkezés) Azure AD-fiókjával rendelkező Kantega egyszeri bejelentkezésre.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához a Kantega SSO for Bamboo szolgáltatással a következő elemekre van szükség:
+Az Azure AD-integráció a Bamboo Kantega egyszeri bejelentkezéssel való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
-* Kantega SSO for Bamboo egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Kantega SSO a bambusz egyszeri bejelentkezésre alkalmas előfizetés esetén
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Kantega SSO for Bamboo támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
+* A Bamboo Kantega SSO támogatja az **SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Hozzáadása Kantega SSO bambusz a galériából
+## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Kantega SSO hozzáadása a Bamboo-hoz a katalógusból
 
-A Kantega SSO for Bamboo Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Kantega SSO for Bamboo-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Bamboo Kantega egyszeri bejelentkezésének Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Bamboo-hoz készült Kantega SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Kantega SSO for Bamboo hozzáadása a galériából, hajtsa végre a következő lépéseket:**
+**Az alábbi lépéseket követve adhat hozzá Kantega SSO-t a Bambuszhoz a katalógusból:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Kantega SSO for Bamboo**kifejezést , válassza **a Kantega SSO for Bamboo lehetőséget** az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **KANTEGA SSO for Bamboo**, válassza a **Kantega SSO for Bamboo** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Kantega SSO for Bamboo az eredménylistában](common/search-new-app.png)
+    ![Kantega SSO a Bamboo-hoz az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Kantega SSO for Bamboo szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a kapcsolódó felhasználó kantegai egyszeri szolgáltatás bambuszhoz kapcsolatban létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Kantega SSO-hoz a Bamboo-hoz a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Kantega SSO-hoz kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Kantega SSO for Bamboo szolgáltatással a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés és a Bamboo Kantega SSO konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a Kantega Egyszeri bejelentkezés t – konfigurálja](#configure-kantega-sso-for-bamboo-single-sign-on)** az egyszeri bejelentkezés beállításait az alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre Kantega SSO for Bamboo teszt felhasználó](#create-kantega-sso-for-bamboo-test-user)** - egy megfelelője Britta Simon Kantega SSO for Bamboo, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. A **[KANTEGA SSO konfigurálása a bambusz egyszeri bejelentkezéshez](#configure-kantega-sso-for-bamboo-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre KANTEGA SSO-t a Bamboo test User-hez](#create-kantega-sso-for-bamboo-test-user)** , hogy a Britta-hez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó Kantega
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához a Kantega Egyszeri szolgáltatás bambuszhoz szolgáltatással hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés a Bamboo Kantega SSO-vel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Kantega Egyszeri szolgáltatás a Bambusz alkalmazásintegrációs** lapon válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a Bamboo Application Integration **(Kantega SSO** ) lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Kantega SSO bambusz domain és URL-ek egyszeri bejelentkezési információk](common/idp-intiated.png)
+    ![Kantega egyszeri bejelentkezés a Bamboo tartományhoz és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Kantega SSO bambusz domain és URL-ek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
+    ![Kantega egyszeri bejelentkezés a Bamboo tartományhoz és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek az értékek a Bamboo plugin konfigurációja során érkeznek, amelyet a bemutató későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek az értékek a Bamboo beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. A **Set up Kantega SSO for Bamboo (Webhely beállítása bambuszhoz)** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+7. A **KANTEGA SSO beállítása a Bamboo-hoz** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Hirdetés-azonosító
+    b. Azure AD-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-kantega-sso-for-bamboo-single-sign-on"></a>Kantega SSO konfigurálása bambusz egyszeri bejelentkezéshez
+### <a name="configure-kantega-sso-for-bamboo-single-sign-on"></a>A Kantega SSO konfigurálása a bambusz egyszeri bejelentkezéshez
 
-1. Egy másik böngészőablakban jelentkezzen be a Bamboo helyszíni kiszolgálóra rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a bambusz helyszíni kiszolgálóra.
 
-1. Mutasson a fogaskerékre, és kattintson **a bővítményekre.**
+1. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon1.png)
 
-1. A Bővítmények lapcsoportban kattintson **az Új bővítmények keresése gombra.** Keressen **a Kantega SSO for Bamboo (SAML & Kerberos)** elemre, majd kattintson a **Telepítés** gombra az új SAML beépülő modul telepítéséhez.
+1. A Bővítmények lap beállítások területén kattintson az **új bővítmények keresése**elemre. Keressen rá a **KANTEGA SSO for Bamboo (SAML & Kerberos)** kifejezésre, majd kattintson a **telepítés** gombra az új SAML beépülő modul telepítéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon2.png)
 
-1. A plugin telepítés indul.
+1. A beépülő modul telepítése megkezdődik.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon21.png)
 
-1. A telepítés befejezése után. Kattintson a **Bezárás** gombra.
+1. A telepítés befejezését követően. Kattintson a **Bezárás** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon33.png)
 
@@ -156,51 +156,51 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Kantega Egyszeri 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon34.png)
 
-1. Az új bővítmény konfigurálásához kattintson a **Konfigurálás** gombra.
+1. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon3.png)
 
-1. Az **SAML** szakaszban. Válassza ki az **Azure Active Directory (Azure AD)** az **identitásszolgáltató hozzáadása** legördülő.
+1. Az **SAML** szakaszban. Válassza az **Azure Active Directory (Azure ad)** elemet az **identitás-szolgáltató hozzáadása** legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-1. Válassza ki az előfizetési szintet **alapszintűként.**
+1. Válassza az előfizetési szint **alapszintű**lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon5.png)
 
-1. Az **Alkalmazás tulajdonságai** szakaszban hajtsa végre az alábbi lépéseket:
+1. Az **alkalmazás tulajdonságai** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon6.png)
 
-    a. Másolja az **Alkalmazásazonosító URI-értékét,** és használja **azonosítóként, válasz URL-címként és bejelentkezési URL-címként** az Azure Portal **alapszintű SAML-konfigurációja** szakaszban.
+    a. Másolja az **alkalmazás-azonosító URI** -értékét, és használja **azonosítóként, válasz URL-címként és bejelentkezési URL-címként** a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
     b. Kattintson a **Tovább** gombra.
 
-1. A **Metaadatok importálása** szakaszban hajtsa végre az alábbi lépéseket:
+1. A **Metaadatok importálása** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. Válassza a **Metaadat-fájlt a számítógépen,** és töltse fel a metaadatfájlt, amelyet az Azure Portalról töltött le.
+    a. Válassza ki a **metaadatokat a számítógépen**, és töltse fel a metaadat-fájlt, amelyet a Azure Portalról töltött le.
 
     b. Kattintson a **Tovább** gombra.
 
-1. A Név és az **SSO hely** szakaszában hajtsa végre a következő lépéseket:
+1. A **név és az SSO hely** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-    a. Adja hozzá az identitásszolgáltató nevét az **identitásszolgáltató nevének** szövegmezőjében (például Az Azure AD).
+    a. Adja hozzá az Identitáskezelő nevét a **személyazonosság-szolgáltató neve** szövegmezőben (például Azure ad).
 
     b. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **Tovább**gombra.
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon9.png)
 
-1. A **Bamboo felhasználói fiókok** csoportban hajtsa végre az alábbi lépéseket:
+1. A **Bamboo User accounts (bambusz felhasználói fiókok** ) szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon10.png)
 
-    a. Válassza **a Felhasználók létrehozása a Bamboo belső könyvtárában lehetőséget, ha szükséges,** és adja meg a csoport megfelelő nevét a felhasználók számára (több nem is lehet. vesszővel elválasztott csoportok száma).
+    a. **Szükség esetén válassza a felhasználók létrehozása a bambusz belső könyvtárában** lehetőséget, és adja meg a felhasználók csoportjának megfelelő nevét (ez lehet több nem. a csoportok vesszővel elválasztva).
 
     b. Kattintson a **Tovább** gombra.
 
@@ -208,105 +208,105 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Kantega Egyszeri 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon11.png)
 
-1. Az **Azure AD ismert tartományai** szakaszban hajtsa végre a következő lépéseket:
+1. Az **Azure ad ismert tartományai** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a. Válassza az **Ismert tartományok lehetőséget** a lap bal oldali paneljén.
+    a. Az oldal bal oldali paneljén válassza az **ismert tartományok** elemet.
 
-    b. Írja be a tartománynevet az **Ismert tartományok** mezőbe.
+    b. Adja meg a tartomány nevét az **ismert tartományok** szövegmezőben.
 
-    c. Kattintson a **Mentés** gombra.
+    c. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőtípusban`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával a Kantega SSO for Bamboo használatával.
+Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a Bamboo Kantega egyszeri bejelentkezéshez.
 
-1. Az Azure portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza **a Kantega SSO for Bamboo**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Kantega egyszeri bejelentkezés a Bamboo**-hoz lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza **a Kantega SSO for Bamboo**lehetőséget.
+2. Az alkalmazások listában válassza a **Kantega egyszeri bejelentkezés a Bamboo**-hoz lehetőséget.
 
-    ![A Kantega SSO for Bamboo link az alkalmazások listájában](common/all-applications.png)
+    ![Az Kantega egyszeri bejelentkezés a Bamboo-hez hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-kantega-sso-for-bamboo-test-user"></a>Hozzon létre Kantega SSO bambusz teszt felhasználó
+### <a name="create-kantega-sso-for-bamboo-test-user"></a>Kantega SSO létrehozása a Bamboo test userhez
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Bamboo-ba, ki kell építeniőket a Bamboo-ba. Kantega SSO for Bamboo esetén a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Bambuszba, ki kell építeni őket a Bambuszba. A Bamboo Kantega egyszeri bejelentkezés esetén a kiépítés manuális feladat.
 
-**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a Bamboo helyszíni kiszolgálójára rendszergazdaként.
+1. Jelentkezzen be a bambusz helyi kiszolgálóra rendszergazdaként.
 
-1. Mutasson a fogaskerékre, és kattintson a **Felhasználókezelés parancsra.**
+1. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet**elemre.
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbamboo-tutorial/user1.png)
 
-1. Kattintson **a Felhasználók gombra.** A **Felhasználó hozzáadása** csoportban hajtsa végre az alábbi lépéseket:
+1. Kattintson a **felhasználók**elemre. A **felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbamboo-tutorial/user2.png)
 
-    a. A **Felhasználónév** mezőbe írja be a Brittasimon@contoso.comfelhasználó e-mail címét, például .
+    a. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló Brittasimon@contoso.come-mail címet.
 
-    b. A **Jelszó** mezőbe írja be a felhasználó jelszavát.
+    b. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 
-    c. A **Jelszó megerősítése** mezőbe írja be újra a felhasználó jelszavát.
+    c. A **Jelszó megerősítése** szövegmezőbe írja be újra a felhasználó jelszavát.
 
-    d. A **Teljes név** mezőbe írja be a felhasználó teljes nevét, például Britta Simon.
+    d. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például a Britta Simon nevet.
 
-    e. Az **E-mail** mezőbe írja be a Brittasimon@contoso.comfelhasználó e-mail címét, például .
+    e. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló Brittasimon@contoso.come-mail címet.
 
-    f. Kattintson a **Mentés** gombra.
+    f. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a Hozzáférési panelen a Kantega SSO for Bamboo csempére kattint, automatikusan be kell jelentkeznie a Kantega SSO for Bamboo-ba, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Kantega SSO for Bamboo csempére kattint, automatikusan be kell jelentkeznie a Kantega SSO for Bamboo szolgáltatásba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

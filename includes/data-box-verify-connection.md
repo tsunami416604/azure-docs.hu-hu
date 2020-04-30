@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67179786"
 ---
-Az alábbi lépésekkel csatlakozhat a tárfiókhoz, és ellenőrizheti a kapcsolatot.
+Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a kapcsolat ellenőrzéséhez.
 
-1. A Storage Explorer ben nyissa meg a Csatlakozás az **Azure Storage-hoz párbeszédpanelt.** A Csatlakozás az **Azure Storage-hoz** párbeszédpanelen válassza **a Tárfiók nevének és kulcsának használata**lehetőséget.
+1. A Storage Explorerban nyissa meg a **Kapcsolódás az Azure Storage-hoz** párbeszédpanelt. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanelen válassza **a Storage-fiók nevének és kulcsának használata**lehetőséget.
 
-    ![Adatdoboz irányítópultja](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
+    ![Data Box irányítópult](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. Illessze be a **fiók nevét** és **a fiókkulcsot** (az 1. kulcs értéke a helyi webes felhasználói felület **Connect és másolása** lapján). Válassza a Storage-végpontok tartományt egyéb ként **(írja be alább),** majd adja meg a blob szolgáltatás végpontját az alábbiak szerint. Jelölje be **a HTTP használata** jelölőnégyzetet, ha *http-n*keresztül kell átvinni. Https használata *esetén*hagyja a beállítást bejelölve. Válassza a **Tovább lehetőséget.**
+2. Illessze be a **fiók nevét** és a **fiók kulcsát** (1. kulcs értékét a helyi webes felhasználói felületen a **kapcsolat és a másolás** lapról). Válassza ki a tárolási végpontok tartományt **(adja meg az alábbit)** , majd adja meg a blob Service-végpontot az alábbi ábrán látható módon. Ellenőrizze, hogy csak *a HTTP protokollon keresztüli*átvitelt kell-e **használni** . Ha a *HTTPS protokollt*használja, hagyja meg a jelölőnégyzet jelölését. Kattintson a **Tovább** gombra.
 
-    ![Adatdoboz irányítópultja](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
+    ![Data Box irányítópult](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. A **Kapcsolat összegzése** párbeszédpanelen tekintse át a megadott információkat. Kattintson a **Csatlakozás** gombra.
+3. A **kapcsolatok összegzése** párbeszédpanelen tekintse át a megadott adatokat. Kattintson a **Csatlakozás** gombra.
 
-    ![Adatdoboz irányítópultja](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
+    ![Data Box irányítópult](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 
-4. A sikeresen hozzáadott fiók a Storage Explorer bal oldali ablaktáblájában jelenik meg a nevéhez (Külső, Egyéb) csatolva. Kattintson **a Blob Containers** elemre a tároló megtekintéséhez.
+4. A sikeresen hozzáadott fiók megjelenik a Storage Explorer bal oldali ablaktábláján (külső, egyéb) a nevéhez hozzáfűzve. A tároló megtekintéséhez kattintson a **blob-tárolók** elemre.
 
-    ![Adatdoboz irányítópultja](media/data-box-verify-connection/data-box-connect-via-rest-17.png)
+    ![Data Box irányítópult](media/data-box-verify-connection/data-box-connect-via-rest-17.png)
