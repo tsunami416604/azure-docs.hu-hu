@@ -1,5 +1,5 @@
 ---
-title: Felhasználók, csoportok, licencelés és szerepkörök – Azure AD | Microsoft dokumentumok
+title: Felhasználók, csoportok, licencelés és szerepkörök áttekintése – Azure AD | Microsoft Docs
 description: A felhasználók és a hozzárendelt licencek, a rendszergazdai szerepkörök és a csoporttagságok közti kapcsolatok az Azure Active Directoryban
 keywords: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046337"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583019"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Nagyobb szervezetek felhasználói, csoportjai, licenckezelése és szerepkörei
 
@@ -31,7 +31,7 @@ A cikk az Azure AD-rendszergazdák számára mutatja be a felhasználókra vonat
 
 ## <a name="assign-users-to-groups"></a>Felhasználók hozzárendelése csoportokhoz
 
-A csoportok segítségével az Azure AD-ben licenceket rendelhet hozzá egyszerre sok felhasználóhoz, illetve felhasználói hozzáféréseket rendelhet hozzá a telepített vállalati alkalmazásokhoz. A csoportok segítségével az Azure AD globális rendszergazdája kivételével az összes rendszergazdai szerepkört hozzárendelheti, vagy hozzáférést biztosíthat a külső erőforrásokhoz, például az SaaS-alkalmazásokhoz vagy a SharePoint-webhelyekhez.
+A csoportok segítségével az Azure AD-ben licenceket rendelhet hozzá egyszerre sok felhasználóhoz, illetve felhasználói hozzáféréseket rendelhet hozzá a telepített vállalati alkalmazásokhoz. A csoportok segítségével az összes rendszergazdai szerepkört hozzárendelheti, kivéve az Azure AD globális rendszergazdáját, vagy megadhat hozzáférést a külső erőforrásokhoz, például SaaS-alkalmazásokhoz vagy SharePoint-webhelyekhez.
 
 A nagyobb rugalmasság és a csoporttagság-felügyeleti tevékenységek csökkentése érdekében [dinamikus csoportokat](groups-create-rule.md) is használhat az Azure AD-ben a csoporttagság automatikus kiterjesztésére és szűkítésére. Minden egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja, egy Azure AD Premium P1-licencre lesz szükség.
 
@@ -60,7 +60,7 @@ Folyamatosan jelennek meg új Azure AD-rendszergazdai szerepkörök. A jelenleg 
 
 ## <a name="assign-app-access"></a>Alkalmazás-hozzáférés hozzárendelése
 
-Az Azure AD használatával csoportszintű hozzáférést biztosíthat [az Azure AD-bérlőn üzembe helyezett vállalati alkalmazásokhoz](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). A csoportszintű alkalmazás-hozzárendelést a dinamikus csoportokkal kombinálva automatizálható a felhasználók alkalmazás-hozzáféréseinek hozzárendelése a szervezet növekedésével. A vállalati alkalmazások hozzáféréseinek kiosztásához Azure Active Directory Premium P1 vagy P2 szintű licenc szükséges.
+Az Azure AD használatával csoportokhoz férhet hozzá az [Azure ad-szervezetben üzembe helyezett vállalati alkalmazásokhoz](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). A csoportszintű alkalmazás-hozzárendelést a dinamikus csoportokkal kombinálva automatizálható a felhasználók alkalmazás-hozzáféréseinek hozzárendelése a szervezet növekedésével. A vállalati alkalmazások hozzáféréseinek kiosztásához Azure Active Directory Premium P1 vagy P2 szintű licenc szükséges.
 
 Az Azure AD emellett lehetővé teszi az alkalmazások és a hozzáféréssel felruházott csoportok közötti adatáramlás finomhangolását. A [Vállalati alkalmazásokban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) az alkalmazást megnyitva, majd a **Kiépítés** lehetőséget választva:
 

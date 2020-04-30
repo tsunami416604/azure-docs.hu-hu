@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hívhat meg üzleti folyamatokat a App Service 
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604852"
+ms.locfileid: "82562304"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: e-mail küldése és más üzleti folyamatok meghívása App Service
 
@@ -26,27 +26,27 @@ Ebben az oktatóanyagban e-maileket küld a Gmailben a App Service alkalmazásb�
 
 Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendszerrel App Service. A minta alkalmazás üzembe helyezésére vonatkozó oktatóanyag követéséhez tekintse meg az alábbi lépéseket:
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [Oktatóanyag: Node. js-és MongoDB-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [Oktatóanyag: Python-(Django-) webalkalmazás futtatása a PostgreSQL-sel Azure App Service](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ A kódban szabványos HTTP-bejegyzést hajtson végre az URL-címre a nyelvi ker
 
 Egy példa megjelenítéséhez kattintson az alábbi előnyben részesített nyelv/keretrendszer lapra.
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 A ASP.NET-ben a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 Ha teszteli ezt a kódot a következő oktatóanyag-alkalmazásban [: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)használatával, a [létrehozási művelettel](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)az `Todo` elem hozzáadása után elküldheti e-mailben a megerősítést. A fenti aszinkron kód használatához alakítsa át a Create műveletet aszinkron értékre.
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 ASP.NET Core a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 Ha teszteli ezt a kódot a minta alkalmazásban [oktatóanyag: ASP.net Core létrehozása és SQL Database alkalmazás](app-service-web-tutorial-dotnetcore-sqldb.md)létrehozása a Azure app Service-ben, akkor a használatával e-mailt küldhet a [létrehozási műveletben](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)az `Todo` elem hozzáadása után.
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 A Node. js-ben egyszerűen elküldheti a HTTP-Postot egy olyan NPM-csomaggal, mint a [axios](https://www.npmjs.com/package/axios). Például:
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 Ha teszteli ezt a kódot a minta alkalmazásban [oktatóanyag: Node. js-és MongoDB-alkalmazás](app-service-web-tutorial-nodejs-mongodb-app.md)létrehozása az Azure-ban, akkor azt is elküldheti, hogy e-mail-megerősítést küldjön a [create függvényben](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27) [a cikk sikeres mentése](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)után.
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 A PHP-ben egyszerűen elküldheti a HTTP-Postot a [zabál](http://docs.guzzlephp.org/en/stable/index.html)használatával. Például:
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 Ha teszteli ezt a kódot a minta alkalmazásban az [oktatóanyaghoz: php-és MySQL-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-php-mysql.md), akkor azt is megteheti, hogy e-mail-visszaigazolást küld a [Route::p OST függvényben](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), közvetlenül a Return utasítás előtt.
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 A Pythonban egyszerűen elküldheti a HTTP-bejegyzést a [kérelmekkel](https://pypi.org/project/requests/). Például:
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 Ha ezt a kódot a minta alkalmazásban a következő [oktatóanyagban teszteli: Python-(Django-) webalkalmazás futtatása a PostgreSQL-](containers/tutorial-python-postgresql-app.md)sel a Azure app Service-ben, akkor azt is megteheti, hogy e-mail-visszaigazolást küld a [Route::p OST függvénynek](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), közvetlenül a Return utasítás előtt.
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 A Ruby szolgáltatásban egyszerűen elküldheti a HTTP-Postot a [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Például:
 
@@ -312,7 +312,7 @@ Ha ezt a kódot a alkalmazásban a [Ruby és a postgres alkalmazás](containers/
 
 ---
 
-# <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További erőforrások
 
 [Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben](app-service-web-tutorial-rest-api.md)  
 [HTTP-kérelem/-válasz referenciája Logic Apps](../connectors/connectors-native-reqres.md)  

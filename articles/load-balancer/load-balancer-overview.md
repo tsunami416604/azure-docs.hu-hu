@@ -1,7 +1,7 @@
 ---
 title: Mi az az Azure Load Balancer?
 titleSuffix: Azure Load Balancer
-description: Az Azure Load Balancer funkciói, architektúrája és implementálása. Ismerje meg, hogyan működik a terheléselosztó, és hogyan használhatja azt a felhőben.
+description: Az Azure Load Balancer funkciói, architektúrája és implementálása. Ismerje meg, hogyan működik a Load Balancer és hogyan használható a felhőben.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,76 +14,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 8596b435ffa02da7daf4ef98bfe0fe7995b9270a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: dd15b2ec985ddaba6031765368571a582fae1993
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768195"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583712"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
-*A terheléselosztás* a terhelés (bejövő hálózati forgalom) egyenletes elosztását nevezi a háttérerőforrások vagy kiszolgálók egy csoportja között. 
+A *terheléselosztás* a betöltés (bejövő hálózati forgalom) egyenletes elosztását jelenti a háttérbeli erőforrások vagy kiszolgálók egy csoportján belül. 
 
-Az Azure Load Balancer az Open Systems Interconnection (OSI) modell negyedik rétegében működik. Ez az ügyfelek egyetlen kapcsolattartási pontja. A terheléselosztó olyan bejövő folyamatokat oszt ki, amelyek a terheléselosztó előtér-háttérkészlet-példányaihoz érkeznek. Ezek a folyamatok a konfigurált terheléselosztási szabályok és az állapotminták szerint vannak. A háttérkészlet-példányok lehetnek Azure virtuális gépek vagy egy virtuálisgép-méretezési csoport példányai.
+Azure Load Balancer a nyílt rendszerek közötti összekapcsolási (OSI) modell négy rétegében működik. Ez az egyetlen kapcsolódási pont az ügyfelek számára. A Load Balancer elosztja a terheléselosztó előtér-példányaira érkező bejövő folyamatokat. Ezek a folyamatok a konfigurált terheléselosztási szabályok és az állapot-mintavételek szerint vannak megadva. A háttérbeli készlet példányai lehetnek Azure-Virtual Machines vagy-példányok egy virtuálisgép-méretezési csoportokban.
 
-A nyilvános terheléselosztó kimenő kapcsolatokat biztosíthat a virtuális hálózaton belüli virtuális gépekhez.A **[public load balancer](./concepts-limitations.md#publicloadbalancer)** can provide outbound connections for virtual machines (VM) inside your virtual network. Ezek a kapcsolatok úgy valósulnak meg, hogy a privát IP-címeket nyilvános IP-címekre fordítják. Nyilvános terheléselosztók a virtuális gépek internetes forgalmának terheléselosztási szolgálnak.
+A **[nyilvános terheléselosztó](./concepts-limitations.md#publicloadbalancer)** a virtuális hálózatban lévő virtuális gépek (VM-EK) kimenő kapcsolatait is biztosítja. Ezek a kapcsolatok a magánhálózati IP-címek nyilvános IP-címekre való fordításával valósíthatók meg. A nyilvános terheléselosztó a virtuális gépek internetes forgalmának elosztására szolgál.
 
-Egy **[belső (vagy privát) terheléselosztó](./concepts-limitations.md#internalloadbalancer)** t használ, ahol a privát IP-k csak az előtérben van szükség. A belső terheléselosztók a virtuális hálózaton belüli terheléselosztási forgalomhoz használatosak. A terheléselosztó előtér érhető el egy helyszíni hálózatról egy hibrid forgatókönyvben érhető el.
+A **[belső (vagy magánhálózati)](./concepts-limitations.md#internalloadbalancer)** terheléselosztó akkor használatos, ha a magánhálózati IP-címekre csak a frontenden van szükség. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál. A terheléselosztó felülete hibrid forgatókönyv esetén a helyszíni hálózatról is elérhető.
 
 <p align="center">
   <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
 </p>
 
-*Ábra: A többrétegű alkalmazások kiegyensúlyozása nyilvános és belső terheléselosztó használatával*
+*Ábra: többrétegű alkalmazások terheléselosztása nyilvános és belső Load Balancer használatával*
 
-Az egyes terheléselosztó-összetevőkről az [Azure Load Balancer összetevőiről és korlátairól](./concepts-limitations.md) talál további információt.
+További információ az egyes terheléselosztó-összetevőkről: [Azure Load Balancer összetevők és korlátozások](./concepts-limitations.md).
 
->[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha nagy teljesítményű, alacsony késleltetésű, Layer-7-es terheléselosztásra van szüksége, olvassa el [a Mi az Azure Application Gateway?](../application-gateway/overview.md) Ha globális DNS-terheléselosztást keres, olvassa el [a Mi a Forgalomkezelő?](../traffic-manager/traffic-manager-overview.md) A végpontok között forgatókönyvek hasznos lehet ezek a megoldások kombinálása.
->
-> Az Azure terheléselosztási beállítások összehasonlításáról [az Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)című témakörben olvashat.
+## <a name="why-use-azure-load-balancer"></a>Miért érdemes Azure Load Balancer?
+A standard Load Balancer segítségével méretezheti az alkalmazásokat, és létrehozhat olyan, magasan elérhető szolgáltatásokat. A Load Balancer mind a bejövő, mind a kimenő forgatókönyveket támogatja. A Load Balancer alacsony késést és nagy átviteli sebességet biztosít, és akár több millió folyamatra is méretezhető az összes TCP-és UDP-alkalmazás esetében.
 
-## <a name="why-use-azure-load-balancer"></a>Miért érdemes használni az Azure Load Balancer-t?
-A Standard Load Balancer segítségével méretezheti alkalmazásait, és magas rendelkezésre állású szolgáltatásokat hozhat létre. A terheléselosztó támogatja a bejövő és a kimenő forgatókönyveket is. A terheléselosztó alacsony késleltetést és nagy átviteli feszültséget biztosít, és akár több millió folyamatot is felskáláz minden TCP- és UDP-alkalmazáshoz.
+A standard Load Balancer használatával végrehajtható főbb forgatókönyvek a következők:
 
-A standard terheléselosztóval elvégezhető főbb forgatókönyvek a következők:
+- A **[belső](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** és a **[külső](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** forgalom terheléselosztása az Azure Virtual Machines szolgáltatásba.
 
-- Terheléselosztás **[belső](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** és **[külső](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** forgalmat az Azure virtuális gépekre.
+- Növelje a rendelkezésre állást az erőforrások zónán **[belüli](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** és **[közötti](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** elosztásával.
 
-- Növelje a rendelkezésre állást az erőforrások **[zónákon belüli](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** és **[zónák közötti](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** elosztásával.
+- Az Azure-beli virtuális gépek **[kimenő kapcsolatának](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** konfigurálása.
 
-- Konfigurálja **[a kimenő kapcsolatot](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** az Azure virtuális gépekhez.
+- Az **[állapot](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** -mintavétel segítségével figyelheti a terheléselosztási erőforrásokat.
 
-- Az **[állapotminta segítségével](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** figyelheti a terheléselosztásos erőforrásokat.
+- A **[port továbbításával](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** a virtuális gépek nyilvános IP-cím és port használatával férhetnek hozzá a virtuális hálózatokhoz.
 
-- Porttovábbítás **[alkalmazásával](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** nyilvános IP-cím és port segítségével érheti el a virtuális hálózatban lévő virtuális gépeket.
+- Engedélyezze az IPv6 **[terheléselosztásának](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** támogatását **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)**.
 
-- Az **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[terheléselosztástámogatásának](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** engedélyezése.
+- Standard Load Balancer többdimenziós metrikákat biztosít [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak.  A Resource Health is támogatott. További részletekért tekintse át **[standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md)** .
 
-- A Standard Load Balancer többdimenziós metrikákat biztosít az [Azure Monitoron](https://docs.microsoft.com/azure/azure-monitor/overview)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és bonthatók egy adott dimenzióra.  Aktuális és történelmi betekintést nyújtanak a szolgáltatás teljesítményébe és állapotába.  Az erőforrás-állapot is támogatott. További részletekért tekintse át a **[Standard Load Balancer Diagnostics című](load-balancer-standard-diagnostics.md)** adatokat.
+- Terheléselosztási szolgáltatásokat **[több porton, több IP-címen vagy mindkettőn](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)**.
 
-- Terheléselosztási szolgáltatások **[több porton, több IP-címen vagy mindkettőn.](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)**
+- **[Belső](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** és **[külső](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** terheléselosztó erőforrásainak áthelyezése az Azure-régiók között.
 
-- Belső **[internal](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** és **[külső](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** terheléselosztó-erőforrások áthelyezése az Azure-régiók között.
-
-- Terheléselosztás TCP és UDP flow minden porton egyszerre ha **[portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** használatával .
+- A TCP-és UDP-forgalom terheléselosztása minden porton egyidejűleg **[Ha portokat](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** használ.
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Alapértelmezés szerint biztonságos
 
-A standard terheléselosztó a nulla megbízhatóságú hálózati biztonsági modellre épül. A standard terheléselosztó alapértelmezés szerint biztonságos, és a virtuális hálózat része. A virtuális hálózat egy privát és elszigetelt hálózat.  Ez azt jelenti, hogy a standard terheléselosztók és a szabványos nyilvános IP-címek a bejövő folyamatok számára vannak bezárva, kivéve, ha a hálózati biztonsági csoportok megnyitják őket. Az NSG-k kifejezetten lehetővé teszik az engedélyezett forgalmat.  Ha nem rendelkezik NSG-vel a virtuálisgép-erőforrás alhálózatán vagy hálózati adapterén, a forgalom nem érheti el ezt az erőforrást. Ha többet szeretne tudni az NSG-kről és arról, hogyan alkalmazhatja őket a forgatókönyvhöz, olvassa el a Hálózati biztonsági csoportok ( Hálózati biztonsági csoportok ) [(Hálózati biztonsági csoportok) témakört.](../virtual-network/security-overview.md)
-Az alapszintű terheléselosztó alapértelmezés szerint nyitva áll az internet számára.
+A standard Load Balancer a megbízható hálózati biztonsági modellre épül. A standard Load Balancer alapértelmezés szerint biztonságos, és a virtuális hálózat része. A virtuális hálózat egy privát és elszigetelt hálózat.  Ez azt jelenti, hogy a standard szintű terheléselosztó és a szabványos nyilvános IP-címek a bejövő forgalomba vannak zárva, kivéve, ha a hálózati biztonsági csoportok meg vannak nyitva. A NSG az engedélyezett forgalom explicit módon történő engedélyezésére szolgálnak.  Ha nem rendelkezik NSG a virtuális gép erőforrásának alhálózatán vagy hálózati ADAPTERén, a forgalom nem jogosult az erőforrás elérésére. Ha többet szeretne megtudni a NSG és a forgatókönyvre való alkalmazásáról, tekintse meg a [hálózati biztonsági csoportok](../virtual-network/security-overview.md)című témakört.
+Az alapszintű Load Balancer alapértelmezés szerint nyitva van az interneten.
 
+## <a name="pricing-and-sla"></a>Díjszabás és SLA
 
-## <a name="pricing-and-sla"></a>Árképzés és SLA
-
-A standard terheléselosztó árképzési információiról a [Terheléselosztó díjszabása](https://azure.microsoft.com/pricing/details/load-balancer/)című témakörben talál.
+Standard Load Balancer díjszabási információkért lásd: [Load Balancer díjszabása](https://azure.microsoft.com/pricing/details/load-balancer/).
 Az Alapszintű Load Balancer használata ingyenes.
-Lásd: [SLA a terheléselosztó](https://aka.ms/lbsla). Az egyszerű terheléselosztó nem rendelkezik SLA-val.
+Lásd: [Load Balancer SLA](https://aka.ms/lbsla)-ja. Az alapszintű Load Balancer nem biztosít SLA-t.
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [Egyszerű terheléselosztó frissítése](upgrade-basic-standard.md) az alapszintű terheléselosztó standard terheléselosztóra való frissítéséhez.
+Lásd: [Alapszintű Load Balancer frissítése](upgrade-basic-standard.md) az alapszintű Load Balancer frissítéséhez standard Load Balancerre.
 
-Lásd: [Nyilvános standard terheléselosztó létrehozása](quickstart-load-balancer-standard-public-portal.md) a terheléselosztó használatának megkezdéséhez.
+A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 
-Az Azure Load Balancer korlátairól és összetevőiről az [Azure Load Balancer fogalmai és korlátai](./concepts-limitations.md) című témakörben talál további információt.
+A Azure Load Balancer korlátozásokkal és összetevőkkel kapcsolatos további információkért lásd: [Azure Load Balancer fogalmak és korlátozások](./concepts-limitations.md)
+
+Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: az [Azure terheléselosztási lehetőségeinek áttekintése](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
