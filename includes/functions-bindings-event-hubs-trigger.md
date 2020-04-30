@@ -4,41 +4,41 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e055f2d7b98df9357ecdee5e044305e35935682e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589713"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81791710"
 ---
-A függvényesemény-eseményindító segítségével válaszolhat egy eseményközpont eseményfolyamba küldött eseményre. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie az alapul szolgáló eseményközponthoz. A függvény aktiválásakor a függvénynek átadott üzenet karakterláncként lesz beírva.
+Az Event hub Event streambe küldött eseményre való reagáláshoz használja a függvény eseményindítóját. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie a mögöttes Event hub-hoz. A függvény elindításakor a függvénynek átadott üzenet karakterláncként van beírva.
 
 ## <a name="scaling"></a>Méretezés
 
-Az esemény aktivált függvényminden példányát egyetlen [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példány támogatja. Az eseményindító (az Event Hubs-on hajtva) biztosítja, hogy csak egy [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példány kap egy bérletet egy adott partíción.
+Egy esemény által aktivált függvény minden példányát egyetlen [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -példány támogatja. A trigger (Event Hubs) biztosítja, hogy csak egy [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -példány kapjon bérletet egy adott partíción.
 
-Vegyünk például egy eseményközpontot a következőképpen:
+Vegyünk például egy Event hub-t az alábbiak szerint:
 
 * 10 partíció
-* 1000 esemény egyenletesen elosztva az összes partícióközött, 100 üzenettel minden partícióban
+* 1 000 az összes partíción egyenletesen elosztott események, 100-es üzenetekkel az egyes partíciók között
 
-Amikor a függvény először engedélyezve van, a függvénynek csak egy példánya van. Hívjuk az első függvénypéldányt. `Function_0` A `Function_0` függvény rendelkezik az [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) egyetlen példányával, amely mind a tíz partíción rendelkezik bérlettel. Ez a példány a 0-9 partíciók eseményeit olvassa. Ettől a ponttól kezdve, az alábbiak egyike történik:
+A függvény első engedélyezésekor a függvénynek csak egy példánya van. Hívjuk meg az első függvény példányát `Function_0`. A `Function_0` függvény egyetlen [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -példánnyal rendelkezik, amely minden tíz partíción rendelkezik bérlettel. Ez a példány az 0-9-es partíciókhoz származó eseményeket olvas. Ettől a ponttól kezdve a következők egyike történik:
 
-* **Nincs szükség új függvénypéldányokra:** `Function_0` képes feldolgozni az összes 1000 eseményt, mielőtt a Függvények méretezési logika érvénybe lépne. Ebben az esetben az összes 1000 `Function_0`üzenetet a .
+* Az **új függvények példányai nem szükségesek**: `Function_0` az összes 1 000 eseményt feldolgozhatja, mielőtt a függvények skálázási logikája érvénybe lép. Ebben az esetben a rendszer az összes 1 000 üzenetet dolgozza `Function_0`fel.
 
-* **Egy további függvénypéldány kerül hozzáadásra:** Ha `Function_0` a Függvények méretezési logika azt állapítja`Function_1`meg, hogy több üzenetet tartalmaz, mint amennyit fel tud dolgozni, egy új függvényalkalmazás-példány ( ) jön létre. Ez az új függvény az [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)társított példányával is rendelkezik. Ahogy az alapul szolgáló Eseményközpontok észlelik, hogy egy új állomáspéldány megpróbálja olvasni az üzeneteket, a terhelés kiegyensúlyozza a partíciókat a gazdapéldányok között. Például a 0-4 partíciók hozzárendelhetők, `Function_0` az 5-9-es partíciók pedig a hoz rendelhetők `Function_1`hozzá.
+* **További függvény-példány hozzáadása**: Ha a függvények skálázási logikája meghatározza, `Function_0` hogy a feldolgozható több üzenettel rendelkezik, akkor létrejön egy új`Function_1`Function App-példány (). Ez az új függvény a [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)társított példányával is rendelkezik. Mivel az alapul szolgáló Event Hubs azt vizsgálja, hogy egy új gazdagép-példány próbálkozik az olvasási üzenetekkel, a terheléselosztás a gazdagép példányai között osztja el a partíciókat. Előfordulhat például, hogy a 0-4-es partíciók hozzá vannak `Function_0` rendelve `Function_1`a 5-9-es partícióhoz.
 
-* **N további függvénypéldányok kerülnek hozzáadásra:** Ha a `Function_0` `Function_1` Függvények méretezési logika azt `Functions_N` állapítja meg, hogy mindkettő, és több üzenetet tartalmaznak, mint amennyit fel tudnak dolgozni, új függvényalkalmazás-példányok jönnek létre.  Az alkalmazások addig a `N` pontig jönnek létre, ahol nagyobb, mint az eseményközpont-partíciók száma. A mi példánkban az Event Hubs ismét terhelési kiegyensúlyozza a partíciókat, ebben az esetben az esetekben `Function_0`... `Functions_9`.
+* **N további függvény-példányok lettek hozzáadva**: Ha a függvények skálázási `Function_0` logikája meghatározza, hogy a és `Function_1` a rendszer több `Functions_N` üzenetet is feldolgozzon, akkor az új Function app-példányok jönnek létre.  Az alkalmazások arra a pontra jönnek `N` létre, ahol a nagyobb, mint az Event hub-partíciók száma. A példánkban Event Hubs újra a partíciók elosztása, ebben az esetben a példányok `Function_0`között... `Functions_9`.
 
-Méretezés esetén a `N` példányok száma nagyobb, mint az eseményközpont-partíciók száma. Ez a minta annak biztosítására szolgál, hogy az [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példányok elérhetők legyenek a partíciók zárolásainak megszerzéséhez, amint azok más példányokból válnak elérhetővé. Csak a függvénypéldány végrehajtásakor használt erőforrásokért kell fizetnie. Más szóval, nem kell fizetnie a túlzott kiépítésért.
+Skálázás esetén a példányok `N` száma nagyobb, mint az Event hub-partíciók száma. Ez a minta annak biztosítására szolgál, hogy a [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példányok elérhetők legyenek a partíciók zárolásának beszerzéséhez, mivel azok más példányokból elérhetővé válnak Csak a függvény példányának végrehajtásakor használt erőforrásokért kell fizetnie. Más szóval nem számítunk fel díjat a kiépítés során.
 
-Ha az összes függvény-végrehajtás befejeződik (hibákkal vagy anélkül), ellenőrzőpontok hozzáadódnak a társított tárfiókhoz. Ha az ellenőrzés sikeres, az összes 1000 üzenet soha nem lesz beolvasva.
+Ha az összes függvény végrehajtása befejeződött (hibákkal vagy anélkül), a rendszer ellenőrzőpontokat ad hozzá a társított Storage-fiókhoz. Ha a pipa sikeres, a rendszer az összes 1 000 üzenetet soha nem kéri le.
 
 <a id="example" name="example"></a>
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A következő példa egy [C# függvényt](../articles/azure-functions/functions-dotnet-class-library.md) mutat be, amely naplózza az eseményközpont-eseményindító üzenettörzsét.
+Az alábbi példa egy [C#-függvényt](../articles/azure-functions/functions-dotnet-class-library.md) mutat be, amely az Event hub eseményindítójának üzenet törzsét naplózza.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -48,7 +48,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Az esemény [metaadataihoz](#event-metadata) való hozzáféréshez a függvénykódban, kössön `Microsoft.Azure.EventHubs`egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektumhoz (használati utasítás szükséges a rendszerhez). Ugyanezeket a tulajdonságokat kötési kifejezések használatával is elérheti a metódus aláírásában.  A következő példa bemutatja, hogy miként szerezheti be ugyanazokat az adatokat:
+Ahhoz, hogy hozzáférést kapjon az [esemény metaadataihoz](#event-metadata) a Function Code- [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) ban, kötést kell kötnie egy `Microsoft.Azure.EventHubs`EventData-objektumhoz (a használatához a using utasítás szükséges). Ugyanezeket a tulajdonságokat a metódus aláírása kötési kifejezések használatával is elérheti.  Az alábbi példa mindkét módszert mutatja be, hogy ugyanazokat az eszközöket kapja:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -71,10 +71,10 @@ public static void Run(
 }
 ```
 
-Események kötegben való fogadásához készítsen `string` vagy `EventData` tömböt.  
+Ha egy kötegben szeretne eseményeket fogadni, `string` végezze el vagy `EventData` egy tömböt.  
 
 > [!NOTE]
-> Ha kötegben érkezik, nem köthető a fenti példában szereplőhez hasonló metódusparaméterekhez, `DateTime enqueuedTimeUtc` és ezeket minden objektumból meg kell kapnia, `EventData` és ezeket meg kell kapnia  
+> Egy kötegben való fogadáskor nem lehet olyan metódusokhoz kötni, mint például a fenti `DateTime enqueuedTimeUtc` példában, és meg kell kapnia ezeket az egyes `EventData` objektumokból.  
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -88,13 +88,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A következő példa egy eseményközpont-eseményindító tanusítását mutatja be egy *function.json* fájlban, és egy [C# parancsfájlfüggvényt,](../articles/azure-functions/functions-reference-csharp.md) amely a kötést használja. A függvény naplózza az eseményközpont-eseményindító üzenettörzsét.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](../articles/azure-functions/functions-reference-csharp.md) , amely a kötést használja. A függvény naplózza az Event hub eseményindítójának üzenet törzsét.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban.
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
-### <a name="version-2x-and-higher"></a>2.x-es vagy újabb verzió
+### <a name="version-2x-and-higher"></a>2. x vagy újabb verzió
 
 ```json
 {
@@ -106,7 +106,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-### <a name="version-1x"></a>1.x verzió
+### <a name="version-1x"></a>1. x verzió
 
 ```json
 {
@@ -118,7 +118,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
 using System;
@@ -129,7 +129,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Az esemény [metaadataihoz](#event-metadata) való hozzáféréshez a függvénykódban, kössön `Microsoft.Azure.EventHubs`egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektumhoz (használati utasítás szükséges a rendszerhez). Ugyanezeket a tulajdonságokat kötési kifejezések használatával is elérheti a metódus aláírásában.  A következő példa bemutatja, hogy miként szerezheti be ugyanazokat az adatokat:
+Ahhoz, hogy hozzáférést kapjon az [esemény metaadataihoz](#event-metadata) a Function Code- [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) ban, kötést kell kötnie egy `Microsoft.Azure.EventHubs`EventData-objektumhoz (a használatához a using utasítás szükséges). Ugyanezeket a tulajdonságokat a metódus aláírása kötési kifejezések használatával is elérheti.  Az alábbi példa mindkét módszert mutatja be, hogy ugyanazokat az eszközöket kapja:
 
 ```cs
 #r "Microsoft.Azure.EventHubs"
@@ -157,7 +157,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-Események kötegben való fogadásához készítse el `string` vagy `EventData` tömbje legyen:
+Ha egy kötegben szeretne eseményeket fogadni, `string` hozzon vagy `EventData` egy tömböt:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő példa egy eseményközpont-eseményindító-kötést mutat be egy *function.json* fájlban, és egy [JavaScript-függvényt,](../articles/azure-functions/functions-reference-node.md) amely a kötést használja. A függvény beolvassa [az esemény metaadatait,](#event-metadata) és naplózza az üzenetet.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](../articles/azure-functions/functions-reference-node.md) , amely a kötést használja. A függvény beolvassa az [esemény metaadatait](#event-metadata) , és naplózza az üzenetet.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban.
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
-### <a name="version-2x-and-higher"></a>2.x-es vagy újabb verzió
+### <a name="version-2x-and-higher"></a>2. x vagy újabb verzió
 
 ```json
 {
@@ -187,7 +187,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-### <a name="version-1x"></a>1.x verzió
+### <a name="version-1x"></a>1. x verzió
 
 ```json
 {
@@ -199,7 +199,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -212,9 +212,9 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-Események fogadásához egy kötegben, állítsa `cardinality` `many` be a *function.json* fájlban, ahogy az alábbi példákban látható.
+Ha egy kötegben szeretne eseményeket fogadni, `cardinality` állítsa `many` a *függvény. JSON* fájlba az alábbi példákban látható módon.
 
-### <a name="version-2x-and-higher"></a>2.x-es vagy újabb verzió
+### <a name="version-2x-and-higher"></a>2. x vagy újabb verzió
 
 ```json
 {
@@ -227,7 +227,7 @@ Események fogadásához egy kötegben, állítsa `cardinality` `many` be a *fun
 }
 ```
 
-### <a name="version-1x"></a>1.x verzió
+### <a name="version-1x"></a>1. x verzió
 
 ```json
 {
@@ -240,7 +240,7 @@ Események fogadásához egy kötegben, állítsa `cardinality` `many` be a *fun
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -259,9 +259,9 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A következő példa egy eseményközpont-eseményindító tincsét mutatja be egy *function.json* fájlban, és egy [Python-függvényt,](../articles/azure-functions/functions-reference-python.md) amely a kötést használja. A függvény beolvassa [az esemény metaadatait,](#event-metadata) és naplózza az üzenetet.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](../articles/azure-functions/functions-reference-python.md) , amely a kötést használja. A függvény beolvassa az [esemény metaadatait](#event-metadata) , és naplózza az üzenetet.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban.
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
 ```json
 {
@@ -273,7 +273,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
 import logging
@@ -289,7 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-A következő példa egy Eseményközpont-eseményindító-kötést mutat be, amely naplózza az Event Hub eseményindító üzenettörzsét.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be, amely az Event hub-eseményindító üzenet törzsét naplózza.
 
 ```java
 @FunctionName("ehprocessor")
@@ -303,7 +303,7 @@ public void eventHubProcessor(
  }
 ```
 
- A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/functions/runtime)használja a jegyzetet azon `EventHubTrigger` paramétereken, amelyek értéke az Event Hubból származna. Az ezekkel a jegyzetekkel rendelkező paraméterek hatására a függvény akkor fog futni, amikor egy esemény megérkezik.  Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
+ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `EventHubTrigger` a jegyzeteket azon paramétereknél, amelyek értéke az Event hubből származik. Az ezekkel a megjegyzésekkel rendelkező paraméterek a függvény futását okozzák, amikor egy esemény érkezik.  Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>`.
 
  ---
 
@@ -311,9 +311,9 @@ public void eventHubProcessor(
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A [C# osztálytárakban](../articles/azure-functions/functions-dotnet-class-library.md)használja az [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) attribútumot.
+A [C# osztályok könyvtáraiban](../articles/azure-functions/functions-dotnet-class-library.md)használja a [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) attribútumot.
 
-Az attribútum konstruktora felveszi az eseményközpont nevét, a fogyasztói csoport nevét és a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás nevét. Ezekről a beállításokról további információt az [eseményindító konfigurációs szakaszában talál.](#configuration) Íme egy `EventHubTriggerAttribute` attribútum példa:
+Az attribútum konstruktora az Event hub nevét, a fogyasztói csoport nevét és a kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás nevét tartalmazza. További információ ezekről a beállításokról: [trigger konfiguráció szakasz](#configuration). Példa egy `EventHubTriggerAttribute` attribútumra:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -323,61 +323,62 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Egy teljes példa, [lásd: Trigger - C# példa.](#example)
+A teljes példa: [trigger-C# példa](#example).
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az attribútumokat a C# script nem támogatja.
+A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az attribútumokat a Python nem támogatja.
+A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java-függvények futásidejű függvénytár,](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja az [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) jegyzetelés a paramétereket, amelyek értéke az Event Hub származna. Az ezekkel a jegyzetekkel rendelkező paraméterek hatására a függvény akkor fog futni, amikor egy esemény megérkezik. Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
+A Java [functions futtatókörnyezet könyvtárában](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja a [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) -jegyzetet olyan paramétereknél, amelyek értéke az Event hub-ból származik. Az ezekkel a megjegyzésekkel rendelkező paraméterek a függvény futását okozzák, amikor egy esemény érkezik. Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>`.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function.json* fájlban és az `EventHubTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `EventHubTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus** | n/a | A beállításnak `eventHubTrigger`a beállítására kell beállítható. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az eseményindítót az Azure Portalon.|
-|**direction** | n/a | A beállításnak `in`a beállítására kell beállítható. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az eseményindítót az Azure Portalon. |
-|**név** | n/a | Annak a változónak a neve, amely az eseményelemet jelöli a függvénykódban. |
-|**Elérési út** |**EventHubName** | Csak 1.x függvényt. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncban, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**eventHubName** |**EventHubName** | Funkciók 2.x és magasabb. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncban, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Az alkalmazásbeállításokon keresztül (%eventHubName% ) hivatkozhat |
-|**consumerGroup (fogyasztói csoport)** |**Fogyasztói csoport** | Egy választható tulajdonság, amely beállítja a központi eseményekre való előfizetéshez használt [fogyasztói csoportot.](../articles/event-hubs/event-hubs-features.md#event-consumers) Ha nincs megadva, a `$Default` fogyasztói csoportot használja a használat. |
-|**Számossága** | n/a | Javascript esetén. `many` A kötegelés engedélyezéséhez állítsa be.  Ha nincs megadva `one`vagy be van állítva, a függvény egyetlen üzenetet küld a függvénynek. |
-|**Kapcsolat** |**Kapcsolat** | Az eseményközpont névteréhez való kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot úgy, hogy a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **Kapcsolatinformáció** gombjára kattint, nem magára az eseményközpontra. Ennek a kapcsolati karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az eseményindító aktiválásához.|
+|**típusa** | n/a | Értékre kell állítani `eventHubTrigger`. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | n/a | Értékre kell állítani `in`. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
+|**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Hivatkozhatók a (z)% eventHubName% alkalmazás beállításain keresztül |
+|**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a `$Default` rendszer a fogyasztói csoportot használja. |
+|**számosság** | n/a | A JavaScripthez. A kötegelt `many` feldolgozás engedélyezéséhez állítsa a következőre:.  Ha nincs megadva vagy a `one`értékre van állítva, a függvény egyetlen üzenetet ad át. |
+|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="event-metadata"></a>Esemény metaadatai
+## <a name="event-metadata"></a>Esemény metaadatainak
 
-Az Eseményközpontok eseményindító jatt mindkét [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)tartalmazza. A metaadat-tulajdonságok más kötésekben lévő kötési kifejezések részeként vagy a kódban lévő paraméterekként használhatók. A tulajdonságok az [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztályból származnak.
+A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. A metaadatok tulajdonságai más kötésekben vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztályból származnak.
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
-|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő utc-ben.|
-|`Offset`|`string`|Az adatok eltolása az Event Hub partícióstreamhez viszonyítva. Az eltolás az Eseményközpontok adatfolyamon belüli esemény jelölője vagy azonosítója. Az azonosító az Eseményközpontok adatfolyamának partícióján belül egyedi.|
-|`PartitionKey`|`string`|Az a partíció, amelyre az eseményadatokat el kell küldeni.|
-|`Properties`|`IDictionary<String,Object>`|Az eseményadatok felhasználói tulajdonságai.|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
+|`Offset`|`string`|Az adateltolás az Event hub-partíciós adatfolyamhoz viszonyítva. Az eltolás a Event Hubs streamen belüli esemény jelölője vagy azonosítója. Az azonosító egyedi az Event Hubs stream egy partícióján belül.|
+|`PartitionKey`|`string`|Az a partíció, amelybe az eseményt el kell juttatni.|
+|`Properties`|`IDictionary<String,Object>`|Az eseményhez tartozó adatértékek felhasználói tulajdonságai|
 |`SequenceNumber`|`Int64`|Az esemény logikai sorszáma.|
-|`SystemProperties`|`IDictionary<String,Object>`|A rendszer tulajdonságai, beleértve az eseményadatokat is.|
+|`SystemProperties`|`IDictionary<String,Object>`|A Rendszertulajdonságok, beleértve az eseményre vonatkozó adattípusokat is.|
 
-Tekintse meg a cikk korábbi, ezeket a tulajdonságokat használó [példákat.](#example)
+Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
 
-## <a name="hostjson-properties"></a>host.json tulajdonságok
+## <a name="hostjson-properties"></a>a Host. JSON tulajdonságai
+<a name="host-json"></a>
 
-A [host.json](../articles/azure-functions/functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek szabályozzák az Event Hubs eseményindítójának viselkedését.
+A [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek a Event Hubs trigger viselkedését vezérlik. A konfiguráció a Azure Functions verziójától függően eltérő.
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
