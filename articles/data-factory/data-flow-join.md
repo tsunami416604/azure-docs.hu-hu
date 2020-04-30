@@ -1,6 +1,6 @@
 ---
-title: Illesztés átalakítása az adatfolyam leképezésében
-description: Két adatforrásból származó adatok kombinálása az Azure Data Factory leképezési adatfolyamának illesztési transzformációjával
+title: Az átalakítás összekapcsolása a leképezési adatfolyamban
+description: Két adatforrásból származó adatok összevonása az Azure Data Factory-leképezési folyamat illesztési átalakításának használatával
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,78 +8,80 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606421"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233421"
 ---
-# <a name="join-transformation-in-mapping-data-flow"></a>Illesztés átalakítása az adatfolyam leképezésében
+# <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az illesztési transzformációsegítségével két forrásból vagy adatfolyamból származó adatokat egyesíthet egy leképezési adatfolyamban. A kimeneti adatfolyam tartalmazza a két forrás összes oszlopát, amelyek illesztési feltétel alapján egyeztetve. 
+Az illesztési transzformáció használatával két forrásból vagy streamből származó adatok egyesíthetők egy leképezési adatfolyamban. A kimeneti adatfolyam magában foglalja az összekapcsolási feltételtől függően mindkét forrás összes oszlopát. 
 
 ## <a name="join-types"></a>Illesztési típusok
 
-Az adatfolyamok leképezése jelenleg öt különböző illesztési típust támogat.
+Az adatforgalom leképezése jelenleg öt különböző illesztési típust támogat.
 
 ### <a name="inner-join"></a>Belső illesztés
 
-A belső illesztés csak olyan sorokat ad ki, amelyek mindkét táblában egyező értékekkel rendelkeznek.
+A belső illesztés csak a két táblában egyező értékeket tartalmazó sorokat jeleníti meg.
 
-### <a name="left-outer"></a>Bal külső
+### <a name="left-outer"></a>Bal oldali külső
 
-A bal oldali laza illesztés a bal oldali adatfolyam összes sorát adja vissza, és a jobb oldali adatfolyamból származó rekordokat egyezteti. Ha a bal oldali adatfolyam egy sorának nincs egyezése, a jobb oldali adatfolyam kimeneti oszlopai NULL értékre vannak állítva. A kimenet egy belső illesztés által visszaadott sorok, valamint a bal oldali adatfolyam nem egyező sorai lesznek.
+A bal oldali külső illesztés visszaadja az összes sort a bal oldali adatfolyamból, és a megfelelő streamből egyeztetett rekordokat. Ha a bal oldali adatfolyamból egy sor nem egyezik, a jobb oldali adatfolyamból származó kimeneti oszlopok NULL értékre vannak állítva. A kimenet a belső illesztés és a bal oldali adatfolyam nem egyező sorai által visszaadott sorokból áll.
 
 > [!NOTE]
-> Az adatfolyamok által használt Spark-motor időnként meghibásodik a csatlakozási feltételekben lehetséges descartes-i termékek miatt. Ebben az esetben átválthat egyéni keresztillesztésre, és manuálisan megadhatja az illesztési feltételt. Ez lassabb teljesítményt eredményezhet az adatfolyamokban, mivel előfordulhat, hogy a végrehajtási motornak ki kell számítania a kapcsolat mindkét oldaláról az összes sort, majd szűrnie kell a sorokat.
+> Az adatfolyamatok által használt Spark-motor esetenként sikertelen lesz, mert az illesztési feltételekben lehetséges Descartes-termékek vannak. Ha ez történik, átválthat egy egyéni keresztre, és manuálisan is megadhatja az illesztési feltételt. Ez lassabb teljesítményt eredményezhet az adatforgalomban, mivel a végrehajtó motornak ki kell számítania az összes sort a kapcsolat mindkét oldaláról, majd szűrnie kell a sorokat.
 
 ### <a name="right-outer"></a>Jobb oldali külső
 
-A jobb oldali külső illesztés a jobb oldali adatfolyam összes sorát adja vissza, és a bal oldali adatfolyamból származó egyező rekordokat. Ha a jobb oldali adatfolyam egyik sorának nincs egyezése, a bal oldali adatfolyam kimeneti oszlopai NULL értékre vannak állítva. A kimenet egy belső illesztés által visszaadott sorok lesznek, valamint a jobb oldali adatfolyam nem egyező sorai.
+A jobb oldali külső illesztés a jobb oldali adatfolyamból származó összes sort visszaadja a bal oldali adatfolyamból. Ha a jobb oldali adatfolyamból származó sor nem egyezik, a bal oldali adatfolyam kimeneti oszlopai NULL értékre vannak állítva. A kimenet a belső illesztés által visszaadott sorok, valamint a jobb oldali adatfolyamban található nem egyező sorokból áll.
 
 ### <a name="full-outer"></a>Teljes külső
 
-A teljes laza illesztés mindkét oldalról az összes oszlopot és sort kiadja, és null értékkel rendelkezik a nem egyező oszlopokhoz.
+A teljes külső illesztés kimenete a két oldalról származó összes oszlopot és sort a nem egyező oszlopok esetében NULL értékekkel adja vissza.
 
-### <a name="custom-cross-join"></a>Egyéni keresztillesztés
+### <a name="custom-cross-join"></a>Egyéni keresztbe illesztés
 
-A keresztillesztés feltétel alapján adja ki a két adatfolyam kereszttermékét. Ha nem egyenlőségi feltételt használ, adjon meg egy egyéni kifejezést keresztillesztési feltételként. A kimeneti adatfolyam az összes olyan sor lesz, amely megfelel az illesztési feltételnek.
+A Cross JOIN egy feltétel alapján a két stream termékeit adja vissza. Ha olyan feltételt használ, amely nem egyenlő, adja meg az egyéni kifejezést a kereszt illesztési feltételként. A kimeneti adatfolyam az illesztési feltételnek megfelelő összes sor lesz.
 
-Ezt az illesztési típust nem equi illesztésekhez és ```OR``` feltételekhez használhatja.
+Ezt az illesztési típust nem megfelelő illesztésekhez és ```OR``` feltételekhez is használhatja.
 
-Ha explicit módon szeretne egy teljes descartes-i terméket készíteni, használja a Származtatott oszlop transzformációt a két független adatfolyammindegyikében az illesztés előtt, hogy hozzon létre egy szintetikus kulcsot, amely megfelel. Hozzon létre például egy új oszlopot ```SyntheticKey``` a Származtatott oszlopban minden meghívott adatfolyamban, és állítsa be a programra. ```1``` Ezután ```a.SyntheticKey == b.SyntheticKey``` egyéni illesztési kifejezésként használja.
+Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használja a két független adatfolyamban található származtatott oszlop-átalakítást, mielőtt a JOIN (szintetikus) kulcsot létre szeretne hozni az egyeztetéshez. Hozzon létre például egy új oszlopot a származtatott oszlopban az egyes streamek ```SyntheticKey``` nevű adatfolyamban, és ```1```állítsa be egyenlő értékre. Ezután használja ```a.SyntheticKey == b.SyntheticKey``` az egyéni illesztési kifejezést.
 
 > [!NOTE]
-> Ügyeljen arra, hogy a bal és a jobb kapcsolat mindkét oldaláról legalább egy oszlopot vegyen fel egy egyéni keresztillesztésbe. Ha a keresztillesztéseket mindkét oldal oszlopai helyett statikus értékekkel hajtja végre, az a teljes adatkészlet teljes vizsgálatát eredményezi, ami az adatfolyam gyenge teljesítését eredményezi.
+> Ügyeljen arra, hogy a bal és a jobb oldali kapcsolat mindegyik oldaláról legalább egy oszlopot tartalmazzon egy egyéni kereszt-illesztésben. Az egymáshoz tartozó oszlopok helyett a statikus értékekkel való összekapcsolások végrehajtása a teljes adatkészlet teljes vizsgálatát eredményezi, így az adatfolyamatok nem tudnak megfelelően elvégezni.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-1. Válassza ki, hogy melyik adatfolyamhoz csatlakozik a **Jobb oldali adatfolyam** legördülő menüben.
-1. Válassza ki a **Csatlakozás típusát**
-1. Válassza ki, hogy mely kulcsoszlopokat szeretné megválasztani a feltételhez. Alapértelmezés szerint az adatfolyam az egyes adatfolyamok egy oszlopa közötti egyenlőséget keresi. Ha számított értéken keresztül szeretne összehasonlítani, mutasson az oszlop legördülő menüre, és válassza a **Számított oszlop lehetőséget.**
+1. Válassza ki, hogy melyik adatfolyamot kívánja csatlakoztatni a **megfelelő stream** legördülő menüben.
+1. Válassza ki az **illesztés típusát**
+1. Válassza ki, hogy mely kulcs oszlopokat szeretné összekapcsolni a csatlakozás feltételéhez. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
 
-![Csatlakozás átalakításhoz](media/data-flow/join.png "Csatlakozás")
+![Csatlakozás az átalakításhoz](media/data-flow/join.png "Csatlakozás")
 
 ## <a name="optimizing-join-performance"></a>Az illesztési teljesítmény optimalizálása
 
-Az egyesítési illesztéssel ellentétben az olyan eszközökben, mint az SSIS, az illesztés átalakítása nem kötelező egyesítési illesztési művelet. Az illesztési kulcsok nem igényelnek rendezést. Az illesztési művelet a Spark optimális illesztési művelete alapján történik, akár szórásos, akár térképoldali illesztés.
+Az egyesítési illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az illesztési átalakítás nem kötelező egyesítő illesztési művelet. Az illesztési kulcsok nem igénylik a rendezést. Az illesztési művelet a Spark-beli optimális illesztési műveleten alapul, vagy szórásos vagy térképes illesztés.
 
-![Csatlakozás az átalakítás optimalizálásához](media/data-flow/joinoptimize.png "Csatlakozás optimalizálásához")
+![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "Csatlakozás optimalizálása")
 
-Ha az egyik vagy mindkét adatfolyam illeszkedik a munkavégző csomópont memóriájába, az Optimalizálás lapon a **Broadcast** engedélyezésével tovább optimalizálhatja a teljesítményt. Az illesztési művelet adatait újraparticionálhatja is, hogy azok jobban illeszkedjenek a dolgozónkénti memóriába.
+Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás**engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített**lehetőséget.
 
-## <a name="self-join"></a>Öncsatlakozó
+Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve, ha az illesztések időtúllépési hibákkal futnak.
 
-Ha önmagával szeretne csatlakozni egy adatfolyamhoz, aliasként egy meglévő adatfolyamot egy kiválasztott átalakítással. Hozzon létre egy új ágat az átalakítás melletti plusz ikonra kattintva, és válassza az **Új ág**lehetőséget. Válasszon átalakítást adjon hozzá az eredeti adatfolyam aliasához. Illesztésátalakításahozzáadása, és válassza ki az eredeti adatfolyamot **bal oldali adatfolyamként,** a select átalakítást **pedig jobb oldali adatfolyamként.**
+## <a name="self-join"></a>Önálló csatlakozás
 
-![Öncsatlakozó](media/data-flow/selfjoin.png "Öncsatlakozó")
+Ha önmagához szeretne csatlakoztatni egy adatfolyamot, alias egy meglévő streamet egy kiválasztott átalakítással. Hozzon létre egy új ágat a transzformáció melletti plusz ikonra kattintva, majd válassza az **új ág**lehetőséget. Adjon hozzá egy Select transzformációt az eredeti stream aliasához. Vegyen fel egy JOIN transzformációt, és válassza ki az eredeti streamet a **bal oldali streamként** , a **jobb oldali**adatfolyamként pedig válassza az átalakítás lehetőséget.
 
-## <a name="testing-join-conditions"></a>A csatlakozási feltételek tesztelése
+![Önálló csatlakozás](media/data-flow/selfjoin.png "Önálló csatlakozás")
 
-Ha az illesztésátalakításokat adatteszteléssel teszteli hibakeresési módban, használjon ismert adatok egy kis készletét. Amikor sorokat mintavételez egy nagy adatkészletből, nem tudja előre, hogy mely sorok és kulcsok lesznek beolvasva tesztelésre. Az eredmény nem determinisztikus, ami azt jelenti, hogy a csatlakozási feltételek nem adnak vissza egyezést.
+## <a name="testing-join-conditions"></a>Csatlakozási feltételek tesztelése
+
+Az adatelőnézetsel rendelkező illesztési átalakítások hibakeresési módban történő tesztelésekor használjon egy ismert adat kis készletét. Nagy adatkészletből származó mintavételezési sorok esetében nem lehet előre jelezni, hogy mely sorok és kulcsok lesznek beolvasva a teszteléshez. Az eredmény nem determinisztikus, ami azt jelenti, hogy az illesztési feltételek nem adnak vissza egyezést.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -90,19 +92,19 @@ Ha az illesztésátalakításokat adatteszteléssel teszteli hibakeresési módb
     join(
         <conditionalExpression>,
         joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <joinTransformationName>
 ```
 
 ### <a name="inner-join-example"></a>Példa belső illesztésre
 
-Az alábbi példa egy `JoinMatchedData` illesztési `TripData` transzformáció, `TripFare`amely bal és jobb streamet vesz igénybe.  Az illesztési `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` feltétel az a `hack_license` `medallion`kifejezés, amely igaz értéket ad vissza, ha a , , `vendor_id`, és `pickup_datetime` az oszlopok minden adatfolyamban egyeznek. Az `joinType` `'inner'`is . Mi vagyunk, amely lehetővé teszi `broadcast` a `'left'`műsorszórás csak a bal oldali patak, így van értéke .
+Az alábbi példa egy nevű `JoinMatchedData` összekapcsolási átalakítás, amely a `TripData` Stream és a `TripFare`jobb oldali streamet veszi át.  Az illesztési feltétel az a `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` kifejezés, amely igaz értéket `hack_license`ad `medallion`vissza `vendor_id`, ha `pickup_datetime` a,, és oszlopok az egyes adatfolyam-egyezésekben szerepelnek. A `joinType` : `'inner'`. Csak a bal oldali adatfolyamban engedélyezzük a szórást `broadcast` , `'left'`így az értéke.
 
-A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Példa a csatlakozáshoz](media/data-flow/join-script1.png "Példa a csatlakozáshoz")
+![Példa csatlakoztatásra](media/data-flow/join-script1.png "Példa csatlakoztatásra")
 
-Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
+Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
 ```
 TripData, TripFare
@@ -116,15 +118,15 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="custom-cross-join-example"></a>Egyéni keresztillesztési példa
+### <a name="custom-cross-join-example"></a>Példa az egyéni keresztbe való csatlakozásra
 
-Az alábbi példa egy `JoiningColumns` illesztési `LeftStream` transzformáció, `RightStream`amely bal és jobb streamet vesz igénybe. Ez az átalakítás két adatfolyamot vesz fel, és összefűzi az összes olyan sort, ahol az oszlop `leftstreamcolumn` nagyobb, mint az oszlop `rightstreamcolumn`. Az `joinType` `cross`is . A műsorszórás nincs `broadcast` engedélyezve, értéke `'none'`van.
+Az alábbi példa egy nevű `JoiningColumns` összekapcsolási átalakítás, amely a `LeftStream` Stream és a `RightStream`jobb oldali streamet veszi át. Ez az átalakítás két adatfolyamot vesz igénybe, és összekapcsolja az összes olyan sort, ahol az oszlop `leftstreamcolumn` nagyobb az oszlopnál `rightstreamcolumn`. A `joinType` : `cross`. A szórás nincs engedélyezve `broadcast` érték `'none'`.
 
-A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Példa a csatlakozáshoz](media/data-flow/join-script2.png "Példa a csatlakozáshoz")
+![Példa csatlakoztatásra](media/data-flow/join-script2.png "Példa csatlakoztatásra")
 
-Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
+Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
 ```
 LeftStream, RightStream
@@ -137,4 +139,4 @@ LeftStream, RightStream
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatok egyesítése után hozzon létre egy [származtatott oszlopot,](data-flow-derived-column.md) és az adatokat a céladattárba [süllyesztse.](data-flow-sink.md)
+Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

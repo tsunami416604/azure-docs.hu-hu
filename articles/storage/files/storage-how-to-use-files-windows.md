@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268144"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231764"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -21,33 +21,33 @@ Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván alk
 
 Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen futó Windows-telepítéseken használhat. A következő táblázatban látható, hogy melyik operációsrendszer-verzió melyik környezetekben támogatja a fájlmegosztások elérését:
 
-| Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszínen csatlakoztatható |
+| Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszíni üzembe helyezhető |
 |------------------------|-------------|-----------------------|-----------------------|
 | Windows Server 2019 | SMB 3.0 | Igen | Igen |
 | Windows 10<sup>1</sup> | SMB 3.0 | Igen | Igen |
 | Windows Server féléves csatorna<sup>2</sup> | SMB 3.0 | Igen | Igen |
 | Windows Server 2016 | SMB 3.0 | Igen | Igen |
-| Windows 8.1 | SMB 3.0 | Igen | Igen |
+| Windows 8.1 | SMB 3.0 | Igen | Igen |
 | Windows Server 2012 R2 | SMB 3.0 | Igen | Igen |
 | Windows Server 2012 | SMB 3.0 | Igen | Igen |
-| Windows 7<sup>3 rendszerben</sup> | SMB 2.1 | Igen | Nem |
+| Windows 7<sup>3</sup> | SMB 2.1 | Igen | Nem |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Igen | Nem |
 
-<sup>1 1</sup> Windows 10, 1507-es, 1607-es, 1709-es, 1803-as, 1809-es, 1903-as és 1909-es verziók.  
-<sup>2.</sup> Windows Server, 1809-es, 1903-as és 1909-es verziók.  
-<sup>3. 20 0</sup> A Windows 7 és a Windows Server 2008 R2 rendszer rendszeres microsoftos támogatása véget ért. A biztonsági frissítésekhez csak az ED [(ADDITIONAL Security Update) programon](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)keresztül lehet további támogatást vásárolni. Javasoljuk, hogy migráljon ezekről az operációs rendszerekről.
+<sup>1</sup> Windows 10, 1507, 1607, 1709, 1803, 1809, 1903 és 1909.  
+<sup>2</sup> Windows Server, 1809, 1903 és 1909 verzió.  
+<sup>3</sup> A Microsoft a Windows 7 és a Windows Server 2008 R2 rendszerhez készült rendszeres támogatás befejeződött. A biztonsági frissítések további támogatását csak a [bővített biztonsági frissítés (EUME) programon](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)keresztül lehet megvásárolni. Erősen ajánlott áttelepíteni ezeket az operációs rendszereket.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
 
 ## <a name="prerequisites"></a>Előfeltételek 
-* **Tárfiók neve:** Egy Azure-fájlmegosztás csatlakoztatása, szüksége lesz a tárfiók nevére.
+* **Storage-fiók neve**: egy Azure-fájlmegosztás csatlakoztatásához szüksége lesz a Storage-fiók nevére.
 
-* **Tárfiók kulcs:** Egy Azure-fájlmegosztás csatlakoztatása, szüksége lesz az elsődleges (vagy másodlagos) tárolási kulcs. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
+* **Storage-fiók kulcsa**: az Azure-fájlmegosztás csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárolási kulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. A [445-ös blokkolt port különböző megoldási módjairól itt olvashat.](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)
+* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. Az [445-es blokkolt port megkerülő megoldásának különböző módjairól itt](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)olvashat.
 
-    A következő PowerShell-kód feltételezi, hogy telepítve van az Azure PowerShell-modul, további információ az [Azure PowerShell-modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) című témakörben található. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
+    A következő PowerShell-kód feltételezi, hogy telepítve van a Azure PowerShell modul, további információért lásd: [Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) . Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 ## <a name="using-an-azure-file-share-with-windows"></a>Az Azure-fájlmegosztások használata Windowson
 Az Azure-fájlmegosztások Windowson való használatához csatlakoztatnia kell azokat, azaz hozzájuk kell rendelnie egy meghajtó betűjelét vagy egy csatlakoztatási pont elérési útját, vagy pedig az [UNC-útvonalukon](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) keresztül érheti el azokat. 
 
-Ellentétben más, például a Windows Serveren, Linux Samba Serveren vagy NAS-eszközön szolgáltatott SMB-megosztásokkal, az Azure-fájlmegosztások jelenleg nem támogatják a Kerberos-hitelesítést az Active Directory (AD) vagy Azure Active Directory (AAD) identitás használatával, a funkció megvalósítása ugyanakkor [folyamatban van](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Ehelyett az Azure-fájlmegosztás annak a tárfióknak a tárfiókkulcsával érhető el, amelyik tartalmazza az Azure-fájlmegosztást. A tárfiók kulcsa egy tárfiók rendszergazdai kulcsa, beleértve a hozzáféréssel rendelkező fájlmegosztáson belüli összes fájlra és mappára, valamint az összes fájlmegosztásra és egyéb tárolási erőforrásra (blobok, várólisták, táblák stb.) vonatkozó rendszergazdai engedélyeket. a tárfiókon belül. Ha ez nem elegendő a számítási feladatokhoz, az [Azure File Sync](storage-sync-files-planning.md) megoldhatja a Kerberos-hitelesítés és az ACL-támogatás hiányát, amíg az AAD-alapú Kerberos-hitelesítés és az ACL-támogatás nyilvánosan elérhetővé nem válik.
+Ellentétben más, például a Windows Serveren, Linux Samba Serveren vagy NAS-eszközön szolgáltatott SMB-megosztásokkal, az Azure-fájlmegosztások jelenleg nem támogatják a Kerberos-hitelesítést az Active Directory (AD) vagy Azure Active Directory (AAD) identitás használatával, a funkció megvalósítása ugyanakkor [folyamatban van](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Ehelyett az Azure-fájlmegosztás annak a tárfióknak a tárfiókkulcsával érhető el, amelyik tartalmazza az Azure-fájlmegosztást. A Storage-fiók kulcsa a Storage-fiókhoz tartozó rendszergazdai kulcs, beleértve a megosztott fájlmegosztás összes fájljának és mappájának rendszergazdai engedélyeit, valamint a Storage-fiókban található összes fájlmegosztást és egyéb tárolási erőforrást (Blobok, várólisták, táblák stb.). Ha ez nem elegendő a számítási feladatokhoz, az [Azure File Sync](storage-sync-files-planning.md) megoldhatja a Kerberos-hitelesítés és az ACL-támogatás hiányát, amíg az AAD-alapú Kerberos-hitelesítés és az ACL-támogatás nyilvánosan elérhetővé nem válik.
 
 Az SMB-fájlmegosztást váró üzletági (LOB) alkalmazások Azure-ba való áthelyezése esetén gyakori megoldás az Azure-fájlmegosztások használata a dedikált Windows-fájlkiszolgálók Azure-beli virtuális gépeken történő futtatása helyett. Az üzletági alkalmazások egy Azure-fájlmegosztás használatára való sikeres migrálása érdekében fontos figyelembe venni, hogy számos üzletági alkalmazás, egy korlátozott rendszerengedélyekkel rendelkező dedikált szolgáltatásfiók környezetében fut a virtuális gép rendszergazdai fiókja helyett. Ezért győződjön meg róla, hogy az Azure-fájlmegosztáshoz szükséges hitelesítő adatokat a szolgáltatásfiók helyett a rendszergazdai fiókon keresztül csatlakoztatja/menti.
 
@@ -126,7 +126,7 @@ Most már további hitelesítő adatok megadása nélkül is tudnia kell csatlak
 #### <a name="advanced-cmdkey-scenarios"></a>Speciális cmdkey-forgatókönyvek
 Két további esetet kell figyelembe venni a cmdkey segédprogrammal kapcsolatban: a hitelesítő adatok tárolása egy másik felhasználó számára a gépen, például egy szolgáltatásfiók esetében, és a hitelesítő adatok tárolása távoli gépen PowerShell távoli eljáráshívással.
 
-A hitelesítő adatok tárolása egy másik felhasználó számára a gépen nagyon egyszerű: amikor be van jelentkezve a fiókjába, egyszerűen hajtsa végre a következő PowerShell-parancsot:
+Egy másik felhasználó hitelesítő adatainak tárolása a gépen egyszerű: Ha bejelentkezett a fiókjába, egyszerűen hajtsa végre a következő PowerShell-parancsot:
 
 ```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
@@ -139,7 +139,7 @@ Ekkor megnyílik egy új PowerShell-ablak a szolgáltatásfiók (vagy felhaszná
 A hitelesítő adatok tárolása egy távoli gépen a PowerShell távoli eljáráshívás használatával azonban nem lehetséges, mivel a cmdkey nem engedélyezi a hozzáférést a hitelesítőadat-tárolóhoz még hozzáadás esetére sem, amikor a felhasználó PowerShell távoli eljáráshíváson keresztül van bejelentkezve. Javasoljuk a [Távoli asztallal](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows) történő bejelentkezést a gépre.
 
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Az Azure-fájlmegosztás csatlakoztatása a PowerShell-lel
-Futtassa a következő parancsokat egy normál (azaz nem emelt szintű) PowerShell-munkamenetből az Azure-fájlmegosztás csatlakoztatásához. Ne felejtse el kicserélni a `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` és `<desired-drive-letter>` elemeket a vonatkozó információval.
+Futtassa az alábbi parancsokat egy normál (nem emelt szintű) PowerShell-munkamenetből az Azure-fájlmegosztás csatlakoztatásához. Ne felejtse el kicserélni a `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` és `<desired-drive-letter>` elemeket a vonatkozó információval.
 
 ```powershell
 $resourceGroupName = "<your-resource-group-name>"
@@ -182,30 +182,26 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Nyissa meg a Fájlkezelőt. Ezt a Start menüből vagy a Win+E billentyűkombináció lenyomásával teheti meg.
 
-2. Keresse meg az **Ez a gép** elemet az ablak bal oldalán. Ez módosítja a szalagon elérhető menüket. A Számítógép menüben válassza a **Hálózati meghajtó csatlakoztatása** elemet.
+1. Keresse meg az **Ez a gép** elemet az ablak bal oldalán. Ez módosítja a szalagon elérhető menüket. A Számítógép menüben válassza a **Hálózati meghajtó csatlakoztatása** elemet.
     
     ![A Hálózati meghajtó csatlakoztatása legördülő menü képernyőképe](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. Másolja az UNC elérési útját az Azure Portal **Connect** ablaktáblájából. 
-
-    ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
-
-4. Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat. 
+1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, `<storageAccountName>.file.core.windows.net/<fileShareName>`az UNC elérési út formátuma. Például: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![A Hálózati meghajtó csatlakoztatása párbeszédpanel képernyőképe](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. Felhasználónévként használja a tárfiók `AZURE\` előtaggal kiegészített nevét, jelszóként pedig egy tárfiókkulcsot.
+1. Felhasználónévként használja a tárfiók `AZURE\` előtaggal kiegészített nevét, jelszóként pedig egy tárfiókkulcsot.
     
     ![A hálózati hitelesítő adatok párbeszédpanelének képernyőképe](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
-6. Használja az Azure-fájlmegosztást igény szerint.
+1. Használja az Azure-fájlmegosztást igény szerint.
     
     ![Az Azure-fájlmegosztás most már csatlakoztatva van](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Amikor készen áll az Azure-fájlmegosztás leválasztására, kattintson a jobb gombbal a megosztás bejegyzésére a Fájlkezelő **Hálózati helyek** területén, és válassza a **Leválasztás** parancsot.
+1. Amikor készen áll az Azure-fájlmegosztás leválasztására, kattintson a jobb gombbal a megosztás bejegyzésére a Fájlkezelő **Hálózati helyek** területén, és válassza a **Leválasztás** parancsot.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Megosztási pillanatképek elérése a Windowsban
-A valamely szkript vagy szolgáltatás, például az Azure Backup használatával manuálisan vagy automatikusan létrehozott megosztási pillanatképek segítségével megtekintheti a megosztások, a könyvtárak, illetve a fájlmegosztásokban vagy a Windows rendszeren lévő adott fájlok korábbi verzióit. Az [Azure Portalon](storage-how-to-use-files-portal.md), az [Azure PowerShellben](storage-how-to-use-files-powershell.md)és az [Azure CLI-ben](storage-how-to-use-files-cli.md)is készíthet megosztási pillanatképet.
+A valamely szkript vagy szolgáltatás, például az Azure Backup használatával manuálisan vagy automatikusan létrehozott megosztási pillanatképek segítségével megtekintheti a megosztások, a könyvtárak, illetve a fájlmegosztásokban vagy a Windows rendszeren lévő adott fájlok korábbi verzióit. A [Azure Portal](storage-how-to-use-files-portal.md), [Azure PowerShell](storage-how-to-use-files-powershell.md)és az [Azure parancssori](storage-how-to-use-files-cli.md)felületről is készíthet megosztási pillanatképet.
 
 #### <a name="list-previous-versions"></a>Előző verziók listázása
 Tallózással keresse meg a visszaállítani kívánt elemet vagy szülőelemet. Duplán rákattintva lépjen a kívánt könyvtárra. Kattintson a jobb gombbal, majd válassza a menü **Tulajdonságok** elemét.
@@ -222,6 +218,7 @@ A **Megnyitás** elemre kattintva nyithatja meg az egyes pillanatképeket.
 
 #### <a name="restore-from-a-previous-version"></a>Visszaállítás korábbi verzióról
 A **Visszaállítás** elemre kattintva visszaállíthatja a teljes könyvtár tartalmát az eredeti helyre a megosztási pillanatkép készítésének időpontjában érvényes állapotra.
+
  ![Visszaállítás gomb a figyelmeztető üzenetben](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>A Windows/Windows Server védelme
@@ -237,13 +234,13 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 | Windows Server 2016                       | Engedélyezve              | Eltávolítás Windows-funkcióval |
 | Windows 10, 1507-es, 1607-es és 1703-as verziók | Engedélyezve              | Eltávolítás Windows-funkcióval |
 | Windows Server 2012 R2                    | Engedélyezve              | Eltávolítás Windows-funkcióval | 
-| Windows 8.1                               | Engedélyezve              | Eltávolítás Windows-funkcióval | 
+| Windows 8.1                               | Engedélyezve              | Eltávolítás Windows-funkcióval | 
 | Windows Server 2012                       | Engedélyezve              | Letiltás a beállításjegyzékkel       | 
 | Windows Server 2008 R2                    | Engedélyezve              | Letiltás a beállításjegyzékkel       |
 | Windows 7                                 | Engedélyezve              | Letiltás a beállításjegyzékkel       | 
 
 ### <a name="auditing-smb-1-usage"></a>Az SMB 1 használatának naplózása
-> Windows Server 2019, Windows Server féléves csatornára (1709-es és 1803-as verziók), Windows Server 2016-ra, Windows 10-re (1507-es, 1607-es, 1703-as, 1709-es és 1803-as verziókra), Windows Server 2012 R2 és Windows 8.1 verziókra
+> A Windows Server 2019, a Windows Server féléves csatornára (1709 és 1803 verziók), a Windows Server 2016, a Windows 10 (Versions 1507, 1607, 1703, 1709 és 1803), a Windows Server 2012 R2 és a Windows 8,1 alkalmazásra vonatkozik
 
 Mielőtt eltávolítja az SMB 1-et a környezetből, naplózhatja az SMB 1 használatát, hogy nyomon tudja követni, károsodik-e bármelyik ügyfél a változtatás miatt. Ha kérelem merül fel az SMB 1-gyel rendelkező SMB-megosztásokkal kapcsolatban, a rendszer egy naplózási eseményt rögzít az eseménynaplóba az `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` útvonalon. 
 
@@ -257,7 +254,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Az SMB 1 eltávolítása a Windows Serverről
-> Windows Server 2019, Windows Server féléves csatornára (1709-es és 1803-as verzió), Windows Server 2016- és Windows Server 2012 R2 rendszerre vonatkozik
+> A Windows Server 2019, a Windows Server féléves csatornára (1709 és 1803 verziók), a Windows Server 2016, a Windows Server 2012 R2 verzióra vonatkozik.
 
 Az SMB 1 Windows Server-példányról történő eltávolításához hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 
@@ -303,5 +300,5 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 ## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-- [Gyik](../storage-files-faq.md)
+- [GYIK](../storage-files-faq.md)
 - [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      

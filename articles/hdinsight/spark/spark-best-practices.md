@@ -1,22 +1,22 @@
 ---
-title: Apache Spark ajánlott eljárások az Azure HDInsight
-description: Ismerje meg az Azure HDInsight Apache Spark használatának ajánlott eljárásait.
+title: Apache Spark irányelvek az Azure HDInsight
+description: Útmutató a Apache Spark Azure HDInsight való használatához.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/28/2020
+ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71106124"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509414"
 ---
-# <a name="apache-spark-best-practices"></a>Apache Spark ajánlott eljárások
+# <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
 
-Ez a cikk az Azure HDInsight Apache Spark használatának különböző ajánlott eljárásait ismerteti.
+Ez a cikk a Apache Spark Azure HDInsight való használatának különböző irányelveit ismerteti.
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>Hogyan a Spark-feladatok futtatását vagy elküldését?
 
@@ -28,6 +28,10 @@ Ez a cikk az Azure HDInsight Apache Spark használatának különböző ajánlot
 | IntelliJ | [Oktatóanyag: Scala Maven-alkalmazás létrehozása a HDInsight-hez Apache Spark a IntelliJ használatával](./apache-spark-create-standalone-application.md) |
 | Zeppelin-notebookok | [Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében](./apache-spark-zeppelin-notebook.md) |
 | Távoli feladatok beküldése a Livy | [Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|A Oozie olyan munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli.|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|A Livy használatával interaktív Spark-rendszerhéjakat futtathat, vagy elküldheti a Spark-on futó kötegelt feladatokat.|
+|[Apache Spark Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Egy Data Factory folyamat Spark-tevékenysége egy Spark-programot hajt végre a saját vagy [igény szerinti HDInsight-fürtön.|
+|[Apache Hive Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket.|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Hogyan a Spark-feladatok figyelését és hibakeresését?
 

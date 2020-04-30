@@ -4,10 +4,10 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
 ms.openlocfilehash: efbfed5198620fc07b10354a5b74f6ddaf2cd4ab
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134137"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision Java SDK-t a rendszerkép-besorolási modell létrehozásához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).

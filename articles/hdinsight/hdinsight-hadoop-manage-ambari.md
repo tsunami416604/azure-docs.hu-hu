@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 53d8da3f5ff715fa34f007272214823ed60e6326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192059"
+ms.locfileid: "82232853"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
 
@@ -135,7 +135,7 @@ A hivatkozások bármelyikének kiválasztásával megnyílik egy új lap a bön
 
 ### <a name="ambari-users-groups-and-permissions"></a>Felhasználók, csoportok és engedélyek Ambari
 
-A felhasználók, csoportok és engedélyek használata a tartományhoz csatlakoztatott HDInsight-fürt használata esetén támogatott. A tartományhoz csatlakoztatott fürtök Ambari-kezelési felhasználói felületének használatával kapcsolatos információkért lásd: [tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/hdinsight-security-overview.md).
+A felhasználók, csoportok és engedélyek használata támogatott. A helyi felügyelethez lásd: [felhasználók engedélyezése Apache Ambari-nézetekhez](./hdinsight-authorize-users-to-ambari.md). Tartományhoz csatlakoztatott fürtök esetében lásd: [tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Ne változtassa meg a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú HDInsight-fürtön. A jelszó módosítása megszakítja a parancsfájl-műveletek használatát, vagy skálázási műveleteket hajt végre a fürtön.

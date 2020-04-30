@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127565"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231968"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -56,7 +56,23 @@ Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülh
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Panda-hibák: általában a AutoML kísérlet során látható:**
+   
+   Ha a environmnet-t a pip használatával manuálisan állítja be, akkor az attribútummal kapcsolatos hibákat (különösen a pandákből) láthatja, mert a csomagok telepítése nem támogatott. Az ilyen hibák megelőzése érdekében [telepítse a AUTOML SDK-t a automl_setup. cmd fájl használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
+   
+    1. Nyisson meg egy Anaconda-parancssort, és a GitHub-tárházat klónozással hozzon létre egy minta típusú jegyzetfüzetet.
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. CD a azureml/automata-Machine-learning mappához, ahol a minta jegyzetfüzeteket kibontották és futtatták:
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **Hibaüzenet: nem távolítható el a (z) PyYAML**
 
     Pythonhoz készült Azure Machine Learning SDK: a PyYAML `distutils` egy telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Ha továbbra is szeretné telepíteni az SDK-t a hiba figyelmen kívül hagyásával, használja a következőt:

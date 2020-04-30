@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380921"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509346"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 
 Azure SQL Database egyetlen vagy készletezett adatbázist is beállíthat [hosszú távú biztonsági mentési adatmegőrzési](sql-database-long-term-retention.md) szabályzattal (ltr), hogy az adatbázis biztonsági másolatait külön Azure Blob Storage-tárolókban, akár 10 évig is megőrizze. Ezután a Azure Portal vagy a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
 
 > [!IMPORTANT]
-> Az [Azure SQL Database felügyelt példánya](sql-database-managed-instance.md) jelenleg nem támogatja a biztonsági másolatok hosszú távú megőrzését.
+> Az Azure SQL Database felügyelt példányaival kapcsolatban tekintse meg a [felügyelt példány ltr-támogatását](sql-database-long-term-retention.md#managed-instance-support)ismertető témakört.
 
 ## <a name="using-azure-portal"></a>Az Azure Portal használata
 

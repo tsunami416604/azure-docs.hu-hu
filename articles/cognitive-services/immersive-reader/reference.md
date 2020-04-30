@@ -1,7 +1,7 @@
 ---
-title: Magával ragadó olvasó SDK referencia
+title: A részletes olvasó SDK-referenciája
 titleSuffix: Azure Cognitive Services
-description: A magával ragadó Reader SDK tartalmaz egy JavaScript könyvtár, amely lehetővé teszi, hogy integrálja a magával ragadó reader az alkalmazásba.
+description: A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156403"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231917"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Magával ragadó olvasó SDK referencia útmutató
+# <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
-A magával ragadó Reader SDK tartalmaz egy JavaScript könyvtár, amely lehetővé teszi, hogy integrálja a magával ragadó reader az alkalmazásba.
+A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 
 ## <a name="functions"></a>Functions
 
-Az SDK a következő funkciókat teszi elérhetővé:
+Az SDK a függvényeket teszi elérhetővé:
 
 - [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
 
@@ -33,7 +33,7 @@ Az SDK a következő funkciókat teszi elérhetővé:
 
 ## <a name="launchasync"></a>launchAsync
 
-Elindítja a magával `iframe` ragadó olvasó belül egy a webes alkalmazás.
+Elindítja az olvasót a webalkalmazáson belül `iframe` .
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,38 +41,38 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
-| `token` | sztring | Az Azure AD hitelesítési jogkivonat. |
-| `subdomain` | sztring | A Magával ragadó olvasó erőforrás egyéni altartománya az Azure-ban. |
-| `content` | [Tartalom](#content) | A Magával ragadó olvasóban megjelenítendő tartalmat tartalmazó objektum. |
-| `options` | [Beállítások](#options) | A magával ragadó olvasó bizonyos viselkedésének konfigurálása. Választható. |
+| `token` | sztring | Az Azure AD hitelesítési jogkivonata. |
+| `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. |
+| `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
 ### <a name="returns"></a>Visszatérési érték
 
-A `Promise<LaunchResponse>`értéket ad vissza, amely a Immersive Reader betöltésekor megszűnik. A `Promise` határozat egy [`LaunchResponse`](#launchresponse) objektummá.
+A egy `Promise<LaunchResponse>`értéket ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` feloldás egy [`LaunchResponse`](#launchresponse) objektumra.
 
 ### <a name="exceptions"></a>Kivételek
 
-Ha `Promise` a Magával ragadó [`Error`](#error) olvasó nem töltődik be, a visszaküldött objektum ot elutasítja a program egy objektummal. További információt a [hibakódokban](#error-codes)talál.
+A visszaadott `Promise` [`Error`](#error) objektum akkor kerül elutasításra, ha a magával ragadó olvasó nem töltődik be. További információ: [hibakódok](#error-codes).
 
 ## <a name="close"></a>bezárás
 
-Bezárja a magával ragadó olvasót.
+A magával ragadó olvasó bezárása.
 
-Ennek a funkciónak az egyik használati esete, ```hideExitButton: true``` ha a kilépési gomb rejtett a [beállítások](#options)beállításával. Ezután egy másik gomb (például egy mobil fejléc ```close``` visszanyila) hívhatja ezt a funkciót, amikor rákattintanak.
+Példa erre a függvényre, ha a kilépési gomb el van rejtve ```hideExitButton: true``` a [Beállítások](#options)beállításban. Ezután egy másik gomb (például a mobil fejléc vissza nyíl) hívhatja ezt a ```close``` függvényt, amikor rákattint.
 
 ```typescript
 close(): void;
 ```
 
-## <a name="renderbuttons"></a>renderelésgombok
+## <a name="renderbuttons"></a>renderButtons
 
-Ez a funkció stílusok és frissíti a dokumentum magával ragadó Olvasó gomb elemeket. Ha ```options.elements``` van megadva, akkor ez ```options.elements```a funkció a gombokat rendereli a területen belül. Ellenkező esetben a gombok a dokumentum azon elemeiben ```immersive-reader-button```jelennek meg, amelyek osztályt tartalmaznak.
+Ez a függvény stílusokat és frissítéseket frissít a dokumentum az olvasó gombjának elemeivel. Ha ```options.elements``` meg van adni, a függvény megjeleníti a gombokat ```options.elements```a következőn belül:. Ellenkező esetben a gombok a dokumentum azon elemein belül jelennek meg, amelyeknek az ```immersive-reader-button```osztálya van.
 
-Ezt a funkciót az ablak betöltésekekén automatikusan megnevezi az SDK.
+Az SDK automatikusan ezt a függvényt hívja meg, amikor az ablak betöltődik.
 
-További [megjelenítési](#optional-attributes) beállításokért lásd: Választható attribútumok.
+További megjelenítési beállításokért lásd: [opcionális attribútumok](#optional-attributes) .
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
@@ -80,15 +80,15 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálása. Választható. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
 ## <a name="types"></a>Típusok
 
 ### <a name="content"></a>Tartalom
 
-A Magával ragadó olvasóban megjelenendő tartalmat tartalmazza.
+A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 
 ```typescript
 {
@@ -99,7 +99,7 @@ A Magával ragadó olvasóban megjelenendő tartalmat tartalmazza.
 
 ### <a name="chunk"></a>Adattömb
 
-Egyetlen adattömb, amely átkerül a Immersive Reader tartalmába.
+Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 
 ```typescript
 {
@@ -109,9 +109,9 @@ Egyetlen adattömb, amely átkerül a Immersive Reader tartalmába.
 }
 ```
 
-### <a name="launchresponse"></a>LaunchResponse (LaunchResponse)
+### <a name="launchresponse"></a>LaunchResponse
 
-A hívás ból érkező `ImmersiveReader.launchAsync`választ tartalmazza.
+A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync`.
 
 ```typescript
 {
@@ -120,9 +120,9 @@ A hívás ból érkező `ImmersiveReader.launchAsync`választ tartalmazza.
 }
 ```
 
-### <a name="cookiepolicy-enum"></a>CookiePolicy felsorak
+### <a name="cookiepolicy-enum"></a>CookiePolicy enumerálása
 
-A Immersive Reader cookie-használatának irányelveit beállító felsorítás. Lásd a [beállításokat.](#options)
+Az olvasó cookie-k használatára vonatkozó szabályzat beállítására szolgáló enumerálás. Lásd: [Beállítások](#options).
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -134,23 +134,22 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| alkalmazás/mathml+xml | Matematikai korrektúranyelv (MathML). [További információ](./how-to/display-math.md).
-| alkalmazás/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word .docx formátumú dokumentum.
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](./how-to/display-math.md).
+| Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
 
 | HTML | Támogatott tartalom |
 | --------- | ----------- |
-| Betűstílusok | Félkövér, dőlt, Aláhúzott, Kód, Áthúzott, Felső index, Alsó index |
-| Rendezetlen listák | Lemez, Kör, Négyzet |
-| Rendezett listák | Decimális, Felső-Alfa, Alsó-Alfa, Felső-Római, Alsó-Római |
-| Hivatkozások | Hamarosan |
+| Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
+| Rendezetlen listák | Lemez, kör, négyzet |
+| Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, alsó-római |
 
-A nem támogatott címkék összehasonlítva jelennek meg. A képek és a táblázatok jelenleg nem támogatottak.
+A nem támogatott címkék hasonlóan lesznek megjelenítve. A képek és a táblázatok jelenleg nem támogatottak.
 
 ### <a name="options"></a>Beállítások
 
-Olyan tulajdonságokat tartalmaz, amelyek a magával ragadó olvasó bizonyos viselkedését konfigurálják.
+Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizonyos viselkedéseit konfigurálják.
 
 ```typescript
 {
@@ -168,7 +167,7 @@ Olyan tulajdonságokat tartalmaz, amelyek a magával ragadó olvasó bizonyos vi
 
 ### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
 
-A Magával ragadó olvasó gombjainak renderelésének lehetőségei.
+A magával ragadó olvasó gombok megjelenítésének lehetőségei.
 
 ```typescript
 {
@@ -178,7 +177,7 @@ A Magával ragadó olvasó gombjainak renderelésének lehetőségei.
 
 ### <a name="error"></a>Hiba
 
-A hibával kapcsolatos információkat tartalmazza.
+A hibával kapcsolatos információkat tartalmaz.
 
 ```typescript
 {
@@ -191,32 +190,32 @@ A hibával kapcsolatos információkat tartalmazza.
 
 | Kód | Leírás |
 | ---- | ----------- |
-| BadArgument (Rossz argumentum) | A megadott argumentum `message` érvénytelen, további részletek. |
-| Időkorlát | A Immersive Reader nem tudta betölteni a megadott időtúlidőn belül. |
+| BadArgument | A megadott argumentum érvénytelen. a `message` részletekért tekintse meg a következőt:. |
+| Időkorlát | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
-| Gázadagoló | A hívássebesség-korlát túllépve. |
+| Szabályozott | Túllépte a hívási sebesség korlátját. |
 
-## <a name="launching-the-immersive-reader"></a>A magával ragadó olvasó indítása
+## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
-Az SDK biztosítja az alapértelmezett stílust a bemerített olvasó indításához. A `immersive-reader-button` stílus engedélyezéséhez használja az osztályattribútumot. Lásd ezt a [cikket](./how-to-customize-launch-button.md) további részletekért.
+Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. A `immersive-reader-button` Class attribútum használatával engedélyezze ezt a stílust. További részletekért tekintse meg [ezt a cikket](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>
 ```
 
-### <a name="optional-attributes"></a>Választható attribútumok
+### <a name="optional-attributes"></a>Nem kötelező attribútumok
 
-A gomb megjelenésének és tapintásának konfigurálásához használja az alábbi attribútumokat.
+A gomb megjelenésének és működésének konfigurálásához használja a következő attribútumokat.
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| `data-button-style` | Beállítja a gomb stílusát. Lehet `icon`, `text`vagy `iconAndText`. Alapértelmezés szerint `icon`a. |
-| `data-locale` | Beállítja a területi beállításokat. Például `en-US` vagy `fr-FR`. Alapértelmezés szerint `en`az angol . |
-| `data-icon-px-size` | Az ikon méretét képpontban állítja be. Alapértelmezés szerint 20px. |
+| `data-button-style` | Beállítja a gomb stílusát. Lehet `icon`, `text`, vagy `iconAndText`. Alapértelmezett értéke `icon`. |
+| `data-locale` | Beállítja a területi beállítást. Például `en-US` vagy `fr-FR`. Az alapértelmezett érték az `en`angol. |
+| `data-icon-px-size` | Beállítja az ikon méretét képpontban megadva. Az alapértelmezett érték a 20px. |
 
 ## <a name="browser-support"></a>Böngészőtámogatás
 
-Használja a következő böngészők legújabb verzióit a magával ragadó olvasóval való legjobb élmény érdekében.
+Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdekében a teljes olvasóval.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -226,5 +225,5 @@ Használja a következő böngészők legújabb verzióit a magával ragadó olv
 
 ## <a name="next-steps"></a>További lépések
 
-* Fedezze fel a [magával ragadó Reader SDK-t a GitHubon](https://github.com/microsoft/immersive-reader-sdk)
-* [Rövid útmutató: Hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót (C#)](./quickstart.md)
+* Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
+* [Rövid útmutató: hozzon létre egy webalkalmazást, amely elindítja a részletes olvasót (C#)](./quickstart.md)

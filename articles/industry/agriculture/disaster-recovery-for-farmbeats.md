@@ -1,66 +1,66 @@
 ---
-title: A FarmBeats vészhelyreállítása
-description: Ez a cikk azt ismerteti, hogy az adathelyreállítás hogyan védi az adatok elvesztését.
+title: Vész-helyreállítási FarmBeats
+description: Ez a cikk azt ismerteti, hogy az adatok helyreállítása Hogyan védi az adatok elvesztését.
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
 ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683899"
 ---
-# <a name="disaster-recovery-for-farmbeats"></a>A FarmBeats vészhelyreállítása
+# <a name="disaster-recovery-for-farmbeats"></a>Vész-helyreállítási FarmBeats
 
-Az adat-helyreállítás megvédi önt az adatok elvesztésétől egy olyan esemény esetén, mint az Azure-régió összeomlása. Ilyen esetben elindíthatja a feladatátvételt, és helyreállíthatja a FarmBeats központi telepítésében tárolt adatokat.
+Az adatok helyreállítása megvédi az adatok elvesztését olyan eseményeken, mint az Azure-régió összeomlása. Ilyen esetben elindíthatja a feladatátvételt, és helyreállíthatja a FarmBeats üzemelő példányában tárolt adatokat.
 
-Az adatok helyreállítása nem alapértelmezett szolgáltatás az Azure FarmBeats-ben. Ezt a funkciót manuálisan konfigurálhatja a FarmBeats által az Azure-ban párosított régióban tárolt adatok tárolására használt szükséges Azure-erőforrások konfigurálásával. Aktív – passzív megközelítés használata a helyreállítás engedélyezéséhez.
+Az Adathelyreállítás nem az Azure FarmBeats alapértelmezett funkciója. Ezt a funkciót manuálisan is konfigurálhatja a FarmBeats által az Azure párosított régióban tárolt adattároláshoz használt szükséges Azure-erőforrások konfigurálásával. A helyreállítás engedélyezéséhez használja az aktív – passzív módszert.
 
-Az alábbi szakaszok arról nyújtanak tájékoztatást, hogyan konfigurálhatja az adatok helyreállítását az Azure FarmBeats szolgáltatásban:
+A következő szakaszokból megtudhatja, hogyan konfigurálhatja az adatok helyreállítását az Azure FarmBeats:
 
-- [Adatredundancia engedélyezése](#enable-data-redundancy)
+- [Az adatredundancia engedélyezése](#enable-data-redundancy)
 - [Szolgáltatás visszaállítása online biztonsági mentésből](#restore-service-from-online-backup)
 
 
-## <a name="enable-data-redundancy"></a>Adatredundancia engedélyezése
+## <a name="enable-data-redundancy"></a>Az adatredundancia engedélyezése
 
-A FarmBeats három Azure-beli szolgáltatásban tárolja az adatokat, amelyek az **Azure storage,** **a Cosmos DB** és a Time Series **Insights.** A következő lépésekkel engedélyezheti az adatredundanciát ezeknél a szolgáltatásoknál egy párosított Azure-régióhoz:
+A FarmBeats három Azure-beli szolgáltatásban tárolja az Azure **Storage**-t, **Cosmos db** és **Time Series Insightsokat**. A következő lépésekkel engedélyezheti a szolgáltatások adatredundanciát egy párosított Azure-régióra:
 
-1.  **Azure Storage** – Kövesse ezt az iránymutatást, hogy a FarmBeats-telepítésben minden egyes tárfiókhoz adatredundanciát engedélyezhet.
-2.  **Azure Cosmos DB** – Kövesse ezt az iránymutatást a Cosmos DB-fiók, a FarmBeats üzembe helyezéséhez az adatredundancia engedélyezéséhez.
-3.  **Azure Time Series Insights (TSI)** – az TSI jelenleg nem kínál adatredundanciát. A Time Series Insights-adatok helyreállításához nyissa meg az érzékelő/időjárás-partnert, és ismét lenyomja az adatokat a FarmBeats üzembe helyezésére.
+1.  **Azure Storage** – ezt az útmutatást követve engedélyezheti az adatredundanciát a FarmBeats-telepítés minden egyes Storage-fiókjához.
+2.  **Azure Cosmos db** – az alábbi útmutatást követve engedélyezheti az adatredundanciát a FarmBeats-telepítés Cosmos db-fiókjához.
+3.  **Azure Time Series Insights (ÁME)** – az ÁME jelenleg nem nyújt adatredundanciát. Time Series Insights adatok helyreállításához nyissa meg az érzékelő/időjárási partnert, és küldje el újra az adatokat a FarmBeats üzembe helyezéséhez.
 
 ## <a name="restore-service-from-online-backup"></a>Szolgáltatás visszaállítása online biztonsági mentésből
 
-Kezdeményezheti a feladatátvételt, és helyreállíthatja a tárolt adatokat, amelyek mindegyike a fent említett adattárak a FarmBeats központi telepítés. Miután helyreállította az Azure Storage és a Cosmos DB adatait, hozzon létre egy másik FarmBeats-telepítést az Azure párosított régióban, majd konfigurálja az új központi telepítést a visszaállított adattárakból (azaz az Azure Storage és a Cosmos DB) származó adatok használatára az alábbi lépések végrehajtásával:
+Elindíthatja a feladatátvételt, és helyreállíthatja a tárolt adatokat, amelyek esetében a fentiekben felsorolt adattárak mindegyike a FarmBeats-telepítéshez szükséges. Miután visszaállította az Azure Storage és a Cosmos DB adatait, hozzon létre egy másik FarmBeats-telepítést az Azure párosított régiójában, majd konfigurálja az új központi telepítést úgy, hogy a visszaállított adattárakból (például az Azure Storage és a Cosmos DB) származó adatok használatára az alábbi lépéseket használja:
 
 1. [A Cosmos DB konfigurálása](#configure-cosmos-db)
-2. [Tárfiók konfigurálása](#configure-storage-account)
+2. [Storage-fiók konfigurálása](#configure-storage-account)
 
 
 ### <a name="configure-cosmos-db"></a>A Cosmos DB konfigurálása
 
-Másolja a visszaállított Cosmos DB hozzáférési kulcsát, és frissítse az új FarmBeats Datahub key vaultot.
+Másolja a visszaállított Cosmos DB hozzáférési kulcsát, és frissítse az új FarmBeats-Datahub Key Vault.
 
 
   ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
-> Másolja a visszaállított Cosmos DB URL-címét, és frissítse azt az új FarmBeats Datahub App Service Configuration alkalmazásban. Most már törölheti cosmos DB-fiók az új FarmBeats központi telepítés.
+> Másolja a visszaállított Cosmos DB URL-címét, és frissítse azt az új FarmBeats-Datahub App Service-konfigurációban. Mostantól törölhet Cosmos DB fiókot az új FarmBeats-telepítésben.
 
   ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/configuration.png)
 
-### <a name="configure-storage-account"></a>Tárfiók konfigurálása
+### <a name="configure-storage-account"></a>Storage-fiók konfigurálása
 
-Másolja a visszaállított tárfiók hozzáférési kulcsát, és frissítse azt az új FarmBeats Datahub key vaultban.
+Másolja a visszaállított Storage-fiók hozzáférési kulcsát, és frissítse azt az új FarmBeats Datahub Key Vault.
 
 ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
-> Győződjön meg arról, hogy az új FarmBeats Batch virtuálisgép konfigurációs fájlban frissíti a tárfiók nevét.
+> Győződjön meg arról, hogy a Storage-fiók nevét frissíti az új FarmBeats batch virtuálisgép-konfigurációs fájlban.
 
 ![Vészhelyreállítás](./media/disaster-recovery-for-farmbeats/batch-prep-files.png)
 
-Hasonlóképpen, ha engedélyezte az adat-helyreállítást a gyorssegéd tárfiókjához, kövesse a 2.
+Hasonlóképpen, ha engedélyezte az adathelyreállítást a Gyorssegéd-tároló fiókjához, kövesse a 2. lépést a Gyorssegéd-fiók elérési kulcsának és nevének frissítéséhez az új FarmBeats-példányban.

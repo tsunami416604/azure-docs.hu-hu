@@ -1,6 +1,6 @@
 ---
-title: Eszközkapcsolat az Azure IoT Centralban | Microsoft dokumentumok
-description: Ez a cikk az Azure IoT Central eszközkapcsolatával kapcsolatos legfontosabb fogalmakat ismerteti
+title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
+description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/09/2019
@@ -11,184 +11,192 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024693"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509516"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Csatlakozzon az Azure IoT Centralhoz
+# <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
-*Ez a cikk az operátorokra és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk az operátorokra és az eszközök fejlesztőire vonatkozik.*
 
-Ez a cikk ismerteti az eszközöket egy Azure IoT Central alkalmazáshoz való csatlakoztatásának lehetőségei.
+Ez a cikk az eszközök Azure IoT Central-alkalmazáshoz való csatlakoztatásának lehetőségeit ismerteti.
 
-Általában regisztrálnia kell egy eszközt az alkalmazásban, mielőtt csatlakozhatna. Az IoT Central azonban támogatja azokat a forgatókönyveket, amelyekben [az eszközök anélkül csatlakozhatnak, hogy először regisztrálnák](#connect-without-registering-devices)őket.
+Általában regisztrálnia kell egy eszközt az alkalmazásban, mielőtt kapcsolódni tud. A IoT Central azonban olyan forgatókönyveket támogat, amelyekben az [eszközök az első regisztráció nélkül csatlakozhatnak](#connect-without-registering-devices).
 
-Az IoT Central az [Azure IoT Hub-eszközkiépítési szolgáltatás (DPS)](../../iot-dps/about-iot-dps.md) segítségével kezeli a csatlakozási folyamatot. Az eszköz először csatlakozik a DPS-végponthoz, hogy lekérje az alkalmazáshoz való csatlakozáshoz szükséges információkat. Belsőleg az IoT Central-alkalmazás egy IoT hubot használ az eszközkapcsolat kezeléséhez. A DPS használata lehetővé teszi:
+A IoT Central az [Azure IoT hub Device Provisioning szolgáltatást (DPS)](../../iot-dps/about-iot-dps.md) használja a kapcsolódási folyamat kezeléséhez. Az eszköz először csatlakozik egy DPS-végponthoz, hogy lekérje az alkalmazáshoz való csatlakozáshoz szükséges információkat. Belsőleg a IoT Central-alkalmazás egy IoT hub használatával kezeli az eszköz kapcsolatát. A DPS használata lehetővé teszi a következőket:
 
-- IoT Central támogatja a bevezetési és csatlakozó eszközök nagy méretekben.
-- Az eszközök hitelesítő adatainak létrehozásához és az eszközök offline konfigurálásához az eszközök IoT Central felhasználói felületen keresztültörténő regisztrálása nélkül.
-- Használhatja a saját eszközazonosítók eszközök regisztrálásához az IoT Central. A saját eszközazonosítók használata leegyszerűsíti a meglévő háttérirodai rendszerekkel való integrációt.
-- Egyetlen, egységes módja az eszközök ioT Centralhoz való csatlakoztatásának.
+- IoT Central az eszközök nagy léptékű bevezetésének és csatlakoztatásának támogatásához.
+- Az eszköz hitelesítő adatainak előállításához és az eszközök offline konfigurálásához az eszközök IoT Central felhasználói felületen keresztül történő regisztrálása nélkül.
+- A saját eszközök azonosítóinak használatával regisztrálhatja az eszközöket a IoT Centralban. A saját eszköz-azonosítók használatával egyszerűbbé válik a meglévő Back-Office rendszerekkel való integráció.
+- Egyetlen, egységes módszer az eszközök IoT Centralhoz való csatlakoztatására.
 
-Az eszköz és az alkalmazás közötti kommunikáció biztonságossá tétele érdekében az IoT Central támogatja a megosztott hozzáférésű aláírásokat (SAS) és az X.509-tanúsítványokat. Az X.509 tanúsítványok használata éles környezetben ajánlott.
+Az eszköz és az alkalmazás közötti kommunikáció biztonságossá tételéhez IoT Central támogatja a közös hozzáférésű aláírásokat (SAS) és az X. 509 tanúsítványokat is. Az X. 509 tanúsítványokat éles környezetekben ajánlott használni.
 
 Ez a cikk a következő használati eseteket ismerteti:
 
 - [Egyetlen eszköz csatlakoztatása SAS használatával](#connect-a-single-device)
-- [Eszközök csatlakoztatása a SAS használatával](#connect-devices-at-scale-using-sas)
-- [Az eszközök nagy méretekben való csatlakoztatása X.509-es tanúsítványokkal](#connect-devices-using-x509-certificates) – ez az éles környezetek ajánlott megközelítése.
-- [Eszközök csatlakoztatása regisztráció nélkül](#connect-without-registering-devices)
-- [A DPS egyéni regisztrációit használó eszközök csatlakoztatása](#individual-enrollment-based-device-connectivity)
-- [Eszközök csatlakoztatása az IoT Plug and Play (előzetes verzió) funkcióival](#connect-devices-with-iot-plug-and-play-preview)
+- [Eszközök csatlakoztatása nagy méretekben SAS használatával](#connect-devices-at-scale-using-sas)
+- [Eszközök csatlakoztatása méretezéssel X. 509 tanúsítványok használatával](#connect-devices-using-x509-certificates) – az éles környezetek javasolt megközelítése.
+- [Eszközök csatlakoztatása az első regisztráció nélkül](#connect-without-registering-devices)
+- [A DPS egyéni regisztrációt használó eszközök csatlakoztatása](#individual-enrollment-based-device-connectivity)
+- [Eszköz automatikus hozzárendelése egy eszköz sablonnal](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
-Ez a megközelítés akkor hasznos, ha az IoT Central vagy a tesztelési eszközök kísérletezik. Az IoT Central alkalmazásból származó eszközkapcsolat SAS-kulcsaival csatlakoztathat egy eszközt az IoT Central-alkalmazáshoz. Másolja az _eszköz SAS-kulcsát_ a regisztrált eszköz csatlakozási adataiból:
+Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. A IoT Central alkalmazásban található eszköz kapcsolat SAS-kulcsaival csatlakoztathat egy eszközt a IoT Central alkalmazáshoz. Másolja az _eszköz sas-kulcsát_ a regisztrált eszközhöz tartozó kapcsolatok adataiból:
 
 ![SAS-kulcsok egy adott eszközhöz](./media/concepts-get-connected/single-device-sas.png)
 
-További információkért tekintse meg a [Node.js ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazás](./tutorial-connect-device-nodejs.md) oktatóanyagát.
+További információ: [Node. js-ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](./tutorial-connect-device-nodejs.md) oktatóanyag.
 
-## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása a SAS használatával
+## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása nagy méretekben SAS használatával
 
-Ha az eszközöket nagy méretekben szeretné csatlakoztatni az IoT Centralhoz A SAS-kulcsok használatával, regisztrálnia kell, majd be kell állítania az eszközöket:
+Ahhoz, hogy az eszközöket az SAS-kulcsok használatával IoT Centralhoz lehessen kötni, regisztrálnia kell, majd be kell állítania az eszközöket:
 
-### <a name="register-devices-in-bulk"></a>Eszközök regisztrálása ömlesztve
+### <a name="register-devices-in-bulk"></a>Eszközök tömeges regisztrálása
 
-Ha nagyszámú eszközt szeretne regisztrálni az IoT Central alkalmazással, használjon CSV-fájlt [az eszközazonosítók és az eszköznevek importálásához.](howto-manage-devices.md#import-devices)
+Ha nagy számú eszközt szeretne regisztrálni a IoT Central alkalmazással, használjon egy CSV-fájlt az eszközök [azonosítóinak és az eszközök nevének importálásához](howto-manage-devices.md#import-devices).
 
-Az importált eszközök kapcsolati adatainak beolvasásához [exportáljon egy CSV-fájlt az IoT Central alkalmazásból.](howto-manage-devices.md#export-devices) Az exportált CSV-fájl tartalmazza az eszközazonosítókat és a SAS-kulcsokat.
+Az importált eszközökhöz tartozó kapcsolódási adatok lekéréséhez [exportáljon egy CSV-fájlt a IoT Central alkalmazásból](howto-manage-devices.md#export-devices). Az exportált CSV-fájl tartalmazza az eszközök azonosítóit és a SAS-kulcsokat.
 
 ### <a name="set-up-your-devices"></a>Az eszközök beállítása
 
-Az eszközkódban lévő exportálási fájlból származó kapcsolati adatok segítségével lehetővé teszi az eszközök számára, hogy adatokat csatlakoztassanak és küldjenek az IoT-nek az IoT-alkalmazásba. Az **alkalmazásdps-azonosító hatókörére** is szüksége van. Ezt az értéket a **Felügyeleti > Eszközkapcsolat ban**találja.
+Az eszköz kódjában található exportálási fájl kapcsolati adataival lehetővé teheti, hogy az eszközök csatlakozzanak a IoT, és adatokat küldjenek a IoT Central alkalmazásnak. Szüksége lesz a DPS- **azonosító hatókörére** is az alkalmazáshoz. Ez az érték az **adminisztráció > eszköz-kapcsolatok**szolgáltatásban található.
 
 > [!NOTE]
-> Ha meg szeretné tudni, hogyan csatlakoztathatja az eszközöket anélkül, hogy először regisztrálna őket az IoT Centralban, olvassa el a [Csatlakozás az eszközök regisztrálása nélkül.](#connect-without-registering-devices)
+> Ha szeretné megtudni, hogy az eszközök hogyan csatlakoztathatók a IoT Centralba való első regisztrációja nélkül, tekintse meg a [Kapcsolódás az eszközök első regisztrációja nélkül](#connect-without-registering-devices)című témakört.
 
-## <a name="connect-devices-using-x509-certificates"></a>Eszközök csatlakoztatása X.509-tanúsítványokkal
+## <a name="connect-devices-using-x509-certificates"></a>Eszközök csatlakoztatása X. 509 tanúsítványok használatával
 
-Éles környezetben az X.509-es tanúsítványok használata az IoT Central ajánlott eszközhitelesítési mechanizmusa. További információ: [Device Authentication using X.509 CA Certificates](../../iot-hub/iot-hub-x509ca-overview.md).
+Éles környezetben az X. 509 tanúsítványok használata az ajánlott eszköz hitelesítési mechanizmusa IoT Central számára. További információért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Mielőtt x.509-es tanúsítvánnyal rendelkező eszközt csatlakoztatna, vegyen fel és ellenőrizzen egy köztes vagy gyökér X.509 tanúsítványt az alkalmazásban. Az eszközöknek a legfelső szintű vagy a köztes tanúsítványból létrehozott X.509-es levéltanúsítványokat kell használniuk.
+Az X. 509 tanúsítvánnyal rendelkező eszköz csatlakoztatása előtt adjon hozzá egy közbenső vagy gyökérszintű X. 509 tanúsítványt az alkalmazáshoz. Az eszközöknek a gyökér-vagy köztes tanúsítványból generált levél X. 509 tanúsítványokat kell használniuk.
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Legfelső szintű vagy köztes tanúsítvány hozzáadása és ellenőrzése
+### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Gyökér-vagy köztes tanúsítvány hozzáadása és ellenőrzése
 
-Nyissa meg **a Felügyeleti > az elsődleges tanúsítvány kezelése >,** és adja hozzá az eszköztanúsítványok létrehozásához használt X.509-es legfelső vagy köztes tanúsítványt.
+Navigáljon az **adminisztráció > az eszköz csatlakoztatása > az elsődleges tanúsítvány kezelése** elemre, és adja hozzá az eszköz tanúsítványának létrehozásához használt X. 509 gyökér-vagy köztes tanúsítványt.
 
 ![Kapcsolati beállítások](media/concepts-get-connected/manage-x509-certificate.png)
 
-A tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítványt feltöltő személy rendelkezik a tanúsítvány személyes kulccsal. A tanúsítvány ellenőrzése:
+A tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítványt feltöltő személy rendelkezik a tanúsítvány titkos kulcsával. A tanúsítvány ellenőrzése:
 
-  1. A kód létrehozásához válassza az **Ellenőrző kód** melletti gombot.
-  1. Hozzon létre egy X.509-es ellenőrző tanúsítványt az előző lépésben létrehozott ellenőrző kóddal. Mentse a tanúsítványt .cer fájlként.
-  1. Töltse fel az aláírt igazolási tanúsítványt, és válassza **az Ellenőrzés lehetőséget.** A tanúsítvány **ellenőrzöttként** van megjelölve, ha az ellenőrzés sikeres.
+  1. A kód létrehozásához kattintson az **ellenőrző kód** melletti gombra.
+  1. Hozzon létre egy X. 509 ellenőrző tanúsítványt az előző lépésben létrehozott ellenőrző kóddal. Mentse a tanúsítványt. cer fájlként.
+  1. Töltse fel az aláírt ellenőrző tanúsítványt, és válassza az **ellenőrzés**lehetőséget. A tanúsítvány az ellenőrzés sikeressége után **ellenőrzöttként** van megjelölve.
 
-Ha biztonsági rés tátong, vagy az elsődleges tanúsítvány lejár, használja a másodlagos tanúsítványt az állásidő csökkentéséhez. Az elsődleges tanúsítvány frissítése közben továbbra is üzembe helyezheti az eszközöket a másodlagos tanúsítvánnyal.
+Ha biztonsági problémákba ütközik, vagy ha az elsődleges tanúsítvány lejár, a másodlagos tanúsítvány használatával csökkentheti az állásidőt. Az elsődleges tanúsítvány frissítésekor továbbra is kiépítheti az eszközöket a másodlagos tanúsítvány használatával.
 
 ### <a name="register-and-connect-devices"></a>Eszközök regisztrálása és csatlakoztatása
 
-Az Eszközök X.509-es tanúsítványokkal történő tömeges csatlakoztatásához először regisztrálja az eszközöket az alkalmazásban egy CSV-fájl segítségével [az eszközazonosítók és az eszköznevek importálásához.](howto-manage-devices.md#import-devices) Az eszközazonosítóknak kisbetűsnek kell lenniük.
+Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához először regisztrálja az eszközeit az alkalmazásban, egy CSV-fájllal, hogy [importálja az eszköz azonosítóit és az eszközök nevét](howto-manage-devices.md#import-devices). Az eszközök azonosítóinak mind kisbetűvel kell rendelkezniük.
 
-X.509 levéltanúsítványokat hozhat létre az eszközökszámára a feltöltött legfelső szintű vagy köztes tanúsítvány használatával. Használja az **eszközazonosítót** a `CNAME` levéltanúsítványok ban megadott értékként. Az eszközkódnak szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszközazonosítóra**és a megfelelő eszköztanúsítványra.
+X. 509 Leaf-tanúsítványok előállítása az eszközökön a feltöltött gyökér vagy köztes tanúsítvány használatával. Használja az **eszköz azonosítóját** a `CNAME` levél tanúsítványainak értékeként. Az eszköz kódjának szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszköz azonosítójára**és a megfelelő eszköz tanúsítványára.
 
 ### <a name="for-testing-purposes-only"></a>Csak tesztelési célokra
 
-Csak tesztelésre használhatja a következő segédprogramokat gyökér-, köztes és eszköztanúsítványok létrehozásához:
+Csak tesztelés esetén a következő segédprogramok segítségével hozhatja ki a gyökér-, köztes és eszköz-tanúsítványokat:
 
-- [Az Azure IoT-eszközkiépítési eszköz SDK:](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)Node.js eszközök gyűjteménye, amely x.509-es tanúsítványok és kulcsok létrehozásához és ellenőrzéséhez használható.
-- Ha DevKit-eszközt használ, ez a [parancssori eszköz](https://aka.ms/iotcentral-docs-dicetool) létrehoz egy hitelesítésszolgáltatói tanúsítványt, amelyet hozzáadhat az IoT Central alkalmazáshoz a tanúsítványok ellenőrzéséhez.
-- [Teszthitelesítésszolgáltatói tanúsítványok kezelése mintákhoz és oktatóanyagokhoz:](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)PowerShell- és Bash-parancsfájlok gyűjteménye:
+- [Eszközök az Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)-hoz: az X. 509 tanúsítványok és kulcsok létrehozásához és ellenőrzéséhez használható Node. js-eszközök gyűjteménye.
+- Ha fejlesztői készlet eszközt használ, a [parancssori eszköz](https://aka.ms/iotcentral-docs-dicetool) létrehoz egy hitelesítésszolgáltatói tanúsítványt, amelyet hozzáadhat a IoT Central alkalmazáshoz a tanúsítványok ellenőrzéséhez.
+- [Tesztelési hitelesítésszolgáltatói tanúsítványok kezelése mintákhoz és oktatóanyagokhoz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): PowerShell-és bash-parancsfájlok gyűjteménye a következőhöz:
   - Hozzon létre egy tanúsítványláncot.
-  - Mentse a tanúsítványokat .cer fájlként az IoT Central alkalmazásba való feltöltéshez.
-  - Használja az IoT Central alkalmazás ellenőrző kódját az ellenőrzési tanúsítvány létrehozásához.
-  - Hozzon létre levéltanúsítványokat az eszközökszámára az eszköz azonosítóinak paramétereként használva.
+  - Mentse a tanúsítványokat. cer fájlként a IoT Central alkalmazásba való feltöltéshez.
+  - Az ellenőrző tanúsítvány létrehozásához használja a IoT Central alkalmazásban található ellenőrző kódot.
+  - Hozzon létre Leaf-tanúsítványokat az eszközökhöz az eszköz azonosítói alapján az eszköz paraméterének megfelelően.
 
-### <a name="further-reference"></a>További hivatkozás
+### <a name="further-reference"></a>További tudnivalók
 
-- [Minta implementációja a RaspberryPi-hez](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Mintaeszköz-ügyfél C-ben](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Példa a RaspberryPi megvalósítására](https://aka.ms/iotcentral-docs-Raspi-releases)
+- [Minta-eszköz ügyfél a C-ben](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
-## <a name="connect-without-registering-devices"></a>Csatlakozás eszközök regisztrálása nélkül
+## <a name="connect-without-registering-devices"></a>Csatlakoztatás eszközök regisztrálása nélkül
 
-A korábban leírt forgatókönyvek mindegyike megköveteli, hogy regisztrálja az eszközöket az alkalmazásban, mielőtt azok csatlakoztatása. Az IoT Central lehetővé teszi a számítógépgyártók számára, hogy tömeggyártású eszközöket gyártsanak, amelyek anélkül tudnak csatlakozni, hogy először regisztrálnák őket. A oem megfelelő eszközhitelesítő adatokat hoz létre, és konfigurálja az eszközöket a gyárban. Amikor egy ügyfél először kapcsolja be az eszközt, csatlakozik a DPS-hez, amely automatikusan csatlakoztatja az eszközt a megfelelő IoT Central alkalmazáshoz. Az IoT Central operátornak jóvá kell hagynia az eszközt, mielőtt adatokat küldene az alkalmazásnak.
+A korábban leírt forgatókönyvek mindegyike megköveteli az eszközök regisztrálását az alkalmazásban a kapcsolódás előtt. A IoT Central azt is lehetővé teszi, hogy a számítógépgyártók tömeges előállítsák az olyan eszközöket, amelyek regisztráció nélkül csatlakozhatnak. Az OEM a megfelelő eszköz hitelesítő adatait hozza létre, és konfigurálja az eszközöket a gyárban. Amikor az ügyfél első alkalommal bekapcsol egy eszközt, az csatlakozik a DPS-hez, amely ezután automatikusan összekapcsolja az eszközt a helyes IoT Central alkalmazással. Egy IoT Central operátornak jóvá kell hagynia az eszközt, mielőtt elkezdi elküldeni az adatokat az alkalmazásnak.
 
-A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatokat vagy X.509-es tanúsítványokat használnak-e:
+A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatokat vagy X. 509 tanúsítványokat használnak-e:
 
-### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>SAS-jogkivonatokat használó eszközök csatlakoztatása regisztráció nélkül
+### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>SAS-tokeneket használó eszközök csatlakoztatása regisztráció nélkül
 
-1. Másolja az IoT Central alkalmazás elsődleges kulcsának másolását:
+1. Másolja a IoT Central alkalmazás csoportjának elsődleges kulcsát:
 
     ![Alkalmazáscsoport elsődleges SAS-kulcsa](media/concepts-get-connected/group-sas-keys.png)
 
-1. Használja a [dps-keygen](https://www.npmjs.com/package/dps-keygen) eszközt az eszköz SAS-kulcsainak létrehozásához. Használja a csoport elsődleges kulcsát az előző lépésben. Az eszközazonosítóknak kisbetűseknek kell lenniük:
+1. A [DPS-keygen](https://www.npmjs.com/package/dps-keygen) eszközzel előállíthatja az eszköz sas-kulcsait. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
 
     ```cmd
     dps-keygen -mk:<group primary key> -di:<device ID>
     ```
 
-1. Az oem villog minden eszköz egy eszköz azonosító, egy generált eszköz SAS kulcs, és az alkalmazás **azonosító hatókör** értéke.
+1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy generált eszköz SAS-kulccsal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
 
-1. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez az IoT Central regisztrációs adatainak lekéréséhez.
+1. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez, hogy beolvassa a IoT Central regisztrációs adatait.
 
-    Az eszköz kezdetben rendelkezik egy eszköz állapota **Nincs társítva** az **Eszközök** lapon, és nincs hozzárendelve egy eszközsablonhoz. Az **Eszközök** lapon **telepítse át** az eszközt a megfelelő eszközsablonra. Az eszközkiépítés befejeződött, az eszköz állapota most **kivan építve,** és az eszköz megkezdheti az adatok küldését.
+    Az eszközhöz kezdetben nincs **társítva** az eszköz az **eszközök** lapon, és nincs hozzárendelve egy eszköz sablonhoz. Az **eszközök** lapon **telepítse át** az eszközt a megfelelő eszköz sablonba. Az eszköz üzembe helyezése befejeződött, az eszköz állapota most **kiépítve**, és az eszköz megkezdheti az adatok küldését.
 
-    A **Felügyeleti > eszközkapcsolat** lapján az Automatikus jóváhagyás beállítás **szabályozza,** hogy manuálisan kell-e jóváhagynia az eszközt az adatok küldésének megkezdése előtt.
-
-    > [!NOTE]
-    > Ha meg szeretné tudni, hogy egy eszköz automatikusan hogyan kapcsolódik egy eszközsablonhoz, olvassa el az [Eszközök csatlakoztatása IoT Plug and Play (előzetes verzió) című témakört.](#connect-devices-with-iot-plug-and-play-preview)
-
-### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Az X.509-es tanúsítványokat használó eszközök csatlakoztatása regisztráció nélkül
-
-1. [Gyökér- vagy köztes X.509-es tanúsítvány hozzáadása és ellenőrzése](#connect-devices-using-x509-certificates) az IoT Central alkalmazáshoz. (#connect-eszközök-használó-x509-tanúsítványok)
-
-1. Az IoT Central-alkalmazáshoz hozzáadott gyökér- vagy köztes tanúsítvány használatával hozza létre az eszközök levéltanúsítványait. Használjon kisméretű eszközazonosítókat `CNAME` a levéltanúsítványokban.
-
-1. Az oem villog minden eszköz egy eszköz azonosító, a generált bal X.509 tanúsítvány, és az alkalmazás **azonosító hatókör** értéke.
-
-1. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez az IoT Central regisztrációs adatainak lekéréséhez.
-
-    Az eszköz kezdetben rendelkezik egy eszköz állapota **Nincs társítva** az **Eszközök** lapon, és nincs hozzárendelve egy eszközsablonhoz. Az **Eszközök** lapon **telepítse át** az eszközt a megfelelő eszközsablonra. Az eszközkiépítés befejeződött, az eszköz állapota most **kivan építve,** és az eszköz megkezdheti az adatok küldését.
-
-    A **Felügyeleti > eszközkapcsolat** lapján az Automatikus jóváhagyás beállítás **szabályozza,** hogy manuálisan kell-e jóváhagynia az eszközt az adatok küldésének megkezdése előtt.
+    Az **adminisztráció > eszköz kapcsolatai** lapon az **automatikus jóváhagyás** beállítás azt határozza meg, hogy kell-e manuálisan jóváhagyni az eszközt az adatok küldésének megkezdése előtt.
 
     > [!NOTE]
-    > Ha meg szeretné tudni, hogy egy eszköz automatikusan hogyan kapcsolódik egy eszközsablonhoz, olvassa el az [Eszközök csatlakoztatása IoT Plug and Play (előzetes verzió) című témakört.](#connect-devices-with-iot-plug-and-play-preview)
+    > Ha meg szeretné tudni, hogyan társítja automatikusan az eszközt egy eszköz sablonnal, tekintse meg az [eszköz automatikus hozzárendelése](#automatically-associate-with-a-device-template)az eszközhöz című témakört.
 
-## <a name="individual-enrollment-based-device-connectivity"></a>Egyéni beléptetésen alapuló eszközkapcsolat
+### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>X. 509 tanúsítványokat használó eszközök csatlakoztatása regisztráció nélkül
 
-Azoknak az ügyfeleknek, amelyek saját hitelesítési hitelesítő adatokkal rendelkeznek, egyéni regisztrációkat kell használniuk. Az egyéni regisztráció egyetlen eszköz, amely csatlakozhat. Az egyéni beléptetések x.509 levéltanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális platformmodulból) használhatnak tanúsítványmechanizmusokként. Az egyes regisztrációkban az eszközazonosító (más néven regisztrációs azonosító) alfanumerikus, kisbetűs, és kötőjeleket tartalmazhat. További információ: [DPS egyéni regisztráció](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+1. [Adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#connect-devices-using-x509-certificates) a IoT Central alkalmazáshoz. (#connect-Devices-using-x509-certificates)
+
+1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit `CNAME` használja a levél tanúsítványainak.
+
+1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy létrehozott bal X. 509 tanúsítvánnyal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
+
+1. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez, hogy beolvassa a IoT Central regisztrációs adatait.
+
+    Az eszközhöz kezdetben nincs **társítva** az eszköz az **eszközök** lapon, és nincs hozzárendelve egy eszköz sablonhoz. Az **eszközök** lapon **telepítse át** az eszközt a megfelelő eszköz sablonba. Az eszköz üzembe helyezése befejeződött, az eszköz állapota most **kiépítve**, és az eszköz megkezdheti az adatok küldését.
+
+    Az **adminisztráció > eszköz kapcsolatai** lapon az **automatikus jóváhagyás** beállítás azt határozza meg, hogy kell-e manuálisan jóváhagyni az eszközt az adatok küldésének megkezdése előtt.
+
+    > [!NOTE]
+    > Ha meg szeretné tudni, hogyan társítja automatikusan az eszközt egy eszköz sablonnal, tekintse meg az [eszköz automatikus hozzárendelése](#automatically-associate-with-a-device-template)az eszközhöz című témakört.
+
+## <a name="individual-enrollment-based-device-connectivity"></a>Egyéni regisztráció-alapú eszközök kapcsolata
+
+Azok az ügyfelek, akik a saját hitelesítési hitelesítő adataival rendelkező eszközöket csatlakoztatnak, egyéni regisztrációkat használhatnak. Az egyéni regisztráció egyetlen, a csatlakozáshoz engedélyezett eszközre vonatkozó bejegyzés. Az egyéni regisztrációk X. 509 levél-tanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális platformmegbízhatósági modulból) is használhatnak igazolási mechanizmusként. Az eszköz azonosítója (más néven regisztrációs azonosító) egy egyéni regisztrációban alfanumerikus, kisbetűs, és tartalmazhat kötőjeleket. További információ: [DPS egyéni regisztráció](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
 
 > [!NOTE]
-> Amikor egyéni regisztrációt hoz létre egy eszközhöz, az elsőbbséget élvez az IoT Central alkalmazás alapértelmezett csoportregisztrációs beállításaival szemben.
+> Amikor egyéni regisztrációt hoz létre egy eszközhöz, az a IoT Central alkalmazás alapértelmezett csoportos regisztrálási lehetőségeivel szemben elsőbbséget élvez.
 
-### <a name="creating-individual-enrollments"></a>Egyéni regisztrációk létrehozása
+### <a name="create-individual-enrollments"></a>Egyéni regisztrációk létrehozása
 
-Az IoT Central a következő tanúsítványmechanizmusokat támogatja az egyéni regisztrációkhoz:
+IoT Central a következő igazolási mechanizmusokat támogatja az egyéni regisztrációk esetén:
 
-- **Szimmetrikus kulcsigazolás:** A szimmetrikus kulcsigazolás egy egyszerű módszer egy eszköz hitelesítésére a DPS-példányokkal. Szimmetrikus kulcsokat használó egyéni regisztráció létrehozásához nyissa meg az **Eszközkapcsolat** lapot, válassza az **Egyéni regisztráció** csatlakozási módszerként lehetőséget, a **megosztott hozzáférésű aláírás (SAS)** pedig a mechanizmust. Írja be a base64 kódolású elsődleges és másodlagos kulcsokat, és mentse a módosításokat. Használja az **Azonosító hatókört**, **az Eszközazonosítót**és az elsődleges vagy másodlagos kulcsot az eszköz csatlakoztatásához.
-
-    > [!TIP]
-    > A teszteléshez az **OpenSSL** segítségével létrehozhat base64 kódolású kulcsokat:`openssl rand -base64 64`
-
-- **X.509 bizonyítványok:** Ha egyéni regisztrációt szeretne létrehozni az X.509-es tanúsítványokkal, nyissa meg az **Eszközkapcsolat** lapot, válassza az **Egyéni igénylés** lehetőséget csatlakozási módként, és a **Tanúsítványok (X.509)** lehetőséget. Az egyéni beléptetési bejegyzéshez használt eszköztanúsítványokban követelmény, hogy a kibocsátó és a tulajdonos KN az eszközazonosítóra legyen beállítva.
+- **Szimmetrikus kulcs igazolása:** A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz a DPS-példánnyal való hitelesítésére. Szimmetrikus kulcsokat használó egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolat** lapját, válassza az **Egyéni regisztráció** lehetőséget a kapcsolódási módszerként, valamint a **közös hozzáférésű aláírást (SAS)** mechanizmusként. Adja meg a Base64 kódolású elsődleges és másodlagos kulcsot, és mentse a módosításokat. Az eszköz csatlakoztatásához használja az **azonosító hatókörét**, az **eszköz azonosítóját**és az elsődleges vagy a másodlagos kulcsot.
 
     > [!TIP]
-    > A teszteléshez [használhatja az Eszközöket az Azure IoT-eszköz kiépítési eszköz SDK node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) önaláírt tanúsítvány létrehozásához:`node create_test_cert.js device "mytestdevice"`
+    > A teszteléshez az **OpenSSL** használatával Base64 kódolású kulcsokat hozhatja elő:`openssl rand -base64 64`
 
-- **Platformmegbízhatósági modul (TPM) tanúsítványa:** A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) egyfajta hardveres biztonsági modul. A TPM használata az egyik legbiztonságosabb módja az eszköz csatlakoztatásának. Ez a cikk feltételezi, hogy különálló, belső vezérlőprogramot vagy integrált TPM-et használ. A szoftveremulátortutánozta TPM-ek kiválóan alkalmasak prototípus-készítésre vagy tesztelésre, de nem nyújtanak ugyanolyan szintű biztonságot, mint a különálló, a belső vezérlőprogram vagy az integrált TPM-ek. Ne használjon szoftveres TPM-eket éles környezetben. Ha tpm-et használó egyéni regisztrációt szeretne létrehozni, nyissa meg az **Eszközkapcsolat** lapot, válassza az **Egyéni regisztráció** csatlakozási módszerként lehetőséget, a **TPM pedig** a mechanizmust. Adja meg a TPM-ellenőrző kulcsot, és mentse az eszköz kapcsolatának adatait.
+- **X. 509 tanúsítványok:** X. 509 tanúsítvánnyal rendelkező egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** lehetőséget a kapcsolódási módszerként, valamint a **tanúsítványok (X. 509)** módszert. Az egyéni beléptetési bejegyzésekhez használt eszközök tanúsítványainak követelménye, hogy a kiállító és a tulajdonos CN az eszköz AZONOSÍTÓját adja meg.
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Eszközök csatlakoztatása IoT Plug and Play segítségével (előzetes verzió)
+    > [!TIP]
+    > A teszteléshez használhatja [a Node. js-hez készült Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) -hoz tartozó eszközöket az önaláírt tanúsítvány létrehozásához:`node create_test_cert.js device "mytestdevice"`
 
-Az IoT Plug and Play (előzetes verzió) ioT Central egyik legfontosabb funkciója az eszközsablonok automatikus társítása az eszközkapcsolaton. Az eszköz hitelesítő adataival együtt az eszközök most már elküldhetik a **CapabilityModelId-et** az eszköz regisztrációs hívásának részeként. Ez a funkció lehetővé teszi az IoT Central számára az eszközsablon felderítését és társítást az eszközhöz. A felderítési folyamat a következőképpen működik:
+- **Platformmegbízhatósági modul (TPM) igazolása:** A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) a hardveres biztonsági modul típusa. Az eszköz csatlakoztatásának egyik legbiztonságosabb módja a TPM használata. Ez a cikk feltételezi, hogy diszkrét, belső vezérlőprogramot vagy integrált TPM-t használ. A szoftveresen emulált TPM a prototípus-készítéshez és a teszteléshez megfelelőek, de nem biztosítják ugyanazt a biztonsági szintet, mint a diszkrét, belső vezérlőprogram vagy integrált TPM. Ne használja éles környezetben a szoftver TPM. TPM-t használó egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** a kapcsolódási módszerként és a **TPM** mechanizmusként lehetőséget. Adja meg a TPM-záradék kulcsát, és mentse az eszköz csatlakoztatási adatait.
 
-1. Társítja az eszközsablont, ha már közzé lett téve az IoT Central alkalmazásban.
-1. Lekéri a nyilvános tárházból közzétett és hitelesített képességmodellek.
+## <a name="automatically-associate-with-a-device-template"></a>Automatikus hozzárendelés egy eszköz sablonnal
 
-Az alábbiakban a formátum a további hasznos teher a készülék küld során a DPS regisztrációs hívás
+A IoT Central egyik fő funkciója az, hogy az eszközök automatikusan az eszköz kapcsolatain legyenek hozzárendelve. Az eszköz hitelesítő adataival együtt az eszközök **CapabilityModelId** is küldhetnek az eszköz regisztrációs hívásának részeként. A **CapabilityModelID** egy urn, amely az eszköz által megvalósított képességi modellt azonosítja. A IoT Central alkalmazás a **CapabilityModelID** segítségével azonosítja a használni kívánt sablont, majd automatikusan társítja az eszközt az eszköz sablonnal. A felderítési folyamat a következőképpen működik:
+
+1. Ha az eszköz sablonja már közzé van téve a IoT Central alkalmazásban, az eszköz társítva van az eszköz sablonnal.
+1. Az előre hitelesített IoT Plug and Play eszközök esetében, ha az eszköz sablonja még nincs közzétéve a IoT Central alkalmazásban, a rendszer beolvassa az eszköz sablonját a nyilvános tárházból.
+
+Az alábbi kódrészletek a további hasznos adatok formátumát jelenítik meg, amelyeket az eszköznek a DPS regisztrációs hívása során kell elküldeni az automatikus társítás működéséhez.
+
+Ez a formátum olyan eszközök esetében, amelyek az általánosan elérhető SDK-t használják, amely nem támogatja a IoT Plug and Play:
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+A IoT Plug and Playt támogató nyilvános előzetes verziójú SDK-t használó eszközök formátuma:
 
 ```javascript
 '__iot:interfaces': {
@@ -197,36 +205,36 @@ Az alábbiakban a formátum a további hasznos teher a készülék küld során 
 ```
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **felügyeleti > eszközkapcsolat** **automatikus jóváhagyása** beállítást engedélyezni kell ahhoz, hogy az eszközök automatikusan csatlakozzanak, felderítsék az eszközsablont, és megkezdhessék az adatok küldését.
+> Az **automatikus jóváhagyás** lehetőséget a **felügyelet > az eszköz kapcsolatát** engedélyezni kell az eszközök automatikus csatlakoztatásához, az eszköz-sablon felderítéséhez és az adatok küldésének megkezdéséhez.
 
-## <a name="device-status-values"></a>Eszköz állapotértékei
+## <a name="device-status-values"></a>Eszköz állapotának értékei
 
-Amikor egy valódi eszköz csatlakozik az IoT Central alkalmazáshoz, az eszköz állapota a következőképpen változik:
+Ha egy valós eszköz csatlakozik a IoT Central alkalmazáshoz, az eszköz állapota a következőképpen változik:
 
-1. Az eszköz állapota először **Regisztrált**. Ez az állapot azt jelenti, hogy az eszköz az IoT Centralban jön létre, és rendelkezik egy eszközazonosítóval. Az eszköz akkor van regisztrálva, ha:
-    - Egy új valódi eszköz kerül az **Eszközök** lapra.
-    - Az eszközök készlete az **Importálás** az **Eszközök** lapon lapon jelenik meg.
+1. Az eszköz állapota először **regisztrálva**van. Ez az állapot azt jelenti, hogy az eszköz a IoT Centralban jön létre, és rendelkezik egy eszköz azonosítójával. Az eszköz regisztrálása az alábbiak szerint történik:
+    - A rendszer új valódi eszközt ad hozzá az **eszközök** lapon.
+    - Az **eszközök** lapon az **Importálás** használatával adhat hozzá eszközöket.
 
-1. Az eszköz állapota **kiépített,** ha az eszköz, amely csatlakozik az IoT Central alkalmazás érvényes hitelesítő adatokkal befejezi a kiépítési lépést. Ebben a lépésben az eszköz a DPS segítségével automatikusan lekéri a kapcsolati karakterláncot az IoT Central-alkalmazás által használt IoT Hub. Az eszköz most már csatlakozhat az IoT Centralhoz, és megkezdheti az adatok küldését.
+1. Az **Eszközállapot akkor változik, ha a** IoT Central alkalmazáshoz az érvényes hitelesítő adatokkal csatlakozó eszköz befejezi a kiépítési lépést. Ebben a lépésben az eszköz a DPS használatával automatikusan lekéri a IoT Central alkalmazás által használt IoT Hub egy kapcsolódási karakterláncot. Az eszköz most már csatlakozhat IoT Centralhoz, és megkezdheti az adatok küldését.
 
-1. Az operátor blokkolhat egy eszközt. Ha egy eszköz le van tiltva, nem tud adatokat küldeni az IoT Central alkalmazásnak. A letiltott eszközök állapota **Letiltott**. Az operátornak alaphelyzetbe kell állítania az eszközt, mielőtt folytathasa az adatok küldését. Amikor egy operátor felold egy eszközt, az állapot visszatér a korábbi értékéhez, **a Regisztrált** vagy **a Kiépítve**értékhez.
+1. Az operátor letilthat egy eszközt. Ha egy eszköz le van tiltva, nem tud adatküldést küldeni a IoT Central alkalmazásnak. A letiltott eszközök állapota **Letiltva**. Az operátornak vissza kell állítania az eszközt az adatok küldésének folytatásához. Ha egy operátor feloldja egy eszköz zárolását, az állapot visszatér az előző értékre, **regisztrálva** vagy **kiépítve**.
 
-1. Ha az eszköz állapota **Jóváhagyásra vár,** az azt jelenti, hogy az **Automatikus jóváhagyás** beállítás le van tiltva. Az operátornak explicit módon jóvá kell hagynia egy eszközt, mielőtt megkezdene az adatok küldését. Az eszközök nem regisztráltak manuálisan az **Eszközök** lapon, de az érvényes hitelesítő adatokkal összekapcsolteszközök eszközállapota **Várakozás jóváhagyásra**. Az operátorok jóváhagyhatják ezeket az eszközöket az **Eszközök** lapon a **Jóváhagyás** gombbal.
+1. Ha az eszköz **jóváhagyásra vár**, azt jelenti, hogy az **automatikus jóváhagyás** lehetőség le van tiltva. Az operátornak explicit módon jóvá kell hagynia az eszközt az adatok küldésének megkezdése előtt. Az **Eszközök lapon nem** regisztrált eszközök, de az érvényes hitelesítő adatokkal való kapcsolat az eszköz állapota **jóváhagyásra vár**. Az operátorok a **jóváhagyás** gomb használatával hagyhatják jóvá ezeket az eszközöket az **eszközök** lapról.
 
-1. Ha az eszköz állapota **nincs társítva,** az azt jelenti, hogy az IoT Centralhoz csatlakozó eszköz nem rendelkezik társított eszközsablonnal. Ez a helyzet általában a következő esetekben fordul elő:
+1. Ha az eszköz állapota nincs **társítva**, az azt jelenti, hogy a IoT Centralhoz csatlakozó eszközhöz nincs társítva eszköz sablonja. Ez a helyzet általában a következő esetekben fordul elő:
 
-    - Az eszközök egy készlete az **Importálás** az **Eszközök** lapon az eszközsablon megadása nélkül kerül hozzáadásra.
-    - Egy eszköz manuálisan lett regisztrálva az **Eszközök** lapon az eszközsablon megadása nélkül. Az eszköz ezután érvényes hitelesítő adatokkal csatlakozik.  
+    - A Devices ( **eszközök** ) lapon található **Importálás** használatával az eszközök egy készlete lesz hozzáadva az eszköz sablonjának megadása nélkül.
+    - Egy eszköz regisztrálása manuálisan megtörténjen az **eszközök** lapon az eszköz sablonjának meghatározása nélkül. Az eszköz ezután érvényes hitelesítő adatokkal csatlakozik.  
 
-    Az Operátor az Áttelepítés **gombbal** társíthat egy eszközt egy eszközsablonhoz az **Eszközök** lapon.
+    Az operátor az **eszközök** lapon az **áttelepítés** gomb használatával rendelheti hozzá az eszközt az eszközhöz.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Ne őrizzük meg, és ne gyorsítótárazd azt az eszközkapcsolati karakterláncot, amelyet a DPS az eszköz első csatlakoztatásakor ad vissza. Eszköz újracsatlakoztatásához menjen át a szabványos eszközregisztrációs folyamaton a megfelelő eszközkapcsolati karakterlánc beírásához. Ha az eszköz gyorsítótárazza a kapcsolati karakterláncot, az eszközszoftver egy elavult kapcsolati karakterlánc kockázatának indul, ha az IoT Central frissíti az alapul szolgáló Azure IoT hubot, amelyet használ.
+Ne maradjon meg vagy ne gyorsítótárazza azt az eszköz-kapcsolati karakterláncot, amelyet a DPS az eszköz első csatlakoztatásakor ad vissza. Ha újra szeretne csatlakozni egy eszközhöz, folytassa a szabványos eszköz regisztrációs folyamatán a megfelelő eszköz kapcsolati karakterlánc beszerzéséhez. Ha az eszköz gyorsítótárazza a kapcsolódási karakterláncot, az eszköz szoftvere egy elavult kapcsolódási karakterláncot használ, ha IoT Central frissíti a mögöttes Azure IoT hub-t.
 
 ## <a name="sdk-support"></a>SDK-támogatás
 
-Az Azure Device SDK-k a legegyszerűbb módja az eszközkód megvalósításához. A következő eszköz SDK-k érhetők el:
+Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló legegyszerűbb megoldást nyújtanak. A következő eszköz-SDK-k érhetők el:
 
 - [C nyelvhez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-c)
 - [Pythonhoz készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-python)
@@ -234,44 +242,44 @@ Az Azure Device SDK-k a legegyszerűbb módja az eszközkód megvalósításáho
 - [Javához készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
 - [.NET-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
 
-### <a name="sdk-features-and-iot-hub-connectivity"></a>Az SDK-funkciók és az IoT Hub-kapcsolat
+### <a name="sdk-features-and-iot-hub-connectivity"></a>Az SDK szolgáltatásai és IoT Hub kapcsolat
 
-Az IoT Hubbal folytatott összes eszközkommunikáció az alábbi IoT Hub-csatlakozási lehetőségeket használja:
+A IoT Hub az összes eszköz kommunikációja a következő IoT Hub kapcsolódási lehetőségeket használja:
 
-- [Eszközről felhőbe irányuló üzenetküldés](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [Eszközről a felhőbe irányuló üzenetkezelés](../../iot-hub/iot-hub-devguide-messages-d2c.md)
 - [Eszköz ikrek](../../iot-hub/iot-hub-devguide-device-twins.md)
 
-Az alábbi táblázat összefoglalja, hogy az Azure IoT Central eszköz funkciók hogyan felelnek meg az IoT Hub funkcióinak:
+Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkciói hogyan képezhetők le IoT Hub funkciókra:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Telemetria | Eszközről felhőbe irányuló üzenetküldés |
-| Tulajdonság | Az ikereszköz jelentett tulajdonságai |
-| Tulajdonság (írható) | Az ikereszköz kívánt és jelentett tulajdonságai |
+| Telemetria | Eszközről a felhőbe irányuló üzenetkezelés |
+| Tulajdonság | Eszköz kettős jelentett tulajdonságai |
+| Tulajdonság (írható) | Az eszköz Twin kívánt és jelentett tulajdonságai |
 | Parancs | Közvetlen metódusok |
 
-Ha többet szeretne megtudni az Eszköz SDK-k használatáról, olvassa [el a DevDiv-készlet eszközcsatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-devkit.md) például.
+Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [DevDiv-készlet eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit.md) , például kód című témakört.
 
 ### <a name="protocols"></a>Protokollok
 
-Az Eszköz SDK-k a következő hálózati protokollokat támogatják az IoT-központhoz való csatlakozáshoz:
+Az eszköz SDK-k a következő hálózati protokollokat támogatják az IoT hubhoz való csatlakozáshoz:
 
 - MQTT
 - AMQP
 - HTTPS
 
-Ezekről a különbségekről szóló protokollokról és a választható protokollról a [Kommunikációs protokoll kiválasztása című](../../iot-hub/iot-hub-devguide-protocols.md)témakörben talál további információt.
+További információ ezekről a különbségi protokollokról és az első kiválasztásáról: [kommunikációs protokoll kiválasztása](../../iot-hub/iot-hub-devguide-protocols.md).
 
-Ha az eszköz nem tudja használni a támogatott protokollok, használhatja az Azure IoT Edge protokollátalakítás. Az IoT Edge támogatja a többi intelligencia-on-the-edge forgatókönyvek a feldolgozás kiürítése a peremhálózati azure IoT Central alkalmazásból.
+Ha az eszköz nem tudja használni a támogatott protokollokat, az Azure IoT Edge használatával végezheti el a protokollok átalakítását. A IoT Edge támogatja a más, az Azure IoT Central alkalmazásban az Edge-be való kiszervezéshez szükséges egyéb hírszerzési forgatókönyveket.
 
 ## <a name="security"></a>Biztonság
 
-Az eszközök és az Azure IoT Central között kicserélt összes adat titkosítva van. Az IoT Hub hitelesíti az eszközről érkező minden kérelmet, amely az eszköz felé néző IoT Hub-végpontokhoz csatlakozik. A hitelesítő adatok cseréje a vezetéken keresztül, egy eszköz aláírással aláírt jogkivonatokat használ a hitelesítéshez. További információt az [IoT Hubhoz való hozzáférés szabályozása](../../iot-hub/iot-hub-devguide-security.md)című témakörben talál.
+Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 
-- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)
-- Ismerje meg, hogyan [definiálhat egy új IoT-eszköztípust az Azure IoT Central alkalmazásban](./howto-set-up-template.md)
-- Olvasson az [Azure IoT Edge-eszközökről és az Azure IoT Centralról](./concepts-iot-edge.md)
+- Ismerje meg, hogyan [figyelheti az eszközök kapcsolatát az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)
+- Ismerje meg, hogyan [határozhat meg új IoT-típust az Azure IoT Central-alkalmazásban](./howto-set-up-template.md)
+- További információ a [Azure IoT Edge eszközökről és az Azure IoT Central](./concepts-iot-edge.md)

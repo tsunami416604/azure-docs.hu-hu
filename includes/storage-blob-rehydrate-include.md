@@ -11,18 +11,18 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: fc5f4d2c10cac23600025a72fedf7fe2cec5a34e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684093"
 ---
-Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob szintjét a gyakran vagy ritkán használt adatok tárolási szintjére. Ezt a folyamatot rehidratálásnak nevezik, és órákig is eltarthat. Nagy blobméretek az optimális rehidratálási teljesítmény érdekében javasoljuk. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe. Jelenleg két rehidratálási prioritás, a Magas és a Normál, amely az opcionális *x-ms-rehidratálás-prioritású* tulajdonsággal állítható be egy [Blob-szint](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) vagy [blob másolása](https://docs.microsoft.com/rest/api/storageservices/copy-blob) műveleten keresztül.
+Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob szintjét a gyakran vagy ritkán használt adatok tárolási szintjére. Ez a folyamat rehidratálás néven ismert, és órákig elvégezhető. Javasoljuk, hogy nagy méretű blobokat biztosítson az optimális rehidratáló teljesítmény érdekében. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe. Jelenleg két rehidratált prioritás van, a magas és a standard, amely az opcionális *x-MS-rehidratálás-priority* tulajdonsággal állítható be a [blob-rétegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) , vagy [másolási blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) művelet.
 
-* **Szokásos prioritás:** A rehidratálási kérelem a beérkezés sorrendjében kerül feldolgozásra, és akár 15 órát is igénybe vehet.
-* **Kiemelt fontosságú:** A rehidratálási kérelem elsőbbséget élvez a standard kérelmek, és befejezheti 1 órán belül befejeződhet. A blob méretétől és az aktuális igénytől függően a magas prioritású blob mérete és az aktuális igény több mint 1 órát is igénybe vehet. A magas prioritású kérelmek garantáltan elsőbbséget élveznek a standard prioritási kérelmekel szemben.
+* **Standard prioritás**: a rehidratálás kérése a kapott sorrendben lesz feldolgozva, és akár 15 órát is igénybe vehet.
+* **Magas prioritás**: a rehidratálás kérése a standard kérelmekre lesz rangsorolva, és 1 órán belül befejeződik. A magas prioritás a blob méretétől és a jelenlegi igényektől függően 1 óránál hosszabb időt vehet igénybe. A magas prioritású kérelmek garantáltan elsőbbséget élveznek a Normál prioritású kérelmekhez képest.
 
 > [!NOTE]
-> A normál prioritás az archiválás alapértelmezett rehidratálási lehetősége. A magas prioritású egy gyorsabb lehetőség, amely többe kerül, mint a standard prioritású rehidratálás, és általában vészhelyzeti adat-visszaállítási helyzetekben való használatra van fenntartva.
+> A standard prioritás az archiválás alapértelmezett újraszárítási beállítása. A magas prioritású megoldás gyorsabb, mint a Normál prioritású rehidratálás, és általában a vészhelyzeti adat-visszaállítási helyzetekben való használatra van fenntartva.
 
-A rehidratációs kérelem kezdeményezése után nem lehet visszavonni. A rehidratálási folyamat során az *x-ms-access-tier* blob tulajdonság továbbra is megjelenik az archívum, amíg a rehidratálás befejeződött egy online réteg. A rehidratálás állapotának és előrehaladásának megerősítéséhez hívhatja a [Blob-tulajdonságok begetése parancsot](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties) az *x-ms-archív állapot* és az *x-ms-rehidratálás-prioritású* blob tulajdonságok ellenőrzéséhez. Az archívum állapota a rehidratálási célszinttől függően a "rehidratálás-függőben lévő-forró" vagy a "rehidratálás-függőben lévő-to-cool" felirat olvasható. A rehidratálási prioritás a "Magas" vagy "Standard" sebességet jelzi. Befejezését követően az archív állapot és a prioritási tulajdonságok újrahidratálása, és a hozzáférési szint blob tulajdonság frissül, hogy tükrözze a kiválasztott gyakori vagy ritka elérésű szint.
+A rehidratálás kérésének kezdeményezése után nem lehet megszakítani. A rehidratálás folyamata során az *x-MS-Access-réteg* blob tulajdonsága továbbra is archívumként fog megjelenni, amíg a rehidratálás online szintre nem kerül. A rehidratálás állapotának és előrehaladásának ellenőrzéséhez hívhatja le a [blob tulajdonságait](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties) , hogy ellenőrizze az *x-MS-Archive-status* és az *x-MS-rehidratálás-prioritás* blob tulajdonságait. Az Archívum állapota a rehidratálás-függőben lévők és a "rehidratálás – függőben" állapotot olvashatja a rehidratálás rendeltetési szintjétől függően. A rehidratálás prioritása a "magas" vagy a "standard" sebességét jelzi. Befejezésekor a rendszer eltávolítja az archiválási állapotot és a rehidratált prioritási tulajdonságokat, és a hozzáférési réteg blob tulajdonsága frissül, hogy tükrözze a kiválasztott gyors vagy ritka szintet.

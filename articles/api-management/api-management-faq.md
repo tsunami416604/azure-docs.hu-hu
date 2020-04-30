@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335975"
+ms.locfileid: "82233482"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>Kapcsolat
-* [Hogyan kérhetem le a Microsoft Azure API Management a csapatot?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 * [Mit jelent, ha egy funkció előzetes verzióban van?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -48,15 +45,8 @@ Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és aj�
 * [Áthelyezhetek egy API Management szolgáltatást az egyik előfizetésből egy másikba?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [Van korlátozás vagy ismert probléma az API-k importálásakor?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Hogyan kérhetem le a Microsoft Azure API Management a csapatot?
-A következő lehetőségek egyikének használatával felveheti velünk a kapcsolatot:
-
-* Tegye fel kérdéseit a [API Management MSDN-fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
-* Küldjön egy e-mailt a következő címre: <mailto:apimgmt@microsoft.com>.
-* Küldjön nekünk egy szolgáltatási kérelmet az [Azure feedback fórumában](https://feedback.azure.com/forums/248703-api-management).
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Mit jelent, ha egy funkció előzetes verzióban van?
-Ha egy funkció előzetes verzióban érhető el, az azt jelenti, hogy aktívan keresünk visszajelzést arról, hogy a szolgáltatás hogyan működik. Az előzetes verzióban egy funkció működik, de lehetséges, hogy a vásárlói visszajelzésekre adott válaszként feltörhető változást teszünk elérhetővé. Azt javasoljuk, hogy ne függjön az éles környezetben előzetes verzióban elérhető szolgáltatástól. Ha visszajelzést szeretne küldeni az előzetes verziójú szolgáltatásokról, tudassa velünk az egyik kapcsolatfelvételi lehetőséggel, [hogy hogyan kérhetem a Microsoft Azure API Management a csapatot? című témakört](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question).
+Ha egy funkció előzetes verzióban érhető el, az azt jelenti, hogy aktívan keresünk visszajelzést arról, hogy a szolgáltatás hogyan működik. Az előzetes verzióban egy funkció működik, de lehetséges, hogy a vásárlói visszajelzésekre adott válaszként feltörhető változást teszünk elérhetővé. Azt javasoljuk, hogy ne függjön az éles környezetben előzetes verzióban elérhető szolgáltatástól.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hogyan védhetem meg a kapcsolatot az API Management-átjáró és a háttérszolgáltatások között?
 Több lehetőség áll rendelkezésére a kapcsolat biztonságossá tételéhez a API Management-átjáró és a háttér-szolgáltatások között. A következőket teheti:

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60757747"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561639"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a VMware-ben
 
@@ -21,7 +21,7 @@ ms.locfileid: "60757747"
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet Data Box Gatewayt kiépíteni egy VMware ESXi 6,0, 6,5 vagy 6,7 operációs rendszert futtató gazdagépen. 
 
-A virtuális eszközök üzembe helyezéséhez és a hozzájuk való csatlakozáshoz rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe.
+A virtuális eszközök üzembe helyezéséhez és a hozzájuk való csatlakozáshoz rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

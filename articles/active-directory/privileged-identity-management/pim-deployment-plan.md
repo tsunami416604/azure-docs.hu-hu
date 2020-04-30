@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025996"
+ms.locfileid: "82233533"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -325,7 +325,7 @@ Ezt a szakaszt kell használnia annak ellenőrzéséhez, hogy a szerepkörökhö
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management kommunikál az érintett felekkel
 
-A Privileged Identity Management üzembe helyezése további lépéseket fog bevezetni a Kiemelt szerepkörök felhasználói számára. Habár Privileged Identity Management nagy mértékben csökkenti a Kiemelt identitásokkal kapcsolatos biztonsági problémákat, a változást a bérlői szintű üzembe helyezés előtt hatékonyan kell közölni. A befolyásolt rendszergazdák számától függően a szervezetek gyakran belső dokumentumot, videót vagy e-mailt hoznak létre a változásról. A közleményekben gyakran szerepelnek a következők:
+A Privileged Identity Management üzembe helyezése további lépéseket fog bevezetni a Kiemelt szerepkörök felhasználói számára. Bár a Privileged Identity Management nagy mértékben csökkenti a Kiemelt identitásokkal kapcsolatos biztonsági problémákat, a változást a szervezet teljes körű üzembe helyezése előtt hatékonyan kell közölni. A befolyásolt rendszergazdák számától függően a szervezetek gyakran belső dokumentumot, videót vagy e-mailt hoznak létre a változásról. A közleményekben gyakran szerepelnek a következők:
 
 - Mi az a PIM?
 - Milyen előnyökkel jár a szervezet számára
@@ -371,7 +371,7 @@ A Privileged Identity Management éles környezetben történő üzembe helyezé
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Az emelt szintű hozzáférés védelme Privileged Identity Management riasztások használatával
 
-A bérlők hatékonyabb védelme érdekében a Privileged Identity Management beépített riasztási funkcióit kell használnia. További információ: [biztonsági riasztások](pim-how-to-configure-security-alerts.md#security-alerts). Ezek a riasztások a következők: a rendszergazdák nem Kiemelt szerepköröket használnak, a szerepköröket a Privileged Identity Managementon kívül kell kiosztani, a szerepköröket túl gyakran aktiválják. A szervezet teljes körű védelem érdekében rendszeresen menjen végig a riasztások listáján, és javítsa ki a problémákat. A riasztásokat a következő módon tekintheti meg és javíthatja:
+A szervezete hatékonyabb védelme érdekében Privileged Identity Management beépített riasztási funkcióit kell használnia. További információ: [biztonsági riasztások](pim-how-to-configure-security-alerts.md#security-alerts). Ezek a riasztások a következők: a rendszergazdák nem Kiemelt szerepköröket használnak, a szerepköröket a Privileged Identity Managementon kívül kell kiosztani, a szerepköröket túl gyakran aktiválják. A szervezet teljes körű védelem érdekében rendszeresen menjen végig a riasztások listáján, és javítsa ki a problémákat. A riasztásokat a következő módon tekintheti meg és javíthatja:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Nyissa meg **Azure ad Privileged Identity Management**.

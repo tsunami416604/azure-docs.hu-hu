@@ -1,30 +1,25 @@
 ---
-title: Saját üzemeltetésű Azure API Management Gateway – áttekintés | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a szervezetek az API-kat a hibrid és a többfelhős környezetekben a saját üzemeltetésű Azure API Management Gateway segítségével.
+title: Saját üzemeltetésű átjáró – áttekintés | Microsoft Docs
+description: Ismerje meg, hogy az Azure API Management saját üzemeltetésű átjáró szolgáltatásával hogyan kezelheti a szervezetek az API-kat hibrid és többfelhős környezetekben.
 services: api-management
 documentationcenter: ''
 author: vlvinogr
 manager: gwallace
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73513717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232972"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>Saját üzemeltetésű API Management átjáró áttekintése
+# <a name="self-hosted-gateway-overview"></a>Saját üzemeltetésű átjáró áttekintése
 
-Ez a cikk azt ismerteti, hogy a saját üzemeltetésű átjáró funkció hogyan teszi lehetővé a hibrid és a többfelhős API-felügyeletet, bemutatja a magas szintű architektúrát, és kiemeli annak alapvető képességeit.
-
-> [!NOTE]
-> A saját üzemeltetésű átjáró funkció előzetes verzióban érhető el. Az előzetes verzió ideje alatt a saját üzemeltetésű átjáró csak a fejlesztői és prémium szinteken érhető el, díjmentesen. A fejlesztői réteg egyetlen saját üzemeltetésű átjáróra korlátozódik.
+Ez a cikk azt ismerteti, hogy az Azure API Management saját üzemeltetésű átjáró szolgáltatása hogyan teszi lehetővé a hibrid és a többfelhős API-felügyeletet, bemutatja a magas szintű architektúrát, és kiemeli a képességeit.
 
 ## <a name="hybrid-and-multi-cloud-api-management"></a>Hibrid és többfelhős API Management
 
@@ -42,20 +37,27 @@ Alapértelmezés szerint az összes összetevő üzembe helyezése az Azure-ban 
 
 ![API-forgalom saját üzemeltetésű átjárók nélkül](media/self-hosted-gateway-overview/without-gateways.png)
 
-A saját üzemeltetésű átjárók ugyanazon környezetekben történő üzembe helyezése, mint a háttérbeli API-implementációk, és a API Management szolgáltatáshoz való hozzáadásuk lehetővé teszi, hogy az API-forgalom közvetlenül a háttérbeli API-kra váltson, ami javítja a késést, optimalizálja az adatátviteli költségeket, és lehetővé teszi a megfelelőséget, miközben megőrizheti a szervezeten belüli API-k felügyeletének
+A saját üzemeltetésű átjárók üzembe helyezése azonos környezetekben, ahol a háttérbeli API-implementációk futnak, lehetővé teszi, hogy az API-forgalom közvetlenül a háttérbeli API-khoz áramlson, ami javítja a késést, optimalizálja az adatátviteli költségeket, és lehetővé teszi a megfelelőséget, miközben megőrizte az előnyeit, hogy a megvalósításuk helyétől függetlenül egyetlen felügyeleti, a
 
 ![API-forgalom önkiszolgáló átjárókkal](media/self-hosted-gateway-overview/with-gateways.png)
 
 ## <a name="packaging-and-features"></a>Csomagolás és szolgáltatások
 
-A saját üzemeltetésű átjáró a felügyelt átjáró egy, az Azure-ban üzembe helyezett, funkcionálisan egyenértékű verziója, amely minden API Management szolgáltatás részeként üzemel. A saját üzemeltetésű átjáró Linux-alapú Docker-tárolóként érhető el a Microsoft Container Registry. Üzembe helyezhető a Docker, a Kubernetes, vagy bármely más, asztali, kiszolgálófürt vagy felhőalapú infrastruktúrán futó tároló-előkészítési megoldás esetében.
+A saját üzemeltetésű átjáró a felügyelt átjáró egy, az Azure-ban üzembe helyezett, funkcionálisan egyenértékű verziója, amely minden API Management szolgáltatás részeként üzemel. A saját üzemeltetésű átjáró Linux-alapú Docker- [tárolóként](https://aka.ms/apim/sputnik/dhub) érhető el a Microsoft Container Registry. Üzembe helyezhető a Docker, a Kubernetes, vagy bármely más, a helyszínen, a felhő-infrastruktúrában, illetve a kiértékelési és fejlesztési célokra szolgáló, a személyes számítógépeken futó tároló-előkészítési megoldásban.
 
-> [!IMPORTANT]
-> A felügyelt átjáróban elérhető néhány funkció még nem érhető el előzetes verzióban. A legtöbb esetben: Jelentkezzen be az Event hub-szabályzatba, Service Fabric az integrációt, az alárendelt HTTP/2. A saját üzemeltetésű átjáróban nem érhető el a beépített gyorsítótár elérhetővé tételének terve.
+A felügyelt átjárókban található következő funkciók **nem érhetők el** a saját üzemeltetésű átjárókban:
+
+- Azure Monitor-naplók
+- Felsőbb rétegbeli (háttérbeli) TLS-verzió és titkosítás kezelése
+- Kiszolgálói és Ügyféltanúsítványok ellenőrzése a API Management szolgáltatásba feltöltött [hitelesítésszolgáltatói főtanúsítványok](api-management-howto-ca-certificates.md) használatával. Az egyéni HITELESÍTÉSSZOLGÁLTATÓ támogatásának hozzáadásához vegyen fel egy réteget a saját üzemeltetésű átjáró tárolóba, amely telepíti a HITELESÍTÉSSZOLGÁLTATÓ főtanúsítványát.
+- Integráció a [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
+- TLS-munkamenet folytatása
+- Ügyféltanúsítvány újraegyeztetése. Ez azt jelenti, hogy a munkahelyi [API-felhasználóknak a kezdeti](api-management-howto-mutual-certificates-for-clients.md) TLS-kézfogás részeként be kell mutatniuk a tanúsítványokat. Ennek biztosításához engedélyezze az ügyféltanúsítvány egyeztetése beállítást a saját üzemeltetésű átjáró egyéni állomásnév beállításakor.
+- Beépített gyorsítótár. Ebből a [dokumentumból](api-management-howto-cache-external.md) megtudhatja, hogyan használhatja a külső gyorsítótárat a saját üzemeltetésű átjárókban.
 
 ## <a name="connectivity-to-azure"></a>Csatlakozás az Azure-hoz
 
-A saját üzemeltetésű átjáróhoz a 443-es porton kimenő TCP/IP-kapcsolat szükséges az Azure-hoz. Minden saját üzemeltetésű átjárót egyetlen API Management szolgáltatáshoz kell társítani, és a felügyeleti síkon keresztül kell konfigurálni. A saját üzemeltetésű átjáró az Azure-hoz való kapcsolódást használja a következőhöz:
+A saját üzemeltetésű átjárók a 443-es porton keresztül kimenő TCP/IP-kapcsolatot igényelnek az Azure-hoz. Minden saját üzemeltetésű átjárót egyetlen API Management szolgáltatáshoz kell társítani, és a felügyeleti síkon keresztül kell konfigurálni. A saját üzemeltetésű átjáró az Azure-hoz való kapcsolódást használja a következőhöz:
 
 -   Az állapot jelentése percenkénti szívverési üzenetek küldésével
 -   Rendszeres ellenőrzés (10 másodpercenként) és konfigurációs frissítések alkalmazása, ha elérhetők
@@ -64,22 +66,22 @@ A saját üzemeltetésű átjáróhoz a 443-es porton kimenő TCP/IP-kapcsolat s
 
 Ha az Azure-kapcsolat megszakad, a saját üzemeltetésű átjáró nem tudja fogadni a konfigurációs frissítéseket, jelenteni annak állapotát, vagy fel kell töltenie a telemetria.
 
-A saját üzemeltetésű átjáró úgy lett kialakítva, hogy "nem statikus", és képes túlélni az Azure-hoz való kapcsolódás ideiglenes elvesztését. A szolgáltatás a helyi konfiguráció biztonsági másolatának bekapcsolásával vagy anélkül is üzembe helyezhető. Az előző esetben a saját üzemeltetésű átjárók rendszeresen mentik a konfiguráció biztonsági másolatát a tárolóhoz vagy a podhez csatolt állandó köteten.
+A saját üzemeltetésű átjáró úgy lett kialakítva, hogy "nem statikus", és képes túlélni az Azure-hoz való kapcsolódás ideiglenes elvesztését. Helyi konfiguráció biztonsági mentéssel vagy anélkül is üzembe helyezhető. A korábbi esetekben a saját üzemeltetésű átjárók rendszeresen mentik a legújabb letöltött konfiguráció biztonsági másolatát a tárolóhoz vagy Pod-hoz csatolt állandó köteten.
 
 Ha a konfiguráció biztonsági mentése ki van kapcsolva, és az Azure-kapcsolat megszakadt:
 
--   A-t futtató saját üzemeltetésű átjárók továbbra is működni fognak a konfiguráció memóriában tárolt példányával.
+-   A saját üzemeltetésű átjárók futtatása továbbra is működni fog a konfiguráció memóriában tárolt példányával.
 -   A saját üzemeltetésű átjárók leállítása nem fog tudni elindulni
 
 Ha a konfigurációs biztonsági mentés be van kapcsolva, és az Azure-kapcsolat megszakadt:
 
--   A-t futtató saját üzemeltetésű átjárók továbbra is működni fognak a konfiguráció memóriában tárolt példányával.
--   A saját üzemeltetésű átjárók leállítása a konfiguráció biztonsági másolatát fogja használni
+-   A saját üzemeltetésű átjárók futtatása továbbra is működni fog a konfiguráció memóriában tárolt példányával.
+-   A saját üzemeltetésű átjárók leállítása a konfiguráció biztonsági másolatának használatával megkezdhető
 
 Ha a kapcsolat helyreáll, a leállás által érintett összes saját üzemeltetésű átjáró automatikusan újra csatlakozik a társított API Management szolgáltatáshoz, és letölti az összes olyan konfigurációs frissítést, amely az átjáró kapcsolat nélküli üzemmódban történt.
 
 ## <a name="next-steps"></a>További lépések
 
 -   [A témakör további hátteréről szóló tanulmány elolvasása](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [Saját üzemeltetésű átjáró üzembe helyezése a Docker-ben](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [Saját üzemeltetésű átjáró üzembe helyezése a Kubernetes-ben](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [Saját üzemeltetésű átjáró üzembe helyezése a Docker-ben](how-to-deploy-self-hosted-gateway-docker.md)
+-   [Saját üzemeltetésű átjáró üzembe helyezése a Kubernetes-ben](how-to-deploy-self-hosted-gateway-kubernetes.md)

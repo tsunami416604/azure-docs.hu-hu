@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010545"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509669"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -64,6 +64,9 @@ A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript pro
 ### <a name="data-consistency"></a>Adatkonzisztencia
 
 A tárolt eljárásokat és eseményindítókat mindig az Azure Cosmos-tároló elsődleges replikáján hajtja végre a rendszer. Ez a funkció biztosítja, hogy a tárolt eljárásokból beolvasott adatok [erős konzisztenciát](consistency-levels-tradeoffs.md)biztosítanak. A felhasználó által definiált függvényeket használó lekérdezések az elsődleges vagy bármely másodlagos replikán hajthatók végre. A tárolt eljárások és eseményindítók a tranzakciós írások támogatásához szükségesek. a csak olvasási logikát az [Azure Cosmos db SQL API SDK](sql-api-dotnet-samples.md)-k használatával lehet legjobban megvalósítani az alkalmazás-és a lekérdezésekben, az adatbázis átviteli sebességének csökkentése érdekében. 
+
+> [!TIP]
+> Előfordulhat, hogy a tárolt eljáráson vagy triggeren belül végrehajtott lekérdezések nem látják az azonos parancsfájl-tranzakció által létrehozott elemek módosításait. Ez az utasítás az SQL-lekérdezésekre, például `getContent().getCollection.queryDocuments()`a-re, valamint az integrált nyelvi lekérdezésekre `getContext().getCollection().filter()`is vonatkozik, például:.
 
 ## <a name="bounded-execution"></a>Kötött végrehajtás
 

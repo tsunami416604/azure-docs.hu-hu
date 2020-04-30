@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/23/2020
-ms.openlocfilehash: 8380cfcbf267b117108d46794153bd5a61b8ec6a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116230"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232887"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -200,9 +200,9 @@ A [fürt kezdőlapján](#homePage):
 
 A jelszó a fürt összes csomópontján módosul.
 
-### <a name="change-the-ssh-user-password"></a>Az SSH-felhasználó jelszavának módosítása
+### <a name="change-the-ssh-user-password-or-public-key"></a>Az SSH-felhasználó jelszavának vagy nyilvános kulcsának módosítása
 
-1. Egy szövegszerkesztővel mentse az alábbi szöveget egy **ChangePassword.sh**nevű fájlba.
+1. Egy szövegszerkesztővel mentse az alábbi szöveget egy **changecredentials.sh**nevű fájlba.
 
     > [!IMPORTANT]  
     > Olyan szerkesztőt kell használnia, amely a TT-t használja a vonal végeként. Ha a szerkesztő CRLF használ, akkor a parancsfájl nem működik.
@@ -222,13 +222,13 @@ A jelszó a fürt összes csomópontján módosul.
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Name (Név) |"SSH-jelszó módosítása" |
-   | Bash-parancsfájl URI-ja |A changepassword.sh-fájl URI-ja |
+   | Name (Név) |"SSH hitelesítő adatok módosítása" |
+   | Bash-parancsfájl URI-ja |A changecredentials.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. Az SSH-jelszavak nem támogatják a következő karaktereket: "" "/\ <% ~ | $ &
    | A parancsfájl megtartása művelet... |Hagyja üresen ezt a mezőt. |
 
-6. Válassza a **Létrehozás** elemet a parancsfájl alkalmazásához. A szkript befejeződése után az SSH használatával csatlakozhat a fürthöz az új jelszóval.
+6. Válassza a **Létrehozás** elemet a parancsfájl alkalmazásához. A szkript befejeződése után az SSH-val az új hitelesítő adatokkal tud csatlakozni a fürthöz.
 
 ## <a name="find-the-subscription-id"></a>Az előfizetés AZONOSÍTÓjának megkeresése
 

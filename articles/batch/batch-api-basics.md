@@ -4,12 +4,12 @@ description: Megismerheti a Batch szolgáltatás funkcióit és API-jait a fejle
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc04c49521c9d91ef836c4d1dba76091db8f16a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115380"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509193"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -429,7 +429,7 @@ A méretezési képletek a következő mérőszámokon alapulhatnak:
 * Az **erőforrás-mérőszámok** a CPU-használat, a sávszélesség-használat, a memóriahasználat és a csomópontok száma alapján számíthatók ki.
 * A **tevékenységmetrikák** alapját a tevékenységállapotok, például *Aktív* (sorban áll), *Fut* vagy *Befejezve* képezik.
 
-Amikor az automatikus skálázás csökkenti a készletben működő csomópontok számát, érdemes megfontolni, hogy mi történjen a csökkentési művelet idején még futó tevékenységekkel. A Batch *csomópont-felszabadítási funkciót* kínál ennek megkönnyítésére, amelyet felvehet a képletbe. Megadhatja például, hogy a rendszer azonnal leállítsa a futó tevékenységeket, majd egy másik csomóponton sorba állítsa a tevékenységeket végrehajtás céljából, vagy hagyja őket lefutni, és csak ezután távolítsa el a csomópontot a készletből.
+Amikor az automatikus skálázás csökkenti a készletben működő csomópontok számát, érdemes megfontolni, hogy mi történjen a csökkentési művelet idején még futó tevékenységekkel. Ennek elvégzéséhez a Batch olyan [*csomópont-felszabadítási lehetőséget*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) biztosít, amelyet felvehet a képletbe. Megadhatja például, hogy a rendszer azonnal leállítsa a futó tevékenységeket, majd egy másik csomóponton sorba állítsa a tevékenységeket végrehajtás céljából, vagy hagyja őket lefutni, és csak ezután távolítsa el a csomópontot a készletből. Vegye figyelembe, hogy a csomópont felszabadítási beállításának beállítása másként `taskcompletion` , vagy `retaineddata` megakadályozza a készlet átméretezési műveleteit, amíg az összes tevékenység be nem fejeződik, vagy az összes feladat megőrzése időszaka lejárt.
 
 Az alkalmazások automatikus méretezésével kapcsolatos további információért lásd: [Számítási csomópontok automatikus méretezése egy Azure Batch-készletben](batch-automatic-scaling.md).
 

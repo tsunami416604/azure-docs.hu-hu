@@ -5,14 +5,14 @@ keywords: app service, azure app service, tartomány-hozzárendelés, tartomány
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811789"
+ms.locfileid: "82559920"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -93,6 +93,12 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>Tartomány-ellenőrzési azonosító lekérése
+
+Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a tartomány tulajdonjogát úgy, hogy egy ellenőrző azonosítót ad hozzá TXT-rekordként a tartományi szolgáltatóhoz. Az alkalmazás bal oldali navigációs sávján kattintson az **erőforrás-kezelő** elemre a **fejlesztői eszközök**területen, majd kattintson az **Ugrás**gombra.
+
+Az alkalmazás tulajdonságainak JSON-nézetében keresse meg `customDomainVerificationId`a kifejezést, és másolja az értékét idézőjelek közé. Erre az ellenőrző AZONOSÍTÓra szüksége lesz a következő lépéshez.
+
 ## <a name="map-your-domain"></a>Saját tartomány leképezése
 
 Az egyéni DNS-neveket **CNAME rekordok** vagy **A rekordok** használatával is leképezheti az App Service-re. Hajtsa végre a megfelelő lépéseket:
@@ -114,11 +120,14 @@ Az oktatóanyag példájában a `www` altartományhoz (például `www.contoso.co
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Adjon hozzá egy CNAME-rekordot egy altartománynak az alkalmazás alapértelmezett tartománynevéhez való hozzárendeléséhez`<app_name>.azurewebsites.net`( `<app_name>` ahol az az alkalmazás neve).
+Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (`<app_name>.azurewebsites.net`ahol `<app_name>` az az alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
-A `www.contoso.com` tartomány példája esetében adjon hozzá egy CNAME rekordot, amely a `www` előtagot az `<app_name>.azurewebsites.net` elemre képezi le.
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
+| TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
 
-Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:
+A CNAME és TXT rekordok hozzáadása után a DNS-rekordok oldal a következő példához hasonlóan néz ki:
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 
 #### <a name="create-the-a-record"></a>Az A rekord létrehozása
 
-Ha egy A rekordot egy alkalmazásra kíván leképezni, az App Service-nek **két** DNS-rekordra van szüksége:
+Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfelső szintű tartományhoz, hozzon létre két rekordot:
 
-- egy **A** rekordra, amelyet leképezhet az alkalmazás IP-címére.
-- Egy **txt** -rekord, amely az alkalmazás alapértelmezett tartománynevére van `<app_name>.azurewebsites.net`leképezve. Az App Service ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
-
-Az `contoso.com` tartomány példájában a következő táblának megfelelően hozza létre az A és a TXT típusú rekordot (a `@` általában a gyökértartományt jelöli).
-
-| Rekordtípus | Gazdagép | Érték |
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
-| A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés`@` (általában a legfelső szintű tartományt jelenti). |
+| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja `asuid`a következőt:. |
 
 > [!NOTE]
 > Egy altartomány (például `www.contoso.com`) egy, az ajánlott CNAME- [rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a REKORDnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
@@ -201,7 +205,7 @@ Az `contoso.com` tartomány példájában a következő táblának megfelelően 
 > | Rekordtípus | Gazdagép | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 A rekordok hozzáadása után a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:

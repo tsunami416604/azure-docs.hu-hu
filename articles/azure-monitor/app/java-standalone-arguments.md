@@ -3,12 +3,12 @@ title: Bármilyen környezetben futó Java-alkalmazások figyelése – Azure Mo
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz a Java önálló ügynökkel az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641874"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508037"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
 
@@ -20,15 +20,25 @@ ms.locfileid: "81641874"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Adja hozzá a JVM `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` ARG `-jar <myapp.jar>`-t valahol, például:
+Adja hozzá a JVM `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` ARG `-jar`-t valahol, például:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-> [!NOTE]
-> A `-jar <myapp.jar>` rendszer a következő argumentumokat adja át az alkalmazásnak program argumentumként.
+## <a name="spring-boot-via-docker-entry-point"></a>Spring boot a Docker belépési pontján keresztül
 
+Ha az *exec* űrlapot használja, adja hozzá `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` a paramétert a paraméterhez a paraméter előtt `"-jar"` (például:).
+
+```
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
+```
+
+Ha a *rendszerhéj* -űrlapot használja, adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`-t valahol, például:
+
+```
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
+```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 

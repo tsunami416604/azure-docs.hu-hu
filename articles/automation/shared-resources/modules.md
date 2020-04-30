@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114274"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508955"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -21,8 +21,9 @@ Azure Automation lehetővé teszi a PowerShell-modulok importálását a runbook
 
 * [Azure PowerShell az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
-* Belső `Orchestrator.AssetManagement.Cmdlets` modul a Windows log Analytics ügynökéhez
 * Egyéb PowerShell-modulok
+* Belső `Orchestrator.AssetManagement.Cmdlets` modul
+* Python 2 modulok
 * Létrehozott egyéni modulok 
 
 Automation-fiók létrehozásakor a Azure Automation alapértelmezés szerint importál egyes modulokat. Lásd: [alapértelmezett modulok](#default-modules).
@@ -96,9 +97,13 @@ Vegye figyelembe, hogy a belső parancsmagok eltérnek az az és a AzureRM paran
 
 Azt javasoljuk, hogy az az vagy az AzureRM parancsmagot használja a runbook környezetén kívüli Azure Automation-erőforrások kezeléséhez. 
 
-## <a name="module-supporting-get-automationpscredential"></a>A Get-AutomationPSCredential támogató modul
+## <a name="orchestratorassetmanagementcmdlets-module"></a>Orchestrator. AssetManagement. parancsmagok modul
 
-A `Get-AutomationPSCredential` parancsmag a modul `Orchestrator.AssetManagement.Cmdlets`részét képezi. Ez a parancsmag egy `PSCredential` objektumot ad vissza, amelyet a legtöbb, a hitelesítő adatokkal működő PowerShell-parancsmag várt. Ha többet szeretne megtudni a hitelesítő adatok használatáról a Azure Automationban, tekintse meg a [hitelesítő adatok a Azure Automationban](credentials.md)című témakört.
+Azure Automation támogatja a Windows `Orchestrator.AssetManagement.Cmdlets` rendszerhez készült log Analytics Agent belső modulját, alapértelmezés szerint telepítve. Az `Get-AutomationPSCredential` ebben a modulban lévő parancsmagot általában a runbookok-ben `PSCredential` használják egy objektum lekérésére, amelyet a hitelesítő adatokkal működő legtöbb PowerShell-parancsmag várt. Ha többet szeretne megtudni a hitelesítő adatok használatáról a Azure Automationban, tekintse meg a [hitelesítő adatok a Azure Automationban](credentials.md)című témakört.
+
+## <a name="python-modules"></a>Python-modulok
+
+Azure Automation a Python 2 runbookok is létrehozhatja. A Python-modulok információit lásd: [a Python 2 csomagok kezelése Azure Automationban](../python-packages.md).
 
 ## <a name="migrating-to-az-modules"></a>Áttelepítés az az modulokba
 
@@ -117,7 +122,7 @@ Az az modul az Automation-fiókba való importálása nem importálja automatiku
 * Amikor egy runbook meghívja a parancsmagot egy modulból
 * Ha egy runbook explicit módon importálja a modult az [import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) parancsmaggal
 * Ha egy runbook egy másik függő modult importál
-    
+
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>A runbookok és a DSC-konfigurációk tesztelése a modul áttelepítése előtt
 
 Ügyeljen arra, hogy alaposan tesztelje az összes runbookok és DSC-konfigurációt egy külön Automation-fiókban, mielőtt áttelepíti az az modulba. 

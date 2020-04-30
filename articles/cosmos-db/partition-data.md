@@ -1,46 +1,65 @@
 ---
 title: Particionálás és horizontális skálázás az Azure Cosmos DB-ben
-description: Megtudhatja, hogyan működik a particionálás az Azure Cosmos DB-ben, hogyan konfigurálhatja a particionálási és partíciókulcsokat, és hogyan választhatja ki a megfelelő partíciókulcsot az alkalmazáshoz.
-author: markjbrown
-ms.author: mjbrown
+description: Ismerje meg, hogyan működik a particionálás a Azure Cosmos DBban, hogyan konfigurálhatja a particionálási és partíciós kulcsokat, és hogyan választhatja ki az alkalmazásának megfelelő partíciós kulcsot.
+author: deborahc
+ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246616"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234212"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 
-Ez a cikk ismerteti a fizikai és logikai particionálást az Azure Cosmos DB-ben Emellett tárgyalja a skálázáshoz és particionáláshoz kapcsolódó ajánlott eljárásokat is 
+Ez a cikk a logikai és fizikai partíciók közötti kapcsolatot ismerteti. Emellett a particionálással kapcsolatos ajánlott eljárásokat is ismerteti, és részletesen ismerteti, hogyan működik a horizontális skálázás a Azure Cosmos DBban. Ezen belső adatok megértéséhez nem szükséges, hogy [kiválassza a partíciós kulcsot](partitioning-overview.md#choose-partitionkey) , de a kezeltük, hogy egyértelmű legyen a Azure Cosmos db működése.
 
 ## <a name="logical-partitions"></a>Logikai partíciók
 
-A logikai partíció olyan elemekből áll, amelyek azonos partíciókulccsal rendelkeznek. Például egy tárolóban, ahol `City` az összes elem `City` tartalmaz egy tulajdonságot, használhatja a tároló partíciókulcsaként. A speciális értékekkel `City`rendelkező elemcsoportok, például `London`a , `Paris`és `NYC`a különböző logikai partíciókat alkotnak. Nem kell aggódnia a partíció törlése miatt, amikor az alapul szolgáló adatok törlődnek.
+A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, amely az élelmiszer-táplálkozással kapcsolatos adatokat tartalmaz, minden `foodGroup` elem tartalmaz egy tulajdonságot. A tároló partíciós kulcsaként is használható `foodGroup` . Olyan elemek csoportjai `foodGroup`, amelyek meghatározott értékekkel rendelkeznek, például `Beef Products``Baked Products`,, és `Sausages and Luncheon Meats`, különböző logikai partíciókat alkotnak. Nem kell aggódnia a logikai partíció törlésével kapcsolatban az alapul szolgáló adat törlésekor.
 
-Az Azure Cosmos DB-ben a tároló a méretezhetőség alapvető egysége. A tárolóhoz hozzáadott adatok és a tárolón üzembe helyezett átviteli érték automatikusan (vízszintesen) lesz elosztva logikai partíciók között. Az adatok és az átviteli nyomás az Azure Cosmos-tárolóhoz megadott partíciókulcs alapján van particionálva. További információ: [Hozzon létre egy Azure Cosmos-tárolót.](how-to-create-container.md)
+A logikai partíció az adatbázis-tranzakciók hatókörét is meghatározza. A logikai partíción belüli elemeket egy [Pillanatkép-elkülönítéssel rendelkező tranzakció](database-transactions-optimistic-concurrency.md)használatával frissítheti. Amikor új elemeket adnak hozzá egy tárolóhoz, a rendszer transzparens módon létrehozza az új logikai partíciókat.
 
-A logikai partíció határozza meg az adatbázis-tranzakciók hatókörét is. A logikai partíción belüli elemeket [pillanatkép-elkülönítéssel rendelkező tranzakció](database-transactions-optimistic-concurrency.md)használatával frissítheti. Amikor új elemeket ad hozzá egy tárolóhoz, a rendszer transzparens módon hoz létre új logikai partíciókat.
+A tárolóban található logikai partíciók száma nincs korlátozva. Minden logikai partíció akár 20 GB-ot is tárolhat. A jó partíciós kulcs választása a lehetséges értékek széles választékával rendelkezik. Például egy olyan tárolóban, ahol minden elem tartalmaz egy `foodGroup`tulajdonságot, a `Beef Products` logikai PARTÍCIÓN belüli adatok 20 GB-ig növekednek. A lehetséges értékek széles választékával rendelkező [partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey) biztosítható, hogy a tároló méretezhető legyen.
 
 ## <a name="physical-partitions"></a>Fizikai partíciók
 
-Az Azure Cosmos-tároló méretezése az adatok és az átviteli nagyszámú logikai partíciók közötti elosztásával. Belsőleg egy vagy több logikai partíció egy olyan fizikai partícióra van leképezve, amely replikák készletéből , más néven [*kópiakészletből*](global-dist-under-the-hood.md)áll. Minden replikakészlet az Azure Cosmos adatbázis-motor egy példányát üzemelteti. A replikakészlet a fizikai partíción belül tárolt adatokat tartóssá, magas rendelkezésre állásúvá és konzisztenssé teszi. A fizikai partíció támogatja a maximális mennyiségű tárolási és kérelem egységek (RT). Minden olyan replika, amely a fizikai partíciót alkotja, örökli a partíció tárolási kvótáját. A fizikai partíció összes replikája együttesen támogatja a fizikai partícióhoz lefoglalt átviteli. 
+Az Azure Cosmos-tárolók méretezése az adatok és az átviteli sebesség fizikai partíciók közötti elosztásával történik. Belsőleg egy vagy több logikai partíció egyetlen fizikai partícióra van leképezve. A legtöbb kis Cosmos-tároló sok logikai partícióval rendelkezik, de csak egyetlen fizikai partíciót igényel. A logikai partíciókkal ellentétben a fizikai partíciók a rendszer belső implementációja, és teljes mértékben a Azure Cosmos DB kezeli őket.
 
-Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók globálisan elosztott fizikai partíciókra:
+A Cosmos-tárolóban található fizikai partíciók száma a következőktől függ:
 
-![Az Azure Cosmos DB particionálását szemléltető lemezkép](./media/partition-data/logical-partitions.png)
+- Kiépített átviteli sebesség (az egyes fizikai partíciók másodpercenként legfeljebb 10 000 adatátviteli sebességet biztosíthatnak)
+- Összes adattárolás (minden egyes fizikai partíció akár 50 GB is tárolhat)
 
-A tárolóhoz kiosztott átviteli teljesítmény egyenletesen oszlik meg a fizikai partíciók között. A partíciókulcs-kialakítás, amely nem osztja el egyenletesen az átviteli kérelmeket, "forró" partíciókat hozhat létre. A gyorselérésű partíciók sebességkorlátozást és a kiosztott átviteli sebesség nem hatékony kihasználását eredményezhetik, és magasabb költségeket eredményezhetnek.
+A tárolóban lévő fizikai partíciók teljes száma nincs korlátozva. A kiosztott átviteli sebesség vagy az adatméret növekedésével a Azure Cosmos DB automatikusan új fizikai partíciókat hoz létre a meglévők felosztásával. A fizikai partíciók osztása nem befolyásolja az alkalmazás rendelkezésre állását. A fizikai partíció felosztása után az egyetlen logikai partíción belüli összes adattal továbbra is ugyanazon a fizikai partíción lesz tárolva. A fizikai partíciók megosztása egyszerűen létrehozza a logikai partíciók új hozzárendelését a fizikai partíciókhoz.
 
-A logikai partíciókkal ellentétben a fizikai partíciók a rendszer belső implementációi. A fizikai partíciók mérete, elhelyezése vagy száma nem szabályozható, és a logikai partíciók és a fizikai partíciók közötti leképezés nem szabályozható. A logikai partíciók számát, valamint az adatok, a munkaterhelés és az átviteli terhelés elosztását azonban [a megfelelő logikai partíciókulcs kiválasztásával](partitioning-overview.md#choose-partitionkey)szabályozhatja.
+A tárolók számára kiépített átviteli sebesség egyenletesen oszlik el a fizikai partíciók között. A partíciós kulcs olyan kialakítása, amely nem osztja el az átviteli kérelmeket, akár "forró" partíciót is létrehozhat. A gyakori partíciók mértékének korlátozását és a kiosztott átviteli sebesség nem hatékony használatát, valamint a magasabb költségeket eredményezik.
+
+A tároló fizikai partícióit a Azure Portal **metrika** panelének **Storage (tárolás** ) szakaszában tekintheti meg:
+
+[![Fizikai partíciók](./media/partition-data/view-partitions-zoomed-out.png) számának megtekintése](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+
+Ebben a példában a partíciós kulcsként `/foodGroup` kiválasztott tárolóban a három téglalap egy fizikai partíciót jelöl. A rendszerképben a **partíciós kulcs tartománya** ugyanaz, mint a fizikai partíció. A kiválasztott fizikai partíció három logikai partíciót tartalmaz: `Beef Products`, `Vegetable and Vegetable Products`és `Soups, Sauces, and Gravies`.
+
+Ha a másodpercenkénti adat18 000 átviteli kapacitást (RU/s) is kiépítjük, akkor a három fizikai partíció 1/3 a teljes kiépített átviteli sebesség alapján. A kiválasztott fizikai partíción belül a logikai partíció kulcsai `Beef Products` `Vegetable and Vegetable Products`, és `Soups, Sauces, and Gravies` együttesen a fizikai partíció 6 000 kiépített ru/s-t használhatják. Mivel a kiépített átviteli sebesség egyenletesen oszlik meg a tároló fizikai partíciói között, fontos, hogy olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az átviteli sebességet [a megfelelő logikai partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey). Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
+
+## <a name="replica-sets"></a>Replikakészlet
+
+Mindegyik fizikai partíció replikák halmazát, más néven [*replikakészlet*](global-dist-under-the-hood.md)-készletet tartalmaz. Mindegyik replikakészlet az Azure Cosmos adatbázismotor egy példányát tárolja. A replikakészlet a fizikai partícióban tárolt, tartós, magasan elérhető és konzisztens módon tárolja az adattárolási készletet. A fizikai partíciót alkotó replikák öröklik a partíció tárolási kvótáját. A fizikai partíció összes replikája együttesen támogatja a fizikai partícióhoz lefoglalt átviteli sebességet. A Azure Cosmos DB automatikusan kezeli a replikákat.
+
+A legtöbb kisméretű Cosmos-tároló csak egyetlen fizikai partíciót igényel, de továbbra is legalább 4 replikával rendelkezik.
+
+Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a globálisan elosztott fizikai partíciókhoz:
+
+![Azure Cosmos DB particionálást bemutató rendszerkép](./media/partition-data/logical-partitions.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [partíciókulcs kiválasztásáról.](partitioning-overview.md#choose-partitionkey)
-* Ismerje meg [az Azure Cosmos DB kiépített átviteli.](request-units.md)
-* Ismerje meg [az Azure Cosmos DB globális disztribúcióját.](distribute-data-globally.md)
-* Ismerje meg, hogyan [építheti ki az átviteli fazonát egy Azure Cosmos-tárolóban.](how-to-provision-container-throughput.md)
-* Ismerje meg, hogyan [építheti ki az átviteli mertét egy Azure Cosmos-adatbázisban.](how-to-provision-database-throughput.md)
+* Tudnivalók [a partíciós kulcs kiválasztásáról](partitioning-overview.md#choose-partitionkey).
+* További információ [a kiépített átviteli sebességről Azure Cosmos db](request-units.md).
+* Ismerkedjen meg a [Azure Cosmos db globális eloszlásával](distribute-data-globally.md).
+* Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.
+* Útmutató az [átviteli sebesség Azure Cosmos-adatbázison](how-to-provision-database-throughput.md)való kiépítéséhez.

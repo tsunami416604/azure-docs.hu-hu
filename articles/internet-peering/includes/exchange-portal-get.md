@@ -9,42 +9,42 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 000971878e24c46892aaef1fa0c65237a4219883
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678529"
 ---
-A **társviszony-létesítési** erőforrás sikeres üzembe helyezése után megtekintheti az alábbi lépéseket.
+Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, a következő lépésekkel tekintheti meg.
 
-1. Nyissa meg az **Erőforráscsoportok lehetőséget,** és jelölje ki a **Társviszony-létesítési** erőforrás létrehozásakor kijelölt erőforráscsoportot. Ha túl sok erőforráscsoport van, használja a **Szűrő** mezőt.
+1. Lépjen az **erőforráscsoportok**elemre, és válassza ki azt az erőforráscsoportot, amelyet a társítási **erőforrás** létrehozásakor kiválasztott. Ha túl sok erőforráscsoportot használ, használja a **szűrő** mezőt.
 
     > [!div class="mx-imgBorder"]
     > ![Erőforráscsoportok](../media/setup-direct-get-resourcegroup.png)
 
-1. Jelölje ki a létrehozott **társviszony-létesítési erőforrást.**
+1. Válassza ki a létrehozott **egyenrangú** erőforrást.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás nézete](../media/setup-direct-get-open.png)
+    > ![Egyenrangú erőforrás nézet](../media/setup-direct-get-open.png)
 
-1. **Az Áttekintés** lap magas szintű információkat jelenít meg, ahogy az itt látható.
-
-    > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás – áttekintés ablaktábla](../media/setup-exchange-get-overview.png)
-
-1. A bal oldalon válassza az **ASN-adatok at** a PeerAsn létrehozásakor elküldött információk megtekintéséhez.
+1. Az **Áttekintés** oldalon az itt látható magas szintű információk láthatók.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás ASN-adatai](../media/setup-direct-get-asninfo.png)
+    > ![Peering erőforrás – áttekintés panel](../media/setup-exchange-get-overview.png)
 
-1. A bal oldalon válassza a **Kapcsolatok**lehetőséget. A képernyő tetején az ASN és a Microsoft közötti társviszony-létesítési kapcsolatok összegzése látható a metró különböző létesítményei között. A kapcsolatok összegzését az **Áttekintés** lapon is elérheti, ha a középső ablaktáblán a Kapcsolatok lehetőséget **választja,** ahogy az látható.
-
-    > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás-kapcsolatok](../media/setup-exchange-get-connectionssummary.png)
-
-    * **A kapcsolat állapota** megfelel a társviszony-létesítési beállítások állapotának. Az ebben a mezőben megjelenő állapotok az [Exchange társviszony-létesítési forgatókönyvében](../walkthrough-exchange-all.md)látható állapotábrát követik.
-    * **Az IPv4-munkamenet-állapot,** illetve az **IPv6-munkamenet-állapot** megfelel az IPv4- és az IPv6 BGP-munkamenet állapotának.  
-    * Amikor kijelöl egy sort a képernyő tetején, az alsó **Kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. Válassza ki a **Konfiguráció**, **IPv4-cím**és **IPv6-cím**kibontásához.
+1. A bal oldalon válassza az **ASN-adatok** lehetőséget a PeerAsn létrehozásakor elküldött információk megtekintéséhez.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési erőforrás nézete](../media/setup-exchange-get-connectionsipv4.png)
+    > ![Egyenrangú erőforrás ASN-információi](../media/setup-direct-get-asninfo.png)
+
+1. A bal oldalon válassza a **kapcsolatok**lehetőséget. A képernyő felső részén megjelenik az ASN és a Microsoft közötti kapcsolati kapcsolatok összefoglalása, a Metron belüli különböző létesítmények között. A kapcsolatok összegzését az **Áttekintés** lapról is elérheti a középső ablaktáblán látható **kapcsolatok** lehetőség kiválasztásával.
+
+    > [!div class="mx-imgBorder"]
+    > ![Egyenrangú erőforrás-kapcsolatok](../media/setup-exchange-get-connectionssummary.png)
+
+    * A **kapcsolódási állapot** megfelel a társ-összekapcsolási beállítás állapotának. Az ebben a mezőben megjelenített állapotok az Exchange-társítási [útmutatóban](../walkthrough-exchange-all.md)látható állapotjelző diagramot követik.
+    * Az **IPv4-munkamenet állapota** és az **IPv6-munkamenet állapota** az IPv4-és IPv6 BGP-munkamenet-állapotoknak felel meg.  
+    * Amikor kiválaszt egy sort a képernyő felső részén, a lenti **kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. A nyilak segítségével bontsa ki a **konfiguráció**, az **IPv4-cím**és az **IPv6-cím**elemet.
+
+    > [!div class="mx-imgBorder"]
+    > ![Egyenrangú erőforrás nézet](../media/setup-exchange-get-connectionsipv4.png)

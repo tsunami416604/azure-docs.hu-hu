@@ -1,20 +1,22 @@
 ---
-title: Machine learning-kísérlet kódjának átalakítása éles kódra
+title: Jegyzetfüzet-kód konvertálása Python-parancsfájlokba
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alakíthatja át a gépi tanulás kísérleti kódját a termelési kódra a MLOpsPython-kód sablonnal.
+description: Állítsa be a gépi tanulási kísérleti jegyzetfüzeteket éles használatra kész kódra a MLOpsPython-kód sablonnal. Ezután tesztelheti, telepítheti és automatizálhatja a kódot.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521441"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559675"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Oktatóanyag: ML kísérleti kód átalakítása üzemi kódra
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Oktatóanyag: ML-kísérletek konvertálása éles Python-kódra
+
+Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át a Juptyer-jegyzetfüzeteket a Python-parancsfájlokba, hogy a tesztelés és az automatizálás felhasználóbarát legyen a MLOpsPython-kód sablonnal és Azure Machine Learningával. Ez a folyamat általában egy Juptyer-jegyzetfüzetből származó kísérletezési/tanítási kód készítésére és Python-parancsfájlokba való átalakítására szolgál. Ezeket a szkripteket ezután tesztelési és CI/CD-automatizálásra lehet használni az éles környezetben. 
 
 A Machine learning-projektek kísérletezést igényelnek, ahol a hipotézisek olyan agilis eszközökkel vannak tesztelve, mint a valós adathalmazok használatával Jupyter Notebook. Miután a modell készen áll az éles üzemre, a modell kódját egy üzemi programkódba kell helyezni. Bizonyos esetekben a modell kódját át kell alakítani Python-szkriptekre az üzemi programkódba való adattárházba való helyezéshez. Ez az oktatóanyag a kísérletezési kódok Python-szkriptekre való exportálásának ajánlott módszerét ismerteti.
 

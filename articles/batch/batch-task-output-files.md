@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a
 ms.topic: article
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116468"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234281"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 
@@ -26,7 +26,7 @@ Azure Batch több módszert biztosít a feladat kimenetének megőrzéséhez. A 
 - Kódot szeretne írni a feladat kimenetének megtartásához az ügyfélalkalmazás alapján, a feladat által futtatott alkalmazás módosítása nélkül.
 - A virtuális gép konfigurációjával létrehozott készletekben szeretné megőrizni a Batch-feladatok és a Feladatkezelő-feladatok kimenetét.
 - Egy tetszőleges nevű Azure Storage-tárolóban szeretné megőrizni a kimenetet.
-- Meg szeretné őrizni a kimenetet egy nevű Azure Storage-tárolóba a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)utasításnak megfelelően. 
+- Meg szeretné őrizni a kimenetet egy nevű Azure Storage-tárolóba a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)utasításnak megfelelően. 
 
 Ha a forgatókönyv eltér a fent felsorolttól, előfordulhat, hogy más megközelítést kell figyelembe vennie. A Batch szolgáltatás API-je például jelenleg nem támogatja az Azure Storage-ba történő adatfolyam-továbbítást, amíg a feladat fut. A kimenet továbbításához érdemes lehet a .NET-hez elérhető batch file Conventions könyvtárat használni. Más nyelveken a saját megoldását kell megvalósítani. A tevékenységek kimenetének megőrzésével kapcsolatos további információkért lásd: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.
 
@@ -155,7 +155,7 @@ A `fileuploadout.txt` fájl naplófájlok feltöltésének folyamata folyamatban
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>A Batch szolgáltatás API használata a Batch file Conventions standard használatával
 
-Ha a Batch szolgáltatás API-val megőrzi a feladatok kimenetét, a cél tárolót és a blobokat azonban Ön is elnevezheti. Azt is megteheti, hogy a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)alapján nevezi el őket. A file Conventions standard meghatározza a cél tároló és a blob nevét az Azure Storage-ban egy adott kimeneti fájl számára a feladat és a feladat neve alapján. Ha a fájl-konvenciók standardot használja a kimeneti fájlok elnevezéséhez, a kimeneti fájlok megtekinthetők a [Azure Portalban](https://portal.azure.com).
+Ha a Batch szolgáltatás API-val megőrzi a feladatok kimenetét, a cél tárolót és a blobokat azonban Ön is elnevezheti. Azt is megteheti, hogy a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)alapján nevezi el őket. A file Conventions standard meghatározza a cél tároló és a blob nevét az Azure Storage-ban egy adott kimeneti fájl számára a feladat és a feladat neve alapján. Ha a fájl-konvenciók standardot használja a kimeneti fájlok elnevezéséhez, a kimeneti fájlok megtekinthetők a [Azure Portalban](https://portal.azure.com).
 
 Ha C# nyelven fejleszt, használhatja a [Batch file Conventions Library for .net-hez](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files)beépített metódusokat. Ez a kódtár létrehozza a megfelelő névvel ellátott tárolókat és blob-elérési utakat. Meghívhatja például az API-t a tároló helyes nevének beolvasására a feladatnév alapján:
 

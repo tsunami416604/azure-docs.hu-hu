@@ -1,19 +1,18 @@
 ---
 title: VNet-végpontok kezelése – Azure CLI – Azure Database for MySQL
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre és kezelhetők Azure Database for MySQL VNet szolgáltatásbeli végpontok és szabályok az Azure CLI parancssorral.
-author: bolzmj
-ms.author: mbolz
-manager: jhubbard
+author: kummanish
+ms.author: manishku
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: c01f92f8144c8ebfce2d475f8b13ab1d70bca118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859fea121296dc977d48712c35ea3dcff798f50
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063584"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509278"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MySQL VNet-szolgáltatásbeli végpontok létrehozása és kezelése az Azure CLI-vel
 A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MySQL-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI) parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet VNet szolgáltatási végpontokat és szabályokat a kiszolgáló kezeléséhez. Az Azure Database for MySQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for MySQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for MySQL összes támogatott régiójában elérhetők.

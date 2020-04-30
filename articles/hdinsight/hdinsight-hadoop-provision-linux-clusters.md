@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/10/2020
+ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770318"
+ms.locfileid: "82232836"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 
@@ -128,6 +128,9 @@ További információ a tárolási lehetőségekről a HDInsight használatával
 A konfiguráció során az alapértelmezett tárolási végponthoz meg kell adnia egy Azure Storage-fiók vagy Data Lake Storage blob-tárolóját. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. Megadhat további társított Azure Storage-fiókokat és Data Lake Storage fiókokat is, amelyeket a fürt elérhet. A HDInsight-fürtnek és a függő tárolási fiókoknak ugyanabban az Azure-helyen kell lenniük.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
+> [!IMPORTANT]
+> A Biztonságos tár átvitelének engedélyezése a fürt létrehozása után hibákat eredményezhet a Storage-fiókkal, és nem ajánlott. Jobb megoldás, ha olyan Storage-fiókkal szeretne új fürtöt létrehozni, amelyen már engedélyezve van a biztonságos átvitel.
 
 ### <a name="metastore-settings"></a>Metaadattár-beállítások
 

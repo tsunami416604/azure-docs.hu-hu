@@ -14,12 +14,12 @@ ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 1f8d41fb3e6233d319725cac924c0c0ed41b7ce4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82112218"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234298"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
@@ -69,8 +69,8 @@ A Privileged Identity Management beállítása után megismerheti a módját.
 | **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |
 | **Kérések jóváhagyása** | Megjeleníti azoknak a kéréseknek a listáját, amelyekkel az Ön által jóváhagyott címtárban lévő felhasználók jogosult szerepköröket aktiválhat. |
 | **Hozzáférés áttekintése** | Felsorolja a befejezéshez hozzárendelt aktív hozzáférési felülvizsgálatokat, függetlenül attól, hogy saját maga vagy valaki másnak tekinti-e meg a hozzáférést. |
-| **Azure AD-szerepkörök** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure AD szerepkör-hozzárendelések kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
-| **Azure-erőforrások** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure-erőforrás szerepkör-hozzárendeléseinek kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
+| **Azure AD-szerepkörök** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure AD szerepkör-hozzárendelések kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A saját nézet irányítópult csak az irányítópultot elérő felhasználó adatait jeleníti meg, nem pedig a teljes szervezetet. |
+| **Azure-erőforrások** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure-erőforrás szerepkör-hozzárendeléseinek kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A saját nézet irányítópult csak az irányítópultot elérő felhasználó adatait jeleníti meg, nem pedig a teljes szervezetet. |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>PIM-csempe hozzáadása az irányítópulthoz
 
