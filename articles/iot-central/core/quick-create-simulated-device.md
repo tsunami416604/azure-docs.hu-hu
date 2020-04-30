@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Szimulált eszköz hozzáadása az Azure IoT Centralhoz
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eszközsablont, és hogyan adhat hozzá egy szimulált eszközt az IoT Central-alkalmazáshoz.
+title: Rövid útmutató – szimulált eszköz hozzáadása az Azure IoT Central
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eszköz-sablont, és hogyan adhat hozzá szimulált eszközt a IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,160 +9,160 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81000440"
 ---
-# <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rövid útmutató: Szimulált eszköz hozzáadása az IoT Central alkalmazáshoz
+# <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Az eszközsablon az IoT Central-alkalmazáshoz csatlakozó eszköz képességeit határozza meg. A képességek közé tartozik az eszköz által küldött telemetriai adatok, az eszköz tulajdonságai és az eszköz által adott parancsok. Egy eszközsablonból egy szerkesztő vagy operátor valós és szimulált eszközöket is hozzáadhat egy alkalmazáshoz. A szimulált eszközök hasznosak az IoT Central-alkalmazás viselkedésének teszteléséhez, mielőtt valódi eszközöket csatlakoztatna.
+Az eszköz sablonja meghatározza a IoT Central-alkalmazáshoz csatlakozó eszközök képességeit. A képességek közé tartozik az eszköz telemetria, az eszköz tulajdonságai, valamint az eszköz által válaszoló parancsok. Egy eszköz sablonjában egy építő vagy egy operátor valós és szimulált eszközöket is hozzáadhat egy alkalmazáshoz. A szimulált eszközök hasznosak lehetnek a IoT Central alkalmazás működésének teszteléséhez a valódi eszközök csatlakoztatása előtt.
 
-Ebben a rövid útmutatóban hozzáad egy eszközsablont egy *MXChip IoT DevKit (DevKit)* táblához, és létrehoz egy szimulált eszközt. A rövid útmutató végrehajtásához nincs szükség valódi eszközre, az eszköz szimulációjával kell dolgoznia. DevKit-eszköz:
+Ebben a rövid útmutatóban hozzá kell adnia egy *MXChip IoT fejlesztői készlet* (fejlesztői készlet) táblához, és létre kell hoznia egy szimulált eszközt. A rövid útmutató elvégzéséhez nincs szükség valódi eszközre, és az eszköz szimulációja is működik. Egy fejlesztői készlet-eszköz:
 
-* Telemetriai adatokat, például hőmérsékletet küld.
-* Eszközspecifikus tulajdonságokat, például fényerőt jelent.
-* Válaszol az olyan parancsokra, mint a be- és kikapcsolás.
-* Általános eszköztulajdonságokat jelent, például a belső vezérlőprogram verzióját és a sorozatszámát.
+* Telemetria, például hőmérsékletet küld.
+* Az eszközre jellemző tulajdonságokat, például a fényerő szintjét jelenti.
+* Válaszol olyan parancsokra, mint a bekapcsolás és a kikapcsolás.
+* Az általános eszköz tulajdonságait, például a belső vezérlőprogram verzióját és a sorozatszámot jelenti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el az [Azure IoT Central alkalmazás](./quick-deploy-iot-central.md) létrehozása rövid útmutatót egy IoT Central alkalmazás létrehozásához az egyéni alkalmazás > egyéni **alkalmazássablon** használatával.
+Fejezze be az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) című rövid útmutatót egy IoT Central-alkalmazás létrehozásához az **egyéni alkalmazás > egyéni alkalmazásspecifikus** sablon használatával.
 
 ## <a name="create-a-template"></a>Sablon létrehozása
 
-Szerkesztőként eszközsablonokat hozhat létre és szerkeszthet az IoT Central alkalmazásban. Az eszközsablon közzététele után szimulált eszközt hozhat létre, vagy valódi eszközöket csatlakoztathat az eszközsablonból. A szimulált eszközök lehetővé teszik az alkalmazás viselkedésének tesztelését, mielőtt valódi eszközt csatlakoztatna.
+Építőként az IoT Central alkalmazásban létrehozhat és szerkesztheti az eszközök sablonjait. Miután közzétett egy sablont, szimulált eszközt hozhat, vagy a valódi eszközöket összekapcsolhatja az eszköz sablonjában. A szimulált eszközök lehetővé teszik az alkalmazás működésének tesztelését a valódi eszköz csatlakoztatása előtt.
 
-Ha új eszközsablont szeretne hozzáadni az alkalmazáshoz, válassza az **Eszközsablonok** lapot a bal oldali ablaktáblában.
+Ha új sablont szeretne felvenni az alkalmazásba, válassza a bal oldali ablaktábla **eszközök sablonok** lapját.
 
-![Eszközsablonok lap](./media/quick-create-simulated-device/device-definitions.png)
+![Eszközök sablonjai lap](./media/quick-create-simulated-device/device-definitions.png)
 
-Az eszközsablon tartalmaz egy eszközképességi modellt, amely meghatározza az eszköz által küldött telemetriai adatokat, az eszköz tulajdonságait és az eszköz által válaszoló parancsokat.
+Az eszköz-sablon tartalmaz egy eszköz-képességi modellt, amely meghatározza az eszköz által küldött telemetria, az eszköz tulajdonságait, valamint azokat a parancsokat, amelyekre az eszköz válaszol.
 
-### <a name="add-a-device-capability-model"></a>Eszközképességi modell hozzáadása
+### <a name="add-a-device-capability-model"></a>Eszköz-képesség modell hozzáadása
 
-Számos lehetőség van egy eszközképességi modell hozzáadására az IoT Central alkalmazáshoz. Létrehozhat egy teljesen új modellt, importálhat egy modellt egy fájlból, vagy kiválaszthat egy eszközt az eszközkatalógusból. Az IoT Central is támogatja az *eszköz-első* megközelítés, ahol automatikusan importálja a modellt egy tárházból, amikor egy eszköz először csatlakozik. Ebben a rövid útmutatóban az eszközkatalógusból kiválaszt egy eszközt az eszközképességi modell importálásához.
+Az eszköz képességeinek modelljét több lehetőség is felveszi a IoT Central alkalmazásba. Létrehozhat egy új modellt, egy modellt importálhat egy fájlból, vagy kiválaszthat egy eszközt az eszköz katalógusból. A IoT Central az *eszköz első* megközelítését is támogatja, ahol automatikusan importál egy modellt egy adattárból, amikor az eszköz először csatlakozik. Ebben a rövid útmutatóban egy eszközt választ ki az eszköz-katalógusból az eszköz képességi modelljének importálásához.
 
-A következő lépések bemutatják, hogyan használhatja az eszközkatalógust egy **MXChip IoT DevKit-eszköz** képességmodelljének importálásához. Ezek az eszközök telemetriai adatokat, például hőmérsékletet küldenek az alkalmazásnak:
+A következő lépések bemutatják, hogyan importálhatja a **MXChip IoT fejlesztői készlet** -eszköz képesség modelljét az eszköz-katalógus használatával. Ezek az eszközök telemetria, például hőmérsékletet küldenek az alkalmazásnak:
 
-1. Új eszközsablon hozzáadásához **+** válassza az **Eszközsablonok** lapon.
+1. Új sablon hozzáadásához válassza **+** az **eszközök sablonjai** lapot.
 
-1. A **Sablon típusának kiválasztása** lapon görgessen lefelé, amíg meg nem találja az **MXChip IoT DevKit** csempét.
+1. A **sablon típusának kiválasztása** lapon görgessen lefelé, amíg meg nem találja a **MXChip IoT fejlesztői készlet** csempét.
 
-1. Válassza az **MXChip IoT DevKit** csempét, majd a **Tovább: Testreszabás**lehetőséget.
+1. Válassza ki a **MXChip IoT fejlesztői készlet** csempét, majd kattintson a **Tovább gombra: testreszabás**.
 
-1. A **Véleményezés** lapon válassza a **Létrehozás gombot.**
+1. Az **Áttekintés** lapon válassza a **Létrehozás**lehetőséget.
 
-1. Néhány másodperc múlva láthatja az új eszközsablont:
+1. Néhány másodperc elteltével megtekintheti az új eszköz sablonját:
 
-    ![MXChip IoT DevKit eszközsablon](./media/quick-create-simulated-device/devkit-template.png)
+    ![MXChip IoT fejlesztői készlet-eszköz sablonja](./media/quick-create-simulated-device/devkit-template.png)
 
-    Az MXChip IoT DevKit képességmodell olyan felületeket tartalmaz, mint **a mxchip_sensor,** **a mxchip_settings**és **az Eszközadatok**. Az Interfészek meghatározzák az MXChip IoT DevKit-eszközök képességeit. Képességek közé tartozik az eszköz által küldött telemetriai adatok, az eszköz által küldött tulajdonságok, és a parancsokat az eszköz válaszol.
+    A MXChip IoT fejlesztői készlet képesség modellje olyan felületeket tartalmaz, mint például a **mxchip_sensor**, a **Mxchip_settings**és az **eszköz adatai**. A felületek határozzák meg egy MXChip-IoT fejlesztői készlet-eszköz képességeit. A képességek közé tartozik az eszköz által küldött telemetria, az eszköz tulajdonságainak jelentése, valamint az eszköz által válaszoló parancsok.
 
-### <a name="add-cloud-properties"></a>Felhőtulajdonságok hozzáadása
+### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
 
-Az eszközsablon felhőalapú tulajdonságokat is tartalmazhat. A felhőtulajdonságok csak az IoT Central alkalmazásban léteznek, és soha nem küldik el vagy fogadják az eszközről.
+Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
 
-1. Válassza a **Felhőtulajdonságok,** majd **a + Felhőhozzáadása tulajdonság lehetőséget.** Az alábbi táblázatban található információk segítségével két felhőtulajdonságot adhat hozzá az eszközsablonhoz:
+1. Válassza a **felhő tulajdonságai** lehetőséget, majd a **+ felhő tulajdonságot**. A következő táblázatban található információk segítségével két Felhőbeli tulajdonságot adhat hozzá az eszköz sablonhoz:
 
     | Megjelenítendő név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
     | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Vevő neve     | None          | Sztring |
+    | Ügyfél neve     | None          | Sztring |
 
-1. A módosítások mentéséhez válassza a **Mentés** lehetőséget:
+1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra:
 
-    ![Felhőtulajdonságai](media/quick-create-simulated-device/cloud-properties.png)
+    ![Felhő tulajdonságai](media/quick-create-simulated-device/cloud-properties.png)
 
 ## <a name="views"></a>Nézetek
 
-Szerkesztőként testreszabhatja az alkalmazást, hogy az eszközre vonatkozó releváns információkat jelenítse meg egy operátornak. A testreszabások lehetővé teszik, hogy az üzemeltető kezelje az alkalmazáshoz csatlakoztatott eszközöket. Kétféle nézetet hozhat létre az operátorok számára az eszközökkel való kommunikációhoz:
+Építőként testreszabhatja az alkalmazást, hogy az eszközre vonatkozó releváns információkat jelenítsen meg az operátorral. A testreszabások lehetővé teszik, hogy az operátor felügyelje az alkalmazáshoz csatlakoztatott eszközöket. Kétféle nézetet hozhat létre az operátorok számára az eszközök használatához:
 
-* Űrlapok az eszköz- és felhőtulajdonságok megtekintéséhez és szerkesztéséhez.
-* Irányítópultok az eszközök megjelenítéséhez, beleértve az általuk küldött telemetriai adatokat is.
+* Az eszközök és a felhő tulajdonságainak megtekintésére és szerkesztésére szolgáló űrlapok.
+* Irányítópultok az eszközök megjelenítéséhez, beleértve az általuk küldött telemetria is.
 
 ### <a name="default-views"></a>Alapértelmezett nézetek
 
-Az alapértelmezett nézetek segítségével gyorsan megjelenítheti fontos eszközinformációit. Legfeljebb három alapértelmezett nézet et hozhat létre az eszközsablonhoz:
+Az alapértelmezett nézetek gyors módszert biztosítanak a fontos eszközök megjelenítésének megkezdéséhez. Az eszköz sablonjaihoz legfeljebb három alapértelmezett nézet hozható létre:
 
-* A **Parancsok** nézet lehetővé teszi, hogy a kezelő parancsokat küldjön az eszközre.
-* Az **Áttekintő** nézet diagramok és metrikák segítségével jeleníti meg az eszköz telemetriai adatai.
-* A **Bemutat** nézet megjeleníti az eszköz tulajdonságait.
+* A **parancsok** nézet lehetővé teszi, hogy az operátor parancsokat küldjön az eszközre.
+* Az **Áttekintés** nézet diagramokat és mérőszámokat használ az eszközök telemetria megjelenítéséhez.
+* A **Névjegy** nézet megjeleníti az eszköz tulajdonságait.
 
-Jelölje ki a **Nézetek** csomópontot az eszközsablonban. Láthatja, hogy az IoT Central **áttekintést** és **egy Betekintő** nézetet hozott létre a sablon hozzáadásakor.
+Válassza ki a **nézetek** csomópontot az eszköz sablonjában. Láthatja, hogy IoT Central a sablon hozzáadásakor **áttekintést** és a **Névjegy** nézetét hozta létre.
 
-Új **Eszközkezelő** űrlap hozzáadása, amelyet az operátor az eszköz kezeléséhez használhat:
+Új **felügyelt eszköz** űrlap hozzáadása, amelyet az operátor használhat az eszköz felügyeletére:
 
-1. Jelölje ki a **Nézetek** csomópontot, majd az új nézet hozzáadásához válassza a Szerkesztő eszköz és a **felhőalapú adatok** csempét.
+1. Válassza ki a **nézetek** csomópontot, majd válassza az **eszköz és a Felhőbeli** adatcsempe szerkesztése lehetőséget egy új nézet hozzáadásához.
 
-1. Módosítsa az űrlap nevét **Az eszköz kezelése**névre.
+1. Módosítsa az űrlap nevét az **eszköz kezelésére**.
 
-1. Válassza ki az **Ügyfél nevét** és a végső **szolgáltatás dátuma** felhőtulajdonságokat, valamint a **Fan Speed** tulajdonságot. Ezután válassza **a Hozzáadás szakaszt:**
+1. Válassza ki az **ügyfél nevét** és az **utolsó szolgáltatás dátumának** Felhőbeli tulajdonságait, valamint a **ventilátor sebessége** tulajdonságot. Ezután válassza a **Hozzáadás szakaszt**:
 
     ![Új űrlap létrehozása](media/quick-create-simulated-device/new-form.png)
 
-1. Az új űrlap mentéséhez válassza a **Mentés** gombot.
+1. Az új űrlap mentéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="publish-device-template"></a>Eszközsablon közzététele
+## <a name="publish-device-template"></a>Eszköz sablonjának közzététele
 
-Mielőtt létrehozhatna egy szimulált eszközt, vagy valódi eszközt csatlakoztathatna, közzé kell tennie az eszközsablont. Bár az IoT Central közzétette a sablont, amikor először létrehozta, közzé kell tennie a frissített verziót.
+Szimulált eszköz létrehozása vagy valódi eszköz csatlakoztatása előtt közzé kell tennie az eszköz sablonját. Habár IoT Central közzétette a sablont, amikor először hozta létre, közzé kell tennie a frissített verziót.
 
-Eszközsablon közzététele:
+Eszköz sablonjának közzététele:
 
-1. Nyissa meg az eszközsablont az **Eszközsablonok** lapon.
+1. Nyissa meg az eszköz sablonját az **eszközök sablonjai** lapon.
 
-1. Válassza **a Közzététel**lehetőséget:
+1. **Közzététel**kiválasztása:
 
     ![Közzétett modell](media/quick-create-simulated-device/published-model.png)
 
-1. Az **Eszközsablon közzététele az alkalmazásban** párbeszédpanelen válassza a **Közzététel**lehetőséget. 
+1. Az **eszköz sablonjának közzététele az alkalmazás** párbeszédpanelen válassza a **Közzététel**lehetőséget. 
 
-Az eszközsablon közzététele után az eszközök **lapon** látható. Egy közzétett eszközsablonban nem szerkesztheti az eszközképességi modellt új verzió létrehozása nélkül. A felhőbeli tulajdonságokat, a testreszabásokat és a nézeteket azonban verziószámozás nélkül is módosíthatja egy közzétett eszközsablonban. A módosítások elvégzése után válassza **a Közzététel** lehetőséget, ha a módosításokat ki szeretné adni a szolgáltatónak.
+Miután közzétett egy sablont, az az **eszközök** lapon látható. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszközön azonban verziószámozás nélkül is frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
 
 ## <a name="add-a-simulated-device"></a>Szimulált eszköz hozzáadása
 
-Ha egy szimulált eszközt szeretne hozzáadni az alkalmazáshoz, használja a létrehozott **MXChip IoT DevKit** eszközsablont.
+Szimulált eszköz az alkalmazáshoz való hozzáadásához használja a létrehozott **MXChip IoT fejlesztői készlet** -sablont.
 
-1. Ha új eszközt szeretne operátorként hozzáadni, válassza az **Eszközök lehetőséget** a bal oldali ablaktáblában. Az **Eszközök** lapon látható **az összes eszköz** és az **MXChip IoT DevKit** eszközsablon. Válassza az **MXChip IoT DevKit lehetőséget.**
+1. Új eszköz hozzáadása operátorként a bal oldali ablaktáblán válassza az **eszközök** lehetőséget. A **Devices (eszközök** ) lapon az **összes eszköz** és a **MXChip IoT fejlesztői készlet** -sablon látható. Válassza a **MXChip IoT fejlesztői készlet**lehetőséget.
 
-1. Szimulált DevKit-eszköz hozzáadásához **+** válassza a lehetőséget. Használja a javasolt **eszközazonosítót,** vagy adja meg saját **kis-eszközazonosítóját.** Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **Szimulált** kapcsoló be van **kapcsolva,** majd válassza a **Létrehozás lehetőséget.**
+1. Szimulált fejlesztői készlet-eszköz hozzáadásához válassza a **+** elemet. Használja a javasolt **eszköz azonosítóját** , vagy adja meg a saját kisbetűs **eszközének azonosítóját**. Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **szimulált** váltógomb be van **kapcsolva** , majd válassza a **Létrehozás**lehetőséget.
 
     ![Szimulált eszköz](./media/quick-create-simulated-device/simulated-device.png)
 
-Mostantól a szerkesztő által az eszközsablonhoz létrehozott nézeteket használhatja szimulált adatok használatával:
+Mostantól a Builder által az eszköz sablonja által létrehozott nézeteket szimulált adatként használhatja:
 
-1. Válassza ki a szimulált eszközt az **Eszközök** lapon.
+1. Válassza ki a szimulált eszközt az **eszközök** lapon.
 
-1. Az **Áttekintő** nézet a szimulált telemetriai adatok nyomtatását jeleníti meg:
+1. Az **Áttekintés** nézetben látható a szimulált telemetria ábrázolása:
 
-    ![Áttekintő nézet](./media/quick-create-simulated-device/simulated-telemetry.png)
+    ![Áttekintés nézet](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. A **Bemutatkozás** nézet a tulajdonságértékeket jeleníti meg, beleértve a nézethez hozzáadott felhőtulajdonságokat is.
+1. A **Névjegy** nézet a tulajdonságok értékeit jeleníti meg, beleértve a nézethez hozzáadott felhő-tulajdonságokat is.
 
-1. A **Parancsok** nézetben parancsokat futtathat, például **villoghat** az eszközön.
+1. A **parancsok** nézetben parancsokat futtathat, például a **villogást** az eszközön.
 
-1. Az **Eszközök kezelése** nézet az az űrlap, amelyet az üzemeltető számára hozott létre az eszköz kezeléséhez.
+1. Az **eszközök kezelése** nézet a kezelő számára az eszköz kezeléséhez létrehozott űrlap.
 
-## <a name="use-a-simulated-device-to-improve-views"></a>Nézetek javítása szimulált eszközzel
+## <a name="use-a-simulated-device-to-improve-views"></a>A nézetek fejlesztése szimulált eszköz használatával
 
-Miután létrehozott egy új szimulált eszközt, a szerkesztő használhatja ezt az eszközt, hogy tovább fejlessze és építsen az eszközsablon nézeteire.
+Miután létrehozta az új szimulált eszközt, a szerkesztő ezzel az eszközzel folytathatja a fejlesztést és az eszköz sablonra épülő nézeteit.
 
-1. Válassza **az Eszközsablonok lehetőséget** a bal oldali ablaktáblában, és válassza az **MXChip IoT DevKit** sablont.
+1. A bal oldali ablaktáblán **válassza az** **MXChip IoT fejlesztői készlet** sablont.
 
-1. Jelölje ki a szerkesztendő nézetek bármelyikét, vagy hozzon létre új nézetet. Válassza **az Előnézeti eszköz konfigurálása**lehetőséget, majd **válassza ki a futó eszközről**lehetőséget. Itt választhatja ki, hogy nincs-e előnézeti eszköz, egy tesztelésre konfigurált valódi eszköz vagy egy meglévő eszköz, amelyet az IoT Centralba adott hozzá.
+1. Válassza ki a szerkeszteni kívánt nézeteket, vagy hozzon létre egy új nézetet. Válassza az **előnézet eszköz konfigurálása**lehetőséget, majd **válasszon egy futó eszközről**. Itt dönthet úgy, hogy nem rendelkezik előnézeti eszközzel, a teszteléshez konfigurált valódi eszközzel vagy a IoT Centralba felvett meglévő eszközzel.
 
-1. Válassza ki a szimulált eszközt a listában. Ezután válassza az **Alkalmaz** lehetőséget. Most már láthatja ugyanazt a szimulált eszközt az eszközsablon-nézetek létrehozásában. Ez a nézet diagramok és egyéb vizualizációk esetén hasznos.
+1. Válassza ki a szimulált eszközt a listában. Ezután válassza az **Alkalmaz** lehetőséget. Most már megtekintheti ugyanazt a szimulált eszközt az eszköz sablon nézetének létrehozási felületén. Ez a nézet diagramok és egyéb vizualizációk esetén hasznos.
 
-    ![Preview-eszköz konfigurálása](./media/quick-create-simulated-device/configure-preview.png)
+    ![Előnézet eszköz konfigurálása](./media/quick-create-simulated-device/configure-preview.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy **MXChip IoT DevKit** eszközsablont, és hogyan adhat hozzá egy szimulált eszközt az alkalmazáshoz.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy **MXChip IoT fejlesztői készlet** , és hogyan adhat hozzá szimulált eszközt az alkalmazásához.
 
-Ha többet szeretne megtudni az alkalmazáshoz csatlakoztatott eszközök figyeléséről, folytassa a rövid útmutatóval:
+Ha többet szeretne megtudni az alkalmazáshoz csatlakoztatott eszközök monitorozásáról, folytassa a gyors üzembe helyezéssel:
 
 > [!div class="nextstepaction"]
 > [Szabályok és műveletek konfigurálása](./quick-configure-rules.md)

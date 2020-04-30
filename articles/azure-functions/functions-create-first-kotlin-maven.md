@@ -1,32 +1,32 @@
 ---
-title: Az első funkció létrehozása az Azure-ban a Kotlin és a Maven segítségével
-description: Hozzon létre és tegyen közzé egy HTTP-aktivált függvényt az Azure-ban a Kotlin és a Maven segítségével.
+title: Az első függvény létrehozása az Azure-ban a Kotlin és a Maven használatával
+description: HTTP által aktivált függvény létrehozása és közzététele az Azure-ban a Kotlin és a Maven használatával.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80674103"
 ---
-# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rövid útmutató: Az első funkció létrehozása a Kotlin és a Maven segítségével
+# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rövid útmutató: az első függvény létrehozása a Kotlin és a Maven használatával
 
-Ez a cikk végigvezeti a Maven parancssori eszköz használatával egy Kotlin függvényprojekt létrehozásához és közzétételéhez az Azure Functions számára. Ha elkészült, a függvény kódja az Azure-beli [használatalapú csomagban](functions-scale.md#consumption-plan) fut, és HTTP-kérelemmel aktiválható.
+Ez a cikk végigvezeti a Maven parancssori eszköz használatával, amely a Kotlin-függvény projektjeinek összeállítására és közzétételére Azure Functions. Ha elkészült, a függvény kódja az Azure-beli [használatalapú csomagban](functions-scale.md#consumption-plan) fut, és HTTP-kérelemmel aktiválható.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Kotlin funkcióinak fejlesztéséhez a következőket kell telepíteni:
+A függvények Kotlin használatával történő fejlesztéséhez a következőkre van szükség:
 
 - A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
 - Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Az Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666-os vagy újabb verziója
+- [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 
 > [!IMPORTANT]
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
@@ -35,7 +35,7 @@ A Kotlin funkcióinak fejlesztéséhez a következőket kell telepíteni:
 
 Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához.
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Ha problémákat tapasztal a parancs futtatásával kapcsolatban, `maven-archetype-plugin` tekintse meg, hogy milyen verziót használ. Mivel a parancsot egy fájl nélküli `.pom` üres könyvtárban futtatja, előfordulhat, hogy a `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` régebbi verzió egyik bővítményét próbálja használni, ha a Maven-t egy régebbi verzióról frissítette. Ha igen, próbálja meg `maven-archetype-plugin` a könyvtárat, majd futtassa újra a parancsot.
+> Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin` verziót használ. Mivel a parancsot egy üres, fájl nélküli `.pom` könyvtárban futtatja, előfordulhat, hogy a régebbi verzió beépülő modulját próbálja használni, `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` ha a mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni `maven-archetype-plugin` a könyvtárat, és futtassa újra a parancsot.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -60,9 +60,9 @@ mvn archetype:generate ^
 ```
 ---
 
-A Maven a projekt létrehozásához szükséges értékeket kéri. A _groupId_, _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték határozza meg a létrehozott függvénykód Kotlin-csomagját.
+A Maven kéri a projekt generálásának befejezéséhez szükséges értékek megadását. A _groupId_, _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték határozza meg a Kotlin-csomagot a generált függvény kódjához.
 
-Az alábbi `com.fabrikam.functions` és `fabrikam-functions` azonosítók példaként szolgálnak, és könnyebben átláthatóvá teszik a rövid útmutató későbbi lépéseit. Arra biztatjuk, hogy adja meg saját értékeit Mavennek ebben a lépésben.
+Az alábbi `com.fabrikam.functions` és `fabrikam-functions` azonosítók példaként szolgálnak, és könnyebben átláthatóvá teszik a rövid útmutató későbbi lépéseit. Javasoljuk, hogy adja meg a saját értékeit a Mavennek ebben a lépésben.
 
 <pre>
 [INFO] Parameter: groupId, Value: com.fabrikam.function
@@ -157,7 +157,7 @@ A `Ctrl-C` billentyűparanccsal állítsa le a függvénykódot a terminálablak
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. A folytatás előtt [jelentkezzen be az Azure CLI-vel.](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
@@ -166,7 +166,7 @@ az login
 Helyezze üzembe a kódot egy új függvényalkalmazásban az `azure-functions:deploy` Maven-cél használatával.
 
 > [!NOTE]
-> Amikor a Visual Studio-kód használatával telepíti a Függvényalkalmazást, ne felejtsen el nem ingyenes előfizetést választani, különben hibaüzenetet kap. Az előfizetést az IDE bal oldalán nézheti meg.
+> Ha Visual Studio Code-ot használ a Function alkalmazás üzembe helyezéséhez, ne felejtsen el nem ingyenes előfizetést választani, vagy hibaüzenetet kap. Az előfizetést az IDE oldal bal oldalán tekintheti meg.
 
 ```
 mvn azure-functions:deploy
@@ -185,7 +185,7 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 Tesztelje az Azure-ban futó függvényalkalmazást a `cURL` használatával. Az alábbi mintában található URL-címet módosítsa az előző lépésben üzembe helyezett saját függvényalkalmazása címére.
 
 > [!NOTE]
-> Győződjön meg arról, `Anonymous`hogy a **hozzáférési jogokat** a beállításra állította. Ha a beállítás alapértelmezett `Function`szintjét választja, a függvényvégpont eléréséhez szükséges kérelmekben meg kell mutatnia a [funkciókulcsot.](functions-bindings-http-webhook-trigger.md#authorization-keys)
+> Győződjön meg arról, hogy a **hozzáférési jogosultságokat** a `Anonymous`következőre állítja be:. Ha az alapértelmezett szintet választja `Function`, akkor a függvény-végpont eléréséhez a kérelmekben be kell mutatnia a [függvény kulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys) .
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
@@ -228,17 +228,17 @@ Hi, AzureFunctionsTest
 </pre>
 
 
-## <a name="reference-bindings"></a>Referenciakötések
+## <a name="reference-bindings"></a>Hivatkozási kötések
 
-A HTTP-eseményindítótól és időzítő-eseményindítótól eltérő [függvényindítók és -kötések](functions-triggers-bindings.md) használata érdekében kötésbővítményeket kell telepítenie. Bár ez a cikk nem szükséges, tudnia kell, hogyan engedélyezheti a bővítményeket, ha más kötéstípusokkal dolgozik.
+A [függvények eseményindítóinak és](functions-triggers-bindings.md) a http-eseményindítók és időzítő-eseményindítók eltérő kötések kezeléséhez kötési bővítményeket kell telepítenie. Habár ez a cikk nem írja elő, tudnia kell, hogyan engedélyezheti a bővítmények használatát más kötési típusok használata esetén.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozott egy Kotlin függvényalkalmazást egy egyszerű HTTP-eseményindítóval, és üzembe helyezte az Azure Functions ben.
+Egy egyszerű HTTP-triggerrel létrehozott egy Kotlin-függvény alkalmazást, és üzembe helyezte azt a Azure Functions.
 
-- A [Java functions fejlesztői útmutatójában](functions-reference-java.md) további információt talál a Java és a Kotlin függvények fejlesztéséről.
+- A Java és a Kotlin függvények fejlesztésével kapcsolatos további információkért tekintse át a [Java functions fejlesztői útmutatóját](functions-reference-java.md) .
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.
 - Helyileg írjon függvényeket, és végezze el azok hibakeresését a [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), az [IntelliJ](functions-create-maven-intellij.md) és az [Eclipse](functions-create-maven-eclipse.md) használatával. 
 - Végezze el az Azure-ban üzembe helyezett függvények hibakeresését a Visual Studio Code-dal. Utasításokért tekintse meg a Visual Studio Code [kiszolgáló nélküli Java-alkalmazásokat](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) ismertető dokumentációját.

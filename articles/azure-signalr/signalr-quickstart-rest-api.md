@@ -1,16 +1,16 @@
 ---
-title: Gyorsútmutató – Azure SignalR Service REST API
-description: Ismerje meg, hogyan használhatja a REST API-t az Azure SignalR-szolgáltatással a mintákat követően. A REST API specifikációjának részletei.
+title: Rövid útmutató – Azure Signaler szolgáltatás REST API
+description: Ismerje meg, hogyan használhatja a REST APIt az Azure Signaler szolgáltatással a következő mintákkal. REST API specifikáció részleteinek megkeresése.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80548131"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
@@ -99,7 +99,7 @@ A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` 
 
 ## <a name="usage"></a>Használat
 
-A kiszolgáló indítása után a paranccsal küldjön üzenetet:
+A kiszolgáló elindítása után az parancs használatával küldjön üzenetet:
 
 ```
 send user <User Id>
@@ -131,16 +131,16 @@ API | `1.0-preview` | `1.0`
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Szétküldés néhány csoportnak | **&#x2713;** (elavult) | `N / A`
-[Küldés felhasználónak](#send-user) | **&#x2713;** | **&#x2713;**
+[Küldés felhasználó számára](#send-user) | **&#x2713;** | **&#x2713;**
 Küldés néhány felhasználónak | **&#x2713;** (elavult) | `N / A`
 [Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | **&#x2713;**
 [Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | **&#x2713;**
-[A felhasználó létezésének ellenőrzése](#check-user-existence) | `N / A` | **&#x2713;**
-[Felhasználó eltávolítása az összes csoportból](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
-[Küldés kapcsolatra](#send-connection) | `N / A` | **&#x2713;**
-[Kapcsolat hozzáadása csoporthoz](#add-connection-to-group) | `N / A` | **&#x2713;**
-[Kapcsolat eltávolítása csoportból](#remove-connection-from-group) | `N / A` | **&#x2713;**
-[Ügyfélkapcsolat bezárása](#close-connection) | `N / A` | **&#x2713;**
+[Felhasználó létezésének ellenőrzésével](#check-user-existence) | `N / A` | **&#x2713;**
+[Felhasználó eltávolítása minden csoportból](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Küldés egy kapcsolatban](#send-connection) | `N / A` | **&#x2713;**
+[Csoporthoz való kapcsolódás hozzáadása](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Csoportból származó kapcsolatok eltávolítása](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[Ügyfélkapcsolat lezárása](#close-connection) | `N / A` | **&#x2713;**
 [Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
@@ -160,7 +160,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Lásd fent
 
 <a name="send-user"> </a>
-### <a name="sending-to-a-user"></a>Küldés felhasználónak
+### <a name="sending-to-a-user"></a>Küldés felhasználó számára
 
 Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
@@ -182,7 +182,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>A felhasználók meglétének ellenőrzése egy csoportban
+### <a name="check-user-existence-in-a-group"></a>A felhasználó létezésének ellenőrzéséhez egy csoportban
 
 API-verzió | API HTTP-metódus | Kérés URL-címe
 ---|---|---
@@ -195,21 +195,21 @@ Válasz állapotkódja | Leírás
 `404` | A felhasználó nem létezik
 
 <a name="remove-user-from-all-groups"> </a>
-### <a name="remove-a-user-from-all-groups"></a>Felhasználó eltávolítása az összes csoportból
+### <a name="remove-a-user-from-all-groups"></a>Felhasználó eltávolítása minden csoportból
 
 API-verzió | API HTTP-metódus | Kérés URL-címe
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
 
 <a name="send-connection"> </a>
-### <a name="send-message-to-a-connection"></a>Üzenet küldése kapcsolatra
+### <a name="send-message-to-a-connection"></a>Üzenet küldése egy kapcsolatban
 
 API-verzió | API HTTP-metódus | Kérés URL-címe | A kérelem törzse
 ---|---|---|---
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
 <a name="add-connection-to-group"> </a>
-### <a name="add-a-connection-to-a-group"></a>Kapcsolat hozzáadása csoporthoz
+### <a name="add-a-connection-to-a-group"></a>Csoporthoz való kapcsolódás hozzáadása
 
 API-verzió | API HTTP-metódus | Kérés URL-címe
 ---|---|---
@@ -217,7 +217,7 @@ API-verzió | API HTTP-metódus | Kérés URL-címe
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="remove-connection-from-group"> </a>
-### <a name="remove-a-connection-from-a-group"></a>Kapcsolat eltávolítása csoportból
+### <a name="remove-a-connection-from-a-group"></a>Csoportból származó kapcsolatok eltávolítása
 
 API-verzió | API HTTP-metódus | Kérés URL-címe
 ---|---|---
@@ -225,7 +225,7 @@ API-verzió | API HTTP-metódus | Kérés URL-címe
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="close-connection"> </a>
-### <a name="close-a-client-connection"></a>Ügyfélkapcsolat bezárása
+### <a name="close-a-client-connection"></a>Ügyfélkapcsolat lezárása
 
 API-verzió | API HTTP-metódus | Kérés URL-címe
 ---|---|---
@@ -241,14 +241,14 @@ API-verzió | API HTTP-metódus | Kérés URL-címe
 
 Válasz állapotkódja | Leírás
 ---|---
-`200` | Szolgáltatás Jó
+`200` | A szolgáltatás jó
 `503` | A szolgáltatás nem érhető el
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST API-t a SignalR szolgáltatás valós idejű üzeneteinek az ügyfeleknek történő közvetítésére. Ezután további információ arról, hogyan fejlesztheti és telepítheti az Azure Functionst a REST API-ra épülő SignalR-szolgáltatáskötéssel.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
 
 > [!div class="nextstepaction"]
-> [Azure-függvények fejlesztése az Azure SignalR-szolgáltatás kötései vel](signalr-quickstart-azure-functions-csharp.md)
+> [Azure Functions fejlesztése az Azure Signaler szolgáltatás kötéseinek használatával](signalr-quickstart-azure-functions-csharp.md)

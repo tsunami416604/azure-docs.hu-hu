@@ -1,5 +1,5 @@
 ---
-title: Az Azure Functions és signalr szolgáltatással rendelkező csevegőszoba létrehozása javascripttel
+title: Csevegési helyiség létrehozása a JavaScript használatával Azure Functions és a Signaler szolgáltatással
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre csevegőszobát az Azure SignalR szolgáltatás és az Azure Functions használatával.
 author: sffamily
 ms.service: signalr
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77083196"
 ---
-# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rövid útmutató: A JavaScript használatával csevegőszobát hozhat létre az Azure Functions és signalr szolgáltatás segítségével
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a JavaScript használatával
 
-Az Azure SignalR szolgáltatás lehetővé teszi, hogy egyszerűen valós idejű funkciókat adjon az alkalmazáshoz, és az Azure Functions egy kiszolgáló nélküli platform, amely lehetővé teszi a kód futtatását infrastruktúra kezelése nélkül. Ebben a rövid útmutatóban a JavaScript segítségével kiszolgáló nélküli, valós idejű csevegőalkalmazást hozhat létre a SignalR szolgáltatás és a Funkciók használatával.
+Az Azure Signaler szolgáltatással egyszerűen adhat hozzá valós idejű funkciókat az alkalmazáshoz, és Azure Functions egy kiszolgáló nélküli platform, amely lehetővé teszi, hogy az infrastruktúra kezelése nélkül futtassa a kódot. Ebben a rövid útmutatóban a JavaScript használatával kiszolgáló nélküli, valós idejű csevegési alkalmazást hozhat létre a Signal Service és a functions használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Kódszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/)
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), 2-es vagy újabb verzió. Az Azure Function-alkalmazások helyi futtatásához használható.
-- [Node.js](https://nodejs.org/en/download/), 10.x verzió
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), 2-es vagy újabb verzió. Az Azure Function apps helyi futtatására szolgál.
+- [Node. js](https://nodejs.org/en/download/), 10-es verzió. x
 
    > [!NOTE]
-   > A példák nak együtt kell működniük a Node.js más verzióival, további információért tekintse meg az [Azure Functions futásidejű verzióinak dokumentációját.](../azure-functions/functions-versions.md#languages)
+   > A példáknak a Node. js más verzióival kell dolgozniuk, további információért lásd a [Azure functions Runtime Versions dokumentációját](../azure-functions/functions-versions.md#languages) .
 
 > [!NOTE]
 > Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
     ![SignalR szolgáltatás létrehozása](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. A kódszerkesztőben nyissa meg az *src/chat/javascript* mappát a klónozott tárházban.
+1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/JavaScript* mappát a klónozott tárházban.
 
 1. Nevezze át a *local.settings.sample.json* fájlt *local.settings.json* névre.
 
@@ -62,7 +62,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
 
-1. A terminálon győződjön meg arról, hogy az *src/chat/javascript* mappában van. Futtassa a függvényalkalmazást.
+1. A terminálon győződjön meg arról, hogy a *src/chat/JavaScript* mappában található. Futtassa a függvényalkalmazást.
 
     ```bash
     func start
@@ -76,7 +76,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást épített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
+Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions üzembe helyezése VS Code-dal](/azure/javascript/tutorial-vscode-serverless-node-01)

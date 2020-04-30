@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4ace70abe0112e0fe27d177c02bcb697746c92cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78262371"
 ---
-### <a name="set-the-storage-account-connection"></a>A Tárfiók-kapcsolat beállítása
+### <a name="set-the-storage-account-connection"></a>A Storage-fiók kapcsolatainak beállítása
 
-Nyissa meg a local.settings.json `AzureWebJobsStorage`fájlt, és másolja a , amely a Storage-fiók kapcsolati karakterlánca. Állítsa `AZURE_STORAGE_CONNECTION_STRING` be a környezeti változót a kapcsolati karakterláncra ezzel a Bash paranccsal:
+Nyissa meg a local. Settings. JSON fájlt, és `AzureWebJobsStorage`másolja ki a értékét, amely a Storage-fiókhoz tartozó kapcsolatok karakterlánca. Állítsa a `AZURE_STORAGE_CONNECTION_STRING` környezeti változót a kapcsolódási karakterláncra a bash parancs használatával:
 
 ```bash
 AZURE_STORAGE_CONNECTION_STRING="<STORAGE_CONNECTION_STRING>"
 ```
 
-Ha beállítja a `AZURE_STORAGE_CONNECTION_STRING` kapcsolati karakterláncot a környezeti változóban, a storage-fiókhoz anélkül férhet hozzá, hogy minden alkalommal hitelesítést kellene biztosítania.
+Ha a kapcsolati karakterláncot a `AZURE_STORAGE_CONNECTION_STRING` környezeti változóban állítja be, akkor anélkül férhet hozzá a Storage-fiókhoz, hogy minden alkalommal hitelesítést kellene biztosítania.

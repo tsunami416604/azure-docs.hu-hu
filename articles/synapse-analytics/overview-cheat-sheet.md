@@ -1,6 +1,6 @@
 ---
-title: Cheat sheet - Azure Synapse Analytics
-description: Útmutató a felhasználónak az Azure Synapse Analytics szolgáltatásban
+title: Cheat Sheet – Azure szinapszis Analytics
+description: Útmutató a felhasználónak az Azure szinapszis Analytics szolgáltatással való bejárásához
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -10,52 +10,52 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424656"
 ---
-# <a name="azure-synapse-analytics-cheat-sheet"></a>Az Azure Synapse Analytics csalási lapja
+# <a name="azure-synapse-analytics-cheat-sheet"></a>Azure szinapszis Analytics – Cheat Sheet
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Az Azure Synapse Analytics cheat sheet végigvezeti a szolgáltatás alapfogalmait és a fontos parancsokat. Ez a cikk hasznos mind az új tanulók, és azok számára, akik szeretnék kiemeli az alapvető Azure Synapse témakörök.
+Az Azure szinapszis Analytics Cheat Sheet végigvezeti Önt a szolgáltatás alapvető fogalmait és a fontos parancsokat. Ez a cikk segítséget nyújt az új tanulók és a fontos Azure szinapszis-témakörök kiemeléséhez.
 
 ## <a name="architecture"></a>Architektúra
 
 > [!div class="mx-imgBorder"]
->![Szinapszis építészet](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+>![Szinapszis-architektúra](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 | Főnevek és igék                         | Művelet       |
 |:---                                 |:---                 |
-| **Szinapszis munkaterület (előzetes verzió)** | Biztonságos együttműködési határ az Azure felhőalapú vállalati elemzéseinek biztosításához. A munkaterület egy adott régióban van telepítve, és társított ADLSg2 fiókkal és fájlrendszerrel rendelkezik (ideiglenes adatok tárolására). A munkaterület egy erőforráscsoport alatt van. |
-| **SQL Analytics**   | Elemzéseket futtathatok készletekkel vagy igény szerinti képességekkel.  |
-| **SQL-készlet**   | 0-N SQL kiépített erőforrások a megfelelő adatbázisokat lehet telepíteni egy munkaterületen. Minden SQL-készlethez tartozik egy adatbázis. Az SQL-készlet manuálisan vagy automatikusan méretezhető, szüneteltethető és folytatható. Egy SQL-készlet 100 DWU-ról 30 000 DWU-ra skálázható.       |
-| **SQL igény szerinti (előzetes verzió)**   | Nagyméretű adatokhoz készült elosztott adatfeldolgozó rendszer, amely lehetővé teszi a T-SQL-lekérdezések futtatását a Data Lake adatai felett. Kiszolgáló nélküli, így nem kell kezelnie az infrastruktúrát.       |
-|**Apache Spark** | Spark-futási idő egy Spark-készletben használt. A jelenlegi támogatott verzió a Spark 2.4 Python 3.6.1, Scala 2.11.12, .NET támogatás apache spark 0.5 és Delta Lake 0.3.  | 
-| **Apache Spark-készlet (előzetes verzió)**  | 0-n Spark kiépített erőforrások a megfelelő adatbázisokat lehet telepíteni egy munkaterületen. A Spark-készlet automatikusan szüneteltethető, folytatható és méretezhető.  |
-| **Spark alkalmazás**  |   Ez egy illesztőprogram-folyamatból és egy sor végrehajtó folyamatból áll. A Spark-alkalmazás fut egy Spark-készleten.            |
-| **Spark-munkamenet**  |   Egy szikraalkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióival és kisebb számú konstrukcióval való interakciót. A jegyzetfüzet futtatásához létre kell hozni egy munkamenetet. A munkamenet beállítható úgy, hogy adott számú, adott méretű végrehajtón fusson. A jegyzetfüzet-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón való futtatás. |
-| **SQL-kérelem**  |   A művelet, például egy lekérdezés sql készleten vagy sql-on-igény. |
-|**Adatintegráció**| Lehetővé teszi a különböző források közötti adatok betöltését és a munkaterületen vagy a munkaterületen kívül futó tevékenységek vezénylését.| 
-|**Összetevők**| Koncepció, amely magában foglalja az adatforrások kezeléséhez, fejlesztéséhez, vezényléséhez és megjelenítéséhez szükséges összes objektumot.|
-|**Jegyzetfüzet**| A Scala, a PySpark, a C#és a SparkSQL interaktív és reaktív adattudományi és mérnöki felülete. |
-|**Spark feladatdefiníció**|Felület a Spark-feladat elküldéséhez a kód és a függőségek tartalmazó szerelvény jar.|
-|**Adatfolyam**|  Teljes vizuális élményt nyújt, és nincs szükség kódolásra a big data átalakításához. Minden optimalizálás és végrehajtás kezelése a szerver nélküli módon. |
-|**SQL-szkript**| Fájlba mentett SQL-parancsok készlete. Egy SQL-parancsfájl egy vagy több SQL utasítást is tartalmazhat. Sql-kérelmek sql készleten vagy igény szerinti SQL-en keresztül történő futtatására használható.|
-|**Folyamat**| A tevékenységeket egymással együtt végző tevékenységek logikai csoportosítása.|
-|**Tevékenység**| Olyan műveleteket határoz meg, amelyeket olyan adatokon hajt végre, mint az adatok másolása, jegyzetfüzet vagy SQL parancsfájl futtatása.|
-|**Eseményindító**| Folyamat végrehajtása. Ez lehet fuss kézi vagy gépiesen ( táblázat, bukdácsoló ablak vagy esemény- kiindulópontul szolgáló).|
-|**Társított szolgáltatások**| Kapcsolati karakterláncok, amelyek meghatározzák a munkaterület külső erőforrásokhoz való csatlakozásához szükséges kapcsolati adatokat.|
-|**Adatkészlet**|  Azon adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak a tevékenységben bemenetként és kimenetként használandó adatokra. Egy csatolt szolgáltatáshoz tartozik.|
+| **Szinapszis munkaterület (előzetes verzió)** | Biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLSg2-fiókkal és fájlrendszerrel (az ideiglenes adattároláshoz). A munkaterület egy erőforráscsoport alatt található. |
+| **SQL Analytics**   | Az elemzéseket készletekkel vagy igény szerinti funkciókkal futtathatja.  |
+| **SQL-készlet**   | a megfelelő adatbázisokkal rendelkező 0 – N SQL kiépített erőforrások egy munkaterületen helyezhetők üzembe. Minden SQL-készlethez tartozik egy társított adatbázis. Egy SQL-készlet méretezhető, szüneteltethető és folytatható manuálisan vagy automatikusan. Az SQL-készletek 100 DWU akár 30 000 DWU is méretezhetők.       |
+| **Igény szerinti SQL-verzió (előzetes verzió)**   | Elosztott adatfeldolgozási rendszer, amely nagy léptékű adathoz készült, és lehetővé teszi a T-SQL-lekérdezések futtatását a adat-Lake-ben. Kiszolgáló nélküli, így nem kell felügyelni az infrastruktúrát.       |
+|**Apache Spark** | Spark Run – a Spark-készletben használt idő. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  | 
+| **Apache Spark készlet (előzetes verzió)**  | a 0 – N Spark kiosztott erőforrásai és a hozzájuk tartozó adatbázisok is üzembe helyezhetők egy munkaterületen. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  |
+| **Spark-alkalmazás**  |   Egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások egy Spark-készleten futnak.            |
+| **Spark-munkamenet**  |   Spark-alkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióinak és kisebb számú szerkezetének kezelését. Jegyzetfüzet futtatásához létre kell hoznia egy munkamenetet. Egy munkamenet konfigurálható úgy, hogy egy adott méretű, meghatározott számú végrehajtón fusson. A notebook-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón fut. |
+| **SQL-kérelem**  |   Olyan művelet, mint például az SQL-készlet vagy az SQL igény szerinti futtatása. |
+|**Adatintegráció**| Lehetővé teszi az adatgyűjtést a különböző források között, valamint a munkaterületen belül vagy a munkaterületen kívül futó tevékenységek szervezését.| 
+|**Összetevők**| A felhasználó által az adatforrások kezeléséhez, a fejlesztéshez, a koordináláshoz és a vizualizációhoz szükséges összes objektumot magában foglalja.|
+|**Jegyzetfüzet**| A Scala, a PySpark, a C# és a SparkSQL támogató interaktív és reaktív adatelemzési és mérnöki felület. |
+|**Spark-feladatdefiníció**|Egy Spark-feladatoknak a kódot és függőségeit tartalmazó szerelvény jar használatával történő elküldésére szolgáló felület.|
+|**Adatfolyam**|  A teljes körű vizuális élményt nyújt, és nincs szükség kódolásra big data átalakításhoz. Az optimalizálást és a végrehajtást kiszolgáló nélküli módon kezeljük. |
+|**SQL-szkript**| Egy fájlban mentett SQL-parancsok készlete. Egy SQL-parancsfájl egy vagy több SQL-utasítást is tartalmazhat. SQL-kérelmek SQL-készleten vagy igény szerinti SQL-en keresztüli futtatására is használható.|
+|**Folyamat**| A feladatokat elvégző tevékenységek logikai csoportosítása.|
+|**Tevékenység**| Meghatározza az adatokon végrehajtandó műveleteket, például az adatok másolását, egy jegyzetfüzet vagy egy SQL-parancsfájl futtatását.|
+|**Eseményindító**| Folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló vagy eseményvezérelt).|
+|**Társított szolgáltatások**| Kapcsolati karakterláncok, amelyek meghatározzák a munkaterület külső erőforrásokhoz való kapcsolódásához szükséges kapcsolati adatokat.|
+|**Adatkészlet**|  Az adatok elnevezett nézete, amely egyszerűen rámutat vagy hivatkozik a tevékenységekben a bemenetként és kimenetként használt adatokra. Egy társított szolgáltatáshoz tartozik.|
 
 ## <a name="next-steps"></a>További lépések
 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
-- [A Synapse Studio használata](quickstart-synapse-studio.md)
+- [A szinapszis Studio használata](quickstart-synapse-studio.md)
 - [SQL-készlet létrehozása](quickstart-create-sql-pool.md)
-- [Sql igény szerinti használata](quickstart-sql-on-demand.md)
+- [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
 - [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool.md)
 

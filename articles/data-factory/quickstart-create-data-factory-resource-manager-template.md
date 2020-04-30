@@ -1,5 +1,5 @@
 ---
-title: Azure-adatgyár létrehozása a Resource Manager-sablon használatával
+title: Azure-beli adatelőállító létrehozása Resource Manager-sablonnal
 description: Ebben az oktatóprogramban egy egyszerű minta Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével.
 services: data-factory
 documentationcenter: ''
@@ -11,21 +11,21 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419119"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
 
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuális verzió](quickstart-create-data-factory-resource-manager-template.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az Azure Data Factory használatával az adatok **átalakításáról** az [Oktatóanyag: Adatok átalakítása a Spark használatával](transform-data-using-spark.md)című témakörben található.
+A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: az adatátalakítás a Spark használatával](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -36,7 +36,7 @@ A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállít�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Telepítse a legújabb Azure PowerShell-modulokat az [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps)című témakörutasításait követve.
+Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepítésére és konfigurálására](/powershell/azure/install-Az-ps)vonatkozó utasításokat követve.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
@@ -44,11 +44,11 @@ A Resource Manager-sablonokkal kapcsolatos általános információkért tekints
 
 A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon, és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
-A Data Factory-erőforrások JSON-szintaxisáról és tulajdonságairól a [Microsoft.DataFactory erőforrástípusok](/azure/templates/microsoft.datafactory/allversions)című témakörben olvashat.
+A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
-Hozzon létre egy JSON nevű fájlt **ADFTutorialARM.json** néven a **C:\ADFTutorial** mappában (Az ADFTutorial mappa létrehozása, ha még nem létezik) a következő tartalommal:
+Hozzon létre egy **ADFTutorialARM. JSON** nevű JSON-fájlt a **C:\ADFTutorial** mappában (hozza létre a ADFTutorial mappát, ha még nem létezik) a következő tartalommal:
 
 ```json
 {  
@@ -325,7 +325,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 
 ## <a name="deploy-data-factory-entities"></a>Data Factory-entitások üzembe helyezése
 
-A PowerShellben futtassa a következő parancsot a Data Factory entitások erőforráscsoportban történő központi telepítéséhez (ebben az esetben az ADFTutorialResourceGroup példaként) a rövid útmutatóban korábban létrehozott Erőforrás-kezelő sablon használatával.
+A PowerShellben futtassa a következő parancsot, hogy Data Factory entitásokat telepítsen az erőforráscsoporthoz (ebben az esetben a ADFTutorialResourceGroup példaként használja) az ebben a rövid útmutatóban korábban létrehozott Resource Manager-sablonnal.
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
@@ -359,13 +359,13 @@ DeploymentDebugLogLevel :
 A sablon a következő Data Factory-entitásokat helyezi üzembe:
 
 - Azure Storage társított szolgáltatás
-- Bináris adatkészletek (bemenet és kimenet)
+- Bináris adatkészletek (bemeneti és kimeneti)
 - Másolási tevékenységgel rendelkező folyamat
 - A folyamatot elindító eseményindító
 
-Az üzembe helyezett eseményindító leállított állapotban van. Az eseményindító elindításának egyik módja a **Start-AzDataFactoryV2Trigger** PowerShell-parancsmag használata. A következő eljárás részletesen bemutatja a lépéseket:
+Az üzembe helyezett eseményindító leállított állapotban van. Az trigger indításának egyik módja a **Start-AzDataFactoryV2Trigger PowerShell-** parancsmag használata. A következő eljárás részletesen bemutatja a lépéseket:
 
-1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha a New-AzResourceGroupDeployment parancshoz más erőforráscsoport-nevet adott meg, itt frissítse az értéket.
+1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha más erőforráscsoport-nevet adott meg a New-AzResourceGroupDeployment parancshoz, itt frissítheti az értéket.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -398,7 +398,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
     ```
     
     Ekkor az eseményindító futtatási állapota **Leállítva**.
-5. **Indítsa el az eseményindítót**. Az eseményindító egész órakor futtatja a sablonban meghatározott folyamatot. Ez azt jelenti, hogy ha 14:25-kor hajtotta végre a parancsot, az eseményindító 15:00-kor futtatja először a folyamatot. Ezután óránként futtatja a folyamatot az eseményindítóhoz megadott befejezési időpontig.
+5. **Indítsa el az triggert**. Az eseményindító egész órakor futtatja a sablonban meghatározott folyamatot. Ez azt jelenti, hogy ha 14:25-kor hajtotta végre a parancsot, az eseményindító 15:00-kor futtatja először a folyamatot. Ezt követően óránként futtatja a folyamatot az triggerhez megadott befejezési időpontig.
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -412,7 +412,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Ellenőrizze, hogy az eseményindító elindult-e a Get-AzDataFactoryV2Trigger parancs ismételt futtatásával.
+6. A Get-AzDataFactoryV2Trigger parancs újbóli futtatásával ellenőrizze, hogy elindult-e az trigger.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -434,21 +434,21 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
 
 2. Az **Adat-előállítók** lapon kattintson a létrehozott adat-előállítóra. Szükség esetén szűrje a listát az adat-előállító nevével.
 
-3. Az Adatgyár lapon kattintson **a & figyelő** csempe szerkesztése parancsára.
+3. Az adatfeldolgozó lapon kattintson a **szerző & figyelés** csempére.
 
-4. A **Let's get started (Kezdjük)** lapon válassza a **Monitor lapot**.  ![Folyamat futásának figyelése](media/doc-common-process/get-started-page-monitor-button.png)
+4. Az **első lépések** lapon válassza a **figyelés fület**.  ![Folyamat futtatásának figyelése](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
     > Látható, hogy a folyamat csak egész órakor fut (például: 4:00, 5:00, 6:00 stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
 
-5. Kattintson a **Műveletek** oszlopBan a **Tevékenység futtatása** nézet hivatkozásra.
+5. Kattintson a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozására.
 
     ![Folyamat művelethivatkozása](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolás. Így ennek a tevékenységnek a futtatása látható.
 
     ![Tevékenységfuttatások](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. Kattintson a **Kimenet** hivatkozásra a Műveletek oszlopban. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
+7. Kattintson a **kimenet** hivatkozásra a műveletek oszlop alatt. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
 
 8. Ha sikeres/sikertelen futtatást lát, állítsa le az eseményindítót. Az eseményindító óránként egyszer futtatja a folyamatot. A folyamat minden futtatáskor átmásolja ugyanazt a fájlt a bemeneti mappából a kimeneti mappába. Az eseményindító leállításához futtassa a következő parancsot a PowerShell ablakában.
     
@@ -462,7 +462,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
 
 Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva:
 
-- [Azure Storage-hoz csatolt szolgáltatás](#azure-storage-linked-service)
+- [Azure Storage társított szolgáltatás](#azure-storage-linked-service)
 - [Bináris bemeneti adatkészlet](#binary-input-dataset)
 - [Bináris kimeneti adatkészlet](#binary-output-dataset)
 - [Másolási tevékenységgel rendelkező adatfolyamat](#data-pipeline)
@@ -492,11 +492,11 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 }
 ```
 
-A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedService és dataFactoryName a sablonban definiálva.
+A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName.
 
 #### <a name="binary-input-dataset"></a>Bináris bemeneti adatkészlet
 
-Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bináris adatkészlet-definícióban megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. A bináris adatkészletek definiálásához használt JSON-tulajdonságokról a Bináris adatkészletek részleteiről a [Bináris adatkészletek](format-binary.md#dataset-properties) tulajdonságairól.
+Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bináris adatkészlet definíciójában adja meg a bemeneti adatokat tartalmazó blob-tároló, mappa és fájl nevét. A bináris adatkészlet definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért lásd a [bináris adatkészlet tulajdonságai](format-binary.md#dataset-properties) című témakört.
 
 ```json
 {  
@@ -530,7 +530,7 @@ Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati szt
 
 #### <a name="binary-output-dataset"></a>Bináris kimeneti adatkészlet
 
-Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti mappából másolt adatokat tartalmazza. A bináris adatkészletek definiálásához használt JSON-tulajdonságokról a Bináris adatkészletek részleteiről a [Bináris adatkészletek](format-binary.md#dataset-properties) tulajdonságairól.
+Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti mappából másolt adatokat tartalmazza. A bináris adatkészlet definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért lásd a [bináris adatkészlet tulajdonságai](format-binary.md#dataset-properties) című témakört.
 
 ```json
 {  
@@ -563,7 +563,7 @@ Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti 
 
 #### <a name="data-pipeline"></a>Adatfolyamat
 
-Olyan folyamatot határoz meg, amely adatokat másol egyik bináris adatkészletből egy másik bináris adatkészletbe. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](concepts-pipelines-activities.md#pipeline-json) című szakaszt.
+Definiálhat egy folyamatot, amely adatokat másol egy bináris adatkészletből egy másik bináris adatkészletbe. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](concepts-pipelines-activities.md#pipeline-json) című szakaszt.
 
 ```json
 {  
@@ -638,7 +638,7 @@ Olyan folyamatot határoz meg, amely adatokat másol egyik bináris adatkészlet
 
 #### <a name="trigger"></a>Eseményindító
 
-Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el az eseményindítót a **Start-AzDataFactoryV2Trigger** parancsmag használatával. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution) című cikkben talál.
+Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el a triggert a **Start-AzDataFactoryV2Trigger** parancsmag használatával. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution) című cikkben talál.
 
 ```json
 {  

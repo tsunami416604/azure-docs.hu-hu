@@ -1,6 +1,6 @@
 ---
-title: Pont-hely (P2S) VPN konfigurálása Windows rendszeren az Azure Files-szal való használatra | Microsoft dokumentumok
-description: Pont-hely (P2S) VPN beállítása Windows rendszeren az Azure Files használatához
+title: Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Fileshoz való használatra | Microsoft Docs
+description: Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files használatával
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,32 +8,32 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81273477"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Pont-hely (P2S) VPN konfigurálása Windows rendszeren az Azure Files használatával
-A Point-to-Site (P2S) VPN-kapcsolat segítségével az Azure-fájlmegosztások csatlakoztatása SMB-en keresztül az Azure-on kívülről, a 445-ös port megnyitása nélkül. A pont-hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. P2S VPN-kapcsolat használatához az Azure Files, a P2S VPN-kapcsolat kell konfigurálni minden ügyfél, amely csatlakozni kíván. Ha sok ügyfél, amelynek csatlakoznia kell az Azure-fájlmegosztások a helyszíni hálózatról, használhatja a helyek közötti (S2S) VPN-kapcsolat helyett egy point-to-site kapcsolat minden ügyfél számára. További információ: A helyek közötti [VPN konfigurálása az Azure Files szolgáltatáshoz című témakörben olvashat.](storage-files-configure-s2s-vpn.md)
+# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files-mel való használatra
+A pont – hely (P2S) VPN-kapcsolattal Azure-fájlmegosztás az Azure-on kívülről is csatlakoztatható SMB-n keresztül, a 445-es port megnyitása nélkül. A pont – hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. Ha sok ügyféllel kell csatlakoznia az Azure-fájlmegosztás számára a helyszíni hálózatból, akkor az egyes ügyfelek pont – hely kapcsolata helyett használhat helyek közötti (S2S) VPN-kapcsolatot. További információ: helyek közötti [VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md).
 
-Azt javasoljuk, hogy olvassa el a hálózati szempontok közvetlen [Azure-fájlmegosztási hozzáférés,](storage-files-networking-overview.md) mielőtt folytatná ezt a cikket a teljes körű vita a hálózati lehetőségek az Azure Files.
+Javasoljuk, hogy olvassa el a [hálózatkezelési megfontolásokat az Azure-fájlmegosztás közvetlen eléréséhez](storage-files-networking-overview.md) , mielőtt folytatná a következő témakört, amely ismerteti a Azure Files számára elérhető hálózati beállítások teljes körű megvitatását.
 
-A cikk részletezi a windowsos (Windows-ügyfél- és Windows-kiszolgálóalapú) VPN-kapcsolat konfigurálásának lépéseit az Azure-fájlmegosztások közvetlen helyszíni csatlakoztatásához. Ha az Azure File Sync forgalmat VPN-en keresztül szeretné irányítani, olvassa el [az Azure File Sync proxy és a tűzfal beállításainak konfigurálását.](storage-sync-files-firewall-and-proxy.md)
+A cikk részletesen ismerteti, hogyan konfigurálhat egy pont – hely típusú VPN-t Windows rendszeren (Windows-ügyfél és Windows Server) az Azure-fájlmegosztás közvetlen helyszíni csatlakoztatásához. Ha VPN-en keresztül szeretné átirányítani Azure File Sync forgalmat, tekintse meg a [Azure file Sync proxy-és tűzfalbeállítások konfigurálása](storage-sync-files-firewall-and-proxy.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az Azure PowerShell-modul legújabb verziója. Az Azure PowerShell telepítéséről az [Azure PowerShell-modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) és az operációs rendszer kiválasztása című témakörben talál további információt. Ha az Azure CLI-t windowsos használatra szeretné használni, azonban az alábbi utasítások megjelennek az Azure PowerShellszámára.
+- A Azure PowerShell modul legújabb verziója. A Azure PowerShell telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) és az operációs rendszer kiválasztása. Ha inkább az Azure CLI-t szeretné használni a Windowson, akkor az alábbi utasításokat azonban a Azure PowerShell ismerteti.
 
-- Egy Azure-fájlmegosztást szeretne csatlakoztatni a helyszíni. Az Azure-fájlmegosztások a tárfiókokon belül vannak üzembe helyezve, amelyek olyan felügyeleti konstrukciók, amelyek egy megosztott tárolókészletet képviselnek, amelyben több fájlmegosztást, valamint más tárolási erőforrásokat, például blobtárolókat vagy várólistákat helyezhet üzembe. Az Azure-fájlmegosztások és tárfiókok üzembe helyezéséről az [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című részben olvashat bővebben.
+- Egy Azure-fájlmegosztás, amelyet a helyszínen kíván csatlakoztatni. Az Azure-fájlmegosztás üzembe helyezése a Storage-fiókokban történik, amelyek olyan felügyeleti szerkezetek, amelyek olyan megosztott tárolót képviselnek, amelyben több fájlmegosztás, valamint más tárolási erőforrások, például blob-tárolók vagy várólisták helyezhetők üzembe. Az Azure-fájlmegosztás és a Storage-fiókok Azure- [fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című részében olvashat bővebben.
 
-- A helyszíni csatlakoztatni kívánt Azure-fájlmegosztást tartalmazó tárfiók privát végpontja. Ha többet szeretne tudni a rról, hogyan hozhat létre privát [végpontot, olvassa el az Azure Files hálózati végpontok konfigurálása című témakört.](storage-files-networking-endpoints.md?tabs=azure-powershell) 
+- Az Azure-fájlmegosztás a helyszínen csatlakoztatni kívánt részét tartalmazó Storage-fiókhoz tartozó magánhálózati végpont. További információ a privát végpontok létrehozásáról: [Azure Files hálózati végpontok konfigurálása](storage-files-networking-endpoints.md?tabs=azure-powershell). 
 
-## <a name="deploy-a-virtual-network"></a>Virtuális hálózat telepítése
-Az Azure-fájlmegosztás és más Azure-erőforrások elérése a helyszíni egy point-to-site VPN, létre kell hoznia egy virtuális hálózat, vagy virtuális hálózat. A P2S VPN-kapcsolat automatikusan létrehoz egy hidat a helyszíni Windows-gép és az Azure virtuális hálózat között.
+## <a name="deploy-a-virtual-network"></a>Virtuális hálózat üzembe helyezése
+Ha egy pont – hely típusú VPN-kapcsolaton keresztül szeretné elérni az Azure-fájlmegosztást és más Azure-erőforrásokat, létre kell hoznia egy virtuális hálózatot vagy egy VNet. A automatikusan létrehozandó P2S VPN-kapcsolat a helyszíni Windows-gép és az Azure-beli virtuális hálózat közötti híd.
 
-A következő PowerShell létrehoz egy Azure virtuális hálózatot három alhálózattal: egyet a tárfiók szolgáltatásvégpontjához, egyet a tárfiók privát végpontjához, amely a helyszíni tárfiók eléréséhez szükséges anélkül, hogy egyéni útválasztást hozna létre a nyilvános IP-címhez, amely változhat, és egyet a vpn-szolgáltatást nyújtó virtuális hálózati átjáróhoz. 
+A következő PowerShell egy három alhálózattal rendelkező Azure-beli virtuális hálózatot hoz létre: egyet a Storage-fiók szolgáltatási végpontján, egyet a Storage-fiókja privát végpontján, amely a helyi Storage-fiókhoz való hozzáféréshez szükséges, anélkül, hogy egyéni útválasztást kellene létrehozni a Storage-fiók nyilvános IP-címéhez, és egyet a VPN szolgáltatást biztosító virtuális hálózati átjáróhoz. 
 
-Ne felejtse `<resource-group>`el `<desired-vnet-name>` kicserélni `<region>`a , és a környezetének megfelelő értékeket.
+Ne felejtse `<region>`el `<resource-group>`lecserélni `<desired-vnet-name>` a környezetet a megfelelő értékekre.
 
 ```PowerShell
 $region = "<region>"
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Főtanúsítvány létrehozása a VPN-hitelesítéshez
-Ahhoz, hogy a helyszíni Windows-gépekRŐL származó VPN-kapcsolatok hitelesíthetők legyenek a virtuális hálózat eléréséhez, két tanúsítványt kell létrehoznia: egy legfelső szintű tanúsítványt, amelyet a virtuális gép átjárója kap meg, és egy ügyféltanúsítványt, amelyet a főtanúsítvánnyal alá kell írni. A következő PowerShell létrehozza a főtanúsítványt; az ügyféltanúsítvány az Azure virtuális hálózati átjáró létrehozása után jön létre az átjáróból származó információkkal. 
+Ahhoz, hogy a helyszíni Windows-gépek VPN-kapcsolatai hitelesítve legyenek a virtuális hálózathoz való hozzáféréshez, két tanúsítványt kell létrehoznia: egy főtanúsítványt, amelyet a rendszer a virtuálisgép-átjáró számára biztosít, valamint egy ügyféltanúsítványt, amely a főtanúsítvánnyal lesz aláírva. A következő PowerShell létrehozza a főtanúsítványt; az ügyféltanúsítvány akkor jön létre, ha az Azure-beli virtuális hálózati átjárót az átjáró információi alapján hozza létre. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -125,13 +125,13 @@ foreach($line in $rawRootCertificate) {
 }
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Virtuális hálózati átjáró telepítése
-Az Azure virtuális hálózati átjáró az a szolgáltatás, amelyhez a helyszíni Windows-gépek csatlakozni fog. A szolgáltatás üzembe helyezéséhez két alapvető összetevőre van szükség: egy nyilvános IP-cím, amely azonosítja az átjárót az ügyfelek számára, bárhol is legyenek a világon, és egy korábban létrehozott főtanúsítványt, amelyet az ügyfelek hitelesítésére használnak.
+## <a name="deploy-virtual-network-gateway"></a>Virtuális hálózati átjáró üzembe helyezése
+Az Azure-beli virtuális hálózati átjáró az a szolgáltatás, amellyel a helyszíni Windows-gépek csatlakozni fognak. A szolgáltatás üzembe helyezéséhez két alapvető összetevő szükséges: egy nyilvános IP-cím, amely azonosítja az átjárót az ügyfelek számára, bárhol is legyenek a világon, valamint egy korábban létrehozott főtanúsítvány, amelyet az ügyfelek hitelesítéséhez fog használni.
 
-Ne felejtse el lecserélni `<desired-vpn-name-here>` az erőforrásokhoz kívánt nevet.
+Ne felejtse `<desired-vpn-name-here>` el lecserélni az ehhez az erőforrásokhoz hasonló nevet.
 
 > [!Note]  
-> Az Azure virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás üzembe helyezése közben ez a PowerShell-parancsfájl blokkolja a központi telepítés befejezéséhez. Ez a várható eredmény.
+> Az Azure-beli virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás üzembe helyezése közben ez a PowerShell-parancsfájl letiltja a központi telepítés befejeződését. Ez a várható eredmény.
 
 ```PowerShell
 $vpnName = "<desired-vpn-name-here>" 
@@ -167,7 +167,7 @@ $vpn = New-AzVirtualNetworkGateway `
 ```
 
 ## <a name="create-client-certificate"></a>Ügyféltanúsítvány létrehozása
-Az ügyféltanúsítvány a virtuális hálózati átjáró URI-jával jön létre. Ez a tanúsítvány a korábban létrehozott főtanúsítvánnyal van aláírva.
+Az ügyféltanúsítványt a virtuális hálózati átjáró URI-ja hozza létre. Ez a tanúsítvány a korábban létrehozott főtanúsítvánnyal van aláírva.
 
 ```PowerShell
 $clientcertpassword = "1234"
@@ -212,9 +212,9 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>A VPN-ügyfél konfigurálása
-Az Azure virtuális hálózati átjáró létrehoz egy letölthető csomagot konfigurációs fájlokat szükséges inicializálása a VPN-kapcsolat a helyszíni Windows-gépen. A VPN-kapcsolatot a Windows 10/Windows Server 2016+ [Mindig VPN szolgáltatásával](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) fogjuk konfigurálni. Ez a csomag végrehajtható csomagokat is tartalmaz, amelyek szükség esetén konfigurálják az örökölt Windows VPN-ügyfelet. Ez az útmutató az örökölt Windows VPN-ügyfél helyett mindig vpn-alapú ügyfelet használ, mivel az Always On VPN-ügyfél lehetővé teszi a végfelhasználók számára, hogy rendszergazdai engedélyekkel ne csatlakozzanak/válasszanak le az Azure VPN-ről anélkül, hogy rendszergazdai engedélyekkel rendelkeznek a számítógépükhöz. 
+Az Azure Virtual Network Gateway egy letölthető csomagot hoz létre a helyi Windows-gépen a VPN-kapcsolat inicializálásához szükséges konfigurációs fájlokkal. A VPN-kapcsolat a Windows 10/Windows Server 2016 + rendszer [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) funkciójának használatával lesz konfigurálva. Ez a csomag olyan végrehajtható csomagokat is tartalmaz, amelyek az örökölt Windows VPN-ügyfelet fogják konfigurálni, ha szükséges. Ez az útmutató always on VPN-t használ, nem pedig az örökölt Windows VPN-ügyfelet, mint az Always On VPN-ügyfél lehetővé teszi a végfelhasználók számára az Azure VPN-hez való csatlakozást/leválasztást anélkül, hogy rendszergazdai jogosultságokkal 
 
-A következő parancsfájl telepíti a virtuális hálózati átjárón való hitelesítéshez szükséges ügyféltanúsítványt, letölti és telepíti a VPN-csomagot. Ne feledje, hogy cserélje ki, `<computer1>` és `<computer2>` a kívánt számítógépeket. Ezt a parancsfájlt annyi gépen futtathatja, amennyire csak `$sessions` szeretné, ha további PowerShell-munkameneteket ad hozzá a tömbhöz. A használati fióknak minden ilyen gépen rendszergazdának kell lennie. Ha ezek közül a gépek közül az egyik az a helyi számítógép, amelyről a parancsfájlt futtatja, a parancsfájlt egy emelt szintű PowerShell-munkamenetből kell futtatnia. 
+A következő parancsfájl telepíti a hitelesítéshez szükséges ügyféltanúsítványt a virtuális hálózati átjárón, letölti és telepíti a VPN-csomagot. Ne felejtse `<computer1>` el `<computer2>` lecserélni és használni a kívánt számítógépeket. Ezt a szkriptet tetszőleges számú gépen futtathatja, ha további PowerShell-munkameneteket ad hozzá `$sessions` a tömbhöz. Az Ön által használt fióknak rendszergazdának kell lennie az egyes gépeken. Ha ezen gépek egyike a parancsfájlt futtató helyi gép, a parancsfájlt emelt szintű PowerShell-munkamenetből kell futtatnia. 
 
 ```PowerShell
 $sessions = [System.Management.Automation.Runspaces.PSSession[]]@()
@@ -291,8 +291,8 @@ foreach ($session in $sessions) {
 Remove-Item -Path $vpnTemp -Recurse
 ```
 
-## <a name="mount-azure-file-share"></a>Az Azure fájlmegosztásának csatlakoztatása
-Most, hogy beállította a point-to-site VPN-t, használhatja az Azure-fájlmegosztás csatlakoztatására a PowerShellen keresztül beállított számítógépeken. A következő példa csatlakoztatja a megosztást, felsorolja a megosztás gyökérkönyvtárát, hogy bizonyítsa, hogy a megosztás valóban csatlakoztatva van, és a megosztás leválasztása. Sajnos nem lehetséges a megosztás tartós csatlakoztatása a PowerShell-távszószerint. Az állandó csatlakoztatáshoz olvassa el az [Azure-fájlmegosztás használata a Windows rendszerrel](storage-how-to-use-files-windows.md). 
+## <a name="mount-azure-file-share"></a>Azure-fájlmegosztás csatlakoztatása
+Most, hogy beállította a pont – hely VPN-t, felhasználhatja az Azure-fájlmegosztás csatlakoztatására a PowerShell használatával telepített számítógépeken. A következő példa felcsatolja a megosztást, lelistázza a megosztás gyökérkönyvtárát, és igazolja, hogy a megosztás valóban csatlakoztatva van, és a megosztás leválasztása megtörténik. Sajnos a megosztást nem lehet állandó módon csatlakoztatni a PowerShell távelérési szolgáltatásához. A folyamatos csatlakoztatáshoz tekintse meg [Az Azure-fájlmegosztás használata a Windowsban](storage-how-to-use-files-windows.md)című témakört. 
 
 ```PowerShell
 $myShareToMount = "<file-share>"
@@ -337,6 +337,6 @@ Invoke-Command `
 ```
 
 ## <a name="see-also"></a>Lásd még
-- [A közvetlen Azure-fájlmegosztási hozzáférés hálózati szempontjai](storage-files-networking-overview.md)
-- [Pont-hely (P2S) VPN konfigurálása Linuxon az Azure Files-szal való használatra](storage-files-configure-p2s-vpn-linux.md)
-- [Helyek közötti (S2S) VPN konfigurálása az Azure Files használatához](storage-files-configure-s2s-vpn.md)
+- [Hálózati megfontolások az Azure fájlmegosztás közvetlen eléréséhez](storage-files-networking-overview.md)
+- [Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra](storage-files-configure-p2s-vpn-linux.md)
+- [Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md)

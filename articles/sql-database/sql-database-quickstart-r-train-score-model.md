@@ -1,7 +1,7 @@
 ---
-title: Prediktív modell létrehozása és betanítása R-ben
+title: Prediktív modell létrehozása és betanítása az R-ben
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Hozzon létre egy egyszerű prediktív modellt az R-ben az Azure SQL Database Machine Learning Services (előzetes verzió) használatával, majd az új adatok használatával előre jelezheti az eredményt.
+description: Hozzon létre egy egyszerű prediktív modellt az R-ben Azure SQL Database Machine Learning Services (előzetes verzió) használatával, majd adja meg az eredményt az új adataival.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,48 +15,48 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3c88bdf141e7784837a89c8104574d97c93296dc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460154"
 ---
-# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Rövid útmutató: Prediktív modell létrehozása és betanítása az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Gyors útmutató: prediktív modell létrehozása és betanítása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 
-Ebben a rövid útmutatóban hozzon létre és tanítsa be a prediktív modellt az R használatával, mentse a modellt egy táblába az adatbázisban, majd a modell segítségével előre jelezze az új adatok értékeit az Azure SQL Database Machine Learning Services (R) használatával.
+Ebben a rövid útmutatóban egy prediktív modellt fog létrehozni és betanítani az R használatával, mentse a modellt az adatbázis egyik táblájába, majd a modell használatával adja meg az új adatok értékeit az Azure SQL Database Machine Learning Services (R) használatával.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Azure SQL-adatbázis](sql-database-single-database-get-started.md) [kiszolgálószintű tűzfalszabállyal](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) engedélyezve van az R szolgáltatással.
-- [SQL Server Felügyeleti stúdió](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy [kiszolgálói szintű tűzfalszabály használatával](sql-database-server-level-firewall-rule.md) rendelkező [Azure SQL Database](sql-database-single-database-get-started.md)
+- Az R-t engedélyező [Machine learning Services](sql-database-machine-learning-services-overview.md) .
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-Ez a példa egy egyszerű regressziós modellsegítségével előre jelzi az autó féktávolságát az R-ben található **autók** adatkészletének használatával.
+Ebben a példában egy egyszerű regressziós modellt használunk, amellyel előre megjósolható, hogy a sebesség az R-vel együtt használt **autók** adatkészlete alapján történjen.
 
 > [!TIP]
-> Az R-futásidejű számos adatkészletet tartalmaz a telepített adatkészletek `library(help="datasets")` listájának lekérése érdekében írja be az R parancssorból.
+> Az R Runtime számos adatkészletet tartalmaz, a telepített adatkészletek listájának lekéréséhez írja `library(help="datasets")` be az r-parancssorból az értéket.
 
 ## <a name="create-and-train-a-predictive-model"></a>Prediktív modell létrehozása és betanítása
 
-Az **autók** adatkészletében lévő autósebesség-adatok két oszlopot tartalmaznak, mind numerikus: **dist** és **speed**. Az adatok több megállási megfigyelést is tartalmaznak különböző sebességgel. Ezekből az adatokból létrehozhat egy lineáris regressziós modellt, amely leírja az autó sebessége és az autó megállításához szükséges távolság közötti kapcsolatot.
+Az **autók** adatkészletében lévő autós adatátviteli adathalmaz két oszlopot tartalmaz, a numerikus: **dist** és a **Speed**értékeket is beleértve. Az adatértékek több, különböző sebességű leállítási észrevételt tartalmaznak. Ebből az adatokból egy lineáris regressziós modellt hozunk létre, amely leírja az autó sebességének és az autó leállításához szükséges távolságnak a kapcsolatát.
 
 A lineáris modell követelményei a következők:
-- Adjon meg egy képletet, amely leírja a függő változó *sebesség* és a független *változótávolság*közötti kapcsolatot.
+- Definiáljon egy olyan képletet, amely leírja a függő változó *sebességének* és a független változó *távolságának*a kapcsolatát.
 - Adja meg a modell betanításához használni kívánt bemeneti adatokat.
 
 > [!TIP]
-> Ha szüksége van egy frissítő a lineáris modellek, próbálja meg ezt a bemutató, amely leírja a folyamat felszerelése modell rxLinMod: [Felszerelése lineáris modellek](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> Ha a lineáris modelleken frissítőre van szüksége, próbálja ki ezt az oktatóanyagot, amely leírja, hogyan illeszthető be modell a rxLinMod használatával: [lineáris modellek illesztése](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-A következő lépésekben beállítja a betanítási adatokat, hozzon létre egy regressziós modellt, tanítsa be a betanítási adatok használatával, majd mentse a modellt egy SQL-táblába.
+A következő lépésekben be kell állítania a betanítási adattípusokat, létre kell hoznia egy regressziós modellt, be kell tanítania a betanítási adataival, majd mentenie kell a modellt egy SQL-táblába.
 
-1. Nyissa meg **az SQL Server Management Studio alkalmazást,** és csatlakozzon az SQL-adatbázishoz.
+1. Nyissa meg **SQL Server Management Studio** és kapcsolódjon az SQL-adatbázishoz.
 
-   Ha segítségre van szüksége a csatlakozáshoz, [olvassa el a rövid útmutató: Az SQL Server Management Studio használata Azure SQL-adatbázis csatlakoztatásához és lekérdezéséhez című témakört.](sql-database-connect-query-ssms.md)
+   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg [Az Azure SQL Database-adatbázisok csatlakoztatásához és lekérdezéséhez SQL Server Management Studio használata](sql-database-connect-query-ssms.md)című témakört.
 
-1. Hozza létre a **CarSpeed** táblát a betanítási adatok mentéséhez.
+1. Hozza létre a **CarSpeed** táblát a betanítási adatgyűjtés mentéséhez.
 
     ```sql
     CREATE TABLE dbo.CarSpeed (
@@ -76,9 +76,9 @@ A következő lépésekben beállítja a betanítási adatokat, hozzon létre eg
     GO
     ```
 
-1. Regressziós `rxLinMod`modell létrehozása a használatával. 
+1. Regressziós modell létrehozása a `rxLinMod`használatával. 
 
-   A modell létrehozásához adja meg a képletet az R-kódon belül, majd adja át a betanítási adatok **CarSpeed** bemeneti paraméterként.
+   A modell létrehozásához adja meg a képletet az R-kódban, majd adja át a betanítási adatok **CarSpeed** bemeneti paraméterként.
 
     ```sql
     DROP PROCEDURE IF EXISTS generate_linear_model;
@@ -102,9 +102,9 @@ A következő lépésekben beállítja a betanítási adatokat, hozzon létre eg
 
      Az rxLinMod függvény első argumentuma a *képlet* paraméter, amely a távolságot a sebesség függvényében határozza meg. A bemeneti adatok a `CarsData` változóban tárolódnak, amelyet az SQL-lekérdezés tölt ki.
 
-1. Hozzon létre egy táblázatot, ahol tárolja a modellt, így később használhatja előrejelzéshez. 
+1. Hozzon létre egy táblázatot, amelyben tárolja a modellt, így később is felhasználhatja az előrejelzéshez. 
 
-   A modellt létrehozó R-csomag kimenete általában **bináris objektum,** ezért a táblának **VARBINARY(max)** típusú oszloppal kell rendelkeznie.
+   A modellt létrehozó R-csomag kimenete általában **bináris objektum**, ezért a táblának **VARBINARY (max)** típusú oszlopra van szükség.
 
     ```sql
     CREATE TABLE dbo.stopping_distance_models (
@@ -113,7 +113,7 @@ A következő lépésekben beállítja a betanítási adatokat, hozzon létre eg
         );
     ```
 
-1. Most hívja meg a tárolt eljárást, hozza létre a modellt, és mentse egy táblába.
+1. Most hívja meg a tárolt eljárást, létrehozza a modellt, és mentse egy táblába.
 
    ```sql
    INSERT INTO dbo.stopping_distance_models (model)
@@ -126,7 +126,7 @@ A következő lépésekben beállítja a betanítási adatokat, hozzon létre eg
    Violation of PRIMARY KEY constraint...Cannot insert duplicate key in object bo.stopping_distance_models
    ```
 
-   A hiba elkerülésének egyik lehetősége az egyes új modellek nevének frissítése. Például módosíthatja a nevet valami közérthetőbb névre, és hozzáadhatja a modell típusát, a létrehozás napját stb.
+   Az egyik lehetőség, hogy elkerülje ezt a hibát, hogy frissítse az egyes új modellek nevét. Például módosíthatja a nevet valami közérthetőbb névre, és hozzáadhatja a modell típusát, a létrehozás napját stb.
 
    ```sql
    UPDATE dbo.stopping_distance_models
@@ -138,7 +138,7 @@ A következő lépésekben beállítja a betanítási adatokat, hozzon létre eg
 
 Az R kimenete az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásból általában egyetlen adatkeretre korlátozódik. Azonban más típusú kimeneteket, például skaláris értékeket is visszaadhat az adatkeret mellett.
 
-Tegyük fel például, hogy be szeretne képezni egy modellt, de azonnal meg szeretné tekinteni a modell együtthatók táblázatát. Ehhez hozza létre az együtthatók táblázatát fő eredményhalmazként, és adja ki a betanított modellt egy SQL változóban. A modellt azonnal újra használhatja a változó hívásával, vagy mentheti a modellt egy táblába az itt látható módon.
+Tegyük fel például, hogy egy modellt szeretne betanítani, de azonnal megtekinti a modellből származó együtthatók táblázatát. Ehhez létre kell hoznia az együtthatók táblázatát a fő eredményhalmazként, és a betanított modellt egy SQL-változóban kell kiállítania. A modellt azonnal újra használhatja a változó meghívásával, vagy mentheti a modellt egy táblázatba az itt látható módon.
 
 ```sql
 DECLARE @model VARBINARY(max)
@@ -171,13 +171,13 @@ VALUES (
 
 ![Betanított modell további kimenettel](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Új adatok pontozása a betanított modell használatával
+## <a name="score-new-data-using-the-trained-model"></a>Új adatértékek kiértékelése a betanított modell használatával
 
-*A pontozás* az adatelemzésben használt kifejezés előrejelzések, valószínűségek vagy más értékek generálását jelenti egy betanított modellbe adagolni. Az előző szakaszban létrehozott modellt fogja használni az új adatokkal szembeni előrejelzések pontozásához.
+A *pontozás* olyan kifejezés, amely az adattudományban az előrejelzések, valószínűségek vagy más értékek generálását jelenti a betanított modellbe betáplált új adatok alapján. Az előző szakaszban létrehozott modellt fogja használni az új adatértékekkel kapcsolatos előrejelzések kiértékeléséhez.
 
-Észrevette, hogy az eredeti betanítási adatok nem emelkednek 25 mérföld/óra sebesség fölé? Ez azért van, mert az eredeti adatok egy 1920-as kísérletből származnak! Lehet, hogy csoda, mennyi ideig tartana egy autó a 1920-as években, hogy hagyja abba, ha lehetne menni, amilyen gyorsan 60 mph, vagy akár 100 mph? A kérdés megválaszolásához adjon meg néhány új sebességértéket a modellnek.
+Észrevette, hogy az eredeti betanítási adatok nem emelkednek 25 mérföld/óra sebesség fölé? Ez azért van, mert az eredeti adatok egy 1920-as kísérletből származnak! Lehet, hogy mennyi ideig tart egy autó a 1920-as verzióról, hogy leálljanak, ha akár 60 mph vagy akár 100 mph? A kérdés megválaszolásához megadhat néhány új sebességet a modell számára.
 
-1. Hozzon létre egy táblázatot új sebességadatokkal.
+1. Hozzon létre egy táblát új sebességgel.
 
    ```sql
     CREATE TABLE dbo.NewCarSpeed (
@@ -196,19 +196,19 @@ VALUES (
         , (100)
    ```
 
-2. Az új sebességértékektől a féktávolság előrejelzése.
+2. Az új sebességi értékek megállítási távolságának előrejelzése.
 
-   Mivel a modell a **RevoScaleR** csomag részeként megadott **rxLinMod** algoritmuson alapul, az általános R `predict` függvény helyett az [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) függvényt hívja meg.
+   Mivel a modell a **RevoScaleR** -csomag részeként megadott **rxLinMod** -algoritmuson alapul, az általános R `predict` -függvény helyett a [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) függvényt kell meghívnia.
 
-   Ez a példa parancsfájl:
-   - Select utasítás thasználja egyetlen modell bekéséhez a táblából
-   - Bemeneti paraméterként adja át
-   - Meghívja `unserialize` a függvényt a modellen
-   - A `rxPredict` megfelelő argumentumokkal rendelkező függvény alkalmazása a modellre
-   - Biztosítja az új bemeneti adatokat
+   Példa a parancsfájlra:
+   - A SELECT utasítás használatával egyetlen modellt kap a táblából.
+   - Bemeneti paraméterként adja át.
+   - A `unserialize` függvény meghívása a modellen
+   - A `rxPredict` függvény alkalmazása a modell megfelelő argumentumai alapján
+   - Az új bemeneti adatokat adja meg
 
    > [!TIP]
-   > A valós idejű pontozás, [lásd: Szerializálási funkciók](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) által biztosított RevoScaleR.
+   > A valós idejű pontozással kapcsolatban tekintse meg a RevoScaleR által biztosított [szerializálási függvények](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) című témakört.
 
    ```sql
     DECLARE @speedmodel VARBINARY(max) = (
@@ -240,15 +240,15 @@ VALUES (
    ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
-> Ebben a példaparancsfájlban a függvény a `str` tesztelési fázis ban hozzáadódik az R-ből visszaadott adatok sémájának ellenőrzéséhez. Az utasítást később is eltávolíthatja.
+> Az ebben a példában szereplő szkriptben a rendszer hozzáadja a `str` függvényt a tesztelési fázisban az R-ből visszaadott adatok sémájának ellenőrzéséhez. Az utasítást később is eltávolíthatja.
 >
-> Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Itt a WITH RESULTS záradék néhány új oszlopnevet határoz meg.
+> Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Itt a WITH RESULTs záradék definiál néhány új oszlopnevet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure SQL Database Machine Learning Services r-rel (előzetes verzió) című témakörről az alábbi cikkekben talál további információt.
+Az R (előzetes verzió) Azure SQL Database Machine Learning Servicesról a következő cikkekben talál további információt.
 
-- [Azure SQL Database Machine Learning Services R-rel (előzetes verzió)](sql-database-machine-learning-services-overview.md)
-- [Egyszerű R-parancsfájlok létrehozása és futtatása az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)](sql-database-quickstart-r-create-script.md)
-- [Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
-- [R- és SQL-adatok kal való kapcsolat az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
+- [Azure SQL Database Machine Learning Services R-vel (előzetes verzió)](sql-database-machine-learning-services-overview.md)
+- [Egyszerű R-parancsfájlok létrehozása és futtatása Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-quickstart-r-create-script.md)
+- [Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
+- [R-és SQL-adatmennyiség használata Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)

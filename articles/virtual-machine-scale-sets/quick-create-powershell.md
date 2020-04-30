@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Hozzon létre egy virtuális gépméretezési készletet az Azure PowerShell használatával
-description: Az Azure PowerShell használatával gyorsan létrehozhat egy virtuális gépméretezést.
+title: Rövid útmutató – virtuálisgép-méretezési csoport létrehozása Azure PowerShell
+description: Ismerkedjen meg az üzemelő példányokkal, hogy megtanítsa, hogyan hozhat létre gyorsan egy virtuálisgép-méretezést Azure PowerShell használatával.
 author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,31 +9,31 @@ ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: jushiman
 ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81008607"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure PowerShell használatával
 
 
 
-A virtuálisgép-méretezési készlet lehetővé teszi azonos, automatikus virtualgépek készletének üzembe helyezését és kezelését. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure PowerShell-lel.
+A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skálázású virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure PowerShell-lel.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Mielőtt létrehozna egy méretezési csoportot, hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)segítségével. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+A méretezési csoport létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 
-Most hozzon létre egy virtuális gép méretezési készlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer kéri, beállíthatja saját rendszergazdai hitelesítő adatait a méretezési csoportban a virtuálisgép-példányok hoz:
+Most hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Ha a rendszer kéri, beállíthatja a virtuálisgép-példányok saját rendszergazdai hitelesítő adatait a méretezési csoportba:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
 
- Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) és [a New-AzNetworkSecurityGroup segítségével.](/powershell/module/az.network/new-aznetworksecuritygroup) További információ: [Networking for Azure virtual machine scale sets](virtual-machine-scale-sets-networking.md).
+ Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) és a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](virtual-machine-scale-sets-networking.md).
 
  ```azurepowershell-interactive
  # Get information about the scale set
@@ -133,7 +133,7 @@ Update-AzVmss `
  ```
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. A [Get-AzPublicIpAddress segítségével](/powershell/module/az.network/get-azpublicipaddress)szerezd meg a terheléselosztó nyilvános IP-címét. A következő példa a *myResourceGroup* erőforráscsoportban létrehozott IP-címet jeleníti meg:
+Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a *myResourceGroup* erőforráscsoporthoz létrehozott IP-címet jeleníti meg:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -145,7 +145,7 @@ Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben. A terh
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség rá, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) segítségével eltávolíthatja az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást az alábbiak szerint. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást az alábbiak szerint. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

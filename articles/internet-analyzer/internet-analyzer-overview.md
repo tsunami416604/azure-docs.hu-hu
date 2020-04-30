@@ -1,6 +1,6 @@
 ---
-title: Azure Internet Analyzer | Microsoft dokumentumok
-description: További információ az Azure Internet Analyzer szolgáltatásról
+title: Azure Internet Analyzer | Microsoft Docs
+description: További tudnivalók az Azure Internet Analyzerről
 services: internet-analyzer
 author: megan-beatty
 ms.service: internet-analyzer
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73501945"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Mi az Internet Analyzer? (Előzetes verzió)
 
-Az Internet Analyzer egy ügyféloldali mérési platform, amely azt teszteli, hogy a hálózati infrastruktúra változásai hogyan befolyásolják az ügyfelek teljesítményét. Akár a helyszínről migrál az Azure-ba, akár egy új Azure-szolgáltatást értékel, az Internet Analyzer lehetővé teszi, hogy a migrálás előtt a felhasználók adatai és a Microsoft részletes elemzései alapján jobban megérthesse és optimalizálhassa a hálózati architektúrát az Azure-ral.
+Az Internet Analyzer egy ügyféloldali mérési platform, amellyel tesztelheti, hogy a hálózati infrastruktúra milyen hatással van az ügyfelek teljesítményére. Akár a helyszínről migrál az Azure-ba, akár egy új Azure-szolgáltatást értékel, az Internet Analyzer lehetővé teszi, hogy a migrálás előtt a felhasználók adatai és a Microsoft részletes elemzései alapján jobban megérthesse és optimalizálhassa a hálózati architektúrát az Azure-ral.
 
-Az Internet Analyzer egy kis JavaScript-ügyfelet használ a webalkalmazásba ágyazva, hogy mérje a végfelhasználók késését a kiválasztott hálózati célkészlethez, _végpontokat_hívunk. Az Internet Analyzer lehetővé teszi több egymás melletti teszt beállítását, lehetővé téve a különböző forgatókönyvek kiértékelését az infrastruktúra és az ügyfelek igényeinek fejlődésével. Az Internet Analyzer egyéni és előre konfigurált végpontokat biztosít, így kényelmes és rugalmas, hogy megbízható teljesítménydöntéseket hozzon a végfelhasználók számára. 
+Az Internet Analyzer egy kisméretű JavaScript-ügyfelet használ a webalkalmazásba, amely a végfelhasználók által a kiválasztott hálózati célhelyek késését méri, a _végpontokat_hívjuk. Az Internet Analyzer lehetővé teszi több párhuzamos tesztelés beállítását, amely lehetővé teszi különböző forgatókönyvek kiértékelését az infrastruktúra és az ügyfél igényei szerint. Az Internet Analyzer egyéni és előre konfigurált végpontokat biztosít, így biztosítva a kényelmet és a rugalmasságot, hogy megbízható teljesítménybeli döntéseket hozhasson a végfelhasználók számára. 
 
 
 > [!IMPORTANT]
@@ -27,13 +27,13 @@ Az Internet Analyzer egy kis JavaScript-ügyfelet használ a webalkalmazásba á
 
 ## <a name="quick--customizable-tests"></a>Gyors & testreszabható tesztek
 
-Az Internet Analyzer a felhőmigrálással, az új vagy további Azure-régiókra való üzembe helyezéssel, illetve az azure-beli új alkalmazás- és tartalomkézbesítési platformok, például az [Azure Front Door](https://azure.microsoft.com/services/frontdoor/) és a Microsoft Azure [CDN](https://azure.microsoft.com/services/cdn/)tesztelésével kapcsolatos, teljesítménnyel kapcsolatos kérdésekkel foglalkozik. 
+Az Internet Analyzer a Felhőbeli áttelepítés teljesítményével kapcsolatos kérdéseit, új vagy további Azure-régiókban való üzembe helyezését, illetve az Azure-beli új alkalmazás-és tartalomszolgáltató platformok tesztelését, például az [Azure bejárati ajtót](https://azure.microsoft.com/services/frontdoor/) és [Microsoft Azure CDN](https://azure.microsoft.com/services/cdn/)-t teszteli. 
 
-Az Internet Analyzer programban létrehozott minden teszt két végpontból áll: az A végpontból és a B végpontból. 
+Az Internet Analyzerben létrehozott minden teszt két végpontból áll: az A végpont és a B végpont. A B végpont teljesítményének elemzése az A végponthoz képest történik. 
 
-Konfigurálhatja a saját egyéni végpontját, vagy választhat az előre konfigurált Azure-végpontok közül. Egyéni végpontok kell használni, hogy értékelje a helyszíni számítási feladatok, a példányok más felhőszolgáltatók, vagy az egyéni Azure-konfigurációk. A tesztek két egyéni végpontból állhatnak; azonban legalább egy egyéni végpontot az Azure-ban kell üzemeltetni. Az előre konfigurált Azure-végpontok segítségével gyorsan és egyszerűen kiértékelhető a népszerű Azure-hálózati platformok, például az Azure Front Door, az Azure Traffic Manager és az Azure CDN. 
+Konfigurálhatja saját egyéni végpontját, vagy választhat számos előre konfigurált Azure-végpontból is. Egyéni végpontokat kell használni a helyszíni számítási feladatok, a más felhőalapú szolgáltatók példányai vagy az egyéni Azure-konfigurációk kiértékeléséhez. A tesztek két egyéni végpontból állhatnak; legalább egy egyéni végpontot azonban az Azure-ban kell üzemeltetni. Az előre konfigurált Azure-végpontok gyorsan és egyszerűen kiértékelik a népszerű Azure hálózati platformok, például az Azure bejárati ajtó, az Azure Traffic Manager és a Azure CDN teljesítményét. 
 
-Az előzetes verzió során a következő előre konfigurált végpontok érhetők el: 
+Az előzetes verzió ideje alatt a következő előre konfigurált végpontok érhetők el: 
 
 * **Azure-régiók**
     * Dél-Brazília
@@ -43,68 +43,68 @@ Az előzetes verzió során a következő előre konfigurált végpontok érhet�
     * USA keleti régiója
     * Nyugat-Japán
     * Észak-Európa
-    * Dél-Afrika Észak-Afrika
+    * Dél-Afrika északi régiója
     * Délkelet-Ázsia 
-    * Egyesült Arab Emírségek északi
+    * Észak-Egyesült Arab
     * Az Egyesült Királyság nyugati régiója  
     * Nyugat-Európa
     * USA nyugati régiója 
     * USA nyugati régiója, 2.
-* **Több Azure-régiókombináció** 
-    * USA keleti része, Dél-Brazília 
-    * USA keleti része, Kelet-Ázsia 
+* **Több Azure-régió kombinációja** 
+    * USA keleti régiója, Dél-Brazília 
+    * USA keleti régiója, Kelet-Ázsia 
     * Nyugat-Európa, Dél-Brazília
     * Nyugat-Európa, Délkelet-Ázsia
-    * Nyugat-Európa, Észak-Egyesült Arab Emírségek
-    * USA nyugati része, USA keleti része 
-    * Nyugat-USA, Nyugat-Európa
-    * USA nyugati, egyesült arab emírségekbeli észak-amerikai egyesült arab emírségekbeli
-    * Nyugat-Európa, Egyesült Arab Emírségek Észak-, Délkelet-Ázsia
-    * NYUGAT-USA, Nyugat-Európa, Kelet-Ázsia
-    * USA nyugati része, Észak-Európa, Délkelet-Ázsia, Egyesült Arab Emírségek Észak-, Dél-Afrika Észak-Afrika 
-* **Azure + Azure bejárati ajtó** – a fent felsorolt egyetlen vagy több Azure-régiókombinációban telepítve
-* **Azure + Azure CDN a Microsofttól** – a fent felsorolt egyetlen Azure-régiókombináción telepítve
-* **Azure + Azure Traffic Manager** – a fent felsorolt bármely azure-régiókombináción telepítve
+    * Nyugat-Európa, Észak-Egyesült Arab
+    * USA nyugati régiója, USA keleti régiója 
+    * USA nyugati régiója, Nyugat-Európa
+    * USA nyugati régiója, Észak-Egyesült Arab
+    * Nyugat-Európa, Észak-Ausztrália, Délkelet-Ázsia
+    * USA nyugati régiója, Nyugat-Európa, Kelet-Ázsia
+    * USA nyugati régiója, Észak-Európa, Délkelet-Ázsia, Észak-Ausztrália, Dél-Afrika északi régiója 
+* **Azure + Azure bejárati ajtó** – üzembe helyezése a fent felsorolt egyetlen vagy több Azure-régió kombinációjában
+* **Az Azure + Azure CDN a Microsoft** által üzembe helyezett bármely, a fent felsorolt egyetlen Azure-régió kombinációján
+* **Azure + azure Traffic Manager** – üzembe helyezés a fent felsorolt több Azure-régió kombinációján
 
-## <a name="suggested-test-scenarios"></a>Javasolt tesztforgatókönyvek 
+## <a name="suggested-test-scenarios"></a>Javasolt tesztelési forgatókönyvek 
 
-Annak érdekében, hogy a legjobb teljesítménydöntéseket hozhassa az ügyfelek számára, az Internet Analyzer lehetővé teszi, hogy két végpontot értékeljen ki a végfelhasználók adott populációja számára. 
+Az Internet Analyzer lehetővé teszi, hogy az ügyfelek számára a legjobb teljesítményű döntéseket hozza, hogy kiértékelje a végfelhasználók adott populációjának két végpontját. 
 
-Míg az Internet Analyzer számos kérdésre képes válaszolni, a leggyakoribbak a következők: 
-* Milyen hatással van a felhőbe való migrálás teljesítményre? 
-    * *Javasolt teszt: Egyéni (a jelenlegi helyszíni infrastruktúra) vs. Azure (bármely előre konfigurált végpont)*
-* Mi az értéke annak, ha az adataimat a peremre helyezem, szemben az adatközponttal? 
-    *  *Javasolt teszt: Azure vs. Azure bejárati ajtó, Azure vs. A Microsoft Azure CDN-je*
-* Mi az Azure Front Door teljesítményelőnye?
-    *  *Javasolt teszt: Egyéni/ Azure/ CDN vs. Azure bejárati ajtó*
-* Milyen előnyökkel jár az Azure CDN a Microsofttól? 
-    *  *Javasolt teszt: Egyéni/ Azure/ AFD vs. Azure CDN a Microsofttól*
-* Hogyan halmozódik fel az Azure CDN a Microsofttól? 
-    *  *Javasolt teszt: Egyéni (egyéb CDN-végpont) és a Microsoft Azure CDN-je*
-* Mi a legjobb felhő a végfelhasználói lakosság számára az egyes régiókban? 
-    *  *Javasolt teszt: Egyéni (egyéb felhőszolgáltatás) és az Azure (bármely előre konfigurált végpont)*
+Míg az Internet Analyzer számos kérdést tud válaszolni, a leggyakoribbak a következők: 
+* Milyen hatással van a felhőbe való Migrálás teljesítményére? 
+    * *Javasolt teszt: egyéni (a jelenlegi helyszíni infrastruktúra) és az Azure (bármely előre konfigurált végpont)*
+* Mi az az érték, hogy az adatközpontban hogyan helyezik üzembe az adataimat? 
+    *  *Javasolt teszt: Azure-beli és Azure-beli bejárati ajtó, Azure vagy Azure CDN a Microsofttól*
+* Mi az Azure bejárati ajtó teljesítménybeli előnye?
+    *  *Javasolt teszt: Custom/Azure/CDN vagy Azure bejárati ajtó*
+* Milyen teljesítménybeli előnyökkel jár a Microsoft Azure CDN? 
+    *  *Javasolt teszt: Custom/Azure/AFD vs. Azure CDN a Microsofttól*
+* Hogyan működik Azure CDN a Microsoft stackből? 
+    *  *Javasolt teszt: Custom (egyéb CDN-végpont) és a Microsoft Azure CDN*
+* Mi a legjobb felhő a végfelhasználói populációban az egyes régiókban? 
+    *  *Javasolt teszt: Custom (egyéb Cloud Service) vs. Azure (bármely előre konfigurált végpont)*
 
 ## <a name="how-it-works"></a>Működés
 
-Az Internet Analyzer használatához állítson be egy Internet Analyzer erőforrást a Microsoft Azure portalon, és telepítse a kis JavaScript-ügyfelet az alkalmazásba. Az ügyfél méri a késést a végfelhasználók tól a kiválasztott végpontok letöltésével egy képpontos képet HTTPS-en keresztül. A késésmérések összegyűjtése után az ügyfél elküldi a mérési adatokat az Internet Analyzer-nek.
+Az Internet Analyzer használatához állítson be egy Internet Analyzer-erőforrást a Microsoft Azure Portal, és telepítse a kis JavaScript-ügyfelet az alkalmazásban. Az ügyfél a végfelhasználók késését a kiválasztott végpontokra méri a HTTPS-en keresztül egy képpontos rendszerkép letöltésével. A késési mérések összegyűjtése után az ügyfél elküldi a mérési adatokat az Internet Analyzernek.
 
-Amikor egy felhasználó felkeresi a webalkalmazást, a JavaScript-ügyfél két végpontot választ ki az összes konfigurált teszt ben. Minden végpont esetében az ügyfél _hideg_ és _meleg_ mérést hajt végre. A _hideg_ mérés további késést von maga után a felhasználó és a végpont közötti tiszta hálózati késés mellett, például a DNS-feloldás, a TCP-kapcsolat kézfogása és az SSL/TLS egyeztetés mellett. A _meleg_ mérés közvetlenül a _hideg_ mérés befejezése után következik, és kihasználja a modern böngészők állandó TCP-kapcsolat-kezelését, hogy pontos analfabetizmust kapjon. Ha a felhasználó böngészője támogatja, a W3C erőforrás időzítési API-t a pontos mérési időzítéshez használja. Jelenleg csak a meleg késés mérések et használják elemzésre.
+Amikor egy felhasználó meglátogatja a webalkalmazást, a JavaScript-ügyfél két végpontot választ ki az összes konfigurált teszt alapján. Az ügyfél minden végpont esetében _hideg_ és _meleg_ mérést végez. A _hideg_ mérés további késleltetést okoz a felhasználó és a végpont közötti, például a DNS-feloldás, a TCP-kapcsolati kézfogás és az SSL/TLS egyeztetése közötti tiszta hálózati késés mellett. A _meleg_ mérés közvetlenül a _hideg_ mérés befejeződése után következik be, és kihasználja a modern böngészők állandó TCP-kapcsolatok felügyeletének előnyeit a teljes körű késés érdekében. Ha a felhasználó böngészője támogatja, a W3C-erőforrás időzítési API-ját a pontos mérési időzítéshez használja a rendszer. Jelenleg csak a meleg késési mérések használatosak az elemzéshez.
 
 ![architektúra](./media/ia-overview/architecture.png)
 
 
-## <a name="scorecards"></a>Scorecardok 
+## <a name="scorecards"></a>Sarokszámokat 
 
-A teszt megkezdése után telemetriai adatok láthatók az Internetes elemző erőforrásban a Scorecard lapon. Ezek az adatok mindig összesítve vannak. A következő szűrőkkel módosíthatja, hogy az adatok melyik nézetében jelenjen meg: 
+A teszt elindítását követően a telemetria adatai megjelennek az Internet Analyzer erőforrásában a scorecard lapon. Az adatokat a rendszer mindig összesíti. A következő szűrők használatával módosíthatja a megjelenő adatnézeteket: 
 
-* **Vizsgálat:** Válassza ki azt a tesztet, amelynek eredményeit meg szeretné tekinteni. A vizsgálati adatok akkor jelennek meg, ha elegendő adat áll az elemzés befejezéséhez – a legtöbb esetben 24 órán belül. 
-* **Időszak & befejezési dátum:** Az Internet Analyzer naponta három scorecardot generál – minden scorecard más összesítési időszakot tükröz – az azt megelőző 24 órát (napot), az azt megelőző hét napot (hét), és az azt megelőző 30 napot (hónap). A "Záró dátum" szűrővel válassza ki a megtekinteni kívánt időszakot. 
-* **Ország:** Ezzel a szűrővel megtekintheti az országban élő végfelhasználókra vonatkozó adatokat. A globális szűrő az összes földrajzi területen jeleníti meg az adatokat.  
+* **Teszt:** Válassza ki azt a tesztet, amelyre vonatkozóan meg szeretné tekinteni az eredményeket. Az adattesztek akkor jelennek meg, ha elegendő mennyiségű adattal kell elvégezniük az elemzést – a legtöbb esetben 24 órán belül. 
+* Időtartam **& befejezési dátum:** Az Internet Analyzer naponta három scorecardot hoz létre – az egyes scorecardok egy másik összesítési időszakot, a 24 órát (nap), a hét előtti napot (hetet) és a 30 nappal korábbi (hónap) időpontot tükrözik. A "befejezési dátum" szűrő használatával válassza ki a megtekinteni kívánt időtartamot. 
+* **Ország:** Ezzel a szűrővel megtekintheti a végfelhasználók által az országban tartózkodó felhasználókra vonatkozó adatértékeket. A globális szűrő az összes földrajzi régión belül jeleníti meg az összes adathalmazt.  
 
-A scorecardokról további információt a [scorecard okának értelmezése](internet-analyzer-scorecard.md) oldalon talál. 
+A scorecardokkal kapcsolatos további információkért tekintse meg a [Scorecardok értelmezését](internet-analyzer-scorecard.md) ismertető oldalt. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [hozhat létre az első Internetes elemző erőforrást.](internet-analyzer-create-test-portal.md)
-* Olvassa el az [Internet Analyzer GYIK](internet-analyzer-faq.md). 
+* Ismerje meg, hogyan [hozhatja létre az első Internet Analyzer-erőforrását](internet-analyzer-create-test-portal.md).
+* Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt. 

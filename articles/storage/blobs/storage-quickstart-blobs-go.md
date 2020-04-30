@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726459"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
@@ -24,20 +24,20 @@ A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkb
 
 Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
  
-* [Go 1.8 vagy újabb](https://golang.org/dl/)
-* [Az Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/)parancs a következő paranccsal:
+* [Ugrás 1,8 vagy újabb verzióra](https://golang.org/dl/)
+* [Azure Storage blob SDK for go](https://github.com/azure/azure-storage-blob-go/), a következő parancs használatával:
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > Győződjön meg arról, hogy nagybetűssé teszi `Azure` az URL-címet, hogy elkerülje az sdk-val való munka során az esetekkel kapcsolatos importálási problémákat. Is nagybetűs az `Azure` import kimutatások.
+    > Az SDK használatakor ügyeljen arra `Azure` , hogy az URL-cím alapján kihasználja az esetekkel kapcsolatos importálási problémákat. Az importálási `Azure` utasításokban is kihasználható.
     
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) egy egyszerű Go-alkalmazás.  
 
-A [git](https://git-scm.com/) segítségével töltse le az alkalmazás egy példányát a fejlesztői környezetbe. 
+A [git](https://git-scm.com/) használatával letöltheti az alkalmazás egy példányát a fejlesztői környezetbe. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-go-quickstart 
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>A blob letöltése
 
-A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Ha egy kapcsolat olvasás közben meghibásodik, további kéréseket küld a kapcsolat helyreállítására és az olvasás folytatására. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
+A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Ha egy kapcsolat nem sikerül az olvasás során, további kérelmeket küld a kapcsolat újbóli létrehozásához és az olvasás folytatásához. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
 
 Az alábbi kód a **Download** függvény használatával tölti le a blobot. A blob tartalmát a rendszer egy pufferbe írja, és megjeleníti a konzolon.
 

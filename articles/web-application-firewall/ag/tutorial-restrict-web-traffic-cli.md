@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás tűzfalának engedélyezése – Azure CLI
-description: Megtudhatja, hogyan korlátozhatja a webes forgalmat egy webalkalmazás-tűzfal egy alkalmazásátjáró n keresztül az Azure CLI.
+title: Webalkalmazási tűzfal engedélyezése – Azure CLI
+description: Megtudhatja, hogyan korlátozhatja a webes forgalmat egy Application Gateway webalkalmazási tűzfallal az Azure CLI használatával.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,15 +8,15 @@ ms.date: 08/21/2019
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80240082"
 ---
-# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Webalkalmazás-tűzfal engedélyezése az Azure CLI használatával
+# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Webalkalmazási tűzfal engedélyezése az Azure CLI használatával
 
-Webalkalmazás-tűzfallal (WAF) korlátozhatja az alkalmazásátjáró [kedési forgalmát.](ag-overview.md) A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések.
+Egy [webalkalmazási tűzfallal](ag-overview.md) (WAF) korlátozhatja az Application Gateway forgalmát. A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -26,15 +26,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 
-![Példa webalkalmazás tűzfalára](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
+![Webalkalmazási tűzfal – példa](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-Ha szeretné, ezt az eljárást az Azure PowerShell használatával is [elvégezheti.](tutorial-restrict-web-traffic-powershell.md)
+Ha szeretné, az eljárást [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli az Azure CLI 2.0.4-es vagy újabb verziójának futtatását. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-A virtuális hálózat és annak alhálózatai biztosítják az alkalmazásátjáró és az ahhoz tartozó erőforrások hálózati kapcsolatát. Hozzon létre egy *myVNet* nevű virtuális hálózatot és egy *myAGSubnet*nevű alhálózatot. majd hozzon létre egy nyilvános IP-címet nevű *myAGPublicIPAddress*.
+A virtuális hálózat és annak alhálózatai biztosítják az alkalmazásátjáró és az ahhoz tartozó erőforrások hálózati kapcsolatát. Hozzon létre egy *myVNet* nevű virtuális hálózatot és egy *myAGSubnet*nevű alhálózatot. Ezután hozzon létre egy *myAGPublicIPAddress*nevű nyilvános IP-címet.
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>Alkalmazásátjáró létrehozása webalkalmazási tűzfallal
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a *myAGSubnet* és *a myAGPublicIPAddress címhez*van rendelve.
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az Application Gateway hozzá van rendelve a *myAGSubnet* és a *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -139,9 +139,9 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tárfiók létrehozása és diagnosztika konfigurálása
 
-Ebben a cikkben az alkalmazásátjáró egy tárfiókot használ az adatok tárolására észlelési és megelőzési célokra. Az Azure Monitor naplóivagy az Event Hub használatával is rögzítheti az adatokat. 
+Ebben a cikkben az Application Gateway egy Storage-fiók használatával tárolja az adatgyűjtési és-megelőzési célokat. Az adatok rögzítéséhez Azure Monitor naplókat vagy Event hub-t is használhat. 
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Hozzon létre egy *myagstore1* nevű tárfiókot az [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) paranccsal.
 
@@ -156,7 +156,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
 
-Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje `<subscriptionId>` le az előfizetésazonosítóját, majd konfigurálja a diagnosztikát [az az monitor diagnosztikai beállításainak létrehozása.](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)
+Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje `<subscriptionId>` le az értékét az előfizetés-azonosítóra, majd konfigurálja a diagnosztikát az [az monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)paranccsal.
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)

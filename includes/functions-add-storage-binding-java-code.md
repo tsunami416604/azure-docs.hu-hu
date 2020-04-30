@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/18/2020
 ms.author: glenga
 ms.openlocfilehash: f4f109a6da0cb75555f9aadfa2fff31b8aa3107d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673487"
 ---
-Most már használhatja `msg` az új paramétert a kimeneti kötéshez való íráshoz a függvénykódból. Adja hozzá a következő kódsort a sikeres `name` válasz `msg` előtt, hogy hozzáadja a kimeneti kötés értékét.
+Most az új `msg` paraméter használatával írhatja a függvény kódjából a kimeneti kötést. Adja hozzá a következő kódrészletet a sikeres válaszként, hogy hozzáadja az értékét `name` a `msg` kimeneti kötéshez.
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="33":::
 
-Kimeneti kötés használataesetén nem kell használnia az Azure Storage SDK-kódot a hitelesítéshez, a várólista-referencia beszerzéséhez vagy az adatok írásához. A Functions futásidejű és a várólista kimeneti kötése ezeket a feladatokat elvégezheti.
+Ha kimeneti kötést használ, nem kell használnia az Azure Storage SDK kódját a hitelesítéshez, a várólista-hivatkozás beszerzéséhez vagy az adatíráshoz. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
-A `run` módszernek most a következő példához hasonlóan kell kinéznie:
+A `run` metódusnak most az alábbi példához hasonlóan kell kinéznie:
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="16-37":::

@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Databricks?
-description: Ismerje meg az Azure Databricks-t és azt, hogy hogyan hozza be a Sparkot az Azure-ba. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
+description: Ismerkedjen meg a Azure Databricks és a Spark on Databricks az Azure-ba való beszerzésével. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -11,10 +11,10 @@ ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
 ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81255515"
 ---
 # <a name="what-is-azure-databricks"></a>Mi az az Azure Databricks?
@@ -23,9 +23,9 @@ Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Ap
 
 ![Mi az az Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Mi az az Azure Databricks?")
 
-Az Azure Databricks egy gyors, egyszerű és együttműködő Apache Spark-alapú elemzési szolgáltatás. Egy big data-folyamat, az adatok (nyers vagy strukturált) az Azure-on keresztül az Azure Data Factory kötegekben, vagy streamelt közel valós időben kafka, Event Hub vagy az IoT Hub használatával. Ezek az adatok egy adattóban landolnak hosszú távú, megőrzött tároláshoz az Azure Blob Storage vagy az Azure Data Lake Storage szolgáltatásban. Az elemzési munkafolyamat részeként az Azure Databricks segítségével több adatforrásból, például [az Azure Blob Storageból,](../storage/blobs/storage-blobs-introduction.md)az Azure Data [Lake Storageból,](../data-lake-store/index.yml)az [Azure Cosmos DB-ből](../cosmos-db/index.yml)vagy az Azure SQL Data [Warehouse-ból](../synapse-analytics/sql-data-warehouse/index.yml) származó adatokat olvashatja be, és a Spark használatával áttörő elemzési adatokká alakíthatja.
+Azure Databricks egy gyors, könnyű és együttműködő Apache Spark elemzési szolgáltatás. Egy big data folyamat esetében az adatmennyiség (nyers vagy strukturált) az Azure-ba kerül betöltésre a kötegekben Azure Data Factory, vagy közel valós időben áramlik a Kafka, az Event hub vagy a IoT Hub használatával. Ezek az adattárak a hosszú távú tároláshoz, az Azure Blob Storage vagy a Azure Data Lake Storage. Az elemzési munkafolyamat részeként Azure Databricks több adatforrásból (például [Azure Blob Storageból](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storageból](../data-lake-store/index.yml), [Azure Cosmos DBból](../cosmos-db/index.yml)vagy [Azure SQL Data Warehouseból](../synapse-analytics/sql-data-warehouse/index.yml) ) származó adatok beolvasására, és a Spark használatával áttekinthető információkra vált.
 
-![Databricks-folyamat](./media/what-is-azure-databricks/databricks-pipeline.png)
+![Databricks folyamat](./media/what-is-azure-databricks/databricks-pipeline.png)
 
 ## <a name="apache-spark-based-analytics-platform"></a>Apache Spark-alapú elemzési platform
 
@@ -37,7 +37,7 @@ Az Azure Databricks a teljesen nyílt forráskódú Apache Spark fürtszolgálta
 
 * **Streamelés**: Valós idejű adatfeldolgozás és -elemzés analitikai és interaktív alkalmazásokhoz. Integrálható az HDFS, Flume és Kafka szolgáltatásokkal.
 
-* **MLlib**: Machine Learning könyvtár, amely a közös tanulási algoritmusok és segédprogramok, beleértve a besorolás, regresszió, fürtözés, együttműködésen alapuló szűrés, méretcsökkentés, valamint a mögöttes optimalizálásprimitívek.
+* **MLlib**: Machine learning könyvtár, amely közös tanulási algoritmusokból és segédprogramokból áll, beleértve a besorolást, a regressziót, a fürtözést, az együttműködési szűrést, a dimenzióját-csökkentést, valamint a mögöttes optimalizálási primitíveket.
 
 * **GraphX**: Grafikonok és grafikonszámítások a használati esetek széles köréhez, a kognitív analitikától egészen az adatfeltárásig.
 
@@ -88,7 +88,7 @@ Az Azure Databricks vállalati szintű Azure-biztonságot kínál, beleértve az
 
 > [!IMPORTANT]
 >
-> Az Azure Databricks egy Microsoft Azure-beli külső szolgáltatás, amely a globális Azure nyilvános felhőalapú infrastruktúrán van telepítve. A szolgáltatás összetevői közötti minden kommunikáció, beleértve a vezérlősík nyilvános IP-szolgáltatói és az ügyféladatsík között, a Microsoft Azure hálózati gerinchálózatán belül marad. Lásd még: [Microsoft globális hálózat](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> A Azure Databricks egy, a globális Azure-beli nyilvános felhő-infrastruktúrán üzembe helyezett Microsoft Azure-alapú szolgáltatás. A szolgáltatás összetevői közötti összes kommunikáció, beleértve a vezérlési síkon és az ügyfél-adatsíkon lévő nyilvános IP-címek közötti kommunikációt, a Microsoft Azure hálózati gerincen belül marad. Lásd még: [Microsoft Global Network](https://docs.microsoft.com/azure/networking/microsoft-global-network).
 
 
 ## <a name="integration-with-azure-services"></a>Integráció az Azure-szolgáltatásokkal

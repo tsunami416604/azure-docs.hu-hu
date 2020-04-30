@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure-beli privát DNS-zóna létrehozása az Azure CLI használatával
-description: Ebben a rövid útmutatóban létrehozhat és tesztel egy privát DNS-zónát, és rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
+title: Rövid útmutató – Azure Private DNS-zóna létrehozása az Azure CLI használatával
+description: Ebben a rövid útmutatóban egy privát DNS-zónát és-rekordot hoz létre és tesztel a Azure DNSban. Ez egy lépésenkénti útmutató, amellyel az Azure CLI használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,29 +8,29 @@ ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76935431"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rövid útmutató: Hozzon létre egy Azure-beli privát DNS-zónát az Azure CLI használatával
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató végigvezeti a lépéseket, hogy hozza létre az első privát DNS-zóna és rekord az Azure CLI használatával.
+Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord Azure CLI-vel történő létrehozásának lépésein.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *összekapcsolt* virtuális hálózatoknak nevezzük. Ha az automatikus regisztráció engedélyezve van, az Azure DNS is frissíti a zónarekordokat, amikor egy virtuális gép jön létre, módosítja annak IP-címét, vagy törlődik.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Saját DNS-zóna létrehozása
+> * Privát DNS-zóna létrehozása
 > * Tesztelési célú virtuális gépek létrehozása
 > * További DNS-rekord létrehozása
 > * A saját zóna tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-Ha szeretné, ezt a rövid útmutatót az [Azure PowerShell](private-dns-getstarted-powershell.md)használatával végezheti el.
+Ha szeretné, a rövid útmutató [Azure PowerShell](private-dns-getstarted-powershell.md)használatával is elvégezhető.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,9 +42,9 @@ Először hozzon létre egy erőforráscsoportot, amely a DNS-zónát tartalmazz
 az group create --name MyAzureResourceGroup --location "East US"
 ```
 
-## <a name="create-a-private-dns-zone"></a>Saját DNS-zóna létrehozása
+## <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-A következő példa létrehoz egy virtuális hálózat nevű **myAzureVNet**. Ezután létrehoz egy **private.contoso.com** nevű DNS-zónát a **MyAzureResourceGroup** erőforráscsoportban, összekapcsolja a DNS-zónát a **MyAzureVnet** virtuális hálózattal, és lehetővé teszi az automatikus regisztrációt.
+A következő példa egy **myAzureVNet**nevű virtuális hálózatot hoz létre. Ezután létrehoz egy **Private.contoso.com** nevű DNS-zónát a **MyAzureResourceGroup** -erőforráscsoporthoz, összekapcsolja a DNS-zónát a **MyAzureVnet** virtuális hálózattal, és engedélyezi az automatikus regisztrációt.
 
 ```azurecli
 az network vnet create \
@@ -62,7 +62,7 @@ az network private-dns link vnet create -g MyAzureResourceGroup -n MyDNSLink \
    -z private.contoso.com -v myAzureVNet -e true
 ```
 
-Ha csak névfeloldáshoz szeretne létrehozni egy zónát (nincs automatikus `-e false` állomásnév-regisztráció), használhatja a paramétert.
+Ha csak névfeloldáshoz szeretne zónát létrehozni (automatikus állomásnév-regisztráció nélkül), akkor használhatja a `-e false` paramétert.
 
 ### <a name="list-dns-private-zones"></a>Privát DNS-zónák listázása
 
@@ -115,7 +115,7 @@ Ez eltarthat pár percig.
 
 DNS-rekordokat az `az network private-dns record-set [record type] add-record` paranccsal lehet létrehozni. Az A-rekordok hozzáadásával kapcsolatos segítségért például lásd: `az network private-dns record-set A add-record --help`.
 
- A következő példa létrehoz egy rekordot a RELATÍV neve **db** a DNS Zone **private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A rekordhalmaz teljesen minősített neve **db.private.contoso.com**. A rekord típusa „A”, az IP-címe pedig „10.2.0.4”.
+ A következő példa létrehoz egy rekordot a relatív name **db** -vel a DNS-zóna **Private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A **db.Private.contoso.com**teljesen minősített neve. A rekord típusa „A”, az IP-címe pedig „10.2.0.4”.
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -137,7 +137,7 @@ az network private-dns record-set list \
 
 ## <a name="test-the-private-zone"></a>A saját zóna tesztelése
 
-Most tesztelheti a **névfeloldást** a private.contoso.com privát zónában.
+Most tesztelheti a **Private.contoso.com** saját zónájának névfeloldását.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Virtuális gépek konfigurálása a befelé irányuló ICMP-forgalom engedélyezésére
 

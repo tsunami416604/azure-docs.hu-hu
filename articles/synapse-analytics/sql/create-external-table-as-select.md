@@ -1,6 +1,6 @@
 ---
-title: Lekérdezési eredmények tárolása a tárolóba
-description: Ebből a cikkből megtudhatja, hogyan tárolhatja a lekérdezési eredményeket a tárolóba az SQL igény szerinti (előzetes verzió) használatával.
+title: Lekérdezés eredményeinek tárolása a tárterületen
+description: Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage-ban az SQL on-demand (előzetes verzió) használatával.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 462185feb2b9cbebd17ce9cba54c2b23deea6c75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425146"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>A lekérdezési eredmények tárolása a tárhelyhez az SQL igény szerinti (előzetes verzió) használatával az Azure Synapse Analytics használatával
+# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Lekérdezési eredmények tárolása az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics használatával
 
-Ebben a cikkben megtudhatja, hogyan tárolhatja a lekérdezési eredményeket a tárolóban az SQL On-demand (előzetes verzió) használatával.
+Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage-ban az SQL on-demand (előzetes verzió) használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépés az alábbi cikkek áttekintése és az előfeltételek teljesülése:
+Első lépésként tekintse át az alábbi cikkeket, és győződjön meg arról, hogy teljesítette az előfeltételeket:
 
 - [Első beállítás](query-data-storage.md#first-time-setup)
 - [Előfeltételek](query-data-storage.md#prerequisites)
 
 ## <a name="create-external-table-as-select"></a>Külső tábla létrehozása kijelölésként
 
-A CREATE EXTERNAL TABLE AS SELECT (CETAS) utasítást használhatja a lekérdezés eredményeinek tárolásához a tárolóban.
+A CREATE EXTERNAL TABLE AS SELECT (CETAS) utasítás használatával tárolhatja a lekérdezési eredményeket a tárolóban.
 
 > [!NOTE]
-> Módosítsa a lekérdezés első sorát, azaz a [mydbname] sort, hogy a létrehozott adatbázist használja. Ha még nem hozott létre adatbázist, olvassa el [az Első alkalommal beállítás .](query-data-storage.md#first-time-setup)
+> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja. Ha nem hozott létre adatbázist, kérjük, olvassa el az [első alkalommal történő telepítést](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -71,10 +71,10 @@ FROM
 
 ## <a name="use-a-external-table-created"></a>Létrehozott külső tábla használata
 
-A CETAS-on keresztül létrehozott külső táblát normál külső táblához hasonlóan használhatja.
+Használhatja a CETAS-en keresztül létrehozott külső táblázatot, például egy normál külső táblázatot.
 
 > [!NOTE]
-> Módosítsa a lekérdezés első sorát, azaz a [mydbname] sort, hogy a létrehozott adatbázist használja. Ha még nem hozott létre adatbázist, olvassa el [az Első alkalommal beállítás .](query-data-storage.md#first-time-setup)
+> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja. Ha nem hozott létre adatbázist, kérjük, olvassa el az [első alkalommal történő telepítést](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -91,4 +91,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>További lépések
 
-A különböző fájltípusok lekérdezéséről a [Query single CSV-fájl](query-single-csv-file.md), a [Query Parquet files](query-parquet-files.md)és a Query [JSON-fájlok](query-json-files.md) című cikkekben talál további információt.
+A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

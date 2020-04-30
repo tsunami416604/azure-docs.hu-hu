@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések beállítása az Azure Értesítési központokban | Microsoft dokumentumok
-description: Megtudhatja, hogyan állíthatja be az Azure Értesítési központokat az Azure Portalon a platformértesítési rendszer (PNS) beállításainak használatával.
+title: Leküldéses értesítések beállítása az Azure Notification Hubsban | Microsoft Docs
+description: Ismerje meg, hogyan állíthatja be az Azure Notification Hubst a Azure Portal a platform Notification System (PNS) beállításainak használatával.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -13,78 +13,78 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 78afb124ee1d1ab9b212197fb7a7140f88de9940
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80349513"
 ---
-# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rövid útmutató: Leküldéses értesítések beállítása értesítési központban
+# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Gyors útmutató: leküldéses értesítések beállítása egy értesítési központban
 
-Az Azure Notification Hubs egy leküldéses motort biztosít, amely könnyen használható, és amely horizontális felskálázódik. Az Értesítési központok segítségével értesítéseket küldhet bármely platformra (iOS, Android, Windows, Baidu) és bármely háttérrendszerről (felhőből vagy helyszíni rendszerről). További információ: [Mi az Azure Értesítési központ?](notification-hubs-push-notification-overview.md)
+Az Azure Notification Hubs egy könnyen használható leküldéses motort biztosít, amely kibővíthető. A Notification Hubs használatával küldhet értesítéseket bármilyen platformra (iOS, Android, Windows, Baidu) és bármilyen háttérből (Felhőbeli vagy helyszíni). További információ: [Mi az az Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
 
-Ebben a rövid útmutatóban az Értesítési központok platformértesítési rendszer (PNS) beállításait fogja használni a leküldéses értesítések több platformon történő beállításához. A rövid útmutató bemutatja az Azure Portalon elkövetési lépéseket.  [A Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) utasításokat tartalmaz az Azure CLI használatára vonatkozóan.
+Ebben a rövid útmutatóban a Notification Hubs platform Notification System (PNS) beállításait fogja használni a leküldéses értesítések több platformon történő beállításához. A rövid útmutatóban a Azure Portal elvégzendő lépések láthatók.  A [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) az Azure CLI használatára vonatkozó utasításokat tartalmaz.
 
-Ha még nem hozott létre értesítési központot, hozzon létre egyet most. További információ: [Azure-értesítési központ létrehozása az Azure Portalon](create-notification-hub-portal.md) vagy [Egy Azure értesítési központ létrehozása az Azure CLI használatával](create-notification-hub-azure-cli.md)
+Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portal](create-notification-hub-portal.md) vagy Azure [Notification hub létrehozása az Azure CLI használatával](create-notification-hub-azure-cli.md)
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification szolgáltatás
 
-Az Apple leküldéses értesítési szolgáltatás (APNS) beállítása:
+Apple Push Notification Service (APNS) beállítása:
 
-1. Az Azure Portalon az **Értesítési központ** lapon válassza az **Apple (APNS)** lehetőséget a bal oldali menüből.
+1. A Azure Portal az **értesítési központ** lapon válassza az **Apple (APNS)** lehetőséget a bal oldali menüből.
 
-1. **Hitelesítési módban**válassza a **Tanúsítvány** vagy **a Token**lehetőséget.
+1. A **hitelesítési mód**beállításnál válassza a **tanúsítvány** vagy a **token**lehetőséget.
 
-   a. Ha a Tanúsítvány lehetőséget **választja:**
-   * Jelölje ki a fájl ikonját, majd a feltöltendő *.p12* fájlt.
-   * Adja meg a jelszót.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni azoknak a felhasználóknak, akik az áruházból vásárolták az alkalmazást, válassza a **Termelési** módot.
+   a. Ha a **tanúsítvány**lehetőséget választja:
+   * Válassza ki a fájl ikont, majd válassza ki a feltölteni kívánt *. P12* -fájlt.
+   * Adjon meg egy jelszót.
+   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
 
-     ![Képernyőkép egy APNS-tanúsítvány konfigurációjáról az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Képernyőkép a APNS-tanúsítvány konfigurációjának Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Ha a **Token (Token) lehetőséget választja:**
+   b. Ha a **jogkivonat**lehetőséget választja:
 
-   * Adja meg a **kulcsazonosító,** **a bundle-azonosító,** a **csoportazonosító**és a **token**értékét.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni azoknak a felhasználóknak, akik az áruházból vásárolták az alkalmazást, válassza a **Termelési** módot.
+   * Adja meg a **kulcs azonosítójának**, **a köteg azonosítójának**, a **csoport azonosítójának**és a **tokennek**az értékeit.
+   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
 
-     ![Képernyőkép egy APNS-tokenkonfigurációról az Azure Portalon](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
+     ![Képernyőkép a APNS-jogkivonat konfigurációjának Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-További információ: [Leküldéses értesítések iOS-be az Azure Értesítési központ használatával](notification-hubs-ios-apple-push-notification-apns-get-started.md)című témakörben talál.
+További információ: [leküldéses értesítések küldése iOS-re az Azure Notification Hubs használatával](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
-## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase felhőalapú üzenetküldés (FCM)
+## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Leküldéses értesítések beállítása a Google FCM-hez:
 
-1. Az Azure Portalon az **Értesítési központ** lapon válassza a **Google (GCM/FCM)** lehetőséget a bal oldali menüből.
-2. Illessze be a korábban mentett Google FCM-projekt **API-kulcsát.**
+1. A Azure Portal az **értesítési központ** lapon válassza a **Google (GCM/FCM)** elemet a bal oldali menüből.
+2. Illessze be a korábban mentett Google FCM-projekthez tartozó **API-kulcsot** .
 3. Kattintson a **Mentés** gombra.
 
-   ![Képernyőkép, amely bemutatja, hogyan kell beállítani az értesítési központokat a Google FCM-hez](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Képernyőkép, amely bemutatja, hogyan konfigurálható Notification Hubs a Google FCM-hez](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-A lépések végrehajtásával egy riasztás jelzi, hogy az értesítési központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva.
+Ha elvégezte ezeket a lépéseket, a riasztás azt jelzi, hogy az értesítési központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, rendelkeznie kell a következőkkel:
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
-* Az [Azure CLI](/cli/azure/install-azure-cli) 2.0.67-es vagy újabb verziója.
+* Az [Azure CLI](/cli/azure/install-azure-cli) verziója 2.0.67 vagy újabb.
 
-* Az Azure [CLI-bővítmény az értesítési központokhoz.](/cli/azure/ext/notification-hub/notification-hub)
-* A Google Firebase Cloud Messaging (FCM) projekt **API-kulcsa.**
+* Az Notification Hubs Azure CLI- [bővítménye](/cli/azure/ext/notification-hub/notification-hub).
+* A Google Firebase Cloud Messaging (FCM) projekt **API-kulcsa** .
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Leküldéses értesítések beállítása a Google FCM-hez
 
-1. Az [az notification-hub credential gcm update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) paranccsal adja hozzá a Google API-kulcsot az értesítési központhoz.
+1. Az az [Notification-hub hitelesítőadat GCM Update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) paranccsal adja hozzá Google API-kulcsát az értesítési központhoz.
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Az Android-alkalmazásnak szüksége van egy kapcsolati karakterláncra az értesítési központhoz való csatlakozáshoz.  Az [értesítési központ engedélyezési szabálylista](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) parancs segítségével sorolja fel a rendelkezésre álló hozzáférési házirendeket.  Használja az [az notification-hub engedélyezési szabály listakulcsok](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) parancs a hozzáférési házirend kapcsolati karakterláncok.  Adja meg az **elsődlegesConnectionString** vagy `--query` **a másodlagosConnectionString paramétert** az elsődleges kapcsolati karakterlánc közvetlen leválasztásához.
+2. Az Android-alkalmazásnak kapcsolati sztringre van szüksége az értesítési központhoz való kapcsolódáshoz.  Az elérhető hozzáférési szabályzatok listázásához használja az az [Notification-hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) parancsot.  Használja az az [Notification-hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) parancsot a hozzáférési szabályzat kapcsolati karakterláncának beszerzéséhez.  A (z) **secondaryConnectionString** `--query` paraméterben a **primaryConnectionString** vagy a secondaryConnectionString megadásával kérje le az elsődleges kapcsolódási karakterláncot közvetlenül.
 
    ```azurecli
    #list access policies for a notification hub
@@ -97,7 +97,7 @@ Mielőtt elkezdené, rendelkeznie kell a következőkkel:
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. Az [az notification-hub tesztküldés](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) parancs használatával tesztelje az üzenetek androidos alkalmazásba történő küldését.
+3. Az az [Notification-hub test-Send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) paranccsal tesztelheti az üzeneteket az Android-alkalmazásba.
 
    ```azurecli
    #test with message body
@@ -107,67 +107,67 @@ Mielőtt elkezdené, rendelkeznie kell a következőkkel:
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-Az [az notification-hub hitelesítő paranccsal](/cli/azure/ext/notification-hub/notification-hub/credential) azure CLI-hivatkozásokat más platformokra is beszerezhet.
+Azure CLI-referenciák beszerzése más platformokra az az [Notification-hub hitelesítőadat](/cli/azure/ext/notification-hub/notification-hub/credential) paranccsal.
 
 ---
 
-Az értesítések Android-alkalmazásokba történő leküldéséről a [Leküldéses értesítések küldése a Firebase használatával androidos eszközökre című](notification-hubs-android-push-notification-google-fcm-get-started.md)témakörben talál további információt.
+Az értesítések Android-alkalmazásokra való leküldésével kapcsolatos további információkért lásd: [leküldéses értesítések küldése Android-eszközökre a Firebase használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="windows-push-notification-service"></a>Windows leküldéses értesítési szolgáltatás
 
 A Windows leküldéses értesítési szolgáltatás (WNS) beállítása:
 
-1. Az Azure Portalon az **Értesítési központ** lapon válassza a **Windows (WNS)** lehetőséget a bal oldali menüben.
-2. Adja meg a **csomag biztonsági azonosítójának** és **biztonsági kulcsának értékeit.**
+1. A Azure Portal az **értesítési központ** lapon válassza a **Windows (WNS)** lehetőséget a bal oldali menüből.
+2. Adja meg a **csomag biztonsági azonosítójának** és **biztonsági kulcsának**értékeit.
 3. Kattintson a **Mentés** gombra.
 
-   ![Képernyőkép a Csomag biztonsági azonosítója és a biztonsági kulcs mezőiről](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Képernyőfelvétel a csomag biztonsági AZONOSÍTÓjának és biztonsági kulcsának mezőiről](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-További információt az [Értesítések küldése UWP-alkalmazásoknak az Azure Értesítési központ használatával című témakörben talál.](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+További információ: [értesítések küldése UWP-alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-## <a name="microsoft-push-notification-service-for-windows-phone"></a>Microsoft leküldéses értesítési szolgáltatás Windows Phone-telefonhoz
+## <a name="microsoft-push-notification-service-for-windows-phone"></a>A Microsoft leküldéses értesítési szolgáltatása a Windows Phone-telefon
 
-A Microsoft Leküldéses értesítési szolgáltatás (MPNS) beállítása Windows Phone-telefonhoz:
+A Microsoft leküldéses értesítési szolgáltatás (MPNS) beállítása a Windows Phone-telefonhoz:
 
-1. Az Azure Portalon az **Értesítési központ** lapon válassza a **Windows Phone (MPNS)** lehetőséget a bal oldali menüben.
+1. A Azure Portal az **értesítési központ** lapon válassza a **Windows Phone-telefon (MPNS)** elemet a bal oldali menüből.
 1. Nem hitelesített vagy hitelesített leküldéses értesítések engedélyezése:
 
-   a. A nem hitelesített leküldéses értesítések engedélyezéséhez jelölje be **a Nem hitelesített leküldéses** > **mentés engedélyezése jelölőnégyzetet.**
+   a. A nem hitelesített leküldéses értesítések engedélyezéséhez válassza a nem **hitelesített leküldéses** > **Mentés**engedélyezése lehetőséget.
 
-      ![Képernyőkép, amely bemutatja, hogyan lehet engedélyezni a nem hitelesített leküldéses értesítéseket](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![A nem hitelesített leküldéses értesítések engedélyezését bemutató képernyőkép](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
    b. Hitelesített leküldéses értesítések engedélyezése:
-      * Az eszköztáron válassza a **Tanúsítvány feltöltése**lehetőséget.
-      * Jelölje ki a fájl ikonját, majd a tanúsítványfájlt.
+      * Az eszköztáron válassza a **tanúsítvány feltöltése**lehetőséget.
+      * Válassza ki a fájl ikont, majd válassza ki a tanúsítványfájl.
       * Adja meg a tanúsítványhoz tartozó jelszót.
-      * Válassza **az OK gombot.**
-      * A **Windows Phone (MPNS)** lapon válassza a **Mentés lehetőséget.**
+      * Kattintson az **OK** gombra.
+      * A **Windows Phone-telefon (MPNS)** lapon válassza a **Mentés**lehetőséget.
 
-További információt a [Leküldéses értesítések A Windows Phone-alkalmazásokba az Értesítési központok használatával című témakörben](notification-hubs-windows-mobile-push-notifications-mpns.md)talál.
+További információ: [leküldéses értesítések Windows Phone-telefon alkalmazások számára Notification Hubs használatával](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
-## <a name="baidu-android-china"></a>Baidu (Android Kína)
+## <a name="baidu-android-china"></a>Baidu (Android China)
 
-A Baidu leküldéses értesítéseinek beállítása:
+Leküldéses értesítések beállítása a Baidu számára:
 
-1. Az Azure Portalon az **Értesítési központ** lapon válassza a **Baidu (Android China)** lehetőséget a bal oldali menüből.
-2. Adja meg a Baidu konzolról a Baidu felhőleküldéses projektben beszerzett **Api-kulcsot.**
-3. Adja meg a Baidu konzolról a Baidu felhőleküldéses projektben beszerzett **titkos kulcsot.**
+1. A Azure Portal az **értesítési központ** lapon válassza a **Baidu (Android China)** lehetőséget a bal oldali menüből.
+2. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **API-kulcsot** .
+3. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **titkos kulcsot** .
 4. Kattintson a **Mentés** gombra.
 
-    ![Képernyőkép az értesítési központokról, amelyek a Baidu (Android China) konfigurációt jelenítik meg a leküldéses értesítésekhez](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![A leküldéses értesítések Baidu (Android China) konfigurációját bemutató Notification Hubs képernyőképe](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-A lépések végrehajtásával egy riasztás jelzi, hogy az értesítési központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva.
+Ha elvégezte ezeket a lépéseket, a riasztás azt jelzi, hogy az értesítési központ frissítése sikeresen megtörtént. A **Mentés** gomb le van tiltva.
 
-További információ: [Az Értesítési központok használatának megkezdése a Baidu használatával](notification-hubs-baidu-china-android-notifications-get-started.md)című témakörben található.
+További információ: a [Notification Hubs használatának első lépései a Baidu használatával](notification-hubs-baidu-china-android-notifications-get-started.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtudhatja, hogyan konfigurálhatja a platformértesítési rendszer beállításait egy értesítési központhoz az Azure Portalon.
+Ebben a rövid útmutatóban megtanulta, hogyan konfigurálhatja az értesítési központ platform-értesítési rendszerbeállításait a Azure Portal.
 
-Ha többet szeretne megtudni arról, hogyan kell értesítéseket leadni különböző platformokra, olvassa el az alábbi útmutatókat:
+Az értesítések különböző platformokra való leküldésével kapcsolatos további tudnivalókért tekintse meg a következő oktatóanyagokat:
 
--[Értesítések küldése iOS-eszközökre az Értesítési központok és az APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
--[leküldéses értesítések androidos eszközökre történő használatával az Értesítési központok és](notification-hubs-android-push-notification-google-fcm-get-started.md)
--a Google FCM[leküldéses értesítések használatával egy Windows-eszközön](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
--futó UWP-alkalmazáshoz[Leküldéses értesítéseket egy Windows Phone 8 alkalmazásba AZ MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
--[push értesítések használatával az Értesítési központok és a Baidu felhőleküldéses értesítések használatával](notification-hubs-baidu-china-android-notifications-get-started.md)
+-[Leküldéses értesítések iOS-eszközökre Notification Hubs és APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+-[leküldéses értesítések használatával Android-eszközökre a Notification Hubs és a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+-[leküldéses](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+-értesítések használatával egy Windows-eszköz leküldéses értesítéseket használó UWP-alkalmazáshoz, amely a[Notification Hubs és a felhőalapú Baidu-értesítés](notification-hubs-baidu-china-android-notifications-get-started.md) használatával leküldéses értesítéseket küld egy[Windows Phone-telefon 8 alkalmazásnak](notification-hubs-windows-mobile-push-notifications-mpns.md)
+-.

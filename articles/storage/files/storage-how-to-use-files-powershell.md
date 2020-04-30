@@ -8,25 +8,25 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77598544"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure PowerShell-lel 
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) PowerShell-lel való használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha szeretné telepíteni és használni a PowerShell helyileg, ez az útmutató megköveteli az Azure PowerShell-modul Az 0.7-es vagy újabb verzióját. A jelenleg futtatott Azure PowerShell-modul verziójának kiderítéséhez futtassa a következő parancsot: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Login-AzAccount` parancsot is futtatnia kell az Azure-fiókba való bejelentkezéshez.
+Ha helyileg szeretné telepíteni és használni a PowerShellt, az útmutatóhoz az Azure PowerShell-modul az 0,7-es vagy újabb verziójára lesz szükség. A jelenleg futtatott Azure PowerShell-modul verziójának kiderítéséhez futtassa a következő parancsot: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Login-AzAccount` parancsot is futtatnia kell az Azure-fiókba való bejelentkezéshez.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Egy Azure-erőforráscsoport, hozhat létre egy újat a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag. 
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoport használatával, létrehozhat egy újat a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. 
 
-A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az USA nyugati régiójában:
+A következő példában létrehozunk egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az USA 2. nyugati régiójában:
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -37,10 +37,10 @@ New-AzResourceGroup `
     -Location $region | Out-Null
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
-A tárfiók egy megosztott tárkészlet, amely segítségével üzembe helyezheti az Azure-fájlmegosztásokat. Egy tárfiók korlátlan számú megosztást tartalmazhat, egy megosztás pedig korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig. Ez a példa létrehoz egy általános célú 2-es verziójú (GPv2 tárfiók), amely a merevlemez-meghajtók (HDD) rotációs adathordozókon szabványos Azure-fájlmegosztásokat vagy más tárolási erőforrásokat, például blobokat vagy várólistákat tárolhat. Az Azure Files támogatja a prémium szintű ssd-meghajtókat is; Prémium szintű Azure-fájlmegosztások hozhatók létre a FileStorage tárfiókokban.
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+A Storage-fiók az Azure-fájlmegosztás üzembe helyezéséhez használható tároló megosztott készlete. Egy tárfiók korlátlan számú megosztást tartalmazhat, egy megosztás pedig korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig. Ez a példa egy általános célú 2-es verziójú (GPv2 Storage-fiókot) hoz létre, amely a szabványos Azure-fájlmegosztás vagy más tárolási erőforrások, például Blobok vagy várólisták tárolásához használható a merevlemez-meghajtó (HDD) rotációs adathordozóján. A Azure Files támogatja a prémium SSD-meghajtókat is. a prémium szintű Azure-fájlmegosztás FileStorage-fiókokban is létrehozhatók.
 
-Ez a példa létrehoz egy tárfiókot a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával. A tárfiók neve *mystorageaccount\<véletlen szám>,* és a tárfiókra mutató hivatkozás a **$storageAcct**változóban tárolódik. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
+Ez a példa egy Storage-fiókot hoz létre a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával. A Storage-fiók neve *mystorageaccount\<Random Number>* , és az adott Storage-fiókra mutató hivatkozás a **$storageAcct**változóban van tárolva. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -55,10 +55,10 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 > [!Note]  
-> Az 5 TiB-nél nagyobb (részvényenként legfeljebb 100 TiB-ig) nagyobb részvények csak helyileg redundáns (LRS) és zónaredundáns (ZRS) tárfiókokban érhetők el. Georedundáns (GRS) vagy geozónaredundáns (GZRS) tárfiók `-EnableLargeFileShare` létrehozásához távolítsa el a paramétert.
+> Az 5 TiB-nál nagyobb (legfeljebb 100 TiB-ig terjedő) megosztások csak a helyileg redundáns (LRS) és a zóna redundáns (ZRS) Storage-fiókokban érhetők el. A Geo-redundáns (GRS) vagy a Geo-Zone-redundáns (GZRS) Storage-fiók létrehozásához távolítsa el a `-EnableLargeFileShare` paramétert.
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-Most létrehozhatja az első Azure-fájlmegosztását. A [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) parancsmag használatával fájlmegosztást hozhat létre. Ez a példa egy `myshare` nevű fájlmegosztást hoz létre.
+Most létrehozhatja az első Azure-fájlmegosztását. A [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) parancsmag használatával létrehozhat fájlmegosztást. Ez a példa egy `myshare` nevű fájlmegosztást hoz létre.
 
 ```azurepowershell-interactive
 $shareName = "myshare"
@@ -77,21 +77,21 @@ Az Azure Files két módszert biztosít a fájloknak és mappáknak az Azure-fá
 A fájlmegosztás SMB-vel való csatlakoztatásához tekintse meg a használt operációs rendszernek megfelelő dokumentumot az alábbiak közül:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [Macos](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Azure-fájlmegosztások használata a Fájl REST protokollal 
-Lehetséges, hogy a fájl REST protokoll közvetlenül (azaz a handcrafting REST HTTP-hívások saját maga), de a leggyakoribb módja a File REST protokoll használata az Azure PowerShell modul, az [Azure CLI,](storage-how-to-use-files-cli.md)vagy egy Azure Storage SDK, amelyek mindegyike egy szép burkoló körül a File REST protokoll a parancsfájl-készítési/programozási nyelv az Ön által választott.  
+A file REST protokoll használatával közvetlenül is dolgozhat (például a REST HTTP-hívások saját kezűleg), de a fájl REST protokoll használatának leggyakoribb módja a Azure PowerShell modul, az [Azure CLI](storage-how-to-use-files-cli.md)vagy egy Azure Storage SDK használata, amely az Ön által választott parancsfájlkezelési/programozási nyelvben egy szép burkolót biztosít a fájl Rest protokollja körül.  
 
 Az Azure-fájlmegosztást a legtöbb esetben az SMB protokollon keresztül fogja használni, mivel ez lehetővé teszi a mások által is vélhetően használt meglévő alkalmazások és eszközök használatát. A Fájl REST API használata azonban számos előnnyel jár az SMB-vel szemben, például a következő esetekben:
 
 - A fájlmegosztást a PowerShell Cloud Shellben böngészi (amely nem tud fájlmegosztásokat csatlakoztatni az SMB-n keresztül).
 - Ki szeretné használni a kiszolgáló nélküli erőforrások, például az [Azure Functions](../../azure-functions/functions-overview.md) előnyeit. 
-- Olyan értéknövelő szolgáltatást hoz létre, amely számos Azure-fájlmegosztással kommunikál, például biztonsági mentést vagy vírusvédelmi vizsgálatokat hajt végre.
+- Olyan értéknövelt szolgáltatást hoz létre, amely számos Azure-fájlmegosztás esetében fog működni, például biztonsági mentési vagy víruskereső-vizsgálatok végrehajtásakor.
 
-Az alábbi példák bemutatják, hogyan használhatja az Azure PowerShell-modult az Azure-fájlmegosztás a File REST protokollsegítségével. A `-Context` paraméter a tárfiók kulcsának lekéréséhez szolgál a fájlmegosztással szembeni jelzett műveletek végrehajtásához. A tárfiók kulcsának lekéréséhez rbac `Owner` szerepkört kell rendelkeznie a tárfiókban.
+Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztást a fájl REST protokollal a Azure PowerShell modul használatával. A `-Context` paraméter a Storage-fiók kulcsának beolvasására szolgál a megadott műveletek a fájlmegosztás alapján történő végrehajtásához. A Storage-fiók kulcsainak lekéréséhez a RBAC szerepkörrel `Owner` kell rendelkeznie a Storage-fiókban.
 
 #### <a name="create-directory"></a>Könyvtár létrehozása
-Ha az Azure-fájlmegosztás gyökerében egy *myDirectory* nevű új könyvtárat szeretne létrehozni, használja a [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) parancsmagát.
+Ha a *myDirectory* nevű új könyvtárat szeretné létrehozni az Azure-fájlmegosztás gyökerében, használja a [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) parancsmagot.
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -101,7 +101,7 @@ New-AzStorageDirectory `
 ```
 
 #### <a name="upload-a-file"></a>Fájl feltöltése
-A [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) parancsmag használatával egy fájl feltöltésének bemutatásához először létre kell hoznunk egy fájlt a PowerShell Cloud Shell platformmeghajtóján a feltöltéshez. 
+A fájlok a [set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) parancsmag használatával történő feltöltésének bemutatásához először létre kell hoznia egy fájlt a PowerShell-Cloud Shell a feltöltéshez. 
 
 Ez a példa az aktuális dátumot és időt helyezi az ideiglenes meghajtón lévő új fájlba, majd feltölti a fájlt a fájlmegosztásra.
 
@@ -120,7 +120,7 @@ Set-AzStorageFileContent `
 
 Ha helyileg futtatja a PowerShellt, helyettesítse be a `~/CloudDrive/` elérési utat a gép egy meglévő elérési útjával.
 
-A fájl feltöltése után a [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) parancsmag segítségével ellenőrizheti, hogy a fájl feltöltve lett-e az Azure-fájlmegosztásra. 
+A fájl feltöltése után a [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) parancsmaggal ellenőrizze, hogy a fájl fel lett-e töltve az Azure-fájlmegosztást. 
 
 ```azurepowershell-interactive
 Get-AzStorageFile `
@@ -130,7 +130,7 @@ Get-AzStorageFile `
 ```
 
 #### <a name="download-a-file"></a>Fájl letöltése
-A [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) parancsmag segítségével letöltheti a Cloud Shell karcolja meg a fájl egy példányát.
+A [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) parancsmag használatával letöltheti az imént feltöltött fájl másolatát a Cloud shell.
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
@@ -153,7 +153,7 @@ Get-ChildItem | Where-Object { $_.Name -eq "SampleDownload.txt" }
 ``` 
 
 #### <a name="copy-files"></a>Fájlok másolása
-Az egyik gyakori feladat a fájlok másolása az egyik fájlmegosztásról a másikra. Ennek a funkciónak a bemutatásához hozzon létre egy új megosztást, és másolja az új megosztásra feltöltött fájlt a [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) parancsmag használatával. 
+Az egyik gyakori feladat, hogy egy fájlmegosztás fájljait egy másik fájlmegosztást másolja. A funkció bemutatásához létrehozhat egy új megosztást, és az imént feltöltött fájlt átmásolhatja erre az új megosztásra a [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) parancsmag használatával. 
 
 ```azurepowershell-interactive
 $otherShareName = "myshare2"
@@ -186,16 +186,16 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-Bár `Start-AzStorageFileCopy` a parancsmag kényelmes az ad hoc fájl áthelyezéséhez az Azure fájlmegosztások, `robocopy` a `rsync` migrálásés a nagyobb adatmozgások, javasoljuk a Windows és a macOS és linux. `robocopy`és `rsync` az SMB segítségével hajtsa végre az adatmozgásokat a FileREST API helyett.
+Habár a `Start-AzStorageFileCopy` parancsmag kényelmes az Azure-fájlmegosztás, az áttelepítések és a nagyobb adatátvitelek között, a Windows és `robocopy` `rsync` a MacOS és Linux rendszereken egyaránt ajánlott. `robocopy`és `rsync` az SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
 
 ## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
 Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható állapotát. A megosztási pillanatképek hasonlóak az esetleg már ismert operációsrendszer-technológiákhoz, például a következőkhöz:
 
 - [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows fájlrendszerekhez (például NTFS és ReFS).
-- [Logikai kötetkezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez.
-- [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS. 
+- [Logikai Volume Manager-(LVM-)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) Pillanatképek Linux rendszerekhez.
+- [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) Pillanatképek MacOS rendszerhez. 
 
-Share-pillanatképet hozhat létre egy megosztáshoz a `Snapshot` PowerShell-objektumon lévő metódus használatával egy fájlmegosztáshoz, amelyet a [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) parancsmag lehív. 
+Megoszthat megosztási pillanatképet a megosztáshoz a ( `Snapshot` z) metódus használatával a fájlmegosztás PowerShell-objektumán, amely a [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) parancsmaggal kérhető le. 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-A megosztáspillanatképet az [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) parancsmag segítségével törölheti, a `$snapshot` `-Share` paraméterre való hivatkozást tartalmazó változóval.
+A [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) parancsmag használatával törölheti a megosztási pillanatképet a `$snapshot` `-Share` paraméterre mutató hivatkozást tartalmazó változóval.
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `
@@ -248,7 +248,7 @@ Remove-AzStorageShare `
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha végzett, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmaggal eltávolíthatja az erőforráscsoportot és az összes kapcsolódó erőforrást. 
+Ha elkészült, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához. 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -263,7 +263,7 @@ Egyesével is eltávolíthatja az erőforrásokat:
     ```
 
     > [!Note]  
-    > Az Azure-fájlmegosztás törlése előtt törölnie kell az Azure-fájlmegosztások összes megosztási pillanatképét.
+    > Az Azure-fájlmegosztás törlése előtt törölnie kell az összes, az Azure-fájlmegosztás számára létrehozott megosztási pillanatképet.
 
 - Magának a tárfióknak az eltávolítása (ez implicit módon eltávolítja a létrehozott Azure-fájlmegosztásokat, valamint az esetlegesen létrehozott egyéb tárolási erőforrásokat, például az Azure Blob Storage-tárolókat).
 

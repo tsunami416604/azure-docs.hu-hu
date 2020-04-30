@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726356"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Ruby használatával
@@ -25,7 +25,7 @@ A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok felt�
 Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Azure Storage-könyvtár a Ruby számára](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)a rubygem csomag használatával: 
+* [Azure Storage-kódtár a Ruby számára](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)a rubygem-csomag használatával: 
 
     ```
     gem install azure-storage-blob
@@ -34,7 +34,7 @@ Győződjön meg arról, hogy a következő további előfeltételek vannak tele
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git) egy egyszerű Ruby-alkalmazás.  
 
-A [git](https://git-scm.com/) segítségével töltse le az alkalmazás egy példányát a fejlesztői környezetbe. 
+A [git](https://git-scm.com/) használatával letöltheti az alkalmazás egy példányát a fejlesztői környezetbe. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git 
@@ -113,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a rövid útmutató is ezeket használja.  
 
-Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezután feltöltheti a fájlt a megadott elérési útra a **blokkblobok\_\_létrehozása()** metódushasználatával. 
+Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezután feltöltheti a fájlt a megadott elérési útra a **blokk\_létrehozása\_blob ()** metódus használatával. 
 
 A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, és úgy tárolja el, hogy az a **file\_path\_to\_file** névvel és a **local\_file\_name** blobnévvel legyen feltöltve. A következő példa feltölti a fájlt a **quickstartblobs** nevű tárolóba.
 
@@ -135,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-Egy blokkblob tartalmának részleges frissítéséhez használja a **blokklista\_\_létrehozása()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
+Egy blokkos blob tartalmának részleges frissítéséhez használja a **create\_Block\_List ()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A **lista\_blobs()** metódushasználatával a tárolóban lévő fájlok listáját is lekaphatja. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
+A tárolóban található fájlok listáját a **List\_Blobs ()** metódussal kérheti le. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
 
 ```ruby
 # List the blobs in the container
@@ -169,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége a blobok feltöltésére ebben a rövid útmutatóban, törölheti a teljes tárolót a **delete\_container()** metódussal. Ha a létrehozott fájlokra már nincs szükség, a **delete\_blob()** metódussal törölheti a fájlokat.
+Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti **a\_delete Container ()** metódus használatával. Ha már nincs szükség a létrehozott fájlokra, a **delete\_blob ()** metódus használatával törölheti a fájlokat.
 
 ```ruby
 # Clean up resources. This includes the container and the temp files

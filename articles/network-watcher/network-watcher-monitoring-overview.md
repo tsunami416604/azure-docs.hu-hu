@@ -15,15 +15,15 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76844989"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
-Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. A Network Watcher az IaaS (Infrastructure-as-a-Service) termékek hálózati állapotának figyelésére és javítására szolgál, amely virtuális gépeket, virtuális hálózatokat, alkalmazásátjárókat, terheléselosztókat stb. Megjegyzés: Nem a PaaS-figyelés hez vagy a webelemzéshez készült, és nem is fog működni. 
+Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) olyan termékeit, mint például a Virtual Machines, a virtuális hálózatok, az Application Gateway, a Load Balancer stb. Megjegyzés: a rendszer nem a következő célokra szolgál, és nem fog működni a Pásti-figyeléshez vagy a webes elemzésekhez. 
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -95,10 +95,10 @@ Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Hálózati erőforrások diagnosztikai naplóinak megtekintése
 
-Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplókat olyan eszközökkel tekintheti meg, mint a Microsoft Power BI és az Azure Monitor naplói. Ha többet szeretne tudni az Azure hálózati diagnosztikai naplóinak elemzéséről, olvassa el [az Azure hálózati megoldásait az Azure Monitor naplóiban.](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
+Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplókat olyan eszközökkel tekintheti meg, mint a Microsoft Power BI és a Azure Monitor naplók. Ha többet szeretne megtudni az Azure hálózati diagnosztikai naplók elemzéséről, tekintse meg [Az Azure hálózati megoldásait Azure monitor-naplókban](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-## <a name="network-watcher-automatic-enablement"></a>A Hálózatfigyelő automatikus engedélyezése
-Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Watcher automatikus engedélyezése az Ön erőforrásait nem érinti, és nem jár költségekkel. További információt a [Hálózatfigyelő létrehozása című témakörben talál.](network-watcher-create.md)
+## <a name="network-watcher-automatic-enablement"></a>Automatikus engedélyezés Network Watcher
+Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Watcher automatikus engedélyezése az Ön erőforrásait nem érinti, és nem jár költségekkel. További információ: [Network Watcher Create](network-watcher-create.md).
 
 ## <a name="next-steps"></a>További lépések
 

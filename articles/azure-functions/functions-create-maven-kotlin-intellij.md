@@ -1,99 +1,99 @@
 ---
-title: Azure-függvény létrehozása a Kotlin és az IntelliJ segítségével
-description: Ismerje meg, hogyan hozhat létre és tehet közzé egy egyszerű, HTTP-alapú, kiszolgáló nélküli alkalmazást az Azure-ban a Kotlin és az IntelliJ segítségével.
+title: Azure-függvény létrehozása a Kotlin és a IntelliJ
+description: Megtudhatja, hogyan hozhat létre és tehet közzé egy egyszerű, HTTP-alapú, kiszolgáló nélküli alkalmazást az Azure-ban a Kotlin és a IntelliJ használatával.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80674096"
 ---
-# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rövid útmutató: Az első HTTP-aktivált függvény létrehozása a Kotlin és az IntelliJ segítségével
+# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rövid útmutató: az első HTTP-triggert tartalmazó függvény létrehozása a Kotlin és a IntelliJ
 
-Ez a cikk bemutatja, hogyan hozhat létre [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) függvényprojektet az IntelliJ IDEA és az Apache Maven segítségével. Azt is bemutatja, hogyan helyileg hibakeresés a függvénykódot az integrált fejlesztői környezetben (IDE), és majd üzembe helyezése a függvényprojekt az Azure-ban.
+Ebből a cikkből megtudhatja, hogyan hozhat létre [kiszolgáló](https://azure.microsoft.com/overview/serverless-computing/) nélküli Function projektet a IntelliJ IDEA és az Apache Maven használatával. Azt is bemutatja, hogyan lehet helyileg hibakeresést végezni az integrált fejlesztési környezetben (IDE), majd a függvény projektjét üzembe helyezni az Azure-ban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
-A Kotlin és az IntelliJ funkciójának fejlesztéséhez telepítse a következő szoftvert:
+Ha Kotlin-és IntelliJ-függvényt szeretne létrehozni, telepítse a következő szoftvereket:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), 8-as verzió
-- [Apache Maven](https://maven.apache.org), 3.0-s vagy újabb verzió
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download), közösségi vagy Ultimate változatok Mavennel
+- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
+- [INTELLIJ Idea](https://www.jetbrains.com/idea/download), közösségi vagy Ultimate verziók a Maven használatával
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- Az Azure Functions core eszközeinek [2.x-es verziója.](functions-run-local.md#v2) Helyi fejlesztői környezetet biztosít az Azure Functions írásához, futtatásához és hibakereséséhez.
+- A Azure Functions Core Tools [2. x verziója](functions-run-local.md#v2) . Helyi fejlesztési környezetet biztosít a Azure Functions írásához, futtatásához és hibakereséséhez.
 
 > [!IMPORTANT]
-> A JAVA_HOME környezeti változót a JDK telepítési helyére kell állítani a cikkben leírt lépések végrehajtásához.
+> A jelen cikkben ismertetett lépések végrehajtásához a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
 
-## <a name="create-a-functions-project"></a>Functions projekt létrehozása
+## <a name="create-a-functions-project"></a>Functions-projekt létrehozása
 
-1. Az IntelliJ IDEA **(Új projekt létrehozása)** területen válassza az Új projekt létrehozása lehetőséget.  
-1. Az **Új projekt** ablakban válassza a **Maven** elemet a bal oldali ablaktáblából.
-1. Jelölje be a **Létrehozás archetípusból** jelölőnégyzetet, majd az **Archetípus hozzáadása** az [azure-functions-kotlin-archetípushoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)lehetőséget.
-1. Az **Archetípus hozzáadása** ablakban töltse ki a mezőket az alábbiak szerint:
-    - _GroupId_: com.microsoft.azure
-    - _ArtifactId_: azúrkék-függvény-kotlin-archetípus
-    - _Verzió:_ Használja a legújabb verziót [a központi adattár](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-    ![Létrehozása Maven projekt archetípus in IntelliJ IDEA](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
-1. Válassza **az OK**gombot, majd a **Tovább**gombot.
-1. Adja meg az aktuális projekt adatait, és válassza a **Befejezés gombot.**
+1. A IntelliJ ÖTLETben válassza az **új projekt létrehozása**lehetőséget.  
+1. Az **új projekt** ablakban válassza a **Maven** lehetőséget a bal oldali ablaktáblán.
+1. Jelölje be a **Létrehozás az archetípus alapján** jelölőnégyzetet, majd válassza az **archetípus hozzáadása** lehetőséget az [Azure-functions-Kotlin-archetípus](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)elemnél.
+1. Az **archetípus hozzáadása** ablakban végezze el a következő mezőket:
+    - _GroupID_: com. microsoft. Azure
+    - _ArtifactId_: Azure-functions-Kotlin-archetípus
+    - _Verzió_: a [központi tárház](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
+    ![legújabb verziójának használata a Maven-projekt létrehozása az archetípusból a IntelliJ IDEA-ban](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
+1. Válassza **az OK**, majd a **tovább**lehetőséget.
+1. Adja meg az aktuális projekt adatait, majd kattintson a **Befejezés gombra**.
 
-A Maven az _ArtifactId_ értékkel megegyező nevű új mappában hozza létre a projektfájlokat. A projekt által generált kód egy egyszerű HTTP-aktivált függvény, amely a kiváltó [HTTP-kérelem](/azure/azure-functions/functions-bindings-http-webhook) törzsét visszhangozza.
+A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyezik a _ArtifactId_ értékével. A projekt generált kódja egy egyszerű [http-triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
 
-## <a name="run-functions-locally-in-the-ide"></a>Funkciók futtatása helyileg az IDE-ben
+## <a name="run-functions-locally-in-the-ide"></a>Függvények helyi futtatása az IDE-ben
 
 > [!NOTE]
-> A helyi funkciók futtatásához és hibakereséséhez győződjön meg arról, hogy telepítette [az Azure Functions Core Tools 2-es verzióját.](functions-run-local.md#v2)
+> A függvények helyi futtatásához és hibakereséséhez győződjön meg róla, hogy telepítette a [2. verziót Azure functions Core Tools](functions-run-local.md#v2).
 
-1. A módosításokimportálása manuálisan, illetve [az automatikus importálás](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)engedélyezése.
-1. Nyissa meg a **Maven Projektek eszköztárat.**
-1. Bontsa ki **az Életciklus csomópontot,** majd nyissa meg a **csomagot.** A megoldás egy újonnan létrehozott célkönyvtárba van csomagolva.
-1. Bővítse ki a Bővítmények**azúrkék függvényeit,** **Plugins** > és nyissa meg az **azure-functions:run az** Azure Functions helyi futásidejű elindításához.  
-  ![Maven eszköztár az Azure Functionshez](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
+1. Manuálisan importálhatja a módosításokat, vagy engedélyezheti az [automatikus importálást](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
+1. Nyissa meg a **Maven-projektek** eszköztárat.
+1. Bontsa ki az **életciklus**csomópontot, majd nyissa meg a **csomagot**. A megoldás egy újonnan létrehozott célkönyvtár keretében lett létrehozva és csomagolva.
+1. Bontsa ki a **plugins** > **Azure-functions** és az **Azure-functions megnyitása: Futtatás** parancsot a Azure functions helyi futtatókörnyezet elindításához.  
+  ![Maven-eszköztár a Azure Functionshoz](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
-1. Zárja be a futtatási párbeszédpanelt, ha végzett a funkció tesztelésével. Egyszerre csak egy függvényállomás lehet aktív és helyileg fut.
+1. A függvény tesztelésének befejezése után zárjuk be a Futtatás párbeszédpanelt. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
 
-## <a name="debug-the-function-in-intellij"></a>Hibakeresés a funkció IntelliJ
+## <a name="debug-the-function-in-intellij"></a>A függvény hibakeresése a IntelliJ-ben
 
-1. A függvényállomás hibakeresési módban történő elindításához a függvény futtatásakor adja hozzá argumentumként a **-DenableDebug** parancsot. Módosíthatja a [maven-célok konfigurációját,](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) vagy futtathatja a következő parancsot egy terminálablakban:  
+1. A Function Host hibakeresési módban való elindításához adja meg a **-DenableDebug** paramétert a függvény futtatásakor. Módosíthatja a [Maven-célok](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) konfigurációját, vagy futtathatja a következő parancsot egy terminál-ablakban:  
 
    ```
    mvn azure-functions:run -DenableDebug
    ```
 
-   Ezzel a paranccsal a függvényállomás 5005-ös hibakeresési portot nyit meg.
+   A parancs hatására a Function Host egy hibakeresési portot nyit meg a 5005-es időpontban.
 
-1. A **Futtatás** menüben válassza a **Konfigurációk szerkesztése parancsot.**
-1. Válassza a **(+) lehetőséget** **távoli eszköz hozzáadásához.**
-1. Töltse ki a _Név_ és _beállítások_ mezőket, majd a konfiguráció mentéséhez kattintson az **OK gombra.**
-1. A telepítés után válassza **a Debug < Távoli konfiguráció neve >** lehetőséget, vagy nyomja le a Shift+F9 billentyűkombinációt a billentyűzeten a hibakeresés megkezdéséhez.
+1. A **Futtatás** menüben válassza a **konfigurációk szerkesztése**lehetőséget.
+1. **Távoli**hozzáadásához válassza a **(+)** lehetőséget.
+1. Fejezze be a _név_ és a _Beállítások_ mezőt, majd kattintson az **OK gombra** a konfiguráció mentéséhez.
+1. A telepítés után válassza a **hibakeresés < a távoli konfiguráció neve >** vagy a billentyűzeten a SHIFT + F9 billentyűkombinációval indítsa el a hibakeresést.
 
-   ![Hibakeresési függvények az IntelliJ-ben](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
+   ![Hibakeresési függvények a IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 
-1. Ha végzett, állítsa le a hibakeresőt és a futó folyamatot. Egyszerre csak egy függvényállomás lehet aktív és helyileg fut.
+1. Ha elkészült, állítsa le a hibakeresőt és a futó folyamatot. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-1. Mielőtt üzembe helyezheti a függvényt az Azure-ban, be kell [jelentkeznie az Azure CLI használatával.](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+1. Mielőtt üzembe helyezi a függvényt az Azure-ban, be kell [jelentkeznie az Azure CLI használatával](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Telepítse a kódot egy új `azure-functions:deploy` függvénybe a Maven cél használatával. Az **azure-functions:deploy** lehetőséget is kiválaszthatja a Maven-projektek ablakban.
+1. Telepítse a kódot egy új függvénybe a `azure-functions:deploy` Maven-cél használatával. A Maven-projektek ablakban az **Azure-functions: Deploy (üzembe helyezés** ) lehetőséget is kiválaszthatja.
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. Keresse meg a függvény URL-címét az Azure CLI kimenetében a függvény sikeres üzembe helyezése után.
+1. Keresse meg a függvény URL-címét az Azure CLI kimenetében a függvény sikeres telepítése után.
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -105,5 +105,5 @@ A Maven az _ArtifactId_ értékkel megegyező nevű új mappában hozza létre a
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy üzembe helyezte az első Kotlin-függvényt az Azure-ban, tekintse át a [Java Functions fejlesztői útmutatót](functions-reference-java.md) a Java és a Kotlin függvények fejlesztésével kapcsolatos további információkért.
-- A Maven-cél használatával további funkciókat adhat hozzá különböző eseményindítókkal a `azure-functions:add` projekthez.
+Most, hogy üzembe helyezte az első Kotlin-függvényt az Azure-ban, tekintse át a [Java functions fejlesztői útmutatóját](functions-reference-java.md) a Java-és Kotlin függvények fejlesztésével kapcsolatos további információkért.
+- Vegyen fel további függvényeket különböző eseményindítókkal a projekthez `azure-functions:add` a Maven cél használatával.

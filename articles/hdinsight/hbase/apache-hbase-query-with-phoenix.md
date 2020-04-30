@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Apache HBase & Apache Phoenix – Azure HDInsight'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Apache Phoenixet a HDInsightban. Azt is megtudhatja, hogyan telepítheti és állíthatja be az SQLLine-t a számítógépen a HDInsight HBase-fürthöz való csatlakozáshoz.
+title: 'Gyors útmutató: Apache HBase & Apache Phoenix – Azure HDInsight'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Apache Phoenixt a HDInsight-ben. Azt is megtudhatja, hogyan telepítheti és állíthatja be a az sqlline használata a számítógépen egy HBase-fürthöz való kapcsolódáshoz a HDInsight-ben.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,33 +9,33 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79370321"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rövid útmutató: Az Apache HBase lekérdezése az Azure HDInsightban az Apache Phoenix segítségével
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Gyors útmutató: az Apache HBase lekérdezése az Azure HDInsight Apache Phoenix
 
-Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Apache Phoenixet hbase-lekérdezések futtatásához az Azure HDInsightban. Az Apache Phoenix az Apache HBase SQL-lekérdezési motorja. JDBC-illesztőként érhető el, és lehetővé teszi a HBase táblák SQL eszközzel végzett lekérdezését és kezelését. [Az SQLLine](http://sqlline.sourceforge.net/) egy parancssori segédprogram az SQL végrehajtásához.
+Ebből a rövid útmutatóból megtudhatja, hogyan futtathat HBase-lekérdezéseket az Azure HDInsight-ben a Apache Phoenix használatával. A Apache Phoenix az Apache HBase SQL-lekérdezési motorja. JDBC-illesztőként érhető el, és lehetővé teszi a HBase táblák SQL eszközzel végzett lekérdezését és kezelését. A [az sqlline használata](http://sqlline.sourceforge.net/) egy parancssori segédprogram az SQL végrehajtásához.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Apache HBase fürt. A HDInsight-fürt létrehozásához lásd: [Fürt létrehozása.](../hadoop/apache-hadoop-linux-tutorial-get-started.md)  Győződjön meg arról, hogy a **HBase** fürttípust választotta.
+* Egy Apache HBase-fürt. Lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md) HDInsight-fürt létrehozásához.  Győződjön meg arról, hogy a **HBase** -fürt típusát választja.
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="identify-a-zookeeper-node"></a>ZooKeeper csomópont azonosítása
+## <a name="identify-a-zookeeper-node"></a>ZooKeeper-csomópont azonosítása
 
-Amikor csatlakozik egy HBase-fürthöz, csatlakoznia kell az Apache ZooKeeper egyik csomópontjához. Minden HDInsight-fürt három ZooKeeper-csomódat rendelkezik. Curl segítségével gyorsan azonosítani a ZooKeeper csomópont. Az alábbi curl parancs `PASSWORD` szerkesztése a megfelelő értékek cseréjével és `CLUSTERNAME` kiírásával, majd írja be a parancsot a parancssorba:
+HBase-fürthöz való csatlakozáskor csatlakoznia kell az egyik Apache ZooKeeper csomóponthoz. Mindegyik HDInsight-fürt három ZooKeeper-csomóponttal rendelkezik. A curl használatával gyorsan azonosíthatók a ZooKeeper-csomópontok. Az alábbi curl-parancs szerkesztéséhez `PASSWORD` cserélje `CLUSTERNAME` le a megfelelő értékeket, majd írja be a parancsot a parancssorba:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
 ```
 
-A kimenet egy része a következőhöz hasonló lesz:
+A kimenet egy része a következőhöz hasonlóan fog kinézni:
 
 ```output
     {
@@ -47,25 +47,25 @@ A kimenet egy része a következőhöz hasonló lesz:
       }
 ```
 
-Vegye figyelembe a `host_name` későbbi használatra szánt értéket.
+Jegyezze fel az értéket `host_name` a későbbi használatra.
 
-## <a name="create-a-table-and-manipulate-data"></a>Táblázat létrehozása és adatok kezelése
+## <a name="create-a-table-and-manipulate-data"></a>Tábla létrehozása és az adatkezelés
 
-Az SSH segítségével csatlakozhat a HBase-fürtökhöz, majd az Apache Phoenix segítségével HBase táblákat hozhat létre, adatokat szúrhat be és lekérdezési adatokat.
+Az SSH-val csatlakozhat a HBase-fürtökhöz, majd Apache Phoenix használatával HBase-táblákat hozhat létre, adatbeszúrási és Adatlekérdezési adatgyűjtést végezhet.
 
-1. A `ssh` Parancs segítségével csatlakozzon a HBase fürthöz. Az alábbi parancs szerkesztése a fürt nevének cseréjével, `CLUSTERNAME` majd írja be a parancsot:
+1. Használja `ssh` a parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Címtár módosítása a Phoenix ügyfélre. Írja be a következő parancsot:
+2. Módosítsa a könyvtárat a Phoenix-ügyfélre. Írja be a következő parancsot:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. Indítsa el [az SQLLine programot.](http://sqlline.sourceforge.net/) Az alábbi parancs szerkesztése a korábban azonosított ZooKeeper csomóponttal való cserével, `ZOOKEEPER` majd írja be a parancsot:
+3. Indítsa el a [az sqlline használata](http://sqlline.sourceforge.net/). Szerkessze az alábbi parancsot úgy `ZOOKEEPER` , hogy lecseréli a korábban azonosított ZooKeeper-csomópontra, majd beírja a következő parancsot:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
@@ -77,13 +77,13 @@ Az SSH segítségével csatlakozhat a HBase-fürtökhöz, majd az Apache Phoenix
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. Az SQLLine `!tables` paranccsal a HBase összes tábláját listázhassa. Írja be a következő parancsot:
+5. A HBase összes `!tables` táblájának listázásához használja a az sqlline használata parancsot. Írja be a következő parancsot:
 
     ```sqlline
     !tables
     ```
 
-6. Értékek beszúrása a táblázatba. Írja be a következő parancsot:
+6. Értékek beszúrása a táblába. Írja be a következő parancsot:
 
     ```sql
     UPSERT INTO Company VALUES(1, 'Microsoft');
@@ -102,13 +102,13 @@ Az SSH segítségével csatlakozhat a HBase-fürtökhöz, majd az Apache Phoenix
     DELETE FROM Company WHERE COMPANY_ID=1;
     ```
 
-9. Dobd el az asztalt. Írja be a következő parancsot:
+9. A tábla eldobása. Írja be a következő parancsot:
 
     ```hbase
     DROP TABLE Company;
     ```
 
-10. Az SQLLine `!quit` paranccsal lépjen ki az SQLLine programból. Írja be a következő parancsot:
+10. A az sqlline használata `!quit` parancs használatával lépjen ki a az sqlline használata. Írja be a következő parancsot:
 
     ```sqlline
     !quit
@@ -116,13 +116,13 @@ Az SSH segítségével csatlakozhat a HBase-fürtökhöz, majd az Apache Phoenix
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A rövid útmutató befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
+Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Apache Phoenixet hbase-lekérdezések futtatásához az Azure HDInsightban. Ha többet szeretne megtudni az Apache Phoenixről, a következő cikk mélyebb vizsgálatot biztosít.
+Ebben a rövid útmutatóban megtanulta, hogyan futtathat HBase-lekérdezéseket az Azure HDInsight-ben a Apache Phoenix használatával. Ha többet szeretne megtudni a Apache Phoenixről, a következő cikk mélyebb vizsgálatot fog biztosítani.
 
 > [!div class="nextstepaction"]
 > [Apache Phoenix a HDInsightban](../hdinsight-phoenix-in-hdinsight.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure-adatgyár létrehozása rest api-val
+title: Azure-beli adatelőállító létrehozása REST API használatával
 description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
 services: data-factory
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419102"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rövid útmutató: Hozzon létre egy Azure-adat-előállító és folyamat a REST API használatával
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Gyors útmutató: Azure-beli adatfeldolgozó és-folyamat létrehozása a REST API használatával
 
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-rest-api.md)
 
@@ -32,17 +32,17 @@ Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehető
 
 Ez a rövid útmutató bemutatja, hogyan használható a REST API egy Azure-beli adat-előállító létrehozásához. Az adat-előállító folyamata adatokat másol az Azure Blob Storage egyik helyéről egy másik helyére.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure Storage-fiók.** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
+* **Azure Storage-fiók**. A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
-* Telepítse **az Azure PowerShellt.** Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
-* **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő értékeket, amelyeket a későbbi lépésekben használ: **alkalmazásazonosító**, **ügyféltitok**és **bérlőazonosító**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
+* Telepítse a **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
+* **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
 
 ## <a name="set-global-variables"></a>Globális változók beállítása
 
@@ -58,7 +58,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://a
     ```powershell
     Get-AzSubscription
     ```
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **SubscriptionId** -t az Azure-előfizetés azonosítójával:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -194,7 +194,7 @@ Itt látható a minta kimenete:
 
 Megadhat egy adatkészletet, amely a forrásból a fogadóba másolt adatokat jelöli. Ebben a példában két adatkészletet hoz létre: InputDataset és OutputDataset. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak. A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A bemeneti adatkészlet definíciójában adhatja meg a forrásadatokat tartalmazó blobtároló (adftutorial), mappa (input) és fájl (emp.txt) nevét. A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (adftutorial), mappának (output) és fájlnak a nevét, amelybe az adatok át lesznek másolva.
 
-**Bemeneti adathalmaz létrehozása**
+**InputDataset létrehozása**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
@@ -248,7 +248,7 @@ Itt látható a minta kimenete:
     "etag":"07011c57-0000-0100-0000-5d6e14b40000"
 }
 ```
-**Kimeneti adatkészlet létrehozása**
+**OutputDataset létrehozása**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
@@ -385,7 +385,7 @@ Itt látható a minta kimenete:
 
 Ebben a lépésben a folyamatban meghatározott **inputPath** és **outputPath** paraméter értékét adhatja meg, a forrás- és fogadó-blob elérési útjának tényleges értéke alapján, illetve elindíthatja egy folyamat futását. A folyamat futásának kéréstörzsben visszaadott azonosítója a későbbi monitorozó API-nál lesz használatban.
 
-Cserélje le az **inputPath** és **a outputPath** értékét a forrásra és a fogadó blob elérési útvonalára, hogy adatokat másoljon a fájl mentése előtt.
+Cserélje le a **inputPath** és a **outputPath** értéket a forrás-és a fogadó blob elérési útjára, hogy a fájl mentése előtt a és a rendszerből másolja az adatokból.
 
 
 ```powershell
@@ -493,7 +493,7 @@ Itt látható a minta kimenete:
     ```
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 
-Az Azure Storage explorer segítségével ellenőrizze, hogy a fájl másolása a "outputPath" a "inputPath", ahogy megadta a folyamat futtatásakor.
+Az Azure Storage Explorer használatával tekintse át a fájlt a "inputPath" fájlból "outputPath" értékre, amikor a folyamat futásának létrehozásakor meg van adva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.

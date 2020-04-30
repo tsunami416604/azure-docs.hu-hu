@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Szabályok és műveletek konfigurálása az Azure IoT Centralban
-description: Ez a rövid útmutató bemutatja, mint szerkesztő, hogyan konfigurálhatja a telemetriai alapú szabályok és műveletek az Azure IoT Central alkalmazás.
+title: Gyors útmutató – szabályok és műveletek konfigurálása az Azure IoT Central
+description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -10,33 +10,33 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80998968"
 ---
-# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rövid útmutató: Szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Centralban
+# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Gyors útmutató: szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Central
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Ebben a rövid útmutatóban hozzon létre egy szabályt, amely e-mailt&deg; küld, ha az eszközérzékelő által jelentett hőmérséklet meghaladja a 90 F-ot.
+Ebben a rövid útmutatóban egy olyan szabályt hoz létre, amely e-mailt küld, ha az eszköz érzékelője&deg; által jelentett hőmérséklet meghaladja a 90 F-ot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, el kell végeznie a két korábbi rövid útmutató [létrehozása egy Azure IoT Central-alkalmazás](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása az IoT Central-alkalmazás](./quick-create-simulated-device.md) hozlétre az **MXChip IoT DevKit** eszközsablon dolgozni.
+Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT Central-alkalmazás létrehozását](./quick-deploy-iot-central.md) , és [adjon hozzá egy szimulált eszközt a IoT Central alkalmazáshoz](./quick-create-simulated-device.md) a **MXChip IoT fejlesztői készlet** -sablon létrehozásához.
 
 ## <a name="create-a-telemetry-based-rule"></a>Telemetria-alapú szabály létrehozása
 
-1. Ha új telemetriai alapú szabályt szeretne hozzáadni az alkalmazáshoz, a bal oldali ablaktáblában válassza a **Szabályok**lehetőséget.
+1. Új telemetria-szabály az alkalmazáshoz való hozzáadásához a bal oldali ablaktáblán válassza a **szabályok**elemet.
 
-1. Új szabály létrehozásához **+** válassza a lehetőséget.
+1. Új szabály létrehozásához válassza a elemet **+**.
 
-1. Adja meg **a környezeti hőmérsékletet** szabálynévként.
+1. Adja meg a **környezeti hőmérsékletet** a szabály neveként.
 
-1. A **Céleszközök** szakaszban válassza **az MXChip IoT DevKit** eszközsablonként lehetőséget. Ez a beállítás az eszközsablon típusa szerint szűri azeszközöket, amelyekre a szabály vonatkozik. További szűrési feltételeket a **+ Szűrő**lehetőség kiválasztásával adhat hozzá.
+1. A **megcélzott eszközök** szakaszban válassza a **MXChip IoT fejlesztői készlet** lehetőséget az eszköz sablonként. Ez a beállítás szűri azokat az eszközöket, amelyekre a szabály vonatkozik. A **+ szűrő**lehetőség kiválasztásával további szűrési feltételeket adhat hozzá.
 
-1. A **Feltételek szakaszban** meghatározhatja, hogy mi váltja ki a szabályt. A következő információk segítségével határozhat meg egy feltételt a hőmérséklet-telemetria imitorása alapján:
+1. A **feltételek** szakaszban megadhatja, hogy mi indítja el a szabályt. A következő információk segítségével határozhat meg egy olyan feltételt, amely a hőmérséklet telemetria:
 
     | Mező        | Érték            |
     | ------------ | ---------------- |
@@ -44,33 +44,33 @@ Mielőtt elkezdené, el kell végeznie a két korábbi rövid útmutató [létre
     | Művelet     | nagyobb, mint  |
     | Érték        | 90               |
 
-    További feltételek hozzáadásához válassza **a + Feltétel**lehetőséget.
+    További feltételek hozzáadásához válassza a **+ feltétel**lehetőséget.
 
-    ![Szabályfeltétel létrehozása](./media/quick-configure-rules/condition.png)
+    ![Szabály feltételének létrehozása](./media/quick-configure-rules/condition.png)
 
-1. Ha a szabály aktiválásakor futtatandó e-mail műveletet szeretne hozzáadni, válassza a **+ E-mail lehetőséget.**
+1. A szabály indításakor futtatandó e-mail-művelet hozzáadásához válassza a **+ e-mail**lehetőséget.
 
-1. Az alábbi táblázatban található információk segítségével definiálja a műveletet, majd válassza a **Kész**lehetőséget:
+1. A következő táblázatban található információk segítségével határozza meg a műveletet, majd válassza a **kész**lehetőséget:
 
     | Beállítás   | Érték                                             |
     | --------- | ------------------------------------------------- |
-    | Megjelenített név | Operátori e-mail művelet                          |
+    | Megjelenített név | Kezelői e-mail művelet                          |
     | Művelet        | Az Ön e-mail-címe                                |
-    | Megjegyzések     | A környezeti hőmérséklet meghaladta a küszöbértéket. |
+    | Megjegyzések     | A környezeti hőmérséklet túllépte a küszöbértéket. |
 
     > [!NOTE]
     > Ha e-mailes értesítést szeretne kapni, az e-mail-címnek [az alkalmazásban lévő felhasználói azonosítónak](howto-administer.md) kell lennie, és ennek a felhasználónak be kellett jelentkeznie legalább egyszer az alkalmazásba.
 
-    ![Szabályművelet létrehozása](./media/quick-configure-rules/action.png)
+    ![Szabály létrehozása művelet](./media/quick-configure-rules/action.png)
 
-1. Kattintson a **Mentés** gombra. A szabály a **Szabályok** lapon jelenik meg.
+1. Kattintson a **Mentés** gombra. A szabály a **szabályok** lapon jelenik meg.
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 
 A szabály a mentése után nem sokkal érvénybe lép. Amikor teljesülnek a szabályban megadott feltételek, az alkalmazás egy üzenetet küld a műveletben megadott e-mail-címre.
 
 > [!NOTE]
-> A tesztelés befejezése után kapcsolja ki a szabályt, hogy ne kapjon értesítéseket a beérkezett üzenetek között.
+> A tesztelés befejezése után kapcsolja ki a szabályt, hogy ne kapjon riasztásokat a Beérkezett üzenetek mappájában.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -79,7 +79,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 * Telemetria-alapú szabály létrehozása
 * Művelet hozzáadása
 
-Ha többet szeretne megtudni az alkalmazáshoz csatlakoztatott eszközök figyeléséről, folytassa a rövid útmutatóval:
+Ha többet szeretne megtudni az alkalmazáshoz csatlakoztatott eszközök monitorozásáról, folytassa a gyors üzembe helyezéssel:
 
 > [!div class="nextstepaction"]
-> [Az Azure IoT Central segítségével figyelheti eszközeit.](quick-monitor-devices.md)
+> Az [Azure IoT Central segítségével figyelheti az eszközöket](quick-monitor-devices.md).

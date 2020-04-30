@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726390"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
@@ -23,13 +23,13 @@ A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltö
 
 Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
 
-* [Php](https://php.net/downloads.php)
-* [Azure Storage SDK PHP-hez](https://github.com/Azure/azure-storage-php)
+* [PHP](https://php.net/downloads.php)
+* [PHP-hez készült Azure Storage SDK](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) egy egyszerű PHP-alkalmazás.  
 
-A [git](https://git-scm.com/) segítségével töltse le az alkalmazás egy példányát a fejlesztői környezetbe. 
+A [git](https://git-scm.com/) használatával letöltheti az alkalmazás egy példányát a fejlesztői környezetbe. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
@@ -207,7 +207,7 @@ Blob Storage-tárolókat alkalmazó PHP-alkalmazások fejlesztéséhez tekintse 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a PHP használatával. Ha bővebb információra van szüksége a PHP használatával kapcsolatban, lépjen tovább a PHP fejlesztői központunkba.
 
 > [!div class="nextstepaction"]
-> [PHP Fejlesztői központ](https://azure.microsoft.com/develop/php/)
+> [PHP fejlesztői központ](https://azure.microsoft.com/develop/php/)
 
 
 További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

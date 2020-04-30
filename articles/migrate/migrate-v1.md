@@ -8,10 +8,10 @@ ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77914381"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata

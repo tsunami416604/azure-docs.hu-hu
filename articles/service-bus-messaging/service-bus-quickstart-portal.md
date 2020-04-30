@@ -1,6 +1,6 @@
 ---
-title: Service Bus-várólista létrehozása az Azure Portal használatával
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Service Bus-várólistát az Azure Portal használatával. Ezután egy minta ügyfélalkalmazás segítségével üzeneteket küldhet a várólistába, és fogadhat üzeneteket a várólistából.
+title: Service Bus üzenetsor létrehozásához használja a Azure Portal
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus-várólistát a Azure Portal használatával. Ezt követően egy minta ügyfélalkalmazás használatával üzeneteket küldhet és fogadhat üzeneteket a várólistából.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240645"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rövid útmutató: Az Azure Portal használatával hozzon létre egy Service Bus-várólistát
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure Portal használatával
 Ebből a rövid útmutatóból megismerheti, hogyan használhatja az [Azure Portalt][Azure portal] egy Service Bus-üzenetsorral való üzenetváltásra egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásával, valamint az adott névsor hitelesítő adatainak lekérésével. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -24,8 +24,8 @@ Ebből a rövid útmutatóból megismerheti, hogyan használhatja az [Azure Port
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ingyenes fiókot.][]
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studio segítségével olyan mintát hozhat létre, amely üzeneteket küld a várólistába, és üzeneteket fogad egy várólistából. A minta a PowerShell használatával létrehozott várólista tesztelése. 
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot][] .
+- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studióval olyan mintát hozhat létre, amely üzeneteket küld egy várólistából, és üzenetet fogad. A minta a PowerShell használatával létrehozott üzenetsor tesztelése. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -35,14 +35,14 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
 > [!NOTE]
-> Az ebben a szakaszban az üzenetek küldésére és fogadására használt minta .NET minta. Ha más programozási nyelven szeretne mintákat küldeni/fogadni, olvassa el a [Service Bus-minták című témakört.](service-bus-samples.md) 
+> Az ebben a szakaszban az üzenetek küldésére és fogadására használt minta egy .NET-minta. Ha más programozási nyelvekkel szeretne üzeneteket küldeni/fogadni, tekintse meg a [Service Bus mintákat](service-bus-samples.md). 
 > 
-> A különböző programozási nyelveken történő üzenetek küldésére/fogadására vonatkozó részletes utasításokat a következő rövid útmutatókban találja:
+> Az üzenetek különböző programozási nyelvekkel történő küldésével és fogadásával kapcsolatos részletes utasításokért tekintse meg a következő rövid útmutatót:
 > - [.NET](service-bus-dotnet-get-started-with-queues.md)
 > - [Java](service-bus-java-how-to-use-queues.md)
-> - [Node.js az azure/service-bus csomagot használ](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Node.js az azure-sb csomagot használva](service-bus-nodejs-how-to-use-queues.md)
-> - [Php](service-bus-php-how-to-use-queues.md)
+> - [Node. js az Azure/Service-Bus csomag használatával](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node. js az Azure-SB-csomag használatával](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
@@ -82,7 +82,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A kapcsolati karakterlánc és a `Main()` várólista neve parancssori argumentumként kerül áta disametódushoz. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A rendszer a `Main()` metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync() metódus létrehoz egy várólista-ügyfelet a parancssori argumentumokkal, meghívja a fogadóüzenet-kezelőt, `RegisterOnMessageHandlerAndReceiveMessages()`és elküldi az üzenetek készletét:
+A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű `RegisterOnMessageHandlerAndReceiveMessages()`üzenet-kezelőt, és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -209,17 +209,17 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 > [!NOTE]
-> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldéséhez és fogadásához írt kódírásról, folytassa az **üzenetek küldése és fogadása** című szakaszoktatóival. 
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldésére és fogadására szolgáló kód írásához, folytassa az oktatóanyagokat a **küldési és fogadási üzenetek** szakaszban. 
 
 > [!div class="nextstepaction"]
 > [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)
 
 
-[ingyenes számla]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes fiók]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 

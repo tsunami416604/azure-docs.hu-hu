@@ -1,7 +1,7 @@
 ---
-title: Tudástároló (előzetes verzió) létrehozása az Azure Portalon
+title: Hozzon létre egy Knowledge Store-t (előzetes verzió) a Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Az Adatok importálása varázslóval hozzon létre egy tudástárolót, amely a bővített tartalom megőrzéséhez használható. Csatlakozzon egy tudástárolóhoz elemzésre más alkalmazásokból, vagy küldjön bővített tartalmat az alsóbb rétegbeli folyamatokba. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
+description: Az adatimportálás varázsló használatával hozzon létre egy, a dúsított tartalom megőrzésére szolgáló tudásbázist. Kapcsolódjon a Knowledge Store-hoz más alkalmazásokból származó elemzéshez, vagy a dúsított tartalmat küldje el az alsóbb rétegbeli folyamatoknak. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -9,138 +9,138 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/29/2020
 ms.openlocfilehash: 21279b2b4735a25210e8373d76d0d63f9c711bfc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77472366"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rövid útmutató: Hozzon létre egy Azure Cognitive Search tudástárolót az Azure Portalon
+# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
 > [!IMPORTANT] 
-> A tudástároló jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió funkció szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-A tudástároló az Azure Cognitive Search olyan szolgáltatása, amely a kognitív képességek folyamatából származó kimenetet további elemzésekhez vagy későbbi feldolgozáshoz továbbra is megőrzi. 
+A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy kognitív képességekből származó kimenetet biztosít a későbbi elemzésekhez vagy az alsóbb rétegbeli feldolgozáshoz. 
 
-A folyamat a strukturálatlan szöveget és a képeket nyers tartalomként fogadja el, a Cognitive Services-en keresztül alkalmazza a a ai-t (például az OCR-t, a képelemzést és a természetes nyelvi feldolgozást), kinyeri az információkat, és új struktúrákat és információkat ad ki. A folyamat által létrehozott fizikai összetevők egyike egy [tudástároló,](knowledge-store-concept-intro.md)amelyet a tartalom elemzéséhez és feltárásához szükséges eszközöksegítségével érhet el.
+A folyamatok a strukturálatlan szövegeket és képeket nyers tartalomként fogadják el, a mesterséges intelligenciát Cognitive Services (például OCR, képelemzés, természetes nyelvi feldolgozás), kinyeri az adatokat, és új struktúrákat és információkat eredményeznek. A folyamat által létrehozott fizikai összetevők egyike egy [Tudásbázis](knowledge-store-concept-intro.md), amelyet az eszközökön keresztül érhet el, és elemezheti a tartalmakat.
 
-Ebben a rövid útmutatóban az Azure-felhőben lévő szolgáltatásokat és adatokat kombinálva hozzon létre egy tudástárolót. Ha minden a helyén van, futtatja az **Adatok importálása** varázslót a portálon, hogy összehúzza az egészet. A végeredmény az eredeti szöveges tartalom, valamint a a i-k által létrehozott tartalom, amelyet a portálon ([Storage explorer](knowledge-store-view-storage-explorer.md)) tekinthet meg.
+Ebben a rövid útmutatóban a szolgáltatásait és adatait az Azure-felhőben egyesítve hozhat létre egy tudásbázist. Ha minden megtörtént, a portálon futtathatja az **adatimportálás** varázslót, hogy az összeset együtt kell lekérnie. A végeredmény az eredeti szöveges tartalom, valamint a mesterséges intelligenciával létrehozott tartalom, amelyet a portálon ([Storage Explorer](knowledge-store-view-storage-explorer.md)) tekinthet meg.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és adatok betöltése
+## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és az adatterhelés
 
-Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob storage és az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) a ai. 
+Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob Storage és az [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) használatát használja az AI-hoz. 
 
-Mivel a munkaterhelés olyan kicsi, a Cognitive Services a színfalak mögött, hogy ingyenes feldolgozást biztosít legfeljebb 20 tranzakciók naponta. Mivel az adatkészlet olyan kicsi, kihagyhatja a Cognitive Services-erőforrás létrehozását vagy csatolását.
+Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy naponta legfeljebb 20 tranzakció szabad feldolgozását biztosítsa. Mivel az adatkészlet olyan kicsi, hogy kihagy egy Cognitive Services erőforrás létrehozását vagy csatolását.
 
-1. [Letöltés HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Ezek az adatok a CSV fájlban mentett hotel-felülvizsgálati adatok (Kaggle.com származnak), és 19 darab vásárlói visszajelzést tartalmaznak egy szállodáról. 
+1. [Töltse le HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)fájlt. Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
-1. [Hozzon létre egy Azure-tárfiókot,](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) az aktuális előfizetésében. Az Azure storage-t mind az importálandó nyers tartalomhoz, mind a tudástárolóhoz használni fogja, amely a végeredmény.
+1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
 
-   Válassza ki a **StorageV2 (általános célú V2)** fiók típusát.
+   Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
-1. Nyissa meg a Blob-szolgáltatások lapjait, és hozzon létre egy *hotel-vélemények nevű tárolót.*
+1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews*" nevű tárolót.
 
 1. Kattintson a **Feltöltés** gombra.
 
-    ![Az adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "Töltse fel a szállodai értékeléseket")
+    ![Adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "A szállodai értékelések feltöltése")
 
-1. Válassza ki az első lépésben letöltött **HotelReviews-Free.csv** fájlt.
+1. Válassza ki az első lépésben letöltött **HotelReviews-Free. csv** fájlt.
 
     ![Az Azure Blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Az Azure Blob-tároló létrehozása")
 
-1. Ezzel az erőforrással már majdnem végzett, de mielőtt kilépne ezekből a lapokból, a bal oldali navigációs ablakban található hivatkozással nyissa meg a **Hozzáférési kulcsok** lapot. Szerezzen be egy kapcsolati karakterláncot az adatok Blob storage-ból történő lekéréséhez. A kapcsolati karakterlánc a következő példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. Ezzel az erőforrással majdnem elkészült, de mielőtt elhagyja ezeket a lapokat, a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. Még mindig a portálon, váltson az Azure Cognitive Search. [Hozzon létre egy új szolgáltatást,](search-create-service-portal.md) vagy [keressen egy meglévő szolgáltatást.](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) A rövid útmutatóhoz ingyenes szolgáltatást használhat.
+1. Továbbra is a portálon váltson az Azure Cognitive Searchra. [Hozzon létre egy új szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
-Most már készen áll az Adatok importálása varázslóra való áttérésre.
+Most már készen áll az adatimportálás varázsló áthelyezésére.
 
-## <a name="run-the-import-data-wizard"></a>Az Adatok importálása varázsló futtatása
+## <a name="run-the-import-data-wizard"></a>Az adatimportálás varázsló futtatása
 
-A keresési szolgáltatás áttekintése lapon kattintson az **Adatok importálása** a parancssávon elemre, ha négy lépésben szeretne tudástárolót létrehozni.
+A keresési szolgáltatás áttekintése lapon kattintson az **adat importálása** parancsra a parancssorban, és hozzon létre egy tudásbázist négy lépésben.
 
   ![Adatok importálása parancs](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 
-1. A **Csatlakozás az adatokhoz**lehetőséget **válassza az Azure Blob storage**lehetőséget, válassza ki a létrehozott fiókot és tárolót. 
-1. A **Név**mezőbe `hotel-reviews-ds`írja be a mezőbe.
-1. **Elemzési módban**jelölje be a **Tagolt szöveg**lehetőséget, majd jelölje be az **Első sor fejlécet tartalmaz** jelölőnégyzetet. Győződjön meg arról, hogy a **Határoló karakter** vessző (,)
-1. A **Kapcsolati karakterlánc**alkalmazásban illessze be a kapcsolati karakterláncot, amelyet az Azure Storage **Hozzáférési kulcsok** lapjáról másolt.
-1. A **tárolókban**adja meg az adatokat tároló blobtároló nevét.
+1. A **Kapcsolódás az adataihoz**lapon válassza az **Azure Blob Storage**lehetőséget, majd válassza ki a létrehozott fiókot és tárolót. 
+1. A **név**mezőbe írja be `hotel-reviews-ds`a következőt:.
+1. **Elemzési mód**esetén válassza a **tagolt szöveg**lehetőséget, majd jelölje be az **első sor fejléce** jelölőnégyzetet. Győződjön meg arról, hogy az elválasztó **karakter** egy vessző (,).
+1. A **kapcsolati karakterláncban**illessze be az Azure Storage **hozzáférési kulcsok** lapjáról másolt kapcsolati karakterláncot.
+1. A **tárolók**mezőben adja meg az adattárolási blob-tároló nevét.
 
     Az oldalnak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
     ![Adatforrás-objektum létrehozása](media/knowledge-store-create-portal/hotel-reviews-ds.png "Adatforrás-objektum létrehozása")
 
-1. Folytassa a következő lappal.
+1. Folytassa a következő oldallal.
 
 ### <a name="step-2-add-cognitive-skills"></a>2. lépés: Kognitív képességek hozzáadása
 
-Ebben a varázsló lépésben hozzon létre egy skillset kognitív képesség gazdagítása. A forrásadatok több nyelven végzett vásárlói véleményekből állnak. Az adatkészlet szempontjából releváns szakértelem közé tartozik a kulcskifejezések kinyerése, a hangulatészlelés és a szövegfordítás. Egy későbbi lépésben ezek a dúsítások lesznek "vetítve" egy tudástároló, mint az Azure-táblák.
+A varázsló lépésében egy készségkészlet hoz létre a kognitív képességek gazdagítása révén. A forrásadatok több nyelven is különböző felhasználói felülvizsgálatokból állnak. Az ehhez az adatkészlethez kapcsolódó készségek közé tartozik a fő kifejezés kinyerése, a hangulat észlelése és a szöveg fordítása. Egy későbbi lépésben ezeket a bővítéseket az Azure Tables (Tudásbázisban) a Knowledge Store-ba fogjuk felépíteni.
 
-1. Bontsa ki **a Cognitive Services csatolása csomópontot.** **Az Ingyenes (Korlátozott dúsítások)** alapértelmezés szerint be van jelölve. Ezt az erőforrást azért használhatja, mert a HotelReviews-Free.csv-ben a rekordok száma 19, és ez a szabad erőforrás naponta legfeljebb 20 tranzakciót engedélyez.
-1. Bontsa ki **a Hozzáadás identitat .**
-1. A **Skillset-név mezőbe**írja be a beírt. `hotel-reviews-ss`
-1. A **Forrás adatforrásmezőben**válassza **a reviews_text**lehetőséget.
-1. A **Dúsítás részletességi szint esetén**válassza az Oldalak **(5000 karakterből áll) lehetőséget.**
+1. Bontsa ki a **csatolás Cognitive Services**elemet. Alapértelmezés szerint az **ingyenes (korlátozott alkoholtartalom-növelés)** beállítás van kiválasztva. Ezt az erőforrást használhatja, mert a HotelReviews-Free. csv fájlban lévő rekordok száma 19, és ez az ingyenes erőforrás naponta legfeljebb 20 tranzakciót tesz lehetővé.
+1. Bontsa ki a bővítések **hozzáadása**elemet.
+1. A **készségkészlet neve**mezőbe írja `hotel-reviews-ss`be a következőt:.
+1. A **forrásadatok mezőben**válassza a **reviews_text**lehetőséget.
+1. A **dúsítás részletességi szintjének**kiválasztásához válassza a **lapok (5000 karakteres tömbök) elemet.**
 1. Válassza ki ezeket a kognitív képességeket:
     + **Kulcsszavak kinyerése**
     + **Szöveg lefordítása**
-    + **Hangulat észlelése**
+    + **Érzelmek észlelése**
 
       ![Képességcsoport létrehozása](media/knowledge-store-create-portal/hotel-reviews-ss.png "Képességcsoport létrehozása")
 
-1. A **Mentés identik a tudástárolóba**elemre.
-1. Válassza ki a következő **Azure-tábla-előrejelzéseket:**
+1. Bontsa ki a bővítések **mentése a Knowledge Store-** ba lehetőséget.
+1. Válassza ki ezeket az **Azure Table-kivetítéseket**:
     + **Dokumentumok**
     + **Oldalak**
-    + **Kulcsfontosságú kifejezések**
-1. Adja meg az előző lépésben mentett **tárolási fiók kapcsolati karakterláncát.**
+    + **Legfontosabb kifejezések**
+1. Adja meg az előző lépésben mentett **Storage-fiókhoz tartozó kapcsolatok sztringjét** .
 
-    ![Tudástároló konfigurálása](media/knowledge-store-create-portal/hotel-reviews-ks.png "Tudástároló konfigurálása")
+    ![A Knowledge Store konfigurálása](media/knowledge-store-create-portal/hotel-reviews-ks.png "A Knowledge Store konfigurálása")
 
-1. Szükség esetén töltsön le egy Power BI-sablont. Amikor a varázslóból éri el a sablont, a helyi .pbit fájl az adatok alakjához igazodik.
+1. Szükség esetén letöltheti Power BI sablont. Amikor a varázslóból fér hozzá a sablonhoz, a helyi. pbit fájl alkalmazkodik az adatok alakjának megjelenítéséhez.
 
-1. Folytassa a következő lappal.
+1. Folytassa a következő oldallal.
 
 ### <a name="step-3-configure-the-index"></a>3. lépés: Az index konfigurálása
 
-Ebben a varázslólépésben a választható teljes szöveges keresési lekérdezésekhez indexet kell beállítani. A varázsló mintát vesz az adatforrásból a mezők és adattípusok kikövetkeztetéséhez. Csak ki kell választania a kívánt viselkedés attribútumait. A **Visszakereshető** attribútum például lehetővé teszi, hogy a keresési szolgáltatás mezőértéket ad vissza, míg a **Kereshető** teljes szöveges keresést tesz lehetővé a mezőben.
+Ebben a varázslóban a választható teljes szöveges keresési lekérdezések indexét kell konfigurálnia. A varázsló felveszi az adatforrást a mezők és adattípusok lekötésére. Csak ki kell választania a kívánt viselkedés attribútumait. A lekérdezhető **attribútum például** lehetővé teszi, hogy a Search szolgáltatás a mező értékét visszaállítsa, miközben a **kereshetőség** lehetővé teszi a teljes szöveges keresést a mezőben.
 
-1. A **Tárgymutató nevéhez**írja be a mezőbe `hotel-reviews-idx`a.
-1. Attribútumok esetén fogadja el az alapértelmezett beállításokat: A folyamat által létrehozott új mezők **visszakereshető** és **kereshető.**
+1. Az **index neve**mezőbe írja `hotel-reviews-idx`be a következőt:.
+1. Attribútumok esetében fogadja el az alapértelmezett beállításokat **Retrievable** : lekérdezhető és **kereshető** a folyamat által létrehozott új mezőkhöz.
 
     Az indexnek az alábbi képhez hasonlóan kell kinéznie. Mivel a lista hosszú, nem minden mező látható a képen.
 
     ![Index konfigurálása](media/knowledge-store-create-portal/hotel-reviews-idx.png "Index konfigurálása")
 
-1. Folytassa a következő lappal.
+1. Folytassa a következő oldallal.
 
 ### <a name="step-4-configure-the-indexer"></a>4. lépés: Az indexelő konfigurálása
 
-Ebben a varázslólépésben konfigurálegy indexelőt, amely összeállítja az adatforrást, a skillsetet és az előző varázslólépésekben megadott indexet.
+A varázsló lépésében olyan indexelő fog konfigurálni, amely összefogja az adatforrást, a készségkészlet és a varázsló előző lépéseiben megadott indexet.
 
-1. A **Név** `hotel-reviews-idxr`mezőbe írja be a mezőbe.
-1. Az **Ütemezés**mezőben tartsa meg az alapértelmezett **Egyszer**beállítást.
-1. Az indexelő futtatásához kattintson a **Küldés** gombra. Az adatok kinyerése, indexelése, kognitív képességek alkalmazása minden történik ebben a lépésben.
+1. A **név**mezőbe írja `hotel-reviews-idxr`be a következőt:.
+1. Az **ütemterv** **beállításnál**tartsa meg az alapértelmezett értéket.
+1. Az indexelő futtatásához kattintson a **Submit (elküldés** ) gombra. Az adatgyűjtés, az indexelés, a kognitív képességek alkalmazása mindez ebben a lépésben történik.
 
 ## <a name="monitor-status"></a>Figyelő állapota
 
-Kognitív szakértelem indexelés hosszabb időt vesz igénybe, mint a tipikus szövegalapú indexelés. A varázslónak meg kell nyitnia az Indexelő listát az áttekintő lapon, hogy nyomon követhesse a folyamatot. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelők gombra.**
+A kognitív képességek indexelése hosszabb időt vesz igénybe, mint a szokásos szöveges indexelés. A varázslónak meg kell nyitnia az indexelő listát az Áttekintés oldalon, hogy nyomon követhesse a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő**elemre.
 
-Az Azure Portalon is figyelheti az értesítések tevékenységnaplóegy kattintható **Azure Cognitive Search értesítési állapot** linket. A végrehajtás több percig is eltarthat.
+A Azure Portal az értesítési tevékenység naplóját is figyelheti egy kattintható **Azure Cognitive Search értesítési** állapot hivatkozására. A végrehajtás több percet is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy bővítette az adatokat a Cognitive Services használatával, és az eredményeket egy tudástárolóba vetítette, a Storage Explorer vagy a Power BI segítségével megismerheti a bővített adatkészletet.
+Most, hogy bővítette az adatait a Cognitive Services segítségével, és kivetítette az eredményeket egy tudásbázisba, Storage Explorer vagy Power BI használatával tárja fel a dúsított adatkészletet.
 
-A Storage Explorer ben megtekintheti a tartalmat, vagy egy lépéssel tovább léphet a Power BI segítségével, hogy a vizualizáció révén betekintést nyerjen.
+A tartalmat megtekintheti Storage Explorerban, vagy a Power BI további lépéseit követve betekintést nyerhet a vizualizációk segítségével.
 
 > [!div class="nextstepaction"]
-> [Nézet a Tárterület-kezelővel](knowledge-store-view-storage-explorer.md)
-> [Csatlakozás a Power BI-val](knowledge-store-connect-power-bi.md)
+> [Megtekintés Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [kapcsolattal Power bi](knowledge-store-connect-power-bi.md)
 
 > [!Tip]
-> Ha meg szeretné ismételni ezt a gyakorlatot, vagy ki próbálhatja egy másik AI-bővítési forgatókönyvet, törölje a *hotel-reviews-idxr* indexelőt. Az indexelő törlése visszaállítja az ingyenes napi tranzakciószámláló t nullára a Cognitive Services feldolgozása.
+> Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje a *Hotel-Reviews-idxr* indexelő. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját a Cognitive Services feldolgozáshoz.

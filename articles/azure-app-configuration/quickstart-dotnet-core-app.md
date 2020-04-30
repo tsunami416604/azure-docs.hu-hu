@@ -1,6 +1,6 @@
 ---
-title: Az Azure App konfigurációjának rövid útmutatója a .NET Core használatával | Microsoft dokumentumok
-description: Rövid útmutató az Azure App Configuration és a .NET Core alkalmazások használatához
+title: Gyors útmutató az Azure-alkalmazások konfigurálásához a .NET Core használatával | Microsoft Docs
+description: Gyors útmutató az Azure-alkalmazások konfigurációjának .NET Core-alkalmazásokkal való használatához
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,69 +8,69 @@ ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
 ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80245378"
 ---
-# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rövid útmutató: .NET Core alkalmazás létrehozása alkalmazáskonfigurációval
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
-Ebben a rövid útmutatóban az Azure App Configuration alkalmazást egy .NET Core konzolalkalmazásba építi be, hogy központosítsa az alkalmazásbeállítások tárolását és felügyeletét a kódtól elkülönítve.
+Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET Core Console-alkalmazásba helyezi el, hogy központilag központosítsa az alkalmazások beállításait a kódból elkülönítve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [.NET Core SDK](https://dotnet.microsoft.com/download) – az [Azure Cloud Shellben](https://shell.azure.com)is elérhető.
+- [.Net Core SDK](https://dotnet.microsoft.com/download) – a [Azure Cloud Shell](https://shell.azure.com)is elérhető.
 
-## <a name="create-an-app-configuration-store"></a>Alkalmazáskonfigurációs tároló létrehozása
+## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer** > **Kulcsérték** **létrehozása** > lehetőséget a következő kulcsérték-párok hozzáadásához:
+6. A következő kulcs-érték párok hozzáadásához válassza a **Configuration Explorer** > **create** > **Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
-    | TestApp:Beállítások:Üzenet | Az Azure App konfigurációjából származó adatok |
+    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
 
-    Egyelőre hagyja üresen a **Címke** és **a Tartalomtípus** mezőt.
+    Most hagyja üresen a **címke** és a **tartalom típusát** .
 
 7. Kattintson az **Alkalmaz** gombra.
 
-## <a name="create-a-net-core-console-app"></a>.NET Core konzolalkalmazás létrehozása
+## <a name="create-a-net-core-console-app"></a>.NET Core Console-alkalmazás létrehozása
 
-A [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) segítségével új .NET Core konzolalkalmazás-projektet hozhat létre. A .NET Core CLI használatának előnye a Visual Studio-val szemben, hogy windowsos, macOS és Linux platformokon is elérhető.  Másik lehetőségként használja az Azure [Cloud Shellben](https://shell.azure.com)elérhető előtelepített eszközöket.
+A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) használatával hozzon létre egy új .net Core Console alkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető.  Másik lehetőségként használhatja a [Azure Cloud Shell](https://shell.azure.com)elérhető előtelepített eszközöket.
 
 1. Hozzon létre egy új mappát a projekthez.
 
-2. Az új mappában futtassa a következő parancsot egy új ASP.NET Core konzolalkalmazás-projekt létrehozásához:
+2. Az új mappában a következő parancs futtatásával hozzon létre egy új ASP.NET Core Console alkalmazás-projektet:
 
     ```dotnetcli
     dotnet new console
     ```
 
-## <a name="connect-to-an-app-configuration-store"></a>Csatlakozás alkalmazáskonfigurációs tárolóhoz
+## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Adjon hozzá hivatkozást a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet csomaghoz a következő parancs futtatásával:
+1. Adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```dotnetcli
     dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
-2. A következő parancs futtatásával állítsa vissza a projekt csomagjait:
+2. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
     ```dotnetcli
     dotnet restore
     ```
 
-3. Nyissa *meg a Program.cs,* és adjon hozzá hivatkozást a .NET Core alkalmazáskonfigurációs szolgáltatóhoz.
+3. Nyissa meg a *program.cs*, és adjon hozzá egy hivatkozást a .net Core app Configuration Provider szolgáltatáshoz.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Frissítse `Main` a metódust az alkalmazáskonfiguráció használatához a `builder.AddAzureAppConfiguration()` metódus hívásával.
+4. Frissítse a `Main` metódust az alkalmazás konfigurációjának használatára a `builder.AddAzureAppConfiguration()` metódus meghívásával.
 
     ```csharp
     static void Main(string[] args)
@@ -85,31 +85,31 @@ A [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazáskonfigurációs tároló hozzáférési kulcsára. A parancssorból futtassa a következő parancsot:
+1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot:
 
     ```cmd
     setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
-    Ha windows PowerShellt használ, futtassa a következő parancsot:
+    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
     ```azurepowershell
     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
-    MacOS vagy Linux használata esetén futtassa a következő parancsot:
+    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-    A módosítás érvénybe lépésének engedélyezéséhez indítsa újra a parancssort. Nyomtassa ki a környezeti változó értékét, hogy ellenőrizze, hogy megfelelően van-e beállítva.
+    A módosítás érvénybe léptetéséhez indítsa újra a parancssort. Nyomtassa ki a környezeti változó értékét annak ellenőrzéséhez, hogy megfelelően van-e beállítva.
 
-2. A konzolalkalmazás létrehozásához futtassa a következő parancsot:
+2. Futtassa a következő parancsot a konzol alkalmazás létrehozásához:
 
     ```dotnetcli
     dotnet build
     ```
 
-3. A sikeres build befejezése után futtassa a következő parancsot az alkalmazás helyi futtatásához:
+3. A létrehozás sikeres befejezése után futtassa a következő parancsot az alkalmazás helyi futtatásához:
 
     ```dotnetcli
     dotnet run
@@ -121,7 +121,7 @@ A [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új App Configuration Store-t, és használta azt egy .NET Core konzolalkalmazással az [Alkalmazáskonfiguráció szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha meg szeretné tudni, hogyan konfigurálhatja a .NET Core alkalmazást a konfigurációs beállítások dinamikus frissítésére, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-dotnet-core.md)

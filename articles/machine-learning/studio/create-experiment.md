@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Adatelemzési kísérlet létrehozása'
+title: 'Gyors útmutató: adatelemzési kísérlet létrehozása'
 titleSuffix: ML Studio (classic) - Azure
-description: Ez a gépi tanulási rövid útmutató végigvezeti egy egyszerű adatelemzési kísérlet. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
+description: Ez a Machine learning-útmutató végigvezeti egy egyszerű adatelemzési kísérleten. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,51 +11,51 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
 ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79204562"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rövid útmutató: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studio-ban (klasszikus)
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Azure Machine Learning Studio (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Ebben a rövid útmutatóban hozzon létre egy gépi tanulási kísérlet [az Azure Machine Learning Studio (klasszikus),](what-is-ml-studio.md) amely előre jelzi az autó árát a különböző változók, például a gyártmány és a műszaki előírások.
+Ebben a rövid útmutatóban egy gépi tanulási kísérletet hoz létre [Azure Machine learning Studio (klasszikus)](what-is-ml-studio.md) , amely az autó árát különböző változók, például gyártmányok és technikai specifikációk alapján Jósolja meg.
 
-Ha ön teljesen új a gépi tanulás, a videó sorozat [Data Science kezdőknek](data-science-for-beginners-the-5-questions-data-science-answers.md) egy nagyszerű bevezetés a gépi tanulás segítségével mindennapi nyelv és fogalmak.
+Ha teljesen új a gépi tanuláshoz, a [kezdőknek szóló videó-adatelemzési](data-science-for-beginners-the-5-questions-data-science-answers.md) sorozat a mindennapi nyelvhasználattal és fogalmakkal remek bevezetést nyújt a gépi tanuláshoz.
 
 Ez a rövid útmutató egy kísérlet alapértelmezett munkafolyamatát követi:
 
 1. **Modell létrehozása**
     - [Az adatok lekérése]
     - [Az adatok előkészítése]
-    - [Szolgáltatások definiálása]
+    - [Funkciók definiálása]
 1. **A modell betanítása**
     - [Algoritmus kiválasztása és alkalmazása]
 1. **A modell pontozása és tesztelése**
-    - [Új autóárak előrejelzése]
+    - [Új személygépkocsik árának előrejelzése]
 
 [Az adatok lekérése]: #get-the-data
 [Az adatok előkészítése]: #prepare-the-data
-[Szolgáltatások definiálása]: #define-features
+[Funkciók definiálása]: #define-features
 [Algoritmus kiválasztása és alkalmazása]: #choose-and-apply-an-algorithm
-[Új autóárak előrejelzése]: #predict-new-automobile-prices
+[Új személygépkocsik árának előrejelzése]: #predict-new-automobile-prices
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Az első dolog, amire szüksége van a gépi tanulásban, az adatok.
-A Studio (klasszikus) számos mintaadatkészletet tartalmaz, amelyeket használhat, vagy számos forrásból importálhat adatokat. Ebben a példában a munkaterületén megtalálható **Automobile price data (Raw)** (Nyers autóáradatok) nevű mintahalmazt fogjuk használni.
+Az első dolog, amire szüksége van a Machine learning szolgáltatásban.
+A Studio (klasszikus) számos minta adatkészletet tartalmaz, amelyeket használhat, vagy több forrásból is importálhat adatokat. Ebben a példában a munkaterületén megtalálható **Automobile price data (Raw)** (Nyers autóáradatok) nevű mintahalmazt fogjuk használni.
 Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepel. A bejegyzések számos adatot (például márka, típus, műszaki specifikációk, ár) tartalmaznak.
 
 > [!TIP]
-> Az [Azure AI katalógusban](https://gallery.azure.ai) megtalálja az alábbi kísérlet egy működő példányát. Nyissa meg **[az első adatelemzési kísérlet – Az autóár-előrejelzés](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** t, és kattintson a **Megnyitás a Stúdióban** gombra a kísérlet egy példányának a Machine Learning Studio (klasszikus) munkaterületre való letöltéséhez.
+> Az [Azure AI katalógusban](https://gallery.azure.ai) megtalálja az alábbi kísérlet egy működő példányát. Nyissa meg az **[első adatelemzési kísérletet – az autó árának előrejelzését](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , és kattintson a **Megnyitás a Studióban** lehetőségre a kísérlet másolatának letöltéséhez a Machine learning Studio (klasszikus) munkaterületre.
 
 A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
-1. Hozzon létre egy új kísérletet a Machine Learning Studio (klasszikus) ablak alján található **+ÚJ** gombra kattintva. Válassza **a KÍSÉRLET** >  **üres kísérlet lehetőséget.**
+1. Hozzon létre egy új kísérletet az Machine Learning Studio (klasszikus) ablak alján található **+ új** elemre kattintva. Válassza a **kísérlet** >  **üres kísérlet**lehetőséget.
 
 1. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
 
@@ -65,7 +65,7 @@ A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
     ![Az autókat tartalmazó adathalmaz megkeresése és a kísérleti vászonra húzása](./media/create-experiment/type-automobile.png)
 
-Az adatok megjelenésének megtekintéséhez kattintson az autó adatkészletének alján található kimeneti portra, majd válassza a **Visualize**lehetőséget.
+Ha szeretné megtekinteni az adatokat, kattintson az autó adatkészletének alján található kimeneti portra, majd válassza a **Megjelenítés**lehetőséget.
 
 ![Kattintson a kimeneti portra, majd válassza a „Visualize” (Képi megjelenítés) lehetőséget](./media/create-experiment/select-visualize.png)
 
@@ -74,7 +74,7 @@ Az adatok megjelenésének megtekintéséhez kattintson az autó adatkészletén
 Az adatfolyam létrehozásához a kísérlet során össze fogja kötni az egyik modul kimeneti portját egy másik modul bemeneti portjával.
 Ha meg szeretné tekinteni, hogyan jelennek meg az adatok az adatfolyam egy adott pontján, kattintson az adathalmaz vagy modul kimeneti portjára.
 
-Ebben az adatkészletben minden sor egy gépkocsit jelöl, és az egyes autókhoz társított változók oszlopként jelennek meg. Az árat a szélsőjobboldali oszlopban (26. oszlop, "ár") egy adott autó változóinak felhasználásával jósoljuk meg.
+Ebben az adatkészletben minden sor egy automobilt jelöl, és az egyes autókhoz tartozó változók oszlopként jelennek meg. Az árat a jobb szélső oszlopban fogjuk megjósolni (26. oszlop, "Price" címmel) egy adott autó változóit használva.
 
 ![Az autókra vonatkozó adatok megtekintése az adatokat megjelenítő ablakban](./media/create-experiment/visualize-auto-data.png)
 
@@ -82,25 +82,25 @@ A jobb felső sarokban látható „**x**” gombra kattintva zárja be a képi 
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
-Az adathalmazok elemzése előtt általában némi előfeldolgozás szükséges. Talán észrevette, hogy az oszlopok számos sorából hiányoztak az értékek. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. Eltávolítjuk azértékeket tartalmazó sorokat. A **normalized-losses** (normalizált veszteségek) című oszlopból ráadásul rendkívül sok érték hiányzik, ezért ezt az oszlopot teljesen kizárjuk a modellből.
+Az adathalmazok elemzése előtt általában némi előfeldolgozás szükséges. Talán észrevette, hogy az oszlopok számos sorából hiányoztak az értékek. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. Töröljük a hiányzó értékeket tartalmazó sorokat. A **normalized-losses** (normalizált veszteségek) című oszlopból ráadásul rendkívül sok érték hiányzik, ezért ezt az oszlopot teljesen kizárjuk a modellből.
 
 > [!TIP]
 > A legtöbb modul használatának előfeltétele a bemeneti adatok hiányzó értékeinek törlése.
 
-Először is hozzáadunk egy modult, amely teljesen eltávolítja a **normalizált veszteségek** oszlopot. Ezután hozzáadunk egy másik modult, amely eltávolítja a hiányzó adatokat tartalmazó sorokat.
+Először hozzáadunk egy modult, amely teljesen eltávolítja a **normalizált veszteségek** oszlopot. Ezután hozzáadunk egy másik modult, amely eltávolítja a hiányzó adatsorokat.
 
-1. Írja be a panelpaletta tetején lévő keresőmezőben az **oszlopok kijelölésének** kifejezést az Adatkészlet modul Oszlopok kijelölése modul [megkereséséhez.][select-columns] Ezután húzza a kísérleti vászonra. Ezzel a modullal kiválaszthatjuk, hogy melyik adatoszlopokat szeretnénk bevonni a modellbe, vagy éppen kizárni a modellből.
+1. A modul paletta tetején található keresőmezőbe írja be a Select Columns ( **Oszlopok kiválasztása** ) elemet, hogy megtalálja a [Select Columns elemet az adatkészlet][select-columns] modulban. Ezután húzza a kísérlet vászonra. Ezzel a modullal kiválaszthatjuk, hogy melyik adatoszlopokat szeretnénk bevonni a modellbe, vagy éppen kizárni a modellből.
 
-1. Csatlakoztassa az Automobile **áradat-adathalmaz (Raw)** kimeneti portját az Adatkészlet Oszlopok kiválasztása bemeneti portjához.
+1. Az **Automobile Price (nyers)** adathalmaz kimeneti portjának csatlakoztatása az adatkészlet Select oszlopainak bemeneti portjához.
 
     ![A „Select Columns in Dataset” (Adathalmaz oszlopainak kijelölése) modul hozzáadása a kísérletvászonhoz, majd összekötése](./media/create-experiment/type-select-columns.png)
 
 1. Kattintson a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, majd a **Properties** (Tulajdonságok) panelen kattintson a **Launch column selector** (Oszlopválasztó elindítása) elemre.
 
    - A bal oldalon kattintson a **With rules** (Szabályokkal) lehetőségre
-   - A **Begin With** (Kezdés a következővel) területen kattintson az **All columns** (Minden oszlop) lehetőségre. Ezek a szabályok az [adatkészlet oszlopainak kijelölése parancsot irányítják][select-columns] az összes oszlop on-át történő áthaladására (kivéve azokat az oszlopokat, amelyeket ki fogunk zárni).
+   - A **Begin With** (Kezdés a következővel) területen kattintson az **All columns** (Minden oszlop) lehetőségre. Ezek a szabályok közvetlenül [kiválasztja az adatkészlet oszlopait az összes oszlop átadásához][select-columns] (kivéve a kizárni kívánt oszlopokat).
    - A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** (normalizált veszteségek) lehetőséget, amely aztán bekerül a szövegdobozba.
-   - Kattintson a pipa (OK) gombra az oszlopkijelölő bezárásához (a jobb alsó sarokban).
+   - Kattintson a pipa (OK) gombra az oszlop választójának bezárásához (a jobb alsó sarokban).
 
      ![Az oszlopválasztó elindítása és a „normalized-losses” (normalizált veszteségek) oszlop kizárása](./media/create-experiment/launch-column-selector.png)
 
@@ -113,7 +113,7 @@ Először is hozzáadunk egy modult, amely teljesen eltávolítja a **normalizá
 
      ![Megjegyzés hozzáadása egy modulhoz dupla kattintással](./media/create-experiment/add-comment.png)
 
-1. Húzza a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modult a kísérletvászonra, és kösse össze a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal. A **Properties** (Tulajdonságok) panel **Cleaning mode** (Törlés módja) beállításánál válassza a **Remove entire row** (Teljes sor eltávolítása) lehetőséget. Ezek a beállítások a hiányzó értékekkel rendelkező sorok eltávolításával [közvetlenül tisztítják][clean-missing-data] a hiányzó adatokat az adatok tisztításához. Kattintson duplán a modulra, és írja be a következő megjegyzést: „Hiányzó értéket tartalmazó sorok törlése”.
+1. Húzza a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modult a kísérletvászonra, és kösse össze a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal. A **Properties** (Tulajdonságok) panel **Cleaning mode** (Törlés módja) beállításánál válassza a **Remove entire row** (Teljes sor eltávolítása) lehetőséget. Ezek a beállítások közvetlenül [törlik a hiányzó adatokból][clean-missing-data] az adatok törlését a hiányzó értékeket tartalmazó sorok eltávolításával. Kattintson duplán a modulra, és írja be a következő megjegyzést: „Hiányzó értéket tartalmazó sorok törlése”.
 
     ![Törlés módjának beállítása „Remove entire row” (Teljes sor eltávolítása) lehetőségre a „Clean Missing Data” (Hiányzó adatok törlése) modulnál](./media/create-experiment/set-remove-entire-row.png)
 
@@ -126,15 +126,15 @@ Először is hozzáadunk egy modult, amely teljesen eltávolítja a **normalizá
 > [!TIP]
 > Miért futtattuk a kísérletet most? A kísérlet futtatásával biztosítható, hogy az adatokhoz tartozó oszlopdefiníciók az adatkészletből áthaladnak a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulon és a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulon. Ez azt jelenti, hogy a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulhoz kapcsolt modulok is megkapják ugyanezeket az adatokat.
 
-Most már tiszta adatok. Ha szeretné megtekinteni a megtisztított adathalmazt, kattintson a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modul bal oldali kimeneti portjára, és válassza a **Visualize** (Képi megjelenítés) lehetőséget. Láthatja, hogy a **normalized-losses** oszlop eltűnt, ahogy a hiányzó értékek is.
+Most már tiszta adattal rendelkezünk. Ha szeretné megtekinteni a megtisztított adathalmazt, kattintson a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modul bal oldali kimeneti portjára, és válassza a **Visualize** (Képi megjelenítés) lehetőséget. Láthatja, hogy a **normalized-losses** oszlop eltűnt, ahogy a hiányzó értékek is.
 
 Most, hogy megtisztítottuk az adatokat, megadhatjuk, hogy mely jellemzőket szeretnénk felhasználni a prediktív modellben.
 
-## <a name="define-features"></a>Szolgáltatások definiálása
+## <a name="define-features"></a>Funkciók definiálása
 
-A gépi tanulásban *a funkciók* az Önt érdeklő dolgok egyéni mérhető tulajdonságai. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák.
+A gépi tanulásban a *funkciók* a érdeklik egyes, mérhető tulajdonságai. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák.
 
-A prediktív modellben használandó jellemzők helyes megválasztásához fontos a kísérletezés, illetve a megoldani kívánt probléma jó ismerete. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Egyes funkciók szoros korrelációt mutatnak más funkciókkal, és eltávolíthatók. A példánkban például szorosan összefügg a city-mpg (fogyasztás városban) és highway-mpg (fogyasztás autópályán), ezért az egyiket eltávolíthatjuk anélkül, hogy lényegesen befolyásolnánk az előrejelzést.
+A prediktív modellben használandó jellemzők helyes megválasztásához fontos a kísérletezés, illetve a megoldani kívánt probléma jó ismerete. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Egyes funkciók erős korrelációt mutatnak más funkciókkal, és eltávolíthatók. A példánkban például szorosan összefügg a city-mpg (fogyasztás városban) és highway-mpg (fogyasztás autópályán), ezért az egyiket eltávolíthatjuk anélkül, hogy lényegesen befolyásolnánk az előrejelzést.
 
 Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott részhalmaza alapján. Később visszatérhet ehhez a lépéshez, és más jellemzőket kiválasztva ismét lefuttathatja a kísérletet, ha kíváncsi rá, hogy úgy jobb eredményeket kap-e. Kezdésként azonban a következő funkciókat próbáljuk ki:
 
@@ -150,13 +150,13 @@ Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott r�
 
 1. Kattintson a **With rules** (Szabályokkal) lehetőségre.
 
-1. A **Begin With** (Kezdés a következővel) területen kattintson a **No columns** (Egyetlen oszlop sem) lehetőségre. A szűrősorban válassza ki az **Include** (Belefoglalás) és a **column names** (oszlopnevek) lehetőséget, és jelölje ki az oszlopnevek listáját a szövegmezőben. Ez a szűrő arra utasítja a modult, hogy ne haladjon át egyetlen oszlopon (szolgáltatáson sem), kivéve az általunk megadottakat.
+1. A **Begin With** (Kezdés a következővel) területen kattintson a **No columns** (Egyetlen oszlop sem) lehetőségre. A szűrősorban válassza ki az **Include** (Belefoglalás) és a **column names** (oszlopnevek) lehetőséget, és jelölje ki az oszlopnevek listáját a szövegmezőben. Ez a szűrő arra utasítja a modult, hogy ne továbbítson semmilyen oszlopot (funkciót), kivéve a megadott beállításokat.
 
 1. Kattintson a pipa (OK) gombra.
 
     ![Az előrejelzésbe bevonni kívánt oszlopok (tulajdonságok) kijelölése](./media/create-experiment/select-columns-to-include.png)
 
-Ez a modul egy szűrt adatkészletet hoz létre, amely csak azokat a funkciókat tartalmazza, amelyeket át szeretnénk adni a következő lépésben használt tanulási algoritmusnak. Később visszatérhet ide, és más jellemzőkkel is elvégezheti az előrejelzést.
+Ez a modul olyan szűrt adatkészletet hoz létre, amely csak azokat a funkciókat tartalmazza, amelyeket a következő lépésben fogunk használni. Később visszatérhet ide, és más jellemzőkkel is elvégezheti az előrejelzést.
 
 ## <a name="choose-and-apply-an-algorithm"></a>Algoritmus kiválasztása és alkalmazása
 
@@ -189,7 +189,7 @@ Az adatok a modell betanítására és tesztelésére is használhatók. Ehhez k
 
     ![A „Train Model” (Modell betanítása) modul összekötése a „Linear Regression” (Lineáris regresszió) és a „Split Data” (Adatok felosztása) modulokkal](./media/create-experiment/connect-train-model.png)
 
-1. Kattintson a [Train Model][train-model] (Modell betanítása) modulra, kattintson a **Properties** (Tulajdonságok) panel **Launch column selector** (Oszlopválasztó indítása) elemére, és válassza ki a **price** (ár) oszlopot. **Az ár** az az érték, amit a modellünk meg jósol.
+1. Kattintson a [Train Model][train-model] (Modell betanítása) modulra, kattintson a **Properties** (Tulajdonságok) panel **Launch column selector** (Oszlopválasztó indítása) elemére, és válassza ki a **price** (ár) oszlopot. Az **Ár** az az érték, amelyet a modellünk előre fog jelezni.
 
     Jelölje ki a **price** (ár) oszlopot az oszlopválasztóban. Ehhez helyezze át az **Available columns** (Elérhető oszlopok) listáról a **Selected columns** (Kiválasztott oszlopok) listára.
 
@@ -201,7 +201,7 @@ Ezzel kapunk egy betanított regressziós modellt, amely képes pontszámot rend
 
 ![A kísérlet várható megjelenése a futtatás után](./media/create-experiment/second-experiment-run.png)
 
-## <a name="predict-new-automobile-prices"></a>Új autóárak előrejelzése
+## <a name="predict-new-automobile-prices"></a>Új személygépkocsik árának előrejelzése
 
 Most, hogy adataink 75 százalékával betanítottuk a modellt, a maradék 25 százalék pontozásával megállapíthatjuk, hogy mennyire működik jól.
 
@@ -209,7 +209,7 @@ Most, hogy adataink 75 százalékával betanítottuk a modellt, a maradék 25 sz
 
     ![A „Score Model” (Modell pontozása) modul összekötése a „Train Model” (Modell betanítása) és a „Split Data” (Adatok felosztása) modulokkal](./media/create-experiment/connect-score-model.png)
 
-1. Futtassa a kísérletet, és tekintse meg a [kimenetet][score-model] a Score Model modulból a [Score Model][score-model] kimeneti portjára kattintva, és válassza a **Visualize**lehetőséget. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
+1. Futtassa a kísérletet, és tekintse meg a [pontszám modell][score-model] modul kimenetét úgy, hogy a [pontszám modell][score-model] kimeneti portjára kattint, **és kiválasztja a**vizualizáció lehetőséget. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
 
     ![A „Score Model” (Modell pontozása) modul kimenete](./media/create-experiment/score-model-output.png)
 
@@ -239,10 +239,10 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy egyszerű kísérletet egy minta adatkészlet használatával. A modell létrehozásának és üzembe helyezésének mélyebb megismeréséhez folytassa a prediktív megoldásoktató imázsát.
+Ebben a rövid útmutatóban létrehozott egy egyszerű kísérletet egy minta adatkészlet használatával. Ha szeretné megvizsgálni, hogyan hozhat létre és helyezhet üzembe egy modellt részletesebben, folytassa a prediktív megoldás oktatóanyagával.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Prediktív megoldás kidolgozása a Studio-ban (klasszikus)](tutorial-part1-credit-risk.md)
+> [Oktatóanyag: prediktív megoldás fejlesztése a Studióban (klasszikus)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

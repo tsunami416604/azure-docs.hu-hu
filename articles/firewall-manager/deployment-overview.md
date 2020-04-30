@@ -1,6 +1,6 @@
 ---
-title: Az Azure Firewall Manager előzetes telepítése – áttekintés
-description: Ismerje meg az Azure Firewall Manager előzetes verziójához szükséges magas szintű telepítési lépéseket
+title: Azure Firewall Manager előzetes verziójának üzembe helyezése – áttekintés
+description: A Azure Firewall Manager előzetes verziójához szükséges magas szintű telepítési lépések ismertetése
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,66 +8,66 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77443125"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Az Azure Firewall Manager előzetes telepítése – áttekintés
+# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager előzetes verziójának üzembe helyezése – áttekintés
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Az Azure Firewall Manager előzetes verziójának üzembe helyezésére több módon is telepíthetők, de a következő általános folyamat ajánlott.
+Azure Firewall Manager előzetes verzióját több módon is üzembe helyezheti, de a következő általános folyamat ajánlott.
 
 ## <a name="general-deployment-process"></a>Az üzembe helyezés általános folyamata
 
-### <a name="hub-virtual-networks"></a>Virtuális központi hálózatok
+### <a name="hub-virtual-networks"></a>Hub virtuális hálózatok
 
-1.  Tűzfalházirend létrehozása
+1.  Tűzfalszabály létrehozása
 
     - Új szabályzat létrehozása
-<br>*Vagy*<br>
-    - Alapházirend levezetni és testre szabni a helyi házirendet
-<br>*Vagy*<br>
-    - Szabályok importálása egy meglévő Azure-tűzfalról. Győződjön meg arról, hogy eltávolítja a NAT-szabályokat a több tűzfalon alkalmazandó házirendekből
-1. A hub és a küllős architektúra létrehozása
-   - Hub virtuális hálózat létrehozása az Azure Firewall Manager és a társküllővirtuális hálózatok használatával a virtuális hálózati társviszony-létesítés használatával
-<br>*Vagy*<br>
-    - Hozzon létre egy virtuális hálózatot, és adjon hozzá virtuális hálózati kapcsolatokat és társküllős virtuális hálózatokat a virtuális hálózati társviszony-létesítés használatával
+<br>*vagy*<br>
+    - Alapszintű házirend származtatása és helyi házirend testreszabása
+<br>*vagy*<br>
+    - Szabályok importálása meglévő Azure Firewallból. Győződjön meg arról, hogy eltávolítja a NAT-szabályokat a több tűzfalon alkalmazni kívánt házirendekről
+1. A hub és a küllő architektúra létrehozása
+   - Központi Virtual Network létrehozása a Azure Firewall Manager és a társ-küllős virtuális hálózatok használatával a virtuális hálózati kapcsolatok használatával
+<br>*vagy*<br>
+    - Virtuális hálózat létrehozása és virtuális hálózati kapcsolatok és társ-küllős virtuális hálózatok hozzáadása virtuális hálózati kapcsolaton keresztül
 
-3. Válassza ki a biztonsági szolgáltatókat, és társítsa a tűzfalházirendet. Jelenleg csak az Azure Firewall támogatott szolgáltató.
+3. Válassza a biztonsági szolgáltatók lehetőséget, és rendeljen hozzá tűzfal-házirendet. Jelenleg csak Azure Firewall támogatott szolgáltató.
 
-   - Ez akkor történik meg, amikor hub virtuális hálózatot hoz létre
-<br>*Vagy*<br>
-    - Meglévő virtuális hálózat átalakítása központi virtuális hálózattá. Az is lehetséges, hogy konvertálni több virtuális hálózatok.
+   - Ez egy központi Virtual Network létrehozásakor történik.
+<br>*vagy*<br>
+    - Meglévő virtuális hálózat konvertálása központi Virtual Networkra. Több virtuális hálózat is konvertálható.
 
-4. A Felhasználói definiálási útvonalak konfigurálása a forgalom nak a központi virtuális hálózati tűzfalra való irányításához.
+4. Konfigurálja a felhasználói útvonalakat úgy, hogy átirányítsa a forgalmat a hubhoz Virtual Network tűzfalon.
 
 
-### <a name="secured-virtual-hubs"></a>Biztonságos virtuális elosztók
+### <a name="secured-virtual-hubs"></a>Biztonságos virtuális hubok
 
-1. A hub és a küllős architektúra létrehozása
+1. A hub és a küllő architektúra létrehozása
 
-   - Hozzon létre egy biztonságos virtuális központot az Azure Firewall Manager használatával, és adjon hozzá virtuális hálózati kapcsolatokat.<br>*Vagy*<br>
-   - Hozzon létre egy Virtuális WAN Hubot, és adjon hozzá virtuális hálózati kapcsolatokat.
+   - Hozzon létre egy biztonságos virtuális hubot a Azure Firewall Managerrel, és adja hozzá a virtuális hálózati kapcsolatokat.<br>*vagy*<br>
+   - Hozzon létre egy virtuális WAN-hubot, és vegyen fel virtuális hálózati kapcsolatokat.
 2. Biztonsági szolgáltatók kiválasztása
 
-   - Biztonságos virtuális elosztó létrehozása közben végzett.<br>*Vagy*<br>
-   - Meglévő virtuális WAN-elosztó átalakítása biztonságos virtuális központtá.
-3. Tűzfalházirend létrehozása és társítása a központtal
+   - Biztonságos virtuális központ létrehozásakor történt.<br>*vagy*<br>
+   - Meglévő virtuális WAN-központ konvertálása a virtuális központ biztonságossá tételéhez.
+3. Tűzfalszabály létrehozása és hozzárendelése a hubhoz
 
-   - Csak akkor alkalmazható, ha az Azure Firewall használatával.
-   - A külső biztonsági szolgáltatások (SECaaS) házirendek a partnerek felügyeleti élményén keresztül konfigurálva vannak.
-4. Útvonalbeállítások konfigurálása a forgalom nak a biztonságos hubra való irányításához
+   - Csak Azure Firewall használata esetén alkalmazható.
+   - A harmadik féltől származó biztonsági szolgáltatások (SECaaS) házirendjei a partnerek felügyeleti felületén keresztül konfigurálhatók.
+4. Útvonal-beállítások konfigurálása a forgalom biztonságos hubhoz való irányításához
 
-   - A biztonságos elosztóra irányíthatja a forgalmat a felhasználó által definiált útvonalak (UDR) nélküli szűréshez és naplózáshoz a küllős virtuális hálózatokon a Biztonságos virtuális központ útvonalbeállítási lapján.
+   - A biztonságos hub útvonal-beállítási lapján könnyedén irányíthatja a forgalmat a biztonságos hubhoz a felhasználó által megadott útvonalak (UDR) nélküli szűréshez és naplózáshoz a küllős virtuális hálózatokon.
 
 > [!NOTE]
-> - Nem rendelkezhet egynél több hub/virtual wan régiónként. De a régióban több virtuális WAN-t is hozzáadhat ennek eléréséhez.
-> - A vWAN hubjaihoz nem lehetnek egymást átfedő IP-tárolóhelyek.
-> - A központi virtuális hálózat kapcsolatainak ugyanabban a régióban kell lenniük, mint a hubnak.
+> - Régiónként legfeljebb egy hub virtuális WAN-t használhat. Ennek eléréséhez azonban több virtuális WAN-t is hozzáadhat a régióhoz.
+> - A vWAN lévő hubok esetében nem lehet átfedésben lévő IP-szóközök.
+> - A hub-VNet kapcsolatainak ugyanabban a régióban kell lenniük, mint a hub-nak.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: A felhőhálózat biztonságossá tétele az Azure Firewall Manager előzetes verziójával az Azure Portal használatával](secure-cloud-network.md)
+- [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával](secure-cloud-network.md)

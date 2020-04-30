@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató:Nyilvános terheléselosztó létrehozása – Azure CLI
+title: 'Rövid útmutató: nyilvános Load Balancer létrehozása – Azure CLI'
 titleSuffix: Azure Load Balancer
 description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
 services: load-balancer
@@ -18,15 +18,15 @@ ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79477765"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Hozzon létre egy standard terheléselosztót a terheléselosztási virtuális gépek hez az Azure CLI használatával
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: standard Load Balancer létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre nyilvános terheléselosztót. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
+Ez a rövid útmutató bemutatja, hogyan hozható létre nyilvános Load Balancer. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -46,24 +46,24 @@ A következő példában létrehozunk egy *myResourceGroupSLB* nevű erőforrás
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Használja [az hálózati nyilvános ip create-t](https://docs.microsoft.com/cli/azure/network/public-ip) egy standard zóna redundáns nyilvános IP-cím létrehozásához, *amelyet myPublicIP-nek* neveznek a *myResourceGroupSLB-ben.*
+A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) paranccsal hozzon létre egy, a *myPublicIP* nevű standard zóna redundáns nyilvános IP-címét a *myresourcegroupslb erőforráscsoportban*-ben.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-Zónaszintű nyilvános IP-cím létrehozása az 1.
+Az 1. zónában lévő, Zona nyilvános IP-cím létrehozásához használja a következőt:
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Alapszintű nyilvános IP-cím létrehozásához használható. `-SKU Basic` Az alapvető nyilvános IP-k nem kompatibilisek a **standard** terheléselosztóval. A Microsoft azt javasolja, hogy a **Standard** éles számítási feladatokhoz.
+Alapszintű nyilvános IP-cím létrehozásához használja `-SKU Basic` . Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** Load balancerrel. A Microsoft a **standard szintű** használatot javasolja a termelési munkaterhelésekhez.
 
 > [!IMPORTANT]
-> A rövid útmutató többi része feltételezi, hogy a **standard** termékváltozat a fenti termékváltozat-kiválasztási folyamat során kerül kiválasztásra.
+> A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
 
-## <a name="create-azure-load-balancer"></a>Azure load-elosztó létrehozása
+## <a name="create-azure-load-balancer"></a>Azure Load Balancer létrehozása
 
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
   - a terheléselosztón a bejövő hálózati forgalmat fogadó előtérbeli IP-címkészlet;
@@ -73,7 +73,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva. Alapszintű nyilvános IP-cím létrehozásához használható. `--sku basic` A Microsoft standard termékváltozatot javasol az éles számítási feladatokhoz.
+Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva. Alapszintű nyilvános IP-cím létrehozásához használja `--sku basic` . A Microsoft a szabványos SKU-t javasolja az éles számítási feladatokhoz.
 
 ```azurecli-interactive
   az network lb create \
@@ -86,7 +86,7 @@ Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [a
 ```
 
 > [!IMPORTANT]
-> A rövid útmutató többi része feltételezi, hogy a **standard** termékváltozat a fenti termékváltozat-kiválasztási folyamat során kerül kiválasztásra.
+> A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
 
 ### <a name="create-the-health-probe"></a>Az állapotminta létrehozása
 
@@ -202,7 +202,7 @@ Hozzon létre három hálózati adaptert az [az network nic create](/cli/azure/n
 
 Ebben a példában három virtuális gépet hoz létre, amelyeket a terheléselosztó háttérkiszolgálóiként fog használni. A terheléselosztó sikeres létrehozásának ellenőrzéséhez az NGINX-et is telepíti a virtuális gépekre.
 
-Ha alapszintű nyilvános IP-című alapszintű terheléselosztót hoz létre, létre kell hoznia egy rendelkezésre állási készletet ([az a vm availabilityset létrehozása](/cli/azure/network/nic) a virtuális gépek hozzáadásához. A standard terheléselosztók nem igénylik ezt a további lépést. A Microsoft a Standard használatát javasolja.
+Ha alapszintű nyilvános IP-címmel rendelkező Load Balancer hoz létre, létre kell hoznia egy rendelkezésre állási készletet ([az VM üzemmódú Create](/cli/azure/network/nic) paranccsal, hogy hozzáadja a virtuális gépeket a következőhöz:. A standard Load Balancer nem igényli ezt a további lépést. A Microsoft a standard használatát javasolja.
 
 ### <a name="create-three-virtual-machines"></a>Három virtuális gép létrehozása
 
@@ -311,6 +311,6 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban létrehozott egy standard terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályt, az állapotmintát, majd tesztelte a terheléselosztót. Ha többet szeretne megtudni az Azure Load Balancer-ről, folytassa az [Azure Load Balancer oktatóanyagokkal.](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+Ebben a rövid útmutatóban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [Azure Load Balancer oktatóanyagokkal](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-További információ a [terheléselosztóról és a rendelkezésre állási zónákról.](load-balancer-standard-availability-zones.md)
+További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).

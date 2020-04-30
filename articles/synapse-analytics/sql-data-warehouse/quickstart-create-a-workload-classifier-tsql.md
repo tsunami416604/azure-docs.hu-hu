@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy számítási feladatok osztályozó - T-SQL'
-description: A T-SQL segítségével hozzon létre egy nagy fontosságú számítási feladatok osztályozót.
+title: 'Gyors útmutató: számítási feladatok besorolása – T-SQL'
+description: A T-SQL használatával hozzon létre egy nagy fontosságú számítási feladatokat.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80633753"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rövid útmutató: Hozzon létre egy számítási feladatok osztályozó t-SQL használatával
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: számítási feladatok besorolásának létrehozása T-SQL használatával
 
-Ebben a rövid útmutatóban gyorsan létrehozhat egy munkaterhelés-osztályozót, amely nagy jelentőséggel bír a szervezet vezérigazgatója számára. Ez a munkaterhelés-osztályozó lehetővé teszi, hogy a vezérigazgatói lekérdezések elsőbbséget élvezzenek más, a várólistában alacsonyabb fontossággal rendelkező lekérdezésekkel szemben.
+Ebben a rövid útmutatóban gyorsan létre fog hozni egy számítási feladatokat, amely nagy fontossággal bír a szervezet VEZÉRIGAZGATÓJA számára. Ez a számítási feladatok besorolása lehetővé teszi, hogy az adatkezelési lekérdezések elsőbbséget élvezzenek más lekérdezésekkel szemben, amelyek kisebb jelentőséggel bírnak a várólistá
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!NOTE]
-> A Synapse SQL-készletpéldány létrehozása az Azure Synapse Analytics-ben egy új számlázható szolgáltatást eredményezhet.  További információ: [Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Ha egy szinapszis SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató feltételezi, hogy már rendelkezik SQL Data Warehouse-val, és rendelkezik CONTROL DATABASE engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehouse, és rendelkezik az adatbázis-VEZÉRLÉSi engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-login-for-theceo"></a>Bejelentkezés létrehozása a TheCEO számára
+## <a name="create-login-for-theceo"></a>TheCEO-beli bejelentkezés létrehozása
 
-Sql Server hitelesítési bejelentkezés `master` létrehozása az adatbázisban create [login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával a "TheCEO" számára.
+Hozzon létre egy SQL Server hitelesítési bejelentkezést az adatbázisban az `master` "TheCEO" [létrehozási bejelentkezés](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Felhasználó létrehozása
 
-[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "TheCEO", a mySampleDataWarehouse alkalmazásban
+[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)"TheCEO", mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -61,9 +61,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Számítási feladatok osztályozójának létrehozása
+## <a name="create-a-workload-classifier"></a>Számítási feladatok besorolásának létrehozása
 
-Hozzon létre egy nagy fontos [ságú "TheCEO" munkaterhelés-osztályozót.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Nagy fontossággal hozza létre a "TheCEO" számítási [feladatok besorolását](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -87,27 +87,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-Az adattárház-egységekért és az adatraktárban tárolt adatokért díjat számítunk fel. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás szüneteltetésével csak az adattárolásért kell fizetnie. Ha készen áll az adatokkal való munkára, folytassa a számítást.
+- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
 
-Az erőforrások karbantartásához kövesse az alábbi lépéseket.
+Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)válassza ki az adatraktárban.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **Szünet** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához válassza a **Start gombot.**
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 
-3. Ha el szeretné távolítani az adatraktárt, hogy ne számítson fel díjat a számításért vagy a tárolásért, válassza a **Törlés**lehetőséget.
+3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés**lehetőséget.
 
-4. A létrehozott SQL-kiszolgáló eltávolításához jelölje **be mynewserver-20180430.database.windows.net** az előző képen, majd kattintson a **Törlés gombra.**  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
-5. Az erőforráscsoport eltávolításához válassza a **MyResourceGroup**lehetőséget, majd az **Erőforráscsoport törlése**lehetőséget.
+5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-- Most létrehozott egy számítási feladatok osztályozóját. Futtasson néhány lekérdezést theceo néven, hogy lássa, hogyan teljesítenek. A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című témakört.
-- A Synapse SQL-munkaterhelés-kezeléséről további információt a [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [a számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
-- Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+- Ezzel létrehozta a számítási feladatok besorolását. Futtasson néhány lekérdezést a TheCEO, hogy láthassa, hogyan végzik el. A lekérdezések és a hozzárendelt fontosság megtekintéséhez lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+- További információ a szinapszis SQL-alapú számítási feladatok kezeléséről: a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md) és a számítási [feladatok besorolása](sql-data-warehouse-workload-classification.md).
+- Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

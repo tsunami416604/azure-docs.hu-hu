@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Az Azure Analysis Services kiszolgáló tűzfalának konfigurálása | Microsoft dokumentumok
-description: Ez a rövid útmutató segít konfigurálni egy tűzfalat egy Azure Analysis Services-kiszolgáló az Azure Portal használatával.
+title: Rövid útmutató – Azure Analysis Services kiszolgáló tűzfalának konfigurálása | Microsoft Docs
+description: Ez a rövid útmutató segítséget nyújt a tűzfal konfigurálásához Azure Analysis Services-kiszolgálóhoz a Azure Portal használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79205157"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
@@ -22,7 +22,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 - Analysis Services-kiszolgáló az előfizetésben. További tudnivalókért lásd: [Rövid útmutató: Kiszolgáló létrehozása – Portál](analysis-services-create-server.md) vagy [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
 - Egy vagy több IP-címtartomány ügyfélszámítógépekhez (ha szükséges).
-- Egyes forgatókönyvek, ahol a Power BI Premium csatlakozik az Azure Analysis Services, beleértve az adatok importálása (frissítés) és a lapszámozott jelentések, jelenleg nem támogatott akkor is, ha a hozzáférés engedélyezése a Power BI engedélyezve van. A Live Connect Power BI Premium szolgáltatásból való használatának gyakoribb forgatókönyve támogatott. Minden Power BI Pro-forgatókönyv támogatott.
+- Előfordulhat, hogy a Power BI Premium Azure Analysis Serviceshoz, például az adatimportáláshoz (frissítéshez) és a többoldalas jelentésekhez való kapcsolódáskor jelenleg nem támogatottak, még akkor is, ha engedélyezve van a hozzáférés engedélyezése a Power BI. A Power BI Premium élő kapcsolat használatának leggyakoribb forgatókönyve támogatott. Az összes Power BI Pro-forgatókönyv támogatott.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
@@ -32,10 +32,10 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 ## <a name="configure-a-firewall"></a>Tűzfal konfigurálása
 
 1. Kattintson a kiszolgálóra az Áttekintés oldal megnyitásához. 
-2. A **BEÁLLÍTÁSOK** > **tűzfala** > **tűzfal engedélyezése**párbeszédpanelen kattintson a Be **gombra.**
+2. A **Beállítások** > **tűzfalon** > **engedélyezze a tűzfalat**, kattintson **a be**gombra.
 3. A DirectQuery-hozzáférés a Power BI szolgáltatásból történő engedélyezéséhez a **Hozzáférés engedélyezése Power BI-ból** területen kattintson a **Be** lehetőségre.  
-4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály neve legfeljebb 128 karakter lehet, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhat. A szóközök és más speciális karakterek nem engedélyezettek.
-5. Kattintson a **Mentés** gombra.
+4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály nevét 128 karakterre kell korlátozni, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhatnak. Szóközök és egyéb speciális karakterek használata nem engedélyezett.
+5. Kattintson a **Save** (Mentés) gombra.
 
      ![Tűzfalbeállítások](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 

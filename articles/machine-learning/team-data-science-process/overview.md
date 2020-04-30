@@ -1,6 +1,6 @@
 ---
-title: Mi a csapat adatelemzési folyamata?
-description: Adatelemzési módszertant biztosít a prediktív elemzési megoldások és az intelligens alkalmazások biztosításához.
+title: Mi a csoportos adatelemzési folyamat?
+description: Adatelemzési módszert biztosít a prediktív elemzési megoldások és intelligens alkalmazások továbbításához.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,96 +12,96 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79088079"
 ---
-# <a name="what-is-the-team-data-science-process"></a>Mi a csapat adatelemzési folyamata?
+# <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
-A Team Data Science Process (TDSP) egy agilis, iteratív adatelemzési módszertan a prediktív elemzési megoldások és az intelligens alkalmazások hatékony biztosítása érdekében. A TDSP segít a csapategyüttműködés és a tanulás javításában azáltal, hogy javasolja a csapatszerepek legjobb együttműködését. A TDSP a Microsoft és más iparági vezetők bevált gyakorlatait és struktúráit tartalmazza az adatelemzési kezdeményezések sikeres megvalósításának elősegítésére. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.
+A csoportos adatelemzési folyamat (TDSP) egy agilis, ismétlődő adatelemzési módszer, amely hatékony prediktív elemzési megoldások és intelligens alkalmazások gyors megvalósítása érdekében. A TDSP segít a csapatmunka és a tanulás fejlesztésében azzal, hogy a csapat szerepkörei hogyan működnek együtt a legjobban. A TDSP a Microsoft és más iparági vezetők által ajánlott eljárásokat és struktúrákat tartalmaz, amelyek segítenek az adatelemzési kezdeményezések sikeres megvalósításában. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.
 
-Ez a cikk áttekintést nyújt a TDSP-ről és fő összetevőiről. Adunk egy általános leírást a folyamat itt, hogy lehet végrehajtani a különböző eszközök. A folyamat életciklusában részt vevő projektfeladatok és szerepkörök részletesebb leírása további kapcsolódó témakörökben található. A TDSP-nek a Csapatainkban való megvalósításához használt Microsoft-eszközök és infrastruktúra egy adott készletének használatával történő megvalósításához is útmutatást nyújtunk.
+Ez a cikk áttekintést nyújt a TDSP és annak fő összetevőiről. Az itt található folyamat általános leírását biztosítjuk, amely különböző típusú eszközökkel valósítható meg. A folyamat életciklusában részt vevő projekttevékenységek és szerepkörök részletesebb leírását további csatolt témakörök tartalmazzák. A TDSP megvalósításával kapcsolatos útmutatást a Microsoft eszközeinek és infrastruktúrájának a TDSP megvalósításához használt meghatározott készletével is meg kell adni.
 
-## <a name="key-components-of-the-tdsp"></a>A TDSP fő összetevői
+## <a name="key-components-of-the-tdsp"></a>A TDSP legfontosabb összetevői
 
-A TDSP a következő kulcsfontosságú összetevőkből áll:
+A TDSP a következő fő összetevőkből áll:
 
-- **Adatelemzési életciklus-definíció**
-- **Szabványosított projektstruktúra**
-- **Infrastruktúra és erőforrások** adatelemzési projektekhez
-- **Eszközök és segédprogramok** a projekt végrehajtásához
+- **Adatelemzési életciklus** definíciója
+- **Szabványosított projekt szerkezete**
+- Az adatelemzési projektek **infrastruktúrája és erőforrásai**
+- A projekt végrehajtásához szükséges **eszközök és segédprogramok**
 
 
 ## <a name="data-science-lifecycle"></a>Adatelemzési életciklus
 
-A csapatadat-elemzési folyamat (TDSP) egy életciklust biztosít az adatelemzési projektek fejlesztésének strukturálásához. Az életciklus ismerteti a sikeres projektek által követett összes lépést.
+A csoportos adatelemzési folyamat (TDSP) életciklust biztosít az adatelemzési projektek fejlesztésének struktúrájához. Az életciklus a sikeres projektek követésének teljes lépéseit ismerteti.
 
-Ha egy másik adatelemzési életciklust használ, például [a CRISP-DM,](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) [a KDD](https://wikipedia.org/wiki/Data_mining#Process) vagy a szervezet saját egyéni folyamatát, továbbra is használhatja a feladatalapú TDSP-t a fejlesztési életciklusok összefüggésében. Magas szinten ezek a különböző módszerek sok közös vonást jelentenek. 
+Ha más adatelemzési életciklust használ, például a [ropogós DM-](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)t, a [KDD](https://wikipedia.org/wiki/Data_mining#Process) -t vagy a szervezet saját egyéni folyamatát, akkor továbbra is használhatja a feladat-alapú TDSP a fejlesztési életciklusok kontextusában. Ezek a különböző módszertanok nagy mértékben közösek. 
 
-Ezt az életciklust olyan adatelemzési projektekhez tervezték, amelyek intelligens alkalmazások részeként szállítanak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia modelleket telepítenek a prediktív elemzéshez. Feltáró adatelemzési projektek vagy rögtönzött elemzési projektek is részesülhetnek ezzel a folyamattal. De ilyen esetekben előfordulhat, hogy a leírt lépések némelyikére nincs szükség.    
+Ez az életciklus olyan adatelemzési projektekhez lett tervezve, amelyek intelligens alkalmazások részeként szállítanak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia-modelleket helyeznek üzembe a prediktív elemzésekhez. A feltáró adatelemzési projektek vagy az improvizált elemzési projektek is hasznosak lehetnek ennek a folyamatnak a használatával. Ilyen esetekben azonban előfordulhat, hogy az ismertetett lépések némelyike nem szükséges.    
 
-Az életciklus felvázolja azokat a főbb szakaszokat, amelyeket a projektek általában végrehajtanak, gyakran ismétlődően:
+Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
 
-* **Üzleti megértés**
-* **Adatgyűjtés és -megértés**
+* **Üzleti ismeretek**
+* **Adatgyűjtés és-megértés**
 * **Modellezés**
-* **Környezet**
-* **Vevő immár a bő**
+* **Üzembe helyezés**
+* **Ügyfél-elfogadás**
 
-Itt látható a **csapatadat-elemzési folyamat életciklusának**vizuális ábrázolása. 
+Itt látható a **csoportos adatelemzési folyamat életciklusának**vizuális ábrázolása. 
 
-![TDSP-életciklus2](./media/overview/tdsp-lifecycle2.png) 
+![TDSP – Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
 
-A TDSP életciklusának egyes fázisaihoz tartozó célokat, feladatokat és dokumentációs összetevőket a [Csapatadat-feldolgozás](lifecycle.md) életciklus-témakörismerteti. Ezek a tevékenységek és összetevők projektszerepkörökhöz vannak társítva:
+A TDSP-életciklus egyes szakaszaihoz tartozó célok, feladatok és dokumentációs összetevők leírása a [csoportos adatelemzési folyamat életciklusa](lifecycle.md) című témakörben található. Ezek a feladatok és összetevők a projekt szerepköreihez vannak társítva:
 
-- Megoldás építész
+- Megoldás-építész
 - Projektvezető
 - Adatelemző
 - Projektvezető 
 
-Az alábbi ábra a szerepkörök (a függőleges tengelyen) életciklusának egyes szakaszaihoz (a vízszintes tengelyen) társított feladatok (kék színnel) és (zöld színnel) rácsnézetét tartalmazza. 
+Az alábbi ábrán láthatók a (kék) és az összetevők (a vízszintes tengelyen) (a függőleges tengelyen) az életciklus egyes szakaszaihoz tartozó tevékenységek (kék színnel). 
 
-[![TDSP-szerepkörök és feladatok](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP – szerepkörök és feladatok](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
-## <a name="standardized-project-structure"></a>Szabványos projektstruktúra
+## <a name="standardized-project-structure"></a>Szabványosított projekt szerkezete
 
-Ha az összes projekt megoszt egy könyvtárstruktúrát, és sablonokat használ a projektdokumentumokhoz, a csapattagok könnyen megtalálhatják a projektjeikkel kapcsolatos információkat. Minden kód és dokumentum egy verzió-ellenőrző rendszerben (VCS) (GIT, TFS vagy Subversion) tárolódik a csoportegyüttműködés lehetővé tétele érdekében. A feladatok és funkciók nyomon követése egy agilis projektkövető rendszerben, például a Jira, a Rally és az Azure DevOps lehetővé teszi az egyes funkciók kódjának szorosabb nyomon követését. Az ilyen nyomon követés lehetővé teszi a csapatok számára, hogy jobb költségbecsléseket kapjanak. A TDSP azt javasolja, hogy hozzon létre egy külön adattárat a VCS-en lévő minden projekthez a verziószámozás, az információbiztonság és az együttműködés érdekében. Az összes projekt szabványosított struktúrája segít az intézményi ismeretek szervezeten belüli kiépítésében.
+Ha minden projekt megoszt egy címtár-struktúrát, és a Project-dokumentumokhoz sablonokat használ, a csapattagok számára megkönnyíti a projektekkel kapcsolatos információk megtalálását. Minden kód és dokumentum egy verziókövető rendszer (VCS), például a git, a TFS vagy a Subversion használatával van tárolva a csapat együttműködésének engedélyezéséhez. A feladatok és funkciók nyomon követése egy agilis projekt-követési rendszeren, például a JIRA, a rally és az Azure DevOps segítségével az egyes funkciókhoz tartozó kódok szorosabb nyomon követését teszik lehetővé. Az ilyen nyomon követés lehetővé teszi a csapatok számára a jobb költségbecslés megszerzését is. A TDSP javasolja, hogy külön tárházat hozzon létre a VCS minden projekthez a verziószámozás, az információbiztonság és az együttműködés érdekében. Az összes projekt szabványosított szerkezete segíti a szervezeten belüli intézményi ismeretek kiépítését.
 
-Sablonokat biztosítunk a mappaszerkezethez és a szükséges dokumentumokhoz a szabványos helyeken. Ez a mappastruktúra rendezi az adatok feltárásához és szolgáltatáskinyeréséhez kódot tartalmazó fájlokat, valamint a rekordmodell-ismétléseket. Ezek a sablonok megkönnyítik a csapattagok számára, hogy megértsék a mások által végzett munkát, és új tagokat vegyenek fel a csapatokba. A dokumentumsablonok at markdown formátumban tekintheti meg és frissítheti. A sablonok segítségével az egyes projektekhez kapcsolódó legfontosabb kérdéseket tartalmazó ellenőrzőlisták biztosítják, hogy a probléma jól meghatározott,és hogy a deliverable-ek megfeleljenek a várt minőségnek. Példák erre vonatkozóan:
+A mappák felépítéséhez és a szükséges dokumentumokhoz a standard szintű helyen biztosítunk sablonokat. Ez a mappastruktúrát rendszerezi az adatelemzési és-szolgáltatás-kinyerési kódot tartalmazó fájlokat, és rögzíti a modellre vonatkozó iterációkat. Ezek a sablonok megkönnyítik a csapattagok számára a mások által végzett munka megértését, és új tagok hozzáadását a csapatokhoz. A dokumentumok sablonját egyszerűen megtekintheti és frissítheti Markdown formátumban. A sablonok segítségével az egyes projektek legfontosabb kérdéseivel biztosíthatók a feladatlisták, így biztosítható, hogy a probléma megfelelően legyen meghatározva, és hogy a termékek megfeleljenek a várt minőségnek. Példák erre vonatkozóan:
 
-- a projekt alapokmánya, amely dokumentálja a projekt üzleti problémáját és
-- adatjelentéseket a nyers adatok szerkezetének és statisztikáinak dokumentálására
-- modelljelentések a származtatott funkciók dokumentálása érdekében
-- modellteljesítmény-mérőszámok, például ROC-görbék vagy MSE
+- az üzleti problémát és a projekt hatókörét dokumentáló projekt Charta
+- adatjelentések a nyers adatok szerkezetének és statisztikai adatainak dokumentálására
+- a származtatott funkciók dokumentálására szolgáló jelentések modellezése
+- modell teljesítmény-mérőszámai, például a ROC-görbék vagy az MSE
 
 
-[![TDSP-könyvtárak](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP – címtárak](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-A könyvtárstruktúra klónozható a [GitHubról.](https://github.com/Azure/Azure-TDSP-ProjectTemplate)
+A könyvtár szerkezete a [githubról](https://github.com/Azure/Azure-TDSP-ProjectTemplate)klónozott lehet.
 
-## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastruktúra és erőforrások adatelemzési projektekhez  
+## <a name="infrastructure-and-resources-for-data-science-projects"></a>Az adatelemzési projektek infrastruktúrája és erőforrásai  
 
-A TDSP javaslatokat tartalmaz a megosztott elemzési és tárolási infrastruktúra kezelésére, például:
+A TDSP ajánlásokat nyújt a megosztott elemzési és tárolási infrastruktúra kezeléséhez, például:
 
-- felhőalapú fájlrendszerek adatkészletek tárolására 
+- adatkészletek tárolására szolgáló felhőalapú fájlrendszerek 
 - adatbázisok
 - big data (Hadoop vagy Spark) fürtök 
-- gépi tanulási szolgáltatás 
+- Machine learning-szolgáltatás 
 
-Az elemzési és tárolási infrastruktúra, ahol a nyers és feldolgozott adatkészletek tárolása, lehet a felhőben vagy a helyszínen. Ez az infrastruktúra reprodukálható elemzést tesz lehetővé. Elkerüli a párhuzamosságokat is, ami következetlenséghez és szükségtelen infrastrukturális költségekhez vezethet. Eszközök állnak rendelkezésre a megosztott erőforrások kiépítéséhez, nyomon követéséhez, és lehetővé teszi, hogy minden csapattag biztonságosan csatlakozzon ezekhez az erőforrásokhoz. Az is jó gyakorlat, hogy a projekt tagjai egységes számítási környezetet hozzanak létre. A különböző csapattagok ezután replikálhatják és ellenőrizhetik a kísérleteket.
+Az elemzési és tárolási infrastruktúrát, ahol a nyers és a feldolgozott adatkészletek tárolva vannak, a felhőben vagy a helyszínen lehet. Ez az infrastruktúra lehetővé teszi a reprodukálható elemzést. Emellett elkerüli az ismétlődést, ami inkonzisztenciát és szükségtelen infrastrukturális költségeket eredményezhet. Eszközöket biztosítanak a megosztott erőforrások kiépítéséhez, nyomon követéséhez, valamint az egyes csapattagok biztonságos elérésének engedélyezéséhez. Azt is érdemes elkészíteni, hogy a projekt tagjai konzisztens számítási környezetet hozzanak létre. A csapattagok ezután képesek replikálni és érvényesíteni a kísérleteket.
 
-Íme egy példa egy csapat dolgozik több projekten, és megosztása a különböző felhőelemzési infrastruktúra-összetevők.
+Íme egy példa arra, hogy egy csapat több projekten dolgozik, és különböző felhőalapú elemzési infrastruktúra-összetevőket oszt meg.
 
-[![TDSP-infrastruktúra](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP – infrastruktúra](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
-## <a name="tools-and-utilities-for-project-execution"></a>Eszközök és segédprogramok a projekt végrehajtásához
+## <a name="tools-and-utilities-for-project-execution"></a>A projekt végrehajtásához szükséges eszközök és segédprogramok
 
-A folyamatok bevezetése a legtöbb szervezetben kihívást jelent. Az adatelemzési folyamat és életciklus megvalósításához biztosított eszközök segítenek csökkenteni az elfogadásuk akadályait, és növelni azok konzisztenciáját. A TDSP kezdeti eszközöket és parancsfájlokat biztosít a TDSP csapaton belüli bevezetéséhez. Emellett segít automatizálni néhány gyakori feladatok az adatelemzési életciklus, például az adatok feltárása és az alapmodellezés. Van egy jól meghatározott struktúra biztosított az egyének számára, hogy hozzájáruljon a megosztott eszközök és segédprogramok a csapat megosztott kód tárház. Ezeket az erőforrásokat ezután a csapaton vagy a szervezeten belül más projektek is használhatják. A TDSP azt is tervezi, hogy lehetővé teszi az eszközök és segédprogramok hozzájárulását az egész közösség számára. A TDSP segédprogramok klónozhatók a [GitHubról.](https://github.com/Azure/Azure-TDSP-Utilities)
+A legtöbb szervezet folyamatainak bevezetése kihívást jelent. Az adatelemzési folyamat és az életciklus megvalósításához biztosított eszközök csökkentik a korlátokat, és növelhetik az elfogadásuk következetességét. A TDSP az eszközök és parancsfájlok kezdeti készletét kínálja a TDSP a csapaton belüli bevezetésének megkezdéséhez. Emellett segít automatizálni az adatelemzési életciklus általános feladatait, például az adatfeltárást és a kiindulási modellezést. Egy jól definiált struktúra van megadva, hogy a felhasználók közösen használják a megosztott eszközöket és segédprogramokat a csapatuk megosztott kódjának tárházában. Ezeket az erőforrásokat ezután a csapaton vagy a szervezeten belül más projektek is kihasználhatják. A TDSP azt is tervezi, hogy lehetővé tegye az eszközök és segédprogramok teljes Közösséghez való hozzájárulását. A TDSP segédprogramok klónozása a [githubról](https://github.com/Azure/Azure-TDSP-Utilities)lehetséges.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Csapatadat-elemzési folyamat: Szerepkörök és feladatok](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Ismerteti a legfontosabb személyzeti szerepkörök és a hozzájuk kapcsolódó feladatok egy adatelemzési csapat, amely egységesíti ezt a folyamatot. 
+[Csoportos adatelemzési folyamat: szerepkörök és feladatok](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Felvázolja a kulcsfontosságú személyzeti szerepköröket és azokhoz kapcsolódó feladatait egy adatelemzési csapat számára, amely egységesíti a folyamatot. 

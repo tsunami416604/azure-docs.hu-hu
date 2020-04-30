@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
 ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76932407"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
 Az Azure DNS egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
-Az Azure DNS-t nem használhatja tartománynév vásárlására. Éves díj ellenében az [App Service-tartományok](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) vagy egy külső tartománynév-regisztráló segítségével vásárolhat tartománynevet. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információt a [Tartomány delegálása az Azure DNS-re](dns-domain-delegation.md)című témakörben talál.
+Az Azure DNS-t nem használhatja tartománynév vásárlására. Éves díj esetén [app Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) vagy külső tartománynév-regisztráló használatával vásárolhat tartománynevet. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információ: [tartomány delegálása Azure DNSra](dns-domain-delegation.md).
 
 Az Azure DNS a következő funkciókat tartalmazza.
 
@@ -37,9 +37,9 @@ Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hál
 
 További információkat a [DNS-zónák és -rekordok védelmével](dns-protect-zones-recordsets.md) kapcsolatos témakörben olvashat. 
 
-## <a name="dnssec"></a>Dnssec
+## <a name="dnssec"></a>DNSSEC
 
-Az Azure DNS jelenleg nem támogatja a DNSSEC-et. A legtöbb esetben csökkentheti a DNSSEC szükségességét a HTTPS/TLS következetes használatával az alkalmazásokban. Ha a DNSSEC a DNS-zónák kritikus követelménye, ezeket a zónákat harmadik fél DNS-szolgáltatóinál is üzemeltetheti.
+A Azure DNS jelenleg nem támogatja a DNSSEC használatát. A legtöbb esetben a HTTPS/TLS protokollnak az alkalmazásokban való konzisztens használatával csökkentheti a DNSSEC igényét. Ha a DNSSEC kritikus követelmény a DNS-zónák számára, ezeket a zónákat külső DNS-szolgáltatókkal is üzemeltetheti.
 
 ## <a name="ease-of-use"></a>Könnyű használat
 
@@ -51,15 +51,15 @@ A tartományok és a rekordok az Azure Portal, az Azure PowerShell-parancsmagok 
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Saját tartományokkal rendelkező, testreszabható virtuális hálózatok
 
-Az Azure DNS támogatja a magán DNS-tartományokat is. Ez a szolgáltatás lehetővé teszi, hogy a jelenleg elérhető, Azure által biztosított nevek helyett egyéni tartományneveket használjon a virtuális magánhálózatokon.
+A Azure DNS támogatja a magánhálózati DNS-tartományokat is. Ez a szolgáltatás lehetővé teszi, hogy a jelenleg elérhető, Azure által biztosított nevek helyett egyéni tartományneveket használjon a virtuális magánhálózatokon.
 
 További információkat az [Azure DNS privát tartományokhoz való használatát](private-dns-overview.md) ismertető cikkben olvashat.
 
 ## <a name="alias-records"></a>Aliasrekordok
 
-Az Azure DNS az aliasrekord-készletek használatát is támogatja. Egy alias rekordkészlet segítségével hivatkozhat egy Azure-erőforrás, például egy Azure nyilvános IP-cím, egy Azure Traffic Manager-profil, vagy egy Azure Content Delivery Network (CDN) végpont. Ha a mögöttes erőforrás IP-címe módosul, az aliasrekord-készlet a DNS feloldása során zökkenőmentesen frissíti magát. Az aliasrekord-készlet a szolgáltatáspéldányra mutat, a szolgáltatáspéldány pedig egy IP-címmel van társítva.
+Az Azure DNS az aliasrekord-készletek használatát is támogatja. Alias-rekorddal egy Azure-erőforrásra, például egy Azure-beli nyilvános IP-címre, egy Azure Traffic Manager-profilra vagy egy Azure Content Delivery Network (CDN) végpontra hivatkozhat. Ha a mögöttes erőforrás IP-címe módosul, az aliasrekord-készlet a DNS feloldása során zökkenőmentesen frissíti magát. Az aliasrekord-készlet a szolgáltatáspéldányra mutat, a szolgáltatáspéldány pedig egy IP-címmel van társítva.
 
-Emellett mostmár aliasrekord használatával a csúcs- vagy meztelen tartományt egy Traffic Manager-profilra vagy CDN-végpontra irányíthatja. Például: contoso.com.
+Emellett most már megadhatja a csúcspontját vagy a meztelen tartományát egy Traffic Manager profilra vagy CDN-végpontra egy alias-rekord használatával. Például: contoso.com.
 
 További információért lásd: [Az Azure DNS-aliasrekordok áttekintése](dns-alias.md).
 

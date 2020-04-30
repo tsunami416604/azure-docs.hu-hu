@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy Azure Data Factory python használatával'
+title: 'Gyors útmutató: Azure Data Factory létrehozása a Python használatával'
 description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
 services: data-factory
 documentationcenter: ''
@@ -14,37 +14,37 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 85b61e03f1545b8a0e8263b799ac7a5b347be181
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419136"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adatgyár és folyamat létrehozása python használatával
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a Python használatával
 
-> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-python.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben a rövid útmutatóban hozzon létre egy adat-előállító python használatával. Az adat-előállító ban az adatok az egyik mappából a másikba másolja az adatokat az Azure Blob storage-ban.
+Ebben a rövid útmutatóban egy adatelőállítót hoz létre a Python használatával. Az adatfeldolgozó folyamata az Azure Blob Storage egyik mappájából egy másikba másolja az adatait.
 
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatok mozgatásának és az adatok átalakításának vezénylésére és automatizálására. Az Azure Data Factory használatával adatalapú munkafolyamatokat, úgynevezett folyamatokat hozhat létre és ütemezhet.
+A Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi adatvezérelt munkafolyamatok létrehozását az adatáthelyezés és az adatátalakítások előkészítéséhez és automatizálásához. A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre és ütemezhet, folyamatok néven.
 
-A folyamatok különböző adattárakból származó adatokat tudnak betöltésre. A folyamatok olyan számítási szolgáltatások használatával dolgozzafel vagy alakítják át az adatokat, mint az Azure HDInsight Hadoop, a Spark, az Azure Data Lake Analytics és az Azure Machine Learning. A folyamatok kimeneti adatokat tesznek közzé az adattárakban, például az Azure SQL Data Warehouse üzletiintelligencia-alkalmazásokhoz (BI) alkalmazásokban.
+A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok kimeneti adatokat tesznek közzé az adattárakban, például a Azure SQL Data Warehouse for Business Intelligence (BI) alkalmazásaiban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.4+](https://www.python.org/downloads/).
+* [Python 3.4 +](https://www.python.org/downloads/).
 
-* [Egy Azure Storage-fiók.](../storage/common/storage-account-create.md)
+* [Egy Azure Storage-fiók](../storage/common/storage-account-create.md).
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (nem kötelező).
 
-* [Alkalmazás az Azure Active Directoryban.](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) Jegyezze fel a következő értékeket, amelyeket a későbbi lépésekben kell használnia: **alkalmazásazonosító**, **hitelesítési kulcs**és **bérlői azonosító.** Az alkalmazás hozzárendelése a **közreműködői** szerepkörhöz az ugyanabban a cikkben található utasítások követésével.
+* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
 
 ## <a name="create-and-upload-an-input-file"></a>Bemeneti fájl létrehozása és feltöltése
 
@@ -70,7 +70,7 @@ A folyamatok különböző adattárakból származó adatokat tudnak betöltésr
     pip install azure-mgmt-datafactory
     ```
 
-    A [Data Factory Python SDK](https://github.com/Azure/azure-sdk-for-python) támogatja a Python 2.7, 3.3, 3.4, 3.5, 3.6 és 3.7.
+    A [PYTHON SDK for Data Factory](https://github.com/Azure/azure-sdk-for-python) támogatja a Python 2,7, 3,3, 3,4, 3,5, 3,6 és 3,7.
 
 ## <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
 

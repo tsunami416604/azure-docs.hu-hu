@@ -1,6 +1,6 @@
 ---
-title: Szimulált X.509-es eszköz kiépítése az Azure IoT Hubba a Node.js használatával
-description: Szimulált X.509-es eszközt hozhat létre és létesíthet a Node.js eszköz SDK-val az Azure IoT Hub-eszközkiépítési szolgáltatáshoz (DPS). Ez a rövid útmutató az egyéni regisztrációkat használja.
+title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub Node. js használatával
+description: Szimulált X. 509 eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service (DPS) Node. js eszközoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -10,24 +10,24 @@ services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
 ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77605400"
 ---
-# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: X.509 szimulált eszköz létrehozása és kiépítése a Node.js eszköz SDK-j használatával az IoT Hub-eszközkiépítési szolgáltatáshoz
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: X. 509 szimulált eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Node. js eszközoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Ebben a rövid útmutatóban egy szimulált X.509-es eszközt hoz létre Windows rendszerű számítógépen. Az eszközminta Node.js kód segítségével csatlakoztassa ezt a szimulált eszközt az IoT hub segítségével egyéni regisztráció az eszközkiépítési szolgáltatás (DPS).
+Ebben a rövid útmutatóban egy szimulált X. 509 eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszköz és az IoT hub között az eszköz kiépítési szolgáltatásával (DPS) való egyéni regisztráció használatával csatlakoztathatja az eszköz minta Node. js-kódját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [automatikus kiépítés fogalmainak áttekintése](concepts-auto-provisioning.md).
-- Az [IoT Hub-eszközkiépítési szolgáltatás beállítása az Azure Portalon.](./quick-setup-auto-provision.md)
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Node.js v4.0+](https://nodejs.org).
+- Az [automatikus kiépítési fogalmak](concepts-auto-provisioning.md)áttekintése.
+- [A IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Node. js v 4.0 +](https://nodejs.org).
 - [Git](https://git-scm.com/download/).
 - [OpenSSL](https://www.openssl.org/).
 
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban egy szimulált X.509-es eszközt hoz létre Windows
 
 2. Győződjön meg arról, hogy a [Node.js 4.0-s vagy újabb verziója](https://nodejs.org) telepítve van a gépén.
 
-3. Győződjön meg arról, hogy a [Git](https://git-scm.com/download/) telepítve van a számítógépen, és hozzá van adva a parancsablak számára elérhető környezeti változókhoz. 
+3. Győződjön meg arról, hogy a [git](https://git-scm.com/download/) telepítve van a gépen, és hozzá van adva a parancsablakban elérhető környezeti változókhoz. 
 
 4. Győződjön meg arról, hogy az [OpenSSL](https://www.openssl.org/) telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. Ez a kódtár létrehozható és telepíthető valamilyen forrásból, vagy letölthető és telepíthető [külső féltől](https://wiki.openssl.org/index.php/Binaries), például [innen](https://sourceforge.net/projects/openssl/). 
 
@@ -59,9 +59,9 @@ Az [Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node.git) 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
 - [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk:](concepts-service.md#individual-enrollment)Egyetlen eszköz regisztrálására használható.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
 
-Ez a cikk bemutatja az egyes regisztrációk.
+Ez a cikk az egyéni regisztrációkat mutatja be.
 
 1. Nyisson meg egy parancssort. Klónozza a GitHub-adattárat a kódmintákhoz:
     
@@ -82,28 +82,28 @@ Ez a cikk bemutatja az egyes regisztrációk.
     node create_test_cert.js device {certificate-name}
     ```
 
-4. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)válassza a bal oldali menü **Minden erőforrás** gombját, és nyissa meg az Eszközkiépítési szolgáltatás példányát.
+4. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza a bal oldali menüben az **összes erőforrás** gombot, és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
-5. Az Eszközkiépítési szolgáltatás menüben válassza **a Regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** lapot, és felül válassza az **Egyéni beléptetés hozzáadása** gombot. 
+5. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
-6. A **Beiktatás hozzáadása** panelen adja meg a következő adatokat:
+6. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-   - Az *Elsődleges tanúsítvány .pem vagy .cer fájl*ban válassza *a Fájl kijelöléséhez* válassza a **{certificate-name}_cert.pem** tanúsítványfájlt.  
+   - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban*válassza a *fájl kiválasztása* elemet, hogy kiválassza a **{certificate-Name} _cert. PEM** fájlt, amelyet az előző lépésekben hozott létre.  
    - Ha kívánja, megadhatja az alábbi információkat is:
      - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
      - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
      - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-     - Miután elkészült, nyomja meg a **Mentés** gombot. 
+     - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
 
-     [![Egyéni regisztráció hozzáadása az X.509-es tanúsítványhoz a portálon](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása X. 509 tanúsítványhoz a portálon](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     A sikeres igényléskor az X.509-es eszköz **{tanúsítványnév}** néven jelenik meg az *Egyéni regisztrációk* lap *Regisztrációs azonosító* oszlopában.
+     Sikeres regisztráció esetén az X. 509 eszköz **{certificatename}** néven jelenik meg a *regisztrációs azonosító* oszlopban az *Egyéni regisztrációk* lapon. később jegyezze fel ezt az értéket.
 
 ## <a name="simulate-the-device"></a>Az eszköz szimulálása
 
 Az [Azure IoT Hub Node.js eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-node) segítségével könnyedén szimulálhatóak eszközök. További információkért tekintse meg az [eszközökkel kapcsolatos alapelveket ismertető](https://docs.microsoft.com/azure/iot-dps/concepts-device) témakört.
 
-1. Az Azure Portalon válassza ki az **áttekintő** panelt az eszközkiépítési szolgáltatáshoz, és vegye figyelembe a **_GLobal-eszköz végpont_** és **_az id hatókör értékeit._**
+1. A Azure Portal válassza ki az eszköz kiépítési szolgáltatásának **Áttekintés** paneljét, és jegyezze fel a **_globális eszköz végpontját_** és az **_azonosító hatókörének_** értékeit.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
 
@@ -123,8 +123,8 @@ Az [Azure IoT Hub Node.js eszközoldali SDK](https://github.com/Azure/azure-iot-
 
 4. Szerkessze a **register\_x509.js** fájlt. A következő módosítások elvégzése után mentse a fájlt.
     - A `provisioning host` elemet cserélje le a fenti **1. lépésben** feljegyzett**_globális eszközvégpontra_**.
-    - Cserélje `id scope` le **_a_** fenti **1.** 
-    - Cserélje `registration id` le az előző szakaszban feljegyzett **_regisztrációs azonosítóra._**
+    - Cserélje `id scope` le az azonosítót a fenti **1. lépésben** feljegyzett **_azonosító hatókörre_** . 
+    - Cserélje `registration id` le az értékét az előző szakaszban feljegyzett **_regisztrációs azonosítóra_** .
     - A `cert filename` és a `key filename` elemet cserélje le a fenti **2. lépésben** másolt fájlokra. 
 
 5. Futtassa a szkriptet, és ellenőrizze, hogy az eszköz sikeresen lett-e kiépítve.
@@ -133,7 +133,7 @@ Az [Azure IoT Hub Node.js eszközoldali SDK](https://github.com/Azure/azure-iot-
     node register_x509.js
     ```   
 
-6. A portálon keresse meg a kiépítési szolgáltatáshoz kapcsolódó IoT-központot, és nyissa meg az **IoT-eszközök** panelt. A szimulált X.509-es eszköz hubra történő sikeres kiépítésekor az eszközazonosítója megjelenik az **IoT-eszközök** paneljén, *a STATUS* pedig **engedélyezve**van. Előfordulhat, hogy meg kell **nyomnia** a frissítés gombot a tetején, ha már kinyitotta a panelt a mintaeszköz-alkalmazás futtatása előtt. 
+6. A portálon navigáljon a kiépítési szolgáltatáshoz kapcsolódó IoT hubhoz, és nyissa meg a **IoT-eszközök** panelt. Ha a szimulált X. 509 eszközt sikeresen kiépíti a központba, az eszköz azonosítója megjelenik az **IoT-eszközök** panelen, és az *állapota* **engedélyezve**lesz. Előfordulhat, hogy a felső **frissítés** gombra kell kattintania, ha már megnyitotta a panelt a minta eszköz futtatása előtt. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-x509-node/hubregistration.png) 
 
@@ -142,16 +142,16 @@ Az [Azure IoT Hub Node.js eszközoldali SDK](https://github.com/Azure/azure-iot-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja a munkát, és vizsgálja meg az eszköz ügyfél minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
+Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-2. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** t, majd válassza ki az Eszközkiépítési szolgáltatást. Nyissa meg a **szolgáltatás Regisztrációk kezelése** panelt, majd válassza az Egyéni **regisztrációk** lapot. *REGISTRATION ID* **Delete** 
-3. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** lehetőséget, majd válassza ki az IoT-központot. Nyissa meg az **IoT-eszközök** panelt a hubhoz, jelölje be a rövid útmutatóban regisztrált eszköz *eszközazonosítója* melletti jelölőnégyzetet, majd nyomja meg a **Törlés** gombot az ablaktábla tetején.
+2. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
+3. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy szimulált X.509-es eszközt, és kiépítette azt az IoT hubba az Azure IoT Hub-eszközkiépítési szolgáltatás használatával a portálon. Az X.509-es eszköz programozott regisztrálásához folytassa az X.509-es eszközök programozott regisztrációjának rövid útmutatójával. 
+Ebben a rövid útmutatóban létrehozta a szimulált X. 509 eszközt, és kiépíti azt az IoT hubhoz a portálon elérhető Azure IoT Hub Device Provisioning Service használatával. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
 
 > [!div class="nextstepaction"]
-> [Azure-gyorsútmutató – X.509-es eszközök regisztrálása az Azure IoT Hub-eszközkiépítési szolgáltatásra](quick-enroll-device-x509-node.md)
+> [Azure rövid útmutató – X. 509 eszközök regisztrálása az Azure-ba IoT Hub Device Provisioning Service](quick-enroll-device-x509-node.md)

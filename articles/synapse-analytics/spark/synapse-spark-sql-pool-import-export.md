@@ -1,6 +1,6 @@
 ---
-title: Adatok importálása és exportálása Spark-készletek (előzetes verzió) és SQL-készletek között
-description: Ez a cikk arról nyújt tájékoztatást, hogyan használhatja az egyéni összekötőt az SQL-készletek és a Spark-készletek közötti adatok oda-vissza mozgatására (előzetes verzió).
+title: A Spark-készletek (előzetes verzió) és az SQL-készletek közötti adatimportálás és-exportálás
+description: Ez a cikk azt ismerteti, hogyan használható az egyéni összekötő az adatoknak az SQL-készletek és a Spark-készletek (előzetes verzió) közötti áthelyezéséhez.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,44 +10,44 @@ ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424292"
 ---
 # <a name="introduction"></a>Introduction (Bevezetés)
 
-A Spark SQL Analytics-összekötő célja, hogy hatékonyan továbbítsa az adatokat a Spark-készlet (előzetes verzió) és az SQL-készletek között az Azure Synapse-ban. A Spark SQL Analytics-összekötő csak SQL-készleteken működik, nem működik az SQL on-Demand.
+A Spark SQL Analytics-összekötő úgy lett kialakítva, hogy hatékonyan vigyen át adatátvitelt a Spark Pool (előzetes verzió) és az SQL-készletek között az Azure szinapszis A Spark SQL Analytics-összekötő csak az SQL-készleteken működik, az SQL-on igény szerint nem működik.
 
-## <a name="design"></a>Tervezés
+## <a name="design"></a>Kialakítás
 
-Az adatok átvitele a Spark-készletek és az SQL-készletek között a JDBC használatával végezhető el. Azonban mivel két elosztott rendszerek, mint a Spark és az SQL-készletek, JDBC általában szűk keresztmetszetet a soros adatátvitel.
+A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 
-A Spark-készletek az SQL Analytics-összekötő egy adatforrás-megvalósításaz Apache Spark. Az Azure Data Lake Storage Gen 2 és az SQL-készletekben lévő Polybase segítségével hatékonyan továbbítja az adatokat a Spark-fürt és az SQL Analytics-példány között.
+Az SQL Analytics-összekötőhöz készült Spark-készletek a Apache Spark adatforrások általi implementációja. A Azure Data Lake Storage Gen 2, az SQL-készletekben pedig a Base-t használja az adatok hatékony átviteléhez a Spark-fürt és az SQL Analytics-példány között.
 
-![Összekötő architektúrája](./media/synapse-spark-sqlpool-import-export/arch1.png)
+![Összekötő-architektúra](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
-## <a name="authentication-in-azure-synapse-analytics"></a>Hitelesítés az Azure Synapse Analytics szolgáltatásban
+## <a name="authentication-in-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analyticsben
 
-A rendszerek közötti hitelesítés zökkenőmentes az Azure Synapse Analytics szolgáltatásban. Van egy token szolgáltatás, amely csatlakozik az Azure Active Directoryhoz a tárfiók vagy az adattárház-kiszolgáló elérésekor használható biztonsági jogkivonatok beszerzéséhez. Emiatt nincs szükség hitelesítő adatok létrehozására vagy adja meg őket az összekötő API-ban, amíg a Tárfiók és az adattárház-kiszolgáló AAD-Auth konfigurálva van. Ha nem, az SQL Auth megadható. További részleteket a [Használat](#usage) szakaszban talál.
+A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez. Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
 
 ## <a name="constraints"></a>Korlátozások
 
-- Ez az összekötő csak a Scala esetén működik.
+- Ez az összekötő csak a Scalaben működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Legyen **db_exporter** szerepköre abban az adatbázisban/SQL-készletben, amelyről adatokat szeretne átvinni.
+- **Db_exporter** szerepkört kell megadnia abban az adatbázisban/SQL-készletben, amelybe be kívánja vinni az adatátvitelt.
 
-Felhasználók létrehozásához csatlakozzon az adatbázishoz, és kövesse az alábbi példákat:
+Felhasználók létrehozásához kapcsolódjon az adatbázishoz, és kövesse az alábbi példákat:
 
 ```Sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-Szerepkör hozzárendelése:
+Szerepkör társítása:
 
 ```Sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
@@ -55,12 +55,12 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 ## <a name="usage"></a>Használat
 
-Az importálási utasítások nem kell megadni, azokat előre importálják a notebook-élmény.
+Az importálási utasítások nem szükségesek, ezeket a rendszer előre importálja a jegyzetfüzet felhasználói felületén.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Adatok átvitele a munkaterülettel csatolt logikai kiszolgáló (DW-példány) SQL-készletére vagy onnan
+### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Adatok átvitele a munkaterülethez csatolt logikai kiszolgáló (DW-példány) és egy SQL-készletbe
 
 > [!NOTE]
-> **Nem szükséges az importálás a jegyzetfüzet-élményben**
+> **A notebook-élményben nem szükséges importálás**
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
@@ -73,7 +73,7 @@ Az importálási utasítások nem kell megadni, azokat előre importálják a no
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
-A fenti API-t belső (felügyelt) és külső táblák az SQL-készletben.
+A fenti API a belső (felügyelt) és az SQL-készletben található külső táblák esetében is működik.
 
 #### <a name="write-api"></a>API írása
 
@@ -81,19 +81,19 @@ A fenti API-t belső (felügyelt) és külső táblák az SQL-készletben.
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-ahol a TableType lehet Constants.INTERNAL vagy Constants.EXTERNAL
+ahol a TableType konstans lehet. belső vagy állandó. külső
 
 ```Scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
 
-A storage és az SQL Server hitelesítése befejeződött
+A Storage és a SQL Server hitelesítése befejeződött
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Ha adatokat továbbít egy logikai kiszolgálón lévő SQL-készletbe vagy adatbázisba a munkaterületen kívül
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Ha a munkaterületen kívüli logikai kiszolgálón található SQL-készletből vagy-adatbázisból továbbít adatátvitelt.
 
 > [!NOTE]
-> Nem szükséges az importálás a jegyzetfüzet-élményben
+> A notebook-élményben nem szükséges importálás
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
@@ -116,11 +116,11 @@ option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>SQL Auth használata az AAD helyett
+### <a name="using-sql-auth-instead-of-aad"></a>SQL-hitelesítés használata a HRE helyett
 
 #### <a name="read-api"></a>API olvasása
 
-Jelenleg az összekötő nem támogatja a jogkivonat-alapú hitelesítési egy SQL-készlet, amely kívül esik a munkaterületen. Az SQL Auth-ot kell használnia.
+Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a munkaterületen kívüli SQL-készletre. SQL-hitelesítést kell használnia.
 
 ```Scala
 val df = spark.read.
@@ -140,20 +140,20 @@ option(Constants.PASSWORD, [SQLServer Login Password]).
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-### <a name="using-the-pyspark-connector"></a>A PySpark-összekötő használata
+### <a name="using-the-pyspark-connector"></a>Az PySpark-összekötő használata
 
 > [!NOTE]
-> Ez a példa csak a jegyzetfüzet-élményt tartja szem előtt tartva.
+> Ez a példa csak a jegyzetfüzettel kapcsolatos, szem előtt tartott felülettel van megadva.
 
-Tegyük fel, hogy van egy dataframe "pyspark_df", hogy szeretne írni a DW.
+Tegyük fel, hogy rendelkezik egy "pyspark_df" dataframe, amelyet szeretne írni a DW-be.
 
-Ideiglenes tábla létrehozása a PySpark adatkeretének használatával
+Ideiglenes tábla létrehozása a PySpark dataframe használatával
 
 ```Python
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Scala-cella futtatása a PySpark-noteszgépben varázslatokkal
+Scala-cella futtatása a PySpark notebookon a Magics használatával
 
 ```Scala
 %%spark
@@ -161,9 +161,9 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
-Hasonlóképpen az olvasási forgatókönyvben olvassa be az adatokat a Scala használatával, és írja be egy ideiglenes táblába, és a Spark SQL a PySpark használatával lekérdezi az ideiglenes táblát egy adatkeretbe.
+Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala használatával, majd írja be egy ideiglenes táblába, és használja a Spark SQL-et a PySpark-ben, hogy lekérdezze a temp táblát egy dataframe.
 
 ## <a name="next-steps"></a>További lépések
 
 - [SQL-készlet létrehozása]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Hozzon létre egy új Apache Spark-készletet egy Azure Synapse Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 

@@ -1,6 +1,6 @@
 ---
-title: Spark-táblák lekérdezése az IGÉNY szerinti SQL használatával (előzetes verzió)
-description: A Spark-táblák igény szerinti SQL-alapú lekérdezésének áttekintése (előzetes verzió)
+title: A Spark-táblázatok lekérdezése az SQL on-demand használatával (előzetes verzió)
+description: A Spark-táblázatok lekérdezése az SQL on-demand (előzetes verzió) használatával – áttekintés
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -10,52 +10,52 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 41e31a322a3d771557474fdf5c318960822bcfe1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424047"
 ---
-# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>Spark-táblák lekérdezése az Azure Synapse Analytics használatával az SQL igény szerinti használatával (előzetes verzió)
+# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>Spark-táblázatok lekérdezése az Azure szinapszis Analytics használatával az SQL igény szerinti használata (előzetes verzió)
 
-Az SQL igény szerinti (előzetes verzió) automatikusan szinkronizálja a metaadatokat a Spark-készletekből a Synapse-munkaterületen belül (előzetes verzió). A Spark-készletekben (előzetes verzió) létező minden egyes adatbázishoz létrejön egy IGÉNY szerinti SQL-adatbázis. Minden Spark-tábla parokt vagy CSV-alapú, egy külső tábla jön létre az SQL igény szerinti adatbázisban. Így leállíthatja a Spark-készletek, és továbbra is lekérdezheti a Spark-táblák sql igény szerint.
+Az SQL on-demand (előzetes verzió) automatikusan képes szinkronizálni a-alapú Spark-készletekben található metaadatokat a szinapszis munkaterületen (előzetes verzió). A Spark-készletekben (előzetes verzió) létező összes adatbázishoz létre kell hozni egy SQL on demand-adatbázist. A Parquet vagy CSV-alapú összes Spark-táblához egy külső tábla jön létre az SQL igény szerinti adatbázisában. Így leállíthatja a Spark-készleteket, és továbbra is lekérdezheti a Spark-táblákat az SQL igény szerint.
 
-Ha egy tábla particionált a Sparkban, a tárolóban lévő fájlok mappák szerint vannak rendezve. Az SQL igény szerinti használja a partíció metaadatait, és csak a megfelelő mappákat és fájlokat célozza meg a lekérdezéshez.
+Ha egy tábla a Sparkban van particionálva, a tárolóban lévő fájlok mappák szerint vannak rendezve. Az SQL on-demand a partíciós metaadatokat használja, és csak a lekérdezéshez kapcsolódó mappákat és fájlokat fogja használni.
 
-Metaadat-szinkronizálás automatikusan konfigurálva van az Azure Synapse munkaterületen kiépített minden spark-készlethez. A Spark-táblák lekérdezése azonnal megkezdheti.
+A rendszer automatikusan beállítja a metaadatok szinkronizálását az Azure szinapszis munkaterületen kiépített összes Spark-készlethez. Azonnal megkezdheti a Spark-táblák lekérdezését.
 
-Minden Spark-tábla egy külső táblával jelenik meg egy dbo-sémában, amely megfelel egy SQL igény szerinti adatbázisnak. A Spark-tábla lekérdezések, futtasson egy lekérdezést, amely egy külső [spark_table]. Az alábbi példa futtatása előtt győződjön meg arról, hogy megfelelő [hozzáféréssel rendelkezik a tárfiókhoz,](develop-storage-files-storage-access-control.md) ahol a fájlok találhatók.
+Minden Spark-tábla egy olyan dbo-sémában található külső táblával van ábrázolva, amely egy SQL igény szerinti adatbázisnak felel meg. A Spark Table-lekérdezések esetében futtasson egy külső [spark_table] célt szolgáló lekérdezést. Az alábbi példa futtatása előtt győződjön meg arról, hogy megfelelő [hozzáférése van a Storage-fiókhoz](develop-storage-files-storage-access-control.md) , ahol a fájlok találhatók.
 
 ```sql
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-## <a name="spark-data-types-to-sql-data-types-mapping"></a>Szikraadattípusok SQL-adattípusok leképezéséhez
+## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-adattípusok az SQL-adattípusok leképezéséhez
 
-| Szikra-adattípus | SQL-adattípus               |
+| Spark adattípus | SQL-adattípus               |
 | --------------- | --------------------------- |
-| ByteType (Bájttípus)        | smallint                    |
-| ShortType típusú       | smallint                    |
+| ByteType        | smallint                    |
+| ShortType       | smallint                    |
 | IntegerType     | int                         |
-| LongType típus        | bigint                      |
-| FloatType (Lebegőtípus)       | real                        |
-| DoubleType típus      | lebegőpontos                       |
-| Decimális típus     | tizedes tört                     |
-| Időbélyegtípusa   | datetime2                   |
-| Dátumtípusa        | dátum                        |
-| Karakterlánctípusa      | varchar(max)*               |
-| Bináris típus      | varbinary között                   |
-| Logikai típus     | bit                         |
-| Tömbtípus       | varchar(max)* (A JSON-ba)** |
-| MapType típus         | varchar(max)* (A JSON-ba)** |
-| StructType típus      | varchar(max)* (A JSON-ba)** |
+| LongType        | bigint                      |
+| FloatType       | valós szám                        |
+| DoubleType      | lebegőpontos                       |
+| DecimalType     | tizedes tört                     |
+| TimestampType   | datetime2                   |
+| DateType        | dátum                        |
+| StringType      | varchar (max) *               |
+| BinaryType      | varbinary                   |
+| BooleanType     | bit                         |
+| ArrayType       | varchar (max) * (JSON-ba) * * |
+| MapType         | varchar (max) * (JSON-ba) * * |
+| StructType      | varchar (max) * (JSON-ba) * * |
 
-\*Az alkalmazott rendezés Latin1_General_100_BIN2_UTF8.
+\*A használt rendezés Latin1_General_100_BIN2_UTF8.
 
-** Az ArrayType, a MapType és a StructType json-ként jelennek meg.
+* * A ArrayType, a MapType és a StructType JSON-ként jelenik meg.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A [storage access-control](develop-storage-files-storage-access-control.md) cikkhez további információa a tárolási hozzáférés-vezérlésről.
+Folytassa a [storage Access Control](develop-storage-files-storage-access-control.md) cikkével, amely további információt biztosít a Storage hozzáférés-vezérléséről.

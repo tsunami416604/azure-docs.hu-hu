@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Android-alkalmazás létrehozása'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre androidos alkalmazást térbeli horgonyok használatával.
+title: 'Gyors útmutató: Android-alkalmazás létrehozása'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Android-alkalmazást térbeli horgonyok használatával.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,22 +9,22 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376460"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rövid útmutató: Android-alkalmazás létrehozása az Azure Spatial Anchors alkalmazással
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre egy [Android-alkalmazást](../overview.md) az Azure Spatial Anchors használatával Java vagy C++/NDK-ban. Az Azure Spatial Anchors egy platformfüggetlen fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóság élményeket hozzon létre olyan objektumok használatával, amelyek az eszközök között megőrzik helyüket az idő múlásával. Ha végzett, lesz egy ARCore Android-alkalmazása, amely képes menteni és visszahívni egy térbeli horgonyt.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Android-alkalmazást az [Azure térbeli horgonyok](../overview.md) használatával Java vagy C++/NDK. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy ARCore Android-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 > * Térbeli horgonyok fiók létrehozása
-> * A Térbeli horgonyok fiókazonosítójának és a fiókkulcsának konfigurálása
-> * Telepítés és futtatás Android-eszközön
+> * A térbeli horgonyok fiókazonosító és a fiók kulcsának konfigurálása
+> * Üzembe helyezés és Futtatás Android-eszközön
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,29 +32,29 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Windows vagy macOS rendszerű készülék <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+ rendszerrel.</a>
-  - Ha Windows rendszeren fut, akkor a <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> és a <a href="https://git-lfs.github.com/">Git LFS rendszerre</a>is szüksége lesz.
-  - Ha macOS rendszeren fut, a Get Git telepítve van a HomeBrew-n keresztül. Írja be a következő parancsot a `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`terminál egyetlen sorába: . Ezután `brew install git` fuss `brew install git-lfs`és .
-  - Az NDK-minta létrehozásához telepítenie kell az NDK és a CMake 3.6 vagy nagyobb SDK-eszközöket az Android Studio-ban.
-- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztő engedélyezve és</a> <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore képes</a> Android készülék.
-  - További eszközillesztőkre lehet szükség ahhoz, hogy a számítógép kommunikáljon androidos eszközével. További információkat és utasításokat [itt](https://developer.android.com/studio/run/device.html) talál.
-- Az alkalmazásnak az ARCore **1.11.0-t**kell megcéloznia.
+- Windows vagy macOS rendszerű számítógép, <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+  - Ha Windows rendszeren fut, <a href="https://git-scm.com/download/win" target="_blank">a git for Windows</a> és a <a href="https://git-lfs.github.com/">git LFS</a>is szüksége lesz.
+  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa a `brew install git` és `brew install git-lfs`a parancsot.
+  - A NDK minta létrehozásához telepítenie kell a NDK és a CMak 3,6-es vagy újabb SDK-eszközöket is a Android Studio-ben.
+- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
+  - Előfordulhat, hogy a számítógépe számára további eszközillesztők szükségesek az Android-eszközkel való kommunikációhoz. További információért és útmutatásért lásd [itt](https://developer.android.com/studio/run/device.html) .
+- Az alkalmazásnak meg kell céloznia a ARCore **1.11.0**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>A mintaprojekt megnyitása
+## <a name="open-the-sample-project"></a>A minta projekt megnyitása
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-# <a name="ndk"></a>[NDK között](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Töltse `arcore_c_api.h` le [innen,](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) `Android\NDK\libraries\include`és tegyük a .
+Töltse `arcore_c_api.h` le [innen, és helyezze](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) el `Android\NDK\libraries\include`a következő helyen:.
 
-Az újonnan klónozott tárházból inicializálhatja az almodulokat a következő parancs futtatásával:
+Az újonnan klónozott tárházból inicializálja az almodulokat a következő parancs futtatásával:
 
 ```console
 git submodule update --init --recursive
@@ -66,55 +66,55 @@ Nyissa meg az Android Studiót.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-Válassza **a Meglévő Android Studio-projekt** megnyitása `Android/Java/`lehetőséget, és válassza ki a projektet a helyen.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/Java/`projektet a következő helyen:.
 
-# <a name="ndk"></a>[NDK között](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-Válassza **a Meglévő Android Studio-projekt** megnyitása `Android/NDK/`lehetőséget, és válassza ki a projektet a helyen.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/NDK/`projektet a következő helyen:.
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcs konfigurálása
+## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
 
-A következő lépés az, hogy konfigurálja az alkalmazást, hogy használja a fiókazonosító és a fiókkulcs. A [Térbeli horgonyok erőforrás beállításakor](#create-a-spatial-anchors-resource)szövegszerkesztőbe másolta őket.
+A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
 Nyissa meg a következő fájlt: `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
-Keresse `SpatialAnchorsAccountKey` meg a `Set me` mezőt, és cserélje le a számlakulcsot.
+Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
 
-Keresse `SpatialAnchorsAccountId` meg a `Set me` mezőt, és cserélje le a számlaazonosítóra.
+Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
 
-# <a name="ndk"></a>[NDK között](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Nyissa meg a következő fájlt: `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
-Keresse `SpatialAnchorsAccountKey` meg a `Set me` mezőt, és cserélje le a számlakulcsot.
+Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
 
-Keresse `SpatialAnchorsAccountId` meg a `Set me` mezőt, és cserélje le a számlaazonosítóra.
+Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
 
 ---
 
-## <a name="deploy-the-app-to-your-android-device"></a>Az alkalmazás telepítése Android-eszközre
+## <a name="deploy-the-app-to-your-android-device"></a>Az alkalmazás üzembe helyezése Android-eszközön
 
-Kapcsolja be az Android-eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez USB-kábellel.
+Kapcsolja be az androidos eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez egy USB-kábellel.
 
-Válassza a **Futtatás** lehetőséget az Android Studio eszköztárán.
+Válassza a **Futtatás** lehetőséget a Android Studio eszköztáron.
 
-![Az Android Studio telepítése és futtatása](./media/get-started-android/android-studio-deploy-run.png)
+![Android Studio üzembe helyezés és Futtatás](./media/get-started-android/android-studio-deploy-run.png)
 
-Válassza ki az Android-eszközt a **Telepítési cél kiválasztása** párbeszédpanelen, és az **OK** gombra az alkalmazás Android-eszközön való futtatásához.
+Válassza ki az Android-eszközt a **telepítési cél kiválasztása** párbeszédpanelen, majd kattintson az **OK** gombra az alkalmazás Android-eszközön való futtatásához.
 
-Kövesse az utasításokat az alkalmazásban, hogy helyezzen el és visszahívása horgonyt.
+A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
-Állítsa le az alkalmazást az Android Studio eszköztár **Leállítás** gombjának kiválasztásával.
+Állítsa le az alkalmazást a Android Studio eszköztárból válassza a **Leállítás** lehetőséget.
 
-![Android Stúdió leállítása](./media/get-started-android/android-studio-stop.png)
+![Android Studio leállítása](./media/get-started-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

@@ -1,6 +1,6 @@
 ---
-title: X.509-es eszközök regisztrálása az Azure-eszközkiépítési szolgáltatásba a Python használatával
-description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban x.509-es eszközöket regisztrál az Azure IoT Hub-eszközkiépítési szolgáltatáshoz (DPS) a Python használatával.
+title: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba a Python használatával
+description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X. 509 eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service (DPS) a Python használatával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,28 +10,28 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: ed51fb7589247b1a52930931ed297d4292b07ea6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77921130"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Python használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ebben a rövid útmutatóban a Python segítségével programozott módon hozhat létre egy regisztrációs csoportot, amely köztes vagy legfelső szintű CA X.509-es tanúsítványokat használ. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. A regisztrációs csoport létrehozásához a Python kiépítési szolgáltatási SDK-t és egy Python-mintaalkalmazást használunk.
+Ebben a rövid útmutatóban a Python használatával programozott módon hozhat létre egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI X. 509 tanúsítványokat használó regisztrációs csoportot. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. A regisztrációs csoport létrehozásához a Python kiépítési szolgáltatási SDK-t és egy Python-mintaalkalmazást használunk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [IoT Hub-eszközkiépítési szolgáltatás beállítása az Azure Portalon.](./quick-setup-auto-provision.md)
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Python 2.x vagy 3.x](https://www.python.org/downloads/). Python hozzáadása a platform-specifikus környezeti változókhoz. Ez a rövid útmutató az alábbi [Python-létesítési szolgáltatás SDK-t](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) telepíti.
-- [Pip](https://pip.pypa.io/en/stable/installing/), ha nem tartalmazza a Python terjesztését.
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python 2.x vagy 3.x](https://www.python.org/downloads/). Adja hozzá a Pythont a platform-specifikus környezeti változókhoz. Ez a rövid útmutató az alábbi [Python-kiépítési szolgáltatás SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) -t telepíti.
+- [Pip](https://pip.pypa.io/en/stable/installing/), ha nem tartalmazza a Python eloszlását.
 - [Git](https://git-scm.com/download/).
 
 > [!IMPORTANT]
-> Ez a cikk csak az elavult V1 Python SDK vonatkozik. Az IoT Hub-eszközkiépítési szolgáltatás eszköz- és szolgáltatásügyfelei még nem érhetők el a V2-ben. A csapat jelenleg keményen dolgozik, hogy v2-funkció paritás.
+> Ez a cikk csak az elavult v1 Python SDK-ra vonatkozik. A IoT Hub Device Provisioning Service eszköz-és szolgáltatási ügyfelei még nem érhetők el a v2-ben. A csapat jelenleg nem működik, hogy a v2-et a szolgáltatás paritására hozza.
 
 ## <a name="prepare-test-certificates"></a>Teszttanúsítványok előkészítése
 
@@ -43,9 +43,9 @@ Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azoka
 
 A teszteszköz segítségével a következő lépésekkel állíthat elő tanúsítványokat:
 
-1. Keresse meg a címke nevét az Azure IoT C SDK [legújabb kiadásának.](https://github.com/Azure/azure-iot-sdk-c/releases/latest)
+1. Keresse meg az Azure IoT C SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-2. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. Futtassa a következő parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben található címkét `-b` a paraméter értékeként:
+2. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -120,7 +120,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá az X.509-eszköz kiépítési adat
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
 - [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk:](concepts-service.md#individual-enrollment)Egyetlen eszköz regisztrálására használható.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
 
 A [Python regisztrációs szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)-val végzett egyéni regisztráció egyelőre kidolgozás alatt áll. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
@@ -144,15 +144,15 @@ A [Python regisztrációs szolgáltatási SDK](https://github.com/Azure/azure-io
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha azt tervezi, hogy vizsgálja meg a Java szolgáltatás minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
+Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be az _X509-tanúsítványkészítő_ ablakát a gépen.
-1. Keresse meg az Eszközkiépítési szolgáltatást az Azure Portalon, válassza a **Regisztrációk kezelése**lehetőséget, *GROUP NAME* majd jelölje be a **Regisztrációs csoportok** lapot. **Delete**    
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **beléptetési csoportok** fület. jelölje be a rövid útmutató segítségével regisztrált X. 509 eszközök *csoportjának neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.    
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban x.509-es eszközök szimulált csoportját regisztrálta az Eszközkiépítési szolgáltatásba. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
+Ebben a rövid útmutatóban egy X. 509 eszköz szimulált csoportját regisztrálta az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]
 > [Azure IoT Hub eszközkiépítési szolgáltatás oktatóanyagai](./tutorial-set-up-cloud.md)

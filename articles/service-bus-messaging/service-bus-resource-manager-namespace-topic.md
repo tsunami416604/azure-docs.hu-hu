@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus névtertémakörlétrehozása sablon használatával
-description: 'Rövid útmutató: Service Bus-névtér létrehozása témakörrel és előfizetéssel az Azure Resource Manager sablonhasználatával'
+title: Azure Service Bus névtérbeli témakör létrehozása sablon használatával
+description: 'Rövid útmutató: Service Bus névtér létrehozása témakörrel és előfizetéssel Azure Resource Manager sablon használatával'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384874"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Rövid útmutató: Service Bus-névtér létrehozása témakörrel és előfizetéssel egy Azure Resource Manager-sablon használatával
+# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér létrehozása témakörrel és előfizetéssel egy Azure Resource Manager sablon használatával
 
-Ez a cikk bemutatja, hogyan használhatja az Azure Resource Manager sablont, amely létrehoz egy Service Bus névtér és egy témakör és előfizetés a névtérben. A cikk bemutatja, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
+Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager sablon, amely létrehoz egy Service Bus névteret, valamint egy témakört és egy előfizetést az adott névtéren belül. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
 
 A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
-A teljes sablont a [Service Bus témakörrel és előfizetési sablonnal rendelkező névtere című témakörben talál.][Service Bus namespace with topic and subscription]
+A teljes sablonhoz tekintse meg a [Service Bus névteret témakör és előfizetés][Service Bus namespace with topic and subscription] sablonnal.
 
 > [!NOTE]
-> A következő Azure Resource Manager-sablonok tölthetők le és telepíthetik.
+> A következő Azure Resource Manager sablonok tölthetők le és üzemelő példányban.
 > 
 > * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
-> * [Service Bus-névtér létrehozása várólistával](service-bus-resource-manager-namespace-queue.md)
-> * [Service Bus-névtér létrehozása várólista- és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Service Bus névtér létrehozása a várólistával](service-bus-resource-manager-namespace-queue.md)
+> * [Service Bus névtér létrehozása a várólista-és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> A legújabb sablonok kereséséhez keresse fel az [Azure gyorsútmutatósablonok][Azure Quickstart Templates] gyűjteményét, és keresse meg a Service Bus című **szolgáltatást.**
+> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá **Service Bus**.
 
-## <a name="what-do-you-deploy"></a>Mit vetsz be?
+## <a name="what-do-you-deploy"></a>Mit telepít?
 
-Ezzel a sablonnal telepíti a Service Bus névteret témakörrel és előfizetéssel.
+Ezzel a sablonnal Service Bus névteret helyezhet üzembe a témakörrel és az előfizetéssel.
 
-[A Service Bus-témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) egy-a-többhöz kommunikációs formát biztosítanak egy *közzétételi/előfizetési* mintában.
+[Service Bus témakörök és előfizetések](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) egy-a-többhöz típusú kommunikációt biztosítanak egy *közzétételi/* előfizetési minta formájában.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -51,11 +51,11 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz `Parameters` egy nevű szakaszt, amely az összes paraméterértéket tartalmazza. Adjon meg egy paramétert azokhoz az értékekhez, amelyek a telepíti a projekttől vagy a környezettől függően változnak, amelybe a központi telepítést alkalmazza. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy nevű `Parameters` szakaszt, amely tartalmazza az összes paraméter értékét. Definiáljon egy paramétert azokhoz az értékekhez, amelyek az üzembe helyezett projekttől függően változnak, vagy azon a környezeten alapulnak, amelyet üzembe szeretne helyezni. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
-A sablon a következő paramétereket határozza meg:
+A sablon a következő paramétereket definiálja:
 
-### <a name="servicebusnamespacename"></a>szolgáltatásBusNamespaceName
+### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 
 A létrehozandó Service Bus névtér neve.
 
@@ -85,9 +85,9 @@ A Service Bus névtérben létrehozott előfizetés neve.
 }
 ```
 
-### <a name="servicebusapiversion"></a>szolgáltatásBusApiVersion
+### <a name="servicebusapiversion"></a>serviceBusApiVersion
 
-A Service Bus API verziója a sablon.
+A sablon Service Bus API-verziója.
 
 ```json
 "serviceBusApiVersion": { 
@@ -100,7 +100,7 @@ A Service Bus API verziója a sablon.
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 
-Létrehoz egy szabványos Service Bus névteret **Üzenetküldés**, témakörrel és előfizetéssel.
+Egy szabványos Service Bus **üzenetküldési**névteret hoz létre, amely tartalmazza a témakört és az előfizetést.
 
 ```json
 "resources": [{
@@ -135,7 +135,7 @@ Létrehoz egy szabványos Service Bus névteret **Üzenetküldés**, témakörre
     }]
 ```
 
-A JSON szintaxisát és tulajdonságait lásd: [névterek](/azure/templates/microsoft.servicebus/namespaces), [témakörök](/azure/templates/microsoft.servicebus/namespaces/topics)és [előfizetések.](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)
+A JSON-szintaxis és-tulajdonságok esetében lásd: [névterek](/azure/templates/microsoft.servicebus/namespaces), [témakörök](/azure/templates/microsoft.servicebus/namespaces/topics)és [előfizetések](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions).
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 
@@ -155,10 +155,10 @@ az group deployment create \<my-resource-group\> --name \<my-deployment-name\> -
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozta és üzembe helyezte az erőforrásokat az Azure Resource Manager használatával, ismerje meg, hogyan kezelheti ezeket az erőforrásokat az alábbi cikkek megtekintésével:
+Most, hogy Azure Resource Manager használatával hozta létre és telepítette az erőforrásokat, megtudhatja, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
-* [A Service Bus-erőforrások kezelése a Service Bus Intézővel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus

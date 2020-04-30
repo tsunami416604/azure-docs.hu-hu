@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure-elemzési szolgáltatások létrehozása a PowerShell Azure Analysis Services használatával | Microsoft dokumentumok
+title: Rövid útmutató – Azure Analysis Services létrehozása a PowerShell-Azure Analysis Services használatával | Microsoft Docs
 description: Megismerheti, hogyan hozhat létre Azure Analysis Services-kiszolgálót a PowerShell használatával
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80409931"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Gyors útmutató: Kiszolgáló létrehozása – PowerShell
@@ -24,11 +24,11 @@ Ez a rövid útmutató bemutatja, hogyan használhatja a PowerShellt a parancsso
 
 - **Azure-előfizetés**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/).
 - **Azure Active Directory**: Előfizetésének egy Azure Active Directory-bérlőhöz kell tartoznia, és abban a könyvtárban kell fiókkal rendelkeznie. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
-- **Az Azure PowerShell**. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+- **Azure PowerShell**. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
-## <a name="import-azanalysisservices-module"></a>Az.AnalysisServices modul importálása
+## <a name="import-azanalysisservices-module"></a>Importálás az. AnalysisServices modul
 
-Kiszolgáló létrehozásához az előfizetésben használja az [Az.AnalysisServices](/powershell/module/az.analysisservices) modult. Töltse be az Az.AnalysisServices modult a PowerShell-munkamenetbe.
+Ha kiszolgálót szeretne létrehozni az előfizetésben, használja az az [. AnalysisServices](/powershell/module/az.analysisservices) modult. Töltse be az az. AnalysisServices modult a PowerShell-munkamenetbe.
 
 ```powershell
 Import-Module Az.AnalysisServices
@@ -36,7 +36,7 @@ Import-Module Az.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be Azure-előfizetésbe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal. Kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancs használatával. Kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
@@ -44,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A kiszolgáló létrehozásakor meg kell adnia egy erőforráscsoportot az előfizetésén belül. Ha még nem rendelkezik erőforráscsoporttal, az [Új AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal újat hozhat létre. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot az USA nyugati régiójában.
+Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A kiszolgáló létrehozásakor meg kell adnia egy erőforráscsoportot az előfizetésén belül. Ha még nem rendelkezik erőforráscsoporthoz, létrehozhat egy újat a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot az USA nyugati régiójában.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -52,7 +52,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-Hozzon létre egy új kiszolgálót a [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) paranccsal. A következő példában létrehozunk egy myServer nevű kiszolgálót a myResourceGroup erőforráscsoportban az USA nyugati régiójában, D1 (ingyenes) szinten. A kiszolgáló rendszergazdája philipc@adventureworks.com.
+Hozzon létre egy új kiszolgálót a [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancs használatával. A következő példában létrehozunk egy myServer nevű kiszolgálót a myResourceGroup erőforráscsoportban az USA nyugati régiójában, D1 (ingyenes) szinten. A kiszolgáló rendszergazdája philipc@adventureworks.com.
 
 ```powershell
 New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location WestUS -Sku D1 -Administrator "philipc@adventure-works.com"
@@ -60,7 +60,7 @@ New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserve
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A kiszolgálót az [Remove-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) paranccsal távolíthatja el az előfizetésből. Ha a gyűjteménybe tartozó további rövid útmutatókkal és oktatóanyagokkal szeretné folytatni, ne távolítsa el a kiszolgálót. A következő példa eltávolítja az előző lépésben létrehozott kiszolgálót.
+A kiszolgálót eltávolíthatja az előfizetésből a [Remove-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) parancs használatával. Ha a gyűjteménybe tartozó további rövid útmutatókkal és oktatóanyagokkal szeretné folytatni, ne távolítsa el a kiszolgálót. A következő példa eltávolítja az előző lépésben létrehozott kiszolgálót.
 
 
 ```powershell
@@ -72,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót Azure-előfizetésében a PowerShell használatával. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Gyorsútmutató: Kiszolgálótűzfal konfigurálása – Portál](analysis-services-qs-firewall.md)      
+> [Rövid útmutató: a kiszolgáló tűzfalának konfigurálása – portál](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Mintamodell hozzáadása a kiszolgálóhoz](analysis-services-create-sample-model.md)

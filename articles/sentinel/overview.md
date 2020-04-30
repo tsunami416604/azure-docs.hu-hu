@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure Sentinel?| Microsoft dokumentumok
-description: Ismerje meg az Azure Sentinelt, annak legfontosabb funkcióit és működését.
+title: Mi az az Azure Sentinel? | Microsoft Docs
+description: Tudjon meg többet az Azure Sentinelről, annak főbb képességeiről és működéséről.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -17,33 +17,33 @@ ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 7d0f246a96072a6e433b0762256467f1c20a45fe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77581718"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
-A Microsoft Azure Sentinel egy méretezhető, felhőalapú natív, **biztonsági információk eseménykezelési (SIEM)** és **biztonsági vezénylési automatizált válasz (SZÁRNYLony)** megoldás. Az Azure Sentinel intelligens biztonsági elemzéseket és fenyegetésfelderítést biztosít a vállalaton belül, egyetlen megoldást kínálva a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésre adott válaszlépésekre. 
+A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, **biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM)** és biztonsági előkészítési **(felszárnyaló)** megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. 
 
-Az Azure Sentinel a legszembetűnőbb nézet a vállalaton belül, enyhítve az egyre kifinomultabb támadások, a riasztások növekvő mennyiségét és a hosszú megoldási időkeretek stresszét.
+Az Azure Sentinel az egész vállalatra kiterjedő, az egyre kifinomultabb támadásokat, a riasztások mennyiségét és a hosszú távú megoldási időkereteket is csökkenti.
 
-- **Adatokat gyűjthet felhőméretekben** az összes felhasználó, eszköz, alkalmazás és infrastruktúra között, mind a helyszínen, mind több felhőben. 
+- Minden felhasználó, eszköz, alkalmazás és infrastruktúra, a helyszínen és több felhőben is **gyűjthet adatokat a felhőben** . 
 
-- A Microsoft elemzése és a páratlan fenyegetésekkel kapcsolatos intelligencia segítségével **észlelheti a korábban fel nem derített fenyegetéseket,** és minimálisra csökkentheti a hamis pozitív állításokat. 
+- A **korábban nem észlelt fenyegetések észlelése**és a téves pozitív állapotok csökkentése a Microsoft Analytics és a páratlan veszélyforrások elleni intelligenciával. 
 
-- **Vizsgálja meg a mesterséges intelligenciával kapcsolatos fenyegetéseket**, és a Microsoft nál végzett több éves kiberbiztonsági munkát kihasználva nagy mennyiségű gyanús tevékenységre vadászik. 
+- **Megvizsgálhatja a fenyegetéseket a mesterséges intelligenciával**, és nagy mennyiségű gyanús tevékenységet is felhasználhat, és a Microsoftnál is kihasználhatja a számítógépes biztonsági munkát. 
 
-- **Reagáljon az incidensekre gyorsan** a beépített vezényléssel és a gyakori feladatok automatizálásával.
+- Az **incidensekre való gyors reagálás** a közös feladatok beépített összehangolása és automatizálása révén.
 
-![Az Azure Sentinel alapvető képességei](./media/overview/core-capabilities.png)
+![Azure Sentinel alapképességek](./media/overview/core-capabilities.png)
 
-A meglévő Azure-szolgáltatások teljes körére építve az Azure Sentinel natív módon magában foglalja a bevált alapokat, például a Log Analytics-et és a Logic Apps-alkalmazásokat. Az Azure Sentinel gazdagítja a vizsgálatot és az észlelést a mesterséges intelligenciával, és biztosítja a Microsoft fenyegetésfelderítési adatfolyamát, és lehetővé teszi, hogy saját fenyegetésfelderítési intelligenciát hozzon létre. 
+A meglévő Azure-szolgáltatások teljes skáláját kiépítve az Azure Sentinel natív módon tartalmazza a bevált alapokat, például a Log Analytics és a Logic Apps. Az Azure Sentinel az AI-vel gazdagítja a nyomozást és az észlelést, és biztosítja a Microsoft fenyegetés-felderítési streamjét, és lehetővé teszi a saját veszélyforrások felderítését. 
 
-## <a name="connect-to-all-your-data"></a>Csatlakozás az összes adathoz
+## <a name="connect-to-all-your-data"></a>Kapcsolódás az összes adattal
 
-A beépített Azure Sentinelhez először csatlakoznia kell [a biztonsági forrásokhoz.](connect-data-sources.md) Az Azure Sentinel számos, a microsoftos megoldásokhoz elérhető összekötőt kínál, amelyek azonnal elérhetők, és valós idejű integrációt biztosítanak, beleértve a Microsoft Threat Protection megoldásokat és a Microsoft 365-forrásokat, beleértve az Office 365-öt, az Azure AD-t, az Azure ATP-t és a Microsoft Cloud App Security, és így tovább. Emellett a nem Microsoft-megoldások szélesebb biztonsági ökoszisztémájához beépített összekötők is találhatók. A közös eseményformátum, a Syslog vagy a REST-API segítségével is csatlakoztathatja az adatforrásokat az Azure Sentinelhez.  
+Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos, a Microsoft-megoldások számára elérhető összekötővel rendelkezik, és valós idejű integrációt biztosít, beleértve a Microsoft veszélyforrások elleni védelmi megoldásait és Microsoft 365 forrásait, például az Office 365, az Azure AD, az Azure ATP és a Microsoft Cloud App Security stb. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
 
 ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
 
@@ -51,46 +51,46 @@ A beépített Azure Sentinelhez először csatlakoznia kell [a biztonsági forr�
 
 ## <a name="workbooks"></a>Munkafüzetek
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure Sentinelhez, figyelheti az adatokat az Azure Sentinel-integráció és az Azure Monitor-munkafüzetek használatával, amely sokoldalúságot biztosít az egyéni munkafüzetek létrehozásában. Bár a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet, ha megszeretné tekinteni, hogyan [hozhat létre interaktív jelentéseket az Azure Monitor munkafüzetekkel.](../azure-monitor/app/usage-workbooks.md) Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatok között, és beépített munkafüzetsablonokat is tartalmaz, amelyek lehetővé teszik, hogy gyorsan betekintést nyerjen az adatokba, amint egy adatforrást csatlakoztat.
+Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez, az Azure Sentinel-integrációval Azure monitor munkafüzetek használatával figyelheti az adatait, amely sokoldalúan használható az egyéni munkafüzetek létrehozásához. Habár a munkafüzetek másképpen jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 ![Irányítópultok](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Elemzés
 
-A zaj csökkentése és a felülvizsgálatot és a vizsgálatot figyelembe vethetés érdekében az Azure Sentinel [elemzésekkel korrelálja a riasztásokat az incidensekbe.](tutorial-detect-threats-built-in.md) **Az incidensek** kapcsolódó riasztások csoportjai, amelyek együttesen egy végrehajtható lehetséges fenyegetést hoznak létre, amelyet kivizsgálhat és feloldhat. Használja a beépített korrelációs szabályokat, ahogy van, vagy használja őket kiindulási pontként a saját létrehozásához. Az Azure Sentinel gépi tanulási szabályokat is biztosít a hálózati viselkedés leképezéséhez, majd az erőforrások közötti anomáliák megkereséséhez. Ezek az elemzések összekapcsolják a pontokat azáltal, hogy a különböző entitásokra vonatkozó alacsony hűségű riasztásokat potenciális anamvaló-biztonsági incidensekké kombinálják.
+A zaj csökkentése és a riasztások számának csökkentése érdekében az Azure Sentinel az elemzések segítségével összekapcsolja a [riasztásokat az incidensekkel](tutorial-detect-threats-built-in.md). Az **incidensek** a kapcsolódó riasztások csoportjai, amelyek együttesen a megvizsgálható és oldható fenyegetést jelenthetnek. Használhatja a beépített korrelációs szabályokat, vagy kiindulási pontként használhatja a saját létrehozásához. Az Azure Sentinel gépi tanulási szabályokat is biztosít a hálózat működésének feltérképezéséhez, majd az erőforrások közötti rendellenességek kereséséhez. Ezek az elemzések összekapcsolják a pontokat a különböző entitások alacsony hűséggel kapcsolatos riasztásait a lehetséges magas szintű biztonsági incidensekkel.
 
 ![Incidensek](./media/tutorial-investigate-cases/incident-severity.png)
 
 
-## <a name="security-automation--orchestration"></a>Biztonsági automatizálás & vezénylés
+## <a name="security-automation--orchestration"></a>Biztonsági automatizálás &
 
-Automatizálhatja gyakori feladatait, és [egyszerűsítheti a biztonsági vezénylést az](tutorial-respond-threats-playbook.md) Azure-szolgáltatásokkal és a meglévő eszközökkel integrálható forgatókönyvekkel. Az Azure Logic Apps alapokra épülő Azure Sentinel automatizálási és vezénylési megoldása rendkívül bővíthető architektúrát biztosít, amely lehetővé teszi a méretezhető automatizálást az új technológiák és fenyegetések megjelenésekor. Ha az Azure Logic Apps alkalmazásokkal szeretne forgatókönyveket készíteni, a beépített forgatókönyvek egyre bővülő galériája közül választhat. Ezek közé tartozik [a 200+ összekötők](https://docs.microsoft.com/azure/connectors/apis-list) szolgáltatások, például az Azure-függvények. Az összekötők lehetővé teszik, hogy bármilyen egyéni logikát alkalmazzon a kódban, a ServiceNow, a Jira, a Zendesk, a HTTP-kérelmek, a Microsoft Teams, a Slack, a Windows Defender ATP és a Cloud App Security.
+Automatizálhatja gyakori feladatait, és [leegyszerűsítheti a biztonsági](tutorial-respond-threats-playbook.md) előkészítést olyan forgatókönyvekkel, amelyek integrálva vannak az Azure-szolgáltatásokkal, valamint a meglévő eszközökkel. A Azure Logic Apps alapjaira épülő Azure Sentinel automatizálási és összehangoló megoldása olyan jól bővíthető architektúrát biztosít, amely lehetővé teszi a skálázható automatizálást új technológiák és fenyegetések megjelenése mellett. Ha Azure Logic Apps segítségével szeretne forgatókönyveket felépíteni, a beépített forgatókönyvek gyűjteménye közül választhat. Ezek közé tartoznak a 200-as és az Azure functions szolgáltatásokhoz [csatlakozó összekötők](https://docs.microsoft.com/azure/connectors/apis-list) . Az összekötők lehetővé teszik, hogy bármilyen egyéni logikát alkalmazzon a Code, a ServiceNow, a JIRA, a zendesk, a HTTP-kérelmek, a Microsoft Teams, a Slack, a Windows Defender ATP és a Cloud App Security használatával.
 
-Ha például a ServiceNow jegykezelő rendszert használja, az Azure Logic Apps használatával automatizálhatja a munkafolyamatokat, és megnyithat egy jegyet a ServiceNow-ban minden alkalommal, amikor egy adott eseményt észlel.
+Ha például a ServiceNow jegyrendszer használatát használja, a Azure Logic Apps segítségével automatizálhatja a munkafolyamatokat, és minden alkalommal megnyithat egy jegyet a ServiceNow-ben egy adott esemény észlelésekor.
 
 ![Forgatókönyvek](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
 ## <a name="investigation"></a>Vizsgálat
 
-Jelenleg előzetes verzióban, az Azure Sentinel [mély vizsgálati](tutorial-investigate-cases.md) eszközök segítségével megismerheti a hatókört, és megtalálni a kiváltó oka, egy potenciális biztonsági fenyegetés. Az interaktív grafikonon kiválaszthat egy entitást, hogy érdekes kérdéseket tegyen fel egy adott entitáshoz, és leásson az adott entitásba és annak kapcsolataiba, hogy eljusson a fenyegetés kiváltó okához. 
+A jelenleg előzetes verzióban elérhető Azure Sentinel [Deep vizsgálati](tutorial-investigate-cases.md) eszközei segítenek megérteni a hatókört és megkeresni a kiváltó okot, amely potenciális biztonsági fenyegetést jelent. Kiválaszthat egy entitást az interaktív gráfon, amely egy adott entitás érdekes kérdéseit kérdezi le, és részletezi az entitást és annak kapcsolatait, hogy a fenyegetés kiváltó okát is megszerezze. 
 
 ![Vizsgálat](./media/tutorial-investigate-cases/map-timeline.png)
 
 
 ## <a name="hunting"></a>Veszélyforrás-keresés
 
-Használja az Azure Sentinel [hatékony vadászati keresési és lekérdezési eszközeit,](hunting.md)amelyek a MITRE keretrendszeren alapulnak, amelyek lehetővé teszik, hogy proaktív módon keressen biztonsági fenyegetéseket a szervezet adatforrásaiban, mielőtt egy riasztás aktiválódna. Miután felfedezte, hogy melyik vadászati lekérdezés nyújt nagy értékű betekintést a lehetséges támadásokba, egyéni észlelési szabályokat is létrehozhat a lekérdezés alapján, és ezeket az elemzéseket a biztonsági incidensek válaszadóinak riasztásaként láthatja el. Vadászat közben könyvjelzőket hozhat létre érdekes eseményekhez, lehetővé téve, hogy később visszatérjen hozzájuk, megossza őket másokkal, és csoportosítsa őket más, korrelációs eseményekkel, hogy egy kényszerítő eseményt hozzon létre a vizsgálathoz.
+Az Azure Sentinel [hatékony vadászati keresési és lekérdezési eszközeit](hunting.md)használja a Mitre Framework alapján, amely lehetővé teszi, hogy a riasztás elindítása előtt proaktív módon vadászjon a biztonsági fenyegetésekre a szervezet adatforrásaiban. Miután felfedezte, hogy melyik vadászati lekérdezés nagy értékű betekintést nyújt a lehetséges támadásokra, létrehozhat egyéni észlelési szabályokat is a lekérdezés alapján, és felhasználhatja ezeket az elemzéseket riasztásként a biztonsági incidensek válaszadói számára. A vadászat közben könyvjelzőket hozhat létre az érdekes eseményekhez, így később visszatérhet hozzájuk, megoszthatja őket másokkal, és csoportosíthatja azokat más korrelációs eseményekkel, hogy egy kényszerítő incidenst hozzon létre a vizsgálathoz.
 
 ![Veszélyforrás-keresés](./media/overview/hunting.png)
 
 ## <a name="community"></a>Közösség
 
-Az Azure Sentinel-közösség hatékony erőforrás a fenyegetések észleléséhez és automatizálásához. Microsoft biztonsági elemzőink folyamatosan hoznak létre és adnak hozzá új munkafüzeteket, forgatókönyveket, vadászati lekérdezéseket és egyebeket, és közzéteszik azokat a közösségnek, hogy használhassa őket a környezetében. A mintatartalmakat a magánközösségi [GitHub-tárházból](https://aka.ms/asicommunity) töltheti le egyéni munkafüzetek, vadászati lekérdezések, jegyzetfüzetek és forgatókönyvek azure Sentinel létrehozásához. 
+Az Azure Sentinel-Közösség hatékony erőforrás a fenyegetések észleléséhez és automatizálásához. A Microsoft biztonsági elemzői folyamatosan új munkafüzeteket, forgatókönyveket, vadászati lekérdezéseket és egyebeket hoznak létre és vesznek fel, és a saját környezetében való használatra közzétesszük a Közösségbe. A Private Community GitHub- [adattárból](https://aka.ms/asicommunity) letölthető mintát hozhat létre egyéni munkafüzetek, vadászati lekérdezések, jegyzetfüzetek és forgatókönyvek létrehozásához az Azure Sentinel számára. 
 
 ![Közösség](./media/overview/community.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure Sentinel első lépéseihez előfizetésre van szüksége a Microsoft Azure-ra. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
-- Ismerje meg, hogyan [integrálhatja adatait az Azure Sentinelbe,](quickstart-onboard.md)és [hogyan láthatja az adatokat és a potenciális fenyegetéseket.](quickstart-get-visibility.md)
+- Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
+- Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

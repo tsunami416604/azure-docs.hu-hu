@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Kiszolgáló létrehozása - Azure CLI – Azure Database for MariaDB'
+title: 'Gyors útmutató: kiszolgáló létrehozása – Azure CLI – Azure Database for MariaDB'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Database MariaDB-kiszolgálót az Azure CLI használatával egy Azure-erőforráscsoportban.
 author: ajlam
 ms.author: andrela
@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79536462"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
 Az Azure CLI használatával a parancssorból vagy szkriptekkel hozhat létre és kezelhet Azure-erőforrásokat. Ez a rövid útmutató bemutatja, hogyan hozhat létre öt perc alatt egy Azure Database for MariaDB-kiszolgálót az Azure CLI használatával egy Azure-erőforráscsoportban.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -49,18 +49,18 @@ Beállítás | Mintaérték | Leírás
 ---|---|---
 név | **mydemoserver** | Adjon meg egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
 resource-group | **myResourceGroup** | Adja meg az Azure-erőforráscsoport nevét.
-sku-name | **GP_Gen5_2** | A termékváltozat neve. A *konvenciós tarifacsomag*\_*számítási generációs*\_*virtuális magjait* követi gyorsírásban. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
+sku-name | **GP_Gen5_2** | A termékváltozat neve. Az egyezmény *díjszabási szintjéhez*\_tartozó*számítási generációs*\_*virtuális mag* a gyorsírásban követhető. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
 backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Tartomány: 7–35. 
-geo-redundant-backup | **Letiltva** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **Engedélyezve**, **Letiltva.**
+geo-redundant-backup | **Letiltva** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
 location | **westus** | A kiszolgáló Azure-helye.
-ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **Engedélyezve**, **Letiltva.**
+ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
 storage-size | **51 200** | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes tárolóméretek: 5120 Mb (legalább), 1024 MB-os egységekben történő növekedéssel. További információ a tárolóméret korlátairól: [Tarifacsomagok](./concepts-pricing-tiers.md). 
 version | **10.2** | A MariaDB fő motorjának verziója.
 admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
 admin-password | *a jelszó* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
 
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_1`alapszintű, gen 5 és 1 virtuális magra. Ez a beállítás a rendelkezésre álló legkisebb termékváltozat.
++ `--sku-name B_Gen5_1`az alapszintű, a Gen 5 és az 1 virtuális mag képezi le. Ez a lehetőség az elérhető legkisebb SKU.
 + `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 + `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -73,7 +73,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 ```
 
 > [!NOTE]
-> Fontolja meg az alapszintű tarifacsomag használatát, ha a könnyű számítási és I/O megfelelő a számítási feladatokhoz. Vegye figyelembe, hogy az alapszintű tarifacsomagban létrehozott kiszolgálók at később nem lehet általános célra vagy memóriaoptimalizáltra méretezni. További információt az [árképzési oldalon](https://azure.microsoft.com/pricing/details/mariadb/) talál.
+> Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. További információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/mariadb/) .
 
 ## <a name="configure-a-firewall-rule"></a>Tűzfalszabály konfigurálása
 
@@ -212,7 +212,7 @@ Csatlakozás a kiszolgálóhoz a mysql parancssori eszköz használatával:
 
    | Beállítás | Ajánlott érték | Leírás |
    |---|---|---|
-   | Kapcsolat neve | **Demó kapcsolat** | Adjon meg egy címkét a kapcsolathoz (a kapcsolat neve tetszőlegesen kiválasztható) |
+   | Kapcsolat neve | **Bemutató-kapcsolatok** | Adjon meg egy címkét a kapcsolathoz (a kapcsolat neve tetszőlegesen kiválasztható) |
    | Kapcsolati módszer | **Standard (TCP/IP)** | Csatlakozás az Azure Database for MariaDB-hez a TCP/IP protokollal |
    | Gazdanév | **mydemoserver.mariadb.database.azure.com** | A korábban feljegyzett kiszolgálónév. |
    | Port | **3306** | Az Azure Database for MariaDB alapértelmezett portja. |

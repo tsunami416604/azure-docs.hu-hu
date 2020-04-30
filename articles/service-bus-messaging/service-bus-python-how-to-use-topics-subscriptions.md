@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Az Azure Service Bus témaköreinek és előfizetései a Pythonnal'
-description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Service Bus-témakört, előfizetést, üzeneteket küldhet egy témakörnek, és hogyan fogadhat üzeneteket az előfizetésből.
+title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata a Python használatával'
+description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Service Bus témakört, előfizetést, üzeneteket küldhet egy témakörnek, és üzeneteket fogadhat az előfizetésből.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -14,38 +14,38 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80478071"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rövid útmutató: A Service Bus-témakörök és előfizetések használata a Pythonnal
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Python használatával
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez a cikk ismerteti, hogyan használhatja a Python az Azure Service Bus-témakörök és előfizetések. A minták az [Azure Python SDK-csomagot][Azure Python package] használják a következőkre: 
+Ez a cikk azt ismerteti, hogyan használható a Python Azure Service Bus témakörökkel és előfizetésekkel. A minták az [Azure PYTHON SDK][Azure Python package] -csomagot használják a következőhöz: 
 
-- Témakörök és témakörökre való előfizetések létrehozása
+- Témakörök és előfizetések létrehozása témakörökhöz
 - Előfizetési szűrők és szabályok létrehozása
-- Üzenetek küldése témakörökbe 
-- Üzenetek fogadása előfizetésekből
+- Üzenetek küldése a témaköröknek 
+- Üzenetek fogadása az előfizetésből
 - Témakörök és előfizetések törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure-előfizetés. Aktiválhatja visual [studio- vagy MSDN-előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókra.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
-- A Service Bus névtér, a rövid útmutató lépései alapján [létrehozott: Az Azure Portal használatával hozzon létre egy Service Bus-témakört és előfizetéseket.](service-bus-quickstart-topics-subscriptions-portal.md) Másolja a névtér nevét, a megosztott hozzáférés kulcsnevét és az elsődleges kulcs értékét a **Megosztott hozzáférési házirendek** képernyőre, amelyet a rövid útmutató későbbi részében szeretne használni. 
-- Python 3.4x vagy újabb, az [Azure Python SDK-csomag][Azure Python package] telepítve. További információt a [Python telepítési útmutatójában talál.](/azure/developer/python/azure-sdk-install)
+- Azure-előfizetés. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Egy Service Bus névtér, amely a gyors üzembe helyezés lépéseinek követésével jön létre [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket](service-bus-quickstart-topics-subscriptions-portal.md). Másolja a névtér nevét, a megosztott elérési kulcs nevét és az elsődleges kulcs értékét a **közös hozzáférésű házirendek** képernyőről a rövid útmutató későbbi részében való használatra. 
+- Python 3.4 x vagy újabb verzió, telepített [Azure PYTHON SDK][Azure Python package] -csomaggal. További információ: a [Python telepítési útmutatója](/azure/developer/python/azure-sdk-install).
 
-## <a name="create-a-servicebusservice-object"></a>ServiceBusService-objektum létrehozása
+## <a name="create-a-servicebusservice-object"></a>ServiceBusService objektum létrehozása
 
-A **ServiceBusService** objektum lehetővé teszi, hogy a témakörök és a témakörök előfizetések. A Service Bus programozott eléréséhez adja hozzá a következő sort a Python-fájl tetejéhez:
+A **ServiceBusService** objektummal témaköröket és előfizetéseket dolgozhat a témakörökben. A Service Bus programozott eléréséhez adja hozzá a következő sort a Python-fájl elejéhez:
 
 ```python
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Adja hozzá a következő kódot egy **ServiceBusService** objektum létrehozásához. Cserélje `<namespace>` `<sharedaccesskeyname>`le `<sharedaccesskeyvalue>` a , és a Service Bus névtér nevét, a Megosztott hozzáférésű aláírás (SAS) kulcsnevét és az elsődleges kulcs értékét. Ezeket az értékeket a Service Bus-névtér **megosztott hozzáférési szabályzatai** az [Azure Portalon][Azure portal]található megosztott hozzáférési szabályzatok alatt találja.
+Adja hozzá a következő kódot egy **ServiceBusService** objektum létrehozásához. `<sharedaccesskeyname>`Cserélje `<namespace>`le a, `<sharedaccesskeyvalue>` a és a paramétert a Service Bus névtér nevére, a közös hozzáférési aláírás (SAS) kulcsának nevére és az elsődleges kulcs értékére. Ezeket az értékeket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
 
 ```python
 bus_service = ServiceBusService(
@@ -56,13 +56,13 @@ bus_service = ServiceBusService(
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 
-A következő kód `create_topic` a metódus segítségével hoz `mytopic`létre egy Service Bus témakört, amelynek neve alapértelmezett beállításokkal van eltorpanása:
+A következő kód a `create_topic` metódus használatával hozza létre a nevű `mytopic`Service Bus témakört alapértelmezett beállításokkal:
 
 ```python
 bus_service.create_topic('mytopic')
 ```
 
-A témakörbeállításaival felülbírálhatja az alapértelmezett témakörbeállításokat, például az üzenet teljesítési idejét (TTL) vagy a témakör maximális méretét. A következő példa létrehoz `mytopic` egy témakört, amelynek maximális témakörmérete 5 GB, és az alapértelmezett üzenet TTL egy perc:
+A témakör beállításai segítségével felülbírálhatja az alapértelmezett témakör-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. Az alábbi példa egy nevű `mytopic` témakört hoz létre, amely egy percen belüli, maximális számú témakört tartalmaz:
 
 ```python
 topic_options = Topic()
@@ -74,7 +74,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## <a name="create-subscriptions"></a>Előfizetések létrehozása
 
-A **ServiceBusService** objektum használatával is hozhat létre témakörökelőfizetéseket. Az előfizetések rendelkezhetnek egy szűrővel, amely korlátozza a virtuális várólistába küldött üzenetkészletet. Ha nem ad meg szűrőt, az új előfizetések az alapértelmezett **MatchAll** szűrőt használják, amely a témakörben közzétett összes üzenetet az előfizetés virtuális várólistájába helyezi. A következő példa létrehoz `mytopic` `AllMessages` egy elnevezett előfizetést, amely a **MatchAll** szűrőt használja:
+A **ServiceBusService** objektummal előfizetéseket is létrehozhat a témakörökhöz. Egy előfizetéshez tartozhat egy szűrő, amellyel korlátozható a virtuális várólistára küldött üzenet. Ha nem ad meg szűrőt, az új előfizetések az alapértelmezett **MatchAll** szűrőt használják, amely a témakörben közzétett összes üzenetet elhelyezi az előfizetés virtuális várólistáján. A következő példa létrehoz egy nevű `mytopic` `AllMessages` előfizetést, amely a **MatchAll** szűrőt használja:
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -82,13 +82,13 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 ### <a name="use-filters-with-subscriptions"></a>Szűrők használata előfizetésekkel
 
-A `create_rule` **ServiceBusService** objektum módszerével szűrheti az előfizetésben megjelenő üzeneteket. Az előfizetés létrehozásakor szabályokat adhat meg, vagy hozzáadhat szabályokat a meglévő előfizetésekhez.
+A ServiceBusService `create_rule` objektum metódusának **ServiceBusService** használatával szűrheti az előfizetésben megjelenő üzeneteket. Megadhatja az előfizetés létrehozásakor vagy a meglévő előfizetésekhez tartozó szabályok hozzáadására vonatkozó szabályokat.
 
-A legrugalmasabb szűrőtípus az **SqlFilter**, amely az SQL-92 egy részét használja. Az SQL-szűrők a témakörben közzétett üzenetek tulajdonságai alapján működnek. Az SQL-szűrővel használható kifejezésekről további információt az [SqlFilter.SqlExpression][SqlFilter.SqlExpression] szintaxisban talál.
+A legrugalmasabb típusú szűrő egy **SqlFilter**, amely az SQL-92 részhalmazát használja. Az SQL-szűrők a témakörben közzétett üzenetek tulajdonságai alapján működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkért tekintse meg a [SqlFilter. SqlExpression][SqlFilter.SqlExpression] szintaxist.
 
-Mivel a **MatchAll** alapértelmezett szűrő automatikusan vonatkozik az összes új előfizetésre, el kell távolítania a szűrni kívánt előfizetésekből, különben a **MatchAll** felülírja a többi megadott szűrőt. Az alapértelmezett szabályt eltávolíthatja `delete_rule` a **ServiceBusService** objektum metódusával.
+Mivel a **MatchAll** alapértelmezett szűrője automatikusan az összes új előfizetésre vonatkozik, el kell távolítania a szűrni kívánt előfizetések közül, vagy a **MatchAll** felülbírálja az Ön által megadott szűrőket. Az alapértelmezett szabályt a `delete_rule` **ServiceBusService** objektum metódusának használatával távolíthatja el.
 
-A következő példa létrehoz `mytopic` `HighMessages`egy előfizetést a `HighMessageFilter`névvel ellátott , **egy SqlFilter** szabály nevű . A `HighMessageFilter` szabály csak a 3-nál nagyobb egyéni `messageposition` tulajdonsággal rendelkező üzeneteket jelöli ki:
+Az alábbi példa egy nevű `mytopic` előfizetést `HighMessages`hoz létre egy nevű **SqlFilter** szabállyal `HighMessageFilter`. A `HighMessageFilter` szabály csak a 3-nál nagyobb `messageposition` egyéni tulajdonságú üzeneteket választja ki:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -101,7 +101,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-A következő példa létrehoz `mytopic` `LowMessages`egy előfizetést a `LowMessageFilter`névvel ellátott , **egy SqlFilter** szabály nevű . A `LowMessageFilter` szabály csak azokat `messageposition` az üzeneteket jelöli ki, amelyek tulajdonsága legfeljebb 3:
+Az alábbi példa egy nevű `mytopic` előfizetést `LowMessages`hoz létre egy nevű **SqlFilter** szabállyal `LowMessageFilter`. A `LowMessageFilter` szabály csak a `messageposition` 3 értéknél kisebb vagy azzal egyenlő értékű üzeneteket jelöli ki:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -114,13 +114,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-A `AllMessages` `HighMessages`, `LowMessages` és minden érvényben, `mytopic` küldött üzenetek mindig az `AllMessages` előfizetés fogadói. Az üzenetek szelektíven is `HighMessages` `LowMessages` kézbesítve vannak az üzenet `messageposition` vagy az előfizetés számára, az üzenet tulajdonságértékétől függően. 
+A `AllMessages`, `HighMessages`a és `LowMessages` az összes hatására a `mytopic` rendszer mindig az `AllMessages` előfizetés fogadóinak kézbesíti az elküldött üzeneteket. Az üzenetek a (z) `HighMessages` vagy `LowMessages` előfizetéshez is szelektív módon érkeznek, az üzenet `messageposition` tulajdonságának értékétől függően. 
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
 
-Az alkalmazások `send_topic_message` a **ServiceBusService** objektum metódusát használják a Service Bus-témakörbe való üzenetküldéshez.
+Az alkalmazások a `send_topic_message` **ServiceBusService** objektum metódusát használják üzenetek küldésére egy Service Bus témakörben.
 
-A következő példa öt tesztüzenetet küld a `mytopic` témakörnek. Az `messageposition` egyéni tulajdonság értéke a ciklus iterációját, és meghatározza, hogy mely előfizetések az üzeneteket. 
+A következő példa öt tesztüzenet küldését küldi `mytopic` el a témakörnek. Az egyéni `messageposition` tulajdonság értéke a hurok iterációtól függ, és meghatározza, hogy mely előfizetések kapják meg az üzeneteket. 
 
 ```python
 for i in range(5):
@@ -129,28 +129,28 @@ for i in range(5):
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-### <a name="message-size-limits-and-quotas"></a>Az üzenetek méretkorlátai és kvótái
+### <a name="message-size-limits-and-quotas"></a>Az üzenet méretének korlátai és kvótái
 
-A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Nincs korlátozva, hogy egy témakör hány üzenetet tarthat, de a témakörben lévő üzenetek teljes méretét korlátozza. A témakör méretét a létrehozás időpontjában, 5 GB-os felső határral határozhatja meg. 
+A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörben megtartható üzenetek száma nem korlátozott, de a témakörben szereplő üzenetek teljes méretének korlátja van. A témakör mérete a létrehozáskor adható meg, és a felső korlátja 5 GB. 
 
-A kvótákról további információt a [Service Bus-kvóták című témakörben talál.][Service Bus quotas]
+További információ a kvótákkal kapcsolatban: [Service Bus kvóták][Service Bus quotas].
 
-## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása előfizetésből
+## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
 
-Az alkalmazások `receive_subscription_message` a **ServiceBusService** objektum on the Method használatával üzeneteket fogadni egy előfizetésből. A következő példa üzeneteket `LowMessages` fogad az előfizetésből, és az olvasás közben törli őket:
+Az alkalmazások az `receive_subscription_message` **ServiceBusService** objektum metódusát használják egy előfizetésből érkező üzenetek fogadására. Az alábbi példa üzeneteket fogad az `LowMessages` előfizetésből, és törli őket az olvasáskor:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-A `peek_lock` választható `receive_subscription_message` paraméter határozza meg, hogy a Service Bus törli-e az üzeneteket az előfizetésből olvasáskor. Az üzenetek fogadásának alapértelmezett módja `peek_lock` a *PeekLock*, vagy a **True**érték, amely beolvassa (betekint) és zárolja az üzeneteket anélkül, hogy kiolvasná őket az előfizetésből. Minden üzenetet explicit módon ki kell tölteni, hogy eltávolítsuk az előfizetésből.
+A választható `peek_lock` paraméter `receive_subscription_message` határozza meg, hogy Service Bus törli-e az előfizetésből származó üzeneteket az olvasáskor. Az üzenetek fogadásának alapértelmezett módja a *PeekLock*, vagy `peek_lock` **igaz**értékre van állítva, amely beolvassa (betekintést) és zárolja az üzeneteket anélkül, hogy törölné őket az előfizetésből. Ezután minden üzenetet explicit módon el kell végezni, hogy el lehessen távolítani az előfizetésből.
 
-Ha olvasás közben törölni szeretné az üzeneteket az `peek_lock` előfizetésből, beállíthatja a paramétert **Hamis**, mint az előző példában. Az üzenetek törlése a fogadási művelet részeként a legegyszerűbb modell, és jól működik, ha az alkalmazás elviseli a hiányzó üzeneteket, ha hiba van. A viselkedés megértéséhez fontolja meg egy olyan forgatókönyvet, amelyben az alkalmazás fogadási kérelmet ad ki, majd a feldolgozás előtt összeomlik. Ha az üzenetet a fogadáskor törölték, amikor az alkalmazás újraindul, és újra elkezdi az üzenetek et, az összeomlás előtt fogadott üzenetet kihagyta.
+Ha törölni szeretné az előfizetésből származó üzeneteket, a `peek_lock` paramétert **hamis**értékre állíthatja, ahogy az előző példában is látható. Ha a fogadási művelet részeként törli az üzeneteket, a legegyszerűbb modell, és jól működik, ha az alkalmazás meghibásodás esetén képes elviselni a hiányzó üzeneteket. A viselkedés megértéséhez Vegyünk egy olyan forgatókönyvet, amelyben az alkalmazás egy fogadási kérést ad ki, majd összeomlik a feldolgozás előtt. Ha a rendszer törölte az üzenetet a fogadáskor, amikor az alkalmazás újraindul, és megkezdi az üzenetek újrafelhasználását, az összeomlás előtt elmulasztotta a kapott üzenetet.
 
-Ha az alkalmazás nem tudja elviselni a nem fogadott üzeneteket, a fogadás kétlépcsős műveletté válik. PeekLock megkeresi a következő üzenetet kell fogyasztani, zárolja, hogy megakadályozzák más fogyasztók fogadására, és visszaküldi azt az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás befejezi a fogadási `complete` folyamat második szakaszát az **Üzenet** objektum metódusának hívásával.  A `complete` metódus az üzenetet felhasználásként jelöli meg, és eltávolítja azt az előfizetésből.
+Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás kétfázisú műveletvé válik. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja `complete` a metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt az előfizetésből.
 
-A következő példa egy betekintőzárolási forgatókönyvet mutat be:
+Az alábbi példa egy betekintés zárolási forgatókönyvet mutat be:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -159,39 +159,39 @@ if msg.body is not None:
     msg.complete()
 ```
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Alkalmazásösszeomlások és olvashatatlan üzenetek kezelése
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, meghívhatja a `unlock` metódust az **Üzenet** objektumon. A Service Bus feloldja az üzenetet az előfizetésen belül, és elérhetővé teszi, hogy újra megkapja, akár ugyanaz, akár egy másik fogyasztó alkalmazás.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tud feldolgozni egy üzenetet, meghívja a `unlock` metódust az **üzenet** objektumon. Service Bus feloldja az üzenet zárolását az előfizetésen belül, és lehetővé teszi az újbóli fogadását, akár ugyanazon, akár egy másik alkalmazásban.
 
-Van is egy időtúltöltés az előfizetésen belül zárolt üzenetek. Ha egy alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúldátum lejárta előtt, például ha az alkalmazás összeomlik, a Service Bus automatikusan feloldja az üzenetet, és elérhetővé teszi, hogy újra megkapja.
+Az előfizetésen belül zárolt üzenetek esetében is van időtúllépés. Ha egy alkalmazás nem tud feldolgozni egy üzenetet a zárolási időtúllépés lejárta előtt, például ha az alkalmazás összeomlik, Service Bus feloldja az üzenet automatikus zárolását, és elérhetővé teszi azt újra.
 
-Ha egy alkalmazás összeomlik egy üzenet `complete` feldolgozása után, de a metódus hívása előtt, az üzenet újra kézbesítésre kerül az alkalmazásnak, amikor újraindul. Ezt a viselkedést gyakran *nevezik Legalább egyszeri feldolgozásnak.* Minden üzenet feldolgozása legalább egyszer történik, de bizonyos helyzetekben ugyanaz tetsző üzenet kézbesíthető. Ha a forgatókönyv nem tolerálja a duplikált feldolgozást, használhatja az üzenet **MessageId** tulajdonságát, amely a kézbesítési kísérletek során állandó marad, az ismétlődő üzenetek kézbesítésének kezeléséhez. 
+Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a `complete` metódus meghívása előtt, a rendszer az újraindításkor visszaküldi az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 
-Témakörök és előfizetések törléséhez használja az `delete_topic` [Azure Portalon][Azure portal] vagy a metódust. A következő kód törli `mytopic`a témakör neve:
+Témakörök és előfizetések törléséhez használja a [Azure Portal][Azure portal] vagy `delete_topic` a metódust. A következő kód törli a nevű `mytopic`témakört:
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-A témakör törlése törli a témakör összes előfizetését. Az előfizetéseket egymástól függetlenül is törölheti. A következő kód törli `HighMessages` a `mytopic` témakörből megnevezett előfizetést:
+Egy témakör törlése törli a témakör összes előfizetését. Az előfizetéseket egymástól függetlenül is törölheti. A következő kód törli a nevű `HighMessages` előfizetést `mytopic` a témakörből:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Alapértelmezés szerint a témakörök és az előfizetések állandóak, és a törlésükig léteznek. Ha egy bizonyos idő eltelte után automatikusan törölni szeretné az előfizetéseket, beállíthatja az [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) paramétert az előfizetésen. 
+Alapértelmezés szerint a témakörök és az előfizetések állandóak, és addig léteznek, amíg nem törli őket. Ha az előfizetéseket egy bizonyos időtartam lejárta után szeretné automatikusan törölni, beállíthatja a [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) paramétert az előfizetésben. 
 
 > [!TIP]
-> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi, hogy csatlakozzon egy Service Bus-névtérhez, és egyszerűen felügyelje az üzenetkezelési entitásokat. Az eszköz speciális funkciókat, például importálási/exportálási funkciókat, valamint témakörök, várólisták, előfizetések, továbbítási szolgáltatások, értesítési központok és eseményközpontok tesztelését teszi lehetővé. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése. 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta a Service Bus témaköreinek alapjait, kövesse az alábbi hivatkozásokat, ha többet szeretne megtudni:
+Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál:
 
-* [Várólisták, témakörök és előfizetések][Queues, topics, and subscriptions]
-* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] – referencia
+* [Queues, topics, and subscriptions][Queues, topics, and subscriptions]
+* [SqlFilter. SqlExpression][SqlFilter.SqlExpression] -hivatkozás
 
 [Azure portal]: https://portal.azure.com
 [Azure Python package]: https://pypi.python.org/pypi/azure

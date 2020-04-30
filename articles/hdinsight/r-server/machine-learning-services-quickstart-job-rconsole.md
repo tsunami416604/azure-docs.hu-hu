@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: R-parancsfájl az ML-szolgáltatásokon & R konzolon – Azure HDInsight'
-description: A rövid útmutatóban egy R-parancsfájlt hajt végre egy ML Services-fürtön az Azure HDInsightban az R konzol használatával.
+title: 'Gyors útmutató: R script on ML Services & R Console – Azure HDInsight'
+description: A gyors útmutatóban R-szkriptet hajt végre az Azure HDInsight egy ML Services-fürtön az R Console használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,28 +9,28 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73241597"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rövid útmutató: R-parancsfájl végrehajtása ml services-fürtön az Azure HDInsightban az R konzol használatával
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight R Console használatával
 
-Ml-szolgáltatások az Azure HDInsight lehetővé teszi, hogy az R-parancsfájlok az Apache Spark és az Apache Hadoop MapReduce használatával futtatják az elosztott számításokat. Az ML-szolgáltatások a számítási környezet beállításával szabályozzák a hívások végrehajtását. A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való csatlakozáshoz és az R-parancsfájlok futtatásához. Egy peremhálózati csomópont esetén lehetősége van a RevoScaleR párhuzamos elosztott függvényeinek futtatására a peremhálózati csomópont-kiszolgáló magjain. A RevoScaleR Hadoop-térképcsökkentés vagy az Apache Spark számítási környezeteinek használatával is futtathatja őket a fürt csomópontjain.
+Az Azure HDInsight ML-szolgáltatásai lehetővé teszik az R-parancsfájlok használatát Apache Spark és Apache Hadoop MapReduce elosztott számítások futtatásához. A ML-szolgáltatások azt vezérlik, hogy a rendszer hogyan hajtja végre a hívásokat a számítási környezet beállításával. A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópontok esetében lehetősége van a RevoScaleR párhuzamosan elosztott funkcióinak futtatására a peremhálózati csomópont-kiszolgáló magjai között. Ezeket a fürtök csomópontjain is futtathatja a RevoScaleR Hadoop-leképezésével, és csökkentheti vagy Apache Spark a számítási környezeteket.
 
-Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R konzollal, amely bemutatja a Spark használatát az elosztott R-számításokhoz. Számítási környezetet határoz meg, hogy helyileg hajtson végre számításokat egy peremhálózati csomóponton, és ismét elosztva a HDInsight-fürt csomópontjai között.
+Ebből a rövid útmutatóból megtudhatja, hogyan futtathat olyan R-szkriptet az R-konzollal, amely a Spark elosztott R-számításokhoz való használatát mutatja be. A számítási kontextust úgy fogja meghatározni, hogy helyileg hajtja végre a számításokat egy peremhálózati csomóponton, majd újra elosztja a HDInsight-fürt csomópontjai között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ml services-fürt a HDInsighton. Lásd: [Apache Hadoop-fürtök létrehozása az Azure Portalon,](../hdinsight-hadoop-create-linux-clusters-portal.md) és válassza az **ML-szolgáltatások** **fürttípushoz lehetőséget.**
+* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
-## <a name="connect-to-r-console"></a>Csatlakozás az R konzolhoz
+## <a name="connect-to-r-console"></a>Kapcsolódás az R-konzolhoz
 
-1. Csatlakozzon egy ML Services HDInsight-fürt peremhálózati csomópontjához az SSH használatával. Az alábbi parancs szerkesztése a fürt nevének cseréjével, `CLUSTERNAME` majd írja be a parancsot:
+1. Kapcsolódjon egy ML Services HDInsight-fürt peremhálózati csomópontjára az SSH használatával. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net
@@ -47,7 +47,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
 
 ## <a name="use-a-compute-context"></a>Számítási környezet használata
 
-1. A `>` adatkérésben beírhatja az R-kódot. A következő kód dal töltheti be a példaadatokat a HDInsight alapértelmezett tárolójába:
+1. A `>` adatkérésben beírhatja az R-kódot. A következő kód használatával tölthetők be például az HDInsight alapértelmezett tárolóba:
 
     ```R
     # Set the HDFS (WASB) location of example data
@@ -84,7 +84,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
 
     Ez a lépés körülbelül 10 percet is igénybe vehet.
 
-1. Hozzon létre néhány adatinformációt, és határozzon meg két adatforrást. Írja be a következő kódot az R konzolba:
+1. Hozzon létre adatinformációkat, és határozzon meg két adatforrást. Adja meg a következő kódot az R-konzolon:
 
     ```R
     # Define the HDFS (WASB) file system
@@ -111,7 +111,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Logisztikai regressziót futtataz adatokon a **helyi** számítási környezet használatával. Írja be a következő kódot az R konzolba:
+1. Futtasson logisztikai regressziót az adatokon a **helyi** számítási környezet használatával. Adja meg a következő kódot az R-konzolon:
 
     ```R
     # Set a local compute context
@@ -126,7 +126,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
      summary(modelLocal)
     ```
 
-    A számítások körülbelül 7 perc alatt befejeződnek. A következő kódrészlethez hasonló vonalakkal végződő kimenetnek kell megtekintenie:
+    A számításoknak körülbelül 7 percen belül kell elvégezniük. Az alábbi kódrészlethez hasonló sorokkal végződő kimenetnek kell megjelennie:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -156,7 +156,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
       Number of iterations: 7
     ```
 
-1. Futtassa ugyanazt a logisztikai regressziót a **Spark-környezet** használatával. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között. Írja be a következő kódot az R konzolba:
+1. Futtassa ugyanazt a logisztikai regressziót a **Spark** kontextus használatával. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között. Adja meg a következő kódot az R-konzolon:
 
     ```R
     # Define the Spark compute context
@@ -174,7 +174,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
      summary(modelSpark)
     ```
 
-    A számítások nak körülbelül 5 perc alatt befejeződnek.
+    A számításoknak körülbelül 5 percen belül kell elvégezniük.
 
 1. Ha ki szeretne lépni az R-konzolból, használja az alábbi parancsot:
 
@@ -184,13 +184,13 @@ Ebben a rövid útmutatóban megtudhatja, hogyan futtathat r-parancsfájlt R kon
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A rövid útmutató befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
+Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan futtathat r-parancsfájlt az R konzollal, amely a Spark használatát mutatta be az elosztott R-számításokhoz.  A következő cikkre lépve ismerje meg, hogy milyen lehetőségek állnak rendelkezésre annak meghatározásához, hogy a végrehajtás párhuzamos-e a peremhálózati csomópont vagy a HDInsight-fürt magjai között, és ha az okat.
+Ebből a rövid útmutatóból megtudhatta, hogyan futtathat r-szkriptet az R-konzollal, amely a Spark elosztott R-számításokhoz való használatát mutatja be.  A következő cikkből megtudhatja, hogy milyen lehetőségek érhetők el annak megadásához, hogy a végrehajtás hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
 
 > [!div class="nextstepaction"]
->[Az ML-szolgáltatások környezeti beállításainak számítási környezete a HDInsightban](./r-server-compute-contexts.md)
+>[Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz](./r-server-compute-contexts.md)

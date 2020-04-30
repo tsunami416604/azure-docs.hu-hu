@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB API-ja a MongoDB-hoz (3.6-os verzió) által támogatott funkciók és szintaxis
-description: Ismerje meg az Azure Cosmos DB MongoDB-hoz (3.6-os verzió) támogatott szolgáltatásait és szintaxisát.
+title: Azure Cosmos DB API a MongoDB-hez (3,6-es verzió) támogatott funkciók és szintaxis
+description: Ismerkedjen meg Azure Cosmos DB API-MongoDB (3,6 verzió) támogatott funkciókkal és szintaxissal.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
@@ -8,29 +8,29 @@ ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81393622"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB MongoDB-alapú API-jával kommunikálhat a nyílt forráskódú MongoDB [ügyfél-illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers)bármelyikével. Az Azure Cosmos DB MongoDB-hoz való API-ja lehetővé teszi a meglévő ügyfél-illesztőprogramok használatát a MongoDB [vezetékes protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betakarásával.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
 
-Az Azure Cosmos DB MongoDB-hoz készült API-jának használatával élvezheti a megszokott MongoDB előnyeit a Cosmos DB által biztosított összes vállalati képességgel: [globális terjesztés,](distribute-data-globally.md) [automatikus horizontális,](partition-data.md)rendelkezésre állás és késési garanciák, inaktív titkosítás, biztonsági mentések és még sok más.
+A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt MongoDB előnyeit, és az összes olyan vállalati funkciót, amelyet a Cosmos DB biztosít: [globális elosztás](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állási és késési garanciák, titkosítás nyugalmi állapotban, biztonsági mentések és sok más.
 
-## <a name="protocol-support"></a>Protokoll támogatás
+## <a name="protocol-support"></a>Protokollok támogatása
 
-Az Azure Cosmos DB MongoDB API-ja alapértelmezés szerint kompatibilis a MongoDB **3.6-os** verziójával az új fiókok esetében. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy az Azure Cosmos DB MongoDB-fiókokhoz való API-jának használatakor a fiókok 3.6-os verziója a végpont formátumú, `*.mongo.cosmos.azure.com` míg a fiókok 3.2-es verziója a végpont formátumú. `*.documents.azure.com`
+A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy a MongoDB-fiókok Azure Cosmos DB API-ját használva a fiókok 3,6-es verziója a végpontot `*.mongo.cosmos.azure.com` használja, míg a fiókok 3,2-es verziójának formátuma `*.documents.azure.com`a végpont.
 
-## <a name="query-language-support"></a>Lekérdezési nyelv támogatása
+## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
-Az Azure Cosmos DB MongoDB-hoz készült API-ja átfogó támogatást nyújt a MongoDB lekérdezési nyelvi konstrukcióihoz. Az alábbiakban részletesen megtalálhatja a jelenleg támogatott műveletek, operátorok, szakaszok, parancsok és beállítások részletes listáját.
+A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezési nyelvi szerkezetekhez. Az alábbiakban megtalálhatja a jelenleg támogatott műveletek, operátorok, szakaszok, parancsok és beállítások részletes listáját.
 
 ## <a name="database-commands"></a>Adatbázisparancsok
 
-Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat támogatja:
+Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezési és írási műveletek parancsai
 
@@ -44,7 +44,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |getPrevError | Nem  |
 |insert  |   Igen  |
 |parallelCollectionScan  | Igen   |
-|resetError (hiba) |    Nem  |
+|resetError |    Nem  |
 |update  |   Igen  |
 |[Streamek módosítása](mongodb-change-streams.md)  |  Igen  |
 |GridFS |   Igen  |
@@ -62,7 +62,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Maximált gyűjtemények   |   Nem      |
+|Korlátozott gyűjtemények   |   Nem      |
 |cloneCollectionAsCapped     |   Nem      |
 |collMod     |   Nem      |
 |collMod: expireAfterSeconds   |   Nem      |
@@ -70,18 +70,18 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |copydb     |  Nem       |
 |létrehozás   |    Igen     |
 |createIndexes     |  Igen       |
-|currentOp (jelenlegi     |  Igen       |
+|currentOp     |  Igen       |
 |drop     |   Igen      |
 |dropDatabase     |  Igen       |
 |dropIndexes     |   Igen      |
 |filemd5    |   Igen      |
 |killCursors    |  Igen       |
-|killOp (gyilkos)     |   Nem      |
+|Mintálné     |   Nem      |
 |listCollections     |  Igen       |
 |listDatabases     |  Igen       |
 |listIndexes     |  Igen       |
 |reIndex     |    Igen     |
-|átnevezésGyűjtemény     |    Nem     |
+|renameCollection     |    Nem     |
 |connectionStatus    |     Nem    |
 
 ### <a name="diagnostics-commands"></a>Diagnosztikai parancsok
@@ -92,17 +92,17 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |collStats    |  Igen       |
 |connPoolStats     |  Nem       |
 |connectionStatus     |  Nem       |
-|dataSize (dataSize)     |   Nem      |
-|dbHash között    |    Nem     |
+|dataSize     |   Nem      |
+|dbHash    |    Nem     |
 |dbStats     |   Igen      |
-|Magyarázni     |   Igen      |
-|magyarázza: executionStats     |   Igen      |
+|megmagyarázni     |   Igen      |
+|magyarázat: executionStats     |   Igen      |
 |funkciók     |    Nem     |
 |hostInfo     |   Nem      |
 |listDatabases         |   Igen      |
-|listParancsok     |  Nem       |
+|Parancslista elemre     |  Nem       |
 |Profiler     |  Nem       |
-|kiszolgáló állapota     |  Nem       |
+|serverStatus     |  Nem       |
 |felül     |    Nem     |
 |whatsmyuri     |   Igen      |
 
@@ -220,7 +220,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 | $toLower|  Igen       |
 | $toUpper|  Igen       |
 
-### <a name="text-search-operator"></a>Szövegkereső operátor
+### <a name="text-search-operator"></a>Szöveges keresési operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
@@ -256,12 +256,12 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$$CURRENT|    Igen|
-|$$DESCEND|        Igen|
-|$$KEEP        |Igen|
-|$$PRUNE    |    Igen|
-|$$REMOVE    |Igen|
-|$$ROOT        |Igen|
+|$ $CURRENT|    Igen|
+|$ $DESCEND|        Igen|
+|$ $KEEP        |Igen|
+|$ $PRUNE    |    Igen|
+|$ $REMOVE    |Igen|
+|$ $ROOT        |Igen|
 
 ### <a name="literal-operator"></a>Literális operátor
 
@@ -299,13 +299,13 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 | $ifNull| Igen|
 | $switch |Igen|
 
-### <a name="data-type-operator"></a>Adattípus operátor
+### <a name="data-type-operator"></a>Adattípus-operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
 | $type| Igen|
 
-### <a name="accumulator-expressions"></a>Gyűjtőkifejezések
+### <a name="accumulator-expressions"></a>Gyűjtői kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
@@ -334,35 +334,35 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |Sztring    |Igen    |
 |Objektum    |Igen    |
 |Tömb    |Igen    |
-|Bináris adatok    |Igen|    
+|Bináris adatértékek    |Igen|    
 |ObjectId    |Igen    |
 |Logikai    |Igen    |
 |Dátum    |Igen    |
 |Null    |Igen    |
 |32 bites egész szám (int)    |Igen    |
 |Időbélyeg    |Igen    |
-|64 bites egész (hosszú)    |Igen    |
-|MinKey között    |Igen    |
-|MaxKey (MaxKey)    |Igen    |
-|Decimális 128    |Igen|    
+|64 bites egész szám (hosszú)    |Igen    |
+|MinKey    |Igen    |
+|MaxKey    |Igen    |
+|Decimal128    |Igen|    
 |Reguláris kifejezés    |Igen|
 |JavaScript    |Igen|
 |JavaScript (hatókörrel)|    Igen    |
-|Meghatározatlan    |Igen    |
+|Nem definiált    |Igen    |
 
-## <a name="indexes-and-index-properties"></a>Indexek és indextulajdonságok
+## <a name="indexes-and-index-properties"></a>Indexek és index tulajdonságai
 
 ### <a name="indexes"></a>Indexek
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Egymezős index    |Igen    |
+|Egyetlen mező indexe    |Igen    |
 |Összetett index    |Igen    |
-|Többkulcsos index    |Igen    |
-|Szöveg tárgymutatója    |Nem|
-|2dsphere (2dsphere)    |Igen    |
-|2d index    |Nem    |
-|Kivonatolt index    | Igen|
+|Multikey index    |Igen    |
+|Szöveges index    |Nem|
+|2dsphere    |Igen    |
+|2D-index    |Nem    |
+|Kivonatos index    | Igen|
 
 ### <a name="index-properties"></a>Index tulajdonságai
 
@@ -371,7 +371,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |Élettartam|    Igen    |
 |Egyedi    |Igen|
 |Részleges|    Nem|
-|A kis- és nagybetűk megkülönböztetése    |Nem|
+|Kis-és nagybetűk megkülönböztetése    |Nem|
 |Ritka    |Nem |
 |Háttér|    Igen |
 
@@ -386,14 +386,14 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |$not    |    Igen|
 |$nor    |    Igen| 
 
-### <a name="element-operators"></a>Elemoperátorok
+### <a name="element-operators"></a>Elem operátorai
 
 |Parancs  |Támogatott |
 |---------|---------|
 |$exists|    Igen|
 |$type    |    Igen|
 
-### <a name="evaluation-query-operators"></a>Kiértékelési lekérdezés operátorai
+### <a name="evaluation-query-operators"></a>Kiértékelési lekérdezési operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
@@ -401,18 +401,18 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |$jsonSchema    |    Nem|
 |$mod    |    Igen|
 |$regex |    Igen|
-|$text    | Nem (Nem támogatott. Használja inkább $regex.)| 
+|$text    | Nem (nem támogatott. Ehelyett használja a $regex.)| 
 |$where    |Nem| 
 
-A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé teszik az indexkeresést. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
+A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé teszik az indexek keresését. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
 
-Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni. A következő eredeti lekérdezés ```find({x:{$regex: /^abc$/})```esetén például a következőképpen kell módosítani:
+Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni. Ha például a következő eredeti lekérdezést adta meg: ```find({x:{$regex: /^abc$/})```, azt a következőképpen kell módosítani:
 
 ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 
 Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket. A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
-### <a name="array-operators"></a>Tömboperátorok
+### <a name="array-operators"></a>Tömb operátorai
 
 |Parancs  |Támogatott | 
 |---------|---------|
@@ -426,7 +426,7 @@ Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumok
 |---------|---------|
 $comment |Igen| 
 
-### <a name="projection-operators"></a>Vetítési operátorok
+### <a name="projection-operators"></a>Kivetítési operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
@@ -504,75 +504,75 @@ $polygon |  Igen |
 
 |Parancs  |Támogatott |
 |---------|---------|
-|kurzor.batchMéret()    |    Igen|
-|kurzor.close()    |Igen|
-|kurzor.isZárt()|        Igen|
-|kurzor.collation()|    Nem|
-|kurzor.megjegyzés()    |Igen|
-|kurzor.count()    |Igen|
-|kurzor.explain()|    Nem|
-|kurzor.forEach()    |Igen|
-|kurzor.hasNext()    |Igen|
-|kurzor.hint()    |Igen|
-|kurzor.isKimerült()|    Igen|
-|kurzor.itcount()    |Igen|
-|kurzor.limit()    |Igen|
-|kurzor.térkép()    |Igen|
-|kurzor.maxScan()    |Igen|
-|kurzor.maxTimeMS()|    Igen|
-|kurzor.max()    |Igen|
-|kurzor.min()    |Igen|
-|kurzor.next()|    Igen|
-|kurzor.noCursorTimeout()    |Nem|
-|kurzor.objsLeftInBatch()    |Igen|
-|kurzor.pretty()|    Igen|
-|kurzor.readConcern()|    Igen|
-|kurzor.readPref()        |Igen|
-|kurzor.returnKey()    |Nem|
-|kurzor.showRecordId()|    Nem|
-|kurzor.méret()    |Igen|
-|kurzor.skip()    |Igen|
+|cursor. batchSize ()    |    Igen|
+|kurzor. Bezárás ()    |Igen|
+|cursor. isClosed ()|        Igen|
+|kurzor. rendezés ()|    Nem|
+|kurzor. comment ()    |Igen|
+|kurzor. Count ()    |Igen|
+|kurzor. magyarázat ()|    Nem|
+|cursor. forEach ()    |Igen|
+|cursor. hasNext ()    |Igen|
+|cursor. Hint ()    |Igen|
+|cursor. isExhausted ()|    Igen|
+|cursor. itcount ()    |Igen|
+|kurzor. limit ()    |Igen|
+|kurzor. map ()    |Igen|
+|cursor. maxScan ()    |Igen|
+|cursor. maxTimeMS ()|    Igen|
+|kurzor. max ()    |Igen|
+|kurzor. min ()    |Igen|
+|kurzor. Next ()|    Igen|
+|cursor. noCursorTimeout ()    |Nem|
+|cursor. objsLeftInBatch ()    |Igen|
+|kurzor. Pretty ()|    Igen|
+|cursor. readConcern ()|    Igen|
+|cursor. readPref ()        |Igen|
+|kurzor. rekulcsrakész ()    |Nem|
+|cursor. showRecordId ()|    Nem|
+|kurzor. Size ()    |Igen|
+|kurzor. skip ()    |Igen|
 |cursor.sort()    |    Igen|
-|kurzor.tailable()|    Nem|
-|kurzor.toArray()    |Igen|
+|kurzor. farok ()|    Nem|
+|cursor. toArray ()    |Igen|
 
 ## <a name="sort-operations"></a>Rendezési műveletek
 
-A művelet `findOneAndUpdate` használatakor a rendezési műveletek egyetlen mezőben támogatottak, de több mezőrendezési műveletei nem támogatottak.
+A `findOneAndUpdate` művelet használatakor a rendezési műveletek egyetlen mező esetén támogatottak, de a rendezési műveletek több mezőn nem támogatottak.
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
-Az egyedi indexek biztosítják, hogy egy adott mező ne rendelkezzen ismétlődő értékekkel a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett "_id" kulcson. Egyéni indexeket hozhat létre a Cosmos DB-ben a createIndex paranccsal, beleértve az "egyedi" megkötést is.
+Az egyedi indexek biztosítják, hogy egy adott mező ne legyen duplikált érték a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett "_id" kulcson. A createIndex parancs használatával egyéni indexeket hozhat létre Cosmos DBban, beleértve az "egyedi" korlátozást is.
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 
-A Cosmos DB támogatja az élő (TTL) időt a dokumentum időbélyege alapján. A TTL az [Azure Portalon](https://portal.azure.com)keresztül engedélyezhető a beszedéshez.
+A Cosmos DB a dokumentum időbélyegzője alapján támogatja a élettartamot (TTL). A TTL engedélyezhető a gyűjtemények számára, ha a [Azure Portalra](https://portal.azure.com)kattint.
 
 ## <a name="user-and-role-management"></a>Felhasználó- és szerepkörkezelés
 
-Cosmos DB még nem támogatja a felhasználók és szerepkörök. A Cosmos DB azonban támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), valamint az [Azure Portalon](https://portal.azure.com) (Connection String lap) beszerezhető írási és írási és írásvédett jelszavakat/kulcsokat.
+A Cosmos DB még nem támogatja a felhasználókat és a szerepköröket. A Cosmos DB azonban támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), valamint az írható és olvasható jelszavakat/kulcsokat, amelyeket a [Azure Portal](https://portal.azure.com) (kapcsolati karakterlánc oldalon) lehet beszerezni.
 
 ## <a name="replication"></a>Replikáció
 
-Cosmos DB támogatja az automatikus, natív replikáció a legalacsonyabb rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A Cosmos DB nem támogatja a manuális replikációs parancsokat.
+Cosmos DB támogatja az automatikus és a natív replikálást a legalacsonyabb rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A Cosmos DB nem támogatja a manuális replikálási parancsokat.
 
 ## <a name="write-concern"></a>Írási szempont
 
-Egyes alkalmazások [írási probléma,](https://docs.mongodb.com/manual/reference/write-concern/) amely meghatározza a válaszok száma szükséges egy írási művelet során. Mivel a Cosmos DB a replikációt a háttérben kezeli, alapértelmezés szerint minden írás automatikusan kvórum. Az ügyfélkód által megadott írási problémákat a rendszer figyelmen kívül hagyja. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
+Egyes alkalmazások [írási aggodalomra](https://docs.mongodb.com/manual/reference/write-concern/) számíthatnak, amely meghatározza az írási művelet során szükséges válaszok számát. Mivel a Cosmos DB a replikációt a háttérben kezeli, alapértelmezés szerint minden írás automatikusan kvórum. Az ügyfél kódja által meghatározott írási aggályok figyelmen kívül lesznek hagyva. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding
 
-Az Azure Cosmos DB támogatja az automatikus, kiszolgálóoldali horizontális skálázást. Automatikusan kezeli a szegmensek létrehozását, elhelyezését és kiegyensúlyozását. Az Azure Cosmos DB nem támogatja a manuális horizontális műveletek et, ami azt jelenti, hogy nem kell meghívnia a parancsokat, például az addShard, balancerStart, moveChunk stb. Csak meg kell adnia a szegmenskulcsot a tárolók létrehozása vagy az adatok lekérdezése közben.
+Az Azure Cosmos DB támogatja az automatikus, kiszolgálóoldali horizontális skálázást. A szegmensek létrehozását, elhelyezését és kiegyensúlyozását automatikusan kezeli. Azure Cosmos DB nem támogatja a manuális horizontális skálázási parancsokat, ami azt jelenti, hogy nem kell olyan parancsokat meghívnia, mint például a addShard, a balancerStart, a moveChunk stb. A tárolók létrehozásakor vagy az adatlekérdezés során csak a szegmens kulcsát kell megadnia.
 
 ## <a name="sessions"></a>Munkamenetek
 
-Az Azure Cosmos DB még nem támogatja a kiszolgáló oldali munkamenetek parancsait.
+A Azure Cosmos DB még nem támogatja a kiszolgálóoldali munkamenet-parancsokat.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információkért ellenőrizze [Mongo 3.6 verzió funkciók](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
-- Ismerje meg, hogyan használhatja a [Studio 3T-t](mongodb-mongochef.md) az Azure Cosmos DB MongoDB-hoz való API-jával.
-- Ismerje meg, hogyan használhatja a [Robo 3T-t](mongodb-robomongo.md) az Azure Cosmos DB MongoDB-hoz való API-jával.
-- Fedezze fel a [MongoDB-mintákat](mongodb-samples.md) az Azure Cosmos DB MongoDB-hoz kapcsolódó API-jával.
+- További információ: [Mongo 3,6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
+- Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
+- Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
+- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.
 
-<sup>Megjegyzés: Ez a cikk az Azure Cosmos DB szolgáltatását ismerteti, amely a MongoDB-adatbázisokkal való vezetékes protokollkompatibilitást biztosítja. A Microsoft nem futtat MongoDB adatbázisokat a szolgáltatás biztosításához. Az Azure Cosmos DB nem áll kapcsolatban a MongoDB, Inc. vállalattal.</sup>
+<sup>Megjegyzés: Ez a cikk az Azure Cosmos DB egy olyan szolgáltatását ismerteti, amely a MongoDB-adatbázisokkal való, vezetékes protokoll-kompatibilitást biztosít. A Microsoft nem futtat MongoDB-adatbázisokat a szolgáltatás biztosításához. Azure Cosmos DB nem kapcsolódik a MongoDB, Inc. szolgáltatáshoz.</sup>

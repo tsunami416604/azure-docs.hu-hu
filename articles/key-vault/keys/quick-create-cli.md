@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Kulcs beállítása és beolvasása az Azure Key Vaultból'
-description: Rövid útmutató, amely bemutatja, hogyan állíthat be és kérhet be egy kulcsot az Azure Key Vaultból az Azure CLI használatával
+title: 'Gyors útmutató: kulcs beállítása és lekérése Azure Key Vault'
+description: Gyors útmutató, amely bemutatja, hogyan lehet kulcsokat beállítani és lekérni Azure Key Vault az Azure CLI használatával
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424208"
 ---
-# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: Kulcs beállítása és lekérése az Azure Key Vaultból az Azure CLI használatával
+# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: kulcs beállítása és lekérése Azure Key Vault az Azure CLI használatával
 
-Ebben a rövid útmutatóban hozzon létre egy key vault az Azure Key Vault az Azure CLI. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. A Key Vaultról további információt az [Áttekintés című témakörben talál.](../general/overview.md) Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Amint ezt befejezte, tárolni fog egy kulcsot.
+Ebben a rövid útmutatóban egy kulcstartót hoz létre Azure Key Vault az Azure CLI-vel. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információ a Key Vaultről: [Áttekintés](../general/overview.md). Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Ha ezt elvégezte, egy kulcsot fog tárolni.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-Az Azure-ba való bejelentkezéshez a CLI segítségével, amelyet beírhat:
+Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a következőt:
 
 ```azurecli
 az login
 ```
 
-A CLI-n keresztüli bejelentkezési lehetőségekről az [Azure CLI-vel való bejelentkezésről](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) további információt talál.
+Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részt.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -49,7 +49,7 @@ az group create --name "ContosoResourceGroup" --location eastus
 Azután létrehoz egy Key Vaultot abban az erőforráscsoportban, amelyet az előző lépésben hozott létre. A következő információkat kell megadnia:
 
 - Ehhez a rövid útmutatóhoz a **Contoso-vault2** nevet használjuk. A tesztelésnél egyedi nevet adjon meg.
-- Erőforráscsoport neve **ContosoResourceGroup.**
+- Erőforráscsoport neve **ContosoResourceGroup**.
 - Hely: **USA keleti régiója**.
 
 ```azurecli
@@ -65,15 +65,15 @@ Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket 
 
 ## <a name="add-a-key-to-key-vault"></a>Kulcs hozzáadása a Key Vaulthoz
 
-Kulcs hozzáadása a tárolóhoz, csak néhány további lépést kell tennie. Ezt a kulcsot egy alkalmazás is használhat. 
+A kulcs a tárolóhoz való hozzáadásához mindössze néhány további lépést kell elvégeznie. Ezt a kulcsot egy alkalmazás használhatja. 
 
-Az alábbi parancsok beírásával hozzon létre egy **ExampleKey nevű:**
+A nevezett **ExampleKey** létrehozásához írja be az alábbi parancsokat:
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
 ```
 
-Most már hivatkozhat erre a kulcsra, amelyet az URI használatával adott hozzá az Azure Key Vaulthoz. Az **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** aktuális verzió bekésezéséhez használható. 
+Most már hivatkozhat erre a kulcsra, amelyet a Azure Key Vaulthoz adott hozzá az URI használatával. Az **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** aktuális verzió beszerzéséhez használja a következőt:. 
 
 A korábban tárolt kulcs megtekintése:
 
@@ -82,7 +82,7 @@ A korábban tárolt kulcs megtekintése:
 az keyvault key show --name "ExampleKey" --vault-name "Contoso-Vault2"
 ```
 
-Most létrehozott egy Key Vaultot, tárolt egy kulcsot, és lekérte azt.
+Most létrehozott egy Key Vault, tárolt egy kulcsot, és beolvasta azt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -95,8 +95,8 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault ot, és egy kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultról és arról, hogyan integrálhatja azt az alkalmazásokkal, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy kulcsot. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Az [Azure Key Vault áttekintésének elolvasása](../general/overview.md)
-- Tekintse meg az [Azure CLI az keyvault parancsok](/cli/azure/keyvault?view=azure-cli-latest) hivatkozását
-- Tekintse át az [Azure Key Vault gyakorlati tanácsait](../general/best-practices.md)
+- [A Azure Key Vault áttekintése](../general/overview.md)
+- Tekintse meg az Azure CLI-re vonatkozó hivatkozást az kulcstartó [parancsainál](/cli/azure/keyvault?view=azure-cli-latest)
+- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése

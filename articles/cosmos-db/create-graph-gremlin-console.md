@@ -1,5 +1,5 @@
 ---
-title: 'Lekérdezés az Azure Cosmos DB Gremlin API-val a TinkerPop Gremlin console használatával: Oktatóanyag'
+title: 'Lekérdezés Azure Cosmos DB Gremlin API-val a TinkerPop Gremlin konzol használatával: oktatóanyag'
 description: Az Azure Cosmos DB rövid útmutatója csúcsok, élek és lekérdezések az Azure Cosmos DB Gremlin API-val történő létrehozásához.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
 ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81450207"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rövid útmutató: Azure Cosmos DB-gráf-adatbázis létrehozása, lekérdezése és sokasága a Gremlin konzol használatával
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -27,7 +27,7 @@ ms.locfileid: "81450207"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Cosmos DB [Gremlin API-fiókot,](graph-introduction.md) adatbázist és grafikont (tárolót) az Azure Portalon, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin konzoljával](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) a Gremlin API-adatokkal való munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-KONZOLját](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -39,7 +39,7 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) telepítve kell lennie. Az **ajánlott verzió a v3.4.3** vagy korábbi. (A Gremlin konzol Windows rendszeren való használatához telepítenie kell a [Java Runtime-ot).](https://www.oracle.com/technetwork/java/javase/overview/index.html)
+Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) telepítve kell lennie. Az **ajánlott verzió: v 3.4.3** vagy korábbi. (Ha Windows rendszeren szeretné használni a Gremlin-konzolt, telepítenie kell a [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html)szolgáltatást).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -49,19 +49,19 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Csatlakozás az alkalmazásszolgáltatáshoz/grafikonhoz
+## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Kapcsolódás az App Service-hez/gráfhoz
 
 1. A Gremlin konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az `apache-tinkerpop-gremlin-console-3.2.5/conf` könyvtárban.
 2. Adja meg a *host* (gazdagép), *port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) konfigurációkat az alábbi táblázat szerint:
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    gazdagépek|[*fióknév*. **gremlin**.cosmos.azure.com]|Tekintse meg a következő képernyőképet. Ez a **Gremlin URI-érték** az Azure Portal áttekintése lapon szögletes zárójelben, a záró :443/ eltávolításával. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [ fióknév .documents.azure.com] végződő*URI-t,* amely valószínűleg "A gazdagép nem válaszolt időben" kivételt a Gremlin-lekérdezések későbbi végrehajtásakor. 
+    gazdagépek|[*fiók neve*. **Gremlin**. Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [*fióknév*. Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
     port|443|Állítsa 443 értékre.
     felhasználónév|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
-    kapcsolatkészlet|{enableSsl: true}|A Kapcsolatkészlet beállítása a TLS-hez.
-    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
+    kapcsolatkészlet|{enableSsl: true}|A TLS-hez tartozó kapcsolatok készletének beállítása.
+    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
     A gazdagépek értékéhez másolja a **Gremlin URI** értéket az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
 
@@ -80,13 +80,13 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
-győződjön meg róla, hogy a hosts paraméter értékét zárójelek közé csomagolja []. 
+Ügyeljen arra, hogy a gazdagépek paraméter értékét a szögletes zárójelben ([]) belül betakarja. 
 
 1. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
 1. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]
-    > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. Ha a konfiguráció helyes, akkor ez a figyelmeztetés biztonságosan figyelmen kívül hagyható, mivel nem befolyásolhatja a konzol használatát. 
+    > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. Ha a konfiguráció helyes, akkor ez a figyelmeztetés nyugodtan figyelmen kívül hagyható, mivel nem befolyásolhatja a konzol használatát. 
 
 1. Ezután a(z) `:remote console` futtatásával irányítson át minden konzolparancsot a távoli kiszolgálóra.
 

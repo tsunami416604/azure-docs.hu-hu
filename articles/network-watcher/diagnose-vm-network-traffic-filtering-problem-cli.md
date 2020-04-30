@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Virtuálisgép hálózati forgalomszűrőjének diagnosztizálása – Azure CLI'
+title: 'Gyors útmutató: virtuálisgép-hálózati forgalom szűrési hibáinak diagnosztizálása – Azure CLI'
 titleSuffix: Azure Network Watcher
 description: Ebből a rövid útmutatóból megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalmi szűrőproblémáit az Azure Network Watcher IP-folyamat ellenőrzése funkciójával.
 services: network-watcher
@@ -19,31 +19,31 @@ ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382851"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása – Azure CLI
 
 Ennek a rövid útmutatónak a követésével egy virtuális gépet fog üzembe helyezni, majd ellenőriz egy IP-címre és URL-címre irányuló és egy IP-címről érkező kommunikációt. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy telepíti és használja az Azure CLI helyileg, ez a rövid útmutató megköveteli, hogy az Azure CLI 2.0.28-as vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Miután ellenőrizte az Azure CLI-verziót, futtassa `az login` a kapcsolatot az Azure-ral. Az Azure CLI-parancsok ebben a rövid útmutatóban vannak formázva, hogy egy Bash shell futtatásához.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell futtatnia. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Az Azure CLI verziójának ellenőrzése után futtassa a `az login` parancsot az Azure-beli kapcsolatok létrehozásához. Az ebben a rövid útmutatóban található Azure CLI-parancsok a bash-rendszerhéjban való futtatásra vannak formázva.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa létrehoz egy *myVm*nevű virtuális gép:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa egy *myVm*nevű virtuális gépet hoz létre:
 
 ```azurecli-interactive
 az vm create \
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a fennmaradó lépéseket, amíg a virtuális gép létre nem jön, és az Azure CLI kimenetet ad vissza.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása előtt ne folytassa a hátralévő lépéseket, és az Azure CLI kimenetet ad vissza.
 
 ## <a name="test-network-communication"></a>Hálózati kommunikáció tesztelése
 

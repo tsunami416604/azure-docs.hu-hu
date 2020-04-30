@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Szimulált TPM-eszköz kiépítése az Azure IoT Hubba Java használatával
-description: Rövid útmutató – Hozzon létre és hozzon létre egy szimulált TPM-eszközt az Azure IoT Hub-eszközlétesítési szolgáltatáshoz (DPS) javaeszköz SDK használatával. Ez a rövid útmutató egyéni regisztrációkat használ.
+title: Gyors útmutató – szimulált TPM-eszköz kiépítése az Azure-IoT Hub Javával
+description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése az Azure-hoz készült Java eszközoldali SDK-val IoT Hub Device Provisioning Service (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -10,24 +10,24 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: ce67b5e254a62def5f8b024e960cea7f8780e8b8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77605492"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Rövid útmutató: Szimulált TPM-eszköz létrehozása és üzembe helyezésa Java-eszköz SDK-használatával az Azure IoT Hub-eszközkiépítési szolgáltatáshoz
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése az Azure-hoz készült Java Device SDK-val IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-számítógépen. A szimulált eszköz hardverbiztonsági modulként (HSM) tartalmaz egy TPM-szimulátort. Az eszköz minta Java-kódot, hogy csatlakoztassa a szimulált eszköz az IoT hub segítségével egyéni regisztráció az eszköz kiépítési szolgáltatás (DPS).
+Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszköz hardveres biztonsági modulként (HSM) tartalmazza a TPM-szimulátort. A szimulált eszköz és az IoT hub között a Device kiépítési szolgáltatással (DPS) való egyéni regisztráció használatával csatlakoztathatja a szimulált eszközt az eszköz minta Java-kódjához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [automatikus kiépítés fogalmainak áttekintése](concepts-auto-provisioning.md).
-- Az [IoT Hub-eszközkiépítési szolgáltatás beállítása az Azure Portalon.](./quick-setup-auto-provision.md)
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Java SE Fejlesztői Készlet 8](https://aka.ms/azure-jdks).
+- Az [automatikus kiépítési fogalmak](concepts-auto-provisioning.md)áttekintése.
+- [A IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 - [Maven](https://maven.apache.org/install.html).
 - [Git](https://git-scm.com/download/).
 
@@ -47,7 +47,7 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. Futtassa a [TPM-szimulátort](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) a szimulált eszköz [HSM-jének.](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) Kattintson a **Hozzáférés engedélyezése** elemre a _Windows tűzfal_ beállításmódosításának engedélyezéséhez. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárja be ezt az ablakot; meg kell tartani ezt a szimulátort, amíg a végén a rövid útmutató. 
+1. Futtassa a [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) -szimulátort, hogy a [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) legyen a szimulált eszközhöz. Kattintson a **Hozzáférés engedélyezése** elemre a _Windows tűzfal_ beállításmódosításának engedélyezéséhez. A 2321-es és a 2322-es portokon lévő szoftvercsatornán keresztül figyel. Ne zárjuk be ezt az ablakot; ezt a szimulátort a rövid útmutató végéig kell megtartania. 
 
     ```cmd/sh
     .\azure-iot-sdk-java\provisioning\provisioning-tools\tpm-simulator\Simulator.exe
@@ -68,11 +68,11 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-
     cd provisioning/provisioning-samples/provisioning-tpm-sample
     ```
 
-1. Jelentkezzen be az Azure Portalon, válassza a bal oldali menü **Minden erőforrás** gombját, és nyissa meg az Eszközkiépítési szolgáltatást. Vegye figyelembe az _azonosító hatókörét_ és _a kiépítési szolgáltatás globális végpontját._
+1. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg az eszköz kiépítési szolgáltatását. Jegyezze fel az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_.
 
     ![Eszközkiépítési szolgáltatásra vonatkozó információk](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
-1. Szerkessze, `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` hogy tartalmazza az _azonosító hatókör_ és a _kiépítési szolgáltatás globális végpont,_ ahogy azt korábban említettük.  
+1. Módosítsa `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett értékre.  
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -81,7 +81,7 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-
     ```
     Mentse a fájlt.
 
-1. A következő parancsokkal hozhatja létre a projektet, navigálhat a célmappára, és végrehajthatja a létrehozott .jar fájlt. Cserélje `version` le a helyőrzőt a Java verziójára.
+1. A projekt létrehozásához használja a következő parancsokat, navigáljon a célmappához, és hajtsa végre a létrehozott. jar fájlt. Cserélje le `version` a helyőrzőt a Java-verzióra.
 
     ```cmd/sh
     mvn clean install
@@ -89,7 +89,7 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-
     java -jar ./provisioning-tpm-sample-{version}-with-deps.jar
     ```
 
-1. A program elkezd futni. Jegyezze fel a következő szakasz _ellenőrző kulcsát_ és _regisztrációs azonosítóját,_ és hagyja futni a programot.
+1. A program elkezd futni. Jegyezze fel a következő szakasz _érvényesítési kulcsát_ és _regisztrációs azonosítóját_ , és hagyja a program futását.
 
     ![Java TPM-eszközprogram](./media/java-quick-create-simulated-device/program.png)
     
@@ -99,22 +99,22 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows-
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
 - [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk:](concepts-service.md#individual-enrollment)Egyetlen eszköz regisztrálására használható.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
 
-Ez a cikk bemutatja az egyes regisztrációk.
+Ez a cikk az egyéni regisztrációkat mutatja be.
 
-1. Jelentkezzen be az Azure Portalon, válassza a bal oldali menü **Minden erőforrás** gombját, és nyissa meg az Eszközkiépítési szolgáltatást.
+1. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg az eszköz kiépítési szolgáltatását.
 
-1. Az Eszközkiépítési szolgáltatás menüben válassza **a Regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** lapot, és felül válassza az **Egyéni beléptetés hozzáadása** gombot. 
+1. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
-1. A **Beiktatás hozzáadása** panelen adja meg a következő adatokat:
+1. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-   - Adja meg a TPM-eszköz *regisztrációs azonosítóját* és *ellenőrzőkulcsát* a korábban megadott értékekből.
+   - Adja meg a TPM-eszköz *regisztrációs azonosítóját* és a *jóváhagyás kulcsát* a korábban feljegyzett értékek közül.
    - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
    - Ha kívánja, megadhatja az alábbi információkat is:
-       - Adjon meg egy egyedi *eszközazonosítót*. Ne használjon bizalmas adatokat az eszköz elnevezésekor. Ha úgy dönt, hogy nem ad meg egyet, a regisztrációs azonosítót fogja használni az eszköz azonosítására.
+       - Adjon meg egy egyedi *azonosítót*. Ne használjon bizalmas adatokat az eszköz elnevezésekor. Ha úgy dönt, hogy nem ad meg egyet, a rendszer a regisztrációs azonosítót fogja használni az eszköz azonosítására.
        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-   - Miután elkészült, nyomja meg a **Mentés** gombot. 
+   - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
 
      ![Írja be az eszköz beléptetési információit a portál panelén](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -123,11 +123,11 @@ Ez a cikk bemutatja az egyes regisztrációk.
 
 ## <a name="simulate-the-device"></a>Az eszköz szimulálása
 
-1. A java mintakódot futtató parancsablakban nyomja le az *Enter* billentyűt az alkalmazás futtatásának folytatásához. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket.  
+1. A Java-mintakód futtatására szolgáló parancssori ablakban nyomja le az *ENTER* billentyűt az alkalmazás futtatásának folytatásához. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket.  
 
     ![Java TPM-eszközprogram – végleges](./media/java-quick-create-simulated-device/program-final.png)
 
-1. A szimulált eszköz sikeres kiépítése a létesítési szolgáltatáshoz kapcsolódó IoT hub, az eszköz azonosítója jelenik meg a hub **IoT-eszközök** panel.
+1. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz kapcsolódó IoT hub-ra, az eszköz azonosítója megjelenik a hub **IoT-eszközök** paneljén.
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/java-quick-create-simulated-device/hubregistration.png) 
 
@@ -136,16 +136,16 @@ Ez a cikk bemutatja az egyes regisztrációk.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja a munkát, és vizsgálja meg az eszköz ügyfél minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
+Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
 1. Zárja be a TPM szimulátor ablakát a gépen.
-1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** t, majd válassza ki az Eszközkiépítési szolgáltatást. Nyissa meg a **szolgáltatás Regisztrációk kezelése** panelt, majd válassza az Egyéni **regisztrációk** lapot. *REGISTRATION ID* **Delete** 
-1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** lehetőséget, majd válassza ki az IoT-központot. Nyissa meg az **IoT-eszközök** panelt a hubhoz, jelölje be a rövid útmutatóban regisztrált eszköz *eszközazonosítója* melletti jelölőnégyzetet, majd nyomja meg a **Törlés** gombot az ablaktábla tetején.
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
+1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy TPM szimulált eszközt a gépen, és kiépítette azt az IoT Hub-eszközkiépítési szolgáltatás használatával az IoT Hub-eszközkiépítési szolgáltatás használatával. A TPM-eszköz programozott regisztrálásáról további információ a TPM-eszközök programozott regisztrációjának rövid útmutatójával. 
+Ebben a rövid útmutatóban létrehozott egy TPM-mel szimulált eszközt a gépen, és kiosztotta azt az IoT hubhoz a IoT Hub Device Provisioning Service használatával. A TPM-eszköz programozott módon történő regisztrálásának megismeréséhez folytassa a TPM-eszköz programozott beléptetését bemutató rövid útmutatóval. 
 
 > [!div class="nextstepaction"]
-> [Azure-gyorsindítás – TPM-eszköz regisztrálása az Azure IoT Hub-eszközkiépítési szolgáltatásra](quick-enroll-device-tpm-java.md)
+> [Azure rövid útmutató – TPM-eszköz regisztrálása az Azure-ban IoT Hub Device Provisioning Service](quick-enroll-device-tpm-java.md)

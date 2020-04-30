@@ -1,5 +1,5 @@
 ---
-title: Gyorsútmutató – Windows virtuálisgép-méretezési készlet létrehozása Azure-sablonnal
+title: Rövid útmutató – Windowsos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 description: Tudnivalók Windowsos virtuálisgép-méretezési csoport gyors létrehozásáról egy mintaalkalmazást üzembe helyező és az automatikus méretezési szabályokat konfiguráló Azure Resource Manager-sablonnal
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010443"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Rövid útmutató: Windowsos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
@@ -21,7 +21,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,21 +29,21 @@ Nincs.
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
-Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőforráscsoportokat helyezhet üzembe. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. Sablonokat az Azure Portalon, az Azure CLI-n, az Azure PowerShellen vagy a folyamatos integrációs/ folyamatos kézbesítési (CI/CD) folyamatain keresztül helyezhet üzembe.
+Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőforráscsoportokat helyezhet üzembe. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. A sablonok a Azure Portal, az Azure CLI, a Azure PowerShell vagy a folyamatos integrációs/folyamatos kézbesítési (CI/CD) folyamatokon keresztül helyezhetők üzembe.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)származik.
 
 :::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
 
 Ezek az erőforrások a következő sablonokban vannak definiálva:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleBeállítások**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Microsoft. bepillantások/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Méretezési csoport meghatározása
 
@@ -62,7 +62,7 @@ A kiemelt rész a méretezési csoport erőforrás-definíciója. Méretezési c
 | osProfile.adminUsername      | Az egyes virtuálisgép-példányokhoz tartozó felhasználónév                        | azureuser                                 |
 | osProfile.adminPassword      | Az egyes virtuálisgép-példányokhoz tartozó jelszó                        | P@ssw0rd!                                 |
 
-A méretezési csoport sablon testreszabásához módosíthatja a virtuális gép méretét vagy kezdeti kapacitását. Egy másik lehetőség egy másik platform vagy egyéni lemezkép használata.
+A méretezési csoport sablonjának testreszabásához módosíthatja a virtuális gép méretét vagy kezdeti kapacitását. Egy másik lehetőség, hogy más platformot vagy egyéni rendszerképet használjon.
 
 #### <a name="add-a-sample-application"></a>Mintaalkalmazás hozzáadása
 
@@ -74,17 +74,17 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 - A konfigurációs vagy telepítési szkriptek helye
 - A virtuálisgép-példányokon végrehajtandó parancsok
 
-A sablon a PowerShell DSC-bővítmény segítségével telepítegy ASP.NET MVC-alkalmazást, amely az IIS-ben fut.
+A sablon a PowerShell DSC bővítmény használatával telepít egy ASP.NET MVC-alkalmazást, amely az IIS-ben fut.
 
 Letölt egy telepítő szkriptet a GitHubról – ez az *url* beállításban van definiálva. A bővítmény ezután futtatja az *InstallIIS* függvényt az *IISInstall.ps1* szkriptből a *function* és a *Script* beállításoknak megfelelően. Maga az ASP.NET alkalmazás webes telepítési csomagként érhető el, amely szintén a GitHubról lesz letöltve a *WebDeployPackagePath* argumentumnak megfelelően:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez válassza a központi telepítés az **Azure-ba** gombot. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
+A sablon üzembe helyezéséhez kattintson az **üzembe helyezés az Azure-** ban gombra. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
 
 [![Sablon üzembe helyezése az Azure-ban](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Az Azure PowerShell használatával is telepíthet erőforrás-kezelői sablont:
+Azure PowerShell használatával a Resource Manager-sablonokat is üzembe helyezheti:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -106,19 +106,19 @@ A kérdések megválaszolásával adja meg a méretezési csoport nevét és a v
 
 ## <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress címsegítségével](/powershell/module/az.network/get-azpublicipaddress) az alábbiak szerint:
+Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) a következőképpen:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőbe *a következő formátumban: http:\//publicIpAddress/MyApp*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
+Adja meg a terheléselosztó nyilvános IP-címét a webböngészőben a következő formátumban *: http:\//publicIpAddress/MyApp*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
 
 ![Futó IIS-hely](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) segítségével eltávolíthatja az erőforráscsoportot, méretezési készlet. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot, a méretezési csoportot. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

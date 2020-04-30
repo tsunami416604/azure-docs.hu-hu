@@ -1,6 +1,6 @@
 ---
-title: Az IoT Digital Distribution Center bemutatója | Microsoft dokumentumok
-description: Az IoT Central digitális elosztóközpont alkalmazássablonjának oktatóanyaga
+title: A IoT Digital Distribution Center oktatóanyaga | Microsoft Docs
+description: A IoT Centralhez készült Digital Distribution Center-alkalmazás sablonjának oktatóanyaga
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -8,112 +8,112 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81000587"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: Digitális elosztóközpont-alkalmazássablon telepítése és végigjárása
+# <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
 
 
 
-Ez az oktatóanyag bemutatja, hogyan kezdheti el az IoT Central **digitális terjesztési központ** alkalmazássablonüzembe helyezését. Megtudhatja, hogyan telepítheti a sablont, mi szerepel a dobozon kívül, és mit érdemes elvégezni.
+Ez az oktatóanyag bemutatja, hogyan kezdheti el egy IoT Central **Digital Distribution Center** -alkalmazás sablonjának üzembe helyezését. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
 
-Ebben az oktatóanyagban megtudhatja, hogyan kell, 
-* Digitális elosztóközpont-alkalmazás létrehozása 
-* Az alkalmazás végigjárása 
+Ebből az oktatóanyagból megtudhatja, hogyan, 
+* Digital Distribution Center-alkalmazás létrehozása 
+* Az alkalmazás végigvezeti 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az alkalmazás telepítéséhez nincs szükség konkrét előfeltételekre
-* Ajánlott Azure-előfizetés, de akár anélkül is próbálkozhat
+* Az alkalmazás üzembe helyezéséhez nem szükségesek konkrét előfeltételek
+* Ajánlott az Azure-előfizetés használata, de anélkül is próbálkozhat
 
-## <a name="create-digital-distribution-center-application-template"></a>Digitális elosztóközpont alkalmazássablon létrehozása
+## <a name="create-digital-distribution-center-application-template"></a>Digital Distribution Center-alkalmazás sablonjának létrehozása
 
-Az alkalmazást a következő lépésekkel hozhatja létre
+Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 
-1. Keresse meg az Azure IoT Central alkalmazáskezelő webhelyét. Válassza a bal oldali navigációs sáv **építés gombját,** majd kattintson a **Kiskereskedelem** fülre.
-
-    > [!div class="mx-imgBorder"]
-    > ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
-
-2. Válassza a **Kiskereskedelmi** lap lehetőséget, és válassza az **Alkalmazás létrehozása** lehetőséget a **digitális elosztóközpont-alkalmazás alatt.**
-
-3. **Az alkalmazás létrehozása** megnyílik az Új jelentkezési lap, és az alábbiak szerint töltse ki a kért adatokat.
-   **Alkalmazásneve**: használhatja az alapértelmezett javasolt nevet, vagy megadhatja a rövid alkalmazás nevét.
-   **URL**: használhatja a javasolt alapértelmezett URL-t, vagy megadhatja a barátságos, egyedi emlékezetes URL-t. Ezután az alapértelmezett beállítás ajánlott, ha már rendelkezik egy Azure-előfizetéssel. Tudod elkezd -val 7- nap szabad próba- árkialakítás tervez és választ -hoz megtérít -hoz egy mértékadó árkialakítás tervez bármikor előtt a szabad nyom lejár.
-   **Számlázási adatok:** A címtár, az Azure-előfizetés és a régió adatait az erőforrások kiépítése szükséges.
-   **Létrehozás:** Válassza a lap alján található létrehozás lehetőséget az alkalmazás üzembe helyezéséhez.
+1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
     > [!div class="mx-imgBorder"]
-    > ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+
+2. Válassza a **kereskedelem** fület, és válassza az alkalmazás **létrehozása** a **digitális terjesztési központ alkalmazás** alatt elemet.
+
+3. Az alkalmazás **létrehozásakor** megnyílik az új alkalmazás űrlapja, és az alább látható módon töltse ki a kért adatokat.
+   **Alkalmazás neve**: az alapértelmezett javasolt nevet használhatja, vagy megadhatja a felhasználóbarát alkalmazás nevét.
+   **URL**: használhatja a javasolt alapértelmezett URL-címet, vagy megadhatja a felhasználóbarát egyedi emlékezetes URL-címét. Ezt követően az alapértelmezett beállítás akkor ajánlott, ha már rendelkezik Azure-előfizetéssel. Elkezdheti a 7 napos ingyenes próbaverzió díjszabását, és úgy is dönthet, hogy az ingyenes nyomvonal lejárta előtt bármikor standard díjszabási csomagra vált.
+   **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
+   **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
     > [!div class="mx-imgBorder"]
-    > ![Digitális terjesztési számlázási adatok](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-create.png)
 
-## <a name="walk-through-the-application-dashboard"></a>Az alkalmazás irányítópultjának végigjárása 
+    > [!div class="mx-imgBorder"]
+    > ![Digitális disztribúció számlázási adatai](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
-Az alkalmazássablon sikeres üzembe helyezése után az alapértelmezett irányítópult egy elosztóközpont-üzemeltetőközpontú portál. A Northwind Trader egy fiktív elosztóközpont-megoldásszolgáltató, amely szállítószalag-rendszereket kezel. 
+## <a name="walk-through-the-application-dashboard"></a>Az alkalmazás irányítópultjának átjárása 
 
-Ezen az irányítópulton egy átjáró és egy kamera fog iot-eszközként eljárni. Az átjáró telemetriai adatokat biztosít a csomagok, például az érvényes, érvénytelen, azonosítatlan és a kapcsolódó eszköz iker tulajdonságokat. Az összes alsóbb rétegbeli parancs végrehajtása IoT-eszközökön, például egy kamerán történik. Ez az irányítópult előre konfigurálva van, hogy bemutassa a kritikus elosztóközpont-eszközműveletek et.
+Az alkalmazás sablonjának sikeres üzembe helyezését követően az alapértelmezett irányítópult egy terjesztési központ operátorának célzott portálja. A Northwind Trader egy fiktív terjesztési központ megoldás-szolgáltatója, amely a továbbító rendszereket kezeli. 
 
-Az irányítópult logikusan van rendszerezve az Azure IoT-átjáró és az IoT-eszköz eszközkezelési képességeinek megjelenítéséhez.  
-   * Az átjáróparancs-& vezérlőfeladatokat elvégezhet
-   * Kezelje a megoldás részét szolgáló összes kamerát. 
+Ebben az irányítópultban egy átjárót és egy IoT-eszközként működő kamerát fog látni. Az átjáró olyan csomagokat biztosít a telemetria, mint például az érvényes, érvénytelen, azonosítatlan és méret, valamint a társított eszközök Twin tulajdonságai. Az összes alárendelt parancs a IoT-eszközökön, például egy kamerán fut. Ez az irányítópult előre konfigurálva van, hogy bemutassa a kritikus terjesztési központ működési tevékenységét.
 
-> [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
-
-## <a name="device-template"></a>Eszközsablon
-
-Kattintson az Eszközsablonok fülre, és látni fogja az átjáró képességmodelljét. A képességmodell két különböző felület köré épül **a Fényképezőgép** és a Digitális **Terjesztési Átjáró**
+Az irányítópult logikailag úgy van rendszerezve, hogy megjelenjen az Azure IoT Gateway és a IoT eszköz eszköz-felügyeleti képességei.  
+   * Az átjáró parancs végrehajtása & vezérlési feladatokat hajthat végre
+   * A megoldás részét képező összes kamera kezelése. 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
-**Kamera** - Ez a felület szervezi az összes kamera-specifikus parancs képességek 
+## <a name="device-template"></a>Eszköz sablonja
 
-> [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-camera.png)
-
-**Digitális terjesztési átjáró** – Ez a felület a kamera, a felhőalapú ikereszközök tulajdonságaiból és az átjáróadatokból érkező összes telemetriai adatot képviseli.
+Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képességi modell két különböző interfész **kamera** és **digitális terjesztési átjáró** köré szerveződik
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
-
-## <a name="gateway-commands"></a>Átjáróparancsok
-Ez az illesztő rendszerezi az összes átjáróparancs-képességet
+**Kamera** – ez a felület az összes kamera-specifikus parancssori funkciót rendszerezi 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-camera.png)
+
+**Digital Distribution Gateway** – ez az interfész a fényképezőgépből, a felhőben definiált eszköz Twin tulajdonságaiból és az átjáró adataiból származó összes telemetria jelöli.
+
+> [!div class="mx-imgBorder"]
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+
+
+## <a name="gateway-commands"></a>Átjáró parancsai
+Ez a felület az összes átjáró-parancs funkcióját rendszerezi
+
+> [!div class="mx-imgBorder"]
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>Szabályok
-Válassza ki a szabályok lapot az alkalmazássablonban található két különböző szabály megtekintéséhez. Ezek a szabályok úgy vannak beállítva, hogy további vizsgálatok céljából e-mailben küldjék el az értesítéseket az operátoroknak.
+Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
 
- **Túl sok érvénytelen csomagriasztás** – Ez a szabály akkor aktiválódik, ha a fényképezőgép nagy számú érvénytelen csomagot észlel, amelyek a szállítószalag-rendszeren keresztül áramlanak.
+ **Túl sok érvénytelen csomag-riasztás** – ez a szabály akkor aktiválódik, ha a kamera nagy mennyiségű érvénytelen csomagot észlel a továbbító rendszeren keresztül.
  
-**Nagy csomag** - Ez a szabály akkor aktiválódik, ha a fényképezőgép hatalmas csomagot észlel, amely nem ellenőrizhető a minőség szempontjából. 
+**Nagyméretű csomag** – ez a szabály akkor aktiválódik, ha a kamera olyan hatalmas csomagot észlel, amely nem vizsgálható meg a minőség tekintetében. 
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>Feladatok
-Válassza ki a feladatok lapon, hogy öt különböző feladatok, amelyek az alkalmazás sablon részeként létezik: A feladatok funkció valameddig a megoldás szintű műveleteket. Itt a digitális elosztóközpont-feladatok az eszközparancsokat használják, & ikerképességgel olyan feladatok at, mint például a
-   * kamera kalibrálása a csomagészlelés megkezdése előtt 
-   * rendszeres időközönként frissíti a kamera firmware-ét
-   * a telemetriai időköz módosítása az adatfeltöltés kezeléséhez
+Válassza a feladatok fület az alkalmazás sablonjának részeként öt különböző feladat megjelenítéséhez: a feladatok funkció kihasználható az egész megoldásra kiterjedő műveletek végrehajtásához. Itt a Digital Distribution Center-feladatok az eszköz parancsaival & Twin képességgel végezhetnek feladatokat, például
+   * a kamera kalibrálása a csomagok észlelésének megkezdése előtt 
+   * a kamera belső vezérlőprogram rendszeres frissítése
+   * az adatfeltöltés kezelése telemetria intervallumának módosítása
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha nem fogja tovább használni ezt az alkalmazást, törölje az alkalmazássablont a **Felügyeleti** > **alkalmazás beállításai** hivatkozással, és kattintson a Törlés **gombra.**
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti** > **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
 
 > [!div class="mx-imgBorder"]
-> ![Digitális elosztóközpont](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![Digitális terjesztési központ](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>További lépések
-* További információ a digitális elosztóközpont megoldásarchitektúra [digitális elosztóközpontjának koncepciójáról](./architecture-digital-distribution-center.md)
-* További információ az [IoT Central egyéb kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
-* Az IoT Centralról további információ az [IoT Central áttekintése című témakörben található.](../core/overview-iot-central.md)
+* További információ a Digital Distribution Center Solution Architecture [Digital Distribution Center koncepcióról](./architecture-digital-distribution-center.md)
+* További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

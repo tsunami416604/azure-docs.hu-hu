@@ -1,6 +1,6 @@
 ---
-title: TPM-eszköz regisztrálása az Azure-eszközkiépítési szolgáltatásba Java használatával
-description: Gyorsútmutató – TPM-eszköz regisztrálása az Azure IoT Hub-eszközlétesítési szolgáltatás (DPS) java szolgáltatás SDK használatával. Ez a rövid útmutató egyéni regisztrációkat használ.
+title: TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a Javával
+description: Gyors útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Serviceba (DPS) a Java Service SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,24 +10,24 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241695"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rövid útmutató: TPM-eszköz igénylése az IoT Hub-eszközkiépítési szolgáltatásba a Java Service SDK használatával
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Java Service SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-Ebben a rövid útmutatóban programozott módon egyéni regisztrációt hozhat létre egy szimulált TPM-eszközhöz az Azure IoT Hub-eszközkiépítési szolgáltatásban a Java Service SDK használatával egy minta Java-alkalmazás segítségével.
+Ebben a rövid útmutatóban programozott módon hozzon létre egy egyéni regisztrációt egy szimulált TPM-eszközhöz az Azure IoT Hub Device Provisioning Service a Java Service SDK-val egy minta Java-alkalmazás segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [IoT Hub-eszközkiépítési szolgáltatás beállítása az Azure Portalon.](./quick-setup-auto-provision.md)
-- Az [Olvasás kriptográfiai kulcsok befejezése a TPM-eszközről](quick-create-simulated-device.md#simulatetpm).
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Java SE Fejlesztői Készlet 8](https://aka.ms/azure-jdks). Ez a rövid útmutató az alábbi [Java Service SDK-t](https://azure.github.io/azure-iot-sdk-java/service/) telepíti. Úgy működik, mind a Windows és a Linux. Ez a rövid útmutató a Windows rendszert használja.
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Az [olvasási titkosítási kulcsok befejezése a TPM-eszközről](quick-create-simulated-device.md#simulatetpm).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ez a rövid útmutató telepíti a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) -t alább. Windows és Linux rendszereken egyaránt működik. Ez a rövid útmutató a Windowst használja.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -62,7 +62,7 @@ Ebben a rövid útmutatóban programozott módon egyéni regisztrációt hozhat 
 
 Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait a mintakódhoz. 
 
-1. Nyisson meg egy parancssort. Klónozza a GitHub-tárta eszközregisztrációs kódmintáját a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)használatával:
+1. Nyisson meg egy parancssort. A GitHub-tárház klónozása az eszköz beléptetési kódjához a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)használatával:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -71,7 +71,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 2. A letöltött forráskódban lépjen az **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_** mintamappára. Nyissa meg a **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** fájlt egy tetszőleges szövegszerkesztőben, és adja hozzá az alábbi adatokat:
 
    1. Adja hozzá a `[Provisioning Connection String]` karakterláncot a kiépítési szolgáltatáshoz a portálról:
-       1. Keresse meg a létesítési szolgáltatást az [Azure Portalon.](https://portal.azure.com) 
+       1. Navigáljon a kiépítési szolgáltatáshoz a [Azure Portal](https://portal.azure.com). 
        2. Nyissa meg a **Megosztott elérési szabályzatok** panelt, és válasszon ki egy szabályzatot, amely rendelkezik az *EnrollmentWrite* engedéllyel.
        3. Másolja ki az **elsődleges kulcs kapcsolati sztringjét**. 
 
@@ -130,7 +130,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
     mvn install -DskipTests
     ```
 
-   Ez a parancs letölti [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) a Maven csomagot a gépre. Ez a csomag tartalmazza a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)bináris fájljait, amelyeket a mintakódnak létre kell tennie. 
+   Ez a parancs letölti a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven-csomagot a gépre. Ez a csomag tartalmazza a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)bináris fájljait, amelyeket a mintakód létrehozásához szükséges. 
 
 3. Futtassa a mintát a következő parancsokkal a parancsablakban:
 
@@ -141,19 +141,19 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 
 4. A sikeres regisztráció érdekében kísérje figyelemmel a kimeneti ablakot. 
 
-5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Válassza **a Regisztrációk kezelése**lehetőséget, és válassza *Registration ID* az **Egyéni beléptetések** lapot. 
+5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Válassza a **regisztrációk kezelése**lehetőséget, és válassza az **Egyéni regisztrációk** fület. figyelje meg, hogy a szimulált TPM-eszköz *regisztrációs azonosítója* már szerepel a listáján. 
 
     ![Sikeres TPM-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha azt tervezi, hogy vizsgálja meg a Java szolgáltatás minta, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem tervezi a folytatást, az alábbi lépésekkel törölje az összes olyan erőforrást, amelyet ez a rövid útmutató hozott létre.
+Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be a TPM-szimulátor ablakát, amely a TPM-eszköz szimulálásához jött létre.
-1. Keresse meg az Eszközkiépítési szolgáltatást az Azure Portalon, válassza a **Regisztrációk kezelése**lehetőséget, majd *Registration ID* jelölje be az **Egyéni beléptetések** lapot. **Delete**
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a regisztrációk **kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban létrehozott beléptetési bejegyzéshez tartozó *regisztrációs azonosító* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban egy szimulált TPM-eszközt regisztrált az eszközkiépítési szolgáltatásra. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
+Ebben a rövid útmutatóban egy szimulált TPM-eszközt regisztrált az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]
 > [Azure IoT Hub eszközkiépítési szolgáltatás oktatóanyagai](./tutorial-set-up-cloud.md)

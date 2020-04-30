@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Ikerbiztonsági modul létrehozása'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Azure Security Center for IoT module twin-t az Azure Security Center for IoT-hez való használatra.
+title: 'Gyors útmutató: biztonsági modul létrehozása – Twin'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Security Center a IoT-modulhoz, amely a Azure Security Center for IoT használható.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,67 +16,67 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310862"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rövid útmutató: Hozzon létre egy azureiotsecurity modul iker
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egyéni _azureiotsecurity_ modul twins új eszközökhöz, vagy a batch hozzon létre modul twins az Összes eszköz egy IoT Hub.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egyedi _azureiotsecurity_ -modult az új eszközökhöz, vagy létrehozhat egy batch-modult az összes eszközhöz egy IoT hub.
 
-## <a name="understanding-azureiotsecurity-module-twins"></a>Az azureiotsecurity modul ikermoduljának ismertetése
+## <a name="understanding-azureiotsecurity-module-twins"></a>Az ikrek azureiotsecurity-moduljának ismertetése
 
-Az Azure-ban készült IoT-megoldások esetében az ikereszközök kulcsfontosságú szerepet játszanak mind az eszközkezelésben, mind a folyamatautomatizálásban.
+Az Azure-ban beépített IoT-megoldások esetében az eszközök az ikrek kulcsszerepet játszanak az eszközkezelés és a folyamatok automatizálása terén is.
 
-Az Azure Security Center for IoT teljes integrációt kínál a meglévő IoT-eszközfelügyeleti platformmal, lehetővé téve az eszköz biztonsági állapotának kezelését, valamint a meglévő eszközvezérlési képességek kihasználását.
-Az Azure Security Center az IoT-integrációhoz az IoT Hub ikermechanizmusának használatával érhető el.
+Azure Security Center for IoT teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, így kezelheti az eszköz biztonsági állapotát, és használhatja a meglévő eszköz-vezérlési képességeket.
+A IoT-integráció Azure Security Center a IoT Hub Twin mechanizmus használatával érhető el.
 
-Tekintse meg az [IoT Hub-modul twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) további megismeréséhez az Azure IoT Hub ban a modultwins általános koncepciójával kapcsolatban.
+További információ az IoT Hub Azure-beli modulbeli ikrek általános fogalmáról: [IoT hub modul ikrek](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
 
-Az Azure Security Center for IoT használja a modul iker mechanizmus, és fenntartja a biztonsági modul két nevű _azureiotsecurity_ az egyes eszközök.
+A IoT Azure Security Center a modul Twin mechanizmusát használja, és minden egyes eszközhöz fenntart egy _azureiotsecurity_ nevű biztonsági modult.
 
-A biztonsági modul iker tartalmazza az összes vonatkozó információt az eszköz biztonságát az egyes eszközök.
+A biztonsági modul Twin az eszközök biztonságára vonatkozó összes információt tartalmazza.
 
-Az Azure Security Center for IoT-funkciók teljes körű kihasználásához létre kell hoznia, konfigurálnia és használnia kell ezeket a biztonsági modultwins-eket a szolgáltatás minden eszközéhez.
+Ahhoz, hogy a Azure Security Center teljes mértékben használhassa a IoT-funkciókat, létre kell hoznia, konfigurálnia és használnia kell ezeket a biztonsági modulokat a szolgáltatás minden eszközéhez.
 
-## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity modul ikerelem létrehozása
+## <a name="create-azureiotsecurity-module-twin"></a>Twin azureiotsecurity-modul létrehozása
 
-_Azureiotsecurity_ modul ikrek hozhatók létre két módon:
+a _azureiotsecurity_ modul ikrek két módon hozhatók létre:
 
-1. [Modul kötegelt parancsfájl](https://aka.ms/iot-security-github-create-module) – automatikusan létrehozza az ikermodult az új eszközökhöz vagy eszközökhöz az alapértelmezett konfiguráció használatával.
-1. Manuálisan szerkesztheti az egyes modulokat, külön-külön, az egyes eszközök adott konfigurációival.
+1. [Modul Batch-parancsfájl](https://aka.ms/iot-security-github-create-module) – a automatikusan létrehozza a modult az új eszközök vagy eszközök számára az alapértelmezett konfiguráció használata nélkül.
+1. Manuálisan szerkessze az egyes modulokat külön-külön az egyes eszközökhöz tartozó konfigurációkkal.
 
 >[!NOTE]
-> A kötegelt módszer használata nem írja felül a meglévő azureiotsecurity modul twins. A kötegelt módszer használata csak új modul ikrek olyan eszközökhöz, amelyek még nem rendelkeznek a biztonsági modul iker.
+> A Batch metódus használata nem írja felül az ikrek meglévő azureiotsecurity-modulját. A Batch metódus csak az ikrek új modulját hozza létre olyan eszközökhöz, amelyek még nem rendelkeznek különálló biztonsági modullal.
 
-Tekintse meg [az ügynök konfigurációját,](how-to-agent-configuration.md) amelyből megtudhatja, hogyan módosíthatja vagy módosíthatja egy meglévő ikermodul konfigurációját.
+Tekintse meg az [ügynök konfigurációja](how-to-agent-configuration.md) című témakört, amelyből megtudhatja, hogyan módosíthatja vagy módosíthatja a meglévő modulok konfigurációját.
 
-Ha manuálisan szeretne új _azureiotsecurity_ modult létrehozni egy eszközhöz, kövesse az alábbi utasításokat:
+Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszközhöz, kövesse az alábbi utasításokat:
 
-1. Az IoT Hubban keresse meg és válassza ki azt az eszközt, amelyhez egy ikerbiztonsági modult szeretne létrehozni.
-1. Kattintson az eszközre, majd a **Modulidentitás hozzáadása parancsra.**
-1. A **Modulidentitás neve** mezőbe írja be az **azureiotsecurity értéket.**
+1. A IoT Hubban keresse meg és válassza ki azt az eszközt, amelyhez külön biztonsági modult szeretne létrehozni.
+1. Kattintson az eszközre, majd a **modul identitásának hozzáadása**elemre.
+1. A **modul identitásának neve** mezőbe írja be a **azureiotsecurity**nevet.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="verify-creation-of-a-module-twin"></a>Ikermodul létrehozásának ellenőrzése
+## <a name="verify-creation-of-a-module-twin"></a>Modul létrehozásának ellenőrzése
 
-Annak ellenőrzése, hogy létezik-e ikerbiztonsági modul egy adott eszközhöz:
+Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszközhöz:
 
-1. Az Azure IoT Hubban válassza az **IoT-eszközök** az **Explorers** menüben.
-1. Írja be az eszközazonosítót, vagy válasszon egy beállítást a **Lekérdezés eszközmezőben,** és kattintson az **Eszközök lekérdezése**gombra .
+1. Az Azure-IoT Hub válassza a **IoT eszközök** lehetőséget a **felfedezők** menüből.
+1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd kattintson az **eszközök lekérdezése**elemre.
     ![Eszközök lekérdezése](./media/quickstart/verify-security-module-twin.png)
-1. Jelölje ki az eszközt, vagy kattintson rá duplán az Eszköz részletei lap megnyitásához.
-1. Válassza ki a **modul identitások** menüt, és erősítse meg az **azureiotsecurity** modul létezését az eszközhöz társított modulidentitások listájában.
-    ![Az eszközhöz társított modulok](./media/quickstart/verify-security-module-twin-3.png)
+1. Válassza ki az eszközt, vagy kattintson rá duplán az eszköz részletei lap megnyitásához.
+1. Válassza a **modul identitások** menüt, és erősítse meg a **azureiotsecurity** modul létezését az eszközhöz társított modul-identitások listájában.
+    ![Eszközhöz társított modulok](./media/quickstart/verify-security-module-twin-3.png)
 
-Ha többet szeretne tudni az Azure Security Center ioT-modultwins-ek tulajdonságainak testreszabásáról, olvassa el az [Ügynök konfigurációja.](how-to-agent-configuration.md)
+Ha többet szeretne megtudni az IoT-modulok Azure Security Center tulajdonságainak testreszabásáról, tekintse meg az [ügynök konfigurálása](how-to-agent-configuration.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkhez, hogy megtudja, hogyan konfigurálhatja az egyéni riasztásokat...
+A következő cikkből megtudhatja, hogyan konfigurálhat egyéni riasztásokat...
 
 > [!div class="nextstepaction"]
 > [Egyéni riasztások konfigurálása](quickstart-create-custom-alerts.md)

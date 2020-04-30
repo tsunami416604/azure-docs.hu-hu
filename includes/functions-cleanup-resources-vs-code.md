@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81112896"
 ---
-1. A Visual Studio Code alkalmazásban nyomja le az F1 billentyűt a parancspaletta megnyitásához. A parancspalettán keresse `Azure Functions: Open in portal`meg és válassza a lehetőséget.
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Open in portal`a következőt:.
 
-1. Válassza ki a függvényalkalmazást, és nyomja le az Enter billentyűt. A függvényalkalmazás lapja megnyílik az Azure Portalon.
+1. Válassza ki a Function alkalmazást, és nyomja le az ENTER billentyűt. Megnyílik a Function app (alkalmazás) lap a Azure Portal.
 
-1. Az **Áttekintés** lapon jelölje ki az **Elnevezett**hivatkozást az Erőforrás csoportban.
+1. Az **Áttekintés** lapon válassza ki az elnevezett hivatkozást az **erőforráscsoport**területen.
 
     ![Válassza ki az erőforráscsoportot, amelyet törölni kíván a függvényalkalmazás oldaláról.](./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png)
 

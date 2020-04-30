@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Gremlin API PHP-vel – Azure Cosmos DB'
+title: 'Gyors útmutató: Gremlin API PHP-Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a PHP használatával történő létrehozására.
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68736650"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rövid útmutató: Graph-adatbázis létrehozása az Azure Cosmos DB-ben a PHP és az Azure Portal használatával
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a PHP és a Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -23,7 +23,7 @@ ms.locfileid: "68736650"
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
 > * [Python](create-graph-python.md)
-> * [Php](create-graph-php.md)
+> * [PHP](create-graph-php.md)
 >  
 
 Ez a rövid útmutató azt ismerteti, hogy miként használható a PHP és az Azure Cosmos DB [Gremlin API](graph-introduction.md) egy konzolalkalmazás egy GitHubról származó példa klónozásával történő létrehozására. A rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.   
@@ -194,7 +194,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Válassza ki **ben,** és figyelje meg, hogy ők kapcsolódnak robin. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
+2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Válassza ki a **ben** , és figyelje meg, hogy csatlakozik a robinhoz. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
 
    ![Új csúcspontok az Azure Portal Adatkezelőjében megjelenő gráfban](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -204,12 +204,12 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 4. Adja meg a *person* címkét.
 
-5. Kattintson **a Tulajdonság hozzáadása** gombra az alábbi tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az **azonosító** kulcs szükséges.
+5. Kattintson a **tulajdonság hozzáadása** lehetőségre a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az **azonosító** kulcs szükséges.
 
     Kulcs | Érték | Megjegyzések
     ----|----|----
     **id** | ashley | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
-    **Nemek közötti** | female | 
+    **nemek** | female | 
     **tech** | java | 
 
     > [!NOTE]
@@ -226,7 +226,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
     Kulcs | Érték | Megjegyzések
     ----|----|----
     **id** | rakesh | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
-    **Nemek közötti** | male | 
+    **nemek** | male | 
     **school** | MIT | 
 
 10. Kattintson az **OK** gombra. 

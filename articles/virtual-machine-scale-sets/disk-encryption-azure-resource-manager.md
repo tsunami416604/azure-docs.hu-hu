@@ -1,37 +1,37 @@
 ---
-title: Virtuálisgép-méretezési készlet létrehozása és titkosítása Azure Resource Manager-sablonokkal
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és titkosíthat az Azure Resource Manager-sablonokkal egy virtuálisgép-méretezési készletet.
+title: Virtuálisgép-méretezési csoport létrehozása és titkosítása Azure Resource Manager-sablonokkal
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és titkosíthat virtuálisgép-méretezési készleteket Azure Resource Manager sablonok használatával
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72529999"
 ---
-# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Virtuálisgép-méretezési csoportok titkosítása az Azure Resource Managerrel
+# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Virtuálisgép-méretezési csoportok titkosítása Azure Resource Manager
 
-Az Azure Resource Manager-sablonok használatával titkosíthatja vagy visszafejtheti a Linux virtuálisgép-méretezési csoportokat.
+A Linux rendszerű virtuálisgép-méretezési csoportok titkosítása vagy visszafejtése Azure Resource Manager-sablonok használatával végezhető el.
 
-## <a name="deploying-templates"></a>Sablonok telepítése
+## <a name="deploying-templates"></a>Sablonok üzembe helyezése
 
-Először válassza ki a forgatókönyvnek megfelelő sablont.
+Először válassza ki azt a sablont, amely megfelel a forgatókönyvnek.
 
-- [Lemeztitkosítás engedélyezése egy futó Linux-os virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [Lemez titkosításának engedélyezése futó linuxos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Lemeztitkosítás engedélyezése windowsos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [Lemez titkosításának engedélyezése egy futó Windowsos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Linuxos virtuális gépek virtuális gépméret-készletének üzembe helyezése ugródobozzal, és lehetővé teszi a titkosítást a Linux virtuálisgép-méretezési készleteken](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Linux rendszerű virtuális gépek virtuálisgép-méretezési csoportjának üzembe helyezése Jumpbox és a titkosítás engedélyezése linuxos virtuálisgép-méretezési csoportokban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [A Windows virtuális gépek virtuális gépméretezési készletének telepítése ugródobozzal, és lehetővé teszi a titkosítást a Windows virtuálisgép-méretezési készleteken](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Windows rendszerű virtuális gépek virtuálisgép-méretezési csoportjának üzembe helyezése Jumpbox és a titkosítás engedélyezése a Windowsos virtuálisgép-méretezési csoportokban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
-- [Lemeztitkosítás letiltása egy futó Linux-os virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Lemez titkosításának letiltása egy futó linuxos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
-- [Lemeztitkosítás letiltása windowsos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Lemez titkosításának letiltása egy futó Windowsos virtuálisgép-méretezési csoporton](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 Ez után kövesse az alábbi lépéseket:
 
@@ -41,8 +41,8 @@ Ez után kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure lemeztitkosítás a virtuálisgép-méretezési készletekhez](disk-encryption-overview.md)
+- [Azure Disk Encryption a virtuálisgép-méretezési csoportokhoz](disk-encryption-overview.md)
 - [Virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md)
-- [Virtuálisgép-méretezési csoportok titkosítása az Azure PowerShell használatával](disk-encryption-powershell.md)
-- [Az Azure Disk Encryption kulcstárolójának létrehozása és konfigurálása](disk-encryption-key-vault.md)
-- [Az Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének szekvenálásával](disk-encryption-extension-sequencing.md)
+- [Virtuálisgép-méretezési csoportok titkosítása a Azure PowerShell használatával](disk-encryption-powershell.md)
+- [Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz](disk-encryption-key-vault.md)
+- [A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével](disk-encryption-extension-sequencing.md)

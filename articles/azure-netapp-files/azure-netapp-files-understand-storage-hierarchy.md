@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure NetApp Files tárolási hierarchiája | Microsoft dokumentumok
+title: A Azure NetApp Files tárolási hierarchiája | Microsoft Docs
 description: A cikk a tárhely-hierarchiát ismerteti, beleértve az Azure NetApp Files-fiókokat, -kapacitáskészleteket és -köteteket.
 services: azure-netapp-files
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: b-juche
 ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78163964"
 ---
-# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Mi az Azure NetApp-fájlok tárolási hierarchiája?
+# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>A Azure NetApp Files tárolási hierarchiája
 
 Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolnia és be kell állítania egy készletet a kiosztott kapacitáshoz.  Kapacitáskészlet beállításához rendelkeznie kell NetApp-fiókkal. Az Azure NetApp Files tárhely-hierarchiájának megismerése segítségére lehet az Azure NetApp Files-erőforrások beállítása és kezelése során.
 
 > [!IMPORTANT] 
-> Az Azure NetApp Files jelenleg nem támogatja az erőforrások közötti áttelepítést az előfizetések között.
+> A Azure NetApp Files jelenleg nem támogatja az előfizetések közötti erőforrás-áttelepítést.
 
 ## <a name="netapp-accounts"></a><a name="azure_netapp_files_account"></a>NetApp-fiókok
 
@@ -38,21 +38,21 @@ Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolni
 ## <a name="capacity-pools"></a><a name="capacity_pools"></a>Kapacitáskészletek
 
 - A kapacitáskészletek mérése a kiosztott kapacitás alapján történik.  
-- A kapacitást a megvásárolt rögzített sk-ek (például egy 4-TiB kapacitás) építik ki.
+- A kapacitást a megvásárolt rögzített SKU-nak (például egy 4 TiB-kapacitásnak) kell kiépíteni.
 - A kapacitáskészletek csak egy szolgáltatásszinttel rendelkezhetnek.  
-- Minden kapacitáskészlet csak egy NetApp-fiókhoz tartozhat. Egy NetApp-fiókon belül azonban több kapacitáskészlet is lehet.  
+- Mindegyik kapacitási készlet csak egy NetApp-fiókhoz tartozhat. Egy NetApp-fiókon belül azonban több kapacitású készlet is rendelkezhet.  
 - A kapacitáskészletek nem mozgathatók a NetApp-fiókok között.   
   Az alábbi, [tárhely-hierarchiát ábrázoló fogalmi diagramon](#conceptual_diagram_of_storage_hierarchy) például az 1. kapacitáskészlet nem helyezhető át az USA keleti régiójában lévő NetApp-fiókból az USA 2. nyugati régiójának NetApp-fiókjába.  
-- A kapacitáskészlet nem törölhető, amíg a kapacitáskészleten belüli összes kötetet nem törölték.
+- A kapacitási készlet nem törölhető, amíg a kapacitás-készletben lévő összes kötetet nem törölték.
 
 ## <a name="volumes"></a><a name="volumes"></a>Kötetek
 
-- A kötetet logikai kapacitásfelhasználással mérik, és skálázható. 
+- A köteteket a logikai kapacitások fogyasztása méri, és méretezhető. 
 - A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 - Minden kötet egyetlen készlethez tartozik, de egy készlet több kötetet is tartalmazhat. 
-- Kötet nem helyezhető át kapacitáskészletek között. <!--Within the same NetApp account, you can move a volume across pools.  -->   
-  Az [alábbi, a tárolási hierarchia koncepcionális diagramjában](#conceptual_diagram_of_storage_hierarchy) például nem helyezheti át a köteteket az 1-es kapacitáskészletből a 2-es kapacitáskészletbe.
-- Egy kötet nem törölhető, amíg az összes pillanatképét nem törölték.
+- A kötetek nem helyezhetők át A kapacitási készletek között. <!--Within the same NetApp account, you can move a volume across pools.  -->   
+  Például az alábbi [tárolási hierarchia fogalmi ábráján](#conceptual_diagram_of_storage_hierarchy) a kötetek nem helyezhetők át a 2. kapacitási készletből.
+- Nem lehet törölni egy kötetet, amíg az összes pillanatképét törölték.
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Tárhely-hierarchia fogalmi diagramja 
 Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészletek és a kötetek közötti kapcsolatokat mutatják be.   

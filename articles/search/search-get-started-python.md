@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Keresési index létrehozása pythonban REST API-k használatával'
+title: 'Gyors útmutató: keresési index létrehozása a Pythonban REST API-k használatával'
 titleSuffix: Azure Cognitive Search
-description: Bemutatja, hogyan hozhat létre indexet, adatokat tölthet be és futtathat lekérdezéseket python, Jupyter notebookok és az Azure Cognitive Search REST API használatával.
+description: Ismerteti, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket a Python, a Jupyter notebookok és az Azure Cognitive Search REST API használatával.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -10,53 +10,53 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 04/01/2020
 ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80585928"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Hozzon létre egy Azure Cognitive Search indexet a Pythonban jupyter-jegyzetfüzetek használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Azure Cognitive Search index létrehozása Pythonban Jupyter-jegyzetfüzetek használatával
 
 > [!div class="op_single_selector"]
-> * [Python (TÖBBI)](search-get-started-python.md)
+> * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
-> * [Postás (REST)](search-get-started-postman.md)
+> * [C #](search-create-index-dotnet.md)
+> * [Poster (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
 
-Hozzon létre egy Jupyter-jegyzetfüzetet, amely létrehoz, betölt és lekérdezi az Azure Cognitive Search indexet a Python és az [Azure Cognitive Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/)használatával. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Másik lehetőségként [letöltheti és futtathatja a kész Jupyter Python notebookot.](https://github.com/Azure-Samples/azure-search-python-samples)
+Hozzon létre egy Jupyter-jegyzetfüzetet, amely létrehoz, betölt és lekérdez egy Azure Cognitive Search indexet a Python és az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a kész Jupyter Python notebookot](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő szolgáltatásokra és eszközökre van szükség ehhez a rövid útmutatóhoz. 
+Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), amely Python 3.x és Jupyter notebookok.
++ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), amely Python 3. x és Jupyter jegyzetfüzeteket biztosít.
 
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást,](search-create-service-portal.md) vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Az ingyenes szint segítségével ezt a rövid útmutatót. 
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz az ingyenes szintet használhatja. 
 
-## <a name="get-a-key-and-url"></a>Kulcs és URL beszerezése
+## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
-A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A keresési szolgáltatás mindkettővel jön létre, így ha hozzáadta az Azure Cognitive Search-et az előfizetéséhez, kövesse az alábbi lépéseket a szükséges információk beszerezéséhez:
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. [Jelentkezzen be az Azure Portalon,](https://portal.azure.com/)és a keresési szolgáltatás **áttekintése** lapon lekell szereznie az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsok**párbeszédpanelen szerezzen be egy rendszergazdai kulcsot a szolgáltatás teljes jogához. Két cserélhető rendszergazdai kulcs van, amelyek az üzletmenet folytonosságát biztosítják arra az esetre, ha át kell görgetnie egyet. Az elsődleges vagy másodlagos kulcsot objektumok hozzáadására, módosítására és törlésére irányuló kérelmeken használhatja.
+1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![HTTP-végpont és hozzáférési kulcs beszerezni](media/search-get-started-postman/get-url-key.png "HTTP-végpont és hozzáférési kulcs beszerezni")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-Minden kérelemhez api-kulcs szükséges a szolgáltatásnak küldött minden kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="connect-to-azure-cognitive-search"></a>Csatlakozás az Azure Cognitive Search szolgáltatáshoz
+## <a name="connect-to-azure-cognitive-search"></a>Kapcsolódás az Azure Cognitive Searchhoz
 
-Ebben a feladatban indítsa el a Jupyter-jegyzetfüzetet, és ellenőrizze, hogy csatlakozhat-e az Azure Cognitive Search szolgáltatáshoz. Ezt úgy teheti meg, hogy kéri az indexek listáját a szolgáltatástól. Az Anaconda3 rendszerű Windows on az Anaconda Navigator használatával elindíthat egy jegyzetfüzetet.
+Ebben a feladatban indítson el egy Jupyter-jegyzetfüzetet, és ellenőrizze, hogy tud-e csatlakozni az Azure Cognitive Searchhoz. Ezt úgy teheti meg, hogy az indexek listáját kéri le a szolgáltatásból. A Anaconda3-mel rendelkező Windows rendszeren a anaconda Navigator használatával indíthat el egy jegyzetfüzetet.
 
-1. Hozzon létre egy új Python3-jegyzetfüzetet.
+1. Hozzon létre egy új Python3 notebookot.
 
-1. Az első cellában töltse be a JSON-nal való munkához használt könyvtárakat, és fogalmazza meg a HTTP-kérelmeket.
+1. Az első cellában töltse be a JSON-kezeléshez használt kódtárakat és a HTTP-kérelmek összeállítását.
 
    ```python
    import json
@@ -64,7 +64,7 @@ Ebben a feladatban indítsa el a Jupyter-jegyzetfüzetet, és ellenőrizze, hogy
    from pprint import pprint
    ```
 
-1. A második cellában adja meg a kéréselemeket, amelyek minden kérésnél állandók lesznek. Cserélje le a keresési szolgáltatás nevét (YOUR-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (YOUR-ADMIN-API-KEY) érvényes értékekre. 
+1. A második cellában adja meg azokat a kérelmeket, amelyek minden kérelemnél állandók lesznek. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
@@ -73,9 +73,9 @@ Ebben a feladatban indítsa el a Jupyter-jegyzetfüzetet, és ellenőrizze, hogy
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-   Ha ConnectionError `"Failed to establish a new connection"`-ot kap, ellenőrizze, hogy az api-kulcs elsődleges vagy másodlagos felügyeleti`?` `/`kulcs-e, és hogy minden kezdő és záró karakter ( és ) a helyén van-e.
+   Ha ConnectionError `"Failed to establish a new connection"`kap, ellenőrizze, hogy az API-kulcs elsődleges vagy másodlagos rendszergazdai kulcs-e, és hogy az összes kezdő és záró karakter (`?` és `/`) be van-e helyezve.
 
-1. A harmadik cellában fogalmazza meg a kérést. Ez a GET-kérelem a keresési szolgáltatás indexgyűjteményét célozza meg, és kiválasztja a meglévő indexek névtulajdonságát.
+1. A harmadik cellában alakítsa ki a kérelmet. Ez a GET kérelem célja a keresési szolgáltatás indexek gyűjteménye, és kiválasztja a meglévő indexek Name (név) tulajdonságát.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -84,21 +84,21 @@ Ebben a feladatban indítsa el a Jupyter-jegyzetfüzetet, és ellenőrizze, hogy
    pprint(index_list)
    ```
 
-1. Futtasson minden lépést. Ha vannak indexek, a válasz az indexnevek listáját tartalmazza. Az alábbi képernyőképen a szolgáltatás már rendelkezik egy azureblob-index és egy realestate-us-minta index.
+1. Futtassa az egyes lépéseket. Ha az indexek léteznek, a válasz az indexek neveinek listáját tartalmazza. Az alábbi képernyőképen a szolgáltatás már rendelkezik egy azureblob és egy Realestate-US-Sample indextel.
 
-   ![Python-parancsfájl a Jupyter-jegyzetfüzetben az Azure Cognitive Search HTTP-kérésekkel](media/search-get-started-python/connect-azure-search.png "Python-parancsfájl a Jupyter-jegyzetfüzetben az Azure Cognitive Search HTTP-kérésekkel")
+   ![Python-szkript a Jupyter Notebookban HTTP-kérésekkel az Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Python-szkript a Jupyter Notebookban HTTP-kérésekkel az Azure Cognitive Search")
 
-   Ezzel szemben egy üres indexgyűjtemény ezt a választ adja vissza:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Ezzel szemben egy üres index-gyűjtemény adja vissza ezt a választ:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Ha nem használja a portált, az adatok betöltése előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés az [Index REST API létrehozása segítségével](https://docs.microsoft.com/rest/api/searchservice/create-index) leküldéses indexséma a szolgáltatásba.
+Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés az index [létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) használatával küldi el az indexelési sémát a szolgáltatásnak.
 
-Az index kötelező elemei közé tartozik egy név, egy mezőgyűjtemény és egy kulcs. A mezőgyűjtemény határozza meg a *dokumentum*szerkezetét. Minden mezőnek van egy neve, típusa és attribútuma, amely meghatározza a mező használati módját (például, hogy teljes szöveges kereshető, szűrhető vagy visszakereshető a keresési eredmények között). Az indexen belül az egyik `Edm.String` típusú mezőt kell a dokumentumidentitás *kulcsaként* kijelölni.
+Az index kötelező elemei közé tartozik a név, a mezők gyűjteménye és a kulcs. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza a mező használatát (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú `Edm.String` mezőt meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
-Ez az index neve "hotel-quickstart", és az alábbi meződefiníciókat tartalmazza. Ez egy nagyobb [Hotel index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) egy része, amelyet más forgatókönyvekben használnak. Mi nyírt, hogy ebben a rövid encikba a rövidség.
+Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
 
-1. A következő cellába illessze be a következő példát egy cellába a séma megadásához. 
+1. A következő cellában illessze be a következő példát egy cellába a séma megadásához. 
 
     ```python
     index_schema = {
@@ -126,7 +126,7 @@ Ez az index neve "hotel-quickstart", és az alábbi meződefiníciókat tartalma
     }
     ```
 
-2. Egy másik cellában fogalmazza meg a kérést. Ez a POST-kérelem a keresési szolgáltatás indexgyűjteményét célozza meg, és az előző cellában megadott indexséma alapján létrehoz egy indexet.
+2. Egy másik cellában alakítsa ki a kérelmet. Ez a POST kérelem célja a keresési szolgáltatás indexek gyűjteménye, és az előző cellában megadott index-séma alapján létrehoz egy indexet.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -135,22 +135,22 @@ Ez az index neve "hotel-quickstart", és az alábbi meződefiníciókat tartalma
    pprint(index)
    ```
 
-3. Futtasson minden lépést.
+3. Futtassa az egyes lépéseket.
 
-   A válasz tartalmazza a séma JSON-ábrázolását. A következő képernyőkép csak a válasz egy részét mutatja.
+   A válasz tartalmazza a séma JSON-ábrázolását. Az alábbi képernyőképen csak a válasz egy része látható.
 
-    ![Index létrehozására irányuló kérelem](media/search-get-started-python/create-index.png "Index létrehozására irányuló kérelem")
+    ![Index létrehozásához szükséges kérelem](media/search-get-started-python/create-index.png "Index létrehozásához szükséges kérelem")
 
 > [!Tip]
-> Az index létrehozásának ellenőrzésének másik módja az Indexek listájának ellenőrzése a portálon.
+> Az indexek létrehozásának egy másik módja az indexek listájának ellenőrzése a portálon.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 - Dokumentumok betöltése
+## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Dokumentumok leküldéses, használjon HTTP POST kérelmet az index URL-végpont. A REST API [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). A dokumentumok a [HotelsData-ból](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) származnak a GitHubon.
+A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-címének végpontján. A REST API [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). A dokumentumok a GitHubon lévő [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) származnak.
 
-1. Egy új cellában adjon meg négy dokumentumot, amelyek megfelelnek az indexsémának. Adjon meg minden dokumentumhoz feltöltési műveletet.
+1. Egy új cellában négy olyan dokumentumot adjon meg, amelyek megfelelnek az index sémának. Minden dokumentumhoz meg kell adni egy feltöltési műveletet.
 
     ```python
     documents = {
@@ -235,7 +235,7 @@ Dokumentumok leküldéses, használjon HTTP POST kérelmet az index URL-végpont
     }
     ```   
 
-2. Egy másik cellában fogalmazza meg a kérést. Ez a POST-kérelem a hotel-rövidútmutató-index dokumentációgyűjteményét célozza meg, és leküldi az előző lépésben megadott dokumentumokat.
+2. Egy másik cellában alakítsa ki a kérelmet. Ez a POST-kérelem a Hotels-gyors ismertető indexét célozza meg, és leküldi az előző lépésben megadott dokumentumokat.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -244,15 +244,15 @@ Dokumentumok leküldéses, használjon HTTP POST kérelmet az index URL-végpont
    pprint(index_content)
    ```
 
-3. Az egyes lépéseket futtatva a dokumentumokat a keresési szolgáltatás indexébe szeretné vinni. Az eredményeknek a következő példához hasonlóan kell kinézniük. 
+3. Futtassa az egyes lépéseket a dokumentumok a keresési szolgáltatásban lévő indexbe való leküldéséhez. Az eredményeknek az alábbi példához hasonlóan kell kinéznie. 
 
-    ![Dokumentumok küldése indexbe](media/search-get-started-python/load-index.png "Dokumentumok küldése indexbe")
+    ![Dokumentumok elküldése egy indexbe](media/search-get-started-python/load-index.png "Dokumentumok elküldése egy indexbe")
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents REST API használatával.](https://docs.microsoft.com/rest/api/searchservice/search-documents)
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
 
-1. Egy cellában adjon meg egy lekérdezési kifejezést, amely üres keresést (keresés=*) hajt végre, tetszőleges dokumentumok rangsorolatlan listáját (keresési pontszám = 1.0). Alapértelmezés szerint az Azure Cognitive Search egyszerre 50 találatot ad vissza. Strukturáltként ez a lekérdezés egy teljes dokumentumstruktúrát és értékeket ad vissza. Adja hozzá a $count=true értéket, hogy megkapassa az összes dokumentumot az eredményekben.
+1. Egy cellában adjon meg egy olyan lekérdezési kifejezést, amely üres keresést hajt végre (Search = *), és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Alapértelmezés szerint az Azure Cognitive Search a 50-es egyezést adja vissza egyszerre. Strukturált módon a lekérdezés egy teljes dokumentum-struktúrát és-értéket ad vissza. Adja hozzá a $count = True értéket az eredményekben található összes dokumentum számának beolvasásához.
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -263,7 +263,7 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
    pprint(query)
    ```
 
-1. Egy új cellában adja meg a következő példát a "szállodák" és a "wifi" kifejezésekre való kereséshez. Adja meg $select, hogy mely mezők szerepeljenek a keresési eredmények között.
+1. Egy új cellában adja meg a következő példát a "Hotels" és a "WiFi" kifejezésre való kereséshez. $Select hozzáadása lehetőséggel megadhatja, hogy mely mezők szerepeljenek a keresési eredmények között.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
@@ -274,11 +274,11 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
    pprint(query)   
    ```
 
-   Az eredményeknek a következő kimenethez hasonlóan kell kinézniük. 
+   Az eredményeknek az alábbi kimenethez hasonlóan kell kinéznie. 
 
     ![Keresés az indexekben](media/search-get-started-python/search-index.png "Keresés az indexekben")
 
-1. Ezután alkalmazzon egy $filter kifejezést, amely csak azokat a 4-nél nagyobb minősítésű szállodákat választja ki. 
+1. Ezután alkalmazzon egy $filter kifejezést, amely csak a 4 értéknél nagyobb minősítésű szállodákat jelöli ki. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
@@ -289,7 +289,7 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
    pprint(query)     
    ```
 
-1. Alapértelmezés szerint a keresőmotor a top 50 dokumentumot adja vissza, de a felső és a kihagyás segítségével adhat hozzá tördelést, és kiválaszthatja, hogy hány dokumentum van az egyes eredményekben. Ez a lekérdezés minden eredményhalmazban két dokumentumot ad vissza.
+1. Alapértelmezés szerint a keresőmotor a legfontosabb 50-dokumentumokat adja vissza, de a Top és a skip paranccsal adhat hozzá oldalszámozást, és kiválaszthatja, hogy hány dokumentum van az egyes eredményekben. Ez a lekérdezés két dokumentumot ad vissza minden eredményhalmaz esetében.
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
@@ -300,7 +300,7 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
    pprint(query)
    ```
 
-1. Ebben az utolsó példában $orderby használatával rendezheti az eredményeket város szerint. Ez a példa a Cím gyűjtemény mezőit tartalmazza.
+1. Ebben az utolsó példában a $orderby segítségével rendezheti az eredményeket város szerint. Ez a példa a címlistában található mezőket tartalmazza.
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
@@ -315,13 +315,13 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
-Az erőforrásokat a portálon keresheti meg és kezelheti a bal oldali navigációs ablak **Minden erőforrás** vagy **Erőforráscsoport** hivatkozásával.
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-Ha ingyenes szolgáltatást használ, ne feledje, hogy három indexelésre, indexelőre és adatforrásra van korlátozva. Törölheti az egyes elemeket a portálon, hogy a korlát alatt maradjon. 
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
 ## <a name="next-steps"></a>További lépések
 
-Egyszerűsítésként ez a rövid útmutató a Hotels index rövidített verzióját használja. Létrehozhatja a teljes verziót, hogy érdekesebb lekérdezéseket próbáljon ki. A teljes verzió és az összes 50 dokumentum beszerezéséhez futtassa az **Adatok importálása** varázslót, és válassza ki a *hotelminta lehetőséget* a beépített mintaadatforrásokból.
+Ennek egyszerűsítése érdekében ez a rövid útmutató a szállodák indexének rövidített verzióját használja. A teljes verziót a további érdekes lekérdezések kipróbálásához is létrehozhatja. A teljes verzió és az összes 50-dokumentum lekéréséhez futtassa az **adatok importálása** varázslót, és válassza a *Hotels-Sample* lehetőséget a beépített mintául szolgáló adatforrásokból.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Index létrehozása az Azure Portalon](search-get-started-portal.md)
+> [Gyors útmutató: index létrehozása a Azure Portalban](search-get-started-portal.md)

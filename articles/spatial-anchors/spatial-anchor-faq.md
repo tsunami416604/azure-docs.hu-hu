@@ -1,6 +1,6 @@
 ---
 title: Gyakori kérdések
-description: Gyakori kérdések az Azure Spatial Anchors szolgáltatásról.
+description: Az Azure térbeli horgonyok szolgáltatással kapcsolatos gyakori kérdések.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,120 +9,120 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76844887"
 ---
-# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Gyakori kérdések az Azure Spatial Anchors-ról
+# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdések
 
-Az Azure Spatial Anchors egy felügyelt felhőszolgáltatás és fejlesztői platform, amely lehetővé teszi a többfelhasználós, térbelileg tudatos vegyes valóságélményeket a HoloLens, az iOS és az Android eszközökön.
+Az Azure térbeli horgonyok egy felügyelt felhőalapú szolgáltatás és fejlesztői platform, amely lehetővé teszi a többfelhasználós, térbelian tudatos, vegyes valóságot a HoloLens, iOS és Android rendszerű eszközökön.
 
-További információ: [Azure Spatial Anchors overview](overview.md).
+További információ: [Azure térbeli horgonyok – áttekintés](overview.md).
 
-## <a name="azure-spatial-anchors-product-faqs"></a>Azure Spatial Anchors termék – gyakori kérdések
+## <a name="azure-spatial-anchors-product-faqs"></a>Azure térbeli horgonyok termékkel kapcsolatos gyakori kérdések
 
-**K: Mely eszközöket támogatja az Azure Spatial Anchors?**
+**K: mely eszközök támogatják az Azure térbeli horgonyokat?**
 
-**A.** Az Azure Spatial Anchors lehetővé teszi a fejlesztők számára, hogy alkalmazásokat építsenek a HoloLensen, az ARKit-támogatással rendelkező iOS-eszközökön és az ARCore-támogatással rendelkező Android-eszközökön; iOS és Android esetén ez magában foglalja a telefonokat és a táblagépeket is.
+**A:** Az Azure térbeli horgonyok lehetővé teszik a fejlesztők számára, hogy a ARKit-támogatással rendelkező iOS-eszközökön és ARCore-támogatással rendelkező Android-eszközökön alkalmazásokat HoloLens. iOS-és Android-eszközök esetén a telefonok és a tabletták is elérhetők.
 
-**K: Az Azure Spatial Anchors használatához csatlakozni kell a felhőhöz?**
+**K: csatlakoztatni kell a felhőhöz az Azure térbeli horgonyok használatához?**
 
-**A.** Az Azure Spatial Anchors jelenleg internetkapcsolatra van szükség. Üdvözöljük észrevételeit a [visszajelzés oldalon](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+**A:** Az Azure térbeli horgonyok jelenleg hálózati kapcsolatot igényelnek az internethez. Szívesen fogadjuk megjegyzéseit a [visszajelzési oldalunkon](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
-**K: Mik az Azure Spatial Anchors kapcsolódási követelményei?**
+**K: milyen kapcsolati követelmények vonatkoznak az Azure térbeli horgonyokra?**
 
-**A.** Az Azure Spatial Anchors Wi-Fi és mobil szélessávú kapcsolatokkal működik.
+**A:** Az Azure térbeli horgonyok Wi-Fi-és mobil szélessávú kapcsolatokkal működnek.
 
-**K: Milyen pontosan tudja az Azure Spatial Anchors horgonyok?**
+**K: milyen pontosan tud az Azure térbeli horgonyok megtalálni a horgonyokat?**
 
-**A.** Számos tényező befolyásolja a horgonyok helytmegtalálásának pontosságát - a megvilágítási feltételeket, a környezetben lévő tárgyakat, és még azt a felületet is, amelyre a horgonyt helyezik. Annak megállapításához, hogy a pontosság megfelel-e az igényeinek, próbálja ki a horgonyokat olyan környezetekben, amelyek képviselik, hogy hol kívánja használni őket. Ha olyan környezeteket tapasztal, ahol a pontosság nem felel meg az igényeinek, olvassa [el a Naplózás és diagnosztika az Azure Spatial Anchors alkalmazásban című témakört.](./concepts/logging-diagnostics.md)
+**A:** Számos tényező befolyásolja a horgonyok megkeresésének pontosságát – a megvilágítási körülményeket, a környezetben lévő objektumokat, valamint azt a felületet is, amelyen a horgony elhelyezve van. Annak eldöntéséhez, hogy a pontosság megfelel-e az igényeinek, próbálja meg a környezetekben található horgonyokat a használni kívánt környezetben. Ha olyan környezetekben találkozik, ahol a pontosság nem felel meg az igényeinek, lásd: [naplózás és diagnosztika az Azure térbeli horgonyokban](./concepts/logging-diagnostics.md).
 
-**K: Mennyi ideig tart a horgonyok létrehozása és megkeresése?**
+**K: mennyi ideig tart a horgonyok létrehozása és megkeresése?**
 
-**A.** A horgonyok létrehozásához és megkereséséhez szükséges idő számos tényezőtől függ : a hálózati kapcsolattól, az eszköz feldolgozásától és terhelésétől, valamint az adott környezettől. Ügyfeleink számos iparágban építenek alkalmazásokat, beleértve a gyártást, a kiskereskedelmet és a játékot, jelezve, hogy a szolgáltatás nagyszerű felhasználói élményt tesz lehetővé a forgatókönyveikhez.
+**A:** A horgonyok létrehozásához és megkereséséhez szükséges idő számos tényezőtől függ: a hálózati kapcsolattól, az eszköz feldolgozásának és betöltésének, valamint az adott környezettől. Ügyfeleink számos iparágban, például a gyártásban, a kereskedelemben és a játékokban is kiépítik az alkalmazásokat, ami azt jelzi, hogy a szolgáltatás lehetővé teszi a nagyszerű felhasználói élményt a forgatókönyvekhez.
 
-## <a name="privacy-faq"></a>Adatvédelmi gyakori kérdések
+## <a name="privacy-faq"></a>Adatvédelem – gyakori kérdések
 
-**K: Amikor az alkalmazásom elhelyez egy térbeli horgonyt valahol, minden alkalmazás hozzáférhet hozzá?**
+**K: Ha az alkalmazásom egy térbeli horgonyt helyez el valahol, az összes alkalmazás hozzáfér hozzá?**
 
-**A.** A horgonyokat az Azure-fiók elkülöníti. Csak azok az alkalmazások férhetnek hozzá a fiókon belüli horgonyokhoz, amelyekhez hozzáférést biztosít a fiókjához.
+**A:** A horgonyok az Azure-fiókkal vannak elkülönítve. Csak azok az alkalmazások férhetnek hozzá a fiókhoz, amelyekhez hozzáférést biztosít a fiókjához.
 
-**K: Milyen információkat egy környezetben a szolgáltatás továbbítása és tárolása a szolgáltatás használata esetén az Azure Spatial Anchors? Továbbítják és tárolják a környezetről készült képeket?**
+**K: milyen információkat továbbítanak és tárolnak egy adott környezetről az Azure térbeli horgonyok használatakor? Továbbítják és tárolják a környezet képeit?**
 
-**A**: Horgonyok létrehozásakor vagy helytkeresésekor a környezetről készült képeket az eszközön származtatott formátumban dolgozzák fel. Ezt a származtatott formátumot a szolgáltatás továbbítja és tárolja.
+**A**: a horgonyok létrehozásakor vagy keresésekor a környezet képeit egy származtatott formátumba dolgozzák fel az eszközön. A származtatott formátumot a szolgáltatás továbbítja és tárolja.
 
-Az átláthatóság biztosítása érdekében az alábbiakban egy környezet és a származtatott ritka pontfelhő képe látható. A pontfelhő a szolgáltatáson továbbított és tárolt környezet geometriai ábrázolását mutatja. A ritka pontfelhő minden egyes pontjához továbbítjuk és tároljuk az adott pont vizuális jellemzőinek kivonatát. A kivonat képpontadatokból származik, de nem tartalmaz.
+Az átláthatóság biztosításához az alábbi képen egy környezet és a származtatott ritka pont felhő látható. A pont felhő a szolgáltatás által továbbított és tárolt környezet geometriai ábrázolását mutatja. A ritka pont felhő minden pontjához az adott pont vizuális jellemzőinek kivonatát továbbítjuk és tároljuk. A kivonat a következőből származik:, de nem tartalmaz képpontos adatokat.
 
-Az Azure Spatial Anchors betartja az [Azure szolgáltatási szerződési feltételeit](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)és a Microsoft [adatvédelmi nyilatkozatát.](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)
+Az Azure térbeli horgonyok megfelelnek az [Azure szolgáltatási szerződés feltételeinek](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)és a [Microsoft adatvédelmi nyilatkozatának](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
-![Egy környezet és annak származtatott](./media/sparse-point-cloud.png)
-ritkapont-felhője*1.*
+![Egy környezet és annak származtatott ritka pontja](./media/sparse-point-cloud.png)
+, az*1. ábra: egy környezet és a hozzá tartozó ritka pont felhő*
 
 
-**K: Van mód arra, hogy diagnosztikai adatokat küldjek a Microsoftnak?**
+**K: van lehetőség arra, hogy diagnosztikai adatokat küldjön a Microsoftnak?**
 
-**A:** Igen. Az Azure Spatial Anchors rendelkezik egy diagnosztikai móddal, amelyet a fejlesztők az Azure Spatial Anchors API-n keresztül választhatnak. Ez például akkor hasznos, ha olyan környezettel találkozik, ahol nem tud előre látható módon horgonyokat létrehozni és megtalálni. Megkérdezhetjük, hogy beküldhet-e diagnosztikai jelentést, amely olyan információkat tartalmaz, amelyek segítenek a hibakeresésben. További információ: [Naplózás és diagnosztika az Azure Spatial Anchors](./concepts/logging-diagnostics.md).
+**A**: igen. Az Azure térbeli horgonyok diagnosztikai móddal rendelkeznek, amelyekkel a fejlesztők választhatnak az Azure térbeli horgonyok API-n keresztül. Ez akkor lehet hasznos, ha például olyan környezetben találkozik, amelyben előre nem hozhatók létre és nem találhatók meg a horgonyok. Megkérhetjük, hogy be tud-e jelenteni egy diagnosztikai jelentést, amely a hibakeresést segítő információkat tartalmaz. További információ: [naplózás és diagnosztika az Azure térbeli horgonyokban](./concepts/logging-diagnostics.md).
 
-## <a name="availability-and-pricing-faqs"></a>Elérhetőségi és árképzési gyakori kérdések
+## <a name="availability-and-pricing-faqs"></a>Rendelkezésre állási és díjszabási GYIK
 
-**K: Megad egy SLA-t?**
+**K: biztosítanak SLA-t?**
 
-**A.** Az Azure-szolgáltatások standard szolgáltatásaszerint 99,9%-nál nagyobb rendelkezésre állást célozunk meg. Vegye figyelembe, hogy az Azure Spatial Anchors jelenleg előzetes verzióban van, és mint ilyen, az [előzetes kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érvényesek.
+**A:** A standard szintű Azure-szolgáltatásokhoz a 99,9%-nál nagyobb rendelkezésre állást célozunk meg. Vegye figyelembe, hogy az Azure térbeli horgonyok jelenleg előzetes verzióban érhetők el, ezért az előzetes verziókra vonatkozó [kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érvényesek.
 
-**K: Közzétehetem az alkalmazásaimat az Azure Spatial Anchors használatával az alkalmazásáruházakban? Használhatom az Azure Spatial Anchors-t az alapvető fontosságú éles forgatókönyvekhez?**
+**K: közzétehetem az alkalmazásokat az Azure térbeli horgonyok használatával az alkalmazás-áruházakban? Használhatom az Azure térbeli horgonyokat a kritikus fontosságú üzemi helyzetekben?**
 
-**A.** Az Azure Spatial Anchors jelenleg előzetes verzióban van, és ez idő alatt felkérjük, hogy dolgozzon ki alkalmazásokat, [adjon visszajelzést](https://feedback.azure.com/forums/919252-azure-spatial-anchors) a termékről, és tervezze meg az éles környezetben való üzemelő példányokat.
+**A:** Az Azure térbeli horgonyok jelenleg előzetes verzióban üzemelnek, és ebben az időszakban meghívjuk az alkalmazások fejlesztésére, a termékkel kapcsolatos [visszajelzések](https://feedback.azure.com/forums/919252-azure-spatial-anchors) megtervezésére és az éles környezetekben való üzembe helyezésre.
 
-Általános elérhetőség (GA) dátumok lesz jelentették be nemsokára.
+Az általánosan elérhető (GA) dátumok hamarosan bejelentve lesznek.
 
-**K: Vannak-e fojtási korlátok?**
+**K: vannak érvényben lévő szabályozási korlátok?**
 
-**A**: Igen, vannak fojtási korlátaink.  Nem számítunk arra, hogy a tipikus alkalmazásfejlesztéshez és -teszteléshez is megütheti őket. Az éles környezetben történő üzembe helyezésekhez készen állunk arra, hogy támogassuk ügyfeleink magas szintű követelményeit. [Lépjen kapcsolatba velünk,](mailto:azuremrs@microsoft.com) hogy megvitassák. Az Előzetes verzió ezen fázisában még nem tettük közzé a rétegezési és árképzési struktúránkat, de erre hamarosan számítunk.
+Válasz **: igen**, szabályozási korlátok vannak.  Nem várjuk, hogy az alkalmazások tipikus fejlesztése és tesztelése során is megtalálhatja őket. Éles üzembe helyezések esetén készek vagyunk támogatni ügyfeleink nagy léptékű követelményeit. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) , hogy beszéljen. Az előzetes verzió ezen fázisában még nem tették közzé a bevezetési és árképzési struktúrát, de hamarosan elvárjuk.
 
-**K: Milyen régiókban érhető el az Azure Spatial Anchors?**
+**K: milyen régiókban érhetők el az Azure térbeli adathorgonyok?**
 
-**A.** Még ma létrehozhat egy Azure Spatial Anchors-fiókot az Usa keleti régiójában. Ez azt jelenti, hogy a szolgáltatás számítási és tárolási teljesítménye is ebben a régióban található. Igaz, nincs korlátozás, ahol az ügyfelek találhatók. A jövőben a szolgáltatás regionális rendelkezésre állását az összes elsődleges Azure-régióra bővítjük.
+**A:** Az Azure-beli, USA 2. keleti régiójában jelenleg is létrehozhat Azure térbeli horgonyokat. Ez azt jelenti, hogy a szolgáltatáshoz tartozó számítási és tárolási kapacitás ebben a régióban van. Ez azt jelentette, hogy az ügyfelek hol találhatók. A jövőben a szolgáltatás regionális elérhetőségét minden elsődleges Azure-régióban ki fogjuk bővíteni.
 
-**K: Az Azure Spatial Anchors díjat számítja fel? Fogsz valaha is vádat?**
+**K: az Azure térbeli horgonyok díja? Kell-e fizetni?**
 
-**A.** Az előzetes verzió során az árakról az ároldalról az [ároldalunkon talál részleteket.](https://azure.microsoft.com/pricing/details/spatial-anchors/)
+**A:** A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalunkat.](https://azure.microsoft.com/pricing/details/spatial-anchors/)
 
-## <a name="technical-faqs"></a>Technikai GYIK
+## <a name="technical-faqs"></a>Technikai gyakori kérdések
 
-**K: Hogyan működik az Azure Spatial Anchors?**
+**K: Hogyan működik az Azure térbeli horgony?**
 
-**A.** Az Azure Spatial Anchors a vegyes valóságtól/ kiterjesztett valóságkövetőktől függ. Ezek a nyomkövetők kamerákkal érzékelik a környezetet, és 6 szabadságfával (6DoF) követik nyomon a készüléket, ahogy áthalad a térben.
+**A:** Az Azure térbeli horgonyok vegyes valóságot/kibővített valóság-követési funkcióktól függenek. Ezek a Szemléző a környezetet a kamerákkal látják el, és nyomon követik az eszközt 6 fokos szabadságon (6DoF), ahogy az a térben halad át.
 
-Mivel az Azure Spatial Anchors egy 6DoF-követőt biztosít, lehetővé teszi, hogy bizonyos érdekes helyeket jelöljön ki a valós környezetben "horgony" pontként. Használhat például egy horgonyt a valós világ egy adott helyén való tartalom megjelenítéséhez.
+Az Azure térbeli horgonyok lehetővé teszik, hogy a 6DoF Tracker felépítési blokkként bizonyos hasznos pontokat jelöljön ki a valódi környezetében "horgony" pontként. Előfordulhat például, hogy egy horgony használatával jeleníti meg a tartalmat a valós világ egy adott helyén.
 
-Amikor létrehoz egy horgonyt, az ügyfél SDK rögzíti a környezeti információkat az adott pont körül, és továbbítja azokat a szolgáltatásnak. Ha egy másik eszköz ugyanebben a térben keresi a horgonyt, hasonló adatok továbbítódnak a szolgáltatásnak. Ezeket az adatokat a rendszer összehasonlítja a korábban tárolt környezeti adatokkal. A horgony helyzete az eszközhöz viszonyítva ezután visszakerül az alkalmazásban való használatra.
+Amikor létrehoz egy horgonyt, az ügyfél-SDK rögzíti a környezeti adatokat, és továbbítja azt a szolgáltatásnak. Ha egy másik eszköz ugyanazon a helyen keresi a horgonyt, a hasonló adatokat továbbítja a szolgáltatásnak. Ezek az adatértékek a korábban tárolt környezeti adatértékekkel egyeznek meg. Ezután a rendszer visszaküldi a horgony pozícióját az eszközhöz viszonyítva az alkalmazásban való használatra.
 
-**K: Hogyan integrálható az Azure Spatial Anchors az ARKit-tal és az ARCore-ral iOS és Android rendszeren?**
+**K: Hogyan integrálható az Azure térbeli alapjai a ARKit és a ARCore iOS és Android rendszereken?**
 
-**A.** Az Azure Spatial Anchors kihasználja az ARKit és az ARCore natív követési képességeit. Emellett az iOS-hez és Androidhoz készült SDK-k olyan képességeket kínálnak, mint például a felügyelt felhőszolgáltatásban továbbra is fennálló horgonyok, és lehetővé teszik az alkalmazások számára, hogy újra megtalálják ezeket a horgonyokat a szolgáltatáshoz való egyszerű csatlakozással.
+**A:** Az Azure térbeli horgonyok a ARKit és a ARCore natív követési képességeit használják. Emellett az iOS-hez és az Androidhoz készült SDK-k olyan funkciókkal is rendelkeznek, mint például a megőrzött horgonyok egy felügyelt felhőalapú szolgáltatásban, és lehetővé teszik az alkalmazások számára, hogy egyszerűen a szolgáltatáshoz csatlakozva megtalálják ezeket a horgonyokat.
 
-**K: Hogyan integrálható az Azure Spatial Anchors a HoloLens-szel?**
+**K: Hogyan integrálható az Azure térbeli HoloLens?**
 
-**A.** Az Azure Spatial Anchors kihasználja a HoloLens natív nyomon követési képességeit. A HoloLensen alkalmazások készítéséhez egy Azure Spatial Anchors SDK-t biztosítunk. Az SDK integrálható a natív HoloLens-képességekkel, és további képességeket biztosít. Ezek a képességek közé tartozik, hogy az alkalmazásfejlesztők megőrizhetik a horgonyokat egy felügyelt felhőszolgáltatásban, és lehetővé teszik az alkalmazások számára, hogy újra megtalálják ezeket a horgonyokat a szolgáltatáshoz való csatlakozással.
+**A:** Az Azure térbeli horgonyok a HoloLens natív követési képességeit használják. Biztosítunk egy Azure térbeli horgonyt SDK-t a HoloLens-on futó alkalmazások létrehozásához. Az SDK integrálható a natív HoloLens képességekkel, és további képességeket biztosít. Ezek a képességek közé tartozik az alkalmazások fejlesztői számára, hogy egy felügyelt felhőalapú szolgáltatásban megmaradjanak a horgonyok, és lehetővé tegyék, hogy alkalmazásai újra megtalálják ezeket a horgonyokat a szolgáltatáshoz való csatlakozással.
 
-**K: Mely platformokat és nyelveket támogatja az Azure Spatial Anchors?**
+**K: mely platformok és nyelvek támogatják az Azure térbeli horgonyokat?**
 
-**A.** A fejlesztők az Azure Spatial Anchors alkalmazásokkal készíthetnek alkalmazásokat az eszközükhöz használt eszközök és keretrendszerek használatával:
+**A:** A fejlesztők az Azure térbeli Horgonyokkal hozhatnak létre alkalmazásokat az eszközük ismerős eszközeivel és keretrendszerek használatával:
 
-- Egység a HoloLens, az iOS és az Android rendszerében
-- Xamarin iOS és Android rendszeren
+- HoloLens, iOS és Android rendszerek közötti egység
+- Xamarin iOS és Android rendszereken
 - Swift vagy Objective-C iOS rendszeren
-- Java vagy az Android NDK Android
-- C++/WinRT a HoloLensen
+- Java-vagy Android-NDK az Androidon
+- C++/WinRT a HoloLens
 
-A fejlesztés sel [itt ismerkedik.](index.yml)
+Kezdje el a [fejlesztést itt](index.yml).
 
-**K: Működik az Unreal-nál?**
+**K: működik az Unreal?**
 
-**A.** Az Unreal támogatását a jövőben figyelembe vesszük.
+**A:** Az Unreal támogatását a későbbiekben is figyelembe kell venni.
 
-**K: Milyen portokat és protokollokat használ az Azure Spatial Anchors?**
+**K: milyen portokat és protokollokat használnak az Azure térbeli horgonyok?**
 
-**A.** Az Azure Spatial Anchors a 443-as TCP-porton keresztül kommunikál egy titkosított protokoll használatával. A hitelesítéshez [az Azure Active Directoryt](https://docs.microsoft.com/azure/active-directory/)használja, amely https-porton keresztül kommunikál a 443-as porton keresztül.
+**A:** Az Azure térbeli horgonyok a 443-as TCP-porton keresztül kommunikálnak titkosított protokoll használatával. A hitelesítéshez [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)használ, amely a HTTPS protokollon keresztül kommunikál a 443-as porton keresztül.

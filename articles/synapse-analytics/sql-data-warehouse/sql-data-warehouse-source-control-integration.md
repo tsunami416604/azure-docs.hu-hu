@@ -1,6 +1,6 @@
 ---
 title: Verziókövetés integrálása
-description: Nagyvállalati szintű Database DevOps-élmény az SQL-készlet natív forrásvezérlési integrációval az Azure Repos (Git és GitHub) használatával.
+description: Nagyvállalati szintű adatbázis-DevOps az SQL-készlethez az Azure Repos (git és GitHub) használatával történő natív verziókövetés-integrációval.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,73 +11,73 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81415083"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>Forrásvezérlés integrációja AZ SQL-készlethez
+# <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
 
-Ez az oktatóanyag bemutatja, hogyan integrálható az SQL Server Data tools (SSDT) adatbázis-projekt a forrás-ellenőrzéssel.  A forrásvezérlés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozása az Azure Synapse Analytics SQL készleterőforrásával.
+Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az SQL Pool-erőforrással az Azure szinapszis Analyticsben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- Regisztráció egy [Azure DevOps-szervezetre](https://azure.microsoft.com/services/devops/)
-- A [Létrehozás és csatlakoztatás](create-data-warehouse-portal.md) oktatóanyag végighaladva
+- Regisztráció [Azure DevOps-szervezetre](https://azure.microsoft.com/services/devops/)
+- A [Létrehozás és összekapcsolás](create-data-warehouse-portal.md) oktatóanyag átugrása
 - [A Visual Studio 2019 telepítése](https://visualstudio.microsoft.com/vs/older-downloads/)
 
-## <a name="set-up-and-connect-to-azure-devops"></a>Az Azure DevOps beállítása és csatlakozás
+## <a name="set-up-and-connect-to-azure-devops"></a>Az Azure DevOps beállítása és kapcsolódás
 
-1. Az Azure DevOps Organization ben hozzon létre egy olyan projektet, amely az SSDT-adatbázis-projektet egy Azure Repo-tárházon keresztül üzemelteti
+1. Az Azure DevOps-szervezetben hozzon létre egy projektet, amely a SSDT adatbázis-projektet egy Azure-tárház adattárán keresztül fogja tárolni
 
    ![Projekt létrehozása](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt létrehozása")
 
-2. Nyissa meg a Visual Studio alkalmazást, és csatlakozzon az Azure DevOps-szervezethez és projekthez az 1.
+2. Nyissa meg a Visual studiót, és kapcsolódjon az 1. lépésben az Azure DevOps-szervezethez és-projekthez a kapcsolatok kezelése lehetőség kiválasztásával
 
    ![Kapcsolatok kezelése](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
    ![Kapcsolódás](./media/sql-data-warehouse-source-control-integration/3-connect.png "Kapcsolódás")
 
-3. Az Azure Repo-tárház klónozása a projektből a helyi számítógépre
+3. Az Azure-tárház klónozása a projektből a helyi gépre
 
-   ![Klón tárhét](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klón tárhét")
+   ![Klónozási tárház](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási tárház")
 
-## <a name="create-and-connect-your-project"></a>A projekt létrehozása és csatlakoztatása
+## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 
-1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet egy könyvtárral és egy helyi Git tárházzal a **helyi klónozott tárházban**
+1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet a **helyi klónozott tárházban** a címtárral és a helyi git-tárházmal
 
    ![Új projekt létrehozása](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Új projekt létrehozása")  
 
-2. Kattintson a jobb gombbal az üres sqlprojectre, és importálja az adatraktárt az adatbázisprojektbe
+2. Kattintson a jobb gombbal az üres sqlproject, és importálja az adattárházat az adatbázis-projektbe
 
    ![Projekt importálása](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projekt importálása")  
 
-3. A Visual Studio csapatkezelőjében az összes módosítást véglegesítse a helyi Git-tárházban
+3. A Visual Studióban a Team Explorerben véglegesítse az összes módosítást a helyi git-tárházban
 
    ![Véglegesítés](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Véglegesítés")  
 
-4. Most, hogy a módosításokat helyileg véglegesítették a klónozott tárházban, szinkronizálja és leküldéses a módosításokat az Azure Repo tárház az Azure DevOps-projektben.
+4. Most, hogy már elvégezte a módosításokat a klónozott tárházban helyileg, szinkronizálja és leküldheti a módosításokat az Azure-beli DevOps-projektben.
 
-   ![Szinkronizálás és leküldéses - előkészítés](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Szinkronizálás és leküldéses - előkészítés")
+   ![Szinkronizálás és leküldéses előkészítés](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Szinkronizálás és leküldéses előkészítés")
 
-   ![Szinkronizálás és leküldéses](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Szinkronizálás és leküldéses")  
+   ![Szinkronizálás és leküldés](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Szinkronizálás és leküldés")  
 
 ## <a name="validation"></a>Ellenőrzés
 
-1. Ellenőrizze, hogy a módosítások lelettek-e rendelve az Azure-tárházban azáltal, hogy frissítette az adatbázis-projekt egy táblaoszlopát a Visual Studio SQL Server Data Tools (SSDT) rendszerből.
+1. Ellenőrizze, hogy a módosítások az Azure-tárházba lettek-e küldve az adatbázis-projektben lévő Table oszlop frissítésével a Visual Studio SQL Server Data Tools (SSDT) használatával
 
-   ![Frissítési oszlop ellenőrzése](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Frissítési oszlop ellenőrzése")
+   ![Frissítési oszlop érvényesítése](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Frissítési oszlop érvényesítése")
 
-2. A módosítás véglegesítése és leküldése a helyi tárházból az Azure Repo-ba
+2. Véglegesítse és küldje le a változást a helyi adattárból az Azure-tárházba
 
    ![Módosítások leküldése](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Módosítások leküldése")
 
-3. Ellenőrizze, hogy a módosítás lelett-e küldése az Azure Repo-tárházban
+3. Ellenőrizze, hogy a változást leküldte-e az Azure-tárház adattárában
 
    ![Ellenőrzés](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
-4. (**Nem kötelező**) A Schema Compare és a changes to your target data warehouse ssdt használatával használatával biztosíthatja, hogy az Azure Repo-tárházban és a helyi tárházban lévő objektumdefiníciók tükrözzék az adatraktárt
+4. (Nem**kötelező**) Séma összevetése és a cél adattárház változásainak frissítése a SSDT használatával annak biztosítása érdekében, hogy az Azure-tárházban és a helyi adattárban lévő objektumok definíciói az adattárházat tükrözzék
 
 ## <a name="next-steps"></a>További lépések
 

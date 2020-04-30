@@ -1,5 +1,5 @@
 ---
-title: Próbálja ki a felhőalapú IoT prediktív karbantartási megoldást - Azure | Microsoft dokumentumok
+title: Felhőalapú IoT prediktív karbantartási megoldás kipróbálása – Azure | Microsoft Docs
 description: Ezzel a rövid útmutatóval üzembe helyezheti a prediktív karbantartási Azure IoT-megoldásgyorsítót, és bejelentkezhet a megoldás irányítópultjának használatához.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "62106813"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás kipróbálása prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
@@ -26,7 +26,7 @@ A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek mo
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -54,7 +54,7 @@ A **Kiépített megoldások** lapon kattintson az új prediktív karbantartási 
 
 ![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
- A megoldásgyorsítóval kapcsolatos információkat a megjelenő lapon tekintheti meg. Válassza **a Go to your solution accelerator (Ugrás a megoldásgyorsítóhoz) lehetőséget** a prediktív karbantartási megoldásgyorsító megtekintéséhez:
+ A megoldás-gyorsító adatait a megjelenő oldalon tekintheti meg. A prediktív karbantartási megoldás gyorssegédének megtekintéséhez válassza **az Ugrás a megoldás-gyorsító** számára lehetőséget:
 
 ![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 

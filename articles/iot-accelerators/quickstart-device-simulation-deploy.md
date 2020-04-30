@@ -1,5 +1,5 @@
 ---
-title: Próbáljon meg futtatni egy eszközszimulációs megoldást - Azure | Microsoft dokumentumok
+title: Eszköz-szimulációs megoldás kipróbálása és futtatása – Azure | Microsoft Docs
 description: Ebben a rövid útmutatóban üzembe helyezheti az Azure IoT-eszközszimulációt, és futtathat egy szimulációt
 author: troyhopwood
 manager: timlt
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65467824"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rövid útmutató: IoT-eszközszimuláció üzembe helyezése és futtatása az Azure-ban
@@ -22,7 +22,7 @@ Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az Azure IoT-eszköz
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="deploy-device-simulation"></a>Eszközszimuláció üzembe helyezése
 
@@ -44,7 +44,7 @@ Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **
 
 Az Eszközszimulációs megoldással együtt használandó IoT Hub üzembe helyezéséhez jelölje be a jelölőnégyzetet. Később bármikor módosíthatja a szimulációja által használt IoT Hubot.
 
-Kattintson a **Létrehozás** gombra a megoldás kiépítésének megkezdéséhez. A folyamat legalább öt percig tart:
+A megoldás üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra. A folyamat legalább öt percig tart:
 
 ![Az eszközszimulációs megoldás adatai](./media/quickstart-device-simulation-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Ha a kiépítési folyamat befejeződött, bejelentkezhet az Eszközszimuláció
 
 ![Eszközszimuláció megnyitása](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-Kattintson az **Elfogadás** gombra az engedélykérés elfogadásához, és megjelenik az Eszközszimulációs megoldás irányítópultja a böngészőben.
+Az **elfogadás** gombra kattintva fogadja el az engedélyek kérését, az eszköz-szimulációs megoldás irányítópultja megjelenik a böngészőben.
 
 Az első megnyitáskor az Eszközszimuláció irányítópultján lát egy **Első lépések** című útmutatót. Kattintson az első csempére egy mintaszimuláció megnyitásához. Ha bezárja az **Első lépések** című útmutatót, megnyithatja az **Egyszerű mintaszimulációt** az irányítópulton a hozzá tartozó csempére kattintva:
 

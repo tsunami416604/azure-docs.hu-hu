@@ -1,6 +1,6 @@
 ---
-title: Kapcsolat felvétel php - Azure Database for PostgreSQL - Single Server
-description: Ez a rövid útmutató egy PHP-kódmintát biztosít, amelynek segítségével adatokat csatlakoztathat és lekérdezhet az Azure Database for PostgreSQL – Single Server szolgáltatásból.
+title: A PHP-Azure Database for PostgreSQL – egyetlen kiszolgálóval való kapcsolat
+description: Ez a rövid útmutató egy PHP-kódrészletet tartalmaz, amellyel összekapcsolhatók és lekérhető az Azure Database for PostgreSQL-kiszolgálóról származó adatok lekérdezése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,13 +9,13 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
 ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74766378"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: A PHP használata adatok csatlakoztatásához és lekérdezéséhez
+# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló: a PHP használata a kapcsolódáshoz és az adatlekérdezéshez
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz egy [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazással. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a PHP használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -39,7 +39,7 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 - Engedélyezze a **pgsql** bővítményt az `/etc/php/7.0/mods-available/pgsql.ini` konfigurációs fájl szerkesztésével. A konfigurációs fájlnak tartalmaznia kell egy sort a következő szöveggel: `extension=php_pgsql.so`. Ha ez nem jelenik meg, adja hozzá a szöveget, és mentse a fájlt. Ha a szöveg megvan, de pontosvessző előtaggal van ellátva, távolítsa el a megjegyzést a pontosvessző törlésével.
 
 ### <a name="macos"></a>MacOS
-- PHP [7.1.4 verzió letöltése](https://secure.php.net/downloads.php)
+- A [php 7.1.4 verziójának](https://secure.php.net/downloads.php) letöltése
 - Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](https://secure.php.net/manual/install.macosx.php)
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
@@ -54,7 +54,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasítással adjon hozzá sorokat a táblához.
 
-A kódhívási metódus [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) a PostgreSQL Azure Database szolgáltatáshoz való csatlakozáshoz. Ezután többször is meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy különböző parancsokat futtasson, majd a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy ellenőrizze a részleteket, ha minden alkalommal hibába ütközött. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
+A Code Call metódus [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután többször is meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy különböző parancsokat futtasson, majd a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy ellenőrizze a részleteket, ha minden alkalommal hibába ütközött. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
 
 Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a saját értékeire. 
 
@@ -112,7 +112,7 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ## <a name="read-data"></a>Adatok olvasása
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével. 
 
- A kódhívási metódus [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) a PostgreSQL Azure Database szolgáltatáshoz való csatlakozáshoz. Ezután meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy futtassa a SELECT parancsot, az eredményeket egy eredményhalmazban tárolja, majd meghívja a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket.  Az eredményhalmaz olvasásához a kód többször, soronként egyszer meghívja a [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) metódust. A soradatokat `$row` tömbben kéri le, minden egyes tömbpozícióban oszloponként egy adatértékkel.  Az eredményhalmaz felszabadításához a [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-free-result.php) metódust hívja meg. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
+ A Code Call metódus [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy futtassa a SELECT parancsot, az eredményeket egy eredményhalmazban tárolja, majd meghívja a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket.  Az eredményhalmaz olvasásához a kód többször, soronként egyszer meghívja a [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) metódust. A soradatokat `$row` tömbben kéri le, minden egyes tömbpozícióban oszloponként egy adatértékkel.  Az eredményhalmaz felszabadításához a [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-free-result.php) metódust hívja meg. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
 
 Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a saját értékeire. 
 
@@ -150,7 +150,7 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ## <a name="update-data"></a>Adatok frissítése
 A következő kód használatával csatlakozhat, és frissítheti az adatokat az **UPDATE** SQL-utasítással.
 
-A kódhívási metódus [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) a PostgreSQL Azure Database szolgáltatáshoz való csatlakozáshoz. Ezután meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy futtasson egy parancsot, majd a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
+A Code Call metódus [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) metódust, hogy futtasson egy parancsot, majd a [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket. Végül meghívja a [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
 
 Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a saját értékeire. 
 

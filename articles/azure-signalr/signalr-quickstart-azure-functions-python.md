@@ -1,5 +1,5 @@
 ---
-title: Az Azure SignalR szolgáltatás kiszolgáló nélküli rövid útmutatója – Python
+title: Azure Signaler szolgáltatás kiszolgáló nélküli gyors üzembe helyezése – Python
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre csevegőszobát az Azure SignalR szolgáltatás és az Azure Functions használatával.
 author: anthonychu
 ms.service: signalr
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75392156"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Rövid útmutató: Csevegőszoba létrehozása az Azure Functions és signalr szolgáltatás használatával a Python használatával
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
 Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós idejű funkciókat az alkalmazásához. Az Azure Functions egy kiszolgáló nélküli platform, amellyel infrastruktúra kezelése nélkül futtathat kódokat. Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan készíthet kiszolgáló nélküli, valós idejű csevegőalkalmazást a SignalR szolgáltatás és a Functions használatával.
 
@@ -24,9 +24,9 @@ Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 Ellenőrizze, hogy van-e telepítve valamilyen kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/).
 
-Telepítse az [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (2.7.1505-ös vagy újabb verzió) python Azure Function alkalmazások helyi futtatásához.
+Telepítse a [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (2.7.1505 vagy újabb verziót) a Python Azure Function apps helyi futtatásához.
 
-Az Azure Functions python [3.6-os vagy 3.7-es](https://www.python.org/downloads/)szükséges.
+A Azure Functions [Python 3,6 vagy 3,7](https://www.python.org/downloads/)szükséges.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -50,9 +50,9 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
     ![SignalR szolgáltatás létrehozása](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. A kódszerkesztőben nyissa meg az *src/chat/python* mappát a klónozott tárházban.
+1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/Python* mappát a klónozott tárházban.
 
-1. A Python-függvények helyi fejlesztéséhez és teszteléséhez python 3.6-os vagy 3.7-es környezetben kell dolgoznia. A következő parancsokkal hozzon létre `.venv`és aktiváljon egy virtuális környezetet.
+1. A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6 vagy 3,7 környezetben kell dolgoznia. Futtassa a következő parancsokat a nevű `.venv`virtuális környezet létrehozásához és aktiválásához.
 
     **Linux vagy macOS:**
 
@@ -61,7 +61,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     source .venv/bin/activate
     ```
 
-    **Windows:**
+    **Windows**
 
     ```powershell
     py -3.7 -m venv .venv
@@ -72,12 +72,12 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: *a function.json* határozza meg a függvényben használt kötéseket, * \_ \_az init\_\_.py* pedig a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
+1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: a *function. JSON* meghatározza a függvényben használt kötéseket, és * \_ \_az\_\_init. a.* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
 
-1. A virtuális környezet aktivált terminálján győződjön meg arról, hogy az *src/chat/python* mappában van. Telepítse a szükséges Python-csomagokat a PIP használatával.
+1. Az aktivált virtuális környezettel rendelkező terminálon győződjön meg arról, hogy a *src/chat/Python* mappában található. Telepítse a szükséges Python-csomagokat a PIP használatával.
 
     ```bash
     python -m pip install -r requirements.txt
@@ -89,7 +89,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     func start
     ```
 
-    ![Függvényalkalmazás futtatása](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
+    ![Function alkalmazás futtatása](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
@@ -97,7 +97,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást épített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
+Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions üzembe helyezése VS Code-dal](/azure/javascript/tutorial-vscode-serverless-node-01)

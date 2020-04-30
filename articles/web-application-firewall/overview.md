@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure webalkalmazás-tűzfalba
-description: Ez a cikk áttekintést nyújt az Azure Web Application Firewall (WAF)
+title: Az Azure webalkalmazási tűzfal bemutatása
+description: Ez a cikk áttekintést nyújt az Azure webalkalmazási tűzfal (WAF) szolgáltatásról
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,28 +8,28 @@ ms.date: 03/18/2020
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 49024c86d09f5cdd9e8b04d5a49f60021660b0c4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79475787"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Mi az az Azure Web Application Firewall?
 
-A Web Application Firewall (WAF) központosított védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen. A webalkalmazásokat egyre inkább rosszindulatú támadások célozzák meg, amelyek kihasználják az általánosan ismert biztonsági réseket. Az SQL-injektálás és a helyek közötti parancsfájlok a leggyakoribb támadások közé tartoznak.
+A Web Application Firewall (WAF) központosított védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen. A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az SQL-injektálás és a helyek közötti parancsfájlkezelés a leggyakoribb támadások közé tartozik.
 
-![WAF – áttekintés](media/overview/wafoverview.png)
+![A WAF áttekintése](media/overview/wafoverview.png)
 
-Az ilyen támadások megelőzése az alkalmazáskódban kihívást jelent. Szigorú karbantartást, javítást és figyelést igényelhet az alkalmazás topológia több rétegében. A központi webalkalmazás-tűzfal sokkal egyszerűbbé teszi a biztonságkezelést. A WAF emellett jobb védelmet nyújt az alkalmazásgazdáknak a fenyegetések és behatolások elleni védelemre.
+Az ilyen támadások megelőzése az alkalmazás kódjában kihívást jelent. Az alkalmazás topológiájának több rétegében szigorú karbantartási, javítási és figyelési funkciókra lehet szükség. A központosított webalkalmazási tűzfal sokkal egyszerűbbé teszi A biztonsági felügyeletet. A WAF lehetővé teszi, hogy az alkalmazás-rendszergazdák jobban meglegyenek a fenyegetésekkel és a behatolásokkal szembeni védelem.
 
-A WAF-megoldások gyorsabban reagálhatnak a biztonsági fenyegetésekre, ha központilag javítegy ismert biztonsági rést, ahelyett, hogy minden egyes webalkalmazást biztosítanának.
+Az egyes webalkalmazások biztonságossá tétele helyett a WAF-megoldás gyorsabban reagálhat a biztonsági fenyegetésekre, ha központilag javít egy ismert biztonsági rést.
 
 ## <a name="supported-service"></a>Támogatott szolgáltatás
 
-A WAF telepíthető az Azure Application Gateway, az Azure Front Door és az Azure Content Delivery Network (CDN) szolgáltatással a Microsofttól. Waf az Azure CDN jelenleg nyilvános előzetes verzió alatt.  A WAF olyan funkciókkal rendelkezik, amelyek az egyes szolgáltatásokhoz vannak testreszabva. Az egyes szolgáltatások WAF-szolgáltatásairól az egyes szolgáltatások áttekintésében olvashat bővebben.
+A WAF az Azure Application Gateway, az Azure bejárati ajtóval és az Azure Content Delivery Network (CDN) szolgáltatással is üzembe helyezhető a Microsofttól. A WAF on Azure CDN jelenleg nyilvános előzetes verzióban érhető el.  A WAF az egyes szolgáltatásokhoz testreszabott funkciókat tartalmaz. Az egyes szolgáltatások WAF funkcióival kapcsolatos további információkért tekintse meg az egyes szolgáltatások áttekintését.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Alkalmazásátjáró webalkalmazás-tűzfaláról további információt az [Azure Application Gateway webalkalmazás-tűzfalcímű témakörben talál.](./ag/ag-overview.md)
-- Az Azure Bejárati ajtaján található webalkalmazás-tűzfalról további információt [a WebApplication Firewall on Azure Front Door Service című](./afds/afds-overview.md)témakörben talál.
-- Az Azure CDN-szolgáltatás webalkalmazás-tűzfaláról további információt [az Azure CDN-szolgáltatás webalkalmazás-tűzfala című témakörben](./cdn/cdn-overview.md) talál.
+- A Application Gateway webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure Application Gateway](./ag/ag-overview.md).
+- A webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure bejárati ajtó szolgáltatásban](./afds/afds-overview.md).
+- A Azure CDN szolgáltatás webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal a Azure CDN szolgáltatásban](./cdn/cdn-overview.md)

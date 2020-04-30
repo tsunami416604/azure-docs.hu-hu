@@ -1,6 +1,6 @@
 ---
-title: Teljesítmény- és méretezhetőségi ellenőrzőlista a várólista-tároláshoz – Azure Storage
-description: A várólista-tárolóval a nagy teljesítményű alkalmazások fejlesztéséhez használt bevált gyakorlatok ellenőrzőlistája.
+title: A várólista-tárolás teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista – Azure Storage
+description: A nagy teljesítményű alkalmazások fejlesztéséhez használt üzenetsor-tárolással kapcsolatos bevált eljárások ellenőrzőlistája.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,191 +9,191 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75750500"
 ---
-# <a name="performance-and-scalability-checklist-for-queue-storage"></a>Teljesítmény- és méretezhetőségi ellenőrzőlista a várólista-tároláshoz
+# <a name="performance-and-scalability-checklist-for-queue-storage"></a>A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája
 
-A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások várólistára történő tárolással történő fejlesztéséhez. Ez az ellenőrzőlista azonosítja azokat a kulcsfontosságú gyakorlatokat, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat, miközben az alkalmazás tervezése és a folyamat során.
+A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások üzenetsor-tárolással való fejlesztéséhez. Ez az ellenőrzőlista azokat a kulcsfontosságú eljárásokat azonosítja, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat az alkalmazás tervezésekor és a folyamat során.
 
-Az Azure Storage méretezhetőségi és teljesítménycélokat biztosít a kapacitás, a tranzakciós díj és a sávszélesség számára. Az Azure Storage méretezhetőségi céljairól további információt a [méretezhetőségi és teljesítménycélok a normál tárfiókokhoz,](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) valamint [a méretezhetőségi és teljesítménycélok a várólista-tároláshoz](scalability-targets.md)című témakörben talál.
+Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: a [méretezhetőségi és teljesítményi célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , valamint [méretezhetőségi és teljesítményi célok a várólista-tároláshoz](scalability-targets.md).
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
-Ez a cikk a teljesítményre vonatkozó bevált eljárásokat egy ellenőrzőlistába rendezi, amelyet a várólista-tárolási alkalmazás fejlesztése során követhet.
+Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olyan ellenőrzőlista számára, amelyet követheti a várólista-tároló alkalmazás fejlesztése során.
 
-| Kész | Kategória | Tervezési szempontok |
+| Kész | Kategória | Tervezési szempont |
 | --- | --- | --- |
-| &nbsp; |Méretezhetőségi célok |[Meg tudja tervezni az alkalmazást úgy, hogy legfeljebb a tárfiókok maximális számát használja?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitás- és tranzakciós korlátok közeledését?](#capacity-and-transaction-targets) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök elegendően nagy sávszélességgel és alacsony késleltetéssel rendelkeznek a szükséges teljesítmény eléréséhez?](#throughput) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök kiváló minőségű hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban, mint a tárfiók?](#location) |
-| &nbsp; |Közvetlen ügyfél-hozzáférés |[Megosztott hozzáférésű aláírásokat (SAS) és több forrásból származó erőforrás-megosztást (CORS) használ az Azure Storage közvetlen elérésének engedélyezéséhez?](#sas-and-cors) |
-| &nbsp; |.NET-konfiguráció |[A .NET Core 2.1-es vagy újabb verziót használja az optimális teljesítmény érdekében?](#use-net-core) |
-| &nbsp; |.NET-konfiguráció |[Úgy állította be az ügyfelet, hogy elegendő számú egyidejű kapcsolatot használjon?](#increase-default-connection-limit) |
-| &nbsp; |.NET-konfiguráció |[A .NET alkalmazások esetében a .NET érték megfelelő számú szálat használt?](#increase-minimum-number-of-threads) |
-| &nbsp; |Párhuzamosság |[Biztosította, hogy a párhuzamosság megfelelően legyen határolódva, hogy ne terhelje túl az ügyfél képességeit, és ne közelítse meg a méretezhetőségi célokat?](#unbounded-parallelism) |
-| &nbsp; |Eszközök |[A Microsoft által biztosított ügyfélkódtárak és -eszközök legújabb verzióját használja?](#client-libraries-and-tools) |
-| &nbsp; |Újrapróbálkozások |[Az újrapróbálkozási szabályzatot exponenciális visszalépéssel használja a szabályozási hibák és időmegadások esetén?](#timeout-and-server-busy-errors) |
-| &nbsp; |Újrapróbálkozások |[Elkerüli az alkalmazás az újrapróbálkozásokat a nem újrapróbálható hibák miatt?](#non-retryable-errors) |
-| &nbsp; |Konfiguráció |[Kikapcsolta a Nagle algoritmust, hogy javítsa a kis kérések teljesítményét?](#disable-nagle) |
-| &nbsp; |Üzenet mérete |[Az üzenetek kompaktak a várólista teljesítményének javítása érdekében?](#message-size) |
-| &nbsp; |Tömeges visszakeresés |[Több üzenetet keres egyetlen GET műveletben?](#batch-retrieval) |
-| &nbsp; |A lekérdezés gyakorisága |[Elég gyakran van lekérdezése ahhoz, hogy csökkentse az alkalmazás észlelt késését?](#queue-polling-interval) |
-| &nbsp; |Üzenet frissítése |[Az Üzenet frissítése művelettel tárolja az üzenetek feldolgozásának előrehaladását, így nem kell újra feldolgoznia a teljes üzenetet, ha hiba történik?](#use-update-message) |
-| &nbsp; |Architektúra |[Várólisták használatával, hogy a teljes alkalmazás skálázható azáltal, hogy a hosszú ideig futó számítási feladatok ki a kritikus elérési út és a méretezés, majd egymástól függetlenül?](#application-architecture) |
+| &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
+| &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
+| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
+| &nbsp; |.NET-konfiguráció |[A .NET Core 2,1-as vagy újabb verzióját használja az optimális teljesítmény érdekében?](#use-net-core) |
+| &nbsp; |.NET-konfiguráció |[Konfigurálta az ügyfelet az egyidejű kapcsolatok megfelelő számának használatára?](#increase-default-connection-limit) |
+| &nbsp; |.NET-konfiguráció |[A .NET-alkalmazások esetében megfelelő számú szál használatára konfigurálta a .NET-et?](#increase-minimum-number-of-threads) |
+| &nbsp; |Párhuzamosság |[Gondoskodott arról, hogy a párhuzamosságok megfelelően legyenek kötve, hogy ne legyenek túlterhelve az ügyfél képességei, vagy közelítse meg a méretezhetőségi célokat?](#unbounded-parallelism) |
+| &nbsp; |Eszközök |[A Microsoft által biztosított ügyféloldali kódtárak és eszközök legújabb verzióit használja?](#client-libraries-and-tools) |
+| &nbsp; |Újrapróbálkozások |[Újrapróbálkozási szabályzatot használ egy exponenciális leállítási a hibák és időtúllépések szabályozásához?](#timeout-and-server-busy-errors) |
+| &nbsp; |Újrapróbálkozások |[Az alkalmazás elkerüli a nem újrapróbálkozást okozó hibák újrapróbálkozását?](#non-retryable-errors) |
+| &nbsp; |Konfiguráció |[Kikapcsolta a Nyéki algoritmust a kis kérelmek teljesítményének javítása érdekében?](#disable-nagle) |
+| &nbsp; |Üzenet mérete |[Az üzenetek tömörítve vannak az üzenetsor teljesítményének növelése érdekében?](#message-size) |
+| &nbsp; |Tömeges beolvasás |[Több üzenetet is beolvas egyetlen GET műveletben?](#batch-retrieval) |
+| &nbsp; |Lekérdezés gyakorisága |[Elég gyakran lekérdezni az alkalmazást, hogy csökkentse az alkalmazás észlelt késését?](#queue-polling-interval) |
+| &nbsp; |Üzenet frissítése |[Az üzenet frissítése művelettel tárolja az üzenetek feldolgozásának folyamatát, így elkerülhető, hogy a teljes üzenetet újra fel lehessen dolgozni, ha hiba történik?](#use-update-message) |
+| &nbsp; |Architektúra |[Olyan várólistákat használ, amelyekkel a teljes alkalmazás jobban méretezhető a hosszú távú munkaterhelések kiszámításával a kritikus elérési útról és a méretezéstől függetlenül?](#application-architecture) |
 
 ## <a name="scalability-targets"></a>Méretezhetőségi célok
 
-Ha az alkalmazás megközelíti vagy meghaladja a skálázhatósági célok bármelyikét, megnövekedett tranzakció-késésekkel vagy szabályozással találkozhat. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás 503 (kiszolgáló foglalt) vagy 500 (operation timeout) hibakódokat ad vissza. Ezek a hibák elkerülése a skálázhatósági célok határain belül való tartózkodással fontos része az alkalmazás teljesítményének növelésének.
+Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-A várólista-szolgáltatás méretezhetőségi céljairól az [Azure Storage méretezhetőségi és teljesítménycélok című](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)témakörben talál további információt.
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
-### <a name="maximum-number-of-storage-accounts"></a>Tárfiókok maximális száma
+### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
-Ha megközelíti az adott előfizetés/régió kombináció engedélyezett tárfiókok maximális számát, több tárfiókot használ a szegmensek számára a kimenő, kimenő, I/O-műveletek másodpercenkénti (IOPS) vagy kapacitás növelése érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a tárfiókok megnövekedett korlátainak kihasználásával csökkentse a számítási feladatokhoz szükséges tárfiókok számát, ha lehetséges. Lépjen kapcsolatba [az Azure-támogatással,](https://azure.microsoft.com/support/options/) és kérjen megnövelt korlátozásokat a tárfiókhoz. További információ: [Nagyobb, nagyobb méretű tárfiókok bejelentése.](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)
+Ha egy adott előfizetés/régió kombináció számára engedélyezett maximális számú Storage-fiókot használ, több Storage-fiókot is használhat a beléptetés, a kimenő forgalom, az I/O műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-### <a name="capacity-and-transaction-targets"></a>Kapacitás- és tranzakciócélok
+### <a name="capacity-and-transaction-targets"></a>Kapacitás-és tranzakciós célok
 
-Ha az alkalmazás megközelíti a skálázhatósági célok at egy tárfiók, fontolja meg az alábbi megközelítések:  
+Ha az alkalmazása közeledik egyetlen Storage-fiók skálázhatósági céljaihoz, vegye figyelembe az alábbi módszerek egyikét:  
 
-- Ha a várólisták méretezhetőségi céljai nem elegendőek az alkalmazás számára, akkor használjon több várólistát, és ossza el az üzeneteket közöttük.
-- Gondolja át újra a számítási feladatok, amely miatt az alkalmazás megközelíti vagy meghaladja a méretezhetőségi cél. Meg tudja tervezni másképpen, hogy kevesebb sávszélességet vagy kapacitást használjon, vagy kevesebb tranzakciót?
-- Ha az alkalmazás nak meg kell haladnia a méretezhetőségi célok egyikét, majd hozzon létre több tárfiókot, és particionálja az alkalmazásadatait a több tárfiókok között. Ha ezt a mintát használja, akkor ügyeljen arra, hogy tervezze meg az alkalmazást, hogy a jövőben további tárfiókokat adhat hozzá a terheléselosztáshoz. A tárfiókok maguk nak nincs más költsége, mint a használat a tárolt adatok, tranzakciók vagy átvitt adatok tekintetében.
-- Ha az alkalmazás megközelíti a sávszélesség-célokat, fontolja meg az adatok tömörítése az ügyféloldalon, hogy csökkentse az adatok küldéséhez szükséges az Azure Storage-ba.
-    Az adatok tömörítése sávszélességet takaríthat meg és javíthatja a hálózati teljesítményt, ezért negatív hatással lehet a teljesítményre is. Értékelje ki az adattömörítésre és a dekompresszióra vonatkozó további feldolgozási követelmények teljesítményhatását az ügyféloldalon. Ne feledje, hogy a tömörített adatok tárolása megnehezítheti a hibaelhárítást, mivel az adatok szabványos eszközökkel történő megtekintése nagyobb kihívást jelenthet.
-- Ha az alkalmazás közeledik a méretezhetőségi célokat, majd győződjön meg arról, hogy exponenciális visszamaradást használ az újrapróbálkozások. A legjobb, ha megpróbálja elkerülni a méretezhetőségi célok elérését az ebben a cikkben ismertetett javaslatok végrehajtásával. Azonban egy exponenciális backoff újrapróbálkozások megakadályozza, hogy az alkalmazás gyorsan újrapróbálkozik, ami ronthatja a szabályozást. További információt az [Időelési és kiszolgálói foglaltsági hibák](#timeout-and-server-busy-errors)című szakaszban talál.
+- Ha a várólisták skálázhatósági céljai nem elegendőek az alkalmazáshoz, akkor használjon több várólistát, és ossza meg őket egymás között.
+- Gondolja át a számítási feladatokat, amelyek hatására az alkalmazás megközelíti vagy túllépi a méretezhetőségi célt. Másképpen is megtervezhető, hogy kevesebb sávszélességet vagy kapacitást vagy kevesebb tranzakciót használjon?
+- Ha az alkalmazásnak meg kell haladnia a méretezhetőségi célok valamelyikét, hozzon létre több Storage-fiókot, és particionálja az alkalmazásadatok körét a több Storage-fiók között. Ha ezt a mintát használja, ügyeljen arra, hogy tervezze meg az alkalmazását, hogy a jövőben további Storage-fiókokat lehessen hozzáadni a terheléselosztáshoz. A Storage-fiókok önmagukban a tárolt adatok, a tranzakciók vagy az átvitt adatok alapján nem számítanak bele a használati díjakba.
+- Ha az alkalmazás közeledik a sávszélesség-célokhoz, érdemes lehet az ügyfél oldalán lévő adatok tömörítését az adatok Azure Storage-ba való küldéséhez szükséges sávszélesség csökkentése érdekében.
+    Az adatok tömörítése csökkentheti a sávszélességet, és javíthatja a hálózati teljesítményt, továbbá negatív hatással lehet a teljesítményre. Értékelje ki a további feldolgozási követelmények teljesítményére gyakorolt hatást az adattömörítés és a kibontás az ügyféloldali oldalon. Ne feledje, hogy a tömörített adattárolók megnehezítik a hibaelhárítást, mivel a szabványos eszközök használatával nagyobb kihívást jelenthet az adatmegtekintés.
+- Ha az alkalmazás közeledik a méretezhetőségi célokhoz, akkor győződjön meg arról, hogy exponenciális leállítási használ az újrapróbálkozásokhoz. A legjobb megoldás, ha a jelen cikkben ismertetett javaslatok végrehajtásával el szeretné kerülni a méretezhetőségi célok elérését. Az újrapróbálkozások exponenciális leállítási használata azonban megakadályozza, hogy az alkalmazás gyorsan újrapróbálkozjon, ami még rosszabb szabályozást eredményezhet. További információ: az [időtúllépés és a kiszolgáló foglalt hibák](#timeout-and-server-busy-errors)című szakasza.
 
 ## <a name="networking"></a>Hálózat
 
-Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok néhány olyan korlátozást ismertetik, amelyekkel a felhasználók találkozhatnak.  
+Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
-### <a name="client-network-capability"></a>Ügyfélhálózati képesség
+### <a name="client-network-capability"></a>Ügyfél hálózati funkciója
 
-A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazások teljesítményében, akövetkező szakaszokban leírtak szerint.
+A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Teljesítmény
+#### <a name="throughput"></a>Átviteli sebesség
 
-A sávszélesség esetében a probléma gyakran az ügyfél képességei. A nagyobb Azure-példányok hálózati adapterek nagyobb kapacitással rendelkeznek, ezért érdemes egy nagyobb példányt vagy több virtuális gépet használni, ha egyetlen gépről magasabb hálózati korlátokra van szüksége. Ha az Azure Storage-t egy helyszíni alkalmazásból éri el, akkor ugyanaz a szabály vonatkozik: ismerje meg az ügyféleszköz hálózati képességeit és az Azure Storage helyéhez való hálózati kapcsolatot, és szükség szerint javítsa őket, vagy tervezze meg alkalmazás a képességeiken belül.
+A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
 #### <a name="link-quality"></a>Kapcsolat minősége
 
-Mint minden hálózati használat, ne feledje, hogy a hálózati feltételeket eredményező hibák és csomagvesztés lassítja a hatékony átviteli.  A WireShark vagy a NetMon használata segíthet a probléma diagnosztizálásában.  
+Ahogy bármilyen hálózati használat esetében, ne feledje, hogy a hibákat eredményező hálózati feltételek és a csomagok elvesztése lassú működést eredményez.  A WireShark vagy a NetMon használata segíthet a probléma diagnosztizálásában.  
 
 ### <a name="location"></a>Hely
 
-Bármely elosztott környezetben az ügyfél kiszolgáló közelében történő elhelyezése a legjobb teljesítményt nyújtja. A legalacsonyabb késleltetéssel rendelkező Azure Storage eléréséhez az ügyfél számára a legjobb hely ugyanabban az Azure-régióban található. Ha például egy Azure-webalkalmazás, amely az Azure Storage-t használja, keresse meg őket egy régióban, például az USA nyugati vagy délkeleti régióban. Az erőforrások közös helytcsoportosítása csökkenti a késést és a költségeket, mivel a sávszélesség-használat egyetlen régión belül ingyenes.  
+Minden elosztott környezetben, a-ügyfél közel a kiszolgálóhoz, a legjobb teljesítményt nyújtja. Ha az Azure Storage-t a legalacsonyabb késéssel szeretné elérni, az ügyfél számára a legjobb hely ugyanazon az Azure-régión belül van. Ha például van egy Azure-webalkalmazása, amely az Azure Storage szolgáltatást használja, akkor mindkettőt egyetlen régióban, például az USA nyugati régiójában vagy Délkelet-Ázsiában is megtalálhatja. Az erőforrások közös elhelyezése csökkenti a késést és a költségeket, mivel az egyetlen régión belüli sávszélesség-használat ingyenes.  
 
-Ha az ügyfélalkalmazások hozzáférnek az Azure Storage-hoz, de nem találhatók az Azure-ban, például mobileszköz-alkalmazásokban vagy helyszíni vállalati szolgáltatásokban, akkor a tárfiók az ügyfelek közelében lévő régióban való helytkeresése csökkentheti a késést. Ha az ügyfelek széles körben elosztott (például néhány Észak-Amerikában, és néhány Európában), akkor fontolja meg egy tárfiók régiónként. Ez a megközelítés könnyebben megvalósítható, ha az alkalmazás által tárolt adatok az egyes felhasználók számára, és nem igényel adatok replikálása a tárfiókok között.
+Ha az ügyfélalkalmazások hozzáférnek az Azure Storage-hoz, de nem az Azure-ban, például a mobileszköz-alkalmazásokban vagy a helyszíni vállalati szolgáltatásokban vannak tárolva, akkor a Storage-fiók az ügyfelek közelében lévő régiókban is csökkentheti a késést. Ha az ügyfeleket széles körben terjesztik (például néhány Észak-Amerika és néhány európai), akkor érdemes lehet régiónként egy Storage-fiókot használni. Ez a megközelítés könnyebben megvalósítható, ha az alkalmazás által tárolt adattárolók egyediek az egyes felhasználók számára, és nem igénylik az adatreplikálást a Storage-fiókok között.
 
 ## <a name="sas-and-cors"></a>SAS és CORS
 
-Tegyük fel, hogy engedélyeznie kell a kódot, például a JavaScript, amely fut a felhasználó webböngészőben vagy egy mobiltelefon-alkalmazásban az Adatok eléréséhez az Azure Storage-ban. Az egyik megközelítés az, hogy hozzon létre egy szolgáltatásalkalmazást, amely proxyként működik. A felhasználó eszköze hitelesíti magát a szolgáltatással, amely viszont engedélyezi az Azure Storage-erőforrásokhoz való hozzáférést. Ily módon elkerülheti a tárfiók kulcsainak felfedését a nem biztonságos eszközökön. Ez a megközelítés azonban jelentős terhelést ró a szolgáltatásalkalmazásra, mivel a felhasználó eszköze és az Azure Storage között átvitt összes adatnak át kell haladnia a szolgáltatásalkalmazáson.
+Tegyük fel, hogy engedélyezni kell a kódot, például a JavaScriptet, amely egy felhasználó webböngészőjében vagy egy mobiltelefon-alkalmazásban fut az Azure Storage-ban tárolt adateléréshez. Az egyik módszer egy olyan szolgáltatásalkalmazás létrehozása, amely proxyként működik. A felhasználó eszköze hitelesíti magát a szolgáltatással, amely viszont engedélyezi az Azure Storage-erőforrásokhoz való hozzáférést. Így elkerülhető, hogy a Storage-fiók kulcsa nem biztonságos eszközökön legyen kitéve. Ez a megközelítés azonban jelentős terhelést jelent a szolgáltatásalkalmazás számára, mivel a felhasználó eszközén és az Azure Storage-ban továbbított összes adatmennyiségnek továbbítania kell a szolgáltatásalkalmazás alkalmazásán.
 
-A megosztott hozzáférésű aláírások (SAS) használatával elkerülheti, hogy egy szolgáltatásalkalmazást az Azure Storage proxyjaként használjon. A SAS használatával engedélyezheti, hogy a felhasználó eszköze kéréseket küldjön közvetlenül az Azure Storage-ba egy korlátozott hozzáférési jogkivonat használatával. Ha például egy felhasználó szeretne feltölteni egy fényképet az alkalmazásba, majd a szolgáltatásalkalmazás létrehozhat egy SAS-t, és elküldheti azt a felhasználó eszközére. A SAS-jogkivonat engedélyt adhat egy Azure Storage-erőforrásnak egy megadott ideig, amely után a SAS-jogkivonat lejár. A SAS-ről további információt az [Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával való korlátozott hozzáférés megadása](../common/storage-sas-overview.md)című témakörben talál.  
+A megosztott hozzáférési aláírások (SAS) használatával elkerülhető, hogy a szolgáltatásalkalmazás proxyként legyen használatban az Azure Storage-ban. A SAS használatával engedélyezheti a felhasználó eszközének, hogy közvetlenül az Azure Storage-ba irányuló kéréseket hozzon igénybe korlátozott hozzáférési jogkivonat használatával. Ha például egy felhasználó egy fényképet szeretne feltölteni az alkalmazásba, a szolgáltatásalkalmazás létrehozhat egy SAS-t, és elküldheti azt a felhasználó eszközére. Az SAS-jogkivonat engedélyezheti az Azure Storage-erőforrásoknak adott időtartamra való írást, amely után az SAS-jogkivonat lejár. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../common/storage-sas-overview.md).  
 
-A webböngészők általában nem engedélyezik a JavaScript et az egyik tartomány egyik webhelye által üzemeltetett lapon, hogy bizonyos műveleteket, például írási műveleteket hajtson végre egy másik tartományban. Az azonos eredetű házirendként ismert házirend megakadályozza, hogy egy rosszindulatú parancsfájl az egyik oldalon hozzáférjen egy másik weblapon lévő adatokhoz. Az azonos eredetű szabályzat azonban korlátozás lehet a felhőben történő megoldás létrehozásakor. A kereszteredetű erőforrás-megosztás (CORS) egy olyan böngészőszolgáltatás, amely lehetővé teszi, hogy a céltartomány kommunikáljon a böngészővel arról, hogy megbízik a forrástartományból származó kérelmekben.
+A webböngésző általában nem engedélyezi a JavaScript használatát egy olyan oldalon, amelyet egy adott tartomány webhelye futtat bizonyos műveletek, például írási műveletek végrehajtásához egy másik tartományba. Ez a házirend megakadályozza, hogy az egyik lapon lévő rosszindulatú parancsfájlok hozzáférjenek egy másik weblapon lévő adatokhoz. Ugyanakkor a felhőben a megoldás kiépítésekor is megadható korlátozás. A több eredetű erőforrás-megosztás (CORS) egy böngésző-szolgáltatás, amely lehetővé teszi a célként megadott tartomány számára, hogy kommunikáljon a forrás tartományból származó kérelmeket megbízható böngészővel.
 
-Tegyük fel például, hogy egy Azure-ban futó webalkalmazás egy azure Storage-fiókhoz kér egy erőforrást. A webalkalmazás a forrástartomány, a tárfiók pedig a céltartomány. A CORS konfigurálhatja az Azure Storage-szolgáltatások bármely kommunikálni a webböngésző, amely a kérelmeket a forrástartomány megbízható az Azure Storage. A CORS szolgáltatásról további információt az [Azure Storage több forrásból származó erőforrás-megosztási (CORS) támogatása című témakörben talál.](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)  
+Tegyük fel például, hogy egy Azure-ban futó webalkalmazás egy Azure Storage-fiókhoz kér egy erőforrást. A webalkalmazás a forrástartomány, a Storage-fiók pedig a célként megadott tartomány. A CORS bármely Azure Storage-szolgáltatáshoz beállíthatja úgy, hogy az Azure Storage által megbízhatónak tekintse azt a böngészőt, amelyet a forrástartománytól érkező kérések biztosítanak. A CORS kapcsolatos további információkért lásd: [Az Azure Storage-hoz készült több eredetű erőforrás-megosztás (CORS) támogatása](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).  
   
-A SAS és a CORS egyaránt segít elkerülni a webes alkalmazás szükségtelen terhelését.  
+Az SAS és a CORS is segíthet elkerülni a webalkalmazás szükségtelen terhelését.  
 
 ## <a name="net-configuration"></a>.NET-konfiguráció
 
-A .  Ha más nyelveket használ, ellenőrizze, hogy hasonló fogalmak vonatkoznak-e a választott nyelvre.  
+A .NET-keretrendszer használata esetén ez a szakasz több gyors konfigurációs beállítást tartalmaz, amelyek segítségével jelentős teljesítmény-növelést végezhet.  Ha más nyelveket használ, ellenőrizze, hogy a választott nyelven a hasonló fogalmak érvényesek-e.  
 
 ### <a name="use-net-core"></a>A .NET Core használata
 
-A teljesítménybeli fejlesztések előnyeinek kihasználásához fejlesztheti Azure Storage-alkalmazásait a .NET Core 2.1-es vagy újabb verzióival. A .NET Core 3.x használata lehetőség szerint ajánlott.
+Fejlessze Azure Storage-alkalmazásait a .NET Core 2,1-es vagy újabb verziójával, hogy kihasználhassa a teljesítménnyel kapcsolatos fejlesztéseket. Ha lehetséges, a .NET Core 3. x használata javasolt.
 
-A .NET Core teljesítményjavulásáról az alábbi blogbejegyzésekben talál további információt:
+A .NET Core teljesítményével kapcsolatos újdonságokról a következő blogbejegyzésekben olvashat bővebben:
 
-- [Teljesítménybeli fejlesztések a .NET Core 3.0-ban](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
-- [Teljesítménybeli fejlesztések a .NET Core 2.1-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
+- [Teljesítménnyel kapcsolatos újdonságok a .NET Core 3,0-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
+- [Teljesítménnyel kapcsolatos újdonságok a .NET Core 2,1-ben](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
 
-### <a name="increase-default-connection-limit"></a>Az alapértelmezett kapcsolatkorlát növelése
+### <a name="increase-default-connection-limit"></a>Az alapértelmezett kapcsolatok korlátjának megemelése
 
-A .NET-ben a következő kód 100-ra növeli az alapértelmezett kapcsolatkorlátot (amely ügyfélkörnyezetben általában 2, kiszolgálói környezetben 10). Általában az értéket az alkalmazás által használt szálak számának megfelelően kell beállítani.  
+A .NET-ben a következő kód növeli az alapértelmezett kapcsolódási korlátot (amely általában 2 egy ügyfél-környezetben, vagy 10 a kiszolgálói környezetben) 100-re. Az értéket általában az alkalmazás által használt szálak számának körülbelül értékre kell állítani.  
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-A kapcsolatok megnyitása előtt állítsa be a kapcsolatkorlátot.  
+A kapcsolatok megnyitása előtt állítsa be a kapcsolati korlátot.  
 
-Más programozási nyelvek esetében tekintse meg a nyelv dokumentációját, hogy hogyan állítsa be a kapcsolati korlátot.  
+Más programozási nyelvek esetében az adott nyelv dokumentációjában megtudhatja, hogyan állíthatja be a kapcsolódási korlátot.  
 
-További információt a Web [Services: Concurrent Connections](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)című blogbejegyzésben talál.  
+További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
 
-### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának növelése
+### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának megemelése
 
-Ha szinkron hívásokat és aszinkron feladatokat használ, érdemes lehet növelni a szálak számát a szálkészletben:
+Ha a szinkron hívásokat aszinkron feladatokkal együtt használja, érdemes megnövelni a szálak számát a szál készletében:
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-További információt a [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metódusban talál.  
+További információ: [szálkészlet munkaszála belépett. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metódus.  
 
-## <a name="unbounded-parallelism"></a>Határtalan párhuzamosság
+## <a name="unbounded-parallelism"></a>Nem kötött párhuzamosság
 
-Míg a párhuzamosság nagyszerű lehet a teljesítményhez, legyen óvatos a nem kötött párhuzamosság használatával kapcsolatban, ami azt jelenti, hogy nincs korlátozva a szálak vagy a párhuzamos kérelmek száma. Ügyeljen arra, hogy korlátozza az adatok feltöltésére vagy letöltésére, az ugyanazon tárfiók több partíciójának elérésére, vagy ugyanazon partíció több elemének elérésére vonatkozó párhuzamos kérelmeket. Ha a párhuzamosság nincs korlátozva, az alkalmazás meghaladhatja az ügyféleszköz képességeit vagy a tárfiók méretezhetőségi céljait, ami hosszabb késéseket és szabályozást eredményez.  
+Míg a párhuzamosság kiválóan használható a teljesítmény szempontjából, ügyeljen a nem korlátozott párhuzamosságok használatára, ami azt jelenti, hogy a szálak vagy a párhuzamos kérelmek száma nem kényszerített. Ügyeljen arra, hogy korlátozza a párhuzamos kérelmek feltöltését vagy letöltését, hogy ugyanazon a Storage-fiókban több partíciót lehessen elérni, vagy ugyanabban a partícióban több elemhez is hozzáférhessen. Ha a párhuzamosság feloldva, az alkalmazás túllépheti az ügyféleszközök képességeit vagy a tárolási fiók skálázhatósági céljait, ami hosszabb késést és szabályozást eredményez.  
 
-## <a name="client-libraries-and-tools"></a>Ügyfélkönyvtárak és -eszközök
+## <a name="client-libraries-and-tools"></a>Ügyféloldali kódtárak és eszközök
 
-A legjobb teljesítmény érdekében mindig a Microsoft által biztosított legújabb ügyfélkönyvtárakat és eszközöket használja. Az Azure Storage ügyfélkódtárak számos nyelven érhetők el. Az Azure Storage támogatja a PowerShellt és az Azure CLI-t is. A Microsoft aktívan fejleszti ezeket az ügyfélkönyvtárakat és -eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja őket a legújabb szolgáltatásverziókkal, és biztosítja, hogy a bevált teljesítménygyakorlatok nagy részét belsőleg kezeljék. További információt az [Azure Storage referenciadokumentációjában](/azure/storage/#reference)talál.
+A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék. További információt az [Azure Storage dokumentációjában](/azure/storage/#reference)talál.
 
-## <a name="handle-service-errors"></a>Szolgáltatási hibák kezelése
+## <a name="handle-service-errors"></a>Szolgáltatás hibáinak kezelése
 
-Az Azure Storage hibaüzenetet ad vissza, ha a szolgáltatás nem tud feldolgozni egy kérelmet. Az Azure Storage által egy adott forgatókönyvben visszaadható hibák megértése hasznos a teljesítmény optimalizálásához.
+Az Azure Storage hibát jelez, ha a szolgáltatás nem tud feldolgozni egy kérést. Az Azure Storage által az adott forgatókönyvben visszaadott hibák megismerése hasznos lehet a teljesítmény optimalizálása érdekében.
 
-### <a name="timeout-and-server-busy-errors"></a>Idő- és kiszolgálófoglalt sági hibák
+### <a name="timeout-and-server-busy-errors"></a>Időtúllépés és a kiszolgáló foglalt hibái
 
-Az Azure Storage szabályozhatja az alkalmazást, ha megközelíti a méretezhetőségi korlátokat. Bizonyos esetekben előfordulhat, hogy az Azure Storage nem tudja kezelni a kérelmet valamilyen átmeneti állapot miatt. Mindkét esetben a szolgáltatás 503 (kiszolgáló foglalt) vagy 500 (Időmegadás) hibát adhat vissza. Ezek a hibák akkor is előfordulhatnak, ha a szolgáltatás újraegyensúlyozza az adatpartíciókat, hogy nagyobb átviteli terhelést tegyen lehetővé. Az ügyfélalkalmazásnak általában újra meg kell próbálnia azt a műveletet, amely a hibák egyikét okozza. Ha azonban az Azure Storage szabályozása az alkalmazás, mert meghaladja a méretezhetőségi célokat, vagy akkor is, ha a szolgáltatás nem tudta kiszolgálni a kérelmet valamilyen más okból, agresszív újrapróbálkozások ronthatja a problémát. Exponenciális biztonsági másolatot aretry házirend használata ajánlott, és az ügyfélkódtárak alapértelmezés szerint ezt a viselkedést. Előfordulhat például, hogy az alkalmazás 2 másodperc, majd 4 másodperc, majd 10 másodperc, majd 30 másodperc után újrapróbálkozik, majd teljesen feladja. Ily módon az alkalmazás jelentősen csökkenti a terhelést a szolgáltatás, ahelyett, hogy súlyosbítja a viselkedést, amely oda vezethet, hogy a szabályozás.  
+Az Azure Storage szabályozhatja az alkalmazást, ha az megközelíti a méretezhetőségi korlátokat. Bizonyos esetekben előfordulhat, hogy az Azure Storage bizonyos átmeneti feltételek miatt nem tudja kezelni a kérést. A szolgáltatás mindkét esetben egy 503 (foglalt kiszolgáló) vagy 500 (időtúllépési) hibát adhat vissza. Ezek a hibák akkor is előfordulhatnak, ha a szolgáltatás az adatpartíciók újrakiegyensúlyozását teszi lehetővé a magasabb átviteli sebesség érdekében. Az ügyfélalkalmazás általában próbálja megismételni a műveletet, amely a hibák egyikét okozza. Ha azonban az Azure Storage szabályozza az alkalmazást, mert az meghaladja a skálázhatósági célokat, vagy ha a szolgáltatás nem tudta kiszolgálni a kérelmet valamilyen más okból, az agresszív újrapróbálkozások rosszabbul tehetik a problémát. Az exponenciális visszahívási újrapróbálkozási házirend használata ajánlott, és az ügyféloldali kódtárak ezt a viselkedést használják. Előfordulhat például, hogy az alkalmazás 2 másodperc, 4 másodperc, 10 másodperc, majd 30 másodperc múlva újra próbálkozik. Így az alkalmazása jelentősen csökkenti a szolgáltatás terhelését, és nem súlyosbítja a szabályozáshoz vezethető viselkedést.  
 
-A kapcsolódási hibák azonnal újrapróbálkozhatók, mert nem szabályozás eredménye, és várhatóan átmenetiek lesznek.  
+A kapcsolódási hibákat azonnal újra lehet próbálni, mert nem a szabályozás eredménye, és a várt átmeneti állapotú.  
 
-### <a name="non-retryable-errors"></a>Nem újrapróbálható hibák
+### <a name="non-retryable-errors"></a>Nem újrapróbálkozást lehetővé tevő hibák
 
-Az ügyféltárak úgy kezelik az újrapróbálkozásokat, hogy mely hibák kísérhetők meg újra, és melyek nem. Azonban ha közvetlenül hívja meg az Azure Storage REST API-t, vannak olyan hibák, amelyeket nem szabad újra megpróbálnia. Például egy 400 (Hibás kérelem) hiba azt jelzi, hogy az ügyfélalkalmazás olyan kérelmet küldött, amelyet nem lehetett feldolgozni, mert nem volt a várt formában. A kérelem újraküldése minden alkalommal ugyanazt a választ eredményezi, így nincs értelme újrakipróbálni. Ha közvetlenül hívja meg az Azure Storage REST API-t, vegye figyelembe a lehetséges hibákat, és hogy meg kell-e próbálni őket.
+Az ügyféloldali kódtárak kezelik az újrapróbálkozásokat, és megismerik, hogy mely hibákat lehet újrapróbálni, és melyek nem. Ha azonban közvetlenül hívja meg az Azure Storage-REST API, néhány hiba miatt nem kell újrapróbálkoznia. Például egy 400-as (hibás kérelem) hiba azt jelzi, hogy az ügyfélalkalmazás olyan kérelmet küld, amely nem dolgozható fel, mert nem volt a várt formában. A kérelem újraküldése minden alkalommal ugyanazt a választ eredményezi, így a rendszer nem próbálkozik újra. Ha közvetlenül hívja meg az Azure Storage-REST API, vegye figyelembe a lehetséges hibákat, valamint azt, hogy újra kell-e próbálni.
 
-Az Azure Storage hibakódjairól az [Állapot- és hibakódok című témakörben](/rest/api/storageservices/status-and-error-codes2)talál további információt.
+Az Azure Storage-hibakódokkal kapcsolatos további információkért lásd: [állapot-és hibakódok](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="disable-nagle"></a>Nagle letiltása
+## <a name="disable-nagle"></a>A nyár letiltása
 
-A Nagle algoritmusa széles körben elterjedt a TCP/IP hálózatokon, mint a hálózati teljesítmény javításának eszköze. Azonban nem optimális minden körülmények között (például a rendkívül interaktív környezetben). A Nagle algoritmusa negatív hatással van az Azure Table szolgáltatáshoz érkező kérések teljesítményére, és ha lehetséges, tiltsa le.
+A Nyéki algoritmusa széles körben implementálva van a TCP/IP-hálózatokon a hálózati teljesítmény javítása érdekében. Ez azonban nem minden esetben optimális (például a nagyon interaktív környezetekben). A Nyéki algoritmusa negatív hatással van az Azure Table service érkező kérések teljesítményére, és ha lehetséges, le kell tiltania.
 
 ## <a name="message-size"></a>Üzenet mérete
 
-A várólista teljesítménye és méretezhetősége az üzenetek méretének növekedésével csökken. Csak a címzettnek szükséges információkat helyezze el egy üzenetben.  
+A várólista teljesítményének és méretezhetőségének csökkentése az üzenet méretének növekedésével. Csak azokat az adatokat helyezze el, amelyekre a fogadónak szüksége van egy üzenetben.  
 
-## <a name="batch-retrieval"></a>Köteglekérések
+## <a name="batch-retrieval"></a>Kötegelt lekérés
 
-Egy várólistából legfeljebb 32 üzenetet lehet beolvasni egyetlen műveletben. A kötegelt lekérés csökkentheti az ügyfélalkalmazásból származó odautazások számát, ami különösen hasznos a nagy késleltetéssel rendelkező környezetekben, például mobileszközökön.  
+Egy várólistából legfeljebb 32 üzenetet kérhet le egyetlen művelettel. A Batch beolvasás csökkentheti az ügyfélalkalmazások számának lekérését, ami különösen hasznos lehet olyan környezetekben, mint például a mobileszközök, nagy késéssel.  
 
 ## <a name="queue-polling-interval"></a>Várólista lekérdezési időköze
 
-A legtöbb alkalmazás leszavazása egy várólistából érkező üzenetek, amely lehet az egyik legnagyobb tranzakcióforrások az adott alkalmazáshoz. Válassza ki a lekérdezési időköz bölcsen: a lekérdezés túl gyakran okozhat az alkalmazás megközelíteni a skálázhatósági célokat a várólista. Bármennyire, -on 200,000 lebonyolítás részére $0.01 ( abban az időpont -ból írás), egy egyes folyamat szavazás egyszer egyszer mind második részére egy hónap akar ár kevésbé mint 15 cent tehát ár van általában egy tényező amit befolyásol -a válogatott -ból szavazás időköz.  
+A legtöbb alkalmazás egy üzenetsor által küldött üzenetek lekérdezése, amely az adott alkalmazáshoz tartozó tranzakciók egyik legnagyobb forrása lehet. Válassza ki a lekérdezési időközt bölcsen: a lekérdezés túl gyakran okozhatja az alkalmazásnak, hogy megközelítse a várólista skálázhatósági céljait. Azonban a $0,01-es (az írás időpontjában) 200 000-tranzakciókban a processzorok másodpercenkénti lekérdezése kevesebb, mint 15 cent, így a költségek nem jellemzően a lekérdezési időközt befolyásoló tényező.  
 
-A legfrissebb költséginformációkat az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/)című témakörben talál.  
+A naprakész költséggel kapcsolatos információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
 
-## <a name="use-update-message"></a>A Frissítési üzenet használata
+## <a name="use-update-message"></a>Frissítési üzenet használata
 
-Az Üzenet **frissítése** művelettel növelheti a láthatatlanságidő-túltöltést, vagy frissítheti az üzenet állapotadatait. Az **Üzenet frissítése** szolgáltatás hatékonyabb lehet, mint egy olyan munkafolyamat, amely egy feladatot egyik várólistából a másikba ad át, mivel a feladat minden egyes lépése befejeződött. Az alkalmazás mentheti a feladat állapotát az üzenetbe, majd folytathatja a munkát ahelyett, hogy minden lépésnél újrasorolná az üzenetet a feladat következő lépéséhez. Ne feledje, hogy minden **frissítési üzenet** művelet beleszámít a méretezhetőségi célba.
+Az **üzenet frissítése** művelettel növelheti a láthatósági időtúllépést, vagy frissítheti egy üzenet állapotadatok állapotát. A **frissítési üzenet** használata hatékonyabb megoldás lehet, mint a feladatok egy várólistáról a másikra való átadására szolgáló munkafolyamatok, mivel a feladatok mindegyik lépése befejeződött. Az alkalmazás elmentheti a feladatot az üzenetbe, majd folytathatja a munkát, és nem kell az üzenetet a művelet minden egyes lépésekor a következő lépéshez átütemezni. Ne feledje, hogy az egyes **frissítési üzenetek** minden művelete beleszámít a méretezhetőségi célra.
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 
-A várólisták segítségével méretezhetővé teheti az alkalmazásarchitektúrát. Az alábbi lista felsorolja, hogyan használhatja a várólistákat az alkalmazás méretezhetőbbé válására:  
+A várólisták segítségével méretezhetővé teheti az alkalmazás architektúráját. Az alábbi lista néhány módszert biztosít a várólisták használatára az alkalmazás méretezhetőségének megtételéhez:  
 
-- A várólisták segítségével munkaelmaradásokat hozhat létre az alkalmazás ban, és elsimíthatja a munkaterheléseket. Például várólistára veheti a felhasználók kéréseit, hogy processzorigényes munkát végezzenek, például átméretezheti a feltöltött képeket.
-- A várólisták segítségével leválaszthatja az alkalmazás egyes részeit, így egymástól függetlenül méretezheti őket. Például egy webes előtér-felhasználók felmérési eredményeket helyezhet el egy várólistában későbbi elemzés és tárolás érdekében. Szükség szerint további feldolgozói szerepkör-példányokat adhat hozzá a várólista-adatok feldolgozásához.  
+- A várólisták használatával várakozó munkaterhelések hozhatók létre az alkalmazásban felhasználható számítási és kiegyenlítő feladatok elvégzéséhez. Előfordulhat például, hogy a felhasználóktól érkező kéréseket a processzorok intenzív működéséhez, például a feltöltött képek átméretezéséhez szeretné elvégezni.
+- A várólisták segítségével elválaszthatja az alkalmazás egyes részeit, így egymástól függetlenül méretezheti azokat. A webes előtér például a felhasználók által egy várólistába helyezheti a későbbi elemzést és tárolást. További feldolgozói szerepkör-példányok hozzáadásával feldolgozhatja a várólista-adatkészletek igény szerinti feldolgozását.  
 
 ## <a name="next-steps"></a>További lépések
 
-- [Méretezhetőségi és teljesítménycélok a várólista-tároláshoz](scalability-targets.md)
-- [Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-- [Állapot- és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)
+- [Skálázhatóság és teljesítménybeli célok a várólista-tároláshoz](scalability-targets.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

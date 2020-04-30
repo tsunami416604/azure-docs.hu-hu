@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus-várólisták használata PHP-vel
-description: Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre PHP-alkalmazásokat üzenetek küldéséhez és fogadásához egy Service Bus-várólistából.
+title: A Azure Service Bus Queues használata PHP-vel
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre PHP-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -15,49 +15,49 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760691"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Rövid útmutató: A Service Bus-várólisták használata a PHP-vel
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Gyors útmutató: Service Bus Queues használata PHP-vel
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre PHP-alkalmazásokat üzenetek küldéséhez és fogadásához egy Service Bus-várólistából. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre PHP-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [az MSDN előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókra.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
-2. Ha nincs várólistája, amivel dolgozhatna, kövesse az Azure Portal használata című lépéseit [a Service Bus-várólista-cikk létrehozásához](service-bus-quickstart-portal.md) egy várólista létrehozásához.
-    1. Olvassa el a Service Bus **várólistáinak**gyors **áttekintését.** 
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
+    1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
     2. Hozzon létre egy Service Bus **névteret**. 
-    3. A **kapcsolati karakterlánc bekapcsolása**. 
+    3. A **kapcsolatok karakterláncának**beolvasása. 
 
         > [!NOTE]
-        > Ebben az oktatóanyagban a PHP használatával hozzon létre egy **várólistát** a Service Bus névtérben. 
+        > Ebben az oktatóanyagban a PHP használatával fog létrehozni egy **várólistát** a Service Bus névtérben. 
 3. [PHP-hoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
-Az egyetlen követelmény egy PHP-alkalmazás, amely hozzáfér az Azure Blob szolgáltatás az osztályok hivatkozva az [Azure SDK PHP-hez](https://github.com/Azure/azure-sdk-for-php) a kódon belül. Bármilyen fejlesztői eszközzel létrehozhatja az alkalmazást vagy a Jegyzettömböt.
+Az Azure Blob servicehoz hozzáférő PHP-alkalmazások létrehozásának egyetlen követelménye, hogy az [Azure SDK for php](https://github.com/Azure/azure-sdk-for-php) osztályait a programkódon belülre hivatkozzon. Az alkalmazás vagy a Jegyzettömb létrehozásához bármilyen fejlesztői eszközt használhat.
 
 > [!NOTE]
-> A PHP telepítéséhez az [OpenSSL kiterjesztésnek](https://php.net/openssl) is telepítve és engedélyezve kell lennie.
+> A PHP-telepítésnek is telepítve és engedélyezve kell lennie az [OpenSSL bővítménnyel](https://php.net/openssl) .
 
-Ebben az útmutatóban szolgáltatásfunkciókat fog használni, amelyek helyileg egy PHP-alkalmazásból, vagy egy Azure webes szerepkörben, feldolgozói szerepkörben vagy webhelyen futó kódban hívhatók meg.
+Ebben az útmutatóban a szolgáltatás funkcióit fogja használni, amelyek a PHP-alkalmazásokból helyileg, vagy egy Azure-beli webes szerepkörben, feldolgozói szerepkörben vagy webhelyen futó kódban hívhatók.
 
-## <a name="get-the-azure-client-libraries"></a>Az Azure ügyfélkódtárak beszereznie
+## <a name="get-the-azure-client-libraries"></a>Az Azure-ügyfél kódtárainak beszerzése
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása a Service Bus használatára
-A Service Bus várólista API-inak használatához tegye a következőket:
+## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
+Az Service Bus üzenetsor API-k használatához tegye a következőket:
 
-1. Hivatkozzon az automatikus betöltőfájlra a [require_once][require_once] utasítás használatával.
-2. Hivatkozzon a használható osztályokra.
+1. Hivatkozzon az automatikus betöltő fájlra a [require_once][require_once] utasítás használatával.
+2. Hivatkozzon az esetlegesen használt osztályokra.
 
-A következő példa bemutatja, hogyan kell felvenni `ServicesBuilder` az automatikus betöltő fájlt, és hivatkozni az osztályra.
+Az alábbi példa azt mutatja be, hogyan lehet felvenni az automatikus betöltő fájlt `ServicesBuilder` , és hivatkozni az osztályra.
 
 > [!NOTE]
-> Ez a példa (és a cikk ben található egyéb példák) feltételezi, hogy a PHP ügyfélkódtárakat a Composer-en keresztül telepítette az Azure-hoz. Ha a könyvtárakat manuálisan vagy PEAR csomagként telepítette, hivatkoznia kell a **WindowsAzure.php** automatikus betöltőfájljára.
+> Ez a példa (és a cikkben szereplő további példák) feltételezi, hogy telepítette az Azure-hoz készült PHP ügyféloldali kódtárakat a zeneszerző használatával. Ha manuálisan vagy PEAR-csomagként telepítette a kódtárakat, a **WindowsAzure. php** automatikus betöltő fájlra kell hivatkoznia.
 > 
 > 
 
@@ -66,23 +66,23 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-Az alábbi példákban a `require_once` kimutatás mindig megjelenik, de csak a példához szükséges osztályokra hivatkozik a program.
+Az alábbi példákban az `require_once` utasítás mindig látható lesz, de csak a végrehajtáshoz szükséges osztályok vannak hivatkozva.
 
-## <a name="set-up-a-service-bus-connection"></a>Service Bus-kapcsolat beállítása
-A Service Bus-ügyfél példányosításához először érvényes kapcsolati karakterláncmal kell rendelkeznie ebben a formátumban:
+## <a name="set-up-a-service-bus-connection"></a>Service Bus-kapcsolatok beállítása
+Service Bus-ügyfél létrehozásához a következő formátumban kell érvényes kapcsolódási karakterláncot tartalmaznia:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Ahol `Endpoint` jellemzően a `[yourNamespace].servicebus.windows.net`formátum .
+Ahol `Endpoint` általában a formátuma `[yourNamespace].servicebus.windows.net`.
 
-Bármely Azure-szolgáltatás ügyfél létrehozásához `ServicesBuilder` az osztályt kell használnia. A következőket teheti:
+Bármely Azure-szolgáltatásbeli ügyfél létrehozásához a `ServicesBuilder` osztályt kell használnia. A következőket teheti:
 
-* Adja át a kapcsolati karakterláncot közvetlenül hozzá.
-* A **CloudConfigurationManager (CCM)** segítségével több külső forrást is ellenőrizhet a kapcsolati karakterlánchoz:
-  * Alapértelmezés szerint egy külső forrás - környezeti változók támogatása
-  * Új forrásokat adhat hozzá `ConnectionStringSource` az osztály kiterjesztésével
+* Adja át közvetlenül a kapcsolódási karakterláncot.
+* A **CloudConfigurationManager (CCM)** segítségével több külső forrást is megvizsgálhat a kapcsolódási karakterlánchoz:
+  * Alapértelmezés szerint egy külső forrás – környezeti változók támogatásával jár.
+  * Új forrásokat az `ConnectionStringSource` osztály kibővítésével adhat hozzá
 
 Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
@@ -97,9 +97,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
-Felügyeleti műveleteket hajthat végre a Service `ServiceBusRestProxy` Bus-várólistákhoz az osztályon keresztül. Az `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` gyári metóduson keresztül jön létre egy megfelelő kapcsolati karakterlánccal, amely magában foglalja a token engedélyeket a kezeléséhez.
+Service Bus várólistákhoz a `ServiceBusRestProxy` osztályon keresztül végezhet felügyeleti műveleteket. Egy `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` gyári metódussal lett létrehozva egy megfelelő kapcsolati karakterlánccal, amely magában foglalja a jogkivonat-engedélyeket a kezeléséhez.
 
-A következő példa bemutatja, hogyan `ServiceBusRestProxy` hozhat `ServiceBusRestProxy->createQueue` létre egy `myqueue` és `MySBNamespace` hívhat hívást egy szolgáltatásnévtérben elnevezett várólista létrehozásához:
+Az alábbi `ServiceBusRestProxy` példa bemutatja, hogyan hozhat létre és hívhat `ServiceBusRestProxy->createQueue` meg egy, a `myqueue` `MySBNamespace` szolgáltatási névtéren belül elnevezett üzenetsor létrehozását:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +128,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Az objektumokon `listQueues` `ServiceBusRestProxy` lévő metódus segítségével ellenőrizheti, hogy létezik-e már megadott nevű várólista egy névtérben.
+> Az `listQueues` `ServiceBusRestProxy` objektumok metódusával ellenőrizhető, hogy egy adott névvel rendelkező várólista már létezik-e egy névtéren belül.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Ha üzenetet szeretne küldeni egy Service Bus-várólistába, az alkalmazás meghívja a `ServiceBusRestProxy->sendQueueMessage` metódust. A következő kód bemutatja, hogyan `myqueue` küldhet üzenetet `MySBNamespace` a szolgáltatás névterében korábban létrehozott várólistára.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `ServiceBusRestProxy->sendQueueMessage` a metódust. A következő kód bemutatja, hogyan küldhet üzenetet a `myqueue` korábban a `MySBNamespace` szolgáltatási névtéren belül létrehozott várólistára.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -163,19 +163,19 @@ catch(ServiceException $e){
 }
 ```
 
-A Service Bus várólistáiba küldött (és onnan érkező) üzenetek a [BrokeredMessage][BrokeredMessage] osztály példányai. [A BrokeredMessage-objektumok][BrokeredMessage] szabványos metódusok és tulajdonságok készletével rendelkeznek, amelyek egyéni alkalmazásspecifikus tulajdonságok tárolására szolgálnak, és tetszőleges alkalmazásadatok at tartalmaznak.
+Az Service Bus Queues a [BrokeredMessage][BrokeredMessage] osztály példányai. A [BrokeredMessage][BrokeredMessage] -objektumok szabványos metódusokkal és tulajdonságokkal rendelkeznek, amelyek az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgálnak, valamint egy tetszőleges alkalmazásadatok törzsét.
 
-A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. A várólista méretének felső határa 5 GB.
+A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. A várólista méretének felső korlátja 5 GB.
 
-## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása várólistából
+## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A várólistából érkező üzenetek fogadásának legjobb `ServiceBusRestProxy->receiveQueueMessage` módja egy módszer használata. Az üzenetek két különböző módban fogadhatók: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) és [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). A **PeekLock** az alapértelmezett érték.
+Az üzenetek várólistából való fogadásának legjobb módja egy `ServiceBusRestProxy->receiveQueueMessage` metódus használata. Az üzenetek két különböző módban is fogadhatók: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) és [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). A **PeekLock** az alapértelmezett érték.
 
-A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód használataesetén a fogadás egylövetű művelet; azaz amikor a Service Bus olvasási kérelmet kap egy üzenetre egy várólistában, az üzenetet felhasználásként jelöli meg, és visszaküldi azt az alkalmazásnak. A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet felhasználásként jelölte meg, majd amikor az alkalmazás újraindul, és újra elkezdi az üzenetek felhasználását, az összeomlás előtt felhasznált üzenet hiányozni fog.
+A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód használatakor a fogadás egy egylépéses művelet; Ez azt jelenti, hogy amikor a Service Bus olvasási kérést kap egy várólistában lévő üzenethez, az üzenetet felhasználva jelöli meg, és visszaadja az alkalmazásnak. A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus a rendszer felhasználja az üzenetet, amikor az alkalmazás újraindul, és újrakezdi az üzenetek felhasználását, az összeomlás előtt kimaradt az üzenetből.
 
-Az alapértelmezett [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) módban az üzenet fogadása kétlépcsős műveletté válik, amely lehetővé teszi olyan alkalmazások támogatását, amelyek nem tolerálják a hiányzó üzeneteket. Amikor a Service Bus kérést kap, megkeresi a következő használni hozandó üzenetet, zárolja, hogy megakadályozza, hogy más fogyasztók megkapják, majd visszaküldi azt az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja a jövőbeni feldolgozáshoz), a `ServiceBusRestProxy->deleteMessage`fogadási folyamat második szakaszát a fogadási üzenet nek való átadásával fejezi be. Amikor a Service `deleteMessage` Bus látja a hívást, megfogja jelölni az üzenetet, mint a felhasznált, és távolítsa el a várólistából.
+Az alapértelmezett [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) módban egy üzenet fogadása kétlépcsős művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor Service Bus kap egy kérést, a rendszer megkeresi a következő felhasználandó üzenetet, zárolja, hogy megakadályozza a többi fogyasztótól a fogadást, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a kapott üzenet átadásával `ServiceBusRestProxy->deleteMessage`. Ha Service Bus látja a `deleteMessage` hívást, az üzenetet a rendszer felhasználja, és eltávolítja a várólistából.
 
-A következő példa bemutatja, hogyan fogadhat és dolgozhat fel egy üzenetet [peeklock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) módban (ez az alapértelmezett mód).
+Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel egy üzenetet a [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) mód használatával (az alapértelmezett mód).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -217,19 +217,19 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni `unlockMessage` az üzenetet, akkor meghívhatja a metódust a fogadott üzenetben (a `deleteMessage` metódus helyett). Ez azt eredményezi, hogy a Service Bus feloldja az üzenet zárolását a várólistán belül, és elérhetővé teszi, hogy újra megkapja, akár ugyanazt a fogyasztó alkalmazást, akár egy másik fogyasztó alkalmazást.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor a `unlockMessage` metódust meghívhatja a kapott üzeneten (a `deleteMessage` metódus helyett). Ez azt eredményezi, hogy Service Bus a várólistán belüli üzenet zárolását, és elérhetővé teszi azt újra, akár egyazon alkalmazás, akár egy másik alkalmazás.
 
-Időtúltöltés is van társítva a várólistán belül zárolt üzenethez, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúldátum lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenetet, és végrehajtja azt. újra fogadható.
+A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenetet, és elérhetővé teszi azt újra.
 
-Abban az esetben, ha az alkalmazás összeomlik `deleteMessage` az üzenet feldolgozása után, de a kérelem kiadása előtt, akkor az üzenet újra kézbesítésre kerül az alkalmazáshoz, amikor újraindul. Ezt gyakran *nevezik legalább egyszer* feldolgozás; ez azt illeti, minden üzenet feldolgozása legalább egyszer, de bizonyos helyzetekben ugyanazt az üzenetet lehet kézbesíteni. Ha a forgatókönyv nem tűri a duplikált feldolgozást, akkor további logika hozzáadása az alkalmazásokhoz az ismétlődő üzenetek kézbesítésének kezeléséhez ajánlott. Ez gyakran az üzenet `getMessageId` módszerével érhető el, amely a kézbesítési kísérletek során állandó marad.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, `deleteMessage` de a kérelem kiadása előtt, akkor az üzenet az újraindításkor visszakerül az alkalmazásba. Ezt gyakran nevezik *legalább egyszer* feldolgozásra; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni a duplikált feldolgozást, akkor további logikát adhat hozzá az alkalmazásokhoz az ismétlődő üzenetek kézbesítésének kezeléséhez. Ez gyakran az üzenet `getMessageId` metódusának használatával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 > [!NOTE]
-> A Service Bus erőforrásait a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)segítségével kezelheti. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy csatlakozzanak a Service Bus névtér és felügyeli az üzenetkezelési entitások egyszerű módon. Az eszköz speciális funkciókat biztosít, például importálási/exportálási funkciókat, vagy a témakör, a várólisták, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelését. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megtanulta a Service Bus-várólisták alapjait, további információért olvassa [el a Várólisták, témakörök és előfizetések című témakört.][Queues, topics, and subscriptions]
+Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
 
-További információkért látogasson el a [PHP Developer Center](https://azure.microsoft.com/develop/php/).
+További információért látogasson el a [php fejlesztői központba](https://azure.microsoft.com/develop/php/)is.
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

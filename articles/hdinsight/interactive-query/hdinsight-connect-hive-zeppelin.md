@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Apache Hive az Azure HDInsightban az Apache Zeppelinnel'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Apache Zeppelint az Apache Hive-lekérdezések futtatásához.
+title: 'Gyors útmutató: az Azure HDInsight Apache Hive az Apache Zeppelin-vel'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79367924"
 ---
-# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rövid útmutató: Apache Hive-lekérdezések végrehajtása az Azure HDInsightban az Apache Zeppelinsegítségével
+# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel
 
-Ebben a rövid útmutatóban megtudhatja, hogyan futtathatja [az Apache Hive-lekérdezéseket](https://hive.apache.org/) az Azure HDInsightban az Apache Zeppelin használatával. A HDInsight interaktív lekérdezési fürtök [apache Zeppelin-jegyzetfüzeteket](https://zeppelin.apache.org/) tartalmaznak, amelyek segítségével interaktív Hive-lekérdezéseket futtathat.
+Ebből a rövid útmutatóból megtudhatja, hogyan futtathat [Apache Hive](https://hive.apache.org/) -lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A HDInsight interaktív lekérdezési fürtök olyan [Apache Zeppelin](https://zeppelin.apache.org/) -jegyzetfüzeteket tartalmaznak, amelyekkel interaktív struktúra-lekérdezéseket futtathat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-HDInsight interaktív lekérdezési fürt. A HDInsight-fürt létrehozásához lásd: [Fürt létrehozása.](../hadoop/apache-hadoop-linux-tutorial-get-started.md)  Győződjön meg arról, hogy az **Interaktív lekérdezés** fürttípusát választotta.
+An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md) HDInsight-fürt létrehozásához.  Győződjön meg arról, hogy az **interaktív lekérdezési** fürt típusa van kiválasztva.
 
-## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin note létrehozása
+## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin-Megjegyzés létrehozása
 
-1. Cserélje `CLUSTERNAME` le a fürt nevét a `https://CLUSTERNAME.azurehdinsight.net/zeppelin`következő URL-címen . Ezután írja be az URL-címet egy webböngészőben.
+1. Cserélje `CLUSTERNAME` le a nevet a fürt nevére a következő URL- `https://CLUSTERNAME.azurehdinsight.net/zeppelin`címben. Ezután írja be az URL-címet egy böngészőben.
 
-2. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát. A Zeppelin lapon létrehozhat egy új jegyzetet, vagy megnyithatja a meglévő jegyzeteket. **HiveSample** tartalmaz néhány minta Hive-lekérdezések.  
+2. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát. A Zeppelin lapon létrehozhat egy új megjegyzést, vagy megnyithatja a meglévő megjegyzéseket. A **HiveSample** tartalmaz néhány minta kaptár-lekérdezést.  
 
-    ![HDInsight interaktív lekérdezés zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    ![HDInsight interaktív lekérdezés Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. Válassza **az Új jegyzet létrehozása**lehetőséget.
+3. Válassza az **új Megjegyzés létrehozása**lehetőséget.
 
-4. Az **Új jegyzet létrehozása** párbeszédpanelen írja be vagy jelölje ki a következő értékeket:
+4. Az **új Megjegyzés létrehozása** párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    - Megjegyzés neve: Adja meg a jegyzet nevét.
-    - Alapértelmezett értelmező: Válassza ki a **jdbc** elemet a legördülő listából.
+    - Megjegyzés neve: adja meg a jegyzet nevét.
+    - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
 
-5. Válassza **a Feljegyzés létrehozása lehetőséget.**
+5. Válassza a **Létrehozás Megjegyzés**lehetőséget.
 
-6. Írja be a következő Hive-lekérdezést a kódszakaszba, majd nyomja le a **Shift + Enter billentyűkombinációt:**
+6. Adja meg a következő kaptár-lekérdezést a Code (kód) szakaszban, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt:
 
     ```hive
     %jdbc(hive)
     show tables
     ```
 
-    ![A HDInsight Interaktív lekérdezészeppelin lekérdezést futtat](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    ![A HDInsight interaktív lekérdezési Zeppelin lekérdezéseket futtat](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    Az első sorban lévő **%jdbc(hive)** utasítás arra utasítja a jegyzetfüzetet, hogy használja a Hive JDBC értelmezőt.
+    Az első sorban található **% JDBC (kaptár)** utasítás azt jelzi, hogy a jegyzetfüzet a kaptár JDBC-értelmező használatát mutatja be.
 
-    A lekérdezés egy Hive-táblát, **a hivesampletable-t**adja vissza.
+    A lekérdezés egy **hivesampletable**nevű struktúrás táblát ad vissza.
 
-    Az alábbiakban két további Hive-lekérdezést, amelyek futtathatók **hivesampletable:**
+    A következő két további, a **hivesampletable**-ben futtatott kaptár-lekérdezést hajt végre:
 
     ```hive
     %jdbc(hive)
@@ -68,11 +68,11 @@ HDInsight interaktív lekérdezési fürt. A HDInsight-fürt létrehozásához l
     limit ${total_count=10}
     ```
 
-    Összehasonlítva a hagyományos Hive, a lekérdezés iab-eredmények gyorsabbnak kell lennie.
+    A hagyományos struktúrához képest a lekérdezés eredményeinek gyorsabban kell visszatérniük.
 
 ### <a name="additional-examples"></a>További példák
 
-1. Hozzon létre egy táblázatot. Hajtsa végre az alábbi kódot a Zeppelin notebookban:
+1. Hozzon létre egy táblát. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
 
     ```hql
     %jdbc(hive)
@@ -89,7 +89,7 @@ HDInsight interaktív lekérdezési fürt. A HDInsight-fürt létrehozásához l
     STORED AS TEXTFILE;
     ```
 
-1. Adatok betöltése az új táblába. Hajtsa végre az alábbi kódot a Zeppelin notebookban:
+1. Betöltés az új táblába. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
 
     ```hql
     %jdbc(hive)
@@ -98,7 +98,7 @@ HDInsight interaktív lekérdezési fürt. A HDInsight-fürt létrehozásához l
     INTO TABLE log4jLogs;
     ```
 
-1. Egyetlen rekord beszúrása. Hajtsa végre az alábbi kódot a Zeppelin notebookban:
+1. Egyetlen rekord beszúrása. Hajtsa végre az alábbi kódot a Zeppelin jegyzetfüzetben:
 
     ```hql
     %jdbc(hive)
@@ -106,17 +106,17 @@ HDInsight interaktív lekérdezési fürt. A HDInsight-fürt létrehozásához l
     VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
     ```
 
-Tekintse át a [Hive nyelvi kézikönyv](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) további szintaxis.
+További szintaxisért tekintse át a [kaptár nyelvi útmutatóját](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A rövid útmutató befejezése után érdemes törölni a fürtöt. A HDInsight segítségével az adatok az Azure Storage-ban tárolódnak, így biztonságosan törölheti a fürtöt, ha nincs használatban. A HDInsight-fürtért is díjat kell fizetnie, még akkor is, ha nincs használatban. Mivel a fürt díjai sokszor több, mint a tárolási díjak, célszerű törölni a fürtöket, ha nincsenek használatban.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
-Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
+Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Apache Zeppelint az Apache Hive-lekérdezések futtatásához az Azure HDInsightban. Ha többet szeretne megtudni a Hive-lekérdezésekről, a következő cikk bemutatja, hogyan hajthatja végre a lekérdezéseket a Visual Studióval.
+Ebben a rövid útmutatóban megtanulta, hogyan futtathat Apache Hive lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A kaptár-lekérdezésekkel kapcsolatos további tudnivalókért a következő cikk bemutatja, hogyan hajthat végre lekérdezéseket a Visual Studióval.
 
 > [!div class="nextstepaction"]
-> [Csatlakozás az Azure HDInsighthoz, és Apache Hive-lekérdezések futtatása a Data Lake-eszközök a Visual Studio számára használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+> [Kapcsolódás az Azure HDInsight és Apache Hive-lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)

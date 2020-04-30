@@ -1,5 +1,5 @@
 ---
-title: Az Azure virtuálisgép-méretezési készletek áttekintése
+title: Azure virtuálisgép-méretezési csoportok – áttekintés
 description: Tudnivalók az Azure virtuálisgép-méretezési csoportokról és az alkalmazások automatikus méretezéséről
 author: mimckitt
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272542"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
@@ -27,7 +27,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 - **Több virtuális gép egyszerű létrehozása és kezelése**
     - Ha egy alkalmazás sok virtuális gépen fut, fontos fenntartani egy állandó, a környezet egészében érvényesülő konfigurációt. Az alkalmazás megbízható teljesítménye érdekében fontos, hogy minden virtuális gépen ugyanaz legyen a gép mérete, a lemezkonfiguráció és az alkalmazás telepített verziója.
     - A méretezési csoportok használatakor a rendszer az összes virtuálisgép-példányt egyazon alapul szolgáló operációsrendszer-képből és konfigurációból hozza létre. Ez a megközelítés lehetővé teszi több száz virtuális gép egyszerű kezelését további konfigurációs feladatok és hálózatkezelés nélkül.
-    - A méretezési készletek támogatják az [Azure terheléselosztó](../load-balancer/load-balancer-overview.md) használatát az alapszintű 4-es szintű forgalomelosztáshoz, és az [Azure Application Gateway-t](../application-gateway/application-gateway-introduction.md) a fejlettebb 7-es rétegforgalom-elosztáshoz és a TLS-végződtetéshez.
+    - A méretezési csoportok az [Azure Load Balancer](../load-balancer/load-balancer-overview.md) használatát támogatják az alapszintű 4. rétegbeli forgalom elosztásához, az [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pedig fejlettebb, 7. rétegbeli forgalom elosztását és TLS-lezárást biztosít.
 
 - **Magas rendelkezésre állás és rugalmas alkalmazások**
     - A méretezési csoportok segítségével az alkalmazások több példányban futtathatók. Ha valamelyik virtuálisgép-példány problémába ütközik, az ügyfelek továbbra is elérhetik az alkalmazást valamelyik másik példányon keresztül, minimális megszakítással.
@@ -38,8 +38,8 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
     - Az automatikus méretezés segít minimális szinten tartani az alkalmazást futtató virtuálisgép-példányok számát alacsony igényszint esetén, és elfogadható teljesítményt biztosít az ügyfeleknek további VM-példányok hozzáadásával, amikor igénynövekedés tapasztalható. Ez a képesség segít a költségek csökkentésében, és hatékony módon, csakis szükség esetén hoz létre Azure-erőforrásokat.
 
 - **Működtetés nagy léptékben**
-    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját egyéni virtuálisgép-lemezképeket hoz létre és tölt fel, a korlát 600 virtuálisgép-példány.
-    - Az éles számítási feladatok legjobb teljesítménye érdekében használja az [Azure Felügyelt lemezek et.](../virtual-machines/windows/managed-disks-overview.md)
+    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját virtuálisgép-rendszerképeit hozza létre és tölti fel, a korlát 600 virtuálisgép-példány.
+    - Az éles munkaterhelésekkel kapcsolatos legjobb teljesítmény érdekében használja az [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md)-t.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?
@@ -54,11 +54,11 @@ A méretezési csoportokat virtuális gépek alkotják. A méretezési csoportok
 
 A méretezési csoportok nem járnak többletköltségekkel. Csak a mögöttes számítási erőforrások, például a virtuálisgép-példányok, a terheléselosztó vagy a felügyelt lemezes tárolók használatáért kell fizetni. A felügyeleti és automatizálási szolgáltatások, például az automatikus méretezés és a redundancia, nem járnak többletköltségekkel a virtuális gépek használatán túl.
 
-## <a name="how-to-monitor-your-scale-sets"></a>A mérlegkészletek figyelése
+## <a name="how-to-monitor-your-scale-sets"></a>A méretezési csoportok figyelése
 
-Használja [az Azure Monitor virtuális gépekhez](../azure-monitor/insights/vminsights-overview.md), amely egy egyszerű bevezetési folyamat, és automatizálja a fontos CPU,memória, lemez és hálózati teljesítményszámlálók gyűjtése a virtuális gépek a méretezési csoportban. További figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állására és teljesítményére összpontosítani.
+Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overview.md), amely egy egyszerű előkészítési folyamattal rendelkezik, és automatizálja a méretezési csoportba tartozó virtuális gépekről származó fontos CPU-, memória-, lemez-és hálózati teljesítményszámlálók gyűjteményét. Emellett további figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állásának és teljesítményének a kiépítésében.
 
-Az Application Insights segítségével engedélyezheti a [virtuálisgép-méretezési csoport](../azure-monitor/app/azure-vm-vmss-apps.md) alkalmazásfigyelését, hogy részletes információkat gyűjtsön az alkalmazásról, beleértve az oldalnézeteket, az alkalmazáskérelmeket és a kivételeket. További ellenőrizze az alkalmazás rendelkezésre állását egy [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálására.
+Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 Első lépésként hozza létre első virtuálisgép-méretezési csoportját az Azure Portalon.

@@ -1,6 +1,6 @@
 ---
-title: Külső táblák használata a Synapse SQL-rel
-description: Adatfájlok olvasása vagy írása a Synapse SQL segítségével
+title: Külső táblák használata a szinapszis SQL használatával
+description: Adatfájlok olvasása vagy írása a szinapszis SQL-sel
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -10,33 +10,33 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4d13d15fe950c89687acfca355d4ed183756536a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423977"
 ---
-# <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a Synapse SQL-rel
+# <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
-Egy külső tábla a Hadoopban, az Azure Storage blobban vagy az Azure Data Lake Storage-ban található adatokra mutat. A külső táblák adatok olvasására szolgálnak a fájlokból, vagy adatokat írnak az Azure Storage-fájlokba. A Synapse SQL használatával külső táblák kal olvashat adatokat SQL-készletbe vagy SQL-igény szerint (előzetes verzió) .
+A külső tábla a Hadoop, az Azure Storage blob vagy a Azure Data Lake Storageban található adatforrásra mutat. A külső táblákból adatok olvashatók be a fájlokból, vagy adatok írhatók az Azure Storage-ban lévő fájlokba. A szinapszis SQL használatával külső táblákat használhat az SQL-készletbe vagy az SQL on-demand (előzetes verzió) szolgáltatásba való adatolvasásra és-írásra.
 
 ## <a name="external-tables-in-sql-pool"></a>Külső táblák az SQL-készletben
 
-Az SQL-készletben külső tábla segítségével:
+Az SQL-készletben külső táblákat is használhat a következőhöz:
 
-- Az Azure Blob Storage és az Azure Data Lake Gen2 lekérdezése Transact-SQL utasításokkal.
-- Adatok importálása és tárolása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból az SQL-készletbe.
+- Azure Blob Storage és Azure Data Lake Gen2 Transact-SQL-utasításokkal való lekérdezése.
+- Adatok importálása és tárolása az Azure Blob Storage és Azure Data Lake Storage az SQL-készletbe.
 
-Ha a CREATE [TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső tábla kiválasztásával adatokat importál az SQL-készlet en belüli táblába. A COPY [utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kívül a külső táblák hasznosak az adatok betöltéséhez. A betöltési oktatóanyagról a [PolyBase használata adatok betöltése az Azure Blob Storage szolgáltatásból.](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításban](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a külső táblák az adatok betöltéséhez is hasznosak. A betöltési oktatóanyagért lásd: az [Azure Blob Storageból történő adatok betöltésének alapja](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-## <a name="external-tables-in-sql-on-demand-preview"></a>Külső táblák az SQL igény szerinti verziójában (előzetes verzió)
+## <a name="external-tables-in-sql-on-demand-preview"></a>Külső táblák az SQL on-demand (előzetes verzió)
 
-Az igény szerinti SQL esetén külső táblát kell használnia a következőkre:
+Az SQL igény szerinti használatához egy külső táblát kell használnia a következőhöz:
 
-- Adatok lekérdezése az Azure Blob Storage-ban vagy az Azure Data Lake Storage-ban Transact-SQL utasításokkal
-- Az SQL igény szerinti lekérdezési eredményeit tárolja az Azure Blob Storage vagy az Azure Data Lake Storage fájljaiban a [CETAS](develop-tables-cetas.md)használatával.
+- Adatlekérdezés az Azure Blob Storage vagy Azure Data Lake Storage Transact-SQL-utasításokkal
+- Az SQL igény szerinti lekérdezési eredményeket az Azure Blob Storage vagy Azure Data Lake Storage [CETAS](develop-tables-cetas.md)használatával tárolhatja.
 
-Külső táblákat az alábbi lépésekkel hozhat létre az IGÉNY szerinti SQL használatával:
+A következő lépések végrehajtásával hozhat létre külső táblákat az SQL igény szerinti használatával:
 
 1. KÜLSŐ ADATFORRÁS LÉTREHOZÁSA
 2. CREATE EXTERNAL FILE FORMAT
@@ -44,9 +44,9 @@ Külső táblákat az alábbi lépésekkel hozhat létre az IGÉNY szerinti SQL 
 
 ## <a name="create-external-data-source"></a>KÜLSŐ ADATFORRÁS LÉTREHOZÁSA
 
-A külső adatforrások a tárfiókokhoz való csatlakozáshoz használatosak. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)található .
+A külső adatforrások a Storage-fiókokhoz való kapcsolódáshoz használatosak. A teljes dokumentációt [itt](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)találja.
 
-## <a name="syntax-for-create-external-data-source"></a>Külső adatforrás létrehozásának szintaxisa
+## <a name="syntax-for-create-external-data-source"></a>KÜLSŐ ADATFORRÁS létrehozásának szintaxisa
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -55,21 +55,21 @@ WITH
 [;]
 ```
 
-## <a name="arguments-for-create-external-data-source"></a>Külső adatforrás létrehozása argumentumai
+## <a name="arguments-for-create-external-data-source"></a>A külső ADATFORRÁS LÉTREHOZÁSához szükséges argumentumok
 
-data_source_name -Az adatforrás felhasználó által definiált nevét adja meg. A névnek egyedinek kell lennie az adatbázisban.
+data_source_name – megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
 
-LOCATION `'<prefix>://<path>'` = - Biztosítja a kapcsolódási protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy `'<prefix>://<path>/container'`tárolót . és egy `'<prefix>://<path>/container/folder'`mappát .
+LOCATION = `'<prefix>://<path>'` – megadja a kapcsolati protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy tárolót a formájában `'<prefix>://<path>/container'`, valamint egy mappát is `'<prefix>://<path>/container/folder'`.
 
-| Külső adatforrás        | Helyelőtag | Hely elérési útja                                         |
+| Külső adatforrás        | Hely előtagja | Hely elérési útja                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
-| Azure Data Lake Áruház Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
-| Azure Data Lake Áruház Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+| 1. generációs Azure Data Lake Store | `adl`           | `<storage_account>.azuredatalake.net`                 |
+| 2. generációs Azure Data Lake Store | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
-## <a name="example-for-create-external-data-source"></a>Példa külső adatforrás létrehozása
+## <a name="example-for-create-external-data-source"></a>Példa külső ADATFORRÁS létrehozására
 
-A következő példa létrehoz egy külső adatforrást az Azure Data Lake Gen2 számára, amely a New York-i adatkészletre mutat:
+Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2 a New York-i adatkészletre mutat:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
@@ -83,11 +83,11 @@ WITH
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Létrehoz egy külső fájlformátum-objektumot, amely meghatározza az Azure Blob Storage vagy az Azure Data Lake Storage által tárolt külső adatokat. Külső fájlformátum létrehozása a külső tábla létrehozásának előfeltétele. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)van .
+Létrehoz egy külső fájlformátum-objektumot, amely meghatározza az Azure Blob Storage vagy Azure Data Lake Storage tárolt külső adatforrásokat. Külső fájlformátum létrehozása előfeltétel egy külső tábla létrehozásához. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)található.
 
-Külső fájlformátum létrehozásával megadhatja a külső táblázat által hivatkozott adatok tényleges elrendezését.
+Külső fájlformátum létrehozásával megadhatja a külső tábla által hivatkozott adatok tényleges elrendezését.
 
-## <a name="syntax-for-create-external-file-format"></a>Külső fájlformátum létrehozásának szintaxisa
+## <a name="syntax-for-create-external-file-format"></a>KÜLSŐ FÁJLFORMÁTUM létrehozásának szintaxisa
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -116,55 +116,55 @@ WITH (
 }
 ```
 
-## <a name="arguments-for-create-external-file-format"></a>Külső fájlformátum létrehozása argumentumai
+## <a name="arguments-for-create-external-file-format"></a>Argumentumok külső FÁJLFORMÁTUM LÉTREHOZÁSához
 
-file_format_name – A külső fájlformátum nevét adja meg.
+file_format_name – a külső fájlformátum nevét adja meg.
 
-FORMAT_TYPE = [ PARQUET | DETAGZONOS SZÖVEG]- A külső adatok formátumát adja meg.
+FORMAT_TYPE = [PARKETTA | DELIMITEDTEXT] – a külső adatforrások formátumát adja meg.
 
-- PAROKT - Parketta formátumot ad meg.
-- DELIMITEDTEXT - Oszlophatárolókkal ellátott szövegformátumot, más néven mezőterminátorokat ad meg.
+- PARKETTA – a parketta formátumát adja meg.
+- DELIMITEDTEXT – olyan szöveges formátumot ad meg, amelyben oszlop elválasztó karakterek, más néven mező-lezárók.
 
-FIELD_TERMINATOR = *field_terminator* - Csak tagolt szövegfájlokra vonatkozik. A mezőterminátor egy vagy több olyan karaktert határoz meg, amely a szöveggel tagolt fájlban minden mező (oszlop) végét jelöli. Az alapértelmezett érték a csőkarakter (:|).The default is the pipe character (i.)
-
-Példák:
-
-- FIELD_TERMINATOR = '|'
-- FIELD_TERMINATOR = '
-- FIELD_TERMINATOR =
-
-STRING_DELIMITER = *string_delimiter* - A szövegtagolt fájlban karakterlánc típusú adatok mezőterminátorát adja meg. A karakterlánc-határoló jel egy vagy több karakter hosszú, és idézőjelek közé van zárva. Az alapértelmezett érték az üres karakterlánc ("").
+FIELD_TERMINATOR = *field_terminator* – csak a tagolt szövegfájlokra vonatkozik. A lezáró mező egy vagy több olyan karaktert határoz meg, amely az egyes mezők (oszlopok) végét jelöli a szöveg tagolt fájljában. Az alapértelmezett érték a cső karaktere (ꞌ | ꞌ).
 
 Példák:
 
-- STRING_DELIMITER = """
-- STRING_DELIMITER = '*'
-- STRING_DELIMITER =
+- FIELD_TERMINATOR = "|"
+- FIELD_TERMINATOR = ""
+- FIELD_TERMINATOR = ꞌ \ t ꞌ
 
-FIRST_ROW = *First_row_int* - Megadja az elsőként beolvasott és az összes fájlra érvényes sorszámot. Ha az értéket kettőre állítja, az adatok betöltésekor minden fájl (fejlécsor) első sora kimarad. A sorok at a sorterminátorok (/r/n, /r, /n) megléte alapján hagyja ki a program.
+STRING_DELIMITER = *string_delimiter* – megadja a mező lezáró értékét karakterlánc típusú adatként a szöveges tagolt fájlban. A karakterlánc elválasztója egy vagy több karakter hosszúságú, és aposztrófok között van. Az alapértelmezett érték az üres karakterlánc ("").
 
-USE_TYPE_DEFAULT = { IGAZ | **HAMIS** } - Megadja, hogyan kell kezelni a hiányzó értékeket a tagolt szövegfájlokban, amikor adatokat szeretne betartani a szövegfájlból.
+Példák:
 
-IGAZ – Ha adatokat kér be a szövegfájlból, tárolja a hiányzó értékeket a külső tábladefiníció megfelelő oszlopához tartozó alapértelmezett érték adattípusával. Cserélje le például a hiányzó értéket a következőkre:
+- STRING_DELIMITER = ""
+- STRING_DELIMITER = ' * '
+- STRING_DELIMITER = ꞌ, ꞌ
 
-- 0, ha az oszlop numerikus oszlopként van definiálva. A decimális oszlopok nem támogatottak, és hibát okozhatnak.
-- Üres karakterlánc (""), ha az oszlop karakterláncoszlop.
-- 1900-01-01, ha az oszlop egy dátumoszlop.
+FIRST_ROW = *First_row_int* – megadja az elsőként olvasott sor számát, és az összes fájlra vonatkozik. Ha az értéket két értékre állítja, a rendszer az összes fájl (fejlécsor) első sorát kihagyja a betöltéskor. A sorok kihagyása a sor lezárói (/r/n,/r,/n) létezése alapján történik.
 
-HAMIS - Az összes hiányzó értéket NULL értékként tárolja. A tagolt szövegfájlban a NULL szó használatával tárolt NULL értékeket a program "NULL" karakterláncként importálja.
+USE_TYPE_DEFAULT = {TRUE | **Hamis** } – Megadja, hogy a rendszer hogyan kezelje az adatok szövegfájlból való beolvasása során a hiányzó értékeket a tagolt szövegfájlokban.
 
-Kódolás = {'UTF8' | 'UTF16'} – Az SQL igény szerinti igény szerinti kódolású UTF8 és UTF16 kódolású tagozott szövegfájlokat tud olvasni.
+TRUE (igaz) – Ha az adatok szövegfájlból való beolvasását végzi, az összes hiányzó értéket az alapértelmezett érték adattípusával tárolja a külső tábla definíciójának megfelelő oszlopához. Például cserélje le a hiányzó értéket a következőre:
 
-DATA_COMPRESSION = *data_compression_method* - Ez az argumentum a külső adatok adattömörítési módját adja meg. Amikor külső táblákból olvas, a rendszer figyelmen kívül hagyja. Csak akkor használható, ha külső táblákra ír a [CETAS](develop-tables-cetas.md)használatával.
+- 0, ha az oszlop numerikus oszlopként van meghatározva. A decimális oszlopok nem támogatottak, és hibát okoznak.
+- Üres karakterlánc (""), ha az oszlop egy karakterlánc típusú oszlop.
+- 1900-01-01, ha az oszlop egy Date oszlop.
 
-A PARQUET fájlformátum-típus a következő tömörítési módszereket támogatja:
+FALSE – az összes hiányzó értéket tárolja NULL értékként. A tagolt szövegfájl NULL értékének használatával tárolt NULL értékek a "NULL" sztringként lesznek importálva.
 
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
+Encoding = {' UTF8 ' | "UTF16"} – az SQL on-demand képes az UTF8 és a UTF16 kódolású tagolt szövegfájlok olvasására.
 
-## <a name="example-for-create-external-file-format"></a>Példa külső fájlformátum létrehozására
+DATA_COMPRESSION = *data_compression_method* – ez az argumentum határozza meg a külső adattömörítési módszert. Külső táblákból való olvasáskor figyelmen kívül hagyja a rendszer. Csak külső táblákba való íráskor használatos a [CETAS](develop-tables-cetas.md)használatával.
 
-A következő példa külső fájlformátumot hoz létre a népszámlálási fájlokhoz:
+A PARQUEt fájlformátum típusa a következő tömörítési módszereket támogatja:
+
+- DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. GzipCodec '
+- DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. SnappyCodec '
+
+## <a name="example-for-create-external-file-format"></a>Példa külső FÁJLFORMÁTUM létrehozására
+
+Az alábbi példa külső fájlformátumot hoz létre a népszámlálási fájlokhoz:
 
 ```sql
 CREATE EXTERNAL FILE FORMAT census_file_format
@@ -177,9 +177,9 @@ WITH
 
 ## <a name="create-external-table"></a>KÜLSŐ TÁBLA LÉTREHOZÁSA
 
-A CREATE EXTERNAL TABLE parancs létrehoz egy külső táblát a Synapse SQL számára az Azure Blob Storage vagy az Azure Data Lake Storage tárolja tárolt adatok eléréséhez. 
+A CREATE EXTERNAL TABLE parancs létrehoz egy külső táblázatot a szinapszis SQL számára az Azure-Blob Storage vagy Azure Data Lake Storage tárolt adateléréshez. 
 
-## <a name="syntax-for-create-external-table"></a>Külső tábla létrehozása szintaxisa
+## <a name="syntax-for-create-external-table"></a>KÜLSŐ tábla LÉTREHOZÁSi szintaxisa
 
 ```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
@@ -196,45 +196,45 @@ column_name <data_type>
     [ COLLATE collation_name ]
 ```
 
-## <a name="arguments-create-external-table"></a>Argumentumok LÉTREHOZÁSA KÜLSŐ TÁBLA
+## <a name="arguments-create-external-table"></a>Argumentumok külső tábla létrehozása
 
-*{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
+*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
 
-A létrehozandó tábla egy-három részből álló neve. Külső tábla esetén az SQL igény szerinti csak a tábla metaadatait tárolja. A tényleges adatok at sql on-demand nem kerülnek áthelyezésre vagy tárolásra.
+A létrehozandó tábla egy vagy három részének neve. Külső táblák esetében az igény szerinti SQL csak a tábla metaadatait tárolja. A tényleges adatok nem helyezhetők át vagy nem tárolódnak az SQL on-demandban.
 
-<column_definition>, ... *n* ]
+<column_definition>,... *n* ]
 
-A CREATE EXTERNAL TABLE támogatja az oszlopnév, adattípus, nullability és rendezés konfigurálását. A DEFAULT CONSTRAINT nem használható külső táblákon.
+KÜLSŐ tábla létrehozása lehetővé teszi az oszlopnév, az adattípus, a nullák és a rendezés konfigurálását. Az alapértelmezett MEGKÖTÉS nem használható külső táblákon.
 
 >[!IMPORTANT]
 >Az oszlopdefinícióknak – az adattípusokat és az oszlopok számát is beleértve – meg kell felelniük a külső fájlok adatainak. Ha ezek között eltérés található, a tényleges adatok lekérdezésekor a fájlsorok vissza lesznek utasítva.
 
-A Parkettafájlokból történő olvasáskor csak az elolvasni kívánt oszlopokat adhatja meg, a többit pedig kihagyhatja.
+A Parquet-fájlokból való olvasáskor csak azokat az oszlopokat adhatja meg, amelyeket el szeretne olvasni, és kihagyhatja a többiet.
 
-HELY = '*folder_or_filepath*'
+LOCATION = '*folder_or_filepath*'
 
-Megadja a mappát vagy a fájl elérési útját és a fájl nevét az Azure Blob Storage tényleges adataihoz. A hely a gyökérmappából indul. A gyökérmappa a külső adatforrásban megadott adathely.
+Megadja a tényleges adatok mappáját vagy fájljának elérési útját és fájlnevét az Azure Blob Storageban. A hely a gyökérmappa alapján kezdődik. A gyökérmappa a külső adatforrásban megadott adathely.
 
-Ha mappa LOCATION mappát ad meg, az SQL igény szerinti lekérdezése kiválasztja a külső táblából, és fájlokat olvas le a mappából.
+Ha a mappa helyét adja meg, egy SQL igény szerinti lekérdezés a külső táblából lesz kiválasztva, és fájlokat kér le a mappából.
 
 > [!NOTE]
-> A Hadooptól és a PolyBase-től eltérően az igény szerinti SQL nem ad vissza almappákat. Olyan fájlokat ad vissza, amelyek nél a fájlnév aláhúzással (_) vagy pontmal (.) kezdődik.
+> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Azokat a fájlokat adja vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Ebben a példában, ha location='/webdata/', sql on-demand lekérdezés, visszaadja a sorokat a mydata.txt és _hidden.txt. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Ebben a példában, ha a LOCATION = '/WebData/', egy SQL igény szerinti lekérdezés, akkor a SajátAdatok. txt és a _hidden. txt fájl sorait fogja visszaadni. A mydata2. txt és a mydata3. txt fájlt nem fogja visszaadni, mert egy almappában találhatók.
 
-![Külső táblák rekurzív adatai](./media/develop-tables-external-tables/folder-traversal.png)
+![Rekurzív adatértékek külső táblákhoz](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* - Megadja a külső adatok helyét tartalmazó külső adatforrás nevét. Külső adatforrás létrehozásához használja [a KÜLSŐ ADATFORRÁS LÉTREHOZÁSA parancsot.](#create-external-data-source)
+DATA_SOURCE = *external_data_source_name* – megadja a külső adatforrás nevét, amely a külső adatforrások helyét tartalmazza. Külső adatforrás létrehozásához használja a [külső adatforrás létrehozása](#create-external-data-source)lehetőséget.
 
-FILE_FORMAT = *external_file_format_name* - Megadja annak a külső fájlformátumú objektumnak a nevét, amely a külső adatok fájltípusát és tömörítési módját tárolja. Külső fájlformátum létrehozásához használja [a CREATE EXTERNAL FILE FORMAT parancsot.](#create-external-file-format)
+FILE_FORMAT = *external_file_format_name* – annak a külső fájlformátum-objektumnak a nevét adja meg, amely a külső adattípust és a tömörítési módszert tárolja. Külső fájlformátum létrehozásához használja a [create External File Format (külső fájlformátum létrehozása) formátumot](#create-external-file-format).
 
-## <a name="permissions-create-external-table"></a>Engedélyek létrehozása külső tábla létrehozása
+## <a name="permissions-create-external-table"></a>Engedélyek külső tábla létrehozása
 
-A külső táblából való kiválasztáshoz megfelelő hitelesítő adatokra van szükség lista- és olvasási engedélyekkel.
+Egy külső táblából való kiválasztáshoz megfelelő hitelesítő adatokra van szükség a listához és az olvasási engedélyekhez.
 
-## <a name="example-create-external-table"></a>Példa Külső tábla létrehozása
+## <a name="example-create-external-table"></a>Példa külső tábla létrehozására
 
-A következő példa létrehoz egy külső táblát. Az első sort adja vissza:
+A következő példa egy külső táblát hoz létre. Az első sort adja vissza:
 
 ```sql
 CREATE EXTERNAL TABLE census_external_table
@@ -258,39 +258,39 @@ GO
 SELECT TOP 1 * FROM census_external_table
 ```
 
-## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Külső táblák létrehozása és lekérdezése egy fájlból az Azure Data Lake-ben
+## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Külső táblák létrehozása és lekérdezése egy fájlból Azure Data Lake
 
-A Data Lake feltárási képességeinek használatával most már létrehozhat és lekérdezhet egy külső táblát az SQL-készlet vagy az SQL on-demand használatával, a fájlra való egyszerű jobb gombbal való kattintással.
+A Data Lake feltárási képességek használatával létrehozhat és lekérdezheti az SQL Pool vagy az SQL on-demand használatával létrehozott külső táblákat egy egyszerű, jobb gombbal a fájlra kattintva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Legalább a Storage Blob Data Contributor ARM Access szerepkörrel rendelkező munkaterülethez kell hozzáférnie az ADLS Gen2-fiókhoz.
+- A munkaterülethez hozzáféréssel kell rendelkeznie legalább a Storage blob adatközreműködői ARM hozzáférési szerepkörrel a ADLS Gen2 fiókhoz
 
-- Legalább engedéllyel kell rendelkeznie külső táblák [létrehozásához](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) és lekérdezéséhez az SQL-készletben vagy az SQL OD-on
+- A külső táblák létrehozásához és lekérdezéséhez legalább [engedélyre](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) van szükség az SQL-készletben vagy az SQL od-ban.
 
-- Az ADLS Gen2-fiókhoz társított csatolt szolgáltatásnak **hozzáféréssel kell rendelkeznie a fájlhoz.** Ha például a csatolt szolgáltatáshitelesítési mechanizmus felügyelt identitás, a munkaterület felügyelt identitásának legalább storage blob-olvasó engedéllyel kell rendelkeznie a tárfiókhoz.
+- A ADLS Gen2 fiókhoz társított társított szolgáltatásnak **hozzáféréssel kell rendelkeznie a fájlhoz**. Ha például a társított szolgáltatás hitelesítési mechanizmusa felügyelt identitás, a munkaterület felügyelt identitásának legalább Storage blob-olvasó engedéllyel kell rendelkeznie a Storage-fiókhoz.
 
-Az Adatok panelen jelölje ki azt a fájlt, amelyből létre szeretné hozni a külső táblát:
+Az adatok panelen válassza ki azt a fájlt, amelyből létre szeretné hozni a külső táblát:
 > [!div class="mx-imgBorder"]
->![külső1](./media/develop-tables-external-tables/external-table-1.png)
+>![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Megnyílik egy párbeszédablak. Válassza ki az SQL-készletet vagy az IGÉNY szerinti SQL-készletet, adjon nevet a táblának, és válassza a megnyitott parancsfájlt:
+Ekkor megnyílik egy párbeszédpanel. Válassza az SQL-készlet vagy az SQL igény szerint lehetőséget, adjon meg egy nevet a táblának, és válassza a parancsfájl megnyitása lehetőséget:
 
 > [!div class="mx-imgBorder"]
->![külsőtáblázat2](./media/develop-tables-external-tables/external-table-2.png)
+>![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-Az SQL Script automatikusan generálódik, és a sémát a fájlból hozza létre:
+Az SQL-szkript automatikusan létrejön a sémából a fájlból:
 > [!div class="mx-imgBorder"]
->![külsőtáblázat3](./media/develop-tables-external-tables/external-table-3.png)
+>![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 
-Futtassa a szkriptet. A parancsfájl automatikusan futtatja a Select Top 100 *.:
+Futtassa a szkriptet. A szkript automatikusan futtat egy Select Top 100 * elemet.:
 > [!div class="mx-imgBorder"]
->![külső4](./media/develop-tables-external-tables/external-table-4.png)
+>![externaltable4](./media/develop-tables-external-tables/external-table-4.png)
 
-A külső tábla most jön létre, a külső tábla tartalmának jövőbeli feltárásához a felhasználó közvetlenül az Adatok ablaktábláról kérdezheti le:
+A külső tábla most létrejön, a külső tábla tartalmának későbbi feltárásához a felhasználó közvetlenül az adatok ablaktábláról kérdezheti le:
 > [!div class="mx-imgBorder"]
->![külső5](./media/develop-tables-external-tables/external-table-5.png)
+>![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [CETAS](develop-tables-cetas.md) cikket, hogyan mentheti a lekérdezés eredményeit egy külső táblába az Azure Storage-ban. Vagy megkezdheti a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.
+A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.

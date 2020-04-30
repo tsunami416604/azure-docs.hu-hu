@@ -1,6 +1,6 @@
 ---
-title: Cheat lap az Azure Synapse Analytics (korábban SQL DW)
-description: Hivatkozásokat és gyakorlati tanácsokat találhat az Azure Synapse Analytics (korábbi SQL DW) megoldásainak gyors létrehozásához.
+title: Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
+description: Az Azure szinapszis Analytics (korábban SQL DW) megoldások gyors létrehozásához kapcsolódó hivatkozásokat és ajánlott eljárásokat talál.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,15 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 55b00af9afeafb2a3fa7992cc457819dc1dcb2b2
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80631286"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat lap az Azure Synapse Analytics (korábban SQL DW)
+# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
 
-Ez a cheat sheet hasznos tippeket és gyakorlati tanácsok azure synapse megoldások létrehozásához nyújt hasznos tippeket és gyakorlati tanácsokat.
+Ez a Cheat-táblázat hasznos tippeket és ajánlott eljárásokat nyújt az Azure szinapszis-megoldások létrehozásához.
 
 A következő ábra egy adattárház tervezésének folyamatát mutatja be:
 
@@ -37,9 +37,9 @@ A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakít
 
 ## <a name="data-migration"></a>Adatok migrálása
 
-Először töltse be adatait az [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storage. Ezután a PolyBase segítségével töltse be az adatokat átmeneti táblákba. Használja a következő konfigurációt:
+Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storageba. Ezt követően használja a következőt, hogy betöltse az adatait az átmeneti táblákba. Használja a következő konfigurációt:
 
-| Tervezés | Ajánlás |
+| Kialakítás | Ajánlás |
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
@@ -54,15 +54,15 @@ A tábla tulajdonságaitól függően a következő stratégiákat használja:
 
 | Típus | Kiválóan alkalmas a következőhöz:| Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
-| Replikált | * Kis méretű táblák egy csillag séma kevesebb, mint 2 GB tároló tömörítés után (~ 5x tömörítés) |* Sok írási tranzakciók a táblázatban (mint például a insert, upsert, delete, update)<br></br>* Gyakran módosítja az adattárház egységek (DWU) kiépítését<br></br>* Csak 2-3 oszlopot használ, de a táblázat sok oszlopot tartalmaz<br></br>* Ön index egy replikált tábla |
-| Ciklikus időszeletelés (alapértelmezett) | * Ideiglenes / átmeneti tábla<br></br> * Nem nyilvánvaló összekötő kulcs vagy jó jelölt oszlop |* A teljesítmény lassú az adatok mozgása miatt |
-| Kivonat | * Tény táblázatok<br></br>* Nagy méretű táblázatok |* A terjesztési kulcs nem frissíthető |
+| Replikált | * Kis dimenziós táblák egy csillag-sémában, kevesebb, mint 2 GB tárhellyel a tömörítés után (~ 5x tömörítés) |* Sok írási tranzakció van a táblában (például INSERT, upsert, DELETE, Update)<br></br>* Az adatraktár-egységek (DWU-EK) kiépítési gyakoriságának módosítása<br></br>* Csak 2-3 oszlopot használ, de a tábla sok oszlopot tartalmaz<br></br>* Egy replikált tábla indexelése |
+| Ciklikus időszeletelés (alapértelmezett) | * Ideiglenes/előkészítési tábla<br></br> * Nincs nyilvánvaló csatlakozású kulcs vagy jó jelölt oszlop |* Az adatáthelyezés miatt lassú a teljesítmény |
+| Kivonat | * Egyedkapcsolat táblák<br></br>* Nagyméretű dimenziós táblák |* A terjesztési kulcs nem frissíthető |
 
-**Tippek:**
+**Tippek**
 
 * Kezdje ciklikus időszeleteléssel, de haladjon a kivonatoló terjesztési stratégia felé, hogy kihasználhassa a nagymértékben párhuzamos architektúrát.
 * Ügyeljen arra, hogy a közös kivonatkulcsoknak ugyanaz legyen az adatformátuma.
-* Varchar formátumban ne terjesszen.
+* Ne terjesszen varchar formátumra.
 * A gyakori csatlakozási műveletekkel rendelkező ténytáblákhoz közös kivonatkulccsal rendelkező dimenziótáblákhoz kivonatterjesztés használható.
 * A *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* segítségével elemezheti az adatokban lévő eltéréseket.
 * A *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* segítségével elemezheti a lekérdezések mögötti adatmozgásokat, monitorozhatja az időszórásokat és módosíthatja a műveletek sorrendjét. Ez a terjesztési stratégia áttekintéséhez hasznos.
@@ -75,11 +75,11 @@ Az indexelés a táblák gyors olvasásához hasznos. Egyedi technológiákat al
 
 | Típus | Kiválóan alkalmas a következőhöz: | Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
-| Halommemória | * Átmeneti / ideiglenes tábla<br></br>* Kis asztalok kis keres |* Minden keresés ellenőrzi a teljes táblázat |
-| Fürtözött index | * Táblázatok akár 100 millió sor<br></br>* Nagy táblázatok (több mint 100 millió sor) csak 1-2 oszlop erősen használt |* Használt egy replikált tábla<br></br>* Van komplex lekérdezések bevonásával több illesztés és csoport műveletek<br></br>* Ön, hogy a frissítéseket az indexelt oszlopok: tart memória |
-| Fürtözött oszlopcentrikus index (CCI) (alapértelmezett) | * Nagy asztalok (több mint 100 millió sor) | * Használt egy replikált tábla<br></br>* Ön, hogy hatalmas frissítési műveletek az asztalon<br></br>* Ön túlparticionálja a táblázatot: sorcsoportok nem span különböző terjesztési csomópontok és partíciók |
+| Halommemória | * Átmeneti/ideiglenes tábla<br></br>* Kisméretű táblák kis keresésekkel |* A keresés megkeresi a teljes táblázatot |
+| Fürtözött index | * Táblák legfeljebb 100 000 000 sorral<br></br>* Nagyméretű táblák (több mint 100 000 000 sor), amelyekben csak 1-2 oszlop használatos |* Replikált táblán használatos<br></br>* Összetett lekérdezések több JOIN és Group By Operations használatával<br></br>* Frissíti az indexelt oszlopokat: a memóriába kerül |
+| Fürtözött oszlopcentrikus index (CCI) (alapértelmezett) | * Nagyméretű táblák (több mint 100 000 000 sor) | * Replikált táblán használatos<br></br>* Nagy frissítési műveleteket hajthat végre a táblán<br></br>* A tábla túlparticionálása: a Sorcsoportok nem különböző terjesztési csomópontokra és partícióra terjednek ki. |
 
-**Tippek:**
+**Tippek**
 
 * A fürtözött indexek mellett érdemes lehet nem fürtözött indexet is hozzáadni a szűréshez gyakran használt oszlopokhoz.
 * Ügyeljen arra, hogyan kezeli a memóriát a CCI-vel rendelkező táblákban. Adatok betöltésekor az a cél, hogy a felhasználó (vagy a lekérdezés) nagyméretű erőforrásosztályt használhasson. Kerülje a vágást és sok kis tömörített sorcsoport létrehozását.
@@ -101,15 +101,15 @@ További információk a [partíciókról](sql-data-warehouse-tables-partition.m
 
 ## <a name="incremental-load"></a>Növekményes betöltés
 
-Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez.  Ez különösen fontos fürtözött oszlopcentrikus indexekkel rendelkező táblákba való betöltésekor.  További részleteket [az erőforrásosztályokban](resource-classes-for-workload-management.md) talál.  
+Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez.  Ez különösen fontos a fürtözött oszlopcentrikus indexekkel rendelkező táblákba való betöltéskor.  További részletekért tekintse meg az [erőforrás-osztályok](resource-classes-for-workload-management.md) című részt.  
 
-Javasoljuk, hogy a PolyBase és az ADF V2 segítségével automatizálja az ELT-folyamatokat az adatraktárba.
+Javasoljuk, hogy a ELT-folyamatok adattárházba való automatizálásához használja a következőt: Base és ADF v2.
 
-Az előzményadatok nagy mennyiségű frissítéséhez fontolja meg egy [CTAS](sql-data-warehouse-develop-ctas.md) használatát a táblázatban tartani kívánt adatok írásához az INSERT, UPDATE és DELETE használata helyett.
+A korábbi adatain belüli nagy mennyiségű frissítéshez érdemes lehet egy [CTAS](sql-data-warehouse-develop-ctas.md) használni, hogy az INSERT, Update és DELETE helyett táblázatba írja a megőrizni kívánt adatmennyiséget.
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
 
- Amíg az automatikus statisztikák nem állnak rendelkezésre, a statisztikák manuális karbantartása szükséges. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal.
+ Amíg az automatikus statisztika általánosan elérhetővé válik, a statisztikák manuális karbantartására van szükség. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal.
 
 A frissítések gyakoriságát is megadhatja. Előfordulhat például, hogy csak a dátumoszlopokat szeretné frissíteni, amelyekbe napi rendszerességgel kerülnek új értékek. A legnagyobb előnnyel az jár, ha a csatlakozások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit készíti el.
 
@@ -117,17 +117,17 @@ További információk a [statisztikákról](sql-data-warehouse-tables-statistic
 
 ## <a name="resource-class"></a>Erőforrásosztály
 
-Az erőforráscsoportok segítségével memóriát foglalnak le a lekérdezésekhez. Ha a lekérdezés vagy a betöltés sebességének növelése érdekében több memóriára van szüksége, magasabb erőforrásosztályokat kell lefoglalnia. A nagyobb erőforrásosztályok használata azonban hatással van a párhuzamos működésre. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagyméretű erőforrásosztályba helyezné át.
+Az erőforráscsoportok használatával memóriát foglalhat le a lekérdezésekhez. Ha a lekérdezés vagy a betöltés sebességének növelése érdekében több memóriára van szüksége, magasabb erőforrásosztályokat kell lefoglalnia. A nagyobb erőforrásosztályok használata azonban hatással van a párhuzamos működésre. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagyméretű erőforrásosztályba helyezné át.
 
 Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)Gen2 használatával minden erőforrásosztály 2,5-szer több memóriát kap, mint a Gen1.
+Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)Gen2 használatával minden erőforráscsoport 2,5-szor több memóriát kap, mint a Gen1.
 
 További információk az [erőforrásosztályokról és a párhuzamos működésről](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Csökkentheti költségeit
 
-Az Azure Synapse egyik legfontosabb jellemzője a [számítási erőforrások kezelése.](sql-data-warehouse-manage-compute-overview.md) Szüneteltetheti az SQL-készletet, ha nem használja, amely leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Az Azure szinapszis egyik fő funkciója a [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Ha nem használja, szüneteltetheti az SQL-készletet, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Az Azure Functions használatával mostantól bármikor használhatja az automatikus skálázást:
 
@@ -139,9 +139,9 @@ Az Azure Functions használatával mostantól bármikor használhatja az automat
 
 Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-További információ az [Azure Synapse előnyeit kihasználó tipikus architektúrákról.](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)
+Ismerje meg az [Azure szinapszis előnyeit kihasználó tipikus architektúrákat](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Egyetlen kattintással telepítheti a küllőket az SQL-adatbázisokban az SQL-készletből:
+Az SQL-készletből az SQL-adatbázisból a küllőket egyetlen kattintással telepítheti:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>

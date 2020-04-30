@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató a szolgáltatásjelzők .NET Framework alkalmazásokhoz való hozzáadásához | Microsoft Dokumentumok | Microsoft dokumentumok
-description: Rövid útmutató a funkciójelzők .NET Framework-alkalmazásokhoz való hozzáadásához és kezeléséhez az Azure App konfigurációjában
+title: A szolgáltatás-jelzők a .NET-keretrendszer alkalmazásaihoz való hozzáadásának gyors útmutatója | Microsoft Docs | Microsoft Docs
+description: Útmutató a funkció-jelzők a .NET-keretrendszer alkalmazásaihoz való hozzáadásához és az Azure-alkalmazások konfigurációjában való kezeléséhez
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,46 +15,46 @@ ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77619321"
 ---
-# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rövid útmutató: Szolgáltatásjelzők hozzáadása .
+# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása .NET-keretrendszerbeli alkalmazáshoz
 
-Ebben a rövid útmutatóban az Azure App Configuration alkalmazást beépítheti egy .NET Framework alkalmazásba a szolgáltatáskezelés teljes körű megvalósításának létrehozásához. Az Alkalmazáskonfigurációs szolgáltatás segítségével központilag tárolhatja az összes funkciójelzőt, és szabályozhatja azok állapotát. 
+Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-keretrendszerbeli alkalmazásba foglalja bele a szolgáltatások felügyeletének végpontok közötti megvalósításához. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat. 
 
-A . Ezek a könyvtárak a .NET konfigurációs rendszerre épülnek. Zökkenőmentesen integrálhatók az alkalmazáskonfigurációval a .NET konfigurációszolgáltatón keresztül.
+A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a funkció-jelölő átfogó támogatásával. Ezek a kódtárak a .NET konfigurációs rendszerére épülnek. Zökkenőmentesen integrálható az alkalmazások konfigurációjával a .NET-konfigurációs szolgáltatón keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET keretrendszer 4.8](https://dotnet.microsoft.com/download)
+- [.NET-keretrendszer 4,8](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Alkalmazáskonfigurációs tároló létrehozása
+## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A **Szolgáltatáskezelő** > **+Hozzáadás** lehetőséget `Beta`választva hozzáadhat egy szolgáltatásjelzőt.
+6. Válassza a **funkció-kezelő** > **+ Hozzáadás** elemet a szolgáltatáshoz `Beta`tartozó jelző hozzáadásához.
 
     > [!div class="mx-imgBorder"]
-    > ![Béta nevű szolgáltatásjelző engedélyezése](media/add-beta-feature-flag.png)
+    > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
-    Egyelőre hagyja `label` meg határozatlanul.
+    Most `label` hagyja meg a nem definiált lehetőséget.
 
-## <a name="create-a-net-console-app"></a>.NET konzolalkalmazás létrehozása
+## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
-1. Indítsa el a Visual Studio alkalmazást, és válassza az**Új** > **projekt** **fájlja** > lehetőséget.
+1. Indítsa el a Visual studiót, és válassza a **fájl** > **új** > **projekt**lehetőséget.
 
-1. Az **Új projekt létrehozása**csoportban szűrje a **Konzolprojekt** típusát, és kattintson a **Console App (.NET Framework)** elemre. Kattintson a **Tovább** gombra.
+1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **Új projekt konfigurálása**mezőbe írja be a projekt nevét. A **Keretrendszer**csoportban válassza a **.NET Framework 4.8** vagy újabb lehetőséget. Kattintson **a Létrehozás gombra.**
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás**gombra.
 
-## <a name="connect-to-an-app-configuration-store"></a>Csatlakozás alkalmazáskonfigurációs tárolóhoz
+## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza **a NuGet csomagok kezelése parancsot.** A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet csomagokat a projekthez. Ha nem találja őket, jelölje be az **Előzetes kiadás belefoglalása** jelölőnégyzetet.
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez. Ha nem találja őket, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
 
     ```
     Microsoft.Extensions.DependencyInjection
@@ -62,7 +62,7 @@ A . Ezek a könyvtárak a .NET konfigurációs rendszerre épülnek. Zökkenőme
     Microsoft.FeatureManagement
     ```
 
-1. Nyissa *meg Program.cs,* és adja hozzá a következő állításokat:
+1. Nyissa meg a *program.cs* , és adja hozzá a következő utasításokat:
 
     ```csharp
     using Microsoft.Extensions.DependencyInjection;
@@ -71,7 +71,7 @@ A . Ezek a könyvtárak a .NET konfigurációs rendszerre épülnek. Zökkenőme
     using Microsoft.FeatureManagement;
     ```
 
-1. Frissítse `Main` a metódust az alkalmazáskonfigurációhoz `UseFeatureFlags` való csatlakozáshoz, és adja meg a lehetőséget, hogy a szolgáltatásjelzők beolvasása megtörténhessen. Ezután jelenítsen `Beta` meg egy üzenetet, ha a szolgáltatásjelző engedélyezve van.
+1. Frissítse a `Main` metódust az alkalmazás-konfigurációhoz való kapcsolódáshoz `UseFeatureFlags` , és adja meg a beállítást, hogy lekérje a szolgáltatás jelzőit. Ekkor megjelenik egy üzenet, ha `Beta` a funkció jelzője engedélyezve van.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -103,19 +103,19 @@ A . Ezek a könyvtárak a .NET konfigurációs rendszerre épülnek. Zökkenőme
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Állítson be egy **ConnectionString** nevű környezeti változót az alkalmazáskonfigurációs tároló kapcsolati karakterláncára. Ha a Windows parancssorát használja, futtassa a következő parancsot:
+1. Állítson be egy **ConnectionString** nevű környezeti változót az alkalmazás konfigurációs tárolójának kapcsolati karakterláncára. Ha Windows-parancssort használ, futtassa a következő parancsot:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Ha windows PowerShellt használ, futtassa a következő parancsot:
+    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-1. A Visual Studio újraindítása a módosítás érvénybe léptetéséhez. 
+1. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. 
 
-1. A konzolalkalmazás létrehozásához és futtatásához nyomja le a Ctrl+ F5 billentyűkombinációt.
+1. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
-    ![Alkalmazás funkciójelzővel](./media/quickstarts/dotnet-app-feature-flag.png)
+    ![Az alkalmazás és a funkció jelzője engedélyezve](./media/quickstarts/dotnet-app-feature-flag.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -123,7 +123,7 @@ A . Ezek a könyvtárak a .NET konfigurációs rendszerre épülnek. Zökkenőme
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy szolgáltatásjelzőt az Alkalmazás konfigurációjában, és használta azt egy . Ha meg szeretné tudni, hogyan frissítheti dinamikusan a szolgáltatásjelzőket és más konfigurációs értékeket az alkalmazás újraindítása nélkül, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét az alkalmazás konfigurációjában, és felhasználta azt egy .NET Framework Console alkalmazással. Ha meg szeretné tudni, hogyan lehet dinamikusan frissíteni a szolgáltatás jelölőit és az egyéb konfigurációs értékeket az alkalmazás újraindítása nélkül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-dotnet.md)

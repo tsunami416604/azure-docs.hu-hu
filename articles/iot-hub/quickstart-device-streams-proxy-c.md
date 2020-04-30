@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-eszköz c-gyorsindítást indít ssh-hoz és RDP-hez
-description: Ebben a rövid útmutatóban futtat egy C-mintaalkalmazást, amely proxyként működik az SSH- és RDP-forgatókönyvek IoT Hub-eszközstreameken való engedélyezéséhez.
+title: Azure IoT Hub-eszköz streamek C gyors SSH és RDP esetén
+description: Ebben a rövid útmutatóban egy olyan minta C-alkalmazást futtat, amely proxyként szolgál az SSH-és RDP-forgatókönyvek engedélyezéséhez IoT Hub eszköz streamen.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,59 +10,59 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80586604"
 ---
-# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rövid útmutató: SSH és RDP engedélyezése Egy IoT Hub-eszközadatfolyamon egy C proxyalkalmazás használatával (előzetes verzió)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-Az Azure IoT Hub jelenleg támogatja az eszközstreamelési [funkciót előnézeti funkcióként.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+Az Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök streamjét.
 
-[Az IoT Hub eszközadatfolyamok](./iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás- és eszközalkalmazások biztonságos és tűzfalbarát kommunikációját. A beállítás áttekintését a [Helyi proxyminta lapon találja.](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)
+[IoT hub az eszközökön elérhető streamek](./iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon alapuló kommunikációt. A telepítés áttekintését [a helyi proxy minta oldalán](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)tekintheti meg.
 
-Ez a rövid útmutató ismerteti a secure shell (SSH) forgalom bújtatásának beállítását (a 22-es port használatával) az eszközadatfolyamokon keresztül. Az RDP-forgalom beállítása hasonló, és egyszerű konfigurációmódosítást igényel. Mivel az eszközfolyamok alkalmazás- és protokollfüggetlenek, módosíthatja ezt a rövid útmutatót más típusú alkalmazásforgalom nak megfelelően.
+Ez a rövid útmutató ismerteti a Secure Shell-(SSH-) forgalom (a 22-es port használatával) adatfolyamokon keresztüli bújtatásának beállítását. A RDP protokoll-(RDP-) forgalom beállítása hasonló, és egy egyszerű konfigurációs módosításra van szükség. Mivel az eszközök adatfolyamai az alkalmazás-és protokoll-függetlenek, a rövid útmutató módosításával más típusú alkalmazások forgalmát is elvégezheti.
 
 ## <a name="how-it-works"></a>Működés
 
-Az alábbi ábra azt mutatja be, hogy az eszköz- és szolgáltatás-helyi proxyprogramok hogyan engedélyezik az SSH-ügyfél és az SSH démonfolyamatok végpontok közötti kapcsolatát. A nyilvános előzetes verzió során a C SDK csak az eszköz oldalán támogatja az eszközstreameléseket. Ennek eredményeképpen ez a rövid útmutató csak az eszköz-helyi proxyalkalmazás futtatására vonatkozó utasításokat ismerteti. A kapcsolódó szolgáltatásoldali alkalmazás létrehozásához és futtatásához kövesse az alábbi rövid útmutatók egyikének utasításait:
+Az alábbi ábra azt szemlélteti, hogy az eszköz és a szolgáltatás helyi proxybeállításait hogyan lehet végpontok közötti kapcsolatot engedélyezni az SSH-ügyfél és az SSH démon folyamatai között. A nyilvános előzetes verzióban a C SDK csak az eszközön található adatfolyamokat támogatja. Ennek eredményeképpen ez a rövid útmutató csak az eszközön belüli alkalmazásproxy futtatására vonatkozó utasításokat tartalmazza. A kapcsolódó kiszolgálóoldali alkalmazás létrehozásához és futtatásához kövesse az alábbi rövid útmutatók valamelyikét:
 
-* [SSH/RDP ioT Hub-eszközön c# proxy használatával](./quickstart-device-streams-proxy-csharp.md)
-* [SSH/RDP ioT Hub-eszközadatfolyamokon keresztül A NodeJS proxy használatával.](./quickstart-device-streams-proxy-nodejs.md)
+* [SSH/RDP IoT Hub-eszközökön a C# proxy használatával](./quickstart-device-streams-proxy-csharp.md)
+* [SSH/RDP IoT hub eszköz streamen keresztül a NodeJS proxy használatával](./quickstart-device-streams-proxy-nodejs.md).
 
 ![Helyi proxy beállítása](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
-1. A szolgáltatás-helyi proxy csatlakozik az IoT hubhoz, és elindítja az eszköz adatfolyamot a céleszközre.
+1. A szolgáltatás helyi proxyja csatlakozik az IoT hubhoz, és elindítja az eszköz streamjét a céleszköz felé.
 
-2. Az eszköz-helyi proxy befejezi az adatfolyam-kezdeményezési kézfogást, és létrehoz egy végpontok közötti streamelési alagutat az IoT hub streamelési végpontján keresztül a szolgáltatás oldalra.
+2. Az eszköz helyi proxyja befejezi az adatfolyam-kezdeményező kézfogást, és egy végpontok közötti folyamatos átviteli alagutat hoz létre az IoT hub streaming végpontján keresztül a szolgáltatás felé.
 
-3. Az eszköz-helyi proxy csatlakozik az SSH démon, amely figyeli a port 22 az eszközön. Ez a beállítás konfigurálható, az "Eszközhelyi proxyalkalmazás futtatása" című szakaszban leírtak szerint.
+3. Az eszköz helyi proxyja csatlakozik ahhoz az SSH-démonhoz, amely a 22-es portot figyeli az eszközön. Ez a beállítás konfigurálható az "eszköz helyi proxy alkalmazás futtatása" szakaszban leírtak szerint.
 
-4. A szolgáltatás-helyi proxy vár az új SSH-kapcsolatok a felhasználó figyelegy kijelölt port, amely ebben az esetben a port 2222. Ez a beállítás konfigurálható, az "Eszközhelyi proxyalkalmazás futtatása" című szakaszban leírtak szerint. Amikor a felhasználó SSH-ügyfélen keresztül csatlakozik, a bújtatás lehetővé teszi az SSH alkalmazásforgalom átvitelét az SSH-ügyfél és a kiszolgálói programok között.
+4. A szolgáltatás helyi proxyja egy megadott port figyelésével vár a felhasználó új SSH-kapcsolataira, ami ebben az esetben a 2222-es port. Ez a beállítás konfigurálható az "eszköz helyi proxy alkalmazás futtatása" szakaszban leírtak szerint. Ha a felhasználó SSH-ügyféllel csatlakozik, az alagút lehetővé teszi az SSH-alkalmazások forgalmának átvitelét az SSH-ügyfél és a kiszolgálói programok között.
 
 > [!NOTE]
-> Az eszközadatfolyamon keresztül küldött SSH-forgalom az IoT hub streamelési végpontján keresztül bújtat, nem pedig közvetlenül a szolgáltatás és az eszköz között. További információt az [Iot Hub eszközadatfolyamok használatának előnyeiben](iot-hub-device-streams-overview.md#benefits)talál. Továbbá az ábra azt mutatja, hogy az SSH démon fut ugyanazon az eszközön (vagy gépen), mint az eszköz-helyi proxy. Ebben a rövid útmutatóban az SSH démon IP-cím ének megadása lehetővé teszi, hogy az eszközhelyi proxy és a démon különböző gépeken is fusson.
+> Az adatfolyamként küldött SSH-forgalmat az IoT hub streaming-végpontja továbbítja, nem közvetlenül a szolgáltatás és az eszköz között. További információ: az [IOT hub-adatfolyamok használatának előnyei](iot-hub-device-streams-overview.md#benefits). Az ábrán az is látható, hogy az ugyanazon az eszközön (vagy gépen) futó SSH démon az eszköz helyi proxyja. Ebben a rövid útmutatóban az SSH démon IP-címének megadása lehetővé teszi, hogy az eszköz helyi proxyja és a démon a különböző gépeken is fusson.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az eszközstreamek előzetes verziója jelenleg csak a következő régiókban létrehozott IoT-központok számára támogatott:
+* Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 
   * USA középső régiója
-  * USA középső régiója
+  * USA középső – EUAP
   * Észak-Európa
   * Délkelet-Ázsia
 
-* Telepítse a [Visual Studio 2019-et](https://www.visualstudio.com/vs/) az Asztali fejlesztés funkcióval, ha a [C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) munkaterhelés engedélyezve van.
+* A [Visual Studio 2019](https://www.visualstudio.com/vs/) -es verziójának telepítése a C++ munkaterhelést használó [asztali fejlesztéssel](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Telepítse a [Git](https://git-scm.com/download/) legújabb verzióját.
 
-* Futtassa a következő parancsot az Azure CLI-hez való Azure IoT-bővítmény hozzáadásához a Cloud Shell-példányhoz. Az IOT-bővítmény iot hub, IoT Edge és IoT-eszközlétesítési szolgáltatás (DPS)-specifikus parancsokat ad hozzá az Azure CLI-hez.
+* Futtassa az alábbi parancsot az Azure CLI-hez készült Azure IoT-bővítmény az Cloud Shell-példányhoz való hozzáadásához. Az IOT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -72,13 +72,13 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-Ehhez a rövid útmutatóhoz az [Azure IoT-eszköz SDK C-hez.](iot-hub-device-sdk-c-intro.md) Az [Azure IoT C SDK-t](https://github.com/Azure/azure-iot-sdk-c) a GitHubról klónozásra és létrehozásra használt fejlesztői környezetet készít. A GitHub SDK-ja tartalmazza az ebben a rövid útmutatóban használt mintakódot.
+Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-intro.md)-t használja. Készítse elő az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -nak a githubról történő klónozásához és létrehozásához használt fejlesztési környezetet. A GitHubon található SDK tartalmazza az ebben a rövid útmutatóban használt mintakód-kódot.
 
-1. Töltse le a [CMake build rendszert](https://cmake.org/download/).
+1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
-    Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az *asztali fejlesztés C++ munkaterheléssel)* telepítve legyenek a számítógépen, *mielőtt* elkezdené a CMake telepítését. Miután az előfeltételek a helyükön vannak, és a letöltés ellenőrzése megtörtént, telepítheti a CMake build rendszert.
+    Fontos megjegyezni, hogy a Visual Studio előfeltételei (a Visual Studio és az *asztali fejlesztés C++* számítási feladattal) telepítve vannak a gépen a CMAK telepítésének megkezdése *előtt* . Az előfeltételek érvénybe helyezése és a letöltés ellenőrzése után telepítheti a CMak-Build rendszerét.
 
-1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa a következő parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház klónozásához:
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház klónozásához:
 
     ```cmd/sh
     git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
@@ -86,25 +86,25 @@ Ehhez a rövid útmutatóhoz az [Azure IoT-eszköz SDK C-hez.](iot-hub-device-sd
     git submodule update --init
     ```
 
-    Ez a művelet néhány percet vesz igénybe.
+    A művelet eltarthat néhány percig.
 
-1. Hozzon létre egy *cmake* alkönyvtárat a git-tárház gyökérkönyvtárában, és keresse meg azt a mappát. Futtassa a következő parancsokat az *azure-iot-sdk-c* könyvtárból:
+1. Hozzon létre egy *CMAK* -alkönyvtárat a git-tárház gyökérkönyvtárában, és navigáljon a mappához. Futtassa az alábbi parancsokat az *Azure-IOT-SDK-c* könyvtárból:
 
     ```cmd/sh
     mkdir cmake
     cd cmake
     ```
 
-1. Futtassa a következő parancsokat a *cmake* könyvtárból az SDK fejlesztői ügyfélplatformra jellemző verziójának létrehozásához.
+1. Futtassa az alábbi parancsokat a *CMAK* könyvtárból, hogy az SDK egy olyan verzióját hozza létre, amely a fejlesztői ügyfél platformra jellemző.
 
-   * Linux alatt:
+   * Linux rendszerben:
 
       ```bash
       cmake ..
       make -j
       ```
 
-   * Windows rendszerben futtassa a következő parancsokat a Visual Studio 2015 vagy 2017 Fejlesztői parancssorában. A szimulált eszköz höz visual studio-megoldás jön létre a *cmake* könyvtárban.
+   * A Windows rendszerben futtassa a következő parancsokat a Visual Studio 2015-es vagy a 2017-es verziójának fejlesztői parancssorában. A rendszer létrehoz egy Visual Studio-megoldást a szimulált eszközhöz a *CMAK* -címtárban.
 
       ```cmd
       rem For VS2015
@@ -126,38 +126,38 @@ Ehhez a rövid útmutatóhoz az [Azure IoT-eszköz SDK C-hez.](iot-hub-device-sd
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban az Azure Cloud Shell t az [IoT-bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) használatával regisztrálhat egy szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
 
-1. Az eszközidentitás létrehozásához futtassa a következő parancsot a Cloud Shell ben:
+1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
 
    > [!NOTE]
-   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hubhoz választott névre.
-   > * A regisztrálandó eszköz nevéhez ajánlott a *MyDevice* használata az ábrán látható módon. Ha más nevet választ az eszközhöz, használja ezt a nevet a cikkben, és frissítse az eszköz nevét a mintaalkalmazásokban, mielőtt futtatja őket.
+   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
+   > * Annak az eszköznek a nevére, amelyet regisztrál, javasolt a *MyDevice* használata az ábrán látható módon. Ha más nevet választ az eszköznek, ezt a nevet használja ebben a cikkben, és a futtatásuk előtt frissítse az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Az imént regisztrált eszköz *eszközkapcsolati karakterláncának* lekérnie, futtassa a következő parancsokat a Cloud Shellben:
+1. Az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* lekéréséhez futtassa a következő parancsokat a Cloud Shellban:
 
    > [!NOTE]
-   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hubhoz választott névre.
+   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Vegye figyelembe a visszaadott eszköz kapcsolati karakterláncot későbbi használatra ebben a rövid útmutatóban. Az alábbi példához hasonlóan néz ki:
+    Jegyezze fel a visszaadott eszköz csatlakoztatási karakterláncát a rövid útmutató későbbi verzióihoz. Az alábbi példához hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-## <a name="ssh-to-a-device-via-device-streams"></a>SSH készülékre eszközstreameken keresztül
+## <a name="ssh-to-a-device-via-device-streams"></a>SSH-eszköz az eszközön keresztül streamek használatával
 
-Ebben a szakaszban hozzon létre egy végpontok között az SSH-forgalmat.
+Ebben a szakaszban egy végpontok közötti streamet hoz létre az SSH-forgalom bújtatásához.
 
-### <a name="run-the-device-local-proxy-application"></a>Az eszközhelyi proxyalkalmazás futtatása
+### <a name="run-the-device-local-proxy-application"></a>Az eszköz helyi proxy alkalmazásának futtatása
 
-1. A forrásfájl szerkesztése **iothub_client_c2d_streaming_proxy_sample.c** fájlt a mappában `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`, és adja meg az eszköz kapcsolati karakterláncát, a céleszköz IP/állomásnevét és a 22-es SSH-portot:
+1. Szerkessze a (z **) iothub_client_c2d_streaming_proxy_sample. c** forrásfájlt `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`a mappában, és adja meg az eszköz csatlakoztatási karakterláncát, a célként megadott eszköz IP-címét/állomásnevét, valamint a 22-es SSH-portot:
 
    ```C
    /* Paste in your device connection string  */
@@ -166,7 +166,7 @@ Ebben a szakaszban hozzon létre egy végpontok között az SSH-forgalmat.
    static const size_t localPort = 22; // Port of the local server to connect to.
    ```
 
-1. Állítsa össze a mintát:
+1. A minta fordítása:
 
    ```bash
    # In Linux
@@ -194,28 +194,28 @@ Ebben a szakaszban hozzon létre egy végpontok között az SSH-forgalmat.
    iothub_client_c2d_streaming_proxy_sample.exe
    ```
 
-### <a name="run-the-service-local-proxy-application"></a>A szolgáltatás-helyi proxyalkalmazás futtatása
+### <a name="run-the-service-local-proxy-application"></a>A szolgáltatás helyi proxy alkalmazásának futtatása
 
-Ahogy azt a "Hogyan működik" szakaszban tárgyalt, létrehozása egy végpontok közötti stream alagút SSH-forgalom hoz egy helyi proxy mindkét végén (mind a szolgáltatás és az eszköz oldalán). Nyilvános előzetes verzió során az IoT Hub C SDK csak az eszköz oldalán támogatja az eszközstreameléseket. A szolgáltatáshelyi proxy létrehozásához és futtatásához kövesse az alábbi rövid útmutatók utasításait:
+Ahogy azt a "hogyan működik" című szakaszban tárgyaljuk, az SSH-forgalom bújtatásához szükséges teljes stream létrehozásához helyi proxyra van szükség (a szolgáltatás és az eszköz oldalain egyaránt). A nyilvános előzetes verzióban a IoT Hub C SDK csak az eszközön található adatfolyamokat támogatja. A szolgáltatás helyi proxyjának létrehozásához és futtatásához kövesse az alábbi rövid útmutatók valamelyikét:
 
-   * [SSH/RDP az IoT Hub-eszközök streamjein C# proxyalkalmazások használatával](./quickstart-device-streams-proxy-csharp.md)
-   * [SSH/RDP ioT Hub-eszközstreameken keresztül a Node.js proxyalkalmazások használatával](./quickstart-device-streams-proxy-nodejs.md)
+   * [SSH/RDP IoT Hub-eszközökön keresztül, C# proxy alkalmazások használatával](./quickstart-device-streams-proxy-csharp.md)
+   * [SSH/RDP IoT Hub-eszköz streamek használatával Node. js-proxy-alkalmazásokkal](./quickstart-device-streams-proxy-nodejs.md)
 
 ### <a name="establish-an-ssh-session"></a>SSH-munkamenet létrehozása
 
-Miután mind az eszköz- mind a szolgáltatás-helyi proxyk futnak, használja az SSH-ügyfélprogramot, és csatlakozzon a 2222-es port szolgáltatáshelyi proxyjához (közvetlenül az SSH démon helyett).
+Miután az eszköz és a szolgáltatás helyi proxyi is futnak, használja az SSH-ügyfélprogramot, és kapcsolódjon a Service-local proxyhoz a 2222-as porton (közvetlenül az SSH démon helyett).
 
 ```cmd/sh
 ssh {username}@localhost -p 2222
 ```
 
-Ezen a ponton az SSH bejelentkezési ablak kéri, hogy adja meg a hitelesítő adatokat.
+Ezen a ponton az SSH bejelentkezési ablaka kéri a hitelesítő adatok megadását.
 
-Az alábbi képen a konzol kimenete látható az eszköz helyi proxyján, amely `IP_address:22`az SSH démonhoz csatlakozik:
+Az alábbi képen látható a konzol kimenete az eszköz helyi proxyján, amely az SSH démonhoz csatlakozik a `IP_address:22`következő helyen:
 
-![Eszközhelyi proxykimenet](./media/quickstart-device-streams-proxy-c/device-console-output.png)
+![Eszköz – helyi proxy kimenete](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 
-Az alábbi képen az SSH-ügyfélprogram konzolkimenete látható. Az SSH-ügyfél a 22-es porthoz való csatlakozással kommunikál az SSH démonnal, amelyet a szolgáltatáshelyi proxy figyel:
+Az alábbi képen az SSH-ügyfélprogram konzoljának kimenete látható. Az SSH-ügyfél a 22-es porthoz való csatlakozással kommunikál az SSH démonsal, amely a szolgáltatás helyi proxyját figyeli:
 
 ![SSH-ügyfél kimenete](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
@@ -225,9 +225,9 @@ Az alábbi képen az SSH-ügyfélprogram konzolkimenete látható. Az SSH-ügyf�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban beállít egy IoT hubot, regisztrált egy eszközt, telepített egy eszközt és egy szolgáltatás-helyi proxyt az IT Hubon keresztüli eszközadatfolyam létrehozásához, és a proxykat használta az SSH-forgalom alagttunneléhez.
+Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, egy eszköz-és egy szolgáltatás-helyi proxy program üzembe helyezésével hozhat létre adatfolyamot IoT Hubon keresztül, és a proxykat az SSH-forgalom bújtatásához használta.
 
-Az eszközstreamekről az:
+További információ az eszközök streamekről:
 
 > [!div class="nextstepaction"]
-> [Eszközadatfolyamok – áttekintés](./iot-hub-device-streams-overview.md)
+> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md)

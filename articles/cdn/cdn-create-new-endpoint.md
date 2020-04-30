@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254036"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
@@ -28,7 +28,7 @@ Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán ker
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információ: [Azure storage-fiók integrálása az Azure CDN-nel](cdn-create-a-storage-account-with-cdn.md)című témakörben talál.
+Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információ: [Azure Storage-fiók integrálása Azure CDNokkal](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
@@ -53,8 +53,8 @@ A CDN-profil létrehozását követően használhatja azt egy végpont létrehoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **Név** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. Ezzel a névvel érhető el a gyorsítótárazott erőforrások a _ &lt;tartományvégpont -végpontneve&gt;_.azureedge.net.|
-    | **Forrás típusa** | Válassza a **Tárolás**lehetőséget. | 
+    | **Név** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartományi _ &lt;végpont neve&gt;_. azureedge.net.|
+    | **Forrás típusa** | Válassza a **tárterület**lehetőséget. | 
     | **Forrás gazdaneve** | Adja meg a *mystorageacct123.blob.core.windows.net* nevet gazdanévként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
     | **Forrás állomásfejléce** | Hagyja meg az alapértelmezetten létrehozott értéket. |  

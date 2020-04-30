@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Linuxos virtuálisgép-méretezési készlet létrehozása Azure Resource Manager-sablonnal
+title: Rövid útmutató – linuxos virtuálisgép-méretezési csoport létrehozása Azure Resource Manager sablonnal
 description: Ismerje meg, hogyan hozhat létre gyorsan Linux virtuálisgép-méretezési csoportot egy mintaalkalmazást üzembe helyező és automatikus méretezési szabályokat konfiguráló Azure Resource Manager-sablonnal
 author: ju-shim
 tags: azure-resource-manager
@@ -9,19 +9,19 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010460"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Rövid útmutató: Linuxos virtuálisgép-méretezési készlet létrehozása Azure Resource Manager-sablonnal
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Gyors útmutató: linuxos virtuálisgép-méretezési csoport létrehozása Azure Resource Manager sablonnal
 
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást egy Azure Resource Manager-sablon használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,17 +33,17 @@ Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőf
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)származik.
 
 :::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
 
 Ezek az erőforrások a sablonban vannak definiálva:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleBeállítások**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Microsoft. bepillantások/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Méretezési csoport meghatározása
 
@@ -62,7 +62,7 @@ A kiemelt rész a méretezési csoport erőforrás-definíciója. Méretezési c
 | osProfile.adminUsername      | Az egyes virtuálisgép-példányokhoz tartozó felhasználónév                        | azureuser                                 |
 | osProfile.adminPassword      | Az egyes virtuálisgép-példányokhoz tartozó jelszó                        | P@ssw0rd!                                 |
 
-A méretezési csoport sablon testreszabásához módosíthatja a virtuális gép méretét vagy kezdeti kapacitását. Egy másik lehetőség egy másik platform vagy egyéni lemezkép használata.
+A méretezési csoport sablonjának testreszabásához módosíthatja a virtuális gép méretét vagy kezdeti kapacitását. Egy másik lehetőség, hogy más platformot vagy egyéni rendszerképet használjon.
 
 #### <a name="add-a-sample-application"></a>Mintaalkalmazás hozzáadása
 
@@ -74,17 +74,17 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 - A konfigurációs vagy telepítési szkriptek helye
 - A virtuálisgép-példányokon végrehajtandó parancsok
 
-A sablon az egyéni parancsfájl-bővítmény t használja a [Bottle](https://bottlepy.org/docs/dev/), egy Python webkeretrendszer és egy egyszerű HTTP-kiszolgáló telepítéséhez.
+A sablon az egyéni szkriptek bővítményét használja a [Bottle](https://bottlepy.org/docs/dev/), a Python webes keretrendszer és egy egyszerű http-kiszolgáló telepítéséhez.
 
-A **fileUris** - *installserver.sh*és *a workserver.py*két parancsfájlt határoz meg. Ezeket a fájlokat a GitHubról `bash installserver.sh` tölti le, majd *a commandToExecute* fut az alkalmazás telepítéséhez és konfigurálásához.
+Két parancsfájl van definiálva a **fileUris** - *installserver.sh*és a *workserver.py*. A rendszer letölti ezeket a fájlokat a *commandToExecute* githubról `bash installserver.sh` , majd a commandToExecute futtatja az alkalmazás telepítését és konfigurálását.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez válassza a következő üzembe helyezés az **Azure-ba** gombot. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
+A sablon üzembe helyezéséhez válassza a következő **üzembe helyezés az Azure-** ban gombot. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
 
 [![Sablon üzembe helyezése az Azure-ban](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-Az Azure CLI használatával is telepíthet erőforrás-kezelői sablont:
+A Resource Manager-sablonok az Azure CLI használatával is üzembe helyezhetők:
 
 ```azurecli-interactive
 # Create a resource group
@@ -108,7 +108,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Adja meg a terheléselosztó nyilvános IP-címét a webböngészőben *a következő formátumban: http:\//publicIpAddress:9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
+Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http:\//publicIpAddress: 9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
 
 ![Alapértelmezett weboldal az NGINX-ben](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
