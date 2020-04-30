@@ -1,6 +1,6 @@
 ---
-title: Az Azure Portal használatával hozzon létre egy dedikált fürthöz dedikált eseményközpontot
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Azure Event Hubs-fürtöt az Azure Portal használatával.
+title: Event Hubs dedikált fürt létrehozása a Azure Portal használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Event Hubs-fürtöt a Azure Portal használatával.
 services: event-hubs
 documentationcenter: ''
 author: femila
@@ -11,105 +11,105 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77157482"
 ---
-# <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rövid útmutató: Hozzon létre egy dedikált Event Hubs-fürtöt az Azure Portal használatával 
-Az Event Hubs-fürtök egybérlős telepítéseket kínálnak a legigényesebb streamelési igényekkel rendelkező ügyfelek számára. Ez az ajánlat garantált9,99%-os SLA-val rendelkezik, és csak a dedikált tarifacsomagunkban érhető el. Az [Event Hubs-fürt](event-hubs-dedicated-overview.md) másodpercenként több millió eseményt képes befeketésni garantált kapacitással és másodperc alatti késéssel. A fürtön belül létrehozott névterek és eseményközpontok tartalmazzák a szabványos ajánlat összes szolgáltatását és egyebeket, de a be- és információtér-korlátok nélkül. A dedikált ajánlat tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) funkciót is, további költségek nélkül, lehetővé téve az adatfolyamok automatikus kötegelését és naplózását [az Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) vagy az Azure Data Lake Storage [Gen 1](../data-lake-store/data-lake-store-overview.md)szolgáltatásba.
+# <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Event Hubs-fürt létrehozása Azure Portal használatával 
+Event Hubs-fürtök egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az ajánlat garantált 99,99%-os SLA-val rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy [Event Hubs fürt](event-hubs-dedicated-overview.md) másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodpercenkénti késéssel. A fürtön belül létrehozott névterek és az Event hubok a standard ajánlat összes funkcióját tartalmazzák, többek között a bejövő korlátok nélkül. A dedikált ajánlat további díj nélkül tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást, amely lehetővé teszi, hogy automatikusan batch-és naplózza az adatstreameket az [Azure-Blob Storage](../storage/blobs/storage-blobs-introduction.md) vagy az [1. generációs Azure Data Lake Storage](../data-lake-store/data-lake-store-overview.md).
 
-A dedikált fürtöket **kapacitásegységek (CUs)** terheli, amely előre lefoglalt mennyiségű PROCESSZOR- és memória-erőforrás. Fürthöz 1, 2, 4, 8, 12, 16 vagy 20 e-t vásárolhat. Ebben a rövid útmutatóban bemutatjuk, hogy hozzon létre egy 1 CU-eseményközpontok fürtaz Azure Portalon keresztül.
+A dedikált fürtök kiosztása és számlázása a **Kapacitási egységek (ke)** alapján történik, a processzor-és memória-erőforrások előre lefoglalt mennyisége. Minden fürthöz 1, 2, 4, 8, 12, 16 vagy 20 ke lehet vásárolni. Ebben a rövid útmutatóban bemutatjuk, hogyan hozhat létre egy 1 CU Event Hubs fürtöt a Azure Portal használatával.
 
 > [!NOTE]
-> Ez az önkiszolgáló élmény jelenleg előzetes verzióban érhető el az [Azure Portalon.](https://aka.ms/eventhubsclusterquickstart) Ha bármilyen kérdése van a dedikált ajánlattal kapcsolatban, kérjük, forduljon az [Event Hubs csapatához.](mailto:askeventhubs@microsoft.com)
+> Ez az önkiszolgáló élmény jelenleg előzetes verzióban érhető el az [Azure Portalon](https://aka.ms/eventhubsclusterquickstart). Ha bármilyen kérdése van a dedikált ajánlattal kapcsolatban, lépjen kapcsolatba a [Event Hubs csapatával](mailto:askeventhubs@microsoft.com).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
-- Egy Azure-fiók. Ha még nem rendelkezik ilyenel, a kezdés előtt [vásároljon fiókot.](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) Ez a funkció nem támogatott egy ingyenes Azure-fiókkal. 
-- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 3-as vagy újabb verzió (15.3-as, 26730.01-es verzió) vagy újabb verzió.
+- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, a Kezdés előtt [vásároljon egy fiókot](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) . Ez a funkció ingyenes Azure-fiókkal nem támogatott. 
+- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 Update 3 (15,3-es, 26730,01-es verzió) vagy újabb.
 - A [.NET Standard SDK](https://dotnet.microsoft.com/download) 2.0-s vagy újabb verziója.
-- [Létrehozott egy erőforráscsoportot.](../event-hubs/event-hubs-create.md#create-a-resource-group)
+- [Létrehozott egy erőforráscsoportot](../event-hubs/event-hubs-create.md#create-a-resource-group).
 
-## <a name="create-an-event-hubs-dedicated-cluster"></a>Dedikált fürt létrehozása
-Az Event Hubs-fürt egy egyedi hatókörtárolót biztosít, amelyben egy vagy több névteret hozhat létre. A portál önkiszolgálási élményének ebben az előzetes fázisában 1 CU-fürtöket hozhat létre bizonyos régiókban. Ha 1 CU-nál nagyobb fürtre van szüksége, küldhet egy Azure-támogatási kérelmet a fürt létrehozása után.
+## <a name="create-an-event-hubs-dedicated-cluster"></a>dedikált Event Hubs-fürt létrehozása
+Az Event Hubs-fürtök egyedi hatókörű tárolót biztosítanak, amelyben egy vagy több névteret hozhat létre. Ebben az előzetes verzióban a portál önkiszolgáló élményét, 1 CU-fürtöt hozhat létre a kiválasztott régiókban. Ha 1 CU-nál nagyobb fürtre van szüksége, küldhet egy Azure-támogatási kérést a fürt vertikális felskálázásához a létrehozása után.
 
-Ha az Azure Portal használatával fürtöt szeretne létrehozni az erőforráscsoportban, hajtsa végre az alábbi lépéseket:
+Ha a Azure Portal használatával szeretne fürtöt létrehozni az erőforráscsoporthoz, hajtsa végre a következő lépéseket:
 
-1. Ezen [a hivatkozáson](https://aka.ms/eventhubsclusterquickstart) keresztül hozzon létre egy fürtöt az Azure Portalon. Ezzel szemben válassza a bal oldali navigációs ablak **Minden szolgáltatás elemét,** majd írja be a keresősávba az "Eseményközpontok fürtjei" kifejezést, és válassza az "Eseményközpontok fürtjei" lehetőséget a találatok listájából.
-2. A **Fürt létrehozása** lapon konfigurálja a következőket:
-    1. Adja meg **a fürt nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-    2. Válassza ki azt az **előfizetést,** amelyben létre szeretné hozni a fürtöt.
-    3. Jelölje ki azt az **erőforráscsoportot,** amelyben a fürtöt létre kívánja hozni.
-    4. Válassza ki a fürt **helyét.** Ha a kívánt régió szürkén jelenik meg, ideiglenesen kapacitáson kívül van, és [támogatási kérelmet](#submit-a-support-request) küldhet az Event Hubs csapatának.
-    5. Válassza a **Tovább: Címkék** gombot a lap alján. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.
+1. [Ezt a hivatkozást](https://aka.ms/eventhubsclusterquickstart) követve hozzon létre egy fürtöt Azure Portalon. Ezzel szemben válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs panelen, majd írja be a "Event Hubs fürtök" kifejezést a keresőmezőbe, és válassza a "Event Hubs fürtök" lehetőséget az eredmények listájából.
+2. A **fürt létrehozása** lapon konfigurálja a következőket:
+    1. Adja meg a **fürt nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+    2. Válassza ki azt az **előfizetést** , amelyben létre szeretné hozni a fürtöt.
+    3. Válassza ki azt az **erőforráscsoportot** , amelyben létre szeretné hozni a fürtöt.
+    4. Válasszon egy **helyet** a fürt számára. Ha az előnyben részesített régió szürkén jelenik meg, átmenetileg nem áll rendelkezésre kapacitás, és a Event Hubs csapatnak küldhet [támogatási kérelmet](#submit-a-support-request) .
+    5. A lap alján kattintson a **Next: Tags (tovább** ) gombra. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.
 
-        ![Eseményközpontok létrehozása – Alapismeretek lap](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
-3. A **Címkék** lapon állítsa be a következőket:
-    1. Adja meg a hozzáadni kívánt címke **nevét** és **értékét.** Ez a lépés **nem kötelező**.  
-    2. Válassza a **Véleményezés + Létrehozás** gombot.
+        ![Event Hubs-fürt létrehozása – alapismeretek lap](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
+3. A **címkék** lapon adja meg a következőket:
+    1. Adja meg a hozzáadni kívánt címke **nevét** és **értékét** . Ez a lépés **nem kötelező**.  
+    2. Kattintson a **felülvizsgálat + létrehozás** gombra.
 
-        ![Eseményközpontok létrehozása – Címkék lap](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
-4. A **Véleményezés + Létrehozás** lapon tekintse át a részleteket, és válassza a **Létrehozás gombot.** 
+        ![Event Hubs-fürt oldalának létrehozása – címkék lap](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
+4. A **felülvizsgálat + létrehozás** oldalon tekintse át a részleteket, és válassza a **Létrehozás**lehetőséget. 
 
-    ![Eseményközpontok létrehozása fürtlap – Véleményezés + Létrehozás lap](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
+    ![Event Hubs-fürt létrehozása lap – áttekintés + oldal létrehozása](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
 
-## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>Névtér és eseményközpont létrehozása fürtön belül
+## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>Névtér és Event hub létrehozása fürtön belül
 
-1. Ha egy fürtön belül szeretne névteret létrehozni, a fürt **Eseményközpont-fürtlapján** válassza a felső menü **+Névtér elemét.**
+1. Ha névteret szeretne létrehozni a fürtön belül, a fürt **Event Hubs-fürt** lapján válassza a **+ névtér** lehetőséget a felső menüben.
 
-    ![Fürtkezelés lap – névtér hozzáadása gomb](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
-2. A Névtér létrehozása lapon tegye a következő lépéseket:
-    1. Adja meg **a névtér nevét.**  A rendszer ellenőrzi, hogy a név elérhető-e.
-    2. A névtér a következő tulajdonságokat örökli:
+    ![Fürt kezelése lap – névtér hozzáadása gomb](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
+2. A névtér létrehozása oldalon hajtsa végre a következő lépéseket:
+    1. Adja meg **a névtér nevét**.  A rendszer ellenőrzi, hogy a név elérhető-e.
+    2. A névtér örökli a következő tulajdonságokat:
         1. Előfizetés azonosítója
         2. Erőforráscsoport
         3. Hely
         4. Fürt neve
-    3. A névtér létrehozásához válassza a **Létrehozás** gombot. Most már kezelheti a fürtöt.  
+    3. A névtér létrehozásához válassza a **Létrehozás** elemet. Most már kezelheti a fürtöt.  
 
-        ![Névtér létrehozása a fürtlapon](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
-3. A névtér létrehozása után [létrehozhat egy eseményközpontot,](event-hubs-create.md#create-an-event-hub) ahogy általában egy névtérben is létrehozna egyet. 
+        ![Névtér létrehozása a fürt oldalán](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
+3. Miután létrehozta a névteret, [létrehozhat egy Event hub](event-hubs-create.md#create-an-event-hub) -t, ahogy azt általában egy névtéren belül létrehozta. 
 
 
-## <a name="submit-a-support-request"></a>Támogatási kérelem benyújtása
+## <a name="submit-a-support-request"></a>Támogatási kérelem beküldése
 
-Ha a létrehozás után módosítani szeretné a fürt méretét, vagy ha a kívánt régió nem érhető el, az alábbi lépésekkel nyújtson be támogatási kérelmet:
+Ha módosítani szeretné a fürt méretét a létrehozás után, vagy ha az előnyben részesített régió nem érhető el, küldjön egy támogatási kérelmet a következő lépésekkel:
 
-1. Az [Azure Portalon](https://portal.azure.com)válassza a **Súgó + támogatás** lehetőséget a bal oldali menüből.
-2. Válassza a **+ Új támogatási kérelem lehetőséget** a Támogatás menüből.
-3. A támogatási lapon hajtsa végre az alábbi lépéseket:
-    1. A **Problématípus listában**válassza a **Műszaki** elemet a legördülő listából.
+1. [Azure Portal](https://portal.azure.com)a bal oldali menüben kattintson a **Súgó és támogatás** elemre.
+2. Válassza az **+ új támogatási kérés** lehetőséget a támogatási menüből.
+3. A támogatás lapon kövesse az alábbi lépéseket:
+    1. A **probléma típusa**beállításnál válassza a **technikai** lehetőséget a legördülő listából.
     2. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-    3. A **Szolgáltatás**esetében válassza a **Saját szolgáltatások**lehetőséget, majd az **Eseményközpontok**lehetőséget.
-    4. Az **Erőforrás**területen válassza ki a fürtöt, ha már létezik, ellenkező esetben válassza az **Általános kérdés/Erőforrás nem érhető el**lehetőséget.
-    5. A **Probléma típushoz**válassza **a Kvóta lehetőséget.**
-    6. A **Probléma altípus**listában válasszon az alábbi értékek közül a legördülő listából:
-        1. Válassza a **Dedikált termékváltozat kérése** lehetőséget, ha a funkciót a régióban támogatni szeretné.
-        2. Válassza **a Dedikált fürt méretezése vagy leskálázása** lehetőséget, ha a dedikált fürt felskálázását vagy kicsinyítését szeretné felskálázni vagy csökkenteni. 
-    7. A **Tárgy**esetében írja le a problémát.
+    3. A **szolgáltatás**területen válassza **a saját szolgáltatások**, majd a **Event Hubs**lehetőséget.
+    4. **Erőforrás**esetén válassza ki a fürtöt, ha az már létezik, ellenkező esetben válassza az **általános kérdés/erőforrás nem érhető el**lehetőséget.
+    5. A **probléma típusa**beállításnál válassza a **kvóta**lehetőséget.
+    6. A **probléma altípusa**elemnél válassza a következő értékek egyikét a legördülő listából:
+        1. Válassza a **DEDIKÁLT SKU kérése** lehetőséget, hogy a szolgáltatás támogatott legyen a régióban.
+        2. Válassza ki a **dedikált fürt vertikális felskálázására vagy méretezésére vonatkozó kérést** , ha a dedikált fürt vertikális felskálázását vagy méretezését szeretné végezni. 
+    7. A **Tárgy**mezőben írja le a problémát.
 
-        ![Támogatási jegy oldal](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)
+        ![Támogatási jegy oldala](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)
 
  ## <a name="delete-a-dedicated-cluster"></a>Dedikált fürt törlése
  
-1. A fürt törléséhez válassza a felső menü **Törlés parancsát.** Kérjük, vegye figyelembe, hogy a fürt a létrehozás után legalább 4 órányi használatot számlázunk. 
-2. Megjelenik egy üzenet, amely megerősíti a fürt törlését.
-3. Írja be **a fürt nevét,** és a Fürt törléséhez válassza a **Törlés** gombot.
+1. A fürt törléséhez válassza a **Törlés** lehetőséget a felső menüben. A létrehozás után a fürt számlázása legalább 4 órányi használat után történik. 
+2. Ekkor megjelenik egy üzenet, amely megerősíti, hogy szeretné törölni a fürtöt.
+3. Írja be a **fürt nevét** , és válassza a **Törlés** lehetőséget a fürt törléséhez.
 
-    ![Fürtlap törlése](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
+    ![Fürt törlése lap](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben létrehozott egy Eseményközpontok-fürtöt. Az események eseményközpontból történő küldésére és fogadására, valamint az események Azure-tárhelyre vagy Azure Data Lake Store-ba történő rögzítésére vonatkozó részletes útmutatásért tekintse meg az alábbi oktatóanyagokat:
+Ebben a cikkben egy Event Hubs-fürtöt hozott létre. Az Event hub eseményeinek küldésére és fogadására, valamint az események Azure Storage-ba vagy Azure Data Lake Storeba való rögzítésére vonatkozó részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
 - Események küldése és fogadása 
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
-- [Az Azure Portal használata az Eseményközpontok rögzítésének engedélyezéséhez](event-hubs-capture-enable-through-portal.md)
-- [Az Azure Event Hubs használata az Apache Kafka-hoz](event-hubs-for-kafka-ecosystem-overview.md)
+    - [JavaScript](get-started-java-send-v2.md)
+- [Event Hubs rögzítésének engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
+- [Az Azure Event Hubs használata a Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

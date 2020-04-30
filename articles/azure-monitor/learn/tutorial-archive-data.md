@@ -1,6 +1,6 @@
 ---
 title: Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
-description: Archív napló és metrika által létrehozott adatok az Azure-erőforrások egy tárfiókba.
+description: Az Azure-erőforrások által egy Storage-fiókba létrehozott napló-és metrikai adatok archiválása.
 author: johnkemnetz
 services: azure-monitor
 ms.topic: tutorial
@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77661725"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
@@ -33,19 +33,19 @@ Ez az oktatóanyag végigvezeti azon a folyamaton, amely során az Azure-környe
 > * A tárfiókban lévő monitorozási adatok megtekintése
 > * Az erőforrások törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Előfizetési naplók átirányítása a tárfiókba
 
-Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](../../azure-monitor/platform/platform-logs-overview.md) az Azure-beli előfizetési szintű események előzményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
+Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenység naplója**](../../azure-monitor/platform/platform-logs-overview.md) az Azure-beli előfizetési szintű események előzményeit jeleníti meg. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
 
 1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Tevékenységnapló** gombra.
 
@@ -69,7 +69,7 @@ Az előfizetés monitorozási adatai most a tárfiókba kerülnek.
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Erőforrásadatok átirányítása a tárfiókba
 
-Most az erőforrás-szintű adatokat (erőforrás-metrikákat és erőforrásnaplókat) konfiguráljuk úgy, hogy az **erőforrás-diagnosztikai beállítások**beállításával a tárfiókba irányítsák.
+Most konfiguráljuk az erőforrás-szintű adatokat (erőforrás-metrikákat és erőforrás-naplókat) úgy, hogy az **erőforrás-diagnosztikai beállítások**beállításával átirányítsák a Storage-fiókra.
 
 1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Diagnosztikai beállítások** gombra. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. Ha nincsenek erőforrások a listában, a továbblépés előtt [létrehozhat egy logikai alkalmazást](../../logic-apps/quickstart-create-first-logic-app-workflow.md), hogy rendelkezzen egy olyan erőforrással, amelyhez diagnosztikai beállítást konfigurálhat.
 
@@ -95,7 +95,7 @@ Most az erőforrás-szintű adatokat (erőforrás-metrikákat és erőforrásnap
 
 6. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
 
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Save** (Mentés) gombra.
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -136,7 +136,7 @@ Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
 9. A megjelenő szakaszban válassza ki az előző, **Tárfiók létrehozása** című lépésben létrehozott tárfiókot.
 
-10. Kattintson a **Mentés** gombra.
+10. Kattintson a **Save** (Mentés) gombra.
 
 Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -161,7 +161,7 @@ Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
 5. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra. Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m=00) mindig 00, mert a naplóesemények óránként vannak külön blobokba osztva.
 
-   Most megtekintheti a tárfiókban tárolt JSON-eseményt. Az erőforrás-erőforrás-naplók esetében a blobok formátuma a következő:
+   Most megtekintheti a tárfiókban tárolt JSON-eseményt. Erőforrás-erőforrás-naplók esetében a Blobok formátuma a következő:
 
    insights-logs-{naplókategória neve}/resourceId=/{erőforrás-azonosító}/y={négy számjegyű numerikus év}/m={két számjegyű numerikus hónap}/d={két számjegyű numerikus nap}/h={két számjegyű óra 24 órás formátumban}/m=00/PT1H.json
 

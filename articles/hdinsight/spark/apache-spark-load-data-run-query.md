@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Adatok betöltése & lekérdezések futtatása az Apache Sparkkal – Azure HDInsight'
-description: Oktatóanyag – Ismerje meg, hogyan tölthet be adatokat, és futtathat interaktív lekérdezéseket az Azure HDInsight Spark-fürtjein.
+title: 'Oktatóanyag: az adatbetöltések & lekérdezések futtatása Apache Spark-Azure HDInsight'
+description: Oktatóanyag – Ismerje meg, hogyan tölthetők be az adathalmazok, és hogyan futtathat interaktív lekérdezéseket a Spark-fürtökön az Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
 ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77198888"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban
 
-Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy dataframe-et egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy [Apache Spark-fürtön](https://spark.apache.org/) az Azure HDInsightban. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre dataframe egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy [Apache Spark](https://spark.apache.org/) -fürtön az Azure HDInsight. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -26,30 +26,30 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Apache Spark-fürt megléte a HDInsightban. Lásd: [Apache Spark-fürt létrehozása.](./apache-spark-jupyter-spark-sql-use-portal.md)
+Apache Spark-fürt megléte a HDInsightban. Lásd: [Apache Spark-fürt létrehozása](./apache-spark-jupyter-spark-sql-use-portal.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
 
 A Jupyter Notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
 
-1. Az URL-cím `https://SPARKCLUSTER.azurehdinsight.net/jupyter` `SPARKCLUSTER` szerkesztésével a Spark-fürt nevét. Ezután írja be a szerkesztett URL-t egy webböngészőben. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
+1. Szerkessze az `https://SPARKCLUSTER.azurehdinsight.net/jupyter` URL- `SPARKCLUSTER` címet a Spark-fürt nevére való lecseréléssel. Ezután írja be a szerkesztett URL-címet egy webböngészőbe. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
 
-2. A Jupyter weblapon válassza az **Új** > **PySpark** lehetőséget jegyzetfüzet létrehozásához.
+2. A Jupyter weblapon válassza az **új** > **PySpark** lehetőséget a jegyzetfüzet létrehozásához.
 
-   ![Jupyter-jegyzetfüzet létrehozása interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter-jegyzetfüzet létrehozása interaktív Spark SQL-lekérdezés futtatásához")
+   ![Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
 
-   Új jegyzetfüzet jön létre és nyílik meg`Untitled.ipynb`Névtelen( néven.
+   A rendszer létrehoz egy új jegyzetfüzetet, és a névtelen név (`Untitled.ipynb`) nevet nyitja meg.
 
     > [!NOTE]  
     > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Adathalmaz létrehozása egy CSV-fájlból
 
-Az alkalmazások közvetlenül a távoli tárolón lévő fájlokból vagy mappákból, például az Azure Storage-ból vagy az Azure Data Lake Storage-ból hozhatnak létre adatkereteket; egy Hive-táblából; vagy a Spark által támogatott más adatforrásokból, például a Cosmos DB, az Azure SQL DB, a DW és így tovább. A következő képernyőképen az oktatóanyaghoz használt HVAC.csv fájl pillanatfelvétele látható. Ez a csv-fájl minden HDInsight Spark-fürtön megtalálható. Az adatok néhány épület hőmérséklet-változását rögzítik.
+Az alkalmazások közvetlenül a távoli tárolóban található fájlokból vagy mappákból hozhatnak létre dataframes, például az Azure Storage vagy a Azure Data Lake Storage; egy struktúra táblából; vagy a Spark által támogatott egyéb adatforrásokból, például az Cosmos DB, az Azure SQL DB, a DW stb. A következő képernyőképen az oktatóanyaghoz használt HVAC.csv fájl pillanatfelvétele látható. Ez a csv-fájl minden HDInsight Spark-fürtön megtalálható. Az adatok néhány épület hőmérséklet-változását rögzítik.
 
-![Adatok pillanatképe interaktív Spark SQL-lekérdezéshez](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Adatok pillanatképe interaktív Spark SQL-lekérdezéshez")
+![Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe")
 
-1. Illessze be a következő kódot a Jupyter-jegyzetfüzet egy üres cellájába, majd a **SHIFT + ENTER** billentyűkombinációval futtassa a kódot. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
+1. Illessze be a következő kódot a Jupyter jegyzetfüzet egyik üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
     ```python
     from pyspark.sql import *
@@ -58,9 +58,9 @@ Az alkalmazások közvetlenül a távoli tárolón lévő fájlokból vagy mapp�
 
     Amikor a Jupyterben interaktív lekérdezést futtatunk, a böngésző ablakának vagy lapjának címsorában a **(Foglalt)** állapot jelenik meg a notebook neve mellett. A jobb felső sarokban lévő **PySpark** felirat mellett ekkor egy teli kör is megjelenik. A feladat befejezése után ez a jel üres körre változik.
 
-    ![Interaktív Spark SQL-lekérdezés állapota](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Interaktív Spark SQL-lekérdezés állapota")
+    ![Az interaktív Spark SQL-lekérdezés állapota](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Az interaktív Spark SQL-lekérdezés állapota")
 
-1. Figyelje meg, hogy a munkamenet-azonosító t visszaadta. A fenti képen a munkamenet-azonosító 0. Ha szükséges, lekérheti a munkamenet `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` részleteit, ha a FÜRTSORNEVÉhez navigál, ahol a Spark-fürt neve, és az azonosító a munkamenet-azonosító száma.
+1. Megjegyzés: a visszaadott munkamenet-azonosító. A fenti képen a munkamenet-azonosító 0. Ha kívánja, lekérheti a munkamenet részleteit `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` , ha a CLUSTERNAME a Spark-fürt neve, az azonosító pedig a munkamenet-azonosító száma.
 
 1. Hozzon létre egy adathalmazt és egy ideiglenes táblát (**hvac**) a következő kód futtatásával.
 
@@ -83,19 +83,19 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
    Az alábbi táblázatos kimenet jelenik meg.
 
-     ![Az interaktív Spark-lekérdezés eredményének táblakimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Az interaktív Spark-lekérdezés eredményének táblakimenete")
+     ![Interaktív Spark-lekérdezés eredményének táblázatos kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Interaktív Spark-lekérdezés eredményének táblázatos kimenete")
 
 2. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megjelenítéséhez válassza az **Area** (Terület) lehetőséget, majd állítsa be a további értékeket az ábra szerint.
 
-    ![Az interaktív Spark-lekérdezés eredményének területdiagramja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezés eredményének területdiagramja")
+    ![Az interaktív Spark-lekérdezés eredményének terület gráfja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezés eredményének terület gráfja")
 
-3. A jegyzetfüzet menüsorából keresse meg a **Fájlmentés** > **és az Ellenőrzőpont lapot.**
+3. A notebook menüsávban navigáljon a **fájl** > **Mentés és ellenőrzőpont**elemre.
 
-4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a jegyzetfüzetet a fürt erőforrásainak felszabadításához: a jegyzetfüzet menüsorából válassza a >  **Fájlbezárás és a Leállítás**lapot. **File**
+4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a jegyzetfüzetet a fürterőforrások felszabadításához: a jegyzetfüzet menüsorában navigáljon a **fájl** >  **bezárásához és leállításához**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A HDInsight segítségével az adatok és a Jupyter-jegyzetfüzetek az Azure Storage vagy az Azure Data Lake Storage tárolóban tárolódnak, így biztonságosan törölheti a fürtöt, ha nincs használatban. A HDInsight-fürtért is díjat számítunk fel, még akkor is, ha nincs használatban. Mivel a fürt díjai sokszor több, mint a tárolási díjak, célszerű törölni a fürtöket, ha nincsenek használatban. Ha azt tervezi, hogy rögtön elvégzi a következő oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
+A HDInsight az adatait és Jupyter jegyzetfüzeteit az Azure Storage vagy a Azure Data Lake Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban. Ha azt tervezi, hogy rögtön elvégzi a következő oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 
@@ -105,7 +105,7 @@ Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport ol
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy dataframe-et egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy Apache Spark-fürtön az Azure HDInsightban. A következő cikkben megtekintheti, hogy az Apache Sparkban regisztrált adatok hogyan behúzhatók egy BI-elemző eszközbe, például a Power BI-ba.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre dataframe egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy Apache Spark-fürtön az Azure HDInsight. A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
 
 > [!div class="nextstepaction"]
 > [Adatok elemzése BI-eszközökkel](apache-spark-use-bi-tools.md)

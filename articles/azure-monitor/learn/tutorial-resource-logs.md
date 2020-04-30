@@ -1,73 +1,73 @@
 ---
-title: Erőforrásnaplók gyűjtése azure-erőforrásból és elemzés az Azure Monitorsegítségével
-description: Oktatóanyag konfigurálása diagnosztikai beállításokat, hogy összegyűjtse az erőforrás-naplók egy Azure-erőforrás egy Log Analytics-munkaterület, ahol elemezhetők egy naplólekérdezés.
+title: Erőforrás-naplók összegyűjtése az Azure-erőforrásokból és a Azure Monitor elemzése
+description: Oktatóanyag a diagnosztikai beállítások konfigurálásához az Azure-erőforrásokból származó erőforrás-naplók összegyűjtéséhez egy Log Analytics munkaterületre, ahol egy napló lekérdezéssel elemezhetők.
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
 ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78269196"
 ---
-# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: Erőforrásnaplók gyűjtése és elemzése egy Azure-erőforrásból
+# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
-Az erőforrásnaplók betekintést nyújtanak egy Azure-erőforrás részletes működésébe, és hasznosak állapotuk és elérhetőségük figyeléséhez. Az Azure-erőforrások automatikusan erőforrásnaplókat hoznak létre, de konfigurálnia kell, hogy hol kell gyűjteni őket. Ez az oktatóanyag végigvezeti a diagnosztikai beállítás létrehozásának folyamatán, amely során az Azure-előfizetésében lévő erőforrásnaplókat összegyűjtheti, és naplólekérdezéssel elemezheti azt.
+Az erőforrás-naplók betekintést nyújtanak az Azure-erőforrások részletes műveleteibe, és hasznosak az állapotuk és a rendelkezésre állásuk monitorozásához. Az Azure-erőforrások automatikusan létrehoznak erőforrás-naplókat, de be kell állítania, hogy hol legyenek összegyűjtve. Ez az oktatóanyag végigvezeti a diagnosztikai beállítás létrehozásának folyamatán, amely az Azure-előfizetésben lévő erőforrásokhoz tartozó erőforrás-naplók összegyűjtését és a napló lekérdezésével történő elemzését ismerteti.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Log Analytics-munkaterület létrehozása az Azure Monitorban
-> * Diagnosztikai beállítás létrehozása az erőforrásnaplók gyűjtéséhez 
-> * Egyszerű naplólekérdezés létrehozása a naplók elemzéséhez
+> * Log Analytics munkaterület létrehozása Azure Monitor
+> * Diagnosztikai beállítás létrehozása az erőforrás-naplók összegyűjtéséhez 
+> * Egyszerű naplózási lekérdezés létrehozása a naplók elemzéséhez
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez egy Azure-erőforrást kell figyelnie. Az Azure-előfizetésben bármilyen erőforrást használhat, amely támogatja a diagnosztikai beállításokat. Annak megállapításához, hogy egy erőforrás támogatja-e a diagnosztikai beállításokat, nyissa meg az Azure Portal menüjét, és ellenőrizze, hogy van-e **diagnosztikai beállítások** lehetőség a menü **Figyelés** szakaszában.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-erőforrásra a figyeléshez. Az Azure-előfizetésében bármilyen erőforrást használhat, amely támogatja a diagnosztikai beállításokat. Annak megállapításához, hogy egy erőforrás támogatja-e a diagnosztikai beállításokat, lépjen a Azure Portal menüjére, és ellenőrizze, hogy van-e **diagnosztikai beállítások** lehetőség a menü **figyelés** szakaszában.
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a rendszerbe.
+Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
-Az Azure Monitor log analytics-munkaterülete különböző forrásokból gyűjti és indexeli a naplóadatokat, és lehetővé teszi a speciális elemzést egy hatékony lekérdezési nyelv használatával. A Log Analytics munkaterület et kell léteznie, mielőtt létrehoz egy diagnosztikai beállítást adatokat küldeni. Használhat egy meglévő munkaterületet az Azure-előfizetésében, vagy létrehozhat egyet az alábbi eljárással. 
+A Azure Monitor Log Analytics munkaterülete különböző forrásokból gyűjti és indexeli a naplózási adatokat, és lehetővé teszi a speciális elemzést egy hatékony lekérdezési nyelv használatával. A Log Analytics munkaterületnek léteznie kell ahhoz, hogy diagnosztikai beállítást hozzon létre az adatküldéshez. Használhat egy meglévő munkaterületet az Azure-előfizetésében, vagy létrehozhat egyet az alábbi eljárással. 
 
 > [!NOTE]
-> Miközben az **Azure Monitor** menü Log Analytics-munkaterületeiben dolgozhat az adatokkal, a **Log Analytics-munkaterületek** menüjében hozhat létre és kezelhet munkaterületeket.
+> A **Azure monitor** menüben log Analytics munkaterületeken található adatkezelési munkaterületek is használhatók, a **log Analytics** munkaterületek menüben pedig munkaterületeket hozhat létre és kezelhet.
 
-1. A **Minden szolgáltatás ban**válassza a Log **Analytics-munkaterületek**lehetőséget.
-2. Kattintson a képernyő tetején a **Hozzáadás** gombra, és adja meg a munkaterület alábbi részleteit:
-   - **Log Analytics-munkaterület:** Az új munkaterület neve. Ennek a névnek globálisan egyedinek kell lennie az Összes Azure Monitor-előfizetésben.
-   - **Előfizetés**: Válassza ki a munkaterületet tároló előfizetést. Ennek nem kell ugyanazt az előfizetést, mint a figyelt erőforrás.
-   - **Erőforráscsoport**: Jelöljön ki egy meglévő erőforráscsoportot, vagy kattintson az **Új létrehozása** gombra új létrehozása érdekében. Ennek nem kell ugyanazt az erőforráscsoportot, mint a figyelt erőforrás.
-   - **Hely**: Válasszon ki egy Azure-régiót, vagy hozzon létre egy újat. Ennek nem kell megegyeznie a figyelt erőforrással.
-   - **Tarifacsomag:** Válassza ki *a felosztó-kiosztó* díjat a tarifacsomagként. Ezt a tarifacsomagot később módosíthatja. Kattintson a **Log Analytics díjszabási** hivatkozásra, ha többet szeretne megtudni a különböző tarifacsomagokról.
+1. Az **összes szolgáltatás**területen válassza **log Analytics munkaterületek**lehetőséget.
+2. A képernyő felső részén kattintson a **Hozzáadás** gombra, és adja meg a következő adatokat a munkaterülethez:
+   - **Log Analytics munkaterület**: az új munkaterület neve. Ennek a névnek globálisan egyedinek kell lennie az összes Azure Monitor-előfizetésen belül.
+   - **Előfizetés**: válassza ki a munkaterület tárolására szolgáló előfizetést. Ennek nem kell ugyanaz az előfizetése, mint a figyelt erőforrásnak.
+   - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új létrehozása** lehetőségre egy új létrehozásához. Ennek nem kell ugyanaz az erőforráscsoport, mint a figyelt erőforrásnak.
+   - **Hely**: válasszon ki egy Azure-régiót, vagy hozzon létre újat. Ennek a helynek nem kell megegyeznie, mint a figyelt erőforrás.
+   - **Díjszabási**csomag: *válassza az utólagos* elszámolású lehetőséget a díjszabási szinten. Ezt az árképzési szintet később is megváltoztathatja. A különböző díjszabási csomagokkal kapcsolatos további információért kattintson a **log Analytics díjszabási** hivatkozásra.
 
     ![Új munkaterület](media/tutorial-resource-logs/new-workspace.png)
 
-3. A munkaterület létrehozásához kattintson az **OK** gombra.
+3. A munkaterület létrehozásához kattintson **az OK** gombra.
 
 ## <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
-[A diagnosztikai beállítások](../platform/diagnostic-settings.md) határozzák meg, hogy egy adott erőforráshoz hol kell erőforrásnaplókat küldeni. Egyetlen diagnosztikai beállítás több [célnak](../platform/diagnostic-settings.md#destinations)is lehet, de ebben az oktatóanyagban csak egy Log Analytics-munkaterületet használunk.
+A [diagnosztikai beállítások](../platform/diagnostic-settings.md) határozzák meg, hogy az erőforrás-naplókat el kell-e juttatni egy adott erőforráshoz. Egyetlen diagnosztikai beállításnak több [célhelye](../platform/diagnostic-settings.md#destinations)is lehet, de ebben az oktatóanyagban csak egy log Analytics munkaterületet fogunk használni.
 
-1. Az erőforrás menüjének **Figyelés** szakaszában válassza a **Diagnosztikai beállítások lehetőséget.**
-2. A következő üzenettel kell rendelkeznie: "Nincs diagnosztikai beállítás definiálva". Kattintson **a Diagnosztikai beállítás hozzáadása gombra.**
+1. Az erőforrás menüjének **figyelés** területén válassza a **diagnosztikai beállítások**elemet.
+2. Rendelkeznie kell egy "nincsenek definiálva diagnosztikai beállítások" üzenettel. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
     ![Diagnosztikai beállítások](media/tutorial-resource-logs/diagnostic-settings.png)
 
-3. Minden diagnosztikai beállítás három alapvető részből áll:
+3. Az egyes diagnosztikai beállítások három alapvető részből állnak:
  
-   - **Név**: Ennek nincs jelentős hatása, és egyszerűen leíró jellegű az Ön számára.
-   - **Úti célok**: Egy vagy több úti cél a naplók elküldéséhez. Minden Azure-szolgáltatás ugyanazt a három lehetséges célhelyet osztja meg. Minden diagnosztikai beállítás egy vagy több célt definiálhat, de egy adott típushoz egynél több célt. 
-   - **Kategóriák**: Az egyes célállomásokra küldő naplók kategóriái. A kategóriák készlete az egyes Azure-szolgáltatásoktól függően eltérő lehet.
+   - **Név**: ez nem jelent jelentős hatást, és egyszerűen csak beszédes lehet.
+   - **Célhelyek**: egy vagy több célhely a naplók elküldéséhez. Az összes Azure-szolgáltatás ugyanazt a három lehetséges célhelyet használja. Az egyes diagnosztikai beállítások egy vagy több célhelyet is meghatározhatnak, de az adott típusnak egynél több rendeltetési helye sem lehet. 
+   - **Kategóriák**: az egyes célhelyekre küldendő naplók kategóriái. A kategóriák halmaza minden egyes Azure-szolgáltatás esetében eltérő lesz.
 
-4. Válassza **a Küldés a Log Analytics-munkaterületnek lehetőséget,** majd válassza ki a létrehozott munkaterületet.
-5. Jelölje ki az összegyűjteni kívánt kategóriákat. Az elérhető kategóriák meghatározásához tekintse meg az egyes szolgáltatások dokumentációját.
+4. Válassza a **küldés log Analytics munkaterületre** lehetőséget, majd válassza ki a létrehozott munkaterületet.
+5. Válassza ki a gyűjteni kívánt kategóriákat. Az egyes szolgáltatásokhoz tartozó dokumentációban megtekintheti a rendelkezésre álló kategóriák definícióját.
 
     ![Diagnosztikai beállítás](media/tutorial-resource-logs/diagnostic-setting.png)
 
@@ -75,33 +75,33 @@ Az Azure Monitor log analytics-munkaterülete különböző forrásokból gyűjt
 
     
  
- ## <a name="use-a-log-query-to-retrieve-logs"></a>Naplók lekérése naplólekérdezéssel
-Az adatok beolvasása a Log Analytics-munkaterületről a Kusto Query Language (KQL) nyelven írt naplólekérdezés használatával történik. Az Azure Monitor insights és megoldások naplólekérdezéseket biztosítanak egy adott szolgáltatás adatainak lekéréséhez, de közvetlenül dolgozhat a naplólekérdezésekkel és azok eredményeivel az Azure Portalon a Log Analytics segítségével. 
+ ## <a name="use-a-log-query-to-retrieve-logs"></a>Naplók beolvasása a log lekérdezéssel
+Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési nyelvén (KQL) írt napló lekérdezés használatával történik. A Azure Monitorban bekövetkező elemzések és megoldások naplózási lekérdezéseket biztosítanak az adatok egy adott szolgáltatáshoz való lekéréséhez, de közvetlenül a naplózási lekérdezésekkel és azok eredményeivel is dolgozhatnak a Azure Portal a Log Analytics használatával. 
 
-1. Az erőforrás menüjének **Figyelés** szakaszában válassza a **Naplók**lehetőséget.
-2. A Log Analytics egy üres lekérdezési ablakkal nyílik meg, amelynek hatóköre az erőforrásra van beállítva. A lekérdezések csak az adott erőforrás rekordjait tartalmazzák.
+1. Az erőforrás menüjének **figyelés** területén válassza a **naplók**lehetőséget.
+2. Log Analytics megnyílik egy üres lekérdezési ablak, amelynek hatóköre az erőforrásra van beállítva. Minden lekérdezés csak az adott erőforrás rekordjait fogja tartalmazni.
 
     > [!NOTE]
-    > Ha megnyitotta a Naplók az Azure Monitor menüből, a hatókör a Log Analytics munkaterületre lesz beállítva. Ebben az esetben a lekérdezések a munkaterület összes rekordját tartalmazzák.
+    > Ha a Azure Monitor menüből nyit meg naplókat, a hatókör a Log Analytics munkaterületre lesz beállítva. Ebben az esetben minden lekérdezés tartalmazni fogja a munkaterület összes rekordját.
    
     ![Naplók](media/tutorial-resource-logs/logs.png)
 
-4. A példában látható szolgáltatás erőforrásnaplókat ír az **AzureDiagnostics** táblába, de más szolgáltatások más táblákba is írhatnak. Lásd: [Támogatott szolgáltatások, sémák és kategóriák az Azure Resource Logs](../platform/diagnostic-logs-schema.md) a különböző Azure-szolgáltatások által használt táblák.
+4. A példában szereplő szolgáltatás erőforrás-naplókat ír a **AzureDiagnostics** táblába, de más szolgáltatások is írhatnak más táblákba. A különböző Azure-szolgáltatások által használt táblák esetében lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/diagnostic-logs-schema.md) .
 
     > [!NOTE]
-    > Több szolgáltatás erőforrásnaplókat ír az AzureDiagnostics táblába. Ha elindítja a Log Analytics az Azure Monitor menüből, majd hozzá kell adnia egy `where` nyilatkozatot az oszlopot az `ResourceProvider` adott szolgáltatás megadásához. Amikor elindítja a Log Analytics egy erőforrás menüjéből, majd a hatókör van beállítva, hogy csak rekordok ebből az erőforrásból, így ez az oszlop nem szükséges. Tekintse meg a szolgáltatás dokumentációját a minta lekérdezések.
+    > Több szolgáltatás erőforrás-naplókat ír a AzureDiagnostics táblába. Ha a Azure Monitor menüből indítja el a Log Analytics, akkor az adott szolgáltatás megadásához `where` hozzá kell adnia `ResourceProvider` egy utasítást az oszlophoz. Amikor elindít Log Analytics egy erőforrás menüjéből, akkor a hatókör csak az adott erőforrás rekordjait állítja be, ezért erre az oszlopra nincs szükség. Tekintse meg a szolgáltatás dokumentációját a példák lekérdezéséhez.
 
 
-5. Írjon be egy lekérdezést, és az eredmények vizsgálatához kattintson a **Futtatás** gombra. 
-6. Az [Azure Monitor naplólekérdezéseinek első lépései](../log-query/get-started-queries.md) című témakörben a naplólekérdezések írásával kapcsolatos oktatóanyagról.
+5. Írjon be egy lekérdezést, és kattintson a **Futtatás** elemre az eredmények vizsgálatához. 
+6. Lásd: Ismerkedés [a naplók lekérdezésével a Azure monitorban](../log-query/get-started-queries.md) a naplók írásához.
 
-    ![Lekérdezés naplózása](media/tutorial-resource-logs/log-query-1.png)
+    ![Napló lekérdezése](media/tutorial-resource-logs/log-query-1.png)
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megtanulta, hogyan gyűjthet erőforrásnaplókat a Log Analytics-munkaterületre, töltsön ki egy oktatóanyagot a naplólekérdezések írásáról az adatok elemzéséhez.
+Most, hogy megismerte, hogyan gyűjthet erőforrás-naplókat egy Log Analytics munkaterületre, hogyan elemezheti az adatokat a naplók írásához.
 
 > [!div class="nextstepaction"]
-> [A naplólekérdezések első lépései az Azure Monitorban](../log-query/get-started-queries.md)
+> [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../log-query/get-started-queries.md)

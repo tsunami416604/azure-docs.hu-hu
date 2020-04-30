@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77593160"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes Service (AKS) szolgáltatáshoz
@@ -25,7 +25,7 @@ Miután végzett ezzel, az alábbi alkalmazás a helyi fejlesztői környezetben
 
 ![Egy Azure-beli Kubernetes-fürt képe](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-További oktatóanyagok, a tároló rendszerkép egy Azure Container Registry, majd egy AKS-fürtbe üzembe helyezése.
+A további oktatóanyagokban a rendszer feltölti a tároló lemezképét egy Azure Container Registryba, majd üzembe helyezi egy AK-fürtbe.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -45,7 +45,7 @@ A [git][] használatával klónozza a mintaalkalmazást a fejlesztési környeze
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Váltás a klónozott könyvtárba.
+Váltson a klónozott könyvtárra.
 
 ```console
 cd azure-voting-app-redis
@@ -100,7 +100,7 @@ Most, hogy az alkalmazás működésének ellenőrzése megtörtént, a futó t�
 docker-compose down
 ```
 
-A helyi alkalmazás eltávolítása után egy Docker-rendszerképet, amely tartalmazza az Azure Vote alkalmazás, *az azure-vote-front,* a következő oktatóanyag hoz használható.
+Ha a helyi alkalmazás el lett távolítva, egy olyan Docker-lemezképpel rendelkezik, amely tartalmazza az Azure vote-alkalmazást, az *Azure-vote-* előfizetést, a következő oktatóanyaghoz való használatra.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -125,7 +125,7 @@ Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Az
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[Git]: https://git-scm.com/downloads
+[git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

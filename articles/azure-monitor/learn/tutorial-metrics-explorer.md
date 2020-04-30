@@ -1,88 +1,88 @@
 ---
-title: Oktatóanyag – Metrikadiagram létrehozása az Azure Monitorban
-description: Ismerje meg, hogyan hozhatja létre az első metrikadiagramot az Azure metrics explorer segítségével.
+title: Oktatóanyag – metrikai diagram létrehozása Azure Monitor
+description: Ismerje meg, hogyan hozhatja létre első metrikai diagramját az Azure Metrics Explorerrel.
 author: bwren
 ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79082812"
 ---
-# <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: Metrikadiagram létrehozása az Azure Monitorban
-A Metrikakezelő az Azure-portálAzure Monitorszolgáltatásának egyik szolgáltatása, amely lehetővé teszi, hogy metrikaértékekből hozzon létre diagramokat, vizuálisan korrelálja a trendeket, és vizsgálja meg a metrikaértékek kiugrásait és csökkenését. A metrikakezelő segítségével vizsgálja meg az Azure-erőforrások állapotát és kihasználtságát, vagy ábrázolja a diagramokat az egyéni metrikákból. 
+# <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
+Azure Portal a metrikák Explorer a Azure Monitor egyik funkciója, amely lehetővé teszi, hogy diagramokat hozzon létre a metrikák értékeiből, vizuálisan korrelálja a trendeket, és vizsgálja meg a mérőszámok és a dips értékeit. A metrikák Explorerrel megvizsgálhatja az Azure-erőforrások állapotát és kihasználtságát, illetve diagramokat rajzolhat az egyéni metrikák használatával. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Válassza ki azt a mérőszámot, amelynek diagramot szeretne ábrázolni
-> * Metrikus értékek különböző összesítéseinek végrehajtása
+> * Válassza ki azt a metrikát, amelynek diagramját ábrázolni szeretné
+> * A metrikai értékek különböző összesítésének végrehajtása
 > * A diagram időtartományának és részletességének módosítása
 
-A következőkben egy videó, amely bemutatja egy kiterjedtebb forgatókönyv, mint a cikkben ismertetett eljárás. Ha most ismered a metrikákat, javasoljuk, hogy először olvasd el ezt a cikket, majd nézd meg a videót, hogy több konkrétumot láthass. 
+Az alábbi videó az ebben a cikkben ismertetett eljárásnál átfogóbb forgatókönyvet mutat be. Ha még nem ismeri a metrikákat, javasoljuk, hogy először olvassa el ezt a cikket, majd tekintse meg a videót a további részletek megtekintéséhez. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez egy Azure-erőforrást kell figyelnie. Az Azure-előfizetésben bármilyen erőforrást használhat, amely támogatja a metrikákat. Annak megállapításához, hogy egy erőforrás támogatja-e a metrikákat, nyissa meg a menüt az Azure Portalon, és ellenőrizze, hogy van-e **metrikák** lehetőség a **figyelési** szakaszban a menüben.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-erőforrásra a figyeléshez. Használhatja az Azure-előfizetésében lévő összes olyan erőforrást, amely támogatja a metrikákat. Annak megállapításához, hogy egy erőforrás támogatja-e a metrikákat, lépjen a Azure Portal menüjére, és ellenőrizze, hogy van-e **metrikai** lehetőség a menü **figyelés** szakaszában.
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a rendszerbe.
+Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
 
-## <a name="open-metrics-explorer-and-select-a-scope"></a>Nyissa meg a metrikakezelőt, és válasszon ki egy hatókört
-Metrika-kezelőt az Azure Monitor menüből vagy az Azure Portal egyik erőforrás-menüjéből nyithat meg. Az összes erőforrás metrikák érhetők el, függetlenül attól, hogy melyik lehetőséget használja. 
+## <a name="open-metrics-explorer-and-select-a-scope"></a>A metrikák Explorer megnyitása és hatókör kiválasztása
+A metrikák Explorert a Azure Monitor menüjéből vagy a Azure Portal erőforrás menüjéből nyithatja meg. Az összes erőforrás metrikái elérhetők, függetlenül attól, hogy melyik beállítást használja. 
 
-1. Válassza ki a **metrikák** az **Azure Monitor** menüben, vagy a **figyelési** szakaszegy erőforrás menüben.
+1. Válassza a **metrikák** lehetőséget a **Azure monitor** menüből vagy az erőforrás menüjének **figyelés** szakaszában.
 
-1. Válassza ki a **Hatókör**lehetőséget, amely az az erőforrás, amelyhez a metrikákat látni szeretné. A hatókör már ki van töltve, ha egy erőforrás menüjéből megnyitotta a metrikakezelőt.
+1. Válassza ki a **hatókört**, amely az az erőforrás, amelynek a metrikáit meg szeretné jeleníteni. A hatókör már fel van töltve, ha az erőforrás menüjéből megnyitotta a metrikák Explorert.
 
-    ![Hatókör kijelölése](media/tutorial-metrics-explorer/scope-picker.png)
+    ![Hatókör kiválasztása](media/tutorial-metrics-explorer/scope-picker.png)
 
-2. Ha a hatókör egynél több névtérrel rendelkezik, jelöljön ki **egy névteret.** A névtér csak egy módja annak, hogy a metrikákat rendszerezze, így könnyen megtalálhatja őket. A tárfiókok például külön névterekkel rendelkeznek a fájlok, táblázatok, blobok és várólisták metrikák tárolására. Sok erőforrástípusnak csak egy névtere van.
+2. Válassza ki a **névteret** , ha a hatókör egynél több van. A névtér csak a mérőszámok rendszerezését teszi lehetővé, így könnyen megtalálhatja őket. A Storage-fiókok például különálló névtereket biztosítanak a fájlok, táblák, blobok és várólisták metrikáinak tárolásához. Számos erőforrástípus csak egy névteret tartalmaz.
 
-3. Válasszon ki egy metrikát a kiválasztott hatókörhöz és névtérhez rendelkezésre álló metrikák listájából.
+3. Válasszon ki egy mérőszámot a kiválasztott hatókörhöz és névtérhez elérhető metrikák listájából.
 
-    ![Mérőszám kiválasztása](media/tutorial-metrics-explorer/metric-picker.png)
+    ![Metrika kiválasztása](media/tutorial-metrics-explorer/metric-picker.png)
 
-4. Szükség esetén módosítsa a metrika **összesítését.** Ez határozza meg, hogy a metrikaértékek hogyan lesznek összesítve a diagram időrészletessége között. Ha például az idő részletessége 15 percre van állítva, és az összesítés összegre van állítva, akkor a diagram minden pontja az egyes 15 perces szegmensek összes összegyűjtött értékének összege lesz.
+4. Szükség esetén módosíthatja a metrikák **összesítését**. Ez határozza meg, hogy a metrikai értékek hogyan legyenek összesítve a gráf időbeli részletessége során. Ha például az időrészletesség 15 percre van beállítva, és az Összesítés értéke Sum, akkor a gráf minden pontja az összes összegyűjtött érték összege lesz az egyes 15 percenkénti szegmensekben.
 
     ![Diagram](media/tutorial-metrics-explorer/chart.png)
 
-5. Használja a **Metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több metrikát szeretne ábrázolni ugyanabban a diagramban. Ha egy nézetben több diagramot szeretne, válassza az **Új diagram gombot.**
+5. Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Egyetlen nézetben több diagram esetében válassza az **új diagram** gombot.
 
-## <a name="select-a-time-range-and-granularity"></a>Időtartomány és részletesség kiválasztása
+## <a name="select-a-time-range-and-granularity"></a>Válasszon időtartományt és részletességet
 
-Alapértelmezés szerint a diagram a legutóbbi 24 órányi mérőszámadatot jeleníti meg. Az időválasztóval módosíthatja a diagram **időtartományát** vagy az **idő részletességét,** amely az egyes adatpontok időtartományát határozza meg. A diagram a megadott összesítés thasználja az összes mintavételezett értéket a megadott idő részletessége alapján.
+Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat jeleníti meg. A Time Picker használatával módosíthatja a diagram **időtartományát** , illetve az egyes adatpontok időtartományát meghatározó **időrészletességet** . A diagram a megadott összesítés használatával számítja ki az összes mintavételi értéket a megadott időrészletességgel.
 
 ![Időtartomány-panel módosítása](media/tutorial-metrics-explorer/time-picker.png)
 
 
-Használja az **időecsetet,** hogy vizsgálja meg egy érdekes terület a diagram, mint a tüske vagy a dip. Helyezze az egérmutatót a terület elejére, kattintson a bal egérgombbal, húzza a mutatót a terület másik oldalára, és engedje fel a gombot. A diagram ráközelít az adott időtartományra. 
+A diagram egy érdekes területének (például egy tüske vagy egy dip) vizsgálatához használja a **Time ecsetet** . Vigye az egérmutatót a terület elejére, kattintson és tartsa nyomva a bal egérgombot, húzza a terület másik oldalára, és szabadítsa fel a gombot. A diagram az adott időtartományon nagyítja fel. 
 
-![Időecset](media/tutorial-metrics-explorer/time-brush.png)
+![Idő ecset](media/tutorial-metrics-explorer/time-brush.png)
 
-## <a name="apply-dimension-filters-and-splitting"></a>Dimenziószűrők és felosztás alkalmazása
-Tekintse meg az alábbi hivatkozásokat a speciális funkciók, amelyek lehetővé teszik, hogy további elemzést a metrikák, és azonosítani a potenciális kiugró értékek az adatokban.
+## <a name="apply-dimension-filters-and-splitting"></a>Dimenzió szűrők alkalmazása és felosztás
+Tekintse át a következő, speciális funkciókra mutató hivatkozásokat, amelyek lehetővé teszik a metrikák további elemzését, valamint az adatok lehetséges kiugró állapotának azonosítását.
 
-- [A szűrés](../platform/metrics-charts.md#apply-filters-to-charts) lehetővé teszi annak kiválasztását, hogy mely dimenzióértékek szerepeljenek a diagramban. Előfordulhat például, hogy csak a sikeres kérelmeket szeretné megjeleníteni a *kiszolgáló válaszidejének* ábrázolásakor. 
+- A [szűréssel](../platform/metrics-charts.md#apply-filters-to-charts) kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy csak a sikeres kérelmeket szeretné megjeleníteni a *kiszolgálói válaszidő* mérőszámának ábrázolásakor. 
 
-- [A felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) határozza meg, hogy a diagram külön sorokat jelenít-e meg egy dimenzió egyes értékéhez, vagy az értékeket egyetlen sorba összesíti. Előfordulhat például, hogy egy sort szeretne látni egy átlagos válaszidőhöz az összes kiszolgálópéldányon, vagy minden kiszolgálóhoz külön sorokat szeretne. 
+- A [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) azt szabályozza, hogy a diagram külön sorokat jelenít-e meg egy dimenzió minden értékéhez, vagy összesíti az értékeket egyetlen sorba. Előfordulhat például, hogy egy sort szeretne látni az összes kiszolgálói példány átlagos válaszideje esetén, vagy ha külön sort szeretne használni az egyes kiszolgálókon. 
 
-Példák a szűrést és felosztást alkalmazó [diagramokra.](../platform/metric-chart-samples.md)
+Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](../platform/metric-chart-samples.md) .
 
-## <a name="advanced-chart-settings"></a>Speciális diagrambeállítások
+## <a name="advanced-chart-settings"></a>Speciális diagram beállításai
 
-Testre szabhatja a diagram stílusát, címét és módosíthatja a speciális diagrambeállításokat. Ha végzett a testreszabással, rögzítse egy irányítópultra a munka mentéséhez. Metrikák riasztások is konfigurálhatja. Tekintse meg [az Azure Metrics Explorer speciális funkcióit,](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) és ismerje meg ezeket és az Azure Monitor metrikakezelőjének egyéb speciális funkcióit.
+Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. Tekintse meg az [Azure Metrikaböngésző speciális funkcióit](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) , amelyekkel megismerheti a Azure monitor metrikák Explorer egyéb speciális funkcióit.
 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megtanulta, hogyan dolgozhat a metrikákkal az Azure Monitorban, megtudhatja, hogyan használhatja a metrikákat proaktív riasztások küldésére.
+Most, hogy megismerte, hogyan használhatók a metrikák a Azure Monitorban, megtudhatja, hogyan küldhet mérőszámokat az proaktív riasztások küldéséhez.
 
 > [!div class="nextstepaction"]
 > [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../platform/alerts-metric.md)

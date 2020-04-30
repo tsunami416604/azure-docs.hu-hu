@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670372"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 ## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a . 
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak.  Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre.  A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, ha hiányzik egy frissítés, vagy ha létrejön egy esemény, amikor egy adott Windows-szolgáltatás vagy Linux-démon nem fut.  Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztás. A szabály ekkor automatikusan futtathat egy vagy több műveletet, például értesíti Önt a riasztásról, vagy meghív egy másik folyamatot. 
@@ -38,7 +38,7 @@ A következő példában létrehoz egy metrikamérési riasztási szabályt az [
 3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza az **Erőforrás** **DefaultLAWorkspace** elemet, majd kattintson a **Kész** gombra.<br><br> ![Riasztás létrehozása, 1. lépés](./media/tutorial-response/alert-rule-03.png)<br>
 4. A **Riasztási feltételek** szakaszban kattintson a **Feltétel hozzáadása** elemre a mentett lekérdezés kiválasztásához, majd adja meg a logikát, amelyet a riasztási szabály követ.  A **Jellogika konfigurálása** panelen válassza az *Azure-beli virtuális gépek – Processzorhasználat* elemet a listából.  A panel frissül, és a riasztás konfigurációs beállításait mutatja.  Felül a kiválasztott jel és a keresési lekérdezés eredményeit mutatja az elmúlt 30 percre vonatkozóan.  
 5. Konfigurálja a riasztást az alábbi információkkal:  
-   a. Az **Alapul** legördülő listában válassza a **Metrikus mérés**lehetőséget.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  
+   a. A legördülő lista **alapján** válassza a **metrika mértékét**.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  
    b. A **Feltétel** értékeként válassza a **Nagyobb, mint** lehetőséget, majd adja meg a **Küszöbérték** mezőben a **90** értéket.  
    c. A Riasztás aktiválásának alapja részben válassza az **Egymás utáni incidensek** elemet, a legördülő listából válassza a **Nagyobb, mint** lehetőséget, és adja meg a 3 értéket.  
    d. Az Értékelés szakasz alapján részben módosítsa az **Időtartam** értékét **30** percre. A szabály öt percenként fog futni, és visszaadja azokat a rekordokat, amelyek az aktuális időhöz képest harminc percen belül jöttek létre.  Ha az időtartamot szélesebb időközre állítja, figyelembe veheti az esetleges adatkésést, és biztosíthatja, hogy a lekérdezés adatokat ad vissza, így nem kap téves negatív választ, ha a figyelmeztetés soha nem aktiválódik.  

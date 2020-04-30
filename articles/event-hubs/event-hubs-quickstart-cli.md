@@ -1,5 +1,5 @@
 ---
-title: Eseményközpont létrehozása az Azure CLI - Azure Event Hubs használatával | Microsoft dokumentumok
+title: Event hub létrehozása az Azure CLI-vel – Azure Event Hubs | Microsoft Docs
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eseményközpontot az Azure CLI-vel, majd hogyan küldhet és fogadhat eseményeket a Java használatával.
 services: event-hubs
 author: spelluru
@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77162633"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rövid útmutató: Eseményközpont létrehozása az Azure CLI-vel
@@ -74,17 +74,17 @@ Gratulálunk! Az Azure CLI segítségével létrehozott egy Event Hubs-névteret
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események eseményközpontból történő (vagy) fogadására vonatkozó részletes utasításokért tekintse meg az **Események küldése és fogadása** oktatóanyagokat: 
+Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Ugrás](event-hubs-go-get-started-send.md)
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
 
-[hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes fiók létrehozása]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

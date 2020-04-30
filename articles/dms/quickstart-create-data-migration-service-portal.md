@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Példány létrehozása az Azure Portalhasználatával'
+title: 'Gyors útmutató: példány létrehozása a Azure Portal használatával'
 titleSuffix: Azure Database Migration Service
-description: Az Azure-portál használatával hozzon létre egy példányt az Azure Database Migration Service.
+description: Azure Database Migration Service példányának létrehozásához használja a Azure Portal.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,17 +13,17 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
 ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78254978"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
 
-Ebben a gyorsútmutatóban az Azure Portal használatával hozza létre az Azure Database Migration Service egy példányát.  A szolgáltatás létrehozása után használhatja az adatok áttelepítése az SQL Server helyszíni Azure SQL Database.
+Ebben a rövid útmutatóban a Azure Portal használatával hozza létre Azure Database Migration Service példányát.  A szolgáltatás létrehozása után a segítségével áttelepítheti SQL Server a helyszíni adatokból a Azure SQL Databaseba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -37,29 +37,29 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás****Előfizetések** elemét.
 
-2. Válassza ki azt az előfizetést, amelyben létre szeretné hozni az Azure Database Migration Service példányát, majd válassza **az Erőforrás-szolgáltatók**lehetőséget.
+2. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a Azure Database Migration Service példányát, majd válassza az **erőforrás-szolgáltatók**lehetőséget.
 
-3. Keresse meg az áttelepítést, majd jobbra a **Microsoft.DataMigration**programtól, és válassza a **Regisztráció**lehetőséget.
+3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration**jobb oldalán válassza a **regisztráció**lehetőséget.
 
     ![Erőforrás-szolgáltató regisztrálása](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>A szolgáltatás egy példányának létrehozása
 
-1. Válassza a +**Erőforrás létrehozása az** Azure Database Migration Service egy példányának létrehozásához lehetőséget.
+1. Válassza az +**erőforrás létrehozása** lehetőséget Azure Database Migration Service-példány létrehozásához.
 
 2. A piactéren keressen a „migration” kifejezésre, válassza ki az **Azure Database Migration Service** elemet, majd az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** parancsot.
 
 3. A **Migrálási szolgáltatás létrehozása** képernyőn:
 
-    - Válasszon egy **olyan szolgáltatásnevet,** amely emlékezetes és egyedi az Azure Database Migration Service példányának azonosításához.
+    - Válasszon egy emlékezetes és egyedi **szolgáltatásnevet** a Azure Database Migration Service példányának azonosításához.
     - Válassza ki azt az **Azure-előfizetést**, amelyben a példányt létre szeretné hozni.
     - Válasszon ki egy meglévő **erőforráscsoportot**, vagy hozzon létre egy újat.
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
-    - Jelöljön ki egy meglévő **virtuális hálózatot,** vagy hozzon létre egyet.
+    - Válasszon ki egy meglévő **virtuális hálózatot** , vagy hozzon létre egyet.
 
-        A virtuális hálózat hozzáférést biztosít az Azure Database Migration Service számára a forrásadatbázishoz és a célkörnyezethez.
+        A virtuális hálózat Azure Database Migration Service biztosít a forrás-adatbázis és a célként megadott környezet eléréséhez.
 
-        A virtuális hálózat Azure Portalon való létrehozásáról további információt a Virtuális hálózat létrehozása az Azure Portal használatával című témakörben [talál.](https://aka.ms/vnet)
+        Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/vnet)című cikket.
 
     - A **Tarifacsomag** esetén válassza ki az Alapszintű: 1 virtuális mag lehetőséget.
 
@@ -67,7 +67,7 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
 4. Kattintson a **Létrehozás** gombra.
 
-    Néhány pillanat múlva létrejön az Azure Database Migration szolgáltatás példánya, és készen áll a használatra. Az Azure Database Migration Service az alábbi képen látható módon jelenik meg:
+    Néhány pillanat múlva létrejön az Azure Database Migration Service-példány, és készen áll a használatra. Azure Database Migration Service a következő képen látható módon jelenik meg:
 
     ![Létrehozott migrálási szolgáltatás](media/quickstart-create-data-migration-service-portal/dms-service-created.png)
 

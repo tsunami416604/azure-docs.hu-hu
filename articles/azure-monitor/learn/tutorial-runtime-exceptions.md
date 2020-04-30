@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670423"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
@@ -31,7 +31,7 @@ Az Azure Application Insights telemetriát gyűjt az alkalmazásából a futási
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítse a [Visual Studio 2019-et](https://www.visualstudio.com/downloads/) az alábbi munkaterhelésekkel:
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez:
 - Ez az oktatóanyag az alkalmazásban történt kivétel azonosításának módszerét ismerteti, ezért módosítsa a kódot a fejlesztési vagy a tesztelési környezetben, hogy létrehozzon egy kivételt. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a rendszerbe.
+Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
 
 
 ## <a name="analyze-failures"></a>Hibák elemzése
@@ -72,7 +72,7 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
     ![Kivétel részletei](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Sikertelen kód azonosítása
-A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezt követően lehetősége van a forráskód hibakeresésére a pillanatkép letöltésével és megnyitásával a Visual Studio 2019 Enterprise programban.
+A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezt követően lehetősége van a forráskód hibakeresésére a pillanatkép letöltésével és a Visual Studio 2019 Enterprise-ban való megnyitásával.
 
 1. A kivétel tulajdonságaiban kattintson a **Hibakeresési pillanatfelvétel megnyitása** elemre.
 2. A **Hibakeresési pillanatfelvétel** panel a kérés hívásvermével nyílik meg.  Az egyes metódusokra kattintva megtekintheti az összes helyi változónak a kérés időpontjában rögzített értékeit.  Ebben a példában a legfelső metódustól kezdve olyan változókat láthatunk, amelyeknek nincs értéke.
@@ -83,9 +83,9 @@ A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekrő
 
     ![Hibakeresési pillanatkép](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Ezután lehetősége van letölteni ezt a pillanatképet a Visual Studióba, ahol megtalálhatjuk a ténylegesen kijavítandó kódot. Ehhez kattintson a **Pillanatkép letöltése gombra.**
+4. Ezután letöltheti ezt a pillanatképet a Visual studióba, ahol megtalálhatja a javítani kívánt kódot. Ehhez kattintson a **Pillanatkép letöltése**elemre.
 5. A rendszer betölti a pillanatfelvételt a Visual Studióba.
-6. Most már futtathat egy hibakeresési munkamenetet a Visual Studio Enterprise-on, amely gyorsan azonosítja a kivételt okozó kódsort.
+6. Most már futtathat egy hibakeresési munkamenetet a Visual Studio Enterprise-ban, amely gyorsan azonosítja a kivételt okozó kód sorát.
 
     ![Kivétel a kódban](media/tutorial-runtime-exceptions/exception-code.png)
 

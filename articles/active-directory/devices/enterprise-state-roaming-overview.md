@@ -1,6 +1,6 @@
 ---
-title: Mi a vállalati állapotroaming az Azure Active Directoryban?
-description: Az Enterprise State Roaming egységes felhasználói élményt nyújt a felhasználóknak Windows-eszközeiken
+title: Mi a vállalati állapot barangolás Azure Active Directory?
+description: Enterprise State Roaming a felhasználók számára egységes felhasználói élményt nyújt a Windows-eszközökön
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,30 +12,30 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77194279"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Mi az az Enterprise State Roaming?
 
-A Windows 10-ben az [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) felhasználói biztonságosan szinkronizálhatja a felhasználói beállításokat és az alkalmazásbeállítások adatait a felhőbe. Az Enterprise State Roaming egységes felhasználói élményt nyújt a felhasználóknak windowsos eszközeiken, és csökkenti az új eszközök konfigurálásához szükséges időt. Az Enterprise State Roaming hasonló a Windows 8 rendszerben először bevezetett szabványos [fogyasztói beállításszinkronizáláshoz.](https://go.microsoft.com/fwlink/?linkid=2015135) Ezenkívül az Enterprise State Roaming a következőket kínálja:
+A Windows 10 [Azure Active Directory (Azure ad)](../fundamentals/active-directory-whatis.md) felhasználóinak lehetősége van arra, hogy biztonságosan szinkronizálja felhasználói beállításait és az Alkalmazásbeállítások adatait a felhőbe. Enterprise State Roaming a felhasználók számára egységes felhasználói élményt biztosít a Windows-eszközökön, és csökkenti az új eszközök konfigurálásához szükséges időt. A Enterprise State Roaming a normál [fogyasztói beállítások szinkronizálásához](https://go.microsoft.com/fwlink/?linkid=2015135) hasonló módon működik, amely először a Windows 8 rendszerben jelent meg. Emellett Enterprise State Roaming ajánlatok:
 
-* **A vállalati és fogyasztói adatok elkülönítése** – A szervezetek irányítják az adataikat, és a vállalati adatok nem keverednek a fogyasztói felhőfiókban vagy a fogyasztói adatok egy vállalati felhőfiókban.
-* **Fokozott biztonság** – Az adatok automatikusan titkosítva vannak, mielőtt az Azure Rights Management (Azure RMS) használatával elhagynák a felhasználó Windows 10-es eszközét, és az adatok a felhőben maradnak titkosítva. Minden tartalom titkosítva marad a felhőben, kivéve a névtereket, például a beállítások nevét és a Windows-alkalmazások nevét.  
-* **Jobb felügyelet és figyelés** – Szabályozza és láthatja, hogy ki szinkronizálja a beállításokat a szervezetben, és mely eszközökön az Azure AD-portál integrációja révén. 
+* **A vállalati és a fogyasztói adatforgalom elkülönítése** – a szervezetek a saját adatvédelme alatt állnak, és a vállalati adatmennyiséget nem keverik felhasználói Felhőbeli fiókban vagy vállalati felhőalapú fiókban lévő fogyasztói adatként.
+* **Fokozott biztonság** – az adatok automatikusan titkosítva maradnak, mielőtt elhagyják a felhasználó Windows 10-es eszközét az Azure Rights Management (Azure RMS) használatával, és az adatok titkosítva maradnak a felhőben. Minden tartalom titkosítva marad a felhőben, kivéve a névtereket, például a beállítások nevét és a Windows-alkalmazások nevét.  
+* **Hatékonyabb felügyelet és monitorozás** – lehetővé teszi a szervezeten belüli beállítások szinkronizálását és az Azure ad-portál integrációját használó eszközök felügyeletét és láthatóságát. 
 
-A vállalati állapotroaming több Azure-régióban érhető el. Az [azure-szolgáltatások régiók szerint](https://azure.microsoft.com/regions/#services) lapon található elérhető régiók frissített listáját az Azure Active Directory ban találja.
+Enterprise State Roaming több Azure-régióban is elérhető. Az elérhető régiók frissített listáját az [Azure-szolgáltatások régiók](https://azure.microsoft.com/regions/#services) szerint lapján találja Azure Active Directory alatt.
 
 | Cikk | Leírás |
 | --- | --- |
-| [A vállalati állapothordozás engedélyezése az Azure Active Directoryban](enterprise-state-roaming-enable.md) |Az Enterprise State Roaming minden prémium szintű Azure Active Directory (Azure AD) előfizetéssel rendelkező szervezet számára elérhető. Az Azure AD-előfizetés betöltésével kapcsolatos további információkért tekintse meg az [Azure AD termékoldalát.](https://azure.microsoft.com/services/active-directory) |
-| [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md) |Ez a cikk választ ad a rendszergazdák által a beállításokkal és az alkalmazásadatok szinkronizálásával kapcsolatos kérdésekre. |
-| [Csoportházirend és MDM-beállítások a beállítások szinkronizálásához](enterprise-state-roaming-group-policy-settings.md) |A Windows 10 csoportházirend- és mobileszköz-kezelési (MDM) házirend-beállításokat biztosít a beállítások szinkronizálásának korlátozására. |
-| [Windows 10 roaming beállítások referenciája](enterprise-state-roaming-windows-settings-reference.md) |A Windows 10-ben barangolandó és/vagy biztonsági másolatot tartalmazó beállítások listája. |
-| [hibaelhárítással](enterprise-state-roaming-troubleshooting.md) |Ez a cikk néhány alapvető hibaelhárítási lépésen megy keresztül, és tartalmazza az ismert problémák listáját. |
+| [A vállalati állapothordozás engedélyezése az Azure Active Directoryban](enterprise-state-roaming-enable.md) |Enterprise State Roaming bármely, prémium szintű Azure Active Directory (Azure AD-) előfizetéssel rendelkező szervezet számára elérhető. Az Azure AD-előfizetés beszerzésével kapcsolatos további információkért tekintse meg az [Azure ad termékét](https://azure.microsoft.com/services/active-directory) ismertető oldalt. |
+| [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md) |Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beállítások és az alkalmazásadatok szinkronizálásával rendelkezhetnek. |
+| [A beállítások szinkronizálásának csoportházirend-és MDM beállításai](enterprise-state-roaming-group-policy-settings.md) |A Windows 10 Csoportházirend és mobileszköz-kezelési (MDM) házirend-beállításokat biztosít a beállítások szinkronizálásának korlátozásához. |
+| [Windows 10 roaming beállítások referenciája](enterprise-state-roaming-windows-settings-reference.md) |A Windows 10 rendszerben barangolni és/vagy biztonsági mentésre kerülő beállítások listája. |
+| [Hibaelhárítás](enterprise-state-roaming-troubleshooting.md) |Ez a cikk néhány alapvető lépést ismertet a hibaelhárításhoz, és tartalmazza az ismert problémák listáját. |
 
 ## <a name="next-steps"></a>További lépések
 
-A vállalati állami barangolás engedélyezéséről a [Vállalati állami barangolás engedélyezése](enterprise-state-roaming-enable.md)című témakörben talál további információt.
+További információ a vállalati állapot barangolásának engedélyezéséről: a [vállalati állapot barangolásának engedélyezése](enterprise-state-roaming-enable.md).

@@ -1,23 +1,23 @@
 ---
-title: 'Minta: Csoportházirend-definíciók kezdeményezésekkel'
-description: Ez az Azure-szabályzati minta példát mutat be arra, hogyan csoportosíthatja a szabályzatdefiníciókat egy kezdeményezésbe
+title: 'Minta: csoportházirend-definíciók kezdeményezésekkel'
+description: Ez a Azure Policy minta egy példát mutat be a csoportházirend-definíciók kezdeményezésére
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 41c2b0cf3b8f677cdc408e85088c3ca6c2049d6b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77172855"
 ---
-# <a name="azure-policy-pattern-group-policy-definitions"></a>Azure-szabályzatminta: csoportházirend-definíciók
+# <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy minta: csoportházirend-definíciók
 
-A kezdeményezés a házirend-definíciók csoportja. Ha a kapcsolódó házirend-definíciókat egyetlen objektumba csoportosítja, létrehozhat egyetlen hozzárendelést, amely több hozzárendelés lett volna.
+A kezdeményezés szabályzat-definíciók csoportja. A kapcsolódó szabályzat-definíciók egyetlen objektumba csoportosításával egyetlen hozzárendelést hozhat létre, amely több hozzárendelés lenne.
 
-## <a name="sample-initiative-definition"></a>Mintakezdeményezés meghatározása
+## <a name="sample-initiative-definition"></a>Példa kezdeményezés definíciója
 
-Ez a kezdeményezés két házirend-definíciót telepít, amelyek mindegyike a **tagName** és **a tagValue** paramétereket veszi fel. Magának a kezdeményezésnek két paramétere van: **costCenterValue** és **productNameValue**.
-Ezek a kezdeményezési paraméterek mindegyik csoportba sorolt házirend-definícióhoz tartoznak. Ez a kialakítás maximalizálja a meglévő házirend-definíciók újrafelhasználását, miközben korlátozza a végrehajtásukhoz létrehozott hozzárendelések számát, ha szükséges.
+Ez a kezdeményezés két házirend-definíciót telepít, amelyek mindegyike a **TagName** és a **tagValue** paramétert veszi figyelembe. Maga a kezdeményezés két paraméterrel rendelkezik: **costCenterValue** és **productNameValue**.
+Ezek a kezdeményezési paraméterek mindegyike a csoportosított házirend-definíciók mindegyikén elérhető. Ez a kialakítás maximalizálja a meglévő szabályzat-definíciók újbóli felhasználását, miközben korlátozza a létrehozott hozzárendelések számának igény szerinti megvalósítását.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json":::
 
@@ -25,19 +25,19 @@ Ezek a kezdeményezési paraméterek mindegyik csoportba sorolt házirend-defin�
 
 #### <a name="initiative-parameters"></a>Kezdeményezési paraméterek
 
-Egy kezdeményezés meghatározhatja saját paramétereit, amelyeket acsoportosított házirend-definíciók nak továbbítanak.
-Ebben a példában mind **a costCenterValue,** mind a **productNameValue** kezdeményezési paraméterekként van definiálva. Az értékek a kezdeményezés hozzárendelésekéneknél kerülnek megadva.
+Egy kezdeményezés saját paramétereket adhat meg, amelyeket aztán a csoportosított házirend-definícióknak továbbítanak.
+Ebben a példában a **costCenterValue** és a **productNameValue** is a kezdeményezési paraméterekként van definiálva. A rendszer a kezdeményezés hozzárendelésekor megadja az értékeket.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="5-18":::
 
-#### <a name="includes-policy-definitions"></a>Házirend-definíciókat tartalmaz
+#### <a name="includes-policy-definitions"></a>Szabályzat-definíciókat tartalmaz
 
-Minden tartalmazott házirend-definíciónak meg kell adnia a **policyDefinitionId azonosítót** és egy **paramétertömböt,** ha a házirend-definíció elfogadja a paramétereket. Az alábbi kódrészletben a mellékelt házirend-definíció két paramétert vesz igénybe: **tagName** és **tagValue**. **a tagName** konstans, de **a tagValue** a kezdeményezés által meghatározott **costCenterValue** paramétert használja. Az értékek ezen áteressének javítása javítja az újrafelhasználást.
+Minden belefoglalt szabályzat-definíciónak meg kell adnia a **policyDefinitionId** és a **Parameters** tömböt, ha a házirend-definíció paramétereket fogad el. Az alábbi kódrészletben a belefoglalt házirend definíciója két paramétert fogad: **TagName** és **tagValue**. a **TagName** literálal van definiálva, de a **tagValue** a **costCenterValue** által definiált paramétert használja. Az értékek áteresztése javítja az újrafelhasználást.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="30-40":::
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az egyéb [mintákat és a beépített definíciókat.](./index.md)
+- Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).

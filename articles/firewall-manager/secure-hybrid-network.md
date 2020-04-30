@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77459953"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Oktatóanyag: a hub virtuális hálózat biztonságossá tétele a Azure Firewall Manager előzetes verziójával 
