@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás Java használatával – Azure Database for MySQL
-description: Ez a rövid útmutató egy Java-kódmintát biztosít, amelynek segítségével adatokat csatlakoztathat és lekérdezhet egy Azure-adatbázisból a MySQL-adatbázishoz.
+title: Kapcsolat a Java-Azure Database for MySQL használatával
+description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, amellyel csatlakozhat egy Azure Database for MySQL adatbázisból, és lekérdezheti azokat.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -9,36 +9,36 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 3/18/2020
 ms.openlocfilehash: b5f1cbf2f822f350b1eeba032199676651364d84
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983823"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: Java használatával csatlakozhat az Azure Database for MySQL-hez, és lekérdezheti az adatokat
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
 
-Ebben a rövid útmutatóban egy Java-alkalmazás és a JDBC-illesztőprogram MariaDB Connector/J használatával csatlakozhat egy Azure-adatbázishoz a MySQL-hez. Ezután SQL-utasításokkal lekérdezheti, beszúrhatja, frissítheti és törölheti az adatbázisban lévő adatokat Mac, Ubuntu Linux és Windows platformokról. 
+Ebben a rövid útmutatóban egy Java-alkalmazás és a MariaDB-összekötő/J JDBC-illesztő használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
 
-Ez a témakör feltételezi, hogy ismeri a Java használatával történő fejlesztést, de még csak most dolgozik az Azure Database for MySQL használatával.
+Ez a témakör azt feltételezi, hogy már ismeri a Java használatával való fejlesztést, de most ismerkedik a Azure Database for MySQLával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy Azure-adatbázis a MySQL-kiszolgálóhoz. [Hozzon létre egy Azure Database for MySQL-kiszolgálót az Azure Portal használatával,](quickstart-create-mysql-server-database-using-azure-portal.md) vagy [hozzon létre egy Azure-adatbázist a MySQL-kiszolgálóhoz az Azure CLI használatával.](quickstart-create-mysql-server-database-using-azure-cli.md)
-- Az Azure Database for MySQL-kapcsolat biztonsága a tűzfal megnyitott és az alkalmazáshoz konfigurált SSL-kapcsolatbeállításokkal van konfigurálva.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Azure Database for MySQL a kapcsolat biztonsága konfigurálva van a tűzfal megnyitásával és az alkalmazáshoz konfigurált SSL-kapcsolati beállításokkal.
 
-## <a name="obtain-the-mariadb-connector"></a>A MariaDB csatlakozó beszerzése
+## <a name="obtain-the-mariadb-connector"></a>Az MariaDB-összekötő beszerzése
 
-Szerezze be a [MariaDB összekötő/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) összekötőt az alábbi módszerek egyikével:
-   - Használja a Maven csomag [mariadb-java-kliens,](https://search.maven.org/search?q=a:mariadb-java-client) hogy tartalmazza a [mariadb-java-client függőség](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) a POM-fájlban a projekt.
-   - Töltse le a JDBC-illesztőprogramot, [a MariaDB Connector/J-t,](https://downloads.mariadb.org/connector-java/) és adja hozzá a JDBC jar fájlt (például mariadb-java-client-2.4.3.jar) az alkalmazásosztály elérési útjának. Tekintse meg a környezet dokumentációját az osztályútvonal-sajátosságok, például [az Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) vagy a [Java SE számára.](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
+Szerezze be a [MariaDB-összekötő/J-](https://mariadb.com/kb/en/library/mariadb-connector-j/) összekötőt az alábbi módszerek egyikével:
+   - A [MariaDB-Java-Client](https://search.maven.org/search?q=a:mariadb-java-client) Maven-csomaggal adja meg a [MariaDB-Java-Client függőséget](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) a projekt Pom-fájljában.
+   - Töltse le a [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) JDBC-illesztőt, és adja hozzá a JDBC jar-fájlt (például MariaDB-Java-Client-2.4.3. jar) az alkalmazás osztályának elérési útjához. Tekintse meg a környezet dokumentációját az osztályok elérési útjának (például az [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) vagy a [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) ) számára
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás**lehetőséget, majd keresse meg a létrehozott kiszolgálót (például **a mydemoservert).**
+2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
 3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-java/azure-database-mysql-server-name.png)
@@ -136,7 +136,7 @@ public class CreateTableInsertRows {
 
 ## <a name="read-data"></a>Adatok olvasása
 
-Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál. Metódusok [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) és executeQuery() a kijelölt utasítás összekapcsolására és futtatására szolgálnak. Az eredmények feldolgozása a ResultSet objektum használatával történik. 
+Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál. A [createStatement ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) és a executeQuery () metódus a SELECT utasítás összekapcsolására és futtatására szolgál. Az eredmények feldolgozása a ResultSet objektum használatával történik. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 
@@ -283,7 +283,7 @@ public class UpdateTable {
 
 ## <a name="delete-data"></a>Adat törlése
 
-Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál.  A [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) és a executeUpdate() metódusok a törlési utasítás előkészítésére és futtatására szolgálnak. 
+Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál.  A [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) és a executeUpdate () metódus a DELETE utasítás előkészítésére és futtatására szolgál. 
 
 Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
 

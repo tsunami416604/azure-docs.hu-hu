@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260443"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
@@ -38,7 +38,7 @@ A jelenlegi CDN-csomópontok helyének listájáért tekintse meg az [Azure CDN 
 ## <a name="how-it-works"></a>Működés
 ![A CDN áttekintése](./media/cdn-overview/cdn-overview.png)
 
-1. A felhasználó (Alice) egy fájlt (más néven eszközt) kér egy speciális tartománynévvel rendelkező URL-cím használatával, például _ &lt;végpontnév&gt;_.azureedge.net használatával. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
+1. Egy felhasználó (Alice) egy fájlt (más néven eszközt) kér egy speciális tartománynevet (például _ &lt;végpont neve&gt;_. azureedge.net) használó URL-címmel. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
     
 2. Ha a jelenléti pont peremhálózati kiszolgálóinak gyorsítótárában nem található meg a fájl, akkor a jelenléti pont lekéri a fájlt a forráskiszolgálóról. A forráskiszolgáló lehet egy Azure-webalkalmazás, az Azure Cloud Service, egy Azure Storage-fiók vagy bármilyen nyilvánosan elérhető webkiszolgáló.
    
@@ -64,10 +64,10 @@ A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlá
 ## <a name="azure-cdn-features"></a>Az Azure CDN szolgáltatásai
 Az Azure CDN az alábbi főbb szolgáltatásokat kínálja:
 
-- [Dinamikus helygyorsulás](cdn-dynamic-site-acceleration.md)
+- [Dinamikus hely gyorsulása](cdn-dynamic-site-acceleration.md)
 - [CDN-gyorsítótárazási szabályok](cdn-caching-rules.md)
 - [HTTPS használata egyéni tartományban](cdn-custom-ssl.md)
-- [Az Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md)
+- [Azure Diagnostics-naplók](cdn-azure-diagnostic-logs.md)
 - [Fájltömörítés](cdn-improve-performance.md)
 - [Geoszűrés](cdn-restrict-access-by-country.md)
 

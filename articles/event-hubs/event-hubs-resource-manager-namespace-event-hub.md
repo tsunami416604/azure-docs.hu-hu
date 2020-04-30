@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy eseményközpontot fogyasztói csoporttal – Azure Event Hubs'
-description: 'Rövid útmutató: Event Hubs névtér létrehozása eseményközponttal és fogyasztói csoporttal az Azure Resource Manager-sablonok használatával'
+title: 'Rövid útmutató: Event hub létrehozása fogyasztói csoporttal – Azure Event Hubs'
+description: 'Gyors útmutató: Event Hubs névtér létrehozása egy Event hub és egy fogyasztói csoport számára Azure Resource Manager sablonok használatával'
 services: event-hubs
 documentationcenter: .net
 author: spelluru
@@ -15,19 +15,19 @@ ms.date: 02/11/2020
 ms.author: spelluru
 ms.custom: subject-armqs
 ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79528081"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: Eseményközpont létrehozása Azure Resource Manager-sablon használatával
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: Event hub létrehozása Azure Resource Manager sablon használatával
 
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket. Ebben a rövid útmutatóban egy Azure [Resource Manager-sablon](../azure-resource-manager/management/overview.md)használatával hoz létre egy eseményközpontot. Egy Azure Resource Manager-sablont üzembe helyez egy [Event Hubs](event-hubs-what-is-event-hubs.md)típusú névtér létrehozásához, egyetlen eseményközponttal.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket. Ebben a rövid útmutatóban egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával hoz létre egy Event hub-t. Egy Azure Resource Manager sablon üzembe helyezésével létrehozhat egy [Event Hubs](event-hubs-what-is-event-hubs.md)típusú névteret egy Event hub-val.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,22 +37,22 @@ Nincs.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
-A sablonban meghatározott erőforrások a következők:
+A sablonban definiált erőforrások a következők:
 
-- [**Microsoft.EventHub/névterek**](/azure/templates/microsoft.eventhub/namespaces)
-- [**Microsoft.EventHub/namespaces/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
+- [**Microsoft. EventHub/névterek**](/azure/templates/microsoft.eventhub/namespaces)
+- [**Microsoft. EventHub/névterek/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
-További sablonmintákat az [Azure gyorsútmutató-sablonok](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)ban talál.
+További sablon-példákat az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)talál.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablon telepítése:
+A sablon üzembe helyezése:
 
-1. Válassza **a Próbálja ki** a következő kódblokkból, majd kövesse az utasításokat az Azure Cloud Shellbe való bejelentkezéshez.
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget, majd kövesse az utasításokat, hogy bejelentkezzen a Azure Cloud Shellba.
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,14 +66,14 @@ A sablon telepítése:
    Write-Host "Press [ENTER] to continue ..."
    ```
 
-   Az eseményközpont létrehozása néhány percet vesz igénybe.
+   Az Event hub létrehozása néhány percet vesz igénybe.
 
-1. Válassza **a Másolás lehetőséget** a PowerShell-parancsfájl másolásához.
-1. Kattintson a jobb gombbal a rendszerhéj-konzolra, és válassza **a Beillesztés parancsot.**
+1. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-A központi telepítés ellenőrzéséhez nyissa meg az erőforráscsoportot az [Azure Portalon,](https://portal.azure.com)vagy használja a következő Azure PowerShell-parancsfájlt.  Ha a Cloud Shell még nyitva van, nem kell másolni/futtatni az első sort (Read-Host).
+A központi telepítés ellenőrzéséhez megnyithatja az erőforráscsoportot a [Azure Portalból](https://portal.azure.com), vagy használhatja az alábbi Azure PowerShell parancsfájlt.  Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -87,7 +87,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell még nyitva van, nem kell másolni/futtatni az első sort (Read-Host).
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -100,12 +100,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott egy Event Hubs névteret, és egy eseményközpontot a névtérben. Az események eseményközpontból történő (vagy) fogadására vonatkozó részletes utasításokért tekintse meg az **Események küldése és fogadása** oktatóanyagokat:
+Ebben a cikkben létrehozott egy Event Hubs névteret és egy Event hubot a névtérben. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Ugrás](event-hubs-go-get-started-send.md)
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)

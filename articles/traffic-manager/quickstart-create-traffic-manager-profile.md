@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató:Profil létrehozása az alkalmazások HA-jéhez - Azure Portal - Azure Traffic Manager
+title: 'Gyors útmutató: profil létrehozása az alkalmazások számára – Azure Portal – Azure Traffic Manager'
 description: A rövid útmutató bemutatja, hogyan hozhat létre Traffic Manager-profilokat magas rendelkezésre állású webalkalmazások készítéséhez.
 services: traffic-manager
 author: rohinkoul
@@ -13,137 +13,137 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: rohink
 ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76934769"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rövid útmutató: Traffic Manager-profil létrehozása az Azure Portalon
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Gyors útmutató: Traffic Manager profil létrehozása a Azure Portal használatával
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Traffic Manager-profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre olyan Traffic Manager-profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
 
-Ebben a rövid útmutatóban egy webalkalmazás két példányáról olvashat. Mindegyik egy másik Azure-régióban fut. A [végpontprioritás](traffic-manager-routing-methods.md#priority-traffic-routing-method)alapján hozzon létre egy Traffic Manager-profilt. A profil a felhasználói forgalmat a webalkalmazást futtató elsődleges helyre irányítja. A Traffic Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, automatikus feladatátvételt biztosít a biztonsági mentési helynek.
+Ebben a rövid útmutatóban egy webalkalmazás két példányát olvashatja. Mindegyik egy másik Azure-régióban fut. A Traffic Manager-profilt a [végpont prioritása](traffic-manager-routing-methods.md#priority-traffic-routing-method)alapján hozza létre. A profil a webes alkalmazást futtató elsődleges helyre irányítja a felhasználói forgalmat. Traffic Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, automatikus feladatátvételt biztosít a biztonsági mentési helyhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz két példányra van szüksége egy webalkalmazáskét különböző Azure-régióban *(USA keleti régióban* és *Nyugat-Európában).* Mindegyik elsődleges és feladatátvételi végpontként fog szolgálni a Traffic Manager számára.
+Ebben a rövid útmutatóban két különböző Azure-régióban (az*USA keleti* régiójában és *Nyugat-Európában*) üzembe helyezett webalkalmazás két példánya szükséges. Mindegyik a Traffic Manager elsődleges és feladatátvételi végpontjának fogja szolgálni.
 
-1. A képernyő bal felső részén válassza az **Erőforrás** > létrehozása**Web** > **Web App**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**webes** > webes**alkalmazás**lehetőséget.
 
-1. A **Webalkalmazás létrehozása**csoportban írja be vagy jelölje ki a következő értékeket az **Alapok** lapon:
+1. A **Webalkalmazás létrehozása**területen írja be vagy válassza ki a következő értékeket az **alapok** lapon:
 
-   - **Előfizetési** > **erőforráscsoport**: Válassza **az Új létrehozása lehetőséget,** majd írja be a **myResourceGroupTM1 parancsot.**
-   - **Példány részleteinek** > **neve**: Írja be a *myWebAppEastUS*nevet.
-   - **Példány részleteinek** > **közzététele:** Válassza a **Kód**lehetőséget.
-   - **Példány részletei** > **futásidejű verem**: Válassza **ASP.NET V4.7**
-   - **Példány részletei** > **operációs rendszer**: Válassza a **Windows**lehetőséget.
-   - **Példány részleteirégió** > **Region**: Válassza az USA **keleti régiója**lehetőséget.
-   - **App Service Plan** > **Windows Plan (USA keleti része)**: Válassza **az Új létrehozása lehetőséget,** majd írja be a **myAppServicePlanEastUS parancsot**
-   - **App Service Plan** > **Sku és mérete:** Válassza **a Standard S1**lehetőséget.
+   - **Előfizetés** > -**erőforráscsoport**: válassza az **új létrehozása** elemet, majd írja be a **myResourceGroupTM1**.
+   - **Példány részleteinek** > **neve**: Type *myWebAppEastUS*.
+   - **Példány részleteinek** > **közzététele**: válassza a **kód**lehetőséget.
+   - **Példány részleteit** > **futtató verem**: válassza a **ASP.net v 4.7** elemet
+   - **Példány részletei** > **operációs rendszer**: válassza a **Windows**lehetőséget.
+   - **Példány részletei** > terület: válassza az **USA keleti****régióját**.
+   - **App Service tervezze** > meg a**Windows-csomagot (USA keleti**régiója): válassza az **új létrehozása** elemet, majd írja be a **myAppServicePlanEastUS**
+   - **App Service terv** > **SKU és size**: válassza a **standard S1**elemet.
    
-3. Válassza a **Figyelés** lapot, vagy válassza **a Tovább:Figyelés**lehetőséget.  A **Figyelés**csoportban állítsa az **Application Insights** > **Enable Application Insights** -t **nem**beállításra.
+3. Válassza a **figyelés** fület, vagy válassza a **Tovább: figyelés**lehetőséget.  A **figyelés**területen állítsa be **Application Insights** > az**Application Insights engedélyezése** a **nem**értékre.
 
-4. Válassza a **Véleményezés és létrehozás lehetőséget**
+4. **Áttekintés és létrehozás** kiválasztása
 
-5. Tekintse át a beállításokat, majd kattintson a **Létrehozás gombra.**  Amikor a webalkalmazás sikeresen telepíti, létrehoz egy alapértelmezett webhelyet.
+5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  A webalkalmazás sikeres üzembe helyezése után létrejön egy alapértelmezett webhely.
 
-6. A lépéseket követve hozzon létre egy második *webalkalmazást myWebAppWestEurope*néven, *a myResourceGroupTM2* **erőforráscsoport** nevével , *nyugat-európai* **régióval** , a **myAppServicePlanWestEurope** **App Service Plan** nevével , és az összes többi beállítással, mint a *myWebAppEastUS*.
+6. Hajtsa végre a következő **lépéseket egy** *myWebAppWestEurope*nevű második webalkalmazás létrehozásához: *MyResourceGroupTM2*, a *Nyugat*-Európa **régiója** , app Service a **myAppServicePlanWestEurope**- **csomag** neve, valamint az összes többi beállítás megegyezik a *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Hozzon létre egy Traffic Manager-profilt, amely a végpontprioritás alapján irányítja a felhasználói forgalmat.
+Hozzon létre egy Traffic Manager profilt, amely a végponti prioritás alapján irányítja a felhasználói forgalmat.
 
-1. A képernyő bal felső részén válassza az **Erőforrás** > **hálózati** > **forgalomkezelő profil**létrehozása lehetőséget.
-2. A **Traffic Manager létrehozása profilban**adja meg vagy adja meg a következő beállításokat:
+1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **Traffic Manager profil**lehetőséget.
+2. A **Traffic Manager profil létrehozása**lapon adja meg a következő beállításokat, vagy válassza ki ezeket:
 
     | Beállítás | Érték |
     | --------| ----- |
-    | Név | Adja meg a Traffic Manager-profil egyedi nevét.|
-    | Útválasztási metódus | Válassza a **Prioritás lehetőséget.**|
-    | Előfizetés | Válassza ki azt az előfizetést, amelyre a forgalomkezelő-profilt alkalmazni szeretné. |
-    | Erőforráscsoport | Válassza a *myResourceGroupTM1 lehetőséget.*|
-    | Hely |Ez a beállítás az erőforráscsoport helyére vonatkozik. Nincs hatással a Traffic Manager-profilra, amely globálisan lesz telepítve.|
+    | Name (Név) | Adjon meg egy egyedi nevet a Traffic Manager profilhoz.|
+    | Útválasztási metódus | Válassza a **Priority (prioritás**) lehetőséget.|
+    | Előfizetés | Válassza ki azt az előfizetést, amelyre a Traffic Manager-profilt alkalmazni kívánja. |
+    | Erőforráscsoport | Válassza a *myResourceGroupTM1*lehetőséget.|
+    | Hely |Ez a beállítás az erőforráscsoport helyét jelöli. Nincs hatása a globálisan telepítendő Traffic Manager-profilra.|
 
 3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
-Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontként, amelyre az összes felhasználói forgalom át lesz irányítva. Adja hozzá a *nyugat-európai* webhelyet feladatátvételi végpontként. Ha az elsődleges végpont nem érhető el, a forgalom automatikusan a feladatátvételi végpontra vezet.
+Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontként, amelyre az összes felhasználói forgalom át lesz irányítva. Adja hozzá a webhelyet a *Nyugat-Európában* feladatátvételi végpontként. Ha az elsődleges végpont nem érhető el, a forgalom automatikusan átirányítja a feladatátvételi végpontot.
 
-1. A portál keresősávján adja meg az előző szakaszban létrehozott Traffic Manager-profil nevét.
+1. A portál keresősáv mezőjébe írja be az előző szakaszban létrehozott Traffic Manager profil nevét.
 2. Válassza ki a profilt a keresési eredmények közül.
-3. A **Traffic Manager-profilban**a **Beállítások** csoportban válassza a **Végpontok**lehetőséget, majd a **Hozzáadás**lehetőséget.
-4. Adja meg vagy válassza ki az alábbi beállításokat:
+3. **Traffic Manager profilban**a **Beállítások** szakaszban válassza a **végpontok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. Adja meg vagy válassza ki a következő beállításokat:
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Típus | Válassza az **Azure-végpont lehetőséget.** |
-    | Név | Adja meg *a myPrimaryEndpoint billentyűt*. |
-    | Célerőforrás típusa | Válassza az **App Service**lehetőséget. |
-    | Célerőforrás | Válassza **az Alkalmazásszolgáltatás** > kiválasztása**USA keleti része**lehetőséget. |
-    | Prioritás | Válassza az **1**lehetőséget. Minden forgalom megy erre a végpontra, ha az egészséges. |
+    | Típus | Válassza ki az **Azure-végpontot**. |
+    | Name (Név) | Adja meg a *myPrimaryEndpoint*. |
+    | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
+    | Célerőforrás | Válassza **az App Service** > az**USA keleti**régiója lehetőséget. |
+    | Prioritás | Válassza az **1**lehetőséget. Az összes forgalom állapota erre a végpontra kerül, amikor kifogástalan állapotú. |
 
-    ![Képernyőkép abból, hogy hol ad hozzá végpontot a Traffic Manager-profilhoz.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
+    ![Képernyőkép arról, hogy hol adhat hozzá végpontot a Traffic Manager profiljához.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
-5. Válassza **az OK gombot.**
-6. Feladatátvételi végpont létrehozásához a második Azure-régióhoz ismételje meg a 3.
+5. Kattintson az **OK** gombra.
+6. Ha feladatátvételi végpontot szeretne létrehozni a második Azure-régióhoz, ismételje meg a 3. és a 4. lépést a következő beállításokkal:
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Típus | Válassza az **Azure-végpont lehetőséget.** |
-    | Név | Adja meg *a myFailoverEndpoint .* |
-    | Célerőforrás típusa | Válassza az **App Service**lehetőséget. |
-    | Célerőforrás | Válassza a**Nyugat-Európa** **alkalmazásszolgáltatás** > kiválasztása lehetőséget. |
-    | Prioritás | Válassza a **2**lehetőséget. Minden forgalom megy ez a feladatátvételi végpont, ha az elsődleges végpont nem kifogástalan. |
+    | Típus | Válassza ki az **Azure-végpontot**. |
+    | Name (Név) | Adja meg a *myFailoverEndpoint*. |
+    | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
+    | Célerőforrás | Válassza **az App Service** > **Nyugat-Európa**kiválasztása lehetőséget. |
+    | Prioritás | Válassza a **2**lehetőséget. Az összes forgalom erre a feladatátvételi végpontra kerül, ha az elsődleges végpont állapota nem megfelelő. |
 
-7. Válassza **az OK gombot.**
+7. Kattintson az **OK** gombra.
 
-Ha befejezte a két végpont hozzáadását, azok megjelennek a **Traffic Manager-profilban.** Figyelje meg, hogy a figyelési **állapotuk** online állapot.
+Ha elkészült a két végpont hozzáadásával, azok **Traffic Manager profilban**jelennek meg. Figyelje meg, hogy a figyelési állapota most **online** állapotú.
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager-profil tesztelése
 
-Ebben a szakaszban ellenőrizni fogja a Traffic Manager-profil tartománynevét. Azt is konfigurálja, hogy az elsődleges végpont nem érhető el. Végül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek oka, hogy a Traffic Manager elküldi a forgalmat a feladatátvételi végpontra.
+Ebben a szakaszban a Traffic Manager profil tartománynevét fogja megtekinteni. Azt is beállíthatja, hogy az elsődleges végpont ne legyen elérhető. Végezetül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek oka, hogy Traffic Manager továbbítja a forgalmat a feladatátvételi végpontnak.
 
-### <a name="check-the-dns-name"></a>A DNS-név ellenőrzése
+### <a name="check-the-dns-name"></a>DNS-név keresése
 
 1. A portál keresősávjában keressen rá az előző szakaszban létrehozott **Traffic Manager-profil** nevére.
-2. Válassza ki a forgalomkezelő profilját. Megjelenik **az áttekintés.**
+2. Válassza ki a Traffic Manager-profilt. Megjelenik az **Áttekintés** .
 3. A **Traffic Manager-profil** mezőben megjelenik az újonnan létrehozott Traffic Manager-profil DNS-neve.
   
-   ![Képernyőkép a Traffic Manager DNS-nevének helyéről](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
+   ![Képernyőkép a Traffic Manager DNS-név helyéről](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>A Traffic Manager megtekintése működés közben
 
-1. A webböngészőben adja meg a Traffic Manager-profil DNS-nevét a WebApp alapértelmezett webhelyének megtekintéséhez.
+1. A webböngészőben adja meg Traffic Manager profiljának DNS-nevét a webalkalmazás alapértelmezett webhelyének megtekintéséhez.
 
     > [!NOTE]
-    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányít. **1-es prioritásra**van állítva.
+    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányítja át. Az **1-es prioritásra**van beállítva.
 
-    ![Képernyőkép a weblapról a Traffic Manager-profil elérhetőségének megerősítésére](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
+    ![Képernyőfelvétel a weboldalról Traffic Manager profil rendelkezésre állásának megerősítéséhez](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
 
-2. A Traffic Manager feladatátvételének működés közbeni megtekintéséhez tiltsa le az elsődleges helyet:
-    1. A Traffic Manager-profil lap **Áttekintés szakaszában** válassza a **myPrimaryEndpoint lehetőséget.**
-    2. A *myPrimaryEndpoint alkalmazásban*válassza **a Letiltott** > **mentés lehetőséget.**
-    3. Zárja be **a myPrimaryEndpoint ot**. Figyelje meg, hogy az állapot le van **tiltva.**
-3. Másolja a Traffic Manager-profil DNS-nevét az előző lépésből, és tekintse meg a webhelyet egy új webböngésző-munkamenetben.
+2. Ha Traffic Manager feladatátvételt szeretné megtekinteni a működés közben, tiltsa le az elsődleges helyet:
+    1. A Traffic Manager profil lapon az **Áttekintés** szakaszban válassza a **myPrimaryEndpoint**lehetőséget.
+    2. A *myPrimaryEndpoint*területen válassza a **letiltott** > **Mentés**lehetőséget.
+    3. **MyPrimaryEndpoint**lezárása. Figyelje meg, hogy az állapot jelenleg **le van tiltva** .
+3. Másolja a Traffic Manager profiljának DNS-nevét az előző lépésből, hogy megtekintse a webhelyet egy új böngésző-munkamenetben.
 4. Ellenőrizze, hogy a webalkalmazás továbbra is elérhető-e.
 
-Az elsődleges végpont nem érhető el, így a feladatátvételi végpontra irányítva.
+Az elsődleges végpont nem érhető el, ezért a rendszer átirányítja a feladatátvételi végpontra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült, törölje az erőforráscsoportokat, a webalkalmazásokat és az összes kapcsolódó erőforrást. Ehhez jelölje ki az egyes elemeket az irányítópulton, és válassza a **Törlés** lehetőséget az egyes lapok tetején.
+Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást. Ehhez jelölje ki az egyes elemeket az irányítópulton, és válassza a **Törlés** lehetőséget az egyes oldalak tetején.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Traffic Manager-profilt. Ez lehetővé teszi, hogy közvetlen felhasználói forgalmat a magas rendelkezésre állású webes alkalmazások. Ha többet szeretne megtudni a forgalom útválasztásáról, folytassa a Traffic Manager oktatóanyagokkal.
+Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt. Lehetővé teszi a felhasználói forgalom közvetlen használatát a magas rendelkezésre állású webalkalmazásokhoz. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager-oktatóanyagok](tutorial-traffic-manager-improve-website-response.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Egyéni események küldése a tárolási várólistába – Event Grid, Azure CLI'
-description: 'Rövid útmutató: Az Azure Event Grid és az Azure CLI használatával közzétehet egy témakört, és előfizethet az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
+title: 'Gyors útmutató: egyéni események küldése a Storage-üzenetsor számára – Event Grid, Azure CLI'
+description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73721446"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rövid útmutató: Egyéni események irányítsa az Azure Queue storage-ba az Azure CLI és az Event Grid segítségével
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure Queue Storage az egyik támogatott eseménykezelő. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket elküldi a Queue Storage-ba.
 
@@ -24,12 +24,12 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t vagy az Azure PowerShellt használja a helyi gépen a Cloud Shell használata helyett az Azure Portalon, győződjön meg arról, hogy az Azure CLI és az Azure PowerShell következő verzióival rendelkezik. 
+Ha az Azure CLI-t vagy Azure PowerShellt használja a helyi gépen, ahelyett, hogy Cloud Shellt használ a Azure Portalban, győződjön meg arról, hogy rendelkezik az Azure CLI és a Azure PowerShell következő verzióival. 
 
-- Az Azure CLI 2.0.56-os vagy újabb verziója. Az Azure CLI legújabb verziójának telepítéséről [az Azure CLI telepítése című](/cli/azure/install-azure-cli)témakörben talál. 
-- Az Azure PowerShell 1.1.0-s vagy újabb verziója. Töltse le az Azure PowerShell legújabb verzióját Windows-gépére az [Azure letöltései – Parancssori eszközök ből.](https://azure.microsoft.com/downloads/) 
+- Az Azure CLI verziója 2.0.56 vagy újabb. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+- Azure PowerShell 1.1.0 vagy újabb verzió. Töltse le a Azure PowerShell legújabb verzióját a Windows rendszerű gépén az [Azure downloads-parancssori eszközökről](https://azure.microsoft.com/downloads/). 
 
-Ez a cikk az Azure CLI használatára vonatkozó parancsokat ad. 
+Ez a cikk az Azure CLI használatának parancsait ismerteti. 
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -67,7 +67,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Feliratkozás egyéni témakörre
 
-Előfizet egy egyéni témakörre, és megmondja az Event Gridnek, hogy mely eseményeket szeretné nyomon követni. A következő példa előfizet a létrehozott egyéni témakörre, és átadja a várólista-tároló erőforrásazonosítóját a végponthoz. Az Azure CLI használatakor a Queue Storage-azonosítót kell megadnia végpontként. A végpont formátuma a következő:
+Az egyéni témakörre való előfizetéssel megállapíthatja, hogy Event Grid mely eseményeket kívánja nyomon követni. Az alábbi példa előfizet a létrehozott egyéni témakörre, és átadja a végponthoz tartozó várólista-tároló erőforrás-AZONOSÍTÓját. Az Azure CLI használatakor a Queue Storage-azonosítót kell megadnia végpontként. A végpont formátuma a következő:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 

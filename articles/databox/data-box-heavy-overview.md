@@ -10,74 +10,74 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80437773"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Mi az az Azure Data Box Heavy?
 
-Az Azure Data Box Heavy lehetővé teszi, hogy több száz terabájtnyi adatot küldjön az Azure-ba gyors, olcsó és megbízható módon. Az adatok átvitele az Azure-ba egy 1 PB-kapacitású Data Box Heavy eszköz szállításával történik, amelyet ön az adatokkal tölt ki, és visszaküld a Microsoftnak. A készülék masszív burkolattal rendelkezik, amely védi és védi az adatokat az átvitel során.
+Azure Data Box Heavy lehetővé teszi, hogy egy gyors, olcsó és megbízható módon küldjön több száz terabájtos adatmennyiséget az Azure-ba. Az adatátvitelt az Azure-ba küldi el egy olyan Data Box Heavy-eszköz átadásával, amely 1 PB tárolókapacitással rendelkezik, amelyet az adataihoz tölt be, és vissza kell küldenie a Microsoftnak. Az eszköz robusztus burkolattal rendelkezik, amely védelmet nyújt az adatai számára az átvitel során.
 
-Miután az eszköz megkapta az adatközpontban, állítsa be a helyi webes felhasználói felület használatával. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok feltöltésre kerül az Azure Storage-fiók(oka)ra. Nyomon követheti a teljes körű folyamat az Azure Portalon.
+Miután az eszköz megkapja az adatközpontot, állítsa azt a helyi webes felhasználói felület használatával. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatai feltöltve lettek az Azure Storage-fiók (ok) ba. A Azure Portal teljes végpontok közötti folyamatát nyomon követheti.
 
 
 > [!IMPORTANT]
-> - Eszköz igényléséhez regisztráljon az [Azure Portalon.](https://portal.azure.com)
+> - Az eszköz igényléséhez regisztráljon a [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="use-cases"></a>Használati esetek
 
-A Data Box Heavy leginkább a több száz terabájtban lévő adatméretekhez a legmegfelelőbb, ahol a hálózati kapcsolat nem elegendő az adatok Azure-ba való feltöltéséhez. Az adatáthelyezés lehet egyszeri, rendszeres, vagy egy kezdeti tömeges adatátvitelt követően rendszeres adatátvitel is. Íme a különböző forgatókönyvek, amelyekben a Data Box Heavy adatátvitelhez használható.
+Data Box Heavy a legmegfelelőbb a több száz terabájtos adatméretekhez, ahol a hálózati kapcsolat nem elegendő az adatok Azure-ba való feltöltéséhez. Az adatáthelyezés lehet egyszeri, rendszeres, vagy egy kezdeti tömeges adatátvitelt követően rendszeres adatátvitel is. Íme a különböző forgatókönyvek, amelyekben a Data Box Heavy adatátvitelhez használható.
 
  - **Egyszeri migrálás** – nagy mennyiségű helyszíni adat áthelyezése az Azure-ba.
-     - A médiatár áthelyezése az offline szalagokból az Azure-ba online médiatár létrehozásához.
-     - Telepítse át a virtuálisgép-farmot, az SQL-kiszolgálót és az alkalmazásokat az Azure-ba.
-     - Korábbi adatok áthelyezése az Azure-ba a HDInsight használatával végzett részletes elemzéshez és jelentéshez.
+     - Adathordozó-függvénytár áthelyezése offline szalagokról az Azure-ba egy online médiatár létrehozásához.
+     - Telepítse át a VM-farmot, az SQL Servert és az alkalmazásokat az Azure-ba.
+     - Az előzményeket az Azure-ba helyezheti részletes elemzésre és jelentésre a HDInsight használatával.
 
  - **Kezdeti tömeges átvitel** – Amikor a kezdeti tömeges átvitel a Data Box Heavy használatával történik (kiindulás), majd növekményes átvitelek történnek a hálózaton.
-     - Például a Data Box Heavy és egy biztonsági mentési megoldások partnere a kezdeti nagy előzménybiztonsági mentés azure-ba való áthelyezéséhez használatos. Miután ez befejeződött, a növekményes adatok a hálózaton keresztül lesznek továbbítva az Azure Storage-ba.
+     - A Data Box Heavy és a Backup Solutions-partner például a kezdeti nagyméretű korábbi biztonsági másolatok Azure-ba való áthelyezésére szolgál. Miután ez befejeződött, a növekményes adatok a hálózaton keresztül lesznek továbbítva az Azure Storage-ba.
 
  - **Rendszeres feltöltések** – ha rendszeresen keletkezik nagy mennyiségű adat, és azt az Azure-ba szükséges áthelyezni. Ez előfordulhat például az energiafeltárási munkálatoknál, ahol az olajfúrótornyok és a szélenergia-farmok kapcsán nagy mennyiségű videóanyag készül.
 
 ## <a name="benefits"></a>Előnyök
 
-A Data Box Heavy úgy lett kialakítva, hogy hatalmas mennyiségű adatot helyezzen át az Azure-ba, és kevés vagy semmilyen hatással nem lesz a hálózatra. A megoldás a következő előnyökkel jár:
+Data Box Heavy úgy lett kialakítva, hogy nagy mennyiségű adatmennyiséget helyezzen át az Azure-ba, kevés a hálózatra gyakorolt hatás nélkül. A megoldás a következő előnyökkel jár:
 
-- **Speed** - A Data Box Heavy nagy teljesítményű, 40 Gbit/s-os hálózati interfészeket használ.
+- A **Speed** -Data Box Heavy nagy teljesítményű 40 – Gbps hálózati adaptereket használ.
 
-- **Biztonság** – A Data Box Heavy beépített biztonsági védelemmel rendelkezik az eszköz, az adatok és a szolgáltatás számára.
+- A **Security** -Data Box Heavy beépített biztonsági védelemmel rendelkezik az eszközhöz, az adatkezeléshez és a szolgáltatáshoz.
     - Az eszköz biztonsági tokkal rendelkezik illetéktelen hozzáférést gátló csavarokkal és az illetéktelen hozzáférést jelző matricákkal.
     - Az eszközön lévő adatokat minden pillanatban 256 bites AES-titkosítás védi.
     - Az eszköz zárolása csak az Azure Portalon megadott jelszóval oldható fel.
     - A szolgáltatást az Azure biztonsági funkciói védik.
-    - Az adatok Azure-ba való feltöltését követően az eszközön lévő lemezek et a National Institute of Standards and Technology (NIST) 800-88r1 szabványainak megfelelően törli a rendszer.
+    - Az adatok az Azure-ba való feltöltése után az eszközön lévő lemezeket a National Institute of Standards and Technology (NIST) 800 88r1 szabványoknak megfelelően törli a rendszer.
 
 
 ## <a name="features-and-specifications"></a>Funkciók és specifikációk
 
-A Data Box Heavy eszköz a következő funkciókkal rendelkezik ebben a kiadásban.
+A Data Box Heavy eszköz ebben a kiadásban a következő funkciókkal rendelkezik.
 
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
-| Tömeg                                                  | - 500 font. <br>A rögzítőkerekekre szolgáló eszköz szállításhoz|
-| Dimenziók                                              | Szélesség: 26 hüvelyk Magasság: 28 hüvelyk Hossz: 48 hüvelyk |
-| Kiszolgálószekrény-terület                                              | Nem lehet rackbe szerelni|
-| Szükséges kábelek                                         | 4 földelt 120 V / 10 A tápkábel (NEMA 5-15) mellékelve <br> A készülék akár 240 V-os teljesítményt is támogat, és C-13 tápellátással rendelkezik <br> [Mellanox MCX314A-BCCT-vel](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibilis hálózati kábelek használata  |
-| Power                                                    | 4 beépített tápegység (PSUs) megosztva mindkét eszközcsomóponton <br> 1200 wattos tipikus teljesítményhúzás|
-| Tárkapacitás                                        | ~ 1-PB nyers, 70 lemezek 14 TB minden <br> 770-TB felhasználható kapacitás|
-| Csomópontok száma                                          | 2 független csomópont eszközönként (500 TB egyenként) |
-| Hálózati adapterek csomópontonként                             | 4 hálózati adapter csomópontonként <br><br> MGMT, ADAT3 <ul><li> 2 X 1-GbE interfészek </li><li> Az MGMT a kezeléshez és a kezdeti beállításhoz használható, nem a felhasználó által konfigurálható </li><li> A DATA3 alapértelmezés szerint felhasználó által konfigurálható és dinamikus állomáskonfigurációs protokoll (DHCP)</li></ul>DATA1, DATA2 adatinterfészek <ul><li>2 X 40-GbE interfészek </li><li> A felhasználó konfigurálható DHCP-hez (alapértelmezett) vagy statikus</li></ul>|
+| Tömeg                                                  | ~ 500 lbs. <br>Az eszköz, amely a kerekek zárolását a szállításhoz|
+| Dimenziók                                              | Szélesség: 26 hüvelyk magasság: 28 cm hosszúság: 48 hüvelyk |
+| Kiszolgálószekrény-terület                                              | Nem lehet állványra csatlakoztatni|
+| Szükséges kábelek                                         | 4 megalapozott 120 V/10 A beépített tápkábelek (néma 5-15) <br> Az eszköz legfeljebb 240 V-os teljesítményt támogat, és C-13 energiaellátási tárolóval rendelkezik <br> A [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibilis hálózati kábelek használata  |
+| Power                                                    | 4 az eszközök csomópontjain megosztott beépített tápegységek (PSUs-EK) <br> 1 200 wattos átlagos Power Draw|
+| Tárkapacitás                                        | ~ 1 – PB nyers, 70, egyenként 14 TB-os lemez <br> 770 – TB felhasználható kapacitás|
+| Csomópontok száma                                          | 2 független csomópont/eszköz (500 TB) |
+| Hálózati adapterek/csomópont                             | 4 hálózati adapter/csomópont <br><br> MGMT, DATA3 <ul><li> 2 X 1 – GbE felületek </li><li> A MGMT a felügyelet és a kezdeti beállítás, nem pedig a felhasználó által konfigurálható </li><li> A DATA3 felhasználó által konfigurálható és Dynamic Host Configuration Protocol (DHCP) alapértelmezés szerint</li></ul>DATA1, DATA2-adatillesztők <ul><li>2 X 40 – GbE felületek </li><li> Felhasználó által konfigurálható DHCP (alapértelmezett) vagy statikus</li></ul>|
 
 
 ## <a name="components"></a>Összetevők
 
 A Data Box Heavy a következő összetevőket tartalmazza:
 
-* **Data Box Heavy eszköz** – Egy biztonsági tokban lévő fizikai eszköz, amely biztonságosan tárolja az adatokat. Ez a készülék 770 TB felhasználható tárolókapacitással rendelkezik.
+* **Data Box Heavy eszköz** – Egy biztonsági tokban lévő fizikai eszköz, amely biztonságosan tárolja az adatokat. Az eszköz 770 TB-os felhasználható tárolási kapacitással rendelkezik.
     
-* **Data Box szolgáltatás** – Az Azure Portal bővítménye, amely segítségével a Data Box Heavy eszköz különböző földrajzi helyekről elérhető webes felületről kezelhető. A Data Box szolgáltatás segítségével felügyelheti a Data Box Heavy eszközt. A szolgáltatásban végrehajtható feladatok a rendelések létrehozását és kezelését, a riasztások megtekintését és kezelését, valamint a megosztások kezelését foglalják magukban.  
+* **Data Box szolgáltatás** – Az Azure Portal bővítménye, amely segítségével a Data Box Heavy eszköz különböző földrajzi helyekről elérhető webes felületről kezelhető. A Data Box Heavy eszköz felügyeletéhez használja a Data Box szolgáltatást. A szolgáltatásban végrehajtható feladatok a rendelések létrehozását és kezelését, a riasztások megtekintését és kezelését, valamint a megosztások kezelését foglalják magukban.  
 
 * **Helyi webes felhasználói felület** – Egy webes felhasználói felület, amelynek használatával az eszköz a helyi hálózathoz való csatlakozásra konfigurálható, majd regisztrálható a Data Box szolgáltatásban. A helyi webes felhasználói felülettel emellett leállíthatja és újraindíthatja az eszközt, megtekintheti a másolási naplókat, valamint szolgáltatáskérések elküldése érdekében kapcsolatba léphet a Microsoft ügyfélszolgálatával.
 
@@ -96,11 +96,11 @@ A munkafolyamat általában az alábbi lépésekből áll:
 
 5. **Feltöltés** – Az eszközről az adatok automatikusan át lesznek másolva az Azure-ba. Az eszköz lemezeit a National Institute of Standards and Technology (NIST) útmutatásait követve biztonságosan töröljük.
 
-A folyamat során e-mailben értesítjük az összes állapotváltozásról.
+A folyamat során e-mailben értesítjük az összes állapotadatok változásáról.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A Data Box Heavy adatokat továbbíthat a szolgáltatás üzembe helyezésének régiójától, az on-t az eszköz szállításának országa/régiója és a cél Azure-tárfiók alapján, ahol az adatokat továbbítja.
+A Data Box Heavy a szolgáltatás üzembe helyezése, az adott ország/régió, valamint az adatok átviteléhez használt cél Azure Storage-fiók alapján tudja átvinni az adatok átvitelét.
 
 - **A szolgáltatás rendelkezésre állása** – Ebben a kiadásban a Data Box Heavy a következő régiókban érhető el:
     - Az Egyesült Államok minden nyilvánosfelhő-régiója: az USA nyugati középső régiója, az USA 2. nyugati régiója, az USA nyugati régiója, az USA déli középső régiója, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója és az USA 2. keleti régiója.
@@ -110,18 +110,18 @@ A Data Box Heavy adatokat továbbíthat a szolgáltatás üzembe helyezésének 
 
 - **Cél tárfiókok** – Az adatokat tároló tárfiókok az összes olyan Azure-régióban elérhetők, amelyben a szolgáltatás is.
 
-A Data Box Heavy régióelérhetőségével kapcsolatos legfrissebb információkért látogasson el az [Azure-termékek régiónkénti elérhetőségére.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)
+Az Data Box Heavy régió rendelkezésre állásának legfrissebb információit az [Azure-termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
 ## <a name="sign-up"></a>Regisztráció
 
-A Data Box Heavy-ra való regisztrációhoz tegye a következő lépéseket:
+A Data Box Heavy regisztrálásához hajtsa végre a következő lépéseket:
 
-1. [Jelentkezzen be az Azure Portalon.](https://portal.azure.com)
-2. Új erőforrás létrehozásához kattintson **a + Erőforrás létrehozása** elemre. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
-3. Kattintson **a Létrehozás gombra.**
-4. Válassza ki a Data Box Heavy-hoz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
-5. Válaszoljon az adatok szerinti lakóhely országával/régiójával, az időkerettel, az adatátvitelre, a hálózati sávszélességre és az adatátviteli gyakoriságra vonatkozó célAzure-szolgáltatással kapcsolatos kérdésekre. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com).
+2. Kattintson az **+ erőforrás létrehozása** lehetőségre egy új erőforrás létrehozásához. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
+3. Kattintson a **Létrehozás**gombra.
+4. Válassza ki a Data Box Heavyhoz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
+5. Válaszoljon az adatforgalomra, a hálózati sávszélességre és az adatátviteli gyakoriságra vonatkozó, az adatok tartózkodási országával/régiójával, az időkerettel és az Azure-szolgáltatással kapcsolatos kérdésekre. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
 
-Miután feliratkozott, megrendelheti a Data Box Heavy-t.
+Ha már regisztrált, megrendelhet egy Data Box Heavy.
 
     

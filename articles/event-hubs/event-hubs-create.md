@@ -1,5 +1,5 @@
 ---
-title: Azure-gyorsútmutató – Eseményközpont létrehozása az Azure Portalhasználatával
+title: Azure rövid útmutató – Event hub létrehozása a Azure Portal használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure-eseményközpontot az Azure Portallal, majd hogyan küldhet és fogadhat eseményeket a .NET Standard SDK használatával.
 services: event-hubs
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 5e80ab6d5ed0076e03f5378cbe975b15d0a28f47
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240995"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
@@ -26,51 +26,51 @@ Ebben a rövid útmutatóban az [Azure Portal](https://portal.azure.com) haszná
 A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- [Visual Studio 2019)](https://www.visualstudio.com/vs) vagy később.
+- [Visual Studio 2019)](https://www.visualstudio.com/vs) vagy újabb.
 - A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Erőforráscsoport létrehozása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
    ![Erőforráscsoportok – Hozzáadás gomb](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
-2. **Előfizetés esetén**válassza ki annak az Azure-előfizetésnek a nevét, amelyben létre szeretné hozni az erőforráscsoportot.
-3. Írja be **az erőforráscsoport**egyedi nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e az aktuálisan kiválasztott Azure-előfizetésben.
-4. Válasszon egy **régiót** az erőforráscsoporthoz.
-5. Válassza **a Véleményezés + Létrehozás lehetőséget.**
+2. Az **előfizetés**mezőben válassza ki annak az Azure-előfizetésnek a nevét, amelyben létre kívánja hozni az erőforráscsoportot.
+3. Adja **meg az erőforráscsoport egyedi nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e az aktuálisan kiválasztott Azure-előfizetésben.
+4. Válassza ki az erőforráscsoport **régióját** .
+5. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
    ![Erőforráscsoport – létrehozás](./media/event-hubs-quickstart-portal/resource-groups2.png)
-6. A **Véleményezés + Létrehozás** lapon válassza a **Létrehozás lehetőséget.** 
+6. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget. 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 Egy Event Hubs-névtér egyedi hatókörkezelési tárolót biztosít, amelyre a teljes tartománynevével lehet hivatkozni, és ebben a tárolóban egy vagy több eseményközpontot is létrehozhat. Ha létre szeretne hozni egy névteret az erőforráscsoportban a portál használatával, végezze el az alábbi műveleteket:
 
 1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra a képernyő bal felső részén.
-2. Válassza a bal oldali menü **Minden szolgáltatás lehetőséget,** és válassza a **csillag (`*`)** lehetőséget az **Eseményközpontok** elem mellett az **Analytics** kategóriában. Ellenőrizze, hogy az **Event Hubs** hozzá lett-e adva a **KEDVENCEK mappába** a bal oldali navigációs menüben. 
+2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd válassza a **csillag (`*`)** lehetőséget a **Event Hubs** elem mellett az **elemzési** kategóriában. Győződjön meg arról, hogy a bal oldali navigációs menüben a **Event Hubs** a **Kedvencek közé** kerül. 
     
-   ![Eseményközpontok keresése](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
-3. A bal oldali navigációs menüben válassza a **KEDVENCEK** csoport **Eseményközpontok parancsát,** majd az eszköztáron a **Hozzáadás** parancsot.
+   ![Event Hubs keresése](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
+3. A bal oldali navigációs menüben kattintson a **Kedvencek** elemre, majd a **Hozzáadás** elemre az eszköztáron válassza a **Event Hubs** lehetőséget.
 
    ![Hozzáadás gomb](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
-4. A **Névtér létrehozása** lapon tegye a következő lépéseket:
-    1. Adja meg a névtér **nevét.** A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-    2. Válassza ki a **tarifacsomagot** (Alapszintű vagy Normál).
-    3. Figyelje meg, hogy **a Kafka engedélyezése** beállítás automatikusan engedélyezve van. Az Azure Event Hubs egy Kafka-végpontot biztosít. Ez a végpont lehetővé teszi, hogy az Event Hubs névtér natívmódon megértse [az Apache Kafka](https://kafka.apache.org/intro) üzenetprotokollt és API-kat. Ezzel a funkcióval a Kafka-témakörökkel a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül kommunikálhat az eseményközpontokkal. Az Event Hubs támogatja az [Apache Kafka 1.0-s](https://kafka.apache.org/10/documentation.html) és újabb verzióit.
-    4. Válassza ki azt az **előfizetést,** amelyben létre szeretné hozni a névteret.
-    5. Jelöljön ki egy meglévő **erőforráscsoportot,** vagy hozzon létre egy új erőforráscsoportot. 
-    4. Adja meg a névtér **helyét.**
+4. A **névtér létrehozása** oldalon hajtsa végre a következő lépéseket:
+    1. Adja meg a névtér **nevét** . A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+    2. Válassza ki az **árképzési szintet** (alapszintű vagy standard).
+    3. Figyelje meg, hogy a **Kafka engedélyezése** beállítás automatikusan engedélyezve van. Az Azure Event Hubs egy Kafka-végpontot biztosít. Ez a végpont lehetővé teszi, hogy a Event Hubs névteret natív módon tudja értelmezni [Apache Kafka](https://kafka.apache.org/intro) üzenetküldési protokoll és API-k. Ezzel a képességgel a Kafka-témakörökhöz hasonlóan tud kommunikálni az Event hubokkal a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Event Hubs a Apache Kafka 1,0-es és újabb [verzióit](https://kafka.apache.org/10/documentation.html) támogatja.
+    4. Válassza ki azt az **előfizetést** , amelyben létre kívánja hozni a névteret.
+    5. Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egy új erőforráscsoportot. 
+    4. Válassza ki a névtér **helyét** .
     5. Kattintson a **Létrehozás** gombra. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.
 
        ![Eseményközpont-névtér létrehozása](./media/event-hubs-quickstart-portal/create-event-hub1.png)
-5. Frissítse az **Event Hubs** lapot az eseményközpont névterének megtekintéséhez. Ellenőrizheti az eseményközpont létrehozásának állapotát a riasztásokban. 
+5. Az Event hub-névtér megjelenítéséhez frissítse a **Event Hubs** lapot. Az Event hub-létrehozás állapotát a riasztások között tekintheti meg. 
 
     ![Eseményközpont-névtér létrehozása](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
-6. Jelölje ki a névteret. Az **Event Hubs névtér** kezdőlapja a portálon jelenik meg. 
+6. Válassza ki a névteret. Ekkor megjelenik a **Event Hubs névtér** kezdőlapja a portálon. 
 
    ![A névtér kezdőlapja](./media/event-hubs-quickstart-portal/namespace-home-page.png)
     
@@ -78,27 +78,27 @@ Egy Event Hubs-névtér egyedi hatókörkezelési tárolót biztosít, amelyre a
 
 Ha eseményközpontot szeretne létrehozni egy névtérben, végezze el a következő műveleteket:
 
-1. Az Event Hubs Névtér lapon válassza a bal oldali menü **Eseményközpontok parancsát.**
+1. A Event Hubs névtér lapon válassza a bal oldali menüben a **Event Hubs** lehetőséget.
 1. Az ablak tetején kattintson a **+ Eseményközpont** elemre.
    
     ![Eseményközpont hozzáadása – gomb](./media/event-hubs-quickstart-portal/create-event-hub4.png)
-1. Írja be az eseményközpont nevét, majd kattintson a **Létrehozás gombra.**
+1. Adja meg az Event hub nevét, majd kattintson a **Létrehozás**gombra.
    
     ![Eseményközpont létrehozása](./media/event-hubs-quickstart-portal/create-event-hub5.png)
-4. Az eseményközpont létrehozásának állapotát a riasztásokban ellenőrizheti. Az eseményközpont létrehozása után megjelenik az eseményközpontok listájában, ahogy az az alábbi képen látható:
+4. Az Event hub létrehozásának állapotát a riasztásokban tekintheti meg. Az Event hub létrehozása után az az alábbi képen látható módon jelenik meg az Event hubok listájában:
 
-    ![Eseményközpont létrehozva](./media/event-hubs-quickstart-portal/event-hub-created.png)
+    ![Az Event hub létrehozva](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
 Gratulálunk! A Portal segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események eseményközpontból történő (vagy) fogadására vonatkozó részletes utasításokért tekintse meg az **Események küldése és fogadása** oktatóanyagokat: 
+Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Ugrás](event-hubs-go-get-started-send.md)
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)

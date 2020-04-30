@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Python-alkalmazás létrehozása az Azure Cosmos DB SQL API-fiókkal'
+title: 'Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával'
 description: Egy Python-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 author: SnehaGunda
 ms.service: cosmos-db
@@ -13,13 +13,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78942620"
 ---
-# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: Python-alkalmazás létrehozása Egy Azure Cosmos DB SQL API-fiókkal
+# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -29,14 +29,14 @@ ms.locfileid: "78942620"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ebben a rövid útmutatóban hozzon létre és kezeljen egy Azure Cosmos DB SQL API-fiókot az Azure Portalról, és a Visual Studio-kódból a GitHubról klónozott Python-alkalmazással. Az Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, a tábla, a kulcsérték és a grafikonadatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és kezel a Azure Portalból és a Visual Studio Code-ból egy GitHubról klónozott Python-alkalmazással. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja ki az Azure Cosmos DB-t ingyenesen](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés nélkül. Az [Azure Cosmos DB emulátort](https://aka.ms/cosmosdb-emulator) is `https://localhost:8081` használhatja `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`a kulcs URI-jával és a kulccsal.
-- [Python 3.6 +](https://www.python.org/downloads/) `python` , a `PATH`futtatható a .
-- [Visual Studio kód](https://code.visualstudio.com/).
-- A [Visual Studio-kód Python-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`URI-ja használatával.
+- [Python 3.6 +](https://www.python.org/downloads/), a `python` végrehajtható fájllal `PATH`.
+- [Visual Studio Code](https://code.visualstudio.com/).
+- A [Python-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)-hoz.
 - [Git](https://www.git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -45,26 +45,26 @@ Ebben a rövid útmutatóban hozzon létre és kezeljen egy Azure Cosmos DB SQL 
 
 ## <a name="add-a-container"></a>Tároló hozzáadása
 
-Most már használhatja a Data Explorer eszközt az Azure Portalon egy adatbázis és tároló létrehozásához. 
+Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és egy tároló létrehozásához. 
 
-1. Válassza az **Adatkezelő** > **új tárolóját**. 
+1. Válassza ki **adatkezelő** > **új tárolót**. 
     
-    A **Tároló hozzáadása** terület a jobb szélen jelenik meg, előfordulhat, hogy jobbra kell görgetnie, hogy láthassa.
+    A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
 
     ![Az Azure Portal Adatkezelője a Tároló hozzáadása panellel](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
-2. A **Tároló hozzáadása** lapon adja meg az új tároló beállításait.
+2. A **tároló hozzáadása** lapon adja meg az új tároló beállításait.
 
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
-    |**Adatbázis azonosítója**|Feladatok|Az új adatbázisnak adja a *Feladatok* nevet. Az adatbázisneveknek 1 és 255 karakter `/, \\, #, ?`között kell lennie, és nem tartalmazhatnak , illetve záró szóközt. Ellenőrizze a **létesítési adatbázis átviteli beállítás,** lehetővé teszi, hogy megosszák az adatbázis számára kiosztott átviteli átmenő az adatbázis összes tárolója között. Ez az opció is segít a költségmegtakarítást. |
-    |**Teljesítmény**|400|Hagyja az átviteli értéket 400 kérelemegység/másodperc (RU/s) értéken. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
-    |**Tároló azonosítója**|Elemek|Írja be *az elemeket* az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.|
-    |**Partíciókulcs**| /kategória| A cikkben ismertetett minta a */category* kapcsolót használja partíciókulcsként.|
+    |**Adatbázis-azonosító**|Feladatok|Az új adatbázisnak adja a *Feladatok* nevet. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és `/, \\, #, ?`nem tartalmazhat szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
+    |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Tároló azonosítója**|Elemek|Adja meg az *elemeket* az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.|
+    |**Partíciókulcs**| /kategória| A cikkben ismertetett minta a */category* használja a partíciós kulcsként.|
     
-    Az előző beállításokon kívül szükség esetén **egyedi kulcsokat** is hozzáadhat a tárolóhoz. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. Ha egy tároló létrehozása közben létrehoz egy egyedi kulcsházirendet, biztosítja partíciókulcsonként egy vagy több érték egyediségét. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md) kapcsolatos cikkben talál.
+    Az előző beállításokon kívül opcionálisan hozzáadhat **egyedi kulcsokat** a tárolóhoz. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. A tárolók létrehozásakor egyedi kulcsokra vonatkozó szabályzat létrehozásával biztosíthatja, hogy a partíciós kulcs egy vagy több értéke egyedi legyen. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md) kapcsolatos cikkben talál.
     
-    Válassza **az OK gombot.** Az Adatkezelő megjeleníti az új adatbázist és tárolót.
+    Kattintson az **OK** gombra. Az Adatkezelő megjeleníti az új adatbázist és tárolót.
 
 ## <a name="add-sample-data"></a>Mintaadatok hozzáadása
 
@@ -76,14 +76,14 @@ Most már használhatja a Data Explorer eszközt az Azure Portalon egy adatbázi
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapcsolati sztringet, és futtassa az alkalmazást. Ez a rövid útmutató a [Python SDK](https://pypi.org/project/azure-cosmos/#history)4-es verzióját használja.
+Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapcsolati sztringet, és futtassa az alkalmazást. Ez a rövid útmutató a [PYTHON SDK](https://pypi.org/project/azure-cosmos/#history)4-es verzióját használja.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```cmd
     md "git-samples"
     ```
-   Ha bash-sort használ, a következő parancsot kell használnia:
+   Ha bash-parancssort használ, Ehelyett használja a következő parancsot:
 
    ```bash
    mkdir "git-samples"
@@ -105,29 +105,29 @@ Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapc
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az Azure Cosmos DB-fiókjában az [Azure Portalon](https://portal.azure.com/)válassza **a kulcsok a** bal oldali navigációs. A képernyő jobb oldalán található másolási gombokkal másolja az **URI-t** és az **elsődleges kulcsot** a *cosmos_get_started.py* fájlba a következő lépésben.
+1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a bal oldali navigációs menüben a **kulcsok** elemet. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** -t és az **elsődleges kulcsot** a *cosmos_get_started.* Copy fájlba.
 
-    ![Hozzáférési kulcs és URI beszereznie az Azure Portal Keys-beállításaiban](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
+    ![Hozzáférési kulcs és URI beszerzése a Azure Portal kulcsok beállításaiban](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. A Visual Studio-kódban nyissa meg a *cosmos_get_started.py* fájlt *\git-samples\azure-cosmos-db-python-getting-started*mappában.
+2. A Visual Studio Code-ban nyissa meg a *cosmos_get_started.* *\git-samples\azure-Cosmos-db-Python-Getting-Started*fájlt.
 
-3. Másolja az **URI-értéket** a portálról (a másolás gombhasználatával), és tegye a **végpontváltozó** értékére *a cosmos_get_started.py*. 
+3. Másolja az **URI** -értéket a portálról (a másolás gombbal), és adja meg a **végpont** változó értékét a *cosmos_get_started.* másolásban. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Ezután másolja a **PRIMARY KEY** értékét a portálról, és tegye a **kulcs** értékére *a cosmos_get_started.py*. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az **elsődleges kulcs** értékét a portálról, és adja meg a **kulcs** értékét *cosmos_get_started.* másolásban. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
     `key = 'FILLME'`
 
-5. Mentse a *cosmos_get_started.py* fájlt.
+5. Mentse a *cosmos_get_started.* a fájlt.
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ismerje meg a kódban létrehozott adatbázis-erőforrásokat, vagy ugorjon [előre a Kapcsolati karakterlánc frissítése című](#update-your-connection-string)részre.
+Ez a lépés nem kötelező. Ismerje meg a kódban létrehozott adatbázis-erőforrásokat, vagy ugorjon előre a [kapcsolódási karakterlánc frissítéséhez](#update-your-connection-string).
 
-A következő kódrészletek mind a *cosmos_get_started.py* fájlból származnak.
+Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származnak.
 
-* A CosmosClient inicializálva van. Győződjön meg arról, hogy frissíti a "végpont" és a "kulcs" értékeket a [kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszban leírtak szerint. 
+* A CosmosClient inicializálva van. Győződjön meg arról, hogy a "végpont" és a "kulcs" értékeket frissíti a [kapcsolódási karakterlánc frissítése](#update-your-connection-string) című szakaszban leírtak szerint. 
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
 
@@ -135,33 +135,33 @@ A következő kódrészletek mind a *cosmos_get_started.py* fájlból származna
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
-* Egy új tároló jön létre, 400 RU/s [kiépített átviteli fokkal.](request-units.md) Úgy `lastName` döntünk, mint a [partíciókulcs](partitioning-overview.md#choose-partitionkey), amely lehetővé teszi számunkra, hogy hatékony lekérdezéseket, amelyek szűrik ezt a tulajdonságot. 
+* Létrejön egy új tároló, amely a [kiépített átviteli sebesség](request-units.md)400 ru/s. A `lastName` [partíciós kulcsot](partitioning-overview.md#choose-partitionkey)választjuk, amely lehetővé teszi, hogy hatékony lekérdezéseket végezzen a tulajdonság szűrésére. 
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
-* Egyes elemek hozzá vannak adva a tárolóhoz. A tárolók olyan elemek (JSON-dokumentumok) gyűjteményei, amelyek változatos sémával rendelkezhetnek. A segítő ```get_[name]_family_item``` módszerek az Azure Cosmos DB-ben json-dokumentumokként tárolt család ábrázolásait adják vissza.
+* Egyes elemek hozzá vannak adva a tárolóhoz. A tárolók olyan elemek (JSON-dokumentumok) gyűjteményei, amelyek változatos sémával rendelkezhetnek. A segítő metódusok ```get_[name]_family_item``` a Azure Cosmos db JSON-dokumentumként tárolt családjának ábrázolását adják vissza.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
-* A pontolvasások (kulcsérték-keresgések) a `read_item` módszerrel történnek. Kinyomtatjuk az egyes műveletek [vt.-díját.](request-units.md)
+* A pont olvasása (a kulcs értékének keresése) a `read_item` metódus használatával történik. Minden egyes művelet esetében ki kell nyomtatni az [ru díját](request-units.md) .
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-* A lekérdezés SQL-lekérdezés szintaxisával történik. Mivel a WHERE záradékpartíciókulcs-értékeket ```lastName``` használunk, az Azure Cosmos DB hatékonyan továbbítja ezt a lekérdezést a megfelelő partíciókra, javítva a teljesítményt.
+* A lekérdezés SQL-lekérdezési szintaxis használatával történik. Mivel a WHERE záradékban a partíciós ```lastName``` kulcs értékeit használjuk, Azure Cosmos db hatékonyan irányítja át ezt a lekérdezést a megfelelő partíciókhoz, így javul a teljesítmény.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. A Visual Studio-kódban válassza a**Parancspaletta** **megtekintése** > lehetőséget. 
+1. A Visual Studio Code-ban válassza a**parancs paletta** **megtekintése** > lehetőséget. 
 
 2. A megjelenő panelen írja be a **Python: Select Interpreter** szöveget, majd válassza ki a használandó Python-verziót.
 
     A választott értelmező ekkor megjelenik a Visual Studio Code ablakának állapotsorában. 
 
-3. Válassza az**Integrált terminál** **megtekintése** > lehetőséget a Visual Studio Code integrált terminál megnyitásához.
+3. Válassza az**integrált terminál** **megtekintése** > lehetőséget a Visual Studio Code integrált termináljának megnyitásához.
 
-4. Az integrált terminálablakban győződjön meg arról, hogy az *azure-cosmos-db-python-getting-started* mappában van. Ha más mappában van, akkor váltson erre a mintamappára az alábbi parancs futtatásával. 
+4. Az integrált terminál ablakban ellenőrizze, hogy az *Azure-Cosmos-db-Python-Getting-Started* mappában van-e. Ha más mappában van, akkor váltson erre a mintamappára az alábbi parancs futtatásával. 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
@@ -175,13 +175,13 @@ A következő kódrészletek mind a *cosmos_get_started.py* fájlból származna
 
     Ha az azure-cosmos csomag telepítésekor „hozzáférés megtagadva” hibaüzenetet kap, akkor [rendszergazdaként kell futtatnia a VS Code alkalmazást](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).
 
-6. Futtassa a következő parancsot a minta futtatásához, és hozzon létre és tároljon új dokumentumokat az Azure Cosmos DB-ben.
+6. Futtassa a következő parancsot a minta futtatásához, és hozzon létre és tároljon új dokumentumokat Azure Cosmos DBban.
 
     ```python
     python cosmos_get_started.py
     ```
 
-7. Az új elemek létrehozásának és mentésének ellenőrzéséhez az Azure Portalon válassza a **Data Explorer** > **AzureSampleFamilyDatabase** > **Items lehetőséget.** A létrehozott elemek megtekintése. Például, itt van egy minta JSON dokumentum az Andersen család:
+7. Az új elemek létrehozásának és mentésének megerősítéséhez a Azure Portal válassza **adatkezelő** > **AzureSampleFamilyDatabase** > **elemet**. Megtekintheti a létrehozott elemeket. Íme például egy példa az Andersen családhoz tartozó JSON-dokumentumra:
    
    ```json
    {
@@ -223,7 +223,7 @@ A következő kódrészletek mind a *cosmos_get_started.py* fájlból származna
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB-fiókot, hogyan hozhat létre egy tárolót az Adatkezelővel, és futtathatja a Python-alkalmazást a Visual Studio-kódban. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB fiókot, hogyan hozhat létre egy tárolót a Adatkezelő használatával, és hogyan futtathat Python-alkalmazást a Visual Studio Code-ban. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be az SQL API-hoz](import-data.md)

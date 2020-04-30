@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Az Azure Cache for Redis használata .NET alkalmazásokkal'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan érheti el a Redis Azure Cache for Redis alkalmazást a .NET-alkalmazásokból.
+title: 'Gyors útmutató: az Azure cache használata a Redis .NET-alkalmazásokkal'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure cache-t a .NET-alkalmazások Redis
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -9,21 +9,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/11/2020
 ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79369063"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Rövid útmutató: Azure Cache for Redis használata .NET Framework alkalmazással
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
-Ebben a rövid útmutatóban a Redis-gyorsítótárat egy .NET Framework alkalmazásba építheti be, hogy hozzáférjen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető. A [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) ügyfelet C# kóddal kifejezetten egy .NET konzolalkalmazásban használja.
+Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis-ba egy .NET-keretrendszerbeli alkalmazásba, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető. A [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) ügyfelet a C#-kóddal kifejezetten a .net-konzol alkalmazásban használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-- [A .](https://www.microsoft.com/net/download/dotnet-framework-runtime)
+- A [.NET-keretrendszer 4-es vagy újabb](https://www.microsoft.com/net/download/dotnet-framework-runtime)verziója, amelyre a StackExchange. Redis ügyfélnek szüksége van.
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -47,9 +47,9 @@ Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulc
 
 ## <a name="create-a-console-app"></a>Konzolalkalmazás létrehozása
 
-A Visual Studio programban kattintson az**Új** > **projekt** **fájlja** > gombra.
+A Visual Studióban kattintson a **fájl** > **új** > **projekt**elemre.
 
-Válassza a **Console App (.NET Framework)** lehetőséget, és az Alkalmazás konfigurálásához válassza a **Tovább** lehetőséget. Írjon be egy **Projektnevet,** és új konzolalkalmazás létrehozásához kattintson a **Létrehozás** gombra.
+Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét** , majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -57,7 +57,7 @@ Válassza a **Console App (.NET Framework)** lehetőséget, és az Alkalmazás k
 
 Ebben a szakaszban konfigurálja a konzolalkalmazást a .NET [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) ügyfél használatára.
 
-A Visual Studio alkalmazásban kattintson az **Eszközök** > **NuGet Csomagkezelő csomagkezelő** > **konzoljára,** és futtassa a következő parancsot a Csomagkezelő konzol ablakából.
+A Visual Studióban kattintson a **Tools** > **NuGet** > Package Manager**csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -91,7 +91,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-A redis-i Azure-gyorsítótárral való `ConnectionMultiplexer` kapcsolatot az osztály kezeli. Ennek az osztálynak megoszthatónak és ismét felhasználhatónak kell lennie az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
+A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ennek az osztálynak megoszthatónak és ismét felhasználhatónak kell lennie az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
 
 Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hogy a minta egyszerű maradjon, csak egy külső titkos kódokat tartalmazó konfigurációs fájlt használok. Ennél még jobb megoldás lenne a [tanúsítványokkal rendelkező Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios) használata.
 
@@ -114,7 +114,7 @@ A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `P
 ```
 
 
-A `ConnectionMultiplexer` példány alkalmazásban való megosztásának ez a módszere egy statikus tulajdonságot használ, amely egy csatlakoztatott példányt ad vissza. A kód egy szálbiztos módszert biztosít egyetlen csatlakoztatott `ConnectionMultiplexer`-példány inicializálásához. `abortConnect`hamis, ami azt jelenti, hogy a hívás sikeres lesz, még akkor is, ha az Azure Cache for Redis kapcsolat a redis nem jön létre. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
+A `ConnectionMultiplexer` példány alkalmazásban való megosztásának ez a módszere egy statikus tulajdonságot használ, amely egy csatlakoztatott példányt ad vissza. A kód egy szálbiztos módszert biztosít egyetlen csatlakoztatott `ConnectionMultiplexer`-példány inicializálásához. `abortConnect`hamis értékre van állítva, ami azt jelenti, hogy a hívás akkor is sikeres, ha nem jön létre a Redis-hez készült Azure cache-hez való kapcsolódás. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
 
 A rendszer a *CacheConnection* alkalmazásbeállítás értékét használja ahhoz, hogy jelszóparaméterként hivatkozzon a gyorsítótár Azure Portalon található kapcsolati sztringjére.
 
@@ -159,7 +159,7 @@ Adja hozzá a következő kódot a konzolalkalmazás `Program` osztályának `Ma
         }
 ```
 
-A Redis Azure Cache for Redis konfigurálható számú adatbázissal rendelkezik (alapértelmezett 16), amelyek segítségével logikailag elkülönítheti az adatokat egy Azure-gyorsítótárban a Redis számára. A kód az alapértelmezett adatbázishoz csatlakozik (DB 0). További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
+A Redis-hez készült Azure cache egy konfigurálható (alapértelmezett 16) adatbázist tartalmaz, amelyekkel logikailag elkülöníthető az Azure-gyorsítótárban lévő Redis. A kód az alapértelmezett adatbázishoz csatlakozik (DB 0). További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
 
 A gyorsítótárelemek a `StringSet` és a `StringGet` metódussal tárolhatók és kérhetők le.
 
@@ -174,11 +174,11 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 ## <a name="work-with-net-objects-in-the-cache"></a>.NET-objektumok használata a gyorsítótárban
 
-Az Azure Cache for Redis gyorsítótárazza a .NET objektumokat és a primitív adattípusokat is, de a .NET-objektumok gyorsítótárazása előtt szerializálandónak kell lennie. Ez a .NET-objektumszerializálás az alkalmazásfejlesztők feladata, akik így rugalmasan kiválaszthatják a szerializálót.
+A Redis-hez készült Azure cache gyorsítótárba helyezheti a .NET-objektumokat és az egyszerű adattípusokat, de a .NET-objektumok gyorsítótárazása előtt szerializálni kell. Ez a .NET-objektumszerializálás az alkalmazásfejlesztők feladata, akik így rugalmasan kiválaszthatják a szerializálót.
 
 Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) kódtárban található `JsonConvert` szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
 
-A Visual Studio alkalmazásban kattintson az **Eszközök** > **NuGet Csomagkezelő csomagkezelő** > **konzoljára,** és futtassa a következő parancsot a Csomagkezelő konzol ablakából.
+A Visual Studióban kattintson a **Tools** > **NuGet** > Package Manager**csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -255,9 +255,9 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure Cache for Redis-t egy .NET alkalmazásból. Folytassa a következő rövid útmutatót az Azure Cache for Redis használatával egy ASP.NET webalkalmazással.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy .NET-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy ASP.NET webalkalmazást, amely egy Azure-gyorsítótárat használ a Redis számára.](./cache-web-app-howto.md)
+> [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
 
 

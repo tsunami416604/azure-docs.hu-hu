@@ -1,6 +1,6 @@
 ---
-title: 'Azure Resource Manager: Egyetlen adatbázis létrehozása'
-description: Hozzon létre egyetlen adatbázist az Azure SQL Database-ben az Azure Resource Manager sablon használatával.
+title: 'Azure Resource Manager: egyetlen adatbázis létrehozása'
+description: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Resource Manager sablonnal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,51 +12,51 @@ ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
 ms.openlocfilehash: 7c42ff7f42dea049752f9f879abffffd0e7b3902
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79531328"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rövid útmutató: Egyetlen adatbázis létrehozása az Azure SQL Database-ben az Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Resource Manager sablon használatával
 
-Egyetlen [adatbázis](sql-database-single-database.md) létrehozása a leggyorsabb és legegyszerűbb üzembe helyezési lehetőség egy adatbázis létrehozásához az Azure SQL Database-ben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egyetlen adatbázist az Azure Resource Manager sablon használatával.
+[Egyetlen adatbázis](sql-database-single-database.md) létrehozása a leggyorsabb és legegyszerűbb üzembe helyezési lehetőség az adatbázisok Azure SQL Database-ben való létrehozásához. Ez a rövid útmutató bemutatja, hogyan hozhat létre egyetlen adatbázist a Azure Resource Manager sablonnal.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 None
 
-## <a name="create-a-single-database"></a>Egyetlen adatbázis létrehozása
+## <a name="create-a-single-database"></a>Önálló adatbázis létrehozása
 
-Egyetlen adatbázis számítási, memória-, IO- és tárolási erőforrások meghatározott készletével rendelkezik a két [beszerzési modell](sql-database-purchase-models.md)egyikének használatával. Ha egyetlen adatbázist hoz létre, definiáljon egy [SQL Database-kiszolgálót](sql-database-servers.md) is, amely kezeli, és egy adott régióban az [Azure erőforráscsoporton](../azure-resource-manager/management/overview.md) belül helyezi el.
+Egyetlen adatbázis a számítási, a memória-, az IO-és a tárolási erőforrások meghatározott készletével rendelkezik, és a két [vásárlási modell](sql-database-purchase-models.md)egyikét használja. Egyetlen adatbázis létrehozásakor egy [SQL Database-kiszolgálót](sql-database-servers.md) is meg kell adnia a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../azure-resource-manager/management/overview.md) helyezheti azt.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/101-sql-logical-server/)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-sql-logical-server/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
 
 Ezek az erőforrások a sablonban vannak definiálva:
 
-- [**Microsoft.Sql/kiszolgálók**](/azure/templates/microsoft.sql/servers)
-- [**Microsoft.Sql/servers/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
-- [**Microsoft.Sql/servers/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
-- [**Microsoft.Sql/servers/vulnerabilityAssessments**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
-- [**Microsoft.Sql/servers/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
-- [**Microsoft.Storage/storageAccounts/providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)
+- [**Microsoft. SQL/kiszolgálók**](/azure/templates/microsoft.sql/servers)
+- [**Microsoft. SQL/kiszolgálók/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
+- [**Microsoft. SQL/kiszolgálók/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
+- [**Microsoft. SQL/kiszolgálók/vulnerabilityAssessments**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
+- [**Microsoft. SQL/kiszolgálók/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft. Storage/storageAccounts/Providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)
 
-További Azure SQL-adatbázissablon-minták találhatók az [Azure gyorsútmutató-sablonokban.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)
+További Azure SQL Database-sablonok az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)találhatók.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Válassza **a Próbálja ki** a következő PowerShell-kódblokkból az Azure Cloud Shell megnyitásához.
+A Azure Cloud Shell megnyitásához válassza a **kipróbálás** a következő PowerShell-kódból elemet.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -96,15 +96,15 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Az adatbázis lekérdezéséhez olvassa el [az Adatbázis lekérdezése](./sql-database-single-database-get-started.md#query-the-database)című témakört.
+Az adatbázis lekérdezéséhez tekintse meg [az adatbázis lekérdezése](./sql-database-single-database-get-started.md#query-the-database)című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Tartsa meg ezt az erőforráscsoportot, adatbázis-kiszolgálót és egyetlen adatbázist, ha a Következő lépésekkel szeretne [továbblépni.](#next-steps) A következő lépések bemutatják, hogyan csatlakozhat és kérdezheti le az adatbázist különböző módszerekkel.
+Tartsa meg ezt az erőforráscsoportot, az adatbázis-kiszolgálót és az önálló adatbázist, ha a [következő lépésekre](#next-steps)szeretne lépni. A következő lépések bemutatják, hogyan csatlakozhat az adatbázishoz, és hogyan kérdezheti le azokat különböző módszerekkel.
 
 Az erőforráscsoport törlése:
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -123,10 +123,10 @@ az group delete --name $resourceGroupName
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy kiszolgálószintű tűzfalszabályt, amely a helyszíni vagy távoli eszközökről csatlakozik az egyetlen adatbázishoz. További információt a [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md)című témakörben talál.
-- A kiszolgálószintű tűzfalszabály létrehozása után több különböző eszközzel és nyelvvel [csatlakoztassa és kérdezze](sql-database-connect-query.md) le az adatbázist.
+- Hozzon létre egy kiszolgálói szintű tűzfalszabály, amely a helyszíni vagy távoli eszközökről csatlakozik az önálló adatbázishoz. További információ: [kiszolgálói szintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
+- A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és lekérdezheti](sql-database-connect-query.md) azt.
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Ha egyetlen adatbázist szeretne létrehozni az Azure CLI használatával, tekintse meg az [Azure CLI-mintákcímű témakört.](sql-database-cli-samples.md)
-- Ha egyetlen adatbázist szeretne létrehozni az Azure PowerShell használatával, tekintse meg az [Azure PowerShell-mintákcímű témakört.](sql-database-powershell-samples.md)
-- Az Erőforrás-kezelő sablonok létrehozásáról az [Első sablon létrehozása című](../azure-resource-manager/templates/template-tutorial-create-first-template.md)témakörben olvashat.
+- Ha egyetlen adatbázist szeretne létrehozni az Azure CLI használatával, tekintse meg az [Azure CLI-minták](sql-database-cli-samples.md)című témakört.
+- Ha Azure PowerShell használatával szeretne önálló adatbázist létrehozni, tekintse meg a [Azure PowerShell mintákat](sql-database-powershell-samples.md).
+- A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [az első sablon létrehozása](../azure-resource-manager/templates/template-tutorial-create-first-template.md).

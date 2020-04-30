@@ -1,6 +1,6 @@
 ---
 title: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
-description: Ez a rövid útmutató bemutatja, hogyan építheti ki a Log Analytics-ügynököt Windows rendszerű számítógépen.
+description: Ez a rövid útmutató bemutatja, hogyan építheti ki a Log Analytics ügynököt egy Windows rendszerű számítógépre.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435931"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
-Miután az Azure-előfizetések üzembe helyezést, engedélyezheti a Security Center az Azure-on kívül futó erőforrások, például a helyszínen vagy más felhők, a Log Analytics-ügynök kiépítése.
+Az Azure-előfizetések előkészítése után engedélyezheti Security Center az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrásokhoz az Log Analytics ügynök kiépítésével.
 
-Ez a rövid útmutató bemutatja, hogyan telepítheti a Log Analytics-ügynököt Windows rendszerű számítógépre.
+Ez a rövid útmutató bemutatja, hogyan telepítheti a Log Analytics ügynököt egy Windows rendszerű számítógépre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Kipróbálhatja a Security Center Standard díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Új, Windows rendszerű számítógép hozzáadása
 
@@ -41,7 +41,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
 4. Válassza a **Bevezetés** lapot.
 
-   ![Bevezetés][3]
+   ![Első lépések][3]
 
 5. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -72,7 +72,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 9. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
 10. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 
-Ha elkészült, a **Log Analytics ügynök** megjelenik a **Vezérlőpulton.** Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök megfelelően csatlakozik-e.
+Ha elkészült, a **log Analytics ügynök** megjelenik a **Vezérlőpulton**. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök megfelelően csatlakozik-e.
 
 Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) ismertető részt.
 
@@ -91,12 +91,12 @@ Ha már nincs rá szükség, eltávolíthatja az ügynököt a Windows rendszer�
 
 Az ügynök eltávolítása:
 
-1. Nyissa **meg a Vezérlőpultot**.
+1. Nyissa meg a **Vezérlőpultot**.
 2. Nyissa meg a **Programok és szolgáltatások** részt.
-3. A **Programok és szolgáltatások csoportban**válassza a Log **Analytics-ügynök** lehetőséget, majd kattintson **az Eltávolítás gombra.**
+3. A **programok és szolgáltatások**területen válassza ki **log Analytics ügynököt** , majd kattintson az **Eltávolítás**gombra.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban kiépítette a Log Analytics-ügynököt egy Windows-számítógépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
+Ebben a rövid útmutatóban kiépítte a Log Analytics ügynököt egy Windows rendszerű számítógépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése](tutorial-security-policy.md)

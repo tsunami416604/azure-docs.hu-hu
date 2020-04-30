@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás PHP használatával - Azure Database for MySQL
+title: Kapcsolat a PHP-Azure Database for MySQL használatával
 description: Ebben a gyors útmutatóban számos PHP-kódmintát biztosítunk a MySQL-hez készült Azure Database-ről való csatlakozáshoz és adatlekérdezéshez.
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067920"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a PHP használatával
@@ -27,15 +27,15 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 
 ### <a name="macos"></a>MacOS
 - Töltse le a [PHP 7.1.4-es verzióját](https://secure.php.net/downloads.php).
-- Telepítse a PHP-t, és olvassa el a [PHP kézikönyvet](https://secure.php.net/manual/install.macosx.php) a további konfigurációért.
+- Telepítse a PHP-t, és további konfiguráláshoz tekintse meg a [php kézikönyvét](https://secure.php.net/manual/install.macosx.php) .
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Letöltés [PHP 7.1.4 nem szál biztonságos (x64) változat](https://secure.php.net/downloads.php).
-- Telepítse a PHP-t, és olvassa el a [PHP kézikönyvet](https://secure.php.net/manual/install.unix.php) a további konfigurációért.
+- Töltse le a [php 7.1.4 nem biztonságos (x64) verzióját](https://secure.php.net/downloads.php).
+- Telepítse a PHP-t, és további konfiguráláshoz tekintse meg a [php kézikönyvét](https://secure.php.net/manual/install.unix.php) .
 
 ### <a name="windows"></a>Windows
-- Letöltés [PHP 7.1.4 nem szál biztonságos (x64) változat](https://windows.php.net/download#php-7.1).
-- Telepítse a PHP-t, és olvassa el a [PHP kézikönyvet](https://secure.php.net/manual/install.windows.php) a további konfigurációért.
+- Töltse le a [php 7.1.4 nem biztonságos (x64) verzióját](https://windows.php.net/download#php-7.1).
+- Telepítse a PHP-t, és további konfiguráláshoz tekintse meg a [php kézikönyvét](https://secure.php.net/manual/install.windows.php) .
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
