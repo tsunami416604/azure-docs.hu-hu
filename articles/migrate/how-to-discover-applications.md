@@ -1,63 +1,63 @@
 ---
-title: Alkalmazások, szerepkörök és funkciók felfedezése a helyszíni kiszolgálókon az Azure Migrate szolgáltatással
-description: Ismerje meg, hogyan fedezheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon az Azure Migrate Server Assessment segítségével.
+title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszíni kiszolgálókon Azure Migrate
+description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 03/12/2020
 ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453582"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és funkciók felfedezése
+# <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
-Ez a cikk ismerteti, hogyan fedezheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon az Azure Migrate: Server Assessment használatával.
+Ez a cikk bemutatja, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate: Server Assessment használatával.
 
-A helyszíni gépeken futó alkalmazások és szerepkörök/funkciók készletének felderítése segít azonosítani és megtervezni az Azure-ba a számítási feladatokhoz szabott áttelepítési útvonalat.
+Az alkalmazások leltárának, valamint a helyszíni gépeken futó szerepköröknek/funkcióknak a felderítése révén azonosíthatók és megtervezhető az Azure-ba irányuló áttelepítési útvonal, amelyet a számítási feladatokhoz alakítottak ki.
 
 > [!NOTE]
-> Az alkalmazásfelderítés jelenleg csak vmware virtuális gépek előzetes verzióban érhető el, és csak felderítésre korlátozódik. Még nem kínálunk alkalmazásalapú értékelést. A helyszíni VMware virtuális gépek, a Hyper-V vM-ek és a fizikai kiszolgálók gépalapú felmérése.
+> Az alkalmazás-felderítés jelenleg előzetes verzióban érhető el a VMware virtuális gépek számára, és csak a felderítésre korlátozódik. Még nem kínálunk alkalmazás-alapú értékelést. Gépi alapú értékelés a helyszíni VMware virtuális gépek, Hyper-V virtuális gépek és fizikai kiszolgálók számára.
 
-Alkalmazásfelderítés az Azure Migrate használatával: A kiszolgálóértékelése ügynök nélküli. Semmi sincs telepítve a gépekre és a virtuális gépekre. Server Assessment az Azure Migrate készüléket használja a gépvendég hitelesítő adataival együtt a felderítés végrehajtásához. A készülék távolról éri el a VMware gépeket vmware API-k használatával.
+Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló értékelése ügynök nélkül történik. Nincs telepítve a gépeken és a virtuális gépeken. A kiszolgáló értékelése a Azure Migrate berendezés használatával hajtja végre a felderítést a számítógép vendég hitelesítő adataival együtt. A készülék távolról éri el a VMware-gépeket a VMware API-k használatával.
 
 
 ## <a name="before-you-start"></a>Előkészületek
 
 1. Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-2. Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) az Azure Migrate: Server Assessment eszközt a projekthez.
-4. Tekintse meg a [VMware követelményeit](migrate-support-matrix-vmware.md#vmware-requirements) a VMware virtuális gépek felderítéséhez és értékeléséhez az Azure Migrate készülékkel.
-5. Tekintse meg az Azure Migrate berendezés üzembe helyezésének [követelményeit.](migrate-appliance.md)
-6. [Ellenőrizze az](migrate-support-matrix-vmware.md#application-discovery) alkalmazásfelderítés támogatását és követelményeit.
+2. Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt egy projekthez.
+4. A VMWare virtuális gépeknek a Azure Migrate berendezéssel való felfedésére és értékelésére vonatkozó [VMware-követelmények](migrate-support-matrix-vmware.md#vmware-requirements) ellenőrzése.
+5. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
+6. Ellenőrizze az alkalmazások felderítésének [támogatását és követelményeit](migrate-support-matrix-vmware.md#application-discovery) .
 
-## <a name="prepare-for-app-discovery"></a>Felkészülés az alkalmazásfelderítésre
+## <a name="prepare-for-app-discovery"></a>Az alkalmazások felderítésének előkészítése
 
-1. [Felkészülés a berendezés telepítésére](tutorial-prepare-vmware.md). A felkészülés magában foglalja a készülék beállításainak ellenőrzését, valamint egy fiók beállítását, amelyet a készülék a vCenter Server eléréséhez fog használni.
-2. Győződjön meg arról, hogy rendelkezik egy felhasználói fiókkal (mindegyik Windows- és Linux-kiszolgálókhoz) rendszergazdai engedélyekkel azon gépekhez, amelyeken alkalmazásokat, szerepköröket és szolgáltatásokat szeretne felderíteni.
-3. [Telepítse az Azure Migrate berendezést a](how-to-set-up-appliance-vmware.md) felderítés elindításához. A készülék üzembe helyezéséhez töltsön le és importáljon egy OVA-sablont a VMware-be, hogy a készüléket VMware vm-ként hozhatja létre. Konfigurálja a készüléket, majd regisztrálja az Azure Migrate.
-2. A készülék üzembe helyezésekor a folyamatos felderítés elindításához adja meg a következőket:
-    - Annak a vCenter-kiszolgálónak a neve, amelyhez csatlakozni szeretne.
-    - A vCenter-kiszolgálóhoz való csatlakozáshoz a készülékhez létrehozott hitelesítő adatok.
-    - A windowsos/linuxos virtuális gépekhez való csatlakozáshoz a készülékhez létrehozott fiókhitelesítő adatok.
+1. [Felkészülés a berendezések üzembe helyezésére](tutorial-prepare-vmware.md). Az előkészítés magában foglalja a berendezés beállításainak ellenőrzését, valamint egy olyan fiók beállítását, amelyet a készülék a vCenter Server eléréséhez használ majd.
+2. Győződjön meg arról, hogy rendelkezik egy felhasználói fiókkal (amely a Windows-és Linux-kiszolgálókon van), és rendszergazdai jogosultságokkal rendelkezik azokon a gépeken, amelyeken alkalmazásokat, szerepköröket és szolgáltatásokat kíván felderíteni.
+3. [Telepítse a Azure Migrate készüléket](how-to-set-up-appliance-vmware.md) a felderítés elindításához. A készülék üzembe helyezéséhez le kell töltenie és importálnia kell egy PETESEJT-sablont a VMware-be a készülék VMware virtuális gépként való létrehozásához. Konfigurálja a készüléket, majd regisztrálja azt a Azure Migrate.
+2. A berendezés üzembe helyezésekor a folyamatos felderítés elindításához a következőket kell megadnia:
+    - Annak a vCenter Server a neve, amelyhez csatlakozni szeretne.
+    - A készülékhez a vCenter Serverhoz való kapcsolódáshoz létrehozott hitelesítő adatok.
+    - A készülékhez a Windows/Linux rendszerű virtuális gépekhez való kapcsolódáshoz létrehozott fiók hitelesítő adatai.
 
-Az eszköz üzembe helyezése és a hitelesítő adatok megadása után a készülék megkezdi a virtuális gép metaadatainak és teljesítményadatainak folyamatos felderítését, valamint az alkalmazások, a funkciók és a szerepkörök felderítését.  Az alkalmazásfelderítés időtartama attól függ, hogy hány virtuális gép van. Általában egy órát vesz igénybe az 500 virtuális gépek alkalmazásfelderítése.
+A készülék üzembe helyezése és a hitelesítő adatok megadása után a készülék elindítja a virtuális gépek metaadatait és teljesítményadatait, valamint az alkalmazások, szolgáltatások és szerepkörök felderítését.  Az alkalmazások felderítésének időtartama attól függ, hogy hány virtuális gép van. Általában egy órát vesz igénybe az 500 virtuális gépek alkalmazás-felderítése során.
 
-## <a name="review-and-export-the-inventory"></a>A készlet áttekintése és exportálása
+## <a name="review-and-export-the-inventory"></a>A leltár áttekintése és exportálása
 
-A felderítés befejezése után, ha megadta az alkalmazásfelderítéshez szükséges hitelesítő adatokat, áttekintheti és exportálhatja az alkalmazáskészletet az Azure Portalon.
+Ha a felderítést követően megadták a hitelesítő adatokat az alkalmazás felderítéséhez, tekintse át és exportálja az alkalmazás leltárát a Azure Portal.
 
-1. Az **Azure Migrate – Servers** > **Azure Migrate: Server Assessment (Azure Migrate: Server Assessment)** alkalmazásban kattintson a megjelenített számra a **Felderített kiszolgálók** lap megnyitásához.
+1. A **Azure Migrate-** > Servers**Azure Migrate: kiszolgáló értékelése**lapon kattintson a megjelenített darabszámra a **felderített kiszolgálók** lap megnyitásához.
 
     > [!NOTE]
-    > Ebben a szakaszban is beállíthatja a felderített gépek függőségi leképezését, így a felmérni kívánt gépek függőségeit is megjelenítheti. [További információ](how-to-create-group-machine-dependencies.md).
+    > Ezen a ponton a függőségi leképezést is beállíthatja a felderített gépekhez, így a függőségeket a felmérni kívánt gépek között jelenítheti meg. [További információ](how-to-create-group-machine-dependencies.md).
 
-2. A **felderített alkalmazások ban**kattintson a megjelenített számra.
-3. Az **Alkalmazásleltárban**megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.
-4. A készlet exportálásához a **Felderített kiszolgálók**területen kattintson az **Alkalmazáskészlet exportálása parancsra.**
+2. A **felderített alkalmazásokban**kattintson a megjelenített darabszámra.
+3. Az **alkalmazás leltárában**megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.
+4. A leltár exportálásához a **felderített kiszolgálók**területen kattintson az **alkalmazás leltározásának exportálása**lehetőségre.
 
-Az alkalmazásleltár exportálása és letöltése Excel formátumban történik. Az **alkalmazásleltár** lap megjeleníti az összes gépen felderített összes alkalmazást.
+Az alkalmazás leltára Excel-formátumban van exportálva és letöltve. Az **alkalmazás leltározási** lapja az összes gépen felderített alkalmazást jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések
 
-- A felderített kiszolgálók felemelése és átcsoportosítása [felmérésének létrehozása.](how-to-create-assessment.md)
-- SQL Server-adatbázisok felmérése az [Azure Migrate: Adatbázis-felmérés](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)használatával.
+- [Hozzon létre egy értékelést](how-to-create-assessment.md) a felderített kiszolgálók áttelepítésének feloldásához.
+- SQL Server adatbázisok értékelése a [Azure Migrate használatával: adatbázis-értékelés](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).

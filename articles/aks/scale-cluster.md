@@ -1,31 +1,31 @@
 ---
 title: Azure Kubernetes Service- (AKS-) fürt méretezése
-description: Ismerje meg, hogyan skálázható a csomópontok száma egy Azure Kubernetes-fürt (AKS) fürtben.
+description: Megtudhatja, hogyan méretezheti a csomópontok számát egy Azure Kubernetes-szolgáltatásbeli (ak-) fürtben.
 services: container-service
 author: iainfoulds
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
 ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79368417"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Csomópontszám skálázása egy Azure Kubernetes Service- (AKS-) fürtben
 
-Ha az alkalmazások erőforrás-igényei megváltoznak, manuálisan skálázhatja az AKS-fürtöt, hogy különböző számú csomópontot futtasson. Ha leskálázódik, a csomópontok at gondosan [kordonnal és kiürítési][kubernetes-drain] minimalizálása érdekében zavar a futó alkalmazások. A skálázás kor az AKS megvárja, `Ready` amíg a csomópontokat megjelöli a Kubernetes-fürt, mielőtt a podok ütemezése rájuk.
+Ha az alkalmazások erőforrás-szükséglete megváltozik, manuálisan méretezheti egy AK-fürtöt úgy, hogy más számú csomópontot futtasson. A skálázás során a rendszer gondosan [kiüríti és kiüríti][kubernetes-drain] a csomópontokat az alkalmazások futtatásának minimalizálásához. Ha vertikális felskálázást végez, az AK megvárja, `Ready` amíg a Kubernetes-fürt meg nem jelöli a csomópontokat a hüvelyek ütemezése előtt.
 
 ## <a name="scale-the-cluster-nodes"></a>A fürtcsomópontok méretezése
 
-Először az [az aks show][az-aks-show] paranccsal szerezd meg a csomópontkészlet *nevét.* A következő példa lekéri a *myResourceGroup* erőforráscsoportban a *myResourceGroup* nevű fürt csomópontkészletének nevét:
+Először kérje le a Node-készlet *nevét* az az az [AK show][az-aks-show] paranccsal. A következő példa beolvassa a *myAKSCluster* nevű fürt Node-készletének nevét a *myResourceGroup* erőforráscsoporthoz:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-A következő példa kimenetazt mutatja, hogy a *név* *nodepool1*:
+A következő példa kimenete azt mutatja, hogy a *név* *nodepool1*:
 
 ```output
 [
@@ -41,13 +41,13 @@ A következő példa kimenetazt mutatja, hogy a *név* *nodepool1*:
 ]
 ```
 
-Az [aks scale][az-aks-scale] paranccsal méretezhetők a fürtcsomópontok. A következő példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra skáláz. Adja meg saját *--nodepool-nevét* az előző parancsból, például *nodepool1:*
+A fürtcsomópontok méretezéséhez használja az az [AK Scale][az-aks-scale] parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra méretezi. Adja meg saját *nodepool-nevét* az előző parancsból, például *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-A következő példakimenet azt mutatja, hogy a fürt sikeresen skálázva egy csomópontra, ahogy az *az agentPoolProfiles* szakaszban látható:
+A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való skálázása sikeresen megtörtént, ahogy az a *agentPoolProfiles* szakaszban is látható:
 
 ```json
 {
@@ -71,7 +71,7 @@ A következő példakimenet azt mutatja, hogy a fürt sikeresen skálázva egy c
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben manuálisan méretezett egy AKS-fürta csomópontok számának növelése vagy csökkentése érdekében. A [fürt automatikus skálázójával][cluster-autoscaler] is automatikusan skálázhatja a fürtöt.
+Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számának növeléséhez vagy csökkentéséhez. A fürt automatikus [méretezésével][cluster-autoscaler] is automatikusan méretezheti a fürtöt.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

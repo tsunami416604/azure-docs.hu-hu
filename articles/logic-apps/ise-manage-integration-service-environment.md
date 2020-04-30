@@ -1,59 +1,59 @@
 ---
-title: Integrációs szolgáltatási környezetek kezelése az Azure Logic Apps alkalmazásban
-description: Ellenőrizze a hálózati állapotot, és kezelje a logikai alkalmazásokat, kapcsolatokat, egyéni összekötőket és integrációs fiókokat az Azure Logic Apps integrációs szolgáltatási környezetében (ISE).
+title: Integrációs szolgáltatási környezetek kezelése Azure Logic Apps
+description: A hálózati állapot és a Logic apps, kapcsolatok, egyéni összekötők és integrációs fiókok kezelése a Azure Logic Apps integrációs szolgáltatási környezetében (ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284199"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése az Azure Logic Apps alkalmazásban
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
-Ez a cikk bemutatja, hogyan hajthatja végre a felügyeleti feladatokat az [integrációs szolgáltatási környezetben (ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)például:
+Ez a cikk bemutatja, hogyan végezheti el az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)felügyeleti feladatait, például:
 
-* Kezelje az erőforrásokat, például a logikai alkalmazásokat, a kapcsolatokat, az integrációs fiókokat és az ISE-ben lévő összekötőket.
-* Ellenőrizze az ISE hálózati állapotát.
-* Adjon hozzá kapacitást, indítsa újra az ISE-t, vagy törölje az ISE-t, kövesse a jelen témakörlépéseit. Ha ezeket az összetevőket hozzá szeretné adni az ISE-hez, olvassa el az [Összetevők hozzáadása az integrációs szolgáltatáskörnyezethez című témakört.](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* Kezelheti az ISE-ban lévő erőforrásokat, például a Logic appst, a kapcsolatokat, az integrációs fiókokat és az összekötőket.
+* Keresse meg az ISE hálózati állapotát.
+* Adja hozzá a kapacitást, indítsa újra az ISE-t, vagy törölje az ISE-t, kövesse a jelen témakör lépéseit. Az összetevők az ISE-ben való hozzáadásával kapcsolatban lásd: összetevők [hozzáadása az integrációs szolgáltatási környezethez](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A portál keresőmezőjébe írja be az "integrációs szolgáltatáskörnyezetek" kifejezést, majd válassza **az Integrációs szolgáltatáskörnyezetek**lehetőséget.
+1. A portál keresési mezőjébe írja be az "integrációs szolgáltatási környezetek" kifejezést, majd válassza az **integrációs szolgáltatási környezetek**lehetőséget.
 
    ![Integrációs szolgáltatási környezetek keresése](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
 
-1. Az eredmények listájából válassza ki az integrációs szolgáltatási környezetet.
+1. Az eredmények listából válassza ki az integrációs szolgáltatási környezetet.
 
-   ![Integrációs szolgáltatáskörnyezet kiválasztása](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
+   ![Integrációs szolgáltatási környezet kiválasztása](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
 
-1. Folytassa a következő szakaszokat logikai alkalmazások, kapcsolatok, összekötők vagy integrációs fiókok megkereséséhez az ISE-ben.
+1. Folytassa a következő szakasszal a logikai alkalmazások, kapcsolatok, összekötők vagy integrációs fiókok kereséséhez az ISE-ben.
 
 <a name="check-network-health"></a>
 
-## <a name="check-network-health"></a>A hálózat állapotának ellenőrzése
+## <a name="check-network-health"></a>Hálózati állapot ellenõrzése
 
-Az ISE menü **Beállítások**területén válassza a **Hálózat állapota**lehetőséget. Ez az ablaktábla az alhálózatok állapotát és az egyéb szolgáltatásoktól való kimenő függőségeket jeleníti meg.
+Az ISE menü **Beállítások**területén válassza a **hálózati állapot**elemet. Ezen a panelen látható az alhálózatok és a kimenő függőségek állapota az egyéb szolgáltatásokban.
 
-![A hálózat állapotának ellenőrzése](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+![Hálózati állapot ellenõrzése](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
 
 <a name="find-logic-apps"></a>
 
-## <a name="manage-your-logic-apps"></a>A logikai alkalmazások kezelése
+## <a name="manage-your-logic-apps"></a>Logikai alkalmazások kezelése
 
-Megtekintheti és kezelheti az ISE-ben található logikai alkalmazásokat.
+Megtekintheti és kezelheti az ISE-ben található Logic apps-alkalmazásokat.
 
-1. Az ISE menü **Beállítások**területén válassza a **Logikai alkalmazások**lehetőséget.
+1. Az ISE menü **Beállítások**területén válassza a **logikai alkalmazások**elemet.
 
    ![Logikai alkalmazások megtekintése](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Ha el szeretné távolítani azokat a logikai alkalmazásokat, amelyekre már nincs szüksége az ISE-ben, jelölje ki ezeket a logikai alkalmazásokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt adatok megerősítéséhez válassza az **Igen**lehetőséget.
+1. Ha el szeretné távolítani a már nem szükséges Logic apps-alkalmazásokat az ISE-ben, válassza ki a logikai alkalmazásokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-api-connections"></a>
 
@@ -61,11 +61,11 @@ Megtekintheti és kezelheti az ISE-ben található logikai alkalmazásokat.
 
 Megtekintheti és kezelheti az ISE-ben futó logikai alkalmazások által létrehozott kapcsolatokat.
 
-1. Az ISE menü **Beállítások**területén válassza az **API-kapcsolatok**lehetőséget.
+1. Az ISE menü **Beállítások**területén válassza az API- **kapcsolatok**elemet.
 
    ![API-kapcsolatok megtekintése](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
 
-1. Ha el szeretné távolítani azokat a kapcsolatokat, amelyekre már nincs szüksége az ISE-ben, jelölje ki ezeket a kapcsolatokat, majd kattintson a **Törlés gombra.** A törölni kívánt adatok megerősítéséhez válassza az **Igen**lehetőséget.
+1. Ha el szeretné távolítani a már nem szükséges kapcsolatokat az ISE-ben, válassza ki ezeket a kapcsolatokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="manage-api-connectors"></a>
 
@@ -73,11 +73,11 @@ Megtekintheti és kezelheti az ISE-ben futó logikai alkalmazások által létre
 
 Megtekintheti és kezelheti az ISE-ben üzembe helyezett API-összekötőket.
 
-1. Az ISE menü **Beállítások**területén válassza a **Felügyelt összekötők**lehetőséget.
+1. Az ISE menü **Beállítások**területén válassza a **felügyelt összekötők**lehetőséget.
 
    ![Felügyelt összekötők megtekintése](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
 
-1. Ha el szeretné távolítani azokat az összekötőket, amelyeket nem szeretne elérhetővé tenni az ISE-ben, jelölje ki ezeket az összekötőket, majd kattintson a **Törlés gombra.** A törölni kívánt adatok megerősítéséhez válassza az **Igen**lehetőséget.
+1. Ha el szeretné távolítani az ISE-ben nem elérhető összekötőket, válassza ki az összekötőket, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-custom-connectors"></a>
 
@@ -89,95 +89,95 @@ Megtekintheti és kezelheti az ISE-ben üzembe helyezett egyéni összekötőket
 
    ![Egyéni összekötők keresése](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Ha olyan egyéni összekötőket szeretne eltávolítani, amelyekre már nincs szüksége az ISE-ben, jelölje ki ezeket az összekötőket, majd kattintson a **Törlés gombra.** A törölni kívánt adatok megerősítéséhez válassza az **Igen**lehetőséget.
+1. Ha el szeretné távolítani az ISE-ben már nem szükséges egyéni összekötőket, válassza ki az összekötőket, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>Integrációs fiókok kezelése
 
-1. Az ISE menü **Beállítások**területén válassza **az Integrációs fiókok lehetőséget.**
+1. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok**elemet.
 
    ![Integrációs fiókok keresése](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 
-1. Ha már nem szükséges eltávolítani az integrációs fiókokat az ISE-ből, jelölje ki ezeket az integrációs fiókokat, majd kattintson a **Törlés gombra.**
+1. Ha már nincs rá szükség az integrációs fiókok eltávolítására az ISE-ből, válassza ki ezeket az integrációs fiókokat, majd válassza a **Törlés**lehetőséget.
 
 <a name="add-capacity"></a>
 
 ## <a name="add-ise-capacity"></a>ISE-kapacitás hozzáadása
 
-A prémium SZINTŰ ISE alapegység rögzített kapacitással rendelkezik, így ha nagyobb átviteli kapacitásra van szüksége, további méretezési egységeket adhat hozzá a létrehozás során vagy azt követően. A fejlesztői termékváltozat nem tartalmazza a méretezési egységek hozzáadásának képességét.
+A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár utána több skálázási egységet is hozzáadhat. A fejlesztői SKU nem tartalmazza a méretezési egységek hozzáadásának képességét.
 
-1. Az [Azure Portalon](https://portal.azure.com)nyissa meg az ISE-t.
+1. A [Azure Portal](https://portal.azure.com)lépjen az ISE elemre.
 
-1. Az ISE használati és teljesítménymutatóinak áttekintéséhez válassza az ISE menü **Áttekintés parancsát.**
+1. Az ISE használati és teljesítmény-metrikáinak áttekintéséhez az ISE menüben válassza az **Áttekintés**lehetőséget.
 
    ![Az ISE használatának megtekintése](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
 
-1. A **Beállítások csoportban**válassza a **Kiskálázás**lehetőséget. A **Konfigurálás** ablaktáblán válasszon az alábbi lehetőségek közül:
+1. A **Beállítások**területen válassza a **felskálázás**lehetőséget. A **Konfigurálás** ablaktáblán válasszon a következő lehetőségek közül:
 
-   * [**Kézi lépték:**](#manual-scale)A használni kívánt feldolgozási egységek száma alapján méretezhető.
-   * [**Egyéni automatikus skálázás:**](#custom-autoscale)Teljesítménymutatók alapján skálázás különböző feltételek ből való kiválasztással és a feltételek teljesítéséhez vonatkozó küszöbértékek megadásával.
+   * [**Manuális méretezés**](#manual-scale): méretezés a használni kívánt feldolgozási egységek számától függően.
+   * [**Egyéni autoscale**](#custom-autoscale): méretezés teljesítmény-mérőszámok alapján, különböző feltételek kiválasztásával és a feltételek teljesítéséhez szükséges küszöbértékek megadásával.
 
-   ![Válassza ki a kívánt méretezési típust](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Válassza ki a kívánt skálázási típust](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
-### <a name="manual-scale"></a>Kézi skála
+### <a name="manual-scale"></a>Manuális méretezés
 
-1. Miután a **Kézi méretezés**lehetőséget, a **További kapacitás**lehetőséget választja, válassza ki a használni kívánt méretezési egységek számát.
+1. A **manuális méretezés**kiválasztása után a **további kapacitáshoz**válassza ki a használni kívánt skálázási egységek számát.
 
-   ![Válassza ki a kívánt méretezési típust](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+   ![Válassza ki a kívánt skálázási típust](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
 1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 <a name="custom-autoscale"></a>
 
-### <a name="custom-autoscale"></a>Egyéni automatikus skálázás
+### <a name="custom-autoscale"></a>Egyéni méretezés
 
-1. Miután kiválasztotta **az Egyéni automatikus skálázás**, **az automatikus skálázási beállítás neve,** adja meg a beállítást, és szükség esetén válassza ki az Azure erőforráscsoport, ahová a beállítás tartozik.
+1. Miután kiválasztotta az **Egyéni autoskálázást**, az **autoskálázási beállítás neve**mezőben adja meg a beállítás nevét, és szükség esetén válassza ki azt az Azure-erőforráscsoportot, amelyben a beállítás tartozik.
 
-   ![Adja meg az automatikus skálázási beállítás nevét, és válassza ki az erőforráscsoportot](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+   ![Adja meg az autoskálázási beállítás nevét, majd válassza az erőforráscsoport lehetőséget.](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. Az **Alapértelmezett** feltétel nél válassza a **Méretezés egy metrika alapján** vagy a Méretezés egy adott **példányszámra**lehetőséget.
+1. Az **alapértelmezett feltétel beállításnál** válassza ki a **skála alapján mérőszámot** vagy **méretezést egy adott példányszámra**.
 
-   * Ha példányalapú értéket választ, adja meg a feldolgozási egységek számát, amely 0 és 10 között van.
+   * Ha a példány-alapú lehetőséget választja, adja meg a feldolgozási egységek számát, amely a 0 és 10 közötti érték.
 
-   * Ha a metrikus alapú tanoncok közül választ, kövesse az alábbi lépéseket:
+   * Ha a metrika-alapú elemet választja, kövesse az alábbi lépéseket:
 
-     1. A **Szabályok csoportban** válassza **a Szabály hozzáadása**lehetőséget.
+     1. A **szabályok** szakaszban válassza a **szabály hozzáadása**elemet.
 
-     1. A **Méretezési szabály** ablaktáblán állítsa be a feltételeket és a végrehajtandó műveletet, amikor a szabály aktiválódik.
+     1. A **skálázási szabály** ablaktáblán állítsa be a feltételek és a művelet végrehajtását, ha a szabály eseményindítót végez.
 
-     1. **A példánykorlátok esetében**adja meg a következő értékeket:
+     1. A **példányokra vonatkozó korlátokat**a következő értékek megadásával adhatja meg:
 
-        * **Minimum**: A használandó feldolgozóegységek minimális száma
-        * **Maximum**: A felhasználandó feldolgozóegységek maximális száma
-        * **Alapértelmezett**: Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás a feldolgozási egységek alapértelmezett számára kerül át. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető be.
+        * **Minimum**: a használandó feldolgozó egységek minimális száma
+        * **Maximum**: a használni kívánt feldolgozási egységek maximális száma
+        * **Alapértelmezett**: Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás az alapértelmezett számú feldolgozási egységre lesz kibővítve. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető a-ben.
 
-1. Másik feltétel hozzáadásához válassza **a Léptékfeltétel hozzáadása lehetőséget.**
+1. Egy másik feltétel hozzáadásához válassza a **skálázási feltétel hozzáadása**lehetőséget.
 
-1. Ha végzett az automatikus skálázási beállításokkal, mentse a módosításokat.
+1. Ha elkészült az autoskálázási beállításokkal, mentse a módosításokat.
 
 <a name="restart-ISE"></a>
 
-## <a name="restart-ise"></a>Az ISE újraindítása
+## <a name="restart-ise"></a>ISE újraindítása
 
-Ha módosítja a DNS-kiszolgáló vagy a DNS-kiszolgáló beállításait, újra kell indítania az ISE-t, hogy az ISE feltudja venni ezeket a módosításokat. A prémium szintű termékváltozat ise újraindítása nem eredményez leállást a redundancia és az újrahasznosítás során újrainduló összetevők miatt. Azonban a fejlesztői termékváltozat ISE tapasztalatok állásidő, mert nincs redundancia létezik. További információ: [ISE SKA](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+Ha módosítja a DNS-kiszolgáló vagy a DNS-kiszolgáló beállításait, újra kell indítania az ISE-t, hogy az ISE fel tudja venni a módosításokat. A prémium SKU ISE újraindítása nem eredményez leállást a redundancia és az újraindítást végző összetevők miatt. A fejlesztői SKU ISE azonban állásidőt tapasztal, mert nem létezik redundancia. További információ: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i.
 
-1. Az [Azure Portalon](https://portal.azure.com)nyissa meg az ISE-t.
+1. A [Azure Portal](https://portal.azure.com)lépjen az ISE elemre.
 
-1. Az ISE menüben válassza az **Áttekintés parancsot.** Az Áttekintés eszköztár **Újraindítás gombján kattintson az Újraindítás gombra.**
+1. Az ISE menüben válassza az **Áttekintés**lehetőséget. Az áttekintő eszköztáron **indítsa újra**a következőt:.
 
-   ![Integrációs szolgáltatáskörnyezet újraindítása](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+   ![Integrációs szolgáltatási környezet újraindítása](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
 <a name="delete-ise"></a>
 
 ## <a name="delete-ise"></a>ISE törlése
 
-Mielőtt törölne egy ISE-t, amelyre már nincs szüksége, vagy egy ISE-t tartalmazó Azure-erőforráscsoportból, ellenőrizze, hogy nincs-e szabályzata vagy zárolása az Azure erőforráscsoporton, amely ezeket az erőforrásokat tartalmazza, vagy az Azure virtuális hálózatán, mert ezek az elemek blokkolhatják a törlést.
+Mielőtt töröl egy olyan ISE-t, amelyhez már nincs szüksége, vagy egy olyan Azure-erőforráscsoport, amely egy ISE-t tartalmaz, győződjön meg arról, hogy nincsenek szabályzatok vagy zárolások az Azure-erőforráscsoport számára, amely tartalmazza ezeket az erőforrásokat vagy az Azure Virtual Network szolgáltatást, mert ezek az elemek letilthatják a törlést.
 
-Az ISE törlése után előfordulhat, hogy akár 9 órát kell várnia, mielőtt megpróbálja törölni az Azure virtuális hálózatát vagy alhálózatait.
+Az ISE törlése után előfordulhat, hogy az Azure-beli virtuális hálózat vagy alhálózatok törlése előtt legfeljebb 9 órát kell várnia.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Erőforrások hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)

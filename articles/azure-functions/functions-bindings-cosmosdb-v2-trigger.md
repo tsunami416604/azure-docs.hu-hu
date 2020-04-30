@@ -1,28 +1,28 @@
 ---
-title: Az Azure Cosmos DB eseményindító a Functions 2.x-hez
-description: Ismerje meg az Azure Cosmos DB eseményindító használatát az Azure Functionsben.
+title: A 2. x függvények Azure Cosmos DB triggere
+description: Ismerje meg, hogyan használhatja a Azure Cosmos DB triggert a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277569"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Az Azure Cosmos DB eseményindítója az Azure Functions 2.x-hez
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Cosmos DB trigger a Azure Functions 2. x esetében
 
-Az Azure Cosmos DB Trigger az [Azure Cosmos DB change feed](../cosmos-db/change-feed.md) használatával figyeli a beszúrások és frissítések partíciók között. A módosítási hírcsatorna beszúrásokat és frissítéseket tesz közzé, nem törléseket.
+A Azure Cosmos DB trigger a [Azure Cosmos db változási csatornát](../cosmos-db/change-feed.md) használja, hogy figyelje a lapkákat és a frissítéseket a partíciók között. A módosítási hírcsatorna közzéteszi a lapkákat és a frissítéseket, a törlést nem.
 
-A beállítással és a konfigurációval kapcsolatos részletekről az [áttekintésben](./functions-bindings-cosmosdb-v2.md)olvashat.
+További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-cosmosdb-v2.md).
 
 <a id="example" name="example"></a>
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely et a megadott adatbázisban és gyűjteményben beszúrások vagy frissítések vannak meghívva.
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely akkor jelenik meg, ha a megadott adatbázisban és gyűjteményben lapkák vagy frissítések vannak megadva.
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -54,11 +54,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A következő példa egy Cosmos DB-eseményindítót mutat be egy *function.json* fájlban és egy [C# parancsfájlfüggvényt,](functions-reference-csharp.md) amely a kötést használja. A függvény naplóüzeneteket ír, amikor a Cosmos DB rekordok hozzáadása vagy módosítása.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -73,7 +73,7 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-Itt a C# script kód:
+A C# szkript kódja:
 
 ```cs
     #r "Microsoft.Azure.DocumentDB.Core"
@@ -90,11 +90,11 @@ Itt a C# script kód:
     }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő példa egy Cosmos DB-eseményindítót mutat be egy *function.json* fájlban és egy [JavaScript-függvényt,](functions-reference-node.md) amely a kötést használja. A függvény naplóüzeneteket ír, amikor a Cosmos DB rekordok hozzáadása vagy módosítása.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -109,7 +109,7 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-Itt a JavaScript-kód:
+Itt látható a JavaScript-kód:
 
 ```javascript
     module.exports = function (context, documents) {
@@ -121,9 +121,9 @@ Itt a JavaScript-kód:
 
 # <a name="python"></a>[Python](#tab/python)
 
-A következő példa egy Cosmos DB-eseményindítót mutat be egy *function.json* fájlban és egy [Python-függvényt,](functions-reference-python.md) amely a kötést használja. A függvény naplóüzeneteket ír, amikor a Cosmos DB rekordok módosulnak.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény naplófájlokat ír a Cosmos DB rekordok módosításakor.
 
-A *function.json* fájlban a kötési adatok:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -138,7 +138,7 @@ A *function.json* fájlban a kötési adatok:
 }
 ```
 
-Itt a Python kód:
+Itt látható a Python-kód:
 
 ```python
     import logging
@@ -152,7 +152,7 @@ Itt a Python kód:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ez a függvény meghívása akkor történik meg, ha a megadott adatbázisban és gyűjteményben beszúrások vagy frissítések vannak.
+Ez a függvény akkor kerül meghívásra, ha a megadott adatbázisban és gyűjteményben lapkák vagy frissítések vannak.
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -169,7 +169,7 @@ Ez a függvény meghívása akkor történik meg, ha a megadott adatbázisban é
 ```
 
 
-A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/functions/runtime)használja a jegyzeteket azon `@CosmosDBTrigger` paramétereken, amelyek értéke a Cosmos DB-ből származik.  Ez a jegyzet használható natív Java-típusok, POJOs vagy `Optional<T>`nullable értékek segítségével.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@CosmosDBTrigger` a Megjegyzés azon paramétereket, amelyek értéke Cosmos DBból származik.  Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>`.
 
 ---
 
@@ -177,9 +177,9 @@ A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A [C# osztálykönyvtárakban](functions-dotnet-class-library.md)használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot.
+A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot.
 
-Az attribútum konstruktora felveszi az adatbázis nevét és a gyűjtemény nevét. A beállításokkal és a konfigurálható egyéb tulajdonságokkal kapcsolatos további tudnivalókért olvassa el [az Eseményindító – konfiguráció](#configuration)című témakört. Íme egy `CosmosDBTrigger` attribútum példa egy metódus aláírás:
+Az attribútum konstruktora az adatbázis nevét és a gyűjtemény nevét veszi át. További információ ezekről a beállításokról és a konfigurálható egyéb tulajdonságokról: [trigger-Configuration](#configuration). `CosmosDBTrigger` Példa a metódus aláírására:
 
 ```csharp
     [FunctionName("DocumentUpdates")]
@@ -192,65 +192,65 @@ Az attribútum konstruktora felveszi az adatbázis nevét és a gyűjtemény nev
     }
 ```
 
-A teljes példa: [Trigger](#example).
+A teljes példa: [trigger](#example).
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az attribútumokat a C# script nem támogatja.
+A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az attribútumokat a Python nem támogatja.
+A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java függvények futásidejű függvénytár,](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja a `@CosmosDBInput` jegyzet a paramétereket, amelyek adatokat olvasnak a Cosmos DB.
+A [Java functions futtatókörnyezet könyvtárában](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja a `@CosmosDBInput` megjegyzések Cosmos DBból beolvasott paraméterek megjegyzéseit.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function.json* fájlban és az `CosmosDBTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `CosmosDBTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus** | n/a | A beállításnak `cosmosDBTrigger`a beállítására kell beállítható. |
-|**direction** | n/a | A beállításnak `in`a beállítására kell beállítható. Ez a paraméter automatikusan be van állítva, amikor létrehozza az eseményindítót az Azure Portalon. |
-|**név** | n/a | A függvénykódban használt változónév, amely a módosításokkal rendelkező dokumentumok listáját jelöli. |
-|**connectionStringSetting**|**ConnectionStringSetting (Kapcsolatkarakterlánc-beállítás)** | A figyelt Azure Cosmos DB-fiókhoz való csatlakozáshoz használt kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. |
-|**adatbázisneve**|**DatabaseName**  | Az Azure Cosmos DB-adatbázis neve a gyűjtemény figyelt használatával. |
-|**Lekérdezés_neve** |**CollectionName** | A figyelt gyűjtemény neve. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nem kötelező) A címbérlet-gyűjteményt tartalmazó Azure Cosmos DB-fiókkapcsolati karakterláncát tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, a függvény az `connectionStringSetting` értéket használja. Ez a paraméter automatikusan be van állítva, amikor a kötés jön létre a portálon. A címbérlet-gyűjtemény kapcsolati karakterláncának írási engedéllyel kell rendelkeznie.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (Nem kötelező) Annak az adatbázisnak a neve, amely a bérletek tárolására használt gyűjteményt tárolja. Ha nincs beállítva, `databaseName` a beállítás értéke lesz használva. Ez a paraméter automatikusan be van állítva, amikor a kötés jön létre a portálon. |
-|**leaseCollectionName** | **LeaseCollectionName** | (Nem kötelező) A bérletek tárolására használt gyűjtemény neve. Ha nincs beállítva, a függvény az értéket `leases` használja. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Nem kötelező) Ha a `true`beállítás, a bérletgyűjtemény automatikusan létrejön, ha még nem létezik. Az alapértelmezett érték `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Nem kötelező) A címbérlet-gyűjtemény létrehozásakor hozzárendelhető kérelemegységek számát határozza meg. Ez a beállítás `createLeaseCollectionIfNotExists` csak akkor `true`használatos, ha a . Ez a paraméter automatikusan be van állítva, amikor a kötést a portál használatával hozza létre.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Nem kötelező) Ha be van állítva, az érték előtagjaként hozzáadódik a függvény címbérlet-gyűjteményében létrehozott címbérletekhez. Egy előtag használata lehetővé teszi, hogy két különálló Azure-függvények ugyanazt a bérletgyűjteménykülönböző előtagok használatával.
-|**feedPollDelay**| **FeedPollDelay (FeedPollDelay)**| (Nem kötelező) A partíció lekérdezése közötti késleltetés (ezredmásodpercben) a hírcsatorna új módosításai közötti késleltetés ideje, miután az összes aktuális módosítás kiürül. Az alapértelmezett érték 5000 ezredmásodperc, azaz 5 másodperc.
-|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Nem kötelező) Ha be van állítva, ezredmásodpercben határozza meg azt az időközt, amelyelindítja a feladatot, hogy kiszámítsa a partíciókat az ismert gazdapéldányok között egyenletesen elosztva. Az alapértelmezett érték 13000 (13 másodperc).
-|**leaseExpirationInterval**| **LeaseExpirationInterval**| (Nem kötelező) Ha be van állítva, ezredmásodpercben határozza meg azt az időtartamot, amelyre a bérlet egy partíciót képviselő címbérletre kerül. Ha a bérlet nem újul meg ezen az időtartamon belül, akkor lejár, és a partíció tulajdonjoga egy másik példányba kerül. Az alapértelmezett érték 60000 (60 másodperc).
-|**leaseRenewInterval között**| **LeaseRenewInterval között**| (Nem kötelező) Ha be van állítva, ezredmásodpercben határozza meg a megújítási időközt a partíciók jelenleg egy példány által birtokolt összes címbérletéhez. Az alapértelmezett érték 17000 (17 másodperc).
-|**ellenőrzőpontGyakoriság**| **Ellenőrzőpontgyakoriság**| (Nem kötelező) Ha be van állítva, ezredmásodpercben határozza meg a címbérlet-ellenőrzőpontok közötti intervallumot. Az alapértelmezett érték mindig minden függvényhívás után történik.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Nem kötelező) Ha be van állítva, ez a tulajdonság beállítja a függvényhívásonként fogadott elemek maximális számát. Ha a figyelt gyűjteményben a műveletek tárolt eljárásokon keresztül történnek, a [tranzakció hatóköre](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) megmarad, amikor elemeket olvas be a változási hírből. Ennek eredményeképpen a kapott cikkek száma magasabb lehet, mint a megadott érték, így az ugyanazon tranzakció által módosított cikkek egy atomi köteg részeként kerülnek visszaadásra.
-|**startFromBeginning**| **Elejétől kezdve**| (Nem kötelező) Ez a beállítás arra utasítja az eseményindítót, hogy a módosításokat a gyűjtemény módosítási előzményeinek elejétől olvassa el, és ne az aktuális időpontban kezdje. Az indítási eseményindító első indításakor az olvasás, az ellenőrzőpontok már tárolva vannak. Ha ezt `true` a beállítást úgy állítja be, hogy ha már vannak már létrehozott bérletek, annak nincs hatása. |
-|**preferredLocations (elsődleges helyek)**| **PreferredLocations (PreferredLocations)**| (Nem kötelező) Az Azure Cosmos DB szolgáltatás georeplikált adatbázis-fiókjainak előnyben részesített helyeit (régióit) határozza meg. Az értékeket vesszővel kell elválasztani. Például: "USA keleti régiója, USA déli középső régiója, Észak-Európa". |
+|**típusa** | n/a | Értékre kell állítani `cosmosDBTrigger`. |
+|**direction** | n/a | Értékre kell állítani `in`. Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
+|**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való kapcsolódáshoz használt kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. |
+|**databaseName**|**DatabaseName**  | Annak a Azure Cosmos DB-adatbázisnak a neve, amelyen a megfigyelt gyűjtemény szerepel. |
+|**collectionName** |**CollectionName** | A figyelni kívánt gyűjtemény neve. |
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Választható Egy olyan Alkalmazásbeállítás neve, amely tartalmazza a kapcsolódási karakterláncot a címbérleti gyűjteményt tároló Azure Cosmos DB fiókhoz. Ha nincs beállítva, a `connectionStringSetting` rendszer az értéket használja. A rendszer automatikusan beállítja ezt a paramétert, ha a kötés a portálon jön létre. A bérletek gyűjteményéhez tartozó kapcsolatok karakterláncának írási engedélyekkel kell rendelkeznie.|
+|**leaseDatabaseName** |**LeaseDatabaseName** | Választható Annak az adatbázisnak a neve, amely a bérletek tárolásához használt gyűjteményt tárolja. Ha nincs beállítva, a rendszer a `databaseName` beállítás értékét használja. A rendszer automatikusan beállítja ezt a paramétert, ha a kötés a portálon jön létre. |
+|**leaseCollectionName** | **LeaseCollectionName** | Választható A bérletek tárolásához használt gyűjtemény neve. Ha nincs beállítva, a rendszer `leases` az értéket használja. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Választható Ha a értékre `true`van állítva, a bérletek gyűjteménye automatikusan létrejön, ha még nem létezik. Az alapértelmezett érték `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| Választható Meghatározza a bérletek gyűjteményének létrehozásakor hozzárendelni kívánt kérelmek számát. Ezt a beállítást csak akkor használja `createLeaseCollectionIfNotExists` a rendszer, `true`ha a be van állítva. A rendszer automatikusan beállítja ezt a paramétert, ha a kötést a portál használatával hozza létre.
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Választható Ha be van állítva, a rendszer hozzáadja az értéket az ehhez a függvényhez tartozó címbérleti gyűjteményben létrehozott bérletek előtagjaként. Az előtaggal két különálló Azure Functions is megoszthatja ugyanazt a címbérletet különböző előtagok használatával.
+|**feedPollDelay**| **FeedPollDelay**| Választható Az az idő (ezredmásodpercben), amely során a rendszer lekérdezi a partíciót az új változásokhoz a hírcsatornán, miután az összes aktuális változást kiüríti. Az alapértelmezett érték 5 000 ezredmásodperc vagy 5 másodperc.
+|**leaseAcquireInterval**| **LeaseAcquireInterval**| Választható Ha be van állítva, a rendszer ezredmásodpercben meghatározza az intervallumot, hogy kiindítson egy feladatot a számításhoz, ha a partíciókat egyenletesen osztják el az ismert gazdagép-példányok között. Az alapértelmezett érték 13000 (13 másodperc).
+|**leaseExpirationInterval**| **LeaseExpirationInterval**| Választható A beállításakor a rendszer ezredmásodpercben meghatározza azt az intervallumot, ameddig a bérlet egy partíciót jelképező bérletre kerül. Ha a bérlet nem kerül megújításra ezen az intervallumon belül, az azt eredményezi, hogy a partíció tulajdonjoga lejár, és egy másik példányra kerül át. Az alapértelmezett érték 60000 (60 másodperc).
+|**leaseRenewInterval**| **LeaseRenewInterval**| Választható A beállításakor a rendszer ezredmásodpercben meghatározza az adott példány által jelenleg tárolt partíciók címbérletének megújítási intervallumát. Az alapértelmezett érték 17000 (17 másodperc).
+|**checkpointFrequency**| **CheckpointFrequency**| Választható Ha be van állítva, az meghatározza a címbérleti ellenőrzőpontok közötti intervallumot ezredmásodpercben. Az alapértelmezett érték mindig az egyes függvények hívása után történik.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Választható Ha be van állítva, ez a tulajdonság határozza meg a függvényhívás által fogadott elemek maximális számát. Ha a figyelt gyűjteményben lévő műveleteket tárolt eljárásokkal hajtják végre, a [tranzakció hatóköre](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) megmarad a változási csatornán lévő elemek olvasása során. Ennek eredményeképpen a fogadott elemek száma magasabb lehet a megadott értéknél, így az ugyanazon tranzakció által módosított elemek egy atomi köteg részeként lesznek visszaadva.
+|**startFromBeginning**| **StartFromBeginning**| Választható Ez a beállítás azt jelzi, hogy a trigger beolvassa a gyűjtemény korábbi változásait, nem pedig az aktuális időpontot. Az elejétől való olvasás csak az indítás első indításakor működik, ahogy az a későbbi futtatásokban is, az ellenőrzőpontok már tárolódnak. Ha úgy állítja be `true` ezt a beállítást, hogy a már létrehozott bérletek ne legyenek hatással. |
+|**preferredLocations**| **PreferredLocations**| Választható Meghatározza a földrajzilag replikált adatbázis-fiókok előnyben részesített helyét (régióit) a Azure Cosmos DB szolgáltatásban. Az értékeket vesszővel kell elválasztani. Például: "az USA keleti régiója, az USA déli középső régiója, Észak-Európa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Használat
 
-Az eseményindító hoz egy második gyűjtemény, amely a partíciók on-át _bérletek_ tárolására használja. Mind a figyelt gyűjteménynek, mind a címbérleteket tartalmazó gyűjteménynek elérhetőnek kell lennie ahhoz, hogy az eseményindító működjön.
+Az triggerhez egy második gyűjteményre van szükség, amelyet a a partíciók _bérletének_ tárolására használ. Mind a figyelt gyűjtemény, mind a bérleteket tartalmazó gyűjteménynek elérhetőnek kell lennie az trigger működéséhez.
 
 >[!IMPORTANT]
-> Ha több függvény van konfigurálva egy Cosmos DB-eseményindító ugyanazon gyűjtemény, minden a függvények kell használnia egy dedikált címbérlet-gyűjtemény, vagy adja meg az egyes függvények egy másik. `LeaseCollectionPrefix` Ellenkező esetben csak az egyik funkció aktiválódik. Az előtagról a [Konfiguráció című szakaszban](#configuration)talál további információt.
+> Ha több függvény úgy van konfigurálva, hogy egy Cosmos DB triggert használjon ugyanahhoz a gyűjteményhez, a függvények mindegyikének dedikált címbérleti gyűjteményt kell használnia, vagy eltérő `LeaseCollectionPrefix` értékre kell beállítania az egyes függvényeket. Ellenkező esetben csak az egyik függvény lesz aktiválva. További információ az előtagról: [konfiguráció szakasz](#configuration).
 
-Az eseményindító nem azt jelzi, hogy egy dokumentumot frissítettek vagy beszúrtak, csak magát a dokumentumot biztosítja. Ha a frissítéseket és a beszúrásokat eltérően kell kezelnie, ezt megteheti időbélyeg-mezők beillesztésre vagy frissítésre való megvalósításával.
+Az trigger nem jelzi, hogy a dokumentumot frissítették vagy beszúrták-e, csak magát a dokumentumot biztosítja. Ha a frissítéseket és a lapkákat különbözőképpen kell kezelnie, ezt megteheti a beszúráshoz vagy a frissítéshez tartozó időbélyegző-mezők megvalósításával.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Cosmos DB-dokumentum olvasása (bemeneti kötés)](./functions-bindings-cosmosdb-v2-input.md)
-- [Az Azure Cosmos DB-dokumentum módosításának mentése (kimeneti kötés)](./functions-bindings-cosmosdb-v2-output.md)
+- [Azure Cosmos DB dokumentum olvasása (bemeneti kötés)](./functions-bindings-cosmosdb-v2-input.md)
+- [Azure Cosmos DB dokumentum módosításainak mentése (kimeneti kötés)](./functions-bindings-cosmosdb-v2-output.md)

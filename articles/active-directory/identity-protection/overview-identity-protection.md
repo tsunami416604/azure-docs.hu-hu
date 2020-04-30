@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Active Directory Identity Protection?
-description: Kockázatok észlelése, kiújítása, vizsgálata és elemzése az Azure AD Identity Protection segítségével
+description: Kockázatok észlelése, szervizelése, vizsgálata és elemzése Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,102 +12,102 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79497677"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az az Azure Active Directory Identity Protection?
 
-Az Identitásvédelem olyan eszköz, amely lehetővé teszi a szervezetek számára, hogy három kulcsfontosságú feladatot végezzenek el:
+Az Identity Protection egy olyan eszköz, amely lehetővé teszi, hogy a szervezetek három fő feladatot hajtanak végre:
 
-- Automatizálhatja az identitásalapú kockázatok észlelését és szervizelését.
-- Kockázatok vizsgálata a portálon lévő adatok használatával.
-- További elemzés céljából exportálja a kockázatészlelési adatokat harmadik féltől származó segédprogramokba.
+- Automatizálhatja az identitás-alapú kockázatok észlelését és szervizelését.
+- Vizsgálja meg a kockázatokat a portálon tárolt adatszolgáltatások használatával.
+- A kockázati észlelési adataikat külső gyártótól származó eszközökre exportálhatja további elemzés céljából.
 
-Az Identity Protection azAzure AD-vel, a Microsoft-fiókkal rendelkező fogyasztói térrel és az Xbox-szal való játékokkal kapcsolatos tanulási lehetőségeket használja a Microsoft által a szervezetben szerzett adatokból, hogy megvédje a felhasználókat. A Microsoft naponta 6,5 billió jelet elemez, hogy azonosítsa és megvédje az ügyfeleket a fenyegetésektől.
+Az Identity Protection a Microsoft által az Azure AD-vel, a Microsoft-fiókokkal, a Microsoft-fiókokkal és az Xbox-szal a felhasználók védelme érdekében a Microsoft által beszerzett tapasztalatokat használja. A Microsoft naponta 6 500 000 000 000-as jeleket elemez, hogy azonosítsa és megvédje az ügyfeleket a fenyegetésektől.
 
-Az Identitásvédelem által generált és az identitásvédelembe táplált jelek tovább táplálhatók olyan eszközökbe, mint a feltételes hozzáférés a hozzáférési döntések meghozatalához, vagy visszatáplálhatók egy biztonsági információs és eseménykezelési (SIEM) eszközhöz a szervezet kényszerített házirendek.
+A által generált és az Identity Protection által létrehozott jelek továbbra is bevonhatók olyan eszközökbe, mint a feltételes hozzáférés a hozzáférési döntések meghozatalához, illetve a biztonsági információkkal és az Event Management (SIEM) eszközre való visszatéréssel a szervezet által kényszerített szabályzatok alapján történő további vizsgálathoz.
 
-## <a name="why-is-automation-important"></a>Miért fontos az automatizálás?
+## <a name="why-is-automation-important"></a>Miért fontos az Automation?
 
-2018 októberében Alex Weinert, a Microsoft identitásbiztonsági és -védelmi csapatának vezetője [2018 októberében közzétett blogbejegyzésében](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) elmagyarázza, hogy miért olyan fontos az automatizálás az események mennyiségének kezelése során:
+Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) , amely a Microsoft Identity Security and Protection csapatát vezeti, magyarázza el, miért fontos az automatizálás az események mennyiségének kezelésekor:
 
-> Gépi tanulási és heurisztikus rendszereink naponta 18 milliárd bejelentkezési kísérlethez biztosítanak kockázati pontszámokat több mint 800 millió különböző fiókhoz, amelyek közül 300 milliót észrevehetően az ellenfelek végeznek (például bűnöző iratok, hackerek).
+> A gépi tanulás és a heurisztikus rendszerek minden nap több mint 800 000 000 különböző fiókra vonatkozó kockázati pontszámokat biztosítanak a 18 000 000 000 300 000 000-es bejelentkezési kísérletekhez
 >
-> Tavaly az Ignite-nál beszéltem az identitásrendszerünk elleni 3 legjobb támadásról. Itt van a legutóbbi mennyisége ezeket a támadásokat
+> Az Ignite tavaly megbeszélte az első 3 támadást az Identity Systems-ben. Itt láthatók a támadások legutóbbi mennyisége
 >   
->   - **Megsértése visszajátszás**: 4.6BN támadások észlelt május 2018
->   - **Jelszó spray**: 350k 2018 áprilisában
->   - **Adathalászat**: Ezt nehéz pontosan számszerűsíteni, de 23M kockázati eseményeket láttunk 2018 márciusában, amelyek közül sok adathalászattal kapcsolatos
+>   - **Visszajátszási ismétlés**: 4,6 milliárd támadás észlelhető 2018 májusában
+>   - **Jelszó spray**: 350k áprilisban 2018
+>   - **Adathalászat**: ez nehezen számszerűsíthető, de a 23M kockázati eseményeinek száma a 2018-as számú.
 
-## <a name="risk-detection-and-remediation"></a>Kockázatészlelés és -elhárítás
+## <a name="risk-detection-and-remediation"></a>Kockázatok észlelése és szervizelése
 
-Az Identitásvédelem a következő besorolásokban azonosítja a kockázatokat:
+Az Identity Protection a következő besorolások kockázatait azonosítja:
 
-| Kockázatészlelés típusa | Leírás |
+| Kockázat észlelésének típusa | Leírás |
 | --- | --- |
 | Atipikus utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
-| Névtelen IP-cím | Jelentkezzen be névtelen IP-címről (például Tor böngésző, anonimizáló VPN-ek). |
-| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be olyan tulajdonságokkal, amelyeket a közelmúltban nem láttunk az adott felhasználó nál. |
-| Kártevőhez csatolt IP-cím | Bejelentkezés rosszindulatú programokhoz csatolt IP-címről |
-| Kiszivárgott hitelesítő adatok | Ez a kockázatészlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatai kiszivárogtak |
-| Azure AD fenyegetésfelderítés | A Microsoft belső és külső fenyegetésfelderítési forrásai ismert támadási mintát azonosítottak |
+| Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
+| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
+| Kártevők társított IP-címe | Bejelentkezés kártevővel összekapcsolt IP-címről |
+| Kiszivárgott hitelesítő adatok | Ez a kockázati észlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott |
+| Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak |
 
-További részletek ezekről a kockázatokról és hogyan / mikor számítják ki megtalálható a cikkben, [Mi a kockázat](concept-identity-protection-risks.md).
+A kockázatokról és azok kiszámításáról további részleteket a cikkben [találhat.](concept-identity-protection-risks.md)
 
-A kockázati jelek kiválthatja a javítási erőfeszítéseket, például a felhasználók számára, hogy: azure többtényezős hitelesítés, állítsa alaphelyzetbe a jelszót önkiszolgáló jelszó alaphelyzetbe állítása, vagy blokkolja, amíg a rendszergazda lépéseket.
+A kockázati jelek olyan szervizelési erőfeszítéseket válthatnak ki, mint például a felhasználók megkövetelése: az Azure Multi-Factor Authentication elvégzése, jelszó alaphelyzetbe állítása az önkiszolgáló jelszó-visszaállítással vagy a rendszergazda beavatkozása nélkül.
 
-## <a name="risk-investigation"></a>Kockázatvizsgálat
+## <a name="risk-investigation"></a>Kockázati vizsgálat
 
-A rendszergazdák áttekinthetik az észleléseket, és szükség esetén manuálisan is végrehajthatják azokat. A rendszergazdák három kulcsfontosságú jelentést használnak az identitásvédelemben folytatott vizsgálatokhoz:
+A rendszergazdák megtekinthetik az észleléseket, és szükség esetén manuálisan is végezhetnek műveleteket. Három kulcsfontosságú jelentés van, amelyet a rendszergazdák a személyazonosság védelme során használnak a nyomozáshoz:
 
 - Kockázatos felhasználók
 - Kockázatos bejelentkezések
 - Kockázatészlelések
 
-További információ a cikkben található: [Hogyan: Vizsgálja meg](howto-identity-protection-investigate-risk.md)a kockázatot .
+További információt a következő cikkben talál [: a kockázat vizsgálata](howto-identity-protection-investigate-risk.md).
 
-## <a name="exporting-risk-data"></a>Kockázati adatok exportálása
+## <a name="exporting-risk-data"></a>Kockázati adatexportálás
 
-Az Identity Protection adatai exportálhatók más eszközökre archiválás, további vizsgálat és társkapcsolat céljából. A Microsoft Graph alapú API-k lehetővé teszik a szervezetek számára, hogy ezeket az adatokat további feldolgozáscéljából összegyűjtsék egy olyan eszközben, mint például a SIEM. Az Identity Protection API elérésével kapcsolatos információk a cikkben találhatók: [Az Azure Active Directory identity Protection és](howto-identity-protection-graph-api.md) a Microsoft Graph – Első lépések
+Az Identity Protectionből származó adatok exportálhatók más eszközökre az archiváláshoz, valamint a további vizsgálatokhoz és a Corel-kezeléshez. A Microsoft Graph-alapú API-k lehetővé teszik, hogy a szervezetek további feldolgozás céljából gyűjtsék ezeket az adatokat egy olyan eszközön, mint például a SIEM. Az Identity Protection API elérésével kapcsolatos információkat a cikk [Azure Active Directory Identity Protection és Microsoft Graph első lépéseivel foglalkozó](howto-identity-protection-graph-api.md) cikkben találja.
 
-Az Identitásvédelem adatainak az Azure Sentinellel való integrálásáról a Cikkben olvashat, az [Azure AD Identity Protection adatainak csatlakoztatása című](../../sentinel/connect-azure-ad-identity-protection.md)cikkben.
+Az Identity Protection-információk Azure Sentineltel való integrálásával kapcsolatos információk a cikkben találhatók, [amelyek az adatok Azure ad Identity Protectionból való összekapcsolását](../../sentinel/connect-azure-ad-identity-protection.md)ismertetik.
 
 ## <a name="permissions"></a>Engedélyek
 
-Az identitásvédelem hez a felhasználóknak biztonsági olvasónak, biztonsági operátornak, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük a hozzáféréshez.
+Az Identity Protection használatához a felhasználóknak biztonsági olvasónak, biztonsági kezelőnek, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük ahhoz, hogy hozzáférjenek.
 
-| Szerepkör | Meg tudja csinálni | Nem tudom. |
+| Szerepkör | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
-| Globális rendszergazda | Teljes hozzáférés az identitásvédelemhez |   |
-| Biztonsági rendszergazda | Teljes hozzáférés az identitásvédelemhez | Felhasználó jelszavának alaphelyzetbe állítása |
-| Biztonsági operátor | Az identitásvédelem összes jelentésének és áttekintési paneljének megtekintése <br><br> A felhasználói kockázat elvetése, a biztonságos bejelentkezés megerősítése, a kompromisszum megerősítése | Házirendek konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása |
-| Biztonsági olvasó | Az identitásvédelem összes jelentésének és áttekintési paneljének megtekintése | Házirendek konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása <br><br> Visszajelzés küldése az észlelésekről |
+| Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz |   |
+| Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | Felhasználó jelszavának alaphelyzetbe állítása |
+| Biztonsági operátor | Az összes Identity Protection-jelentés és áttekintés panel megtekintése <br><br> Felhasználói kockázat elvetése, biztonságos bejelentkezés megerősítése, biztonság megerősítése | Szabályzatok konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása |
+| Biztonsági olvasó | Az összes Identity Protection-jelentés és áttekintés panel megtekintése | Szabályzatok konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása <br><br> Visszajelzés küldése az észlelésekről |
 
-A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozhatnak, amelyek feltételként figyelembe veszik a bejelentkezési kockázatot, további információt a [Feltételes hozzáférés: Feltételek](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)című cikkben találnak.
+A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozhatnak, amelyek feltétele a bejelentkezési kockázat tényezője. további információt a [feltételes hozzáférés: feltételek](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)című cikkben talál.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Képesség | Részletek | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Azure AD Alapszintű/ingyenes |
+| Képesség | Részletek | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Alapszintű Azure AD/ingyenes |
 | --- | --- | --- | --- | --- |
-| Kockázati politikák | Felhasználói kockázati házirend (identitásvédelem révén) | Igen | Nem | Nem |
-| Kockázati politikák | Bejelentkezési kockázati házirend (identitásvédelem vagy feltételes hozzáférés révén) | Igen | Nem | Nem |
+| Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával) | Igen | Nem | Nem |
+| Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával) | Igen | Nem | Nem |
 | Biztonsági jelentések | Áttekintés | Igen | Nem | Nem |
 | Biztonsági jelentések | Kockázatos felhasználók | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
 | Biztonsági jelentések | Kockázatos bejelentkezések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
 | Biztonsági jelentések | Kockázatészlelések | Teljes hozzáférés | Korlátozott információ | Nem |
-| Értesítések | A veszélyeztetett felhasználók riasztásokat észleltek | Igen | Nem | Nem |
+| Értesítések | Veszélyeztetett felhasználók észlelt riasztásai | Igen | Nem | Nem |
 | Értesítések | Heti kivonat | Igen | Nem | Nem |
-| | MFA regisztrációs irányelvei | Igen | Nem | Nem |
+| | MFA regisztrációs szabályzat | Igen | Nem | Nem |
 
 ## <a name="next-steps"></a>További lépések
 
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)
 
-- [Mi a kockázat?](concept-identity-protection-risks.md)
+- [Mi a kockázat](concept-identity-protection-risks.md)
 
-- [A kockázatok csökkentésére rendelkezésre álló politikák](concept-identity-protection-policies.md)
+- [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)

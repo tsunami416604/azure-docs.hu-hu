@@ -1,216 +1,216 @@
 ---
-title: Az Azure Service Fabric vész-helyreállítási
-description: Az Azure Service Fabric katasztrófák kezelésére is kínál lehetőségeket. Ez a cikk ismerteti a katasztrófák típusait, és hogyan kell kezelni őket.
+title: Azure Service Fabric vész-helyreállítás
+description: Az Azure Service Fabric a katasztrófák kezelésére szolgáló képességeket kínál. Ez a cikk az esetlegesen felmerülő katasztrófák típusait és azok kezelését ismerteti.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371647"
 ---
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Vészhelyreállítás az Azure Service Fabricben
-A magas rendelkezésre állás biztosításának kritikus része annak biztosítása, hogy a szolgáltatások túléljék a különböző típusú hibákat. Ez különösen fontos a nem tervezett és az ön által nem szabályos hibák esetén. 
+# <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
+A magas rendelkezésre állás megvalósításának kritikus része annak biztosítása, hogy a szolgáltatások képesek legyenek túlélni az összes különböző típusú hibát. Ez különösen fontos a nem tervezett és a vezérlőn kívüli hibák esetén. 
 
-Ez a cikk néhány gyakori hibamódot ismertet, amelyek katasztrófák lehetnek, ha nem megfelelően modellezve és megfelelően nem megfelelően kezelik. Azt is tárgyalja mérséklések és intézkedéseket kell tenni, ha a katasztrófa történik egyébként. A cél az állásidő vagy adatvesztés kockázatának korlátozása vagy kiküszöbölése, ha a tervezett vagy más típusú hibák bekövetkeznek.
+Ez a cikk néhány olyan gyakori meghibásodási módot ismertet, amely akkor fordulhat elő, ha nem megfelelően lett modellezve és felügyelve. Emellett azt is ismerteti, hogy milyen enyhítések és műveletek történnek, ha a katasztrófa amúgy is előfordul. A cél az állásidő vagy az adatvesztés kockázatának korlátozása vagy megszüntetése, ha a hiba a tervezett vagy egyéb módon történik.
 
-## <a name="avoiding-disaster"></a>A katasztrófa elkerülése
-Az Azure Service Fabric fő célja, hogy segítsen a környezet és a szolgáltatások modellezésében oly módon, hogy a gyakori hibatípusok nem katasztrófák. 
+## <a name="avoiding-disaster"></a>Katasztrófák elkerülése
+Az Azure Service Fabric fő célja, hogy segítse a környezet és a szolgáltatások modellezését oly módon, hogy a gyakori meghibásodási típusok ne legyenek katasztrófák. 
 
-Általában kétféle katasztrófa/hiba forgatókönyv létezik:
-- Hardver- és szoftverhibák
+Általánosságban elmondható, hogy a vész-és meghibásodási forgatókönyvek két típusa létezik:
+- Hardver-és szoftver-hibák
 - Működési hibák
 
-### <a name="hardware-and-software-faults"></a>Hardver- és szoftverhibák
-A hardver- és szoftverhibák kiszámíthatatlanok. A hibák túlélésének legegyszerűbb módja a szolgáltatás több példányának futtatása a hardver- vagy szoftverhiba-határokon keresztül. 
+### <a name="hardware-and-software-faults"></a>Hardver-és szoftver-hibák
+A hardver-és szoftver-hibák kiszámíthatatlanok. A hibák túlélésének legegyszerűbb módja a szolgáltatás több példányának futtatása hardveres vagy szoftveres hibák határain keresztül. 
 
-Ha például a szolgáltatás csak egy gépen fut, az adott gép hibája katasztrófa az adott szolgáltatás számára. A katasztrófa elkerülésének egyszerű módja annak biztosítása, hogy a szolgáltatás több gépen fusson. Tesztelésre is szükség van annak érdekében, hogy egy gép meghibásodása ne zavarja meg a futó szolgáltatást. A kapacitástervezés biztosítja, hogy egy helyettesítő példány máshol is létrehozható, és hogy a kapacitáscsökkentés ne terhelje túl a fennmaradó szolgáltatásokat. 
+Ha például a szolgáltatás csak egy gépen fut, akkor az adott gép meghibásodása az adott szolgáltatáshoz tartozó katasztrófa. A katasztrófa elkerülésének egyszerű módja annak biztosítása, hogy a szolgáltatás több gépen is fusson. Tesztelésre is szükség van annak biztosításához, hogy az egyik gép meghibásodása ne zavarja meg a futó szolgáltatást. A kapacitás megtervezése biztosítja, hogy a helyettesítő példányok máshol is létrehozhatók, és a kapacitás csökkentése ne terhelje túl a fennmaradó szolgáltatásokat. 
 
-Ugyanez a minta működik, függetlenül attól, hogy mit próbál elkerülni a hiba. Ha például aggódik egy san-i meghibásodás a hiba miatt, több san-on keresztül fut. Ha aggódik a kiszolgálók elvesztése miatt, több állványon fut. Ha aggódik az adatközpontok elvesztése miatt, a szolgáltatásnak több Azure-régióban, több Azure-rendelkezésre állási zónában vagy a saját adatközpontokban kell futnia. 
+Ugyanez a minta attól függetlenül működik, hogy milyen hibát próbál elkerülni. Ha például egy SAN-kiszolgáló meghibásodása miatt aggódik, akkor több, mint egy tartományon belül fut. Ha aggódik a kiszolgálók rack elvesztése miatt, több állványon is futtathatja őket. Ha aggódik az adatközpontok elvesztése miatt, a szolgáltatásnak több Azure-régióban, több Azure Availability Zones vagy a saját adatközpontjai között kell futnia. 
 
-Ha egy szolgáltatás több fizikai példányon (gépeken, állványokon, adatközpontokban, régiókban) átnyúló, bizonyos típusú egyidejű hibák továbbra is fennállnak. De egy adott típusú egyszeri és akár több hiba (például egyetlen virtuális gép vagy hálózati kapcsolat sikertelen) automatikusan kezeli, és így már nem "katasztrófa". 
+Ha egy szolgáltatás több fizikai példányra (gépekre, állványokra, adatközpontokra, régiókra) terjed ki, akkor továbbra is bizonyos típusú egyidejű hibákra van szüksége. Egy adott típus (például egyetlen virtuális gép vagy hálózati kapcsolat meghibásodása) esetén a rendszer automatikusan kezeli az adatokat, és így már nem "vész". 
 
-A Service Fabric mechanizmusokat biztosít a fürt bővítéséhez, és kezeli a sikertelen csomópontok és szolgáltatások visszahozása. A Service Fabric lehetővé teszi a szolgáltatások számos példányának futtatását, hogy megakadályozza a nem tervezett hibák valódi katasztrófákká való befordulását.
+A Service Fabric mechanizmusokat biztosít a fürt bővítéséhez és a sikertelen csomópontok és szolgáltatások visszaállításához. A Service Fabric a szolgáltatások számos példányának futtatását is lehetővé teszi, hogy megakadályozza a nem tervezett hibák valós katasztrófák felé való bekapcsolását.
 
-Lehet, hogy miért nem valósítható meg a hibák nak ahhoz elegendő méretű központi telepítés futtatása. Előfordulhat például, hogy több hardvererőforrást igényel, mint amennyit a hiba esélyéhez képest hajlandó fizetni. Elosztott alkalmazásokkal kapcsolatban további kommunikációs ugrások vagy állami replikációs költségek földrajzi távolságok között elfogadhatatlan késést okozhatnak. Ha ezt a vonalat meghúzzák, az minden alkalmazás esetében eltérő. 
+Előfordulhat, hogy az üzembe helyezés elég nagy méretűre állítása nem valósítható meg. Előfordulhat például, hogy több hardveres erőforrást is igénybe vehet, mint amennyit a meghibásodás valószínűségéhez képest szeretne fizetni. Ha elosztott alkalmazásokat használ, a további kommunikációs ugrások vagy az állami replikálási költségek nem elfogadható késést okozhatnak. Ha ez a sor eltér az egyes alkalmazásokhoz. 
 
-Szoftverhibák esetén a hiba lehet a kívánt szolgáltatás méretezése. Ebben az esetben több példány nem akadályozza meg a katasztrófát, mert a hiba feltételkorfüggő az összes példányban.
+A szoftveres hibák esetében előfordulhat, hogy a hiba a méretezni kívánt szolgáltatásban van. Ebben az esetben a több példány nem akadályozza meg a katasztrófát, mert a meghibásodási feltétel összefügg az összes példány között.
 
 ### <a name="operational-faults"></a>Működési hibák
-Még akkor is, ha a szolgáltatás spaned szerte a világon sok redundancia, akkor is megtapasztalhatja katasztrofális eseményeket. Előfordulhat például, hogy valaki véletlenül újrakonfigurálja a szolgáltatás DNS-nevét, vagy véglegesen törli azt. 
+Még akkor is, ha a szolgáltatás számos redundanciával rendelkezik a világ különböző részeit illetően, továbbra is katasztrofális eseményekkel találkozhat. Előfordulhat például, hogy valaki véletlenül újrakonfigurálja a szolgáltatás DNS-nevét, vagy törli azt. 
 
-Tegyük fel például, hogy volt egy állapotalapú Service Fabric-szolgáltatása, és valaki véletlenül törölte azt a szolgáltatást. Hacsak nincs valami más mérséklés, a szolgálat és az összes állam, hogy már elment. Az ilyen típusú működési katasztrófák ("hoppá") különböző megoldásokat és lépéseket igényelnek a helyreállításhoz, mint a rendszeres nem tervezett hibák. 
+Tegyük fel például, hogy van egy állapot-nyilvántartó Service Fabric szolgáltatás, és valaki törölte a szolgáltatást véletlenül. Hacsak nincs valamilyen más megoldás, akkor ez a szolgáltatás és az összes olyan állam, amely már elfogyott. Az ilyen típusú működési katasztrófák ("Hoppá") különböző kockázatcsökkentő és helyreállítási lépéseket igényelnek, mint a normál, nem tervezett hibák. 
 
-Az ilyen típusú működési hibák elkerülésének legjobb módjai a következők:
-- Korlátozza a környezethez való operatív hozzáférést.
-- Szigorúan ellenőrizze a veszélyes műveleteket.
-- Automatizálás kényszerítése, manuális vagy sávon kívüli módosítások megelőzése, valamint adott módosítások ellenőrzése a környezettel szemben, mielőtt életbe léptetné őket.
-- Győződjön meg arról, hogy a destruktív műveletek "puha". A lágy műveletek nem lépnek életbe azonnal, vagy egy időablakon belül visszaállíthatók.
+Az ilyen típusú működési hibák elkerülésének legjobb módja a következő:
+- A környezethez való operatív hozzáférés korlátozása.
+- A veszélyes műveletek szigorú ellenőrzése.
+- Automatizálja az automatizálást, meggátolja a manuális vagy sávon kívüli változásokat, és érvényesítse a környezet adott módosításait, mielőtt azok életbe lépnek.
+- Győződjön meg arról, hogy a roncsolásos műveletek "Soft". A lágy műveletek nem lépnek azonnal érvénybe, vagy egy időablakon belül visszavonhatók.
 
-A Service Fabric mechanizmusokat biztosít a működési hibák megelőzésére, például [szerepköralapú hozzáférés-vezérlést](service-fabric-cluster-security-roles.md) biztosít a fürtműveletekhez. Azonban a legtöbb ilyen működési hibák igényel szervezeti erőfeszítéseket és más rendszerek. A Service Fabric biztosítja a működési hibák túlélésének mechanizmusait, különösen [az állapotalapú szolgáltatások biztonsági mentését és visszaállítását.](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
+A Service Fabric mechanizmusokat biztosít a működési hibák megelőzésére, például [szerepköralapú hozzáférés-](service-fabric-cluster-security-roles.md) vezérlés biztosítására a fürt műveleteihez. Azonban a legtöbb működési hiba a szervezeti erőfeszítésekhez és más rendszerekhez szükséges. A Service Fabric a megmaradó működési hibákra vonatkozó mechanizmusokat biztosít, amelyek többsége az [állapot-nyilvántartó szolgáltatások biztonsági mentésére és visszaállítására](service-fabric-backuprestoreservice-quickstart-azurecluster.md)szolgál.
 
 ## <a name="managing-failures"></a>Hibák kezelése
-A Service Fabric célja a hibák automatikus kezelése. Bizonyos típusú hibák kezeléséhez azonban a szolgáltatásoknak további kóddal kell rendelkezniük. A más típusú hibákat biztonsági és üzletmenet-folytonossági okokból _nem_ szabad automatikusan kezelni. 
+A Service Fabric célja a hibák automatikus kezelése. Bizonyos típusú hibák kezeléséhez azonban a szolgáltatásoknak további kóddal kell rendelkezniük. A biztonsági és üzletmenet-folytonossági okok miatt más típusú hibák _nem_ kezelhetők automatikusan. 
 
 ### <a name="handling-single-failures"></a>Egyszeri hibák kezelése
-Az egyes gépek sokféle okból meghibásodhatnak. Néha hardveres okok, például tápegységek és hálózati hardverhibák. Egyéb hibák vannak a szoftver. Ezek közé tartoznak az operációs rendszer és maga a szolgáltatás hibái. A Service Fabric automatikusan észleli az ilyen típusú hibákat, beleértve azokat az eseteket is, amikor a gép hálózati problémák miatt más gépektől ellesz szigetelve.
+Az egyes gépek bármilyen okból sikertelenek lehetnek. Előfordulhat, hogy a hardver oka, például a tápegységek és a hálózati hardver meghibásodása. Más hibák a szoftverben vannak. Ilyenek például az operációs rendszer és a szolgáltatás hibái. Service Fabric automatikusan észleli az ilyen típusú hibákat, beleértve azokat az eseteket is, amikor a gép hálózati problémák miatt el lesz különítve más gépektől.
 
-A szolgáltatás típusától függetlenül egyetlen példány futtatása leállást eredményez az adott szolgáltatás számára, ha a kód egyetlen példánya bármilyen okból meghibásodik. 
+A szolgáltatás típusától függetlenül az adott példány futtatása az adott szolgáltatáshoz tartozó állásidőt eredményezi, ha a kód egyetlen példánya valamilyen okból meghiúsul. 
 
-Egyetlen hiba kezeléséhez a legegyszerűbb dolog, amit tehetünk, hogy a szolgáltatások futnak több csomópont alapértelmezés szerint. Állapot nélküli szolgáltatások esetén `InstanceCount` győződjön meg arról, hogy ez nagyobb, mint 1. Az állapotalapú szolgáltatások esetében a `TargetReplicaSetSize` `MinReplicaSetSize` minimális ajánlás az, hogy mindkettő 3-ra van állítva. A szolgáltatáskód több példányának futtatása biztosítja, hogy a szolgáltatás automatikusan kezelni tudja az egyes hibákat. 
+Egyetlen hiba kezeléséhez a legegyszerűbb dolog, ha a szolgáltatások alapértelmezés szerint egynél több csomóponton futnak. Az állapot nélküli szolgáltatások esetében ügyeljen arra, `InstanceCount` hogy az nagyobb legyen, mint 1. Az állapot-nyilvántartó szolgáltatások esetében a minimális javaslat az `TargetReplicaSetSize` , `MinReplicaSetSize` hogy mindkét érték 3. A szolgáltatási kód több példányának futtatásával biztosítható, hogy a szolgáltatás automatikusan kezeljen egyetlen hibát. 
 
 ### <a name="handling-coordinated-failures"></a>Koordinált hibák kezelése
-A fürt koordinált hibái lehetnek tervezett vagy nem tervezett infrastruktúra-hibák és -módosítások, illetve tervezett szoftvermódosítások. A Service Fabric olyan infrastruktúrazónákat modellez, amelyek koordinált hibákat *tapasztalnak tartalék tartományként.* Az összehangolt szoftvermódosításokat tapasztaló területek *frissítési tartományként*vannak modellezve. A tartalék tartományokról, a frissítési tartományokról és a fürttopológiaszolgáltatásról a [Service Fabric-fürt leírása a Fürterőforrás-kezelő használatával című](service-fabric-cluster-resource-manager-cluster-description.md)témakörben talál további információt.
+A fürtben található koordinált hibák oka lehet tervezett vagy nem tervezett infrastruktúra-meghibásodás és-változás, illetve a tervezett szoftverek módosítása. Az olyan infrastruktúra-zónák Service Fabric, amelyek az összehangolt hibákat a tartalék *tartományokban*tapasztalják. Az összehangolt szoftveres változásokat tapasztaló területek *frissítési tartományként*lesznek modellezve. További információ a tartalék tartományokról, a frissítési tartományokról és a fürt topológiáról: [Service Fabric-fürt leírása a fürterőforrás-kezelő használatával](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Alapértelmezés szerint a Service Fabric figyelembe veszi a hiba és a frissítési tartományok tervezésekor, ahol a szolgáltatások futtatásához. Alapértelmezés szerint a Service Fabric megpróbálja biztosítani, hogy a szolgáltatások több tartalék és frissítési tartományokon keresztül futnak, így ha tervezett vagy nem tervezett módosítások történnek, a szolgáltatások továbbra is elérhetők maradnak. 
+Alapértelmezés szerint a Service Fabric a szolgáltatások futtatásának megtervezése során a hiba-és frissítési tartományokat tekinti át. Alapértelmezés szerint a Service Fabric megkísérli biztosítani, hogy a szolgáltatások több hibatűrési és frissítési tartományon keresztül fussanak, hogy ha a tervezett vagy nem tervezett módosítások történnek, a szolgáltatások továbbra is elérhetők maradnak. 
 
-Tegyük fel például, hogy egy áramforrás meghibásodása miatt az állványon lévő összes gép egyszerre meghibásodik. A szolgáltatás több példányban futó, a veszteség sok gép a tartalék tartomány meghibásodása válik csak egy újabb példa egy szolgáltatás egyetlen hiba. Ez az oka annak, hogy a hiba- és frissítési tartományok kezelése kritikus fontosságú a szolgáltatások magas rendelkezésre állásának biztosításához. 
+Tegyük fel például, hogy egy áramforrás meghibásodása egy állványon lévő összes gép egyidejű feladatátvételét okozza. Ha a szolgáltatás több példányban fut, akkor a tartalék tartományba tartozó sok gép elvesztése csupán egy újabb példát mutat be egy szolgáltatás egyetlen meghibásodása esetén. Ezért fontos a szolgáltatások magas rendelkezésre állásának biztosítása a hibák és a frissítési tartományok kezelésében. 
 
-Amikor a Service Fabric az Azure-ban fut, a tartalék tartományok és a frissítési tartományok kezelése automatikusan történik. Más környezetekben előfordulhat, hogy nem. Ha saját fürtöket hoz fel a helyszínen, győződjön meg arról, hogy a tartalék tartomány elrendezése megfelelően van leképezve és tervezve.
+Ha az Azure-ban Service Fabric futtat, a tartalék tartományok és a frissítési tartományok automatikusan kezelhetők. Más környezetekben előfordulhat, hogy nem. Ha saját fürtöket hoz létre a helyszínen, ügyeljen arra, hogy megfelelően képezze le és tervezze meg a tartalék tartomány elrendezését.
 
-A frissítési tartományok olyan modellezési területek esetében hasznosak, ahol a szoftver frissítése egyszerre lesz. Emiatt a frissítési tartományok gyakran meghatározzák azokat a határokat is, ahol a szoftvereket a tervezett frissítések során leveszik. A Service Fabric és a szolgáltatások frissítései ugyanazt a modellt követik. A működés közbeni frissítésekkel, a frissítési tartományokkal és a Service Fabric állapotmodelljével kapcsolatos további információkért lásd:
+A frissítési tartományok olyan modellezési területek esetében hasznosak, ahol a szoftverek frissítése egyszerre történik. Emiatt a frissítési tartományok gyakran meghatározzák azokat a határokat, ahol a szoftverek a tervezett frissítések során le vannak véve. A Service Fabric és a szolgáltatásainak frissítései ugyanazt a modellt követik. További információ a működés közbeni frissítésekről, a frissítési tartományokról és a Service Fabric Health modellről, amely segít megakadályozni a fürt és a szolgáltatás nem kívánt módosításainak működését. lásd:
 
  - [Alkalmazás frissítése](service-fabric-application-upgrade.md)
- - [Alkalmazásfrissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md)
- - [Service Fabric egészségügyi modell](service-fabric-health-introduction.md)
+ - [Alkalmazás-verziófrissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md)
+ - [Service Fabric Health Model](service-fabric-health-introduction.md)
 
-A fürt elrendezését a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)ben biztosított fürttérkép segítségével jelenítheti meg:
+A fürt elrendezését a [Service Fabric Explorerban](service-fabric-visualizing-your-cluster.md)megadott fürtös Térkép használatával jelenítheti meg:
 
 <center>
 
-![A Service Fabric-kezelőben a tartalék tartományok között elosztott csomópontok][sfx-cluster-map]
+![Service Fabric Explorerban található tartalék tartományok közötti csomópontok][sfx-cluster-map]
 </center>
 
 > [!NOTE]
-> A hiba, a működés közbeni frissítés, a szolgáltatáskód és az állapot számos példányának futtatása, az elhelyezési szabályok, amelyek biztosítják, hogy a szolgáltatások hiba- és frissítési tartományokon keresztül fussanak, és a beépített állapotfigyelés csak *néhány* a Service Fabric által biztosított funkciók közül, amelyek megakadályozzák a normál működési problémák és hibák katasztrófákká való befordulását. 
+> A hibák modellezése, a működés közbeni frissítés, a szolgáltatási kód és az állapot számos példányának futtatása, elhelyezési szabályok, amelyek biztosítják, hogy a szolgáltatások a hibák és a frissítési tartományok között futnak, és a beépített állapot-figyelés csupán *néhány* olyan funkció, amelyet a Service Fabric biztosít a normál működési problémák és hibák megtartása érdekében. 
 >
 
-### <a name="handling-simultaneous-hardware-or-software-failures"></a>Egyidejű hardver- vagy szoftverhibák kezelése
-Szingli kudarcokról beszéltünk. Mint látható, ők könnyen kezelhető mind állapotnélküli és állapotalapú szolgáltatások csak azáltal, hogy több példányban a kód (és állapot) futó hiba és a frissítési tartományok. 
+### <a name="handling-simultaneous-hardware-or-software-failures"></a>Egyidejű hardveres vagy szoftveres hibák kezelése
+Egyetlen hibáról beszélünk. Amint láthatja, egyszerűen kezelhetik az állapot nélküli és az állapot-nyilvántartó szolgáltatásokat, csupán a kód (és az állapot) több példányának megtartásával, amely a hibák és a frissítési tartományok között fut. 
 
-Több egyidejű véletlenszerű hibák is előfordulhatnak. Ezek nagyobb valószínűséggel vezetnek leálláshoz vagy tényleges katasztrófához.
+Több egyidejű véletlenszerű hiba is előfordulhat. Ezek nagyobb valószínűséggel eredményeznek állásidőt vagy tényleges katasztrófát.
 
 
-#### <a name="stateless-services"></a>Állapotnélküli szolgáltatások
-Egy állapotmentes szolgáltatás példányszáma azt jelzi, hogy hány példánynak kell futnia. Ha a példányok bármelyike (vagy az összes) sikertelen, a Service Fabric válaszol a cserepéldányok automatikus létrehozásával más csomópontokon. A Service Fabric továbbra is hozza létre a csere, amíg a szolgáltatás visszatér a kívánt példányszám.
+#### <a name="stateless-services"></a>Állapot nélküli szolgáltatások
+Az állapot nélküli szolgáltatás példányszáma azt jelzi, hogy a kívánt számú példányt kell futtatni. Ha a példányok bármelyike (vagy mindegyike) meghibásodik, Service Fabric válaszol a más csomópontokon lévő helyettesítő példányok automatikus létrehozásával. Service Fabric továbbra is létrehozhatja a kihelyezéseket, amíg a szolgáltatás vissza nem áll a kívánt példányszámra.
 
-Tegyük fel például, hogy `InstanceCount` az állapotmentes szolgáltatás értéke -1. Ez az érték azt jelenti, hogy egy példánynak kell futnia a fürt minden csomópontján. Ha néhány ilyen példány sikertelen, a Service Fabric észleli, hogy a szolgáltatás nem a kívánt állapotban van, és megpróbálja létrehozni a példányokat a csomópontokon, ahol hiányoznak.
+Tegyük fel például, hogy az állapot nélküli szolgáltatás `InstanceCount` értéke-1. Ez az érték azt jelenti, hogy az egyik példánynak futnia kell a fürt mindegyik csomópontján. Ha a példányok némelyike meghibásodik, Service Fabric felismeri, hogy a szolgáltatás nem a kívánt állapotban van, és megpróbálja létrehozni a példányokat azokon a csomópontokon, amelyeken hiányoznak.
 
-#### <a name="stateful-services"></a>Államos szolgáltatások
-Az állapotalapú szolgáltatásoknak két típusa van:
-- Állapottalan a kitartó állapottal.
-- Államos, nem tartós állapotban. (Az állapot a memóriában van tárolva.)
+#### <a name="stateful-services"></a>Állapot-nyilvántartó szolgáltatások
+Kétféle állapot-nyilvántartó szolgáltatás létezik:
+- Állapot-nyilvántartó megőrzött állapottal.
+- Nem megőrzött állapottal rendelkező állapotú. (A rendszer a memóriában tárolja az állapotot.)
 
-Az állapotalapú szolgáltatás meghibásodása utáni helyreállítás az állapotalapú szolgáltatás típusától, a szolgáltatás replikáinak és a sikertelen replikák tól függ.
+Az állapot-nyilvántartó szolgáltatás meghibásodása miatti helyreállítás az állapot-nyilvántartó szolgáltatás típusától, a szolgáltatás replikáinak számától és a replikák számának mennyiségétől függ.
 
-Egy állapotalapú szolgáltatás ban a bejövő adatok replikálódnak a replikák (az elsődleges és az aktív másodlagos replikák között). Ha a kópiák többsége megkapja az adatokat, az adatok *kvórum véglegesítése* minősül. (Öt másolat esetén három határozatképesség lesz.) Ez azt jelenti, hogy bármikor, nem lesz legalább egy kvóruma replikák a legújabb adatokat. Ha a replikák sikertelenek (mondjuk ötből kettő), a kvórumérték segítségével kiszámíthatjuk, hogy helyre tudjuk-e állítani. (Mivel az öt replikából a fennmaradó három még mindig működik, garantált, hogy legalább egy replika teljes adatokkal fog rendelkezni.)
+Egy állapot-nyilvántartó szolgáltatásban a bejövő adatértékek replikálódnak a replikák között (az elsődleges és az összes aktív formátumú másodlagos zónák). Ha a replikák többsége megkapja az adatmennyiséget, a rendszer az *adatkvórumot* véglegesíti. (Öt replika esetén a három kvórum lesz.) Ez azt jelenti, hogy minden pillanatban a replikák kvóruma lesz a legújabb adattal. Ha a replikák meghiúsulnak (azaz kettőből öt), a kvórum értéke alapján kiszámíthatja, hogy helyreállítható-e. (Mivel az öt replika közül a fennmaradó három továbbra is fennáll, garantált, hogy legalább egy replika teljes adattal fog rendelkezni.)
 
-Ha a kópiák kvóruma meghibásodik, a partíció *kvórumveszteség-állapotban* van. Tegyük fel, hogy egy partíció öt replikával rendelkezik, ami azt jelenti, hogy legalább három garantáltan teljes adatokkal rendelkezik. Ha a kópiák kvóruma (három az ötből) sikertelen, a Service Fabric nem tudja megállapítani, hogy a fennmaradó replikák (kettő ötből) elegendő adattal rendelkezik-e a partíció visszaállításához. Azokban az esetekben, ahol a Service Fabric észleli a kvórum veszteség, az alapértelmezett viselkedés megakadályozza a partícióra további írások, kvórum elvesztése, és várja meg a kvóruma replikák visszaállítása.
+Ha a replikák kvóruma meghibásodik, a rendszer deklarálja, hogy a partíció *kvórum elvesztése* állapotban van. Tegyük fel, hogy egy partíciónak öt replikája van, ami azt jelenti, hogy legalább hármat garantál a teljes adatmennyiség. Ha a replikák kvóruma (három öt) meghiúsul, Service Fabric nem tudja megállapítani, hogy a fennmaradó replikák (két öt) elegendő adattal rendelkeznek-e a partíció visszaállításához. Azokban az esetekben, amikor a Service Fabric észleli a kvórum elvesztését, az alapértelmezett viselkedése, hogy megakadályozza a partíció további írásait, deklarálja a kvórum elvesztését, és várjon, amíg a replikák visszaállíthatók.
 
-Annak meghatározása, hogy egy állapotalapú szolgáltatás esetében katasztrófa történt-e, majd annak kezelése három szakaszból áll:
+Annak megállapítása, hogy vészhelyzet történt-e egy állapot-nyilvántartó szolgáltatás esetében, majd a kezelése három szakaszt követ:
 
-1. Annak megállapítása, hogy történt-e kvórumveszteség vagy sem.
+1. Annak megállapítása, hogy van-e kvórum elvesztése vagy sem.
    
-   A kvórumveszteség akkor deklarálva van, ha egy állapotalapú szolgáltatás replikáinak többsége egyszerre nem működik.
-2. Annak megállapítása, hogy a kvórum vesztesége állandó-e vagy sem.
+   A kvórum elvesztése akkor van deklarálva, ha egy állapot-nyilvántartó szolgáltatás replikáinak többsége egy időben le van lebontva.
+2. Annak megállapítása, hogy a kvórum elvesztése állandó-e.
    
-   Az idő nagy részében a kudarcok átmenetiek. A folyamatok újraindulnak, a csomópontok újraindulnak, a virtuális gépek újraindulnak, és a hálózati partíciók gyógyulnak. Néha azonban a kudarcok állandóak. Az, hogy a hibák állandóak-e vagy sem, attól függ, hogy az állapotalapú szolgáltatás megmarad-e az állapot, vagy csak a memóriában tartja: 
+   Az idő nagy részében a hibák átmenetiek. A folyamatok újraindulnak, a csomópontok újraindulnak, a virtuális gépek újraindulnak, és a hálózati partíciók gyógyulnak. Időnként azonban a hibák állandóak. Függetlenül attól, hogy a hibák állandóak-e, vagy sem, attól függ, hogy az állapot-nyilvántartó szolgáltatás megőrzi-e az állapotát, vagy csak a memóriában tartja: 
    
-   - A megőrzött állapot nélküli szolgáltatások esetén a kvórum vagy a replikák meghibásodása _azonnal_ végleges kvórumvesztést eredményez. Ha a Service Fabric észleli a kvórum elvesztését egy állapotalapú, nem állandó szolgáltatásban, azonnal folytatja a 3. Az adatvesztés folytatása van értelme, mert a Service Fabric tudja, hogy nincs értelme a replikák, hogy jöjjön vissza. Még akkor is, ha helyreállnak, az adatok elvesznek a szolgáltatás nem tartós jellege miatt.
-   - Állapotalapú állandó szolgáltatások esetén a kvórum vagy a replikák meghibásodása miatt a Service Fabric megvárja, amíg a replikák visszatérnek, és visszaállítják a kvórumot. Ez szolgáltatáskimaradást eredményez a szolgáltatás érintett partíciójára (vagy "replikakészletére") írt _írások_ esetén. Az olvasások azonban csökkentett konzisztenciagaranciákkal továbbra is lehetségesek lehetnek. Az alapértelmezett idő, amíg a Service Fabric vár a kvórum visszaállítása *végtelen,* mert a folytatás egy (potenciális) adatvesztési esemény, és egyéb kockázatokat hordoz. Ez azt jelenti, hogy a Service Fabric nem folytatja a következő lépést, kivéve, ha a rendszergazda lépéseket tesz az adatvesztés deklarációjára.
-3. Az adatok elveszésének megállapítása, valamint visszaállítás a biztonsági mentésekből.
+   - A megőrzött állapot nélküli szolgáltatások esetében a kvórum vagy a több replika meghibásodása _azonnal_ visszavezeti az állandó kvórum elvesztését. Ha a Service Fabric állapot-nyilvántartó nem állandó szolgáltatásban észleli a kvórum elvesztését, a (lehetséges) adatvesztés bejelentésével azonnal továbblép a 3. lépésre. Az adatvesztés elkerülése érdekében a Service Fabric tudja, hogy a replikák visszahívása nem vár rá. A szolgáltatás nem megőrzött jellegéből adódóan az adatok elvesznek, még akkor is, ha azok helyreállnak.
+   - Az állapot-nyilvántartó állandó szolgáltatások esetében a kvórum vagy több replika meghibásodása miatt Service Fabric várnia kell, hogy a replikák visszatérjenek és visszaállítsa a kvórumot. Ennek eredményeképpen a szolgáltatás leállást eredményez a szolgáltatás érintett partíciójának (vagy a "replikakészlet-készletnek") _írásakor_ . Előfordulhat azonban, hogy az olvasások továbbra is lehetségesek a korlátozott konzisztencia-garanciákkal. Az az *időtartam, ameddig*Service Fabric megvárja a kvórum visszaállítását, mert a folytatás egy (lehetséges) adatvesztési esemény, és egyéb kockázatokat hordoz. Ez azt jelenti, hogy a Service Fabric nem folytassa a következő lépéssel, kivéve, ha a rendszergazda lépéseket tesz az adatvesztés kinyilvánítása érdekében.
+3. Annak megállapítása, hogy az adatok elvesznek-e, és a biztonsági másolatokból való visszaállítás
 
-   Ha kvórumveszteség deklarálva lett deklarálva (automatikusan vagy felügyeleti művelet révén), a Service Fabric és a szolgáltatások továbblépnek annak meghatározására, hogy az adatok ténylegesen elvesztek-e. Ezen a ponton a Service Fabric is tudja, hogy a többi replikák nem jön vissza. Ez volt az a döntés, amikor már nem vártuk, hogy a kvórum elvesztése magától megoldódjon. A szolgáltatás számára a legjobb megoldás általában a befagyasztás és a konkrét adminisztratív beavatkozás rakoncátora.
+   Ha a kvórum elvesztését deklarálták (akár automatikusan, akár rendszergazdai műveleten keresztül), Service Fabric és a szolgáltatások bekerülnek annak meghatározására, hogy az adatvesztés ténylegesen megszakadt-e. Ezen a ponton Service Fabric azt is tudja, hogy a többi replika nem jön vissza. Ez a döntés akkor történt, amikor a rendszer nem várta, hogy a kvórum elvesztését megszüntették. A szolgáltatásra vonatkozó legjobb művelet általában lefagy, és megvárja az adott rendszergazdai beavatkozást.
    
-   Amikor a Service `OnDataLossAsync` Fabric meghívja a _metódust,_ mindig a feltételezett adatvesztés miatt. A Service Fabric biztosítja, hogy ez a hívás a _legjobb_ fennmaradó replika leszállítható. Ez az a kópia, amely a legnagyobb előrehaladást ért el. 
+   Ha Service Fabric meghívja `OnDataLossAsync` a metódust, mindig a _feltételezett_ adatvesztés miatt. Service Fabric biztosítja, hogy a rendszer a hívást a _legjobb_ fennmaradó replikára továbbítsa. Ez az a replika, amely a legtöbb folyamatot elvégezte. 
    
-   Azért mondjuk mindig _a feltételezett adatvesztést,_ mert lehetséges, hogy a fennmaradó replika állapota megegyezik az elsődleges állapottal, amikor a kvórum elveszett. Azonban anélkül, hogy az állam összehasonlítani, nincs jó módja a Service Fabric vagy az üzemeltetők, hogy biztosan tudja.     
+   A _feltételezett_ adatvesztés oka az, hogy a fennmaradó replika állapota megegyezik az elsődlegesvel, amikor a kvórum elvész. Azonban anélkül, hogy ez az állapot össze legyen hasonlítva a szolgáltatással, nincs jó módszer arra, hogy a Service Fabric vagy az operátorok biztosan tudják.     
    
-   Tehát mit csinál a `OnDataLossAsync` módszer tipikus megvalósítása?
-   1. A megvalósítási `OnDataLossAsync` naplók, amelyek aktiválták, és elindítja a szükséges felügyeleti riasztásokat.
-   1. A megvalósítás általában szünetel, és megvárja a további döntéseket és a manuális intézkedéseket. Ennek az az oka, hogy még akkor is, ha a biztonsági mentések rendelkezésre állnak, előfordulhat, hogy elő kell készíteni őket. 
+   Mi a `OnDataLossAsync` módszer tipikus implementációja?
+   1. A rendszer `OnDataLossAsync` elindította a megvalósítási naplókat, és kikapcsolja a szükséges rendszergazdai riasztásokat.
+   1. A megvalósítás általában szünetel, és megvárja a további döntéseket és a manuális teendőket. Ennek az az oka, hogy akkor is elő kell készíteni a biztonsági mentéseket, ha vannak ilyenek. 
    
-      Ha például két különböző szolgáltatás koordinálja az adatokat, előfordulhat, hogy ezeket a biztonsági másolatokat módosítani kell annak érdekében, hogy a visszaállítás után a két szolgáltatás által fontos információk konzisztensek legyenek. 
-   1. Gyakran van néhány más telemetriai adatok vagy kipufogó a szolgáltatásból. Ezek a metaadatok más szolgáltatásokban vagy naplókban is szerepelhetnek. Ez az információ szükség szerint használható annak megállapítására, hogy voltak-e olyan hívások, amelyek et az elsődleges helyen fogadtak és dolgoztak fel, amelyek nem voltak jelen a biztonsági mentésben, vagy replikáltak-e erre a replikára. Előfordulhat, hogy ezeket a hívásokat újra le kell játszani, vagy hozzá kell adni a biztonsági mentéshez, mielőtt a visszaállítás megvalósítható lenne.  
-   1. A megvalósítás összehasonlítja a fennmaradó replika állapotát a rendelkezésre álló biztonsági mentések a tárolt állapottal. Ha a Service Fabric megbízható gyűjtemények, vannak ehhez elérhető [eszközök és folyamatok.](service-fabric-reliable-services-backup-restore.md) A cél az, hogy lássa, hogy a replika állapota elegendő-e, és hogy lássa, mi lehet a biztonsági mentés.
-   1. Az összehasonlítás befejezése után, és a visszaállítás befejezése után (ha szükséges), a szolgáltatáskód vissza kell **adnia igaz,** ha bármilyen állapotmódosítások történtek. Ha a replika megállapította, hogy ez az állapot elérhető legjobb példánya, és nem módosította, a kód **hamis**értéket ad vissza. 
+      Ha például két különböző szolgáltatás koordinálja az adatokat, előfordulhat, hogy ezeket a biztonsági másolatokat módosítani kell annak érdekében, hogy a visszaállítás után a két szolgáltatás által biztosított információk konzisztensek legyenek. 
+   1. Gyakran van valamilyen más telemetria vagy kipufogó a szolgáltatásból. Lehetséges, hogy ez a metaadatok más szolgáltatásokban vagy naplókban találhatók. Ezek az információk igény szerint használhatók annak megállapításához, hogy az elsődlegesen nem voltak-e olyan hívások, amelyek nem voltak jelen a biztonsági mentésben vagy replikálva az adott replikára. Előfordulhat, hogy ezeket a hívásokat újra kell játszani, vagy a visszaállítás előtt hozzá kell adni a biztonsági mentéshez.  
+   1. A megvalósítás összehasonlítja a fennmaradó replikát az összes elérhető biztonsági mentésben szereplő állapottal. Ha Service Fabric megbízható gyűjteményeket használ, elérhetők [eszközök és folyamatok](service-fabric-reliable-services-backup-restore.md) . A cél az, hogy a replika állapota elegendő-e, és hogy megtekinthető-e a biztonsági mentés.
+   1. Az összehasonlítás elvégzése után és a visszaállítás befejeződése után (ha szükséges) a szolgáltatás kódjának **igaz** értéket kell visszaadnia, ha bármilyen változás történt. Ha a replika azt állapította meg, hogy az állapot a legjobb elérhető példánya, és nem történt módosítás, a kód **hamis**értéket ad vissza. 
    
-      A **true** értéke azt jelzi, hogy a _többi_ fennmaradó replikák most lehet, hogy nem egyeztethető össze ezzel. A lesznek eldobva és újraépítve ebből a replikából. A **hamis** érték azt jelzi, hogy nem történt állapotmódosítás, így a többi replikák megtarthassák, amije van. 
+      A **true** érték azt jelzi, hogy a _többi_ fennmaradó replika mostantól inkonzisztens lehet. A rendszer elveti és újraépíti ezt a replikát. A **false** érték azt jelzi, hogy nem történt változás az állapotban, így a többi replika is megtarthatja a kívánt értéket. 
 
-Rendkívül fontos, hogy a szolgáltatás szerzői gyakorolják a lehetséges adatvesztési és hibaforgatókönyveket, mielőtt a szolgáltatások éles környezetben üzembe helyezése. Az adatvesztés lehetősége elleni védelem érdekében fontos, hogy rendszeresen [biztonsági másolatot kell tartania az](service-fabric-reliable-services-backup-restore.md) állapotalapú szolgáltatások állapotáról egy georedundáns tárolóba. 
+Rendkívül fontos, hogy a szolgáltatás szerzője a szolgáltatások éles környezetben történő üzembe helyezése előtt a lehetséges adatvesztést és meghibásodási forgatókönyveket alkalmazza. Az adatvesztés elleni védelem érdekében fontos, hogy rendszeres időközönként [biztonsági mentést](service-fabric-reliable-services-backup-restore.md) végezzenek az állapot-nyilvántartó szolgáltatások állapotáról egy földrajzi redundáns tárolóba. 
 
-Azt is meg kell győződnie arról, hogy képes-e az állapot visszaállítására. Mivel számos különböző szolgáltatás biztonsági mentésekülönböző időpontokban készült, biztosítania kell, hogy a visszaállítás után a szolgáltatások egységes képet kapnak egymásról. 
+Győződjön meg arról is, hogy van lehetőség az állapot visszaállítására. Mivel a különböző szolgáltatásokból származó biztonsági másolatok különböző időpontokban készülnek, meg kell győződnie arról, hogy a visszaállítást követően a szolgáltatások konzisztens nézettel rendelkeznek egymással kapcsolatban. 
 
-Vegyünk például egy olyan helyzetet, amikor az egyik szolgáltatás létrehoz egy számot, és tárolja azt, majd elküldi azt egy másik szolgáltatásnak, amely szintén tárolja. A visszaállítás után előfordulhat, hogy a második szolgáltatás rendelkezik a számmal, de az első nem, mert a biztonsági mentés nem tartalmazza a műveletet.
+Vegyünk például egy olyan helyzetet, amelyben az egyik szolgáltatás létrehoz egy számot, és tárolja azt, majd elküldi azt egy másik szolgáltatásnak, amely szintén tárolja azt. A visszaállítást követően előfordulhat, hogy a második szolgáltatás rendelkezik a számmal, de az első nem, mert a biztonsági másolata nem tartalmazza ezt a műveletet.
 
-Ha úgy találja, hogy a fennmaradó replikák nem elegendőek az adatvesztési forgatókönyv folytatásához, és nem rekonstruálhatja a szolgáltatás állapotát telemetriai adatokból vagy kipufogóból, a biztonsági mentések gyakorisága határozza meg a lehető legjobb helyreállításipont-célkitűzést (RPO). A Service Fabric számos eszközt biztosít a különböző hibaforgatókönyvek teszteléséhez, beleértve az állandó kvórumot és az adatvesztést, amely biztonsági másolatból történő helyreállítást igényel. Ezek a forgatókönyvek a Service Fabric tesztképességi eszközeinek részeként szerepelnek, a Hibaelemzési szolgáltatás által. Az eszközökkel és mintákkal kapcsolatos további információkért [lásd: Bevezetés a Hibaelemzési szolgáltatásba](service-fabric-testability-overview.md). 
+Ha azt állapítja meg, hogy a fennmaradó replikák nem elégségesek az adatvesztési forgatókönyvek folytatásához, és a szolgáltatás állapotát nem lehet telemetria vagy kipufogóból létrehozni, a biztonsági mentések gyakorisága határozza meg a lehető legjobb helyreállítási időpontot (RPO). Service Fabric számos eszközt biztosít a különböző meghibásodási forgatókönyvek teszteléséhez, beleértve az állandó kvórumot és az adatvesztést, amely biztonsági másolatból történő visszaállítást igényel. Ezek a forgatókönyvek a Service Fabric tesztelési eszközeinek részét képezik, amelyeket a hiba-elemzési szolgáltatás kezel. Ezekről az eszközökről és mintákról további információt [a hiba-elemzési szolgáltatás bemutatása](service-fabric-testability-overview.md)című témakörben talál. 
 
 > [!NOTE]
-> A rendszerszolgáltatások kvórumveszteséget is szenvedhetnek. A hatás a szóban forgó szolgáltatásra jellemző. Például a névadó szolgáltatás kvórumának elvesztése hatással van a névfeloldásra, míg a Feladatátvevő kezelő szolgáltatás kvórumvesztesége blokkolja az új szolgáltatás létrehozását és feladatátvételeket. 
+> A rendszerszolgáltatások a kvórum elvesztését is elérhetik. A hatás a szóban forgó szolgáltatásra jellemző. Például az elnevezési szolgáltatás Kvórumának elvesztése befolyásolja a névfeloldást, míg a Feladatátvételi felügyelő szolgáltatásban a kvórum elvesztése blokkolja az új szolgáltatások létrehozását és feladatátvételét. 
 > 
-> A Service Fabric rendszerszolgáltatások ugyanazt a mintát követik, mint a szolgáltatások állapotkezelés, de nem javasoljuk, hogy megpróbálja áthelyezni őket a kvórum elvesztése és a potenciális adatvesztés. Ehelyett azt javasoljuk, hogy [kérjen támogatást,](service-fabric-support.md) hogy megtalálja a megoldást, amely célzott a helyzet. Általában célszerű egyszerűen megvárni, amíg a lefelé replikák visszatérnek.
+> A Service Fabric rendszerszolgáltatások ugyanazt a mintát követik, mint az állami felügyelettel kapcsolatos szolgáltatások, de nem javasoljuk, hogy próbálja meg áthelyezni a kvórum elvesztését és a lehetséges adatvesztést. Ehelyett azt javasoljuk, hogy [kérjen támogatást](service-fabric-support.md) , hogy megoldást találjon a helyzetére. Általában csak a lefelé irányuló replikák visszaküldését érdemes várni.
 >
 
-#### <a name="troubleshooting-quorum-loss"></a>Kvórumveszteség elhárítása
+#### <a name="troubleshooting-quorum-loss"></a>A kvórum hibáinak elhárítása
 
-A replikák átmeneti hiba miatt időnként leállhatnak. Várjon egy ideig, ahogy a Service Fabric megpróbálja őket felállítani. Ha a replikák a vártnál hosszabb ideig nem voltak lecsökkentve, kövesse az alábbi hibaelhárítási műveleteket:
-- Lehet, hogy a replikák összeomlanak. Ellenőrizze a replikaszintű állapotjelentéseket és az alkalmazásnaplókat. Gyűjtse összeomlás guba, és megteszi a szükséges lépéseket, hogy visszaszerezze.
-- Lehet, hogy a replikafolyamat nem válaszol. Ellenőrizze az alkalmazásnaplókat, és ellenőrizze ezt. Gyűjtse össze a folyamatmemóriaképeket, majd állítsa le a nem válaszoló folyamatot. A Service Fabric létrehoz egy cserefolyamatot, és megpróbálja visszahozni a replika.
-- Előfordulhat, hogy a replikákat tartalmazó csomópontok nem lesznek. Indítsa újra az alapul szolgáló virtuális gépet a csomópontok felhozásához.
+Előfordulhat, hogy a replikák átmeneti meghibásodás miatt időnként megszakadnak. Várjon egy ideig, amíg a Service Fabric megpróbálja felvenni őket. Ha a replikák a vártnál több ideig voltak leálltak, kövesse az alábbi hibaelhárítási műveleteket:
+- Előfordulhat, hogy a replikák összeomlanak. A replika szintű állapotadatok és az alkalmazás naplófájljainak megtekintése. Gyűjtse össze az összeomlási memóriaképeket, és végezze el a szükséges műveleteket a helyreállításhoz.
+- Lehet, hogy a replika folyamata nem válaszol. Ellenőrizze az alkalmazás naplóiban, hogy ennek ellenőrzéséhez. A folyamat-memóriaképek gyűjtése, majd a nem válaszoló folyamat leállítása. Service Fabric létre fog hozni egy helyettesítő folyamatot, és megkísérli a replika visszahelyezését.
+- Előfordulhat, hogy a replikákat futtató csomópontok nem állnak le. Indítsa újra az alapul szolgáló virtuális gépet, hogy a csomópontok fel legyenek vezetve.
 
-Előfordulhat, hogy nem lehet helyreállítani a replikákat. Például a meghajtók meghibásodtak, vagy a gépek fizikailag nem válaszol. Ezekben az esetekben a Service Fabric kell mondani, hogy ne várjon replika helyreállítása.
+Esetenként előfordulhat, hogy nem lehet helyreállítani a replikákat. A meghajtók például sikertelenek voltak, vagy a gépek fizikailag nem válaszolnak. Ezekben az esetekben az Service Fabricnak nem kell várnia a replika helyreállítására.
 
-*Ne* alkalmazza ezeket a módszereket, ha a szolgáltatás online állapotba hozása elfogadhatatlan. Ebben az esetben minden erőfeszítést meg kell tenni a fizikai gépek helyreállítása érdekében.
+Ne *használja ezeket* a módszereket, ha az esetleges adatvesztés elfogadhatatlan a szolgáltatás online állapotba helyezéséhez. Ebben az esetben minden erőfeszítést el kell végezni a fizikai gépek helyreállítása felé.
 
-A következő műveletek adatvesztést okozhatnak. Ellenőrizd, mielőtt követed őket.
+Az alábbi műveletek adatvesztést okozhatnak. A követés előtt tekintse meg a következőt:.
    
 > [!NOTE]
-> _Ez soha nem_ biztonságos használni ezeket a módszereket más, mint célzott módon ellen adott partíciókat. 
+> Ezeket a metódusokat _soha nem_ lehet biztonságos módon használni, mint az adott partíciók esetében. 
 >
 
-- Használja `Repair-ServiceFabricPartition -PartitionId` a `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` vagy API-t. Ez az API lehetővé teszi a partíció azonosítójának megadását a kvórumveszteségből való kiköltözéshez és a potenciális adatvesztésbe való áthelyezéshez.
-- Ha a fürt gyakori hibákat tapasztal, amelyek miatt a szolgáltatások kvórumveszteség-állapotba kerülnek, és a lehetséges _adatvesztés elfogadható,_ a megfelelő [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) érték megadása segíthet a szolgáltatás automatikus helyreállításában. A Service Fabric megvárja a megadott `QuorumLossWaitDuration` értéket (az alapértelmezett érték végtelen) a helyreállítás végrehajtása előtt. *Nem* javasoljuk ezt a módszert, mert váratlan adatvesztést okozhat.
+- Használja a `Repair-ServiceFabricPartition -PartitionId` vagy `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` az API-t. Ez az API lehetővé teszi a partíció AZONOSÍTÓjának megadását, hogy kilépjen a kvórum elvesztésével és a lehetséges adatvesztéssel.
+- Ha a fürt olyan gyakori hibákba ütközik, amelyek következtében a szolgáltatások kvórum elvesztése állapotba kerülnek, és a lehetséges _adatvesztés elfogadható_, a megfelelő [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) érték megadásával a szolgáltatás automatikusan helyreállítható. A helyreállítás végrehajtása előtt Service Fabric várnia kell a megadott `QuorumLossWaitDuration` értéket (az alapértelmezett érték a végtelen). Ez a módszer *nem* ajánlott, mert váratlan adatvesztést okozhat.
 
-## <a name="availability-of-the-service-fabric-cluster"></a>A Service Fabric-fürt elérhetősége
-Általában a Service Fabric-fürt egy erősen elosztott környezetben nincs egyetlen meghibásodási pont. Egy csomópont meghibásodása nem okoz rendelkezésre állási vagy megbízhatósági problémákat a fürt számára, elsősorban azért, mert a Service Fabric rendszerszolgáltatások ugyanazokat az irányelveket követik korábban. Ez azt, hogy alapértelmezés szerint mindig három vagy több replikával futnak, és az állapot nélküli rendszerszolgáltatások minden csomóponton futnak. 
+## <a name="availability-of-the-service-fabric-cluster"></a>A Service Fabric-fürt rendelkezésre állása
+Általánosságban elmondható, hogy a Service Fabric-fürt egy olyan, szigorúan elosztott környezet, amely egyetlen meghibásodási pontot sem okoz. Egy csomópont meghibásodása nem eredményezi a fürt rendelkezésre állási és megbízhatósági problémáit, elsősorban azért, mert a Service Fabric rendszerszolgáltatások a korábban megadott irányelvek szerint követik egymást. Azaz mindig három vagy több replikával futnak alapértelmezés szerint, és a rendszerszolgáltatások, amelyek állapot nélküliek futnak az összes csomóponton. 
 
-Az alapul szolgáló Service Fabric hálózati és hibaészlelési rétegek teljes mértékben elosztott. A legtöbb rendszerszolgáltatás újraépíthető a fürt metaadataiból, vagy tudja, hogyan szinkronizálhatja újra az állapotát más helyekről. A fürt rendelkezésre állása veszélybe kerülhet, ha a rendszerszolgáltatások kvórumveszteség-helyzetekbe kerülnek, mint amilyeneket korábban leírt. Ezekben az esetekben előfordulhat, hogy nem tud bizonyos műveleteket végrehajtani a fürtön (például egy frissítést vagy új szolgáltatásokat üzembe helyezni), de maga a fürt még mindig működik. 
+Az alapul szolgáló Service Fabric hálózatkezelési és meghibásodási észlelési rétegek teljes mértékben el vannak osztva. A legtöbb rendszerszolgáltatás újraépíthető a fürt metaadataiból, vagy megtudhatja, hogyan szinkronizálja az állapotát más helyekről. A fürt rendelkezésre állása veszélybe kerülhet, ha a rendszerszolgáltatások a korábban leírtaknak megfelelő kvórum-vesztési helyzetbe kerülnek. Ezekben az esetekben előfordulhat, hogy nem tud bizonyos műveleteket végrehajtani a fürtön (például a frissítés megkezdéséhez vagy új szolgáltatások üzembe helyezéséhez), de maga a fürt is. 
 
-A futó fürtön futó szolgáltatások továbbra is futnak ilyen körülmények között, kivéve, ha a rendszerszolgáltatások működésének folytatásához írásra van szükség. Ha például a Feladatátvétel-kezelő kvórumveszteségben van, az összes szolgáltatás továbbra is futni fog. De minden olyan szolgáltatás, amely nem lesz képes automatikusan újraindítani, mert ehhez a feladatátvételi kezelő bevonását igényli. 
+A futó fürtön futó szolgáltatások továbbra is futnak ezekben a feltételekben, kivéve, ha a rendszerszolgáltatások működésének folytatásához írásra van szükségük. Ha például Feladatátvételi felügyelő a kvórum elvesztésekor, az összes szolgáltatás továbbra is futni fog. A sikertelenül működő szolgáltatások azonban nem lesznek automatikusan újraindulni, mivel ez Feladatátvételi felügyelő bevonását igényli. 
 
-### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Adatközpont vagy Azure-régió hibái
-Ritka esetekben a fizikai adatközpont átmenetileg elérhetetlenné válhat az áramellátás vagy a hálózati kapcsolat elvesztése miatt. Ezekben az esetekben a Service Fabric-fürtök és -szolgáltatások az adott adatközpontban vagy az Azure-régióban nem lesz elérhető. Az adatok azonban _megőrződnek._ 
+### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Adatközpont vagy Azure-régió meghibásodása
+Ritka esetekben előfordulhat, hogy egy fizikai adatközpont átmenetileg elérhetetlenné válik az áramellátás vagy a hálózati kapcsolat elvesztése miatt. Ezekben az esetekben az adott adatközpontban vagy az Azure-régióban található Service Fabric-fürtök és-szolgáltatások elérhetetlenné válnak. _Az adatai azonban megmaradnak_. 
 
-Az Azure-ban futó fürtök esetében megtekintheti a kimaradások frissítéseit az [Azure állapotlapján.][azure-status-dashboard] Abban a nagyon valószínűtlen esetben, ha egy fizikai adatközpont részben vagy teljesen megsemmisült, az ott üzemeltetett Service Fabric-fürtök, vagy a bennük lévő szolgáltatások elveszhetnek. Ez a veszteség magában foglalja az adatközponton vagy régión kívül nem biztonsági másolatot nem tartalmazó bármely állapotot.
+Az Azure-ban futó fürtök esetében az [Azure állapot lapján][azure-status-dashboard]megtekintheti az kimaradások frissítéseit. Abban a nagyon valószínűtlen esetben, ha egy fizikai adatközpont részben vagy teljesen megsemmisül, az ott üzemeltetett Service Fabric-fürtök vagy a bennük található szolgáltatások elvesznek. Ez a veszteség magában foglalja az adatközponton vagy régióban kívülről nem készített biztonsági mentés állapotát.
 
-Két különböző stratégiák a túlélésre az állandó vagy tartós hiba egyetlen adatközpont vagy régió: 
+Két különböző stratégia áll rendelkezésre egy adott adatközpont vagy régió állandó vagy tartós meghibásodásának megtúléléséhez: 
 
-- Futtasson külön Service Fabric-fürtöket több ilyen régióban, és használjon valamilyen mechanizmust a feladatátvételhez és a feladat-feladat-visszavételhez ezen környezetek között. Ez a fajta többfürtös aktív/aktív vagy aktív/passzív modell további felügyeleti és műveleti kódot igényel. Ez a modell is szükség van a biztonsági mentések egy adatközpontban vagy régióban a szolgáltatások biztonsági mentéseit, hogy azok más adatközpontokban vagy régiókban érhetők el, ha az egyik meghibásodik. 
-- Egyetlen Service Fabric-fürt, amely több adatközpontra vagy régióra terjed ki. A stratégia minimálisan támogatott konfigurációja három adatközpont vagy régió. A régiók vagy adatközpontok ajánlott száma öt. 
+- Különálló Service Fabric-fürtöket futtathat több ilyen régióban, és a feladatátvétel és a feladat-visszavétel egyes mechanizmusait felhasználhatja ezen környezetek között. Ez a több fürt aktív/aktív vagy aktív/passzív modellje további felügyeleti és műveleti kódokat igényel. Ehhez a modellhez az egyik adatközpontban vagy régióban lévő szolgáltatásokból származó biztonsági másolatok koordinálására is szükség van, hogy azok más adatközpontokban vagy régiókban is elérhetők legyenek, ha az egyik sikertelen. 
+- Futtasson egyetlen Service Fabric-fürtöt, amely több adatközpontra vagy régióra terjed ki. A stratégia minimálisan támogatott konfigurációja három adatközpont vagy régió. A régiók vagy adatközpontok ajánlott száma öt. 
   
-  Ehhez a modellhez összetettebb fürttopológia szükséges. A haszon azonban az, hogy egy adatközpont vagy régió meghibásodása egy katasztrófa egy normál hiba. Ezeket a hibákat az egy régión belüli fürtökszámára dolgozó mechanizmusok oldhatják meg. A tartalék tartományok, a frissítési tartományok és a Service Fabric elhelyezési szabályai biztosítják a számítási feladatok elosztását, hogy azok tolerálják a normál hibákat. 
+  Ehhez a modellhez összetettebb fürtözött topológia szükséges. Az előny azonban az, hogy az egyik adatközpont vagy régió meghibásodása egy vészhelyzetből normális hiba miatt alakul. Ezeket a hibákat olyan mechanizmusok tudják kezelni, amelyek egy adott régióban lévő fürtökhöz működnek. A tartalék tartományok, a frissítési tartományok és a Service Fabric elhelyezési szabályok biztosítják, hogy a munkaterhelések szét legyenek terjesztve, hogy a normál hibákat eltűrik. 
   
-  Az ilyen típusú fürtszolgáltatások üzemeltetését segítő házirendekkel kapcsolatos további információkért olvassa el [a Service Fabric-szolgáltatások elhelyezési szabályzatait.](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+  További információ azokról a házirendekről, amelyek segíthetnek az ilyen típusú fürtökön belüli szolgáltatások üzemeltetésében: [Service Fabric Services elhelyezési házirendjei](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md).
 
-### <a name="random-failures-that-lead-to-cluster-failures"></a>Fürthibákhoz vezető véletlenszerű hibák
-A Service Fabric a *magcsomópontok*fogalma. Ezek olyan csomópontok, amelyek fenntartják az alapul szolgáló fürt rendelkezésre állását. 
+### <a name="random-failures-that-lead-to-cluster-failures"></a>A fürtök meghibásodását eredményező véletlenszerű hibák
+Service Fabric a *vetőmag-csomópontok*fogalmával rendelkezik. Ezek olyan csomópontok, amelyek megőrzik a mögöttes fürt rendelkezésre állását. 
 
-A magcsomópontok segítenek annak biztosításában, hogy a fürt más csomópontokkal való bérletek létrehozásával és bizonyos típusú hibák esetén tiebreakerként szolgáljon. Ha a véletlenszerű hibák eltávolítják a fürt ben lévő magcsomópontok többségét, és nem hozzák vissza őket gyorsan, a fürt automatikusan leáll. A fürt ezután meghibásodik. 
+A vetőmag-csomópontok segítségével biztosítható, hogy a fürt a többi csomóponttal való bérletek létrehozásával, valamint bizonyos típusú hibák esetén tiebreakers szolgáljon. Ha a véletlenszerű hibák elveszik a fürtben található vetőmag-csomópontok többségét, és azokat nem gyorsan hozzák vissza, a fürt automatikusan leáll. A fürt ezután sikertelen lesz. 
 
-Az Azure-ban a Service Fabric erőforrás-szolgáltató kezeli a Service Fabric-fürtkonfigurációk. Alapértelmezés szerint az Erőforrás-szolgáltató elosztja a magcsomópontokat a hiba- és frissítési tartományok között az *elsődleges csomóponttípushoz.* Ha az elsődleges csomóponttípus ezüst vagy arany tartósságként van megjelölve, amikor eltávolít egy magcsomópontot (vagy az elsődleges csomópont típusának méretezésével, vagy manuálisan eltávolítja), a fürt megpróbál előléptetni egy másik nem magozott csomópontot az elsődleges csomóponttípus rendelkezésre álló kapacitásából. Ez a kísérlet sikertelen lesz, ha kevesebb rendelkezésre álló kapacitással rendelkezik, mint amit a fürt megbízhatósági szintje az elsődleges csomóponttípushoz igényel.
+Az Azure-ban Service Fabric erőforrás-szolgáltató kezeli Service Fabric fürt konfigurációját. Alapértelmezés szerint az erőforrás-szolgáltató kiosztja a magok csomópontját a hibák és a frissítési tartományok között az *elsődleges csomópont típusaként*. Ha az elsődleges csomópont típusa ezüst vagy arany tartósságként van megjelölve, akkor ha eltávolít egy vetőmag-csomópontot (az elsődleges csomópont típusának skálázásával vagy a manuális eltávolításával), a fürt megpróbál előléptetni egy másik, nem magot tartalmazó csomópontot az elsődleges csomópont típusának rendelkezésre álló kapacitásával. Ez a kísérlet sikertelen lesz, ha a fürt megbízhatósági szintjénél kevesebb kapacitás áll rendelkezésre, mint az elsődleges csomópont típusa.
 
-Az önálló Service Fabric-fürtök és az Azure-ban az elsődleges csomópont típusa az, amely futtatja a magok. Elsődleges csomóponttípus definiálásakor a Service Fabric automatikusan kihasználja a megadott csomópontok számát, ha az egyes rendszerszolgáltatások legfeljebb kilenc magcsomópontok és hét replikák létrehozásával. Ha egy sor véletlenszerű hibák veszi ki a legtöbb ilyen replikák egyidejűleg, a rendszerszolgáltatások lép kvórum elvesztése. Ha a magcsomópontok többsége elvész, a fürt nem sokkal később leáll.
+Az önálló Service Fabric-fürtökben és az Azure-ban az elsődleges csomópont típusa a magok futtatásának egyike. Ha elsődleges csomópont-típust határoz meg, Service Fabric automatikusan kihasználja a csomópontok számát, amelyet akár kilenc vetőmag-csomópont létrehozásával, mind a rendszerszolgáltatások hét replikájának létrehozásával biztosít. Ha a véletlenszerű hibák egy halmaza egyidejűleg a replikák többségét kiveszi, a rendszerszolgáltatások kvórum elvesztését fogják megadni. Ha a vetőmag-csomópontok többsége elveszik, akkor a fürt hamarosan leáll.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan szimulálhatja a különböző hibák segítségével [a testability keretrendszer](service-fabric-testability-overview.md).
-- Olvassa el az egyéb vész-helyreállítási és magas rendelkezésre állású erőforrásokat. A Microsoft nagy mennyiségű útmutatást tett közzé ezekről a témakörökről. Bár ezen erőforrások némelyike más termékekben való használatra vonatkozó speciális technikákra vonatkozik, számos általános ajánlott eljárás, amelyet a Service Fabric környezetben alkalmazhat:
+- Megtudhatja, hogyan szimulálhatja a különböző hibákat a [tesztelési keretrendszer](service-fabric-testability-overview.md)használatával.
+- További katasztrófa-helyreállítási és magas rendelkezésre állású erőforrások olvasása. A Microsoft nagy mennyiségű útmutatót tett közzé ezekkel a témakörökkel kapcsolatban. Bár ezek az erőforrások bizonyos, más termékekben használt technikákra vonatkoznak, számos általános ajánlott eljárást tartalmaznak, amelyeket a Service Fabric kontextusban alkalmazhat:
   - [Rendelkezésre állási ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)
-  - [Vész-helyreállítási gyakorlat végrehajtása](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Vész-helyreállítási részletezés végrehajtása](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz][dr-ha-guide]
-- További információ a [Service Fabric támogatási lehetőségeiről.](service-fabric-support.md)
+- További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).
 
 
 <!-- External links -->
