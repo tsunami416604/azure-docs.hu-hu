@@ -1,69 +1,69 @@
 ---
 title: Az Azure App Configurationről
-description: Az Azure App konfigurációs szolgáltatás áttekintése.
+description: Az Azure app Configuration szolgáltatás áttekintése.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
 ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523475"
 ---
 # <a name="what-is-azure-app-configuration"></a>Az Azure App Configurationről
 
-Az Azure App Configuration szolgáltatás központilag kezelheti az alkalmazásbeállításokat és a szolgáltatásjelzőket. A modern programok, különösen a felhőben futó programok, általában számos összetevővel rendelkeznek, amelyek a természetben oszlanak meg. A konfigurációs beállítások ezen összetevők közötti terjesztése az alkalmazások központi telepítése során nehezen elhárítható hibákhoz vezethet. Az Alkalmazáskonfiguráció segítségével egy helyen tárolhatja az alkalmazás összes beállítását, és egy helyen biztosíthatja a hozzáférésüket.
+Az Azure app Configuration szolgáltatással központilag kezelhető az Alkalmazásbeállítások és a funkciók jelzői. A modern programok, különösen a felhőben futó programok általában számos, természetben terjesztett összetevővel rendelkeznek. A konfigurációs beállítások ezen összetevők között történő terjesztése a hibák elhárításához vezethet az alkalmazások központi telepítése során. Az alkalmazás konfigurációja segítségével tárolhatja az alkalmazás összes beállítását, és egy helyen biztonságossá teheti a hozzáférését.
 
-## <a name="why-use-app-configuration"></a>Miért érdemes használni az Alkalmazáskonfigurációt?
+## <a name="why-use-app-configuration"></a>Miért érdemes az alkalmazás konfigurációját használni?
 
-A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. Egy robusztus és skálázható alkalmazás létrehozása elosztott környezetben jelentős kihívást jelent.
+A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. A robusztus és skálázható alkalmazások elosztott környezetben való létrehozása jelentős kihívást jelent.
 
-A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének növekvő összetettségének kezelésében. A [Twelve-Factor alkalmazás](https://12factor.net/) például számos jól tesztelt architekturális mintát és ajánlott eljárásokat ír le a felhőalapú alkalmazásokhoz. Az útmutató egyik legfontosabb javaslata a konfiguráció és a kód elkülönítése. Az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és a futásidejű környezetből vagy egy külső forrásból kell beolvasni.
+A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A [tizenkét faktoros alkalmazás](https://12factor.net/) például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és a rendszerből kell beolvasni a futásidejű környezetből vagy egy külső forrásból.
 
-Bár bármely alkalmazás használhatja az alkalmazáskonfigurációt, a következő példák azok az alkalmazástípusok, amelyek számára előnyös a használata:
+Habár bármely alkalmazás használhatja az alkalmazások konfigurációját, az alábbi példák az alkalmazás használatának előnyeit hasznosító alkalmazások típusai:
 
-* Az Azure Kubernetes-szolgáltatáson, az Azure Service Fabricen vagy más, egy vagy több földrajzi területen üzembe helyezett tárolóba helyezett alkalmazásokon alapuló mikroszolgáltatások
-* Kiszolgáló nélküli alkalmazások, amelyek magukban foglalják az Azure Functions-t vagy más, eseményvezérelt állapot nélküli számítási alkalmazásokat
+* Az Azure Kubernetes szolgáltatáson, az Azure Service Fabricon vagy egy vagy több földrajzi régióban üzembe helyezett más, tárolóban lévő alkalmazásokon alapuló szolgáltatások
+* Kiszolgáló nélküli alkalmazások, amelyek Azure Functions vagy más eseményvezérelt állapot nélküli számítási alkalmazásokat tartalmaznak
 * Folyamatos üzembe helyezési folyamat
 
-Az Alkalmazáskonfiguráció a következő előnyöket kínálja:
+Az alkalmazás konfigurálása a következő előnyöket kínálja:
 
 * Egy teljes körűen felügyelt szolgáltatás, amely percek alatt beállítható
-* Rugalmas kulcsábrázolások és leképezések
+* Rugalmas kulcsos ábrázolások és leképezések
 * Címkézés címkékkel
-* A beállítások időponthoz való bejátszása
-* Dedikált felhasználói felület a szolgáltatásjelzők kezeléséhez
-* Két konfigurációkészlet összehasonlítása egyénileg definiált dimenziókon
+* Beállítások időponthoz való ismétlése
+* Dedikált felhasználói felület a szolgáltatás-jelölők felügyeletéhez
+* Két konfiguráció összehasonlítása egyéni által definiált dimenziókra
 * Fokozott biztonság az Azure által felügyelt identitások révén
-* Bizalmas információk titkosítása nyugalmi és átvitel közben
-* Natív integráció a népszerű keretekkel
+* Bizalmas adatok titkosítása a nyugalmi állapotban és az átvitel során
+* Natív integráció népszerű keretrendszerekkel
 
-Az alkalmazáskonfiguráció kiegészíti az [Azure Key Vaultot,](https://azure.microsoft.com/services/key-vault/)amely alkalmazástitok tárolására szolgál. Az Alkalmazáskonfiguráció megkönnyíti a következő forgatókönyvek megvalósítását:
+Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely az alkalmazások titkos kulcsainak tárolására szolgál. Az alkalmazás konfigurálása megkönnyíti a következő forgatókönyvek megvalósítását:
 
-* A hierarchikus konfigurációs adatok kezelésének és terjesztésének központosítása különböző környezetekben és földrajzi területeken
-* Az alkalmazásbeállítások dinamikus módosítása alkalmazásújratelepítése vagy újraindítása nélkül
-* A funkciók rendelkezésre állásának szabályozása valós időben
+* A különböző környezetek és földrajzi területek hierarchikus konfigurációs beállításainak központosított kezelése és elosztása
+* Az alkalmazás beállításainak dinamikus módosítása anélkül, hogy újra kellene telepíteni vagy újraindítani egy alkalmazást
+* A vezérlési funkció valós idejű rendelkezésre állása
 
-## <a name="use-app-configuration"></a>Az alkalmazáskonfiguráció használata
+## <a name="use-app-configuration"></a>Alkalmazás konfigurációjának használata
 
-Az alkalmazáskonfigurációs tároló alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféltár. A következő módszerek állnak rendelkezésre az alkalmazáshoz való csatlakozáshoz, a választott nyelvtől és keretrendszertől függően
+Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A választott nyelvtől és keretrendszertől függően az alábbi módszerek érhetők el az alkalmazáshoz való csatlakozáshoz
 
-| Programozási nyelv és keret | Csatlakozás |
+| Programozási nyelv és keretrendszer | Csatlakozás |
 |---|---|
-| .NET Core és ASP.NET Core | Alkalmazáskonfigurációs szolgáltató a .NET Core alkalmazáskonfigurálásához |
-| .NET Framework és ASP.NET | Alkalmazáskonfiguráció-szerkesztő a .NET alkalmazáshoz |
-| Java Spring | Alkalmazáskonfigurációs ügyfél a Spring Cloud szolgáltatáshoz |
-| Egyéb | Alkalmazáskonfigurációs REST API |
+| .NET Core és ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
+| .NET-keretrendszer és ASP.NET | A .NET-hez készült app Configuration Builder |
+| Java Spring | Alkalmazás-konfigurációs ügyfél a Spring Cloud-hoz |
+| Egyéb | Alkalmazás-konfiguráció REST API |
 
 ## <a name="next-steps"></a>További lépések
 
 * [ASP.NET Core rövid útmutató](./quickstart-aspnet-core-app.md)
-* [.NET Core rövid útmutató](./quickstart-dotnet-core-app.md)
-* [A .](./quickstart-dotnet-app.md)
-* [Az Azure Functions rövid útmutatója](./quickstart-azure-functions-csharp.md)
-* [Java tavaszi rövid útmutató](./quickstart-java-spring-app.md)
-* [ASP.NET Core szolgáltatás jelzőjának rövid útmutatója](./quickstart-feature-flag-aspnet-core.md)
-* [Gyorsútmutató a Tavaszi rendszerindítás funkciójelzőről](./quickstart-feature-flag-spring-boot.md)
+* [.NET Core gyors útmutató](./quickstart-dotnet-core-app.md)
+* [.NET-keretrendszer – gyors útmutató](./quickstart-dotnet-app.md)
+* [Azure Functions rövid útmutató](./quickstart-azure-functions-csharp.md)
+* [Java Spring rövid útmutató](./quickstart-java-spring-app.md)
+* [ASP.NET Core funkció jelzője](./quickstart-feature-flag-aspnet-core.md)
+* [A Spring boot szolgáltatás jelölője](./quickstart-feature-flag-spring-boot.md)

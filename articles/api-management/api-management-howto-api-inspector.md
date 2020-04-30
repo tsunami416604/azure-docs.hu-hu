@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75768527"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>API-k hibakeresése kérelmek nyomkövetésének használatával
@@ -49,10 +49,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
    > [!NOTE]
    > * Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
-   > * Az Ocp-Apim-Trace HTTP-fejléc használatközbeni nyomkövetés leolvasásához engedélyezni kell az előfizetési kulcs **nyomkövetési** beállítását. A **nyomkövetés engedélyezése** beállítás konfigurálásához a bal oldali menü **API-kezelés** parancsában válassza az **Előfizetések**lehetőséget.
-   >   ![Nyomkövetés engedélyezése az API Management Subscriptions ablaktáblán](media/api-management-howto-api-inspector/allowtracing.png)
+   > * Ahhoz, hogy nyomkövetést kapjon a OCP-APIM-Trace HTTP-fejléc használatakor, engedélyezni kell az előfizetési kulcs **nyomkövetési** beállítását. A **nyomkövetés engedélyezése** beállítás konfigurálásához a bal oldali menü **API Management** területén válassza az **előfizetések**lehetőséget.
+   >   ![Nyomkövetés engedélyezése a API Management-előfizetések ablaktáblán](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. Az API-hívás megküldéséhez kattintson a **Küldés** gombra. 
+6. Az API-hívás létrehozásához kattintson a **Küldés** gombra. 
 7. Várjon, amíg a hívás véget ér. 
 8. Lépjen az **API-konzol****Nyomkövetés** lapjára. A következő hivatkozások bármelyikére kattintva a részletes nyomkövetési információkra ugorhat: **bejövő**, **háttér**, **kimenő**.
 

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Mintamodell hozzáadása- Azure Analysis Services | Microsoft dokumentumok
+title: Oktatóanyag – minta modell hozzáadása – Azure Analysis Services | Microsoft Docs
 description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ismerteti az Azure Analysis Servicesben.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326581"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
@@ -22,7 +22,7 @@ Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modell
 > * Kiegészített táblázatos adatmodell-minta hozzáadása kiszolgálóhoz 
 > * Csatlakozás a modellhez az SSMS használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -30,12 +30,12 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - Egy Azure Analysis Services-kiszolgáló. További tudnivalók: [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md).
 - Kiszolgáló-rendszergazdai engedélyek
-- [SQL Server Management Stúdió](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [portálra.](https://portal.azure.com/)
+Jelentkezzen be a [portálra](https://portal.azure.com/).
 
 ## <a name="add-a-sample-model"></a>Mintamodell hozzáadása
 
@@ -43,7 +43,7 @@ Jelentkezzen be a [portálra.](https://portal.azure.com/)
 
     ![Mintamodell létrehozása](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. Az **Új modell:** > **Válasszon adatforrást,** ellenőrizze, hogy a **Mintaadatok** ki van-e jelölve, majd kattintson a **Hozzáadás**gombra.
+2. Az **új modellben** > **válasszon ki egy adatforrást**, ellenőrizze a **mintaadatok** beállítást, majd kattintson a **Hozzáadás**gombra.
 
     ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

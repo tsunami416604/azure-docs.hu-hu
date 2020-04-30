@@ -8,50 +8,50 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
 ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74481662"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
-Az Azure Database for PostgreSQL egy relációs adatbázis-szolgáltatás a Microsoft felhőben, amelyet fejlesztők nek készítettek. A nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázis-motor közösségi verzióján alapul, és két telepítési lehetőségben érhető el: single server és hyperscale (Citus).
+A Azure Database for PostgreSQL egy, a fejlesztők számára készült Microsoft-felhőben található, a Microsoft felhőalapú szolgáltatása. A szolgáltatás a nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázismotor közösségi verzióján alapul, és két központi telepítési lehetőségben érhető el: egyetlen kiszolgáló és nagy kapacitású (Citus).
 
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
-Az egykiszolgálós telepítési lehetőség a következőket biztosítja:
+Az egykiszolgálós üzembe helyezési lehetőség a következőket biztosítja:
 
-- Beépített, [magas rendelkezésre állás](concepts-high-availability.md) további költségek nélkül (99,99%-os SLA)
+- Beépített [magas rendelkezésre állás](concepts-high-availability.md) további díjszabás nélkül (99,99%-os SLA)
 - Kiszámítható teljesítmény, használatalapú díjszabással
-- [Szükség szerint függőleges lépték](concepts-pricing-tiers.md) másodperceken belül
-- A kiszolgáló [figyelése és riasztása](concepts-monitoring.md) a kiszolgáló értékeléséhez
+- [A vertikális skálázás szükség szerint](concepts-pricing-tiers.md) másodpercek alatt
+- [Figyelés és riasztás](concepts-monitoring.md) a kiszolgáló értékeléséhez
 - Vállalati szintű biztonság és megfelelőség
-- [Biztosítva az](concepts-security.md) érzékeny adatok védelmére nyugalmi és mozgásközbeni védelemérdekében
-- [Automatikus biztonsági mentések és időponthoz kötött visszaállítás](concepts-business-continuity.md) akár 35 napig
+- [Biztonságos a](concepts-security.md) bizalmas adatok védelme érdekében a nyugalmi állapotban és a mozgásban
+- [Automatikus biztonsági mentések és időponthoz való visszaállítás –](concepts-business-continuity.md) akár 35 napig is
 
 
-Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik, hogy a gyors alkalmazásfejlesztésre összpontosítson, és felgyorsítsa a piacra jutási időt, ahelyett, hogy értékes időt és erőforrásokat töltene a virtuális gépek és infrastruktúra kezelésére. Az alkalmazást az Ön által választott nyílt forráskódú eszközökkel és platformokkal tovább fejlesztheti anélkül, hogy új készségeket kellene elsajátítania.
+Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Lehetővé teszik az alkalmazások gyors fejlesztését és a piacra kerülési idő felgyorsítását ahelyett, hogy értékes időt és erőforrásokat kellene kitölteni a virtuális gépek és az infrastruktúra kezeléséhez. Az alkalmazást továbbra is kifejlesztheti a kívánt nyílt forráskódú eszközökkel és platformmal, anélkül, hogy új ismereteket kellene megtanulnia.
 
-Az egykiszolgálós telepítési lehetőség három tarifacsomagot kínál: alapszintű, általános célú és memóriaoptimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [Tarifacsomagok](concepts-pricing-tiers.md) ban találja.
+Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-pricing-tiers.md) .
 
-## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure-adatbázis postgreSQL- nagy kapacitású (Citus)
-A nagykapacitású (Citus) beállítás vízszintesen skálázhatja a lekérdezéseket több gép en horizontális an- A lekérdezési motor párhuzamosítja a bejövő SQL-lekérdezések ezeken a kiszolgálókon a nagyobb adatkészletek gyorsabb válaszokat. Olyan alkalmazásokat szolgál ki, amelyek nagyobb léptéket és teljesítményt igényelnek, általában olyan munkaterheléseket, amelyek megközelítik a 100 GB-ot.
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus)
+A nagy kapacitású (Citus) lehetőség vízszintesen méretezi a lekérdezéseket több gép között a horizontális skálázással. A lekérdezési motor parallelizes a bejövő SQL-lekérdezéseket ezen kiszolgálókon a nagyméretű adatkészletek gyorsabb megválaszolásához. Olyan alkalmazásokat kínál, amelyek nagyobb méretet és teljesítményt igényelnek, és általában a várható munkaterhelések, vagy már meghaladja a-100 GB-ot.
 
-A Nagykapacitású (Citus) telepítési lehetőség a következőket biztosítja:
+A nagy kapacitású (Citus) telepítési lehetőség a következőket biztosítja:
 
-- Horizontális skálázás több gépen horizontális horizontális horizontális sértéssel
-- Lekérdezési párhuzamosítás ezeken a kiszolgálókon a nagyobb adatkészleteken adott gyorsabb válaszok érdekében
-- Kiváló támogatás a több-bérlős alkalmazásokhoz, a valós idejű operatív elemzésekhez és a nagy átviteli sebességű tranzakciós számítási feladatokhoz
+- Horizontális skálázás több gépen több szegmensen keresztül
+- Párhuzamos lekérdezése a kiszolgálók között a nagyméretű adatkészletek gyorsabb reagálásához
+- Kiváló támogatás a több-bérlős alkalmazások, a valós idejű operatív elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
 
-A PostgreSQL számára készült alkalmazások elosztott lekérdezéseket futtathatnak a Nagykapacitású (Citus) [szabvány-kapcsolatkódokkal](./concepts-connection-libraries.md) és minimális módosításokkal.
+A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
 ## <a name="contacts"></a>Kapcsolatok
-Ha bármilyen kérdése vagy javaslata van az Azure Database for PostgreSQL használatával kapcsolatban, küldjön egy e-mailt az Azure Database for PostgreSQL Team[ @Ask (Azure DB for PostgreSQL)](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)számára. Ez a cím általános kérdésekre szól, nem pedig támogatási jegyekre.
+Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatnak ([ @Ask az Azure-adatbázis PostgreSQL-hez](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ez a címe a támogatási jegyek helyett általános kérdésekre szolgál.
 
-Ezen túlmenően, úgy ezeket a kapcsolattartási pontokat, mint a megfelelő:
-- Ha kapcsolatba szeretne lépni az Azure-támogatással, vagy ki szeretne javítani egy problémát a fiókjával [kapcsolatban, kérjen jegyet az Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Emellett vegye figyelembe az alábbi kapcsolattartási pontokat a megfelelő módon:
+- Ha kapcsolatba szeretne lépni az Azure támogatási szolgálatával, vagy javítsa ki a fiókkal kapcsolatos problémát, vegyen fel [egy jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>További lépések
-- A költségösszehasonlításokat és számológépeket az [árképzési oldalon](https://azure.microsoft.com/pricing/details/postgresql/) találja.
-- Első lépések: első Azure-adatbázisa a PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) vagy [a Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md) számára
+- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez.
+- Első lépésként hozza létre első Azure Database for PostgreSQL [egy kiszolgáló](./quickstart-create-server-database-portal.md) -vagy [nagy kapacitású (Citus)](./quickstart-create-hyperscale-portal.md)
 - Építse fel az első alkalmazását Python, PHP, Ruby, C\#, Java, Node.js nyelven: [Csatlakozási kódtárak](./concepts-connection-libraries.md)

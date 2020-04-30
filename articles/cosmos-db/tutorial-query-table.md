@@ -1,6 +1,6 @@
 ---
 title: Hogyan kérdezhetők le táblaadatok az Azure Cosmos DB-ben?
-description: Megtudhatja, hogyan lehet lekérdezni az Azure Cosmos DB Table API-fiókban tárolt adatokat OData-szűrők és LINQ-lekérdezések használatával
+description: Megtudhatja, hogyan kérdezheti le a Azure Cosmos DB Table API-fiókban tárolt adatlekérdezéseket OData szűrők és LINQ-lekérdezések használatával
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770485"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával

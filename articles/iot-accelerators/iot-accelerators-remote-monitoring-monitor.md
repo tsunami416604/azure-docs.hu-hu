@@ -1,5 +1,5 @@
 ---
-title: Eszközök figyelése a távfigyelési megoldásban - Azure | Microsoft dokumentumok
+title: Eszközök figyelése a távoli figyelési megoldásban – Azure | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan monitorozhatja IoT-eszközeit a távoli monitorozási megoldásgyorsítóval.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73890868"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Oktatóanyag: IoT-eszközök monitorozása
@@ -31,7 +31,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Eszközökről érkező riasztások megtekintése
 > * A rendszer fő teljesítménymutatóinak megtekintése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -39,11 +39,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 Az **Irányítópult** oldalon megjelenítendő csatlakoztatott eszközök kiválasztásához használjon szűrőket. Ha kizárólag a **Teherautó** típusú eszközöket szeretné megjeleníteni, válassza a beépített **Teherautók** szűrőt a legördülő szűrőlistában:
 
-[![Teherautók szűrése a műszerfalon](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
+[![Teherautók szűrése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
 Szűrő alkalmazásakor csak azok az eszközök jelennek meg a térképen és a telemetria panelen, amelyek megfelelnek a szűrés feltételeinek. Láthatja, hogy a megoldásgyorsítóhoz két teherautó csatlakozik, beleértve a truck-02 teherautót is:
 
-[![Csak teherautók jelennek meg a térképen](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
+[![Csak a teherautók jelennek meg a térképen](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
 A szűrők létrehozásához, szerkesztéséhez és törléséhez kattintson az **Eszközcsoportok kezelése** lehetőségre.
 
@@ -51,11 +51,11 @@ A szűrők létrehozásához, szerkesztéséhez és törléséhez kattintson az 
 
 A megoldásgyorsító valós idejű telemetriai adatokat ábrázol az **Irányítópult** lapon található diagramon. A telemetriai adatok diagram tetején a jelenlegi szűrővel kiválasztott eszközökhöz, így a truck-02 teherautóhoz is elérhető telemetria-típusokat láthatja: Alapértelmezés szerint a diagram a teherautók földrajzi szélességét mutatja, és a truck-02 teherautó mozdulatlannak tűnik:
 
-[![Teherautó-telemetriai típusok](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
+[![Truck telemetria-típusok](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
 A teherautók hőmérsékleti telemetriájának megtekintéséhez kattintson a **Hőmérséklet** elemre. Láthatja, hogyan változott a truck-02 teherautó hőmérséklete az elmúlt órában:
 
-[![Teherautó hőmérséklettelemetriai rajza](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
+[![Truck hőmérséklet telemetria ábrázolása](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
 ## <a name="view-the-map"></a>A térkép megtekintése
 
@@ -67,13 +67,13 @@ A truck-02 teherautó részletes adatainak megtekintéséhez keresse meg azt a t
 * Az eszköz által támogatott metódusok
 * Eszköztulajdonságok
 
-[![Eszközadatok megtekintése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
+[![Eszköz adatainak megtekintése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
 ## <a name="view-alerts"></a>Riasztások megtekintése
 
-A **Riasztások** panel részletes információkat jelenít meg az eszközökről érkező legutóbbi riasztásokról. A truck-02 teherautóból érkező riasztások a megszokottnál magasabb rakomány-hőmérsékletet jeleznek:
+A **riasztások** panel részletes információkat jelenít meg az eszközökről érkező legutóbbi riasztásokról. A truck-02 teherautóból érkező riasztások a megszokottnál magasabb rakomány-hőmérsékletet jeleznek:
 
-[![Eszközriasztások megtekintése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
+[![Eszköz-riasztások megtekintése az irányítópulton](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
 A szűrőkkel beállíthatja az új riasztások időtartományát. Alapértelmezés szerint a panel az elmúlt óra riasztásait jeleníti meg.
 
@@ -81,7 +81,7 @@ A szűrőkkel beállíthatja az új riasztások időtartományát. Alapértelmez
 
 Az **Irányítópult** lap megjeleníti a megoldásgyorsító által kiszámított fő rendszer-teljesítménymutatókat az **Elemzés** panelen:
 
-[![Műszerfal ipi-k](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
+[![Irányítópult KPI-k](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
 Az irányítópult három fő teljesítménymutatót jelenít meg az aktuális eszköz- és időtartamszűrőkkel kiválasztott riasztásokról:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Egyéni modulok létrehozása és üzembe helyezése – Machine Learning az Azure IoT Edge-en'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és helyezhet üzembe IoT Edge-modulokat, amelyek egy gépi tanulási modellen keresztül feldolgozzák az adatokat a levéleszközökről, majd elküldik az elemzéseket az IoT Hubnak.
+title: 'Oktatóanyag: egyéni modulok létrehozása és telepítése – Machine Learning on Azure IoT Edge'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan IoT Edge modulokat, amelyek a gépi tanulási modell segítségével dolgozzák fel az adatok a Leaf-eszközökről, majd az elemzések elküldésével IoT Hub.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,78 +9,78 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75772363"
 ---
-# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: Egyéni IoT Edge-modulok létrehozása és üzembe helyezése
+# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
 > [!NOTE]
-> Ez a cikk az Azure Machine Learning IoT Edge-en való használatával kapcsolatos oktatóanyag sorozatának része. Ha megérkezett ezt a cikket közvetlenül, javasoljuk, hogy kezdődik az [első cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredményt.
+> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ebben a cikkben három IoT Edge-modult hozunk létre, amelyek üzeneteket fogadnak a levéleszközökről, futtatják az adatokat a gépi tanulási modellen keresztül, majd továbbítják az elemzéseket az IoT Hubnak.
+Ebben a cikkben három IoT Edge-modult hozunk létre, amelyek üzeneteket fogadnak a Leaf-eszközökről, az adatok futtatását a gépi tanulási modellen keresztül, majd az elemzések továbbításával IoT Hub.
 
-Az IoT Edge hub megkönnyíti a modul-kommunikációt. Az IoT Edge hub üzenetközvetítőként való használata a modulokat egymástól függetlenné teszi. A moduloknak csak azokat a bemeneteket kell megadniuk, amelyekre üzeneteket fogadnak, és azokat a kimeneteket, amelyekre üzeneteket írnak.
+IoT Edge hub megkönnyíti a modul kommunikációját. Az IoT Edge hub használata a Message Broker számára egymástól független modulokat tart fenn. A moduloknak csak azokat a bemeneteket kell megadniuk, amelyeken üzeneteket fogadnak, valamint azokat a kimeneteket, amelyekhez üzeneteket írnak.
 
-Azt szeretnénk, hogy az IoT Edge-eszköz négy dolgot érjen el számunkra:
+Azt szeretnénk, hogy a IoT Edge eszköz négy dolgot hajtson végre nekünk:
 
-* Adatok fogadása a levéleszközökről
-* Az adatokat küldő eszköz hátralévő hasznos élettartamának (RUL) előrejelzése
-* Üzenet küldése csak az eszköz RUL-jával az IoT Hubnak (ez a funkció módosítható, hogy csak akkor küldjön adatokat, ha az RUL valamilyen szint alá esik)
-* Mentse a levél eszköz adatait egy helyi fájlba az IoT Edge-eszközön. Ezt az adatfájlt rendszeresen feltölti az IoT Hub fájlfeltöltés a gépi tanulási modell betanításának finomítása érdekében. A fájlfeltöltés használata az állandó üzenettovábbítás helyett költséghatékonyabb.
+* Adatok fogadása a Leaf-eszközökről
+* Az adatküldő eszköz hátralévő hasznos élettartamának (RUL) előrejelzése
+* Üzenet küldése csak az eszköz RUL IoT Hub (ez a függvény módosítható úgy, hogy csak akkor küldjön adatküldést, ha a RUL egy bizonyos szint alá csökken)
+* Mentse a levélben tárolt eszközöket a IoT Edge eszköz helyi fájljába. Ezt az adatfájlt a rendszer rendszeresen feltölti IoT Hubre a gépi tanulási modell képzésének pontosításához. A fájlok feltöltése a folyamatos üzenetküldés helyett költséghatékony.
 
-E feladatok elvégzéséhez három egyéni modult használunk:
+Ezeknek a feladatoknak a végrehajtásához három egyéni modult használunk:
 
-* **RUL osztályozó:** A turboFanRulClassifier modul, amelyet a Train és [az Azure Machine Learning-modell üzembe helyezése során](tutorial-machine-learning-edge-04-train-model.md) hoztunk létre, egy szabványos gépi tanulási modul, amely egy "amlInput" nevű bemenetet és egy "amlOutput" nevű kimenetet tetszhet. Az "amlInput" azt várja, hogy a bemeneti pontosan úgy néz ki, mint az ACI-alapú webszolgáltatásnak küldött bemenet. Hasonlóképpen az "amlOutput" ugyanazokat az adatokat adja vissza, mint a webszolgáltatás.
+* **RUL osztályozó:** A turboFanRulClassifier modul, amelyet a [Betanításban hoztunk létre, és üzembe helyezünk egy Azure Machine learning modellt](tutorial-machine-learning-edge-04-train-model.md) egy standard Machine learning modul, amely egy "amlInput" nevű bemenetet és egy "amlOutput" nevű kimenetet tesz elérhetővé. A "amlInput" azt várja, hogy a bemenet pontosan ugyanúgy nézzen ki, mint az ACI-alapú webszolgáltatásnak továbbított bemenet. Hasonlóképpen, a "amlOutput" ugyanazokat az adatokkal adja vissza, mint a webszolgáltatás.
 
-* **Avro író:** Ez a modul üzeneteket fogad az "avroModuleInput" bemeneten, és a message avro formátumban a lemezre későbbi feltöltés ioT Hub.
+* **Avro-író:** Ez a modul fogadja az üzeneteket a "avroModuleInput" bemeneten, és Avro formátumban megőrzi az üzenetet a lemezre a későbbi feltöltéshez IoT Hub.
 
-* **Útválasztó modul:** Az útválasztó modul üzeneteket fogad az alsóbb rétegbeli levéleszközökről, majd formázza és elküldi az üzeneteket az osztályozónak. A modul ezután megkapja az üzeneteket az osztályozótól, és továbbítja az üzenetet az Avro írómodulra. Végül a modul csak a RUL-előrejelzést küldi az IoT Hubnak.
+* **Útválasztó modul:** Az útválasztó modul üzeneteket fogad az alsóbb rétegbeli eszközökről, majd formázza és elküldi az üzeneteket az osztályozó számára. A modul ezután fogadja az üzeneteket az osztályozó és továbbítja az üzenetet a Avro-író modulnak. Végül a modul csak a RUL-előrejelzést küldi el a IoT Hub.
 
-  * Bemenetek:
-    * **deviceInput**: üzeneteket fogad levéleszközökről
-    * **rulInput:** üzeneteket fogad az "amlOutput"
+  * Bemenetek
+    * **deviceInput**: üzenetek fogadása a Leaf-eszközökről
+    * **rulInput:** üzenetek fogadása a "amlOutput"
 
-  * Kimenetek:
-    * **osztályzat:** üzeneteket küld az "amlInput"
-    * **writeAvro:** üzeneteket küld az "avroModuleInput"
-    * **toIotHub:** üzeneteket küld $upstream, amely továbbítja az üzeneteket a csatlakoztatott IoT Hub
+  * Kimenetek
+    * **besorolás:** üzenetek küldése "amlInput"
+    * **writeAvro:** üzenetek küldése a "avroModuleInput" értékre
+    * **toIotHub:** üzeneteket küld $upstream, amelyek továbbítják az üzeneteket a csatlakoztatott IoT hub
 
-Az alábbi ábra bemutatja a modulokat, bemeneteket, kimeneteket és az IoT Edge Hub-útvonalakat a teljes megoldáshoz:
+Az alábbi ábrán a modulok, a bemenetek, a kimenetek és a IoT Edge hub útvonalak láthatók a teljes megoldáshoz:
 
-![IoT Edge három modul architektúradiagramja](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
+![IoT Edge három modul architektúrájának diagramja](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Új IoT Edge-megoldás létrehozása
 
-Két Azure-jegyzetfüzetünk közül a második végrehajtása során létrehoztunk és közzétettünk egy rul-modellt tartalmazó tárolórendszerképet. Az Azure Machine Learning a lemezkép-létrehozási folyamat részeként úgy csomagolta ezt a modellt, hogy a rendszerkép Azure IoT Edge-modulként telepíthető. Ebben a lépésben egy Azure IoT Edge-megoldást fogunk létrehozni az "Azure Machine Learning" modul használatával, és a modult az Azure Notebooks használatával közzétett lemezképre fogjuk mutatni.
+Két Azure Notebooks második végrehajtása során létrehoztunk és közzétettünk egy RUL modellt tartalmazó tároló-rendszerképet. Azure Machine Learning a lemezkép létrehozási folyamatának részeként csomagolta a modellt úgy, hogy a lemezkép Azure IoT Edge modulként legyen telepítve. Ebben a lépésben létrehozunk egy Azure IoT Edge megoldást az "Azure Machine Learning" modul használatával, és a modult a Azure Notebooks használatával közzétett rendszerképre irányítjuk.
 
-1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői gépre.
+1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői számítógépén.
 
-2. Nyissa meg a **C mappát:\\forrás\\IoTEdgeAndMlSample** a Visual Studio-kódban.
+2. Nyissa meg a **C mappát\\: forrás\\IoTEdgeAndMlSample** a Visual Studio Code-ban.
 
-3. Kattintson a jobb gombbal a felfedező panelre (az üres helyen), és válassza az **Új IoT Edge-megoldás lehetőséget**.
+3. Kattintson a jobb gombbal az Explorer panelre (az üres területre), és válassza az **új IoT Edge megoldást**.
 
-    ![Új IoT Edge-megoldás létrehozása](media/tutorial-machine-learning-edge-06-custom-modules/new-edge-solution-command.png)
+    ![Új IoT Edge megoldás létrehozása](media/tutorial-machine-learning-edge-06-custom-modules/new-edge-solution-command.png)
 
-4. Fogadja el az **edgesolution**alapértelmezett megoldásnevet.
+4. Fogadja el az alapértelmezett megoldás nevét **EdgeSolution**.
 
-5. Válassza az **Azure Machine Learning** modulsablonként.
+5. Válassza a **Azure Machine learning** lehetőséget a modul sablonként.
 
-6. Nevezze el a **modulturbofanRulClassifier**.
+6. Nevezze el a modul **turbofanRulClassifier**.
 
-7. Válassza ki a gépi tanulási munkaterületet.
+7. Válassza ki a Machine learning-munkaterületet.
 
-8. Válassza ki az Azure-jegyzetfüzet futtatása közben létrehozott lemezképet.
+8. Válassza ki az Azure-jegyzetfüzet futtatásakor létrehozott rendszerképet.
 
 9. Tekintse meg a megoldást, és figyelje meg a létrehozott fájlokat:
 
-   * **deployment.template.json:** Ez a fájl tartalmazza a megoldásban lévő modulok mindegyikének definícióját. Három szakaszra kell figyelni ebben a fájlban:
+   * **Deployment. template. JSON:** Ez a fájl tartalmazza a megoldás egyes moduljainak definícióját. Ebben a fájlban három szakaszt kell figyelnie:
 
-     * **Rendszerleíró hitelesítő adatok:** A megoldásban használt egyéni tárolójegyzékek készletét határozza meg. Most tartalmaznia kell a beállításjegyzéket a gépi tanulási munkaterületről, amely az Azure Machine Learning-lemezkép tárolásának helye. Tetszőleges számú tároló-nyilvántartási rendszerrel rendelkezhet, de az egyszerűség kedvéért ezt az egy rendszerleíró adatbázist használjuk az összes modulhoz
+     * **Beállításjegyzékbeli hitelesítő adatok:** Meghatározza a megoldásban használt egyéni tároló-nyilvántartások készletét. Jelenleg a Machine learning-munkaterületről kell tartalmaznia a beállításjegyzéket, amely a Azure Machine Learning rendszerképét tárolja. Tetszőleges számú tároló-bejegyzést használhat, de az egyszerűség kedvéért minden modul esetében ezt a beállításjegyzéket fogjuk használni
 
        ```json
        "registryCredentials": {
@@ -92,7 +92,7 @@ Két Azure-jegyzetfüzetünk közül a második végrehajtása során létrehozt
        }
        ```
 
-     * **Modulok:** Ez a szakasz a megoldással együtt a felhasználó által definiált modulok készletét tartalmazza. Észre fogja venni, hogy ez a szakasz jelenleg két modult tartalmaz: SimulatedTemperatureSensor és turbofanRulClassifier. A SimulatedTemperatureSensor-t a Visual Studio Code sablon telepítette, de ehhez a megoldáshoz nincs szükségünk. Törölheti a SimulatedTemperatureSensor modul definícióját a modulok szakaszból. Vegye figyelembe, hogy a turbofanRulClassifier modul definíciója a rendszerképre mutat a tároló rendszerleíró adatbázisában. Ahogy további modulokat adunk a megoldáshoz, akkor megjelennek ebben a szakaszban.
+     * **Modulok:** Ez a szakasz a felhasználó által definiált, a megoldáshoz tartozó modulok készletét tartalmazza. Megfigyelheti, hogy ez a szakasz jelenleg két modult tartalmaz: SimulatedTemperatureSensor és turbofanRulClassifier. A SimulatedTemperatureSensor a Visual Studio Code sablon telepítette, de erre a megoldásra nincs szükségünk. A SimulatedTemperatureSensor modul definícióját a modulok szakaszban törölheti. Vegye figyelembe, hogy a turbofanRulClassifier modul definíciója a tároló beállításjegyzékében lévő képre mutat. Ahogy további modulokat adunk a megoldáshoz, megjelennek ebben a szakaszban.
 
        ```json
        "modules": {
@@ -119,7 +119,7 @@ Két Azure-jegyzetfüzetünk közül a második végrehajtása során létrehozt
        }
        ```
 
-     * **Útvonalak:** mi lesz a munka útvonalak egy kicsit ez a bemutató. Az útvonalak határozzák meg, hogyan kommunikálnak egymással a modulok. A sablon által meghatározott két útvonal nem egyezik meg a szükséges útválasztással. Az első útvonal az osztályozó bármely kimenetéből származó összes adatot elküldi az IoT Hubnak ($upstream). A másik útvonal a SimulatedTemperatureSensor, amit csak törölt. Törölje a két alapértelmezett útvonalat.
+     * **Útvonalak:** ebben az oktatóanyagban egy kicsit is dolgozunk az útvonalakon. Az útvonalak határozzák meg, hogy a modulok hogyan kommunikáljanak egymással. A sablon által definiált két útvonal nem egyezik meg a szükséges útválasztással. Az első útvonal elküldi az összes adatokat az osztályozó kimenetéről a IoT Hub ($upstream). A másik útvonal a SimulatedTemperatureSensor, amelyet most töröltek. Törölje a két alapértelmezett útvonalat.
 
        ```json
        "$edgeHub": {
@@ -136,61 +136,61 @@ Két Azure-jegyzetfüzetünk közül a második végrehajtása során létrehozt
        }
        ```
 
-   * **deployment.debug.template.json:** ez a fájl a deployment.template.json hibakeresési verziója. A deployment.template.json összes módosítását tükröznünk kell ebbe a fájlba.
+   * **Deployment. debug. template. JSON:** ez a fájl a Deployment. template. JSON hibakeresési verziója. A telepítési. template. JSON fájlban lévő összes változást át kell tükrözni ebbe a fájlba.
 
-   * **.env:** ez a fájl az, ahol meg kell adnia a felhasználónevet és a jelszót a rendszerleíró adatbázis eléréséhez.
+   * **. env:** ebben a fájlban kell megadnia a beállításjegyzék eléréséhez szükséges felhasználónevet és jelszót.
 
       ```env
       CONTAINER_REGISTRY_USERNAME_<your registry name>=<ACR username>
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
 
-10. Kattintson a jobb gombbal a deployment.template.json fájlra a Visual Studio Kódkezelőben, és válassza **az IoT Edge-megoldás összeállítása parancsot.**
+10. Kattintson a jobb gombbal a központi telepítési. template. JSON fájlra a Visual Studio Code Explorerben, és válassza a **Build IoT Edge megoldást**.
 
-11. Figyelje meg, hogy ez a parancs létrehoz egy konfigurációs mappát egy deployment.amd64.json fájllal. Ez a fájl a megoldás konkrét telepítési sablonja.
+11. Figyelje meg, hogy ez a parancs egy telepítési. amd64. JSON nevű konfigurációs mappát hoz létre. Ez a fájl a megoldás konkrét telepítési sablonja.
 
-## <a name="add-router-module"></a>Útválasztó hozzáadása modul
+## <a name="add-router-module"></a>Útválasztó modul hozzáadása
 
-Ezután hozzáadjuk a Router modult a megoldásunkhoz. A Router modul számos feladatot lát el a megoldásunkhoz:
+Ezután hozzáadjuk az útválasztó modult a megoldáshoz. Az útválasztó modul a megoldás számos feladatát kezeli:
 
-* **Üzenetek fogadása levéleszközökről:** ahogy az üzenetek az IoT Edge-eszközre érkeznek az alsóbb rétegbeli eszközökről, az útválasztó modul fogadja az üzenetet, és megkezdi az üzenet irányításának vezénylését.
-* **Üzenetek küldése a RUL Classifier modulnak:** amikor új üzenet érkezik egy alsóbb rétegbeli eszközről, az Útválasztó modul az üzenetet a RUL-osztályozó által elvárt formátumra alakítja át. Az útválasztó rul-előrejelzésesetén elküldi az üzenetet a RUL-osztályozónak. Miután az osztályozó készített egy előrejelzést, visszaküldi az üzenetet az útválasztó modulnak.
-* **RUL-üzenetek küldése az IoT Hub:** amikor az útválasztó üzeneteket fogad az osztályozótól, átalakítja az üzenetet, hogy csak az alapvető információkat, az eszközazonosítót és a RUL-t tartalmazza, és elküldi a rövidített üzenetet az IoT hubnak. Egy további finomítás, amely et itt nem tettünk meg, csak akkor küldene üzeneteket az IoT Hubnak, ha a RUL-előrejelzés egy küszöbérték alá esik (például ha a rul kevesebb, mint 100 ciklus). Szűrés ily módon csökkentené az üzenetek mennyiségét, és csökkenti az IoT hub költségeit.
-* **Küldjön üzenetet az Avro Writer modulnak:** az alsóbb rétegbeli eszköz által küldött összes adat megőrzéséhez az útválasztó modul elküldi az osztályozótól kapott teljes üzenetet az Avro Writer modulnak, amely megmarad, és feltölti az adatokat az IoT Hub fájlfeltöltés használatával.
+* **Üzenetek fogadása a Leaf-eszközökről:** mivel az üzenetek a IoT Edge eszközre érkeznek az alárendelt eszközökről, az útválasztó modul megkapja az üzenetet, és megkezdi az üzenet útválasztásának előkészítését.
+* **Üzenetek küldése az RUL osztályozó modulba:** ha egy alsóbb rétegbeli eszközről új üzenet érkezik, az útválasztó modul átalakítja az üzenetet arra a formátumra, amelyet a RUL osztályozó vár. Az útválasztó elküldi az üzenetet az RUL osztályozó RUL-előrejelzésnek. Miután az osztályozó elvégezte az előrejelzést, visszaküldi az üzenetet az útválasztó modulnak.
+* **RUL üzenetek küldése a IoT hubnak:** ha az útválasztó üzeneteket fogad az osztályozó, akkor átalakítja az üzenetet, hogy csak a lényeges információkat, az eszköz azonosítóját és a RUL tartalmazza, és a rövidített üzenetet a IoT hubhoz küldje. A további finomítások, amelyeket itt nem készítettünk, csak akkor küldenek üzeneteket a IoT Hubnak, ha a RUL előrejelzése küszöbérték alá esik (például ha a RUL kevesebb, mint 100 ciklus). A szűrés ily módon csökkentené az üzenetek mennyiségét, és csökkenti az IoT hub költségeit.
+* **Üzenet küldése a Avro-író modulnak:** az alárendelt eszköz által küldött összes adatok megőrzése érdekében az útválasztó modul elküldi az osztályozó által fogadott teljes üzenetet az Avro-író modulnak, amely megtartja és feltölti az adatokat IoT hub fájlfeltöltés használatával.
 
 > [!NOTE]
-> A modul felelősségi körök leírása lehet, hogy a feldolgozás szekvenciálisnak tűnik, de a folyamat üzenet/esemény alapú. Ezért van szükségünk egy vezénylési modulra, mint a Router modulunk.
+> A modul feladatainak leírása a feldolgozás szekvenciálisnak tűnhet, de a folyamat üzenet/esemény alapján történik. Ezért van szükségünk egy összehangoló modulra, például az útválasztó modulra.
 
-### <a name="create-module-and-copy-files"></a>Modul létrehozása és másolása
+### <a name="create-module-and-copy-files"></a>Modul létrehozása és fájlok másolása
 
-1. Kattintson a jobb gombbal a Modulok mappára a Visual Studio Kód ban, és válassza **az IoT Edge module hozzáadása parancsot**.
+1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása**lehetőséget.
 
-2. Válassza a **C# modult.**
+2. Válassza a **C# modul**lehetőséget.
 
 3. Nevezze el a modul **turbofanRouter**.
 
-4. Amikor a docker-rendszertár, használja a rendszerleíró adatbázist a gépi tanulási munkaterület (megtalálhatja a rendszerleíró adatbázisa a registryCredentials csomópont a *deployment.template.json* fájl). Ez az érték a rendszerleíró adatbázis teljesen minősített címe, ** \<például a rendszerleíró\>adatbázis .azurecr.io/turbofanrouter**.
+4. Ha a rendszer kéri a Docker-rendszerkép tárházát, használja a Machine learning-munkaterületen a beállításjegyzéket (a beállításjegyzéket a *telepítési. template. JSON* fájl registryCredentials csomópontjában találja meg). Ez az érték a beállításjegyzék teljesen minősített címe, például ** \<a Registry\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
-    > Ebben a cikkben az Azure Machine Learning-munkaterület által létrehozott Azure Container Registry-t használjuk, amelyet az osztályozónk betanításához és üzembe helyezéséhez használtunk. Ez csak a kényelem. Létrehozhattunk volna egy új konténer-nyilvántartást, és ott is közzétehettük volna a moduljainkat.
+    > Ebben a cikkben a Azure Machine Learning munkaterület által létrehozott Azure Container Registry használjuk, amelyet az osztályozó betanításához és üzembe helyezéséhez használtunk. Ez csupán kényelmi megoldás. Létrehoztunk egy új tároló-beállításjegyzéket, és ott közzétettük a modulokat.
 
-5. Nyisson meg egy új terminálablakot a Visual Studio Kód (**Terminál****megtekintése** > ) alkalmazásban, és másolja a fájlokat a modulok könyvtárából.
+5. Nyisson meg egy új terminál-ablakot a Visual Studio Code-ban (**terminál****megtekintése** > ), és másolja a fájlokat a modulok könyvtárából.
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. Amikor a rendszer kéri a `y` program.cs `Enter`felülírását, nyomja meg, majd nyomja meg a gombot.
+6. Amikor a rendszer kéri, hogy írja `y` felül a program.cs `Enter`, nyomja meg a gombot, majd a találatot.
 
-### <a name="build-router-module"></a>Útválasztó-modul létrehozása
+### <a name="build-router-module"></a>Útválasztó modul létrehozása
 
-1. A Visual Studio-kódban válassza a > **Terminálkonfigurálás alapértelmezett buildfeladatát**. **Terminal**
+1. A Visual Studio Code-ban válassza a **terminál** > **alapértelmezett felépítési feladat beállítása**lehetőséget.
 
-2. Kattintson a **Tasks.json fájl létrehozása sablonból lehetőségre.**
+2. Kattintson a **Tasks. JSON fájl létrehozása sablonból**elemre.
 
-3. Kattintson a **.NET Core gombra.**
+3. Kattintson a **.net Core**elemre.
 
-4. Amikor a tasks.json megnyílik, cserélje le a tartalmat a következőkre:
+4. Ha a Tasks. JSON megnyitja a tartalmat, cserélje le a következőket:
 
     ```json
     {
@@ -219,30 +219,30 @@ Ezután hozzáadjuk a Router modult a megoldásunkhoz. A Router modul számos fe
     }
     ```
 
-5. A tasks mentése és bezárása.json.
+5. Mentse és zárjuk be a Tasks. JSON fájlt.
 
-6. Futtassa `Ctrl + Shift + B` a buildet vagy **a** > **Terminálfuttatási létrehozási feladattal.**
+6. Futtasson Build `Ctrl + Shift + B` -t vagy **terminál** > -**futtatási felépítési feladatot**.
 
-### <a name="set-up-module-routes"></a>Modulútvonalak beállítása
+### <a name="set-up-module-routes"></a>Modulok útvonalának beállítása
 
-Mint már említettük, az IoT Edge futásidejű a *deployment.template.json* fájlban konfigurált útvonalakat használ a lazán összekapcsolt modulok közötti kommunikáció kezeléséhez. Ebben a részben, mi fúró, hogyan kell beállítani az útvonalakat a turbofanRouter modul. Először a bemeneti útvonalakat fedjük le, majd a kimeneteket.
+A fentiekben leírtaknak megfelelően a IoT Edge Runtime a *Deployment. template. JSON* fájlban konfigurált útvonalakat használja a lazán kapcsolt modulok közötti kommunikáció kezeléséhez. Ebben a szakaszban bemutatjuk, hogyan állíthatja be az útvonalakat a turbofanRouter modulhoz. Először a bemeneti útvonalakat fogjuk kijelölni, majd a kimeneteket áthelyezni.
 
 #### <a name="inputs"></a>Bemenetek
 
-1. Az Init() metódusProgram.cs regisztráljon két visszahívást a modulhoz:
+1. A Program.cs init () metódusában két visszahívást regisztrálunk a modulhoz:
 
    ```csharp
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromLeafDevice, LeafDeviceInputMessageHandler, ioTHubModuleClient);
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromClassifier, ClassifierCallbackMessageHandler, ioTHubModuleClient);
    ```
 
-2. Az első visszahívás figyeli az eszközre küldött **üzeneteketInput fogadó.** A fenti ábrán azt látjuk, hogy szeretnénk átirányítani üzeneteket bármely levél eszköz erre a bemenetre. A *deployment.template.json* fájlban adjon hozzá egy útvonalat, amely megmondja a peremhálózati hubnak, hogy továbbítsa az IoT Edge-eszköz által fogadott üzeneteket, amelyeket nem egy IoT Edge-modul küldött a turbofanRouter modul "deviceInput" nevű bemenetére:
+2. Az első visszahívás figyeli az **deviceInput** -fogadónak küldött üzeneteket. A fenti ábrán láthatjuk, hogy bármely levélből származó üzeneteket át szeretnénk irányítani erre a bemenetre. A *Deployment. template. JSON* fájlban adjon hozzá egy útvonalat, amely közli a peremhálózati központtal, hogy átirányítsa a IoT Edge eszköz által fogadott üzeneteket, amelyeket nem a IoT Edge modul küldött a "deviceInput" nevű bemenetre a turbofanRouter modulban:
 
    ```json
    "leafMessagesToRouter": "FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/deviceInput\")"
    ```
 
-3. Ezután adjunk hozzá egy útvonalat az üzeneteket a rulClassifier modul a turbofanRouter modul:
+3. Ezután adjon hozzá egy útvonalat az üzenetekhez a rulClassifier modulból a turbofanRouter modulba:
 
    ```json
    "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
@@ -250,33 +250,33 @@ Mint már említettük, az IoT Edge futásidejű a *deployment.template.json* f�
 
 #### <a name="outputs"></a>Kimenetek
 
-Adjon hozzá további négy útvonalat a $edgeHub útvonalparaméterhez, hogy kezelni tudja az útválasztó modul kimeneteit.
+Adjon hozzá négy további útvonalat a $edgeHub Route paraméterhez az útválasztó modul kimenetének kezeléséhez.
 
-1. Program.cs a SendMessageToClassifier() metódust határozza meg, amely a modulügyfelet használja üzenet küldésére a RUL-osztályozónak az útvonal használatával:
+1. A Program.cs definiálja a SendMessageToClassifier () metódust, amely a modul ügyfelével üzenetet küld a RUL osztályozó számára az útvonal használatával:
 
    ```json
    "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"
    ```
 
-2. A SendRulMessageToIotHub() a modulügyfél segítségével csak az eszköz RUL-adatait küldi el az IoT Hubnak az útvonalon keresztül:
+2. A SendRulMessageToIotHub () a modul-ügyféllel küldi el a IoT Hub az eszközre vonatkozó RUL-adatelérési útvonalat az útvonalon keresztül:
 
    ```json
    "routerToIoTHub": "FROM /messages/modules/turboFanRouter/outputs/hubOutput INTO $upstream"
    ```
 
-3. A SendMessageToAvroWriter() a modulügyfél segítségével küldi el az üzenetet az avroFileWriter modulhoz hozzáadott RUL-adatokkal.
+3. A SendMessageToAvroWriter () a modul ügyfelével küldi el az üzenetet a avroFileWriter modulba felvett RUL-adattal.
 
    ```json
    "routerToAvro": "FROM /messages/modules/turbofanRouter/outputs/avroOutput INTO BrokeredEndpoint(\"/modules/avroFileWriter/inputs/avroModuleInput\")"
    ```
 
-4. HandleBadMessage() sikertelen üzeneteket küld az IoT Hub onstream, ahol később átirányíthatók.
+4. A HandleBadMessage () nem küldi el a sikertelen üzeneteket a IoT Hub, ahol később átirányíthatja őket.
 
    ```json
    "deadLetter": "FROM /messages/modules/turboFanRouter/outputs/deadMessages INTO $upstream"
    ```
 
-Az összes útvonal együttesen a "$edgeHub" csomópont kell kinéznie a következő JSON:
+A "$edgeHub" csomóponttal együtt vett összes útvonalnak a következő JSON-hez hasonlóan kell kinéznie:
 
 ```json
 "$edgeHub": {
@@ -298,92 +298,92 @@ Az összes útvonal együttesen a "$edgeHub" csomópont kell kinéznie a követk
 ```
 
 > [!NOTE]
-> Hozzáadása a turbofanRouter modul létrehozta `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`a következő további útvonal: . Távolítsa el ezt az útvonalat, és csak a fent felsorolt útvonalakat hagyja meg a deployment.template.json fájlban.
+> A turbofanRouter modul hozzáadása a következő további útvonalat hozta létre `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`:. Távolítsa el ezt az útvonalat, csak a fent felsorolt útvonalakat hagyva a Deployment. template. JSON fájlban.
 
-#### <a name="copy-routes-to-deploymentdebugtemplatejson"></a>Útvonalak másolása a deployment.debug.template.json alkalmazásba
+#### <a name="copy-routes-to-deploymentdebugtemplatejson"></a>Útvonalak másolása az üzembehelyezési. debug. template. JSON fájlba
 
-Utolsó lépésként a fájlok szinkronban tartásához tükrözze a deployment.template.json fájlon végzett módosításokat a deployment.debug.template.json fájlban.
+Utolsó lépésként a fájlok szinkronizálással való megtartásához tükrözze az üzembe helyezés. sablon. JSON fájl módosításait a Deployment. debug. template. JSON fájlban.
 
-## <a name="add-avro-writer-module"></a>Avro Writer modul hozzáadása
+## <a name="add-avro-writer-module"></a>Avro-író modul hozzáadása
 
-Az Avro Writer modulnak két feladata van a megoldásunkban, az üzenetek tárolása és a fájlok feltöltése.
+A Avro-író modul két feladattal rendelkezik a megoldásban, az üzenetek tárolásához és a fájlok feltöltéséhez.
 
-* **Üzenetek tárolása:** amikor az Avro Writer modul üzenetet kap, a helyi fájlrendszerbe írja az üzenetet Avro formátumban. Egy kötéscsatlakoztatást használunk, amely egy könyvtárat (ebben az esetben /data/avrofiles) csatlakoztat a modul tárolójának elérési útvonalába. Ez a csatlakoztatás lehetővé teszi, hogy a modul írjon egy helyi elérési útra (/avrofiles), és ezeket a fájlokat közvetlenül az IoT Edge-eszközről érhető el.
+* **Üzenetek tárolása**: Ha a Avro-író modul üzenetet kap, a Avro formátumban írja az üzenetet a helyi fájlrendszerbe. Egy kötési csatlakoztatást használunk, amely egy könyvtárat (ebben az esetben/Data/avrofiles) egy, a modul tárolójában lévő elérési útra csatlakoztat. Ez a csatlakoztatás lehetővé teszi, hogy a modul a helyi elérési útra írjon (/avrofiles), és ezek a fájlok közvetlenül elérhetők legyenek a IoT Edge eszközről.
 
-* **Fájlok feltöltése:** az Avro Writer modul az Azure IoT Hub fájlfeltöltési funkcióját használja a fájlok Azure-tárfiókba való feltöltéséhez. A fájl sikeres feltöltése után a modul törli a fájlt a lemezről
+* **Fájlok feltöltése**: a Avro-író modul az Azure IoT hub file upload szolgáltatást használja a fájlok Azure Storage-fiókba való feltöltéséhez. A fájl sikeres feltöltése után a modul törli a fájlt a lemezről.
 
-### <a name="create-module-and-copy-files"></a>Modul létrehozása és másolása
+### <a name="create-module-and-copy-files"></a>Modul létrehozása és fájlok másolása
 
-1. A parancspalettán keresse meg a **Python: Select Interpreter (Értelmező) lehetőséget.**
+1. A parancs palettáján keresse meg a **Python: Select tolmács elemet**.
 
-1. Válassza ki a C:\\Python37-ben található értelmezőt.
+1. Válassza ki a C:\\Python37 található tolmácsot.
 
-1. Nyissa meg újra a parancspalettát, és keressen rá, majd válassza a **Terminál: Válassza az Alapértelmezett rendszerhéj lehetőséget.**
+1. Nyissa meg újra a parancssort, és keresse meg a **terminált: válassza az alapértelmezett rendszerhéj lehetőséget**.
 
-1. Amikor a rendszer kéri, válassza a **Parancssor lehetőséget.**
+1. Ha a rendszer kéri, válassza a **parancssor**lehetőséget.
 
-1. Nyisson meg egy új terminálhéjat, **az** > **Új Terminál terminált.**
+1. Nyisson meg egy **új,** > terminál**új**terminálját.
 
-1. Kattintson a jobb gombbal a Modulok mappára a Visual Studio Kód ban, és válassza **az IoT Edge module hozzáadása parancsot**.
+1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása**lehetőséget.
 
 1. Válassza a **Python Module** (Python-modul) lehetőséget.
 
-1. Nevezze el a modult "avroFileWriter".
+1. Nevezze el a "avroFileWriter" modult.
 
-1. Amikor a rendszer kéri a Docker-rendszertár, használja ugyanazt a rendszerleíró adatbázist, mint az útválasztó modul hozzáadásakor használt.
+1. Ha a rendszer kéri a Docker-rendszerkép tárházát, használja ugyanazt a beállításjegyzéket, amelyet az útválasztó modul hozzáadásakor használt.
 
-1. Fájlok másolása a mintamodulból a megoldásba.
+1. Fájlok másolása a minta modulból a megoldásba.
 
    ```cmd
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. Ha a rendszer kéri a `y` main.py `Enter`felülírását, írja be a szöveget, majd nyomja meg a programot.
+1. Ha a rendszer a main.py felülírására `y` kéri, írja `Enter`be a következőt:, majd nyomja le.
 
-1. Figyelje meg, hogy filemanager.py és schema.py lett hozzáadva a megoldáshoz, és main.py frissítve lett.
+1. Figyelje meg, hogy a filemanager.py és a schema.py hozzá lettek adva a megoldáshoz, és a main.py frissült.
 
 > [!NOTE]
-> Amikor megnyit egy Python-fájlt, előfordulhat, hogy a rendszer kéri a pylint telepítését. Az oktatóanyag befejezéséhez nem kell telepítenie a lintert.
+> Amikor megnyit egy Python-fájlt, a rendszer kérni fogja, hogy telepítse a pylint-t. Az oktatóanyag elvégzéséhez nem kell telepítenie a kitöltést.
 
-### <a name="bind-mount-for-data-files"></a>Kötéscsatlakoztatás adatfájlokhoz
+### <a name="bind-mount-for-data-files"></a>Kötési csatlakoztatás adatfájlokhoz
 
-Mint már említettük az intro, az író modul támaszkodik a jelenléte bind mount írni Avro fájlokat az eszköz fájlrendszer.
+Ahogy azt az introban is említettük, az író modul a kötés csatlakoztatásával függ a Avro-fájlok írására az eszköz fájlrendszerében.
 
 #### <a name="add-directory-to-device"></a>Könyvtár hozzáadása az eszközhöz
 
-1. Csatlakozzon az IoT Edge-eszköz virtuális gépéhez az SSH használatával.
+1. Csatlakozzon az IoT Edge eszköz virtuális géphez SSH használatával.
 
    ```bash
    ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
    ```
 
-2. Hozza létre azt a könyvtárat, amely a mentett levéleszköz-üzeneteket fogja tárolni.
+2. Hozza létre azt a könyvtárat, amely a mentett levél üzeneteit tárolja.
 
    ```bash
    sudo mkdir -p /data/avrofiles
    ```
 
-3. Frissítse a címtárengedélyeket, hogy a tároló írható legyen.
+3. Frissítse a könyvtár engedélyeit, hogy az a tároló által írható legyen.
 
    ```bash
    sudo chmod ugo+rw /data/avrofiles
    ```
 
-4. A könyvtár hitelesítése most már rendelkezik írási (w) engedéllyel a felhasználó, a csoport és a tulajdonos számára.
+4. Ellenőrizze, hogy a címtárban már van-e írási (w) engedély a felhasználóhoz, a csoporthoz és a tulajdonoshoz.
 
    ```bash
    ls -la /data
    ```
 
-   ![Az avrofájlok könyvtárengedélyei](media/tutorial-machine-learning-edge-06-custom-modules/avrofiles-directory-permissions.png)
+   ![Avrofiles tartozó címtár-engedélyek](media/tutorial-machine-learning-edge-06-custom-modules/avrofiles-directory-permissions.png)
 
 #### <a name="add-directory-to-the-module"></a>Könyvtár hozzáadása a modulhoz
 
-A könyvtár hozzáadása a modul tárolójához, módosítjuk az avroFileWriter modulhoz társított Dockerfiles. A modulhoz három Docker-fájl van társítva: Dockerfile.amd64, Dockerfile.amd64.debug és Dockerfile.arm32v7. Ezeket a fájlokat szinkronban kell tartani arra az esetre, ha hibakeresést vagy üzembe helyezést szeretnénk egy arm32 eszközre. Ebben a cikkben csak a Dockerfile.amd64 fájlra összpontosítson.
+Ha a könyvtárat hozzá szeretné adni a modul tárolóhoz, akkor a avroFileWriter modulhoz társított Dockerfiles módosítjuk. A modulhoz három Dockerfiles van társítva: Docker. amd64, Docker. amd64. debug és Docker. arm32v7. Ezeket a fájlokat szinkronban kell tartani, ha egy arm32-eszközön szeretne hibakeresést végezni vagy üzembe helyezni. Ehhez a cikkhez csak a Docker. amd64-re koncentrálhat.
 
-1. A fejlesztői gépen nyissa meg a **Dockerfile.amd64** fájlt.
+1. A fejlesztői gépen nyissa meg a **Docker. amd64** fájlt.
 
-2. Módosítsa úgy a fájlt, hogy az a következő példához hasonlóan jelensen meg:
+2. Módosítsa a fájlt úgy, hogy az a következő példához hasonlóan néz ki:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -406,17 +406,17 @@ A könyvtár hozzáadása a modul tárolójához, módosítjuk az avroFileWriter
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-   A `mkdir` `chown` és a parancsok utasítják a Docker build folyamat, hogy hozzon létre egy legfelső szintű könyvtár nevű /avrofiles a lemezképben, majd hogy a moduleuser tulajdonosa, hogy a könyvtár. Fontos, hogy ezek a parancsok a modulfelhasználó hozzáadása után `useradd` és a modulfelhasználó modulfelhasználóra való váltása előtt a modulfelhasználóra (USER moduleuser) kerüljön be.
+   A `mkdir` és `chown` parancsok arra utasítja a Docker-felépítési folyamatot, hogy hozzon létre egy/avrofiles nevű legfelső szintű könyvtárat a rendszerképben, majd a moduleuser az adott könyvtár tulajdonosaként. Fontos, hogy ezek a parancsok bekerülnek a modul felhasználójának a `useradd` paranccsal való hozzáadása után, és mielőtt a környezet átvált a MODULEUSER (felhasználói moduleuser).
 
-3. Végezze el a megfelelő módosításokat a Dockerfile.amd64.debug és a Dockerfile.arm32v7 fájlon.
+3. Végezze el a megfelelő módosításokat a Docker. amd64. debug és a Docker. arm32v7.
 
 #### <a name="update-the-module-configuration"></a>A modul konfigurációjának frissítése
 
-A kötés létrehozásának utolsó lépése a deployment.template.json (és deployment.debug.template.json) fájlok frissítése a kötési adatokkal.
+A kötés létrehozásának utolsó lépése az üzembe helyezés. template. JSON (és a Deployment. debug. template. JSON) fájlok frissítése a kötési adatokkal.
 
-1. Nyissa meg a deployment.template.json t.
+1. Nyissa meg a Deployment. template. JSON fájlt.
 
-2. Módosítsa az avroFileWriter moduldefinícióját `Binds` a tárolókönyvtár /avrofiles paraméterének a peremhálózati eszköz helyi könyvtárához való hozzáadásával. A moduldefiníciónak meg kell egyeznie ezzel a példával:
+2. Módosítsa a avroFileWriter moduljának definícióját úgy, `Binds` hogy hozzáadja azt a paramétert, amely a Container Directory/avrofiles a peremhálózati eszköz helyi könyvtárába mutat. A modul definíciójának meg kell egyeznie a következő példával:
 
    ```json
    "avroFileWriter": {
@@ -437,13 +437,13 @@ A kötés létrehozásának utolsó lépése a deployment.template.json (és dep
    }
    ```
 
-3. Hajtsa végre a megfelelő módosításokat a deployment.debug.template.json számítógépen.
+3. Végezze el a megfelelő módosításokat a Deployment. debug. template. JSON fájlban.
 
-### <a name="bind-mount-for-access-to-configyaml"></a>Kötéstartó a config.yaml fájlhoz való hozzáféréshez
+### <a name="bind-mount-for-access-to-configyaml"></a>Kötés csatlakoztatása a config. YAML eléréséhez
 
-Még egy kötést kell hozzáadnunk az írómodulhoz. Ez a kötés hozzáférést biztosít a modulnak a kapcsolati karakterlánc olvasásához az IoT Edge-eszköz /etc/iotedge/config.yaml fájlból. Szükségünk van a kapcsolati karakterlánc hoz létre egy IoTHubClient, hogy meg tudjuk hívni a feltöltési\_blob\_async metódus fájlokat feltölteni az IoT hubra. A kötés hozzáadásának lépései hasonlóak az előző szakaszban felsoroltakhoz.
+Az író modulhoz még egy kötést kell hozzáadni. Ez a kötés lehetővé teszi, hogy a modul hozzáférhessen a IoT Edge eszközön található/etc/iotedge/config.YAML fájl kapcsolati karakterláncának olvasásához. A Iothubclientről létrehozásához szükség van a kapcsolódási karakterláncra, hogy meghívjuk a\_blob\_aszinkron feltöltési módszerét, hogy fájlokat töltsenek fel az IoT hub-ba. A kötés hozzáadásának lépései hasonlóak az előző szakaszhoz.
 
-#### <a name="update-directory-permission"></a>Címtárengedély frissítése
+#### <a name="update-directory-permission"></a>Könyvtár frissítése engedély
 
 1. Csatlakozzon az IoT Edge-eszközhöz az SSH használatával.
 
@@ -451,25 +451,25 @@ Még egy kötést kell hozzáadnunk az írómodulhoz. Ez a kötés hozzáférés
    ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
    ```
 
-2. Adjon olvasási engedélyt a config.yaml fájlhoz.
+2. Olvasási engedély hozzáadása a config. YAML fájlhoz.
 
    ```bash
    sudo chmod +r /etc/iotedge/config.yaml
    ```
 
-3. Az engedélyek ellenőrzése megfelelően van beállítva.
+3. Ellenőrizze, hogy az engedélyek helyesen vannak-e beállítva.
 
    ```bash
    ls -la /etc/iotedge/
    ```
 
-4. Győződjön meg arról, hogy a config.yaml engedélyei **-r--r----**.
+4. Győződjön meg arról, hogy a config. YAML engedélyei a következők: **r--r**--r--.
 
 #### <a name="add-directory-to-module"></a>Könyvtár hozzáadása a modulhoz
 
-1. A fejlesztői gépen nyissa meg a **Dockerfile.amd64** fájlt.
+1. A fejlesztői gépen nyissa meg a **Docker. amd64** fájlt.
 
-2. Adjon hozzá egy `mkdir` `chown` további készletet és parancsokat a fájlhoz, hogy a következőképpen nézhessen ki:
+2. Adjon hozzá további készletet `mkdir` és `chown` parancsokat a fájlhoz, így a következőképpen néz ki:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -494,13 +494,13 @@ Még egy kötést kell hozzáadnunk az írómodulhoz. Ez a kötés hozzáférés
    CMD "python3", "-u", "./main.py"]
    ```
 
-3. Végezze el a megfelelő módosításokat a Dockerfile.amd64.debug és a Dockerfile.arm32v7 fájlon.
+3. Végezze el a megfelelő módosításokat a Docker. amd64. debug és a Docker. arm32v7.
 
 #### <a name="update-the-module-configuration"></a>A modul konfigurációjának frissítése
 
-1. Nyissa meg a **deployment.template.json** fájlt.
+1. Nyissa meg a **Deployment. template. JSON** fájlt.
 
-2. Módosítsa az avroFileWriter moduldefinícióját egy második `Binds` sor hozzáadásával a paraméterhez, amely a tárolókönyvtárat (/app/iotconfig) az eszköz helyi könyvtárához (/etc/iotedge) pontozzák.
+2. Módosítsa a avroFileWriter modul definícióját úgy, hogy hozzáad egy második sort `Binds` a paraméterhez, amely a Container Directoryt (/App/iotconfig) az eszköz helyi könyvtárára (/etc/iotedge) mutat.
 
    ```json
    "avroFileWriter": {
@@ -522,22 +522,22 @@ Még egy kötést kell hozzáadnunk az írómodulhoz. Ez a kötés hozzáférés
    }
    ```
 
-3. Hajtsa végre a megfelelő módosításokat a deployment.debug.template.json számítógépen.
+3. Végezze el a megfelelő módosításokat a Deployment. debug. template. JSON fájlban.
 
 ## <a name="install-dependencies"></a>Függőségek telepítése
 
-Az írómodul két Python-kódtáraktól, a fastavro-tól és a PyYAML-től függ. Telepítenünk kell a függőségeket a fejlesztői gépünkre, és utasítanunk kell a Docker-buildfolyamatot, hogy telepítse őket a modulunk rendszerképében.
+Az író modul két Python-kódtár, fastavro és PyYAML függőségét veszi igénybe. A függőségeket a fejlesztői gépre kell telepíteni, és arra kell utasítani a Docker-Build folyamatát, hogy azok a modul rendszerképében legyenek telepítve.
 
-### <a name="pyyaml"></a>PyyaML között
+### <a name="pyyaml"></a>PyYAML
 
-1. A fejlesztői gépen nyissa meg a **requirements.txt** fájlt, és adja hozzá a pyyaml fájlt.
+1. A fejlesztői gépen nyissa meg a **követelmények. txt** fájlt, és adja hozzá a PyYAML.
 
    ```txt
    azure-iothub-device-client~=1.4.3
    pyyaml
    ```
 
-2. Nyissa meg a **Dockerfile.amd64** fájlt, és adjon hozzá egy `pip install` parancsot a telepítőeszközök frissítéséhez.
+2. Nyissa meg a **Docker. amd64** fájlt, `pip install` és adjon hozzá egy parancsot a setuptools frissítéséhez.
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -563,17 +563,17 @@ Az írómodul két Python-kódtáraktól, a fastavro-tól és a PyYAML-től füg
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-3. Végezze el a megfelelő módosításokat a Dockerfile.amd64.debug fájlon. <!--may not be necessary. Add 'if needed'?-->
+3. Végezze el a megfelelő módosításokat a Docker. amd64. debug parancsban. <!--may not be necessary. Add 'if needed'?-->
 
-4. A pyyaml helyi telepítése terminál megnyitásával a Visual Studio Code alkalmazásban, és gépelés
+4. A PyYAML helyileg történő telepítése a terminál megnyitásával a Visual Studio Code-ban és beírásával
 
    ```cmd
    pip install pyyaml
    ```
 
-### <a name="fastavro"></a>Fastavro között
+### <a name="fastavro"></a>Fastavro
 
-1. A requirements.txt fájlban a pyyaml után adja hozzá a fastavro-t.
+1. A követelmények. txt fájlban adja hozzá a fastavro a PyYAML után.
 
    ```txt
    azure-iothub-device-client~=1.4.3
@@ -581,52 +581,52 @@ Az írómodul két Python-kódtáraktól, a fastavro-tól és a PyYAML-től füg
    fastavro
    ```
 
-2. Telepítse a fastavro-t a fejlesztőgépre a Visual Studio Code terminálsegítségével.
+2. Telepítse a fastavro a fejlesztői gépre a Visual Studio Code Terminal használatával.
 
    ```cmd
    pip install fastavro
    ```
 
-## <a name="reconfigure-iot-hub"></a>Az IoT Hub újrakonfigurálása
+## <a name="reconfigure-iot-hub"></a>IoT Hub újrakonfigurálása
 
-Az IoT Edge-eszköz és -modulok rendszerbe való bevezetésével megváltoztattuk az elvárásainkat azzal kapcsolatban, hogy milyen adatokat küld a hubnak, és milyen célból. Át kell konfigurálnunk az útvonalat a központban, hogy megbirkózzunk az új valósággal.
+A IoT Edge eszköz és modulok a rendszerbe való bevezetésével megváltoztak az Elvárásaink arról, hogy milyen információkat küld a központ és milyen célra. Az új realitások kezeléséhez újra kell konfigurálnia az útválasztást a központban.
 
 > [!NOTE]
-> A modulok üzembe helyezése előtt újrakonfiguráljuk a központot, mert a hub egyes beállításait, különösen a fájlfeltöltést, megfelelően be kell állítani az avroFileWriter modul megfelelő futtatásához
+> A modulok üzembe helyezése előtt konfigurálja újra az elosztót, mert a hub egyes beállításai, különösen a fájlok feltöltése megfelelően be kell állítani a avroFileWriter modul megfelelő futtatását.
 
-### <a name="set-up-route-for-rul-messages-in-iot-hub"></a>RUL-üzenetek útvonalának beállítása az IoT Hubban
+### <a name="set-up-route-for-rul-messages-in-iot-hub"></a>RUL-üzenetek útvonalának beállítása IoT Hub
 
-Az útválasztó és az osztályozó a helyén, azt várjuk, hogy rendszeres üzeneteket, amelyek csak az eszköz azonosítóját és a RUL előrejelzésaz eszköz. Azt szeretnénk, hogy a RUL-adatokat a saját tárolási helyére, ahol nyomon követheti az eszközök állapotát, jelentéseket és tűzriasztásokat készíthet, ha szükséges. Ugyanakkor azt szeretnénk, hogy minden olyan eszközadatokat, amelyek továbbra is közvetlenül egy levél eszköz, amely még nem csatlakozik az IoT Edge-eszköz továbbra is az aktuális tárolási helyre.
+A router és az osztályozó a helyén arra számítunk, hogy a rendszer csak az eszköz AZONOSÍTÓját és az eszköz RUL előrejelzését tartalmazó normál üzeneteket fogad. Azt szeretnénk, hogy a RUL a saját tárolóhelyére irányítsák, ahol az eszközök állapotát figyelemmel kísérheti, jelentéseket és riasztásokat hozhat létre, szükség szerint. Ugyanakkor azt szeretnénk, hogy az eszközön lévő összes olyan eszközt, amelyet még nem csatoltak a IoT Edge eszközhöz, továbbra is közvetlenül egy levélben küldi el a rendszer, hogy továbbra is az aktuális tárolási helyre irányítsa.
 
-#### <a name="create-a-rul-message-route"></a>RUL-üzenetútvonal létrehozása
+#### <a name="create-a-rul-message-route"></a>RUL-üzenet útvonalának létrehozása
 
-1. Az Azure Portalon keresse meg az IoT Hub.
+1. A Azure Portal navigáljon a IoT Hub.
 
-2. A bal oldali navigációs sávon válassza az **Üzenetútválasztás lehetőséget.**
+2. A bal oldali navigációs sávon válassza az **üzenet-útválasztás**lehetőséget.
 
 3. Válassza a **Hozzáadás** lehetőséget.
 
-4. Nevezze el a **RulMessageRoute útvonalat.**
+4. Nevezze el az útvonal **RulMessageRoute**.
 
-5. Válassza a **Hozzáadás** lehetőséget a **Végpontválasztó** mellett, és válassza a **Blob Storage (Blob storage) lehetőséget.**
+5. Válassza a **Hozzáadás** lehetőséget a **végpont** kiválasztása elem mellett, majd válassza a **blob Storage**lehetőséget.
 
-6. A **Tárolási végpont hozzáadása** képernyőn nevezze el a végpont **ruldata**nevet.
+6. A **tárolási végpont hozzáadása** űrlapon nevezze el a végpont **ruldata**.
 
-7. Válassza **a Tároló kiválasztása**lehetőséget.
+7. Válassza **a tároló**kiválasztása lehetőséget.
 
-8. Válassza ki az oktatóanyagban használt tárfiókot, amely nek a neve például **iotedgeandml\<egyedi utótag\>**.
+8. Válassza ki az oktatóanyag során használt Storage-fiókot, amelynek neve **\<iotedgeandml egyedi utótag\>**.
 
-9. Válassza ki a **ruldata** tárolót, és kattintson **a Kijelölés gombra.**
+9. Válassza ki a **ruldata** tárolót, és kattintson a **kiválasztás**elemre.
 
 10. A tárolási végpont létrehozásához kattintson a **Létrehozás** gombra.
 
-11. Az **Útválasztás lekérdezéshez**írja be a következő lekérdezést:
+11. Az **útválasztási lekérdezéshez**adja meg a következő lekérdezést:
 
     ```sql
     IS_DEFINED($body.PredictedRul) AND NOT IS_DEFINED($body.OperationalSetting1)
     ```
 
-12. Bontsa ki a **Teszt** szakaszt, majd az **Üzenet törzsszakaszt.** Cserélje le az üzenetet a várt üzenetek e példájára:
+12. Bontsa ki a **teszt** szakaszt, majd az **üzenet törzse** szakaszt. Cserélje le az üzenetet a várt üzenetek példáján:
 
     ```json
     {
@@ -637,25 +637,25 @@ Az útválasztó és az osztályozó a helyén, azt várjuk, hogy rendszeres üz
     }
     ```
 
-13. Válassza a **Tesztútvonal lehetőséget.** Ha a teszt sikeres, az "Az üzenet megfelelt a lekérdezésnek" üzenet jelenik meg.
+13. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
-14. Kattintson a **Mentés** gombra.
+14. Kattintson a **Save** (Mentés) gombra.
 
-#### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage útvonal frissítése
+#### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage-útvonal frissítése
 
-Nem szeretnénk az új előrejelzési adatokat a régi tárolási helyre irányítani, ezért frissítse az útvonalat, hogy megakadályozza azt.
+Nem szeretnénk átirányítani az új előrejelzési adatgyűjtést a régi tárolási helyükre, ezért az útvonal frissítésével megakadályozhatja.
 
-1. Az IoT Hub **üzenetút-elvezető** lapján válassza az **Útvonalak** lapot.
+1. Az IoT Hub **üzenet-útválasztás** lapon válassza az **útvonalak** fület.
 
-2. Válassza ki **turbofanDeviceDataToStorage**, vagy bármilyen nevet adott a kezdeti eszköz adatútvonal.
+2. Válassza ki a **turbofanDeviceDataToStorage**, vagy bármilyen nevet, amelyet a kezdeti eszköz adatútvonala számára adott meg.
 
-3. Az útválasztási lekérdezés frissítése
+3. Az útválasztási lekérdezés frissítése a következőre
 
    ```sql
    IS_DEFINED($body.OperationalSetting1)
    ```
 
-4. Bontsa ki a **Teszt** szakaszt, majd az **Üzenet törzsszakaszt.** Cserélje le az üzenetet a várt üzenetek e példájára:
+4. Bontsa ki a **teszt** szakaszt, majd az **üzenet törzse** szakaszt. Cserélje le az üzenetet a várt üzenetek példáján:
 
    ```json
    {
@@ -689,34 +689,34 @@ Nem szeretnénk az új előrejelzési adatokat a régi tárolási helyre irány�
    }
    ```
 
-5. Válassza a **Tesztútvonal lehetőséget.** Ha a teszt sikeres, az "Az üzenet megfelelt a lekérdezésnek" üzenet jelenik meg.
+5. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
 6. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-file-upload"></a>Fájlfeltöltés konfigurálása
 
-Konfigurálja az IoT Hub fájlfeltöltési funkcióját, hogy a fájlíró modul fájlokat tölthet fel a tárolóba.
+Konfigurálja a IoT Hub fájlfeltöltés funkciót, hogy a fájl-író modul feltöltse a fájlokat a tárolóba.
 
-1. Az IoT Hub bal oldali navigátorában válassza a **Fájlfeltöltés**lehetőséget.
+1. A IoT Hub bal oldali navigátorában válassza a **fájlfeltöltés**lehetőséget.
 
-2. Válassza az **Azure Storage Container lehetőséget.**
+2. Válassza az **Azure Storage-tároló**elemet.
 
-3. Válassza ki a tárfiókot a listából.
+3. Válassza ki a Storage-fiókját a listából.
 
-4. Jelölje ki a **uploadturbofanfiles tárolót,** és kattintson **a Kijelölés gombra.**
+4. Válassza ki a **uploadturbofanfiles** tárolót, és kattintson a **kiválasztás**elemre.
 
-5. Kattintson a **Mentés** gombra. A portál értesíti, ha a mentés befejeződött.
+5. Kattintson a **Mentés** gombra. A portál értesíti a Mentés befejeződéséről.
 
 > [!Note]
-> Nem kapcsoljuk be az oktatóanyag feltöltési értesítését, de a [fájlfeltöltési értesítés fogadása](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) a fájlfeltöltési értesítés kezelésével kapcsolatos részletekért olvassa el a fájlfeltöltési értesítés kezelését.
+> Nincs bekapcsolva a feltöltési értesítés ebben az oktatóanyagban, de a fájlfeltöltés-értesítések kezelésével kapcsolatos részletekért tekintse meg a [fájl feltöltésére vonatkozó értesítés fogadása](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) című témakört.
 
-## <a name="build-publish-and-deploy-modules"></a>Modulok létrehozása, közzététele és üzembe helyezése
+## <a name="build-publish-and-deploy-modules"></a>Modulok készítése, közzététele és üzembe helyezése
 
-Most, hogy elhajtottuk a konfigurációs módosításokat, készen állunk a lemezképek létrehozásához és az Azure-tároló beállításjegyzékében való közzétételére. A buildfolyamat a deployment.template.json fájlt használja annak meghatározásához, hogy mely modulokat kell kiépíteni. Az egyes modulok beállításai, beleértve a verziót is, a module.json fájlban találhatók a modul mappában. A buildfolyamat először egy Docker-buildet futtat a Docker-fájlokon, amelyek megfelelnek a module.json fájlban található aktuális konfigurációnak egy lemezkép létrehozásához. Ezután közzéteszi a lemezképet a rendszerleíró adatbázisban a module.json fájl egy verziócímke megegyezik az egyik a module.json fájlt. Végül létrehoz egy konfiguráció-specifikus központi telepítési jegyzékfájl (például deployment.amd64.json), amelyet az IoT Edge-eszköz üzembe helyezünk. Az IoT Edge-eszköz beolvassa az információkat a központi telepítési jegyzékfájlból, és az utasítások alapján letölti a modulokat, konfigurálja az útvonalakat, és beállítja a kívánt tulajdonságokat. Ennek a telepítési módszernek két mellékhatása van, amelyeket tudnia kell:
+Most, hogy elvégezte a konfigurációs módosításokat, készen állunk a rendszerképek létrehozására és az Azure Container registrybe való közzétételre. A létrehozási folyamat a Deployment. template. JSON fájlt használja annak meghatározására, hogy mely modulokat kell felépíteni. Az egyes modulok beállításai, beleértve a verziót, a Module. JSON fájlban találhatók. A létrehozási folyamat először egy Docker-buildet futtat a Module. JSON fájlban található aktuális konfigurációnak megfelelő Dockerfiles. Ezt követően a rendszer közzéteszi a rendszerképet a beállításjegyzékben a Module. JSON fájlból, amely a Module. JSON fájlban szereplővel egyező verziójú címkével rendelkezik. Végezetül létrehoz egy konfiguráció-specifikus központi telepítési jegyzéket (például: Deploy. amd64. JSON), amelyet a IoT Edge eszközre fogunk telepíteni. A IoT Edge eszköz beolvassa az adatokat a telepítési jegyzékből, és az utasítások alapján letölti a modulokat, konfigurálja az útvonalakat, és beállítja a kívánt tulajdonságokat. Ennek a telepítési módszernek két mellékhatása van:
 
-* **Üzembe helyezési késés:** mivel az IoT Edge futásidejű fel kell ismernie a kívánt tulajdonságok változását, mielőtt újrakonfigurálna, a modulok üzembe helyezése után némi időt vehet igénybe, amíg a futásidejű felveszi őket, és elkezdi frissíteni az IoT Edge-eszközt.
+* **Központi telepítési késés:** mivel a IoT Edge futtatókörnyezetnek fel kell ismernie a kívánt tulajdonságok módosítását az újrakonfigurálás megkezdése előtt, a modulok üzembe helyezése után némi időt vehet igénybe, amíg a futtatókörnyezet fel nem veszi őket, és nem indítja el a IoT Edge eszköz frissítését.
 
-* **A modulverziók számítanak:** ha egy modul tárolójának új verzióját teszi közzé a tároló beállításjegyzékében az előző modullal megegyező verziócímkék használatával, a futásidejű nem tölti le a modul új verzióját. Összehasonlítást végez a helyi lemezkép verziócímkéjével és a központi telepítési jegyzékből a kívánt lemezképpel. Ha ezek a verziók egyeznek, a futásidejű nem tesz semmit. Ezért fontos, hogy minden alkalommal, amikor új módosításokat kíván telepíteni, a modul verzióját is meg kell adni. A verzió növekményének módosításával a **verzió** tulajdonság a **tag** tulajdonság a module.json fájlt a modul módosítása. Ezután hozza létre és tegye közzé a modult.
+* **Modulok verziói:** ha egy modul tárolójának új verzióját közzéteszi a tároló-beállításjegyzékben az előző modullal megegyező verziójú címkék használatával, a futtatókörnyezet nem fogja letölteni a modul új verzióját. Összehasonlítja a helyi rendszerkép verziószámát és a kívánt rendszerképet az üzembe helyezési jegyzékből. Ha ezek a verziók egyeznek, a futtatókörnyezet nem hajt végre műveletet. Ezért fontos, hogy minden alkalommal növelje a modul verzióját, amikor új módosításokat kíván üzembe helyezni. Növelje meg a verziószámot úgy, hogy a Module. JSON fájlban lévő **Version** **tulajdonságot** a módosítani kívánt modulhoz módosítja. Ezután hozza létre és tegye közzé a modult.
 
     ```json
     {
@@ -738,84 +738,84 @@ Most, hogy elhajtottuk a konfigurációs módosításokat, készen állunk a lem
     }
     ```
 
-### <a name="build-and-publish"></a>Összeállítás és közzététel
+### <a name="build-and-publish"></a>Létrehozás és közzététel
 
-1. A fejlesztői virtuális gép Visual Studio-kódjában nyisson meg egy Visual Studio-kód terminálablakot, és jelentkezzen be a tároló beállításjegyzékébe.
+1. A fejlesztői virtuális gépen a Visual Studio Code-ban nyisson meg egy Visual Studio Code Terminal ablakot, és jelentkezzen be a tároló-beállításjegyzékbe.
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-1. A Visual Studio-kódban kattintson a jobb gombbal a deployment.template.json elemre, és válassza **az IoT Edge-megoldás összeállítása és leküldése parancsot.**
+1. A Visual Studio Code-ban kattintson a jobb gombbal a Deployment. template. JSON fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
 
-### <a name="view-modules-in-the-registry"></a>Modulok megtekintése a beállításjegyzékben
+### <a name="view-modules-in-the-registry"></a>A beállításjegyzék moduljainak megtekintése
 
-Miután a build sikeresen befejeződött, az Azure Portal használatával áttekinthetjük a közzétett modulokat.
+A létrehozás sikeres befejezését követően a Azure Portal segítségével áttekintheti a közzétett modulokat.
 
-1. Az Azure Portalon keresse meg az Azure Machine Learning-munkaterületet, és kattintson a **registry**hivatkozásra.
+1. A Azure Portal navigáljon a Azure Machine Learning munkaterületre, és kattintson a **beállításjegyzékre**mutató hivatkozásra.
 
-    ![Navigálás a rendszerleíró adatbázisba a gépi tanulási szolgáltatás munkaterületéről](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
+    ![A Machine learning szolgáltatás munkaterületén navigáljon a beállításjegyzékbe](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 
-2. A rendszerleíró adatbázis oldali navigátorában válassza az **Adattárak**lehetőséget.
+2. A beállításjegyzék oldali Navigátorban válassza a **tárolók**lehetőséget.
 
-3. Ne feledje, hogy mindkét létrehozott modul, **az avrofilewriter** és **a turbofanrouter**tárolóként jelenik meg.
+3. Vegye figyelembe, hogy mindkét létrehozott, **avrofilewriter** és **turbofanrouter**-modul adattárakként jelenik meg.
 
-4. Válassza ki **a turbofanrouter,** és vegye figyelembe, hogy már megjelent egy kép címkézett 0.0.1-amd64.
+4. Válassza a **turbofanrouter** lehetőséget, és vegye figyelembe, hogy egy 0.0.1-amd64 címkével rendelkező képet adott közzé.
 
-   ![Tekintse meg az első címkézett változata turbofanrouter](media/tutorial-machine-learning-edge-06-custom-modules/tagged-image-turbofanrouter-repo.png)
+   ![A turbofanrouter első címkézett verziójának megtekintése](media/tutorial-machine-learning-edge-06-custom-modules/tagged-image-turbofanrouter-repo.png)
 
-### <a name="deploy-modules-to-iot-edge-device"></a>Modulok üzembe helyezése Az IoT Edge-eszközre
+### <a name="deploy-modules-to-iot-edge-device"></a>Modulok üzembe helyezése IoT Edge eszközön
 
-A modulokat a megoldásunkban építettük és konfiguráltuk, most telepítjük a modulokat az IoT Edge-eszközre.
+Beépítettük és konfiguráltuk a megoldásokat a megoldásban, most a modulokat a IoT Edge eszközre fogjuk telepíteni.
 
-1. A Visual Studio-kódban kattintson a jobb gombbal a **cett.amd64.json** fájlra a konfigurációs mappában.
+1. A Visual Studio Code-ban kattintson a jobb gombbal a **telepítési. amd64. JSON** fájlra a konfigurációs mappában.
 
-2. Válassza **a Központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+2. Válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
 
-3. Válassza ki az IoT Edge eszközt, **az aaTurboFanEdgeDevice-t.**
+3. Válassza ki a IoT Edge eszközt, **aaTurboFanEdgeDevice**.
 
-4. Frissítse az Azure IoT Hub eszközök panelt a Visual Studio Kódkezelőben. Látnia kell, hogy a három új modul telepítve van, de még nem fut.
+4. Frissítse az Azure IoT Hub-eszközök panelt a Visual Studio Code Explorerben. Látnia kell, hogy a három új modul telepítve van, de még nem fut.
 
-5. Frissítsen újra néhány perc múlva, és látni fogja, hogy a modulok futnak.
+5. Néhány perc elteltével újra frissül, és a futó modulok megjelennek.
 
-   ![Futó modulok megtekintése a Visual Studio-kódban](media/tutorial-machine-learning-edge-06-custom-modules/view-running-modules-list.png)
+   ![Futó modulok megtekintése a Visual Studio Code-ban](media/tutorial-machine-learning-edge-06-custom-modules/view-running-modules-list.png)
 
 > [!NOTE]
-> A modulok indítása és állandó futási állapotba kerülése több percig is eltarthat. Ez idő alatt előfordulhat, hogy a modulok elindulnak és leállnak, amikor megpróbálnak kapcsolatot létesíteni az IoT Edge hub modullal.
+> Több percet is igénybe vehet, amíg a modulok elindulnak, és egy állandó futású állapotba rendezhetők. Ebben az időszakban a modulok indítását és leállását láthatja, amikor megpróbálnak kapcsolatot létesíteni az IoT Edge hub modullal.
 
 ## <a name="diagnosing-failures"></a>Hibák diagnosztizálása
 
-Ebben a szakaszban megosztunk néhány technikát annak megértéséhez, hogy mi romlott el egy modullal vagy modulokkal. Gyakran előfordul, hogy a hiba először a Visual Studio-kód ban található állapotból észlelhető.
+Ebben a szakaszban néhány olyan technikát is megosztunk, amely megértette, hogy mi a hiba egy modul vagy modul esetében. A Visual Studio Code-ban lévő állapotból gyakran nem lehet hibát kimutatni.
 
 ### <a name="identify-failed-modules"></a>Sikertelen modulok azonosítása
 
-* **Visual Studio kód:** Tekintse meg az Azure IoT Hub eszközök panelen. Ha a legtöbb modul futó állapotban van, de az egyik le van állítva, meg kell vizsgálnia, hogy a leállított modul tovább. Ha az összes modul hosszú ideig leállított állapotban van, az meghibásodást is jelezhet.
+* **Visual Studio code:** Tekintse meg az Azure IoT Hub-eszközök panelt. Ha a legtöbb modul fut állapotban van, de az egyik le van állítva, meg kell vizsgálnia, hogy a leállított modul továbbra is fennáll. Ha az összes modul hosszabb ideig leállított állapotban van, akkor a meghibásodást is jelezheti.
 
-* **Azure-portál:** Az IoT hubra való navigálás a portálon, majd az eszköz részletes lapjának megkeresésével (az IoT Edge-ben, az eszközbe való részletezés) előfordulhat, hogy egy modul hibát jelentett, vagy soha nem jelentett semmit az IoT hubnak.
+* **Azure Portal:** Ha megkeresi az IoT hub-t a portálon, majd megkeresi az eszköz részletei lapot (IoT Edge alatt az eszköz részletezése), akkor előfordulhat, hogy egy modul hibát jelzett, vagy soha nem jelentett semmit az IoT hubhoz.
 
-### <a name="diagnosing-from-the-device"></a>Diagnosztizálás a készülékről
+### <a name="diagnosing-from-the-device"></a>Diagnosztizálás az eszközről
 
-Az IoT Edge-eszközbe való bejelentkezéssel számos információhoz férhet hozzá a modulok állapotáról. Az általunk használt fő mechanizmus a Docker-parancsok, amelyek lehetővé teszik az eszközön lévő tárolók és képek vizsgálatát.
+Ha bejelentkezik a IoT Edge eszközbe, a modulok állapotával kapcsolatban jó információkhoz juthat. Az általunk használt fő mechanizmus a Docker-parancs, amely lehetővé teszi, hogy megvizsgáljuk az eszközön található tárolókat és képeket.
 
-1. Az összes futó tároló felsorolása. Azt várjuk, hogy egy tároló minden modul egy nevet, amely megfelel a modul. Ez a parancs a tároló pontos képét sorolja fel, beleértve a verziót is, így megfelelhet az elvárásainak. A képeket úgy is felsorolhatja, hogy a "képet" a "tároló" helyett a parancsban helyettesíti.
+1. Az összes futó tároló listázása. Azt várjuk, hogy minden modulhoz egy tárolót lássunk, amelynek a neve megfelel a modulnak. Emellett a parancs felsorolja a tároló pontos képét is, beleértve a verziót is, így Ön is megtekintheti a vártat. A rendszerképeket úgy is listázhatja, hogy a parancsban az "image" tulajdonságot a "Container" értékre cseréli.
 
    ```bash
    sudo docker container ls
    ```
 
-2. Szerezd meg a naplókat egy konténer. Ez a parancs a tárolóban lévő StdErr és StdOut írást adja ki. Ez a parancs olyan tárolóknál működik, amelyek valamilyen okból elkezdődtek, majd meghaltak. Az edgeAgent vagy edgeHub-tárolókkal történt események megértéséhez is hasznos.
+2. A tároló naplóinak beolvasása. Ez a parancs kimenete a tárolóban található StdErr és StdOut-ra is vonatkozik. Ez a parancs olyan tárolók esetében működik, amelyek valamilyen okból elkezdődtek, majd elhaltak. Azt is hasznos megérteni, hogy mi történt a edgeAgent vagy a edgeHub-tárolóval.
 
    ```bash
    sudo docker container logs <container name>
    ```
 
-3. Vizsgálja meg a tartályt. Ez a parancs rengeteg információt ad a képről. Az adatok szűrhetők attól függően, hogy mit keres. Például, ha meg szeretné nézni, hogy az avroFileWriter kötései helyesek-e, használhatja a következő parancsot:
+3. Egy tároló vizsgálata. Ez a parancs rengeteg információt nyújt a rendszerképről. Az Adatszűrés a keresett elemtől függően szűrhető. Ha például meg szeretné tekinteni, hogy a avroFileWriter kötései helyesek-e, használja a következő parancsot:
 
    ```bash
    sudo docker container inspect -f "{{ json .Mounts }}" avroFileWriter | python -m json.tool
    ```
 
-4. Csatlakozzon egy futó tárolóhoz. Ez a parancs akkor lehet hasznos, ha a tárolót futás közben szeretné megvizsgálni:
+4. Kapcsolódás egy futó tárolóhoz. Ez a parancs akkor lehet hasznos, ha a tárolót a futtatása közben szeretné megvizsgálni:
 
    ```bash
    sudo docker exec -it avroFileWriter bash
@@ -823,17 +823,17 @@ Az IoT Edge-eszközbe való bejelentkezéssel számos információhoz férhet ho
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehoztunk egy IoT Edge-megoldást a Visual Studio-kódban három modullal, egy osztályozóval, egy útválasztóval és egy fájlíróval/-feltöltővel. Úgy állítottuk be az útvonalakat, hogy a modulok kommunikálhassanak egymással a peremhálózati eszközön, módosítottuk a peremhálózati eszköz konfigurációját, és frissítettük a Dockerfiles-okat a függőségek telepítéséhez, és hozzáadjuk a kötési csatlakoztatásokat a modulok tárolóihoz. Ezután frissítettük az IoT Hub konfigurációját, hogy az üzeneteket típus alapján irányítsuk, és kezeljük a fájlfeltöltéseket. Minden nelkül üzembe helyeztük a modulokat az IoT Edge-eszközre, és biztosítottuk, hogy a modulok megfelelően fussanak.
+Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban három modullal, egy osztályozó, egy útválasztóval és egy file Writer/Uploader fájllal. Az útvonalakat úgy állítottuk be, hogy a modulok kommunikáljanak egymással a peremhálózati eszközön, módosította a peremhálózati eszköz konfigurációját, és frissítette a Dockerfiles, hogy telepítse a függőségeket, és hozzáadja a kötési csatlakoztatásokat a modulok tárolóhoz. A következő lépésben frissítettük a IoT Hub konfigurációját, hogy az üzeneteket a típus és a fájlfeltöltés kezelésére használjuk. Minden esetben a modulokat a IoT Edge eszközre telepítettük, és gondoskodtak arról, hogy a modulok megfelelően futnak.
 
-További információ a következő oldalakon található:
+További információt a következő lapokon talál:
 
 * [Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben](module-composition.md)
 * [IoT-központ üzenet-útválasztásának lekérdezési szintaxisa](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [IoT Hub-üzenet-útválasztás: most az üzenettörzsen lévő útválasztással](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
+* [IoT Hub üzenet-útválasztás: most az üzenet törzsének útválasztása](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Fájlok feltöltése az IoT Hubbal](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Fájlok feltöltése az eszközről a felhőbe az IoT Hub segítségével](../iot-hub/iot-hub-python-python-file-upload.md)
+* [Fájlok feltöltése az eszközről a felhőbe IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)
 
 Folytassa a következő cikkel az adatok küldésének megkezdéséhez és a megoldás működés közbeni megtekintéséhez.
 
 > [!div class="nextstepaction"]
-> [Adatok küldése transzparens átjárón keresztül](tutorial-machine-learning-edge-07-send-data-to-hub.md)
+> [Az adatküldés transzparens átjárón keresztül](tutorial-machine-learning-edge-07-send-data-to-hub.md)

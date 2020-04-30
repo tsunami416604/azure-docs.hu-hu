@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Elemzési szolgáltatások kiszolgálójának létrehozása az Azure Portalon | Microsoft dokumentumok
-description: Ismerje meg, hogyan hozhat létre gyorsan egy Azure Analysis Services-kiszolgálópéldányt az Azure Portal használatával.
+title: Rövid útmutató – Analysis Services kiszolgáló létrehozása Azure Portalban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre gyorsan egy Azure Analysis Services Server-példányt a Azure Portal használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75442840"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
@@ -30,13 +30,13 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-1. Kattintson a + > **Erőforrás-elemzési elemzési** > szolgáltatások **létrehozása****gombra.**
+1. Kattintson **az + erőforrás** > **létrehozása elemzési** > **Analysis Services**lehetőségre.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
 2. Az **Analysis Services** területen töltse ki a kötelező mezőket, majd válassza a **Létrehozás** lehetőséget.
    
-   * **Kiszolgáló neve**: Írjon be egy egyedi nevet a kiszolgálóra való hivatkozáshoz. A kiszolgáló nevének kisbetűvel kell kezdődnie, és 3–128 kiskaraktert és számot kell tartalmaznia. A szóközök és a speciális karakterek nem engedélyezettek.
+   * **Kiszolgáló neve**: Írjon be egy egyedi nevet a kiszolgálóra való hivatkozáshoz. A kiszolgálónévnek kisbetűs karakterrel kell kezdődnie, és 3 – 128 kisbetűs karaktert és számot kell tartalmaznia. Szóközök és speciális karakterek használata nem engedélyezett.
    * **Előfizetés**: Válassza ki a kiszolgálóhoz társítani kívánt előfizetést.
    * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. Az erőforráscsoportok segítségével Azure-erőforrások gyűjteményét kezelheti. További információ: [erőforráscsoportok](../azure-resource-manager/management/overview.md).
    * **Hely**: Ez az Azure-adatközpont üzemelteti a kiszolgálót. A legnagyobb felhasználói bázisához legközelebb eső helyet válassza ki.
@@ -45,7 +45,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
    * **Biztonsági tárhely beállítása**: Nem kötelező. Ha már rendelkezik [tárfiókkal](../storage/common/storage-introduction.md), megadhatja azt a modelladatbázisok biztonsági másolatainak alapértelmezett tárolójaként. Később is megadhatja a [biztonsági mentés és visszaállítás](analysis-services-backup.md) beállításait.
    * **Tárkulcs lejárata**: Nem kötelező. Adjon meg egy tárkulcslejárati időszakot.
 
-A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Vagy keresse meg a **Minden szolgáltatás** > **elemzési szolgáltatását,** és nézze meg, hogy a kiszolgáló készen áll-e. A kiszolgálók támogatják a táblázatos modelleket az 1200-as és magasabb kompatibilitási szinteken. A modellkompatibilitási szint a Visual Studio vagy az SSMS alkalmazásban van megadva.
+A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Vagy navigáljon az **összes szolgáltatás** > **Analysis Services** , és ellenőrizze, hogy a kiszolgáló készen áll-e. A kiszolgálók a 1200-es és magasabb kompatibilitási szinteken található táblázatos modelleket támogatják. A modell kompatibilitási szintje a Visual Studióban vagy a SSMS van megadva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -58,6 +58,6 @@ Ha már nincs rá szükség, törölje a kiszolgálót. Nyissa meg a kiszolgál�
 Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót az Azure-előfizetésében. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Gyorsútmutató: Kiszolgálótűzfal konfigurálása – Portál](analysis-services-qs-firewall.md)   
+> [Rövid útmutató: a kiszolgáló tűzfalának konfigurálása – portál](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Mintamodell hozzáadása a kiszolgálóhoz](analysis-services-create-sample-model.md)

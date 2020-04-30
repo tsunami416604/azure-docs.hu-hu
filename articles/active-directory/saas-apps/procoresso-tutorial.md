@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Procore SSO-val | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Procore egyszeri bejelentkezés között.
+title: 'Oktatóanyag: Azure Active Directory integráció a beépített SSO-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a alapszintű egyszeri bejelentkezés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,224 +17,224 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67093667"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Az Azure Active Directory integrációja a Procore SSO-val
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory integráció a beépített SSO-val
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Procore SSO-t az Azure Active Directoryval (Azure AD).
-A Procore SSO integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Azure Active Directory (Azure AD) használatával a Core SSO-t.
+A beépített egyszeri bejelentkezés az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Procore SSO-hoz.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve procore egyszeri bejelentkezés (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a alapszintű egyszeri bejelentkezéshez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az egyszeri bejelentkezésre (egyszeri bejelentkezés) az Azure AD-fiókkal.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció procore sso-val való konfigurálásához a következő elemekre van szüksége:
+Az Azure AD-integráció alapszintű egyszeri bejelentkezéssel való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
-* Procore egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Egymagos egyszeri bejelentkezéses egyszeri bejelentkezésre alkalmas előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Procore SSO támogatja az **IDP** által kezdeményezett SSO-t
+* A Core SSO támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-procore-sso-from-the-gallery"></a>Procore SSO hozzáadása a galériából
+## <a name="adding-procore-sso-from-the-gallery"></a>A Core SSO hozzáadása a katalógusból
 
-A Procore SSO azure-beli AD-be való integrálásának konfigurálásához hozzá kell adnia a Procore SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A beépített egyszeri bejelentkezés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy alapszintű egyszeri bejelentkezést a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha procore sso-t szeretne hozzáadni a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A következő lépések végrehajtásával adhatja hozzá a alapszintű egyszeri bejelentkezést a katalógusból:**
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Procore SSO**kifejezést , válassza a **Procore SSO** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **alapszintű egyszeri bejelentkezés**, válassza a **alapszintű egyszeri bejelentkezés** az eredmény panelről elemet, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Procore SSO az eredménylistában](common/search-new-app.png)
+    ![Alapszintű SSO az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Procore egyszeri bejelentkezéssel egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a procore egyszeri bejelentkezés kapcsolódó felhasználó közötti kapcsolat létre kell hozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Procore egyszeri bejelentkezéssel a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés a következő építőelemeket kell végrehajtania és tesztelni:
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a Procore Egyszeri bejelentkezést](#configure-procore-sso-single-sign-on)** – az egyszeri bejelentkezés i beállításainak konfigurálásához az alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Procore Egyszeri bejelentkezés tesztfelhasználó](#create-procore-sso-test-user)** létrehozása – britta Simon megfelelője a Procore egyszeri bejelentkezésben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. A **[alapszintű SSO egyszeri bejelentkezésének konfigurálása](#configure-procore-sso-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+5. **[Hozzon létre egy alapszintű SSO-tesztet használó felhasználót](#create-procore-sso-test-user)** – hogy rendelkezzen a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó, a Core SSO-ben.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezésének procore egyszeri bejelentkezéssel való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Procore Egyszeri bejelentkezés** alkalmazás integrációs lapján válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **ALAPszintű SSO** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania semmilyen lépést, mivel az alkalmazás már előre integrálva van az Azure-ral.
+4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-    ![Procore Egyszeri bejelentkezés tartomány és URL-címek egyszeri bejelentkezési információi](common/preintegrated.png)
+    ![Alapszintű SSO-tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Procore SSO beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. A **alapszintű egyszeri bejelentkezés beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Hirdetés-azonosító
+    b. Azure AD-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-procore-sso-single-sign-on"></a>Procore egyszeri bejelentkezés konfigurálása
+### <a name="configure-procore-sso-single-sign-on"></a>A beépített egyszeri bejelentkezés egyszeri bejelentkezésének konfigurálása
 
-1. A **Procore egyszeri** bejelentkezési oldalon való egyszeri bejelentkezés konfigurálásához jelentkezzen be a procore vállalati webhelyére rendszergazdaként.
+1. Ha az egyszeri bejelentkezést **az egyszeri bejelentkezési oldalon szeretné** konfigurálni, jelentkezzen be a főkiszolgálói webhelyre rendszergazdaként.
 
-2. Az eszköztár legördülő menüjének **adminisztrátora** elemre kattintva nyissa meg az SSO-beállítások lapot.
+2. Az eszközkészlet legördülő menüben kattintson a **rendszergazda** elemre az SSO-beállítások lap megnyitásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/procore_tool_admin.png)
 
-3. Illessze be az értékeket az alábbi mezőkbe.
+3. Illessze be a mezőkben szereplő értékeket az alább leírtak szerint:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a. Az **egyszeri bejelentkezés a kiállító URL-cím mezőjébe** illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
+    a. Az **egyszeri bejelentkezés kiállítójának URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    b. Az **SAML Sign On Target URL-címmezőbe** illessze be a **bejelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
+    b. Az **SAML-bejelentkezési cél URL-címe** mezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-    c. Most nyissa meg a fent az Azure portalról letöltött **összevonási metaadat-XML-t,** és másolja a tanúsítványt az **X509Certificate nevű címkébe.** Illessze be a másolt értéket az **Egyszeri bejelentkezés x509 tanúsítvány** mezőbe.
+    c. Most nyissa meg az **összevonási metaadatok fent letöltött fájlját** a Azure Portalból, és másolja a tanúsítványt a **x509**nevű címkébe. Illessze be a másolt értéket az **egyszeri bejelentkezési x509-tanúsítvány** mezőbe.
 
 4. Kattintson a **Save Changes** gombra.
 
-5. Ezek után a beállítások után el kell küldenie azt a **tartománynevet** (pl. **contoso.com),** amelyen keresztül bejelentkezik a Procore-ba a [Procore támogatási csapatának,](https://support.procore.com/) és aktiválni fogják az adott tartományösszevont SSO-t.
+5. Ezen beállítások után el kell küldenie a **tartománynevet** (például **contoso.com**), amelyen keresztül bejelentkezik a Core [támogatási csapatba](https://support.procore.com/) , és aktiválnia kell az adott tartomány összevont egyszeri bejelentkezését.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
+Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
+    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
+3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
 
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
 
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson **a Létrehozás gombra.**
+    d. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést a Procore egyszeri bejelentkezéshez való hozzáférés biztosításával.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a alapszintű egyszeri bejelentkezéshez.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Procore SSO**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **alapszintű egyszeri bejelentkezés**lehetőséget.
 
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Procore SSO**lehetőséget.
+2. Az alkalmazások listában válassza a **alapszintű egyszeri bejelentkezés**lehetőséget.
 
-    ![A Procore SSO hivatkozás az Alkalmazások listában](common/all-applications.png)
+    ![Az alkalmazások listájában található alapszintű egyszeri bejelentkezés hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-procore-sso-test-user"></a>Procore SSO-tesztfelhasználó létrehozása
+### <a name="create-procore-sso-test-user"></a>Alapszintű SSO-teszt felhasználó létrehozása
 
-Kérjük, kövesse az alábbi lépéseket, hogy hozzon létre egy Procore teszt felhasználó Procore SSO oldalon.
+Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri bejelentkezést használó felhasználói tesztet.
 
-1. Jelentkezzen be a procore vállalati webhelyére rendszergazdaként.    
+1. Jelentkezzen be a alapszintű vállalati webhelyre rendszergazdaként.    
 
-2. Az eszköztár legördülő menüjéről kattintson a **Címtár** elemre a vállalati címtárlap megnyitásához.
+2. Az eszközkészlet legördülő menüjében kattintson a **könyvtár** elemre a vállalati könyvtár lap megnyitásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. Kattintson a **Személy hozzáadása** opcióra az űrlap megnyitásához és a következő lehetőségek végrehajtásához -
+3. Kattintson a **személy hozzáadása** lehetőségre az űrlap megnyitásához, és adja meg a következő beállítások végrehajtását –
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. Az **Utónév** mezőbe írja be a felhasználó keresztnevét, például **Britta**.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Britta**).
 
-    b. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét, **például Simon**.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **E-mail cím** mezőbe írja be BrittaSimon@contoso.coma felhasználó e-mail címét, például .
+    c. Az **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, BrittaSimon@contoso.compéldául:.
 
-    d. Válassza az **Engedélysablon** t **engedélysablonként később.**
+    d. Válasszon **engedélyt** sablonként az **alkalmazási engedély sablonnal később**.
 
-    e. Kattintson **a Létrehozás gombra.**
+    e. Kattintson a **Létrehozás**gombra.
 
-4. Ellenőrizze és frissítse az újonnan hozzáadott kapcsolattartó adatait.
+4. Keresse meg és frissítse az újonnan hozzáadott partner adatait.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Kattintson a **Meghívó mentése és küldése** (ha e-mailen keresztül idvan rá hívás szükséges) vagy a **Mentés** (Mentés közvetlenül) gombra a felhasználói regisztráció befejezéséhez.
+5. A felhasználó regisztrációjának befejezéséhez kattintson a **Mentés gombra, és küldje el a meghívót** (ha meg kell adni az e-mail meghívását), vagy **mentenie** kell a (Save közvetlenül)
     
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Procore SSO csempére kattint, automatikusan be kell jelentkeznie a Procore sso-ba, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor a hozzáférési panelen a alapszintű egyszeri bejelentkezés csempére kattint, automatikusan be kell jelentkeznie a alapszintű SSO-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

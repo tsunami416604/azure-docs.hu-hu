@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – Telepítés georeplikált rendszerleíró adatbázisból
-description: Linux alapú webalkalmazás üzembe helyezése két különböző Azure-régióban egy tárolólemezkép használatával egy georeplikált Azure-tároló beállításjegyzékből. Ez egy háromrészes sorozat második része.
+title: Oktatóanyag – üzembe helyezés földrajzilag replikált beállításjegyzékből
+description: Egy Linux-alapú webalkalmazás üzembe helyezése két különböző Azure-régióban egy geo-replikált Azure Container Registry-beli tároló-rendszerkép használatával. Ez egy háromrészes sorozat második része.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74456103"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Webalkalmazás telepítése georeplikált Azure-tároló beállításjegyzékből
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: webalkalmazás üzembe helyezése egy földrajzilag replikált Azure Container registryből
 
 Ez egy háromrészes oktatóanyag-sorozat második része. Az [első részben](container-registry-tutorial-prepare-registry.md) létrehozott egy privát, georeplikált tárolóregisztrációs adatbázist, valamint felépített egy tárolórendszerképet a forrásból, és leküldte a regisztrációs adatbázisba. Az ebben a cikkben leírtakat követve kihasználhatja a georeplikált regisztrációs adatbázis hálózatközeli aspektusát a tároló két, különböző Azure-régióban található webalkalmazás-példányban történő üzembe helyezésével. Ekkor mindegyik példány a legközelebbi regisztrációs adatbázisból kéri le a tárolólemezképet.
 
@@ -37,24 +37,24 @@ Ebben a lépésben létrehoz egy Web App for Containers-példányt az *USA nyuga
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és lépjen az előző oktatóanyagban létrehozott regisztrációs adatbázisra.
 
-Válassza az**Acr-helloworld** **adattárak lehetőséget,** > majd kattintson a jobb gombbal a **v1** címkére a **Címkék** csoportban, és válassza a **Telepítés webalkalmazásba parancsot:**
+Válassza ki az**ACR-HelloWorld** **adattárakat** > , majd kattintson a jobb gombbal a **v1** címkére a **címkék** területen, majd válassza a **telepítés a webalkalmazásba**lehetőséget:
 
 ![Üzembe helyezés az App Service-ben az Azure Portalon][deploy-app-portal-01]
 
-Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, előfordulhat, hogy nem engedélyezte a beállításjegyzék rendszergazdai felhasználóját a [Tároló-beállításjegyzék létrehozása](container-registry-tutorial-prepare-registry.md#create-a-container-registry) első oktatóanyagának utasításai szerint. Engedélyezheti a rendszergazdai felhasználó a **Beállítások** > **elérési kulcsok** az Azure Portalon.
+Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, előfordulhat, hogy nem engedélyezte a beállításjegyzék rendszergazdai felhasználóját a [Tároló-beállításjegyzék létrehozása](container-registry-tutorial-prepare-registry.md#create-a-container-registry) első oktatóanyagának utasításai szerint. A rendszergazdai felhasználót a Azure Portal **Beállítások** > **hozzáférési kulcsaiban** engedélyezheti.
 
 Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjelenített **Web App for Containers** területen adja meg a következő értékeket a beállításokhoz:
 
 | Beállítás | Érték |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
-| **Erőforráscsoport** | **Meglévő kontissza** > `myResourceGroup` |
+| **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
 | **App Service-csomag/Hely** | Hozzon létre `plan-westus` nevű új csomagot az **USA nyugati régiójában**. |
 | **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
 
 > [!NOTE]
-> Amikor új alkalmazásszolgáltatási csomagot hoz létre a tárolóba helyezett alkalmazás üzembe helyezéséhez, a rendszer automatikusan egy alapértelmezett sémát választ ki az alkalmazás üzemeltetéséhez. Az alapértelmezett séma az operációs rendszer beállításátóállapottól függ.
+> Amikor létrehoz egy új App Service-csomagot a tároló alkalmazás üzembe helyezéséhez, a rendszer automatikusan kijelöl egy alapértelmezett csomagot az alkalmazás üzemeltetéséhez. Az alapértelmezett terv az operációs rendszer beállításától függ.
 
 Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA nyugati régiójában* való üzembe helyezéséhez.
 
@@ -81,7 +81,7 @@ Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az 
 | Beállítás | Érték |
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
-| **Erőforráscsoport** | **Meglévő kontissza** > `myResourceGroup` |
+| **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
 | **App Service-csomag/Hely** | Hozzon létre `plan-eastus` nevű új csomagot az **USA keleti régiójában**. |
 | **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
@@ -96,7 +96,7 @@ A korábbiakhoz hasonlóan megtekintheti a futó alkalmazást, ha megnyitja az U
 
 A Portalon válassza ki az **App Services** elemet, majd az előző lépésben üzembe helyezett webalkalmazást. Ebben a példában a webalkalmazás neve *uniqueregistryname-eastus*.
 
-Jelölje ki a webalkalmazás hiperhivatkozással ellátott URL-címét az **App Service áttekintésének** jobb felső részén a futó alkalmazás böngészőben való megtekintéséhez.
+Válassza ki a webalkalmazás hiperhivatkozásos URL-címét a **app Service áttekintés** jobb felső sarkában, és tekintse meg a futó alkalmazást a böngészőben.
 
 ![Linuxon futó webalkalmazás konfigurációja az Azure Portalon][deploy-app-portal-07]
 

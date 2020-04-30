@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
 ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670355"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
@@ -32,7 +32,7 @@ Az Azure Application Insights használati adatokat gyűjt, amely alapján megism
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítse a [Visual Studio 2019-et](https://www.visualstudio.com/downloads/) az alábbi munkaterhelésekkel:
+- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez:
 - Küldjön [felhasználói környezetet](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a rendszerbe.
+Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
 
 ## <a name="get-information-about-your-users"></a>A felhasználókkal kapcsolatos információk lekérése
 A **Felhasználók** panelen különböző módokon fontos részleteket tudhat meg a felhasználókról. A panelen megtudhatja például, hogy a felhasználók honnan és milyen ügyfélről csatlakoznak, és hogy az alkalmazás mely területeit tekintik meg. 
@@ -56,11 +56,11 @@ A **Felhasználók** panelen különböző módokon fontos részleteket tudhat m
 
     ![Időtartomány módosítása](media/tutorial-users/TimeRange.png)
 
-4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A grafikon ugyanazokat az adatokat tartalmazza, de lehetővé teszi a felhasználók számának lebontását az egyes országok/régiók esetében.
+4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A gráf ugyanazokat az adatmennyiségeket tartalmazza, de lehetővé teszi, hogy megtekintse az egyes országok/régiók felhasználói számának részletezését.
 
     ![Ország vagy régió grafikon](media/tutorial-users/CountryorRegion.png)
 
-5. Vigye a kurzort a diagram különböző sávjai fölé, és vegye figyelembe, hogy az egyes országok/régiók száma csak az adott sáv által képviselt időablakot tükrözi.
+5. Vigye a kurzort a diagram különböző bárjai fölé, és vegye figyelembe, hogy az egyes országok/régiók száma csak az adott sáv által jelzett időablakot tükrözi.
 6. Tekintse meg a jobb oldalon az **Elemzések** oszlopot, amely az adatokon végrehajtott elemzéseket tartalmazza.  Ez az időtartomány során bejelentkezett egyedi munkamenetek számát tartalmazza, valamint a gyakori tulajdonságokkal rendelkező rekordokat, amelyek a felhasználói adatok jelentős hányadában szerepelnek. 
 
     ![Elemzések oszlop](media/tutorial-users/insights.png)
@@ -83,7 +83,7 @@ A **Munkamenetek** panel a **Felhasználók** panelhez hasonló.  Míg a **Felha
     ![Munkamenetek idővonala](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Hasonló felhasználók csoportosítása
-A **kohorsz** hasonló jellemzőkkel csoportosított felhasználók csoportja.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
+Az **kohorsz** a hasonló jellemzőkkel rendelkező felhasználók csoportja.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
 
 1.  Kattintson a **Kohorsz** elemre a menüben.
 2.  Kattintson az **Új** gombra egy új kohorsz létrehozásához.

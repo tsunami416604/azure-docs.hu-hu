@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az AlertOps-szal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az AlertOps között.
+title: 'Oktatóanyag: Azure Active Directory integráció a AlertOps-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és AlertOps között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,190 +17,190 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67107058"
 ---
-# <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Oktatóanyag: AlertOps integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Oktatóanyag: a AlertOps és a Azure Active Directory integrálása
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az AlertOps-ot az Azure Active Directoryval (Azure AD). Ha integrálja az AlertOps-ot az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a AlertOps a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az AlertOps-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD- ban, aki rendelkezik hozzáféréssel alertops.
-* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve AlertOps az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A AlertOps-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a AlertOps az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* AlertOps egyszeri bejelentkezés (SSO) engedélyezve lévő előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* AlertOps egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. AlertOps támogatja az **SP és IDP** kezdeményezett SSO.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A AlertOps **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
 ## <a name="adding-alertops-from-the-gallery"></a>AlertOps hozzáadása a gyűjteményből
 
-Az AlertOps azure AD-be való integrálásának konfigurálásához hozzá kell adnia az AlertOps-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A AlertOps Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a AlertOps a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből** szakaszban írja **alertops** a keresőmezőbe.
-1. Válassza az **AlertOps** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **AlertOps** kifejezést a keresőmezőbe.
+1. Válassza ki a **AlertOps** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t az AlertOps segítségével egy **Britta Simon**nevű tesztfelhasználó használatával. Az SSO működéséhez létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó AlertOps között.
+Konfigurálja és tesztelje az Azure AD SSO-t a AlertOps a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a AlertOps-ben.
 
-Az Azure AD SSO beállítása és tesztelése az AlertOps segítségével hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a AlertOps konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák ezt a funkciót.
-2. **[Az AlertOps konfigurálásával](#configure-alertops)** konfigurálja az SSO-beállításokat az alkalmazás oldalon.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének britta simonnal való teszteléséhez.
-4. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy Britta Simon használhassa az Azure AD egyszeri bejelentkezést.
-5. **[Hozzon létre AlertOps tesztfelhasználó,](#create-alertops-test-user)** hogy egy megfelelője Britta Simon alertops, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+2. **[Konfigurálja a AlertOps](#configure-alertops)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
+5. **[Hozzon létre AlertOps-tesztelési felhasználót](#create-alertops-test-user)** , hogy a Britta Simon a AlertOps egy, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere legyen.
+6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **AlertOps** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az Egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **AlertOps** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com`
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com`
 
-    1. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
 
-1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az AlertOps ügyféltámogatási csapatával,](mailto:support@alertops.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a AlertOps ügyfélszolgálati [csapatához](mailto:support@alertops.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon keresse meg az **SAML aláíró tanúsítvány szakaszát,** keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Set up AlertOps (AlertOps beállítása)** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **AlertOps beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 ### <a name="configure-alertops"></a>AlertOps konfigurálása
 
-1. Az AlertOps konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
+1. A AlertOps belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-2. Miután hozzábővítményt a böngészőhöz, kattintson a **Setup AlertOps** irányítja, hogy a AlertOps alkalmazás. Innen adja meg a rendszergazdai hitelesítő adatokat az AlertOps-ba való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-5.
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés AlertOps** gombra a AlertOps alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a AlertOps való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
 
-    ![Beállítási konfiguráció](common/setup-sso.png)
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-3. Ha manuálisan szeretné beállítani az AlertOps-ot, nyisson meg egy új webböngészőablakot, és jelentkezzen be rendszergazdaként az AlertOps vállalati webhelyére, és hajtsa végre a következő lépéseket:
+3. Ha manuálisan szeretné beállítani a AlertOps, nyisson meg egy új böngészőablakot, és jelentkezzen be a AlertOps vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Kattintson a bal oldali navigációs panel **Fiókbeállításaira.**
+4. Kattintson a **Fiókbeállítások** lehetőségre a bal oldali navigációs panelen.
 
     ![AlertOps-konfiguráció](./media/alertops-tutorial/configure1.png)
 
-5. Az **Előfizetésbeállításai** lapon válassza az **SSO** lehetőséget, és hajtsa végre a következő lépéseket:
+5. Az **előfizetés beállításai** lapon válassza az **SSO** lehetőséget, és hajtsa végre a következő lépéseket:
 
     ![AlertOps-konfiguráció](./media/alertops-tutorial/configure2.png)
 
-    a. Jelölje be **az Egyszeri bejelentkezés(Egyszeri bejelentkezés)** jelölőnégyzetet.
+    a. Jelölje be **az egyszeri bejelentkezés (SSO) használata** jelölőnégyzetet.
 
-    b. Válassza ki az **Azure Active Directoryt** **sso-szolgáltatóként** a legördülő menüből.
+    b. A legördülő listából válassza az **Azure Active Directory** **SSO-szolgáltatóként** lehetőséget.
 
-    c. A **Kiállító URL-címmezőjében** használja az azonosító értékét, amelyet az Azure Portal **alapszintű SAML-konfiguráció** szakaszában használt.
+    c. A **kiállító URL-címe** szövegmezőben használja az azonosító értékét, amelyet a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában használt.
 
-    d. Az **SAML-végpont URL-címszövegbe** illessze be a **bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
+    d. Az **SAML-végpont URL-címe** szövegmezőbe illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 
-    e. Az **SLO végpont URL-címszövegbe** illessze be a **bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
+    e. Az **slo-végpont URL-címe** szövegmezőbe illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 
-    f. Válassza ki **az SHA256-ot** **SAML aláírási algoritmusként** a legördülő menüből.
+    f. Válassza **SHA256** ki a sha256 **SAML-aláírási algoritmusként** a legördülő listából.
 
-    g. Nyissa meg a letöltött tanúsítványfájlt(Base64) a Jegyzettömbben. Másolja a tartalmát a vágólapra, majd illessze be az X.509 Tanúsítvány szövegmezőbe.
+    g. Nyissa meg a letöltött tanúsítvány (Base64) fájlt a Jegyzettömbben. Másolja a vágólapra a tartalmát, majd illessze be az X. 509 tanúsítvány szövegmezőbe.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon Britta Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `BrittaSimon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával alertops hozzáférést biztosít.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a AlertOps hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **AlertOps**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **AlertOps**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a Felhasználó lista **Britta Simon** elemet, majd kattintson a képernyő alján található **Kijelölés** gombra.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-alertops-test-user"></a>AlertOps-tesztfelhasználó létrehozása
+### <a name="create-alertops-test-user"></a>AlertOps-tesztelési felhasználó létrehozása
 
-1. Egy másik böngészőablakban jelentkezzen be az AlertOps vállalati webhelyére rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a AlertOps vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a bal oldali navigációs panel **felhasználók** elemére.
+2. A bal oldali navigációs panelen kattintson a **felhasználók** elemre.
 
     ![AlertOps-konfiguráció](./media/alertops-tutorial/user1.png)
 
-3. Válassza **a Felhasználó hozzáadása**lehetőséget.
+3. Válassza a **felhasználó hozzáadása**elemet.
 
     ![AlertOps-konfiguráció](./media/alertops-tutorial/user2.png)
 
-4. A **Felhasználó hozzáadása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![AlertOps-konfiguráció](./media/alertops-tutorial/user3.png)
 
-    a. A **Bejelentkezési felhasználónév** mezőbe írja be a felhasználó felhasználónevét, például **Brittasimon.**
+    a. A **bejelentkezési Felhasználónév** szövegmezőbe írja be a felhasználó felhasználónevét, például a **Brittasimon**nevet.
 
-    b. A **Hivatalos e-mail** szövegmezőbe írja be a felhasználó e-mail címét, mint **brittasimon\@contoso.com**.
+    b. A **hivatalos e-mail** szövegmezőbe írja be annak a felhasználónak az e-mail címét, mint a **Brittasimon\@contoso.com**.
 
-    c. Az **Utónév** mezőbe írja be a felhasználó keresztnevét, például **Britta.**
+    c. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
 
-    d. A **Vezetéknév** mezőbe írja be a felhasználó keresztnevét, például **Simon**.
+    d. A **vezetéknév** szövegmezőbe írja be a felhasználó utónevét, például **Simon**nevet.
 
-    e. Válassza ki a **Típus** értéket a legördülő menüből a szervezet szerint.
+    e. Válassza ki a **típus** értéket a legördülő listából a saját szervezete szerint.
 
-    f. Válassza ki a felhasználó **szerepkörét** a legördülő menüből a szervezet szerint.
+    f. Válassza ki a felhasználó **szerepkörét** a legördülő listából a saját szervezete számára.
 
     g. Válassza a **Hozzáadás** lehetőséget.
 
-### <a name="test-sso"></a>SSO tesztelése
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Amikor kiválasztja az AlertOps csempét a hozzáférési panelen, automatikusan be kell jelentkeznie az AlertOps-ba, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor kiválasztja a AlertOps csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a AlertOps, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

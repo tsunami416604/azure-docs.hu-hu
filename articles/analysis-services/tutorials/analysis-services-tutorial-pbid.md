@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – Az Azure Analysis Services összekapcsolása a Power BI Desktoptal | Microsoft dokumentumok
+title: Oktatóanyag – Azure Analysis Services összekötése a Power BI Desktoptal | Microsoft Docs
 author: minewiskan
-description: Megtudhatja, hogy miként szerezheti be az Analysis Services-kiszolgáló nevét az Azure Portalról, majd csatlakozhat a kiszolgálóhoz a Power BI Desktop használatával.
+description: Megtudhatja, hogyan szerezhet be Analysis Services kiszolgálónevet a Azure Portal, majd Power BI Desktop használatával csatlakozhat a kiszolgálóhoz.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73572315"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktoppal
@@ -30,9 +30,9 @@ Ebben az oktatóanyagban a Power BI Desktopot fogja használni arra, hogy csatla
 - [Telepítette a legújabb Power BI Desktopot](https://powerbi.microsoft.com/desktop).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-Ebben az oktatóanyagban a portálon énekel, hogy csak a kiszolgáló nevét kapja meg. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
+Ebben az oktatóanyagban bemutatjuk a portálon, hogy csak a kiszolgálónevet kapja meg. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
 
-Jelentkezzen be a [portálra.](https://portal.azure.com/)
+Jelentkezzen be a [portálra](https://portal.azure.com/).
 
 ## <a name="get-server-name"></a>Kiszolgálónév lekérése
 Ahhoz, hogy a Power BI Desktopból csatlakozni tudjon a kiszolgálójához, szüksége lesz a kiszolgáló nevére. A kiszolgálónevet a portálról kérheti le.
@@ -43,7 +43,7 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 
 ## <a name="connect-in-power-bi-desktop"></a>Csatlakozás a Power BI Desktopban
 
-1. A Power BI Desktopban kattintson > a Data**Azure** > **Analysis Services adatbázisának** **beszereznie**elemre.
+1. Power bi Desktop kattintson az**Azure** > -**Azure Analysis Services adatbázis** **beolvasása** > elemre.
 
    ![Csatlakozás az Adatok lekérése alatt](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 
    ![Vizualizációk](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. A **FIELDS** > **internetes értékesítés** táblában válassza az **Internetes értékesítés összesítése** és **árrésmérték** lehetőséget. A **Product Category** (Termékkategória) táblázatban jelölje ki a **Product Category Name** (Termékkategória neve) mezőt.
+5. Az **FIELDS** > **Internet Sales** tábla mezők területen válassza az **internetes eladások összesen** és a **Margók** lehetőséget. A **Product Category** (Termékkategória) táblázatban jelölje ki a **Product Category Name** (Termékkategória neve) mezőt.
 
    ![Jelentés befejezése](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -70,4 +70,4 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 Ha többé nincs szüksége rá, akkor ne mentse a jelentést, vagy törölje a fájlt, ha már kimentette.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem ismeri az adatmodell létrehozásának módját, tekintse meg az Sql Server Analysis Services dokumentumainak [Adventure Works internetes értékesítési táblázatos adatmodellezési oktatóanyagát.](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)
+Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem ismeri az adatmodell létrehozását, tekintse meg az [Adventure Works Internet Sales táblázatos adatmodellezési oktatóanyagot](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) a SQL Server Analysis Services dokumentációjában.
