@@ -1,6 +1,6 @@
 ---
-title: Adatok lekérdezése az Azure Cosmos DB MongoDB-hoz készült API-jával
-description: Ismerje meg, hogyan kérdezheti le az adatokat az Azure Cosmos DB MongoDB-hoz készült API-jából a MongoDB rendszerhéj-parancsok használatával
+title: Adatlekérdezés Azure Cosmos DB API-val a MongoDB-hez
+description: Megtudhatja, hogyan kérdezheti le az Azure Cosmos DB API-MongoDB a MongoDB rendszerhéj parancsaival
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870139"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lekérdezése az Azure Cosmos DB MongoDB-hoz készült API-jával
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatlekérdezés Azure Cosmos DB API-MongoDB használatával
 
-Az [Azure Cosmos DB MongoDB API-ja](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket.](https://docs.mongodb.com/manual/tutorial/query-documents/) 
+A [Azure Cosmos db API-MongoDB](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * A Cosmos-adatbázisban tárolt adatok lekérdezése a MongoDB rendszerhéj használatával
+> * A Cosmos-adatbázisban tárolt adatlekérdezés a MongoDB Shell használatával
 
 Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
@@ -302,7 +302,7 @@ Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gy
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtanulta, hogyan kell lekérdezni a Cosmos DB API-ját a MongoDB-hoz
+> * Megtanultuk, hogyan lehet lekérdezni a Cosmos DB API-ját a MongoDB-hez
 
 Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 

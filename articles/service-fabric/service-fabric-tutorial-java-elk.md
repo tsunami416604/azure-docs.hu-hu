@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazások figyelése a Service Fabricben az ELK használatával az Azure-ban
+title: Alkalmazások monitorozása Service Fabric az Azure-ban a ELK használatával
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthatja be az ELK-t és monitorozhatja Service Fabric-alkalmazásait.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376658"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
@@ -42,7 +42,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
-Ha nem az [oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md)építette fel a szavazási mintaalkalmazást, letöltheti azt. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
+Ha nem a [jelen oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md)a szavazási minta alkalmazást használta, letöltheti azt. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -140,7 +140,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Hozzáférés a Kibana irányítópulton **a http:\//SERVER-IP címen,** és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
+8. Nyissa meg a Kibana irányítópultját a **http:\//Server-IP** címen, és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

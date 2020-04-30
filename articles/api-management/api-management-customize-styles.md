@@ -1,5 +1,5 @@
 ---
-title: Lapstílus testreszabása az API Management örökölt fejlesztői portálján
+title: Az oldal stílusainak testreszabása API Management örökölt fejlesztői portálon
 titleSuffix: Azure API Management
 description: Ennek a rövid útmutatónak a lépéseit követve szabhatja testre az elemek stílusát az Azure API Management fejlesztői portálon.
 services: api-management
@@ -15,21 +15,21 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75430729"
 ---
-# <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál lapjaistílus ának testreszabása
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalai stílusának testreszabása
 
-A fejlesztői portál testreszabásának három leggyakoribb módja van az Azure API Management ben:
+A fejlesztői portál testreszabásának három leggyakoribb módja van az Azure API Managementban:
  
 * [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése](api-management-modify-content-layout.md)
 * A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése (részletesen ebben az útmutatóban)
 * [A portál által létrehozott oldalakhoz használt sablonok módosítása](api-management-developer-portal-templates.md) (például API-dokumentáció, termékek vagy felhasználói hitelesítés)
 
-Ebből a cikkből megtudhatja, hogyan szabhatja testre az örökölt **fejlesztői** portál oldalain található elemek stílusát, és hogyan tekintheti meg a módosításokat.
+Ebből a cikkből megtudhatja, hogyan szabhatja testre az elemek stílusát az örökölt **fejlesztői** portál oldalain, és megtekintheti a módosításokat.
 
 ![stílus testreszabása](./media/modify-developer-portal-style/developer_portal.png)
 
@@ -46,7 +46,7 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az örökölt **fejleszt�
 ## <a name="customize-the-developer-portal"></a>A fejlesztői portál testreszabása
 
 1. Válassza az **Áttekintés** lehetőséget.
-2. Kattintson a **Fejlesztői portál (örökölt)** gombra az **Áttekintés** ablak tetején.
+2. Kattintson a **fejlesztői portál (örökölt)** gombra az **Áttekintés** ablak tetején.
 3. A képernyő bal felső részén egy két ecsetet ábrázoló ikon látható. Vigye a mutatót az ikon fölé a portál testreszabási menüjének megnyitásához.
 
     ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -55,11 +55,11 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az örökölt **fejleszt�
     A **Stílusok** panellel testre szabható összes elem megjelenik az oldalon.
 5. Írja be a „headings-color” (fejléc színe) kifejezést a **Változó értékeinek módosítása a fejlesztői portál megjelenésének testreszabásához:** mezőbe.
 
-    A ** \@címsorok színe** elem jelenik meg az oldalon. Ez a változó szabályozza a szöveg színét.
+    A ** \@fejlécek – szín** elem jelenik meg az oldalon. Ez a változó szabályozza a szöveg színét.
 
     ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kattintson a mezőre a ** \@címsorok-szín** változó. 
+6. Kattintson a ** \@fejlécek-Color** változó mezőre. 
     
     Megjelenik a színválasztó legördülő menü.
 7. A színválasztó legördülő menüben válassza ki az új színt.
@@ -72,7 +72,7 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az örökölt **fejleszt�
 
 ## <a name="view-your-change"></a>A módosítások megtekintése
 
-1. Keresse meg a fejlesztői portált.
+1. Navigáljon a fejlesztői portálra.
 2. Itt megtekintheti a végrehajtott módosításokat.
 
 ## <a name="next-steps"></a>További lépések

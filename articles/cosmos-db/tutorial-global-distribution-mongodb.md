@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a globális disztribúció beállításához a MongoDB-hoz az Azure Cosmos DB API-val
-description: Ismerje meg, hogyan állíthatja be a globális disztribúciót az Azure Cosmos DB MongoDB API-jával.
+title: Oktatóanyag a globális terjesztés beállításához a MongoDB Azure Cosmos DB API-val
+description: Ismerje meg, hogyan állíthatja be a globális terjesztést a MongoDB-hez készült Azure Cosmos DB API-val.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,26 +9,26 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444670"
 ---
-# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Globális elosztott adatbázis beállítása az Azure Cosmos DB MongoDB API-jával
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Globálisan elosztott adatbázis beállítása a MongoDB-hez készült Azure Cosmos DB API-val
 
-Ebben a cikkben bemutatjuk, hogyan használhatja az Azure Portalon egy globális elosztott adatbázis beállításához, és csatlakozzon hozzá az Azure Cosmos DB MongoDB API-jával.
+Ebben a cikkben bemutatjuk, hogyan használható a Azure Portal egy globálisan elosztott adatbázis beállításához és a hozzá való kapcsolódáshoz Azure Cosmos DB API-MongoDB használatával.
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
 > * Globális terjesztés konfigurálása az Azure Portallal
-> * Globális disztribúció konfigurálása az [Azure Cosmos DB MongoDB API-jával](mongodb-introduction.md)
+> * A globális terjesztés konfigurálása a [Azure Cosmos db API-MongoDB](mongodb-introduction.md) használatával
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup"></a>A területi beállítás ellenőrzése 
-A Cosmos DB MongoDB API-jával egyszerűen ellenőrizheti a globális konfigurációt, ha futtatja az *isMaster()* parancsot a Mongo Shellből.
+A MongoDB Cosmos DB API-jával való globális konfigurációjának egyszerű módja, ha a Mongo-rendszerhéjból futtatja a *isMaster ()* parancsot.
 
 A Mongo parancskörnyezetben:
 
@@ -62,9 +62,9 @@ Példa eredmények:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region"></a>Csatlakozás előnyben részesített régióhoz 
+## <a name="connecting-to-a-preferred-region"></a>Csatlakozás egy előnyben részesített régióhoz 
 
-Az Azure Cosmos DB MongoDB API-ja lehetővé teszi, hogy megadja a gyűjtemény olvasási preferenciáját egy globálisan elosztott adatbázishoz. Az alacsony olvasási késés és a globálisan magas rendelkezésre állás esetében egyaránt azt javasoljuk, hogy a gyűjtemény olvasási beállítását a *legközelebbi* értékre konfigurálja. A *legközelebbi* olvasási beállítás úgy van konfigurálva, hogy a legközelebb eső régióból olvasson.
+A Azure Cosmos DB API-MongoDB lehetővé teszi, hogy a gyűjtemény olvasási beállításait egy globálisan elosztott adatbázishoz adja meg. Az alacsony olvasási késés és a globálisan magas rendelkezésre állás esetében egyaránt azt javasoljuk, hogy a gyűjtemény olvasási beállítását a *legközelebbi* értékre konfigurálja. A *legközelebbi* olvasási beállítás úgy van konfigurálva, hogy a legközelebb eső régióból olvasson.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -94,9 +94,9 @@ Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
 > * Globális terjesztés konfigurálása az Azure Portallal
-> * Globális disztribúció konfigurálása a Cosmos DB MongoDB API-jával
+> * A globális terjesztés konfigurálása a Cosmos DB API-MongoDB használatával
 
 Továbbléphet a következő oktatóanyagra, amelyből megtudhatja, hogyan fejleszthet helyileg az Azure Cosmos DB helyi emulátorával.
 
 > [!div class="nextstepaction"]
-> [Helyi fejlesztés az Azure Cosmos DB emulátorral](local-emulator.md)
+> [Helyi fejlesztés a Azure Cosmos DB emulátorral](local-emulator.md)

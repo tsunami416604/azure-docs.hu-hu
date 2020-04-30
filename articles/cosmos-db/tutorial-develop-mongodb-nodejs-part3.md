@@ -1,5 +1,5 @@
 ---
-title: Hozza létre az Angular alkalmazás felhasználói felületét az Azure Cosmos DB MongoDB API-jával (3. rész)
+title: A szögletes alkalmazás felhasználói felületének létrehozása Azure Cosmos DB API-MongoDB (part3)
 description: A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444747"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Hozzon létre egy Szögletes alkalmazást az Azure Cosmos DB MongoDB-hoz való API-jával – A felhasználói felület létrehozása az Angular segítségével
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a felhasználói felület felépítése szögletes
 
-Ez a több részes oktatóanyag bemutatja, hogyan hozhat létre egy új alkalmazást a Node.js nyelven express és angular nyelven, majd csatlakoztassa a [Cosmos-fiókhoz, amely a Cosmos DB MongoDB API-jával van konfigurálva.](mongodb-introduction.md)
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
 
 Az oktatóanyag 3. része a [2. részre](tutorial-develop-mongodb-nodejs-part2.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -416,7 +416,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 2. A Visual Studio Code-ban váltson vissza a **heroes.components.ts** fájlra. Láthatja, hogy a `constructor(private heroService: HeroService) {}` sorban (13. sor), a `HeroService` egy piros vonallal alá van húzva. Kattintson a `HeroService` elemre, és a kódblokk bal oldalán megjelenik a villanykörte ikon. Kattintson a villanykörtére, majd a **HeroService importálása a „./hero.service” fájlból** vagy a **HeroService importálása az „app/hero.service” fájlból** lehetőségre.
 
-    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. A 2. sornak így kell kinéznie:
+    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sor a/app/Hero.Service mappára hivatkozik, módosítsa úgy, hogy az a helyi mappából (./Hero.Service) hivatkozik a Hero-fájlra. A 2. sornak így kell kinéznie:
     
     ```javascript
     import { HeroService } from "./hero.service"

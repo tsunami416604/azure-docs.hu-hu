@@ -9,19 +9,19 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: ab6e3426096f6fbaf7dfa44984a26c939f3b91fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971809"
 ---
-A rendszer által hozzárendelt felügyelt identitás engedélyezése egy kattintással elérhető. Engedélyezheti azt egy virtuális gép létrehozása során, vagy egy meglévő virtuális gép tulajdonságaiban.
+A rendszer által hozzárendelt felügyelt identitás engedélyezése egykattintásos élmény. A virtuális gép létrehozásakor vagy egy meglévő virtuális gép tulajdonságaiban is engedélyezheti.
 
 ![Új tárfiók létrehozása](./media/active-directory-msi-tut-enable/identity.png)
 
 
-**A rendszer által hozzárendelt felügyelt identitás engedélyezése egy új virtuális számítógépen:** 
+**Rendszerhez rendelt felügyelt identitás engedélyezése új virtuális gépen:** 
 
-1. [Bejelentkezés az Azure Portalra](https://portal.azure.com)
+1. [Bejelentkezés Azure Portal](https://portal.azure.com)
 
-2. [Virtuális gép létrehozása rendszeráltal kijelölt identitással engedélyezve](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)
+2. [Virtuális gép létrehozása rendszer által hozzárendelt identitással](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: IoT-eszközterület figyelése – Azure Digital Twins| Microsoft dokumentumok'
-description: Ismerje meg, hogyan építheti ki a térbeli erőforrásokat, és figyelheti a munkakörülményeket az Azure Digital Twins segítségével az oktatóanyag lépései vel.
+title: 'Oktatóanyag: IoT-eszköz tárhelyének figyelése – Azure digitális Twins | Microsoft Docs'
+description: Ismerje meg, hogyan hozhatja létre a térbeli erőforrásokat, és hogyan figyelheti meg a munkafeltételeket az Azure digitális Twins szolgáltatásban az oktatóanyag lépéseivel.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -10,59 +10,59 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75895367"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: Az azure digital twins előzetes verzióval kiépítheti az épületet és figyelheti a munkakörülményeket
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: az Azure Digital Twins előzetes verziójának kiépítése és a munkafeltételek monitorozása
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Digital Twins Preview-t a kívánt hőmérsékleti feltételek és komfortszint figyeléséhez. A [mintaépület konfigurálása](tutorial-facilities-setup.md)után kiépítheti az épületet, és egyéni függvényeket futtathat az érzékelő adatokon az oktatóanyag lépései vel.
+Ez az oktatóanyag azt mutatja be, hogyan használható az Azure Digital Twins Preview a szóközök a kívánt hőmérsékleti feltételek és a komfort szintjének figyeléséhez. A [minta-összeállítás konfigurálása](tutorial-facilities-setup.md)után kiépítheti az összeállítást, és egyéni függvényeket futtathat az érzékelők adatain az oktatóanyag lépéseinek használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Adja meg a figyelni ezeket a feltételeket.
-> * Felhasználó által definiált függvény (UDF) létrehozása.
-> * Érzékelőadatok szimulálása.
-> * A felhasználó által definiált függvény eredményeinek beszerezése.
+> * Határozza meg a figyelni kívánt feltételeket.
+> * Hozzon létre egy felhasználó által definiált függvényt (UDF).
+> * Az érzékelőre vonatkozó adatszimulálás
+> * Felhasználó által definiált függvény eredményeinek beolvasása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy [befejezte az Azure Digital Twins beállítását.](tutorial-facilities-setup.md) Mielőtt továbblépne, győződjön meg arról, hogy rendelkezik a következőkkel:
+Ez az oktatóanyag feltételezi, hogy [befejezte az Azure digitális Twins-telepítőjét](tutorial-facilities-setup.md). Mielőtt továbblépne, győződjön meg arról, hogy rendelkezik a következőkkel:
 
 - Egy [Azure-fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy futó Digital Twins-példány. 
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp). 
-- [A .NET Core SDK 2.1.403-as vagy újabb verziója](https://www.microsoft.com/net/download) a fejlesztőgépen a minta létrehozásához és futtatásához. Futtassa `dotnet --version` a megfelelő verzió telepítésének ellenőrzéséhez. 
+- [.Net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen a minta létrehozásához és futtatásához. A `dotnet --version` futtatásával ellenőrizze, hogy a megfelelő verzió van-e telepítve. 
 - [Visual Studio Code](https://code.visualstudio.com/) a mintakód vizsgálatához. 
 
 >[!TIP]
-> Használjon egy egyedi digital Twins-példány nevét, ha új példányt létesít.
+> Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
 
 ## <a name="define-conditions-to-monitor"></a>A monitorozni kívánt feltételek meghatározása
 
-Megadhatja az eszköz vagy az érzékelő adatainak figyelésére vonatkozó meghatározott feltételeket, *amelyeket matchers-nek neveznek.* Ezután megadhatja *a felhasználó által definiált függvényeknek nevezett függvényeket.* A felhasználó által definiált függvények egyéni logikát hajtanak végre a terekből és eszközökből származó adatokon, amikor a matchers által meghatározott feltételek bekövetkeznek. További információ: [Adatfeldolgozás és felhasználó által definiált függvények.](concepts-user-defined-functions.md) 
+Megadhatja az eszközön vagy az érzékelőn belüli figyeléshez megadott feltételek meghatározott feltételeit *.* Ezután megadhatja a függvények *felhasználó által definiált függvények*nevű függvényét. A felhasználó által definiált függvények egyéni logikát hajtanak végre a szóközökből és eszközökből származó adatokon, ha az egyeztetések által megadott feltételek történnek. További információért olvassa el az [adatfeldolgozás és a felhasználó által definiált függvények](concepts-user-defined-functions.md)című témakört. 
 
-Az **occupancy-quickstart** mintaprojektben nyissa meg az **src\actions\provisionSample.yaml** nevű fájlt a Visual Studio Code-ban. Figyelje meg a **megfeleltetők** típussal kezdődő szakaszt. Az ilyen típusú bejegyzések minden ilyen típusú egyeztetőt hoznak létre a megadott **névvel.** A matcher **egy dataTypeValue**típusú érzékelőt figyel. Figyelje meg, hogyan kapcsolódik a *Focus Room A1*nevű területhez, amely néhány érzékelőt tartalmazó **eszközcsomóval** rendelkezik. Ha olyan egyezőgépet szeretne kiépíteni, amely nyomon követi az egyik ilyen érzékelőt, győződjön meg arról, hogy az **dataTypeValue** értéke megegyezik az érzékelő **dataType**értékével. 
+Az **occupancy-quickstart** mintaprojektben nyissa meg az **src\actions\provisionSample.yaml** nevű fájlt a Visual Studio Code-ban. Figyelje meg a **megfeleltetők** típussal kezdődő szakaszt. Az ebbe a típusba tartozó minden bejegyzés egy Matcher hoz létre a megadott **névvel**. A Matcher **dataTypeValue**típusú érzékelőt fog figyelni. Figyelje meg, hogy az a *Focus Room a1*nevű területhez kapcsolódik, amely tartalmaz néhány érzékelőt tartalmazó **eszközök** csomópontot. Egy olyan Matcher kiépítéséhez, amely ezen érzékelők valamelyikét nyomon fogja követni, győződjön meg arról, hogy a **dataTypeValue** megfelel az érzékelő **adattípusának**. 
 
-Adja hozzá a következő matcher alatt a meglévő matchers. Győződjön meg arról, hogy a billentyűk egy vonalban vannak, és a szóközöket nem cserélik le a tabulátorok. Ezek a sorok is szerepelnek a *provisionSample.yaml* fájlban megjegyzéssel kiadott sorokként. A megjegyzéshez fűzött megjegyzés `#` nélkül eltávolíthatja az egyes sorok előtti karaktert.
+Adja hozzá a következő Matcher a meglévő egyeztetések alatt. Ügyeljen arra, hogy a kulcsok összhangban legyenek, és a szóközök ne legyenek lecserélve tabulátorokra. Ezek a sorok a *provisionSample. YAML* fájlban is szerepelnek megjegyzésekkel ellátható sorokban. Az egyes sorok előtt a karakter eltávolításával `#` törölheti a megjegyzéseket.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Ez a matcher `SAMPLE_SENSOR_TEMPERATURE` nyomon követi az érzékelő, hogy a hozzáadott [az első bemutató](tutorial-facilities-setup.md). 
+Ez a Matcher fogja követni `SAMPLE_SENSOR_TEMPERATURE` az [első oktatóanyagban](tutorial-facilities-setup.md)hozzáadott érzékelőt. 
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
-A felhasználó által definiált függvények segítségével testreszabhatja az érzékelő adatok feldolgozását. Ezek egyéni JavaScript-kódok, amelyek az Azure Digital Twins-példányon belül futtathatók, ha a matchers által leírt meghatározott feltételek lépnek fel. Mindegyik monitorozni kívánt érzékelőhöz létrehozhat megfeleltetőket és felhasználó által meghatározott függvényeket. További információ: [Adatfeldolgozás és felhasználó által definiált függvények.](concepts-user-defined-functions.md) 
+A felhasználó által definiált függvények segítségével testre szabhatja az érzékelők adatainak feldolgozását. Egyéni JavaScript-kódok, amelyek az Azure Digital Twins-példányon futtathatók, ha az egyeztetések által leírtak szerint meghatározott feltételek történnek. Mindegyik monitorozni kívánt érzékelőhöz létrehozhat megfeleltetőket és felhasználó által meghatározott függvényeket. További információért olvassa el az [adatfeldolgozás és a felhasználó által definiált függvények](concepts-user-defined-functions.md)című témakört. 
 
-A *mintaprovisionSample.yaml* fájlban keressen egy olyan **szakaszt, amely a userdefinedfunctions**típussal kezdődik. Ez a szakasz egy felhasználó által definiált függvényt határoz meg egy adott **névvel.** Ez az UDF a **matcherNames**alatt lévő egyeztetők listáján szerepel. Figyelje meg, hogy megadhatja **szkriptként** a saját JavaScript-fájlját a felhasználó által meghatározott függvényhez.
+A minta *provisionSample. YAML* fájlban keressen egy olyan szakaszt, amely a **userdefinedfunctions**típussal kezdődik. Ez a szakasz egy felhasználó által definiált függvényt foglal le egy adott **névvel**. Ez az UDF a **matcherNames**alatti egyezések listáján működik. Figyelje meg, hogy megadhatja **szkriptként** a saját JavaScript-fájlját a felhasználó által meghatározott függvényhez.
 
-A **roleassignments** nevű szakaszt is figyelje meg. A Helykezelő szerepkört a felhasználó által definiált függvényhez rendeli. Ez a szerepkör lehetővé teszi, hogy a kiosztott terek bármelyikéből származó események eléréséhez. 
+A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület rendszergazdai szerepkört a felhasználó által definiált függvényhez. Ez a szerepkör lehetővé teszi az informatikai részleg számára a kiépített szóközökből származó események elérését. 
 
 1. Konfigurálja úgy az UDF-et, hogy tartalmazza a hőmérséklet-megfeleltetőt. Ehhez adja hozzá az alábbi sort, vagy távolítsa el a megjegyzést az alábbi sorból a *provisionSample.yaml* fájl `matcherNames` csomópontjában:
 
@@ -70,12 +70,12 @@ A **roleassignments** nevű szakaszt is figyelje meg. A Helykezelő szerepkört 
             - Matcher Temperature
     ```
 
-1. Nyissa meg az **src\actions\userDefinedFunctions\availability.js** fájlt a szerkesztőben. Ez a *provisionSample.yaml* **parancsfájlelemben** hivatkozott fájl. A felhasználó által definiált funkció ebben a fájlban keresi a feltételeket, amikor nem mutat nak ki mozgást a szobában, és a szén-dioxid szintje 1000 ppm alatt van. 
+1. Nyissa meg az **src\actions\userDefinedFunctions\availability.js** fájlt a szerkesztőben. Ez az *provisionSample. YAML* **parancsfájl** elemében hivatkozott fájl. A fájl felhasználó által definiált funkciója olyan feltételeket keres, amikor a helyiségben nem észlelhető mozgás, és a szén-dioxid szintje 1 000 ppm alá esik. 
 
-   Módosítsa a JavaScript-fájlt a hőmérséklet és egyéb feltételek figyeléséhez. Add hozzá a következő kódsorokat, hogy megkeressük azokat a körülményeket, amikor a helyiségben nem észlelnek mozgást, a szén-dioxid szintje 1000 ppm alatt van, és a hőmérséklet 78 Fahrenheit fok alatt van.
+   Módosítsa a JavaScript-fájlt a hőmérséklet és más feltételek figyelésére. Adja hozzá a következő sornyi kódot a feltételek megkereséséhez, ha a helyiségben nem észlelhető mozgás, a szén-dioxid szintje 1 000 ppm, és a hőmérséklet a 78 fokos Fahrenheit-fok alá esik.
 
    >[!NOTE]
-   > Ez a szakasz módosítja a fájlt *src\actions\userDefinedFunctions\availability.js,* így részletesen megismerheti a felhasználó által definiált függvény írását. Azonban közvetlenül használhatja a [fájlt src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) a telepítésben. Ebben a fájlban szerepel az oktatóanyaghoz szükséges összes módosítás. Ha ezt a fájlt használja helyette, győződjön meg arról, hogy a **parancsfájlkulcs** megfelelő fájlnevét használja az [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)fájlban.
+   > Ez a szakasz módosítja a *src\actions\userDefinedFunctions\availability.js* fájlt, így részletesen megismerheti egy felhasználó által definiált függvény írására szolgáló módszert. Azonban dönthet úgy is, hogy közvetlenül a telepítőben használja a [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) fájlt. Ebben a fájlban szerepel az oktatóanyaghoz szükséges összes módosítás. Ha ehelyett ezt a fájlt használja, ügyeljen arra, hogy a [src\actions\provisionSample.YAML](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)a **parancsfájlhoz** a megfelelő fájlnevet használja.
 
     a. A fájl elején adja hozzá a következő sorokat a hőmérséklethez az `// Add your sensor type here` megjegyzés alá:
 
@@ -84,7 +84,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. A Helykezelő szerepkört 
         var temperatureThreshold = 78;
     ```
 
-    b. A megjegyzést a megjegyzés alá `var motionSensor`kell adni `// Add your sensor variable here`a következő sorokat a megjegyzést meghatározó utasítás után:
+    b. Adja hozzá a következő sorokat a Megjegyzés `var motionSensor` `// Add your sensor variable here`alá tartozó utasítás után:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -92,7 +92,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. A Helykezelő szerepkört 
         });
     ```
 
-    c. A megjegyzést a megjegyzés alá `var carbonDioxideValue`kell adni `// Add your sensor latest value here`a következő sort a megjegyzést meghatározó utasítás után:
+    c. Adja hozzá a következő sort a Megjegyzés `var carbonDioxideValue` `// Add your sensor latest value here`alá tartozó utasítás után:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -172,29 +172,29 @@ A **roleassignments** nevű szakaszt is figyelje meg. A Helykezelő szerepkört 
 
     g. Mentse a fájlt.
 
-1. Nyisson meg egy parancsablakot, és lépjen a mappa **kihasználtsága\src mappára.** Futtassa a következő parancsot a térintelligencia-grafikon és a felhasználó által definiált függvény kiépítéséhez:
+1. Nyisson meg egy parancssorablakot, és lépjen a **Occupancy-quickstart\src**mappába. Futtassa a következő parancsot a térbeli intelligencia gráf és a felhasználó által definiált függvény kiépítéséhez:
 
     ```cmd/sh
     dotnet run ProvisionSample
     ```
 
    >[!IMPORTANT]
-   > A Digital Twins Management API-hoz való jogosulatlan hozzáférés megakadályozása érdekében a **kihasználtsági gyorsindítási** alkalmazás megköveteli, hogy az Azure-fiók hitelesítő adataival jelentkezzen be. Rövid időre menti a hitelesítő adatokat, így előfordulhat, hogy nem kell minden alkalommal bejelentkeznie, amikor futtatja. A program első futtatásakor, és amikor a mentett hitelesítő adatok lejárnak, az alkalmazás egy bejelentkezési lapra irányítja, és egy munkamenet-specifikus kódot ad meg az adott oldalon. Az utasításokat követve jelentkezzen be Azure-fiókjával.
+   > Ha meg szeretné akadályozni, hogy a digitális Twins felügyeleti API jogosulatlanul hozzáférhessen, a **foglalást** kérő alkalmazás használatához be kell jelentkeznie az Azure-fiók hitelesítő adataival. Egy rövid ideig elmenti a hitelesítő adatait, így előfordulhat, hogy nem kell minden egyes futtatásakor bejelentkeznie. A program első futtatásakor, amikor a mentett hitelesítő adatok lejárnak, az alkalmazás egy bejelentkezési oldalra irányítja, és egy munkamenet-specifikus kódot ad meg az adott oldalon. Az utasításokat követve jelentkezzen be Azure-fiókjával.
 
-1. A fiók hitelesítése után az alkalmazás megkezdi egy minta térbeli grafikon létrehozását *az provisionSample.yaml*konfigurálva. Várjon, amíg a kiépítés befejeződik. Beletelik pár percbe. Ezután figyelje meg az üzeneteket a parancsablakban, és figyelje meg, hogyan jön létre a térbeli grafikon. Figyelje meg, hogy az alkalmazás hogyan hoz `Venue`létre egy IoT-központot a gyökércsomóponton vagy a .
+1. A fiók hitelesítése után az alkalmazás megkezdi a *provisionSample. YAML*-ben konfigurált minta térbeli gráf létrehozását. Várjon, amíg befejeződik a kiépítés. Néhány percet is igénybe vehet. Ezután figyelje meg az üzeneteket a parancsablakban, és figyelje meg, hogyan jött létre a térbeli gráf. Figyelje meg, hogy az alkalmazás hogyan hoz létre egy IoT hubot a legfelső szintű csomóponton vagy a `Venue`-ben.
 
-1. A parancsablak kimenetéből `ConnectionString`másolja a szakasz `Devices` alatti értéket a vágólapra. Erre az értékre szüksége lesz az eszközkapcsolat szimulálásához a következő szakaszban.
+1. A parancs ablakában lévő kimenetből másolja a `ConnectionString`következőt a vágólapra a `Devices` szakasz alatt:. Erre az értékre szüksége lesz az eszköz kapcsolódásának szimulálása érdekében a következő szakaszban.
 
-    [![Rendelkezési minta](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [![Minta kiépítése](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 >[!TIP]
-> Ha a kiépítés közepén a "Az I/O-művelet szálkilépés vagy alkalmazáskérelem miatt" parancshoz hasonló hibaüzenet jelenik meg, próbálja meg újra futtatni a parancsot. Ez akkor fordulhat elő, ha a HTTP-ügyfél időbeli egy hálózati probléma miatt időzít.
+> Ha a kiépítés során egy szál kilépése vagy egy alkalmazásra vonatkozó kérelem miatt megszakadt az I/O-művelethez hasonló hibaüzenet, próbálkozzon újra a parancs futtatásával. Ez akkor fordulhat elő, ha a HTTP-ügyfél hálózati hiba esetén időtúllépést okoz.
 
 ## <a name="simulate-sensor-data"></a>Az érzékelőadatok szimulálása
 
-Ebben a szakaszban a mintában az *eszközkapcsolat* nevű projektet fogja használni. Az érzékelők adatait szimulálja a mozgás, a hőmérséklet és a szén-dioxid érzékelésére. Ez a projekt véletlenszerű értéket állít elő az érzékelők számára, és az eszköz kapcsolati sztringjével elküldi őket az IoT Hubnak.
+Ebben a szakaszban az *eszköz-kapcsolat* nevű projektet fogja használni a mintában. A mozgás, a hőmérséklet és a szén-dioxid észleléséhez szimulálnia kell az érzékelőt. Ez a projekt véletlenszerű értéket állít elő az érzékelők számára, és az eszköz kapcsolati sztringjével elküldi őket az IoT Hubnak.
 
-1. Egy külön parancsablakban nyissa meg az Azure Digital Twins mintát, majd az **eszköz-kapcsolat** mappát.
+1. Egy külön parancssorablakban nyissa meg az Azure Digital Twins mintát, majd az **eszköz-kapcsolat** mappát.
 
 1. Futtassa ezt a parancsot annak ellenőrzéséhez, hogy helyesek-e a projekt függőségei:
 
@@ -202,13 +202,13 @@ Ebben a szakaszban a mintában az *eszközkapcsolat* nevű projektet fogja haszn
     dotnet restore
     ```
 
-1. Nyissa meg az [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) fájlt a szerkesztőben, és szerkesztse a következő értékeket:
+1. Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) fájlt a szerkesztőben, és szerkessze a következő értékeket:
 
-   a. **DeviceConnectionString**: Rendelje hozzá a `ConnectionString` értékét az előző szakasz kimeneti ablakából. Másolja ezt a karakterláncot teljesen az idézőjelek között, így a szimulátor megfelelően csatlakozhat az IoT hubhoz.
+   a. **DeviceConnectionString**: Rendelje hozzá a `ConnectionString` értékét az előző szakasz kimeneti ablakából. Másolja a karakterláncot teljes egészében az idézőjelek között, hogy a szimulátor megfelelően kapcsolódjon az IoT hub-hoz.
 
-   b. **HardwareId** a **érzékelők** tömbön belül: Mivel az Azure Digital Twins-példányra kiépített érzékelők eseményeit szimulálja, a hardverazonosítónak és `sensors` a fájlban lévő érzékelők nevének meg kell egyeznie a *provisionSample.yaml* fájl csomópontjával.
+   b. **HardwareId** az **érzékelők** tömbön belül: mivel az Azure Digital Twins-példányra kiépített érzékelőkből származó eseményeket szimulál, a FÁJLBAN szereplő hardver-azonosítónak és az érzékelők nevének meg kell egyeznie `sensors` a *provisionSample. YAML* fájl csomópontjához.
 
-      Adjon hozzá egy új bejegyzést a hőmérséklet-érzékelőhöz. Az *appsettings.json* **érzékelőcsomópontja** a következőhöz hasonlóan néz ki:
+      Adjon hozzá egy új bejegyzést a hőmérséklet-érzékelőhöz. A *appSettings. JSON* **érzékelők** csomópontjának a következőhöz hasonlóan kell kinéznie:
 
       ```JSON
       "Sensors": [{
@@ -230,13 +230,13 @@ Ebben a szakaszban a mintában az *eszközkapcsolat* nevű projektet fogja haszn
     ```
 
    >[!NOTE]
-   > Mivel a szimulációs minta nem kommunikál közvetlenül a digitális twins-példány, nem igényel hitelesítést.
+   > Mivel a szimulációs minta nem kommunikál közvetlenül a digitális Twins-példánnyal, nem szükséges hitelesítenie.
 
-## <a name="get-results-of-the-user-defined-function"></a>A felhasználó által definiált függvény eredményeinek beszerezése
+## <a name="get-results-of-the-user-defined-function"></a>A felhasználó által definiált függvény eredményeinek beolvasása
 
-A felhasználó által meghatározott függvény mindig fut, amikor a példány eszköz- és érzékelőadatokat fogad. Ez a szakasz lekérdezi az Azure digital Twins-példányt a felhasználó által definiált függvény eredményeinek lekérdezi. Majd értesíti a közel valós időben, ha egy szoba áll rendelkezésre, hogy a levegő friss és a hőmérséklet megfelelő. 
+A felhasználó által meghatározott függvény mindig fut, amikor a példány eszköz- és érzékelőadatokat fogad. Ez a szakasz lekérdezi az Azure Digital Twins-példányt, hogy beolvassa a felhasználó által definiált függvény eredményét. Közel valós időben értesítjük, ha rendelkezésre áll egy helyiség, hogy a levegő friss, a hőmérséklet pedig megfelelő. 
 
-1. Nyissa meg a minta vagy egy új parancsablak kiépítéséhez használt parancsablakot, és nyissa meg újra a minta **kihasználtsági gyorsstart\src** mappáját.
+1. Nyissa meg a minta kiépítéséhez használt parancssorablakot vagy egy új parancssorablakot, és lépjen a minta **Occupancy-quickstart\src** mappájába.
 
 1. Futtassa a következő parancsot, és jelentkezzen be, amikor a rendszer kéri:
 
@@ -244,26 +244,26 @@ A felhasználó által meghatározott függvény mindig fut, amikor a példány 
     dotnet run GetAvailableAndFreshSpaces
     ```
 
-A kimeneti ablak azt mutatja be, hogy a felhasználó által definiált függvény hogyan fut, és elfogja az eseményeket az eszközszimulációból. 
+A kimenet ablakban látható, hogy a felhasználó által definiált függvény hogyan fut, és az eszköz szimulációjában eseményeket észlel. 
 
    [![Az UDF kimenete](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
-Ha a figyelt feltétel teljesül, a felhasználó által definiált függvény a megfelelő üzenettel állítja be a tér értékét, ahogy [azt korábban](#create-a-user-defined-function)láttuk. A `GetAvailableAndFreshSpaces` függvény kinyomtatja az üzenetet a konzolon.
+Ha a figyelt feltétel teljesül, a felhasználó által definiált függvény megadja a terület értékét a megfelelő üzenettel, ahogy [korábban](#create-a-user-defined-function)láttuk. A `GetAvailableAndFreshSpaces` függvény kiírja az üzenetet a-konzolon.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezen a ponton le szeretné állítani az Azure Digital Twins felfedezését, nyugodtan törölje az oktatóanyagban létrehozott erőforrásokat:
+Ha ezen a ponton szeretné leállítani az Azure digitális Twins felfedezését, nyugodtan törölheti az ebben az oktatóanyagban létrehozott erőforrásokat:
 
-1. Az [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza az **Összes erőforrás**lehetőséget, válassza ki a Digitális Twins erőforráscsoportot, és válassza a **Törlés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins-erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
     >[!TIP]
-    > Ha problémát tapasztalt a Digitális Twins-példány törlésekor, a javítással egy szolgáltatásfrissítés lett elvezetve. Próbálja meg újra kihagyni a példányt.
+    > Ha hibát észlelt a digitális Twins-példány törlésével kapcsolatban, a javítás a szolgáltatásban frissült. Próbálkozzon újra a példány törlésével.
 
-2. Szükség esetén törölje a mintaalkalmazásokat a munkagépről.
+2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy kiépítette a tereket, és létrehozott egy keretrendszert az egyéni értesítések indításához, az alábbi oktatóanyagok egyikét teheti meg:
+Most, hogy kiépítte a tárhelyeit, és létrehozott egy keretrendszert az egyéni értesítések elindításához, az alábbi oktatóanyagok egyikét használhatja:
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Értesítések fogadása az Azure Digital Twins-terektől a Logic Apps használatával](tutorial-facilities-events.md)

@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75752282"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Globális adatbázis-régiók hozzáadása az Azure Portal használatával
-Az Azure Cosmos DB világszerte az Azure összes [régiójában][azureregions] elérhető. Miután kiválasztotta az adatbázisfiók alapértelmezett konzisztenciaszintjét, egy vagy több régiót társíthat hozzá (a választott alapértelmezett konzisztenciaszinttől és a globális terjesztés szükségleteitől függően).
+A Azure Cosmos DB világszerte minden [Azure-régióban][azureregions] elérhető. Miután kiválasztotta az adatbázisfiók alapértelmezett konzisztenciaszintjét, egy vagy több régiót társíthat hozzá (a választott alapértelmezett konzisztenciaszinttől és a globális terjesztés szükségleteitől függően).
 
 1. Az [Azure Portalon](https://portal.azure.com/) a bal oldali sávon kattintson az **Azure Cosmos DB** lehetőségre.
 2. Az **Azure Cosmos DB** oldalon válassza ki a módosítandó adatbázis-fiókot.

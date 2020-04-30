@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Fürtök létrehozásához használja az Azure Automation-runbookokat – Azure HDInsight'
-description: Ismerje meg, hogyan hozhat létre és törölhet Azure HDInsight-fürtöket a felhőben futó parancsfájlokkal az Azure Automation runbookjaival.
+title: 'Oktatóanyag: fürtök létrehozása Azure Automation runbookok használatával – Azure HDInsight'
+description: Megtudhatja, hogyan hozhat létre és törölhet Azure HDInsight-fürtöket a felhőben futó parancsfájlokkal Azure Automation runbookok használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,77 +9,77 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75553512"
 ---
-# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Oktatóanyag: Azure HDInsight-fürtök létrehozása az Azure Automation segítségével
+# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Oktatóanyag: Azure HDInsight-fürtök létrehozása Azure Automation
 
-Az Azure Automation lehetővé teszi, hogy olyan parancsfájlokat hozzon létre, amelyek a felhőben futnak, és igény szerint vagy ütemezés alapján kezelik az Azure-erőforrásokat. Ez a cikk ismerteti, hogyan hozhat létre PowerShell runbookok létrehozása és törlése Azure HDInsight-fürtök.
+Azure Automation lehetővé teszi a felhőben futó parancsfájlok létrehozását, illetve az Azure-erőforrások igény szerinti felügyeletét, vagy ütemezés alapján. Ez a cikk bemutatja, hogyan hozhat létre és törölhet PowerShell-runbookok Azure HDInsight-fürtök létrehozásához és törléséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A HDInsight-mal való együttműködéshez szükséges modulok telepítése.
+> * Telepítse a HDInsight való interakcióhoz szükséges modulokat.
 > * A fürt létrehozása során szükséges hitelesítő adatok létrehozása és tárolása.
-> * Hozzon létre egy új Azure Automation-runbookot egy HDInsight-fürt létrehozásához.
+> * Hozzon létre egy új Azure Automation runbook egy HDInsight-fürt létrehozásához.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy meglévő [Azure Automation-fiók.](../automation/automation-quickstart-create-account.md)
-* Egy meglévő [Azure Storage-fiók](../storage/common/storage-account-create.md), amely fürttárolóként lesz használva.
+* Egy meglévő [Azure Automation-fiók](../automation/automation-quickstart-create-account.md).
+* Egy meglévő [Azure Storage-fiók](../storage/common/storage-account-create.md), amelyet a rendszer fürtös tárolóként fog használni.
 
 ## <a name="install-hdinsight-modules"></a>HDInsight-modulok telepítése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Válassza ki az Azure Automation-fiókok.
-1. Válassza a **Modulok gyűjteményt a** **Megosztott erőforrások csoportban.**
-1. Írja be az **AzureRM.Profile kifejezést** a mezőbe, és nyomja meg a beírást a kereséshez. Válassza ki a rendelkezésre álló keresési eredményt.
-1. Az **AzureRM.profile** képernyőn válassza az **Importálás**lehetőséget. Jelölje be a jelölőnégyzetet az Azure-modulok frissítéséhez, majd kattintson **az OK gombra.**
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+1. Válassza ki a Azure Automation fiókokat.
+1. Válassza a **modulok tárat** a **megosztott erőforrások**területen.
+1. Írja be a **AzureRM. profil** kifejezést a mezőbe, és nyomja le az ENTER billentyűt a kereséshez. Válassza ki a rendelkezésre álló találatokat.
+1. Az **AzureRM. profil** képernyőn válassza az **Importálás**lehetőséget. Jelölje be a jelölőnégyzetet az Azure-modulok frissítéséhez, majd kattintson **az OK gombra**.
 
-    ![AzureRM.profile modul importálása](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    ![AzureRM. Profile modul importálása](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
 
-1. Térjen vissza a modulok gyűjteményéhez a **Modulok gyűjtemény** megosztott **erőforrások csoportban**lehetőség kiválasztásával.
-1. Írja be a **HDInsight típust.** Válassza **az AzureRM.HDInsight lehetőséget.**
+1. Térjen vissza a modulok galériához a **megosztott erőforrások**területen a **modulok gyűjtemény** kiválasztásával.
+1. Írja be a következőt: **HDInsight**. Válassza a **AzureRM. HDInsight**elemet.
 
     ![HDInsight-modulok tallózása](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
 
-1. Az **AzureRM.HDInsight** panelen válassza az **Importálás** és **az OK lehetőséget.**
+1. Az **AzureRM. HDInsight** panelen válassza az **Importálás** és **az OK**elemet.
 
-    ![AzureRM.HDInsight modul importálása](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    ![AzureRM. HDInsight modul importálása](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-1. A **Megosztott erőforrások csoportban**válassza a **Hitelesítő adatok**lehetőséget.
-1. Válassza **a Hitelesítő adatok hozzáadása**lehetőséget.
-1. Adja meg a szükséges adatokat az **Új hitelesítő adatok** panelen. Ez a hitelesítő adat a fürt jelszavának tárolása, amely lehetővé teszi az Ambari-ba való bejelentkezést.
+1. A **megosztott erőforrások**területen válassza a **hitelesítő adatok**lehetőséget.
+1. Válassza **a hitelesítő adat hozzáadása**elemet.
+1. Adja meg a szükséges információkat az **új hitelesítő adatok** panelen. Ez a hitelesítő adat a fürt jelszavának tárolására szolgál, amely lehetővé teszi a Ambari való bejelentkezést.
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Név | `cluster-password` |
+    | Name (Név) | `cluster-password` |
     | Felhasználónév | `admin` |
     | Jelszó | `SECURE_PASSWORD` |
     | Jelszó megerősítése | `SECURE_PASSWORD` |
 
 1. Kattintson a **Létrehozás** gombra.
-1. Ismételje meg ugyanezt a `ssh-password` folyamatot `sshuser` egy új hitelesítő adat hoz felhasználónévvel és egy ön által választott jelszóval. Kattintson a **Létrehozás** gombra. Ez a hitelesítő adatok a fürt SSH-jelszavának tárolására szolgálnak.
+1. Ismételje meg ugyanezt a folyamatot egy `ssh-password` új hitelesítő adathoz a felhasználónévvel `sshuser` és az Ön által választott jelszóval. Kattintson a **Létrehozás** gombra. Ez a hitelesítő adat a fürt SSH-jelszavának tárolása.
 
     ![hitelesítő adat létrehozása](./media/manage-clusters-runbooks/create-credentials.png)
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Runbook létrehozása fürt létrehozásához
 
-1. Válassza a **Runbookok** lehetőséget a **Folyamatautomatizálás csoportban.**
+1. Válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
 1. Válassza **a Runbook létrehozása**lehetőséget.
-1. A **Runbook létrehozása** panelen adja meg a runbook `hdinsight-cluster-create`nevét, például . Válassza ki a **Powershell** a **Runbook típusú** legördülő legördülő.
+1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-create`. Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
 1. Kattintson a **Létrehozás** gombra.
 
     ![runbook létrehozása](./media/manage-clusters-runbooks/create-runbook.png)
 
-1. Írja be a következő kódot a **PowerShell Runbook szerkesztése** képernyőn, és válassza **a Közzététel**lehetőséget:
+1. Adja meg a következő kódot a **PowerShell-Runbook szerkesztése** képernyőn, és válassza a **Közzététel**lehetőséget:
 
     ![runbook közzététele](./media/manage-clusters-runbooks/publish-runbook.png)
 
@@ -128,11 +128,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ## <a name="create-a-runbook-to-delete-a-cluster"></a>Runbook létrehozása fürt törléséhez
 
-1. Válassza a **Runbookok** lehetőséget a **Folyamatautomatizálás csoportban.**
+1. Válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
 1. Válassza **a Runbook létrehozása**lehetőséget.
-1. A **Runbook létrehozása** panelen adja meg a runbook `hdinsight-cluster-delete`nevét, például . Válassza ki a **Powershell** a **Runbook típusú** legördülő legördülő.
+1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-delete`. Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
 1. Kattintson a **Létrehozás** gombra.
-1. Írja be a következő kódot a **PowerShell Runbook szerkesztése** képernyőn, és válassza **a Közzététel**lehetőséget:
+1. Adja meg a következő kódot a **PowerShell-Runbook szerkesztése** képernyőn, és válassza a **Közzététel**lehetőséget:
 
     ```powershell
     Param
@@ -152,22 +152,22 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ### <a name="create-a-cluster"></a>Fürt létrehozása
 
-1. Tekintse meg az Automation-fiók Runbookok listáját a Folyamatautomatizálás csoport **Runbookok (Runbooks) (Runbooks) (Runbooks) (Runbooks) (Runbooks) (Runbooks) (Runbooks) (Futtatási könyvek)** listájának megtekintésével. **Process Automation**
-1. Válassza `hdinsight-cluster-create`a lehetőséget, vagy a fürtlétrehozási runbook létrehozásakor használt nevet.
-1. Válassza **az Indítás** lehetőséget a runbook azonnali végrehajtásához. A runbookok rendszeres időközönként futtathatók is. Tekintse meg [a runbook ütemezése az Azure Automationben című témakört](../automation/shared-resources/schedules.md)
-1. Adja meg a parancsfájl szükséges paramétereit, és válassza az **OK gombot.** Ez létrehoz egy új HDInsight-fürtöt a **CLUSTERNAME** paraméterben megadott névvel.
+1. Tekintse meg az Automation-fiók Runbookok listáját úgy, hogy kiválasztja a **runbookok** elemet a **folyamat automatizálása**alatt.
+1. Válassza `hdinsight-cluster-create`ki vagy a fürt létrehozási runbook létrehozásakor használt nevet.
+1. Válassza az **Indítás** lehetőséget a runbook azonnali végrehajtásához. A runbookok rendszeres időközönként is ütemezhetők. Lásd: [Runbook ütemezése Azure Automationban](../automation/shared-resources/schedules.md)
+1. Adja meg a parancsfájl kötelező paramétereit, majd kattintson **az OK gombra**. Ez egy új HDInsight-fürtöt hoz létre a **CLUSTERNAME** paraméterben megadott névvel.
 
-    ![fürt runbook létrehozása parancsvégrehajtása](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    ![fürt létrehozási runbook végrehajtása](./media/manage-clusters-runbooks/execute-create-runbook.png)
 
 ### <a name="delete-a-cluster"></a>Fürt törlése
 
-Törölje a fürtöt `hdinsight-cluster-delete` a létrehozott runbook kiválasztásával. Válassza a **Start**lehetőséget, írja be a **CLUSTERNAME paramétert,** majd kattintson az **OK**gombra.
+Törölje a fürtöt a `hdinsight-cluster-delete` létrehozott runbook kiválasztásával. Kattintson a **Start**gombra, írja be a **CLUSTERNAME** paramétert, és sselect **az OK gombot**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség, törölje az Azure Automation-fiók, amely azért jött létre, hogy elkerüljék a nem kívánt díjakat. Ehhez keresse meg az Azure Portalon, válassza ki azt az erőforráscsoportot, amelyben létrehozta az Azure Automation-fiókot, válassza az Automation-fiókot, majd válassza a **Törlés**lehetőséget.
+Ha már nincs rá szükség, törölje a létrehozott Azure Automation fiókot a nem kívánt költségek elkerülése érdekében. Ehhez navigáljon a Azure Portalhoz, válassza ki azt az erőforráscsoportot, amelyben létrehozta a Azure Automation fiókot, válassza ki az Automation-fiókot, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Apache Hadoop-fürtök kezelése a HDInsightban az Azure PowerShell használatával](hdinsight-administer-use-powershell.md)
+> [Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával](hdinsight-administer-use-powershell.md)

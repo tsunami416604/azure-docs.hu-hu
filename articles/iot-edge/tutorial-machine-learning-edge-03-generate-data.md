@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Szimulált eszközadatok létrehozása – Machine Learning az Azure IoT Edge-en'
-description: Hozzon létre olyan virtuális eszközöket, amelyek szimulált telemetriai adatokat hoznak létre, amelyek később gépi tanulási modell betanítására használhatók.
+title: 'Oktatóanyag: szimulált eszköz adatMachine Learningának előállítása Azure IoT Edge'
+description: Létrehozhatja azokat a virtuális eszközöket, amelyek szimulált telemetria hoznak létre, amelyek később a Machine learning-modellek betanítására használhatók.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,159 +9,159 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76722373"
 ---
-# <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: Szimulált eszközadatok létrehozása
+# <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
 
 > [!NOTE]
-> Ez a cikk az Azure Machine Learning IoT Edge-en való használatával kapcsolatos oktatóanyag sorozatának része. Ha megérkezett ezt a cikket közvetlenül, javasoljuk, hogy kezdődik az [első cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredményt.
+> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ebben a cikkben gépi tanulási betanítási adatokat használunk az Azure IoT Hubra telemetriai adatokat küldő eszköz szimulálására. Amint azt a bevezetőben, ez a bemutató használja a [Turbofan motor degradációs szimulációs adatkészlet](https://c3.nasa.gov/dashlink/resources/139/) szimulálni adatokat egy sor repülőgép motorok képzés és tesztelés.
+Ebben a cikkben a Machine learning-betanítási adatok segítségével szimuláljuk a telemetria-t az Azure IoT Hubba küldő eszközt. Ahogy az a bevezetésben is szerepel, ez az oktatóanyag a [Turbofan motor-degradációs szimulációs adatkészletet](https://c3.nasa.gov/dashlink/resources/139/) használja, hogy szimulálja az adatok egy csoportból történő betanítását és tesztelését.
 
-A mi kísérleti forgatókönyv, tudjuk, hogy:
+A kísérleti forgatókönyvben tudjuk, hogy:
 
-* Az adatok több többváltozós idősorozatból állnak.
-* Minden adatkészlet betanítási és tesztelési részhalmazokra van osztva.
+* Az adatgyűjtés több többváltozós idősorozatból áll.
+* Az egyes adatkészletek betanítási és tesztelési részhalmazokra vannak osztva.
 * Minden idősorozat egy másik motorból származik.
-* Minden motor különböző kezdeti kopási és gyártási variációkkal kezdődik.
+* Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek.
 
-Ebben az oktatóanyagban egyetlen adatkészlet (FD003) betanítási adatkészletének betanítási adatait használjuk.
+Ebben az oktatóanyagban egy egyetlen adatkészlet (FD003) betanítási adatkészletét használjuk.
 
-A valóságban minden motor egy független IoT-eszköz lenne. Feltételezve, hogy nem rendelkezik az internethez csatlakoztatott turbóventilátoros motorok gyűjteményével, egy szoftveres stand-int építünk ezekhez az eszközökhöz.
+A valóságban minden motor egy független IoT-eszköz lenne. Ha nem áll rendelkezésre elérhető internetkapcsolattal rendelkező turbofan-motor, akkor ezekhez az eszközökhöz beépített szoftver áll rendelkezésére.
 
-A szimulátor egy C# program, amely az IoT Hub API-k at használja a virtuális eszközök programozási regisztrációjára az IoT Hubsegítségével. Ezután a NASA által biztosított adathalmazból minden egyes eszköz adatait felolvassuk, és egy szimulált IoT-eszköz használatával elküldjük az IoT hubra. Az oktatóanyag ezen részének összes kódja megtalálható a tárház DeviceHarness könyvtárában.
+A szimulátor egy C#-program, amely a IoT Hub API-k használatával programozott módon regisztrálja a virtuális eszközöket a IoT Hub. Ezután elolvasjuk az egyes eszközök adatait a NASA által megadott adatkészletből, és egy szimulált IoT-eszköz használatával elküldhetik az IoT hub-ra. Az oktatóanyag ezen részének minden kódja megtalálható az adattár DeviceHarness könyvtárában.
 
-A DeviceHarness projekt egy C# nyelven írt .NET alapprojekt, amely négy osztályból áll:
+A DeviceHarness projekt egy C# nyelven írt .NET Core-projekt, amely négy osztályból áll:
 
-* **Program:** A felhasználói bevitel kezeléséért és az általános koordinációért felelős végrehajtási belépési pont.
-* **TrainingFileManager:** Felelős a kijelölt adatfájl olvasásáért és elemzési adataiért.
-* **Ciklusadatok:** Egyetlen adatsort jelöl üzenetformátumra konvertált fájlban.
-* **TurbofanDevice:** Egyetlen eszköznek (idősorozatnak) megfelelő IoT-eszköz létrehozásáért és az adatok IoT Hubba való továbbításáért felelős.
+* **Program:** A felhasználói bevitel és a teljes koordináció kezeléséért felelős végrehajtási pont.
+* **TrainingFileManager:** A kiválasztott adatfájl olvasásához és elemzéséhez felelős.
+* **CycleData:** Egy, az üzenet formátumára konvertált fájl egyetlen sorát jelöli.
+* **TurbofanDevice:** Olyan IoT-eszköz létrehozásáért felelős, amely egyetlen eszközhöz (idősorozat) tartozik, és az adatban továbbítja a IoT Hub.
 
-Az ebben a cikkben ismertetett feladatok végrehajtása körülbelül 20 percet vesz igénybe.
+A cikkben leírt feladatok elvégzése körülbelül 20 percet vesz igénybe.
 
-Az ebben a lépésben végzett munkával egyenértékű valós összeegyezeket valószínűleg eszközfejlesztők és felhőfejlesztők végzik el.
+Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök fejlesztői és a felhőalapú fejlesztők által.
 
-## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>A Visual Studio-kód konfigurálása és a DeviceHarness projekt létrehozása
+## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>A Visual Studio Code konfigurálása és a DeviceHarness-projekt létrehozása
 
-1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői virtuális gépszámára.
+1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői virtuális géphez.
 
-1. A Visual Studio kódjában nyissa meg a `C:\source\IoTEdgeAndMlSample\DeviceHarness` mappát.
+1. A Visual Studio Code-ban nyissa meg a `C:\source\IoTEdgeAndMlSample\DeviceHarness` mappát.
 
-1. Mivel első alkalommal használ bővítményeket ezen a számítógépen, egyes bővítmények frissítik és telepítik a függőségeiket. Előfordulhat, hogy a rendszer kéri a bővítmény frissítését. Ha igen, válassza **az Ablak újratöltése**lehetőséget.
+1. Mivel első alkalommal használja a bővítményeket ezen a gépen, egyes bővítmények frissítik és telepítik a függőségeiket. A rendszer kérheti a bővítmény frissítését. Ha igen, válassza az **Újratöltés ablak**lehetőséget.
 
-   Ha az OmniSharp hibák megjelennek a kimeneti ablakban, el kell távolítania a C# kiterjesztést.
+   Ha a kimeneti ablakban OmniSharp hibák jelennek meg, el kell távolítania a C#-bővítményt.
 
-1. A rendszer kérni fogja, hogy adja hozzá a szükséges eszközöket a DeviceHarness számára. A hozzáadásukhoz válassza az **Igen** lehetőséget.
+1. A rendszer kérni fogja a szükséges eszközök hozzáadását a DeviceHarness. Válassza az **Igen** lehetőséget a hozzáadásához.
 
-   * Az értesítés megjelenése néhány másodpercet is igénybe vehet.
-   * Ha nem fogadott el erről az értesítésről, ellenőrizze a csengő ikonját a jobb alsó sarokban.
+   * Az értesítés néhány másodpercig is eltarthat.
+   * Ha kihagyta ezt az értesítést, ellenőrizze a jobb alsó sarokban található harang ikont.
 
-   ![VS Code kiterjesztés felugró ablak](media/tutorial-machine-learning-edge-03-generate-data/add-required-assets.png)
+   ![VS Code bővítmény előugró ablak](media/tutorial-machine-learning-edge-03-generate-data/add-required-assets.png)
 
-1. A csomagfüggőségek visszaállításához válassza a **Visszaállítás** lehetőséget.
+1. A csomag függőségeinek visszaállításához válassza a **visszaállítás** lehetőséget.
 
-   ![VS kód visszaállítási parancsa](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
+   ![VS Code Restore prompt](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-   Ha nem kapja meg ezeket az értesítéseket, zárja be a `C:\source\IoTEdgeAndMlSample\DeviceHarness`Visual Studio-kódot, törölje a bin és obj könyvtárakat a alkalmazásban, nyissa meg a Visual Studio-kódot, majd nyissa meg újra a DeviceHarness mappát.
+   Ha nem kapja meg ezeket az értesítéseket, akkor nyissa meg a Visual Studio Code-ot, `C:\source\IoTEdgeAndMlSample\DeviceHarness`törölje a bin és az obj könyvtárakat a alkalmazásban, nyissa meg a Visual Studio Code-ot, majd nyissa meg újra
 
-1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva egy build, **a Ctrl** + **Shift** + **B**vagy **a Terminálfuttatási** > **buildfeladat elindításával.**
+1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva a Build, a **CTRL** + **SHIFT** + **B**vagy a **Terminal** > **Run Build feladat**aktiválásával.
 
-1. A rendszer kéri, hogy válassza ki a futtatni kívánt buildelési feladatot. Válassza **a Build**lehetőséget.
+1. A rendszer kéri, hogy válassza ki a futtatandó felépítési feladatot. Válassza a **Létrehozás**lehetőséget.
 
-1. A build fut, és sikeres üzenetet ad ki.
+1. A Build lefut, és sikert jelző üzenetet küld.
 
-   ![Sikeres kimeneti üzenet összeállítása](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
+   ![Sikeres kimeneti üzenet létrehozása](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Ezt a buildet alapértelmezett buildelési feladatként teheti meg, ha kiválasztja a > **Terminálkonfigurálás alapértelmezett buildelési feladatát,** és a parancssorból a **Build** parancsot választja. **Terminal**
+1. Ezt kiépítheti az alapértelmezett Build feladattal, ha kiválasztja a **terminál** > **konfigurálása alapértelmezett Build feladatát.** .. lehetőséget, majd kiválaszthatja a **Build** elemet a parancssorból.
 
-## <a name="connect-to-iot-hub-and-run-deviceharness"></a>Csatlakozás az IoT Hubhoz és a DeviceHarness futtatása
+## <a name="connect-to-iot-hub-and-run-deviceharness"></a>Kapcsolódás IoT Hub és DeviceHarness futtatása
 
-Most, hogy rendelkezünk a projektépülettel, csatlakozzon az IoT hubhoz a kapcsolati karakterlánc eléréséhez és az adatgenerálás előrehaladásának figyeléséhez.
+Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati sztring eléréséhez, és figyelje az adatgenerálás folyamatát.
 
-### <a name="sign-in-to-azure-in-visual-studio-code"></a>Bejelentkezés az Azure-ba a Visual Studio-kódban
+### <a name="sign-in-to-azure-in-visual-studio-code"></a>Bejelentkezés az Azure-ba a Visual Studio Code-ban
 
-1. Jelentkezzen be Azure-előfizetésébe a Visual Studio-kódban a `Ctrl + Shift + P` parancspaletta vagy a **Parancspaletta megtekintése** > **paratelletikán.**
+1. Jelentkezzen be az Azure-előfizetésbe a Visual Studio Code-ban `Ctrl + Shift + P` a parancs paletta megnyitásával vagy a**parancs-paletta** **megtekintésével** > .
 
-1. Keresse meg az **Azure: Sign In** parancsot.
+1. Keresse meg az **Azure: Sign in** parancsot.
 
-   Megnyílik egy böngészőablak, és kéri a hitelesítő adatok megadását. Ha a sikeres oldalra irányítja át, bezárhatja a böngészőt.
+   Megnyílik egy böngészőablak, amely kéri a hitelesítő adatok megadását. Amikor a rendszer átirányítja a sikert jelző oldalra, lezárhatja a böngészőt.
 
-### <a name="connect-to-your-iot-hub-and-retrieve-hub-connection-string"></a>Csatlakozás az IoT-központhoz és a hub kapcsolati karakterláncának lekérése
+### <a name="connect-to-your-iot-hub-and-retrieve-hub-connection-string"></a>Az IoT hub csatlakoztatása és a hub kapcsolati karakterláncának beolvasása
 
-1. A Visual Studio Kódkezelő alsó részén válassza ki az **Azure IoT** Hub-keretet a kibontásához.
+1. A Visual Studio Code Explorer alsó részén kattintson az **Azure IoT hub** -keretre a kibontásához.
 
-1. A kibontott keretben kattintson az **IoT-központ kijelölése elemre.**
+1. A kibontott keretben kattintson a **IoT hub kiválasztása**elemre.
 
-1. Amikor a rendszer kéri, válassza ki az Azure-előfizetést, majd az IoT-központot.
+1. Ha a rendszer kéri, válassza ki az Azure-előfizetését, majd az IoT hubot.
 
-1. Kattintson **a ...** az Azure **IoT Hub** jobb oldalán további műveletekért. Válassza **az IoT Hub kapcsolati karakterláncának másolása lehetőséget.**
+1. További műveletekért kattintson az **Azure IoT hub** jobb oldalán lévő **..** . elemre. Válassza a **másolás IoT hub a kapcsolatok karakterlánca**lehetőséget.
 
-   ![IoT Hub-kapcsolati karakterlánc másolása](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
+   ![IoT Hub-kapcsolatok karakterláncának másolása](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
 
 ### <a name="run-the-deviceharness-project"></a>A DeviceHarness projekt futtatása
 
-1. Válassza **a Terminál megtekintése lehetőséget** > **Terminal** a Visual Studio Code terminál megnyitásához.
+1. A Visual Studio Code Terminal megnyitásához válassza a**terminál** **megtekintése** > lehetőséget.
 
-   Ha nem jelenik meg a kérdés, nyomja le az Enter billentyűt.
+   Ha nem jelenik meg a kérdés, nyomja le az ENTER billentyűt.
 
 1. A terminálban írja be a következőt: `dotnet run`.
 
-1. Amikor a rendszer kéri az IoT Hub kapcsolati karakterláncát, illessze be az előző szakaszban másolt kapcsolati karakterláncot.
+1. Amikor a rendszer kéri a IoT Hub kapcsolódási karakterláncot, illessze be az előző szakaszban másolt kapcsolódási karakterláncot.
 
-1. Az **Azure IoT Hub-eszközök** keretben kattintson a frissítés gombra.
+1. Az **Azure IoT hub eszközök** keretében kattintson a frissítés gombra.
 
-   ![IoT Hub-eszközlista frissítése](media/tutorial-machine-learning-edge-03-generate-data/refresh-hub-device-list.png)
+   ![IoT Hub eszközök listájának frissítése](media/tutorial-machine-learning-edge-03-generate-data/refresh-hub-device-list.png)
 
-1. Vegye figyelembe, hogy az eszközök hozzáadódnak az IoT Hubhoz, és hogy az eszközök zöld színnel jelennek meg annak jelzésére, hogy az adatok küldése az eszközön keresztül történik. Miután az eszközök üzeneteket küldenek az IoT hubra, bontják a kapcsolatot, és kékszínnel jelennek meg.
+1. Vegye figyelembe, hogy az eszközök bekerülnek a IoT Hubba, és az eszközök zöld színnel jelennek meg, jelezve, hogy az eszközön keresztül történik az adatküldés. Miután az eszközök üzeneteket küldenek az IoT hubhoz, a kapcsolat megszakadt és kék színnel jelenik meg.
 
-1. A hubra küldött üzeneteket úgy tekintheti meg, hogy a jobb gombbal bármelyik eszközre kattint, és a **Beépített eseményvégpont indítása parancsot választja.** Az üzenetek a Visual Studio-kód kimeneti ablaktáblájában jelennek meg.
+1. Megtekintheti az adott hubhoz küldött üzeneteket, ha a jobb gombbal rákattint valamelyik eszközre, és kiválasztja a **figyelés beépített esemény-végpontjának elindítása**lehetőséget. Az üzenetek a Visual Studio Code kimenet paneljén jelennek meg.
 
-1. Állítsa le a figyelést az **Azure IoT Hub** kimeneti ablaktáblájára kattintva, és válassza a **Beépített eseményvégpont figyelése leállítása**lehetőséget.
+1. A figyelés leállításához kattintson az **Azure IoT hub** kimenet ablaktáblára, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
 
-1. Hagyja, hogy az alkalmazás fut a befejezésig, amely néhány percet vesz igénybe.
+1. Hagyja, hogy az alkalmazás végrehajtsa a befejezést, ami néhány percet vesz igénybe.
 
-## <a name="check-iot-hub-for-activity"></a>Tevékenység ellenőrzése az IoT Hubban
+## <a name="check-iot-hub-for-activity"></a>Tevékenység IoT Hubának keresése
 
-A DeviceHarness által küldött adatok az IoT hub, ahol ellenőrizheti az Azure Portalon.
+A DeviceHarness által elküldett adatai a IoT hubhoz kerültek, ahol ellenőrizheti a Azure Portal.
 
-1. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és keresse meg az ehhez az oktatóanyaghoz létrehozott IoT-központot.
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) , és navigáljon az oktatóanyaghoz létrehozott IoT hub-hoz.
 
-1. A bal oldali ablaktábla **menüjében**válassza a Figyelés csoport **Metrikák ( Metrikák**) lehetőséget.
+1. A bal oldali ablaktábla **figyelés**területén válassza a **metrikák**lehetőséget.
 
-1. A diagramdefiníció lapon kattintson a **Metrikus legördülő listára,** görgessen le a listáról, és válassza az **Útválasztás: a tárolóba szállított adatok**lehetőséget. A diagramnak meg kell jelennie annak a csúcsnak, amikor az adatok at a tárolóba irányították.
+1. A diagram definíciója lapon kattintson a **metrika** legördülő listára, görgessen le a listából, és válassza az **Útválasztás: tárolóba szállított adatok**elemet. A diagramnak meg kell jelennie annak a csúcsnak, amikor az adattovábbítás a Storage szolgáltatásba megtörténik.
 
-   ![A diagram csúcsot jelenít meg, amikor a tárolóba szállított adatok](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
+   ![A diagram a tárolóhelyre történő adattároláskor megjeleníti a tüske](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
 
-## <a name="validate-data-in-azure-storage"></a>Adatok ellenőrzése az Azure Storage-ban
+## <a name="validate-data-in-azure-storage"></a>Az Azure Storage-ban tárolt adatellenőrzés
 
-Az IoT hubra küldött adatok at az előző cikkben létrehozott tárolótárolóba irányítottuk. Nézzük meg a tárfiókunk adatait.
+Az IoT hub számára elküldett adatait a rendszer átirányítja az előző cikkben létrehozott tárolóba. Nézzük meg a Storage-fiókban lévő adatgyűjtést.
 
 1. Az Azure Portalon lépjen a tárfiókra.
 
-1. A tárfiók navigátorában válassza a **Storage Explorer (előzetes verzió)** lehetőséget.
+1. A Storage-fiók navigátorában válassza a **Storage Explorer (előzetes verzió)** lehetőséget.
 
-1. A tárolókezelőben válassza a `devicedata`Blob Containers **(Blob Containers)** lehetőséget.
+1. A Storage Explorerben válassza a **blob-tárolók** lehetőséget `devicedata`.
 
-1. A tartalomablaktáblán kattintson az IoT hub nevének mappájára, amelyet év, hónap, nap és óra követ. Az adatok írásának percét több mappa fogja látni.
+1. A tartalom ablaktáblán kattintson az IoT hub neveként a mappára, amelyet év, hónap, nap és óra követ. Ekkor több, a perceket jelképező mappa jelenik meg, amikor az adatgyűjtés megtörténik.
 
-   ![Mappák megtekintése a blobstorage-ban](media/tutorial-machine-learning-edge-03-generate-data/confirm-data-storage-results.png)
+   ![Mappák megtekintése a blob Storage-ban](media/tutorial-machine-learning-edge-03-generate-data/confirm-data-storage-results.png)
 
-1. Kattintson az egyik ilyen mappák at keresni adatfájlok feliratú **00** és **01** megfelelő partíciót.
+1. Kattintson az egyik mappára a partícióhoz tartozó **00** és **01** adatfájlok kereséséhez.
 
-1. A fájlok [avro](https://avro.apache.org/) formátumban vannak megírva. Kattintson duplán az egyik ilyen fájlra egy másik böngészőlap megnyitásához és az adatok részleges megjelenítéséhez. Ha a program kéri a fájl megnyitását, válassza a VS-kód lehetőséget, és az helyesen jelenik meg.
+1. A fájlok [Avro](https://avro.apache.org/) formátumban vannak írva. Az egyik fájlra duplán kattintva nyisson meg egy másik böngésző fület, és részben jelenítse meg az adathalmazt. Ha a program kéri, hogy nyissa meg a fájlt egy programban, válassza ki a VS Code-ot, és helyesen fog megjelenni.
 
-1. Nincs szükség arra, hogy megpróbálja elolvasni vagy értelmezni az adatokat most; fogjuk csinálni a következő cikkben.
+1. Az adatolvasásra és az adatelemzésre jelenleg nincs szükség. ezt a következő cikkben fogjuk elvégezni.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy .NET Core projektet használtunk a virtuális IoT-eszközök készletének létrehozásához, és adatokat küldhetünk rajtuk keresztül az IoT hubunkba és egy Azure Storage-tárolóba. Ez a projekt egy valós forgatókönyvet szimulál, amelyben a fizikai IoT-eszközök adatokat küldenek egy IoT Hubba, majd tovább egy válogatott tárolóba. Ezek az adatok magukban foglalják az érzékelők leolvasását, a működési beállításokat, a hibajeleket és a módokat és így tovább. Miután elegendő adatot gyűjtöttünk, olyan modellek betanítására használjuk, amelyek előre jelzik az eszköz fennmaradó hasznos élettartamát (RUL). Bemutatjuk ezt a gépi tanulást a következő cikkben.
+Ebben a cikkben egy .NET Core-projekttel hoztunk létre virtuális IoT-eszközöket, és a rajtuk keresztül továbbítjuk azokat az IoT hub és egy Azure Storage-tárolóba. Ez a projekt olyan valós helyzetet szimulál, amelyben a fizikai IoT-eszközök az adatküldés egy IoT Hubba és egy egy kurátori tárolóba kerülnek. Ezek az információk az érzékelők, az üzemeltetési beállítások, a meghibásodási jelek és a módok, valamint így tovább. Ha elegendő adatokat gyűjtöttek össze, azt használjuk a modell betanítására, amely megjósolja az eszköz hátralévő hasznos élettartamát (RUL). Ezt a Machine learninget a következő cikkben mutatjuk be.
 
-Folytassa a következő cikket egy gépi tanulási modell betanításához az adatokkal.
+Folytassa a következő cikkel, amellyel betaníthat egy gépi tanulási modellt az adatelemzéssel.
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning-modell betanítása és üzembe helyezése](tutorial-machine-learning-edge-04-train-model.md)

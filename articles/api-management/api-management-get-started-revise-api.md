@@ -1,5 +1,5 @@
 ---
-title: A módosítások használata a nem-törve módosítások biztonságos végrehajtása az API Managementben
+title: Változatok használata a nem törhető módosítások biztonságos elvégzéséhez API Management
 titleSuffix: Azure API Management
 description: Az oktatóanyag lépéseiből megtudhatja, hogyan hajthat végre nem kompatibilitástörő változásokat változatok használatával az API Managementben.
 services: api-management
@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75442756"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
@@ -53,7 +53,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > Az API helyi menüjében (**...**) található **Változat hozzáadása** lehetőséget is választhatja.
 
 5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
-6. Válassza a **Létrehozás lehetőséget**
+6. **Létrehozás** kiválasztása
 7. Az új változat létrehozása megtörtént.
 
     > [!NOTE]
@@ -84,7 +84,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 2. Nyissa meg a **2. változat** helyi menüjét (**...**).
 3. Kattintson a **Legyen ez az aktuális** elemre.
-4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a módosítások leírását, amelyet a fejlesztők látnak, például: **Verziók tesztelése. Hozzáadott új "teszt" művelet.**
+4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a változás leírását, amelyet a fejlesztők látnak, például: **tesztelési változatok. Új "teszt" művelet lett hozzáadva.**
 5. Most már a **2. változat** az aktuális.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
@@ -93,7 +93,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 2. A felső menüben kattintson a **Fejlesztői portál** elemre.
 3. Kattintson az **API-k** elemre, majd válassza a **Demo Conference API** lehetőséget.
 4. Figyelje meg, hogy az új **test** művelet már elérhető.
-5. Kattintson a **Changelog** elemre az API neve mellett.
+5. Kattintson az API neve közelében található **changelog** elemre.
 6. Figyelje meg, hogy a módosításinapló-bejegyzés megjelenik a listában.
 
 ## <a name="next-steps"></a>További lépések

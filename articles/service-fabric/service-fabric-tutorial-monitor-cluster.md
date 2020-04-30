@@ -1,33 +1,33 @@
 ---
 title: Service Fabric-fürt figyelése az Azure-ban
-description: Ebben az oktatóanyagban megtudhatja, hogyan figyelheti a fürt szolgáltatásfabric-események megtekintésével, az EventStore API-k lekérdezésével, a perf-számlálók figyelésével és az állapotjelentések megtekintésével.
+description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti a fürtöket Service Fabric események megtekintésével, a EventStore API-k lekérdezésével, a teljesítményszámláló-számlálók figyelésével és az állapotadatok megtekintésével.
 author: srrengar
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
 ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376630"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt figyelése az Azure-ban
 
-A figyelés és a diagnosztika kritikus fontosságú a számítási feladatok fejlesztése, tesztelése és üzembe helyezése szempontjából bármilyen felhőalapú környezetben. Ez az oktatóanyag egy sorozat második része, és bemutatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-fürt események, teljesítményszámlálók és állapotjelentések használatával.   További információt a [fürtfigyelésről](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) és az [infrastruktúra figyeléséről](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)szóló áttekintésben talál.
+A monitorozás és a diagnosztika kritikus fontosságú a számítási feladatok bármilyen felhőalapú környezetben való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez. Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-fürtöket események, teljesítményszámlálók és állapotjelentés használatával.   További információért olvassa el a [fürt figyelése](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) és az [infrastruktúra figyelése](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)című témakört.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A Service Fabric eseményeinek megtekintése
-> * A fürtesemények EventStore API-inak lekérdezése
-> * Infrastruktúra/perf számlálók gyűjtése
-> * Fürtállapot-jelentések megtekintése
+> * Service Fabric események megtekintése
+> * EventStore API-k lekérdezése a fürt eseményeihez
+> * Infrastruktúra figyelése/teljesítményszámláló-számlálók összegyűjtése
+> * Fürt állapotával kapcsolatos jelentések megtekintése
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
+> * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
 > * Fürt figyelése
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
@@ -41,53 +41,53 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse [az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI-t.](/cli/azure/install-azure-cli)
-* Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása 
-* A fürt [diagnosztikai gyűjteményének](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) beállítása
-* Az [EventStore szolgáltatás](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) engedélyezése a fürtben
-* Az [Azure Monitor naplóinak és a fürt Log Analytics-ügynökének](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureloganalytics_anchor) konfigurálása
+* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása 
+* A fürt telepítési [diagnosztikai gyűjteménye](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
+* A [EventStore szolgáltatás](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) engedélyezése a fürtben
+* [Azure monitor naplók és a fürt log Analytics ügynökének](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureloganalytics_anchor) konfigurálása
 
-## <a name="view-service-fabric-events-using-azure-monitor-logs"></a>Service Fabric-események megtekintése az Azure Monitor naplóinak használatával
+## <a name="view-service-fabric-events-using-azure-monitor-logs"></a>Service Fabric események megtekintése Azure Monitor naplók használatával
 
-Az Azure Monitor naplói összegyűjtik és elemzik a felhőben üzemeltetett alkalmazások és szolgáltatások telemetriai adatait, és elemzési eszközöket biztosít a rendelkezésre állásuk és teljesítményük maximalizálásához. Lekérdezések futtatásához az Azure Monitor naplók betekintést nyerhet, és hibaelhárítás, mi történik a fürtben.
+Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Azure Monitor naplókban lekérdezéseket futtathat, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben.
 
-A Service Fabric Analytics-megoldás eléréséhez nyissa meg az [Azure Portalon,](https://portal.azure.com) és válassza ki azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics-megoldást.
+A Service Fabric Analytics megoldás eléréséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és válassza ki azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást.
 
-Válassza ki a **ServiceFabric(mysfomsworkspace) erőforrást.**
+Válassza ki az erőforrás **-ServiceFabric (mysfomsworkspace)**.
 
-**Az áttekintésben** az egyes engedélyezett megoldásokhoz, köztük a Service Fabrichez is, grafikon formájában jelennek meg a csempék. Kattintson a **Service Fabric** graph a Service Fabric Analytics-megoldás folytatásához.
+Az **Áttekintés** lapon láthatók a csempék egy gráf formájában az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
-![Service Fabric-megoldás](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Service Fabric megoldás](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
-Az alábbi képen a Service Fabric Analytics-megoldás kezdőlapja látható. Ez a kezdőlap pillanatkép-nézetet nyújt afürtben zajló eseményekről.
+Az alábbi képen a Service Fabric Analytics-megoldás kezdőlapja látható. Ez a Kezdőlap pillanatkép-nézetet jelenít meg a fürtben zajló eseményekről.
 
-![Service Fabric-megoldás](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-solution.png)
+![Service Fabric megoldás](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-solution.png)
 
- Ha engedélyezte a diagnosztikát a fürt létrehozásakor, láthatja a 
+ Ha a fürt létrehozásakor engedélyezte a diagnosztika szolgáltatást, a következő eseményeket tekintheti meg: 
 
-* [Service Fabric-fürtesemények](service-fabric-diagnostics-event-generation-operational.md)
-* [Megbízható szereplők programozási modell események](service-fabric-reliable-actors-diagnostics.md)
-* [Megbízható szolgáltatások programozási modell eseményei](service-fabric-reliable-services-diagnostics.md)
+* [Service Fabric-fürt eseményei](service-fabric-diagnostics-event-generation-operational.md)
+* [Reliable Actors programozási modell eseményei](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services programozási modell eseményei](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->A Service Fabric-események mellett részletesebb rendszeresemények is gyűjthetők [a diagnosztikai bővítmény konfigurációjának frissítésével.](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
+>A Service Fabric események mellett a [diagnosztikai bővítmény konfigurációjának frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)részletesebb rendszereseményeket is gyűjthet.
 
-### <a name="view-service-fabric-events-including-actions-on-nodes"></a>A Szolgáltatásháló-események megtekintése, beleértve a csomópontokon végrehajtott műveleteket is
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric események megtekintése, beleértve a csomópontokon végrehajtott műveleteket is
 
-A Service Fabric Analytics lapon kattintson a **fürtesemények**grafikonjára.  Az összegyűjtött rendszeresemények naplói megjelennek. Referenciaként ezek a **WADServiceFabricSystemEventsTable** az Azure Storage-fiókban, és hasonlóképpen a megbízható szolgáltatások és szereplők események lásd a következő a megfelelő táblákból.
+A Service Fabric Analytics lapon kattintson a **fürt eseményeinek**gráfra.  Megjelenik az összes összegyűjtött rendszeresemény naplója. Ezek az Azure Storage-fiók **WADServiceFabricSystemEventsTable** származnak, és hasonlóképpen a megbízható szolgáltatások és Actors-események, amelyek a következőket látják, a megfelelő táblákból származnak.
     
-![Lekérdezés operatív csatornája](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
+![Működési csatorna lekérdezése](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
-A lekérdezés a Kusto lekérdezési nyelvet használja, amelyet módosíthat a keresett finomításérdekében. Például a fürt csomópontjain végrehajtott összes művelet megkereséséhez használhatja a következő lekérdezést. Az alább használt eseményazonosítók az [operatív csatorna eseményeinek hivatkozásában](service-fabric-diagnostics-event-generation-operational.md)találhatók.
+A lekérdezés a Kusto lekérdezési nyelvét használja, amelyet módosíthatja, hogy pontosítsa, amit keres. A fürt csomópontjain végrehajtott összes művelet megkereséséhez például a következő lekérdezést használhatja. Az alább használt eseményazonosító az [operatív csatorna eseményeinek referenciájában](service-fabric-diagnostics-event-generation-operational.md)található.
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-A Kusto lekérdezési nyelv erőllág. Íme néhány további hasznos lekérdezés.
+A Kusto lekérdezési nyelve nagy teljesítményű. Íme néhány hasznos lekérdezés.
 
-*ServiceFabricEvent-lekérdezési* tábla létrehozása felhasználó által definiált függvényként a lekérdezést a ServiceFabricEvent alias függvényként való mentésével:
+*ServiceFabricEvent* keresési táblázat létrehozása felhasználó által definiált függvényként a lekérdezés ServiceFabricEvent aliasként való mentésével:
 
 ```kusto
 let ServiceFabricEvent = datatable(EventId: int, EventName: string)
@@ -100,7 +100,7 @@ let ServiceFabricEvent = datatable(EventId: int, EventName: string)
 ServiceFabricEvent
 ```
 
-Az elmúlt órában rögzített működési események visszaadása:
+Az elmúlt órában rögzített operatív események visszaadása:
 ```kusto
 ServiceFabricOperationalEvent
 | where TimeGenerated > ago(1h)
@@ -109,7 +109,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated
 ```
 
-Működési események visszaadása az EventId == 18604 és az EventName == 'NodeDownOperational' azonosítóval:
+Működési események visszaadása a következővel: Napszállta = = 18604 és EventName = = ' NodeDownOperational ':
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId == 18604
@@ -117,7 +117,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated 
 ```
 
-Működési események visszaadása az EventId == 18604 és az EventName == 'NodeUpOperational' azonosítóval:
+Működési események visszaadása a következővel: Napszállta = = 18604 és EventName = = ' NodeUpOperational ':
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId == 18603
@@ -125,7 +125,7 @@ ServiceFabricOperationalEvent
 | sort by TimeGenerated 
 ``` 
  
-Állapotjelentéseket ad vissza healthstate == 3 (hiba) értékkel, és további tulajdonságokat nyer ki az EventMessage mezőből:
+Az HealthState = = 3 (hiba) állapotú állapotjelentést adja vissza, és további tulajdonságokat is Kinyer a EventMessage mezőből:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -150,7 +150,7 @@ ServiceFabricOperationalEvent
          StatefulReplica = extract(@"StatefulReplica=(\S+) ", 1, EventMessage, typeof(string))
 ```
 
-Események időtáblázatának visszaadása az EventId != 17523 értékkel:
+Események idődiagramjának visszaadása a Napszállta! = 17523:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -160,7 +160,7 @@ ServiceFabricOperationalEvent
 | render timechart 
 ```
 
-A Service Fabric működési eseményeinek beszereznie az adott szolgáltatással és csomónnal összesítve:
+Az adott szolgáltatással és csomóponttal összesített Service Fabric működési események beszerzése:
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -168,7 +168,7 @@ ServiceFabricOperationalEvent
 | summarize AggregatedValue = count() by ApplicationName, ServiceName, Computer 
 ```
 
-A Service Fabric-események számának lehetővé tétele EventId / EventName szerint egy erőforrásközi lekérdezés használatával:
+Service Fabric események számának megjelenítése Napszállta/EventName használatával egy több erőforrást használó lekérdezéssel:
 
 ```kusto
 app('PlunkoServiceFabricCluster').traces
@@ -181,21 +181,21 @@ app('PlunkoServiceFabricCluster').traces
 | render timechart
 ```
 
-### <a name="view-service-fabric-application-events"></a>A Service Fabric alkalmazáseseményeinek megtekintése
+### <a name="view-service-fabric-application-events"></a>Service Fabric alkalmazás eseményeinek megtekintése
 
-Megtekintheti a megbízható szolgáltatások és a fürtön telepített megbízható szereplők alkalmazások eseményeit.  A Service Fabric Analytics lapon kattintson az **alkalmazásesemények**grafikonjára.
+Megtekintheti a fürtön üzembe helyezett megbízható szolgáltatások és megbízható Actors-alkalmazások eseményeit.  A Service Fabric Analytics lapon kattintson az **alkalmazás eseményeinek**gráfra.
 
-Futtassa a következő lekérdezést a megbízható szolgáltatási alkalmazások eseményeinek megtekintéséhez:
+Az alábbi lekérdezés futtatásával tekintheti meg a megbízható szolgáltatások alkalmazásaiból származó eseményeket:
 ```kusto
 ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-Megtekintheti a különböző eseményeket, amikor a szolgáltatás runasync elindul, és befejeződött, amely általában történik a központi telepítések és frissítések.
+A szolgáltatás runasync indításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek.
 
-![Service Fabric megoldás megbízható szolgáltatások](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
+![Service Fabric megoldás Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
-A megbízható szolgáltatás eseményeit is megtalálhatja a ServiceName == "fabric:/Watchdog/WatchdogService" segítségével:
+A megbízható szolgáltatáshoz tartozó eseményeket a szolgáltatásnév = = "Fabric:/Watchdog/WatchdogService" használatával is megtalálhatja:
 
 ```kusto
 ServiceFabricReliableServiceEvent
@@ -204,13 +204,13 @@ ServiceFabricReliableServiceEvent
 | order by TimeGenerated desc  
 ```
  
-Megbízható szereplő események megtekinthetők hasonló módon:
+A megbízható színészek eseményei hasonló módon tekinthetők meg:
 
 ```kusto
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Részletesebb események megbízható szereplőkhöz való konfigurálásához `scheduledTransferKeywordFilter` módosíthatja a konfigurációban a fürtsablon diagnosztikai bővítményéhez. Ezek relevanciaértékeia [megbízható szereplőkre vonatkozó referenciában található](service-fabric-reliable-actors-diagnostics.md#keywords).
+A megbízható szereplők részletes eseményeinek konfigurálásához a fürt sablonjában módosíthatja `scheduledTransferKeywordFilter` a diagnosztikai bővítmény konfigurációját. Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -224,25 +224,25 @@ Részletesebb események megbízható szereplőkhöz való konfigurálásához `
                 },
 ```
 
-## <a name="view-performance-counters-with-azure-monitor-logs"></a>Teljesítményszámlálók megtekintése az Azure Monitor-naplókkal
-Teljesítményszámlálók megtekintéséhez nyissa meg az [Azure Portalon,](https://portal.azure.com) és az erőforráscsoport, amelyben létrehozta a Service Fabric Analytics-megoldás. 
+## <a name="view-performance-counters-with-azure-monitor-logs"></a>Teljesítményszámlálók megtekintése Azure Monitor naplókkal
+A teljesítményszámlálók megjelenítéséhez nyissa meg a [Azure Portal](https://portal.azure.com) és az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. 
 
-Válassza ki a **ServiceFabric(mysfomsworkspace)** erőforrást, majd **a Log Analytics-munkaterületet,** majd **a Speciális beállításokat.**
+Válassza ki az erőforrás- **ServiceFabric (mysfomsworkspace)**, majd **log Analytics munkaterületet**, majd a **speciális beállításokat**.
 
-Kattintson **az Adatok**menü Windows **teljesítményszámlálói parancsára.** Van egy lista az alapértelmezett számlálók közül választhat, hogy engedélyezze, és beállíthatja a gyűjtemény időközéist is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. A cikk a megfelelő [article](/windows/desktop/PerfCtrs/specifying-a-counter-path)formátumra hivatkozik. Kattintson **a Mentés**gombra, majd **az OK gombra.**
+Kattintson **az adat**, majd a **Windows-teljesítményszámlálók**elemre. Az alapértelmezett számlálók listája lehetővé teszi az engedélyezést, és beállíthatja a gyűjtemény intervallumát is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. Ennek a [cikknek](/windows/desktop/PerfCtrs/specifying-a-counter-path)a megfelelő formátumra hivatkozik. Kattintson a **Mentés**, majd **az OK**gombra.
 
-Zárja be a Speciális beállítások panelt, és az **Általános** fejléc alatt válassza a **Munkaterület összegzése** lehetőséget. Minden egyes engedélyezett megoldások egy grafikus csempe, beleértve a Service Fabric egy. Kattintson a **Service Fabric** graph a Service Fabric Analytics-megoldás folytatásához.
+A speciális beállítások panel bezárásához és az **általános** fejléc alatt válassza ki a **munkaterület összegzése** elemet. Minden olyan megoldás esetében, amelynél engedélyezve van egy grafikus csempe, például egy Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
-Vannak grafikus csempék a működési csatorna és a megbízható szolgáltatási események. A kiválasztott számlálók hoz beáramló adatok grafikus ábrázolása a **Csomópont-mérőszámok területen**jelenik meg. 
+Az operatív csatorna és a megbízható szolgáltatások eseményeihez grafikus csempék tartoznak. A kiválasztott számlálóhoz tartozó adatok grafikus ábrázolása a **csomópont metrikái**alatt fog megjelenni. 
 
-Válassza ki a **tároló metrika** grafikon további részletek megtekintéséhez. A teljesítményszámláló-adatokat a fürteseményekhez hasonlóan is lekérdezheti, és szűrheti a csomópontokat, a perf számláló nevét és az értékeket a Kusto lekérdezési nyelv használatával.
+A további részletek megtekintéséhez válassza a **Container metrika** diagramot. A teljesítményszámláló adataihoz hasonlóan is lekérdezheti a fürt eseményeinek adatait, és szűrheti a csomópontok, a teljesítményszámláló nevét és az értékeket a Kusto lekérdezési nyelv használatával.
 
-## <a name="query-the-eventstore-service"></a>Az EventStore szolgáltatás lekérdezése
-Az [EventStore szolgáltatás](service-fabric-diagnostics-eventstore.md) lehetővé teszi a fürt vagy a számítási feladatok állapotának megértését egy adott időpontban. Az EventStore egy állapotalapú Service Fabric szolgáltatás, amely a fürtből származó eseményeket tart karban. Az események a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), REST és API-k között vannak elérhetők. Az EventStore közvetlenül lekérdezi a fürtöt, hogy diagnosztikai adatokat kapjon a fürt bármely entitásáról az EventStore-ban elérhető események teljes listájának megtekintéséhez olvassa el a [Service Fabric-események című](service-fabric-diagnostics-event-generation-operational.md)témakört.
+## <a name="query-the-eventstore-service"></a>A EventStore szolgáltatás lekérdezése
+A [EventStore szolgáltatás](service-fabric-diagnostics-eventstore.md) lehetővé teszi a fürt vagy a számítási feladatok állapotának megismerését egy adott időpontban. A EventStore olyan állapot-nyilvántartó Service Fabric szolgáltatás, amely az eseményeket a fürtből tartja karban. Az események a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), a REST és az API-kon keresztül érhetők el. A EventStore lekérdezi a fürtöt közvetlenül a fürt bármely entitásán található diagnosztikai adat beszerzéséhez, hogy megtekintse a EventStore elérhető események teljes listáját. lásd: [események Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
-Az EventStore API-k programozott módon lekérdezhetők a [Service Fabric ügyfélkódtár](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)használatával.
+A EventStore API-kat programozott módon lehet lekérdezni az [Service Fabric ügyféloldali kódtár](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)használatával.
 
-Íme egy példa kérelem az összes fürtesemény2018-04-03T18:00:00Z és 2018-04-04T18:00:00Z között, a GetClusterEventListAsync függvényen keresztül.
+Íme egy példa a 2018-04-03T18:00:00Z és 2018-04-04T18:00:00Z közötti összes fürt eseményeire a GetClusterEventListAsync függvény használatával.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -255,7 +255,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Íme egy másik példa, amely lekérdezi a fürt állapotát és az összes csomóponti eseményt 2018 szeptemberében, és kinyomtatja őket.
+Íme egy másik példa, amely lekérdezi a fürt állapotát és az összes Node eseményt a 2018 szeptemberében, és kinyomtatja őket.
 
 ```csharp
 const int timeoutSecs = 60;
@@ -294,19 +294,19 @@ foreach (var nodeEvent in nodesEvents)
 ```
 
 
-## <a name="monitor-cluster-health"></a>Fürt állapotának figyelése
-A Service Fabric egy [állapotmodellt](service-fabric-health-introduction.md) vezet be olyan állapotentitásokkal, amelyeken a rendszer-összetevők és a figyelők jelenthetik a figyelésáltal figyelt helyi feltételeket. Az [állapottároló](service-fabric-health-introduction.md#health-store) összesíti az összes állapotadatot annak meghatározásához, hogy az entitások kifogástalanállapotúak-e.
+## <a name="monitor-cluster-health"></a>A fürt állapotának figyelése
+A Service Fabric olyan állapot- [modelleket](service-fabric-health-introduction.md) vezet be, amelyekben a rendszerösszetevők és a watchdogok jelenthetik a figyelt helyi feltételeket. Az állapotfigyelő az összes [állapotadatok összesítésével](service-fabric-health-introduction.md#health-store) megállapítja, hogy az entitások állapota Kifogástalan-e.
 
-A fürt automatikusan feltöltődik a rendszerösszetevők által küldött állapotjelentésekkel. További [információ: A rendszerállapot-jelentések használata a hibaelhárításhoz.](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+A rendszer automatikusan kitölti a fürtöt a rendszerösszetevők által elküldett állapot-jelentésekkel. További információ: [rendszerállapot-jelentések használata a hibakereséshez](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-A Service Fabric minden egyes támogatott [entitástípushoz](service-fabric-health-introduction.md#health-entities-and-hierarchy)elérhetővé teszi az állapotlekérdezéseket. Az API-n keresztül érhetők el a [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), a PowerShell-parancsmagok és a REST metódusai használatával. Ezek a lekérdezések teljes körű állapotinformációt adnak vissza az entitásról: az összesített állapot, az entitás állapotának állapota, a gyermek állapotállapota (ha van), a nem megfelelő állapotú értékelések (ha az entitás nem kifogástalan), és a gyermekek állapotstatisztikái (amikor alkalmazandó).
+A Service Fabric az egyes támogatott [entitások típusaihoz](service-fabric-health-introduction.md#health-entities-and-hierarchy)tartozó állapot-lekérdezéseket teszi elérhetővé. Ezek az API-n keresztül érhetők el, a [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), a PowerShell-parancsmagok és a REST metódusok használatával. Ezek a lekérdezések a teljes állapotra vonatkozó információkat adják vissza az entitásról: az összesített állapot, az entitás állapotával kapcsolatos események, a gyermek állapot állapota (ha alkalmazható), a nem kifogástalan állapotú értékelések (ha az entitás nem kifogástalan) és a gyermek állapot statisztikája (ha alkalmazható).
 
-### <a name="get-cluster-health"></a>Fürtállapotának beszereznie
-A [Get-ServiceFabricClusterHealth parancsmag](/powershell/module/servicefabric/get-servicefabricclusterhealth) a fürtentitás állapotát adja vissza, és tartalmazza az alkalmazások és csomópontok (a fürt gyermekei) állapotát.  Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster parancsmag](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)használatával.
+### <a name="get-cluster-health"></a>Fürt állapotának beolvasása
+A [Get-ServiceFabricClusterHealth parancsmag](/powershell/module/servicefabric/get-servicefabricclusterhealth) a fürt entitásának állapotát adja vissza, és tartalmazza az alkalmazások és a csomópontok állapotát (a fürt gyermekei).  Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster parancsmag](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)használatával.
 
-A fürt állapota 11 csomópont, a rendszeralkalmazás és a fabric:/Szavazás a leírtak szerint konfigurálva.
+A fürt állapota 11 csomópont, a Rendszeralkalmazás és a háló:/szavazás konfigurálva a leírtak szerint.
 
-A következő példa kap fürt állapotát alapértelmezett állapotházirendek használatával. A 11 csomópont kifogástalan, de a fürt összesített állapot a hiba, mert a fabric:/Voting alkalmazás hiba. Vegye figyelembe, hogy a nem megfelelő állapotú értékelések részletesen ismertetik az összesített állapotot kiváltó feltételeket.
+Az alábbi példa az alapértelmezett állapotházirendek használatával szerzi be a fürt állapotát. A 11 csomópont kifogástalan állapotú, de a fürt összesített állapota hiba, mert a Fabric:/szavazó alkalmazás hibát jelzett. Vegye figyelembe, hogy a nem kifogástalan állapotú értékelések részletesen ismertetik az összesített állapotot kiváltó feltételek részleteit.
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -381,7 +381,7 @@ HealthStatistics        :
                           Application           : 0 Ok, 0 Warning, 1 Error
 ```
 
-A következő példa a fürt állapotát egy egyéni alkalmazásházirend használatával kapja meg. Szűri az eredményeket, hogy csak alkalmazásokat és csomópontokat kapjon hiba vagy figyelmeztetés esetén. Ebben a példában nem ad vissza csomópontokat, mivel ezek mindegyike kifogástalan. Csak a fabric:/Voting alkalmazás tartja tiszteletben az alkalmazásszűrőt. Mivel az egyéni házirend határozza meg, hogy a figyelmeztetéseket a háló:/Szavazási alkalmazás hibáinak tekintsék, az alkalmazás kiértékelése hibás, és így a fürt is.
+A következő példa egy egyéni alkalmazás-házirend használatával lekéri a fürt állapotát. Az eredményeket úgy szűri, hogy csak az alkalmazásokat és a csomópontokat kapja meg hiba vagy figyelmeztetés alapján. Ebben a példában a rendszer nem ad vissza csomópontokat, mivel azok kifogástalanok. Csak a Fabric:/szavazó alkalmazás veszi figyelembe az alkalmazások szűrőt. Mivel az egyéni házirend azt határozza meg, hogy a figyelmeztetések a háló:/szavazó alkalmazás hibáiként legyenek kiértékelve, a rendszer hibát jelez, és így a fürt.
 
 ```powershell
 $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
@@ -453,21 +453,21 @@ ApplicationHealthStates :
 HealthEvents            : None
 ```
 
-### <a name="get-node-health"></a>A csomópont állapotának beszereznie
-A [Get-ServiceFabricNodeHealth parancsmag](/powershell/module/servicefabric/get-servicefabricnodehealth) egy csomópontentitás állapotát adja vissza, és tartalmazza a csomóponton jelentett állapoteseményeket. Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster parancsmag](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)használatával. A következő példa egy adott csomópont állapotát kapja meg az alapértelmezett állapotházirendek használatával:
+### <a name="get-node-health"></a>Csomópont állapotának beolvasása
+A [Get-ServiceFabricNodeHealth parancsmag](/powershell/module/servicefabric/get-servicefabricnodehealth) egy csomópont entitás állapotát adja vissza, és tartalmazza a csomóponton jelentett állapotú eseményeket. Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster parancsmag](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)használatával. Az alábbi példa egy adott csomópont állapotát kéri le az alapértelmezett állapot-házirendek használatával:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3
 ```
 
-A következő példa a fürt összes csomócsomójának állapotát kapja meg:
+A következő példa a fürt összes csomópontjának állapotát lekéri:
 ```powershell
 Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
 ```
 
-### <a name="get-system-service-health"></a>A rendszerszolgáltatás állapotának beszereznie 
+### <a name="get-system-service-health"></a>Rendszerszolgáltatás állapotának beolvasása 
 
-A rendszerszolgáltatások összesített állapotának beszerezni:
+A rendszerszolgáltatások összesített állapotának beolvasása:
 
 ```powershell
 Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServiceHealth | select ServiceName, AggregatedHealthState | ft -AutoSize
@@ -478,12 +478,12 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A Service Fabric eseményeinek megtekintése
-> * A fürtesemények EventStore API-inak lekérdezése
-> * Infrastruktúra/perf számlálók gyűjtése
-> * Fürtállapot-jelentések megtekintése
+> * Service Fabric események megtekintése
+> * EventStore API-k lekérdezése a fürt eseményeihez
+> * Infrastruktúra figyelése/teljesítményszámláló-számlálók összegyűjtése
+> * Fürt állapotával kapcsolatos jelentések megtekintése
 
-Ezután a következő oktatóanyagba lépve megtudhatja, hogyan méretezhet egy fürtöt.
+Ezután folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan méretezheti a fürtöt.
 > [!div class="nextstepaction"]
 > [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
 

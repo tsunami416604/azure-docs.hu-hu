@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a Jive-vel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Jive között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Jive-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Jive között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,75 +16,75 @@ ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccdab373be4bab876ef52ba478076b6a8b6e0845
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76291175"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Jive-vel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Jive
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Jive-t az Azure Active Directoryval (Azure AD). Ha integrálja a Jive-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Jive a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Jive-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a Jive.Control in Azure AD who has access to Jive.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve jive az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A Jive-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Jive az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Jive egyszeri bejelentkezés (SSO) engedélyezve van előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Jive egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Jive támogatja **SP** kezdeményezett SSO
-* A Jive támogatja az [ **automatikus** felhasználói kiépítést](jive-provisioning-tutorial.md)
-* A Jive konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A Jive támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Jive támogatja az [ **automatikus** felhasználó-kiépítés használatát](jive-provisioning-tutorial.md)
+* A Jive konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-jive-from-the-gallery"></a>Jive hozzáadása a galériából
+## <a name="adding-jive-from-the-gallery"></a>Jive hozzáadása a gyűjteményből
 
-A Jive azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Jive-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Jive Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Jive a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be a **Jive** kifejezést a keresőmezőbe.
-1. Válassza **a Jive** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Jive** kifejezést a keresőmezőbe.
+1. Válassza ki a **Jive** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-jive"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a Jive-hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-jive"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Jive
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Jive segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó jive.
+Konfigurálja és tesztelje az Azure AD SSO-t a Jive a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Jive-ben.
 
-Az Azure AD SSO beállítása és tesztelése a Jive segítségével hajtsa végre az alábbi építőelemeket:
+Az Azure AD SSO és a Jive konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Állítsa be a Jive Egyszeri bejelentkezést](#configure-jive-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre jive teszt felhasználó](#create-jive-test-user)** - egy megfelelője B.Simon a Jive, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Jive SSO konfigurálása](#configure-jive-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre Jive-teszt felhasználót](#create-jive-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Jive rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **Jive-alkalmazások** integrációja lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **Jive** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<instance name>.jivecustom.com`
+a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<instance name>.jivecustom.com`
 
     b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
     `https://<instance name>.jiveon.com`
@@ -92,104 +92,104 @@ a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő
     > [!NOTE]
     > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Jive Client support team](https://www.jivesoftware.com/services-support/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Jive beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. A **Jive beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Hirdetés-azonosító
+    b. Azure AD-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t, a Jive-hez való hozzáférés biztosításával.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Jive.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **Jive**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Jive**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-jive-sso"></a>Jive sso konfigurálása
+## <a name="configure-jive-sso"></a>Jive SSO konfigurálása
 
-1. Az egyszeri bejelentkezés konfigurálásához a **Jive** oldalon, jelentkezzen be a Jive-bérlőhöz rendszergazdaként.
+1. Ha az egyszeri bejelentkezést szeretné konfigurálni a **Jive** oldalon, jelentkezzen be a Jive-bérlőre rendszergazdaként.
 
-1. A felső menüben kattintson az **SAML gombra.**
+1. A felső menüben kattintson az **SAML**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_002.png)
 
-    a. Az **Általános** lapon válassza az **Engedélyezve** lehetőséget.
+    a. Az **általános** lapon válassza az **engedélyezve** lehetőséget.
 
-    b. Kattintson az **ÖSSZES SAML-BEÁLLÍTÁS MENTÉSE** gombra.
+    b. Kattintson az **összes SAML-beállítás mentése** gombra.
 
-1. Nyissa meg az **IDP METADATA** lapot.
+1. Navigáljon a **identitásszolgáltató-metaadatok** lapra.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_003.png)
 
-    a. Másolja a letöltött metaadat-XML-fájl tartalmát, majd illessze be az **Identitásszolgáltató metaadat-szövegmezőjébe.**
+    a. Másolja a letöltött metaadatok XML-fájljának tartalmát, majd illessze be az **Identity Provider (identitásszolgáltató) metaadatok** szövegmezőbe.
 
-    b. Kattintson az **ÖSSZES SAML-BEÁLLÍTÁS MENTÉSE** gombra.
+    b. Kattintson az **összes SAML-beállítás mentése** gombra.
 
-1. Válassza **a USER ATTRIBUTE MAPPING (FELHASZNÁLÓ ATTRIBÚTUMLEKÉPEZÉS)** lapot.
+1. Válassza a **felhasználói attribútumok leképezése** fület.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalon](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_004.png)
 
-    a. Az **E-mail** szövegmezőbe másolja és illessze be a **levelezési** érték attribútumnevét.
+    a. Az **e-mail** szövegmezőben másolja ki és illessze be a **mail** Value (attribútum) nevét.
 
-    b. Az **Utónév** mezőbe másolja és illessze be a **givenname** érték attribútumnevét.
+    b. Az **Utónév** szövegmezőben másolja ki és illessze be az **givenName** érték attribútumának nevét.
 
-    c. A **Vezetéknév** mezőbe másolja és illessze be a **vezetéknév-érték** attribútumnevét.
+    c. A vezetéknév **szövegmezőben** másolja ki és illessze be az attribútum nevét. **surname**
 
-### <a name="create-jive-test-user"></a>Jive tesztfelhasználó létrehozása
+### <a name="create-jive-test-user"></a>Jive-tesztelési felhasználó létrehozása
 
-A cél ebben a szakaszban, hogy hozzon létre egy felhasználó nevű Britta Simon Jive. A Jive támogatja az automatikus felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Az automatikus felhasználói [here](jive-provisioning-tutorial.md) kiépítés konfigurálásáról itt olvashat bővebben.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Jive-ben. A Jive támogatja az automatikus felhasználó-kiépítés használatát, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](jive-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
 
-Ha manuálisan kell létrehoznia a felhasználót, a [Jive ügyfél támogatási csapatával](https://www.jivesoftware.com/services-support/) együttműködve adja hozzá a felhasználókat a Jive platformon.
+Ha manuálisan kell létrehoznia a felhasználót, működjön együtt a [Jive ügyfél-támogatási csapatával](https://www.jivesoftware.com/services-support/) , és vegye fel a felhasználókat a Jive-platformba.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelen a Jive csempére kattint, automatikusan be kell jelentkeznie a Jive-be, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Jive csempére kattint, automatikusan be kell jelentkeznie arra a Jive, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a Jive-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [A Jive kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Felhasználói kiépítés konfigurálása](jive-provisioning-tutorial.md)
+- [A felhasználók üzembe helyezésének konfigurálása](jive-provisioning-tutorial.md)
 
-- [Hogyan védheti jive fejlett láthatóság és ellenőrzések](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Jive és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
