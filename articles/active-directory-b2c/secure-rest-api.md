@@ -1,7 +1,7 @@
 ---
-title: Nyugodt szolgáltatás biztosítása az Azure AD B2C-ben
+title: Biztonságos Rest-szolgáltatás a Azure AD B2C
 titleSuffix: Azure AD B2C
-description: Biztosítsa az egyéni REST API-jogcímek cseréjét az Azure AD B2C-ben.
+description: Az egyéni REST API jogcímek cseréjének biztonságossá tétele a Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,67 +12,67 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680378"
 ---
-# <a name="secure-your-restful-services"></a>Biztosítsa restful szolgáltatásait 
+# <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ha egy REST API-t integrál egy Azure AD B2C felhasználói úton, hitelesítéssel kell védenie a REST API-végpontot. Ez biztosítja, hogy csak a megfelelő hitelesítő adatokkal, például az Azure AD B2C-vel rendelkező szolgáltatások kezdeményezhetnek hívásokat a REST API-végpontra.
+REST API Azure AD B2C felhasználói úton való integrálásakor az REST API-végpontot hitelesítéssel kell védetté tenni. Ez biztosítja, hogy csak a megfelelő hitelesítő adatokkal rendelkező szolgáltatások (például a Azure AD B2C) hívásokat hajtson végre a REST API-végponton.
 
-Ismerje meg, hogyan integrálhatja a REST API-t az Azure AD B2C felhasználói út az [érvényesítési felhasználói bevitel](custom-policy-rest-api-claims-validation.md) és [rest API-jogcímek cseréje egyéni szabályzatok.](custom-policy-rest-api-claims-exchange.md)
+Megtudhatja, hogyan integrálhat egy REST APIt a Azure AD B2C felhasználói úton a [felhasználói bevitel ellenőrzése](custom-policy-rest-api-claims-validation.md) és [REST API a jogcímek egyéni házirendekbe való hozzáadásával](custom-policy-rest-api-claims-exchange.md) .
 
-Ez a cikk ismerteti, hogyan biztosíthatja a REST API-t HTTP alapszintű, ügyféltanúsítványvagy OAuth2 hitelesítéssel. 
+Ebből a cikkből megtudhatja, hogyan védheti a REST APIt a HTTP Basic, az ügyféltanúsítvány vagy a OAuth2 hitelesítés használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre az alábbi útmutatók egyikének lépéseit:
+Hajtsa végre a következő útmutató lépéseinek egyikét:
 
-- [Integrálja a REST API-jogcímek cseréjét az Azure AD B2C felhasználói útba a felhasználói bevitel érvényesítéséhez.](custom-policy-rest-api-claims-validation.md)
-- [REST API-jogcímek cseréje egyéni házirendekhez](custom-policy-rest-api-claims-exchange.md)
+- [Integrálja REST API jogcímek cseréjét a Azure ad B2C felhasználói úton a felhasználói bevitel érvényesítéséhez](custom-policy-rest-api-claims-validation.md).
+- [Jogcímek REST API hozzáadása egyéni házirendekhez](custom-policy-rest-api-claims-exchange.md)
 
-## <a name="http-basic-authentication"></a>HTTP alapszintű hitelesítés
+## <a name="http-basic-authentication"></a>Egyszerű HTTP-hitelesítés
 
-A HTTP alapfokú hitelesítést a [2617-es számú RFC](https://tools.ietf.org/html/rfc2617)határozza meg. Az alapszintű hitelesítés a következőképpen működik: Az Azure AD B2C HTTP-kérelmet küld az engedélyezési fejlécben lévő ügyfélhitelesítő adatokkal. A hitelesítő adatok base64 kódolású "name:password" karakterláncként vannak formázva.  
+Az egyszerű HTTP-hitelesítés az [RFC 2617](https://tools.ietf.org/html/rfc2617)-ben van meghatározva. Az alapszintű hitelesítés a következőképpen működik: Azure AD B2C egy HTTP-kérelmet küld az ügyfél hitelesítő adataival az engedélyezési fejlécben. A hitelesítő adatokat a rendszer Base64 kódolású karakterláncként (név: jelszó) formázza.  
 
-### <a name="add-rest-api-username-and-password-policy-keys"></a>REST API-felhasználónév és jelszóházirend-kulcsok hozzáadása
+### <a name="add-rest-api-username-and-password-policy-keys"></a>REST API Felhasználónév és jelszó házirend kulcsainak hozzáadása
 
-A REST API műszaki profiljának HTTP-szintű hitelesítéssel történő konfigurálásához hozza létre a következő titkosítási kulcsokat a felhasználónév és a jelszó tárolásához:
+Ha egy REST API műszaki profilt HTTP alapszintű hitelesítéssel szeretne konfigurálni, hozza létre a következő titkosítási kulcsokat a Felhasználónév és a jelszó tárolásához:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
-1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
-1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
-1. Válassza a **Házirendkulcsok**lehetőséget, majd a **Hozzáadás**lehetőséget.
-1. A **Beállítások területen**válassza a **Kézi**lehetőséget.
-1. A **Name (Név)** mezőbe írja be a **RestApiUsername (RestApiUsername ) nevet.**
-    Előfordulhat, *hogy B2C_1A_* előtag automatikusan hozzáadódik.
-1. A **Titkos** mezőbe írja be a REST API felhasználónevét.
-1. **Kulcshasználat**esetén válassza a **Titkosítás**lehetőséget.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Válassza a **szabályzat kulcsok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. A **Beállítások**lapon válassza a **manuális**lehetőséget.
+1. A **név**mezőbe írja be a következőt: **RestApiUsername**.
+    Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
+1. A **titok** mezőbe írja be a REST API felhasználónevet.
+1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
-1. Ismét válassza **a házirendkulcsok lehetőséget.**
+1. Válassza újra a **házirend-kulcsok** elemet.
 1. Válassza a **Hozzáadás** lehetőséget.
-1. A **Beállítások területen**válassza a **Kézi**lehetőséget.
-1. A **Name mezőbe**írja be a **RestApiPassword (RestApiPassword ) nevet.**
-    Előfordulhat, *hogy B2C_1A_* előtag automatikusan hozzáadódik.
-1. A **Titkos** mezőbe írja be a REST API jelszavát.
-1. **Kulcshasználat**esetén válassza a **Titkosítás**lehetőséget.
+1. A **Beállítások**lapon válassza a **manuális**lehetőséget.
+1. A **név**mezőbe írja be a következőt: **RestApiPassword**.
+    Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
+1. A **titok** mezőbe írja be a REST API jelszót.
+1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>A REST API technikai profiljának konfigurálása a HTTP alapszintű hitelesítés használatára
+### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>A REST API műszaki profil konfigurálása HTTP alapszintű hitelesítés használatára
 
 A szükséges kulcsok létrehozása után konfigurálja a REST API technikai profil metaadatait a hitelesítő adatokra való hivatkozáshoz.
 
-1. A munkakönyvtárban nyissa meg a bővítményházirend-fájlt (TrustFrameworkExtensions.xml).
-1. Keresse meg a REST API technikai profilját. Például `REST-ValidateProfile`vagy `REST-GetProfile`.
-1. Keresse `<Metadata>` meg az elemet.
-1. Módosítsa a *AuthenticationType típust* a rendszerre. `Basic`
-1. Módosítsa az *AllowInsecureAuthInProduction (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction* `false`
-1. Közvetlenül a `</Metadata>` záró elem után adja hozzá a következő XML-kódrészletet:
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. Keresse meg a REST API technikai profilt. Például `REST-ValidateProfile`: vagy `REST-GetProfile`.
+1. Keresse meg `<Metadata>` az elemet.
+1. Módosítsa a *AuthenticationType* a `Basic`következőre:.
+1. Módosítsa a *AllowInsecureAuthInProduction* a `false`következőre:.
+1. Közvetlenül a záró `</Metadata>` elem után adja hozzá a következő XML-kódrészletet:
     ```xml
     <CryptographicKeys>
         <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_RestApiUsername" />
@@ -80,7 +80,7 @@ A szükséges kulcsok létrehozása után konfigurálja a REST API technikai pro
     </CryptographicKeys>
     ```
 
-Az alábbi példa egy HTTP alapfokú hitelesítéssel konfigurált RESTful technikai profilt mutat be:
+Az alábbi példa egy olyan REST-alapú műszaki profilt mutat be, amely a HTTP alapszintű hitelesítéssel van konfigurálva:
 
 ```xml
 <ClaimsProvider>
@@ -105,15 +105,15 @@ Az alábbi példa egy HTTP alapfokú hitelesítéssel konfigurált RESTful techn
 </ClaimsProvider>
 ```
 
-## <a name="https-client-certificate-authentication"></a>HTTPS-ügyfél tanúsítványának hitelesítése
+## <a name="https-client-certificate-authentication"></a>HTTPS-ügyféltanúsítvány hitelesítése
 
-Az ügyféltanúsítvány-hitelesítés egy kölcsönös tanúsítványalapú hitelesítés, ahol az ügyfél, az Azure AD B2C, biztosítja az ügyféltanúsítványt a kiszolgálónak az identitásának igazolására. Ez az SSL kézfogás részeként történik. Csak a megfelelő tanúsítványokkal rendelkező szolgáltatások, például az Azure AD B2C férhetnek hozzá a REST API-szolgáltatáshoz. Az ügyféltanúsítvány egy X.509 digitális tanúsítvány. Éles környezetben azt egy hitelesítésszolgáltatónak kell aláírnia.
+Az ügyféltanúsítvány-alapú hitelesítés kölcsönös tanúsítványalapú hitelesítés, amelyben az ügyfél (Azure AD B2C) biztosítja az ügyféltanúsítványt a kiszolgálónak az identitásának igazolásához. Ez az SSL-kézfogás részeként történik. A REST API szolgáltatáshoz csak olyan szolgáltatások férhetnek hozzá, amelyek megfelelő tanúsítvánnyal rendelkeznek (például Azure AD B2C). Az ügyféltanúsítvány egy X. 509 digitális tanúsítvány. Éles környezetekben a tanúsítványt egy hitelesítésszolgáltatónak kell aláírnia.
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>Önaláírt tanúsítvány előkészítése (nem kötelező)
 
-Nem éles környezetben, ha még nem rendelkezik tanúsítvánnyal, önaláírt tanúsítványt is használhat. Windows rendszerben a PowerShell [Új-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmaghasználatával hozhat létre tanúsítványt.
+Nem éles környezetekben, ha még nem rendelkezik tanúsítvánnyal, önaláírt tanúsítványt is használhat. Windows rendszeren a PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
 
-1. Hajtsa végre ezt a PowerShell-parancsot önaláírt tanúsítvány létrehozásához. Módosítsa `-Subject` az argumentumot az alkalmazás és az Azure AD B2C bérlői név nek megfelelően. A `-NotAfter` dátumot úgy is módosíthatja, hogy a tanúsítványhoz más lejárati értéket adjon meg.
+1. Futtassa ezt a PowerShell-parancsot egy önaláírt tanúsítvány létrehozásához. Módosítsa az `-Subject` argumentumot megfelelően az alkalmazáshoz, és Azure ad B2C a bérlő nevét. A `-NotAfter` dátumot úgy is beállíthatja, hogy a tanúsítványhoz eltérő lejáratot határozzon meg.
     ```PowerShell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
@@ -124,43 +124,43 @@ Nem éles környezetben, ha még nem rendelkezik tanúsítvánnyal, önaláírt 
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. Nyissa **meg a Felhasználói tanúsítványok** > **kezelése az aktuális felhasználói** > **személyes** > **tanúsítványok yourappname.yourtenant.onmicrosoft.com.** > *yourappname.yourtenant.onmicrosoft.com*
-1. Válassza ki a > **Művelet** > **minden feladat exportálása** > **.**
-1. Válassza **az Igen:** > **Next** > **Igen lehetőséget, exportálja a személyes kulcsot** > **Tovább**.
-1. A **Fájlformátum exportálása**alapértelmezéseinek elfogadása.
-1. Adja meg a tanúsítvány jelszavát.
+1. Nyissa meg a **felhasználói tanúsítványok** > kezelése**aktuális felhasználói** > **személyes** > **tanúsítványok** > *yourappname.yourtenant.onmicrosoft.com*.
+1. Válassza ki a tanúsítványt > **művelet** > **minden feladat** > **Exportálás**elemet.
+1. Válassza az **Igen** > **tovább** > lehetőséget **, majd exportálja a titkos kulcsot** > a**Tovább gombra**.
+1. Fogadja el az **exportálási**fájlformátum alapértelmezett értékeit.
+1. Adja meg a tanúsítványhoz tartozó jelszót.
 
-### <a name="add-a-client-certificate-policy-key"></a>Ügyféltanúsítvány-házirendkulcs hozzáadása
+### <a name="add-a-client-certificate-policy-key"></a>Ügyféltanúsítvány-házirend kulcsának hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
-1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
-1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
-1. Válassza a **Házirendkulcsok**lehetőséget, majd a **Hozzáadás**lehetőséget.
-1. A **Beállítások párbeszédpanelen** válassza a **Feltöltés**lehetőséget.
-1. A **Név** mezőbe írja be a **RestApiClientCertificate (RestApiClientCertificate ) nevet.**
-    A *B2C_1A_* előtag automatikusan hozzáadódik.
-1. A **Fájlfeltöltés** mezőben válassza ki a tanúsítvány .pfx fájlját egy személyes kulccsal.
-1. A **Jelszó** mezőbe írja be a tanúsítvány jelszavát.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Válassza a **szabályzat kulcsok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. A **Beállítások** mezőben válassza a **feltöltés**lehetőséget.
+1. A **név** mezőbe írja be a következőt: **RestApiClientCertificate**.
+    A rendszer automatikusan hozzáadja a *B2C_1A_* előtagot.
+1. A **fájlfeltöltés** mezőben válassza ki a tanúsítvány. pfx fájlját, amely titkos kulccsal rendelkezik.
+1. A **jelszó** mezőbe írja be a tanúsítvány jelszavát.
 1. Kattintson a **Létrehozás** gombra.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>A REST API műszaki profiljának konfigurálása az ügyféltanúsítvány-hitelesítés használatára
+### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Az REST API műszaki profil konfigurálása az ügyféltanúsítvány-alapú hitelesítés használatára
 
-A szükséges kulcs létrehozása után konfigurálja a REST API műszaki profil metaadatait, hogy az ügyféltanúsítványra hivatkozzon.
+A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait az ügyféltanúsítvány hivatkozására.
 
-1. A munkakönyvtárban nyissa meg a bővítményházirend-fájlt (TrustFrameworkExtensions.xml).
-1. Keresse meg a REST API technikai profilját. Például `REST-ValidateProfile`vagy `REST-GetProfile`.
-1. Keresse `<Metadata>` meg az elemet.
-1. Módosítsa a *AuthenticationType típust* a rendszerre. `ClientCertificate`
-1. Módosítsa az *AllowInsecureAuthInProduction (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction* `false`
-1. Közvetlenül a `</Metadata>` záró elem után adja hozzá a következő XML-kódrészletet:
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. Keresse meg a REST API technikai profilt. Például `REST-ValidateProfile`: vagy `REST-GetProfile`.
+1. Keresse meg `<Metadata>` az elemet.
+1. Módosítsa a *AuthenticationType* a `ClientCertificate`következőre:.
+1. Módosítsa a *AllowInsecureAuthInProduction* a `false`következőre:.
+1. Közvetlenül a záró `</Metadata>` elem után adja hozzá a következő XML-kódrészletet:
     ```xml
     <CryptographicKeys>
        <Key Id="ClientCertificate" StorageReferenceId="B2C_1A_RestApiClientCertificate" />
     </CryptographicKeys>
     ```
 
-Az alábbi példa egy HTTP-ügyféltanúsítvánnyal konfigurált RESTful technikai profilt mutat be:
+A következő példa egy HTTP-ügyféltanúsítvány használatára konfigurált REST-alapú műszaki profilt mutat be:
 
 ```xml
 <ClaimsProvider>
@@ -184,31 +184,31 @@ Az alábbi példa egy HTTP-ügyféltanúsítvánnyal konfigurált RESTful techni
 </ClaimsProvider>
 ```
 
-## <a name="oauth2-bearer-authentication"></a>OAuth2 bemutatóra szóló hitelesítés 
+## <a name="oauth2-bearer-authentication"></a>OAuth2-tulajdonos hitelesítése 
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-A tulajdonosi jogkivonat-hitelesítés az [OAuth2.0 engedélyezési keretrendszerében van definiálva: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). A tulajdonosi jogkivonat-hitelesítés, az Azure AD B2C http-kérelmet küld egy jogkivonatot az engedélyezési fejlécben.
+A tulajdonosi jogkivonat hitelesítése a [OAuth 2.0 engedélyezési keretrendszerében van definiálva: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). A tulajdonosi jogkivonat-hitelesítésben Azure AD B2C egy HTTP-kérelmet küld az engedélyezési fejlécben található jogkivonattal.
 
 ```http
 Authorization: Bearer <token>
 ```
 
-A tulajdonosi token átlátszatlan karakterlánc. Lehet egy JWT-hozzáférési jogkivonat vagy bármely karakterlánc, amelya REST API-t elvárja az Azure AD B2C az engedélyezési fejlécben. Az Azure AD B2C a következő típusokat támogatja:
+A tulajdonosi jogkivonat egy átlátszatlan karakterlánc. Ez lehet egy JWT hozzáférési token vagy bármely olyan karakterlánc, amelyet a REST API az engedélyezési fejlécben Azure AD B2C küldésére vár. Azure AD B2C a következő típusokat támogatja:
 
-- **Bemutatóra szóló token**. Ahhoz, hogy a bemutatóra szóló jogkivonatot a Restful technikai profilban küldhesse el, a szabályzatnak először be kell szereznie a tulajdonosi jogkivonatot, majd használnia kell azt a RESTful technikai profilban.  
-- **Statikus bemutatóra szóló token**. Ezt a módszert akkor használja, ha a REST API hosszú távú hozzáférési jogkivonatot ad ki. Statikus tulajdonosi jogkivonat használatához hozzon létre egy házirendkulcsot, és a RESTful technikai profilból a házirendkulcsra hivatkozzon. 
+- **Tulajdonosi jogkivonat**. Ahhoz, hogy el tudja küldeni a tulajdonosi jogkivonatot a REST-technikai profilban, a szabályzatnak először be kell kérnie a tulajdonosi jogkivonatot, majd azt a REST technikai profilban kell használnia.  
+- **Statikus tulajdonosi jogkivonat**. Ezt a módszert akkor használja, ha a REST API hosszú távú hozzáférési tokent ad ki. Ha statikus tulajdonosi jogkivonatot szeretne használni, hozzon létre egy házirend-kulcsot, és készítsen hivatkozást a REST technikai profilból a házirend-kulcsra. 
 
 
-## <a name="using-oauth2-bearer"></a>Az OAuth2 hordozó használata  
+## <a name="using-oauth2-bearer"></a>A OAuth2-tulajdonos használata  
 
-A következő lépések bemutatják, hogyan használhatja az ügyfél hitelesítő adatait egy tulajdonosi jogkivonat beszerzéséhez, és adja át azt a REST API-hívások engedélyezési fejlécében.  
+A következő lépések bemutatják, hogyan használhatók az ügyfél hitelesítő adatai egy tulajdonosi jogkivonat beszerzéséhez, és hogyan adhatók át az REST API-hívások engedélyezési fejlécébe.  
 
-### <a name="define-a-claim-to-store-the-bearer-token"></a>Jogcím definiálása a tulajdonosi token tárolásához
+### <a name="define-a-claim-to-store-the-bearer-token"></a>Jogcím megadása a tulajdonosi jogkivonat tárolásához
 
-A jogcím az adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabályzat végrehajtása során. A [jogcímséma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket. A hozzáférési jogkivonatot egy jogcímben kell tárolni, amelyet később használni kell. 
+A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A [jogcím-séma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket. A hozzáférési jogkivonatot a későbbiekben használni kívánt jogcímben kell tárolni. 
 
-1. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez.  
@@ -230,11 +230,11 @@ A jogcím az adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabály
 
 ### <a name="acquiring-an-access-token"></a>Hozzáférési jogkivonat beszerzése 
 
-A hozzáférési jogkivonatot többféleképpen szerezheti be: [összevont identitásszolgáltatótól,](idp-pass-through-custom.md)egy hozzáférési jogkivonatot visszaadó REST API-nak, [egy ROPC-folyamatnak](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)a használatával vagy az [ügyfél hitelesítő adatfolyamának](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)használatával.  
+A hozzáférési jogkivonatot többféleképpen is beszerezheti: Ha [egy összevont identitás-szolgáltatótól](idp-pass-through-custom.md)szerzi be REST API a hozzáférési jogkivonatot, egy [ROPC-folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)használatával vagy az [ügyfél hitelesítő adatainak](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)használatával.  
 
-A következő példa egy REST API technikai profilt használ, hogy az Azure AD token végpontja az ügyfél hitelesítő adatok http-alapszintű hitelesítésként átadott használatával. Konfigurálása az Azure AD-ben, lásd: [Microsoft identity platform és az OAuth 2.0 ügyfél hitelesítő adatok áramlását.](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) Előfordulhat, hogy módosítania kell ezt az identitásszolgáltatóval való kapcsolathoz. 
+Az alábbi példa egy REST API technikai profilt használ az Azure AD jogkivonat-végpontra irányuló kérelem elvégzésére az ügyfél HTTP alapszintű hitelesítésként átadott hitelesítő adatainak használatával. Az Azure AD-ben való konfigurálásról a [Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)című cikkben olvashat. Előfordulhat, hogy módosítania kell ezt az identitás-szolgáltatóval való kapcsolatra. 
 
-A ServiceUrl,cserélje le a bérlő nevét az Azure AD-bérlő nevét. Az összes rendelkezésre álló opciót lásd a [RESTful műszaki](restful-technical-profile.md) profilhivatkozásban.
+A ServiceUrl cserélje le a-bérlő-nevet az Azure AD-bérlő nevére. Tekintse meg a [Rest műszaki profil](restful-technical-profile.md) referenciáját az összes elérhető lehetőségről.
 
 ```xml
 <TechnicalProfile Id="SecureREST-AccessToken">
@@ -260,30 +260,30 @@ A ServiceUrl,cserélje le a bérlő nevét az Azure AD-bérlő nevét. Az össze
 </TechnicalProfile>
 ```
 
-### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>A REST technikai profiljának módosítása a tulajdonosi token hitelesítésének használatára
+### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>A REST technikai profil módosítása a tulajdonosi jogkivonat hitelesítésének használatára
 
-A tulajdonosi jogkivonat-hitelesítés egyéni házirendben való támogatásához módosítsa a REST API technikai profilját az alábbiakkal:
+Ha a tulajdonosi jogkivonat hitelesítését szeretné támogatni az egyéni házirendben, módosítsa a REST API technikai profilt a következővel:
 
-1. Nyissa meg a megbízhatósági könyvtárban a *TrustFrameworkExtensions.xml* kiterjesztés házirendfájlját.
-1. Keresse meg `<TechnicalProfile>` a csomópontot, amely tartalmazza `Id="REST-API-SignUp"`a .
-1. Keresse `<Metadata>` meg az elemet.
-1. Módosítsa a *AuthenticationType típust* *bemutatóra,* az alábbiak szerint:
+1. A munkakönyvtárában nyissa meg az *TrustFrameworkExtensions. XML* kiterjesztési házirend fájlját.
+1. Keresse meg a `<TechnicalProfile>` -t tartalmazó `Id="REST-API-SignUp"`csomópontot.
+1. Keresse meg `<Metadata>` az elemet.
+1. Módosítsa a *AuthenticationType* a *tulajdonosra*, a következőképpen:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Módosítsa vagy adja hozzá a *UseClaimAsBearerToken-t* *a bearerToken-hez*az alábbiak szerint. A *tulajdonosi token* annak a jogcímnek a neve, amelyből a `SecureREST-AccessToken`tulajdonosi jogkivonat (a kimeneti jogcím származik).
+1. Módosítsa vagy adja hozzá a *UseClaimAsBearerToken* a *bearerToken*-hez az alábbiak szerint. A *bearerToken* annak a jogcímnek a neve, amelynek a tulajdonosi jogkivonatát beolvassa a rendszer (a `SecureREST-AccessToken`kimeneti jogcímeből).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
     ```
     
-1. Győződjön meg róla, hogy a fenti jogcímet bemeneti jogcímként adja hozzá:
+1. Győződjön meg arról, hogy a fent használt jogcímet bemeneti jogcímként adja hozzá:
 
     ```xml
     <InputClaim ClaimTypeReferenceId="bearerToken"/>
     ```    
 
-A fenti kódrészletek hozzáadása után a technikai profilnak a következő XML-kódnak kell lennie:
+A fenti kódrészletek hozzáadása után a technikai profilnak a következő XML-kódhoz hasonlóan kell kinéznie:
 
 ```XML
 <ClaimsProvider>
@@ -308,40 +308,40 @@ A fenti kódrészletek hozzáadása után a technikai profilnak a következő XM
 </ClaimsProvider>
 ```
 
-## <a name="using-a-static-oauth2-bearer"></a>Statikus OAuth2 hordozó használata 
+## <a name="using-a-static-oauth2-bearer"></a>Statikus OAuth2-tulajdonos használata 
 
-### <a name="add-the-oauth2-bearer-token-policy-key"></a>Az OAuth2-tulajdonosi token házirendkulcsának hozzáadása
+### <a name="add-the-oauth2-bearer-token-policy-key"></a>Adja hozzá a OAuth2 tulajdonosi jogkivonat-házirendjének kulcsát
 
-Hozzon létre egy házirendkulcsot a tulajdonosi token értékének tárolásához.
+Hozzon létre egy házirend-kulcsot a tulajdonosi jogkivonat értékének tárolásához.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
-1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
-1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
-1. Válassza a **Házirendkulcsok**lehetőséget, majd a **Hozzáadás**lehetőséget.
-1. A **Beállítások** `Manual`területen válassza a lehetőséget.
-1. Adja meg a házirendkulcs **nevét.** Például: `RestApiBearerToken`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs nevéhez.
-1. A **Titkos**mezőbe írja be a korábban rögzített ügyféltitkot.
-1. A Kulcs használata `Encryption` **esetén**válassza a lehetőséget.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Válassza a **szabályzat kulcsok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. A **Beállítások**területen válassza `Manual`a lehetőséget.
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `RestApiBearerToken`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. A **kulcshasználat**beállításnál válassza `Encryption`a elemet.
 1. Kattintson a **Létrehozás** gombra.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Konfigurálja a REST API technikai profilját a tulajdonosi jogkivonat-házirendkulcs használatára
+### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>A REST API technikai profiljának konfigurálása a tulajdonosi jogkivonat-házirend kulcsának használatára
 
-A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait, hogy a tulajdonosi jogkivonatra hivatkozzon.
+A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait a tulajdonosi jogkivonatra való hivatkozáshoz.
 
-1. A munkakönyvtárban nyissa meg a bővítményházirend-fájlt (TrustFrameworkExtensions.xml).
-1. Keresse meg a REST API technikai profilját. Például `REST-ValidateProfile`vagy `REST-GetProfile`.
-1. Keresse `<Metadata>` meg az elemet.
-1. Módosítsa a *AuthenticationType típust* a rendszerre. `Bearer`
-1. Módosítsa az *AllowInsecureAuthInProduction (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction) (AllowInsecureAuthInProduction* `false`
-1. Közvetlenül a `</Metadata>` záró elem után adja hozzá a következő XML-kódrészletet:
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. Keresse meg a REST API technikai profilt. Például `REST-ValidateProfile`: vagy `REST-GetProfile`.
+1. Keresse meg `<Metadata>` az elemet.
+1. Módosítsa a *AuthenticationType* a `Bearer`következőre:.
+1. Módosítsa a *AllowInsecureAuthInProduction* a `false`következőre:.
+1. Közvetlenül a záró `</Metadata>` elem után adja hozzá a következő XML-kódrészletet:
     ```xml
     <CryptographicKeys>
        <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />
     </CryptographicKeys>
     ```
 
-Az alábbi példa egy RESTful technikai profilt mutat be tulajdonosi jogkivonat-hitelesítéssel konfigurálva:
+A következő példa egy olyan REST-alapú műszaki profilt mutat be, amely a tulajdonosi jogkivonat-hitelesítéssel van konfigurálva:
 
 ```xml
 <ClaimsProvider>
@@ -367,4 +367,4 @@ Az alábbi példa egy RESTful technikai profilt mutat be tulajdonosi jogkivonat-
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Restful technical profile](restful-technical-profile.md) elemről az IEF-hivatkozásban. 
+- További információ az IEF-referenciában található [Rest technikai profil](restful-technical-profile.md) elemről. 

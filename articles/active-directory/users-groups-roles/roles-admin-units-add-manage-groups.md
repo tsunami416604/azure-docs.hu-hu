@@ -1,6 +1,6 @@
 ---
-title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti egységben (előzetes verzió) – Azure Active Directory | Microsoft dokumentumok
-description: Csoportok és szerepkör-engedélyeik kezelése egy felügyeleti egységben az Azure Active Directoryban
+title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti egységben (előzetes verzió) – Azure Active Directory | Microsoft Docs
+description: Csoportok és szerepkörük engedélyeinek kezelése egy felügyeleti egységben Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,35 +15,35 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683274"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése az Azure Active Directoryban
+# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése felügyeleti egységekben Azure Active Directory
 
-Az Azure Active Directoryban (Azure AD) csoportokat adhat hozzá egy felügyeleti egységhez (AU) a felügyeleti ellenőrzés részletesebb felügyeleti hatóköréhez.
+A Azure Active Directory (Azure AD) szolgáltatásban hozzáadhat csoportokat egy felügyeleti egységhez (AU) az irányítás részletesebb felügyeleti hatóköréhez.
 
-A PowerShell és a Microsoft Graph felügyeleti egységkezeléshez való használatának előkészítésére vonatkozó lépésekről az [Első lépések ( Első lépések) témakörben található.](roles-admin-units-manage.md#get-started)
+A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való előkészítésének lépéseiért lásd: első [lépések](roles-admin-units-manage.md#get-started).
 
 ## <a name="add-groups-to-an-au"></a>Csoportok hozzáadása AU-hoz
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az előzetes verzióban a csoportokat csak egyenként rendelheti hozzá egy felügyeleti egységhez. Nincs lehetőség a csoportok tömeges hozzárendelésére egy közigazgatási egységhez. A csoport a portálon kétféleképpen rendelhet hozzá egy csoportot egy közigazgatási egységhez:
+Az előzetes verzióban csak az egyes felügyeleti egységekhez rendelhet csoportokat. A csoportok tömeges hozzárendelése nem lehetséges egy felügyeleti egységhez. A portálon a következő két módszer egyikével rendelhet hozzá egy csoportot egy felügyeleti egységhez:
 
-1. Az **Azure AD > Csoportok** lapjáról
+1. Az **Azure AD > csoportok** lapról
 
-    Nyissa meg a Csoportok áttekintése lapot az Azure AD-ben, és válassza ki a csoportot, amelyet hozzá kell rendelni a felügyeleti egységhez. A bal oldalon válassza a **Felügyeleti egységek** lehetőséget, ha listázni szeretné azokat a felügyeleti egységeket, amelyekhez a csoport hozzá van rendelve. A tetején megtalálja a lehetőséget Hozzárendelése a közigazgatási egységhez, és kattintson rá ad egy panel a jobb oldalon, hogy válassza ki a közigazgatási egység.
+    Nyissa meg a csoportok áttekintése lapot az Azure AD-ben, és válassza ki azt a csoportot, amelyet hozzá kell rendelni a felügyeleti egységhez. A bal oldalon válassza ki a **felügyeleti egységek** elemet azon felügyeleti egységek listázásához, amelyekre a csoport hozzá van rendelve. A felső részen megtalálja a felügyeleti egységhez való hozzárendelés lehetőséget, majd a gombra kattintva a felügyeleti egységet kiválaszthatja a jobb oldali panelen.
 
-    ![csoport hozzárendelése egyénileg egy felügyeleti egységhez](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
+    ![Csoport társítása egyenként egy felügyeleti egységhez](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
 
-1. Az **Azure AD > felügyeleti egységek > minden csoport** lapról
+1. Az **Azure AD > felügyeleti egységek > minden csoport** oldalon
 
-    Nyissa meg az Összes csoport panelt az Azure AD > felügyeleti egységekben. Ha a felügyeleti egységhez már vannak csoportok rendelve, azok a jobb oldalon jelennek meg. Válassza a **Hozzáadás** a tetején, és a jobb oldali panel en csúszik az Azure AD-szervezetben elérhető csoportok listázása. Jelöljön ki egy vagy több csoportot, amelyet a közigazgatási egységekhez szeretne rendelni.
+    Nyissa meg a minden csoport panelt az Azure AD > felügyeleti egységekben. Ha vannak olyan csoportok, amelyek már hozzá vannak rendelve a felügyeleti egységhez, akkor a jobb oldalon jelennek meg. A felső és a jobb oldali panelen válassza a **Hozzáadás** lehetőséget, majd az Azure ad-szervezetben elérhető csoportok listázásával. Válasszon ki egy vagy több olyan csoportot, amelyet hozzá szeretne rendelni a felügyeleti egységekhez.
 
-    ![válasszon ki egy felügyeleti egységet, majd válassza a Tag hozzáadása lehetőséget](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
+    ![Válasszon ki egy felügyeleti egységet, majd válassza a tag hozzáadása elemet.](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -51,7 +51,7 @@ Az előzetes verzióban a csoportokat csak egyenként rendelheti hozzá egy fel�
     $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 
-Ebben a példában az Add-AzureADAdministrativeUnitMember parancsmag a csoport hozzáadása a felügyeleti egységhez. A program argumentumként a közigazgatási egység objektumazonosítóját és a hozzáadni hozandó csoport objektumazonosítóját veszi fel. A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosítható.
+Ebben a példában az Add-AzureADAdministrativeUnitMember parancsmag használatával lehet hozzáadni a csoportot a felügyeleti egységhez. A felügyeleti egység és a hozzáadni kívánt csoport objektumazonosító-azonosítója argumentumként történik. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -69,20 +69,20 @@ Példa:
       "@odata.id":"https://graph.microsoft.com/beta/users/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
     }
 
-## <a name="list-groups-in-an-au"></a>Csoportok listázása AU-ban
+## <a name="list-groups-in-an-au"></a>AU-beli csoportok listázása
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Nyissa meg az **Azure AD > felügyeleti egységek** a portálon. Válassza ki azt a felügyeleti egységet, amelynek a felhasználóit fel szeretné sorolni. Alapértelmezés szerint **minden felhasználó** már a bal oldali panelen van kijelölve. Válassza az **Összes csoport lehetőséget,** és a jobb oldalon megtalálja a kijelölt felügyeleti egységhez tartozó csoportok listáját.
+Nyissa meg az **Azure AD > felügyeleti egységeket** a portálon. Válassza ki azt a felügyeleti egységet, amelynek a felhasználóit szeretné listázni. Alapértelmezés szerint az **összes felhasználó** már a bal oldali panelen van kiválasztva. Válassza az **összes csoport** lehetőséget, és a jobb oldalon megtalálja azon csoportok listáját, amelyek a kiválasztott felügyeleti egység tagjai.
 
-![A törölni kívánt felügyeleti egység kiválasztása](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Válassza ki a törölni kívánt felügyeleti egységet](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 
-Ez segít abban, hogy a közigazgatási egység minden tagja megkapja. Ha meg szeretné jeleníteni a felügyeleti egység összes csoportját, használhatja az alábbi kódrészletet:
+Ez segítséget nyújt a felügyeleti egység összes tagjának beszerzéséhez. Ha meg szeretné jeleníteni az összes olyan csoportot, amely tagja a felügyeleti egységnek, használhatja az alábbi kódrészletet:
 
     foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
     {
@@ -99,11 +99,11 @@ Ez segít abban, hogy a közigazgatási egység minden tagja megkapja. Ha meg sz
     Request body
     {}
 
-## <a name="list-aus-for-a-group"></a>Csoport AUs listái
+## <a name="list-aus-for-a-group"></a>Csoporthoz tartozó AUs listázása
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az Azure AD portálon megnyithatja a csoport adatait a **Csoportok**megnyitásával. Jelöljön ki egy csoportot a csoport profiljának megnyitásához. Válassza **a Felügyeleti egységek** lehetőséget az összes olyan közigazgatási egység listázásához, ahol a csoport tagja.
+Az Azure AD-portálon **csoportok**megnyitásával nyithatja meg a csoport adatait. Válasszon ki egy csoportot a csoport profiljának megnyitásához. Válassza a **felügyeleti egységek** lehetőséget az összes olyan felügyeleti egység listázásához, ahol a csoport tagja.
 
 ![Csoport felügyeleti egységeinek listázása](./media/roles-admin-units-add-manage-groups/list-group-au.png)
 
@@ -115,19 +115,19 @@ Az Azure AD portálon megnyithatja a csoport adatait a **Csoportok**megnyitásá
 
     https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 
-## <a name="remove-a-group-from-an-au"></a>Csoport eltávolítása AU-ból
+## <a name="remove-a-group-from-an-au"></a>Csoport eltávolítása egy AU-ból
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Kétféleképpen távolíthat el egy csoportot egy felügyeleti egységből az Azure Portalon.
+A Azure Portal két módon távolíthatja el a csoportot egy felügyeleti egységből.
 
-Nyissa meg az Azure > **AD-csoportokat,** és nyissa meg a felügyeleti egységből eltávolítani kívánt csoport profilját. **Azure AD** Válassza a bal oldali **panelen** a Felügyeleti egységek lehetőséget az összes olyan közigazgatási egység listázásához, ahol a csoport tagja. Jelölje ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
+Nyissa meg az **Azure ad** > -**csoportokat** , és nyissa meg a felügyeleti egységből eltávolítani kívánt csoport profilját. Válassza a **felügyeleti egységek** lehetőséget a bal oldali panelen az összes olyan felügyeleti egység listázásához, ahol a csoport tagja. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
 
-![Csoport eltávolítása a felügyeleti egységből](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+![Csoport eltávolítása felügyeleti egységből](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-Másik lehetőségként az **Azure AD** > **felügyeleti egységek,** és válassza ki a felügyeleti egység, ahol a csoport tagja. A tagcsoportok listázásához válassza a Bal oldali **panelcsoportok** elemét. Jelölje ki a felügyeleti egységből eltávolítandó csoportot, majd válassza a **Csoportok eltávolítása**lehetőséget.
+Másik lehetőségként megnyithatja az **Azure ad** > **felügyeleti egységeket** , és kiválaszthatja azt a felügyeleti egységet, amelyben a csoport tagja. Válassza a **csoportok** lehetőséget a bal oldali panelen a tagok listájának listázásához. Válassza ki a felügyeleti egységből eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása**lehetőséget.
 
-![Csoportok listázása egy közigazgatási egységben](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Felügyeleti egységben lévő csoportok listázása](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -139,5 +139,5 @@ Másik lehetőségként az **Azure AD** > **felügyeleti egységek,** és válas
 
 ## <a name="next-steps"></a>További lépések
 
-- [Szerepkör hozzárendelése felügyeleti egységhez](roles-admin-units-assign-roles.md)
+- [Szerepkör társítása egy felügyeleti egységhez](roles-admin-units-assign-roles.md)
 - [Felhasználók kezelése egy felügyeleti egységben](roles-admin-units-add-manage-users.md)

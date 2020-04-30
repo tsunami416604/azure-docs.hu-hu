@@ -1,6 +1,6 @@
 ---
-title: Eszközök kiépítése a távoli figyeléshez a Node.js fájlban - Azure | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként csatlakoztatható eszköz a távfigyelési megoldás gyorsítóhoz a Node.js nyelven írt alkalmazás használatával.
+title: Eszközök kiépítése a távoli figyeléshez a Node. js-ben – Azure | Microsoft Docs
+description: Leírja, hogyan csatlakoztatható egy eszköz a távoli figyelési megoldáshoz a Node. js-ben írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,36 +10,36 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683976"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Az eszköz csatlakoztatása a távfigyelési megoldás gyorsítóhoz (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (node. js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan csatlakoztathat egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz. Ebben az oktatóanyagban a Node.js programot használja, amely jó lehetőség a minimális erőforrás-korlátokkal rendelkező környezetekben.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node. js-t használja, amely a minimális erőforrás-korlátozásokkal rendelkező környezetek számára megfelelő megoldás.
 
-Ha egy eszközt szeretne szimulálni, olvassa el az [Új szimulált eszköz létrehozása és tesztelése című témakört.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Ha inkább egy eszközt szeretne szimulálni, tekintse meg [az új szimulált eszköz létrehozását és tesztelését](iot-accelerators-remote-monitoring-create-simulated-device.md)ismertető témakört.
 
-## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
+## <a name="create-a-nodejs-solution"></a>Node. js-megoldás létrehozása
 
-Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy újabb verziója telepítve van a fejlesztői gépen. Futtathatja `node --version` a parancssorból, hogy ellenőrizze a verziót.
+Győződjön meg arról, hogy a [Node. js](https://nodejs.org/) 4.0.0 vagy újabb verziója telepítve van a fejlesztői gépen. A parancsot a `node --version` parancssorban futtatva ellenőrizhető a verzió.
 
-1. Hozzon létre `remotemonitoring` egy mappát a fejlesztői gépen. Keresse meg ezt a mappát a parancssori környezetben.
+1. Hozzon létre egy `remotemonitoring` nevű mappát a fejlesztői gépen. Navigáljon ehhez a mappához a parancssori környezetben.
 
-1. A mintaalkalmazás befejezéséhez szükséges csomagok letöltéséhez és telepítéséhez futtassa a következő parancsokat:
+1. A minta alkalmazás végrehajtásához szükséges csomagok letöltéséhez és telepítéséhez futtassa a következő parancsokat:
 
     ```cmd/sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Hozzon `remotemonitoring` létre egy **remote_monitoring.js**nevű fájlt a mappában. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
+1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring. js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
 
-1. A **remote_monitoring.js** fájlban adja `require` hozzá a következő állításokat:
+1. A **remote_monitoring. js** fájlban adja hozzá a következő `require` utasításokat:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -48,13 +48,13 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a `{device connection string}` helyőrző értéket a távoli figyelési megoldásban kiépített eszközre vonatkozóan a feljegyzett értékre:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző `{device connection string}` értékét a távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Néhány alap telemetriai adat definiálásához adja hozzá a következő változókat:
+1. Az alapszintű telemetria-adatok definiálásához adja hozzá a következő változókat:
 
     ```javascript
     var temperature = 50;
@@ -65,7 +65,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
     var pressureUnit = 'psig';
     ```
 
-1. Néhány tulajdonságérték definiálásához adja hozzá a következő változókat:
+1. Egyes tulajdonságértékek definiálásához adja hozzá a következő változókat:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -78,7 +78,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
     var deviceOnline = true;
     ```
 
-1. Adja hozzá a következő változót a megoldásnak küldendő jelentett tulajdonságok meghatározásához. Ezek a tulajdonságok a webes felhasználói felületen megjelenítendő metaadatok:
+1. Adja hozzá a következő változót a megoldásnak küldendő jelentett tulajdonságok meghatározásához. Ezek a tulajdonságok a webes felhasználói felületen megjelenítendő metaadatokat tartalmazzák:
 
     ```javascript
     var reportedProperties = {
@@ -96,7 +96,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
     }
     ```
 
-1. A művelet eredmények nyomtatásához adja hozzá a következő segítő funkciót:
+1. A művelet eredményeinek kinyomtatásához adja hozzá a következő segítő funkciót:
 
     ```javascript
     function printErrorFor(op) {
@@ -106,7 +106,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
     }
     ```
 
-1. Adja hozzá a következő segítő függvényt a telemetriai értékek véletlenszerűvé tétele érdekében:
+1. Adja hozzá a következő Helper-függvényt a telemetria-értékek véletlenszerű megadásához:
 
      ```javascript
      function generateRandomIncrement() {
@@ -114,7 +114,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
      }
      ```
 
-1. Adja hozzá a következő általános függvényt a megoldásból érkező közvetlen metódushívások kezeléséhez. A függvény információkat jelenít meg a megmeghívott közvetlen metódusról, de ebben a példában semmilyen módon nem módosítja az eszközt. A megoldás közvetlen módszereket használ az eszközökön való cselekvésre:
+1. Adja hozzá a következő általános függvényt a közvetlen metódus hívásának kezeléséhez a megoldásból. A függvény megjeleníti a meghívott közvetlen metódus adatait, de ebben a példában nem módosítja az eszközt semmilyen módon. A megoldás közvetlen metódusok használatával cselekszik az eszközökön:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -129,7 +129,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
      }
      ```
 
-1. Adja hozzá a következő függvényt a megoldásból érkező **FirmwareUpdate** közvetlen metódushívások kezeléséhez. A függvény ellenőrzi a közvetlen metódus hasznos adatában átadott paramétereket, majd aszinkron módon futtatja a belső vezérlőprogram frissítési szimulációját:
+1. Adja hozzá a következő függvényt a **FirmwareUpdate** Direct metódus hívásának kezeléséhez a megoldásból. A függvény ellenőrzi, hogy a közvetlen metódus adattartalma megfelel-e az átadott paramétereknek, majd aszinkron módon futtatja a belső vezérlőprogram frissítési szimulációját:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -158,7 +158,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
      }
      ```
 
-1. Adja hozzá a következő függvényt egy hosszú ideig futó belső vezérlőprogram-frissítési folyamat szimulálásához, amely a folyamatot visszajelenti a megoldáshoz:
+1. Adja hozzá a következő függvényt egy hosszú ideig futó belső vezérlőprogram-frissítési folyamat szimulálásához, amely a megoldásnak visszalépést jelent:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -236,7 +236,7 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
      }
      ```
 
-1. Adja hozzá a következő kódot telemetriai adatok küldéséhez a megoldásba. Az ügyfélalkalmazás tulajdonságokat ad az üzenethez az üzenetséma azonosításához:
+1. Adja hozzá a következő kódot, hogy telemetria-adatküldés a megoldásnak. Az ügyfélalkalmazás tulajdonságok hozzáadásával azonosítja az üzenet-sémát:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -255,19 +255,19 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
      }
      ```
 
-1. Adja hozzá a következő kódot az ügyfélpéldány létrehozásához:
+1. Adja hozzá a következő kódot egy ügyfél-példány létrehozásához:
 
      ```javascript
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Adja hozzá a következő kódot:
+1. Adja hozzá az alábbi kódot a következőhöz:
 
-    * Nyissa meg a kapcsolatot.
-    * Állítson be egy kezelőt a kívánt tulajdonságokhoz.
+    * Nyissa meg a-kapcsolatokat.
+    * Kezelő beállítása a kívánt tulajdonságokhoz.
     * Jelentett tulajdonságok küldése.
-    * Regisztrálják a közvetlen metódusok kezelőit. A minta külön kezelőt használ a belső vezérlőprogram frissítési közvetlen metódusához.
-    * Kezdje el elküldeni a telemetriai adatokat.
+    * Regisztrálja a közvetlen metódusok kezelőit. A minta egy külön kezelőt használ a belső vezérlőprogram-frissítés közvetlen módszeréhez.
+    * Telemetria küldésének megkezdése.
 
       ```javascript
       client.open(function (err) {
@@ -329,9 +329,9 @@ Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0-s vagy úja
       });
       ```
 
-1. Mentse a módosításokat a **remote_monitoring.js fájlba.**
+1. Mentse a módosításokat a **remote_monitoring. js** fájlba.
 
-1. A mintaalkalmazás elindításához futtassa a következő parancsot a parancssorból:
+1. A minta alkalmazás indításához futtassa a következő parancsot a parancssorban:
 
      ```cmd/sh
      node remote_monitoring.js

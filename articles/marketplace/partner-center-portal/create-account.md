@@ -1,6 +1,6 @@
 ---
-title: Kereskedelmi piactéri fiók létrehozása a Partnerközpontban
-description: Megtudhatja, hogyan hozhat létre kereskedelmi piactéri fiókot a Partnerközpontban.
+title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
+description: Megtudhatja, hogyan hozhat létre kereskedelmi Piactéri fiókot a partner Centerben.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
@@ -8,174 +8,174 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
 ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684135"
 ---
-# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactéri fiók létrehozása a Partnerközpontban
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
-Az ajánlatok Azure [Marketplace-en](https://azuremarketplace.microsoft.com/) vagy [a Microsoft AppSource-ban](https://appsource.microsoft.com/)való közzétételéhez létre kell hoznia egy fiókot a Partner Center kereskedelmi piactér i programjában. Ebben a cikkben bemutatjuk, hogyan hozhat létre Partnerközpont-fiókot, és hogyan vehet fel új megjelenítőket a Kereskedelmi piactér programba.
+Ha közzé szeretné tenni ajánlatait az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy [Microsoft AppSourceon](https://appsource.microsoft.com/), létre kell hoznia egy fiókot a kereskedelmi piactér programban a partner Centerben. Ebből a cikkből megtudhatja, hogyan hozhat létre egy partner Center-fiókot, és hogyan adhat hozzá új közzétevőket a kereskedelmi piactér programhoz.
 
 >[!IMPORTANT]
->Ha olyan fiókkal rendelkezik a [Felhőpartneri portálon (CPP),](https://cloudpartner.azure.com) amelyet áthelyezett a Partnerközpontba, nem kell új fiókot létrehoznia. További információt a [CPP-ből áthelyező közzétevők](#publishers-moving-from-cpp) című témakörben talál.
+>Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha fiókot szeretne létrehozni a Partnerközpontban, győződjön meg arról, hogy rendelkezik:
+Ha fiókot szeretne létrehozni a partner Centerben, ellenőrizze, hogy rendelkezik-e az alábbiakkal:
 
-- jogosult jogi megállapodásokat aláírni a vállalat nevében.
-- A vállalat hivatalos cégneve, címe és elsődleges kapcsolattartója (ez lehet Ön).
+- A jogi szerződések a vállalat nevében történő aláírására szolgáló hatóság.
+- Vállalata jogi üzleti neve, címe és elsődleges kapcsolattartója (ez lehet Ön is).
 
-Ezeket az adatokat a fiók létrehozásának folyamata során ellenőrizzük.
+Ezt az információt a fiók létrehozási folyamata során ellenőrizzük.
 
-A fiók létrehozásának két módja van:
+Kétféleképpen hozhat létre fiókot:
 
-- Ha még nem használja a Partnerközpontot, és nincs Microsoft hálózati fiókja, hozza létre fiókját [a Fiók létrehozása a Partnerközpont igénylési lapján.](#create-an-account-using-the-partner-center-enrollment-page)
-- Ha már regisztrált a Microsoft Partner Network szolgáltatásban, hozzon létre egy fiókot közvetlenül a Partnerközpontból a [Fiók létrehozása a meglévő Microsoft Partner Center-regisztrációk használatával](#create-an-account-using-existing-microsoft-partner-center-enrollments)című használatával.
+- Ha most ismerkedik a partner központtal, és nem rendelkezik Microsoft hálózati fiókkal, hozzon létre [egy fiókot a fiókpartner beléptetési lapján a fiók létrehozása lehetőség](#create-an-account-using-the-partner-center-enrollment-page)használatával.
+- Ha már regisztrált a Microsoft Partner Networkban, hozzon létre egy fiókot közvetlenül a partner Centerből a [fiók létrehozása meglévő Microsoft partner Center-regisztráció használatával](#create-an-account-using-existing-microsoft-partner-center-enrollments).
 
-## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>Fiók létrehozása a Partnerközpont igénylési lapján
+## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>Fiók létrehozása a partner Center beléptetési oldal használatával
 
-Akkor használja ezt a módszert, ha most használja a Partnerközpontot, és nincs beiratkozva a Microsoft Partner Network hálózatba. Ez a szakasz bemutatja, hogyan hozhat létre új Partnerközpont-fiókot, többek között a következőket:
+Akkor használja ezt a módszert, ha még nem ismeri a partner centert, és nincs regisztrálva a Microsoft Partner Network. Ez a szakasz bemutatja, hogyan hozhat létre új partner Center-fiókot, beleértve a következőket:
 
-- [Regisztráció a Partnerközpont regisztrációs lapján](#register-on-the-partner-center-enrollment-page)
+- [Regisztráljon a partner Center beléptetési oldalán](#register-on-the-partner-center-enrollment-page)
 - [Bejelentkezés munkahelyi fiókkal](#sign-in-with-a-work-account)
-- [Fogadja el a feltételeket](#agree-to-terms-and-conditions)
-- [A közzétevői profil biztosítása](#provide-your-publisher-profile)
+- [A feltételek és Kikötések elfogadása](#agree-to-terms-and-conditions)
+- [Adja meg a közzétevői profilját](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Ha olyan fiókkal rendelkezik a [Felhőpartneri portálon (CPP),](https://cloudpartner.azure.com) amelyet áthelyezett a Partnerközpontba, nem kell új fiókot létrehoznia. További információt a [CPP-ből áthelyező közzétevők](#publishers-moving-from-cpp) című témakörben talál.
+>Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) .
 
-### <a name="register-on-the-partner-center-enrollment-page"></a>Regisztráció a Partnerközpont regisztrációs lapján
+### <a name="register-on-the-partner-center-enrollment-page"></a>Regisztráljon a partner Center beléptetési oldalán
 
-Tekintse át az Üdvözli a [**Microsoft Partnerközpont**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) igénylési lapján található információkat, majd regisztráljon egy fiókot.
+Tekintse át az [**üdvözli a Microsoft partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) beléptetési lapján található információkat, majd regisztráljon egy fiókra.
 
 ### <a name="sign-in-with-a-work-account"></a>Bejelentkezés munkahelyi fiókkal
 
-Jelentkezzen be egy munkahelyi fiókkal, hogy összekapcsolhassa a vállalat munkahelyi e-mail fióktartományát az új Partnerközpont-fiókkal. A fiókok társításával a vállalati alkalmazottak bejelentkezhetnek a Partnerközpontba a munkahelyi fiók felhasználói nevével és jelszavaival.
+Jelentkezzen be egy munkahelyi fiókkal, hogy a vállalati munkahelyi e-mail-fiók tartományát összekapcsolja az új partner Center-fiókkal. A fiókok társításával a vállalat alkalmazottai a munkahelyi fiók felhasználónevével és jelszavával jelentkezhetnek be a fiókpartner-központba.
 
 >[!NOTE]
->Annak ellenőrzéséhez, hogy vállalata rendelkezik-e már munkahelyi fiókkal, hogyan hozhat létre új munkahelyi fiókot, vagy hogyan állíthat be több munkafiókot a Partnerközponttal, látogasson el [a Vállalati munkahelyi fiók és a Partnerközpont oldalra.](./company-work-accounts.md)
+>Annak megállapításához, hogy a vállalata rendelkezik-e már munkahelyi fiókkal, hogyan hozhat létre új munkahelyi fiókot, illetve hogyan állíthat be több munkahelyi fiókot a partner centerrel való használatra, látogasson el [a munkahelyi fiókra és a partner központba](./company-work-accounts.md).
 
-### <a name="agree-to-terms-and-conditions"></a>Fogadja el a szerződési feltételeket
+### <a name="agree-to-terms-and-conditions"></a>A feltételek és Kikötések elfogadása
 
-El kell fogadnia a [Microsoft Piactér kiadói szerződésében foglalt feltételeket.](https://go.microsoft.com/fwlink/?LinkID=699560)
+Meg kell egyeznie a [Microsoft Marketplace kiadói szerződésben](https://go.microsoft.com/fwlink/?LinkID=699560)foglalt feltételekkel.
 
-### <a name="provide-your-publisher-profile"></a>A közzétevői profil biztosítása
+### <a name="provide-your-publisher-profile"></a>Adja meg a közzétevői profilját
 
-A közzétevői profil tartalmazza a vállalat nevét és az MPN-azonosítót. Ha még nem tette meg, csatlakoznia kell a [Microsoft Partner Network hálózathoz.](https://partner.microsoft.com/commercial) Miután csatlakozott a Microsoft Partner Network hálózathoz, mpn-azonosítót kap.
+A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját. Ha még nem tette meg, akkor csatlakoznia kell a [Microsoft partner Networkhoz](https://partner.microsoft.com/commercial). A Microsoft Partner Network csatlakoztatása után egy MPN-azonosítót fog megadni.
 
-Hozzon létre egy közzétevő-azonosítót. A Publisher-azonosító egyedileg azonosítja a vállalatot és az ajánlatokat a Marketplace-en és az AppSource-ban.
+Hozzon létre egy közzétevői azonosítót. A közzétevő azonosítója egyedileg azonosítja a vállalatot és az ajánlatait a piactéren és a AppSource.
 
-Miután megerősítette a közzétevői profiladatait, fogadja el a feltételeket, és hozza létre partnerközpont-fiókját az **Elfogadás és folytatás**lehetőség kiválasztásával.
+Miután megerősítette a közzétevői profil adatait, fogadja el a feltételeket és kikötéseket, és hozza létre a partner Center-fiókot az **elfogadás és folytatás**lehetőség kiválasztásával.
 
 >[!IMPORTANT]
->*A feltételek elfogadásához jogosultnak kell lennie arra, hogy a vállalat nevében eljárjon.*
+>*A feltételek elfogadásához engedélyezni kell a vállalat nevében való részvételt.*
 
-A beiratkozás után a Kereskedelmi piactér áttekintése lapra kerül. **A Kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **partnerbeállítási** > programok lehetőséget**választja,** látni fogja, hogy a Kereskedelmi piactér regisztráltként van megjelentve.
+A regisztrációt követően a kereskedelmi piactér – áttekintés oldalon olvashat. A **kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **partner beállításai** > **programok**lehetőséget választja, látni fogja, hogy a kereskedelmi piactér regisztrálva van-e.
 
-Köszönjük, hogy kereskedelmi piactér-fiókot hozott létre a Partner Centerben! Ha segítségre van szüksége, olvassa el a [kereskedelmi piactér áttekintése című témakört.](./commercial-marketplace-overview.md) A közzétevők hozzáadásával kapcsolatban az [Új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program)című témakörben talál segítséget.
+Köszönjük, hogy létrehoz egy kereskedelmi piactér-fiókot a partner Centerben! Segítségért lásd: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Fiók létrehozása a Microsoft Partner Center meglévő regisztrációival
+## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Fiók létrehozása meglévő Microsoft partner Center-regisztrációk használatával
 
-Ebben a szakaszban kereskedelmi piactér-fiókot hozhat létre, ha már rendelkezik regisztrációval a Microsoft Partner Centerben.
+Ebben a szakaszban egy kereskedelmi piactér-fiókot hozhat létre, ha már rendelkezik regisztrációval a Microsoft partner Centerben.
 
-A meglévő regisztrációknak két típusa van, amelyek segítségével beállíthatja a Kereskedelmi piactér-fiókot. Válassza ki az Önre vonatkozót:
+Kétféle meglévő regisztrációt használhat a kereskedelmi Piactéri fiók beállításához. Válassza ki az Önnek megfelelőt:
 
-- Ha már rendelkezik Microsoft Partner Network regisztrációval, hozza létre fiókját [a Microsoft Partner Network ben regisztrált](#enrolled-in-the-microsoft-partner-network)módon.
-- Ha már rendelkezik fejlesztői programregisztrációval, hozza létre fiókját [a Fejlesztői programban regisztrált](#enrolled-in-a-developer-program)módon.
+- Ha már rendelkezik Microsoft Partner Network-regisztrációval, hozza létre a fiókját [a Microsoft partner Networkban](#enrolled-in-the-microsoft-partner-network).
+- Ha már rendelkezik egy fejlesztői program beléptetésével, hozzon létre [egy fejlesztői programban regisztrált](#enrolled-in-a-developer-program)fiókját.
 
-Mindkét módszer esetében az alábbi lépéseket kell alkalmaznia:
+Mindkét módszer esetében az alábbi lépéseket fogja használni:
 
-- Bejelentkezés a Partnerközpontba a meglévő hitelesítő adatokkal
+- Bejelentkezés a fiókpartner-központba meglévő hitelesítő adataival
 - Adja meg a közzétételi profil adatait
 
-Győződjön meg róla, hogy a fiókadatok kéznél vannak.
+Ügyeljen arra, hogy a fiókadatok kéznél legyenek.
 
 >[!IMPORTANT]
->Ha olyan fiókkal rendelkezik a [Felhőpartneri portálon (CPP),](https://cloudpartner.azure.com/) amelyet áthelyezett a Partnerközpontba, nem kell új fiókot létrehoznia. További információt a [CPP-ből áthelyező közzétevők](#publishers-moving-from-cpp) című témakörben talál.
+>Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com/) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) .
 
-### <a name="enrolled-in-the-microsoft-partner-network"></a>Regisztrált a Microsoft Partner Network
+### <a name="enrolled-in-the-microsoft-partner-network"></a>Regisztrálva van a Microsoft Partner Network
 
-Ha már regisztrált a Microsoft Partner Network szolgáltatásban, ebben a szakaszban közvetlenül a Partnerközpontból hozhatja létre fiókját.
+Ha már regisztrált a Microsoft Partner Networkban, használja ezt a szakaszt a fiók közvetlen létrehozásához a partner Centerben.
 
-Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a Microsoft Partner Network-fiókjával, hogy összekapcsolja a vállalat munkahelyi e-mail-fiókjának tartományát az új Partnerközpont-fiókkal. A fiókok társításával a vállalati alkalmazottak bejelentkezhetnek a Partnerközpontba a munkahelyi fiókfelhasználóneveikkel és jelszavaikkal.
-
->[!NOTE]
->Annak ellenőrzéséhez, hogy vállalata rendelkezik-e már Partnerközpont-munkafiókkal, hogyan hozhat létre új munkahelyi fiókot, vagy hogyan állíthat be több munkafiókot a Partnerközponttal, látogasson [el a Vállalati munkafiók és a Partnerközpont oldalra.](./company-work-accounts.md)
-
-A bejelentkezés után az alábbi lépésekkel fejezze be a fiók beállítását.
+Jelentkezzen be a [partnervállalatba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Microsoft Partner Network-fiókjával, hogy a vállalata munkahelyi e-mail-fiókjának tartományát az új partner Center-fiókhoz kapcsolja. Ezeknek a fiókoknak a társításával a vállalati alkalmazottak bejelentkezhetnek a partneri központba a munkahelyi fiókja felhasználónevével és jelszavával.
 
 >[!NOTE]
-> A Microsoft Partner Network programba való bejelentkezéshez **fiókrendszergazdával** vagy **globális rendszergazdai** szerepkörrel kell rendelkeznie.
+>Annak ellenőrzését, hogy a vállalata rendelkezik-e már partneri központ munkahelyi fiókjával, hogyan hozhat létre új munkahelyi fiókot, illetve hogyan állíthat be több munkahelyi fiókot a partner centerrel való használatra, látogasson el [a munkahelyi fiókra és a partner központba](./company-work-accounts.md).
 
-1. A [Partnerközpontban](https://partner.microsoft.com/)válassza a **Beállítások** > **partnerbeállítások** > **–** > első**lépések**lehetőséget.
-2. A Microsoft Partner Network észleli az előfizetést, és megjeleníti a közzétevő profillapját, amelyen megadhatja a vállalat nevét és mpn-azonosítóját.
-3. Olvassa el a [Microsoft Piactér kiadói szerződésének](https://go.microsoft.com/fwlink/?LinkID=699560)feltételeit, majd válassza az Elfogadás és a regisztráció **befejezésének folytatását.**
+A bejelentkezés után a következő lépésekkel állíthatja be a fiók beállítását.
+
+>[!NOTE]
+> A Microsoft Partner Networkba való bejelentkezéshez rendszergazdai **fiókkal** vagy **globális rendszergazdai** szerepkörrel kell rendelkeznie.
+
+1. A [partner Centerben](https://partner.microsoft.com/)válassza a **Beállítások** > **partner beállítások** > **programok** > első**lépések**lehetőséget.
+2. Microsoft Partner Network észleli az előfizetését, és megjeleníti a közzétevői profil oldalt, ahol megadhatja a vállalat nevét és MPN-AZONOSÍTÓját.
+3. Olvassa el a [Microsoft Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
     >[!IMPORTANT]
-    >*A feltételek elfogadásához jogosultnak kell lennie arra, hogy a vállalat nevében eljárjon.*
+    >*A feltételek elfogadásához engedélyezni kell a vállalat nevében való részvételt.*
 
-A beiratkozás után a Kereskedelmi piactér áttekintése lapra kerül. **A Kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **partnerbeállítási** > programok lehetőséget**választja,** látni fogja, hogy a Kereskedelmi piactér regisztráltként van megjelentve.
+A regisztrációt követően a kereskedelmi piactér – áttekintés oldalon olvashat. A **kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **partner beállításai** > **programok**lehetőséget választja, látni fogja, hogy a kereskedelmi piactér regisztrálva van-e.
 
-Köszönjük, hogy létrehozott egy fiókot a Partner Centerben! Ha segítségre van szüksége, olvassa el a [kereskedelmi piactér áttekintése című témakört.](./commercial-marketplace-overview.md) A közzétevők hozzáadásával kapcsolatban az [Új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program)című témakörben talál segítséget.
+Köszönjük, hogy létrehoz egy fiókot a partner Centerben! Segítségért lásd: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
-### <a name="enrolled-in-a-developer-program"></a>Jelentkezés fejlesztői programba
+### <a name="enrolled-in-a-developer-program"></a>Regisztrálva van egy fejlesztői programban
 
-Ha már regisztrált egy Partnerközpont fejlesztői programban, ebben a szakaszban közvetlenül a Partnerközpontból hozhatja létre fiókját.
+Ha már regisztrálva van egy partner Center fejlesztői programban, akkor ebben a szakaszban hozhatja létre a fiókját közvetlenül a partner központból.
 
 >[!NOTE]
->Ahhoz, hogy ugyanazzal a fiókkal regisztráljon a Kereskedelmi piactérre, amelyben be van jelentkezve, regisztrálnia kell a Partnerközpontban egy Vállalati fiók használatával. Ha egyéni fiókkal regisztrált, a Kereskedelmi piactérre való regisztráció egy új fiók alatt jelenik meg.
+>Ahhoz, hogy a kereskedelmi piactéren ugyanazzal a fiókkal jelentkezzen be, mint Ön, regisztrálnia kell a partner Centerben a vállalati fiók használatával. Ha egyéni fiókkal jelentkezett be, a kereskedelmi piactér regisztrációja egy új fiókban fog megjelenni.
 >
->Az egyéni fiókok a saját maguk által dolgozó fejlesztők számára készültek. A vállalati számlák szervezeteknek és vállalkozásoknak valók. A vállalati fiókok hozzáférést biztosítanak a további funkciókkal rendelkező alkalmazások elküldéséhez. A regisztrációt követően nagyobb ellenőrzést kérünk a vállalati fiókokra vonatkozóan annak megerősítéséhez, hogy ön jogosult-e a fiók beállítására. Ez az ellenőrzés néhány naptól néhány hétig is eltarthat, és gyakran tartalmaz telefonhívást a vállalathoz. Mindkét fióktípus lehetővé teszi alkalmazások, bővítmények és szolgáltatások küldését. További információ: [Fióktípusok, helyek és díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+>Az önálló fiókok az önálló fejlesztők számára működnek. A vállalati fiókok a szervezetekhez és a vállalkozásokhoz tartoznak. A vállalati fiókok hozzáférést biztosítanak az alkalmazások további funkciókkal való elküldéséhez. A regisztrációt követően nagyobb ellenőrzésre van szükség a vállalati fiókokhoz, hogy Ön a vállalata fiókjának beállítására engedélyt kapott. Ez az ellenőrzés néhány napig is eltarthat néhány hétig, és gyakran tartalmaz telefonhívást a vállalatnak. Mindkét típusú fiók lehetővé teszi az alkalmazások, beépülő modulok és szolgáltatások beküldését. További információért lásd a [fióktípus, a helyszínek és a díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)című témakört.
 
-Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) A Microsoft Partner Center-fiókjával, és regisztráljon a Kereskedelmi piactér programba ugyanazzal a fiókkal. Ha ugyanazzal a fiókkal regisztrál a Kereskedelmi piactérre, a Partnerközpont bal oldali navigációs menüjében láthatja a meglévő programregisztrációkat és a Kereskedelmi piacteret is.
+Jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a Microsoft partner Center-fiókjával, és regisztráljon a kereskedelmi piactér programba ugyanazzal a fiókkal. Ha ugyanazzal a fiókkal regisztrálja a kereskedelmi Piactért, akkor a partner központ bal oldali navigációs menüjében megtekintheti a meglévő program-regisztrációkat és a kereskedelmi Piactért is.
 
-A bejelentkezés után a fiók beállításának befejezéséhez kövesse az alábbi lépéseket:
+A bejelentkezés után a következő lépésekkel állíthatja be a fiók beállítását:
 
-1. A Partnerközpontban válassza a **Beállítások** > **fejlesztői beállítások** > **programok** > **első lépéseit,** és adja meg munkahelyi e-mail címét.
-2. Töltse ki a részleteket a közzétevő profillapján.
-3. Olvassa el a [Microsoft Piactér kiadói szerződésének](https://go.microsoft.com/fwlink/?LinkID=699560)feltételeit, majd válassza az Elfogadás és a regisztráció **befejezésének folytatását.**
+1. A partner Centerben válassza a **Beállítások** > **fejlesztői beállítások** > **programok** > első**lépések**lehetőséget, majd adja meg a munkahelyi e-mail címét.
+2. Fejezze be a részleteket a közzétevő profilja oldalon.
+3. Olvassa el a [Microsoft Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
     >[!Important]
-    >*A feltételek elfogadásához jogosultnak kell lennie arra, hogy a vállalat nevében eljárjon.*
+    >*A feltételek elfogadásához engedélyezni kell a vállalat nevében való részvételt.*
 
-A beiratkozás után a Kereskedelmi piactér áttekintése lapra kerül. **A Kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **fejlesztői beállítások** > **programok lehetőséget választja,** látni fogja, hogy a Kereskedelmi piactér regisztráltként van megjelentve.
+A regisztrációt követően a kereskedelmi piactér – áttekintés oldalon olvashat. A **kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **fejlesztői beállítások** > **programok**lehetőséget választja, látni fogja, hogy a kereskedelmi piactér regisztrálva van-e.
 
-Köszönjük, hogy létrehozott egy fiókot a Partner Centerben! Ha segítségre van szüksége, olvassa el a [kereskedelmi piactér áttekintése című témakört.](./commercial-marketplace-overview.md) A közzétevők hozzáadásával kapcsolatban további [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program)című témakörben talál segítséget.
+Köszönjük, hogy létrehoz egy fiókot a partner Centerben! Segítségért lásd: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="publishers-moving-from-cpp"></a>A CPP-ből átköltöző kiadók
+## <a name="publishers-moving-from-cpp"></a>A CPP-ből áthelyezett közzétevők
 
-Ha fiókját áttelepítették a [Felhőpartner-portálról (CPP),](https://cloudpartner.azure.com)nem kell új Partnerközpont-fiókot létrehoznia. A meglévő CPP-fiókba való bejelentkezés után személyre szabott hivatkozást kellett volna kapnia az új Partnerközpont-fiókjához, és szalaghirdetésben.
+Ha a fiókja át lett telepítve a [Cloud Partner Portalról (CPP)](https://cloudpartner.azure.com), nem kell létrehoznia egy új partner Center-fiókot. A meglévő CPP-fiókba való bejelentkezést követően egyedi hivatkozást kell kapnia az új partner Center-fiókhoz, valamint egy szalagcím-értesítésben.
 
-Miután engedélyezte új Partnerközpont-fiókját, és ellátogatta ezt a testreszabott hivatkozást, visszatérhet a fiókjához, ha felkeresi a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a Partnerközpontban.
+Miután engedélyezte az új partner Center-fiókot a testreszabott hivatkozás meglátogatásával, visszatérhet a fiókjához, ha meglátogatja a partner Center [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 
-A közzétételi szerződés és a vállalati profil adatai átkerülnek az új Partnerközpont-fiókba, a korábban beállított fiókkifizetési profil adataival, a felhasználói fiókokkal és engedélyekkel, valamint a CPP-fiókhoz társított aktív ajánlatokkal együtt.
+A közzétételi szerződés és a vállalati profil adatai átkerülnek az új partner Center-fiókjába, valamint a fiókhoz korábban beállított kifizetési profilokra vonatkozó információk, felhasználói fiókok és engedélyek, valamint a CPP-fiókhoz társított aktív ajánlatok.
 
-Miután a fiókadatait áthelyezte a CPP-ről a Partnerközpontba, a továbbiakban nem fogja a CPP-t fiókfrissítésekre használni, illetve a felhasználók, engedélyek és számlázás kezelésére használni. Korlátozott ideig a Partnerközpontban végzett fiókfrissítések automatikusan frissülnek az írásvédett CPP-fiókban, amíg a CPP-portál végül elavult.
+Miután a fiókadatok átkerülnek a CPP-ből a partneri központba, már nem fogja használni a CPP-t a fiók frissítéseinek elvégzéséhez, illetve a felhasználók, az engedélyek és a számlázás kezeléséhez. Korlátozott ideig a rendszer a fiókpartner összes olyan fiókjának frissítését automatikusan frissíti az írásvédett CPP-fiókban, amíg a CPP-portál nem elavult.
 
-## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Új közzétevők hozzáadása a Kereskedelmi piactér programhoz
+## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Új közzétevők hozzáadása a kereskedelmi piactér programhoz
 
-Egy szervezethez több közzétevő is tartozhat egy Kereskedelmi piactér-fiókhoz. Egy meglévő felhasználó a Partnerközpontba való bejelentkezés után további közzétevőket vehet fel a **Fiókbeállítások** > **közzétevők** > **hozzáadása parancsra**kattintva.
+Egy szervezethez több közzétevő is társítva van egy kereskedelmi piactér-fiókkal. Egy meglévő felhasználó további közzétevőket adhat hozzá a fiókpartner beléptetése után, ha kiválasztja a **Fiókbeállítások** > **közzétevők** > **Hozzáadás kiadó**elemet.
 
 >[!NOTE]
->Mielőtt új közzétevőt ad hozzá, tekintse át meglévő közzétevőit a Partnerközpontba való bejelentkezéssel, majd a **Fiókbeállítások** > **megjelenítők** lehetőséget választva tekintse meg a meglévő közzétevők listáját.
+>Új közzétevő hozzáadása előtt tekintse át a meglévő közzétevőket a partner Centerbe való bejelentkezéssel, és válassza a **Fiókbeállítások** > **közzétevők** lehetőséget a meglévő közzétevők listájának megtekintéséhez.
 
-Ugyanattól az Azure Active Directory-bérlőtől származó másik felhasználó az alábbi lépések végrehajtásával új közzétevőt adhat hozzá:
+A Azure Active Directory bérlő egy másik felhasználója hozzáadhat egy új közzétevőt az alábbi lépésekkel:
 
-1. Indítsa el a regisztrációs folyamatot a [Microsoft Partner Centerben.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
-2. Válassza **a Bejelentkezés munkahelyi fiókkal** lehetőséget, és adja meg munkahelyi e-mail címét.
-3. Válassza a **Kiadó hozzáadása** gombot.
-4. Válassza ki azt az MPN-azonosítót, amelyet a közzétevőhöz társítani szeretne.
+1. Indítsa el a regisztrációs folyamatot a [Microsoft partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership).
+2. Válassza a **Bejelentkezés munkahelyi fiókkal** lehetőséget, és adja meg a munkahelyi e-mail-címét.
+3. Kattintson a **kiadó hozzáadása** gombra.
+4. Válassza ki azt az MPN-azonosítót, amelyet hozzá szeretne rendelni a közzétevőhöz.
 5. Frissítse a **közzétevő adatait** az űrlapon.
 
-   1. **Közzétevő neve**: Az a név, amely megjelenik a kereskedelmi piacon az ajánlattal.
-   1. **PublisherID**: A Partnerközpont által a közzétevő egyedi azonosítására használt azonosító. A mező alapértelmezett beállítása a rendszerben `PublisherID` meglévő és egyedi, nem használható fel, ezért ezt a mezőt frissíteni kell.
-   1. **Elérhetőség**: Szükség esetén frissítse a kapcsolattartási adatokat.
+   1. **Közzétevő neve**: a kereskedelmi piactéren az ajánlattal megjelenített név.
+   1. **PublisherID**: a partner Center által a közzétevő egyedi azonosítására használt azonosító. A mező alapértelmezett értéke leképezi a rendszer egy meglévő `PublisherID` és egyedi elemét, amely nem használható fel újra, ezért ezt a mezőt frissíteni kell.
+   1. **Kapcsolattartási adatok**: szükség esetén frissítse a kapcsolattartási adatokat.
 
-A folyamat befejezése után kezelheti újonnan létrehozott közzétevőjét a bal oldali navigációs menüben felsorolt **Kereskedelmi piactér** programmal. Ha nem látja a **Kereskedelmi piactér** programot, frissítse a lapot. Az új közzétevő megjelenik a **Közzétevők** listában.
+A folyamat elvégzése után az újonnan létrehozott közzétevőt a bal oldali navigációs menü listájában a **kereskedelmi piactér** program segítségével kezelheti. Ha nem látja a **kereskedelmi piactér** programját, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Kereskedelmi piactéri fiók kezelése a Partnerközpontban](./manage-account.md)
+- [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

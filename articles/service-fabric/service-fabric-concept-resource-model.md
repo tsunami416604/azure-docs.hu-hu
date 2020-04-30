@@ -1,105 +1,105 @@
 ---
-title: Azure Service Fabric alkalmazáserőforrás-modell
-description: Ez a cikk áttekintést nyújt az Azure Resource Fabric-alkalmazások azure Resource Manager használatával történő kezeléséről.
+title: Azure Service Fabric alkalmazás-erőforrás modell
+description: Ez a cikk áttekintést nyújt az Azure Service Fabric-alkalmazások Azure Resource Manager használatával történő kezeléséről.
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682643"
 ---
-# <a name="service-fabric-application-resource-model"></a>Service Fabric alkalmazáserőforrás-modell
+# <a name="service-fabric-application-resource-model"></a>Alkalmazás-erőforrás modell Service Fabric
 
-Több lehetősége van az Azure Service Fabric-alkalmazások üzembe helyezésére a Service Fabric-fürtön. Az Azure Resource Manager használatát javasoljuk. Ha erőforrás-kezelőt használ, leírhatja az alkalmazásokat és szolgáltatásokat a JSON-ban, majd telepítheti őket ugyanabban az Erőforrás-kezelő sablonban, mint a fürtben. A PowerShell vagy az Azure CLI használatával ellentétben az alkalmazások üzembe helyezése és kezelése esetén az Erőforrás-kezelő használata esetén nem kell megvárnia, hogy a fürt készen álljon; az alkalmazások regisztrációja, kiépítése és üzembe helyezése egy lépésben történhet. Az Erőforrás-kezelő használata a legjobb módja az alkalmazás életciklusának kezelésére a fürtben. További információ: [Gyakorlati tanácsok: Infrastruktúra kódként](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
+Az Azure Service Fabric-alkalmazások Service Fabric-fürtön való üzembe helyezéséhez több lehetőség is rendelkezésre áll. A Azure Resource Manager használatát javasoljuk. Ha a Resource Managert használja, lekérdezheti az alkalmazásokat és a szolgáltatásokat a JSON-ban, majd telepítheti őket a fürttel azonos Resource Manager-sablonban. Ha a PowerShell vagy az Azure CLI használatával telepíti és felügyeli az alkalmazásokat, a Resource Manager használata esetén nem kell megvárnia, hogy a fürt készen álljon; az alkalmazás regisztrálása, kiépítése és üzembe helyezése egyetlen lépésben történhet. A Resource Manager használata a legjobb módszer a fürtben az alkalmazás életciklusának kezelésére. További információt az [ajánlott eljárások: az infrastruktúra mint kód](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)című témakörben talál.
 
-Az alkalmazások erőforrásként történő kezelése az Erőforrás-kezelőben segíthet az alábbi területeken:
+Az alkalmazások erőforrásként való kezelése a Resource Managerben a következő területeken nyújt segítséget:
 
-* Naplózási nyomvonal: Az Erőforrás-kezelő minden műveletet naplóz, és részletes tevékenységnaplót vezet. A tevékenységnapló segítségével nyomon követheti az alkalmazásokon és a fürtön végrehajtott módosításokat.
-* Szerepköralapú hozzáférés-vezérlés: Ugyanazzal az Erőforrás-kezelő sablonnal kezelheti a fürtön telepített fürtökhöz és alkalmazásokhoz való hozzáférést.
-* Felügyeleti hatékonyság: Az Erőforrás-kezelő használatával egyetlen helyet (az Azure Portalon) kezelheti a fürt és a kritikus alkalmazások központi telepítések.
+* Naplózási nyomvonal: a Resource Manager naplózza az összes műveletet, és megőrzi a részletes tevékenység naplóját. A műveletnapló segítségével nyomon követheti az alkalmazásokon és a fürtön végrehajtott módosításokat.
+* Szerepköralapú hozzáférés-vezérlés: kezelheti a fürtökhöz való hozzáférést és a fürtön üzembe helyezett alkalmazásokat ugyanazzal a Resource Manager-sablonnal.
+* Felügyeleti hatékonyság: a Resource Manager használatával egyetlen helyet (a Azure Portal) biztosít a fürt és a kritikus fontosságú alkalmazások központi telepítésének kezeléséhez.
 
-Ebben a dokumentumban megtudhatja, hogyan:
+Ebből a dokumentumból megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 >
-> * Alkalmazás-erőforrások üzembe helyezése az Erőforrás-kezelő használatával.
-> * Az alkalmazás-erőforrások frissítése az Erőforrás-kezelő használatával.
+> * Alkalmazás-erőforrások üzembe helyezése a Resource Manager használatával.
+> * Az alkalmazás erőforrásainak frissítése a Resource Manager használatával.
 > * Alkalmazás-erőforrások törlése.
 
-## <a name="deploy-application-resources"></a>Alkalmazás-erőforrások telepítése
+## <a name="deploy-application-resources"></a>Alkalmazás-erőforrások központi telepítése
 
-Az alkalmazás és szolgáltatásainak az Erőforrás-kezelő alkalmazás erőforrás-modelljének használatával történő üzembe helyezéséhez a következő magas szintű lépéseket kell tennie:
-1. Csomagolja be az alkalmazás kódját.
+Az alkalmazások és szolgáltatások a Resource Manager alkalmazás-erőforrás-modell használatával történő üzembe helyezésének magas szintű lépései a következők:
+1. Az alkalmazás kódjának becsomagolása.
 1. Töltse fel a csomagot.
-1. Hivatkozzon a csomag helyére egy Erőforrás-kezelő sablonban alkalmazás-erőforrásként. 
+1. Egy Resource Manager-sablonban lévő csomag helyének hivatkozása alkalmazás-erőforrásként. 
 
-További információért tekintse meg az Alkalmazás csomagja című [nézetet.](service-fabric-package-apps.md#create-an-sfpkg)
+További információkért tekintse meg [az alkalmazás csomagját](service-fabric-package-apps.md#create-an-sfpkg).
 
-Ezután hozzon létre egy Erőforrás-kezelő sablont, frissítse a paraméterfájlt az alkalmazás részleteivel, és telepítse a sablont a Service Fabric-fürtön. [Vizsgálja meg a mintákat.](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)
+Ezután létre kell hoznia egy Resource Manager-sablont, frissítenie kell a paramétereket tartalmazó fájlt az alkalmazás részleteivel, és telepítenie kell a sablont a Service Fabric-fürtön. [Ismerkedjen meg a mintákkal](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Ha egy alkalmazást erőforrás-kezelő sablonból szeretne telepíteni, tárfiókkal kell rendelkeznie. A tárfiók az alkalmazáslemezkép színpadra. 
+Egy alkalmazás Resource Manager-sablonból való üzembe helyezéséhez rendelkeznie kell egy Storage-fiókkal. A Storage-fiók az alkalmazás rendszerképének előkészítésére szolgál. 
 
-Felhasználhatja újra a meglévő tárfiókot, vagy létrehozhat egy új tárfiókot az alkalmazások előkészítéséhez. Ha meglévő tárfiókot használ, kihagyhatja ezt a lépést. 
+Felhasználhat egy meglévő Storage-fiókot, vagy létrehozhat egy új Storage-fiókot az alkalmazások előkészítéséhez. Ha meglévő Storage-fiókot használ, akkor kihagyhatja ezt a lépést. 
 
 ![Tárfiók létrehozása][CreateStorageAccount]
 
-### <a name="configure-your-storage-account"></a>A tárfiók konfigurálása
+### <a name="configure-your-storage-account"></a>A Storage-fiók konfigurálása
 
-A tárfiók létrehozása után hozzon létre egy blob tárolót, ahol az alkalmazások at lehet előkészíteni. Az Azure Portalon nyissa meg az Azure Storage-fiókot, ahol az alkalmazásokat szeretné tárolni. Válassza **a Blobok** > **tároló hozzáadása lehetőséget.** 
+A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal keresse meg azt az Azure Storage-fiókot, ahol az alkalmazásokat tárolni szeretné. Válassza a **Blobok** > **Hozzáadás tároló**elemet. 
 
-A fürt erőforrásai a nyilvános hozzáférési szint **privátra**állításával biztosíthatók. A hozzáférést többféleképpen is megadhatod:
+A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáférési szint **magánjellegűre**állításával lehetséges. A hozzáférést több módon is megadhatja:
 
-* Engedélyezze a hozzáférést a blobokhoz és várólistákhoz az [Azure Active Directory](../storage/common/storage-auth-aad-app.md)használatával.
-* Hozzáférést biztosít az Azure blob- és várólista-adatokhoz az RBAC használatával [az Azure Portalon.](../storage/common/storage-auth-aad-rbac-portal.md)
-* Hozzáférés delegálása [megosztott hozzáférésű aláírással](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
+* A blobokhoz és várólistákhoz való hozzáférés engedélyezése [Azure Active Directory](../storage/common/storage-auth-aad-app.md)használatával.
+* Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz [a Azure Portal RBAC](../storage/common/storage-auth-aad-rbac-portal.md)használatával.
+* Hozzáférés delegálása [közös hozzáférésű aláírás](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával.
 
-A következő képernyőképen található példa névtelen olvasási hozzáférést használ a blobokhoz.
+Az alábbi képernyőképen szereplő példa a Blobok névtelen olvasási hozzáférését használja.
 
-![Blob létrehozása][CreateBlob]
+![BLOB létrehozása][CreateBlob]
 
-### <a name="stage-the-application-in-your-storage-account"></a>Az alkalmazás színpadra lépésa a tárfiókban
+### <a name="stage-the-application-in-your-storage-account"></a>Az alkalmazás előkészítése a Storage-fiókban
 
-Egy alkalmazás üzembe helyezése előtt az alkalmazást a blob storage-ban kell elhelyeznie. Ebben az oktatóanyagban manuálisan hozzuk létre az alkalmazáscsomagot. Ne feledje, hogy ez a lépés automatizálható. További információt az [Alkalmazás csomagolása](service-fabric-package-apps.md#create-an-sfpkg)című témakörben talál. 
+Az alkalmazások üzembe helyezése előtt a blob Storage-ban kell megadnia az alkalmazást. Ebben az oktatóanyagban manuálisan hozunk létre alkalmazáscsomag-csomagot. Ne feledje, hogy ez a lépés automatizálható. További információ: [alkalmazás becsomagolása](service-fabric-package-apps.md#create-an-sfpkg). 
 
-Ebben az oktatóanyagban a [Szavazás mintaalkalmazást](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)használjuk.
+Ebben az oktatóanyagban a [szavazási minta alkalmazást](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)használjuk.
 
-1. A Visual Studio programban kattintson a jobb gombbal a **Szavazás projektre,** majd válassza **a Csomag parancsot.**
+1. A Visual Studióban kattintson a jobb gombbal a **szavazási** projektre, majd válassza a **csomag**elemet.
 
-   ![Csomag alkalmazás][PackageApplication]  
-1. Nyissa meg a *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug* könyvtárat. Zip a tartalmát egy fájl nevű *Voting.zip*. Az *ApplicationManifest.xml* fájlnak a zip-fájl gyökérében kell lennie.
+   ![Alkalmazáscsomag][PackageApplication]  
+1. Nyissa meg a *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* könyvtárat. Zip a tartalmat egy *szavazás. zip*nevű fájlba. A *ApplicationManifest. XML* fájlnak a zip-fájlban lévő gyökérkönyvtárban kell lennie.
 
-   ![Zip alkalmazás][ZipApplication]  
-1. Nevezze át a fájlt a kiterjesztés .zip-ről *.sfpkg-ra*történő módosításához.
+   ![Zip-alkalmazás][ZipApplication]  
+1. Nevezze át a fájlt úgy, hogy a. zip kiterjesztését a *. sfpkg*értékre módosítsa.
 
-1. Az Azure Portalon a tárfiók **alkalmazástárolójában** válassza a **Feltöltés**lehetőséget, majd töltse fel **a Voting.sfpkg fájlt.** 
+1. A Azure Portal a Storage-fiókja **alkalmazások** tárolójában válassza a **feltöltés**, majd a **szavazás. sfpkg**feltöltés lehetőséget. 
 
    ![Alkalmazáscsomag feltöltése][UploadAppPkg]
 
-Most az alkalmazás most van előkészítve, és létrehozhatja az erőforrás-kezelő sablont az alkalmazás üzembe helyezéséhez.
+Az alkalmazás most már előkészítés alatt áll, és létrehozhatja az alkalmazás üzembe helyezéséhez szükséges Resource Manager-sablont.
 
 ### <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 
-A mintaalkalmazás [az Azure Resource Manager-sablonokat](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) tartalmazza, amelyek segítségével telepítheti az alkalmazást. A sablonfájl *nevei: UserApp.json* és *UserApp.Parameters.json*.
+A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure Resource Manager sablonokat](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) tartalmaz. A sablon fájlnevei a következők: *UserApp. JSON* és *UserApp. Parameters. JSON*.
 
 > [!NOTE]
-> A *UserApp.Parameters.json* fájlt frissíteni kell a fürt nevével.
+> A *UserApp. Parameters. JSON* fájlt frissíteni kell a fürt nevével.
 >
 >
 
 | Paraméter              | Leírás                                 | Példa                                                      | Megjegyzések                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clusterName            | Annak a fürtnek a neve, amelybe telepíti a központi | sf-cluster123                                                |                                                              |
-| Alkalmazás            | Az alkalmazás neve                 | Szavazás                                                       |
-| applicationTypeName    | Az alkalmazás típusneve           | Szavazástípusa                                                   | Meg kell egyeznie applicationmanifest.xml                 |
-| applicationTypeVersion | Az alkalmazástípus verziója         | 1.0.0                                                        | Meg kell egyeznie applicationmanifest.xml                 |
-| szolgáltatásneve            | A szolgáltatás neve         | Szavazás ~ SzavazásWeb                                             | Az ApplicationName~ServiceType formátumban kell lennie.            |
-| serviceTypeName        | A szolgáltatás típusneve                | VotingWeb                                                    | Meg kell egyeznie a ServiceManifest.xml fájlnak                 |
-| appPackageUrl          | Az alkalmazás blobtárolási URL-címe     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Az alkalmazáscsomag URL-címe a blobstorage-ban (az URL-cím beállításának eljárása a cikk későbbi részében ismertetjük) |
+| clusterName            | Annak a fürtnek a neve, amelyre telepítve van | SF – cluster123                                                |                                                              |
+| alkalmazás            | Az alkalmazás neve                 | Szavazás                                                       |
+| applicationTypeName    | Az alkalmazás típusának neve           | VotingType                                                   | Meg kell egyeznie a ApplicationManifest. xml fájlnak.                 |
+| applicationTypeVersion | Az alkalmazás típusának verziója         | 1.0.0                                                        | Meg kell egyeznie a ApplicationManifest. xml fájlnak.                 |
+| serviceName            | A szolgáltatás neve         | Szavazás ~ VotingWeb                                             | A formátumának ApplicationName ~ ServiceType kell lennie            |
+| serviceTypeName        | A szolgáltatás típusának neve                | VotingWeb                                                    | Meg kell egyeznie a ServiceManifest. xml fájlnak.                 |
+| appPackageUrl          | Az alkalmazás blob Storage URL-címe     | https:\//servicefabricapps.blob.Core.Windows.net/apps/voting.sfpkg | Az alkalmazáscsomag blob Storage-beli URL-címe (az URL-cím beállításához szükséges eljárást a cikk későbbi részében ismertetjük) |
 
 ```json
 {
@@ -130,17 +130,17 @@ A mintaalkalmazás [az Azure Resource Manager-sablonokat](https://github.com/Azu
 
 ### <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
-Futtassa a **New-AzResourceGroupDeployment** parancsmast az alkalmazás fürterőforrás-csoportba való központi telepítéséhez:
+A **New-AzResourceGroupDeployment** parancsmag futtatásával telepítse az alkalmazást a fürtöt tartalmazó erőforráscsoporthoz:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>A Service Fabric-alkalmazás frissítése az Erőforrás-kezelő használatával
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>A Service Fabric alkalmazás frissítése a Resource Manager használatával
 
-Előfordulhat, hogy egy olyan alkalmazást frissít, amely már telepítve van egy Service Fabric-fürtben a következő okok valamelyike miatt:
+A következő okok egyike miatt frissíthet egy Service Fabric-fürtre már telepített alkalmazást:
 
-* Egy új szolgáltatás kerül az alkalmazásba. Szolgáltatásdefiníciót kell hozzáadni *a service-manifest.xml* és *az application-manifest.xml* fájlokhoz, amikor egy szolgáltatást hozzáadnak az alkalmazáshoz. Az alkalmazás új verziójának tükrözéséhez az alkalmazás típusának 1.0.0-ról 1.0.1-re kell módosítania a [UserApp.Parameters.json alkalmazásban:](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)
+* Új szolgáltatás kerül be az alkalmazásba. A *Service-manifest. XML* és a *Application-manifest. XML* fájlokhoz hozzá kell adni egy szolgáltatási definíciót, ha egy szolgáltatás hozzá van adva az alkalmazáshoz. Az alkalmazás új verziójának megjelenítéséhez az alkalmazás típusának verzióját is módosítania kell a 1.0.0-ról 1.0.1-re a [UserApp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)fájlban:
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +154,7 @@ Előfordulhat, hogy egy olyan alkalmazást frissít, amely már telepítve van e
     }
     ```
 
-* Egy meglévő szolgáltatás új verziója kerül az alkalmazásba. Ilyenek például az alkalmazáskód módosításai és az alkalmazástípus verziójának és nevének frissítései. A frissítéshez frissítse a UserApp.Parameters.json t a következőkkel:
+* Egy meglévő szolgáltatás új verziója lesz hozzáadva az alkalmazáshoz. Ilyenek például az alkalmazás kódjának módosítása és az alkalmazás típusú verzió és a név frissítése. Ehhez a frissítéshez frissítse a UserApp. Parameters. JSON fájlt a következőhöz hasonló módon:
 
     ```json
      "applicationTypeVersion": {
@@ -164,15 +164,15 @@ Előfordulhat, hogy egy olyan alkalmazást frissít, amely már telepítve van e
 
 ## <a name="delete-application-resources"></a>Alkalmazás-erőforrások törlése
 
-Az erőforrás-kezelőben az alkalmazáserőforrás-modell használatával telepített alkalmazás törlése:
+A Resource Manager alkalmazás-erőforrás modelljével telepített alkalmazás törlése:
 
-1. A [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) parancsmag segítségével leszeretné késelni az alkalmazás erőforrás-azonosítóját:
+1. Az alkalmazás erőforrás-AZONOSÍTÓjának beszerzéséhez használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) parancsmagot:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Az Alkalmazás-erőforrások törléséhez használja az [Eltávolítás-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) parancsmast:
+1. Az alkalmazás-erőforrások törléséhez használja a [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) parancsmagot:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -180,11 +180,11 @@ Az erőforrás-kezelőben az alkalmazáserőforrás-modell használatával telep
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazáserőforrás-modellről szóló információk:
+Információk beolvasása az alkalmazás-erőforrás modelljéről:
 
-* [Alkalmazás modellezése a Service Fabricben](service-fabric-application-model.md)
-* [A Service Fabric alkalmazás- és szolgáltatásjegyzékei](service-fabric-application-and-service-manifests.md)
-* [Gyakorlati tanácsok: Infrastruktúra kódként](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Alkalmazás modellezése Service Fabric](service-fabric-application-model.md)
+* [Service Fabric alkalmazás-és szolgáltatás-jegyzékfájlok](service-fabric-application-and-service-manifests.md)
+* [Ajánlott eljárások: infrastruktúra mint kód](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
 * [Alkalmazások és szolgáltatások kezelése Azure-erőforrásként](service-fabric-best-practices-infrastructure-as-code.md)
 
 

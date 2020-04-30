@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault titkos titkai – Azure Key Vault
-description: Az Azure Key Vault REST-felületének áttekintése és a titkos kulcsok fejlesztői részletei.
+title: Azure Key Vault Secrets – Azure Key Vault
+description: A titkokkal kapcsolatos Azure Key Vault REST-felület és a fejlesztői részletek áttekintése.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,104 +11,104 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685438"
 ---
-# <a name="about-azure-key-vault-secrets"></a>Az Azure Key Vault titkai
+# <a name="about-azure-key-vault-secrets"></a>Tudnivalók a Azure Key Vault titkairól
 
-A Key Vault biztonságos anamtikai titkos kulcsok, például jelszavak és adatbázis-kapcsolati karakterláncok biztonságos tárolását biztosítja.
+Key Vault biztosítja a titkos kulcsok, például a jelszavak és az adatbázis-kapcsolatok karakterláncok biztonságos tárolását.
 
-A fejlesztő szemszögéből a Key Vault API-k titkos értékeket fogadnak el és adnak vissza karakterláncként. Belsőleg a Key Vault oktettsorozatként (8 bites bájtok) tárolja és kezeli a titkos kulcsokat, egyenként legfeljebb 25 k bájt méretű. A Key Vault szolgáltatás nem biztosít szemantikát a titkos kulcsokhoz. Csupán elfogadja az adatokat, titkosítja, tárolja, és egy titkos azonosítót ("id") ad vissza. Az azonosító segítségével később is beolvasható a titok.  
+Fejlesztői szempontból Key Vault API-k elfogadják és visszaadják a titkos értékeket karakterláncként. Belsőleg Key Vault a titkokat az oktettek (8 bites bájtok) sorozatának megfelelően tárolja és kezeli, és a 25k maximális mérete (bájt). A Key Vault szolgáltatás nem biztosít szemantikai adatokat a titkokhoz. Csupán elfogadja az adatot, titkosítja, tárolja, és visszaadja a titkos azonosítót ("id"). Az azonosító segítségével később is lekérheti a titkos kulcsot.  
 
 A szigorúan bizalmas adatokhoz az ügyfeleknek ajánlott további adatvédelmi rétegeket is használni. Ez lehet például az adatok külön védelmi kulccsal történő titkosítása a Key Vaultba helyezés előtt.  
 
-Key Vault is támogatja a contentType mező titkos kulcsok. Az ügyfelek megadhatják egy titkos titok tartalomtípusát, amely segítséget nyújt a titkos adatok értelmezéséhez a beolvasáskor. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére vonatkozó tipp. Például egy implementáció titkos jelszóként és tanúsítványként is tárolhatja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
+A Key Vault a Secrets (contentType) mezőt is támogatja. Az ügyfelek megadhatják a titkos kód tartalomtípusát, hogy segítséget nyújtsanak a titkos adatokat a beolvasás során. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére utal. Előfordulhat például, hogy egy implementáció titkos kulcsként tárolja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
 
 ## <a name="secret-attributes"></a>Titkos attribútumok
 
-A titkos adatokon kívül a következő attribútumok is megadhatók:  
+A titkos adatok mellett a következő attribútumok is megadhatók:  
 
-- *exp*: IntDate, nem kötelező, az alapértelmezett **örökre**. Az *exp* (lejárati idő) attribútum azonosítja a lejárati időt, vagy amely után a titkos adatokat NEM szabad letölteni, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű, mivel tájékoztatja a felhasználókat a key vault szolgáltatás, hogy egy adott titkos kulcs nem használható. Értéke intdate értéket tartalmazó szám kell, hogy legyen.   
-- *nbf*: IntDate, nem kötelező, az alapértelmezett **most**. Az *nbf* (nem korábban) attribútum azonosítja azt az időt, amely előtt a titkos adatokat NEM szabad beolvasni, kivéve [bizonyos eseteket](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű. Értéke intdate értéket tartalmazó szám kell, hogy legyen. 
-- *engedélyezve*: logikai, nem kötelező, az alapértelmezett **érték igaz**. Ez az attribútum határozza meg, hogy a titkos adatok beolvashatók-e. Az engedélyezett attribútum az *nbf* és *exp* együttesen használatos, ha az *nbf* és *exp*közötti művelet csak akkor engedélyezett, ha az engedélyezve van **true**értékre. Az *nbf* és *exp* ablakon kívüli műveletek automatikusan nem engedélyezettek, kivéve [bizonyos eseteket.](#date-time-controlled-operations)  
+- *exp*: IntDate, nem kötelező, az alapértelmezett érték **örökre**. Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a titkos adatok nem kérhetők le, kivéve [bizonyos helyzetekben](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű, mivel a Key Vault szolgáltatás felhasználóit nem használja fel, mert egy adott titok nem használható. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.   
+- *NBF*: IntDate, nem kötelező, alapértelmezés szerint **most**. A *NBF* (nem korábban) attribútum azt az időpontot határozza meg, ameddig a titkos adatokat nem lehet lekérni, kivéve [bizonyos helyzetekben](#date-time-controlled-operations). Ez a mező csak **tájékoztató** jellegű. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie. 
+- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Ez az attribútum határozza meg, hogy a titkos adatot lehet-e lekérni. Az enabled attribútum a *NBF* és az *exp* együttes használata esetén használatos, ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz engedélyezve, ha a beállítás értéke **true (igaz**). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve [bizonyos helyzetekben](#date-time-controlled-operations).  
 
-Vannak további írásvédett attribútumok, amelyek szerepelnek minden válasz, amely tartalmazza a titkos attribútumok:  
+A titkos attribútumokat tartalmazó válaszokban további írásvédett attribútumok is szerepelnek:  
 
-- *létrehozva*: IntDate, nem kötelező. A létrehozott attribútum jelzi, hogy a titkos titok ezen verziója mikor jött létre. Ez az érték null az attribútum hozzáadása előtt létrehozott titkos kulcsok esetében. Az értéknek IntDate értéket tartalmazó számnak kell lennie.  
-- *frissítve*: IntDate, nem kötelező. A frissített attribútum azt jelzi, hogy a titkos titok ezen verziója mikor lett frissítve. Ez az érték null az attribútum hozzáadása előtt utoljára frissített titkos kulcsok esetében. Az értéknek IntDate értéket tartalmazó számnak kell lennie.
+- *Létrehozva*: IntDate, nem kötelező. A létrehozott attribútum azt jelzi, hogy a titkos kulcs ezen verzióját hozta-e létre. Ez az érték null értékű az attribútum hozzáadása előtt létrehozott titkok esetében. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *frissítve*: IntDate, nem kötelező. A frissített attribútum azt jelzi, hogy a titkos kulcs ezen verziója frissítve lett-e. Ez az érték null értékű azoknál a titkoknál, amelyeket az attribútum hozzáadása előtt utoljára frissítettek. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.
 
 ### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-A titkos **get** művelet fog működni a még nem érvényes és lejárt titkok, kívül *nbf* / *exp* ablak. Egy titkos **lehívási** művelet hívása, egy még nem érvényes titok esetén, használható tesztelési célokra. Beolvasása **(get**ting) egy lejárt titkos, helyreállítási műveletekhez használható.
+A titkos **beolvasási** művelet a *NBF* / *exp* ablakon kívül még nem érvényes és lejárt titkokat fog működni. A titkos kód **lekérési** műveletének meghívása tesztelési célokra használható. A lejárt titkos kód beolvasása **(beolvasása**) helyreállítási műveletekhez használható.
 
 ## <a name="secret-access-control"></a>Titkoskulcs-hozzáférés vezérlése
 
-Hozzáférés-vezérlés a Key Vaultban kezelt titkos kulcsok, a kulcstartó szintjén, amely tartalmazza ezeket a titkos kulcsokat. A titkos kulcsok hozzáférés-vezérlési házirendje különbözik az ugyanabban a Key Vaultban lévő kulcsok hozzáférés-vezérlési házirendjétől. A felhasználók létrehozhatnak egy vagy több tárolót a titkos kulcsok tárolására, és a forgatókönyv megfelelő szegmentálása és a titkos kulcsok kezelése karbantartásához szükségesek.   
+A Key Vaultban felügyelt titkok Access Control az adott titkokat tartalmazó Key Vault szintjén vannak megadva. A titkos kulcsok hozzáférés-vezérlési szabályzata különbözik az azonos Key Vault található kulcsok hozzáférés-vezérlési házirendjétől. A felhasználók egy vagy több tárolót hozhatnak létre a titkos kulcsok megőrzése érdekében, és a forgatókönyvek megfelelő szegmentálásához és a titkok kezeléséhez szükségesek.   
 
-A következő engedélyek használhatók, egy fő alapon, a titkos kulcshozzáférés-vezérlési bejegyzés egy tárolóban, és szorosan tükrözi a műveletek engedélyezett egy titkos objektum:  
+A következő engedélyek használhatók a tár Secrets hozzáférés-vezérlési bejegyzésében, valamint a titkos objektumon engedélyezett műveletek részletes tükrözéséhez:  
 
-- Titkos kezelési műveletek engedélyei
-  - *get*: Olvassa el a titkos  
-  - *lista*: A Key Vaultban tárolt titkos fájlok titkos kulcsainak vagy verzióinak felsorolása  
-  - *set*: Titkos kapcsolat létrehozása  
-  - *törlés*: Titkos fájl törlése  
-  - *helyreállítás*: Törölt titkos titok helyreállítása
-  - *biztonsági mentés*: Titkos biztonsági másolat a kulcstárolóban
-  - *visszaállítás*: Biztonsági másolatot kell adni egy titkos kulcstárolóba
+- A titkos felügyeleti műveletekhez szükséges engedélyek
+  - *Get*: titkos kód beolvasása  
+  - *lista*: egy Key Vaultban tárolt titkos kód titkainak vagy verzióinak listázása  
+  - *beállítás*: titkos kód létrehozása  
+  - *Törlés*: titkos kód törlése  
+  - *helyreállítás*: törölt titkos kód helyreállítása
+  - *biztonsági mentés*: titkos kulcs biztonsági mentése a kulcstartóban
+  - *visszaállítás*: biztonsági másolat készítése a titkos kulcsról egy kulcstartóra
 
-- Jogosultsággal rendelkező műveletek engedélyei
-  - *kiürítés*: Törölt titok törlése (végleges törlése)
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: törölt titkos kód kiürítése (végleges törlése)
 
-A titkos kulcsok ról további információt [a Key Vault REST API-hivatkozástitkos műveletei című témakörben talál.](/rest/api/keyvault) Az engedélyek létrehozásáról további információt a [Tárolók – Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és [tárolók – hozzáférési szabályzat című témakörben talál.](/rest/api/keyvault/vaults/updateaccesspolicy) 
+A titkokkal kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciában található titkos műveletek](/rest/api/keyvault)című témakört. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="secret-tags"></a>Titkos címkék  
-További alkalmazásspecifikus metaadatokat adhat meg címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakternévvel és 256 karakterértékkel rendelkezhet.  
+## <a name="secret-tags"></a>Titkos Címkék  
+További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakterből és 256 karakterből állhat.  
 
 >[!Note]
->A címkéket a hívó akkor tudja elolvasni, ha rendelkezik a *listával* vagy engedélyt *kap.*
+>A címkék a hívó által olvashatók, ha rendelkeznek a *listával* vagy a *Get* engedéllyel.
 
-## <a name="azure-storage-account-key-management"></a>Az Azure Storage-fiók kulcsának kezelése
+## <a name="azure-storage-account-key-management"></a>Azure Storage-fiók kulcsainak kezelése
 
-A Key Vault képes kezelni az Azure storage-fiók kulcsait:
+A Key Vault az Azure Storage-fiók kulcsait tudja kezelni:
 
-- Belsőleg key vault listázhatja (szinkronizálja) kulcsok egy Azure-tárfiókkal. 
-- A Key Vault rendszeres időközönként újragenerálja (elforgatja) a kulcsokat.
-- A főértékek et soha nem adja vissza a hívónak adott válaszként.
-- A Key Vault kezeli a tárfiókok és a klasszikus tárfiókok kulcsait.
+- Belsőleg az Azure Storage-fiókkal Key Vault listázhatja (szinkronizálhatja) a kulcsokat. 
+- Key Vault a kulcsok rendszeres újragenerálása (elforgatása).
+- A rendszer soha nem adja vissza a kulcs értékeit a hívónak válaszul.
+- Key Vault a Storage-fiókok és a klasszikus Storage-fiókok kulcsait kezeli.
 
-További információ: [Azure Key Vault Storage-fiókkulcsok](../secrets/overview-storage-keys.md))
+További információ: [Azure Key Vault Storage-fiók kulcsainak](../secrets/overview-storage-keys.md)használata)
 
-## <a name="storage-account-access-control"></a>Tárfiók-hozzáférés-vezérlés
+## <a name="storage-account-access-control"></a>Storage-fiók hozzáférés-vezérlése
 
-A következő engedélyek használhatók, ha egy felhasználó vagy az egyszerű felhasználó számára engedélyezi a felügyelt tárfiókon végzett műveleteket:  
+A következő engedélyek használhatók, ha egy felhasználó vagy egy alkalmazás egy felügyelt Storage-fiók műveleteinek elvégzését engedélyezi:  
 
-- A felügyelt tárfiók és az SaS-definíciós műveletek engedélyei
-  - *bekés:* Információ beszerez egy tárfiókról 
-  - *list:* A Key Vault által kezelt tárfiókok listázása
-  - *frissítés*: Tárfiók frissítése
-  - *törlés*: Tárfiók törlése  
-  - *helyreállítás*: Törölt tárfiók helyreállítása
-  - *biztonsági mentés*: Tárfiók biztonsági mentése
-  - *visszaállítás*: Biztonsági másolatot álló tárfiók visszaállítása Key Vaultba
-  - *set*: Tárfiók létrehozása vagy frissítése
-  - *regeneratekey*: Egy tárfiók megadott kulcsértékének újragenerálása
-  - *getsas:* Információ beszerez egy SAS-definícióegy tárfiók
-  - *listsas*: Storage SAS-definíciók listázása tárfiókhoz
-  - *deletesas*: SAS-definíció törlése tárfiókból
-  - *setsas*: Új SAS-definíció/attribútumok létrehozása vagy frissítése tárfiókhoz
+- A felügyelt Storage-fiók és az SaS-definíciós műveletek engedélyei
+  - Get: egy Storage-fiók adatainak *beolvasása* 
+  - *lista*: Key Vault által kezelt Storage-fiókok listázása
+  - *frissítés*: Storage-fiók frissítése
+  - *Törlés*: Storage-fiók törlése  
+  - *helyreállítás*: törölt Storage-fiók helyreállítása
+  - *biztonsági mentés*: Storage-fiók biztonsági mentése
+  - *Restore (visszaállítás*): biztonsági másolatba mentett Storage-fiók visszaállítása Key Vault
+  - *beállítás*: Storage-fiók létrehozása vagy frissítése
+  - *regeneratekey*: a megadott kulcs értékének újralétrehozása egy Storage-fiókhoz
+  - *getsas*: a Storage-fiókhoz tartozó sas-definícióval kapcsolatos információk beolvasása
+  - *listsas*: a Storage-fiókhoz tartozó tárolási sas-definíciók listázása
+  - *deletesas*: sas-definíció törlése egy Storage-fiókból
+  - *setsas*: új sas-definíció/-attribútumok létrehozása vagy frissítése egy Storage-fiókhoz
 
-- Jogosultsággal rendelkező műveletek engedélyei
-  - *kiürítés*: Felügyelt tárfiók törlése (végleges törlése)
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: felügyelt Storage-fiók kiürítése (végleges törlése)
 
-További információ: [A Storage-fiók műveletei a Key Vault REST API-referencia.](/rest/api/keyvault) Az engedélyek létrehozásáról további információt a [Tárolók – Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és [tárolók – hozzáférési szabályzat című témakörben talál.](/rest/api/keyvault/vaults/updateaccesspolicy)
+További információ: a [Storage-fiók műveletei a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>További lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
-- [Kulcsok, titkos kulcsok és tanúsítványok –](../general/about-keys-secrets-certificates.md)
+- [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)
 - [Információ a kulcsokról](../keys/about-keys.md)
 - [Információ a tanúsítványokról](../certificates/about-certificates.md)
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)

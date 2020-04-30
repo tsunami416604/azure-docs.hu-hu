@@ -1,6 +1,6 @@
 ---
-title: Architektúra IoT Smart Inventory Management | Microsoft dokumentumok
-description: Az IoT Smart Inventory Management sablon architektúrája az IoT Central számára
+title: Architektúra IoT – intelligens leltár kezelése | Microsoft Docs
+description: A IoT intelligens leltározási felügyeleti sablonjának architektúrája IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -9,50 +9,50 @@ ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 9e0b4a3c22c1e6008bdce7fecc1d122fe317dd58
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686206"
 ---
-# <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>Az IoT Central intelligens készletkezelési alkalmazássablonarchitektúrája
+# <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>A IoT Central Smart Inventory Management alkalmazás-sablon architektúrája
 
-A partnerek és az ügyfelek használhatják az alkalmazássablont, és útmutatást kaphatnak az **intelligens készletkezelési** megoldások kifejlesztéséhez.
+A partnerek és az ügyfelek az alkalmazás sablonját és az alábbi útmutatást követve fejleszthetik a teljes körű **intelligens leltározási** megoldásokat.
 
 > [!div class="mx-imgBorder"]
-> ![intelligens készletkezelés](./media/concept-smart-inventory-mgmt-architecture/smart-inventory-management-architecture.png)
+> ![intelligens leltár kezelése](./media/concept-smart-inventory-mgmt-architecture/smart-inventory-management-architecture.png)
 
-1. Telemetriai adatokat küldő IoT-érzékelők készlete egy átjáróeszközre
-2. Telemetriai adatokat és összesített elemzéseket küldő átjáróeszközök az IoT Centralnak
-3. Az adatok a kívánt Azure-szolgáltatáshoz irányítva lesznek a manipuláció hoz
-4. Az Azure-szolgáltatások, például az ASA vagy az Azure Functions az adatfolyamok újraformázására és a kívánt tárfiókokra való elküldésre használhatók 
-5. A feldolgozott adatokat a közel valós idejű műveletek vagy a hűtőtárolás érdekében a rendszer gyorstárolással tárolja, és további, a gép- vagy kötegelemzésen alapuló betekintési fejlesztéseket biztosít. 
-6. A Logic Apps különböző üzleti munkafolyamatok működtetésére használható végfelhasználói üzleti alkalmazásokban
+1. IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
+2. Telemetria küldő és összesített bepillantást IoT Central
+3. Az adattovábbítás a kívánt Azure-szolgáltatásba történik a manipulációhoz
+4. Az olyan Azure-szolgáltatások, mint az ASA vagy a Azure Functions használhatók az adatfolyamok újraformázására és a kívánt Storage-fiókokba való küldésre 
+5. A feldolgozott adatok tárolása a közel valós idejű műveletekhez vagy a hideg tároláshoz szükséges, és az olyan további elemzéseket is tartalmaz, amelyek az ML-vagy batch-elemzésen alapulnak. 
+6. A Logic Apps a végfelhasználói üzleti alkalmazások különböző üzleti munkafolyamatainak kikapcsolására is használható
 
 ## <a name="details"></a>Részletek
-A következő szakasz a fogalmi architektúra minden részét ismerteti Telemetriai betöltés a rádiófrekvenciás azonosítás (RFID), a Bluetooth alacsony energiafelhasználású (BLE) címkékből
+A következő szakasz ismerteti a koncepcionális architektúra telemetria betöltését a rádiófrekvenciás azonosítás (RFID), a Bluetooth alacsony energiafogyasztású Címkék
 
-## <a name="rfid-tags"></a>RFID-címkék
-Az RFID-címkék rádióhullámokon keresztül továbbítják egy elem adatait. Az RFID-címkék általában csak akkor rendelkeznek akkumulátorral, ha meg van adva. A címkék energiát kapnak az olvasó által generált rádióhullámokból, és jelet továbbítanak az RFID-olvasó felé.
+## <a name="rfid-tags"></a>RFID-Címkék
+Az RFID-címkék rádióhullámokon keresztül továbbítják az adott elemmel kapcsolatos adatokat. Az RFID-címkék általában nem rendelkeznek akkumulátorral, kivéve, ha meg van adva. A címkék energiát kapnak az olvasó által generált rádióhullámokból, és visszaküldik a jeleket az RFID-olvasó felé.
 
-## <a name="ble-tags"></a>BLE címkék
-Az energiabeacon rendszeres időközönként adatcsomagokat sugároz. A sugáradatot a BLE-olvasók vagy a telepített szolgáltatások okostelefonon észlelik, majd továbbítják a felhőbe.
+## <a name="ble-tags"></a>A Címkék
+Az Energy Beacon rendszeres időközönként közvetíti az adatcsomagokat. A Beacon-alapú adattárakat az intelligens olvasók vagy a telepített szolgáltatások észlelik, majd továbbítják a felhőbe.
 
-## <a name="rfid--ble-readers"></a>RFID & BLE olvasók
-Az RFID-olvasó a rádióhullámokat egy használhatóbb adathalmazsá alakítja. A címkékből gyűjtött adatokezután a helyi peremhálózati kiszolgálón tárolódnak, vagy a JSON-RPC 2.0-s mazmon keresztüli felhőbe kerül.
-A BLE-olvasó, más néven hozzáférési pontok (AP) hasonlóak az RFID-olvasóhoz. Arra szolgál, hogy észlelje a közeli Bluetooth-jeleket, és továbbítsa az üzenetet a helyi Azure IoT Edge vagy felhő json-RPC 2.0 mqtt-n keresztül.
-Sok olvasó képes az RFID és a jeladó jelek olvasására, valamint a hőmérséklethez, a páratartalomhoz, a gyorsulásmérőhöz és a giroszkóphoz kapcsolódó további érzékelőképesség biztosítására.
+## <a name="rfid--ble-readers"></a>RFID-& rendszerolvasók
+Az RFID-olvasó a rádióhullámokat egy jobban használható adatformátumba alakítja át. A címkékből gyűjtött információk ezután a helyi peremhálózati kiszolgálón tárolódnak vagy a felhőbe kerülnek a JSON-RPC 2,0-en keresztül, a MQTT-n keresztül.
+Az egyhelyes olvasó más néven hozzáférési pontok (AP) hasonlóak az RFID-olvasóhoz. A rendszer a közeli Bluetooth-jelek észlelésére, valamint az üzenet helyi Azure IoT Edge vagy felhőbe való továbbítására szolgál a JSON-RPC 2,0-en keresztül a MQTT-en keresztül.
+Számos olvasó képes az RFID-és a Beacon-jelek olvasására, valamint a hőmérséklettel, páratartalommal, gyorsulásmérővel és giroszkópokkal kapcsolatos további érzékelő képesség biztosítására.
 
-## <a name="azure-iot-edge-gateway"></a>Azure IoT Edge átjáró
-Az Azure IoT Edge-kiszolgáló egy helyet biztosít az adatok helyi előzetes feldolgozásához, mielőtt a felhőbe küldené őket. Felhőalapú számítási feladatok at is üzembe helyezhetünk mesterséges intelligenciával, Az Azure-ral és harmadik féltől származó szolgáltatásokkal, üzleti logikával szabványos tárolók használatával.
+## <a name="azure-iot-edge-gateway"></a>Átjáró Azure IoT Edge
+Azure IoT Edge kiszolgáló lehetővé teszi az adatok helyi előfeldolgozását, mielőtt elküldené a felhőbe. A Felhőbeli számítási feladatokat mesterséges intelligencia, az Azure és a külső szolgáltatások, az üzleti logika standard szintű tárolók használatával is üzembe helyezheti.
 
-## <a name="device-management-with-iot-central"></a>Eszközkezelés az IoT Central segítségével 
-Az Azure IoT Central egy megoldásfejlesztési platform, amely leegyszerűsíti az IoT-eszközök kapcsolatát, konfigurációját és felügyeletét. A platform jelentősen csökkenti az IoT-eszközök kezelésének, műveleteinek és a kapcsolódó fejlesztéseknek a terheit és költségeit. Az ügyfelek & partnerek teljes körű vállalati megoldásokat hozhatnak létre a digitális visszacsatolási hurok eléréséhez a készletkezelésben.
+## <a name="device-management-with-iot-central"></a>Eszközkezelés IoT Central 
+Az Azure IoT Central egy megoldás-fejlesztői platform, amely leegyszerűsíti a IoT, a konfigurációt és a felügyeletet. A platform jelentősen csökkenti az IoT, a műveletek és a kapcsolódó fejlesztések terheit és költségeit. Az ügyfelek & partnerekkel teljes körű vállalati megoldásokat hozhatnak létre, amelyekkel digitális visszajelzési hurkot érhet el a készletkezelésben.
 
-## <a name="business-insights--actions-using-data-egress"></a>Üzleti elemzések & műveletek adatforgalom használatával 
-Az IoT Central platform gazdag bővíthetőségi lehetőségeket biztosít a folyamatos adatexportálás (CDE) és api-k révén. Üzleti elemzések alapján telemetriai adatfeldolgozás vagy a nyers telemetriai adatok általában exportált egy előnyben részesített üzletági alkalmazás. Webhook, service bus, event hub vagy blob storage használatával érhető el a gépi tanulási modellek létrehozásához, betanításához és üzembe helyezéséhez, & tovább gazdagíthatja az elemzéseket.
+## <a name="business-insights--actions-using-data-egress"></a>Üzleti elemzések & a kimenő adatforgalommal kapcsolatos műveletek 
+A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén gazdag bővíthetőségi lehetőségeket biztosít. A telemetria adatfeldolgozási vagy nyers telemetria alapuló üzleti elemzések általában egy előnyben részesített üzletági alkalmazásba exportálhatók. A webhook, a Service Bus, az Event hub vagy a blob Storage használatával a gépi tanulási modellek fejlesztéséhez, betanításához és üzembe helyezéséhez & további ismeretek bevezetéséhez.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan helyezhető üzembe [intelligens készletkezelési sablon](./tutorial-iot-central-smart-inventory-management.md)
-* További információ az [IoT Central kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
-* Az IoT Centralról további információ az [IoT Central áttekintése című témakörben található.](../core/overview-iot-central.md)
+* Ismerje meg, hogyan telepítheti az [intelligens leltár felügyeleti sablonját](./tutorial-iot-central-smart-inventory-management.md)
+* További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

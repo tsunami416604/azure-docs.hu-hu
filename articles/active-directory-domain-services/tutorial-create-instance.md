@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure Active Directory tartományi szolgáltatások példányának létrehozása | Microsoft dokumentumok
-description: Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory tartományi szolgáltatások példányát az Azure Portal használatával.
+title: Oktatóanyag – Azure Active Directory Domain Services-példány létrehozása | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory Domain Services példányt a Azure Portal használatával.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,184 +10,184 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 7652bacdebec19f8a5d55874cfb903e8748cef4d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639709"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory tartományi szolgáltatások példányának létrehozása és konfigurálása
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
-Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM-hitelesítés, amelyek teljes mértékben kompatibilisek a Windows Server Active Directoryval. Ezeket a tartományi szolgáltatásokat a tartományvezérlők telepítése, kezelése és javítása nélkül használhatja fel. Az Azure AD DS integrálható a meglévő Azure AD-bérlővel. Ez az integráció lehetővé teszi a felhasználók számára, hogy a vállalati hitelesítő adataikkal jelentkezzenek be, és a meglévő csoportok és felhasználói fiókok segítségével biztosíthatja az erőforrásokhoz való hozzáférést.
+Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja fel. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel. Ez az integráció lehetővé teszi, hogy a felhasználók a vállalati hitelesítő adataikkal jelentkezzenek be, és meglévő csoportokat és felhasználói fiókokat is használhatnak az erőforrásokhoz való hozzáférés biztosításához.
 
-Felügyelt tartományt a hálózatkezelés és a szinkronizálás alapértelmezett beállítási beállításaival hozhat létre, vagy [manuálisan is megadhatja ezeket a beállításokat.][tutorial-create-instance-advanced] Ez az oktatóanyag bemutatja, hogyan használhatja az alapértelmezett beállításokat egy Azure AD DS-példány létrehozásához és konfigurálásához az Azure Portalon.
+Felügyelt tartományt a Hálózatkezelés és a szinkronizálás alapértelmezett konfigurációs beállításaival hozhat létre, vagy [manuálisan is megadhatja ezeket a beállításokat][tutorial-create-instance-advanced]. Ez az oktatóanyag bemutatja, hogyan hozhat létre és konfigurálhat egy Azure AD DS-példányt az Azure Portal használatával az alapértelmezett beállítások használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A felügyelt tartomány DNS-követelményeinek ismertetése
+> * A felügyelt tartomány DNS-követelményeinek megismerése
 > * Azure AD DS-példány létrehozása
 > * Jelszókivonat szinkronizálásának engedélyezése
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
+Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságokra van szüksége az Azure AD-bérlőben.
-* A szükséges Azure AD DS-erőforrások létrehozásához *közreműködői* jogosultságokra van szüksége az Azure-előfizetésben.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
+* Az Azure-előfizetésben *közreműködő* jogosultságokkal kell rendelkeznie a szükséges Azure AD DS-erőforrások létrehozásához.
 
-Bár nem szükséges az Azure AD DS, ajánlott [konfigurálni önkiszolgáló jelszó-visszaállítás (SSPR)][configure-sspr] az Azure AD-bérlő. A felhasználók sspr nélkül is módosíthatják jelszavukat, de az SSPR segít, ha elfelejtik a jelszavukat, és vissza kell állítaniuk.
+Bár az Azure AD DS esetében nem szükséges, az Azure AD-bérlő számára ajánlott az önkiszolgáló [jelszó-visszaállítás (SSPR) konfigurálása][configure-sspr] . A felhasználók SSPR nélkül is módosíthatják a jelszavukat, de a SSPR segít, ha elfelejtik a jelszavukat, és vissza kell állítani.
 
 > [!IMPORTANT]
-> Miután létrehozott egy Azure AD DS felügyelt tartományt, nem helyezheti át a példányt egy másik erőforráscsoportba, virtuális hálózatba, előfizetésbe stb. Az Azure AD DS-példány üzembe helyezésekor ügyeljen a legmegfelelőbb előfizetés, erőforráscsoport, régió és virtuális hálózat kiválasztására.
+> Miután létrehozta az Azure AD DS felügyelt tartományt, nem helyezheti át a példányt másik erőforráscsoporthoz, virtuális hálózatba, előfizetésbe stb. Ügyeljen arra, hogy a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki az Azure AD DS-példány telepítésekor.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban hozza létre és konfigurálja az Azure AD DS-példányt az Azure Portalhasználatával. Első lépésekhez először jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Ebben az oktatóanyagban az Azure Portal használatával hozza létre és konfigurálja az Azure AD DS-példányt. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="create-an-instance"></a>Példány létrehozása
 
-Az **Azure AD tartományi szolgáltatások engedélyezése** varázsló elindításához hajtsa végre az alábbi lépéseket:
+A **Azure ad Domain Services engedélyezése** varázsló elindításához hajtsa végre a következő lépéseket:
 
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-1. Írja be a *tartományszolgáltatásokat* a keresősávba, majd válassza az *Azure AD tartományi szolgáltatások* lehetőséget a keresési javaslatok közül.
-1. Az Azure AD tartományi szolgáltatások lapon válassza a **Létrehozás lehetőséget.** Elindul az **Azure AD tartományi szolgáltatások engedélyezése** varázsló.
-1. Válassza ki azt az **Azure-előfizetést,** amelyben létre szeretné hozni a felügyelt tartományt.
-1. Válassza ki azt az **erőforráscsoportot,** amelyhez a felügyelt tartománynak tartoznia. Válassza az **Új létrehozása vagy** egy meglévő erőforráscsoport kiválasztását.
+1. Adja meg a *tartományi szolgáltatásokat* a keresési sávban, majd válassza a *Azure ad Domain Services* lehetőséget a keresési javaslatok közül.
+1. A Azure AD Domain Services lapon válassza a **Létrehozás**lehetőséget. Elindul a **Azure ad Domain Services engedélyezése** varázsló.
+1. Válassza ki azt az Azure- **előfizetést** , amelyben létre szeretné hozni a felügyelt tartományt.
+1. Válassza ki azt az **erőforráscsoportot** , amelyhez a felügyelt tartománynak tartoznia kell. Válassza az **új létrehozása** lehetőséget, vagy válasszon ki egy meglévő erőforráscsoportot.
 
-Amikor létrehoz egy Azure AD DS-példányt, meg kell adnia egy DNS-nevet. A DNS-név kiválasztásakor néhány szempontot figyelembe kell venni:
+Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név kiválasztásakor a következő szempontokat kell figyelembe venni:
 
-* **Beépített tartománynév:** Alapértelmezés szerint a rendszer a könyvtár beépített tartománynevét használja (egy *.onmicrosoft.com* utótagot). Ha biztonságos LDAP-hozzáférést szeretne engedélyezni a felügyelt tartományhoz az interneten keresztül, nem hozhat létre digitális tanúsítványt az alapértelmezett tartománnyal való kapcsolat védelmére. A Microsoft rendelkezik az *.onmicrosoft.com* tartománnyal, így a hitelesítésszolgáltató (CA) nem állít ki tanúsítványt.
-* **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában már a tulajdonában van, és irányítható. Ha egy irányítható, egyéni tartományt használ, a forgalom megfelelően tud folyni az alkalmazások támogatásához.
-* **Nem irányítható tartományutótagok:** Általában azt javasoljuk, hogy kerülje a nem irányítható tartománynév-utótagot, például *a contoso.local*nevet. A *.local* utótag nem irányítható, és problémákat okozhat a DNS-feloldással kapcsolatban.
+* **Beépített tartomány neve:** Alapértelmezés szerint a rendszer a könyvtár beépített tartománynevét használja (a *. onmicrosoft.com* utótagot). Ha engedélyezni szeretné a biztonságos LDAP-hozzáférést a felügyelt tartományhoz az interneten keresztül, nem hozhat létre digitális tanúsítványt a kapcsolat védelméhez ezzel az alapértelmezett tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a hitelesítésszolgáltató (CA) nem bocsát ki tanúsítványt.
+* **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában az egyik, amelyet már birtokol, és irányítható. Ha irányítható, egyéni tartományt használ, a forgalom az alkalmazások támogatásához szükséges módon képes megfelelően átáramlani.
+* **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
 > [!TIP]
-> Ha egyéni tartománynevet hoz létre, a meglévő DNS-névtereket is gondot kell fordítania. Javasoljuk, hogy a meglévő Azure-tól vagy helyszíni DNS-névterülettől elkülönülő tartománynevet használjon.
+> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Ha például rendelkezik egy meglévő DNS-névtérrel *contoso.com,* hozzon létre egy Azure AD DS által felügyelt tartományt *a aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell és birtokolnia kell ezt az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
+> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy Azure AD DS felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
-> Előfordulhat, hogy további DNS-rekordokat kell létrehoznia a környezet más szolgáltatásaihoz, vagy feltételes DNS-továbbítókat a környezetben meglévő DNS-névterek között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használó webhelyet üzemeltet, előfordulhatnak olyan elnevezési ütközések, amelyek további DNS-bejegyzéseket igényelnek.
+> Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
-> Ezekben az oktatóanyagokban és útmutatócikkekben *a aaddscontoso.com* egyéni tartománya rövid példaként szolgál. Minden parancsban adja meg a saját tartománynevét.
+> Ezekben az oktatóanyagokban és útmutatókban a *aaddscontoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét.
 
-A következő DNS-névkorlátozások is érvényesek:
+A DNS-név következő korlátozásai is érvényesek:
 
-* **Tartományi előtagkorlátozások:** 15 karakternél hosszabb előtaggal nem hozhat létre felügyelt tartományt. A megadott tartománynév előtagnak (például a *aaddscontoso.com* tartománynévben az *aaddscontoso)* 15 vagy kevesebb karaktert kell tartalmaznia.
-* **Hálózati névütközések:** A felügyelt tartomány DNS-tartományneve nem létezhet már a virtuális hálózatban. Pontosabban ellenőrizze a következő eseteket, amelyek névütközéshez vezetnek:
-    * Ha már rendelkezik ugyanazzal a DNS-tartománynévvel rendelkező Active Directory-tartománnyal az Azure virtuális hálózatán.
-    * Ha a felügyelt tartományt engedélyező virtuális hálózat VPN-kapcsolattal rendelkezik a helyszíni hálózattal. Ebben az esetben győződjön meg arról, hogy nincs olyan tartománya, amelynek a helyszíni hálózatán ugyanaz a DNS-tartománynév van.
-    * Ha rendelkezik egy ezzel a névvel rendelkező azure-felhőszolgáltatással az Azure virtuális hálózatán.
+* **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *aaddscontoso.com* tartomány *aaddscontoso* ) legalább 15 karakterből állhat.
+* **Hálózati név ütközése:** A felügyelt tartomány DNS-tartományneve még nem létezik a virtuális hálózaton. Konkrétan a következő helyzetekben érdemes megkeresni a nevek ütközését:
+    * Ha már rendelkezik egy Active Directory tartománnyal ugyanazzal a DNS-tartománynévvel az Azure-beli virtuális hálózaton.
+    * Ha a virtuális hálózat, amelyen engedélyezni szeretné a felügyelt tartományt, VPN-kapcsolattal rendelkezik a helyszíni hálózattal. Ebben az esetben győződjön meg arról, hogy nem rendelkezik ugyanazzal a DNS-tartománynévvel rendelkező tartománnyal a helyszíni hálózaton.
+    * Ha az Azure-beli virtuális hálózaton már van ilyen nevű Azure Cloud Service-szolgáltatás.
 
-Töltse ki a mezőket az Azure *Portal Alapjai* ablakában egy Azure AD DS-példány létrehozásához:
+Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablakában végezze el a következő mezőket:
 
-1. Adja meg a felügyelt tartomány **DNS-tartománynevét,** figyelembe véve az előző pontokat.
-1. Válassza ki azt az **Azure-helyet,** amelyben a felügyelt tartományt létre kell hozni. Ha olyan régiót választ, amely támogatja a rendelkezésre állási zónákat, az Azure AD DS-erőforrások zónák között vannak elosztva a további redundancia érdekében.
+1. Adja meg a felügyelt tartományhoz tartozó **DNS-tartománynevet** , figyelembe véve az előző pontokat.
+1. Válassza ki azt az Azure- **helyet** , amelyben létre kívánja hozni a felügyelt tartományt. Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
 
     A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található.
 
-    Nincs mit beállítani az Azure AD DS zónák között elosztott. Az Azure platform automatikusan kezeli az erőforrások zónaelosztását. További információért és a régió elérhetőségéről a [Mik azok a rendelkezésre állási zónák az Azure-ban?][availability-zones]
+    Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azure platform automatikusan kezeli az erőforrások zónájának eloszlását. További információért és a régiók rendelkezésre állásának megtekintéséhez lásd: [Mi a Availability Zones az Azure-ban?][availability-zones]
 
-1. A **termékváltozat** határozza meg a létrehozható erdőszintű bizalmi kapcsolatok teljesítményét, biztonsági mentési gyakoriságát és maximális számát. A felügyelt tartomány létrehozása után módosíthatja a termékváltozatot, ha az üzleti igények vagy követelmények megváltoznak. További információ: [Azure AD DS Termékváltozat fogalmak.][concepts-sku]
+1. Az **SKU** meghatározza a létrehozható erdőszintű megbízhatósági kapcsolatok teljesítményét, biztonsági mentési gyakoriságát és maximális számát. Az SKU-t a felügyelt tartomány létrehozása után is módosíthatja, ha az üzleti igények vagy követelmények megváltoznak. További információ: [Azure AD DS SKU-fogalmak][concepts-sku].
 
-    Ebben az oktatóanyagban válassza ki a *szabványos* termékváltozatot.
-1. Az *erdő* egy logikai konstrukció, amelyet az Active Directory tartományi szolgáltatások egy vagy több tartomány csoportosítására használnak. Alapértelmezés szerint egy Azure AD DS felügyelt tartomány *jön létre,* mint egy felhasználói erdő. Ez az erdőtípus szinkronizálja az Azure AD összes objektumát, beleértve a helyszíni Activeád-ds környezetben létrehozott felhasználói fiókokat is. Az *erőforráserdő* csak az Azure AD-ben közvetlenül létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforráserdők jelenleg előzetes verzióban jelennek meg. Az *erőforráserdőkkel* kapcsolatos további információkért, például arról, hogy miért használhat egyet, és hogyan hozhat létre erdőszintű bizalmi kapcsolatokat a helyszíni AD DS-tartományokkal, olvassa el az [Azure AD DS-erőforráserdők áttekintését.][resource-forests]
+    Ebben az oktatóanyagban válassza ki a *szabványos* SKU-t.
+1. Az *erdők* egy Active Directory tartományi szolgáltatások által az egy vagy több tartomány csoportosításához használt logikai szerkezetek. Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.
 
-    Ebben az oktatóanyagban válassza a *Felhasználói* erdő létrehozását.
+    Ebben az oktatóanyagban válassza a *felhasználói* erdő létrehozása lehetőséget.
 
-    ![Azure AD tartományi szolgáltatások példányának alapbeállításainak konfigurálása](./media/tutorial-create-instance/basics-window.png)
+    ![Azure AD Domain Services-példány alapvető beállításainak konfigurálása](./media/tutorial-create-instance/basics-window.png)
 
-Az Azure AD DS felügyelt tartomány gyors létrehozásához válassza **a Véleményezés + létrehozás** lehetőséget további alapértelmezett konfigurációs beállítások elfogadásához. A létrehozási beállítás kiválasztásakor a következő alapértelmezések vannak konfigurálva:
+Azure AD DS felügyelt tartomány gyors létrehozásához válassza a **felülvizsgálat + létrehozás** lehetőséget a további alapértelmezett konfigurációs beállítások elfogadásához. A létrehozási lehetőség kiválasztása esetén a következő alapértelmezett beállítások vannak konfigurálva:
 
 * Létrehoz egy *aadds-vnet* nevű virtuális hálózatot, amely a *10.0.2.0/24*IP-címtartományt használja.
 * Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.2.0/24*IP-címtartomány használatával.
-* Szinkronizálja *az Azure* AD összes felhasználóját az Azure AD DS felügyelt tartományába.
+* Szinkronizálja az Azure AD *összes* felhasználóját az Azure AD DS felügyelt tartományba.
 
-Válassza **a Véleményezés + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához.
+Válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához.
 
-## <a name="deploy-the-managed-domain"></a>A felügyelt tartomány telepítése
+## <a name="deploy-the-managed-domain"></a>A felügyelt tartomány üzembe helyezése
 
-A varázsló **Összegzés** lapján tekintse át a felügyelt tartomány konfigurációs beállításait. A módosításokhoz visszatérhet a varázsló bármely lépéséhez. Ha egy Azure AD DS-felügyelt tartományt egységes módon szeretne újratelepíteni egy másik Azure AD-bérlőre, ezeket a konfigurációs beállításokat használva, akkor egy sablont is **letölthet az automatizáláshoz.**
+A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány konfigurációs beállításait. A varázsló bármelyik lépésére visszatérhet a módosítások elvégzéséhez. Egy Azure AD DS felügyelt tartomány egy másik Azure AD-bérlőre való **újbóli**üzembe helyezéséhez, ha ezeket a konfigurációs beállításokat használja, le is töltheti az Automation-sablont.
 
-1. A felügyelt tartomány létrehozásához válassza a **Létrehozás gombot.** Egy megjegyzés jelenik meg, hogy bizonyos konfigurációs beállítások, például a DNS-név vagy a virtuális hálózat nem módosítható, ha az Azure AD DS felügyelt felügyelt lett létrehozva. A folytatáshoz kattintson az **OK gombra.**
-1. A felügyelt tartomány kiépítésének folyamata akár egy órát is igénybe vehet. Egy értesítés jelenik meg a portálon, amely az Azure AD DS üzembe helyezésének előrehaladását jeleníti meg. Válassza ki az értesítést a központi telepítés részletes előrehaladásának megtekintéséhez.
+1. A felügyelt tartomány létrehozásához válassza a **Létrehozás**lehetőséget. Megjelenik egy megjegyzés, amely szerint bizonyos konfigurációs beállítások, például a DNS-név vagy a virtuális hálózat nem módosítható, ha az Azure-AD DS felügyelve lett létrehozva. A folytatáshoz kattintson **az OK gombra**.
+1. A felügyelt tartomány kiépítés folyamata akár egy órát is igénybe vehet. Egy értesítés jelenik meg a portálon, amely az Azure AD DS üzemelő példányának állapotát mutatja. Válassza ki az értesítést, és tekintse meg az üzembe helyezés részletes folyamatát.
 
-    ![Értesítés az Azure Portalon a folyamatban lévő üzembe helyezésről](./media/tutorial-create-instance/deployment-in-progress.png)
+    ![Értesítés a telepítés Azure Portal folyamatban](./media/tutorial-create-instance/deployment-in-progress.png)
 
-1. A lap betöltődik a telepítési folyamat frissítéseivel, beleértve az új erőforrások létrehozását a címtárban.
-1. Válassza ki az erőforráscsoportot, például *a myResourceGroup,* majd válassza ki az Azure AD DS-példányt az Azure-erőforrások listájából, például *aaddscontoso.com.* Az **Áttekintés** lapon látható, hogy a felügyelt tartomány *telepítése*folyamatban van. A felügyelt tartomány nem konfigurálható, amíg teljesen ki van építve.
+1. A lap a telepítési folyamat frissítéseivel töltődik be, beleértve a címtárban lévő új erőforrások létrehozását is.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki az Azure AD DS példányát az Azure-erőforrások listájából, például *aaddscontoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
 
-    ![Tartományi szolgáltatások állapota a létesítési állapot alatt](./media/tutorial-create-instance/provisioning-in-progress.png)
+    ![Tartományi szolgáltatások állapota a kiépítési állapotban](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-1. Ha a felügyelt tartomány teljesen ki van építve, az **Áttekintés** lapon futó állapot jelenik *meg.*
+1. Ha a felügyelt tartomány teljes mértékben kiépítve van, az **Áttekintés** lapon a tartomány állapota *fut*értékre látható.
 
-    ![A tartományi szolgáltatások állapota a sikeres kiépítés után](./media/tutorial-create-instance/successfully-provisioned.png)
+    ![Tartományi szolgáltatások állapota sikeres kiépítés után](./media/tutorial-create-instance/successfully-provisioned.png)
 
-A felügyelt tartomány az Azure AD-bérlőhöz van társítva. A kiépítési folyamat során az Azure AD DS két nagyvállalati alkalmazást hoz létre, a *tartományvezérlő-szolgáltatásokat* és az *AzureActiveDirectoryDomainControllerServices-t* az Azure AD-bérlőben. Ezek a vállalati alkalmazások szükségesek a felügyelt tartomány kiszolgálásához. Ne törölje ezeket az alkalmazásokat.
+A felügyelt tartomány társítva van az Azure AD-bérlőhöz. A kiépítési folyamat során az Azure AD DS két, *tartományvezérlői szolgáltatásokat* és *AzureActiveDirectoryDomainControllerServices* nevű vállalati alkalmazást hoz létre az Azure ad-bérlőben. Ezek a vállalati alkalmazások a felügyelt tartomány kiszolgálásához szükségesek. Ne törölje ezeket az alkalmazásokat.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Az Azure virtuális hálózat DNS-beállításainak frissítése
 
-Az Azure AD DS sikeres üzembe helyezésével most konfigurálja a virtuális hálózatot úgy, hogy más csatlakoztatott virtuális gépek és alkalmazások használhassák a felügyelt tartományt. A kapcsolat biztosításához frissítse a virtuális hálózat DNS-kiszolgálójának beállításait úgy, hogy az az Ip-címek, ahol az Azure AD DS telepítve van.
+Az Azure AD DS sikeres üzembe helyezése után konfigurálja úgy a virtuális hálózatot, hogy engedélyezze más csatlakoztatott virtuális gépek és alkalmazások számára a felügyelt tartomány használatát. A kapcsolat megadásához frissítse a virtuális hálózat DNS-kiszolgálójának beállításait úgy, hogy azok a két IP-címre mutassanak, ahol az Azure AD DS telepítve van.
 
-1. A felügyelt tartomány **Áttekintés** lapja néhány **szükséges konfigurációs lépést**jelenít meg. Az első konfigurációs lépés a virtuális hálózat DNS-kiszolgálói beállításainak frissítése. A DNS-beállítások megfelelő konfigurálása után ez a lépés már nem jelenik meg.
+1. A felügyelt tartomány **Áttekintés** lapján néhány **szükséges konfigurációs lépés**látható. Az első konfigurációs lépés a DNS-kiszolgáló beállításainak frissítése a virtuális hálózathoz. A DNS-beállítások megfelelő konfigurálása után ez a lépés már nem jelenik meg.
 
-    A felsorolt címek a virtuális hálózatban használható tartományvezérlők. Ebben a példában ezek a címek *10.0.2.4* és *10.0.2.5*. Ezeket az IP-címeket később a **Tulajdonságok** lapon találhatja meg.
+    A felsorolt címek a virtuális hálózatban használt tartományvezérlők. Ebben a példában ezek a címek a *10.0.2.4* és a *végpontjául szolgáló*. Később megkeresheti ezeket az IP-címeket a **Tulajdonságok** lapon.
 
-    ![A virtuális hálózat DNS-beállításainak konfigurálása az Azure AD tartományi szolgáltatások IP-címeivel](./media/tutorial-create-instance/configure-dns.png)
+    ![A virtuális hálózat DNS-beállításainak konfigurálása a Azure AD Domain Services IP-címekkel](./media/tutorial-create-instance/configure-dns.png)
 
-1. A virtuális hálózat DNS-kiszolgálójának beállításainak frissítéséhez kattintson a **Konfigurálás gombra.** A DNS-beállítások automatikusan konfigurálva vannak a virtuális hálózathoz.
+1. A DNS-kiszolgáló virtuális hálózatra vonatkozó beállításainak frissítéséhez kattintson a **Konfigurálás** gombra. A DNS-beállítások konfigurálása automatikusan megtörténik a virtuális hálózathoz.
 
 > [!TIP]
-> Ha az előző lépésekben egy meglévő virtuális hálózatot választott, a hálózathoz csatlakozó virtuális gépek csak az újraindítás után kapják meg az új DNS-beállításokat. A virtuális gépek az Azure Portalon, az Azure PowerShell ben vagy az Azure CLI használatával újraindítható.
+> Ha az előző lépésekben egy meglévő virtuális hálózatot jelölt ki, a hálózathoz csatlakozó virtuális gépek csak újraindítás után kapják meg az új DNS-beállításokat. A virtuális gépeket a Azure Portal, Azure PowerShell vagy az Azure CLI használatával indíthatja újra.
 
-## <a name="enable-user-accounts-for-azure-ad-ds"></a>Felhasználói fiókok engedélyezése az Azure AD DS szolgáltatáshoz
+## <a name="enable-user-accounts-for-azure-ad-ds"></a>Felhasználói fiókok engedélyezése az Azure AD DS
 
-A felügyelt tartomány felhasználóinak hitelesítéséhez az Azure AD DS jelszókivonatokat igényel az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez megfelelő formátumban. Az Azure AD nem hoz létre és tárol jelszókivonatokat az NTLM- vagy Kerberos-hitelesítéshez szükséges formátumban, amíg nem engedélyezi az Azure AD DS-t a bérlő számára. Biztonsági okokból az Azure AD is nem tárolja a jelszó hitelesítő adatokat a tiszta szöveges formában. Ezért az Azure AD nem tudja automatikusan generálni ezeket az NTLM- vagy Kerberos-jelszókivét a felhasználók meglévő hitelesítő adatai alapján.
+A felügyelt tartományon lévő felhasználók hitelesítéséhez az Azure AD DS a jelszó-kivonatokat az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez megfelelő formátumban kell megadni. Az Azure AD az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban nem állítja elő vagy tárolja a jelszó-kivonatokat, amíg nem engedélyezi az Azure-AD DS a bérlő számára. Biztonsági okokból az Azure AD nem tárolja a jelszó hitelesítő adatait a tiszta szöveges formában. Ezért az Azure AD nem tudja automatikusan előállítani ezeket az NTLM-vagy Kerberos-jelszó-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
 
 > [!NOTE]
-> A megfelelően konfigurált, a használható jelszó kikeresések az Azure AD DS felügyelt tartományban tárolja. Ha törli az Azure AD DS felügyelt tartományt, az adott ponton tárolt jelszókikeresések is törlődnek. Szinkronizált hitelesítő adatok az Azure AD nem lehet újra használni, ha később hozzon létre egy Azure AD DS felügyelt tartományban – újra kell konfigurálnia a jelszókivonat-szinkronizálás a jelszó kivonatújra tárolni. Korábban a tartományhoz csatlakozó virtuális gépek vagy felhasználók nem lesznek képesek azonnal hitelesíteni – az Azure AD-nek létre kell hoznia és tárolnia kell a jelszókimondottakat az új Azure AD DS felügyelt tartományban. További információ: [Password hash sync process for Azure AD DS and Azure AD Connect][password-hash-sync-process].
+> A megfelelő konfigurálást követően a rendszer a használható jelszavak kivonatait az Azure AD DS felügyelt tartományában tárolja. Ha törli az Azure AD DS felügyelt tartományt, az adott ponton tárolt jelszó-kivonatok is törlődnek. Az Azure AD-ben szinkronizált hitelesítő adatok nem használhatók újra, ha később Azure AD DS felügyelt tartományt hoz létre – újra kell konfigurálnia a jelszó-kivonatolási szinkronizálást, hogy a jelszó-kivonatok újra tárolva legyenek. Korábban a tartományhoz csatlakoztatott virtuális gépek vagy felhasználók nem tudják azonnal hitelesíteni magukat – az Azure AD-nek az új Azure AD DS felügyelt tartományban kell megadnia és tárolnia a jelszó-kivonatokat. További információ: jelszó- [kivonatolási szinkronizálási folyamat az Azure AD DS és Azure ad Connect][password-hash-sync-process].
 
-A jelszókitagok létrehozásának és tárolásának lépései eltérnek az Azure AD-ben létrehozott csak felhőalapú felhasználói fiókoktól, illetve az Azure AD Connect használatával a helyszíni címtárból szinkronizált felhasználói fiókoktól. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Ezek a felhasználói fiókok nincsenek szinkronizálva a helyszíni címtárból. Ebben az oktatóanyagban dolgozzunk egy csak alapvető felhőalapú felhasználói fiókkal. Az Azure AD Connect használatához szükséges további lépésekről a [helyszíni AD-ből a felügyelt tartományba szinkronizált felhasználói fiókok jelszókihezéseinek szinkronizálása című][on-prem-sync]témakörben talál további információt.
+A jelszó-kivonatok létrehozásához és tárolásához szükséges lépések eltérnek az Azure AD-ben létrehozott kizárólag felhőalapú felhasználói fiókok és a helyszíni címtárból a Azure AD Connect használatával szinkronizált felhasználói fiókok esetében. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Ezek a felhasználói fiókok nem szinkronizálhatók a helyszíni címtárból. Ebben az oktatóanyagban egy egyszerű, csak felhőalapú felhasználói fiókkal dolgozunk. További információ a Azure AD Connect használatához szükséges további lépésekről: [jelszó-kivonatolások szinkronizálása a helyszíni ad-ből a felügyelt tartományba szinkronizált felhasználói fiókokhoz][on-prem-sync].
 
 > [!TIP]
-> Ha az Azure AD-bérlő a helyszíni AD-ből származó csak felhőbeli felhasználók és felhasználók kombinációjával rendelkezik, mindkét lépéskészletet el kell végeznie.
+> Ha az Azure AD-bérlő csak felhőalapú felhasználókat és felhasználókat tartalmaz a helyszíni AD-ből, mindkét lépést végre kell hajtania.
 
-Csak felhőalapú felhasználói fiókok esetén a felhasználóknak módosítaniuk kell a jelszavukat, mielőtt használhatnák az Azure AD DS-t. Ez a jelszómódosítási folyamat a Kerberos- és NTLM-hitelesítés jelszókivonatait hozza létre és tárolja az Azure AD-ben. A fiók nincs szinkronizálva az Azure AD-ről az Azure AD DS-re, amíg a jelszó nem változik. Vagy lejár a jelszavakat az összes felhőbeli felhasználók a bérlőben, akiknek szükségük van az Azure AD DS, amely kényszeríti a jelszó módosítása a következő bejelentkezés, vagy utasítsa a felhőbeli felhasználók manuálisan módosíthatja a jelszavakat. Ebben az oktatóanyagban változtassuk meg manuálisan a felhasználói jelszót.
+A csak felhőalapú felhasználói fiókok esetében a felhasználóknak meg kell változtatniuk a jelszavukat, mielőtt használniuk tudják az Azure AD DS-t. Ez a jelszó-módosítási folyamat okozza a Kerberos és az NTLM hitelesítés jelszavas kivonatait az Azure AD-ben való létrehozásához és tárolásához. A fiók nincs szinkronizálva az Azure AD-ből az Azure AD DSig, amíg meg nem változtatják a jelszót. Vagy járjon le a bérlő összes olyan felhőalapú felhasználójának jelszavával, akinek az Azure AD DS-t kell használnia, amely a következő bejelentkezéskor kényszeríti a jelszót, vagy utasítja a Felhőbeli felhasználókat, hogy manuálisan módosítsák a jelszavukat. Ebben az oktatóanyagban manuálisan módosítunk egy felhasználói jelszót.
 
-Ahhoz, hogy a felhasználó alaphelyzetbe állíthassa a jelszavát, az Azure [AD-bérlőt konfigurálni kell az önkiszolgáló jelszó-visszaállításhoz.][configure-sspr]
+Mielőtt egy felhasználó visszaállíthatja a jelszavát, az Azure AD-bérlőt [konfigurálni kell az önkiszolgáló jelszó-visszaállításhoz][configure-sspr].
 
-A csak felhőalapú felhasználók jelszavának módosításához a felhasználónak a következő lépéseket kell végrehajtania:
+A csak felhőalapú felhasználók jelszavának módosításához a felhasználónak a következő lépéseket kell elvégeznie:
 
-1. Nyissa meg az Azure AD [https://myapps.microsoft.com](https://myapps.microsoft.com)access panel oldalát a ban.
-1. A jobb felső sarokban jelölje ki a nevét, majd válassza a **Profil** lehetőséget a legördülő menüből.
+1. Nyissa meg az Azure AD hozzáférési panel lapját a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. A jobb felső sarokban válassza ki a nevét, majd válassza a **profil** lehetőséget a legördülő menüből.
 
     ![Profil kiválasztása](./media/tutorial-create-instance/select-profile.png)
 
-1. A **Profil** lapon válassza a **Jelszó módosítása**lehetőséget.
-1. A **Jelszó módosítása** lapon adja meg meglévő (régi) jelszavát, majd adjon meg egy új jelszót, és erősítse meg azt.
+1. A **profil** lapon válassza a **jelszó módosítása**lehetőséget.
+1. A **jelszó módosítása** lapon adja meg a meglévő (régi) jelszavát, majd írja be és erősítse meg az új jelszót.
 1. Válassza a **Küldés** lehetőséget.
 
-Néhány percet vesz igénybe, miután megváltoztatta a jelszavát, hogy az új jelszó használható legyen az Azure AD DS-ben, és sikeresen jelentkezzen be a felügyelt tartományhoz csatlakozott számítógépekre.
+Néhány percet vesz igénybe, miután módosította az új jelszóhoz tartozó jelszót, hogy az Azure AD DS használható legyen, és hogy sikeresen bejelentkezzen a felügyelt tartományhoz csatlakoztatott számítógépekre.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A felügyelt tartomány DNS-követelményeinek ismertetése
+> * A felügyelt tartomány DNS-követelményeinek megismerése
 > * Azure AD DS-példány létrehozása
-> * Rendszergazdai felhasználók hozzáadása a tartománykezeléshez
-> * Az Azure AD DS felhasználói fiókjainak engedélyezése és jelszókiírások létrehozása
+> * Rendszergazda felhasználók hozzáadása a tartományi felügyelethez
+> * Felhasználói fiókok engedélyezése az Azure AD DS számára és jelszó-kivonatok előállítása
 
-Mielőtt tartományhoz csatlakozik a virtuális gépekhez, és telepíti az Okat, amelyek az Azure AD DS felügyelt tartományt használó alkalmazásokat telepít, konfiguráljon egy Azure virtuális hálózatot az alkalmazásszámítási feladatokhoz.
+A tartományhoz csatlakozó virtuális gépek és az Azure AD DS felügyelt tartományt használó alkalmazások központi telepítése előtt állítson be egy Azure-beli virtuális hálózatot az alkalmazások számítási feladataihoz.
 
 > [!div class="nextstepaction"]
-> [Az Azure virtuális hálózat konfigurálása az alkalmazás-munkaterhelések számára a felügyelt tartomány használatához](tutorial-configure-networking.md)
+> [Azure-beli virtuális hálózat konfigurálása alkalmazás-munkaterheléshez a felügyelt tartomány használatához](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md

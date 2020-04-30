@@ -1,6 +1,6 @@
 ---
-title: Felügyeleti egységek hibaelhárítása és gyakori kérdések – Azure Active Directory | Microsoft dokumentumok
-description: Vizsgálja meg a felügyeleti egységek korlátozott hatókörrel rendelkező engedélyek et az Azure Active Directoryban.
+title: Felügyeleti egységek – hibaelhárítás és gyakori kérdések – Azure Active Directory | Microsoft Docs
+description: Vizsgálja meg a felügyeleti egységeket a korlátozott hatókörű engedélyek megadásához Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,61 +15,61 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 022658306d6e4d69174cc616d230cfe4892f1204
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684862"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD felügyeleti egységek: Hibaelhárítás és gyakori kérdések
 
-Részletesebb felügyeleti vezérlés az Azure Active Directoryban (Azure AD), a felhasználók hozzárendelhető egy Azure AD-szerepkör egy hatóköre, amely egy vagy több felügyeleti egység (AUs) csak. A gyakori feladatokhoz használt PowerShell-parancsfájlok mintája a Felügyeleti egységek használata.For sample PowerShell-parancsfájlok for common tasks, see [Work with administrative units.](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)
+A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez a felhasználókat hozzárendelheti egy Azure AD-szerepkörhöz olyan hatókörrel, amely egy vagy több felügyeleti egységre (AUs) korlátozódik. A gyakori feladatokhoz használható PowerShell-parancsfájlokat lásd: [a felügyeleti egységek használata](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Miért nem tudok felügyeleti egységet létrehozni?**
 
-**A.** Csak egy *globális rendszergazda* vagy *kiemelt szerepkör-rendszergazda* hozhat létre felügyeleti egységet az Azure AD-ben. Ellenőrizze, hogy a felügyeleti egységet létrehozni próbáló felhasználó globális *rendszergazdai* vagy *kiemelt szerepkör-rendszergazdai* szerepkört kapott-e.
+**A:** Csak a *globális rendszergazda* vagy a *Kiemelt szerepkörű rendszergazda* hozhat létre felügyeleti egységet az Azure ad-ben. Győződjön meg arról, hogy a felügyeleti egységet létrehozó felhasználó hozzá van rendelve a *globális rendszergazda* vagy a *Kiemelt szerepkörű rendszergazda* szerepkörhöz.
 
-**K: Hozzáadtam egy csoportot a közigazgatási egységhez. Miért nem jelennek meg még mindig a csoport tagjai?**
+**K: hozzáadtam egy csoportot a felügyeleti egységhez. Miért még nem jelennek meg a csoporttagok?**
 
-**A.** Ha hozzáad egy csoportot a felügyeleti egységhez, az nem eredményezi a csoport összes tagjának hozzáadását. A felhasználókat közvetlenül hozzá kell rendelni a felügyeleti egységhez.
+**A:** Ha hozzáad egy csoportot a felügyeleti egységhez, az nem eredményezi a csoport összes tagjának hozzáadását. A felhasználókat közvetlenül a felügyeleti egységhez kell rendelni.
 
-**K: Én csak hozzá (vagy eltávolították) tagja a közigazgatási egység. Miért nem jelenik meg (vagy jelenik meg a tag) a felhasználói felületen?**
+**K: most Hozzáadtam (vagy eltávolítottam) a felügyeleti egység egyik tagját. Miért nem jelenik meg a tag (vagy még nem jelenik meg) a felhasználói felületen?**
 
-**A.** Előfordulhat, hogy a felügyeleti egység egy vagy több tagjának hozzáadásának vagy eltávolításának feldolgozása néhány percet vesz igénybe, hogy megjelenjen a **Felügyeleti egységek** lapon. Másik lehetőségként közvetlenül a társított erőforrás tulajdonságait, és nézze meg, hogy a művelet befejeződött. Az Ati-k felhasználóiról és csoportjairól a [Felhasználók felügyeleti egységeinek listázása](roles-admin-units-add-manage-users.md) és [a csoport felügyeleti egységeinek listázása című](roles-admin-units-add-manage-groups.md)témakörben talál további információt.
+**A:** Előfordulhat, hogy a felügyeleti egység egy vagy több tagja hozzáadásának vagy eltávolításának feldolgozása néhány percet igénybe vehet a **felügyeleti egységek** lapon. Azt is megteheti, hogy közvetlenül a kapcsolódó erőforrás tulajdonságait látja el, és megtekinti, hogy a művelet befejeződött-e. További információ a felhasználókról és csoportokról az AUs-ban: a [felhasználók felügyeleti egységeinek listázása](roles-admin-units-add-manage-users.md) és a [csoportok felügyeleti egységeinek listázása](roles-admin-units-add-manage-groups.md).
 
-**K: Rendszergazdai egység delegált jelszó-rendszergazdája vagyok. Miért nem tudom visszaállítani egy adott felhasználó jelszavát?**
+**K: delegált jelszavas rendszergazda vagyok egy felügyeleti egységen. Miért nem lehet alaphelyzetbe állítani egy adott felhasználó jelszavát?**
 
-**A.** A rendszergazdai egységként csak a rendszergazdai egységhez rendelt felhasználók számára állíthatja alaphelyzetbe a jelszavakat. Győződjön meg arról, hogy az a felhasználó, akinek a jelszó-alaphelyzetbe állítása sikertelen, ahhoz a felügyeleti egységhez tartozik, amelyhez hozzá van rendelve. Ha a felhasználó ugyanahhoz a felügyeleti egységhez tartozik, de továbbra sem tudja alaphelyzetbe állítani a jelszavát, ellenőrizze a felhasználóhoz rendelt szerepköröket. 
+**A:** Rendszergazdai egység rendszergazdájaként csak a felügyeleti egységhez rendelt felhasználók jelszavait állíthatja alaphelyzetbe. Győződjön meg arról, hogy a jelszó-visszaállítást elmulasztó felhasználó tartozik ahhoz a felügyeleti egységhez, amelyhez hozzá van rendelve. Ha a felhasználó ugyanahhoz a felügyeleti egységhez tartozik, de továbbra sem tudja visszaállítani a jelszavát, ellenőrizze a felhasználóhoz rendelt szerepköröket. 
 
-A jogosultságok illetéktelen megszerzésének megakadályozása érdekében a rendszergazdai egység hatókörrel rendelkező rendszergazdája nem állíthatja alaphelyzetbe a szervezetszintű hatókörrel rendelkező szerepkörhöz rendelt felhasználó jelszavát.
+A Jogosultságszint-emelés megszerzésének megakadályozása érdekében a felügyeleti egység hatókörű rendszergazdája nem állíthatja alaphelyzetbe egy olyan felhasználó jelszavát, aki egy, a szervezetre kiterjedő hatókörrel rendelkező szerepkörhöz van rendelve.
 
-**K: Miért van szükség közigazgatási egységekre? Nem használhattuk volna a biztonsági csoportokat a hatókör meghatározásának módjaként?**
+**K: Miért szükségesek a felügyeleti egységek? Nem sikerült használni a biztonsági csoportokat a hatókör definiálásának módjaként?**
 
-**A.** A biztonsági csoportok rendelkeznek egy meglévő cél- és engedélyezési modellel. A *felhasználói rendszergazda,* például kezelheti az Azure AD-szervezet összes biztonsági csoportjának tagságát. A szerepkör csoportok at használhat az alkalmazásokhoz, például a Salesforce-hoz való hozzáférés kezelésére. A *felhasználói rendszergazda* nem kezelheti magát a delegálási modellt, ami akkor következne be, ha a biztonsági csoportokat kiterjesztenék az "erőforrás-csoportosítás" forgatókönyvek támogatására. A felügyeleti egységek, például a Windows Server Active Directory szervezeti egységei, a címtárobjektumok széles körének hatókör-felügyeletét szolgálják. Maguk a biztonsági csoportok erőforrás-hatókörök tagjai lehetnek. A rendszergazda által kezelhető biztonsági csoportok biztonsági csoportok meghatározásához a biztonsági csoportok használata zavaró lehet.
+**A:** A biztonsági csoportok meglévő célra és engedélyezési modellel rendelkeznek. A *felhasználói rendszergazdák*például kezelhetik az Azure ad-szervezet összes biztonsági csoportjának tagságát. A szerepkör csoportok használatával kezelheti az olyan alkalmazásokhoz való hozzáférést, mint a Salesforce. A *felhasználói rendszergazda* nem tudja kezelni magát a delegálási modellt, ami azt eredményezheti, hogy a biztonsági csoportok kiterjeszthetők az "erőforrás-csoportosítás" forgatókönyvek támogatására. A felügyeleti egységek (például a Windows Server Active Directory szervezeti egységei) célja, hogy lehetővé teszik a címtár-objektumok széles körének felügyeletét. Maguk a biztonsági csoportok az erőforrás-hatókörök tagjai lehetnek. Biztonsági csoportok használata a rendszergazda által kezelhető biztonsági csoportok meghatározásához zavaró lehet.
 
-**K: Mit jelent csoportot hozzáadni egy felügyeleti egységhez?**
+**K: mit jelent a csoport hozzáadása egy felügyeleti egységhez?**
 
-**A.** Ha csoportot ad hozzá egy felügyeleti egységhez, az magában a csoportban szerepel a felügyeleti egységhez tartozó *felhasználói rendszergazda* felügyeleti hatóköre. A felügyeleti egység felhasználói rendszergazdái kezelhetik magának a csoportnak a nevét és tagságát. Nem ad engedélyt a *rendszergazdai jogosultsági körnek* a csoport felhasználóinak kezelésére (például a jelszavak alaphelyzetbe állításához). Ahhoz, hogy a *felhasználó rendszergazdája* képes legyen kezelni a felhasználókat, a felhasználóknak a felügyeleti egység közvetlen tagjainak kell lenniük.
+**A:** Ha hozzáad egy csoportot egy felügyeleti egységhez, a csoport maga az adott felügyeleti egységre is kiterjedő *felhasználói rendszergazda* felügyeleti hatókörbe kerül. A felügyeleti egység felhasználói rendszergazdái a csoport nevét és tagságát is kezelhetik. Nem biztosítja a *rendszergazda* számára a felügyeleti egység engedélyeit a csoport felhasználóinak kezeléséhez (például a jelszavuk alaphelyzetbe állításához). Ahhoz, hogy *a felhasználók felügyelhetik a felhasználókat* , a felhasználóknak közvetlenül a felügyeleti egység tagjainak kell lenniük.
 
-**K: Egy erőforrás (felhasználó vagy csoport) több felügyeleti egység tagja is lehet?**
+**K: lehet, hogy egy erőforrás (felhasználó vagy csoport) egynél több felügyeleti egység tagja?**
 
-**A.** Igen, egy erőforrás több felügyeleti egység tagja is lehet. Az erőforrást az erőforrásra vonatkozó engedélyekkel rendelkező összes szervezeti szintű és felügyeleti egységhatókörrel rendelkező rendszergazda is feltudja ügyintézni.
+**A:** Igen, egy erőforrás több felügyeleti egység tagja is lehet. Az erőforrást az összes szervezetre kiterjedő és felügyeleti egység – hatókörű rendszergazda felügyelheti, akik rendelkeznek engedéllyel az erőforráson.
 
-**K: Elérhetők-e felügyeleti egységek a B2C szervezetekben?**
+**K: vannak elérhető felügyeleti egységek a B2C-szervezeteknél?**
 
-**A.** Nem, a felügyeleti egységek nem érhetők el a B2C szervezetek számára.
+**A:** Nem, a B2C-szervezeteknek nem állnak rendelkezésre felügyeleti egységek.
 
-**K: Támogatottak a beágyazott felügyeleti egységek?**
+**K: támogatottak a beágyazott felügyeleti egységek?**
 
-**A.** Nem, a beágyazott felügyeleti egységek nem támogatottak.
+**A:** Nem, a beágyazott felügyeleti egységek nem támogatottak.
 
-**K: A felügyeleti egységek támogatottak a PowerShell és a Graph API- ban?**
+**K: a PowerShell és a Graph API támogatja a felügyeleti egységeket?**
 
-**V:** Igen. A felügyeleti egységek támogatása a [PowerShell-parancsmag dokumentációjában](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview) és [a mintaparancsfájlokban](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)található. 
+**V:** Igen. A felügyeleti egységek támogatását a PowerShell- [parancsmag dokumentációjában](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview) és a [minta parancsfájlokban](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)találja. 
 
-A [Felügyeletiegység erőforrástípus](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit) támogatása a Microsoft Graphban.
+A [administrativeUnit erőforrástípus](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit) támogatásának keresése a Microsoft Graphban.
 
 ## <a name="next-steps"></a>További lépések
 

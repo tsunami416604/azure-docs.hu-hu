@@ -1,7 +1,7 @@
 ---
 title: Saját attribútumok hozzáadása egyéni házirendekhez
 titleSuffix: Azure AD B2C
-description: Forgatókönyv a bővítménytulajdonságok és az egyéni attribútumok használatáról, valamint azok a felhasználói felületen való használatáról.
+description: A bővítmény tulajdonságainak és egyéni attribútumainak, valamint a felhasználói felületen való használatát bemutató bemutató.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,56 +12,56 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678255"
 ---
-# <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: Egyéni attribútumok engedélyezése egyéni profilházirendben
+# <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: egyéni attribútumok engedélyezése egyéni profil házirendben
 
-A [Jogcímek hozzáadása és a felhasználói bevitel testreszabása egyéni házirendek használatával](custom-policy-configure-user-input.md) című cikkben megtudhatja, hogyan használhatja a beépített felhasználói profil [attribútumait.](user-profile-attributes.md) Ebben a cikkben egy egyéni attribútumot engedélyez az Azure Active Directory B2C (Azure AD B2C) címtárban. Később az új attribútumot egyéni jogcímként használhatja [a felhasználói folyamatokban](user-flow-overview.md) vagy [az egyéni házirendekben](custom-policy-get-started.md) egyidejűleg.
+A [jogcímek hozzáadása és a felhasználói bevitel testreszabása Egyéni szabályzatok használatával](custom-policy-configure-user-input.md) című cikkből megtudhatja, hogyan használhatja a beépített [felhasználói profilok attribútumait](user-profile-attributes.md). Ebben a cikkben egy egyéni attribútumot engedélyez a Azure Active Directory B2C (Azure AD B2C) címtárban. Később az új attribútumot egyéni jogcímként használhatja [felhasználói folyamatokban](user-flow-overview.md) vagy [Egyéni szabályzatokban](custom-policy-get-started.md) .
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse az Azure [Active Directory B2C: Ismerkedés](custom-policy-get-started.md)az egyéni házirendek című cikkben leírt lépésekkel.
+Kövesse a [Azure Active Directory B2C: Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című cikk lépéseit.
 
-## <a name="use-custom-attributes-to-collect-information-about-your-customers"></a>Egyéni attribútumok használata az ügyfelekkel kapcsolatos információk gyűjtésére 
+## <a name="use-custom-attributes-to-collect-information-about-your-customers"></a>Egyéni attribútumok használata az ügyfelek adatainak gyűjtéséhez 
 
-Az Azure AD B2C könyvtár hoz egy [beépített attribútumkészlet.](user-profile-attributes.md) Azonban gyakran létre kell hoznia saját attribútumait az adott forgatókönyv kezeléséhez, például akkor, ha:
+A Azure AD B2C könyvtára egy [beépített attribútumokkal](user-profile-attributes.md)rendelkezik. Azonban gyakran kell létrehoznia saját attribútumokat az adott forgatókönyv kezeléséhez, például a következő esetekben:
 
-* Az ügyfél felé néző alkalmazásnak meg kell persistnia egy **LoyaltyId attribútumot.**
-* Az identitásszolgáltató egyedi felhasználói azonosítóval, **uniqueUserGUID**azonosítóval rendelkezik, amelyet meg kell tartani.
-* Az egyéni felhasználói útnak meg kell persistnie a felhasználó állapotát, **migrationStatus**, hogy más logika működjön.
+* Egy ügyfél felé irányuló alkalmazásnak meg kell őriznie egy **LoyaltyId** attribútumot.
+* Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, amelyet **uniqueUserGUID**kell megőrizni.
+* Az egyéni felhasználói utazásnak meg kell őriznie a felhasználó ( **migrationStatus**) állapotát, hogy más logika is működjön.
 
-Az Azure AD B2C lehetővé teszi az egyes felhasználói fiókokban tárolt attribútumok készletének bővítését. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)segítségével is elolvashatja és írhatja.
+Azure AD B2C segítségével kiterjesztheti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti.
 
-## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C bővítmények alkalmazás
+## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C Extensions-alkalmazás
 
-A bővítményattribútumok csak akkor regisztrálhatók egy alkalmazásobjektumon, ha azok egy felhasználó adatait is tartalmazhatják. A bővítmény attribútum a b2c-extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mivel az Azure AD B2C felhasználói adatok tárolására használja. Ez az alkalmazás az Azure AD B2C, alkalmazásregisztrációk.
+A bővítmény attribútumai csak az Application objektumon regisztrálhatók, annak ellenére, hogy egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A bővítmény attribútum a B2C-Extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mert az Azure AD B2C használja a felhasználói adattároláshoz. Az alkalmazás az Azure AD B2C, az alkalmazások regisztrációja alatt található.
 
-A *kifejezéskiterjesztés tulajdonság*, *egyéni attribútum*és *egyéni jogcím* hivatkoznak ugyanarra a dologra a cikk összefüggésében. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változik.
+A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attribútum*és az *egyéni jogcím* a jelen cikk kontextusában ugyanezt a dolgot tekinti át. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változhat.
 
-## <a name="get-the-application-properties"></a>Az alkalmazás tulajdonságainak beszereznie
+## <a name="get-the-application-properties"></a>Az alkalmazás tulajdonságainak beolvasása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
-1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
-1. Válassza **az Alkalmazásregisztrációk (Előnézet)** lehetőséget, majd a **Minden alkalmazás**lehetőséget.
-1. Válassza `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` ki az alkalmazást.
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Válassza ki `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` az alkalmazást.
 1. Másolja a következő azonosítókat a vágólapra, és mentse őket:
-    * **Alkalmazásazonosító**. Példa: `11111111-1111-1111-1111-111111111111`.
+    * **Alkalmazás azonosítója**. Példa: `11111111-1111-1111-1111-111111111111`.
     * **Objektumazonosító**. Példa: `22222222-2222-2222-2222-222222222222`.
 
-## <a name="modify-your-custom-policy"></a>Az egyéni házirend módosítása
+## <a name="modify-your-custom-policy"></a>Egyéni szabályzat módosítása
 
-Ha engedélyezni szeretné az egyéni attribútumokat a házirendben, adja meg az **alkalmazásazonosítót** és az **alkalmazásobjektum-azonosítót** az AAD-Common technikai profil metaadataiközött. Az *AAD-Common* technikai profil megtalálható az alap [Azure Active Directory](active-directory-technical-profile.md) technikai profil, és támogatja az Azure AD felhasználói felügyeletét. Más Azure AD technikai profilok közé tartozik az AAD-common a konfiguráció kihasználásához. Az AAD-Common technikai profil felülbírálása a mellékfájlban.
+Ha egyéni attribútumokat kíván engedélyezni a házirendben, adja meg az **alkalmazás azonosítóját** és az Application **Object ID** -t a HRE-Common Technical profil metaadatokban. A *HRE-Common* Technical profil az alapszintű [Azure Active Directory](active-directory-technical-profile.md) technikai profilban található, és támogatást nyújt az Azure ad-felhasználók felügyeletéhez. A többi Azure AD technikai profil tartalmazza a HRE, amely a konfigurációját használja. Bírálja felül a HRE-közös technikai profilt a bővítmény fájljában.
 
-1. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
-1. Keresse meg a ClaimsProviders elemet. Adjon hozzá egy új jogcímszolgáltatót a ClaimsProviders elemhez.
-1. Cserélje `ApplicationObjectId` le a korábban rögzített objektumazonosítóra. Ezután `ClientId` cserélje le az alkalmazásazonosítót, amelyet korábban rögzített az alábbi kódrészletben.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+1. Keresse meg a ClaimsProviders elemet. Adjon hozzá egy új ClaimsProvider a ClaimsProviders elemhez.
+1. Cserélje `ApplicationObjectId` le a helyére a korábban rögzített objektumazonosító értékét. Ezután cserélje `ClientId` le az alkalmazást az alábbi kódrészletben korábban rögzített alkalmazás-azonosítóra.
 
     ```xml
     <ClaimsProvider>
@@ -79,29 +79,29 @@ Ha engedélyezni szeretné az egyéni attribútumokat a házirendben, adja meg a
     </ClaimsProvider>
     ```
 
-## <a name="upload-your-custom-policy"></a>Az egyéni szabályzat feltöltése
+## <a name="upload-your-custom-policy"></a>Egyéni szabályzat feltöltése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD B2C-bérlőt tartalmazó könyvtárat.
-3. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
-4. Válassza **az Identitáskezelési keretrendszert**.
-5. Válassza **az Egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított TrustFrameworkExtensions.xml házirendfájlokat.
+2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a Azure ad B2C bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
+4. Válassza az **identitási élmény keretrendszert**.
+5. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított TrustFrameworkExtensions. xml fájlt.
 
 > [!NOTE]
-> Az első alkalommal, amikor az Azure AD technikai profil megmarad a címtárban, ellenőrzi, hogy az egyéni attribútum létezik-e. Ha nem, létrehozza az egyéni attribútumot.  
+> Amikor az Azure AD műszaki profilja megőrzi a jogcímet a címtárba, ellenőrzi, hogy létezik-e az egyéni attribútum. Ha nem, akkor az egyéni attribútumot hozza létre.  
 
-## <a name="create-a-custom-attribute-through-azure-portal"></a>Egyéni attribútum létrehozása az Azure Portalon keresztül
+## <a name="create-a-custom-attribute-through-azure-portal"></a>Egyéni attribútum létrehozása Azure Portal használatával
 
-Ugyanazok a bővítményattribútumok vannak megosztva a beépített és az egyéni házirendek között. Amikor egyéni attribútumokat ad hozzá a portálon keresztül, ezek az attribútumok regisztrálva vannak a **b2c-extensions-app** használatával, amely minden B2C-bérlőben megtalálható.
+Ugyanazok a bővítmény-attribútumok vannak megosztva a beépített és az egyéni házirendek között. Ha egyéni attribútumokat ad hozzá a portál felületén keresztül, ezeket az attribútumokat az összes B2C-bérlőben található **B2C-Extensions-app** használatával regisztrálja a rendszer.
 
-Ezeket az attribútumokat a portál felhasználói felületének használatával hozhatja létre az egyéni házirendekben való használatuk előtt vagy után. Kövesse az egyéni attribútumok definiálásának útmutatóját [az Azure Active Directory B2C-ben.](user-flow-custom-attributes.md) Amikor **hűségazonosítót** hoz létre a portálon, a következőképpen kell hivatkoznia rá:
+Ezeket az attribútumokat az egyéni szabályzatok használata előtt vagy után is létrehozhatja a portál felhasználói felületén. A [Azure Active Directory B2C egyéni attribútumainak definiálásához](user-flow-custom-attributes.md)kövesse az útmutatást. Amikor **loyaltyId** hoz létre a portálon, az alábbiak szerint kell megadnia:
 
-|Name (Név)     |Használt |
+|Name (Név)     |Használatban |
 |---------|---------|
 |`extension_loyaltyId`  | Egyéni szabályzat|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
 
-A következő példa bemutatja az egyéni attribútumok használatát egy Azure AD B2C egyéni házirend-jogcímdefinícióban.
+Az alábbi példa az egyéni attribútumok használatát mutatja be egy Azure AD B2C egyéni házirend-jogcím definíciójában.
 
 ```xml
 <BuildingBlocks>
@@ -116,7 +116,7 @@ A következő példa bemutatja az egyéni attribútumok használatát egy Azure 
 </BuildingBlocks>
 ```
 
-A következő példa bemutatja egy egyéni attribútum használatát az Azure AD B2C egyéni szabályzat egy technikai profil, bemenet, kimenet és a megőrzött jogcímek használatát.
+Az alábbi példa egy egyéni attribútum használatát mutatja be Azure AD B2C egyéni szabályzatban egy technikai profilban, bemenetben, kimenetben és megőrzött jogcímek között.
 
 ```xml
 <InputClaims>
@@ -130,15 +130,15 @@ A következő példa bemutatja egy egyéni attribútum használatát az Azure AD
 </OutputClaims>
 ```
 
-## <a name="use-a-custom-attribute-in-a-policy"></a>Egyéni attribútum használata házirendben
+## <a name="use-a-custom-attribute-in-a-policy"></a>Egyéni attribútum használata egy házirendben
 
-Kövesse a [jogcímek hozzáadására és a felhasználói bevitel egyéni házirendek használatával történő testreszabására vonatkozó útmutatást.](custom-policy-configure-user-input.md) Ez a minta egy beépített "város" követelést használ. Egyéni attribútum használatához cserélje le a "város" szót a saját egyéni attribútumaival.
+Kövesse a [jogcímek hozzáadását és a felhasználói bevitel egyéni házirendek használatával történő testreszabását](custom-policy-configure-user-input.md)ismertető útmutatót. Ez a példa egy beépített "City" jogcímet használ. Egyéni attribútum használatához cserélje le a "City" kulcsszót a saját egyéni attribútumaira.
 
 
 ## <a name="next-steps"></a>További lépések
 
 További információk:
 
-- [Az Azure AD B2C felhasználói profil attribútumai](user-profile-attributes.md)
-- [Bővítményattribútum-definíció](user-profile-attributes.md#extension-attributes)
-- [Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph segítségével](manage-user-accounts-graph-api.md)
+- [Felhasználói profil attribútumainak Azure AD B2C](user-profile-attributes.md)
+- [Bővítmény attribútumainak definíciója](user-profile-attributes.md#extension-attributes)
+- [Azure AD B2C felhasználói fiókok kezelése Microsoft Graph](manage-user-accounts-graph-api.md)

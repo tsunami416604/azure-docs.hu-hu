@@ -9,39 +9,39 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678550"
 ---
-1. A **Társviszony-létesítés létrehozása** lap **Konfiguráció** lapján töltse ki az itt látható mezőket.
+1. A társítás **létrehozása** lap **konfiguráció** lapján adja meg az itt látható mezőket.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési lap létrehozása Exchange-társviszony-létesítési típus](../media/setup-exchange-conf-tab.png)
+    > ![Peering Page Exchange-társi típus létrehozása](../media/setup-exchange-conf-tab.png)
 
-    * **Társviszony-létesítési típus esetén**válassza az **Exchange**lehetőséget.
-    * Válassza a **Termékváltozat** **alapszintű ingyenesként**lehetőséget.
-    * Válassza ki azt a **metro** helyet, ahol a társviszony-létesítést Azure-erőforrássá szeretné alakítani. Ha a microsofttal olyan létesítési kapcsolatokkal rendelkezik a kiválasztott **Metro** helyen, amelyek nem konvertálódnak Azure-erőforrássá, ezek a kapcsolatok a **Társviszony-létesítési kapcsolatok** szakaszban jelennek meg a látható módon. Most már konvertálhatja ezeket a társviszony-létesítési kapcsolatokat egy Azure-erőforrássá.
+    * A **társ**-kezelés típusa beállításnál válassza az **Exchange**lehetőséget.
+    * Válassza **SKU** az SKU **alapszintű ingyenes**lehetőséget.
+    * Válassza ki azt a **Metro** -helyet, ahová át szeretné alakítani az Azure-erőforrást. Ha a kiválasztott **metróban** nem Azure-erőforrásra konvertált kapcsolattal rendelkezik a Microsofttal, akkor ezek a kapcsolatok a megjelenő **kapcsolatok** szakaszban jelennek meg. Most már konvertálhatja ezeket a társ-kapcsolatokat egy Azure-erőforráshoz.
 
         > [!div class="mx-imgBorder"]
-        > ![Társviszony-létesítési kapcsolatok listája](../media/setup-exchange-legacy-conf-tab.png)
+        > ![Egyenrangú kapcsolatok listája](../media/setup-exchange-legacy-conf-tab.png)
 
         > [!NOTE]
-        > Az örökölt társviszony-létesítési kapcsolatok beállításai nem módosíthatók. Ha további társviszony-létesítési kapcsolatokat szeretne hozzáadni a Microsofttal a kijelölt **metro** helyen, válassza az **Új létrehozása lehetőséget.** További információt az [Exchange-társviszony-létesítés létrehozása vagy módosítása a portál használatával című](../howto-exchange-portal.md)témakörben talál.
+        > Az örökölt kapcsolati kapcsolatok beállításai nem módosíthatók. Ha további összekapcsolási kapcsolatokat szeretne hozzáadni a Microsofthoz a kiválasztott **metró** helyén, válassza az **új létrehozása**lehetőséget. További információ: [Exchange-társ létrehozása vagy módosítása a portál használatával](../howto-exchange-portal.md).
         >
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Figyelje meg, hogy a portál a megadott adatok alapvető érvényesítését futtatja. A tetején egy szalag ontja a *Futó végső érvényesítés üzenet...*.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató*üzenet...
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-érvényesítés lap](../media/setup-direct-review-tab-validation.png)
+    > ![Társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)
 
-1. Miután az üzenet érvényességi módosítása *átkerült,* ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás**lehetőség kiválasztásával. Ha módosítania kell a kérését, válassza **az Előző** lehetőséget, és ismételje meg a lépéseket.
-
-    > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítés irtása](../media/setup-exchange-review-tab-submit.png)
-
-1. A kérelem elküldése után várja meg, amíg a központi telepítés befejeződik. Ha a telepítés sikertelen, forduljon [a Microsoft társviszony-létesítési](mailto:peering@microsoft.com). A sikeres telepítés az ábrán látható módon jelenik meg.
+1. Az üzenet *sikeres érvényesítése*után ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás**gombra kattintva. Ha módosítania kell a kérést, válassza az **előző** lehetőséget, és ismételje meg a lépéseket.
 
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési siker](../media/setup-direct-success.png)
+    > ![Egyenrangú küldés](../media/setup-exchange-review-tab-submit.png)
+
+1. A kérelem elküldése után várjon, amíg a telepítés befejeződik. Ha a telepítés sikertelen, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz. A sikeres üzembe helyezés megjelenik az ábrán látható módon.
+
+    > [!div class="mx-imgBorder"]
+    > ![Sikeres társítás](../media/setup-direct-success.png)

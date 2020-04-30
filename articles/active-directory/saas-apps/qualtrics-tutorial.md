@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az SAP Qualtrics- szel | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az SAP Qualtrics között.
+title: 'Oktatóanyag: Azure Active Directory integráció az SAP Qualtrics | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az SAP-Qualtrics között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,143 +15,143 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 2e27d020bd25f234d084fba770e234bdccb40a99
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81682377"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az SAP Qualtrics-szel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Qualtrics
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az SAP Qualtrics-t az Azure Active Directoryval (Azure AD). Ha integrálja az SAP Qualtrics-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP-Qualtrics Azure Active Directory (Azure AD) használatával. Az SAP-Qualtrics az Azure AD-vel való integrálásakor a következőket teheti:
 
-* Az Azure AD- ban, aki hozzáfér az SAP Qualtrics.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkeznek az SAP Qualtrics az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen: az Azure Portalon.
+* Az SAP-Qualtrics hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SAP Qualtrics az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni a szoftverszolgáltatásként (SaaS) alkalmazásintegrációról az Azure AD-vel, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A kezdéshez a következők szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Az SAP Qualtrics-előfizetés engedélyezve van az egyszeri bejelentkezéshez (SSO).
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az egyszeri bejelentkezéshez (SSO) engedélyezett SAP Qualtrics-előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az SAP Qualtrics támogatja az **SP** és **az IDP** által kezdeményezett sso-t.
-* Az SAP Qualtrics támogatja **a Just In Time** felhasználói kiépítést.
-* Az SAP Qualtrics konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáféréstől nyújt ki. További információt a [Szakadát ismerésből megtudhatja, hogy miként kényszerítheti a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* Az SAP-Qualtrics az **SP** és a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
+* **Az SAP-Qualtrics csak időben támogatja a** felhasználók üzembe helyezését.
+* Az SAP-Qualtrics konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="add-sap-qualtrics-from-the-gallery"></a>SAP Qualtrics hozzáadása a galériából
+## <a name="add-sap-qualtrics-from-the-gallery"></a>SAP-Qualtrics hozzáadása a katalógusból
 
-Az SAP Qualtrics azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP Qualtrics-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az SAP-Qualtrics az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP-Qualtrics a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget.
-1. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a Minden **alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be az **SAP Qualtrics** kifejezést a keresőmezőbe.
-1. Válassza ki **az SAP Qualtrics** az eredmények közül, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be az **SAP Qualtrics** kifejezést a keresőmezőbe.
+1. Válassza az **SAP-Qualtrics** az eredmények közül, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>Az Azure AD egyszeri bejelentkezésének konfigurálása és tesztelése az SAP Qualtrics-hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAP Qualtrics
 
-Konfigurálja és tesztelje az Azure AD SSO-t az SAP Qualtrics-szel egy **B.Simon**nevű tesztfelhasználó használatával. Az SSO működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó az SAP Qualtrics-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az SAP Qualtrics egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Qualtrics.
 
-Az Azure AD SSO SAP Qualtrics-szel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO SAP Qualtrics való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. [Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso) hogy a felhasználók használhassák ezt a funkciót.
-    1. [Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezésének teszteléséhez B.Simon nal.
-    1. [Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user) hogy b.Simon az Azure AD egyszeri bejelentkezést használhasson.
-1. [Konfigurálja az SAP Qualtrics egyszeri](#configure-sap-qualtrics-sso) bejelentkezési beállításait az alkalmazás oldalon.
-    1. [Hozzon létre egy SAP Qualtrics teszt felhasználó,](#create-sap-qualtrics-test-user) hogy egy megfelelője B.Simon az SAP Qualtrics, a felhasználó Azure AD-reprezentációjához kapcsolva.
-1. [Tesztelje az SSO-t,](#test-sso) hogy ellenőrizze, működik-e a konfiguráció.
+1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
+    1. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. [Konfigurálja az SAP QUALTRICS SSO](#configure-sap-qualtrics-sso) -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. [Hozzon létre egy SAP Qualtrics-teszt felhasználót](#create-sap-qualtrics-test-user) , hogy az a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-ügyféllel RENDELKEZZEN az SAP-Qualtrics.
+1. Ellenőrizze az [SSO](#test-sso) -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **SAP Qualtrics alkalmazásintegrációs** lapon keresse meg a **Kezelés** szakaszt. Válassza **ki az egyszeri bejelentkezést**.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon válassza az **egyszerű SAML-konfiguráció** ceruza ikonját a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **SAP Qualtrics** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Az Egyszeri bejelentkezés beállítása SAML-lel lap képernyőképe, kiemelve a ceruza ikon](common/edit-urls.png)
+   ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
 
-1. Ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja **meg** az alábbi mezők értékeit:
+1. Ha az **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, akkor adja meg a következő mezők értékeit az **egyszeri bejelentkezés az SAML-vel** lapon:
     
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet, amely a következő mintát használja:
+    a. Az **azonosító** szövegmezőbe írja be a következő mintát használó URL-címet:
 
     `https://< DATACENTER >.qualtrics.com`
    
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet, amely a következő mintát használja:
+    b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet:
 
     `https://< DATACENTER >.qualtrics.com/login/v1/sso/saml2/default-sp`
 
-    c. A **Továbbítási állapot** mezőbe írjon be egy URL-címet, amely a következő mintát használja:
+    c. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet:
 
     `https://< brandID >.< DATACENTER >.qualtrics.com`
 
-1. Válassza **a További URL-ek beállítása**lehetőséget, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
+1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely a következő mintát használja:
+    A **bejelentkezési URL** szövegmezőbe írja be a következő mintát használó URL-címet:
 
     `https://< brandID >.< DATACENTER >.qualtrics.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval, válasz URL-címmel és továbbítási állapottal. Ezeknek az értékeknek a beszerezéséhez forduljon a [Qualtrics ügyféltámogatási csapatához.](https://www.qualtrics.com/support/) Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval, válasz URL-címmel és továbbítási állapottal. Ezeknek az értékeknek a beszerzéséhez forduljon a [Qualtrics ügyfél-támogatási csapatához](https://www.qualtrics.com/support/). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** jelölje ki a másolásikont az **Alkalmazásösszevonás metaadat-címének** másolásához és mentéséhez a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás ikont az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-    ![Képernyőkép az SAML aláíró tanúsítványról, kiemelve a másolás ikonnal](common/copy-metadataurl.png)
+    ![Képernyőfelvétel az SAML-aláíró tanúsítványról, a másolás ikon kiemelve](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót az Azure Portalon B.Simon nevű.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszót.
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszót.
    1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés az SAP Qualtrics használatával.
+Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja az SAP-Qualtrics való hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **SAP Qualtrics**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **SAP Qualtrics**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![Képernyőkép a Kezelés szakaszról, kiemelve a Felhasználók és csoportok](common/users-groups-blade.png)
+   ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget. Ezután a **Hozzárendelés hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok**lehetőséget.
+1. Válassza a **felhasználó hozzáadása**elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Képernyőkép: Felhasználók és csoportok lap, kiemelt Felhasználó hozzáadása](common/add-assign-user.png)
+    ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a Felhasználók listájából a **B.Simon** elemet. Ezután válassza a **Kijelölés** lehetőséget a képernyő alján.
-1. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Ezután válassza a **Kijelölés** lehetőséget a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Hozzárendelés lehetőséget.**
+1. A **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
+1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
-## <a name="configure-sap-qualtrics-sso"></a>SAP Qualtrics sso konfigurálása
+## <a name="configure-sap-qualtrics-sso"></a>Az SAP Qualtrics SSO konfigurálása
 
-Az SAP Qualtrics oldalán az egyszeri bejelentkezés konfigurálásához küldje el a másolt **App Federation metaadat-URL-címét** az Azure Portalról az [SAP Qualtrics támogatási csapatának.](https://www.qualtrics.com/support/) A támogatási csapat biztosítja, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés az SAP Qualtrics oldalon való konfigurálásához küldje el az alkalmazás- **összevonási metaadatokat** a Azure Portal az [SAP Qualtrics támogatási csapatának](https://www.qualtrics.com/support/). A támogatási csapat biztosítja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
-### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics tesztfelhasználó létrehozása
+### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics-teszt felhasználó létrehozása
 
-Az SAP Qualtrics támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Nincs további teendőd. Ha a felhasználó már nem létezik az SAP Qualtrics, egy új jön létre a hitelesítés után.
+Az SAP Qualtrics támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Nincs szükség további műveletre. Ha egy felhasználó még nem létezik az SAP-Qualtrics, a hitelesítés után létrejön egy újat.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a Hozzáférési panel használatával teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja az SAP Qualtrics csempét a Hozzáférési panelen, automatikusan bejelentkezik az SAP Qualtrics-be, amelyhez beállítja az SSO-t. További információt a [Bejelentkezés és alkalmazások indítása a Saját alkalmazások portálról című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Amikor kiválasztja az SAP Qualtrics csempe a hozzáférési panelen, automatikusan bejelentkezik az SAP-Qualtrics, amelyhez be van állítva az egyszeri bejelentkezés. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -159,9 +159,9 @@ Amikor kiválasztja az SAP Qualtrics csempét a Hozzáférési panelen, automati
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az SAP Qualtrics-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Az SAP Qualtrics kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Védje az SAP Qualtrics-t a fejlett láthatósággal és vezérléssel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Az SAP-Qualtrics speciális láthatósággal és vezérlőkkel való ellátása](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés beállítása egy Azure AD-szervezethez
+title: Bejelentkezés beállítása Azure AD-szervezetekhez
 titleSuffix: Azure AD B2C
-description: Állítsa be a bejelentkezést egy adott Azure Active Directory-szervezethez az Azure Active Directory B2C-ben.
+description: Be kell állítania a bejelentkezést egy adott Azure Active Directory szervezet számára a Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,25 +13,25 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 5b21fcd2d3ec5560b01352b112e9ed1bb2404766
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678036"
 ---
-# <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory-szervezethez az Azure Active Directory B2C-ben
+# <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
-Az Azure Active Directory (Azure AD) [identitásszolgáltatóként](authorization-code-flow.md) való használatához létre kell hoznia egy alkalmazást, amely képviseli azt. Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy adott Azure AD-szervezet felhasználói számára az Azure AD B2C felhasználói folyamat használatával.
+Ha egy Azure Active Directory (Azure AD) [identitás-szolgáltatóként](authorization-code-flow.md) kíván használni a Azure ad B2Cban, létre kell hoznia egy alkalmazást, amely azt jelképezi. Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy adott Azure AD-szervezet felhasználóinak a Azure AD B2C felhasználói folyamatával.
 
 [!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
-## <a name="configure-azure-ad-as-an-identity-provider"></a>Az Azure AD konfigurálása identitásszolgáltatóként
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Az Azure AD konfigurálása identitás-szolgáltatóként
 
-1. Győződjön meg arról, hogy az Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
-1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
-1. Válassza **az Identitásszolgáltatók**lehetőséget, majd az **Új OpenID Connect szolgáltató**lehetőséget.
-1. Írjon be egy **nevet**. Írja be például a *Contoso Azure AD értéket.*
-1. A **metaadatok url-címéhez** `{tenant}` adja meg a következő URL-címet, amely az Azure AD-bérlő tartománynevére lép:
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
+1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
+1. A **metaadatok URL-címéhez**adja meg az `{tenant}` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti:
 
     ```
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
@@ -39,17 +39,17 @@ Az Azure Active Directory (Azure AD) [identitásszolgáltatóként](authorizatio
 
     Például: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
 
-1. **Ügyfélazonosító**esetén adja meg a korábban rögzített alkalmazásazonosítót.
-1. Az **Ügyféltitkos kulcsot**adja meg a korábban rögzített ügyféltitok.
-1. A **Hatókör mezőbe** `openid profile`írja be a.
-1. Hagyja meg a **Választípus**és a Válasz mód alapértelmezett **értékeit.**
-1. (Nem kötelező) A **Tartomány tippmezőbe**írja be a be a `contoso.com`mezőbe. További információ: [Közvetlen bejelentkezés beállítása az Azure Active Directory B2C használatával](direct-signin.md#redirect-sign-in-to-a-social-provider)című témakörben talál.
-1. Az **Identitásszolgáltató jogcím-hozzárendelése**csoportban válassza ki a következő jogcímeket:
+1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
+1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. A **hatókörben**adja meg a `openid profile`következőt:.
+1. Hagyja meg a **Válasz típusa**és a **válasz mód**alapértelmezett értékeit.
+1. Választható A **tartományhoz tartozó tipp**esetében `contoso.com`adja meg a következőt:. További információ: [közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Az **Identity Provider jogcímek leképezése**területen válassza ki a következő jogcímeket:
 
-    * **Felhasználói azonosító**: *oid*
+    * **Felhasználói azonosító**: *OID*
     * **Megjelenítendő név**: *név*
     * **Utónév**: *given_name*
     * **Vezetéknév**: *family_name*
-    * **E-mail :** *unique_name*
+    * **E-mail**: *unique_name*
 
 1. Kattintson a **Mentés** gombra.

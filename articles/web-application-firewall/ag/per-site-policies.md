@@ -1,7 +1,7 @@
 ---
-title: Webhelyenkénti WAF-házirendek konfigurálása a PowerShell használatával
+title: Helyek közötti WAF házirendek konfigurálása a PowerShell használatával
 titleSuffix: Azure Web Application Firewall
-description: Megtudhatja, hogyan konfigurálhatja a webhelyenkénti webalkalmazás-tűzfal házirendeket egy alkalmazásátjárón az Azure PowerShell használatával.
+description: Megtudhatja, hogyan konfigurálhat egy webalkalmazási tűzfal-házirendet az Application gatewayben Azure PowerShell használatával.
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,40 +9,40 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682478"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Webhelyenkénti WAF-házirendek konfigurálása az Azure PowerShell használatával
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Helyi WAF házirendek konfigurálása Azure PowerShell használatával
 
-A WEBAlkalmazás-tűzfal (WAF) beállításai a WAF-házirendekben találhatók, és a WAF-konfiguráció módosításához módosítja a WAF-házirendet.
+A webalkalmazási tűzfal (WAF) beállításai a WAF szabályzatokban találhatók, valamint a WAF-konfiguráció módosítása a WAF házirend módosításával.
 
-Az Application Gateway-hez társítva a szabályzatok és az összes beállítás globálisan tükröződnek. Tehát, ha öt webhely van a WAF mögött, mind az öt webhelyet ugyanaz a WAF-házirend védi. Ez nagyszerű, ha minden webhelyhez ugyanazokra a biztonsági beállításokra van szüksége. De waf-házirendeket is alkalmazhat az egyes figyelőkre, hogy lehetővé tegye a helyspecifikus WAF-konfigurációt.
+A Application Gatewayhoz való társítva a házirendek és az összes beállítás globálisan tükröződik. Tehát ha öt hellyel rendelkezik a WAF mögött, mind az öt helyet ugyanazzal a WAF-házirenddel védik. Ez nagyszerű megoldás, ha minden helyhez ugyanazokat a biztonsági beállításokat kell megadnia. Azonban WAF-házirendeket is alkalmazhat az egyes figyelőkre, hogy engedélyezze a helyhez tartozó WAF-konfigurációt.
 
-Ha WAF-házirendeket alkalmaz egy figyelőre, konfigurálhatja az egyes webhelyek WAF-beállításait anélkül, hogy a módosítások minden helyet érintenek. A legkonkrétabb politika precedenst teremt. Ha van egy globális szabályzat, és egy telephelyenkénti házirend (a WAF-szabályzat társított figyelő), majd a per-site házirend felülbírálja a globális WAF-házirend, hogy a figyelő. Más hallgatók nélkül saját házirendcsak érinti a globális WAF politika.
+Ha WAF szabályzatokat alkalmaz egy figyelőre, az egyes helyekre vonatkozó WAF-beállításokat az összes helyet érintő módosítások nélkül is konfigurálhatja. A legpontosabb házirend az előzményeket veszi igénybe. Ha van globális házirend, és egy helyszíni házirend (egy figyelőhöz társított WAF-szabályzat), akkor a helyi házirend felülbírálja az adott figyelőhöz tartozó globális WAF-házirendet. A saját szabályzatok nélküli többi figyelőt csak a globális WAF-házirend fogja érinteni.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * WAF-házirend létrehozása
+> * WAF szabályzat létrehozása
 > * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
-> * A WAF-házirend globális, webhelyenkénti és URI-nkénti alkalmazása
+> * A WAF szabályzat globális, webhelyre és URI-ra való alkalmazása
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 > * Az alkalmazásátjáró tesztelése
 
 ![Példa webalkalmazási tűzfalra](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk az Azure PowerShell-modul 1.0.0-s vagy újabb verzióját igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, `Login-AzAccount` az Azure-ral való kapcsolat létrehozásához is futnia kell.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Login-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -54,7 +54,7 @@ $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Hozza létre a *myBackendSubnet* és *a myAGSubnet* nevű alhálózati konfigurációkat a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)használatával. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) használatával az alhálózati konfigurációkkal. És végül hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzPublicIpAddress használatával.](/powershell/module/az.network/new-azpublicipaddress) Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
+Hozza létre a *myBackendSubnet* és a *myAGSubnet* nevű alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)használatával. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) és az alhálózati konfigurációk használatával. Végül pedig hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)használatával. Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -82,7 +82,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Ebben a szakaszban olyan erőforrásokat hoz létre, amelyek támogatják az alkalmazásátjárót, majd végül létrehoznak azt és egy WAF-ot. A következő erőforrásokat hozza létre:
+Ebben a szakaszban olyan erőforrásokat hoz létre, amelyek támogatják az Application Gatewayt, majd végül létrehozza és létrehoz egy WAF. A következő erőforrásokat hozza létre:
 
 - *IP-konfigurációk és az előtérbeli port* – A korábban létrehozott alhálózatot társítja az alkalmazásátjáróhoz, és hozzárendel egy portot, amelyen keresztül elérhető.
 - *Alapértelmezett készlet* – Minden alkalmazásátjárónak rendelkeznie kell legalább egy háttérkiszolgáló-készlettel.
@@ -90,7 +90,7 @@ Ebben a szakaszban olyan erőforrásokat hoz létre, amelyek támogatják az alk
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
-Társítsa a korábban létrehozott *myAGSubnet-et* az alkalmazásátjáróhoz a [New-AzApplicationGatewayIPConfiguration használatával.](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) Rendelje hozzá *a myAGPublicIPAddress címet* az alkalmazásátjáróhoz a [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)használatával.
+Rendelje hozzá az Application gatewayhez korábban létrehozott *myAGSubnet* a [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)használatával. Rendeljen *myAGPublicIPAddress* az Application gatewayhez a [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)használatával.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -118,7 +118,7 @@ $frontendport8080 = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>A háttérkészlet létrehozása és beállítása
 
-Hozza létre az *appGatewayBackendPool* nevű háttérkészletet az alkalmazásátjáróhoz a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Adja meg a háttércímkészletek beállításait a [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
+Hozza létre a *appGatewayBackendPool* nevű háttér-készletet az Application gatewayhez a [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)használatával. Konfigurálja a háttérbeli címkészlet beállításait a [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)használatával.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -132,11 +132,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-two-waf-policies"></a>Két WAF-házirend létrehozása
+### <a name="create-two-waf-policies"></a>Két WAF szabályzat létrehozása
 
-Hozzon létre két WAF-házirendet, egy globális és egy globális és egy-egy webhelyet, és adjon hozzá egyéni szabályokat. 
+Hozzon létre két WAF-házirendet, egy globális és egy webhelyet, és adjon hozzá egyéni szabályokat. 
 
-A webhelyenkénti házirend a fájlfeltöltési korlátot 5 MB-ra korlátozza. Minden más ugyanaz.
+A helyek közötti házirend korlátozza a fájlfeltöltés korlátját 5 MB-ra. Minden más ugyanaz.
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -194,7 +194,7 @@ $wafPolicySite = New-AzApplicationGatewayFirewallPolicy `
 
 A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttércímkészletekhez. Ebben a példában egy alapszintű figyelőt hoz létre, amely a gyökér URL-cím forgalmát figyeli. 
 
-Hozzon létre egy *mydefaultListener* nevű figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával a korábban létrehozott előtér-konfigurációval és előtér-porttal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *1.* [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)
+Hozzon létre egy *mydefaultListener* nevű figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával a előtér-konfigurációval és a korábban létrehozott frontend-porttal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *rule1* nevű alapszintű szabályt a [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)használatával.
 
 ```azurepowershell-interactive
 $globalListener = New-AzApplicationGatewayHttpListener `
@@ -227,7 +227,7 @@ $frontendRuleSite = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-waf"></a>Alkalmazásátjáró létrehozása a WAF-fel
 
-Most, hogy létrehozta a szükséges támogató erőforrásokat, adja meg az alkalmazásátjáró paramétereit a [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)használatával. Adja meg a tűzfalházirendet a [New-AzApplicationGatewayFirewallPolicy használatával.](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy) Ezután hozza létre a *myAppGateway* nevű alkalmazásátjárót a [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)használatával.
+Most, hogy létrehozta a szükséges támogatási erőforrásokat, a [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)használatával határozza meg az Application Gateway paramétereit. A [New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy)használatával állítsa be a tűzfal házirendjét. Ezután hozza létre a *myAppGateway* nevű Application Gatewayt a [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)használatával.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>URI-házirend alkalmazása
+### <a name="apply-a-per-uri-policy"></a>URI-szabályzat alkalmazása
 
-Uri-nkénti házirend alkalmazásához egyszerűen hozzon létre egy új házirendet, és alkalmazza azt az elérési útszabály konfigurációjára. 
+Az URI-szabályzatok alkalmazásához egyszerűen hozzon létre egy új házirendet, és alkalmazza azt az elérésiút-szabály konfigurációjában. 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -368,11 +368,11 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tárfiók létrehozása és diagnosztika konfigurálása
 
-Ebben a cikkben az alkalmazásátjáró egy tárfiókot használ az adatok tárolására észlelési és megelőzési célokra. Az Azure Monitor naplóivagy az Event Hub használatával is rögzítheti az adatokat.
+Ebben a cikkben az Application Gateway egy Storage-fiók használatával tárolja az adatgyűjtési és-megelőzési célokat. Az adatok rögzítéséhez Azure Monitor naplókat vagy Event hub-t is használhat.
 
 ### <a name="create-the-storage-account"></a>A tárfiók létrehozása
 
-Hozzon létre egy *myagstore1* nevű tárfiókot a [New-AzStorageAccount segítségével.](/powershell/module/az.storage/new-azstorageaccount)
+Hozzon létre egy *myagstore1* nevű Storage [-fiókot a New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)használatával.
 
 ```azurepowershell-interactive
 $storageAccount = New-AzStorageAccount `
@@ -384,7 +384,7 @@ $storageAccount = New-AzStorageAccount `
 
 ### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
 
-Konfigurálja a diagnosztikát úgy, hogy adatokat rögzítsen az ApplicationGatewayAccessLog, AzApplicationGatewayPerformanceLog és ApplicationGatewayFirewallLog naplókba a [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)segítségével.
+Konfigurálja a diagnosztikát az adatok ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog és ApplicationGatewayFirewallLog naplókba való rögzítéséhez a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)használatával.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A [Get-AzPublicIPAddress használatával](/powershell/module/az.network/get-azpublicipaddress) lejuthat az alkalmazásátjáró nyilvános IP-címével. Ezután használja ezt az IP-címet a göndörellen (cserélje ki az alábbi 1.1.1.1.-et). 
+A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Ezután használja ezt az IP-címet a fürtökhöz (az alább látható 1.1.1.1 helyett). 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -437,7 +437,7 @@ curl 1.1.1.1/URIAllow?1=1
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)segítségével.
+Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

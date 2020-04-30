@@ -1,7 +1,7 @@
 ---
-title: Rövid útmutató – Profil és végpont létrehozása Erőforrás-kezelői sablonokkal
+title: Rövid útmutató – profil és végpont létrehozása Resource Manager-sablonok használatával
 titleSuffix: Azure Content Delivery Network
-description: Megtudhatja, hogyan hozhat létre Azure Content Deliver Network-profilt és végpontot az Erőforrás-kezelő sablonjai használatával
+description: Ismerje meg, hogyan hozhat létre Azure-tartalmat hálózati profil és végpont Resource Manager-sablonok használatával
 services: cdn
 documentationcenter: ''
 author: senthuransivananthan
@@ -17,30 +17,30 @@ ms.date: 03/05/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: dfd7b933502b96c0952a24dbee563e9b537dcdd8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81683476"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Rövid útmutató: Hozzon létre egy Azure CDN-profilt és végpontot az Erőforrás-kezelő sablonnal
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Gyors útmutató: Azure CDN profil és végpont létrehozása Resource Manager-sablon használatával
 
-Ebben a rövid útmutatóban üzembe helyezhet egy Azure Resource Manager-sablont a CLI használatával. A létrehozott sablon cdn-profilt és CDN-végpontot telepít a webalkalmazás elé.
-A lépések végrehajtásához körülbelül tíz percet vesz igénybe.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont helyez üzembe a parancssori felület használatával. A létrehozott sablon egy CDN-profilt és egy CDN-végpontot helyez üzembe a webalkalmazás előtt.
+A lépések végrehajtása körülbelül tíz percet vesz igénybe.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prequisites"></a>Előhelyek
+## <a name="prequisites"></a>Információt
 
-Ennek a rövid útmutatónak az alkalmazásában rendelkeznie kell egy webalkalmazással, amelyet Originként használhat. A rövid útmutatóban használt példa webalkalmazást ahttps://cdndemo.azurewebsites.net
+Ebben a rövid útmutatóban a forrásként használandó webalkalmazást kell használnia. Az ebben a rövid útmutatóban használt példa webalkalmazás a következőre lett telepítve:https://cdndemo.azurewebsites.net
 
-További információt a [Statikus HTML-webalkalmazás létrehozása az Azure-ban című témakörben talál.](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)
+További információ: [statikus HTML-Webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html).
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Minden erőforrást ugyanabban az erőforráscsoportban kell telepíteni.
+Az összes erőforrást ugyanabban az erőforráscsoporthoz kell telepíteni.
 
-Hozza létre az erőforráscsoportot a kiválasztott helyen. Ez a példa egy cdn nevű erőforráscsoport létrehozását mutatja be az USA keleti részén.
+Hozza létre az erőforráscsoportot a kiválasztott helyen. Ez a példa egy CDN nevű erőforráscsoport létrehozását mutatja be az USA keleti régiójában.
 
 ```azurecli-interactive
 az group create --name cdn --location eastus
@@ -50,13 +50,13 @@ az group create --name cdn --location eastus
 
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 
-Ebben a lépésben hozzon létre egy sablonfájlt, amely telepíti az erőforrásokat.
+Ebben a lépésben létrehoz egy sablonfájlt, amely telepíti az erőforrásokat.
 
-Bár ez a példa végigvezeti az általános webhelygyorsítási forgatókönyvet, számos más beállítás konfigurálható. Ezek a beállítások az Azure Resource Manager sablonhivatkozásban érhetők el. Olvassa el a [CDN-profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) és a [CDN-profilvégpont hivatkozásait.](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+Habár ez a példa egy általános webhely-gyorsítási forgatókönyvet mutat be, számos más beállítás is konfigurálható. Ezek a beállítások a Azure Resource Manager sablon hivatkozásában érhetők el. Tekintse meg a [CDN-profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) és a [CDN-profil végpontjának](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)hivatkozásait.
 
-Ne feledje, hogy a Microsoft CDN nem támogatja a tartalomtípus-lista módosítását.
+Vegye figyelembe, hogy a Microsoft CDN nem támogatja a tartalomtípus-lista módosítását.
 
-Mentse a sablont **erőforrás-kezelő-cdn.json néven.**
+Mentse a sablont **Resource-Manager-CDN. JSON**néven.
 
 ```json
 {
@@ -176,34 +176,34 @@ Mentse a sablont **erőforrás-kezelő-cdn.json néven.**
 }
 ```
 
-## <a name="create-the-resources"></a>Az erőforrások létrehozása
+## <a name="create-the-resources"></a>Erőforrások létrehozása
 
-Telepítse a sablont az Azure CLI használatával. A rendszer 2 bemenetet kér:
+A sablon üzembe helyezése az Azure CLI használatával. A rendszer a következő két bemenetet fogja kérni:
 
-**cdnProfileSku** - a használni kívánt CDN-szolgáltató. A következő lehetőségek közül választhat:
+**cdnProfileSku** – a használni kívánt CDN-szolgáltató. A következő lehetőségek közül választhat:
 
 * Standard_Microsoft
 * Standard_Akamai
 * Standard_Verizon
 * Premium_Verizon.
 
-**endpointOriginHostName** - a CDN-en keresztül kiszolgált végpont, például cdndemo.azurewebsites.net.
+**endpointOriginHostName** – az a végpont, amely a CDN-en keresztül fog kiszolgálni, például cdndemo.azurewebsites.net.
 
 ```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
-![Erőforrás-kezelő sablon telepítése](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
+![Resource Manager-sablon üzembe helyezése](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
 
-## <a name="view-the-cdn-profile"></a>A CDN-profil megtekintése
+## <a name="view-the-cdn-profile"></a>A CDN-Profil megtekintése
 
 ```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
-![CDN-profil megtekintése](./media/create-profile-resource-manager-template/cdn-view-profile.png)
+![CDN-Profil megtekintése](./media/create-profile-resource-manager-template/cdn-view-profile.png)
 
-## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>A standard-microsoft profil CDN-végpontjának megtekintése
+## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>A profil szabványának CDN-végpontjának megtekintése – Microsoft
 
 ```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
@@ -211,11 +211,11 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 ![CDN-végpont megtekintése](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-A tartalom megtekintéséhez használja a HostName nevet. Például a https:\//cdndemo-azurewebsites-net.azureedge.net a böngészőhasználatával.
+Az állomásnév használatával megtekintheti a tartalmat. Például a böngésző használatával érheti el\/a https:/cdndemo-azurewebsites-net.azureedge.net.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Az erőforráscsoport törlése automatikusan eltávolítja az összes üzembe helyezett erőforrást.
+Az erőforráscsoport törlése automatikusan eltávolítja az abban telepített összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name cdn
@@ -225,8 +225,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Referencia
 
-* CDN-profil – [Azure Resource Manager-sablon – hivatkozás](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-végpont – [Azure Resource Manager-sablon referenciadokumentációja](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-profil – [Azure Resource Manager sablon referenciája](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN-végpont – [Azure Resource Manager sablon-referenciák dokumentációja](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>További lépések
 

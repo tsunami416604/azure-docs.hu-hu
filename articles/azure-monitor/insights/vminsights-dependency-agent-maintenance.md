@@ -1,50 +1,50 @@
 ---
-title: Az Azure-figyelő virtuálisgépek függőségi ügynökének frissítése
-description: Ez a cikk ismerteti, hogyan frissítheti az Azure Monitor virtuális gépek függőségi ügynök parancssori, beállítási varázsló és egyéb módszerek használatával.
+title: A Azure Monitor for VMs függőségi ügynök frissítése
+description: Ez a cikk azt ismerteti, hogyan lehet frissíteni a Azure Monitor for VMs függőségi ügynököt a parancssori, a telepítővarázsló és más módszerek használatával.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617848"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Az Azure-figyelő virtuálisgépek függőségi ügynökének frissítése
+# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
 
-Az Azure Monitor virtuálisgépek függőségi ügynök kezdeti üzembe helyezése után olyan frissítések jelennek meg, amelyek hibajavításokat vagy új funkciók vagy funkciók támogatását tartalmazzák.  Ez a cikk segít megérteni a rendelkezésre álló módszereket, és hogyan hajthatja végre a frissítést manuálisan vagy automatizálással.
+A Azure Monitor for VMs függőségi ügynök kezdeti üzembe helyezése után a rendszer olyan frissítéseket szabadít fel, amelyek hibajavításokat vagy új funkciók vagy funkciók támogatását tartalmazzák.  Ez a cikk segítséget nyújt az elérhető módszerek megismerésében, valamint a frissítés manuális vagy automatizáláson keresztüli végrehajtásában.
 
-## <a name="upgrade-options"></a>Frissítési lehetőségek 
+## <a name="upgrade-options"></a>Frissítési beállítások 
 
-A Windows és Linux függőségi ügynök manuálisan vagy automatikusan frissíthető a legújabb kiadásra a ttól függően, hogy a gép a központi telepítési forgatókönyvés a környezet a gép fut.The Dependency agent for Windows and Linux can be upgraded to the latest release manually or automatically depending on the deployment scenario and environment the machine is running in. Az ügynök frissítéséhez a következő módszerek használhatók.
+A Windows és a Linux rendszerhez készült függőségi ügynök a központi telepítési forgatókönyvtől és a gépen futó környezettől függően manuálisan vagy automatikusan is frissíthető a legújabb kiadásra. Az ügynök frissítésére a következő módszerek használhatók.
 
 |Környezet |Telepítési módszer |Frissítési módszer |
 |------------|--------------------|---------------|
-|Azure VM | Függőségi ügynök virtuálisgép-bővítménye [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) és [Linux rendszeren](../../virtual-machines/extensions/agent-dependency-linux.md) | Az ügynök alapértelmezés szerint automatikusan frissül, kivéve, ha az Azure Resource Manager-sablont úgy állította be, hogy letiltsa a tulajdonság *autoUpgradeMinorVersion* tulajdonságát **hamisértékre**állítva. Az olyan alverzió frissítése, amelyen az automatikus frissítés le van tiltva, és a főverziófrissítése ugyanazt a módszert követi – távolítsa el és telepítse újra a bővítményt. |
-| Egyéni Azure virtuálisgép-lemezképek | A Windows/Linux függőségi ügynök manuális telepítése | A virtuális gépek frissítése az ügynök legújabb verziójára a Windows telepítőcsomagot vagy a Linux önkicsomagoló és telepíthető rendszerhéj-kötegköteget futtató parancssorból történik.|
-| Nem Azure-beli virtuális gépek | A Windows/Linux függőségi ügynök manuális telepítése | A virtuális gépek frissítése az ügynök legújabb verziójára a Windows telepítőcsomagot vagy a Linux önkicsomagoló és telepíthető rendszerhéj-kötegköteget futtató parancssorból történik. |
+|Azure VM | Függőségi ügynök virtuálisgép-bővítménye Windows és [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) [rendszerekhez](../../virtual-machines/extensions/agent-dependency-windows.md) | A rendszer alapértelmezés szerint automatikusan frissíti az ügynököt, kivéve, ha úgy állította be a Azure Resource Manager sablont, hogy a *autoUpgradeMinorVersion* tulajdonság **hamis**értékre állításával letiltható. Az alverzió verziófrissítése, amelynél az automatikus frissítés le van tiltva, és a főverzió frissítése ugyanezt a módszert alkalmazza – távolítsa el, majd telepítse újra a bővítményt. |
+| Egyéni Azure VM-rendszerképek | Függőségi ügynök manuális telepítése Windows/Linux rendszerhez | A virtuális gépeknek az ügynök legújabb verziójára való frissítését a Windows Installer-csomagot vagy a Linux rendszerű önkicsomagoló és telepíthető rendszerhéj-parancsfájlt futtató parancssorból kell elvégezni.|
+| Nem Azure-beli virtuális gépek | Függőségi ügynök manuális telepítése Windows/Linux rendszerhez | A virtuális gépeknek az ügynök legújabb verziójára való frissítését a Windows Installer-csomagot vagy a Linux rendszerű önkicsomagoló és telepíthető rendszerhéj-parancsfájlt futtató parancssorból kell elvégezni. |
 
-## <a name="upgrade-windows-agent"></a>Frissítés Windows-ügynök 
+## <a name="upgrade-windows-agent"></a>Windows-ügynök frissítése 
 
-Ha a Windows virtuális gép en lévő ügynököt a függőségi ügynök virtuálisgép-bővítményével nem telepített legújabb verzióra szeretné frissíteni, vagy a parancssorból, a parancsfájlból vagy más automatizálási megoldásból, vagy az InstallDependencyAgent-Windows.exe telepítővarázslóval fut.  
+Ha a Windows rendszerű virtuális gépen lévő ügynököt a függőségi ügynök virtuálisgép-bővítményével nem telepített legújabb verzióra szeretné frissíteni, akkor a parancssorból, parancsfájlból vagy más automatizálási megoldásból vagy a InstallDependencyAgent-Windows. exe telepítővarázslójának használatával kell futtatnia.  
 
 A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentwindows)töltheti le.
 
-### <a name="using-the-setup-wizard"></a>A Telepítő varázsló használata
+### <a name="using-the-setup-wizard"></a>A telepítővarázsló használata
 
-1. Jelentkezzen be a számítógépre rendszergazdai jogosultságokkal rendelkező fiókkal.
+1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Az **InstallDependencyAgent-Windows.exe** parancs végrehajtása a telepítővarázsló elindításához.
+2. A telepítővarázsló elindításához futtassa a **InstallDependencyAgent-Windows. exe fájlt** .
    
-3. A **függőségi ügynök** előző verziójának eltávolításához, majd a legújabb verzió telepítéséhez kövesse a Függőségi ügynök telepítővarázslóját.
+3. A **Dependency Agent telepítővarázsló** segítségével távolítsa el a függőségi ügynök előző verzióját, majd telepítse a legújabb verziót.
 
 
 ### <a name="from-the-command-line"></a>A parancssorból
 
-1. Jelentkezzen be a számítógépre rendszergazdai jogosultságokkal rendelkező fiókkal.
+1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
 2. Futtassa a következő parancsot.
 
@@ -52,22 +52,22 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    A `/RebootMode=manual` paraméter megakadályozza, hogy a frissítés automatikusan újraindítsa a számítógépet, ha egyes folyamatok az előző verzióból származó fájlokat használnak, és zárolják őket. 
+    A `/RebootMode=manual` paraméter megakadályozza, hogy a frissítés automatikusan újraindítsa a gépet, ha egyes folyamatok az előző verzióból származó fájlokat használnak, és zárolják őket. 
 
-3. A frissítés sikeresse megállapításához ellenőrizze a `install.log` részletes telepítési információkat. A naplókönyvtár *a következő: %Programfiles%\Microsoft Dependency Agent\logs*.
+3. A frissítés sikerességének ellenőrzéséhez keresse meg a `install.log` részletes beállítási információkat. A naplózási könyvtár a *%ProgramFiles%\Microsoft függőségi Agent\logs*.
 
 ## <a name="upgrade-linux-agent"></a>Linux-ügynök frissítése 
 
-A függőségi ügynök linuxos verziójának frissítése támogatott, és ugyanazt a parancsot követve hajtja végre, mint egy új telepítést.
+A Linux rendszeren futó függőségi ügynök korábbi verzióiról való frissítés támogatott, és az új telepítéssel megegyező paranccsal végezhető el.
 
-A Linux-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentlinux)töltheti le.
+A [Linux-ügynök legújabb verzióját innen töltheti](https://aka.ms/dependencyagentlinux)le.
 
-1. Jelentkezzen be a számítógépre rendszergazdai jogosultságokkal rendelkező fiókkal.
+1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa a`sh InstallDependencyAgent-Linux64.bin -s`következő parancsot gyökérként. 
+2. Futtassa a következő parancsot root`sh InstallDependencyAgent-Linux64.bin -s`-ként. 
 
-Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a részletes hibainformációkért. Linux ügynökök, a naplókönyvtár */var/opt/microsoft/dependency-agent/log*. 
+Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha egy ideig le szeretné állítani a virtuális gépek figyelését, vagy teljesen el szeretné távolítani a virtuális gépekhez szolgáltatást, olvassa [el a virtuális gépek figyelésének letiltása az Azure-beli virtuális gépekhez című témakört.](vminsights-optout.md)
+Ha le szeretné állítani a virtuális gépek figyelését egy adott időtartamra, vagy Azure Monitor for VMs teljes egészében, tekintse [meg a virtuális gépek figyelésének letiltása Azure monitor for VMS-ben](vminsights-optout.md)című témakört.

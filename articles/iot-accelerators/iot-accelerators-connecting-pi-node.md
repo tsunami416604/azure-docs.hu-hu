@@ -1,6 +1,6 @@
 ---
-title: A Raspberry Pi csatlakoztatása távoli figyelési megoldáshoz - Node.js - Azure | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként csatlakoztatható a Raspberry Pi-eszköz a távoli figyelési megoldás gyorsítóhoz a Node.js nyelven írt alkalmazás használatával.
+title: A málna PI és a távoli monitorozási megoldás összekötése – Node. js – Azure | Microsoft Docs
+description: Leírja, hogyan csatlakoztatható egy málna PI-eszköz a távoli figyelési megoldáshoz a Node. js-ben írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,51 +10,51 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683942"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A Raspberry Pi eszköz csatlakoztatása a távfigyelési megoldás gyorsítójához (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A málna PI-eszköz csatlakoztatása a távoli figyelési megoldáshoz (node. js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan csatlakoztathat egy valódi eszközt a távoli figyelési megoldás gyorsítóhoz. Ebben az oktatóanyagban a Node.js programot használja, amely jó lehetőség a minimális erőforrás-korlátokkal rendelkező környezetekben.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node. js-t használja, amely a minimális erőforrás-korlátozásokkal rendelkező környezetek számára megfelelő megoldás.
 
-Ha egy eszközt szeretne szimulálni, olvassa el az [Új szimulált eszköz létrehozása és tesztelése című témakört.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Ha inkább egy eszközt szeretne szimulálni, tekintse meg [az új szimulált eszköz létrehozását és tesztelését](iot-accelerators-remote-monitoring-create-simulated-device.md)ismertető témakört.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
-Asztali számítógép, amely lehetővé teszi, hogy távolról csatlakozzon a Raspberry Pi parancssorához.
+Egy asztali számítógép, amely lehetővé teszi, hogy távolról kapcsolódjon a málna PI parancssorához.
 
-[Microsoft IoT Starter Kit Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy azzal egyenértékű összetevőkhöz. Ez az oktatóanyag a következő elemeket használja a készletből:
+[Microsoft IoT Starter Kit málna PI 3](https://azure.microsoft.com/develop/iot/starter-kits/) vagy azzal egyenértékű összetevőkhöz. Ez az oktatóanyag a készlet következő elemeit használja:
 
-- Raspberry Pi, 3.
-- MicroSD-kártya (NOOBS-szal)
-- USB Mini kábel
-- Ethernet kábel
+- Málna PI 3
+- MicroSD-kártya (NOOBs)
+- Egy USB-s mini-kábel
+- Egy Ethernet-kábel
 
-### <a name="required-desktop-software"></a>Szükséges asztali szoftver
+### <a name="required-desktop-software"></a>Szükséges asztali szoftverek
 
-SSH-ügyfélre van szüksége az asztali gépen, hogy távolról elérhesse a Raspberry Pi parancssorát.
+Az asztali gépen szükség van az SSH-ügyfélre, hogy távolról hozzáférhessen a parancssorhoz a málna PI-on.
 
-- A Windows nem tartalmaz SSH-ügyfelet. A [PuTTY](https://www.putty.org/)használatát javasoljuk.
-- A legtöbb Linux disztribúció és a Mac OS tartalmazza a parancssori SSH segédprogramot. További információ: [SSH Linux vagy Mac OS használatával.](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
+- A Windows nem tartalmaz SSH-ügyfelet. A [Putty](https://www.putty.org/)használatát javasoljuk.
+- A legtöbb Linux-disztribúció és Mac OS tartalmazza a parancssori SSH-segédprogramot. További információ: [SSH Linux vagy Mac os használatával](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Szükséges Raspberry Pi szoftver
+### <a name="required-raspberry-pi-software"></a>Szükséges málna PI szoftver
 
-Ha még nem tette meg, telepítse a Node.js 4.0.0-s vagy újabb verzióját a Raspberry Pi-re. A következő lépések bemutatják, hogyan telepítheti a Node.js v6-ot a Raspberry Pi készülékre:
+Ha még nem tette meg, telepítse a Node. js-verziót 4.0.0 vagy újabb verzióra a málna PI-on. A következő lépések bemutatják, hogyan telepítheti a Node. js v6-ot a málna PI-re:
 
-1. Csatlakozzon a Raspberry `ssh`Pi készülékhez a segítségével. További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [Raspberry Pi webhelyén.](https://www.raspberrypi.org/)
+1. Kapcsolódjon az málna PI-hez `ssh`a használatával. További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [málna PI webhelyén](https://www.raspberrypi.org/).
 
-1. A Raspberry Pi frissítéséhez használja a következő parancsot:
+1. A következő parancs használatával frissítheti a málna PI-t:
 
     ```sh
     sudo apt-get update
     ```
 
-1. A node.js fájl meglévő telepítésének eltávolításához használja a következő parancsokat a Raspberry Pi-ből:
+1. A következő parancsokkal távolítsa el a Node. js összes meglévő telepítését a málna PI-ből:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,24 +62,24 @@ Ha még nem tette meg, telepítse a Node.js 4.0.0-s vagy újabb verzióját a Ra
     sudo apt-get remove npm  -y
     ```
 
-1. A Node.js v6 fájl letöltéséhez és telepítéséhez használja a következő parancsot a Raspberry Pi készülékre:
+1. Használja a következő parancsot a Node. js v6 letöltéséhez és telepítéséhez a málna PI-re:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. A következő paranccsal ellenőrizze, hogy sikeresen telepítette-e a Node.11.4-es számon a 2011-es számmal történő telepítését:
+1. A következő parancs használatával ellenőrizheti, hogy a Node. js v 6.11.4 sikeresen telepítette-e:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
+## <a name="create-a-nodejs-solution"></a>Node. js-megoldás létrehozása
 
-Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakozással:
+Végezze el a következő lépéseket `ssh` a málna PI-val létesített kapcsolódás használatával:
 
-1. Hozzon létre `remotemonitoring` egy saját mappában nevű mappát a Raspberry Pi-n. Keresse meg ezt a mappát a parancssorban:
+1. Hozzon létre egy `remotemonitoring` nevű mappát a Home mappában a málna PI-ben. Navigáljon a parancssorba a következő mappába:
 
     ```sh
     cd ~
@@ -87,15 +87,15 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     cd remotemonitoring
     ```
 
-1. A mintaalkalmazás befejezéséhez szükséges csomagok letöltéséhez és telepítéséhez futtassa a következő parancsokat:
+1. A minta alkalmazás végrehajtásához szükséges csomagok letöltéséhez és telepítéséhez futtassa a következő parancsokat:
 
     ```sh
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. Hozzon `remotemonitoring` létre egy **remote_monitoring.js**nevű fájlt a mappában. Nyissa meg ezt a fájlt egy szövegszerkesztőben. A Raspberry Pi,használhatja `nano` a `vi` vagy a szövegszerkesztők.
+1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring. js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben. A málna PI-ban használhatja a vagy `nano` `vi` a text szerkesztőt.
 
-1. A **remote_monitoring.js** fájlban adja `require` hozzá a következő állításokat:
+1. A **remote_monitoring. js** fájlban adja hozzá a következő `require` utasításokat:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,13 +104,13 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a `{device connection string}` helyőrző értéket a távoli figyelési megoldásban kiépített eszközre vonatkozóan a feljegyzett értékre:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző `{device connection string}` értékét a távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Néhány alap telemetriai adat definiálásához adja hozzá a következő változókat:
+1. Az alapszintű telemetria-adatok definiálásához adja hozzá a következő változókat:
 
     ```javascript
     var temperature = 50;
@@ -121,7 +121,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     var pressureUnit = 'psig';
     ```
 
-1. Néhány tulajdonságérték definiálásához adja hozzá a következő változókat:
+1. Egyes tulajdonságértékek definiálásához adja hozzá a következő változókat:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -134,7 +134,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     var deviceOnline = true;
     ```
 
-1. Adja hozzá a következő változót a megoldásnak küldendő jelentett tulajdonságok meghatározásához. Ezek a tulajdonságok a webes felhasználói felületen megjelenítendő metaadatok:
+1. Adja hozzá a következő változót a megoldásnak küldendő jelentett tulajdonságok meghatározásához. Ezek a tulajdonságok a webes felhasználói felületen megjelenítendő metaadatokat tartalmazzák:
 
     ```javascript
     var reportedProperties = {
@@ -152,7 +152,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     }
     ```
 
-1. A művelet eredmények nyomtatásához adja hozzá a következő segítő funkciót:
+1. A művelet eredményeinek kinyomtatásához adja hozzá a következő segítő funkciót:
 
     ```javascript
     function printErrorFor(op) {
@@ -162,7 +162,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
     }
     ```
 
-1. Adja hozzá a következő segítő függvényt a telemetriai értékek véletlenszerűvé tétele érdekében:
+1. Adja hozzá a következő Helper-függvényt a telemetria-értékek véletlenszerű megadásához:
 
      ```javascript
      function generateRandomIncrement() {
@@ -170,7 +170,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
      }
      ```
 
-1. Adja hozzá a következő általános függvényt a megoldásból érkező közvetlen metódushívások kezeléséhez. A függvény információkat jelenít meg a megmeghívott közvetlen metódusról, de ebben a példában semmilyen módon nem módosítja az eszközt. A megoldás közvetlen módszereket használ az eszközökön való cselekvésre:
+1. Adja hozzá a következő általános függvényt a közvetlen metódus hívásának kezeléséhez a megoldásból. A függvény megjeleníti a meghívott közvetlen metódus adatait, de ebben a példában nem módosítja az eszközt semmilyen módon. A megoldás közvetlen metódusok használatával cselekszik az eszközökön:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -185,7 +185,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
      }
      ```
 
-1. Adja hozzá a következő függvényt a megoldásból érkező **FirmwareUpdate** közvetlen metódushívások kezeléséhez. A függvény ellenőrzi a közvetlen metódus hasznos adatában átadott paramétereket, majd aszinkron módon futtatja a belső vezérlőprogram frissítési szimulációját:
+1. Adja hozzá a következő függvényt a **FirmwareUpdate** Direct metódus hívásának kezeléséhez a megoldásból. A függvény ellenőrzi, hogy a közvetlen metódus adattartalma megfelel-e az átadott paramétereknek, majd aszinkron módon futtatja a belső vezérlőprogram frissítési szimulációját:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -214,7 +214,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
      }
      ```
 
-1. Adja hozzá a következő függvényt egy hosszú ideig futó belső vezérlőprogram-frissítési folyamat szimulálásához, amely a folyamatot visszajelenti a megoldáshoz:
+1. Adja hozzá a következő függvényt egy hosszú ideig futó belső vezérlőprogram-frissítési folyamat szimulálásához, amely a megoldásnak visszalépést jelent:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -292,7 +292,7 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
      }
      ```
 
-1. Adja hozzá a következő kódot telemetriai adatok küldéséhez a megoldásba. Az ügyfélalkalmazás tulajdonságokat ad az üzenethez az üzenetséma azonosításához:
+1. Adja hozzá a következő kódot, hogy telemetria-adatküldés a megoldásnak. Az ügyfélalkalmazás tulajdonságok hozzáadásával azonosítja az üzenet-sémát:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -311,19 +311,19 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
      }
      ```
 
-1. Adja hozzá a következő kódot az ügyfélpéldány létrehozásához:
+1. Adja hozzá a következő kódot egy ügyfél-példány létrehozásához:
 
      ```javascript
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Adja hozzá a következő kódot:
+1. Adja hozzá az alábbi kódot a következőhöz:
 
-    * Nyissa meg a kapcsolatot.
-    * Állítson be egy kezelőt a kívánt tulajdonságokhoz.
+    * Nyissa meg a-kapcsolatokat.
+    * Kezelő beállítása a kívánt tulajdonságokhoz.
     * Jelentett tulajdonságok küldése.
-    * Regisztrálják a közvetlen metódusok kezelőit. A minta külön kezelőt használ a belső vezérlőprogram frissítési közvetlen metódusához.
-    * Kezdje el elküldeni a telemetriai adatokat.
+    * Regisztrálja a közvetlen metódusok kezelőit. A minta egy külön kezelőt használ a belső vezérlőprogram-frissítés közvetlen módszeréhez.
+    * Telemetria küldésének megkezdése.
 
       ```javascript
       client.open(function (err) {
@@ -385,9 +385,9 @@ Hajtsa végre `ssh` a következő lépéseket a Raspberry Pi-hez való csatlakoz
       });
       ```
 
-1. Mentse a módosításokat a **remote_monitoring.js fájlba.**
+1. Mentse a módosításokat a **remote_monitoring. js** fájlba.
 
-1. A mintaalkalmazás elindításához futtassa a következő parancsot a parancssorból a Raspberry Pi-n:
+1. A minta alkalmazás indításához futtassa a következő parancsot a parancssorban a málna PI-ben:
 
      ```sh
      node remote_monitoring.js

@@ -1,6 +1,6 @@
 ---
-title: Protokollpufferek használata eszközszimulációval – Azure| Microsoft dokumentumok
-description: Ebben az útmutatóútmutatóban megtudhatja, hogyan szerializálhatja a protokollpuffereket az eszközszimulációs megoldásgyorsítóból küldött telemetriai adatok használatával.
+title: Protokoll-pufferek használata a Device szimulációs szolgáltatással – Azure | Microsoft Docs
+description: Ebben a útmutatóban megtudhatja, hogyan használhatja a protokollok puffereit az eszköz-szimulációs megoldás-gyorssegédből eljuttatott telemetria szerializálásához.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -12,82 +12,82 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683990"
 ---
-# <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokollpufferekkel
+# <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
 
-A protokollpufferek (Protobuf) strukturált adatok bináris szerializálási formátuma. A Protobuf célja, hogy hangsúlyozza az egyszerűség et és a teljesítményt azzal a céllal, hogy kisebb és gyorsabb, mint az XML.
+A protokoll-pufferek (Protopuf) a strukturált adathalmazok bináris szerializálási formátuma. A protopuf úgy lett kialakítva, hogy az egyszerűség és a teljesítmény kihangsúlyozása érdekében az XML-nél kisebb és gyorsabb legyen a célja.
 
-Az Eszközszimuláció támogatja a protokollpuffernyelv **proto3** verzióját.
+Az eszköz szimulációja támogatja a **proto3** nyelvének verzióját.
 
-Mivel a Protobuf lefordított kódszükséges az adatok szerializálásához, az Eszközszimuláció egyéni verzióját kell készítenie.
+Mivel a Protopuf lefordított kódot igényel az adatszerializáláshoz, az eszköz-szimuláció egyéni verzióját kell létrehoznia.
 
-Az útmutató lépései bemutatják, hogyan:
+A útmutató lépései a következőket mutatják be:
 
 1. Fejlesztési környezet előkészítése
-1. A Protobuf formátum használatával történő megadása eszközmodellben
-1. A Protobuf formátum meghatározása
-1. Protobuf osztályok létrehozása
+1. A Protopuf formátum használata az eszköz modelljében
+1. A Protopuf formátumának meghatározása
+1. Protopuf osztályok előállítása
 1. Helyi tesztelés
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató lépéseinek követéséhez a következőkre van szükség:
+A jelen útmutató lépéseinek követéséhez a következőkre lesz szüksége:
 
-* Visual Studio Code. A [Visual Studio Code for Mac, Linux és Windows alkalmazást](https://code.visualstudio.com/download)letöltheti.
-* .NET Core. A [.NET Core letölthető Mac, Linux és Windows rendszerre](https://www.microsoft.com/net/download).
-* Postás. Letöltheti [postman Mac, Windows, vagy Linux](https://www.getpostman.com/apps).
-* [Az Azure-előfizetésében üzembe helyezett IoT-központ.](../iot-hub/iot-hub-create-through-portal.md) Az útmutatóban ismertetett lépések végrehajtásához az IoT hub kapcsolati karakterláncára van szükség. A kapcsolati karakterlánc az Azure Portalon.
-* Az [Azure-előfizetésbe telepített Cosmos DB-adatbázis,](../cosmos-db/create-sql-api-dotnet.md#create-account) amely az SQL API-t használja, és [erős konzisztenciára](../cosmos-db/manage-account.md)van konfigurálva. A Cosmos DB adatbázis kapcsolati karakterláncának az útmutatóban leírt lépések végrehajtásához szükséges. A kapcsolati karakterlánc az Azure Portalon.
-* [Az Azure-előfizetésbe üzembe helyezett Azure storage-fiók.](../storage/common/storage-account-create.md) Az útmutató ban leírt lépések végrehajtásához a tárfiók kapcsolati karakterláncára van szükség. A kapcsolati karakterlánc az Azure Portalon.
+* Visual Studio Code. [A Visual Studio Code letölthető Mac, Linux és Windows rendszerekhez](https://code.visualstudio.com/download).
+* .NET Core. [A .net Core for Mac, Linux és Windows rendszerhez](https://www.microsoft.com/net/download)is letölthető.
+* Postman. [A Poster letölthető Mac, Windows vagy Linux rendszerű számítógépekre](https://www.getpostman.com/apps).
+* Az [Azure-előfizetéshez üzembe helyezett IoT hub](../iot-hub/iot-hub-create-through-portal.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz az IoT hub kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
+* Az [Azure-előfizetéshez üzembe helyezett Cosmos db-adatbázis](../cosmos-db/create-sql-api-dotnet.md#create-account) , amely az SQL API-t használja, és amely [erős konzisztencia](../cosmos-db/manage-account.md)használatára van konfigurálva. A jelen útmutató lépéseinek elvégzéséhez szüksége lesz a Cosmos DB adatbázisához tartozó kapcsolódási karakterláncra. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
+* Az [Azure-előfizetéshez üzembe helyezett Azure Storage-fiók](../storage/common/storage-account-create.md). Az útmutató lépéseinek elvégzéséhez szüksége lesz a Storage-fiók kapcsolódási karakterláncára. A Azure Portal a kapcsolatok sztringjét is beszerezheti.
 
 ## <a name="prepare-your-development-environment"></a>A fejlesztőkörnyezet előkészítése
 
-A fejlesztői környezet előkészítéséhez hajtsa végre a következő feladatokat:
+A fejlesztési környezet előkészítéséhez végezze el a következő feladatokat:
 
-* Töltse le az eszközszimulációs mikroszolgáltatás forrását.
-* Töltse le a forrást a tárolóadapter mikroszolgáltatás.
-* Futtassa a tárolóadapter mikroszolgáltatását helyileg.
+* Töltse le az eszköz szimulációs szolgáltatásának forrását.
+* Töltse le a Storage adapter-szolgáltatás forrását.
+* Futtassa helyileg a Storage-adapter-szolgáltatást.
 
-A cikkben található utasítások feltételezik, hogy a Windows rendszert használja. Ha más operációs rendszert használ, előfordulhat, hogy a környezetének megfelelően módosítania kell néhány fájlelérési utat és parancsot.
+A cikkben szereplő utasítások feltételezik, hogy a Windowst használja. Ha másik operációs rendszert használ, előfordulhat, hogy módosítania kell néhány fájl elérési útját és parancsát a környezetének megfelelően.
 
-### <a name="download-the-microservices"></a>A mikroszolgáltatások letöltése
+### <a name="download-the-microservices"></a>A szervizcsomagok letöltése
 
-Töltse le és csomagolja ki a [Távoli figyelési mikroszolgáltatásokat](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) a GitHubról a helyi számítógépen lévő megfelelő helyre. Ez a tárház tartalmazza a tárolóadapter mikroszolgáltatás szükséges ehhez a how-to.
+Töltse le és csomagolja ki a [távoli monitorozási szolgáltatásokat](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) a githubról a helyi gépen található megfelelő helyre. Ez a tárház tartalmazza az ehhez az útmutatóhoz szükséges Storage-adapter-szolgáltatást.
 
-Töltse le és csomagolja ki az [eszközszimulációs mikroszolgáltatást](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) a GitHubról a helyi számítógépen lévő megfelelő helyre.
+Töltse le és csomagolja ki az [eszköz szimulációs szolgáltatását](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) a githubról egy megfelelő helyre a helyi gépen.
 
-### <a name="run-the-storage-adapter-microservice"></a>A tárolóadapter mikroszolgáltatásának futtatása
+### <a name="run-the-storage-adapter-microservice"></a>A Storage-adapter szolgáltatásának futtatása
 
-A Visual Studio-kódban nyissa meg a **remote-monitoring-services-dotnet-master\storage-adapter** mappát. A **feloldatlan** függőségek javításához kattintson bármelyik Visszaállítás gombra.
+A Visual Studio Code-ban nyissa meg a **Remote-Monitoring-Services-DotNet-master\storage-adapter** mappát. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
+Nyissa meg a **. vscode/Launch. JSON** fájlt, és rendelje hozzá Cosmos db kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_\_DOCUMENTDB CONNSTRING** környezeti változóhoz.
 
 > [!NOTE]
-> Ha a mikroszolgáltatás helyileg fut a gépen, továbbra is szükség van egy Cosmos DB-példány az Azure-ban a megfelelő működéséhez.
+> Ha helyileg futtatja a szolgáltatást a gépen, akkor továbbra is szükség van egy Cosmos DB példányra az Azure-ban, hogy megfelelően működjön.
 
-A tárolóadapter mikroszolgáltatásának helyi futtatásához kattintson a **Hibakeresés \> indítása gombra.**
+Ha helyileg szeretné futtatni a Storage-adaptert, kattintson a hibakeresés ** \> megkezdése**elemre.
 
-A Visual Studio-kód **Terminál** ablaka a futó mikroszolgáltatás kimenetét jeleníti <http://127.0.0.1:9022/v1/status>meg, beleértve a webszolgáltatás állapot-ellenőrzésének URL-címét: . Amikor erre a címre navigál, az állapotnak "OK: Él és virul" állapotnak kell lennie.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL <http://127.0.0.1:9022/v1/status>-címét:. Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
 
-Hagyja futni a tárolóadapter mikroszolgáltatását a Visual Studio-kód ezen példányában, amíg végrehajtja az alábbi lépéseket.
+A következő lépések elvégzése után a Visual Studio Code ezen példányán ne futtassa a Storage-adapter-szolgáltatást.
 
-## <a name="define-your-device-model"></a>Az eszköztípus meghatározása
+## <a name="define-your-device-model"></a>Az eszköz modelljének meghatározása
 
-Nyissa meg a GitHubról letöltött **eszköz-szimulációs-dotnet-master** mappát a Visual Studio-kód új példányában. A **feloldatlan** függőségek javításához kattintson a Visszaállítás gombra.
+Nyissa meg a GitHubról letöltött **Device-szimulációs-DotNet-Master** mappát a Visual Studio Code új példányán. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Ebben az útmutatóban új eszközmodellt hoz létre egy eszközkövetőhöz:
+Ebben a útmutatóban egy új eszközt hoz létre egy eszköz követéséhez:
 
-1. Hozzon létre egy új eszközmodell-fájlt, az **assettracker-01.json** nevű fájlt a **Services\data\devicemodels** mappában.
+1. Hozzon létre egy új, **assettracker-01. JSON** nevű eszközt a **Services\data\devicemodels** mappában.
 
-1. Adja meg az eszköz funkcióját az **eszközmodell assettracker-01.json** fájljában. A Protobuf eszközmodell telemetriai szakaszának:
+1. Adja meg az eszköz funkcióit az **assettracker-01. JSON** fájlban. A Protopuf-modell telemetria szakaszának a következőket kell tennie:
 
-   * Adja meg az eszközhöz létrehozott Protobuf osztály nevét. A következő szakasz bemutatja, hogyan hozhat létre ezt az osztályt.
-   * Adja meg a Protobuf-ot üzenetformátumként.
+   * Adja meg az eszközhöz generált Protopuf osztály nevét. A következő szakasz bemutatja, hogyan hozhatja elő ezt az osztályt.
+   * A Protopuf megadásához írja be az üzenet formátumát.
 
      ```json
      {
@@ -139,21 +139,21 @@ Ebben az útmutatóban új eszközmodellt hoz létre egy eszközkövetőhöz:
      }
      ```
 
-### <a name="create-device-behaviors-script"></a>Eszközviselkedési parancsfájl létrehozása
+### <a name="create-device-behaviors-script"></a>Eszköz-viselkedési parancsfájl létrehozása
 
-Írja be a viselkedési parancsfájlt, amely meghatározza az eszköz működését. További információt a Speciális szimulált eszköz létrehozása című [témakörben talál.](iot-accelerators-device-simulation-advanced-device.md)
+Írja be a viselkedési parancsfájlt, amely meghatározza, hogy az eszköz hogyan viselkedik. További információ: [Advanced szimulált eszköz létrehozása](iot-accelerators-device-simulation-advanced-device.md).
 
-## <a name="define-your-protobuf-format"></a>A Protobuf formátum meghatározása
+## <a name="define-your-protobuf-format"></a>A Protopuf formátumának meghatározása
 
-Ha rendelkezik eszközmodellel, és meghatározta az üzenet formátumát, létrehozhat egy **proto** fájlt. A **proto** fájlban a következőt adja hozzá:
+Ha rendelkezik egy eszköz modellel, és meghatározta az üzenet formátumát, létrehozhat egy **proto** -fájlt. A **proto** -fájlban adja hozzá a következőket:
 
-* A, `csharp_namespace` amely megfelel az eszközmodell **ClassName** tulajdonságának.
-* Minden egyes adatszerkezetszerialmára vonatkozó üzenet.
-* Az üzenet minden mezőjének neve és típusa.
+* A `csharp_namespace` , amely megfelel a **Osztálynév** tulajdonságnak az eszköz modelljében.
+* A szerializálni kívánt adatszerkezetek üzenete.
+* Az üzenet egyes mezőinek neve és típusa.
 
-1. Hozzon létre egy **assettracker.proto** nevű új fájlt a **Services\Models\Protobuf\proto** mappában.
+1. Hozzon létre egy **assettracker. proto** nevű új fájlt a **Services\Models\Protobuf\proto** mappában.
 
-1. Adja meg a szintaxist, a névteret és az üzenetsémát a **protofájlban** az alábbiak szerint:
+1. Adja meg a szintaxist, a névteret és az üzenet-sémát a **proto** -fájlban a következő módon:
 
     ```proto
     syntax = "proto3";
@@ -168,47 +168,47 @@ Ha rendelkezik eszközmodellel, és meghatározta az üzenet formátumát, létr
     }
     ```
 
-Az `=1` `=2` egyes elemek jelölői egyedi címkét adnak meg, amelyet a mező a bináris kódolásban használ. Az 1–15-ös számok kódolásához eggyel kevesebb bájt szükséges, mint a magasabb számok.
+A `=1`, `=2` az egyes elemek jelölői egy egyedi címkét határoznak meg, amelyet a mező a bináris kódolásban használ. A 1-15 számnál kevesebb bájtra van szükség a nagyobb számú kódoláshoz.
 
-## <a name="generate-the-protobuf-class"></a>A Protobuf osztály létrehozása
+## <a name="generate-the-protobuf-class"></a>A Protopuf osztály előállítása
 
-ha van egy **proto** fájlt, a következő lépés az, hogy létrehoz az osztályok szükséges olvasni és írni az üzeneteket. A lépés végrehajtásához szüksége van a **Protoc** Protobuf fordítóra.
+Ha egy **proto** -fájllal rendelkezik, a következő lépés az üzenetek olvasásához és írásához szükséges osztályok előállítása. A lépés elvégzéséhez szüksége lesz a **Protoc** protopuf-fordítóra.
 
-1. [A Protobuf fordító letöltése a GitHubról](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
+1. [A Protopuf Compiler letöltése a GitHubról](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Futtassa a fordítót, megadva a forráskönyvtárat, a célkönyvtárat és a **protofájl** nevét. Például:
+1. Futtassa a fordítót, adja meg a forrás könyvtárat, a célhely könyvtárat és a **proto** -fájl nevét. Például:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    Ez a parancs **Assettracker.cs** fájlt hoz létre a **Services\Models\Protobuf** mappában.
+    Ez a parancs létrehoz egy **Assettracker.cs** -fájlt a **Services\Models\Protobuf** mappában.
 
-## <a name="test-protobuf-locally"></a>Teszt Protobuf helyben
+## <a name="test-protobuf-locally"></a>Protopuf helyi tesztelése
 
-Ebben a szakaszban az előző szakaszokban létrehozott eszközkövető eszközt helyileg tesztelheti.
+Ebben a szakaszban a korábban az előző szakaszokban létrehozott Asset Tracker-eszközt teszteli.
 
-### <a name="run-the-device-simulation-microservice"></a>Az eszközszimulációs mikroszolgáltatás futtatása
+### <a name="run-the-device-simulation-microservice"></a>Az eszköz szimulációs szolgáltatásának futtatása
 
-Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá a következőket:
+Nyissa meg a **. vscode/Launch. JSON** fájlt, és rendelje hozzá a következőket:
 
-* IoT Hub kapcsolati karakterlánc a **PCS\_\_IOTHUB CONNSTRING** környezeti változóhoz.
-* A tárfiók kapcsolati karakterlánca a **PCS\_AZURE\_STORAGE-FIÓK\_** környezeti változóhoz.
-* Cosmos DB kapcsolati karakterlánc a **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
+* IoT Hub a kapcsolódási karakterláncot a **\_számítógépek IOTHUB\_CONNSTRING** környezeti változóhoz.
+* A Storage-fiók kapcsolódási karakterlánca a **számítógépek\_\_Azure Storage\_-fiók** környezeti változóhoz.
+* Cosmos DB a kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
 
-Nyissa meg a **WebService/Properties/launchSettings.json** fájlt, és rendelje hozzá a következőket:
+Nyissa meg a **webszolgáltatás/tulajdonságok/launchSettings. JSON** fájlt, és rendelje hozzá a következőket:
 
-* IoT Hub kapcsolati karakterlánc a **PCS\_\_IOTHUB CONNSTRING** környezeti változóhoz.
-* A tárfiók kapcsolati karakterlánca a **PCS\_AZURE\_STORAGE-FIÓK\_** környezeti változóhoz.
-* Cosmos DB kapcsolati karakterlánc a **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
+* IoT Hub a kapcsolódási karakterláncot a **\_számítógépek IOTHUB\_CONNSTRING** környezeti változóhoz.
+* A Storage-fiók kapcsolódási karakterlánca a **számítógépek\_\_Azure Storage\_-fiók** környezeti változóhoz.
+* Cosmos DB a kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
 
-Nyissa meg a **WebService\appsettings.ini** fájlt, és módosítsa a beállításokat az alábbiak szerint:
+Nyissa meg a **WebService\appsettings.ini** fájlt, és módosítsa a beállításokat a következőképpen:
 
-#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>A megoldás konfigurálása az új eszközmodell-fájlok felvételére
+#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>A megoldás konfigurálása az új eszköz-modell fájljainak belefoglalásához
 
-Alapértelmezés szerint az új eszközmodell JSON- és JS-fájljai nem lesznek átmásolva a beépített megoldásba. Ezeket kifejezetten bele kell foglalnia.
+Alapértelmezés szerint az új eszköz-modell JSON-és JS-fájljai nem másolódnak át az épített megoldásba. Explicit módon fel kell vennie őket.
 
-Adjon hozzá egy bejegyzést a **services\services.csproj** fájlhoz minden egyes fájlhoz, amelyet be szeretne venni. Például:
+Adjon hozzá egy bejegyzést a **services\services.csproj** -fájlhoz minden olyan fájlhoz, amelyet fel szeretne venni. Például:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -219,17 +219,17 @@ Adjon hozzá egy bejegyzést a **services\services.csproj** fájlhoz minden egye
 </None>
 ```
 
-A mikroszolgáltatás helyi futtatásához kattintson a **Hibakeresés \> indítása gombra.**
+Ha helyileg szeretné futtatni a szolgáltatást, kattintson a hibakeresés ** \> megkezdése**elemre.
 
-A Visual Studio-kód **Terminál** ablaka a futó mikroszolgáltatás kimenetét jeleníti meg.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg.
 
-Hagyja futni az eszközszimulációs mikroszolgáltatást a Visual Studio-kód ezen példányában a következő lépések végrehajtásával.
+A következő lépések elvégzése után hagyja a Visual Studio Code ezen példányán futó Device szimulációs szolgáltatást.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Eszközesemények figyelőjének beállítása
+### <a name="set-up-a-monitor-for-device-events"></a>Figyelő beállítása az eszköz eseményeihez
 
-Ebben a szakaszban az Azure CLI használatával egy eseményfigyelő telemetriai adatok megtekintéséhez az IoT hubhoz csatlakoztatott eszközökről küldött telemetriai adatok megtekintéséhez.
+Ebben a szakaszban az Azure CLI-vel állít be egy eseményt figyelőt az IoT hub-hoz csatlakoztatott eszközökről érkező telemetria megtekintéséhez.
 
-A következő parancsfájl feltételezi, hogy az IoT hub neve **eszköz-szimuláció-teszt.**
+A következő parancsfájl feltételezi, hogy az IoT hub neve **Device-szimulációs-test**.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -239,44 +239,44 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Hagyja futni az eseményfigyelőt a szimulált eszközök tesztelése közben.
+A szimulált eszközök tesztelése közben hagyja futni az eseménynaplót.
 
-### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Szimuláció létrehozása az eszközkövető eszköztípussal
+### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Szimuláció létrehozása az Asset Tracker-eszköz típusával
 
-Ebben a szakaszban a Postman eszközzel kérheti az eszközszimulációs mikroszolgáltatás az eszközkövető eszköz típusával szimuláció futtatásához. Postman egy olyan eszköz, amely lehetővé teszi, hogy küldjön REST-kérelmek egy webszolgáltatás.
+Ebben a szakaszban a Poster eszköz használatával kérheti le az eszköz szimulációs szolgáltatását, hogy futtasson egy szimulációt az eszközoldali eszköz típusának használatával. A Poster egy olyan eszköz, amely lehetővé teszi a REST-kérések küldését egy webszolgáltatásnak.
 
-A Postman beállítása:
+Poster beállítása:
 
-1. Nyisd meg a postása a helyi gépen.
+1. Nyissa meg a Poster szolgáltatást a helyi gépen.
 
-1. Kattintson **a Fájlimportálás \> gombra.** Ezután kattintson **a Fájlok kiválasztása gombra.**
+1. Kattintson **a \> fájl importálása**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
 
-1. Válassza az **Azure IoT-eszközszimulációs\_megoldásgyorsító.postman gyűjtemény** és **az Azure IoT-eszközszimulációs megoldásgyorsító.postman\_környezetet,** majd kattintson a **Megnyitás gombra.**
+1. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító\_. Poster Collection** és az **Azure IoT Device szimulációs megoldás\_gyorsító. Poster-környezet** lehetőséget, és kattintson a **Megnyitás**gombra.
 
-1. Bontsa ki az **Azure IoT-eszközszimulációs megoldásgyorsítót** a küldhető kérések megtekintéséhez.
+1. Bontsa ki az **Azure IoT-eszköz szimulációs megoldásának Gyorssegédjét** a küldendő kérések megtekintéséhez.
 
-1. Kattintson **a Nincs környezet elemre,** és válassza **az Azure IoT-eszközszimulációs megoldásgyorsítót.**
+1. Kattintson a **nincs környezet** elemre, és válassza az **Azure IoT-eszköz szimulációs megoldásának gyorsítása**elemet.
 
-Most már van egy gyűjtemény és környezet betöltve a Postman-munkaterület, amely segítségével az eszköz szimulációs mikroszolgáltatás.
+Most már betöltött egy gyűjteményt és egy környezetet a Poster-munkaterületen, amely az eszköz-szimulációs szolgáltatással való kommunikációhoz használható.
 
 A szimuláció konfigurálása és futtatása:
 
-1. A Postman gyűjteményben válassza az **Eszközkövető szimuláció létrehozása lehetőséget,** és kattintson a **Küldés**gombra. Ez a kérelem négy példányt hoz létre a szimulált eszközkövető eszköz típusából.
+1. A Poster gyűjteményben válassza az **Asset Tracker-szimuláció létrehozása** lehetőséget, majd kattintson a **Küldés**gombra. Ez a kérelem a szimulált eszköz típusának négy példányát hozza létre.
 
-1. Az Azure CLI ablakesemény-figyelő kimenete a szimulált eszközök telemetriai adatokat jeleníti meg.
+1. Az Eseménynapló kimenete az Azure CLI-ablakban a szimulált eszközök telemetria jeleníti meg.
 
-A szimuláció leállításához válassza a **Szimuláció leállítása** kérést a Postman alkalmazásban, és kattintson a **Küldés**gombra.
+A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Leállíthatja a két helyileg futó mikroszolgáltatásokat a Visual Studio-kódpéldányaikban (**Hibakeresés \> leállítása**).
+A két helyileg futó Service-t a Visual Studio Code-példányaiban állíthatja le (**hibakeresési \> leállítás hibakeresése**).
 
-Ha már nincs szüksége az IoT Hub és a Cosmos DB-példányokra, törölje őket az Azure-előfizetésből a szükségtelen díjak elkerülése érdekében.
+Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azokat az Azure-előfizetésből a szükségtelen költségek elkerülése érdekében.
 
-## <a name="iot-hub-support"></a>IoT Hub támogatása
+## <a name="iot-hub-support"></a>IoT Hub támogatás
 
-Számos IoT Hub-szolgáltatás nem támogatja natívmódon a Protobuf vagy más bináris formátumokat. Például nem irányíthatja az üzenet hasznos adata alapján, mert az IoT Hub nem fogja tudni feldolgozni az üzenet hasznos adatát. Az útvonal azonban az üzenetfejlécek alapján is megtehető.
+Számos IoT Hub funkció nem támogatja natív módon a Protopuf vagy más bináris formátumot. Például nem lehet átirányítani az üzenet adattartalma alapján, mert IoT Hub nem fogja tudni feldolgozni az üzenet tartalmát. Az üzeneteket azonban az üzenetek fejlécei alapján is elvégezheti.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan szabhatja testre az eszközszimulációt a Protobuf használatával telemetriai adatok küldéséhez, a következő lépés az [egyéni lemezkép üzembe helyezése a felhőbe.](iot-accelerators-device-simulation-deploy-image.md)
+Most, hogy megtanulta, hogyan szabhatja testre az eszköz szimulációját, hogy Protopuf küldjön telemetria, a következő lépés az [Egyéni lemezkép felhőbe való üzembe helyezésének](iot-accelerators-device-simulation-deploy-image.md)megismerése.

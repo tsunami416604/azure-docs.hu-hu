@@ -1,6 +1,6 @@
 ---
-title: Adatok feltárása az Azure blob storage-ban pandákkal – Csapatadat-elemzési folyamat
-description: Az Azure blobtárolóban tárolt adatok feltárása a Pandas Python-csomag használatával.
+title: Az Azure Blob Storage-ban tárolt adatelemzés a pandák-Team adatelemzési folyamattal
+description: Az Azure Blob-tárolóban tárolt, a pandák Python-csomaggal tárolt adatelemzések.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685955"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Adatok feltárása az Azure blob storage-ban pandákkal
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Adatgyűjtés az Azure Blob Storage-ban a pandák
 
-Ez a cikk ismerteti, hogyan tárja fel az Azure blob tárolóban tárolt adatok [pandas](https://pandas.pydata.org/) Python-csomag használatával.
+Ez a cikk bemutatja, hogyan vizsgálhatja meg az Azure Blob-tárolóban tárolt, a [pandák](https://pandas.pydata.org/) Python-csomaggal tárolt adatelemzést.
 
-Ez a feladat egy lépés a [csapat adatelemzési folyamatában.](overview.md)
+Ez a feladat a [csoportos adatelemzési folyamat](overview.md)egyik lépése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy a következőket feltételezi:
+Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
-* Létrehozott egy Azure-tárfiókot. Ha utasításokra van szüksége, olvassa [el az Azure Storage-fiók létrehozása című témakört.](../../storage/common/storage-account-create.md)
-* Az adatokat egy Azure blob storage-fiókban tárolta. Ha utasításokra van szüksége, olvassa el [az Adatok áthelyezése az Azure Storage-ba és onnan való áthelyezése](../../storage/common/storage-moving-data.md)
+* Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
+* Az adatait egy Azure Blob Storage-fiókban tárolta. Ha útmutatásra van szüksége, olvassa el az [adatok áthelyezése az Azure Storage-ba és az-ból](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Töltse be az adatokat egy pandadataframe-be
-Egy adatkészlet feltárásához és kezeléséhez először le kell tölteni a blob forrásból egy helyi fájlba, amely ezután betölthető egy panda DataFrame.To explore and manipulated and a dataset it must first be downloaded from the blob source to a local file, which can then be loaded in a pandas DataFrame. Az eljáráshoz az alábbi lépéseket kell végrehajtania:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Az adatgyűjtés egy Panda DataFrame
+Az adatkészletek feltárásához és kezeléséhez először le kell töltenie a blob-forrásból egy helyi fájlba, amelyet aztán egy Panda DataFrame lehet betölteni. A következő lépéseket kell követnie ehhez az eljáráshoz:
 
-1. Töltse le az adatokat az Azure blobból a következő Python-kódmintával a Blob szolgáltatás használatával. Cserélje le a változót a következő kódra az adott értékekre:
+1. Töltse le az Azure Blob adatait az alábbi Python-mintakód használatával Blob service segítségével. Cserélje le a változót a következő kódban az adott értékekre:
 
     ```python
     from azure.storage.blob import BlockBlobService
@@ -54,25 +54,25 @@ Egy adatkészlet feltárásához és kezeléséhez először le kell tölteni a 
     print(("It takes %s seconds to download "+blobname) % (t2 - t1))
     ```
 
-1. Olvassa be az adatokat egy pandas DataFrame a letöltött fájlt.
+1. Az adatok beolvasása egy Panda DataFrame a letöltött fájlból.
 
     ```python
     # LOCALFILE is the file path
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-Most már készen áll az adatok feltárására és az adatkészlet funkcióinak létrehozására.
+Most már készen áll arra, hogy felderítse az adatokat, és létrehozza az adatkészlet funkcióit.
 
-## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Példák a pandák használatával végzett adatfeltárásra
-Íme néhány példa arra, hogyan fedezheti fel az adatokat a pandák használatával:
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Példák az adatfeltárásra a pandák használatával
+Íme néhány példa arra, hogyan lehet az adatelemzést használni a pandák használatával:
 
-1. Sorok **és oszlopok számának vizsgálata**
+1. **Sorok és oszlopok számának** vizsgálata
 
     ```python
     print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
     ```
 
-1. **Vizsgálja meg** a következő adatkészlet első vagy utolsó **néhány sorát:**
+1. **Vizsgálja** meg a következő adatkészlet első vagy utolsó néhány **sorát** :
 
     ```python
     dataframe_blobdata.head(10)
@@ -80,47 +80,47 @@ Most már készen áll az adatok feltárására és az adatkészlet funkcióinak
     dataframe_blobdata.tail(10)
     ```
 
-1. Ellenőrizze, hogy az egyes oszlopok at importált **adattípus** a következő mintakód használatával importálta-e
+1. Az egyes oszlopok **adattípusának** ellenőrzését az alábbi mintakód használatával importálja.
 
     ```python
     for col in dataframe_blobdata.columns:
         print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
     ```
 
-1. Ellenőrizze az **alapstatisztikákat** az adatkészlet oszlopaihoz az alábbiak szerint
+1. A következőképpen tekintse meg az adathalmaz oszlopainak **alapvető statisztikáit**
 
     ```python
     dataframe_blobdata.describe()
     ```
 
-1. Nézd meg az egyes oszlopértékek bejegyzéseinek számát az alábbiak szerint:
+1. Tekintse meg az egyes oszlopok értékeinek számát a következőképpen:
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts()
     ```
 
-1. **A hiányzó értékek megszámlálása** az egyes oszlopokban szereplő bejegyzések tényleges számával szemben a következő mintakód használatával
+1. A hiányzó értékeket és az egyes oszlopokban lévő bejegyzések tényleges számát az alábbi mintakód alapján **számítja** ki.
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
     print miss_num
     ```
 
-1. Ha az adatok egy adott oszlopához **hiányoznak értékek,** azokat a következőképpen dobhatja ki:
+1. Ha **hiányoznak** az adatok egy adott oszlopához tartozó értékek, a következőképpen húzhatja őket:
 
     ```python
     dataframe_blobdata_noNA = dataframe_blobdata.dropna()
     dataframe_blobdata_noNA.shape
     ```
 
-    A hiányzó értékek cseréjének másik módja a módfunkció:
+    A hiányzó értékek cseréjének másik módja a Mode függvény:
 
     ```python
     dataframe_blobdata_mode = dataframe_blobdata.fillna(
         {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
     ```
 
-1. **Hisztogram-ábrázolás** létrehozása változószámú tárolóval a változó eloszlásának ábrázolására
+1. **Hisztogram** -ábra létrehozása változó számú raktárhely használatával a változó eloszlásának ábrázolásához
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -128,7 +128,7 @@ Most már készen áll az adatok feltárására és az adatkészlet funkcióinak
     np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
     ```
 
-1. A **változók közötti korrelációk megtekintése** scatterplot vagy a beépített korrelációs függvény használatával
+1. Megtekintheti a változók közötti **korrelációkat** egy scatterplot vagy a beépített korrelációs függvény használatával.
 
     ```python
     # relationship between column_a and column_b using scatter plot

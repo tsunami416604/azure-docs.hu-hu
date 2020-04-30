@@ -1,122 +1,122 @@
 ---
-title: Sablon létrehozása – Visual Studio-kód
+title: Sablon létrehozása – Visual Studio Code
 description: A Resource Manager-sablonokon a Visual Studio Code-dal és az Azure Resource Manager-eszközök bővítményeivel dolgozhat.
 author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
 ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686613"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio-kóddal
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager sablonok létrehozása a Visual Studio Code-ban
 
-Az Azure Resource Manager Tools for Visual Studio Code nyelvi támogatást, erőforrás-kódrészleteket és erőforrás-automatikus kiegészítést biztosít. Ezek az eszközök segítenek az Azure Resource Manager-sablonok létrehozásában és érvényesítésében. Ebben a rövid útmutatóban a bővítmény segítségével hozzon létre egy Azure Resource Manager-sablont a semmiből. Ennek során a bővítmények olyan képességeit tapasztalhatja, mint az ARM-sablonkódrészletek, az érvényesítés, a kiegészítések és a paraméterfájlok támogatása.
+A Visual Studio Code-hoz készült Azure Resource Manager Tools biztosítja a nyelvi támogatást, az erőforrás-kódrészleteket és az erőforrás-kiegészítést. Ezek az eszközök segítenek Azure Resource Manager sablonok létrehozásában és ellenőrzésében. Ebben a rövid útmutatóban a bővítmény használatával hozzon létre egy Azure Resource Manager sablont a semmiből. Ennek során a bővítmények funkcióit, például az ARM-sablonok részleteit, az érvényesítést, a befejezést és a paraméteres fájlok támogatását tapasztalhatja.
 
-A rövid útmutató befejezéséhez szüksége van a [Visual Studio-kódra,](https://code.visualstudio.com/)és telepítve van az [Azure Resource Manager eszközbővítmény.](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) Az [Azure CLI-t](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy az [Azure PowerShell-modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
+A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [Azure Resource Manager Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -t vagy az Azure PowerShell- [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="create-an-arm-template"></a>ARM-sablon létrehozása
 
-Hozzon létre és nyisson meg a Visual Studio Code alkalmazással egy *azuredeploy.json*nevű új fájlt. Írja `arm` be a kódszerkesztőbe, amely elindítja az Azure Resource Manager kódrészleteket egy ARM-sablon állványzatához.
+Hozzon létre és nyisson meg egy *azuredeploy. JSON*nevű új fájlt a Visual Studio Code-ban. Adja `arm` meg a Kódszerkesztő alkalmazást, amely az ARM-sablonokhoz Azure Resource Manager kódrészleteket indít el.
 
-Jelölje `arm!` be, ha egy Azure-erőforráscsoport üzembe helyezéséhez sablonhatókört szeretne létrehozni.
+Válassza `arm!` ki az Azure-erőforráscsoport üzembe helyezéséhez hatókörrel rendelkező sablon létrehozásához.
 
-![Az Azure Resource Manager állványzatát ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Azure Resource Manager állványzatot ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-Ez a kódrészlet hozza létre az ARM-sablon alapvető építőelemeit.
+Ez a kódrészlet létrehoz egy ARM-sablon alapszintű építőelemeit.
 
-![Teljesen állványozott ARM sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/2.png)
+![Egy teljesen összeszerelő ARM-sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Figyelje meg, hogy a Visual Studio-kód nyelvi módja *JSON-ról* *Azure Resource Manager-sablonra*változott. A bővítmény tartalmaz egy ARM sablonokra jellemző nyelvi kiszolgálót, amely ARM-sablonspecifikus érvényesítést, teljesítést és egyéb nyelvi szolgáltatásokat biztosít.
+Figyelje meg, hogy a Visual Studio Code nyelvi módja *JSON* -ról *Azure Resource Manager sablonra*módosult. A bővítmény az ARM-sablonokra jellemző nyelvi kiszolgálót tartalmaz, amely ARM sablon-specifikus érvényesítési, befejezési és egyéb nyelvi szolgáltatásokat biztosít.
 
-![Az Azure Resource Manager t a Visual Studio-kód nyelvi üzemmódjaként megjelenítő kép](./media/quickstart-create-templates-use-visual-studio-code/3.png)
+![Kép, amely a Visual Studio Code nyelvi módjában Azure Resource Manager](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
 ## <a name="add-an-azure-resource"></a>Azure-erőforrás hozzáadása
 
-A bővítmény számos Azure-erőforrás kódrészleteket tartalmaz. Ezek a kódrészletek segítségével egyszerűen hozzáadhat erőforrásokat a sablon központi telepítéséhez.
+A bővítmény számos Azure-erőforráshoz tartalmaz kódrészleteket. Ezek a kódrészletek az erőforrások egyszerű hozzáadására használhatók a sablon üzembe helyezéséhez.
 
-Helyezze a kurzort a sablon `storage`erőforrásblokkjába, írja be a be, és jelölje ki a *kartároló* kódrészletet. **resources**
+Helyezze a kurzort a sablon **erőforrásainak** blokkba, `storage`írja be a következőt, és válassza ki a *ARM-Storage* kódrészletet.
 
-![Az ARM sablonhoz hozzáadott erőforrást ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/4.png)
+![Az ARM-sablonba felvenni kívánt erőforrást ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-Ez a művelet tárolási erőforrást ad hozzá a sablonhoz.
+Ez a művelet hozzáadja a tárolási erőforrást a sablonhoz.
 
-![Egy Azure Storage-erőforrást ábrázoló kép ARM-sablonban](./media/quickstart-create-templates-use-visual-studio-code/5.png)
+![Az ARM-sablonban egy Azure Storage-erőforrást ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-A **lapkulcs** segítségével lapatot a konfigurálható tulajdonságok a tárfiókban.
+A **Tab** billentyűt a Storage-fiók konfigurálható tulajdonságai lapon lehet használni.
 
-![A lapbillentyű tabulátorat mutatja be az erőforrás-konfigurációban való navigáláshoz](./media/quickstart-create-templates-use-visual-studio-code/6.png)
+![Kép, amely bemutatja, hogyan használható a TAB billentyű az erőforrás-konfigurációban való böngészéshez](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
 ## <a name="completion-and-validation"></a>Befejezés és érvényesítés
 
-A bővítmény egyik leghatékonyabb képessége az Azure-sémákkal való integráció. Az Azure-sémák biztosítják a bővítmény ellenőrzési és erőforrás-érzékeny befejezési képességek. Módosítsuk a tárfiókot, hogy működés közben lásd az érvényesítést és a befejezést. 
+A bővítmény egyik legerősebb funkciója az Azure-sémákkal való integráció. Az Azure-sémák az ellenőrzési és erőforrás-kompatibilis befejezési képességekkel biztosítják a bővítményt. Módosítsa a Storage-fiókot az érvényesítés és a Befejezés működés közbeni megtekintéséhez. 
 
-Először frissítse a tárfiók-fajtát egy `megaStorage`érvénytelen értékre, például . Figyelje meg, hogy ez `megaStorage` a művelet olyan figyelmeztetést hoz létre, amely nem érvényes értéket jelez.
+Először frissítse a Storage-fiók típusát egy érvénytelen értékre, például `megaStorage`:. Figyelje meg, hogy ez a művelet egy figyelmeztetést állít elő, amely `megaStorage` nem érvényes érték.
 
-![Érvénytelen tárolási konfigurációt ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+![Érvénytelen tárolási konfigurációt mutató kép](./media/quickstart-create-templates-use-visual-studio-code/7.png)
 
-A befejezési lehetőségek használatához `megaStorage`távolítsa el a kurzort a dupla `ctrl`  +  `space`idézőjelek közé, és nyomja le a billentyűt. Ez a művelet az érvényes értékek befejezési listáját mutatja be.
+A befejezési képességek használatához távolítsa `megaStorage`el a kurzort a idézőjelek között, és nyomja meg `ctrl`  +  `space`a gombot. Ez a művelet az érvényes értékek befejezési listáját jeleníti meg.
 
-![A bővítmény automatikus kitöltését ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+![A bővítmény automatikus kiegészítését bemutató kép](./media/quickstart-create-templates-use-visual-studio-code/8.png)
 
-## <a name="add-template-parameters"></a>Sablonparaméterek hozzáadása
+## <a name="add-template-parameters"></a>Sablon paramétereinek hozzáadása
 
-Most hozzon létre és használjon egy paramétert a tárfiók nevének megadásához.
+Most hozzon létre és használjon egy paramétert a Storage-fiók nevének megadásához.
 
-Helyezze a kurzort a paraméterek blokk, adjunk `par`hozzá egy `arm-param-value` kocsi vissza, írja be , majd jelölje ki a kódrészletet. Ez a művelet általános paramétert ad a sablonhoz.
+Vigye a kurzort a paraméterek blokkba, adjon hozzá egy kocsivissza értéket `par`, írja be a karaktert `arm-param-value` , majd válassza ki a kódrészletet. Ezzel a művelettel egy általános paramétert adhat hozzá a sablonhoz.
 
-![Az ARM sablonhoz hozzáadott paramétert ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+![Az ARM-sablonba felvenni kívánt paramétert ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 
-Frissítse a paraméter nevét `storageAccountName` és leírását a rendszerre. `Storage Account Name`
+Frissítse a paraméter nevét `storageAccountName` és a leírását a következőre `Storage Account Name`:.
 
-![A befejezett paramétert ábrázoló kép egy ARM sablonban](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+![Az ARM-sablon befejezett paraméterét ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/10.png)
 
-Az Azure storage-fióknevek hossza legalább 3 karakter, és legfeljebb 24. Adja `minLength` hozzá `maxLength` mindkettőt és a paramétert, és adja meg a megfelelő értékeket.
+Az Azure Storage-fiókok neveinek legalább 3 karakterből kell lenniük, és legfeljebb 24 karakterből állhatnak. Adja hozzá `minLength` mind `maxLength` a, mind a paramétert, és adja meg a megfelelő értékeket.
 
-![Az ARM sablonparaméterhez hozzáadott minLength és maxLength képet mutatja](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+![A minLength és a maxLength egy ARM-sablon paraméterbe való felvételét bemutató kép](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Most a tárolási erőforrás, frissítse a name tulajdonságot a paraméter használatához. Ehhez távolítsa el az aktuális nevet. Írjon be egy dupla `[`idézőjeleket és egy nyitó szögletes zárójelet, amely az ARM sablonfüggvények listáját hozza létre. Válassza ki a *paramétereket* a listából. 
+Most a Storage erőforrásban frissítse a Name (név) tulajdonságot a paraméter használatára. Ehhez távolítsa el az aktuális nevet. Írjon be egy dupla idézőjelet és egy nyitó `[`szögletes zárójelet, amely az ARM-sablon funkcióinak listáját állítja elő. Válassza ki a *paramétereket* a listából. 
 
-![Automatikus kiegészítést megjelenítő kép az ARM sablonerőforrások paramétereinek használatakor](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+![Az ARM-sablon erőforrásaiban paraméterek használatakor automatikus kiegészítést ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 
-Ha egyetlen `'` idézőjeleket ír be a kerek zárójelek beírásába, megjelenik a sablonban definiált összes paraméter listája, ebben az esetben a *storageAccountName*. Válassza ki a paramétert.
+Ha a kör alakú `'` zárójelben egyetlen idézőjelet ad meg, akkor a sablonban definiált összes paraméter (ebben az esetben a *storageAccountName*) listája megjelenik. Válassza ki a paramétert.
 
-![Befejezett paramétert megjelenítő kép EGY ARM sablonerőforrásban](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+![Az ARM-sablon erőforrásának befejezett paraméterét bemutató kép](./media/quickstart-create-templates-use-visual-studio-code/13.png)
 
-## <a name="create-a-parameter-file"></a>Paraméterfájl létrehozása
+## <a name="create-a-parameter-file"></a>Paraméterérték létrehozása
 
-Az ARM sablon paraméterfájl lehetővé teszi a környezetspecifikus paraméterértékek tárolását, és ezeket az értékeket csoportként való átvitelére a telepítés időpontjában. Előfordulhat például, hogy rendelkezik egy tesztkörnyezetre jellemző értékekkel rendelkező paraméterfájllal, és egy másik kalkulációval egy éles környezetben.
+Az ARM-sablon paraméterének fájlja lehetővé teszi a környezet-specifikus paraméterek tárolását, és a központi telepítés időpontjában csoportosítva továbbítja ezeket az értékeket. Előfordulhat például, hogy egy olyan paraméter-fájllal rendelkezik, amely egy tesztkörnyezetben, egy másik pedig az éles környezethez tartozó értékeket tartalmaz.
 
-A kiterjesztés megkönnyíti a paraméterfájl létrehozását a meglévő sablonokból. Ehhez kattintson a jobb gombbal a sablonra `Select/Create Parameter File`a kódszerkesztőben, és válassza a lehetőséget.
+A bővítmény használatával egyszerűen létrehozhat egy paramétert a meglévő sablonokból. Ehhez kattintson a jobb gombbal a sablonra a Kódszerkesztő alkalmazásban, és válassza a `Select/Create Parameter File`lehetőséget.
 
-![A paraméterfájl ARM-sablonból történő létrehozásának jobb gombbal történő kattintási folyamatát ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+![Kép: az ARM-sablonból származó paraméterérték létrehozásához szükséges jobb kattintásos folyamat](./media/quickstart-create-templates-use-visual-studio-code/14.png)
 
-Válassza `New`  >  `All Parameters` > Válassza ki a paraméterfájl nevét és helyét.
+Válassza `New`  >  `All Parameters` ki > válassza ki a paraméter fájljának nevét és helyét.
 
-![A név és a fájl mentése párbeszédpanelt megjelenítő kép, amikor paraméterfájlt hoz létre ARM sablonból](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+![Kép: a fájl neve és mentése párbeszédpanel, amikor egy ARM-sablonból hoz létre paramétereket.](./media/quickstart-create-templates-use-visual-studio-code/15.png)
 
-Ez a művelet létrehoz egy új paraméterfájlt, és leképezi azt azzal a sablonnal, amelyből létrehozták. Az aktuális sablon-/paraméterfájl-hozzárendelést a Visual Studio kód állapotsorán láthatja és módosíthatja, amíg a sablon ki van jelölve.
+Ez a művelet létrehoz egy új paraméter-fájlt, és leképezi azt a sablonnal, amelyből létrehozták. A sablon kiválasztása után megtekintheti és módosíthatja az aktuális sablon/paraméter fájl-hozzárendelést a Visual Studio Code állapotjelző sávjában.
 
 ![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
-Most, hogy a paraméterfájl le lett képezve a sablonhoz, a bővítmény összevonja a sablont és a paraméterfájlt. Ha ezt az ellenőrzést a gyakorlatban is `storageAccountName` látni szeretné, adjon hozzá egy kétkarakteres értéket a paraméterfájl paraméteréhez, és mentse a fájlt.
+Most, hogy a paraméter fájlja le lett képezve a sablonra, a bővítmény a sablon és a paraméter fájlját is ellenőrzi. Ha szeretné megtekinteni ezt az ellenőrzést a gyakorlatban, adjon hozzá egy kétkarakteres értéket `storageAccountName` a paraméterhez a paraméter fájlban, és mentse a fájlt.
 
-![A paraméterfájl-probléma miatt érvénytelenített sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+![A kép paraméterének hibája miatt egy érvénytelenített sablon látható](./media/quickstart-create-templates-use-visual-studio-code/17.png)
 
-Lépjen vissza az ARM sablonra, és figyelje meg, hogy hiba történt, jelezve, hogy az érték nem felel meg a paraméterfeltételeknek.
+Térjen vissza az ARM-sablonhoz, és figyelje meg, hogy hiba történt, ami azt jelzi, hogy az érték nem felel meg a paraméter feltételeinek.
 
-![Érvényes ARM-sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+![Egy érvényes ARM-sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/18.png)
 
-Frissítse az értéket valami megfelelőre, mentse a fájlt, és lépjen vissza a sablonra. Figyelje meg, hogy a paraméter hibája megoldódott.
+Frissítse az értéket a megfelelő értékre, mentse a fájlt, és térjen vissza a sablonhoz. Figyelje meg, hogy a paraméter hibája megoldódott.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Nyissa meg az integrált Visual `ctrl`  +  ```` ` ```` Studio Code terminált a billentyűkombináció használatával, és használja az Azure CLI vagy az Azure PowerShell modult a sablon üzembe helyezéséhez.
+Nyissa meg az integrált Visual Studio Code- `ctrl`  +  ```` ` ```` terminált a kulcs kombinációjának használatával, és használja az Azure CLI vagy a Azure PowerShell modult a sablon üzembe helyezéséhez.
 
 # <a name="cli"></a>[parancssori felület](#tab/CLI)
 
@@ -137,7 +137,7 @@ New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azur
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az Azure-erőforrások már nincs szükség, használja az Azure CLI vagy az Azure PowerShell modul a rövid útmutató erőforráscsoport törléséhez.
+Ha az Azure-erőforrások már nem szükségesek, az Azure CLI vagy Azure PowerShell modullal törölheti a gyors üzembe helyezési erőforráscsoportot.
 
 # <a name="cli"></a>[parancssori felület](#tab/CLI)
 

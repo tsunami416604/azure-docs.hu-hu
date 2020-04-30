@@ -1,111 +1,111 @@
 ---
-title: Hol és hogyan kell használni - Personalizer
-description: A Personalizer minden olyan helyzetben alkalmazható, ahol az alkalmazás kiválaszthatja a megfelelő elemet, műveletet vagy terméket a megjelenítéshez - annak érdekében, hogy jobb élményt nyújtson, jobb üzleti eredményeket érjen el, vagy javítsa a termelékenységet.
+title: Hol és hogyan kell használni a-személyre szabott
+description: A személyre szabás bármilyen helyzetben alkalmazható, ahol az alkalmazás kiválaszthatja a megfelelő elemet, műveletet vagy terméket a megjelenítéshez, hogy a élmény jobban elérhető legyen, jobb üzleti eredményeket érjen el, vagy javítsa a termelékenységet.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81617683"
 ---
-# <a name="where-and-how-to-use-personalizer"></a>Hol és hogyan kell használni a Personalizer-t?
+# <a name="where-and-how-to-use-personalizer"></a>Hol és hogyan kell használni a személyre szabott
 
-Használja a Personalizer-t minden olyan helyzetben, amikor az alkalmazásnak ki kell választania a megfelelő műveletet (tartalmat) a megjelenítéshez - az élmény javítása, jobb üzleti eredmények elérése vagy a termelékenység javítása érdekében.
+Bármilyen helyzetben használhatja a személyre szabott lehetőséget, amikor az alkalmazásnak ki kell választania a megfelelő műveletet (tartalmat) a megjelenítéshez, hogy jobb legyen a élmény, a jobb üzleti eredmények elérése vagy a hatékonyság növelése érdekében.
 
-Personalizer használ megerősítése tanulás kiválasztásához, hogy melyik művelet (tartalom) jelenik meg a felhasználó. A kijelölés a szolgáltatásnak küldött adatok mennyiségétől, minőségétől és elosztásától függően drasztikusan változhat.
+A személyre szabás megerősítő tanulás segítségével kiválaszthatja, hogy melyik művelet (tartalom) jelenjen meg a felhasználó számára. A kijelölés a szolgáltatásnak továbbított adatmennyiségtől, minőségtől és elosztástól függően jelentősen változhat.
 
-## <a name="example-use-cases-for-personalizer"></a>Példa használati esetek a Personalizer-hoz
+## <a name="example-use-cases-for-personalizer"></a>Példa a személyre szabott használati esetek használatára
 
-* **Szándék pontosítás & félreérthető:** segít a felhasználóknak jobb élményt, ha a szándék nem egyértelmű azáltal, hogy egy lehetőséget, amely személyre szabott.
-* **A menük alapértelmezett javaslatai** & lehetőségek: a bot első lépésként személyre szabott módon javasolja a legvalószínűbb elemet, ahelyett, hogy személytelen menüt vagy alternatívák listáját mutatná be.
-* **Bot tulajdonságok & hang:** a botok, amelyek változhatnak hang, bőbeszédűség, és az írás stílusa, úgy változó ezeket a tulajdonságokat.
-* **Értesítés & riasztási tartalom:** döntse el, hogy milyen szöveget használjon a riasztásokhoz, hogy a felhasználókat még jobban bevonja.
-* **Értesítés & riasztás időzítése:** személyre szabott tanulás, hogy mikor kell értesítéseket küldeni a felhasználóknak, hogy vegyenek részt őket.
+* A **szándék tisztázásának &e**: segítheti a felhasználókat abban, hogy jobb felhasználói élményt nyújtsanak, ha a személyre szabott lehetőséggel nem egyértelműek.
+* A menükre vonatkozó **alapértelmezett javaslatok** & lehetőségek: a robot azt sugallja, hogy a legvalószínűbb elem egy személyre szabott módon, első lépésként, nem pedig egy személytelen menüt vagy alternatívák listáját jeleníti meg.
+* **Bot-tulajdonságok & hang**: olyan robotok esetében, amelyek a tónustól, a részletességtől és a stílustól függően változhatnak, érdemes lehet ezeket a tulajdonságokat megváltoztatni.
+* **Értesítési & riasztás tartalma**: döntse el, hogy a riasztások milyen szöveggel legyenek felhasználva a felhasználók számára.
+* **Értesítési & riasztás időzítése**: személyre szabott tanulás arról, hogy mikor küldjön értesítéseket a felhasználóknak, hogy további műveleteket folytassanak.
 
 
-## <a name="expectations-required-to-use-personalizer"></a>A Personalizer használatához szükséges elvárások
+## <a name="expectations-required-to-use-personalizer"></a>A személyre szabáshoz szükséges elvárások
 
-A Personalizer-t olyan helyzetekben alkalmazhatja, amikor megfelel vagy megvalósíthatja az alábbi irányelveket.
+A személyre szabás olyan helyzetekben alkalmazható, amikor megfelel a következő irányelveknek, vagy megvalósíthatja azokat.
 
 |Irányelv|Magyarázat|
 |--|--|
-|Üzleti cél|Van egy üzleti vagy használhatósági cél az alkalmazás.|
-|Tartalom|Van egy hely az alkalmazásban, ahol a környezetfüggő döntést, hogy mit jelenít meg a felhasználók nak javítja ezt a célt.|
-|Tartalom mennyiség|Hívásonként kevesebb mint 50 műveletet kell rangsorolnia.|
-|Összesített adatok|A legjobb választás lehet és kell tanulni a kollektív felhasználói viselkedés és a teljes jutalom pontszámot.|
-|Etikus használat|A gépi tanulás személyre szabáshoz való használata a [választott felelősségteljes használati irányelveket](ethics-responsible-use.md) és választási lehetőségeket követi.
-|A legjobb egyopciós megoldás|A kontextuális döntés úgy fejezhető ki, mint a legjobb megoldás (akció) rangsorolása korlátozott választási lehetőségek közül.|
-|Pontozott eredmény|Milyen jól működött a rangsorolt választás az alkalmazáshoz, meghatározható a felhasználói viselkedés bizonyos aspektusainak mérésével, és _[a jutalompontszámban](concept-rewards.md)_ kifejezve.|
-|Releváns időzítés|A jutalom pontszám nem hoz túl sok zavaró vagy külső tényezők. A kísérlet időtartama elég alacsony ahhoz, hogy a jutalom pontszám kiszámítható, amíg még releváns.|
-|Megfelelő környezeti jellemzők|A rangsor környezetét legalább 5 [olyan funkció](concepts-features.md) listájaként fejezheti ki, amelyek ről úgy gondolja, hogy segítenek a helyes választásban, és amelyek nem tartalmaznak felhasználóspecifikus azonosítható információkat.|
-|Megfelelő cselekvési funkciók|Van információ az egyes tartalom választás, _akció_, mint egy lista legalább 5 [funkciók,](concepts-features.md) hogy úgy gondolja, segít Personalizer, hogy a helyes választás.|
-|Napi adatok|Van elég esemény, hogy felfüggeszti a tetején az optimális személyre szabás, ha a probléma sodródik az idő múlásával (mint például a preferenciák hírek vagy divat). A Personalizer alkalmazkodik a valós világ folyamatos változásához, de az eredmények nem lesznek optimálisak, ha nincs elég esemény és adat ahhoz, hogy új mintákat fedezzen fel és rendezzen. Olyan használati esetet kell választania, amely elég gyakran előfordul. Fontolja meg a napi legalább 500 alkalommal bekövetkező használati esetek keresését.|
-|Korábbi adatok|Az alkalmazás képes megőrizni az adatokat elég hosszú ahhoz, hogy legalább 100 000 interakcióinak előzményeit összegyűjtse. Ez lehetővé teszi a Personalizer számára, hogy elegendő adatot gyűjtsön az offline értékelések és a házirendek optimalizálásához.|
+|Üzleti cél|Az alkalmazáshoz üzleti vagy használhatósági cél tartozik.|
+|Tartalom|Van egy olyan helye az alkalmazásban, ahol a felhasználók számára megjelenítendő kontextusbeli döntés alapján fejlesztheti ezt a célt.|
+|Tartalom mennyisége|Egy hívásnál kevesebb mint 50 művelet van.|
+|Összesített adatértékek|A legjobb választás a kollektív felhasználói viselkedésből és az összes jutalom pontszámból is elsajátítható.|
+|Etikus használat|A gépi tanulás használata személyre szabáshoz az Ön által választott [felelős használati irányelvek](ethics-responsible-use.md) és döntések követik.
+|Legjobb egyetlen lehetőség|A kontextusra vonatkozó döntés a lehető legjobb lehetőség (művelet) rangsorolásával állítható be a választható lehetőségek közül.|
+|Felhorzsolt eredmény|Az alkalmazáshoz tartozó rangsorolt választék meghatározása a felhasználói viselkedés bizonyos aspektusának mérésével, valamint a _[jutalom pontszámának](concept-rewards.md)_ kifejezésével határozható meg.|
+|Megfelelő időzítés|A jutalom pontszáma nem túl sok összetételt vagy külső tényezőt eredményez. A kísérlet időtartama elég alacsony ahhoz, hogy a jutalom pontszám kiszámítható legyen, miközben továbbra is releváns.|
+|Megfelelő környezeti funkciók|Megadhatja a rangsor kontextusát legalább 5 olyan [szolgáltatás](concepts-features.md) listájának megfelelően, amelyet úgy gondol, hogy kihasználja a megfelelő választást, és nem tartalmaz felhasználóspecifikus azonosításra alkalmas adatokat.|
+|Megfelelő műveleti funkciók|Minden egyes tartalomra vonatkozó döntésről, _műveletről_, legalább 5 olyan [szolgáltatásról](concepts-features.md) van szó, amelyről úgy gondolja, hogy a megfelelő választást fogja segíteni személyre szabni.|
+|Napi adatértékek|Van elég esemény az optimális személyre szabáshoz, ha a probléma idővel sodródik (például hírek vagy Fashion beállítások). A személyre szabás alkalmazkodik a valós világ folytonos változásaihoz, de az eredmények nem lesznek optimálisak, ha nem áll rendelkezésre elegendő esemény és információ az új minták felderítéséhez és rendezéséhez. Olyan használati esetet kell választania, amely elég gyakran előfordul. Érdemes lehet olyan használati eseteket keresni, amelyek naponta legalább 500 alkalommal történnek.|
+|Korábbi adatértékek|Az alkalmazás képes megőrizni az adatmennyiséget, hogy az előzmények legalább 100 000 interakciót gyűjtsenek. Ez lehetővé teszi a személy számára, hogy elegendő adatot gyűjtsön az offline értékelések és a házirendek optimalizálásának végrehajtásához.|
 
-**Ne használja a Personalizer-t,** ha a személyre szabott viselkedés nem olyan dolog, amely minden felhasználó számára felfedezhető. Ha például a Personalizer segítségével 20 lehetséges menüelem ből származó első pizzarendelést javasol, de az, hogy a felhasználó névjegyzékéből melyik kapcsolattartót hívhatja meg, amikor segítségre van szüksége a gyermekgondozással kapcsolatban (például "Nagymama"), nem olyan dolog, amely személyre szabható a felhasználói bázison.
+**Ne használja a személyre** szabott viselkedést, amely az összes felhasználó számára nem deríthető fel. Ha például a személyre szabott lehetőséget használja arra, hogy egy 20 lehetséges menüelemből álló lista első pizza-sorrendjét javasolja, akkor a felhasználók kapcsolattartási listájáról hívható hívás, ha segítségre van szükség a gyermekgondozásban (például "nagymama"), nem olyan dolog, amely a felhasználói bázison belül személyre szabható.
 
-## <a name="how-to-use-personalizer-in-a-web-application"></a>A Personalizer használata webes alkalmazásokban
+## <a name="how-to-use-personalizer-in-a-web-application"></a>Személyre szabott webes alkalmazás használata
 
-Tanulási ciklus hozzáadása egy webalkalmazáshoz a következőket foglalja magában:
+Tanulási hurok hozzáadása egy webalkalmazáshoz:
 
-* Határozza meg, hogy mely élményt szeretné személyre szabni, milyen műveletekkel és funkciókkal rendelkezik, milyen környezetfunkciókat használ, és milyen jutalmat fog beállítani.
-* Adjon hozzá hivatkozást a személyre szabási SDK-hoz az alkalmazásban.
-* Hívja meg a Rank API-t, ha készen áll a személyre szabásra.
-* Tárolja az eventId azonosítót. Később jutalmat küld a Jutalom API-val.
-1. Hívás aktiválása az eseményhez, ha biztos benne, hogy a felhasználó látta a személyre szabott oldalt.
-1. Várja meg a rangsorolt tartalom felhasználó általi kiválasztását.
-1. A Jutalom API hívása annak meghatározásához, hogy a Rank API kimenete mennyire jól teljesített.
+* Határozza meg, hogy melyik felhasználói élményre legyen személyre szabva, milyen műveletekre és funkciókra van szükség, milyen környezeti funkciókat kell használni, és milyen jutalmat kell beállítania.
+* Adjon hozzá egy hivatkozást a személyre szabási SDK-hoz az alkalmazásban.
+* Ha készen áll a személyre szabásra, hívja meg a Rank API-t.
+* Tárolja a Napszállta. Később jutalmat küld a jutalmazási API-nak.
+1. Ha biztos benne, hogy a felhasználó megtekintette a személyre szabott lapot, hívja meg az aktiválást az eseményre.
+1. Várja meg a rangsorolt tartalom felhasználó általi kijelölését.
+1. A jutalmazási API meghívásával megtudhatja, hogy a rangsor API kimenete milyen jól működött.
 
-## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Hogyan használjuk a Personalizer-t egy csevegőrobottal?
+## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Személyre szabott csevegési robot használata
 
-Ebben a példában látni fogja, hogyan használhatja a Személyre szabás, hogy egy alapértelmezett javaslatot ahelyett, hogy elküldi a felhasználónak egy sor menük vagy választási lehetőségek minden alkalommal.
+Ebből a példából megtudhatja, hogyan használhatja a személyre szabást úgy, hogy egy alapértelmezett javaslatot tegyen elérhetővé, ahelyett, hogy minden alkalommal le kellene küldenie a felhasználót egy sor menükből vagy választási lehetőségből.
 
-* Szerezd meg a minta [kódját.](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample)
-* Állítsa be a robot megoldást. Győződjön meg arról, hogy közzéteszi a LUIS-alkalmazást.
-* Kezelése Rank and Reward API hívások bot.
-    * Adjon hozzá kódot a LUIS leképezésfeldolgozásának kezeléséhez. Ha a **Nincs** adja vissza a legfelső szándék, vagy a felső szándék pontszáma alatt az üzleti logikai küszöbértéket, küldje el a szándékok listáját a personalizer a szándékok rangsorolása.
-    * A leképezési lista megjelenítése a felhasználó számára választható hivatkozásként, az első szándék pedig a Rank API-válasz legmagasabb rangú leképezése.
-    * Rögzítse a felhasználó választását, és küldje el ezt a Jutalom API-hívásban.
+* A minta [kódjának](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample) beolvasása.
+* Állítsa be a robot-megoldást. Győződjön meg arról, hogy a LUIS-alkalmazást közzéteszi.
+* Rangsor és jutalmazási API-hívások kezelése a robothoz.
+    * Kód hozzáadása a LUIS szándék-feldolgozás kezeléséhez. Ha a **none** értéket a rendszer a legfelső szintű szándék vagy a legnépszerűbb cél pontszáma alatt éri el, az üzleti logika küszöbértéke alatt küldje el a szándékok listáját a személyre a szándékok rangsorolásához.
+    * Megadhatja a leképezések listáját a felhasználók számára választható hivatkozásként, amely az első szándék, hogy a rangsor API-válaszból származó legfelső rangú szándék.
+    * Rögzítse a felhasználó kijelölését, és küldje el ezt a jutalmazási API-hívásban.
 
-### <a name="recommended-bot-patterns"></a>Ajánlott bot minták
+### <a name="recommended-bot-patterns"></a>Ajánlott bot-minták
 
-* Legyen Personalizer Rank API-hívások minden alkalommal, amikor egy félreérthetőség re van szükség, szemben a gyorsítótárazás i ad minden felhasználó számára. A leszögezés eredménye idővel változhat egy személy számára, és a Rank API eltéréseinek feltárása felgyorsítja az általános tanulást.
-* Olyan interakciót válasszon, amely sok felhasználónál gyakori, így elegendő adat áll a személyre szabáshoz. Például a bevezető kérdések jobban illeszkedhetnek, mint a beszélgetési grafikon mélyén lévő kisebb pontosítások, amelyekhez csak néhány felhasználó juthat el.
-* A Rank API-hívások használatával engedélyezheti az "első javaslat helyes" beszélgetéseket, ahol a rendszer megkérdezi a felhasználót, hogy "Szeretne X-et?" vagy "X-re gondoltál?" és a felhasználó csak megerősíti; ahelyett, hogy lehetőséget ad a felhasználónak, ahol választaniuk kell a menüből. Például, Felhasználó: "Szeretnék rendelni egy kávét" Bot: "Szeretne egy dupla eszpresszót?". Ily módon a jutalom jel is erős, mivel közvetlenül az egyetlen javaslatot.
+* Személyre szabhatja az API-hívásokat minden alkalommal, amikor szükség van rá, az egyes felhasználók gyorsítótárazási eredményeivel szemben. A eszköznév szándéka idővel változhat egy személy számára, és lehetővé teszi, hogy a rangsor API felgyorsítsa az általános tanulást.
+* Válassza ki a sok felhasználóval közös interakciót, hogy elegendő adattal rendelkezzen a személyre szabáshoz. Előfordulhat például, hogy a bevezető kérdések jobban illeszkednek a beszélgetési gráfban található kisebb pontosításokhoz, amelyek csak néhány felhasználó számára lehetségesek.
+* A Rank API-hívások használatával engedélyezheti az "első javaslat megfelelő" beszélgetéseket, ahol a felhasználó a következőt kérdezi le: "szeretne X?" vagy "érted X?" és a felhasználó csak megerősítheti; nem kell megadnia a beállításokat arra a felhasználóra vonatkozóan, ahol a menüt ki kell választani. Például: "szeretném megrendelni egy kávét?" bot: "szeretne egy dupla Espresso?". Így a jutalmazási jel is erős, mivel közvetlenül az egyik javaslatra vonatkozik.
 
-## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>A Personalizer használata ajánlási megoldással
+## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>A személyre szabott megoldás használata javaslattal
 
-Számos vállalat használ ajánlási motorokat, marketing- és kampányeszközöket, közönségszegmentálást és fürtözést, együttműködésen alapuló szűrést és más eszközöket a nagy katalógusból származó termékek ügyfeleknek történő ajánlására.
+Számos vállalat ajánlási motorokat, marketing-és kampánycélok-eszközöket, a célközönség szegmentálását és fürtözését, az együttműködési szűrést és más eszközöket ajánl fel a nagy katalógusból az ügyfeleknek szánt termékek használatát.
 
-A [Microsoft Recommenders GitHub-tárház](https://github.com/Microsoft/Recommenders) példákat és gyakorlati tanácsokat nyújt a Jupyter-jegyzetfüzetekként biztosított ajánlási rendszerek létrehozásához. Munkapéldákat tartalmaz az adatok előkészítéséhez, a modellek készítéséhez, az ajánlási motorok értékeléséhez, hangolásához és üzembe szerűvé kialakításához számos közös megközelítéshez, beleértve az xDeepFM, SAR, ALS, RBM, DKN.
+A [Microsoft Ajánlói GitHub-tárháza](https://github.com/Microsoft/Recommenders) példákat és ajánlott eljárásokat biztosít a Jupyter-jegyzetfüzetként biztosított, ajánlásokat tartalmazó rendszerek létrehozásához. Az útmutató az adatelőkészítéshez, modellek létrehozásához, kiértékeléséhez, finomhangolásához és végrehajtott, számos gyakori megközelítéshez, többek között a xDeepFM, a SAR-hoz, az ALS-hez, a DKN-hez,
 
-A personalizer akkor tud dolgozni egy ajánlási motorral, ha jelen van.
+A személyre szabott ajánlási motorral működhet, ha jelen van.
 
-* Az ajánlási motorok nagy mennyiségű elemet (például 500 000-et) vesznek fel, és több száz vagy ezer beállításból ajánlanak egy részhalmazt (például a top 20-at).
-* A Personalizer kis számú műveletet vesz igénybe, sok információt tartalmaz róluk, és valós időben rangsorolja őket egy adott gazdag környezetben, míg a legtöbb ajánlási motor csak néhány attribútumot használ a felhasználókról, a termékekről és azok interakcióiról.
-* A Personalizer célja, hogy mindig önállóan tárja fel a felhasználói preferenciákat, ami jobb eredményeket eredményez ott, ahol a tartalom gyorsan változik, például hírek, élő események, élő közösségi tartalmak, napi frissítésekkel ellátott tartalmak vagy szezonális tartalmak.
+* Az ajánlási motorok nagy mennyiségű elemet (például 500 000) tesznek elérhetővé, és egy részhalmazt (például az első 20) a több száz vagy több ezer lehetőség közül.
+* A személyre szabott számos művelet sok információt tartalmaz róluk, és valós időben rangsorolja őket egy adott gazdag kontextusban, míg a legtöbb ajánlási motor csak néhány attribútumot használ a felhasználókról, a termékekről és az interakcióról.
+* A személyre szabott megoldás lehetővé teszi, hogy minden alkalommal önállóan tárja fel a felhasználói beállításokat, ami jobb eredményeket eredményez, ahol a tartalom gyorsan változik, például hírek, élő események, élő közösségi tartalom, napi frissítéssel ellátott tartalom vagy szezonális tartalom.
 
-Gyakori használata, hogy a kimenet egy javaslat motor (például a top 20 termék egy bizonyos ügyfél), és használja, hogy a bemeneti műveletek Personalizer.
+A közös használat egy ajánlási motor kimenetének elkészítése (például egy adott ügyfél 20 legfontosabb terméke), és ezt használja a személyre szabott beviteli műveletként.
 
-## <a name="adding-content-safeguards-to-your-application"></a>Tartalomvédelmi intézkedések hozzáadása az alkalmazáshoz
+## <a name="adding-content-safeguards-to-your-application"></a>Tartalmi óvintézkedések hozzáadása az alkalmazáshoz
 
-Ha az alkalmazás lehetővé teszi a felhasználók számára megjelenített tartalom nagy eltéréseit, és a tartalom egy része nem biztonságos vagy nem megfelelő egyes felhasználók számára, előre kell terveznie, hogy megbizonyosodjon arról, hogy a megfelelő biztosítékok vannak érvényben annak megakadályozására, hogy a felhasználók elfogadhatatlan tartalmat lássanak. A biztosítékok végrehajtásának legjobb mintája a következő:
-    * Szerezze be a rangsorolandó műveletek listáját.
+Ha az alkalmazás lehetővé teszi a nagy eltérések használatát a felhasználók számára megjelenített tartalomban, és előfordulhat, hogy bizonyos tartalmak nem biztonságosak vagy nem megfelelőek egyes felhasználók számára, előre meg kell terveznie, hogy a megfelelő védelmet biztosítson, hogy a felhasználók ne láthassák elfogadhatatlan tartalmat. A védelem megvalósításának legjobb mintája a következő:
+    * A rangsorolni kívánt műveletek listájának beszerzése.
     * Szűrje ki azokat, amelyek nem életképesek a közönség számára.
-    * Csak rangsorolja ezeket az életképes cselekedeteket.
-    * A legmagasabb rangsorolt művelet megjelenítése a felhasználó számára.
+    * Csak a következő életképes műveletek rangsorolása.
+    * Jelenítse meg a legjobban rangsorolt műveletet a felhasználó számára.
 
-Egyes architektúrákban a fenti sorrendet nehéz lehet megvalósítani. Ebben az esetben van egy alternatív megközelítés a biztosítékok nak a rangsorolás utáni végrehajtására, de rendelkezni kell egy olyan intézkedésről, amely kívül esik a biztosítékon, ne használja fel a Personalizer modell betanítására.
+Egyes architektúrákban a fenti sorozatot nehéz lehet megvalósítani. Ebben az esetben létezik egy alternatív módszer a védelmi feladatok rangsorolás utáni megvalósítására, de ki kell alakítani egy kiépítést, hogy a védelemen kívül eső műveletek ne legyenek felhasználva a személyre szabott modell betanításához.
 
-* Szerezd meg a rangsorolandó műveletek listáját, inaktivált tanulással.
-* Rangsorolási műveletek.
-* Ellenőrizze, hogy a legfelső művelet életképes-e.
-    * Ha a legfelső művelet életképes, aktiválja a tanulást ehhez a ranghoz, majd mutassa meg a felhasználónak.
-    * Ha a felső művelet nem életképes, ne aktiválja a tanulást ehhez a rangsorhoz, és saját logikája vagy alternatív megközelítései alapján döntse el, hogy mit jelenítsen meg a felhasználónak. Még akkor is, ha a második legjobb rangsorolt opciót használja, ne aktiválja a tanulást ehhez a rangsorhoz.
+* Szerezze be a rangsorban szereplő műveletek listáját, a tanulás inaktiválva.
+* Rangsoroló műveletek.
+* Ellenőrizze, hogy a legfelső szintű művelet életképes-e.
+    * Ha a legfelső szintű művelet életképes, aktiválja a tanulást ebben a rangsorban, majd jelenítse meg a felhasználót.
+    * Ha a legfelső szintű művelet nem életképes, ne aktiválja a betanítást ehhez a rangsoroláshoz, és döntse el saját logikáját vagy alternatív megközelítéseit a felhasználónak való megjelenítéshez. Még ha a második legjobb rangsorolási lehetőséget is használja, ne aktiválja a tanulást ehhez a rangsoroláshoz.
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az etikai & felelős használat](ethics-responsible-use.md).
+[Etikai & felelős használat](ethics-responsible-use.md).

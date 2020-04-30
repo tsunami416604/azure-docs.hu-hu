@@ -1,45 +1,45 @@
 ---
 title: Modellek
-description: A modell leírása az Azure távoli renderelésében
+description: Leírja, hogy mi a modell az Azure Remote rendering szolgáltatásban
 author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617947"
 ---
 # <a name="models"></a>Modellek
 
-Az Azure távoli renderelésének *modellje* [entitásokból](entities.md) és [összetevőkből](components.md)álló teljes objektumábrázolásra utal. A modellek a fő módja annak, hogy egyéni adatokat kapjon a távoli renderelési szolgáltatásba.
+Az Azure Remote rendering *modellje* egy teljes objektum-ábrázolásra utal, amely [entitásokból](entities.md) és [összetevőkből](components.md)áll. A modellek a legfontosabb módszer a távoli renderelési szolgáltatásba való egyéni adatgyűjtésre.
 
 ## <a name="model-structure"></a>Modellstruktúra
 
-A modell root csomópontja ként pontosan egy [entitást](entities.md) rendelkezik. Az alábbiakban lehet, hogy egy tetszőleges hierarchia gyermek entitások. Modell betöltésekor a rendszer erre a gyökérentitásra mutató hivatkozást ad vissza.
+A modell pontosan egy [entitást](entities.md) tartalmaz, mint a legfelső szintű csomópont. Alább látható, hogy az alárendelt entitások tetszőleges hierarchiája lehet. Modell betöltésekor a rendszer erre a gyökérszintű entitásra mutató hivatkozást ad vissza.
 
-Minden entitáshoz [lehetnek összetevők](components.md) csatolva. A leggyakoribb esetben az entitások *MeshComponents elemekkel*rendelkeznek, amelyek [hálóerőforrásokra](meshes.md)hivatkoznak.
+Előfordulhat, hogy minden entitáshoz vannak csatolva [összetevők](components.md) . A leggyakoribb esetben az entitások rendelkeznek *MeshComponents*, amelyek a [háló erőforrásokra](meshes.md)hivatkoznak.
 
 ## <a name="creating-models"></a>Modellek létrehozása
 
-A futásidejű modellek létrehozása a bemeneti modellek fájlformátumokból, például FBX-ből és GLTF-ből [történő konvertálásával](../how-tos/conversion/model-conversion.md) érhető el. Az átalakítási folyamat kibontja az összes erőforrást, például a textúrákat, az anyagokat és a közvetlen körülményeket, és azokat optimalizált futásidejű formátumokká alakítja. Kivonja továbbá a szerkezeti információkat, és átalakítja azokat az ARR entitás/komponens grafikonszerkezeté.
+A futtatókörnyezet modelljeinek létrehozása a bemeneti modellek fájlformátumokból (például FBX és GLTF) való [átalakításával](../how-tos/conversion/model-conversion.md) érhető el. Az átalakítási folyamat kibontja az összes erőforrást, például a textúrákat, az anyagokat és a hálókat, majd konvertálja azokat optimalizált futtatókörnyezeti formátumokra. Emellett a strukturális adatokat is kinyeri és átalakítja az ARR entitás/összetevő gráf-struktúrájába.
 
 > [!IMPORTANT]
 >
-> [A modellkonvertálás](../how-tos/conversion/model-conversion.md) az egyetlen módja [a szemek létrehozásának.](meshes.md) Bár a hálók megoszthatók az entitások között futásidőben, nincs más módja annak, hogy egy hálót a futásidejű, más, mint a modell betöltése.
+> A [modell konvertálása](../how-tos/conversion/model-conversion.md) az egyetlen módszer a [Rácsvonalak](meshes.md)létrehozására. Bár a rácsvonalak megoszthatók az entitások között futásidőben, nincs más mód arra, hogy a modell betöltésén kívül más módon is beolvasson egy rácsvonalat a futtatókörnyezetbe.
 
-## <a name="loading-models"></a>Betöltési modellek
+## <a name="loading-models"></a>Modellek betöltése
 
-A modell konvertálása után az Azure blob storage-ból a futásidejű.
+A modell konvertálása után az Azure Blob Storage-ból tölthető be a futtatókörnyezetbe.
 
-Két különböző betöltési függvény van, amelyek eltérnek attól, ahogyan az eszközt a blob storage-ban kezelik:
+Két különböző betöltési függvény van, amelyek eltérnek az eszköz blob Storage-ban való címzésének módjától:
 
-* A modell a SAS URI-val címezhető. A megfelelő `LoadModelFromSASAsync` terhelési `LoadModelFromSASParams`funkció a paraméterrel van eladva. Használja ezt a változatot a [beépített modellek](../samples/sample-model.md)betöltésekor is.
-* A modell közvetlenül a blob storage-paramétereivel kezelhető, ha a [blobstorage a fiókhoz van csatolva.](../how-tos/create-an-account.md#link-storage-accounts) A vonatkozó terhelési `LoadModelAsync` funkció `LoadModelParams`ebben az esetben a paraméterrel van eladva.
+* A modellt a SAS URI-ja tudja kezelni. A megfelelő betöltési `LoadModelFromSASAsync` függvény `LoadModelFromSASParams`paraméterrel van ellátva. A [beépített modellek](../samples/sample-model.md)betöltésekor ezt a változatot is használhatja.
+* A modellt közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben `LoadModelAsync` a megfelelő betöltési függvény `LoadModelParams`a paraméter.
 
-A következő kódrészletek bemutatják, hogyan tölthető be a modellek bármelyik funkcióval. Ha egy modellt a SAS URI-val szeretne betölteni, használja az alábbihoz hasonló kódot:
+A következő kódrészletek bemutatják, hogyan tölthetők be modellek bármelyik függvénnyel. Egy modell SAS URI-val való betöltéséhez használja az alábbihoz hasonló kódot:
 
 ```csharp
 async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
@@ -58,7 +58,7 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
-Ha egy modellt közvetlenül a blobstorage-paraméterek használatával szeretne betölteni, használja a következő kódrészlethez hasonló kódot:
+Ha közvetlenül a blob Storage-paraméterek használatával szeretne betölteni egy modellt, az alábbi kódrészlethez hasonló kódot használjon:
 
 ```csharp
 async void LoadModel(AzureSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
@@ -77,10 +77,10 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 }
 ```
 
-Ezt követően áthaladhat az entitáshierarchián, és módosíthatja az entitásokat és az összetevőket. Ugyanaza modell többszöri betöltése több példányt hoz létre, mindegyiknek saját példánya van az entitás/összetevő szerkezetéről. Mivel a közvetlen csak objektumok, anyagok és textúrák [megosztott erőforrások,](../concepts/lifetime.md)adataik azonban nem töltődnek be újra. Ezért egy modell többszöri példányosítása viszonylag kevés memóriaterhelést okoz.
+Ezután áthaladhat az entitás-hierarchián, és módosíthatja az entitásokat és összetevőket. Ha ugyanaz a modell többször is be van töltve, több példányt hoz létre, amelyek mindegyike az entitás/összetevő struktúrájának saját példányával rendelkezik. Mivel a rácsvonalak, az anyagok és a textúrák [közös erőforrások](../concepts/lifetime.md), az adataik azonban nem lesznek újra betöltve. Ezért a modell többszöri létrehozása nem éri el a viszonylag kevés memória terhelését.
 
 > [!CAUTION]
-> Az ARR összes *Async* függvénye aszinkron műveleti objektumokat ad vissza. A művelet befejezéséig meg kell tárolnia az objektumokra mutató hivatkozást. Ellenkező esetben a C# szemétgyűjtő törölheti a műveletet korán, és soha nem fejeződhet be. A *várt* használata feletti mintakódban garantálja, hogy a "loadOp" helyi változó hivatkozást tartalmaz a modell betöltésének befejezéséig. Ha azonban a *Befejezett* eseményt használja, akkor az aszinkron műveletet egy tagváltozóban kell tárolnia.
+> Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A *várakozási* feltétele alatt a mintakód garantálja, hogy a (z) "loadOp" helyi változó hivatkozást tartalmaz, amíg a modell betöltése be nem fejeződik. Ha azonban a *befejezett* eseményt szeretné használni, az aszinkron műveletet egy tag változóban kell tárolnia.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault-tanúsítványok – Azure Key Vault
-description: Az Azure Key Vault REST-felületének és tanúsítványainak áttekintése.
+title: Tudnivalók Azure Key Vault tanúsítványokról – Azure Key Vault
+description: A REST-felület és a tanúsítványok Azure Key Vault áttekintése.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,175 +11,175 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685895"
 ---
-# <a name="about-azure-key-vault-certificates"></a>Az Azure Key Vault-tanúsítványok –
+# <a name="about-azure-key-vault-certificates"></a>Tudnivalók Azure Key Vault tanúsítványokról
 
-A Key Vault-tanúsítványok támogatása biztosítja az x509-es tanúsítványok kezelését és a következő viselkedéseket:  
+Key Vault tanúsítványok támogatása biztosítja a x509-tanúsítványok kezelését, valamint a következő viselkedéseket:  
 
--   Lehetővé teszi, hogy a tanúsítvány tulajdonosa hozzon létre egy tanúsítványt egy Key Vault létrehozási folyamat vagy egy meglévő tanúsítvány importálása révén. Tartalmazza mind az önaláírt, mind a hitelesítésszolgáltató által létrehozott tanúsítványokat.
--   Lehetővé teszi, hogy a Key Vault-tanúsítvány tulajdonosa biztonságos anamtikát valósítson meg és az X509-tanúsítványokat a személyes kulcsanyagokkal való interakció nélkül valósítsa meg.  
--   Lehetővé teszi, hogy a tanúsítvány tulajdonosa hozzon létre egy szabályzatot, amely arra utasítja a Key Vault a tanúsítvány életciklusának kezelésére.  
--   Lehetővé teszi a tanúsítványtulajdonosok számára, hogy kapcsolattartási adatokat adjanak meg a tanúsítvány lejáratának és megújításának életciklus-eseményeiről szóló értesítéshez.  
--   Támogatja az automatikus megújítást a kiválasztott kibocsátókkal - Key Vault partner X509 tanúsítványszolgáltatók / hitelesítésszolgáltatók.
+-   Lehetővé teszi, hogy a tanúsítvány tulajdonosa egy Key Vault létrehozási folyamaton vagy egy meglévő tanúsítvány importálásán keresztül hozzon létre tanúsítványt. Magában foglalja az önaláírt és a hitelesítésszolgáltató által generált tanúsítványokat is.
+-   Lehetővé teszi, hogy a Key Vault tanúsítvány tulajdonosa a X509-tanúsítványok biztonságos tárolását és kezelését a titkos kulcsokkal való interakció nélkül implementálja.  
+-   Lehetővé teszi, hogy a tanúsítvány tulajdonosa olyan házirendet hozzon létre, amely a tanúsítvány életciklusának kezeléséhez Key Vault irányítja.  
+-   Lehetővé teszi a tanúsítvány tulajdonosai számára, hogy kapcsolattartási adatokat szolgáltassanak a lejárat és a tanúsítvány megújításának életciklusával kapcsolatos eseményekről.  
+-   Támogatja az automatikus megújítást a kiválasztott kiállítókkal – Key Vault partneri X509-szolgáltatók/hitelesítésszolgáltatók.
 
 >[!Note]
->A nem partnerszolgáltatók/hatóságok is engedélyezettek, de nem támogatják az automatikus megújítási funkciót.
+>A nem partnerrel rendelkező szolgáltatók/hatóságok is engedélyezettek, de nem támogatják az automatikus megújítási funkciót.
 
-## <a name="composition-of-a-certificate"></a>A bizonyítvány összetétele
+## <a name="composition-of-a-certificate"></a>Tanúsítvány összetétele
 
-Key Vault-tanúsítvány létrehozásakor egy címezhető kulcs és titkos kulcs is létrejön az azonos nevű. A Key Vault kulcs lehetővé teszi a kulcsműveleteket, és a Key Vault titkos kulcs lehetővé teszi a tanúsítvány értékének titkos lekérését. A Key Vault-tanúsítvány nyilvános x509-es tanúsítvány metaadatait is tartalmazza.  
+Key Vault-tanúsítvány létrehozásakor a rendszer megcímezhető kulcsot és titkos kulcsot is létrehoz ugyanazzal a névvel. A Key Vault kulcs lehetővé teszi a kulcsfontosságú műveleteket, és a Key Vault titkos kulcs lehetővé teszi a tanúsítvány értékének beolvasását titkos fájlként. A Key Vault tanúsítvány A nyilvános x509 tanúsítvány-metaadatokat is tartalmaz.  
 
-A tanúsítványok azonosítója és verziója hasonló a kulcsok és titkos kulcsok azonosítójához. A Key Vault tanúsítványverziójával létrehozott címezhető kulcs és titkos kulcs egy adott verziója érhető el a Key Vault tanúsítványválaszában.
+A tanúsítványok azonosítója és verziója hasonló a kulcsok és a titkos kódokhoz. Az Key Vault-tanúsítvány verziószámával létrehozott címezhető kulcs és titok adott verziója elérhető a Key Vault-tanúsítvány válaszában.
  
 ![A tanúsítványok összetett objektumok](../media/azure-key-vault.png)
 
 ## <a name="exportable-or-non-exportable-key"></a>Exportálható vagy nem exportálható kulcs
 
-Key Vault-tanúsítvány létrehozásakor a címezhető titkos kulcsból lehívható, pfx- vagy PEM formátumú titkos kulcsesetén. A tanúsítvány létrehozásához használt házirendnek jeleznie kell, hogy a kulcs exportálható. Ha a házirend azt jelzi, hogy nem exportálható, akkor a titkos kulcs nem része az értéknek, ha titkos kulcsként olvassa be.  
+Key Vault-tanúsítvány létrehozásakor a megcímezhető titkos kulcsból a PFX vagy PEM formátumban kérhető le. A tanúsítvány létrehozásához használt házirendnek jeleznie kell, hogy a kulcs exportálható. Ha a házirend nem exportálható állapotot jelez, akkor a titkos kulcs nem része az értéknek, amikor a rendszer titokként kéri le.  
 
-A címezhető kulcs relevánsabbá válik a nem exportálható KV-tanúsítványok nál. A címezhető KV-kulcs műveletei a KV-tanúsítvány létrehozásához használt KV tanúsítványházirend *kulcshasználati* mezőjéből vannak leképezve.  
+A címezhető kulcs nagyobb jelentőséggel bír a nem exportálható KV-tanúsítványok esetén. A megcímezhető KV-kulcs műveletei a KV tanúsítvány létrehozásához használt KV-os tanúsítvány-házirend *kulcshasználat* mezőjéből vannak leképezve.  
 
-Kétféle kulcs támogatott : *RSA* vagy *RSA HSM* tanúsítványokkal. Az RSA csak rsa-val használható, az RSA HSM nem támogatja.  
+Két típusú kulcs támogatott: *RSA* vagy *RSA HSM* tanúsítványokkal. Az exportálhatóként csak az RSA-mel engedélyezett, az RSA HSM nem támogatja.  
 
-## <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkék
+## <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkéi
 
-A tanúsítvány metaadatai, egy címezhető kulcs és címezhető titkos kulcs mellett a Key Vault-tanúsítvány attribútumokat és címkéket is tartalmaz.  
+A tanúsítvány metaadatainak, a megcímezhető kulcs és a címezhető titok mellett egy Key Vault tanúsítvány is tartalmaz attribútumokat és címkéket.  
 
 ### <a name="attributes"></a>Attribútumok
 
-A tanúsítványattribútumok a címezhető kulcs és titkos kulcs attribútumainak a KV-tanúsítvány létrehozásakor létrehozott attribútumaira lesznek tükrözve.  
+A tanúsítvány attribútumai a megcímezhető kulcs és titkos kód attribútumaira vannak tükrözve, amikor létrejön a KV-os tanúsítvány.  
 
-A Key Vault-tanúsítvány attribútumai a következő attribútumokkal rendelkeznek:  
+A Key Vault tanúsítványa a következő tulajdonságokkal rendelkezik:  
 
--   *engedélyezve*: logikai, nem kötelező, az alapértelmezett **érték igaz**. Megadható annak jelzésére, hogy a tanúsítvány adatok titkosként vagy kulcsként működtethetők-e. Az *nbf* és *exp* együttesen is használható, ha az *nbf* és *exp*közötti művelet történik, és csak akkor engedélyezett, ha az engedélyezve van true értékre. Az *nbf* és *exp* ablakon kívüli műveletek automatikusan nem engedélyezettek.  
+-   *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp*közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
 
 A válaszban további írásvédett attribútumok is szerepelnek:
 
--   *létrehozva*: IntDate: azt jelzi, hogy a tanúsítvány ezen verziója mikor jött létre.  
--   *frissítve*: IntDate: azt jelzi, hogy a tanúsítvány ezen verziója mikor lett frissítve.  
--   *exp*: IntDate: az x509 tanúsítvány lejárati dátumának értékét tartalmazza.  
--   *nbf*: IntDate: az x509 tanúsítvány dátumának értékét tartalmazza.  
+-   *Létrehozva*: IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
+-   *frissítve*: IntDate: azt jelzi, hogy a tanúsítvány ezen verziója frissítve lett-e.  
+-   *exp*: IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
+-   *NBF*: IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
 
 > [!Note] 
-> Ha egy Key Vault-tanúsítvány lejár, a címezhető kulcs és titkos titkos működésképtelenné válik.  
+> Ha egy Key Vault-tanúsítvány lejár, az megcímezhető kulcs, és a titkos kód inműködőképes lesz.  
 
 ### <a name="tags"></a>Címkék
 
- A kulcsértékpárok ügyféláltal megadott szótára, hasonlóan a kulcsokban és titkos kulcsokban lévő címkékhez.  
+ Az ügyfél a kulcsok és titkok címkéhez hasonlóan a kulcs érték párok szótárát adta meg.  
 
  > [!Note]
-> A címkéket a hívó akkor tudja olvasni, ha rendelkezik a *listával,* vagy engedélyt *kap* az adott objektumtípusra (kulcsokra, titkos kulcsokra vagy tanúsítványokra).
+> A címkék a hívó által olvashatók, ha rendelkeznek a *listával* , vagy *kapnak* engedélyt az adott objektumtípus (kulcsok, titkos kódok vagy tanúsítványok) számára.
 
-## <a name="certificate-policy"></a>Tanúsítványházirend
+## <a name="certificate-policy"></a>Tanúsítvány-házirend
 
-A tanúsítványházirend a Key Vault-tanúsítványok életciklusának létrehozásáról és kezeléséről tartalmaz információkat. Amikor egy titkos kulccsal rendelkező tanúsítványt importál a key vaultba, az x509-es tanúsítvány olvasásával egy alapértelmezett házirend jön létre.  
+A tanúsítvány-szabályzat a Key Vault-tanúsítványok életciklusának létrehozásával és kezelésével kapcsolatos információkat tartalmaz. Ha egy titkos kulccsal rendelkező tanúsítványt importál a kulcstartóba, a rendszer létrehoz egy alapértelmezett szabályzatot az x509-tanúsítvány beolvasásával.  
 
-Ha egy Key Vault-tanúsítvány teljesen új, házirendet kell megadni. A házirend meghatározza, hogyan lehet létrehozni ezt a Key Vault-tanúsítvány verzió, vagy a következő Key Vault-tanúsítvány verziója. A házirend létrehozása után nem szükséges a jövőbeli verziók egymást követő létrehozási műveleteihez. A Key Vault-tanúsítványok összes verziójához csak egy példány a házirend egy példánya van.  
+Ha egy Key Vault-tanúsítvány teljesen létre lett hozva, a szabályzatot meg kell adni. A házirend meghatározza, hogyan kell létrehozni ezt a Key Vault-tanúsítvány verzióját vagy a következő Key Vault-tanúsítvány verzióját. A szabályzat létrehozása után a későbbi verziókhoz nem szükséges egymást követő létrehozási művelet. Egy Key Vault-tanúsítvány összes verziójához csak egy példány van.  
 
-Magas szinten a tanúsítványházirend a következő információkat tartalmazza:  
+A tanúsítvány-házirend magas szinten a következő információkat tartalmazza:  
 
--   X509 tanúsítvány tulajdonságai: Az x509-es tanúsítványkérelem létrehozásához használt tulajdonosnevet, tulajdonosi alternatív neveket és egyéb tulajdonságokat tartalmaz.  
--   Kulcstulajdonságai: kulcstípust, kulcshosszt, exportálható és újrafelhasználható kulcsmezőket tartalmaz. Ezek a mezők utasítják a kulcstartót a kulcs létrehozásának módjára.  
--   Titkos tulajdonságok: titkos tulajdonságokat tartalmaz, például a címezhető titkos kulcsot tartalmazó tartalomtípust a titkos érték létrehozásához, a tanúsítvány titkos könyvtárként történő beolvasásához.  
--   Élettartam-műveletek: a KV-tanúsítvány élettartamra szóló műveleteket tartalmaz. Minden élettartamra szóló művelet a következőket tartalmazza:  
+-   X509 tanúsítvány tulajdonságai: a tulajdonos nevét, a tulajdonos alternatív neveit, valamint az X509-tanúsítványkérelem létrehozásához használt egyéb tulajdonságokat tartalmazza.  
+-   Kulcs tulajdonságai: a kulcs típusát, a kulcs hosszát, az exportálható és a kulcs újrafelhasználására szolgáló mezőket tartalmazza. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról.  
+-   Titkos kód tulajdonságai: olyan titkos tulajdonságokat tartalmaz, mint például a címezhető titok tartalomtípusa a titkos érték létrehozásához, a tanúsítvány titkosként való lekéréséhez.  
+-   Élettartam-műveletek: a KV-os tanúsítvány élettartamának műveleteit tartalmazza. Minden élettartam-művelet tartalmazza a következőket:  
 
-     - Trigger: a lejárat előtti napokon vagy élettartam-százalékos arányban adható meg  
+     - Trigger: a lejárat vagy az élettartam százalékában megadott napokon keresztül van megadva  
 
-     - Művelet: művelettípus megadása – *e-mailKapcsolatok* vagy *automatikus megújítás*  
+     - Művelet: Művelettípus megadása – *emailContacts* vagy *autorenew*  
 
--   Kiállító: Az x509-es tanúsítványok kiállításához használandó tanúsítványkibocsátó paraméterei.  
--   Házirend-attribútumok: a házirendhez társított attribútumokat tartalmaz  
+-   Kiállító: az x509-tanúsítványok kiállításához használt tanúsítvány kiállítójának paraméterei.  
+-   Házirend-attribútumok: a Szabályzathoz társított attribútumokat tartalmazza.  
 
-### <a name="x509-to-key-vault-usage-mapping"></a>X509 és a Key Vault használati leképezése
+### <a name="x509-to-key-vault-usage-mapping"></a>X509 Key Vault használati leképezéshez
 
-Az alábbi táblázat az x509-es kulcshasználati házirend leképezését mutatja be a Key Vault-tanúsítványok létrehozásának részeként létrehozott kulcs hatékony kulcsműveleteihez.
+A következő táblázat a x509-használati szabályzat hozzárendelését mutatja be egy Key Vault tanúsítvány létrehozása során létrehozott kulcs hatékony működéséhez.
 
-|**X509 kulcshasználat jelzők**|**Key Vault kulcsműveletek**|**Alapértelmezett viselkedés**|
+|**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment (Adattitkosítás)|titkosítás, visszafejtés| N/A |
-|Csak a megfejtés|Visszafejteni| N/A  |
-|DigitalSignature (Digitális aláírás)|jel, ellenőrzés| A Key Vault alapértelmezett használati specifikáció nélkül a tanúsítvány létrehozásakor | 
+|DataEncipherment|titkosítás, visszafejtés| N/A |
+|DecipherOnly|visszafejteni| N/A  |
+|DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
 |EncipherOnly|encrypt| N/A |
-|KeyCertSign (KulcscertSign)|jel, ellenőrzés|N/A|
-|KeyEncipherment (Kulcsfejtés)|wrapKey, kicsomagolásKulcs| A Key Vault alapértelmezett használati specifikáció nélkül a tanúsítvány létrehozásakor | 
-|Nem repudiation|jel, ellenőrzés| N/A |
-|crlsign (jel)|jel, ellenőrzés| N/A |
+|KeyCertSign|aláírás, ellenőrzés|N/A|
+|KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
+|crlsign|aláírás, ellenőrzés| N/A |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
-A Key Vault tanúsítványobjektum rendelkezik egy konfigurációval, amely a kijelölt tanúsítványkiállítóval az x509-es tanúsítványok rendeléséhez használt konfigurációt tartalmaz.  
+A Key Vault Certificate objektum olyan konfigurációt tartalmaz, amely a kiválasztott tanúsítvány-kiállító szolgáltatóval való kommunikációra szolgál a x509-tanúsítványok megrendeléséhez.  
 
--   A Key Vault a következő tanúsítványkiállító-szolgáltatókkal foglalkozik a TLS/SSL-tanúsítványokhoz
+-   Key Vault partnerek a következő tanúsítvány-kiállító szolgáltatókkal a TLS/SSL-tanúsítványokhoz
 
 |**Szolgáltató neve**|**Helyek**|
 |----------|--------|
-|DigiCert|A nyilvános felhőben és az Azure Government ben található összes kulcstartó-szolgáltatásban támogatott|
-|Globalsign|A nyilvános felhőben és az Azure Government ben található összes kulcstartó-szolgáltatásban támogatott|
+|DigiCert|A nyilvános felhőben és Azure Governmentban a Key Vault szolgáltatás összes helyén támogatott|
+|GlobalSign|A nyilvános felhőben és Azure Governmentban a Key Vault szolgáltatás összes helyén támogatott|
 
-Mielőtt egy tanúsítvány kiállítója létre jöhet ne a Key Vaultban, az 1.  
+Ahhoz, hogy a tanúsítvány kiállítója egy Key Vaulton legyen létrehozva, az 1. és a 2. előfeltételként szükséges lépések végrehajtása után sikeresen el kell végezni a műveletet.  
 
-1. Befelé a hitelesítésszolgáltató (CA) szolgáltatói  
+1. Beléptetés a HITELESÍTÉSSZOLGÁLTATÓI szolgáltatókba  
 
-    -   A szervezet rendszergazdájának a vállalatot (pl. Contoso) legalább egy hitelesítésszolgáltatóval.  
+    -   A vállalati rendszergazdának be kell jelentkeznie a vállalatnál (pl. Contoso) legalább egy HITELESÍTÉSSZOLGÁLTATÓI szolgáltatóval.  
 
-2. A rendszergazda meghozza a kérelemelő hitelesítő adatait a Key Vault számára a TLS/SSL-tanúsítványok igényléséhez (és megújításához)  
+2. A rendszergazda létrehoz egy kérelmező hitelesítő adatokat a Key Vault számára a TLS/SSL-tanúsítványok regisztrálásához (és megújításához)  
 
-    -   A kulcstartóban lévő szolgáltató kibocsátóobjektumának létrehozásához használandó konfigurációt biztosítja  
+    -   A Key vaultban a szolgáltató kiállító objektumának létrehozásához használandó konfigurációt adja meg.  
 
-A Kiállítói objektumok tanúsítványok portálról történő létrehozásáról a [Key Vault-tanúsítványok blogjában](https://aka.ms/kvcertsblog) talál további információt.  
+A kiállítói objektumok tanúsítvány-portálról történő létrehozásával kapcsolatos további információkért tekintse meg a [Key Vault tanúsítványok blogját](https://aka.ms/kvcertsblog) .  
 
-A Key Vault lehetővé teszi több kibocsátó objektum létrehozását különböző kibocsátószolgáltató-konfigurációval. A kiállítóobjektum létrehozása után a neve egy vagy több tanúsítványházirendben hivatkozhat rá. A kiállító objektumra való hivatkozás arra utasítja a Key Vaultot, hogy a tanúsítvány létrehozása és megújítása során az x509-es tanúsítvány hitelesítésszolgáltatótól történő igénylésekor a kiállító objektumban megadott konfigurációt használjon.  
+Key Vault lehetővé teszi több kiállító objektum létrehozását különböző kiállítói szolgáltatói konfigurációval. A kiállítói objektum létrehozása után a neve hivatkozhat egy vagy több tanúsítvány-házirendre. A kiállító objektumra való hivatkozás arra utasítja a Key Vault, hogy a kiállító objektumban megadott konfigurációt használja, amikor a tanúsítvány létrehozásakor és megújításakor a x509-tanúsítványt kéri a CA-szolgáltatótól.  
 
-A kiállítói objektumok a tárolóban jönnek létre, és csak ugyanabban a tárolóban lévő KV-tanúsítványokkal használhatók.  
+A kiállító objektumok a tárolóban jönnek létre, és csak a KV tanúsítványokkal használhatók ugyanabban a tárolóban.  
 
-## <a name="certificate-contacts"></a>Tanúsítvány névjegyei
+## <a name="certificate-contacts"></a>Tanúsítványhoz tartozó névjegyek
 
-A tanúsítványkapcsolattartók kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartam-eseményei által kiváltott értesítések küldéséhez. A névjegyek adatait a key vault összes tanúsítványa megosztja. A rendszer értesítést küld az összes megadott kapcsolattartónak a key vaultbármely tanúsítványához.  
+A tanúsítványhoz tartozó névjegyek kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartama eseményei által aktivált értesítések küldéséhez. A kapcsolattartási adatokat a Key Vault összes tanúsítványa megosztja. A Key Vault bármelyik tanúsítványa esetében értesítést küld a rendszer az adott esemény összes megadott ügyfelének.  
 
-Ha egy tanúsítvány házirendje automatikus megújításra van állítva, akkor a rendszer értesítést küld a következő eseményekről.  
+Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akkor a rendszer értesítést küld a következő eseményekről.  
 
 - A tanúsítvány megújítása előtt
-- A tanúsítvány megújítása után, amely jelzi, hogy a tanúsítvány t sikerült-e megújítani, vagy hiba történt, a tanúsítvány manuális megújítását igényli.  
+- A tanúsítvány megújítása után, ha a tanúsítvány sikeres megújítása megtörtént, vagy ha hiba történt, a tanúsítvány manuális megújítását kell megkövetelni.  
 
-  Ha egy manuálisan megújított tanúsítványházirend (csak e-mailben) van beállítva, értesítést küld a rendszer, amikor a tanúsítvány megújítása szükséges.  
+  Ha egy manuálisan megújított tanúsítvány-házirend (csak e-mail-cím), akkor a rendszer értesítést küld, amikor a tanúsítvány megújítására kerül sor.  
 
-## <a name="certificate-access-control"></a>Tanúsítvány-hozzáférés-vezérlés
+## <a name="certificate-access-control"></a>Tanúsítvány Access Control
 
- A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az ezeket a tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az ugyanabban a Key Vaultban lévő kulcsok és titkos kulcsok hozzáférés-vezérlési házirendjeitől. A felhasználók létrehozhatnak egy vagy több tárolót a tanúsítványok tárolására, a forgatókönyv megfelelő szegmentálásához és kezeléséhez.  
+ A tanúsítványok hozzáférés-vezérlését Key Vault kezeli, és a tanúsítványokat tartalmazó Key Vault nyújtja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
 
- A következő engedélyek használhatók, egy egyszerű alapon, a titkos kulcs-hozzáférés-vezérlési bejegyzés egy key vault, és szorosan tükrözi a titkos objektum engedélyezett műveletek:  
+ A következő engedélyek a Key Vault Secrets hozzáférés-vezérlési bejegyzésében, és a titkos objektumon engedélyezett műveletek részletes tükrözése céljából használhatók:  
 
-- Tanúsítványkezelési műveletek engedélyei
-  - *bekés:* A tanúsítvány aktuális verziójának vagy a tanúsítvány bármely verziójának beszereznie 
-  - *lista*: Sorolja fel az aktuális tanúsítványokat vagy a tanúsítványok verzióit  
-  - *frissítés*: Tanúsítvány frissítése
-  - *létrehozás*: Key Vault-tanúsítvány létrehozása
-  - *importálás*: Tanúsítványanyag importálása Key Vault-tanúsítványba
-  - *törlés*: Tanúsítvány, annak házirendje és annak összes verziója törlése  
-  - *helyreállítás*: Törölt tanúsítvány helyreállítása
-  - *biztonsági mentés*: Tanúsítvány biztonsági mentése a kulcstartóban
-  - *visszaállítás*: Biztonsági másolatot álló tanúsítvány visszaállítása key vaultba
-  - *managecontacts*: A Kulcstár-tanúsítvány névjegyének kezelése  
-  - *managers*: Key Vault-hitelesítésszolgáltatók/-kibocsátók kezelése
-  - *getkiállítók*: Szerezzen be egy tanúsítvány hatóságát/kibocsátóját
-  - *listkiállítók*: A tanúsítvány hatóságainak/kibocsátóinak felsorolása  
-  - *setkiállítók*: Key Vault-tanúsítvány hatóságainak/kibocsátóinak létrehozása vagy frissítése  
-  - *deleters*: A Key Vault-tanúsítvány hatóságainak/kibocsátóinak törlése  
+- Tanúsítványkezelő műveletekhez szükséges engedélyek
+  - *beolvasás*: a tanúsítvány aktuális verziójának vagy bármely verziójának lekérése 
+  - *lista*: a tanúsítvány aktuális tanúsítványait vagy verzióit sorolja fel.  
+  - *frissítés*: tanúsítvány frissítése
+  - *Létrehozás*: Key Vault tanúsítvány létrehozása
+  - *Importálás*: tanúsítvány importálása Key Vault tanúsítványba
+  - *Törlés*: tanúsítvány törlése, házirendje és minden verziója  
+  - *helyreállítás*: törölt tanúsítvány helyreállítása
+  - *biztonsági mentés*: tanúsítvány biztonsági mentése egy kulcstartóban
+  - *visszaállítás*: biztonsági másolat készítése a tanúsítványról egy kulcstartóra
+  - *managecontacts*: Key Vault tanúsítványok kapcsolatainak kezelése  
+  - *manageissuers*: Key Vault hitelesítésszolgáltatók/kiállítók kezelése
+  - *getissuers*: tanúsítvány hitelesítő szerveinek/kiállítóinak beszerzése
+  - *listissuers*: a tanúsítvány hatóságainak/kiállítóinak listázása  
+  - *setissuers*: Key Vault tanúsítvány szerveinek/kiállítóinak létrehozása vagy frissítése  
+  - *deleteissuers*: Key Vault tanúsítvány hatóságainak/kiállítóinak törlése  
  
-- Jogosultsággal rendelkező műveletek engedélyei
-  - *kiürítés*: Törölt tanúsítvány törlése (végleges törlése)
+- Jogosultsági szintű műveletek engedélyei
+  - *kiürítés*: törölt tanúsítvány törlése (végleges törlése)
 
-További információt a [Key Vault REST API-hivatkozástanúsítvány-műveletei című témakörben talál.](/rest/api/keyvault) Az engedélyek létrehozásáról további információt a [Tárolók – Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és [tárolók – hozzáférési szabályzat című témakörben talál.](/rest/api/keyvault/vaults/updateaccesspolicy)
+További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>További lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
-- [Kulcsok, titkos kulcsok és tanúsítványok –](../general/about-keys-secrets-certificates.md)
+- [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)
 - [Információ a kulcsokról](../keys/about-keys.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)

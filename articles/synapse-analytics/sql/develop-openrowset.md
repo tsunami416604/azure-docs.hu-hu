@@ -1,6 +1,6 @@
 ---
-title: Az OPENROWSET használata az SQL on-demand-ben (előzetes verzió)
-description: Ez a cikk az OPENROWSET szintaxisát ismerteti az SQL on-demand (előzetes verzió) rendszerben, és ismerteti az argumentumok használatát.
+title: A OPENROWSET használata igény szerinti SQL-ben (előzetes verzió)
+description: Ez a cikk az SQL on-demand (előzetes verzió) OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81680489"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Az OPENROWSET használata az SQL on-demand használatával (előzetes verzió)
+# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
-Az OPENROWSET(BULK...) funkció lehetővé teszi a fájlok elérését az Azure Storage-ban. Az SQL on-demand (előzetes verzió) erőforráson belül az OPENROWSET tömeges sorhalmaz-szolgáltató az OPENROWSET függvény hívásával és a TÖMEGES beállítás megadásával érhető el.  
+A OPENROWSET (BULK...) függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. Az SQL on-demand (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
 
-Az OPENROWSET függvényre úgy lehet hivatkozni a lekérdezés FROM záradékában, mintha egy OPENROWSET táblanév lenne. Támogatja a tömeges műveletek et egy beépített BULK szolgáltatón keresztül, amely lehetővé teszi a fájlból származó adatok olvasását és sorokhalmazként való visszaadását.
+A OPENROWSET függvényt a lekérdezés FROM záradékában lehet hivatkozni, mintha a tábla neve OPENROWSET. Olyan beépített TÖMEGES szolgáltatón keresztül támogatja a tömeges műveleteket, amely lehetővé teszi, hogy egy fájlból származó adatok beolvassák és visszaadjanak a sorhalmazban.
 
-Az OPENROWSET jelenleg nem támogatott az SQL készletben.
+A OPENROWSET jelenleg nem támogatott az SQL-készletben.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -54,59 +54,59 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 ## <a name="arguments"></a>Argumentumok
 
-A lekérdezéshez a céladatokat tartalmazó bemeneti fájlok esetében két lehetőség közül választhat. Az érvényes értékek a következők:
+A lekérdezéshez célként megadott adatokat tartalmazó bemeneti fájlok esetében két lehetőség közül választhat. Az érvényes értékek a következők:
 
-- "CSV" - Tartalmazza a sor-/oszlopelválasztóval tagolt szövegfájlt. Bármilyen karakter használható mezőelválasztóként, például TSV: FIELDTERMINATOR = tabulátor.
+- "CSV" – minden olyan tagolt szövegfájlt tartalmaz, amely sorok/oszlopok elválasztókkal rendelkezik. Bármely karakter használható mező elválasztóként, például TSV: FIELDTERMINATOR = Tab.
 
-- "PARQUET" - Bináris fájl parketta formátumban 
+- "PARQUEt" – bináris fájl parketta formátumban 
 
 **"unstructured_data_path"**
 
-Az adatok elérési útját létrehozó unstructured_data_path a következőképpen épül fel:  
-'\<előtag\<>://\<storage_account_path>/ storage_path>"
+Az adatelérési utat kiépítő unstructured_data_path a következőképpen szerveződik:  
+"\<előtag>://\<storage_account_path>/\<storage_path>"
  
  
- Az alábbiakban megtalálja a megfelelő tárfiók elérési útjait, amelyek az adott külső adatforráshoz kapcsolódnak. 
+ Az alábbiakban megtalálhatja a megfelelő tárolási fiók elérési útját, amely az adott külső adatforráshoz fog hivatkozni. 
 
-| Külső adatforrás       | Előtag | Tárfiók elérési útja                                 |
+| Külső adatforrás       | Előtag | Storage-fiók elérési útja                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
-| Azure Data Lake Áruház Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Áruház Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+| Azure Blob Storage         | https  | \<storage_account>. blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
 "\<storage_path>"
 
- Megadja a tárolón belüli elérési utat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha a görbe egy tárolóra vagy mappára mutat, a program az összes fájlt az adott tárolóból vagy mappából olvassa be. Az almappákban lévő fájlok nem lesznek benne. 
+ Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
  
- Helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
-Az alábbi példa az összes *csv-fájlt* beolvassa, kezdve a */csv/population*kapcsolóval kezdődő mappák *populációjával:*  
+ A helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
+Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population*kezdődő összes mappából származó *populációval* kezdődik:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Ha a unstructured_data_path mappának adja meg, az SQL igény szerinti lekérdezése fájlokat fog beolvasni a mappából. 
+Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezése a mappában lévő fájlokat fogja lekérni. 
 
 > [!NOTE]
-> A Hadooptól és a PolyBase-től eltérően az igény szerinti SQL nem ad vissza almappákat. A Hadooptól és a PloyBase-től eltérően az SQL igény szerinti fájlja idoben olyan fájlokat ad vissza, amelyek fájlneve aláhúzással (_) vagy pont (.) karakterrel kezdődik.
+> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a PloyBase függvénytől eltérően az SQL igény szerint olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Az alábbi példában, ha`https://mystorageaccount.dfs.core.windows.net/webdata/`a unstructured_data_path= , az SQL on-demand lekérdezés sorokat ad vissza a mydata.txt és a _hidden.txt fájlból. Nem ad vissza a mydata2.txt fájlt és a mydata3.txt fájlt, mert almappában találhatók.
+Az alábbi példában, ha a unstructured_data_path =`https://mystorageaccount.dfs.core.windows.net/webdata/`, egy SQL igény szerinti lekérdezés a SajátAdatok. txt és a _Hidden. txt fájlból származó sorokat ad vissza. A mydata2. txt és a mydata3. txt fájlt nem fogja visszaadni, mert egy almappában találhatók.
 
-![Külső táblák rekurzív adatai](./media/develop-openrowset/folder-traversal.png)
+![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 
 `[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
-A WITH záradék lehetővé teszi a fájlokból olvasni kívánt oszlopok megadását.
+A WITH záradék segítségével megadhatja a fájlokból beolvasni kívánt oszlopokat.
 
-- A CSV-adatfájlok esetében az összes oszlop olvasásához adja meg az oszlopneveket és azok adattípusait. Ha az oszlopok egy részét szeretné használni, sorszámokkal válassza ki az oszlopokat az eredeti adatfájlokból sorszám szerint. Az oszlopokat a sormegjelölés köti. 
+- CSV-adatfájlok esetén az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni. 
 
 > [!IMPORTANT]
-> A WITH záradék kötelező a CSV-fájlokesetében.
-- A Parketta-adatfájlok esetében adja meg az okat, amelyek megfelelnek az eredeti adatfájlok oszlopnevének. Az oszlopokat név köti. Ha a WITH záradék nincs megadva, a program a Programozó fájlok összes oszlopát visszaadja.
+> A WITH záradék kötelező a CSV-fájlokhoz.
+- A parketta-adatfájlok esetében adja meg az oszlopok neveit, amelyek megfelelnek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve. Ha a WITH záradék ki van hagyva, a rendszer a Parquet-fájlokból származó összes oszlopot visszaadja.
 
-column_name = A kimeneti oszlop neve. Ha meg van adva, ez a név felülbírálja a forrásfájloszlop nevét.
+column_name = a kimeneti oszlop neve. Ha meg van adni, ez a név felülbírálja a forrásfájl oszlopának nevét.
 
-column_type = A kimeneti oszlop adattípusa. Az implicit adattípus-átalakítás itt történik.
+column_type = a kimeneti oszlop adattípusa. Az implicit adattípus-konverziót itt fogja megtenni.
 
-column_ordinal = a forrásfájl(ok) oszlopának sorszáma. Ez az argumentum figyelmen kívül hagyja a Parketta fájlokat, mivel a kötés név szerint történik. A következő példa csak egy CSV-fájlból ad vissza egy második oszlopot:
+column_ordinal = a forrásfájl (ok) oszlopának sorszáma. Ezt az argumentumot a rendszer figyelmen kívül hagyja a Parquet-fájlokban, mivel a kötés név alapján történik. A következő példa csak egy CSV-fájlból származó második oszlopot ad vissza:
 
 ```sql
 WITH (
@@ -119,31 +119,31 @@ WITH (
 
 **\<bulk_options>**
 
-FIELDTERMINATOR ='field_terminator'
+FIELDTERMINATOR = ' field_terminator '
 
-Megadja a használandó mezőterminátort. Az alapértelmezett mezőterminátor vessző ("**, ").**
+Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**").
 
-ROWTERMINATOR ='row_terminator''
+ROWTERMINATOR = ' row_terminator ' '
 
-Megadja a használandó sorterminátort. Az alapértelmezett sorterminátor egy új sorkarakter, például \r\n.
+Meghatározza a használandó sort. Az alapértelmezett sor Terminator egy sortörési karakter, például \r\n.
 
 ESCAPE_CHAR = "char"
 
-Megadja a fájlban azt a karaktert, amely a fájl kikerülésére szolgál, és a fájl összes határolóértéke. Ha az escape karaktert nem önmaga, vagy a határolóértékek bármelyike követi, az érték olvasásakor az escape karakter ellesz dobva. 
+Meghatározza a fájlban található karaktert, amely a fájl összes elválasztó értékének kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik. 
 
-A ESCAPE_CHAR paraméter attól függetlenül alkalmazásra kerül, hogy a FIELDQUOTE engedélyezve van-e vagy sem. Nem fogják arra használni, hogy elmeneküljön az idéző karakter elől. Az idéző karakter az Excel CSV viselkedésével összhangban dupla idézőjelekkel kerül ki.
+A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE vagy nincs-e engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjeles karaktert dupla idézőjelek között kell megszökni az Excel CSV-viselkedéssel való igazításhoz.
 
-FIRSTROW = 'first_row' 
+FIRSTROW = ' first_row ' 
 
-Megadja az első betöltandó sor számát. Az alapértelmezett érték 1. Ez a megadott adatfájl első sorát jelzi. A sorszámokat a sorterminátorok számlálásával határozzák meg. A FIRSTROW 1-alapú.
+Meghatározza a betöltendő első sor számát. Az alapértelmezett érték 1. Ez jelzi a megadott adatfájl első sorát. A sorok száma a sorok lezáróinak számlálásával határozható meg. A FIRSTROW 1-alapú.
 
-FIELDQUOTE = 'field_quote' 
+FIELDQUOTE = ' field_quote ' 
 
-Megadja azt a karaktert, amelyet a rendszer a CSV-fájlban idézőjelként fog használni. Ha nincs megadva, a (") ajánlati karakter lesz használva. 
+Megadja azt a karaktert, amely a CSV-fájlban idézőjelként lesz használva. Ha nincs megadva, a rendszer az idézőjel karaktert (") fogja használni. 
 
 ## <a name="examples"></a>Példák
 
-A következő példa csak két oszlopot ad vissza, amelyek sorszáma 1 és 4 a population*.csv fájlokból. Mivel a fájlokban nincs fejlécsor, az első sorból indul el:
+A következő példa csak két olyan oszlopot ad vissza, amelyekben az 1. és 4. sorszám szerepel a Population*. csv fájlokban. Mivel a fájlokban nem szerepel fejlécsor, a rendszer az első sor olvasását indítja el:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -171,7 +171,7 @@ WITH (
 
 
 
-A következő példa a Parquet formátumban megadott népszámlálási adatkészlet első sorának összes oszlopát adja vissza oszlopnevek és adattípusok megadása nélkül: 
+A következő példa az első sor összes oszlopát adja vissza a (z) és a (z)-ben található népszámlálás-adatkészletből, az oszlopnevek és az adattípusok megadása nélkül: 
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -198,4 +198,4 @@ FROM
 
 ## <a name="next-steps"></a>További lépések
 
-További mintákért lépjen [rövid útmutatókra,](query-data-storage.md) vagy mentse a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.
+További példákért lépjen a gyors útmutatóhoz [, vagy mentse](query-data-storage.md) a lekérdezés eredményét az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

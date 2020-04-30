@@ -1,6 +1,6 @@
 ---
-title: Átalakítás kijelölése az adatfolyam leképezésében
-description: Azure Data Factory leképezési adatfolyam kiválasztása átalakítás
+title: Átalakítás kiválasztása az adatforgalom leképezése elemben
+description: Azure Data Factory leképezési adatfolyam kiválasztása – átalakítás
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/18/2020
 ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686495"
 ---
-# <a name="select-transformation-in-mapping-data-flow"></a>Átalakítás kijelölése az adatfolyam leképezésében
+# <a name="select-transformation-in-mapping-data-flow"></a>Átalakítás kiválasztása az adatforgalom leképezése elemben
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az oszlopok átnevezéséhez, eldobásához vagy átrendezéséhez használja a select transformation parancsot. Ez az átalakítás nem módosítja a soradatokat, de kiválasztja, hogy mely oszlopokat propagálja a későbbi ek. 
+Az oszlopok átnevezéséhez, eldobásához vagy átrendezéséhez használja az átalakítás kiválasztása lehetőséget. Ez az átalakítás nem változtatja meg a sor adatváltozását, de kiválasztja, hogy mely oszlopok legyenek propagálva az alsóbb rétegben. 
 
-A kiválasztott átalakításokban a felhasználók rögzített leképezéseket adhatnak meg, mintákat használhatnak szabályalapú leképezéshez, vagy engedélyezhetik az automatikus leképezést. A rögzített és a szabályalapú leképezések egyaránt használhatók ugyanazon a select transzformáción belül. Ha egy oszlop nem egyezik meg a definiált leképezések egyikével, a program elfogja dobni.
+A kiválasztott átalakításban a felhasználók megadhatják a rögzített leképezéseket, mintákat használhatnak a szabályokon alapuló leképezéshez, vagy engedélyezhetik az automatikus leképezést is. A rögzített és a szabályon alapuló leképezések is használhatók ugyanazon a kiválasztási átalakításon belül. Ha egy oszlop nem egyezik meg a megadott leképezések egyikével sem, a rendszer elveti.
 
 ## <a name="fixed-mapping"></a>Rögzített leképezés
 
-Ha a vetületben 50-nél kevesebb oszlop van definiálva, akkor az összes definiált oszlop alapértelmezés szerint rögzített hozzárendeléssel fog rendelkezni. A rögzített leképezés egy meghatározott, bejövő oszlopot vesz fel, és pontos nevet ad hozzá.
+Ha a leképezésben kevesebb, mint 50 oszlop van meghatározva, az összes definiált oszlophoz alapértelmezés szerint rögzített leképezés lesz hozzárendelve. A rögzített hozzárendelések egy meghatározott, bejövő oszlopot vesznek fel, és pontos nevet képeznek.
 
 ![Rögzített leképezés](media/data-flow/fixedmapping.png "Rögzített leképezés")
 
 > [!NOTE]
-> Sodródott oszlop nem képezhető le és nem nevezhető át rögzített leképezéssel
+> Rögzített leképezés használatával nem képezhető le és nem nevezhető át egy lebegett oszlop
 
-### <a name="mapping-hierarchical-columns"></a>Hierarchikus oszlopok leképezése
+### <a name="mapping-hierarchical-columns"></a>Hierarchikus oszlopok megfeleltetése
 
-A rögzített leképezések segítségével egy hierarchikus oszlop aloszlopát egy legfelső szintű oszlophoz lehet hozzárendelve. Ha definiált hierarchiával rendelkezik, az oszlop legördülő menüsegítségével jelöljön ki egy aloszlopot. A kijelölési átalakítás új oszlopot hoz létre az aloszlop értékével és adattípusával.
+A rögzített leképezések használatával egy hierarchikus oszlop aloszlopa képezhető le egy legfelső szintű oszlopra. Ha van definiált hierarchiája, az oszlop legördülő listából válassza ki az aloszlopot. Az átalakítás kiválasztása egy új oszlopot hoz létre az aloszlop értékével és adattípusával.
 
 ![hierarchikus leképezés](media/data-flow/select-hierarchy.png "hierarchikus leképezés")
 
-## <a name="rule-based-mapping"></a>Szabályalapú leképezés
+## <a name="rule-based-mapping"></a>Szabály alapú leképezés
 
-Ha egyszerre több oszlopot szeretne leképezni, vagy a sodródott oszlopokat lefelé szeretné átadni, a szabályalapú leképezés segítségével oszlopminták használatával határozhatja meg a leképezéseket. Egyezés `name`a `type` `stream`, `position` , és oszlopok alapján. A rögzített és a szabályalapú leképezések tetszőleges kombinációját használhatja. Alapértelmezés szerint az 50 oszlopnál nagyobb méretű összes vetület alapértelmezés szerint szabályalapú leképezést kap, amely minden oszlopban megfelel, és a bemeneti nevet adja ki. 
+Ha egyszerre sok oszlopot szeretne leképezni, vagy átadni a lebegő oszlopokat, a szabályok alapján történő leképezés használatával definiálhatja a leképezéseket az oszlopok mintázatával. Egyezés a `name`, `type` `stream`, és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
 
-Szabályalapú leképezés hozzáadásához kattintson a **Leképezés hozzáadása** gombra, és válassza a **Szabályalapú leképezés**lehetőséget.
+Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
 
-![szabályalapú leképezés](media/data-flow/rule2.png "Szabályalapú leképezés")
+![szabály alapú leképezés](media/data-flow/rule2.png "Szabály alapú leképezés")
 
-Minden szabályalapú leképezéshez két bemenet szükséges: az a feltétel, amelyalapján egyeztetni kell, és hogy mi az egyes leképezett oszlopok elnevezése. Mindkét értéket a [kifejezésszerkesztő](concepts-data-flow-expression-builder.md)adja meg. A bal oldali kifejezésmezőbe írja be a logikai egyezési feltételt. A jobb kifejezésmezőben adja meg, hogy az egyező oszlop hoz mihez lesz leképezve.
+Minden szabály alapú leképezéshez két bemenet szükséges: az a feltétel, amelynek a megfeleltetése a és az egyes leképezett oszlopok neve. Mindkét érték a [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md)használatával van megadva. A bal oldali kifejezés mezőbe írja be a logikai egyezési feltételt. A jobb oldali kifejezés mezőben adja meg, hogy az egyeztetett oszlop hogyan lesz leképezve.
 
-![szabályalapú leképezés](media/data-flow/rule-based-mapping.png "Szabályalapú leképezés")
+![szabály alapú leképezés](media/data-flow/rule-based-mapping.png "Szabály alapú leképezés")
 
-A `$$` szintaxissal hivatkozzon egy egyező oszlop bemeneti nevére. A fenti képet példaként használva tegyük fel, hogy a felhasználó minden olyan karakterláncoszlopot meg szeretne egyeztetni, amelynek neve hat karakternél rövidebb. Ha egy bejövő oszlop `test`ot `$$ + '_short'` neveztek el, `test_short`a kifejezés átnevezi az oszlopot . Ha ez az egyetlen létező leképezés, akkor a feltételnek nem megfelelő összes oszlop el lesz hagyva a kimenetelen adatokból.
+Szintaxis `$$` használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test`, a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short`. Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
 
-A minták egyaránt illeszkednek az elsodródott és a definiált oszlopokhoz. Ha meg szeretné tekinteni, hogy mely definiált oszlopokat képezi le egy szabály, kattintson a szabály melletti szemüveg ikonra. Ellenőrizze a kimenetet az adatok előnézetével.
+A minták egymásba sodródott és definiált oszlopokkal egyeznek meg. Ha szeretné megtekinteni, hogy mely meghatározott oszlopok vannak leképezve egy szabályhoz, kattintson a szabály melletti szemüveg ikonra. Ellenőrizze a kimenetet az adatelőnézet használatával.
 
-### <a name="regex-mapping"></a>Regex feltérképezése
+### <a name="regex-mapping"></a>Regex-leképezés
 
-Ha a lefelé mutató sávnyíl ikonra kattint, megadhat egy regex-leképezési feltételt. A regex-leképezési feltétel megfelel a megadott regex feltételnek megfelelő összes oszlopnévnek. Ez szabványos szabályalapú hozzárendelésekkel kombinálva használható.
+Ha a lefelé mutató Chevron ikonra kattint, megadhat egy regex-leképezési feltételt. A regex-leképezési feltétel minden olyan oszlopnevet megfelel, amely megfelel a megadott regex-feltételnek. Ez használható a szabványos szabályokon alapuló leképezésekkel együtt.
 
-![szabályalapú leképezés](media/data-flow/regex-matching.png "Szabályalapú leképezés")
+![szabály alapú leképezés](media/data-flow/regex-matching.png "Szabály alapú leképezés")
 
-A fenti példa megegyezik `(r)` a regex mintával vagy bármely oszlopnévvel, amely kisbetűs r-t tartalmaz. A normál szabályalapú leképezéshez hasonlóan az összes egyező `$$` oszlopot a jobb oldali feltétel módosítja a szintaxis használatával.
+A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával `$$` módosul.
 
-Ha az oszlop nevében több regex egyezés van, akkor az "n" alatt `$n` hivatkozhat arra, hogy melyik egyezésre utal. A "$2" például az oszlopnévmásodik találatára utal.
+Ha az oszlopnév több regex-egyezéssel rendelkezik, akkor az "n" kifejezéssel megegyező egyezésekre `$n` hivatkozhat. Például a "$2" az oszlopnév második egyezésére hivatkozik.
 
-### <a name="rule-based-hierarchies"></a>Szabályalapú hierarchiák
+### <a name="rule-based-hierarchies"></a>Szabály alapú hierarchiák
 
-Ha a definiált vetület hierarchiával rendelkezik, szabályalapú leképezéssel képezheti le a hierarchiák aloszlopait. Adja meg az egyező feltételt és azt az összetett oszlopot, amelynek aloszlopait le szeretné képezni. A program minden egyező aloszlopot a jobb oldalon megadott "Név mint" szabállyal hoz létre.
+Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapuló leképezés használatával képezhető le a hierarchiák aloszlopai. Meg kell adnia egy megfelelő feltételt és azt a komplex oszlopot, amelynek aloszlopait szeretné leképezni. Minden egyező aloszlop kimenete a jobb oldalon megadott "Name as" szabály használatával történik.
 
-![szabályalapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabályalapú leképezés")
+![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
-A fenti példa az összetett oszlop `a`összes aloszlopának megfelel. `a`két aloszlopot tartalmaz, `b` és `c`a. A kimeneti séma `b` két `c` oszlopot tartalmaz, és `$$`a "Név mint" feltétel .
+A fenti példa a komplex oszlopok `a`összes aloszlopára illeszkedik. `a`két aloszlopot tartalmaz `b` , `c`és. A kimeneti séma két oszlopot `b` fog tartalmazni `c` , és a "Name as" feltételnek kell `$$`lennie.
 
-### <a name="parameterization"></a>Paraméterezése
+### <a name="parameterization"></a>Paraméterezés
 
-Az oszlopneveket szabályalapú leképezéssel paraméterezheti. Használja a ```name``` kulcsszót a bejövő oszlopnevek és egy paraméter egyeztetésére. Ha például rendelkezik adatfolyam-paraméterrel, ```mycolumn```létrehozhat egy szabályt, amely megegyezik bármely oszlopnévvel. ```mycolumn``` Az egyező oszlopot átnevezheti egy kódolt karakterláncra, például "üzleti kulcsra", és explicit módon hivatkozhat rá. Ebben a példában az ```name == $mycolumn``` egyeztetési feltétel, és a név feltétel "üzleti kulcs". 
+Az oszlopnevek parametrizálja leképezés használatával is megadhatók. A kulcsszó ```name``` használatával a bejövő oszlopnevek megegyeznek egy paraméterrel. Ha például egy adatáramlási paraméterrel ```mycolumn```rendelkezik, létrehozhat egy olyan szabályt, amely megegyezik a ```mycolumn```következővel egyenlő oszlop nevével:. Átnevezheti az egyező oszlopot egy nehezen kódolt sztringre, például az "üzleti kulcs" kifejezésre, és hivatkozását explicit módon. Ebben a példában a megfelelő feltétel ```name == $mycolumn``` , a név feltétel pedig az "üzleti kulcs". 
 
-## <a name="auto-mapping"></a>Automatikus hozzárendelés
+## <a name="auto-mapping"></a>Automatikus leképezés
 
-Kijelölési transzformáció hozzáadásakor az **automatikus leképezés** az Automatikus leképezés csúszka váltásával engedélyezhető. Az automatikus leképezés esetén a kiválasztott átalakítás leképezi az összes bejövő oszlopot, az ismétlődések kivételével, a bevitelükkel megegyező névvel. Ez drifted oszlopokat is tartalmaz, ami azt jelenti, hogy a kimeneti adatok tartalmazhatnak olyan oszlopokat, amelyek nincsenek definiálva a sémában. Az elsodródott oszlopokról további információt [a sémaeltolódás című témakörben talál.](concepts-data-flow-schema-drift.md)
+Ha kiválasztott átalakítást ad hozzá, az **automatikus** leképezés lehetőségre kattintva engedélyezheti az automatikus megfeleltetés csúszkáját. Az automatikus leképezéssel az átalakítás kiválasztása leképezi az összes bejövő oszlopot az ismétlődések kivételével, ugyanazzal a névvel, mint a bemenet. Ez magában foglalja a lebegő oszlopokat is, ami azt jelenti, hogy a kimeneti adatokat tartalmazó oszlopok nem definiáltak a sémában. Az átsodródott oszlopokkal kapcsolatos további információkért lásd: [séma-eltolódás](concepts-data-flow-schema-drift.md).
 
-![Automatikus hozzárendelés](media/data-flow/automap.png "Automatikus hozzárendelés")
+![Automatikus leképezés](media/data-flow/automap.png "Automatikus leképezés")
 
-Ha az automatikus leképezés be van kapcsolva, a kiválasztott átalakítás tiszteletben tartja az ismétlődő beállítások kihagyását, és új aliast biztosít a meglévő oszlopokhoz. Aliasing akkor hasznos, ha több illesztések vagy keres ugyanazon az adatfolyamon, és önillesztési forgatókönyvek. 
+Az automatikus leképezés bekapcsolásával az átalakítás kiválasztása megtartja az ismétlődő beállítások kihagyását, és új aliast biztosít a meglévő oszlopokhoz. Az aliasok akkor hasznosak, ha több illesztést vagy keresést végeznek ugyanazon az adatfolyamon, és önillesztési helyzetekben. 
 
-## <a name="duplicate-columns"></a>Oszlopok másolása
+## <a name="duplicate-columns"></a>Ismétlődő oszlopok
 
-Alapértelmezés szerint a select transformation csepp ismétlődő oszlopok mind a bemeneti és kimeneti vetület. Az ismétlődő bemeneti oszlopok gyakran illesztési és keresutók átalakításaiból származnak, ahol az illesztés mindkét oldalán megkettőződnek az oszlopnevek. Ismétlődő kimeneti oszlopok akkor fordulhatnak elő, ha két különböző bemeneti oszlopot másol ugyanarra a névre. A jelölőnégyzet beválasztásával megadhatja, hogy eldobja vagy továbbadja az ismétlődő oszlopokat.
+Alapértelmezés szerint a Select átalakítás elveszíti az ismétlődő oszlopokat a bemeneti és a kimeneti leképezésben is. Az ismétlődő beviteli oszlopok gyakran a JOIN és a keresési átalakításokból származnak, ahol az oszlopok nevei duplikálva vannak az illesztés mindkét oldalán. Ismétlődő kimeneti oszlopok is előfordulhatnak, ha két különböző bemeneti oszlopot rendel ugyanahhoz a névhez. A jelölőnégyzet bejelölésével adja meg, hogy szeretné-e eldobni vagy átadni a duplikált oszlopokat.
 
 ![Ismétlődések kihagyása](media/data-flow/select-skip-dup.png "Ismétlődések kihagyása")
 
-## <a name="ordering-of-columns"></a>Oszlopok sorrendje
+## <a name="ordering-of-columns"></a>Oszlopok rendezése
 
-A leképezések sorrendje határozza meg a kimeneti oszlopok sorrendjét. Ha egy bemeneti oszlop többször van leképezve, csak az első leképezés lesz tiszteletben. Minden ismétlődő oszlop csepegés, az első mérkőzés marad.
+A leképezések sorrendje határozza meg a kimeneti oszlopok sorrendjét. Ha egy bemeneti oszlop többször van leképezve, a rendszer csak az első leképezést fogja tiszteletben venni. Minden ismétlődő oszlop esetében az első egyezés lesz megtartva.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -112,9 +112,9 @@ A leképezések sorrendje határozza meg a kimeneti oszlopok sorrendjét. Ha egy
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy kiválasztott leképezést és annak adatfolyam-parancsfájlját mutatja be:
+Alább látható egy példa a Select leképezésre és az adatfolyam-parancsfájlra:
 
-![Példa parancsfájl kiválasztása](media/data-flow/select-script-example.png "Példa parancsfájl kiválasztása")
+![Példa parancsfájl kiválasztására](media/data-flow/select-script-example.png "Példa parancsfájl kiválasztására")
 
 ```
 DerivedColumn1 select(mapColumn(
@@ -130,4 +130,4 @@ DerivedColumn1 select(mapColumn(
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Miután a Kijelölés használatával átnevezheti, átrendezheti és aliasoszlopokat szeretne átnevezni, átrendezheti és aliasoszlopokat használ, használja a [Fogadó átalakítást](data-flow-sink.md) az adatok adattárba való bekerüléséhez.
+* Miután a Select paranccsal átnevezi, átrendezi és alias oszlopokat, a fogadó [transzformáció](data-flow-sink.md) használatával az adatait egy adattárba helyezheti.

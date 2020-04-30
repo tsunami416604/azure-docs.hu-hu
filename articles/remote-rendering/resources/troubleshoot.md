@@ -1,108 +1,108 @@
 ---
 title: Hibaelhárítás
-description: Az Azure távoli rendereléssel kapcsolatos információk hibáinak elhárítása
+description: Az Azure távoli rendereléssel kapcsolatos hibaelhárítási információk
 author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681861"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
-Ez a lap felsorolja az Azure távoli renderelést zavaró gyakori problémákat, és azok megoldásának módjait.
+Ezen a lapon az Azure távoli renderelést akadályozó gyakori problémák és a megoldási módszerek találhatók.
 
 ## <a name="client-cant-connect-to-server"></a>Az ügyfél nem tud csatlakozni a kiszolgálóhoz
 
-Győződjön meg arról, hogy a tűzfalak (eszközön, útválasztókon belül stb.) nem blokkolják a következő portokat:
+Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) nem blokkolja a következő portokat:
 
-* **50051 (TCP)** – a kezdeti kapcsolathoz szükséges (HTTP kézfogás)
-* **8266 (TCP+UDP)** – adatátvitelhez szükséges
-* **5000 (TCP),** **5433 (TCP),** **8443 (TCP)** - szükséges [ArrInspector](tools/arr-inspector.md)
+* **50051 (TCP)** – a kezdeti kapcsolathoz szükséges (http-kézfogás)
+* **8266 (TCP + UDP)** – adatátvitelhez szükséges
+* **5000 (TCP**), **5433 (tcp)**, **8443 (TCP)** – szükséges a [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: "Leválasztva: VideoFormatNotAvailable"
+## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: "leválasztva: VideoFormatNotAvailable"
 
-Ellenőrizze, hogy a GPU támogatja-e a hardveres videodekódolást. Lásd: [Fejlesztő ipc](../overview/system-requirements.md#development-pc).
+Győződjön meg arról, hogy a GPU támogatja a hardveres videó-dekódolást. Lásd: [fejlesztői számítógép](../overview/system-requirements.md#development-pc).
 
-Ha két GPU-val rendelkező laptopon dolgozik, lehetséges, hogy az alapértelmezés szerint futtatott GPU nem biztosít hardveres videodekódolási funkciót. Ha igen, próbálja meg kényszeríteni az alkalmazást a másik GPU használatára. Ez gyakran lehetséges a GPU-illesztőprogram beállításaiban.
+Ha két GPU-val rendelkező laptopon dolgozik, akkor előfordulhat, hogy az alapértelmezés szerint futó GPU nem biztosít hardveres videó-dekódolási funkciót. Ha igen, próbálja meg kényszeríteni az alkalmazást, hogy használja a többi GPU-t. Ez gyakran lehetséges a GPU illesztőprogram-beállításaiban.
 
-## <a name="h265-codec-not-available"></a>A H265 kodek nem érhető el
+## <a name="h265-codec-not-available"></a>A H265-kodek nem érhető el
 
-Két oka lehet annak, hogy a kiszolgáló nem hajlandó csatlakozni egy **olyan kodekhez,** amely nem érhető el.
+A kiszolgálónak két oka lehet a **nem elérhető kodekkel** való csatlakozás.
 
-**A H265 kodeket nincs telepítve:**
+**Nincs telepítve a H265-kodek:**
 
-Először győződjön meg róla, hogy telepítse a **HEVC videobővítményeket,** ahogy azt a rendszerkövetelmények [Szoftver](../overview/system-requirements.md#software) részében említettük.
+Először győződjön meg arról, hogy a rendszerkövetelmények között a [szoftver](../overview/system-requirements.md#software) szakaszban említettek szerint telepíti a **HEVC video Extensions** szolgáltatást.
 
-Ha továbbra is problémákat tapasztal, győződjön meg arról, hogy a grafikus kártya támogatja a H265-öt, és a legújabb grafikus illesztőprogram van telepítve. A gyártóspecifikus információkat a rendszerkövetelmények [Fejlesztési PC](../overview/system-requirements.md#development-pc) részében talál.
+Ha továbbra is problémákba ütközik, győződjön meg arról, hogy a videokártya támogatja a H265, és hogy telepítve van a legújabb grafikus illesztőprogram. Tekintse meg a gyártó által megadott információk rendszerkövetelményeit a [fejlesztői számítógépekről](../overview/system-requirements.md#development-pc) szóló szakaszban.
 
 **A kodek telepítve van, de nem használható:**
 
-A probléma oka a DL-ek helytelen biztonsági beállítása. Ez a probléma nem jelentkezik, amikor a H265-tel kódolt videókat próbál meg nézni. A kodek újratelepítése sem oldja meg a problémát. Ehelyett hajtsa végre a következő lépéseket:
+A probléma oka a DLL-ek helytelen biztonsági beállítása. Ez a probléma nem jelenik meg a H265-mel kódolt videók megtekintésére tett kísérlet során. A kodek újratelepítése nem oldja meg a problémát. Ehelyett hajtsa végre a következő lépéseket:
 
-1. Rendszergazdai **jogosultságokkal rendelkező PowerShell** megnyitása és futtatás
+1. Nyisson meg egy **rendszergazdai jogosultságokkal rendelkező PowerShellt** , és futtassa a parancsot
 
     ```PowerShell
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    Ez a `InstallLocation` parancs kell kimeneti a codec, valami ilyesmi:
+    A parancsnak a `InstallLocation` következőhöz hasonló módon kell kiadnia a kodeket:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
     ```
 
 1. A mappa megnyitása a Windows Intézőben
-1. Legyen egy **x86** és egy **x64** almappa. Kattintson a jobb gombbal az egyik mappára, és válassza a **Tulajdonságok parancsot**
-    1. Válassza a **Biztonság** lapot, és kattintson a **Speciális** beállítások gombra
-    1. Kattintson a **Tulajdonos módosítása** **gombra.**
-    1. Írja be **a Rendszergazdák szövegmezőbe** a szövegmezőbe
-    1. Kattintson **a Nevek ellenőrzése** és az OK **gombra**
-1. A fenti lépések megismétlése a másik mappához
-1. Ismételje meg a fenti lépéseket is minden DLL fájlon mindkét mappában. Összesen négy DL-nek kell lennie.
+1. Egy **x86** -os és egy **x64** -es almappanek kell lennie. Kattintson a jobb gombbal az egyik mappára, és válassza a **Tulajdonságok** lehetőséget.
+    1. Válassza a **Biztonság** fület, és kattintson a **speciális** beállítások gombra.
+    1. Kattintson a **tulajdonos** **módosítása** elemre.
+    1. Írja be a **rendszergazdákat** a szövegmezőbe
+    1. Kattintson **a Névellenőrzés** elemre, majd **az OK gombra** .
+1. Ismételje meg a fenti lépéseket a másik mappára vonatkozóan
+1. Ismételje meg a fenti lépéseket is az egyes DLL-fájlokon mindkét mappában. Összesen négy dll-fájlnak kell lennie.
 
-Annak ellenőrzéséhez, hogy a beállítások most helyesek-e, tegye ezt a négy DL-re vonatkozóan:
+Annak ellenőrzéséhez, hogy a beállítások helyesek-e, tegye a következőket a négy dll-fájlhoz:
 
-1. **Tulajdonságok > biztonsági > szerkesztés e**
-1. Nézze át az összes **csoport / felhasználó listáját,** és győződjön meg róla, hogy mindegyikrendelkezik az **Olvasás & A végrehajtás** jobb oldali beállítással rendelkezik (az **allow** oszlop bejelölését be kell jelölni)
+1. Válassza a **tulajdonságok > biztonsági > szerkesztés** lehetőséget
+1. Lépjen végig az összes **csoport/felhasználó** listáján, és ellenőrizze, hogy mindegyik rendelkezik-e az **olvasási & végrehajtásának** megfelelő készlettel (az **Engedélyezés** oszlopban jelölje be a jelölőnégyzetet)
 
-## <a name="low-video-quality"></a>Gyenge videominőség
+## <a name="low-video-quality"></a>Alacsony minőségű videó
 
-A videó minősége a hálózat minősége vagy a hiányzó H265 video kodeket veszélyezteti.
+A videó minősége a hálózati minőség vagy a hiányzó H265-videó kodekkel is feltörhető.
 
-* A hálózati [problémák azonosításának lépései.](#unstable-holograms)
-* Tekintse meg a legújabb grafikus illesztőprogram telepítésének [rendszerkövetelményeit.](../overview/system-requirements.md#development-pc)
+* Tekintse meg a [hálózati problémák azonosításához](#unstable-holograms)szükséges lépéseket.
+* Tekintse meg a legújabb grafikus illesztőprogram telepítéséhez [szükséges rendszerkövetelményeket](../overview/system-requirements.md#development-pc) .
 
-## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Az MRC-vel rögzített videó nem tükrözi az élő élmény minőségét
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>A MRC-mel rögzített videó nem tükrözi az élő élmény minőségét
 
-A hololensen a [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)segítségével lehet videót rögzíteni. Az eredményül kapott videó azonban két okból is rosszabb minőségű, mint az élő élmény:
-* A videoframerate 30 Hz-en van lezárva, szemben a 60 Hz-es szinttel.
-* A videó képek nem megy keresztül a [késői szakaszban reprojection](../overview/features/late-stage-reprojection.md) feldolgozási lépés, így a videó úgy tűnik, hogy choppier.
+A Hololens [vegyes valóság-rögzítéssel (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
+* A videó frameráta 30 Hz-re van korlátozva, szemben a 60 Hz-es értékkel.
+* A videó-lemezképek nem haladnak át a [késői szakasz újravetítésének](../overview/features/late-stage-reprojection.md) feldolgozásának lépésén, így a videó choppier válik.
 
-Mindkettő a rögzítési technika eredendő korlátai.
+Mindkettő a rögzítési technikában rejlő korlátozásokat is magában foglalhat.
 
-## <a name="black-screen-after-successful-model-loading"></a>Fekete képernyő a sikeres modellbetöltés után
+## <a name="black-screen-after-successful-model-loading"></a>A sikeres modell betöltését követő fekete képernyő
 
-Ha csatlakozik a renderelési futásidőhöz, és sikeresen betöltött egy modellt, de csak egy fekete képernyőt lát utána, akkor ennek néhány különböző oka lehet.
+Ha a renderelési futtatókörnyezethez csatlakozik, és sikeresen betöltötte a modellt, de ezt követően csak fekete képernyő jelenik meg, akkor ez néhány különböző okot is tartalmazhat.
 
-Javasoljuk, hogy alaposabb elemzés előtt tesztelje a következő dolgokat:
+Javasoljuk, hogy a részletes elemzés előtt tesztelje a következő dolgokat:
 
-* Telepítve van a H265 kodeket? Bár a H264 kodeknek vissza kell lépnie, láttunk olyan eseteket, amikor ez a tartalék nem működött megfelelően. Tekintse meg a legújabb grafikus illesztőprogram telepítésének [rendszerkövetelményeit.](../overview/system-requirements.md#development-pc)
-* Unity-projekt használataesetén zárja be a Unity programot, törölje az ideiglenes *könyvtárat* és az *obj* mappákat a projekt könyvtárában, és töltse be/építse fel újra a projektet. Egyes esetekben a gyorsítótárazott adatok miatt a minta nem működik megfelelően minden nyilvánvaló ok nélkül.
+* Telepítve van a H265-kodek? Bár a H264 kodeknek tartaléknak kell lennie, láttuk azokat az eseteket, amelyekben ez a tartalék nem működött megfelelően. Tekintse meg a legújabb grafikus illesztőprogram telepítéséhez [szükséges rendszerkövetelményeket](../overview/system-requirements.md#development-pc) .
+* Ha Unity-projektet használ, zárjuk be az egységet, törölje az ideiglenes *könyvtárat* és az *obj* -mappákat a projekt könyvtárában, majd töltse be/hozza létre újra a projektet. Bizonyos esetekben a gyorsítótárazott adat miatt a minta nem működik megfelelően a nyilvánvaló ok nélkül.
 
-Ha ez a két lépés nem segített, meg kell tudni, hogy az ügyfél megkapja-e a videoképkockákat. Ez programozott módon kérdezhető le a [kiszolgálóoldali teljesítménylekérdezésekről](../overview/features/performance-queries.md) szóló fejezetben leírtak szerint. A `FrameStatistics struct` tag azt jelzi, hogy hány videoképkocka érkezett. Ha ez a szám nagyobb, mint 0, és idővel növekszik, az ügyfél tényleges videoképkockákat kap a kiszolgálótól. Következésképpen ez a probléma az ügyféloldalon.
+Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél fogad-e képkockákat. Ez programozott módon kérdezhető le a [kiszolgálóoldali teljesítmény-lekérdezések](../overview/features/performance-queries.md) című fejezetben leírtak szerint. A `FrameStatistics struct` tartalmaz egy tagot, amely azt jelzi, hogy hány képkockát fogadtak. Ha ez a szám nagyobb, mint 0, és az idő múlásával növekszik, az ügyfél megkapja a tényleges képkockákat a kiszolgálóról. Ennek következtében az ügyfél oldalán problémának kell lennie.
 
 ### <a name="common-client-side-issues"></a>Gyakori ügyféloldali problémák
 
-**A modell nem a nézeten belül frustum:**
+**A modell nem a nézet csonkakúpot belül található:**
 
-Sok esetben a modell helyesen jelenik meg, de kívül található a kamera frustum. Ennek gyakori oka, hogy a modellt egy távoli középre fordítható sarkalokkal exportálták, így a kamera messze vágósíkja vágja le. Segít a modell határolókeretének programozott lekérdezésében, és a Unity mező vonalmezőként való megjelenítésében, vagy az értékek kinyomtatásában a hibakeresési naplóba.
+Sok esetben a modell helyesen jelenik meg, de a kamera csonkakúpot kívül található. Ennek gyakori oka az, hogy a modellt egy távoli középpontú kimutatással exportálták, így azt a kamera távoli nyírási síkja vágja le. Segít lekérdezni a modell határoló mezőjét programozott módon, és megjelenítheti a négyzetet az egységgel, vagy kinyomtathatja az értékeket a hibakeresési naplóba.
 
-Továbbá az átalakítási folyamat létrehoz egy [kimeneti json fájlt](../how-tos/conversion/get-information.md) a konvertált modellmellett. A modell pozicionálási problémáinak `boundingBox` hibakereséséhez érdemes megnézni a [kimeneti statisztika szakasz bejegyzését:](../how-tos/conversion/get-information.md#the-outputstatistics-section)
+Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos/conversion/get-information.md) a konvertált modellel együtt. A modell pozicionálási problémáinak hibakereséséhez érdemes megtekinteni `boundingBox` a [outputStatistics szakaszban](../how-tos/conversion/get-information.md#the-outputstatistics-section)található bejegyzést:
 
 ```JSON
 {
@@ -125,31 +125,31 @@ Továbbá az átalakítási folyamat létrehoz egy [kimeneti json fájlt](../how
 }
 ```
 
-A határolókeret a `min` 3D `max` térben, méterben van leírva. Tehát az 1000.0 koordináta azt jelenti, hogy 1 km-re van az origől.
+A határolókeret a következőként van leírva `min` : `max` a és a pozíciója 3D térben, méterben. Így a 1000,0-es koordináta azt jelenti, hogy a forrás 1 kilométer távolságra van.
 
-Két probléma lehet ezzel a határolókerettel, amelyek láthatatlan geometriához vezetnek:
-* **A doboz lehet messze off-center**, így az objektum levan vágva teljesen miatt messze sík nyírás. Ebben `boundingBox` az esetben az értékek `min = [-2000, -5,-5], max = [-1990, 5,5]`a következőképpen néznek ki: . Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` beállítást a [modellkonvertálási konfigurációban.](../how-tos/conversion/configure-model-conversion.md)
-* **A doboz lehet középre, de nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén kezdődik, a geometriája minden irányban le van vágva. Tipikus `boundingBox` értékek ebben az esetben `min = [-1000,-1000,-1000], max = [1000,1000,1000]`így nézne ki: . Az ilyen típusú probléma oka általában egységszintű eltérés. Kompenzálni szeretné megadni a [méretezési értéket a konvertálás során,](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) vagy jelölje meg a forrásmodellt a megfelelő mértékegységekkel. Skálázás is alkalmazható a gyökércsomópont, amikor betölti a modell futásidőben.
+Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometriát eredményez:
+* **A mező távolról is elvégezhető**, így az objektum teljes kivágása a sík kivágása miatt történik. Ebben `boundingBox` az esetben a következőhöz hasonló értékek jelennek `min = [-2000, -5,-5], max = [-1990, 5,5]`meg: az x tengely nagy eltolásának használata példaként. Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` [modell átalakítási konfigurációjában](../how-tos/conversion/configure-model-conversion.md)a beállítást.
+* **A Box lehet középre igazított, de a nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén indul el, a geometriája minden irányban kikerül. Ebben `boundingBox` az esetben a tipikus értékek a következőképpen néznek ki `min = [-1000,-1000,-1000], max = [1000,1000,1000]`:. Az ilyen típusú probléma oka általában az egység méretezési eltérése. A kiegyenlítéshez az átalakítás során meg kell adnia egy [skálázási értéket](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) , vagy a megfelelő egységekkel kell megadnia a forrás modellt. A skálázás a legfelső szintű csomópontra is alkalmazható a modell futásidőben történő betöltésekor.
 
-**A Unity renderelési folyamat nem tartalmazza a renderelési horgokat:**
+**Az Unity Render folyamat nem tartalmazza a renderelési horgokat:**
 
-Az Azure remote rendering hooks a Unity renderelési folyamat a keret összetételét a videóval, és az újravetítés. A horgok létezésének ellenőrzéséhez nyissa meg az *Ablak > Elemzés > kerethibakereső menüt.* Engedélyezze, és győződjön meg `HolographicRemotingCallbackPass` arról, hogy két bejegyzés van a folyamatban:
+Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menü *ablakot > analysis > frame Debugger*. Engedélyezze, és győződjön meg arról, hogy a folyamat két `HolographicRemotingCallbackPass` bejegyzéssel rendelkezik:
 
-![Unity kerethiba-kereső](./media/troubleshoot-unity-pipeline.png)
+![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Egységkód nem fordít
+## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Unity kód nem fordítható le
 
-Váltson az Unity megoldás *buildtípusára* a **Debug**. Az ARR-t az Unity `UNITY_EDITOR` szerkesztőben tesztelve a meghatározás csak a "Debug" buildekben érhető el. Vegye figyelembe, hogy ez nem kapcsolódik az [üzembe helyezett alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt buildtípushoz, ahol a "Release" buildeket kell előnyben részesíteni.
+Állítsa át az Unity megoldás *Build típusát* a **hibakereséshez**. A Unity Editorban az ARR tesztelésekor a `UNITY_EDITOR` define parancs csak a "debug" buildek esetében érhető el. Vegye figyelembe, hogy ez nem kapcsolódik a [központilag telepített alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt Build típushoz, ahol a "Release" buildeket érdemes előnyben részesíteni.
 
-## <a name="unstable-holograms"></a>Instabil hologramok
+## <a name="unstable-holograms"></a>Instabil Hologramok
 
-Abban az esetben, ha úgy tűnik, hogy a renderelt objektumok a fejmozgásokkal együtt mozognak, problémákmerülhetnek fel a *késői szakaszújravetítéssel* (LSR). Az ilyen helyzet megközelítésével kapcsolatos útmutatásért tekintse meg a [késői szakasz átvetítéséről](../overview/features/late-stage-reprojection.md) szóló szakaszt.
+Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.
 
-Az instabil hologramok (ingadozó, hajlító, jittering vagy ugró hologramok) másik oka lehet a rossz hálózati kapcsolat, különösen az elégtelen hálózati sávszélesség vagy a túl nagy késleltetés. A hálózati kapcsolat minőségének jó mutatója a [teljesítménystatisztika](../overview/features/performance-queries.md) értéke. `ARRServiceStats.VideoFramesReused` Az újrafelhasznált keretek olyan helyzeteket jelölnek, amikor egy régi videokeretet újra fel kellett használni az ügyféloldalon, mert nem állt rendelkezésre új videoképkocka – például a csomagvesztés vagy a hálózati késés változásai miatt. Ha `ARRServiceStats.VideoFramesReused` gyakran nagyobb, mint nulla, ez hálózati problémára utal.
+Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ARRServiceStats.VideoFramesReused`. Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha `ARRServiceStats.VideoFramesReused` a értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
 
-Egy másik érték, `ARRServiceStats.LatencyPoseToReceiveAvg`hogy nézd meg is . Következetesen 100 ms alatt kell lennie. Ha magasabb értékeket lát, az azt jelzi, hogy túl távoli adatközponthoz csatlakozik.
+Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg`. Következetesen 100 MS alá kell esnie. Ha magasabb értékeket lát, ez azt jelzi, hogy egy túl távol lévő adatközponthoz csatlakozik.
 
-A lehetséges megoldások listáját a [hálózati kapcsolatra vonatkozó irányelvekben tetszési útmutatóban tetszései között található.](../reference/network-requirements.md#guidelines-for-network-connectivity)
+A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
 
 ## <a name="next-steps"></a>További lépések
 

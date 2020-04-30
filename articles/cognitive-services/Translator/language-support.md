@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás - Translator Text API
+title: Nyelvi támogatás – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: A Translator Text API a következő nyelveket támogatja a neurális gépi fordítás (NMT) használatával történő szöveg-szöveg fordításhoz.
+description: A Translator Text API a következő nyelveket támogatja szöveg-szöveg fordításához neurális gépi fordítás (NMT) használatával.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81684832"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és régiótámogatása
+# <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és területi támogatása
 
-A Translator Text API a következő nyelveket támogatja a szöveg-szöveg fordításhoz. Neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű AI-alapú gépi fordítások és elérhető alapértelmezett ként a Translator Text API V3-on, ha neurális rendszer áll rendelkezésre.
+A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordításához. A neurális gépi fordítás (NMT) a kiváló minőségű, mesterséges intelligenciát használó gépi fordítások új szabványa, amely a Translator Text API v3-as verziójában érhető el, amikor egy neurális rendszer elérhető.
 
 [További információ a gépi fordítás működéséről](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Fordítás
 
-**V2 fordító API**
+**V2 Translator API**
 
 > [!NOTE]
-> 2018. április 30-án a V2 elavult. Kérjük, telepítse át alkalmazásait a V3-ba, hogy kihasználja a kizárólag a V3-ban elérhető új funkciókat.
+> A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat.
 
-* Csak statisztikai: Nincs neurális rendszer érhető el ehhez a nyelvhez.
-* Neurális elérhető: Neurális rendszer áll rendelkezésre. Használja a `category=generalnn` paramétert a neurális rendszer eléréséhez.
-* Neurális alapértelmezett: Neurális az alapértelmezett fordítási rendszer. A paraméter `category=smt` segítségével érheti el a Microsoft Translator Hubkal használható statisztikai rendszert.
-* Csak neurális: Csak neurális fordítás érhető el.
+* Csak statisztikai: nincs elérhető neurális rendszer ehhez a nyelvhez.
+* Neurális elérhető: egy neurális rendszer áll rendelkezésre. Használja a paramétert `category=generalnn` a neurális rendszerek eléréséhez.
+* Neurális alapértékek: a neurális az alapértelmezett fordítási rendszer. A paraméter `category=smt` használatával férhet hozzá a statisztikai rendszerhez a Microsoft Translator hub használatával.
+* Csak neurális: csak neurális fordítás érhető el.
 
-**V3 fordító API** A V3 Translator API alapértelmezés szerint neurális, és a statisztikai rendszerek csak akkor érhetők el, ha nincs neurális rendszer létezik.
+**V3 Translator API** A v3 Translator API alapértelmezés szerint a neurális, a statisztikai rendszerek pedig csak akkor érhetők el, ha nem létezik neurális rendszer.
 
 > [!NOTE]
-> Jelenleg a neurális nyelvek egy részhalmaza érhető el az egyéni fordítóban, és fokozatosan továbbieket adunk hozzá. [Az Egyéni fordítóban jelenleg elérhető nyelvek megtekintése.](#customization)
+> Jelenleg a neurális nyelvek egy részhalmaza érhető el az egyéni fordítóban, és fokozatosan adunk hozzá továbbikat. [Az egyéni fordítóban jelenleg elérhető nyelvek megtekintése](#customization).
 
 |Nyelv|  Nyelvkód|  V3 API|
 |:-----|:-----:|:-----|
@@ -67,7 +67,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg-szöveg ford�
 |Haiti kreol|    `ht`        |Statisztikai|
 |Héber |`he`   |Neurális
 |Hindi| `hi`    |   Neurális|
-|Hmong Daw| `mww`   |   Statisztikai|
+|Hmong DAW| `mww`   |   Statisztikai|
 |Magyar| `hu`    |   Neurális|
 |Izlandi| `is`    |   Neurális|
 |Indonéz|    `id`    |   Statisztikai|
@@ -81,7 +81,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg-szöveg ford�
 |Koreai |`ko`   |   Neurális|
 |Lett|   `lv`    |   Neurális|
 |Litván|    `lt`    |   Neurális|
-|Málgas|  `mg`    |   Statisztikai|
+|Malgas|  `mg`    |   Statisztikai|
 |Maláj| `ms`        |Statisztikai|
 |malajálam| `ml` | Neurális
 |Máltai|   `mt`    |   Statisztikai|
@@ -93,7 +93,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg-szöveg ford�
 |Portugál (Brazília)|   `pt-br` |   Neurális|
 |Portugál (Portugália)| `pt-pt` | Neurális
 |pandzsábi|`pa`|Neurális
-|Queretaro Otomi|   `otq`   |   Statisztikai|
+|Queretaro otomi|   `otq`   |   Statisztikai|
 |Román|  `ro`    |   Neurális|
 |Orosz|   `ru`    |   Neurális|
 |Szamoai|    `sm`    |   Statisztikai|
@@ -116,38 +116,38 @@ A Translator Text API a következő nyelveket támogatja a szöveg-szöveg ford�
 |Yucatec Maya|  `yua`   |   Statisztikai|
 
 > [!NOTE]
-> A `pt` nyelvkód `pt-br`alapértelmezés szerint a portugál (Brazília) lesz.
+> `pt` A `pt-br`nyelvkód alapértelmezett értéke, Portugál (Brazília).
 
-## <a name="transliteration"></a>Átírás
+## <a name="transliteration"></a>Átbetűzésű
 
-A Transliterate metódus a következő nyelveket támogatja. A "To/From", "< -- >" azt jelzi, hogy a nyelv átírható vagy bármelyik felsorolt szkriptek. A "-->" azt jelzi, hogy a nyelv csak átírható az egyik forgatókönyvből a másikba.
+A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" kifejezés azt jelzi, hogy a nyelv a felsorolt parancsfájlokból vagy azok egyikére is átadható. A "-->" érték azt jelzi, hogy a nyelv csak az egyik parancsfájlból a másikba való átírására használható.
 
 | Nyelv    | Nyelvkód | Parancsfájl | Hová/honnan | Parancsfájl|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arab | `ar` | arab`Arab` | <--> | Latin`Latn` |
-|Bangla  | `bn` | bengáli`Beng` | <--> | Latin`Latn` |
-| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | Latin`Latn` |
+| Arab | `ar` | arab`Arab` | <--> | Latin betűs`Latn` |
+|Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
+| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | Latin betűs`Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | kínai (hagyományos)`Hant`|
-| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin`Latn` |
+| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin betűs`Latn` |
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | kínai (egyszerűsített)`Hans` |
-| gudzsaráti | `gu`  | gudzsaráti`Gujr` | --> | Latin`Latn` |
-| Héber | `he` | héber`Hebr` | <--> | Latin`Latn` |
-| Hindi | `hi` | Devanagari`Deva` | <--> | Latin`Latn` |
-| Japán | `ja` | japán`Jpan` | <--> | Latin`Latn` |
-| kannada | `kn` | kannada`Knda` | --> | Latin`Latn` |
-| malajálam | `ml` | malajálam`Mlym` | --> | Latin`Latn` |
-| marathi | `mr` | Devanagari`Deva` | --> | Latin`Latn` |
-| Oriya | `or` | Oriya`Orya` | <--> | Latin`Latn` |
-| pandzsábi | `pa` | Gurmukhi között`Guru`  | <--> | Latin`Latn`  |
-| Szerb (cirill betűs) | `sr-Cyrl` | Cirill`Cyrl`  | --> | Latin`Latn` |
-| Szerb (latin betűs) | `sr-Latn` | Latin`Latn` | --> | Cirill`Cyrl`|
-| tamil | `ta` | tamil`Taml` | --> | Latin`Latn` |
-| telugu | `te` | telugu`Telu` | --> | Latin`Latn` |
-| Thai | `th` | thai`Thai` | --> | Latin`Latn` |
+| gudzsaráti | `gu`  | gudzsaráti`Gujr` | --> | Latin betűs`Latn` |
+| Héber | `he` | héber`Hebr` | <--> | Latin betűs`Latn` |
+| Hindi | `hi` | Devanagari`Deva` | <--> | Latin betűs`Latn` |
+| Japán | `ja` | japán`Jpan` | <--> | Latin betűs`Latn` |
+| kannada | `kn` | kannada`Knda` | --> | Latin betűs`Latn` |
+| malajálam | `ml` | malajálam`Mlym` | --> | Latin betűs`Latn` |
+| marathi | `mr` | Devanagari`Deva` | --> | Latin betűs`Latn` |
+| Oriya | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
+| pandzsábi | `pa` | Gurmukhi`Guru`  | <--> | Latin betűs`Latn`  |
+| Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs`Cyrl`  | --> | Latin betűs`Latn` |
+| Szerb (latin betűs) | `sr-Latn` | Latin betűs`Latn` | --> | Cirill betűs`Cyrl`|
+| tamil | `ta` | tamil`Taml` | --> | Latin betűs`Latn` |
+| telugu | `te` | telugu`Telu` | --> | Latin betűs`Latn` |
+| Thai | `th` | thai`Thai` | --> | Latin betűs`Latn` |
 
 ## <a name="dictionary"></a>Szótár
 
-A szótár a következő nyelveket támogatja angolra vagy angolról a Keresés és a Példák módszerrel.
+A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a keresési és példákat használó módszerek használatával.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -170,7 +170,7 @@ A szótár a következő nyelveket támogatja angolra vagy angolról a Keresés 
 | Haiti kreol      | `ht`          |
 | Héber      | `he`          |
 | Hindi      | `hi`          |
-| Hmong Daw      | `mww`          |
+| Hmong DAW      | `mww`          |
 | Magyar      | `hu`          |
 | Izlandi    | `is`  |
 | Indonéz      | `id`          |
@@ -204,18 +204,18 @@ A szótár a következő nyelveket támogatja angolra vagy angolról a Keresés 
 
 ## <a name="detect"></a>Észlelés
 
-A Translator Text API észleli a fordításhoz és átíráshoz rendelkezésre álló összes nyelvet.
+Translator Text API észleli a fordításhoz és az íráshoz elérhető összes nyelvet.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>A Translator Text API nyelvi listájának elérése programozott módon
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programozott módon érheti el a Translator Text API nyelvi listáját
 
-A Translator Text API 3.0-s listájának lekérésével a Nyelvek metódus sal. A listát funkció, nyelvkód, valamint a nyelv neve angol vagy más támogatott nyelven tekintheti meg. Ezt a listát a Microsoft Translator szolgáltatás automatikusan frissíti, amint új nyelvek érhetők el.
+A támogatott nyelvek listáját a languages metódussal kérheti le a Translator Text API v 3.0-s verziójában. A listát a szolgáltatás, a Nyelvkód, valamint az angol nyelvű és más támogatott nyelven is megtekintheti. Ezt a listát a Microsoft Translator Service automatikusan frissíti, mivel a rendszer új nyelveket tesz elérhetővé.
 
-[Nyelvek műveleti referenciadokumentációjának megtekintése](reference/v3-0-languages.md)
+[Nyelvek megtekintése – útmutató – dokumentáció](reference/v3-0-languages.md)
 
 ## <a name="customization"></a>Testreszabás
 
-Az alábbi nyelvek az angol nyelvre vagy angolnyelvre történő testreszabáshoz érhetők el [az egyéni fordító](https://aka.ms/CustomTranslator)segítségével.
+Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a következő nyelvek érhetők el az angol nyelvre és a testreszabásra.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -247,7 +247,7 @@ Az alábbi nyelvek az angol nyelvre vagy angolnyelvre történő testreszabásho
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
-| Málgas| `mg`    |
+| Malgas| `mg`    |
 | maori| `mi`  |
 | Norvég      | `nb`          |
 | perzsa      | `fa`          |
@@ -269,6 +269,6 @@ Az alábbi nyelvek az angol nyelvre vagy angolnyelvre történő testreszabásho
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>A lista elérése a Microsoft Translator webhelyén
 
-A nyelvek gyors áttekintéséhez a Microsoft Translator webhelye a Fordító szöveg- és beszédfelismerési API-i által támogatott összes nyelvet megjeleníti. Ez a lista nem tartalmaz fejlesztőspecifikus információkat, például nyelvkódokat.
+A nyelvek gyors áttekintéséhez a Microsoft Translator webhelyén a Translator Text és a Speech API-k által támogatott összes nyelv látható. Ez a lista nem tartalmazza a fejlesztői adatokat, például a nyelvi kódokat.
 
-[A nyelvek listájának megtekintése](https://www.microsoft.com/translator/languages.aspx)
+[A nyelvek listája](https://www.microsoft.com/translator/languages.aspx)

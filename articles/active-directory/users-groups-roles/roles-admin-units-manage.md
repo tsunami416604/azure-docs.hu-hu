@@ -1,6 +1,6 @@
 ---
-title: Felügyeleti egységek hozzáadása és eltávolítása (előzetes verzió) – Azure Active Directory | Microsoft dokumentumok
-description: Felügyeleti egységek használatával korlátozhatja a szerepkör-engedélyek hatókörét az Azure Active Directoryban.
+title: Felügyeleti egységek hozzáadása és eltávolítása (előzetes verzió) – Azure Active Directory | Microsoft Docs
+description: A felügyeleti egységekkel korlátozhatja a szerepkör-engedélyek hatókörét Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,27 +15,27 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684915"
 ---
-# <a name="manage-administrative-units-in-azure-active-directory"></a>Felügyeleti egységek kezelése az Azure Active Directoryban
+# <a name="manage-administrative-units-in-azure-active-directory"></a>Felügyeleti egységek kezelése Azure Active Directory
 
-Részletesebb felügyeleti vezérlés az Azure Active Directoryban (Azure AD), a felhasználók hozzárendelhető egy Azure AD-szerepkör egy hatóköre, amely egy vagy több felügyeleti egység (AUs) csak.
+A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez a felhasználókat hozzárendelheti egy Azure AD-szerepkörhöz olyan hatókörrel, amely egy vagy több felügyeleti egységre (AUs) korlátozódik.
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Ha a következő utasításokból szeretne lekérdezéseket futtatni a [Graph Explorer en](https://aka.ms/ge)keresztül, tegye a következőket:
+1. Ha a [Graph Explorerben](https://aka.ms/ge)a következő utasítások alapján szeretne lekérdezéseket futtatni, tegye a következőket:
 
-    a. Az Azure Portalon nyissa meg az Azure AD.In the Azure Portal, go to Azure AD. Az alkalmazások listájában válassza a **Graph Explorer**lehetőséget, majd a **Rendszergazdai hozzájárulás megadása a Graph Explorer programhoz**lehetőséget.
+    a. A Azure Portal nyissa meg az Azure AD-t. Az alkalmazások listában válassza a **Graph Explorer**lehetőséget, majd válassza a **rendszergazdai jóváhagyás megadása a Graph Explorerben**lehetőséget.
 
-    ![Képernyőkép a "Rendszergazdai hozzájárulás megadása" hivatkozásra](./media/roles-admin-units-manage/select-graph-explorer.png)
+    ![A "rendszergazdai jóváhagyás megadása" hivatkozást ábrázoló képernyőkép](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. A Graph Explorer **beta** ben válassza ki a bétaverziót.
+    b. A Graph Explorerben válassza ki a **bétaverzió** verzióját.
 
-    ![A kiválasztott bétaverziót bemutató képernyőkép](./media/roles-admin-units-manage/select-beta-version.png)
+    ![A kiválasztott béta-verziót bemutató képernyőkép](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. Használja az Azure AD PowerShell előzetes verzióját.
 
@@ -43,26 +43,26 @@ Részletesebb felügyeleti vezérlés az Azure Active Directoryban (Azure AD), a
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure Portalon nyissa meg az Azure AD-t, majd a bal oldali ablaktáblában válassza a **Felügyeleti egységek**lehetőséget.
+1. A Azure Portalban nyissa meg az Azure AD-t, majd a bal oldali panelen válassza a **felügyeleti egységek**elemet.
 
     ![Képernyőkép a felügyeleti egységek (előzetes verzió) hivatkozásáról az Azure AD-ben](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
-1. Válassza **a Hozzáadás** lehetőséget, majd írja be a felügyeleti egység nevét. Szükség esetén adja meg a felügyeleti egység leírását.
+1. Válassza a **Hozzáadás** lehetőséget, majd adja meg a felügyeleti egység nevét. Opcionálisan a felügyeleti egység leírását is hozzáadhatja.
 
-    ![Képernyőkép a Hozzáadás gombról és a felügyeleti egység nevének beírásához](./media/roles-admin-units-manage/add-new-admin-unit.png)
+    ![Képernyőkép az Add (Hozzáadás) gombra, és a szövegmezőbe írja be a felügyeleti egység nevét.](./media/roles-admin-units-manage/add-new-admin-unit.png)
 
 1. A felügyeleti egység véglegesítéséhez válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
-Telepítse az Azure AD PowerShellt (előzetes verziót) a következő parancsok futtatása előtt:
+Telepítse az Azure AD PowerShellt (előzetes verzió), mielőtt megpróbálja futtatni a következő parancsokat:
 
     Connect-AzureAD
     New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 
-Szükség szerint módosíthatja az idézőjelek közé zárt értékeket.
+Az idézőjelek közé foglalt értékeket igény szerint módosíthatja.
 
-### <a name="use-microsoft-graph"></a>A Microsoft Graph használata
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
 
     Http Request
     POST /administrativeUnits
@@ -74,22 +74,22 @@ Szükség szerint módosíthatja az idézőjelek közé zárt értékeket.
 
 ## <a name="remove-an-administrative-unit"></a>Felügyeleti egység eltávolítása
 
-Az Azure AD-ben eltávolíthatja a felügyeleti egységek, amelyek már nincs szüksége a felügyeleti szerepkörök hatókörének egységeként.
+Az Azure ad-ben eltávolíthatja azt a felügyeleti egységet, amelyre már nincs szüksége a felügyeleti szerepkörök hatókörének egysége.
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure Portalon nyissa meg az **Azure AD** > **felügyeleti egységek.** 
-1. Jelölje ki a törölni kívánt felügyeleti egységet, majd kattintson a **Törlés gombra.** 
-1. A felügyeleti egység törlésének megerősítéséhez válassza az **Igen**lehetőséget. A közigazgatási egység törlődik.
+1. A Azure Portal nyissa meg az **Azure ad** > **felügyeleti egységeit**. 
+1. Válassza ki a törölni kívánt felügyeleti egységet, majd válassza a **Törlés**lehetőséget. 
+1. Annak megerősítéséhez, hogy törölni kívánja a felügyeleti egységet, válassza az **Igen**lehetőséget. A felügyeleti egység törölve lett.
 
-![Képernyőkép a felügyeleti egység Törlése gombról és a megerősítési ablakról](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
+![A felügyeleti egység törlése gomb és a megerősítési ablak képernyőképe](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
     $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
     Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
 
-Az idézőjelek közé zárt értékeket az adott környezethez szükséges módon módosíthatja.
+Az idézőjelek közé foglalt értékeket módosíthatja az adott környezethez szükséges módon.
 
 ### <a name="use-the-graph-api"></a>A Graph API használata
 
