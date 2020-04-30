@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "74027112"
+ms.locfileid: "82582872"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Csoporttagok automatikus hozzáadása és eltávolítása
 
-Az Azure Active Directory (Azure AD) szolgáltatásban automatikusan adhat hozzá vagy távolíthat el felhasználókat a biztonsági vagy Office 365-csoportokban, így ezt nem kell minden alkalommal manuálisan elvégeznie. Ha egy felhasználó vagy eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli a dinamikus csoportokra vonatkozó összes szabályt a bérlőn, és ezáltal ellenőrzi, hogy a változás magával vonja-e tagok hozzáadását vagy eltávolítását.
+Az Azure Active Directory (Azure AD) szolgáltatásban automatikusan adhat hozzá vagy távolíthat el felhasználókat a biztonsági vagy Office 365-csoportokban, így ezt nem kell minden alkalommal manuálisan elvégeznie. Ha a felhasználó vagy az eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli az Azure AD-szervezet összes dinamikus csoportjának szabályait, hogy megtekintse, hogy a módosításnak tagokat kell-e hozzáadnia vagy eltávolítania
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a szolgáltatáshoz egy prémium szintű Azure AD licencre van szükség a bérlő globális rendszergazdája számára. Ha még nem rendelkezik ilyennel, az Azure ad-ben válassza a **licencek** > **termékek** > **kipróbálás/vásárlás**lehetőséget.
+Ehhez a szolgáltatáshoz egy prémium szintű Azure AD licencre van szükség a szervezet globális rendszergazdája számára. Ha még nem rendelkezik ilyennel, az Azure ad-ben válassza a **licencek** > **termékek** > **kipróbálás/vásárlás**lehetőséget.
 
-A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinamikus csoportok tagjai lehessenek. Csupán a bérlőn elérhető minimális számú prémium szintű Azure AD P1 licencre van szükség az összes ilyen felhasználó lefedéséhez. 
+A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinamikus csoportok tagjai lehessenek. A szervezetben csak a rendelkezésre álló prémium szintű Azure AD P1-licencek minimális száma szükséges, hogy az összes ilyen felhasználóra vonatkozzon. 
 
 ## <a name="create-a-group-of-guest-users"></a>Vendégfelhasználók csoportjának létrehozása
 
 Először létrehozunk egy csoportot az egy partnervállalatból származó vendégfelhasználók számára. Esetükben speciális licencelésre van szükség, ezért érdemes erre a célra létrehozni egy csoportot.
 
-1. Jelentkezzen be a Azure Portalbahttps://portal.azure.com) (egy olyan fiókkal, amely a bérlő globális rendszergazdája.
+1. Jelentkezzen be a Azure Portalbahttps://portal.azure.com) (egy olyan fiókkal, amely a szervezet globális rendszergazdája.
 2. Válassza **Azure Active Directory** > **csoportok** > **új csoport**lehetőséget.
    ![új csoport indításához válassza a parancs lehetőséget](./media/groups-dynamic-tutorial/new-group.png)
 3. A **Csoport** panelen:
@@ -80,7 +80,7 @@ Most, hogy létrejött az új csoport, hozzárendelheti a partnerek számára sz
 
 ## <a name="remove-guests-from-all-users-group"></a>Vendégek eltávolítása a Minden felhasználó csoportból
 
-Tegyük fel, hogy a végső cél, hogy idővel az összes vendégfelhasználót saját csoportokba rendelje vállalat szerint. Most már módosíthatja a **Minden felhasználó** csoportot is, hogy csak a bérlőn lévő tagfelhasználók számára legyen fenntartva. Így aztán olyan alkalmazások és licencek hozzárendeléséhez használhatja, amelyek kimondottan a saját cégéhez tartoznak.
+Tegyük fel, hogy a végső cél, hogy idővel az összes vendégfelhasználót saját csoportokba rendelje vállalat szerint. A **minden felhasználó** csoportot úgy is módosíthatja, hogy csak a szervezet tagjai számára legyen fenntartva. Így aztán olyan alkalmazások és licencek hozzárendeléséhez használhatja, amelyek kimondottan a saját cégéhez tartoznak.
 
    ![A Minden felhasználó csoport módosítása, hogy csak a tagokat tartalmazza](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ Tegyük fel, hogy a végső cél, hogy idővel az összes vendégfelhasználót 
 
 **A vendégfelhasználók csoportjának eltávolítása**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a bérlő globális rendszergazdai fiókjával.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
 2. Válassza ki **Azure Active Directory** > **csoportokat**. Válassza ki a **Guest users Contoso** csoportot, majd kattintson a három pontra (...), és végül a **Törlés** elemre. A csoport törlésekor minden hozzárendelt licenc el lesz távolítva.
 
 **A Minden felhasználó csoport visszaállítása**

@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535349"
+ms.locfileid: "82583317"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -40,7 +40,7 @@ Az oktatóanyag elkezdése előtt:
 1. [Tekintse át](hyper-v-migration-architecture.md) a Hyper-V áttelepítési architektúrát.
 2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) A Hyper-V gazdagépre vonatkozó követelmények és a Hyper-V-gazdagépek eléréséhez szükséges Azure URL-címek.
 3. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket. A Hyper-V virtuális gépeknek meg kell felelniük az Azure-beli virtuálisgép- [követelményeknek](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
-2. Javasoljuk, hogy az ebben a sorozatban szereplő korábbi oktatóanyagokat végezze el. Az [első oktatóanyag](tutorial-prepare-hyper-v.md) bemutatja, hogyan állíthatja be az Azure-t és a Hyper-V-t az áttelepítéshez. A második oktatóanyag bemutatja, hogyan végezheti el [a Hyper-V virtuális gépek felmérése] (oktatóanyag-Assessment-Hyper-v.md az áttelepítés előtt, Azure Migrate használatával: kiszolgáló értékelése. 
+2. Javasoljuk, hogy az ebben a sorozatban szereplő korábbi oktatóanyagokat végezze el. Az [első oktatóanyag](tutorial-prepare-hyper-v.md) bemutatja, hogyan állíthatja be az Azure-t és a Hyper-V-t az áttelepítéshez. A második oktatóanyag bemutatja, hogyan [értékelheti ki a Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) az áttelepítés előtt, Azure Migrate: Server Assessment használatával. 
     > [!NOTE]
     > Bár javasoljuk, hogy kipróbáljon egy értékelést, a virtuális gépek áttelepítését megelőzően nem kell értékelést futtatnia.
     > A Hyper-V virtuális gépek áttelepítéséhez Azure Migrate: a kiszolgáló áttelepítése szoftver-ügynököket (Microsoft Azure Site Recovery providert és Microsoft Azure Recovery Service Agent ügynököt) futtat a Hyper-V-gazdagépeken vagy-fürtcsomópontokon, hogy az adatszerkezetet és a replikálást a Azure Migrateba. A [Azure Migrate berendezés](migrate-appliance.md) nem használatos a Hyper-V áttelepítéséhez.
