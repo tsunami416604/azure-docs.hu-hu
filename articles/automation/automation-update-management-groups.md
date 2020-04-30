@@ -1,42 +1,42 @@
 ---
-title: Dinamikus csoportok használata az Azure Automation Update Management szolgáltatással
-description: Ez a cikk ismerteti, hogyan működik a dinamikus csoportok az Azure Automation Update Management.
+title: Dinamikus csoportok használata Azure Automation Update Management
+description: Ez a cikk azt ismerteti, hogyan működnek a dinamikus csoportok a Azure Automation Update Managementokkal.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 29a72eb1fe7b8be18cd2160fc63160e408378585
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617437"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dinamikus csoportok használata az Update Managementtel
 
-Update Management lehetővé teszi, hogy az Azure vagy a nem Azure virtuális gépek dinamikus csoportját célozza meg a frissítési központi telepítésekhez. Ezek a lekérdezések által meghatározott csoportok kiértékelése üzembe helyezéskor történik, így nem kell a központi telepítést a gépek hozzáadásához.
+A Update Management lehetővé teszi az Azure-beli vagy nem Azure-beli virtuális gépek dinamikus csoportjának megcélzását a frissítések központi telepítéséhez. A lekérdezések által definiált csoportok kiértékelése a központi telepítés idejére történik, így nem kell módosítania a központi telepítést a gépek hozzáadásához.
 
 ## <a name="azure-machines"></a>Azure-gépek
 
-A dinamikus csoportok nem működnek a klasszikus virtuális gépek. A lekérdezés definiálásakor a következő elemek használhatók együtt egy dinamikus csoport feltöltéséhez:
+A dinamikus csoportok nem működnek a klasszikus virtuális gépekkel. A lekérdezés meghatározásakor a következő elemek együtt használhatók dinamikus csoportok feltöltéséhez:
 
 * Előfizetés
 * Erőforráscsoportok
 * Helyek
 * Címkék
 
-![Csoportok kijelölése](./media/automation-update-management/select-groups.png)
+![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
 
-A dinamikus csoport eredményeinek megtekintéséhez kattintson az **Előnézet gombra.** Az előnézet az aktuális időpontban mutatja a csoporttagságot. A példában olyan gépeket keresünk, `Role` amelyek a **BackendServer**csoport címkéjével rendelkeznek. Ha több gép hez hozzáadódik ez a címke, azok hozzáadódnak az adott csoport on-k on-t a jövőbeli központi telepítésekhez.
+Egy dinamikus csoport eredményének megtekintéséhez kattintson az **előnézet**gombra. Az előnézet megjeleníti a csoporttagság aktuális időpontját. A példában olyan gépeket keresünk, amelyek címkével `Role` rendelkeznek a csoport **BackendServer**. Ha további gépek szerepelnek a címkén, akkor azokat a rendszer az adott csoportra vonatkozó jövőbeli központi telepítésekhez adja hozzá.
 
-![előnézeti csoportok](./media/automation-update-management/preview-groups.png)
+![előzetes verziójú csoportok](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Nem Azure-alapú gépek
+## <a name="non-azure-machines"></a>Nem Azure-beli gépek
 
-A nem Azure-alapú gépek, mentett keresések, más néven számítógépcsoportok, a dinamikus csoport létrehozásához használt. A mentett keresés létrehozásáról a [Számítógépcsoport létrehozása](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)című témakörben olvashat. A csoport létrehozása után kiválaszthatja azt a mentett keresések listájából. Az **Előnézet gombra** kattintva megtekintheti az adott időpontban mentett keresésben lévő számítógépek előnézetét.
+A nem Azure-beli gépek esetében a mentett keresések, más néven számítógépcsoportok, a dinamikus csoport létrehozásához használatosak. A mentett keresések létrehozásáról további információt a [számítógépcsoport létrehozása](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)című témakörben talál. A csoport létrehozása után kiválaszthatja a mentett keresések listájából. Az **előnézet** gombra kattintva megtekintheti a mentett keresésben lévő számítógépeket.
 
-![Csoportok kijelölése](./media/automation-update-management/select-groups-2.png)
+![Csoportok kiválasztása](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Dinamikus csoport létrehozása után [létrehozhat egy központi telepítést.](automation-tutorial-update-management.md)
+A dinamikus csoport létrehozása után [létrehozhat egy frissítés központi telepítését](automation-tutorial-update-management.md).

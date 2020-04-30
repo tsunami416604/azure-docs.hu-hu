@@ -1,6 +1,6 @@
 ---
-title: Azure MFA-képességek biztosítása a n-ps használatával – Azure Active Directory
-description: Felhőalapú kétlépéses ellenőrzési lehetőségek hozzáadása a meglévő hitelesítési infrastruktúrához
+title: Azure MFA-képességek biztosítása az NPS használatával – Azure Active Directory
+description: Felhőalapú kétlépéses ellenőrzési funkciók hozzáadása a meglévő hitelesítési infrastruktúrához
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,75 +12,75 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617656"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
-Az Azure MFA hálózati házirend-kiszolgáló (NPS) bővítménye felhőalapú MFA-képességeket ad a hitelesítési infrastruktúrához a meglévő kiszolgálók használatával. A hálózati kiszolgáló kiterjesztéssel új kiszolgálók telepítése, konfigurálása és karbantartása nélkül adhat hozzá telefonhívást, sms-t vagy telefonos alkalmazásellenőrzést a meglévő hitelesítési folyamathoz. 
+Az Azure MFA hálózati házirend-kiszolgáló (NPS) bővítménye felhőalapú MFA-képességeket biztosít a hitelesítési infrastruktúrához a meglévő kiszolgálók használatával. A hálózati házirend-kiszolgáló bővítmény használatával telefonhívást, szöveges üzenetet vagy telefonos alkalmazást is hozzáadhat a meglévő hitelesítési folyamathoz anélkül, hogy új kiszolgálókat kellene telepítenie, konfigurálnia és karbantartani. 
 
-Ez a bővítmény olyan szervezetek számára készült, amelyek az Azure MFA-kiszolgáló telepítése nélkül szeretnék megvédeni a VPN-kapcsolatokat. A hálózati kiszolgáló bővítmény a RADIUS és a felhőalapú Azure MFA közötti adapterként működik, hogy egy második hitelesítési tényezőt biztosítson az összevont vagy szinkronizált felhasználók számára.
+Ez a bővítmény olyan szervezetek számára lett létrehozva, amelyek az Azure MFA-kiszolgáló telepítése nélkül szeretnék védelemmel ellátni a VPN-kapcsolatokat. A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS és a felhőalapú Azure MFA között, hogy az összevont vagy szinkronizált felhasználók hitelesítésének második tényezője legyen.
 
-Ha a nps bővítményt használja az Azure MFA-hoz, a hitelesítési folyamat a következő összetevőket tartalmazza: 
+Az Azure MFA NPS-bővítményének használatakor a hitelesítési folyamat a következő összetevőket tartalmazza: 
 
-1. **A NAS/VPN-kiszolgáló** kéréseket fogad a VPN-ügyfelektől, és azokat RADIUS-kérelmekké alakítja át a nps-kiszolgálókra. 
-2. **A hálózat-működtető kiszolgáló** csatlakozik az Active Directoryhoz, hogy végrehajtsa az elsődleges hitelesítést a RADIUS-kérelmekhez, és sikeres en a kérést továbbítja a telepített bővítményeknek.  
-3. **NPS-bővítmény** elindítja a másodlagos hitelesítésaz Azure MFA-nak irányuló kérelmet. Miután a bővítmény megkapja a választ, és ha az MFA-kihívás sikeres, befejezi a hitelesítési kérelmet azáltal, hogy a nps-kiszolgáló biztonsági jogkivonatokat, amelyek tartalmazzák az Azure STS által kiadott MFA-jogcímet.  
-4. **Az Azure MFA** kommunikál az Azure Active Directoryval a felhasználó adatainak lekéréséhez, és végrehajtja a másodlagos hitelesítést a felhasználó számára konfigurált ellenőrzési módszerrel.
+1. A **NAS/VPN-kiszolgáló** fogadja a VPN-ügyfelektől érkező kéréseket, és RADIUS-kérelmekre konvertálja azokat a hálózati házirend-kiszolgálók 
+2. A **hálózati házirend-kiszolgáló** csatlakozik a Active Directoryhoz a RADIUS-kérelmek elsődleges hitelesítésének végrehajtásához, és a sikeres művelet után átadja a kérést a telepített bővítményeknek.  
+3. A **hálózati házirend-kiszolgáló bővítmény** a másodlagos hitelesítésre vonatkozó kérelmet indít az Azure MFA-nak. Ha a bővítmény megkapja a választ, és ha az MFA-kérdés sikeres, akkor a hitelesítési kérést úgy hajtja végre, hogy a hálózati házirend-kiszolgálót olyan biztonsági jogkivonatokkal biztosítja, amelyekben az Azure STS által kiadott MFA-jogcím szerepel.  
+4. Az **Azure MFA** Azure Active Directory a felhasználó adatainak lekérésére és a másodlagos hitelesítés elvégzésére a felhasználóhoz konfigurált ellenőrzési módszer használatával.
 
-Az alábbi ábra ezt a magas szintű hitelesítési kérelemfolyamatot mutatja be: 
+A következő ábra a magas szintű hitelesítési kérelmek folyamatát szemlélteti: 
 
-![Hitelesítési folyamatdiagram](./media/howto-mfa-nps-extension/auth-flow.png)
+![Hitelesítési folyamat diagramja](./media/howto-mfa-nps-extension/auth-flow.png)
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
 
-A hálózati szolgáltatás-kezelő bővítmény automatikusan kezeli a redundanciát, így nincs szükség speciális konfigurációra.
+A hálózati házirend-kiszolgáló bővítménye automatikusan kezeli a redundanciát, így nincs szükség speciális konfigurációra.
 
-Annyi Azure MFA-kompatibilis hálózati kiszolgálót hozhat létre, amennyire szüksége van. Ha több kiszolgálót telepít, mindegyikhez használjon különbségügyfél-tanúsítványt. Ha minden kiszolgálóhoz tanúsítványt hoz létre, az azt jelenti, hogy minden tanúsítványt külön-külön frissíthet, és nem kell aggódnia az összes kiszolgáló állásideje miatt.
+Annyi Azure MFA-kompatibilis hálózati házirend-kiszolgálót hozhat létre, amennyire csak szüksége van. Ha több kiszolgálót is telepít, akkor mindegyikhez meg kell egyeznie a különbözeti ügyféltanúsítvány használatával. Az egyes kiszolgálókhoz tartozó tanúsítványok létrehozása azt jelenti, hogy az egyes tanúsítványokat egyenként is frissítheti, és nem kell aggódnia az összes kiszolgáló leállásával szemben.
 
-A VPN-kiszolgálók továbbítják a hitelesítési kérelmeket, ezért tisztában kell lenniük az új Azure MFA-kompatibilis hálózati kiszolgálókkal.
+A VPN-kiszolgálók átirányítják a hitelesítési kéréseket, így tudniuk kell az új Azure MFA-kompatibilis NPS-kiszolgálókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A nps-bővítmény célja, hogy működjön együtt a meglévő infrastruktúrával. A kezdés előtt győződjön meg arról, hogy rendelkezik az alábbi előfeltételekkel.
+A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a meglévő infrastruktúrával. Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e az alábbi előfeltételekkel.
 
 ### <a name="licenses"></a>Licencek
 
-Az Azure MFA-bővítménye az [Azure többtényezős hitelesítéshez licencet](multi-factor-authentication.md) szolgáltató ügyfelek számára érhető el (az Azure AD Premium, EMS vagy egy MFA önálló licenc tartalmazza). Az Azure MFA-hoz, például felhasználónkénti vagy hitelesítési licencek fogyasztásalapú licencei nem kompatibilisek a nps-bővítménylel. 
+Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](multi-factor-authentication.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
 
 ### <a name="software"></a>Szoftverek
 
-Windows Server 2008 R2 SP1 vagy újabb szervizcsomag.
+Windows Server 2008 R2 SP1 vagy újabb.
 
 ### <a name="libraries"></a>Kódtárak
 
-Ezek a könyvtárak automatikusan települnek a bővítménylel együtt.
+Ezek a kódtárak automatikusan települnek a bővítménnyel.
 
-- [Visual C++ terjeszthető csomagok a Visual Studio 2013-hoz (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory module for Windows PowerShell 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Vizuális C++ újraterjeszthető csomagok a Visual Studio 2013 (x64) rendszerhez](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Azure Active Directory modul a Windows PowerShell-verzió 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
-A Microsoft Azure Active Directory module for Windows PowerShell telepítve van, ha még nincs jelen, egy konfigurációs parancsfájlon keresztül futtatja a telepítési folyamat részeként. Nincs szükség a modul idő előtti telepítésére, ha még nincs telepítve.
+A Windows PowerShell Microsoft Azure Active Directory modulja telepítve van, ha még nem létezik, a telepítési folyamat részeként futtatott konfigurációs parancsfájllal. Ha még nincs telepítve, a modult nem kell telepítenie az idő előtt.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Mindenki használja a n-ps-bővítményt kell szinkronizálni az Azure Active Directory az Azure AD Connect használatával, és regisztrálni kell a MFA.
+A hálózati házirend-kiszolgáló bővítményt használó mindenki számára Azure AD Connect használatával kell szinkronizálni Azure Active Directory, és az MFA-hoz kell regisztrálni.
 
-A bővítmény telepítésekor szüksége van a címtár-azonosító és a rendszergazdai hitelesítő adatok az Azure AD-bérlő. A címtárazonosítót az [Azure Portalon](https://portal.azure.com)találja. Jelentkezzen be rendszergazdaként. Keresse meg és jelölje ki az **Azure Active Directoryt,** majd válassza a **Tulajdonságok**lehetőséget. Másolja a guid azonosítót a **címtárazonosító** mezőbe, és mentse. Ezt a GUID azonosítót használja bérlői azonosítóként a nps-bővítmény telepítésekor.
+A bővítmény telepítésekor szüksége lesz az Azure AD-bérlő címtár-AZONOSÍTÓra és rendszergazdai hitelesítő adataira. A címtár AZONOSÍTÓját a [Azure Portalban](https://portal.azure.com)találja. Jelentkezzen be rendszergazdaként. Keresse meg és válassza ki a **Azure Active Directory**, majd válassza a **Tulajdonságok**lehetőséget. Másolja a GUID azonosítót a **címtár-azonosító** mezőbe, és mentse. Ezt a GUID azonosítót használja bérlői azonosítóként a hálózati házirend-kiszolgáló bővítményének telepítésekor.
 
-![A címtárazonosító megkeresése az Azure Active Directory-tulajdonságok alatt](./media/howto-mfa-nps-extension/properties-directory-id.png)
+![A címtár AZONOSÍTÓjának megkeresése Azure Active Directory tulajdonságok területen](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-A nps-kiszolgálónak képesnek kell lennie a következő URL-címekkel kommunikálni a 80-as és 443-as portokon keresztül.
+Az NPS-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címekkel a 80-es és a 443-es porton keresztül.
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https:\//credentials.azure.com
+- https:\//credentials.Azure.com
 
-Ezenkívül a következő URL-címekhez való kapcsolódás szükséges az adapter telepítésének befejezéséhez [a megadott PowerShell-parancsfájl használatával](#run-the-powershell-script)
+Emellett a következő URL-címekhez való kapcsolódás szükséges az [adapter megadott PowerShell-parancsfájl használatával](#run-the-powershell-script) történő végrehajtásához.
 
 - https:\//login.microsoftonline.com
 - https:\//provisioningapi.microsoftonline.com
@@ -88,194 +88,194 @@ Ezenkívül a következő URL-címekhez való kapcsolódás szükséges az adapt
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-A nps-bővítmény telepítése előtt fel szeretné készíteni a környezetet a hitelesítési forgalom kezelésére.
+A hálózati házirend-kiszolgáló bővítmény telepítése előtt elő szeretné készíteni a környezetet a hitelesítési forgalom kezeléséhez.
 
-### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>A hálózati kiszolgáló szerepkör engedélyezése tartományhoz csatlakozó kiszolgálón
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>Hálózati házirend-kiszolgáló szerepkör engedélyezése tartományhoz csatlakoztatott kiszolgálón
 
-A n-ps-kiszolgáló csatlakozik az Azure Active Directoryhoz, és hitelesíti az MFA-kérelmeket. Válasszon egy kiszolgálót ehhez a szerepkörhöz. Azt javasoljuk, hogy olyan kiszolgálót válasszon, amely nem kezeli a más szolgáltatásokból érkező kéréseket, mert a nps-bővítmény hibákat okoz a nem RADIUS-kérelmeknél. A hálózat-működtető kiszolgálót a környezet elsődleges és másodlagos hitelesítési kiszolgálójaként kell beállítani; nem tud RADIUS-kérelmeket proxyolni egy másik kiszolgálóra.
+Az NPS-kiszolgáló csatlakozik Azure Active Directoryhoz, és hitelesíti az MFA-kérelmeket. Válasszon egy kiszolgálót ehhez a szerepkörhöz. Azt javasoljuk, hogy olyan kiszolgálót válasszon, amely nem kezeli más szolgáltatások kéréseit, mert a hálózati házirend-kiszolgáló bővítmény hibát jelez a nem RADIUS-kérelmeknél. A hálózati házirend-kiszolgálót a környezet elsődleges és másodlagos hitelesítési kiszolgálójának kell beállítania; a RADIUS-kérések nem adhatók át másik kiszolgálónak.
 
-1. A kiszolgálón nyissa meg a **Szerepkörök és szolgáltatások hozzáadása varázslót** a Kiszolgálókezelő rövid útmutató menüjéből.
-2. Válassza **a szerepkör- vagy szolgáltatásalapú telepítést** a telepítési típushoz.
-3. Válassza a **Hálózati házirend és az Access Services** kiszolgálói szerepkört. Egy ablak jelenhet meg, amely tájékoztatja a szerepkör futtatásához szükséges szolgáltatásokról.
-4. Folytassa a varázslón keresztül a Megerősítés lapig. Válassza az **Install** (Telepítés) lehetőséget.
+1. A kiszolgálón nyissa meg a **szerepkörök és szolgáltatások hozzáadása varázslót** a Kiszolgálókezelő Gyorsindítás menüjéből.
+2. Válassza a **szerepkör-alapú vagy a szolgáltatáson alapuló telepítést** a telepítési típushoz.
+3. Válassza ki a **hálózati házirend-és elérési szolgáltatások** kiszolgálói szerepkört. Előfordulhat, hogy egy ablak felugró ablakban értesíti a szükséges szolgáltatásokat a szerepkör futtatásához.
+4. Folytassa a varázslót a megerősítési oldalig. Válassza az **Install** (Telepítés) lehetőséget.
 
-Most, hogy van egy kijelölt kiszolgálója a hálózati kiszolgálószámára, a kiszolgálót is úgy kell konfigurálnia, hogy kezelje a VPN-megoldásból érkező RADIUS-kérelmeket.
+Most, hogy már rendelkezik egy kiszolgálóval a hálózati házirend-kiszolgáló számára, konfigurálnia kell a kiszolgálót a bejövő RADIUS-kérések kezelésére is a VPN-megoldásból.
 
-### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>A VPN-megoldás konfigurálása a hálózati kiszolgálóval való kommunikációhoz
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>VPN-megoldás konfigurálása a hálózati házirend-kiszolgálóval való kommunikációhoz
 
-Attól függően, hogy melyik VPN-megoldást használja, a RADIUS-hitelesítési házirend konfigurálásának lépései eltérőek lehetnek. Konfigurálja úgy ezt a házirendet, hogy a RADIUS hálózati házirend-kiszolgálóra mutasson.
+Attól függően, hogy melyik VPN-megoldást használja, a RADIUS-hitelesítési házirend konfigurálásának lépései eltérőek. Konfigurálja ezt a házirendet úgy, hogy az a RADIUS NPS-kiszolgálóra mutasson.
 
 ### <a name="sync-domain-users-to-the-cloud"></a>Tartományi felhasználók szinkronizálása a felhővel
 
-Ez a lépés már befejeződött a bérlőn, de érdemes kétszer ellenőrizni, hogy az Azure AD Connect nemrég szinkronizálta-e az adatbázisokat.
+Lehetséges, hogy ez a lépés már készen áll a bérlőre, de érdemes megnéznie, hogy a Azure AD Connect nemrég szinkronizálta-e az adatbázisokat.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) rendszergazdaként.
-2. Válassza az **Azure Active Directory** > **Azure AD Connect lehetőséget**
-3. Ellenőrizze, hogy a szinkronizálási állapota **engedélyezve van-e,** és hogy az utolsó szinkronizálás kevesebb mint egy órával ezelőtt volt-e.
+1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
+2. **Azure Active Directory** > kiválasztása**Azure ad Connect**
+3. Ellenőrizze, hogy a szinkronizálási állapot **engedélyezve** van-e, és hogy az utolsó szinkronizálás kevesebb mint egy órával ezelőtt történt-e.
 
-Ha egy új szinkronizálási körre van szüksége, akkor az [Azure AD Connect szinkronizálási: Ütemező](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)című útmutató utasításait.
+Ha új szinkronizálási kört kell kiindulnia, akkor [Azure ad Connect Sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)utasításait.
 
-### <a name="determine-which-authentication-methods-your-users-can-use"></a>Annak meghatározása, hogy a felhasználók milyen hitelesítési módszereket használhatnak
+### <a name="determine-which-authentication-methods-your-users-can-use"></a>A felhasználók által használható hitelesítési módszerek meghatározása
 
-A nps-bővítmény telepítésével két tényező befolyásolja, hogy mely hitelesítési módszerek érhetők el:
+Két tényező befolyásolja, hogy mely hitelesítési módszerek érhetők el egy NPS-bővítmény üzembe helyezésével:
 
-1. A RADIUS-ügyfél (VPN, Netscaler-kiszolgáló vagy más) és a hálózati házirend-kiszolgálók között használt jelszótitkosítási algoritmus.
-   - **A PAP** támogatja az Azure MFA összes hitelesítési módszerét a felhőben: telefonhívás, egyirányú szöveges üzenet, mobilalkalmazás-értesítés, OATH hardvertokenek és mobilalkalmazás-ellenőrző kód.
-   - **A CHAPV2** és **az EAP** támogatja a telefonhívást és a mobilalkalmazás-értesítéseket.
+1. A RADIUS-ügyfél (VPN, NetScaler-kiszolgáló vagy más) és az NPS-kiszolgálók között használt jelszó-titkosítási algoritmus.
+   - A **pap** az Azure MFA összes hitelesítési módszerét támogatja a felhőben: telefonhívást, egyirányú szöveges üzenetet, a Mobile App notificationt, az esküt és a mobileszköz-ellenőrző kódot.
+   - A **CHAPv2** és az **EAP** támogatja a telefonhívást és a Mobile apps-értesítést.
 
       > [!NOTE]
-      > A n-ps bővítmény telepítésekor használja ezeket a tényezőket, hogy kiértékelheti, mely módszerek érhetők el a felhasználók számára. Ha a RADIUS-ügyfél támogatja a PAP-t, de az ügyfél felhasználói felülete nem rendelkezik ellenőrző kód bemeneti mezőivel, akkor a telefonhívás és a mobilalkalmazás-értesítés a két támogatott lehetőség.
+      > A hálózati házirend-kiszolgáló bővítmény központi telepítésekor ezeket a tényezőket használva kiértékelheti, hogy mely módszerek érhetők el a felhasználók számára. Ha a RADIUS-ügyfél támogatja a PAP-t, de az ügyfél UX nem tartalmaz bemeneti mezőket az ellenőrző kódhoz, akkor a telefonhívás és a Mobile App Notification a két támogatott lehetőség.
       >
-      > Továbbá, ha a VPN-ügyfél felhasználói felülete támogatja a bemeneti mezőt, és konfigurálta a hálózati hozzáférési házirendet - a hitelesítés sikeres lehet, azonban a hálózati házirendben konfigurált RADIUS-attribútumok egyike sem lesz alkalmazva sem a hálózati hozzáférési eszközre, sem az RRAS-kiszolgálóra, sem a VPN-ügyfélre. Ennek eredményeképpen előfordulhat, hogy a VPN-ügyfél a kívántnál nagyobb vagy kevesebb hozzáféréssel rendelkezik.
+      > Továbbá, ha a VPN-ügyfél UX támogatja a beviteli mezőt, és konfigurálta a hálózati hozzáférési házirendet – a hitelesítés sikeres lehet, de a hálózati házirendben konfigurált egyik RADIUS-attribútum sem lesz alkalmazva sem a hálózati elérési eszközre, például az RRAS-kiszolgálóra, sem a VPN-ügyfélre. Ennek eredményeképpen előfordulhat, hogy a VPN-ügyfél több hozzáférésre van szükség, mint amennyire csak szeretné.
       >
 
-2. Az ügyfélalkalmazás (VPN, Netscaler-kiszolgáló vagy más) által kezelhető beviteli módok. Például a VPN-ügyfél rendelkezik valamilyen eszközzel, amely lehetővé teszi a felhasználó számára, hogy beírjon egy ellenőrző kódot egy szövegből vagy mobilalkalmazásból?
+2. Az ügyfélalkalmazás (VPN, NetScaler-kiszolgáló vagy más) által kezelhető bemeneti metódusok. A VPN-ügyfél például bizonyos módon lehetővé teszi, hogy a felhasználó szöveges vagy mobil alkalmazásból származó ellenőrző kódot írjon be?
 
-[Letilthatja a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings.md#verification-methods) az Azure-ban.
+A nem [támogatott hitelesítési módszereket letilthatja](howto-mfa-mfasettings.md#verification-methods) az Azure-ban.
 
-### <a name="register-users-for-mfa"></a>Felhasználók regisztrálása az MFA-hoz
+### <a name="register-users-for-mfa"></a>Felhasználók regisztrálása MFA-hoz
 
-A nps-bővítmény telepítése és használata előtt a kétlépéses ellenőrzés végrehajtásához szükséges felhasználókat regisztrálni kell az MFA-hoz. A bővítmény üzembe helyezése közbeni teszteléséhez legalább egy olyan tesztfiókra van szükség, amely teljes mértékben regisztrálva van a többtényezős hitelesítéshez.
+A hálózati házirend-kiszolgáló bővítmény üzembe helyezése és használata előtt a kétlépéses ellenőrzés végrehajtásához szükséges felhasználókat regisztrálni kell az MFA-hoz. A bővítmény üzembe helyezése során még egyszer kell tesztelni, legalább egy olyan teszt fiókra van szükség, amely teljesen regisztrálva van a Multi-Factor Authentication számára.
 
-A tesztfiók elindításához kövesse az alábbi lépéseket:
+A következő lépésekkel kérhet le egy teszt fiókot:
 
-1. Jelentkezzen be [https://aka.ms/mfasetup](https://aka.ms/mfasetup) egy tesztfiókkal.
-2. Az ellenőrzési módszer beállításához kövesse az utasításokat.
-3. [Hozzon létre egy feltételes hozzáférési szabályzatot,](howto-mfa-getstarted.md#create-conditional-access-policy) amely többtényezős hitelesítést igényel a tesztfiókhoz.
+1. Jelentkezzen be [https://aka.ms/mfasetup](https://aka.ms/mfasetup) egy teszt-fiókkal.
+2. Kövesse az utasításokat az ellenőrzési módszer beállításához.
+3. [Hozzon létre egy feltételes hozzáférési szabályzatot](howto-mfa-getstarted.md#create-conditional-access-policy) a többtényezős hitelesítés megköveteléséhez a teszt fiókhoz.
 
 > [!IMPORTANT]
 >
-> Győződjön meg arról, hogy a felhasználók sikeresen regisztráltaz Azure többtényezős hitelesítés. Ha a felhasználók korábban csak az önkiszolgáló jelszó-visszaállítás (SSPR) regisztrálására regisztráltak, a *StrongAuthenticationMethods* engedélyezve van a fiókjukhoz. Az Azure többtényezős hitelesítés kényszerítve, ha *StrongAuthenticationMethods* van konfigurálva, akkor is, ha a felhasználó csak regisztrált SSPR.
+> Győződjön meg arról, hogy a felhasználók sikeresen regisztráltak az Azure Multi-Factor Authentication. Ha a felhasználók korábban csak az önkiszolgáló jelszó-visszaállításra (SSPR) vannak regisztrálva, akkor a *StrongAuthenticationMethods* engedélyezve van a fiókja számára. Az Azure Multi-Factor Authentication akkor is érvényben van, ha a *StrongAuthenticationMethods* konfigurálva van, még akkor is, ha a felhasználó csak a SSPR van regisztrálva.
 >
-> Kombinált biztonsági regisztráció engedélyezhető, amely egyszerre konfigurálja az SSPR és az Azure többtényezős hitelesítést. További információt a [Kombinált biztonsági adatok regisztrációjának engedélyezése az Azure Active Directoryban című témakörben talál.](howto-registration-mfa-sspr-combined.md)
+> A kombinált biztonsági regisztráció engedélyezhető, amely egyszerre konfigurálja a SSPR és az Azure Multi-Factor Authentication. További információ: [a kombinált biztonsági információk regisztrációjának engedélyezése Azure Active Directoryban](howto-registration-mfa-sspr-combined.md).
 >
-> Arra is [kényszerítheti a felhasználókat, hogy újra regisztrálják a hitelesítési módszereket,](howto-mfa-userdevicesettings.md#manage-user-authentication-options) ha korábban csak az SSPR-t engedélyezték.
+> [Arra is kényszerítheti a felhasználókat, hogy regisztrálják újra a hitelesítési módszereket,](howto-mfa-userdevicesettings.md#manage-user-authentication-options) ha korábban csak engedélyezték a SSPR.
 
-## <a name="install-the-nps-extension"></a>A nps-bővítmény telepítése
+## <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
 > [!IMPORTANT]
-> Telepítse a nórás-bővítményt a VPN-hozzáférési ponttól eltérő kiszolgálóra.
+> Telepítse a hálózati házirend-kiszolgáló bővítményt egy másik kiszolgálóra, mint a VPN-hozzáférési pont.
 
-### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>A nps-bővítmény letöltése és telepítése az Azure MFA-hoz
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Töltse le és telepítse az Azure MFA NPS-bővítményét
 
-1. [Töltse le a nps bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontjából.
+1. [Töltse le a hálózati házirend-kiszolgáló bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
 2. Másolja a bináris fájlt a konfigurálni kívánt hálózati házirend-kiszolgálóra.
-3. *Futtassa a setup.exe programot,* és kövesse a telepítési utasításokat. Ha hibákat észlel, ellenőrizze, hogy az előfeltétel szakasz két könyvtára telepítése sikeresen megtörtént-e.
+3. Futtassa a *Setup. exe fájlt* , és kövesse a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy az előfeltételi szakasz két könyvtára sikeresen telepítve lett-e.
 
-#### <a name="upgrade-the-nps-extension"></a>A nps-bővítmény frissítése
+#### <a name="upgrade-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének frissítése
 
-Meglévő nps-bővítmény telepítésekor az alapul szolgáló kiszolgáló újraindításának elkerülése érdekében hajtsa végre az alábbi lépéseket:
+Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgáló újraindításának elkerüléséhez hajtsa végre a következő lépéseket:
 
 1. A meglévő verzió eltávolítása
 1. Az új telepítő futtatása
-1. A Hálózati házirend-kiszolgáló (IAS) szolgáltatás újraindítása
+1. A hálózati házirend-kiszolgáló (IAS) szolgáltatás újraindítása
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
 
-A telepítő létrehoz egy PowerShell-parancsfájlt ezen a helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítőmeghajtó). Ez a PowerShell-parancsfájl a következő műveleteket hajtja végre minden egyes futtatáskor:
+A telepítő létrehoz egy PowerShell-parancsfájlt a következő `C:\Program Files\Microsoft\AzureMfa\Config` helyen: (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
 
 - Hozzon létre egy önaláírt tanúsítványt.
-- Társítsa a nyilvános kulcsot a tanúsítvány egyszerű szolgáltatás az Azure AD-n.
-- Tárolja a tanúsítványt a helyi gépi tanúsítvány tárolójában.
-- Hozzáférést biztosít a tanúsítvány személyes kulcsához a hálózati felhasználó számára.
-- Indítsa újra a nps-t.
+- Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
+- Tárolja a tanúsítványt a helyi számítógép tanúsítvány-tárolójában.
+- Hozzáférés biztosítása a tanúsítvány titkos kulcsához a hálózati felhasználó számára.
+- Indítsa újra a hálózati házirend-kiszolgálót.
 
-Hacsak nem szeretné használni a saját tanúsítványokat (ahelyett, hogy a PowerShell-parancsfájl által létrehozott önaláírt tanúsítványokat szeretné használni), futtassa a PowerShell-parancsfájlt a telepítés befejezéséhez. Ha a bővítményt több kiszolgálóra telepíti, mindegyiknek saját tanúsítvánnyal kell rendelkeznie.
+Ha nem szeretne saját tanúsítványokat használni (a PowerShell-parancsfájl által létrehozott önaláírt tanúsítványok helyett), futtassa a PowerShell-parancsfájlt a telepítés befejezéséhez. Ha több kiszolgálóra telepíti a bővítményt, mindegyiknek saját tanúsítvánnyal kell rendelkeznie.
 
 1. Futtassa a Windows PowerShellt rendszergazdaként.
-2. Könyvtárakat váltson.
+2. Módosítsa a címtárakat.
 
    `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
 
-3. Futtassa a telepítő által létrehozott PowerShell-parancsfájlt.
+3. Futtassa a telepítő által létrehozott PowerShell-szkriptet.
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
 4. Jelentkezzen be az Azure AD-be rendszergazdaként.
-5. A PowerShell a bérlői azonosítót kéri. Használja a címtárazonosító GUID, amely az Azure Portalról az előfeltételek szakaszban másolt.
-6. A PowerShell sikeres üzenetet jelenít meg, amikor a parancsfájl befejeződött.  
+5. PowerShell-kérések a bérlői AZONOSÍTÓhoz. Használja az előfeltételek szakaszban található Azure Portalból másolt címtár-azonosító GUID azonosítót.
+6. A PowerShell a parancsfájl befejeződése után sikert jelző üzenetet jelenít meg.  
 
-Ismételje meg ezeket a lépéseket minden további, terheléselosztáshoz beállítani kívánt nps-kiszolgálón.
+Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-kiszolgálón, amelyet be szeretne állítani a terheléselosztáshoz.
 
-Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány jött létre, törölnie kell a lejárt tanúsítványokat. A lejárt tanúsítványok problémákat okozhatnak a nps bővítmény indításakor.
+Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
 
 > [!NOTE]
-> Ha a powershell-parancsfájllal való tanúsítványok létrehozása helyett saját tanúsítványokat használ, győződjön meg arról, hogy azok a hálózati címzet elnevezési konvenciójának megfelelően igazodnak. A tulajdonos névnek **CN=\<\>TenantID ,OU=Microsoft NPS Extension**-nek kell lennie. 
+> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN\<= TenantID\>, OU = Microsoft NPS bővítménynek**kell lennie. 
 
-### <a name="microsoft-azure-government-additional-steps"></a>A Microsoft Azure Government további lépései
+### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
 
-Az Azure Government-felhőt használó ügyfelek számára a következő további konfigurációs lépések szükségesek minden hálózati kiszolgálón:
+Azure Government felhőt használó ügyfelek esetén a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon:
 
-1. Nyissa meg a **Rendszerleíróadatbázis-szerkesztőt** a nemzeti házirend-kiszolgálón.
-1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcsértékeket:
+1. Nyissa meg a **Rendszerleíróadatbázis-szerkesztőt** az NPS-kiszolgálón.
+1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcs értékeit:
 
     | Beállításkulcs       | Érték |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
 
-1. Ismételje meg az előző két lépést az egyes nps-kiszolgálók beállítási kulcsainak beállításához.
-1. Indítsa újra a nps szolgáltatást minden egyes n-ps-kiszolgálóhoz.
+1. Ismételje meg az előző két lépést az egyes NPS-kiszolgálók beállításkulcs-értékeinek beállításához.
+1. Indítsa újra a hálózati házirend-kiszolgáló szolgáltatást az egyes NPS-kiszolgálókon.
 
-    A minimális hatás érdekében minden hálózati kiszolgálót egyenként vegye ki a hálózati terheléselosztás rotációjából, és várja meg, amíg az összes kapcsolat lefolyik.
+    A minimális hatás érdekében minden hálózati házirend-kiszolgálót ki kell kapcsolni az NLB-rotációból, és várnia kell, amíg az összes kapcsolat el nem telik.
 
-### <a name="certificate-rollover"></a>Tanúsítvány váltása
+### <a name="certificate-rollover"></a>Tanúsítvány-rollover
 
-A nps-bővítmény 1.0.1.32-es kiadásával több tanúsítvány olvasása is támogatott. Ez a funkció megkönnyíti a működésbe lépő tanúsítványfrissítéseket azok lejárata előtt. Ha a szervezet a n-ps bővítmény egy korábbi verzióját futtatja, frissítenie kell az 1.0.1.32-es vagy újabb verzióra.
+A hálózati házirend-kiszolgáló bővítmény kiadási 1.0.1.32 a több tanúsítvány olvasása mostantól támogatott. Ezzel a képességgel a lejáratuk előtt megkönnyítheti a működés közbeni tanúsítványok frissítését. Ha a szervezete a hálózati házirend-kiszolgáló bővítmény korábbi verzióját futtatja, frissítsen a 1.0.1.32 vagy újabb verzióra.
 
-A `AzureMfaNpsExtnConfigSetup.ps1` parancsfájl által létrehozott tanúsítványok 2 évig érvényesek. Az informatikai szervezeteknek figyelniük kell a tanúsítványok lejáratát. A nps-bővítmény tanúsítványai a Helyi számítógép tanúsítványtárolójában, a Személyes csoportban találhatók, és a parancsfájlnak megadott bérlői azonosítóhoz vannak kiadva.
+A `AzureMfaNpsExtnConfigSetup.ps1` szkript által létrehozott tanúsítványok 2 évig érvényesek. Az informatikai szervezeteknek meg kell figyelniük a lejárati tanúsítványokat. A hálózati házirend-kiszolgáló kiterjesztéséhez tartozó tanúsítványok a helyi számítógép tanúsítványtárolójában, a személyes és a parancsfájlhoz megadott bérlői AZONOSÍTÓra kerülnek.
 
-Ha egy tanúsítvány közeledik a lejárati dátumhoz, új tanúsítványt kell létrehozni a lecseréléséhez.  Ez a folyamat úgy `AzureMfaNpsExtnConfigSetup.ps1` érhető el, hogy újra futtatja, és megtartja ugyanazt a bérlői azonosítót, amikor a rendszer kéri. Ezt a folyamatot meg kell ismételni a környezet minden nps-kiszolgálóján.
+Ha egy tanúsítvány a lejárati dátumra közeledik, egy új tanúsítványt kell létrehozni a lecseréléséhez.  Ezt a folyamatot az `AzureMfaNpsExtnConfigSetup.ps1` újbóli futtatásával hajtja végre, és megtartja ugyanazt a bérlői azonosítót, amikor a rendszer kéri. Ezt a folyamatot meg kell ismételni a környezet minden NPS-kiszolgálóján.
 
-## <a name="configure-your-nps-extension"></a>A hálózati kiszolgálóbővítmény konfigurálása
+## <a name="configure-your-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének konfigurálása
 
-Ez a szakasz tervezési szempontokat és javaslatokat tartalmaz a sikeres nps-bővítmény-telepítésekhez.
+Ez a szakasz tervezési szempontokat és javaslatokat tartalmaz a hálózati házirend-bővítmények sikeres üzembe helyezéséhez.
 
 ### <a name="configuration-limitations"></a>Konfigurációs korlátozások
 
-- Az Azure MFA nps-bővítménye nem tartalmazza a felhasználók és a beállítások áttelepítéséhez szükséges eszközöket az MFA-kiszolgálóról a felhőbe. Emiatt azt javasoljuk, hogy a bővítmény t használja az új központi telepítések, nem pedig a meglévő központi telepítés. Ha a bővítményt egy meglévő központi telepítésen használja, a felhasználóknak újra el kell végezniük a próba-up ot, hogy feltöltsék az MFA-adatokat a felhőben.  
-- A n-ps-bővítmény a helyszíni Active Directory upn az Azure MFA-n a másodlagos hitelesítés i. A bővítmény beállítható úgy, hogy egy másik azonosítót használjon, például alternatív bejelentkezési azonosítót vagy egyéni Active Directory-mezőt, amely nem upn. További információt a hálózati [címző bővítmény többtényezős hitelesítéshez](howto-mfa-nps-extension-advanced.md)való speciális beállítási lehetőségei című cikkben talál.
-- Nem minden titkosítási protokoll támogatja az összes hitelesítési módszert.
-   - **A PAP** támogatja a telefonhívást, az egyirányú szöveges üzenetet, a mobilalkalmazás-értesítést és a mobilalkalmazás-ellenőrző kódot
-   - **A CHAPV2** és **az EAP** támogatása telefonhívás és mobilalkalmazás-értesítés
+- Az Azure MFA NPS-bővítménye nem tartalmaz olyan eszközöket, amelyekkel a felhasználók és beállítások áttelepíthetők az MFA-kiszolgálóról a felhőbe. Ezért javasoljuk, hogy a meglévő telepítés helyett a bővítményt használja az új központi telepítésekhez. Ha a bővítményt egy meglévő üzemelő példányon használja, a felhasználóknak újra kell végezniük az MFA adatainak a felhőben való feltöltéséhez.  
+- A hálózati házirend-kiszolgáló bővítmény a helyszíni Active Directoryból származó UPN-t használja az Azure MFA-felhasználó azonosításához a másodlagos hitelesítés végrehajtásához. A bővítmény konfigurálható úgy, hogy más azonosítót használjon, például alternatív bejelentkezési azonosítót vagy egyéni Active Directory mezőt, amely nem egyszerű felhasználónév. További információkért tekintse meg a [multi-Factor Authentication hálózati házirend-bővítményének speciális konfigurációs beállításait](howto-mfa-nps-extension-advanced.md)ismertető cikket.
+- Nem minden titkosítási protokoll támogatja az összes ellenőrzési módszert.
+   - A **pap** támogatja a telefonhívást, egyirányú szöveges üzenetet, a Mobile App notificationt és a Mobile App ellenőrző kódját
+   - A **CHAPv2** és az **EAP** támogatásának telefonos hívása és a Mobile App Notification
 
-### <a name="control-radius-clients-that-require-mfa"></a>Többéves szükséges RADIUS-ügyfelek szabályozása
+### <a name="control-radius-clients-that-require-mfa"></a>Az MFA-t igénylő RADIUS-ügyfelek szabályozása
 
-Miután engedélyezte az MFA-t egy RADIUS-ügyfél számára a hálózati házirend-kiszolgáló bővítmény használatával, az ügyfél összes hitelesítése szükséges az MFA végrehajtásához. Ha egyes RADIUS-ügyfelek számára engedélyezni szeretné az MFA-t, másokat azonban nem, konfigurálhat két hálózati kiszolgálót, és csak az egyikre telepítheti a bővítményt. Konfigurálja azokat a RADIUS-ügyfeleket, amelyeket meg kíván követelni az MFA-tól, hogy a bővítménylel konfigurált hálózati házirend-kiszolgálónak és a bővítményhez nem konfigurált hálózati házirend-kiszolgálónak küldjenek kérelmeket.
+Miután engedélyezte az MFA-t egy RADIUS-ügyfél számára a hálózati házirend-kiszolgáló bővítmény használatával, az ügyfél összes hitelesítése szükséges az MFA végrehajtásához. Ha bizonyos RADIUS-ügyfelek esetében engedélyezni szeretné az MFA-t, de mások nem, akkor két hálózati házirend-kiszolgálót is beállíthat, és a bővítményt csak az egyikre telepítheti. Konfigurálja azokat a RADIUS-ügyfeleket, amelyeknek az MFA-t szeretné megkövetelni a bővítménysel konfigurált hálózati házirend-kiszolgálónak küldött kérések küldéséhez, valamint más RADIUS-ügyfeleket az NPS-kiszolgálóhoz, amely nincs beállítva a bővítménnyel.
 
-### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Felkészülés az on-t a többkori farendszerre nem regisztrált felhasználókra
+### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Az MFA-ban nem regisztrált felhasználók előkészítése
 
-Ha olyan felhasználókkal rendelkezik, akik nincsenek beírva az MFA-hoz, meghatározhatja, hogy mi történik, amikor megpróbálnak hitelesíteni. Használja a beállításjegyzék-beállítást *REQUIRE_USER_MATCH* a rendszerleíró adatbázis elérési útján *HKLM\Software\Microsoft\AzureMFA* a szolgáltatás viselkedésének szabályozásához. Ennek a beállításnak egyetlen konfigurációs lehetősége van:
+Ha az MFA-ban nem regisztrált felhasználók vannak, akkor megadhatja, hogy mi történjen a hitelesítéskor. A szolgáltatás működésének vezérléséhez használja a beállításjegyzék elérési útja *HKLM\Software\Microsoft\AzureMFA* *REQUIRE_USER_MATCH* beállításjegyzékbeli beállítását. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik:
 
 | Kulcs | Érték | Alapértelmezett |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (egyenértékű az IGAZ értékével) |
+| REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 
-Ennek a beállításnak az a célja, hogy meghatározza, mi a teendő, ha egy felhasználó nincs bejelentve az MFA-hoz. Ha a kulcs nem létezik, nincs beállítva, vagy értéke TRUE, és a felhasználó nincs bejelentve, akkor a bővítmény sikertelen az MFA-kihívással. Ha a kulcs értéke FALSE, és a felhasználó nincs bevezetve, a hitelesítés az MFA végrehajtása nélkül folytatódik. Ha egy felhasználó be van jelentkezve az MFA-ban, akkor is hitelesítenie kell magát az MFA-val, ha REQUIRE_USER_MATCH ÉRTÉKE FALSE.
+Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha egy felhasználó nincs regisztrálva az MFA-hoz. Ha a kulcs nem létezik, nincs beállítva, vagy igaz értékre van állítva, és a felhasználó nincs regisztrálva, akkor a bővítmény meghiúsul az MFA-kérdésben. Ha a kulcs hamis értékre van állítva, és a felhasználó nincs regisztrálva, a hitelesítés az MFA végrehajtása nélkül folytatódik. Ha egy felhasználó regisztrálva van az MFA-ban, akkor is hitelesítenie kell magát az MFA-val, ha REQUIRE_USER_MATCH hamis értékre van állítva.
 
-Dönthet úgy, hogy létrehozza ezt a kulcsot, és állítsa hamis, amíg a felhasználók bevezetési, és előfordulhat, hogy még nem minden regisztrált az Azure MFA még. Mivel azonban a kulcs beállítása lehetővé teszi, hogy a felhasználók, akik nem regisztrált a többenúj-érvényesítő bejelentkezni, távolítsa el ezt a kulcsot, mielőtt éles környezetbe.
+Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre állítja a felhasználók bevezetését, és az Azure MFA még nem minden esetben regisztrálható. Mivel azonban a kulcs beállítása lehetővé teszi, hogy az MFA-ban nem regisztrált felhasználók bejelentkezzenek, el kell távolítania ezt a kulcsot az éles környezetbe való belépés előtt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrző parancsfájlja
+### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
 
-A következő parancsfájl a hálózati helytárak bővítményének hibaelhárításakor alapvető állapot-ellenőrzési lépések végrehajtásához érhető el.
+A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lépéseket a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
-
----
-
-### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizhetem, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
-
-Keresse meg a telepítő által a tanúsítványtárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a személyes kulcs rendelkezik-e a **HÁLÓZATI SZOLGÁLTATÁS**felhasználónak megadott engedélyekkel. A tanúsítvány tulajdonosneve **CN \<tenantid\>, OU = Microsoft NPS Extension**
-
-Az *AzureMfaNpsExtnConfigSetup.ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi élettartama is két év. A tanúsítvány telepítésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
+[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
-### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Hogyan ellenőrizhetem, hogy az ügyféltanúsítvány az Azure Active Directoryban van-e társítva a bérlőmhöz?
+### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
 
-Nyissa meg a PowerShell parancssorát, és futtassa a következő parancsokat:
+Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve ** \<CN tenantid\>, OU = Microsoft NPS bővítmény**
+
+A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi ideje két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
+
+---
+
+### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Hogyan tudom ellenőrizni, hogy az ügyféltanúsítvány társítva van-e a bérlőhöz a Azure Active Directory?
+
+Nyisson meg egy PowerShell-parancssort, és futtassa a következő parancsokat:
 
 ``` PowerShell
 import-module MSOnline
@@ -283,9 +283,9 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
-Ezek a parancsok a bérlőt a PowerShell-munkamenetben a hálózati kiszolgálóbővítmény példányával társító tanúsítványokat nyomtatnak ki. Keresse meg a tanúsítványt az ügyféltanúsítvány "Base-64 kódolású X.509(.cer)" fájlként a személyes kulcs nélkül történő exportálásával, és hasonlítsa össze a PowerShell listájával.
+Ezek a parancsok kinyomtatják a bérlőhöz társító összes tanúsítványt a PowerShell-munkamenetben lévő NPS-bővítmény példányával. Keresse meg a tanúsítványt úgy, hogy az ügyfél tanúsítványát "Base-64 kódolt X. 509 (. cer)" fájlként exportálja a titkos kulcs nélkül, és összehasonlítja a listával a PowerShell-lel.
 
-A következő parancs létrehoz egy "npscertificate" nevű fájlt a "C:" meghajtón .cer formátumban.
+A következő parancs létrehoz egy "npscertificate" nevű fájlt a "C:" meghajtón a Format. cer fájlban.
 
 ``` PowerShell
 import-module MSOnline
@@ -293,36 +293,36 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer
 ```
 
-Miután futtatta ezt a parancsot, lépjen a C meghajtóra, keresse meg a fájlt, és kattintson duplán rá. Ugrás a részletekre, és görgessen le az "ujjlenyomat", hasonlítsa össze az ujjlenyomata a tanúsítvány telepítve van a szerveren, hogy ez. A tanúsítvány ujjlenyomatának egyeznie kell.
+A parancs futtatása után lépjen a C meghajtóra, keresse meg a fájlt, és kattintson rá duplán. Lépjen a részletek elemre, és görgessen le az "ujjlenyomat" kifejezésre, hasonlítsa össze a kiszolgálón telepített tanúsítvány ujjlenyomatát. A tanúsítvány ujjlenyomatai megfelelnek egyeznie kell.
 
-Az ember által olvasható formában lévő Érvényesség-tól és érvényes-érvényességig az időbélyegek a nyilvánvaló misfits kiszűrésére használhatók, ha a parancs egynél több tanúsítványt ad vissza.
+Az érvényes – és az érvényes – csak az emberi olvashatóságot eredményező időbélyegek esetében használható a nyilvánvaló Misfits kiszűrésére, ha a parancs egynél több tanúsítványt ad vissza.
 
 ---
 
 ### <a name="why-cannot-i-sign-in"></a>Miért nem tudok bejelentkezni?
 
-Ellenőrizze, hogy a jelszó nem járt-e le. A n-ps bővítmény nem támogatja a jelszavak módosítását a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai személyzetéhez.
+Győződjön meg arról, hogy a jelszó még nem járt le. A hálózati házirend-kiszolgáló bővítmény nem támogatja a jelszavak módosítását a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai részlegéhez.
 
 ---
 
-### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Miért hibásak a kéréseim ADAL token hibával?
+### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Miért nem sikerül a kérések ADAL-jogkivonat hibája?
 
-Ennek a hibának több oka is lehet. Az alábbi lépésekkel elháríthatja a hibaelhárítást:
+Ezt a hibát számos ok okozhatja. A következő lépésekkel segíthet a hibaelhárításban:
 
-1. Indítsa újra a helyi házirend-kiszolgálót.
+1. Indítsa újra a hálózati házirend-kiszolgálót.
 2. Ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve.
-3. Ellenőrizze, hogy a tanúsítvány társítva van-e a bérlő höz az Azure AD-n.
+3. Ellenőrizze, hogy a tanúsítvány társítva van-e a bérlőhöz az Azure AD-ben.
 4. Ellenőrizze, hogy a `https://login.microsoftonline.com/` elérhető-e a bővítményt futtató kiszolgálóról.
 
 ---
 
-### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Miért sikertelen a hitelesítés a HTTP-naplókban, amely azt jelzi, hogy a felhasználó nem található?
+### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Miért sikertelen a hitelesítés a HTTP-naplókban, hogy a felhasználó nem található?
 
-Ellenőrizze, hogy fut-e az AD Connect, és hogy a felhasználó jelen van-e a Windows Active Directoryban és az Azure Active Directoryban.
+Ellenőrizze, hogy az AD-kapcsolat fut-e, és hogy a felhasználó szerepel-e a Windows Active Directoryban és a Azure Active Directory is.
 
 ---
 
-### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért jelennek meg a HTTP-csatlakozási hibák a naplókban, ha az összes hitelesítés sikertelen?
+### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért látok HTTP-csatlakozási hibákat a naplókban az összes saját hitelesítéssel?
 
 Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
@@ -330,24 +330,24 @@ Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NP
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Miért nem működik a hitelesítés, annak ellenére, hogy érvényes tanúsítvány van jelen?
 
-Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány jött létre, törölnie kell a lejárt tanúsítványokat. A lejárt tanúsítványok problémákat okozhatnak a nps bővítmény indításakor.
+Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
 
-Ha ellenőrizni szeretné, hogy rendelkezik-e érvényes tanúsítvánnyal, ellenőrizze a helyi számítógépfiók tanúsítványtárolóját az MMC használatával, és győződjön meg arról, hogy a tanúsítvány nem járt el a lejárati dátumon. Újonnan érvényes tanúsítvány létrehozásához futtassa újra a "[PowerShell-parancsfájl futtatása](#run-the-powershell-script)" szakaszlépéseit.
+Annak ellenőrzéséhez, hogy érvényes tanúsítvánnyal rendelkezik-e, ellenőrizze a helyi számítógépfiók tanúsítványtárolóját az MMC használatával, és győződjön meg arról, hogy a tanúsítvány nem felelt meg a lejárati dátumnak. Egy újonnan érvényes tanúsítvány létrehozásához futtassa újra a "[PowerShell-parancsfájl futtatása](#run-the-powershell-script)" szakasz lépéseit.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
-Javasoljuk, hogy a régebbi és gyengébb titkosítási csomagokletiltást vagy eltávolítást, kivéve, ha a szervezet által előírt. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
+Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, vagy távolítsa el, ha a szervezet nem igényli. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
 ### <a name="additional-troubleshooting"></a>További hibaelhárítás
 
-További hibaelhárítási útmutatás és lehetséges megoldások a [Hibaüzenetek feloldása az Azure többtényezős hitelesítéshez a hálózati kiszolgáló bővítményből.](howto-mfa-nps-extension-errors.md)
+További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Hálózati házirend-kiszolgáló áttekintése és konfigurálása Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
-- Alternatív azonosítók konfigurálása a bejelentkezéshez, vagy olyan ip-címhez való kivétellista beállítása, amely nem hajtvégre kétlépéses ellenőrzést [a hálózati címprotokoll-bővítmény többtényezős hitelesítéshez speciális konfigurációs beállításaiban](howto-mfa-nps-extension-advanced.md)
+- Konfiguráljon alternatív azonosítókat a bejelentkezéshez, vagy állítson be olyan IP-címekre vonatkozó kivételeket, amelyek nem hajtják végre a kétlépéses ellenőrzést a [hálózati házirend-kiszolgáló bővítményének speciális konfigurációs beállításaiban multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 
-- A Távoli [asztali átjáró](howto-mfa-nps-extension-rdg.md) és [a VPN-kiszolgálók](howto-mfa-nps-extension-vpn.md) integrálása a hálózati kiszolgálóbővítmény használatával
+- Ismerje meg, hogyan integrálhatja a [Távoli asztali átjáró](howto-mfa-nps-extension-rdg.md) és a [VPN-kiszolgálókat](howto-mfa-nps-extension-vpn.md) a hálózati házirend-kiszolgáló bővítmény használatával
 
 - [Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)

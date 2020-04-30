@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy Azure-tűzfalat több nyilvános IP-címmel – Erőforrás-kezelő sablon'
-description: Megtudhatja, hogyan hozhat létre egy Azure-tűzfalat több nyilvános IP-címmel.
+title: 'Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – Resource Manager-sablon'
+description: Megtudhatja, hogyan használhat Resource Manager-sablonokat több nyilvános IP-címmel rendelkező Azure Firewall létrehozásához.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,76 +8,76 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605203"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Rövid útmutató: Hozzon létre egy Azure-tűzfalat több nyilvános IP-címmel – Erőforrás-kezelő sablon
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – Resource Manager-sablon
 
-Ebben a rövid útmutatóban egy Erőforrás-kezelő sablon használatával több nyilvános IP-címmel rendelkező Azure-tűzfalat telepíthet.
+Ebben a rövid útmutatóban egy Resource Manager-sablonnal telepít egy Azure Firewall több nyilvános IP-címmel.
 
-A telepített tűzfal nat-szabálygyűjtési szabályokkal rendelkezik, amelyek lehetővé teszik az RDP-kapcsolatokat két Windows Server 2019 virtuális géppel.
+Az üzembe helyezett tűzfal NAT-szabályok gyűjtési szabályaival rendelkezik, amelyek engedélyezik az RDP-kapcsolatokat két Windows Server 2019 rendszerű virtuális géphez.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-A több nyilvános IP-címmel rendelkező Azure Firewall ről további információt az [Azure-tűzfal telepítése több nyilvános IP-címmel az Azure PowerShell használatával című](deploy-multi-public-ip-powershell.md)témakörben talál.
+További információ a több nyilvános IP-címmel rendelkező Azure Firewallről: [Azure Firewall üzembe helyezése több nyilvános IP-címmel Azure PowerShell használatával](deploy-multi-public-ip-powershell.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall"></a>Azure-tűzfal létrehozása
+## <a name="create-an-azure-firewall"></a>Azure Firewall létrehozása
 
-Ez a sablon létrehoz egy Azure-tűzfal két nyilvános IP-cím, valamint az Azure tűzfal támogatásához szükséges erőforrásokat.
+Ez a sablon két nyilvános IP-címmel rendelkező Azure Firewall hoz létre, valamint a szükséges erőforrásokat a Azure Firewall támogatásához.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json) származik.
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
-A sablonban több Azure-erőforrás van definiálva:
+Több Azure-erőforrás van definiálva a sablonban:
 
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Erőforrás-kezelő sablon telepítése az Azure-ba:
+Resource Manager-sablon üzembe helyezése az Azure-ban:
 
-1. Válassza **a Telepítés az Azure-ba** lehetőséget, ha be szeretne jelentkezni az Azure-ba, és meg szeretné nyitni a sablont. A sablon létrehoz egy Azure tűzfalat, a hálózati infrastruktúrát és két virtuális gépet.
+1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Azure Firewall, a hálózati infrastruktúrát és két virtuális gépet.
 
    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-2. A portálon a **Több IP-nyilvános címmel rendelkező Azure tűzfal létrehozása** lapon írja be vagy válassza ki a következő értékeket:
-   - Előfizetés: Válasszon a meglévő előfizetések közül 
-   - Erőforráscsoport: Válasszon a meglévő erőforráscsoportok közül, vagy válassza **az Új létrehozása**lehetőséget, és válassza az **OK**gombot.
-   - Hely: Hely kiválasztása
-   - Rendszergazdai felhasználónév: Írja be a rendszergazdai felhasználói fiók felhasználónevét 
-   - Rendszergazdai jelszó: Írjon be rendszergazdai jelszót vagy kulcsot
+2. A portálon, az **Azure Firewall létrehozása több IP-cím nyilvános címmel** lapon írja be vagy válassza ki a következő értékeket:
+   - Előfizetés: válasszon a meglévő előfizetések közül 
+   - Erőforráscsoport: válasszon a meglévő erőforráscsoportok közül, vagy válassza az **új létrehozása**lehetőséget, majd kattintson **az OK gombra**.
+   - Hely: válasszon egy helyet
+   - Rendszergazdai Felhasználónév: írja be a felhasználónevet a rendszergazda felhasználói fiókhoz. 
+   - Rendszergazdai jelszó: írja be a rendszergazda jelszavát vagy kulcsát
 
-3. Válassza az **Elfogadom a fenti feltételeket,** majd válassza a **Vásárlás**lehetőséget. A központi telepítés 10 percet vagy hosszabb időt is igénybe vehet.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás**lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Az Azure Portalon tekintse át a üzembe helyezett erőforrásokat. Jegyezze fel a tűzfal nyilvános IP-címeit.  
+A Azure Portal tekintse át az üzembe helyezett erőforrásokat. Jegyezze fel a tűzfal nyilvános IP-címeit.  
 
-A Távoli asztali kapcsolat segítségével csatlakozzon a tűzfal nyilvános IP-címeihez. A sikeres kapcsolatok a tűzfal NAT-szabályait mutatják be, amelyek lehetővé teszik a háttérkiszolgálókkal való kapcsolatot.
+Távoli asztali kapcsolat használata a tűzfal nyilvános IP-címeihez való kapcsolódáshoz. A sikeres kapcsolatok olyan tűzfal NAT-szabályokat mutatnak be, amelyek engedélyezik a kapcsolódást a háttér-kiszolgálókhoz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a tűzfallal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a tűzfalat és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez `Remove-AzResourceGroup` hívja meg a parancsmast:
+Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` következő parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
@@ -86,4 +86,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Tűzfal telepítése és konfigurálása hibrid hálózatban az Azure Portal használatával](tutorial-hybrid-portal.md)
+> [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)

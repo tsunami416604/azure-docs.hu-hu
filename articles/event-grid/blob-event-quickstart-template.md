@@ -1,6 +1,6 @@
 ---
-title: Blob-tárolási események küldése a webvégpontra – sablon
-description: Az Azure Event Grid és egy Azure Resource Manager-sablon használatával blobtár-fiókot hozhat létre, és előfizethet az eseményekre. Küldje el az eseményeket egy Webhookba.
+title: BLOB Storage-események küldése webes végpontnak – sablon
+description: A blob Storage-fiók létrehozásához használja a Azure Event Grid és egy Azure Resource Manager sablont, és fizessen elő eseményeket. Küldje el az eseményeket egy webhookba. "
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,19 +10,19 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
 ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605549"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Blob-tárolási események útvonala a webvégpontba az Azure Resource Manager-sablon használatával
+# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>BLOB Storage-események átirányítása a webes végpontra Azure Resource Manager sablon használatával
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben egy **Azure Resource Manager-sablon** használatával hozzon létre egy Blob storage-fiókot, előfizet az adott blobstorage-eseményekre, és eseményt indít az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben egy **Azure Resource Manager sablonnal** hoz létre blob Storage-fiókot, előfizethet az adott blob-tároló eseményeire, és elindítja az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,32 +39,32 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 
    ![Új hely megtekintése](./media/blob-event-quickstart-portal/view-site.png)
 
-## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Tárfiók létrehozása Event Grid-előfizetéssel
+## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Event Grid-előfizetéssel rendelkező Storage-fiók létrehozása
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)származik.
 
 [!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
 
-A sablonban két Azure-erőforrás van definiálva:
+Két Azure-erőforrás van definiálva a sablonban:
 
-* [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
-* [**"Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): hozzon létre egy Azure Event Grid-előfizetést a tárfiókhoz.
+* [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
+* [**"Microsoft. Storage/storageAccounts/Providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): hozzon létre egy Azure Event Grid-előfizetést a Storage-fiókhoz.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza ki az alábbi hivatkozást az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy key vault és egy titkos kulcsot.
+1. A következő hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
-2. Adja meg a **végpontot:** adja meg `api/updates` a webalkalmazás URL-címét, és adja hozzá a kezdőlap URL-címéhez.
-3. A sablon üzembe helyezéséhez válassza a **Vásárlás** lehetőséget.
+2. Adja meg a **végpontot**: adja meg a webalkalmazás URL- `api/updates` címét, és adja hozzá a Kezdőlap URL-címét.
+3. Válassza a **vásárlás** lehetőséget a sablon telepítéséhez.
 
-  Az Azure Portal itt a sablon üzembe helyezéséhez. Használhatja az Azure PowerShell, az Azure CLI és a REST API-t is. További telepítési módszerekről a [Sablonok telepítése ..](../azure-resource-manager/templates/deploy-powershell.md)
+  A Azure Portal a sablon üzembe helyezéséhez használja a rendszer. Használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
 > [!NOTE]
-> További Azure Event Grid-sablonmintákat [itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)talál.
+> [Itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)találhat további Azure Event Grid sablon mintákat.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -76,20 +76,20 @@ Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az E
 
 A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájlnak nem kell tartalommal rendelkeznie. A cikkek feltételezik, hogy van egy testfile.txt fájlja, de bármilyen fájlt használhat.
 
-Amikor feltölti a fájlt az Azure Blob storage,Event Grid üzenetet küld a végpont a beállított előfizetéskor. Az üzenet JSON formátumú, és egy vagy több eseményt tartalmazó tömböt tartalmaz. A következő példában a JSON-üzenet egy tömböt tartalmaz egy eseménnyel. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt.
+Amikor feltölti a fájlt az Azure Blob Storage-ba, Event Grid üzenetet küld a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményből álló tömböt tartalmaz. A következő példában a JSON-üzenet egyetlen eseményt tartalmazó tömböt tartalmaz. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt.
 
 ![Eredmények megtekintése](./media/blob-event-quickstart-portal/view-results.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [törölje az erőforráscsoportot.](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
-)
+Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
+).
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Resource Manager-sablonokról az alábbi cikkekben olvashat bővebben:
+Azure Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager)
-* [Erőforrások definiálása az Azure Resource Manager-sablonokban](/azure/templates/)
-* [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/)
-* [Azure Event Grid-sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).
+* [Azure Resource Manager dokumentáció](/azure/azure-resource-manager)
+* [Erőforrások definiálása Azure Resource Manager-sablonokban](/azure/templates/)
+* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/)
+* [Azure Event Grid sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

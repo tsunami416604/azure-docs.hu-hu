@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault - A soft-delete használata a CLI-vel
-description: Példaként használhat a cli-kódmetszetekkel történő ideiglenes törlésre
+title: Azure Key Vault – a Soft delete használata a CLI használatával
+description: Példa a CLI-kódrészletek használatával történő törlésre példákkal
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,47 +10,47 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81616582"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
-Az Azure Key Vault helyreállítható törlési funkciója lehetővé teszi a törölt tárolók és a tárolóobjektumok helyreállítását. Pontosabban, a soft-delete címek a következő forgatókönyvek:
+Azure Key Vault-törlési funkciója lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását. A Soft-Delete a következő forgatókönyvekkel foglalkozik:
 
-- A kulcstartó helyreállítható törlésének támogatása
-- A kulcstartó-objektumok helyreállítható törlésének támogatása; kulcsok, titkos kulcsok és tanúsítványok
+- Key Vault helyreállítható törlésének támogatása
+- A Key Vault-objektumok helyreállítható törlésének támogatása; kulcsok, titkos kódok és tanúsítványok
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure CLI – Ha nem rendelkezik ezzel a beállítással a környezetében, olvassa [el a Key Vault kezelése az Azure CLI használatával](manage-with-cli2.md)című témakört.
+- Azure CLI – ha nem rendelkezik ezzel a beállítással a környezetéhez, tekintse meg az [Key Vault kezelése az Azure CLI használatával](manage-with-cli2.md)című témakört.
 
-A Key Vault-specifikus referenciainformációk a CLI,Azure [CLI Key Vault referencia.](https://docs.microsoft.com/cli/azure/keyvault)
+A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-referenciák](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A Key Vault-műveleteket külön kezeli a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek az alábbiak szerint:
+A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
 | Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
-|Lista|A törölt kulcstartók listája.|Microsoft.KeyVault/deletedVaults/read|
-|Helyreállítás|Visszaállít egy törölt kulcstartót.|Microsoft.KeyVault/vaults/write|
-|Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
+|Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
+|Véglegesen töröl|Véglegesen eltávolítja a törölt kulcstartót és annak teljes tartalmát.|Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet|
 
-Az engedélyekről és a hozzáférés-vezérlésről a [Kulcstartó védelme](secure-your-key-vault.md)című témakörben talál további információt.
+Az engedélyekkel és a hozzáférés-vezérléssel kapcsolatos további információkért lásd: [a Key Vault biztonságossá tétele](secure-your-key-vault.md).
 
-## <a name="enabling-soft-delete"></a>Helyreállítható törlés engedélyezése
+## <a name="enabling-soft-delete"></a>Törlés engedélyezése
 
-A "helyreállítva törlést" engedélyezi a törölt kulcstartó vagy a key vaultban tárolt objektumok helyreállításához.
+A "Soft-Delete" lehetővé teszi a törölt kulcstartó vagy a kulcstartóban tárolt objektumok helyreállítását.
 
 > [!IMPORTANT]
-> A "helyreállítható törlés" engedélyezése a key vaultban visszafordíthatatlan művelet. Ha a helyreállítható törlés tulajdonság értéke "true", nem módosítható vagy távolítható el.  
+> A Key Vault "Soft-Delete" engedélyezése visszafordíthatatlan művelet. Ha a Soft-delete tulajdonság értéke "true" (igaz), akkor nem módosítható és nem távolítható el.  
 
 ### <a name="existing-key-vault"></a>Meglévő kulcstartó
 
-Egy ContosoVault nevű meglévő kulcstartó esetén engedélyezze a helyreállítható törlést az alábbiak szerint. 
+Egy ContosoVault nevű meglévő kulcstartó esetén a következő módon engedélyezze a Soft delete törlését. 
 
 ```azurecli
 az keyvault update -n ContosoVault --enable-soft-delete true
@@ -58,69 +58,69 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Új kulcstartó
 
-Az új kulcstartó helyreállítható törlésének engedélyezése a létrehozás időpontjában történik, ha a létrehozási parancshoz hozzáadja a helyreállítható törlésengedélyező jelzőt.
+Az új kulcstartó törlésének engedélyezése a létrehozáskor történik, ha hozzáadja a Soft-delete Enable jelzőt a Create parancshoz.
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
 ```
 
-### <a name="verify-soft-delete-enablement"></a>A helyreállítható törlés engedélyezése
+### <a name="verify-soft-delete-enablement"></a>Helyreállítható törlési engedélyezés ellenőrzése
 
-Annak ellenőrzéséhez, hogy a kulcstartóban engedélyezve van-e a hibamentes törlés, futtassa a *show* parancsot, és keresse meg a "Helyreállítható törlés engedélyezve?" parancsot. Attribútum:
+Annak ellenőrzéséhez, hogy a kulcstárolóban engedélyezve van-e a helyreállítható törlés, futtassa a *show* parancsot, és keresse meg a "Soft delete enabled?" lehetőséget. attribútum
 
 ```azurecli
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>Védett kulcstartó törlése
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>A védett kulcstartó törlésének törlése
 
-A key vault törlésére vonatkozó parancs viselkedése megváltozik attól függően, hogy engedélyezve van-e a helyreállítható törlés.
+Az a parancs, amellyel törölheti a kulcstartót, attól függően, hogy engedélyezve van-e a helyreállítható törlés.
 
 > [!IMPORTANT]
->Ha a következő parancsot futtatja egy olyan key vaulthoz, amelyen nincs engedélyezve a helyreállítható törlés, véglegesen törli ezt a kulcstartót és annak minden tartalmát, és nincs lehetőség a helyreállításra!
+>Ha olyan kulcstartóhoz futtatja a következő parancsot, amely nem rendelkezik a helyreállítható törléssel, véglegesen törli ezt a kulcstartót és annak összes tartalmát a helyreállítás lehetőség nélkül.
 
 ```azurecli
 az keyvault delete --name ContosoVault
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Hogyan védi a helyreállítható törlés a kulcstartókat?
+### <a name="how-soft-delete-protects-your-key-vaults"></a>A Soft-delete védi a kulcstartókat
 
-A törlés helyreállíthatóan engedélyezve:
+A helyreállítható törlés engedélyezve:
 
-- A törölt kulcstartó törlődik az erőforráscsoportból, és egy fenntartott névtérbe kerül, amely ahhoz a helyhez van társítva, ahol létrehozták. 
-- A törölt objektumok, például a kulcsok, a titkos kulcsok és a tanúsítványok mindaddig elérhetetlenek, amíg azok tartalmazó kulcstartójuk törölt állapotban van. 
-- A törölt kulcstartó DNS-neve le van foglalva, megakadályozva az azonos nevű új kulcstartó létrehozását.  
+- A rendszer eltávolítja a Deleted Key vaultot az erőforráscsoporthoz, és egy fenntartott névtérbe helyezi, amely ahhoz a helyhez van társítva, ahol létrehozták. 
+- A törölt objektumok (például kulcsok, titkos kódok és tanúsítványok) nem érhetők el, amíg a kulcstárolót tartalmazó kulcstartó törölve állapotban van. 
+- A törölt kulcstartó DNS-neve fenntartva, megakadályozva, hogy egy új kulcstároló ugyanazzal a névvel legyen létrehozva.  
 
-Az előfizetéshez társított törölt állapotkulcs-tárolókat a következő paranccsal tekintheti meg:
+Az előfizetéshez társított törölt állapotú kulcstartók a következő paranccsal tekinthetők meg:
 
 ```azurecli
 az keyvault list-deleted
 ```
-- *Az azonosító* segítségével azonosíthatja az erőforrást a helyreállítás vagy a tisztítás során. 
-- *Az erőforrás-azonosító* a tároló eredeti erőforrásazonosítója. Mivel ez a key vault most törölt állapotban van, nincs erőforrás az adott erőforrás-azonosítóval. 
-- *Ütemezett kiürítési dátum,* amikor a tároló véglegesen törlődik, ha nem történik művelet. Az *ütemezett kiürítési dátum*kiszámításához használt alapértelmezett megőrzési időszak 90 nap.
+- Az *azonosító* használatával lehet azonosítani az erőforrást a helyreállítás vagy a kiürítés során. 
+- Az *erőforrás-azonosító* a tár eredeti erőforrás-azonosítója. Mivel ez a kulcstartó már törölt állapotban van, nem létezik erőforrás az erőforrás-AZONOSÍTÓval. 
+- Az *ütemezett kiürítési dátum* az, amikor a tároló véglegesen törölve lesz, ha nincs művelet. Az *ütemezett kiürítési dátum*kiszámításához használt alapértelmezett megőrzési időtartam 90 nap.
 
 ## <a name="recovering-a-key-vault"></a>Kulcstartó helyreállítása
 
-Kulcstartó helyreállításához adja meg a key vault nevét, erőforráscsoport és helyét. Vegye figyelembe a helyet és az erőforráscsoportot a törölt kulcstartó, a helyreállítási folyamat hoz szükség van rájuk.
+Kulcstartó helyreállításához meg kell adnia a kulcstároló nevét, az erőforráscsoportot és a helyet. Jegyezze fel a törölt kulcstartó helyét és erőforrás-csoportját, ahogy a helyreállítási folyamathoz szükség van rájuk.
 
 ```azurecli
 az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
-A key vault helyreáll, egy új erőforrás jön létre a key vault eredeti erőforrás-azonosítójával. Ha az eredeti erőforráscsoportot eltávolítja, a helyreállítás megkísérlése előtt ugyanazzal a névvel kell létrehozni egyet.
+Kulcstartó helyreállításakor a Key Vault eredeti erőforrás-azonosítójával létrejön egy új erőforrás. Ha az eredeti erőforráscsoport el lett távolítva, a helyreállítás megkísérlése előtt egyet kell létrehoznia ugyanazzal a névvel.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Kulcstartó-objektumok törlése és törlése
+## <a name="deleting-and-purging-key-vault-objects"></a>Key Vault-objektumok törlése és törlése
 
-A következő parancs törli a "ContosoFirstKey" kulcsot a "ContosoVault" nevű key vaultban, amelynek helyreállítható törlése engedélyezve van:
+A következő parancs törli a "ContosoFirstKey" kulcsot a (z) "ContosoVault" nevű kulcstartóban, amelynél engedélyezve van a helyreállítható törlés:
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Ha a kulcstartó engedélyezve van a helyreállítható törléshez, a törölt kulcs továbbra is úgy jelenik meg, mintha törölve lenne, kivéve, ha explicit módon listázvagy lekéri a törölt kulcsokat. A törölt állapotban lévő kulcson végzett legtöbb művelet sikertelen lesz, kivéve a törölt kulcs listázását, helyreállítását vagy tisztítását. 
+Ha a kulcstartó engedélyezve van a helyreállítható törléshez, a törölt kulcsok továbbra is törlődnek, kivéve, ha explicit módon listáz vagy lekéri a törölt kulcsokat. A törölt állapotban lévő egyik kulcson végrehajtott műveletek többsége sikertelen lesz, kivéve a törölt kulcsok listázását, helyreállítását vagy törlését. 
 
-Ha például a törölt kulcsok listázását szeretné kérni egy key vaultban, használja a következő parancsot:
+Ha például egy kulcstartóban szeretné megkeresni a törölt kulcsok listáját, használja a következő parancsot:
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
@@ -128,11 +128,11 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 ### <a name="transition-state"></a>Átmeneti állapot 
 
-Ha töröl egy kulcsot egy kulcstartóban, ha a hibakezelés engedélyezve van, az átmenet néhány másodpercig is eltarthat. Az átmenet során előfordulhat, hogy a kulcs nem aktív vagy törölt állapotban van. 
+Ha töröl egy kulcsot egy kulcstartóban, és engedélyezve van a helyreállítható törlés, eltarthat néhány másodpercig, amíg az áttérés be nem fejeződik. A váltás során előfordulhat, hogy a kulcs nem aktív állapotban van, vagy a törölt állapotban van. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>A törlés helyreállítható használata kulcstartó-objektumokkal
+### <a name="using-soft-delete-with-key-vault-objects"></a>A Soft delete használata a Key Vault-objektumokkal
 
-Csakúgy, mint a kulcstartók, a törölt kulcs, titkos kulcs vagy tanúsítvány, továbbra is törölt állapotban legfeljebb 90 napig, kivéve, ha helyreállítja, vagy kiüríti azt.
+Csakúgy, mint a Key vaultok, a törölt kulcsok, titkos kódok vagy tanúsítványok, akár 90 napig törölve maradnak, hacsak nem állítja helyre vagy nem törli azt.
 
 #### <a name="keys"></a>Kulcsok
 
@@ -142,102 +142,102 @@ Helyreállítható kulcs helyreállítása:
 az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-A helyreállítható kulcs végleges törlése (más néven tisztítás):
+Ha véglegesen törölni kívánja (más néven öblítést), a rendszer egy helyreállított kulcsot is töröl:
 
 > [!IMPORTANT]
-> A kulcs törlése véglegesen törli azt, és nem lesz visszanyerhető! 
+> A kulcsok végleges törlése véglegesen törli azt, és nem állítható vissza. 
 
 ```azurecli
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-A **helyreállítási** és **kiürítési** műveletek saját engedélyekkel rendelkeznek egy key vault hozzáférési szabályzatban társítva. Ahhoz, hogy egy felhasználó vagy egyszerű szolgáltatás képes legyen végrehajtani a **helyreállítási** vagy **kiürítési** műveletet, rendelkeznie kell a megfelelő engedéllyel a kulcshoz vagy titkos kulcshoz. Alapértelmezés szerint **a kiürítés** nem kerül hozzáadásra a key vault hozzáférési szabályzatához, ha az "all" parancsikon az összes engedély megadására szolgál. Kifejezetten meg kell adnia a **kiürítési** engedélyt. 
+A **helyreállítás** és **Törlés** műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. Ahhoz, hogy egy felhasználó vagy egy egyszerű szolgáltatásnév végrehajtson egy **helyreállítási** vagy kitakarítási műveletet, rendelkeznie kell a megfelelő engedélyekkel az adott kulcshoz **vagy** titokhoz. Alapértelmezés szerint a **kiürítés** nincs hozzáadva a kulcstartó hozzáférési házirendjéhez, ha az összes engedély megadására az "all" (összes) parancsikont használja. Kifejezetten meg kell adnia a **kiürítési** engedélyt. 
 
-#### <a name="set-a-key-vault-access-policy"></a>Kulcstartó-hozzáférési házirend beállítása
+#### <a name="set-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzatának beállítása
 
-A következő user@contoso.com parancs több művelet használatát engedélyezi a *ContosoVault* kulcsain, beleértve a **kiürítést**is:
+A következő parancs engedélyt user@contoso.com ad arra, hogy több műveletet használjon a kulcsokon a *ContosoVault* , beleértve a **kiürítést**:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> Ha rendelkezik egy meglévő key vault, amely nemrég volt a helyreállítható törlés engedélyezve van, előfordulhat, hogy nem rendelkezik **helyreállítási** és **kiürítési** engedélyekkel.
+> Ha már van olyan kulcstartója, amelynél engedélyezve van a **helyreállított** törlés, akkor előfordulhat, hogy nem rendelkezik helyreállítási és **törlési** engedélyekkel.
 
 #### <a name="secrets"></a>Titkos kulcsok
 
-A kulcsokhoz hasonlóan a titkos kulcsokat is saját parancsokkal kezelik:
+A kulcsokhoz hasonlóan a titkos kódok is a saját parancsaikkal kezelhetők:
 
-- SQLPassword nevű titkos fájl törlése: 
+- SQLPassword nevű titkos kód törlése: 
   ```azurecli
   az keyvault secret delete --vault-name ContosoVault -name SQLPassword
   ```
 
-- A kulcstartóban lévő összes törölt titok listázása: 
+- A Key Vault összes törölt titkának listázása: 
   ```azurecli
   az keyvault secret list-deleted --vault-name ContosoVault
   ```
 
-- Titkos titok helyreállítása törölt állapotban: 
+- Titkos kód helyreállítása törölt állapotban: 
   ```azurecli
   az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   ```
 
-- Titkos titok törlése törölt állapotban: 
+- Titkos kód törlése törölt állapotban: 
 
   > [!IMPORTANT]
-  > Egy titok törlése véglegesen törli, és nem lesz visszanyerhető! 
+  > A titkos kód végleges törlésével véglegesen törlődik, és nem lesz helyreállítható. 
 
   ```azurecli
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>A védett kulcstartó helyreállító törlése
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Védett kulcstartó törlésének végleges törlése
 
 > [!IMPORTANT]
-> A kulcstartó vagy annak egyik objektumának törlése véglegesen törli azt, ami azt jelenti, hogy nem lesz helyreállítható!
+> Egy kulcstartó vagy egy benne lévő objektum kiürítése véglegesen törölve lesz, ami azt jelenti, hogy nem lesz helyreállítható.
 
-A kiürítési funkció egy olyan key vault-objektum vagy egy teljes kulcstartó végleges törlésére szolgál, amelyet korábban helyreállíthatóan töröltek. Az előző szakaszban bemutatottak szerint a kulcstartóban tárolt, a helyreállítható törlés funkcióval rendelkező objektumok több állapoton is átmehetnek:
+A kiürítési függvény használatával véglegesen törölhető egy kulcstároló-objektum vagy egy teljes kulcstartó, amelyet korábban már töröltek. Ahogy az előző szakaszban is látható, a Key vaultban tárolt objektumok, amelyeken engedélyezve van a Soft delete funkció, több állapotba is léphetnek:
 
 - **Aktív**: törlés előtt.
-- **Helyreállíthatóan törölt:** törlés után, amely felsorolható, és visszaállítható aktív állapotba.
-- **Véglegesen törölt:** a kiürítés után nem állítható helyre.
+- **Soft-Deleted**: törlés után a rendszer képes a listára, és helyreállítani az aktív állapotot.
+- **Véglegesen törölve**: törlés után nem lehet helyreállítani.
 
-Ugyanez igaz a kulcstartóra is. A helyreállítható kulcstartó és annak tartalmának végleges törléséhez meg kell tisztítania magát a key vaultot.
+Ugyanez érvényes a Key Vault esetében is. Ha véglegesen törölni szeretné a helyreállított kulcstartót és annak tartalmát, akkor magát a kulcstartót kell kiürítenie.
 
-### <a name="purging-a-key-vault"></a>Kulcstartó kiürítése
+### <a name="purging-a-key-vault"></a>Kulcstartó törlése
 
-A kulcstartó törlésekor a teljes tartalom véglegesen törlődik, beleértve a kulcsokat, titkos kulcsokat és tanúsítványokat. A helyreállítható kulcstartó kiürítéséhez `az keyvault purge` használja a parancsot. A parancs `az keyvault list-deleted`segítségével megtalálhatja az előfizetés törölt kulcstartóinak helyét.
+Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja az `az keyvault purge` parancsot. A parancs `az keyvault list-deleted`használatával megtalálhatja az előfizetés által törölt kulcstartók helyét.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
 ```
 
-### <a name="purge-permissions-required"></a>Szükséges engedélytisztítás
-- Törölt kulcstartó törléséhez a felhasználónak RBAC-engedélyre van szüksége a *Microsoft.KeyVault/locations/deletedVaults/purge/action* művelethez. 
-- A törölt kulcstartó listázásához a felhasználónak RBAC-engedélyre van szüksége a *Microsoft.KeyVault/deletedVaults/read* művelethez. 
-- Alapértelmezés szerint csak az előfizetés rendszergazdája rendelkezik ezekkel az engedélyekkel. 
+### <a name="purge-permissions-required"></a>Törlési engedélyek szükségesek
+- A törölt kulcstartó kiürítéséhez a felhasználónak RBAC engedéllyel kell rendelkeznie a *Microsoft. kulcstartó/Locations/deletedVaults/Purge/Action* művelethez. 
+- A törölt kulcstartók listázásához a felhasználónak RBAC engedéllyel kell rendelkeznie a *Microsoft. kulcstartó/deletedVaults/Read* művelethez. 
+- Alapértelmezés szerint csak az előfizetések rendszergazdái rendelkeznek ezekkel az engedélyekkel. 
 
 ### <a name="scheduled-purge"></a>Ütemezett kiürítés
 
-A törölt kulcstartó-objektumok listázása azt is megmutatja, hogy mikor rakják le őket a Key Vault. *Ütemezett kiürítési dátum* azt jelzi, hogy egy key vault-objektum véglegesen törlődik, ha nem történik művelet. Alapértelmezés szerint a törölt kulcstartó objektum megőrzési ideje 90 nap.
+A törölt Key Vault-objektumok listázása azt is jelzi, hogy mikor Key Vault a rendszer az ütemezett törlést ütemezi. Az *ütemezett kiürítési dátum* azt jelzi, hogy a Key Vault-objektumok véglegesen törlődnek-e, ha nem végeznek műveletet. Alapértelmezés szerint a törölt Key Vault-objektum megőrzési időtartama 90 nap.
 
 >[!IMPORTANT]
->A kiürítési tároló objektum, amelyet az *ütemezett kiürítési dátum* mező aktivál, véglegesen törlődik. Ez nem hasznosítható!
+>A rendszer véglegesen törli az *ütemezett kiürítési dátum* mező által aktivált, kiürített tár objektumot. Nem helyreállítható!
 
-## <a name="enabling-purge-protection"></a>Kiürítési védelem engedélyezése
+## <a name="enabling-purge-protection"></a>A kiürítési védelem engedélyezése
 
-Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg a 90 napos megőrzési idő le nem telt. Az ilyen trezor vagy objektum továbbra is vissza. Ez a funkció további biztosítékot nyújt arra, hogy egy tároló vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak le nem telt.
+Ha a védelem kitisztítása be van kapcsolva, a tároló vagy a törölt állapotú objektum nem törölhető, amíg a 90 napos megőrzési idő el nem telt. Ilyen tár vagy objektum továbbra is helyreállítható. Ez a funkció biztosítja, hogy egy tár vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak el nem telik.
 
-Csak akkor engedélyezheti a törlési védelmet, ha a törlés is engedélyezve van. 
+Csak akkor engedélyezheti a kiürítést, ha a Soft-delete is engedélyezve van. 
 
-Ha a tároló létrehozásakor be szeretné kapcsolni a helyreállítható ancsit, és meg szeretné tisztítani a védelmet, használja az [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
+Ha be szeretné kapcsolni a törlést és a kiürítést a tár létrehozásakor, használja az az kulcstartó [create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-Ha kiürítési védelmet szeretne hozzáadni egy meglévő tárolóhoz (amelyen már engedélyezve van a helyreállítható törlés), használja az [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) parancsot:
+Ha a kiürítési védelmet egy meglévő tárolóba kívánja hozzáadni (amely már rendelkezik az engedélyezett törlési lehetőséggel), használja az az kulcstartó [Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) parancsot:
 
 ```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -245,6 +245,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-- A Key Vault helyreállítható törlési funkciójának áttekintését az [Azure Key Vault helyreállítható törlés – áttekintéscímű témakörben találja.](overview-soft-delete.md)
-- Az Azure Key Vault használatának általános áttekintését a Mi az Azure Key Vault? című [témakörben találja.](overview.md)
+- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](overview-soft-delete.md)).
+- A Azure Key Vault használatának általános áttekintését lásd: [Mi az a Azure Key Vault?](overview.md)).
 

@@ -1,43 +1,43 @@
 ---
-title: Kiszolgálóparaméterek konfigurálása - Azure portal – Azure Database for MySQL
-description: Ez a cikk ismerteti, hogyan konfigurálhatja a MySQL-kiszolgáló paramétereit az Azure Database for MySQL-ben az Azure Portal használatával.
+title: Kiszolgáló paramétereinek konfigurálása – Azure Portal-Azure Database for MySQL
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a MySQL-kiszolgáló paramétereit Azure Database for MySQL a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/16/2020
 ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605157"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Kiszolgálóparaméterek konfigurálása az Azure Database for MySQL szolgáltatásban az Azure Portal használatával
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQLban a Azure Portal használatával
 
-Az Azure Database for MySQL támogatja bizonyos kiszolgálóparaméterek konfigurálását. Ez a cikk ismerteti, hogyan konfigurálhatja ezeket a paramétereket az Azure Portal használatával. Nem minden kiszolgálóparaméter állítható be.
+Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigálás a kiszolgálóparamétereire az Azure Portalon
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigáljon a kiszolgálói paraméterek Azure Portal
 
-1. Jelentkezzen be az Azure Portalon, majd keresse meg az Azure-adatbázis ta-kiszolgáló.
-2. A **BEÁLLÍTÁSOK** szakaszban kattintson a **Kiszolgáló paramétereire** az Azure Database for MySQL-kiszolgáló kiszolgálóparamétereinek megnyitásához.
-![Az Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Keresse meg a módosítani kívánt beállításokat. Tekintse át a **Leírás** oszlopot a cél és az engedélyezett értékek megértéséhez.
-![Legördülő menü számbavétele](./media/howto-server-parameters/3-toggle_parameter.png)
-4. A módosítások mentéséhez kattintson a **Mentés** gombra.
+1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MySQL-kiszolgálót.
+2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
+![Azure Portal kiszolgáló paramétereinek lapja](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Keresse meg a módosítani kívánt beállításokat. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
+![Számbavétel legördülő lista](./media/howto-server-parameters/3-toggle_parameter.png)
+4. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
-5. Ha új értékeket mentett a paraméterekhez, akkor mindig visszaállíthatja az összeset az alapértelmezett értékekre, ha az **Összes visszaállítása lehetőséget választja az alapértelmezettre**lehetőségre.
-![Az összes visszaállítása az alapértelmezettre](./media/howto-server-parameters/5-reset_parameters.png)
+5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
+![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Konfigurálható kiszolgálóparaméterek listája
+## <a name="list-of-configurable-server-parameters"></a>Konfigurálható kiszolgálói paraméterek listája
 
-A támogatott kiszolgálóparaméterek listája folyamatosan növekszik. Az Azure Portal kiszolgálóparaméterei lapon lejuthat a definícióra, és konfigurálhatja a kiszolgálóparamétereit az alkalmazáskövetelményei alapján.
+A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure Portal Server parameters (kiszolgálói paraméterek) lapján megtekintheti a definíciót és konfigurálhatja a kiszolgálói paramétereket az alkalmazás követelményei alapján.
 
-## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálóparaméterek
+## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálói paraméterek
 
-Az InnoDB pufferkészlet mérete nem konfigurálható, és a [tarifacsomaghoz](concepts-service-tiers.md)van kötve.
+A InnoDB-puffer mérete nem konfigurálható, és az [árképzési szintjéhez](concepts-service-tiers.md)van kötve.
 
-|**Árképzési szint**|**virtuális mag(k)**|**InnoDB pufferkészlet mérete <br>MB-ban (legfeljebb 4 TB-os tárolót támogató kiszolgálók)**| **InnoDB pufferkészlet mérete <br>MB-ban (akár 16 TB-os tárolót támogató kiszolgálók)**|
+|**Díjszabási csomag**|**Virtuális mag (ok)**|**InnoDB-puffer mérete (MB <br>) (legfeljebb 4 TB tárhelyet támogató kiszolgálók)**| **InnoDB-puffer mérete (MB <br>) (legfeljebb 16 TB tárterületet támogató kiszolgálók)**|
 |:---|---:|---:|---:|
 |Basic| 1| 832| |
 |Basic| 2| 2560| |
@@ -53,33 +53,33 @@ Az InnoDB pufferkészlet mérete nem konfigurálható, és a [tarifacsomaghoz](c
 |Memóriaoptimalizált| 16| 62464| 124928|
 |Memóriaoptimalizált| 32| 125952| 251904|
 
-Ezek a további kiszolgálóparaméterek nem konfigurálhatók a rendszerben:
+Ezek a további kiszolgálói paraméterek nem konfigurálhatók a rendszeren:
 
 |**Paraméter**|**Rögzített érték**|
 | :------------------------ | :-------- |
-|innodb_file_per_table alapszinten|KI|
+|alapszintű innodb_file_per_table|KI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|256 MB|
+|innodb_log_file_size|256MB|
 |innodb_log_files_in_group|2|
 
-Az itt fel nem sorolt egyéb kiszolgálóparaméterek a MySQL beépített alapértelmezett értékeiaz [5.7-es](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) és [az 5.6-os](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)verziókban.
+Az itt felsorolt egyéb kiszolgálói paraméterek az [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) -es és a [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)-es verziókhoz tartozó MySQL beépített alapértelmezett értékeire vannak beállítva.
 
-## <a name="working-with-the-time-zone-parameter"></a>Az időzóna paraméterrel való együttműködés
+## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
-### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblázatok feltöltése
+### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblák feltöltése
 
-A kiszolgálón lévő időzóna-táblák feltölthetők a `mysql.az_load_timezone` tárolt eljárás hívásával egy eszközről, például a MySQL parancssorból vagy a MySQL Workbench-ből.
+A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MySQL parancssor vagy a MySQL Workbench.
 
 > [!NOTE]
-> Ha a parancsot a MySQL Workbench-ből futtatja, előfordulhat, hogy először ki kell kapcsolnia a `mysql.az_load_timezone` csökkentett frissítési módot a használatával. `SET SQL_SAFE_UPDATES=0;`
+> Ha a MySQL Workbenchből `mysql.az_load_timezone` futtatja a parancsot, előfordulhat, hogy először ki kell kapcsolnia a biztonságos frissítési `SET SQL_SAFE_UPDATES=0;`módot a használatával.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Az időzóna-táblák megfelelő feltöltéséhez indítsa újra a kiszolgálót. A kiszolgáló újraindításához használja az [Azure Portalt](howto-restart-server-portal.md) vagy a [CLI-t.](howto-restart-server-cli.md)
+> Indítsa újra a kiszolgálót az időzóna-táblák megfelelő kitöltésének biztosításához. A kiszolgáló újraindításához használja a [Azure Portal](howto-restart-server-portal.md) vagy a [parancssori](howto-restart-server-cli.md)felületet.
 
 A rendelkezésre álló időzóna-értékek megtekintéséhez futtassa a következő parancsot:
 
@@ -89,20 +89,20 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>A globális szintű időzóna beállítása
 
-A globális szintű időzóna az Azure Portal **Kiszolgálóparaméterei** lapjáról állítható be. Az alábbi beállítás a globális időzónát az "US/Pacific" értékre állítja be.
+A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi beállítás a globális időzónát az "USA/csendes-óceáni" értékre állítja be.
 
 ![Időzóna-paraméter beállítása](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>A munkamenetszint időzónájának beállítása
+### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
-A munkamenet-szint időzónája beállítható a `SET time_zone` parancs futtatásával egy eszközről, például a MySQL parancssorból vagy a MySQL Workbench-ből. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
+A munkamenet-szint időzónája beállítható úgy, `SET time_zone` hogy a parancsot egy olyan eszközről futtatja, mint a MySQL parancssor vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Olvassa el a MySQL dokumentációját a [Dátum és idő függvények .](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)
+Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 ## <a name="next-steps"></a>További lépések
 
-- [A MySQL Azure Database kapcsolattárak.](concepts-connection-libraries.md)
+- [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

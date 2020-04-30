@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés – Többszintű szolgáltatás megkövetelése minden felhasználó számára – Azure Active Directory
-description: Egyéni feltételes hozzáférési házirend létrehozása, amely megköveteli, hogy minden felhasználó többtényezős hitelesítést hajtson végre
+title: Feltételes hozzáférés – MFA megkövetelése minden felhasználó számára – Azure Active Directory
+description: Egyéni feltételes hozzáférési szabályzat létrehozása, amely megköveteli, hogy minden felhasználó végrehajtsa a többtényezős hitelesítést
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,70 +12,70 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617623"
 ---
-# <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: Többkori licenc megkövetelése az összes felhasználó számára
+# <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
 
-Mint Alex Weinert, a Directory of Identity Security a Microsoft, megemlíti az ő [blogbejegyzést A Pa $ $word nem számít:](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)
+Alex Weinert, a Microsoft Identity Security könyvtára, amely a [PA $ $Word](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)blogbejegyzésében említi, nem számít:
 
-> A jelszó nem számít, de MFA nem! Kutatásaink alapján fiókja több mint 99,9%-kal kisebb valószínűséggel kerül veszélybe, ha többfa-t használ.
+> A jelszó nem számít, de az MFA-t is! Tanulmányunk alapján a fiókja több mint 99,9%-kal kevésbé valószínű, ha MFA-t használ.
 
-Az ebben a cikkben található útmutatás segít a szervezetnek egy kiegyensúlyozott MFA-házirend létrehozásában a környezetszámára.
+A cikk útmutatása alapján a szervezet létrehoz egy kiegyensúlyozott MFA-szabályzatot a környezet számára.
 
 ## <a name="user-exclusions"></a>Felhasználói kizárások
 
-A feltételes hozzáférési szabályzatok hatékony eszközök, javasoljuk, hogy zárja ki a következő fiókokat a szabályzatból:
+A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasoljuk, hogy a szabályzatból kizárja a következő fiókokat:
 
-* **Vészelérési** vagy **törésüveg-fiókok** a bérlői fiók zárolásának megakadályozása érdekében. Abban a valószínűtlen esetben az összes rendszergazda ki van zárva a bérlőből, a vészelérési felügyeleti fiók segítségével jelentkezzen be a bérlőbe lépéseket a hozzáférés helyreállítása érdekében.
-   * További információ a cikkben található, [a vészelérési fiókok kezelése az Azure AD-ben.](../users-groups-roles/directory-emergency-access.md)
-* **Szolgáltatásfiókok** és **egyszerű szolgáltatás,** például az Azure AD Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nem kötődnek egy adott felhasználóhoz. Ezeket általában az alkalmazásokhoz programozott hozzáférést lehetővé tevő háttérszolgáltatások használják, de a rendszerekbe való rendszergazdai célú bejelentkezésre is használják őket. Az ilyen szolgáltatásfiókokat ki kell zárni, mivel az MFA nem hajtható végre programozott módon. A szolgáltatásnévi szolgáltatások hívásait a feltételes hozzáférés nem blokkolja.
-   * Ha a szervezet ezeket a fiókokat parancsfájlokban vagy kódokban használja, fontolja meg, hogy lecseréli őket [felügyelt identitásokra.](../managed-identities-azure-resources/overview.md) Ideiglenes megoldásként ezeket a konkrét fiókokat kizárhatja az alaptervi házirendből.
+* **Vészhelyzeti hozzáférés** vagy **megszakítás-Glass** fiókok a bérlői szintű fiókok zárolásának megakadályozása érdekében. Abban az esetben, ha nem valószínű, hogy az összes rendszergazda ki van zárva a bérlőből, a vészhelyzeti hozzáférésű rendszergazdai fiók segítségével bejelentkezhet a bérlőnek a hozzáférés helyreállításához szükséges lépésekkel.
+   * További információt a következő cikkben talál: [vészhelyzeti hozzáférési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
+* **Szolgáltatásfiókok és** **egyszerű szolgáltatások**, például a Azure ad Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nincsenek egy adott felhasználóhoz kötve. Ezeket általában olyan háttér-szolgáltatások használják, amelyek lehetővé teszik a programozott hozzáférést az alkalmazásokhoz, de a rendszerekre is felhasználják a felügyeleti célokra való bejelentkezést. Ezeket a szolgáltatási fiókokat ki kell zárni, mert az MFA nem hajtható végre programozott módon. Az egyszerű szolgáltatások által kezdeményezett hívásokat nem blokkolja a feltételes hozzáférés.
+   * Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket. Ideiglenes megkerülő megoldásként kizárhatja ezeket a fiókokat az alapkonfiguráció házirendjéből.
 
-## <a name="application-exclusions"></a>Alkalmazáskizárások
+## <a name="application-exclusions"></a>Alkalmazás-kizárások
 
-Előfordulhat, hogy a szervezetek számos felhőalapú alkalmazással rendelkeznek. Nem minden ilyen alkalmazás igényel azonos biztonságot. Például a bérszámfejtési és jelenléti kérelmek hez szükség lehet az MFA-ra, de a kávézó valószínűleg nem. A rendszergazdák kizárhatnak bizonyos alkalmazásokat a házirendjükből.
+A szervezeteknek sok Felhőbeli alkalmazása lehet. Előfordulhat, hogy nem mindegyik alkalmazásnak egyenlő a biztonsága. Előfordulhat például, hogy a bérszámfejtési és a részvételi alkalmazások MFA-t igényelnek, de a cafeteria valószínűleg nem. A rendszergazdák dönthetnek úgy, hogy bizonyos alkalmazásokat kizárnak a szabályzatból.
 
-## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása
+## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-A következő lépések segítenek létrehozni egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy minden felhasználó többtényezős hitelesítést hajtson végre.
+A következő lépések segítenek létrehozni egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy minden felhasználó elvégezzen többtényezős hitelesítést.
 
-1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
-1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**
-1. Válassza az **Új házirend lehetőséget.**
-1. Adjon nevet a szabályzatának. Azt javasoljuk, hogy a szervezetek hozzanak létre egy értelmes szabvány a házirendek nevét.
-1. A **Hozzárendelések**csoportban válassza a **Felhasználók és csoportok lehetőséget.**
-   1. A **Belefoglalás**csoportban válassza a **Minden felhasználó lehetőséget.**
-   1. A **Kizárás csoportban**válassza a **Felhasználók és csoportok** lehetőséget, és válassza ki a szervezet vészelérési vagy törésüvegfiókjait. 
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Felhőalapú alkalmazások vagy műveletek** > közé tartozik a**Include csoportban**válassza az Összes **felhőalapú alkalmazás**lehetőséget.
-   1. A **Kizárás csoportban**jelölje ki azokat az alkalmazásokat, amelyek nem igényelnek többtényezős hitelesítést.
-1. A **Feltételek** > **az ügyfélalkalmazások (előzetes verzió)** csoportban állítsa a **Konfigurálás** beállítást **Igen**értékre, és válassza a **Kész gombot.**
-1. A**Grant** **access-vezérlők csoportban** > válassza a **Hozzáférési támogatás**lehetőséget, válassza a **Többtényezős hitelesítés megkövetelése**lehetőséget, majd a **Kijelölés**lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa a **Házirend engedélyezése** **be**beállítást.
-1. A létrehozás gombra a házirend engedélyezéséhez válassza a **Létrehozás** gombot.
+1. A **Cloud apps vagy a műveletek** > területen**válassza a** **minden felhőalapú alkalmazás**lehetőséget.
+   1. A **kizárás**területen válassza ki azokat az alkalmazásokat, amelyek nem igénylik a többtényezős hitelesítést.
+1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 ### <a name="named-locations"></a>Nevesített helyek
 
-A szervezetek dönthetnek úgy, hogy feltételes hozzáférési házirendjeikbe beépítik az ismert hálózati **helyeket, amelyeket named helynek** neveznek. Ezek a megnevezett helyek megbízható IPv4-hálózatokat is tartalmazhatnak, például a fő irodahelyhez hasonló hálózatokat. Az elnevezett helyek konfigurálásáról további információt a [Mi a helyfeltétel az Azure Active Directory feltételes hozzáférésében?](location-condition.md)
+A szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatoknak **nevezett helyként** ismert hálózati helyet foglalnak magukban. Ezek a nevesített helyek olyan megbízható IPv4-hálózatokat tartalmazhatnak, mint a Főiroda helyének. Az elnevezett helyek konfigurálásával kapcsolatos további információkért tekintse [meg a feltételes hozzáférés Azure Active Directory a hely feltételeit](location-condition.md) ismertető cikket.
 
-A fenti példaházirendben a szervezet dönthet úgy, hogy nem igényel többtényezős hitelesítést, ha egy felhőalapú alkalmazást a vállalati hálózatról fér hozzá. Ebben az esetben a következő konfigurációt adhatják hozzá a házirendhez:
+A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem igényli a többtényezős hitelesítést, ha a vállalati hálózatról fér hozzá a felhőalapú alkalmazásokhoz. Ebben az esetben a következő konfigurációt vehetik fel a szabályzatba:
 
-1. A **Hozzárendelések**csoportban válassza a **Feltételek** > **helyek lehetőséget.**
-   1. Állítsa be **az Igen**lehetőséget.
-   1. **Tartalmazza a bármely helyet.**
-   1. **Az összes megbízható hely kizárása**.
+1. A **hozzárendelések**területen válassza a **feltételek** > **helyszínek**lehetőséget.
+   1. Konfigurálja az **Igen értéket**.
+   1. Adjon meg **bármilyen helyet**.
+   1. **Az összes megbízható helyszín**kizárása.
    1. Válassza a **Done** (Kész) lehetőséget.
 1. Válassza a **Done** (Kész) lehetőséget.
-1. **Mentse** a házirend-módosításokat.
+1. **Mentse** a szabályzat módosításait.
 
 ## <a name="next-steps"></a>További lépések
 
-[Feltételes hozzáférés közös házirendjei](concept-conditional-access-policy-common.md)
+[Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[Hatás meghatározása csak feltételes hozzáférésű jelentésmódhasználatával](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
-[Bejelentkezési viselkedés szimulálása a Feltételes hozzáférés Mi ha eszközzel](troubleshoot-conditional-access-what-if.md)
+[Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
