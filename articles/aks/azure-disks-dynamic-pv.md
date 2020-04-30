@@ -1,46 +1,46 @@
 ---
-title: Az Azure-lemezek kötetének dinamikus létrehozása
+title: Azure Disks-kötet dinamikus létrehozása
 titleSuffix: Azure Kubernetes Service
-description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet az Azure Kubernetes-szolgáltatásban (AKS) az Azure Kubernetes-szolgáltatásban
+description: Ismerje meg, hogyan hozhat létre dinamikusan állandó kötetet Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 0ed58ef86dcd93ff2bd5588c8479195443bc292d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803551"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208142"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet dinamikus létrehozása és használata azure-lemezekkel az Azure Kubernetes-szolgáltatásban (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
-Az állandó kötet egy olyan tárolódarabot jelöl, amely a Kubernetes-podokkal való használatra lett kiépítve. Egy állandó kötetet egy vagy több podok, és dinamikusan vagy statikusan kiépített. Ez a cikk bemutatja, hogyan hozhat létre dinamikusan állandó köteteket az Azure-lemezekkel egyetlen pod egy Azure Kubernetes-fürt (AKS) fürtben.
+Az állandó kötet a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan állandó köteteket az Azure-lemezekkel az Azure Kubernetes Service-(ak-) fürtben található egyetlen Pod használatával.
 
 > [!NOTE]
-> Egy Azure-lemez csak akkor csatlakoztatható *az Access mód* típusa *ReadWriteOnce*, amely elérhetővé teszi, hogy csak egy pod az AKS-ben. Ha egy állandó kötetet több podközött kell megosztania, használja az [Azure Files szolgáltatást.][azure-files-pvc]
+> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce*csatlakoztatni, így csak egyetlen Pod-ban érhető el az AK-ban. Ha egy állandó kötetet több hüvelyben kell megosztania, használja a [Azure Files][azure-files-pvc].
 
-A Kubernetes-kötetekről az [AKS-ben lévő alkalmazások tárolási beállításai][concepts-storage]című témakörben talál további információt.
+A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="built-in-storage-classes"></a>Beépített tárolási osztályok
 
-A tárolási osztály segítségével határozható meg, hogy egy egység nyikorosan hogyan jön létre dinamikusan egy állandó kötettel. A Kubernetes-tárolóosztályokról további információt a [Kubernetes-tárolási osztályok című témakörben talál.][kubernetes-storage-classes]
+A tárolási osztály segítségével határozható meg, hogy egy adott tárolási egység hogyan legyen dinamikusan létrehozva állandó kötettel. További információ a Kubernetes tárolásával kapcsolatban: [Kubernetes Storage classs][kubernetes-storage-classes].
 
-Minden AKS-fürt két előre létrehozott tárolási osztályt tartalmaz, amelyek mindegyike azure-lemezekkel működik:
+Mindegyik AK-fürt két, előre létrehozott tárolási osztályt tartalmaz, amelyek az Azure-lemezekkel való együttműködésre vannak konfigurálva:
 
-* Az *alapértelmezett* tárolási osztály egy szabványos Azure-lemezt tartalmaz.
-    * A normál tárolást HDD-k támasztják alá, és költséghatékony tárolást biztosít, miközben továbbra is teljesít. Standard lemezek ideálisak a költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
-* A *felügyelt prémium szintű* tárolási osztály egy prémium szintű Azure-lemezt biztosít.
-    * A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Ha a fürt AKS-csomópontjai prémium szintű tárhelyet használnak, válassza ki a *felügyelt prémium szintű* osztályt.
+* Az *alapértelmezett* tárolási osztály szabványos Azure-lemezt foglal le.
+    * A standard szintű tárterületet a HDD-k végzik, és költséghatékony tárterületet biztosít, miközben még folyamatban van. A standard szintű lemezek ideálisak a költséghatékony fejlesztési és tesztelési feladatok elvégzésére.
+* A *felügyelt Premium* Storage osztály egy prémium szintű Azure-lemezt foglal le.
+    * A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Ha a fürt AK-csomópontjai a Premium Storage-t használják, válassza a *felügyelt prémium* osztályt.
     
-Ezek az alapértelmezett tárolási osztályok nem teszik lehetővé a kötet méretének frissítését a létrehozás után. Ennek a képességnek a engedélyezéséhez adja hozzá az *allowVolumeExpansion: true* sort az egyik alapértelmezett tárolási osztályhoz, vagy hozzon létre saját egyéni tárolási osztályt. A `kubectl edit sc` parancs segítségével szerkeszthet egy meglévő tárolási osztályt. A tárolási osztályokról és a saját létrehozása című témakörben további információt [az AKS-ben futó alkalmazások tárolási beállításai című témakörben talál.][storage-class-concepts]
+Ezek az alapértelmezett tárolási osztályok nem teszik lehetővé a kötet méretének módosítását a létrehozásuk után. Ha engedélyezni szeretné ezt a képességet, adja hozzá a *allowVolumeExpansion: true* sort az egyik alapértelmezett tárolási osztályhoz, vagy hozzon létre saját egyéni tárolási osztályt. A parancs használatával szerkesztheti a `kubectl edit sc` meglévő tárolási osztályokat is. A Storage-osztályokkal és a saját létrehozásával kapcsolatos további információkért lásd: [az AK-beli alkalmazások tárolási lehetőségei][storage-class-concepts].
 
-Használja a [kubectl get sc][kubectl-get] parancsot az előre létrehozott tárolási osztályok megtekintéséhez. A következő példa az AKS-fürtön belül elérhető, létrehozás előtti tárolási osztályokat mutatja be:
+Az előre létrehozott tárolási osztályok megjelenítéséhez használja a [kubectl Get SC][kubectl-get] parancsot. Az alábbi példa egy AK-fürtön belül elérhető, előre létrehozott tárolási osztályokat mutatja be:
 
 ```console
 $ kubectl get sc
@@ -51,13 +51,13 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> Állandó kötet jogcímek vannak megadva a GiB, de az Azure által felügyelt lemezek által számlázott termékváltozat egy adott méretre. Ezek a termékkiállítások az S4 vagy P4 lemezek 32GiB-jétől az S80 vagy P80 lemezekhez (előzetes verzióban) 32TiB-ig terjednek. A prémium szintű felügyelt lemez átviteli és IOPS-teljesítménye a termékváltozattól és az AKS-fürt csomópontjainak méretétől is függ. További információt a [Felügyelt lemezek díjszabása és teljesítménye című témakörben talál.][managed-disk-pricing-performance]
+> Az állandó mennyiségi jogcímek a GiB-ban vannak megadva, de az Azure Managed Disks szolgáltatás egy adott méretű SKU-ra van kiszámlázva. Ezek az SKU-32GiB az S4 vagy a P4 lemezeken a S80-vagy P80-lemezek 32TiB (előzetes verzió). A prémium szintű felügyelt lemez átviteli sebessége és IOPS teljesítménye az AK-fürtben található csomópontok SKU-jának és példányának méretétől függ. További információ: [Managed Disks díjszabása és teljesítménye][managed-disk-pricing-performance].
 
-## <a name="create-a-persistent-volume-claim"></a>Állandó kötetjogcím létrehozása
+## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímek létrehozása
 
-Az állandó kötetjogcím (PVC) segítségével automatikusan kiépítheti a tárolási osztályon alapuló tárhelyet. Ebben az esetben a PERPV-k az előre létrehozott tárolási osztályok egyikével hozhat létre egy szabványos vagy prémium szintű Azure felügyelt lemezt.
+A tárolási osztályok alapján a tárolók automatikus kiépítéséhez állandó mennyiségi jogcím (PVC) használatos. Ebben az esetben a PVC az előre létrehozott tárolási osztályok egyikét használja egy standard vagy prémium szintű Azure Managed Disk létrehozásához.
 
-Hozzon létre `azure-premium.yaml`egy nevű fájlt, és másolja a következő jegyzékfájlba. A jogcím egy `azure-managed-disk` *5 GB* méretű, *ReadWriteOnce* hozzáféréssel rendelkező lemezt kér. A *felügyelt prémium szintű* tárolási osztály tárolási osztályként van megadva.
+Hozzon létre egy `azure-premium.yaml`nevű fájlt, és másolja a következő jegyzékbe. A jogcím a *ReadWriteOnce* -hozzáféréssel `azure-managed-disk` rendelkező, *5 GB* méretű lemezt kér. A *felügyelt Premium* Storage osztály a tárolási osztályként van megadva.
 
 ```yaml
 apiVersion: v1
@@ -74,9 +74,9 @@ spec:
 ```
 
 > [!TIP]
-> Ha olyan lemezt szeretne létrehozni, amely szabványos tárhelyet használ, a felügyelt prémium verzió helyett `storageClassName: default` *használja.*
+> Szabványos tárolót használó lemez létrehozásához használja `storageClassName: default` a nem *felügyelt prémium szintűt*.
 
-Hozza létre az állandó kötetjogcímet a [kubectl apply][kubectl-apply] paranccsal, és adja meg az *azure-premium.yaml* fájlt:
+Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal, és adja meg az *Azure-Premium. YAML* fájlt:
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -86,9 +86,9 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-Az állandó kötetjogcím létrehozása és a lemez sikeres kiépítése után létrehozható egy pod a lemezhez való hozzáféréssel. A következő jegyzékfájl létrehoz egy alapvető NGINX pod, amely az *azure-felügyelt lemez* `/mnt/azure`nevű állandó kötetjogcím használatával csatlakoztatja az Azure-lemezt az elérési úton. Windows Server-tárolók esetén (jelenleg előzetes verzióban az AKS-ben) adjon meg egy *mountPath-ot* a Windows elérési út konvenciója, például a *"D:"* használatával.
+Miután létrehozta az állandó kötet jogcímet, és a lemez sikeresen kiépítve, a lemezhez hozzáféréssel rendelkező Pod hozható létre. A következő jegyzékfájl létrehoz egy alapszintű NGINX-Pod-t, amely az *Azure-Managed-Disk* nevű állandó mennyiségi jogcímet használja `/mnt/azure`az Azure-lemez csatlakoztatásához az elérési úton. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
-Hozzon létre `azure-pvc-disk.yaml`egy nevű fájlt, és másolja a következő jegyzékfájlba.
+Hozzon létre egy `azure-pvc-disk.yaml`nevű fájlt, és másolja a következő jegyzékbe.
 
 ```yaml
 kind: Pod
@@ -115,7 +115,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-Hozza létre a pod a [kubectl alkalmazni parancsot,][kubectl-apply] ahogy az a következő példában látható:
+Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, ahogy az az alábbi példában is látható:
 
 ```console
 $ kubectl apply -f azure-pvc-disk.yaml
@@ -123,7 +123,7 @@ $ kubectl apply -f azure-pvc-disk.yaml
 pod/mypod created
 ```
 
-Most már rendelkezik egy futó pod az `/mnt/azure` Azure-lemez csatlakoztatva a címtárban. Ez a konfiguráció látható, amikor `kubectl describe pod mypod`ellenőrzi a pod keresztül, amint azt a következő tömörített példa:
+Most már rendelkezik egy futó Pod lemezzel, amely a `/mnt/azure` címtárban van csatlakoztatva. Ez a konfiguráció megtekinthető a pod-on keresztüli `kubectl describe pod mypod`vizsgálat során, ahogy az az alábbi tömörített példában is látható:
 
 ```console
 $ kubectl describe pod mypod
@@ -148,11 +148,11 @@ Events:
 [...]
 ```
 
-## <a name="back-up-a-persistent-volume"></a>Állandó kötet biztonsági másolatot kell kapnia
+## <a name="back-up-a-persistent-volume"></a>Állandó kötet biztonsági mentése
 
-Az állandó kötetben lévő adatok biztonsági másolatot készíteni, pillanatképet készíthet a kötet felügyelt lemezéről. Ezután használhatja ezt a pillanatképet egy visszaállított lemez létrehozásához, és csatolja a podok az adatok visszaállításának eszközeként.
+Az állandó köteten lévő adatok biztonsági mentéséhez készítsen pillanatképet a kötet felügyelt lemezéről. Ezt a pillanatképet használhatja a visszaállított lemez létrehozásához és a hüvelyekhez való csatolásához az adatok visszaállításához.
 
-Először a kötet nevét `kubectl get pvc` a paranccsal, például a PVC nevű *azure-felügyelt lemez:*
+Először szerezze be a kötet nevét a `kubectl get pvc` paranccsal, például az *Azure által felügyelt lemez*nevű PVC esetében:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -161,7 +161,7 @@ NAME                 STATUS    VOLUME                                     CAPACI
 azure-managed-disk   Bound     pvc-faf0f176-8b8d-11e8-923b-deb28c58d242   5Gi        RWO            managed-premium   3m
 ```
 
-Ez a kötetnév képezi az alapul szolgáló Azure-lemeznevét. A lemezazonosító lekérdezése az [az lemezlistával,][az-disk-list] és adja meg a PVC-kötet nevét, ahogy az a következő példában látható:
+Ez a kötet neve az alapul szolgáló Azure-lemez nevét képezi. Kérdezze le a lemez AZONOSÍTÓját az [az Disk List][az-disk-list] paranccsal, és adja meg a PVC-kötet nevét az alábbi példában látható módon:
 
 ```azurecli-interactive
 $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c58d242`)]' -o tsv
@@ -169,7 +169,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-A lemezazonosító segítségével hozzon létre egy pillanatkép [lemezt az pillanatkép létrehozása .][az-snapshot-create] A következő példa egy *pvcSnapshot* nevű pillanatképet hoz létre ugyanabban az erőforráscsoportban, mint az AKS-fürt (*MC_myResourceGroup_myAKSCluster_eastus).* Engedélyproblémák merülhetnek fel, ha pillanatképeket hoz létre, és olyan erőforráscsoportokban hoz létre lemezeket, amelyekhez az AKS-fürt nem fér hozzá.
+A lemez azonosítójával hozzon létre egy pillanatkép-lemezt az [az Snapshot Create][az-snapshot-create]paranccsal. A következő példa létrehoz egy *pvcSnapshot* nevű pillanatképet ugyanabban az erőforráscsoporthoz, mint az AK-fürtöt (*MC_myResourceGroup_myAKSCluster_eastus*). Ha pillanatképeket hoz létre, és helyreállítja a lemezeket azokon az erőforráscsoportok között, amelyekhez az AK-fürt nem fér hozzá, akkor az engedélyek problémákba ütközhet.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -178,23 +178,23 @@ $ az snapshot create \
     --source /subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-A lemezen lévő adatok mennyiségétől függően eltarthat néhány percig a pillanatkép létrehozása.
+A lemezen lévő adatok mennyiségétől függően a pillanatkép létrehozása néhány percet is igénybe vehet.
 
 ## <a name="restore-and-use-a-snapshot"></a>Pillanatkép visszaállítása és használata
 
-A lemez visszaállításához és kubernetes-podkal való használatához forrásként használja a pillanatképet, amikor lemezt hoz létre [az az lemez létrehozása esetén.][az-disk-create] Ez a művelet megőrzi az eredeti erőforrást, ha ezután hozzá kell férned az eredeti adatpillanatképhez. A következő példa egy *pvcRestored* nevű lemezt hoz létre a *pvcSnapshot*nevű pillanatképből:
+A lemez visszaállításához és a Kubernetes-Pod használatával történő használatához használja a pillanatképet forrásként, amikor létrehoz egy lemezt az [az Disk Create][az-disk-create]paranccsal. Ez a művelet megőrzi az eredeti erőforrást, ha ezt követően el kell érnie az eredeti adatpillanatképet. A következő példa létrehoz egy *pvcRestored* nevű lemezt a *pvcSnapshot*nevű pillanatképből:
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
 ```
 
-Ha a visszaállított lemezt podtal szeretné használni, adja meg a lemez azonosítóját a jegyzékben. A lemezazonosító beszereznie az [az lemezshow][az-disk-show] parancsot. A következő példa az előző lépésben létrehozott *pvcRestored* lemezazonosítóját kapja:
+A helyreállított lemez Pod-vel való használatához határozza meg a lemez AZONOSÍTÓját a jegyzékfájlban. Szerezze be a lemez AZONOSÍTÓját az az [Disk show][az-disk-show] paranccsal. Az alábbi példa lekéri az előző lépésben létrehozott *pvcRestored* tartozó lemez azonosítóját:
 
 ```azurecli-interactive
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Hozzon létre `azure-restored.yaml` egy pod manifest nevű, és adja meg az előző lépésben kapott lemez URI. A következő példa létrehoz egy egyszerű NGINX webkiszolgálót, amelynek a visszaállított lemeze */mnt/azure*kötetként van csatlakoztatva:
+Hozzon létre egy nevű `azure-restored.yaml` Pod-jegyzékfájlt, és határozza meg az előző lépésben beszerzett lemez URI-ját. Az alábbi példa egy alapszintű NGINX-webkiszolgálót hoz létre, amelynek a visszaállított lemeze kötetként van csatlakoztatva a */mnt/Azure*-ben:
 
 ```yaml
 kind: Pod
@@ -223,7 +223,7 @@ spec:
         diskURI: /subscriptions/<guid>/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/pvcRestored
 ```
 
-Hozza létre a pod a [kubectl alkalmazni parancsot,][kubectl-apply] ahogy az a következő példában látható:
+Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, ahogy az az alábbi példában is látható:
 
 ```console
 $ kubectl apply -f azure-restored.yaml
@@ -231,7 +231,7 @@ $ kubectl apply -f azure-restored.yaml
 pod/mypodrestored created
 ```
 
-A pod `kubectl describe pod mypodrestored` részleteinek megtekintéséhez, például a következő tömörített példához, amely a kötetadatait jeleníti meg:
+A (z `kubectl describe pod mypodrestored` ) használatával megtekintheti a pod részleteit, például a következő, a kötetre vonatkozó információkat bemutató tömörített példát:
 
 ```console
 $ kubectl describe pod mypodrestored
@@ -251,12 +251,12 @@ Volumes:
 
 ## <a name="next-steps"></a>További lépések
 
-A kapcsolódó gyakorlati tanácsok értése: [Gyakorlati tanácsok a tároláshoz és a biztonsági mentések az AKS-ben.][operator-best-practices-storage]
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
-További információ a Kubernetes állandó kötetek Azure-lemezek használatával.
+További információ az állandó kötetek Kubernetes az Azure-lemezek használatával.
 
 > [!div class="nextstepaction"]
-> [Kubernetes beépülő modul az Azure-lemezekhez][azure-disk-volume]
+> [Kubernetes beépülő modul Azure-lemezekhez][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes

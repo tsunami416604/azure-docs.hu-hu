@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687716"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508071"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
 
@@ -24,11 +24,11 @@ Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyo
 
 **1. Töltse le az ügynököt**
 
-A [applicationinsights-Agent-3.0.0-preview. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar) letöltése
+A [applicationinsights-Agent-3.0.0-preview. 4. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) letöltése
 
 **2. irányítsa a JVM az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` az alkalmazás JVM argumentumai
 
 A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC`. Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
@@ -44,7 +44,7 @@ Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környeze
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Vagy hozzon létre egy nevű `ApplicationInsights.json`konfigurációs fájlt, és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.3.jar`, a következő tartalommal:
+Vagy hozzon létre egy nevű `ApplicationInsights.json`konfigurációs fájlt, és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.4.jar`, a következő tartalommal:
 
 ```json
 {
@@ -117,7 +117,7 @@ Tekintse meg a részleteket a [3,0 nyilvános előzetes verzióban: konfiguráci
 
 ### <a name="metrics"></a>Mérőszámok
 
-* Mikrométer
+* Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
 * JMX metrikák
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>Egyéni telemetria küldése az alkalmazásból

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/06/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 676b54e1d22712ac41534b67206e6d6931bcc9b9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671788"
+ms.locfileid: "82229697"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>JWT jogkivonat-kiállító technikai profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -35,7 +35,16 @@ A következő példa egy technikai profilt mutat be `JwtIssuer`:
   <DisplayName>JWT Issuer</DisplayName>
   <Protocol Name="None" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
-  ...
+  <Metadata>
+    <Item Key="client_id">{service:te}</Item>
+    <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+    <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+    <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+  </CryptographicKeys>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
 </TechnicalProfile>
 ```
 
@@ -64,8 +73,12 @@ A CryptographicKeys elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| issuer_secret | Igen | A JWT-token aláírásához használt X509-tanúsítvány (RSA-kulcs). Ez az a `B2C_1A_TokenSigningKeyContainer` kulcs, amelyet az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md)alakítottunk ki. |
+| issuer_secret | Igen | A JWT-token aláírásához használt X509-tanúsítvány (RSA-kulcs). Ezt a `B2C_1A_TokenSigningKeyContainer` kulcsot konfigurálja az [Egyéni házirendek használatába](custom-policy-get-started.md). |
 | issuer_refresh_token_key | Igen | A frissítési jogkivonat titkosításához használt X509-tanúsítvány (RSA-kulcs). A `B2C_1A_TokenEncryptionKeyContainer` kulcsot az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md) konfigurálta. |
+
+## <a name="session-management"></a>Munkamenet-kezelés
+
+A Azure AD B2C és a függő entitások közötti Azure AD B2C munkamenetek konfigurálásához a `UseTechnicalProfileForSessionManagement` elem attribútumában adjon hozzá egy hivatkozást a [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO-munkamenethez.
 
 
 

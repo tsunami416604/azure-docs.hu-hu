@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371597"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509822"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
@@ -47,6 +47,25 @@ Kattintson a **diagram hozzáadása** lehetőségre, és hozzon létre egy mási
 ### <a name="order-or-delete-multiple-charts"></a>Több diagram megrendelése vagy törlése
 
 Több diagram megrendeléséhez vagy törléséhez kattintson a három pontra ( **..** .) szimbólumra a diagram menü megnyitásához, majd válassza ki a **feljebb,** lejjebb **Move down**vagy **törölni**kívánt menüelemet.
+
+## <a name="changing-aggregation"></a>Összesítés módosítása
+
+Ha mérőszámot ad hozzá egy diagramhoz, a metrikák Explorer automatikusan kiválasztja az alapértelmezett összesítést. Az alapértelmezett érték az alapszintű, de egy másik összesítéssel további információkhoz juthat a metrikáról. A diagramokon a különböző összesítések megtekintéséhez meg kell ismernie, hogy a metrikák kezelője hogyan kezeli őket. 
+
+A metrikák az adott időszakban rögzített mérési (vagy "metrikus értékek") sorozata. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona*során. Az időgabona méretét [a Metrikaböngésző Time Picker panelen](metrics-getting-started.md#select-a-time-range)választhatja ki. Ha nem az időgabona explicit kijelölését választja, a rendszer automatikusan kiválasztja az idő részletességét a jelenleg kijelölt időtartomány alapján. Az időkeret meghatározása után a rendszer összesíti az egyes időkeretek során rögzített metrikai értékeket, és a diagramra helyezi a Datapoint.
+
+Tegyük fel például, hogy a diagram a **kiszolgáló válaszideje** mérőszámot mutatja az **elmúlt 24 órában** mért **átlagos** összesítés használatával:
+
+- Ha az idő részletessége 30 percre van beállítva, a diagram 48 összesített datapoints (például a diagram ábrázolási területének 48 pontjának összekapcsolása). Ez egy óránként 24 óra x 2 datapoints. Mindegyik Datapoint az összes rögzített válaszidő *átlagát* jelöli az összes olyan kiszolgálói kérelem esetében, amelyek az egyes érintett 30 perces időszakok során fordultak elő.
+- Ha 15 percre vált az időrészletesség, 96 összesített datapoints kap.  Ez egy óránként 24 óra x 4 datapoints.
+
+A mérőszámok Explorerben öt alapvető statisztikai összesítési típus érhető el: **Sum**, **Count**, **min**, **Max**és **Average**. Az **összeg** összesítését időnként a **teljes** összesítésnek is nevezzük. Számos metrika esetében Metrikaböngésző elrejti a teljesen lényegtelen összesítéseket, és nem használható.
+
+- **Sum (összeg** ) – az összesítési intervallumban rögzített összes érték összege
+- **Count (darabszám** ) – az összesítési intervallumban rögzített mértékegységek száma. Vegye figyelembe, hogy a **Count** értéke megegyezik az **összeggel** abban az esetben, ha a metrikát az 1 értékkel együtt mindig rögzíti a rendszer. Ez gyakran előfordul, ha a metrika nyomon követi a különböző események számát, és az egyes mérések egy eseményt jelölnek (azaz a kód egy metrikai rekord kikapcsolását minden alkalommal, amikor új kérés érkezik)
+- **Átlag** – az összesítési intervallumban rögzített metrikai értékek átlaga
+- **Min** – az összesítési intervallumban rögzített legkisebb érték
+- **Max** – az összesítési intervallumban rögzített legnagyobb érték
 
 ## <a name="apply-filters-to-charts"></a>Szűrők alkalmazása diagramokra
 

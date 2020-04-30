@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Csoportok áttelepítése egyik erdőből a másikba | Microsoft dokumentumok'
-description: Ez a cikk ismerteti a csoportok sikeres áttelepítéséhez szükséges csoportok egyik erdőből a másikba az Azure AD Connect.
+title: 'Azure AD Connect: csoportok áttelepítése az egyik erdőből a másikba'
+description: Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a csoportok az egyik erdőből a másikba történő sikeres áttelepítéséhez Azure AD Connect.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,29 +11,31 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729702"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229799"
 ---
-# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Csoportok áttelepítése egyik erdőből a másikba az Azure AD Connect számára
+# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Csoportok áttelepítése az egyik erdőből a másikba Azure AD Connect
 
-Ez a cikk azokat a lépéseket ismerteti, amelyek a csoportok egyik erdőből a másikba történő sikeres áttelepítéséhez szükségesek, hogy az áttelepített csoportobjektumok megegyezhessenek a felhőben meglévő objektumokkal.
+Ez a cikk azt ismerteti, hogyan lehet csoportokat áttelepíteni az egyik erdőből a másikba, hogy az áttelepített csoport objektumai megfeleljenek a felhőben található meglévő objektumoknak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure AD Connect 1.5.18.0-s vagy újabb verziója
-- A Forráshorgony attribútum`mS-DS-ConsistencyGuid`
+- Azure AD Connect 1.5.18.0 vagy újabb verzió
+- A forrás-Anchor attribútum értéke`mS-DS-ConsistencyGuid`
 
-Az 1.5.18.0-s verziótól kezdve az Azure `mS-DS-ConsistencyGuid` AD Connect elkezdte támogatni a csoportok használatát. Ha `mS-DS-ConsistencyGuid` a forráshorgony attribútumaként van kiválasztva, és az érték az AD-ben van feltöltve, az Azure AD Connect az értéket használja nem `mS-DS-ConsistencyGuid` módosíthatóazonosítóként. Ellenkező esetben visszaesik `objectGUID`a . Azonban vegye figyelembe, hogy **DOES NOT** az Azure AD Connect `mS-DS-ConsistencyGuid` nem írja vissza az értéket az ad-beli attribútumhoz.
+## <a name="migrate-groups"></a>Csoportok átmigrálása
 
-Erdőközi áthelyezési forgatókönyv esetén, amikor egy csoportobjektum az egyik erdőből (mondjuk F1) egy másik `mS-DS-ConsistencyGuid` erdőbe (például `objectGUID` F2) kerül át, `mS-DS-ConsistencyGuid` át kell másolnunk az F1 erdőben lévő objektum értékét az F2-ben lévő objektum attribútumát. 
+A 1.5.18.0 verziótól kezdődően a Azure AD Connect támogatja a csoportok `mS-DS-ConsistencyGuid` attribútumának használatát. Ha a forrás `mS-DS-ConsistencyGuid` -szerkesztőpont attribútumot választja, és az érték Active Directoryban van feltöltve, a Azure ad Connect a értéket `mS-DS-ConsistencyGuid` használja `immutableId`. Ellenkező esetben vissza kell térnie a `objectGUID`használatára. Vegye figyelembe azonban, hogy a Azure AD Connect nem írja vissza az `mS-DS-ConsistencyGuid` értéket Active Directory-attribútumba.
 
-A következő parancsfájlok használata iránymutatásként, hogy hogyan lehet egyetlen csoportot áttelepíteni az F1 erdőből az F2 erdőbe. Kérjük, használja ezt iránymutatásként, hogy nem a migráció több csoport számára.
+Erdők közötti áthelyezés esetén, ha egy csoport objektum egy erdőből (azaz F1-ből) egy másik erdőbe (például az F2-ből) kerül át, akkor a `mS-DS-ConsistencyGuid` (jelen) értéket (ha van), `objectGUID` vagy az objektum értékeit az F1 erdőben lévő `mS-DS-ConsistencyGuid` objektum attribútumára kell másolnia az F2-ben.
 
-Először is, `objectGUID` `mS-DS-ConsistencyGuid` megkapjuk a és a csoport objektum erdőben F1. Ezeket az attribútumokat a rendszer CSV-fájlba exportálja.
+A következő parancsfájlok segítségével megtudhatja, hogyan telepíthet át egyetlen csoportot az egyik erdőből a másikba. Ezeket a parancsfájlokat a több csoport áttelepítésére szolgáló útmutatóként is használhatja. A parancsfájlok az F1 erdő nevét használják a forrás erdőhöz és az F2-et a cél erdőhöz.
+
+Első lépésként `objectGUID` beolvasjuk `mS-DS-ConsistencyGuid` a Group objektumot az F1 erdőben. Ezeket az attribútumokat egy CSV-fájlba exportálja a rendszer.
 ```
 <#
 DESCRIPTION
@@ -41,7 +43,7 @@ DESCRIPTION
 This script will take DN of a group as input.
 It then copies the objectGUID and mS-DS-ConsistencyGuid values along with other attributes of the given group to a CSV file.
 
-This CSV file can then be used as input to Export-Group script
+This CSV file can then be used as input to the Export-Group script.
 #>
 Param(
        [ValidateNotNullOrEmpty()]
@@ -81,15 +83,15 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Ezután a létrehozott kimeneti CSV-fájlt `mS-DS-ConsistencyGuid` használjuk az Attribútum bélyegzőjéhez az F2 erdőben lévő célobjektumon.
+Ezután a generált kimeneti CSV-fájlt használjuk a cél objektumon `mS-DS-ConsistencyGuid` lévő, az F2 erdőben található attribútum bélyegzéséhez:
 
 
 ```
 <#
 DESCRIPTION
 ============
-This script will take DN of a group as input and the CSV file that was generated by Import-Group script
-It copies either the objectGUID or mS-DS-ConsistencyGuid value from CSV file to the given object.
+This script will take DN of a group as input and the CSV file that was generated by the Import-Group script.
+It copies either the objectGUID or the mS-DS-ConsistencyGuid value from the CSV file to the given object.
 
 #>
 Param(
@@ -123,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
+További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).

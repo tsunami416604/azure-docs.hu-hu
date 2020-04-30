@@ -1,32 +1,32 @@
 ---
-title: Azure-fájlok megosztásának manuális létrehozása
+title: Azure Files megosztás manuális létrehozása
 titleSuffix: Azure Kubernetes Service
-description: Megtudhatja, hogyan hozhat létre manuálisan kötetet az Azure Files szolgáltatással több egyidejű podtal való használatra az Azure Kubernetes-szolgáltatásban (AKS)
+description: Megtudhatja, hogyan hozhat létre manuálisan olyan köteteket, Azure Files amelyekkel több párhuzamos hüvely használható az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803449"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207666"
 ---
-# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Kötet manuális létrehozása és használata az Azure Files megosztásával az Azure Kubernetes szolgáltatásban (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Files megosztással rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
-A tárolóalapú alkalmazásoknak gyakran kell hozzáférniük és meg kell őrizniük az adatokat egy külső adatköteten. Ha több podnak egyidejűleg kell hozzáférnie ugyanahhoz a tárolókötethez, az Azure Files segítségével csatlakozhat a [Kiszolgálói üzenetblokk (SMB) protokoll][smb-overview]használatával. Ez a cikk bemutatja, hogyan hozhat létre manuálisan egy Azure Files-megosztást, és csatolhatja azt egy pod hoz az AKS-ben.
+A tároló-alapú alkalmazásoknak gyakran kell elérniük és megőrizniük az adatmennyiséget egy külső adatköteten. Ha több hüvelynek egyidejű hozzáférésre van szüksége ugyanahhoz a tárolási kötethez, akkor a Azure Files használatával csatlakozhat a [Server Message Block (SMB) protokollal][smb-overview]. Ebből a cikkből megtudhatja, hogyan hozhat létre manuálisan egy Azure Files-megosztást, és hogyan csatlakoztathatja egy Pod-hez az AK-ban.
 
-A Kubernetes-kötetekről az [AKS-ben lévő alkalmazások tárolási beállításai][concepts-storage]című témakörben talál további információt.
+A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
-Az Azure Files Kubernetes-kötetként való használata előtt létre kell hoznia egy Azure Storage-fiókot és a fájlmegosztást. A következő parancsok létrehoznak egy *myAKSShare*nevű erőforráscsoportot , egy tárfiókot és egy *aksshare*nevű Fájlok megosztást:
+A Azure Files Kubernetes-kötetként való használata előtt létre kell hoznia egy Azure Storage-fiókot és a fájlmegosztást. A következő parancsok létrehoznak egy *myAKSShare*nevű erőforráscsoportot, egy Storage-fiókot és egy *aksshare*nevű fájlmegosztás:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -55,13 +55,13 @@ echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
 echo Storage account key: $STORAGE_KEY
 ```
 
-Jegyezze fel a tárfiók nevét és a parancsfájl kimenetének végén látható kulcsot. Ezekre az értékekre akkor van szükség, ha a Következő lépések egyikében hozza létre a Kubernetes-kötetet.
+Jegyezze fel a parancsfájl kimenetének végén látható Storage-fiók nevét és kulcsát. Ezek az értékek akkor szükségesek, ha a Kubernetes-kötetet a következő lépések egyikében hozza létre.
 
-## <a name="create-a-kubernetes-secret"></a>Kubernetes-titok létrehozása
+## <a name="create-a-kubernetes-secret"></a>Kubernetes titkos kód létrehozása
 
-Kubernetes hitelesítő adatokat kell elérni az előző lépésben létrehozott fájlmegosztáseléréséhez. Ezek a hitelesítő adatok egy [Kubernetes titkos adattárában][kubernetes-secret]tárolódnak, amelyre a Kubernetes-pod létrehozásakor hivatkoznak.
+A Kubernetes hitelesítő adatokra van szüksége az előző lépésben létrehozott fájlmegosztás eléréséhez. Ezeket a hitelesítő adatokat egy [Kubernetes titkos kulcs][kubernetes-secret]tárolja, amelyet a rendszer a Kubernetes Pod létrehozásakor hivatkozik.
 
-A `kubectl create secret` paranccsal hozd létre a titkot. A következő példa létrehoz egy megosztott *nevű azure-secret,* és feltölti az *azurestorageaccountname* és *azurestorageaccountkey* az előző lépésből. Meglévő Azure-tárfiók használatához adja meg a fiók nevét és kulcsát.
+A `kubectl create secret` parancs használatával hozza létre a titkos kulcsot. Az alábbi példa létrehoz egy *Azure-Secret* nevű megosztott nevet, és feltölti a *azurestorageaccountname* és a *azurestorageaccountkey* az előző lépésből. Meglévő Azure Storage-fiók használatához adja meg a fiók nevét és kulcsát.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>A fájlmegosztás csatlakoztatása kötetként
 
-Az Azure Files share csatlakoztatásához a pod, konfigurálja a kötetet `azure-files-pod.yaml` a tárolóban spec. Hozzon létre egy új nevű fájlt a következő tartalommal. Ha módosította a Fájlok megosztásvagy titkos név nevét, frissítse a *shareName* és *secretName nevet.* Ha szükséges, `mountPath`frissítse a , amely az elérési utat, ahol a fájlok megosztása van csatlakoztatva a pod. Windows Server-tárolók esetén (jelenleg előzetes verzióban az AKS-ben) adjon meg egy *mountPath-ot* a Windows elérési út konvenciója, például a *"D:"* használatával.
+Ha a Azure Files-megosztást a pod-ba szeretné csatlakoztatni, konfigurálja a kötetet a tároló spec. `azure-files-pod.yaml` hozzon létre egy nevű új fájlt a következő tartalommal. Ha módosította a fájlmegosztás vagy a titkos kód nevét, frissítse a *megosztásnév* és a *secretName*. Ha szükséges, frissítse a `mountPath`-t, amely a fájlok megosztásának elérési útja a pod-ban. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
 ```yaml
 apiVersion: v1
@@ -98,13 +98,13 @@ spec:
       readOnly: false
 ```
 
-A `kubectl` parancs segítségével hozza létre a pod.
+A `kubectl` parancs használatával hozza létre a pod-t.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Most már rendelkezik egy futó pod egy Azure Files megosztás csatlakoztatva */mnt/azure.* A megosztás `kubectl describe pod mypod` sikeres csatlakoztatásának ellenőrzéséhez használható. A következő kondenzált példa kimenet a tárolóba szerelt kötetet mutatja:
+Most már rendelkezik egy futó Pod Azure Files-megosztással, amely a */mnt/Azure*-ben van csatlakoztatva. A használatával `kubectl describe pod mypod` ellenőrizheti, hogy a megosztás sikeresen csatlakoztatva van-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
 
 ```
 Containers:
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-A *fileMode* és *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es és újabb verzióinál. Ha egy fürt et használ a Kubernetes 1.8.5-ös vagy újabb verziójával, és statikusan hozza létre az állandó kötetobjektumet, a csatlakoztatási beállításokat meg kell adni az *PersistentVolume* objektumon. A következő példa *0777-et*állít be:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es vagy újabb verziójához. Ha olyan fürtöt használ, amelynek Kubernetes-verziója 1.8.5 vagy nagyobb, és statikusan hozza létre az állandó kötet objektumot, a csatlakoztatási beállításokat meg kell adni a *PersistentVolume* objektumon. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 apiVersion: v1
@@ -159,9 +159,9 @@ spec:
   - nobrl
 ```
 
-Ha az 1.8.0-1.8.4-es verzióból álló fürtöt használja, biztonsági környezet et lehet megadni úgy, hogy a *runAsUser* értéke *0.* A Pod biztonsági környezetről a [Biztonsági környezet konfigurálása][kubernetes-security-context]című témakörben talál további információt.
+Ha 1.8.0-1.8.4-alapú fürtöt használ, a *runAsUser* értékkel megadható egy biztonsági környezet, amely a *0*értékre van állítva. A pod biztonsági környezettel kapcsolatos további információkért lásd: [biztonsági környezet konfigurálása][kubernetes-security-context].
 
-A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-pv.yaml* fájlt *persistentvolume .* Például:
+A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-PV. YAML* fájlt egy *PersistentVolume*. Például:
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Hozzon létre egy *azurefile-mount-options-pvc.yaml* fájlt egy *PersistentVolumeClaim* használatával, amely a *PersistentVolume parancsot*használja. Például:
+Hozzon létre egy *azurefile-mount-options-PVC. YAML* fájlt egy olyan *PersistentVolumeClaim* , amely a *PersistentVolume*használja. Például:
 
 ```yaml
 apiVersion: v1
@@ -203,14 +203,14 @@ spec:
       storage: 5Gi
 ```
 
-A `kubectl` parancsok segítségével hozza létre a *PersistentVolume* és *persistentVolumeClaim*.
+A `kubectl` *PersistentVolume* és a *PersistentVolumeClaim*létrehozásához használja a parancsokat.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-Ellenőrizze, hogy a *PersistentVolumeClaim* létrejött-e, és a *PersistentVolume kötethez van-e kötve.*
+Ellenőrizze, hogy létrejött-e a *PersistentVolumeClaim* , és kötődik-e a *PersistentVolume*.
 
 ```console
 $ kubectl get pvc azurefile
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Frissítse a tároló specifikációját a *PersistentVolumeClaim-re* való hivatkozáshoz, és frissítse a podot. Például:
+A tároló specifikációjának frissítésével hivatkozhat a *PersistentVolumeClaim* , és frissítheti a pod-t. Például:
 
 ```yaml
 ...
@@ -231,9 +231,9 @@ Frissítse a tároló specifikációját a *PersistentVolumeClaim-re* való hiva
 
 ## <a name="next-steps"></a>További lépések
 
-A kapcsolódó gyakorlati tanácsok értése: [Gyakorlati tanácsok a tároláshoz és a biztonsági mentések az AKS-ben.][operator-best-practices-storage]
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
-Az Azure Files [kubernetes beépülő moduljában][kubernetes-files]további információt az Azure Files Kubers-fürtökkel kapcsolatos együttműködéséről talál.
+Az AK-fürtökkel kapcsolatos további információk a Azure Fileskal együttműködve: [Azure Files Kubernetes beépülő modulja][kubernetes-files].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297680"
+ms.locfileid: "82229918"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
 
@@ -810,7 +810,7 @@ A Azure Active Directorytól érkező kérések közé tartozik egy OAuth 2,0 tu
 
 A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`:. Ebben a példában a jogcím értékének `https://sts.windows.net`alapszintű címe, amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_, annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
 
-A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt `iss` a jogcímet fogadhatja a scim-kérelmekkel. Az alkalmazás sablonjának azonosítója a katalógusban szereplő alkalmazások esetében eltérő lehet, [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) forduljon a Gallery-alkalmazáshoz tartozó alkalmazás-sablon azonosítója körüli kérdésekhez. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_-azonosító.
+A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt `iss` a jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_-azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
 
 A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer csomag használatával hitelesíti. A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontjának küldött kérések hitelesítése egy adott bérlő Azure Active Directory által kiállított tulajdonosi jogkivonatának használatával történik:
 

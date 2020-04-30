@@ -1,7 +1,7 @@
 ---
-title: Kísérletismétlések kezelése
+title: Megtekintheti & a kísérletek futtatását
 titleSuffix: ML Studio (classic) - Azure
-description: A kísérletismétlések kezelése az Azure Machine Learning Studio-ban (klasszikus). A kísérletek korábbi futtatásait bármikor áttekintheti, hogy megtámadhassa, újra meglátogathassa, és végül megerősíthesse vagy finomíthassa a korábbi feltételezéseket.
+description: A kísérletek kezelése Azure Machine Learning Studio (klasszikus) folyamatban van. A kísérletek korábbi futtatásait bármikor áttekintheti, hogy megtámadja, újra felkeresse és végső soron megerősítse vagy pontosítsa a korábbi feltételezéseket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,72 +10,70 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 5c8a278f09fdb3b605020e4c2fcf7aa2776906e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208414"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Kísérletismétlések kezelése az Azure Machine Learning Studio-ban (klasszikus)
+# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>A kísérletek kezelése Azure Machine Learning Studio (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-A prediktív elemzési modell kidolgozása egy iteratív folyamat - a kísérlet különböző funkcióinak és paramétereinek módosításakor az eredmények addig konvergálnak, amíg meg nem győződik arról, hogy betanított, hatékony modellel rendelkezik. A folyamat kulcsa a kísérlet paramétereinek és konfigurációinak különböző iterációinak nyomon követése.
+A prediktív elemzési modell kialakítása egy iterációs folyamat – ahogy módosítja a kísérlet különböző funkcióit és paramétereit, az eredmények konvergálnak, amíg nem meggyőződött arról, hogy Ön rendelkezik egy betanított, hatékony modellel. A folyamat kulcsa a kísérlet paramétereinek és konfigurációinak különböző ismétléseit követi nyomon.
 
-
-
-A kísérletek korábbi futtatásait bármikor áttekintheti, hogy megtámadhassa, újra meglátogathassa, és végül megerősíthesse vagy finomíthassa a korábbi feltételezéseket. Kísérlet futtatásakor a Machine Learning Studio (klasszikus) megőrzi a futtatás előzményeit, beleértve az adatkészletet, a modult és a portkapcsolatokat és paramétereket. Ez az előzmények is rögzíti az eredményeket, futásidejű információk, például a kezdési és leállítási idő, naplóüzenetek és végrehajtási állapot. Bármikor visszatekinthet ezek bármelyik ére, hogy áttekintse a kísérlet és a köztes eredmények időrendjét. Akár a kísérlet egy korábbi sorozatával is elindulhat a lekérdezés és felfedezés új fázisába az egyszerű, összetett vagy akár együttesmodellezési megoldások létrehozásához vezető úton.
+A kísérletek korábbi futtatásait bármikor áttekintheti, hogy megtámadja, újra felkeresse és végső soron megerősítse vagy pontosítsa a korábbi feltételezéseket. Kísérlet futtatásakor Machine Learning Studio (klasszikus) megtartja a Futtatás előzményeit, beleértve az adatkészletet, a modult, valamint a portok kapcsolatait és paramétereit. Ez az előzmények rögzíti az eredményeket, a futásidejű adatokat, például az indítási és leállítási időpontokat, a naplózási üzeneteket és a végrehajtási állapotot. Bármikor visszatekintheti ezen futtatások bármelyikét, hogy áttekintse a kísérlet és a köztes eredmények időrendjét. A kísérlet korábbi futtatásával is elindíthat egy új, a lekérdezési és felderítési fázist az egyszerű, összetett vagy akár Ensemble modellezési megoldások létrehozásához.
 
 > [!NOTE]
-> Amikor egy kísérlet egy korábbi sorozatát tekinti meg, a kísérlet adott verziója zárolva van, és nem szerkeszthető. A másolatot azonban mentheti, ha a **MENTÉS MÁSKÉNT** gombra kattint, és új nevet ad a másolatnak. A Machine Learning Studio (klasszikus) megnyitja az új példányt, amelyet ezután szerkeszthet és futtathat. A kísérlet ezen példánya elérhető a **KÍSÉRLETEK** listában az összes többi kísérlettel együtt.
+> Amikor egy kísérlet korábbi futtatását tekinti meg, a kísérlet ezen verziója zárolva van, és nem szerkeszthető. A másolatát azonban mentheti, ha a **Mentés másként** lehetőségre kattint, és megadja a másolás új nevét. Machine Learning Studio (klasszikus) megnyitja az új példányt, amelyet aztán szerkeszthet és futtathat. A kísérlet ezen példánya az összes többi kísérlettel együtt elérhető a **kísérletek** listáján.
 > 
 > 
 
-## <a name="viewing-the-prior-run"></a>Az előző futtatás megtekintése
-Ha egy olyan kísérlet van megnyitva, amelyet legalább egyszer futtatott, megtekintheti a kísérlet előző futtatását a Tulajdonságok ablaktáblában a **Futtatás előtt** elemre kattintva.
+## <a name="view-the-prior-run"></a>A korábbi Futtatás megtekintése
+Ha olyan kísérletet nyit meg, amelyet legalább egyszer futtatott, a Tulajdonságok ablaktáblán a **korábbi Futtatás** lehetőségre kattintva megtekintheti a kísérlet előző futtatását.
 
-Tegyük fel például, hogy létrehoz egy kísérletet, és 11:23, 11:42 és 11:55-kor futtatja annak verzióit. Ha megnyitja a kísérlet utolsó sorozatát (11:55), és a **Futtatás előtt**gombra kattint, a 11:42-kor futtatott verzió megnyílik.
+Tegyük fel például, hogy létrehoz egy kísérletet, és futtatja azt a 11:23-es, 11:42-as és 11:55-es verzióban. Ha megnyitja a kísérlet utolsó futtatását (11:55), és a **korábbi Futtatás**gombra kattint, megnyílik a 11:42-on futtatott verzió.
 
-## <a name="viewing-the-run-history"></a>A futtatási előzmények megtekintése
-A kísérlet összes korábbi futtatását megtekintheti, ha egy megnyitott kísérletben a **Futtatási előzmények megtekintése** elemre kattint.
+## <a name="view-the-run-history"></a>Futtatási előzmények megtekintése
+A kísérletek összes korábbi futtatását megtekintheti, ha a **futtatási előzmények megtekintése** lehetőségre kattint egy nyitott kísérletben.
 
-Tegyük fel például, hogy létrehoz egy kísérletet a [lineáris regressziós][linear-regression] modullal, és meg szeretné figyelni, hogy a **tanulási sebesség** értékének módosítása milyen hatással van a kísérlet eredményeire. A kísérletet többször is futtatja a paraméter különböző értékeivel, az alábbiak szerint:
+Tegyük fel például, hogy létrehoz egy kísérletet a [lineáris regressziós][linear-regression] modullal, és szeretné megfigyelni, hogy milyen hatással van a **tanulási ráta** értékének módosítására a kísérlet eredményein. A kísérletet többször is futtathatja a paraméter különböző értékeivel, a következőképpen:
 
-| Tanulási arány értéke | Futtatás kezdési időpontja |
+| Tanulási arány értéke | Futtatás kezdő időpontja |
 | --- | --- |
-| 0,1 |2014.09.11. 16:18:58 |
-| 0,2 |2014.09.11. 16:24:33 |
-| 0,4 |2014.09.11. 16:28:36 |
-| 0,5 |2014.09.11. 15:33:31 |
+| 0,1 |9/11/2014 4:18:58 PM |
+| 0,2 |9/11/2014 4:24:33 PM |
+| 0,4 |9/11/2014 4:28:36 PM |
+| 0,5 |9/11/2014 4:33:31 PM |
 
-Ha a **FUTTATÁSI ELŐZMÉNYEK MEGTEKINTÉSE**gombra kattint, megjelenik az összes futtatás listája:
+Ha a **futtatási előzmények megtekintése**elemre kattint, megjelenik a következő futtatások listája:
 
-![Példa futtatási előzményekre](./media/manage-experiment-iterations/viewrunhistory.jpg)
+![Példa a futtatási előzményekre](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
-Kattintson ezek bármelyik futtatása megtekintéséhez pillanatképet a kísérlet a futtatás időpontjában. A konfiguráció, a paraméterértékek, a megjegyzések és az eredmények mind megmaradnak, hogy teljes feljegyzést adjon a kísérlet adott futtatásáról.
+A futtatások bármelyikére kattintva megtekintheti a kísérlet pillanatképét, amikor futtatja azt. A konfiguráció, a paraméterek értékei, a megjegyzések és az eredmények megmaradnak, hogy teljes körűen jegyezze fel a kísérlet futtatását.
 
 > [!TIP]
-> A kísérlet ismétléseinek dokumentálásához minden futtatáskor módosíthatja a címet, frissítheti a kísérlet **összegzését** a tulajdonságok ablaktáblában, és megjegyzéseket fűzhet vagy frissíthet az egyes modulokhoz a módosítások rögzítéséhez. A cím, az összegzés és a modul megjegyzései a kísérlet minden egyes futtatásával mentésre kerülnek.
+> A kísérlet ismétlésének dokumentálása érdekében minden egyes futtatásakor módosíthatja a címet, a Tulajdonságok ablaktáblán frissítheti a kísérlet **összegzését** , és hozzáadhat vagy frissíthet megjegyzéseket az egyes modulokhoz a módosítások rögzítéséhez. A rendszer menti a cím, az összefoglalás és a modul megjegyzéseit a kísérlet minden egyes futtatásával.
 > 
 > 
 
-A Machine Learning Studio (klasszikus) **kísérletek** lapján végzett kísérletek listája mindig a kísérlet legújabb verzióját jeleníti meg. Ha a kísérlet egy korábbi sorozatát nyitja meg (a **Prior Run** vagy **VIEW RUN HISTORY**használatával), akkor a **futtatási előzmények megtekintése** gombra kattintva visszatérhet a vázlatverzióhoz, és kiválasztja a **szerkeszthető** **állapotú** iterációt.
+Machine Learning Studio (klasszikus) **kísérletek** lapján a kísérletek listája mindig megjeleníti a kísérlet legújabb verzióját. Ha a kísérlet előző futtatását ( **korábbi Futtatás** vagy **MEGTEKINTÉS futtatási előzmények**használatával) nyitja meg, akkor a Piszkozat verzióra való VISSZATÉRÉShez kattintson a **futtatási előzmények megtekintése** elemre, és válassza ki a **szerkeszthető** **állapotú** iterációt.
 
-## <a name="iterating-on-a-previous-run"></a>Előző futtatás iterálása
-Ha a **Korábbi futtatás** vagy a **FUTTATÁSi előzmények megtekintése** elemre kattint, és megnyit egy korábbi futtatást, megtekintheti a befejezett kísérletet írásvédett módban.
+## <a name="run-a-previous-experiment"></a>Előző kísérlet futtatása
+Ha a korábbi **Futtatás** vagy a **futtatási előzmények megtekintése** elemre kattint, és megnyit egy előző futtatást, megtekintheti a befejezett kísérletet írásvédett módban.
 
-Ha a kísérlet ismétlését az előző futtatáshoz való konfigurálásával szeretné kezdeni, ezt a futtatás megnyitásával és a **MENTÉS MÁSKÉNT**gombra kattintva teheti meg. Ez létrehoz egy új kísérletet, egy új címmel, egy üres futtatási előzményekkel, valamint az előző futtatás összes összetevőjével és paraméterértékével. Ez az új kísérlet a Machine Learning Studio (klasszikus) **kezdőlapján** található KÍSÉRLETEK lapon található, és módosíthatja és futtathatja azt, és új futtatási előzményeket hozhat meg a kísérlet ezen ismétléséhez. 
+Ha meg szeretné kezdeni a kísérlet iterációját, ahogy azt az előző futtatáshoz konfigurálta, akkor nyissa meg a futtatást, és kattintson a **Mentés másként**lehetőségre. Ez létrehoz egy új kísérletet, új címmel, üres futtatási előzményekkel, valamint az előző Futtatás összes összetevőjét és paraméterét. Ez az új kísérlet a Machine Learning Studio (klasszikus) Kezdőlap **kísérletek** lapján található, és módosíthatja és futtathatja a kísérlethez szükséges új futtatási előzményeket. 
 
-Tegyük fel például, hogy az előző szakaszban látható a kísérlet futtatási előzménye. Meg szeretné figyelni, hogy mi történik, ha a **Tanulási sebesség** paramétert 0,4-re állítja, és különböző értékeket próbál meg a **Képzési korszakok száma** paraméterhez.
+Tegyük fel például, hogy a kísérlet futtatási előzményei az előző szakaszban láthatók. Szeretné megfigyelni, mi történik, ha a képzési **sebesség** paraméterét 0,4-ra állítja be, és különböző értékeket próbál meg használni a **Training epochs** paraméter számára.
 
-1. Kattintson **a RUN HISTORY MEGTEKINTÉSE** gombra, és nyissa meg a 16:28:36-kor futtatott kísérlet ismétlését (amelyben a paraméter értékét 0,4-re állította be).
-2. Kattintson **a MENTÉS MÁSKÉNT gombra.**
-3. Írjon be egy új címet, és kattintson az **OK** gombra. Létrejön a kísérlet új másolata.
-4. A **Betanítási korszakok száma** paraméter módosítása.
-5. Kattintson **a FUTTATÁS gombra.**
+1. Kattintson a **futtatási előzmények megtekintése** elemre, és nyissa meg az 4:28:36 órakor futtatott kísérlet iterációját (amelyben a paraméter értékét 0,4-re állítja).
+2. Kattintson **a Mentés másként**elemre.
+3. Adjon meg egy új címet, és kattintson az **OK pipa gombra** . Létrejön a kísérlet új példánya.
+4. A **képzési korszakok paraméter számának** módosítása.
+5. Kattintson a **Futtatás**gombra.
 
-Most már módosíthatja és futtathatja a kísérlet ezen verzióját, és új futtatási előzményeket hozhat össze a munka rögzítéséhez.
+Most már továbbra is módosíthatja és futtathatja a kísérlet ezen verzióját, és felépítheti az új futtatási előzményeket a munka rögzítéséhez.
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8033122601077945790005e23ec728911c3a4e1f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181290"
+ms.locfileid: "82207530"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -1823,12 +1823,12 @@ CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | 44367163-eba1
 Ügyfél-kulcstároló hozzáférési jóváhagyója | Ügyfélszéf hozzáférési jóváhagyó | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Asztali elemzési rendszergazda | Asztali elemzési rendszergazda | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Eszközrendszergazdák | Eszköz-rendszergazdák | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-Eszköz csatlakoztatása | Eszköz csatlakoztatása | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-Eszközkezelők | Eszközkezelők | 2b499bcd-da44-4968-8aec-78e1674fa64d
-Eszköz felhasználói | Eszköz felhasználói | d405c6df-0af8-4e3b-95e4-4d06e542189e
+Eszköz csatlakoztatása | Elavult | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+Eszközkezelők | Elavult | 2b499bcd-da44-4968-8aec-78e1674fa64d
+Eszköz felhasználói | Elavult | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Directory-olvasók | Directory-olvasók | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-Címtár-szinkronizálási fiókok | Címtár-szinkronizálási fiókok | d29b2b05-8046-44ba-8758-1e26182fcf32
-Címtár-írók | Címtár-írók | 9360feb5-f418-4baa-8175-e2a00bac4301
+Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | d29b2b05-8046-44ba-8758-1e26182fcf32
+Címtár-írók | Nem látható, mert nem használható | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange szolgáltatás rendszergazdája | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Külső identitás-szolgáltató rendszergazdája | Külső identitás-szolgáltató rendszergazdája | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globális olvasó | Globális olvasó | f2ef992c-3afb-46b9-b7cf-a126ee74c451
@@ -1844,8 +1844,8 @@ A Message Center adatvédelmi olvasója | A Message Center adatvédelmi olvasój
 Üzenetközpont-olvasó | Üzenetközpont-olvasó | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Hálózati rendszergazda | Hálózati rendszergazda | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office-alkalmazások rendszergazdája | Office-alkalmazások rendszergazdája | 2b745bdf-0803-4d80-aa65-822c4493daac
-Partneri Tier1-támogatás | Partneri Tier1-támogatás | 4ba39ca4-527c-499a-b93d-d9b492c50246
-Partneri szint-támogatás | Partneri szint-támogatás | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+Partneri Tier1-támogatás | Nem látható, mert nem használható | 4ba39ca4-527c-499a-b93d-d9b492c50246
+Partneri szint-támogatás | Nem látható, mert nem használható | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Jelszó-rendszergazda | Jelszókezelő | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI-szolgáltatásadminisztrátor | Power BI rendszergazda | a9ea8996-122f-4c74-9520-8edcd192826c
 Energiagazdálkodási platform rendszergazdája | Power platform rendszergazda | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
@@ -1865,9 +1865,9 @@ Csapatok kommunikációs rendszergazdája | Csapatok kommunikációs rendszergaz
 Csapat kommunikációs támogató mérnök | Csapat kommunikációs támogató mérnök | f70938a0-fc10-4177-9e90-2178f8765737
 A Teams Communications támogatási szakértője | A Teams Communications támogatási szakértője | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams szolgáltatás rendszergazdája | Teams szolgáltatás rendszergazdája | 69091246-20e8-4a56-aa4d-066075b2a7a8
-Felhasználó | Felhasználó | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Felhasználó | Nem látható, mert nem használható | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Felhasználói fiók rendszergazdája | Felhasználói rendszergazda | fe930be7-5e62-47db-91af-98c3a49a38b1
-Munkahelyi eszközök csatlakoztatása | Munkahelyi eszközök csatlakoztatása | c34f683f-4d5a-4403-affd-6615e00e3a7f
+Munkahelyi eszközök csatlakoztatása | Elavult | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Elavult szerepkörök
 

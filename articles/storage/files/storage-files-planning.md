@@ -1,77 +1,77 @@
 ---
-title: Az Azure Files telepítésének megtervezése | Microsoft dokumentumok
-description: Ismerje meg, mit kell figyelembe venni az Azure Files központi telepítésének tervezésekor.
+title: Azure Files központi telepítésének tervezése | Microsoft Docs
+description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi telepítés tervezésekor.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536487"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209485"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
-[Az Azure Files](storage-files-introduction.md) kétféleképpen telepíthető: a kiszolgáló nélküli Azure-fájlmegosztások közvetlen csatlakoztatásával vagy az Azure-fájlmegosztások helyszíni gyorsítótárazásával az Azure File Sync használatával. Melyik telepítési lehetőséget választja, módosítja azokat a dolgokat, amelyeket figyelembe kell vennie a központi telepítés megtervezésekor. 
+[Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
 
-- **Az Azure-fájlmegosztás közvetlen csatlakoztatása:** Mivel az Azure Files SMB-hozzáférést biztosít, a Windows, macOS és Linux rendszerben elérhető szabványos SMB-ügyfél használatával csatlakoztathatja az Azure-fájlmegosztásokat a helyszínen vagy a felhőben. Mivel az Azure-fájlmegosztások kiszolgáló nélküliek, az éles környezetben történő üzembe helyezéshez nincs szükség fájlkiszolgáló vagy NAS-eszköz kezelésére. Ez azt jelenti, hogy nem kell szoftverjavításokat alkalmaznia, vagy fizikai lemezeket cserélnie. 
+- **Azure-fájlmegosztás közvetlen csatlakoztatása**: mivel Azure Files az SMB-hozzáférést biztosít, a Windows, MacOS és Linux rendszeren elérhető szabványos SMB-ügyféllel csatlakoztathatja az Azure-fájlmegosztást a helyszínen vagy a felhőben. Mivel az Azure-fájlmegosztás kiszolgáló nélküli, az éles környezetekben való üzembe helyezéshez nem szükséges fájlkiszolgáló vagy NAS-eszköz kezelése. Ez azt jelenti, hogy nem kell szoftverfrissítéseket alkalmaznia vagy fizikai lemezeket cserélnie. 
 
-- **Gyorsítótár az Azure-fájlmegosztás helyszíni Azure File Sync:** Azure File Sync lehetővé teszi, hogy központosítsa a szervezet fájlmegosztások az Azure Files, miközben a rugalmasság, a teljesítmény és a kompatibilitás egy helyszíni fájlkiszolgáló. Az Azure File Sync átalakítja a helyszíni (vagy felhőbeli) Windows Server egy gyors gyorsítótár az Azure-fájlmegosztás. 
+- **A helyszíni Azure-fájlmegosztás gyorsítótárazása a Azure file Sync**használatával: a Azure file Sync lehetővé teszi a szervezete fájlmegosztás megszervezését Azure Filesban, miközben megtartja a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Azure File Sync átalakítja a helyszíni (vagy Felhőbeli) Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. 
 
-Ez a cikk elsősorban a helyszíni vagy felhőbeli ügyfél által közvetlenül csatlakoztatandó Azure-fájlmegosztás üzembe helyezésének szempontjaival foglalkozik. Az Azure File Sync központi telepítésének megtervezéséhez olvassa el [az Azure File Sync telepítésének megtervezése.](storage-sync-files-planning.md)
+Ez a cikk elsősorban a helyszíni vagy a Felhőbeli ügyfelek által közvetlenül csatlakoztatott Azure-fájlmegosztás üzembe helyezési szempontjait tárgyalja. Azure File Sync központi telepítésének megtervezéséhez tekintse meg a [Azure file Sync központi telepítés tervezése](storage-sync-files-planning.md)című témakört.
 
-## <a name="management-concepts"></a>Kezelési koncepciók
+## <a name="management-concepts"></a>Felügyeleti fogalmak
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
-Az Azure-fájlmegosztások tárfiókokba történő telepítésekor a következőket javasoljuk:
+Az Azure-fájlmegosztás Storage-fiókokban való telepítésekor a következőket javasoljuk:
 
-- Az Azure-fájlmegosztások üzembe helyezése más Azure-fájlmegosztásokkal rendelkező tárfiókokban. Bár a GPv2-tárfiókok lehetővé teszik vegyes célú tárfiókok, mivel a tárolási erőforrások, például az Azure-fájlmegosztások és a blob tárolók osztoznak a tárfiók korlátait, az erőforrások összekeverése megnehezítheti a teljesítményproblémák elhárítását később. 
+- Az Azure file-megosztásokat csak a Storage-fiókokba helyezheti üzembe más Azure-fájlmegosztás esetén. Bár a GPv2 Storage-fiókok lehetővé teszik vegyes célú tárolási fiókok használatát, mivel a tárolási erőforrások, például az Azure-fájlmegosztás és a blob-tárolók megosztják a tárolási fiók korlátait, az erőforrások összekeverése pedig nehezebbé teszi a teljesítménnyel kapcsolatos problémák későbbi hibaelhárítását. 
 
-- Az Azure-fájlmegosztások üzembe helyezésekor a tárfiók IOPS-korlátaira figyelve. Ideális esetben a fájlmegosztások 1:1 tárfiókkal, de ez nem mindig lehetséges, mivel a különböző korlátok és korlátozások, mind a szervezet és az Azure-ból. Ha nem lehetséges, hogy csak egy fájlmegosztás takarásban van telepítve, fontolja meg, hogy mely megosztások lesznek nagyon aktívak, és mely megosztások lesznek kevésbé aktívak annak érdekében, hogy a legforróbb fájlmegosztások ne kerüljön ugyanabba a tárfiókba.
+- Ügyeljen arra, hogy a Storage-fiók IOPS korlátozásait az Azure-fájlmegosztás telepítésekor. Ideális esetben a Storage-fiókokkal rendelkező 1:1-es fájlmegosztás leképezhető, azonban a különböző korlátok és korlátozások miatt a szervezettől és az Azure-tól is nem mindig lehetséges. Ha egyetlen Storage-fiókban nem lehet egyetlen fájlmegosztást telepíteni, gondolja át, hogy mely megosztások lesznek aktívak, és hogy mely megosztások kevésbé lesznek aktívak, hogy a legforróbb fájlmegosztás ne legyen ugyanazon a Storage-fiókban.
 
-- Csak gpv2- és FileStorage-fiókokat telepítsen, és frissítse a GPv1- és klasszikus tárfiókokat, ha megtalálja őket a környezetben. 
+- Csak a GPv2-és FileStorage-fiókok telepítése, valamint a GPv1 és a klasszikus tárolási fiókok frissítése a környezetben való kereséskor. 
 
 ## <a name="identity"></a>Identitás
-Az Azure-fájlmegosztás eléréséhez a fájlmegosztás felhasználójának hitelesítenie kell magát, és engedéllyel kell rendelkeznie a megosztás eléréséhez. Ez a fájlmegosztáshoz hozzáférő felhasználó identitásán alapul. Az Azure Files három fő identitásszolgáltatóval integrálható:
-- **Helyszíni Active Directory tartományi szolgáltatások (AD DS vagy helyszíni Active DS)** (előzetes verzió): Az Azure storage-fiókok is csatlakoztathatók az ügyfél tulajdonában lévő, Active Directory tartományi szolgáltatásokhoz, akárcsak egy Windows Server fájlkiszolgálóhoz vagy NAS-eszközhöz. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure virtuális gépben, vagy akár egy másik felhőszolgáltatóban lévő virtuális gépként; Az Azure Files független a tartományvezérlő helyéhez képest. Miután egy tárfiók tartományhoz csatlakozott, a végfelhasználó csatlakoztathatja a fájlmegosztást azzal a felhasználói fiókkal, amelyen bejelentkezett a számítógépére. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
-- **Azure Active Directory tartományi szolgáltatások (Azure AD DS)**: Az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely használható az Azure-erőforrásokhoz. A tárfiókhoz az Azure AD DS-hez való csatlakozás a tartományhoz való csatlakozáshoz hasonló előnyöket biztosít, mint az ügyfél tulajdonában lévő Active Directoryhoz való csatlakozás. Ez a telepítési lehetőség az AD-alapú engedélyeket igénylő alkalmazás-lift és-shift esetek esetén a leghasznosabb. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
-- **Azure storage-fiók kulcs:** Az Azure-fájlmegosztások is csatlakoztathatók egy Azure storage-fiók kulcs. A fájlmegosztás ily módon történő csatlakoztatásához a tárfiók nevét használja a felhasználónév, a tárfiók kulcsa pedig jelszóként. A tárfiók kulcs ának csatlakoztatása az Azure fájlmegosztás hatékonyan rendszergazdai művelet, mivel a csatlakoztatott fájlmegosztás teljes engedélyekkel rendelkezik a megosztáson lévő összes fájlhoz és mappához, még akkor is, ha rendelkezik ACL-okkal. Ha a tárfiók kulcsát használja az SMB csatlakoztatásához, az NTLMv2 hitelesítési protokollt használja a rendszer.
+Egy Azure-fájlmegosztás eléréséhez a fájlmegosztás felhasználójának hitelesítenie kell, és engedéllyel kell rendelkeznie a megosztás eléréséhez. Ez a fájlmegosztást elérő felhasználó identitása alapján történik. A Azure Files három fő identitás-szolgáltatóval integrálódik:
+- Helyszíni **Active Directory tartományi szolgáltatások (AD DS vagy helyszíni AD DS)** (előzetes verzió): az Azure Storage-fiókok tartományhoz az ügyfél, a Active Directory tartományi szolgáltatások, a Windows Server fájlkiszolgáló vagy a NAS-eszközhöz hasonlóan lehet csatlakozni. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure-beli virtuális gépen, vagy akár egy másik felhőalapú szolgáltató virtuális gépén is. Azure Files a tartományvezérlő üzemeltetéséhez szükséges agnosztikus. Miután a Storage-fiók tartományhoz csatlakozik, a végfelhasználó csatlakoztathat egy fájlmegosztást a számítógéphez bejelentkezett felhasználói fiókhoz. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
+- **Azure Active Directory Domain Services (azure AD DS)**: az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely Azure-erőforrásokhoz használható. A Storage-fiók Azure AD DShoz való csatlakoztatása hasonló előnyökkel jár a tartományhoz való csatlakozáshoz az ügyfél tulajdonában lévő Active Directoryhoz. Ez az üzembe helyezési lehetőség az olyan alkalmazások esetében hasznos, amelyek AD-alapú engedélyeket igényelnek. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
+- **Azure Storage-fiók kulcsa**: az Azure-fájlmegosztás egy Azure Storage-fiók kulcsával is csatlakoztatható. Fájlmegosztás ily módon történő csatlakoztatásához a rendszer a Storage-fiók nevét használja felhasználónévként, és a Storage-fiók kulcsa jelszóként van használatban. Ha a Storage-fiók kulcsát használja az Azure-fájlmegosztás csatlakoztatására, akkor a felügyeleti művelet hatékony, mivel a csatlakoztatott fájlmegosztás teljes jogosultsággal rendelkezik a megosztás összes fájljához és mappájához, még akkor is, ha ACL-ekkel rendelkezik. Ha a Storage-fiók kulcsát használja az SMB protokollon keresztül történő csatlakoztatásra, a rendszer az NTLMv2 hitelesítési protokollt használja.
 
-A helyszíni fájlkiszolgálókról átkelő vagy a Windows fájlkiszolgálókként vagy NAS-berendezésekként való használatra szánt Azure Files új fájlmegosztások létrehozása esetén ajánlott az ajánlott tartomány, amely a tárfiókot az **Ügyfél tulajdonában lévő Active Directoryhoz** csatlakozik. Ha többet szeretne tudni arról, hogy mi ként csatlakozik a tárfiókhoz egy ügyfél tulajdonában lévő Active Directoryhoz, olvassa el az [Azure Files Active Directory áttekintéscímű témakört.](storage-files-active-directory-overview.md)
+A helyszíni fájlkiszolgálók áttelepítésére vagy a Azure Files a Windows-fájlkiszolgálók vagy a NAS-készülékek működéséhez szükséges új fájlmegosztás létrehozásához az ajánlott lehetőség a Storage-fiókhoz való csatlakozás az **ügyfél tulajdonában lévő Active Directory** . Ha többet szeretne megtudni a Storage-fiók ügyfél által birtokolt Active Directoryhoz való csatlakoztatásáról, tekintse meg a [Azure Files Active Directory áttekintése](storage-files-active-directory-overview.md)című témakört.
 
-Ha a tárfiók kulcs használatával szeretné elérni az Azure-fájlmegosztásokat, javasoljuk, hogy a [hálózatkezelés](#networking) szakaszban leírtak szerint használja a szolgáltatásvégpontokat.
+Ha a Storage-fiók kulcsát szeretné használni az Azure-fájlmegosztás eléréséhez, javasoljuk, hogy használja a szolgáltatás-végpontokat a [hálózatkezelés](#networking) szakaszban leírtak szerint.
 
 ## <a name="networking"></a>Hálózat
-Az Azure-fájlmegosztások bárhonnan elérhetők a tárfiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérelmek, például a felhasználó bejelentkezési identitása által engedélyezett kérelmek biztonságosan származhatnak az Azure-on belülről vagy kívülről. Számos ügyfélkörnyezetben az Azure-fájlmegosztás kezdeti csatlakoztatása a helyszíni munkaállomáson sikertelen lesz, még akkor is, ha az Azure-beli virtuális gépek csatlakoztatása sikeres lesz. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-ös portot. A [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) összefoglalja, hogy mely internetszolgáltatók engedélyezik vagy tiltják a 445-ös porton keresztüli hozzáférést.
+Az Azure-fájlmegosztás bárhonnan elérhető a Storage-fiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérések, például a felhasználó bejelentkezési identitása által engedélyezett kérések, biztonságosan származhatnak az Azure-on belül vagy kívül is. Számos felhasználói környezetben a helyszíni munkaállomás Azure-fájlmegosztás kezdeti csatlakoztatása sikertelen lesz, noha az Azure-beli virtuális gépekről való csatlakoztatások sikeresek lesznek. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-es portot. A [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) összefoglalja, hogy mely internetszolgáltatók engedélyezik vagy tiltják a 445-ös porton keresztüli hozzáférést.
 
-Az Azure-fájlmegosztáshoz való hozzáférés feloldásához két fő lehetősége van:
+Az Azure-fájlmegosztás elérésének feloldásához két fő lehetőség közül választhat:
 
-- A szervezet helyszíni hálózatának 445-ös portjának feloldása. Az Azure-fájlmegosztások csak a nyilvános végponton keresztül érhetők el külsőleg az internetbiztonságos protokollok, például az SMB 3.0 és a FileREST API használatával. Ez a legegyszerűbb módja az Azure-fájlmegosztás helyszíni elérésének, mivel a szervezet kimenő portszabályainak módosítása intette meg a speciális hálózati konfigurációt, azonban azt javasoljuk, hogy távolítsa el az SMB protokoll örökölt és elavult verzióit, nevezetesen az SMB 1.0-s verzióját. Ennek módjáról a [Windows/Windows Server biztonságossá tétele](storage-how-to-use-files-windows.md#securing-windowswindows-server) és [a Linux védelme című](storage-how-to-use-files-linux.md#securing-linux)témakörben olvashat.
+- A szervezet helyszíni hálózatának 445-as portjának feloldása. Az Azure-fájlmegosztás csak az internetes biztonságos protokollok, például az SMB 3,0 és a kiszolgált API használatával lehet külsőleg hozzáférni a nyilvános végponton keresztül. Ez a legegyszerűbb módszer az Azure-fájlmegosztás helyszíni elérésére, mivel nem igényel speciális hálózatkezelési konfigurációt a szervezet kimenő portokra vonatkozó szabályainak módosítása után azonban javasoljuk, hogy távolítsa el az SMB protokoll örökölt és elavult verzióit, azaz az SMB 1,0-et. Ennek megismeréséhez tekintse meg a [Windows/Windows Server biztonságossá tétele](storage-how-to-use-files-windows.md#securing-windowswindows-server) és a [Linux biztonságossá tétele](storage-how-to-use-files-linux.md#securing-linux)című témakört.
 
-- Access Azure-fájlmegosztások ExpressRoute- vagy VPN-kapcsolaton keresztül. Ha az Azure-fájlmegosztást egy hálózati alagúton keresztül éri el, csatlakoztathatja az Azure-fájlmegosztást, például egy helyszíni fájlmegosztást, mivel az SMB-forgalom nem haladja meg a szervezeti határt.   
+- Azure-fájlmegosztás elérése ExpressRoute vagy VPN-kapcsolaton keresztül. Amikor hálózati alagúton keresztül éri el az Azure-fájlmegosztást, csatlakoztathatja az Azure-fájlmegosztást, például egy helyszíni fájlmegosztást, mivel az SMB-forgalom nem haladja meg a szervezeti határt.   
 
-Bár technikai szempontból jelentősen könnyebb az Azure-fájlmegosztások nyilvános végponton keresztül történő csatlakoztatása, arra számítunk, hogy a legtöbb ügyfél úgy dönt, hogy ExpressRoute- vagy VPN-kapcsolaton keresztül csatlakoztatja az Azure-fájlmegosztásokat. Ehhez a következőket kell konfigurálnia a környezetéhez:  
+Bár a technikai szempontból jóval egyszerűbb az Azure-fájlmegosztás nyilvános végponton keresztüli csatlakoztatása, a legtöbb ügyfelünk úgy dönt, hogy az Azure-fájlmegosztást egy ExpressRoute vagy VPN-kapcsolaton keresztül csatlakoztatja. Ehhez a következőt kell konfigurálnia a környezetéhez:  
 
-- **Az ExpressRoute, a helyek**közötti vagy a helyek közötti VPN használatával történő hálózati bújtatás: A virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztások helyszíni elérését, még akkor is, ha a 445-ös port le van tiltva.
-- **Privát végpontok:** A privát végpontok dedikált IP-címet adnak a tárfióknak a virtuális hálózat címteréből. Ez lehetővé teszi a hálózati bújtatás nélkül kell megnyitni a helyszíni hálózatok akár az Azure storage-fürtök tulajdonában lévő összes IP-címtartományban. 
-- **DNS-továbbítás:** Konfigurálja a helyszíni DNS-t úgy, hogy a tárfiók (azaz `storageaccount.file.core.windows.net` a nyilvános felhőrégiók) nevét a privát végpontok IP-címére oldja fel.
+- **Hálózati bújtatás ExpressRoute, helyek közötti vagy pont – hely típusú VPN használatával**: a virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztás helyszíni elérését, még akkor is, ha az 445-es port le van tiltva.
+- **Privát végpontok**: a magánhálózati végpontok dedikált IP-címet biztosítanak a Storage-fióknak a virtuális hálózat címterület területén. Ez lehetővé teszi a hálózati bújtatást anélkül, hogy az Azure Storage-fürtök által birtokolt összes IP-címtartományt meg kellene nyitni a helyszíni hálózatokat. 
+- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók ( `storageaccount.file.core.windows.net` azaz a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
 
-Az Azure-fájlmegosztás üzembe helyezéséhez társított hálózati tervezésmegtervezéséhez olvassa el az [Azure Files hálózati szempontok című témakört.](storage-files-networking-overview.md)
+Az Azure-fájlmegosztás üzembe helyezéséhez kapcsolódó hálózatkezelés megtervezéséhez tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md).
 
 ## <a name="encryption"></a>Titkosítás
-Az Azure Files két különböző típusú titkosítást támogat: az átvitel során történő titkosítást, amely az Azure-fájlmegosztás csatlakoztatása/elérése során használt titkosításhoz kapcsolódik, és az inaktív titkosítást, amely az adatok titkosításának módját használja a lemezen való tároláskor. 
+A Azure Files két különböző titkosítási típust támogat: az átvitel közbeni titkosítást, amely az Azure-fájlmegosztás csatlakoztatása/elérése és a nyugalmi állapotban lévő titkosítás használatakor használt titkosításhoz kapcsolódik, amely az adatok lemezen történő tárolásának módjára vonatkozik. 
 
 ### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
-Alapértelmezés szerint az összes Azure storage-fiókok titkosítás i átvitel e titkosítás engedélyezve van. Ez azt jelenti, hogy ha egy fájlmegosztást csatlakoztat SMB-n keresztül, vagy a FileREST protokollon keresztül (például az Azure Portalon, a PowerShell/CLI-n vagy az Azure SDK-n keresztül) keresztül fér hozzá, az Azure Files csak akkor engedélyezi a kapcsolatot, ha smb 3.0+ titkosítással vagy HTTPS-lel készült. Azok az ügyfelek, amelyek nem támogatják az SMB 3.0-s vagy az SMB 3.0-s titkosítást támogató, de az SMB-titkosítást nem támogató ügyfelek nem tudják csatlakoztatni az Azure fájlmegosztást, ha az átvitel alatt titkosítás engedélyezve van. Arról, hogy mely operációs rendszerek támogatják az SMB 3.0 titkosítását, tekintse meg a [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)és Linux részletes [dokumentációját.](storage-how-to-use-files-linux.md) A PowerShell, a CLI és az SDK-k összes jelenlegi verziója támogatja a HTTPS protokollt.  
+Alapértelmezés szerint az összes Azure Storage-fióknál engedélyezve van az átvitel titkosítása. Ez azt jelenti, hogy amikor az SMB-n keresztül csatlakoztat egy fájlmegosztást, vagy a kiosztott protokollon keresztül éri el (például a Azure Portal, a PowerShell/CLI vagy az Azure SDK-k használatával), Azure Files csak akkor engedélyezi a kapcsolatot, ha az SMB 3.0 + titkosítással vagy HTTPS-vel van ellátva. Azok az ügyfelek, amelyek nem támogatják az SMB 3,0-et vagy az SMB 3,0-et támogató ügyfeleket, de az SMB-titkosítást nem, nem fogják tudni csatlakoztatni az Azure-fájlmegosztást, ha engedélyezve van az átvitel titkosítása. Ha további információt szeretne arról, hogy mely operációs rendszerek támogatják az SMB 3,0 titkosítást, tekintse meg a [Windows](storage-how-to-use-files-windows.md), a [MacOS](storage-how-to-use-files-mac.md)és a [Linux](storage-how-to-use-files-linux.md)részletes dokumentációját. A PowerShell, CLI és SDK összes jelenlegi verziója támogatja a HTTPS-t.  
 
-Letilthatja a titkosítást az átvitel során egy Azure-tárfiók. Ha a titkosítás le van tiltva, az Azure Files is lehetővé teszi az SMB 2.1, SMB 3.0 titkosítás nélkül, és titkosítatlan FileREST API-hívások HTTP-n keresztül. Az átvitel során a titkosítás letiltásának elsődleges oka egy régebbi operációs rendszeren, például Windows Server 2008 R2 vagy régebbi Linux-disztribúción futtatandó örökölt alkalmazás támogatása. Az Azure Files csak az Azure 2.1-es kapcsolatokat engedélyezi ugyanabban az Azure-régióban, mint az Azure fájlmegosztás; az Azure-fájlmegosztás Azure-régióján kívüli SMB 2.1-es ügyfél, például a helyszíni vagy egy másik Azure-régióban, nem fogja tudni elérni a fájlmegosztást.
+Egy Azure Storage-fiók esetében letilthatja a titkosítást az átvitel során. Ha a titkosítás le van tiltva, a Azure Files az SMB 2,1, a titkosítás nélküli SMB 3,0 és a titkosítatlan, nem titkosított API-hívások HTTP-n keresztüli használatát is lehetővé teszi. Az átvitel közbeni titkosítás letiltásának elsődleges oka az olyan örökölt alkalmazások támogatása, amelyeknek régebbi operációs rendszeren kell futniuk, például Windows Server 2008 R2 vagy régebbi Linux-disztribúció. Azure Files csak az Azure-fájlmegosztás azonos Azure-régiójában lévő SMB 2,1-kapcsolatokat engedélyezi. Az Azure-fájlmegosztás (például a helyszíni vagy egy másik Azure-régió) Azure-régióján kívüli SMB 2,1-ügyfél nem fog tudni hozzáférni a fájlmegosztás eléréséhez.
 
-Javasoljuk, hogy biztosítsa az adatok titkosításának engedélyezését az átvitel közbeni átvitel alatt.
+Javasoljuk, hogy engedélyezze a továbbítást a forgalomban lévő adatátvitel titkosításának biztosításához.
 
-Az átvitel közbeni titkosításról további információt az [Azure storage-beli biztonságos átvitel megkövetelése című témakörben talál.](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+További információ az átvitel közbeni titkosításról: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
@@ -79,78 +79,78 @@ Az átvitel közbeni titkosításról további információt az [Azure storage-b
 ## <a name="storage-tiers"></a>Tárolási rétegek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Általánosságban elmondható, hogy az Azure Files szolgáltatásai és a más szolgáltatásokkal való együttműködés azonosak a prémium szintű fájlmegosztások és a szabványos fájlmegosztások között, azonban van néhány fontos különbség:
+Általánosságban elmondható, hogy Azure Files szolgáltatások és a más szolgáltatásokkal való együttműködés azonos a prémium fájlmegosztás és a szabványos fájlmegosztás között, azonban néhány fontos különbség:
 - **Számlázási modell**
-    - A prémium szintű fájlmegosztások számlázása egy kiépített számlázási modell használatával kerül számlázásra, ami azt jelenti, hogy a ténylegesen kért tárterület helyett a leépített tárterületért kell fizetnie. 
-    - A szabványos fájlmegosztások számlázása használatalapú fizetéses modell használatával történik, amely tartalmazza a ténylegesen felhasznált tárterület alapköltségét, majd a megosztás használatának módjától függő további tranzakciós költségeket. A szabványos fájlmegosztások, a számla növekedni fog, ha az Azure-fájlmegosztás (olvasás/írás/csatlakoztatás) használata.
+    - A prémium szintű fájlmegosztás számlázása egy kiépített számlázási modellel történik, ami azt jelenti, hogy a kiépített tárterület mennyiségét kell fizetnie, és nem a ténylegesen kért tárterületet. 
+    - A standard fájlmegosztás számlázása az utólagos elszámolású modell használatával történik, amely a tárterület alapdíjait tartalmazza a ténylegesen felhasznált tárterülethez, majd a megosztás használati módjától függően további tranzakciós költségeket is tartalmaz. A standard fájlmegosztás esetén a számla akkor is növekedni fog, ha az Azure-fájlmegosztás használatát (olvasás/írás/csatlakoztatás) is növeli.
 - **Redundancia-beállítások**
-    - Prémium szintű fájlmegosztások csak helyileg redundáns (LRS) és zónaredundáns (ZRS) tárolók esetén érhetők el. 
-    - A normál fájlmegosztások helyileg redundáns, zónaredundáns, georedundáns (GRS) és geozóna redundáns (GZRS) tároláshoz érhetők el.
-- **A fájlmegosztás maximális mérete**
-    - Prémium fájlmegosztások akár 100 TiB-ig is kiépíthetők további munka nélkül.
-    - Alapértelmezés szerint a normál fájlmegosztások legfeljebb 5 TiB-re terjedhetnek ki, bár a megosztási korlát 100 TiB-re növelhető a *nagy fájlmegosztási* tárfiók szolgáltatásjelzőjének beállításával. A normál fájlmegosztások csak 100 TiB-ig terjedhetnek helyileg redundáns vagy zónaredundáns tárfiókok esetén. A fájlmegosztások méretének növeléséről a [Nagy fájlmegosztások engedélyezése és létrehozása](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)című témakörben talál további információt.
+    - A prémium fájlmegosztás csak a helyileg redundáns (LRS) és a Zone redundáns (ZRS) tárolók esetében érhető el. 
+    - A standard fájlmegosztás a helyileg redundáns, a zónák redundáns, a Geo-redundáns (GRS) és a Geo-zóna redundáns (GZRS) tárolók számára érhető el.
+- **Fájlmegosztás maximális mérete**
+    - A prémium fájlmegosztást akár 100 TiB-ra is kiépítheti további munka nélkül.
+    - Alapértelmezés szerint a standard fájlmegosztás legfeljebb 5 TiB-ra terjedhet ki, bár a megosztási korlát a 100 TiB-ra is növelhető, ha a *nagyméretű fájlmegosztás* Storage-fiók funkciójának jelzőjét választotta. A standard fájlmegosztás csak a 100 TiB-ra terjedhet a helyileg redundáns vagy zónában lévő redundáns Storage-fiókok esetében. További információ a fájlmegosztás méretének növeléséről: [nagyméretű fájlmegosztás engedélyezése és létrehozása](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share).
 - **Régiónkénti rendelkezésre állás**
-    - Prémium szintű fájlmegosztások nem érhetők el minden régióban, és zóna redundáns támogatás érhető el a régiók kisebb része. Ha meg szeretné tudni, hogy a prémium fájlmegosztások jelenleg elérhetők-e az Ön régiójában, tekintse meg az Azure [régiónként elérhető termékeit.](https://azure.microsoft.com/global-infrastructure/services/?products=storage) Ha meg szeretné tudni, hogy milyen régiók támogatják a ZRS-t, tekintse meg az [Azure availability zone támogatását régiónként.](../../availability-zones/az-overview.md#services-support-by-region) Annak érdekében, hogy az új régiók és a prémium szintű funkciók rangsorolásban segítsünk, kérjük, töltse ki ezt a [felmérést.](https://aka.ms/pfsfeedback)
-    - A standard fájlmegosztások minden Azure-régióban elérhetők.
-- Az Azure Kubernetes Service (AKS) támogatja a prémium fájlmegosztások 1.13-as és újabb verzióban.
+    - A prémium fájlmegosztás minden régióban nem érhető el, és a zóna redundáns támogatása a régiók kisebb részhalmazában érhető el. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . Ha szeretné megtudni, hogy mely régiók támogatják a ZRS, tekintse meg az [Azure rendelkezésre állási zónák támogatása régiónként](../../availability-zones/az-region.md)című témakört. Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/pfsfeedback)az új régiók és prémium szintű funkciók rangsorolásához.
+    - A standard fájlmegosztás minden Azure-régióban elérhető.
+- Az Azure Kubernetes Service (ak) prémium szintű fájlmegosztás használatát támogatja a 1,13-es és újabb verziókban.
 
-Ha egy fájlmegosztás prémium vagy normál fájlmegosztásként jön létre, nem konvertálhatja automatikusan a másik szintre. Ha át szeretne váltani a másik szintre, létre kell hoznia egy új fájlmegosztást a rétegben, és manuálisan kell átmásolnia az adatokat az eredeti megosztásból a létrehozott új megosztásra. Azt javasoljuk, hogy a `robocopy` Windows vagy `rsync` a macOS és a Linux, hogy végre ezt a példányt.
+Ha egy fájlmegosztás prémium vagy standard fájlmegosztásként lett létrehozva, akkor nem alakíthatja át automatikusan a másik szintre. Ha a másik szintjére szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait az újonnan létrehozott megosztásra. Azt javasoljuk, `robocopy` hogy a Windowshoz vagy `rsync` MacOS és Linux rendszerhez használja a másolást.
 
-### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztások kiépítése
-A prémium szintű fájlmegosztások rögzített GiB/IOPS/átviteli sebességarány alapján vannak kiépítve. Minden egyes kiépített GiB esetében a megosztás egy IOPS-t és 0,1 MiB/s átviteli értéket kap, az egy részvényre jutó maximális korlátig. A minimálisan engedélyezett kiépítés 100 GiB min IOPS/átviteli keresztülórával.
+### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztás kiépítés ismertetése
+A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Minden egyes GiB-kiosztás esetén a megosztás egy IOPS és 0,1 MiB/s átviteli sebességgel fog kiadni, a maximálisan megengedett határértékek száma szerint. A minimálisan engedélyezett kiépítés a 100 GiB és a min IOPS/átviteli sebesség.
 
-A legjobb erőfeszítés alapján az összes megosztás oka legfeljebb három IOPS/GiB a kiosztott tárterület 60 percig vagy hosszabb, méretétől függően a megosztás. Az új részvények a kiosztott kapacitás on alapuló teljes burst hitellel kezdődnek.
+A legjobb lehetőség az, hogy minden megosztás legfeljebb három IOPS-t tud kiosztani a kiépített tárterület 60 percen belül, a megosztás méretétől függően. Az új megosztások a kiosztott kapacitás alapján kezdődnek a teljes burst Kredittel.
 
-A részvényeket 1 GiB-növekményben kell kiépíteni. Minimális méret 100 GiB, a következő méret 101 GiB és így tovább.
+A megosztásokat 1 GiB-onként kell kiépíteni. A minimális méret 100 GiB, a következő méret 101 GiB és így tovább.
 
 > [!TIP]
-> Kiindulási IOPS = 1 * kiépített GiB. (Legfeljebb 100 000 IOPS).(Up to a max of 100,000 IOPS).
+> Alapterv IOPS = 1 * kiépített GiB. (Max. 100 000 IOPS).
 >
-> Burst Limit = 3 * Kiindulási IOPS. (Legfeljebb 100 000 IOPS).(Up to a max of 100,000 IOPS).
+> Burst határérték = 3 * alapterv IOPS. (Max. 100 000 IOPS).
 >
-> kimenő forgalom = 60 MiB/s + 0,06 * kiépített GiB
+> kimenő forgalom aránya = 60 MiB/s + 0,06 * kiépített GiB
 >
-> be- és bejuttatási arány = 40 MiB/s + 0,04 * kiépített GiB
+> bejövő forgalom sebessége = 40 MiB/s + 0,04 * kiépített GiB
 
-A kiépített megosztási méretet a megosztási kvóta határozza meg. A megosztási kvóta bármikor növelhető, de csak az utolsó növekedés óta eltelt 24 óra után csökkenthető. Miután 24 órát várt kvótanövelés nélkül, annyiszor csökkentheti a megosztási kvótát, ahányszor csak szeretné, amíg újra növelni nem fogja. Az IOPS/átviteli átviteli skálán végrehajtott módosítások a méretváltozás után néhány percen belül lépnek hatályba.
+A kiosztott megosztási méretet a megosztási kvóta határozza meg. A megosztási kvóta bármikor megnövelhető, de csak a legutóbbi növekedés óta 24 óra elteltével csökkenthető. Ha a várakozás után 24 órán keresztül nem növekszik a kvóta, a megosztási kvótát tetszőleges számú időpontra csökkentheti, amíg újra nem növelné. A IOPS/átviteli sebesség változásai a méret megváltozása után néhány percen belül érvénybe lépnek.
 
-Lehetőség van a kiosztott megosztás méretének csökkentésére a használt GiB alatt. Ha ezt teszi, nem veszíti el az adatokat, de továbbra is a használt méretért kell fizetnie, és a kiosztott megosztás teljesítményét (alapkonfigurációI IOPS, átviteli és burst IOPS) kapja meg, nem a használt méretet.
+Lehetséges, hogy csökkentse a kiosztott megosztás méretét a használt GiB alatt. Ha ezt teszi, nem veszíti el az adatvesztést, de továbbra is a felhasznált méret után kell fizetnie, és meg kell kapnia a kiépített megosztás teljesítményét (alapkonfiguráció IOPS, átviteli sebességét és burst IOPS), nem a felhasznált méretet.
 
-Az alábbi táblázat néhány példát mutat be ezekre a képletekre a kiosztott megosztásméretekesetében:
+Az alábbi táblázat néhány példát mutat be a kiosztott megosztási méretekre:
 
-|Kapacitás (GiB) | Kiindulási IOPS | Burst IOPS | Kimenő (MiB/s) | Be- és be- és ab.-be |
+|Kapacitás (GiB) | Alapterv IOPS | Burst IOPS | Kimenő forgalom (MiB/s) | Bejövő forgalom (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Akár 300     | 66   | 44   |
-|500         | 500     | Akár 1500   | 90   | 60   |
-|1,024       | 1,024   | Akár 3 072   | 122   | 81   |
-|5,120       | 5,120   | Akár 15 360  | 368   | 245   |
-|10,240      | 10,240  | Akár 30 720  | 675 | 450   |
-|33,792      | 33,792  | Akár 100 000 | 2,088 | 1,392   |
-|51,200      | 51,200  | Akár 100 000 | 3,132 | 2,088   |
-|102,400     | 100 000 | Akár 100 000 | 6,204 | 4,136   |
+|500         | 500     | Akár 1 500   | 90   | 60   |
+|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
+|5 120       | 5 120   | Akár 15 360  | 368   | 245   |
+|10 240      | 10 240  | Akár 30 720  | 675 | 450   |
+|33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
+|51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
+|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
-> Fájl megosztások teljesítmény függ gép hálózati korlátok, a rendelkezésre álló hálózati sávszélesség, Io méretek, párhuzamosság, sok más tényező. Például a 8 KiB olvasási/írási IO-mérettel rendelkező belső tesztelés alapján egyetlen Windows virtuális gép, *a Standard F16s_v2*, amely az SMB-n keresztüli prémium szintű fájlmegosztáshoz csatlakozik, 20K olvasási IOPS-t és 15K írási IOPS-t érhet el. Az 512 MiB olvasási/írási IO-méretekkel ugyanaz a virtuális gép 1,1 GiB/s kimenő és 370 MiB/s kimenő átviteli szintet érhet el. A maximális teljesítményskála elérése érdekében a terhelést több virtuális gépközött is elosztva. Kérjük, olvassa el a [hibaelhárítási útmutatót](storage-troubleshooting-files-performance.md) néhány gyakori teljesítménybeli problémáról és kerülő megoldásról.
+> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
 
 #### <a name="bursting"></a>Tele
-Prémium fájlmegosztások is tört az IOPS-ig háromszorosára. A bursting automatizált, és egy kreditrendszeren alapul. A bursting a legjobb erőfeszítés alapján működik, és a burst limit nem garancia, a fájlmegosztások *a határértékig felrobbanhatnak.*
+A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is *feltört.*
 
-A kreditek egy burst gyűjtőben halmozódnak fel, ha a fájlmegosztás forgalma az alapkonfigurációi IOPS alatt van. Egy 100 GiB-megosztás például 100 eredeti IOPS-érték. Ha a megosztás tényleges forgalma 40 IOPS volt egy adott 1 másodperces időközhöz, majd a 60 fel nem használt IOPS egy burst gyűjtőben kerül jóváírásra. Ezek a jóváírások később kerülnek használatba, amikor a műveletek meghaladnák az eredeti IPP-ket.
+A kreditek felhalmozódnak egy burst gyűjtőben, amikor a fájlmegosztás forgalma az alapszintű IOPS alatt van. Egy 100 GiB-megosztás például 100 alapterv-IOPS rendelkezik. Ha a megosztás tényleges forgalma 40 IOPS volt egy adott 1 másodperces intervallumhoz, akkor a 60 fel nem használt IOPS jóváírásra kerül egy burst gyűjtőn. Ezeket a krediteket később akkor fogjuk használni, amikor a műveletek túllépik az alapkonfiguráció IOPs.
 
 > [!TIP]
-> A burst gyűjtő mérete = Kiindulási IOPS * 2 * 3600.
+> A burst vödör mérete = alapterv IOPS * 2 * 3600.
 
-Ha egy megosztás meghaladja az alapszintű IOPS-t, és egy burst gyűjtőben rendelkezik kreditekkel, akkor felrobban. A részvények továbbra is felrobbanhatnak, amíg a kreditek megmaradnak, bár az 50 TiB-nél kisebb részvények csak egy órán keresztül maradnak a burst limiten. Az 50 TiB-nél nagyobb részvények technikailag meghaladhatják ezt az egy órás korlátot, legfeljebb két órát, de ez a felhalmozott burst kreditek számán alapul. Minden i/o-t a kiindulási IOPS-on túl egy kreditet használ fel, és az összes kredit felhasználása után a megosztás visszatér a kiindulási IOPS-hoz.
+Ha egy megosztás túllépi az alapkonfiguráció IOPS, és a kreditek egy burst gyűjtőben vannak, akkor a rendszer kitört. A megosztások továbbra is feltörtek, amíg a kreditek megmaradnak, de az 50 TiB-nál kisebb megosztások csak a burst-korláton belül maradnak. A 50 TiB-nál nagyobb megosztások műszakilag meghaladják ezt az óránkénti korlátot, akár két óráig is, de ez a felhalmozott burst-kreditek számától függ. Az alapkonfiguráció IOPS túli minden egyes IO egy kreditet használ, és ha az összes kreditet felhasználja, a megosztás visszatér az alapkonfiguráció IOPS.
 
-A részvénykreditek három állammal rendelkeznek:
+A megosztási kreditek három állapottal rendelkeznek:
 
-- Felhalmozódó, ha a fájlmegosztás kevesebb, mint az alaptervIOPS.Accruing, when the file share is using less than the baseline IOPS.
-- Csökkenő, a fájlmegosztás felszakadásakor.
-- A fennmaradó állandó, ha nincsenek kreditek, vagy az alaptervi IOPS használatban van.
+- Ha a fájlmegosztás az alapkonfigurációnál kisebb IOPS használja.
+- Csökkenő, ha a fájlmegosztás kitört.
+- Hátralévő állandó, ha nincsenek kreditek vagy alapkonfiguráció IOPS használatban.
 
-Az új fájlmegosztások a sorozatgyűjtőben lévő kreditek teljes számával kezdődnek. A burst kreditek nem halmozódnak fel, ha a megosztási IOPS a kiszolgáló általi szabályozás miatt az alapvonali IOPS alá csökken.
+Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben. A burst kreditek nem lesznek felhalmozva, ha a megosztás IOPS az alapszintű IOPS alá esik a kiszolgáló általi szabályozás miatt.
 
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A szabványos fájlmegosztások akár 100 TiB-ig való lehetővé tétele
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A standard fájlmegosztás engedélyezése akár 100 TiB-re is terjedhet
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
 #### <a name="limitations"></a>Korlátozások
@@ -160,17 +160,17 @@ Az új fájlmegosztások a sorozatgyűjtőben lévő kreditek teljes számával 
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Migrálás
-Sok esetben nem fog létrehozni egy nettó új fájlmegosztást a szervezet számára, hanem egy meglévő fájlmegosztás áttelepítése egy helyszíni fájlkiszolgálóról vagy NAS-eszközről az Azure Files-ba. A Microsoft és a harmadik felek számos eszközt biztosítanak a fájlmegosztásra való áttéréshez, de ezek nagyjából két kategóriába sorolhatók:
+Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Microsoft és a harmadik felek egyaránt számos eszközt biztosítanak a fájlmegosztás áttelepítésére, de nagyjából két kategóriába oszthatók:
 
-- **A fájlrendszer attribútumait karóeszközök, például a a c-k és az időbélyegek:**
-    - **[Azure File Sync:](storage-sync-files-planning.md)** Az Azure File Sync használható az adatok Azure-fájlmegosztásba történő betöltésére, még akkor is, ha a kívánt végső üzembe helyezés nem a helyszíni jelenlét fenntartása. Az Azure File Sync a meglévő Windows Server 2012 R2, Windows Server 2016 és Windows Server 2019 telepítéseken telepíthető. Az Azure File Sync betöltési mechanizmusként való használatának előnye, hogy a végfelhasználók továbbra is használhatják a meglévő fájlmegosztást; az Azure-fájlmegosztásra való átvágás akkor fordulhat elő, ha az összes adat feltöltése befejeződött a háttérben.
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy egy jól ismert másolási eszköz, hogy a hajók a Windows és a Windows Server. A Robocopy segítségével adatokat vihet át az Azure Files-ba a fájlmegosztás helyi csatlakoztatásával, majd a robocopy parancs ban a csatlakoztatott hely használatával.
+- **A fájlrendszer attribútumait, például ACL-eket és időbélyegeket karbantartó eszközök**:
+    - **[Azure file Sync](storage-sync-files-planning.md)**: a Azure file Sync használható az Azure-fájlmegosztásba való betöltéshez, még akkor is, ha a kívánt végponti telepítés nem tart fenn helyszíni jelenlétet. Azure File Sync a meglévő Windows Server 2012 R2, a Windows Server 2016 és a Windows Server 2019 rendszerű központi telepítések esetén telepíthető. A Azure File Sync betöltési mechanizmusként való használatának előnye, hogy a végfelhasználók továbbra is használhatják a meglévő fájlmegosztást. Az Azure-fájlmegosztás kivágása akkor fordulhat elő, ha az összes adat feltöltése befejeződött a háttérben.
+    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: a Robocopy egy jól ismert másolási eszköz, amely a Windows és a Windows Server rendszerű kiszolgálókon található. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
 
-- **A fájlrendszer attribútumait nem fenntartó eszközök**:
-    - **Adatmező:** A Data Box offline adatátviteli mechanizmust biztosít az adatok Azure-ba történő fizikai szállításához. Ez a módszer az átviteli sávszélesség növelésére és a sávszélesség megtakarítására szolgál, de jelenleg nem támogatja a fájlrendszer attribútumait, például az időbélyegeket és az ACL-eket.
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: AzCopy egy parancssori segédprogram, amelyet az Azure Files-ba és az Azure Files-ból, valamint az Azure Blob storage-ba történő másolásra terveztek, egyszerű parancsokat használva optimális teljesítménnyel.
+- A **fájlrendszer attribútumait nem fenntartó eszközök**:
+    - **Data Box**: a Data Box offline adatátviteli mechanizmust biztosít az adatok Azure-ba való fizikai szállításához. Ez a módszer az átviteli sebesség növelésére és a sávszélesség megtakarítására szolgál, de jelenleg nem támogatja a fájlrendszer-attribútumokat, például az időbélyegeket és az ACL-eket.
+    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: a AzCopy egy parancssori segédprogram, amely az adatok átmásolását Azure Files, valamint az Azure Blob Storage-t használja az optimális teljesítményű egyszerű parancsok használatával.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure-fájlszinkronizálás telepítésének megtervezése](storage-sync-files-planning.md)
-* [Az Azure-fájlok telepítése](storage-files-deployment-guide.md)
-* [Az Azure-fájlszinkronizálás telepítése](storage-sync-files-deployment-guide.md)
+* [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
+* [Azure Files üzembe helyezése](storage-files-deployment-guide.md)
+* [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

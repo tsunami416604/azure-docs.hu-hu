@@ -4,12 +4,12 @@ description: Ismerje meg, hogy mely portokra és címekre van szükség a kimen�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183925"
+ms.locfileid: "82207173"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -165,19 +165,15 @@ A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon 
 | *. GK. \<location\>. azmk8s.IO | HTTPS: 443    | Azure Policy bővítmény, amely a főkiszolgálón futó forgalomirányító-naplózási végpontot tárgyalja a naplózási eredmények beszerzéséhez. |
 | dc.services.visualstudio.com | HTTPS: 443 | Azure Policy bővítmény, amely telemetria adatokat küld az Applications-elemzések végpontjának. |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>A Windows Server-alapú csomópontok (nyilvános előzetes verzió) által igényelt engedélyezve
+## <a name="required-by-windows-server-based-nodes-enabled"></a>A Windows Server-alapú csomópontok engedélyezése kötelező
 
-> [!CAUTION]
-> Az alábbi funkciók némelyike előzetes verzióban érhető el.  A cikkben szereplő javaslatok változhatnak, mivel a szolgáltatás a nyilvános előzetes verzióra és a későbbi kiadási szakaszokra helyezi át a szolgáltatást.
-
-A Windows Server-alapú AK-fürtökhöz a következő FQDN-/alkalmazás-szabályok szükségesek:
+A Windows Server-alapú csomópont-készletek használatához a következő FQDN-/alkalmazás-szabályok szükségesek:
 
 | FQDN                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
 | mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
 | kms.core.windows.net | TCP: 1688 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
-
 
 ## <a name="next-steps"></a>További lépések
 

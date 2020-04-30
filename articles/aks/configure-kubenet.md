@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01b2f3baefc2320ec11f9cb7f29392ebb0841289
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617244"
+ms.locfileid: "82207479"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelé
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
-> A Windows Server Node-készletek (jelenleg előzetes verzióban) használatához az Azure CNI-t kell használnia. A kubenet használata hálózati modellként nem érhető el a Windows Server-tárolók esetében.
+> A Windows Server Node-készletek használatához az Azure CNI-t kell használnia. A kubenet használata hálózati modellként nem érhető el a Windows Server-tárolók esetében.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a3a81513773ef6d826ad354d47a3e7ec83e75d65
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106644"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209128"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -40,12 +40,12 @@ A szolgáltatáshoz a 99,95%-os SLA-t használó szabványos szolgáltatási sza
 
 Egy rendelkezésre állási zónában üzembe helyezett tűzfal esetében nincs további díj. A Availability Zoneshoz társított bejövő és kimenő adatátvitelek esetében azonban további költségek is rendelkezésre állnak. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Azure Firewall Availability Zones a Availability Zones támogató régiókban érhetők el. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
+Azure Firewall Availability Zones a Availability Zones támogató régiókban érhetők el. További információ: [Availability Zonest támogató régiók az Azure-ban](../availability-zones/az-region.md)
 
 > [!NOTE]
 > Availability Zones csak az üzembe helyezés során állítható be. Meglévő tűzfal nem konfigurálható úgy, hogy tartalmazza a Availability Zones.
 
-További információ a Availability Zonesről: [Mi az az Azure Availability Zones?](../availability-zones/az-overview.md)
+További információ a Availability Zonesről: [régiók és Availability Zones az Azure-ban](../availability-zones/az-overview.md)
 
 ## <a name="unrestricted-cloud-scalability"></a>Korlátlan felhőalapú skálázhatóság
 

@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatás
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 183e0a85f65d24dc7133307391931bea754a456d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7e9a47b7bda4cdb0ff6f1983bc884f7441a26d9b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632609"
+ms.locfileid: "82207972"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
 Egy AK-alapú fürt életciklusának részeként gyakran frissítenie kell a legújabb Kubernetes-verzióra. Fontos, hogy alkalmazza a legújabb Kubernetes biztonsági kiadásokat, vagy frissítsen a legújabb funkciók beszerzéséhez. Ez a cikk bemutatja, hogyan frissítheti a fő összetevőket vagy egyetlen, alapértelmezett Node-készletet egy AK-fürtben.
 
-A több csomópontot vagy Windows Server-csomópontokat (jelenleg előzetes verzióban) használó AK-fürtök esetében lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+Több Node-készletet használó AK-fürtök esetén lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
 ## <a name="before-you-begin"></a>Előkészületek
 

@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy, az Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145500"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207360"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -56,7 +56,7 @@ Két további paramétert kell átadnia a Helm-kiadáshoz, hogy a bejövő forga
 1. Adja hozzá `--set controller.service.loadBalancerIP` a paramétert. Adja meg saját nyilvános IP-címét, amelyet az előző lépésben hozott létre.
 1. Adja hozzá `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` a paramétert. Adja meg az előző lépésben létrehozott nyilvános IP-címhez alkalmazni kívánt DNS-név címkéjét.
 
-A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (az AK-ban jelenleg előzetes verzióban) nem futtathatják a bejövő vezérlőt. A csomópont-választó `--set nodeSelector` paraméterrel történő meghatározása arra utasítja a Kubernetes ütemezőt, hogy az NGINX bejövő vezérlőt Linux-alapú csomóponton futtassa.
+A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. Windows Server-csomópontok nem futtathatják a bejövő forgalmi vezérlőt. A csomópont-választó `--set nodeSelector` paraméterrel történő meghatározása arra utasítja a Kubernetes ütemezőt, hogy az NGINX bejövő vezérlőt Linux-alapú csomóponton futtassa.
 
 > [!TIP]
 > A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű*forgalomhoz. Szükség szerint adja meg a saját környezetének névterét. Ha az AK-fürt nincs engedélyezve RBAC, adja `--set rbac.create=false` hozzá a parancsot a Helm parancshoz.
@@ -285,7 +285,7 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>A behatolási konfiguráció tesztelése
 
-Nyisson meg egy webböngészőt a Kubernetes bejövő adatkezelője teljes tartománynevére, *https://demo-aks-ingress.eastus.cloudapp.azure.com*például:.
+Nyisson meg egy webböngészőt a Kubernetes bejövő adatkezelője teljes tartománynevére, *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* például:.
 
 A példákban `letsencrypt-staging`a kiállított TLS/SSL-tanúsítványt nem megbízhatónak tekinti a böngésző. Fogadja el az alkalmazás folytatásához szükséges figyelmeztető üzenetet. A tanúsítvány adatai azt mutatják be, hogy ezt a *hamis le közbenső X1* -tanúsítványt a titkosítva állítja ki. Ez a hamis tanúsítvány `cert-manager` azt jelzi, hogy megfelelően feldolgozta a kérést, és a szolgáltatótól kapott tanúsítványt:
 
@@ -299,7 +299,7 @@ A bemutató alkalmazás a böngészőben jelenik meg:
 
 ![Példa egy alkalmazásra](media/ingress/app-one.png)
 
-Most adja hozzá a */Hello-World-Two* elérési útját a teljes *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*tartománynévhez, például:. Az egyéni címmel rendelkező második bemutató alkalmazás a következőképpen jelenik meg:
+Most adja hozzá a */Hello-World-Two* elérési útját a teljes *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* tartománynévhez, például:. Az egyéni címmel rendelkező második bemutató alkalmazás a következőképpen jelenik meg:
 
 ![Példa két alkalmazásra](media/ingress/app-two.png)
 

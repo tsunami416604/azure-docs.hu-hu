@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137954"
+ms.locfileid: "82208737"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztikai lépésekről és eszközökről tartalmaz Azure Cosmos DB SQL API-fiókokkal rendelkező [.net SDK](sql-api-sdk-dotnet.md) -t használva.
 A .NET SDK ügyféloldali logikai ábrázolást biztosít a Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Ellenőrzőlista a hibaelhárítási problémákhoz:
+## <a name="checklist-for-troubleshooting-issues"></a>Ellenőrzőlista hibaelhárítási problémákhoz
 Mielőtt éles környezetben áthelyezi az alkalmazást, vegye figyelembe a következő ellenőrzőlistát. Az ellenőrzőlista használatával több gyakori probléma is megjelenhet. A probléma megoldásához gyorsan is diagnosztizálhatja a problémát:
 
 *    Használja a legújabb [SDK](sql-api-sdk-dotnet-standard.md)-t. Az előzetes verziójú SDK-kat nem ajánlott éles környezetben használni. Ez megakadályozza a már kijavított ismert problémák elkerülését.
@@ -101,6 +101,30 @@ A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, 
 * Ha a háttérbeli lekérdezés gyorsan visszatér, és nagy időt tölt az ügyfélen, ellenőrizze a terhelést a gépen. Valószínű, hogy nincs elegendő erőforrás, és az SDK arra vár, hogy az erőforrások elérhetők legyenek a válasz kezelésére.
 * Ha a háttérbeli lekérdezés lassú, próbálkozzon [a lekérdezés optimalizálásával](optimize-cost-queries.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: a HTTP-kérelemben található MAC-aláírás nem egyezik meg a számított aláírással
+Ha a következő 401 hibaüzenetet kapta: "a HTTP-kérelemben található MAC-aláírás nem egyezik meg a számított aláírással." ezt a következő forgatókönyvek okozhatják.
+
+1. A kulcsot elforgatták, és nem az [ajánlott eljárásokat](secure-access-to-data.md#key-rotation)követték. Általában ez a helyzet. Cosmos DB fiók kulcsának elforgatása eltarthat néhány másodperctől akár napokig is, az Cosmos DB fiók méretétől függően.
+   1. 401 a MAC-aláírás röviddel a kulcs elforgatása után következik be, és végül leáll a módosítás nélkül. 
+2. A kulcs helytelenül van konfigurálva az alkalmazásban, így a kulcs nem egyezik meg a fiókkal.
+   1. 401 MAC-aláírási probléma konzisztens lesz, és az összes hívás esetén megtörténik
+3. Létezik egy versenyhelyzet a tároló létrehozásával. Egy alkalmazás-példány megpróbál hozzáférni a tárolóhoz a tároló létrehozása után. A leggyakoribb példa erre, ha az alkalmazás fut, és a tároló törlődik, és az alkalmazás futása során ugyanazzal a névvel jön létre. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így nem rendelkezik a kulcsokkal.
+   1. 401 MAC-aláírási probléma röviddel a tároló létrehozása után következik be, és csak a tároló létrehozása után történik meg.
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>400-es HTTP-hiba. A kérések fejlécének mérete túl hosszú.
+ A fejléc mérete nagyra nőtt, és meghaladja a maximálisan megengedett méretet. A legújabb SDK-t mindig ajánlott használni. Ügyeljen arra, hogy legalább a [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) vagy [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)verziót használja, amely hozzáadja a fejléc méretének nyomon követését a kivételt jelző üzenethez.
+
+Okoz
+ 1. A munkamenet-jogkivonat túl nagyra nőtt. A munkamenet-jogkivonat nő, mint a partíciók számának növekedése a tárolóban.
+ 2. A folytatási token nagyra nőtt. A különböző lekérdezések a folytatási tokenek különböző méreteit fogják tartalmazni.
+ 3. Ezt a munkamenet-jogkivonat és a folytatási jogkivonat kombinációja okozza.
+
+Megoldás:
+   1. Kövesse a [teljesítménnyel kapcsolatos tippeket](performance-tips.md) , és alakítsa át az alkalmazást Direct + TCP-kapcsolatok módba. A Direct + TCP nem rendelkezik a fejléc méretére vonatkozó korlátozással, például a HTTP-vel, amely elkerüli ezt a problémát.
+   2. Ha a munkamenet-token az OK, akkor ideiglenes megoldás az alkalmazás újraindítása. Az alkalmazás-példány újraindítása a munkamenet-token alaphelyzetbe állítását állítja vissza. Ha a kivételek az újraindítás után leállnak, akkor megerősíti, hogy a munkamenet-token oka. A rendszer végül a kivételt okozó méretre nő vissza.
+   3. Ha az alkalmazás nem konvertálható a Direct + TCP értékre, és a munkamenet-token az OK, akkor a megoldás az ügyfél konzisztencia- [szintjének](consistency-levels.md)módosításával végezhető el. A munkamenet-jogkivonat csak a munkamenet-konzisztencia esetében használatos, amely a Cosmos DB alapértelmezett értéke. Bármely más konzisztencia-szint nem fogja használni a munkamenet-jogkivonatot. 
+   4. Ha az alkalmazás nem alakítható át a Direct + TCP értékre, és a folytatási token az OK, akkor próbálja meg beállítani a ResponseContinuationTokenLimitInKb beállítást. A beállítás a v2-es vagy a v3-as QueryRequestOptions FeedOptions érhető el.
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, 
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

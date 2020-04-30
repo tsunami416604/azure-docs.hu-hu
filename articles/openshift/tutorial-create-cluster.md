@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 32069d9594d4579bd18ec3fd0e76af7bdc69f4d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232155"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509720"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -80,7 +80,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
    ```console
    LOCATION=eastus                 # the location of your cluster
-   RESOURCEGROUP="v4-$LOCATION"    # the name of the resource group where you want to create your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
    CLUSTER=cluster                 # the name of your cluster
    ```
 
@@ -89,7 +89,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
     Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az [az Group Create] [az-Group-Create] parancs használatával.
 
     ```azurecli-interactive
-    az group create --name $CLUSTER --location $LOCATION
+    az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
     A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:

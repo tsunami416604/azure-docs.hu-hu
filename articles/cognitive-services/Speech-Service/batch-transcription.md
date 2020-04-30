@@ -1,7 +1,7 @@
 ---
-title: Mi a kötegelt átírás - Beszédszolgáltatás
+title: A Batch átírása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A kötegelt átírás ideális, ha nagy mennyiségű hangot szeretne átírni a storage-ban, például az Azure Blobs. A dedikált REST API használatával rámutathat a közös hozzáférésű uri-azonosítóval (SAS) rendelkező hangfájlokra, és aszinkron módon fogadhat átiratokat.
+description: A Batch-átírás ideális megoldás, ha nagy mennyiségű hanganyagot szeretne átírni a Storage-ban, például az Azure-blobokat. A dedikált REST API használatával a hangfájlok közös hozzáférésű aláírási (SAS) URI-val és aszinkron módon fogadhatók.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,65 +10,65 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892461"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82208618"
 ---
-# <a name="what-is-batch-transcription"></a>Mi az a kötegátírás?
+# <a name="what-is-batch-transcription"></a>Mi a Batch-átírás?
 
-A kötegelt átírás rest API-műveletek készlete, amely lehetővé teszi nagy mennyiségű, a tárolóban lévő hang átírását. Rámutathat a hangfájlokra egy megosztott hozzáférésű azonosítóval (SAS) és aszinkron módon fogadhat átirati eredményeket.
+A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlok közös hozzáférésű aláírási (SAS) URI-val, az átírási eredmények aszinkron fogadásával is megadhatók.
 
-Az aszinkron beszéd-szöveg átírás csak az egyik funkció. A kötegelt átírásrest api-k segítségével hívhatja meg a következő módszereket:
+Az aszinkron beszéd – szöveg átírása csak az egyik funkció. A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
 
 
-|    Kötegátírási művelet                                             |    Módszer    |    REST API-hívás                                   |
+|    Kötegelt átírási művelet                                             |    Módszer    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    Új átiratot hoz létre.                                              |    POST      |    api/speechtotext/v2.0/transzkripciók            |
-|    Lekéri a hitelesített előfizetés átiratainak listáját.    |    GET       |    api/speechtotext/v2.0/transzkripciók            |
-|    Lekéri az offline átiratok támogatott területi listáit.              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
-|    Frissíti az azonosítója által azonosított átírás változékony részleteit.    |    Javítás     |    api/speechtotext/v2.0/transcriptions/{id}       |
-|    Törli a megadott átírási feladatot.                                 |    DELETE    |    api/speechtotext/v2.0/transcriptions/{id}       |
-|    Leveszi az átiratot az adott azonosítóval.                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    Új átírást hoz létre.                                              |    POST      |    API/speechtotext/v 2.0/átiratok            |
+|    Lekéri a hitelesített előfizetéshez tartozó átírások listáját.    |    GET       |    API/speechtotext/v 2.0/átiratok            |
+|    Lekéri a támogatott területi beállítások listáját az offline átírásokhoz.              |    GET       |    API/speechtotext/v 2.0/átiratok/területi beállítások    |
+|    Frissíti az azonosító alapján azonosított átirat megváltoztathatatlan részleteit.    |    JAVÍTÁS     |    API/speechtotext/v 2.0/átiratok/{azonosító}       |
+|    Törli a megadott átírási feladatot.                                 |    DELETE    |    API/speechtotext/v 2.0/átiratok/{azonosító}       |
+|    Lekéri az adott azonosító által azonosított átírást.                        |    GET       |    API/speechtotext/v 2.0/átiratok/{azonosító}       |
 
 
 
 
-A cím `Custom Speech transcriptions`alatt áttekintheti és tesztelheti a részletes API-t, amely [Swagger-dokumentumként](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)érhető el.
+Áttekintheti és tesztelheti a részletes API-t, amely egy [hencegő dokumentumként](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)érhető el `Custom Speech transcriptions`a fejléc alatt.
 
-A kötegelt átírási feladatok ütemezése a legjobb erőfeszítés alapján történik. Jelenleg nincs becslés, ha egy feladat a futó állapotba változik. Normál rendszerterhelés esetén perceken belül meg kell történnie. Miután a futó állapotban, a tényleges átírás feldolgozása gyorsabb, mint a hang valós időben.
+A Batch-átírási feladatok ütemezése a lehető legjobb megoldás szerint történik. Jelenleg nincs becslés arra az időpontra, amikor a feladatok a futó állapotba változnak. A normál rendszerterhelés alatt perceken belül meg kell történnie. A futó állapotban a tényleges átírást a rendszer gyorsabban dolgozza fel, mint a valós időben.
 
-A könnyen használható API mellett nem kell egyéni végpontokat üzembe helyeznie, és nincsenek megfigyelni egyidejűségi követelmények.
+A könnyen használható API mellett nem kell egyéni végpontokat telepítenie, és nem rendelkezik egyidejűségi követelményekkel a megfigyeléshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="subscription-key"></a>Előfizetői azonosító
 
-A beszédfelismerési szolgáltatás összes funkciójához ugyanúgy, mint a beszédfelismerési szolgáltatás összes szolgáltatása, az [Első lépések útmutatót](get-started.md)követve hozzon létre egy előfizetési kulcsot az [Azure Portalról.](https://portal.azure.com)
+Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md).
 
 >[!NOTE]
-> A kötegelt átírás használatához szabványos előfizetés (S0) szükséges. Az ingyenes előfizetési kulcsok (F0) nem működnek. További információt az árképzés és a korlátok című témakörben [talál.](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+> A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetési kulcsok (F0) nem működnek. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Egyéni modellek
 
-Ha az akusztikai vagy nyelvi modellek testreszabását tervezi, kövesse az [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md) és a Design testreszabási nyelvi modellek című témakör [lépéseit.](how-to-customize-language-model.md) A létrehozott modellek kötegelt átírásban való használatához a modellazonosítóikra van szükség. A modellazonosító t a modell részleteinek vizsgálatakor kérheti le. Az üzembe helyezett egyéni végpont nem szükséges a kötegelt átírási szolgáltatáshoz.
+Ha az akusztikai vagy nyelvi modellek testreszabását tervezi, kövesse az [akusztikus modellek testreszabása](how-to-customize-acoustic-models.md) és a [testreszabási nyelvi modellek](how-to-customize-language-model.md)testreszabása című témakör lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell-azonosítóra. A modell AZONOSÍTÓját a modell részleteinek vizsgálatakor kérheti le. A Batch átíró szolgáltatáshoz nem szükséges egy telepített egyéni végpont.
 
-## <a name="the-batch-transcription-api"></a>A kötegelt átírás API
+## <a name="the-batch-transcription-api"></a>A Batch-átírási API
 
 ### <a name="supported-formats"></a>Támogatott formátumok
 
-A Batch Transcription API a következő formátumokat támogatja:
+A Batch transzkripciós API a következő formátumokat támogatja:
 
-| Formátum | Codec | Bitráta | Mintavételi arány                     |
+| Formátum | Codec | Sávszélességű | Mintavételezési arány                     |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
-| Mp3    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
-| Ogg    | Opus  | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
+| MP3    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
+| VORBIS    | OPUS  | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
 
-Sztereó hangfolyamok esetén a bal és a jobb csatorna felosztása az átírás során történik. Minden csatorna hoz létre egy JSON-eredményfájlt. Az utterance (kifejezés) létrehozott időbélyegek lehetővé teszik a fejlesztő számára, hogy egy rendezett végleges átiratot hozzon létre.
+A sztereó hangadatfolyamok esetében a bal és a jobb oldali csatorna az átírás során oszlik meg. Minden csatornához létre kell hozni egy JSON-eredményhalmaz fájlját. A Kimondás után generált időbélyegek lehetővé teszik a fejlesztő számára a rendezett végső átirat létrehozását.
 
 ### <a name="configuration"></a>Konfiguráció
 
@@ -92,9 +92,9 @@ A konfigurációs paraméterek JSON-ként vannak megadva:
 }
 ```
 
-### <a name="configuration-properties"></a>Konfigurációtulajdonságai
+### <a name="configuration-properties"></a>Konfigurációs tulajdonságok
 
-Az átírás konfigurálásához használja az alábbi választható tulajdonságokat:
+Ezeket a választható tulajdonságokat az átírás konfigurálásához használhatja:
 
 :::row:::
    :::column span="1":::
@@ -108,51 +108,51 @@ Az átírás konfigurálásához használja az alábbi választható tulajdonsá
       `ProfanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      A káromkodás kezelésének módját határozza meg a felismerési eredményekben. Az elfogadott `None` értékek a káromkodásszűrés `Masked` letiltása, a káromkodás csillagokkal való helyettesítése, `Removed` az `Tags` összes káromkodás eltávolítása az eredményből, vagy "káromkodás" címkék hozzáadása. Az alapértelmezett beállítás: `Masked`.
+      Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek `None` a káromkodás szűrésének letiltására, `Masked` a káromkodás és a csillagokkal `Removed` való kiváltására, az eredményből való `Tags` káromkodás eltávolítására, vagy a "káromkodás" címkék hozzáadására szolgálnak. Az alapértelmezett beállítás: `Masked`.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `PunctuationMode`
    :::column-end:::
    :::column span="2":::
-      Itt adható meg, hogyan kell kezelni az írásjeleket a felismerési eredményekben. Az elfogadott `None` értékek az írásjelek letiltása, `Dictated` explicit (szóbeli) írásjelek reklezése, `Automatic` a dekóder írásjelek kezelése, vagy `DictatedAndAutomatic` diktált és automatikus írásjelek használata. Az alapértelmezett beállítás: `DictatedAndAutomatic`.
+      Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek `None` az `Dictated` írásjelek letiltására szolgálnak, a explicit (szóbeli) `Automatic` írásjelek megjelenítéséhez, hogy a dekóder a központozással legyen kezelve, vagy `DictatedAndAutomatic` pedig diktált és automatikus írásjeleket használjon. Az alapértelmezett beállítás: `DictatedAndAutomatic`.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddWordLevelTimestamps`
    :::column-end:::
    :::column span="2":::
-      Itt adható meg, hogy a program hozzáadja-e a szószintű időbélyegeket a kimenethez. Az elfogadott `true` értékek a szószintű `false` időbélyegek és (az alapértelmezett érték) letiltásának engedélyezése.
+      Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek `true` lehetővé teszik a Word szintű időbélyegek és `false` a (az alapértelmezett érték) letiltását.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Itt adható meg, hogy a rendszer alkalmazza-e a véleményelemzést az utterance (kifejezés) kifejezésre. Az elfogadott `true` értékek `false` et kell engedélyezni, és (az alapértelmezett érték) letiltani azt. További részletekért lásd a [Hangulatelemzés ben.](#sentiment-analysis)
+      Itt adható meg, hogy a rendszer a kiértékelésre alkalmazza-e az érzelmi elemzést. Az elfogadott értékek `true` lehetővé teszik a `false` (az alapértelmezett érték) engedélyezését és letiltását. További részletekért tekintse meg [Hangulatelemzés](#sentiment-analysis) .
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      Itt adható meg, hogy diarizációs elemzést kell végezni a bemeneten, amely várhatóan két hangot tartalmazó mono csatorna lesz. Az elfogadott `true` értékek lehetővé `false` teszik a diarization és (az alapértelmezett érték) letiltását. Azt is `AddWordLevelTimestamps` megköveteli, hogy kell állítani, hogy igaz.
+      Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely a várt két hangokat tartalmazó monó-csatorna. Az elfogadott értékek `true` lehetővé teszik a `false` diarization és (az alapértelmezett érték) letiltását. Azt is megköveteli `AddWordLevelTimestamps` , hogy igaz értékre legyen állítva.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `TranscriptionResultsContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Választható [URL-cím a szolgáltatás SAS](../../storage/common/storage-sas-overview.md) egy írható tároló az Azure-ban. Az eredmény ebben a tárolóban tárolódik.
+      Opcionális URL-cím a [Service sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban tárolódik.
 :::row-end:::
 
 ### <a name="storage"></a>Storage
 
-A kötegelt átírás támogatja az [Azure Blob storage-ot](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) a hangolvasáshoz és az átiratok tárolásba írásához.
+A Batch átirata támogatja az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) -t, hogy hang-és írási átírásokat olvasson a tárolóba.
 
-## <a name="the-batch-transcription-result"></a>A kötegelt átírás eredménye
+## <a name="the-batch-transcription-result"></a>A Batch átírásának eredménye
 
-A mono bemeneti hang hoz létre egy átíráseredmény-fájlt. A sztereó bemeneti hang esetében két átírási eredményfájl jön létre. Mindegyiknek van ez a szerkezete:
+A Mono bemeneti hang esetében egy átírási eredményű fájl jön létre. Sztereó bemeneti hang esetén két transzkripciós eredmény-fájl jön létre. Mindegyik a következő struktúrával rendelkezik:
 
 ```json
 {
@@ -216,7 +216,7 @@ A mono bemeneti hang hoz létre egy átíráseredmény-fájlt. A sztereó bemene
 }
 ```
 
-Az eredmény a következő űrlapokat tartalmazza:
+Az eredmény az alábbi űrlapokat tartalmazza:
 
 :::row:::
    :::column span="1":::
@@ -230,37 +230,37 @@ Az eredmény a következő űrlapokat tartalmazza:
       `Lexical`
    :::column-end:::
    :::column span="2":::
-      A tényleges szavakat felismerték.
+      A tényleges szavak felismerhetők.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `ITN`
    :::column-end:::
    :::column span="2":::
-      A felismert szöveg inverz-szöveg-normalizált formája. Rövidítések ("doctor smith" a "dr smith"), telefonszámok, és egyéb átalakítások alkalmazzák.
+      Inverz szöveg – a felismert szöveg normalizált formája. A rövidítések ("doktor Smith" a "Dr Smith"), a telefonszámok és más átalakítások alkalmazása.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `MaskedITN`
    :::column-end:::
    :::column span="2":::
-      A káromkodással ellátott ITN-űrlap alkalmazása.
+      A ITN űrlap a káromkodás maszkolásával lett alkalmazva.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `Display`
    :::column-end:::
    :::column span="2":::
-      A felismert szöveg megjelenítési formája. A hozzáadott írásjelek és a nagybetűs írásjelek is benne vannak.
+      A felismert szöveg megjelenítési formája A rendszer a hozzáadott írásjeleket és a nagybetűket is tartalmazza.
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>Hangszóró elválasztása (diarizáció)
+## <a name="speaker-separation-diarization"></a>Beszélő elkülönítése (Diarization)
 
-Diarization az a folyamat, elválasztó hangszórók egy darab audio. Batch csővezetékünk támogatja a diarizációt, és képes felismerni két hangszórót mono csatornás felvételeken. A funkció sztereó felvételeken nem érhető el.
+A Diarization a hangszórók elválasztásának folyamata egy hanganyagban. A Batch-folyamat támogatja a diarization-t, és képes a Mono Channel-felvételek két hangszórójának felismerésére. A szolgáltatás nem érhető el a sztereó felvételeken.
 
-Minden átírás kimenet `SpeakerId`tartalmaz egy . Ha nem használ diarizációt, az a JSON kimenetben jelenik meg. `"SpeakerId": null` A diarizáció hozunk két hang, így `"1"` `"2"`a hangszórók azonosítása vagy .
+Minden átírási kimenet `SpeakerId`tartalmaz egy. Ha a diarization nincs használatban, a `"SpeakerId": null` JSON-kimenetben jelenik meg. A diarization két hangokat támogatunk, így a hangszórók a vagy `"1"` `"2"`a néven azonosíthatók.
 
-A diarization kéréséhez egyszerűen hozzá kell adnia a megfelelő paramétert a HTTP-kérelemhez az alábbiak szerint.
+A diarization igényléséhez egyszerűen hozzá kell adnia a megfelelő paramétert a HTTP-kérelemben az alább látható módon.
 
  ```json
 {
@@ -276,25 +276,25 @@ A diarization kéréséhez egyszerűen hozzá kell adnia a megfelelő paraméter
 }
 ```
 
-A word szintű időbélyegeket is "be kell kapcsolni", ahogy a fenti kérelemben szereplő paraméterek jelzik.
+A fenti kérelemben szereplő paraméterek esetében a Word-szintű időbélyegeket is be kell kapcsolni.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-A hangulatfunkció a hangban kifejezett érzést becsüli meg. A vélemény 0 és 1 közötti `Negative`értékkel van kifejezve a , `Neutral`és `Positive` a hangulat. A véleményelemzés például hívásközpont-forgatókönyvekben használható:
+A hangulati funkció a hangban kifejezett érzést becsüli. Az érzést 0 és 1 közötti érték fejezi ki a `Negative`, `Neutral`a és `Positive` a hangulat alapján. Az érzelmi elemzés például a Call Center-forgatókönyvekben használható:
 
-- Betekintést nyerhet az ügyfelek elégedettségébe
-- Betekintést nyerhet az ügynökök teljesítményéről (a hívásokat fogadó csapat)
-- Találja meg azt az időpontot, amikor egy hívás negatív irányba fordult
-- Mi ment jól, amikor fordult a negatív hívás egy pozitív irányba
-- Azonosítsa, hogy az ügyfelek mit szeretnek, és mit nem szeretnek egy termékben vagy szolgáltatásban
+- Az ügyfelek elégedettségének megismerése
+- Az ügynökök teljesítményének megismerése (a hívások fogadása)
+- Megkeresi a pontos időpontot, amikor a hívás negatív irányba vált
+- Mi volt a negatív hívás pozitív irányba való bekapcsolásakor
+- Azonosítsa az ügyfeleket, mint a terméket vagy szolgáltatást?
 
-A hangulat pontozott hangszegmensenként a lexikális űrlap alapján. Az adott hangszegmensen belüli teljes szöveg a hangulat kiszámítására szolgál. A teljes átírásra nem számít összesített véleményt. Jelenleg hangulatelemzés csak az angol nyelv.
+A hangulat egy hangszegmensen alapul, a lexikális elem alapján. Az adott hangszegmens teljes szövege az érzelmek kiszámítására szolgál. A teljes átíráshoz nincs kiszámítva összesített hangulat. A hangulat elemzése jelenleg csak az angol nyelven érhető el.
 
 > [!NOTE]
-> Ehelyett a Microsoft Text Analytics API használatát javasoljuk. Ez felajánl több haladó jellegét meghatározza túl érzelem analízis szeret kulcs kifejezés kinyerés, önműködő nyelv nyomozás, és több. Információkat és mintákat a [Text Analytics dokumentációjában](https://azure.microsoft.com/services/cognitive-services/text-analytics/)talál.
+> Javasoljuk Ehelyett a Microsoft Text Analytics API használatát. Fejlettebb funkciókat kínál, mint például a legfontosabb kifejezés kinyerése, az automatikus nyelvfelismerés és egyebek. A [text Analytics dokumentációjában](https://azure.microsoft.com/services/cognitive-services/text-analytics/)talál információkat és mintákat.
 >
 
-A JSON kimeneti minta az alábbihoz hasonlóan néz ki:
+A JSON-kimenet mintája az alábbihoz hasonlóan néz ki:
 
 ```json
 {
@@ -332,32 +332,32 @@ A JSON kimeneti minta az alábbihoz hasonlóan néz ki:
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az átírási szolgáltatás képes kezelni a nagy számú benyújtott átírások. Az átiratok állapotát lekérdezheti az `GET` [átírási módszeren](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)keresztül. A paraméter (néhány száz) megadásával `take` tartsa meg az ésszerű méretűre visszaadott információkat. Az eredmények lekérése után rendszeresen törölje az [átiratokat](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) a szolgáltatásból. Ez garantálja az átíráskezelési hívások gyors válaszait.
+Az átírási szolgáltatás nagy számú beküldött átírást képes kezelni. Az átírások `GET` állapotát az [átírási módszer](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)használatával kérdezheti le. A `take` paraméter (néhány száz) megadásával megtarthatja az adatok megfelelő méretre való visszaküldését. Az eredmények lekérése után a szolgáltatásból rendszeresen [törölje az átírásokat](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) . Ez garantálja az átírásos felügyeleti hívások gyors válaszait.
 
 ## <a name="sample-code"></a>Mintakód
 
-A teljes minták az `samples/batch` alkönyvtáron belüli [GitHub-mintatárban](https://aka.ms/csspeech/samples) érhetők el.
+A teljes minták a [GitHub minta adattárában](https://aka.ms/csspeech/samples) érhetők el az `samples/batch` alkönyvtáron belül.
 
-Testre kell szabnia a mintakódot az előfizetési adatokkal, a szolgáltatási régióval, az átírandó hangfájlra mutató SAS URI-val és a modellazonosítókkal abban az esetben, ha egyéni akusztikai vagy nyelvi modellt szeretne használni.
+Testre kell szabnia a mintakód előfizetési adatait, a szolgáltatási régiót, az olyan SAS URI-t, amely a hangfájlra mutat, és a modell-azonosítókat arra az esetre, ha egyéni akusztikai vagy nyelvi modellt szeretne használni.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezután lekérdezi az állapotinformációkat, és kinyomtatja az átírás előrehaladásának részleteit.
+A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezután lekérdezi az állapotadatok adatait, és kinyomtatja az átírási folyamat részleteit.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-Az előző hívásokról a [Swagger-dokumentumban](https://westus.cris.ai/swagger/ui/index)talál részletes információt. Az itt látható teljes minta az alkönyvtárban található [GitHub.For](https://aka.ms/csspeech/samples) the full sample shown here, go to GitHub in the `samples/batch` subdirectory.
+Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.cris.ai/swagger/ui/index). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) az `samples/batch` alkönyvtárban.
 
-Vegye figyelembe az aszinkron beállítás a kiküldetés audio és fogadása átírás állapotát. A létrehozott ügyfél egy .NET HTTP-ügyfél. Van egy `PostTranscriptions` módszer a hangfájl részleteinek `GetTranscriptions` elküldésére és az eredmények fogadására. `PostTranscriptions`visszaad egy `GetTranscriptions` leírót, és azt használja egy leíró létrehozásához az átírási állapot leolvasásához.
+Jegyezze fel a hang-és átírási állapot küldésének aszinkron beállítását. A létrehozott ügyfél egy .NET HTTP-ügyfél. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére, `GetTranscriptions` valamint az eredmények fogadására szolgáló metódusra. `PostTranscriptions`egy leírót ad vissza `GetTranscriptions` , és a használatával létrehoz egy leírót az átirat állapotának lekéréséhez.
 
-Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodelleket használja a fájl vagy fájlok átírásához. A modellek megadásához ugyanazt a módszert adhatja át, mint az akusztikai és nyelvi modell modellazonosítóit.
+Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodelleket használja a fájl vagy fájlok átírásához. A modellek megadásához ugyanazt a módszert adja át, mint az akusztikus és a nyelvi modell azonosítói.
 
 > [!NOTE]
-> A kiindulási átírások, nem kell deklarálni a kiindulási modellek azonosítóját. Ha csak egy nyelvi modellazonosítót ad meg (és nincs akusztikai modellazonosító), automatikusan kiválaszt egy megfelelő akusztikai modellt. Ha csak akusztikai modellazonosítót ad meg, a program automatikusan kiválasztegy megfelelő nyelvi modellt.
+> Alapértékek átírásakor nem kell deklarálnia az alapmodellek AZONOSÍTÓját. Ha csak a nyelvi modell AZONOSÍTÓját (és az akusztikus modell AZONOSÍTÓját) adta meg, a rendszer automatikusan kiválasztja a megfelelő akusztikus modellt. Ha csak az akusztikus modell AZONOSÍTÓját adta meg, a rendszer automatikusan kiválasztja a megfelelő nyelvi modellt.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-A minta a `samples/batch` [GitHub mintatárban](https://aka.ms/csspeech/samples)található könyvtárban található.
+A mintát a GitHub- `samples/batch` [minta adattárában](https://aka.ms/csspeech/samples)található könyvtárban találja.
 
 ## <a name="next-steps"></a>További lépések
 

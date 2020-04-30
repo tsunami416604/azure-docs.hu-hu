@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264387"
+ms.locfileid: "82229986"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | Bérlő | Igen | A Azure AD B2C bérlő neve |
 | politika | Igen | Az engedélyezési kód beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. Adja hozzá ezt a paramétert a lekérdezési karakterlánchoz, nem pedig a POST szövegtörzshöz. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
-| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazással (nyilvános ügyfél) kapcsolatos forgatókönyvek esetén az ügyfél titkos kulcsai nem tárolhatók biztonságosan, a folyamaton nem használhatók threfore. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
+| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazások (nyilvános ügyfelek) esetében az ügyfél titkos kulcsait nem lehet biztonságosan tárolni, ezért ez a folyamat nem használható. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
 | code | Igen | A felhasználói folyamat elején beszerzett engedélyezési kód. |
 | grant_type | Igen | A támogatás típusa, amelynek az engedélyezési kód `authorization_code` folyamatához kell tartoznia. |
 | redirect_uri | Igen | Annak `redirect_uri` az alkalmazásnak a paramétere, amelyen az engedélyezési kódot megkapta. |
@@ -218,7 +218,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | Bérlő | Igen | A Azure AD B2C bérlő neve |
 | politika | Igen | Az eredeti frissítési jogkivonat beszerzéséhez használt felhasználói folyamat. Ebben a kérelemben nem használhat másik felhasználói folyamatot. Adja hozzá ezt a paramétert a lekérdezési karakterlánchoz, nem pedig a POST szövegtörzshöz. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
-| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazás (nyilvános ügyfél) forgatókönyvei esetében az ügyfél titkos kulcsai nem tárolhatók biztonságosan, a threfore nem használhatók. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
+| client_secret | Igen, Web Apps | Az [Azure Portalban](https://portal.azure.com/)létrehozott alkalmazás titka. A folyamat az ügyfél titkos kulcsait használja a webalkalmazási forgatókönyvek esetében, ahol az ügyfél biztonságosan tárolhat egy ügyfél titkát. A natív alkalmazások (nyilvános ügyfelek) esetében az ügyfél titkos kulcsait nem lehet biztonságosan tárolni, ezért ez a hívás nem használható. Ha ügyfél-titkos kulcsot használ, rendszeres időközönként módosítsa azt. |
 | grant_type | Igen | A támogatás típusa, amelynek az engedélyezési kód ezen részéhez tartozó frissítési tokennek kell lennie. |
 | refresh_token | Igen | A folyamat második részében beszerzett eredeti frissítési jogkivonat. A `offline_access` frissítési jogkivonat fogadásához a hatókört mind az engedélyezési, mind a jogkivonat-kérelemben kell használni. |
 | redirect_uri | Nem | Annak `redirect_uri` az alkalmazásnak a paramétere, amelyen az engedélyezési kódot megkapta. |
@@ -262,7 +262,7 @@ A hibaüzenetek így néznek ki:
 
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérelem küldése
 
-Ha ki szeretné írni a felhasználót az alkalmazásból, nem elég az alkalmazás cookie-jait törölni, vagy más módon leállítani a munkamenetet a felhasználóval. Átirányítja a felhasználót, hogy Azure AD B2C a kijelentkezéshez. Ha ezt nem teszi meg, előfordulhat, hogy a felhasználó újra hitelesíteni tudja az alkalmazását anélkül, hogy újra be kellene írnia a hitelesítő adatait.
+Ha ki szeretné írni a felhasználót az alkalmazásból, nem elég az alkalmazás cookie-jait törölni, vagy más módon leállítani a munkamenetet a felhasználóval. Átirányítja a felhasználót, hogy Azure AD B2C a kijelentkezéshez. Ha ezt nem teszi meg, előfordulhat, hogy a felhasználó újra hitelesíteni tudja az alkalmazását anélkül, hogy újra be kellene írnia a hitelesítő adatait. További információ: Azure AD B2C- [munkamenet](session-overview.md).
 
 A felhasználó kijelentkezéséhez irányítsa át a felhasználót a `end_session` korábban ismertetett OpenID Connect metadata dokumentumban felsorolt végpontra:
 
@@ -283,6 +283,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 A kijelentkezés után a rendszer átirányítja a felhasználót a `post_logout_redirect_uri` paraméterben megadott URI-ra, az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` értéket ad meg, Azure ad B2C ellenőrzi, hogy az érték `post_logout_redirect_uri` megegyezik-e az alkalmazás által konfigurált átirányítási URI-k egyikével az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át.
 
-### <a name="external-identity-provider-sign-out"></a>Külső identitás-szolgáltató kijelentkezése
 
-A felhasználó a `end_session` végpontra történő átirányítása törli a felhasználó egyszeri bejelentkezési állapotát Azure ad B2C, de nem írja alá a felhasználót a közösségi identitásszolgáltató-munkamenetből. Ha a felhasználó ugyanazt a IDENTITÁSSZOLGÁLTATÓ választja egy későbbi bejelentkezés során, a rendszer a hitelesítő adatok megadása nélkül újra hitelesíti őket. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.

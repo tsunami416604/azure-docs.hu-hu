@@ -8,32 +8,36 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246031"
+ms.locfileid: "82229680"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyszeri bejelentkezés (SSO) munkamenet-kezelője Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a rendszergazda számára, hogy a felhasználó már hitelesített hitelesítése után vezérelje a felhasználókkal való interakciót. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait. Ez a cikk a Azure AD B2C egyszeri bejelentkezéses beállításainak konfigurálását ismerteti.
-
-Az egyszeri bejelentkezéses munkamenetek kezelése két részből áll. Az első a felhasználó interakcióit a Azure AD B2C és a másikkal együtt a külső felekkel, például a Facebooktal folytatott interakciókkal foglalkozik. Azure AD B2C nem bírál felül vagy mellőzi az SSO-munkameneteket, amelyeket külső felek is tárolhatnak. Ahelyett, hogy a külső fél felé irányuló, Azure AD B2C útvonalon áthaladó útvonalat "megjegyezték", a felhasználónak nem kell újrakérnie a felhasználót, hogy válassza ki a közösségi vagy vállalati identitás-szolgáltatót. A végső SSO-döntés a külső fél számára is fennáll.
+Az [egyszeri bejelentkezés (SSO) munkamenet](session-overview.md) -kezelője Azure Active Directory B2C (Azure ad B2C) lehetővé teszi a rendszergazda számára, hogy a felhasználó már hitelesített hitelesítése után vezérelje a felhasználókkal való interakciót. A rendszergazda például megadhatja, hogy megjelenjen-e az identitás-szolgáltatók kiválasztása, vagy hogy meg kell-e adni a fiók adatait. Ez a cikk a Azure AD B2C egyszeri bejelentkezéses beállításainak konfigurálását ismerteti.
 
 Az egyszeri bejelentkezéses munkamenet-kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi `UseTechnicalProfileForSessionManagement` le. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
 
 Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
-* NoopSSOSessionProvider
-* DefaultSSOSessionProvider
-* ExternalLoginSSOSessionProvider
-* SamlSSOSessionProvider
+|Munkamenet-szolgáltató  |Hatókör  |
+|---------|---------|
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  None       |       
+|[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C belső munkamenet-kezelő.      |       
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C és OAuth1, a OAuth2 vagy az OpenId Connect Identity Provider között.        |         |
+|[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Egy OAuth2 vagy OpenId Connect függő entitás alkalmazás és Azure AD B2C között.        |        
+|[SamlSSOSessionProvider](#samlssosessionprovider)     | Azure AD B2C és SAML-identitás szolgáltatója között. És egy SAML szolgáltató (függő entitás alkalmazás) és Azure AD B2C között.  |        
+
+
+
 
 Az `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` egyszeri bejelentkezéses felügyeleti osztályok egy technikai profil eleme alapján vannak megadva.
 
@@ -64,11 +68,11 @@ Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató hasz
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
+Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi és összevont fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="objectId" />
@@ -83,6 +87,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
   </OutputClaims>
 </TechnicalProfile>
 ```
+
 
 A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
 
@@ -101,11 +106,11 @@ A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító 
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő letiltására szolgál. Általában egy külső identitás-szolgáltatóhoz, például a Facebookhoz konfigurált technikai profil hivatkozik rá. A következő `SM-SocialLogin` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
+Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő letiltására és egy összevont identitás-szolgáltatótól való kijelentkezésre szolgál. Ez általában egy összevont identitás-szolgáltatóhoz konfigurált technikai profilban hivatkozik, például Facebook vagy Azure Active Directory. A következő `SM-SocialLogin` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
     <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
@@ -122,9 +127,20 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 
+### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
+
+Ez a szolgáltató a OAuth2 vagy OpenId Connect függő entitás és Azure AD B2C közötti Azure AD B2C munkamenetek kezelésére szolgál.
+
+```xml
+<TechnicalProfile Id="SM-jwt-issuer">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.OAuthSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, `RegisterServiceProviders` akkor `false`a értékének a következőnek kell lennie:. Az `SM-Saml-idp` [SAML technikai profil](saml-technical-profile.md)a következő technikai profilt használja.
+Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, `RegisterServiceProviders` akkor `false`a értékének a következőnek kell lennie:. A SAML `SM-Saml-idp` - [identitás szolgáltatójának műszaki profilja](saml-identity-provider-technical-profile.md)a következő technikai profilt használja.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -138,14 +154,15 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 
 A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a `RegisterServiceProviders` értékének a következőnek kell lennie:. `true` Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és `NameID` a Befejezés szükséges.
 
-Az `SM-Saml-idp` [SAML kiállítói műszaki profil](saml-issuer-technical-profile.md) a következő műszaki profilt használja
+Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-profile.md) a következő műszaki profilt használja
 
 ```XML
-<TechnicalProfile Id="SM-Saml-sp">
+<TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </TechnicalProfile>
 ```
+
 #### <a name="metadata"></a>Metaadatok
 
 | Attribútum | Kötelező | Leírás|
@@ -154,4 +171,6 @@ Az `SM-Saml-idp` [SAML kiállítói műszaki profil](saml-issuer-technical-profi
 | RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
 
 
+## <a name="next-steps"></a>További lépések
 
+- További információ a [Azure ad B2C-munkamenetről](session-overview.md).

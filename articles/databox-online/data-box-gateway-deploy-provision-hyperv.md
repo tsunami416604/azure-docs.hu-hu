@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "77365321"
+ms.locfileid: "82561628"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a Hyper-V-ben
 
@@ -21,7 +21,7 @@ ms.locfileid: "77365321"
 
 Az oktatóanyag azt mutatja be, hogyan lehet üzembe helyezni a Data Box Gatewayt egy gazdarendszeren, amely Windows Server 2016-on, Windows Server 2012 R2-n vagy Windows Server 2012-n futtat Hyper-V-t.
 
-A virtuális eszközök üzembe helyezéséhez és konfigurálásához rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe.
+A virtuális eszközök üzembe helyezéséhez és konfigurálásához rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

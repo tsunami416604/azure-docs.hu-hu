@@ -14,60 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3010ee7b996c9d3e96082edeb9447c960da321bd
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509775"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
 Az Azure Event Hubs-hoz két típusú naplót tekinthet meg:
 
-* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)**: ezek a naplók a feladatokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak.
+* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)**: ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
+
+    ![Event Hubs névtérhez tartozó műveletnapló](./media/event-hubs-diagnostic-logs/activity-log.png)
 * **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)**: a diagnosztikai naplókat úgy konfigurálhatja, hogy minden, a feladatokkal megvalósuló sokoldalú képet biztosítson. A diagnosztikai naplók a feladatok a tevékenységből való létrehozásakor felmerülő tevékenységek, beleértve a feladatok futása közben végrehajtott frissítéseket és tevékenységeket is.
 
-## <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
+    A következő szakasz bemutatja, hogyan engedélyezheti a diagnosztikai naplókat egy Event Hubs névtérhez.
 
+## <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez kövesse az alábbi lépéseket:
 
-1.  A [Azure Portal](https://portal.azure.com) **monitoring és felügyelet**alatt kattintson a **diagnosztikai naplók**elemre.
+1.  A [Azure Portal](https://portal.azure.com)navigáljon a Event Hubs-névtérhez. 
+2. A bal oldali ablaktábla **figyelés** területén válassza a **diagnosztikai beállítások** lehetőséget, majd válassza a **+ diagnosztikai beállítás hozzáadása**elemet. 
 
-    ![A panel navigációja a diagnosztikai naplókhoz](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Diagnosztikai beállítások lap – diagnosztikai beállítás hozzáadása](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. A **Kategória részletei** szakaszban válassza ki az engedélyezni kívánt **diagnosztikai naplók típusait** . Ezekről a kategóriákról a jelen cikk későbbi részében talál részleteket. 
+5. A **cél részletei** szakaszban állítsa be a kívánt archiválási célt (célhelyet); például egy Storage-fiók, egy Event hub vagy egy Log Analytics munkaterület.
 
-2.  Kattintson a figyelni kívánt erőforrásra.
+    ![Diagnosztikai beállítások hozzáadása lap](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  A diagnosztikai beállítások mentéséhez válassza az eszköztár **Mentés** elemét.
 
-3.  Kattintson a **Diagnosztika bekapcsolása** elemre.
+    Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
 
-    ![Diagnosztikai naplók bekapcsolása](./media/event-hubs-diagnostic-logs/image2.png)
-
-4.  A **status (állapot**) elemnél kattintson **a be**gombra.
-
-    ![Diagnosztikai naplók állapotának módosítása](./media/event-hubs-diagnostic-logs/image3.png)
-
-5.  Állítsa be a kívánt archiválási célt; például egy Storage-fiók, egy Event hub vagy egy Azure Monitor napló.
-
-6.  Mentse az új diagnosztikai beállításokat.
-
-Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
-
-A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md)című témakört.
+    A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md)című témakört.
 
 ## <a name="diagnostic-logs-categories"></a>Diagnosztikai naplók kategóriái
 
-Event Hubs két kategóriához rögzíti a diagnosztikai naplókat:
+Event Hubs a következő kategóriákhoz tartozó diagnosztikai naplókat rögzíti:
 
-* **Archiválási naplók**: Event Hubs archívumokhoz kapcsolódó naplók, pontosabban az archiválási hibákkal kapcsolatos naplók.
-* **Operatív naplók**: a Event Hubs műveletek során felmerülő információk, pontosabban a művelet típusa, beleértve az Event hub létrehozását, a felhasznált erőforrásokat és a művelet állapotát.
+- **Archiválási naplók**: Event Hubs archívumokhoz kapcsolódó naplók, pontosabban az archiválási hibákkal kapcsolatos naplók.
+- **Operatív naplók**: a Event Hubs műveletek során felmerülő információk, pontosabban a művelet típusa, beleértve az Event hub létrehozását, a felhasznált erőforrásokat és a művelet állapotát.
+- **Naplók automatikus méretezése**: a Event Hubs névterekben végzett automatikus skálázási műveletekkel kapcsolatos információk. 
+- **Kafka-koordinátor naplói** – a Event Hubs kapcsolódó Kafka-koordinátori műveletekkel kapcsolatos információk. 
+- **Kafka felhasználói naplók**: a Event Hubs kapcsolódó Kafka-felhasználói műveletekkel kapcsolatos információk. 
+- **Event Hubs Virtual Network (VNet) kapcsolati esemény**: Event Hubs virtuális hálózati kapcsolati eseményekkel kapcsolatos információk. 
+- **Ügyfél által felügyelt kulcs felhasználói naplói**: információ az ügyfél által felügyelt kulcssal kapcsolatos műveletekről. 
 
-## <a name="diagnostic-logs-schema"></a>Diagnosztikai naplók sémája
 
-Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely a következő szakaszokban ismertetett formátumot használja.
+    Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely a következő szakaszokban ismertetett formátumot használja.
 
-### <a name="archive-logs-schema"></a>Archiválási naplók sémája
+## <a name="archive-logs-schema"></a>Archiválási naplók sémája
 
 Az Archive log JSON-karakterláncok az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
@@ -105,7 +104,7 @@ A következő kód egy példa egy archivált log JSON-karakterláncra:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Operatív naplók sémája
+## <a name="operational-logs-schema"></a>Operatív naplók sémája
 
 Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
@@ -137,6 +136,72 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+## <a name="autoscale-logs-schema"></a>Naplók autoskálázása séma
+Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
+
+| Name (Név) | Leírás |
+| ---- | ----------- | 
+| trackingId | Belső azonosító, amely nyomkövetési célokra szolgál |
+| resourceId | Belső azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
+| message | Tájékoztató üzenet, amely részletesen ismerteti az automatikus feltöltés műveleteit. Az üzenet tartalmazza az adott névtér átviteli egységének előző és aktuális értékét, valamint azt, hogy mi indította el a TU-t. |
+
+## <a name="kafka-coordinator-logs-schema"></a>A Kafka-koordinátor naplói sémája
+A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tartalmazza:
+
+| Name (Név) | Leírás |
+| ---- | ----------- | 
+| Kérelemazonosító | a kérelem azonosítója, amely nyomkövetési célokra szolgál |
+| resourceId | Belső azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
+| operationName | A csoport koordinálásakor végzett művelet neve |
+| ügyfél-azonosító | Ügyfél-azonosító |
+| Namespacename tulajdonság | Névtér neve | 
+| subscriptionId | Azure-előfizetés azonosítója |
+| message | Tájékoztató üzenet, amely részletesen ismerteti a felhasználói csoport koordinálásakor végrehajtott műveleteket. |
+
+## <a name="kafka-user-error-logs-schema"></a>Kafka felhasználói hiba naplóinak sémája
+A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt elemeket tartalmazza:
+
+| Name (Név) | Leírás |
+| ---- | ----------- |
+| trackingId | nyomkövetési azonosító, amely nyomkövetési célokra szolgál. |
+| Namespacename tulajdonság | Névtér neve |
+| eventhub | Event Hubs neve |
+| partitionId | Partícióazonosító |
+| csoportazonosító | Csoportazonosító |
+| ClientID | Ügyfél-azonosító |
+| resourceId | Belső azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
+| message | Tájékoztató üzenet, amely a hibával kapcsolatos részleteket tartalmaz |
+
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs virtuális hálózati kapcsolati esemény sémája
+
+Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
+
+| Name (Név) | Leírás |
+| ---  | ----------- | 
+| subscriptionId | Azure-előfizetés azonosítója |
+| Namespacename tulajdonság | Névtér neve |
+| IP-cím | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
+| action | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek a következők: **AcceptConnection** és **RejectConnection**. |
+| reason | A művelet elvárt okát adja meg |
+| count | Az adott művelet előfordulásainak száma |
+| resourceId | A belső erőforrás azonosítója, amely tartalmazza az előfizetés-azonosítót és a névtér nevét. |
+
+## <a name="customer-managed-key-user-logs"></a>Ügyfél által felügyelt kulcsfontosságú felhasználói naplók
+Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő táblázatban felsorolt elemeket tartalmazza:
+
+| Name (Név) | Leírás |
+| ---- | ----------- | 
+| category | Az üzenet kategóriájának típusa A következő értékek egyike: **hiba** és **információ** |
+| resourceId | Belső erőforrás-azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
+| keyVault | A Key Vault erőforrás neve |
+| kulcs | A Key Vault kulcs neve. |
+| version | A Key Vault kulcs verziója |
+| művelet | A kérelmek kiszolgálására tett művelet neve |
+| code | Állapotkód |
+| message | Üzenet, amely egy hiba vagy tájékoztató üzenet részleteit tartalmazza |
+
+
 
 ## <a name="next-steps"></a>További lépések
 - [Bevezetés a Event Hubsba](event-hubs-what-is-event-hubs.md)

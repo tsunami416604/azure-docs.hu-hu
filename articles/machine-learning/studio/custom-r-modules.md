@@ -1,7 +1,7 @@
 ---
-title: Egyéni R-modulok definiálása
+title: Egyéni R-modulok létrehozása & üzembe helyezése
 titleSuffix: ML Studio (classic) - Azure
-description: Ez a témakör azt ismerteti, hogyan lehet egy egyéni R Studio (klasszikus) létrehozására és üzembe helyezésére. Elmagyarázza, hogy mik azok az egyéni R modulok, és milyen fájlokat használnak azok definiálására.
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egyéni R-modulokat ML Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,39 +10,34 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218170"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208431"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása az Azure Machine Learning Studio-hoz (klasszikus)
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni R studiót (klasszikus). Elmagyarázza, hogy milyen egyéni R-modulokat és milyen fájlokat használnak ezek definiálásához. Bemutatja, hogyan hozhat létre olyan fájlokat, amelyek meghatározzák a modult, és hogyan regisztrálhatják a modult az üzembe helyezéshez egy Machine Learning munkaterületen. Az egyéni modul definíciójában használt elemeket és attribútumokat a rendszer részletesebben ismerteti. A kiegészítő funkciók és a fájlok használata, valamint a több kimenet is megbeszélve. 
 
-Ez a témakör azt ismerteti, hogyan lehet egy egyéni R Studio (klasszikus) létrehozására és üzembe helyezésére. Elmagyarázza, hogy mik azok az egyéni R modulok, és milyen fájlokat használnak azok definiálására. Bemutatja, hogyan hozhat létre a modulokat definiáló fájlokat, és hogyan regisztrálhatja a modult a Machine Learning-munkaterületen történő üzembe helyezéshez. Az egyéni modul definíciójában használt elemek és attribútumok ezután részletesebben ismertetik. Hogyan kell használni a kiegészítő funkciók és fájlok és több kimenet is tárgyalt. 
+Az **Egyéni modul** egy felhasználó által definiált modul, amely feltölthető a munkaterületre, és Azure Machine learning Studio (klasszikus) kísérlet részeként is végrehajtható. Az **Egyéni r-modul** egy egyéni modul, amely egy felhasználó által definiált r-függvényt hajt végre. Az **R** olyan statisztikai számítástechnikai és grafikai programozási nyelv, amelyet a statisztikusok és az adatszakértők széles körben használnak az algoritmusok megvalósításához. Jelenleg az egyéni modulok csak az egyedüli nyelvet támogatják, a további nyelvek támogatása pedig későbbi kiadásokra van ütemezve.
 
+Az egyéni modulok az **első osztályú állapottal** rendelkeznek Azure Machine learning Studio (klasszikus) abban az értelemben, hogy ugyanúgy használhatók, mint bármely más modul. A közzétett kísérletekben vagy vizualizációkban található más modulokkal is végrehajthatók. Ön szabályozhatja a modul által megvalósított algoritmust, a használandó bemeneti és kimeneti portokat, a modellezési paramétereket és a különböző futásidejű viselkedéseket. Az egyéni modulokat tartalmazó kísérletek könnyen megoszthatók a Azure AI Gallery is.
 
+## <a name="files-in-a-custom-r-module"></a>Egyéni R-modul fájljai
+Egy egyéni R modult egy. zip fájl definiál, amely legalább két fájlt tartalmaz:
 
-## <a name="what-is-a-custom-r-module"></a>Mi az egyéni R modul?
-Az **egyéni modul** egy felhasználó által definiált modul, amely feltölthető a munkaterületre, és az Azure Machine Learning Studio (klasszikus) kísérlet részeként hajtható végre. Az **egyéni R modul** egy egyéni modul, amely egy felhasználó által definiált R függvényt hajt végre. **Az R** a statisztikai számítástechnika és a grafika programozási nyelve, amelyet a statisztikusok és az adatszakértők széles körben használnak algoritmusok végrehajtására. Jelenleg az R az egyetlen nyelv, amelyet az egyéni modulok támogatnak, de további nyelvek támogatása a későbbi kiadásokra van ütemezve.
+* A modul által elérhető R-függvényt megvalósító **forrásfájl**
+* Az egyéni modul felületét ismertető **XML-definíciós fájl**
 
-Az egyéni modulok **első osztályú állapottal** rendelkeznek az Azure Machine Learning Studio (klasszikus) abban az értelemben, hogy ugyanúgy használhatók, mint bármely más modul. Ezek végrehajthatók más modulokkal, amelyek szerepelnek a közzétett kísérletekben vagy a vizualizációkban. A modul által megvalósított algoritmus, a használandó bemeneti és kimeneti portok, a modellezési paraméterek és más különböző futásidejű viselkedések felett rendelkezik. Az egyéni modulokat tartalmazó kísérlet az Azure AI-galériában is közzétehető a könnyebb megosztás érdekében.
+További kiegészítő fájlok is szerepelhetnek a. zip fájlban, amely az egyéni modulból elérhető funkciókat biztosít. Ezt a beállítást az **XML-definíciós fájl** hivatkozási szakaszának **argumentumok** részében találja, a gyors üzembe helyezési példát követve.
 
-## <a name="files-in-a-custom-r-module"></a>Fájlok egyéni R modulban
-Az egyéni R-modult egy .zip fájl határozza meg, amely legalább két fájlt tartalmaz:
-
-* A modul által kitett R függvényt megvalósító **forrásfájl**
-* **Xml-definíciós fájl,** amely az egyéni modul felületét írja le
-
-További kiegészítő fájlok is szerepelhetnek a .zip fájlban, amely az egyéni modulból elérhető funkciókat biztosít. Ezt a beállítást az **XML-definíciós fájl Elemei** című referenciaszakasz **Argumentumok** részében tárgyalja a rövid útmutatópéldát követően.
-
-## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Rövid útmutató példa: egyéni R-modul definiálása, csomagolása és regisztrálása
-Ez a példa bemutatja, hogyan hozhat létre egy egyéni R-modul által igényelt fájlokat, csomagolja őket egy zip-fájlba, majd regisztrálja a modult a Machine Learning-munkaterületen. A példa zip csomag és a minta fájlokletölthető [Download CustomAddRows.zip fájlt](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Gyors üzembe helyezési példa: egyéni R-modul definiálása, becsomagolása és regisztrálása
+Ez a példa azt szemlélteti, hogyan lehet létrehozni egy egyéni R modul által igényelt fájlokat, csomagolja őket egy zip-fájlba, majd regisztrálja a modult a Machine Learning munkaterületen. A zip-csomag és a minta fájljai letölthetők a [CustomAddRows. zip fájl letöltésével](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>A forrásfájl
-Vegyünk példát egy **egyéni sorok hozzáadása** modul, amely módosítja a szabványos végrehajtását a Sorok **hozzáadása** modul használt összefűzése sorok (megfigyelések) két adatkészletek (adatkeretek). A szabványos **Sorok hozzáadása** modul hozzáfűzi a sorokat a második bemeneti `rbind` adatkészlet végén az első bemeneti adatkészlet segítségével az algoritmus. A testreszabott `CustomAddRows` függvény hasonlóképpen két adatkészletet fogad el, de egy logikai swap paramétert is elfogad további bemenetként. Ha a lapozó paraméter **értéke HAMIS,** akkor ugyanazt az adatkészletet adja vissza, mint a szabványos implementáció. Ha azonban a lapozó paraméter **IGAZ,** a függvény az első bemeneti adatkészlet sorait fűzi a második adatkészlet végéhez. Az **Egyéni Sorok hozzáadása** modul által elérhetőr `CustomAddRows` függvény megvalósítását tartalmazó CustomAddRows.R fájl a következő R-kóddal rendelkezik.
+Vegyünk például egy olyan **egyéni sorok hozzáadása** modult, amely módosítja a sorok **hozzáadása** modul standard implementációját, amely két adatkészletből (adatkeretből) való összefűzéshez használatos. A standard **Add sorok** modul hozzáfűzi a második bemeneti adatkészlet sorait az első bemeneti adatkészlet végéhez az `rbind` algoritmus használatával. A testreszabott `CustomAddRows` függvény Hasonlóképpen két adatkészletet fogad el, de egy logikai swap paramétert is elfogad további bemenetként. Ha a swap paraméter **hamis**értékre van beállítva, akkor ugyanazt az adatkészletet adja vissza, mint a normál implementáció. Ha azonban a swap paraméter értéke **true (igaz**), a függvény hozzáfűzi az első bemeneti adatkészlet sorait a második adatkészlet végéhez. Az `CustomAddRows` **egyéni sorok hozzáadása** modul által elérhető r-függvény megvalósítását tartalmazó CustomAddRows. R fájl a következő R-kóddal rendelkezik.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -57,7 +52,7 @@ Vegyünk példát egy **egyéni sorok hozzáadása** modul, amely módosítja a 
     } 
 
 ### <a name="the-xml-definition-file"></a>Az XML-definíciós fájl
-Az Azure `CustomAddRows` Machine Learning Studio (klasszikus) modulként való elérhetővé tenni ezt a funkciót egy XML-definíciós fájlt kell létrehozni, amely megadja, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen ki és viselkedjen. 
+Ahhoz, hogy `CustomAddRows` ez a függvény elérhető legyen a Azure Machine learning Studio (klasszikus) modulként, létre kell hoznia egy XML-definíciós fájlt, amely meghatározza, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen és viselkedjen. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,96 +87,96 @@ Az Azure `CustomAddRows` Machine Learning Studio (klasszikus) modulként való e
     </Module>
 
 
-Fontos megjegyezni, hogy az **XML-fájlbemeneti** és **Arg-elemeinek** **azonosító** attribútumainak értékének pontosan meg kell egyeznie a CustomAddRows.R fájlR-kódjának függvényparaméter-nevével: (*dataset1*, *dataset2*és a példában szereplő *felcserélés).* Hasonlóképpen a **Language** elem **entryPoint** attribútumának értékének pontosan meg kell egyeznie az R parancsfájl ban lévő függvény nevével: ( A példában*található CustomAddRows).* 
+Fontos megjegyezni, hogy az XML-fájlban szereplő **bemeneti** és **ARG** elemek **azonosító** attribútumainak értékének meg kell egyeznie a CustomAddRows. r fájlban található r-kód Function paraméterének nevével pontosan: (*DataSet1 elemet*, *dataset2*és *swap* a példában). Hasonlóképpen, a **nyelvi** elem **BelépésiPont** attribútumának értékének meg kell egyeznie a függvény nevével az R-szkriptben pontosan: (a példában a*CustomAddRows* ). 
 
-Ezzel szemben a **Kimenetelem** **id** attribútuma nem felel meg az R parancsfájl egyetlen változójának sem. Ha egynél több kimenetre van szükség, egyszerűen adja vissza az R függvény egy listáját, amelynek eredménye *ugyanabban a sorrendben* van, mint a **Kimenetek** elemek deklarálva az XML-fájlban.
+Ezzel szemben a **kimeneti** elem **ID** attribútuma nem felel meg az R-szkriptben szereplő változóknak. Ha egynél több kimenetre van szükség, egyszerűen visszaállíthat egy listát az R-függvényből, amelynek *a sorrendje megegyezik* a **kimeneti** elemek XML-fájlban való deklarált eredményeivel.
 
-### <a name="package-and-register-the-module"></a>A modul csomagolása és regisztrálása
-Mentse ezt a két fájlt *CustomAddRows.r* és *CustomAddRows.xml* néven, majd zip-elje a két fájlt egy *CustomAddRows.zip* fájlba.
+### <a name="package-and-register-the-module"></a>A modul becsomagolása és regisztrálása
+Mentse ezt a két fájlt a *CustomAddRows. R* és a *CustomAddRows. XML* fájlként, majd a két fájlt egy *CustomAddRows. zip* fájlba.
 
-Ha regisztrálni szeretné őket a Machine Learning-munkaterületen, nyissa meg a munkaterületet az Azure Machine Learning Studio (klasszikus) alkalmazásban, kattintson az alján a **+ÚJ** gombra, és válassza a **MODULE -> FROM ZIP PACKAGE** lehetőséget az új egyéni sorok **hozzáadása** modul feltöltéséhez.
+Ha regisztrálni szeretné őket a Machine Learning munkaterületen, lépjen a munkaterületre Azure Machine Learning Studio (klasszikus) területen, kattintson az **+ új** gombra az alján, és válassza a **modul-> a zip-csomagból** lehetőséget az új **egyéni sorok hozzáadása** modul feltöltéséhez.
 
 ![Zip feltöltése](./media/custom-r-modules/upload-from-zip-package.png)
 
-Az **egyéni sorok hozzáadása** modul most már készen áll a Machine Learning-kísérletek általi elérésére.
+Az **egyéni sorok hozzáadása** modul most már készen áll a Machine learning kísérletek elérésére.
 
 ## <a name="elements-in-the-xml-definition-file"></a>Az XML-definíciós fájl elemei
-### <a name="module-elements"></a>Modulelemek
-A **modul** elem egyéni modul definiálására szolgál az XML-fájlban. Több modul definiálható egy XML-fájlban több **modulelem** használatával. A munkaterület minden moduljának egyedi névvel kell rendelkeznie. Regisztráljon egy olyan egyéni modult, amelynek neve megegyezik egy meglévő egyéni modul nevével, és lecseréli a meglévő modult az újra. Az egyéni modulok azonban ugyanazzal a névvel regisztrálhatók, mint egy meglévő Azure Machine Learning Studio (klasszikus) modul. Ha igen, akkor a modulpaletta **Egyéni** kategóriájában jelennek meg.
+### <a name="module-elements"></a>Modul elemei
+A **Module** elem egy egyéni modul definiálására használható az XML-fájlban. Több modul is definiálható egy XML-fájlban több **modul** elem használatával. A munkaterület minden moduljának egyedi névvel kell rendelkeznie. Regisztráljon egy egyéni modult ugyanazzal a névvel, mint egy meglévő egyéni modult, és lecseréli a meglévő modult az újat. Az egyéni modulok azonban a meglévő Azure Machine Learning Studio (klasszikus) modul nevével megegyező névvel regisztrálhatók. Ha igen, a modul paletta **Egyéni** kategóriájában jelennek meg.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
         <Description>Appends one dataset to another...</Description>/> 
 
 
-A **Modul** elemen belül két további választható elemet adhat meg:
+A **modul** elemen belül két további választható elemet is megadhat:
 
-* a modulba ágyazott **tulajdonoselem**  
-* egy **Leírás** elem, amely olyan szöveget tartalmaz, amely a modul gyors súgójában jelenik meg, és amikor a Machine Learning felhasználói felületén a modul fölé viszi az egérmutatót.
+* a modulba ágyazott **tulajdonosi** elem  
+* a **modul** gyors súgójában megjelenő szöveg, amely a Machine learning felhasználói felületén található modul fölé mutat.
 
-A modulelemek karakterkorlátaira vonatkozó szabályok:
+A karakterek korlátozásai a modul elemeiben:
 
-* A **Modul** elemben lévő **névattribútum** értéke nem haladhatja meg a 64 karakter hosszúságot. 
-* A **Leírás** elem tartalma nem haladhatja meg a 128 karakter hosszúságot.
-* A **Tulajdonos** elem tartalma nem haladhatja meg a 32 karakter hosszúságot.
+* A **Module** elem **Name** attribútumának értéke nem lehet hosszabb 64 karakternél. 
+* A **Leírás** elem tartalma nem lehet hosszabb 128 karakternél.
+* A **tulajdonos** elem tartalma nem lehet hosszabb 32 karakternél.
 
-A modul eredményei lehetnek determinisztikusak vagy nem determinisztikusak.** Alapértelmezés szerint minden modul determinisztikusnak minősül. Ez azt, hogy a bemeneti paraméterek és adatok változatlan készletét tekintve a modulnak ugyanazokat az eredményeket kell visszaadnia eacRAND vagy a függvény futtatási ideje. Ebben a viselkedésben az Azure Machine Learning Studio (klasszikus) csak akkor fut le determinisztikusként megjelölt modulokat, ha egy paraméter vagy a bemeneti adatok megváltoztak. A gyorsítótárazott eredmények visszaadása a kísérletek sokkal gyorsabb végrehajtását is biztosítja.
+A modulok eredményei lehetnek determinisztikus vagy determinált. * * alapértelmezés szerint az összes modul determinisztikus tekintendő. Ez azt eredményezi, hogy a bemeneti paraméterek és adatok változatlanul eltérő készletét kell visszaadnia, és a modulnak ugyanazt az eredményt kell visszaadnia, vagy eacRAND. Ennek a viselkedésnek a miatt a Azure Machine Learning Studio (klasszikus) csak determinisztikus jelölésű modulokat futtat, ha a paraméter vagy a bemeneti adatok módosultak. A gyorsítótárazott eredmények visszaadása a kísérletek sokkal gyorsabb végrehajtását is lehetővé teszi.
 
-Vannak olyan függvények, amelyek nem determinisztikusak, például a RAND vagy az aktuális dátumot vagy időt visszaadó függvény. Ha a modul nem determinisztikus függvényt használ, megadhatja, hogy a modul nem determinisztikus, ha a választható **isDeterministic** attribútumot **FALSE-ra**állítja be. Ez biztosítja, hogy a modul a kísérlet futtatásakor újrafusson, még akkor is, ha a modul bemenete és paraméterei nem változtak. 
+Vannak olyan függvények, amelyek determinált, például a RAND vagy egy függvény, amely az aktuális dátumot vagy időpontot adja vissza. Ha a modul determinált függvényt használ, megadhatja, hogy a modul nem determinisztikus, ha a választható **isDeterministic** attribútumot **hamis**értékre állítja. Ez azt biztosítja, hogy a modul a kísérlet futtatásakor újra fut, még akkor is, ha a modul bemenete és paraméterei nem változtak. 
 
-### <a name="language-definition"></a>Nyelv definíciója
-Az XML-definíciós fájl **Nyelvi** eleme az egyéni modul nyelvének megadására szolgál. Jelenleg az R az egyetlen támogatott nyelv. A **sourceFile** attribútum értékének annak az R-fájlnak a nevének kell lennie, amely a modul futtatásakor hívandó függvényt tartalmazza. Ennek a fájlnak a zip csomag részét kell, hogy legyen. A **entryPoint** attribútum értéke a hívott függvény neve, és meg kell egyeznie a forrásfájlban definiált érvényes függvénysel.
+### <a name="language-definition"></a>Nyelvi definíció
+Az XML-definíciós fájl **nyelvi** eleme az egyéni modul nyelvének megadására szolgál. Jelenleg az R az egyetlen támogatott nyelv. A **sourceFile** attribútum értékének meg kell egyeznie azon R-fájl nevével, amely a modul futásakor hívni kívánt függvényt tartalmazza. Ennek a fájlnak a zip-csomag részeként kell szerepelnie. A **BelépésiPont** attribútum értéke a hívott függvény neve, és meg kell egyeznie a forrásfájl által definiált érvényes függvénnyel.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
 ### <a name="ports"></a>Portok
-Az egyéni modul bemeneti és kimeneti portjai az XML-definíciós fájl **Portok** szakaszának gyermekelemeiben vannak megadva. Ezeknek az elemeknek a sorrendje határozza meg a felhasználók által tapasztalt elrendezést (UX). Az XML-fájl **Port elemében** felsorolt első **gyermekbemenet** vagy **-kimenet** lesz a Gépi tanulási felhasználói felület bal szélső bemeneti portja.
-Minden bemeneti és kimeneti portrendelkezhet egy választható **Description** gyermekelemmel, amely megadja azt a szöveget, amely akkor jelenik meg, amikor az egérmutatót a Machine Learning felhasználói felületének portja fölé viszi.
+Az egyéni modul bemeneti és kimeneti portjai az XML-definíciós fájl **portok** szakaszának alárendelt elemeiben vannak megadva. Ezeknek az elemeknek a sorrendje határozza meg a felhasználók által tapasztalt elrendezést (UX). Az XML-fájl **portok** elemében felsorolt első gyermek **bemenet** vagy **kimenet** a Machine learning UX bal szélső bemeneti portja lesz.
+Előfordulhat, hogy az egyes bemeneti és kimeneti portok opcionális **leírási** alárendelt elemmel rendelkeznek, amely megadja az egérmutatónak a Machine learning felhasználói felületen lévő port fölé helyezésekor megjelenő szöveget.
 
-**Portszabályok**:
+**Portok szabályai**:
 
-* A **bemeneti és kimeneti portok** maximális száma egyenként 8.
+* A **bemeneti és a kimeneti portok** maximális száma 8.
 
 ### <a name="input-elements"></a>Bemeneti elemek
-A bemeneti portok lehetővé teszik az adatok átadást az R függvénynek és a munkaterületnek. A bemeneti portok által támogatott **adattípusok** a következők: 
+A bemeneti portok lehetővé teszik, hogy adatokat továbbítson az R-függvénynek és a munkaterületnek. A bemeneti portok által támogatott **adattípusok** a következők: 
 
-**DataTable:** Ez a típus adat.frame-ként kerül át az R függvénybe. Valójában a Machine Learning által támogatott és a **DataTable-vel** kompatibilis bármely típus (például CSV-fájlok vagy ARFF-fájlok) automatikusan adat.frame-é alakul át. 
+**DataTable:** Ezt a típust a rendszer adat. keretként továbbítja az R-függvénynek. Valójában minden olyan típust (például CSV-fájlt vagy ARFF-fájlt), amelyet a Machine Learning támogat, és amelyek kompatibilisek a **DataTable adattáblával** , automatikusan átváltanak egy adatkeretbe. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
            </Input>
 
-Az egyes **DataTable** beviteli portokhoz társított **id** attribútumnak egyedi értékkel kell rendelkeznie, és ennek az értéknek meg kell egyeznie az R függvényben a megfelelő elnevezett paraméterrel.
-A kísérletben bemenetként át nem adott nem kötelező **DataTable** portok értéke az R függvénynek átadott NULL értékkel **rendelkezik,** és a választható zip-portokat a rendszer figyelmen kívül hagyja, ha a bemenet nincs csatlakoztatva. Az **isOptional** attribútum nem kötelező mind a **DataTable,** mind a **Zip** típusok esetében, és alapértelmezés szerint *hamis.*
+Az egyes **DataTable** bemeneti portokhoz társított **ID** attribútumnak egyedi értékkel kell rendelkeznie, és ennek az értéknek meg kell egyeznie az R-függvény megfelelő megnevezett paraméterével.
+Azok a nem kötelező **DataTable** portok, amelyeket nem a kísérlet bemenetként továbbítanak, az R-függvénynek **Null** értéket adtak át, és a választható zip-portok figyelmen kívül lesznek hagyva, ha a bemenet nincs csatlakoztatva. A **isOptional** attribútum nem kötelező a **DataTable** és a **zip** típushoz, és alapértelmezés szerint *hamis* .
 
-**Irányítószám:** Az egyéni modulok bemenetként elfogadnak egy zip fájlt. Ez a bemenet a funkció R munkakönyvtárába van csomagolva
+**Zip:** Az egyéni modulok bemenetként is elfogadhatják a ZIP-fájlokat. Ezt a bemenetet a függvény R Working könyvtárába csomagoljuk
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-Az egyéni R-modulok esetében a Zip-port azonosítójának nem kell megfelelnie az R függvény egyetlen paraméterének sem. Ennek az az oka, hogy a zip-fájl automatikusan kinyeri az R munkakönyvtárba.
+Az egyéni R-modulok esetében a zip-portok AZONOSÍTÓjának nem kell egyeznie az R függvény egyetlen paraméterével sem. Ennek az az oka, hogy a rendszer automatikusan Kinyeri a zip-fájlt az R Working könyvtárba.
 
-**Beviteli szabályok:**
+**Bemeneti szabályok:**
 
-* **A bemeneti** elem **id** attribútumának értéke érvényes R-változónév.
-* A **bemeneti** elem **id** attribútumának értéke nem lehet hosszabb 64 karakternél.
-* A **Bemeneti** elem **névattribútumának** értéke nem lehet hosszabb 64 karakternél.
+* A **bemeneti** elem **ID** attribútumának értékének érvényes R-változó névnek kell lennie.
+* A **bemeneti** elem **ID** attribútumának értéke nem lehet hosszabb 64 karakternél.
+* A **bemeneti** elem **Name** attribútumának értéke nem lehet hosszabb 64 karakternél.
 * A **Leírás** elem tartalma nem lehet hosszabb 128 karakternél.
-* **A Bemeneti** elem **típusattribútumának** értéke *Zip* vagy *DataTable*legyen.
-* A **bemeneti** elem **kiválasztható** attribútumának értéke nem kötelező (és alapértelmezés szerint *hamis,* ha nincs megadva); de ha meg van adva, akkor *igaznak* vagy *hamisnak*kell lennie.
+* A **bemeneti** elem **Type** attribútumának értéke csak *zip* vagy *DataTable*lehet.
+* A **bemeneti** elem **isOptional** attribútumának értéke nem kötelező (és alapértelmezés szerint *hamis* , ha nincs megadva); Ha azonban meg van adva, akkor *igaz* vagy *hamis értéknek*kell lennie.
 
 ### <a name="output-elements"></a>Kimeneti elemek
-**Szabványos kimeneti portok:** A kimeneti portok az R függvény ből származó visszatérési értékekre vannak leképezve, amelyeket a ztánkövetkező modulok használhatnak. *DataTable* az egyetlen szabványos kimeneti port típus támogatott jelenleg. (A *tanulók* és *az átalakítások* támogatása hamarosan elérhető.) A *DataTable* kimenet a következőképpen határozható meg:
+**Szabványos kimeneti portok:** A kimeneti portok az R-függvény visszatérési értékeire vannak leképezve, amelyet aztán a későbbi modulok használhatnak. A *DataTable* az egyetlen, jelenleg támogatott szabványos kimeneti port. (A *tanulók* és az *átalakítások* támogatása hamarosan megtörténik.) A *DataTable* kimenet a következőképpen van definiálva:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
     </Output>
 
-Az egyéni R-modulok kimenetei esetén az **id** attribútum értékének nem kell megfelelnie az R-parancsfájlban lévő kontrájainak, de egyedinek kell lennie. Egyetlen modulkimenet esetén az R függvény ből származó visszatérési értéknek *adatértéknek kell lennie.frame*. A támogatott adattípus több objektumának kimenetéhez meg kell adni a megfelelő kimeneti portokat az XML-definíciós fájlban, és az objektumokat listának kell adni. A kimeneti objektumok balról jobbra vannak hozzárendelve a kimeneti portokhoz, tükrözve azt a sorrendet, amelyben az objektumok a visszaadott listában vannak.
+Az egyéni R-modulok kimenetei esetében az **ID** attribútum értékének nem kell megfelelnie az R-parancsfájlban található semmit, de egyedinek kell lennie. Egyetlen modul kimenete esetén az R függvény visszatérési értékének egy *adat. frame típusúnak*kell lennie. A támogatott adattípusok egynél több objektumának exportálásához meg kell adni a megfelelő kimeneti portokat az XML-definíciós fájlban, és az objektumokat listaként kell megadni. A kimeneti objektumok a bal és jobb oldali kimeneti portokhoz vannak rendelve, ami azt jelzi, hogy az objektumok milyen sorrendben kerülnek a visszaadott listára.
 
-Ha például módosítani szeretné az **Egyéni sorok hozzáadása** modult az eredeti két adatkészlet, az *adatkészlet1* és az *adatkészlet2*kimenetére, az új illesztett adatkészleten, *adatkészleten*, (sorrendben, balról jobbra, mint: *adatkészlet*, *adatkészlet1*, *adatkészlet2*), majd a CustomAddRows.xml fájl kimeneti portjait a következőképpen határozza meg:
+Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, hogy az eredeti két adatkészletet, a *DataSet1 elemet* és a *dataset2*az új csatlakoztatott adatkészlet, az *adatkészlet*(egy rendelésben, balról jobbra, mint: *adatkészlet*, *DataSet1 elemet*, *dataset2*) alapján adja meg, akkor a következő módon határozza meg a kimeneti portokat a CustomAddRows. xml fájlban:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -202,7 +197,7 @@ Ha például módosítani szeretné az **Egyéni sorok hozzáadása** modult az 
     </Ports> 
 
 
-És adja vissza a lista objektumainak listáját a megfelelő sorrendben a "CustomAddRows.R" szerint:
+A listában szereplő objektumok listájának visszaadása a "CustomAddRows. R" megfelelő sorrendjében:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -211,7 +206,7 @@ Ha például módosítani szeretné az **Egyéni sorok hozzáadása** modult az 
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Vizualizációkimenet:** Megadhat egy *Visualization*típusú kimeneti portot is, amely az R grafikus eszköz és a konzol kimenetének kimenetét jeleníti meg. Ez a port nem része az R függvény kimenetének, és nem zavarja a többi kimeneti porttípus sorrendjét. Ha vizualizációs portot szeretne hozzáadni az egyéni modulokhoz, adjon hozzá egy **Kimeneti** elemet, amelynek **típusattribútumához** *képi megjelenítés* érték van:
+**Vizualizáció kimenete:** Megadhat egy *vizualizáció*típusú kimeneti portot is, amely megjeleníti az R Graphics eszköz és a konzol kimenetének kimenetét. Ez a port nem része az R-függvény kimenetének, és nem zavarja a többi kimeneti port típusának sorrendjét. Ha vizualizációs portot szeretne hozzáadni az egyéni modulokhoz, adjon hozzá egy **kimeneti** elemet a **Type** attribútumhoz a *vizualizáció* értékével:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -219,20 +214,20 @@ Ha például módosítani szeretné az **Egyéni sorok hozzáadása** modult az 
 
 **Kimeneti szabályok:**
 
-* **A Kimeneti** elem **id** attribútumának értéke érvényes R változónév.
-* A **Kimeneti** elem **id** attribútumának értéke nem lehet hosszabb 32 karakternél.
-* A **Kimeneti** elem **névattribútumának** értéke nem lehet hosszabb 64 karakternél.
-* A **Kimenetelem** **típusattribútumának** értéke *képi megjelenítés*.
+* A **kimeneti** elem **ID** attribútumának értékének érvényes R-változó névnek kell lennie.
+* A **kimeneti** elem **ID** attribútumának értéke nem lehet hosszabb 32 karakternél.
+* A **kimeneti** elem **Name** attribútumának értéke nem lehet hosszabb 64 karakternél.
+* A **kimeneti** elem **Type** attribútumának értékének a *vizualizációnak*kell lennie.
 
 ### <a name="arguments"></a>Argumentumok
-Az Argumentumok elemben definiált modulparamétereken keresztül további adatok adhatók át az R **függvénynek.** Ezek a paraméterek a machine learning felhasználói felületének jobb szélső tulajdonsága ablaktáblájában jelennek meg, ha a modul ki van jelölve. Az argumentumok bármelyik támogatott típus lehetnek, vagy szükség esetén egyéni felsorolást is létrehozhat. A **Portok** elemekhez hasonlóan az **Argumentumok** elemek hez hasonlóan lehet egy választható **Leírás** elem, amely megadja azt a szöveget, amely akkor jelenik meg, amikor az egérmutatót a paraméter neve fölé viszi.
-A modul választható tulajdonságai, például a defaultValue, a minValue és a maxValue bármely argumentumhoz hozzáadható tulajdonságok, mint tulajdonságok elem **attribútumai.** **A Tulajdonságok** elem érvényes tulajdonságai az argumentum típusától függenek, és a következő szakaszban a támogatott argumentumtípusokkal vannak leírva. Az isOptional tulajdonsággal rendelkező **argumentumok** **nem** igénylik, hogy a felhasználó értéket adjon meg. Ha az argumentum nem ad meg értéket, akkor az argumentum nem kerül átadásra a belépési pont függvénynek. A belépési pont függvény nem kötelező argumentumait a függvénynek explicit módon kell kezelnie, például null alapértelmezett értéket kell hozzárendelnie a belépési pont függvény definíciójában. A választható argumentum csak akkor kényszeríti ki a többi argumentummegkötést, azaz a min vagy a max.
-A bemenetekhez és kimenetekhez ugyanúgy fontos, hogy minden paraméterhez egyedi azonosítóértékek tartoznak. A rövid útmutató példánkban a kapcsolódó id/paraméter *csere*volt.
+További adatok adhatók át az R függvénynek az **argumentumok** elemben definiált modul-paramétereken keresztül. Ezek a paraméterek a Machine Learning felhasználói felület jobb szélső tulajdonságok paneljén jelennek meg, ha a modul ki van választva. Az argumentumok bármelyike támogatott típus lehet, vagy szükség esetén egyéni enumerálást is létrehozhat. A **portok** elemeihez hasonlóan az **argumentumok** elemei opcionális **leírási** elemmel is rendelkezhetnek, amely meghatározza azt a szöveget, amely akkor jelenik meg, amikor az egérmutatót a paraméter neve fölé viszi.
+Egy modul nem kötelező tulajdonságai, például a defaultValue, a minValue és a maxValue bármely argumentumként hozzáadhatók attribútumként egy **tulajdonság** elemhez. A **Properties** elem érvényes tulajdonságai az argumentum típusától függenek, és a következő szakaszban szereplő támogatott argumentum-típusokkal vannak leírva. Az **"igaz"** értékre beállított **isOptional** tulajdonsággal rendelkező argumentumok nem igénylik, hogy a felhasználó értéket adjon meg. Ha nincs megadva érték az argumentumhoz, akkor a rendszer nem adja át az argumentumot a belépési pont függvénynek. A beléptetési pont függvény argumentumait explicit módon kell kezelni a függvénynek, például a NULL értékhez rendelt alapértelmezett értéket a belépési pont függvény definíciójában. Ha a felhasználó értéket ad meg, a választható argumentumok csak a többi argumentum korlátozását (például min vagy max) fogják érvényesíteni.
+A bemenetekhez és kimenetekhez hasonlóan elengedhetetlen, hogy mindegyik paraméterhez egyedi azonosító értékek legyenek társítva. A gyors üzembe helyezési példában a kapcsolódó azonosító/paraméter *felcserélve*.
 
-### <a name="arg-element"></a>Arg elem
-A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** gyermekelemével van definiálva. A **Portok** szakasz gyermekelemeihez ugyanúgy, az **Argumentumok** szakasz paramétereinek sorrendje határozza meg a felhasználói felületen előforduló elrendezést. A paraméterek felülről lefelé jelennek meg a felhasználói felületen ugyanabban a sorrendben, ahogyan az XML-fájlban definiálják őket. A gépi tanulás által támogatott paraméterek típusai itt találhatók. 
+### <a name="arg-element"></a>ARG-elem
+A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **ARG** gyermek eleme alapján definiáljuk. A **portok** szakasz alárendelt elemeihez hasonlóan az **argumentumok** szakaszban szereplő paraméterek sorrendje határozza meg az UX-ben észlelt elrendezést. A paraméterek a felhasználói felületen felülről lefelé jelennek meg, ugyanabban a sorrendben, ahogyan az XML-fájlban vannak meghatározva. A paraméterek Machine Learning által támogatott típusok itt láthatók. 
 
-**int** – egész (32 bites) típusparaméter.
+**int** – egész szám (32 bites) típusú paraméter.
 
     <Arg id="intValue1" name="Int Param" type="int">
         <Properties min="0" max="100" default="0" />
@@ -240,9 +235,9 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
     </Arg>
 
 
-* *Választható tulajdonságok:* **min**, **max**, **alapértelmezett** és **Választható**
+* *Választható tulajdonságok*: **min**., **Max**., **alapértelmezett** és **isOptional**
 
-**dupla** – dupla típusú paraméter.
+**Double** – egy Double Type paraméter.
 
     <Arg id="doubleValue1" name="Double Param" type="double">
         <Properties min="0.000" max="0.999" default="0.3" />
@@ -250,9 +245,9 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
     </Arg>
 
 
-* *Választható tulajdonságok:* **min**, **max**, **alapértelmezett** és **Választható**
+* *Választható tulajdonságok*: **min**., **Max**., **alapértelmezett** és **isOptional**
 
-**bool** – egy logikai paraméter, amelyet egy ux-i jelölőnégyzet jelöl.
+**bool** – egy logikai paraméter, amelyet az UX egy jelölőnégyzete jelöl.
 
     <Arg id="boolValue1" name="Boolean Param" type="bool">
         <Properties default="true" />
@@ -261,18 +256,18 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
 
 
 
-* *Választható tulajdonságok*: **alapértelmezett** - hamis, ha nincs beállítva
+* *Választható tulajdonságok*: **default** -false, ha nincs beállítva
 
-**string**: egy szabványos karakterlánc
+**String**: standard sztring
 
     <Arg id="stringValue1" name="My string Param" type="string">
         <Properties isOptional="true" />
         <Description>String Parameter 1</Description>
     </Arg>    
 
-* *Választható tulajdonságok:* **alapértelmezett** **és választható**
+* Nem *kötelező tulajdonságok*: **alapértelmezett** és **isOptional**
 
-**ColumnPicker**: oszlopválasztó paraméter. Ez a típus oszlopválasztóként jelenik meg a felhasználói környezetben. A **Tulajdonság** elem itt annak a portnak az azonosítóját adja meg, amelyből az oszlopok ki vannak jelölve, ahol a célport típusának *DataTable*típusúnak kell lennie. Az oszlopkijelölés eredménye a kijelölt oszlopneveket tartalmazó karakterláncok listájaként kerül átaz R függvénybe. 
+**ColumnPicker**: oszlop kiválasztási paramétere. Ez a típus az UX-ben oszlop-kiválasztó jelenik meg. Itt **Property** megadhatja annak a portnak az azonosítóját, amelyből az oszlopok ki vannak választva, ahol a célként megadott portnak *DataTable*típusúnak kell lennie. Az oszlop kijelölésének eredményét átadja az R függvénynek a kijelölt oszlopnevek nevét tartalmazó sztringek listájaként. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -280,10 +275,10 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
         </Arg>
 
 
-* *Kötelező tulajdonságok*: **portId** - egyezik a DataTable típusú bemeneti elem *azonosítójával.*
-* *Választható tulajdonságok:*
+* *Szükséges tulajdonságok*: **PortId** – a *DataTable*típusú bemeneti elem azonosítójának felel meg.
+* Nem *kötelező tulajdonságok*:
   
-  * **allowedTypes** - Szűri azoszlopokat, amelyekből kiválaszthat. Az érvényes értékek a következők: 
+  * **allowedTypes** – a kiválasztható oszlopok típusát szűri. Az érvényes értékek a következők: 
     
     * Numerikus
     * Logikai
@@ -293,31 +288,31 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
     * Szolgáltatás
     * Pontszám
     * Összes
-  * **alapértelmezett** – Az oszlopválasztó érvényes alapértelmezett beállításai a következők: 
+  * **alapértelmezett** – az oszlop választójának alapértelmezett értékei a következők: 
     
     * None
-    * Numerikus funkció
-    * Numerikus címke
-    * Numerikus pontszám
-    * NumériA Összes
-    * Logikai funkció
-    * Logikai címke
-    * Logikai pontszám
-    * Logikai összes
-    * Kategorikus funkció
-    * Kategorikus Címke
-    * Kategorikuspontszám
-    * KategoricalAll
-    * Karakterláncfunkció
-    * StringLabel (Karakterláncfelirat)
-    * Karakterláncpontszám
-    * StringAll között
-    * AllLabel felirat
-    * AllFeature funkció
-    * AllScore (Összes pontszám)
+    * NumericFeature
+    * NumericLabel
+    * NumericScore
+    * Numerikus
+    * BooleanFeature
+    * BooleanLabel
+    * BooleanScore
+    * BooleanAll
+    * CategoricalFeature
+    * CategoricalLabel
+    * CategoricalScore
+    * CategoricalAll
+    * StringFeature
+    * StringLabel
+    * StringScore
+    * StringAll
+    * AllLabel
+    * AllFeature
+    * AllScore
     * Összes
 
-**Legördülő lista:** felhasználó által megadott enumerált (legördülő) lista. A legördülő elemek a **Tulajdonságok** elemben egy **Elemelemet** használva vannak megadva. **Az egyes elemek** **azonosítójának** egyedinek és érvényes R változónak kell lennie. **Az elem** **nevének** értéke a megjelenő szövegként és az R függvénynek átadott értékként is szolgál.
+**Legördülő menü**: felhasználó által megadott enumerálás (legördülő lista). A legördülő elemek a **Tulajdonságok** elemen belül, egy **Item** elem használatával vannak megadva. Az egyes **elemek** **azonosítójának** egyedinek és érvényes R-változónak kell lennie. Az **elemek** **nevének** értéke a megjelenő szövegként és az R-függvénynek átadott értékként szolgál.
 
     <Arg id="color" name="Color" type="DropDown">
       <Properties default="red">
@@ -328,18 +323,18 @@ A modulparaméter az XML-definíciós fájl **Arguments szakaszának** **Arg** g
       <Description>Select a color.</Description>
     </Arg>    
 
-* *Választható tulajdonságok:*
-  * **default** - Az alapértelmezett tulajdonság értékének meg kell felelnie az egyik Cikk elem azonosító **értékének.**
+* Nem *kötelező tulajdonságok*:
+  * **alapértelmezett** – az alapértelmezett tulajdonság értékének meg kell egyeznie az **elem** egyik elemének azonosító értékével.
 
 ### <a name="auxiliary-files"></a>Kiegészítő fájlok
-Az egyéni modul ZIP-fájljába helyezett fájlok a végrehajtás ideje alatt is használhatók lesznek. A jelen lévő könyvtárstruktúrák megmaradnak. Ez azt jelenti, hogy a fájlbeszerzés ugyanúgy működik helyileg és az Azure Machine Learning Studio (klasszikus) végrehajtás. 
+Az egyéni modul ZIP-fájljába helyezett összes fájl elérhető lesz a végrehajtás ideje alatt. A rendszer megőrzi a szükséges címtár-struktúrákat. Ez azt jelenti, hogy a fájl beszerzése a helyi és a Azure Machine Learning Studio (klasszikus) végrehajtással azonos módon működik. 
 
 > [!NOTE]
-> Figyelje meg, hogy az összes fájl kibontása az "src" könyvtárba kerül, így minden elérési útnak "src/" előtaggal kell rendelkeznie.
+> Figyelje meg, hogy minden fájl "src" könyvtárba van kibontva, így minden elérési útnak "src/" előtaggal kell rendelkeznie.
 > 
 > 
 
-Tegyük fel például, hogy el szeretné távolítani a NA-kat tartalmazó sorokat az adatkészletből, és el szeretné távolítani az ismétlődő sorokat is, mielőtt kiírja azt a CustomAddRows-ba, és már írt egy R függvényt, amely ezt egy File RemoveDupNARows.R fájlban teszi:
+Tegyük fel például, hogy el kívánja távolítani a NAs-ból származó összes sort az adatkészletből, és el is távolítja az ismétlődő sorokat, mielőtt a CustomAddRows, és már írt egy R-függvényt, amely egy RemoveDupNARows. R fájlban található.
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -348,7 +343,7 @@ Tegyük fel például, hogy el szeretné távolítani a NA-kat tartalmazó sorok
         finalDataFrame <- dataFrame[complete.cases(dataFrame),]
         return(finalDataFrame)
     }
-A CustomAddRows függvényben beszerezheti az RemoveDupNARows.R kiegészítő fájlt:
+A RemoveDupNARows. R kiegészítő fájlt a CustomAddRows függvényben is elvégezheti:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
         source("src/RemoveDupNARows.R")
@@ -361,13 +356,13 @@ A CustomAddRows függvényben beszerezheti az RemoveDupNARows.R kiegészítő f�
         return (dataset)
     }
 
-Ezután töltsön fel egy "CustomAddRows.R", "CustomAddRows.xml" és "RemoveDupNARows.R" (CustomAddRows.R', "CustomAddRows.xml" és "RemoveDupNARows.R" (CustomAddRows.R) és "RemoveDupNARows.R" (CustomAddRows.R) és "RemoveDupNARows.R" (CustomAddRows.R) és "RemoveDupNARows.R" (CustomAddRows.R) és "RemoveDupN
+Ezután töltsön fel egy "CustomAddRows. R", "CustomAddRows. xml" és "RemoveDupNARows. R" nevű zip-fájlt egyéni R-modulként.
 
 ## <a name="execution-environment"></a>Végrehajtási környezet
-Az R parancsfájl végrehajtási környezete az R ugyanazon verzióját **használja,** mint az R parancsfájl végrehajtása modul, és ugyanazokat az alapértelmezett csomagokat használhatja. További R-csomagokat is hozzáadhat az egyéni modulhoz, ha azokat az egyéni modul zip csomagba is beírja. Csak töltse be őket az R-szkriptbe, ahogy a saját R környezetében tenné. 
+Az R-szkript végrehajtási környezete ugyanazt az R-verziót használja, mint az r **szkript végrehajtása** modul, és ugyanazokat az alapértelmezett csomagokat használhatja. Az egyéni modulhoz további R-csomagokat is hozzáadhat, ha azokat az egyéni modul ZIP-csomagjába helyezi. Csak töltse be őket az R-szkriptbe úgy, hogy a saját R-környezetében lenne. 
 
-**A végrehajtási környezet korlátai a** következők:
+**A végrehajtási környezet korlátai** a következők:
 
-* Nem állandó fájlrendszer: Az egyéni modul futtatásakor írt fájlok nem maradnak meg ugyanazon modul több futtatása során.
+* Nem állandó fájlrendszer: az egyéni modul futtatásakor megírt fájlok nem maradnak meg ugyanazon modul több futtatásán keresztül.
 * Nincs hálózati hozzáférés
 

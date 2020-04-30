@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95be73bd125c124409585a478fa9707e7b6a2ac2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e92cba923bc197d82083973b3fac476ab93117ad
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76289067"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Cloud platform Identity Authentication szolgáltatással
 
@@ -176,7 +176,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>SAP Cloud platform Identity Authentication – SSO konfigurálása
 
-1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beszerzéséhez nyissa meg az SAP Cloud platform Identity Authentication felügyeleti konzolt. Az URL-cím a következő mintával rendelkezik: `https://<tenant-id>.accounts.ondemand.com/admin`. Ezután olvassa el az SAP Cloud platform Identity Authentication dokumentációját a [Microsoft Azure ad integrációjában](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html).
+1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beszerzéséhez nyissa meg az SAP Cloud platform Identity Authentication felügyeleti konzolt. Az URL-cím a következő mintával rendelkezik: `https://<tenant-id>.accounts.ondemand.com/admin`. Ezután olvassa el az SAP Cloud platform Identity Authentication dokumentációját a [Microsoft Azure ad integrációjában](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/626b17331b4d4014b8790d3aea70b240.html).
 
 2. A Azure Portal válassza a **Mentés** gombot.
 
@@ -199,7 +199,7 @@ Az SAP Cloud platform Identity Authentication támogatja az identitás-összevon
 
 Az identitás-összevonás beállítás alapértelmezés szerint le van tiltva. Ha az identitás-összevonás engedélyezve van, csak az SAP Cloud platform Identity Authentication szolgáltatásban importált felhasználók férhetnek hozzá az alkalmazáshoz.
 
-További információ arról, hogyan engedélyezheti vagy tilthatja le az identitás-összevonást az SAP Cloud platform Identity Authentication használatával: "az identitás-összevonás engedélyezése az SAP Cloud platform Identity Authentication szolgáltatással" című részt az [Identity összevonás konfigurálása az SAP Cloud platform Identity Authentication felhasználói tárolójával](https://help.hana.ondemand.com/cloud_identity/frameset.htm?c029bbbaefbf4350af15115396ba14e2.html)című témakörben.
+További információ arról, hogyan engedélyezheti vagy tilthatja le az identitás-összevonást az SAP Cloud platform Identity Authentication használatával: "az identitás-összevonás engedélyezése az SAP Cloud platform Identity Authentication szolgáltatással" című részt az [Identity összevonás konfigurálása az SAP Cloud platform Identity Authentication felhasználói tárolójával](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/c029bbbaefbf4350af15115396ba14e2.html)című témakörben.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

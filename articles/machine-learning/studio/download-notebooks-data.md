@@ -1,33 +1,33 @@
 ---
-title: Jegyzetfüzetek(előzetes verzió) adatainak letöltése
+title: Jegyzetfüzetek (előzetes verzió) típusú letöltése
 titleSuffix: ML Studio (classic) - Azure
-description: Jegyzetfüzetek(előzetes verzió) adatainak letöltése az ML Studio(klasszikus) alkalmazásban.
+description: Jegyzetfüzetek (előzetes verzió) ML Studio (klasszikus) típusú letöltése.
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419187"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208465"
 ---
-# <a name="download-notebookspreview-data"></a>Jegyzetfüzetek(előzetes verziós) adatainak letöltése
+# <a name="download-notebookspreview-data"></a>Jegyzetfüzetek (előzetes verzió) letöltése
 
-A Notebooks(preview) funkciót *2020.* A Jegyzetfüzetek(előzetes verzió) lap és a felhasználói jegyzetfüzetfájlok eltávolítása jelenleg világszerte elérhető az Azure-régiókban.
+A jegyzetfüzetek (előzetes verzió) szolgáltatást *április 13 2020*-én eltávolították. A jegyzetfüzetek (előzetes verzió) és a felhasználói jegyzetfüzetek fájljainak eltávolítása jelenleg az Azure-régiókban zajlik világszerte.
 
-Ez a cikk lépésenként bemutatja, hogyan töltheti le a Jegyzetfüzetek(előzetes verzió adatait).
+Ez a cikk lépésről lépésre bemutatja, hogyan tölthetők le a jegyzetfüzetek (előzetes verzió).
 
-1. Nyissa meg a **Jegyzetfüzetek** lapot az Azure Machine Learning Studio (klasszikus) alkalmazásban.
-    ![Keresse meg a Jegyzetfüzetek lapot!](./media/download-notebooks/notebooks-list.png)
+1. Nyissa meg Azure Machine Learning Studio (klasszikus) **jegyzetfüzetek** lapját.
+    ![Navigáljon a jegyzetfüzetek lapra!](./media/download-notebooks/notebooks-list.png)
 
-1. Jelölje ki a letölteni kívánt jegyzetfüzetet. Jupyterben fog kinyílni.
-    ![Válasszon](./media/download-notebooks/select-notebook.png) ki egy jegyzetfüzetet: Több jegyzetfüzet egyszerre történő letöltése nem támogatott.
+1. Válassza ki a letölteni kívánt jegyzetfüzetet. Ekkor megnyílik a Jupyter.
+    ![Válasszon ki egy](./media/download-notebooks/select-notebook.png) több jegyzetfüzetet letöltő jegyzetfüzetet egyszerre nem.
 
-1. Nyissa meg **a Fájlok** -> **letöltése másként**lehetőséget, és válasszon egy formátumbeállítást.
-    ![Jegyzetfüzet letöltési beállításai](./media/download-notebooks/download-options.PNG)
+1. Lépjen a **fájlok** -> **Letöltés másként**elemre, és válassza ki a formátum lehetőséget.
+    ![Notebook letöltési lehetőségei](./media/download-notebooks/download-options.PNG)
 
-1. A beállítás kiválasztása után a jegyzetfüzetfájl letöltése megkezdődik. Hagyja figyelmen kívül a megjelenő 500 vagy 502 hibát, ezek nem befolyásolják a letöltést.
+1. A lehetőség kiválasztása után a jegyzetfüzet-fájl letöltése megkezdődik. A rendszer figyelmen kívül hagyja a megjelenő 500-vagy 502-es hibákat, és nem érinti a letöltést.

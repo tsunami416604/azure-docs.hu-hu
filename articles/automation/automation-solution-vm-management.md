@@ -3,14 +3,14 @@ title: Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás 
 description: Ez a virtuálisgép-kezelési megoldás elindítja és leállítja az Azure-beli virtuális gépeket, és proaktív módon figyeli Azure Monitor naplókból.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187330"
+ms.locfileid: "82207598"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás esetén Azure Automation
 
@@ -19,7 +19,7 @@ A virtuális gépek **indítása és leállítása a munkaidőn kívüli** megol
 Ez a megoldás a [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) parancsmag használatával indítja el a virtuális gépeket. A [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) használatával állítja le a virtuális gépeket.
 
 > [!NOTE]
-> A **virtuális gépek indítása/leállítása a munkaidőn kívüli** megoldásban frissítve lett, hogy támogassa az elérhető Azure-modulok legújabb verzióit.
+> A **virtuális gépek indítása/leállítása a munkaidőn kívüli** megoldásban frissítve lett, hogy támogassa az elérhető Azure-modulok legújabb verzióit. A megoldásnak a piactéren elérhető frissített verziója nem támogatja a AzureRM modulokat, mert áttelepítettük a AzureRM-ből az az modulokba.
 
 A megoldás egy decentralizált, alacsony költségű automatizálási lehetőséget biztosít azon felhasználók számára, akik optimalizálni szeretnék a virtuális gépek költségeit. Ezzel a megoldással a következőket teheti:
 

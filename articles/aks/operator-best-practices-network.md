@@ -5,12 +5,12 @@ description: A virtuális hálózati erőforrásokhoz és az Azure Kubernetes sz
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145469"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208057"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
 
@@ -45,7 +45,7 @@ Ha Azure CNI hálózatkezelést használ, a virtuális hálózati erőforrás eg
 
 Az AK szolgáltatás egyszerű delegálásával kapcsolatos további információkért lásd: [hozzáférés delegálása más Azure-erőforrásokhoz][sp-delegation]. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást is az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A kibővíthető események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ (jelenleg előzetes verzióban), mivel a csomópont-készletek frissítésére van szükség a legújabb biztonsági javítások alkalmazásához. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A kibővíthető események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ, mivel ezek a csomópont-készletek a legújabb biztonsági javítások alkalmazásához frissítést igényelnek. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
 A szükséges IP-cím kiszámításához lásd: az [Azure CNI Networking konfigurálása az AK-ban][advanced-networking].
 
@@ -99,7 +99,7 @@ spec:
 
 A bejövő vezérlő egy AK-csomóponton futó démon, amely a beérkező kéréseket figyeli. Ezt követően a forgalom elosztása a bejövő erőforrások erőforrásában meghatározott szabályok alapján történik. A legelterjedtebb bejövő vezérlő az [NGINX]-alapú. Az AK nem korlátozza Önt egy adott vezérlőre, így más vezérlőket is használhat, például a [Contour][contour], a [HAProxy][haproxy]vagy a [Traefik][traefik].
 
-A bejövő vezérlőket Linux-csomóponton kell ütemezni. A Windows Server-csomópontok (az AK-ban jelenleg előzetes verzióban) nem futtathatják a bejövő vezérlőt. A YAML-jegyzékfájl vagy a Helm-diagram üzembe helyezése csomópont-választóval jelezheti, hogy az erőforrásnak Linux-alapú csomóponton kell futnia. További információkért lásd: [csomópont-választók használata annak vezérléséhez, hogy a hüvelyek hol vannak ütemezve az AK-ban][concepts-node-selectors].
+A bejövő vezérlőket Linux-csomóponton kell ütemezni. Windows Server-csomópontok nem futtathatják a bejövő forgalmi vezérlőt. A YAML-jegyzékfájl vagy a Helm-diagram üzembe helyezése csomópont-választóval jelezheti, hogy az erőforrásnak Linux-alapú csomóponton kell futnia. További információkért lásd: [csomópont-választók használata annak vezérléséhez, hogy a hüvelyek hol vannak ütemezve az AK-ban][concepts-node-selectors].
 
 Számos forgatókönyv áll rendelkezésre a bejövő forgalomhoz, beleértve a következő útmutatókat:
 

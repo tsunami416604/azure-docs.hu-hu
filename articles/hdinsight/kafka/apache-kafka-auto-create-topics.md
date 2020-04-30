@@ -1,23 +1,23 @@
 ---
 title: A témakör automatikus létrehozásának engedélyezése Apache Kafkaban – Azure HDInsight
-description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálásához állítsa be az Auto. Create. témákat. engedélyezze a Ambari-n keresztül, vagy a fürt létrehozásakor a PowerShell vagy a Resource Manager-sablonok használatával.
+description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálása a Ambari- `auto.create.topics.enable` n keresztül True értékre állítható be. Vagy a fürt létrehozásakor PowerShell vagy Resource Manager-sablonok használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 7ec7d15806927306b12624962facbafddf2ce08b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 88dc3e4d761f9b4df63dfa07a24298398f7b0187
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "73242360"
+ms.locfileid: "82231271"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>A HDInsight Apache Kafka konfigurálása a témakörök automatikus létrehozásához
 
-Alapértelmezés szerint a HDInsight [Apache Kafka](https://kafka.apache.org/) nem engedélyezi az automatikus témakör létrehozását. Az [Apache Ambari](https://ambari.apache.org/)használatával engedélyezheti az automatikus témakör létrehozását a meglévő fürtökhöz. Az új Kafka-fürt Azure Resource Manager sablon használatával történő létrehozásakor is engedélyezheti az automatikus témakör létrehozásának lehetőségeit.
+Alapértelmezés szerint a HDInsight Apache Kafka nem engedélyezi az automatikus témakör létrehozását. Az Apache Ambari használatával engedélyezheti az automatikus témakör létrehozását a meglévő fürtökhöz. Az új Kafka-fürt Azure Resource Manager sablon használatával történő létrehozásakor is engedélyezheti az automatikus témakör létrehozásának lehetőségeit.
 
 ## <a name="apache-ambari-web-ui"></a>Apache Ambari webes felhasználói felület
 
@@ -29,7 +29,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
     ![A portál képe, amelyen a fürt irányítópultja ki van választva](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    Ha a rendszer kéri, végezzen hitelesítést a fürt bejelentkezési (rendszergazdai) hitelesítő adataival. Másik lehetőségként közvetlenül is csatlakozhat a Amabri, `https://CLUSTERNAME.azurehdinsight.net/` ahonnan `CLUSTERNAME` a a Kafka-fürt neve.
+    Ha a rendszer kéri, végezzen hitelesítést a fürt bejelentkezési (rendszergazdai) hitelesítő adataival. Ehelyett közvetlenül is csatlakozhat a Amabri, ahonnan a `https://CLUSTERNAME.azurehdinsight.net/` a `CLUSTERNAME` Kafka-fürt neve.
 
 1. Válassza ki a Kafka szolgáltatást a lap bal oldalán található listából.
 
@@ -43,7 +43,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
     ![Apache Ambari keresési szűrő mező](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Ezzel kiszűri a tulajdonságok listáját, és `auto.create.topics.enable` megjeleníti a beállítást.
+    Ezzel a beállítással kiszűrheti a tulajdonságok listáját `auto.create.topics.enable` , és megjelenítheti a beállítást.
 
 1. Módosítsa a értéket a `auto.create.topics.enable` értékre `true`, majd válassza a **Mentés**lehetőséget. Vegyen fel egy megjegyzést, majd válassza a **Mentés** újra lehetőséget.
 
@@ -51,7 +51,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 1. Válassza ki a Kafka szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
-    ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    !["Apache Ambari restart all érintett"](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > A Ambari értékeket a Ambari REST API is megadhatja. Ez általában nehezebb, mivel több REST-hívást kell megszereznie a jelenlegi konfiguráció beolvasásához, a módosítást stb. További információ: [HDInsight-fürtök kezelése az Apache Ambari REST API dokumentum használatával](../hdinsight-hadoop-manage-ambari-rest-api.md) .

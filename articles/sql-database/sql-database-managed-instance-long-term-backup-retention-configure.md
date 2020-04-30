@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509703"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Database felügyelt példány hosszú távú biztonsági mentési megőrzésének kezelése (PowerShell)
 
 Azure SQL Database felügyelt példányban beállíthatja a [hosszú távú biztonsági mentési adatmegőrzési](sql-database-long-term-retention.md#managed-instance-support) szabályzatot (ltr) korlátozott nyilvános előzetes verzióként. Ez lehetővé teszi az adatbázis biztonsági másolatainak automatikus megőrzését különálló Azure Blob Storage-tárolókban akár 10 évig. Ezt követően a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
 
    > [!IMPORTANT]
-   > A felügyelt példányok LTR jelenleg korlátozott előzetes verzióban érhető el, és az EA-és CSP-előfizetések esetében eseti alapon érhető el. A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/) a támogatási téma **biztonsági mentése, visszaállítása és üzletmenet-folytonossága/hosszú távú biztonsági mentése**alatt. 
-
+   > A felügyelt példányok LTR jelenleg korlátozott előzetes verzióban érhető el, és az EA-és CSP-előfizetések esetében eseti alapon érhető el. A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma, SQL Database felügyelt példány lehetőséget, majd a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés**lehetőséget. A kérelemben adja meg, hogy a felügyelt példányhoz tartozó LTR korlátozott nyilvános előzetes verziójával szeretne-e regisztrálni.
 
 A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure SQL Storage szolgáltatásban, valamint az Azure SQL Storage biztonsági másolatából való visszaállítás.
 

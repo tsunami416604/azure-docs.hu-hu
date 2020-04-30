@@ -1,23 +1,23 @@
 ---
-title: REST API hibakódok – Azure Machine Learning Studio (klasszikus) | Microsoft Docs
+title: REST API hibakódok
+titleSuffix: ML Studio (classic) - Azure
 description: Ezeket a hibakódokat egy Azure Machine Learning webszolgáltatáson végzett művelet is visszaküldheti.
 keywords: ''
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217762"
+ms.locfileid: "82209519"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasszikus) REST API hibakódok
 

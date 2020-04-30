@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0355bb1c4255e6de4ed17d55097b7b22d6b37db6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154627"
+ms.locfileid: "82229901"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -33,7 +33,7 @@ A karanténba helyezve a növekményes ciklusok gyakorisága naponta egyszer cs�
 
 Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
   
-- A Azure Portal keresse meg **Azure Active Directory** > **Enterprise Applications** > &lt;*Application Name*&gt; > **kiépítés** lehetőséget, majd görgessen a folyamatjelző sáv alján.  
+- A Azure Portal **Azure Active Directory** > navigáljon a**vállalati alkalmazások** > &lt;*alkalmazás neve*&gt; > **kiépítés** elemre, és tekintse át a karanténba helyezett üzenet folyamatjelző sávját.   
 
   ![Üzembe helyezési állapotsor, amely a karantén állapotát mutatja](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,7 +51,13 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Miért van a karanténba helyezett alkalmazásom?
 
-A kiépítési feladatok állapotának beolvasására Microsoft Graph kérelem a karanténba helyezés következő okát mutatja be:
+|Leírás|Javasolt művelet|
+|---|---|
+|**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD-kiépítési szolgáltatás kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Tekintse meg a rendszergazdai hitelesítő adatok szakaszt, és ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
+|**Érvénytelen hitelesítő adatok:** Ha a célalkalmazás hozzáférésének engedélyezését kísérli meg, a rendszer választ kapott a célalkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Lépjen a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszára, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurációját ismertető oktatóanyagot a további szükséges lépésekhez.|
+|**Ismétlődő szerepkörök:** Az egyes alkalmazásokból (például a Salesforce és a zendesk) importált szerepköröknek egyedieknek kell lenniük. |Navigáljon az alkalmazás [jegyzékfájlhoz](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) a Azure Portalban, és távolítsa el az ismétlődő szerepkört.|
+
+ A kiépítési feladatok állapotának beolvasására Microsoft Graph kérelem a karanténba helyezés következő okát mutatja be:
 
 - `EncounteredQuarantineException`azt jelzi, hogy érvénytelen hitelesítő adatok lettek megadva. A kiépítési szolgáltatás nem tud kapcsolatot létesíteni a forrásrendszer és a célként megadott rendszer között.
 

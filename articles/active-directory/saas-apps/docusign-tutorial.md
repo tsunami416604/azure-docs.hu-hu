@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02b0d8290e279b6ed4de08d074597154208cac6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183984"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a DocuSign
 
@@ -221,7 +221,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
        
        1. Másolja a szolgáltatói szolgáltatáshoz tartozó **fogyasztói szolgáltatás URL-címét**, majd illessze be a **Válasz URL-cím** mezőbe az **alapszintű SAML-konfiguráció** szakaszban a Azure Portal.
        
-       1. Másolja a **szolgáltatói bejelentkezési URL-címet**, majd illessze be a **bejelentkezési URL-cím** mezőbe az **alapszintű SAML-konfiguráció** szakaszban a Azure Portal.
+       1. Másolja a **szolgáltatói bejelentkezési URL-címet**, majd illessze be a **bejelentkezési URL-cím** mezőbe az **alapszintű SAML-konfiguráció** szakaszban a Azure Portal. A **szolgáltató bejelentkezési URL-címének** végén a IDPID értéket fogja kapni.
 
        1. Kattintson a **Bezárás** gombra.
 

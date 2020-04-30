@@ -1,58 +1,58 @@
 ---
-title: Linux-csomópont újraindításának kezelése kured
+title: Linux-csomópontok újraindításának kezelése a kured
 titleSuffix: Azure Kubernetes Service
-description: Ismerje meg, hogyan frissítheti a Linux-csomópontokat, és hogyan indíthatja újra őket automatikusan az Azure Kubernetes-szolgáltatásban (AKS)
+description: Ismerje meg, hogyan frissítheti a Linux-csomópontokat, és hogyan végezheti el automatikusan a kured az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 8006baa3025ee1e794359bed854094cc9005dd14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668387"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208074"
 ---
-# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Biztonsági és kernelfrissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (AKS)
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)
 
-A fürtök védelme érdekében a biztonsági frissítések automatikusan alkalmazva vannak az AKS Linux-csomópontjaira. Ezek a frissítések tartalmazzák az operációs rendszer biztonsági javításait vagy a kernel frissítéseit. A folyamat befejezéséhez a frissítések egy része a csomópont újraindítását igényli. Az AKS nem indítja újra automatikusan ezeket a Linux-csomópontokat a frissítési folyamat befejezéséhez.
+A fürtök védelme érdekében a rendszer automatikusan alkalmazza a biztonsági frissítéseket az AK-ban található Linux-csomópontokra. Ezek a frissítések operációsrendszer-biztonsági javításokat vagy kernel-frissítéseket tartalmaznak. Ezeknek a frissítéseknek a végrehajtásához a csomópont újraindítása szükséges a folyamat befejezéséhez. Az AK nem újraindítja automatikusan ezeket a Linux-csomópontokat a frissítési folyamat befejezéséhez.
 
-A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS-ben) naprakészen tartása egy kicsit más. A Windows Server-csomópontok nem kapnak napi frissítéseket. Ehelyett hajtson végre egy AKS-frissítést, amely új csomópontokat telepít a legújabb alap Window Server-lemezképpel és javításokkal. A Windows Server-csomópontokat használó AKS-fürtök esetében olvassa el [AKS csomópontkészlet frissítése.][nodepool-upgrade]
+A Windows Server-csomópontok naprakészen tartásának folyamata kissé eltér. A Windows Server-csomópontok nem kapnak napi frissítést. Ehelyett olyan AK-frissítést fog végrehajtani, amely új csomópontokat helyez üzembe a legújabb alapszintű ablak-kiszolgáló lemezképével és javításával. A Windows Server-csomópontokat használó AK-fürtök esetében lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
-Ez a cikk bemutatja, hogyan használhatja a nyílt forráskódú [kured (KUbernetes REboot démon)][kured] nézni a Linux-csomópontok, amelyek újraindítást igényelnek, majd automatikusan kezeli a futó podok és csomópont újraindítási folyamat átütemezését.
+Ez a cikk bemutatja, hogyan használhatja a nyílt forráskódú [kured (KUbernetes reboot Daemon)][kured] az újraindítást igénylő linuxos csomópontok megtekintésére, majd automatikusan kezeli a futó hüvelyek és a csomópont-újraindítási folyamat átütemezését.
 
 > [!NOTE]
-> `Kured`a Weaveworks nyílt forráskódú projektje. A projekt támogatása az AKS-ben a legjobb erőfeszítés alapján történik. További támogatás található a #weave-community Slack csatorna.
+> `Kured`a egy nyílt forráskódú projekt a Weaveworks. Ennek a projektnek az AK-ban való támogatását a legjobb megoldási szinten biztosítjuk. További támogatás a #weave-Community Slack Channel-ben érhető el.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-## <a name="understand-the-aks-node-update-experience"></a>Az AKS-csomópontfrissítési élmény ismertetése
+## <a name="understand-the-aks-node-update-experience"></a>Az AK-csomópont frissítési felületének megismerése
 
-Egy AKS-fürtben a Kubernetes-csomópontok Azure virtuális gépekként (VM-ként) futnak. Ezek a Linux-alapú virtuális gépek egy Ubuntu lemezképet használnak, az operációs rendszer pedig úgy van beállítva, hogy minden este automatikusan ellenőrizze a frissítéseket. Ha rendelkezésre állnak biztonsági vagy kernelfrissítések, a rendszer automatikusan letölti és telepíti őket.
+Egy AK-fürtben a Kubernetes-csomópontok Azure-beli virtuális gépekként futnak. Ezek a Linux-alapú virtuális gépek Ubuntu-rendszerképet használnak, és az operációs rendszer úgy van konfigurálva, hogy minden este automatikusan keressen frissítéseket. Ha biztonsági vagy kernel-frissítések érhetők el, a rendszer automatikusan letölti és telepíti őket.
 
-![AKS csomópont frissítésés újraindítás folyamat kured](media/node-updates-kured/node-reboot-process.png)
+![AK-csomópont frissítési és újraindítási folyamata a kured](media/node-updates-kured/node-reboot-process.png)
 
-Egyes biztonsági frissítések, például a kernelfrissítések, a folyamat véglegesítéséhez csomópont-újraindítást igényelnek. Az újraindítást igénylő Linux-csomópont a */var/run/reboot-required*nevű fájlt hoz létre. Ez az újraindítási folyamat nem történik meg automatikusan.
+Bizonyos biztonsági frissítések, például a kernel frissítései a folyamat véglegesítéséhez a csomópont újraindítását igénylik. Egy olyan Linux-csomópont, amely újraindítást igényel, létrehoz egy */var/Run/reboot-Required*nevű fájlt. Ez az újraindítási folyamat nem automatikusan történik.
 
-Használhatja a saját munkafolyamatok és folyamatok kezelésére csomópont `kured` újraindítások, vagy a folyamat vezénylése. A `kured`, a [DaemonSet][DaemonSet] van telepítve, amely a fürt minden Linux-csomóponton futtat egy podot. Ezek a podok a DaemonSet figyelik a */var/run/reboot-required* fájl létezését, majd kezdeményeznek egy folyamatot a csomópontok újraindításához.
+Saját munkafolyamatokat és folyamatokat használhat a csomópont-újraindítások kezeléséhez, vagy `kured` a folyamat előkészítéséhez. A `kured`-ben egy olyan [daemonset elemet][DaemonSet] van telepítve, amely a fürt minden Linux-csomópontján egy Pod-t futtat. Ezek a hüvelyek a Daemonset elemet figyelik a */var/Run/reboot-Required* -fájl létezését, majd kezdeményeznek egy folyamatot a csomópontok újraindításához.
 
-### <a name="node-upgrades"></a>Csomópontfrissítések
+### <a name="node-upgrades"></a>Csomópontok frissítése
 
-Van egy további folyamat az AKS-ben, amely lehetővé teszi a fürt *frissítését.* A frissítés általában a Kubernetes újabb verziójára való áttérés, nem csak a csomópont biztonsági frissítéseinek alkalmazása. Az AKS-frissítés a következő műveleteket hajtja végre:
+Az AK-ban egy további folyamat van, amely lehetővé teszi a fürt *frissítését* . A frissítés általában a Kubernetes egy újabb verziójára kerül, és nem csak a csomópontok biztonsági frissítéseire vonatkozik. Az ak-frissítés a következő műveleteket hajtja végre:
 
-* Egy új csomópont van telepítve a legújabb biztonsági frissítésekkel és a Kubernetes verziójával.
-* Egy régi csomópont kordonnal van elkerítve és lecsapolva.
-* Podok vannak ütemezve az új csomóponton.
-* A régi csomópont törlődik.
+* Egy új csomópont van telepítve a legújabb biztonsági frissítésekkel és Kubernetes-verzióval.
+* A régi csomópontok le vannak szigetelve és ki vannak ürítve.
+* A hüvelyek ütemezése az új csomóponton történik.
+* A régi csomópont törölve lett.
 
-Nem maradhat ugyanazon a Kubernetes-verzión egy frissítési esemény során. Meg kell adnia a Kubernetes újabb verzióját. A Kubernetes legújabb verziójára való frissítéshez [frissítheti az AKS-fürtöt.][aks-upgrade]
+A frissítési esemény során nem maradhat ugyanazon a Kubernetes-verzión. Meg kell adnia a Kubernetes újabb verzióját. A Kubernetes legújabb verziójára való frissítéshez [frissítheti az AK-fürtöt][aks-upgrade].
 
-## <a name="deploy-kured-in-an-aks-cluster"></a>AKS-fürtben telepített telepítés
+## <a name="deploy-kured-in-an-aks-cluster"></a>Kured üzembe helyezése AK-fürtben
 
-A `kured` DaemonSet telepítéséhez telepítse a következő hivatalos Kured Helm diagramot. Ez létrehoz egy szerepkört és fürtszerepkört, kötéseket és egy szolgáltatásfiókot, majd telepíti a DaemonSet-et a használatával. `kured`
+A `kured` daemonset elemet telepítéséhez telepítse a következő hivatalos Kured Helm-diagramot. Ez létrehoz egy szerepkör-és fürt-szerepkört, kötéseket és egy szolgáltatásfiókot, majd a használatával `kured`telepíti a daemonset elemet.
 
 ```console
 # Add the stable Helm repository
@@ -68,30 +68,30 @@ kubectl create namespace kured
 helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-További paramétereket is konfigurálhat a számára, például a Prometheus vagy a `kured`Tartaléklasztó integrálását. További információ a további konfigurációs paraméterekről a [kured Helm diagramban található.][kured-install]
+További paramétereket is konfigurálhat `kured`, például a Prometheus vagy a Slack integrációját. További információ a további konfigurációs paraméterekről: [Kured Helm diagram][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Fürtcsomópontok frissítése
 
-Alapértelmezés szerint az AKS Linux-csomópontjai minden este frissítéseket keresnek. Ha nem szeretne várni, manuálisan is végrehajthat egy `kured` frissítést a megfelelő enfutás ellenőrzéséhez. Először kövesse az SSH lépéseket [az Egyik AKS-csomóponthoz][aks-ssh]. Ha már van SSH-kapcsolata a Linux-csomódhoz, ellenőrizze a frissítéseket, és alkalmazza őket az alábbiak szerint:
+Alapértelmezés szerint az AK-ban található Linux-csomópontok minden este frissítéseket keresnek. Ha nem szeretné megvárni, manuálisan is végrehajthat egy frissítést, hogy ellenőrizze, `kured` megfelelően fut-e. Először hajtsa végre az [SSH-t az egyik AK-csomóponton][aks-ssh]. Ha már rendelkezik SSH-kapcsolatban a Linux-csomóponttal, keressen frissítéseket, és alkalmazza őket a következőképpen:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Ha olyan frissítéseket alkalmaznak, amelyek hez csomópont újraindítása szükséges, a rendszer a */var/run/reboot-required kapcsolóba*írja a fájlt. `Kured`alapértelmezés szerint 60 percenként újraindítást igénylő csomópontokat keres.
+Ha olyan frissítések lettek alkalmazva, amelyek a csomópont újraindítását igénylik, a rendszer egy fájlt ír a */var/Run/reboot-Required*. `Kured`ellenőrzi azokat a csomópontokat, amelyek alapértelmezés szerint 60 percenként újraindítást igényelnek.
 
-## <a name="monitor-and-review-reboot-process"></a>Újraindítási folyamat figyelése és áttekintése
+## <a name="monitor-and-review-reboot-process"></a>Az újraindítási folyamat figyelése és áttekintése
 
-Ha a DaemonSet egyik replikája azt észlelte, hogy egy csomópont újraindítása szükséges, a Kubernetes API-n keresztül a csomópontra zárolás kerül. Ez a zárolás megakadályozza, hogy további podok vannak ütemezve a csomóponton. A zárolás azt is jelzi, hogy egyszerre csak egy csomópontot kell újraindítani. A csomópont kordonnal van elkerítve, a futó podok kiürítése a csomópontról, és a csomópont újraindul.
+Ha a Daemonset elemet egyik replikája azt észlelte, hogy a csomópontok újraindítására van szükség, a Kubernetes API-n keresztül egy zárolás kerül a csomópontra. Ez a zárolás megakadályozza, hogy további hüvelyek legyenek ütemezve a csomóponton. A zárolás azt is jelzi, hogy egyszerre csak egy csomópontot kell újraindítani. Ha a csomópont ki van kapcsolva, a futó hüvelyek el lesznek ürítve a csomópontból, és a csomópont újraindul.
 
-A [kubectl get csomópontok][kubectl-get-nodes] paranccsal figyelheti a csomópontok állapotát. A következő példakimenetegy olyan csomópontot jelenít *meg, amelynek állapota SchedulingDisabled,* miközben a csomópont az újraindítási folyamatra készül:
+A csomópontok állapotának figyeléséhez használja a [kubectl Get Nodes][kubectl-get-nodes] parancsot. A következő példa kimenete egy *SchedulingDisabled* állapotú csomópontot mutat be, amely a csomópont előkészíti az újraindítási folyamatot:
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Miután a frissítési folyamat befejeződött, megtekintheti a csomópontok állapotát a [kubectl][kubectl-get-nodes] get `--output wide` csomópontok parancs a paraméterrel. Ez a további kimenet lehetővé teszi, hogy az alapul szolgáló csomópontok *KERNEL-VERSION* verziójának különbségét láthassa, ahogy az a következő példa kimenetben látható. Az *aks-nodepool1-28993262-0* egy előző lépésben frissült, és a *4.15.0-1039-azure*kernel verziót jeleníti meg. Az *aks-nodepool1-28993262-1* csomópont, amely nem lett frissítve, a *kernel 4.15.0-1037-azure verzióját*jeleníti meg.
+A frissítési folyamat befejeződése után megtekintheti a csomópontok állapotát a [kubectl Get Nodes][kubectl-get-nodes] paranccsal a `--output wide` (z) paraméterrel. Ez a kiegészítő kimenet a mögöttes csomópontok *kernel-verziójában* megjelenő különbségeket is megjeleníti, ahogy az a következő példában látható. Az *AK-nodepool1-28993262-0* egy korábbi lépésben lett frissítve, és a *4.15.0-1039-Azure kernel-* verziót mutatja. A nem frissített Node *-nodepool1-28993262-1* csomópont a *4.15.0-1037-Azure*kernel-verziót jeleníti meg.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -101,9 +101,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk `kured` részletesen ismerteti, hogyan kell használni a Linux-csomópontok automatikus újraindítása a biztonsági frissítési folyamat részeként. A Kubernetes legújabb verziójára való frissítéshez [frissítheti az AKS-fürtöt.][aks-upgrade]
+Ez a cikk részletesen ismerteti `kured` , hogyan használható a Linux-csomópontok automatikus újraindítása a biztonsági frissítési folyamat részeként. A Kubernetes legújabb verziójára való frissítéshez [frissítheti az AK-fürtöt][aks-upgrade].
 
-A Windows Server-csomópontokat használó AKS-fürtök esetében olvassa el [AKS csomópontkészlet frissítése.][nodepool-upgrade]
+A Windows Server-csomópontokat használó AK-fürtök esetében lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
