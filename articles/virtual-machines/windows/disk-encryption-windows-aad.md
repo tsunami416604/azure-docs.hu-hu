@@ -1,6 +1,6 @@
 ---
-title: Azure lemeztitkosítás az Azure AD windowsos virtuális gépekhez (előző kiadás)
-description: Ez a cikk a Microsoft Azure lemeztitkosítás windowsi iaas virtuális gépekhez való engedélyezésével kapcsolatos utasításokat tartalmaz.
+title: Azure Disk Encryption az Azure AD-vel a Windows rendszerű virtuális gépekhez (előző kiadás)
+description: Ez a cikk a Windows IaaS virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást.
 author: msmbaldwin
 ms.service: virtual-machines
 ms.subservice: security
@@ -9,74 +9,74 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8677fa2620c1edc646dcffe120938f03fd13a0e5
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085621"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure lemeztitkosítás az Azure AD windowsos virtuális gépekhez (előző kiadás)
+# <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption az Azure AD-vel a Windows rendszerű virtuális gépekhez (előző kiadás)
 
-**Az Azure Disk Encryption új kiadása kiküszöböli az Azure AD-alkalmazás paraméter biztosításának követelményét a virtuális gép lemeztitkosításának engedélyezéséhez. Az új kiadás, már nem kell megadnia az Azure AD hitelesítő adatait a titkosítás engedélyezése a titkosítási lépés során. Minden új virtuális gép titkosítására az Azure AD alkalmazás paraméterei az új kiadás használatával. A virtuális gép lemeztitkosításának az új kiadással történő engedélyezésére vonatkozó utasítások megtekintéséhez olvassa el az Azure Disk Encryption for Windows VMS című [témakört.](disk-encryption-windows.md) Az Azure AD-alkalmazás paramétereivel már titkosított virtuális gépek továbbra is támogatottak, és továbbra is karban kell tartani az AAD szintaxissal.**
+**A Azure Disk Encryption új kiadása szükségtelenné teszi az Azure AD-alkalmazás paramétereinek biztosítását a virtuális gépek lemezes titkosításának engedélyezéséhez. Az új kiadással már nem szükséges az Azure AD-beli hitelesítő adatok megadása a titkosítás engedélyezése lépés során. Az új kiadás használatával az új virtuális gépeket az Azure AD-alkalmazás paramétereinek használata nélkül kell titkosítani. A VM Disk Encryption új kiadással való engedélyezésével kapcsolatos utasítások megtekintéséhez lásd: [Azure Disk Encryption Windows rendszerű virtuális gépekhez](disk-encryption-windows.md). Azok a virtuális gépek, amelyek már az Azure AD-alkalmazás paramétereivel lettek titkosítva, továbbra is támogatottak, és továbbra is fenn kell tartaniuk a HRE szintaxisát**
 
 
-Számos lemeztitkosítási forgatókönyvet engedélyezhet, és a lépések a forgatókönyvtől függően változhatnak. A következő szakaszok részletesebben ismertetik a Windows IaaS virtuális gépek forgatókönyveit. A lemeztitkosítás használata előtt az [Azure disk encryption előfeltételeit](disk-encryption-overview-aad.md) be kell fejezni. 
+Számos lemezes titkosítási forgatókönyvet engedélyezhet, és a lépések a forgatókönyvtől függően változhatnak. A következő részek a Windows IaaS virtuális gépekkel kapcsolatos részletesebb forgatókönyveket ismertetik. A lemez titkosításának használata előtt a [Azure Disk Encryption előfeltételeket](disk-encryption-overview-aad.md) el kell végezni. 
 
 
 >[!IMPORTANT]
-> - A lemezek titkosítása előtt [készítsen pillanatképet](snapshot-copy-managed-disk.md) és/vagy hozzon létre biztonsági másolatot. A biztonsági mentések biztosítják, hogy a helyreállítási lehetőség lehetséges legyen, ha a titkosítás során váratlan hiba lép fel. A felügyelt lemezekkel rendelkező virtuális gépeknek biztonsági mentésre van szükségük a titkosítás előtt. A biztonsági mentés tkövetően a [Set-AzVMDiskEncryptionExtension parancsmag](/powershell/module/az.compute/set-azvmdiskencryptionextension) segítségével titkosíthatja a felügyelt lemezeket a -skipVmBackup paraméter megadásával. A titkosított virtuális gépek biztonsági és visszaállítási módjáról a [Titkosított Azure virtuális gép biztonsági és visszaállítása](../../backup/backup-azure-vms-encryption.md)című témakörben talál további információt. 
+> - Készítsen [pillanatképet](snapshot-copy-managed-disk.md) , és/vagy készítsen biztonsági másolatot a lemezek titkosítása előtt. A biztonsági másolatok gondoskodnak arról, hogy a rendszer egy helyreállítási lehetőséget akkor lehessen, ha nem várt hiba történik a titkosítás során. A felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentés után a [set-AzVMDiskEncryptionExtension parancsmag](/powershell/module/az.compute/set-azvmdiskencryptionextension) használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](../../backup/backup-azure-vms-encryption.md). 
 >
-> - Titkosítás vagy titkosítás letiltása okozhat a virtuális gép újraindítása.
+> - A titkosítás titkosítása vagy letiltása miatt előfordulhat, hogy a virtuális gép újraindul.
 
-## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Titkosítás engedélyezése a Piactérről létrehozott új IaaS virtuális gépeken
-Az Azure-beli Piactérről engedélyezheti a lemeztitkosítást az új IaaS Windows virtuális gépeken egy Resource Manager-sablon használatával. A sablon új, titkosított Windows virtuális géplétrehozása a Windows Server 2012 galérialemez lemezképének használatával.
+## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>A piactéren létrehozott új IaaS virtuális gépek titkosításának engedélyezése
+Az Azure piactéren Resource Manager-sablonok használatával engedélyezheti a lemez titkosítását az új IaaS Windows rendszerű virtuális gépen. A sablon egy új titkosított Windows virtuális gépet hoz létre a Windows Server 2012 Gallery rendszerkép használatával.
 
-1. Az [Erőforrás-kezelő sablonon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)kattintson a **Telepítés az Azure-ba**elemre.
+1. A [Resource Manager-sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)kattintson az **üzembe helyezés az Azure-** ban lehetőségre.
 
-2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, a paramétereket, a jogi feltételeket és a megállapodást. Kattintson **a Vásárlás** gombra egy új IaaS virtuális gép üzembe helyezéséhez, ahol engedélyezve van a titkosítás.
+2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, a paramétereket, a jogi feltételeket és a szerződést. Kattintson a **vásárlás** elemre egy olyan új IaaS virtuális gép üzembe helyezéséhez, amelyen engedélyezve van a titkosítás.
 
-3. A sablon üzembe helyezése után ellenőrizze a virtuális gép titkosítási állapotát az előnyben részesített módszerrel:
-     - Ellenőrizze az Azure CLI az [az vm titkosítási show](/cli/azure/vm/encryption#az-vm-encryption-show) paranccsal. 
+3. A sablon üzembe helyezése után ellenőrizze a virtuális gép titkosítási állapotát az előnyben részesített módszer használatával:
+     - Az az [VM encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) paranccsal ellenőrizze, hogy az Azure CLI-t használja-e. 
 
          ```azurecli-interactive 
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
          ```
 
-     - Ellenőrizze az Azure PowerShell segítségével a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmag használatával. 
+     - A [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmag használatával ellenőrizze, hogy Azure PowerShell-e. 
 
          ```azurepowershell-interactive
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  Válassza ki a virtuális gép, majd kattintson a **lemezek** a **Beállítások** fejléc alatt a titkosítási állapot ellenőrzéséhez a portálon. A **titkosítás**csoportban láthatja, hogy engedélyezve van-e. 
-           ![Azure portal – lemeztitkosítás engedélyezve](../media/disk-encryption/disk-encryption-fig2.png)
+     -  Válassza ki a virtuális gépet, majd kattintson a **Beállítások** fejléc alatt található **lemezekre** a titkosítási állapot ellenőrzéséhez a portálon. A táblázatban a **titkosítás**alatt látható, hogy engedélyezve van-e a diagram. 
+           ![Azure Portal – a lemez titkosítása engedélyezve](../media/disk-encryption/disk-encryption-fig2.png)
 
-Az alábbi táblázat az Azure AD-ügyfélazonosítót használó Marketplace-forgatókönyvből származó új virtuális gépek erőforrás-kezelősablon-paramétereit sorolja fel:
+A következő táblázat felsorolja az új virtuális gépekhez tartozó Resource Manager-sablon paramétereit az Azure AD ügyfél-azonosító használatával:
 
 | Paraméter | Leírás | 
 | --- | --- |
-| adminUserName | A virtuális gép rendszergazdai felhasználóneve. |
-| adminPassword | Rendszergazdai felhasználói jelszó a virtuális géphez. |
-| newStorageAccountName | Az operációs rendszer és az adatvirtuális gépek tárolására szolgáló tárfiók neve. |
-| vmSize | A virtuális gép mérete. Jelenleg csak a Standard A, D és G sorozatok támogatottak. |
-| virtualNetworkName | Annak a virtuális hálózatnak a neve, amelyhez a virtuális hálózati adapternek tartoznia kell. |
-| alhálózatneve | A virtuális hálózati adapterhez tartozó virtuális hálózat alhálózatának neve. |
-| AADClientID | Az Azure AD-alkalmazás ügyfélazonosítója, amely rendelkezik a kulcstak a key vault ba írási engedélyekkel. |
-| AADClientSecret | Az Azure AD-alkalmazás ügyféltka-tka, amely rendelkezik a kulcstak a key vault ba írási engedélyekkel. |
-| keyVaultURL | Annak a key vaultnak az URL-címe, amelybe a BitLocker-kulcsot fel kell tölteni. Beszerezheti a parancsmag `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` vagy az Azure CLI használatával`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
-| keyEncryptionKeyURL | A létrehozott BitLocker kulcs titkosításához használt kulcstitkosítási kulcs URL-címe (nem kötelező). </br> </br>A KeyEncryptionKeyURL egy választható paraméter. Saját KEK-et hozhat a kulcstartóban lévő adattitkosítási kulcs (jelszótitkos kulcs) további védelme érdekében. |
-| keyVaultResourceGroup | A kulcstartó erőforráscsoportja. |
-| vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre kell hajtani. |
+| adminUserName | A virtuális gép rendszergazdájának felhasználóneve. |
+| adminPassword | A virtuális gép rendszergazdai felhasználói jelszava. |
+| newStorageAccountName | Az operációs rendszer és az adatvirtuális merevlemezek tárolására szolgáló Storage-fiók neve. |
+| vmSize | A virtuális gép mérete. Jelenleg csak A standard A, A D és a G sorozat támogatott. |
+| virtualNetworkName | Annak a VNet a neve, amelyhez a virtuális hálózati adapternek tartoznia kell. |
+| subnetName | Annak az alhálózatnak a neve a VNet, amelyhez a virtuális gép hálózati adapterének tartoznia kell. |
+| AADClientID | Az Azure AD-alkalmazás ügyfél-azonosítója, amely jogosultsággal rendelkezik a Key vaultba való titkok írásához. |
+| AADClientSecret | Az Azure AD-alkalmazás azon titkos kulcsa, amely a Key vaultba való titkos kódok írásához szükséges engedélyekkel rendelkezik. |
+| keyVaultURL | Azon kulcstartó URL-címe, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` vagy az Azure CLI használatával kérheti le`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyEncryptionKeyURL | A generált BitLocker-kulcs titkosításához használt kulcs-titkosítási kulcs URL-címe (nem kötelező). </br> </br>A KeyEncryptionKeyURL egy opcionális paraméter. Saját KEK-t is használhat a kulcstartóban lévő adattitkosítási kulcs (jelszó titka) további védelméhez. |
+| keyVaultResourceGroup | A Key Vault erőforráscsoport. |
+| vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre szeretné állítani. |
 
 
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a><a name="bkmk_RunningWinVM"></a>Titkosítás engedélyezése meglévő vagy futó IaaS Windows virtuális gépeken
-Ebben az esetben engedélyezheti a titkosítást egy sablon, PowerShell-parancsmag vagy CLI-parancsok használatával. A következő szakaszok részletesebben ismertetik, hogyan engedélyezheti az Azure Disk Encryption. 
+## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a><a name="bkmk_RunningWinVM"></a>Titkosítás engedélyezése meglévő vagy futó IaaS Windows rendszerű virtuális gépeken
+Ebben az esetben a titkosítást sablon, PowerShell-parancsmagok vagy CLI-parancsok használatával engedélyezheti. A következő részek részletesebben ismertetik a Azure Disk Encryption engedélyezésének módját. 
 
 
-### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a>Titkosítás engedélyezése meglévő vagy futó virtuális gépeken az Azure PowerShell használatával 
-A [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmag használatával engedélyezze a titkosítást egy futó IaaS virtuális gépen az Azure-ban. A titkosítás PowerShell-parancsmagokkal történő engedélyezéséről az [Azure PowerShell használatával az Azure Lemeztitkosítás felfedezése – 1. rész](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) és [az Azure Lemeztitkosítás felfedezése az Azure PowerShell](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)használatával – 2.
+### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a>Titkosítás engedélyezése meglévő vagy futó virtuális gépeken Azure PowerShell 
+A [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmag használatával engedélyezheti a titkosítást egy futó IaaS virtuális gépen az Azure-ban. A Azure Disk Encryption PowerShell-parancsmagok használatával történő titkosításának engedélyezésével kapcsolatos információkért tekintse meg a blogbejegyzések [megismerése Azure Disk Encryption a Azure PowerShell 1. részében](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) , és [ismerkedjen meg Azure Disk Encryption Azure PowerShell 2. részével](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
 
--  **Futó virtuális gép titkosítása ügyféltitkos adathasználatával:** Az alábbi parancsfájl inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmamot. Az erőforráscsoport, a virtuális gép, a key vault, az AAD-alkalmazás és az ügyféltitkos kulcsot már létre kell hozni előfeltételeként. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-AAD-client-ID és a My-AAD-client-secret értéket az Ön értékeivel.
+-  **Egy futó virtuális gép titkosítása az ügyfél titkos** kódjával: Az alábbi szkript inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, a HRE alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre.
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
       $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -90,7 +90,7 @@ A [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdisken
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
     ```
-- **Az ügyféltitok burkolására a KEK használatával futó virtuális gép titkosítása:** Az Azure Disk Encryption lehetővé teszi, hogy adjon meg egy meglévő kulcsot a kulcstartóban a titkosítás engedélyezése közben létrehozott lemeztitkosítási titkos kulcsok burkolásához. Kulcstitkosítási kulcs megadása esetén az Azure Disk Encryption ezt a kulcsot használja a titkosítási titkos kulcsok beburkolásához, mielőtt a Key Vaultba írna. 
+- **Egy futó virtuális gép titkosítása a KEK használatával az ügyfél titkos kódjának becsomagolásához:** Azure Disk Encryption lehetővé teszi egy meglévő kulcs megadását a kulcstartóban a titkosítás engedélyezésekor létrehozott lemez-titkosítási titkok becsomagolásához. Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. 
 
      ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -110,79 +110,79 @@ A [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdisken
      ```
      
    >[!NOTE]
-   > A lemeztitkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> A kulcs-titkosítás-kulcs paraméter értékének szintaxisa a KEK teljes URI-ja, mint például: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+   > A Disk-Encryption-kulcstartó paraméter értékének szintaxisa a teljes azonosító karakterlánc:/Subscriptions/[előfizetés-azonosító-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[kulcstartó-name]</br> A Key-encryption-Key paraméter értékének szintaxisa a KEK teljes URI-ja a következőhöz hasonlóan: https://[kulcstartó-name]. Vault. Azure. net/Keys/[kekname]/[KEK-Unique-id] 
 
-- **Ellenőrizze, hogy a lemezek titkosítottak-e:** Az IaaS virtuális gép titkosítási állapotának ellenőrzéséhez használja a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmag. 
+- **Ellenőrizze, hogy a lemezek titkosítva vannak-e:** Egy IaaS virtuális gép titkosítási állapotának vizsgálatához használja a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmagot. 
      ```azurepowershell-interactive
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
     
-- **Lemeztitkosítás letiltása:** A titkosítás letiltásához használja az [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmag. 
+- **Lemez titkosításának letiltása:** A titkosítás letiltásához használja a [disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmagot. 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with--azure-cli"></a><a name="bkmk_RunningWinVMCLI"></a>Titkosítás engedélyezése meglévő vagy futó virtuális gépeken az Azure CLI-vel
-Használja az [az vm titkosításengedélyezése](/cli/azure/vm/encryption#az-vm-encryption-enable) parancs titkosítás engedélyezéséhez egy futó IaaS virtuális gép az Azure-ban.
+Az az [VM encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) paranccsal engedélyezheti a titkosítást egy futó IaaS virtuális gépen az Azure-ban.
 
-- **Futó virtuális gép titkosítása ügyféltitkos adathasználatával:**
+- **Egy futó virtuális gép titkosítása az ügyfél titkos kódjával:**
 
     ```azurecli-interactive
     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI/my Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault "MySecureVault" --volume-type [All|OS|Data]
     ```
 
-- **Az ügyféltitok burkolására a KEK használatával futó virtuális gép titkosítása:**
+- **Egy futó virtuális gép titkosítása a KEK használatával az ügyfél titkos kódjának becsomagolásához:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI which is the Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type [All|OS|Data]
      ```
 
      >[!NOTE]
-     > A lemeztitkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br> A kulcs-titkosítás-kulcs paraméter értékének szintaxisa a KEK teljes URI-ja, mint például: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+     > A Disk-Encryption-kulcstartó paraméter értékének szintaxisa a teljes azonosító karakterlánc:/Subscriptions/[előfizetés-azonosító-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[kulcstartó-name] </br> A Key-encryption-Key paraméter értékének szintaxisa a KEK teljes URI-ja a következőhöz hasonlóan: https://[kulcstartó-name]. Vault. Azure. net/Keys/[kekname]/[KEK-Unique-id] 
 
-- **Ellenőrizze, hogy a lemezek titkosítottak-e:** Az IaaS virtuális gép titkosítási állapotának ellenőrzéséhez használja az [az vm titkosítási show](/cli/azure/vm/encryption#az-vm-encryption-show) parancsot. 
+- **Ellenőrizze, hogy a lemezek titkosítva vannak-e:** Egy IaaS virtuális gép titkosítási állapotának megtekintéséhez használja az az [VM encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) parancsot. 
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Titkosítás letiltása:** A titkosítás letiltásához használja az [az vm titkosítás letiltása](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
+- **Titkosítás letiltása:** A titkosítás letiltásához használja az az [VM encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 
 
-### <a name="using-the-resource-manager-template"></a><a name="bkmk_RunningWinVMwRM"> </a>Az Erőforráskezelő sablon használata
-A Lemeztitkosítást az Azure-ban meglévő vagy futó IaaS Windows-virtuális gépeken engedélyezheti az [Erőforrás-kezelő sablon használatával egy futó Windows virtuális gép titkosításához.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
+### <a name="using-the-resource-manager-template"></a><a name="bkmk_RunningWinVMwRM"> </a>A Resource Manager-sablon használata
+Az Azure-ban meglévő vagy futó IaaS Windows rendszerű virtuális gépeken is engedélyezheti a lemez titkosítását, ha a [Resource Manager-sablonnal titkosít egy futó Windows rendszerű virtuális gépet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 
-1. Az Azure gyorsindítási sablonján kattintson **a Telepítés az Azure-ba**elemre.
+1. Az Azure Gyorsindítás sablonon kattintson az **üzembe helyezés az Azure**-ban lehetőségre.
 
-2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, a paramétereket, a jogi feltételeket és a megállapodást. Kattintson **a Vásárlás** gombra a meglévő vagy futó IaaS virtuális gép titkosításának engedélyezéséhez.
+2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, a paramétereket, a jogi feltételeket és a szerződést. Kattintson a **vásárlás** gombra a titkosítás engedélyezéséhez a meglévő vagy futó IaaS virtuális gépen.
 
-Az alábbi táblázat az Azure AD-ügyfélazonosítót használó meglévő vagy futó virtuális gépek Erőforrás-kezelő sablonparamétereit sorolja fel:
+A következő táblázat a Resource Manager-sablon azon paramétereit sorolja fel, amelyek az Azure AD ügyfél-azonosítót használó meglévő vagy futó virtuális gépekhez használhatók:
 
 | Paraméter | Leírás |
 | --- | --- |
-| AADClientID | Az Azure AD-alkalmazás ügyfélazonosítója, amely rendelkezik a kulcstitok-beírási engedélyekkel. |
-| AADClientSecret | Az Azure AD-alkalmazás ügyféltka-tka, amely rendelkezik a kulcstak a key vault ba írási engedélyekkel. |
-| keyVaultName | Annak a kulcstartónak a neve, amelybe a BitLocker-kulcsot fel kell tölteni. Beszerezheti a parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI parancs használatával`az keyvault list --resource-group "MySecureGroup"`|
-|  keyEncryptionKeyURL | A létrehozott BitLocker-kulcs titkosításához használt kulcstitkosítási kulcs URL-címe. Ez a paraméter nem kötelező, ha **nokek** lehetőséget választ a UseExistingKek legördülő listában. Ha a UseExistingKek legördülő listában a **kek** lehetőséget választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
-| volumeType (kötettípusa) | A titkosítási művelet által végrehajtott kötet típusa. Érvényes értékek: _OPERÁCIÓS rendszer_, _Adatok_és _Mind_. |
-| sequenceVersion (sequenceVersion) | A BitLocker művelet szekvenciaverziója. Ez a verziószám minden alkalommal, amikor egy lemez-titkosítási művelet et hajtanak végre ugyanazon a virtuális gépen. |
-| vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre kell hajtani. |
+| AADClientID | Az Azure AD-alkalmazás ügyfél-azonosítója, amely jogosult a Key vaultba írni a titkos kulcsokat. |
+| AADClientSecret | Azon Azure AD-alkalmazás ügyfél-titka, amely jogosult a Key vaultba írni a titkos kulcsokat. |
+| keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le.`az keyvault list --resource-group "MySecureGroup"`|
+|  keyEncryptionKeyURL | A létrehozott BitLocker-kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
+| volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. |
+| sequenceVersion | A BitLocker-művelet szekvenciális verziója. Minden alkalommal növelje ezt a verziószámot, amikor egy lemezes titkosítási műveletet hajt végre ugyanazon a virtuális gépen. |
+| vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre szeretné állítani. |
 
 
-## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a>Új IaaS virtuális gépek, amelyek ügyfél által titkosított virtuális merevlemezből és titkosítási kulcsokból készültek
-Ebben az esetben engedélyezheti a titkosítást az Erőforrás-kezelő sablon, a PowerShell-parancsmagok vagy a CLI-parancsok használatával. A következő szakaszok részletesebben ismertetik az Erőforrás-kezelő sablont és a CLI-parancsokat. 
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a>Az ügyfél által titkosított VHD-és titkosítási kulcsokból létrehozott új IaaS virtuális gépek
+Ebben a forgatókönyvben engedélyezheti a titkosítást a Resource Manager-sablon, a PowerShell-parancsmagok vagy a CLI-parancsok használatával. A következő részek részletesebben ismertetik a Resource Manager-sablon és a CLI-parancsok részleteit. 
 
-A függelékben található utasításokat az Azure-ban használható előre titkosított lemezképek előkészítéséhez használja. A rendszerkép létrehozása után a következő szakaszban leírt lépésekkel létrehozhat egy titkosított Azure-beli virtuális gép.
+Az Azure-ban használható, előre titkosított rendszerképek előkészítéséhez használja a függelék utasításait. A rendszerkép létrehozása után a következő szakasz lépéseit követve hozzon létre egy titkosított Azure-beli virtuális gépet.
 
 * [Előre titkosított Windows virtuális merevlemez előkészítése](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd)
 
 
-### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a> Virtuális gépek titkosítása előre titkosított virtuális számítógépekkel az Azure PowerShell használatával
-A titkosított virtuális merevlemezen a [Set-AzVMOSDisk PowerShell-parancsmag](/powershell/module/az.compute/set-azvmosdisk#examples)segítségével engedélyezheti a lemeztitkosítást. Az alábbi példa néhány gyakori paramétert ad. 
+### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a> Virtuális gépek titkosítása előre titkosított virtuális merevlemezekkel Azure PowerShell
+A titkosított virtuális merevlemez titkosítását a [set-AzVMOSDisk PowerShell-](/powershell/module/az.compute/set-azvmosdisk#examples)parancsmag használatával engedélyezheti. Az alábbi példa néhány gyakori paramétert biztosít. 
 
 ```powershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -191,13 +191,13 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
 
 ## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Titkosítás engedélyezése újonnan hozzáadott adatlemezen
-Új [lemezt adhat hozzá egy Windows virtuális géphez](attach-disk-ps.md)a PowerShell használatával vagy [az Azure Portalon keresztül.](attach-managed-disk-portal.md) 
+Új lemezt a PowerShell vagy [a Azure Portal](attach-managed-disk-portal.md) [használatával adhat hozzá a Windows rendszerű virtuális](attach-disk-ps.md)gépekhez. 
 
-### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Titkosítás engedélyezése újonnan hozzáadott lemezen az Azure PowerShell használatával
- Ha a Powershell használatával titkosít egy új lemezt a Windows virtuális gépekhez, új szekvenciaverziót kell megadni. A szekvencia verziónak egyedinek kell lennie. Az alábbi parancsfájl létrehoz egy GUID-ot a szekvenciaverzióhoz. Bizonyos esetekben előfordulhat, hogy egy újonnan hozzáadott adatlemez automatikusan titkosítja az Azure Disk Encryption bővítmény. Automatikus titkosítás általában akkor fordul elő, amikor a virtuális gép újraindul, miután az új lemez online állapotba kerül. Ennek oka általában az, hogy "Minden" lett megadva a kötet típusához, amikor a lemeztitkosítás korábban futott a virtuális gépen. Ha automatikus titkosítás történik egy újonnan hozzáadott adatlemezen, javasoljuk, hogy futassza újra a Set-AzVmDiskEncryptionExtension parancsmagát az új szekvenciaverzióval. Ha az új adatlemez automatikusan titkosított, és nem szeretné, hogy titkosítsa, először fejtse vissza az összes meghajtót, majd fejteni egy új szekvenciaverzióval, amely a kötettípusoperációs rendszert adja meg. 
+### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>A titkosítás engedélyezése egy újonnan hozzáadott lemezen Azure PowerShell
+ Amikor a PowerShell használatával titkosít egy új lemezt a Windows rendszerű virtuális gépekhez, meg kell adni egy új sorozatot. A Sequence verziójának egyedinek kell lennie. Az alábbi szkript létrehoz egy GUID azonosítót a Sequence verzióhoz. Bizonyos esetekben előfordulhat, hogy az újonnan hozzáadott adatlemezek automatikusan titkosítva lesznek a Azure Disk Encryption bővítménnyel. Az automatikus titkosítás általában akkor fordul elő, amikor a virtuális gép újraindul, miután az új lemez online állapotba kerül. Ez általában az okozza, hogy az "all" érték van megadva a kötet típusához, amikor a lemez titkosítása korábban futott a virtuális gépen. Ha az automatikus titkosítás egy újonnan hozzáadott adatlemezen történik, javasoljuk, hogy a set-AzVmDiskEncryptionExtension parancsmagot újra futtassa új sorozat-verzióval. Ha az új adatlemez automatikusan titkosítva van, és nem kívánja titkosítani, az összes meghajtót visszafejti, majd újratitkosítja egy új sorozat-verzióval, amely meghatározza a kötet típusának operációs rendszerét. 
  
 
--  **Futó virtuális gép titkosítása ügyféltitkos adathasználatával:** Az alábbi parancsfájl inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmamot. Az erőforráscsoport, a virtuális gép, a key vault, az AAD-alkalmazás és az ügyféltitkos kulcsot már létre kell hozni előfeltételeként. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-AAD-client-ID és a My-AAD-client-secret értéket az Ön értékeivel. Ez a példa az "Összes" parancsot használja a -VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "OPERÁCIÓS rendszer" szót a -VolumeType paraméterhez. 
+-  **Egy futó virtuális gép titkosítása az ügyfél titkos** kódjával: Az alábbi szkript inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, a HRE alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre. Ez a példa az "all" kifejezést használja a-VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "operációs rendszer" lehetőséget a-VolumeType paraméterhez. 
 
      ```azurepowershell
       $sequenceVersion = [Guid]::NewGuid();
@@ -213,7 +213,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'all' –SequenceVersion $sequenceVersion;
     ```
-- **Az ügyféltitok burkolására a KEK használatával futó virtuális gép titkosítása:** Az Azure Disk Encryption lehetővé teszi, hogy adjon meg egy meglévő kulcsot a kulcstartóban a titkosítás engedélyezése közben létrehozott lemeztitkosítási titkos kulcsok burkolásához. Kulcstitkosítási kulcs megadása esetén az Azure Disk Encryption ezt a kulcsot használja a titkosítási titkos kulcsok beburkolásához, mielőtt a Key Vaultba írna. Ez a példa az "Összes" parancsot használja a -VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "OPERÁCIÓS rendszer" szót a -VolumeType paraméterhez. 
+- **Egy futó virtuális gép titkosítása a KEK használatával az ügyfél titkos kódjának becsomagolásához:** Azure Disk Encryption lehetővé teszi egy meglévő kulcs megadását a kulcstartóban a titkosítás engedélyezésekor létrehozott lemez-titkosítási titkok becsomagolásához. Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. Ez a példa az "all" kifejezést használja a-VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "operációs rendszer" lehetőséget a-VolumeType paraméterhez. 
 
      ```azurepowershell
      $sequenceVersion = [Guid]::NewGuid();
@@ -234,29 +234,29 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
      ```
 
     >[!NOTE]
-    > A lemeztitkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> A kulcs-titkosítás-kulcs paraméter értékének szintaxisa a KEK teljes URI-ja, mint például: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+    > A Disk-Encryption-kulcstartó paraméter értékének szintaxisa a teljes azonosító karakterlánc:/Subscriptions/[előfizetés-azonosító-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[kulcstartó-name]</br> A Key-encryption-Key paraméter értékének szintaxisa a KEK teljes URI-ja a következőhöz hasonlóan: https://[kulcstartó-name]. Vault. Azure. net/Keys/[kekname]/[KEK-Unique-id] 
 
-### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Titkosítás engedélyezése újonnan hozzáadott lemezen az Azure CLI-vel
-  Az Azure CLI parancs automatikusan egy új szekvenciaverziót biztosít a titkosítás engedélyezéséhez a parancs futtatásakor. A volume-yype paraméter elfogadható értékei: All, OS és Data. Előfordulhat, hogy módosítania kell a kötet-típusú paraméteroperációs rendszer vagy adat, ha csak egy típusú lemezt titkosít a virtuális gép. A példák a "Minden" a kötet-típusú paraméter. 
+### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>A titkosítás engedélyezése az újonnan hozzáadott lemezeken az Azure CLI-vel
+  Az Azure CLI-parancs automatikusan megadja az új sorozat verzióját, amikor a parancs futtatásával engedélyezi a titkosítást. A Volume-yype paraméter elfogadható értékei az összes, az operációs rendszer és az adatok. Előfordulhat, hogy módosítania kell a Volume-type paramétert az operációs rendszerre vagy az adattípusra, ha csak egy lemezt kíván titkosítani a virtuális géphez. A példák az "all" értéket használják a Volume-Type paraméterhez. 
 
--  **Futó virtuális gép titkosítása ügyféltitkos adathasználatával:**
+-  **Egy futó virtuális gép titkosítása az ügyfél titkos kódjával:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI/my Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault "MySecureVault" --volume-type "All"
      ```
 
-- **Az ügyféltitok burkolására a KEK használatával futó virtuális gép titkosítása:**
+- **Egy futó virtuális gép titkosítása a KEK használatával az ügyfél titkos kódjának becsomagolásához:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI which is the Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "all"
      ```
 
 
-## <a name="enable-encryption-using-azure-ad-client-certificate-based-authentication"></a>Engedélyezze a titkosítást az Azure AD-ügyfél tanúsítványalapú hitelesítésével.
-Az ügyféltanúsítvány-hitelesítés kek-vel vagy anélkül is használható. A PowerShell-parancsfájlok használata előtt már a tanúsítvány feltöltve a key vaultba, és a virtuális gépüzembe helyezett. Ha a KEK-et is használja, a KEK-nek már léteznie kell. További információkért tekintse meg a [tanúsítvány-alapú hitelesítés](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) az Azure AD az előfeltételek cikk.
+## <a name="enable-encryption-using-azure-ad-client-certificate-based-authentication"></a>Titkosítás engedélyezése az Azure AD ügyféltanúsítvány-alapú hitelesítéssel.
+Az ügyféltanúsítvány-alapú hitelesítést KEK-mel vagy anélkül is használhatja. A PowerShell-parancsfájlok használata előtt a tanúsítványt fel kell tölteni a Key vaultba, és telepíteni kell a virtuális gépre. Ha a KEK-t is használja, a KEK-nek már léteznie kell. További információ: [tanúsítványalapú hitelesítés az Azure ad-](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) ben az előfeltételek című cikkben.
 
 
-### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Titkosítás engedélyezése tanúsítványalapú hitelesítéssel az Azure PowerShell használatával
+### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Titkosítás engedélyezése tanúsítványalapú hitelesítés használatával Azure PowerShell
 
 ```powershell
 ## Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault, and ‘MySecureVM’.
@@ -282,7 +282,7 @@ $aadClientCertThumbprint = $cert.Thumbprint;
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
   
-### <a name="enable-encryption-using-certificate-based-authentication-and-a-kek-with-azure-powershell"></a>Titkosítás engedélyezése tanúsítványalapú hitelesítéssel és KEK-vel az Azure PowerShell használatával
+### <a name="enable-encryption-using-certificate-based-authentication-and-a-kek-with-azure-powershell"></a>Titkosítás engedélyezése tanúsítványalapú hitelesítéssel és egy KEK és Azure PowerShell használatával
 
 ```powershell
 # Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault,, 'MySecureVM’, and "KEKName.
@@ -311,24 +311,24 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
 ```
 
 ## <a name="disable-encryption"></a>Titkosítás letiltása
-Letilthatja a titkosítást az Azure PowerShell, az Azure CLI vagy a Resource Manager sablon használatával. 
+A titkosítást a Azure PowerShell, az Azure CLI vagy egy Resource Manager-sablonnal is letilthatja. 
 
-- **Lemeztitkosítás letiltása az Azure PowerShell használatával:** A titkosítás letiltásához használja az [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmag. 
+- **Lemez titkosításának letiltása a Azure PowerShell:** A titkosítás letiltásához használja a [disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmagot. 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-- **Tiltsa le a titkosítást az Azure CLI-vel:** A titkosítás letiltásához használja az [az vm titkosítás letiltása](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
+- **Titkosítás letiltása az Azure CLI-vel:** A titkosítás letiltásához használja az az [VM encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
-- **Titkosítás letiltása Erőforrás-kezelő sablonnal:** 
+- **A titkosítás letiltása Resource Manager-sablonnal:** 
 
-    1. Kattintson **a Telepítés az Azure-ba** a [Lemeztitkosítás letiltása Windows vm sablonon.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)
-    2. Válassza ki az előfizetést, az erőforráscsoportot, a helyet, a virtuális gép, a jogi feltételeket és a megállapodást.
-    3.  Kattintson **a Vásárlás** gombra a lemeztitkosítás letiltásához egy futó Windows virtuális gépen. 
+    1. Kattintson a **telepítés az Azure** -ba lehetőségre a [lemez titkosításának letiltása Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) virtuálisgép-sablon futtatásához.
+    2. Válassza ki az előfizetést, az erőforráscsoportot, a helyet, a virtuális gépet, a jogi feltételeket és a szerződést.
+    3.  Kattintson a **vásárlás** gombra a lemez titkosításának letiltásához egy futó WINDOWSOS virtuális gépen. 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure lemeztitkosítás – áttekintés](disk-encryption-overview.md)
+> [Azure Disk Encryption áttekintése](disk-encryption-overview.md)

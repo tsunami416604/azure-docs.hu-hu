@@ -1,6 +1,6 @@
 ---
-title: Megoldásarchitektúrák az Azure NetApp-fájlok használatával | Microsoft dokumentumok
-description: Az Azure NetApp-fájlok használatával a megoldásarchitektúrák kal kapcsolatos gyakorlati tanácsokra mutató hivatkozásokat tartalmaz.
+title: Megoldási architektúrák a Azure NetApp Files használatával | Microsoft Docs
+description: Az Azure NetApp Filest használó megoldási architektúrák ajánlott eljárásaira mutató hivatkozásokat tartalmaz.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,52 +15,52 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: b-juche
 ms.openlocfilehash: a26e403671a2f69eeb785d92fa0c1d37a19e3ac5
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085076"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
-Ez a cikk az azure NetApp-fájlok megoldásarchitektúráinak megismeréséhez ajánlott eljárásokra mutató hivatkozásokat tartalmaz.  
+Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
 
-## <a name="azure-high-performance-computing-hpc-solutions"></a>Az Azure nagy teljesítményű számítástechnikai (HPC) megoldásai
+## <a name="azure-high-performance-computing-hpc-solutions"></a>Azure nagy teljesítményű számítástechnikai (HPC) megoldások
 
-* [Tározószimulációs szoftver futtatása az Azure-ban](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
-* [MPI-számítási feladatok futtatása az Azure Batch és az Azure NetApp-fájlokkal](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
+* [A Reservoir szimulációs szoftver futtatása az Azure-ban](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [MPI-munkaterhelések futtatása Azure Batch és Azure NetApp Files](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
 
-## <a name="azure-kubernetes-service-aks-solutions"></a>Az Azure Kubernetes szolgáltatás (AKS) megoldásai
+## <a name="azure-kubernetes-service-aks-solutions"></a>Azure Kubernetes szolgáltatás (ak) megoldásai
 
-* [Az Azure NetApp-fájlok integrációja az AKS-sel](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
-* [Az Azure NetApp-fájlok integrálása az Azure Kubernetes szolgáltatással](https://docs.microsoft.com/azure/aks/azure-netapp-files)
+* [Azure NetApp Files integráció az AK-val](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
+* [Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással](https://docs.microsoft.com/azure/aks/azure-netapp-files)
 
-## <a name="oracle-database-solutions"></a>Oracle adatbázis-megoldások
+## <a name="oracle-database-solutions"></a>Oracle Database-megoldások
 
-* [Az Oracle az Azure üzembe helyezéséhez útmutató az Azure NetApp-fájlok használatával](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle virtuálisgép-lemezképek és azok üzembe helyezése a Microsoft Azure-ban: Megosztott tárkonfigurációs beállítások](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle az Azure-beli üzembe helyezéssel kapcsolatos ajánlott eljárási útmutató az Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure: megosztott tároló konfigurációs beállításai](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 * [Az Azure NetApp Files Oracle Database-szel való használatának előnyei](https://docs.microsoft.com/azure/azure-netapp-files/solutions-benefits-azure-netapp-files-oracle-database)
 
-## <a name="sap-application-solutions"></a>SAP alkalmazásmegoldások 
+## <a name="sap-application-solutions"></a>SAP-alkalmazási megoldások 
 
-* [SAP-alkalmazások a Microsoft Azure-ban az Azure NetApp-fájljainak használatával](https://www.netapp.com/us/media/tr-4746.pdf)
+* [SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
 * [SAP HANA Azure-beli virtuális gépek tárkonfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure virtuális gépeken a SUSE Linux Enterprise Server en az SAP-alkalmazásokhoz készült Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken a Red Hat Enterprise Linuxon az SAP-alkalmazásokhoz készült Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken a Red Hat Enterprise Linux sap-alkalmazásokhoz több SID-útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
-* [Az SAP NetWeaver magas rendelkezésre állása az Azure-beli virtuális gépeken Windows rendszeren, SAP-alkalmazásokhoz készült Azure NetApp-fájlokkal (SMB)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-* [SAP HANA horizontális felskálázás készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlokkal a SUSE Linux Enterprise Server rendszeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-* [SAP HANA horizontális felskálázás készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlokkal A RedHat Enterprise Linuxon](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-* [Azure NetApp-fájlok – SAP HANA biztonsági mentés másodpercek alatt](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
-* [Azure NetApp-fájlok – A HANA-adatbázis visszaállítása pillanatkép-biztonsági másolatból](https://blog.netapp.com/azure-netapp-files-backup-sap-hana/)
-* [Azure NetApp-fájlok – AZ SAP HANA kiszervezi a biztonsági mentést a Cloud Sync segítségével](https://blog.netapp.com/azure-netapp-files-sap-hana)
-* [Gyorsítsa fel az SAP HANA rendszer példányait az Azure NetApp-fájlok használatával](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
-* [Felhőkötetek ONTAP és Azure NetApp-fájlok: AZ SAP HANA rendszer áttelepítése egyszerűen](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/) 
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez Red Hat Enterprise Linuxon Azure NetApp Files SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+* [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+* [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+* [SAP HANA Azure-beli virtuális gépek készenléti csomópontjának kiskálázása Azure NetApp Files a RedHat Enterprise Linux rendszeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+* [Azure NetApp Files – SAP HANA biztonsági mentés másodpercek alatt](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
+* [Azure NetApp Files – a HANA-adatbázis visszaállítása pillanatkép biztonsági másolatból](https://blog.netapp.com/azure-netapp-files-backup-sap-hana/)
+* [Azure NetApp Files – SAP HANA a biztonsági mentés kiszervezése a Cloud Sync szolgáltatással](https://blog.netapp.com/azure-netapp-files-sap-hana)
+* [A SAP HANA rendszermásolatok felgyorsítása Azure NetApp Files használatával](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
+* [Felhőbeli kötetek ONTAP és Azure NetApp Files: SAP HANA rendszer áttelepítése egyszerűen](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/) 
 
-## <a name="global-file-caching-solutions"></a>Globális fájlgyorsítótárazási megoldások
+## <a name="global-file-caching-solutions"></a>Globális fájl-gyorsítótárazási megoldások
 
-* [Globálisan elosztott nagyvállalati fájlmegosztás az Azure NetApp Files és a Talon FAST segítségével™](https://www.talonstorage.com/products/azure-netapp-files)
+* [Globálisan elosztott nagyvállalati fájlmegosztás Azure NetApp Files és Talon gyors™](https://www.talonstorage.com/products/azure-netapp-files)
 
-## <a name="windows-virtual-desktopvdi-solutions"></a>Windows virtuális asztal/VDI megoldások
+## <a name="windows-virtual-desktopvdi-solutions"></a>Windows rendszerű virtuális asztali/VDI-megoldások
 
-* [FSLogix-profiltároló létrehozása gazdakészlethez az Azure NetApp-fájlok használatával](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
+* [FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 

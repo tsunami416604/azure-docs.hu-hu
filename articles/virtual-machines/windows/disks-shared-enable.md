@@ -1,6 +1,6 @@
 ---
-title: Megosztott lemezek engedélyezése az Azure által kezelt lemezekhez
-description: Azure-beli felügyelt lemez konfigurálása megosztott lemezekkel (előzetes verzió), hogy több virtuális gépen is megoszthassa
+title: Megosztott lemezek engedélyezése az Azure Managed Disks szolgáltatásban
+description: Egy megosztott lemezzel (előzetes verzió) rendelkező Azure felügyelt lemez konfigurálása, amely több virtuális gépen is megosztható
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 0dbb1844d4c670abfdc5562580b0ee8b4549b6bd
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085483"
 ---
 # <a name="enable-shared-disk"></a>Megosztott lemez engedélyezése
 
-Ez a cikk ismerteti, hogyan engedélyezheti a megosztott lemezek (előzetes verzió) szolgáltatás az Azure felügyelt lemezek. Az Azure megosztott lemezei (előzetes verzió) egy új funkció az Azure felügyelt lemezek, amely lehetővé teszi, hogy csatolja a felügyelt lemez több virtuális gépek (VM) egyszerre. Egy felügyelt lemez csatlakoztatása több virtuális géphez lehetővé teszi, hogy új üzembe helyezése vagy a meglévő fürtözött alkalmazások áttelepítése az Azure-ba. 
+Ez a cikk bemutatja, hogyan engedélyezheti a megosztott lemezek (előzetes verzió) szolgáltatást az Azure Managed Disks szolgáltatásban. Az Azure Shared Disks (előzetes verzió) az Azure Managed Disks új funkciója, amely lehetővé teszi a felügyelt lemezek egyidejű csatlakoztatását több virtuális géphez (VM). A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba. 
 
-Ha általános információkat keres olyan felügyelt lemezeken, amelyeken engedélyezve van a megosztott lemez, olvassa el az [Azure megosztott lemezeit.](disks-shared.md)
+Ha olyan felügyelt lemezeken keres elméleti információkat, amelyeken engedélyezve vannak a megosztott lemezek, tekintse meg az [Azure megosztott lemezeket](disks-shared.md).
 [!INCLUDE [virtual-machines-enable-shared-disk](../../../includes/virtual-machines-enable-shared-disk.md)]
