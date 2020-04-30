@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82130994"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
@@ -27,7 +27,7 @@ Az erőforrás-naplók engedélyezéséhez a naplófájlok tárolásához valaho
 
 Az Azure Signaler szolgáltatáshoz tartozó erőforrás-naplók megtekinthetők. Ezek a naplók szélesebb körű áttekintést nyújtanak az Azure Signaler szolgáltatás példányával létesített kapcsolatról. Az erőforrás-naplók részletes információkat biztosítanak minden egyes kapcsolatban. Ilyenek például az alapinformációk (felhasználói azonosító, a kapcsolat azonosítója és a szállítási típus stb.) és az eseményekre vonatkozó információk (a csatlakozás, az esemény leválasztása és megszakítása stb.). az erőforrás-naplók a probléma azonosításához, a kapcsolatok nyomon követéséhez és az elemzéshez használhatók.
 
-### <a name="enable-resource-logs"></a>Erőforrás-naplók engedélyezése
+### <a name="enable-resource-logs"></a>Erőforrásnaplók engedélyezése
 
 Az erőforrás-naplók alapértelmezés szerint le vannak tiltva. Az erőforrás-naplók engedélyezéséhez kövesse az alábbi lépéseket:
 
