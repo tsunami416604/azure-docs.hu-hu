@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép létrehozása felügyelt lemezképből az Azure-ban
-description: Hozzon létre egy Windows virtuális gép egy általános felügyelt felügyelt lemezkép az Azure PowerShell vagy a portál használatával.
+title: Virtuális gép létrehozása felügyelt rendszerképből az Azure-ban
+description: Hozzon létre egy Windows rendszerű virtuális gépet egy általánosított felügyelt rendszerképből Azure PowerShell vagy a portál használatával.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086317"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
-Az Azure Portalvagy a PowerShell használatával több virtuális gépet (VM-et) hozhat létre egy Azure által felügyelt virtuális géplemezképből. A felügyelt virtuálisgép-lemezkép tartalmazza a virtuális gép létrehozásához szükséges információkat, beleértve az operációs rendszert és az adatlemezeket. A lemezképet felállító virtuális merevlemezek (VHD-k), beleértve az operációs rendszer lemezeket és az adatlemezeket is, felügyelt lemezként tárolódnak. 
+A Azure Portal vagy a PowerShell használatával több virtuális gépet (VM) is létrehozhat egy Azure által felügyelt virtuálisgép-rendszerképből. A felügyelt virtuálisgép-rendszerkép tartalmazza a virtuális gép létrehozásához szükséges információkat, beleértve az operációs rendszert és az adatlemezeket. A lemezképet alkotó virtuális merevlemezeket (VHD-ket), beleértve az operációsrendszer-lemezeket és az adatlemezeket is, felügyelt lemezként tárolja a rendszer. 
 
-Új virtuális gép létrehozása előtt létre kell [hoznia egy felügyelt virtuálisgép-lemezképet,](capture-image-resource.md) amelyet forráslemezként használhat, és olvasási hozzáférést kell biztosítania a lemezképen minden olyan felhasználószámára, akinek hozzáféréssel kell rendelkeznie a lemezképhez. 
+Új virtuális gép létrehozása előtt [létre kell hoznia egy felügyelt virtuálisgép-rendszerképet](capture-image-resource.md) , amelyet a forrás képként kíván használni, és olvasási hozzáférést kell adnia a rendszerképhez minden olyan felhasználónak, akinek hozzáféréssel kell rendelkeznie a képhez. 
 
 
 ## <a name="use-the-portal"></a>A portál használata
 
-1. A felügyelt lemezkép megkereséséhez keresse meg az [Azure Portalon.](https://portal.azure.com) Keresse meg és válassza a **Képek**lehetőséget.
-3. Jelölje ki a listában a használni kívánt képet. Megnyílik a kép **áttekintése** lap.
-4. Válassza a menü **Virtuálisgép létrehozása** parancsát.
-5. Adja meg a virtuális gép adatait. Az itt megadott felhasználónév és jelszó a virtuális gépbe való bejelentkezéshez lesz használva. Ha elkészült, válassza **az OK gombot.** Létrehozhatja az új virtuális gép egy meglévő erőforráscsoportban, vagy válassza **az Új létrehozása** a virtuális gép tárolására egy új erőforráscsoport létrehozásához.
+1. A felügyelt rendszerkép kereséséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **képeket**.
+3. Válassza ki a listából a használni kívánt rendszerképet. Megnyílik a rendszerkép **áttekintése** oldal.
+4. Válassza a **virtuális gép létrehozása** lehetőséget a menüből.
+5. Adja meg a virtuális gép adatait. Az itt megadott felhasználónevet és jelszót fogja használni a rendszer a virtuális gépre való bejelentkezéshez. Ha elkészült, kattintson **az OK gombra**. Létrehozhatja az új virtuális gépet egy meglévő erőforráscsoporthoz, vagy az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a virtuális gép tárolásához.
 6. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. 
-7. A **Beállítások csoportban**szükség szerint módosítsa a szükséges módosításokat, és válassza **az OK gombot.** 
-8. Az összefoglaló lapon a kép neve **privát képként**jelenik meg. Válassza **az Ok gombot** a virtuális gép üzembe helyezésének elindításához.
+7. A **Beállítások**területen szükség szerint végezze el a módosításokat, majd kattintson **az OK gombra**. 
+8. Az összefoglalás lapon a rendszerkép neve **privát képként**jelenik meg. A virtuális gép telepítésének elindításához kattintson **az OK gombra** .
 
 
 ## <a name="use-powershell"></a>A PowerShell használata
 
-A PowerShell segítségével virtuális gép létrehozása egy lemezképből az egyszerűsített paraméterkészlet a [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használatával. A lemezképnek ugyanabban az erőforráscsoportban kell lennie, ahol létre fogja hozni a virtuális gép.
+A PowerShell használatával létrehozhat egy virtuális gépet egy rendszerképből a [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag egyszerűsített paraméterének használatával. A rendszerképnek ugyanabban az erőforráscsoporthoz kell lennie, ahol létre szeretné hozni a virtuális gépet.
 
  
 
-A [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) egyszerűsített paraméterkészlete csak egy nevet, erőforráscsoportot és lemezképnevet igényel, hogy egy lemezképből virtuális gép jön létre. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb neveket biztosítunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozhatja őket. Előzetesen is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagba. A New-AzVm a meglévő erőforrásokat használja, ha megtalálja őket a nevük alapján.
+A [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. A New-AzVm a meglévő erőforrásokat fogja használni, ha azok nevük alapján megtalálják őket.
 
-A következő példa létrehoz egy *myVMFromImage*nevű virtuális gép , a *myResourceGroup* erőforráscsoportban a *myImage*nevű lemezképből. 
+A következő példa egy *myVMFromImage*nevű virtuális gépet hoz létre a *myResourceGroup* -erőforráscsoporthoz a *myImage*nevű rendszerképből. 
 
 
 ```azurepowershell-interactive
@@ -59,5 +59,5 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>További lépések
-[Windows-virtuális gépek létrehozása és kezelése az Azure PowerShell-modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

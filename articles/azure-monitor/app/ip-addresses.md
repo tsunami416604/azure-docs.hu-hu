@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/23/2020
 ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105845"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights és Log Analytics által használt IP-címek
@@ -43,13 +43,13 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy a App
 
 | Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
-| Konfiguráció |`management.core.windows.net` | |`443` |
-| Konfiguráció |`management.azure.com` | |`443` |
-| Konfiguráció |`login.windows.net` | |`443` |
-| Konfiguráció |`login.microsoftonline.com` | |`443` |
-| Konfiguráció |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| Konfiguráció |`auth.gfx.ms` | |`443` |
-| Konfiguráció |`login.live.com` | |`443` |
+| Configuration |`management.core.windows.net` | |`443` |
+| Configuration |`management.azure.com` | |`443` |
+| Configuration |`login.windows.net` | |`443` |
+| Configuration |`login.microsoftonline.com` | |`443` |
+| Configuration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| Configuration |`auth.gfx.ms` | |`443` |
+| Configuration |`login.live.com` | |`443` |
 | Telepítés | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek

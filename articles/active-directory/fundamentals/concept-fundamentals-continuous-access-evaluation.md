@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112575"
 ---
-# <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés kiértékelése
+# <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
 A Microsoft szolgáltatásai, például a Azure Active Directory (Azure AD) és az Office 365, nyílt szabványok és protokollok használatával maximalizálják az együttműködési képességet. Az egyik legkritikusabb is a Open ID-kapcsolat (OIDC). Ha egy ügyfélalkalmazás, például az Outlook csatlakozik egy szolgáltatáshoz, például az Exchange Online-hoz, az API-kérések a OAuth 2,0 hozzáférési jogkivonatok használatával engedélyezettek. Alapértelmezés szerint ezek a hozzáférési tokenek egy óráig érvényesek. Amikor lejárnak, a rendszer visszairányítja az ügyfelet az Azure AD-be a frissítéshez. Ez lehetőséget biztosít a felhasználói hozzáférésre vonatkozó szabályzatok újraértékelésére is – dönthet úgy, hogy nem frissíti a jogkivonatot egy feltételes hozzáférési szabályzat miatt, vagy mert a felhasználó le van tiltva a címtárban. 
 

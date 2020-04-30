@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájl
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105743"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről

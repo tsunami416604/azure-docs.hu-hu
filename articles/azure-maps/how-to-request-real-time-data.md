@@ -1,6 +1,6 @@
 ---
-title: Valós idejű tömegközlekedési adatok kérése | Microsoft Azure Maps
-description: Valós idejű tömegközlekedési adatok kérése a Microsoft Azure Maps mobilitási szolgáltatásával.
+title: Valós idejű nyilvános adatátviteli adatforgalom igénylése | Microsoft Azure térképek
+description: A Microsoft Azure Maps mobilitási szolgáltatással valós idejű nyilvános adatátvitelt igényelhet.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -10,43 +10,43 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4743fbe84f5d41b4659e13d96868d2f64a473e4b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086077"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Valós idejű tömegközlekedési adatok kérése az Azure Maps mobilitási szolgáltatásával
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással valós idejű nyilvános továbbítási adatai igényelhetők
 
-Ez a cikk bemutatja, hogyan használhatja az Azure Maps [mobilitási szolgáltatást](https://aka.ms/AzureMapsMobilityService) valós idejű tömegközlekedési adatok kéréséhez.
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure Maps [mobilitási szolgáltatást](https://aka.ms/AzureMapsMobilityService) valós idejű nyilvános adatátviteli kérelmek igényléséhez.
 
-Ebben a cikkben megtudhatja, hogyan kérheti a következő valós idejű érkezéseket az adott megállóba érkező összes vonalra
+Ebből a cikkből megtudhatja, hogyan kérheti le a következő valós idejű beérkezést az adott leállítás során beérkező összes sorra
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először rendelkeznie kell egy Azure Maps-fiókkal és egy előfizetési kulccsal az Azure Maps tömegközlekedési API-khoz való hívásához. További információkért kövesse a [Fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps-fiók létrehozásához található utasításokat. Kövesse az [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account) lépéseket a fiók elsődleges kulcsának beszerzéséhez. Az Azure Maps hitelesítéssel kapcsolatos további tudnivalókról az [Azure Maps hitelesítésének kezelése](./how-to-manage-authentication.md)című témakörben talál.
+Először rendelkeznie kell egy Azure Maps-fiókkal és egy előfizetési kulccsal, hogy bármilyen hívást lehessen kezdeményezni a Azure Maps nyilvános átviteli API-khoz. További információért kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók létrehozásához című témakör utasításait. A fiók elsődleges kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-Ez a cikk a [Postman alkalmazást](https://www.getpostman.com/apps) használja rest-hívások létrehozásához. Bármilyen API-fejlesztői környezetet használhat, amelyet szeretne.
+Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>Valós idejű érkezések kérése a megálláshoz
+## <a name="request-real-time-arrivals-for-a-stop"></a>Valós idejű érkezések igénylése leállításhoz
 
-Ahhoz, hogy egy adott tömegközlekedési megálló valós idejű érkezési adatait kérhesse, kérelmet kell benyújtania az Azure Maps mobilitási szolgáltatás [valós idejű érkezési API-jára.](https://aka.ms/AzureMapsMobilityRealTimeArrivals) [Mobility Service](https://aka.ms/AzureMapsMobilityService) A kérelem teljesítéséhez szüksége lesz a **metroazonosítóra** és a **stopId-ra.** Ha többet szeretne megtudni aparaméterek igényléséről, olvassa el útmutatónkat a [tömegközlekedési útvonalak igényléséről.](https://aka.ms/AMapsHowToGuidePublicTransitRouting)
+Egy adott nyilvános adatátviteli leálláshoz tartozó valós idejű beérkező adatok igényléséhez a Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) [valós idejű beérkezési API-](https://aka.ms/AzureMapsMobilityRealTimeArrivals) ját kell kérnie. A kérelem elvégzéséhez szüksége lesz a **metroID** és a **stopID** . Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [nyilvános átviteli útvonalak igénylését](https://aka.ms/AMapsHowToGuidePublicTransitRouting)ismertető útmutatót.
 
-Használjuk az "522"-t metróazonosítóként, amely a "Seattle-Tacoma–Bellevue, WA" terület metróazonosítója. Használja az "522---2060603"-ot megállóazonosítóként, ez a buszmegálló a "Ne 24th St & 162nd Ave Ne, Bellevue WA" megállónál található. A következő öt valós idejű érkezési adat igényléséhez a következő élő érkezések hez hajtsa végre a következő lépéseket:
+A "522" a Metro ID-ként használjuk, amely a "Seattle – Tacoma – Bellevue, WA" területen található Metro-azonosító. A "522---2060603" érték leállítási AZONOSÍTÓként való használata esetén ez a buszmegálló a következő címen érhető el: "ne 24 St & 162nd Ave ne, Bellevue WA". Ha a következő öt valós idejű beérkező adatbevitelt szeretné kérelmezni, az összes következő élő érkezésnél végezze el a következő lépéseket:
 
-1. Nyissa meg a Postman alkalmazást, és hozzon létre egy gyűjteményt a kérések tárolásához. A Postman alkalmazás tetején válassza az **Új**lehetőséget. Az **Új létrehozása** ablakban válassza a **Gyűjtemény**lehetőséget.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
+1. Nyissa meg a Poster alkalmazást, és hozzon létre egy gyűjteményt a kérések tárolásához. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
 
-2. A kérelem létrehozásához válassza ismét az **Új** lehetőséget. Az **Új létrehozása** ablakban válassza a **Kérés lehetőséget.** Adja meg a **kérelem nevét.** Válassza ki az előző lépésben létrehozott gyűjteményt, mint a kérés mentésének helyét. Ezután válassza a **Mentés gombot.**
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** . Válassza ki azt a gyűjteményt, amelyet az előző lépésben hozott létre, a kérelem mentési helyeként. Ezután válassza a **Mentés**lehetőséget.
 
-    ![Kérelem létrehozása a Postman ben](./media/how-to-request-transit-data/postman-new.png)
+    ![Kérelem létrehozása a Poster-ban](./media/how-to-request-transit-data/postman-new.png)
 
-3. Válassza a **GET** HTTP metódust a szerkesztő lapon, és írja be a következő URL-címet a GET-kérelem létrehozásához. Cserélje `{subscription-key}`le az Azure Maps elsődleges kulcsát.
+3. Válassza a http **beolvasása** metódust a Builder (szerkesztő) lapon, majd a Get kérelem létrehozásához adja meg a következő URL-címet. Cserélje `{subscription-key}`le a értékét a Azure Maps elsődleges kulcsára.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Sikeres kérés után a következő választ kapja.  Figyelje meg, hogy a "scheduleType" paraméter határozza meg, hogy a becsült érkezési idő valós idejű vagy statikus adatokon alapul-e.
+4. Sikeres kérés után a következő válasz jelenik meg.  Figyelje meg, hogy a "Scheduletype értéke" paraméter határozza meg, hogy a becsült beérkezési idő valós idejű vagy statikus adatértéken alapul-e.
 
     ```JSON
     {
@@ -113,12 +113,12 @@ Használjuk az "522"-t metróazonosítóként, amely a "Seattle-Tacoma–Bellevu
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az átviteli adatok mobilszolgáltatóval történő igényléséhez:
+Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 
 > [!div class="nextstepaction"]
-> [Az átutazási adatok kérése](how-to-request-transit-data.md)
+> [Adatátviteli adatkérés](how-to-request-transit-data.md)
 
-Ismerje meg az Azure Maps mobilitási szolgáltatás API dokumentációját:
+Ismerje meg a Azure Maps mobilitási szolgáltatás API-dokumentációját:
 
 > [!div class="nextstepaction"]
-> [A Mobility Service API dokumentációja](https://aka.ms/AzureMapsMobilityService)
+> [A mobilitási szolgáltatás API-dokumentációja](https://aka.ms/AzureMapsMobilityService)

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás Windows Server virtuális géphez
-description: Megtudhatja, hogyan csatlakozhat és jelentkezz be egy Windows virtuális gépre az Azure Portalon és a Resource Manager üzembe helyezési modelljén keresztül.
+title: Kapcsolódás Windows Server rendszerű virtuális géphez
+description: Útmutató a Windows rendszerű virtuális gépekhez való kapcsolódáshoz és a Azure Portal és a Resource Manager-alapú üzemi modell használatával történő bejelentkezéshez.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -8,60 +8,60 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086215"
 ---
-# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Csatlakozás és bejelentkezés Windows rendszert futtató Azure-alapú virtuális gépre
-Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozik a virtuális géphez, majd bejelentkezik.
+# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre
+Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először kapcsolódjon a virtuális géphez, majd jelentkezzen be.
 
-Ha Macről szeretne Windows virtuális géphez csatlakozni, telepítenie kell egy Mac-alapú RDP-ügyfelet, például a [Microsoft Remote Desktop programot.](https://aka.ms/rdmac)
+Ha Mac számítógépről szeretne csatlakozni egy Windows rendszerű virtuális géphez, telepítenie kell egy RDP-ügyfelet a Mac rendszerhez, például [Microsoft távoli asztal](https://aka.ms/rdmac).
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
-1. Lépjen az [Azure Portalra,](https://portal.azure.com/) és csatlakozzon egy virtuális géphez. Keressen és válasszon **virtuális gépek**lehetőséget.
+1. A virtuális géphez való kapcsolódáshoz lépjen a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki a **virtuális gépeket**.
 2. Válassza ki a virtuális gépet a listából.
-3. A virtuális gép lapjának elején válassza a **Csatlakozás**lehetőséget.
-4. A Csatlakozás a **virtuális géphez** lapon válassza az **RDP**lehetőséget, majd válassza ki a megfelelő **IP-címet** és **portszámot.** A legtöbb esetben az alapértelmezett IP-címet és portot kell használni. Válassza **az RDP-fájl letöltése lehetőséget.** Ha a virtuális gép rendelkezik egy just-in-time házirend-készlet, először ki kell **választania** a hozzáférés kérése gombra, hogy hozzáférést kérjen, mielőtt letöltheti az RDP-fájlt. A just-in-time szabályzatról a [Virtuálisgép-hozzáférés kezelése az just in time házirend használatával című témakörben](../../security-center/security-center-just-in-time.md)talál további információt.
-5. Nyissa meg a letöltött RDP-fájlt, és amikor a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Figyelmeztetést fog kapni, `.rdp` hogy a fájl ismeretlen közzétevőtől származik. Ez a várható eredmény. A **Távoli asztali kapcsolat** ablakban válassza a **Csatlakozás** lehetőséget a folytatáshoz.
+3. A virtuális gép oldalának elején válassza a **kapcsolat**lehetőséget.
+4. A **Csatlakozás virtuális géphez** lapon válassza az **RDP**lehetőséget, majd válassza ki a megfelelő **IP-címet** és **portszámot**. A legtöbb esetben az alapértelmezett IP-címet és portot kell használni. Válassza az **RDP-fájl letöltése**lehetőséget. Ha a virtuális gépen egy igény szerinti szabályzat van beállítva, először a hozzáférés **kérése** gombra kell kattintania ahhoz, hogy le tudja tölteni az RDP-fájlt. Az igény szerinti szabályzattal kapcsolatos további információkért lásd: [virtuális gépek hozzáférésének kezelése az igény szerinti házirend használatával](../../security-center/security-center-just-in-time.md).
+5. Nyissa meg a letöltött RDP-fájlt, és válassza a **Kapcsolódás** lehetőséget, amikor a rendszer kéri. Figyelmeztetés jelenik meg arról, hogy a `.rdp` fájl ismeretlen közzétevőtől származik. Ez a várható eredmény. A **Távoli asztali kapcsolat** ablakban válassza a **Kapcsolódás** lehetőséget a folytatáshoz.
    
     ![Képernyőkép az ismeretlen közzétevőre vonatkozó figyelmeztetésről.](./media/connect-logon/rdp-warn.png)
-3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Adja meg egy fiók hitelesítő adatait a virtuális gépen, majd kattintson az **OK gombra.**
+3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Adja meg egy fiók hitelesítő adatait a virtuális gépen, majd kattintson az **OK gombra**.
    
-     **Helyi fiók**: Ez általában a helyi fiók felhasználóneve és jelszava, amelyet a virtuális gép létrehozásakor megadott. Ebben az esetben a tartomány a virtuális gép neve, és a következő módon van megadva: *vmname*&#92;*username*.  
+     **Helyi fiók**: ez általában a virtuális gép létrehozásakor megadott helyi fiók felhasználóneve és jelszava. Ebben az esetben a tartomány a virtuális gép neve, és a következő módon van megadva: *vmname*&#92;*username*.  
    
-    **Tartományhoz csatlakozott virtuális gép**: Ha a virtuális gép tartományhoz tartozik, írja be a felhasználónevet *tartomány*&#92;*felhasználónév*formátumban. A fióknak szerepelnie kell a Rendszergazdák csoportban, vagy távoli hozzáférési jogosultságokkal kell rendelkeznie a virtuális géphez.
+    **Tartományhoz csatlakoztatott virtuális gép**: Ha a virtuális gép tartományhoz tartozik, írja be a felhasználónevet *tartomány*&#92;*Felhasználónév*formátumban. A fióknak szerepelnie kell a Rendszergazdák csoportban, vagy távoli hozzáférési jogosultságokkal kell rendelkeznie a virtuális géphez.
    
-    **Tartományvezérlő**: Ha a virtuális gép tartományvezérlő, adja meg az adott tartomány tartományi rendszergazdai fiókjának felhasználónevét és jelszavát.
+    **Tartományvezérlő**: Ha a virtuális gép tartományvezérlő, adja meg az adott tartományhoz tartozó tartományi rendszergazdai fiók felhasználónevét és jelszavát.
 4. Válassza az **Igen** lehetőséget a virtuális gép identitásának ellenőrzéséhez és a bejelentkezés befejezéséhez.
    
    ![Képernyőkép a virtuális gép identitásának ellenőrzési üzenetéről.](./media/connect-logon/cert-warning.png)
 
 
    > [!TIP]
-   > Ha a **portálon** a Csatlakozás gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz [expressz útvonalon](../../expressroute/expressroute-introduction.md) vagy [helyek közötti VPN-kapcsolaton](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) keresztül, az RDP használata előtt létre kell hoznia és hozzá kell rendelnie a virtuális géphez egy nyilvános IP-címet. További információ: [Public IP addresses in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Ha a portálon a **Csatlakozás** gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz egy [expressz útvonalon](../../expressroute/expressroute-introduction.md) vagy [helyek közötti VPN-](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) kapcsolaton keresztül, akkor az RDP használata előtt létre kell hoznia és hozzá kell rendelnie egy nyilvános IP-címet a virtuális géphez. További információ: [nyilvános IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
    > 
    > 
 
-## <a name="connect-to-the-virtual-machine-using-powershell"></a>Csatlakozás a virtuális géphez a PowerShell használatával
+## <a name="connect-to-the-virtual-machine-using-powershell"></a>Kapcsolódás a virtuális géphez a PowerShell használatával
 
  
 
-Ha PowerShellt használ, és telepítette az Azure PowerShell-modult, a parancsmag használatával is csatlakozhat, az `Get-AzRemoteDesktopFile` alábbiak szerint.
+Ha a PowerShellt használja, és a Azure PowerShell modul telepítve van, akkor a `Get-AzRemoteDesktopFile` parancsmag használatával is kapcsolódhat, ahogy az alább látható.
 
-Ez a példa azonnal elindítja az RDP-kapcsolatot, és a fentiekhez hasonló utasításokat ad.
+Ez a példa azonnal elindítja az RDP-kapcsolatokat, így a fentiekhez hasonló kérések is megjelennek.
 
 ```powershell
 Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
 ```
 
-Az RDP-fájlt későbbi használatra is mentheti.
+Az RDP-fájl későbbi használatra is menthető.
 
 ```powershell
 Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ha nehezen tud csatlakozni, olvassa el a Távoli asztali kapcsolatok – Problémamegoldás című [témakört.](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
+Ha problémája van a kapcsolódással, tekintse meg a [Távoli asztal kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakört 
 

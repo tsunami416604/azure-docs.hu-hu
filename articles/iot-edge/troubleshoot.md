@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás – Azure IoT Edge | Microsoft dokumentumok
-description: Ezzel a cikkel az Azure IoT Edge szabványos diagnosztikai készségeinek elsajátítása, például az összetevők állapotának és naplóinak beolvasása, valamint a gyakori problémák megoldása
+title: Hibakeresés – Azure IoT Edge | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogy miként használhatók a Azure IoT Edge általános diagnosztikai képességei, például az összetevők állapotának és naplóinak beolvasása, valamint a gyakori problémák
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -12,23 +12,23 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086521"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
 Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ezt a cikket útmutatóként használhatja a hibaelhárításhoz és a megoldáshoz.
 
-## <a name="run-the-iotedge-check-command"></a>Futtassa az iotedge "check" parancsot
+## <a name="run-the-iotedge-check-command"></a>A iotedge "pipa" parancs futtatása
 
-Az első lépés az IoT Edge hibaelhárításakor kell használni a `check` parancsot, amely a konfigurációs és kapcsolódási tesztek gyűjteménye fut a gyakori problémák. A `check` parancs az [1.0.7-es](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) és újabb verzióban érhető el.
+Az első lépés a IoT Edge hibaelhárításakor a `check` parancs használata, amely a konfigurációs és kapcsolati tesztek gyűjteményét futtatja a gyakori problémákhoz. A `check` parancs a [kiadási 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) és újabb verziókban érhető el.
 
-A parancs `check` futtatásához az alábbiak szerint, vagy a `--help` zászló, hogy egy teljes listát a lehetőségek:
+A `check` parancsot a következőképpen futtathatja, vagy belefoglalhatja `--help` a jelzőt a lehetőségek teljes listájának megjelenítéséhez:
 
-* Linuxalatt:
+* Linux rendszeren:
 
   ```bash
   sudo iotedge check
@@ -40,21 +40,21 @@ A parancs `check` futtatásához az alábbiak szerint, vagy a `--help` zászló,
   iotedge check
   ```
 
-A hibaelhárító eszköz számos ellenőrzést futtat, amelyek a következő három kategóriába vannak rendezve:
+A hibaelhárító eszköz számos olyan ellenőrzést futtat, amelyek az alábbi három kategóriába vannak rendezve:
 
-* Konfigurációs ellenőrzések: Megvizsgálja azokat a részleteket, amelyek megakadályozhatják, hogy az Edge-eszközök csatlakozzanak a felhőhöz, beleértve a *config.yaml* és a tárolómotor problémáit.
-* Kapcsolatellenőrzések: Ellenőrzi, hogy az IoT Edge futásidejű elérheti-e a portokat a gazdaeszközön, és az összes IoT Edge-összetevő csatlakozhat az IoT Hubhoz.
-* Üzemkészültségi ellenőrzések: Az ajánlott gyártási gyakorlati tanácsok, például az eszközhitelesítési tanúsítványok állapota és a modul naplófájljának konfigurációja.
+* Konfigurációs ellenőrzések: megvizsgálja azokat az adatokat, amelyek megakadályozzák, hogy az Edge-eszközök csatlakozzanak a felhőhöz, beleértve a *config. YAML* és a Container motorral kapcsolatos problémákat is.
+* Kapcsolat ellenőrzése: ellenőrzi, hogy a IoT Edge futtatókörnyezet hozzáférhet-e a gazdagép-eszköz portjaihoz, és hogy az összes IoT Edge-összetevő csatlakozni tud-e a IoT Hubhoz.
+* Üzemi készültségi ellenőrzések: az ajánlott éles környezetek, például az eszközök HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa és a modul naplófájljai konfigurációjának állapotát keresi.
 
-Az eszköz által futtatott diagnosztikai ellenőrzésekről, többek között arról, hogy mi a teendő, ha hibaüzenetet vagy figyelmeztetést kap, olvassa el az [IoT Edge hibaelhárítási ellenőrzéseit.](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)
+További információ az eszköz által futtatott diagnosztikai ellenőrzésekről, beleértve a teendőket, ha hibaüzenetet vagy figyelmeztetést kap: [IoT Edge-hibakeresési ellenőrzés](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
-## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Hibakeresési információk gyűjtése az iotedge "support-bundle" paranccsal
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Hibakeresési információk gyűjtése a iotedge support-Bundle paranccsal
 
-Ha egy IoT Edge-eszközről kell naplókat gyűjtenie, a `support-bundle` legkényelmesebb módja a parancs használata. Alapértelmezés szerint ez a parancs összegyűjti a modult, az IoT Edge Security Manager téseit és a tárolómotor-naplókat, az "iotedge check" JSON kimenetet és más hasznos hibakeresési információkat. Tömöríti őket egyetlen fájlba a könnyű megosztás érdekében. A `support-bundle` parancs az [1.0.9-es](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) és újabb verzióban érhető el.
+Ha IoT Edge-eszközről kell összegyűjtenie a naplókat, a legkényelmesebb módszer a `support-bundle` parancs használata. Alapértelmezés szerint ez a parancs a modult, IoT Edge a Security Manager és a Container Engine-naplókat, a "iotedge-ellenőrzés" JSON-kimenetét és más hasznos hibakeresési információkat gyűjti. Egyetlen fájlba tömöríti őket, így könnyen megosztható. A `support-bundle` parancs a [kiadási 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) és újabb verziókban érhető el.
 
-Futtassa `support-bundle` a `--since` parancsot a jelzővel, és adja meg, hogy mennyi ideig szeretne naplókat beszerezni a múlttól. Például `6h` kap naplók, mivel az `6d` elmúlt 6 órában, mivel az elmúlt 6 nap, `6m` mivel az elmúlt 6 perc, és így tovább. A `--help` beállítások teljes listájának megtekintéséhez adja meg a jelzőt.
+Futtassa a `support-bundle` parancsot a `--since` jelzővel annak megadásához, hogy a múltban mennyi ideig szeretné lekérni a naplókat. A naplók `6h` például az elmúlt 6 óra `6d` óta az elmúlt 6 nap `6m` óta, az elmúlt 6 perc óta és így tovább. A beállítások `--help` teljes listájának megjelenítéséhez adja meg a jelzőt.
 
-* Linuxalatt:
+* Linux rendszeren:
 
   ```bash
   sudo iotedge support-bundle --since 6h
@@ -67,31 +67,31 @@ Futtassa `support-bundle` a `--since` parancsot a jelzővel, és adja meg, hogy 
   ```
 
 > [!WARNING]
-> A `support-bundle` parancs kimenete tartalmazhat állomás-, eszköz- és modulneveket, a modulok által naplózott információkat stb. Kérjük, vegye figyelembe ezt, ha megosztja a kimenetet egy nyilvános fórumon.
+> A parancs kimenete tartalmazhatja a `support-bundle` gazdagép, az eszköz és a modul nevét, a modulok által naplózott adatokat stb. Kérjük, vegye figyelembe, hogy ha a kimenetet egy nyilvános fórumon osztja meg.
 
 ## <a name="standard-diagnostic-steps"></a>Általános diagnosztikai lépések
 
-Ha problémát tapasztal, az IoT Edge-eszköz állapotáról a tárolónaplók és az eszközről átadott üzenetek áttekintésével többet is megtudhat. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet.
+Ha problémába ütközik, további információt talál a IoT Edge eszköz állapotáról, ha áttekinti a tároló naplóit, valamint az eszközre és az eszközről továbbított üzeneteket. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT Edge Security Manager és naplói állapotának ellenőrzése
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>A IoT Edge Security Manager és a naplók állapotának ellenõrzése
 
-Linuxalatt:
+Linux rendszeren:
 
-* Az IoT Edge security manager állapotának megtekintése:
+* A IoT Edge Security Manager állapotának megtekintése:
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-* Az IoT Edge biztonsági kezelőnaplóinak megtekintése:
+* A IoT Edge Security Manager naplóinak megtekintése:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-* Az IoT Edge security manager részletesebb naplóinak megtekintéséhez:
+* A IoT Edge Security Manager részletesebb naplófájljainak megtekintéséhez:
 
-  * Az iotedge démonbeállításainak szerkesztése:
+  * A iotedge démon beállításainak szerkesztése:
 
       ```bash
       sudo systemctl edit iotedge.service
@@ -104,7 +104,7 @@ Linuxalatt:
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
 
-  * Indítsa újra az IoT Edge biztonsági démont:
+  * Indítsa újra a IoT Edge biztonsági démont:
 
       ```bash
       sudo systemctl cat iotedge.service
@@ -114,24 +114,24 @@ Linuxalatt:
 
 Windows rendszeren:
 
-* Az IoT Edge security manager állapotának megtekintése:
+* A IoT Edge Security Manager állapotának megtekintése:
 
    ```powershell
    Get-Service iotedge
    ```
 
-* Az IoT Edge biztonsági kezelőnaplóinak megtekintése:
+* A IoT Edge Security Manager naplóinak megtekintése:
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha az IoT Edge Security Manager nem fut, ellenőrizze a yaml konfigurációs fájlt
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha a IoT Edge Security Manager nem fut, ellenőrizze a YAML konfigurációs fájlját.
 
 > [!WARNING]
-> A YAML-fájlok behúzásként nem tartalmazhatnak tabulátorokat. Használjon helyette 2 szóközt. A legfelső szintű elemeknek nem lehetnek kezdőszóközök.
+> A YAML-fájlok nem tartalmazhatnak behúzást tartalmazó lapokat. Ehelyett használjon két szóközt. A legfelső szintű elemeknek nincsenek kezdő szóközök.
 
-Linuxalatt:
+Linux rendszeren:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -143,19 +143,19 @@ Windows rendszeren:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>A tárolónaplók ellenőrzése problémák miatt
+### <a name="check-container-logs-for-issues"></a>A problémákhoz tartozó tároló-naplók keresése
 
-Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók problémák észleléséhez. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge futásidejű: edgeAgent és edgeHub tárolókat. Az IoT Edge-ügynök naplók általában az egyes tárolók életciklusára vonatkozó információkat. Az IoT Edge hub naplók az üzenetküldésésésésés és az útválasztási adatok.
+Ha a IoT Edge biztonsági démon fut, tekintse meg a tárolók naplóit a problémák észleléséhez. Indítsa el a telepített tárolókat, majd tekintse meg a IoT Edge futtatókörnyezetet alkotó tárolókat: edgeAgent és edgeHub. A IoT Edge-ügynök naplói általában az egyes tárolók életciklusára vonatkozó információkat biztosítanak. Az IoT Edge hub naplói az üzenetküldéssel és az útválasztással kapcsolatos információkat biztosítanak.
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hubon keresztül küldött üzenetek megtekintése
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hub-on keresztül haladó üzenetek megtekintése
 
-Megtekintheti az Üzenetek et az IoT Edge hubon keresztül, és információkat gyűjthet a futásidejű tárolók részletes naplóiból. Ha be szeretné kapcsolni a részletes naplókat ezeken a tárolókon, állítsa be `RuntimeLogLevel` a yaml konfigurációs fájlban. A fájl megnyitása:
+Megtekintheti az IoT Edge hub-on keresztül megjelenő üzeneteket, és bepillantást nyerhet a részletes naplókból a futásidejű tárolóból. A részletes naplók ezen tárolók bekapcsolásához állítsa `RuntimeLogLevel` be a YAML konfigurációs fájlját. A fájl megnyitása:
 
-Linuxalatt:
+Linux rendszeren:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -167,7 +167,7 @@ Windows rendszeren:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Alapértelmezés szerint `agent` az elem a következő példához hasonlóan fog kinézni:
+Alapértelmezés szerint az `agent` elem a következő példához hasonlóan fog kinézni:
 
    ```yaml
    agent:
@@ -179,7 +179,7 @@ Alapértelmezés szerint `agent` az elem a következő példához hasonlóan fog
        auth: {}
    ```
 
-Csere `env: {}` erre:
+Csere `env: {}` ezzel:
 
    ```yaml
    env:
@@ -187,31 +187,31 @@ Csere `env: {}` erre:
    ```
 
    > [!WARNING]
-   > A YAML-fájlok nem tartalmazhatnak tabulátorokat identációként. Használjon helyette 2 szóközt. A legfelső szintű elemeknek nem lehet kezdő szóközük.
+   > A YAML-fájlok nem tartalmazhatnak a lapokat identitásként. Ehelyett használjon két szóközt. A legfelső szintű elemek nem rendelkezhetnek kezdő szóközökkel.
 
-Mentse a fájlt, és indítsa újra az IoT Edge biztonsági kezelőjét.
+Mentse a fájlt, és indítsa újra a IoT Edge Security Manager alkalmazást.
 
-Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Tekintse meg ezeket az üzeneteket az [Azure IoT Hub bővítmény a Visual Studio-kódhoz.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) További információ: [Handy tool when you develop with Azure IoT.](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)
+Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával tekintheti meg ezeket az üzeneteket. További információ: [praktikus eszköz az Azure IoT való fejlesztés során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Tárolók újraindítása
 
-A naplók és az üzenetek vizsgálata után megpróbálhatja újraindítani a tárolókat:
+A naplók és üzenetek adatainak kivizsgálása után próbálkozzon újra a tárolók újraindításával:
 
 ```cmd
 iotedge restart <container name>
 ```
 
-Indítsa újra az IoT Edge futásidejű tárolókat:
+Indítsa újra a IoT Edge futtatókörnyezeti tárolókat:
 
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>Az IoT Edge biztonsági kezelőjének újraindítása
+### <a name="restart-the-iot-edge-security-manager"></a>A IoT Edge Security Manager újraindítása
 
-Ha a probléma továbbra is fennáll, megpróbálhatja újraindítani az IoT Edge biztonsági kezelőjét.
+Ha a probléma továbbra is fennáll, próbálja meg újraindítani a IoT Edge Security Managert.
 
-Linuxalatt:
+Linux rendszeren:
 
    ```cmd
    sudo systemctl restart iotedge
@@ -225,11 +225,11 @@ Windows rendszeren:
    Start-Service iotedge
    ```
 
-## <a name="iot-edge-agent-stops-after-about-a-minute"></a>Az IoT Edge-ügynök körülbelül egy perc múlva leáll
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge ügynök egy perc múlva leáll
 
-Az edgeAgent modul elindul, és sikeresen fut körülbelül egy percig, majd leáll. A naplók azt jelzik, hogy az IoT Edge-ügynök megkísérli az IoT Hubhoz való csatlakozást AMQP-n keresztül, majd megpróbál csatlakozni az AMQP használatával a WebSocketen keresztül. Ha ez nem sikerül, az IoT Edge-ügynök kilép.
+A edgeAgent modul egy percen keresztül elindul, és sikeresen fut, majd leáll. A naplók azt jelzik, hogy a IoT Edge ügynök megpróbál csatlakozni a AMQP-on keresztüli IoT Hub, majd a AMQP-en keresztül próbál csatlakozni a WebSocket használatával. Ha ez nem sikerül, a IoT Edge ügynök kilép.
 
-Példa edgeAgent naplók:
+Példa edgeAgent-naplókra:
 
 ```output
 2017-11-28 18:46:19 [INF] - Starting module management agent.
@@ -240,7 +240,7 @@ Példa edgeAgent naplók:
 
 **Gyökérok**
 
-A gazdahálózat hálózati konfigurációja megakadályozza, hogy az IoT Edge-ügynök elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha a kapcsolat meghibásodik, megpróbálja websockets (port 443).
+A gazdagép hálózatán a hálózati konfiguráció megakadályozza, hogy a IoT Edge-ügynök elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha a kapcsolat meghiúsul, a WebSockets (443-es port) próbálkozik.
 
 Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön.
 
@@ -248,9 +248,9 @@ Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a ko
 
 Győződjön meg arról, hogy elérhető egy útvonal az internethez az ehhez a híd-/NAT-hálózathoz rendelt IP-címek esetén. Néha a gazdagépen lévő VPN-konfiguráció felülbírálja az IoT Edge-hálózatot.
 
-## <a name="iot-edge-hub-fails-to-start"></a>Az IoT Edge hub nem indul el
+## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge hub nem indul el
 
-Az edgeHub modul nem indul el, és a következő üzenetet nyomtatja ki a naplókba:
+A edgeHub modul nem indul el, és a következő üzenetet nyomtatja ki a naplókba:
 
 ```output
 One or more errors occurred. 
@@ -261,27 +261,27 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 
 **Gyökérok**
 
-A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az IoT Edge hub leképezi az 5671-es és 443-as portokat az átjárói forgatókönyvekben való használatra. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot.
+A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az IoT Edge hub a 5671-es és 443-es portokat a Gateway-forgatókönyvekben való használatra. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot.
 
 **Resolution** (Osztás)
 
 Keresse meg, és állítsa le a 443-as portot használó folyamatot. Ez a folyamat általában a webkiszolgáló.
 
-## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>Az IoT Edge-ügynök nem tud hozzáférni egy modul lemezképéhez (403)
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge ügynök nem fér hozzá a modul rendszerképéhez (403)
 
-Egy tároló nem fut, és az edgeAgent naplók 403-as hibát jelenítek meg.
+Egy tároló nem fut, és a edgeAgent-naplók 403 hibát jeleznek.
 
 **Gyökérok**
 
-Az IoT Edge-ügynök nem rendelkezik a modul lemezképének eléréséhez szükséges engedélyekkel.
+A IoT Edge ügynöknek nincs engedélye a modul rendszerképének elérésére.
 
 **Resolution** (Osztás)
 
-Győződjön meg arról, hogy a rendszerleíró hitelesítő adatok megfelelően vannak megadva a központi telepítési jegyzékben
+Győződjön meg arról, hogy a beállításjegyzékbeli hitelesítő adatok helyesen vannak megadva a telepítési jegyzékben
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Az IoT Edge biztonsági démona sikertelen egy érvénytelen állomásnévvel
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge biztonsági démon érvénytelen állomásnévvel meghiúsul
 
-A `sudo journalctl -u iotedge` parancs sikertelen, és a következő üzenetet nyomtatja ki:
+A parancs `sudo journalctl -u iotedge` végrehajtása sikertelen, és a következő üzenetet nyomtatja ki:
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -289,22 +289,22 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Gyökérok**
 
-Az IoT Edge futásidejű csak 64 karakternél rövidebb állomásneveket támogathat. A fizikai gépek általában nem rendelkeznek hosszú állomásnévvel, de a probléma gyakoribb egy virtuális gépen. Az Azure-ban üzemeltetett Windows virtuális gépek automatikusan létrehozott állomásnevei általában hosszúak.
+A IoT Edge futtatókörnyezet csak 64 karakternél rövidebb gazdagépeket támogat. A fizikai gépek általában nem rendelkeznek hosszú állomásnévvel, de a probléma gyakoribb a virtuális gépen. Az Azure-ban üzemeltetett Windows rendszerű virtuális gépek automatikusan generált állomásneve általában hosszúak.
 
 **Resolution** (Osztás)
 
-Ha ezt a hibát látja, a probléma a virtuális gép DNS-nevének konfigurálásával, majd a DNS-név állomásnévként való beállításával oldható meg a telepítési parancsban.
+Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával, majd a DNS-név beállítása állomásnévként a telepítési parancsban is megoldható.
 
-1. Az Azure Portalon keresse meg a virtuális gép áttekintő lapját.
-2. Válassza a **Konfigurálás** lehetőséget a DNS-név alatt. Ha a virtuális gép már rendelkezik konfigurált DNS-névvel, nem kell újat konfigurálnia.
+1. A Azure Portal navigáljon a virtuális gép áttekintés lapjára.
+2. Válassza a **Konfigurálás** a DNS-név alatt lehetőséget. Ha a virtuális gépnek már van konfigurált DNS-neve, nem kell újat konfigurálnia.
 
    ![A virtuális gép DNS-nevének konfigurálása](./media/troubleshoot/configure-dns.png)
 
-3. Adjon meg egy értéket a **DNS-névcímkéhez,** és válassza a **Mentés gombot.**
-4. Másolja az új DNS-nevet, amelynek ** \<DNSnamelabel\>formátumban kell lennie.\< vmlocation\>.cloudapp.azure.com**.
-5. A virtuális gépen belül a következő paranccsal állítsa be az IoT Edge futási időt a DNS-nevével:
+3. Adjon meg egy értéket a **DNS-név címkéhez** , majd válassza a **Mentés**lehetőséget.
+4. Másolja az új DNS-nevet, amelynek formátuma ** \<DNSnamelabel\>.\< jelenlegi\>. cloudapp.Azure.com**.
+5. A virtuális gépen belül a következő paranccsal állíthatja be a IoT Edge futtatókörnyezetet a DNS-névvel:
 
-   * Linuxalatt:
+   * Linux rendszeren:
 
       ```bash
       sudo nano /etc/iotedge/config.yaml
@@ -316,27 +316,27 @@ Ha ezt a hibát látja, a probléma a virtuális gép DNS-nevének konfigurálá
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
-## <a name="stability-issues-on-resource-constrained-devices"></a>Stabilitási problémák az erőforrásokkal korlátozott eszközökön
+## <a name="stability-issues-on-resource-constrained-devices"></a>Az erőforrás által korlátozott eszközök stabilitási problémái
 
-Stabilitási problémák léphetnek fel a korlátozott eszközökön, például a Raspberry Pi-n, különösen, ha átjáróként használják. A jelenségek közé tartoznak a peremhálózati hubmodulban lévő memóriakivételek, az alsóbb rétegbeli eszközök nem tudnak csatlakozni, vagy az eszköz néhány óra elteltével leállítja a telemetriai üzenetek küldését.
+A korlátozott eszközök, például a málna PI esetében stabilitási problémák merülhetnek fel, különösen ha átjáróként használják. A tünetek közé tartoznak az Edge hub-modulban a memóriabeli kivételek, az alsóbb rétegbeli eszközök nem csatlakoztathatók, vagy az eszköz néhány óra elteltével leállítja a telemetria-üzenetek küldését.
 
 **Gyökérok**
 
-Az IoT Edge hub, amely része az IoT Edge futásidejű, alapértelmezés szerint a teljesítmény re van optimalizálva, és megpróbálja lefoglalni a memória nagy része. Ez az optimalizálás nem ideális a korlátozott élű eszközök számára, és stabilitási problémákat okozhat.
+A IoT Edge futtatókörnyezet részét képező IoT Edge hub alapértelmezés szerint a teljesítményre van optimalizálva, és nagy mennyiségű memóriát próbál lefoglalni. Ez az optimalizálás nem ideális a korlátozott peremhálózat-eszközökhöz, és stabilitási problémákat okozhat.
 
 **Resolution** (Osztás)
 
-Az IoT Edge hub, állítsa be a környezeti változó **OptimizeForPerformance** **hamis.** A környezeti változók kétféleképpen állíthatók be:
+Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis**értékre. A környezeti változók két módon állíthatók be:
 
 Az Azure Portalon:
 
-Az IoT Hubban válassza ki az IoT Edge-eszközt, és az eszköz részletek lapján válassza a **Modulok** > **futásidejű beállításainak**beállítása lehetőséget. Hozzon létre egy környezeti változót az *OptimizeForPerformance* nevű Edge Hub modulhoz, amely *hamis.*
+A IoT hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válassza a **modulok** > **futtatókörnyezet-beállítások**megadása lehetőséget. Hozzon létre egy környezeti változót a *OptimizeForPerformance* nevű Edge hub-modulhoz, amely *hamis*értékre van beállítva.
 
-![OptimizeForPerformance értéke hamis](./media/troubleshoot/optimizeforperformance-false.png)
+![A OptimizeForPerformance hamis értékre van állítva](./media/troubleshoot/optimizeforperformance-false.png)
 
-**Vagy**
+**VAGY**
 
-A központi telepítési jegyzékben:
+Az üzembe helyezési jegyzékben:
 
 ```json
   "edgeHub": {
@@ -352,17 +352,17 @@ A központi telepítési jegyzékben:
     },
 ```
 
-## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nem lehet beszerezni az IoT Edge démonnaplókat Windows rendszeren
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nem lehet beolvasni a IoT Edge Daemon-naplókat a Windows rendszerben
 
-Ha A Windows használatakor `Get-WinEvent` EventLogException-et kap, ellenőrizze a rendszerleíró bejegyzéseket.
+Ha Windows rendszeren használ `Get-WinEvent` EventLogException, ellenőrizze a beállításjegyzék bejegyzéseit.
 
 **Gyökérok**
 
-A `Get-WinEvent` PowerShell parancs egy rendszerleíró bejegyzésre támaszkodik, amely `ProviderName`egy adott napló tanusítására vonatkozik.
+A `Get-WinEvent` PowerShell-parancs egy beállításjegyzékbeli bejegyzésre támaszkodik, amely a naplók egy adott `ProviderName`alapján való megtalálásához szükséges.
 
 **Resolution** (Osztás)
 
-Állítson be egy rendszerleíró bejegyzést az IoT Edge démonhoz. Hozzon létre egy **iotedge.reg** fájlt a következő tartalommal, és importáljon a `reg import iotedge.reg` Windows rendszerleíró adatbázisába, kattintson duplán, vagy használja a parancsot:
+Adja meg a IoT Edge démon beállításjegyzékbeli bejegyzését. Hozzon létre egy **iotedge. reg** fájlt a következő tartalommal, és importálja a Windows beállításjegyzékbe úgy, hogy duplán rákattint `reg import iotedge.reg` rá, vagy használja a parancsot:
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -373,9 +373,9 @@ Windows Registry Editor Version 5.00
 "TypesSupported"=dword:00000007
 ```
 
-## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>Az IoT Edge-modul nem tud üzenetet küldeni az edgeHubnak 404-es hibával
+## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge modul nem tud üzenetet küldeni a edgeHub a 404-as hibával
 
-Egy egyéni IoT Edge-modul nem küld üzenetet az edgeHub 404-es `Module not found` hibával. Az IoT Edge démon a következő üzenetet nyomtatja ki a naplókba:
+Egy egyéni IoT Edge modul nem tud üzenetet küldeni a edgeHub egy 404 `Module not found` -as hibával. A IoT Edge démon a következő üzenetet nyomtatja ki a naplókba:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -383,39 +383,39 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 **Gyökérok**
 
-Az IoT Edge démon biztonsági okokból kényszeríti a folyamatazonosítást az edgeHubhoz biztonsági okokból csatlakozó összes modulhoz. Ellenőrzi, hogy a modul által küldött összes üzenet a modul fő folyamatazonosítójából származik-e. Ha egy üzenetet egy, az eredetileg létrehozotttól eltérő folyamatazonosítóból származó modul küld, akkor 404-es hibaüzenettel utasítja el az üzenetet.
+A IoT Edge démon a edgeHub csatlakozó összes modulhoz biztonsági okokból kényszeríti a folyamat azonosítását. Ellenőrzi, hogy a modul által küldött összes üzenet a modul fő folyamatának azonosítójával származik-e. Ha egy modul egy másik, az eredetileg létrejött folyamat-AZONOSÍTÓtól érkező üzenetet küld, a rendszer 404-es hibaüzenettel elutasítja az üzenetet.
 
 **Resolution** (Osztás)
 
-Az 1.0.7-es verziótól minden modulfolyamat jogosult a csatlakozásra. Ha az 1.0.7-es verzióra való frissítés nem lehetséges, hajtsa végre az alábbi lépéseket. További információt az [1.0.7-es kiadás changelog című témakörben talál.](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)
+A verzió 1.0.7 kezdve az összes modul-folyamat jogosult a kapcsolódásra. Ha a 1.0.7-re való frissítés nem lehetséges, végezze el a következő lépéseket. További információ: a [1.0.7 kiadásának changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
-Győződjön meg arról, hogy ugyanazt a folyamatazonosítót mindig az egyéni IoT Edge-modul használja az edgeHub üzenetek küldéséhez. Például győződjön `ENTRYPOINT` meg `CMD` arról, hogy a `CMD` parancs helyett a Docker-fájlban, mivel vezet egy folyamat azonosítója a `ENTRYPOINT` modul és egy másik folyamat azonosítója a bash parancsot futtató fő program, míg vezet egyetlen folyamat azonosítóját.
+Győződjön meg arról, hogy az egyéni IoT Edge modul ugyanazt a folyamat-azonosítót használja az üzenetek edgeHub való küldéséhez. Tegyük fel például, hogy `ENTRYPOINT` a Docker-fájlban a `CMD` parancs helyett a parancsot `CMD` használja, mivel a a modul egy folyamat-azonosítóját és egy másik folyamat-azonosítót eredményez a fő programot futtató `ENTRYPOINT` bash-parancshoz, míg egyetlen folyamat azonosítóját fogja eredményezni.
 
-## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Tűzfal- és portkonfigurációs szabályok az IoT Edge telepítéséhez
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Tűzfal-és port-konfigurációs szabályok IoT Edge központi telepítéshez
 
-Az Azure IoT Edge lehetővé teszi a kommunikációt egy helyszíni kiszolgálóról az Azure-felhőbe a támogatott IoT Hub protokollok használatával, [lásd: egy kommunikációs protokoll kiválasztása.](../iot-hub/iot-hub-devguide-protocols.md) A fokozott biztonság érdekében az Azure IoT Edge és az Azure IoT Hub közötti kommunikációs csatornák mindig kimenőként vannak konfigurálva. Ez a konfiguráció a [szolgáltatások által támogatott kommunikáció mintán](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)alapul, amely minimálisra csökkenti a támadási felületet egy rosszindulatú entitás számára. Bejövő kommunikáció csak akkor van szükség, bizonyos forgatókönyvek, ahol az Azure IoT Hub kell üzeneteket küldeni az Azure IoT Edge-eszközre. A felhőből az eszközre irányuló üzenetek biztonságos TLS-csatornákkal védettek, és az X.509-es tanúsítványokkal és a TPM-eszközmodulokkal tovább védhetők. Az Azure IoT Edge Security Manager szabályozza, hogyan lehet létrehozni ezt a kommunikációt, lásd: [IoT Edge Security Manager.](../iot-edge/iot-edge-security-manager.md)
+Azure IoT Edge lehetővé teszi a helyszíni kiszolgálóról az Azure-felhőbe való kommunikációt a támogatott IoT Hub protokollok használatával: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében a Azure IoT Edge és az Azure IoT Hub közötti kommunikációs csatornák mindig Kimenőként vannak konfigurálva. Ez a konfiguráció a szolgáltatások által [támogatott kommunikációs minta](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)alapján történik, ami lekicsinyíti a támadási felületet egy rosszindulatú entitás számára a felderítéshez. A bejövő kommunikációra csak bizonyos esetekben van szükség, amikor az Azure-IoT Hub üzeneteket kell leküldenie az Azure IoT Edge eszköznek. A felhőből az eszközre irányuló üzenetek biztonságos TLS-csatornák használatával védhetők, és az X. 509 tanúsítványokkal és TPM-eszközök moduljaival tovább biztonságossá tehetők. A Azure IoT Edge Security Manager szabályozza, hogyan lehet létrehozni a kommunikációt: [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
-Bár az IoT Edge továbbfejlesztett konfigurációt biztosít az Azure IoT Edge futásidejű és üzembe helyezett modulok biztonságossá tétele érdekében, továbbra is függ az alapul szolgáló gép és hálózati konfiguráció. Ezért elengedhetetlen, hogy megfelelő hálózati és tűzfalszabályok vannak beállítva a biztonságos peremhálózati és felhőalapú kommunikációhoz. Az alábbi táblázat iránymutatásként használható az on-line kiszolgálók tűzfalszabályainak konfigurálásakor, ahol az Azure IoT Edge futásidejű található:
+Míg a IoT Edge továbbfejlesztett konfigurációt biztosít Azure IoT Edge futtatókörnyezet és a telepített modulok biztonságossá tételéhez, továbbra is függ a mögöttes gépről és hálózati konfigurációtól. Ezért fontos, hogy a megfelelő hálózati és tűzfalszabályok a Felhőbeli kommunikáció biztonságos peremén legyenek beállítva. A következő táblázat használható a konfigurációs tűzfalszabályok azon alapuló kiszolgálókon való konfigurálásához, amelyeken a Azure IoT Edge Runtime fut:
 
 |Protocol (Protokoll)|Port|Bejövő|Kimenő|Útmutatás|
 |--|--|--|--|--|
-|MQTT|8883|BLOKKOLVA (alapértelmezett)|BLOKKOLVA (alapértelmezett)|<ul> <li>Állítsa be, hogy a kimenő (kimenő) nyitott legyen, ha az MQTT protokollt használja kommunikációs protokollként.<li>1883 az MQTT nem támogatja az IoT Edge. <li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul>|
-|AMQP|5671|BLOKKOLVA (alapértelmezett)|OPEN (alapértelmezett)|<ul> <li>Az IoT Edge alapértelmezett kommunikációs protokollja. <li> Nyitottnak kell lennie, ha az Azure IoT Edge nincs konfigurálva más támogatott protokollokhoz, vagy az AMQP a kívánt kommunikációs protokoll.<li>Az AMQP 5672-es tartományt az IoT Edge nem támogatja.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge egy másik IoT Hub által támogatott protokollt használ.<li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul></ul>|
-|HTTPS|443|BLOKKOLVA (alapértelmezett)|OPEN (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) nyitott 443-on IoT Edge-kiépítés. Ez a konfiguráció manuális parancsfájlok vagy Az Azure IoT-eszközlétesítési szolgáltatás (DPS) használata esetén szükséges. <li>A bejövő (bejövő) kapcsolat csak bizonyos esetekben legyen megnyitva: <ul> <li>  Ha van egy átlátszó átjáró levél eszközök, amelyek metóduskérelmek küldésére. Ebben az esetben a 443-as portnak nem kell nyitottnak lennie a külső hálózatok számára az IoTHubhoz való csatlakozáshoz vagy az Azure IoT Edge-en keresztül ioTHub-szolgáltatások biztosításához. Így a bejövő szabály csak a belső hálózatról nyitott bejövő (bejövő) területre korlátozható. <li> Ügyfélről eszközre (C2D) forgatókönyvek.</ul><li>Az IoT Edge nem támogatja a 80 http-hez.<li>Ha a nem HTTP protokollok (például AMQP vagy MQTT) nem konfigurálhatók a vállalaton belül; az üzenetek et websocketeken keresztül lehet elküldeni. Ebben az esetben a 443-as port ot használjuk a WebSocket kommunikációhoz.</ul>|
+|MQTT|8883|Letiltva (alapértelmezett)|Letiltva (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) t, ha a MQTT kommunikációs protokollként való használatakor megnyitható.<li>a IoT Edge nem támogatja a MQTT használatát. 1883 <li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul>|
+|AMQP|5671|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Az IoT Edge alapértelmezett kommunikációs protokollja. <li> Úgy kell konfigurálni, hogy nyitva legyen, ha Azure IoT Edge nincs más támogatott protokollhoz konfigurálva, vagy a AMQP a kívánt kommunikációs protokoll.<li>a IoT Edge nem támogatja a AMQP használatát. 5672<li>A port letiltása, ha a Azure IoT Edge egy másik IoT Hub támogatott protokollt használ.<li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul></ul>|
+|HTTPS|443|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) 443-es megnyitását IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges. <li>A bejövő (bejövő) kapcsolatok csak bizonyos esetekben nyithatók meg: <ul> <li>  Ha olyan transzparens átjáróval rendelkezik, amely olyan Leaf-eszközökkel rendelkezik, amelyek metódus-kérelmeket küldhetnek. Ebben az esetben a 443-es portot nem szabad külső hálózatokhoz csatlakozni a IoTHub-hez való csatlakozáshoz vagy a IoTHub szolgáltatások nyújtásához Azure IoT Edgeon keresztül. Így a Bejövő szabály csak a bejövő (bejövő) és a belső hálózatról nyitható meg. <li> Az ügyfél – eszköz (C2D) forgatókönyvek esetében.</ul><li>a IoT Edge nem támogatja a HTTP-t (80).<li>Ha nem HTTP protokoll (például AMQP vagy MQTT) nem konfigurálható a vállalatban; az üzenetek elküldhetők websocketek használatával. Ebben az esetben a 443-es portot fogja használni a WebSocket-kommunikációhoz.</ul>|
 
-## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Az Edge Agent modul folyamatosan jelenti az "üres konfigurációs fájlt", és nem indulnak el modulok az eszközön
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Az Edge Agent modul folyamatosan jelentést készít az "üres konfigurációs fájlról", és egyetlen modul sem indul el az eszközön.
 
-Az eszköz nem tudja elindítani a központi telepítésben definiált modulokat. Csak az edgeAgent fut, de folyamatosan jelenti az "üres konfigurációs fájlt...".
+Az eszköz nem rendelkezik a telepítésben definiált modulok indításával. Csak a edgeAgent fut, de folyamatosan jelentést készít az "üres konfigurációs fájlról...".
 
 **Gyökérok**
 
-Alapértelmezés szerint az IoT Edge elindítja a modulokat a saját elkülönített tárolóhálózatukban. Lehet, hogy az eszköznek problémája van a DNS-névfeloldással ezen a magánhálózaton belül.
+Alapértelmezés szerint a IoT Edge elindítják a modulokat a saját elkülönített tároló hálózatában. Előfordulhat, hogy az eszköz problémát észlelt a DNS-névfeloldás ezen a magánhálózaton belül.
 
 **Resolution** (Osztás)
 
-**1. lehetőség: DNS-kiszolgáló beállítása a tárolómotor beállításaiban**
+**1. lehetőség: DNS-kiszolgáló beállítása a tároló motorjának beállításaiban**
 
-Adja meg a környezethez tartozó DNS-kiszolgálót a tárolómotor-beállításokban, amely a motor által indított összes tárolómodulra vonatkozik. Hozzon létre `daemon.json` egy nevű fájlt, amely megadja a használni kívánt DNS-kiszolgálót. Például:
+Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beállításaiban, amelyek a motor által indított összes tároló modulra érvényesek lesznek. Hozzon létre egy `daemon.json` nevű fájlt a használni kívánt DNS-kiszolgáló megadásával. Például:
 
 ```json
 {
@@ -423,27 +423,27 @@ Adja meg a környezethez tartozó DNS-kiszolgálót a tárolómotor-beállítás
 }
 ```
 
-A fenti példa a DNS-kiszolgálót nyilvánosan elérhető DNS-szolgáltatásra állítja be. Ha a peremhálózati eszköz nem tudja elérni ezt az IP-címet a környezetéből, cserélje le a dns-kiszolgáló elérhető címére.
+A fenti példa egy nyilvánosan elérhető DNS-szolgáltatásra állítja be a DNS-kiszolgálót. Ha a peremhálózati eszköz nem fér hozzá ehhez az IP-címhez a környezetében, cserélje le az elérhető DNS-kiszolgáló címére.
 
-Helyezze `daemon.json` el a megfelelő helyre a platform:
+Helyezze `daemon.json` a megfelelő helyre a platformhoz:
 
 | Platform | Hely |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Windows-állomás Windows-tárolókkal | `C:\ProgramData\iotedge-moby\config` |
+| Windows-gazdagép Windows-tárolókkal | `C:\ProgramData\iotedge-moby\config` |
 
-Ha a hely `daemon.json` már tartalmaz fájlt, adja hozzá a **DNS kulcsot,** és mentse a fájlt.
+Ha a hely már tartalmaz `daemon.json` fájlt, adja hozzá a **DNS-** kulcsot, és mentse a fájlt.
 
-Indítsa újra a tárolómotort, hogy a frissítések érvénybe lépjenek.
+A frissítések érvénybe léptetéséhez indítsa újra a tároló motorját.
 
 | Platform | Parancs |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
-| Windows (Felügyeleti Powershell) | `Restart-Service iotedge-moby -Force` |
+| Windows (rendszergazdai PowerShell) | `Restart-Service iotedge-moby -Force` |
 
-**2. lehetőség: DNS-kiszolgáló beállítása az IoT Edge telepítésében modulonként**
+**2. lehetőség: a DNS-kiszolgáló beállítása IoT Edge üzembe helyezés modulban**
 
-Az IoT Edge központi telepítésében beállíthatja az egyes modulok *createOptions* dns-kiszolgálóját. Például:
+A DNS-kiszolgáló minden modul *createOptions* beállítható a IoT Edge üzemelő példányban. Például:
 
 ```json
 "createOptions": {
@@ -455,10 +455,10 @@ Az IoT Edge központi telepítésében beállíthatja az egyes modulok *createOp
 }
 ```
 
-Ügyeljen arra, hogy ezt a konfigurációt az *edgeAgent* és *edgeHub* modulokat is állítsa be.
+Ügyeljen arra, hogy ezt a konfigurációt a *edgeAgent* és a *edgeHub* modulhoz is állítsa be.
 
 ## <a name="next-steps"></a>További lépések
 
-Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Nyújtson be egy problémát,](https://github.com/Azure/iotedge/issues) hogy tovább fejlődhessünk.
+Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldjön el egy problémát](https://github.com/Azure/iotedge/issues) , hogy tovább javítsuk.
 
-Ha további kérdései vannak, hozzon létre támogatási támogatási [kérelmet.](https://portal.azure.com/#create/Microsoft.Support)
+Ha további kérdései vannak, hozzon létre egy [support Request](https://portal.azure.com/#create/Microsoft.Support) segítséget.

@@ -1,6 +1,6 @@
 ---
-title: azcopy sync | Microsoft dokumentumok
-description: Ez a cikk az azcopy sync parancs ra vonatkozó referenciainformációkat tartalmaz.
+title: azcopy szinkronizálása | Microsoft Docs
+description: Ez a cikk a azcopy Sync paranccsal kapcsolatos tudnivalókat tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,50 +9,50 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086028"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
-Replikálja a forráshelyet a célhelyre.
+A forrás helyét replikálja a célhelyre.
 
 ## <a name="synopsis"></a>Áttekintés
 
-Az utolsó módosított időpontok összehasonlításra szolgálnak. A fájl kimarad, ha a célutolsó módosított időpontja újabb.
+A rendszer az utolsó módosítás időpontját használja az összehasonlításhoz. A rendszer kihagyja a fájlt, ha a cél utolsó módosításának ideje újabb.
 
 A támogatott párok a következők:
 
-- helyi < > Azure Blob (SAS- vagy OAuth-hitelesítés használható)
-- Az Azure Blob < > Azure Blob (a forrásnak Tartalmaznia kell egy SAS-t, vagy nyilvánosan elérhető; sas- vagy OAuth-hitelesítés használható a célhoz)
-- Az Azure File < > Azure-fájl (a forrásnak Tartalmaznia kell egy SAS-t, vagy nyilvánosan elérhető; SAS-hitelesítést kell használni a célhoz)
+- helyi < – > Azure-Blob (SAS-vagy OAuth-hitelesítés is használható)
+- Azure Blob <-> Azure Blob (a forrásnak tartalmaznia kell SAS-t vagy nyilvánosan elérhetőnek kell lennie, vagy az SAS vagy a OAuth hitelesítés használható a célhelyre)
+- Azure file <-> Azure-fájl (a forrásnak tartalmaznia kell SAS vagy nyilvánosan elérhető; Az SAS-hitelesítést a célhelyre kell használni.)
 
-A szinkronizálási parancs több szempontból is eltér a másolás parancstól:
+A szinkronizálási parancs többféle módon eltér a másolási parancstól:
 
-1. Alapértelmezés szerint a rekurzív jelző igaz, és a szinkronizálás az összes alkönyvtárat másolja. A Szinkronizálás csak akkor másolja át a könyvtárlegfelső szintű fájljait, ha a rekurzív jelző hamis.
-2. Virtuális könyvtárak közötti szinkronizáláskor adjon hozzá egy záró perjelet az elérési úthoz (lásd a példákat), ha van egy blob, amelynek neve megegyezik a virtuális könyvtárak egyikével.
-3. Ha a "deleteDestination" jelző igaz vagy gyors, majd a szinkronizálás törli a fájlokat és blobokat a cél, amelyek nem szerepelnek a forrásnál.
+1. Alapértelmezés szerint a rekurzív jelző igaz értékű, és a szinkronizálás az összes alkönyvtárat átmásolja. A szinkronizálás csak akkor másolja a legfelső szintű fájlokat egy könyvtárba, ha a rekurzív jelző hamis.
+2. A virtuális könyvtárak közötti szinkronizáláskor adjon hozzá egy perjelet az elérési úthoz (példák), ha van olyan blob, amelynek a neve megegyezik a virtuális könyvtárak egyikével.
+3. Ha az "deleteDestination" jelző értéke TRUE (igaz) vagy prompt, akkor a Sync törli a célhelyen található fájlokat és blobokat, amelyek nem szerepelnek a forrásban.
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
-- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Speciális
 
-Ha nem ad meg fájlkiterjesztést, az AzCopy automatikusan felismeri a fájlok tartalomtípusát a helyi lemezről való feltöltéskor a fájlkiterjesztés vagy -tartalom alapján (ha nincs megadva kiterjesztés).
+Ha nem ad meg fájlkiterjesztést, a AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
 
-A beépített keresendő tábla kicsi, de unix esetén a helyi rendszer mime.types fájljai bővítik, ha egy vagy több ilyen név alatt elérhető:
+A beépített keresési táblázat kicsi, de a UNIX rendszeren a helyi rendszer MIME. types fájl (ok), ha az alábbi nevek közül egy vagy több található:
 
 - /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-Windows rendszerben a MIME-típusok kibontása a beállításjegyzékből lesz kivonva.
+Windows rendszeren a MIME-típusokat a rendszer kinyeri a beállításjegyzékből.
 
 ```azcopy
 azcopy sync <source> <destination> [flags]
@@ -67,15 +67,15 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 ```
 
 > [!NOTE]
-> A célblobnak léteznie *kell.* Egyetlen `azcopy copy` olyan fájl másolására használható, amely még nem létezik a célhelyen. Ellenkező esetben a következő `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`hiba fordul elő: .
+> A cél blobnak léteznie *kell* . A `azcopy copy` paranccsal egyetlen olyan fájlt másolhat, amely még nem létezik a célhelyen. Ellenkező esetben a következő hiba történik: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`.
 
-Ugyanaz, mint fent, de ezúttal is számítsa ki a fájltartalom MD5 kivonatát, és mentse a blob Content-MD5 tulajdonságaként:
+Ugyanaz, mint a fentiekben, de ezúttal is kiszámítja a fájl tartalmának MD5-kivonatát, és a blob Content-MD5 tulajdonságként menti azt:
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-A teljes könyvtár szinkronizálása az alkönyvtárakkal együtt (vegye figyelembe, hogy a rekurzív alapértelmezés szerint be van kapcsolva):
+Egy teljes könyvtár szinkronizálása alkönyvtárakkal együtt (a rekurzív alapértelmezés szerint a rekurzív):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -87,19 +87,19 @@ vagy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-Csak a könyvtárban lévő legfelső fájlokszinkronizálása, az alkönyvtárak nem:
+Csak a legfelső fájlokat szinkronizálja egy könyvtáron belül, de nem az alkönyvtáraiban:
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Fájlok egy részhalmazának szinkronizálása egy könyvtárban (Például: csak jpg és pdf fájlok, vagy ha a fájlnév "exactName"):
+Fájlok egy részhalmazának szinkronizálása egy címtárban (például: csak jpg-és PDF-fájlok, illetve ha a fájl neve "exactName"):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
 ```
 
-A teljes könyvtár szinkronizálása, de bizonyos fájlok kizárása a hatókörből (például: minden foo-val vagy sávval kezdődő fájl):
+Egy teljes címtár szinkronizálása, de bizonyos fájlok kizárása a hatókörből (például: minden olyan fájl, amely foo-vel kezdődik, vagy a sáv végén végződik):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
@@ -117,53 +117,53 @@ Virtuális könyvtár szinkronizálása:
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
-Szinkronizáljon egy virtuális könyvtárat, amelynek neve megegyezik a blob nevével (adjon hozzá egy záró perjelet az elérési úthoz, hogy félreérthető:
+Egy blobtal megegyező nevű virtuális könyvtár szinkronizálása (a egyértelműsítse az elérési útra a záró perjelet adja hozzá):
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Azure-fájlkönyvtár szinkronizálása (ugyanaz a szintaxis, mint a Blob):
+Azure file Directory szinkronizálása (a Blobtal megegyező szintaxis):
 
 ```azcopy
 azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
-> Ha a include/exclude jelzőket együtt használja, csak az belefoglalási mintáknak megfelelő fájlokat kell megvizsgálni, de a kizárási mintáknak megfelelő fájlokat a rendszer mindig figyelmen kívül hagyja.
+> Ha a belefoglalási/kizárási jelzők együtt vannak használatban, csak a belefoglalási mintáknak megfelelő fájlok fognak megjelenni, a kizárási mintáknak megfelelők azonban mindig figyelmen kívül lesznek hagyva.
 
 ## <a name="options"></a>Beállítások
 
-**--block-size-mb** úszó: Használja ezt a blokkméretet (mib-ben megadva), amikor feltölti az Azure Storage-ba vagy letölti az Azure Storage-ból. Az alapértelmezett értéket a fájlméret alapján automatikusan kiszámítja a program. Tizedes törttörtek megengedettek (például: 0,25).
+**--Block-Size-MB** lebegőpontos használata esetén ez a blokk mérete (a MIB-ben van megadva) az Azure Storage-ba való feltöltéskor vagy az Azure Storage-ból való letöltéskor. A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. Tizedes törtek engedélyezettek (például: 0,25).
 
-**--check-md5** string Itt adhatja meg, hogy a szigorúan MD5-hash-okat hogyan kell érvényesíteni a letöltéskor. Ez a beállítás csak letöltéskor érhető el. A rendelkezésre álló értékek a következők: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett 'FailIfDifferent'). (alapértelmezett "FailIfDifferent")
+**--ellenőrzés-MD5** karakterlánc megadja, hogy a letöltéskor milyen szigorúan kell ellenőrizni az MD5-kivonatok érvényességét. Ez a lehetőség csak a letöltéskor érhető el. Az elérhető értékek a következők: nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett érték: "FailIfDifferent"). (alapértelmezett "FailIfDifferent")
 
-**--delete-destination** string: Azt határozza meg, hogy töröljön-e további fájlokat a célból, amelyek nincsenek jelen a forrásnál. Lehet, hogy igaz, hamis vagy gyors. Ha a rendszer azt szeretné, hogy a rendszer rákérdezzen, a rendszer kérdéseket tesz fel a felhasználónak a fájlok és blobok törlésre való ütemezése előtt. (alapértelmezett "false"). (alapértelmezett "hamis")
+**--delete-Destination** sztring meghatározza, hogy a rendszer törli-e a forrásban nem szereplő további fájlokat a célhelyről. Értéke true, false vagy prompt lehet. Ha a beállítás értéke prompt, a rendszer megkérdezi a felhasználót, mielőtt ütemezi a fájlok és a Blobok törlését. (alapértelmezett érték: "false"). (alapértelmezett "false")
 
-**--exclude-attributes** string (csak Windows) Kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumlistával. Például: A; S; R
+**– kizárás – attribútumok** karakterlánca (csak Windows) kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
 
-**--exclude-path** string Kizárni ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagot(Például: myFolder;myFolder/subDirName/file.pdf). Ha a fiók sokszögelésével együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
+**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
 
-**--exclude-pattern** string Exclude fájlokat, ahol a név megegyezik a minta lista. Például: \*.jpg; \*.pdf;exactName
+**--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: \*. jpg; \*. pdf; exactName
 
-**-h, --súgó** a szinkronizáláshoz
+**-h,--Súgó** a szinkronizáláshoz
 
-**--include-attributes** string (csak Windows) Csak azokat a fájlokat tartalmazza, amelyek attribútumai megfelelnek az attribútumlistának. Például: A; S; R
+**– include-attributes** sztring (csak Windows) csak azokat a fájlokat tartalmazza, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
 
-**--include-pattern** string: Csak azokat a fájlokat tartalmazza, amelyek neve megegyezik a mintalistával. Például: \*.jpg; \*.pdf;exactName
+**--include-Pattern** sztring csak olyan fájlokat tartalmazhat, amelyekben a név megegyezik a minta listával. Például: \*. jpg; \*. pdf; exactName
 
-**--log-level** string Adja meg a napló részletességét a naplófájlhoz, elérhető szintek: INFO(minden kérés és válasz), FIGYELEM(lassú válaszok), HIBA(csak sikertelen kérelmek) és NONE (nincs kimeneti napló). (alapértelmezett INFO). (alapértelmezett "INFO")
+**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem és válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett információ). (alapértelmezett "információ")
 
-**--put-md5**                     Hozzon létre egy MD5-kivonatot minden fájlból, és mentse a kivonatot a célblob vagy -fájl Content-MD5 tulajdonságaként. (Alapértelmezés szerint a kivonat NEM jön létre.) Csak feltöltéskor érhető el.
+**--put-MD5**                     Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
 
-**--rekurzív**                   Alapértelmezés szerint igaz, a könyvtárak közötti szinkronizáláskor rekurzívmódon tekintse meg az alkönyvtárakat. (alapértelmezett igaz). (alapértelmezett igaz)
+**– rekurzív**                   Alapértelmezés szerint a címtárak közötti szinkronizáláskor a rendszer rekurzív módon vizsgálja meg az alkönyvtárakat. (alapértelmezés szerint igaz). (alapértelmezett true)
 
-## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
-|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
+|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
 ## <a name="see-also"></a>Lásd még
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption – mintaszkriptek
-description: Ez a cikk a Microsoft Azure lemeztitkosítás windowsos virtuális gépekhez függeléke.
+description: Ez a cikk a Windows rendszerű virtuális gépek Microsoft Azure lemezes titkosításának függeléke.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,72 +9,72 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085705"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
-Ez a cikk mintaparancsfájlokat tartalmaz az előre titkosított virtuális gépek és egyéb feladatok előkészítéséhez.
+Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.
 
  
 
-## <a name="list-vms-and-secrets"></a>Virtuális gépek és titkos kulcsok listázása
+## <a name="list-vms-and-secrets"></a>Virtuális gépek és titkok listázása
 
-Az összes titkosított virtuális gép listázása az előfizetésben:
+Az előfizetésben található összes titkosított virtuális gép listázása:
 
 ```azurepowershell-interactive
 $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
 $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
 Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
 ```
-A kulcstartóban lévő virtuális gépek titkosításához használt összes lemeztitkosítási titok listázása:
+A Key vaultban lévő virtuális gépek titkosításához használt összes lemezes titkosítási titok listázása:
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>Az Azure Disk Encryptions előfeltételei parancsfájlok
-Ha már ismeri az Azure disk encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételei PowerShell-parancsfájlt.](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ) A PowerShell-parancsfájl használatával például tekintse meg a [Virtuálisgép titkosítása rövid útmutató című témakört.](disk-encryption-powershell-quickstart.md) Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszáról a 211-es sortól kezdve, hogy titkosítsa a meglévő virtuális gépek összes lemezét egy meglévő erőforráscsoportban. 
+## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>A Azure Disk Encryption előfeltételek parancsfájljai
+Ha már ismeri a Azure Disk Encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételek PowerShell-szkriptet](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-szkriptek használatára példát a [virtuális gépek titkosítása](disk-encryption-powershell-quickstart.md)– gyors útmutató című témakörben talál. A parancsfájl egy szakaszának megjegyzéseit eltávolíthatja a meglévő erőforráscsoporthoz tartozó meglévő virtuális gépek összes lemezének titkosításához a 211. sorban kezdődően. 
 
-Az alábbi táblázat bemutatja, hogy mely paraméterek használhatók a PowerShell-parancsfájlban: 
+A következő táblázat a PowerShell-parancsfájlban használható paramétereket mutatja be: 
 
 |Paraméter|Leírás|Kötelező?|
 |------|------|------|
-|$resourceGroupName| Annak az erőforráscsoportnak a neve, amelyhez a KeyVault tartozik.  Egy új erőforráscsoport jön létre ezzel a névvel, ha nem létezik.| True (Igaz)|
-|$keyVaultName|Annak a KeyVault-nak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Egy új tároló ezzel a névvel jön létre, ha nem létezik.| True (Igaz)|
-|$location|A KeyVault helye. Győződjön meg arról, hogy a keyvault és a virtuális gépek titkosítani kell ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
-|$subscriptionId|A használandó Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
-|$aadAppName|Az Azure AD-alkalmazás neve, amely titkos kulcsok keyvault-írási használatával lesz használva. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha ez az alkalmazás már létezik, adja át az aadClientSecret paramétert a parancsfájlnak.|False (Hamis)|
-|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyféltkati titka.|False (Hamis)|
-|$keyEncryptionKeyName|A keyvaultban nem kötelező kulcstitkosítási kulcs neve. Ha nem létezik ilyen nevű új kulcs jön létre.|False (Hamis)|
+|$resourceGroupName| Azon erőforráscsoport neve, amelyhez a kulcstartó tartozik.  Ha az egyik nem létezik, akkor létrejön egy ilyen nevű új erőforráscsoport.| True (Igaz)|
+|$keyVaultName|Annak a kulcstartónak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Ha az egyik nem létezik, akkor a rendszer létrehoz egy új tárat ezzel a névvel.| True (Igaz)|
+|$location|A kulcstartó helye. Győződjön meg arról, hogy a kulcstároló és a virtuális gépek titkosítva vannak ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
+|$subscriptionId|A használni kívánt Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
+|$aadAppName|Annak az Azure AD-alkalmazásnak a neve, amelyet a rendszer a kulcstartók írásához fog használni. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, adja át a aadClientSecret paramétert a parancsfájlnak.|False (Hamis)|
+|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyfél-titka.|False (Hamis)|
+|$keyEncryptionKeyName|A kulcstartóban nem kötelező kulcs-titkosítási kulcs neve. Ha az egyik nem létezik, a rendszer létrehoz egy új kulcsot a névvel.|False (Hamis)|
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazás nélkül
 
-- [Lemeztitkosítás engedélyezése meglévő vagy windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
-- [Titkosítás letiltása windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
+- [Lemez titkosításának engedélyezése meglévő vagy Windows rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
+- [Titkosítás letiltása egy futó Windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Egy Azure AD-alkalmazással (előző kiadás) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazással (korábbi kiadás) 
  
-- [Lemeztitkosítás engedélyezése meglévő vagy windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
-- [Titkosítás letiltása windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
-- [Új titkosított felügyelt lemez létrehozása előre titkosított virtuális merevlemez/tárolóblobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Létrehoz egy új, titkosított felügyelt lemezt, amely előre titkosított virtuális merevlemezt és a hozzá tartozó titkosítási beállításokat biztosít
+- [Lemez titkosításának engedélyezése meglévő vagy Windows rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
+- [Titkosítás letiltása egy futó Windowsos virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
+- [Új titkosított felügyelt lemez létrehozása egy előre titkosított VHD/Storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Létrehoz egy új titkosított felügyelt lemezt, amely egy előre titkosított VHD-t és a hozzá tartozó titkosítási beállításokat biztosított.
 
 ## <a name="prepare-a-pre-encrypted-windows-vhd"></a>Előre titkosított Windows virtuális merevlemez előkészítése
-A következő szakaszok szükségesek egy előre titkosított Windows-virtuális merevlemez előkészítéséhez az Azure IaaS-ben titkosított virtuális merevlemezként való üzembe helyezéshez. Az információk segítségével előkészítheti és elindíthatja a friss Windows virtuális gép (VHD) az Azure Site Recovery vagy az Azure. A virtuális merevlemez ek előkészítéséről és feltöltéséről további információt a [Generalizált virtuális merevlemez feltöltése és új virtuális gépek létrehozása az Azure-ban című témakörben talál.](upload-generalized-managed.md)
+Az alábbi szakaszoknak az Azure IaaS-ben titkosított virtuális merevlemezként való üzembe helyezéséhez egy előre titkosított Windows virtuális merevlemez előkészítéséhez van szükségük. Az információk segítségével új Windowsos virtuális gépet (VHD-t) készíthet a Azure Site Recovery vagy az Azure-ban. A virtuális merevlemezek előkészítésével és feltöltésével kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gépek létrehozásához az Azure-ban](upload-generalized-managed.md).
 
-### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Csoportházirend frissítése a nem TPM szolgáltatás engedélyezéséhez az operációs rendszer védelméhez
-Konfigurálja a **BitLocker meghajtótitkosítás**BitLocker-házirend-beállítását, amely a **Helyi számítógépházirend-konfiguráció** > –**konfigurációs számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**területen található . Módosítsa ezt a beállítást **operációsrendszer-meghajtókra** > **További hitelesítést igényel indításkor** > **A BitLocker engedélyezése kompatibilis TPM nélkül**, ahogy az az alábbi ábrán látható:
+### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Csoportházirend frissítése, hogy az operációs rendszer védelmét nem TPM-t engedélyezze
+Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás**, amelyet a **helyi számítógép-házirend** > **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők**szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit** > ,**további hitelesítésre van szükség az indításkor** > ,**kompatibilis TPM nélkül**, az alábbi ábrán látható módon:
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](../media/disk-encryption/disk-encryption-fig8.png)
 
-### <a name="install-bitlocker-feature-components"></a>A BitLocker szolgáltatásösszetevőinek telepítése
-Windows Server 2012 és újabb rendszer esetén használja a következő parancsot:
+### <a name="install-bitlocker-feature-components"></a>A BitLocker szolgáltatás összetevőinek telepítése
+A Windows Server 2012-es és újabb verzióiban használja a következő parancsot:
 
     dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
 
@@ -82,28 +82,28 @@ Windows Server 2008 R2 esetén használja a következő parancsot:
 
     ServerManagerCmd -install BitLockers
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Az operációs rendszer kötetének előkészítése a BitLocker számára a`bdehdcfg`
-Az operációs rendszer partíciójának tömörítéséhez és a gép BitLocker-hez való előkészítéséhez szükség esetén hajtsa végre a [bdehdcfg-et:](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment)
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>A BitLocker operációsrendszer-kötetének előkészítése a használatával`bdehdcfg`
+Az operációsrendszer-partíció tömörítéséhez és a számítógép BitLockerhez való előkészítéséhez hajtsa végre a [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) , ha szükséges:
 
     bdehdcfg -target c: shrink -quiet 
 
-### <a name="protect-the-os-volume-by-using-bitlocker"></a>Az operációs rendszer kötetének védelme a BitLocker használatával
-A [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) paranccsal engedélyezheti a titkosítást a rendszerindító köteten egy külső kulcsvédő használatával. Helyezze a külső kulcsot (.bek fájlt) a külső meghajtóra vagy kötetre. A titkosítás engedélyezve van a rendszer/rendszerindító köteten a következő újraindítás után.
+### <a name="protect-the-os-volume-by-using-bitlocker"></a>Az operációs rendszer kötetének biztosítása a BitLocker használatával
+A [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) parancs használatával engedélyezze a titkosítást a rendszerindító köteten egy külső kulcstartó használatával. Helyezze a külső kulcsot (. BEK fájlt) a külső meghajtóra vagy kötetre. A következő újraindítás után a titkosítás engedélyezve van a rendszer/rendszerindító köteten.
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
 
 > [!NOTE]
-> Készítse elő a virtuális gép egy külön adat/erőforrás virtuális merevlemez a külső kulcs beszerzése a BitLocker használatával.
+> Készítse elő a virtuális gépet egy külön adat/erőforrás virtuális merevlemezen a külső kulcs BitLocker használatával történő beolvasásához.
 
-## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Titkosított virtuális merevlemez feltöltése Azure-tárfiókba
-A DM-Crypt titkosítás engedélyezése után a helyi titkosított virtuális merevlemezt fel kell tölteni a tárfiókba.
+## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Titkosított virtuális merevlemez feltöltése Azure Storage-fiókba
+A DM-Crypt titkosítás engedélyezése után a helyi titkosított VHD-t fel kell tölteni a Storage-fiókjába.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Töltse fel az előre titkosított virtuális gép titkos kulcsát a key vaultba
-A korábban beszerzett lemeztitkosítási titkos kulcsot titkos kulcsként kell feltölteni a kulcstartóba.  Ehhez meg kell adnia a készlet titkos és a wrapkey engedélyt a fiók, amely feltölti a titkos kulcsokat.
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Töltse fel az előre titkosított virtuális gép titkos kulcsát a kulcstartóba
+A korábban beszerzett titkosítási titkot titkos kulcsként kell feltölteni a kulcstartóba.  Ehhez meg kell adni a titkos kulcs beállítása engedélyt és a wrapkey engedélyt ahhoz a fiókhoz, amely fel fogja tölteni a titkot.
 
 ```powershell 
 # Typically, account Id is the user principal name (in user@domain.com format)
@@ -121,8 +121,8 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
 
 ```
 
-### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>A lemeztitkosítás titkos kulcsa nincs kek-vel titkosítva
-A titkos kulcs beállítása a key vaultban használja a [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). A jelszó base64 karakterláncként van kódolva, majd feltöltve a key vaultba. Emellett győződjön meg arról, hogy a következő címkék vannak beállítva, amikor létrehozza a titkos kulcsot a key vaultban.
+### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>A lemez titkosítási titka nem titkosított KEK-sel
+A titkos kulcs a Key vaultban történő beállításához használja a [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). A jelszó Base64 karakterláncként van kódolva, majd feltöltve a kulcstartóba. Továbbá győződjön meg arról, hogy a következő címkék vannak beállítva, amikor létrehozza a titkos kulcsot a kulcstartóban.
 
 ```powershell
 
@@ -139,10 +139,10 @@ A titkos kulcs beállítása a key vaultban használja a [Set-AzKeyVaultSecret](
 ```
 
 
-Használja `$secretUrl` a következő lépésben [az operációs rendszer lemezének kek használata nélküli csatlakoztatásához.](#without-using-a-kek)
+Használja a `$secretUrl` következő lépésben az operációsrendszer- [lemez csatlakoztatását a KEK használata nélkül](#without-using-a-kek).
 
-### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK-vel titkosított lemeztitkosítási titkoskulcs
-Mielőtt feltöltene a titkos kulcsot a key vaultba, tetszés szerint titkosíthatja egy kulcstitkosítási kulcs használatával. A wrap [API segítségével](https://msdn.microsoft.com/library/azure/dn878066.aspx) először titkosítsa a titkos kulcsot a kulcs titkosítási kulcs használatával. A wrap művelet kimenete egy base64 URL-kódolású karakterlánc, amelyet a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával titkosként tölthet fel.
+### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>A lemez titkosítási titka egy KEK-sel titkosítva
+Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy titkosítsa azt egy kulcs titkosítási kulcs használatával. A wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) használatával először Titkosítsa a titkos kulcsot a kulcs titkosítási kulcsával. Ennek a körbefuttatási műveletnek a kimenete Base64 URL-kódolású karakterlánc, amelyet ezután titkos kulcsként tölthet fel a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -232,12 +232,12 @@ Mielőtt feltöltene a titkos kulcsot a key vaultba, tetszés szerint titkosíth
     $secretUrl = $response.id
 ```
 
-`$KeyEncryptionKey` Használja, `$secretUrl` és a következő lépésben [az operációs rendszer lemezének kek használatával történő csatlakoztatásához.](#using-a-kek)
+A következő lépésben használja `$KeyEncryptionKey` az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek). `$secretUrl`
 
-##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL megadása operációsrendszer-lemez csatolásakor
+##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL-cím megadása operációsrendszer-lemez csatlakoztatásakor
 
 ###  <a name="without-using-a-kek"></a>KEK használata nélkül
-Az operációs rendszer lemezének csatlakoztatása közben `$secretUrl`át kell adnia a . Az URL-cím a "KEK-vel nem titkosított lemeztitkosítási titok" szakaszban jött létre.
+Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl`a következőt:. Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -250,7 +250,7 @@ Az operációs rendszer lemezének csatlakoztatása közben `$secretUrl`át kell
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK használata
-Amikor csatlakoztatja az operációs `$KeyEncryptionKey` `$secretUrl`rendszer lemezét, adja át, és . Az URL-cím a "KEK-vel titkosított lemeztitkosítási titkosítatlan" szakaszban jött létre.
+Az operációsrendszer-lemez csatlakoztatásakor adja meg `$KeyEncryptionKey` a `$secretUrl`és a kapcsolót. Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

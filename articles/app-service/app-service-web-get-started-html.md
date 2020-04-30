@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Statikus HTML-webalkalmazás létrehozása'
-description: Az első HTML Hello World üzembe helyezése percek alatt az Azure App Service-be. A Git használatával telepíti, amely az egyik módja az App Service üzembe helyezésének.
+title: 'Gyors útmutató: statikus HTML-Webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az első HTML-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
@@ -8,15 +8,15 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82086062"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan telepíthet egy egyszerű HTML+CSS-webhelyet az Azure App Service szolgáltatásba. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview)fogja végrehajtani, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI segítségével.](/cli/azure/install-azure-cli)
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a Azure App Service. Ez a rövid útmutató [Cloud Shellban](https://docs.microsoft.com/azure/cloud-shell/overview)is elvégezhető, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI](/cli/azure/install-azure-cli)-vel.
 
 ![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -42,7 +42,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet. A statikus tartalmat `--html` a zászló jelzi.
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet. A statikus tartalmat a `--html` jelző jelzi.
 
 ```bash
 cd html-docs-hello-world
@@ -80,7 +80,7 @@ Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-A böngészőben nyissa meg az `http://<app_name>.azurewebsites.net`alkalmazás URL-címét: .
+A böngészőben nyissa meg az alkalmazás URL-címét `http://<app_name>.azurewebsites.net`:.
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -108,11 +108,11 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás kezeléséhez az [Azure Portalon](https://portal.azure.com)keresse meg az **App Services**elemet, és válassza azt. 
+A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services**lehetőséget. 
 
-![Válassza ki az Alkalmazásszolgáltatásokat az Azure Portalon](./media/app-service-web-get-started-html/portal0.png)
+![Válassza ki a App Services a Azure Portal](./media/app-service-web-get-started-html/portal0.png)
 
-Az **App Services** lapon válassza ki az Azure-alkalmazás nevét.
+A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-html/portal1.png)
 

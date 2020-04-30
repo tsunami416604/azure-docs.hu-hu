@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82114003"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Gridi esemény sémája
@@ -95,7 +95,7 @@ Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forr
 
 * [Azure-előfizetések (felügyeleti műveletek)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
-* [BLOB Storage](event-schema-blob-storage.md)
+* [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)

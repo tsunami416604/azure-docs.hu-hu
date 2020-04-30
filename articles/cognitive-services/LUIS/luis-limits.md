@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Cognitive Services Language Understanding (LUIS)
 ms.topic: reference
 ms.date: 04/02/2020
 ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82103591"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
